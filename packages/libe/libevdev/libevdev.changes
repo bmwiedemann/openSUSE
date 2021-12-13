@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 11 23:38:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  * doc: fix uinput device creation warnings
+  * doc: fix initialization and setup error
+  * gitlab CI: make the qemu selection automatic
+  * gitlab CI: make the tarball distro selection automatic
+  * gitlab CI: bump to Fedora 34 and Ubuntu 21.04
+  * gitlab CI: update to latest ci-templates
+  * include: sync event codes with kernel 5.15
+  * tools: add a helper tool to list all currently known codes
+  * libevdev 1.12.0
+  * make-event-names: Fix determinism issue 
+
+-------------------------------------------------------------------
 Fri Jun 25 20:36:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - It is actually not necessary to use python2, python3 works as
