@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           lokalize
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
@@ -43,9 +42,9 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kross)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -81,7 +80,7 @@ export CFLAGS="%{optflags} -fPIC"
   %fdupes -s %{buildroot}%{_kf5_sharedir}/lokalize
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/lokalize/
 %{_kf5_applicationsdir}/org.kde.lokalize.desktop
 %{_kf5_appstreamdir}/org.kde.lokalize.appdata.xml
