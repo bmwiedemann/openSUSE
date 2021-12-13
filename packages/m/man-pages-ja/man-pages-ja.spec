@@ -17,10 +17,10 @@
 
 
 Name:           man-pages-ja
-Version:        20210515
+Version:        20211115
 Release:        1.1
 Summary:        LDP Manual Pages (Japanese)
-License:        GPL-2.0-only AND BSD-3-Clause AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
+License:        BSD-3-Clause AND GPL-2.0-only AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
 Group:          Documentation/Man
 Summary(ja):    Linux 日本語マニュアルページ
 URL:            https://linuxjm.osdn.jp/download.html

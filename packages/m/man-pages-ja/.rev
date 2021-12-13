@@ -283,4 +283,13 @@
     <comment>- Remove conflicting cdparanoia manpage (forwarded request 907448 from gmbr3)</comment>
     <requestid>909419</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5d5ba2b74bb4eabe00652d06bfcdd83b</srcmd5>
+    <version>20211115</version>
+    <time>1639424674</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20211115
+  * added and improved manual pages</comment>
+    <requestid>940168</requestid>
+  </revision>
 </revisionlist>
