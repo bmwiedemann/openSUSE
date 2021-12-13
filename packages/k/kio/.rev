@@ -1033,4 +1033,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment></comment>
     <requestid>935212</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>c5ebcb5adc57dbbd24abec8424a01c47</srcmd5>
+    <version>5.89.0</version>
+    <time>1639424494</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.89.0</comment>
+    <requestid>940064</requestid>
+  </revision>
 </revisionlist>

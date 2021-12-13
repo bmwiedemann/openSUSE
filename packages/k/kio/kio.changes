@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Add new signals and logic to handle open directories in new windows or tabs
+  * Fix KRun::runApplication when xdg activation is involved (kde#446272)
+  * Explicitly remove the event filters in classes managed by a unique_ptr
+  * [KACLEditWidget] Load list of users/groups on demand
+  * [KPropertiesDialog] Reuse existing KUser instance
+  * Fix directory thumbnailer loading
+  * [CopyJob] Emit moving while renaming
+  * [KPropertiesDialog] Improve presentation of file type configuration
+  * [KPropertiesDialog] Add extra fields value in correct column
+  * Allow loading of Thumbnailers using embedded json metadata
+  * KDirOperator: get the icon sizes from user settings
+  * [KACLEditWidget] Remove redundancy and add icons to buttons
+  * [KPropertiesDialog] Use Filelight icon and name from desktop file
+  * [KPropertiesDialog] Hide time labels in multiple mode
+  * [KPropertiesDialog] Also hide label_left for timestamps
+  * Fix copying between different filesystems on Linux < 5.3
+  * [KDynamicJobTracker] Support KUiServerV2JobTracker
+- Drop patch, now upstream:
+  * 0001-Fix-KRun-runApplication-when-xdg-activation-is-invol.patch
+
+-------------------------------------------------------------------
 Thu Dec  2 13:38:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix KRun on Wayland (kde#446272,
