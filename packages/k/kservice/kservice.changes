@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * KPluginInfo: Fix mimetypes that are wildcards not appearing in MimeTypes json value
+  * Deprecate KToolInvokation::kdeinitExecWait
+  * Deprecate E-Mail and terminal related methods in KToolInvocation
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
