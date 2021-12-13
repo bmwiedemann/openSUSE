@@ -223,4 +223,23 @@
   - Use py3 as the default runtime for tox</comment>
     <requestid>890180</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>32514d945bbcd0d5b5d51a3f454156eb</srcmd5>
+    <version>3.9.1</version>
+    <time>1639424689</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.9.1
+  - Move flake8 as a pre-commit local target.
+  - Add Python3 xena unit tests
+  - setup.cfg: Replace dashes with underscores
+  - Changed minversion in tox to 3.18.0
+  - Moving IRC network reference to OFTC
+  - Allow specifying region of barbican endpoint
+  - barbican key manager: Add support for service user
+  - Simplify the reference to barbican parameters
+  - Update master for stable/wallaby
+  - Add missing font for PDF doc generation
+  - Remove lower-constraints remnants</comment>
+    <requestid>940200</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,13 @@
 
 
 Name:           python-castellan
-Version:        3.7.1
+Version:        3.9.1
 Release:        0
 Summary:        Generic Key Manager interface for OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/castellan
-Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-3.7.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-3.9.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-barbicanclient >= 4.5.2
 BuildRequires:  python3-cryptography >= 2.7
@@ -72,7 +72,7 @@ Castellan is a generic Key Manager interface for OpenStack.
 This package contains the documentation
 
 %prep
-%autosetup -p1 -n castellan-3.7.1
+%autosetup -p1 -n castellan-3.9.1
 %py_req_cleanup
 
 %build
