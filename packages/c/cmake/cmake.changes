@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Dec 11 10:27:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.22.1:
+  * try_compile: Do not use CMAKE_BUILD_TYPE or
+    CMAKE_CONFIGURATION_TYPES
+  * file(RPATH): Restore tolerance of unknown formats if new RPATH
+    is empty
+  * CMakeParseLibraryArchitecture: Fix parsing /lib/<arch> implicit
+    object path
+
+-------------------------------------------------------------------
+Wed Dec  1 16:36:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Adapt cmake.prov for Qt >= 6.2.2
+  Upstream uses its own ConfigVersion implementation.Starting with
+  Qt 6.2.2, 'PACKAGE_VERSION' is not defined in
+  Qt6FooConfigVersion.cmake but in Qt6FooConfigVersionImpl.cmake.
+
+-------------------------------------------------------------------
+Thu Nov 18 20:25:16 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.22.0:
+  * The cmake_host_system_information() command can now query OS
+    identification variables from the /etc/os-release file.
+  * The string(TIMESTAMP) command now supports the %V specifier for
+    ISO 8601 week numbers.
+  * New variables:
+    CMAKE_BUILD_TYPE
+    CMAKE_CONFIGURATION_TYPES 
+    CMAKE_INSTALL_MODE 
+    CMAKE_<LANG>_LINK_WHAT_YOU_USE_FLAG, CMAKE_LINK_WHAT_YOU_USE_CHECK
+    CMAKE_REQUIRE_FIND_PACKAGE_<PackageName>
+  * The <LANG>_EXTENSIONS target property is now initialized to
+    CMAKE_<LANG>_EXTENSIONS_DEFAULT, detected from the compiler.
+  * VS_SETTINGS source file property is now supported for all source file types
+  * The CMakeDependentOption module cmake_dependent_option() macro
+    now supports full Condition Syntax127.
+  * The FetchContent module now passes through the CMAKE_TLS_VERIFY,
+    CMAKE_TLS_CAINFO, CMAKE_NETRC and CMAKE_NETRC_FILE variables
+    (when defined) to the underlying ExternalProject sub-build.
+  * The FindBLAS and FindLAPACK modules gained a BLA_SIZEOF_INTEGER
+    option to find a BLAS/LAPACK whose ABI uses a specific integer size.
+  * The FindJasper module now provides an imported target.
+  * The FindMatlab module now provides imported targets.
+  * The FindPkgConfig module gained a PKG_CONFIG_ARGN variable to
+    specify arguments to pkg-config calls.
+  * The GoogleTest module gtest_discover_tests() function gained a
+    TEST_FILTER option to filter tests using --gtest_filter during
+    test discovery.
+  * The UseSWIG module, for Visual Studio Generators, can now use the
+    swig tool to generate implicit dependencies.
+  * ctest improvements
+  * CPack DEB Generator supports zstd
+  * CPack RPM Generator gained support to exluding paths from
+    dependency scanning
+
+-------------------------------------------------------------------
 Sun Oct 31 11:07:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.21.4:

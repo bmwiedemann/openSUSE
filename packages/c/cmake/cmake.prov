@@ -57,11 +57,16 @@ class CMakeParser:
         return result
 
     def resolveCMakeModuleVersion(self, modulePath, cmakeModule, lowercase):
-        versionFile = ("%s/%s-config-version.cmake" if lowercase else "%s/%sConfigVersion.cmake") % (modulePath, cmakeModule)
+        # Qt >= 6.2.2 defines 'PACKAGE_VERSION' in *ConfigVersionImpl.cmake
+        versionFile = f"{modulePath}/{cmakeModule}ConfigVersionImpl.cmake" if "Qt6" in f"{cmakeModule}" else ""
         try:
             f = open(versionFile, 'r')
         except:
-            return None
+            versionFile = ("%s/%s-config-version.cmake" if lowercase else "%s/%sConfigVersion.cmake") % (modulePath, cmakeModule)
+            try:
+                f = open(versionFile, 'r')
+            except:
+                return None
 
         for line in f:
             line = line.strip()
