@@ -30,7 +30,7 @@ Source:         https://github.com/snudler6/time-travel/archive/refs/tags/v%{ver
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION tests
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module mock}
 # /SECTION
 BuildRequires:  fdupes
