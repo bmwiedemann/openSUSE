@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Dec  2 11:47:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix postgresql_has_llvm usage
+
+-------------------------------------------------------------------
+Tue Nov 30 17:24:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to %{pg_name}-llvmjit-devel
+
+-------------------------------------------------------------------
+Sun Nov 14 02:05:33 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- port to postgresql macros
+
+-------------------------------------------------------------------
+Sun Sep 26 08:00:49 UTC 2021 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.4.1
+  * Fixes PostgreSQL 11- support
+
+-------------------------------------------------------------------
+Sat Sep 18 17:42:49 UTC 2021 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.4.0
+  * Adds a cron.alter_job function to change job properties, by
+    Bertrand Drouvot
+  * Adds a cron.log_min_messages setting to control log_min_messages
+    in pg_cron launcher, by Bertrand Drouvot
+  * Adds a cron.enable_superuser_jobs setting to disallow superuser
+    jobs
+  * Fixes a bug that could cause jobs to hang when using
+    cron.use_background_workers, by Bertrand Drouvot
+  * Fixes a small memory allocation bug, by @mrdrivingduck
+  * PostgreSQL 14 is supported (no changes were needed)
+
+-------------------------------------------------------------------
 Wed Jun 30 14:22:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do no longer build postgresql95 and postgresql96 flavors on

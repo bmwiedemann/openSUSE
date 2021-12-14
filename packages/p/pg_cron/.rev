@@ -76,4 +76,31 @@
     <comment></comment>
     <requestid>903360</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e5b8b7cc955e9fce62ebc4b89b5a0e9</srcmd5>
+    <version>1.4.1</version>
+    <time>1639515711</time>
+    <user>dimstar_suse</user>
+    <comment>- fix postgresql_has_llvm usage
+
+- switch to %{pg_name}-llvmjit-devel
+
+- port to postgresql macros
+
+- update to 1.4.1
+  * Fixes PostgreSQL 11- support
+
+- update to 1.4.0
+  * Adds a cron.alter_job function to change job properties, by
+    Bertrand Drouvot
+  * Adds a cron.log_min_messages setting to control log_min_messages
+    in pg_cron launcher, by Bertrand Drouvot
+  * Adds a cron.enable_superuser_jobs setting to disallow superuser
+    jobs
+  * Fixes a bug that could cause jobs to hang when using
+    cron.use_background_workers, by Bertrand Drouvot
+  * Fixes a small memory allocation bug, by @mrdrivingduck
+  * PostgreSQL 14 is supported (no changes were needed)</comment>
+    <requestid>940416</requestid>
+  </revision>
 </revisionlist>

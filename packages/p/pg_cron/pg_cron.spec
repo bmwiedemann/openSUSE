@@ -16,82 +16,54 @@
 #
 
 
-%define         pgversion @BUILD_FLAVOR@
-%define         priority %{pgversion}
-%define         sname pg_cron
-%define         pg_libdir %(pg_config --pkglibdir)
-%define         pg_share %(pg_config --sharedir)
-%if 0%{?is_opensuse} && ("%{pgversion}" == "postgresql11" || "%{pgversion}" == "postgresql12" || "%{pgversion}" == "postgresql13") && 0%{?suse_version} >= 1500
-%bcond_without  llvm
-%else
-%bcond_with     llvm
-%endif
-Name:           %{pgversion}-%{sname}
-Version:        1.3.1
+%define         pg_name @BUILD_FLAVOR@%{nil}
+%define         ext_name pg_cron
+%{pg_version_from_name}
+
+Name:           %{pg_name}-%{ext_name}
+Version:        1.4.1
 Release:        0
 Summary:        PostgreSQL module for simple job schedule
 License:        PostgreSQL
 Group:          Productivity/Databases/Servers
 URL:            https://github.com/citusdata/pg_cron
-Source:         %{sname}-%{version}.tar.gz
-BuildRequires:  %{pgversion}-server
-BuildRequires:  %{pgversion}-server-devel
-%requires_eq    %{pgversion}-server
-%if "%{pgversion}" == ""
-Name:           %{sname}
-ExclusiveArch:  do_not_build
-%endif
-%if ("%{pgversion}" == "postgresql95" || "%{pgversion}" == "postgresql96") && 0%{?suse_version} >= 1550
+Source:         https://github.com/citusdata/pg_cron/archive/refs/tags/v%{version}.tar.gz#/%{ext_name}-%{version}.tar.gz
+
+BuildRequires:  %{pg_name}-llvmjit-devel
+%pg_server_requires
+%if "%{pg_name}" == ""
+Name:           %{ext_name}
 ExclusiveArch:  do_not_build
 %endif
 
 %description
-%{sname} is a simple cron-based job scheduler for PostgreSQL (9.5 or higher)
+%{ext_name} is a simple cron-based job scheduler for PostgreSQL (9.5 or higher)
 that runs inside the database as an extension. It uses the same syntax as
 regular cron, but it allows you to schedule PostgreSQL commands directly from
 the database.
 
-%if %{with llvm}
-%package llvmjit
-Summary:        Just-in-time compilation support for PostgreSQL %{sname} extension
-Group:          Productivity/Databases/Servers
-Requires:       %{pgversion}-%{sname} = %{version}-%{release}
-Requires:       %{pgversion}-llvmjit
-Requires:       %{pgversion}-server
-Supplements:    packageand(%{pgversion}-llvmjit:%{name})
-
-%description llvmjit
-This package contains support for just-in-time compiling parts of
-PostgreSQL queries. Using LLVM it compiles e.g. expressions and tuple
-deforming into native code, with the goal of accelerating analytics
-queries.
-%endif
-
 %prep
-%setup -q -n %{sname}-%{version}
+%autosetup -p1 -n %{ext_name}-%{version}
 
 %build
-export PATH="$PATH:%{_libexecdir}/%{pgname}/bin"
-make %{?_smp_mflags}
+%make_pgxs
 
 %install
 %make_install
 
 %post
-%{_datadir}/postgresql/install-alternatives %{priority}
+%{_datadir}/postgresql/install-alternatives %{pg_version}
 
 %postun
-%{_datadir}/postgresql/install-alternatives %{priority}
+%{_datadir}/postgresql/install-alternatives %{pg_version}
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{_datadir}/%{pgversion}/extension/%{sname}*
-%{pg_libdir}/%{sname}.so
-
-%if %{with llvm}
-%files llvmjit
-%{pg_libdir}/bitcode/*
+%{pg_config_sharedir}/extension/%{ext_name}*
+%{pg_config_pkglibdir}/%{ext_name}.so
+%if %{postgresql_has_llvm}
+%{pg_config_pkglibdir}/bitcode/*
 %endif
 
 %changelog
