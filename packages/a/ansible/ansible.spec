@@ -189,6 +189,7 @@ BuildRequires:  %{python}-pexpect
 BuildRequires:  %{python}-pywinrm
 Recommends:     %{python}-pywinrm
 %endif
+BuildRequires:  %{python}-rpm-macros
 BuildRequires:  %{python}-Jinja2
 BuildRequires:  %{python}-PyYAML
 BuildRequires:  %{python}-coverage
@@ -222,7 +223,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.24
+Version:        2.9.27
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
