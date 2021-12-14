@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 14 16:04:12 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1639414134.aa9bed13e:
+  * Pass program name in scripts using `getopt` (instead of `parse-options`)
+  * Add `--help` flag to `openqa-check-devel` required by `t/44-scripts.t`
+  * Extract health check for `devel:openQA` repository
+  * Allow hxnormalize in apparmor config
+  * t: Add Test::Warnings to most files where missing
+  * branding: Again adapt bug reporting link for SUSE 15 SP4
+
+-------------------------------------------------------------------
 Sun Dec 12 08:04:10 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1639150327.6dac4a283:
