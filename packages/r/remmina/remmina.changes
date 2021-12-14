@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec 13 11:07:44 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.22
+  * Fix crash if main window is closed #1692 (closed) !2330 
+  * Main window position reset after opening a connection (issue 2587) !2331 
+  * File Interface refactoring !2332 
+  * CMake refactoring and build time warnings !2333 
+  * Add Croatian language to desktop shortcuts and infos !2334 
+  * Appdata corrections and renewal !2336 
+  * Fixes for freerdp3 compatibility. !2337 
+  * X2Go: Rewrite dialog-system; Ask users which session to resume... !2328 
+  * int main(): print instructions how to enable a more verbose output of remmina !2338 
+  * Mitigations for #2635 (closed) (default printer) with freerdp < 3 !2343 
+  * X2Go: Add a session-terminate button into the session resuming selection menu !2339 
+  * Properly warn users when using a plugin which requires GtkSocket !2340 
+  * x2go_plugin.c: Make changes to source strings for translations. !2344 
+  * Fix ubuntu-impish-amd64 build errors. !2345 
+  * Hopefully fix Ubuntu Impish Build !2347 
+  * Fix string format !2348 
+  * 2634-ssh-opening-command !2342 
+  * New debug strings reworked !2341 
+  * Deduplicated "Started PyHoca" string !2346 
+  * Removing the Remmina stats sender and repurposing Remmina stats !2350 
+  * X2Go: Major rewrite of session-terminating system. !2349 
+  * Message about debugging info reworked !2351 
+  * Strings in rcw.c reworked !2352 
+  * VNC custom encodings to avoid corrupted frames. !2354 
+  * X2Go format string bugs !2355 
+
+-------------------------------------------------------------------
 Mon Oct 18 15:23:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.21
