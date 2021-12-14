@@ -31,6 +31,7 @@ Source:         %{name}-%{version}.tar.xz
 Patch:          harden_servicereport.service.patch
 BuildRequires:  %{python}
 BuildRequires:  %{python}-setuptools
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 %systemd_requires
 BuildArch:      noarch

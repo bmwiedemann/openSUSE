@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 11:19:24 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on 15 SP3: python-rpm-macros required for build.
+
+-------------------------------------------------------------------
 Fri Sep 24 11:32:11 UTC 2021 - msuchanek@suse.de
 
 - Update to version 2.2.3+git1.55a13db1c256:
