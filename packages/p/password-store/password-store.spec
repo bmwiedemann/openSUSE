@@ -26,18 +26,18 @@ Source:         https://git.zx2c4.com/password-store/snapshot/%{name}-%{version}
 # remove on the next release after 1.7.4
 Patch0:         https://git.zx2c4.com/password-store/patch/?id=85bb62f47ac2f518bfdb36c5dfedf5938219a9b7#/default-to-xclip.patch
 BuildRequires:  bash-completion
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  gpg2
 BuildRequires:  qrencode
 BuildRequires:  tree
 BuildRequires:  xz
 BuildRequires:  zsh
-Requires:       (xclip or wl-clipboard)
+Recommends:     (xclip or wl-clipboard)
 Requires:       gpg2
 Requires:       qrencode
 Requires:       tree >= 1.7.0
 Recommends:     pwgen
-Suggests:       git
+Suggests:       git-core
 BuildArch:      noarch
 %if 0%{?suse_version} > 1320
 BuildRequires:  fish

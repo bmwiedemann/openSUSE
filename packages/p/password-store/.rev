@@ -175,4 +175,15 @@
     <comment></comment>
     <requestid>921295</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>9827c7674a3d853b750e1c184ae4307e</srcmd5>
+    <version>1.7.4</version>
+    <time>1639515734</time>
+    <user>dimstar_suse</user>
+    <comment>- change the requires for the clipboard utilities to recommends
+  to lower the foot print for server installations
+  by default zypper installs recommends so for most users nothing
+  should change. (forwarded request 940532 from darix)</comment>
+    <requestid>940533</requestid>
+  </revision>
 </revisionlist>
