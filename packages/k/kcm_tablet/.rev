@@ -181,4 +181,14 @@
 - Update URL</comment>
     <requestid>906922</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>0eab2205ccfa3ba97cab6e281442761f</srcmd5>
+    <version>3.2.0</version>
+    <time>1639515725</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix installation with plasma-framework 5.89.
+
+- Update the desktop file categories to fix the desktop-file-validate warnings.</comment>
+    <requestid>940486</requestid>
+  </revision>
 </revisionlist>

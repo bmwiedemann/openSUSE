@@ -83,7 +83,7 @@ All tablets can be set up as long as they are found with the wacom kernel module
   %find_lang plasma_applet_org.kde.plasma.%{rname} %{name}.lang
   %{kf5_find_htmldocs}
 
-  %suse_update_desktop_file kde_wacom_tabletfinder Qt KDE Utility System Configuration
+  %suse_update_desktop_file kde_wacom_tabletfinder HardwareSettings
 
 %files lang -f %{name}.lang
 
@@ -103,7 +103,7 @@ All tablets can be set up as long as they are found with the wacom kernel module
 %dir %{_kf5_plugindir}/plasma/dataengine
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_wacomtablet.so
 %{_kf5_servicesdir}/kcm_wacomtablet.desktop
-%if %{pkg_vcmp plasma-framework-devel < 5.84}
+%if %{pkg_vcmp plasma-framework-devel < 5.84} || %{pkg_vcmp plasma-framework-devel > 5.89}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.wacomtablet.desktop
 %endif
 %{_kf5_servicesdir}/plasma-dataengine-wacomtablet.desktop

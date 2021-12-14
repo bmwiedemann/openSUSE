@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 14 13:25:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation with plasma-framework 5.89.
+
+-------------------------------------------------------------------
+Thu Aug  5 06:03:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the desktop file categories to fix the desktop-file-validate warnings.
+
+-------------------------------------------------------------------
 Sun Jul 18 08:43:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %files section. plasma-framework >= 5.84 doesn't install
