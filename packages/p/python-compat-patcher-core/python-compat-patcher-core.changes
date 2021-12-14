@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:35:12 UTC 2021 - pgajdos@suse.com
+
+- fix tests, do not require pytest-runner
+
+-------------------------------------------------------------------
 Sat May 15 10:27:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix the logic for testing cookiecutter only on python3 flavor.

@@ -36,8 +36,9 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  python3-pytest-cookies
 # /SECTION
 %python_subpackages
@@ -61,7 +62,8 @@ rm pytest.ini
 %check
 # Cookiecutter is only available as python3
 %python_expand [ %{_bindir}/$python -ef %{_bindir}/python3 ] ||  $python_ignore="--ignore tests/test_cookiecutter_recipe.py"
-%pytest tests ${$python_ignore}
+# _and_run_tests: use setup.py test
+%pytest tests ${$python_ignore} -k 'not _and_run_tests'
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst
