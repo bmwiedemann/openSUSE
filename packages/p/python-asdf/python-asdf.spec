@@ -29,7 +29,7 @@
 # current astropy in TW requires python >= 3.7
 %define         skip_python36 1
 Name:           python-asdf%{psuffix}
-Version:        2.8.1
+Version:        2.8.3
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -64,10 +64,11 @@ BuildArch:      noarch
 BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module gwcs}
+BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
+BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
 %python_subpackages
@@ -83,6 +84,8 @@ sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
 chmod a-x asdf/extern/RangeHTTPServer.py
 sed -i 's/\r$//' asdf/tests/data/example_schema.json
 chmod a-x asdf/tests/data/example_schema.json
+# https://github.com/asdf-format/asdf/pull/1036
+sed -i 's/isSet/is_set/' asdf/tests/httpserver.py
 
 %build
 %python_build
@@ -100,11 +103,6 @@ sed -i -e 's|^#!/usr/bin/env python|#!%{__$python}|' %{buildroot}%{$python_sitel
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-%{python_expand # the tests assume the existence of a `python` command
-mkdir -p build/bin
-ln -s %{__$python} build/bin/python
-}
-export PATH="$(pwd)/build/bin:$PATH"
 # import everything from the source directory because of collection conflicts with buildroot
 export PYTHONPATH=":x"
 %pytest --import-mode=append

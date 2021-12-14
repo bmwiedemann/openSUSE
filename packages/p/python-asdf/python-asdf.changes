@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 13 18:43:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.8.3
+  * Fix array compression for non-native byte order.
+  * Fix bug in schema loading when URI is claimed by both legacy
+    and new-style extensions.
+  * Hide 'name' and 'version' attributes on instances of
+    NDArrayType.
+  * Fix use of "python" instead of "python3" in compatibility
+    tests.
+- Unpin pytest<6 -- gh#asdf-format/asdf#1038
+
+-------------------------------------------------------------------
 Thu Nov 11 23:33:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add multibuild to avoid a build loop. 
