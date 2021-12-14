@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 13:18:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation with plasma-framework 5.89.
+
+-------------------------------------------------------------------
 Sun Jul 18 08:42:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %files section. plasma-framework >= 5.84 doesn't install

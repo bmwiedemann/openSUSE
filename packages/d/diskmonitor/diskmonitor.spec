@@ -91,7 +91,7 @@ Applet:
 %{_kf5_notifydir}/diskmonitor.notifyrc
 %{_kf5_plasmadir}/plasmoids/
 %{_kf5_qmldir}/org/papylhomme/
-%if %{pkg_vcmp plasma-framework-devel < 5.84}
+%if %{pkg_vcmp plasma-framework-devel < 5.84} || %{pkg_vcmp plasma-framework-devel > 5.89}
 %{_kf5_servicesdir}/plasma-applet-org.papylhomme.diskmonitor.desktop
 %endif
 %{_kf5_sharedir}/applications/diskmonitor.desktop
