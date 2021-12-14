@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>908150</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a6fffe1f6f66bcc192dc125ff478939</srcmd5>
+    <version>1.0.7</version>
+    <time>1639515740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.7:
+  - option to use cerf instead of Faddeeva
+  - googletest branch is main not master
+  - tests that use xml only triggered if xml included
+</comment>
+    <requestid>940555</requestid>
+  </revision>
 </revisionlist>
