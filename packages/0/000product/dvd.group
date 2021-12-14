@@ -493,7 +493,6 @@
     <package name="fetchmailconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ffmpegthumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ffmpegthumbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ffmpegthumbs-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="file-roller" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1429,6 +1428,7 @@
     <package name="libKF5JobWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5KDEGames7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDELibs4Support5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDcraw5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KExiv2-15_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1962,7 +1962,7 @@
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libgit2-1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgit2-1_3" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglade-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2172,15 +2172,15 @@
     <package name="libkdecorations2private9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdegames" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdegames-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkdegames-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkdevplatform56" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libkdevplatform57" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkdsoap2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkeduvocdocument-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libkerfuffle21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkeybinder-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libkf5kdegames6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkgantt-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkgapi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkioarchive5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2649,7 +2649,7 @@
     <package name="libsrt1_4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsrtp2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3791,13 +3791,13 @@
     <package name="python38-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-pygraphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python38-pykerberos" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-pylibmc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-pymongo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-pyreadstat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-pyserial" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python38-pyspnego" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-python-lzo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-python-memcached" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3816,6 +3816,8 @@
     <package name="python38-roman" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python38-rsa" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-ruamel.yaml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-ruamel.yaml.clib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-s3fs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-s3transfer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-scipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3962,14 +3964,11 @@
     <package name="ruby2.7-rubygem-actionmailer-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actiontext-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-actionview-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activejob-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-activemodel-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activerecord-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activestorage-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-activesupport-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-aes_key_wrap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4963,6 +4962,7 @@
     <package name="xtables-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xterm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xterm-bin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xterm-resize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xtermset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xwayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5448,6 +5448,7 @@
     <package name="python38-gcsfs-fuse" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-google-auth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-google-auth-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-hexdump" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
