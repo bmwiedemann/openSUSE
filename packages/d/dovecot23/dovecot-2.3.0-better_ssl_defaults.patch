@@ -1,13 +1,13 @@
-diff -ur dovecot-2.3.15.orig/doc/example-config/conf.d/10-ssl.conf dovecot-2.3.15/doc/example-config/conf.d/10-ssl.conf
---- dovecot-2.3.15.orig/doc/example-config/conf.d/10-ssl.conf
-+++ dovecot-2.3.15/doc/example-config/conf.d/10-ssl.conf
+diff -ur dovecot-2.3.17.1.orig/doc/example-config/conf.d/10-ssl.conf dovecot-2.3.17.1/doc/example-config/conf.d/10-ssl.conf
+--- dovecot-2.3.17.1.orig/doc/example-config/conf.d/10-ssl.conf	2021-12-03 12:48:47.000000000 +0100
++++ dovecot-2.3.17.1/doc/example-config/conf.d/10-ssl.conf	2021-12-07 20:09:55.575984341 +0100
 @@ -9,8 +9,8 @@
  # dropping root privileges, so keep the key file unreadable by anyone but
  # root. Included doc/mkcert.sh can be used to easily generate self-signed
  # certificate, just make sure to update the domains in dovecot-openssl.cnf
 -ssl_cert = </etc/ssl/certs/dovecot.pem
 -ssl_key = </etc/ssl/private/dovecot.pem
-+#ssl_cert = </etc/ssl/private/dovecot.crt
++#ssl_cert = </etc/ssl/certs/dovecot.pem
 +#ssl_key = </etc/ssl/private/dovecot.pem
  
  # If key file is password protected, give the password here. Alternatively
@@ -34,13 +34,13 @@ diff -ur dovecot-2.3.15.orig/doc/example-config/conf.d/10-ssl.conf dovecot-2.3.1
  #   no_ticket - Disable SSL session tickets.
  #ssl_options =
 +ssl_options = no_compression
-diff -ur dovecot-2.3.15.orig/src/lib-master/master-service-ssl-settings.c dovecot-2.3.15/src/lib-master/master-service-ssl-settings.c
---- dovecot-2.3.15.orig/src/lib-master/master-service-ssl-settings.c	2021-06-14 15:40:37.000000000 +0200
-+++ dovecot-2.3.15/src/lib-master/master-service-ssl-settings.c	2021-06-21 14:09:29.663825041 +0200
-@@ -62,7 +62,7 @@
+diff -ur dovecot-2.3.17.1.orig/src/lib-master/master-service-ssl-settings.c dovecot-2.3.17.1/src/lib-master/master-service-ssl-settings.c
+--- dovecot-2.3.17.1.orig/src/lib-master/master-service-ssl-settings.c	2021-12-03 12:48:47.000000000 +0100
++++ dovecot-2.3.17.1/src/lib-master/master-service-ssl-settings.c	2021-12-07 20:10:57.811653344 +0100
+@@ -49,7 +49,7 @@
+ 	.ssl_client_ca_dir = "",
  	.ssl_client_cert = "",
  	.ssl_client_key = "",
- 	.ssl_dh = "",
 -	.ssl_cipher_list = "ALL:!kRSA:!SRP:!kDHd:!DSS:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK:!RC4:!ADH:!LOW@STRENGTH",
 +	.ssl_cipher_list = "ALL:!LOW:!SSLv2:!EXP:!aNULL:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK:!RC4:!ADH:!LOW@STRENGTH",
  	.ssl_cipher_suites = "", /* Use TLS library provided value */

@@ -599,4 +599,12 @@
     <comment>- update to 2.3.16 and pigeonhole to 0.5.16:</comment>
     <requestid>912378</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f6a0b9cd6a6996ca3afc88e11bebaee5</srcmd5>
+    <version>2.3.17.1</version>
+    <time>1639515744</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940573</requestid>
+  </revision>
 </revisionlist>

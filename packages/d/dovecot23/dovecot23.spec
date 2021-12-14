@@ -19,11 +19,11 @@
 %global _lto_cflags %{nil}
 
 Name:           dovecot23
-Version:        2.3.16
+Version:        2.3.17.1
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.16
-%define dovecot_pigeonhole_version 0.5.16
+%define dovecot_version 2.3.17.1
+%define dovecot_pigeonhole_version 0.5.17.1
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
