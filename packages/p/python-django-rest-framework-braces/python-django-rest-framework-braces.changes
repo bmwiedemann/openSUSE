@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:53:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop python 3.6 support since python-django-extensions dropped it
+
+-------------------------------------------------------------------
 Fri Sep 11 11:09:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Skip Django-3.1-incompatible (but mostly harmless) test
