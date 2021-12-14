@@ -17,10 +17,11 @@
 
 
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-# systemd-rpm-macros(or kmod) is wrong in 15.2
-%define _modprobedir /lib/modprobe.d
-%endif
+%define _udevdir %(pkg-config --variable udevdir udev)
+%define _modprobedir %{_sysconfdir}/modprobe.d
+%else
 %define _udevdir %(pkg-config --variable udev_dir udev)
+%endif
 Name:           google-guest-configs
 Version:        20211116.00
 Release:        0
@@ -31,9 +32,6 @@ URL:            https://github.com/GoogleCloudPlatform/guest-configs
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)
-%if 0%{?suse_version} && 0%{?suse_version} <= 1315
-BuildRequires:  pkgconfig(udev)
-%endif
 BuildArch:      noarch
 
 %description

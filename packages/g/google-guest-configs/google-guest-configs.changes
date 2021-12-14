@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  7 15:02:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Install modprobe configuration files into /etc again on SLE-15-SP2 and
+  older since that's stil the default location on these distributions
+- Probe udev directory using the "udevdir" pkg-config variable on SLE-15-SP2
+  and older since the variable got renamed to "udev_dir" in later versions
+- Remove redundant pkgconfig(udev) from BuildRequires for SLE-12
+
+-------------------------------------------------------------------
 Thu Nov 18 13:58:21 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20211116.00 (bsc#1193257, bsc#1193258)
