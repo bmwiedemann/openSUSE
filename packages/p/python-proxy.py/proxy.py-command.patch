@@ -1,0 +1,143 @@
+Index: proxy.py-2.3.1/README.md
+===================================================================
+--- proxy.py-2.3.1.orig/README.md
++++ proxy.py-2.3.1/README.md
+@@ -231,14 +231,14 @@ or from GitHub `master` branch
+ ## From command line when installed using PIP
+ 
+ When `proxy.py` is installed using `pip`,
+-an executable named `proxy` is placed under your `$PATH`.
++an executable named `proxy-py` is placed under your `$PATH`.
+ 
+ #### Run it
+ 
+-Simply type `proxy` on command line to start it with default configuration.
++Simply type `proxy-py` on command line to start it with default configuration.
+ 
+ ```bash
+-❯ proxy
++❯ proxy-py
+ ...[redacted]... - Loaded plugin proxy.http_proxy.HttpProxyPlugin
+ ...[redacted]... - Starting 8 workers
+ ...[redacted]... - Started server on ::1:8899
+@@ -268,7 +268,7 @@ All the logs above are `INFO` level logs
+ Lets start `proxy.py` with `DEBUG` level logging:
+ 
+ ```bash
+-❯ proxy --log-level d
++❯ proxy-py --log-level d
+ ...[redacted]... - Open file descriptor soft limit set to 1024
+ ...[redacted]... - Loaded plugin proxy.http_proxy.HttpProxyPlugin
+ ...[redacted]... - Started 8 workers
+@@ -286,7 +286,7 @@ See [flags](#flags) for full list of ava
+ ## From command line using repo source
+ 
+ If you are trying to run `proxy.py` from source code,
+-there is no binary file named `proxy` in the source code.
++there is no binary file named `proxy-py` in the source code.
+ 
+ To start `proxy.py` from source code follow these instructions:
+ 
+@@ -362,7 +362,7 @@ Add support for short links in your favo
+ Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ShortLinkPlugin
+ ```
+ 
+@@ -391,7 +391,7 @@ Modifies POST request body before sendin
+ Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ModifyPostDataPlugin
+ ```
+ 
+@@ -445,7 +445,7 @@ without need of an actual upstream REST
+ Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ProposedRestApiPlugin
+ ```
+ 
+@@ -476,7 +476,7 @@ also running on `8899` port.
+ Start `proxy.py` and enable inbuilt web server:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --enable-web-server \
+     --plugins proxy.plugin.RedirectToCustomServerPlugin
+ ```
+@@ -510,7 +510,7 @@ By default, plugin drops traffic for `go
+ Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.FilterByUpstreamHostPlugin
+ ```
+ 
+@@ -619,7 +619,7 @@ Modifies upstream server responses.
+ Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ManInTheMiddlePlugin
+ ```
+ 
+@@ -804,7 +804,7 @@ make https-certificates
+ Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --cert-file https-cert.pem \
+     --key-file https-key.pem
+ ```
+@@ -853,7 +853,7 @@ Lets also enable `CacheResponsePlugin` s
+ response from the server. Start `proxy.py` as:
+ 
+ ```bash
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.CacheResponsesPlugin \
+     --ca-key-file ca-key.pem \
+     --ca-cert-file ca-cert.pem \
+@@ -1052,7 +1052,7 @@ Start `proxy.py` as:
+ 
+ ```bash
+ ❯ # On localhost
+-❯ proxy --enable-tunnel \
++❯ proxy-py --enable-tunnel \
+     --tunnel-username username \
+     --tunnel-hostname ip.address.or.domain.name \
+     --tunnel-port 22 \
+@@ -1669,7 +1669,7 @@ few obvious ones include:
+ # Flags
+ 
+ ```bash
+-❯ proxy -h
++❯ proxy-py -h
+ usage: proxy [-h] [--threadless] [--backlog BACKLOG] [--enable-events]
+           [--hostname HOSTNAME] [--port PORT] [--num-workers NUM_WORKERS]
+           [--client-recvbuf-size CLIENT_RECVBUF_SIZE] [--key-file KEY_FILE]
+Index: proxy.py-2.3.1/setup.py
+===================================================================
+--- proxy.py-2.3.1.orig/setup.py
++++ proxy.py-2.3.1/setup.py
+@@ -40,7 +40,7 @@ if __name__ == '__main__':
+         install_requires=open('requirements.txt', 'r').read().strip().split(),
+         entry_points={
+             'console_scripts': [
+-                'proxy = proxy:entry_point'
++                'proxy-py = proxy:entry_point'
+             ]
+         },
+         classifiers=[
