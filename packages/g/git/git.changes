@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Nov 26 21:20:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.34.1:
+- update to 2.34.1 (bsc#1193722):
   * "git grep" looking in a blob that has non-UTF8 payload was
     completely broken when linked with certain versions of PCREv2
     library in the latest release.

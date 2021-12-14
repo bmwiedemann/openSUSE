@@ -2386,4 +2386,12 @@ git 2.12.3
 - fix url</comment>
     <requestid>934174</requestid>
   </revision>
+  <revision rev="272" vrev="2">
+    <srcmd5>87e176d9c8193f738a012f07d4fd2994</srcmd5>
+    <version>2.34.1</version>
+    <time>1639515730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940530</requestid>
+  </revision>
 </revisionlist>
