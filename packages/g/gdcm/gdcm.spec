@@ -20,7 +20,7 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.9
+Version:        3.0.10
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ URL:            https://gdcm.sourceforge.net/wiki/index.php/Main_Page
 Source0:        https://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.bz2
 Patch1:         0001-Fix-build-with-CharLS-2.1.0.patch
 Patch2:         gdcm-2.4.0-usecopyright.patch
-Patch3:         0002-gcc11-changes.diff
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets
