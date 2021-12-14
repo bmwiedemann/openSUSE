@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sqlite-utils
-Version:        3.5
+Version:        3.19
 Release:        0
 Summary:        Python CLI tool and library for manipulating SQLite databases
 License:        Apache-2.0
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module click-default-group}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlite-fts4}
@@ -44,7 +43,7 @@ Requires:       python-click-default-group
 Requires:       python-sqlite-fts4
 Requires:       python-tabulate
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,6 +52,8 @@ CLI tool and Python utility functions for manipulating SQLite databases.
 
 %prep
 %setup -q -n sqlite-utils-%{version}
+# https://github.com/simonw/sqlite-utils/issues/357
+sed -i 's:pytest-runner:pytest:' setup.py
 
 %build
 %python_build
@@ -73,7 +74,7 @@ export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.md docs
 %license LICENSE
 %python_alternative %{_bindir}/sqlite-utils
 %{python_sitelib}/*
