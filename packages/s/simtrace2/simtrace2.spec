@@ -1,7 +1,8 @@
 #
 # spec file for package simtrace2
 #
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define sover 1
 Name:           simtrace2
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Osmocom SIMtrace host utility
 License:        GPL-2.0-or-later
@@ -27,12 +30,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libosmocore)
-BuildRequires:  pkgconfig(libosmosim)
+BuildRequires:  pkgconfig(libosmocore) >= 1.4.0
+BuildRequires:  pkgconfig(libosmosim) >= 1.4.0
+BuildRequires:  pkgconfig(libosmousb) >= 1.4.0
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(libosmousb) >= 0.0.0
-BuildRequires:  pkgconfig(udev)
 
 %description
 Osmocom SIMtrace 2 is a software and hardware system for passively
@@ -41,11 +43,11 @@ and remote SIM operation.
 
 This package contains SIMtrace 2 host utility.
 
-%package -n libosmo-simtrace2-0
+%package -n libosmo-simtrace2-%{sover}
 Summary:        Driver functions for Osmocom SIMtrace2 and compatible firmware
 Group:          System/Libraries
 
-%description -n libosmo-simtrace2-0
+%description -n libosmo-simtrace2-%{sover}
 This library contains core "driver" functionality to interface with the
 Osmocom SIMtrace2 (and compatible) USB device firmware.  It enables
 applications to implement SIM card / smart card tracing as well as
@@ -54,7 +56,7 @@ SIM / smart card emulation functions.
 %package -n libosmo-simtrace2-devel
 Summary:        Development files for the Osmocom SIMtrace2 library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-simtrace2-0 = %{version}
+Requires:       libosmo-simtrace2-%{sover} = %{version}
 
 %description -n libosmo-simtrace2-devel
 Osmocom SIMtrace2 (and compatible) USB device firmware.  It enables
@@ -68,31 +70,31 @@ applications that want to make use of libosmo-simtrace2.
 %setup -q
 
 %build
-cd host
 echo "%{version}" >.tarball-version
+cd host
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install -C host
 install -Dm0644 host/contrib/99-simtrace2.rules %{buildroot}/%{_udevrulesdir}/99-simtrace2.rules
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libosmo-simtrace2-0 -p /sbin/ldconfig
-%postun -n libosmo-simtrace2-0 -p /sbin/ldconfig
+%post   -n libosmo-simtrace2-%{sover} -p /sbin/ldconfig
+%postun -n libosmo-simtrace2-%{sover} -p /sbin/ldconfig
 
 %files
 %license host/COPYING
 %doc README.md
-%{_bindir}/simtrace2-remsim
-%{_bindir}/simtrace2-remsim-usb2udp
+%{_bindir}/simtrace2-cardem-pcsc
 %{_bindir}/simtrace2-list
 %{_bindir}/simtrace2-sniff
+%{_bindir}/simtrace2-tool
 %{_udevrulesdir}/99-simtrace2.rules
 
-%files -n libosmo-simtrace2-0
-%{_libdir}/libosmo-simtrace2.so.0*
+%files -n libosmo-simtrace2-%{sover}
+%{_libdir}/libosmo-simtrace2.so.%{sover}*
 
 %files -n libosmo-simtrace2-devel
 %dir %{_includedir}/osmocom/

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  9 20:48:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Introduce simtrace2-tool
+  * 99-simtrace2.rules: Add OCTSIMTEST
+  * add ISO 7816-3 library to remsim project
+  * add library providing ISO 7816-3 utilities
+  * rename simtrace2-remsim to simtrace2-cardem-pcsc
+  * remove usb2udp
+  * remsim: adding cli argument to set the atr
+  * Introduce support for asynchronous USB transmission
+  * simtrace2_api: Add osmo_st2_cardem_request_config()
+
+-------------------------------------------------------------------
 Fri Jan 17 10:08:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.1
