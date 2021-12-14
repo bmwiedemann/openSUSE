@@ -1,7 +1,7 @@
 #
-# spec file for package python-akismet
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,6 @@ Summary:        Interface to the Akismet Anti Comment-Spam API
 License:        BSD-3-Clause
 URL:            https://github.com/ubernostrum/akismet
 Source0:        https://files.pythonhosted.org/packages/source/a/%{mod_name}/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
