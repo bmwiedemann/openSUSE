@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 14 10:38:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version 2.3:
+  * Fixes:
+    + Fix parser bug (newline and space inside an empty inline map
+      definition). Fixes VELOCITY-927.
+    + Backported Spring framework Velocity Engine integration
+	  classes from Spring 4.x, in the new module spring-velocity-support.
+	  Fixes VELOCITY-933.
+    + Let SecureUberspector block methods on ClassLoader and subclasses.
+      Fixes VELOCITY-931.
+    + Added Travis CI.
+    + Don't leak classes via Stop.STOP_ALL stack trace.
+- Removed patch:
+  * velocity-engine-2.2-CVE-2020-13936.patch
+    + Integrated upstream
+
+-------------------------------------------------------------------
 Mon Oct 25 11:34:21 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Version 2.2:

@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">http://gitbox.apache.org/repos/asf/velocity-engine.git</param>
-		<param name="revision">2.2</param>
+		<param name="revision">2.3</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 	</service>
 	<service name="recompress" mode="disabled">

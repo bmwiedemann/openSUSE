@@ -38,15 +38,14 @@ Velocity+Turbine provides a template service that will allow web\
 applications to be developed according to a true MVC model.
 
 Name:           velocity-engine
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Apache Velocity - Engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://velocity.apache.org/
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         velocity-engine-2.2-CVE-2020-13936.patch
-Patch2:         build.patch
+Patch1:         build.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
@@ -119,7 +118,8 @@ This package contains Javadoc documentation
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
+
+%pom_disable_module spring-velocity-support
 
 %pom_remove_plugin org.apache.maven.plugins:maven-enforcer-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-source-plugin
