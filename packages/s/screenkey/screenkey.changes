@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec 11 12:43:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5:
+  * New LockScreen detection prevents passwords from being shown
+    right after unlocking the screen when possible
+  * Keypad number keys are now displayed correctly
+  * Additional mouse buttons are now shown as "M[x]" instead of
+    being incorrectly displayed as Ctrl/Alt modifiers
+  * The new --window command line flag allows to display screenkey
+    as a regular window instead of an overlay. This can be useful
+    for recording screenkey as an independent overlay during
+    screencasts and/or to manage the window position through the
+    window manager.
+  * New German translation
+  * Fix regression that would keep the overlay visible when using
+    Ctrl sequences with the mouse visualization disabled.
+  * Fix regression causing a backtrace instead of a proper error
+    message during initialization errors.
+  * Fix crash happening due to screen size and/or resolution
+    changes while screenkey is running.
+  *Prettify JSON configuration file
+- add upstream signing key to verify source signature
+- Correct license is GPL-3.0-or-later, package license text
+
+-------------------------------------------------------------------
 Sun Jan 31 00:07:02 UTC 2021 - slbtty <shenlebantongying@gmail.com>
 
 - Update to 1.4

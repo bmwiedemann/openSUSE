@@ -17,14 +17,15 @@
 
 
 Name:           screenkey
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        A screen-cast tool to show keys
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.thregr.org/~wavexx/software/screenkey/
 Source0:        https://www.thregr.org/~wavexx/software/screenkey/releases/%{name}-%{version}.tar.gz
 Source1:        https://www.thregr.org/~wavexx/software/screenkey/releases/%{name}-%{version}.tar.gz.asc
+Source2:        https://www.thregr.org/~wavexx/files/wavexx.asc#/%{name}.keyring
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -33,13 +34,13 @@ BuildRequires:  python3-Babel
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3
+Requires:       python3-dbus-python
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-pycairo
 Requires:       slop
 Requires:       typelib(Gtk) = 3.0
 Recommends:     fontawesome-fonts
-
 BuildArch:      noarch
 
 %description
@@ -58,6 +59,7 @@ the key-mon project.
  %fdupes -s %{buildroot}
 
 %files -f %{name}.lang
+%license COPYING.txt
 %{_bindir}/%{name}
 %{python3_sitelib}/Screenkey/
 %{python3_sitelib}/%{name}-%{version}-*.egg-info/
