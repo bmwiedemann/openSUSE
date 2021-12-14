@@ -20,5 +20,5 @@ Index: upmpdcli-1.5.11/systemd/upmpdcli.service
 +RestrictRealtime=true
 +# end of automatic additions 
  Type=simple
- # ExecStartPre=/bin/sleep 30
  # Note: if start fails check with "systemctl status upmpdcli"
+ ExecStart=/usr/bin/upmpdcli -c /etc/upmpdcli.conf

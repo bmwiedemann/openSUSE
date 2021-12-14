@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 14 13:15:25 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.13:
+   * Enable L16 by default as it is handled correctly by current mpd versions
+   * Add the mpd version to the description version string
+   * Change Qobuz default format to 6 (44.1/16 FLAC)
+   * Misc small bug fixes
+- update to 1.5.12:    
+   * Add small Media Server plugin (upradios) for exporting the radio list
+   * uprcl: export the radio list as a playlist
+   * uprcl: small improvements
+   * Deezer, Qobuz: set pictures for artists and playlists
+
+-------------------------------------------------------------------
 Fri Nov 26 08:42:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
