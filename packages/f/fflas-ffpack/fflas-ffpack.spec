@@ -1,7 +1,7 @@
 #
 # spec file for package fflas-ffpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           fflas-ffpack
 %define lname	libfflas0
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        Finite Field Linear Algebra Subroutines
 License:        LGPL-2.1-or-later
@@ -28,8 +28,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://linbox-team.github.io/fflas-ffpack/
 
 #Git-Clone:	https://github.com/linbox-team/fflas-ffpack
-Source:         https://github.com/linbox-team/fflas-ffpack/releases/download/%version/fflas-ffpack-%version.tar.gz
-Patch1:         reproducible.patch
+Source:         https://github.com/linbox-team/fflas-ffpack/releases/download/v%version/fflas-ffpack-%version.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,7 +41,7 @@ BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
 %endif
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(givaro) >= 4.1.0
+BuildRequires:  pkgconfig(givaro) >= 4.1.2
 
 %description
 The FFLAS-FFPACK library provides functionalities for dense linear
@@ -89,13 +88,15 @@ trap "cat config.log; exit 1" ERR
 %else
 	--with-blas-libs="-lcblas -lblas" \
 %endif
-	--enable-doc --with-docdir="%_docdir/%name" --disable-simd
+	--enable-doc --with-docdir="%_docdir/%name" \
+	--disable-simd --without-archnative
 trap "" ERR
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_docdir/%name/fflas-ffpack-html/INSTALL"
+perl -i -lpe 's{^#!/usr/bin/env bash$}{#!/bin/bash}g' %buildroot/%_bindir/*-config
 %fdupes %buildroot/%_prefix
 
 %files devel
