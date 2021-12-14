@@ -291,13 +291,19 @@ cp -r bin/spack* %{buildroot}%{_bindir}/
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
 install -m 755 %{S:3} %{buildroot}/%{spack_dir}/run-find-external.sh
 
-# Fix more paths
-sed -i 's@\(\sroot:\) $spack/opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
+# Make spack only to write to home dir of user, if run as user
+sed -i 's@\(\sroot:\) /opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 sed -i 's@\(\ssource_cache:\).*@\1 /var/tmp/$user/spack-cache@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
-sed -i 's@\(\stcl:\).*@\1 ~/spack/modules@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
-sed -i 's@\(\slmod:\).*@\1 ~/spack/lmod@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 cat >>  %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml <<EOF
   binary_index_root: ~/.spack/indices
+EOF
+
+cat >> %{buildroot}%{_sysconfdir}/skel/.spack/modules.yaml <<EOF
+modules:
+  default:
+    roots:
+      tcl: ~/spack/modules
+      lmod: ~/spack/modules
 EOF
 
 # compile python files for python3
@@ -346,6 +352,8 @@ if [ ! -e ~/.spack/config.yaml ] ; then
     test -e ~/.spack || mkdir -p ~/.spack
     [ -e ~/.spack/config.yaml ] || \
      cp -r %{_sysconfdir}/skel/.spack/config.yaml ~/.spack/
+    [ -e ~/.spack/modules.yaml ] || \
+     cp -r %{_sysconfdir}/skel/.spack/modules.yaml ~/.spack/
   fi
 fi
 EOF
@@ -370,22 +378,24 @@ if ( ! -e ~/.spack/config.yaml )  then
     test -e ~/.spack || mkdir -p ~/.spack
     test -e ~/.spack/config.yaml  || \
      cp -r %{_sysconfdir}/skel/.spack/config.yaml ~/.spack/
+    test -e ~/.spack/modules.yaml  || \
+     cp -r %{_sysconfdir}/skel/.spack/modules.yaml ~/.spack/
   endif
 endif
 
 EOF
-# Create modules.yaml file, so that hierarchy module files are created
-cat >  %{buildroot}%{spack_dir}/etc/spack/modules.yaml <<EOF
-modules:
-  enable:
-    - lmod
-  lmod:
-    core_compilers:
-      - 'gcc@GCC_FULL_VERSION'
-    projections:
-      all: '{compiler.name}-{compiler.version}/{name}/{version}'
-      ^mpi: '{compiler.name}-{compiler.version}/{^mpi.name}-{^mpi.version}/{name}/{version}'
-EOF
+## Create modules.yaml file, so that hierarchy module files are created
+#cat >  %{buildroot}%{spack_dir}/etc/spack/modules.yaml <<EOF
+#modules:
+#  enable:
+#    - lmod
+#  lmod:
+#    core_compilers:
+#      - 'gcc@GCC_FULL_VERSION'
+#    projections:
+#      all: '{compiler.name}-{compiler.version}/{name}/{version}'
+#      ^mpi: '{compiler.name}-{compiler.version}/{^mpi.name}-{^mpi.version}/{name}/{version}'
+#EOF
 mkdir -p %{buildroot}%{_sysconfdir}/spack
 
 # Fix link to not point into buildroot
@@ -419,7 +429,7 @@ export GCC_VERSION=`gcc -dumpversion`
 export GCC_FULL_VERSION=`gcc -dumpfullversion`
 
 sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
-sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/modules.yaml
+#sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/modules.yaml
 sed -i "s@GCC_VERSION@$GCC_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
 if [ -e /etc/os-release ] ;  then
   source /etc/os-release
@@ -467,6 +477,7 @@ chmod 0775 /opt/spack
 %config %{_sysconfdir}/profile.d/spack.csh
 %dir %{_sysconfdir}/skel/.spack
 %config %{_sysconfdir}/skel/.spack/config.yaml
+%config %{_sysconfdir}/skel/.spack/modules.yaml
 # repos directory is installed in -recipes
 %{_sysusersdir}/system-group-%{name}.conf
 %exclude %{_localstatedir}/lib/spack/repos

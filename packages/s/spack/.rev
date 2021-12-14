@@ -194,4 +194,13 @@
     <comment></comment>
     <requestid>940175</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>5aa798bd46a372c482e144b803d3587c</srcmd5>
+    <version>0.17.0</version>
+    <time>1639515715</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed the configuration files /etc/skel/.spack/{config|modules}.yaml
+  so that spack writes to $HOME if started as user (forwarded request 940447 from mslacken)</comment>
+    <requestid>940448</requestid>
+  </revision>
 </revisionlist>
