@@ -1,7 +1,7 @@
 #
 # spec file for package givaro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           givaro
 %define lname   libgivaro9
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        C++ library for arithmetic and algebraic computations
 License:        CECILL-B
@@ -28,7 +28,6 @@ URL:            https://casys.gricad-pages.univ-grenoble-alpes.fr/givaro/
 #Git-Clone:	https://github.com/linbox-team/givaro
 Source:         https://github.com/linbox-team/givaro/releases/download/v%version/%name-%version.tar.gz
 Patch1:         givaro-doc-no-build-time.patch
-Patch2:         reproducible.patch
 # Old doxygen does not properly handle symlink recursion
 BuildRequires:  doxygen >= 1.5.7.1
 BuildRequires:  fdupes
@@ -73,7 +72,7 @@ mathematical entities: Primes fields, Extensions Fields, Finite
 Fields, Finite Rings, Polynomials, Algebraic numbers, Arbitrary
 precision integers and rationals.
 
-This subpackage contains the include files and library links for   
+This subpackage contains the include files and library links for
 developing against the Givaro library.
 
 %package doc
@@ -93,9 +92,9 @@ the Givaro API.
 %build
 autoreconf -fi
 %configure --disable-static --enable-doc --with-docdir="%_docdir/%name" \
-	--enable-silent-rules --disable-simd
+	--enable-silent-rules --disable-simd --without-archnative
 chmod a+x givaro-config
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -111,7 +110,7 @@ rm -f "%buildroot/%_libdir"/*.la
 
 %files devel
 %_bindir/givaro-config
-%_bindir/givaro-makefile
+%_datadir/givaro/
 %_includedir/givaro-config.h
 %_includedir/givaro/
 %_includedir/gmp++/

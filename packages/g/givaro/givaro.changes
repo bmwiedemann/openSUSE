@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 14 10:39:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 4.2.0
+  * Change in the API for random iterators
+  * New Modular ring over RecInt::rint elements
+  * Fixed the max cardinalities for rings
+- Drop reproducible.patch (merged)
+
+-------------------------------------------------------------------
 Sat Aug 24 16:03:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 4.1.1
