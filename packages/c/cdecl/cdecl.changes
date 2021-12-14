@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 14 18:33:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.8
+  * New cdecl keywords: There are now the new pseudo-English
+    keywords of evaluation (plus eval as a shorthand), expression
+    (plus expr), and initialization (plus init) that can
+    optionally be used after constant (or const) instead of
+    consteval, constexpr, or constinit, respectively.
+
+-------------------------------------------------------------------
 Sat Dec 11 10:19:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.7
