@@ -1785,6 +1785,7 @@ unsorted:
   - cargo-packaging 
   - cargo1.55 
   - cargo1.56 
+  - cargo1.57 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -5941,12 +5942,6 @@ unsorted:
   - go-for-it-lang 
   - go-md2man 
   - go-race: [x86_64] 
-  - go1.10 
-  - go1.10-doc 
-  - go1.10-race: [x86_64] 
-  - go1.11 
-  - go1.11-doc 
-  - go1.11-race: [x86_64] 
   - go1.12 
   - go1.12-doc 
   - go1.12-race: [x86_64] 
@@ -9109,7 +9104,7 @@ unsorted:
   - libQuotient-devel 
   - libQuotient0_6 
   - libRaTools0 
-  - libRivet-3_1_3 
+  - libRivet-3_1_5 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL-devel 
   - libSDL-devel-32bit: [x86_64] 
@@ -13099,7 +13094,6 @@ unsorted:
   - libqt5-qtxmlpatterns-examples 
   - libqt5-qtxmlpatterns-imports-32bit: [x86_64] 
   - libqt5-qtxmlpatterns-private-headers-devel 
-  - libqt5keychain1-32bit: [x86_64] 
   - libqt5xdg-devel 
   - libqt6keychain1 
   - libqtcurve-cairo1 
@@ -13715,7 +13709,7 @@ unsorted:
   - libspnav0 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_34_1-0 
+  - libsqlcipher-3_36_0-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -22390,7 +22384,6 @@ unsorted:
   - python36-delegator.py 
   - python36-demjson 
   - python36-dennis 
-  - python36-dephell-specifier 
   - python36-deprecation 
   - python36-derpconf 
   - python36-devel 
@@ -22401,7 +22394,6 @@ unsorted:
   - python36-dfwinreg 
   - python36-dialite 
   - python36-dictdiffer 
-  - python36-dictknife 
   - python36-dictpath 
   - python36-dicttoxml 
   - python36-diff-match-patch 
@@ -23013,7 +23005,6 @@ unsorted:
   - python36-lxml-devel 
   - python36-lz4 
   - python36-lzmaffi 
-  - python36-m2r 
   - python36-macholib 
   - python36-magic 
   - python36-magic-wormhole-transit-relay 
@@ -25210,7 +25201,6 @@ unsorted:
   - python38-delegator.py 
   - python38-demjson 
   - python38-dennis 
-  - python38-dephell-specifier 
   - python38-derpconf 
   - python38-devel 
   - python38-devpi-client 
@@ -25565,7 +25555,7 @@ unsorted:
   - python38-gscholar 
   - python38-gsm0338 
   - python38-gspread 
-  - python38-gssapi 
+  - python38-gssapi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - python38-gsw 
   - python38-guessit 
   - python38-guzzle_sphinx_theme 
@@ -25874,7 +25864,6 @@ unsorted:
   - python38-lxml-devel 
   - python38-lz4 
   - python38-lzmaffi 
-  - python38-m2r 
   - python38-macholib 
   - python38-magic 
   - python38-magic-wormhole 
@@ -26351,6 +26340,7 @@ unsorted:
   - python38-pyjwkest 
   - python38-pykafka 
   - python38-pykeepass 
+  - python38-pykerberos 
   - python38-pykickstart 
   - python38-pykwalify 
   - python38-pylama 
@@ -26434,7 +26424,6 @@ unsorted:
   - python38-pysnmp 
   - python38-pysofaconventions 
   - python38-pysolr 
-  - python38-pyspnego 
   - python38-pysrt 
   - python38-pyssim 
   - python38-pystache 
@@ -26766,8 +26755,6 @@ unsorted:
   - python38-rtslib-fb 
   - python38-ruamel.base 
   - python38-ruamel.std.pathlib 
-  - python38-ruamel.yaml 
-  - python38-ruamel.yaml.clib 
   - python38-ruamel.yaml.convert 
   - python38-ruffus 
   - python38-runthis-sphinxext 
@@ -28216,7 +28203,6 @@ unsorted:
   - python39-delegator.py 
   - python39-demjson 
   - python39-dennis 
-  - python39-dephell-specifier 
   - python39-deprecation 
   - python39-derpconf 
   - python39-devel 
@@ -28926,7 +28912,6 @@ unsorted:
   - python39-lxml-devel 
   - python39-lz4 
   - python39-lzmaffi 
-  - python39-m2r 
   - python39-macholib 
   - python39-magic 
   - python39-magic-wormhole 
@@ -31341,12 +31326,9 @@ unsorted:
   - ruby3.0-rubygem-actionmailbox-6.0 
   - ruby3.0-rubygem-actionmailer-6.0 
   - ruby3.0-rubygem-actiontext-6.0 
-  - ruby3.0-rubygem-actionview-5.2 
   - ruby3.0-rubygem-activejob-6.0 
-  - ruby3.0-rubygem-activemodel-5.2 
   - ruby3.0-rubygem-activerecord-6.0 
   - ruby3.0-rubygem-activestorage-6.0 
-  - ruby3.0-rubygem-activesupport-5.2 
   - ruby3.0-rubygem-addressable 
   - ruby3.0-rubygem-aes_key_wrap 
   - ruby3.0-rubygem-afm 
@@ -31689,6 +31671,7 @@ unsorted:
   - rust-srpm-macros 
   - rust1.55 
   - rust1.56 
+  - rust1.57 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -41792,7 +41775,13 @@ unsorted:
   - velero-plugin-for-gcp 
   - velero-plugin-for-microsoft-azure 
   - velocity 
+  - velocity-custom-parser-example 
   - velocity-demo 
+  - velocity-engine-core 
+  - velocity-engine-examples 
+  - velocity-engine-javadoc 
+  - velocity-engine-parent 
+  - velocity-engine-scripting 
   - velocity-javadoc 
   - velocity-manual 
   - velocity-master 
