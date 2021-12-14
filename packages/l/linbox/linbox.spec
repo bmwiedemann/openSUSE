@@ -1,7 +1,7 @@
 #
 # spec file for package linbox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           linbox
 %define lname   liblinbox0
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        C++ library for computation with matrices over ints and finite fields
 License:        LGPL-2.1-or-later
@@ -44,7 +44,7 @@ BuildRequires:  openblas-devel
 BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
 %endif
-BuildRequires:  pkgconfig(fflas-ffpack) >= 2.3.0
+BuildRequires:  pkgconfig(fflas-ffpack) >= 2.5.0
 
 %description
 LinBox is a C++ template library for exact, high-performance linear
@@ -70,7 +70,7 @@ LinBox is a C++ template library for exact, high-performance linear
 algebra computation with dense, sparse, and structured matrices over
 the integers and over finite fields.
 
-This subpackage contains the include files and library links for   
+This subpackage contains the include files and library links for
 developing against the Givaro library.
 
 %prep
@@ -83,8 +83,9 @@ autoreconf -fi
 	--disable-sse --disable-sse2 \
 %endif
 	--disable-sse3 --disable-ssse3 --disable-sse41 --disable-sse42 \
-	--disable-avx --disable-avx2 --disable-fma --disable-fma4
-make %{?_smp_mflags}
+	--disable-avx --disable-avx2 --disable-fma --disable-fma4 \
+	--without-archnative
+%make_build
 
 %install
 %make_install
