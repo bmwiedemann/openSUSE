@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%global skip_python36 1
 Name:           python-aldjemy
 Version:        1.0.0
 Release:        0
