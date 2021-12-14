@@ -1,7 +1,7 @@
 #
 # spec file for package libcap-ng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover  0
 Name:           libcap-ng
-Version:        0.7.10
+Version:        0.7.11
 Release:        0
 Summary:        An alternate Linux/POSIX capabilities library
 License:        LGPL-2.1-or-later

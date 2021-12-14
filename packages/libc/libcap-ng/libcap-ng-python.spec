@@ -1,7 +1,7 @@
 #
 # spec file for package libcap-ng-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           libcap-ng-python
-Version:        0.7.10
+Version:        0.7.11
 Release:        0
 Summary:        An alternate Linux/POSIX capabilities library
 License:        LGPL-2.1-or-later
@@ -58,7 +58,6 @@ Requires:       libcap-ng%{sover} = %{version}
 %description -n python3-capng
 The libcap-ng-python package contains the bindings so that libcap-ng
 and can be used by Python applications.
-
 
 %prep
 %setup -q -n libcap-ng-%{version}

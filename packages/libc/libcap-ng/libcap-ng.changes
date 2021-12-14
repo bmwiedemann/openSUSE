@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  9 22:05:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.7.11
+  * Really clear bounding set if asked in capng_change_id
+  * Add CAP_PERFMON, CAP_BPF, & CAP_CHECKPOINT_RESTORE
+  * Avoid malloc/free in capng_apply (Natanael Copa)
+  * If procfs is not available, get bounding set via prctl
+- Removed unneeded rules from rpmlintrc
+
+-------------------------------------------------------------------
 Tue May 12 12:31:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.7.10:
