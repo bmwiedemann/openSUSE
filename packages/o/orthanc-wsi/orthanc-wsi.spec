@@ -21,13 +21,12 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.0
+Version:        1.1
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/whole-slide-imaging/OrthancWSI-%{version}.tar.gz
 Source1:        openlayers-3.19.0-dist.zip
 Source11:       orthanc-wsi-readme.SUSE
-Patch0:         orthanc193.diff
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  dcmtk
@@ -69,7 +68,7 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 
 %prep
 %setup -q -n OrthancWSI-%{version}
-%patch0 -p1
+
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
 

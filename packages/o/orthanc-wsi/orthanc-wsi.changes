@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:35:41 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.1 
+* OrthancWSIDicomizer: Support importing of images from Cytomine
+* orthanc193.diff removed (included in source)
+
+-------------------------------------------------------------------
 Mon May 17 08:49:52 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - orthanc193.diff added (boo#1186112)
