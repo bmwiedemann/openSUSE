@@ -38,7 +38,7 @@ Requires:       python-cffi
 Requires:       python-six
 Requires:       ssdeep
 # SECTION tests
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -49,6 +49,8 @@ content and length.
 
 %prep
 %setup -q -n python-ssdeep-%{version}
+# https://github.com/DinoTools/python-ssdeep/issues/57
+sed -i 's:"pytest-runner.*"::' setup.py
 
 %build
 %python_build

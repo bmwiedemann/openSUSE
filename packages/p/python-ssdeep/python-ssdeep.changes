@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  7 19:29:56 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Mon Nov  8 10:50:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six dependency declaration 
