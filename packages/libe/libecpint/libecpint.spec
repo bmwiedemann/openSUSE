@@ -18,7 +18,7 @@
 
 
 Name:           libecpint
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 %global         sover 1
 Summary:        Efficient evaluation of integrals over ab initio effective core potentials
@@ -31,6 +31,7 @@ BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  gtest
+BuildRequires:  libcerf-devel >= 1.17
 BuildRequires:  pugixml-devel
 BuildRequires:  python3
 BuildRequires:  sphinx
@@ -66,7 +67,7 @@ generic.
 This package contains architecture independent data files for libecpint
 
 %package devel
-Summary:        Devel package for libecpint 
+Summary:        Devel package for libecpint
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}-%{release}
 
@@ -81,18 +82,14 @@ This package contains development headers and libraries for libecpint
 %setup -q
 
 %build
-%{cmake} -DCMAKE_SKIP_RPATH=OFF
+%{cmake} -DCMAKE_SKIP_RPATH=OFF -DLIBECPINT_USE_CERF=ON
 %cmake_build
 
 %install
 %cmake_install
 
 %check
-# https://github.com/robashaw/libecpint/issues/27
-%ifarch i586
-%global testargs --exclude-regex Type1Test2
-%endif
-%ctest %{?testargs}
+%ctest
 
 %post -n libecpint%sover -p /sbin/ldconfig
 %postun -n libecpint%sover -p /sbin/ldconfig
@@ -102,7 +99,7 @@ This package contains development headers and libraries for libecpint
 %{_libdir}/lib*.so.%{sover}
 
 %files -n ecpint-common
-%doc README.md CITATION 
+%doc README.md CITATION
 %license LICENSE
 %{_datadir}/%{name}
 

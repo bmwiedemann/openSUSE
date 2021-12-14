@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 12 20:01:42 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.0.7:
+  - option to use cerf instead of Faddeeva
+  - googletest branch is main not master
+  - tests that use xml only triggered if xml included
+
+-------------------------------------------------------------------
 Wed Jul 21 17:22:55 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add constraints file for workaround because of "Out of memory" on 
