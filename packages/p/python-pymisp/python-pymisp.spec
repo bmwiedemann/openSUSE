@@ -51,7 +51,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module oletools}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module reportlab}
