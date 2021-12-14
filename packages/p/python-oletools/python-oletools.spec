@@ -32,7 +32,7 @@ BuildRequires:  %{python_module easygui}
 BuildRequires:  %{python_module msoffcrypto-tool}
 BuildRequires:  %{python_module olefile >= 0.46}
 BuildRequires:  %{python_module pyparsing >= 2.1.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  unzip
 BuildRequires:  fdupes

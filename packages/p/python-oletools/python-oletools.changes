@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 11:46:21 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Sun Jul  4 09:49:37 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Fix package builds for Leap 15.2 and 15.3, python-xml dependency was missing.
