@@ -3051,6 +3051,7 @@ unsorted:
   - drc 
   - drc-doc 
   - driverctl 
+  - drm_info 
   - droidcam 
   - droidcam-cli 
   - dropbox-cli 
@@ -7258,6 +7259,8 @@ unsorted:
   - jakarta-poi 
   - jakarta-poi-javadoc 
   - jakarta-poi-manual 
+  - jakarta-servlet 
+  - jakarta-servlet-javadoc 
   - jakarta-slide-webdavclient 
   - jakarta-slide-webdavclient-javadoc 
   - jakarta-slide-webdavclient-repolib 
@@ -12522,7 +12525,7 @@ unsorted:
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran7 
-  - libosmo-simtrace2-0 
+  - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
   - libosmo-xua-1_5_0 
   - libosmo-xua-devel 
@@ -20611,7 +20614,7 @@ unsorted:
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
   - postgresql11-pg_cron 
-  - postgresql11-pg_cron-llvmjit 
+  - postgresql11-pg_cron-llvmjit: [i586] 
   - postgresql11-pgagent 
   - postgresql11-pgaudit 
   - postgresql11-pgaudit-llvmjit 
@@ -20633,7 +20636,7 @@ unsorted:
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
   - postgresql12-pg_cron 
-  - postgresql12-pg_cron-llvmjit 
+  - postgresql12-pg_cron-llvmjit: [i586] 
   - postgresql12-pgagent 
   - postgresql12-pgaudit 
   - postgresql12-pgaudit-llvmjit 
@@ -20655,7 +20658,7 @@ unsorted:
   - postgresql13-llvmjit 
   - postgresql13-llvmjit-devel 
   - postgresql13-pg_cron 
-  - postgresql13-pg_cron-llvmjit 
+  - postgresql13-pg_cron-llvmjit: [i586] 
   - postgresql13-pgagent 
   - postgresql13-pgaudit 
   - postgresql13-pgaudit-llvmjit 
@@ -20670,6 +20673,7 @@ unsorted:
   - postgresql14-devel 
   - postgresql14-devel-mini 
   - postgresql14-llvmjit-devel 
+  - postgresql14-pg_cron: [x86_64] 
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-pltcl 
@@ -21142,7 +21146,6 @@ unsorted:
   - python-sip5-doc 
   - python-sip6-doc 
   - python-six-doc 
-  - python-solo-python 
   - python-sqlalchemy-migrate-doc 
   - python-stevedore-doc 
   - python-sushy-doc 
@@ -21782,7 +21785,6 @@ unsorted:
   - python36-ajsonrpc 
   - python36-akismet 
   - python36-alabaster 
-  - python36-aldjemy 
   - python36-alembic 
   - python36-allpairspy 
   - python36-alsa 
@@ -22109,6 +22111,7 @@ unsorted:
   - python36-azure-purview-nspkg 
   - python36-azure-purview-scanning 
   - python36-azure-schemaregistry 
+  - python36-azure-schemaregistry-avroserializer 
   - python36-azure-sdk 
   - python36-azure-search-documents 
   - python36-azure-search-nspkg 
@@ -22476,7 +22479,6 @@ unsorted:
   - python36-django-redis 
   - python36-django-registration 
   - python36-django-request 
-  - python36-django-rest-framework-braces 
   - python36-django-rest-framework-client 
   - python36-django-rest-framework-social-oauth2 
   - python36-django-rest-invitations 
@@ -23331,6 +23333,7 @@ unsorted:
   - python36-protobuf 
   - python36-proton-client 
   - python36-protonvpn-nm-lib 
+  - python36-proxy.py 
   - python36-pscript 
   - python36-psutil 
   - python36-psycopg2 
@@ -24906,6 +24909,7 @@ unsorted:
   - python38-azure-purview-nspkg 
   - python38-azure-purview-scanning 
   - python38-azure-schemaregistry 
+  - python38-azure-schemaregistry-avroserializer 
   - python38-azure-sdk 
   - python38-azure-search-documents 
   - python38-azure-search-nspkg 
@@ -26229,6 +26233,7 @@ unsorted:
   - python38-proto-plus 
   - python38-proton-client 
   - python38-protonvpn-nm-lib 
+  - python38-proxy.py 
   - python38-psautohint 
   - python38-pscript 
   - python38-psychtoolbox 
@@ -27884,6 +27889,7 @@ unsorted:
   - python39-azure-purview-nspkg 
   - python39-azure-purview-scanning 
   - python39-azure-schemaregistry 
+  - python39-azure-schemaregistry-avroserializer 
   - python39-azure-sdk 
   - python39-azure-search-documents 
   - python39-azure-search-nspkg 
@@ -29303,6 +29309,7 @@ unsorted:
   - python39-protobuf 
   - python39-proton-client 
   - python39-protonvpn-nm-lib 
+  - python39-proxy.py 
   - python39-psautohint 
   - python39-pscript 
   - python39-psutil 
