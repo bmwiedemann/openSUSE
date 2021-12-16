@@ -19,7 +19,7 @@
 %global so_suffix -3_1
 %define sonum     29
 Name:           Imath
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        C++ and Python Library of 2D and 3D Vector, Matrix, and Math Operations
 License:        BSD-3-Clause
