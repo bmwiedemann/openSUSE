@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 11 09:20:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.17:
+  * set threads to 1 when using ASAN to avoid false positive memory leaks.
+
+-------------------------------------------------------------------
 Wed Nov 24 08:53:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0.16:

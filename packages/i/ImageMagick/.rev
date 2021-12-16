@@ -3217,4 +3217,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Fix alpha channel calculation of arithmetic divide compose operator. (forwarded request 933410 from dirkmueller)</comment>
     <requestid>933416</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>9df36399e1531dd54359be7f6bb42e52</srcmd5>
+    <version>7.1.0.17</version>
+    <time>1639685958</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0.17:
+  * set threads to 1 when using ASAN to avoid false positive memory leaks. (forwarded request 939554 from dirkmueller)</comment>
+    <requestid>940165</requestid>
+  </revision>
 </revisionlist>
