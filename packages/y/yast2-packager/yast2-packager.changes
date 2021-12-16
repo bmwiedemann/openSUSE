@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 10 19:37:52 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt iso handling to do properly double escaping ( fix for wrong
+  fix for bsc#954813)
+- Prepare code for ruby3 (bsc#1193192)
+- 4.4.18
+
+-------------------------------------------------------------------
 Thu Dec  2 14:39:19 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Unify the Yes/No popup button IDs (bsc#1193326)
