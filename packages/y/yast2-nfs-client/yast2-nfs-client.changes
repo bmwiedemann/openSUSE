@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 18:34:58 UTC 2021 - Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
+
+- Adding /usr/bin/killall as a requirement (bsc#1161687)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Jun 29 09:43:08 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Support systemd mount options in fstab (bsc#1187781)
