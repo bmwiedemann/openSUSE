@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat Dec 11 19:25:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  * FrozenList now supports being used as a generic type as per PEP
+    585, e.g. frozen_int_list: FrozenList[int] (requires Python 3.9
+    or newer). #172
+  * Added support for Python 3.10. #227
+  * Started shipping platform-specific wheels with the musl tag
+    targeting typical Alpine Linux runtimes. #227
+  * Started shipping platform-specific arm64 wheels for Apple
+    Silicon. #227
+- Cythonize
+- Required by some aio packages.
+
+-------------------------------------------------------------------
+Sun Nov 29 12:25:14 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.1
