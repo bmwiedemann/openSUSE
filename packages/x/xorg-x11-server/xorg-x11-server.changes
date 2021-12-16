@@ -1,29 +1,83 @@
 -------------------------------------------------------------------
+Wed Dec 15 15:08:07 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.1
+  * This release fixes 4 recently reported security vulnerabilities and
+    several regressions.
+  * In particular, the real physical dimensions are no longer reported
+    by the X server anymore as it was deemed to be a too disruptive
+    change. X server will continue to report DPI as 96.
+- supersedes U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
+- supersedes U_rendercompositeglyphs.patch
+- supersedes U_xfixes-Fix-out-of-bounds-access-in-ProcXFixesCreateP.patch
+- supersedes U_Xext-Fix-out-of-bounds-access-in-SProcScreenSaverSus.patch
+- supersedes U_record-Fix-out-of-bounds-access-in-SwapCreateRegiste.patch
+
+-------------------------------------------------------------------
+Tue Dec 14 20:21:19 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_xfixes-Fix-out-of-bounds-access-in-ProcXFixesCreateP.patch
+  * CVE-2021-4009/ZDI-CAN-14950 (bsc#1190487)
+    The handler for the CreatePointerBarrier request of the XFixes
+    extension does not properly validate the request length leading
+    to out of bounds memory write.
+- U_Xext-Fix-out-of-bounds-access-in-SProcScreenSaverSus.patch
+  * CVE-2021-4010/ZDI-CAN-14951 (bsc#1190488)
+    The handler for the Suspend request of the Screen Saver extension
+    does not properly validate the request length leading to out of
+    bounds memory write.
+- U_record-Fix-out-of-bounds-access-in-SwapCreateRegiste.patch
+  * CVE-2021-4011/ZDI-CAN-14952 (bsc#1190489)
+    The handlers for the RecordCreateContext and RecordRegisterClients
+    requests of the Record extension do not properly validate the request
+    length leading to out of bounds memory write.
+
+-------------------------------------------------------------------
+Tue Dec 14 15:31:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_rendercompositeglyphs.patch
+  * X.Org Server SProcRenderCompositeGlyphs Out-Of-Bounds Access 
+    Privilege Escalation Vulnerability [CVE-2021-4008, ZDI-CAN-14192]
+    (boo#1193030)
+
+-------------------------------------------------------------------
+Tue Dec 14 14:14:45 UTC 2021 - Thomas Zimmermann <tzimmermann@suse.de>
+
+- u_Support-configuration-files-under-run-X11-xorg.conf..patch
+- u_Add-udev-scripts-for-configuration-of-platform-devic.patch
+- u_Add-udev-rule-for-HyperV-devices.patch
+  * Remove udev-based configuration
+- u_Revert-xf86-Accept-devices-with-the-simpledrm-driver.patch
+  * Restore simpledrm workaround
+- u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
+  * Add workaround to support hyperv_drm
+
+-------------------------------------------------------------------
 Fri Dec  3 14:41:55 UTC 2021 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - u_pci-primary-Fix-up-primary-PCI-device-detection-for-the-platfrom-bus.patch
-  * Fix SEGFAULT when parsing bus IDs of NULL
+  * Fix SEGFAULT when parsing bus IDs of NULL (boo#1193250)
 - u_Support-configuration-files-under-run-X11-xorg.conf..patch
   * Support configuration files under /run. Required for generating
-    configuration files via udev.
+    configuration files via udev. (boo#1193250)
 - u_Add-udev-scripts-for-configuration-of-platform-devic.patch
-  * Generate configuration files for platform devices
+  * Generate configuration files for platform devices (boo#1193250)
 - u_Revert-xf86-Accept-devices-with-the-simpledrm-driver.patch
-  * Code has been obsoleted by udev patchset
+  * Code has been obsoleted by udev patchset (boo#1193250)
 - u_Add-udev-rule-for-HyperV-devices.patch
-  * Same as for platform devices, but on HyperV
+  * Same as for platform devices, but on HyperV (boo#1193250)
 
 -------------------------------------------------------------------
 Fri Nov 19 15:49:28 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- enable build of Xorg on s390x (jira#SLE-18632) 
+- enable build of Xorg on s390x (jira#SLE-18632)
 
 -------------------------------------------------------------------
 Thu Nov 11 08:35:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
-  * reverse apply this one to go back to fixed 96 dpi (gitlab 
-    fdo/xserver issue#1241) 
+  * reverse apply this one to go back to fixed 96 dpi (gitlab
+    fdo/xserver issue#1241)
 - N_fix-dpi-values.diff
   * back to version for xserver < 21.1.0
 
@@ -33,7 +87,7 @@ Sun Nov  7 09:22:47 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 - Update to version 21.1.1
   * s/__/@/ in inputtestdrv manpage
   * Make xf86CompatOutput() return NULL when there are no privates
-  * Makefile.am: Add missing meson build files to release tarball 
+  * Makefile.am: Add missing meson build files to release tarball
 
 -------------------------------------------------------------------
 Wed Oct 27 11:58:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
@@ -62,7 +116,7 @@ Wed Oct 27 11:58:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
   * u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
   * u_randr-Do-not-crash-if-slave-screen-does-not-have-pro.patch
   * u_vesa-Add-VBEDPMSGetCapabilities-VBEDPMSGet.patch
-- disabled n_xserver-optimus-autoconfig-hack.patch, which I believe is 
+- disabled n_xserver-optimus-autoconfig-hack.patch, which I believe is
   superseded by:
   commit 078277e4d92f05a90c4715d61b89b9d9d38d68ea
   Author: Dave Airlie <airlied@redhat.com>
@@ -78,14 +132,14 @@ Fri Jul 30 15:07:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 - Update to version 1.20.13
   * bugfix release
 - supersedes U_present-get_crtc-should-not-return-crtc-when-its-scr.patch,
-  U_modesetting-unflip-not-possible-when-glamor-is-not-s.patch 
+  U_modesetting-unflip-not-possible-when-glamor-is-not-s.patch
 
 -------------------------------------------------------------------
 Thu Jul 22 12:33:48 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_modesetting-unflip-not-possible-when-glamor-is-not-s.patch
   * this should fixes crashes of xfce when running under qemu
-    (boo#1188559) 
+    (boo#1188559)
 
 -------------------------------------------------------------------
 Thu Jul 22 09:30:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -108,7 +162,7 @@ Thu Jun 17 11:43:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Wed Jun 16 07:56:30 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
-- Fix typo in %post: xbb.conf -> xkb.conf 
+- Fix typo in %post: xbb.conf -> xkb.conf
 
 -------------------------------------------------------------------
 Fri Jun 11 11:03:18 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
@@ -142,7 +196,7 @@ Mon Apr 12 10:46:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 Wed Mar  3 09:24:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - reenabled LTO (boo#1133294)
-  * u_no-lto-for-tests.patch 
+  * u_no-lto-for-tests.patch
     disables LTO in test/ subtree, since "-Wl,-wrap" is not supported by LTO
   * added "%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects"
 
@@ -187,7 +241,7 @@ Mon Dec 07 13:48:26 UTC 2020 - tobias.klausmann@freenet.de
 -------------------------------------------------------------------
 Mon Dec  7 11:36:04 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- remove unneeded python2 script 'fdi2iclass.py' from 
+- remove unneeded python2 script 'fdi2iclass.py' from
   xorg-x11-server-sources subpackage (boo#1179591)
 
 -------------------------------------------------------------------
@@ -196,7 +250,7 @@ Tue Dec  1 16:39:02 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 - U_Check-SetMap-request-length-carefully.patch
   * XkbSetMap Out-Of-Bounds Access: Insufficient checks on the
     lengths of the XkbSetMap request can lead to out of bounds
-    memory accesses in the X server. (ZDI-CAN 11572, 
+    memory accesses in the X server. (ZDI-CAN 11572,
     CVE-2020-14360, bsc#1174908)
 - U_Fix-XkbSetDeviceInfo-and-SetDeviceIndicators-heap-ov.patch
   * XkbSetDeviceInfo Heap-based Buffer Overflow: Insufficient
@@ -225,13 +279,13 @@ Tue Sep 29 14:47:48 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
     our security team
     + simplified the option parsing code a bit
     + changed the "ignore forbidden argument" logic into an "abort
-      on forbidden argument" logic. This is safer and avoids 
+      on forbidden argument" logic. This is safer and avoids
       surprises on the user's end that could occur if the desired
       command line arguments aren't effective but the Xorg server is
       still started.
-    + tried to adjust to the coding style present in the file 
+    + tried to adjust to the coding style present in the file
       (mostly the function name)
-    + added some logic to apply the option filtering only to 
+    + added some logic to apply the option filtering only to
       non-root users when Xorg is actually started as root. This
       should allow for full flexibility if root calls the wrapper or
       if the Xorg server only runs with user privileges.
@@ -243,7 +297,7 @@ Mon Sep 28 10:29:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
   U_Revert-linux-Fix-platform-device-PCI-detection-for-c.patch,
   U_Revert-linux-Fix-platform-device-probe-for-DT-based-.patch,
   U_Revert-linux-Make-platform-device-probe-less-fragile.patch
-  * fix Xserver startup on Raspberry Pi 3 (boo#1176203) 
+  * fix Xserver startup on Raspberry Pi 3 (boo#1176203)
 
 -------------------------------------------------------------------
 Thu Sep 24 01:40:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
@@ -258,7 +312,7 @@ Wed Sep 16 10:54:32 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - reenabled SUID wrapper for TW (boo#1175867)
 - u_xorg-wrapper-Xserver-Options-Whitelist-Filter.patch
-  * Xserver option whitelist filter (boo#1175867) 
+  * Xserver option whitelist filter (boo#1175867)
 
 -------------------------------------------------------------------
 Wed Sep  9 18:50:37 UTC 2020 - Michael Gorse <mgorse@suse.com>
@@ -314,7 +368,7 @@ Thu Aug 27 19:29:29 UTC 2020 - bjorn.lie@gmail.com
 Tue Aug 25 15:46:49 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_0001-Correct-bounds-checking-in-XkbSetNames.patch
-  * Correct bounds checking in XkbSetNames() 
+  * Correct bounds checking in XkbSetNames()
     [CVE-2020-14345 / ZDI 11428, boo#1174635]
 - U_0002-Fix-XIChangeHierarchy-integer-underflow.patch
   * Fix XIChangeHierarchy() integer underflow
@@ -337,7 +391,7 @@ Fri Jul 31 19:54:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Tue Jun 30 16:48:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - move xorg_pci_ids dir from /etc/X11 to /usr/share/X11 and
-  xorg-x11-server.macros from /etc/rpm to /usr/lib/rpm/macros.d; 
+  xorg-x11-server.macros from /etc/rpm to /usr/lib/rpm/macros.d;
   no longer package /etc/X11/xorg.conf.d (boo#1173056)
 
 -------------------------------------------------------------------
@@ -350,12 +404,12 @@ Thu Jun  4 10:02:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Wed May  6 14:23:54 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - provide/obsoletes cirrus and ast usermode driver also on openSUSE
-  (jsc#SLE-12127) 
+  (jsc#SLE-12127)
 
 -------------------------------------------------------------------
 Mon Mar 30 11:17:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- Update to version 1.20.8+0: 
+- Update to version 1.20.8+0:
   * Revert "dri2: Don't make reference to noClientException"
   * dix: Check for NULL spriteInfo in GetPairedDevice
   * os: Ignore dying client in ResetCurrentRequest
@@ -392,7 +446,7 @@ Thu Feb 27 14:09:12 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Mon Jan 20 16:12:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_fno-common.patch
-  * fix build with gcc's -fno-common option (boo#1160423) 
+  * fix build with gcc's -fno-common option (boo#1160423)
 
 -------------------------------------------------------------------
 Tue Jan 14 12:41:02 UTC 2020 - sndirsch@suse.com
@@ -561,7 +615,7 @@ Wed Jan  2 11:36:57 UTC 2019 - msrb@suse.com
 -------------------------------------------------------------------
 Thu Nov 22 10:47:07 UTC 2018 - sndirsch@suse.com
 
-- xorg-server 1.20.3 (see changelog below) superseded the 
+- xorg-server 1.20.3 (see changelog below) superseded the
   following patch we used in sle15 before (bsc#1112020, CVE-2018-14665):
   - U_Disable-logfile-and-modulepath-when-running-with-ele.patch
 
@@ -671,7 +725,7 @@ Sat May 12 15:03:54 UTC 2018 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 1.20.0:
   New features:
-  + RANDR 1.6, which enables leasing RANDR resources to a client for its 
+  + RANDR 1.6, which enables leasing RANDR resources to a client for its
     exclusive use (e.g. head mounted displays)
   + Depth 30 support in glamor and the modesetting driver
   + A meson-based build system, parallel to autotools
@@ -782,7 +836,7 @@ Tue Dec 12 13:11:34 UTC 2017 - msrb@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:52:51 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -821,7 +875,7 @@ Thu Aug 31 15:18:20 UTC 2017 - ilya@ilya.pp.ua
 -------------------------------------------------------------------
 Fri Jul 14 13:52:36 UTC 2017 - sndirsch@suse.com
 
-- disable Xwayland for s390x again; it was wrong to enable it; 
+- disable Xwayland for s390x again; it was wrong to enable it;
   there is no Wayland on s390x and will most likely never exist,
   since there is no gfx card on such systems and no gfx emulation
   either (bsc#1047173)
@@ -829,7 +883,7 @@ Fri Jul 14 13:52:36 UTC 2017 - sndirsch@suse.com
 -------------------------------------------------------------------
 Thu Jul 13 13:20:07 UTC 2017 - sndirsch@suse.com
 
-- u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch 
+- u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch
   If arc4random_buf() is not available for generating cookies:
   * use getentropy(), if available (which was only recently added to
     glibc)
@@ -871,11 +925,11 @@ Fri Jun  9 06:29:32 UTC 2017 - opensuse@dstoecker.de
 -------------------------------------------------------------------
 Tue Jun  6 13:28:00 UTC 2017 - sndirsch@suse.com
 
-- modesetting.ids: no longer hardcode Intel's Skylake, Broxton, 
+- modesetting.ids: no longer hardcode Intel's Skylake, Broxton,
   and Kabylake IDs to modesetting driver; xf86-video-intel is no
-  longer installed by default on these, so it will fallback to 
+  longer installed by default on these, so it will fallback to
   modesetting driver anyway; still you now can easily switch back
-  to intel driver by installing xf86-video-intel package 
+  to intel driver by installing xf86-video-intel package
   (boo#1042873)
 
 -------------------------------------------------------------------
@@ -908,7 +962,7 @@ UseHWCursor() callback (bnc #1023845).
 
 - U_xfree86-Take-the-input-lock-for-xf86TransparentCursor.patch
   * The new input lock is missing for the xf86TransparentCursor() entry
-point (bnc #1023845). 
+point (bnc #1023845).
 
 -------------------------------------------------------------------
 Fri Feb 10 13:01:24 UTC 2017 - sndirsch@suse.com
@@ -922,7 +976,7 @@ Fri Feb  3 11:40:11 UTC 2017 - sndirsch@suse.com
 
 - N_driver-autoconfig.diff:
   No longer try to load "amdgpu" DDX by default for all GPUs with
-  ATI vendor ID; this is now handled instead by an "OutputClass" 
+  ATI vendor ID; this is now handled instead by an "OutputClass"
   section via kernel driver match, which has been added as config
   file to xf86-video-amdgpu driver package (bnc#1023385)
 
@@ -930,7 +984,7 @@ Fri Feb  3 11:40:11 UTC 2017 - sndirsch@suse.com
 Thu Jan 26 15:34:57 UTC 2017 - sndirsch@suse.com
 
 - N_driver-autoconfig.diff:
-  FGLRX does not support new x-server. This change fixes bad 
+  FGLRX does not support new x-server. This change fixes bad
   behavior(with empty config) when radeon ddx loads with amdgpu
   kernel module on SI and CIK cards, and x-server cannot start.
   Radeon ddx with radeon kernel module loads without any problem.
@@ -978,9 +1032,9 @@ Mon Sep 19 19:29:36 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
   + U_config-udev-distinguish-between-real-keyboards-and-o.patch
 - Disable u_os-connections-Check-for-stale-FDs.patch (not applicable anymore)
 - Adapt patches to work with the new release:
-  + n_xserver-optimus-autoconfig-hack.patch (disabled for now as it causes 
+  + n_xserver-optimus-autoconfig-hack.patch (disabled for now as it causes
   problems)
-- Remove X.org stack version prefix. 
+- Remove X.org stack version prefix.
   We are already atleast at verion 7.7. Plus we are updating individual
   components anyway. So the stack version is misleading.
 
@@ -1017,7 +1071,7 @@ Mon May 16 19:53:50 UTC 2016 - eich@suse.com
   by
   N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch
   Only disable HW cursor for cirrus and mgag200. This should fix
-  a regression introduced by using modesetting for Intel gen9+ 
+  a regression introduced by using modesetting for Intel gen9+
   (boo#980124).
 
 -------------------------------------------------------------------
@@ -1065,7 +1119,7 @@ Tue Apr 12 09:06:06 UTC 2016 - eich@suse.com
 
 - n_Install-Avoid-failure-on-wrapper-installation.patch:
   Fix up build for wrapper.
-- Place SUID wrapper into a separate package: 
+- Place SUID wrapper into a separate package:
   xorg-x11-server-wrapper
 
 -------------------------------------------------------------------
@@ -1217,7 +1271,7 @@ Mon Jan 11 21:48:00 UTC 2016 - eich@suse.com
 
 - u_busfault_sigaction-Only-initialize-pointer-when-matched.patch
   Only initialize pointer when matched (boo#961439).
-- u_kdrive-UnregisterFd-Fix-off-by-one.patch -> 
+- u_kdrive-UnregisterFd-Fix-off-by-one.patch ->
     U_kdrive-UnregisterFd-Fix-off-by-one.patch
 
 -------------------------------------------------------------------
@@ -1253,7 +1307,7 @@ Tue Nov 10 13:42:47 UTC 2015 - sndirsch@suse.com
 - Update to version 1.18.0
   - refreshed N_zap_warning_xserver.diff,
     N_Force-swcursor-for-KMS-drivers-without-hw-cursor-sup.patch
-  - supersedes u_fbdevhw.diff, 
+  - supersedes u_fbdevhw.diff,
     U_linux-Add-linux_parse_vt_settings-and-linux_get_keep.patch,
     U_linux-Add-a-may_fail-paramter-to-linux_parse_vt_sett.patch,
     U_systemd-logind-Only-use-systemd-logind-integration-t.patch
@@ -1306,7 +1360,7 @@ Mon Jul 27 11:52:32 UTC 2015 - eich@suse.com
 Fri Jul 17 13:01:12 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
 
 - Add patch u_0001-os-make-sure-the-clientsWritable-fd_set-is-initializ.patch
-  Prevent segmentation faults with more than 256 clients (introduced 
+  Prevent segmentation faults with more than 256 clients (introduced
   by xproto 7.0.28 increasing the max client count 256 -> 512)
   Fdo Bug: https://bugs.freedesktop.org/show_bug.cgi?id=91316
 -------------------------------------------------------------------
@@ -1383,7 +1437,7 @@ Fri Feb 20 16:09:39 UTC 2015 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Mon Feb 16 14:11:57 UTC 2015 - sndirsch@suse.com
 
-- u_ad-hoc-fix-for-mmap-s-truncated-offset-parameter-on-.patch 
+- u_ad-hoc-fix-for-mmap-s-truncated-offset-parameter-on-.patch
   * ad hoc fix for mmap's truncated offset parameter on 32bit
     (bnc#917385)
 - N_Force-swcursor-for-KMS-drivers-without-hw-cursor-sup.patch
@@ -1394,7 +1448,7 @@ Mon Feb 16 14:11:57 UTC 2015 - sndirsch@suse.com
 Tue Feb 10 23:27:48 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 1.17.1:
-  Fixes for CVE 2015-0255. 
+  Fixes for CVE 2015-0255.
   + xkb: Don't swap XkbSetGeometry data in the input buffer
   + xkb: Check strings length against request size
 
@@ -1505,7 +1559,7 @@ Wed Aug 13 08:13:21 UTC 2014 - sndirsch@suse.com
 -------------------------------------------------------------------
 Tue Aug 12 12:26:52 UTC 2014 - sndirsch@suse.com
 
-- make use of update-alternatives for libglx.so (FATE#317822) 
+- make use of update-alternatives for libglx.so (FATE#317822)
 
 -------------------------------------------------------------------
 Thu Aug  7 17:35:12 UTC 2014 - eich@suse.com
@@ -1561,7 +1615,7 @@ Thu Jul 17 15:50:10 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
 Wed Jul  9 13:05:56 UTC 2014 - sndirsch@suse.com
 
 - update to 1.16RC4
-  * non-PCI device support stuff merged 
+  * non-PCI device support stuff merged
 - supersedes u_arch-Fix-image-and-bitmap-byte-order-for-ppc64le.patch
 
 -------------------------------------------------------------------
@@ -1581,7 +1635,7 @@ Fri May 30 23:44:55 UTC 2014 - eich@suse.com
 -------------------------------------------------------------------
 Wed May 28 11:00:49 UTC 2014 - sndirsch@suse.com
 
-- %post: 
+- %post:
   * move SaX2 generated xorg.conf file to xorg.conf.sle11
     Only in very rare cases a static X configuration is still
     required on sle12. And, in some cases the migration from a
@@ -1641,7 +1695,7 @@ Thu Apr 30 16:43:00 UTC 2014 - lbsousajr@gmail.com
 -------------------------------------------------------------------
 Mon Apr 28 09:02:06 UTC 2014 - sndirsch@suse.com
 
-- added missing pkgconfig(xf86dgaproto) BuildRequires 
+- added missing pkgconfig(xf86dgaproto) BuildRequires
 
 -------------------------------------------------------------------
 Sun Apr 27 23:55:29 UTC 2014 - stefan.bruens@rwth-aachen.de
@@ -1669,7 +1723,7 @@ Sat Mar 22 07:02:56 UTC 2014 - coolo@suse.com
 -------------------------------------------------------------------
 Fri Mar 21 09:40:03 UTC 2014 - sndirsch@suse.com
 
-- obsolete also glamor and glamor-devel in addition to glamor-egl 
+- obsolete also glamor and glamor-devel in addition to glamor-egl
 
 -------------------------------------------------------------------
 Mon Feb 24 23:15:41 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
@@ -1763,7 +1817,7 @@ Wed Dec 11 15:26:59 UTC 2013 - eich@suse.com
 
 - Dropped:
   * N_0001-Check-harder-for-primary-PCI-device.patch
-    Whith libpciaccess code path irrelevant for Linux. 
+    Whith libpciaccess code path irrelevant for Linux.
   * N_0001-Fix-segfault-when-killing-X-with-ctrl-alt-backspace.patch
     Solved differently upstream
   * N_bug-197858_dpms.diff
@@ -1771,7 +1825,7 @@ Wed Dec 11 15:26:59 UTC 2013 - eich@suse.com
     it no longer applied...
   * N_bug534768-prefer_local_symbols.patch
     Upstream has a better suggestion how to solve this. However this
-    patch is no longer needed     
+    patch is no longer needed
   * N_dpms_screensaver.diff
     This topic was solved slightly differently upstream - still patch
     got ported without checking it's context.
@@ -1805,7 +1859,7 @@ Wed Dec 11 00:35:57 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
   on OS X and Windows, and fixes for Xinerama and various extensions.
 - Drop superseded patches:
   + Patch143: n_autoconf-On-Linux-give-fbdev-driver-a-higher-precedence-than-vesa.patch
-  
+
 -------------------------------------------------------------------
 Thu Dec  5 12:18:30 UTC 2013 - sndirsch@suse.com
 
@@ -1877,7 +1931,7 @@ Tue Oct 15 13:07:50 UTC 2013 - sndirsch@suse.com
 
 - u_Avoid-use-after-free-in-dix-dixfonts.c-doImageText.patch
   * Fixes a security issue, in which an authenticated X client
-   can cause an X server to use memory after it was freed, 
+   can cause an X server to use memory after it was freed,
    potentially leading to crash and/or memory corruption.
    (CVE-2013-4396, bnc#843652)
 
@@ -1954,7 +2008,7 @@ Tue Jul  2 13:18:07 UTC 2013 - hrvoje.senjan@gmail.com
 Wed Jun 19 14:20:07 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
 
 - Packaging changes:
-  + Added patch240: 
+  + Added patch240:
     U_revert_dri2_realloc_dri2_drawable_if-pixmap_serial_changes.patch
     For detailed information visit:
     http://cgit.freedesktop.org/xorg/xserver/commit/?id=77e51d5bbb97eb5c9d9dbff9a7c44d7e53620e68
@@ -1989,12 +2043,12 @@ Wed Apr 17 16:31:36 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Fri Apr  5 08:05:09 UTC 2013 - idonmez@suse.com
 
-- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- Add Source URL, see https://en.opensuse.org/SourceUrls
 
 -------------------------------------------------------------------
 Wed Mar 13 16:46:09 UTC 2013 - sndirsch@suse.com
 
-- rebased u_aarch64-support.patch and reenabled it 
+- rebased u_aarch64-support.patch and reenabled it
 
 -------------------------------------------------------------------
 Fri Mar  8 16:16:07 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
@@ -2034,7 +2088,7 @@ Thu Feb 21 00:41:00 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Wed Feb 20 13:36:40 UTC 2013 - sndirsch@suse.com
 
-- added u_init_framebuffer_base.patch: initialize buffer.base to fix 
+- added u_init_framebuffer_base.patch: initialize buffer.base to fix
   Xorg segfault in virtualbox guest (bnc#799480)
 
 -------------------------------------------------------------------
@@ -2045,9 +2099,9 @@ Thu Jan 31 18:09:30 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
   Commits from rc1:
   + EnableDisableExtensionError: Use ARRAY_SIZE rather than sentinel
   + glx/dri2: initialise api to avoid indirect rendering failing randomly
-  + XQuartz: Avoid a possible deadlock with DRI on OS X 10.7.5 and OS 
+  + XQuartz: Avoid a possible deadlock with DRI on OS X 10.7.5 and OS
     X 10.8.2
-  + XQuartz: Add some verbose logging to debug xp_lock_window being 
+  + XQuartz: Add some verbose logging to debug xp_lock_window being
     unbalanced
   + XQuartz: Don't add the 15bit visual any more
   + version bump for 1.13.1.901 (rc1)
@@ -2064,7 +2118,7 @@ Tue Jan  8 11:46:23 UTC 2013 - sndirsch@suse.com
 
 - let xorg-x11-server require xkeyboard-config again, since Xvfb
   is part of this package and requires keyboard files as well
-  (bnc#797124) 
+  (bnc#797124)
 
 -------------------------------------------------------------------
 Fri Dec 14 10:39:08 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
@@ -2078,7 +2132,7 @@ Fri Dec 14 10:39:08 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Tue Nov 27 13:00:41 UTC 2012 - werner@suse.de
 
-- Let the old Xfig program find the ghostscript fonts (bnc#784305) 
+- Let the old Xfig program find the ghostscript fonts (bnc#784305)
 
 -------------------------------------------------------------------
 Mon Nov 12 17:27:21 UTC 2012 - fcrozat@suse.com
@@ -2101,12 +2155,12 @@ Tue Oct 30 10:45:57 UTC 2012 - sndirsch@suse.com
 Mon Oct 15 14:22:01 UTC 2012 - sndirsch@suse.com
 
 - u_vgaHW-no-legacy.patch
-  * likely fixes build on ppc 
+  * likely fixes build on ppc
 
 -------------------------------------------------------------------
 Mon Sep 24 19:52:16 UTC 2012 - opensuse@cboltz.de
 
-- /usr/bin/Xorg is no longer listed in /etc/permissions - remove 
+- /usr/bin/Xorg is no longer listed in /etc/permissions - remove
   %set_permissions and %verify_permissions and re-enable rpm permission
   check (bnc#632737 #c27)
 
@@ -2115,7 +2169,7 @@ Thu Sep 20 11:34:01 UTC 2012 - sndirsch@suse.com
 
 - N_driver-autoconfig.diff
   * "ati" needs to be the second choice right after "fglrx"; there
-    must not be a gap between "fglrx" and "ati" introduced by 
+    must not be a gap between "fglrx" and "ati" introduced by
     removing "radeonhd" from this list by the previous change
 
 -------------------------------------------------------------------
@@ -2150,12 +2204,12 @@ Sun Jul 22 10:35:59 UTC 2012 - sndirsch@suse.com
 Tue Jul 17 01:42:30 UTC 2012 - sndirsch@suse.com
 
 - renamed patches of previous change according to our policy
-  u_* --> U_* (since these were rebased on upstream patches) 
+  u_* --> U_* (since these were rebased on upstream patches)
 
 -------------------------------------------------------------------
 Fri Jul 13 00:19:59 UTC 2012 - badshah400@gmail.com
 
-- Add patches u_dri2_add_DRI2CreateDrawable2.patch and 
+- Add patches u_dri2_add_DRI2CreateDrawable2.patch and
   u_0012-glx_Free_reference_to_destroyed_GLX_drawable.patch to fix
   seemingly random crashes of the X stack [bnc#769553]; patches
   came from upstream git commits, and were rebased to apply to
@@ -2172,7 +2226,7 @@ Mon Jul  9 21:28:59 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Tue Jun 26 10:38:40 UTC 2012 - sndirsch@suse.com
 
-- removed redundant buildrequires to xorg-x11 meta package 
+- removed redundant buildrequires to xorg-x11 meta package
 
 -------------------------------------------------------------------
 Thu Jun 14 14:07:14 UTC 2012 - sndirsch@suse.com
@@ -2198,7 +2252,7 @@ Wed May 30 14:56:53 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Fri May 25 14:44:36 UTC 2012 - sndirsch@suse.com
 
-- no longer use obsolete %run_permissions; replaced it by 
+- no longer use obsolete %run_permissions; replaced it by
   %set_permissions (bnc#764101)
 
 -------------------------------------------------------------------
@@ -2279,7 +2333,7 @@ Tue Feb 28 21:39:17 UTC 2012 - sndirsch@suse.com
 -------------------------------------------------------------------
 Thu Feb  9 20:27:04 UTC 2012 - sndirsch@suse.com
 
-- fixed buildreqs due to splitted xorg-x11-libs 
+- fixed buildreqs due to splitted xorg-x11-libs
 
 -------------------------------------------------------------------
 Fri Jan 13 14:40:00 UTC 2012 - sndirsch@suse.com
@@ -2303,12 +2357,12 @@ Wed Nov 30 17:18:16 CET 2011 - ro@suse.de
 -------------------------------------------------------------------
 Mon Nov 28 16:04:58 CET 2011 - ro@suse.de
 
-- complete s390 fixes 
+- complete s390 fixes
 
 -------------------------------------------------------------------
 Mon Nov 28 16:02:56 CET 2011 - ro@suse.de
 
-- fix build on s390/s390x 
+- fix build on s390/s390x
 
 -------------------------------------------------------------------
 Sun Nov 20 06:49:40 UTC 2011 - coolo@suse.com
@@ -2322,7 +2376,7 @@ Wed Nov  9 17:40:42 UTC 2011 - sndirsch@suse.com
   * If you aren't using the Record extension (and you aren't), you
     can work around the bug by moving the code which accesses the
     (non-existant) request buffer inside the loop looking at the
-    recording contexts (of which there should be none). 
+    recording contexts (of which there should be none).
     (bnc #728964, fdo #36930)
 
 -------------------------------------------------------------------
@@ -2338,7 +2392,7 @@ Tue Oct 18 18:38:41 UTC 2011 - eich@suse.com
 Tue Oct 18 06:42:32 UTC 2011 - eich@suse.com
 
 - zap_warning_xserver.diff:
-  Fix man page to match changed behavior. 
+  Fix man page to match changed behavior.
 
 -------------------------------------------------------------------
 Tue Sep  6 15:55:01 UTC 2011 - sndirsch@suse.com
@@ -2407,7 +2461,7 @@ Thu Jul  7 10:08:05 UTC 2011 - eich@suse.de
 - remove disable-fbblt-opt.diff:
   We are unable to reproduce this issue any more.
   So let's remove the workaround and start from scratch
-  when issue resurfaces and find a proper fix. 
+  when issue resurfaces and find a proper fix.
 
 -------------------------------------------------------------------
 Wed Jul  6 09:04:30 UTC 2011 - eich@suse.de
@@ -2442,7 +2496,7 @@ Tue Jul  5 12:45:46 UTC 2011 - eich@suse.de
 Tue Jul  5 05:11:47 UTC 2011 - eich@suse.de
 
 - fix zap_warning_fix.diff:
-  recover from noisy people. 
+  recover from noisy people.
 
 -------------------------------------------------------------------
 Tue Jul  5 05:09:40 UTC 2011 - eich@suse.de
@@ -2566,7 +2620,7 @@ Fri Mar 25 03:20:58 UTC 2011 - sndirsch@novell.com
 
 - EXA-mixed-ModifyPixmapHeader-pitch-fixes.-bug-33929.patch
   * EXA/mixed: ModifyPixmapHeader pitch fixes. (bnc #678264,
-    bfo #33929) 
+    bfo #33929)
 
 -------------------------------------------------------------------
 Thu Mar 17 16:55:16 UTC 2011 - sndirsch@novell.com
@@ -2580,7 +2634,7 @@ Thu Mar 17 13:35:55 UTC 2011 - sndirsch@novell.com
 
 - record-avoid-crash-when-calling-RecordFlushReplyBuff.patch
   * record: avoid crash when calling RecordFlushReplyBuffer
-    recursively (bnc #673575) 
+    recursively (bnc #673575)
 
 -------------------------------------------------------------------
 Sat Feb 26 10:52:15 UTC 2011 - devel@navlost.eu
@@ -2655,13 +2709,13 @@ Tue Dec 21 18:08:15 UTC 2010 - mhopf@novell.com
 -------------------------------------------------------------------
 Tue Dec 21 02:51:19 UTC 2010 - sndirsch@novell.com
 
-- bumped version number to 7.6_1.9.3 
+- bumped version number to 7.6_1.9.3
 
 -------------------------------------------------------------------
 Sun Dec 19 23:23:30 UTC 2010 - sndirsch@novell.com
 
 - sync-fix.patch
-  * fixes the issue that gnome screensaver fadeout could not be 
+  * fixes the issue that gnome screensaver fadeout could not be
     stopped (bnc #648851)
 
 -------------------------------------------------------------------
@@ -2674,7 +2728,7 @@ Mon Dec 13 22:47:59 UTC 2010 - sndirsch@novell.com
 
 - xorg-server 1.9.3
   * This version is functionally equivalent to the second release
-    candidate.  
+    candidate.
 
 -------------------------------------------------------------------
 Sat Dec  4 20:47:41 UTC 2010 - sndirsch@novell.com
@@ -2686,25 +2740,25 @@ Sat Dec  4 20:47:41 UTC 2010 - sndirsch@novell.com
 -------------------------------------------------------------------
 Fri Dec  3 03:30:50 UTC 2010 - sndirsch@novell.com
 
-- remove Xorg setuid bit (bnc #632737) 
+- remove Xorg setuid bit (bnc #632737)
 
 -------------------------------------------------------------------
 Sun Nov 14 09:15:22 UTC 2010 - sndirsch@novell.com
 
 - xorg-server 1.9.2.901 (1.9.3 RC1)
-  * many buildfixes and bugfixes 
+  * many buildfixes and bugfixes
 
 -------------------------------------------------------------------
 Fri Nov 12 12:52:01 UTC 2010 - sndirsch@novell.com
 
 - xorg-docs 1.5.99.901 (1.6 RC1)
-- adjusted xorg-x11-doc.diff 
+- adjusted xorg-x11-doc.diff
 
 -------------------------------------------------------------------
 Fri Nov 12 12:06:22 UTC 2010 - sndirsch@novell.com
 
 - xorg-docs-1.5
-- adjusted xorg-docs.diff 
+- adjusted xorg-docs.diff
 
 -------------------------------------------------------------------
 Tue Nov  9 23:49:23 UTC 2010 - sndirsch@novell.com
@@ -2715,8 +2769,8 @@ Tue Nov  9 23:49:23 UTC 2010 - sndirsch@novell.com
 -------------------------------------------------------------------
 Tue Nov  9 23:46:17 UTC 2010 - sndirsch@novell.com
 
-- uncommented non-existing 
-  xorg-server-xf4vnc-bug605015-vnc-umlauts.diff 
+- uncommented non-existing
+  xorg-server-xf4vnc-bug605015-vnc-umlauts.diff
 
 -------------------------------------------------------------------
 Tue Nov  9 18:40:57 UTC 2010 - mhopf@novell.com
@@ -2752,7 +2806,7 @@ Sun Oct 24 09:53:06 UTC 2010 - sndirsch@novell.com
 -------------------------------------------------------------------
 Sat Oct 23 01:19:50 UTC 2010 - sndirsch@novell.com
 
-- disable commit-5c6a2f9.diff for now 
+- disable commit-5c6a2f9.diff for now
 
 -------------------------------------------------------------------
 Fri Oct 22 14:10:13 UTC 2010 - sndirsch@novell.com
@@ -2850,7 +2904,7 @@ Tue Aug 17 17:23:45 CEST 2010 - sndirsch@suse.de
 Mon Aug 16 12:50:39 CEST 2010 - sndirsch@suse.de
 
 - xorg-server-commit-21ed660.diff
-  * dix: make DeviceEvent coordinates signed for Xinerama 
+  * dix: make DeviceEvent coordinates signed for Xinerama
     (bnc #628295, bfo #24986)
 
 -------------------------------------------------------------------
@@ -2899,7 +2953,7 @@ Sat May 29 01:04:47 CEST 2010 - sndirsch@suse.de
 
 - xorg-detect-psb.patch
   * remove again "intellegacy" from driver autoconfiguration; that
-    reverts previous change (bnc #608315) 
+    reverts previous change (bnc #608315)
 
 -------------------------------------------------------------------
 Sun May  9 03:27:39 CEST 2010 - sndirsch@suse.de
@@ -2913,7 +2967,7 @@ Sun May  9 03:27:39 CEST 2010 - sndirsch@suse.de
 Thu Apr 29 01:36:52 CEST 2010 - sndirsch@suse.de
 
 - remove Xdmx manual page from xorg-x11-server, since it's already
-  in xorg-x11-server-extra 
+  in xorg-x11-server-extra
 
 -------------------------------------------------------------------
 Mon Apr 26 10:40:11 UTC 2010 - eich@suse.de
@@ -2935,7 +2989,7 @@ Wed Apr 21 16:03:07 CEST 2010 - eich@suse.de
 - Prevent XSync Alarms from senslessly calling CheckTrigger() when inactive.
   If an XSync Alarm is set to inactive there is no need to check if a trigger
   needs to fire. Doing so if the counter is the IdleCounter will put the
-  server on 100 percent CPU load since the select timeout is set to 0 
+  server on 100 percent CPU load since the select timeout is set to 0
   (bnc #584919).
 
 -------------------------------------------------------------------
@@ -2947,9 +3001,9 @@ Sat Apr 10 20:54:18 CEST 2010 - sndirsch@suse.de
 -------------------------------------------------------------------
 Sat Apr 10 12:26:46 CEST 2010 - sndirsch@suse.de
 
-- adjusted moblin-xserver-no-root-2.patch, renamed it to 
-  xorg-server-nohwaccess.diff and enable it by default 
-- rename moblin-xorg-x11-nonroot-vesa.patch to 
+- adjusted moblin-xserver-no-root-2.patch, renamed it to
+  xorg-server-nohwaccess.diff and enable it by default
+- rename moblin-xorg-x11-nonroot-vesa.patch to
   xorg-x11-nonroot-vesa.patch
 - removed obsolete patch 'xserver-boottime.patch'
 
@@ -2963,7 +3017,7 @@ Thu Apr  8 13:42:43 UTC 2010 - eich@novell.com
 Thu Apr  8 12:20:38 UTC 2010 - eich@suse.de
 
 - On ia64 the Xserver brings its own PIO functions (inb, outb, ...).
-  These are supposed to overrule the ones provided by glibc. 
+  These are supposed to overrule the ones provided by glibc.
   Unfortunately this doesn't seem to work under all circumstances.
   Therefore use inX/outX_ia64 and set appropriate defines.
 
@@ -2980,7 +3034,7 @@ Thu Apr  8 11:49:46 CEST 2010 - ro@suse.de
 -------------------------------------------------------------------
 Tue Apr  6 20:48:21 CEST 2010 - ro@suse.de
 
-- fix libxf86config (resolve references) 
+- fix libxf86config (resolve references)
 
 -------------------------------------------------------------------
 Tue Apr  6 18:20:00 CEST 2010 - sndirsch@suse.de
@@ -3001,21 +3055,21 @@ Fri Apr  2 11:33:28 CEST 2010 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri Mar 26 02:45:15 CET 2010 - sndirsch@suse.de
 
-- xorg-server-walk_drivers.diff: 
+- xorg-server-walk_drivers.diff:
   * updated patch working more cleanly, fixed coding style, added
     comments (Rüdiger Oertel)
 
 -------------------------------------------------------------------
 Wed Mar 24 17:05:53 CET 2010 - sndirsch@suse.de
 
-- disabled udev support for openSUSE <= 11.2 (bnc #589997) 
+- disabled udev support for openSUSE <= 11.2 (bnc #589997)
 
 -------------------------------------------------------------------
 Wed Mar 24 02:37:56 CET 2010 - ro@suse.de
 
 - re-do xorg-server-walk_drivers.diff again, different approach
   create screen sections for each possible drivers
-  now it is really using the first driver as in full autoconfig 
+  now it is really using the first driver as in full autoconfig
 
 -------------------------------------------------------------------
 Tue Mar 23 14:10:59 CET 2010 - sndirsch@suse.de
@@ -3026,25 +3080,25 @@ Tue Mar 23 14:10:59 CET 2010 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Mar 23 00:07:28 CET 2010 - ro@suse.de
 
-- xserver-1.6.1-nouveau.patch (from fedora) 
+- xserver-1.6.1-nouveau.patch (from fedora)
   Also, don't treat DRI setup failure as an error for nouveau.
 
 -------------------------------------------------------------------
 Mon Mar 22 17:48:04 CET 2010 - ro@suse.de
 
-- rework xorg-server-walk_drivers.diff 
+- rework xorg-server-walk_drivers.diff
 
 -------------------------------------------------------------------
 Mon Mar 22 00:23:22 CET 2010 - ro@suse.de
 
 - re-implement walking list of possible drivers to find a working
-  one 
+  one
 
 -------------------------------------------------------------------
 Thu Mar 18 02:29:25 CET 2010 - ro@suse.de
 
 - update to 1.7.99 to get rid of hal
-  - refresh patches 
+  - refresh patches
   - drop p_ia64-console.diff
 - remove hal-devel from buildrequires
 - add libudev-devel to buildrequires
@@ -3061,14 +3115,14 @@ Wed Mar 17 15:56:31 CET 2010 - ro@suse.de
   commit-c941479.diff
   moblin-hw-xf86-modes-Set-crtc-mode-rotation-transform-befo.patch
   moblin-xfree86-move-didLock-assignment-down-to-where-the-f.patch
-  moblin-randr-fix-operation-order-so-that-rotation-transfor.patch 
+  moblin-randr-fix-operation-order-so-that-rotation-transfor.patch
 
 -------------------------------------------------------------------
 Wed Mar 17 06:20:25 CET 2010 - sndirsch@suse.de
 
 - update to 1.7.6
   * reintrocued record extension
-  * bugfixes 
+  * bugfixes
 
 -------------------------------------------------------------------
 Sat Feb 20 08:35:14 CET 2010 - sndirsch@suse.de
@@ -3083,8 +3137,8 @@ Sat Feb 20 08:35:14 CET 2010 - sndirsch@suse.de
       (bfo #25640)
     - RENDER: Fix gradient and solid fill pictures with Xinerama,
       and misc cleanup
-- obsoletes 
-  0001-Don-t-double-swap-the-RandR-PropertyNotify-event.patch 
+- obsoletes
+  0001-Don-t-double-swap-the-RandR-PropertyNotify-event.patch
 
 -------------------------------------------------------------------
 Fri Feb 12 17:18:54 UTC 2010 - lchiquitto@novell.com
@@ -3103,7 +3157,7 @@ Sat Jan 16 19:06:44 CET 2010 - sndirsch@suse.de
 Thu Jan 14 01:37:00 CET 2010 - ro@suse.de
 
 - update to 1.7.4
-  - obsoletes acpi_events.diff 
+  - obsoletes acpi_events.diff
   - obsoletes loadmod-bug197195.diff
   - obsoletes events.diff
   - obsoletes acpi-warning.diff
@@ -3144,7 +3198,7 @@ Thu Jan 14 01:37:00 CET 2010 - ro@suse.de
 Sun Dec 13 11:52:48 CET 2009 - sndirsch@suse.de
 
 - added xlog2xconf, which is a script to create a minimal xorg.conf
-  extracted from Xorg.<DISPLAY>.log 
+  extracted from Xorg.<DISPLAY>.log
 
 -------------------------------------------------------------------
 Sun Nov 29 17:43:43 CET 2009 - sndirsch@suse.de
@@ -3188,17 +3242,17 @@ Mon Oct 12 16:48:47 CEST 2009 - sndirsch@suse.de
 Fri Oct  9 03:38:53 CEST 2009 - sndirsch@suse.de
 
 - since we no longer use xorg.conf make ZapWarning the default
-  (bnc #545590) 
+  (bnc #545590)
 
 -------------------------------------------------------------------
 Thu Oct  8 13:43:20 CEST 2009 - eich@suse.de
 
 -  Fix segfault when killing X with ctrl-alt-backspace. (bnc #545363)
-   * The damage structure for the cursor is not deregistered before 
+   * The damage structure for the cursor is not deregistered before
      deallocation, causing a subsequent DamageUnregister () to segfault.
      The problem may leave the text console unrestored.
      (0001-Fix-segfault-when-killing-X-with-ctrl-alt-backspace.patch)
- 
+
 -------------------------------------------------------------------
 Wed Oct  7 15:30:20 CEST 2009 - eich@suse.de
 
@@ -3214,7 +3268,7 @@ Wed Oct  7 15:30:20 CEST 2009 - eich@suse.de
 Wed Oct  7 04:58:29 CEST 2009 - sndirsch@suse.de
 
 - driver-autoconfig.diff
-  * GeForce 6150SE support broken on nv (bnc #465190/544674) 
+  * GeForce 6150SE support broken on nv (bnc #465190/544674)
 
 -------------------------------------------------------------------
 Thu Oct  1 02:50:16 CEST 2009 - sndirsch@suse.de
@@ -3297,7 +3351,7 @@ Fri Aug 14 02:33:19 CEST 2009 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Aug 11 22:23:26 CEST 2009 - sndirsch@suse.de
 
-- revert commit c941479 (bnc #528397) 
+- revert commit c941479 (bnc #528397)
 
 -------------------------------------------------------------------
 Tue Aug  4 10:50:34 CEST 2009 - eich@suse.de
@@ -3312,7 +3366,7 @@ Sat Aug  1 10:47:53 CEST 2009 - sndirsch@suse.de
   * This mostly just collects a bunch of minor fixes since 1.6.2.
     Two notable inclusions are:
     - Replacing dixLookupResource with dixLookupResourceByType,
-      dixLookupResourceByClass. This returns us to having two 
+      dixLookupResourceByClass. This returns us to having two
       resource lookup functions, but this time we have a more
       sensible name and argument set.
     - Fixing RandR transforms for drivers providing set_mode_major.
@@ -3352,12 +3406,12 @@ Fri Jun 19 21:37:02 CEST 2009 - sndirsch@suse.de
 - includes-fix.diff
   * build fix
 - truetype_fontpath.diff
-  * added /usr/share/fonts/truetype to default font path 
+  * added /usr/share/fonts/truetype to default font path
 
 -------------------------------------------------------------------
 Thu Jun 11 03:48:03 CEST 2009 - sndirsch@suse.de
 
-- use %moblin define in specfile 
+- use %moblin define in specfile
 
 -------------------------------------------------------------------
 Wed Jun 10 16:39:15 CEST 2009 - sndirsch@suse.de
@@ -3370,7 +3424,7 @@ Wed Jun 10 16:39:15 CEST 2009 - sndirsch@suse.de
 Tue Jun  9 15:55:52 CEST 2009 - sndirsch@suse.de
 
 - diabled build of Xdmx since it conflict's with NOMAD's Xdmx
-  (bnc #511269) 
+  (bnc #511269)
 
 -------------------------------------------------------------------
 Fri Jun  5 23:42:25 CEST 2009 - sndirsch@suse.de
@@ -3395,7 +3449,7 @@ Thu Jun  4 17:41:14 CEST 2009 - sndirsch@suse.de
 
 - autoconfig_fallback_fbdev_first.diff
   * fallback to fbdev first, then vesa instead of the other way
-    round 
+    round
 
 -------------------------------------------------------------------
 Tue Jun  2 19:02:02 CEST 2009 - eich@suse.de
@@ -3429,13 +3483,13 @@ Thu May 28 15:23:44 CEST 2009 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Apr 30 15:04:14 CEST 2009 - sndirsch@suse.de
 
-- instead of require do provide 
+- instead of require do provide
   INPUT_ABI_VERSION/VIDEO_ABI_VERSION to fix dependancy loop
 
 -------------------------------------------------------------------
 Thu Apr 30 12:21:40 CEST 2009 - sndirsch@suse.de
 
-- xkeyboard-config should be required by xorg-x11-driver-input 
+- xkeyboard-config should be required by xorg-x11-driver-input
 - require INPUT_ABI_VERSION = 4 (provided by xorg-x11-driver-input)
 - require VIDEO_ABI_VERSION = 5 (provided by xorg-x11-driver-video)
 - require libpixman-1-0 >= 0.15.2
@@ -3482,7 +3536,7 @@ Sun Mar  8 23:35:19 CET 2009 - sndirsch@suse.de
 Sun Mar  8 03:59:17 CET 2009 - sndirsch@suse.de
 
 - added hal-devel to BuildRequires for input driver configuration
-  support via HAL, e.g. evdev 
+  support via HAL, e.g. evdev
 
 -------------------------------------------------------------------
 Wed Mar  4 13:28:06 CET 2009 - sndirsch@suse.de
@@ -3490,26 +3544,26 @@ Wed Mar  4 13:28:06 CET 2009 - sndirsch@suse.de
 - removed randr12-8d230319040f0a7f72231da2bf5ec97dc3612e21.diff;
   probably a wrong patch since this commit has been reverted right
   after by commit b4193a2eee80895c5641e77488df0e72a73a3d99 again
-- no longer overwrite xorg.conf with an obsolete one; obsoletes 
+- no longer overwrite xorg.conf with an obsolete one; obsoletes
   disable-root-xorg_conf.diff
 
 -------------------------------------------------------------------
 Tue Mar  3 05:06:02 CET 2009 - sndirsch@suse.de
 
-- regenerated xorg-server-xf4vnc.patch (still disabled) 
+- regenerated xorg-server-xf4vnc.patch (still disabled)
 
 -------------------------------------------------------------------
 Fri Feb 27 12:40:32 CET 2009 - sndirsch@suse.de
 
-- xorg-server 1.6.0 
+- xorg-server 1.6.0
 - temporarily disabled build of Xvnc/libvnc.so
-- obsoletes 64bit-portability-issue.diff, 64bit.diff, 
+- obsoletes 64bit-portability-issue.diff, 64bit.diff,
   commit-59f9fb4b8.diff, commit-a9e2030.diff, dga_cleanup.diff,
-  miPointerUpdate-crashfix.diff, p_mouse_misc.diff, 
+  miPointerUpdate-crashfix.diff, p_mouse_misc.diff,
   ps_showopts.diff, unplugged_monitor_crashfix.diff
 - adjusted 0001-Xinput-Catch-missing-configlayout-when-deleting-dev.patch,
   bitmap_always_unscaled.diff, confine_to_shape.diff, fbdevhw.diff,
-  p_ia64-console.diff, randr1_1-sig11.diff, xephyr.diff, 
+  p_ia64-console.diff, randr1_1-sig11.diff, xephyr.diff,
   xorg-server-xf4vnc.patch, zap_warning_xserver.diff
 
 -------------------------------------------------------------------
@@ -3521,7 +3575,7 @@ Tue Feb 24 12:08:59 CET 2009 - sndirsch@suse.de
 -------------------------------------------------------------------
 Mon Feb 16 09:03:31 CET 2009 - sndirsch@suse.de
 
-- /var/X11R6/bin no longer covered by FHS; switched to 
+- /var/X11R6/bin no longer covered by FHS; switched to
   /var/lib/X11 (bnc #470969)
 
 -------------------------------------------------------------------
@@ -3561,7 +3615,7 @@ Fri Nov 28 03:56:16 CET 2008 - sndirsch@suse.de
 Wed Nov 26 14:35:30 CET 2008 - sndirsch@suse.de
 
 - rename "i810" driver entry in xorg.conf to "intel" during update
-  (bnc #448458) 
+  (bnc #448458)
 
 -------------------------------------------------------------------
 Fri Nov 21 20:16:00 CET 2008 - sndirsch@suse.de
@@ -3591,7 +3645,7 @@ Sat Nov  8 05:22:55 CET 2008 - sndirsch@suse.de
 - commit-59f9fb4b8.diff
   * XAA PixmapOps: Sync before accessing unwrapped callbacks.
     (bnc #435791)
-- obsoletes XAA_pixmap_sync.diff 
+- obsoletes XAA_pixmap_sync.diff
 
 -------------------------------------------------------------------
 Fri Nov  7 15:04:01 CET 2008 - sndirsch@suse.de
@@ -3607,7 +3661,7 @@ Fri Nov  7 15:04:01 CET 2008 - sndirsch@suse.de
 Thu Nov  6 17:51:47 CET 2008 - sndirsch@suse.de
 
 - vidmode-sig11.diff
-  * fixes Sig11 in vidmode extension (bnc #439354) 
+  * fixes Sig11 in vidmode extension (bnc #439354)
 
 -------------------------------------------------------------------
 Wed Nov  5 17:18:29 CET 2008 - sndirsch@suse.de
@@ -3619,7 +3673,7 @@ Wed Nov  5 17:18:29 CET 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Nov  4 18:04:15 CET 2008 - sndirsch@suse.de
 
-- removed glitz-devel from BuildRequires (bnc #441549) 
+- removed glitz-devel from BuildRequires (bnc #441549)
 
 -------------------------------------------------------------------
 Mon Oct 27 18:28:43 CET 2008 - sndirsch@suse.de
@@ -3638,7 +3692,7 @@ Sat Oct 25 13:46:03 CEST 2008 - sndirsch@suse.de
 
 - xorg-server-xf4vnc-busyloop.diff
   * prevent Xvnc from busylooping when client disconnects
-   (bnc #403901) 
+   (bnc #403901)
 
 -------------------------------------------------------------------
 Fri Oct 17 15:52:27 CEST 2008 - sndirsch@suse.de
@@ -3686,7 +3740,7 @@ Thu Oct  9 14:59:06 CEST 2008 - sndirsch@suse.de
 - xorg-server-commit-d1bb5e3.diff
   * DGA: Fix ProcXF86DGASetViewPort for missing support in driver.
     Fixes a segfault when trying to activate a DGA mode without
-    checking whether DGA modesetting is at all possible. 
+    checking whether DGA modesetting is at all possible.
     (Luc Verhaegen)
 
 -------------------------------------------------------------------
@@ -3718,7 +3772,7 @@ Sat Sep 13 05:04:35 CEST 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Sep 11 14:22:52 CEST 2008 - sndirsch@suse.de
 
-- bumped release number to 7.4 
+- bumped release number to 7.4
 
 -------------------------------------------------------------------
 Thu Sep  4 01:55:34 CEST 2008 - sndirsch@suse.de
@@ -3768,7 +3822,7 @@ Tue Jul 22 11:17:44 CEST 2008 - sndirsch@suse.de
 
 - exa-greedy.diff
   * Make sure exaMigrateTowardFb/Sys end up calling exaCopyDirty
-    (bfo #16773) 
+    (bfo #16773)
 
 -------------------------------------------------------------------
 Fri Jul 18 17:19:08 CEST 2008 - schwab@suse.de
@@ -3778,7 +3832,7 @@ Fri Jul 18 17:19:08 CEST 2008 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Jul 14 15:35:11 CEST 2008 - sndirsch@suse.de
 
-- improved ppc/ppc64 patch once more 
+- improved ppc/ppc64 patch once more
 
 -------------------------------------------------------------------
 Fri Jul 11 17:06:25 CEST 2008 - sndirsch@suse.de
@@ -3805,7 +3859,7 @@ Thu Jul 10 09:34:11 CEST 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Jul 10 08:56:00 CEST 2008 - sndirsch@suse.de
 
-- updated to new vnc patch "xorg-server-xf4vnc.patch "by Dan 
+- updated to new vnc patch "xorg-server-xf4vnc.patch "by Dan
   Nicholson, which is still disabled due to build errors
 - obsoletes the following patches:
   * xorg-server-1.4-vnc-64bit.diff
@@ -3818,10 +3872,10 @@ Thu Jul 10 08:56:00 CEST 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Jul  8 08:38:15 CEST 2008 - sndirsch@suse.de
 
-- commit-a18551c.diff 
-  * Fix GLX in Xvfb and kdrive. 
-    Xvfb could no longer be started: "Xvfb: symbol lookup error: 
-    /usr/lib/dri/swrast_dri.so: undefined symbol: 
+- commit-a18551c.diff
+  * Fix GLX in Xvfb and kdrive.
+    Xvfb could no longer be started: "Xvfb: symbol lookup error:
+    /usr/lib/dri/swrast_dri.so: undefined symbol:
     _glapi_add_dispatch". This is fixed now.
 - removed no longer appliable patch 'p_xf86Mode.diff'
 
@@ -3856,7 +3910,7 @@ Fri Jul  4 22:29:06 CEST 2008 - sndirsch@suse.de
    - pixman.diff
    - ps_showopts.diff
    - xorg-server-1.4-vnc.patch
-   - bug-197858_dpms.diff 
+   - bug-197858_dpms.diff
 - Mesa sources no longer required for xorg-server 1.5
 - VNC patches + build disabled for now
 - disabled some IA64 patches for now
@@ -3902,7 +3956,7 @@ Thu Jun  5 23:04:47 CEST 2008 - sndirsch@suse.de
 - bfo-bug15222.diff (bfo #15222, bnc #374318)
   * CVE-2008-2360 - RENDER Extension heap buffer overflow
   * CVE-2008-2361 - RENDER Extension crash
-  * CVE-2008-2362 - RENDER Extension memory corruption 
+  * CVE-2008-2362 - RENDER Extension memory corruption
   * CVE-2008-1379 - MIT-SHM arbitrary memory read
   * CVE-2008-1377 - RECORD and Security extensions memory corruption
 
@@ -3910,7 +3964,7 @@ Thu Jun  5 23:04:47 CEST 2008 - sndirsch@suse.de
 Tue May 27 17:51:32 CEST 2008 - sndirsch@suse.de
 
 - xserver-mode-fuzzy-check.diff
-  * Make mode checking more tolerant like in pre-RandR times. 
+  * Make mode checking more tolerant like in pre-RandR times.
 
 -------------------------------------------------------------------
 Mon May 26 19:27:39 CEST 2008 - sndirsch@suse.de
@@ -3921,7 +3975,7 @@ Mon May 26 19:27:39 CEST 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri May 16 16:52:03 CEST 2008 - sndirsch@suse.de
 
-- mention ZapWarning also in Xorg manual page (bnc #391352) 
+- mention ZapWarning also in Xorg manual page (bnc #391352)
 
 -------------------------------------------------------------------
 Fri May 16 12:15:57 CEST 2008 - sndirsch@suse.de
@@ -3939,7 +3993,7 @@ Wed May 14 18:19:15 CEST 2008 - sndirsch@suse.de
 Mon May  5 14:56:01 CEST 2008 - sndirsch@suse.de
 
 - xorg-server-1.4-vnc-disable_render.diff
-  * disabled RENDER support in Xvnc (bnc #385677) 
+  * disabled RENDER support in Xvnc (bnc #385677)
 
 -------------------------------------------------------------------
 Mon Apr 21 21:20:37 CEST 2008 - sndirsch@suse.de
@@ -3959,7 +4013,7 @@ Sun Apr 20 05:17:28 CEST 2008 - sndirsch@suse.de
 
 - fbdevhw.diff
   * screen blanking not supported by vesafb of Linux kernel
-    (bnc #146462)  
+    (bnc #146462)
 
 -------------------------------------------------------------------
 Tue Apr 15 03:52:12 CEST 2008 - sndirsch@suse.de
@@ -3987,19 +4041,19 @@ Wed Apr  9 14:18:55 CEST 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Mon Apr  7 18:13:06 CEST 2008 - sndirsch@suse.de
 
-- commit-37b1258.diff 
+- commit-37b1258.diff
   * possibly fixes unwanted autorepeat (bnc #377612, bfo #14811)
 
 -------------------------------------------------------------------
 Sat Apr  5 04:03:18 CEST 2008 - sndirsch@suse.de
 
-- bitmap_always_unscaled.diff 
+- bitmap_always_unscaled.diff
   * Default bitmap fonts should typically be set as unscaled (libv)
 
 -------------------------------------------------------------------
 Sat Apr  5 03:49:02 CEST 2008 - sndirsch@suse.de
 
-- update to Mesa bugfix release 7.0.3 (final) sources 
+- update to Mesa bugfix release 7.0.3 (final) sources
 
 -------------------------------------------------------------------
 Wed Apr  2 09:37:56 CEST 2008 - sndirsch@suse.de
@@ -4059,13 +4113,13 @@ Fri Feb  1 15:23:25 CET 2008 - sndirsch@suse.de
 
 - commit-50e80c3.diff:
   * never overwrite realInputProc with enqueueInputProc
-    (bnc#357989, bfo#13511) 
+    (bnc#357989, bfo#13511)
 
 -------------------------------------------------------------------
 Thu Jan 24 16:26:23 CET 2008 - sndirsch@suse.de
 
 - only switch to radeon driver in %post if radeonold driver is no
-  longer available (Bug #355009) 
+  longer available (Bug #355009)
 - some more cleanup in %post
 
 -------------------------------------------------------------------
@@ -4079,7 +4133,7 @@ Wed Jan 23 12:29:17 CET 2008 - sndirsch@suse.de
 - update to Mesa bugfix release 7.0.3 RC1 sources
   * Added missing glw.pc.in file to release tarball
   * Fix GLUT/Fortran issues
-  * GLSL gl_FrontLightModelProduct.sceneColor variable wasn't 
+  * GLSL gl_FrontLightModelProduct.sceneColor variable wasn't
     defined
   * Fix crash upon GLSL variable array indexes (not yet supported)
   * Two-sided stencil test didn't work in software rendering
@@ -4131,7 +4185,7 @@ Fri Nov 30 22:29:25 CET 2007 - sndirsch@suse.de
 Thu Nov 29 19:45:14 CET 2007 - sndirsch@suse.de
 
 - remove_bogus_modeline.diff
-  * remove bogus monitor modelines provided by DDC (Bug #335540) 
+  * remove bogus monitor modelines provided by DDC (Bug #335540)
 
 -------------------------------------------------------------------
 Tue Nov 27 19:03:27 CET 2007 - sndirsch@suse.de
@@ -4150,7 +4204,7 @@ Tue Nov 27 19:03:27 CET 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Nov 22 23:01:03 CET 2007 - sndirsch@suse.de
 
-- pixman.diff no longer required 
+- pixman.diff no longer required
 
 -------------------------------------------------------------------
 Sun Nov 18 14:14:22 CET 2007 - sndirsch@suse.de
@@ -4181,12 +4235,12 @@ Wed Nov 14 17:18:00 CET 2007 - schwab@suse.de
 -------------------------------------------------------------------
 Sat Nov 10 20:09:23 CET 2007 - sndirsch@suse.de
 
-- updated to Mesa 7.0.2 (final) sources 
+- updated to Mesa 7.0.2 (final) sources
 
 -------------------------------------------------------------------
 Wed Oct 31 23:00:15 CET 2007 - sndirsch@suse.de
 
-- updated to Mesa 7.0.2 RC1 sources 
+- updated to Mesa 7.0.2 RC1 sources
 
 -------------------------------------------------------------------
 Tue Oct 23 14:56:13 CEST 2007 - sndirsch@suse.de
@@ -4295,7 +4349,7 @@ Sat Sep 29 00:51:38 CEST 2007 - sndirsch@suse.de
     - xephyr.diff
 - pixman.diff:
   * search for pixman instead of pixman-1
-- bumped version to 7.3 
+- bumped version to 7.3
 
 -------------------------------------------------------------------
 Tue Sep 25 19:11:13 CEST 2007 - sndirsch@suse.de
@@ -4378,12 +4432,12 @@ Thu Aug 23 05:32:04 CEST 2007 - sndirsch@suse.de
 
 - xserver-mode-fuzzy-check.diff:
   * Fix for Xserver being more fuzzy about mode validation
-   (Bug #270846) 
+   (Bug #270846)
 
 -------------------------------------------------------------------
 Sat Aug 18 11:05:14 CEST 2007 - sndirsch@suse.de
 
-- disable AIGLX by default; without enabled Composite extension 
+- disable AIGLX by default; without enabled Composite extension
   (still problematic on many drivers) it's rather useless anyway
 - updated xorg.conf manual page
 
@@ -4404,13 +4458,13 @@ Fri Jul 20 00:20:18 CEST 2007 - sndirsch@suse.de
 - xephyr-sig11-fix.diff:
   * long vs. CARD32 mismatch in KeySym definitions between client
     and server code - this patch seems to fix it (and the input
-    rework in head fixed it as well in a different way) 
+    rework in head fixed it as well in a different way)
     (Bug #235320)
 
 -------------------------------------------------------------------
 Sat Jul 14 13:18:56 CEST 2007 - sndirsch@suse.de
 
-- fixed build on s390(x) 
+- fixed build on s390(x)
 
 -------------------------------------------------------------------
 Tue Jul  3 21:09:06 CEST 2007 - sndirsch@suse.de
@@ -4439,8 +4493,8 @@ Wed Jun  6 15:47:13 CEST 2007 - sndirsch@suse.de
 Tue May 22 18:22:44 CEST 2007 - sndirsch@suse.de
 
 - disabled build of Xprt
-- moved Xdmx, Xephyr, Xnest and Xvfb to new subpackage 
-  xorg-x11-server-extra 
+- moved Xdmx, Xephyr, Xnest and Xvfb to new subpackage
+  xorg-x11-server-extra
 
 -------------------------------------------------------------------
 Wed May  2 22:39:31 CEST 2007 - sndirsch@suse.de
@@ -4478,7 +4532,7 @@ Sat Apr 28 09:54:28 CEST 2007 - sndirsch@suse.de
 - xorg-x11-server-1.2.99-unbreak-domain.patch:
   * This patch fixes some multi-domain systems such as Pegasos with
     xorg-server 1.3. Since pci-rework should get merged soon and
-    this patch is a bit of a hack, it never got pushed upstream. 
+    this patch is a bit of a hack, it never got pushed upstream.
     (X.Org Bug #7248)
 
 -------------------------------------------------------------------
@@ -4501,7 +4555,7 @@ Tue Apr 24 18:57:09 CEST 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Sun Apr 22 11:48:52 CEST 2007 - sndirsch@suse.de
 
-- updated to Mesa 6.5.3rc2 sources 
+- updated to Mesa 6.5.3rc2 sources
   * a number of bug fixes since the first RC
 
 -------------------------------------------------------------------
@@ -4532,9 +4586,9 @@ Fri Apr 20 07:11:16 CEST 2007 - sndirsch@suse.de
 
 - xserver 1.3.0.0 release
   * Syncmaster 226 monitor needs 60Hz refresh (#10545).
-  * In AIGLX EnterVT processing, invoke driver EnterVT before 
+  * In AIGLX EnterVT processing, invoke driver EnterVT before
     resuming glx.
-  * Disable CRTC when SetSingleMode has no matching mode. Update 
+  * Disable CRTC when SetSingleMode has no matching mode. Update
     RandR as well.
   * Rotate screen size as needed from RandR 1.1 change requests.
   * Add quirk for Acer AL1706 monitor to force 60hz refresh.
@@ -4550,7 +4604,7 @@ Fri Apr 20 07:11:16 CEST 2007 - sndirsch@suse.de
 Tue Apr 10 15:33:59 CEST 2007 - sndirsch@suse.de
 
 - Mesa-6.5.2-fix_radeon_cliprect.diff:
-  * fixes X.Org Bug #9876 
+  * fixes X.Org Bug #9876
 
 -------------------------------------------------------------------
 Fri Apr  6 13:21:07 CEST 2007 - sndirsch@suse.de
@@ -4562,7 +4616,7 @@ Fri Apr  6 13:21:07 CEST 2007 - sndirsch@suse.de
 Fri Apr  6 12:08:17 CEST 2007 - sndirsch@suse.de
 
 - xserver 1.2.99.905 release:
-  * CVE-2007-1003: XC-MISC Extension ProcXCMiscGetXIDList() Memory 
+  * CVE-2007-1003: XC-MISC Extension ProcXCMiscGetXIDList() Memory
     Corruption
   * X.Org Bug #10296: Fix timer rescheduling
 - obsoletes bug-243978_xcmisc.diff
@@ -4576,7 +4630,7 @@ Fri Apr  6 12:07:33 CEST 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Apr  5 00:37:51 CEST 2007 - sndirsch@suse.de
 
-- bug-243978_xcmisc.diff: 
+- bug-243978_xcmisc.diff:
   * mem corruption in ProcXCMiscGetXIDList (CVE-2007-1003, Bug #243978)
 
 -------------------------------------------------------------------
@@ -4612,7 +4666,7 @@ Tue Mar 27 21:47:36 CEST 2007 - sndirsch@suse.de
   * Fix Pending property API, adding RRPostPendingProperty.
   * Incorrect extra memory copy in RRChangeOutputProperty.
   * Ensure that crtc desired values track most recent mode.
-  * Make pending properties force mode set. And, remove 
+  * Make pending properties force mode set. And, remove
     AttachScreen calls.
   * Set version to 1.2.99.903 (1.3 RC3)
   * fbdevhw: Consolidate modeset ioctl calling, report failure if
@@ -4632,7 +4686,7 @@ Tue Mar 27 21:47:36 CEST 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Mon Mar 19 22:22:43 CET 2007 - sndirsch@suse.de
 
-- no longer apply bug-211314_mesa-context.diff, 
+- no longer apply bug-211314_mesa-context.diff,
   bug-211314_p_drawable_privclean.diff (Bug #211314, comment #114)
 - added different Mesa patches (Bug #211314, comments #114/#115)
 
@@ -4671,7 +4725,7 @@ Wed Mar 14 17:09:25 CET 2007 - sndirsch@suse.de
 Wed Mar 14 15:43:46 CET 2007 - sndirsch@suse.de
 
 - bug197190-ia64.diff:
-  * missing -DNO_LONG_LONG for IA64 (Bug #197190) 
+  * missing -DNO_LONG_LONG for IA64 (Bug #197190)
 
 -------------------------------------------------------------------
 Fri Mar  9 16:10:23 CET 2007 - sndirsch@suse.de
@@ -4708,7 +4762,7 @@ Mon Jan 29 16:40:43 CET 2007 - sndirsch@suse.de
 
 - bug-197858_dpms.diff:
   * finally fixed "X server wakes up on any ACPI event" issue
-    (Bug #197858) 
+    (Bug #197858)
 
 -------------------------------------------------------------------
 Thu Jan 25 17:56:57 CET 2007 - sndirsch@suse.de
@@ -4719,7 +4773,7 @@ Thu Jan 25 17:56:57 CET 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Jan 24 19:17:06 CET 2007 - sndirsch@suse.de
 
-- fixed build 
+- fixed build
 
 -------------------------------------------------------------------
 Wed Jan 24 18:01:06 CET 2007 - sndirsch@suse.de
@@ -4749,7 +4803,7 @@ Tue Jan 23 11:45:28 CET 2007 - sndirsch@suse.de
   * xorg.conf man page should say "XFree86-DGA", not "Xorg-DGA"
   * Xserver man page: remove bc, add -wr
   * Update pci.ids to 2007-01-18 snapshot
-  * Update Xserver man page to match commit 
+  * Update Xserver man page to match commit
     ed33c7c98ad0c542e9e2dd6caa3f84879c21dd61
   * Fix Tooltip from minimized clients
   * Fix Xming fails to use xkb bug
@@ -4771,7 +4825,7 @@ Tue Jan 23 11:45:28 CET 2007 - sndirsch@suse.de
   * __glXDRIscreenProbe: Use drmOpen/CloseOnce.
   * xfree86/hurd: re-add missing keyboard support (bug #5613)
   * remove last remaning 'linux'isms (bug #5613)
-- obsoletes 
+- obsoletes
   * Mesa-6.5.2.diff
   * xorg-server-1.1.99.901-GetDrawableAttributes.patch
   * int10-fix.diff
@@ -4795,7 +4849,7 @@ Tue Jan 16 22:50:02 CET 2007 - sndirsch@suse.de
 Tue Jan 16 19:05:39 CET 2007 - sndirsch@suse.de
 
 - bug227111-ddc_screensize.diff:
-  * allow user overrides for monitor settings (Bug #227111) 
+  * allow user overrides for monitor settings (Bug #227111)
 
 -------------------------------------------------------------------
 Mon Jan 15 18:27:54 CET 2007 - sndirsch@suse.de
@@ -4807,7 +4861,7 @@ Mon Jan 15 18:27:54 CET 2007 - sndirsch@suse.de
 Sun Jan 14 15:12:59 CET 2007 - sndirsch@suse.de
 
 - added build of VNC support (0018-vnc-support.txt/
-  0018-vnc-support.txt.diff); see 0018-vnc-support.txt.mbox for 
+  0018-vnc-support.txt.diff); see 0018-vnc-support.txt.mbox for
   reference
 
 -------------------------------------------------------------------
@@ -4821,9 +4875,9 @@ Tue Jan  9 17:05:27 CET 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Dec 19 15:11:17 CET 2006 - sndirsch@suse.de
 
-- int10-fix.diff 
-  * Set Int10Current->Tag for the linux native int10 module (X.Org 
-    Bug #9296) 
+- int10-fix.diff
+  * Set Int10Current->Tag for the linux native int10 module (X.Org
+    Bug #9296)
   * obsoletes p_initialize-pci-tag.diff
 
 -------------------------------------------------------------------
@@ -4851,7 +4905,7 @@ Tue Dec 12 05:37:31 CET 2006 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri Dec  8 20:56:59 CET 2006 - sndirsch@suse.de
 
-- another 64bit warning fix 
+- another 64bit warning fix
 
 -------------------------------------------------------------------
 Sat Dec  2 22:35:59 CET 2006 - sndirsch@suse.de
@@ -4873,7 +4927,7 @@ Sat Dec  2 22:35:59 CET 2006 - sndirsch@suse.de
   * Fix GL context destruction with AIGLX.
   * On DragonFLy, default to /dev/sysmouse (just like on FreeBSD).
   * ffs: handle 0 argument (bug #8968)
-  * Bug #9023: Only check mice for "mouse" or "void" if identifier 
+  * Bug #9023: Only check mice for "mouse" or "void" if identifier
     is != NULL.  Fix potential NULL pointer access in timer code.
 - updated Mesa sources to 6.5.2
 
@@ -4895,12 +4949,12 @@ Mon Nov 20 12:35:34 CET 2006 - sndirsch@suse.de
 
 - acpi_events.diff:
   * distinguish between general and input devices also for APM
-    (Bug #197858) 
+    (Bug #197858)
 
 -------------------------------------------------------------------
 Tue Nov 14 22:56:16 CET 2006 - sndirsch@suse.de
 
-- removed /etc/X11/Xsession.d/92xprint-xpserverlist (Bug #220733) 
+- removed /etc/X11/Xsession.d/92xprint-xpserverlist (Bug #220733)
 
 -------------------------------------------------------------------
 Tue Nov 14 16:31:28 CET 2006 - sndirsch@suse.de
@@ -5002,11 +5056,11 @@ Sat Nov  4 17:10:59 CET 2006 - sndirsch@suse.de
 - updated to snapshot of xserver-1.2-branch (soon to be released
   as X.Org 7.2RC2)
   * Make sure xorgcfg files are included even when dist made with
-    --disable-xorgcfg 
+    --disable-xorgcfg
   * Small modification to blocking signals when switching modes.
   * Use getisax() instead of asm code to determine available x86
-    ISA extensions on Solaris 
-  * Pre-release message should tell users to check git, not CVS, 
+    ISA extensions on Solaris
+  * Pre-release message should tell users to check git, not CVS,
     for updates
   * Fix __glXDRIbindTexImage() for 32 bpp on big endian platforms.
   * Create xorg.conf.example (Gentoo bug #138623).
@@ -5054,7 +5108,7 @@ Mon Oct 16 22:07:55 CEST 2006 - aj@suse.de
 -------------------------------------------------------------------
 Sat Oct 14 06:32:52 CEST 2006 - sndirsch@suse.de
 
-- updated to X.Org 7.2RC1 
+- updated to X.Org 7.2RC1
 
 -------------------------------------------------------------------
 Fri Oct 13 13:52:23 CEST 2006 - sndirsch@suse.de
@@ -5066,7 +5120,7 @@ Fri Oct 13 13:52:23 CEST 2006 - sndirsch@suse.de
 Mon Oct  9 20:21:46 CEST 2006 - sndirsch@suse.de
 
 - glx-align.patch:
-  * reenabled -D__GLX_ALIGN64 on affected plaforms (X.Org Bug #8392) 
+  * reenabled -D__GLX_ALIGN64 on affected plaforms (X.Org Bug #8392)
 - Fixes to p_pci-domain.diff (Bug #197572)
   * internal domain number of by one (was supposed to be a cleanup,
     but other code dependet on this semantics)
@@ -5085,15 +5139,15 @@ Mon Sep 18 15:56:41 CEST 2006 - sndirsch@suse.de
 Wed Sep 13 15:11:44 CEST 2006 - sndirsch@suse.de
 
 - disable-fbblt-opt.diff:
-  * Disable optimization (introduced by ajax) due to a general vesa 
-    driver crash later in memcpy (Bug #204324) 
+  * Disable optimization (introduced by ajax) due to a general vesa
+    driver crash later in memcpy (Bug #204324)
 
 -------------------------------------------------------------------
 Sat Sep  9 10:37:00 CEST 2006 - sndirsch@suse.de
 
-- removed two source files with imcompatible license from Mesa 
+- removed two source files with imcompatible license from Mesa
   tarball (Bug #204110)
-- added a check to specfile to make sure that these will not be 
+- added a check to specfile to make sure that these will not be
   reintroduced with the next Mesa update again (Bug #204110)
 
 -------------------------------------------------------------------
@@ -5230,17 +5284,17 @@ Mon Aug  7 11:02:11 CEST 2006 - sndirsch@suse.de
 - p_xorg_acpi.diff:
   * reconnect to acpid when acpid has been killed (Bug #148384)
 - p_xkills_wrong_client.diff:
-  * This patch has unveiled two other problems. One is rather 
-    serious as there seems to be a non-zero possibility that the 
-    Xserver closes the wrong connection and this closes the wrong 
-    client when it looks for stale sockets of clients that have 
+  * This patch has unveiled two other problems. One is rather
+    serious as there seems to be a non-zero possibility that the
+    Xserver closes the wrong connection and this closes the wrong
+    client when it looks for stale sockets of clients that have
     disappeared (eich, Bug #150869)
 - p_bug159532.diff:
-  * X Clients can intentionally or unintenionally crash X11 by 
+  * X Clients can intentionally or unintenionally crash X11 by
     using composite on depth 4 pixmaps. This patch fixes this.
     (Bug #159532)
 - p_xnest-ignore-getimage-errors.diff:
-  * ignores the X error on GetImage in Xnest (Bug #174228, 
+  * ignores the X error on GetImage in Xnest (Bug #174228,
     X.Org Bug #4411)
 - p_initialize-pci-tag.diff:
   * initialize PCI tag correctly, which is used by an IA64 specific
@@ -5263,9 +5317,9 @@ Sat Aug  5 22:48:38 CEST 2006 - sndirsch@suse.de
 - p_vga-crashfix.diff:
   * fixes vga driver crash (#133989)
 - p_xorg_rom_read.diff
-  * read rom in big chunks instead of byte-at-a-time (Bug #140811) 
+  * read rom in big chunks instead of byte-at-a-time (Bug #140811)
 - ps_showopts.diff
-  * Xserver "-showopts" option to print available driver options 
+  * Xserver "-showopts" option to print available driver options
     (Bug #137374)
 
 -------------------------------------------------------------------
@@ -5276,12 +5330,12 @@ Sat Aug  5 10:15:01 CEST 2006 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Aug  2 16:12:46 CEST 2006 - sndirsch@suse.de
 
-- fix setup line 
+- fix setup line
 
 -------------------------------------------------------------------
 Mon Jul 31 22:02:22 CEST 2006 - sndirsch@suse.de
 
-- fixed fatal compiler warnings 
+- fixed fatal compiler warnings
 
 -------------------------------------------------------------------
 Mon Jul 31 18:04:12 CEST 2006 - sndirsch@suse.de
@@ -5296,46 +5350,46 @@ Mon Jul 31 15:54:33 CEST 2006 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri Jul 28 14:45:29 CEST 2006 - sndirsch@suse.de
 
-- use "-fno-strict-aliasing" 
+- use "-fno-strict-aliasing"
 
 -------------------------------------------------------------------
 Thu Jul 27 11:49:41 CEST 2006 - sndirsch@suse.de
 
 - use $RPM_OPT_FLAGS
-- remove existing /usr/include/X11 symlink in %pre 
+- remove existing /usr/include/X11 symlink in %pre
 
 -------------------------------------------------------------------
 Wed Jul 26 17:49:31 CEST 2006 - sndirsch@suse.de
 
 - install xf86Parser.h,xf86Optrec.h to /usr/include instead of
-  /usr/include/xorg, so it is no longer necessary to specify 
+  /usr/include/xorg, so it is no longer necessary to specify
   "-I/usr/include/xorg" which resulted in including a wrong
   "shadow.h" (by X.Org) when building SaX2 (strange build error)
 
 -------------------------------------------------------------------
 Tue Jul 25 10:47:24 CEST 2006 - sndirsch@suse.de
 
-- added permissions files 
+- added permissions files
 
 -------------------------------------------------------------------
 Tue Jul 25 09:15:46 CEST 2006 - sndirsch@suse.de
 
-- add compatibility symlink /usr/X11R6/bin/Xorg 
+- add compatibility symlink /usr/X11R6/bin/Xorg
 
 -------------------------------------------------------------------
 Fri Jul 21 16:30:04 CEST 2006 - sndirsch@suse.de
 
 - p_ValidatePci.diff:
-  * no longer call ValidatePci() to fix i810 driver issues 
+  * no longer call ValidatePci() to fix i810 driver issues
     (Bug #191987)
 
 -------------------------------------------------------------------
 Fri Jul 21 00:04:37 CEST 2006 - sndirsch@suse.de
 
-- fixed build 
+- fixed build
 
 -------------------------------------------------------------------
 Tue Jun 27 10:10:31 CEST 2006 - sndirsch@suse.de
 
-- created package 
+- created package
 

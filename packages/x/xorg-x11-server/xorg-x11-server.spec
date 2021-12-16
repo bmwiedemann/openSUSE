@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.1
+Version:        21.1.2
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -199,7 +199,6 @@ Patch1:         N_default-module-path.diff
 Patch2:         N_zap_warning_xserver.diff
 Patch3:         N_driver-autoconfig.diff
 Patch4:         N_fix_fglrx_screendepth_issue.patch
-Patch5:         U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
 Patch6:         N_fix-dpi-values.diff
 Patch7:         N_Install-Avoid-failure-on-wrapper-installation.patch
 Patch8:         u_xorg-wrapper-Drop-supplemental-group-IDs.patch
@@ -239,10 +238,7 @@ Patch1900:      u_no-lto-for-tests.patch
 
 Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 
-Patch1920:      u_Support-configuration-files-under-run-X11-xorg.conf..patch
-Patch1921:      u_Add-udev-scripts-for-configuration-of-platform-devic.patch
-Patch1922:      u_Revert-xf86-Accept-devices-with-the-simpledrm-driver.patch
-Patch1923:      u_Add-udev-rule-for-HyperV-devices.patch
+Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 
 %description
 This package contains the X.Org Server.
@@ -359,8 +355,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch2 -p1
 %patch3 -p0
 %patch4 -p0
-# back to 96 dpi fix
-%patch5 -p1 -R
 %patch6 -p0
 %patch7 -p1
 %patch8 -p1
@@ -399,9 +393,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1900 -p1
 %patch1910 -p1
 %patch1920 -p1
-%patch1921 -p1
-%patch1922 -p1
-%patch1923 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
@@ -602,12 +593,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/libglx.so
 %endif
 %{_bindir}/xorg-backtrace
-
-# sysfb support
-%{_sbindir}/x11sysfsconf
-%dir %{_sysconfdir}/udev
-%dir %{_sysconfdir}/udev/rules.d
-%{_sysconfdir}/udev/rules.d/99-xorg-sysfs.rules
 
 %if 0%{?have_wayland} == 1
 %files wayland

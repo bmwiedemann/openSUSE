@@ -3675,4 +3675,22 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>935539</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>bcdac5ac78d3b04b721de344a287fdb6</srcmd5>
+    <version>21.1.2</version>
+    <time>1639685938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.1.1
+  * This release fixes 4 recently reported security vulnerabilities and
+    several regressions.
+  * In particular, the real physical dimensions are no longer reported
+    by the X server anymore as it was deemed to be a too disruptive
+    change. X server will continue to report DPI as 96.
+- supersedes U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
+- supersedes U_rendercompositeglyphs.patch
+- supersedes U_xfixes-Fix-out-of-bounds-access-in-ProcXFixesCreateP.patch
+- supersedes U_Xext-Fix-out-of-bounds-access-in-SProcScreenSaverSus.patch
+- supersedes U_record-Fix-out-of-bounds-access-in-SwapCreateRegiste.patch</comment>
+    <requestid>940758</requestid>
+  </revision>
 </revisionlist>
