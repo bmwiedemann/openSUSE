@@ -351,4 +351,12 @@
     <comment>New stable release (forwarded request 849746 from iznogood)</comment>
     <requestid>851030</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>4f8c3715df891aa89c974b4e5ed31490</srcmd5>
+    <version>3.38.2</version>
+    <time>1639685964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940306</requestid>
+  </revision>
 </revisionlist>

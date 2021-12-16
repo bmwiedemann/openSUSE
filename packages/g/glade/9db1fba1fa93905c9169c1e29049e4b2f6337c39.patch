@@ -1,0 +1,31 @@
+From 9db1fba1fa93905c9169c1e29049e4b2f6337c39 Mon Sep 17 00:00:00 2001
+From: Peter Maatman <blackwolf12333@gmail.com>
+Date: Sat, 26 Jun 2021 15:51:56 +0200
+Subject: [PATCH] GladeProject: Segfault in gnome-builder when widget doesn't
+ have a name
+
+---
+ gladeui/glade-project.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gladeui/glade-project.c b/gladeui/glade-project.c
+index 66afb895..fd454bc0 100644
+--- a/gladeui/glade-project.c
++++ b/gladeui/glade-project.c
+@@ -3661,10 +3661,12 @@ glade_project_get_widget_by_name (GladeProject *project, const gchar *name)
+   for (list = project->priv->objects; list; list = list->next)
+     {
+       GladeWidget *widget;
++      gchar *widget_name;
+ 
+       widget = glade_widget_get_from_gobject (list->data);
++      widget_name = glade_widget_get_name (widget);
+ 
+-      if (strcmp (glade_widget_get_name (widget), name) == 0)
++      if (g_strcmp0 (widget_name, name) == 0)
+         return widget;
+     }
+ 
+-- 
+GitLab
+

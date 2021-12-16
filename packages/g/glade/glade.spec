@@ -1,7 +1,7 @@
 #
 # spec file for package glade
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/GUI Builders
 URL:            https://glade.gnome.org/
 Source0:        https://download.gnome.org/sources/glade/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch -- GladeProject: Segfault in gnome-builder when widget doesn't have a name
+Patch0:         https://gitlab.gnome.org/GNOME/glade/-/commit/9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -35,6 +37,7 @@ BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gmodule-export-2.0)
@@ -82,6 +85,15 @@ and the GNOME desktop environment.
 This subpackage contains the header files for developing
 applications that want to make use of libgladeui.
 
+%package docs
+Summary:        Documentation for GLADE User Interface Builder
+
+%description docs
+Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
+and the GNOME desktop environment.
+
+This package contains the documentation for Glade.
+
 %lang_package
 
 %prep
@@ -89,8 +101,8 @@ applications that want to make use of libgladeui.
 
 %build
 %meson \
-    -Dgtk_doc=true \
-    -Dgjs=disabled
+	-Dgtk_doc=true \
+	%{nil}
 %meson_build
 
 %install
@@ -98,8 +110,7 @@ applications that want to make use of libgladeui.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
-%post -n %{soname} -p /sbin/ldconfig
-%postun -n %{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{soname}
 
 %files
 %license COPYING COPYING.GPL COPYING.LGPL
@@ -113,8 +124,8 @@ applications that want to make use of libgladeui.
 %{_datadir}/glade/
 %{_datadir}/gettext/its/glade-catalog.its
 %{_datadir}/gettext/its/glade-catalog.loc
-
 %{_datadir}/icons/hicolor/*/apps/*.*
+%{_libdir}/glade/modules/libgladegjs.so
 %{_libdir}/glade/modules/libgladegtk.so
 %{_libdir}/glade/modules/libgladepython.so
 %{_libdir}/glade/modules/libgladewebkit2gtk.so
@@ -139,14 +150,16 @@ applications that want to make use of libgladeui.
 
 %files -n libgladeui-2-devel
 %doc AUTHORS TODO
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%doc %{_datadir}/gtk-doc/html/gladeui-2
 %{_includedir}/libgladeui-2.0/
 %{_libdir}/pkgconfig/gladeui-2.0.pc
 %{_libdir}/libgladeui*.so
 %{_datadir}/gir-1.0/*.gir
 
 %files lang -f %{name}.lang
+
+%files docs
+%dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
+%{_datadir}/gtk-doc/html/gladeui-2
 
 %changelog
