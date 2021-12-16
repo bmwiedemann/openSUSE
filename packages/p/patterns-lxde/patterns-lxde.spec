@@ -1,5 +1,5 @@
 #
-# spec file for package patterns-lxde
+# spec file for package patterns-openSUSE
 #
 # Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
@@ -123,6 +123,9 @@ Recommends:     yast2-control-center-qt
 # Use NM by default
 Recommends:     NetworkManager
 Recommends:     NetworkManager-applet
+# Pull in pulseaudio and something to configure it
+# (xfce4-pulseaudio-plugin does not work standalone)
+Recommends:     pavucontrol
 Recommends:     desktop-branding
 Suggests:       lxlauncher
 
@@ -161,7 +164,7 @@ Provides:       pattern() = lxde_laptop
 Provides:       pattern-extends() = laptop
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 5160
-Supplements:    packageand(patterns-lxde-lxde:patterns-desktop-laptop)
+Supplements:    packageand(patterns-openSUSE-lxde:patterns-openSUSE-laptop)
 Requires:       pattern() = lxde
 
 Recommends:     gnome-bluetooth
@@ -183,7 +186,7 @@ Provides:       pattern() = lxde_office
 Provides:       pattern-extends() = office
 Provides:       pattern-icon() = pattern-lxde
 Provides:       pattern-order() = 1880
-Supplements:    packageand(patterns-lxde-lxde:patterns-office-office)
+Supplements:    packageand(patterns-openSUSE-lxde:patterns-openSUSE-office)
 Requires:       pattern() = lxde
 
 Recommends:     abiword

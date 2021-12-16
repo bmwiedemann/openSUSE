@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 14 12:15:22 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Install pulseaudio + pavucontrol by default.
+  Other desktops do the same, and this avoids temporary ALSA breakage
+  when pulseaudio is installed in the running system (boo#1193695).
+
+-------------------------------------------------------------------
 Mon Apr 10 13:27:52 UTC 2017 - jengelh@inai.de
 
 - Use macros over old $RPM shell vars.
