@@ -103,4 +103,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 933468 from jsegitz)</comment>
     <requestid>933573</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ee3cab90a56dd31db8be91fd5ad7c568</srcmd5>
+    <version>1.20.4</version>
+    <time>1639616434</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.20.4 (forwarded request 940524 from susnux)</comment>
+    <requestid>940587</requestid>
+  </revision>
 </revisionlist>

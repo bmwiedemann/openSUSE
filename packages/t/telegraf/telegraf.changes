@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Dec 14 16:21:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.20.4:
+  * Update go version to 1.17.3
+  * Update deprecated plugin READMEs to better indicate deprecation
+  * Update dependencies
+  * inputs.mongodb Update readme with correct connection URI
+  * inputs.mysql Fix type conversion follow-up
+  * inputs.proxmox Changed VM ID from string to int
+  * inputs.modbus Do not build modbus on openbsd
+  * inputs.cisco_telemetry_mdt Move to new protobuf library
+  * outputs.loki Add metric name with label "__name"
+  * inputs.nvidia_smi Set the default path correctly
+  * inputs.sqlserver Add elastic pool in supported versions
+    in sqlserver
+  * inputs.influxdb Update influxdb input schema docs
+  * inputs.intel_rdt Correct timezone handling
+
+-------------------------------------------------------------------
+Fri Nov 26 15:58:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.20.3:
+  * New External Plugins
+    * IBM DB2
+    * Oracle Database
+  * Many bug fixes, see full list:
+  https://github.com/influxdata/telegraf/releases/tag/v1.20.3
+- Update to version 1.20.2:
+  * parsers.influx Fix memory leak in influx parser
+  * Minor other bug fixes
+
+-------------------------------------------------------------------
+Thu Nov 25 16:47:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.20.1:
+  * inputs.elasticsearch_query Add custom time/date format field
+  * Some bug fixes, see list:
+  https://github.com/influxdata/telegraf/releases/tag/v1.20.1
+- Update to version 1.20.0:
+  * New Input Plugins
+    * Add rocm_smi input to monitor AMD GPUs
+    * Add mdstat input to gather from /proc/mdstat collection
+    * Add Elasticsearch query input
+    * Add internet Speed Monitor Input Plugin
+  * New Output Plugins
+    * Add OpenTelemetry output
+    * Add Azure Data Explorer(ADX) output
+  * Features:
+    * inputs.systemd_units feat(plugins/inputs/systemd_units): add
+      pattern support
+    * inputs.cloudwatch Pull metrics from multiple AWS CloudWatch
+      namespaces
+    * inputs.cloudwatch Support AWS Web Identity Provider
+    * inputs.modbus Add support for RTU over TCP
+  * Many other bug fixes and features, full list:
+    https://github.com/influxdata/telegraf/releases/tag/v1.20.0
+
+-------------------------------------------------------------------
 Wed Nov 24 14:18:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

@@ -18,7 +18,7 @@
 
 %define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.19.0
+Version:        1.20.4
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
@@ -26,7 +26,7 @@ Group:          System/Monitoring
 URL:            https://github.com/influxdata/telegraf
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Patch0:	harden_telegraf.service.patch
+Patch0:         harden_telegraf.service.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
