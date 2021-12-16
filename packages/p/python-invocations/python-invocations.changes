@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Dec 13 23:44:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.0
+  * [Bug]: The packaging.release.upload task wasn’t properly
+    exposed externally, even though another task’s docstring
+    referenced it. Fixed.
+  * [Bug]: Ensure that the venv used for
+    packaging.release.test_install has its pip upgraded to match
+    the invoking interpreter’s version of same; this avoids common
+    pitfalls where the “inner” pip is a bundled-with-venv,
+    much-older version incapable of modern package installations.
+  * [Support]: Overhaul testing and release procedures to use
+    CircleCI & modern Invocations.
+  * 2.2.0 2021-09-03
+  * [Feature]: Added the invocations.environment module with
+    top-level functions such as in_ci.
+  * [Feature]: packaging.release.push, in dry-run mode, now
+    dry-runs its git push subcommand – meaning the subcommand
+    itself is what is “dry-ran”, instead of truly executing git
+    push --dry-run – when a CI environment is detected.
+  * This prevents spurious errors when the git remote (eg Github)
+    bails out on read-only authentication credentials, which is
+    common within CI systems.
+  * It’s also just not very useful to dry-run a real git push
+    within CI, since almost certainly the commands to generate git
+    objects to get pushed will themselves not have truly run!
+  * [Bug]: packaging.release.status (and its use elsewhere, eg
+    prepare) didn’t adequately reload the local project’s version
+    module during its second/final recheck; this causes that check
+    to fail when said version was edited as part of a prepare run.
+    It now force-reloads said version module.
+- Release 2.1.0
+  * [Feature]: Added twine check (which validates packaging
+    metadata’s long_description) as a pre-upload step within
+    packaging.release.publish.
+  * This includes some tweaking of readme_renderer behavior (used
+    internally by twine) so it correctly spots more malformed RST,
+    as Sphinx does.
+  * [Feature]: Add packaging.release.push for pushing Git objects
+    as part of a release.
+  * [Feature]: The packaging.release.all_ task has been expanded to
+    actually do “ALL THE THINGS!!!”, given a dry_run flag, and
+    renamed on the CLI to all (no trailing underscore).
+  * [Feature]: packaging.release.prepare grew a dry_run flag to
+    match the rest of its friends.
+  * [Feature]: Add Codecov support to pytest.coverage.
+  * [Feature]: Add packaging.release.test_install task and call it
+    just prior to the final step in packaging.release.upload (so
+    one doesn’t upload packages which build OK but don’t actually
+    install OK).
+  * [Bug]: pytest.coverage incorrectly concatenated its opts
+    argument to internal options; this has been fixed.
+  * [Bug]: Correctly test for html report type inside of
+    pytest.coverage when deciding whether to run open at the end.
+  * [Bug]: packaging.release.publish missed a spot when it grew
+    “kwargs beat configuration” behavior - the index kwarg still
+    got overwritten by the config value, if defined. This has been
+    fixed.
+  * [Bug]: packaging.release.prepare now generates annotated Git
+    tags instead of lightweight ones. This was a perplexing
+    oversight (Git has always intended annotated tags to be used
+    for release purposes) so we’re considering it a bugfix instead
+    of a backwards incompatible feature change.
+  * [Support]: packaging.release.prepare now runs its internal
+    status check twice, once at the start (as before) and again at
+    the end (to prove that the actions taken did in fact satisfy
+    needs).
+  * [Support]: Rely on Invoke 1.6+ for some of its new features.
+- Release 2.0.0
+  * [Feature]: Add a warnings kwarg/flag to pytest.test, allowing
+    one to call it with --no-warnings as an inline ‘alias’ for
+    pytest’s own --disable-warnings flag.
+  * [Bug]: Fix minor display bug causing the pytest task module to
+    append a trailing space to the invocation of pytest itself.
+  * [Bug]: release.build and release.publish had bad
+    kwargs-vs-config logic preventing flags such as --wheel or
+    --python from actually working (config defaults always won out,
+    leading to silent ignoring of user input). This has been fixed;
+    config will now only be honored unless the CLI appears to be
+    overriding it.
+  * [Bug]: release.build’s --clean flag has been updated:
+    - It now honors configuration like the other flags in this
+      task, specifically packaging.clean.
+    - It now defaults to False (rationale: most build operations in
+      the wild tend to assume no cleaning by default, so defaulting
+      to the opposite was sometimes surprising).
+      + Warning: This is a backwards incompatible change.
+    - When True, it applies to both build and dist directories,
+      instead of just build.
+      + Warning: This is a backwards incompatible change.
+  * [Support]: Modify release task tree to look at main branches in
+    addition to master ones, for “are we on a feature release line
+    or a bugfix one?” calculations, etc.
+  * [Support]: Replace some old Python 2.6-compatible syntax bits.
+  * [Support]: Reverse the default value of release.build and
+    release.publish)’s wheel argument from False to True. Included
+    in this change is a new required runtime dependency on the
+    wheel package.
+    - Rationale: at this point in time, most users will be
+      expecting wheels to be available, and not building wheels is
+      likely to be the uncommon case.
+    - Warning: This is a backwards incompatible change.
+  * [Support] #21: Only require enum34 under Python 2 to prevent it
+    clashing with the stdlib enum under Python 3. Credit: Alex
+    Gaynor.
+  * [Support] #12: Upgrade our packaging manifest so tests (also
+    docs, requirements files, etc) are included in the distribution
+    archives. Thanks to Tomáš Chvátal for the report.
+  * [Support]: Drop Python 3.4 support. We didn’t actually do
+    anything to make the code not work on 3.4, but we’ve removed
+    some 3.4 related runtime (and development) dependency
+    limitations. Our CI will also no longer test on 3.4.
+    - Warning: This is a backwards incompatible change.
+- Refresh invocations-no-bundled.patch
+
+-------------------------------------------------------------------
+Mon Dec 13 23:28:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test on python310 because of pytest-relaxed not supporting
+  Pytest 6 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
 Tue Oct 13 10:33:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Upper limit pytest 6.1 -- gh#bitprophet/pytest-relaxed#12

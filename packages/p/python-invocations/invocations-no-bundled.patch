@@ -14,9 +14,9 @@ Index: invocations-1.4.0/tests/packaging/release.py
 +except ImportError:
 +    from six import PY2
 +    from lexicon import Lexicon
- from invoke import MockContext, Result, Config
- from mock import Mock, patch
- from pytest import skip
+ from invoke import MockContext, Result, Config, Exit
+ from docutils.utils import Reporter
+ from mock import Mock, patch, call
 Index: invocations-1.4.0/invocations/console.py
 ===================================================================
 --- invocations-1.4.0.orig/invocations/console.py
@@ -55,7 +55,7 @@ Index: invocations-1.4.0/invocations/packaging/release.py
 +    from lexicon import Lexicon
  
  from blessings import Terminal
- from enum import Enum
+ from docutils.utils import Reporter
 Index: invocations-1.4.0/invocations/packaging/semantic_version_monkey.py
 ===================================================================
 --- invocations-1.4.0.orig/invocations/packaging/semantic_version_monkey.py
