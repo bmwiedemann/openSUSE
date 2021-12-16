@@ -87,4 +87,29 @@
     <comment></comment>
     <requestid>835549</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>02897adff63d61df4861c57b27ea768d</srcmd5>
+    <version>8.12.39</version>
+    <time>1639616437</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.12.39
+  - New to_string() methods have been added for enum-like
+    classes, emitting strings that describe integer values known
+    to be enum values.
+  - The library now includes .pyi stub files providing typing
+    information about the API, thanks to Adam Turner.
+  - Updated As-You-Type-Formatter to exclude patterns where some
+    digits would be dropped in the output. This also fixes the
+    bug where an extra country code is added in some cases to the
+    user's output. b/183053929
+  - Changes format_out_of_country_calling_number to always use
+    preferred intl prefix if present, not just for numbers with
+    a non-unique IDD. This means we will output &quot;8~10&quot; as the
+    prefix if calling formatOutOfCountryCallingNumber instead of
+    &quot;810&quot; for some regions that have this tilde in their prefix
+    [designates that the user should wait before continuing to
+    dial].
+</comment>
+    <requestid>940591</requestid>
+  </revision>
 </revisionlist>
