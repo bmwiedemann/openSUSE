@@ -1,5 +1,5 @@
 #
-# spec file for package python-hypothesis
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.14.1
+Version:        6.31.4
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -56,22 +56,29 @@ Requires:       python-attrs >= 19.2.0
 Requires:       python-sortedcontainers >= 2.1.0
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+# SECTION requires_extra
+# consuming packages need to declare these optional dependencies explicitly
 Recommends:     python-Django >= 2.2
+Recommends:     python-black >= 19.10
+Recommends:     python-click >= 7.0
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark-parser >= 0.6.5
 Recommends:     python-libcst >= 0.3.16
 Recommends:     python-numpy >= 1.9.0
 Recommends:     python-pandas >= 0.25
-Recommends:     python-pytest >= 4.3
+Recommends:     python-pytest >= 4.6
 Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
 Recommends:     python-redis >= 3.0.0
+Recommends:     python-rich >= 9.0
+Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
+# /SECTION
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module attrs >= 19.2.0}
-BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module black >= 19.10}
 BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module flaky}
@@ -87,8 +94,8 @@ BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module numpy >= 1.9.0 if (%python-base without python36-base)}
 BuildRequires:  %{python_module pandas >= 0.25 if (%python-base without python36-base)}
-%endif
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -142,6 +149,16 @@ python3_donttest+=" or test_mutually_recursive_types_with_typevar"
 python36_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
 python38_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
 python3_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
+# added for 6.24.x
+# generic exclusion of array_api* in not possible :-(
+# python3_ignoretests+=" --ignore tests/array_api/test_partial_adoptors.py"
+# python3_ignoretests+=" --ignore tests/array_api/test_pretty.py"
+# python3_ignoretests+=" --ignore tests/array_api/test_scalar_dtypes.py"
+# python3_ignoretests+=" --ignore tests/array_api/test_arrays.py"
+# python3_ignoretests+=" --tests/array_api/test_from_dtype.py"
+# python3_ignoretests+=" --tests/array_api/test_argument_validation.py"
+# python3_ignoretests+=" --tests/array_api/test_indices.py"
+python3_ignoretests+=" --ignore tests/array_api*"
 # not available for python36
 python36_ignoretests+=" --ignore tests/numpy --ignore tests/pandas"
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
@@ -164,8 +181,9 @@ filterwarnings =
 %license LICENSE.txt
 %doc README.rst
 %python_alternative %{_bindir}/hypothesis
-%{python_sitelib}/hypothesis
+%{python_sitelib}/*hypothesis*
 %{python_sitelib}/hypothesis-%{version}-py*.egg-info
+%pycache_only %{python_sitelib}/__pycache__/*hypothesis*
 %endif
 
 %changelog

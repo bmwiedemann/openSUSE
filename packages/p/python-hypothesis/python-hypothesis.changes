@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Dec 12 11:40:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.31.4
+  * This patch makes the .example() method more representative of
+    test-time data generation, albeit often at a substantial cost
+    to readability (issue #3182).
+- Release 6.31.3
+  * This patch improves annotations on some of Hypothesis’ internal
+    functions, in order to deobfuscate the signatures of some
+    strategies. In particular, strategies shared between
+    hypothesis.extra.numpy and the hypothesis.extra.array_api extra
+    will benefit from this patch.
+- Release 6.31.2
+  * This patch fix invariants display in stateful falsifying
+    examples (issue #3185).
+- Release 6.31.1
+  * This patch updates xps.indices() so no flat indices are
+    generated, i.e. generated indices will now always explicitly
+    cover each axes of an array if no ellipsis is present. This is
+    to be consistent with a specification change that dropped
+    support for flat indexing (#272).
+- Release 6.31.0
+  * This release makes us compatible with Django 4.0, in particular
+    by adding support for use of zoneinfo timezones (though we
+    respect the new USE_DEPRECATED_PYTZ setting if you need it).
+- Revert last mandatory requires update. Optional dependencies need
+  to be declared by consuming packages (see hypothesis packaging
+  doc)
+
+-------------------------------------------------------------------
+Mon Dec  6 18:10:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix requires 
+
+-------------------------------------------------------------------
+Mon Dec  6 09:35:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Sun Dec  5 18:29:41 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.30.1
+  some tests skipped for python 3.6
+
+-------------------------------------------------------------------
+Sat Dec  4 18:31:49 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- update 6.30.0
+  tests/test_api disabled as recommended 
+  https://github.com/HypothesisWorks/hypothesis/issues/3178
+
+-------------------------------------------------------------------
+Sat Oct 23 15:32:25 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- update to 6.24.0
+
+-------------------------------------------------------------------
 Mon Jul  5 09:56:29 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 6.14.1

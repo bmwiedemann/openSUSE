@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/HypothesisWorks/hypothesis.git</param>
     <param name="scm">git</param>
-    <param name="revision">hypothesis-python-6.14.1</param>
+    <param name="revision">hypothesis-python-6.31.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">hypothesis-python-(.*)</param>
     <param name="subdir">hypothesis-python</param>    
