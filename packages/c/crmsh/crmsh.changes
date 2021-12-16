@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 15 15:09:05 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211215.85834218:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: xmlutil: Add class CrmMonXmlParser to parse xml output of crm_mon
+
+-------------------------------------------------------------------
 Fri Dec 10 02:48:29 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211210.a149de51:

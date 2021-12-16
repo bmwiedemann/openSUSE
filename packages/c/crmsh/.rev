@@ -2417,4 +2417,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>938974</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>d24778781c14918062fdb8eed713d98d</srcmd5>
+    <version>4.3.1+20211215.85834218</version>
+    <time>1639616455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940756</requestid>
+  </revision>
 </revisionlist>
