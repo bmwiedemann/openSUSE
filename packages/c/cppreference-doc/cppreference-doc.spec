@@ -1,7 +1,7 @@
 #
 # spec file for package cppreference-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           cppreference-doc
-Version:        20190607 
+Version:        20211127
 Release:        0
 Summary:        Cppreference documentation for offline reading
 License:        CC-BY-SA-3.0
 Group:          Documentation/HTML
-Url:            http://en.cppreference.com/w/
-Source0:        http://upload.cppreference.com/mwiki/images/8/80/cppreference-doc-20190607.tar.xz
-# SECTION Manually bundle build script missed by upstream tarball
-Source1:        https://raw.githubusercontent.com/p12tic/cppreference-doc/v20190607/preprocess_qch.py
-# /SECTION
+URL:            http://en.cppreference.com/w/
+Source0:        https://github.com/PeterFeicht/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  devhelp
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qttools
@@ -48,7 +45,6 @@ Cppreference is a complete online reference for the C and C++ languages and stan
 
 This package provides the documentation in the devhelp format.
 
-
 %package qhelp
 Summary:        Cppreference documentation for offline reading - qhelp version
 Group:          Documentation/Other
@@ -61,8 +57,6 @@ This package provides the documentation in the qhelp format.
 
 %prep
 %setup -q
-cp %{S:1} ./
-chmod +x preprocess_qch.py
 
 %build
 make %{?_smp_mflags} qhelpgenerator=qhelpgenerator-qt5
