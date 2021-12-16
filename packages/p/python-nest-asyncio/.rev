@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>902433</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02c128006d3da26841ceee4f3ac87e51</srcmd5>
+    <version>1.5.4</version>
+    <time>1639685958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.4:
+  * No release notes</comment>
+    <requestid>940135</requestid>
+  </revision>
 </revisionlist>
