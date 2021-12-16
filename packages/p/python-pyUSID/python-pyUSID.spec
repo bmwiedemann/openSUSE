@@ -36,7 +36,6 @@ BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
 BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sidpy >= 0.0.1}
@@ -66,6 +65,8 @@ and Imaging Data (USID).
 
 %prep
 %setup -q -n %{packagename}-%{version}
+# https://pycroscopy.github.io/pyUSID/
+sed -i 's:pytest-runner:pytest:' setup.py
 
 %build
 %python_build
