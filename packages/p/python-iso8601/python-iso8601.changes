@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec 12 11:37:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Explicitly require test depenendency pytz (it's only optional in
+  hypothesis[pytz])
+
+-------------------------------------------------------------------
+Mon Dec  6 18:07:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Add missing `__all__` in `__init__.py`
+  * Add missing py.typed file (as per PEP 561), keeps mypy happy :D
+  * Drop python < 3.6 support
+  * Add type annotations to code
+  * Remove external type annotations in pyi
+  * Switch to poetry for packaging
+  * Simplify internals and remove old compatability code
+  * Switch to nox for testing
+  * Lots of small project development changes
+
+-------------------------------------------------------------------
 Sun Aug  1 09:32:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.16:
