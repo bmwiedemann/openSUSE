@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 11 21:10:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- add Genshi-pr49-fix-python310-tests.patch - gh#edgewall/genshi#49
+
+-------------------------------------------------------------------
 Sat Jun 26 12:47:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add Genshi-pr39-fix-setuptools-extension.patch in order to fix

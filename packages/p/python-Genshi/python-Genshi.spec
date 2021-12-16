@@ -28,6 +28,8 @@ URL:            http://genshi.edgewall.org/
 Source:         https://files.pythonhosted.org/packages/source/G/Genshi/Genshi-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Genshi-pr39-fix-setuptools-extension.patch -- gh#edgewall/genshi#39 fixes gh#edgewall/genshi#36
 Patch1:         Genshi-pr39-fix-setuptools-extension.patch
+# PATCH-FIX-UPSTREAM Genshi-pr49-fix-python310-tests.patch -- gh#edgewall/genshi#49
+Patch2:         https://github.com/edgewall/genshi/pull/49.patch#/Genshi-pr49-fix-python310-tests.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}

@@ -1,0 +1,314 @@
+From 305dd683920e4dbd8d8f099e9ec7a57317cfe51a Mon Sep 17 00:00:00 2001
+From: Felix Schwarz <felix.schwarz@oss.schwarz.eu>
+Date: Thu, 16 Sep 2021 22:39:45 +0200
+Subject: [PATCH 1/3] remove unused variable
+
+---
+ genshi/util.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/genshi/util.py b/genshi/util.py
+index 6213a26..6b357a6 100644
+--- a/genshi/util.py
++++ b/genshi/util.py
+@@ -119,7 +119,6 @@ def _insert_item(self, item):
+ 
+     def _manage_size(self):
+         while len(self._dict) > self.capacity:
+-            olditem = self._dict[self.tail.key]
+             del self._dict[self.tail.key]
+             if self.tail != self.head:
+                 self.tail = self.tail.prv
+
+From 1f18af74eb40c673d6b01cf3c9960c4e48e084d9 Mon Sep 17 00:00:00 2001
+From: Felix Schwarz <felix.schwarz@oss.schwarz.eu>
+Date: Thu, 16 Sep 2021 22:40:22 +0200
+Subject: [PATCH 2/3] remove unused imports
+
+---
+ genshi/core.py                    | 3 ++-
+ genshi/filters/tests/i18n.py      | 1 -
+ genshi/filters/tests/test_html.py | 1 -
+ genshi/filters/tests/transform.py | 1 -
+ genshi/input.py                   | 2 --
+ genshi/output.py                  | 2 +-
+ genshi/template/base.py           | 1 -
+ genshi/template/directives.py     | 3 +--
+ genshi/template/interpolation.py  | 1 -
+ genshi/template/markup.py         | 2 +-
+ genshi/template/text.py           | 1 -
+ genshi/tests/core.py              | 3 +--
+ genshi/tests/input.py             | 2 --
+ genshi/tests/output.py            | 2 --
+ genshi/tests/path.py              | 1 -
+ genshi/tests/util.py              | 1 -
+ genshi/util.py                    | 2 --
+ setup.py                          | 3 ---
+ 18 files changed, 6 insertions(+), 26 deletions(-)
+
+diff --git a/genshi/core.py b/genshi/core.py
+index 1d50329..11ca64c 100644
+--- a/genshi/core.py
++++ b/genshi/core.py
+@@ -20,7 +20,8 @@
+ 
+ import six
+ 
+-from genshi.util import plaintext, stripentities, striptags, stringrepr
++from genshi.compat import stringrepr
++from genshi.util import stripentities, striptags
+ 
+ __all__ = ['Stream', 'Markup', 'escape', 'unescape', 'Attrs', 'Namespace',
+            'QName']
+diff --git a/genshi/filters/tests/i18n.py b/genshi/filters/tests/i18n.py
+index 5828ed9..80d0924 100644
+--- a/genshi/filters/tests/i18n.py
++++ b/genshi/filters/tests/i18n.py
+@@ -12,7 +12,6 @@
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+ from datetime import datetime
+-import doctest
+ from gettext import NullTranslations
+ import unittest
+ 
+diff --git a/genshi/filters/tests/test_html.py b/genshi/filters/tests/test_html.py
+index f50b026..a5fc71b 100644
+--- a/genshi/filters/tests/test_html.py
++++ b/genshi/filters/tests/test_html.py
+@@ -11,7 +11,6 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-import doctest
+ import unittest
+ 
+ import six
+diff --git a/genshi/filters/tests/transform.py b/genshi/filters/tests/transform.py
+index f4c103d..6201557 100644
+--- a/genshi/filters/tests/transform.py
++++ b/genshi/filters/tests/transform.py
+@@ -12,7 +12,6 @@
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+ import doctest
+-from pprint import pprint
+ import unittest
+ 
+ import six
+diff --git a/genshi/input.py b/genshi/input.py
+index 711d042..48ee193 100644
+--- a/genshi/input.py
++++ b/genshi/input.py
+@@ -22,8 +22,6 @@
+ import six
+ from six.moves import html_entities as entities, html_parser as html
+ 
+-import six
+-
+ from genshi.core import Attrs, QName, Stream, stripentities
+ from genshi.core import START, END, XML_DECL, DOCTYPE, TEXT, START_NS, \
+                         END_NS, START_CDATA, END_CDATA, PI, COMMENT
+diff --git a/genshi/output.py b/genshi/output.py
+index dfe2648..de90a56 100644
+--- a/genshi/output.py
++++ b/genshi/output.py
+@@ -20,7 +20,7 @@
+ 
+ import six
+ 
+-from genshi.core import escape, Attrs, Markup, Namespace, QName, StreamEventKind
++from genshi.core import escape, Attrs, Markup, QName, StreamEventKind
+ from genshi.core import START, END, TEXT, XML_DECL, DOCTYPE, START_NS, END_NS, \
+                         START_CDATA, END_CDATA, PI, COMMENT, XML_NAMESPACE
+ 
+diff --git a/genshi/template/base.py b/genshi/template/base.py
+index 987a7ca..5336895 100644
+--- a/genshi/template/base.py
++++ b/genshi/template/base.py
+@@ -15,7 +15,6 @@
+ 
+ from collections import deque
+ import os
+-import sys
+ 
+ import six
+ 
+diff --git a/genshi/template/directives.py b/genshi/template/directives.py
+index 68d0af0..c672e77 100644
+--- a/genshi/template/directives.py
++++ b/genshi/template/directives.py
+@@ -19,8 +19,7 @@
+ from genshi.path import Path
+ from genshi.template.base import TemplateRuntimeError, TemplateSyntaxError, \
+                                  EXPR, _apply_directives, _eval_expr
+-from genshi.template.eval import Expression, ExpressionASTTransformer, \
+-                                 _ast, _parse
++from genshi.template.eval import Expression, _ast, _parse
+ 
+ __all__ = ['AttrsDirective', 'ChooseDirective', 'ContentDirective',
+            'DefDirective', 'ForDirective', 'IfDirective', 'MatchDirective',
+diff --git a/genshi/template/interpolation.py b/genshi/template/interpolation.py
+index 401d79e..b4046b5 100644
+--- a/genshi/template/interpolation.py
++++ b/genshi/template/interpolation.py
+@@ -16,7 +16,6 @@
+ """
+ 
+ from itertools import chain
+-import os
+ import re
+ from tokenize import PseudoToken
+ 
+diff --git a/genshi/template/markup.py b/genshi/template/markup.py
+index 53d73e3..22f0602 100644
+--- a/genshi/template/markup.py
++++ b/genshi/template/markup.py
+@@ -15,7 +15,7 @@
+ 
+ from itertools import chain
+ 
+-from genshi.core import Attrs, Markup, Namespace, Stream, StreamEventKind
++from genshi.core import Attrs, Markup, Namespace, Stream
+ from genshi.core import START, END, START_NS, END_NS, TEXT, PI, COMMENT
+ from genshi.input import XMLParser
+ from genshi.template.base import BadDirectiveError, Template, \
+diff --git a/genshi/template/text.py b/genshi/template/text.py
+index 94b4065..9155750 100644
+--- a/genshi/template/text.py
++++ b/genshi/template/text.py
+@@ -35,7 +35,6 @@
+                                  TemplateSyntaxError, EXEC, INCLUDE, SUB
+ from genshi.template.eval import Suite
+ from genshi.template.directives import *
+-from genshi.template.directives import Directive
+ from genshi.template.interpolation import interpolate
+ 
+ __all__ = ['NewTextTemplate', 'OldTextTemplate', 'TextTemplate']
+diff --git a/genshi/tests/core.py b/genshi/tests/core.py
+index b3d3fb5..e7e7906 100644
+--- a/genshi/tests/core.py
++++ b/genshi/tests/core.py
+@@ -11,13 +11,12 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-import doctest
+ import pickle
+ import unittest
+ 
+ from genshi import core
+ from genshi.core import Markup, Attrs, Namespace, QName, escape, unescape
+-from genshi.input import XML, ParseError
++from genshi.input import XML
+ from genshi.compat import StringIO, BytesIO, IS_PYTHON2
+ from genshi.tests.test_utils import doctest_suite
+ 
+diff --git a/genshi/tests/input.py b/genshi/tests/input.py
+index f0b9b3b..e520e26 100644
+--- a/genshi/tests/input.py
++++ b/genshi/tests/input.py
+@@ -11,8 +11,6 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-import doctest
+-import sys
+ import unittest
+ 
+ from genshi.core import Attrs, Stream
+diff --git a/genshi/tests/output.py b/genshi/tests/output.py
+index f964177..aa4c81a 100644
+--- a/genshi/tests/output.py
++++ b/genshi/tests/output.py
+@@ -11,9 +11,7 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-import doctest
+ import unittest
+-import sys
+ 
+ from genshi.core import Attrs, Markup, QName, Stream
+ from genshi.input import HTML, XML
+diff --git a/genshi/tests/path.py b/genshi/tests/path.py
+index 3d04dd4..ce75e18 100644
+--- a/genshi/tests/path.py
++++ b/genshi/tests/path.py
+@@ -11,7 +11,6 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-import doctest
+ import unittest
+ 
+ from genshi.core import Attrs, QName
+diff --git a/genshi/tests/util.py b/genshi/tests/util.py
+index f766579..4556d11 100644
+--- a/genshi/tests/util.py
++++ b/genshi/tests/util.py
+@@ -11,7 +11,6 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-import doctest
+ import unittest
+ 
+ from genshi import util
+diff --git a/genshi/util.py b/genshi/util.py
+index 6b357a6..ad7f2d7 100644
+--- a/genshi/util.py
++++ b/genshi/util.py
+@@ -19,8 +19,6 @@
+ 
+ import six
+ 
+-from .compat import stringrepr
+-
+ __docformat__ = 'restructuredtext en'
+ 
+ 
+diff --git a/setup.py b/setup.py
+index 18c7dfd..c14cfa8 100755
+--- a/setup.py
++++ b/setup.py
+@@ -12,11 +12,8 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://genshi.edgewall.org/log/.
+ 
+-from distutils.cmd import Command
+ from distutils.command.build_ext import build_ext
+ from distutils.errors import CCompilerError, DistutilsPlatformError
+-import doctest
+-from glob import glob
+ import os
+ try:
+     from setuptools import setup, Extension
+
+From a23f3054b96b487215b04812c680075c5117470a Mon Sep 17 00:00:00 2001
+From: Felix Schwarz <felix.schwarz@oss.schwarz.eu>
+Date: Thu, 16 Sep 2021 23:02:46 +0200
+Subject: [PATCH 3/3] get test suite passing with Python 3.10
+
+---
+ genshi/compat.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/genshi/compat.py b/genshi/compat.py
+index 4a77571..8b307e5 100644
+--- a/genshi/compat.py
++++ b/genshi/compat.py
+@@ -99,6 +99,13 @@ def get_code_params(code):
+ 
+ 
+     def build_code_chunk(code, filename, name, lineno):
++        if hasattr(code, 'replace'):
++            # Python 3.8+
++            return code.replace(
++                co_filename=filename,
++                co_name=name,
++                co_firstlineno=lineno,
++            )
+         params =  [0, code.co_nlocals, code.co_kwonlyargcount,
+                   code.co_stacksize, code.co_flags | 0x0040,
+                   code.co_code, code.co_consts, code.co_names,
