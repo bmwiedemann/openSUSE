@@ -18,4 +18,14 @@
       </memory>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+      <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
 </constraints>

@@ -17,7 +17,7 @@
 
 
 %define mod_name electron
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %{arm}
 %ifarch x86_64
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without lto
@@ -54,7 +54,7 @@ ExcludeArch:    %{ix86}
 %bcond_with clang
 %endif
 Name:           nodejs-electron
-Version:        13.6.2
+Version:        13.6.3
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -100,10 +100,12 @@ Patch23:        electron-13-gcc-fix-v8-nodiscard.patch
 # Fix blink nodestructor
 Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
 Patch26:        a9831f1cbf93fb18dd951453635f488037454ce9.patch
-# Fix missing harfbuzz symbols
+%if 0%{?suse_version} > 1500
+# Fix missing harfbuzz symbols for harfbuzz 3.0.0
 Patch27:        skia_harfbuzz_roll.patch
 Patch28:        skia_harfbuzz_api.patch
 Patch29:        harfbuzz_roll.patch
+%endif
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison

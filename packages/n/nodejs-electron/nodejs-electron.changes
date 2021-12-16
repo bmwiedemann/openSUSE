@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 13 11:06:00 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not build on 32-bit arm
+
+-------------------------------------------------------------------
+Mon Dec 13 10:03:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to build aarch64 only on powerful workers
+  (checks for asimdrdm)
+
+-------------------------------------------------------------------
+Mon Dec 13 07:50:42 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 13.6.3
+  https://github.com/electron/electron/releases/tag/v13.6.3
+
+-------------------------------------------------------------------
 Wed Dec  8 23:33:01 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Fix harfbuzz 3.0.0 related build fails

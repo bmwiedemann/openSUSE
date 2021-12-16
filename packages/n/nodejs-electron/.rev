@@ -129,4 +129,17 @@
 </comment>
     <requestid>937741</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b8ee7743715d718bc6efa1b496de7bdb</srcmd5>
+    <version>13.6.3</version>
+    <time>1639616429</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build on 32-bit arm
+- Update _constraints to build aarch64 only on powerful workers
+  (checks for asimdrdm)
+- Update to version 13.6.3
+  https://github.com/electron/electron/releases/tag/v13.6.3
+</comment>
+    <requestid>940444</requestid>
+  </revision>
 </revisionlist>
