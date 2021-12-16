@@ -273,4 +273,23 @@
   compat with sphinx 4.x</comment>
     <requestid>911095</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0596a4872bee59d7ef292657af53d634</srcmd5>
+    <version>2.3.1</version>
+    <time>1639685961</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch
+- update to version 2.3.1
+  - Inherit from base &quot;basic&quot; template
+  - Change to OFTC
+  - Page header fix with Sphinx4
+  - trivial: Fix indentation
+  - setup.cfg: Replace dashes with underscores
+  - sphinx 4.0: Fix sphinx.ext.extlinks.make_link_role call
+  - Use TOX_CONSTRAINTS_FILE
+  - tox: Toggle 'usedevelop'
+  - sphinx 4.0: Handle HTML 5 changes
+  - Move flake8 as a pre-commit local target.</comment>
+    <requestid>940196</requestid>
+  </revision>
 </revisionlist>
