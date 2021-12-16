@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 18:32:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Not compatible with python 3.10: Skip python310 build. All
+  packages depending on pytest5 will also be required to do this.
+
+-------------------------------------------------------------------
 Mon Oct 18 14:16:06 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Unpin pluggy in egg metadata

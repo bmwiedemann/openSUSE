@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%define skip_python310 1
 Name:           python-pytest5%{psuffix}
 Version:        5.4.3
 Release:        0
@@ -47,7 +48,7 @@ Requires:       python-py >= 1.5.0
 Requires:       python-setuptools
 Requires:       python-wcwidth
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      python-pytest
 Provides:       python-pytest = %{version}-%{release}
 Obsoletes:      python-pytest-doc
