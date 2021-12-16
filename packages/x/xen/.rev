@@ -2638,4 +2638,12 @@
     <comment>Update to Xen version 4.16.0 FCS</comment>
     <requestid>935029</requestid>
   </revision>
+  <revision rev="308" vrev="2">
+    <srcmd5>1c5d322601d9a78500c94480888e5fe5</srcmd5>
+    <version>4.16.0_02</version>
+    <time>1639685922</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1193307 - pci backend does not exist when attach a vf to a pv guest</comment>
+    <requestid>940365</requestid>
+  </revision>
 </revisionlist>

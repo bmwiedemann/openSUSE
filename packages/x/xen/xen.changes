@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  9 09:36:20 MST 2021 - carnold@suse.com
+
+- bsc#1193307 - pci backend does not exist when attach a vf to a pv
+  guest
+  libxl-PCI-defer-backend-wait.patch
+
+-------------------------------------------------------------------
 Wed Dec  1 09:45:10 MST 2021 - carnold@suse.com
 
 - Update to Xen 4.16.0 FCS release
