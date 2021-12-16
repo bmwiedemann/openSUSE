@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 13 15:58:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Fix blank screen when unplugging docking station.
+  + Prefer GBM over EGLStream where possible.
+  + Fix unredirected Xwayland windows not getting updated.
+  + Improve anti-aliasing of background corners.
+  + Copy damage rectangles to secondary GPU
+  + Improve Wacom tablet mapping.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Switch to git checkout of released tag via source service.
+
+-------------------------------------------------------------------
 Tue Nov 23 07:33:31 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Enable wayland-eglstream dependency on Leap/SLE (jsc#SLE-19964).
