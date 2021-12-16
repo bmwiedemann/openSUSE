@@ -19,14 +19,17 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        41.1
+Version:        41.2
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
-Source:         https://download.gnome.org/sources/gnome-shell/41/%{name}-%{version}.tar.xz
+# Source url disabled as we are using a git checkout via source service
+#Source0:        https://download.gnome.org/sources/gnome-shell/41/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.

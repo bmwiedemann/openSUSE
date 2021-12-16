@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:07:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Fix wrongly rejected D-Bus calls after gnome-shell restarts.
+  + magnifier: Avoid offscreen rendering if possible.
+  + Improve handling of all-day/zero-length events in calendar.
+  + Keep keyboard focus in notification list after deleting
+    message.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Switch to git checkout of released tag via source service.
+
+-------------------------------------------------------------------
 Fri Nov 26 11:10:25 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Revert last change, turns out this is what breaks locking
