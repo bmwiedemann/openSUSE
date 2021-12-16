@@ -68,6 +68,7 @@ Release:        0
 Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 Group:          %{package_group}
 URL:            https://www.virtualbox.org/
 #
@@ -222,6 +223,7 @@ BuildRequires:  libvpx-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libzio-devel
 BuildRequires:  pulseaudio-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -305,22 +307,8 @@ the terms of the GNU Public License (GPL).
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##########################################
+
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -342,22 +330,8 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #########################################
+
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -373,22 +347,8 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #########################################
+
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
 Group:          System/X11/Servers/XF86_4
@@ -406,22 +366,8 @@ This package contains X11 guest utilities and X11 guest mouse and video drivers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
+
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -444,22 +390,8 @@ VirtualBox guest addition tools.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
+
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -482,22 +414,8 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
+
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -515,22 +433,8 @@ Development file for %{name}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
+
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -544,7 +448,7 @@ BuildArch:      noarch
 %description host-source
 Source files for %{name} host kernel modules
 These can be built for custom kernels using
-sudo /usr/sbin/vboxconfig
+sudo %{_sbindir}/vboxconfig
 
 %package guest-source
 Summary:        Source files for %{name} guest kernel modules
@@ -558,23 +462,7 @@ BuildArch:      noarch
 %description guest-source
 Source files for %{name} guest kernel modules
 These can be built for custom kernels using
-sudo /usr/sbin/vboxguestconfig
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+sudo %{_sbindir}/vboxguestconfig
 
 
 
@@ -582,6 +470,7 @@ sudo /usr/sbin/vboxguestconfig
 
 
 ###########################################
+
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -597,23 +486,8 @@ This package contains icons for guest desktop files that were created on the des
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###########################################
+
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
@@ -746,7 +620,7 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
     --disable-java \
     --disable-docs \
     --enable-webservice \
-    --with-makeself=/usr/bin/true
+    --with-makeself=%{_bindir}/true
 
 # configure actually warns we should source env.sh (which seems like it could influence the build...)
 source ./env.sh
@@ -774,8 +648,8 @@ kmk -C src/VBox/ExtPacks/VNC packing
 #################################
 echo "create directory structure"
 #################################
-install -d -m 755 %{buildroot}/usr/sbin
-install -d -m 755 %{buildroot}/usr/lib
+install -d -m 755 %{buildroot}%{_sbindir}
+install -d -m 755 %{buildroot}%{_prefix}/lib
 install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
@@ -800,7 +674,7 @@ echo "entering guest-tools install section"
 ###########################################
 install -m 755 out/linux.*/release/bin/additions/VBoxControl %{buildroot}%{_bindir}/VBoxControl
 install -m 755 out/linux.*/release/bin/additions/VBoxService %{buildroot}%{_sbindir}/VBoxService
-install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}/usr/sbin/mount.vboxsf
+install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}%{_sbindir}/mount.vboxsf
 install -m 744 src/VBox/Additions/linux/installer/vboxadd-service.sh %{buildroot}%{_vbox_instdir}/vboxadd-service
 # udev rule for guest (virtualbox-guest-tools)
 install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/60-vboxguest.rules
@@ -903,9 +777,9 @@ install -m 644 %{SOURCE8}			%{buildroot}%{_bindir}/update-extpack.sh
 install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.service
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
 install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
-install -m 0755 %{SOURCE16}			%{buildroot}/usr/sbin/vboxconfig
-install -m 0755 %{SOURCE17}			%{buildroot}/usr/sbin/vboxguestconfig
-install -m 0755 %{SOURCE18}			%{buildroot}/usr/sbin/vbox-fix-usb-rules.sh
+install -m 0755 %{SOURCE16}			%{buildroot}%{_sbindir}/vboxconfig
+install -m 0755 %{SOURCE17}			%{buildroot}%{_sbindir}/vboxguestconfig
+install -m 0755 %{SOURCE18}			%{buildroot}%{_sbindir}/vbox-fix-usb-rules.sh
 install -m 0755 %{SOURCE19}			%{buildroot}%{_vbox_instdir}/vboxdrv.sh
 install -m 0644 %{SOURCE21}			%{buildroot}%{_unitdir}/vboxweb-service.service
 install -m 0755 %{SOURCE22}			%{buildroot}%{_vbox_instdir}/vboxweb-service.sh
@@ -1175,9 +1049,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_unitdir}/multi-user.target.wants/vboxautostart-service.service
 %{_sbindir}/rcvboxdrv
 %{_sbindir}/rcvboxautostart
-/usr/sbin/vboxconfig
+%{_sbindir}/vboxconfig
 #rules fixing script is in /usr/sbin
-%attr(0755,root,root) /usr/sbin/vbox-fix-usb-rules.sh
+%attr(0755,root,root) %{_sbindir}/vbox-fix-usb-rules.sh
 %{_vbox_instdir}/VBoxCreateUSBNode.sh
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetNAT
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetDHCP
@@ -1229,8 +1103,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %files guest-tools
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
-/usr/sbin/vboxguestconfig
-/usr/sbin/mount.vboxsf
+%{_sbindir}/vboxguestconfig
+%{_sbindir}/mount.vboxsf
 %{_udevrulesdir}/60-vboxguest.rules
 %{_vbox_instdir}/vboxadd-service
 %{_unitdir}/vboxadd-service.service

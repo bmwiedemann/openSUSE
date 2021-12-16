@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 14 06:42:13 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Added BuildRequires python-rpm-macros to fix build errors with SLE_15_SP2 (Thanks Ben Greiner)
+  ran spec-cleaner on the spec file.
+
+-------------------------------------------------------------------
 Mon Nov 22 20:13:41 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.30 (released November 22 2021 by Oracle)
