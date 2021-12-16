@@ -1,0 +1,19 @@
+Index: colord-1.4.5/data/colord.service.in
+===================================================================
+--- colord-1.4.5.orig/data/colord.service.in
++++ colord-1.4.5/data/colord.service.in
+@@ -10,3 +10,14 @@ User=@daemon_user@
+ # network namespacing is on.
+ # PrivateNetwork=yes
+ PrivateTmp=yes
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:03:21 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_colord.service.patch
+
+-------------------------------------------------------------------
 Sat Nov 20 15:53:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers

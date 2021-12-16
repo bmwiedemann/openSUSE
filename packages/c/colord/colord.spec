@@ -28,6 +28,7 @@ URL:            https://github.com/hughsie/colord/
 Source0:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:	harden_colord.service.patch
 # Apparmor profile
 Source3:        usr.lib.colord
 Source4:        colord.sysusers
