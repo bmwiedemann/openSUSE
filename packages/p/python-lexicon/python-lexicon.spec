@@ -33,7 +33,7 @@ Requires:       python-six
 Conflicts:      python-dns-lexicon
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module pytest-relaxed}
+BuildRequires:  %{python_module pytest-relaxed if (%python-base without python310-base)}
 # /SECTION tests
 %python_subpackages
 
@@ -56,11 +56,13 @@ Lexicon is a collection of dict subclasses:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+alias pytest-3.10='echo "Not testing: no pytest<6 on python 3.10"'
 %pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/lexicon
+%{python_sitelib}/lexicon-%{version}*-info
 
 %changelog

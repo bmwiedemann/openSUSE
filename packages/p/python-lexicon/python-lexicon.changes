@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 23:14:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test on python310 because of pytest-relaxed not supporting
+  Pytest 6 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
 Fri Sep 17 03:43:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.1:
