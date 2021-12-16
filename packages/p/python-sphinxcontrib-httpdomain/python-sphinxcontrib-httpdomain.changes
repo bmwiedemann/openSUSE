@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 14 12:51:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Tornado5 (and Flask) are optional. Tornado5 is not available for
+  python310
+
+-------------------------------------------------------------------
 Sat Oct 16 19:25:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:

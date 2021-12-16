@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-sphinxcontrib-httpdomain
 Version:        1.8.0
 Release:        0
@@ -31,12 +31,12 @@ BuildRequires:  %{python_module bottle >= 0.11.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module tornado5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module tornado5 if (%python-base without python310-base)}
 Requires:       python-Sphinx >= 1.5
 Requires:       python-six
-Requires:       python-tornado5
+Recommends:     python-tornado5
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +46,7 @@ domain for describing RESTful HTTP APIs.
 
 You can find the documentation from the following URL:
 
-http://packages.python.org/sphinxcontrib-httpdomain/
+https://sphinxcontrib-httpdomain.readthedocs.io/en/stable/
 
 %prep
 %autosetup -p1 -n httpdomain-%{version}
