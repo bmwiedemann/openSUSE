@@ -4,25 +4,40 @@ Wed Dec 15 02:06:55 UTC 2021 - Simon Lees <sflees@suse.de>
 - Update to 2.16.0 [bsc#1193743, CVE-2021-45046]
   * Features
     - Add JsonTemplateLayout.
-    - Create module log4j-mongodb4 to use new major version 4 MongoDB driver.
-    - More flexible configuration of the Disruptor WaitStrategy. Thanks to Stepan Gorban.
+    - Create module log4j-mongodb4 to use new major version 4
+      MongoDB driver.
+    - More flexible configuration of the Disruptor WaitStrategy.
+      Thanks to Stepan Gorban.
   * Bugfixes and minor enhancements
     - It was found that the fix to address CVE-2021-44228 in Apache 
-      Log4j 2.15.0 was incomplete in certain non-default configurations.
-      This could allows attackers with control over Thread Context Map (MDC)
-      input data when the logging configuration uses a Pattern Layout with
-      either a Context Lookup (for example, $${ctx:loginId}) or a Thread
-      Context Map pattern (%X, %mdc, or %MDC) to craft malicious input data
-      using a JNDI Lookup pattern resulting in a denial of service (DOS) attack.
-      Log4j 2.15.0 restricts JNDI LDAP lookups to localhost by default.
-      Note that previous mitigations involving configuration such as setting the
-      system property log4j2.noFormatMsgLookup to true do NOT mitigate this
-      specific vulnerability.
+      Log4j 2.15.0 was incomplete in certain non-default
+      configurations.
+      This could allows attackers with control over Thread Context
+      Map (MDC) input data when the logging configuration uses a
+      Pattern Layout with either a Context Lookup (for example,
+      $${ctx:loginId}) or a Thread Context Map pattern (%X, %mdc, or
+      %MDC) to craft malicious input data using a JNDI Lookup
+      pattern resulting in a denial of service (DOS) attack.
+      Log4j 2.15.0 restricts JNDI LDAP lookups to localhost by
+      default. Note that previous mitigations involving
+      configuration such as setting the system property
+      log4j2.noFormatMsgLookup to true do NOT mitigate this specific
+      vulnerability.
     - Upstream initial fix for bsc#1193611, CVE-2021-44228
     - Numerous other minor bugfixes 
-  * Drop CVE-2021-44228.patch included upstream
-  * To make the bots happy this stream isn't affected by bsc#1193662 CVE-2021-4104 which is
-    1.X only
+  * Drop CVE-2021-44228.patch and disable-jndi-by-default.patch
+    included upstream
+  * To make the bots happy this stream isn't affected by
+    bsc#1193662 CVE-2021-4104 which is 1.X only
+
+-------------------------------------------------------------------
+Tue Dec 14 17:43:26 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Apply "disable-jndi-by-default.patch" to disable JNDI support by
+  default. There is evidence that the previous upstream fix for
+  CVE-2021-44228 did not solve the vulnerability entirely. Since
+  JNDI support is ususally not required, upstream recommends this
+  route to be completely safe. [bsc#1193611, CVE-2021-44228]
 
 -------------------------------------------------------------------
 Fri Dec 10 14:03:24 UTC 2021 - Peter Simons <psimons@suse.com>
@@ -123,8 +138,16 @@ Mon Apr 27 11:21:57 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - Update dependencies.
 - Remove patch fixed upstream:
   * logging-log4j-LOG4J2-2745-LOG4J2-2744-slf4j.patch
+  * log4j-CVE-2020-9488.patch
 - Refresh patch:
   * logging-log4j-Remove-unsupported-EventDataConverter.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 11:21:57 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1170535, CVE-2020-9488]
+  * Improper validation of certificate with host mismatch in SMTP appender.
+- Add log4j-CVE-2020-9488.patch
 
 -------------------------------------------------------------------
 Wed Feb 26 18:03:25 UTC 2020 - Fridrich Strba <fstrba@suse.com>
