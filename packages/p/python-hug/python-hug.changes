@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 15 09:04:13 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+- skip yet another falcon related test failures
+
+-------------------------------------------------------------------
 Tue Feb 23 10:04:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (no numpy) 

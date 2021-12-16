@@ -17,4 +17,13 @@
 - Use python_alternative for the /usr/bin/hug script.</comment>
     <requestid>874526</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e751c49f495a8206faa5924ec24c6186</srcmd5>
+    <version>2.6.1</version>
+    <time>1639685990</time>
+    <user>dimstar_suse</user>
+    <comment>- pytest-runner is not required for build
+- skip yet another falcon related test failures</comment>
+    <requestid>940940</requestid>
+  </revision>
 </revisionlist>
