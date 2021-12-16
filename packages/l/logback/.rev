@@ -15,4 +15,12 @@
     <comment>Do not force buiding with java 8</comment>
     <requestid>893211</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>340da8bb6cfe8ae1df30cd45b6e1a0cd</srcmd5>
+    <version>1.2.8</version>
+    <time>1639685989</time>
+    <user>dimstar_suse</user>
+    <comment>Security fix bsc#1193795</comment>
+    <requestid>940932</requestid>
+  </revision>
 </revisionlist>

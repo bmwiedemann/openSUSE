@@ -1,7 +1,7 @@
 #
 # spec file for package logback
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           logback
-Version:        1.2.3
+Version:        1.2.8
 Release:        0
 Summary:        A Java logging library
-License:        LGPL-2.1-or-later OR EPL-1.0
+License:        EPL-1.0 OR LGPL-2.1-or-later
 URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
 # Remove deprecated methods
-Patch0:         %{name}-1.1.11-jetty.patch
+Patch0:         %{name}-1.2.8-jetty.patch
 Patch1:         logback-1.2.3-getCallerClass.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -111,6 +111,21 @@ rm -r %{name}-*/src/test/java/*
 %pom_xpath_remove "pom:project/pom:profiles" %{name}-classic
 
 %pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'javadocjar']"
+
+%if %{?pkg_vcmp:%pkg_vcmp gmavenplus-plugin < 1.6}%{!?pkg_vcmp:0}
+%pom_remove_plugin "org.codehaus.gmavenplus:gmavenplus-plugin" logback-classic
+%pom_add_plugin "org.codehaus.gmavenplus:gmavenplus-plugin:1.5" logback-classic "
+        <executions>
+          <execution>
+            <goals>
+              <goal>generateStubs</goal>
+              <goal>compile</goal>
+              <goal>testGenerateStubs</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>"
+%endif
 
 # disable for now
 %pom_disable_module logback-site

@@ -1,13 +1,61 @@
 -------------------------------------------------------------------
+Thu Dec 16 16:21:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.2.8 (bsc#1193795)
+  * Changes of version 1.2.8
+    + In response to LOGBACK-1591, all JNDI lookup code in logback
+	  has been disabled until further notice. This impacts
+      ContextJNDISelector and <insertFromJNDI> element in
+      configuration files.
+    + Also in response to LOGBACK-1591, all database (JDBC) related
+	  code in the project has been removed with no replacement.
+    + Note that the vulnerability mentioned in LOGBACK-1591 requires
+      write access to logback's configuration file as a
+      prerequisite. The log4Shell/CVE-2021-44228 and LOGBACK-1591
+      are of different severity levels. A successful RCE requires
+      all of the following conditions to be met:
+      - write access to logback.xml
+      - use of versions < 1.2.8
+      - reloading of poisoned configuration data, which implies
+        application restart or scan="true" set prior to attack
+    + As an additional extra precaution, in addition to upgrading to
+      logback version 1.2.8, the users are advised to set their
+      logback configuration files as read-only.
+  * Changes of version 1.2.7
+    + Added hostnameVerification to property SSLSocketAppender.
+      This fixes LOGBACK-1574.
+  * Changes of version 1.2.6
+    + To prevent XML eXternal Entity injection (XXE) attacks, Joran
+      no longer reads external entities passed in XML files. This
+      fixes LOGBACK-1465.
+  * Changes of version 1.2.5
+    + Instead of an Appender, the LayoutWrappingEncoder now accepts
+      a variable of type ContextAware as a parent. This fixes
+      LOGBACK-1326.
+  * Changes of version 1.2.4
+    + Added support for minimum length in %i filename pattern. This
+      fixes LOGBACK-1248.
+    + For size bound log file archiving, allow
+      TimeBasedArchiveRemove to remove files with indexes containing
+      upto 5 digits. This fixes LOGBACK-1175.
+    + Added %prefix composite converter which automatically prefixes
+      child converter output with the name of the converter. This
+      feature is quite handy in environments where log files need to
+      be parsed and monitored.
+- Changed patch:
+  * logback-1.1.11-jetty.patch -> logback-1.2.8-jetty.patch
+    + Rediff to changed context
+
+-------------------------------------------------------------------
 Fri Nov 29 12:15:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Do not force building with java < 9
-- Specifiy maven.compiler.release=8 to access the
+- Specify maven.compiler.release=8 to access the
   java.util.function.Supplier API, introduced in java 8
 - Added patch:
   * logback-1.2.3-getCallerClass.patch
     + Access the sun.reflect.Reflection.getCallerClass by
-      by reflection, in order to be able to build with jdk >= 9
+      reflection, in order to be able to build with jdk >= 9
 
 -------------------------------------------------------------------
 Sun Nov 17 19:45:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>

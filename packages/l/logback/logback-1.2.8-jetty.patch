@@ -1,32 +1,21 @@
-diff --git a/logback-access/pom.xml b/logback-access/pom.xml
-index ab1319b00..f16d17814 100755
---- a/logback-access/pom.xml
-+++ b/logback-access/pom.xml
-@@ -45,6 +45,12 @@
-       <scope>compile</scope>
+--- logback-1.2.8/logback-access/pom.xml	2021-12-14 12:55:51.000000000 +0100
++++ logback-1.2.8/logback-access/pom.xml	2021-12-16 15:35:11.255651389 +0100
+@@ -47,6 +47,12 @@
        <optional>true</optional>
      </dependency>
-+    <dependency>
+     <dependency>
 +      <groupId>org.eclipse.jetty</groupId>
 +      <artifactId>jetty-util</artifactId>
 +      <scope>compile</scope>
 +      <optional>true</optional>
 +    </dependency>
-     <dependency>
++    <dependency>
        <groupId>org.codehaus.janino</groupId>
        <artifactId>janino</artifactId>
-@@ -173,4 +179,4 @@
-     </profile>
-   </profiles>
- 
--</project>
-\ No newline at end of file
-+</project>
-diff --git a/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java b/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java
-index bb11766d9..77ca796bb 100644
---- a/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java
-+++ b/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java
-@@ -209,11 +209,6 @@ public class RequestLogImpl extends ContextBase implements RequestLog, AppenderA
+       <scope>compile</scope>
+--- logback-1.2.8/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java	2021-12-14 12:55:51.000000000 +0100
++++ logback-1.2.8/logback-access/src/main/java/ch/qos/logback/access/jetty/RequestLogImpl.java	2021-12-16 15:35:11.255651389 +0100
+@@ -209,11 +209,6 @@
          started = false;
      }
  
@@ -38,7 +27,7 @@ index bb11766d9..77ca796bb 100644
      public void setFileName(String fileName) {
          this.fileName = fileName;
      }
-@@ -227,26 +222,6 @@ public class RequestLogImpl extends ContextBase implements RequestLog, AppenderA
+@@ -227,26 +222,6 @@
          return started;
      }
  
@@ -65,7 +54,7 @@ index bb11766d9..77ca796bb 100644
      public boolean isQuiet() {
          return quiet;
      }
-@@ -310,13 +285,7 @@ public class RequestLogImpl extends ContextBase implements RequestLog, AppenderA
+@@ -310,13 +285,7 @@
          return fai.getFilterChainDecision(event);
      }
  
