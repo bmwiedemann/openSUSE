@@ -1,5 +1,5 @@
 #
-# spec file for package python-wfuzz
+# spec file for package wfuzz
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -21,12 +21,12 @@ Name:           wfuzz
 Version:        3.1.0
 Release:        0
 Summary:        The web fuzzer
-License:        GPL-2.0
-URL:            http://wfuzz.org
+License:        GPL-2.0-only
+URL:            https://wfuzz.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/w/wfuzz/wfuzz-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires(post):   update-alternatives
 Requires(postun):  update-alternatives
@@ -82,13 +82,11 @@ done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-
 %post
 %python_install_alternative wfencode wfpayload wfuzz wxfuzz
 
 %postun
 %python_uninstall_alternative wfencode wfpayload wfuzz wxfuzz
-
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 16 14:17:14 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Fixed URL in spec file 
+
+-------------------------------------------------------------------
 Fri Jun 25 10:10:02 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Removed shebang to fix rpmlint warning

@@ -7,4 +7,12 @@
     <comment>A web application fuzzer useful during security assessments</comment>
     <requestid>902358</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>abb0f613c2c2d21f8b4ecf682dcd8647</srcmd5>
+    <version>3.1.0</version>
+    <time>1639685988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940914</requestid>
+  </revision>
 </revisionlist>
