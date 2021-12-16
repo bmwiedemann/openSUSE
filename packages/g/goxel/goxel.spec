@@ -17,7 +17,7 @@
 
 
 Name:           goxel
-Version:        0.10.7
+Version:        0.10.8
 Release:        0
 Summary:        Voxel graphics editor
 License:        GPL-3.0-only
