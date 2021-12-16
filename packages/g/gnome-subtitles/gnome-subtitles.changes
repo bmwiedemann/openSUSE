@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 15 17:50:56 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.7.2:
+  + Fixed a crash that occured in some distros due to missing libdl
+    or dlopen (boo#1191250).
+  + Updated translations.
+- Changes in version 1.7.1:
+  + Fixed a crash that occurred when opening some media files.
+
+-------------------------------------------------------------------
 Mon Sep 27 11:47:57 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.7:

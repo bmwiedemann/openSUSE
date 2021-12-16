@@ -204,4 +204,18 @@
     <comment></comment>
     <requestid>921804</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0e7b269fefb71534999c62f3eb785979</srcmd5>
+    <version>1.7.2</version>
+    <time>1639616457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2:
+  + Fixed a crash that occured in some distros due to missing libdl
+    or dlopen (boo#1191250).
+  + Updated translations.
+- Changes in version 1.7.1:
+  + Fixed a crash that occurred when opening some media files.
+</comment>
+    <requestid>940787</requestid>
+  </revision>
 </revisionlist>

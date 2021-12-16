@@ -17,7 +17,7 @@
 
 
 Name:           gnome-subtitles
-Version:        1.7
+Version:        1.7.2
 Release:        0
 Summary:        Subtitle editor for GNOME
 License:        GPL-2.0-or-later
