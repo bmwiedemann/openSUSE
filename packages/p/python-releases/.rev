@@ -56,4 +56,12 @@ https://build.opensuse.org/request/show/606019</comment>
   * Migrate to pytest, lightly rebased from upstream.</comment>
     <requestid>918650</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b4de9432ad9134af414f35a8b44954b9</srcmd5>
+    <version>1.6.3</version>
+    <time>1639685936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940562</requestid>
+  </revision>
 </revisionlist>

@@ -46,7 +46,7 @@ BuildRequires:  %{python_module Sphinx >= 1.3}
 BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module mock >= 1.0.1}
-BuildRequires:  %{python_module pytest-relaxed}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module semantic_version}
 BuildRequires:  %{python_module six >= 1.4.1}
 %endif
@@ -84,8 +84,7 @@ Specifically:
 
 %if %{with test}
 %check
-export NOSE_NO_SPEC_COLOR=1
-%python_expand invoke-%{$python_bin_suffix} test
+%pytest
 %endif
 
 %if !%{with test}

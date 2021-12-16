@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 00:08:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- refresh migrate-to-pytest.patch: remove pytest-relaxed 
+
+-------------------------------------------------------------------
 Mon Sep 13 06:17:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch migrate-to-pytest.patch:
