@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 16 08:14:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update dovecot-2.3.0-dont_use_etc_ssl_certs.patch to also adjust
+  the path in the 10-ssl.conf example (boo#1193758)
+- Rebase dovecot-2.3.0-better_ssl_defaults.patch
+
+-------------------------------------------------------------------
 Tue Dec  7 18:54:54 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.3.17.1 and pigeonhole to 0.5.17.1
