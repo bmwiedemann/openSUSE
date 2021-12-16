@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Dec 08 15:37:51 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.13:
+  * defer close the rotated log open
+  * Add tests for checking bind mounts
+  * Check subpath file
+  * Add check for subpaths
+  * Manual cherry pick of kube-openapi changes for release-1.20 Bump kube-openapi against kube-openapi/release-1.20 branch
+  * Update bazel
+  * Fixed unit test SELinux support
+  * Add shortcut for SELinux detection
+  * Don't guess SELinux support on error
+  * Use separate pathSpec for local and remote to properly handle cleaning paths
+  * support more than 100 disk mounts on Windows
+  * Support cgroupv2 in node problem detector test
+  * Update debian, debian-iptables images to pick up CVEs fixes
+  * Fixing how EndpointSlice Mirroring handles Service selector transitions
+  * Fix race condition in logging when request times out
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.12
+  * Run storage hostpath e2e test client pod as privileged
+  * Ignore VMs in vmss delete backend pools
+  * fix: skip not found nodes when reconciling LB backend address pools
+  * fix: consolidate logs for instance not found error
+  * Revert 102925: Fix Node Resources plugins score when there are pods with no requests
+  * e2e scheduling priorities: do not reference control loop variable
+  * tests: Wait for the network connectivity first
+  * 'New' Event namespace validate failed
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.11
+  * Refine locking in API Priority and Fairness config controller
+  * kube-controller-manager: properly check generic ephemeral volume feature
+  * Fix null JSON round tripping
+  * Propagate conversion errors
+  * integration test
+  * fix 104329: check for headless before trying to release the ClusterIPs
+  * Fix use variables in the loop in vsphere_util
+  * Address review comments
+  * Add docs about process of discovering disks from new nodes
+  * Fix unknown dangling volumes
+  * fix detach disk issue on deleting node
+  * fix: ignore the case when comparing azure tags in service annotation
+  * fix: ignore the case when updating tags
+  * backported PR#97721 from v1.21 ("fix slice controller logging for services ipfamily")
+  * remove listx from OWNERS, OWNERS_ALIASES
+  * Add explicit capability for online volume expansion
+  * Bump golang.org/x/text to v0.3.6
+
+-------------------------------------------------------------------
 Thu Sep 16 11:28:40 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.20.11:

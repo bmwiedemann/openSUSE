@@ -245,4 +245,41 @@
   * Set idle and readheader timeouts</comment>
     <requestid>919508</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dd46707f390cf8ced81aff10fbc32c10</srcmd5>
+    <version>1.20.13</version>
+    <time>1639685947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.13:
+  * defer close the rotated log open
+  * Add tests for checking bind mounts
+  * Check subpath file
+  * Add check for subpaths
+  * Manual cherry pick of kube-openapi changes for release-1.20 Bump kube-openapi against kube-openapi/release-1.20 branch
+  * Update bazel
+  * Fixed unit test SELinux support
+  * Add shortcut for SELinux detection
+  * Don't guess SELinux support on error
+  * Use separate pathSpec for local and remote to properly handle cleaning paths
+  * support more than 100 disk mounts on Windows
+  * Support cgroupv2 in node problem detector test
+  * Update debian, debian-iptables images to pick up CVEs fixes
+  * Fixing how EndpointSlice Mirroring handles Service selector transitions
+  * Fix race condition in logging when request times out
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.12
+  * Run storage hostpath e2e test client pod as privileged
+  * Ignore VMs in vmss delete backend pools
+  * fix: skip not found nodes when reconciling LB backend address pools
+  * fix: consolidate logs for instance not found error
+  * Revert 102925: Fix Node Resources plugins score when there are pods with no requests
+  * e2e scheduling priorities: do not reference control loop variable
+  * tests: Wait for the network connectivity first
+  * 'New' Event namespace validate failed
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.11
+  * Refine locking in API Priority and Fairness config controller
+  * kube-controller-manager: properly check generic ephemeral volume feature
+  * Fix null JSON round tripping
+  * Propagate conversion errors</comment>
+    <requestid>936735</requestid>
+  </revision>
 </revisionlist>
