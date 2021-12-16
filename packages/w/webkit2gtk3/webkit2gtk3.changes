@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec 14 13:30:29 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Typo fix for %define usegcc10.
+
+-------------------------------------------------------------------
+Tue Dec 14 10:38:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Introduce usegcc10 %define in order to have the condition
+  (0%{?sle_version} && 0%{?sle_version} <= 150400) only at one
+  point.
+- Correct a very old "Obsoletes: webkit2gtk3-plugin-process-gtk2"
+  to be a versioned obsoletes.
+
+-------------------------------------------------------------------
+Tue Dec 14 01:05:29 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Make the earlier Obsoletes: libwebkit2gtk3-lang compliant with:
+
+  https://en.opensuse.org/openSUSE:Upgrade_dependencies_explanation#Renaming_a_package
+
+-------------------------------------------------------------------
 Wed Dec  8 08:07:59 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add Obsoletes of the old-name -lang package to be ready for

@@ -25,6 +25,8 @@
 ExclusiveArch:  do-not-build
 %endif
 
+%define usegcc10 0%{?sle_version} && 0%{?sle_version} <= 150400
+
 %if "%{flavor}" == "gtk3"
 %define _gtknamesuffix gtk3
 %define _pkgname_no_slpp libwebkit2gtk3
@@ -100,7 +102,7 @@ BuildRequires:  bison >= 2.3
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
-%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+%if %usegcc10
 BuildRequires:  gcc10-c++ >= 4.9
 %else
 BuildRequires:  gcc-c++ >= 7.3
@@ -125,7 +127,7 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.5
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
-%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+%if %usegcc10
 BuildRequires:  pkgconfig(glproto)
 %endif
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
@@ -197,7 +199,7 @@ Requires:       webkit2gtk-%{_sonameverpkg}-injected-bundles
 Requires:       xdg-dbus-proxy
 Provides:       %{_pkgname_no_slpp} = %{version}
 Provides:       WebKit2GTK-%{_apiver}
-Obsoletes:      webkit2gtk3-plugin-process-gtk2
+Obsoletes:      webkit2gtk3-plugin-process-gtk2 < %{version}
 
 %description -n libwebkit2gtk%{_wk2sover}
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
@@ -328,7 +330,7 @@ Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       WebKit2GTK-%{_apiver} = %{version}
 Provides:       WebKit2GTK-%{_apiver}-lang-all = %{version}
-Obsoletes:      libwebkit2gtk3-lang
+Obsoletes:      libwebkit2gtk3-lang < %{version}
 BuildArch:      noarch
 
 %description -n WebKit2GTK-%{_apiver}-lang
@@ -366,7 +368,7 @@ export PYTHON=%{_bindir}/python3
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
-%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+%if %usegcc10
   -DCMAKE_C_COMPILER=gcc-10 \
   -DCMAKE_CXX_COMPILER=g++-10 \
 %endif
