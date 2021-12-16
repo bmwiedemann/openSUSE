@@ -188,4 +188,12 @@
   + Bugs fix (forwarded request 885259 from ailin_nemui)</comment>
     <requestid>885650</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c971ba4c46481027f31308eadcbc9a5f</srcmd5>
+    <version>2.0.5</version>
+    <time>1639616459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940796</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package grisbi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           grisbi
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
-Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/2.0.3/%{name}-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/2.0.3/%{name}-%{version}.tar.bz2.asc
+Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/%{version}/%{name}-%{version}.tar.bz2.asc
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
