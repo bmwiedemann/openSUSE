@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 14 21:51:56 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Fix deps of devel package
+
+-------------------------------------------------------------------
+Tue Dec 14 21:41:28 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Fix tests on i586
+
+-------------------------------------------------------------------
 Sun Dec 12 20:01:42 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.0.7:

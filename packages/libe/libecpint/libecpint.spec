@@ -70,6 +70,7 @@ This package contains architecture independent data files for libecpint
 Summary:        Devel package for libecpint
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}-%{release}
+Requires:       libcerf-devel >= 1.17
 
 %description devel
 Libecpint is a C++ library for the efficient evaluation of integrals over ab
@@ -89,7 +90,11 @@ This package contains development headers and libraries for libecpint
 %cmake_install
 
 %check
-%ctest
+# https://github.com/robashaw/libecpint/issues/27
+%ifarch %ix86
+%global testargs --exclude-regex Type1Test2
+%endif
+%ctest %{?testargs}
 
 %post -n libecpint%sover -p /sbin/ldconfig
 %postun -n libecpint%sover -p /sbin/ldconfig
