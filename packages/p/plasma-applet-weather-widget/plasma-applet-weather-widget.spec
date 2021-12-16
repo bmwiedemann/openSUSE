@@ -60,7 +60,7 @@ mv translations/po/%{lang_name}_hu_HU.po \
 %dir %{_kf5_plasmadir}/plasmoids
 %{_kf5_plasmadir}/plasmoids/org.kde.weatherWidget
 %{_kf5_qmldir}/org/kde/private/weatherWidget
-%if %{pkg_vcmp cmake(KF5Plasma) < 5.84}
+%if %{pkg_vcmp cmake(KF5Plasma) < 5.84} || %{pkg_vcmp cmake(KF5Plasma) >= 5.89}
 %{_kf5_servicesdir}/plasma-applet-org.kde.weatherWidget.desktop
 %endif
 

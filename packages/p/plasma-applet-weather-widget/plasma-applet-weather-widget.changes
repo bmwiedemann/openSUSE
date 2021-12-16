@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 22:24:12 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix build with KF5Plasma 5.89. The file is installed again.
+
+-------------------------------------------------------------------
 Sun Jul 18 09:06:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Reapply the change. The plasma-framework workaround was removed.
