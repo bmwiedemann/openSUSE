@@ -31,4 +31,12 @@
     <comment>Put GUI tools into separate packages</comment>
     <requestid>935698</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1130f7259cc55d5ede78631b0f522ca6</srcmd5>
+    <version>1.2.17</version>
+    <time>1639685942</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>940906</requestid>
+  </revision>
 </revisionlist>

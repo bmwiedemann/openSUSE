@@ -137,6 +137,8 @@ for i in contribs/JimMoore/mail*;do
     mv new "$i"
 done
 
+rm -f src/main/java/org/apache/log4j/net/JMSAppender.java
+
 %build
 %{ant} \
         -Djavamail.jar=$(build-classpath javamail/mailapi) \

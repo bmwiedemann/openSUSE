@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 16 10:11:54 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Remove src/main/java/org/apache/log4j/net/JMSAppender.java from
+  the build to mitigate CVE-2021-4104. [bsc#1193662]
+
+-------------------------------------------------------------------
 Mon Nov 29 15:39:34 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Put GUI tools into separate packages
