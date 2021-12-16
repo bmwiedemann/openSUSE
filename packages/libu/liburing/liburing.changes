@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Oct 13 10:31:43 UTC 2021 - David Disseldorp <ddiss@suse.com>
 
-- update to 2.1:
+- update to 2.1 (bsc#1193522):
   * Ignore spurious fadvise/madvise failures
   * build: add -D_GNU_SOURCE to all CPPFLAGS/CFLAGS.
   * man: clean up spelling
