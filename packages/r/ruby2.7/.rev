@@ -99,4 +99,12 @@
   - CVE-2021-41819: Cookie Prefix Spoofing in CGI::Cookie.parse</comment>
     <requestid>933750</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>12e05a0962bc01b1ec7d91a7bd741e01</srcmd5>
+    <version>2.7.5</version>
+    <time>1639685961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940188</requestid>
+  </revision>
 </revisionlist>

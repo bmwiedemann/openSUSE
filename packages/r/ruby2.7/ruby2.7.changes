@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  6 14:38:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- explicitly build against openssl 1.x (not compatible with 3.x) 
+
+-------------------------------------------------------------------
 Thu Nov 25 11:45:21 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.7.5 (boo#1193081 boo#1193080 boo#1193035)

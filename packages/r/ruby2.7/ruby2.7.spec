@@ -102,10 +102,10 @@ BuildRequires:  jemalloc-devel
 %endif
 BuildRequires:  autoconf
 BuildRequires:  libffi-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  netcfg
-BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  readline-devel
