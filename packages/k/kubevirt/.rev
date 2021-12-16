@@ -362,4 +362,12 @@ SLE identical and thus derived from a common source. Thanks!
     <comment>- Detect SLE15 SP4 build environment</comment>
     <requestid>933994</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8b47c9ac694cfc95636efd658fa4e7aa</srcmd5>
+    <version>0.48.1</version>
+    <time>1639685975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940829</requestid>
+  </revision>
 </revisionlist>
