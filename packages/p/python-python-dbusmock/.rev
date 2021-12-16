@@ -44,4 +44,41 @@
     <comment></comment>
     <requestid>786924</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73b9fa124df8581175aae9ad1cd74408</srcmd5>
+    <version>0.24.1</version>
+    <time>1639685957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.1:
+  * Do not register standard D-Bus service directories (Thanks Benjamin Berg)
+  * templates: Add IIO Sensors Proxy support (Thanks Marco Trevisan)
+  * Fix importlib module import (Thanks Marco Trevisan)
+  * Clean up code for most recent pylint version
+  * Add Add power-profiles-daemon template (Thanks Bastien Nocera)
+  * logind: Implement Inhibit and ListInhibitors (Thanks to Benjamin Berg)
+  * Fix new complaints from pylint 2.9
+  * Fix tests for Python 3.10
+  * DBusMockObject: Add UpdateProperties() method (Thanks to Jonas Ådahl)
+  * DBusTestCase: Add bus override argument to spawn_server_template, to use
+    templates on either system or session bus; add corresponding --session CLI
+    option
+  * bluez template: Implement Pair() method on the Device interface and the
+    AgentManager1 interface (Thanks to Bastien Nocera)
+  * polkit template: Implement RegisterAuthenticationAgent() (Thanks to
+    Jonas Ådahl)
+  * Add accountsservice template (Thanks to Marco Trevisan)
+  * NetworkManager template: Fix connecting to wifi
+  * NetworkManager template: Add Reload() method
+  * tests: Replace nose test runner with standard unittest
+  * setup.py: Drop deprecated `test_suite`, run tests through
+    `python3 -m unittest` directly
+  * Add type annotations to the whole API
+  * Drop obsolete ConsoleKit and bluez4 templates/tests
+  * upower template: Drop support for 0.9 API
+  * NetworkManager template: Handle NetworkingEnable
+  * NetworkManager template: AddConnectionUnsaved
+  * Drop support for Python 2 
+- Add python-dataclasses to {Build,}Requires</comment>
+    <requestid>940130</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dbusmock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-python-dbusmock
-Version:        0.19
+Version:        0.24.1
 Release:        0
 Summary:        Python library for creating mock D-Bus objects
 License:        LGPL-3.0-or-later
 URL:            https://github.com/martinpitt/python-dbusmock
 Source:         https://files.pythonhosted.org/packages/source/p/python-dbusmock/python-dbusmock-%{version}.tar.gz
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -31,6 +33,9 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if %python_version_nodots < 37
+Requires:       python-dataclasses
+%endif
 Requires:       dbus-1-x11
 Requires:       python-dbus-python
 Requires:       python-gobject
