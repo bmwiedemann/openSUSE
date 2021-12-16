@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:10:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + native-window-placement: Fix distorted layout in app grid.
+  + window-list: Fix on-screen keyboard.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct  8 06:51:46 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update sle-classic to version 41

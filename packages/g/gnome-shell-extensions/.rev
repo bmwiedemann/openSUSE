@@ -2209,4 +2209,12 @@
   + Update sle-classic@suse.com.tar.gz (forwarded request 924308 from xiaoguang_wang)</comment>
     <requestid>924744</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>04f9a8dce22fcc9350cc178f5411f386</srcmd5>
+    <version>41.1</version>
+    <time>1639685965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940311</requestid>
+  </revision>
 </revisionlist>
