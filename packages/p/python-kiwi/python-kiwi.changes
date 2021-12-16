@@ -1,4 +1,219 @@
 -------------------------------------------------------------------
+Mon Dec 06 09:59:28 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.13 → 9.24.14
+
+-------------------------------------------------------------------
+Sun Dec 05 13:59:17 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Disable intersphinx
+
+  intersphinx is a doc extension which links to the documentation of
+  objects in other projects whenever Sphinx encounters a cross-reference
+  that has no matching target in the current documentation set, it
+  looks for targets in the documentation sets configured in the
+  intersphinx_mapping. However, the kiwi docs do not use this feature
+  thus it can be disabled.
+
+-------------------------------------------------------------------
+Tue Nov 30 18:11:55 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Compress container images in builder class
+
+  This commit changes the stage at which container images are compressed
+  to match the criteria applied to other image types. Instead of
+  compressing the image in OCI devoted classes now it is happening
+  in builder class by setting Result instance properties.
+
+  Fixes #1996
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Mon Nov 29 16:29:29 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Fixed MicroOS build test"
+
+  This reverts commit 52c38f9ec22aef484efaf0a570dc78eea529deec.
+  The TW people moved to an older version of libsnapper, no
+  idea what these guys are doing
+
+-------------------------------------------------------------------
+Mon Nov 29 16:13:41 CET 2021 - John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+
+- kiwi-repart: Fix spelling error in source code comment
+
+-------------------------------------------------------------------
+Mon Nov 29 16:11:39 CET 2021 - John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+
+- Fix multiple minor spelling errors in documentation
+
+-------------------------------------------------------------------
+Mon Nov 29 15:34:46 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added support for setting up release version
+
+  Currently the release version is not set or set to '0'
+  for package managers which requires a value to operate.
+  However, in order to support leveraging the same description
+  across different releases it is important to have the
+  opportunity to specify a setting for the release version.
+  This commit adds a new optional attribute to the preferences
+  section which allows to specify a custom value which
+  serves as the release version:
+
+  <preferences>
+  <release-version>TEXT</release-version>
+  </preferences>
+
+  If not specified the default setting as before applies.
+  Please note the release version information is currently
+  used in dnf and microdnf package managers only. It might
+  happen that it gets applied to the other package manager
+  backends as well. This will happen on demand though.
+  Related to Issue #1918. This Fixes #1927
+
+-------------------------------------------------------------------
+Mon Nov 29 14:55:35 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.12 → 9.24.13
+
+-------------------------------------------------------------------
+Mon Nov 29 11:47:25 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add global --kiwi-file option
+
+  When building with kiwi a search on the kiwi main config
+  file is made inside of the given --description directory.
+  The search looks up for the file config.xml or *.kiwi.
+  So far there was no opportunity to specify another name.
+  This commit adds an option in the global area named:
+
+  --kiwi-file name
+
+  which will make kiwi to lookup this file inside of the
+  given --description directory and fail if it does not
+  exist. This Fixes #1973
+
+-------------------------------------------------------------------
+Mon Nov 29 11:37:49 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added type hints for CliTask class
+
+-------------------------------------------------------------------
+Fri Nov 26 09:58:32 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.11 → 9.24.12
+
+-------------------------------------------------------------------
+Thu Nov 25 16:43:21 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use realpath to resolve this:// location
+
+-------------------------------------------------------------------
+Thu Nov 25 15:58:55 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support this:// resource locator for includes
+
+  Allow include references like the following example:
+  <include from="this://include.xml"/>
+
+-------------------------------------------------------------------
+Thu Nov 25 13:13:52 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow repo path relative to the image description
+
+  This commit adds a new URI type called this://... The
+  this:// part will be resolved into the absolute path to
+  the image description. A source path like the following:
+
+  <source path="this://my_repo"/>
+
+  is resolved to
+
+  <source path="dir:///path/to/image/description/my_repo"/>
+
+  This change provides the requested opportunity to reference
+  repos provided as part of the image description and
+  Fixes #1964
+
+-------------------------------------------------------------------
+Thu Nov 25 11:28:33 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Care for different snapper template locations
+
+  snapper recently changed their config template location
+  from etc/ to usr/. This commit handles the two locations
+  and Fixes bsc#1192940
+
+-------------------------------------------------------------------
+Thu Nov 25 10:55:19 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prevent warning message on resize exception
+
+  On systems which are configured to run the oem resize at
+  every boot (default case) kiwi checks how much space is free
+  and if that fits the constraints configured as part of the
+  image description. If the constraints are not met a warning
+  message is displayed and the boot continuous without any
+  resize action happening.
+
+  This warning message however, always appears after the first
+  boot when the resize had happened and no rest space on disk
+  is present unless the disk geometry would have changed.
+  The situation of the reboot of the system without any disk
+  geometry change is the standard case and happens way more
+  often than the reboot with a disk geometry change.
+
+  Therefore the warning message displayed is not actually
+  a real warning and most often considered as an issue
+  when there is none. To relax this situation, this commit
+  only shows the warning message if the detected free space
+  on disk is greater than 2M, which is the condition under
+  which we assume an intentional (user made) disk geometry
+  change.
+
+  This Fixes #1958
+
+-------------------------------------------------------------------
+Wed Nov 24 12:19:10 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.10 → 9.24.11
+
+-------------------------------------------------------------------
+Wed Nov 24 12:13:34 CET 2021 - Justin <47017732+TheMisanthropicHumanist@users.noreply.github.com>
+
+- Fix Source Install Disk Detection in get_disk_list (#1982)
+
+  Fix Source Install Disk Detection in get_disk_list
+
+  The original check doesn't always work because PARTITIONS get labels, NOT disks. If you install with
+  a Flash Drive and deploy to a machine with an NVMe drive, the Flash Drive is listed first because SCSIs
+  are shown first by lsblk (At least they were in our scenario). When we run
+
+  blkid "[Install Flash Drive Disk]" -s LABEL -o value
+
+  in this scenario, we get nothing returned so this conditional evaluates incorrectly. We should get the
+  ${kiwi_install_volid} Partition Block Name, and search for whether ${disk_device} is contained within it as
+  the Disk Device that corresponds to the Install Partition.
+
+-------------------------------------------------------------------
+Tue Nov 23 16:11:43 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not force dracut into a compression setting
+
+  So far we called dracut with --xz which forces the initrd
+  to be xz compressed. There are other compression formats
+  used by the distributions and they might differe from xz.
+  The selection for a compression tool is done by a dist
+  configuration in dracut.conf.d which is provided by the
+  distributions as they see fit. For us this means not
+  forcing dracut into a specific compression setting allows
+  to make use of the distro provided setting and also
+  allows to change/override this setting by an overlay
+  file. This Fixes bsc#1192975
+
+-------------------------------------------------------------------
 Tue Nov 23 15:10:26 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.9 → 9.24.10
