@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Dec 13 15:16:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add noto-sans-fonts: in order to have a reliable test suite with
+  pango 1.50, we need to have some fonts available.
+- Add python-graphviz-pytest.patch: Allow to run pytest directly,
+  instead of run-tests.py. Allows us to further use %%pytest
+  without workarounds. Patch will be part of the next version.
+
+-------------------------------------------------------------------
+Mon Dec 13 09:38:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.19.1:
+  + Fix undecoded CalledProcessError.stdout and .stderr when
+    .pipe() call with an encoding different from self.encoding
+    fails.
+  + Fix missing project root conftest.py in source distribution.
+  + Extend examples/graphviz-escapes.ipynb.
+  + Improve test coverage.
+  + Increase build scripts verbosity.
+
+-------------------------------------------------------------------
+Wed Dec  8 11:21:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.19:
+  + Add PendingDeprecationWarning to calls using positional
+    arguments that will be deprecated in a later version.
+  + Add keyword-only outfile argument to .render() and stand-alone
+    graphviz.render().
+  + Add graphviz.set_jupyter_format() to set the output format used
+    by the Jupyter visualization of graphviz.Graph,
+    graphviz.Digraph, and graphviz.Source.
+  + Add keyword-only raise_if_result_exists argument to .render()
+    and stand-alone graphviz.render().
+- For all intermediate releases between 0.14.1 and 0.19, please see
+  the packaged CHANGES.txt.
+
+-------------------------------------------------------------------
 Thu Aug  6 08:26:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.14.1

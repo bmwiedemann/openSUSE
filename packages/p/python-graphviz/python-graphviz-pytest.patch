@@ -1,0 +1,75 @@
+From 961dbdd607399e264a752a73df874f686538d949 Mon Sep 17 00:00:00 2001
+From: Sebastian Bank <sebastian.bank@uni-leipzig.de>
+Date: Mon, 13 Dec 2021 10:53:45 +0100
+Subject: [PATCH] move doctest +NO_EXE definition/setup to conftest.py
+
+- see #152
+---
+ conftest.py  | 16 +++++++++++++++-
+ run-tests.py | 17 ++---------------
+ 2 files changed, 17 insertions(+), 16 deletions(-)
+
+Index: graphviz-0.19.1/conftest.py
+===================================================================
+--- graphviz-0.19.1.orig/conftest.py
++++ graphviz-0.19.1/conftest.py
+@@ -1,6 +1,21 @@
+ """pytest command line options and doctest namespace."""
+ 
+ import pytest
++import doctest
++import unittest.mock
++
++NO_EXE = doctest.register_optionflag('NO_EXE')
++
++class NoExeChecker(doctest.OutputChecker):  # noqa: E302
++
++    def check_output(self, want, got, optionflags, *args, **kwargs) -> bool:
++        if optionflags & NO_EXE:
++            return True
++        return super().check_output(want, got, optionflags, *args, **kwargs)
++
++unittest.mock.patch.object(doctest, 'OutputChecker', new=NoExeChecker).start()  # noqa: E305
++
++import pytest  # noqa: E402
+ 
+ SKIP_EXE = '--skip-exe'
+ 
+Index: graphviz-0.19.1/run-tests.py
+===================================================================
+--- graphviz-0.19.1.orig/run-tests.py
++++ graphviz-0.19.1/run-tests.py
+@@ -7,11 +7,11 @@ import doctest
+ import pathlib
+ import platform
+ import sys
+-from unittest import mock
+ 
+-SELF = pathlib.Path(__file__)
++import pytest
+ 
+ NO_EXE = doctest.register_optionflag('NO_EXE')
++SELF = pathlib.Path(__file__)
+ 
+ ARGS = [#'--skip-exe',
+         #'--only-exe',
+@@ -26,19 +26,6 @@ ARGS = [#'--skip-exe',
+ if platform.system() == 'Windows' and 'idlelib' in sys.modules:
+     ARGS += ['--capture=sys', '--color=no']
+ 
+-
+-class NoExeChecker(doctest.OutputChecker):
+-
+-    def check_output(self, want, got, optionflags, *args, **kwargs) -> bool:
+-        if optionflags & NO_EXE:
+-            return True
+-        return super().check_output(want, got, optionflags, *args, **kwargs)
+-
+-
+-mock.patch.object(doctest, 'OutputChecker', new=NoExeChecker).start()
+-import pytest  # noqa: E402
+-
+-
+ print('run', [SELF.name] + sys.argv[1:])
+ args = ARGS + sys.argv[1:]
+ 

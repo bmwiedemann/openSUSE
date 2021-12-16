@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphviz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-graphviz
-Version:        0.14.1
+Version:        0.19.1
 Release:        0
 Summary:        Python interface for Graphviz
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/xflr6/graphviz
 Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.zip
+Patch0:         python-graphviz-pytest.patch
 BuildRequires:  %{python_module mock >= 2}
-BuildRequires:  %{python_module pytest >= 3.4}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock >= 1.8}
 BuildRequires:  %{python_module setuptools}
@@ -34,6 +35,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gnome
+BuildRequires:  noto-sans-fonts
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  w3m
@@ -56,13 +58,10 @@ inspected with its default application. Graphs can also be rendered and
 displayed within IPython notebooks.
 
 %prep
-%setup -q -n graphviz-%{version}
+%autosetup -n graphviz-%{version}
 
 # Fix wrong-file-end-of-line-encoding
-dos2unix CHANGES.txt LICENSE.txt README.rst docs/*.rst
-
-# Remove hardcoded pytest version
-sed -i -e '/minversion/d' setup.cfg
+dos2unix LICENSE.txt README.rst docs/*.rst
 
 %build
 %python_build
@@ -76,7 +75,7 @@ sed -i -e '/minversion/d' setup.cfg
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGES.txt README.rst
+%doc README.rst
 %{python_sitelib}/graphviz
 %{python_sitelib}/graphviz-%{version}-py*.egg-info
 
