@@ -7,7 +7,7 @@ Index: hplip-3.19.6/base/validation.py
  
  class GPG_Verification(DigiSign_Verification):
 -    def __init__(self, pgp_site = 'pgp.mit.edu', key = 0x4ABA2F66DBD5A95894910E0673D770CDA59047B9):
-+    def __init__(self, pgp_site = 'pool.sks-keyservers.net', key = 0x4ABA2F66DBD5A95894910E0673D770CDA59047B9):
++    def __init__(self, pgp_site = 'pgp.surf.nl', key = 0x4ABA2F66DBD5A95894910E0673D770CDA59047B9):
          self.__pgp_site = pgp_site
          self.__key = key
          self.__gpg = utils.which('gpg',True)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 14 14:43:11 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Replace keys.openpgp.org with pgp.surf.nl (bsc#1193656) 
+  * gpg refuses to load the key from keys.openpgp.org.
+
+-------------------------------------------------------------------
+Tue Dec 14 11:17:46 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Add build dependency on python-rpm-macros (bsc#1193718)
+- Replace pool.sks-keyservers.net by keys.openpgp.org (bsc#1193656)
+
+-------------------------------------------------------------------
 Sun Nov  7 15:43:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 3.21.10

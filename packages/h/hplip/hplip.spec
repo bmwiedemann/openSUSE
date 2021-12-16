@@ -104,6 +104,7 @@ BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  sane-backends-devel
 BuildRequires:  systemd-rpm-macros
