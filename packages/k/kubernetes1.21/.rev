@@ -183,4 +183,41 @@
     <comment></comment>
     <requestid>923549</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ef11b92932ca4e13cd984dbf3d25624b</srcmd5>
+    <version>1.21.7</version>
+    <time>1639685944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.7:
+  * parameter 'disabled-metrics' is invalid
+  * defer close the rotated log open
+  * Fixed nil pointer dereference
+  * Add tests for checking bind mounts
+  * Check subpath file
+  * Add check for subpaths
+  * Manual cherry pick of kube-openapi changes for release-1.21 Bump kube-openapi against kube-openapi/release-1.21 branch
+  * Fixed unit test SELinux support
+  * Add shortcut for SELinux detection
+  * Don't guess SELinux support on error
+  * Use separate pathSpec for local and remote to properly handle cleaning paths
+  * [go1.16] Update to go1.16.10
+  * Automated cherry pick of #105122: added keys for structured logging (#105138)
+  * Update debian, debian-iptables, setcap images to pick up CVEs fixes
+  * Fixing how EndpointSlice Mirroring handles Service selector transitions
+  * Fix race condition in logging when request times out
+  * Remove nodes with Cluster Autoscaler taint from LB backends.
+  * Retry detaching FibreChannel volume few times
+  * Regenerate vendor/
+  * Move error reporting to volume plugins
+  * Retry reading /proc/mounts indifinetly in FC and iSCSI volume reconstruction
+  * ConsistentRead tries 10 times
+  * Bump k8s.io/utils
+  * Fix issue in node status updating VolumeAttached list
+  * Support cgroupv2 in node problem detector test
+  * Update CHANGELOG/CHANGELOG-1.21.md for v1.21.6
+  * Fix log spam for du failure on pod etc-hosts metrics
+  * Run storage hostpath e2e test client pod as privileged
+  * support more than 100 disk mounts on Windows</comment>
+    <requestid>936733</requestid>
+  </revision>
 </revisionlist>

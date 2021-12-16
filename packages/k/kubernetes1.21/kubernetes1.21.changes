@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Dec 08 15:22:24 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.21.7:
+  * parameter 'disabled-metrics' is invalid
+  * defer close the rotated log open
+  * Fixed nil pointer dereference
+  * Add tests for checking bind mounts
+  * Check subpath file
+  * Add check for subpaths
+  * Manual cherry pick of kube-openapi changes for release-1.21 Bump kube-openapi against kube-openapi/release-1.21 branch
+  * Fixed unit test SELinux support
+  * Add shortcut for SELinux detection
+  * Don't guess SELinux support on error
+  * Use separate pathSpec for local and remote to properly handle cleaning paths
+  * [go1.16] Update to go1.16.10
+  * Automated cherry pick of #105122: added keys for structured logging (#105138)
+  * Update debian, debian-iptables, setcap images to pick up CVEs fixes
+  * Fixing how EndpointSlice Mirroring handles Service selector transitions
+  * Fix race condition in logging when request times out
+  * Remove nodes with Cluster Autoscaler taint from LB backends.
+  * Retry detaching FibreChannel volume few times
+  * Regenerate vendor/
+  * Move error reporting to volume plugins
+  * Retry reading /proc/mounts indifinetly in FC and iSCSI volume reconstruction
+  * ConsistentRead tries 10 times
+  * Bump k8s.io/utils
+  * Fix issue in node status updating VolumeAttached list
+  * Support cgroupv2 in node problem detector test
+  * Update CHANGELOG/CHANGELOG-1.21.md for v1.21.6
+  * Fix log spam for du failure on pod etc-hosts metrics
+  * Run storage hostpath e2e test client pod as privileged
+  * support more than 100 disk mounts on Windows
+  * Update to go1.16.9
+  * Fix PreferNominatedNode test
+  * Verifying the auth headers are set for upgraded aggregated API requests
+  * apiserver aggregator upgrade unit test
+  * Aggregator uses the regular transport even if the request requires upgrades
+  * check log directory for restartCount
+  * Copy VolumeSnapshotContent annotations in snapshottable.go test
+  * Bump klog to v2.9.0
+  * Ignore VMs in vmss delete backend pools
+  * aggregate errors when putting vmss
+  * fix: skip not found nodes when reconciling LB backend address pools
+  * fix: consolidate logs for instance not found error
+  * Remove a duplicate StorageClass creation call
+  * Bump golang.org/x/text to v0.3.6
+  * Revert 102925: Fix Node Resources plugins score when there are pods with no requests
+  * e2e scheduling priorities: do not reference control loop variable
+  * storege e2etest: Delete restored PVC/Pod in snapshottable
+  * tests: Wait for the network connectivity first
+  * v1.21: Fix test flake in old svc registry
+  * 'New' Event namespace validate failed
+  * Update CHANGELOG/CHANGELOG-1.21.md for v1.21.5
+  * Refine locking in API Priority and Fairness config controller
+  * kube-controller-manager: properly check generic ephemeral volume feature
+  * Fix null JSON round tripping
+  * Propagate conversion errors
+  * integration test
+  * fix 104329: check for headless before trying to release the ClusterIPs
+  * fix detach disk issue on deleting node
+  * fix: ignore the case when comparing azure tags in service annotation
+  * fix: ignore the case when updating tags
+  * backport metrics grabbing through port-forwarding
+  * remove listx from OWNERS_ALIASES
+  * Only use dualstack if the node and config supports it
+  * Local PV e2e: fix leaked local volumes
+  * Add explicit capability for online volume expansion
+
+-------------------------------------------------------------------
 Wed Oct  6 15:24:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Bump disk requirements in _constraints to 12GB. Data based on the
