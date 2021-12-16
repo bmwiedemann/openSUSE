@@ -34,7 +34,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3-devel
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-runner
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       python3-cairo
@@ -58,7 +57,8 @@ arrangements of terminals for different tasks.
 
 %prep
 %autosetup -p0
-
+# https://github.com/gnome-terminator/terminator/issues/554
+sed -i 's:pytest-runner::' setup.py
 # remove pointless shebangs
 sed -i '/#! \?\/usr.*/d' terminatorlib/*.py
 
