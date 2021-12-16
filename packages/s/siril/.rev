@@ -74,4 +74,15 @@
     <comment></comment>
     <requestid>934912</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d6b13ce62559cafd06cb3c0f14ae12c</srcmd5>
+    <version>1.0.0~rc2</version>
+    <time>1639616447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0~rc2:
+  * Fixes many crashes
+  * Minor improvements in plot feature
+</comment>
+    <requestid>940688</requestid>
+  </revision>
 </revisionlist>

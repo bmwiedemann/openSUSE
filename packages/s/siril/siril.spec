@@ -16,10 +16,10 @@
 #
 
 
-%define rcver_upstream     1.0.0-rc1
+%define rcver_upstream     1.0.0-rc2
 
 Name:           siril
-Version:        1.0.0~rc1
+Version:        1.0.0~rc2
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
