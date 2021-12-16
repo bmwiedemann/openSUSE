@@ -7,4 +7,12 @@
     <comment>initial OBS build - required for python-weasyprint (newer version)</comment>
     <requestid>932753</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>864942e3d2f8be442749ee3dd916bbbb</srcmd5>
+    <version>0.1.2</version>
+    <time>1639616441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940658</requestid>
+  </revision>
 </revisionlist>

@@ -27,24 +27,21 @@ Summary:        A low-level PDF generator
 License:        BSD-3-Clause
 URL:            https://www.courtbouillon.org/pydyf
 Source:         https://files.pythonhosted.org/packages/source/p/pydyf/pydyf-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 ## Testing
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-flake8}
-BuildRequires:  %{python_module pytest-isort}
-BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module pytest-isort}
 BuildRequires:  gs
-
 
 %python_subpackages
 
 %description
 A low-level PDF generator written in Python and based on PDF specification 1.7.
+
 %prep
 %setup -q -n pydyf-%{version}
 
@@ -56,6 +53,7 @@ A low-level PDF generator written in Python and based on PDF specification 1.7.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i 's:--flake8 --cov --no-cov-on-fail::' pyproject.toml
 %pytest tests/test_pydyf.py
 
 %files %{python_files}
