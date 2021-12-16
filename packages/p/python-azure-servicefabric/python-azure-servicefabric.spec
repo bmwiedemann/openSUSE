@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-servicefabric
-Version:        8.0.0.0
+Version:        8.2.0.0
 Release:        0
 Summary:        Microsoft Azure Service Fabric Client Library
 License:        MIT
