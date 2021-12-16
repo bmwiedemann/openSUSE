@@ -21,7 +21,7 @@
 %define _name   pangomm
 
 Name:           pangomm1_4
-Version:        2.46.1
+Version:        2.46.2
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
