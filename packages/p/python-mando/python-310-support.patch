@@ -1,0 +1,61 @@
+Index: mando-0.7.0/mando/tests/test_numpy.py
+===================================================================
+--- mando-0.7.0.orig/mando/tests/test_numpy.py
++++ mando-0.7.0/mando/tests/test_numpy.py
+@@ -1,3 +1,4 @@
++import sys
+ import pytest
+ from mando import Program
+ 
+@@ -51,6 +52,20 @@ optional arguments:
+   --arg2 ARG2  Description of `arg2`
+ '''),
+ ]
++if sys.version_info[:2] >= (3, 10):
++    NUMPY_DOCSTRING_HELP_CASES = [
++    ('simple_numpy_docstring --help 2 --arg2=test', '''usage: example.py simple_numpy_docstring [-h] [--arg2 ARG2] arg1
++
++Extended description.
++
++positional arguments:
++  arg1         Description of `arg1`
++
++options:
++  -h, --help   show this help message and exit
++  --arg2 ARG2  Description of `arg2`
++'''),
++    ]
+ 
+ 
+ @pytest.mark.parametrize('args,result', NUMPY_DOCSTRING_HELP_CASES)
+Index: mando-0.7.0/mando/tests/test_google.py
+===================================================================
+--- mando-0.7.0.orig/mando/tests/test_google.py
++++ mando-0.7.0/mando/tests/test_google.py
+@@ -1,3 +1,4 @@
++import sys
+ import pytest
+ from mando import Program
+ 
+@@ -46,6 +47,21 @@ optional arguments:
+   --arg2 ARG2  Description of `arg2`
+ '''),
+ ]
++if sys.version_info[:2] >= (3, 10):
++    GOOGLE_DOCSTRING_HELP_CASES = [
++    ('simple_google_docstring --help 2 --arg2=test', '''usage: example.py simple_google_docstring [-h] [--arg2 ARG2] arg1
++
++Extended description.
++
++positional arguments:
++  arg1         Description of `arg1`
++
++options:
++  -h, --help   show this help message and exit
++  --arg2 ARG2  Description of `arg2`
++'''),
++    ]
++
+ 
+ 
+ @pytest.mark.parametrize('args,result', GOOGLE_DOCSTRING_HELP_CASES)

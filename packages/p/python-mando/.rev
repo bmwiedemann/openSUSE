@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>790514</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>85bfc5fce7bf4cd34b697e49792420d1</srcmd5>
+    <version>0.7.0</version>
+    <time>1639685957</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch python-310-support.patch:
+  * Support argparse changes introduced in Python 3.10.</comment>
+    <requestid>940133</requestid>
+  </revision>
 </revisionlist>
