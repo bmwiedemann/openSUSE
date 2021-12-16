@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Mon Dec 13 10:01:47 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#552
+- etc: update module.config to match 5.16
+- etc/module.config: sort the network modules
+- kernel 5.16 update
+- 17.29
+
+--------------------------------------------------------------------
 Wed Dec 1 09:48:34 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#551
