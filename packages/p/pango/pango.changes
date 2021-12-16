@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sat Dec 11 15:23:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.1:
+  + Fix a crash in tab handling.
+  + Fix tab positioning without line wrapping.
+  + Fix an assertion failure found by fuzzing.
+  + Make underlines work again for broken fonts.
+
+-------------------------------------------------------------------
+Fri Dec  3 18:55:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.0:
+  + Fix glyph placement in gravity east
+  + Fix line heights in improper gravities
+  + Only shown selected ignorables with nicks
+  + Support tab alignments other than left
+  + Support custom decimal points on decimal tabs
+  + Fix a pango-view crash
+  + Optimize handling of many tabs
+  + Drop json-glib dependency
+- Drop pkgconfig(json-glib-1.0) BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Sat Nov 27 20:38:37 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.49.4:
+  + Require fontconfig 2.13
+  + Require harfbuzz 2.6
+  + Many fixes to line breaking accuracy
+  + coretext: Correctly clamp text weights at min/max values
+  + Add serialization api for PangoLayout, PangoFont and
+    PangoAttrList
+  + Require json-glib
+  + tests:
+    - Use serialized layouts for test cases
+    - Include fonts in git
+  + pango-view: Accept serialized layouts
+  + Fix a rounding problem with font metrics
+  + Fix visible space display using ␣
+- Changes from version 1.49.3:
+  + Fix hinting of glyph metrics
+  + Fix logical glyph extents in vertical gravities
+  + Visualize more default-ignorable glyphs
+  + Fix advance widths in transformed contexts
+  + Implement Small Caps and other casing variations
+- Changes from version 1.49.2:
+  + Update Unicode data to Unicode 14
+  + Fix underlining of spaces
+  + Round font metrics when appropriate
+  + Fix some corner cases of cursor positioning
+  + Handle Catalan middle-dot in text segmentation
+- Changes from version 1.49.1:
+  + Only recompute log attrs when needed
+  + Validate log attrs
+  + Fix conformance issues in Thai and Indic linebreaking
+  + Add pango_attr_break to support customizing line and word
+    breaks
+  + Add font-dependent baseline shifts and sizing for super- and
+    subscripts
+  + Improve hyphenation support
+  + pango-view:
+    - Visualize caret positions and slopes
+    - Show glyph rects
+    - Make --annotate easier to use
+  + Add pango_layout_get_caret_pos to support sloped carets
+  + Improve caret positioning for ligatures
+  + Better under- and overline placement
+  + layout:
+    - Allocate a bit less
+    - Fix cluster extents with rise
+  + Add pango_layout_iter_get_run_baseline
+  + Add pango_glyph_string_index_to_x_full
+  + coretext: Set size on font descriptions
+  + Add color information to PangoGlyphVisAttr
+- Changes from version 1.49.0:
+  + Require fribidi 1.0.6
+  + Fix threadsafety issues with Thai
+  + Fix a rounding problem on i386
+  + Fix font choice for ellipsis
+  + New api:
+    - pango_font_get_languages
+    - Introspection helpers for attributes
+  + Ignore width in horizontal context when itemizing
+  + markup:
+    - Allow specifying size and rise in points
+    - Allow specifying size as percentage
+  + Rewrite pango_layout_move_cursor_visually
+  + Add a line-height attribute and make logical line extents
+    respect it
+  + Add pango_justify_last_line
+  + Add pango_shape_item
+  + Add a text-transform attribute and implement it
+  + Clean up fribidi api usage
+  + Fix a bug in the gravity data table
+  + pango-view: Improve the --annotate option
+  + Fix a possible crash in rendering strikethroughs
+- Add pkgconfig(json-glib-1.0) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
 Sun Sep 12 17:21:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.48.10:

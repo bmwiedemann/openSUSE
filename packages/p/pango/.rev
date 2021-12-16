@@ -1067,4 +1067,12 @@
     <comment>New stable release (forwarded request 918528 from iznogood)</comment>
     <requestid>918655</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>d7eb8da152cd4d6d725ddd6fc1b2f552</srcmd5>
+    <version>1.50.1</version>
+    <time>1639685920</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 939926 from dimstar)</comment>
+    <requestid>940264</requestid>
+  </revision>
 </revisionlist>
