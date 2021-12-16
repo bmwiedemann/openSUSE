@@ -34,7 +34,9 @@ Source99:       baselibs.conf
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libffi) >= 3.0.0
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtasn1) >= 2.3
+BuildRequires:  pkgconfig(systemd)
 
 %description
 p11-kit provides a way to load and enumerate PKCS#11 modules, as well
@@ -99,6 +101,7 @@ Unix domain socket.  Note that this feature is still experimental.
 %build
 %configure \
   --with-trust-paths=%{trustdir_cfg}:%{trustdir_static} \
+  --with-systemd \
   --enable-doc
 %make_build
 
@@ -190,5 +193,7 @@ export NO_BRP_STALE_LINK_ERROR=yes # *grr*
 %files server
 %{_libdir}/pkcs11/p11-kit-client.so
 %{_libexecdir}/p11-kit/p11-kit-server
+%{_userunitdir}/p11-kit-server.service
+%{_userunitdir}/p11-kit-server.socket
 
 %changelog
