@@ -18,21 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-execnet
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Rapid multi-Python deployment
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/pytest-dev/execnet
 Source0:        https://files.pythonhosted.org/packages/source/e/execnet/execnet-%{version}.tar.gz
-BuildRequires:  %{python_module apipkg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
-Requires:       python-apipkg
 BuildArch:      noarch
 %python_subpackages
 

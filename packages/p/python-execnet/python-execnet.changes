@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 12 16:55:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 1.9.0
+  * Removed the apipkg dependency.
+- Release 1.8.1
+  * Update calls of threading.Event.isSet() to
+    threading.Event.is_set(), which avoids a deprecation warning
+    with Python 3.10.
+
+-------------------------------------------------------------------
 Tue Feb  2 09:57:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:
