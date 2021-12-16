@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lupa
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Python wrapper around Lua and LuaJIT
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(lua5.4)
 Recommends:     luajit
 Suggests:       lua
 %ifnarch riscv64
