@@ -16,7 +16,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
 Restart=always
-User=loki
+User=root
 EnvironmentFile=-/etc/sysconfig/promtail
 ExecStart=/usr/bin/promtail -config.file=${CONFIG_FILE}
 ExecReload=/bin/kill -HUP $MAINPID

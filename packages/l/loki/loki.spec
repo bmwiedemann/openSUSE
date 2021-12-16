@@ -17,9 +17,9 @@
 
 
 Name:           loki
-Version:        2.2.1+git.1617669398.babea82e
+Version:        2.4.1+git.1636374074.f61a4d261
 Release:        0
-Summary:        Loki: like Prometheus, but for logs.
+Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://grafana.com/loki
@@ -28,11 +28,12 @@ Source1:        loki.service
 Source2:        promtail.service
 Source3:        sysconfig.loki
 Source4:        sysconfig.promtail
-Patch0:	harden_promtail.service.patch
+Patch0:         harden_promtail.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
 BuildRequires:  golang(API) >= 1.15
+Requires:       logcli = %{version}
 Requires:       group(loki)
 Requires:       user(loki)
 Requires(post): %fillup_prereq
@@ -48,13 +49,20 @@ This package contains the Loki server
 %package -n promtail
 Summary:        Promtail Client
 Group:          System/Monitoring
-Requires:       group(loki)
-Requires:       user(loki)
 
 %description -n promtail
 Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
 
 This package contains the Promtail client.
+
+%package -n logcli
+Summary:        LogCLI tool
+Group:          System/Monitoring
+
+%description -n logcli
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+
+This package contains the LogCLI command-line tool.
 
 %prep
 %setup -q %{name}-%{version}
@@ -72,7 +80,7 @@ export GOLDFLAGS="-s -w -X %{buildpkg}.Version=%{version} \
 
 go build -ldflags="$GOLDFLAGS" ./cmd/loki
 go build -ldflags="$GOLDFLAGS" ./cmd/logcli
-CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" ./cmd/promtail
+CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" ./clients/cmd/promtail
 
 %install
 
@@ -88,7 +96,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpromtail
 # Config files
 install -Dm644 cmd/loki/loki-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/loki.yaml
-install -Dm644 cmd/promtail/promtail-local-config.yaml \
+install -Dm644 clients/cmd/promtail/promtail-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/promtail.yaml
 
 # Binaries
@@ -129,7 +137,6 @@ install -Dm755 logcli %{buildroot}%{_bindir}
 %{_unitdir}/loki.service
 %{_fillupdir}/sysconfig.loki
 %{_bindir}/loki
-%{_bindir}/logcli
 %dir %{_sysconfdir}/loki
 %config(noreplace) %{_sysconfdir}/loki/loki.yaml
 %{_sbindir}/rcloki
@@ -140,5 +147,8 @@ install -Dm755 logcli %{buildroot}%{_bindir}
 %{_bindir}/promtail
 %config(noreplace) %{_sysconfdir}/loki/promtail.yaml
 %{_sbindir}/rcpromtail
+
+%files -n logcli
+%{_bindir}/logcli
 
 %changelog

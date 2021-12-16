@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec 13 20:15:36 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Change user in promtail.service from loki to root.
+  Without run as root promtail can not tail logfiles.
+
+-------------------------------------------------------------------
+Mon Dec 13 13:56:26 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.4.1+git.1636374074.f61a4d261:
+  * fix flaky retention tests (#4697) (#4698)
+  * Project: Loki 2.4.1 release notes (#4688) (#4692)
+  * Adds replication_factor doc to common config (#4683) (#4691)
+  * overrides checks for nil tenant limits on AllByUserID (#4687) (#4690)
+  * Loki: check new Read target when initializing boltdb-shipper store (#4681) (#4689)
+  * remove my text to test PR push (#4678)
+  * testing docs publish
+  * change branch publish pr runs on
+  * Docs: revise v2.4 release notes (#4675) (#4676)
+  * update references to new 2.4.0 image (#4672) (#4673)
+
+-------------------------------------------------------------------
+Sun Dec 12 23:32:48 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Move the logcli tool in a separate package, to allow users to install it
+  without pulling in the full loki package 
+
+-------------------------------------------------------------------
 Wed Oct  6 06:11:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
