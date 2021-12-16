@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 15:25:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 2564.patch: Allow to build against Neon 0.32.x.
+
+-------------------------------------------------------------------
 Thu Sep 16 09:55:19 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop building doc sub-package, we will in the future use

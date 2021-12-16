@@ -1,0 +1,24 @@
+From 8f0aff417c5cb1aa2a1641032acfc3665218a7fe Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Tue, 14 Dec 2021 15:19:33 +0000
+Subject: [PATCH] [neon] Allow to build against neon 0.32
+
+Neon 0.32 (released sept 2021) claims to be
+ABI/API backwards compatible down to 0.27
+---
+ ext/neon/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ext/neon/meson.build b/ext/neon/meson.build
+index bf49be9111..abd9763649 100644
+--- a/ext/neon/meson.build
++++ b/ext/neon/meson.build
+@@ -1,4 +1,4 @@
+-neon_dep = dependency('neon', version: ['>= 0.27', '<= 0.31.99'],
++neon_dep = dependency('neon', version: ['>= 0.27', '<= 0.32.99'],
+                       required : get_option('neon'))
+ 
+ if neon_dep.found()
+-- 
+GitLab
+
