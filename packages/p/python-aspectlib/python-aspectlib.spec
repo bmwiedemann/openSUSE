@@ -25,6 +25,8 @@ Summary:        Aspect-oriented programming
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-aspectlib
 Source:         https://files.pythonhosted.org/packages/source/a/aspectlib/aspectlib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_two_tests_py310.patch gh#ionelmc/python-aspectlib#22 mcepl@suse.com
+Patch0:         fix_two_tests_py310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +52,8 @@ testing: simple mock/record and a complete capture/replay
 framework.
 
 %prep
-%setup -q -n aspectlib-%{version}
+%autosetup -p1 -n aspectlib-%{version}
+
 # both tests not working (the first skipped by design, the second needed old tornado)
 # don't pull in tornado when not needed
 rm tests/test_integrations_py3.py
@@ -63,9 +66,7 @@ rm tests/test_integrations_py3.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#ionelmc/python-aspectlib#24
-python310_extraargs=("-k" "not (test_story and play_proxy_class)")
-%pytest --ignore=src "${$python_extraargs[@]}"
+%pytest --ignore=src
 
 %files %{python_files}
 %license LICENSE

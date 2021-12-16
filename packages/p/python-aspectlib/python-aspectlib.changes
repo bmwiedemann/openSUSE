@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 14 22:35:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_two_tests_py310.patch which fixes those tests with Python 3.10
+  (gh#ionelmc/python-aspectlib#22).
+
+-------------------------------------------------------------------
 Sat Dec 11 15:47:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip two failing tests in python310

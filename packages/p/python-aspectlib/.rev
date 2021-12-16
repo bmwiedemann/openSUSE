@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>940015</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9ca7bbd8ec09755037ef9e2434445803</srcmd5>
+    <version>1.5.2</version>
+    <time>1639685940</time>
+    <user>dimstar_suse</user>
+    <comment>Please, add to Staging:O.
+
+- Add fix_two_tests_py310.patch which fixes those tests with Python 3.10
+  (gh#ionelmc/python-aspectlib#22).
+</comment>
+    <requestid>940585</requestid>
+  </revision>
 </revisionlist>
