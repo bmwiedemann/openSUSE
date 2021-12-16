@@ -70,7 +70,7 @@ sed -i -e 's|DESTINATION lib|DESTINATION %{_lib}|' lib/CMakeLists.txt
 sed -i -e 's|${prefix}/lib|@LIB_INSTALL_DIR@|' libcerf.pc.in
 
 %build
-%cmake
+%cmake -DCMAKE_SKIP_RPATH=OFF
 %cmake_build
 
 %install
