@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lz4
-Version:        3.1.3
+Version:        3.1.10
 Release:        0
 Summary:        LZ4 Bindings for Python
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/l/lz4/lz4-%{versi
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

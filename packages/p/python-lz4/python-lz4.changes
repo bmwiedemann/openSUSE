@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 13 20:23:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 3.1.10:
+  * LZ4FrameFile.write()/LZ4FrameDecompressor.decompress() handle
+    buffer protocol correctly (#227, #228). Thanks to @judahrand.
+  * Pass source_size kwarg through from frame.open to LZ4FrameFile
+    instance (#224, #225). Thanks to @shawnperdue.
+  * Add readall to LZ4FrameFile and use it on python 3.10 (#219,
+    #220). Thanks to @vaartis.
+
+-------------------------------------------------------------------
 Fri Nov 19 10:45:28 UTC 2021 - pgajdos@suse.com
 
 - remove pytest-runner from BuildRequires, it is not needed
