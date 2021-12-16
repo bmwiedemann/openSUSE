@@ -37,7 +37,6 @@ BuildRequires:  %{python_module matplotlib >= 2.0.0}
 BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
@@ -66,6 +65,8 @@ Python utilities for storing, visualizing, and processing Spectroscopic and Imag
 
 %prep
 %setup -q -n %{packagename}-%{version}
+# https://github.com/pycroscopy/sidpy/issues/142
+sed -i 's:pytest-runner:pytest:' setup.py
 
 %build
 %python_build

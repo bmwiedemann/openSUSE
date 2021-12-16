@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 08:21:42 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Wed Apr 14 18:15:43 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.0.5.
