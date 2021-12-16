@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 07:00:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use this version for new package in SLE-12-SP5 (jsc#SLE-21704)
+  and SLE-15 (jsc#SLE-21705 and jsc#SLE-21706)
+
+-------------------------------------------------------------------
 Fri Nov 19 14:11:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Fix bugs introduced by last change
