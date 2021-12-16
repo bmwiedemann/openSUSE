@@ -16,15 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
-Version:        0.17.0
+Version:        0.19.0
 Release:        0
 Summary:        Python async/await-native I/O library
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/trio
 Source:         https://github.com/python-trio/trio/archive/v%{version}.tar.gz#/trio-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM trio-pr2043-py310ssl-deprecationwarnings.patch -- gh#python-trio/trio#2043
+Patch0:         https://github.com/python-trio/trio/pull/2043.patch#/trio-pr2043-py310ssl-deprecationwarnings.patch
 BuildRequires:  %{python_module astor >= 0.8}
 BuildRequires:  %{python_module async_generator >= 1.9}
 BuildRequires:  %{python_module attrs >= 19.2.0}
@@ -36,6 +38,7 @@ BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module setuptools}
 # for protocol specifications
 BuildRequires:  %{python_module sniffio}
+BuildRequires:  %{python_module contextvars >= 2.1 if %python-base < 3.7}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module yapf >= 0.27.0}
@@ -48,13 +51,10 @@ Requires:       python-idna
 Requires:       python-outcome
 Requires:       python-sniffio
 Requires:       python-sortedcontainers
+%if 0%{?python_version_nodots} < 37
+Requires:       python-contextvars >= 2.1
+%endif
 BuildArch:      noarch
-%if "%{python_flavor}" < "3.7"
-BuildRequires:  %{python_module contextvars >= 2.1}
-%endif
-%if "%{python_flavor}" < "3.7"
-Recommends:     python-contextvars >= 2.1
-%endif
 %python_subpackages
 
 %description
@@ -68,7 +68,7 @@ monitoring multiple subprocesses. Compared to other libraries, Trio
 has an obsessive focus on usability and correctness.
 
 %prep
-%setup -q -n trio-%{version}
+%autosetup -p1 -n trio-%{version}
 sed -i '1{/^#!/d}' trio/_tools/gen_exports.py
 
 %build
@@ -85,12 +85,12 @@ sed -i '1{/^#!/d}' trio/_tools/gen_exports.py
 #   pointless for us.
 # test_SSLStream_generic deadlocks in OBS
 # test_close_at_bad_time_for_send_all fails on PPC https://github.com/python-trio/trio/issues/1753
-# test_fallback_when_no_hook_claims_it is incompatible with pytest 6.2 https://github.com/python-trio/trio/issues/1843
-%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all or test_fallback_when_no_hook_claims_it)'
+%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all)'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE LICENSE.APACHE2 LICENSE.MIT
-%{python_sitelib}/*
+%{python_sitelib}/trio
+%{python_sitelib}/trio-%{version}*-info
 
 %changelog

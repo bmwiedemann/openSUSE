@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Dec 12 18:53:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.19.0
+  * Trio now supports Python 3.10. (#1921)
+  * Use slots for `~.lowlevel.Task` which should make them slightly
+    smaller and faster. (#1927)
+  * Make `~.Event` more lightweight by using less objects (about 2
+    rather than 5, including a nested ParkingLot and attribute
+    dicts) and simpler structures (set rather than OrderedDict).
+    This may benefit applications that create a large number of
+    event instances, such as with the "replace event object on
+    every set()" idiom. (#1948)
+  * The event loop now holds on to references of coroutine frames
+    for only the minimum necessary period of time. (#1864)
+  * The `~.lowlevel.TrioToken` class can now be used as a target of
+    a weak reference. (#1924)
+- Release 0.18.0
+  * Add synchronous .close() methods and context manager (with x)
+    support for .MemorySendChannel and .MemoryReceiveChannel.
+    (#1797)
+  * Previously, on Windows, Trio programs using thousands of
+    sockets at the same time could trigger extreme slowdowns in the
+    Windows kernel. Now, Trio works around this issue, so you
+    should be able to use as many sockets as you want. (#1280)
+  * `trio.from_thread.run` no longer crashes the Trio run if it is
+    executed after the system nursery has been closed but before
+    the run has finished. Calls made at this time will now raise
+    trio.RunFinishedError. This fixes a regression introduced in
+    Trio 0.17.0. The window in question is only one scheduler tick
+    long in most cases, but may be longer if async generators need
+    to be cleaned up. (#1738)
+  * Fix a crash in pypy-3.7 (#1765)
+  * Trio now avoids creating cyclic garbage as often. This should
+    have a minimal impact on most programs, but can slightly reduce
+    how often the cycle collector GC runs on CPython, which can
+    reduce latency spikes. (#1770)
+  * Remove deprecated max_refill_bytes from `SSLStream`. (#959)
+  * Remove the deprecated tiebreaker argument to
+    trio.testing.wait_all_tasks_blocked. (#1558)
+  * Remove the deprecated trio.hazmat module. (#1722)
+  * Stop allowing subclassing public classes. This behavior was
+    deprecated in 0.15.0. (#1726)
+- Add trio-pr2043-py310ssl-deprecationwarnings.patch
+
+-------------------------------------------------------------------
 Fri Jan  8 15:30:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Skip test incompatible with new pytest 6.2
