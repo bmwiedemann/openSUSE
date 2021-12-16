@@ -375,4 +375,21 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
   % gdbm-no-build-date.patch (refreshed)</comment>
     <requestid>911063</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>54a51804aae40b2444bd27110ab9c358</srcmd5>
+    <version>1.22</version>
+    <time>1639616425</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.22
+  * Fix file header validation
+  * Fix key verification in sequential access
+  * Fix testing with DejaGNU 1.6.3
+  * Fix stack overflow in print_usage
+  * Fix a leak of avail entry on pushing a new avail block
+  * New gdbmtool variables: errorexit, errormask, trace, timing
+  * etc. see CHANGES
+- modified patches
+  % gdbm-no-build-date.patch (refreshed)</comment>
+    <requestid>940172</requestid>
+  </revision>
 </revisionlist>

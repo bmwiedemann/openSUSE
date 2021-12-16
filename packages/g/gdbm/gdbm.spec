@@ -19,7 +19,7 @@
 %define lname	libgdbm6
 %define lcompat libgdbm_compat4
 Name:           gdbm
-Version:        1.20
+Version:        1.22
 Release:        0
 Summary:        GNU dbm key/data database
 License:        GPL-3.0-or-later
