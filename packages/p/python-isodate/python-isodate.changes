@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 01:44:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch coerce-decimal-to-int-python-310.patch:
+  * Support Python 3.10.
+
+-------------------------------------------------------------------
 Mon Nov  8 10:20:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add six dependency 

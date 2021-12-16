@@ -135,4 +135,13 @@
     <comment>- add six dependency</comment>
     <requestid>930128</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>473c7dd92847d04b6b950ca35e998fac</srcmd5>
+    <version>0.6.0</version>
+    <time>1639685956</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch coerce-decimal-to-int-python-310.patch:
+  * Support Python 3.10.</comment>
+    <requestid>940121</requestid>
+  </revision>
 </revisionlist>
