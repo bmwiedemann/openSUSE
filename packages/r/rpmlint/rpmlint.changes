@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:53:54 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Fri Dec 10 12:34:49 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update tarball naming to respect release version.
