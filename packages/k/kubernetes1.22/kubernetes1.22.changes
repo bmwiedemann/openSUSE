@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Dec 08 15:23:39 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.22.4:
+  * defer close the rotated log open
+  * proxy/iptables: fix all-vs-ready endpoints a bit
+  * proxy/iptables: Remove a no-op check
+  * proxy/iptables: Add more stuff to the unit test
+  * proxy/iptables: Fix TestOnlyLocalNodePortsNoClusterCIDR
+  * proxy/iptables: test that we create a consistent set of iptables rules
+  * proxy/iptables: Misc improvements to unit test
+  * proxy/iptables: Improve the sorting logic in TestOverallIPTablesRulesWithMultipleServices
+  * proxy/iptables: Fix sync_proxy_rules_iptables_total metric
+  * Fixed nil pointer dereference
+  * Add tests for checking bind mounts
+  * Check subpath file
+  * Add check for subpaths
+  * Fixed unit test SELinux support
+  * Add shortcut for SELinux detection
+  * Don't guess SELinux support on error
+  * Manual cherry pick of kube-openapi changes for release-1.22 Bump kube-openapi against kube-openapi/release-1.22 branch
+  * kube-proxy: fix stale detection logic
+  * Use separate pathSpec for local and remote to properly handle cleaning paths
+  * [go1.16] Update to go1.16.10
+  * Automated cherry pick of #105122: added keys for structured logging (#105137)
+  * Update debian, debian-iptables, setcap images to pick up CVE-2021-33910 fixes
+  * Fixing how EndpointSlice Mirroring handles Service selector transitions
+  * Add unit tests to cover scheduler's setup
+  * sched: ensure feature gate is honored when instantiating scheduler
+  * Fix race condition in logging when request times out
+  * use original requests in NodeResourcesBalancedAllocation instead of NonZero
+  * Remove nodes with Cluster Autoscaler taint from LB backends.
+  * Fix issue in node status updating VolumeAttached list
+  * Support cgroupv2 in node problem detector test
+  * Update CHANGELOG/CHANGELOG-1.22.md for v1.22.3
+  * Free APF seats for watches handled by an aggregated apiserver.
+  * parameter 'disabled-metrics' is invalid
+  * Run storage hostpath e2e test client pod as privileged
+  * support more than 100 disk mounts on Windows
+  * [go1.16] Update to go1.16.9
+  * Clear initial UDP conntrack entries for loadBalancerIPs
+  * Verifying the auth headers are set for upgraded aggregated API requests
+  * apiserver aggregator upgrade unit test
+  * Aggregator uses the regular transport even if the request requires upgrades
+  * Fix PreferNominatedNode test
+  * Remove Error Message Check Dynamic PV Tests
+  * go fmt
+  * Add e2e test to verify kubelet restart behaviour
+  * kubelet: set terminated podWorker status for terminated pods
+  * Fix quota controller hotloop in integration tests
+  * remove StartedPodsErrorsTotal metrice message
+  * Copy VolumeSnapshotContent annotations in snapshottable.go test
+  * Fix bugs in e2e pod test
+  * Ensure terminal pods maintain terminal status
+  * Do not sync Waiting statuses for Terminated pods
+  * Adds CancelRequest function to CommandHeadersRoundTripper
+  * Fixes kubectl command headers which hangs on kubectl run
+  * Revert "Build non-static binaries with PIE buildmode"
+  * Ignore VMs in vmss delete backend pools
+  * Fix CSR test to accept certs shorter than the requested duration
+  * fix: skip not found nodes when reconciling LB backend address pools
+  * fix: consolidate logs for instance not found error
+  * Remove a duplicate StorageClass creation call
+  * Update Containerd version - GCE Windows
+  * e2e scheduling priorities: do not reference control loop variable
+  * storege e2etest: Delete restored PVC/Pod in snapshottable
+  * pkg/kubelet/cm/memorymanager: Fix ErrorS key/value pair
+  * v1.22: Fix test flake in old svc registry
+  * 'New' Event namespace validate failed
+  * kubelet: Handle UID reuse in pod worker
+  * Add test for recreating a static pod
+  * Update CHANGELOG/CHANGELOG-1.22.md for v1.22.2
+  * Refine locking in API Priority and Fairness config controller
+  * kube-controller-manager: properly check generic ephemeral volume feature
+  * Fix null JSON round tripping
+  * Propagate conversion errors
+  * integration test
+  * fix 104329: check for headless before trying to release the ClusterIPs
+  * fix detach disk issue on deleting node
+  * kubelet: fix sandbox creation error suppression when pods are quickly deleted
+  * remove listx from OWNERS_ALIASES
+
+-------------------------------------------------------------------
 Thu Sep 16 11:22:40 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.22.2:

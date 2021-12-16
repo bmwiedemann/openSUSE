@@ -34,4 +34,41 @@
   * Copy golang license to staging copies</comment>
     <requestid>919509</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7dcbce0de540249fbd50e678dd3c6fad</srcmd5>
+    <version>1.22.4</version>
+    <time>1639685943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.4:
+  * defer close the rotated log open
+  * proxy/iptables: fix all-vs-ready endpoints a bit
+  * proxy/iptables: Remove a no-op check
+  * proxy/iptables: Add more stuff to the unit test
+  * proxy/iptables: Fix TestOnlyLocalNodePortsNoClusterCIDR
+  * proxy/iptables: test that we create a consistent set of iptables rules
+  * proxy/iptables: Misc improvements to unit test
+  * proxy/iptables: Improve the sorting logic in TestOverallIPTablesRulesWithMultipleServices
+  * proxy/iptables: Fix sync_proxy_rules_iptables_total metric
+  * Fixed nil pointer dereference
+  * Add tests for checking bind mounts
+  * Check subpath file
+  * Add check for subpaths
+  * Fixed unit test SELinux support
+  * Add shortcut for SELinux detection
+  * Don't guess SELinux support on error
+  * Manual cherry pick of kube-openapi changes for release-1.22 Bump kube-openapi against kube-openapi/release-1.22 branch
+  * kube-proxy: fix stale detection logic
+  * Use separate pathSpec for local and remote to properly handle cleaning paths
+  * [go1.16] Update to go1.16.10
+  * Automated cherry pick of #105122: added keys for structured logging (#105137)
+  * Update debian, debian-iptables, setcap images to pick up CVE-2021-33910 fixes
+  * Fixing how EndpointSlice Mirroring handles Service selector transitions
+  * Add unit tests to cover scheduler's setup
+  * sched: ensure feature gate is honored when instantiating scheduler
+  * Fix race condition in logging when request times out
+  * use original requests in NodeResourcesBalancedAllocation instead of NonZero
+  * Remove nodes with Cluster Autoscaler taint from LB backends.
+  * Fix issue in node status updating VolumeAttached list</comment>
+    <requestid>936732</requestid>
+  </revision>
 </revisionlist>
