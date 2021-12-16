@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  3 08:37:09 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- removed the following, either upstreamed or integrated in other patches:
+  + monitoring-plugins-wrong_return_in_check_swap.patch
+  + monitoring-plugins-check_swap-fix_comment.patch
+  + monitoring-plugins-check_swap-return_unknown.patch
+  + monitoring-plugins-check_swap-fix-n.patch
+
+-------------------------------------------------------------------
+Thu Dec  2 14:54:25 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- remove monitoring-plugins-2.3.1-check_snmp_hang_on_STDERR_workaround.patch
+  the patch just reverts the problem, if you get more than 64K on 
+  stdout
+
+-------------------------------------------------------------------
 Fri Nov 19 09:35:19 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - recommend syslog for monitoring-plugins-log, as people probably 
@@ -218,11 +234,18 @@ Mon Sep 14 13:39:18 CEST 2020 - ro@suse.de
 -------------------------------------------------------------------
 Mon Sep 14 10:57:53 CEST 2020 - ro@suse.de
 
+- include upstream fixes for check_swap
+- add patch monitoring-plugins-check_swap-fix_comment.patch
+  simply fix the plugin name in the comment
+- monitoring-plugins-check_swap-fix_zero_output.patch
+  improve the output if the swap has zero size
+- monitoring-plugins-check_swap-return_unknown.patch
+  use unknown exit code for help/version in plugins
 - add patch monitoring-plugins-check_swap-fix-n.patch
   check_swap fix behaviour for "-n" if 0 free swap is left
   from git commit 6995b510759cf531d70745b7d0c6e8a0d9010b06
   (bug#1175828)
-- updated context in 
+- updated context in
   monitoring-plugins-wrong_return_in_check_swap.patch
 
 -------------------------------------------------------------------

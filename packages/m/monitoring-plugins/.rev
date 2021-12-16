@@ -253,4 +253,12 @@ New patches:
   to detect rogue DHCP servers. Use it with the &quot;-x&quot; flag, example:</comment>
     <requestid>933139</requestid>
   </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>a7c3d21a7a6624a654d32485aa09a781</srcmd5>
+    <version>2.3.1</version>
+    <time>1639685991</time>
+    <user>dimstar_suse</user>
+    <comment>Preparing for inclusion in SLE12 and (latest) SLE15 as general update (to have the package on the same version in all SLE distributions. </comment>
+    <requestid>940945</requestid>
+  </revision>
 </revisionlist>

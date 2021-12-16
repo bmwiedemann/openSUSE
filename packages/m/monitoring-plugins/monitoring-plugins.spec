@@ -86,8 +86,6 @@ Patch125:       monitoring-plugins-2.3.1-check_ssh.patch
 Patch126:       monitoring-plugins-2.3.1-check_ssh.t_-_improve_testing.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/issues/1375
 Patch127:       monitoring-plugins-2.3.1-check_dhcp_-_detect_rogue_dhcp_servers.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/issues/1706
-Patch128:       monitoring-plugins-2.3.1-check_snmp_hang_on_STDERR_workaround.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -1141,7 +1139,6 @@ done
 %patch125 -p1
 %patch126 -p1
 %patch127 -p1
-%patch128 -p1
 find -type f -exec chmod 644 {} +
 
 %build
