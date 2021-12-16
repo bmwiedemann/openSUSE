@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Dec 14 08:54:12 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#108
+- Donot close the open tray after read_cdrom_info.
+- Donot close the open tray after read.
+- 21.79
+
+--------------------------------------------------------------------
 Thu Nov 11 17:14:55 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#106
