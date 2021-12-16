@@ -55,4 +55,22 @@
     <comment></comment>
     <requestid>880497</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6b2a6d4c8660763311eaadb2e9e0450f</srcmd5>
+    <version>21.0.0</version>
+    <time>1639685955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.0.0:
+  * Fix OMD.addlist when the added list is empty
+  * Add funcutils.noop, satisfying PEP 559
+  * Support lists for iterutils.bucketize
+  * Python 3.9 test fixes for OMD (PEP 584, see #271)
+  * Make typeutils.make_sentinel more pickleable
+  * jsonutils.reverse_iter_lines now works on Py3 and Windows 
+- Drop boltons-pr271-py39-frozendict.patch:
+  * Included upstream.
+- Add patch fix-ecoutil-imports.patch:
+  * Support Python 3.10.</comment>
+    <requestid>940120</requestid>
+  </revision>
 </revisionlist>

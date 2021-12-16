@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-boltons
-Version:        20.2.1
+Version:        21.0.0
 Release:        0
 Summary:        The "Boltons" utility package for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mahmoud/boltons
 Source:         https://github.com/mahmoud/boltons/archive/%{version}.tar.gz#/boltons-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM boltons-pr271-py39-frozendict.patch -- gh#mahmoud/boltons#271, gh#mahmoud/boltons#283
-Patch0:         boltons-pr271-py39-frozendict.patch
+# PATCH-FIX-UPSTREAM Support Python 3.10 gh#mahmoud/boltons#270e974975984f662f998c8f6eb0ebebd964de82
+Patch0:         fix-ecoutil-imports.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
