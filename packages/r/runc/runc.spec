@@ -18,24 +18,24 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 4144b63817ebcc5b358fc2c8ef95f7cddd709aa7
+%define git_version 55df1fc4c8b048118cd30a17b50f96a15ab0f3ea
+%define git_short   55df1fc4c8b0
 
 # Package-wide golang version
-%define go_version 1.16
+%define go_version 1.17
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.0.3
-%define _version 1.0.3
+Version:        1.1.0~rc1
+%define _version 1.1.0-rc.1
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/opencontainers/runc
-Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{_version}.tar.xz
-Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
+Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{version}.tar.xz
+Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
 Source2:        runc.keyring
-Source3:        runc-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
@@ -56,6 +56,9 @@ Provides:       docker-runc-kubic = %{version}
 Obsoletes:      docker-runc = 0.1.1+gitr2819_50a19c6
 Obsoletes:      docker-runc_50a19c6
 
+# Construct "git describe --dirty --long --always".
+%define git_describe v%{_version}-0-g%{git_short}
+
 %description
 runc is a CLI tool for spawning and running containers according to the OCI
 specification. It is designed to be as minimal as possible, and is the workhorse
@@ -67,7 +70,7 @@ and has grown to become a separate project entirely.
 
 %build
 # build runc
-make BUILDTAGS="seccomp" COMMIT_NO="%{git_version}" runc
+make BUILDTAGS="seccomp" COMMIT="%{git_describe}" runc
 # build man pages
 man/md2man-all.sh
 
