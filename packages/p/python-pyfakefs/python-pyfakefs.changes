@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Dec 14 04:24:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.5.3:
+  * New Features
+    + added support for some Python 3.10 features:
+    + new method pathlib.Path.hardlink_to
+    + new newline argument in pathlib.Path.write_text
+    + new follow_symlinks argument in pathlib.Path.stat and pathlib.Path.chmod
+    + new 'strict' argument in os.path.realpath
+    + added support for pathlib.Path.link_to (new in Python 3.8) (see #580)
+    + added support for pathlib.Path.readlink (new in Python 3.9) (see #584)
+    + added FakeFilesystem.create_link convenience method which creates intermittent directories (see #580)
+  * Changes
+    + Python 3.5 has reached its end of life in September 2020 and is no longer supported
+    + pathlib2 is still supported, but considered to have the same functionality as pathlib and is no longer tested separately; the previous behavior broke newer pathlib features if pathlib2 was installed (see #592)
+    + Added caching of patched modules to avoid lookup overhead
+    + Added use_cache option and clear_cache method to be able to deal with unwanted side effects of the newly introduced caching
+    + The patchfs decorator now expects a positional argument instead of the keyword arguments fs. This avoids confusion with the pytest fs fixture and conforms to the behavior of mock.patch. You may have to adapt the argument order if you use the patchfs and mock.patch decorators together (see #566)
+    + Default arguments that are file system functions are now not patched by default to avoid a large performance impact. An additional parameter patch_default_args has been added that switches this behavior on (see #567).
+  * Fixes
+    + added handling of path-like where missing
+    + improved handling of str/bytes paths
+    + suppress all warnings while inspecting loaded modules (see #614)
+    + do not import pandas and related modules if it is not patched (see #627)
+    + handle pathlib.Path.owner() and pathlib.Path.group by returning the current user/group name (see #629)
+    + fixed handling of use_known_patches=False (could cause an exception)
+    + correctly handle byte paths in os.path.exists (see #595)
+    + Update fake_pathlib to support changes coming in Python 3.10 (see
+    + correctly handle UNC paths in os.path.split and in directory path evaluation (see #606)
+    + fixed handling of pipe descriptors in the fake filesystem (see #581)
+    + added non-functional argument effective_ids to os.access (see #585)
+    + correctly handle os.file for unreadable files (see #588)
+    + Reverted one Windows-specific optimization that can break tests under some conditions (see #573)
+    + Setting os did not reset os.sep and related variables, fixed null device name, added os.pathsep and missing os.path variables (see #572)
+    + open calls had not been patched for modules with a name ending with "io" (see #569)
+    + remove dependency of pyfakefs on pytest (regression, see #565)
+
+-------------------------------------------------------------------
 Sat Mar 14 07:22:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.0.2:

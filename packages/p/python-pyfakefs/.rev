@@ -107,4 +107,41 @@
     <comment>Staging:I py3 only pkg</comment>
     <requestid>784798</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0508c51bd6e347e4ed15e87da62b8878</srcmd5>
+    <version>4.5.3</version>
+    <time>1639685921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.3:
+  * New Features
+    + added support for some Python 3.10 features:
+    + new method pathlib.Path.hardlink_to
+    + new newline argument in pathlib.Path.write_text
+    + new follow_symlinks argument in pathlib.Path.stat and pathlib.Path.chmod
+    + new 'strict' argument in os.path.realpath
+    + added support for pathlib.Path.link_to (new in Python 3.8) (see #580)
+    + added support for pathlib.Path.readlink (new in Python 3.9) (see #584)
+    + added FakeFilesystem.create_link convenience method which creates intermittent directories (see #580)
+  * Changes
+    + Python 3.5 has reached its end of life in September 2020 and is no longer supported
+    + pathlib2 is still supported, but considered to have the same functionality as pathlib and is no longer tested separately; the previous behavior broke newer pathlib features if pathlib2 was installed (see #592)
+    + Added caching of patched modules to avoid lookup overhead
+    + Added use_cache option and clear_cache method to be able to deal with unwanted side effects of the newly introduced caching
+    + The patchfs decorator now expects a positional argument instead of the keyword arguments fs. This avoids confusion with the pytest fs fixture and conforms to the behavior of mock.patch. You may have to adapt the argument order if you use the patchfs and mock.patch decorators together (see #566)
+    + Default arguments that are file system functions are now not patched by default to avoid a large performance impact. An additional parameter patch_default_args has been added that switches this behavior on (see #567).
+  * Fixes
+    + added handling of path-like where missing
+    + improved handling of str/bytes paths
+    + suppress all warnings while inspecting loaded modules (see #614)
+    + do not import pandas and related modules if it is not patched (see #627)
+    + handle pathlib.Path.owner() and pathlib.Path.group by returning the current user/group name (see #629)
+    + fixed handling of use_known_patches=False (could cause an exception)
+    + correctly handle byte paths in os.path.exists (see #595)
+    + Update fake_pathlib to support changes coming in Python 3.10 (see
+    + correctly handle UNC paths in os.path.split and in directory path evaluation (see #606)
+    + fixed handling of pipe descriptors in the fake filesystem (see #581)
+    + added non-functional argument effective_ids to os.access (see #585)
+    + correctly handle os.file for unreadable files (see #588)</comment>
+    <requestid>940364</requestid>
+  </revision>
 </revisionlist>

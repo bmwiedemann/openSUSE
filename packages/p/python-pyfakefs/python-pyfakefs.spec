@@ -1,7 +1,7 @@
 #
-# spec file for package python-pyfakefs
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pyfakefs%{psuffix}
-Version:        4.0.2
+Version:        4.5.3
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
