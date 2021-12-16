@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Dec 16 09:10:32 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Restore & rebase revert-coredns-image-renaming.patch from 
+  kubernetes1.22. Looks like it's still needed until all supported
+  k8s versions allow us to change how we publish coredns containers
+
+-------------------------------------------------------------------
+Wed Dec  8 14:51:07 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Initial Package 
