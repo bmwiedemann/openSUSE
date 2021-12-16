@@ -5961,6 +5961,9 @@ unsorted:
   - go1.17 
   - go1.17-doc 
   - go1.17-race: [x86_64] 
+  - go1.18 
+  - go1.18-doc 
+  - go1.18-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -15065,6 +15068,7 @@ unsorted:
   - logback-access 
   - logback-examples 
   - logback-javadoc 
+  - logcli 
   - logdigest 
   - logfactor5 
   - logstalgia 
@@ -21585,7 +21589,6 @@ unsorted:
   - python36-Flask-Testing 
   - python36-Flask-WTF 
   - python36-Flask-doc 
-  - python36-FontTools 
   - python36-FormEncode 
   - python36-Genshi 
   - python36-GitPython 
@@ -22652,6 +22655,7 @@ unsorted:
   - python36-freezegun 
   - python36-fritzconnection 
   - python36-frozendict 
+  - python36-frozenlist 
   - python36-fs 
   - python36-fsspec 
   - python36-ftfy 
@@ -25479,6 +25483,7 @@ unsorted:
   - python38-freezegun 
   - python38-fritzconnection 
   - python38-frozendict 
+  - python38-frozenlist 
   - python38-fs 
   - python38-ftfy 
   - python38-ftputil 
@@ -28494,6 +28499,7 @@ unsorted:
   - python39-freezegun 
   - python39-fritzconnection 
   - python39-frozendict 
+  - python39-frozenlist 
   - python39-fs 
   - python39-fsspec 
   - python39-ftfy 
