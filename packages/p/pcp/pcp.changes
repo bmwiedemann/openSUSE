@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:48:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove sysconfig dependencies, this is not the equivalent of
+  the initscripts package and completly unneeded here.
+- Add missing hostname requires
+
+-------------------------------------------------------------------
 Tue May 11 17:12:16 CEST 2021 - ro@suse.de
 
 - also buildrequire pkgconfig(systemd) to make sure configure

@@ -373,9 +373,9 @@ Requires:       perl
 Requires:       sed
 Requires:       which
 %if 0%{?suse_version}
+Requires:       /usr/bin/hostname
 Requires:       cpp
 Requires:       cyrus-sasl
-Requires:       sysconfig
 %else
 Requires:       initscripts
 %endif
