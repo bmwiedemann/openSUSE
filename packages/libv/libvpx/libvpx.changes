@@ -21,6 +21,7 @@ Fri Oct  8 10:54:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
     Fix some -Wsign-compare warnings in simple_encode.
     Fix input file path in simple_encode_test.
     Fix valid range for under/over_shoot pct.
+  - Includes fix for CVE-2020-0034 (bsc#1166066)
 - Remove libvpx-armv7-use-hard-float.patch: fixed
 
 -------------------------------------------------------------------
