@@ -1,7 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,27 +19,20 @@
 %define asan_build    0
 %define debug_build   0
 
-%if 0%{?suse_version} >= 1315
-%define bindperl 1
-%else
-%define bindperl 0
-%endif
 %define quant 16
 %define base_version 1.3
 %define so_ver          3
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.36
+Version:        1.3.37
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
 Group:          Productivity/Graphics/Convertors
 URL:            http://www.GraphicsMagick.org/
-Source:         ftp://ftp.GraphicsMagick.org/pub/%{name}/%{base_version}/%{name}-%{version}.tar.xz
-%if %{bindperl}
+Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
-%endif
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
@@ -152,7 +145,6 @@ image and to save the result to any supported format. GraphicsMagick
 may be used to create animated or transparent .gifs, to composite
 images, and to create thumbnail images.
 
-%if %{bindperl}
 %package     -n perl-GraphicsMagick
 Summary:        Perl interface for the GraphicsMagick image conversion library
 Group:          Development/Languages/Perl
@@ -169,7 +161,6 @@ may be used to create animated or transparent .gifs, to composite
 images, and to create thumbnail images.
 
 This package contains perl interface to GraphicsMagick library.
-%endif
 
 %package     -n libGraphicsMagick++-Q%{quant}-%{pp_so_ver}
 Summary:        C++ interface for the GraphisMagick image conversion library
@@ -206,10 +197,7 @@ images, and to create thumbnail images.
 
 %prep
 %setup -q
-%if %{bindperl}
-%patch0 -p1
-%endif
-%patch1 -p1
+%autopatch -p1
 
 %build
 # This shouldn't be there yet.
@@ -259,11 +247,9 @@ make %{?_smp_mflags} LDFLAGS="-pie"
 %else
 make %{?_smp_mflags}
 %endif
-%if %{bindperl}
 cd PerlMagick
 perl Makefile.PL
 make %{?_smp_mflags} LD_RUN_PATH="%{_libdir}"
-%endif
 
 %install
 %if 0%{?suse_version} >= 1315
@@ -277,7 +263,6 @@ rm -f %{buildroot}%{_libdir}/libGraphicsMagick.la
 rm -f %{buildroot}%{_libdir}/libGraphicsMagick++.la
 rm -f %{buildroot}%{_libdir}/libGraphicsMagickWand.la
 cp ChangeLog* *.txt %{buildroot}/%{_defaultdocdir}/%{name}
-%if %{bindperl}
 cd PerlMagick
 make DESTDIR=%{buildroot} LD_RUN_PATH="%{_libdir}" install_vendor
 %perl_process_packlist
@@ -288,7 +273,6 @@ rm -f `find %{buildroot}%{_libdir}/perl*/ -name .packlist -type f`
 rm -f `find %{buildroot}%{_prefix}/lib/perl*/ -name perllocal.pod -type f`
 rm -f `find %{buildroot}%{_prefix}/lib/perl*/ -name .packlist -type f`
 rm -f %{buildroot}%{_localstatedir}/adm/perl-modules/GraphicsMagick
-%endif
 
 %check
 %if %{asan_build}
@@ -299,12 +283,10 @@ make %{?_smp_mflags} check
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/magick/.libs:$PWD/wand/.libs
 export MAGICK_CODER_MODULE_PATH=$PWD/coders/.libs
 export MAGICK_CONFIGURE_PATH=$PWD/config
-%if %{bindperl}
 cd PerlMagick
 # bsc#1105592
 rm -r t/ps
 make test
-%endif
 
 %post -n libGraphicsMagick-Q%{quant}-%{so_ver} -p /sbin/ldconfig
 %postun -n libGraphicsMagick-Q%{quant}-%{so_ver} -p /sbin/ldconfig
@@ -376,7 +358,6 @@ make test
 %{_mandir}/man1/%{name}-config.1%{ext_man}
 %{_mandir}/man1/%{name}Wand-config.1%{ext_man}
 
-%if %{bindperl}
 %files -n perl-GraphicsMagick
 %dir %{perl_vendorarch}/Graphics
 %dir %{perl_vendorarch}/auto/Graphics
@@ -384,7 +365,6 @@ make test
 %{perl_vendorarch}/Graphics/Magick.pm
 %{perl_vendorarch}/auto/Graphics/Magick/*
 %{_mandir}/man3/*%{ext_man}
-%endif
 
 %files -n libGraphicsMagick++-Q%{quant}-%{pp_so_ver}
 %if 0%{?suse_version} < 1315

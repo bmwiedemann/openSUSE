@@ -1,8 +1,8 @@
-Index: GraphicsMagick-1.3.31/coders/pdf.c
+Index: GraphicsMagick-1.3.37/coders/pdf.c
 ===================================================================
---- GraphicsMagick-1.3.31.orig/coders/pdf.c	2018-11-17 17:13:19.000000000 +0100
-+++ GraphicsMagick-1.3.31/coders/pdf.c	2018-12-19 11:00:49.332814619 +0100
-@@ -495,7 +495,7 @@ ModuleExport void RegisterPDFImage(void)
+--- GraphicsMagick-1.3.37.orig/coders/pdf.c	2021-12-12 22:07:42.000000000 +0100
++++ GraphicsMagick-1.3.37/coders/pdf.c	2021-12-13 11:43:36.303459820 +0100
+@@ -499,7 +499,7 @@ ModuleExport void RegisterPDFImage(void)
    entry->seekable_stream=True;
    entry->description="Encapsulated Portable Document Format";
    entry->module="PDF";
@@ -11,7 +11,7 @@ Index: GraphicsMagick-1.3.31/coders/pdf.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("PDF");
-@@ -506,7 +506,7 @@ ModuleExport void RegisterPDFImage(void)
+@@ -512,7 +512,7 @@ ModuleExport void RegisterPDFImage(void)
    entry->seekable_stream=True;
    entry->description="Portable Document Format";
    entry->module="PDF";
@@ -20,11 +20,11 @@ Index: GraphicsMagick-1.3.31/coders/pdf.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.31/coders/ps.c
+Index: GraphicsMagick-1.3.37/coders/ps.c
 ===================================================================
---- GraphicsMagick-1.3.31.orig/coders/ps.c	2018-04-29 20:01:26.000000000 +0200
-+++ GraphicsMagick-1.3.31/coders/ps.c	2018-12-19 11:00:49.332814619 +0100
-@@ -458,7 +458,7 @@ ModuleExport void RegisterPSImage(void)
+--- GraphicsMagick-1.3.37.orig/coders/ps.c	2020-12-26 17:34:21.000000000 +0100
++++ GraphicsMagick-1.3.37/coders/ps.c	2021-12-13 11:43:36.303459820 +0100
+@@ -452,7 +452,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript Interchange format";
    entry->module="PS";
@@ -33,7 +33,7 @@ Index: GraphicsMagick-1.3.31/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("EPS");
-@@ -468,7 +468,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -464,7 +464,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript";
    entry->module="PS";
@@ -42,7 +42,7 @@ Index: GraphicsMagick-1.3.31/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("EPSF");
-@@ -478,7 +478,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -476,7 +476,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript";
    entry->module="PS";
@@ -60,7 +60,7 @@ Index: GraphicsMagick-1.3.31/coders/ps.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("PS");
-@@ -497,7 +497,7 @@ ModuleExport void RegisterPSImage(void)
+@@ -499,7 +499,7 @@ ModuleExport void RegisterPSImage(void)
    entry->magick=(MagickHandler) IsPS;
    entry->description="Adobe PostScript";
    entry->module="PS";
@@ -69,11 +69,11 @@ Index: GraphicsMagick-1.3.31/coders/ps.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.31/coders/ps2.c
+Index: GraphicsMagick-1.3.37/coders/ps2.c
 ===================================================================
---- GraphicsMagick-1.3.31.orig/coders/ps2.c	2018-04-29 20:01:26.000000000 +0200
-+++ GraphicsMagick-1.3.31/coders/ps2.c	2018-12-19 11:00:49.332814619 +0100
-@@ -244,7 +244,7 @@ ModuleExport void RegisterPS2Image(void)
+--- GraphicsMagick-1.3.37.orig/coders/ps2.c	2021-12-12 22:07:42.000000000 +0100
++++ GraphicsMagick-1.3.37/coders/ps2.c	2021-12-13 11:43:36.307459846 +0100
+@@ -252,7 +252,7 @@ ModuleExport void RegisterPS2Image(void)
    entry->seekable_stream=True;
    entry->description="Adobe Level II Encapsulated PostScript";
    entry->module="PS2";
@@ -82,7 +82,7 @@ Index: GraphicsMagick-1.3.31/coders/ps2.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("PS2");
-@@ -252,7 +252,7 @@ ModuleExport void RegisterPS2Image(void)
+@@ -260,7 +260,7 @@ ModuleExport void RegisterPS2Image(void)
    entry->seekable_stream=True;
    entry->description="Adobe Level II PostScript";
    entry->module="PS2";
@@ -91,11 +91,11 @@ Index: GraphicsMagick-1.3.31/coders/ps2.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.31/coders/ps3.c
+Index: GraphicsMagick-1.3.37/coders/ps3.c
 ===================================================================
---- GraphicsMagick-1.3.31.orig/coders/ps3.c	2018-11-17 17:13:19.000000000 +0100
-+++ GraphicsMagick-1.3.31/coders/ps3.c	2018-12-19 11:00:49.332814619 +0100
-@@ -386,7 +386,7 @@ ModuleExport void RegisterPS3Image(void)
+--- GraphicsMagick-1.3.37.orig/coders/ps3.c	2021-12-12 22:07:42.000000000 +0100
++++ GraphicsMagick-1.3.37/coders/ps3.c	2021-12-13 11:43:36.307459846 +0100
+@@ -394,7 +394,7 @@ ModuleExport void RegisterPS3Image(void)
    entry->description="Adobe Level III Encapsulated PostScript";
    entry->seekable_stream=MagickTrue;
    entry->module="PS3";
@@ -104,7 +104,7 @@ Index: GraphicsMagick-1.3.31/coders/ps3.c
    (void) RegisterMagickInfo(entry);
  
    entry=SetMagickInfo("PS3");
-@@ -394,7 +394,7 @@ ModuleExport void RegisterPS3Image(void)
+@@ -402,7 +402,7 @@ ModuleExport void RegisterPS3Image(void)
    entry->description="Adobe Level III PostScript";
    entry->seekable_stream=MagickTrue;
    entry->module="PS3";
@@ -113,10 +113,10 @@ Index: GraphicsMagick-1.3.31/coders/ps3.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.31/config/delegates.mgk.in
+Index: GraphicsMagick-1.3.37/config/delegates.mgk.in
 ===================================================================
---- GraphicsMagick-1.3.31.orig/config/delegates.mgk.in	2018-11-17 17:13:19.000000000 +0100
-+++ GraphicsMagick-1.3.31/config/delegates.mgk.in	2018-12-19 11:00:49.336814638 +0100
+--- GraphicsMagick-1.3.37.orig/config/delegates.mgk.in	2019-06-15 16:05:05.000000000 +0200
++++ GraphicsMagick-1.3.37/config/delegates.mgk.in	2021-12-13 11:43:36.307459846 +0100
 @@ -76,27 +76,27 @@
    <delegate decode="dot" command='"@DOTDecodeDelegate@" -Tps "%i" -o "%o"' />
    <delegate decode="dvi" command='"@DVIDecodeDelegate@" -q -o "%o" "%i"' />
@@ -170,11 +170,11 @@ Index: GraphicsMagick-1.3.31/config/delegates.mgk.in
    <delegate decode="ps" encode="print" mode="encode" command='"@PrintDelegate@" "%i"' />
    <!-- Read HTML file  -->
    <delegate decode="shtml" command='"@HTMLDecodeDelegate@" -U -o "%o" "%i"' />
-Index: GraphicsMagick-1.3.31/Makefile.in
+Index: GraphicsMagick-1.3.37/Makefile.in
 ===================================================================
---- GraphicsMagick-1.3.31.orig/Makefile.in	2018-11-17 17:14:38.000000000 +0100
-+++ GraphicsMagick-1.3.31/Makefile.in	2018-12-19 11:00:49.336814638 +0100
-@@ -3885,7 +3885,6 @@ TESTS_TESTS = \
+--- GraphicsMagick-1.3.37.orig/Makefile.in	2021-12-12 22:09:13.000000000 +0100
++++ GraphicsMagick-1.3.37/Makefile.in	2021-12-13 11:43:36.307459846 +0100
+@@ -4259,7 +4259,6 @@ TESTS_TESTS = \
  	tests/rwfile.tap \
  	tests/rwfile_sized.tap \
  	tests/rwfile_miff.tap \
@@ -182,10 +182,10 @@ Index: GraphicsMagick-1.3.31/Makefile.in
  	tests/rwfile_deep.tap
  
  TESTS_EXTRA_DIST = \
-Index: GraphicsMagick-1.3.31/tests/rwblob.tap
+Index: GraphicsMagick-1.3.37/tests/rwblob.tap
 ===================================================================
---- GraphicsMagick-1.3.31.orig/tests/rwblob.tap	2018-11-17 17:13:19.000000000 +0100
-+++ GraphicsMagick-1.3.31/tests/rwblob.tap	2018-12-19 11:01:16.444942352 +0100
+--- GraphicsMagick-1.3.37.orig/tests/rwblob.tap	2018-11-17 17:13:19.000000000 +0100
++++ GraphicsMagick-1.3.37/tests/rwblob.tap	2021-12-13 11:43:36.307459846 +0100
 @@ -10,7 +10,7 @@ rwblob=./rwblob
  check_types='bilevel gray pallette truecolor'
  
@@ -214,10 +214,10 @@ Index: GraphicsMagick-1.3.31/tests/rwblob.tap
  # FAX format
  for type in ${check_types}
  do
-Index: GraphicsMagick-1.3.31/tests/rwfile.tap
+Index: GraphicsMagick-1.3.37/tests/rwfile.tap
 ===================================================================
---- GraphicsMagick-1.3.31.orig/tests/rwfile.tap	2018-11-17 17:13:19.000000000 +0100
-+++ GraphicsMagick-1.3.31/tests/rwfile.tap	2018-12-19 11:01:03.856883049 +0100
+--- GraphicsMagick-1.3.37.orig/tests/rwfile.tap	2018-11-17 17:13:19.000000000 +0100
++++ GraphicsMagick-1.3.37/tests/rwfile.tap	2021-12-13 11:43:36.307459846 +0100
 @@ -11,7 +11,7 @@ rwfile=./rwfile
  check_types='bilevel gray pallette truecolor'
  
