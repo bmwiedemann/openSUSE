@@ -1,7 +1,7 @@
 #
 # spec file for package javassist
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define tar_version rel_3_23_1_ga
+%define tar_version rel_3_28_0_ga
 Name:           javassist
-Version:        3.23.1
+Version:        3.28.0
 Release:        0
 Summary:        Java Programming Assistant: bytecode manipulation
 License:        LGPL-2.1-or-later OR MPL-1.1
@@ -85,7 +85,7 @@ for j in $(find . -name "*.jar"); do
 done
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 dist
+ant -Dant.build.javac.source=1.7 -Dant.build.javac.target=1.7 dist
 
 %install
 # jars

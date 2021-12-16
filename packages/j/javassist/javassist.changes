@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 10 18:51:02 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Rebased osgi patch: javassist-osgi.patch
+- Rebased java8 compat patch: javassist-java8-compat.patch
+- Requires Java API >= 1.7 
+
+-------------------------------------------------------------------
 Wed Mar 25 14:07:34 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

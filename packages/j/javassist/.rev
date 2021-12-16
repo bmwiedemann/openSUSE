@@ -129,4 +129,12 @@ This is a dual license so the operator is ^or^ not ^and^ (forwarded request 1579
     <comment>Add OSGi manifest to the javassist.jar</comment>
     <requestid>788311</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>00ea49ceabd075153c7ace6b1dcaf2c9</srcmd5>
+    <version>3.28.0</version>
+    <time>1639685942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940656</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,8 @@
-diff -urEbwB javassist-rel_3_23_1_ga/src/main/javassist/Loader.java javassist-rel_3_23_1_ga.new/src/main/javassist/Loader.java
---- javassist-rel_3_23_1_ga/src/main/javassist/Loader.java	2018-07-01 19:27:13.000000000 +0200
-+++ javassist-rel_3_23_1_ga.new/src/main/javassist/Loader.java	2019-04-15 10:53:53.377698340 +0200
-@@ -379,9 +379,6 @@
+Index: javassist-rel_3_28_0_ga/src/main/javassist/Loader.java
+===================================================================
+--- javassist-rel_3_28_0_ga.orig/src/main/javassist/Loader.java
++++ javassist-rel_3_28_0_ga/src/main/javassist/Loader.java
+@@ -421,9 +421,6 @@ public class Loader extends ClassLoader
      }
  
      private boolean isDefinedPackage(String name) {
@@ -11,10 +12,11 @@ diff -urEbwB javassist-rel_3_23_1_ga/src/main/javassist/Loader.java javassist-re
              return getPackage(name) == null;
      }
  
-diff -urEbwB javassist-rel_3_23_1_ga/src/main/javassist/util/proxy/DefineClassHelper.java javassist-rel_3_23_1_ga.new/src/main/javassist/util/proxy/DefineClassHelper.java
---- javassist-rel_3_23_1_ga/src/main/javassist/util/proxy/DefineClassHelper.java	2018-07-01 19:27:13.000000000 +0200
-+++ javassist-rel_3_23_1_ga.new/src/main/javassist/util/proxy/DefineClassHelper.java	2019-04-15 10:53:53.381698361 +0200
-@@ -253,23 +253,5 @@
+Index: javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/DefineClassHelper.java
+===================================================================
+--- javassist-rel_3_28_0_ga.orig/src/main/javassist/util/proxy/DefineClassHelper.java
++++ javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/DefineClassHelper.java
+@@ -317,23 +317,5 @@ public class DefineClassHelper {
          }
      }
  
@@ -38,15 +40,20 @@ diff -urEbwB javassist-rel_3_23_1_ga/src/main/javassist/util/proxy/DefineClassHe
 -
      private DefineClassHelper() {}
  }
-diff -urEbwB javassist-rel_3_23_1_ga/src/main/javassist/util/proxy/FactoryHelper.java javassist-rel_3_23_1_ga.new/src/main/javassist/util/proxy/FactoryHelper.java
---- javassist-rel_3_23_1_ga/src/main/javassist/util/proxy/FactoryHelper.java	2018-07-01 19:27:13.000000000 +0200
-+++ javassist-rel_3_23_1_ga.new/src/main/javassist/util/proxy/FactoryHelper.java	2019-04-15 10:56:19.942478868 +0200
-@@ -123,8 +123,6 @@
+Index: javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/FactoryHelper.java
+===================================================================
+--- javassist-rel_3_28_0_ga.orig/src/main/javassist/util/proxy/FactoryHelper.java
++++ javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/FactoryHelper.java
+@@ -148,11 +148,7 @@ public class FactoryHelper {
      {
          try {
              byte[] b = toBytecode(cf);
 -            if (ProxyFactory.onlyPublicMethods)
 -                return DefineClassHelper.toPublicClass(cf.getName(), b);
-             return DefineClassHelper.toClass(cf.getName(), loader, domain, b);
+-            else
+-                return DefineClassHelper.toClass(cf.getName(), neighbor,
+-                                                 loader, domain, b);
++            return DefineClassHelper.toClass(cf.getName(), neighbor, loader, domain, b);
          }
          catch (IOException e) {
+             throw new CannotCompileException(e);
