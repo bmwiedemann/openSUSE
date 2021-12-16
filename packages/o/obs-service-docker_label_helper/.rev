@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>907921</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>59df3b6793f241199ac19b4e38c77969</srcmd5>
+    <version>0.0</version>
+    <time>1639616454</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve summary, description and README.md a bit
+- Mention bsc#1193429 in this changelog</comment>
+    <requestid>940750</requestid>
+  </revision>
 </revisionlist>

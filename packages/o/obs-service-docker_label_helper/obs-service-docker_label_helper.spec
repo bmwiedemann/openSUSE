@@ -19,7 +19,7 @@
 Name:           obs-service-docker_label_helper
 Version:        0.0
 Release:        0
-Summary:        Service to duplicate labels with a custom prefix
+Summary:        OBS Service to add prefixed labels in Dockerfile builds
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://build.opensuse.org
@@ -33,8 +33,8 @@ BuildArch:      noarch
 BuildRequires:  diffutils
 
 %description
-This service can be used during buildtime to expand LABEL
-instructions with mandatory openSUSE prefixes.
+An OBS service which expands LABEL instructions in Dockerfile with prefixes.
+Useful for implementing https://en.opensuse.org/Building_derived_containers#Labels.
 
 %prep
 %setup -q -D -T -n .

@@ -1,4 +1,4 @@
 <service name="docker_label_helper">
-	<summary>Allows automatic duplication of labels with a custom prefix.</summary>
-	<description>Expand LABEL instructions with mandatory openSUSE prefixes for Dockerfile.</description>
+	<summary>Add prefixed labels in Dockerfile builds</summary>
+	<description>An OBS service which expands LABEL instructions in Dockerfile with prefixes. Useful for implementing https://en.opensuse.org/Building_derived_containers#Labels.</description>
 </service>

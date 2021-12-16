@@ -5,8 +5,8 @@ This service can be enabled to run during buildtime, when it will edit the
 Dockerfile to expand the LABEL instruction.
 
 A new syntax using entry/exit flags has been introduced to provide
-compatibility with stock docker build command while allowing OBS
-to add its prefix to existing LABEL instructions values.
+compatibility with stock docker build command while allowing to add prefixed
+labels based on existing LABEL instructions.
 
 Both new and old syntax are supported, but you should not mix both in the
 same Dockerfile.
