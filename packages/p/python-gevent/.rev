@@ -567,4 +567,12 @@
     <comment>- Skip test__threading_monkey_in_thread as it breaks with Python 3.9.9.</comment>
     <requestid>932425</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5682fd0cdb7751022eaf5685526de38d</srcmd5>
+    <version>21.12.0</version>
+    <time>1639685934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940551</requestid>
+  </revision>
 </revisionlist>

@@ -24,10 +24,10 @@
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modversion 21.1.2
+%define modversion 21.12.0
 %define modname gevent
 Name:           python-gevent
-Version:        21.1.2
+Version:        21.12.0
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module greenlet >= 0.4.17}
+BuildRequires:  %{python_module greenlet >= 1.1.0}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module requests}
@@ -112,6 +112,7 @@ Documentation and examples for %{name}.
 %patch1 -p1
 %endif
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
+sed -i -e '1{/bin.*python/d}' src/gevent/tests/*.py
 
 %build
 export LIBEV_EMBED=%{use_bundled_libev}
@@ -123,22 +124,23 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 export LIBEV_EMBED=%{use_bundled_libev}
 export CARES_EMBED=0
 %python_install
+%{python_expand # fix script interpreter-line and exec bit
+sed -i '1{s|^#!.*bin.*python.*$|#!%{__$python}|}' %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
+chmod +x %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
+}
+%{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# create ignore list of tests that reach out to the net
-cat << EOF > network_tests.txt
+%{python_expand #
+# create ignore list of tests, e.g. because they reach out to the net
+cat << EOF > skip_tests.txt
 test__core_stat.py
 %if 0%{?sle_version} <= 150200 && 0%{?is_opensuse}
 test__destroy_default_loop.py
 test__example_echoserver.py
 test_socket.py
 %endif
-%if %{python3_version_nodots} < 37
-test__threading_2.py
-%endif
-# this fails badly with 3.9.9
-test__threading_monkey_in_thread.py
 test__examples.py
 # this one fails occasionally with: Address already in use: ('127.0.0.1', 16000)
 test__example_portforwarder.py
@@ -146,6 +148,9 @@ test__getaddrinfo_import.py
 test__resolver_dnspython.py
 test__socket_dns.py
 EOF
+if [ %{$python_version_nodots} -lt 37 ]; then
+ echo "test__threading_2.py" >> skip_tests.txt
+fi
 export GEVENT_RESOLVER=thread
 # Setting the TRAVIS environment variable makes some different configuration
 # for tests that use the network so they don't fail on travis (or obs)
@@ -158,8 +163,8 @@ export LANG=en_US.UTF-8
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 export OPENSSL_CONF=''
 # don't bother with python2 tests
-%{python_expand if [ "$python" != "python2" ]; then
-    PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m gevent.tests --ignore network_tests.txt
+if [ "${python_flavor}" != "python2" ]; then
+    PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m gevent.tests --ignore skip_tests.txt
 fi
 }
 
