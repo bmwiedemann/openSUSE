@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0af3a95b919681633d6bd1fb82da148</srcmd5>
+    <version>1.18beta1</version>
+    <time>1639616436</time>
+    <user>dimstar_suse</user>
+    <comment>New package go1.18, version go1.18beta1
+
+- go1.18beta1 (released 2021-12-14) is a beta version of go1.18 cut
+  from the master branch at the revision tagged go1.18beta1.
+  Refs boo#1193742 go1.18 release tracking</comment>
+    <requestid>940590</requestid>
+  </revision>
+</revisionlist>
