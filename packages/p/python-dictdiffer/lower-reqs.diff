@@ -1,17 +1,17 @@
-Index: dictdiffer-0.8.1/setup.py
+Index: dictdiffer-0.9.0/setup.py
 ===================================================================
---- dictdiffer-0.8.1.orig/setup.py
-+++ dictdiffer-0.8.1/setup.py
-@@ -28,7 +28,7 @@ tests_require = [
-     'pytest-cov>=1.8.0',
-     'pytest-pep8>=1.0.6',
-     'pytest>=2.8.0',
+--- dictdiffer-0.9.0.orig/setup.py	2021-07-22 15:24:20.000000000 +0200
++++ dictdiffer-0.9.0/setup.py	2021-12-14 14:19:30.354291584 +0100
+@@ -30,7 +30,7 @@ tests_require = [
+     'pytest-pydocstyle>=2;python_version<="3.5"',
+     'pytest-pydocstyle>=2.2.0;python_version>"3.5"',
+     'sphinx>=3',
 -    'tox>=3.7.0',
 +    'tox>=2.9.0',
  ]
  
  extras_require = {
-@@ -50,7 +50,7 @@ for key, reqs in extras_require.items():
+@@ -55,7 +55,7 @@ for key, reqs in extras_require.items():
  
  setup_requires = [
      'pytest-runner>=2.7',

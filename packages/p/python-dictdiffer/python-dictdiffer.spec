@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictdiffer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dictdiffer
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Dictdiffer is a library that helps you to diff and patch dictionaries
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/inveniosoftware/dictdiffer
 Source:         https://files.pythonhosted.org/packages/source/d/dictdiffer/dictdiffer-%{version}.tar.gz
 Patch0:         lower-reqs.diff
-BuildRequires:  %{python_module pytest-runner >= 2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,6 +46,8 @@ Dictdiffer is a library that helps you to diff and patch dictionaries.
 %patch0 -p1
 # Remove dependence on unnecessary pytest plugins
 rm pytest.ini
+# https://github.com/inveniosoftware/dictdiffer/issues/167
+sed -i '/pytest-runner/d' setup.py
 
 %build
 %python_build

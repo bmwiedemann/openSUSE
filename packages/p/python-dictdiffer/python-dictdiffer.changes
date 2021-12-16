@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 14 13:23:16 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.9.0
+  - Adds absolute tolerance feature for floats  (@adrien-berchet) (#152)
+  - Drops support of Python<3.5  (@adrien-berchet) (#160)
+  - Adds `assert_no_diff` helper to assist pytest users  (@joesolly) (#153)
+  - Migrates CI to gh-actions (@ParthS007 @diegodelemos) (#145)
+  - Removes dependency on pkg_resources (@eldruin)
+- modified patches
+  % lower-reqs.diff (refreshed)
+
+-------------------------------------------------------------------
 Sun Jun  7 05:35:54 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec, running test suite via pytest directly
