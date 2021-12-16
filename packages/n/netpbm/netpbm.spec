@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  93
+%define libmin  96
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        10.93.0
+Version:        10.96.4
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -41,8 +41,6 @@ Patch2:         %{name}-security-code.patch
 Patch3:         %{name}-security-scripts.patch
 Patch4:         %{name}-gcc-warnings.patch
 Patch5:         makeman-py3.patch
-# PATCH-FIX-UPSTREAM fix bad use of plain char
-Patch6:         signed-char.patch
 # PATCH-FIX-UPSTREAM fix dependency on byte order
 Patch7:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper

@@ -820,4 +820,41 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
   - netpbm-pbmtonokia-cmdline-txt-null.patch (upstreamed)</comment>
     <requestid>859197</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>33c558cf4aaadaa0dc7ab83214dce64e</srcmd5>
+    <version>10.96.4</version>
+    <time>1639685963</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 10.96.4
+    palmtopnm: Fix bug: fails with PackBits input on platform with
+    default unsigned char, such as ppc64.  Always broken.  (Ability
+    to convert PackBits input was new in Netpbm 10.27 (March 2005).
+    sunicontopnm, escp2topbm, mgrtopbm, ybmtopbm, pamcut, pbmpscale,
+    pnmcat, pnmpad: Fix arithmetic overrun with ridiculously large
+    image.
+    pamrubber: Fix bug: random behavior with -quad when you specify
+    both points for source or target and the second one is lower in
+    the image than the first.  Always broken (Pamrubber was new in
+    Netpbm 10.54 (March 2011)).
+    libnetpbm: When validating computable size of width and height,
+    allow for adding up to 10 instead of 2, to account for rounding
+    up to a multiple of 8 in processing bit maps.
+    pamtogif: Fix bug: doesn't ignore the input alpha mask when user
+    specified -transparent.  Broken in Netpbm 10.37 (December 2006).
+    pgmtoppm: Eliminate dependency on color dictionary when user
+    does not specify any colors by name.
+    pamstereogram: Fix crash with -xbegin=0.  Thanks Scott Pakin.
+    Introduced in Netpbm 10.94.
+    pamtopng: Fix rejection of all BLACKANDWHITE_ALPHA images with
+    message about wrong depth.  Always broken (pamtopng was new in
+    Netpbm 10.71 (June 2015)).  Thanks Karol Kosek
+    &lt;krkk@krkk.ct8.pl&gt;.
+    pamtopng: Fix failure with GRAYSCALE_ALPHA images with maxval
+    less than 255.  Always broken (pamtopng was new in Netpbm 10.71
+    (June 2015)).  Thanks Karol Kosek &lt;krkk@krkk.ct8.pl&gt;.
+    pamtopng: Fix: treats all tuple types that start with BLA as
+    BLACKANDWHITE.  Always broken (pamtopng was new in Netpbm 10.71
+    (June 2015)).</comment>
+    <requestid>940235</requestid>
+  </revision>
 </revisionlist>
