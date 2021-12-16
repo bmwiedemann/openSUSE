@@ -1,6 +1,7 @@
 #
 # spec file for package lua-language-server
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,26 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define pkg_name lua-language-server
 
 Name:           lua-language-server
-Version:        2.3.0
+Version:        2.5.4
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
-Url:            https://github.com/sumneko/lua-language-server
+URL:            https://github.com/sumneko/lua-language-server
 Source0:        %{name}-%{version}.tar.gz
 Source1:        lua-lsp-launcher.sh
 Source2:        README.suse-maint.md
-# PATCH-FIX-UPSTREAM fix_i586_test.patch bsc#[0-9]+ mcepl@suse.com
-# It doesn't make sense to limit platforms where Linux could run.
-Patch0:         fix_i586_test.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  fdupes
 
 %description
 This package provides a Language Server Protocol (LSP) implementation for Lua.
@@ -48,13 +47,12 @@ ninja -C 3rd/luamake -f compile/ninja/linux.ninja
 
 %install
 install -d -m 0755 %{buildroot}%{_libdir}/%{name}
-cp -av bin/Linux/* %{buildroot}%{_libdir}/%{name}
+cp -av bin/* %{buildroot}%{_libdir}/%{name}
 
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}
 cp -av \
-    main.lua \
-    platform.lua \
     debugger.lua \
+    main.lua \
     locale \
     script \
     meta \
@@ -65,7 +63,6 @@ sed -e 's#@LIBDIR@#%{_libdir}#' %{SOURCE1} > %{buildroot}%{_bindir}/%{name}
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
 %fdupes %{buildroot}%{_libdir}/%{name}
-
 
 %files
 %license LICENSE

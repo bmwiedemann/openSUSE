@@ -7,4 +7,12 @@
     <comment>Could be quite useful for supporting Lua development on openSUSE</comment>
     <requestid>906770</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>528111e17e7ab6483bd9844ee0ab2c94</srcmd5>
+    <version>2.5.4</version>
+    <time>1639685989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940942</requestid>
+  </revision>
 </revisionlist>

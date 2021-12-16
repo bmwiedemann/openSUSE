@@ -1,4 +1,237 @@
 -------------------------------------------------------------------
+Thu Dec 16 14:28:20 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.5.4
+  o 2.5.4
+  * `FIX` [#847](https://github.com/sumneko/lua-language-server/issues/847)
+  * `FIX` [#848](https://github.com/sumneko/lua-language-server/issues/848)
+  * `FIX` completion: incorrect cache
+  * `FIX` hover: always view string
+
+  o 2.5.3
+  * `FIX` [#842](https://github.com/sumneko/lua-language-server/issues/844)
+  * `FIX` [#844](https://github.com/sumneko/lua-language-server/issues/844)
+
+  o 2.5.2
+  * `FIX` [#815](https://github.com/sumneko/lua-language-server/issues/815)
+  * `FIX` [#825](https://github.com/sumneko/lua-language-server/issues/825)
+  * `FIX` [#826](https://github.com/sumneko/lua-language-server/issues/826)
+  * `FIX` [#827](https://github.com/sumneko/lua-language-server/issues/827)
+  * `FIX` [#831](https://github.com/sumneko/lua-language-server/issues/831)
+  * `FIX` [#837](https://github.com/sumneko/lua-language-server/issues/837)
+  * `FIX` [#838](https://github.com/sumneko/lua-language-server/issues/838)
+  * `FIX` postfix
+  * `FIX` runtime errors
+
+  o 2.5.1
+  * `FIX` incorrect syntax error
+
+  o 2.5.0
+  * `NEW` settings:
+    + `Lua.runtime.pathStrict`: not check subdirectories when using `runtime.path`
+    + `Lua.hint.await`: display `await` when calling a function marked as async
+    + `Lua.completion.postfix`: the symbol that triggers postfix, default is `@`
+  * `NEW` add supports for `lovr`
+  * `NEW` file encoding supports `utf16le` and `utf16be`
+  * `NEW` full IntelliSense supports for literal tables, see [#720](https://github.com/sumneko/lua-language-server/issues/720) and [#727](https://github.com/sumneko/lua-language-server/issues/727)
+  * `NEW` `LuaDoc` annotations:
+    + `---@async`: mark a function as async
+    + `---@nodiscard`: the return value of the marking function cannot be discarded
+  * `NEW` diagnostics:
+    + `await-in-sync`: check whether calls async function in sync function. disabled by default.
+    + `not-yieldable`: check whether the function supports async functions as parameters. disabled by default.
+    + `discard-returns`: check whether the return value is discarded.
+  * `NEW` locale `pt-br`, thanks [Jeferson Ferreira](https://github.com/jefersonf)
+  * `NEW` supports [utf-8-offsets](https://clangd.llvm.org/extensions#utf-8-offsets)
+  * `NEW` supports quickfix for `.luarc.json`
+  * `NEW` completion postifx: `@function`, `@method`, `@pcall`, `@xpcall`, `@insert`, `@remove`, `@concat`, `++`, `++?`
+  * `CHG` `LuaDoc`:
+    + `---@class` can be re-declared
+    + supports unicode
+    + supports `---@param ... number`, equivalent to `---@vararg number`
+    + supports `fun(...: string)`
+    + supports `fun(x, y, ...)`, equivalent to `fun(x: any, y: any, ...: any)`
+  * `CHG` settings from `--configpath`, `.luarc.json`, `client` no longer prevent subsequent settings, instead they are merged in order
+  * `CHG` no longer asks to trust plugin in VSCode, because VSCode already provides the workspace trust feature
+  * `CHG` skip huge files (>= 10 MB)
+  * `CHG` after using `Lua.runtime.nonstandardSymbol` to treat `//` as a comment, `//` is no longer parsed as an operator
+
+  o 2.4.11
+  * `FIX` [#816](https://github.com/sumneko/lua-language-server/issues/816)
+  * `FIX` [#817](https://github.com/sumneko/lua-language-server/issues/817)
+  * `FIX` [#818](https://github.com/sumneko/lua-language-server/issues/818)
+  * `FIX` [#820](https://github.com/sumneko/lua-language-server/issues/820)
+
+  o 2.4.10
+  * `FIX` [#790](https://github.com/sumneko/lua-language-server/issues/790)
+  * `FIX` [#798](https://github.com/sumneko/lua-language-server/issues/798)
+  * `FIX` [#804](https://github.com/sumneko/lua-language-server/issues/804)
+  * `FIX` [#805](https://github.com/sumneko/lua-language-server/issues/805)
+  * `FIX` [#806](https://github.com/sumneko/lua-language-server/issues/806)
+  * `FIX` [#807](https://github.com/sumneko/lua-language-server/issues/807)
+  * `FIX` [#809](https://github.com/sumneko/lua-language-server/issues/809)
+
+  o 2.4.9
+  * `CHG` for performance reasons, some of the features that are not cost-effective in IntelliSense have been disabled by default, and you can re-enable them through the following settings:
+    + `Lua.IntelliSense.traceLocalSet`
+    + `Lua.IntelliSense.traceReturn`
+    + `Lua.IntelliSense.traceBeSetted`
+    + `Lua.IntelliSense.traceFieldInject`
+
+  o 2.4.8
+  * `FIX` incorrect IntelliSense in specific situations
+  * `FIX` [#777](https://github.com/sumneko/lua-language-server/issues/777)
+  * `FIX` [#778](https://github.com/sumneko/lua-language-server/issues/778)
+  * `FIX` [#779](https://github.com/sumneko/lua-language-server/issues/779)
+  * `FIX` [#780](https://github.com/sumneko/lua-language-server/issues/780)
+
+  o 2.4.7
+  * `FIX` [#762](https://github.com/sumneko/lua-language-server/issues/762)
+
+  o 2.4.6
+  * `NEW` diagnostic: `redundant-return`
+  * `FIX` [#744](https://github.com/sumneko/lua-language-server/issues/744)
+  * `FIX` [#748](https://github.com/sumneko/lua-language-server/issues/748)
+  * `FIX` [#749](https://github.com/sumneko/lua-language-server/issues/749)
+  * `FIX` [#752](https://github.com/sumneko/lua-language-server/issues/752)
+  * `FIX` [#753](https://github.com/sumneko/lua-language-server/issues/753)
+  * `FIX` [#756](https://github.com/sumneko/lua-language-server/issues/756)
+  * `FIX` [#758](https://github.com/sumneko/lua-language-server/issues/758)
+  * `FIX` [#760](https://github.com/sumneko/lua-language-server/issues/760)
+
+  o 2.4.5
+  `2021-10-18`
+  * `FIX` accidentally load lua files from user workspace
+
+  o 2.4.4
+  * `CHG` improve `.luarc.json`
+  * `FIX` [#722](https://github.com/sumneko/lua-language-server/issues/722)
+
+  o 2.4.3
+  * `FIX` [#713](https://github.com/sumneko/lua-language-server/issues/713)
+  * `FIX` [#718](https://github.com/sumneko/lua-language-server/issues/718)
+  * `FIX` [#719](https://github.com/sumneko/lua-language-server/issues/719)
+  * `FIX` [#725](https://github.com/sumneko/lua-language-server/issues/725)
+  * `FIX` [#729](https://github.com/sumneko/lua-language-server/issues/729)
+  * `FIX` [#730](https://github.com/sumneko/lua-language-server/issues/730)
+  * `FIX` runtime errors
+
+  o 2.4.2
+  * `FIX` [#702](https://github.com/sumneko/lua-language-server/issues/702)
+  * `FIX` [#706](https://github.com/sumneko/lua-language-server/issues/706)
+  * `FIX` [#707](https://github.com/sumneko/lua-language-server/issues/707)
+  * `FIX` [#709](https://github.com/sumneko/lua-language-server/issues/709)
+  * `FIX` [#712](https://github.com/sumneko/lua-language-server/issues/712)
+
+  o 2.4.1
+  * `FIX` broken with single file
+  * `FIX` [#698](https://github.com/sumneko/lua-language-server/issues/698)
+  * `FIX` [#699](https://github.com/sumneko/lua-language-server/issues/699)
+
+  o 2.4.0
+  * `NEW` loading settings from `.luarc.json`
+  * `NEW` settings:
+    + `Lua.diagnostics.libraryFiles`
+    + `Lua.diagnostics.ignoredFiles`
+    + `Lua.completion.showWord`
+    + `Lua.completion.requireSeparator`
+  * `NEW` diagnostics:
+    + `different-requires`
+  * `NEW` `---@CustomClass<string, number>`
+  * `NEW` supports `$/cancelRequest`
+  * `NEW` `EventEmitter`
+      ```lua
+      --- @class Emit
+      --- @field on fun(eventName: string, cb: function)
+      --- @field on fun(eventName: '"died"', cb: fun(i: integer))
+      --- @field on fun(eventName: '"won"', cb: fun(s: string))
+      local emit = {}
+
+      emit:on(--[[support autocomplete fr "died" and "won"]])
+
+      emit:on("died", function (i)
+          -- should be i: integer
+      end)
+
+      emit:on('won', function (s)
+          -- should be s: string
+      end)
+      ```
+  * `NEW` `---@module 'moduleName'`
+      ```lua
+      ---@module 'mylib'
+      local lib -- the same as `local lib = require 'mylib'`
+      ```
+  * `NEW` add supports of `skynet`
+  * `CHG` hover: improve showing multi defines
+  * `CHG` hover: improve showing multi comments at enums
+  * `CHG` hover: shows method
+  * `CHG` hint: `Lua.hint.paramName` now supports `Disable`, `Literal` and `All`
+  * `CHG` only search first file by `require`
+  * `CHG` no longer infer by usage
+  * `CHG` no longer ignore file names case in Windows
+  * `CHG` watching library changes
+  * `CHG` completion: improve misspelling results
+  * `CHG` completion: `Lua.completion.displayContext` default to `0`
+  * `CHG` completion: `autoRequire` has better inserting position
+  * `CHG` diagnostics:
+    + `redundant-parameter` default severity to `Warning`
+    + `redundant-value` default severity to `Warning`
+  * `CHG` infer: more strict of calculation results
+  * `CHG` [#663](https://github.com/sumneko/lua-language-server/issues/663)
+  * `FIX` runtime errors
+  * `FIX` hint: may show param-2 as `self`
+  * `FIX` semantic: may fail when scrolling
+  * `FIX` [#647](https://github.com/sumneko/lua-language-server/issues/647)
+  * `FIX` [#660](https://github.com/sumneko/lua-language-server/issues/660)
+  * `FIX` [#673](https://github.com/sumneko/lua-language-server/issues/673)
+
+  o 2.3.7
+  * `CHG` improve performance
+  * `FIX` [#244](https://github.com/sumneko/lua-language-server/issues/244)
+
+  o 2.3.6
+  * `FIX` completion: can not find global fields
+  * `FIX` globals and class may lost
+
+  o 2.3.5
+  * `CHG` improve memory usage
+  * `CHG` completion: call snip triggers signature (VSCode only)
+  * `FIX` completion: may not find results
+
+  o 2.3.4
+  * `CHG` improve performance
+  * `FIX` [#625](https://github.com/sumneko/lua-language-server/issues/625)
+
+  o 2.3.3
+  * `NEW` config supports prop
+  * `FIX` [#612](https://github.com/sumneko/lua-language-server/issues/612)
+  * `FIX` [#613](https://github.com/sumneko/lua-language-server/issues/613)
+  * `FIX` [#618](https://github.com/sumneko/lua-language-server/issues/618)
+  * `FIX` [#620](https://github.com/sumneko/lua-language-server/issues/620)
+
+  o 2.3.2
+  * `NEW` `LuaDoc`: supports `['string']` as field:
+      ```lua
+      ---@class keyboard
+      ---@field ['!'] number
+      ---@field ['?'] number
+      ---@field ['#'] number
+      ```
+  * `NEW` add supports of `love2d`
+  * `FIX` gitignore pattern `\` broken initialization
+  * `FIX` runtime errors
+
+  o 2.3.1
+  * `NEW` setting `Lua.workspace.userThirdParty`, add private user [third-parth](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd) by this setting
+  * `CHG` path in config supports `~/xxxx`
+  * `FIX` `autoRequire` inserted incorrect code
+  * `FIX` `autoRequire` may provide dumplicated options
+  * `FIX` [#606](https://github.com/sumneko/lua-language-server/issues/606)
+  * `FIX` [#607](https://github.com/sumneko/lua-language-server/issues/607)
+- Removed obsolete fix_i586_test.patch
+
+-------------------------------------------------------------------
 Fri Jul 16 18:15:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_i586_test.patch to switch off testing architecture in bee.lua
