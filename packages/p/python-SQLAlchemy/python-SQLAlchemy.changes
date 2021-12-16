@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  5 19:11:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.27:
+  Bugfixes
+  * see https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.27 
+
+-------------------------------------------------------------------
 Wed Oct 27 19:23:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to version 1.4.26:
