@@ -1,7 +1,7 @@
 #
 # spec file for package libostree
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           libostree
-Version:        2020.8
+Version:        2021.6
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -123,8 +123,10 @@ of both.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-%configure --with-dracut
-make %{?_smp_mflags}
+%configure \
+	--with-dracut \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -135,8 +137,8 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-prepare-root
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 
-%post -n libostree-1-1 -p /sbin/ldconfig
-%postun -n libostree-1-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libostree-1-1
+
 %pre
 %service_add_pre ostree-prepare-root.service
 %service_add_pre ostree-remount.service

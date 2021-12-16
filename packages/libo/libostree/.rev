@@ -264,4 +264,12 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>880090</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>240ea9c511dc50393e4760440c74fba2</srcmd5>
+    <version>2021.6</version>
+    <time>1639685967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940312</requestid>
+  </revision>
 </revisionlist>

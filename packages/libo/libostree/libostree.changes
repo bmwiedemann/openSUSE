@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 10 19:38:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2021.6:
+  + Most of the fixes are related to warnings highlighted by gcc
+    -fanalyzer static source analysis.
+  + Performance of pruning logic has been improved, avoiding
+    unnecessary trips through redundant serialization.
+  + A regression has been fixed so that ostree is properly behaving
+    again when used from the initramfs, at a point where /sysroot
+    may not be mounted yet.
+  + A race condition related to sysroot.readonly has been addressed
+    by directly setting up sysroot readonly in initramfs.
+- Changes from version 2020.8 to 2021.5 please see upstreams list
+  https://github.com/ostreedev/ostree/releases
+- Switch to obs_scm from tar_scm, and use obscpio instead of
+  generated tarball. Also stop autogeneration of .changes, upstream
+  now have proper release notes that should be used.
+- Use ldconfig_scriptlets macro for post(un) handling for shared
+  library, modernize spec.
+
+-------------------------------------------------------------------
 Tue Dec 15 11:05:25 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO (boo#1133120) as it works now.
