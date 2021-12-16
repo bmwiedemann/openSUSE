@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-multihash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-py-multihash
-Version:        0.2.3
+Version:        2.0.1
 Release:        0
 Summary:        Multihash implementation in Python
 License:        MIT
-URL:            https://github.com/multiformats/multihash
+URL:            https://github.com/multiformats/py-multihash
 Source:         https://files.pythonhosted.org/packages/source/p/py-multihash/py-multihash-%{version}.tar.gz
 BuildRequires:  %{python_module base58}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module varint}
 BuildRequires:  fdupes
@@ -36,11 +35,13 @@ BuildArch:      noarch
 
 %description
 Multihash is a protocol for differentiating outputs from
-various well-established hash functions, addressing size 
+various well-established hash functions, addressing size
 and encoding considerations.
 
 %prep
 %setup -q -n py-multihash-%{version}
+# https://github.com/multiformats/multihash/issues/139
+sed -i 's:pytest-runner:pytest:' setup.py
 
 %build
 %python_build
