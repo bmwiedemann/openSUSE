@@ -59,4 +59,14 @@
 </comment>
     <requestid>940555</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a354ae232149b5d96b4b2751d5a61faa</srcmd5>
+    <version>1.0.7</version>
+    <time>1639616432</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix deps of devel package
+- Fix tests on i586
+</comment>
+    <requestid>940603</requestid>
+  </revision>
 </revisionlist>
