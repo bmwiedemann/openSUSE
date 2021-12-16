@@ -17,7 +17,7 @@
 
 
 Name:           container-build-checks
-Version:        1622209785.4616f4f
+Version:        1639489705.a4c5a3a
 Release:        0
 Summary:        Scripts to validate built container images
 License:        GPL-2.0-or-later

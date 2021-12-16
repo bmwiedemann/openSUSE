@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 14 13:49:12 UTC 2021 - fvogt@suse.com
+
+- Update to version 1639489705.a4c5a3ab2a75:
+  * Don't error out when the release field is empty
+  * Add simple gitpod configuration
+
+-------------------------------------------------------------------
 Tue Jun  1 09:06:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Drop obsolete Requires: grep jq
