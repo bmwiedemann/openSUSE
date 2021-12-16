@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Dec 14 11:19:24 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
-- Fix build on 15 SP3: python-rpm-macros required for build.
+- Fix build on SLE 15: python-rpm-macros required for build (bsc#1193718).
 
 -------------------------------------------------------------------
 Fri Sep 24 11:32:11 UTC 2021 - msuchanek@suse.de
