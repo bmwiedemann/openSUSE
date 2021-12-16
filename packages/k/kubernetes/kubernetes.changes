@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 16 13:50:39 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Bump coredns to 1.8.6 and coredns for *-minus1 to 1.8.4 
+
+-------------------------------------------------------------------
+Wed Dec  8 15:49:14 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Bump kubernetes-* to 1.23.0, *-minus1 to 1.22.4 and etcd to 3.5.1 
+
+-------------------------------------------------------------------
 Thu Sep 16 11:20:40 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Bump kubernetes-* to 1.22.2 and *-minus1 to 1.21.5 
