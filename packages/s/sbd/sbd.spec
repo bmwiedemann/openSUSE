@@ -47,7 +47,7 @@
 %global sync_resource_startup_sysconfig ""
 
 Name:           sbd
-Version:        1.5.1+20211116.6bb085f
+Version:        1.5.1+20211210.92ff8d8
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
@@ -56,6 +56,8 @@ URL:            https://github.com/ClusterLabs/sbd
 Source:         %{name}-%{version}.tar.xz
 Patch1:         bsc#1140065-Fix-sbd-cluster-exit-if-cmap-is-disconnected.patch
 Patch2:         bsc#1180966-0001-Log-sbd-inquisitor-downgrade-the-warning-about-SBD_S.patch
+Patch3:         harden_sbd.service.patch
+Patch4:         harden_sbd_remote.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
@@ -98,6 +100,12 @@ regression-testing sbd.
            --with-sync-resource-startup-sysconfig=%{sync_resource_startup_sysconfig} \
            --with-runstatedir=%{_rundir}
 make %{?_smp_mflags}
+
+# Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
+%if 0%{?sle_version} < 150400
+    sed -r -i '/^(Protect(Home|Hostname|KernelLogs|KernelModules|System))=/d' \
+        src/sbd.service src/sbd_remote.service
+%endif
 
 %install
 %make_install LIBDIR=%{_libdir}

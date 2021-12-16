@@ -494,4 +494,19 @@ the sources.</comment>
 - avoid using deprecated valloc &amp; frequent aligned alloc (forwarded request 931810 from yan_gao)</comment>
     <requestid>931811</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>17add072bb4563ca1e866bdfc5986dab</srcmd5>
+    <version>1.5.1+20211210.92ff8d8</version>
+    <time>1639616451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1+20211210.92ff8d8:
+- configure: have --with-runstatedir overrule --runstatedir (bsc#1185182)
+
+- services: enable systemd sandboxing settings for releases &gt;= 15.4
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_sbd.service.patch
+  * harden_sbd_remote.service.patch (forwarded request 940717 from yan_gao)</comment>
+    <requestid>940718</requestid>
+  </revision>
 </revisionlist>

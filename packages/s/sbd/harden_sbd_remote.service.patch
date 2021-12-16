@@ -1,0 +1,19 @@
+Index: sbd-1.5.1+20211116.6bb085f/src/sbd_remote.service.in
+===================================================================
+--- sbd-1.5.1+20211116.6bb085f.orig/src/sbd_remote.service.in
++++ sbd-1.5.1+20211116.6bb085f/src/sbd_remote.service.in
+@@ -7,6 +7,14 @@ RefuseManualStop=true
+ RefuseManualStart=true
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++# end of automatic additions 
+ Type=forking
+ PIDFile=@runstatedir@/sbd.pid
+ EnvironmentFile=-@CONFIGDIR@/sbd
