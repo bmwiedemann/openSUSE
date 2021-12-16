@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 16 11:30:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added CVE-2021-4110.patch from upstream, fixes boo#1193796 / CVE-2021-4110
+
+-------------------------------------------------------------------
 Sat May 15 14:01:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.0.0

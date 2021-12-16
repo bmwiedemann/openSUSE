@@ -17,6 +17,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 Name:           mruby
@@ -26,7 +27,9 @@ Summary:        Lightweight Ruby
 License:        MIT
 Group:          Development/Languages/Ruby
 URL:            https://github.com/mruby/mruby/
-Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM CVE-2021-4110.patch -- https://github.com/mruby/mruby/commit/f5e10c5a79a17939af763b1dcf5232ce47e24a34
+Patch0:         CVE-2021-4110.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -71,7 +74,7 @@ mruby is the lightweight implementation of the Ruby language complying to (part
 of) the ISO standard.
 
 %prep
-%setup -q
+%autosetup -p1
 # Currently broken
 sed -i 's|conf.enable_debug|# conf.enable_debug|' build_config/host-shared.rb
 
