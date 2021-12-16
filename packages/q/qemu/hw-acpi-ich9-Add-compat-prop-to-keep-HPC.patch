@@ -1,0 +1,121 @@
+From: Julia Suvorova <jusual@redhat.com>
+Date: Fri, 12 Nov 2021 06:08:54 -0500
+Subject: hw/acpi/ich9: Add compat prop to keep HPC bit set for 6.1 machine
+ type
+
+Git-commit: c318bef76206c2ecb6016e8e68c4ac6ff9a4c8cb
+References: bsc#1192147
+
+To solve issues [1-2] the Hot Plug Capable bit in PCIe Slots will be
+turned on, while the switch to ACPI Hot-plug will be done in the
+DSDT table.
+
+[1] https://gitlab.com/qemu-project/qemu/-/issues/641
+[2] https://bugzilla.redhat.com/show_bug.cgi?id=2006409
+
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20211112110857.3116853-3-imammedo@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Lin Ma <lma@suse.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/acpi/ich9.c         | 18 ++++++++++++++++++
+ hw/i386/pc.c           |  1 +
+ hw/i386/pc_q35.c       |  7 ++++++-
+ include/hw/acpi/ich9.h |  1 +
+ 4 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+index 778e27b65985326b3543e0083c4f..48d7e59bc900d1a5ca12817e72cc 100644
+--- a/hw/acpi/ich9.c
++++ b/hw/acpi/ich9.c
+@@ -419,6 +419,20 @@ static void ich9_pm_set_acpi_pci_hotplug(Object *obj, bool value, Error **errp)
+     s->pm.use_acpi_hotplug_bridge = value;
+ }
+ 
++static bool ich9_pm_get_keep_pci_slot_hpc(Object *obj, Error **errp)
++{
++    ICH9LPCState *s = ICH9_LPC_DEVICE(obj);
++
++    return s->pm.keep_pci_slot_hpc;
++}
++
++static void ich9_pm_set_keep_pci_slot_hpc(Object *obj, bool value, Error **errp)
++{
++    ICH9LPCState *s = ICH9_LPC_DEVICE(obj);
++
++    s->pm.keep_pci_slot_hpc = value;
++}
++
+ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
+ {
+     static const uint32_t gpe0_len = ICH9_PMIO_GPE0_LEN;
+@@ -428,6 +442,7 @@ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
+     pm->disable_s4 = 0;
+     pm->s4_val = 2;
+     pm->use_acpi_hotplug_bridge = true;
++    pm->keep_pci_slot_hpc = true;
+ 
+     object_property_add_uint32_ptr(obj, ACPI_PM_PROP_PM_IO_BASE,
+                                    &pm->pm_io_base, OBJ_PROP_FLAG_READ);
+@@ -454,6 +469,9 @@ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
+     object_property_add_bool(obj, "acpi-pci-hotplug-with-bridge-support",
+                              ich9_pm_get_acpi_pci_hotplug,
+                              ich9_pm_set_acpi_pci_hotplug);
++    object_property_add_bool(obj, "x-keep-pci-slot-hpc",
++                             ich9_pm_get_keep_pci_slot_hpc,
++                             ich9_pm_set_keep_pci_slot_hpc);
+ }
+ 
+ void ich9_pm_device_pre_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev,
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index c2b9d62a358f7b9d25dc91ff85e6..cbcb803549496f20185a070d422c 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -100,6 +100,7 @@ GlobalProperty pc_compat_6_0[] = {
+     { "qemu64" "-" TYPE_X86_CPU, "stepping", "3" },
+     { TYPE_X86_CPU, "x-vendor-cpuid-only", "off" },
+     { "ICH9-LPC", "acpi-pci-hotplug-with-bridge-support", "off" },
++    { "ICH9-LPC", "x-keep-pci-slot-hpc", "false" },
+ };
+ const size_t pc_compat_6_0_len = G_N_ELEMENTS(pc_compat_6_0);
+ 
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 9070544a903d08117d4a14bf70b0..2db27a56649fd2ae31de1c0d6cf7 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -138,6 +138,7 @@ static void pc_q35_init(MachineState *machine)
+     DriveInfo *hd[MAX_SATA_PORTS];
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+     bool acpi_pcihp;
++    bool keep_pci_slot_hpc;
+ 
+     /* Check whether RAM fits below 4G (leaving 1/2 GByte for IO memory
+      * and 256 Mbytes for PCI Express Enhanced Configuration Access Mapping
+@@ -242,7 +243,11 @@ static void pc_q35_init(MachineState *machine)
+                                           "acpi-pci-hotplug-with-bridge-support",
+                                           NULL);
+ 
+-    if (acpi_pcihp) {
++    keep_pci_slot_hpc = object_property_get_bool(OBJECT(lpc),
++                                                 "x-keep-pci-slot-hpc",
++                                                 NULL);
++
++    if (!keep_pci_slot_hpc && acpi_pcihp) {
+         object_register_sugar_prop(TYPE_PCIE_SLOT, "x-native-hotplug",
+                                    "false", true);
+     }
+diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
+index a329ce43abb27d6a1af43cf5fe24..64dc39cf5b091ee6662c3f80e5bf 100644
+--- a/include/hw/acpi/ich9.h
++++ b/include/hw/acpi/ich9.h
+@@ -56,6 +56,7 @@ typedef struct ICH9LPCPMRegs {
+     AcpiCpuHotplug gpe_cpu;
+     CPUHotplugState cpuhp_state;
+ 
++    bool keep_pci_slot_hpc;
+     bool use_acpi_hotplug_bridge;
+     AcpiPciHpState acpi_pci_hotplug;
+     MemHotplugState acpi_memory_hotplug;

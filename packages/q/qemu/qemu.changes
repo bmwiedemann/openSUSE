@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 14 19:16:51 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Reinstate Lin Ma's fixes for bsc#1192147 as they were
+  submitted only to IBS.
+* Patches added:
+  hw-acpi-ich9-Add-compat-prop-to-keep-HPC.patch
+  hw-i386-acpi-build-Deny-control-on-PCIe-.patch
+  pcie-rename-native-hotplug-to-x-native-h.patch
+
+-------------------------------------------------------------------
+Tue Dec 14 18:34:50 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Rename the Guest Agent service qemu-guest-agent, like in other
+  distros (and upstream). bsc#1185543
+
+-------------------------------------------------------------------
+Mon Dec 13 15:31:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- disable QOM cast debug outside the testsuite as the corresponding
+  asserts show up occassionally as top #1 in perf(1) traces under
+  heavy virtio load 
+- enable LTO when we'd like to use LTO
+
+-------------------------------------------------------------------
 Tue Dec  7 18:17:14 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 * Patches added (bsc#1186256):

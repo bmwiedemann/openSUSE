@@ -1,0 +1,87 @@
+From: Julia Suvorova <jusual@redhat.com>
+Date: Fri, 12 Nov 2021 06:08:56 -0500
+Subject: hw/i386/acpi-build: Deny control on PCIe Native Hot-plug in _OSC
+
+Git-commit: 211afe5c69b597acf85fdd577eb497f5be1ffbd8
+References: bsc#1192147
+
+There are two ways to enable ACPI PCI Hot-plug:
+
+        * Disable the Hot-plug Capable bit on PCIe slots.
+
+This was the first approach which led to regression [1-2], as
+I/O space for a port is allocated only when it is hot-pluggable,
+which is determined by HPC bit.
+
+        * Leave the HPC bit on and disable PCIe Native Hot-plug in _OSC
+          method.
+
+This removes the (future) ability of hot-plugging switches with PCIe
+Native hotplug since ACPI PCI Hot-plug only works with cold-plugged
+bridges. If the user wants to explicitely use this feature, they can
+disable ACPI PCI Hot-plug with:
+        --global ICH9-LPC.acpi-pci-hotplug-with-bridge-support=off
+
+Change the bit in _OSC method so that the OS selects ACPI PCI Hot-plug
+instead of PCIe Native.
+
+[1] https://gitlab.com/qemu-project/qemu/-/issues/641
+[2] https://bugzilla.redhat.com/show_bug.cgi?id=2006409
+
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20211112110857.3116853-5-imammedo@redhat.com>
+Reviewed-by: Ani Sinha <ani@anisinha.ca>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Lin Ma <lma@suse.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/i386/acpi-build.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index a33ac8b91e1baa129dac61ab32b6..ef28c3de772abe1cafe232f7754c 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1329,7 +1329,7 @@ static void build_x86_acpi_pci_hotplug(Aml *table, uint64_t pcihp_addr)
+     aml_append(table, scope);
+ }
+ 
+-static Aml *build_q35_osc_method(void)
++static Aml *build_q35_osc_method(bool enable_native_pcie_hotplug)
+ {
+     Aml *if_ctx;
+     Aml *if_ctx2;
+@@ -1351,8 +1351,10 @@ static Aml *build_q35_osc_method(void)
+     /*
+      * Always allow native PME, AER (no dependencies)
+      * Allow SHPC (PCI bridges can have SHPC controller)
++     * Disable PCIe Native Hot-plug if ACPI PCI Hot-plug is enabled.
+      */
+-    aml_append(if_ctx, aml_and(a_ctrl, aml_int(0x1F), a_ctrl));
++    aml_append(if_ctx, aml_and(a_ctrl,
++        aml_int(0x1E | (enable_native_pcie_hotplug ? 0x1 : 0x0)), a_ctrl));
+ 
+     if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
+     /* Unknown revision */
+@@ -1441,7 +1443,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+         aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+         aml_append(dev, aml_name_decl("_UID", aml_int(pcmc->pci_root_uid)));
+-        aml_append(dev, build_q35_osc_method());
++        aml_append(dev, build_q35_osc_method(!pm->pcihp_bridge_en));
+         aml_append(sb_scope, dev);
+         if (mcfg_valid) {
+             aml_append(sb_scope, build_q35_dram_controller(&mcfg));
+@@ -1557,7 +1559,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+             if (pci_bus_is_express(bus)) {
+                 aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
+                 aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+-                aml_append(dev, build_q35_osc_method());
++
++                /* Expander bridges do not have ACPI PCI Hot-plug enabled */
++                aml_append(dev, build_q35_osc_method(true));
+             } else {
+                 aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
+             }

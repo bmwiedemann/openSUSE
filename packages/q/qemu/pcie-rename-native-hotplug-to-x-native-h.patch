@@ -1,0 +1,61 @@
+From: Igor Mammedov <imammedo@redhat.com>
+Date: Fri, 12 Nov 2021 06:08:53 -0500
+Subject: pcie: rename 'native-hotplug' to 'x-native-hotplug'
+
+Git-commit: 2aa1842d6d79dcd1b84c58eeb44591a99a9e56df
+References: bsc#1192147
+
+Mark property as experimental/internal adding 'x-' prefix.
+
+Property was introduced in 6.1 and it should have provided
+ability to turn on native PCIE hotplug on port even when
+ACPI PCI hotplug is in use is user explicitly sets property
+on CLI. However that never worked since slot is wired to
+ACPI hotplug controller.
+Another non-intended usecase: disable native hotplug on slot
+when APCI based hotplug is disabled, which works but slot has
+'hotplug' property for this taks.
+
+It should be relatively safe to rename it to experimental
+as no users should exist for it and given that the property
+is broken we don't really want to leave it around for much
+longer lest users start using it.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Ani Sinha <ani@anisinha.ca>
+Message-Id: <20211112110857.3116853-2-imammedo@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Lin Ma <lma@suse.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/i386/pc_q35.c   | 2 +-
+ hw/pci/pcie_port.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 04b4a4788d75bbed294c01174a87..9070544a903d08117d4a14bf70b0 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -243,7 +243,7 @@ static void pc_q35_init(MachineState *machine)
+                                           NULL);
+ 
+     if (acpi_pcihp) {
+-        object_register_sugar_prop(TYPE_PCIE_SLOT, "native-hotplug",
++        object_register_sugar_prop(TYPE_PCIE_SLOT, "x-native-hotplug",
+                                    "false", true);
+     }
+ 
+diff --git a/hw/pci/pcie_port.c b/hw/pci/pcie_port.c
+index da850e8dde7c8f86b4004a54e561..e95c1e5519ce89f5b41682869ebe 100644
+--- a/hw/pci/pcie_port.c
++++ b/hw/pci/pcie_port.c
+@@ -148,7 +148,7 @@ static Property pcie_slot_props[] = {
+     DEFINE_PROP_UINT8("chassis", PCIESlot, chassis, 0),
+     DEFINE_PROP_UINT16("slot", PCIESlot, slot, 0),
+     DEFINE_PROP_BOOL("hotplug", PCIESlot, hotplug, true),
+-    DEFINE_PROP_BOOL("native-hotplug", PCIESlot, native_hotplug, true),
++    DEFINE_PROP_BOOL("x-native-hotplug", PCIESlot, native_hotplug, true),
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 

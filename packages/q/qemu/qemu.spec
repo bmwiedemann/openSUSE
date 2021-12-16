@@ -113,7 +113,7 @@ Source3:        qemu-ifup
 Source4:        bridge.conf
 Source5:        qemu-kvm.1.gz
 Source6:        ksm.service
-Source7:        qemu-ga@.service
+Source7:        qemu-guest-agent.service
 Source8:        80-qemu-ga.rules
 Source9:        qemu-supportconfig
 Source10:       supported.arm.txt
@@ -197,6 +197,9 @@ Patch00061:     vhost-vsock-fix-migration-issue-when-seq.patch
 Patch00062:     block-introduce-max_hw_iov-for-use-in-sc.patch
 Patch00063:     uas-add-stream-number-sanity-checks.patch
 Patch00064:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+Patch00065:     pcie-rename-native-hotplug-to-x-native-h.patch
+Patch00066:     hw-acpi-ich9-Add-compat-prop-to-keep-HPC.patch
+Patch00067:     hw-i386-acpi-build-Deny-control-on-PCIe-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1150,6 +1153,9 @@ This package records qemu testsuite results and represents successful testing.
 %patch00062 -p1
 %patch00063 -p1
 %patch00064 -p1
+%patch00065 -p1
+%patch00066 -p1
+%patch00067 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1294,6 +1300,12 @@ cd %blddir
 	--disable-stack-protector \
 	--disable-strip \
 	--disable-tcg-interpreter \
+%if "%{_lto_cflags}" != "%{nil}"
+	--enable-lto \
+%endif
+%if "%flavor" != "testsuite"
+	--disable-qom-cast-debug \
+%endif
 	--with-git-submodules=ignore \
 %if "%{name}" != "qemu-linux-user"
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
@@ -1794,7 +1806,7 @@ rst2html --exit-status=2 %{buildroot}%_docdir/qemu-x86/supported.txt %{buildroot
 %if %{kvm_available}
 install -D -m 0644 %{SOURCE1} %{buildroot}/usr/lib/udev/rules.d/80-kvm.rules
 %endif
-install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/qemu-ga@.service
+install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/qemu-guest-agent.service
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/ksm.service
 %ifarch s390x
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/modules-load.d/kvm.conf
@@ -1862,24 +1874,24 @@ fi
 %verify_permissions %_libexecdir/qemu-bridge-helper
 
 %pre guest-agent
-%service_add_pre qemu-ga@.service
+%service_add_pre qemu-guest-agent.service
 
 %post guest-agent
-%service_add_post qemu-ga@.service
+%service_add_post qemu-guest-agent.service
 if [ -e /dev/virtio-ports/org.qemu.guest_agent.0 ]; then
-  /usr/bin/systemctl start qemu-ga@virtio\\x2dports-org.qemu.guest_agent.0.service || :
+  /usr/bin/systemctl start qemu-guest-agent.service || :
 fi
 
 %preun guest-agent
 if [ -e /dev/virtio-ports/org.qemu.guest_agent.0 ]; then
-  /usr/bin/systemctl stop qemu-ga@virtio\\x2dports-org.qemu.guest_agent.0.service || :
+  /usr/bin/systemctl stop qemu-guest-agent.service || :
 fi
 
 %postun guest-agent
-%service_del_postun_without_restart qemu-ga@.service
+%service_del_postun_without_restart qemu-guest-agent.service
 if [ "$1" = "1" ] ; then
   if [ -e /dev/virtio-ports/org.qemu.guest_agent.0 ]; then
-    /usr/bin/systemctl restart qemu-ga@virtio\\x2dports-org.qemu.guest_agent.0.service || :
+    /usr/bin/systemctl restart qemu-guest-agent.service || :
   fi
 fi
 
@@ -2523,7 +2535,7 @@ fi
 %dir %_docdir/%name/interop
 %_docdir/%name/interop/qemu-ga.html
 %_mandir/man8/qemu-ga.8.gz
-%{_unitdir}/qemu-ga@.service
+%{_unitdir}/qemu-guest-agent.service
 /usr/lib/udev/rules.d/80-qemu-ga.rules
 
 %files ksm
