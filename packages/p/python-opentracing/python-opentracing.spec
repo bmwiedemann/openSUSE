@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentracing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-opentracing
 Version:        2.4.0
@@ -30,14 +30,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-gevent
-Suggests:       python-tornado < 6
+Suggests:       python-tornado
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tornado < 6}
+BuildRequires:  %{python_module tornado}
 # /SECTION
 %python_subpackages
 
@@ -61,6 +61,7 @@ See documentation at http://opentracing.io
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/opentracing
+%{python_sitelib}/opentracing-%{version}*-info
 
 %changelog
