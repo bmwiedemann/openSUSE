@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 11 15:11:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.32.1:
+  * Fix configure CFLAGS handling in Kerberos detection.
+- includes changes from 0.32.0:
+  * NE_AUTH_DIGEST now only enables RFC 2617/7616 auth by default;
+    to enable weaker RFC 2069 Digest, use NE_AUTH_LEGACY_DIGEST
+    (treated as a security enhancement, not an API/ABI break)
+  * Interface additions and bug fixes
+- drop patches:
+  * neon-0.31.2-sha1-tests.patch
+  *  neon-0.31.2-CA-tests.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 17:46:22 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Disable tests fail_ca_* that fail since OpenSSL update to 1.1.1h.

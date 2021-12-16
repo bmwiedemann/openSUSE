@@ -1,7 +1,7 @@
 #
 # spec file for package neon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,25 @@
 
 
 Name:           neon
-Version:        0.31.2
+Version:        0.32.1
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://notroj.github.io/neon/
 Source0:        https://notroj.github.io/neon/neon-%{version}.tar.gz
-Source2:        neon.keyring
 Source3:        baselibs.conf
 Source10:       replace_manpage_with_links.sh
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/Packaging/Patches
 Patch0:         neon-0.28.4-bloat.patch
 Patch1:         fix_timeout_tests_for_ppc64le.patch
-Patch2:         neon-0.31.2-sha1-tests.patch
-Patch3:         neon-0.31.2-CA-tests.patch
 BuildRequires:  krb5-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  libtool
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
+BuildRequires:  xmlto
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(openssl)
 
@@ -74,8 +72,6 @@ neon is an HTTP and WebDAV client library with a C interface.
 %ifarch ppc64le ppc64
 %patch1
 %endif
-%patch2 -p1
-%patch3 -p1
 
 %build
 rm -f aclocal.m4 ltmain.sh
@@ -89,16 +85,16 @@ sh autogen.sh
     --enable-shared \
     --disable-static \
     --enable-warnings
-make %{?_smp_mflags}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} docdir=%{_defaultdocdir}/%{name} install install-man install-html %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
-find %{buildroot}%{_mandir} -type f -exec bash %{S:10} {} \;
+find %{buildroot}%{_mandir} -type f -exec bash %{SOURCE10} {} \;
 
 %check
 export TEST_QUIET=0
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libneon27 -p /sbin/ldconfig
 %postun -n libneon27 -p /sbin/ldconfig
