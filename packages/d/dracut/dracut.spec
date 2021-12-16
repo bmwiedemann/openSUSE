@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        055+suse.142.g7d8c3ce3
+Version:        055+suse.179.g3cf989c2
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,8 +30,10 @@ Source1:        dracut-rpmlintrc
 Source2:        README.susemaint
 BuildRequires:  asciidoc
 BuildRequires:  bash
+BuildRequires:  cargo
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
+BuildRequires:  rust
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(systemd) >= 219
@@ -59,7 +61,7 @@ Requires:       zstd
 # We use 'btrfs fi usage' that was not present before
 Conflicts:      btrfsprogs < 3.18
 # suse-module-tools >= 16.0.3 is prepared for the removal of mkinitrd-suse.sh
-Conflicts:      suse-module-tools < 16.0.3
+Conflicts:      suse-module-tools < 15.4.7
 %{?systemd_requires}
 
 %description
@@ -130,10 +132,11 @@ Call dracut directly instead.
 %autosetup
 
 %build
-%configure\
-  --systemdsystemunitdir=%{_unitdir}\
+%configure \
+  --systemdsystemunitdir=%{_unitdir} \
   --bashcompletiondir=%{_datarootdir}/bash-completion/completions \
-  --libdir=%{_prefix}/lib
+  --libdir=%{_prefix}/lib \
+  --enable-dracut-cpio
 %make_build all CFLAGS="%{optflags}" %{?_smp_mflags}
 
 %install
@@ -155,7 +158,11 @@ install -m 0644 dracut.conf.d/ima.conf.example %{buildroot}%{_sysconfdir}/dracut
 install -m 0644 suse/s390x_persistent_device.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-s390x_persistent_device.conf
 %endif
 
-install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{_sbindir}/mkinitrd
+%if 0%{?suse_version} < 1550
+    install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/sbin/mkinitrd
+%else
+    install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{_sbindir}/mkinitrd
+%endif
 
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
@@ -247,7 +254,11 @@ fi
 %{dracutlibdir}/modules.d/95znet
 
 %files mkinitrd-deprecated
-%{_sbindir}/mkinitrd
+%if 0%{?suse_version} < 1550
+    /sbin/mkinitrd
+%else
+    %{_sbindir}/mkinitrd
+%endif
 %{_mandir}/man8/mkinitrd.8*
 
 %files
@@ -302,6 +313,7 @@ fi
 %{dracutlibdir}/dracut-initramfs-restore
 %{dracutlibdir}/dracut-install
 %{dracutlibdir}/dracut-util
+%{dracutlibdir}/dracut-cpio
 
 %dir %{dracutlibdir}/modules.d
 %{dracutlibdir}/modules.d/00bash
@@ -369,6 +381,7 @@ fi
 %{dracutlibdir}/modules.d/90qemu-net
 %{dracutlibdir}/modules.d/91crypt-gpg
 %{dracutlibdir}/modules.d/91crypt-loop
+%{dracutlibdir}/modules.d/91fido2
 %{dracutlibdir}/modules.d/91tpm2-tss
 %{dracutlibdir}/modules.d/91zipl
 %{dracutlibdir}/modules.d/95cifs

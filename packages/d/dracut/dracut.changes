@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec 09 19:35:36 UTC 2021 - ddiss@suse.com
+
+- Update to version 055+suse.179.g3cf989c2:
+  * fix(cpio): write zeros instead of seek for padding and alignment (bsc#1190982)
+  * fix(dracut.sh): check kernel zstd support early
+  * fix(dracut.sh): check availability of configured compression
+  * fix(dracut.sh): inform user about auto-selected compression method
+  * fix(dracut.sh): drop pointless check for module compression method
+  * chore(suse): add dracut-cpio archiver (jsc#SLE-16157)
+  * ci(TEST-63-DRACUT-CPIO): kernel extraction tests for dracut-cpio
+  * feat(dracut.sh): add "--enhanced-cpio" option for calling dracut-cpio
+  * feat(Makefile): cargo wrapper for dracut-cpio build
+  * feat(cpio): add newc archive creation utility
+  * feat(cpio): add rust argument parsing library from crosvm
+  * ci(TEST-62-SKIPCPIO): add simple skipcpio test
+  * ci(test): export basedir and testdir as absolute paths
+  * ci(TEST-60-BONDBRIDGEVLANIFCFG): use toplevel Makefile
+  * fix(dracut.spec): check for non-usrmerged environments
+  * fix(zfcp_rules): add quotes around rule installation argument
+  * fix(zipl): correct argument for uuid to device conversion
+  * fix(fips): missing value of _vmname variable (bsc#1193267)
+
+-------------------------------------------------------------------
+Wed Dec 01 07:59:32 UTC 2021 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.158.g51e87247:
+  * chore(suse): add fido2 module (jsc#SLE-21070)
+  * feat(crypt): check if fido2 module is needed in hostonly mode (jsc#SLE-21070)
+  * feat(fido2): introducing the fido2 module (jsc#SLE-21070)
+  * feat(crypt): check if tpm2-tss module is needed in hostonly mode (jsc#SLE-21070)
+  * fix(dracut-functions.sh): get block device driver if in a virtual subsystem (bsc#1189776)
+  * fix(mdraid): allow UUID comparison for more than one UUID (bsc#1192665)
+  * fix(dracut.spec): update dependency for suse-module-tools
+  * fix(network-legacy): route parsing issues in ifup (bsc#1182688)
+  * fix(systemd-udevd): make collect optional (bsc#1177870)
+
+-------------------------------------------------------------------
 Fri Nov 19 08:19:00 UTC 2021 - antonio.feijoo@suse.com
 
 - Update to version 055+suse.142.g7d8c3ce3:
