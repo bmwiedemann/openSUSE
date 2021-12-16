@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  2 13:50:42 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.9
+  * Add support for getgroups_chk()
+  * Added (de)contructor support on AIX with pragma init/finish
+
+-------------------------------------------------------------------
 Wed Apr  7 22:12:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove pkgconfig and cmake directory from filelist - provided by filesystem package

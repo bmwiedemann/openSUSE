@@ -105,4 +105,15 @@
     <comment></comment>
     <requestid>883724</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7558562a05d6f1a9234c4801b9a3111f</srcmd5>
+    <version>1.2.9</version>
+    <time>1639685923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.9
+  * Add support for getgroups_chk()
+  * Added (de)contructor support on AIX with pragma init/finish
+</comment>
+    <requestid>940395</requestid>
+  </revision>
 </revisionlist>

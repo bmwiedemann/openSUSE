@@ -23,7 +23,7 @@
 #
 ############################# NOTE ##################################
 Name:           uid_wrapper
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        A wrapper for privilege seperation
 License:        GPL-3.0-or-later
