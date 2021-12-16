@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 10:20:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * synergys.service
+
+-------------------------------------------------------------------
 Mon Feb  3 16:34:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
