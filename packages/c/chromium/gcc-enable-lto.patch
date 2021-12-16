@@ -53,3 +53,18 @@ Index: chromium-85.0.4183.69/sandbox/linux/BUILD.gn
  
    if (is_android) {
      sources += [
+Index: chromium-96.0.4664.93/base/BUILD.gn
+===================================================================     
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -1986,6 +1986,10 @@
+         ]
+       }
+
++      if (gcc_lto) {
++        configs -= [ "//build/config/compiler:gcc_lto" ]
++      }
++
+       if (current_cpu == "x64") {
+         defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
+         sources += [ "allocator/partition_allocator/starscan/stack/asm/x64/push_registers_asm.cc" ]

@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Dec 15 10:54:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Revert to gcc10 on TW: gcc11 is entirely broken
+- No auto thread LTO: linker crash on ARM
+
+-------------------------------------------------------------------
+Tue Dec 14 15:24:47 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 96.0.4664.110 (boo#1193713):
+  * CVE-2021-4098: Insufficient data validation in Mojo
+  * CVE-2021-4099: Use after free in Swiftshader
+  * CVE-2021-4100: Object lifecycle issue in ANGLE
+  * CVE-2021-4101: Heap buffer overflow in Swiftshader
+  * CVE-2021-4102: Use after free in V8
+
+-------------------------------------------------------------------
+Thu Dec  9 09:49:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Lord of the Browsers: The Two Compilers:
+  * Go back to GCC
+  * GCC: LTO removes needed assembly symbols
+  * Clang: issues with libstdc++
+- Chromium 96.0.4664.93 (boo#1193519):
+  * CVE-2021-4052: Use after free in web apps
+  * CVE-2021-4053: Use after free in UI
+  * CVE-2021-4079: Out of bounds write in WebRTC
+  * CVE-2021-4054: Incorrect security UI in autofill
+  * CVE-2021-4078: Type confusion in V8
+  * CVE-2021-4055: Heap buffer overflow in extensions
+  * CVE-2021-4056: Type Confusion in loader
+  * CVE-2021-4057: Use after free in file API
+  * CVE-2021-4058: Heap buffer overflow in ANGLE
+  * CVE-2021-4059: Insufficient data validation in loader
+  * CVE-2021-4061: Type Confusion in V8
+  * CVE-2021-4062: Heap buffer overflow in BFCache
+  * CVE-2021-4063: Use after free in developer tools
+  * CVE-2021-4064: Use after free in screen capture
+  * CVE-2021-4065: Use after free in autofill
+  * CVE-2021-4066: Integer underflow in ANGLE
+  * CVE-2021-4067: Use after free in window manager
+  * CVE-2021-4068: Insufficient validation of untrusted input in new tab page
+- Chromium 96.0.4664.45 (boo#1192734):
+  * CVE-2021-38007: Type Confusion in V8
+  * CVE-2021-38008: Use after free in media
+  * CVE-2021-38009: Inappropriate implementation in cache
+  * CVE-2021-38006: Use after free in storage foundation
+  * CVE-2021-38005: Use after free in loader
+  * CVE-2021-38010: Inappropriate implementation in service workers
+  * CVE-2021-38011: Use after free in storage foundation
+  * CVE-2021-38012: Type Confusion in V8
+  * CVE-2021-38013: Heap buffer overflow in fingerprint recognition
+  * CVE-2021-38014: Out of bounds write in Swiftshader
+  * CVE-2021-38015: Inappropriate implementation in input
+  * CVE-2021-38016: Insufficient policy enforcement in background fetch
+  * CVE-2021-38017: Insufficient policy enforcement in iframe sandbox
+  * CVE-2021-38018: Inappropriate implementation in navigation
+  * CVE-2021-38019: Insufficient policy enforcement in CORS
+  * CVE-2021-38020: Insufficient policy enforcement in contacts picker
+  * CVE-2021-38021: Inappropriate implementation in referrer
+  * CVE-2021-38022: Inappropriate implementation in WebAuthentication
+- Removed old patches:
+  * chromium-95-compiler.patch
+  * chromium-95-BitstreamReader-namespace.patch
+  * chromium-95-system-zlib.patch
+  * chromium-older-harfbuzz.patch
+  * pipewire-do-not-typecheck-the-portal-session_handle.patch
+- Removed build breaking patches:
+  * chromium-93-EnumTable-crash.patch
+- Added patches:
+  * chromium-96-compiler.patch
+  * chromium-96-CommandLine-include.patch
+  * chromium-96-RestrictedCookieManager-tuple.patch
+  * chromium-96-DrmRenderNodePathFinder-include.patch
+  * chromium-96-CouponDB-include.patch
+- Changed patches:
+  * gcc-enable-lto.patch: see above
+
+-------------------------------------------------------------------
 Fri Nov 19 09:32:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Ensure newer libs and LLVM is used on Leap (boo#1192310)

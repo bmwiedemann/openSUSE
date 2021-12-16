@@ -20,34 +20,35 @@
 %define outputdir ${TMPOUT}
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1550
 %bcond_without system_icu
 %bcond_with system_vpx
 %else
 %bcond_with system_icu
 %bcond_with system_vpx
 %endif
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %bcond_without pipewire
 %else
 %bcond_with pipewire
 %endif
 %bcond_without system_ffmpeg
+%bcond_without system_zlib
 %bcond_with system_freetype
 %ifarch %{arm} aarch64
 %bcond_with swiftshader
 %else
 %bcond_without swiftshader
 %endif
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1550
 %bcond_without system_harfbuzz
 %else
 %bcond_with system_harfbuzz
 %endif
-%bcond_with lto
-%bcond_without clang
+%bcond_without lto
+%bcond_with clang
 Name:           chromium
-Version:        95.0.4638.69
+Version:        96.0.4664.110
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -80,14 +81,13 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-95-compiler.patch
+Patch15:        chromium-96-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch19:        chromium-86-nearby-include.patch
 Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
 Patch25:        chromium-90-fseal.patch
-Patch29:        chromium-93-EnumTable-crash.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch44:        chromium-95-libyuv-aarch64.patch
@@ -97,13 +97,13 @@ Patch51:        chromium-glibc-2.34.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch63:        chromium-ffmpeg-lp152.patch
 Patch65:        chromium-94-sql-no-assert.patch
-Patch67:        chromium-older-harfbuzz.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
-Patch70:        pipewire-do-not-typecheck-the-portal-session_handle.patch
-Patch71:        chromium-95-BitstreamReader-namespace.patch
 Patch72:        chromium-95-quiche-include.patch
-Patch73:        chromium-95-system-zlib.patch
+Patch73:        chromium-96-CommandLine-include.patch
+Patch74:        chromium-96-RestrictedCookieManager-tuple.patch
+Patch75:        chromium-96-DrmRenderNodePathFinder-include.patch
+Patch76:        chromium-96-CouponDB-include.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -219,7 +219,6 @@ BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(zlib)
 Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
@@ -259,6 +258,9 @@ BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %if %{with system_freetype}
 BuildRequires:  pkgconfig(freetype2)
 %endif
+%if %{with system_zlib}
+BuildRequires:  pkgconfig(zlib)
+%endif
 %if %{with clang}
 %if %{?suse_version} < 1550
 BuildRequires:  clang12
@@ -274,13 +276,13 @@ BuildRequires:  llvm
 %endif
 %if %{without clang}
 BuildRequires:  binutils-gold
-%if %{?suse_version} > 1500
-BuildRequires:  gcc >= 10
-BuildRequires:  gcc-c++ >= 10
-%else
+#%if %{?suse_version} >= 1550
+#BuildRequires:  gcc
+#BuildRequires:  gcc-c++
+#%else
 BuildRequires:  gcc10
 BuildRequires:  gcc10-c++
-%endif
+#%endif
 %endif
 
 %description
@@ -398,6 +400,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
+    third_party/distributed_point_functions
     third_party/dom_distiller_js
     third_party/eigen3
     third_party/emoji-segmenter
@@ -511,7 +514,6 @@ keeplibs=(
     third_party/tflite
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
-    third_party/tflite-support
     third_party/ukey2
     third_party/usrsctp
     third_party/utf
@@ -558,6 +560,9 @@ keeplibs+=( third_party/icu )
 %if !%{with system_ffmpeg}
 keeplibs+=( third_party/ffmpeg )
 %endif
+%if !%{with system_zlib}
+keeplibs+=( third_party/zlib )
+%endif
 %if !%{with system_vpx}
 keeplibs+=(
     third_party/libvpx
@@ -577,23 +582,21 @@ build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 %if %{with clang}
 export CC=clang
 export CXX=clang++
-export AR=llvm-ar
-export NM=llvm-nm
 %else
-export AR=ar
-export NM=nm
-%if 0%{?suse_version} <= 1500
+#%if 0%{?suse_version} <= 1500
 export CC=gcc-10
 export CXX=g++-10
 # some still call gcc/g++
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
-%else
-export CC=gcc
-export CXX=g++
+#%else
+#export CC=gcc
+#export CXX=g++
+#%endif
 %endif
-%endif
+export AR=ar
+export NM=nm
 # REDUCE DEBUG as it gets TOO large
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
 export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
