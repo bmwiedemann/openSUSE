@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 15 08:29:36 CET 2021 - tiwai@suse.de
+
+- Drop ix86 build, which has been failing almost always
+
+-------------------------------------------------------------------
 Tue Dec  7 15:10:26 CET 2021 - tiwai@suse.de
 
 - Enable nftables for SLE15-SP3 / openSUSE Leap 15.3, too (bsc#1193486)
