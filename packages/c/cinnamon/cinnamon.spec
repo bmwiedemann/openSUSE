@@ -18,7 +18,7 @@
 
 %define _version 5.0.0
 Name:           cinnamon
-Version:        5.0.5
+Version:        5.2.4
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -266,6 +266,7 @@ fi
 %{_datadir}/cinnamon-session
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
+%{_datadir}/dbus-1/services/org.cinnamon.*.service
 %{_datadir}/desktop-directories/*
 %exclude %{_datadir}/%{name}/theme/menu*.svg
 %{_datadir}/icons/hicolor/*/*/*.svg

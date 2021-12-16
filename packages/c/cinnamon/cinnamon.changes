@@ -1,7 +1,153 @@
 -------------------------------------------------------------------
+Tue Dec  7 20:35:25 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.2.4.
+  * window effects: Fix maximize effect.
+  * notificationDaemon.js: Remove call to non-existant Source method.
+- Updates for version 5.2.3.
+  * Add org.gnome.Shell.Screensaver service for taking screenshots.
+  * flashspot.js: Improve effect.
+
+-------------------------------------------------------------------
+Fri Dec  3 16:26:47 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.2.2.
+  * build: disable gir install via list to pacify meson >= 0.60.2
+    (#10489)
+  * JsonSettingsWidgets.py: Don't escape non-ascii characters when
+    saving the json file.
+  * flashspot.js: Use class expression to fix subclassing of
+    Lightbox.
+  * appletManager.js: Fix highlighting when adding an applet to
+    a panel.
+  * Add "ReloadTheme" to available dbus commands.
+  * calendar applet: Change a few style classes.
+  * calendar applet: Update the default theme for some calendar
+    changes.
+  * cinnamon-app.c: Unref the launch context if offloading setup
+    fails.
+  * calendar: Don't try to override vfade in the default theme.
+  * cinnamon.css: Improve some spacing in the calendar, change
+    how selected/current days are displayed.
+- Update for version 5.2.1.
+  * l10n: Rename mgsid in calendar applet
+  * calendar applet: Add an icon when no events are available
+  * calendar: remove unintentional setting.
+  * calendar: Don't use the new string format style for
+    translatable strings.
+  * calendar applet: Reset the periodic timer when settings
+    change.
+  * cinnamon.css: Move height element to affect the events box
+    only.
+  * Make cinnamon-settings a minimal GApplication to accomodate
+    webkit.
+  * l10n: Update POT
+  * cinnamon-launcher: use os.WIFEXITED to interpret the status
+    code when cinnamon exits.
+  * calendar events: update when the applet is opened only, and
+    update events incrementally, to reduce ui relayouts.
+  * cinnamon-app.c: Don't allow offloaded programs to be
+    dbus-activated.
+
+-------------------------------------------------------------------
 Mon Nov 29 20:20:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Remove libcroco from BuildRequires: it is now bundled internally.
+
+-------------------------------------------------------------------
+Thu Nov 18 14:11:12 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.2.0.
+  * menu applet.js: Use localeCompare for the fallback sort.
+  * cinnamon-settings: Remove ~/.local and /usr/local from python's
+    module search paths.
+  * Properly hide JavaEmbeddedFrame on Grouped Window List
+  * menu applet: Check first if we should show items that are
+    refreshed while the menu is open.
+  * menu applet: Hide app buttons by default, and when the menu
+    closes.
+  * cinnamon-subprocess-wrapper: Set the exception result as bytes,
+    not a string.
+  * meson girs: Export gir names as a package Fixes an issue with
+    the package tag in the gir not being generated.
+  * Change method of making "Clear list" label bold.. (#10178)
+  * spices update module: Add a way to check if a spice is
+    currently enabled.
+  * cinnamon-launcher: Don't call Gtk.main_quit() when showing the
+    restart dialog.
+  * cinnamon-launcher: prevent defunct metacity process when
+    restarting via the dialog, fix 'cinnamon --replace --replace'
+    after crashes.
+  * main.js: Fix activateWindow so it will respect the workspace
+    index if provided.
+  * main.js: Be strict about the workspace argument in
+    activateWindow.
+  * Documentation corrections
+  * Small grammar corrections in README.md (#10292)
+  * cinnamon-global.c: Allow disabling cinnamon as the default
+    notifications handler.
+  * GWL: Don't force the "New Window" option to show
+  * sound-applet: use insensitive not disabled
+  * Fix window ordering with vertical panels (#10297)
+  * menu applet: Only show completion results when filesystem
+    path entry is enabled.
+  * Add confirmation dialog when removing a panel (#10340)
+  * ui: Make the confirm dialog look a bit more like a real dialog
+  * ui: Add some styling to the run dialog
+  * Fix type to search boilerplate text not being automatically
+    cleared (#10248)
+  * Fix menu-editor with python-3.10 (#10370)
+  * gwl: Remove redundant check for
+    skip-taskbar. Main.isInteresting does this and more.
+  * Stop using GTimeVal/g_get_current_time (#10043)
+  * Fix previous commit - you can't call g_free on an autopointer.
+  * Simplify window animations (#10389)
+  * harvester.py: Catch request timeout errors.
+  * harvester.py: Don't use a unique timestamp for every request
+    from the spices server.
+  * Fix memory leaks on error paths (#10406)
+  * Fix a typo (#10405)
+  * Spotify fixed the album art issue (#10433)
+  * Add an option to disable scrolling in the workspace-switcher
+    applet (#10427)
+  * Add toggle for window labels on/off (#10343)
+  * window-list: Rename newly added option
+  * sound applet: added processing base64 code for art url data
+    (#10226)
+  * Lightbox: Add a radial shader effect (#10344)
+  * notifications applet: Add new setting "Don't show notification
+    count in tray" (#10166)
+  * notification applet: Rephrase newly added option
+  * menu applet: Give all applications a symbolic icon
+  * Sound applet: Fix media control buttons having reverse order
+    on RTL layouts (#10443)
+  * Sound applet: Fix player status label being  aligned to the
+    left on an rtl layout (#10446)
+  * Menu applet: Improve keyboard navigation with RTL layout
+    (#10376)
+  * GWL: Fix issue #10401; Update AppGroup icon every time a new
+    window is added (#10439)
+  * keyboard applet: Change 'let' to 'const' where possible
+    (#10167)
+  * Window button layout setting: improve rtl handling (#10441)
+  * GWL: Fix window preview issue when fade-out effect is
+    used (#10263)
+  * Respect PrefersNonDefaultGPU desktop entry when launching
+    apps (#10411)
+  * Spices.py: simplify _url_retrieve (#10327)
+  * capi.py: support non-i386/x86_64 architectures (#10426)
+  * sound-applet: hide "Unknown Artist" on panel (#10326)
+  * notifications: Simplify source code (#10144)
+  * keyboard applet: Remove unneccesary 'if' in offsets
+    calculation (#10168)
+  * JsonSettingsWidgets.py: remove keyword argument
+    `encoding` (#10458)
+  * keyboard applet: Respect "icon-size" when panel is
+    vertical (#10456)
+  * calendar applet: Add support for
+    evolution-data-server (#10453)
+  * l10n: Update POT
+  * l10n: Generate files
 
 -------------------------------------------------------------------
 Wed Jul 28 10:37:18 UTC 2021 - andy great <andythe_great@pm.me>
