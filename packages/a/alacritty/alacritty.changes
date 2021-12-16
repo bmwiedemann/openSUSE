@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 15 09:07:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Restore the removing of the checksum of config.guess and
+  config.sub for architectures that modify them. 
+  It was wrongly dropped with previous commit.
+
+-------------------------------------------------------------------
 Tue Sep 28 05:51:17 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Replace rust-packaging with cargo-packaging
