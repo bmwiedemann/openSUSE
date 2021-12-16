@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:51:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_stunnel.service.patch
+
+-------------------------------------------------------------------
 Tue Aug 17 10:35:45 UTC 2021 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Update to 5.60:

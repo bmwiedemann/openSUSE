@@ -53,6 +53,7 @@ Source4:        stunnel.rc
 Source7:        stunnel.README
 # PATCH-FIX-UPSTREAM Fix service file, so it ensure we are starting after network is really up!
 Patch1:         stunnel-5.59_service_always_after_network.patch
+Patch2:         harden_stunnel.service.patch
 BuildRequires:  libopenssl-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
@@ -89,6 +90,7 @@ This package contains additional documentation for the stunnel program.
 %patch1 -p1
 chmod -x %{_builddir}/stunnel-%{version}/tools/ca.*
 chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
+%patch2 -p1
 
 %build
 sed -i 's/-m 1770//g' tools/Makefile.in

@@ -1,0 +1,24 @@
+Index: stunnel-5.60/tools/stunnel.service.in
+===================================================================
+--- stunnel-5.60.orig/tools/stunnel.service.in
++++ stunnel-5.60/tools/stunnel.service.in
+@@ -4,6 +4,19 @@ After=syslog.target network-online.targe
+ Wants=syslog.target network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@bindir@/stunnel
+ Type=forking
+ 
