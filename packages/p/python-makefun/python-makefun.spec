@@ -13,22 +13,23 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-makefun
-Version:        1.11.3
+Version:        1.12.1
 Release:        0
 License:        BSD-3-Clause
 Summary:        Small library to dynamically create python functions
-Url:            https://github.com/smarie/python-makefun
+URL:            https://github.com/smarie/python-makefun
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/m/makefun/makefun-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -44,6 +45,7 @@ Small library to dynamically create python functions.
 
 %prep
 %setup -q -n makefun-%{version}
+sed -i '/pytest-runner/d' setup.cfg
 
 %build
 %python_build
@@ -52,9 +54,8 @@ Small library to dynamically create python functions.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# No tests, as tests require pytest-cases, which requires makefun
-#%%check
-#%%pytest
+%check
+%pytest
 
 %files %{python_files}
 %doc README.md

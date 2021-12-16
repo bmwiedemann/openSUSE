@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 14 12:04:47 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.12.1
+  ### 1.12.1 - Bugfix
+   - Fixed `TypeError` when a `func` attribute is present on the function provided to `create_function`. Fixed [#76]
+  ### 1.12.0 - Refactoring and consistency improvement
+   - Fixed `partial` so that :
+     - when no argument is provided, it is equivalent to `wraps(f)(f)`. That is, the `__wrapped__` attribute is set. Fixed [#73]
+     - it sets the `func` attribute just as `functools.partial` does. Fixed [#75]
+   - Removed `pytest-cases` dependency as it was a circular one. Fixed [#68]
+   - Now using `flake8` for qualimetry and `genbadge` for badges. Fixed [#71]
+   - Restructured project so that tests are truly independent, to ease rpm/apt/etc. packaging. Fixed [#69]
+- test the package
+
+-------------------------------------------------------------------
 Thu May  6 15:50:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Initial package for version 1.11.3

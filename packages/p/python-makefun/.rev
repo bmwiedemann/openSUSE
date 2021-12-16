@@ -7,4 +7,12 @@
     <comment>This package would be nice to have in factory. But at least it is required for the new version of yubikey manager</comment>
     <requestid>891255</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>43bb979cc3e0d42cf66570f1b0fc90fe</srcmd5>
+    <version>1.12.1</version>
+    <time>1639685980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940869</requestid>
+  </revision>
 </revisionlist>
