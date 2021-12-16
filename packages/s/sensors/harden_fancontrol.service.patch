@@ -2,7 +2,7 @@ Index: lm-sensors-3-6-0/prog/init/fancontrol.service
 ===================================================================
 --- lm-sensors-3-6-0.orig/prog/init/fancontrol.service
 +++ lm-sensors-3-6-0/prog/init/fancontrol.service
-@@ -4,6 +4,16 @@ ConditionFileNotEmpty=/etc/fancontrol
+@@ -4,6 +4,15 @@ ConditionFileNotEmpty=/etc/fancontrol
  After=lm_sensors.service
  
  [Service]
@@ -11,7 +11,6 @@ Index: lm-sensors-3-6-0/prog/init/fancontrol.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectKernelTunables=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true

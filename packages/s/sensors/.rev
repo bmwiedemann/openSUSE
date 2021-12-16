@@ -899,4 +899,13 @@
   breaks service (boo#1193149) (forwarded request 934574 from jsegitz)</comment>
     <requestid>934609</requestid>
   </revision>
+  <revision rev="110" vrev="8">
+    <srcmd5>96a5a0760c2d26e5f4e23d999eb67ff1</srcmd5>
+    <version>3.6.0</version>
+    <time>1639685926</time>
+    <user>dimstar_suse</user>
+    <comment>- Also remove ProtectKernelTunables from harden_fancontrol.service.patch,
+  breaks service (boo#1193149) (forwarded request 940302 from jsegitz)</comment>
+    <requestid>940445</requestid>
+  </revision>
 </revisionlist>

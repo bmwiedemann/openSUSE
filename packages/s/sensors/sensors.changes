@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:22:02 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Also remove ProtectKernelTunables from harden_fancontrol.service.patch,
+  breaks service (boo#1193149)
+
+-------------------------------------------------------------------
 Mon Nov 29 13:01:09 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove ProtectKernelTunables from harden_lm_sensors.service.patch,
