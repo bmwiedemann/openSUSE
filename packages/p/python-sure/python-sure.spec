@@ -1,7 +1,7 @@
 #
 # spec file for package python-sure
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sure
-Version:        1.4.11
+Version:        2.0.0
 Release:        0
 Summary:        Utility belt for automated testing in python for python
 License:        GPL-3.0-or-later
@@ -31,8 +31,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# regarding mock: https://github.com/gabrielfalcao/sure/pull/161
 Requires:       python-mock >= 2.0.0
 Requires:       python-six >= 1.10.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,12 +46,14 @@ heavily inspired by should.js
 %prep
 %setup -q -n sure-%{version}
 sed -i '/^#!/d' sure/*.py
+sed -i 's/--cov=sure//' setup.cfg
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/sure
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,9 +61,17 @@ sed -i '/^#!/d' sure/*.py
 rm tests/test_old_api.py
 %pytest
 
+%post
+%python_install_alternative sure
+
+%postun
+%python_uninstall_alternative sure
+
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitelib}/*
+%python_alternative %{_bindir}/sure
+%{python_sitelib}/sure
+%{python_sitelib}/sure-%{version}*-info
 
 %changelog
