@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with extras
 Name:           log4j
-Version:        2.13.2
+Version:        2.16.0
 Release:        0
 Summary:        Java logging package
 License:        Apache-2.0
@@ -26,13 +25,15 @@ URL:            http://logging.apache.org/%{name}
 Source0:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz
 Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz.asc
 Patch1:         logging-log4j-Remove-unsupported-EventDataConverter.patch
-Patch2:         CVE-2021-44228.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.lmax:disruptor)
 BuildRequires:  mvn(com.sun.mail:javax.mail)
+BuildRequires:  mvn(commons-logging:commons-logging)
+BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
 BuildRequires:  mvn(org.apache.commons:commons-compress)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging:logging-parent:pom:)
@@ -44,26 +45,6 @@ BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
 Obsoletes:      log4j-mini
 BuildArch:      noarch
-%if %{with extras}
-BuildRequires:  mvn(com.datastax.cassandra:cassandra-driver-core)
-BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-xml)
-BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-yaml)
-BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
-BuildRequires:  mvn(commons-logging:commons-logging)
-BuildRequires:  mvn(javax.servlet.jsp:jsp-api)
-BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(org.apache.commons:commons-csv)
-BuildRequires:  mvn(org.apache.tomcat:tomcat-catalina)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
-BuildRequires:  mvn(org.eclipse.persistence:javax.persistence)
-BuildRequires:  mvn(org.jboss.spec.javax.jms:jboss-jms-api_1.1_spec)
-BuildRequires:  mvn(org.lightcouch:lightcouch)
-BuildRequires:  mvn(org.zeromq:jeromq)
-BuildRequires:  mvn(sun.jdk:jconsole)
-# Explicit requires for javapackages-tools since log4j-jmx script
-# uses /usr/share/java-utils/java-functions
-Requires:       javapackages-tools
-%endif
 
 %description
 Log4j is a tool to help the programmer output log statements to a
@@ -80,47 +61,6 @@ Summary:        Apache Log4j Commons Logging Bridge
 
 %description jcl
 Apache Log4j Commons Logging Bridge.
-
-%if %{with extras}
-%package osgi
-Summary:        Apache Log4J Core OSGi Bundles
-
-%description osgi
-Apache Log4J Core OSGi Bundles.
-
-%package taglib
-Summary:        Apache Log4j Tag Library
-
-%description taglib
-Apache Log4j Tag Library for Web Applications.
-
-%package jmx-gui
-Summary:        Apache Log4j JMX GUI
-Requires:       java-devel
-
-%description jmx-gui
-Swing-based client for remotely editing the log4j configuration and remotely
-monitoring StatusLogger output. Includes a JConsole plug-in.
-
-%package web
-Summary:        Apache Log4j Web
-
-%description web
-Support for Log4j in a web servlet container.
-
-%package bom
-Summary:        Apache Log4j BOM
-
-%description bom
-Apache Log4j 2 Bill of Material
-
-%package nosql
-Summary:        Apache Log4j NoSql
-
-%description nosql
-Use NoSQL databases such as MongoDB and CouchDB to append log messages.
-
-%endif
 
 %package        javadoc
 Summary:        API documentation for %{name}
@@ -177,9 +117,9 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 # we don't have commons-dbcp2
 %pom_disable_module %{name}-jdbc-dbcp2
 
-# We have mongodb 4
-%pom_disable_module %{name}-mongodb2
+# We do not have mongodb
 %pom_disable_module %{name}-mongodb3
+%pom_disable_module %{name}-mongodb4
 
 # System scoped dep provided by JDK
 %pom_remove_dep :jconsole %{name}-jmx-gui
@@ -192,9 +132,8 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_remove_plugin :apache-rat-plugin %{name}-bom
 
 # tests are disabled
-%pom_remove_plugin :maven-failsafe-plugin
+%pom_remove_plugin -r :maven-failsafe-plugin
 
-%if %{without extras}
 %pom_disable_module %{name}-taglib
 %pom_disable_module %{name}-jmx-gui
 %pom_disable_module %{name}-bom
@@ -206,6 +145,7 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_disable_module %{name}-couchdb
 %pom_disable_module %{name}-cassandra
 %pom_disable_module %{name}-appserver
+%pom_disable_module %{name}-spring-boot
 %pom_disable_module %{name}-spring-cloud-config
 %pom_disable_module %{name}-kubernetes
 %pom_disable_module %{name}-jpl
@@ -224,7 +164,6 @@ rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,X
 rm log4j-1.2-api/src/main/java/org/apache/log4j/builders/layout/*Xml*.java
 rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
 rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
-%endif
 
 %{mvn_alias} :%{name}-1.2-api %{name}:%{name}
 
@@ -253,10 +192,6 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%if %{with extras}
-%jpackage_script org.apache.logging.log4j.jmx.gui.ClientGUI '' '' %{name}/%{name}-jmx-gui:%{name}/%{name}-core %{name}-jmx false
-%endif
-
 %files -f .mfiles
 %dir %{_javadir}/%{name}
 %license LICENSE.txt
@@ -265,19 +200,6 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %files slf4j -f .mfiles-slf4j
 
 %files jcl -f .mfiles-jcl
-
-%if %{with extras}
-%files taglib -f .mfiles-taglib
-
-%files web -f .mfiles-web
-
-%files bom -f .mfiles-bom
-
-%files nosql -f .mfiles-nosql
-
-%files jmx-gui -f .mfiles-jmx-gui
-%{_bindir}/%{name}-jmx
-%endif
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE.txt
