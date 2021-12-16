@@ -82,4 +82,116 @@
     <comment></comment>
     <requestid>940745</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b036836f395d3746b272444e170b178e</srcmd5>
+    <version>21.06</version>
+    <time>1639685936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update lzma-sdk-shlib.patch to use Sha256Opt.c for generating
+  libclzma.so. boo#1193657
+- Update to version 21.06
+  * Bug in LZMA encoder in file LzmaEnc.c was fixed:
+    LzmaEnc_MemEncode(), LzmaEncode() and LzmaCompress() could
+    work incorrectly, if size value for output buffer is smaller
+    than size required for all compressed data. LzmaEnc_Encode()
+    could work incorrectly, if callback ISeqOutStream::Write()
+    doesn't write all compressed data.
+    NCompress::NLzma::CEncoder::Code() could work incorrectly,
+    if callback ISequentialOutStream::Write() returns error
+    code.
+  * Bug in versions 21.00-21.05 was fixed:
+    7-Zip didn't set attributes of directories during archive
+    extracting.
+  version 21.04 beta:
+  * 7-Zip now reduces the number of working CPU threads for
+    compression, if RAM size is not enough for compression with
+    big LZMA2 dictionary.
+  * 7-Zip now can create and check &quot;file.sha256&quot; text files that
+    contain the list of file names and SHA-256 checksums in
+    format compatible with sha256sum program.
+  version 21.03 beta:
+  * The maximum dictionary size for LZMA/LZMA2 compressing was
+    increased to 4 GB (3840 MiB).
+  * Minor speed optimizations in LZMA/LZMA2 compressing.
+  version 21.02 alpha:
+  * The speed for LZMA and LZMA2 decompression in arm64 versions
+    was increased by 20%-60%.
+  version 21.01 alpha:
+  * The improvements for speed of ARM64 version using hardware
+    CPU instructions  for AES, CRC-32, SHA-1 and SHA-256.
+  * Some bugs were fixed.
+  version 20.02 alpha:
+  * The default number of LZMA2 chunks per solid block in 7z
+    archive was increased to 64. It allows to increase the
+    compression speed for big 7z archives, if there is a big
+    number  of CPU cores and threads.
+  * The speed of PPMd compressing/decompressing was increased
+    for 7z archives.
+  * The new -ssp switch. If the switch -ssp is specified, 7-Zip
+    doesn't allow the system  to modify &quot;Last Access Time&quot;
+    property of source files for archiving and hashing operations. 
+  * Some bugs were fixed.
+  version 20.00 alpha;
+  * 7-Zip now supports new optional match finders for LZMA/LZMA2
+    compression: bt5 and hc5,  that can work faster than bt4 and
+    hc4 match finders for the data with big redundancy.
+  * The compression ratio was improved for Fast and Fastest
+    compression levels with the following default settings:
+    + Fastest level (-mx1) : hc5 match finder with 256 KB
+      dictionary.
+    + Fast level (-mx3) : hc5 match finder with 4 MB
+      dictionary.
+  * Minor speed optimizations in multithreaded LZMA/LZMA2
+    compression for Normal/Maximum/Ultra compression levels.
+- Update to version 19.00
+  * Encryption strength for 7z archives was increased:
+    the size of random initialization vector was increased from
+    64-bit to 128-bit, and the pseudo-random number generator was
+    improved.
+  * The bug in 7zIn.c code was fixed.
+- Update to version 18.06
+  * The speed for LZMA/LZMA2 compressing was increased by 3-10%,
+    and there are minor changes in compression ratio.
+  * Some bugs were fixed.
+  * The bug in 7-Zip 18.02-18.05 was fixed:
+    There was memory leak in multithreading xz decoder -
+    XzDecMt_Decode(), if xz stream contains only one block.
+  * The changes for MSVS compiler makefiles:
+    + the makefiles now use &quot;PLATFORM&quot; macroname with values
+      (x64, x86, arm64) instead of &quot;CPU&quot; macroname with values
+      (AMD64, ARM64).
+    + the makefiles by default now use static version of the
+      run-time library.
+- Fixed unpacking problem
+- Update to version 18.05
+  * The speed for LZMA/LZMA2 compressing was increased
+    by 8% for fastest/fast compression levels and
+    by 3% for normal/maximum compression levels.
+  * The BUG was fixed in Lzma2Enc.c
+    Lzma2Enc_Encode2() function worked incorretly,
+      if (inStream == NULL) and the number of block threads is
+      more than 1.
+- Refreshed lzma-sdk-shlib.patch
+- Update to version 18.03
+  * Asm\x86\LzmaDecOpt.asm: new optimized LZMA decoder written in
+    asm for x64 with about 30% higher speed than main version of
+    LZMA decoder written in C.
+  * The speed for single-thread LZMA/LZMA2 decoder written in C
+    was increased by 3%.
+- Refreshed lzma-sdk-shlib.patch
+- Update to version 18.01
+  * Some changes in LZMA2/xz multithreading code for compressing.
+    Some bugs were fixed.
+- Update to new upstream release 17.01
+  * Some bugs were fixed.
+- Replace lzma-sdk-16.04-sharedlib.patch with lzma-sdk-shlib.patch.
+- Trim/update description. Redo .pc file generation so that the
+  resulting file looks like other .pc files on openSUSE.
+- Refreshed lzma-sdk-16.04-sharedlib.patch to add source to
+  the library to have extra functions and exported extra
+  symbols
+- Initial package (version 16.04)
+</comment>
+    <requestid>940858</requestid>
+  </revision>
 </revisionlist>

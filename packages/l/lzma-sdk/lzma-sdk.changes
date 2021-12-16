@@ -2,7 +2,7 @@
 Sat Dec 11 22:04:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update lzma-sdk-shlib.patch to use Sha256Opt.c for generating
-  libclzma.so.
+  libclzma.so. boo#1193657
 
 -------------------------------------------------------------------
 Mon Nov 29 11:37:21 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
