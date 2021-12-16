@@ -292,9 +292,11 @@ Patch2:         e4f7589a-libxl-shutdown-thread-name.patch
 Patch3:         b9a5faea-libxl-handle-death-thread.patch
 Patch4:         5c5df531-libxl-search-domid-in-thread.patch
 Patch5:         a7a03324-libxl-protect-logger-access.patch
+Patch6:         cbae4eaa-libxl-add-domainGetMessages.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
+Patch102:       0001-util-Don-t-spawn-pkttyagent-when-stdin-is-not-a-tty.patch
 # Need to go upstream
 Patch150:       libvirt-power8-models.patch
 Patch151:       ppc64le-canonical-name.patch

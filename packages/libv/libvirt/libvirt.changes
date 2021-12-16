@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 14 16:36:15 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Implement domainGetMessages API
+  cbae4eaa-libxl-add-domainGetMessages.patch
+  bsc##1193623
+
+-------------------------------------------------------------------
+Mon Dec 13 15:15:35 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Don't spawn pkttyagent when stdin is not a tty
+  0001-util-Don-t-spawn-pkttyagent-when-stdin-is-not-a-tty.patch
+  bsc#1193574
+
+-------------------------------------------------------------------
 Thu Dec  2 22:36:06 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Fix libvirtd deadlocks and segfaults

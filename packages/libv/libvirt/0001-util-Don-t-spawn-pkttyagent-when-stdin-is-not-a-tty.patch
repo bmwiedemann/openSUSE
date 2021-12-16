@@ -1,0 +1,34 @@
+From 306f15c98fb5626f35f876b1f3fa39dee37e5810 Mon Sep 17 00:00:00 2001
+From: Martin Kletzander <mkletzan@redhat.com>
+Date: Sat, 11 Dec 2021 14:23:11 +0100
+Subject: [PATCH] util: Don't spawn pkttyagent when stdin is not a tty
+
+My idea was that running pkttyagent unconditionally, modulo checks that
+pkttyagent itself does to make sure it does not fail, is not going to be an
+issue turned out to be wrong.  Adding back the original check for stdin being a
+tty helps in some testing scenarios as reported by Jim Fehlig and does not
+really cause any issues.  I originally wanted it in because it also made
+pkttyagent auth work with redirected input into virsh (with a connection that
+requires polkit authentication and without a session-wide polkit tty agent,
+basically making pkttyagent necessary to succeed).  But anyone running virsh
+like that is asking for problems already anyway =)
+
+Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
+---
+ src/util/virpolkit.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: libvirt-7.10.0/src/util/virpolkit.c
+===================================================================
+--- libvirt-7.10.0.orig/src/util/virpolkit.c
++++ libvirt-7.10.0/src/util/virpolkit.c
+@@ -237,6 +237,9 @@ virPolkitAgentAvailable(void)
+     const char *termid = ctermid(NULL);
+     VIR_AUTOCLOSE fd = -1;
+ 
++    if (!isatty(STDIN_FILENO))
++        return false;
++
+     if (!virFileIsExecutable(PKTTYAGENT))
+         return false;
+ 

@@ -1,0 +1,62 @@
+commit cbae4eaa19dd97da8b4330af80cf1e1f7cb21931
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Dec 13 16:59:55 2021 -0700
+
+    libxl: Implement domainGetMessages API
+    
+    Since commit 46783e6307a, the 'virsh dominfo' command calls
+    virDomainGetMessages to report any messages from the domain.
+    Hypervisors not implementing the API now get the following
+    libvirtd log message when clients invoke 'virsh dominfo'
+    
+    this function is not supported by the connection driver: virDomainGetMessages
+    
+    Although libxl currently does not support any tainting or
+    deprecation messages, provide an implementation to squelch
+    the previously unseen error message when collecting dominfo.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.10.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-7.10.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.10.0/src/libxl/libxl_driver.c
+@@ -6406,6 +6406,29 @@ libxlDomainGetMetadata(virDomainPtr dom,
+     return ret;
+ }
+ 
++static int
++libxlDomainGetMessages(virDomainPtr dom,
++                      char ***msgs,
++                      unsigned int flags)
++{
++    virDomainObj *vm = NULL;
++    int ret = -1;
++
++    virCheckFlags(0, -1);
++
++    if (!(vm = libxlDomObjFromDomain(dom)))
++        return -1;
++
++    if (virDomainGetMessagesEnsureACL(dom->conn, vm->def) < 0)
++        goto cleanup;
++
++    ret = virDomainObjGetMessages(vm, msgs, flags);
++
++ cleanup:
++    virDomainObjEndAPI(&vm);
++    return ret;
++}
++
+ static virHypervisorDriver libxlHypervisorDriver = {
+     .name = LIBXL_DRIVER_EXTERNAL_NAME,
+     .connectURIProbe = libxlConnectURIProbe,
+@@ -6519,6 +6542,7 @@ static virHypervisorDriver libxlHypervis
+     .connectBaselineCPU = libxlConnectBaselineCPU, /* 2.3.0 */
+     .domainSetMetadata = libxlDomainSetMetadata, /* 5.7.0 */
+     .domainGetMetadata = libxlDomainGetMetadata, /* 5.7.0 */
++    .domainGetMessages = libxlDomainGetMessages, /* 8.0.0 */
+ 
+ };
+ 

@@ -3991,4 +3991,18 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>935300</requestid>
   </revision>
+  <revision rev="345" vrev="2">
+    <srcmd5>e255c5e9c2b09ea8013b9f504e673c17</srcmd5>
+    <version>7.10.0</version>
+    <time>1639685931</time>
+    <user>dimstar_suse</user>
+    <comment>- libxl: Implement domainGetMessages API
+  cbae4eaa-libxl-add-domainGetMessages.patch
+  bsc##1193623
+
+- Don't spawn pkttyagent when stdin is not a tty
+  0001-util-Don-t-spawn-pkttyagent-when-stdin-is-not-a-tty.patch
+  bsc#1193574</comment>
+    <requestid>940538</requestid>
+  </revision>
 </revisionlist>
