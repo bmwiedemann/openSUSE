@@ -86,4 +86,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment> (forwarded request 889774 from bnavigator)</comment>
     <requestid>889780</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b86da5ca389b0d451e86773b10b11b1</srcmd5>
+    <version>4.28.3</version>
+    <time>1639616449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940710</requestid>
+  </revision>
 </revisionlist>
