@@ -241,4 +241,17 @@
   - Disable transactional-update executor [bsc#1192619]</comment>
     <requestid>932544</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>75741a0e9b1eb952a345eab1214c3c49</srcmd5>
+    <version>0.12.3</version>
+    <time>1639685948</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert to go 1.14 until we have a solution for the go certificate
+  handling changes
+
+- Update to version 0.12.3
+  - Fix last PR
+- Require go 1.17 or newer</comment>
+    <requestid>939067</requestid>
+  </revision>
 </revisionlist>

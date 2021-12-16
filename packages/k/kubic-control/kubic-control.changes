@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 10 09:57:50 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Revert to go 1.14 until we have a solution for the go certificate
+  handling changes
+
+-------------------------------------------------------------------
+Wed Dec  8 14:48:14 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.12.3
+  - Fix last PR
+- Require go 1.17 or newer
+
+-------------------------------------------------------------------
 Fri Nov 19 13:48:45 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.12.2
