@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 29 13:18:21 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211127
+  + fix errata in description fields (report by Eric Lindblad) -TD
+  + add x10term+sl, aixterm+sl, ncr260vp+sl, ncr260vp+vt, wyse+sl -TD
+- Correct offsets of patch ncurses-6.3.dif
+
+-------------------------------------------------------------------
 Mon Nov 22 07:19:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20211120
