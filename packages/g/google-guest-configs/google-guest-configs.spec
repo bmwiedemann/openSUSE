@@ -31,6 +31,9 @@ Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-configs
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  systemd-rpm-macros
+%if 0%{?suse_version} && 0%{?suse_version} <= 1315
+BuildRequires:  pkg-config
+%endif
 BuildRequires:  pkgconfig(udev)
 BuildArch:      noarch
 
