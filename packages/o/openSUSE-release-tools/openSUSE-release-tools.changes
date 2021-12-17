@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 16 14:51:40 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211216.50e8e352:
+  * pkglistgen: Handle loops in project path expansion
+
+-------------------------------------------------------------------
 Thu Dec 16 08:59:11 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211216.8eed6fc7:
