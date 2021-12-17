@@ -1,7 +1,7 @@
 #
 # spec file for package gmavenplus-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gmavenplus-plugin
-Version:        1.5
+Version:        1.13.1
 Release:        0
 Summary:        Integrates Groovy into Maven projects
 License:        Apache-2.0
@@ -30,17 +30,14 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(jline:jline)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.ivy:ivy)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:file-management)
+BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-registry)
-BuildRequires:  mvn(org.apache.maven:maven-project)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
-BuildRequires:  mvn(org.codehaus:codehaus-parent:pom:)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildArch:      noarch
 
@@ -63,10 +60,11 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :maven-dependency-plugin
 %pom_remove_plugin :maven-help-plugin
 %pom_remove_plugin :animal-sniffer-maven-plugin
-%pom_remove_plugin :cobertura-maven-plugin
+%pom_remove_plugin :jacoco-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-deploy-plugin
 %pom_remove_plugin :maven-site-plugin
+%pom_remove_plugin :maven-enforcer-plugin
 
 %pom_xpath_remove "pom:build/pom:extensions"
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:executions"
@@ -80,10 +78,7 @@ dos2unix README.markdown
 %{mvn_file} : %{name}
 
 %build
-%{mvn_build} -f -- -Pnonindy \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6
-%endif
+%{mvn_build} -f -- -Pnonindy -Dsource=7
 
 %install
 %mvn_install
