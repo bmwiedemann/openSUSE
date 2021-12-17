@@ -87,4 +87,12 @@
     <comment>- Update to release 2.1.2</comment>
     <requestid>934733</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>89e5a35c6097d3bbdb0f93ce4008c7ac</srcmd5>
+    <version>2.1.3</version>
+    <time>1639781664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1.3</comment>
+    <requestid>940961</requestid>
+  </revision>
 </revisionlist>
