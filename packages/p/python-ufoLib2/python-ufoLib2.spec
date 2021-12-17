@@ -16,14 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-ufoLib2
-Version:        0.11.1
+Version:        0.12.1
 Release:        0
 Summary:        UFO font processing library
 License:        Apache-2.0
 URL:            https://github.com/fonttools/ufoLib2
-Source:         https://files.pythonhosted.org/packages/source/u/ufoLib2/ufoLib2-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/u/ufoLib2/ufoLib2-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -32,7 +36,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # SECTION install_requires
 BuildRequires:  %{python_module FontTools >= 4.0.0}
-BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module attrs >= 20.1.0}
 # via fonttools[ufo]
 BuildRequires:  %{python_module fs >= 2.2.0}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
@@ -58,10 +62,10 @@ ufoLib2 is a UFO font processing library.
 %setup -q -n ufoLib2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +74,7 @@ ufoLib2 is a UFO font processing library.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ufoLib2
+%{python_sitelib}/ufoLib2-%{version}*-info
 
 %changelog

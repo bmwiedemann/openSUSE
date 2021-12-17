@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 16 11:13:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.12.1
+  * Require Python 3.7+ by @madig in #178
+  * Removed legacy Font(path), use Font.open(path) instead by
+    @anthrotype in #176
+- Release 0.11.4
+  * Fix Font's explicit data and images kwarg converters.
+- Release 0.11.3
+  * Ensure data and image stores are unlazified for direct
+    comparisons (#165).
+- Release 0.11.2
+  * Internal change: Don't compare private Font attributes,
+    cleaning up pytest assert displays (#160).
+  * Internal change: Do not require wheel for all setuptools
+    operations (#158).
+- No setup.py: Build system now uses PEP517
+
+-------------------------------------------------------------------
 Mon Feb 22 15:44:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to v0.11.1
