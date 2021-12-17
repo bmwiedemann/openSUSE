@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 17 12:45:05 UTC 2021 - rw@suse.com
+
+- Update to version 03.00.00.0407  [jsc#SLE-18904, jsc#SLE-19429]
+  (For detailed changes see 'ChangeLog.xz')
+- Incorporate TianoCore EDK II build requirement as patch.
+  (ipmctl-static-EDK2.patch.xz)
+- Drop obsoleted patch(es).
+  (ipmctl-python3.patch)
+
+-------------------------------------------------------------------
 Tue Feb  9 14:57:36 UTC 2021 - rw@suse.com
 
 - Update to version 02.00.00.3847  [jsc#SLE-12711]

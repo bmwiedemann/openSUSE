@@ -16,12 +16,12 @@
 #
 
 
-%define abi     4
+%define abi     5
 #define vgit    .1547861714.b7a59da
 %define vgit    %{nil}
 
 Name:           ipmctl
-Version:        02.00.00.3847
+Version:        03.00.00.0407
 Release:        0
 Summary:        Utility for managing Intel Optane persistent memory modules
 License:        BSD-3-Clause
@@ -34,7 +34,7 @@ Source:         %{name}-%{version}%{vgit}.tar.gz
 %endif
 Source1:        ChangeLog.xz
 Source2:        %{name}-rpmlintrc
-Patch1:         ipmctl-python3.patch
+Patch1:         ipmctl-static-EDK2.patch.xz
 
 Recommends:     logrotate
 %if %{defined pythons}
@@ -114,13 +114,15 @@ diff -u CMakeLists.txt{.00,} || sleep 4
     -DINSTALL_UNITDIR=%{_unitdir} \
     -DRELEASE=ON \
     -DRPM_BUILD=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 mkdir -p %{buildroot}%{_sbindir}
 rm -f %{buildroot}%{_datadir}/doc/ipmctl/ipmctl_default.conf
 rm -f %{buildroot}%{_datadir}/doc/ipmctl/LICENSE
+rm -f %{buildroot}%{_datadir}/doc/ipmctl/thirdpartynotice.txt
+rm -f %{buildroot}%{_datadir}/doc/ipmctl/edk2_License.txt
 install -m 444 -p "%{SOURCE1}" .
 
 %post -p /sbin/ldconfig
@@ -131,7 +133,9 @@ install -m 444 -p "%{SOURCE1}" .
 %defattr(-,root,root)
 %{!?_licensedir:%global license %%doc}
 %license LICENSE
-%doc README.md CONTRIBUTING.md
+%doc README.md
+%doc opensource
+%doc Documentation/ipmctl/*
 %doc ChangeLog.xz
 %{_bindir}/%{name}
 %{_mandir}/man1/*
