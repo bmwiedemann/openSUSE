@@ -23,4 +23,12 @@
     <comment>Security fix bsc#1193795</comment>
     <requestid>940932</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c294f463fac92d20b532e86ebea5f25e</srcmd5>
+    <version>1.2.8</version>
+    <time>1639781674</time>
+    <user>dimstar_suse</user>
+    <comment>Do not depend on gmavenplus-plugin's test stub generator</comment>
+    <requestid>941211</requestid>
+  </revision>
 </revisionlist>

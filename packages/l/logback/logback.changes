@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 17 12:11:00 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not execute goals generateTestStubs and compileTests of
+  gmavenplus-plugin, since we are not compiling or runnig tests
+  during the rpm build. This also allows us to use a wider range
+  of gmavenplus-plugin versions, since those executions changed
+  names in 1.6.
+
+-------------------------------------------------------------------
 Thu Dec 16 16:21:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.2.8 (bsc#1193795)

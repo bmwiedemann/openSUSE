@@ -112,20 +112,8 @@ rm -r %{name}-*/src/test/java/*
 
 %pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'javadocjar']"
 
-%if %{?pkg_vcmp:%pkg_vcmp gmavenplus-plugin < 1.6}%{!?pkg_vcmp:0}
-%pom_remove_plugin "org.codehaus.gmavenplus:gmavenplus-plugin" logback-classic
-%pom_add_plugin "org.codehaus.gmavenplus:gmavenplus-plugin:1.5" logback-classic "
-        <executions>
-          <execution>
-            <goals>
-              <goal>generateStubs</goal>
-              <goal>compile</goal>
-              <goal>testGenerateStubs</goal>
-              <goal>testCompile</goal>
-            </goals>
-          </execution>
-        </executions>"
-%endif
+%pom_xpath_remove "pom:executions/pom:execution/pom:goals/pom:goal[text() = 'generateTestStubs']" logback-classic
+%pom_xpath_remove "pom:executions/pom:execution/pom:goals/pom:goal[text() = 'compileTests']" logback-classic
 
 # disable for now
 %pom_disable_module logback-site
