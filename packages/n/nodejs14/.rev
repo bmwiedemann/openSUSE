@@ -107,4 +107,17 @@
      bsc#1190053, CVE-2021-39135)</comment>
     <requestid>930657</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a369449c3695ef4c6935a3da5f133d1</srcmd5>
+    <version>14.18.2</version>
+    <time>1639781663</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 14.18.2:
+  * lib: fix regular expression to detect `/` and `\`
+  * worker: avoid potential deadlock on NearHeapLimit
+- sle12_python3_compat.patch: refreshed
+
+- Fix CXXFLAGS in Tumbleweed - boo#1192824</comment>
+    <requestid>940960</requestid>
+  </revision>
 </revisionlist>

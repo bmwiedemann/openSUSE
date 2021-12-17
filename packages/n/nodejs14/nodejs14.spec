@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs14
-Version:        14.18.1
+Version:        14.18.2
 Release:        0
 
 # Double DWZ memory limits
@@ -110,7 +110,7 @@ Release:        0
 %bcond_without intree_nghttp2
 %endif
 
-%ifarch aarch64 ppc ppc64 ppc64le s390 s390x
+%ifnarch x86_64 %{ix86}
 %bcond_with    gdb
 %else
 %bcond_without gdb
@@ -244,6 +244,12 @@ BuildRequires:  user(nobody)
 
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
+# require patched openssl library on SLES for nodejs16
+%if %node_version_number == 16 && 0%{?suse_version} <= 1500 && 0%{?suse_version}
+BuildRequires:  openssl-has-RSA_get0_pss_params
+Requires:       openssl-has-RSA_get0_pss_params
+%endif
+
 %if 0%{?suse_version} >= 1500 
 BuildRequires:  libopenssl1_1-hmac
 BuildRequires:  openssl >= %{openssl_req_ver}
@@ -262,7 +268,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.17.2
+Provides:       bundled(libcares2) = 1.18.1
 %endif
 
 %if ! 0%{with intree_icu}
@@ -871,7 +877,7 @@ export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags} -fno-st
 # -Wno-class-memaccess is not available in gcc < 8 (= system compiler on Leap until at least 15.3 is gcc7)
 export CXXFLAGS="%{?build_cxxflags:%build_cxxflags}%{?!build_cxxflags:%optflags} -Wno-error=return-type -fno-strict-aliasing"
 %if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
-export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
+export CXXFLAGS="\${CXXFLAGS} -Wno-class-memaccess"
 %endif
 export LDFLAGS="%{?build_ldflags}"
 
