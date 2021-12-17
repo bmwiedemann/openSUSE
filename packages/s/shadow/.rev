@@ -676,4 +676,12 @@
   * Update pam sed expression to find HMAC_CRYPTO_ALGO.</comment>
     <requestid>932263</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>dc847fffcb6ef9eec3d9ec946b4e07b3</srcmd5>
+    <version>4.9</version>
+    <time>1639781660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935176</requestid>
+  </revision>
 </revisionlist>

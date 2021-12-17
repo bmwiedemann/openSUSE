@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 30 17:12:40 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Really enable USERGROUPS_ENAB [bsc#1189139].
+  Did go lost during merges.
+
+-------------------------------------------------------------------
 Thu Nov 18 13:46:03 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Fix segfaults in newgrp and pwck

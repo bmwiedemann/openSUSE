@@ -137,15 +137,6 @@ Index: etc/login.defs
  
  #
  # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
-@@ -303,7 +297,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
- #
- # This also enables userdel(8) to remove user groups if no members exist.
- #
--USERGROUPS_ENAB yes
-+USERGROUPS_ENAB no
- 
- #
- # If set to a non-zero number, the shadow utilities will make sure that
 @@ -322,7 +316,7 @@ USERGROUPS_ENAB yes
  # This option is overridden with the -M or -m flags on the useradd(8)
  # command-line.
