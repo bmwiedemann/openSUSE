@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 17 00:04:12 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1639585815.cbc8674aa:
+  * admin: Check textarea when checking for key input
+  * Ensure "Save" button is enabled when changing the group description
+  * Avoid submitting form when "Clear limit" button is clicked
+  * templates: Add help text for "pinned" comments
+  * templates: Fix missing italic end marker in comment help text
+  * Simplify pinned comments readout with map
+  * Dependency cron 2021-12-15
+  * branding: Fix unintended source comment showing up in HTML
+  * apparmor: Add rules for default archive folder
+  * cli: List supported search criteria for jobs/overview route
+
+-------------------------------------------------------------------
 Tue Dec 14 16:04:12 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1639414134.aa9bed13e:
