@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:06:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop pam_umask-usergroups-login_defs.patch, does more harm
+  than helps. If not explizit specified as module option, we
+  use UMASK from login.defs unmodified.
+
+-------------------------------------------------------------------
 Thu Nov 25 10:12:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't define doc/manpages packages in main build

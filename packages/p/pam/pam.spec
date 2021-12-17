@@ -68,7 +68,6 @@ Patch1:         pam-limit-nproc.patch
 Patch2:         pam-hostnames-in-access_conf.patch
 Patch3:         pam-xauth_ownership.patch
 Patch4:         pam-bsc1177858-dont-free-environment-string.patch
-Patch5:         pam_umask-usergroups-login_defs.patch
 Patch10:        pam_xauth_data.3.xml.patch
 Patch11:        0001-Include-pam_xauth_data.3.xml-in-source-archive-400.patch
 Patch12:        0002-Only-include-vendordir-in-manual-page-if-set-401.patch
@@ -182,7 +181,6 @@ cp -a %{SOURCE12} .
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1

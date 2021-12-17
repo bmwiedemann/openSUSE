@@ -1063,4 +1063,14 @@
     <comment></comment>
     <requestid>934494</requestid>
   </revision>
+  <revision rev="120" vrev="5">
+    <srcmd5>a942f9b8dca59e81b89dd6a0b9029450</srcmd5>
+    <version>1.5.2</version>
+    <time>1639781662</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pam_umask-usergroups-login_defs.patch, does more harm
+  than helps. If not explizit specified as module option, we
+  use UMASK from login.defs unmodified. (forwarded request 940243 from kukuk)</comment>
+    <requestid>940244</requestid>
+  </revision>
 </revisionlist>
