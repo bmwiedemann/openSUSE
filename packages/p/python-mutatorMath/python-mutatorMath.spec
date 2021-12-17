@@ -16,8 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-mutatorMath
 Version:        3.0.1
 Release:        0
@@ -64,7 +65,8 @@ cp %{SOURCE99} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=./Lib $python Lib/mutatorMath/test/run.py
+export PYTHONDONTWRITEBYTECODE=1
+%python_expand PYTHONPATH=./Lib $python Lib/mutatorMath/test/run.py -v
 
 %files %{python_files}
 %license LICENSE
