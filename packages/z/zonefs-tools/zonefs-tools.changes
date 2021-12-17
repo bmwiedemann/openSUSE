@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 10 11:33:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.2
+  * Only documentation, add mkfs.zonefs manpage, and build related changes
+- Use SourceURLs and fix URL
+
+-------------------------------------------------------------------
 Tue Mar 23 08:09:48 UTC 2021 - Johannes Thumshirn <jth@kernel.org>
 
 - Update to upstream version 1.5
