@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 17 08:27:05 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211217.5d8f3f90:
+  * Dev: ui_node: Delete node directly using cibadmin if crm_node -R failed
+  * Dev: testcases: adjust origin testcases for OCF 1.1 update
+  * Dev: behave: Change CI image as Tumbleweed
+
+-------------------------------------------------------------------
 Wed Dec 15 15:09:05 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211215.85834218:
