@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.15
-%define patchversion 5.15.7
+%define patchversion 5.15.8
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -35,9 +35,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        5.15.7
+Version:        5.15.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb92986a
+Release:        <RELEASE>.g0530e5c
 %else
 Release:        0
 %endif
@@ -48,7 +48,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-b92986ab568f1f8fa0baf7fb2aaf2c7478bd5615
+Provides:       %name-srchash-0530e5c5395a3084d21ac5dc604220c134990e31
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -202,8 +202,8 @@ echo "Symbol(s): %symbols"
 
 %build
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/src
-pushd $RPM_BUILD_ROOT/usr/src
+mkdir -p %{buildroot}/usr/src
+pushd %{buildroot}/usr/src
 
 # Unpack the vanilla kernel sources
 tar -xf %{S:0}
@@ -241,7 +241,7 @@ cd ..
 %endif
 
 # Hardlink duplicate files automatically (from package fdupes).
-%fdupes $RPM_BUILD_ROOT
+%fdupes %{buildroot}
 popd
 
 %if ! %vanilla_only
@@ -252,18 +252,18 @@ cp %_sourcedir/README.SUSE %_sourcedir/config-options.changes.txt %buildroot/$DO
 ln -s $DOC/README.SUSE %buildroot/%src_install_dir/
 
 %if "%variant" == ""
-install -m 755 -d $RPM_BUILD_ROOT%{_rpmmacrodir}
-install -m 644 %_sourcedir/macros.kernel-source $RPM_BUILD_ROOT%{_rpmmacrodir}
-echo "%%kernel_module_directory %{kernel_module_directory}" >> $RPM_BUILD_ROOT%{_rpmmacrodir}/macros.kernel-source
+install -m 755 -d %{buildroot}%{_rpmmacrodir}
+install -m 644 %_sourcedir/macros.kernel-source %{buildroot}%{_rpmmacrodir}
+echo "%%kernel_module_directory %{kernel_module_directory}" >> %{buildroot}%{_rpmmacrodir}/macros.kernel-source
 
-install -m 755 -d $RPM_BUILD_ROOT/usr/lib/rpm
+install -m 755 -d %{buildroot}/usr/lib/rpm
 install -m 644 %_sourcedir/kernel-{module,cert}-subpackage \
-    $RPM_BUILD_ROOT/usr/lib/rpm/
-install -m 755 -d $RPM_BUILD_ROOT/usr/lib/rpm/kernel
-install -m 755 %_sourcedir/{splitflist,mergedep,moddep,modflist,kernel-subpackage-build} $RPM_BUILD_ROOT/usr/lib/rpm/kernel
-install -m 644 %_sourcedir/kernel-subpackage-spec $RPM_BUILD_ROOT/usr/lib/rpm/kernel
-install -m 644 %_sourcedir/kernel-spec-macros $RPM_BUILD_ROOT/usr/lib/rpm/kernel
-install -m 644 -T %_sourcedir/kernel-default-base.spec.txt $RPM_BUILD_ROOT/usr/lib/rpm/kernel/kernel-default-base.spec
+    %{buildroot}/usr/lib/rpm/
+install -m 755 -d %{buildroot}/usr/lib/rpm/kernel
+install -m 755 %_sourcedir/{splitflist,mergedep,moddep,modflist,kernel-subpackage-build} %{buildroot}/usr/lib/rpm/kernel
+install -m 644 %_sourcedir/kernel-subpackage-spec %{buildroot}/usr/lib/rpm/kernel
+install -m 644 %_sourcedir/kernel-spec-macros %{buildroot}/usr/lib/rpm/kernel
+install -m 644 -T %_sourcedir/kernel-default-base.spec.txt %{buildroot}/usr/lib/rpm/kernel/kernel-default-base.spec
 %endif
 
 pushd "%buildroot"

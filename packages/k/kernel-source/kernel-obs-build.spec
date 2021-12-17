@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.15.7
+%define patchversion 5.15.8
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-b92986ab568f1f8fa0baf7fb2aaf2c7478bd5615
+BuildRequires:  kernel%kernel_flavor-srchash-0530e5c5395a3084d21ac5dc604220c134990e31
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,11 +64,14 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.15.7
+Version:        5.15.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb92986a
+Release:        <RELEASE>.g0530e5c
 %else
 Release:        0
+%endif
+%if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
+BuildRequires:  zstd
 %endif
 
 %description
@@ -151,6 +154,9 @@ ROOT=""
 dracut --reproducible --host-only --no-hostonly-cmdline \
 	--no-early-microcode --nofscks --strip --hardlink \
 	--drivers="$KERNEL_MODULES" --force /tmp/initrd.kvm \
+%if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
+	--compress "zstd -19 -T0" \
+%endif
 	`echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p'`
 %endif
 
@@ -158,18 +164,33 @@ dracut --reproducible --host-only --no-hostonly-cmdline \
 rm -rf /usr/lib/dracut/modules.d/80obs
 
 %install
-install -d -m 0755 $RPM_BUILD_ROOT
-cp -v /boot/%{kernel_name}-*%{kernel_flavor} $RPM_BUILD_ROOT/.build.kernel.kvm
-cp -v /tmp/initrd.kvm $RPM_BUILD_ROOT/.build.initrd.kvm
+install -d -m 0755 %{buildroot}
+cp -v /boot/%{kernel_name}-*%{kernel_flavor} %{buildroot}/.build.kernel.kvm
+cp -v /tmp/initrd.kvm %{buildroot}/.build.initrd.kvm
+
+# inform worker kernel parameters to invoke
+CMDLINE="quiet panic=1 elevator=noop nmi_watchdog=0 rw rd.driver.pre=binfmt_misc"
+%if 0%{?suse_version} && 0%{?suse_version} < 1315
+# kvmclock has always been disabled for old kernels, keep it for historic compatibility
+CMDLINE+=" no-kvmclock"
+%endif
+echo "$CMDLINE" > %{buildroot}/.build.cmdline.kvm
+
+# inform worker about availability of virtio-serial
+touch %{buildroot}/.build.console.kvm
+if grep -qx CONFIG_VIRTIO_CONSOLE=y /boot/config-*%{kernel_flavor} ; then
+    echo "virtio" > %{buildroot}/.build.console.kvm
+fi
 
 #inform worker about arch
 #see obs-build commit e47399d738e51
-uname -m > $RPM_BUILD_ROOT/.build.hostarch.kvm
+uname -m > %{buildroot}/.build.hostarch.kvm
 
 %files
-%defattr(-,root,root)
-/.build.kernel.*
-/.build.initrd.*
+/.build.cmdline.*
+/.build.console.*
 /.build.hostarch.*
+/.build.initrd.*
+/.build.kernel.*
 
 %changelog

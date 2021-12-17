@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.15
-%define patchversion 5.15.7
+%define patchversion 5.15.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        5.15.7
+Version:        5.15.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb92986a
+Release:        <RELEASE>.g0530e5c
 %else
 Release:        0
 %endif
@@ -64,7 +64,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-b92986ab568f1f8fa0baf7fb2aaf2c7478bd5615
+Provides:       %name-srchash-0530e5c5395a3084d21ac5dc604220c134990e31
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -249,14 +249,14 @@ make %{?make_arg} O=$PWD/pdf PYTHON=python3 pdfdocs
 %install
 cd linux-%srcversion
 %if %build_html
-install -d $RPM_BUILD_ROOT%{_datadir}/doc/kernel/html/rst
-cp -a html/Documentation/output/* $RPM_BUILD_ROOT%{_datadir}/doc/kernel/html/rst || true
+install -d %{buildroot}%{_datadir}/doc/kernel/html/rst
+cp -a html/Documentation/output/* %{buildroot}%{_datadir}/doc/kernel/html/rst || true
 %endif
 
 %if %build_pdf
-install -d $RPM_BUILD_ROOT%{_datadir}/doc/kernel/pdf
+install -d %{buildroot}%{_datadir}/doc/kernel/pdf
 for i in pdf/Documentation/output/latex/*.pdf; do
-    cp -a $i $RPM_BUILD_ROOT%{_datadir}/doc/kernel/pdf
+    cp -a $i %{buildroot}%{_datadir}/doc/kernel/pdf
 done
 %endif
 
