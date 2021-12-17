@@ -2302,6 +2302,8 @@ unsorted:
   - coredns-for-k8s1.21-extras 
   - coredns-for-k8s1.22 
   - coredns-for-k8s1.22-extras 
+  - coredns-for-k8s1.23 
+  - coredns-for-k8s1.23-extras 
   - corepack16 
   - coreutils-single 
   - coreutils-testsuite 
@@ -3385,6 +3387,7 @@ unsorted:
   - etcd-for-k8s1.18: [x86_64] 
   - etcd-for-k8s1.19: [x86_64] 
   - etcd-for-k8s1.22: [x86_64] 
+  - etcd-for-k8s1.23: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
@@ -5618,6 +5621,7 @@ unsorted:
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
   - glade-catalog-vte 
+  - glade-docs 
   - glade-lang 
   - glade-sharp2 
   - glances-common 
@@ -8301,13 +8305,22 @@ unsorted:
   - kubernetes1.21-client-common: [x86_64] 
   - kubernetes1.21-controller-manager: [x86_64] 
   - kubernetes1.21-kubeadm: [x86_64] 
+  - kubernetes1.21-kubelet: [x86_64] 
   - kubernetes1.21-kubelet-common: [x86_64] 
   - kubernetes1.21-proxy: [x86_64] 
   - kubernetes1.21-scheduler: [x86_64] 
   - kubernetes1.22-apiserver: [x86_64] 
+  - kubernetes1.22-client: [x86_64] 
+  - kubernetes1.22-client-common: [x86_64] 
   - kubernetes1.22-controller-manager: [x86_64] 
+  - kubernetes1.22-kubeadm: [x86_64] 
+  - kubernetes1.22-kubelet-common: [x86_64] 
   - kubernetes1.22-proxy: [x86_64] 
   - kubernetes1.22-scheduler: [x86_64] 
+  - kubernetes1.23-apiserver: [x86_64] 
+  - kubernetes1.23-controller-manager: [x86_64] 
+  - kubernetes1.23-proxy: [x86_64] 
+  - kubernetes1.23-scheduler: [x86_64] 
   - kubetap 
   - kubevirt-container-disk: [x86_64] 
   - kubevirt-manifests: [x86_64] 
@@ -31678,6 +31691,7 @@ unsorted:
   - runsc: [x86_64] 
   - runsc-containerd: [x86_64] 
   - ruqola 
+  - ruqola-lang 
   - rust 
   - rust-cbindgen 
   - rust-packaging 
