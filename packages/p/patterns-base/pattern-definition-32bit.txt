@@ -24,7 +24,7 @@ The 32bit pattern complementing apparmor.
 #-------------------------------------------------------------------
 #
 %package base-32bit
-Summary:        Minimal Base System
+Summary:        Base System
 Recommends:     aaa_base-32bit
 Recommends:     aaa_base-malloccheck-32bit
 Recommends:     bash-32bit
@@ -41,6 +41,9 @@ Recommends:     util-linux-32bit
 Recommends:     zypper-32bit
 Recommends:     SUSEConnect-32bit
 Recommends:     rollback-helper-32bit
+Recommends:     e2fsprogs-32bit
+Recommends:     btrfsprogs-32bit
+Recommends:     xfsprogs-32bit
 Recommends:     purge-kernels-service-32bit
 Recommends:     busybox-static-32bit
 Recommends:     elfutils-32bit
@@ -103,7 +106,6 @@ Recommends:     fuse-32bit
 Recommends:     gawk-32bit
 Recommends:     gettext-runtime-32bit
 Recommends:     glibc-locale-32bit
-Recommends:     glibc-locale-base-32bit
 Recommends:     gpart-32bit
 Recommends:     gpg2-32bit
 Recommends:     gpm-32bit
@@ -152,7 +154,7 @@ Recommends:     sed-32bit
 Recommends:     sg3_utils-32bit
 Recommends:     smartmontools-32bit
 Recommends:     sudo-32bit
-Recommends:     system-tuning-common-SUSE-32bit
+Recommends:     udev-extra-rules-32bit
 Recommends:     systemd-sysvinit-32bit
 Recommends:     time-32bit
 Recommends:     timezone-32bit
@@ -255,6 +257,7 @@ The 32bit pattern complementing sw_management.
 #
 %package x11-32bit
 Summary:        X Window System
+Recommends:     xf86-input-libinput-32bit
 Recommends:     xorg-x11-fonts-core-32bit
 Recommends:     xorg-x11-server-32bit
 Recommends:     dejavu-fonts-32bit
@@ -272,7 +275,6 @@ Recommends:     xorg-x11-server-extra-32bit
 Recommends:     xterm-32bit
 Recommends:     xtermset-32bit
 Recommends:     yast2-control-center-32bit
-Recommends:     xf86-input-libinput-32bit
 Recommends:     xf86-input-vmmouse-32bit
 Recommends:     xf86-input-wacom-32bit
 Provides:       pattern() = x11%2d32bit

@@ -191,6 +191,8 @@ Suggests:       openssl
 Suggests:       openssl-1_1
 # We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
 Suggests:       libz1
+# We have two providers of psmisc, favour the regular one (not the busybox one)
+Suggests:       psmisc
 
 %description base
 This is the base runtime system.  It contains only a basic multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.

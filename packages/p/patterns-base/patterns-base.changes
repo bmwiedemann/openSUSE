@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 17 15:24:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop low-memory-monitor: It's not enabled by default, not used by
+  any of the default applications and would conflict with other
+  installed OOM handling daemons like earlyoom or oomd
+- Run pre_checkin.sh
+
+-------------------------------------------------------------------
+Fri Dec 17 15:18:17 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- base: favour psmisc over busybox-psmisc or other equivalents 
+
+-------------------------------------------------------------------
+Sat Nov 20 22:18:18 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- enhanced_base: Recommend low-memory-monitor an early boot daemon
+  to monitor memory pressure and react to low memory.
+- Run pre_checkin.sh to sync 32-bit patterns.
+
+-------------------------------------------------------------------
 Fri Nov 19 16:41:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - x11 pattern: Require xf86-input-libinput also on s390x 
