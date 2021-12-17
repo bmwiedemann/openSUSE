@@ -31,7 +31,7 @@ BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.16
-Requires:       git
+Requires:       git-core
 
 %description
 Official CLI client for GitHub written in Go

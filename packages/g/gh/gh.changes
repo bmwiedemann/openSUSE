@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 10 10:33:33 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Fix boo#1192421 - Changed git dependency to only git-core 
+
+-------------------------------------------------------------------
 Thu Sep  2 07:12:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to version 2.0.0
