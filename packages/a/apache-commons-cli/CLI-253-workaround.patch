@@ -6,14 +6,15 @@ CommitDate: Mon Jun 22 15:04:05 2015 +0200
 
     [CLI-253] Prevent "Unrecognized option: --null" when handling long opts in PosixParser
 
-diff --git a/src/main/java/org/apache/commons/cli/Options.java b/src/main/java/org/apache/commons/cli/Options.java
-index 0ee4eea..1c38194 100644
---- a/src/main/java/org/apache/commons/cli/Options.java
-+++ b/src/main/java/org/apache/commons/cli/Options.java
-@@ -224,6 +224,20 @@ public class Options implements Serializable
+Index: commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/Options.java
+===================================================================
+--- commons-cli-1.5.0-src.orig/src/main/java/org/apache/commons/cli/Options.java
++++ commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/Options.java
+@@ -186,6 +186,20 @@ public class Options implements Serializ
+         return this;
      }
  
-     /**
++    /*
 +     * Retrieve the {@link Option} matching the long name specified.
 +     * The leading hyphens in the name are ignored (up to 2).
 +     *
@@ -27,28 +28,26 @@ index 0ee4eea..1c38194 100644
 +        return longOpts.get(opt);
 +    }
 +
-+    /**
-      * Returns the options with a long name starting with the name specified.
-      * 
-      * @param opt the partial name of the option
-diff --git a/src/main/java/org/apache/commons/cli/PosixParser.java b/src/main/java/org/apache/commons/cli/PosixParser.java
-index c13a65e..14d2936 100644
---- a/src/main/java/org/apache/commons/cli/PosixParser.java
-+++ b/src/main/java/org/apache/commons/cli/PosixParser.java
-@@ -131,7 +131,7 @@ public class PosixParser extends Parser
-                 }
-                 else
-                 {
+     /**
+      * Gets the options with a long name starting with the name specified.
+      *
+Index: commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/PosixParser.java
+===================================================================
+--- commons-cli-1.5.0-src.orig/src/main/java/org/apache/commons/cli/PosixParser.java
++++ commons-cli-1.5.0-src/src/main/java/org/apache/commons/cli/PosixParser.java
+@@ -145,7 +145,7 @@ public class PosixParser extends Parser
+                 } else if (matchingOpts.size() > 1) {
+                     throw new AmbiguousOptionException(opt, matchingOpts);
+                 } else {
 -                    currentOption = options.getOption(matchingOpts.get(0));
 +                    currentOption = options.getLongOption(matchingOpts.get(0));
-                     
+ 
                      tokens.add("--" + currentOption.getLongOpt());
-                     if (pos != -1)
-diff --git a/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java b/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
-new file mode 100644
-index 0000000..e37b7bc
+                     if (pos != -1) {
+Index: commons-cli-1.5.0-src/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
+===================================================================
 --- /dev/null
-+++ b/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
++++ commons-cli-1.5.0-src/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
 @@ -0,0 +1,44 @@
 +/*
 + * Licensed to the Apache Software Foundation (ASF) under one or more

@@ -103,4 +103,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Add OSGi manifest</comment>
     <requestid>871432</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>21582d2dd3db306b9252a10b87de2675</srcmd5>
+    <version>1.5.0</version>
+    <time>1639781663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940959</requestid>
+  </revision>
 </revisionlist>

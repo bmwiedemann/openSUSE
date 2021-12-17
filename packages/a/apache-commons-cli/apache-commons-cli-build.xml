@@ -6,7 +6,7 @@
   <!-- Build environment properties                                           -->
   <!-- ====================================================================== -->
 
-  <property name="build.finalName" value="commons-cli-1.4"/>
+  <property name="build.finalName" value="commons-cli-1.5.0"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
@@ -43,10 +43,10 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="6" 
+           target="7" 
            verbose="false" 
            fork="false" 
-           source="6">
+           source="7">
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
@@ -85,10 +85,10 @@
              nonavbar="false" 
              serialwarn="false" 
              charset="ISO-8859-1" 
-             source="6" 
+             source="7" 
              linksource="true" 
              breakiterator="false">
-      <link href="http://java.sun.com/javase/6/docs/api/"/>
+      <link href="http://java.sun.com/javase/7/docs/api/"/>
     </javadoc>
   </target>
 
@@ -110,17 +110,17 @@
         <attribute name="Bundle-Name" value="Apache Commons CLI"/>
         <attribute name="Bundle-SymbolicName" value="org.apache.commons.cli"/>
         <attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
-        <attribute name="Bundle-Version" value="1.4.0"/>
-        <attribute name="Export-Package" value="org.apache.commons.cli;version=&quot;1.4&quot;"/>
+        <attribute name="Bundle-Version" value="1.5.0"/>
+        <attribute name="Export-Package" value="org.apache.commons.cli;version=&quot;1.5.0&quot;"/>
         <attribute name="Implementation-Title" value="Apache Commons CLI"/>
         <attribute name="Implementation-Vendor-Id" value="org.apache"/>
         <attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
-        <attribute name="Implementation-Version" value="1.4"/>
+        <attribute name="Implementation-Version" value="1.5.0"/>
         <attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
-        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.6))&quot;"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.7))&quot;"/>
         <attribute name="Specification-Title" value="Apache Commons CLI"/>
         <attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
-        <attribute name="Specification-Version" value="1.4"/>
+        <attribute name="Specification-Version" value="1.5.0"/>
       </manifest>
     </jar>
   </target>

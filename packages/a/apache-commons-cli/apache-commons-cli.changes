@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Dec 16 16:26:28 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Rebased patch CLI-253-workaround.patch to new version.
+- Updated build XML file to new version.
+- Harmonized the use of X.Y.X strings everywhere.
+- Updated new source locations from Apache.
+- Added 'apache-commons-cli-rpmlintrc' to silence 'package-with-huge-docs' warning (Javadoc generates many files...)
+
+- Update to 1.5:
+  * New features:
+    - (CLI-217) Accommodate toggling partial matching in DefaultParser. Thanks to Rubin Simons.
+    - (CLI-274) Option parser type EXISTING_FILE_VALUE not check file existing Thanks to Béla Schaum.
+    - (CLI-271) CommandLine.getXXX and CommandLine.hasXXX should accept an Option as a parameter Thanks to Christoph Läubrich.
+    - (CLI-276) Adjust access-modifier of checkRequiredOptions() to protected. Thanks to Jason Dillon.
+    - (CLI-282) TypeHandler should throw ParseException for an unsupported class. Thanks to Alex Nordlund.
+    - Added setter for Builder.option #33. Thanks to Waldemar Sojka, Gary Gregory.
+    - Add Option unit tests #76. Thanks to Waldemar Sojka, Gary Gregory.
+  *  Fixed bugs:
+    - Fix NPE in DefaultParser.isLongOption(String). Thanks to Gary Gregory.
+    - (CLI-279) @param or @return lines should end with a period in CommandLine.java Thanks to Krishna Mohan Rao Kandunoori.
+    - Replace deprecated FindBugs with SpotBugs. Thanks to Gary Gregory.
+    - Replace CLIRR with JApiCmp. Thanks to Gary Gregory.
+    - Option Javadocs grammar nits #55. Thanks to Elliotte Rusty Harold.
+    - Minor Improvements #57, #61. Thanks to Arturo Bernal, Gary Gregory.
+    - (CLI-254) Input "test" gets parsed as test, quotes die #58. Thanks to stoty.
+    - (CLI-287) Allow whitespace-only header and footer #26. Thanks to MrQubo, Gary Gregory.
+  * Updates:
+    - (CLI-294) Update Java from version 5 to 7.
+    - Docs: Replace OptionBuilder in usage page #30. Thanks to Mincong Huang.
+    - Remove deprecated sudo setting. #36. Thanks to dengliming.
+    - Bump junit:junit from 4.12 to 4.13.2, #53, #60. Thanks to Gary Gregory, Dependabot.
+    - Bump commons-parent from 48 to 52. Thanks to Dependabot.
+    - Bump maven-pmd-plugin from 3.12.0 to 3.15.0, #44, #54, #67. Thanks to Dependabot.
+    - Bump actions/checkout from v2.3.1 to v2.3.5 #46, #72. Thanks to Dependabot.
+    - Bump actions/setup-java from v1.4.2 to v2 #50. Thanks to Dependabot, Gary Gregory.
+    - Bump maven-antrun-plugin from 1.7 to 3.0.0 #43. Thanks to Dependabot.
+    - Bump maven-checkstyle-plugin from 2.15 to 3.1.2 #41. Thanks to Gary Gregory.
+    - Bump checkstyle to 9.0.1 #68. Thanks to Gary Gregory.
+    - Bump actions/cache from 2 to 2.1.6 #64, #65. Thanks to Dependabot.
+    - Bump commons.animal-sniffer.version 1.19 -> 1.20. Thanks to Gary Gregory.
+    - Bump maven-bundle-plugin 5.1.1 -> 5.1.2. Thanks to Gary Gregory.
+    - Bump biz.aQute.bndlib.version 5.1.2 -> 6.0.0. Thanks to Gary Gregory.
+    - Bump spotbugs from 4.4.1 to 4.4.2 #70. Thanks to Dependabot.
+    - Bump spotbugs-maven-plugin from 4.4.1 to 4.4.2.2 #71. Thanks to Dependabot.- 
+    
+-------------------------------------------------------------------
 Fri Feb 12 12:54:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Add OSGi manifest to the build files.
