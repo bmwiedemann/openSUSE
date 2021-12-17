@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 16 10:22:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * Makes glyph.image object “sticky”, just like lib objects (#352)
+  * Adds a .tempLib to font, layer, and glyph that is available for
+    the life of the object and is never saved with the ufo. (#367)
+- Skip python36: FontTools now dropped it.
+
+-------------------------------------------------------------------
 Tue Mar 23 19:23:58 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - reinstate python36 build (python36-FontTools is available)

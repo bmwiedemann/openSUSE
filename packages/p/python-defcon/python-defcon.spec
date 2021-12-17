@@ -16,32 +16,40 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-defcon
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
-Summary:        A set of flexible objects for representing UFO data
+Summary:        A set of UFO based objects for use in font editing applications
 License:        MIT
-URL:            http://code.typesupply.com
+URL:            https://github.com/robotools/defcon
 Source:         https://files.pythonhosted.org/packages/source/d/defcon/defcon-%{version}.zip
-BuildRequires:  %{python_module fs}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-FontTools >= 4.10.2
+# SECTION fonttools[ufo,unicode]
+Requires:       python-fs >= 2.2
+%if 0%{?python_version_nodots} < 39
+Requires:       python-unicodedata2 >= 13.0.0
+%endif
+# /SECTION
 Suggests:       python-fontPens >= 0.1.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module FontTools >= 4.10.2}
+BuildRequires:  %{python_module fs >= 2.2}
 BuildRequires:  %{python_module pytest >= 3.0.3}
+BuildRequires:  %{python_module unicodedata2 >= 13.0.0 if %python-base < 3.9}
 # /SECTION
 %python_subpackages
 
 %description
-A set of flexible objects for representing UFO data.
+A set of UFO based objects optimized for use in font editing applications.
 
 %prep
 %setup -q -n defcon-%{version}
@@ -60,6 +68,7 @@ sed -i -e '1{\,^#!%{_bindir}/env python,d}' Lib/defcon/test/tools/test_unicodeTo
 %files %{python_files}
 %doc README.rst
 %license License.txt
-%{python_sitelib}/*
+%{python_sitelib}/defcon
+%{python_sitelib}/defcon-%{version}*-info
 
 %changelog
