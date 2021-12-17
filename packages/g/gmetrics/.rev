@@ -15,4 +15,12 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750535</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6bf3df388d496b3584074bb2ab055e24</srcmd5>
+    <version>1.0</version>
+    <time>1639781666</time>
+    <user>dimstar_suse</user>
+    <comment>Do not depend on gmavenplus-plugin's test stub generator</comment>
+    <requestid>941009</requestid>
+  </revision>
 </revisionlist>
