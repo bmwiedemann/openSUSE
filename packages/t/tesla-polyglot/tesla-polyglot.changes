@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 17 08:19:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not generate test stubs by gmavenplus-plugin, since we are not
+  building or running tests during build
+
+-------------------------------------------------------------------
 Mon Jan 18 07:30:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Require jdk >= 1.8 for building

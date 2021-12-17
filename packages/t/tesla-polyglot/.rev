@@ -39,4 +39,12 @@
     <comment>Force building with source/target level 8</comment>
     <requestid>864064</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2da66d33def978f8c940205ed22fa6e3</srcmd5>
+    <version>0.4.5</version>
+    <time>1639781668</time>
+    <user>dimstar_suse</user>
+    <comment>Do not depend on gmavenplus-plugin's test stub generator</comment>
+    <requestid>941020</requestid>
+  </revision>
 </revisionlist>

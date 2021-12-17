@@ -1,5 +1,5 @@
 #
-# spec file for package tesla-polyglot
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -174,9 +174,6 @@ rm -Rf polyglot-ruby/src/{test,it}
   <execution>
    <goals>
     <goal>generateStubs</goal>
-    <goal>testGenerateStubs</goal>
-    <!--goal>compile</goal>
-    <goal>testCompile</goal-->
    </goals>
   </execution>
  </executions>"
@@ -193,12 +190,12 @@ done
 
 # atom common maven-plugin translate-plugin
 # diamond operator
-for m in yaml groovy
+for m in common yaml groovy
 do
 %pom_add_plugin org.apache.maven.plugins:maven-compiler-plugin:3.0 polyglot-${m} '
 <configuration>
- <source>1.7</source>
- <target>1.7</target>
+ <source>1.8</source>
+ <target>1.8</target>
  <encoding>UTF-8</encoding>
 </configuration>'
 done
@@ -231,11 +228,7 @@ rm polyglot-yaml/src/test/java/org/sonatype/maven/polyglot/yaml/SnakeYamlModelRe
 	-s \
 %endif
 	-f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
-%endif
 	-Dproject.build.sourceEncoding=UTF-8 \
-	-Dmaven.compiler.source=8 -Dmaven.compiler.target=8 \
 	-Dsource=8
 
 %install
@@ -247,6 +240,7 @@ rm polyglot-yaml/src/test/java/org/sonatype/maven/polyglot/yaml/SnakeYamlModelRe
 %license LICENSE.txt license-header.txt
 
 %else
+
 %files -f .mfiles-polyglot
 %doc poms README.md
 %license LICENSE.txt license-header.txt
