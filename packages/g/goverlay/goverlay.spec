@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        0.7
+Version:        0.7.1
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -55,7 +55,7 @@ FFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -
 export FFLAGS
 FCFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g'
 export FCFLAGS
-LDFLAGS='-flto=auto'
+LDFLAGS=-flto=auto
 export LDFLAGS
 
 %make_build
@@ -77,7 +77,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.benjamimgoi
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_libdir}/goverlay-bin
+%{_libdir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
