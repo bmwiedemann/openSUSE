@@ -15,4 +15,12 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750539</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bfb747b9adba7d8798a2d010c94f2dae</srcmd5>
+    <version>0.7.2</version>
+    <time>1639781665</time>
+    <user>dimstar_suse</user>
+    <comment>Do not depend on gmavenplus-plugin</comment>
+    <requestid>941007</requestid>
+  </revision>
 </revisionlist>

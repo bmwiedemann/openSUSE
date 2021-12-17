@@ -1,7 +1,7 @@
 #
 # spec file for package http-builder
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  mvn(net.sourceforge.nekohtml:nekohtml)
 BuildRequires:  mvn(oauth.signpost:signpost-commonshttp4)
 BuildRequires:  mvn(oauth.signpost:signpost-core)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
-BuildRequires:  mvn(org.codehaus.gmavenplus:gmavenplus-plugin)
 BuildRequires:  mvn(org.codehaus.groovy:groovy)
 BuildRequires:  mvn(org.codehaus.groovy:groovy-json)
 BuildRequires:  mvn(org.codehaus.groovy:groovy-xml)
@@ -57,14 +56,6 @@ find . -name "*.jar" -print -delete
 
 %pom_remove_plugin :cobertura-maven-plugin
 %pom_remove_plugin :gmaven-plugin
-%pom_add_plugin org.codehaus.gmavenplus:gmavenplus-plugin:1.5 . "
- <executions>
-  <execution>
-   <goals>
-    <goal>testGenerateStubs</goal>
-   </goals>
-  </execution>
- </executions>"
 
 # Useless tasks
 %pom_remove_plugin :maven-assembly-plugin
