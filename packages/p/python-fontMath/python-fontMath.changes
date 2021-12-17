@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 16 10:57:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to v0.8.1
+  * Fix angle multiplication (#189).
+  * Adds strict to MathGlyph (default is False). Strict means that
+    line segments are not converted to curve segments with (0,0)
+    control points and offcurves stacked on on-curves are not
+    filtered out when extracting. (#235).
+  * Python 3 only. Breaking Py3 over Py2 change is the use of
+    setuptools_scm.
+- drop python flavors <= 3.6: FontTools dropped support
+
+-------------------------------------------------------------------
 Tue Mar 23 19:31:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - reinstate python36 build (python36-FontTools is available)

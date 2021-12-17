@@ -16,14 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-fontMath
-Version:        0.6.0
+Version:        0.8.1
 Release:        0
 Summary:        A set of objects for performing math operations on font data
 License:        MIT
 URL:            https://github.com/robotools/fontMath
 Source:         https://files.pythonhosted.org/packages/source/f/fontMath/fontMath-%{version}.zip
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +58,7 @@ A set of objects for performing math operations on font data.
 %files %{python_files}
 %doc README.md
 %license License.txt
-%{python_sitelib}/*
+%{python_sitelib}/fontMath
+%{python_sitelib}/fontMath-%{version}*-info
 
 %changelog
