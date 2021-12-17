@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytaglib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,15 @@ URL:            https://github.com/supermihi/pytaglib
 Source:         https://github.com/supermihi/pytaglib/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtag-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
