@@ -1,7 +1,7 @@
 #
 # spec file for package codenarc
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,8 +88,6 @@ cp -p src/main/groovy/org/codenarc/analyzer/SuppressionAnalyzer.java \
   <execution>
    <goals>
     <goal>generateStubs</goal>
-    <!--goal>testCompile</goal-->
-    <goal>testGenerateStubs</goal>
    </goals>
   </execution>
  </executions>"
