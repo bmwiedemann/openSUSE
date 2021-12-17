@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Dec 16 18:39:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 21.12
+  Highlights
+  * Added noise stats, autolevel, and squelch
+  * Added automatic file format detection from filename
+  * Added support for SmartFire Proflame 2 remote control
+  * Added support for Lacrosse TX34 rain gauge
+  * Added support for Telldus-FT0385R
+  * Added support for GE Choice Alert wireless alarm sensors
+  * Added support for Porsche Boxter/Cayman TPMS
+  * Added support for Funkbus/Instafunk
+  * Added support for Truck TPMS
+  * Added support for LaCrosse LTV-W1 wind sensor
+  * Added support for Auriol 4-LD5661 temperature/rain sensor
+  * Added support for Linear Megacode Remote
+  * Added support for EnOcean ERP1 decoder
+  * Added support for Acurite-01185M
+  * Added support for ATech-WS308 temperature sensor
+  * Added support for RainPoint sensor
+  * Added support for Inkbird ITH-20R
+  * Added support for Clipsal CMR112 cent-a-meter power meter
+  * Added support for Govee Water Leak Detector H5054 and Govee
+    Contact Sensor B5023
+  * Added support for Markisol curtain remote
+  * Added support for Oregon Scientific BTHR918
+  * Added UV index add decimals to Bresser-7in1
+  * Changed InfluxDB output of 'mic' from field to tag
+  * Added biastee, digital_agc, direct_samp, offset_tune option
+    for rtlsdr and rtl_tcp
+  * Added QoS to MQTT options
+  Changed
+  * Changed PCM slicer to measure bit length in more cases
+  * Added CS8 as file input format
+  * Added decoder priority stages
+  * Fixed fprintf to use an unsigned marker when an unsigned value
+    is given
+  * Added RTL_433_REDUCE_STACK_USE to reduce size of bitbuffers
+  * Fixed rainpoint msg buffer must be initialized
+  * Fixed Reduce stack use in slicers
+  * Changed HASS script to logging
+  * Added SwitchDocLabs SM23 note
+  * Added SwitchDocLabs F016TH note
+  * Added SwitchDocLabs FT020T note
+  * Fixed Inovalley-kw9015b rain bits
+  * Added battery_ok to Bresser-7in1
+  * Added HASS long term statistics
+  * Added bitbuffer row spill
+  * Updated Govee Leak Sensor with new parity check
+  * Fixed Springfield-Soil/AlectoV1 false positives
+  * Fixed LaCrosse-TH3 checksum
+  * Added cmake found lib versions output
+
+-------------------------------------------------------------------
 Mon May 10 10:32:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 21.05
