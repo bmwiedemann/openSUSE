@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 16 11:06:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Drop python36 for good: FontTools dropped support
+
+-------------------------------------------------------------------
 Tue Mar 23 19:27:28 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - reinstate python36 build (python36-FontTools is available)

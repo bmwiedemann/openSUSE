@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-fontPens
 Version:        0.2.4
 Release:        0
@@ -59,6 +60,7 @@ A collection of classes implementing the pen protocol for manipulating glyphs.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/fontPens
+%{python_sitelib}/fontPens-%{version}*-info
 
 %changelog
