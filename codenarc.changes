@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 17 07:50:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not generate test stubs by gmavenplus-plugin, since we are not
+  building or running tests during build
+
+-------------------------------------------------------------------
 Sun Nov 17 20:00:33 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of codenarc 1.4
