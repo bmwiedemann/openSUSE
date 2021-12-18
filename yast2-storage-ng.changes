@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec 15 18:48:46 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Improve probing issues handling by raising exceptions.
+- Fix aborting from standalone modules when the user decides
+  to not continue (bsc#1193749).
+- 4.4.27
+
+-------------------------------------------------------------------
+Wed Dec 15 16:28:02 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- Partitioner: nest thin logical volumes below their thin pools (related to
+  jsc#SLE-15283)
+- 4.4.26
+
+-------------------------------------------------------------------
+Tue Dec 14 15:12:05 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: fixes for reusing encrypted devices, RAIDs and bcache
+  devices (bsc#1193450).
+- 4.4.25
+
+-------------------------------------------------------------------
+Fri Dec 10 15:29:16 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- document UEFI handling (bsc#937067)
+- 4.4.24
+
+-------------------------------------------------------------------
 Fri Dec 10 10:18:05 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Proposal: add support for mount options (related to fate#318196).
