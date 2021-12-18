@@ -47,4 +47,14 @@
 </comment>
     <requestid>879118</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>33caba2ad3e2f4b8961ee4f1210a9ae3</srcmd5>
+    <version>2.34.0</version>
+    <time>1639855807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.34.0
+  * https://github.com/newren/git-filter-repo/releases/tag/v2.34.0
+</comment>
+    <requestid>941292</requestid>
+  </revision>
 </revisionlist>
