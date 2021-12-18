@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 17 12:41:16 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to v2.8.1
+  Way too many changes to be listed here.
+- use pytest to exclude test_connect_timeout_exceeded_* due to
+  OBS network restrictions
+
+-------------------------------------------------------------------
 Fri Sep 17 07:02:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build for python 3.6: the required dependency uvloop does

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-asyncssh
-Version:        2.5.0
+Version:        2.8.1
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module cryptography >= 2.8}
 BuildRequires:  %{python_module fido2 >= 0.8.1}
 BuildRequires:  %{python_module gssapi >= 1.2.0}
 BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uvloop >= 0.9.1}
 BuildRequires:  openssh
@@ -69,7 +70,7 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -v
+%pytest -k 'not test_connect_timeout_exceeded'
 
 %files %{python_files}
 %license LICENSE COPYRIGHT
