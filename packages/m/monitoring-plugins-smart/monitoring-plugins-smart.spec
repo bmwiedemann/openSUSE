@@ -17,7 +17,7 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.11.0
+Version:        6.12.2
 Release:        0
 Summary:        Check SMART status of a given disk
 License:        SUSE-Public-Domain
@@ -35,7 +35,9 @@ Requires:       sudo
 Requires:       perl(File::Basename)
 Requires:       perl(FindBin)
 Requires:       perl(Getopt::Long)
+%if 0%{?suse_version}
 Recommends:     apparmor-parser
+%endif
 Provides:       nagios-plugins-smart = %{version}-%{release}
 Obsoletes:      nagios-plugins-smart < 1.02
 BuildArch:      noarch
@@ -47,11 +49,11 @@ syntax, and automatically produces perfdata for all applicable metrics.
 
 Note:
 On older distributions you need a line like
-  nagios ALL=NOPASSWD: %{_sbindir}/smartctl
-in %{_sysconfdir}/sudoers to run this script as non privileged user.
+ nagios        ALL=(root) NOPASSWD: /usr/lib/nagios/plugins/check_smart
+in /etc/sudoers to run this script as non privileged user.
 
 Since SLES 12/openSUSE 12.1, there is a file
-  %{_sysconfdir}/sysconfig/sudoers.d/%{name}
+  /etc/sysconfig/sudoers.d/monitoring-plugins-smart
 which holds the same content and should be used automatically.
 
 %prep

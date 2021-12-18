@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 17 16:14:32 UTC 2021 - lars@linux-schulserver.de - 6.12.2
+
+- Update to 6.12.2:
+  + Bugfix when interface parameter was missing in combination 
+    with -g (#79)
+
+-------------------------------------------------------------------
+Mon Dec 13 16:59:51 UTC 2021 - lars@linux-schulserver.de - 6.12.1
+
+- Update to 6.12.1:
+  + Fix regression bug in 6.12.0 (#77)
+  + Security fix in trailing path for pseudo-devices (Additional 
+    anchor for security)
+  + Update help
+  + Add Erase_Fail_Count_Total to default raw list
+  + Fix NVMe perfdata (issue 74)
+- encapsulate the recommends to allow building on RHEL based 
+  distributions
+
+-------------------------------------------------------------------
 Fri Nov 19 20:32:24 UTC 2021 - lars@linux-schulserver.de - 6.11.0
 
 - reduce the sudoers rights for nagios user from using smartctl to 

@@ -92,4 +92,24 @@
 - add rpmlintrc</comment>
     <requestid>932589</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c5858e604a9973963770d987a03d9319</srcmd5>
+    <version>6.12.2</version>
+    <time>1639855803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.12.2:
+  + Bugfix when interface parameter was missing in combination 
+    with -g (#79)
+
+- Update to 6.12.1:
+  + Fix regression bug in 6.12.0 (#77)
+  + Security fix in trailing path for pseudo-devices (Additional 
+    anchor for security)
+  + Update help
+  + Add Erase_Fail_Count_Total to default raw list
+  + Fix NVMe perfdata (issue 74)
+- encapsulate the recommends to allow building on RHEL based 
+  distributions</comment>
+    <requestid>941270</requestid>
+  </revision>
 </revisionlist>
