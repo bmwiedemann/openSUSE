@@ -117,4 +117,15 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
     <comment></comment>
     <requestid>930408</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1b60875ad0adbd6769d2ecdf45ad8608</srcmd5>
+    <version>0.5.1+0</version>
+    <time>1639855788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1+0:
+  * Fix the dispatcher calling `avx2` code when the sub-architecture does not
+    support it.
+</comment>
+    <requestid>940924</requestid>
+  </revision>
 </revisionlist>
