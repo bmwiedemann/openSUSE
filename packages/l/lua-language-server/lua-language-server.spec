@@ -20,7 +20,7 @@
 %define pkg_name lua-language-server
 
 Name:           lua-language-server
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
