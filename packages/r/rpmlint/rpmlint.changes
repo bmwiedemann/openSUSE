@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 16 12:54:38 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git20211216.95ed862:
+  * Do not expect precise order of suggestions in spellchecking.
+
+-------------------------------------------------------------------
+Thu Dec 16 10:49:55 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git20211215.5196826:
+  * Make missing-call-to-setgroups-before-setuid only warning.
+
+-------------------------------------------------------------------
 Mon Dec 13 13:53:54 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
