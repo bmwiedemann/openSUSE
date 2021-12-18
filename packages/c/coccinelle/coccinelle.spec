@@ -17,13 +17,14 @@
 
 
 Name:           coccinelle
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Semantic patch utility
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            http://coccinelle.lip6.fr/
 Source0:        %name-%version.tar.xz
+Source1:        %name.rpmlintrc
 Patch1:         kill-env.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -78,9 +79,6 @@ export NO_DEBUGINFO_STRIP_DEBUG=true
 : >debugsourcefiles.list
 
 %make_install
-# Remove coccilib, don't have the deps
-rm -Rf "$b/%_libdir/%name"/{commons,globals,ocaml,parsing_c} \
-	"$b/%_mandir/man3"/Coccilib*
 
 # Until https://github.com/coccinelle/coccinelle/issues/259 is fixed
 for i in spatch spgen; do

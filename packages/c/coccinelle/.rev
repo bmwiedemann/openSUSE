@@ -276,4 +276,12 @@
   required. (forwarded request 921379 from elvigia)</comment>
     <requestid>921384</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e722a684a33f5e069f9d9fb997c7bd92</srcmd5>
+    <version>1.1.1</version>
+    <time>1639855803</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>941280</requestid>
+  </revision>
 </revisionlist>

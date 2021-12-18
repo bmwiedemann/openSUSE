@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 10 10:10:10 UTC 2021 - ohering@suse.de
+
+- update to version 1.1.1
+  See included changes.txt for details
+- install ocaml support, add coccinelle.rpmlintrc (bsc#1192695)
+
+-------------------------------------------------------------------
 Fri Sep 24 22:36:26 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Further testing shows that grep, which and findutils are also 
