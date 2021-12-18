@@ -1,0 +1,11 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 0b1cb09..d059fbe 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -36,5 +36,5 @@ version = "0.9.0"
+ features = [ "v3_22" ]
+ 
+ [dependencies.gio]
+-version = ""
++version = "*"
+ features = [ "v2_44" ]
