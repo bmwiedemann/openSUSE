@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.19.2
+Version:        1.19.3
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only

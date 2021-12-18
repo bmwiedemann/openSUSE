@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 17 13:03:20 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.3
+  * Fixed #1351. Reverted code that introduced the memory growth
+  in v1.18.15.
+  * Fixed #1417. Developped circumvention for growth of open file
+  handles using Document.insert_pdf().
+  * Fixed #1418. Developped circumvention for memory growth using
+  Document.insert_pdf().
+  * Fixed #1430. Developped circumvention for mass pixmap
+  generations of document pages.
+  * Fixed #1433. Solves a bbox error for some Type 3 font in
+  PyMuPDF text processing.
+  * Added Pixmap.color_topusage() to determine the share of the
+  most frequently used color. Solves #1397.
+  * Added Pixmap.warp() which makes a new pixmap from a given
+  arbitrary convex quad inside the pixmap.
+  * Added Annot.irt_xref and Annot.set_irt_xref() to inquire or
+  set the /IRT (“In Responde To”) property of an annotation.
+  Implements #1450.
+  * Added Rect.torect() and IRect.torect() which compute a matrix
+  that transforms to a given other rectangle.
+  * Changed Pixmap.color_count() to also return the count of each
+  color.
+  * Changed Page.get_texttrace() to also return correct span and
+  character bboxes if span["dir"] != (1, 0).
+
+-------------------------------------------------------------------
 Mon Nov 22 10:33:01 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Update to v1.19.2
