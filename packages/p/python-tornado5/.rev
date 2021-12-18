@@ -43,4 +43,12 @@ Fixes build failure in previous submission #737142</comment>
     <comment></comment>
     <requestid>910350</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>47a710d0625b085a92e391696ba3d5e2</srcmd5>
+    <version>5.1.1</version>
+    <time>1639855781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940874</requestid>
+  </revision>
 </revisionlist>

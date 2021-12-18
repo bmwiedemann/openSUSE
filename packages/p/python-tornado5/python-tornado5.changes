@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 12:41:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python310 build: Not supported. Use tornado >= 6!
+
+-------------------------------------------------------------------
 Thu Aug  5 12:45:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Dedup and remove exec bits from demos: fix boo#1189066

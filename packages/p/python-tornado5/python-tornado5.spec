@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
+%define         skip_python310 1
 %bcond_without python2
 Name:           python-tornado5
 Version:        5.1.1
