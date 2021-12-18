@@ -1,0 +1,20 @@
+rinstall: 0.1.0
+pkgs:
+  dog:
+    type: rust
+    exe:
+     - dog
+    man:
+     - man/dog.1
+    completions:
+      bash:
+        - completions/dog.bash
+      fish:
+        - completions/dog.fish
+      zsh:
+        - src: completions/dog.zsh
+          dst: completions/_dog
+    licenses:
+      - LICENCE
+    docs:
+      - README.md
