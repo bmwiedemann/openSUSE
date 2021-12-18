@@ -102,4 +102,19 @@
     <comment></comment>
     <requestid>867734</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3a97880e0e60076a3362c47b82843f1</srcmd5>
+    <version>35.1</version>
+    <time>1639855819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 35.1:
+  * Support AF_PACKET socket family, where available.
+  * Support SIGINFO, SIGWINCH and SA_RESTART, where available.
+  * Documentation cleanups
+- avoid setting build USER tag
+- Use %ifluadefault
+- Clean spec file
+</comment>
+    <requestid>941406</requestid>
+  </revision>
 </revisionlist>

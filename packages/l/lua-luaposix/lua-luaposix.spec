@@ -16,26 +16,26 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luaposix
-Version:        35.0
-Release:        0
-Summary:        POSIX library for Lua
-License:        MIT
-Group:          Development/Libraries/Other
-URL:            https://github.com/luaposix/luaposix
-Source0:        https://github.com/luaposix/luaposix/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{flavor}-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  perl
-Requires:       %{flavor}
-%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
+Version:        35.1
+Release:        0
+Summary:        POSIX library for Lua
+License:        MIT
+Group:          Development/Libraries/Other
+URL:            https://github.com/luaposix/luaposix
+Source0:        https://github.com/luaposix/luaposix/archive/v%{version}/%{mod_name}-%{version}.tar.gz
+BuildRequires:  %{flavor}-devel
+BuildRequires:  ncurses-devel
+BuildRequires:  perl
+Requires:       %{flavor}
+%lua_provides
 
 %description
 This is a POSIX library for Lua which provides access to many POSIX features
@@ -50,9 +50,11 @@ BuildArch:      noarch
 This package contains the documentation for %{flavor}-luaposix.
 
 %prep
-%setup -q -n luaposix-%{version}
+%autosetup -n luaposix-%{version}
 
 %build
+# avoid setting USER tag
+export USER=""
 build-aux/luke PREFIX=%{_prefix} all
 
 %install
@@ -66,7 +68,7 @@ build-aux/luke PREFIX=%{buildroot}%{_prefix} INST_LIBDIR=%{buildroot}%{lua_archd
 %{lua_noarchdir}/posix
 
 # Only produce docs during one flavor to avoid duplicate binary.
-%if "%{flavor}" == "lua53"
+%ifluadefault
 %files -n %{mod_name}-doc
 %doc doc/*
 %endif

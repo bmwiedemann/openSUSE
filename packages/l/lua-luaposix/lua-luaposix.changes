@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 18 14:54:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 35.1:
+  * Support AF_PACKET socket family, where available.
+  * Support SIGINFO, SIGWINCH and SA_RESTART, where available.
+  * Documentation cleanups
+- avoid setting build USER tag
+- Use %ifluadefault
+- Clean spec file
+
+-------------------------------------------------------------------
 Wed Jan 27 15:56:08 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro
