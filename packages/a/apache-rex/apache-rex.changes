@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 16 14:41:42 UTC 2021 - David Anes <david.anes@suse.com>
+
+- version update to 20211102
+  * add mod_php-ssl  
+
+-------------------------------------------------------------------
 Tue Jan 12 08:48:46 UTC 2021 - pgajdos@suse.com
 
 - require apache2-utils

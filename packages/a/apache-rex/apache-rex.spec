@@ -16,16 +16,11 @@
 #
 
 
-#
-%if 0%{?suse_version} > 1230
 %define macros_dir            %{_rpmconfigdir}/macros.d
-%else
-%define macros_dir            %{_sysconfdir}/rpm
-%endif
 %define macros_file           macros.apache-rex
 
 Name:           apache-rex
-Version:        20210108
+Version:        20211102
 Release:        0
 Summary:        Script for Apache HTTPD Runnable Examples
 License:        Apache-2.0
@@ -34,6 +29,8 @@ URL:            https://github.com/pgajdos/apache-rex
 Source0:        %{name}.tar.bz2
 Source1:        apache-rex-rpmlintrc
 Source2:        %{macros_file}
+# simple script to generate the tarball from a commit id
+Source1000:     generate_tarball.sh
 Requires:       apache2-devel
 Requires:       apache2-utils
 Requires:       curl

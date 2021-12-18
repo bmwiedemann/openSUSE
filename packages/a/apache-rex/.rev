@@ -241,4 +241,12 @@
   * count php8 in</comment>
     <requestid>862559</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>afc054ffee5ed3ada3b54b02aa6a57e1</srcmd5>
+    <version>20211102</version>
+    <time>1639855790</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20211102 (forwarded request 940925 from david.anes)</comment>
+    <requestid>940936</requestid>
+  </revision>
 </revisionlist>
