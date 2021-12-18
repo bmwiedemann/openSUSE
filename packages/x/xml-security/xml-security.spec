@@ -1,7 +1,7 @@
 #
 # spec file for package xml-security
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %global oname xmlsec
-%global _version 2_1_3
+%global _version 2_1_7
 Name:           xml-security
-Version:        2.1.3
+Version:        2.1.7
 Release:        0
 Summary:        Apache XML Security for Java
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://santuario.apache.org/
+URL:            https://santuario.apache.org/
 Source0:        https://archive.apache.org/dist/santuario/java-library/%{_version}/%{oname}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -58,10 +58,8 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :maven-pmd-plugin
 %pom_remove_plugin :maven-source-plugin
 
-%pom_remove_dep :plexus-compiler-javac-errorprone
-%pom_remove_dep :error_prone_core
-%pom_xpath_remove pom:plugin/pom:configuration/pom:compilerId
-%pom_xpath_remove pom:plugin/pom:configuration/pom:forceJavacCompilerUse
+%pom_xpath_remove pom:plugin/pom:configuration/pom:compilerArgs
+%pom_xpath_remove pom:plugin/pom:configuration/pom:annotationProcessorPaths
 
 %pom_xpath_remove pom:profiles
 

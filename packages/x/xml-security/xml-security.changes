@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Dec 17 18:37:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.7 (bsc#1193879, CVE-2021-40690)
+- Changes of 2.1.7
+  * Improvement
+    + [SANTUARIO-572] - Disallow a KeyInfoReference to refer to a
+      RetrievalMethod
+    + [SANTUARIO-577] - Introduce a system property to control if
+      file/http references are allowed from an unsigned context
+- Changes of 2.1.6
+  * Bug
+    + [SANTUARIO-542] - SignatureProperties incorrectly gets sibling
+      nodes of the parent element, instead of the child elements
+    + [SANTUARIO-553] - JCE provider being resolved without key
+      causes wrong provider to be selected
+    + [SANTUARIO-556] - WeakHashMap cache cause infinite loop
+- Changes of 2.1.5
+  * Bug
+    + [SANTUARIO-508] - NPE in XMLSignatureInput
+    + [SANTUARIO-512] - security-config.xml is out of date
+    + [SANTUARIO-514] - XMLSignature processes KeyInfo elements
+      twice
+    + [SANTUARIO-515] - XMLSignature does not enforce structure of
+      the ds:Signature element
+    + [SANTUARIO-523] - XMLSecurityStreamReader ignores information
+      in XML document declaration
+    + [SANTUARIO-524] - Unable to pass Provider to HMAC
+      SignatureMethod
+    + [SANTUARIO-526] - XMLSecStartDocumentImpl returns null version
+      instead of default "1.0"
+- Changes of 2.1.4
+  * Fixes CVE-2019-12400: Apache Santuario potentially loads XML
+    parsing code from an untrusted source.
+  * Improvement
+    + [SANTUARIO-507] - Deprecate WeakObjectPool DocumentBuilder
+      cache
+  * Task
+    + [SANTUARIO-505] - Remove Doctypes from the streaming schemas
+
+-------------------------------------------------------------------
 Fri Jul 10 07:39:18 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of xml-security 2.1.3
