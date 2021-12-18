@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 15 13:32:02 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20211215
+  https://github.com/iputils/iputils/releases/tag/20211215
+- rarpd and rdisc are going to be removed in next release
+  (https://github.com/iputils/iputils/issues/363)
+  therefore don't pack it since this release
+- Drop harden_rdisc.service.patch, which was 1) merged upstream
+  4bb0ace ("systemd: Add ProtectHostname, ProtectKernelLogs")
+  for all services
+  2) we don't build rdisc since this release
+
+-------------------------------------------------------------------
 Fri Oct 15 12:12:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
