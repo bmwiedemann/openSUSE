@@ -403,4 +403,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>931625</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>06b4233321a808a4f7fb5106610fef1a</srcmd5>
+    <version>3.4.1</version>
+    <time>1639855763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941203</requestid>
+  </revision>
 </revisionlist>

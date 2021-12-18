@@ -39,7 +39,6 @@ BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
