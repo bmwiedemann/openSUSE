@@ -53,14 +53,13 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.40
+Version:        0.3.42
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
 
 BuildRequires:  docutils
@@ -68,6 +67,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9
+BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
@@ -108,12 +108,14 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libfreeaptx)
 %endif
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
@@ -122,14 +124,12 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(webrtc-audio-processing)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{libpipewire} = %{version}
-Requires:       %{name}-modules = %{version}
+Requires:       %{name}-modules-%{apiver_str} = %{version}
 Requires:       %{name}-session-manager
 Requires:       %{name}-spa-plugins-%{spa_ver_str} = %{version}
 Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
 Suggests:       wireplumber
-# This tries to ensure the user either uses pulseaudio or wireplumber enables the audio in pipewire
-Requires:       ((wireplumber-audio or pulseaudio) if wireplumber)
 %{?systemd_ordering}
 
 %description
@@ -147,6 +147,8 @@ Some of its features include:
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 Group:          System/Libraries
 Recommends:     pipewire >= %{version}
+Requires:       pipewire-modules-%{apiver_str} >= %{version}
+Requires:       pipewire-spa-plugins-%{spa_ver_str} >= %{version}
 
 %description -n %{libpipewire}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -187,7 +189,7 @@ This package provides the PipeWire replacement libraries for libjack.
 %package libjack-%{apiver_str}-devel
 Summary:        Development files for %{name}-libjack-%{apiver_str}
 Group:          Development/Libraries/C and C++
-Requires:       %{name}-libjack-%{apiver_str}
+Requires:       %{name}-libjack-%{apiver_str} = %{version}
 Conflicts:      libjack-devel
 
 %description libjack-%{apiver_str}-devel
@@ -229,12 +231,13 @@ SPA or Simple Plugin API is a plugin API.
 
 This package provides spa-inspect and spa-monitor tools.
 
-%package modules
+%package modules-%{apiver_str}
 Summary:        Modules For PipeWire, A Multimedia Framework
 Group:          Productivity/Multimedia/Other
-Requires:       pipewire = %{version}
+Provides:       %{name}-modules = %{version}
+Obsoletes:      %{name}-modules < %{version}
 
-%description modules
+%description modules-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
 
 The framework is used to build a modular daemon that can be configured to:
@@ -248,7 +251,6 @@ The framework is used to build a modular daemon that can be configured to:
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
 Group:          Productivity/Multimedia/Other
-Requires:       pipewire = %{version}
 
 %description spa-plugins-%{spa_ver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -323,6 +325,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %build
 %if %{pkg_vcmp gcc < 8}
 export CC=gcc-9
+export CXX=g++-9
 %endif
 %meson \
     -Ddocs=enabled \
@@ -490,6 +493,8 @@ if [ ! -e %{_bindir}/pw-jack-%{apiver} ] ; then
 fi
 
 %files
+%license LICENSE COPYING
+%doc README.md
 %{_bindir}/pipewire
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
@@ -497,9 +502,8 @@ fi
 %{_mandir}/man5/pipewire.conf.5%{ext_man}
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
-%{_datadir}/pipewire/client.conf
-%{_datadir}/pipewire/client-rt.conf
-%{_datadir}/pipewire/pipewire-pulse.conf
+%dir %{_datadir}/pipewire/filter-chain/
+%{_datadir}/pipewire/filter-chain/*.conf
 %ghost %dir %{_localstatedir}/lib/pipewire/
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
@@ -507,7 +511,46 @@ fi
 %license LICENSE COPYING
 %doc README.md
 %{_libdir}/libpipewire-%{apiver}.so.*
+
+%files modules-%{apiver_str}
+%dir %{_libdir}/pipewire-%{apiver}
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-*.so
+%dir %{_libdir}/pipewire-%{apiver}/v4l2/
+%{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
+
+%dir %{_datadir}/alsa-card-profile/
+%dir %{_datadir}/alsa-card-profile/mixer/
+%{_datadir}/alsa-card-profile/mixer/*
 %{_udevrulesdir}/90-pipewire-alsa.rules
+%{_datadir}/pipewire/client.conf
+%{_datadir}/pipewire/client-rt.conf
+
+%files spa-plugins-%{spa_ver_str}
+%dir %{_libdir}/spa-%{spa_ver}/
+%{_libdir}/spa-%{spa_ver}/alsa/
+%{_libdir}/spa-%{spa_ver}/audioconvert/
+%{_libdir}/spa-%{spa_ver}/audiomixer/
+%{_libdir}/spa-%{spa_ver}/bluez5/
+%{_libdir}/spa-%{spa_ver}/control/
+%{_libdir}/spa-%{spa_ver}/volume/
+%{_libdir}/spa-%{spa_ver}/ffmpeg/
+%{_libdir}/spa-%{spa_ver}/jack/
+%if %{with libcamera}
+%{_libdir}/spa-%{spa_ver}/libcamera/
+%endif
+%{_libdir}/spa-%{spa_ver}/support/
+%{_libdir}/spa-%{spa_ver}/v4l2/
+%{_libdir}/spa-%{spa_ver}/videoconvert/
+%if %{with_vulkan}
+%{_libdir}/spa-%{spa_ver}/vulkan/
+%endif
+%{_libdir}/spa-%{spa_ver}/audiotestsrc/
+%{_libdir}/spa-%{spa_ver}/videotestsrc/
+%{_libdir}/spa-%{spa_ver}/test/
+
+%dir %{_datadir}/spa-%{spa_ver}/
+%dir %{_datadir}/spa-%{spa_ver}/bluez5/
+%{_datadir}/spa-%{spa_ver}/bluez5/bluez-hardware.conf
 
 %files libjack-%{apiver_str}
 %dir %{_libdir}/pipewire-%{apiver}/jack
@@ -569,106 +612,6 @@ fi
 %{_bindir}/spa-resample
 %{_bindir}/spa-json-dump
 
-%files modules
-%dir %{_libdir}/pipewire-%{apiver}
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-access.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-adapter.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-client-device.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-client-node.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-echo-cancel.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-link-factory.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-loopback.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-metadata.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-portal.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-profiler.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-native.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-simple.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-rtkit.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-session-manager.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-device-factory.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-device.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-node-factory.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-node.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-filter-chain.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-pulse-tunnel.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-zeroconf-discover.so
-%{_libdir}/pipewire-%{apiver}/libpipewire-module-rt.so
-%dir %{_libdir}/pipewire-%{apiver}/v4l2/
-%{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
-%dir %{_datadir}/alsa-card-profile/
-%dir %{_datadir}/alsa-card-profile/mixer/
-%{_datadir}/alsa-card-profile/mixer/*
-%dir %{_datadir}/pipewire/filter-chain/
-%{_datadir}/pipewire/filter-chain/demonic.conf
-%{_datadir}/pipewire/filter-chain/sink-dolby-surround.conf
-%{_datadir}/pipewire/filter-chain/sink-eq6.conf
-%{_datadir}/pipewire/filter-chain/sink-matrix-spatialiser.conf
-%{_datadir}/pipewire/filter-chain/sink-virtual-surround-5.1-kemar.conf
-%{_datadir}/pipewire/filter-chain/sink-virtual-surround-7.1-hesuvi.conf
-%{_datadir}/pipewire/filter-chain/source-rnnoise.conf
-
-%files spa-plugins-%{spa_ver_str}
-%{_libdir}/spa-%{spa_ver}/alsa/libspa-alsa.so
-%{_libdir}/spa-%{spa_ver}/audioconvert/libspa-audioconvert.so
-%{_libdir}/spa-%{spa_ver}/audiomixer/libspa-audiomixer.so
-%{_libdir}/spa-%{spa_ver}/bluez5/libspa-bluez5.so
-%if %{with aac}
-%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-aac.so
-%endif
-%if %{with aptx}
-%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-aptx.so
-%endif
-%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-faststream.so
-%if %{with_ldacBT}
-%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-ldac.so
-%endif
-%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-sbc.so
-%{_libdir}/spa-%{spa_ver}/control/libspa-control.so
-%{_libdir}/spa-%{spa_ver}/ffmpeg/libspa-ffmpeg.so
-%{_libdir}/spa-%{spa_ver}/jack/libspa-jack.so
-%if %{with libcamera}
-%{_libdir}/spa-%{spa_ver}/libcamera/libspa-libcamera.so
-%endif
-%{_libdir}/spa-%{spa_ver}/support/libspa-dbus.so
-%{_libdir}/spa-%{spa_ver}/support/libspa-journal.so
-%{_libdir}/spa-%{spa_ver}/support/libspa-support.so
-%{_libdir}/spa-%{spa_ver}/v4l2/libspa-v4l2.so
-%{_libdir}/spa-%{spa_ver}/videoconvert/libspa-videoconvert.so
-%if %{with_vulkan}
-%{_libdir}/spa-%{spa_ver}/vulkan/libspa-vulkan.so
-%endif
-%{_libdir}/spa-%{spa_ver}/audiotestsrc/libspa-audiotestsrc.so
-%{_libdir}/spa-%{spa_ver}/test/libspa-test.so
-%{_libdir}/spa-%{spa_ver}/videotestsrc/libspa-videotestsrc.so
-%{_libdir}/spa-%{spa_ver}/volume/libspa-volume.so
-
-%dir %{_libdir}/spa-%{spa_ver}/
-%dir %{_libdir}/spa-%{spa_ver}/alsa/
-%dir %{_libdir}/spa-%{spa_ver}/audioconvert/
-%dir %{_libdir}/spa-%{spa_ver}/audiomixer/
-%dir %{_libdir}/spa-%{spa_ver}/bluez5/
-%dir %{_libdir}/spa-%{spa_ver}/control/
-%dir %{_libdir}/spa-%{spa_ver}/volume/
-%dir %{_libdir}/spa-%{spa_ver}/ffmpeg/
-%dir %{_libdir}/spa-%{spa_ver}/jack/
-%if %{with libcamera}
-%dir %{_libdir}/spa-%{spa_ver}/libcamera/
-%endif
-%dir %{_libdir}/spa-%{spa_ver}/support/
-%dir %{_libdir}/spa-%{spa_ver}/v4l2/
-%dir %{_libdir}/spa-%{spa_ver}/videoconvert/
-%if %{with_vulkan}
-%dir %{_libdir}/spa-%{spa_ver}/vulkan/
-%endif
-%dir %{_libdir}/spa-%{spa_ver}/audiotestsrc/
-%dir %{_libdir}/spa-%{spa_ver}/videotestsrc/
-%dir %{_libdir}/spa-%{spa_ver}/test/
-
-%dir %{_datadir}/spa-%{spa_ver}/
-%dir %{_datadir}/spa-%{spa_ver}/bluez5/
-%{_datadir}/spa-%{spa_ver}/bluez5/bluez-hardware.conf
-
 %files devel
 %{_libdir}/libpipewire-%{apiver}.so
 %{_libdir}/pkgconfig/libpipewire-%{apiver}.pc
@@ -684,6 +627,7 @@ fi
 %{_bindir}/pipewire-pulse
 %{_mandir}/man1/pipewire-pulse.1%{ext_man}
 %{_userunitdir}/pipewire-pulse.*
+%{_datadir}/pipewire/pipewire-pulse.conf
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 
 %files alsa
