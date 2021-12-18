@@ -17,7 +17,7 @@
 
 
 Name:           xxhash
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Non-cryptographic hash algorithm
 License:        BSD-2-Clause AND GPL-2.0-only
@@ -25,7 +25,8 @@ Group:          Productivity/Security
 URL:            https://github.com/Cyan4973/xxHash
 Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
 Patch0:         xxhash-avoid-armv6-unaligned-access.patch
-BuildRequires:  c++_compiler
+Patch1:         https://github.com/Cyan4973/xxHash/commit/836f4e735cf368542f14005e41d2f84ec29dfd60.patch
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
 %description
@@ -56,18 +57,17 @@ suite which evaluates collision, dispersion and randomness qualities of hash
 functions. Hashes are identical on all platforms.
 
 %prep
-%setup -q -n xxHash-%{version}
-%patch0 -p1
+%autosetup -p1 -n xxHash-%{version}
 
 %build
-make %{?_smp_mflags} prefix=%{_prefix} libdir=%{_libdir}
+%make_build prefix=%{_prefix} libdir=%{_libdir}
 
 %install
 %make_install prefix=%{_prefix} libdir=%{_libdir}
 rm -rf %{buildroot}%{_libdir}/libxxhash.a
 
 %check
-make test
+%make_build test
 
 %post -n libxxhash0 -p /sbin/ldconfig
 %postun -n libxxhash0 -p /sbin/ldconfig

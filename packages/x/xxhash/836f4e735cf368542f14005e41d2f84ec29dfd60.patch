@@ -1,0 +1,126 @@
+From 836f4e735cf368542f14005e41d2f84ec29dfd60 Mon Sep 17 00:00:00 2001
+From: Yann Collet <yann.collet.73@gmail.com>
+Date: Sat, 4 Dec 2021 10:29:49 -0800
+Subject: [PATCH] fix man page installation
+
+for variant redirectors (`xxh32sum`, `xxh64sum` and `xxh128sum`).
+fix #647, reported by @jpalus.
+
+Also : slightly updated man page text, for clarity and accuracy.
+---
+ Makefile        | 14 ++++++++------
+ cli/xxhsum.1    |  8 ++++----
+ cli/xxhsum.1.md |  8 +++++---
+ 3 files changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2fbefbc6..63273e16 100644
+--- a/Makefile
++++ b/Makefile
+@@ -457,6 +457,7 @@ endif
+ 
+ INSTALL_PROGRAM ?= $(INSTALL)
+ INSTALL_DATA    ?= $(INSTALL) -m 644
++INSTALL_DIR     ?= $(INSTALL) -d -m 755
+ 
+ 
+ # Escape special symbols by putting each character into its separate class
+@@ -496,7 +497,7 @@ libxxhash.pc: libxxhash.pc.in
+ .PHONY: install
+ install: lib libxxhash.pc xxhsum  ## install libraries, CLI, links and man page
+ 	@echo Installing libxxhash
+-	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(LIBDIR)
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(LIBDIR)
+ 	$(Q)$(INSTALL_DATA) libxxhash.a $(DESTDIR)$(LIBDIR)
+ 	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
+ 	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+@@ -508,19 +509,20 @@ ifeq ($(DISPATCH),1)
+ 	$(Q)$(INSTALL_DATA) xxh_x86dispatch.h $(DESTDIR)$(INCLUDEDIR)
+ endif
+ 	@echo Installing pkgconfig
+-	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(PKGCONFIGDIR)/
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(PKGCONFIGDIR)/
+ 	$(Q)$(INSTALL_DATA) libxxhash.pc $(DESTDIR)$(PKGCONFIGDIR)/
+ 	@echo Installing xxhsum
+-	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(BINDIR)/ $(DESTDIR)$(MANDIR)/
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(BINDIR)/
+ 	$(Q)$(INSTALL_PROGRAM) xxhsum $(DESTDIR)$(BINDIR)/xxhsum
+ 	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh32sum
+ 	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh64sum
+ 	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh128sum
+ 	@echo Installing man pages
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(MANDIR)/
+ 	$(Q)$(INSTALL_DATA) $(MAN) $(DESTDIR)$(MANDIR)/xxhsum.1
+-	$(Q)ln -sf $(MAN) $(DESTDIR)$(MANDIR)/xxh32sum.1
+-	$(Q)ln -sf $(MAN) $(DESTDIR)$(MANDIR)/xxh64sum.1
+-	$(Q)ln -sf $(MAN) $(DESTDIR)$(MANDIR)/xxh128sum.1
++	$(Q)ln -sf xxhsum.1 $(DESTDIR)$(MANDIR)/xxh32sum.1
++	$(Q)ln -sf xxhsum.1 $(DESTDIR)$(MANDIR)/xxh64sum.1
++	$(Q)ln -sf xxhsum.1 $(DESTDIR)$(MANDIR)/xxh128sum.1
+ 	@echo xxhash installation completed
+ 
+ .PHONY: uninstall
+diff --git a/cli/xxhsum.1 b/cli/xxhsum.1
+index 27e6808e..715fc4be 100644
+--- a/cli/xxhsum.1
++++ b/cli/xxhsum.1
+@@ -1,14 +1,14 @@
+-.TH "XXHSUM" "1" "November 2021" "xxhsum 0.8.1" "User Commands"
++.TH "XXHSUM" "1" "December 2021" "xxhsum 0.8.1" "User Commands"
+ .SH "NAME"
+ \fBxxhsum\fR \- print or check xxHash non\-cryptographic checksums
+ .SH "SYNOPSIS"
+ \fBxxhsum [<OPTION>] \|\.\|\.\|\. [<FILE>] \|\.\|\.\|\.\fR \fBxxhsum \-b [<OPTION>] \|\.\|\.\|\.\fR
+ .P
+-\fBxxh32sum\fR is equivalent to \fBxxhsum \-H0\fR \fBxxh64sum\fR is equivalent to \fBxxhsum \-H1\fR \fBxxh128sum\fR is equivalent to \fBxxhsum \-H2\fR
++\fBxxh32sum\fR is equivalent to \fBxxhsum \-H0\fR, \fBxxh64sum\fR is equivalent to \fBxxhsum \-H1\fR, \fBxxh128sum\fR is equivalent to \fBxxhsum \-H2\fR
+ .SH "DESCRIPTION"
+ Print or check xxHash (32, 64 or 128 bits) checksums\. When no \fIFILE\fR, read standard input, except if it\'s the console\. When \fIFILE\fR is \fB\-\fR, read standard input even if it\'s the console\.
+ .P
+-\fBxxhsum\fR supports a command line syntax similar but not identical to md5sum(1)\. Differences are: \fBxxhsum\fR doesn\'t have text/binary mode switch (\fB\-b\fR, \fB\-t\fR); \fBxxhsum\fR always treats files as binary file; \fBxxhsum\fR has a hash bit width switch (\fB\-H\fR);
++\fBxxhsum\fR supports a command line syntax similar but not identical to md5sum(1)\. Differences are: \fBxxhsum\fR doesn\'t have text/binary mode switch (\fB\-b\fR, \fB\-t\fR); \fBxxhsum\fR always treats files as binary file; \fBxxhsum\fR has a hash selection switch (\fB\-H\fR);
+ .P
+ As xxHash is a fast non\-cryptographic checksum algorithm, \fBxxhsum\fR should not be used for security related purposes\.
+ .P
+@@ -19,7 +19,7 @@ As xxHash is a fast non\-cryptographic checksum algorithm, \fBxxhsum\fR should n
+ Displays xxhsum version and exits
+ .TP
+ \fB\-H\fR\fIHASHTYPE\fR
+-Hash selection\. \fIHASHTYPE\fR means \fB0\fR=XXH32, \fB1\fR=XXH64, \fB2\fR=XXH128, \fB3\fR=XXH3\. Alternatively, \fIHASHTYPE\fR \fB32\fR=XXH32, \fB64\fR=XXH64, \fB128\fR=XXH128\. Default value is \fB1\fR (64bits)
++Hash selection\. \fIHASHTYPE\fR means \fB0\fR=XXH32, \fB1\fR=XXH64, \fB2\fR=XXH128, \fB3\fR=XXH3\. Note that \fB\-H3\fR triggers \fB\-\-tag\fR, which can\'t be skipped (this is to reduce risks of confusion with \fB\-H2\fR (\fBXXH64\fR))\. Alternatively, \fIHASHTYPE\fR \fB32\fR=XXH32, \fB64\fR=XXH64, \fB128\fR=XXH128\. Default value is \fB1\fR (64bits)
+ .TP
+ \fB\-\-tag\fR
+ Output in the BSD style\.
+diff --git a/cli/xxhsum.1.md b/cli/xxhsum.1.md
+index 777d1cae..df2cb914 100644
+--- a/cli/xxhsum.1.md
++++ b/cli/xxhsum.1.md
+@@ -7,8 +7,8 @@ SYNOPSIS
+ `xxhsum [<OPTION>] ... [<FILE>] ...`
+ `xxhsum -b [<OPTION>] ...`
+ 
+-`xxh32sum` is equivalent to `xxhsum -H0`
+-`xxh64sum` is equivalent to `xxhsum -H1`
++`xxh32sum` is equivalent to `xxhsum -H0`,
++`xxh64sum` is equivalent to `xxhsum -H1`,
+ `xxh128sum` is equivalent to `xxhsum -H2`
+ 
+ 
+@@ -23,7 +23,7 @@ When <FILE> is `-`, read standard input even if it's the console.
+ Differences are:
+ `xxhsum` doesn't have text/binary mode switch (`-b`, `-t`);
+ `xxhsum` always treats files as binary file;
+-`xxhsum` has a hash bit width switch (`-H`);
++`xxhsum` has a hash selection switch (`-H`);
+ 
+ As xxHash is a fast non-cryptographic checksum algorithm,
+ `xxhsum` should not be used for security related purposes.
+@@ -38,6 +38,8 @@ OPTIONS
+ 
+ * `-H`<HASHTYPE>:
+   Hash selection. <HASHTYPE> means `0`=XXH32, `1`=XXH64, `2`=XXH128, `3`=XXH3.
++  Note that `-H3` triggers `--tag`, which can't be skipped
++  (this is to reduce risks of confusion with `-H2` (`XXH64`)).
+   Alternatively, <HASHTYPE> `32`=XXH32, `64`=XXH64, `128`=XXH128.
+   Default value is `1` (64bits)
+ 

@@ -1,11 +1,13 @@
---- xxHash-0.8.0/xxhash.h	2021/07/06 15:14:04	1.1
-+++ xxHash-0.8.0/xxhash.h	2021/07/06 15:14:36
-@@ -807,7 +807,7 @@
-  */
- #ifndef XXH_FORCE_MEMORY_ACCESS   /* can be defined externally, on command line for example */
- #  if !defined(__clang__) && defined(__GNUC__) && defined(__ARM_FEATURE_UNALIGNED) && defined(__ARM_ARCH) && (__ARM_ARCH == 6)
--#    define XXH_FORCE_MEMORY_ACCESS 2
-+#    define XXH_FORCE_MEMORY_ACCESS 1
- #  elif !defined(__clang__) && ((defined(__INTEL_COMPILER) && !defined(_WIN32)) || \
-   (defined(__GNUC__) && (defined(__ARM_ARCH) && __ARM_ARCH >= 7)))
- #    define XXH_FORCE_MEMORY_ACCESS 1
+Index: xxHash-0.8.1/xxhash.h
+===================================================================
+--- xxHash-0.8.1.orig/xxhash.h
++++ xxHash-0.8.1/xxhash.h
+@@ -1408,7 +1408,7 @@ XXH3_128bits_reset_withSecretandSeed(XXH
+     (defined(__INTEL_COMPILER) && !defined(_WIN32)) || \
+     ( \
+         defined(__GNUC__) && ( \
+-            (defined(__ARM_ARCH) && __ARM_ARCH >= 7) || \
++            (defined(__ARM_ARCH) && __ARM_ARCH >= 6) || \
+             ( \
+                 defined(__mips__) && \
+                 (__mips <= 5 || __mips_isa_rev < 6) && \
