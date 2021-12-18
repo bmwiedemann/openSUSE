@@ -551,4 +551,41 @@
   % update.sh</comment>
     <requestid>873301</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7f762cbb40c1d4eb318b8d5740d57fc7</srcmd5>
+    <version>20211213</version>
+    <time>1639855794</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20211213
+  * More pt-BR thesaurus cleanup
+  * Updated the British dictionary, based on the wordlist of Oxford Professors and checked one by one
+  * Add &quot;exrtudir&quot; to spell check for pt-BR
+  * Refactor by PTG tool
+  * Cleanup pt-BR thesaurus
+  * Add thesaurus to pt-BR
+  * Avoid duplicated pt_BR_pt_BR.properties in packaging's filelist
+  * add translations of pt_BR grammar checker dialog
+  * Belarusian hunspell dictionary update
+  * tdf#144730: Replace CONVERT_ADD to CONVERT to fix metric/non metric conversions
+  * More refactoring of dict_pt-BR lightproof
+  * Fix Flags not at the start of the expression in ru-RU
+  * Refactor lighproof_pt-BR impl script
+  * &quot;троеточие&quot; is vernacular
+  * Add regex checker for pt-BR LightProof
+  * Reformat lightproof_ru_RU.py to have 1 expression per line
+  * Refactor and fix pt-BR Lightproof rules
+  * tdf#139523: LightProof makes Python complain on FutureWarnings for pt-BR
+  * Portuguese Brasil lightproof: fix &quot;Flags not at the start of the expression&quot;
+  * Fix typo in &quot;Expressão arcaica&quot;
+  * Czech Hunspell: add several word forms
+  * Bump pt-BR dict version to 3.2.15
+  * Portuguese Brasil lightproof: numsep=&gt;gerund since it concerns gerundismo
+  * tdf#143559: save the changes in options of Portuguese spellcheck
+  * tdf#143507: localize Grammar Checking (Portuguese) settings page
+  * Related tdf#138369: Remove spurious CR (ctrl-M) in ru_RU.dic
+  * tdf#143489: Update Galician dictionaries to version 20.08
+  * Czech Hunspell: fix declination of some nouns ending with &quot;-ec&quot;
+- added sources</comment>
+    <requestid>940246</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 ## Generate: sh update.sh
 ###################################################################
 Name:           myspell-dictionaries
-Version:        20201230
+Version:        20211213
 Release:        0
 Summary:        A Source Package for Dictionaries Used by MySpell
 License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
@@ -160,54 +160,6 @@ BuildArch:      noarch
 %description -n myspell-an_ES
 Aragonese spelling dictionary.
 
-%package -n myspell-ar_IQ
-Summary:        MySpell ar_IQ Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_IQ)
-Provides:       locale(seamonkey-spellchecker:ar_IQ)
-BuildArch:      noarch
-
-%description -n myspell-ar_IQ
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_QA
-Summary:        MySpell ar_QA Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_QA)
-Provides:       locale(seamonkey-spellchecker:ar_QA)
-BuildArch:      noarch
-
-%description -n myspell-ar_QA
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_EG
-Summary:        MySpell ar_EG Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_EG)
-Provides:       locale(seamonkey-spellchecker:ar_EG)
-BuildArch:      noarch
-
-%description -n myspell-ar_EG
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar
-Summary:        MySpell ar Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-arabic
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar)
-Provides:       locale(seamonkey-spellchecker:ar)
-BuildArch:      noarch
-
-%description -n myspell-ar
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
 %package -n myspell-ar_DZ
 Summary:        MySpell ar_DZ Dictionary
 Requires:       myspell-ar
@@ -218,54 +170,6 @@ Provides:       locale(seamonkey-spellchecker:ar_DZ)
 BuildArch:      noarch
 
 %description -n myspell-ar_DZ
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_BH
-Summary:        MySpell ar_BH Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_BH)
-Provides:       locale(seamonkey-spellchecker:ar_BH)
-BuildArch:      noarch
-
-%description -n myspell-ar_BH
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_YE
-Summary:        MySpell ar_YE Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_YE)
-Provides:       locale(seamonkey-spellchecker:ar_YE)
-BuildArch:      noarch
-
-%description -n myspell-ar_YE
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_JO
-Summary:        MySpell ar_JO Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_JO)
-Provides:       locale(seamonkey-spellchecker:ar_JO)
-BuildArch:      noarch
-
-%description -n myspell-ar_JO
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_MA
-Summary:        MySpell ar_MA Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_MA)
-Provides:       locale(seamonkey-spellchecker:ar_MA)
-BuildArch:      noarch
-
-%description -n myspell-ar_MA
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
 %package -n myspell-ar_KW
@@ -280,28 +184,16 @@ BuildArch:      noarch
 %description -n myspell-ar_KW
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
-%package -n myspell-ar_SA
-Summary:        MySpell ar_SA Dictionary
-Requires:       myspell-ar
+%package -n myspell-ar
+Summary:        MySpell ar Dictionary
 Requires:       myspell-dictionaries
+Provides:       myspell-arabic
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_SA)
-Provides:       locale(seamonkey-spellchecker:ar_SA)
+Provides:       locale(libreoffice:ar)
+Provides:       locale(seamonkey-spellchecker:ar)
 BuildArch:      noarch
 
-%description -n myspell-ar_SA
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
-%package -n myspell-ar_SD
-Summary:        MySpell ar_SD Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_SD)
-Provides:       locale(seamonkey-spellchecker:ar_SD)
-BuildArch:      noarch
-
-%description -n myspell-ar_SD
+%description -n myspell-ar
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
 %package -n myspell-ar_LB
@@ -328,16 +220,64 @@ BuildArch:      noarch
 %description -n myspell-ar_LY
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
-%package -n myspell-ar_OM
-Summary:        MySpell ar_OM Dictionary
+%package -n myspell-ar_AE
+Summary:        MySpell ar_AE Dictionary
 Requires:       myspell-ar
 Requires:       myspell-dictionaries
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_OM)
-Provides:       locale(seamonkey-spellchecker:ar_OM)
+Provides:       locale(libreoffice:ar_AE)
+Provides:       locale(seamonkey-spellchecker:ar_AE)
 BuildArch:      noarch
 
-%description -n myspell-ar_OM
+%description -n myspell-ar_AE
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_IQ
+Summary:        MySpell ar_IQ Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_IQ)
+Provides:       locale(seamonkey-spellchecker:ar_IQ)
+BuildArch:      noarch
+
+%description -n myspell-ar_IQ
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_BH
+Summary:        MySpell ar_BH Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_BH)
+Provides:       locale(seamonkey-spellchecker:ar_BH)
+BuildArch:      noarch
+
+%description -n myspell-ar_BH
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_SA
+Summary:        MySpell ar_SA Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_SA)
+Provides:       locale(seamonkey-spellchecker:ar_SA)
+BuildArch:      noarch
+
+%description -n myspell-ar_SA
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_SD
+Summary:        MySpell ar_SD Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_SD)
+Provides:       locale(seamonkey-spellchecker:ar_SD)
+BuildArch:      noarch
+
+%description -n myspell-ar_SD
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
 %package -n myspell-ar_SY
@@ -352,18 +292,6 @@ BuildArch:      noarch
 %description -n myspell-ar_SY
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
-%package -n myspell-ar_AE
-Summary:        MySpell ar_AE Dictionary
-Requires:       myspell-ar
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ar_AE)
-Provides:       locale(seamonkey-spellchecker:ar_AE)
-BuildArch:      noarch
-
-%description -n myspell-ar_AE
-Arabic spelling dictionary, and thesaurus Ayaspell.
-
 %package -n myspell-ar_TN
 Summary:        MySpell ar_TN Dictionary
 Requires:       myspell-ar
@@ -376,6 +304,78 @@ BuildArch:      noarch
 %description -n myspell-ar_TN
 Arabic spelling dictionary, and thesaurus Ayaspell.
 
+%package -n myspell-ar_QA
+Summary:        MySpell ar_QA Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_QA)
+Provides:       locale(seamonkey-spellchecker:ar_QA)
+BuildArch:      noarch
+
+%description -n myspell-ar_QA
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_JO
+Summary:        MySpell ar_JO Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_JO)
+Provides:       locale(seamonkey-spellchecker:ar_JO)
+BuildArch:      noarch
+
+%description -n myspell-ar_JO
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_EG
+Summary:        MySpell ar_EG Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_EG)
+Provides:       locale(seamonkey-spellchecker:ar_EG)
+BuildArch:      noarch
+
+%description -n myspell-ar_EG
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_YE
+Summary:        MySpell ar_YE Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_YE)
+Provides:       locale(seamonkey-spellchecker:ar_YE)
+BuildArch:      noarch
+
+%description -n myspell-ar_YE
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_OM
+Summary:        MySpell ar_OM Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_OM)
+Provides:       locale(seamonkey-spellchecker:ar_OM)
+BuildArch:      noarch
+
+%description -n myspell-ar_OM
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
+%package -n myspell-ar_MA
+Summary:        MySpell ar_MA Dictionary
+Requires:       myspell-ar
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ar_MA)
+Provides:       locale(seamonkey-spellchecker:ar_MA)
+BuildArch:      noarch
+
+%description -n myspell-ar_MA
+Arabic spelling dictionary, and thesaurus Ayaspell.
+
 %package -n myspell-be_BY
 Summary:        MySpell be_BY Dictionary
 Requires:       myspell-dictionaries
@@ -386,7 +386,7 @@ Provides:       locale(seamonkey-spellchecker:be_BY)
 BuildArch:      noarch
 
 %description -n myspell-be_BY
-Belarusian spelling dictionary and hyphenation.
+Belarusian spelling dictionary and hyphenation: official orthography 2008.
 
 %package -n myspell-bg_BG
 Summary:        MySpell bg_BG Dictionary
@@ -472,6 +472,17 @@ BuildArch:      noarch
 %description -n myspell-br_FR
 Breton spelling dictionary.
 
+%package -n myspell-bs_BA
+Summary:        MySpell bs_BA Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:bs_BA)
+Provides:       locale(seamonkey-spellchecker:bs_BA)
+BuildArch:      noarch
+
+%description -n myspell-bs_BA
+Bosnian spelling dictionary.
+
 %package -n myspell-bs
 Summary:        MySpell bs Dictionary
 Requires:       myspell-bs_BA
@@ -482,17 +493,6 @@ Provides:       locale(seamonkey-spellchecker:bs)
 BuildArch:      noarch
 
 %description -n myspell-bs
-Bosnian spelling dictionary.
-
-%package -n myspell-bs_BA
-Summary:        MySpell bs_BA Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:bs_BA)
-Provides:       locale(seamonkey-spellchecker:bs_BA)
-BuildArch:      noarch
-
-%description -n myspell-bs_BA
 Bosnian spelling dictionary.
 
 %package -n myspell-ca_FR
@@ -531,19 +531,6 @@ BuildArch:      noarch
 %description -n myspell-ca_IT
 Catalan spelling dictionary, hyphenation rules, and thesaurus.
 
-%package -n myspell-ca_ES_valencia
-Summary:        MySpell ca_ES_valencia Dictionary
-Requires:       myspell-ca
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       myspell-valencian
-Provides:       locale(libreoffice:ca_ES_valencia)
-Provides:       locale(seamonkey-spellchecker:ca_ES_valencia)
-BuildArch:      noarch
-
-%description -n myspell-ca_ES_valencia
-Catalan spelling dictionary, hyphenation rules, and thesaurus.
-
 %package -n myspell-ca
 Summary:        MySpell ca Dictionary
 Requires:       myspell-dictionaries
@@ -555,6 +542,19 @@ Provides:       locale(seamonkey-spellchecker:ca)
 BuildArch:      noarch
 
 %description -n myspell-ca
+Catalan spelling dictionary, hyphenation rules, and thesaurus.
+
+%package -n myspell-ca_ES_valencia
+Summary:        MySpell ca_ES_valencia Dictionary
+Requires:       myspell-ca
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       myspell-valencian
+Provides:       locale(libreoffice:ca_ES_valencia)
+Provides:       locale(seamonkey-spellchecker:ca_ES_valencia)
+BuildArch:      noarch
+
+%description -n myspell-ca_ES_valencia
 Catalan spelling dictionary, hyphenation rules, and thesaurus.
 
 %package -n myspell-ca_ES
@@ -595,6 +595,18 @@ BuildArch:      noarch
 %description -n myspell-da_DK
 Danish spelling dictionary, hyphenation rules, and thesaurus.
 
+%package -n myspell-de
+Summary:        MySpell de Dictionary
+Requires:       myspell-dictionaries
+Recommends:     myspell-de_DE
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:de)
+Provides:       locale(seamonkey-spellchecker:de)
+BuildArch:      noarch
+
+%description -n myspell-de
+German (Austria, Germany, Switzerland) spelling dictionaries, hyphenation rules, and thesaurus.
+
 %package -n myspell-de_CH
 Summary:        MySpell de_CH Dictionary
 Requires:       myspell-de
@@ -606,18 +618,6 @@ Provides:       locale(seamonkey-spellchecker:de_CH)
 BuildArch:      noarch
 
 %description -n myspell-de_CH
-German (Austria, Germany, Switzerland) spelling dictionaries, hyphenation rules, and thesaurus.
-
-%package -n myspell-de
-Summary:        MySpell de Dictionary
-Requires:       myspell-dictionaries
-Recommends:     myspell-de_DE
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:de)
-Provides:       locale(seamonkey-spellchecker:de)
-BuildArch:      noarch
-
-%description -n myspell-de
 German (Austria, Germany, Switzerland) spelling dictionaries, hyphenation rules, and thesaurus.
 
 %package -n myspell-de_DE
@@ -660,23 +660,6 @@ BuildArch:      noarch
 %description -n myspell-el_GR
 Greek spelling dictionary, and hyphenation rules.
 
-%package -n myspell-en_AU
-Summary:        MySpell en_AU Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-en
-Requires:       myspell-en_GB
-Requires:       myspell-en_US
-Recommends:     myspell-lightproof-en
-Provides:       libreoffice-thesaurus-en-AU
-Provides:       myspell-australian
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_AU)
-Provides:       locale(seamonkey-spellchecker:en_AU)
-BuildArch:      noarch
-
-%description -n myspell-en_AU
-English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
-
 %package -n myspell-en_BZ
 Summary:        MySpell en_BZ Dictionary
 Requires:       myspell-dictionaries
@@ -692,37 +675,6 @@ BuildArch:      noarch
 %description -n myspell-en_BZ
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
-%package -n myspell-en_JM
-Summary:        MySpell en_JM Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-en
-Requires:       myspell-en_GB
-Requires:       myspell-en_US
-Recommends:     myspell-lightproof-en
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_JM)
-Provides:       locale(seamonkey-spellchecker:en_JM)
-BuildArch:      noarch
-
-%description -n myspell-en_JM
-English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
-
-%package -n myspell-en_CA
-Summary:        MySpell en_CA Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-en
-Requires:       myspell-en_GB
-Requires:       myspell-en_US
-Recommends:     myspell-lightproof-en
-Provides:       myspell-canadian
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_CA)
-Provides:       locale(seamonkey-spellchecker:en_CA)
-BuildArch:      noarch
-
-%description -n myspell-en_CA
-English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
-
 %package -n myspell-en_BS
 Summary:        MySpell en_BS Dictionary
 Requires:       myspell-dictionaries
@@ -736,6 +688,21 @@ Provides:       locale(seamonkey-spellchecker:en_BS)
 BuildArch:      noarch
 
 %description -n myspell-en_BS
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
+%package -n myspell-en_TT
+Summary:        MySpell en_TT Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Requires:       myspell-en_GB
+Requires:       myspell-en_US
+Recommends:     myspell-lightproof-en
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_TT)
+Provides:       locale(seamonkey-spellchecker:en_TT)
+BuildArch:      noarch
+
+%description -n myspell-en_TT
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
 %package -n myspell-en_MW
@@ -754,6 +721,36 @@ BuildArch:      noarch
 %description -n myspell-en_MW
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
+%package -n myspell-en_GH
+Summary:        MySpell en_GH Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Requires:       myspell-en_GB
+Requires:       myspell-en_US
+Recommends:     myspell-lightproof-en
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_GH)
+Provides:       locale(seamonkey-spellchecker:en_GH)
+BuildArch:      noarch
+
+%description -n myspell-en_GH
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
+%package -n myspell-en_GB
+Summary:        MySpell en_GB Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Recommends:     myspell-lightproof-en
+Provides:       libreoffice-thesaurus-en-GB
+Provides:       myspell-british
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_GB)
+Provides:       locale(seamonkey-spellchecker:en_GB)
+BuildArch:      noarch
+
+%description -n myspell-en_GB
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
 %package -n myspell-en_ZW
 Summary:        MySpell en_ZW Dictionary
 Requires:       myspell-dictionaries
@@ -768,36 +765,6 @@ Provides:       locale(seamonkey-spellchecker:en_ZW)
 BuildArch:      noarch
 
 %description -n myspell-en_ZW
-English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
-
-%package -n myspell-en_NZ
-Summary:        MySpell en_NZ Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-en
-Requires:       myspell-en_GB
-Requires:       myspell-en_US
-Recommends:     myspell-lightproof-en
-Provides:       myspell-dictionary
-Provides:       myspell-new-zaeland
-Provides:       locale(libreoffice:en_NZ)
-Provides:       locale(seamonkey-spellchecker:en_NZ)
-BuildArch:      noarch
-
-%description -n myspell-en_NZ
-English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
-
-%package -n myspell-en_PH
-Summary:        MySpell en_PH Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-en
-Requires:       myspell-en_US
-Recommends:     myspell-lightproof-en
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_PH)
-Provides:       locale(seamonkey-spellchecker:en_PH)
-BuildArch:      noarch
-
-%description -n myspell-en_PH
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
 %package -n myspell-en_ZA
@@ -816,19 +783,20 @@ BuildArch:      noarch
 %description -n myspell-en_ZA
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
-%package -n myspell-en_GH
-Summary:        MySpell en_GH Dictionary
+%package -n myspell-en_NZ
+Summary:        MySpell en_NZ Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-en
 Requires:       myspell-en_GB
 Requires:       myspell-en_US
 Recommends:     myspell-lightproof-en
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_GH)
-Provides:       locale(seamonkey-spellchecker:en_GH)
+Provides:       myspell-new-zaeland
+Provides:       locale(libreoffice:en_NZ)
+Provides:       locale(seamonkey-spellchecker:en_NZ)
 BuildArch:      noarch
 
-%description -n myspell-en_GH
+%description -n myspell-en_NZ
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
 %package -n myspell-en_NA
@@ -847,19 +815,49 @@ BuildArch:      noarch
 %description -n myspell-en_NA
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
-%package -n myspell-en_GB
-Summary:        MySpell en_GB Dictionary
+%package -n myspell-en_CA
+Summary:        MySpell en_CA Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Requires:       myspell-en_GB
+Requires:       myspell-en_US
+Recommends:     myspell-lightproof-en
+Provides:       myspell-canadian
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_CA)
+Provides:       locale(seamonkey-spellchecker:en_CA)
+BuildArch:      noarch
+
+%description -n myspell-en_CA
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
+%package -n myspell-en_PH
+Summary:        MySpell en_PH Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Requires:       myspell-en_US
+Recommends:     myspell-lightproof-en
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_PH)
+Provides:       locale(seamonkey-spellchecker:en_PH)
+BuildArch:      noarch
+
+%description -n myspell-en_PH
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
+%package -n myspell-en_US
+Summary:        MySpell en_US Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-en
 Recommends:     myspell-lightproof-en
-Provides:       libreoffice-thesaurus-en-GB
-Provides:       myspell-british
+Provides:       libreoffice-thesaurus-US
+Provides:       myspell-american
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_GB)
-Provides:       locale(seamonkey-spellchecker:en_GB)
+Provides:       locale(libreoffice:en_US)
+Provides:       locale(seamonkey-spellchecker:en_US)
 BuildArch:      noarch
 
-%description -n myspell-en_GB
+%description -n myspell-en_US
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
 %package -n myspell-en
@@ -905,34 +903,36 @@ BuildArch:      noarch
 %description -n myspell-en_IE
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
-%package -n myspell-en_TT
-Summary:        MySpell en_TT Dictionary
+%package -n myspell-en_AU
+Summary:        MySpell en_AU Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-en
+Requires:       myspell-en_GB
+Requires:       myspell-en_US
+Recommends:     myspell-lightproof-en
+Provides:       libreoffice-thesaurus-en-AU
+Provides:       myspell-australian
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:en_AU)
+Provides:       locale(seamonkey-spellchecker:en_AU)
+BuildArch:      noarch
+
+%description -n myspell-en_AU
+English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
+
+%package -n myspell-en_JM
+Summary:        MySpell en_JM Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-en
 Requires:       myspell-en_GB
 Requires:       myspell-en_US
 Recommends:     myspell-lightproof-en
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_TT)
-Provides:       locale(seamonkey-spellchecker:en_TT)
+Provides:       locale(libreoffice:en_JM)
+Provides:       locale(seamonkey-spellchecker:en_JM)
 BuildArch:      noarch
 
-%description -n myspell-en_TT
-English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
-
-%package -n myspell-en_US
-Summary:        MySpell en_US Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-en
-Recommends:     myspell-lightproof-en
-Provides:       libreoffice-thesaurus-US
-Provides:       myspell-american
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:en_US)
-Provides:       locale(seamonkey-spellchecker:en_US)
-BuildArch:      noarch
-
-%description -n myspell-en_US
+%description -n myspell-en_JM
 English spelling dictionaries, hyphenation rules, thesaurus, and grammar checker.
 
 %package -n myspell-lightproof-en
@@ -942,16 +942,169 @@ Requires:       myspell-en
 %description -n myspell-lightproof-en
 Lightproof grammar checker information for en.
 
-%package -n myspell-es_PH
-Summary:        MySpell es_PH Dictionary
+%package -n myspell-eo_EO
+Summary:        MySpell eo_EO Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-eo
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:eo_EO)
+Provides:       locale(seamonkey-spellchecker:eo_EO)
+BuildArch:      noarch
+
+%description -n myspell-eo_EO
+Spelling dictionary, thesaurus, and hyphenator for Esperanto.
+
+%package -n myspell-eo
+Summary:        MySpell eo Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:eo)
+Provides:       locale(seamonkey-spellchecker:eo)
+BuildArch:      noarch
+
+%description -n myspell-eo
+Spelling dictionary, thesaurus, and hyphenator for Esperanto.
+
+%package -n myspell-es_AR
+Summary:        MySpell es_AR Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-es
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:es_PH)
-Provides:       locale(seamonkey-spellchecker:es_PH)
+Provides:       myspell-spanish-argentine
+Provides:       locale(libreoffice:es_AR)
+Provides:       locale(seamonkey-spellchecker:es_AR)
 BuildArch:      noarch
 
-%description -n myspell-es_PH
+%description -n myspell-es_AR
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_DO
+Summary:        MySpell es_DO Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-dominican
+Provides:       locale(libreoffice:es_DO)
+Provides:       locale(seamonkey-spellchecker:es_DO)
+BuildArch:      noarch
+
+%description -n myspell-es_DO
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_SV
+Summary:        MySpell es_SV Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-salvadorean
+Provides:       locale(libreoffice:es_SV)
+Provides:       locale(seamonkey-spellchecker:es_SV)
+BuildArch:      noarch
+
+%description -n myspell-es_SV
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_VE
+Summary:        MySpell es_VE Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-venezuelan
+Provides:       locale(libreoffice:es_VE)
+Provides:       locale(seamonkey-spellchecker:es_VE)
+BuildArch:      noarch
+
+%description -n myspell-es_VE
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_MX
+Summary:        MySpell es_MX Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-mexican
+Provides:       locale(libreoffice:es_MX)
+Provides:       locale(seamonkey-spellchecker:es_MX)
+BuildArch:      noarch
+
+%description -n myspell-es_MX
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_GT
+Summary:        MySpell es_GT Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-guatemalan
+Provides:       locale(libreoffice:es_GT)
+Provides:       locale(seamonkey-spellchecker:es_GT)
+BuildArch:      noarch
+
+%description -n myspell-es_GT
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_GQ
+Summary:        MySpell es_GQ Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:es_GQ)
+Provides:       locale(seamonkey-spellchecker:es_GQ)
+BuildArch:      noarch
+
+%description -n myspell-es_GQ
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_BO
+Summary:        MySpell es_BO Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-bolivian
+Provides:       locale(libreoffice:es_BO)
+Provides:       locale(seamonkey-spellchecker:es_BO)
+BuildArch:      noarch
+
+%description -n myspell-es_BO
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_ES
+Summary:        MySpell es_ES Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish
+Provides:       locale(libreoffice:es_ES)
+Provides:       locale(seamonkey-spellchecker:es_ES)
+BuildArch:      noarch
+
+%description -n myspell-es_ES
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_EC
+Summary:        MySpell es_EC Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-ecuadorian
+Provides:       locale(libreoffice:es_EC)
+Provides:       locale(seamonkey-spellchecker:es_EC)
+BuildArch:      noarch
+
+%description -n myspell-es_EC
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_HN
+Summary:        MySpell es_HN Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-honduran
+Provides:       locale(libreoffice:es_HN)
+Provides:       locale(seamonkey-spellchecker:es_HN)
+BuildArch:      noarch
+
+%description -n myspell-es_HN
 Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_CR
@@ -979,17 +1132,67 @@ BuildArch:      noarch
 %description -n myspell-es_CU
 Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
-%package -n myspell-es_MX
-Summary:        MySpell es_MX Dictionary
+%package -n myspell-es_CL
+Summary:        MySpell es_CL Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-es
 Provides:       myspell-dictionary
-Provides:       myspell-mexican
-Provides:       locale(libreoffice:es_MX)
-Provides:       locale(seamonkey-spellchecker:es_MX)
+Provides:       myspell-spanish-chilean
+Provides:       locale(libreoffice:es_CL)
+Provides:       locale(seamonkey-spellchecker:es_CL)
 BuildArch:      noarch
 
-%description -n myspell-es_MX
+%description -n myspell-es_CL
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_CO
+Summary:        MySpell es_CO Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-colombian
+Provides:       locale(libreoffice:es_CO)
+Provides:       locale(seamonkey-spellchecker:es_CO)
+BuildArch:      noarch
+
+%description -n myspell-es_CO
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_NI
+Summary:        MySpell es_NI Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       myspell-spanish-nicaraguan
+Provides:       locale(libreoffice:es_NI)
+Provides:       locale(seamonkey-spellchecker:es_NI)
+BuildArch:      noarch
+
+%description -n myspell-es_NI
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es
+Summary:        MySpell es Dictionary
+Requires:       myspell-dictionaries
+Recommends:     myspell-es_ES
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:es)
+Provides:       locale(seamonkey-spellchecker:es)
+BuildArch:      noarch
+
+%description -n myspell-es
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_PH
+Summary:        MySpell es_PH Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:es_PH)
+Provides:       locale(seamonkey-spellchecker:es_PH)
+BuildArch:      noarch
+
+%description -n myspell-es_PH
 Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_PA
@@ -1044,148 +1247,6 @@ BuildArch:      noarch
 %description -n myspell-es_PR
 Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
-%package -n myspell-es_CL
-Summary:        MySpell es_CL Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-chilean
-Provides:       locale(libreoffice:es_CL)
-Provides:       locale(seamonkey-spellchecker:es_CL)
-BuildArch:      noarch
-
-%description -n myspell-es_CL
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_CO
-Summary:        MySpell es_CO Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-colombian
-Provides:       locale(libreoffice:es_CO)
-Provides:       locale(seamonkey-spellchecker:es_CO)
-BuildArch:      noarch
-
-%description -n myspell-es_CO
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_ES
-Summary:        MySpell es_ES Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish
-Provides:       locale(libreoffice:es_ES)
-Provides:       locale(seamonkey-spellchecker:es_ES)
-BuildArch:      noarch
-
-%description -n myspell-es_ES
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_DO
-Summary:        MySpell es_DO Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-dominican
-Provides:       locale(libreoffice:es_DO)
-Provides:       locale(seamonkey-spellchecker:es_DO)
-BuildArch:      noarch
-
-%description -n myspell-es_DO
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_EC
-Summary:        MySpell es_EC Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-ecuadorian
-Provides:       locale(libreoffice:es_EC)
-Provides:       locale(seamonkey-spellchecker:es_EC)
-BuildArch:      noarch
-
-%description -n myspell-es_EC
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_NI
-Summary:        MySpell es_NI Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-nicaraguan
-Provides:       locale(libreoffice:es_NI)
-Provides:       locale(seamonkey-spellchecker:es_NI)
-BuildArch:      noarch
-
-%description -n myspell-es_NI
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_GT
-Summary:        MySpell es_GT Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-guatemalan
-Provides:       locale(libreoffice:es_GT)
-Provides:       locale(seamonkey-spellchecker:es_GT)
-BuildArch:      noarch
-
-%description -n myspell-es_GT
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_GQ
-Summary:        MySpell es_GQ Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:es_GQ)
-Provides:       locale(seamonkey-spellchecker:es_GQ)
-BuildArch:      noarch
-
-%description -n myspell-es_GQ
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_HN
-Summary:        MySpell es_HN Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-honduran
-Provides:       locale(libreoffice:es_HN)
-Provides:       locale(seamonkey-spellchecker:es_HN)
-BuildArch:      noarch
-
-%description -n myspell-es_HN
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_SV
-Summary:        MySpell es_SV Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-salvadorean
-Provides:       locale(libreoffice:es_SV)
-Provides:       locale(seamonkey-spellchecker:es_SV)
-BuildArch:      noarch
-
-%description -n myspell-es_SV
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_BO
-Summary:        MySpell es_BO Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-bolivian
-Provides:       locale(libreoffice:es_BO)
-Provides:       locale(seamonkey-spellchecker:es_BO)
-BuildArch:      noarch
-
-%description -n myspell-es_BO
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
 %package -n myspell-es_US
 Summary:        MySpell es_US Dictionary
 Requires:       myspell-dictionaries
@@ -1196,31 +1257,6 @@ Provides:       locale(seamonkey-spellchecker:es_US)
 BuildArch:      noarch
 
 %description -n myspell-es_US
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es_AR
-Summary:        MySpell es_AR Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-argentine
-Provides:       locale(libreoffice:es_AR)
-Provides:       locale(seamonkey-spellchecker:es_AR)
-BuildArch:      noarch
-
-%description -n myspell-es_AR
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
-%package -n myspell-es
-Summary:        MySpell es Dictionary
-Requires:       myspell-dictionaries
-Recommends:     myspell-es_ES
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:es)
-Provides:       locale(seamonkey-spellchecker:es)
-BuildArch:      noarch
-
-%description -n myspell-es
 Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_UY
@@ -1236,19 +1272,6 @@ BuildArch:      noarch
 %description -n myspell-es_UY
 Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
-%package -n myspell-es_VE
-Summary:        MySpell es_VE Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-es
-Provides:       myspell-dictionary
-Provides:       myspell-spanish-venezuelan
-Provides:       locale(libreoffice:es_VE)
-Provides:       locale(seamonkey-spellchecker:es_VE)
-BuildArch:      noarch
-
-%description -n myspell-es_VE
-Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
-
 %package -n myspell-et_EE
 Summary:        MySpell et_EE Dictionary
 Requires:       myspell-dictionaries
@@ -1260,18 +1283,6 @@ BuildArch:      noarch
 
 %description -n myspell-et_EE
 Estonian spelling dictionary, and hyphenation rules.
-
-%package -n myspell-fr_LU
-Summary:        MySpell fr_LU Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-fr_FR
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:fr_LU)
-Provides:       locale(seamonkey-spellchecker:fr_LU)
-BuildArch:      noarch
-
-%description -n myspell-fr_LU
-French spelling dictionary, hyphenation rules, and thesaurus.
 
 %package -n myspell-fr_BE
 Summary:        MySpell fr_BE Dictionary
@@ -1295,6 +1306,18 @@ Provides:       locale(seamonkey-spellchecker:fr_MC)
 BuildArch:      noarch
 
 %description -n myspell-fr_MC
+French spelling dictionary, hyphenation rules, and thesaurus.
+
+%package -n myspell-fr_LU
+Summary:        MySpell fr_LU Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-fr_FR
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:fr_LU)
+Provides:       locale(seamonkey-spellchecker:fr_LU)
+BuildArch:      noarch
+
+%description -n myspell-fr_LU
 French spelling dictionary, hyphenation rules, and thesaurus.
 
 %package -n myspell-fr_CH
@@ -1346,18 +1369,6 @@ BuildArch:      noarch
 %description -n myspell-gd_GB
 Scottish Gaelic spell checker.
 
-%package -n myspell-gl
-Summary:        MySpell gl Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       myspell-galician
-Provides:       locale(libreoffice:gl)
-Provides:       locale(seamonkey-spellchecker:gl)
-BuildArch:      noarch
-
-%description -n myspell-gl
-Galician spelling dictionary, hyphenation rules, and thesaurus.
-
 %package -n myspell-gl_ES
 Summary:        MySpell gl_ES Dictionary
 Requires:       myspell-dictionaries
@@ -1368,6 +1379,18 @@ Provides:       locale(seamonkey-spellchecker:gl_ES)
 BuildArch:      noarch
 
 %description -n myspell-gl_ES
+Galician spelling dictionary, hyphenation rules, and thesaurus.
+
+%package -n myspell-gl
+Summary:        MySpell gl Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       myspell-galician
+Provides:       locale(libreoffice:gl)
+Provides:       locale(seamonkey-spellchecker:gl)
+BuildArch:      noarch
+
+%description -n myspell-gl
 Galician spelling dictionary, hyphenation rules, and thesaurus.
 
 %package -n myspell-gug
@@ -1522,16 +1545,16 @@ BuildArch:      noarch
 %description -n myspell-it_IT
 Italian spelling dictionary, hyphenation rules, and thesaurus.
 
-%package -n myspell-kmr_Latn_TR
-Summary:        MySpell kmr_Latn_TR Dictionary
+%package -n myspell-kmr_Latn_SY
+Summary:        MySpell kmr_Latn_SY Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-kmr_Latn
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:kmr_Latn_TR)
-Provides:       locale(seamonkey-spellchecker:kmr_Latn_TR)
+Provides:       locale(libreoffice:kmr_Latn_SY)
+Provides:       locale(seamonkey-spellchecker:kmr_Latn_SY)
 BuildArch:      noarch
 
-%description -n myspell-kmr_Latn_TR
+%description -n myspell-kmr_Latn_SY
 Kurdish (Turkey) spelling dictionary.
 
 %package -n myspell-kmr_Latn
@@ -1545,16 +1568,16 @@ BuildArch:      noarch
 %description -n myspell-kmr_Latn
 Kurdish (Turkey) spelling dictionary.
 
-%package -n myspell-kmr_Latn_SY
-Summary:        MySpell kmr_Latn_SY Dictionary
+%package -n myspell-kmr_Latn_TR
+Summary:        MySpell kmr_Latn_TR Dictionary
 Requires:       myspell-dictionaries
 Requires:       myspell-kmr_Latn
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:kmr_Latn_SY)
-Provides:       locale(seamonkey-spellchecker:kmr_Latn_SY)
+Provides:       locale(libreoffice:kmr_Latn_TR)
+Provides:       locale(seamonkey-spellchecker:kmr_Latn_TR)
 BuildArch:      noarch
 
-%description -n myspell-kmr_Latn_SY
+%description -n myspell-kmr_Latn_TR
 Kurdish (Turkey) spelling dictionary.
 
 %package -n myspell-ko_KR
@@ -1603,6 +1626,29 @@ BuildArch:      noarch
 %description -n myspell-lv_LV
 Latvian spelling dictionary, and hyphenation rules.
 
+%package -n myspell-mn_MN
+Summary:        MySpell mn_MN Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:mn_MN)
+Provides:       locale(seamonkey-spellchecker:mn_MN)
+BuildArch:      noarch
+
+%description -n myspell-mn_MN
+Mongolian spelling and hyphenation dictionaries.
+
+%package -n myspell-mn_Cyrl_MN
+Summary:        MySpell mn_Cyrl_MN Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-mn_MN
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:mn_Cyrl_MN)
+Provides:       locale(seamonkey-spellchecker:mn_Cyrl_MN)
+BuildArch:      noarch
+
+%description -n myspell-mn_Cyrl_MN
+Mongolian spelling and hyphenation dictionaries.
+
 %package -n myspell-ne_NP
 Summary:        MySpell ne_NP Dictionary
 Requires:       myspell-dictionaries
@@ -1613,18 +1659,6 @@ BuildArch:      noarch
 
 %description -n myspell-ne_NP
 Nepali spelling dictionary, and thesaurus.
-
-%package -n myspell-nl_NL
-Summary:        MySpell nl_NL Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       myspell-dutch
-Provides:       locale(libreoffice:nl_NL)
-Provides:       locale(seamonkey-spellchecker:nl_NL)
-BuildArch:      noarch
-
-%description -n myspell-nl_NL
-Dutch spelling dictionary, and hyphenation rules.
 
 %package -n myspell-nl_BE
 Summary:        MySpell nl_BE Dictionary
@@ -1638,17 +1672,17 @@ BuildArch:      noarch
 %description -n myspell-nl_BE
 Dutch spelling dictionary, and hyphenation rules.
 
-%package -n myspell-no
-Summary:        MySpell no Dictionary
+%package -n myspell-nl_NL
+Summary:        MySpell nl_NL Dictionary
 Requires:       myspell-dictionaries
-Recommends:     myspell-nb_NO
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:no)
-Provides:       locale(seamonkey-spellchecker:no)
+Provides:       myspell-dutch
+Provides:       locale(libreoffice:nl_NL)
+Provides:       locale(seamonkey-spellchecker:nl_NL)
 BuildArch:      noarch
 
-%description -n myspell-no
-Norwegian (Nynorsk and Bokmål) spelling dictionary, hyphenation rules, and thesaurus.
+%description -n myspell-nl_NL
+Dutch spelling dictionary, and hyphenation rules.
 
 %package -n myspell-nb_NO
 Summary:        MySpell nb_NO Dictionary
@@ -1661,6 +1695,18 @@ Provides:       locale(seamonkey-spellchecker:nb_NO)
 BuildArch:      noarch
 
 %description -n myspell-nb_NO
+Norwegian (Nynorsk and Bokmål) spelling dictionary, hyphenation rules, and thesaurus.
+
+%package -n myspell-no
+Summary:        MySpell no Dictionary
+Requires:       myspell-dictionaries
+Recommends:     myspell-nb_NO
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:no)
+Provides:       locale(seamonkey-spellchecker:no)
+BuildArch:      noarch
+
+%description -n myspell-no
 Norwegian (Nynorsk and Bokmål) spelling dictionary, hyphenation rules, and thesaurus.
 
 %package -n myspell-nn_NO
@@ -1713,7 +1759,7 @@ Provides:       locale(seamonkey-spellchecker:pt_BR)
 BuildArch:      noarch
 
 %description -n myspell-pt_BR
-Spelling, hyphenation and grammar checking tools for Brazilian Portuguese.
+Spelling, thesaurus, hyphenation and grammar checking tools for Brazilian Portuguese.
 
 %package -n myspell-lightproof-pt_BR
 Summary:        Lightproof for pt_BR
@@ -1734,18 +1780,6 @@ BuildArch:      noarch
 %description -n myspell-pt_PT
 Portuguese, Portugal spelling and hyphenation dictionaries and thesaurus.
 
-%package -n myspell-ro_RO
-Summary:        MySpell ro_RO Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-ro
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:ro_RO)
-Provides:       locale(seamonkey-spellchecker:ro_RO)
-BuildArch:      noarch
-
-%description -n myspell-ro_RO
-rospell Romanian spelling dictionary, hyphenation rules, and thesaurus.
-
 %package -n myspell-ro
 Summary:        MySpell ro Dictionary
 Requires:       myspell-dictionaries
@@ -1758,6 +1792,18 @@ Provides:       locale(seamonkey-spellchecker:ro)
 BuildArch:      noarch
 
 %description -n myspell-ro
+rospell Romanian spelling dictionary, hyphenation rules, and thesaurus.
+
+%package -n myspell-ro_RO
+Summary:        MySpell ro_RO Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-ro
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ro_RO)
+Provides:       locale(seamonkey-spellchecker:ro_RO)
+BuildArch:      noarch
+
+%description -n myspell-ro_RO
 rospell Romanian spelling dictionary, hyphenation rules, and thesaurus.
 
 %package -n myspell-ru_RU
@@ -1828,7 +1874,32 @@ Provides:       locale(seamonkey-spellchecker:sq_AL)
 BuildArch:      noarch
 
 %description -n myspell-sq_AL
-Albanian spelling dictionary.
+Albanian spelling dictionary, and hyphenation rules.
+
+%package -n myspell-sr
+Summary:        MySpell sr Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       myspell-serbian-cyrillic
+Provides:       myspell-serbian-latin
+Provides:       locale(libreoffice:sr)
+Provides:       locale(seamonkey-spellchecker:sr)
+BuildArch:      noarch
+
+%description -n myspell-sr
+Serbian (Cyrillic and Latin) spelling dictionary, and hyphenation rules.
+
+%package -n myspell-sr_RS
+Summary:        MySpell sr_RS Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-sr
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:sr_RS)
+Provides:       locale(seamonkey-spellchecker:sr_RS)
+BuildArch:      noarch
+
+%description -n myspell-sr_RS
+Serbian (Cyrillic and Latin) spelling dictionary, and hyphenation rules.
 
 %package -n myspell-sr_Latn_CS
 Summary:        MySpell sr_Latn_CS Dictionary
@@ -1854,19 +1925,6 @@ BuildArch:      noarch
 %description -n myspell-sr_CS
 Serbian (Cyrillic and Latin) spelling dictionary, and hyphenation rules.
 
-%package -n myspell-sr
-Summary:        MySpell sr Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       myspell-serbian-cyrillic
-Provides:       myspell-serbian-latin
-Provides:       locale(libreoffice:sr)
-Provides:       locale(seamonkey-spellchecker:sr)
-BuildArch:      noarch
-
-%description -n myspell-sr
-Serbian (Cyrillic and Latin) spelling dictionary, and hyphenation rules.
-
 %package -n myspell-sr_Latn_RS
 Summary:        MySpell sr_Latn_RS Dictionary
 Requires:       myspell-dictionaries
@@ -1879,17 +1937,17 @@ BuildArch:      noarch
 %description -n myspell-sr_Latn_RS
 Serbian (Cyrillic and Latin) spelling dictionary, and hyphenation rules.
 
-%package -n myspell-sr_RS
-Summary:        MySpell sr_RS Dictionary
+%package -n myspell-sv_FI
+Summary:        MySpell sv_FI Dictionary
 Requires:       myspell-dictionaries
-Requires:       myspell-sr
+Requires:       myspell-sv_SE
 Provides:       myspell-dictionary
-Provides:       locale(libreoffice:sr_RS)
-Provides:       locale(seamonkey-spellchecker:sr_RS)
+Provides:       locale(libreoffice:sv_FI)
+Provides:       locale(seamonkey-spellchecker:sv_FI)
 BuildArch:      noarch
 
-%description -n myspell-sr_RS
-Serbian (Cyrillic and Latin) spelling dictionary, and hyphenation rules.
+%description -n myspell-sv_FI
+Swedish Dictionary.
 
 %package -n myspell-sv_SE
 Summary:        MySpell sv_SE Dictionary
@@ -1904,18 +1962,6 @@ BuildArch:      noarch
 %description -n myspell-sv_SE
 Swedish Dictionary.
 
-%package -n myspell-sv_FI
-Summary:        MySpell sv_FI Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-sv_SE
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:sv_FI)
-Provides:       locale(seamonkey-spellchecker:sv_FI)
-BuildArch:      noarch
-
-%description -n myspell-sv_FI
-Swedish Dictionary.
-
 %package -n myspell-sw_TZ
 Summary:        MySpell sw_TZ Dictionary
 Requires:       myspell-dictionaries
@@ -1928,6 +1974,17 @@ BuildArch:      noarch
 %description -n myspell-sw_TZ
 Swahili spelling dictionary.
 
+%package -n myspell-te_IN
+Summary:        MySpell te_IN Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:te_IN)
+Provides:       locale(seamonkey-spellchecker:te_IN)
+BuildArch:      noarch
+
+%description -n myspell-te_IN
+Telugu spelling dictionary, and hyphenation rules.
+
 %package -n myspell-te
 Summary:        MySpell te Dictionary
 Requires:       myspell-dictionaries
@@ -1938,17 +1995,6 @@ Provides:       locale(seamonkey-spellchecker:te)
 BuildArch:      noarch
 
 %description -n myspell-te
-Telugu spelling dictionary, and hyphenation rules.
-
-%package -n myspell-te_IN
-Summary:        MySpell te_IN Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:te_IN)
-Provides:       locale(seamonkey-spellchecker:te_IN)
-BuildArch:      noarch
-
-%description -n myspell-te_IN
 Telugu spelling dictionary, and hyphenation rules.
 
 %package -n myspell-th_TH
@@ -1963,6 +2009,17 @@ BuildArch:      noarch
 %description -n myspell-th_TH
 Thai spelling dictionary.
 
+%package -n myspell-tr_TR
+Summary:        MySpell tr_TR Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:tr_TR)
+Provides:       locale(seamonkey-spellchecker:tr_TR)
+BuildArch:      noarch
+
+%description -n myspell-tr_TR
+Turkish Spellcheck Dictionary.
+
 %package -n myspell-tr
 Summary:        MySpell tr Dictionary
 Requires:       myspell-dictionaries
@@ -1973,17 +2030,6 @@ Provides:       locale(seamonkey-spellchecker:tr)
 BuildArch:      noarch
 
 %description -n myspell-tr
-Turkish Spellcheck Dictionary.
-
-%package -n myspell-tr_TR
-Summary:        MySpell tr_TR Dictionary
-Requires:       myspell-dictionaries
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:tr_TR)
-Provides:       locale(seamonkey-spellchecker:tr_TR)
-BuildArch:      noarch
-
-%description -n myspell-tr_TR
 Turkish Spellcheck Dictionary.
 
 %package -n myspell-uk_UA
@@ -2226,10 +2272,14 @@ cp -P ar/COPYING.txt %{buildroot}%{_docdir}/myspell-ar/COPYING.txt
 cp -P ar/README_ar.txt %{buildroot}%{_docdir}/myspell-ar/README_ar.txt
 cp -P ar/description.xml %{buildroot}%{_docdir}/myspell-ar/description.xml
 cp -P ar/dictionaries.xcu %{buildroot}%{_docdir}/myspell-ar/dictionaries.xcu
-cp -P be_BY/be_BY.aff %{buildroot}%{_datadir}/hunspell/be_BY.aff
+ln -s %{_datadir}/hunspell/be-official.aff %{buildroot}%{_datadir}/hunspell/be_BY.aff
 ln -s %{_datadir}/hunspell/be_BY.aff %{buildroot}%{_datadir}/myspell/be_BY.aff
-cp -P be_BY/be_BY.dic %{buildroot}%{_datadir}/hunspell/be_BY.dic
+cp -P be_BY/be-official.aff %{buildroot}%{_datadir}/hunspell/be-official.aff
+ln -s %{_datadir}/hunspell/be-official.aff %{buildroot}%{_datadir}/myspell/be-official.aff
+ln -s %{_datadir}/hunspell/be-official.dic %{buildroot}%{_datadir}/hunspell/be_BY.dic
 ln -s %{_datadir}/hunspell/be_BY.dic %{buildroot}%{_datadir}/myspell/be_BY.dic
+cp -P be_BY/be-official.dic %{buildroot}%{_datadir}/hunspell/be-official.dic
+ln -s %{_datadir}/hunspell/be-official.dic %{buildroot}%{_datadir}/myspell/be-official.dic
 cp -P be_BY/hyph_be_BY.dic %{buildroot}%{_datadir}/hyphen/hyph_be_BY.dic
 ln -s %{_datadir}/hyphen/hyph_be_BY.dic %{buildroot}%{_datadir}/myspell/hyph_be_BY.dic
 mkdir -p %{buildroot}%{_docdir}/myspell-be_BY
@@ -2664,6 +2714,37 @@ cp -P en/description.xml %{buildroot}%{_docdir}/myspell-en/description.xml
 cp -P en/dictionaries.xcu %{buildroot}%{_docdir}/myspell-en/dictionaries.xcu
 cp -P en/license.txt %{buildroot}%{_docdir}/myspell-en/license.txt
 cp -P en/package-description.txt %{buildroot}%{_docdir}/myspell-en/package-description.txt
+ln -s %{_datadir}/hunspell/eo.aff %{buildroot}%{_datadir}/hunspell/eo_EO.aff
+ln -s %{_datadir}/hunspell/eo_EO.aff %{buildroot}%{_datadir}/myspell/eo_EO.aff
+cp -P eo/eo.aff %{buildroot}%{_datadir}/hunspell/eo.aff
+ln -s %{_datadir}/hunspell/eo.aff %{buildroot}%{_datadir}/myspell/eo.aff
+ln -s %{_datadir}/hunspell/eo.dic %{buildroot}%{_datadir}/hunspell/eo_EO.dic
+ln -s %{_datadir}/hunspell/eo_EO.dic %{buildroot}%{_datadir}/myspell/eo_EO.dic
+cp -P eo/eo.dic %{buildroot}%{_datadir}/hunspell/eo.dic
+ln -s %{_datadir}/hunspell/eo.dic %{buildroot}%{_datadir}/myspell/eo.dic
+ln -s %{_datadir}/hyphen/hyph_eo.dic %{buildroot}%{_datadir}/hyphen/hyph_eo_EO.dic
+ln -s %{_datadir}/hyphen/hyph_eo_EO.dic %{buildroot}%{_datadir}/myspell/hyph_eo_EO.dic
+cp -P eo/hyph_eo.dic %{buildroot}%{_datadir}/hyphen/hyph_eo.dic
+ln -s %{_datadir}/hyphen/hyph_eo.dic %{buildroot}%{_datadir}/myspell/hyph_eo.dic
+ln -s %{_datadir}/mythes/th_eo.dat %{buildroot}%{_datadir}/mythes/th_eo_v2.dat
+ln -s %{_datadir}/mythes/th_eo_v2.dat %{buildroot}%{_datadir}/myspell/th_eo_v2.dat
+ln -s %{_datadir}/mythes/th_eo.dat %{buildroot}%{_datadir}/mythes/th_eo_EO_v2.dat
+ln -s %{_datadir}/mythes/th_eo_EO_v2.dat %{buildroot}%{_datadir}/myspell/th_eo_EO_v2.dat
+cp -P eo/th_eo.dat %{buildroot}%{_datadir}/mythes/th_eo.dat
+ln -s %{_datadir}/mythes/th_eo.dat %{buildroot}%{_datadir}/myspell/th_eo.dat
+ln -s %{_datadir}/mythes/th_eo.idx %{buildroot}%{_datadir}/mythes/th_eo_v2.idx
+ln -s %{_datadir}/mythes/th_eo_v2.idx %{buildroot}%{_datadir}/myspell/th_eo_v2.idx
+ln -s %{_datadir}/mythes/th_eo.idx %{buildroot}%{_datadir}/mythes/th_eo_EO_v2.idx
+ln -s %{_datadir}/mythes/th_eo_EO_v2.idx %{buildroot}%{_datadir}/myspell/th_eo_EO_v2.idx
+cp -P eo/th_eo.idx %{buildroot}%{_datadir}/mythes/th_eo.idx
+ln -s %{_datadir}/mythes/th_eo.idx %{buildroot}%{_datadir}/myspell/th_eo.idx
+mkdir -p %{buildroot}%{_docdir}/myspell-eo
+cp -P eo/desc_en.txt %{buildroot}%{_docdir}/myspell-eo/desc_en.txt
+cp -P eo/desc_eo.txt %{buildroot}%{_docdir}/myspell-eo/desc_eo.txt
+cp -P eo/description.xml %{buildroot}%{_docdir}/myspell-eo/description.xml
+cp -P eo/dictionaries.xcu %{buildroot}%{_docdir}/myspell-eo/dictionaries.xcu
+cp -P eo/license-en.txt %{buildroot}%{_docdir}/myspell-eo/license-en.txt
+cp -P eo/package-description.txt %{buildroot}%{_docdir}/myspell-eo/package-description.txt
 cp -P es/es.aff %{buildroot}%{_datadir}/hunspell/es.aff
 ln -s %{_datadir}/hunspell/es.aff %{buildroot}%{_datadir}/myspell/es.aff
 cp -P es/es_AR.aff %{buildroot}%{_datadir}/hunspell/es_AR.aff
@@ -3270,6 +3351,23 @@ cp -P lv_LV/README_th_lv_LV_v2.txt %{buildroot}%{_docdir}/myspell-lv_LV/README_t
 cp -P lv_LV/description.xml %{buildroot}%{_docdir}/myspell-lv_LV/description.xml
 cp -P lv_LV/dictionaries.xcu %{buildroot}%{_docdir}/myspell-lv_LV/dictionaries.xcu
 cp -P lv_LV/license.txt %{buildroot}%{_docdir}/myspell-lv_LV/license.txt
+ln -s %{_datadir}/hyphen/hyph_mn_MN.dic %{buildroot}%{_datadir}/hyphen/hyph_mn_Cyrl_MN.dic
+ln -s %{_datadir}/hyphen/hyph_mn_Cyrl_MN.dic %{buildroot}%{_datadir}/myspell/hyph_mn_Cyrl_MN.dic
+cp -P mn_MN/hyph_mn_MN.dic %{buildroot}%{_datadir}/hyphen/hyph_mn_MN.dic
+ln -s %{_datadir}/hyphen/hyph_mn_MN.dic %{buildroot}%{_datadir}/myspell/hyph_mn_MN.dic
+ln -s %{_datadir}/hunspell/mn_MN.aff %{buildroot}%{_datadir}/hunspell/mn_Cyrl_MN.aff
+ln -s %{_datadir}/hunspell/mn_Cyrl_MN.aff %{buildroot}%{_datadir}/myspell/mn_Cyrl_MN.aff
+cp -P mn_MN/mn_MN.aff %{buildroot}%{_datadir}/hunspell/mn_MN.aff
+ln -s %{_datadir}/hunspell/mn_MN.aff %{buildroot}%{_datadir}/myspell/mn_MN.aff
+ln -s %{_datadir}/hunspell/mn_MN.dic %{buildroot}%{_datadir}/hunspell/mn_Cyrl_MN.dic
+ln -s %{_datadir}/hunspell/mn_Cyrl_MN.dic %{buildroot}%{_datadir}/myspell/mn_Cyrl_MN.dic
+cp -P mn_MN/mn_MN.dic %{buildroot}%{_datadir}/hunspell/mn_MN.dic
+ln -s %{_datadir}/hunspell/mn_MN.dic %{buildroot}%{_datadir}/myspell/mn_MN.dic
+mkdir -p %{buildroot}%{_docdir}/myspell-mn_MN
+cp -P mn_MN/README_mn_MN.txt %{buildroot}%{_docdir}/myspell-mn_MN/README_mn_MN.txt
+cp -P mn_MN/description.xml %{buildroot}%{_docdir}/myspell-mn_MN/description.xml
+cp -P mn_MN/dictionaries.xcu %{buildroot}%{_docdir}/myspell-mn_MN/dictionaries.xcu
+cp -P mn_MN/lppl.txt %{buildroot}%{_docdir}/myspell-mn_MN/lppl.txt
 cp -P ne_NP/ne_NP.aff %{buildroot}%{_datadir}/hunspell/ne_NP.aff
 ln -s %{_datadir}/hunspell/ne_NP.aff %{buildroot}%{_datadir}/myspell/ne_NP.aff
 cp -P ne_NP/ne_NP.dic %{buildroot}%{_datadir}/hunspell/ne_NP.dic
@@ -3361,6 +3459,14 @@ cp -P pt_BR/pt_BR.aff %{buildroot}%{_datadir}/hunspell/pt_BR.aff
 ln -s %{_datadir}/hunspell/pt_BR.aff %{buildroot}%{_datadir}/myspell/pt_BR.aff
 cp -P pt_BR/pt_BR.dic %{buildroot}%{_datadir}/hunspell/pt_BR.dic
 ln -s %{_datadir}/hunspell/pt_BR.dic %{buildroot}%{_datadir}/myspell/pt_BR.dic
+ln -s %{_datadir}/mythes/th_pt_BR.dat %{buildroot}%{_datadir}/mythes/th_pt_BR_v2.dat
+ln -s %{_datadir}/mythes/th_pt_BR_v2.dat %{buildroot}%{_datadir}/myspell/th_pt_BR_v2.dat
+cp -P pt_BR/th_pt_BR.dat %{buildroot}%{_datadir}/mythes/th_pt_BR.dat
+ln -s %{_datadir}/mythes/th_pt_BR.dat %{buildroot}%{_datadir}/myspell/th_pt_BR.dat
+ln -s %{_datadir}/mythes/th_pt_BR.idx %{buildroot}%{_datadir}/mythes/th_pt_BR_v2.idx
+ln -s %{_datadir}/mythes/th_pt_BR_v2.idx %{buildroot}%{_datadir}/myspell/th_pt_BR_v2.idx
+cp -P pt_BR/th_pt_BR.idx %{buildroot}%{_datadir}/mythes/th_pt_BR.idx
+ln -s %{_datadir}/mythes/th_pt_BR.idx %{buildroot}%{_datadir}/myspell/th_pt_BR.idx
 mkdir -p %{buildroot}%{_libdir}/libreoffice/share/extensions/lightproof-pt_BR
 cp -rP pt_BR/Lightproof.components %{buildroot}%{_libdir}/libreoffice/share/extensions/lightproof-pt_BR/Lightproof.components
 cp -rP pt_BR/Lightproof.py %{buildroot}%{_libdir}/libreoffice/share/extensions/lightproof-pt_BR/Lightproof.py
@@ -3379,6 +3485,7 @@ cp -P pt_BR/README_pt_BR.txt %{buildroot}%{_docdir}/myspell-pt_BR/README_pt_BR.t
 cp -P pt_BR/description.xml %{buildroot}%{_docdir}/myspell-pt_BR/description.xml
 cp -P pt_BR/dictionaries.xcu %{buildroot}%{_docdir}/myspell-pt_BR/dictionaries.xcu
 cp -P pt_BR/package-description.txt %{buildroot}%{_docdir}/myspell-pt_BR/package-description.txt
+cp -P pt_BR/thes_data_layout_pt_BR.txt %{buildroot}%{_docdir}/myspell-pt_BR/thes_data_layout_pt_BR.txt
 cp -P pt_PT/hyph_pt_PT.dic %{buildroot}%{_datadir}/hyphen/hyph_pt_PT.dic
 ln -s %{_datadir}/hyphen/hyph_pt_PT.dic %{buildroot}%{_datadir}/myspell/hyph_pt_PT.dic
 cp -P pt_PT/pt_PT.aff %{buildroot}%{_datadir}/hunspell/pt_PT.aff
@@ -3490,12 +3597,15 @@ cp -P sl_SI/description.xml %{buildroot}%{_docdir}/myspell-sl_SI/description.xml
 cp -P sl_SI/dictionaries.xcu %{buildroot}%{_docdir}/myspell-sl_SI/dictionaries.xcu
 cp -P sl_SI/icon.png %{buildroot}%{_docdir}/myspell-sl_SI/icon.png
 cp -P sl_SI/package-description.txt %{buildroot}%{_docdir}/myspell-sl_SI/package-description.txt
+cp -P sq_AL/hyph_sq_AL.dic %{buildroot}%{_datadir}/hyphen/hyph_sq_AL.dic
+ln -s %{_datadir}/hyphen/hyph_sq_AL.dic %{buildroot}%{_datadir}/myspell/hyph_sq_AL.dic
 cp -P sq_AL/sq_AL.aff %{buildroot}%{_datadir}/hunspell/sq_AL.aff
 ln -s %{_datadir}/hunspell/sq_AL.aff %{buildroot}%{_datadir}/myspell/sq_AL.aff
 cp -P sq_AL/sq_AL.dic %{buildroot}%{_datadir}/hunspell/sq_AL.dic
 ln -s %{_datadir}/hunspell/sq_AL.dic %{buildroot}%{_datadir}/myspell/sq_AL.dic
 mkdir -p %{buildroot}%{_docdir}/myspell-sq_AL
 cp -P sq_AL/README.txt %{buildroot}%{_docdir}/myspell-sq_AL/README.txt
+cp -P sq_AL/README_hyph_sq_AL.txt %{buildroot}%{_docdir}/myspell-sq_AL/README_hyph_sq_AL.txt
 cp -P sq_AL/description.xml %{buildroot}%{_docdir}/myspell-sq_AL/description.xml
 cp -P sq_AL/dictionaries.xcu %{buildroot}%{_docdir}/myspell-sq_AL/dictionaries.xcu
 ln -s %{_datadir}/hyphen/hyph_sr.dic %{buildroot}%{_datadir}/hyphen/hyph_sr_RS.dic
@@ -3693,35 +3803,25 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-an_ES/description.xml
 %{_docdir}/myspell-an_ES/dictionaries.xcu
 
-%files -n myspell-ar_IQ
-%{_datadir}/hunspell/ar_IQ.aff
-%{_datadir}/myspell/ar_IQ.aff
-%{_datadir}/hunspell/ar_IQ.dic
-%{_datadir}/myspell/ar_IQ.dic
-%{_datadir}/mythes/th_ar_IQ_v2.dat
-%{_datadir}/myspell/th_ar_IQ_v2.dat
-%{_datadir}/mythes/th_ar_IQ_v2.idx
-%{_datadir}/myspell/th_ar_IQ_v2.idx
+%files -n myspell-ar_DZ
+%{_datadir}/hunspell/ar_DZ.aff
+%{_datadir}/myspell/ar_DZ.aff
+%{_datadir}/hunspell/ar_DZ.dic
+%{_datadir}/myspell/ar_DZ.dic
+%{_datadir}/mythes/th_ar_DZ_v2.dat
+%{_datadir}/myspell/th_ar_DZ_v2.dat
+%{_datadir}/mythes/th_ar_DZ_v2.idx
+%{_datadir}/myspell/th_ar_DZ_v2.idx
 
-%files -n myspell-ar_QA
-%{_datadir}/hunspell/ar_QA.aff
-%{_datadir}/myspell/ar_QA.aff
-%{_datadir}/hunspell/ar_QA.dic
-%{_datadir}/myspell/ar_QA.dic
-%{_datadir}/mythes/th_ar_QA_v2.dat
-%{_datadir}/myspell/th_ar_QA_v2.dat
-%{_datadir}/mythes/th_ar_QA_v2.idx
-%{_datadir}/myspell/th_ar_QA_v2.idx
-
-%files -n myspell-ar_EG
-%{_datadir}/hunspell/ar_EG.aff
-%{_datadir}/myspell/ar_EG.aff
-%{_datadir}/hunspell/ar_EG.dic
-%{_datadir}/myspell/ar_EG.dic
-%{_datadir}/mythes/th_ar_EG_v2.dat
-%{_datadir}/myspell/th_ar_EG_v2.dat
-%{_datadir}/mythes/th_ar_EG_v2.idx
-%{_datadir}/myspell/th_ar_EG_v2.idx
+%files -n myspell-ar_KW
+%{_datadir}/hunspell/ar_KW.aff
+%{_datadir}/myspell/ar_KW.aff
+%{_datadir}/hunspell/ar_KW.dic
+%{_datadir}/myspell/ar_KW.dic
+%{_datadir}/mythes/th_ar_KW_v2.dat
+%{_datadir}/myspell/th_ar_KW_v2.dat
+%{_datadir}/mythes/th_ar_KW_v2.idx
+%{_datadir}/myspell/th_ar_KW_v2.idx
 
 %files -n myspell-ar
 %{_datadir}/hunspell/ar.aff
@@ -3738,86 +3838,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-ar/README_ar.txt
 %{_docdir}/myspell-ar/description.xml
 %{_docdir}/myspell-ar/dictionaries.xcu
-
-%files -n myspell-ar_DZ
-%{_datadir}/hunspell/ar_DZ.aff
-%{_datadir}/myspell/ar_DZ.aff
-%{_datadir}/hunspell/ar_DZ.dic
-%{_datadir}/myspell/ar_DZ.dic
-%{_datadir}/mythes/th_ar_DZ_v2.dat
-%{_datadir}/myspell/th_ar_DZ_v2.dat
-%{_datadir}/mythes/th_ar_DZ_v2.idx
-%{_datadir}/myspell/th_ar_DZ_v2.idx
-
-%files -n myspell-ar_BH
-%{_datadir}/hunspell/ar_BH.aff
-%{_datadir}/myspell/ar_BH.aff
-%{_datadir}/hunspell/ar_BH.dic
-%{_datadir}/myspell/ar_BH.dic
-%{_datadir}/mythes/th_ar_BH_v2.dat
-%{_datadir}/myspell/th_ar_BH_v2.dat
-%{_datadir}/mythes/th_ar_BH_v2.idx
-%{_datadir}/myspell/th_ar_BH_v2.idx
-
-%files -n myspell-ar_YE
-%{_datadir}/hunspell/ar_YE.aff
-%{_datadir}/myspell/ar_YE.aff
-%{_datadir}/hunspell/ar_YE.dic
-%{_datadir}/myspell/ar_YE.dic
-%{_datadir}/mythes/th_ar_YE_v2.dat
-%{_datadir}/myspell/th_ar_YE_v2.dat
-%{_datadir}/mythes/th_ar_YE_v2.idx
-%{_datadir}/myspell/th_ar_YE_v2.idx
-
-%files -n myspell-ar_JO
-%{_datadir}/hunspell/ar_JO.aff
-%{_datadir}/myspell/ar_JO.aff
-%{_datadir}/hunspell/ar_JO.dic
-%{_datadir}/myspell/ar_JO.dic
-%{_datadir}/mythes/th_ar_JO_v2.dat
-%{_datadir}/myspell/th_ar_JO_v2.dat
-%{_datadir}/mythes/th_ar_JO_v2.idx
-%{_datadir}/myspell/th_ar_JO_v2.idx
-
-%files -n myspell-ar_MA
-%{_datadir}/hunspell/ar_MA.aff
-%{_datadir}/myspell/ar_MA.aff
-%{_datadir}/hunspell/ar_MA.dic
-%{_datadir}/myspell/ar_MA.dic
-%{_datadir}/mythes/th_ar_MA_v2.dat
-%{_datadir}/myspell/th_ar_MA_v2.dat
-%{_datadir}/mythes/th_ar_MA_v2.idx
-%{_datadir}/myspell/th_ar_MA_v2.idx
-
-%files -n myspell-ar_KW
-%{_datadir}/hunspell/ar_KW.aff
-%{_datadir}/myspell/ar_KW.aff
-%{_datadir}/hunspell/ar_KW.dic
-%{_datadir}/myspell/ar_KW.dic
-%{_datadir}/mythes/th_ar_KW_v2.dat
-%{_datadir}/myspell/th_ar_KW_v2.dat
-%{_datadir}/mythes/th_ar_KW_v2.idx
-%{_datadir}/myspell/th_ar_KW_v2.idx
-
-%files -n myspell-ar_SA
-%{_datadir}/hunspell/ar_SA.aff
-%{_datadir}/myspell/ar_SA.aff
-%{_datadir}/hunspell/ar_SA.dic
-%{_datadir}/myspell/ar_SA.dic
-%{_datadir}/mythes/th_ar_SA_v2.dat
-%{_datadir}/myspell/th_ar_SA_v2.dat
-%{_datadir}/mythes/th_ar_SA_v2.idx
-%{_datadir}/myspell/th_ar_SA_v2.idx
-
-%files -n myspell-ar_SD
-%{_datadir}/hunspell/ar_SD.aff
-%{_datadir}/myspell/ar_SD.aff
-%{_datadir}/hunspell/ar_SD.dic
-%{_datadir}/myspell/ar_SD.dic
-%{_datadir}/mythes/th_ar_SD_v2.dat
-%{_datadir}/myspell/th_ar_SD_v2.dat
-%{_datadir}/mythes/th_ar_SD_v2.idx
-%{_datadir}/myspell/th_ar_SD_v2.idx
 
 %files -n myspell-ar_LB
 %{_datadir}/hunspell/ar_LB.aff
@@ -3839,15 +3859,55 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_ar_LY_v2.idx
 %{_datadir}/myspell/th_ar_LY_v2.idx
 
-%files -n myspell-ar_OM
-%{_datadir}/hunspell/ar_OM.aff
-%{_datadir}/myspell/ar_OM.aff
-%{_datadir}/hunspell/ar_OM.dic
-%{_datadir}/myspell/ar_OM.dic
-%{_datadir}/mythes/th_ar_OM_v2.dat
-%{_datadir}/myspell/th_ar_OM_v2.dat
-%{_datadir}/mythes/th_ar_OM_v2.idx
-%{_datadir}/myspell/th_ar_OM_v2.idx
+%files -n myspell-ar_AE
+%{_datadir}/hunspell/ar_AE.aff
+%{_datadir}/myspell/ar_AE.aff
+%{_datadir}/hunspell/ar_AE.dic
+%{_datadir}/myspell/ar_AE.dic
+%{_datadir}/mythes/th_ar_AE_v2.dat
+%{_datadir}/myspell/th_ar_AE_v2.dat
+%{_datadir}/mythes/th_ar_AE_v2.idx
+%{_datadir}/myspell/th_ar_AE_v2.idx
+
+%files -n myspell-ar_IQ
+%{_datadir}/hunspell/ar_IQ.aff
+%{_datadir}/myspell/ar_IQ.aff
+%{_datadir}/hunspell/ar_IQ.dic
+%{_datadir}/myspell/ar_IQ.dic
+%{_datadir}/mythes/th_ar_IQ_v2.dat
+%{_datadir}/myspell/th_ar_IQ_v2.dat
+%{_datadir}/mythes/th_ar_IQ_v2.idx
+%{_datadir}/myspell/th_ar_IQ_v2.idx
+
+%files -n myspell-ar_BH
+%{_datadir}/hunspell/ar_BH.aff
+%{_datadir}/myspell/ar_BH.aff
+%{_datadir}/hunspell/ar_BH.dic
+%{_datadir}/myspell/ar_BH.dic
+%{_datadir}/mythes/th_ar_BH_v2.dat
+%{_datadir}/myspell/th_ar_BH_v2.dat
+%{_datadir}/mythes/th_ar_BH_v2.idx
+%{_datadir}/myspell/th_ar_BH_v2.idx
+
+%files -n myspell-ar_SA
+%{_datadir}/hunspell/ar_SA.aff
+%{_datadir}/myspell/ar_SA.aff
+%{_datadir}/hunspell/ar_SA.dic
+%{_datadir}/myspell/ar_SA.dic
+%{_datadir}/mythes/th_ar_SA_v2.dat
+%{_datadir}/myspell/th_ar_SA_v2.dat
+%{_datadir}/mythes/th_ar_SA_v2.idx
+%{_datadir}/myspell/th_ar_SA_v2.idx
+
+%files -n myspell-ar_SD
+%{_datadir}/hunspell/ar_SD.aff
+%{_datadir}/myspell/ar_SD.aff
+%{_datadir}/hunspell/ar_SD.dic
+%{_datadir}/myspell/ar_SD.dic
+%{_datadir}/mythes/th_ar_SD_v2.dat
+%{_datadir}/myspell/th_ar_SD_v2.dat
+%{_datadir}/mythes/th_ar_SD_v2.idx
+%{_datadir}/myspell/th_ar_SD_v2.idx
 
 %files -n myspell-ar_SY
 %{_datadir}/hunspell/ar_SY.aff
@@ -3859,16 +3919,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_ar_SY_v2.idx
 %{_datadir}/myspell/th_ar_SY_v2.idx
 
-%files -n myspell-ar_AE
-%{_datadir}/hunspell/ar_AE.aff
-%{_datadir}/myspell/ar_AE.aff
-%{_datadir}/hunspell/ar_AE.dic
-%{_datadir}/myspell/ar_AE.dic
-%{_datadir}/mythes/th_ar_AE_v2.dat
-%{_datadir}/myspell/th_ar_AE_v2.dat
-%{_datadir}/mythes/th_ar_AE_v2.idx
-%{_datadir}/myspell/th_ar_AE_v2.idx
-
 %files -n myspell-ar_TN
 %{_datadir}/hunspell/ar_TN.aff
 %{_datadir}/myspell/ar_TN.aff
@@ -3879,11 +3929,75 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_ar_TN_v2.idx
 %{_datadir}/myspell/th_ar_TN_v2.idx
 
+%files -n myspell-ar_QA
+%{_datadir}/hunspell/ar_QA.aff
+%{_datadir}/myspell/ar_QA.aff
+%{_datadir}/hunspell/ar_QA.dic
+%{_datadir}/myspell/ar_QA.dic
+%{_datadir}/mythes/th_ar_QA_v2.dat
+%{_datadir}/myspell/th_ar_QA_v2.dat
+%{_datadir}/mythes/th_ar_QA_v2.idx
+%{_datadir}/myspell/th_ar_QA_v2.idx
+
+%files -n myspell-ar_JO
+%{_datadir}/hunspell/ar_JO.aff
+%{_datadir}/myspell/ar_JO.aff
+%{_datadir}/hunspell/ar_JO.dic
+%{_datadir}/myspell/ar_JO.dic
+%{_datadir}/mythes/th_ar_JO_v2.dat
+%{_datadir}/myspell/th_ar_JO_v2.dat
+%{_datadir}/mythes/th_ar_JO_v2.idx
+%{_datadir}/myspell/th_ar_JO_v2.idx
+
+%files -n myspell-ar_EG
+%{_datadir}/hunspell/ar_EG.aff
+%{_datadir}/myspell/ar_EG.aff
+%{_datadir}/hunspell/ar_EG.dic
+%{_datadir}/myspell/ar_EG.dic
+%{_datadir}/mythes/th_ar_EG_v2.dat
+%{_datadir}/myspell/th_ar_EG_v2.dat
+%{_datadir}/mythes/th_ar_EG_v2.idx
+%{_datadir}/myspell/th_ar_EG_v2.idx
+
+%files -n myspell-ar_YE
+%{_datadir}/hunspell/ar_YE.aff
+%{_datadir}/myspell/ar_YE.aff
+%{_datadir}/hunspell/ar_YE.dic
+%{_datadir}/myspell/ar_YE.dic
+%{_datadir}/mythes/th_ar_YE_v2.dat
+%{_datadir}/myspell/th_ar_YE_v2.dat
+%{_datadir}/mythes/th_ar_YE_v2.idx
+%{_datadir}/myspell/th_ar_YE_v2.idx
+
+%files -n myspell-ar_OM
+%{_datadir}/hunspell/ar_OM.aff
+%{_datadir}/myspell/ar_OM.aff
+%{_datadir}/hunspell/ar_OM.dic
+%{_datadir}/myspell/ar_OM.dic
+%{_datadir}/mythes/th_ar_OM_v2.dat
+%{_datadir}/myspell/th_ar_OM_v2.dat
+%{_datadir}/mythes/th_ar_OM_v2.idx
+%{_datadir}/myspell/th_ar_OM_v2.idx
+
+%files -n myspell-ar_MA
+%{_datadir}/hunspell/ar_MA.aff
+%{_datadir}/myspell/ar_MA.aff
+%{_datadir}/hunspell/ar_MA.dic
+%{_datadir}/myspell/ar_MA.dic
+%{_datadir}/mythes/th_ar_MA_v2.dat
+%{_datadir}/myspell/th_ar_MA_v2.dat
+%{_datadir}/mythes/th_ar_MA_v2.idx
+%{_datadir}/myspell/th_ar_MA_v2.idx
+
 %files -n myspell-be_BY
 %{_datadir}/hunspell/be_BY.aff
 %{_datadir}/myspell/be_BY.aff
+%{_datadir}/hunspell/be-official.aff
+%{_datadir}/myspell/be-official.aff
 %{_datadir}/hunspell/be_BY.dic
 %{_datadir}/myspell/be_BY.dic
+%{_datadir}/hunspell/be-official.dic
+%{_datadir}/myspell/be-official.dic
 %{_datadir}/hyphen/hyph_be_BY.dic
 %{_datadir}/myspell/hyph_be_BY.dic
 %dir %{_docdir}/myspell-be_BY
@@ -3956,12 +4070,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-br_FR/description.xml
 %{_docdir}/myspell-br_FR/dictionaries.xcu
 
-%files -n myspell-bs
-%{_datadir}/hunspell/bs.aff
-%{_datadir}/myspell/bs.aff
-%{_datadir}/hunspell/bs.dic
-%{_datadir}/myspell/bs.dic
-
 %files -n myspell-bs_BA
 %{_datadir}/hunspell/bs_BA.aff
 %{_datadir}/myspell/bs_BA.aff
@@ -3971,6 +4079,12 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-bs_BA/README.txt
 %{_docdir}/myspell-bs_BA/description.xml
 %{_docdir}/myspell-bs_BA/dictionaries.xcu
+
+%files -n myspell-bs
+%{_datadir}/hunspell/bs.aff
+%{_datadir}/myspell/bs.aff
+%{_datadir}/hunspell/bs.dic
+%{_datadir}/myspell/bs.dic
 
 %files -n myspell-ca_FR
 %{_datadir}/hunspell/ca_FR.aff
@@ -4008,18 +4122,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_ca_IT_v2.idx
 %{_datadir}/myspell/th_ca_IT_v2.idx
 
-%files -n myspell-ca_ES_valencia
-%{_datadir}/hunspell/ca_ES_valencia.aff
-%{_datadir}/myspell/ca_ES_valencia.aff
-%{_datadir}/hunspell/ca_ES_valencia.dic
-%{_datadir}/myspell/ca_ES_valencia.dic
-%{_datadir}/hyphen/hyph_ca_ES_valencia.dic
-%{_datadir}/myspell/hyph_ca_ES_valencia.dic
-%{_datadir}/mythes/th_ca_ES_valencia_v2.dat
-%{_datadir}/myspell/th_ca_ES_valencia_v2.dat
-%{_datadir}/mythes/th_ca_ES_valencia_v2.idx
-%{_datadir}/myspell/th_ca_ES_valencia_v2.idx
-
 %files -n myspell-ca
 %{_datadir}/hunspell/ca.aff
 %{_datadir}/myspell/ca.aff
@@ -4040,6 +4142,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-ca/description.xml
 %{_docdir}/myspell-ca/dictionaries.xcu
 %{_docdir}/myspell-ca/package-description.txt
+
+%files -n myspell-ca_ES_valencia
+%{_datadir}/hunspell/ca_ES_valencia.aff
+%{_datadir}/myspell/ca_ES_valencia.aff
+%{_datadir}/hunspell/ca_ES_valencia.dic
+%{_datadir}/myspell/ca_ES_valencia.dic
+%{_datadir}/hyphen/hyph_ca_ES_valencia.dic
+%{_datadir}/myspell/hyph_ca_ES_valencia.dic
+%{_datadir}/mythes/th_ca_ES_valencia_v2.dat
+%{_datadir}/myspell/th_ca_ES_valencia_v2.dat
+%{_datadir}/mythes/th_ca_ES_valencia_v2.idx
+%{_datadir}/myspell/th_ca_ES_valencia_v2.idx
 
 %files -n myspell-ca_ES
 %{_datadir}/hunspell/ca_ES.aff
@@ -4102,18 +4216,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-da_DK/th_desc_da_DK.txt
 %{_docdir}/myspell-da_DK/th_desc_en_US.txt
 
-%files -n myspell-de_CH
-%{_datadir}/hunspell/de_CH.aff
-%{_datadir}/myspell/de_CH.aff
-%{_datadir}/hunspell/de_CH.dic
-%{_datadir}/myspell/de_CH.dic
-%{_datadir}/hyphen/hyph_de_CH.dic
-%{_datadir}/myspell/hyph_de_CH.dic
-%{_datadir}/mythes/th_de_CH_v2.dat
-%{_datadir}/myspell/th_de_CH_v2.dat
-%{_datadir}/mythes/th_de_CH_v2.idx
-%{_datadir}/myspell/th_de_CH_v2.idx
-
 %files -n myspell-de
 %dir %{_docdir}/myspell-de
 %{_docdir}/myspell-de/COPYING_GPLv2
@@ -4127,6 +4229,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-de/README_thesaurus.txt
 %{_docdir}/myspell-de/description.xml
 %{_docdir}/myspell-de/dictionaries.xcu
+
+%files -n myspell-de_CH
+%{_datadir}/hunspell/de_CH.aff
+%{_datadir}/myspell/de_CH.aff
+%{_datadir}/hunspell/de_CH.dic
+%{_datadir}/myspell/de_CH.dic
+%{_datadir}/hyphen/hyph_de_CH.dic
+%{_datadir}/myspell/hyph_de_CH.dic
+%{_datadir}/mythes/th_de_CH_v2.dat
+%{_datadir}/myspell/th_de_CH_v2.dat
+%{_datadir}/mythes/th_de_CH_v2.idx
+%{_datadir}/myspell/th_de_CH_v2.idx
 
 %files -n myspell-de_DE
 %{_datadir}/hunspell/de_DE.aff
@@ -4165,18 +4279,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-el_GR/description.xml
 %{_docdir}/myspell-el_GR/dictionaries.xcu
 
-%files -n myspell-en_AU
-%{_datadir}/hunspell/en_AU.aff
-%{_datadir}/myspell/en_AU.aff
-%{_datadir}/hunspell/en_AU.dic
-%{_datadir}/myspell/en_AU.dic
-%{_datadir}/hyphen/hyph_en_AU.dic
-%{_datadir}/myspell/hyph_en_AU.dic
-%{_datadir}/mythes/th_en_AU_v2.dat
-%{_datadir}/myspell/th_en_AU_v2.dat
-%{_datadir}/mythes/th_en_AU_v2.idx
-%{_datadir}/myspell/th_en_AU_v2.idx
-
 %files -n myspell-en_BZ
 %{_datadir}/hunspell/en_BZ.aff
 %{_datadir}/myspell/en_BZ.aff
@@ -4188,30 +4290,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_en_BZ_v2.dat
 %{_datadir}/mythes/th_en_BZ_v2.idx
 %{_datadir}/myspell/th_en_BZ_v2.idx
-
-%files -n myspell-en_JM
-%{_datadir}/hunspell/en_JM.aff
-%{_datadir}/myspell/en_JM.aff
-%{_datadir}/hunspell/en_JM.dic
-%{_datadir}/myspell/en_JM.dic
-%{_datadir}/hyphen/hyph_en_JM.dic
-%{_datadir}/myspell/hyph_en_JM.dic
-%{_datadir}/mythes/th_en_JM_v2.dat
-%{_datadir}/myspell/th_en_JM_v2.dat
-%{_datadir}/mythes/th_en_JM_v2.idx
-%{_datadir}/myspell/th_en_JM_v2.idx
-
-%files -n myspell-en_CA
-%{_datadir}/hunspell/en_CA.aff
-%{_datadir}/myspell/en_CA.aff
-%{_datadir}/hunspell/en_CA.dic
-%{_datadir}/myspell/en_CA.dic
-%{_datadir}/hyphen/hyph_en_CA.dic
-%{_datadir}/myspell/hyph_en_CA.dic
-%{_datadir}/mythes/th_en_CA_v2.dat
-%{_datadir}/myspell/th_en_CA_v2.dat
-%{_datadir}/mythes/th_en_CA_v2.idx
-%{_datadir}/myspell/th_en_CA_v2.idx
 
 %files -n myspell-en_BS
 %{_datadir}/hunspell/en_BS.aff
@@ -4225,6 +4303,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_en_BS_v2.idx
 %{_datadir}/myspell/th_en_BS_v2.idx
 
+%files -n myspell-en_TT
+%{_datadir}/hunspell/en_TT.aff
+%{_datadir}/myspell/en_TT.aff
+%{_datadir}/hunspell/en_TT.dic
+%{_datadir}/myspell/en_TT.dic
+%{_datadir}/hyphen/hyph_en_TT.dic
+%{_datadir}/myspell/hyph_en_TT.dic
+%{_datadir}/mythes/th_en_TT_v2.dat
+%{_datadir}/myspell/th_en_TT_v2.dat
+%{_datadir}/mythes/th_en_TT_v2.idx
+%{_datadir}/myspell/th_en_TT_v2.idx
+
 %files -n myspell-en_MW
 %{_datadir}/hunspell/en_MW.aff
 %{_datadir}/myspell/en_MW.aff
@@ -4236,54 +4326,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_en_MW_v2.dat
 %{_datadir}/mythes/th_en_MW_v2.idx
 %{_datadir}/myspell/th_en_MW_v2.idx
-
-%files -n myspell-en_ZW
-%{_datadir}/hunspell/en_ZW.aff
-%{_datadir}/myspell/en_ZW.aff
-%{_datadir}/hunspell/en_ZW.dic
-%{_datadir}/myspell/en_ZW.dic
-%{_datadir}/hyphen/hyph_en_ZW.dic
-%{_datadir}/myspell/hyph_en_ZW.dic
-%{_datadir}/mythes/th_en_ZW_v2.dat
-%{_datadir}/myspell/th_en_ZW_v2.dat
-%{_datadir}/mythes/th_en_ZW_v2.idx
-%{_datadir}/myspell/th_en_ZW_v2.idx
-
-%files -n myspell-en_NZ
-%{_datadir}/hunspell/en_NZ.aff
-%{_datadir}/myspell/en_NZ.aff
-%{_datadir}/hunspell/en_NZ.dic
-%{_datadir}/myspell/en_NZ.dic
-%{_datadir}/hyphen/hyph_en_NZ.dic
-%{_datadir}/myspell/hyph_en_NZ.dic
-%{_datadir}/mythes/th_en_NZ_v2.dat
-%{_datadir}/myspell/th_en_NZ_v2.dat
-%{_datadir}/mythes/th_en_NZ_v2.idx
-%{_datadir}/myspell/th_en_NZ_v2.idx
-
-%files -n myspell-en_PH
-%{_datadir}/hunspell/en_PH.aff
-%{_datadir}/myspell/en_PH.aff
-%{_datadir}/hunspell/en_PH.dic
-%{_datadir}/myspell/en_PH.dic
-%{_datadir}/hyphen/hyph_en_PH.dic
-%{_datadir}/myspell/hyph_en_PH.dic
-%{_datadir}/mythes/th_en_PH_v2.dat
-%{_datadir}/myspell/th_en_PH_v2.dat
-%{_datadir}/mythes/th_en_PH_v2.idx
-%{_datadir}/myspell/th_en_PH_v2.idx
-
-%files -n myspell-en_ZA
-%{_datadir}/hunspell/en_ZA.aff
-%{_datadir}/myspell/en_ZA.aff
-%{_datadir}/hunspell/en_ZA.dic
-%{_datadir}/myspell/en_ZA.dic
-%{_datadir}/hyphen/hyph_en_ZA.dic
-%{_datadir}/myspell/hyph_en_ZA.dic
-%{_datadir}/mythes/th_en_ZA_v2.dat
-%{_datadir}/myspell/th_en_ZA_v2.dat
-%{_datadir}/mythes/th_en_ZA_v2.idx
-%{_datadir}/myspell/th_en_ZA_v2.idx
 
 %files -n myspell-en_GH
 %{_datadir}/hunspell/en_GH.aff
@@ -4297,6 +4339,54 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_en_GH_v2.idx
 %{_datadir}/myspell/th_en_GH_v2.idx
 
+%files -n myspell-en_GB
+%{_datadir}/hunspell/en_GB.aff
+%{_datadir}/myspell/en_GB.aff
+%{_datadir}/hunspell/en_GB.dic
+%{_datadir}/myspell/en_GB.dic
+%{_datadir}/hyphen/hyph_en_GB.dic
+%{_datadir}/myspell/hyph_en_GB.dic
+%{_datadir}/mythes/th_en_GB_v2.dat
+%{_datadir}/myspell/th_en_GB_v2.dat
+%{_datadir}/mythes/th_en_GB_v2.idx
+%{_datadir}/myspell/th_en_GB_v2.idx
+
+%files -n myspell-en_ZW
+%{_datadir}/hunspell/en_ZW.aff
+%{_datadir}/myspell/en_ZW.aff
+%{_datadir}/hunspell/en_ZW.dic
+%{_datadir}/myspell/en_ZW.dic
+%{_datadir}/hyphen/hyph_en_ZW.dic
+%{_datadir}/myspell/hyph_en_ZW.dic
+%{_datadir}/mythes/th_en_ZW_v2.dat
+%{_datadir}/myspell/th_en_ZW_v2.dat
+%{_datadir}/mythes/th_en_ZW_v2.idx
+%{_datadir}/myspell/th_en_ZW_v2.idx
+
+%files -n myspell-en_ZA
+%{_datadir}/hunspell/en_ZA.aff
+%{_datadir}/myspell/en_ZA.aff
+%{_datadir}/hunspell/en_ZA.dic
+%{_datadir}/myspell/en_ZA.dic
+%{_datadir}/hyphen/hyph_en_ZA.dic
+%{_datadir}/myspell/hyph_en_ZA.dic
+%{_datadir}/mythes/th_en_ZA_v2.dat
+%{_datadir}/myspell/th_en_ZA_v2.dat
+%{_datadir}/mythes/th_en_ZA_v2.idx
+%{_datadir}/myspell/th_en_ZA_v2.idx
+
+%files -n myspell-en_NZ
+%{_datadir}/hunspell/en_NZ.aff
+%{_datadir}/myspell/en_NZ.aff
+%{_datadir}/hunspell/en_NZ.dic
+%{_datadir}/myspell/en_NZ.dic
+%{_datadir}/hyphen/hyph_en_NZ.dic
+%{_datadir}/myspell/hyph_en_NZ.dic
+%{_datadir}/mythes/th_en_NZ_v2.dat
+%{_datadir}/myspell/th_en_NZ_v2.dat
+%{_datadir}/mythes/th_en_NZ_v2.idx
+%{_datadir}/myspell/th_en_NZ_v2.idx
+
 %files -n myspell-en_NA
 %{_datadir}/hunspell/en_NA.aff
 %{_datadir}/myspell/en_NA.aff
@@ -4309,17 +4399,41 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_en_NA_v2.idx
 %{_datadir}/myspell/th_en_NA_v2.idx
 
-%files -n myspell-en_GB
-%{_datadir}/hunspell/en_GB.aff
-%{_datadir}/myspell/en_GB.aff
-%{_datadir}/hunspell/en_GB.dic
-%{_datadir}/myspell/en_GB.dic
-%{_datadir}/hyphen/hyph_en_GB.dic
-%{_datadir}/myspell/hyph_en_GB.dic
-%{_datadir}/mythes/th_en_GB_v2.dat
-%{_datadir}/myspell/th_en_GB_v2.dat
-%{_datadir}/mythes/th_en_GB_v2.idx
-%{_datadir}/myspell/th_en_GB_v2.idx
+%files -n myspell-en_CA
+%{_datadir}/hunspell/en_CA.aff
+%{_datadir}/myspell/en_CA.aff
+%{_datadir}/hunspell/en_CA.dic
+%{_datadir}/myspell/en_CA.dic
+%{_datadir}/hyphen/hyph_en_CA.dic
+%{_datadir}/myspell/hyph_en_CA.dic
+%{_datadir}/mythes/th_en_CA_v2.dat
+%{_datadir}/myspell/th_en_CA_v2.dat
+%{_datadir}/mythes/th_en_CA_v2.idx
+%{_datadir}/myspell/th_en_CA_v2.idx
+
+%files -n myspell-en_PH
+%{_datadir}/hunspell/en_PH.aff
+%{_datadir}/myspell/en_PH.aff
+%{_datadir}/hunspell/en_PH.dic
+%{_datadir}/myspell/en_PH.dic
+%{_datadir}/hyphen/hyph_en_PH.dic
+%{_datadir}/myspell/hyph_en_PH.dic
+%{_datadir}/mythes/th_en_PH_v2.dat
+%{_datadir}/myspell/th_en_PH_v2.dat
+%{_datadir}/mythes/th_en_PH_v2.idx
+%{_datadir}/myspell/th_en_PH_v2.idx
+
+%files -n myspell-en_US
+%{_datadir}/hunspell/en_US.aff
+%{_datadir}/myspell/en_US.aff
+%{_datadir}/hunspell/en_US.dic
+%{_datadir}/myspell/en_US.dic
+%{_datadir}/hyphen/hyph_en_US.dic
+%{_datadir}/myspell/hyph_en_US.dic
+%{_datadir}/mythes/th_en_US_v2.dat
+%{_datadir}/myspell/th_en_US_v2.dat
+%{_datadir}/mythes/th_en_US_v2.idx
+%{_datadir}/myspell/th_en_US_v2.idx
 
 %files -n myspell-en
 %dir %{_docdir}/myspell-en
@@ -4367,29 +4481,29 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_en_IE_v2.idx
 %{_datadir}/myspell/th_en_IE_v2.idx
 
-%files -n myspell-en_TT
-%{_datadir}/hunspell/en_TT.aff
-%{_datadir}/myspell/en_TT.aff
-%{_datadir}/hunspell/en_TT.dic
-%{_datadir}/myspell/en_TT.dic
-%{_datadir}/hyphen/hyph_en_TT.dic
-%{_datadir}/myspell/hyph_en_TT.dic
-%{_datadir}/mythes/th_en_TT_v2.dat
-%{_datadir}/myspell/th_en_TT_v2.dat
-%{_datadir}/mythes/th_en_TT_v2.idx
-%{_datadir}/myspell/th_en_TT_v2.idx
+%files -n myspell-en_AU
+%{_datadir}/hunspell/en_AU.aff
+%{_datadir}/myspell/en_AU.aff
+%{_datadir}/hunspell/en_AU.dic
+%{_datadir}/myspell/en_AU.dic
+%{_datadir}/hyphen/hyph_en_AU.dic
+%{_datadir}/myspell/hyph_en_AU.dic
+%{_datadir}/mythes/th_en_AU_v2.dat
+%{_datadir}/myspell/th_en_AU_v2.dat
+%{_datadir}/mythes/th_en_AU_v2.idx
+%{_datadir}/myspell/th_en_AU_v2.idx
 
-%files -n myspell-en_US
-%{_datadir}/hunspell/en_US.aff
-%{_datadir}/myspell/en_US.aff
-%{_datadir}/hunspell/en_US.dic
-%{_datadir}/myspell/en_US.dic
-%{_datadir}/hyphen/hyph_en_US.dic
-%{_datadir}/myspell/hyph_en_US.dic
-%{_datadir}/mythes/th_en_US_v2.dat
-%{_datadir}/myspell/th_en_US_v2.dat
-%{_datadir}/mythes/th_en_US_v2.idx
-%{_datadir}/myspell/th_en_US_v2.idx
+%files -n myspell-en_JM
+%{_datadir}/hunspell/en_JM.aff
+%{_datadir}/myspell/en_JM.aff
+%{_datadir}/hunspell/en_JM.dic
+%{_datadir}/myspell/en_JM.dic
+%{_datadir}/hyphen/hyph_en_JM.dic
+%{_datadir}/myspell/hyph_en_JM.dic
+%{_datadir}/mythes/th_en_JM_v2.dat
+%{_datadir}/myspell/th_en_JM_v2.dat
+%{_datadir}/mythes/th_en_JM_v2.idx
+%{_datadir}/myspell/th_en_JM_v2.idx
 
 %files -n myspell-lightproof-en
 %dir %{_libdir}/libreoffice/share/extensions/lightproof-en
@@ -4401,17 +4515,172 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_libdir}/libreoffice/share/extensions/lightproof-en/dialog
 %{_libdir}/libreoffice/share/extensions/lightproof-en/pythonpath
 
-%files -n myspell-es_PH
-%{_datadir}/hunspell/es_PH.aff
-%{_datadir}/myspell/es_PH.aff
-%{_datadir}/hunspell/es_PH.dic
-%{_datadir}/myspell/es_PH.dic
-%{_datadir}/hyphen/hyph_es_PH.dic
-%{_datadir}/myspell/hyph_es_PH.dic
-%{_datadir}/mythes/th_es_PH_v2.dat
-%{_datadir}/myspell/th_es_PH_v2.dat
-%{_datadir}/mythes/th_es_PH_v2.idx
-%{_datadir}/myspell/th_es_PH_v2.idx
+%files -n myspell-eo_EO
+%{_datadir}/hunspell/eo_EO.aff
+%{_datadir}/myspell/eo_EO.aff
+%{_datadir}/hunspell/eo_EO.dic
+%{_datadir}/myspell/eo_EO.dic
+%{_datadir}/hyphen/hyph_eo_EO.dic
+%{_datadir}/myspell/hyph_eo_EO.dic
+%{_datadir}/mythes/th_eo_EO_v2.dat
+%{_datadir}/myspell/th_eo_EO_v2.dat
+%{_datadir}/mythes/th_eo_EO_v2.idx
+%{_datadir}/myspell/th_eo_EO_v2.idx
+
+%files -n myspell-eo
+%{_datadir}/hunspell/eo.aff
+%{_datadir}/myspell/eo.aff
+%{_datadir}/hunspell/eo.dic
+%{_datadir}/myspell/eo.dic
+%{_datadir}/hyphen/hyph_eo.dic
+%{_datadir}/myspell/hyph_eo.dic
+%{_datadir}/mythes/th_eo_v2.dat
+%{_datadir}/myspell/th_eo_v2.dat
+%{_datadir}/mythes/th_eo.dat
+%{_datadir}/myspell/th_eo.dat
+%{_datadir}/mythes/th_eo_v2.idx
+%{_datadir}/myspell/th_eo_v2.idx
+%{_datadir}/mythes/th_eo.idx
+%{_datadir}/myspell/th_eo.idx
+%dir %{_docdir}/myspell-eo
+%{_docdir}/myspell-eo/desc_en.txt
+%{_docdir}/myspell-eo/desc_eo.txt
+%{_docdir}/myspell-eo/description.xml
+%{_docdir}/myspell-eo/dictionaries.xcu
+%{_docdir}/myspell-eo/license-en.txt
+%{_docdir}/myspell-eo/package-description.txt
+
+%files -n myspell-es_AR
+%{_datadir}/hunspell/es_AR.aff
+%{_datadir}/myspell/es_AR.aff
+%{_datadir}/hunspell/es_AR.dic
+%{_datadir}/myspell/es_AR.dic
+%{_datadir}/hyphen/hyph_es_AR.dic
+%{_datadir}/myspell/hyph_es_AR.dic
+%{_datadir}/mythes/th_es_AR_v2.dat
+%{_datadir}/myspell/th_es_AR_v2.dat
+%{_datadir}/mythes/th_es_AR_v2.idx
+%{_datadir}/myspell/th_es_AR_v2.idx
+
+%files -n myspell-es_DO
+%{_datadir}/hunspell/es_DO.aff
+%{_datadir}/myspell/es_DO.aff
+%{_datadir}/hunspell/es_DO.dic
+%{_datadir}/myspell/es_DO.dic
+%{_datadir}/hyphen/hyph_es_DO.dic
+%{_datadir}/myspell/hyph_es_DO.dic
+%{_datadir}/mythes/th_es_DO_v2.dat
+%{_datadir}/myspell/th_es_DO_v2.dat
+%{_datadir}/mythes/th_es_DO_v2.idx
+%{_datadir}/myspell/th_es_DO_v2.idx
+
+%files -n myspell-es_SV
+%{_datadir}/hunspell/es_SV.aff
+%{_datadir}/myspell/es_SV.aff
+%{_datadir}/hunspell/es_SV.dic
+%{_datadir}/myspell/es_SV.dic
+%{_datadir}/hyphen/hyph_es_SV.dic
+%{_datadir}/myspell/hyph_es_SV.dic
+%{_datadir}/mythes/th_es_SV_v2.dat
+%{_datadir}/myspell/th_es_SV_v2.dat
+%{_datadir}/mythes/th_es_SV_v2.idx
+%{_datadir}/myspell/th_es_SV_v2.idx
+
+%files -n myspell-es_VE
+%{_datadir}/hunspell/es_VE.aff
+%{_datadir}/myspell/es_VE.aff
+%{_datadir}/hunspell/es_VE.dic
+%{_datadir}/myspell/es_VE.dic
+%{_datadir}/hyphen/hyph_es_VE.dic
+%{_datadir}/myspell/hyph_es_VE.dic
+%{_datadir}/mythes/th_es_VE_v2.dat
+%{_datadir}/myspell/th_es_VE_v2.dat
+%{_datadir}/mythes/th_es_VE_v2.idx
+%{_datadir}/myspell/th_es_VE_v2.idx
+
+%files -n myspell-es_MX
+%{_datadir}/hunspell/es_MX.aff
+%{_datadir}/myspell/es_MX.aff
+%{_datadir}/hunspell/es_MX.dic
+%{_datadir}/myspell/es_MX.dic
+%{_datadir}/hyphen/hyph_es_MX.dic
+%{_datadir}/myspell/hyph_es_MX.dic
+%{_datadir}/mythes/th_es_MX_v2.dat
+%{_datadir}/myspell/th_es_MX_v2.dat
+%{_datadir}/mythes/th_es_MX_v2.idx
+%{_datadir}/myspell/th_es_MX_v2.idx
+
+%files -n myspell-es_GT
+%{_datadir}/hunspell/es_GT.aff
+%{_datadir}/myspell/es_GT.aff
+%{_datadir}/hunspell/es_GT.dic
+%{_datadir}/myspell/es_GT.dic
+%{_datadir}/hyphen/hyph_es_GT.dic
+%{_datadir}/myspell/hyph_es_GT.dic
+%{_datadir}/mythes/th_es_GT_v2.dat
+%{_datadir}/myspell/th_es_GT_v2.dat
+%{_datadir}/mythes/th_es_GT_v2.idx
+%{_datadir}/myspell/th_es_GT_v2.idx
+
+%files -n myspell-es_GQ
+%{_datadir}/hunspell/es_GQ.aff
+%{_datadir}/myspell/es_GQ.aff
+%{_datadir}/hunspell/es_GQ.dic
+%{_datadir}/myspell/es_GQ.dic
+%{_datadir}/hyphen/hyph_es_GQ.dic
+%{_datadir}/myspell/hyph_es_GQ.dic
+%{_datadir}/mythes/th_es_GQ_v2.dat
+%{_datadir}/myspell/th_es_GQ_v2.dat
+%{_datadir}/mythes/th_es_GQ_v2.idx
+%{_datadir}/myspell/th_es_GQ_v2.idx
+
+%files -n myspell-es_BO
+%{_datadir}/hunspell/es_BO.aff
+%{_datadir}/myspell/es_BO.aff
+%{_datadir}/hunspell/es_BO.dic
+%{_datadir}/myspell/es_BO.dic
+%{_datadir}/hyphen/hyph_es_BO.dic
+%{_datadir}/myspell/hyph_es_BO.dic
+%{_datadir}/mythes/th_es_BO_v2.dat
+%{_datadir}/myspell/th_es_BO_v2.dat
+%{_datadir}/mythes/th_es_BO_v2.idx
+%{_datadir}/myspell/th_es_BO_v2.idx
+
+%files -n myspell-es_ES
+%{_datadir}/hunspell/es_ES.aff
+%{_datadir}/myspell/es_ES.aff
+%{_datadir}/hunspell/es_ES.dic
+%{_datadir}/myspell/es_ES.dic
+%{_datadir}/hyphen/hyph_es_ES.dic
+%{_datadir}/myspell/hyph_es_ES.dic
+%{_datadir}/mythes/th_es_ES_v2.dat
+%{_datadir}/myspell/th_es_ES_v2.dat
+%{_datadir}/mythes/th_es_ES_v2.idx
+%{_datadir}/myspell/th_es_ES_v2.idx
+
+%files -n myspell-es_EC
+%{_datadir}/hunspell/es_EC.aff
+%{_datadir}/myspell/es_EC.aff
+%{_datadir}/hunspell/es_EC.dic
+%{_datadir}/myspell/es_EC.dic
+%{_datadir}/hyphen/hyph_es_EC.dic
+%{_datadir}/myspell/hyph_es_EC.dic
+%{_datadir}/mythes/th_es_EC_v2.dat
+%{_datadir}/myspell/th_es_EC_v2.dat
+%{_datadir}/mythes/th_es_EC_v2.idx
+%{_datadir}/myspell/th_es_EC_v2.idx
+
+%files -n myspell-es_HN
+%{_datadir}/hunspell/es_HN.aff
+%{_datadir}/myspell/es_HN.aff
+%{_datadir}/hunspell/es_HN.dic
+%{_datadir}/myspell/es_HN.dic
+%{_datadir}/hyphen/hyph_es_HN.dic
+%{_datadir}/myspell/hyph_es_HN.dic
+%{_datadir}/mythes/th_es_HN_v2.dat
+%{_datadir}/myspell/th_es_HN_v2.dat
+%{_datadir}/mythes/th_es_HN_v2.idx
+%{_datadir}/myspell/th_es_HN_v2.idx
 
 %files -n myspell-es_CR
 %{_datadir}/hunspell/es_CR.aff
@@ -4437,17 +4706,77 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_es_CU_v2.idx
 %{_datadir}/myspell/th_es_CU_v2.idx
 
-%files -n myspell-es_MX
-%{_datadir}/hunspell/es_MX.aff
-%{_datadir}/myspell/es_MX.aff
-%{_datadir}/hunspell/es_MX.dic
-%{_datadir}/myspell/es_MX.dic
-%{_datadir}/hyphen/hyph_es_MX.dic
-%{_datadir}/myspell/hyph_es_MX.dic
-%{_datadir}/mythes/th_es_MX_v2.dat
-%{_datadir}/myspell/th_es_MX_v2.dat
-%{_datadir}/mythes/th_es_MX_v2.idx
-%{_datadir}/myspell/th_es_MX_v2.idx
+%files -n myspell-es_CL
+%{_datadir}/hunspell/es_CL.aff
+%{_datadir}/myspell/es_CL.aff
+%{_datadir}/hunspell/es_CL.dic
+%{_datadir}/myspell/es_CL.dic
+%{_datadir}/hyphen/hyph_es_CL.dic
+%{_datadir}/myspell/hyph_es_CL.dic
+%{_datadir}/mythes/th_es_CL_v2.dat
+%{_datadir}/myspell/th_es_CL_v2.dat
+%{_datadir}/mythes/th_es_CL_v2.idx
+%{_datadir}/myspell/th_es_CL_v2.idx
+
+%files -n myspell-es_CO
+%{_datadir}/hunspell/es_CO.aff
+%{_datadir}/myspell/es_CO.aff
+%{_datadir}/hunspell/es_CO.dic
+%{_datadir}/myspell/es_CO.dic
+%{_datadir}/hyphen/hyph_es_CO.dic
+%{_datadir}/myspell/hyph_es_CO.dic
+%{_datadir}/mythes/th_es_CO_v2.dat
+%{_datadir}/myspell/th_es_CO_v2.dat
+%{_datadir}/mythes/th_es_CO_v2.idx
+%{_datadir}/myspell/th_es_CO_v2.idx
+
+%files -n myspell-es_NI
+%{_datadir}/hunspell/es_NI.aff
+%{_datadir}/myspell/es_NI.aff
+%{_datadir}/hunspell/es_NI.dic
+%{_datadir}/myspell/es_NI.dic
+%{_datadir}/hyphen/hyph_es_NI.dic
+%{_datadir}/myspell/hyph_es_NI.dic
+%{_datadir}/mythes/th_es_NI_v2.dat
+%{_datadir}/myspell/th_es_NI_v2.dat
+%{_datadir}/mythes/th_es_NI_v2.idx
+%{_datadir}/myspell/th_es_NI_v2.idx
+
+%files -n myspell-es
+%{_datadir}/hunspell/es.aff
+%{_datadir}/myspell/es.aff
+%{_datadir}/hunspell/es.dic
+%{_datadir}/myspell/es.dic
+%{_datadir}/hyphen/hyph_es.dic
+%{_datadir}/myspell/hyph_es.dic
+%{_datadir}/mythes/th_es_v2.dat
+%{_datadir}/myspell/th_es_v2.dat
+%{_datadir}/mythes/th_es_v2.idx
+%{_datadir}/myspell/th_es_v2.idx
+%dir %{_docdir}/myspell-es
+%{_docdir}/myspell-es/GPLv3.txt
+%{_docdir}/myspell-es/LGPLv2.1.txt
+%{_docdir}/myspell-es/LGPLv3.txt
+%{_docdir}/myspell-es/MPL-1.1.txt
+%{_docdir}/myspell-es/README_hunspell_es.txt
+%{_docdir}/myspell-es/README_hyph_es.txt
+%{_docdir}/myspell-es/README_th_es.txt
+%{_docdir}/myspell-es/RLA-ES.png
+%{_docdir}/myspell-es/description.xml
+%{_docdir}/myspell-es/dictionaries.xcu
+%{_docdir}/myspell-es/package-description.txt
+
+%files -n myspell-es_PH
+%{_datadir}/hunspell/es_PH.aff
+%{_datadir}/myspell/es_PH.aff
+%{_datadir}/hunspell/es_PH.dic
+%{_datadir}/myspell/es_PH.dic
+%{_datadir}/hyphen/hyph_es_PH.dic
+%{_datadir}/myspell/hyph_es_PH.dic
+%{_datadir}/mythes/th_es_PH_v2.dat
+%{_datadir}/myspell/th_es_PH_v2.dat
+%{_datadir}/mythes/th_es_PH_v2.idx
+%{_datadir}/myspell/th_es_PH_v2.idx
 
 %files -n myspell-es_PA
 %{_datadir}/hunspell/es_PA.aff
@@ -4497,138 +4826,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_es_PR_v2.idx
 %{_datadir}/myspell/th_es_PR_v2.idx
 
-%files -n myspell-es_CL
-%{_datadir}/hunspell/es_CL.aff
-%{_datadir}/myspell/es_CL.aff
-%{_datadir}/hunspell/es_CL.dic
-%{_datadir}/myspell/es_CL.dic
-%{_datadir}/hyphen/hyph_es_CL.dic
-%{_datadir}/myspell/hyph_es_CL.dic
-%{_datadir}/mythes/th_es_CL_v2.dat
-%{_datadir}/myspell/th_es_CL_v2.dat
-%{_datadir}/mythes/th_es_CL_v2.idx
-%{_datadir}/myspell/th_es_CL_v2.idx
-
-%files -n myspell-es_CO
-%{_datadir}/hunspell/es_CO.aff
-%{_datadir}/myspell/es_CO.aff
-%{_datadir}/hunspell/es_CO.dic
-%{_datadir}/myspell/es_CO.dic
-%{_datadir}/hyphen/hyph_es_CO.dic
-%{_datadir}/myspell/hyph_es_CO.dic
-%{_datadir}/mythes/th_es_CO_v2.dat
-%{_datadir}/myspell/th_es_CO_v2.dat
-%{_datadir}/mythes/th_es_CO_v2.idx
-%{_datadir}/myspell/th_es_CO_v2.idx
-
-%files -n myspell-es_ES
-%{_datadir}/hunspell/es_ES.aff
-%{_datadir}/myspell/es_ES.aff
-%{_datadir}/hunspell/es_ES.dic
-%{_datadir}/myspell/es_ES.dic
-%{_datadir}/hyphen/hyph_es_ES.dic
-%{_datadir}/myspell/hyph_es_ES.dic
-%{_datadir}/mythes/th_es_ES_v2.dat
-%{_datadir}/myspell/th_es_ES_v2.dat
-%{_datadir}/mythes/th_es_ES_v2.idx
-%{_datadir}/myspell/th_es_ES_v2.idx
-
-%files -n myspell-es_DO
-%{_datadir}/hunspell/es_DO.aff
-%{_datadir}/myspell/es_DO.aff
-%{_datadir}/hunspell/es_DO.dic
-%{_datadir}/myspell/es_DO.dic
-%{_datadir}/hyphen/hyph_es_DO.dic
-%{_datadir}/myspell/hyph_es_DO.dic
-%{_datadir}/mythes/th_es_DO_v2.dat
-%{_datadir}/myspell/th_es_DO_v2.dat
-%{_datadir}/mythes/th_es_DO_v2.idx
-%{_datadir}/myspell/th_es_DO_v2.idx
-
-%files -n myspell-es_EC
-%{_datadir}/hunspell/es_EC.aff
-%{_datadir}/myspell/es_EC.aff
-%{_datadir}/hunspell/es_EC.dic
-%{_datadir}/myspell/es_EC.dic
-%{_datadir}/hyphen/hyph_es_EC.dic
-%{_datadir}/myspell/hyph_es_EC.dic
-%{_datadir}/mythes/th_es_EC_v2.dat
-%{_datadir}/myspell/th_es_EC_v2.dat
-%{_datadir}/mythes/th_es_EC_v2.idx
-%{_datadir}/myspell/th_es_EC_v2.idx
-
-%files -n myspell-es_NI
-%{_datadir}/hunspell/es_NI.aff
-%{_datadir}/myspell/es_NI.aff
-%{_datadir}/hunspell/es_NI.dic
-%{_datadir}/myspell/es_NI.dic
-%{_datadir}/hyphen/hyph_es_NI.dic
-%{_datadir}/myspell/hyph_es_NI.dic
-%{_datadir}/mythes/th_es_NI_v2.dat
-%{_datadir}/myspell/th_es_NI_v2.dat
-%{_datadir}/mythes/th_es_NI_v2.idx
-%{_datadir}/myspell/th_es_NI_v2.idx
-
-%files -n myspell-es_GT
-%{_datadir}/hunspell/es_GT.aff
-%{_datadir}/myspell/es_GT.aff
-%{_datadir}/hunspell/es_GT.dic
-%{_datadir}/myspell/es_GT.dic
-%{_datadir}/hyphen/hyph_es_GT.dic
-%{_datadir}/myspell/hyph_es_GT.dic
-%{_datadir}/mythes/th_es_GT_v2.dat
-%{_datadir}/myspell/th_es_GT_v2.dat
-%{_datadir}/mythes/th_es_GT_v2.idx
-%{_datadir}/myspell/th_es_GT_v2.idx
-
-%files -n myspell-es_GQ
-%{_datadir}/hunspell/es_GQ.aff
-%{_datadir}/myspell/es_GQ.aff
-%{_datadir}/hunspell/es_GQ.dic
-%{_datadir}/myspell/es_GQ.dic
-%{_datadir}/hyphen/hyph_es_GQ.dic
-%{_datadir}/myspell/hyph_es_GQ.dic
-%{_datadir}/mythes/th_es_GQ_v2.dat
-%{_datadir}/myspell/th_es_GQ_v2.dat
-%{_datadir}/mythes/th_es_GQ_v2.idx
-%{_datadir}/myspell/th_es_GQ_v2.idx
-
-%files -n myspell-es_HN
-%{_datadir}/hunspell/es_HN.aff
-%{_datadir}/myspell/es_HN.aff
-%{_datadir}/hunspell/es_HN.dic
-%{_datadir}/myspell/es_HN.dic
-%{_datadir}/hyphen/hyph_es_HN.dic
-%{_datadir}/myspell/hyph_es_HN.dic
-%{_datadir}/mythes/th_es_HN_v2.dat
-%{_datadir}/myspell/th_es_HN_v2.dat
-%{_datadir}/mythes/th_es_HN_v2.idx
-%{_datadir}/myspell/th_es_HN_v2.idx
-
-%files -n myspell-es_SV
-%{_datadir}/hunspell/es_SV.aff
-%{_datadir}/myspell/es_SV.aff
-%{_datadir}/hunspell/es_SV.dic
-%{_datadir}/myspell/es_SV.dic
-%{_datadir}/hyphen/hyph_es_SV.dic
-%{_datadir}/myspell/hyph_es_SV.dic
-%{_datadir}/mythes/th_es_SV_v2.dat
-%{_datadir}/myspell/th_es_SV_v2.dat
-%{_datadir}/mythes/th_es_SV_v2.idx
-%{_datadir}/myspell/th_es_SV_v2.idx
-
-%files -n myspell-es_BO
-%{_datadir}/hunspell/es_BO.aff
-%{_datadir}/myspell/es_BO.aff
-%{_datadir}/hunspell/es_BO.dic
-%{_datadir}/myspell/es_BO.dic
-%{_datadir}/hyphen/hyph_es_BO.dic
-%{_datadir}/myspell/hyph_es_BO.dic
-%{_datadir}/mythes/th_es_BO_v2.dat
-%{_datadir}/myspell/th_es_BO_v2.dat
-%{_datadir}/mythes/th_es_BO_v2.idx
-%{_datadir}/myspell/th_es_BO_v2.idx
-
 %files -n myspell-es_US
 %{_datadir}/hunspell/es_US.aff
 %{_datadir}/myspell/es_US.aff
@@ -4641,42 +4838,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_es_US_v2.idx
 %{_datadir}/myspell/th_es_US_v2.idx
 
-%files -n myspell-es_AR
-%{_datadir}/hunspell/es_AR.aff
-%{_datadir}/myspell/es_AR.aff
-%{_datadir}/hunspell/es_AR.dic
-%{_datadir}/myspell/es_AR.dic
-%{_datadir}/hyphen/hyph_es_AR.dic
-%{_datadir}/myspell/hyph_es_AR.dic
-%{_datadir}/mythes/th_es_AR_v2.dat
-%{_datadir}/myspell/th_es_AR_v2.dat
-%{_datadir}/mythes/th_es_AR_v2.idx
-%{_datadir}/myspell/th_es_AR_v2.idx
-
-%files -n myspell-es
-%{_datadir}/hunspell/es.aff
-%{_datadir}/myspell/es.aff
-%{_datadir}/hunspell/es.dic
-%{_datadir}/myspell/es.dic
-%{_datadir}/hyphen/hyph_es.dic
-%{_datadir}/myspell/hyph_es.dic
-%{_datadir}/mythes/th_es_v2.dat
-%{_datadir}/myspell/th_es_v2.dat
-%{_datadir}/mythes/th_es_v2.idx
-%{_datadir}/myspell/th_es_v2.idx
-%dir %{_docdir}/myspell-es
-%{_docdir}/myspell-es/GPLv3.txt
-%{_docdir}/myspell-es/LGPLv2.1.txt
-%{_docdir}/myspell-es/LGPLv3.txt
-%{_docdir}/myspell-es/MPL-1.1.txt
-%{_docdir}/myspell-es/README_hunspell_es.txt
-%{_docdir}/myspell-es/README_hyph_es.txt
-%{_docdir}/myspell-es/README_th_es.txt
-%{_docdir}/myspell-es/RLA-ES.png
-%{_docdir}/myspell-es/description.xml
-%{_docdir}/myspell-es/dictionaries.xcu
-%{_docdir}/myspell-es/package-description.txt
-
 %files -n myspell-es_UY
 %{_datadir}/hunspell/es_UY.aff
 %{_datadir}/myspell/es_UY.aff
@@ -4688,18 +4849,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_es_UY_v2.dat
 %{_datadir}/mythes/th_es_UY_v2.idx
 %{_datadir}/myspell/th_es_UY_v2.idx
-
-%files -n myspell-es_VE
-%{_datadir}/hunspell/es_VE.aff
-%{_datadir}/myspell/es_VE.aff
-%{_datadir}/hunspell/es_VE.dic
-%{_datadir}/myspell/es_VE.dic
-%{_datadir}/hyphen/hyph_es_VE.dic
-%{_datadir}/myspell/hyph_es_VE.dic
-%{_datadir}/mythes/th_es_VE_v2.dat
-%{_datadir}/myspell/th_es_VE_v2.dat
-%{_datadir}/mythes/th_es_VE_v2.idx
-%{_datadir}/myspell/th_es_VE_v2.idx
 
 %files -n myspell-et_EE
 %{_datadir}/hunspell/et_EE.aff
@@ -4714,18 +4863,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-et_EE/description.xml
 %{_docdir}/myspell-et_EE/dictionaries.xcu
 %{_docdir}/myspell-et_EE/eehyph.tex
-
-%files -n myspell-fr_LU
-%{_datadir}/hunspell/fr_LU.aff
-%{_datadir}/myspell/fr_LU.aff
-%{_datadir}/hunspell/fr_LU.dic
-%{_datadir}/myspell/fr_LU.dic
-%{_datadir}/hyphen/hyph_fr_LU.dic
-%{_datadir}/myspell/hyph_fr_LU.dic
-%{_datadir}/mythes/th_fr_LU_v2.dat
-%{_datadir}/myspell/th_fr_LU_v2.dat
-%{_datadir}/mythes/th_fr_LU_v2.idx
-%{_datadir}/myspell/th_fr_LU_v2.idx
 
 %files -n myspell-fr_BE
 %{_datadir}/hunspell/fr_BE.aff
@@ -4750,6 +4887,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_fr_MC_v2.dat
 %{_datadir}/mythes/th_fr_MC_v2.idx
 %{_datadir}/myspell/th_fr_MC_v2.idx
+
+%files -n myspell-fr_LU
+%{_datadir}/hunspell/fr_LU.aff
+%{_datadir}/myspell/fr_LU.aff
+%{_datadir}/hunspell/fr_LU.dic
+%{_datadir}/myspell/fr_LU.dic
+%{_datadir}/hyphen/hyph_fr_LU.dic
+%{_datadir}/myspell/hyph_fr_LU.dic
+%{_datadir}/mythes/th_fr_LU_v2.dat
+%{_datadir}/myspell/th_fr_LU_v2.dat
+%{_datadir}/mythes/th_fr_LU_v2.idx
+%{_datadir}/myspell/th_fr_LU_v2.idx
 
 %files -n myspell-fr_CH
 %{_datadir}/hunspell/fr_CH.aff
@@ -4817,6 +4966,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-gd_GB/description.xml
 %{_docdir}/myspell-gd_GB/dictionaries.xcu
 
+%files -n myspell-gl_ES
+%{_datadir}/hunspell/gl_ES.aff
+%{_datadir}/myspell/gl_ES.aff
+%{_datadir}/hunspell/gl_ES.dic
+%{_datadir}/myspell/gl_ES.dic
+%{_datadir}/hyphen/hyph_gl_ES.dic
+%{_datadir}/myspell/hyph_gl_ES.dic
+%{_datadir}/mythes/th_gl_ES_v2.dat
+%{_datadir}/myspell/th_gl_ES_v2.dat
+%{_datadir}/mythes/th_gl_ES_v2.idx
+%{_datadir}/myspell/th_gl_ES_v2.idx
+
 %files -n myspell-gl
 %{_datadir}/hunspell/gl.aff
 %{_datadir}/myspell/gl.aff
@@ -4843,18 +5004,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-gl/description.xml
 %{_docdir}/myspell-gl/dictionaries.xcu
 %{_docdir}/myspell-gl/package-description.txt
-
-%files -n myspell-gl_ES
-%{_datadir}/hunspell/gl_ES.aff
-%{_datadir}/myspell/gl_ES.aff
-%{_datadir}/hunspell/gl_ES.dic
-%{_datadir}/myspell/gl_ES.dic
-%{_datadir}/hyphen/hyph_gl_ES.dic
-%{_datadir}/myspell/hyph_gl_ES.dic
-%{_datadir}/mythes/th_gl_ES_v2.dat
-%{_datadir}/myspell/th_gl_ES_v2.dat
-%{_datadir}/mythes/th_gl_ES_v2.idx
-%{_datadir}/myspell/th_gl_ES_v2.idx
 
 %files -n myspell-gug
 %{_datadir}/hunspell/gug.aff
@@ -5027,11 +5176,11 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-it_IT/description.xml
 %{_docdir}/myspell-it_IT/dictionaries.xcu
 
-%files -n myspell-kmr_Latn_TR
-%{_datadir}/hunspell/kmr_Latn_TR.aff
-%{_datadir}/myspell/kmr_Latn_TR.aff
-%{_datadir}/hunspell/kmr_Latn_TR.dic
-%{_datadir}/myspell/kmr_Latn_TR.dic
+%files -n myspell-kmr_Latn_SY
+%{_datadir}/hunspell/kmr_Latn_SY.aff
+%{_datadir}/myspell/kmr_Latn_SY.aff
+%{_datadir}/hunspell/kmr_Latn_SY.dic
+%{_datadir}/myspell/kmr_Latn_SY.dic
 
 %files -n myspell-kmr_Latn
 %{_datadir}/hunspell/kmr_Latn.aff
@@ -5048,11 +5197,11 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-kmr_Latn/lgpl-2.1.txt
 %{_docdir}/myspell-kmr_Latn/license.txt
 
-%files -n myspell-kmr_Latn_SY
-%{_datadir}/hunspell/kmr_Latn_SY.aff
-%{_datadir}/myspell/kmr_Latn_SY.aff
-%{_datadir}/hunspell/kmr_Latn_SY.dic
-%{_datadir}/myspell/kmr_Latn_SY.dic
+%files -n myspell-kmr_Latn_TR
+%{_datadir}/hunspell/kmr_Latn_TR.aff
+%{_datadir}/myspell/kmr_Latn_TR.aff
+%{_datadir}/hunspell/kmr_Latn_TR.dic
+%{_datadir}/myspell/kmr_Latn_TR.dic
 
 %files -n myspell-ko_KR
 %{_datadir}/hunspell/ko_KR.aff
@@ -5115,6 +5264,27 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-lv_LV/dictionaries.xcu
 %{_docdir}/myspell-lv_LV/license.txt
 
+%files -n myspell-mn_MN
+%{_datadir}/hyphen/hyph_mn_MN.dic
+%{_datadir}/myspell/hyph_mn_MN.dic
+%{_datadir}/hunspell/mn_MN.aff
+%{_datadir}/myspell/mn_MN.aff
+%{_datadir}/hunspell/mn_MN.dic
+%{_datadir}/myspell/mn_MN.dic
+%dir %{_docdir}/myspell-mn_MN
+%{_docdir}/myspell-mn_MN/README_mn_MN.txt
+%{_docdir}/myspell-mn_MN/description.xml
+%{_docdir}/myspell-mn_MN/dictionaries.xcu
+%{_docdir}/myspell-mn_MN/lppl.txt
+
+%files -n myspell-mn_Cyrl_MN
+%{_datadir}/hyphen/hyph_mn_Cyrl_MN.dic
+%{_datadir}/myspell/hyph_mn_Cyrl_MN.dic
+%{_datadir}/hunspell/mn_Cyrl_MN.aff
+%{_datadir}/myspell/mn_Cyrl_MN.aff
+%{_datadir}/hunspell/mn_Cyrl_MN.dic
+%{_datadir}/myspell/mn_Cyrl_MN.dic
+
 %files -n myspell-ne_NP
 %{_datadir}/hunspell/ne_NP.aff
 %{_datadir}/myspell/ne_NP.aff
@@ -5129,6 +5299,14 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-ne_NP/README_th_ne_NP_v2.txt
 %{_docdir}/myspell-ne_NP/description.xml
 %{_docdir}/myspell-ne_NP/dictionaries.xcu
+
+%files -n myspell-nl_BE
+%{_datadir}/hyphen/hyph_nl_BE.dic
+%{_datadir}/myspell/hyph_nl_BE.dic
+%{_datadir}/hunspell/nl_BE.aff
+%{_datadir}/myspell/nl_BE.aff
+%{_datadir}/hunspell/nl_BE.dic
+%{_datadir}/myspell/nl_BE.dic
 
 %files -n myspell-nl_NL
 %{_datadir}/hyphen/hyph_nl_NL.dic
@@ -5147,21 +5325,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-nl_NL/license_en_EN.txt
 %{_docdir}/myspell-nl_NL/licentie_nl_NL.txt
 
-%files -n myspell-nl_BE
-%{_datadir}/hyphen/hyph_nl_BE.dic
-%{_datadir}/myspell/hyph_nl_BE.dic
-%{_datadir}/hunspell/nl_BE.aff
-%{_datadir}/myspell/nl_BE.aff
-%{_datadir}/hunspell/nl_BE.dic
-%{_datadir}/myspell/nl_BE.dic
-
-%files -n myspell-no
-%dir %{_docdir}/myspell-no
-%{_docdir}/myspell-no/COPYING
-%{_docdir}/myspell-no/README_hyph_NO.txt
-%{_docdir}/myspell-no/description.xml
-%{_docdir}/myspell-no/dictionaries.xcu
-
 %files -n myspell-nb_NO
 %{_datadir}/hyphen/hyph_nb_NO.dic
 %{_datadir}/myspell/hyph_nb_NO.dic
@@ -5173,6 +5336,13 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_nb_NO_v2.dat
 %{_datadir}/mythes/th_nb_NO_v2.idx
 %{_datadir}/myspell/th_nb_NO_v2.idx
+
+%files -n myspell-no
+%dir %{_docdir}/myspell-no
+%{_docdir}/myspell-no/COPYING
+%{_docdir}/myspell-no/README_hyph_NO.txt
+%{_docdir}/myspell-no/description.xml
+%{_docdir}/myspell-no/dictionaries.xcu
 
 %files -n myspell-nn_NO
 %{_datadir}/hyphen/hyph_nn_NO.dic
@@ -5223,6 +5393,14 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/pt_BR.aff
 %{_datadir}/hunspell/pt_BR.dic
 %{_datadir}/myspell/pt_BR.dic
+%{_datadir}/mythes/th_pt_BR_v2.dat
+%{_datadir}/myspell/th_pt_BR_v2.dat
+%{_datadir}/mythes/th_pt_BR.dat
+%{_datadir}/myspell/th_pt_BR.dat
+%{_datadir}/mythes/th_pt_BR_v2.idx
+%{_datadir}/myspell/th_pt_BR_v2.idx
+%{_datadir}/mythes/th_pt_BR.idx
+%{_datadir}/myspell/th_pt_BR.idx
 %dir %{_docdir}/myspell-pt_BR
 %{_docdir}/myspell-pt_BR/Linguistic.xcu
 %{_docdir}/myspell-pt_BR/README_Lightproof_pt_BR.txt
@@ -5232,6 +5410,7 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-pt_BR/description.xml
 %{_docdir}/myspell-pt_BR/dictionaries.xcu
 %{_docdir}/myspell-pt_BR/package-description.txt
+%{_docdir}/myspell-pt_BR/thes_data_layout_pt_BR.txt
 
 %files -n myspell-lightproof-pt_BR
 %dir %{_libdir}/libreoffice/share/extensions/lightproof-pt_BR
@@ -5268,6 +5447,13 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-pt_PT/dictionaries.xcu
 %{_docdir}/myspell-pt_PT/icon.png
 
+%files -n myspell-ro
+%dir %{_docdir}/myspell-ro
+%{_docdir}/myspell-ro/README_EN.txt
+%{_docdir}/myspell-ro/README_RO.txt
+%{_docdir}/myspell-ro/description.xml
+%{_docdir}/myspell-ro/dictionaries.xcu
+
 %files -n myspell-ro_RO
 %{_datadir}/hyphen/hyph_ro_RO.dic
 %{_datadir}/myspell/hyph_ro_RO.dic
@@ -5279,13 +5465,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_ro_RO_v2.dat
 %{_datadir}/mythes/th_ro_RO_v2.idx
 %{_datadir}/myspell/th_ro_RO_v2.idx
-
-%files -n myspell-ro
-%dir %{_docdir}/myspell-ro
-%{_docdir}/myspell-ro/README_EN.txt
-%{_docdir}/myspell-ro/README_RO.txt
-%{_docdir}/myspell-ro/description.xml
-%{_docdir}/myspell-ro/dictionaries.xcu
 
 %files -n myspell-ru_RU
 %{_datadir}/hyphen/hyph_ru_RU.dic
@@ -5372,30 +5551,17 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-sl_SI/package-description.txt
 
 %files -n myspell-sq_AL
+%{_datadir}/hyphen/hyph_sq_AL.dic
+%{_datadir}/myspell/hyph_sq_AL.dic
 %{_datadir}/hunspell/sq_AL.aff
 %{_datadir}/myspell/sq_AL.aff
 %{_datadir}/hunspell/sq_AL.dic
 %{_datadir}/myspell/sq_AL.dic
 %dir %{_docdir}/myspell-sq_AL
 %{_docdir}/myspell-sq_AL/README.txt
+%{_docdir}/myspell-sq_AL/README_hyph_sq_AL.txt
 %{_docdir}/myspell-sq_AL/description.xml
 %{_docdir}/myspell-sq_AL/dictionaries.xcu
-
-%files -n myspell-sr_Latn_CS
-%{_datadir}/hyphen/hyph_sr_Latn_CS.dic
-%{_datadir}/myspell/hyph_sr_Latn_CS.dic
-%{_datadir}/hunspell/sr_Latn_CS.aff
-%{_datadir}/myspell/sr_Latn_CS.aff
-%{_datadir}/hunspell/sr_Latn_CS.dic
-%{_datadir}/myspell/sr_Latn_CS.dic
-
-%files -n myspell-sr_CS
-%{_datadir}/hyphen/hyph_sr_CS.dic
-%{_datadir}/myspell/hyph_sr_CS.dic
-%{_datadir}/hunspell/sr_CS.aff
-%{_datadir}/myspell/sr_CS.aff
-%{_datadir}/hunspell/sr_CS.dic
-%{_datadir}/myspell/sr_CS.dic
 
 %files -n myspell-sr
 %{_datadir}/hyphen/hyph_sr.dic
@@ -5415,6 +5581,30 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-sr/description.xml
 %{_docdir}/myspell-sr/dictionaries.xcu
 
+%files -n myspell-sr_RS
+%{_datadir}/hyphen/hyph_sr_RS.dic
+%{_datadir}/myspell/hyph_sr_RS.dic
+%{_datadir}/hunspell/sr_RS.aff
+%{_datadir}/myspell/sr_RS.aff
+%{_datadir}/hunspell/sr_RS.dic
+%{_datadir}/myspell/sr_RS.dic
+
+%files -n myspell-sr_Latn_CS
+%{_datadir}/hyphen/hyph_sr_Latn_CS.dic
+%{_datadir}/myspell/hyph_sr_Latn_CS.dic
+%{_datadir}/hunspell/sr_Latn_CS.aff
+%{_datadir}/myspell/sr_Latn_CS.aff
+%{_datadir}/hunspell/sr_Latn_CS.dic
+%{_datadir}/myspell/sr_Latn_CS.dic
+
+%files -n myspell-sr_CS
+%{_datadir}/hyphen/hyph_sr_CS.dic
+%{_datadir}/myspell/hyph_sr_CS.dic
+%{_datadir}/hunspell/sr_CS.aff
+%{_datadir}/myspell/sr_CS.aff
+%{_datadir}/hunspell/sr_CS.dic
+%{_datadir}/myspell/sr_CS.dic
+
 %files -n myspell-sr_Latn_RS
 %{_datadir}/hyphen/hyph_sr_Latn_RS.dic
 %{_datadir}/myspell/hyph_sr_Latn_RS.dic
@@ -5423,13 +5613,13 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/hunspell/sr_Latn_RS.dic
 %{_datadir}/myspell/sr_Latn_RS.dic
 
-%files -n myspell-sr_RS
-%{_datadir}/hyphen/hyph_sr_RS.dic
-%{_datadir}/myspell/hyph_sr_RS.dic
-%{_datadir}/hunspell/sr_RS.aff
-%{_datadir}/myspell/sr_RS.aff
-%{_datadir}/hunspell/sr_RS.dic
-%{_datadir}/myspell/sr_RS.dic
+%files -n myspell-sv_FI
+%{_datadir}/hyphen/hyph_sv_FI.dic
+%{_datadir}/myspell/hyph_sv_FI.dic
+%{_datadir}/hunspell/sv_FI.aff
+%{_datadir}/myspell/sv_FI.aff
+%{_datadir}/hunspell/sv_FI.dic
+%{_datadir}/myspell/sv_FI.dic
 
 %files -n myspell-sv_SE
 %{_datadir}/hyphen/hyph_sv_SE.dic
@@ -5456,14 +5646,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-sv_SE/description.xml
 %{_docdir}/myspell-sv_SE/dictionaries.xcu
 
-%files -n myspell-sv_FI
-%{_datadir}/hyphen/hyph_sv_FI.dic
-%{_datadir}/myspell/hyph_sv_FI.dic
-%{_datadir}/hunspell/sv_FI.aff
-%{_datadir}/myspell/sv_FI.aff
-%{_datadir}/hunspell/sv_FI.dic
-%{_datadir}/myspell/sv_FI.dic
-
 %files -n myspell-sw_TZ
 %{_datadir}/hunspell/sw_TZ.aff
 %{_datadir}/myspell/sw_TZ.aff
@@ -5473,14 +5655,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-sw_TZ/README_sw_TZ.txt
 %{_docdir}/myspell-sw_TZ/description.xml
 %{_docdir}/myspell-sw_TZ/dictionaries.xcu
-
-%files -n myspell-te
-%{_datadir}/hyphen/hyph_te.dic
-%{_datadir}/myspell/hyph_te.dic
-%{_datadir}/hunspell/te.aff
-%{_datadir}/myspell/te.aff
-%{_datadir}/hunspell/te.dic
-%{_datadir}/myspell/te.dic
 
 %files -n myspell-te_IN
 %{_datadir}/hyphen/hyph_te_IN.dic
@@ -5495,6 +5669,14 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-te_IN/description.xml
 %{_docdir}/myspell-te_IN/dictionaries.xcu
 
+%files -n myspell-te
+%{_datadir}/hyphen/hyph_te.dic
+%{_datadir}/myspell/hyph_te.dic
+%{_datadir}/hunspell/te.aff
+%{_datadir}/myspell/te.aff
+%{_datadir}/hunspell/te.dic
+%{_datadir}/myspell/te.dic
+
 %files -n myspell-th_TH
 %{_datadir}/hunspell/th_TH.aff
 %{_datadir}/myspell/th_TH.aff
@@ -5504,12 +5686,6 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-th_TH/README_th_TH.txt
 %{_docdir}/myspell-th_TH/description.xml
 %{_docdir}/myspell-th_TH/dictionaries.xcu
-
-%files -n myspell-tr
-%{_datadir}/hunspell/tr.aff
-%{_datadir}/myspell/tr.aff
-%{_datadir}/hunspell/tr.dic
-%{_datadir}/myspell/tr.dic
 
 %files -n myspell-tr_TR
 %{_datadir}/hunspell/tr_TR.aff
@@ -5521,6 +5697,12 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-tr_TR/README.txt
 %{_docdir}/myspell-tr_TR/description.xml
 %{_docdir}/myspell-tr_TR/dictionaries.xcu
+
+%files -n myspell-tr
+%{_datadir}/hunspell/tr.aff
+%{_datadir}/myspell/tr.aff
+%{_datadir}/hunspell/tr.dic
+%{_datadir}/myspell/tr.dic
 
 %files -n myspell-uk_UA
 %{_datadir}/hyphen/hyph_uk_UA.dic
