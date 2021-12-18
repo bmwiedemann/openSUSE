@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 16 13:18:07 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed heading if component is empty or nil (bsc#1193809)
+- Fixed typo in common wizard button ID (:abort, not :bort)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
