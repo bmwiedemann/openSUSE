@@ -77,6 +77,8 @@ Patch28:        libgcrypt-PCT-ECC.patch
 Patch29:        libgcrypt-fips_selftest_trigger_file.patch
 #PATCH-FIX-SUSE bsc#1189745 The t-lock test is not build with phtread in gcc7, works in gcc11
 Patch30:        libgcrypt-pthread-in-t-lock-test.patch
+#PATCH-FIX-UPSTREAM bsc#1193480 FIPS: gcry_mpi_sub_ui: fix subtracting from negative value
+Patch31:        libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27

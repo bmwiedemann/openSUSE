@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  7 09:41:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Fix gcry_mpi_sub_ui subtraction [bsc#1193480]
+  * gcry_mpi_sub_ui: fix subtracting from negative value
+  * Add libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
+
+-------------------------------------------------------------------
 Mon Aug 23 12:08:24 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.9.4:
