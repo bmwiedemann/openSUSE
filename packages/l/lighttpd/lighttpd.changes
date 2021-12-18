@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  4 18:24:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.63:
+  * import xxHash v0.8.1
+  * fix reqpool mem corruption in 1.4.62
+- includes changes in 1.4.62:
+  * [mod_alias] fix use-after-free bug
+  * many developer visible bug fixes
+- build with pcre2 and without libev, as per upcoming deprecation
+
+-------------------------------------------------------------------
 Sun Nov 21 17:25:15 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.61:

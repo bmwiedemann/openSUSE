@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.61
+Version:        1.4.63
 Release:        0
 #
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
@@ -57,7 +57,6 @@ BuildRequires:  lua51-devel
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  shadow
@@ -65,8 +64,8 @@ BuildRequires:  sqlite-devel >= 3
 BuildRequires:  zlib-devel
 BuildRequires:  perl(CGI)
 BuildRequires:  pkgconfig(libbrotlicommon)
-BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       spawn-fcgi
@@ -283,10 +282,9 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
 %configure                      \
     --bindir=%{_sbindir}        \
     --libdir=%{_libdir}/%{name} \
-    --with-libev                \
     --enable-lfs                \
     --enable-ipv6               \
-    --with-pcre                 \
+    --with-pcre2                \
     --with-ldap                 \
     --with-pam                  \
     --with-dbi                  \
