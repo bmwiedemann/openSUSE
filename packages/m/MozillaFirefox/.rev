@@ -5301,4 +5301,20 @@
   * CVE-2021-43544 (bmo#1739934)</comment>
     <requestid>936364</requestid>
   </revision>
+  <revision rev="352" vrev="1">
+    <srcmd5>05d8c797e020c82f081d454050d4372f</srcmd5>
+    <version>95.0.1</version>
+    <time>1639855765</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 95.0.1 (bsc#1193845)
+  * Fixed frequent
+    MOZILLA_PKIX_ERROR_OCSP_RESPONSE_FOR_CERT_MISSING error
+    messages when trying to connect to various microsoft.com
+    domains (bmo#1745600)
+  * Fix for a WebRender crash on some Linux/X11 systems (bmo#1741956)
+  * Fix for a frequent Windows shutdown crash (bmo#1738984)
+  * Fix websites contrast issues for some Linux users with
+    Dark mode set at OS level (bmo#1740518)</comment>
+    <requestid>941230</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 17 13:49:16 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 95.0.1 (bsc#1193845)
+  * Fixed frequent
+    MOZILLA_PKIX_ERROR_OCSP_RESPONSE_FOR_CERT_MISSING error
+    messages when trying to connect to various microsoft.com
+    domains (bmo#1745600)
+  * Fix for a WebRender crash on some Linux/X11 systems (bmo#1741956)
+  * Fix for a frequent Windows shutdown crash (bmo#1738984)
+  * Fix websites contrast issues for some Linux users with
+    Dark mode set at OS level (bmo#1740518)
+
+-------------------------------------------------------------------
 Sat Dec  4 12:07:21 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 95.0
