@@ -111,6 +111,7 @@ Patch53:        openssl-1_1-seclevel.patch
 Patch54:        openssl-1_1-use-seclevel2-in-tests.patch
 Patch55:        openssl-1_1-disable-test_srp-sslapi.patch
 Patch56:        openssl-add_rfc3526_rfc7919.patch
+Patch57:        openssl-1_1-use-include-directive.patch
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} && ! 0%{?sle_version}
 Requires:       crypto-policies
@@ -285,6 +286,10 @@ rm -f %{buildroot}%{_sysconfdir}/ssl/openssl.cnf.dist
 ln -sf ./%{_rname} %{buildroot}/%{_includedir}/ssl
 mkdir %{buildroot}/%{_datadir}/ssl
 mv %{buildroot}/%{ssletcdir}/misc %{buildroot}/%{_datadir}/ssl/
+# Create the two directories into which packages will drop their configuration
+# files.
+mkdir %{buildroot}/%{ssletcdir}/engines.d/
+mkdir %{buildroot}/%{ssletcdir}/engdef.d/
 
 # avoid file conflicts with man pages from other packages
 #
@@ -382,6 +387,8 @@ unset LD_LIBRARY_PATH
 %dir %{ssletcdir}
 %config (noreplace) %{ssletcdir}/openssl.cnf
 %attr(700,root,root) %{ssletcdir}/private
+%dir %{ssletcdir}/engines.d
+%dir %{ssletcdir}/engdef.d
 %{ssletcdir}/ct_log_list.cnf
 %{ssletcdir}/ct_log_list.cnf.dist
 

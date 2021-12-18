@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  6 22:21:15 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added openssl-1_1-use-include-directive.patch so that the default
+  /etc/ssl/openssl.cnf file will include any configuration files that
+  other packages might place into /etc/ssl/engines.d/ and
+  /etc/ssl/engdef.d/ This is a fix for bsc#1004463 where scripting was
+  being used to modify the openssl.cnf file. The scripting would fail
+  if either the default openssl.cnf file, or the sample openssl-ibmca
+  configuration file would be changed by upstream.
+- Updated spec file to create the two new necessary directores for
+  the above patch.
+
+-------------------------------------------------------------------
 Thu Nov 11 18:50:47 UTC 2021 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Add support for livepatches (jsc#SLE-20049).

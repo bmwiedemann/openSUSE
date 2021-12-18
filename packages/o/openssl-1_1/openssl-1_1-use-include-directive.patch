@@ -1,0 +1,26 @@
+--- a/apps/openssl.cnf	2021-08-24 09:38:47.000000000 -0400
++++ b/apps/openssl.cnf	2021-12-06 17:13:34.549291242 -0500
+@@ -11,9 +11,23 @@
+ # defined.
+ HOME			= .
+ 
++openssl_conf = openssl_init
++
++[openssl_init]
++
+ # Extra OBJECT IDENTIFIER info:
+ #oid_file		= $ENV::HOME/.oid
+ oid_section		= new_oids
++engines			= engine_section
++
++# This include will look through the directory that will contain the
++# engine declarations for any engines provided by other packages.
++[engine_section]
++.include /etc/ssl/engines.d/
++
++# This include will look through the directory that will contain the
++# definitions of the engines declared in the engine section.
++.include /etc/ssl/engdef.d/
+ 
+ # To use this configuration file with the "-extfile" option of the
+ # "openssl x509" utility, name here the section containing the
