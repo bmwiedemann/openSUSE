@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp_cors
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -46,10 +46,10 @@ BuildRequires:  %{python_module async_timeout >= 2.0.0}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module multidict >= 3.3.0}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module yarl >= 0.13.0}
 # /SECTION

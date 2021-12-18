@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 15 08:04:25 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Tue Jun  2 18:57:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add URL tag
