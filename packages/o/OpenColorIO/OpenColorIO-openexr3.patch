@@ -1,7 +1,7 @@
-Index: OpenColorIO-2.0.1/share/cmake/modules/FindExtPackages.cmake
+Index: OpenColorIO-2.0.2/share/cmake/modules/FindExtPackages.cmake
 ===================================================================
---- OpenColorIO-2.0.1.orig/share/cmake/modules/FindExtPackages.cmake	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/share/cmake/modules/FindExtPackages.cmake	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/share/cmake/modules/FindExtPackages.cmake
++++ OpenColorIO-2.0.2/share/cmake/modules/FindExtPackages.cmake
 @@ -34,7 +34,7 @@ find_package(yaml-cpp 0.6.3 REQUIRED)
  
  # Half (OpenEXR/IlmBase)
@@ -11,10 +11,10 @@ Index: OpenColorIO-2.0.1/share/cmake/modules/FindExtPackages.cmake
  
  # pystring
  # https://github.com/imageworks/pystring
-Index: OpenColorIO-2.0.1/src/OpenColorIO/BitDepthUtils.h
+Index: OpenColorIO-2.0.2/src/OpenColorIO/BitDepthUtils.h
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/OpenColorIO/BitDepthUtils.h	2021-08-20 10:01:11.136153574 +0200
-+++ OpenColorIO-2.0.1/src/OpenColorIO/BitDepthUtils.h	2021-08-20 10:03:12.320984596 +0200
+--- OpenColorIO-2.0.2.orig/src/OpenColorIO/BitDepthUtils.h
++++ OpenColorIO-2.0.2/src/OpenColorIO/BitDepthUtils.h
 @@ -7,7 +7,7 @@
  
  #include <OpenColorIO/OpenColorIO.h>
@@ -24,12 +24,12 @@ Index: OpenColorIO-2.0.1/src/OpenColorIO/BitDepthUtils.h
  
  
  namespace OCIO_NAMESPACE
-Index: OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt
+Index: OpenColorIO-2.0.2/src/OpenColorIO/CMakeLists.txt
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/OpenColorIO/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt	2021-08-20 10:01:11.136153574 +0200
-@@ -207,7 +207,7 @@ target_link_libraries(OpenColorIO
- 		public_api
+--- OpenColorIO-2.0.2.orig/src/OpenColorIO/CMakeLists.txt
++++ OpenColorIO-2.0.2/src/OpenColorIO/CMakeLists.txt
+@@ -204,7 +204,7 @@ target_link_libraries(OpenColorIO
+ 		OpenColorIOHeaders
  	PRIVATE
  		expat::expat
 -		IlmBase::Half
@@ -37,10 +37,10 @@ Index: OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt
  		pystring::pystring
  		sampleicc::sampleicc
  		utils::strings
-Index: OpenColorIO-2.0.1/src/OpenColorIO/MathUtils.h
+Index: OpenColorIO-2.0.2/src/OpenColorIO/MathUtils.h
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/OpenColorIO/MathUtils.h	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/OpenColorIO/MathUtils.h	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/OpenColorIO/MathUtils.h
++++ OpenColorIO-2.0.2/src/OpenColorIO/MathUtils.h
 @@ -9,7 +9,7 @@
  
  #include <OpenColorIO/OpenColorIO.h>
@@ -50,10 +50,10 @@ Index: OpenColorIO-2.0.1/src/OpenColorIO/MathUtils.h
  
  namespace OCIO_NAMESPACE
  {
-Index: OpenColorIO-2.0.1/src/OpenColorIO/ops/range/RangeOp.cpp
+Index: OpenColorIO-2.0.2/src/OpenColorIO/ops/range/RangeOp.cpp
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/OpenColorIO/ops/range/RangeOp.cpp	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/OpenColorIO/ops/range/RangeOp.cpp	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/OpenColorIO/ops/range/RangeOp.cpp
++++ OpenColorIO-2.0.2/src/OpenColorIO/ops/range/RangeOp.cpp
 @@ -7,7 +7,7 @@
  #include <OpenColorIO/OpenColorIO.h>
  
@@ -63,10 +63,10 @@ Index: OpenColorIO-2.0.1/src/OpenColorIO/ops/range/RangeOp.cpp
  #include "HashUtils.h"
  #include "MathUtils.h"
  #include "ops/lut1d/Lut1DOpData.h"
-Index: OpenColorIO-2.0.1/src/OpenColorIO/transforms/builtins/ACES.cpp
+Index: OpenColorIO-2.0.2/src/OpenColorIO/transforms/builtins/ACES.cpp
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/OpenColorIO/transforms/builtins/ACES.cpp	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/OpenColorIO/transforms/builtins/ACES.cpp	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/OpenColorIO/transforms/builtins/ACES.cpp
++++ OpenColorIO-2.0.2/src/OpenColorIO/transforms/builtins/ACES.cpp
 @@ -6,7 +6,7 @@
  
  #include <OpenColorIO/OpenColorIO.h>
@@ -76,10 +76,10 @@ Index: OpenColorIO-2.0.1/src/OpenColorIO/transforms/builtins/ACES.cpp
  #include "ops/fixedfunction/FixedFunctionOp.h"
  #include "ops/gradingrgbcurve/GradingRGBCurveOp.h"
  #include "ops/log/LogOp.h"
-Index: OpenColorIO-2.0.1/src/OpenColorIO/transforms/builtins/OpHelpers.cpp
+Index: OpenColorIO-2.0.2/src/OpenColorIO/transforms/builtins/OpHelpers.cpp
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/OpenColorIO/transforms/builtins/OpHelpers.cpp	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/OpenColorIO/transforms/builtins/OpHelpers.cpp	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/OpenColorIO/transforms/builtins/OpHelpers.cpp
++++ OpenColorIO-2.0.2/src/OpenColorIO/transforms/builtins/OpHelpers.cpp
 @@ -4,7 +4,7 @@
  
  #include <OpenColorIO/OpenColorIO.h>
@@ -89,10 +89,10 @@ Index: OpenColorIO-2.0.1/src/OpenColorIO/transforms/builtins/OpHelpers.cpp
  #include "ops/lut1d/Lut1DOp.h"
  #include "transforms/builtins/OpHelpers.h"
  
-Index: OpenColorIO-2.0.1/src/apps/ocioconvert/CMakeLists.txt
+Index: OpenColorIO-2.0.2/src/apps/ocioconvert/CMakeLists.txt
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/apps/ocioconvert/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/apps/ocioconvert/CMakeLists.txt	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/apps/ocioconvert/CMakeLists.txt
++++ OpenColorIO-2.0.2/src/apps/ocioconvert/CMakeLists.txt
 @@ -27,7 +27,7 @@ set_target_properties(ocioconvert PROPER
  target_link_libraries(ocioconvert
      PRIVATE
@@ -102,10 +102,10 @@ Index: OpenColorIO-2.0.1/src/apps/ocioconvert/CMakeLists.txt
          ${OCIO_GL_LIB}
          oiiohelpers
          OpenColorIO
-Index: OpenColorIO-2.0.1/src/apps/ocioconvert/main.cpp
+Index: OpenColorIO-2.0.2/src/apps/ocioconvert/main.cpp
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/apps/ocioconvert/main.cpp	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/apps/ocioconvert/main.cpp	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/apps/ocioconvert/main.cpp
++++ OpenColorIO-2.0.2/src/apps/ocioconvert/main.cpp
 @@ -24,7 +24,7 @@ namespace OIIO = OIIO_NAMESPACE;
  #endif // OCIO_GPU_ENABLED
  
@@ -115,10 +115,10 @@ Index: OpenColorIO-2.0.1/src/apps/ocioconvert/main.cpp
  
  
  // Array of non OpenColorIO arguments.
-Index: OpenColorIO-2.0.1/src/apps/ocioperf/CMakeLists.txt
+Index: OpenColorIO-2.0.2/src/apps/ocioperf/CMakeLists.txt
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/apps/ocioperf/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/apps/ocioperf/CMakeLists.txt	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/apps/ocioperf/CMakeLists.txt
++++ OpenColorIO-2.0.2/src/apps/ocioperf/CMakeLists.txt
 @@ -20,7 +20,7 @@ set_target_properties(ocioperf PROPERTIE
  target_link_libraries(ocioperf
      PRIVATE
@@ -128,10 +128,10 @@ Index: OpenColorIO-2.0.1/src/apps/ocioperf/CMakeLists.txt
          oiiohelpers
          OpenColorIO
          OpenImageIO::OpenImageIO
-Index: OpenColorIO-2.0.1/src/apps/ocioperf/main.cpp
+Index: OpenColorIO-2.0.2/src/apps/ocioperf/main.cpp
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/apps/ocioperf/main.cpp	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/src/apps/ocioperf/main.cpp	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/src/apps/ocioperf/main.cpp
++++ OpenColorIO-2.0.2/src/apps/ocioperf/main.cpp
 @@ -11,7 +11,7 @@ namespace OIIO = OIIO_NAMESPACE;
  #endif
  
@@ -141,10 +141,10 @@ Index: OpenColorIO-2.0.1/src/apps/ocioperf/main.cpp
  #include "oiiohelpers.h"
  #include "utils/StringUtils.h"
  
-Index: OpenColorIO-2.0.1/src/libutils/oiiohelpers/CMakeLists.txt
+Index: OpenColorIO-2.0.2/src/libutils/oiiohelpers/CMakeLists.txt
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/libutils/oiiohelpers/CMakeLists.txt	2021-08-20 10:01:11.136153574 +0200
-+++ OpenColorIO-2.0.1/src/libutils/oiiohelpers/CMakeLists.txt	2021-08-20 10:02:46.500807544 +0200
+--- OpenColorIO-2.0.2.orig/src/libutils/oiiohelpers/CMakeLists.txt
++++ OpenColorIO-2.0.2/src/libutils/oiiohelpers/CMakeLists.txt
 @@ -31,7 +31,7 @@ target_link_libraries(oiiohelpers
  
      PRIVATE
@@ -154,10 +154,10 @@ Index: OpenColorIO-2.0.1/src/libutils/oiiohelpers/CMakeLists.txt
          utils::strings
  )
  
-Index: OpenColorIO-2.0.1/src/libutils/oiiohelpers/oiiohelpers.cpp
+Index: OpenColorIO-2.0.2/src/libutils/oiiohelpers/oiiohelpers.cpp
 ===================================================================
---- OpenColorIO-2.0.1.orig/src/libutils/oiiohelpers/oiiohelpers.cpp	2021-08-20 10:01:11.136153574 +0200
-+++ OpenColorIO-2.0.1/src/libutils/oiiohelpers/oiiohelpers.cpp	2021-08-20 10:02:17.476608508 +0200
+--- OpenColorIO-2.0.2.orig/src/libutils/oiiohelpers/oiiohelpers.cpp
++++ OpenColorIO-2.0.2/src/libutils/oiiohelpers/oiiohelpers.cpp
 @@ -5,7 +5,7 @@
  #include <OpenColorIO/OpenColorIO.h>
  
@@ -167,12 +167,12 @@ Index: OpenColorIO-2.0.1/src/libutils/oiiohelpers/oiiohelpers.cpp
  #include "oiiohelpers.h"
  #include "utils/StringUtils.h"
  
-Index: OpenColorIO-2.0.1/tests/cpu/CMakeLists.txt
+Index: OpenColorIO-2.0.2/tests/cpu/CMakeLists.txt
 ===================================================================
---- OpenColorIO-2.0.1.orig/tests/cpu/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
-+++ OpenColorIO-2.0.1/tests/cpu/CMakeLists.txt	2021-08-20 10:01:11.136153574 +0200
+--- OpenColorIO-2.0.2.orig/tests/cpu/CMakeLists.txt
++++ OpenColorIO-2.0.2/tests/cpu/CMakeLists.txt
 @@ -18,7 +18,7 @@ function(add_ocio_test NAME SOURCES PRIV
-             public_api
+             OpenColorIOHeaders
          PRIVATE
              expat::expat
 -            IlmBase::Half

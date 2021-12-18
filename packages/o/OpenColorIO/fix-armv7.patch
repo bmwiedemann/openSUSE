@@ -1,0 +1,23 @@
+From 545ed45840b30fa80f43f5534a06ef44c71c22f4 Mon Sep 17 00:00:00 2001
+From: Patrick Hodoul <Patrick.Hodoul@autodesk.com>
+Date: Tue, 24 Aug 2021 09:49:46 -0400
+Subject: [PATCH] Adsk Contrib - Fix template double instantiation
+
+Signed-off-by: Patrick Hodoul <Patrick.Hodoul@autodesk.com>
+---
+ src/OpenColorIO/Config.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/OpenColorIO/Config.cpp b/src/OpenColorIO/Config.cpp
+index 2a93d95ca..f80c8968e 100644
+--- a/src/OpenColorIO/Config.cpp
++++ b/src/OpenColorIO/Config.cpp
+@@ -1073,7 +1073,7 @@ class Config::Impl
+ 
+ 
+ // Instantiate the cache with the right types.
+-template class ProcessorCache<std::size_t, ProcessorRcPtr>;
++extern template class ProcessorCache<std::size_t, ProcessorRcPtr>;
+ 
+ 
+ ///////////////////////////////////////////////////////////////////////////

@@ -17,45 +17,32 @@
 
 
 %define build_flavor @BUILD_FLAVOR@%{nil}
-
 %if "%{build_flavor}" == "ocio_tools"
 %bcond_without ocio_tools
 %else
 %bcond_with    ocio_tools
 %endif
-
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
 %define so_ver 2_0
 %define pkg_name OpenColorIO
-
-%if %{with ocio_tools}
-Name:           OpenColorIO-tools
-%else
+%if %{without ocio_tools}
 Name:           OpenColorIO
+%else
+Name:           OpenColorIO-tools
 %endif
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://opencolorio.org/
-Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.0.1.tar.gz
+Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
 # https://aur.archlinux.org/cgit/aur.git/tree/opencolorio-openexr3.patch?h=opencolorio-qfix
 Patch0:         OpenColorIO-openexr3.patch
-%if %{with ocio_tools}
-BuildRequires:  OpenImageIO >= 2.1.9
-BuildRequires:  OpenImageIO-devel >= 2.1.9
-BuildRequires:  python3-MarkupSafe
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-breathe
-BuildRequires:  python3-recommonmark
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-sphinx-tabs
-BuildRequires:  python3-sphinx_press_theme
-BuildRequires:  python3-testresources
-%endif
+# PATCH-FIX-UPSTREAM - https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1465
+Patch1:         fix-armv7.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -69,6 +56,18 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  yaml-cpp-devel >= 0.6.3
 Recommends:     %{pkg_name}-doc = %{version}
+%if %{with ocio_tools}
+BuildRequires:  OpenImageIO >= 2.1.9
+BuildRequires:  OpenImageIO-devel >= 2.1.9
+BuildRequires:  python3-MarkupSafe
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-breathe
+BuildRequires:  python3-recommonmark
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-sphinx-tabs
+BuildRequires:  python3-sphinx_press_theme
+BuildRequires:  python3-testresources
+%endif
 
 %description
 OpenColorIO (OCIO) is a color management solution geared towards motion picture
@@ -120,9 +119,10 @@ This package contains python bindings for OpenColorIO.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 # Fix library install location
-sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
+sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt
 
 %build
 %cmake \
@@ -140,7 +140,7 @@ sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
 %cmake_install
 
 # Remove stray static lib
-rm -f %{buildroot}/usr/lib/libOpenColorIOoiiohelpers.a
+rm -f %{buildroot}%{_prefix}/lib/libOpenColorIOoiiohelpers.a
 
 # Move documentation to the right location
 mkdir -p %{buildroot}%{_docdir}/%{pkg_name}
@@ -154,7 +154,6 @@ rm -rv %{buildroot}%{_docdir}/%{pkg_name}/ %{buildroot}%{_bindir}
 %else
 mv %{buildroot}%{_datadir}/doc/OpenColorIO/html/ %{buildroot}%{_docdir}/%{pkg_name}/
 rmdir %{buildroot}%{_datadir}/doc/OpenColorIO
-
 rm -rv %{buildroot}%{_libdir} %{buildroot}%{_includedir}
 %endif
 
@@ -162,11 +161,10 @@ rm -rv %{buildroot}%{_libdir} %{buildroot}%{_includedir}
 %postun -n libOpenColorIO%{so_ver} -p /sbin/ldconfig
 
 %if %{with ocio_tools}
-
 %files
 %license LICENSE
 %{_bindir}/*
-%doc     %{_docdir}/%{pkg_name}/
+%doc %{_docdir}/%{pkg_name}/
 %exclude %{_docdir}/%{pkg_name}/html/
 %{_datadir}/ocio/
 
@@ -178,6 +176,7 @@ rm -rv %{buildroot}%{_libdir} %{buildroot}%{_includedir}
 %files devel
 %{_includedir}/OpenColorIO/
 %{_libdir}/pkgconfig/OpenColorIO.pc
+%{_libdir}/cmake/OpenColorIO/
 %{_libdir}/libOpenColorIO.so
 
 %files -n libOpenColorIO%{so_ver}
@@ -187,7 +186,6 @@ rm -rv %{buildroot}%{_libdir} %{buildroot}%{_includedir}
 %files -n python3-OpenColorIO
 %license LICENSE
 %{python3_sitearch}/PyOpenColorIO.so
-
 %endif
 
 %changelog

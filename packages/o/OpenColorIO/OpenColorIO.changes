@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec  8 16:42:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on armv6/7:
+  * fix-armv7.patch
+
+-------------------------------------------------------------------
+Mon Dec  6 10:17:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  This is an ABI compatible update for the 2.0.x series that includes the
+  relevant bug fixes from the 2.1 release.
+  Noteworthy bug fixes and enhancements:
+  * Allow apps to use getColorSpaceFromFilePath even for v1 configs and
+    deprecate parseColorSpaceFromString
+  * Fix problem rendering to integer pixel layouts when there is a no-op
+  * Update CLF test files, add Python scripts for CLF implemenation guide
+- Rebased OpenColorIO-openexr3.patch.
+
+-------------------------------------------------------------------
 Tue Sep  7 18:09:15 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - only build the documentation in the ocio_tools case:
