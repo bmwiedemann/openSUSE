@@ -7,4 +7,13 @@
     <comment>New lua</comment>
     <requestid>898996</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>858054d513dda7b6ac40b87292010455</srcmd5>
+    <version>3.0</version>
+    <time>1639855808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires lua-luaposix &gt;= 30
+</comment>
+    <requestid>941296</requestid>
+  </revision>
 </revisionlist>

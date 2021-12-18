@@ -32,6 +32,7 @@ Url:            https://pjb.com.au/comp/lua/readline.html
 Source0:        https://pjb.com.au/comp/lua/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  readline-devel
+Requires:       %{flavor}-luaposix >= 30
 %lua_provides
 
 %description
@@ -52,7 +53,7 @@ This module does not work lua -i because that runs its own readline, and the two
 %build
 CFLAGS="%{optflags}"
 CFLAGS="$CFLAGS -I%{lua_incdir}"
-gcc $CFLAGS -shared -o C-readline.so -fPIC C-readline.c -llua -lreadline
+cc $CFLAGS -shared -o C-readline.so -fPIC C-readline.c -llua -lreadline
 
 %install
 install -Dm644 C-readline.so %{buildroot}%{lua_archdir}/C-readline.so
