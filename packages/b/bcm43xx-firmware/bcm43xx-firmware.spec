@@ -47,11 +47,15 @@ Source4309:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom
 # https://chromium.googlesource.com/chromiumos/third_party/linux-firmware/+/f151f016b4fe656399f199e28cabf8d658bcb52b/brcm/brcmfmac4356-pcie.txt
 Source4356:     brcmfmac4356-pcie.txt
 #BCM43456
-Source4561:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.bin
-Source4562:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.clm_blob
-Source4563:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.txt
+Source4561:     https://github.com/RPi-Distro/firmware-nonfree/raw/buster/brcm/brcmfmac43456-sdio.bin
+Source4562:     https://github.com/RPi-Distro/firmware-nonfree/raw/buster/brcm/brcmfmac43456-sdio.clm_blob
+Source4563:     https://github.com/RPi-Distro/firmware-nonfree/raw/buster/brcm/brcmfmac43456-sdio.txt
 Source4564:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C5.hcd
 Source4559:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C0.hcd
+#BCM43436 aka BCM43430b0
+Source4600:     https://github.com/RPi-Distro/firmware-nonfree/raw/buster/brcm/brcmfmac43436-sdio.bin
+Source4601:     https://github.com/RPi-Distro/firmware-nonfree/raw/buster/brcm/brcmfmac43436-sdio.clm_blob
+Source4602:     https://github.com/RPi-Distro/firmware-nonfree/raw/buster/brcm/brcmfmac43436-sdio.txt
 # Owns /lib/firmware/brcm and potentially conflicts
 BuildRequires:  kernel-firmware-brcm
 # Owns /etc/modprobe.d
@@ -86,7 +90,13 @@ install -c -m 0644 %{SOURCE4356} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4561} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4562} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4563} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4600} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4601} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4602} %{buildroot}%{_firmwaredir}/brcm/
 ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
+ln -s brcmfmac43436-sdio.bin %{buildroot}%{_firmwaredir}/brcm/brcmfmac43430b0-sdio.raspberrypi,model-zero-2-w.bin
+ln -s brcmfmac43436-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43430b0-sdio.raspberrypi,model-zero-2-w.txt
+ln -s brcmfmac43436-sdio.clm_blob %{buildroot}%{_firmwaredir}/brcm/brcmfmac43430b0-sdio.clm_blob
 # We have conflicting versions of CM4's brcmfmac configuration, some
 # pre-release dev versions depend on 43456 whereas store bought ones depend on
 # 43455. Let's keep both for now.
@@ -115,6 +125,12 @@ ln -s brcm/BCM43430A1.hcd %{buildroot}%{_firmwaredir}/BCM43430A1.hcd
 %{_firmwaredir}/brcm/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
 %{_firmwaredir}/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
 %{_firmwaredir}/brcm/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
+%{_firmwaredir}/brcm/brcmfmac43430b0-sdio.clm_blob
+%{_firmwaredir}/brcm/brcmfmac43430b0-sdio.raspberrypi,model-zero-2-w.bin
+%{_firmwaredir}/brcm/brcmfmac43430b0-sdio.raspberrypi,model-zero-2-w.txt
+%{_firmwaredir}/brcm/brcmfmac43436-sdio.bin
+%{_firmwaredir}/brcm/brcmfmac43436-sdio.clm_blob
+%{_firmwaredir}/brcm/brcmfmac43436-sdio.txt
 %{_firmwaredir}/brcm/brcmfmac4356-pcie.txt
 %{_firmwaredir}/brcm/brcmfmac43456-sdio.bin
 %{_firmwaredir}/brcm/brcmfmac43456-sdio.clm_blob

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 15 08:26:03 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Introduce firmware files for Raspberry Pi Zero 2 W support (jsc#SLE-23064).
+- Update BCM4345C0.hcd to fix Spectra for CYW43455 (CVE-2020-10370)
+- Change source file links from branch master to branch buster.
+
+-------------------------------------------------------------------
 Fri Apr  9 11:20:00 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce firmware file for Raspberry Pi 400's bluetooth.
