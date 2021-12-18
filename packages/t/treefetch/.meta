@@ -1,0 +1,5 @@
+<package name="treefetch" project="openSUSE:Factory">
+  <title>treefetch</title>
+  <description>A lightning-fast system fetch tool made with Rust.</description>
+  <devel project="utilities" package="treefetch"/>
+</package>
