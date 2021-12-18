@@ -1,7 +1,7 @@
 #
 # spec file for package wireplumber
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pipewire_minimum_version 0.3.32
 %define apiver 0.4
 %define apiver_str 0_4
 %define sover 0
@@ -32,49 +33,32 @@ Source1:        split-config-file.py
 Patch0:         0001-m-reserve-device-replace-the-hash-table-key-on-new-insert.patch
 Patch1:         0002-policy-node-wait-for-nodes-when-we-become-unlinked.patch
 Patch100:       reduce-meson-required-version.patch
-BuildRequires:  cmake
+# docs
 BuildRequires:  doxygen
-BuildRequires:  fdupes
 BuildRequires:  graphviz
+BuildRequires:  python3-lxml
+# /docs
+BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  meson >= 0.54.0
-BuildRequires:  pipewire >= 0.3.32
+BuildRequires:  pipewire >= %{pipewire_minimum_version}
 #!BuildIgnore:    pipewire-session-manager
-BuildRequires:  pipewire-spa-plugins-0_2
+BuildRequires:  pipewire-spa-plugins-0_2 >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
+BuildRequires:  python3-lxml
 BuildRequires:  xmltoman
-BuildRequires:  pkgconfig(lua5.3)
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-allocators-1.0)
-BuildRequires:  pkgconfig(gstreamer-audio-1.0)
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(jack) >= 1.9.10
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.32
-BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libva)
-BuildRequires:  pkgconfig(sbc)
-BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(vulkan)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  python3-base
-BuildRequires:  python3-lxml
-Requires:       pipewire >= 0.3.32
+Requires:       pipewire >= %{pipewire_minimum_version}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
@@ -82,6 +66,8 @@ BuildRequires:  gcc9-c++
 BuildRequires:  gcc-c++
 %endif
 Provides:       pipewire-session-manager
+# Setup ALSA devices if pipewire handles pulseaudio connections.
+Requires:       (%{name}-audio if pipewire-pulseaudio)
 
 %description
 WirePlumber is a modular session / policy manager for PipeWire and
@@ -92,11 +78,10 @@ external tools for managing PipeWire.
 %package audio
 Summary:        Session / policy manager implementation for PipeWire (audio support)
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
 Requires:       %{libwireplumber} = %{version}
+Requires:       %{name} = %{version}
 Conflicts:      pulseaudio
 Recommends:     pipewire-pulseaudio
-Supplements:    (pipewire-pulseaudio and wireplumber)
 
 %description audio
 WirePlumber is a modular session / policy manager for PipeWire and
@@ -109,8 +94,8 @@ This package enables the use of alsa devices in PipeWire.
 %package devel
 Summary:        Session / policy manager implementation for PipeWire
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
 Requires:       %{libwireplumber} = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 WirePlumber is a modular session / policy manager for PipeWire and
@@ -146,15 +131,10 @@ This package provides the GObject Introspection bindings for
 the wireplumber shared library.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%if %{pkg_vcmp meson < 0.56.0}
-%patch100 -p1
-%endif
+%autosetup -p1
 
 pushd src/config/main.lua.d
-python3 %{SOURCE1} 
+python3 %{SOURCE1}
 rm 90-enable-all.lua
 popd
 

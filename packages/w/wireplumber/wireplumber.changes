@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 15 13:48:27 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove many build dependencies which aren't really needed
+
+-------------------------------------------------------------------
+Sat Dec 11 16:54:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %autosetup, apply patches unconditionally
+- Hard depend on wireplumber-audio if pipewire-pulseaudio is installed
+
+-------------------------------------------------------------------
 Thu Dec  9 12:08:45 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Supplements: (pipewire-pulseaudio and wireplumber) so everyone

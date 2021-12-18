@@ -7,4 +7,12 @@
     <comment>New package wireplumber, replacing pipewire-media-session</comment>
     <requestid>939142</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47eb0f2904daa59f1adc2ae8f30c42a7</srcmd5>
+    <version>0.4.5</version>
+    <time>1639855775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940773</requestid>
+  </revision>
 </revisionlist>
