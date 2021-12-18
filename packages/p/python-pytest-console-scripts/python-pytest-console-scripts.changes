@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 17 13:50:46 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Wed Dec  8 08:33:48 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.2.1

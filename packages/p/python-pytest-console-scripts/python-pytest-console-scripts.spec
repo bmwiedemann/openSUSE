@@ -34,7 +34,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 4.0.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module virtualenv >= 20}
 # /SECTION
