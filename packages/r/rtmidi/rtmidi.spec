@@ -1,7 +1,7 @@
 #
 # spec file for package rtmidi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover   5
+%define sover   6
 Name:           rtmidi
-Version:        4.0.0
+Version:        5.0.0
 Release:        0
 Summary:        C++ library for realtime MIDI input/ouput
 License:        MIT

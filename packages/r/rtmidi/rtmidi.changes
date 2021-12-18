@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 18 01:30:22 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Update to Version 5.0.0
+  * see git history for complete list of changes
+  * new Web MIDI API
+  * iOS support
+  * new setBufferSize() function
+  * fixes for WinMM, Jack
+  * added C API test program
+  * now requiring C++11
+  * build system updates
+  * midiprobe probes all compiled APIs
+  * various build system updates and code efficiencies
+- Refreshed rtmidi-4.0.0-pkgconfig.patch
+
+-------------------------------------------------------------------
 Mon Apr 22 14:03:48 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.0.0
@@ -33,7 +49,7 @@ Thu Apr 19 11:31:53 UTC 2018 - aloisio@gmx.com
 -------------------------------------------------------------------
 Thu May 25 20:20:59 UTC 2017 - avvissu@yandex.by
 
-- Change path to headers 
+- Change path to headers
 - Drop _service file
 
 -------------------------------------------------------------------
@@ -46,4 +62,3 @@ Mon Jan 30 07:51:49 UTC 2017 - edogawa@aon.at
 Wed Jun 24 04:10:30 UTC 2015 - avvissu@yandex.ru
 
 - Initial release
-
