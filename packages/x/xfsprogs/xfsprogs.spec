@@ -24,9 +24,8 @@
 %bcond_with systemd
 %endif
 %define libname libhandle1
-
 Name:           xfsprogs
-Version:        5.14.0
+Version:        5.14.2
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -48,8 +47,8 @@ BuildRequires:  liburcu-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils
+Suggests:       xfsprogs-scrub
 # hint for ZYPP
 Supplements:    filesystem(xfs)
 %if 0%{?suse_version} >= 1310
@@ -58,7 +57,6 @@ BuildRequires:  suse-module-tools
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %endif
-Suggests:       xfsprogs-scrub
 
 %description
 A set of commands to use the XFS file system, including mkfs.xfs.
@@ -132,7 +130,7 @@ export LIBUUID=%{_libdir}/libuuid.a
     --disable-lto \
 %endif
     %{nil}
-make %{?_smp_mflags} V=1
+%make_build
 
 PATH_TO_HELP="%{_dracutmodulesdir}/95suse-xfs/dracut-fsck-help.txt"
 sed -e "s|@@PATH_TO_HELP@@|$PATH_TO_HELP|" %{SOURCE3} > module-setup.sh

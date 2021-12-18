@@ -667,4 +667,15 @@
     <comment></comment>
     <requestid>932583</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>36709297b3829a29e384a6c6cc2c8115</srcmd5>
+    <version>5.14.2</version>
+    <time>1639855777</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.14.2:
+  - libxfs: move rogue fallthrough macro out of linux.h
+  - libxfs: fix atomic64_t for 32-bit architectures
+  - libfrog: fix crc32c self test code on cross builds (forwarded request 940792 from dirkmueller)</comment>
+    <requestid>940797</requestid>
+  </revision>
 </revisionlist>
