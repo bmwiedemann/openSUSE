@@ -62,7 +62,9 @@ at the manual).
 %package -n libsource-highlight%{soname}
 Summary:        Source Code Highlighting C++ Library
 Group:          System/Libraries
-Requires:       ctags
+# libsource-highlight is only used by gdb, which does not use the ctags
+# feature. Use a recommendation instead of a hard requirement, bsc#1193401
+Recommends:     ctags
 
 %description -n libsource-highlight%{soname}
 Source-highlight reads source language specifications dynamically, thus it can

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 17 11:15:15 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Replace ctags hard requirement with a recommendation for
+  libsource-highlight, fixes bsc#1193401
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jun  1 09:33:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 compatibility fix:
