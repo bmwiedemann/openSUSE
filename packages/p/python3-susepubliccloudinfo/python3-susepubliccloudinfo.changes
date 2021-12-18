@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 17 17:58:29 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Add rpm-macros to build requirements in spec.
+
+-------------------------------------------------------------------
 Wed Sep  2 18:40:38 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 1.2.2 (bsc#1176102, bsc#1176103)

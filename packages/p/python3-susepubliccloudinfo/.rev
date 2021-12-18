@@ -47,4 +47,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>833335</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8cf08ac475f0574a31d6858a3b475902</srcmd5>
+    <version>1.2.2</version>
+    <time>1639855805</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rpm-macros to build requirements in spec. (forwarded request 941278 from seanmarlow)</comment>
+    <requestid>941285</requestid>
+  </revision>
 </revisionlist>

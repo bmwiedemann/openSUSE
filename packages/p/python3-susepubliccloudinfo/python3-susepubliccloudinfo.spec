@@ -1,7 +1,7 @@
 #
 # spec file for package python3-susepubliccloudinfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Requires:       python3
 Requires:       python3-docopt
 Requires:       python3-lxml
 Requires:       python3-requests
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
