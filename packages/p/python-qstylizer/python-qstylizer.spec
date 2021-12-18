@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qstylizer
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Stylesheet Generator for PyQt{4-5}/PySide{1-2}
 License:        MIT
@@ -32,7 +32,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module inflection > 0.3.0}
 BuildRequires:  %{python_module pytest >= 4}
 BuildRequires:  %{python_module pytest-mock >= 1.6}
-BuildRequires:  %{python_module pytest-runner >= 2.7}
 BuildRequires:  %{python_module tinycss2}
 #BuildRequires:  %%{python_module pytest-catchlog >= 1}
 BuildRequires:  %{python_module pytest-xdist >= 1.1}
