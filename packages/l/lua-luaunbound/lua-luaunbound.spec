@@ -23,12 +23,12 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        0.5
+Version:        1.0.0
 Release:        0
 License:        MIT
 Group:          Development/Languages/Other
 Summary:        This is a binding to libunbound for Lua
-Url:            https://www.zash.se/luaunbound.html
+URL:            https://www.zash.se/luaunbound.html
 Source0:        https://code.zash.se/dl/luaunbound/%{mod_name}-%{version}.tar.gz
 Source1:        https://code.zash.se/dl/luaunbound/%{mod_name}-%{version}.tar.gz.asc
 Source2:        lua-%{mod_name}.keyring
@@ -44,8 +44,7 @@ This is a binding to libunbound for Lua
 %autosetup -n %{mod_name}-%{version} -p1
 
 %build
-sed 's|lua-$(LUA_VERSION)|lua$(LUA_VERSION)|g' -i GNUmakefile
-%make_build CC=cc LUA_VERSION=%{lua_version} LDLIBS="-llua -lunbound" MYCFLAGS="%{optflags}"
+%make_build CC=cc LUA_PC=lua%{lua_version} LDLIBS="-llua -lunbound" MYCFLAGS="%{optflags}"
 
 %install
 %make_install LUA_LIBDIR=%{lua_archdir}

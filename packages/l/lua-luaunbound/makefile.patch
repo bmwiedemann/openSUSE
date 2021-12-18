@@ -12,4 +12,4 @@
 +	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
  install:
- 	install -d $(DESTDIR)$(LUA_LIBDIR)/
+ 	$(MKDIR) $(DESTDIR)$(LUA_LIBDIR)/

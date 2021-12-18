@@ -7,4 +7,18 @@
     <comment>New lua</comment>
     <requestid>898997</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b8799aff26e1d00de76a11646071e5f</srcmd5>
+    <version>1.0.0</version>
+    <time>1639855807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0:
+  * make: Allow overriding pkg-config name of Lua
+  * make: Get Lua install directory from pkg-config
+  * Reduce scope of 'new' C function
+  * Allow setting more than one upstream server
+  * Support forwarding
+</comment>
+    <requestid>941294</requestid>
+  </revision>
 </revisionlist>

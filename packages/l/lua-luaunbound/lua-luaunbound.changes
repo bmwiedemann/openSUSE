@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 17 19:04:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.0:
+  * make: Allow overriding pkg-config name of Lua
+  * make: Get Lua install directory from pkg-config
+  * Reduce scope of 'new' C function
+  * Allow setting more than one upstream server
+  * Support forwarding
+
+-------------------------------------------------------------------
 Sat May 22 16:50:25 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use verified source tarballs
