@@ -1,7 +1,7 @@
 #
 # spec file for package deluge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,11 @@
 
 %define _version 2.0
 Name:           deluge
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        BitTorrent Client
 License:        SUSE-GPL-3.0-with-openssl-exception
+Group:          Productivity/Networking/File-Sharing
 URL:            https://deluge-torrent.org/
 Source:         http://download.deluge-torrent.org/source/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE deluge-suse-geoip-location.patch -- Point to the right GeoIP.dat location.
@@ -36,12 +37,10 @@ BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Twisted >= 17.1
 BuildRequires:  python3-devel
-%if 0%{?suse_version} > 1500
-BuildRequires:  python3-libtorrent-rasterbar-1 >= 1.1.1
-%else
 BuildRequires:  python3-libtorrent-rasterbar >= 1.1.1
-%endif
+BuildRequires:  python3-rjsmin
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-slimit
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       python3-Mako
@@ -50,11 +49,7 @@ Requires:       python3-Twisted >= 17.1
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
-%if 0%{?suse_version} > 1500
-Requires:       python3-libtorrent-rasterbar-1 >= 1.1.1
-%else
 Requires:       python3-libtorrent-rasterbar >= 1.1.1
-%endif
 Requires:       python3-pyOpenSSL
 Requires:       python3-pyxdg
 Requires:       python3-rencode
@@ -74,9 +69,6 @@ Recommends:     python3-pygame
 Recommends:     python3-service_identity
 Recommends:     python3-setproctitle
 BuildArch:      noarch
-%if %{?suse_version} > 1510
-BuildRequires:  python3-slimit
-%endif
 %if %{?suse_version} >= 1550
 Requires:       python3-pycairo
 %else

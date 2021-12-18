@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Dec 16 15:44:12 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.0.5 (changes since 2.0.3):
+  * Gtk UI
+    + Add detection of torrent URL on GTK UI focus.
+    + Fix piecesbar crashing when enabled.
+    + Remove num_blocks_cache_hits in stats.
+    + Fix unhandled error with empty clipboard.
+    + Add torrentdetails tabs position menu.
+    + Hide pygame community banner in console.
+    + Fix cmp function for None types.
+    + Fix loading config with double-quotes in string.
+    + Fix Status tab download speed and uploaded.
+  * Web UI
+    + Handle torrent add failures.
+    + Add menu option to copy magnet URI.
+    + Fix md5sums in torrent files breaking file listing.
+    + Add country flag alt/title for accessibility.
+  * Console UI
+    + Fix hostlist status lookup errors.
+    + Fix AttributeError setting config values.
+    + Fix setting "Skip" priority.
+  * Core
+    + Add workaround libtorrent 2.0 file_progress error.
+    + Fix allow enabling any plugin Python version.
+    + Export torrent get_magnet_uri method.
+    + Fix loading magnet with resume_data and no metadata.
+    + Fix httpdownloader reencoding torrent file downloads.
+    + Fix lt listen_interfaces not comma-separated.
+    + Fix unable to remove magnet with delete_copies enabled.
+    + Fix Python 3.8 compatibility.
+    + Fix loading config with double-quotes in string.
+    + Fix pickle loading non-ascii state error.
+    + Fix creation of pidfile via command option.
+    + Fix for peer.client UnicodeDecodeError.
+    + Fix show_file unhandled dbus error.
+  * Documentation
+    + Add How-to guides about services..
+  * Stats plugin
+    + Fix constant session status key warnings.
+    + Fix cairo error.
+  * Notifications plugin
+    + Fix email KeyError with status name.
+    + Fix unhandled TypeErrors on Python 3.
+  * Autoadd plugin
+    + Fix magnet missing applied labels.
+- Use the latest libtorrent-rasterbar version now.
+
+-------------------------------------------------------------------
 Sat Nov  7 14:27:45 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix Deluge not starting by changing dependency from 
