@@ -1,5 +1,5 @@
 #
-# spec file for package python-fontParts-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,8 +26,9 @@
 %endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-fontParts%{psuffix}
-Version:        0.9.10
+Version:        0.9.11
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT
@@ -84,6 +85,7 @@ export LANG=C.UTF-8
 # fontParts tests requires fontPens and fontPens' tests require fontParts
 %check
 export LANG=C.UTF-8
+export PYTHONDONTWRITEBYTECODE=1
 %python_expand PYTHONPATH=./Lib $python Lib/fontParts/fontshell/test.py
 %endif
 
@@ -91,7 +93,8 @@ export LANG=C.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/fontParts
+%{python_sitelib}/fontParts-%{version}*-info
 %endif
 
 %changelog
