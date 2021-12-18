@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 16 11:37:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: FontTools dropped support
+- Update test and runtime requirements
+
+-------------------------------------------------------------------
 Tue Dec  7 15:49:57 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed

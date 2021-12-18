@@ -16,8 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 
 Name:           python-weasyprint
 Version:        53.4
@@ -33,36 +34,31 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libgobject-2_0-0
 Requires:       pango
-Requires:       python-CairoSVG >= 2.4.0
+Requires:       python-Pillow >= 4.0.0
 Requires:       python-Pyphen >= 0.9.1
-Requires:       python-cairocffi >= 0.9.0
-Requires:       python-cairocffi-pixbuf
 Requires:       python-cffi >= 0.6
 Requires:       python-cssselect2 >= 0.1
-Requires:       python-html5lib >= 0.999999999
-Requires:       python-pdfrw >= 0.4
-Requires:       python-setuptools >= 39.2.0
+Requires:       python-html5lib >= 1.0.1
+Requires:       python-pydyf >= 0.0.3
 Requires:       python-tinycss2 >= 1.0.0
+# SECTION fonttools[woff]
+Requires:       python-FontTools
+Requires:       python-Brotli >= 1.0.1
+Requires:       python-zopfli >= 0.1.4
+# /SECTION
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module FontTools}
-BuildRequires:  %{python_module CairoSVG >= 2.4.0}
+BuildRequires:  %{python_module Brotli >= 1.0.1}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Pyphen >= 0.9.1}
-BuildRequires:  %{python_module cairocffi >= 0.9.0}
-BuildRequires:  %{python_module cairocffi-pixbuf}
 BuildRequires:  %{python_module cffi >= 0.6}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cssselect2 >= 0.1}
-BuildRequires:  %{python_module html5lib >= 0.999999999}
-BuildRequires:  %{python_module pdfrw >= 0.4}
-BuildRequires:  %{python_module pluggy >= 0.12}
-BuildRequires:  %{python_module pydyf}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-flake8}
-BuildRequires:  %{python_module pytest-isort}
+BuildRequires:  %{python_module html5lib >= 1.0.1}
+BuildRequires:  %{python_module pydyf >= 0.0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tinycss2 >= 1.0.0}
+BuildRequires:  %{python_module zopfli >= 0.1.4}
 BuildRequires:  dejavu-fonts
 BuildRequires:  gs
 BuildRequires:  libgobject-2_0-0
@@ -83,6 +79,7 @@ designed for pagination, and meant to be easy to hack on.
 
 %prep
 %setup -q -n weasyprint-%{version}
+sed -i '/addopts/d' pyproject.toml
 
 %build
 %python_build
@@ -98,6 +95,7 @@ designed for pagination, and meant to be easy to hack on.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/weasyprint
+%{python_sitelib}/weasyprint-%{version}*-info
 
 %changelog
