@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Dec 17 09:04:17 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#109
+- fix logic around cdrom detection
+- 21.80
+
+--------------------------------------------------------------------
 Tue Dec 14 08:54:12 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#108
