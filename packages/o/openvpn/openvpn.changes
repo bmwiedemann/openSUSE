@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:40:22 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Drop 0001-preform-deferred-authentication-in-the-background.patch
+  Upstream has meanwhile solved this differently and the two
+  implementations interfere (boo#1193017).
+- Obsoleted SLE patches up to this point:
+  * openvpn-CVE-2020-15078.patch
+  * openvpn-CVE-2020-11810.patch
+  * openvpn-CVE-2018-7544.patch
+  * openvpn-CVE-2018-9336.patch
+
+-------------------------------------------------------------------
 Sat Oct 16 10:05:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.4:
@@ -318,6 +330,7 @@ Tue Mar 13 01:32:52 UTC 2018 - avindra@opensuse.org
     + Use P_DATA_V2 for server->client packets too (better packet
       alignment)
     + improve management interface documentation
+      (bsc#1085803, CVE-2018-7544)
     + rework registry key handling for OpenVPN service, notably
       making most registry values optional, falling back to
       reasonable defaults

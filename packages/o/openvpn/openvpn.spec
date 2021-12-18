@@ -42,7 +42,6 @@ Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
 Patch6:         %{name}-fips140-2.3.2.patch
-Patch9:         0001-preform-deferred-authentication-in-the-background.patch
 BuildRequires:  libselinux-devel
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
@@ -124,7 +123,6 @@ This package provides the header file to build external plugins.
 %setup -q
 %patch1
 %patch6
-%patch9
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c
