@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 16 20:44:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Fix reader mode.
+- Changes from version 41.1:
+  + Fix crash opening PDFs not loaded via HTTP.
+  + Fix CVE-2021-45085, CVE-2021-45086, CVE-2021-45087,
+    CVE-2021-45088.
+  + Fix web applications with non-Latin characters.
+  + Fix close button position in Firefox Sync dialog.
+  + Properly quote desktop file Exec line.
+  + Somewhat improve password manager robustness.
+  + Use correct tab close button position.
+  + Various fixes for Firefox bookmark import.
+
+-------------------------------------------------------------------
+Wed Nov 17 18:12:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gstreamer-plugins-rs Recommends: youtube.com now defaults to
+  av1 encoded video, use the new dav1d decoder in
+  gstreamer-plugins-rs.
+
+-------------------------------------------------------------------
 Thu Nov  4 13:10:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing option distributor_name=openSUSE to meson, no longer

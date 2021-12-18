@@ -1471,4 +1471,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment> (forwarded request 929186 from iznogood)</comment>
     <requestid>929603</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>f77d32a344d5cddd1c9d51d5536a156c</srcmd5>
+    <version>41.2</version>
+    <time>1639855811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941318</requestid>
+  </revision>
 </revisionlist>

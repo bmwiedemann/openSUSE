@@ -17,7 +17,7 @@
 
 
 Name:           epiphany
-Version:        41.0
+Version:        41.2
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
@@ -57,6 +57,7 @@ BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1) >= 2.33.2
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates
+Recommends:     gstreamer-plugins-rs
 
 %description
 Epiphany is a Web browser for the GNOME Desktop. Its principles are
