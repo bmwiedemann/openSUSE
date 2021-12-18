@@ -768,4 +768,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment></comment>
     <requestid>897318</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>80b0d61bbc5e7be480f95b6833157d0c</srcmd5>
+    <version>1.10.12</version>
+    <time>1639855776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940778</requestid>
+  </revision>
 </revisionlist>

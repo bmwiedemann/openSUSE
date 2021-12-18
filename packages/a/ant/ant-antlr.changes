@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Dec 15 16:19:12 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Update to 1.10.12:
+ * The update includes fixes for the following CVEs:
+   CVE-2021-36374, bsc#1188469 
+      Excessive memory allocation when reading a specially 
+      crafted ZIP archive or a derived formats.
+   CVE-2021-36373, bsc#1188468
+      Excessive memory allocation when reading a specially 
+      crafted TAR archive.
+ * The http condition would follow redirects even when "followRedirects" attribute
+   was set to "false". This has now been fixed. Bugzilla Report 65489
+ * Made sure setting build.compiler to the fully qualified classname
+   that corresponds to extJavac or modern has the same effect as using
+   the shorter alias names. Bugzilla Report 65539
+ * Prevent potential deadlocks in org.apache.tools.ant.IntrospectionHelper. 
+   Bugzilla Report 65424
+ * The implementation of AntClassLoader#findResources() has been changed to optimize 
+   it for potential performance issues, as those noted at https://issues.jenkins.io/browse/JENKINS-22310?focusedCommentId=197405&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-197405
+   Github Pull Request #151
+ * AntClassLoader now implements the ClassLoader#findResource(String) method.
+   Github Pull Request #150
+ * Ant tries to avoid file name canonicalization when possible.
+   Bugzilla Report 65499
+ * javadoc task will now look for warning messages in the STDERR stream too
+   when "failonwarning" is set to true to account for changes in JDK 17+
+ * The tar task now preserves symlinks of nested tarfilesets.
+   Github Pull Request #142
+
+- Changes from 1.10.11:
+ * a race condition could lead to NullPointerExceptions when running
+   tasks in parallel.
+   Bugzilla Report 65316
+ * fixed potential OutOfMemory errors when reading broken archives
+   using the tar or zip formats or formats derived from zip.
+ * org.apache.tools.ant.taskdefs.optional.junitlauncher.confined.JUnitLauncherTask now
+   has a new protected createExecuteWatchdog() method for allowing it to be overriden.
+   Github Pull Request #147
+ * Upgraded AntUnit to 1.4.1.
+
+-------------------------------------------------------------------
 Thu Jun  3 16:17:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.10.10
