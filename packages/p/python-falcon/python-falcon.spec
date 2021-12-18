@@ -42,7 +42,6 @@ BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module cbor2}
 BuildRequires:  %{python_module msgpack-python}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testtools}

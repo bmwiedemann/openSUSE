@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 09:41:05 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Tue Nov 23 19:28:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't restrict to primary python3 flavor. Other packages depend
