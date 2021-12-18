@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 16 13:51:06 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed typo (bsc#1193800)
+- 4.4.7
+
+-------------------------------------------------------------------
 Thu Dec  9 15:08:57 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Improve the self-update process, do not read the products from

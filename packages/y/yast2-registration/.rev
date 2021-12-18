@@ -1928,4 +1928,12 @@
     <comment>submit new version 4.4.6</comment>
     <requestid>939170</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>6bd7aa8b8dae32fb70e1a53058b12a8c</srcmd5>
+    <version>4.4.7</version>
+    <time>1639855786</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.7</comment>
+    <requestid>940910</requestid>
+  </revision>
 </revisionlist>
