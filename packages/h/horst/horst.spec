@@ -58,7 +58,7 @@ make %{?_smp_mflags}
 %install
 install -Dpm0755 horst %{buildroot}/%{_bindir}/horst
 install -Dpm0644 horst.conf %{buildroot}/%{_sysconfdir}/horst.conf
-install -Dpm0644 horst.8 %{buildroot}/%{_mandir}/man1/horst.8
+install -Dpm0644 horst.8 %{buildroot}/%{_mandir}/man8/horst.8
 install -Dpm0644 horst.conf.5 %{buildroot}/%{_mandir}/man5/horst.conf.5
 
 %files

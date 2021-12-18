@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 17 13:15:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix manpage patch boo#1193856
+
+-------------------------------------------------------------------
 Fri Nov 16 14:43:09 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - horst-ncurses6w.patch: Must call setlocale too. 
