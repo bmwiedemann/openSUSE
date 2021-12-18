@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Dec 17 11:13:30 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#849
+- added get_size function to LuksInfo
+- coding style
+- 4.4.66
+
+--------------------------------------------------------------------
 Fri Dec 3 22:27:01 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Japanese) (bsc#1149754)
