@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  6 14:37:01 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Prepare code for ruby3 (bsc#1193192)
+- 4.4.32
+
+-------------------------------------------------------------------
 Wed Nov 10 21:41:54 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixed interfaces table description for s390 Group devices
