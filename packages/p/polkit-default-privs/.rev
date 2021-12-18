@@ -1926,4 +1926,13 @@ for 12.3</comment>
   * fwupd: whitelist new, more granular permissions (bsc#1193310)</comment>
     <requestid>938268</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>7be21e0aab63897d0105d28bd644b610</srcmd5>
+    <version>1550+20211214.daf2765</version>
+    <time>1639855797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20211214.daf2765:
+  * fwupd: tighten the downgrade rules (bsc#1193310)</comment>
+    <requestid>940529</requestid>
+  </revision>
 </revisionlist>

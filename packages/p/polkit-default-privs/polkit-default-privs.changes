@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 14 16:46:59 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20211214.daf2765:
+  * fwupd: tighten the downgrade rules (bsc#1193310)
+
+-------------------------------------------------------------------
 Thu Dec 09 19:51:19 UTC 2021 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20211209.8ce206c:
