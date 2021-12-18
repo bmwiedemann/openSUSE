@@ -19,7 +19,11 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "doc"
 %define psuffix -documentation
+%if 0%{?suse_version} >= 1500
 %bcond_without doc
+%else
+%bcond_with doc
+%endif
 %bcond_with base
 %bcond_with general
 %endif
@@ -34,6 +38,11 @@
 %bcond_with doc
 %bcond_with base
 %bcond_without general
+%if 0%{?suse_version} >= 1500
+%bcond_without appstream
+%else
+%bcond_with appstream
+%endif
 %endif
 %define _version %(c=%{version}; echo ${c/[a-z]*/})
 %define tar_suffix %(c=%{_version}; echo ${c#%{_version}})
@@ -152,6 +161,9 @@ Patch29:        bpo23395-PyErr_SetInterrupt-signal.patch
 # PATCH-FIX-OPENSUSE aarch64-prolong-timeout.patch bsc#1149121 mcepl@suse.com
 # Our buildbots are apparently too busy on aarch64 to make time right
 Patch30:        aarch64-prolong-timeout.patch
+# PATCH-FIX-OPENSUSE skip_SSL_tests.patch bpo#9425 mcepl@suse.com
+# Skip broken SSL tests (switch on skipping Ubuntu tests)
+Patch31:        skip_SSL_tests.patch
 # PATCH-FIX-UPSTREAM bpo-36576-skip_tests_for_OpenSSL-111.patch bsc#1149792 mcepl@suse.com
 # Skip tests failing with OpenSSL 1.1.1
 Patch32:        bpo-36576-skip_tests_for_OpenSSL-111.patch
@@ -199,7 +211,7 @@ BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
 %if %{with doc}
-%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+%if 0%{?suse_version} >= 1500 && 0%{?sle_version} <= 150300
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
 BuildRequires:  python3-Sphinx
@@ -211,7 +223,9 @@ BuildRequires:  %{python_pkg_name}-Sphinx
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)
+%if %{with appstream}
 BuildRequires:  appstream-glib
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext
@@ -442,7 +456,11 @@ other applications.
 %patch24 -p1
 %patch29 -p1
 %patch30 -p1
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 120400
+%patch31 -p1
+%else
 %patch32 -p1
+%endif
 %patch33 -p1
 %patch35 -p1
 %patch36 -p1
@@ -686,11 +704,13 @@ mkdir -p %{buildroot}%{_datadir}/applications
 install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.desktop
 %suse_update_desktop_file idle%{python_version}
 
+%if %{with appstream}
 cp %{SOURCE13} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
 mkdir -p %{buildroot}%{_datadir}/metainfo
 install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_version}.appdata.xml
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_version}.appdata.xml
+%endif
 
 %fdupes %{buildroot}/%{_libdir}/python%{python_version}
 %endif
@@ -833,8 +853,10 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %doc Lib/idlelib/ChangeLog
 %{_bindir}/idle%{python_version}
 %{_datadir}/applications/idle%{python_version}.desktop
+%if %{with appstream}
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/idle%{python_version}.appdata.xml
+%endif
 %{_datadir}/icons/hicolor/*/apps/idle%{python_version}.png
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/16x16

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 16 00:46:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't use appstream-glib on SLE-12.
+- Use Python 2-based Sphinx on SLE-12.
+- No documentation on SLE-12.
+- Add skip_SSL_tests.patch skipping tests because of patched
+  OpenSSL (bpo#9425).
+
+-------------------------------------------------------------------
 Thu Dec  9 20:07:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't use OpenSSL 1.1 on platforms which don't have it.
@@ -416,7 +425,8 @@ Fri Jul 17 08:53:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
     Caller and Matt Schwager.
   - bpo-39401: Avoid unsafe load of
     api-ms-win-core-path-l1-1-0.dll at startup on Windows 7.
-- Remove merged patch CVE-2020-8492-urllib-ReDoS.patch
+- Remove merged patch CVE-2020-8492-urllib-ReDoS.patch and
+  CRLF_injection_via_host_part.patch.
 
 -------------------------------------------------------------------
 Wed Jul 15 09:10:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
