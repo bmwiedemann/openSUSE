@@ -24,7 +24,7 @@
 %endif
 %define sover  3
 Name:           glfw
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib

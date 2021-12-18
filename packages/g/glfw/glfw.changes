@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 16 15:36:13 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.3.6:
+  * Bugfix: Joysticks connected before init did not get gamepad mappings (#1996)
+  * [X11] Bugfix: Icon pixel format conversion worked only by accident,
+    relying on undefined behavior (#1986)
+
+
+-------------------------------------------------------------------
 Fri Oct 29 18:55:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.5
