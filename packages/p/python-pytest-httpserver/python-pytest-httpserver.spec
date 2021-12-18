@@ -36,7 +36,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
