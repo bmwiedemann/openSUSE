@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\(Kid3.*
 
 Name:           kid3
-Version:        3.8.7
+Version:        3.9.0
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
