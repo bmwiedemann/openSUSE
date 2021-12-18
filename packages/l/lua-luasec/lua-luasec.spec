@@ -16,9 +16,15 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luasec
-Version:        0.9
+%if "%{flavor}" == ""
+Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
+%else
+Name:           %{flavor}-%{mod_name}
+%endif
+Version:        1.0.2
 Release:        0
 Summary:        A Lua binding for OpenSSL
 License:        MIT
@@ -31,12 +37,6 @@ BuildRequires:  libopenssl-devel
 Requires:       %{flavor}
 Requires:       %{flavor}-luasocket
 %lua_provides
-%if "%{flavor}" == ""
-Name:           lua-%{mod_name}
-ExclusiveArch:  do_not_build
-%else
-Name:           %{flavor}-%{mod_name}
-%endif
 
 %description
 It is a binding for OpenSSL library to provide TLS/SSL communication.
@@ -44,10 +44,15 @@ It takes an already established TCP connection and creates a secure
 session between the peers.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -n %{mod_name}-%{version}
 
 %build
-make %{?_smp_mflags} linux \
+# regenerate OpenSSL options
+cd src
+lua options.lua -g /usr/include/openssl/ssl.h > options.c
+cd ..
+#
+%make_build linux \
   CFLAGS="%{optflags} -fPIC -I%{lua_incdir} -I. -DWITH_LUASOCKET -DLUASOCKET_DEBUG -DLUA_COMPAT_APIINTCASTS"
 
 %install

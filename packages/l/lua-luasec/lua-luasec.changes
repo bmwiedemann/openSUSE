@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 18 16:35:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- regenerate OpenSSL options for build version
+
+-------------------------------------------------------------------
+Sat Dec 18 15:38:59 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.2:
+  * Fix handle SSL_send SYSCALL error without errno
+  * Fix off by one in cert:validat(notafter)
+  * Fix meth_get_sinagure => meth_get_signature_name function name
+  * Fix update the Lua state reference on the selected SSL context
+    after SNI
+  * Fix ignore SSL_OP_BIT(n) macro and update option.c
+  * Fix: luaL_Buffer can use the stack and
+    breakbuffer_meth_receive()
+  * Add cert:getsignaturename()
+
+-------------------------------------------------------------------
 Thu Feb 18 15:57:10 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning

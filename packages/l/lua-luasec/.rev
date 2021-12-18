@@ -43,4 +43,23 @@
     <comment></comment>
     <requestid>873532</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7dbf9a624f2ad780d3a4ae16985bef21</srcmd5>
+    <version>1.0.2</version>
+    <time>1639855820</time>
+    <user>dimstar_suse</user>
+    <comment>- regenerate OpenSSL options for build version
+- Update to version 1.0.2:
+  * Fix handle SSL_send SYSCALL error without errno
+  * Fix off by one in cert:validat(notafter)
+  * Fix meth_get_sinagure =&gt; meth_get_signature_name function name
+  * Fix update the Lua state reference on the selected SSL context
+    after SNI
+  * Fix ignore SSL_OP_BIT(n) macro and update option.c
+  * Fix: luaL_Buffer can use the stack and
+    breakbuffer_meth_receive()
+  * Add cert:getsignaturename()
+</comment>
+    <requestid>941417</requestid>
+  </revision>
 </revisionlist>
