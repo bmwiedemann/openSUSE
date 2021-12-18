@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 18 15:29:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key to verify source signature
+
+-------------------------------------------------------------------
+Sat Dec 18 11:16:56 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Update to 2.17.0 [bsc#1193887, bsc#1193888, CVE-2021-45105]
+  * Fixed Bugs
+    - Fix string substitution recursion.
+    - Limit JNDI to the java protocol only. JNDI will remain disabled
+      by default. Rename JNDI enablement property from 
+      'log4j2.enableJndi' to 'log4j2.enableJndiLookup', 
+      'log4j2.enableJndiJms', and 'log4j2.enableJndiContextSelector'.
+    - Limit JNDI to the java protocol only. JNDI will remain disabled
+      by default. The enablement property has been renamed to 
+      'log4j2.enableJndiJava'
+    - Do not declare log4j-api-java9 and log4j-core-java9 as 
+      dependencies as it causes problems with the Maven enforcer 
+      plugin.
+    - PropertiesConfiguration.parseAppenderFilters NPE when parsing
+      properties file filters.
+    - Log4j 1.2 bridge for Syslog Appender defaults to port 512 
+      instead of 514.
+    - Log4j 1.2 bridge API hard codes the Syslog protocol to TCP.
+
+-------------------------------------------------------------------
 Wed Dec 15 02:06:55 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Update to 2.16.0 [bsc#1193743, CVE-2021-45046]

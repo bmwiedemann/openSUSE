@@ -270,4 +270,12 @@
     <comment>sync changelog with sle15</comment>
     <requestid>940844</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>51e1b84d8cb58407362891a7b4aedb40</srcmd5>
+    <version>2.17.0</version>
+    <time>1639855821</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1193887, bsc#1193888, CVE-2021-45105</comment>
+    <requestid>941419</requestid>
+  </revision>
 </revisionlist>

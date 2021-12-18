@@ -17,13 +17,14 @@
 
 
 Name:           log4j
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Java logging package
 License:        Apache-2.0
 URL:            http://logging.apache.org/%{name}
 Source0:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz
 Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz.asc
+Source2:        https://www.apache.org/dist/logging/KEYS#/%{name}.keyring
 Patch1:         logging-log4j-Remove-unsupported-EventDataConverter.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -189,7 +190,7 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %{mvn_build} -f -- -Dsource=8
 
 %install
-%mvn_install
+%{mvn_install}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
