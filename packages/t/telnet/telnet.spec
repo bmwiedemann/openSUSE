@@ -1,7 +1,7 @@
 #
 # spec file for package telnet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        A client program for the telnet remote login protocol
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
-Url:            http://svnweb.freebsd.org/base/head/contrib/telnet/
-Source:         http://ftp.suse.com/pub/people/kukuk/ipv6/telnet-bsd-%{version}.tar.bz2
+URL:            https://svnweb.freebsd.org/base/head/contrib/telnet/
+Source:         http://distfiles.gentoo.org/distfiles/f3/telnet-bsd-%{version}.tar.bz2
 Source3:        telnet.socket
 Source4:        telnet@.service
 Source5:        telnet.target
@@ -35,9 +35,8 @@ Patch4:         telnet-bsd-1.2-hostalias.patch
 #PATCH-FIX-UPSTREAM bnc#898481 kstreitova@suse.com -- fix the infinite loop consumes an entire CPU
 Patch5:         telnet-bsd-1.2-fix-infinite-loop.patch
 BuildRequires:  ncurses-devel
-Provides:       nkitb:%{_bindir}/telnet
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  systemd-rpm-macros
+Provides:       nkitb:%{_bindir}/telnet
 
 %description
 Telnet is an old protocol for logging into remote systems.  It is
@@ -74,31 +73,33 @@ this machine.
 export CFLAGS="%{optflags} -fpie $(ncurses6-config --cflags)"
 export LDFLAGS="-pie $(ncurses6-config --libs)"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-install -d -m 755 %{buildroot}%{_prefix}/bin
-install -d -m 755 %{buildroot}%{_prefix}/sbin
+install -d -m 755 %{buildroot}%{_bindir}
+install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_mandir}/man1
 install -d -m 755 %{buildroot}%{_mandir}/man5
 install -d -m 755 %{buildroot}%{_mandir}/man8
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 install -D -m 644 %{SOURCE3} %{buildroot}/%{_unitdir}/telnet.socket
 install -D -m 644 %{SOURCE4} %{buildroot}/%{_unitdir}/telnet@.service
 install -D -m 644 %{SOURCE5} %{buildroot}/%{_unitdir}/telnet.target
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING ChangeLog README NEWS
+%license COPYING
+%doc ChangeLog README NEWS
 %attr(755,root,root) %{_bindir}/telnet
-%doc %{_mandir}/man1/telnet.1.gz
+%{_mandir}/man1/telnet.1%{?ext_man}
 
 %files server
 %defattr(644,root,root,755)
-%doc COPYING ChangeLog README NEWS
-%doc %{_mandir}/man8/in.telnetd.8.gz
-%doc %{_mandir}/man8/telnetd.8.gz
-%doc %{_mandir}/man5/issue.net.5.gz
+%license COPYING
+%doc ChangeLog README NEWS
+%{_mandir}/man8/in.telnetd.8%{?ext_man}
+%{_mandir}/man8/telnetd.8%{?ext_man}
+%{_mandir}/man5/issue.net.5%{?ext_man}
 %attr(755,root,root) %{_sbindir}/in.telnetd
 %{_unitdir}/telnet@.service
 %{_unitdir}/telnet.socket
