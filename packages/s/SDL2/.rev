@@ -288,4 +288,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>936346</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>7a6759b8c4d83dc1b990590aff10ecd8</srcmd5>
+    <version>2.0.18</version>
+    <time>1639855760</time>
+    <user>dimstar_suse</user>
+    <comment>for staging:L
+
+- Add 0001-Fix-build-against-wayland-1.20.patch</comment>
+    <requestid>941193</requestid>
+  </revision>
 </revisionlist>

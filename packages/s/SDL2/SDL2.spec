@@ -25,13 +25,15 @@ Summary:        Simple DirectMedia Layer Library
 License:        Zlib
 Group:          Development/Libraries/X11
 URL:            http://libsdl.org/
+#Git-Clone:     https://github.com/libsdl-org/SDL
 #DL-URL:        http://libsdl.org/download-2.0.php
 Source:         http://libsdl.org/release/%name-%version.tar.gz
 Source2:        http://libsdl.org/release/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
-Patch3:         sdl2-khronos.patch
+Patch2:         sdl2-khronos.patch
+Patch3:         0001-Fix-build-against-wayland-1.20.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
