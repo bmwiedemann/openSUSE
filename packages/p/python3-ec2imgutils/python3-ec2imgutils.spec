@@ -33,6 +33,7 @@ Requires:       python3-paramiko
 BuildRequires:  python3-boto3 >= 1.18.7
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
