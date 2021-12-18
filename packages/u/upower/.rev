@@ -649,4 +649,12 @@
     <comment></comment>
     <requestid>921685</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>4d80c4e41a2739a86fc771432d0e50f2</srcmd5>
+    <version>0.99.13</version>
+    <time>1639855788</time>
+    <user>dimstar_suse</user>
+    <comment>- Use libplist 2 starting from SLE15SP4 on.</comment>
+    <requestid>940927</requestid>
+  </revision>
 </revisionlist>

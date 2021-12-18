@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %define libplist2 1
 %else
 %define libplist2 0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 16 15:47:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use libplist 2 starting from SLE15SP4 on.
+
+-------------------------------------------------------------------
 Mon Aug 30 08:57:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.99.13:
