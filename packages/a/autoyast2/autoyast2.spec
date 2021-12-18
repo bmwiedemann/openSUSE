@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.4.23
+Version:        4.4.24
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -56,8 +56,8 @@ BuildRequires:  yast2-slp
 BuildRequires:  yast2-update >= 3.3.0
 # Required for test suite testing one time sync
 BuildRequires:  yast2-ntp-client >= 4.0.1
-# New API for Y2Storage::PackageHandler and storage features
-BuildRequires:  yast2-storage-ng >= 4.2.95
+# UEFI detection in Y2Storage::Arch
+BuildRequires:  yast2-storage-ng >= 4.4.22
 # %%{_unitdir} macro definition is in a separate package since 13.1
 %if 0%{?suse_version} >= 1310
 BuildRequires:  systemd-rpm-macros

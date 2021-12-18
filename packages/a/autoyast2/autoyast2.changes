@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 17 10:33:33 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- use Y2Storage::Arch to determine whether UEFI is available (bsc#937067)
+- 4.4.24
+
+-------------------------------------------------------------------
 Thu Nov 25 12:56:23 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - During autoupgrade merge the selected product workflow in order
