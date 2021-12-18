@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 16 13:43:05 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Self-update now supports relative URLs (relurl://), it defines
+  the self-update repository relatively to the main installation
+  repository (jsc#SLE-22669)
+- 4.4.30
+
+-------------------------------------------------------------------
+Thu Dec 16 07:34:27 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not preselect any product during upgrade (related to
+  bsc#1192230).
+- 4.4.29
+
+-------------------------------------------------------------------
 Thu Dec  9 16:07:34 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Improve the self-update process, do not read the products from
