@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 14 14:17:41 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- The legacy code does not support /etc/login.defs.d used by YaST.
+  Enable libeconf to read it (bsc#1192954) on released products.
+
+-------------------------------------------------------------------
 Wed Nov 17 22:20:44 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.37.2:

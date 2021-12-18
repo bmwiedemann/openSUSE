@@ -87,9 +87,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  libcap-ng-devel
 # It should be %%if %%{defined no_config}, but OBS cannot handle it:
-%if 0%{?suse_version} >= 1550
 BuildRequires:  libeconf-devel
-%endif
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  libtool
