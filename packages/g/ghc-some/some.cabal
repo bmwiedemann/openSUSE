@@ -1,6 +1,6 @@
 name:               some
 version:            1.0.3
-x-revision:         1
+x-revision:         2
 stability:          provisional
 cabal-version:      >=1.10
 build-type:         Simple
@@ -82,9 +82,9 @@ library
 
   if !impl(ghc >=8.0)
     build-depends:
-        semigroups           >=0.18.5 && <0.20
-      , transformers         >=0.3    && <0.6
-      , transformers-compat  >=0.6    && <0.7
+        semigroups           >=0.18.5 && <0.21
+      , transformers         >=0.3    && <0.7
+      , transformers-compat  >=0.6    && <0.8
 
   if impl(ghc >=9.0)
     -- these flags may abort compilation with GHC-8.10
