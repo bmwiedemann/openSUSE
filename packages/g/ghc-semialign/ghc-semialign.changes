@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:52:45 UTC 2021 - psimons@suse.com
+
+- Update semialign to version 1.2.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:28 UTC 2021 - psimons@suse.com
 
 - Update semialign to version 1.2.0.1.
