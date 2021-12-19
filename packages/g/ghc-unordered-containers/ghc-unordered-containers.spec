@@ -19,7 +19,7 @@
 %global pkg_name unordered-containers
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.14.0
+Version:        0.2.15.0
 Release:        0
 Summary:        Efficient hashing-based container types
 License:        BSD-3-Clause
@@ -48,6 +48,12 @@ speed.
 
 The declared cost of each operation is either worst-case or amortized, but
 remains valid even if structures are shared.
+
+/Security/
+
+This package currently provides no defenses against hash collision attacks such
+as HashDoS. Users who need to store input from untrusted sources are advised to
+use 'Data.Map' or 'Data.Set' from the 'containers' package instead.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
