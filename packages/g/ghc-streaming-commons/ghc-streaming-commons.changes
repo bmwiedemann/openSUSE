@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:04:56 UTC 2021 - psimons@suse.com
+
+- Update streaming-commons to version 0.2.2.2.
+  ## 0.2.2.2
+
+  * Support GHC 9.2 [#62](https://github.com/fpco/streaming-commons/pull/62)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
