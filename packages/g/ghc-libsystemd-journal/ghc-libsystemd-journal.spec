@@ -61,6 +61,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver 'semigroups' '< 0.2' '< 1'
 
 %build
 %ghc_lib_build
