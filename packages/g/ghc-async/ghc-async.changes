@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 11 12:33:06 UTC 2021 - psimons@suse.com
+
+- Update async to version 2.2.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Oct  7 07:57:09 UTC 2021 - psimons@suse.com
 
 - Update async to version 2.2.4.
