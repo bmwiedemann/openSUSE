@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 16 10:45:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python flavors <= 3.6: No FontTools available
+
+-------------------------------------------------------------------
 Tue Jun  2 13:56:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.9.0

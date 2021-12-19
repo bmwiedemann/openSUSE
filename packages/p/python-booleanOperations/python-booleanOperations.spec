@@ -1,7 +1,7 @@
 #
-# spec file for package python-booleanOperations
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-booleanOperations%{psuffix}
 Version:        0.9.0
 Release:        0
@@ -74,7 +76,8 @@ Boolean operations on paths.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/booleanOperations
+%{python_sitelib}/booleanOperations-%{version}*-info
 %endif
 
 %changelog
