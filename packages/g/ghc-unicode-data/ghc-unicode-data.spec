@@ -18,7 +18,7 @@
 
 %global pkg_name unicode-data
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.1
+Version:        0.2.0
 Release:        0
 Summary:        Access Unicode character database
 License:        Apache-2.0
@@ -29,13 +29,13 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
-'unicode-data' provides Haskell APIs to efficiently access the unicode
+'unicode-data' provides Haskell APIs to efficiently access the Unicode
 character database. Performance is the primary goal in the design of this
 package.
 
-The Haskell data structures are generated programmatically from the unicode
-character database (UCD) files. The latest unicode version supported by this
-library is 13.0.0.
+The Haskell data structures are generated programmatically from the Unicode
+character database (UCD) files. The latest Unicode version supported by this
+library is 14.0.0.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
