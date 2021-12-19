@@ -1,6 +1,6 @@
 Name:           strict
 Version:        0.4.0.1
-x-revision:     2
+x-revision:     3
 Synopsis:       Strict data types and String IO.
 Category:       Data, System
 Description:
@@ -92,7 +92,7 @@ library
 
   if !impl(ghc >= 8.0)
     build-depends:
-        semigroups           >= 0.18.5  && < 0.20
+        semigroups           >= 0.18.5  && < 0.21
       , transformers-compat  >= 0.6.5   && < 0.8
 
     -- Ensure Data.Functor.Classes is always available
