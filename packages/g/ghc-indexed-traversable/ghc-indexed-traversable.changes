@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:51:16 UTC 2021 - psimons@suse.com
+
+- Update indexed-traversable to version 0.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:08 UTC 2021 - psimons@suse.com
 
 - Update indexed-traversable to version 0.1.2.
