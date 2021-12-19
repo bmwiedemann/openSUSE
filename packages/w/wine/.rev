@@ -4234,4 +4234,14 @@
 - update staging to 7.0-rc1 release</comment>
     <requestid>940067</requestid>
   </revision>
+  <revision rev="360" vrev="1">
+    <srcmd5>d9b03c205ed893d2cb90a900324bcea5</srcmd5>
+    <version>7.0~rc2</version>
+    <time>1639930997</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0-rc2 release canddat only, we are in code freeze.
+  - Bug fixes only, we are in code freeze.
+- update staging to 7.0-rc2 release</comment>
+    <requestid>941420</requestid>
+  </revision>
 </revisionlist>
