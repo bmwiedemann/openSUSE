@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:50:56 UTC 2021 - psimons@suse.com
+
+- Update time-compat to version 1.9.6.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:20 UTC 2021 - psimons@suse.com
 
 - Update time-compat to version 1.9.6.1 revision 2.
