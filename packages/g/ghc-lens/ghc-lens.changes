@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:51:10 UTC 2021 - psimons@suse.com
+
+- Update lens to version 5.1.
+  5.1 [2021.11.15]
+  ----------------
+  * Allow building with GHC 9.2.
+  * Drop support for GHC 7.10 and older.
+  * The type of `_ConP` in `Language.Haskell.TH.Lens` is now
+    `Prism' Pat (Name, [Type], [Pat])` instead of `Prism' Pat (Name, [Pat])`
+    when building with `template-haskell-2.18` or later.
+  * Define `_CharTyLit` in `Language.Haskell.TH.Lens` when building with
+    `template-haskell-2.18` or later.
+  * Add `Prefixed` and `Suffixed` classes to `Control.Lens.Prism`, which provide
+    `prefixed` and `suffixed` prisms for prefixes and suffixes of sequence types.
+    These classes generalize the `prefixed` and `suffixed` functions in
+    `Data.List.Lens`, which were previously top-level functions. In addition to
+    providing `Prefixed` and `Suffixed` instances for lists, instances for `Text`
+    and `ByteString` types are also provided.
+
+    At present, `Prefixed` and `Suffixed` are re-exported from `Data.List.Lens`
+    for backwards compatibility. This may change in a future version of `lens`,
+    however.
+  * Add a `traversal` function to `Control.Lens.Traversal`. This function, aside
+    from acting as a `Traversal` counterpart to the `lens` and `prism` functions,
+    provides documentation on how to define `Traversal`s.
+  * Add a `matching'` function to `Control.Lens.Prism`. `matching'` is like
+    `matching`, but with a slightly more general type signature that allows it to
+    work with combinations of `Lens`es, `Prism`s, and `Traversal`s.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:32:21 UTC 2021 - psimons@suse.com
 
 - Update lens to version 5.0.1 revision 2.
