@@ -1,7 +1,7 @@
 cabal-version:       >= 1.10
 Name:                test-framework
 Version:             0.8.2.0
-x-revision: 7
+x-revision: 8
 
 Build-Type:          Simple
 Category:            Testing
@@ -61,7 +61,7 @@ Library
                 Build-Depends:  base-orphans   >= 0.1    && < 0.9
 
         if !impl(ghc >= 8.0)
-                Build-Depends:  semigroups     >= 0.18   && < 0.20
+                Build-Depends:  semigroups     >= 0.18   && < 0.21
 
         Default-Language:       Haskell2010
         Default-Extensions:     CPP
