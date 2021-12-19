@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:58:12 UTC 2021 - psimons@suse.com
+
+- Update unix-compat to version 0.5.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Jan 24 16:08:26 UTC 2021 - psimons@suse.com
 
 - Update unix-compat to version 0.5.3.
