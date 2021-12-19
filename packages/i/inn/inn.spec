@@ -52,15 +52,15 @@ Requires:       perl(GD)
 Requires:       perl(MIME::Parser)
 %{?systemd_requires}
 %{?libperl_requires}
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 %define PatchVersion -%{version}
-Source:         inn%{PatchVersion}.tar.gz
+Source:         https://downloads.isc.org/isc/inn/inn%{PatchVersion}.tar.gz
 Source1:        doc-inn.tar.bz2
 Source2:        pubring.pgp
 Source3:        inn-emptydb.tar.gz
 Source4:        inn.reg
-Source5:        inn%{PatchVersion}.tar.gz.asc
+Source5:        https://downloads.isc.org/isc/inn/inn%{PatchVersion}.tar.gz.asc
 Source6:        %{name}.keyring
 Source7:        inn.service
 Patch0:         inn-%{version}.diff

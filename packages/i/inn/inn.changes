@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Dec  1 07:44:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.4:
+  + Bug Fix: nnrpd now adapts the length of the DH parameter used
+    during a DHE key exchange so as to comply with the security
+    level OpenSSL 1.1.0 or later expects.
+  + New Features:
+    * Added support for systemd notifications and socket
+      activation. Use of more features provided by systemd,
+      including more notifications, will come in future releases.
+    * cnfsstat now also returns information about retired CNFS
+      buffers: buffers mentioned in cycbuff.conf as a cycbuff but
+      not declared in a metacycbuff.
+    * Switch default innreport behaviour to the common practice of
+      externalizing CSS into a separate file. Its name can be
+      configured with the html_css_url parameter in innreport.conf.
+      If this parameter is unset, the default innreport.css file
+      name will be used and innreport will generate this CSS file
+      for you. Previously generated reports are kept untouched,
+      though, and will still contain inline CSS if you had not
+      already set the html_css_url parameter in previous INN
+      versions.
+    * sm can now read and store any number of articles given in
+      wire format on its standard input when both -s and -R are
+      used. Only native format was previously possible.
+    * Added new -a flag to rnews to disallow, if needed, the use of
+      additional unpackers from the rnews.libexec sub-directory of
+      pathbin (as set in inn.conf); only rnews and cunbatch will
+      then be recognized as valid batch commands.
+    * Added new -b flag to rnews to save rejected articles in the
+      bad sub-directory of pathincoming (as set in inn.conf).
+      Otherwise, rnews just logs and discards any articles that are
+      rejected or cannot be parsed for some reason.
+    * Added new -d flag to rnews to log via syslog the message-ID
+      and the Path header body of each article rejected as a
+      duplicate.
+    * Added new --enable-hardening-flags configure-time option,
+      enabled by default, to use hardening build flags like -fPIE
+      and -fstack-protector-strong. This option can easily be
+      disabled if the compiler or the platform does not support
+      them well. More hardening build flags will eventually be
+      added in future releases.
+- Rename inn-2.6.3.diff to inn-2.6.4.diff.
+- Use url in sources as far as possible.
+
+-------------------------------------------------------------------
 Mon Jul 12 06:31:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch BuildRequires to python3-devel, to build using Python 3. 
