@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 17 01:56:18 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1639512920.3ca390ca:
+  * distribution: Fix sporadic here-document input failure
+  * Add hardware console log to IPMI and PowerVM backends
+
+-------------------------------------------------------------------
 Mon Dec 13 13:59:20 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1639403953.ae94c4bd:
