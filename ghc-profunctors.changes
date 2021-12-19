@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:52:36 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Aug  4 08:16:43 UTC 2021 - psimons@suse.com
 
 - Update profunctors to version 5.6.2 revision 1.
