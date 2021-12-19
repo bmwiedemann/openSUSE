@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:50:42 UTC 2021 - psimons@suse.com
+
+- Update th-orphans to version 0.13.12 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:33:14 UTC 2021 - psimons@suse.com
 
 - Update th-orphans to version 0.13.12 revision 1.
