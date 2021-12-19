@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  7 19:13:58 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Mon Jul 19 06:41:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:

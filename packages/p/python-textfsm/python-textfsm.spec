@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/google/textfsm
 Source:         https://github.com/google/textfsm/archive/v%{version}.tar.gz#/textfsm-%{version}.tar.gz
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}

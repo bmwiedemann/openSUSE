@@ -66,4 +66,12 @@
   * String handling fix for Windows platforms</comment>
     <requestid>907021</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>70a0e1e238e4425c6d7d82245779b30e</srcmd5>
+    <version>1.1.2</version>
+    <time>1639930999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941450</requestid>
+  </revision>
 </revisionlist>
