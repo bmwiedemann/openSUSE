@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 19 13:51:41 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 5.3.5
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.3.5
+  * Added experimental support for detecting a dirty connection.
+  * Fixed RedisArray constructor bug.
+  * Fixed segfault in redis_setoption_handler.
+  * Fixed masters array in the event of a cluster failover.
+  * Fixed 32 bit type error.
+  * Fixed radix character in certain locales.
+  * Fixed ZSTD Validation.
+
+-------------------------------------------------------------------
 Wed Mar 24 18:09:20 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 5.3.4
