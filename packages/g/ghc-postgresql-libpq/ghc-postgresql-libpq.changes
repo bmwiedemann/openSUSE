@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:59:54 UTC 2021 - psimons@suse.com
+
+- Update postgresql-libpq to version 0.9.4.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Feb 21 12:47:50 UTC 2021 - psimons@suse.com
 
 - Update postgresql-libpq to version 0.9.4.3 revision 1.
