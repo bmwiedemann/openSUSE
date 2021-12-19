@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:59:43 UTC 2021 - psimons@suse.com
+
+- Update bloomfilter to version 2.0.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
