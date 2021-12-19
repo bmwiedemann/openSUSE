@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-microlens-platform
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name microlens-platform
 Name:           ghc-%{pkg_name}
-Version:        0.4.2
+Version:        0.4.2.1
 Release:        0
 Summary:        Microlens + all batteries included (best for apps)
 License:        BSD-3-Clause
