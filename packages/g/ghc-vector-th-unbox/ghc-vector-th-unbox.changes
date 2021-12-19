@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:03:38 UTC 2021 - psimons@suse.com
+
+- Update vector-th-unbox to version 0.2.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  8 16:31:37 UTC 2021 - psimons@suse.com
 
 - Update vector-th-unbox to version 0.2.2.
