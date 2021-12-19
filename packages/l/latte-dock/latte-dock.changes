@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Dec 18 14:54:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.6
+  * Fix build with Qt 5.12 (kde#447111)
+  * Initialize windows tracking properly
+
+-------------------------------------------------------------------
+Thu Dec 16 16:57:34 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.5
+  * Improve startup behavior and reduce visual glitches whenever a
+    dock or panel is first appearing
+  * Prepare code for Plasma LookNFeel packages (kde#446249)
+  * Improve applets dragging behavior when changing their position
+    in a dock or panel
+  * Ignore window states when kwin window manager is showing
+    desktop effect
+  * Reposition vertical docks and panels when surrounding docks and
+    panels are changing their maximum length independent of their
+    visibility mode
+  * Reduce/increase maximum length through canvas ruler even when
+    the minimum length equals the maximum length
+  * Do not update kwin borderless windows behavior when it is not
+    really changed for the current running layouts structure
+  * Copied and duplicated docks or panels should not have
+    AllBorders background enabled with no reason (kde#446903)
+  * Ignore maxlength that equals zero for fillLength applets as Qt
+    already doing (kde#445869)
+  * Support 30bit systems under x11 and not show only a blurred
+    area in that case
+  * Multiscreen: disable struts under x11 for docks or panels that
+    stand between two or more different screens (kde#445595)
+  * Tasks: reassign launchers group properly when a dock or panel
+    view is recreated for any of reasons
+  * Tasks: identify vivaldi audio stream properly and show the
+    audio badge in that case (kde#446828)
+  * Cmd: support --add-dock through command line even when
+    application is not already running (kde#446526)
+  * Cmd: provide option to print all available templates
+  * Cmd: provide option to enable/disable application autostart
+
+-------------------------------------------------------------------
 Sun Dec 12 16:37:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Use %suse_version instead of %is_opensuse
