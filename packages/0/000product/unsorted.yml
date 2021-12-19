@@ -2990,6 +2990,7 @@ unsorted:
   - docker-zsh-completion 
   - docker_auth 
   - doctest-devel 
+  - dog: [x86_64] 
   - dogtail 
   - doh 
   - dolly 
@@ -13434,7 +13435,7 @@ unsorted:
   - librsvg-devel 
   - librsync-devel 
   - librtaudio6 
-  - librtmidi5 
+  - librtmidi6 
   - librtprocess-devel 
   - librtprocess0 
   - librtr0 
@@ -16702,6 +16703,8 @@ unsorted:
   - myspell-en_TT 
   - myspell-en_ZA 
   - myspell-en_ZW 
+  - myspell-eo 
+  - myspell-eo_EO 
   - myspell-es_AR 
   - myspell-es_BO 
   - myspell-es_CL 
@@ -16751,6 +16754,8 @@ unsorted:
   - myspell-lo_LA 
   - myspell-lt_LT 
   - myspell-lv_LV 
+  - myspell-mn_Cyrl_MN 
+  - myspell-mn_MN 
   - myspell-nb_NO 
   - myspell-ne_NP 
   - myspell-nl_BE 
@@ -16787,6 +16792,7 @@ unsorted:
   - mysql-xml-to-csv 
   - mythes-devel 
   - mytop 
+  - myxer: [x86_64] 
   - naev 
   - nagios-contrib 
   - nagios-devel 
@@ -18830,6 +18836,7 @@ unsorted:
   - perl-App-Rad-Plugin-MoreHelp 
   - perl-App-cpanminus 
   - perl-App-perlbrew 
+  - perl-App-rsync-retry 
   - perl-AppConfig 
   - perl-Archive-Cpio 
   - perl-Archive-Extract 
@@ -22657,7 +22664,6 @@ unsorted:
   - python36-flufl.testing 
   - python36-fluidity-sm 
   - python36-flup 
-  - python36-fontParts 
   - python36-forbiddenfruit 
   - python36-formats 
   - python36-freeipa 
@@ -24223,7 +24229,6 @@ unsorted:
   - python36-watchgod 
   - python36-watermark 
   - python36-wcwidth 
-  - python36-weasyprint 
   - python36-web.py 
   - python36-web_cache 
   - python36-webassets 
@@ -32744,6 +32749,7 @@ unsorted:
   - tcpreplay 
   - tcpser 
   - tdb-tools 
+  - tdfiglet 
   - tdiff 
   - tdiff-bash-completion 
   - tdom 
@@ -41177,6 +41183,7 @@ unsorted:
   - tre-devel 
   - tree-sitter 
   - tree-sitter-devel 
+  - treefetch: [x86_64] 
   - treelayout 
   - treelayout-demo 
   - treelayout-javadoc 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20211217" schemaversion="4.1">
+<image name="OBS__MicroOS___20211218" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211217</productvar>
+      <productvar name="VERSION">20211218</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211217,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211218,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211217/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211218/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1328,7 +1328,7 @@
       <repopackage name="pinentry-qt5" arch="x86_64"/>
       <repopackage name="pipewire" arch="x86_64"/>
       <repopackage name="pipewire-alsa" arch="x86_64"/>
-      <repopackage name="pipewire-modules" arch="x86_64"/>
+      <repopackage name="pipewire-modules-0_3" arch="x86_64"/>
       <repopackage name="pipewire-pulseaudio" arch="x86_64"/>
       <repopackage name="pipewire-spa-plugins-0_2" arch="x86_64"/>
       <repopackage name="pipewire-spa-tools" arch="x86_64"/>
