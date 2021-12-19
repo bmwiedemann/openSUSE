@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:57:18 UTC 2021 - psimons@suse.com
+
+- Update mwc-random to version 0.15.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Aug 16 07:22:53 UTC 2021 - psimons@suse.com
 
 - Update mwc-random to version 0.15.0.2.
