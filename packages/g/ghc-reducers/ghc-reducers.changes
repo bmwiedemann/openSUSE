@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:03:49 UTC 2021 - psimons@suse.com
+
+- Update reducers to version 3.12.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 12:26:29 UTC 2021 - psimons@suse.com
 
 - Update reducers to version 3.12.4.
