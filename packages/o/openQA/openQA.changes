@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 19 08:04:15 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1639755028.beaaca21f:
+  * Avoid archiving jobs to fail with "Job terminated unexpectedly"
+  * Avoid "File exists" errors when running archiving jobs concurrently
+  * mergify: Add more useful checks
+  * mergify: Reduce duplication with YAML anchors
+
+-------------------------------------------------------------------
 Fri Dec 17 00:04:12 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1639585815.cbc8674aa:
