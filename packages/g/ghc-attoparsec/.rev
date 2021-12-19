@@ -211,4 +211,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>930302</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e22f0ab4b93c6f6ccec5170acac70136</srcmd5>
+    <version>0.14.2</version>
+    <time>1639931681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934276</requestid>
+  </revision>
 </revisionlist>

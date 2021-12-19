@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 20 17:29:22 UTC 2021 - psimons@suse.com
+
+- Update attoparsec to version 0.14.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:26:56 UTC 2021 - psimons@suse.com
 
 - Update attoparsec to version 0.14.2.
