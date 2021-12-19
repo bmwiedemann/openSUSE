@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:51:23 UTC 2021 - psimons@suse.com
+
+- Update reflection to version 2.1.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Sep  7 18:46:58 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - make rpmlint happy 
