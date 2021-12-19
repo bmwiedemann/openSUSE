@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:59:51 UTC 2021 - psimons@suse.com
+
+- Update generic-random to version 1.5.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jul 15 16:15:26 UTC 2021 - psimons@suse.com
 
 - Update generic-random to version 1.5.0.0.
