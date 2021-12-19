@@ -17,7 +17,7 @@
 
 
 Name:           containerized-data-importer
-Version:        1.41.0
+Version:        1.42.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) = 1.16
 ExclusiveArch:  x86_64
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 19 09:19:34 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.42.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.42.0
+
+-------------------------------------------------------------------
 Fri Nov 26 05:51:17 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Detect SLE15 SP4 build environment

@@ -103,4 +103,12 @@
     <comment>- Detect SLE15 SP4 build environment</comment>
     <requestid>933993</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c1c66900c97dbd8cae50becf5a2e56f</srcmd5>
+    <version>1.42.0</version>
+    <time>1639931002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941493</requestid>
+  </revision>
 </revisionlist>
