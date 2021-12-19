@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:50:37 UTC 2021 - psimons@suse.com
+
+- Update semigroups to version 0.20.
+  0.20 [2021.11.15]
+  -----------------
+  * Support `hashable-1.4`. The `Hashable1` instances added in 0.19.2
+    are removed for all types except `NonEmpty`, in accordance with the
+    corresponding changes from `hashable-1.4`.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:43:08 UTC 2021 - psimons@suse.com
 
 - Update semigroups to version 0.19.2 revision 2.
