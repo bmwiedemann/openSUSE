@@ -19,7 +19,7 @@
 %global pkg_name bech32
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Implementation of the Bech32 cryptocurrency address format (BIP 0173)
 License:        Apache-2.0

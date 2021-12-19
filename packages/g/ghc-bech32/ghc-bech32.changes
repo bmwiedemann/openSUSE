@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:02:23 UTC 2021 - psimons@suse.com
+
+- Update bech32 to version 1.1.2.
+  ## [1.1.2] - 2021-11-05
+
+  ### Fixed
+
+  - Strip whitespaces from bech32 stdin to satisfy Windows `echo` command.
+
+-------------------------------------------------------------------
 Wed Jun 23 08:50:40 UTC 2021 - psimons@suse.com
 
 - Update bech32 to version 1.1.1.
