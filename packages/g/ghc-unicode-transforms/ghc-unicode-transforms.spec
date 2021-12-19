@@ -55,6 +55,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver 'unicode-data' '<0.2' '<0.3' 
 
 %build
 %ghc_lib_build
