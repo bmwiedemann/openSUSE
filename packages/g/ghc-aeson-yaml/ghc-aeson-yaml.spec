@@ -19,13 +19,12 @@
 %global pkg_name aeson-yaml
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.0.0
+Version:        1.1.0.1
 Release:        0
 Summary:        Output any Aeson value as YAML (pure Haskell library)
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-bytestring-devel
@@ -37,7 +36,6 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-string-qq-devel
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-discover-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-yaml-devel
 %endif
@@ -61,7 +59,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

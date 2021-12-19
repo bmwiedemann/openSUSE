@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:59:30 UTC 2021 - psimons@suse.com
+
+- Update aeson-yaml to version 1.1.0.1.
+  ## 1.1.0.1 - 2021-11-13
+
+  ### Changed
+
+    - Support aeson-2.0 (thanks to Simon Jakobi)
+
+-------------------------------------------------------------------
 Mon Feb  8 19:14:40 UTC 2021 - psimons@suse.com
 
 - Update aeson-yaml to version 1.1.0.0 revision 1.
