@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 10:10:10 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Tue Sep 14 12:04:12 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

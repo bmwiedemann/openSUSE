@@ -25,4 +25,12 @@
     <comment></comment>
     <requestid>925051</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1c004830ddeaba9c68e9072c1b7e5d51</srcmd5>
+    <version>0.5.0</version>
+    <time>1639931000</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require pytest-runner for build, not required</comment>
+    <requestid>941484</requestid>
+  </revision>
 </revisionlist>

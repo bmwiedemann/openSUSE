@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/zzzsochi/Flask-Gravatar/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Gravatar/Flask-Gravatar-%{version}.tar.gz
+# https://github.com/zzzsochi/Flask-Gravatar/issues/27
 Patch0:         fix-requirements.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -36,7 +37,6 @@ BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module isort >= 4.2.2}
 BuildRequires:  %{python_module pydocstyle >= 1.0.0}
 BuildRequires:  %{python_module pytest >= 2.8.0}
-BuildRequires:  %{python_module pytest-runner >= 2.6.2}
 # End of test requirements
 BuildRequires:  fdupes
 Requires:       python-Flask >= 0.10
