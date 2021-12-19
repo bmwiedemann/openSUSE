@@ -19,12 +19,13 @@
 %global pkg_name lucid
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Clear to write, read and edit DSL for HTML
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-blaze-builder-devel
 BuildRequires:  ghc-bytestring-devel
@@ -69,6 +70,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:02:26 UTC 2021 - psimons@suse.com
+
+- Update lucid to version 2.11.0 revision 1.
+  ## 2.11.0
+
+  * Change internal attributes to `Seq Attribute`. This preserves
+    ordering. Attributes are merged in a left-biased way, preserving the
+    key order as first encountered.
+
+-------------------------------------------------------------------
 Tue Oct 19 07:21:39 UTC 2021 - psimons@suse.com
 
 - Update lucid to version 2.10.0.
