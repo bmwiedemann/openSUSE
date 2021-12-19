@@ -1,7 +1,7 @@
 name:          semigroupoids
 category:      Control, Comonads
 version:       5.3.6
-x-revision: 1
+x-revision: 2
 license:       BSD2
 cabal-version: 1.18
 license-file:  LICENSE
@@ -165,10 +165,10 @@ library
 
   if flag(unordered-containers)
     if impl(ghc >= 7.4)
-      build-depends: hashable >= 1.2.7.0  && < 1.4,
+      build-depends: hashable >= 1.2.7.0  && < 1.5,
                      unordered-containers >= 0.2.8.0  && < 0.3
     else
-      build-depends: hashable >= 1.2.5.0  && < 1.4,
+      build-depends: hashable >= 1.2.5.0  && < 1.5,
                      unordered-containers >= 0.2.8.0  && < 0.3
 
   hs-source-dirs: src
