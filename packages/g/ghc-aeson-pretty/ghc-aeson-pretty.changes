@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 06:57:20 UTC 2021 - psimons@suse.com
+
+- Update aeson-pretty to version 0.8.9 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:50 UTC 2021 - psimons@suse.com
 
 - Update aeson-pretty to version 0.8.9.
