@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 19 11:14:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * mkfs.erofs: support pre-defined UUIDs and SELinux file contexts
+  * Support new big pcluster feature together with Linux 5.13+
+  * Added support to override UID/GID
+  * Introduced preliminary dump.erofs and fsck.erofs
+  * Introduced MicroLZMA compression support
+
+-------------------------------------------------------------------
 Tue May 19 14:52:57 UTC 2020 - David Michael <fedora.dm0@gmail.com>
 
 - Update to release 1.1
