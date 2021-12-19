@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 11 15:50:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add f5e8da83f958797157423dc23818e6ebd6681d20.patch: Fixing
+  compile issues and adding strikethru Markdown syntax support in
+  nodes.
+- Add pkgconfig(json-glib-1.0) BuildRequires: Dependency upstream
+  should have listed.
+- Drop lang pack Recommends, no longer needed.
+- Update URL.
+
+-------------------------------------------------------------------
 Thu Sep  9 22:34:08 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.13.1:

@@ -22,8 +22,11 @@ Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
-URL:            https://github.com/phase1geo
+URL:            https://github.com/phase1geo/Minder
 Source:         https://github.com/phase1geo/Minder/archive/%{version}.tar.gz#/Minder-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM f5e8da83f958797157423dc23818e6ebd6681d20.patch -- Fixing compile issues and adding strikethru Markdown syntax support in nodes.
+Patch:          https://github.com/phase1geo/Minder/commit/f5e8da83f958797157423dc23818e6ebd6681d20.patch
+
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -37,11 +40,11 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libmarkdown)
 BuildRequires:  pkgconfig(libxml-2.0)
-Recommends:     %{name}-lang
 
 %description
 A program to create, develop, visualize, organize and manage ideas.
@@ -50,6 +53,7 @@ A program to create, develop, visualize, organize and manage ideas.
 
 %prep
 %setup -q -n Minder-%{version}
+%autopatch -p1
 
 # Fix: script-without-shebang
 find -name \*.svg -exec chmod 0644 {} \+
