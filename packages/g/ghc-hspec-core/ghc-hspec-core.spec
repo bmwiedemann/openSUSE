@@ -19,12 +19,13 @@
 %global pkg_name hspec-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.8.4
+Version:        2.9.1
 Release:        0
 Summary:        A Testing Framework for Haskell
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
@@ -45,6 +46,7 @@ BuildRequires:  ghc-tf-random-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-hspec-meta-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-silently-devel
@@ -67,6 +69,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 20 17:30:57 UTC 2021 - psimons@suse.com
+
+- Update hspec-core to version 2.9.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Nov 16 19:50:50 UTC 2021 - psimons@suse.com
+
+- Update hspec-core to version 2.9.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Nov 15 06:57:50 UTC 2021 - psimons@suse.com
+
+- Update hspec-core to version 2.9.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Sun Nov  7 14:53:11 UTC 2021 - psimons@suse.com
 
 - Update hspec-core to version 2.8.4.
