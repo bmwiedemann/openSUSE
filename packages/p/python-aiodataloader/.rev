@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1cf287528bcf19a1ec75bd3e61271c1c</srcmd5>
+    <version>0.2.0+git20201019+0345c66</version>
+    <time>1639930999</time>
+    <user>dimstar_suse</user>
+    <comment>initial package
+
+changes since last submit:
+- removed coverage test. The &quot;FTBFS&quot; is not replicable</comment>
+    <requestid>941487</requestid>
+  </revision>
+</revisionlist>
