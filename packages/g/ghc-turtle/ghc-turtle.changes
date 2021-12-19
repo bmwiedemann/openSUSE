@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 20 17:29:42 UTC 2021 - psimons@suse.com
+
+- Update turtle to version 1.5.23.
+  1.5.23
+
+  * Add `fromIO` utility
+  * Build against GHC 9.0 / 9.2
+
+-------------------------------------------------------------------
 Mon Apr  5 14:15:06 UTC 2021 - psimons@suse.com
 
 - Update turtle to version 1.5.22.
