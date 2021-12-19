@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:50:38 UTC 2021 - psimons@suse.com
+
+- Update hspec to version 2.9.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hspec-2.9.1/src/CHANGES.markdown
+
+-------------------------------------------------------------------
+Mon Nov 15 06:57:13 UTC 2021 - psimons@suse.com
+
+- Update hspec to version 2.9.0.
+  ## Changes in next
+    - Add ASCII fallbacks to "checks" formatter (fixes #512)
+    - Use `checks` formatter by default (to restore the old behavior use
+      `--format specdoc`)
+    - Allow to extend the list of available formatters for `--format`
+      (`configAvailableFormatters`)
+    - Add `getExpectedTotalCount` to `Test.Hspec.Core.Formatters.V2`
+    - Rename `formatConfigItemCount` to `formatConfigExpectedTotalCount`
+    - Rename `configFastFail` to `configFailFast`
+
+  ## Changes in 2.8.5
+    - hspec-core: Include help.txt in package tarball (close #568)
+    - hspec-discover: Require base >=4.5.0.0 (fixes #554)
+
+-------------------------------------------------------------------
 Sun Nov  7 14:53:35 UTC 2021 - psimons@suse.com
 
 - Update hspec to version 2.8.4.
