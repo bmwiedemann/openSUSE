@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:50:36 UTC 2021 - psimons@suse.com
+
+- Update OneTuple to version 0.3.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:44 UTC 2021 - psimons@suse.com
 
 - Add OneTuple at version 0.3.1.
