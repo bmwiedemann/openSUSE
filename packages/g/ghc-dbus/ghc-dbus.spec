@@ -103,6 +103,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver 'lens' '<5.1' '<6'
 
 %build
 %ghc_lib_build
