@@ -19,7 +19,7 @@
 %global pkg_name Glob
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Globbing library
 License:        BSD-3-Clause
@@ -59,7 +59,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-chmod -x *.txt   # https://github.com/Deewiant/glob/issues/31
 
 %build
 %ghc_lib_build

@@ -1,7 +1,7 @@
 Cabal-Version: >= 1.10
 
 Name:        Glob
-Version:     0.10.1
+Version:     0.10.2
 x-revision: 1
 Homepage:    http://iki.fi/matti.niemenmaa/glob/
 Synopsis:    Globbing library
@@ -35,7 +35,7 @@ Library
                 , transformers-compat >= 0.3 && < 0.8
 
    if impl(ghc < 8.0)
-      Build-Depends: semigroups >= 0.18 && < 0.20
+      Build-Depends: semigroups >= 0.18 && < 0.21
 
    if os(windows)
       Build-Depends: Win32 == 2.*
