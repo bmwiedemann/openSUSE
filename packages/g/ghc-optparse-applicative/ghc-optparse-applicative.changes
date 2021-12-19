@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 20 17:29:48 UTC 2021 - psimons@suse.com
+
+- Update optparse-applicative to version 0.16.1.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Jul 27 07:53:12 UTC 2021 - psimons@suse.com
 
 - Update optparse-applicative to version 0.16.1.0 revision 1.
