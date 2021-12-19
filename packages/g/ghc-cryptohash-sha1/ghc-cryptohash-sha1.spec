@@ -19,13 +19,12 @@
 %global pkg_name cryptohash-sha1
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.100.1
+Version:        0.11.101.0
 Release:        0
 Summary:        Fast, pure and practical SHA-1 implementation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
@@ -39,47 +38,22 @@ BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
-A practical incremental and one-pass, pure API to the [SHA-1 cryptographic hash
-algorithm](https://en.wikipedia.org/wiki/SHA-1) according to [FIPS
-180-4](http://dx.doi.org/10.6028/NIST.FIPS.180-4) with performance close to the
-fastest implementations available in other languages.
+A practical incremental and one-pass, pure API to the
+<https://en.wikipedia.org/wiki/SHA-1 SHA-1 hash algorithm> (including
+<https://en.wikipedia.org/wiki/HMAC HMAC> support) with performance close to
+the fastest implementations available in other languages.
 
-The core SHA-1 algorithm is implemented in C and is thus expected to be as fast
-as the standard [sha1sum(1) tool](https://linux.die.net/man/1/sha1sum).
-(If, instead, you require a pure Haskell implementation and performance is
-secondary, please refer to the [SHA
-package](https://hackage.haskell.org/package/SHA).)
+The implementation is made in C with a haskell FFI wrapper that hides the C
+implementation.
 
-Additionally, this package provides support for
-
-- HMAC-SHA-1: SHA-1-based [Hashed Message Authentication
-Codes](https://en.wikipedia.org/wiki/HMAC) (HMAC)
-
-conforming to [RFC6234](https://tools.ietf.org/html/rfc6234),
-[RFC4231](https://tools.ietf.org/html/rfc4231),
-[RFC5869](https://tools.ietf.org/html/rfc5869), et al..
-
-=== Packages in the 'cryptohash-*' family
-
-- <https://hackage.haskell.org/package/cryptohash-md5 cryptohash-md5> -
-<https://hackage.haskell.org/package/cryptohash-sha1 cryptohash-sha1> -
-<https://hackage.haskell.org/package/cryptohash-sha256 cryptohash-sha256> -
-<https://hackage.haskell.org/package/cryptohash-sha512 cryptohash-sha512>
-
-=== Relationship to the 'cryptohash' package and its API
-
-This package has been originally a fork of 'cryptohash-0.11.7' because the
-'cryptohash' package had been deprecated and so this package continues to
-satisfy the need for a lightweight package providing the SHA-1 hash algorithm
+NOTE: This package has been forked off 'cryptohash-0.11.7' because the
+'cryptohash' package has been deprecated and so this package continues to
+satisfy the need for a lightweight package providing the SHA1 hash algorithm
 without any dependencies on packages other than 'base' and 'bytestring'.
-The API exposed by 'cryptohash-sha1-0.11.*''s "Crypto.Hash.SHA1" module is
-guaranteed to remain a compatible superset of the API provided by the
-'cryptohash-0.11.7''s module of the same name.
 
-Consequently, this package is designed to be used as a drop-in replacement for
-'cryptohash-0.11.7''s "Crypto.Hash.SHA1" module, though with a [clearly smaller
-footprint by almost 3 orders of
-magnitude](https://www.reddit.com/r/haskell/comments/5lxv75/psa_please_use_unique_module_names_when_uploading/dbzegx3/).
+Consequently, this package can be used as a drop-in replacement for
+'cryptohash''s "Crypto.Hash.SHA1" module, though with a clearly smaller
+footprint.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -94,7 +68,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
