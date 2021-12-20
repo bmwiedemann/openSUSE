@@ -18,16 +18,16 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.2.0
+%define lversion 7.4.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.2.0
+%define lversion_pp 7.4.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 Name:           %{libname}
-Version:        7.2.0
+Version:        7.4.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  cmake(Qt5Core) >= 5.10
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
