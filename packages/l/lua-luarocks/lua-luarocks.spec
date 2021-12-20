@@ -20,13 +20,19 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luarocks
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-Version:        3.7.0
+%if "%{flavor}" == ""
+Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
+%else
+Name:           %{flavor}-%{mod_name}
+%endif
+Version:        3.8.0
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://luarocks.org
-Source:         https://luarocks.org/releases/%{mod_name}-%{version}.tar.gz
+Source0:        https://luarocks.org/releases/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  curl
 BuildRequires:  openssl
@@ -37,12 +43,6 @@ Requires:       openssl
 Requires:       unzip
 BuildArch:      noarch
 %lua_provides
-%if "%{flavor}" == ""
-Name:           lua-%{mod_name}
-ExclusiveArch:  do_not_build
-%else
-Name:           %{flavor}-%{mod_name}
-%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
@@ -56,7 +56,7 @@ correct version is loaded. LuaRocks supports both local and remote
 repositories, and multiple local rocks trees.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -n %{mod_name}-%{version}
 
 %build
 # Not an autotools based system

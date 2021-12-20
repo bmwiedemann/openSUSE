@@ -64,4 +64,19 @@
     <comment></comment>
     <requestid>900205</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26250ed2f67499c17b1c0d2b71d831a3</srcmd5>
+    <version>3.8.0</version>
+    <time>1640030768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.0:
+  * Support GitHub's protocol security changes transparently
+  * luarocks test has a new flag --prepare that checks, downloads
+    and installs the tool requirements and rockspec dependencies
+    but does not run the test suite for the rockspec being tested.
+  * Code tweaks so that LuaRocks can run on a Lua interpreter
+    built without the debug library.
+</comment>
+    <requestid>941408</requestid>
+  </revision>
 </revisionlist>

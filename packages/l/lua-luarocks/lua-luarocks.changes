@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 18 15:07:53 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.8.0:
+  * Support GitHub's protocol security changes transparently
+  * luarocks test has a new flag --prepare that checks, downloads
+    and installs the tool requirements and rockspec dependencies
+    but does not run the test suite for the rockspec being tested.
+  * Code tweaks so that LuaRocks can run on a Lua interpreter
+    built without the debug library.
+
+-------------------------------------------------------------------
 Tue Jun 15 15:36:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 3.7.0
