@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 19 20:58:01 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v11.2.2
+  * Changes of version 11.2.2
+    = Add open-swash Q (#1264).
+    = Add ability to customize the width of S-related necks
+      for different kind of letters (#1265).
+    = Add Characters
+      ~ NORTH WEST ARROW TO CORNER (U+21F1).
+      ~ SOUTH EAST ARROW TO CORNER (U+21F2).
+      ~ THREE RIGHTWARDS ARROWS (U+21F6).
+
+-------------------------------------------------------------------
 Sat Dec 11 21:58:13 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.2.1
@@ -6,14 +19,14 @@ Sat Dec 11 21:58:13 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
     = Add top-left and bottom-right serifed variants for K
       and Cyrillic Ka (#1257).
     = Add characters:
-      = LEFTWARDS ARROW WITH LOOP (U+21AB).
-      = RIGHTWARDS ARROW WITH LOOP (U+21AC).
-      = DOWNWARDS ZIGZAG ARROW (U+21AF).
-      = LEFTWARDS TRIPLE ARROW (U+21DA).
-      = RIGHTWARDS TRIPLE ARROW (U+21DB).
-      = LEFTWARDS SQUIGGLE ARROW (U+21DC).
-      = RIGHTWARDS SQUIGGLE ARROW (U+21DD).
-      = RIGHTWARDS ARROW WITH TIP DOWNWARDS (U+2B0E) ...
+      ~ LEFTWARDS ARROW WITH LOOP (U+21AB).
+      ~ RIGHTWARDS ARROW WITH LOOP (U+21AC).
+      ~ DOWNWARDS ZIGZAG ARROW (U+21AF).
+      ~ LEFTWARDS TRIPLE ARROW (U+21DA).
+      ~ RIGHTWARDS TRIPLE ARROW (U+21DB).
+      ~ LEFTWARDS SQUIGGLE ARROW (U+21DC).
+      ~ RIGHTWARDS SQUIGGLE ARROW (U+21DD).
+      ~ RIGHTWARDS ARROW WITH TIP DOWNWARDS (U+2B0E) ...
         LEFTWARDS ARROW WITH TIP UPWARDS (U+2B11).
 
 -------------------------------------------------------------------
