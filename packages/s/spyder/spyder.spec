@@ -19,7 +19,7 @@
 # boo#1190482
 %bcond_with     test
 Name:           spyder
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -64,7 +64,7 @@ Requires:       python3-pyflakes >= 2.2.0
 Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-python-lsp-black >= 1.0.0
-Requires:       python3-python-lsp-server >= 1.3.1
+Requires:       python3-python-lsp-server >= 1.3.2
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qstylizer >= 0.1.10
@@ -154,7 +154,7 @@ BuildRequires:  python3-pytest-order
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-python-lsp-black >= 1.0.0
-BuildRequires:  python3-python-lsp-server >= 1.3.1
+BuildRequires:  python3-python-lsp-server >= 1.3.2
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qstylizer >= 0.1.10

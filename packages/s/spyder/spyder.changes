@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 19 18:23:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.2.1
+  * Prevent Spyder from crashing when selecting an interpreter with
+    an incorrect spyder-kernels version
+  * Optimize several operations in the Editor and IPython Console
+
+-------------------------------------------------------------------
 Fri Nov 26 18:01:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.2.0
