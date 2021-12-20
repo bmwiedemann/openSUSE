@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 14 18:43:29 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.7.1
+  * Fix not selecting second icon in search results.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#50)
+  * Fix incorrect selection when leaving treeview.
+  * Fix skipping first treeview item.
+  * Fix unnecessary button size changes.
+  * Translation updates
+
+-------------------------------------------------------------------
 Sun Nov 21 18:44:29 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.7.0
