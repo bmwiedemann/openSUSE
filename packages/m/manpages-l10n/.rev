@@ -76,4 +76,21 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>919017</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0a2e65e03f0752efc29f57bed4c712b</srcmd5>
+    <version>4.12.1</version>
+    <time>1640030771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.12.1:
+  * Bugfix: Enable new languages in po/Makefile.am.
+- Changes from version 4.12.0:
+  * New languages: Finnish, Greek, Indonesian, Norwegian bokmål,
+    Swedish, Serbian.
+  * Persian (fa) is in a very early state; still disabled.
+  * Updated and added many translations.
+- Upgrade macros: Build for Leap has been upgraded to 15.4 - build
+  for 15.3 has been dropped upstream.
+</comment>
+    <requestid>941522</requestid>
+  </revision>
 </revisionlist>

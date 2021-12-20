@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 19 12:47:35 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.12.1:
+  * Bugfix: Enable new languages in po/Makefile.am.
+- Changes from version 4.12.0:
+  * New languages: Finnish, Greek, Indonesian, Norwegian bokmål,
+    Swedish, Serbian.
+  * Persian (fa) is in a very early state; still disabled.
+  * Updated and added many translations.
+- Upgrade macros: Build for Leap has been upgraded to 15.4 - build
+  for 15.3 has been dropped upstream.
+
+-------------------------------------------------------------------
 Tue Sep 14 19:17:57 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.11.0:
