@@ -87,6 +87,9 @@ Patch8:         add-samba-bgqd.diff
 # aa-notify: Add support for reading s390x and aarch64 wtmp file (boo#1181155) (merged upstream 2021-11-08 in master and 3.0 branch - https://gitlab.com/apparmor/apparmor/-/merge_requests/809)
 Patch9:         aa-notify-more-arch-mr809.diff
 
+# allow reading /etc/ssl/engdef.d/ and /etc/ssl/engines.d/ in abstractions/openssl (submitted upstream 2021-12-19 - https://gitlab.com/apparmor/apparmor/-/merge_requests/818)
+Patch10:        openssl-engdef-mr818.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -352,6 +355,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 %define _lto_cflags %{nil}

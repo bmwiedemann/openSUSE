@@ -2206,4 +2206,16 @@ libapparmor:
   and aarch64 wtmp files (boo#1181155) (forwarded request 930526 from cboltz)</comment>
     <requestid>930527</requestid>
   </revision>
+  <revision rev="160" vrev="6">
+    <srcmd5>660d6c100356a6fdc9630d6e840b0f24</srcmd5>
+    <version>3.0.3</version>
+    <time>1640030769</time>
+    <user>dimstar_suse</user>
+    <comment>- add openssl-engdef-mr818.diff: Allow reading /etc/ssl/engdef.d/ and
+  /etc/ssl/engines.d/ in abstractions/openssl which were introduced
+  with the latest openssl update
+
+NOTE: Without this patch, dovecot is spamming the audit.log with denials. Please accept ASAP.</comment>
+    <requestid>941547</requestid>
+  </revision>
 </revisionlist>

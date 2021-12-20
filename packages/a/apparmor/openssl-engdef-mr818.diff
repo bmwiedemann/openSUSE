@@ -1,0 +1,26 @@
+(context lines adjusted to match 3.0 branch)
+
+From e58dd798f09c1df6f8de42f64d07221d34adfc87 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sun, 19 Dec 2021 22:36:05 +0100
+Subject: [PATCH] abstractions/openssl: allow /etc/ssl/{engdef,engines}.d/
+
+These directories were introduced in openssl in
+https://patchwork.ozlabs.org/project/openwrt/patch/20210429153530.10020-2-cotequeiroz@gmail.com/
+---
+ profiles/apparmor.d/abstractions/openssl | 2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: profiles/apparmor.d/abstractions/openssl
+===================================================================
+--- a/profiles/apparmor.d/abstractions/openssl.orig	2021-12-19 22:51:13.837139097 +0100
++++ b/profiles/apparmor.d/abstractions/openssl	2021-12-19 22:52:05.845049787 +0100
+@@ -12,6 +12,8 @@
+ 
+   /etc/ssl/openssl.cnf r,
+   /usr/share/ssl/openssl.cnf r,
++  /etc/ssl/{engdef,engines}.d/ r,
++  /etc/ssl/{engdef,engines}.d/*.cnf r,
+   @{PROC}/sys/crypto/fips_enabled r,
+ 
+ 

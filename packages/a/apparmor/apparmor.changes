@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 19 21:42:54 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- add openssl-engdef-mr818.diff: Allow reading /etc/ssl/engdef.d/ and
+  /etc/ssl/engines.d/ in abstractions/openssl which were introduced
+  with the latest openssl update
+
+-------------------------------------------------------------------
 Tue Nov  9 17:45:22 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - add aa-notify-more-arch-mr809.diff: Add support for reading s390x
