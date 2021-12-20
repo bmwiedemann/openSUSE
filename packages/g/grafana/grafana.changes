@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:38:02 UTC 2021 - witold.bedyk@suse.com
+
+- Update to version 7.5.12:
+  * Fix markdown path traversal (#42969, bsc#1193688, CVE-2021-43813)
+
+-------------------------------------------------------------------
 Thu Nov 18 14:13:39 CET 2021 - ro@suse.de
 
 - recreate tarballs using the makefile to update the

@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        7.5.11
+Version:        7.5.12
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        Apache-2.0
