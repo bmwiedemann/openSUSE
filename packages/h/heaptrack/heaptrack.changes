@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec 19 15:09:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.3.0:
+  * New features:
+    + Allocations can be filtered by time ranges
+    + Support for suppression files, including the
+      __lsan_default_suppressions API
+  * Fixed bugs:
+    + Fails to build on CentOS 7.0 (kde#441125)
+    + Crash when filtering on a time range (kde#441132)
+    + Heaptrack produces impossible/incorrect stack traces (kde#439897)
+    + ERROR: failed to lock heaptrack output file (kde#408547)
+    + Attaching to running process generates empty file (kde#394520)
+    + heaptrack launch script help text shows wrong option name for --output-file (kde#439307)
+    + Can the output file take hostname into account? (kde#435195)
+    + Heaptrack GUI crash when opening a zst file (kde#427970)
+  * More details on https://invent.kde.org/sdk/heaptrack/-/releases/v1.3.0
+- Use %autosetup
+
+-------------------------------------------------------------------
 Sun Jan 17 08:39:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add quotes to text comparison to fix build with rpm 4.16.

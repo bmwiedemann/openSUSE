@@ -19,7 +19,7 @@
 %define kf5_version 5.26.0
 %bcond_without lang
 Name:           heaptrack
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Heap Memory Allocation Profiler
 License:        LGPL-2.1-or-later
@@ -28,8 +28,11 @@ URL:            https://userbase.kde.org/Heaptrack
 Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_container-devel
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libdwarf-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  pkgconfig
@@ -39,6 +42,7 @@ BuildRequires:  cmake(KChart) >= 2.6.0
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ThreadWeaver)
@@ -46,7 +50,6 @@ BuildRequires:  cmake(Qt5Core) >= 5.2.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(libzstd)
-Recommends:     %{name}-lang
 Suggests:       heaptrack-gui
 
 %description
@@ -69,12 +72,10 @@ Requires:       %{name} = %{version}
 %description gui
 A Qt5/KF5 based GUI for Heaptrack.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Disable building tests, they're not used and post-build-checks trips over it
 sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt
@@ -97,18 +98,17 @@ extra_opts="-DLIB_SUFFIX=64"
   %suse_update_desktop_file org.kde.heaptrack Development Profiling
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README.md
 %{_kf5_bindir}/heaptrack
 %{_kf5_bindir}/heaptrack_print
 %{_libdir}/heaptrack/
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_includedir}/heaptrack_api.h
 
 %files gui
-%license COPYING*
 %{_kf5_bindir}/heaptrack_gui
 %{_datadir}/applications/org.kde.heaptrack.desktop
 %{_kf5_appstreamdir}/org.kde.heaptrack.appdata.xml
@@ -118,7 +118,6 @@ extra_opts="-DLIB_SUFFIX=64"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
