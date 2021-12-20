@@ -1,5 +1,0 @@
-<package name="python-passa" project="openSUSE:Factory">
-  <title></title>
-  <description>A resolver implementation for Pipenv-compatible Lockfiles</description>
-  <devel project="devel:languages:python" package="python-passa"/>
-</package>
