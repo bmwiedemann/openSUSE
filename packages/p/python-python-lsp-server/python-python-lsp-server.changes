@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 19 18:29:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.3
+  * Fix error when resolving completion items for Rope
+- Drop python-lsp-server-pr133-pylint-python310.patch merged
+
+-------------------------------------------------------------------
 Sat Dec 11 14:46:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.3.2

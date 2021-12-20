@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-Patch0:         https://github.com/python-lsp/python-lsp-server/pull/133.patch#/python-lsp-server-pr133-pylint-python310.patch
 BuildRequires:  %{python_module setuptools >= 39.0.0}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
