@@ -15,4 +15,19 @@
     <comment>- add missing gawk dependency</comment>
     <requestid>898845</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4888aaeec441c5a4057e4f08259091e8</srcmd5>
+    <version>2.5.0</version>
+    <time>1640030779</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * split checksec into multiple files for easier maintenance and debugging
+  * remove space between options and only support `=` until refactor can happen
+  * update License.txt to include BSD license
+  * Check journalctl -k for NX protection
+  * improve debug formatting
+  * Fix shellcheck warnings and style issues
+  * Make --dir option follow symlinks</comment>
+    <requestid>941623</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 20 10:41:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * split checksec into multiple files for easier maintenance and debugging
+  * remove space between options and only support `=` until refactor can happen
+  * update License.txt to include BSD license
+  * Check journalctl -k for NX protection
+  * improve debug formatting
+  * Fix shellcheck warnings and style issues
+  * Make --dir option follow symlinks
+
+-------------------------------------------------------------------
 Wed Jun  9 15:36:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing gawk dependency 

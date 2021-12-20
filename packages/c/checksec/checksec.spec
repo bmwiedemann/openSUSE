@@ -18,7 +18,7 @@
 
 
 Name:           checksec
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Utility to check binaries for system hardening
 License:        BSD-3-Clause
