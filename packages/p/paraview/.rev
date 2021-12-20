@@ -402,4 +402,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>898164</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>3f32a9489e7a9c3995b8a242f242f9a4</srcmd5>
+    <version>5.9.1</version>
+    <time>1640030772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941521</requestid>
+  </revision>
 </revisionlist>

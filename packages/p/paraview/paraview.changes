@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 16 13:50:10 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update constraints for riscv64
+
+-------------------------------------------------------------------
 Thu Jun  3 00:12:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop useless ldconfig dependencies for the paraview.rpm

@@ -4,5 +4,15 @@
         <size unit="G">16</size>
       </disk>
     </hardware>
+    <overwrite>
+      <conditions>
+	<arch>riscv64</arch>
+      </conditions>
+      <hardware>
+	<disk>
+	  <size unit="G">25</size>
+	</disk>
+      </hardware>
+    </overwrite>
 </constraints>
 
