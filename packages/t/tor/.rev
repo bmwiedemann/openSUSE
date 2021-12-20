@@ -928,4 +928,12 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>932290</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>883ef7e40052acb240e16dc2924c83e3</srcmd5>
+    <version>0.4.6.9</version>
+    <time>1640030775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941564</requestid>
+  </revision>
 </revisionlist>

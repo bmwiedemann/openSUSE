@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 17 18:54:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.6.9:
+  * remove the DNS timeout metric from the overload general signal
+  * regenerate fallback directories generated on December 15, 2021
+  * Update the geoip files to match the IPFire Location Database,
+    as retrieved on 2021/12/15
+  * Reject IPv6-only DirPort
+
+-------------------------------------------------------------------
 Sat Nov 13 11:02:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.6.8:
