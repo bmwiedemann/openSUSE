@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec 20 10:58:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * User Defined Features, which have existed for some time, are now formally
+   available.
+  * Option --mccs now applies to getvcp, setvcp, and dumpvcp as well as vcpinfo. 
+  * Workaround for EDID reading issu with recent kernels and i915/docking stations
+  * Configuration file ddcutilrc, located on the XDG config path (normally
+    $HOME/.config/ddcutil/ddcutilrc) is processed by both ddcutil and
+    libddcutil.
+  * Monitor capabilities strings are cached to improve performance of the
+    capabilities command.
+  * Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU)
+    when monitors are connected to a docking station. The monitor may not be
+    detected (because no EDID is reported), or the monitor may appear as two
+    different /dev/i2c devices.
+  * When probing /dev/i2c devices for monitors, ddcutil could put AMD Navi2
+    devices (e.g. RX6000 series) into an inconsistent state. This is because
+    the devices expose an I2C devices for the SMU. Display detection is
+    modified to avoid probing these devices.
+  * Option -enable-capabilities-cache is now the default.
+  * Command ddcutil --verbose reports the raw EDID.
+  * Major events are written to the system log. These include starting,
+    stopping, and severe internal errors.
+  * Fix for github issue #178: Error detecting i2c-dev kernel module. The
+    checks are now performed using libkmod.
+  * libddcutil trace output can be redirected to a file.
+  * The shared library file name is libddcutil.so.4.1.0
+
+-------------------------------------------------------------------
 Thu Jul  1 06:44:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unncessary BuildRequires on python-devel 

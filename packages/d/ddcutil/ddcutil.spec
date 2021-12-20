@@ -17,22 +17,23 @@
 
 
 Name:           ddcutil
-Version:        0.9.9
+Version:        1.2.1
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-URL:            http://github.com/rockowitz/ddctool
-Source:         https://github.com/rockowitz/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/rockowitz/ddcutil
+Source:         https://github.com/rockowitz/ddcutil/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 # Directory not owned by package error
 BuildRequires:  cmake
 BuildRequires:  gcc
-BuildRequires:  i2c-tools
+BuildRequires:  libi2c0-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(xrandr)
@@ -87,7 +88,7 @@ make %{?_smp_mflags} check
 %postun -n libddcutil3 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS NEWS.md README.md ChangeLog
+%doc AUTHORS NEWS.md README.md CHANGELOG.md
 %license COPYING
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/data
@@ -97,7 +98,6 @@ make %{?_smp_mflags} check
 %{_bindir}/ddcutil
 
 %files -n libddcutil3
-%doc AUTHORS NEWS.md README.md ChangeLog
 %license COPYING
 %{_libdir}/libddcutil.so.*
 
