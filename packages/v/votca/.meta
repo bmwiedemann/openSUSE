@@ -1,0 +1,5 @@
+<package name="votca" project="openSUSE:Factory">
+  <title>Versatile Object-oriented Toolkit for Coarse-graining Applications</title>
+  <description>VOTCA is a software package which focuses on the analysis of molecular dynamics data, the development of systematic coarse-graining techniques as well as methods used for simulating microscopic charge (and exciton) transport in disordered semiconductors.</description>
+  <devel project="science" package="votca"/>
+</package>

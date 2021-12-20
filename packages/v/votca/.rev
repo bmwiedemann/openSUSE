@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8885c32a149528131b598e49ab26eb20</srcmd5>
+    <version>2022~rc2</version>
+    <time>1640030770</time>
+    <user>dimstar_suse</user>
+    <comment>Merge votca-* into one package for more features and better testing.
+
+</comment>
+    <requestid>941551</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sun Dec 19 22:37:10 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Also obsoletes votca-csg-apps
+
+-------------------------------------------------------------------
+Thu Dec 16 03:53:04 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2020-rc.2
+  - fix iqm merge orbitals command ([gh#votca/votca#907])
+  - fix bug in basisset serialization that caused wrong Vxc values
+    in GW ([gh#votca/votca#910])
+  - update performance compilation info ([gh#votca/votca#911])
+  - license for monorepo and all license files rst -> plain text
+    ([gh#votca/votca#912], [gh#votca/votca#913])
+  - use python3 in xtp-tutorials ([gh#votca/votca#917])
+  - bump required boost version to 1.71 ([gh#votca/votca#915],
+    [gh#votca/votca#916])
+  - clean up NOTICE files ([gh#votca/votca#919])
+  - rm PYTHON_INSTDIR from VOTCARC ([gh#votca/votca#924])
+  - update citation in xtp README ([gh#votca/votca#925])
+  - fix install permission of tutorials ([gh#votca/votca#926])- 
+
+-------------------------------------------------------------------
+Mon Dec  6 11:27:23 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Merge votca-{tools,csg,xtp} into one package 
