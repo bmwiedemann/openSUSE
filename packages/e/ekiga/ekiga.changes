@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:27:29 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Aug 25 14:26:38 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add python3-libxml2 as build requirement (fixes Factory build)

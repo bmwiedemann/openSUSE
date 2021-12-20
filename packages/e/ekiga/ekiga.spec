@@ -67,7 +67,6 @@ BuildRequires:  libtool
 BuildRequires:  libv4l-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xv)
 Requires:       hicolor-icon-theme
@@ -128,7 +127,6 @@ This plugin enables evolution support in %{name}.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-translation-update-upstream
 cp -av %{_datadir}/gnome-doc-utils/gnome-doc-utils.make .
 
 %build
