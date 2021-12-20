@@ -18,13 +18,13 @@
 
 %define lname	libImlib2-1
 Name:           imlib2
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
 URL:            https://sourceforge.net/projects/enlightenment/
-Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  giflib-devel
 BuildRequires:  libICE-devel
 BuildRequires:  libjpeg-devel
@@ -114,15 +114,7 @@ jpeg, png, pnm, tga, tiff, xpm
 
 %install
 %make_install
-pushd %{buildroot}%{_bindir}/
- for i in *imlib2-config ; do
-  test "$i" != "imlib2-config" || continue
-  ln -s $i imlib2-config
- done
-popd
 find %{buildroot} -type f -name "*.la" -delete -print
-#Heads up ! clean up  madness here..
-sed -i -e 's@-lfreetype@@g' -e 's@-lz@@g' -e 's@-lXext@@g' -e 's@-ldl@@g' -e 's@-lm@@g' %{buildroot}%{_bindir}/imlib2-config
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -152,7 +144,6 @@ sed -i -e 's@-lfreetype@@g' -e 's@-lz@@g' -e 's@-lXext@@g' -e 's@-ldl@@g' -e 's@
 %{_libdir}/pkgconfig/imlib2.pc
 %{_includedir}/*
 %{_libdir}/lib*.so
-%{_bindir}/imlib2-config
 
 %files filters
 %attr(755,root,root) %dir %{_libdir}/imlib2

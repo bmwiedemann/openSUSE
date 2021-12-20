@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Sat Dec 18 19:14:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * Build .xz instead of .bz2 release tarball
+  * Drop imlib2-config (use pkg-config)
+  * Test: Add some minimal regression testing
+  * Test: Fix dist
+  * imlib2_load: Add option to use imlib_load_image_immediately()
+  * JPEG loader: Cosmetics
+  * JPEG loader: Parse EXIF data and handle orientation
+  * autofoo: Drop support for libungif
+  * Imlib.h: Add version macros
+  * imlib2_load: Add verbose option
+  * Fix build (Imlib2.h is now built)
+  * test: Add icon-64.pbm
+  * test: Add test_load_2
+  * imlib2_view: If verbose show error message on failure
+  * imlib2_load: Use clock_gettime() when available
+  * debug: Infrastructure
+  * debug: Add some debug related to file access and image loading
+  * Introduce im->fsize
+  * PNG loader: Cosmetics
+  * PNG loader: Use mmap() during signature check
+  * TIFF loader: Use mmap() during signature check
+  * TGA loader: Use im->fsize, cosmetics, debug
+  * WEBP loader: Cosmetics
+  * WEBP loader: Use mmap() for loading
+  * FF loader: Cosmetics
+  * FF loader: Use mmap() for loading
+  * ARGB loader: Cosmetics
+  * ARGB loader: Use mmap() for loading
+  * BMP loader: Cosmetics
+  * BMP loader: Use mmap() for loading
+  * ICO loader: Cosmetics
+  * ICO loader: Use mmap() for loading
+  * LBM loader: Cleanups
+  * LBM loader: Use mmap() for loading
+  * PNM loader: Use mmap() for loading
+  * XBM loader: Fix potential buffer overrun
+  * XBM loader: Cosmetics
+  * XBM loader: Use mmap() for loading
+  * XBM loader: Ignore comments and other stuff in header
+  * XPM loader: Use mmap() for loading
+  * test: test_load improvements
+  * imlib2_view: Add option to cache images
+  * Introduce UPDATE_FLAG()
+  * Introduce ARRAY_SIZE()
+  * Loader cosmetics
+  * Loader loading: Tweaks
+  * Loader loading: Move to __imlib_FindBestLoaderForFormat()
+  * Loader loading: Move __imlib_GetLoaderList()
+  * Loader loading: Minor loader lookup refactoring
+  * Loader loading: Avoid always loading all loaders
+  * Loader loading: Don't bother looking up load() if we have load2()
+  * WEBP loader: Enable loading animated images (first frame by default)
+  * configure.ac: Fixup after recent change
+  * Drop unnecessary free() NULL argument checks
+  * Remove some unneeded headers
+  * Rename X11 related files for clarity
+  * Move ImlibImagePixmap population to __imlib_AddImagePixmapToCache()
+  * test: Add X11 drawable grabbing test
+  * Move pixmap stuff to x11_pixmap.c/h
+  * Trivial changes in __imlib_Grab...() function prototypes
+  * Refactor imlib_create_scaled_image_from_drawable()
+  * Revert "Refactor imlib_create_scaled_image_from_drawable()"
+  * Refactor imlib_create_scaled_image_from_drawable() - take 2
+  * x11_grab.c: Rename source/destination variables for clarity
+  * Fix y-upscaling in imlib_create_scaled_image_from_drawable()
+  * test_grab: Cleanups, cosmetics
+  * test_grab: Add scale-down tests
+  * Only set MAINTAINERCLEANFILES in top-level Makefile.am
+  * imlib2_view: Enable grabbing/viewing drawables
+  * x11_grab.c: Cosmetics
+  * x11_grab.c: Introduce function to get shape mask
+  * Speedup in imlib_create_scaled_image_from_drawable()
+  * Avoid signedness warning
+  * Avoid "exceeds maximum object size" warning
+  * blend.c: Tweaks, cleanups
+  * Simplify build wrt. asm files
+
+-------------------------------------------------------------------
 Sat Oct 16 15:18:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4:
