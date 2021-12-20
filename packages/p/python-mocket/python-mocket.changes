@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Wed Dec  1 21:17:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - Help the user to spot issues (#166)
+- Update to version 3.10.2:
+ - Help the user to spot issues (#166)
    * Help to detect `register()` misusage.
    * Bump version.
    * Improve DeepSource scans.
@@ -29,7 +30,8 @@ Wed Dec  1 21:17:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 -------------------------------------------------------------------
 Sat Nov 27 10:12:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- - Multi `register()` (#159)
+- Update to version 3.10.1:
+ - Multi `register()` (#159)
    * Add failing test.
    * `Entry.collect` let us know if the response should be consumed or not.
    * Bump version.
