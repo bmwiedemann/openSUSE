@@ -47,7 +47,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.48.0
+Version:        1.49.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

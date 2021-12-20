@@ -15,7 +15,7 @@ Index: synapse/synapse/config/key.py
 ===================================================================
 --- synapse.orig/synapse/config/key.py
 +++ synapse/synapse/config/key.py
-@@ -101,7 +101,7 @@ class KeyConfig(Config):
+@@ -102,7 +102,7 @@ class KeyConfig(Config):
              signing_key_path = config.get("signing_key_path")
              if signing_key_path is None:
                  signing_key_path = os.path.join(
@@ -24,7 +24,7 @@ Index: synapse/synapse/config/key.py
                  )
  
              self.signing_key = self.read_signing_keys(signing_key_path, "signing_key")
-@@ -166,7 +166,7 @@ class KeyConfig(Config):
+@@ -169,7 +169,7 @@ class KeyConfig(Config):
      def generate_config_section(
          self, config_dir_path, server_name, generate_secrets=False, **kwargs
      ):
@@ -37,10 +37,10 @@ Index: synapse/synapse/config/logger.py
 ===================================================================
 --- synapse.orig/synapse/config/logger.py
 +++ synapse/synapse/config/logger.py
-@@ -131,7 +131,7 @@ class LoggingConfig(Config):
+@@ -150,7 +150,7 @@ class LoggingConfig(Config):
          self.no_redirect_stdio = config.get("no_redirect_stdio", False)
  
-     def generate_config_section(self, config_dir_path, server_name, **kwargs):
+     def generate_config_section(self, config_dir_path, server_name, **kwargs) -> str:
 -        log_config = os.path.join(config_dir_path, server_name + ".log.config")
 +        log_config = os.path.join('/etc/matrix-synapse/', server_name + ".log.config")
          return (
@@ -50,7 +50,7 @@ Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -729,7 +729,7 @@ class ServerConfig(Config):
+@@ -696,7 +696,7 @@ class ServerConfig(Config):
              bind_port = 8448
              unsecure_port = 8008
  
@@ -63,7 +63,7 @@ Index: synapse/synapse/config/tls.py
 ===================================================================
 --- synapse.orig/synapse/config/tls.py
 +++ synapse/synapse/config/tls.py
-@@ -200,7 +200,7 @@ class TlsConfig(Config):
+@@ -151,7 +151,7 @@ class TlsConfig(Config):
          """If the TLS paths are not specified the default will be certs in the
          config directory"""
  
