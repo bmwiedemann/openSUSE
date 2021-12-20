@@ -16,10 +16,10 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  create mode 100644 oauth2.c
  create mode 100644 oauth2.h
 
-Index: fetchmail-6.4.22/Makefile.am
+Index: fetchmail-6.4.25/Makefile.am
 ===================================================================
---- fetchmail-6.4.22.orig/Makefile.am
-+++ fetchmail-6.4.22/Makefile.am
+--- fetchmail-6.4.25.orig/Makefile.am
++++ fetchmail-6.4.25/Makefile.am
 @@ -68,7 +68,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h
  		fetchmail.c env.c idle.c options.c daemon.c \
  		driver.c transact.c sink.c smtp.c \
@@ -29,20 +29,20 @@ Index: fetchmail-6.4.22/Makefile.am
  		unmime.c conf.c checkalias.c uid_db.h uid_db.c\
  		lock.h lock.c \
  		rcfile_l.l rcfile_y.y \
-Index: fetchmail-6.4.22/fetchmail.man
+Index: fetchmail-6.4.25/fetchmail.man
 ===================================================================
---- fetchmail-6.4.22.orig/fetchmail.man
-+++ fetchmail-6.4.22/fetchmail.man
-@@ -1007,7 +1007,7 @@ AUTHENTICATION below for details).  The
+--- fetchmail-6.4.25.orig/fetchmail.man
++++ fetchmail-6.4.25/fetchmail.man
+@@ -1001,7 +1001,7 @@ AUTHENTICATION below for details).  The
  \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
  excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
  \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
 -\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (only IMAP).
 +\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (requires token).
  When \fBany\fP (the default) is specified, fetchmail tries
- first methods that don't require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
+ first methods that do not require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
  KERBEROS\ 5); then it looks for methods that mask your password
-@@ -2351,8 +2351,7 @@ Legal protocol identifiers for use with
+@@ -2340,8 +2340,7 @@ Legal protocol identifiers for use with
  Legal authentication types are 'any', 'password', 'kerberos',
  \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
  (only for POP3), 'ntlm', 'ssh', 'external' (only IMAP),
@@ -52,10 +52,10 @@ Index: fetchmail-6.4.22/fetchmail.man
  The 'password' type specifies
  authentication by normal transmission of a password (the password may be
  plain text or subject to protocol-specific encryption as in CRAM-MD5);
-Index: fetchmail-6.4.22/imap.c
+Index: fetchmail-6.4.25/imap.c
 ===================================================================
---- fetchmail-6.4.22.orig/imap.c
-+++ fetchmail-6.4.22/imap.c
+--- fetchmail-6.4.25.orig/imap.c
++++ fetchmail-6.4.25/imap.c
 @@ -17,6 +17,7 @@
  #include  <limits.h>
  #include  <errno.h>
@@ -134,10 +134,10 @@ Index: fetchmail-6.4.22/imap.c
  
      return ok;
  }
-Index: fetchmail-6.4.22/oauth2.c
+Index: fetchmail-6.4.25/oauth2.c
 ===================================================================
 --- /dev/null
-+++ fetchmail-6.4.22/oauth2.c
++++ fetchmail-6.4.25/oauth2.c
 @@ -0,0 +1,61 @@
 +/*
 + * oauth2.c -- oauthbearer and xoauth2 support
@@ -200,10 +200,10 @@ Index: fetchmail-6.4.22/oauth2.c
 +
 +    return oauth2b64;
 +}
-Index: fetchmail-6.4.22/oauth2.h
+Index: fetchmail-6.4.25/oauth2.h
 ===================================================================
 --- /dev/null
-+++ fetchmail-6.4.22/oauth2.h
++++ fetchmail-6.4.25/oauth2.h
 @@ -0,0 +1,6 @@
 +#ifndef OAUTH2_H
 +#define OAUTH2_H
@@ -211,10 +211,10 @@ Index: fetchmail-6.4.22/oauth2.h
 +char *get_oauth2_string(struct query *ctl,flag xoauth2);
 +
 +#endif /*OAUTH2_H*/
-Index: fetchmail-6.4.22/pop3.c
+Index: fetchmail-6.4.25/pop3.c
 ===================================================================
---- fetchmail-6.4.22.orig/pop3.c
-+++ fetchmail-6.4.22/pop3.c
+--- fetchmail-6.4.25.orig/pop3.c
++++ fetchmail-6.4.25/pop3.c
 @@ -20,6 +20,7 @@
  #include  <errno.h>
  

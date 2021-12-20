@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.22
+Version:        6.4.25
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -36,7 +36,6 @@ Source6:        %{name}.service
 Source7:        %{name}.tmpfiles
 Source8:        %{name}.exec
 Source9:        %{name}.sysusers
-
 Patch0:         fetchmail-6.3.8-smtp_errors.patch
 Patch1:         fetchmail-add-imap-oauthbearer-support.patch
 Patch2:         fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
@@ -51,7 +50,6 @@ Patch10:        fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-
 Patch11:        fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
 Patch12:        fetchmail-bump-max-passwordlen-to-1bytes.patch
 Patch13:        fetchmail-add-readme-oauth2-issue-27.patch
-Patch14:        fetchmail-bison-3.8.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
@@ -94,22 +92,7 @@ A GUI configuration utility for generating fetchmail configuration
 files (.fetchmailrc).
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
+%autosetup -p1
 cp -a %{SOURCE2} %{SOURCE3} .
 
 ACLOCAL="aclocal -I m4 -I m4-local" autoreconf -fvi

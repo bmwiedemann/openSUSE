@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 11 23:23:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.25:
+  * 6.4.24's workaround for OpenSSL 1.0.2's X509_V_FLAG_TRUSTED_FIRST flag
+    contained a typo and would not kick in properly.
+  * Library and/or rpath setting from configure.ac was fixed.
+  * Added an example systemd unit file and instructions to contrib/systemd/
+    which runs fetchmail as a daemon with 5-minute poll intervals.
+  * fetchmail can now be used with wolfSSL 5's OpenSSL compatibility layer,
+    see INSTALL and README.SSL. This is considered experimental.
+    Feedback solicited.
+  * Bison 3.8 dropped yytoknum altogether, breaking compilation due to a
+    warning workaround. Remove the cast of yytoknum to void.  This may cause
+    a compiler warning to reappear with older Bison versions.
+  * OpenSSL 1.0.2: Workaround for systems that keep the expired DST Root CA X3 
+    certificate in its trust store because OpenSSL by default prefers the 
+    untrusted certificate and fails.
+  * For common ssh-based IMAP PREAUTH setups (i. e. those that use a plugin
+    - no matter its contents - and that set auth ssh), change the STARTTLS 
+    error message to suggest sslproto '' instead.
+    This is a commonly reported issue after the CVE-2021-39272 fix in 6.4.22.
+- drop fetchmail-bison-3.8.patch (upstream)
+- Rebased patches:
+  * fetchmail-add-imap-oauthbearer-support.patch
+  * fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
+
+-------------------------------------------------------------------
 Tue Nov  9 16:23:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add fetchmail-bison-3.8.patch: Fix build with bison 3.8.
