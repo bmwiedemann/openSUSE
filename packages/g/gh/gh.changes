@@ -1,47 +1,142 @@
 -------------------------------------------------------------------
+Mon Dec 20 07:50:14 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Change issue references in the changelog to proper OBS abbreviations
+
+-------------------------------------------------------------------
+Sat Dec 18 03:04:36 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 2.3.0
+	* Add support for precompiled extensions
+    - fix binary extensions on windows by @vilmibm in gh#cli/cli#4717
+	  - binary extension migration by @vilmibm in gh#cli/cli#4588
+	  - make extension create binary aware by @vilmibm in gh#cli/cli#4718
+	  - Extensions create nail_care by @mislav in gh#cli/cli#4802
+	* rewrite gh repo create by @meiji163 @pxrth9 in gh#cli/cli#4578
+    - gh repo create will no longer automatically add a git remote to the local git repository in the current directory. To emulate old behavior when inside a local git repository, use gh pr create --source ..
+    - gh repo create will only prompt interactively when run with no arguments. Otherwise, all arguments should be passed explicitly.
+	* Fix codespace code command under WSL by @mislav in gh#cli/cli#4747
+	* Inherit API endpoint configuration from the Codespaces environment by @marwan-at-work in gh#cli/cli#4723
+	* Remove the default value from idle-timeout by @reybard in gh#cli/cli#4756
+	* Support listing and removing user Codespaces secrets by @joshmgross in gh#cli/cli#4714
+	* Support setting user Codespaces secrets by @joshmgross in gh#cli/cli#4699
+	* Add idle_timeout_minutes as possible cs create param by @reybard in gh#cli/cli#4741
+	* Adds a timeout context to the ssh waiter to prevent indefinite hanging by @reybard in gh#cli/cli#4635
+	* Rename errors from Live Share to generic codespace by @josebalius in gh#cli/cli#4705
+	* Add prebuild availability status to create codespaces by @adnamalin in gh#cli/cli#4737
+	* Add command gh auth setup-git for setting up gh-cli as git cred helper by @despreston in gh#cli/cli#4246
+	* Add gh config list by @meiji163 in gh#cli/cli#4729
+	* Add new flag gh secret set --no-store to print the encoded secret by @sguzmanm in gh#cli/cli#4423
+	* Adding release download for.zip and .tar.gz archives by @lpessoa in gh#cli/cli#4489
+	* gh repo rename by @pxrth9 in gh#cli/cli#4450
+	* Ignore scope suggestions for http 422 by @despreston in gh#cli/cli#4809
+	* pr diff color output fixes by @mislav in gh#cli/cli#4833
+	* PR merge should, after switching branches, pull by @pxrth9 in gh#cli/cli#4748
+	* Don't swallow duplicate SSH key error by @despreston in gh#cli/cli#4807
+	* gh pr merge fails to delete remote branch if $PWD is not a git repository by @pxrth9 in gh#cli/cli#4769
+	* Fix up bug in RemoveEntry and add tests for config_map by @samcoe in gh#cli/cli#4784
+	* Escape workflow information when generating URLs by @samcoe in gh#cli/cli#4760
+	* Confirm name change before creating a repo with special characters by @bchadwic in gh#cli/cli#4562
+	* encode gh browse output URL by @bchadwic in gh#cli/cli#4663
+	* add base repo resolution to gh repo archive by @meiji163 in gh#cli/cli#4654
+	* add base repo resolution to gh repo delete by @meiji163 in gh#cli/cli#4655
+	* Fix stack overflow in AddJSONFlags by @rsteube in gh#cli/cli#4614
+	* Fix rendering issue in "formatting" help topic by @pbnj in gh#cli/cli#4661
+	* fix branch flag on browse within dir by @bstncartwright in gh#cli/cli#4676
+	* Generate Go 1.17-style go:build directives by @mislav in gh#cli/cli#4838
+	* Bump github.com/itchyny/gojq from 0.12.5 to 0.12.6 by @dependabot in gh#cli/cli#4832
+	* some automation by @vilmibm in gh#cli/cli#4810
+	* Improve issue view re: overfetching, PR support by @mislav in gh#cli/cli#4803
+	* Improve queries in issue commands: no overfetching, support PR arguments by @mislav in gh#cli/cli#4794
+	* Bump github.com/mattn/go-colorable from 0.1.11 to 0.1.12 by @dependabot in gh#cli/cli#4804
+	* Replace shurcool/graphql with cli/shurcool-graphql by @samcoe in gh#cli/cli#4750
+	* update help for magic type conversion gh#cli/cli#4365 by @signalwerk in gh#cli/cli#4434
+	* fix angle brackets in man pages by @meiji163 in gh#cli/cli#4752
+	* Overhaul manual pages for the web by @mislav in gh#cli/cli#4675
+	* Fix CODEOWNERS for codespaces by @mislav in gh#cli/cli#4728
+	* Don't use gpg in Debian instruction by @TobiX in gh#cli/cli#4610
+	* Bump bluemonday to silence the security alert by @mislav in gh#cli/cli#4607
+- Changes from 2.2.0
+	* Support for GitHub Codespaces
+  * Add repo delete command by @meiji163 in gh#cli/cli#4451
+  * Add run cancel command by @cristiand391 in gh#cli/cli#3833
+  * Add gpg-key management commands by @owenvoke in gh#cli/cli#3822
+  * Support logging in to github.localhost by @joshmgross in gh#cli/cli#4523
+  * browse: respect the current working directory for file arguments by @bchadwic in gh#cli/cli#4007
+	* release create: respect the --draft flag in interactive mode by @Sixeight in gh#cli/cli#4542
+	* api: avoid repeating GET parameters when paginating by @mislav in gh#cli/cli#4559
+	* The progress spinner is now visible against a light background gh#cli/cli#4556
+	* Dispatch binary extensions directly by @vilmibm in gh#cli/cli#4568
+	* Fix copy/paste mistake in docs by @stdtom in gh#cli/cli#4582
+- Changes from 2.1.0
+  * Add repo archive command by @pxrth9 & @meiji163 in gh#cli/cli#4410
+  * Add support for precompiled extensions by @vilmibm in gh#cli/cli#4308 gh#cli/cli#4373
+  * If an extension repository publishes Releases with uploaded binary assets named with a suffix formatted like {OS}-{ARCH} (e.g. linux-amd64), the matching binary will be downloaded and installed as the extension instead of cloning the code from the extension repository.
+  * pr list: add --draft, --non-draft, and --head filters by @SiarheiFedartsou in gh#cli/cli#4316 gh#cli/cli#4279
+  * pr diff: add --patch flag by @m4ver1k in gh#cli/cli#4460
+  * browse: add --commit flag to open the permalink for the latest commit by @bchadwic in gh#cli/cli#3950
+  * api: add docs hint on how to use use stdin by @rethab in gh#cli/cli#4291
+  * pr checks/run: revised "pending" and "skipped" symbols by @bchadwic in gh#cli/cli#4090
+  * pr checkout: also set pushRemote for new branches by @RasmusWL in gh#cli/cli#4363
+  * extension list: speed up checking for updates by @samcoe in gh#cli/cli#4396
+  * extension install: document installing using a full URL by @wrslatz in gh#cli/cli#4271
+  * extension create: use /usr/bin/env bash instead of /bin/bash in generated shebang by @kidonng in gh#cli/cli#4203
+  * browse: add support for line ranges browse by @despreston in gh#cli/cli#4253
+  * browse: fix markdown files with line ranges by @andrewhsu in gh#cli/cli#4310
+  * repo garden: use the x/term package instead of shelling out to stty by @mislav in gh#cli/cli#4214
+  * repo sync: allow user input for git fetch by @samcoe in gh#cli/cli#4328
+  * repo create: avoid swallowing error from a prompt by @mislav in gh#cli/cli#4331
+  * Skip authentication requirement for internal completion commands by @cuonglm in gh#cli/cli#4189
+  * Add quotes around @me in documentation to ensure examples work in PowerShell by @Jernik in gh#cli/cli#4239
+  * Suggest to re-authenticate to fix "SAML enforcement" error by @mislav in gh#cli/cli#4241
+  * Print warning when limit exceeds search API maximum by @despreston in gh#cli/cli#3967
+  * Add git+https to the list of supported git remote URL protocols by @danburzo in gh#cli/cli#4347
+  * Fix detecting the current gh executable in PATH by @wilso199 in gh#cli/cli#4243
+  * Bump Survey library to fix the "Unexpected escape sequence" error by @mislav in gh#cli/cli#4405
+  * Warn about missing OAuth scopes when printing HTTP 4xx errors by @mislav in gh#cli/cli#4513
+
+-------------------------------------------------------------------
 Fri Dec 10 10:33:33 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
-- Fix boo#1192421 - Changed git dependency to only git-core 
+- Fix boogh#cli/cli#1192421 - Changed git dependency to only git-core 
 
 -------------------------------------------------------------------
 Thu Sep  2 07:12:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to version 2.0.0
   * Support for command extensions
-  * Display label colors in issue list output #4106
-  * Add tablerow/tablerender template functions for rendering data as tables #3519
-  * Add GH_FORCE_TTY to enable terminal-style output even when redirected #4146
-  * Add repo sync command to sync a branch with its upstream state #3813
-  * Add pr checkout --branch flag to control the branch name #4005
-  * Add release create --discussion-category flag #4003
-  * Add config set browser option and GH_BROWSER environment variable #3992
-  * Add repo list --topic filter #4136
-  * Add PowerShell instructions to completion help #4114
-  * Improve accessibility of interactive select menus #4172
-  * Improve detection of truecolor terminal capabilities #4106
-  * Avoid wrapping issues in powershell.exe #4106
-  * Detect missing git and abort early during auth login flow #4109
-  * Fix HTTP 502 error printing from GraphQL responses #4154
-  * Require Go 1.16+ #4175
-  * Remove backwards compatibility with homedir library for config files #4145
-
-
+  * Display label colors in issue list output gh#cli/cli#4106
+  * Add tablerow/tablerender template functions for rendering data as tables gh#cli/cli#3519
+  * Add GH_FORCE_TTY to enable terminal-style output even when redirected gh#cli/cli#4146
+  * Add repo sync command to sync a branch with its upstream state gh#cli/cli#3813
+  * Add pr checkout --branch flag to control the branch name gh#cli/cli#4005
+  * Add release create --discussion-category flag gh#cli/cli#4003
+  * Add config set browser option and GH_BROWSER environment variable gh#cli/cli#3992
+  * Add repo list --topic filter gh#cli/cli#4136
+  * Add PowerShell instructions to completion help gh#cli/cli#4114
+  * Improve accessibility of interactive select menus gh#cli/cli#4172
+  * Improve detection of truecolor terminal capabilities gh#cli/cli#4106
+  * Avoid wrapping issues in powershell.exe gh#cli/cli#4106
+  * Detect missing git and abort early during auth login flow gh#cli/cli#4109
+  * Fix HTTP 502 error printing from GraphQL responses gh#cli/cli#4154
+  * Require Go 1.16+ gh#cli/cli#4175
+  * Remove backwards compatibility with homedir library for config files gh#cli/cli#4145
 
 -------------------------------------------------------------------
 Sat Aug  7 05:32:43 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to version 1.14.0
-  * Improve shell completion #4028
+  * Improve shell completion gh#cli/cli#4028
     - Enable --json flag completion with multiple comma-separated fields
     - Add completion for repo create --gitignore flag
     - Add completion for repo create --license flag
     - Switch to Cobra's improved bash completion with descriptions
-    - Enable descriptions in PowerShell completion #4085
-    - Add completion of -R/--repo flag based on available git remotes #3942
-  * Add pr merge --admin flag to allow admins to force-merge a pull request #4071
-  * Fix authenticating with GH_ENTERPRISE_TOKEN and GH_HOST environment variables #4019
-  * Fix labels display in issue list output #4079
-  * Fix printing certain GraphQL errors #4087
+    - Enable descriptions in PowerShell completion gh#cli/cli#4085
+    - Add completion of -R/--repo flag based on available git remotes gh#cli/cli#3942
+  * Add pr merge --admin flag to allow admins to force-merge a pull request gh#cli/cli#4071
+  * Fix authenticating with GH_ENTERPRISE_TOKEN and GH_HOST environment variables gh#cli/cli#4019
+  * Fix labels display in issue list output gh#cli/cli#4079
+  * Fix printing certain GraphQL errors gh#cli/cli#4087
 
 -------------------------------------------------------------------
 Wed Jul 28 07:17:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
@@ -49,130 +144,130 @@ Wed Jul 28 07:17:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 - Update to version 1.13.1
   * Release fixes pre-built binaries, changes aren't applicable to this package
 - Changes from 1.13.0
-  * issue/pr view: output label names in their own color #3912
-  * Add gh browse --no-browser to only print the URL #3943
-  * repo create: respect privacy setting when using license/gitignore templates #3972
-  * repo create: respect repository description when creating from template repository #3972
-  * repo create --confirm: avoid license/gitignore template prompt #3995
-  * pr merge --auto: merge immediately if the PR is already mergeable #3706
-  * pr merge: suggest using --auto when merging is blocked #3706
-  * Allow using cursor keys in interactive text inputs #3980
-  * gh run watch --exit-status: correct exit status for completed runs #3982
-  * Skip auto-migrate of config files when GH_CONFIG_DIR is set #4017
-  * alias set: add note about double-quoting arguments for Command Prompt users #4013
-  * Clean up GH_CONFIG_DIR docs #4020
+  * issue/pr view: output label names in their own color gh#cli/cli#3912
+  * Add gh browse --no-browser to only print the URL gh#cli/cli#3943
+  * repo create: respect privacy setting when using license/gitignore templates gh#cli/cli#3972
+  * repo create: respect repository description when creating from template repository gh#cli/cli#3972
+  * repo create --confirm: avoid license/gitignore template prompt gh#cli/cli#3995
+  * pr merge --auto: merge immediately if the PR is already mergeable gh#cli/cli#3706
+  * pr merge: suggest using --auto when merging is blocked gh#cli/cli#3706
+  * Allow using cursor keys in interactive text inputs gh#cli/cli#3980
+  * gh run watch --exit-status: correct exit status for completed runs gh#cli/cli#3982
+  * Skip auto-migrate of config files when GH_CONFIG_DIR is set gh#cli/cli#4017
+  * alias set: add note about double-quoting arguments for Command Prompt users gh#cli/cli#4013
+  * Clean up GH_CONFIG_DIR docs gh#cli/cli#4020
 - Changes from 1.12.1
-  * Fix bug where branchProtectionRule doesn't exist in enterprise 2.22 #3922
-  * Fix repo create in org with license/ignore #3924
+  * Fix bug where branchProtectionRule doesn't exist in enterprise 2.22 gh#cli/cli#3922
+  * Fix repo create in org with license/ignore gh#cli/cli#3924
 - Changes from 1.12.0
   * Added gh browse command
   * Add .gitignore and LICENSE when creating repositories from scratch
   * A new config value http_unix_socket can be configured to a local path to push all traffic over a socket
-  * Print help even if logged out #3850
-  * Add shell completion for the --state flag #3877
-  * Allow explicitly empty body in issue/pr create #3787
-  * Increase GH_PAGER precedence #3789
-  * Fix showing Checks information in pr status #3804
-  * Update "Accept" header for github.com requests #3803
-  * Fix setting environment secrets #3832
-  * Fix gh run download fails on large artifacts due to uint32 limitation #3890
-  * repo fork: check that --org is not the empty string #3807
-  * Document installing via Conda package manager #3792
-  * Fix description for gh secret set --env option #3784
-  * Add a long command description for secrets remove #3786
-  * Update documentation for gist create command with default of secret #3871
-  * fork tests cleanup #3809
-  * Remove unused method from httpmock package #3834
-  * Factory cleanup #3841
-  * Improvements to build script on Windows #3846
-  * Ensure that tests for command factory never read from user's config #3856
+  * Print help even if logged out gh#cli/cli#3850
+  * Add shell completion for the --state flag gh#cli/cli#3877
+  * Allow explicitly empty body in issue/pr create gh#cli/cli#3787
+  * Increase GH_PAGER precedence gh#cli/cli#3789
+  * Fix showing Checks information in pr status gh#cli/cli#3804
+  * Update "Accept" header for github.com requests gh#cli/cli#3803
+  * Fix setting environment secrets gh#cli/cli#3832
+  * Fix gh run download fails on large artifacts due to uint32 limitation gh#cli/cli#3890
+  * repo fork: check that --org is not the empty string gh#cli/cli#3807
+  * Document installing via Conda package manager gh#cli/cli#3792
+  * Fix description for gh secret set --env option gh#cli/cli#3784
+  * Add a long command description for secrets remove gh#cli/cli#3786
+  * Update documentation for gist create command with default of secret gh#cli/cli#3871
+  * fork tests cleanup gh#cli/cli#3809
+  * Remove unused method from httpmock package gh#cli/cli#3834
+  * Factory cleanup gh#cli/cli#3841
+  * Improvements to build script on Windows gh#cli/cli#3846
+  * Ensure that tests for command factory never read from user's config gh#cli/cli#3856
 
 -------------------------------------------------------------------
 Wed Jun 23 12:15:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.11.0:
-  * Add support for environment secrets #3270 #3769 #3774
-  * run list: add "age" column and columns headers in output #3575
-  * Add support for XDG Base Directory specification #3671 #3768 #3717
+  * Add support for environment secrets gh#cli/cli#3270 gh#cli/cli#3769 gh#cli/cli#3774
+  * run list: add "age" column and columns headers in output gh#cli/cli#3575
+  * Add support for XDG Base Directory specification gh#cli/cli#3671 gh#cli/cli#3768 gh#cli/cli#3717
   * Additionally, the default configuration location on Windows is now changed from ~/.config/gh/ to %AppData%.
-  * Include number alongside the title in issue/pr view #3741
+  * Include number alongside the title in issue/pr view gh#cli/cli#3741
 
 -------------------------------------------------------------------
 Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.3:
-  * Fix gh pr merge with GitHub Enterprise Server < 3.0 #3688
-  * Speed up measuring display width of text #3668
-  * Simplify Debian/Ubuntu installation docs #3672 
+  * Fix gh pr merge with GitHub Enterprise Server < 3.0 gh#cli/cli#3688
+  * Speed up measuring display width of text gh#cli/cli#3668
+  * Simplify Debian/Ubuntu installation docs gh#cli/cli#3672 
 
 - Changes from 1.10.2:
-  * Fix creating Windows directory for gh config #3666
+  * Fix creating Windows directory for gh config gh#cli/cli#3666
 
 -------------------------------------------------------------------
 Wed May 19 13:49:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.1:
-  * Fix pr checkout for cross-repository pull requests #3663 
+  * Fix pr checkout for cross-repository pull requests gh#cli/cli#3663 
 
 -------------------------------------------------------------------
 Wed May 19 06:32:33 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.0:
   - Improvements to JSON exporting
-    * Add gh repo list/view --json support #3627
-    * Add gh release view --json support #3656
-    * Fixes numerous issues with gh pr list/view --json support #3547
+    * Add gh repo list/view --json support gh#cli/cli#3627
+    * Add gh release view --json support gh#cli/cli#3656
+    * Fixes numerous issues with gh pr list/view --json support gh#cli/cli#3547
       - fetching closed field
       - fetching date fields like createdAt or mergedAt
       - fetching files field
-    * Fix exporting milestone field for issues and PRs #3529
-    * Add commits field to JSON export for PRs #3547
-    * Show more than 100 comments in gh issue view --json comments #3547
-    * Add shell completion for valid --json flag values #3628
+    * Fix exporting milestone field for issues and PRs gh#cli/cli#3529
+    * Add commits field to JSON export for PRs gh#cli/cli#3547
+    * Show more than 100 comments in gh issue view --json comments gh#cli/cli#3547
+    * Add shell completion for valid --json flag values gh#cli/cli#3628
   - New Features
-    * Add gh repo fork --org option #3611
-    * Allow passinggh alias set value via standard input #3490
-    * Prompt for value in gh secret set #3499
+    * Add gh repo fork --org option gh#cli/cli#3611
+    * Allow passinggh alias set value via standard input gh#cli/cli#3490
+    * Prompt for value in gh secret set gh#cli/cli#3499
     * Update gh api placeholder syntax to {owner}, {repo} to match
-      GitHub API documentation #3536
+      GitHub API documentation gh#cli/cli#3536
     * Extend our package repository to support Ubuntu Hirsute and
-      Kali linux #3398
+      Kali linux gh#cli/cli#3398
   - Fixes
-    * Speedup across most gh pr commands #3547
+    * Speedup across most gh pr commands gh#cli/cli#3547
     * Fix gh pr operations from GitHub Actions when a PR was added
-      as a card to an org project #3547
-    * Allow deleting local git branch in gh pr close #3547
-    * Fix showing more than 100 checks in gh pr checks #3547
-    * Fix viewing and editing draft releases with GitHub Actions token #3656
-    * Fix Windows path in gh auth status output #3491
-    * Ignore HTTP 404 error for annotations in gh run watch #3517
+      as a card to an org project gh#cli/cli#3547
+    * Allow deleting local git branch in gh pr close gh#cli/cli#3547
+    * Fix showing more than 100 checks in gh pr checks gh#cli/cli#3547
+    * Fix viewing and editing draft releases with GitHub Actions token gh#cli/cli#3656
+    * Fix Windows path in gh auth status output gh#cli/cli#3491
+    * Ignore HTTP 404 error for annotations in gh run watch gh#cli/cli#3517
     * Handle Incorrect function exception for MinTTY users
-      (typically in Git Bash) by suggesting switching to Windows Terminal #3537
-    * Query fewer fields to determine issue status #3525
-    * Warn about empty contents on gh gist create #3578
-    * Fix "null" display in colored JSON output #3626
-    * Fix some docs formatting for the web #3648
+      (typically in Git Bash) by suggesting switching to Windows Terminal gh#cli/cli#3537
+    * Query fewer fields to determine issue status gh#cli/cli#3525
+    * Warn about empty contents on gh gist create gh#cli/cli#3578
+    * Fix "null" display in colored JSON output gh#cli/cli#3626
+    * Fix some docs formatting for the web gh#cli/cli#3648
 
 -------------------------------------------------------------------
 Tue Apr 20 23:40:06 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.9.2:
   - Actions Fixes
-    * Fix Actions use int64 explicitly in Actions support #3432
-    * Fix requesting REST sub-resources on GHE #3461
-    * Fix run view --log when steps have slashes #3445
-    * Include magic repo resolution magic for gh workflow and gh run #3468
+    * Fix Actions use int64 explicitly in Actions support gh#cli/cli#3432
+    * Fix requesting REST sub-resources on GHE gh#cli/cli#3461
+    * Fix run view --log when steps have slashes gh#cli/cli#3445
+    * Include magic repo resolution magic for gh workflow and gh run gh#cli/cli#3468
   - Other Fixes
-    * Fix issue create --web #3472
-    * Fix detecting PR status when passing branch as arg #3351
-    * Bump AlecAivazis/survey to fix bug with unicode input #3439
+    * Fix issue create --web gh#cli/cli#3472
+    * Fix detecting PR status when passing branch as arg gh#cli/cli#3351
+    * Bump AlecAivazis/survey to fix bug with unicode input gh#cli/cli#3439
   - Development / Docs
-    * Increase linter timeout from 1min to 3min #3462
-    * Remove unused embedded struct #3402
-    * Add note on supported value types in raw-fields #3400
-    * linuxbrew details added in linux installation docs. #3465
-    * Add Funtoo Linux install instructions #3438
-    * Add Debian install variant without add-apt-repository #3419
+    * Increase linter timeout from 1min to 3min gh#cli/cli#3462
+    * Remove unused embedded struct gh#cli/cli#3402
+    * Add note on supported value types in raw-fields gh#cli/cli#3400
+    * linuxbrew details added in linux installation docs. gh#cli/cli#3465
+    * Add Funtoo Linux install instructions gh#cli/cli#3438
+    * Add Debian install variant without add-apt-repository gh#cli/cli#3419
 
 -------------------------------------------------------------------
 Mon Apr 19 15:19:07 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
@@ -206,10 +301,10 @@ Mon Apr 12 08:17:36 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.8.1:
   * Fix pr status/checks crash with unrecognized statuse from
-    the server(#3336)
+    the server(gh#cli/cli#3336)
   * Fix repo fork --clone not cloning an existing fork locally
-    when running non-interactively(#3334)
-  * Fix commands not respecting default hostname from GH_HOST(#3347)
+    when running non-interactively(gh#cli/cli#3334)
+  * Fix commands not respecting default hostname from GH_HOST(gh#cli/cli#3347)
 - Create subpackages for completions
 
 -------------------------------------------------------------------
@@ -275,7 +370,7 @@ Mon Dec 07 04:41:09 UTC 2020 - nopeinomicon@posteo.net
   * Fix respecting chosen action in interactive `issue create`
   * Properly check env auth tokens in CheckAuth
   * Delete an error message that is not useful (and had a typo)
-  * Document that reviewers can be teams (#2465)
+  * Document that reviewers can be teams (gh#cli/cli#2465)
   * Bump AlecAivazis/survey
   * Sort latest PRs first when looking up PRs for a branch
 
@@ -295,7 +390,7 @@ Wed Nov 25 18:53:13 UTC 2020 - nopeinomicon@posteo.net
 
 - Switch from tar_scm to obs_scm service
 - Update to version 1.3.0:
-  * Warn termux users with older Android versions (#2467)
+  * Warn termux users with older Android versions (gh#cli/cli#2467)
   * no shorthand for --recover
   * switch to recover instead of resubmit
   * linter appeasement
@@ -314,14 +409,14 @@ Wed Nov 25 18:53:13 UTC 2020 - nopeinomicon@posteo.net
   * spelling: deprecated
   * spelling: chestnuts
   * spelling: beginning
-  * match parent repo protocol when forking (#2434)
-  * respect GH_HOST when resolving remotes (#2301)
-  * Add "reference" help topic (#2223)
-  * Implement --web for gh pr checks (#2146)
+  * match parent repo protocol when forking (gh#cli/cli#2434)
+  * respect GH_HOST when resolving remotes (gh#cli/cli#2301)
+  * Add "reference" help topic (gh#cli/cli#2223)
+  * Implement --web for gh pr checks (gh#cli/cli#2146)
   * Downgrade survey to v2.1.1
   * fix missing import
-  * Support for --web when using gist create (#2263)
-  * Add a command to delete a gist (#2265)
+  * Support for --web when using gist create (gh#cli/cli#2263)
+  * Add a command to delete a gist (gh#cli/cli#2265)
   * fix survey invocation
   * Fix USAGE help for some commands
   * add empty line between functions
@@ -360,8 +455,8 @@ Thu Nov 12 02:59:01 UTC 2020 - nopeinomicon@posteo.net
   * Bump AlecAivazis/survey
   * Fix `truncateLabels` for empty values
   * Ensure parentheses are preserved after truncating labels in table view
-  * Render links as absolute URLs in `repo view` (#2363)
-  * Add Gentoo instructions to install the package (#2389)
+  * Render links as absolute URLs in `repo view` (gh#cli/cli#2363)
+  * Add Gentoo instructions to install the package (gh#cli/cli#2389)
   * Show MousetrapHelpText when double-clicking gh.exe
   * Small cleanup
   * Make markdown:generate annotation a markdown generation override for hidden commands
@@ -400,7 +495,7 @@ Thu Nov 12 02:59:01 UTC 2020 - nopeinomicon@posteo.net
   * :nail_care: simplify `sortPullRequestsByState`
   * PullRequestForBranch: fix outdated error message
   * Allow PullRequestForBranch to search in closed pull requests
-  * Mention winget as an install option in README (#2272)
+  * Mention winget as an install option in README (gh#cli/cli#2272)
   * Small releasing docs cleanup
   * Update triage.md
   * Clean up and refactor unused doc generation code

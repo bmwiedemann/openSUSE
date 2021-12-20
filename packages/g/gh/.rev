@@ -156,4 +156,13 @@ Switched to tar_scm to pass auto review.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>941200</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0da5f2891dc56b6bcf5e0549c24b34a3</srcmd5>
+    <version>2.3.0</version>
+    <time>1640030776</time>
+    <user>dimstar_suse</user>
+    <comment>- Change issue references in the changelog to proper OBS abbreviations
+- Update to version 2.3.0</comment>
+    <requestid>941596</requestid>
+  </revision>
 </revisionlist>
