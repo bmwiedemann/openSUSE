@@ -1,0 +1,23 @@
+Index: Flask-HTMLmin-2.2.0/Pipfile
+===================================================================
+--- Flask-HTMLmin-2.2.0.orig/Pipfile
++++ Flask-HTMLmin-2.2.0/Pipfile
+@@ -5,7 +5,6 @@ verify_ssl = true
+ 
+ [dev-packages]
+ pytest = "*"
+-pytest-runner = "*"
+ twine = "*"
+ wheel = "*"
+ flake8 = "*"
+Index: Flask-HTMLmin-2.2.0/setup.py
+===================================================================
+--- Flask-HTMLmin-2.2.0.orig/setup.py
++++ Flask-HTMLmin-2.2.0/setup.py
+@@ -48,6 +48,4 @@ setup(
+         'Topic :: Software Development :: Libraries :: Python Modules',
+         'Topic :: Text Processing :: Markup :: HTML',
+     ],
+-    setup_requires=['pytest-runner'],
+-    tests_require=['pytest']
+ )

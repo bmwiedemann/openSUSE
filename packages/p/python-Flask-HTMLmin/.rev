@@ -49,4 +49,13 @@
     <comment></comment>
     <requestid>896572</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>668ed363476b6136d11286b1623d26f9</srcmd5>
+    <version>2.1.0</version>
+    <time>1640030776</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-pytest-runner.patch:
+  * No longer require pytest-runner.</comment>
+    <requestid>941568</requestid>
+  </revision>
 </revisionlist>

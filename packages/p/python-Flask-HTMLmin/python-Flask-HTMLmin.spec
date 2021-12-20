@@ -25,10 +25,10 @@ Summary:        Flask minifier for HTML responses
 License:        BSD-3-Clause
 URL:            https://github.com/hamidfzm/Flask-HTMLmin
 Source:         https://github.com/hamidfzm/Flask-HTMLmin/archive/v%{version}.tar.gz
+Patch0:         remove-pytest-runner.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module htmlmin}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +41,7 @@ BuildArch:      noarch
 Flask-HTMLmin minimizes HTML rendered by Flask.
 
 %prep
-%setup -q -n Flask-HTMLmin-%{version}
+%autosetup -n Flask-HTMLmin-%{version}
 
 %build
 %python_build
