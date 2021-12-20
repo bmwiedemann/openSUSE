@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 20 09:54:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build on UsrMerged distros: do not create symlinks in /sbin.
+
+-------------------------------------------------------------------
 Mon Sep 20 12:55:42 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 1.7.13 (jsc#SLE-18188).

@@ -59,6 +59,7 @@ chmod 644 README* COPYING NEWS
 
 %install
 %make_install
+%if ! 0%{?usrmerged}
 mkdir %{buildroot}/sbin
 for i in lscfg lsmcode lsvio lsvpd update-lsvpd-db
 do
@@ -67,6 +68,7 @@ do
    ln -sfvbn ..%{_sbindir}/$i %{buildroot}/sbin/$i
  fi
 done
+%endif
 if [ -e %{_sysconfdir}/udev/rules.d/99-lsvpd.rules ] ; then
 	rm %{_sysconfdir}/udev/rules.d/99-lsvpd.rules
 fi
@@ -86,7 +88,9 @@ exit 0
 %doc README NEWS
 %dir %{_sysconfdir}/lsvpd
 %attr (644,root,root) %config %{_sysconfdir}/lsvpd/*
+%if ! 0%{?usrmerged}
 /sbin/*
+%endif
 %attr (755,root,root) %{_sbindir}/*
 %{_mandir}/*/*
 
