@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 12 16:42:17 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add tg_owt-packager.py to Source list in spec
+
+-------------------------------------------------------------------
+Sat Dec 11 04:01:59 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.3.0
+  * Content creators can restrict the ability to save media and
+    forward messages from their groups and channels.
+  * Clear messages in one-on-one chats from a specific day or
+    date range.
+  * Comment as one of your channels in public groups and channel
+    comments.
+- Add tg_owt-packager.py
+
+-------------------------------------------------------------------
 Tue Dec  7 05:28:18 UTC 2021 - Xu Zhao <i@xuzhao.net>
 
 - Update to 3.2.8

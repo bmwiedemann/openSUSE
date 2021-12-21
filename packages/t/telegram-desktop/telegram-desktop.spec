@@ -34,15 +34,17 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.2.8
+Version:        3.3.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# git clone --recurse-submodules https://github.com/desktop-app/tg_owt.git tg_owt-master
-Source1:        tg_owt-master.zip
+# Use tg_owt-packager.py to prepare tg_owt-master.zip
+# Usage: python tg_owt-packager.py --repo-dir $PWD/tg_owt-master
+Source1:        tg_owt-packager.py
+Source2:        tg_owt-master.zip
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
@@ -171,7 +173,7 @@ The service also provides APIs to independent developers.
 %patch5 -p1
 
 cd ../
-unzip -q %{S:1}
+unzip -q %{S:2}
 mkdir Libraries
 mv tg_owt-master Libraries/tg_owt
 %patch2 -p2 -d Libraries/tg_owt
@@ -222,7 +224,7 @@ cd %{_builddir}/tdesktop-%{version}-full
 %install
 %cmake_install
 
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 
 %files
 %license LICENSE LEGAL
@@ -230,6 +232,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
-%{_datadir}/metainfo/*.appdata.xml
+%{_datadir}/metainfo/*.metainfo.xml
 
 %changelog

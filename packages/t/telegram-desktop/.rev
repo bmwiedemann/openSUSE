@@ -736,4 +736,13 @@
 - Update tg_owt (forwarded request 936151 from nuklly)</comment>
     <requestid>936242</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9c37191952cfa771ac54deded8b8f9a9</srcmd5>
+    <version>3.3.0</version>
+    <time>1640108432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0
+</comment>
+    <requestid>941852</requestid>
+  </revision>
 </revisionlist>
