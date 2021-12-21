@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 21 18:16:52 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 1.22.0
+  * Support for Python 3.10 was added to Certbot and all of its components.
+  * The function certbot.util.parse_loose_version was added to parse version
+    strings in the same way as the now deprecated distutils.version.LooseVersion
+    class from the Python standard library.
+  * Added --issuance-timeout. This option specifies how long (in seconds) Certbot will wait
+    for the server to issue a certificate.
+  * The function certbot.util.get_strict_version was deprecated and will be
+    removed in a future release.
+- Refreshed python-certbot.keyring
+
+-------------------------------------------------------------------
 Mon Dec 13 17:24:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.20.0
