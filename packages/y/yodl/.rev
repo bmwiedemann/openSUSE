@@ -363,4 +363,12 @@ Fixes build failure seen in openSUSE:Factory:Staging</comment>
     <comment>Update to version 4.03.02 (forwarded request 891028 from susnux)</comment>
     <requestid>891037</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5e5c8617b7bb87731f3b15dc4fee775f</srcmd5>
+    <version>4.03.03</version>
+    <time>1640108413</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>941611</requestid>
+  </revision>
 </revisionlist>

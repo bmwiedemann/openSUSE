@@ -17,7 +17,7 @@
 
 
 Name:           yodl
-Version:        4.03.02
+Version:        4.03.03
 Release:        0
 Summary:        Yet One-other Document Language
 License:        GPL-3.0-only
