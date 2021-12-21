@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 20 08:43:27 UTC 2021 - jslaby@suse.cz
+
+- Update to version 1.0.1+git.20211110:
+  * fixed heap use after free vulnerability CVE-2021-21900
+  * minor improvements to dwg2dxf, formatting and message output on success
+  * fixed heap buffer overflow vulnerability CVE-2021-21899
+  * dwg2dxf - enable debug output of libdxfrw by command line switch
+  * fixed out-of-bounds write vulnerability CVE-2021-21898
+  * fixed please note section formatting
+  * updated README.md for LibreCAD_3 branch and sf.net successor
+  * fixed LibreCAD 2 issue #1371, read failed with binary DXF
+  * Use ununordered_map instead of map
+  * manual merge changes from LibreCAD2
+  * and much more
+- added
+  * 0001-fix-Vertex-ID-printout.patch
+- removed (they are upstream)
+  * drw_header-fix-indentation-level.patch
+  * libdxfrw.pc.in-fix-expansion-and-include-path.patch
+
+-------------------------------------------------------------------
 Tue May 04 06:47:19 UTC 2021 - jslaby@suse.cz
 
 - Update to version 1.0.1+git.20200429:

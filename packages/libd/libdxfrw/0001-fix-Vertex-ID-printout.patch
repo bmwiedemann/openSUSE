@@ -1,0 +1,36 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 20 Dec 2021 09:54:14 +0100
+Subject: fix "Vertex ID" printout
+Patch-mainline: Submitted pr#55
+References: vertiex id debug print fix
+
+The compiler says:
+src/drw_entities.cpp:1690:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+ 1690 |         if (version > DRW::AC1021) //2010+
+      |         ^~
+
+And it is indeed right. There are curly braces missing. Fix that.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/drw_entities.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/drw_entities.cpp b/src/drw_entities.cpp
+index b4f6cd02c68c..2c13c8797eba 100644
+--- a/src/drw_entities.cpp
++++ b/src/drw_entities.cpp
+@@ -1687,8 +1687,9 @@ bool DRW_Vertex::parseDwg(DRW::Version version, dwgBuffer *buf, duint32 bs, doub
+         else
+             endwidth = buf->getBitDouble();
+         bulge = buf->getBitDouble();
+-        if (version > DRW::AC1021) //2010+
++        if (version > DRW::AC1021) { //2010+
+             DRW_DBG("Vertex ID: "); DRW_DBG(buf->getBitLong());
++        }
+         tgdir = buf->getBitDouble();
+     } else if (oType == 0x0B || oType == 0x0C || oType == 0x0D) { //PFACE
+         flags = buf->getRawChar8(); //RLZ: EC  unknown type
+-- 
+2.34.1
+
