@@ -907,4 +907,12 @@
     <comment>submit new version 4.4.27</comment>
     <requestid>941264</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>030e3d8709e773484d255f738a7fef94</srcmd5>
+    <version>4.4.28</version>
+    <time>1640108421</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.28</comment>
+    <requestid>941681</requestid>
+  </revision>
 </revisionlist>
