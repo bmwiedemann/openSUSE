@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Dec  6 23:10:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix BRs python-akismet -> python-python-akismet
+- Add missing BR python-fluent
+- Better method of stopping redis-server.
+
+-------------------------------------------------------------------
+Thu Dec  2 23:32:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 4.9.1:
+  * Provide more details for events in history.
+  * Improved rendering of history.
+  * Improved performance of the translation pages.
+  * Added support for restricting translation file downloads.
+  * The ``safe-html`` can now understand Markdown when used with
+    ``md-text``.
+  * The ``max-length`` tag now ignores XML markup when used with
+    ``xml-text``.
+  * Fixed dimensions of rendered texts in :ref:`check-max-size`.
+  * Lowered app store title length to 30 to assist with upcoming
+    Google policy changes.
+  * Added support for customizing SSH invocation via
+    :setting:`SSH_EXTRA_ARGS`.
+  * Added checks for ICU MessageFormat.
+  * Improved error condition handling in machine translation
+    backends.
+  * Highlight unusual whitespace characters in the strings.
+  * Added option to stay on translated string while editing.
+  * Added support for customizing Borg invocation via
+    :setting:`BORG_EXTRA_ARGS`.
+  * Fixed generating of MO files for monolingual translations.
+  * Added API endpoint to download all component translations
+    as a ZIP file.
+  * Added support for Python 3.10.
+  * Added support for resending e-mail invitation from the
+    management interface.
+  * Fixed upload of monolingual files after changing template.
+  * Improved handling of whitespace in flags.
+  * Add support for filtering in download API.
+  * Fixed statistics display when adding new translations.
+  * Mitigate issues with GitHub SSH key change.
+
+-------------------------------------------------------------------
 Thu Sep 23 00:23:17 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 4.8.1:
