@@ -1,7 +1,8 @@
 #
 # spec file for package python-napalm-arubaos-switch
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +13,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-napalm-arubaos-switch
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 License:        MIT
 Summary:        NAPALM - ArubaOS network driver
-Url:            https://github.com/napalm-automation-community/napalm-arubaos-switch/
+URL:            https://github.com/napalm-automation-community/napalm-arubaos-switch/
 Group:          Development/Languages/Python
-Source:         https://github.com/napalm-automation-community/napalm-arubaos-switch/archive/v%{version}.tar.gz#/napalm-arubaos-switch-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://github.com/napalm-automation-community/napalm-arubaos-switch/archive/%{version}.tar.gz#/napalm-arubaos-switch-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module napalm >= 2.0.0}
+BuildRequires:  %{python_module napalm >= 3.3.0}
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-json-report}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module textfsm >= 1.1.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-napalm >= 2.0.0
+Requires:       python-napalm >= 3.3.0
 Requires:       python-netaddr
 Requires:       python-requests
 Requires:       python-requests-toolbelt
@@ -54,10 +61,12 @@ This Drivers uses the REST interface.
 
 %install
 %python_install
+# Remove test from sitelib
+%python_expand rm -R %{buildroot}%{$python_sitelib}/test/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#%%check
-# There are no tests yet
+%check
+%pytest -v -k "not (test_traceroute)"
 
 %files %{python_files}
 %license LICENSE
