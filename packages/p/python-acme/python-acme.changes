@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 13 17:27:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.20.0
+  * The acme library now supports requesting certificates for
+    IP addresses.
+  * Removed the dependency on chardet from the library.
+    Except for when downloading a certificate in an alternate format,
+    the acme library now assumes all server responses are UTF-8
+    encoded which is required by RFC 8555.
+
+-------------------------------------------------------------------
 Tue Aug 10 13:21:44 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to version 1.18.0
