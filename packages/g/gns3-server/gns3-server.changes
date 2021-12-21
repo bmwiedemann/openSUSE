@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 20 14:28:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 2.2.28
+  * Release web UI 2.2.28
+    Simpler Systemd service file.
+- Udpate to version 2.2.27
+  * Fix unhandled KeyError exception when starting Docker container.
+
+-------------------------------------------------------------------
 Wed Oct 13 20:14:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.26
