@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec 20 11:17:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 4.5.1:
+  - Removed unnecessary default in MP's depth field.
+  - Add support for custom primary key fields with custom names.
+  - Add support for Python 3.9.
+  - Add support for MSSQL 2019.
+  - Add Code of conduct
+  - Removed outdated Sqlite workaround code
+  - Remove last remains of Python 2.7 code
+  - Use Pytest-django and fixtures for testing
+  - Implement a non-destructive path-fixing algorithm for
+    MP_Node.fix_tree.
+  - Ensure post_save is triggered after the parent node is
+    updated in MP_AddChildHandler.
+  - Fix static URL generation to use static template tag instead
+    of constructing the URL manually.
+  - Declare support for Django 2.2, 3.0 and 3.1.
+  - Drop support for Django 2.1 and lower.
+  - Drop support for Python 2.7 and Python 3.5.
+  - Increase performance for MoveNodeForm when using large trees.
+- Remove upstreamed patches
+  - merged_50489e63.patch
+  - merged_56121dca.patch
+  - merged_d6f117f0.patch
+
+-------------------------------------------------------------------
 Sat Jun 27 01:48:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Patch tests for Django 2.1+
