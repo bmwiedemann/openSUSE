@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec 20 12:50:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2021.12.18:
+  + Fixed a bug in the way that "RTSPClient" handles its two
+    separate TCP connections when it does RTSP-over-HTTP.
+  + Updated "RTPInterface::sendDataOverTCP()" so that if it's
+    necessary to do a blocking send(), we call
+    "makeSocketNonBlocking()" immediately after the call to
+    "send()".
+  + Performed the annual update of the copyright years near the
+    start of each file.
+
+-------------------------------------------------------------------
+Sat Dec 18 19:18:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.12.07:
+  - Added #ifndef NO_OPENSSL/#endif around "#include <openssl/err.h>" in
+    "liveMedia/TLSState.cpp", so that the code will compile if you're compiling
+    with no OpenSSL headers, and NO_OPENSSL
+    defined.
+
+-------------------------------------------------------------------
 Mon Dec  6 09:04:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.11.23:
@@ -10,7 +32,7 @@ Mon Dec  6 09:04:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Updated the "TLSState" interface and implementation to (1) reduce the
     amount of stuff that the compiler gets to see if you're compiling with
     NO_OPENSSL defined, and (2) add a new subclass "ServerTLSState" that
-    will eventually be used to implement optional TLS connections to our RTSP server. 
+    will eventually be used to implement optional TLS connections to our RTSP server.
   * Split the "TLSState" class into two classes: "TLSState" (an abstract base
     class), and "ClientTLSState" (a subclass).  This is in preparation for later defining
     second subclass "ServerTLSState" that will eventually be used to implement TLS connections
