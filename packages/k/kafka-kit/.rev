@@ -7,4 +7,14 @@
     <comment>dependency of envoy-proxy</comment>
     <requestid>755210</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>11ef997895b1c322897c4c3056d7e942</srcmd5>
+    <version>2.1.0</version>
+    <time>1640108449</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove JMSAppender from log4j jars during build to
+  prevent bsc#1193662, CVE-2021-4104
+</comment>
+    <requestid>941845</requestid>
+  </revision>
 </revisionlist>
