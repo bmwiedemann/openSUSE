@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-certbot-dns-nsone
-Version:        1.20.0
+Version:        1.22.0
 Release:        0
 Summary:        NS1 Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -28,7 +28,6 @@ URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-nsone/certbot-dns-nsone-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module dns-lexicon >= 3.2.1}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
