@@ -47,7 +47,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.49.0
+Version:        1.49.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -100,7 +100,7 @@ BuildRequires:  %{use_python}-canonicaljson >= 1.4.0
 %requires_eq    %{use_python}-canonicaljson
 BuildRequires:  %{use_python}-cryptography
 %requires_eq    %{use_python}-cryptography
-BuildRequires:  %{use_python}-frozendict >= 1
+BuildRequires:  (%{use_python}-frozendict >= 1 with %{use_python}-frozendict < 2.1.2)
 %requires_eq    %{use_python}-frozendict
 BuildRequires:  %{use_python}-idna >= 2.5
 %requires_eq    %{use_python}-idna

@@ -404,4 +404,17 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>941592</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>182c38520f9eb6e4a4ce93cc89ef51f1</srcmd5>
+    <version>1.49.2</version>
+    <time>1640115739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.49.2
+  - Bugfixes
+    - Fix a performance regression in /sync handling, introduced in
+      1.49.0. (#11583)
+  - Internal Changes
+    - Work around a build problem on Debian Buster. (#11625)</comment>
+    <requestid>941923</requestid>
+  </revision>
 </revisionlist>

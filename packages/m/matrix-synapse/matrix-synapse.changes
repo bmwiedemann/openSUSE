@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 21 18:39:09 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.49.2
+  - Bugfixes
+    - Fix a performance regression in /sync handling, introduced in
+      1.49.0. (#11583)
+  - Internal Changes
+    - Work around a build problem on Debian Buster. (#11625)
+
+-------------------------------------------------------------------
 Tue Dec 14 14:29:19 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.49.0
