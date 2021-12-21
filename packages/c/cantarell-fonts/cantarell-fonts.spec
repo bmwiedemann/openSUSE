@@ -1,7 +1,7 @@
 #
 # spec file for package cantarell-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           cantarell-fonts
-Version:        0.301
+Version:        0.303.1
 Release:        0
 Summary:        Contemporary Humanist Sans Serif Font
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://wiki.gnome.org/Projects/CantarellFonts
-Source0:        https://download.gnome.org/sources/cantarell-fonts/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cantarell-fonts/0.303/%{name}-%{version}.tar.xz
 
 # needed for directory ownership
 BuildRequires:  fontconfig
@@ -58,11 +58,6 @@ for on-screen reading.
 %license COPYING
 %doc NEWS README.md
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/Cantarell-Bold.otf
-%{_ttfontsdir}/Cantarell-ExtraBold.otf
-%{_ttfontsdir}/Cantarell-Light.otf
-%{_ttfontsdir}/Cantarell-Regular.otf
-%{_ttfontsdir}/Cantarell-Thin.otf
 %{_ttfontsdir}/Cantarell-VF.otf
 %{_datadir}/metainfo/org.gnome.cantarell.metainfo.xml
 
