@@ -8,6 +8,23 @@ Tue Feb  2 00:55:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Update warning message about lowercase labels
   * mkfs.fat: Read geom_start from sysfs
   * Add missing files into distribution tarball 
+- BREAKING CHANGES (boo#1188401):
+  After fixing of bsc#1172863 in the last update, mkfs started to
+  create different images than before. Applications that depend on
+  exact FAT file format (e. g. embedded systems) may be broken in
+  two ways:
+  * The introduction of the alignment may create smaller images
+    than before, with a different positions of important image
+    elements. It can break existing software that expect images in
+    doststools <= 4.1 style.
+    To work around these problems, use "-a" command line argument.
+  * The new image may contain a different geometry values. Geometry
+    sensitive applications expecting doststools <= 4.1 style images
+    can fails to accept different geometry values.
+    There is no direct work around for this problem. But you can
+    take the old image, use "file -s $IMAGE", check its
+    "sectors/track" and "heads", and use them in the newly
+    introduced "-g" command line argument.
 
 -------------------------------------------------------------------
 Fri Jan 15 06:13:07 UTC 2021 - mcepl@cepl.eu
