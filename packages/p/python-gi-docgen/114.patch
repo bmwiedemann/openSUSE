@@ -1,0 +1,122 @@
+From 72f3c5dbe27aabb5f7a376afda23f3dfc3c2e212 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Thu, 28 Oct 2021 19:17:06 +0100
+Subject: [PATCH] gir: Do not qualify type names that are already qualified
+
+Otherwise we're going to duplicate the namespace of a type, and then
+splitting the namespace from the type name won't work any more.
+
+We already do this for class ancestors, but we failed to do this for
+interface requirements and class implementations.
+
+Fixes: #111
+---
+ gidocgen/gdgenerate.py |  1 +
+ gidocgen/gir/ast.py    | 48 +++++++++++++++++++++++++++---------------
+ gidocgen/gir/parser.py |  2 +-
+ 3 files changed, 33 insertions(+), 18 deletions(-)
+
+diff --git a/gidocgen/gdgenerate.py b/gidocgen/gdgenerate.py
+index 6c84777..c705777 100644
+--- a/gidocgen/gdgenerate.py
++++ b/gidocgen/gdgenerate.py
+@@ -1153,6 +1153,7 @@ class TemplateInterface:
+             self.requires_ctype = requires.ctype
+ 
+         self.requires_fqtn = f"{self.requires_namespace}.{self.requires_name}"
++        log.debug(f"Preqrequisite for {self.fqtn}: {self.requires_fqtn}")
+ 
+         self.symbol_prefix = f"{namespace.symbol_prefix[0]}_{interface.symbol_prefix}"
+         self.type_cname = interface.base_ctype
+diff --git a/gidocgen/gir/ast.py b/gidocgen/gir/ast.py
+index 650b4cc..8a7294a 100644
+--- a/gidocgen/gir/ast.py
++++ b/gidocgen/gir/ast.py
+@@ -970,13 +970,14 @@ class Repository:
+ 
+     def resolve_interface_requires(self) -> None:
+         def find_prerequisite_type(includes, ns, name):
+-            for repo in includes.values():
+-                if repo.namespace.name != ns:
+-                    continue
+-                prereq = repo.namespace.find_prerequisite_type(name)
+-                if prereq is not None:
+-                    return Type(name=f"{repo.namespace.name}.{prereq.name}", ctype=prereq.ctype)
+-            return None
++            repository = includes.get(ns)
++            if repository is None:
++                return None
++            prereq = repository.namespace.find_prerequisite_type(name)
++            # If the prerequisite type is unqualified, then we qualify it here
++            if '.' not in prereq.name:
++                prereq.name = f"{repository.namespace.name}.{prereq.name}"
++            return prereq
+ 
+         ifaces = self.namespace.get_interfaces()
+         for iface in ifaces:
+@@ -993,12 +994,24 @@ class Repository:
+                 prerequisite = self.namespace.find_prerequisite_type(iface.prerequisite.name)
+             if prerequisite is not None:
+                 if prerequisite.ctype is None:
+-                    t = self._lookup_type(prerequisite.name)
+-                    prerequisite.ctype = t.ctype
++                    if '.' not in prerequisite.name:
++                        name = f"{self.namespace.name}.{prerequisite.name}"
++                    else:
++                        name = prerequisite.name
++                    t = self._lookup_type(name)
++                    if t is not None:
++                        prerequisite.ctype = t.ctype
++                    else:
++                        # This is kind of a kludge, but apparently we can get into
++                        # class definitions missing a c:type; if that happens, we
++                        # take the identifier prefix of the namespace and append the
++                        # class name, because that's the inverse of how g-ir-scanner
++                        # determines the class name
++                        prerequisite.ctype = f"{self.namespace.identifier_prefix[0]}{prerequisite.name}"
+                 iface.prerequisite = prerequisite
+                 log.debug(f"Prerequisite type for interface {iface}: {iface.prerequisite}")
+ 
+-    def resolve_class_type(self) -> None:
++    def resolve_class_ctype(self) -> None:
+         classes = self.namespace.get_classes()
+         for cls in classes:
+             if cls.ctype is None:
+@@ -1020,13 +1033,14 @@ class Repository:
+ 
+     def resolve_class_implements(self) -> None:
+         def find_interface_type(includes, ns, name):
+-            for repo in includes.values():
+-                if repo.namespace.name != ns:
+-                    continue
+-                iface = repo.namespace.find_interface(name)
+-                if iface is not None:
+-                    return Type(name=f"{repo.namespace.name}.{iface.name}", ctype=iface.ctype)
+-            return None
++            repository = includes.get(ns)
++            if repository is None:
++                return None
++            iface = repository.namespace.find_interface(name)
++            # If the interface type is unqualified, then we qualify it here
++            if '.' not in iface.name:
++                iface.name = f"{repository.namespace.name}.{iface.name}"
++            return iface
+ 
+         classes = self.namespace.get_classes()
+         for cls in classes:
+diff --git a/gidocgen/gir/parser.py b/gidocgen/gir/parser.py
+index cdab096..df155cb 100644
+--- a/gidocgen/gir/parser.py
++++ b/gidocgen/gir/parser.py
+@@ -96,7 +96,7 @@ class GirParser:
+                 repository.girfile = girfile.name
+             self._repository = repository
+             self._repository.resolve_empty_ctypes(self._seen_types)
+-            self._repository.resolve_class_type()
++            self._repository.resolve_class_ctype()
+             self._repository.resolve_class_implements()
+             self._repository.resolve_class_ancestors()
+             self._repository.resolve_class_descendants()
+-- 
+GitLab
+

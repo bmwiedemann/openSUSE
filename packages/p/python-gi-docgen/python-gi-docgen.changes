@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 29 20:53:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 114.patch: gir: Do not qualify type names that are already
+  qualified.
+
+-------------------------------------------------------------------
 Tue Oct 26 08:29:13 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Specify python-Markdown version to at least 3.2.0, because
@@ -6,6 +12,25 @@ Tue Oct 26 08:29:13 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
   on 3.2.0:
 
   https://github.com/Python-Markdown/markdown/commit/1f3ec538a2acf25607253fc7c7a992950463931d
+
+-------------------------------------------------------------------
+Fri Oct 22 08:35:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2021.8:
+  + Allow `id` fragments to link across namespace boundaries
+  + Support links to have custom text
+  + Decrease the max font size
+  + Improve output for properties and signals
+  + Save last search in the history
+  + Don't crash on unlabelled array elements
+  + Move type functions near constructors
+  + Switch to Solarized for syntax highlighting
+  + Use the C type for callback types in search results
+  + Generate proper cross-reference links
+  + Parse and use new gobject-introspection property attributes
+  + Properly identify (type, gpointer) types
+  + List the interface implementations in a namespace
+  + List the class descendants in a namespace
 
 -------------------------------------------------------------------
 Tue Aug 17 11:10:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
