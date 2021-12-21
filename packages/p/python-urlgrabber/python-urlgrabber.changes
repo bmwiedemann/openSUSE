@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 21 14:02:50 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Use binary mode when reopening files
+
+- Added:
+  * use-binary-mode-when-reopening-files.patch 
+
+-------------------------------------------------------------------
 Fri Oct  8 12:49:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Make independent of the actual value of %%{_libexecdir} macro.

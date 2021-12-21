@@ -26,6 +26,9 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/rpm-software-management/urlgrabber
 Source:         https://github.com/rpm-software-management/%{modname}/releases/download/%{modname}-4-1-0/%{modname}-%{version}.tar.gz
+# PATCH-FIX_UPSTREAM https://github.com/rpm-software-management/urlgrabber/pull/32
+Patch0:         use-binary-mode-when-reopening-files.patch
+
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -47,6 +50,7 @@ throttling, authentication, proxies and more.
 %setup -q -n urlgrabber-%{version}
 # Remove with next release
 sed -i "13d" urlgrabber/__init__.py # Remove wrong license header, fixes bnc#781323
+%autopatch -p1
 
 # Fix location of %%{_libexecdir}
 sed -i 's!/usr/libexec!%{_libexecdir}!' urlgrabber/grabber.py
