@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 10:46:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- simplifiy conditions for all rhel like distros to skip testsuite 
+
+-------------------------------------------------------------------
 Wed Jul 14 09:32:33 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.5.14:

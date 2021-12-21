@@ -16,14 +16,14 @@
 #
 
 
-%if 0%{?centos_version}
+%if 0%{?rhel} || ( 0%{?suse_version} && 0%{?suse_version} <= 1315 )
 %bcond_with obs_scm_testsuite
 %else
 %bcond_without obs_scm_testsuite
 %endif
 %define service set_version
 
-%if 0%{?suse_version} > 1315  || 0%{?fedora_version}  || 0%{?centos_version} >= 800 || 0%{?almalinux} >= 8
+%if 0%{?suse_version} > 1315  || 0%{?fedora_version}  || 0%{?rhel} >= 8
 %define use_python python3
 %else
 %define use_python python
