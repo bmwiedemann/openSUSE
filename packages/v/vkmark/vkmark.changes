@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 20 13:32:45 UTC 2021 - malcolmlewis@opensuse.org
+
+- Add vkmark-sigstksz-not-constant.patch: Temporary fix for glibc
+  changes, (gh#vkmark/vkmark#37).
+
+-------------------------------------------------------------------
+Wed Oct 20 07:40:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20211008:
+  * meson: check all deps, when enabling wayland winsys
+  * meson: error out when no winsys is available
+
+-------------------------------------------------------------------
 Thu Apr 22 07:23:53 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2017.08+git.20210312:
