@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 20 21:07:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Add Neon version 0.32.
+  * mount.davfs.c, get_options: Ignore all unknown options.
+  * mount_davfs.c, write_mtab_entry: Add option _netdev to utab-entry.
+
+-------------------------------------------------------------------
 Tue Nov 17 13:53:05 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

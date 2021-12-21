@@ -1,7 +1,7 @@
 #
 # spec file for package davfs2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           davfs2
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        FUSE-Filesystem to access WebDAV servers
 License:        GPL-3.0-only
 Group:          System/Filesystems
-URL:            http://savannah.nongnu.org/projects/%{name}
-Source0:        http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
-Source1:        http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
+URL:            https://savannah.nongnu.org/projects/%{name}
+Source0:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
 Source3:        memberlist-gpgkeys.gpg
 BuildRequires:  automake >= 1.16
