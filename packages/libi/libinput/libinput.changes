@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 13 10:01:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19.3
+  * quirks: add ModelBouncingKeys for A4Tech X-710BK Mouse
+  * quirks: Dell 15R touchpad settings for firmware v3
+  * quirks: change touchpad pressure on Lenovo Yoga 2 Pro
+  * gestures: cancel hold gestures on thumb detection
+
+-------------------------------------------------------------------
 Fri Oct 22 09:49:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to release 1.19.2:

@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.19.2
+Version:        1.19.3
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT

@@ -923,4 +923,12 @@ Peter Hutterer (3):
   * quirks: relax DMI modalias match for Purism Librem 14v1 (forwarded request 926916 from polslinux)</comment>
     <requestid>926929</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>6098436ccb9a270fe1f62f24a51c883a</srcmd5>
+    <version>1.19.3</version>
+    <time>1640108414</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>941612</requestid>
+  </revision>
 </revisionlist>
