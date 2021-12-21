@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 20 13:13:04 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.17:
+  * 60-io-scheduler.rules: add rules for virtual devices
+    (boo#1193759)
+  * 60-io-scheduler.rules: enforce "none" for loop devices
+    (boo#1193759)
+  * install some modprobe.d files only for relevant architectures
+    (apm_bios, sonypi, toshiba, legacy rtc) (bsc#1192974)
+
+-------------------------------------------------------------------
 Mon Dec  6 09:04:55 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.16:

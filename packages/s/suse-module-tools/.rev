@@ -524,4 +524,18 @@ source service setup which messed up my spec file.
   * remove blacklist entry for snd_bt87x (bsc#1192974, bsc#51718) (forwarded request 935937 from mwilck)</comment>
     <requestid>935939</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f4025270e7a2f52695945d883cfea4e4</srcmd5>
+    <version>16.0.17</version>
+    <time>1640108420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.17:
+  * 60-io-scheduler.rules: add rules for virtual devices
+    (boo#1193759)
+  * 60-io-scheduler.rules: enforce &quot;none&quot; for loop devices
+    (boo#1193759)
+  * install some modprobe.d files only for relevant architectures
+    (apm_bios, sonypi, toshiba, legacy rtc) (bsc#1192974) (forwarded request 941662 from mwilck)</comment>
+    <requestid>941664</requestid>
+  </revision>
 </revisionlist>
