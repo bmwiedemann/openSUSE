@@ -88,4 +88,12 @@
     <comment></comment>
     <requestid>936510</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>491c2661f44a07397a4bb5e0b0e79943</srcmd5>
+    <version>1.7.0</version>
+    <time>1640108439</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually remove pytest-runner BuildRequires</comment>
+    <requestid>941744</requestid>
+  </revision>
 </revisionlist>

@@ -23,10 +23,8 @@ Version:        1.7.0
 Release:        0
 Summary:        A logging module for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/metachris/logzero
 Source:         https://files.pythonhosted.org/packages/source/l/logzero/logzero-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +37,6 @@ BuildRequires:  python3-Sphinx
 
 %package -n python-logzero-doc
 Summary:        Documentation files for %name
-Group:          Development/Languages/Python
 
 %description
 * Logs to console and/or file.
