@@ -24,12 +24,16 @@ License:        GPL-3.0-only
 URL:            https://github.com/wustho/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mimic.patch gh#wustho/epy#42 mcepl@suse.com
+# Use mimic instead of non-free svox.
+Patch0:         mimic.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-mobi
 BuildRequires:  python3-setuptools
 Requires:       python3-mobi
 Suggests:       sdcv
 Suggests:       dictd
+Suggests:       mimic
 BuildArch:      noarch
 
 %description

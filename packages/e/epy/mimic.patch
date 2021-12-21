@@ -1,0 +1,93 @@
+From 30596836fcd707098bbae6ebe453e67eb2caef87 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 20 Dec 2021 19:50:30 +0100
+Subject: [PATCH] Use mimic instead of pico2wave.
+
+Unfortunately, the language setting is gone again.
+
+Fixes #42
+---
+ README.md |   10 ++++------
+ epy.py    |   22 +++++++++-------------
+ 2 files changed, 13 insertions(+), 19 deletions(-)
+
+--- a/README.md
++++ b/README.md
+@@ -93,21 +93,19 @@ But you can enable it by setting `MouseS
+ 
+ To get Text-to-Speech (TTS) support, you need to install these external dependencies:
+ 
+-- `pico2wave` (from `libttspico-utils` package (Ubuntu) or `svox-pico-bin` package (AUR))
+-- `play` (from `sox` package)
++- `mimic` package (AUR))
+ 
+ eg.
+ 
+ ```shell
+ $ # Ubuntu
+-$ apt install libttspico-utils sox
++$ apt install mimic
+ 
+ $ # Arch
+-$ yay -S svox-pico-bin
+-$ pacman -S sox
++$ pacman -S mimic
+ ```
+ 
+-And then make sure `pico2wave` and `play` is in `$PATH`.
++And then make sure `mimic` is in `$PATH`.
+ 
+ ## Double Spread
+ 
+--- a/epy.py
++++ b/epy.py
+@@ -1871,7 +1871,7 @@ class Reader:
+         self.jump_list: Mapping[str, ReadingState] = dict()
+ 
+         # TTS speaker utils
+-        self._tts_support: bool = any([shutil.which("pico2wave"), shutil.which("play")])
++        self._tts_support: bool = any([shutil.which("mimic")])
+         self.is_speaking: bool = False
+ 
+         # multi process & progress percentage
+@@ -2334,19 +2334,16 @@ class Reader:
+         self.screen.refresh()
+         self.screen.timeout(1)
+         try:
+-            _, path = tempfile.mkstemp(suffix=".wav")
+-            subprocess.call(
+-                ["pico2wave", "-w", path, text],
+-                stdout=subprocess.DEVNULL,
+-                stderr=subprocess.DEVNULL,
+-            )
+-            speaker = subprocess.Popen(
+-                ["play", path, "tempo", str(self.setting.TTSSpeed)],
++            spk = subprocess.Popen(
++                ["mimic"], text=True,
++                stdin=subprocess.PIPE,
+                 stdout=subprocess.DEVNULL,
+-                stderr=subprocess.DEVNULL,
++                stderr=subprocess.STDOUT,
+             )
++            spk.stdin.write(text)
++            spk.stdin.close()
+             while True:
+-                if speaker.poll() is not None:
++                if spk.poll() is not None:
+                     k = self.keymap.PageDown[0]
+                     break
+                 tmp = self.screen.getch()
+@@ -2373,12 +2370,11 @@ class Reader:
+                     + self.keymap.ScrollDown
+                     + (curses.KEY_RESIZE,)
+                 ):
+-                    speaker.terminate()
++                    spk.terminate()
+                     # speaker.kill()
+                     break
+         finally:
+             self.screen.timeout(-1)
+-            os.remove(path)
+ 
+         if k in self.keymap.Quit:
+             self.is_speaking = False

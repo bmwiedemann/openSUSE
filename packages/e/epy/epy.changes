@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 20 19:39:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Replace tts_lang.patch with mimic.patch, switching the TTS engine to
+  free mimic (svox is non-free), and allowing inclusion into openSUSE.
+
+-------------------------------------------------------------------
+Fri Dec 17 10:13:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add tts_lang.patch to allow setting language of TTS
+  (gh#wustho/epy#43).
+
+-------------------------------------------------------------------
 Sat Nov 27 10:19:32 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 2021.10.23+git.1636702550.2ab1584:

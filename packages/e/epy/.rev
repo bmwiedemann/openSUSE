@@ -25,4 +25,16 @@
   * Refactor variables</comment>
     <requestid>934246</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b55bb8ec5068585c0dfaf9a115d6577b</srcmd5>
+    <version>2021.10.23+git.1636702550.2ab1584</version>
+    <time>1640108436</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace tts_lang.patch with mimic.patch, switching the TTS engine to
+  free mimic (svox is non-free), and allowing inclusion into openSUSE.
+- Add tts_lang.patch to allow setting language of TTS
+  (gh#wustho/epy#43).
+</comment>
+    <requestid>941693</requestid>
+  </revision>
 </revisionlist>
