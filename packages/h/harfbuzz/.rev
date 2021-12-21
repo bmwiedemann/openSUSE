@@ -785,4 +785,25 @@ try to at least align TW there too.
 https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
     <requestid>934983</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>7e56f2d016709c764516b8701d7058ca</srcmd5>
+    <version>3.2.0</version>
+    <time>1640108428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  + Fixed shaping of Apple Color Emoji flags in right-to-left context
+  + Fixed positioning of CFF fonts in HB_TINY profile
+  + OpenType 1.9 language tags update
+  + Add HB_NO_VERTICAL config option
+  + Add HB_CONFIG_OVERRIDE_H for easier configuration
+  + Improved packing of cmap, loca, and Ligature tables
+  + Significantly improved overflow-resolution strategy in the repacker
+- Update to 3.1.2:
+  + hb-shape / hb-view: revert treating text on the commandline as
+    single paragraph (was introduced in 3.0.0); add new
+    --single-par to do that
+  + Subsetter bug fixes
+</comment>
+    <requestid>941317</requestid>
+  </revision>
 </revisionlist>
