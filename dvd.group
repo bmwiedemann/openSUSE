@@ -2955,6 +2955,7 @@
     <package name="man-pages-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="man-pages-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="man-pages-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="man-pages-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="man-pages-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="man-pages-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4002,7 +4003,6 @@
     <package name="ruby2.7-rubygem-cheetah" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby2.7-rubygem-chef-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-childprocess" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-childprocess-2.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-coderay" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-coercible" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-coffee-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4295,7 +4295,6 @@
     <package name="ruby2.7-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-tzinfo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-tzinfo-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-tzinfo-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-uglifier" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

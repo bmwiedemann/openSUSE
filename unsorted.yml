@@ -14344,6 +14344,7 @@ unsorted:
   - libvorbis-doc 
   - libvorbisenc2-32bit: [x86_64] 
   - libvoro++0 
+  - libvotca2022 
   - libvotca_csg2022 
   - libvotca_tools2022 
   - libvotca_xtp2022: [x86_64] 
@@ -15473,9 +15474,14 @@ unsorted:
   - mame-data 
   - mame-mess 
   - mame-tools 
+  - man-pages-fi 
+  - man-pages-id 
   - man-pages-mk 
+  - man-pages-nb 
   - man-pages-nl 
   - man-pages-ro 
+  - man-pages-sr 
+  - man-pages-sv 
   - manaplus 
   - manaplus-lang 
   - manchu-fonts 
@@ -21474,7 +21480,6 @@ unsorted:
   - python3-pyginac-devel 
   - python3-pymod2pkg 
   - python3-pynest2d 
-  - python3-pypandoc: [i586] 
   - python3-pyprompter 
   - python3-pysearpc 
   - python3-pyside2 
@@ -23236,7 +23241,6 @@ unsorted:
   - python36-particle 
   - python36-parver 
   - python36-pass_python_keyring 
-  - python36-passa 
   - python36-passivetotal 
   - python36-passlib 
   - python36-pastel 
@@ -26135,7 +26139,6 @@ unsorted:
   - python38-particle 
   - python38-parver 
   - python38-pass_python_keyring 
-  - python38-passa 
   - python38-passivetotal 
   - python38-pastel 
   - python38-pastream 
@@ -31386,7 +31389,6 @@ unsorted:
   - ruby3.0-rubygem-cheetah 
   - ruby3.0-rubygem-chef-utils 
   - ruby3.0-rubygem-childprocess 
-  - ruby3.0-rubygem-childprocess-2.0 
   - ruby3.0-rubygem-coderay 
   - ruby3.0-rubygem-coercible 
   - ruby3.0-rubygem-coffee-rails 
@@ -31653,7 +31655,6 @@ unsorted:
   - ruby3.0-rubygem-trollop 
   - ruby3.0-rubygem-ttfunk 
   - ruby3.0-rubygem-tzinfo 
-  - ruby3.0-rubygem-tzinfo-0 
   - ruby3.0-rubygem-tzinfo-data 
   - ruby3.0-rubygem-uglifier 
   - ruby3.0-rubygem-unf 
@@ -41950,14 +41951,19 @@ unsorted:
   - voro++ 
   - voro++-devel 
   - vorta 
+  - votca 
+  - votca-bash 
+  - votca-common 
   - votca-csg 
   - votca-csg-apps 
   - votca-csg-bash 
   - votca-csg-common 
   - votca-csg-devel 
   - votca-csg-tutorials 
+  - votca-devel 
   - votca-tools 
   - votca-tools-devel 
+  - votca-tutorials 
   - votca-xtp: [x86_64] 
   - votca-xtp-common: [x86_64] 
   - votca-xtp-devel: [x86_64] 
