@@ -363,4 +363,18 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Qt updates from KDE git</comment>
     <requestid>928085</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e1d0844963759e81d320dfa45e6cde86</srcmd5>
+    <version>5.15.2+kde37</version>
+    <time>1640108418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.2+kde37:
+  * Fix backport, context destruction was omitted
+  * Client: do not empty clipboard when a new popup/window is opened
+  * Wayland client: use wl_keyboard to determine active state
+- Add patch to fix crashes triggered by unintentional actions when
+  showing a window (kde#421700):
+  * 0001-Client-Avoid-processing-of-events-when-showing-windo.patch</comment>
+    <requestid>941642</requestid>
+  </revision>
 </revisionlist>

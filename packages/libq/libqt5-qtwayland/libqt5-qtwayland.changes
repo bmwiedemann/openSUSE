@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 19 14:47:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde37:
+  * Fix backport, context destruction was omitted
+  * Client: do not empty clipboard when a new popup/window is opened
+  * Wayland client: use wl_keyboard to determine active state
+- Add patch to fix crashes triggered by unintentional actions when
+  showing a window (kde#421700):
+  * 0001-Client-Avoid-processing-of-events-when-showing-windo.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 07:16:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde34:
