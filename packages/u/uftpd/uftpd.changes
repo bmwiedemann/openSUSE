@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 20 06:34:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15
+  Changes
+  * Silence some developer debug messages
+  * Always skip . and .. in FTP listings
+  * Internal refactoring and code cleanup
+  Fixes
+  * Fix regression introduced in v2.14, server directory name shown
+    in FTP
+  * listings instead of ., e.g. MLST . showed the directory name
+  * Fix #36: for real this time, now also with a test case to verify
+  * Fix #38: duplicate entries in FTP listings, regression in v2.14
+    Caused by (initially unintentional) removal of sorted listings,
+    where directories prior to v2.14 were listed first. This change,
+    albeit an accident, actually helped clean up the code base and
+    speed up replies
+
+-------------------------------------------------------------------
 Sat Dec 11 11:16:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.14
