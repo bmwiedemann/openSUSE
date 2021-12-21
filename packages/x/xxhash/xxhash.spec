@@ -67,7 +67,8 @@ functions. Hashes are identical on all platforms.
 rm -rf %{buildroot}%{_libdir}/libxxhash.a
 
 %check
-%make_build test
+# not safe for parallel execution as it removes xxhash.o and recreates it with different flags
+%make_build -j1 test
 
 %post -n libxxhash0 -p /sbin/ldconfig
 %postun -n libxxhash0 -p /sbin/ldconfig

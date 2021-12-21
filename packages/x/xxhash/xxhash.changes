@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 20 10:27:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix racy check execution 
+
+-------------------------------------------------------------------
 Thu Dec  2 22:20:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:
