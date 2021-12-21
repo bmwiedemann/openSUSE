@@ -37,6 +37,8 @@ Source0:        %{name}-%{version}.tar.xz
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch4:         mutter-disable-cvt-s390x.patch
+# PATCH-FIX-UPSTREAM mutter-allow-disable-hardware-cursors.patch glgo#GNOME/mutter!2150 alynx.zhou@suse.com -- Add a debug environment variable to disable hardware cursors.
+Patch5:         mutter-allow-disable-hardware-cursors.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -143,6 +145,7 @@ applications that want to make use of the mutter library.
 %setup -q
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}

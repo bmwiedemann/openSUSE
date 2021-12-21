@@ -1515,4 +1515,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>940313</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>2690087f76f6e5e5f7a230ff20a5bd22</srcmd5>
+    <version>41.2</version>
+    <time>1640108427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941314</requestid>
+  </revision>
 </revisionlist>
