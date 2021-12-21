@@ -66,8 +66,10 @@ BuildRequires:  texlive-metafont-bin
 BuildRequires:  texlive-wasy
 BuildRequires:  transfig
 BuildRequires:  tex(adjustbox.sty)
+BuildRequires:  tex(alphalph.sty)
 BuildRequires:  tex(caption.sty)
 BuildRequires:  tex(colortbl.sty)
+BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(etoc.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(fancyvrb.sty)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 09:30:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire tex(enumitem.sty) and tex(alphalph.sty)
+  for doc flavor.
+
+-------------------------------------------------------------------
 Mon Aug  9 19:47:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.1:
@@ -10,7 +16,7 @@ Mon Aug  9 19:47:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
   * Make functions evalf() their arguments before doing own
     evalf().
   * Fix bugs in H_evalf() and in evaluation of iterated integrals.
-  * Several portability improvements and compiler warning fixes. 
+  * Several portability improvements and compiler warning fixes.
 - New BuildRequires for doc flavour: tex(fancyvrb.sty).
 
 -------------------------------------------------------------------
