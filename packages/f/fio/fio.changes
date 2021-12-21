@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 20 21:53:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.29:
+  * io_uring fixes
+  * io_uring: fix bandwidth calculation
+  * fix for loop count when do_verify=0
+  * zbd: fix unexpected job termination by open zone search failure 
+
+-------------------------------------------------------------------
 Sun Sep 19 08:26:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.28. No changelog.

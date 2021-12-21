@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifnarch s390x s390 ppc64le ppc64 ppc %{ix86} %{arm}
 %bcond_without librbd
 %endif
@@ -27,7 +28,7 @@
 %endif
 %bcond_without librdmacm
 Name:           fio
-Version:        3.28
+Version:        3.29
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
