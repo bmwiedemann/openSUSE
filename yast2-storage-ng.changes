@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 20 16:25:17 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: added a warning if a required mount option, eg.
+  _netdev, is missing in a mount point (jsc#SLE-20535).
+- 4.4.28
+
+-------------------------------------------------------------------
 Wed Dec 15 18:48:46 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Improve probing issues handling by raising exceptions.
