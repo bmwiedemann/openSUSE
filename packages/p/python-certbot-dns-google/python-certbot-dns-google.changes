@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 19:11:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- update to version 1.22.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
 Mon Dec 13 13:56:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop python 3.6 support since python-google-api-python-client
