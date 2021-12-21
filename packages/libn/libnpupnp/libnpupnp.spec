@@ -1,7 +1,7 @@
 #
 # spec file for package libnpupnp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  4
 Name:           libnpupnp
-Version:        4.0.14
+Version:        4.1.5
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 License:        GPL-2.0-or-later
