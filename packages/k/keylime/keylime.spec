@@ -50,6 +50,7 @@ Requires:       python-PyYAML
 Requires:       python-SQLAlchemy
 Requires:       python-alembic
 Requires:       python-cryptography
+Requires:       python-psutil
 Requires:       python-python-gnupg
 Requires:       python-pyzmq
 Requires:       python-requests
@@ -151,7 +152,7 @@ cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-install -Dpm 644 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
+install -Dpm 600 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
 install -Dpm 644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
 install -Dpm 644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
 install -Dpm 644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service

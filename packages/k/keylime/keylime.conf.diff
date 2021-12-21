@@ -38,17 +38,27 @@ Index: keylime-6.2.0/keylime.conf
  registrar_port = 8890
  
  # The name of the RSA key that Keylime should use for protecting shares of U/V.
-@@ -73,7 +77,8 @@ extract_payload_zip = True
+@@ -62,7 +66,8 @@ tpm_ownerpassword = keylime
+ # After decryption, the archive will be unzipped to a directory in /var/lib/keylime/secure.
+ # Note: the limits on the size of the tmpfs partition set above with the 'secure_size'
+ # option will affect this.
+-extract_payload_zip = True
++# extract_payload_zip = True
++extract_payload_zip = False
+ 
+ # The agent's UUID.
+ # Set to "openstack", it will try to get the UUID from the metadata service.
+@@ -73,7 +78,8 @@ extract_payload_zip = True
  # 'dmidecode -s system-uuid'.
  # If you set this to "hostname", Keylime will use the full qualified domain
  # name of current host as the agent id.
 -agent_uuid = d432fbb3-d2f1-4a97-9ef7-75bd81c00000
 +# agent_uuid = d432fbb3-d2f1-4a97-9ef7-75bd81c00000
-+agent_uuid = hostname
++agent_uuid = generate
  
  # Whether to listen for revocation notifications from the verifier or not.
  listen_notfications = True
-@@ -137,7 +142,8 @@ ek_handle = generate
+@@ -137,7 +143,8 @@ ek_handle = generate
  cloudverifier_id = default
  
  # The IP address and port of verifier server binds to
@@ -58,7 +68,7 @@ Index: keylime-6.2.0/keylime.conf
  cloudverifier_port = 8881
  
  # The address and port of registrar server that verifier communicates with
-@@ -250,7 +256,8 @@ revocation_notifier = True
+@@ -250,7 +257,8 @@ revocation_notifier = True
  # The revocation notifier IP address and port used to start the revocation service.
  # If the 'revocation_notifier' option is set to "true", then the verifier
  # automatically starts the revocation service.
@@ -68,7 +78,7 @@ Index: keylime-6.2.0/keylime.conf
  revocation_notifier_port = 8992
  
  # The verifier limits the size of upload payloads (allowlists) which defaults to
-@@ -354,10 +361,12 @@ max_payload_size = 1048576
+@@ -354,10 +362,12 @@ max_payload_size = 1048576
  # and SHA-512).
  # Note that you can't set a policy on PCR10 and PCR16 because Keylime uses
  # them internally.
@@ -83,7 +93,7 @@ Index: keylime-6.2.0/keylime.conf
  
  # Specify the file containing allowlists for processing Linux IMA measurements
  # this file is used if tenant provides "default" as the allowlist file
-@@ -409,7 +418,8 @@ max_retries = 10
+@@ -409,7 +419,8 @@ max_retries = 10
  # might provide a signed list of EK public key hashes.  Then you could write
  # an ek_check_script that checks the signature of the allowlist and then
  # compares the hash of the given EK with the allowlist.
@@ -93,7 +103,7 @@ Index: keylime-6.2.0/keylime.conf
  
  # Optional script to execute to check the EK and/or EK certificate against a
  # allowlist or any other additional EK processing you want to do. Runs in
-@@ -435,7 +445,8 @@ ek_check_script=
+@@ -435,7 +446,8 @@ ek_check_script=
  
  # The registrar's IP address and port used to communicate with other services
  # as well as the bind address for the registrar server.

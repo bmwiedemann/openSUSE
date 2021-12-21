@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 15 13:22:32 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix keylime configuration file attributes
+
+-------------------------------------------------------------------
+Tue Dec 14 17:07:39 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires python-psutil
+- Disable automatic execution of the payload by default
+- Use ramdom UUID by default
+
+-------------------------------------------------------------------
 Wed Dec  8 16:30:39 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Introduce a bcond for cfssl detection
