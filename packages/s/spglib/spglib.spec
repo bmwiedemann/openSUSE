@@ -18,7 +18,7 @@
 
 %define shlib libsymspg1
 Name:           spglib
-Version:        1.16.1
+Version:        1.16.3
 Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
@@ -100,6 +100,7 @@ popd
 %files devel
 %doc ChangeLog example ruby
 %{_includedir}/spglib.h
+%{_includedir}/spglib_f08.f90
 %{_libdir}/libsymspg.so
 
 %files -n python3-spglib

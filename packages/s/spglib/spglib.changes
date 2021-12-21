@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 20 22:54:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.3:
+  * Collection of fixes and improvements.
+  * Fix wyckoff position database.
+  * Fix Delaunay reduction.
+  * Improvements of fortran interface.
+  * Added standardize_cell to fortran interface.
+
+-------------------------------------------------------------------
 Sat Jul 17 09:13:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.1:
