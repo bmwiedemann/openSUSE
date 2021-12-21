@@ -1479,4 +1479,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment></comment>
     <requestid>941318</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>fa6127e8d86a8eac3a8e23c217af1c36</srcmd5>
+    <version>41.3</version>
+    <time>1640120704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941930</requestid>
+  </revision>
 </revisionlist>
