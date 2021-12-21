@@ -1,5 +1,5 @@
 #
-# spec file for package python-chardet
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -46,12 +46,12 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 

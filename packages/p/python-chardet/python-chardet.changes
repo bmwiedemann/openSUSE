@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 10 09:05:04 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Thu Sep 30 08:18:47 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.
