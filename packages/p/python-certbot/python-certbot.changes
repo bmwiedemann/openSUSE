@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 13 17:24:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.20.0
+  * Added --no-reuse-key. This remains the default behavior, but
+    the flag may be useful to unset the --reuse-key option on
+    existing certificates.
+- Update to version 1.19.0
+  * Several attributes in certbot.display.util and zope based
+    interfaces in certbot.interfaces module are deprecated and
+    will be removed in a future release of Certbot.
+  * Fixed a relatively harmless crash when issuing a certificate
+    with --quiet/-q.
+
+-------------------------------------------------------------------
 Tue Aug 10 13:23:09 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 1.18.0

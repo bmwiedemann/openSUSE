@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        1.18.0
+Version:        1.20.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module configargparse >= 0.9.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 2.1.4}
 BuildRequires:  %{python_module distro >= 1.0.1}
-BuildRequires:  %{python_module josepy >= 1.1.0}
+BuildRequires:  %{python_module josepy >= 1.9.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
@@ -48,7 +48,7 @@ Requires:       python-configobj
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-distro >= 1.0.1
 Requires:       python-future
-Requires:       python-josepy >= 1.1.0
+Requires:       python-josepy >= 1.9.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
 Requires:       python-pytz
