@@ -37,7 +37,7 @@ BuildRequires:  python3-keyring
 BuildRequires:  python3-paramiko
 BuildRequires:  python3-peewee
 BuildRequires:  python3-psutil
-BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-qt5
 BuildRequires:  python3-setuptools
@@ -63,6 +63,8 @@ ransomware and theft.
 %prep
 %setup -q
 %patch0 -p1
+# https://github.com/borgbase/vorta/issues/1136
+sed -i '/pytest-runner/d' setup.cfg
 
 %build
 export LANG=en_US.UTF-8
