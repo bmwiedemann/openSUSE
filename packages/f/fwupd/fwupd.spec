@@ -37,14 +37,14 @@
 %endif
 
 Name:           fwupd
-Version:        1.6.4
+Version:        1.7.3
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
 # Do not use upstream tarball, we are using source service!
-#Source:         https://github.com/hughsie/%%{name}/archive/%%{version}.tar.gz
+#Source:         https://github.com/%%{name}/%%{name}/archive/%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
@@ -97,8 +97,10 @@ BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
+BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tss2-esys) >= 2.0
 BuildRequires:  pkgconfig(udev)
@@ -110,6 +112,9 @@ BuildRequires:  pkgconfig(efivar) >= 33
 %endif
 %ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
+%endif
+%if 0%{?suse_version} < 1550
+BuildRequires:  protobuf-c
 %endif
 %if %{with efi_fw_update}
 Obsoletes:      dbxtool <= 8
@@ -138,12 +143,12 @@ Requires:       %{name} >= %{version}
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
-%package -n libfwupdplugin2
+%package -n libfwupdplugin5
 Summary:        Allow session software to update device firmware
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
-%description -n libfwupdplugin2
+%description -n libfwupdplugin5
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
@@ -170,18 +175,11 @@ Group:          Development/Tools/Other
 %description -n dfu-tool
 A generic tool to upload firmware to USB Devices based on Device Firmware Upgrade (DFU).
 
-%package -n fwupdtpmevlog
-Summary:        Debugging utility for the TPM event log
-Group:          Development/Tools/Other
-
-%description -n fwupdtpmevlog
-A debugging utility for the TPM event log.
-
 %package devel
 Summary:        Allow session software to update device firmware
 Group:          Development/Languages/C and C++
 Requires:       libfwupd2 = %{version}
-Requires:       libfwupdplugin2 = %{version}
+Requires:       libfwupdplugin5 = %{version}
 
 %description devel
 fwupd is a daemon to allows session software to update device firmware on
@@ -229,6 +227,7 @@ done
   -Ddocs=gtkdoc \
   -Dsupported_build=true \
   -Dtests=false \
+  %{nil}
 %meson_build
 
 %install
@@ -256,8 +255,8 @@ rm -fr %{buildroot}%{_datadir}/fish
 %post   -n libfwupd2 -p /sbin/ldconfig
 %postun -n libfwupd2 -p /sbin/ldconfig
 
-%post   -n libfwupdplugin2 -p /sbin/ldconfig
-%postun -n libfwupdplugin2 -p /sbin/ldconfig
+%post   -n libfwupdplugin5 -p /sbin/ldconfig
+%postun -n libfwupdplugin5 -p /sbin/ldconfig
 
 %preun
 %service_del_preun %{name}.service fwupd-offline-update.service fwupd-refresh.service
@@ -343,7 +342,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_sysconfdir}/grub.d/35_fwupd
 %endif
 %{_udevrulesdir}/90-fwupd-devices.rules
-%{_libdir}/fwupd-plugins-3/
+%{_libdir}/fwupd-plugins-5/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
 %{_datadir}/bash-completion/completions/fwupdmgr
@@ -360,14 +359,10 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_bindir}/dfu-tool
 %{_mandir}/man1/dfu-tool.1%{?ext_man}
 
-%files -n fwupdtpmevlog
-%{_bindir}/fwupdtpmevlog
-%{_mandir}/man1/fwupdtpmevlog.1%{?ext_man}
-
 %files -n libfwupd2
 %{_libdir}/libfwupd.so.*
 
-%files -n libfwupdplugin2
+%files -n libfwupdplugin5
 %{_libdir}/libfwupdplugin.so.*
 
 %files -n typelib-1_0-Fwupd-2_0

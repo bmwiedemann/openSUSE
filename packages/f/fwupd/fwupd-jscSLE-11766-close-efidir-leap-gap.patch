@@ -1,18 +1,18 @@
-diff --git a/plugins/uefi-capsule/fu-uefi-common.c b/plugins/uefi-capsule/fu-uefi-common.c
-index 6cd55672..6a710cdb 100644
---- a/plugins/uefi-capsule/fu-uefi-common.c
-+++ b/plugins/uefi-capsule/fu-uefi-common.c
-@@ -227,9 +227,13 @@ fu_uefi_get_esp_path_for_os (const gchar *base)
+Index: fwupd-1.7.2/plugins/uefi-capsule/fu-uefi-common.c
+===================================================================
+--- fwupd-1.7.2.orig/plugins/uefi-capsule/fu-uefi-common.c
++++ fwupd-1.7.2/plugins/uefi-capsule/fu-uefi-common.c
+@@ -196,9 +196,13 @@ fu_uefi_get_esp_path_for_os(FuDevice *de
  	g_autofree gchar *esp_path = NULL;
  	g_autoptr(GError) error_local = NULL;
- 	g_autoptr(GHashTable) os_release = fwupd_get_os_release (&error_local);
+ 	g_autoptr(GHashTable) os_release = fwupd_get_os_release(&error_local);
 +	g_auto(GStrv) split = NULL;
  	/* try to lookup /etc/os-release ID key */
  	if (os_release != NULL) {
- 		os_release_id = g_hash_table_lookup (os_release, "ID");
+ 		os_release_id = g_hash_table_lookup(os_release, "ID");
 +		/* Overide os_release_id for SLE and openSUSE */
 +		split = g_strsplit (g_hash_table_lookup (os_release, "NAME"), " ", 2);
 +		os_release_id = g_ascii_strdown (split[0], -1);
  	} else {
- 		g_debug ("failed to get ID: %s", error_local->message);
+ 		g_debug("failed to get ID: %s", error_local->message);
  	}

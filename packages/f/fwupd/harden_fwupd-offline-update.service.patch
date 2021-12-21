@@ -1,7 +1,7 @@
-Index: fwupd-1.6.2/data/fwupd-offline-update.service.in
+Index: fwupd-1.7.2/data/fwupd-offline-update.service.in
 ===================================================================
---- fwupd-1.6.2.orig/data/fwupd-offline-update.service.in
-+++ fwupd-1.6.2/data/fwupd-offline-update.service.in
+--- fwupd-1.7.2.orig/data/fwupd-offline-update.service.in
++++ fwupd-1.7.2/data/fwupd-offline-update.service.in
 @@ -8,6 +8,16 @@ After=sysinit.target system-update-pre.t
  Before=shutdown.target system-update.target
  

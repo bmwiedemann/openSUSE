@@ -1,14 +1,14 @@
 <services>
-  <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/hughsie/fwupd.git</param>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/fwupd/fwupd.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.6.4</param>
+    <param name="revision">1.7.3</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

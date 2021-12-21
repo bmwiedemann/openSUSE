@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Tue Dec 21 11:56:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.7.3:
+  * This release adds the following features:
+    + Add a sync-bkc subcommand to ensure a known set of firmware
+      versions
+    + Add FuArchiveFirmware for plugins that use archives as
+      firmware files
+    + Add quirkable page and sector size properties to FuCfiDevice
+    + Make Upower and powerd support optional
+  * This release fixes the following bugs:
+    + Add some sanity checks to the elanfp firmware parser
+    + Add the CFI JEDEC instance ID if using the vendor-extended
+      version
+    + Check the value range when parsing the quirk keys
+    + Do not wait for a USB runtime if will-disappear is set
+    + Enable the MOTD integration when using pam_motd
+    + Fix DFU regression when merging the FuProgress work
+    + Fix running the tests when fwupd is not installed
+    + Fix the GLib error message when inotify max_user_instances is
+      too low
+    + Fix VLI VL820Q7 detection to fix flashing of the Lenovo TBT3
+      dock
+    + Ignore a USB error for STM32 attach when the device goes away
+    + Make the HSI tests optional for embedded targets
+    + Make the plugin startup order deterministic
+    + Set Thunderbolt ports offline on host controller
+    + Use endian-safe version functions when enumerating Logitech
+      hardware
+    + Use lowercase flag names in intel-spi to prevent a runtime
+      warning
+    + Wait for the System76 Launch device to come back from DFU
+      mode
+  * This release adds support for the following hardware:
+    + Most Nordic Semiconductor nRF Secure devices
+- Fix build when not on TW: add BR protobuf-c
+
+-------------------------------------------------------------------
+Fri Dec 10 17:56:00 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build issue in spec 
+  (references to libfwupdplugin2 -> libfwupdplugin5)
+
+-------------------------------------------------------------------
+Fri Nov 19 16:24:28 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.2:
+  * This release adds the following features:
+    + Add a new HSI check that PCR registers 0-7 are not empty
+    + Add several compile flags to reduce the install size by over
+      300Kb
+    + Allow overriding HwId data from the daemon.conf config file
+    + Allow overriding the firmware GType from a quirk file
+    + Export the component release ID over DBus
+    + Remove support for the SoloKey and ChaosKey devices
+    + Show a daemon warning if quirk flags are malformed
+    + Speed up the daemon startup by ~40% by doing less at startup
+  * This release fixes the following bugs:
+    + Be case insensitive when fixing the device model
+    + Fix a critial warning in ccgx found by the fuzzer
+    + Fix a DFU crash if the attach failed due to a hardware fault
+    + Fix a Redfish crash when specifying a URL without a port
+    + Fix CLI downloads when using fwupdmgr --ipfs
+    + Fix critical warning when /etc/machine-id does not exist
+    + Inhibit thunderbolt devices to correctly use UPDATABLE_HIDDEN
+    + Set SSL_VERIFYHOST=0 when using Redfish to fix OpenBMC auth
+    + Skip UEFI devices that fail coldplug
+  * This release adds support for the following hardware: All
+    exported MTD block devices
+- Changes from version 1.7.1:
+  * This release adds the following features:
+    + Allow specifying 'fwupdmgr device-test foo --json' for
+      unattended testing
+    + Allow using a filename when using set-approved-firmware
+    + Inhibit ModemManager device in mbim-qdu
+    + Share the Common Flash Memory Interface quirks between
+      plugins
+    + Show changes in HSI attributes when using 'fwupdmgr security'
+    + Show the user a warning if updating may affect
+      full-disk-encryption
+    + Show translated firmware release notes when provided
+    + Support loading remotes from /var/lib/fwupd/remotes.d
+  * This release fixes the following bugs:
+    + Fix a CCGX regression when loading firmware
+    + Fix a potential crash when dumping Parade devices
+    + Fix build error when sys/io.h is not available
+    + Fix building the Synaptics RMI self tests on s390x
+    + Fix the CSME CVE detection for new generations
+    + Handle EPERM when running the self tests on systems with IPMI
+    + Mark as SUPPORTED even if on battery power
+    + Only save the HSI attributes to the database if different
+    + Raise the client timeout value from 25 seconds to fix Redfish
+      startup
+    + Redirect the old HSI links to the correct place
+    + Relax the ITE SuperIO signature checks for new hardware
+      support
+    + Set device time and timezone for logitech bulkcontroller
+      devices
+    + Set the verfmt of the returned device when the daemon device
+      is unset
+  * This release adds support for the following hardware:
+    + Dell Atomic Dock
+    + HP Thunderbolt Dock G4
+    + More PixArt devices
+    + Steelseries Stratus
+    + Wacom 3rd-gen Intuos BT
+- Changes from version 1.7.0:
+  * This release adds the following features:
+    + Add FuCfuPayload and FuCfuOffer for future usage
+    + Add support for an 'unreachable' device flag
+    + Add support for Logitech devices supporting the Unified
+      Battery feature
+    + Allow adding GUIDs to each HSI security attribute
+    + Allow installing the LVFS remote, but with it disabled by
+      default
+    + Convert security attributes to JSON and write then to the
+      database
+    + Convert the device test script to a fwupdmgr subcommand
+    + Create Redfish user accounts automatically using IPMI
+    + Use an interactive request to restart some Logitech DFU
+      devices
+  * This release fixes the following bugs:
+    + Abort on invalid SREC files early to avoid a fuzzing timeout
+    + Allow using interrupt transfers for HID devices
+    + Allow waiting for multiple devices to replug
+    + Fix a critical warning on a Unifying flash failure
+    + Fix a regression in flashing the Dell dock
+    + Fix Thunderbolt host controller probing
+    + Forcefully set checksums found in cabinet files to lowercase
+    + Force UX-capsule over full size BGRT
+    + Make the SuperIO ports and timeouts specific to the DMI model
+    + Only probe SynapticsMST devices that have opted-in
+    + Remove support for --ignore-power as it did not work for UEFI
+      firmware
+    + Reset the CMOS as required when changing system firmware
+      branch
+    + Restart the daemon if any of the the plugin config files are
+      modified
+    + Show HSiLevel=0 attributes in JSON security output
+    + Update the child composite ID if the parent changes
+    + Use a per-device global percentage completion
+    + Write the BMP image upside down to avoid using a negative
+      bitmap height
+  * This release adds support for the following hardware:
+    + A huge number of Synaptics CAPE devices
+    + Elan fingerprint readers
+    + Logitech Bolt peripherals, receivers and radio hardware
+    + Logitech devices supporting the bulk controller protocol
+    + More supported PixArt devices
+    + More supported StarBook coreboot devices
+    + Union Point SPI hardware
+- Add pkgconfig(libprotobuf-c) and pkgconfig(protobuf)
+  BuildRequires: New dependencies.
+- Refresh patches with quilt.
+- Drop sub-package fwupdtpmevlog, no longer built.
+- Update URL in _service, new home.
+
+-------------------------------------------------------------------
 Fri Nov 19 13:27:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.4:
