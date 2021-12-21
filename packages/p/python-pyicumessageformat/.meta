@@ -1,0 +1,8 @@
+<package name="python-pyicumessageformat" project="openSUSE:Factory">
+  <title>pyicumessageformat</title>
+  <description>An unopinionated library for parsing ICU MessageFormat messages into both ASTs and, optionally, token lists.
+
+This library is mainly a re-implementation of the JavaScript library format-message-parse with a few extra configuration flags.</description>
+  <devel project="devel:languages:python" package="python-pyicumessageformat"/>
+  <url>https://github.com/sirstendec/pyicumessageformat</url>
+</package>
