@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Dec 20 23:07:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.74.0
+  * Added nl_before_struct
+  * Added nl_before_ignore_after_case
+  * Added sp_before_ptr_star_trailing
+  * Added sp_after_ptr_star_trailing
+  * Added sp_sparen_paren
+  * Added pp_indent_in_guard
+  * Added indent_single_line_comments_before
+  * Added indent_single_line_comments_after
+  * Removed indent_sing_line_comments
+  * Added sp_after_ellipsis
+  * Added mod_remove_duplicate_include
+  * Added sp_between_semi_for_empty
+  * Added nl_before_brace_open
+  * Added cmt_trailing_single_line_c_to_cpp
+  * Added sp_ellipsis_parameter_pack
+  * Added sp_parameter_pack_ellipsis
+  * Added sp_byref_ellipsis
+  * Added sp_ptr_type_ellipsis
+  * Added indent_ctor_init_following
+  * Added sp_before_emb_cmt
+  * Added sp_num_after_emb_cmt
+  * Added sp_before_tr_cmt
+  * Added sp_num_before_emb_cmt
+  * Added sp_num_before_tr_cmt
+  * Added sp_after_emb_cmt
+  * Removed sp_before_tr_emb_cmt
+  * Removed sp_num_before_tr_emb_cmt
+  * Added pp_include_at_level
+  * Added sp_return
+  * Added indent_comment_align_thresh
+  * Added indent_comment
+  * Added align_func_proto_amp_style
+  * Added align_func_proto_star_style
+  * Added indent_case_comment
+  * Added indent_switch_body
+  * Added sp_inside_for_close
+  * Added sp_inside_for
+  * Added sp_inside_for_open
+  * Added indent_ignore_label
+  * Added sp_ptr_star_func_var
+
+-------------------------------------------------------------------
 Thu Jul  1 14:11:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.73.0
