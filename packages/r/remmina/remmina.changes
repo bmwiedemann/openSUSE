@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 20 13:15:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.23
+  * Patch for a Remmina segfault and stats code cleaning !2358 
+  * Make Appindicator optional !2359 
+  * Added check-box to force tight encoding for VNC connections !2360 
+  * remote resolution: use multiple of four !2353 
+  * Add Keyboard mapping per client RDP !2361 
+  * Improve TLS error message, fixes #2364 (closed) !2362 
+  * Triage policy language reworked !2363 
+
+-------------------------------------------------------------------
 Mon Dec 13 11:07:44 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.22
