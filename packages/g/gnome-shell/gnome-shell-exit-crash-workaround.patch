@@ -1,0 +1,13 @@
+diff --git a/src/main.c b/src/main.c
+index 3cd9e10..557f35a 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -566,7 +566,7 @@ main (int argc, char **argv)
+       ecode = EXIT_FAILURE;
+     }
+ 
+-  meta_context_destroy (g_steal_pointer (&context));
++  g_steal_pointer (&context);
+ 
+   shell_profiler_shutdown ();
+ 

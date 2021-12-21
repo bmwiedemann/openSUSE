@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 17 04:09:17 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Add gnome-shell-exit-crash-workaround.patch: 
+  + Backport from Ubuntu, This is a workaround to maintain a clean
+    environment for gnome-shell and particularly JavaScript/GJS to
+    shutdown without crashing.
+  + Proper fixes are still pending
+    https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1759
+    https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/648
+    (bsc#1190878 glgo#GNOME/gnome-shell#4344).
+
+-------------------------------------------------------------------
 Mon Dec 13 16:07:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:
