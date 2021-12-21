@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Dec 16 10:27:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.54.5:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Correctly handle chain up of struct creation methods
+      . Use a dedicated EmitContext for _variant_get*() functions
+      . gtkmodule: Handle nested closure elements and bind them
+        accordingly
+    - vala:
+      . NullLiteral is not a valid argument for string
+        concatenation
+      . Set is_yield_expression in async context when chaining up
+        to async base ctor
+      . Report statement parsing error if it is not meant to be an
+        expression
+      . girparser: Avoid possibily creating duplicated attributes
+    - vapigen.m4: use $PKG_CONFIG_SYSROOT_DIR
+  + Bindings:
+    - glib-2.0: Always use the actual C type for
+      CCode.array_length_type
+    - gstreamer: Cherry-pick bindings fixes from 0.56
+    - gstreamer-1.0: Unskip the ElementFactory.make/create_full()
+      symbols
+
+-------------------------------------------------------------------
 Mon Nov 29 21:47:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.54.4:
