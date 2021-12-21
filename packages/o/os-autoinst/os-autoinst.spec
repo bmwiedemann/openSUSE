@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1639512920.3ca390ca
+Version:        4.6.1640094932.fc9361df
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -174,6 +174,8 @@ sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{v
 for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
     rm t/$i.t
 done
+# Remove test relying on a git working copy
+rm xt/30-make.t
 
 %build
 %define __builder ninja
@@ -255,6 +257,8 @@ cd %{__builddir}
 %files qemu-kvm
 
 %files qemu-x86
+
+%files swtpm
 %endif
 
 %files s390-deps
