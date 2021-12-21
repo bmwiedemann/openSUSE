@@ -1,0 +1,61 @@
+From a72ebc3afb3301383497159abb8327aeec59494f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Wed, 6 Jan 2021 13:15:18 +0100
+Subject: [PATCH] Fix a typo in autospec
+
+On Python 3.10, I get:
+
+    =================================== FAILURES ===================================
+    _____________________ test_info_setup_complex_pep517_error _____________________
+
+    mocker = <pytest_mock.plugin.MockerFixture object at 0x7f31e2e772b0>
+    demo_setup_complex = PosixPath('/tmp/pytest-of-mockbuild/pytest-0/test_info_setup_complex_pep5170')
+
+        def test_info_setup_complex_pep517_error(mocker, demo_setup_complex):
+    >       mocker.patch(
+                "poetry.utils.env.VirtualEnv.run",
+                auto_spec=True,
+                side_effect=EnvCommandError(CalledProcessError(1, "mock", output="mock")),
+            )
+
+    tests/inspection/test_info.py:191:
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    /usr/lib/python3.10/site-packages/pytest_mock/plugin.py:376: in __call__
+        return self._start_patch(
+    /usr/lib/python3.10/site-packages/pytest_mock/plugin.py:184: in _start_patch
+        p = mock_func(*args, **kwargs)
+    /usr/lib64/python3.10/unittest/mock.py:1736: in patch
+        return _patch(
+    /usr/lib64/python3.10/unittest/mock.py:1275: in __init__
+        _check_spec_arg_typos(kwargs)
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    kwargs_to_check = {'auto_spec': True, 'side_effect': EnvCommandError('Command mock errored with the following return code 1, and output: \nmock')}
+
+        def _check_spec_arg_typos(kwargs_to_check):
+            typos = ("autospect", "auto_spec", "set_spec")
+            for typo in typos:
+                if typo in kwargs_to_check:
+    >               raise RuntimeError(
+                        f"{typo!r} might be a typo; use unsafe=True if this is intended"
+                    )
+    E               RuntimeError: 'auto_spec' might be a typo; use unsafe=True if this is intended
+
+    /usr/lib64/python3.10/unittest/mock.py:1251: RuntimeError
+---
+ tests/inspection/test_info.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/inspection/test_info.py b/tests/inspection/test_info.py
+index e04bd52a5..ac0c4504e 100644
+--- a/tests/inspection/test_info.py
++++ b/tests/inspection/test_info.py
+@@ -174,7 +174,7 @@ def test_info_setup_complex(demo_setup_complex):
+ def test_info_setup_complex_pep517_error(mocker, demo_setup_complex):
+     mocker.patch(
+         "poetry.utils.env.VirtualEnv.run",
+-        auto_spec=True,
++        autospec=True,
+         side_effect=EnvCommandError(CalledProcessError(1, "mock", output="mock")),
+     )
+ 

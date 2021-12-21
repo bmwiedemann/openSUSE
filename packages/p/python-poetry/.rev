@@ -103,4 +103,13 @@
     <comment></comment>
     <requestid>935714</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e353854612c1ae80555cc3daa496b8c4</srcmd5>
+    <version>1.1.12</version>
+    <time>1640108424</time>
+    <user>dimstar_suse</user>
+    <comment>- Add poetry-3544-py310.patch for compatibility with Python 3.10
+  gh#python-poetry/poetry#3544 (forwarded request 941282 from bnavigator)</comment>
+    <requestid>941283</requestid>
+  </revision>
 </revisionlist>

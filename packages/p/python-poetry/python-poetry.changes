@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 17 18:14:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add poetry-3544-py310.patch for compatibility with Python 3.10
+  gh#python-poetry/poetry#3544
+
+-------------------------------------------------------------------
 Sat Dec  4 21:01:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.12

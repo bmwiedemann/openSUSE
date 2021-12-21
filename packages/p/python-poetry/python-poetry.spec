@@ -33,6 +33,8 @@ Patch0:         poetry-1645-1.1.patch
 Patch1:         use-new-name-of-MockFixture.patch
 # PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/4749 -- make compatible with packaging >= 21
 Patch2:         poetry-4749-1.1.patch
+# PATCH-FIX-UPSTREAM poetry-3544-py310.patch -- gh#python-poetry/poetry#3544 -- python310 fixes
+Patch3:         https://github.com/python-poetry/poetry/pull/3544.patch#/poetry-3544-py310.patch
 BuildRequires:  %{python_module CacheControl >= 0.12.9}
 BuildRequires:  %{python_module cachy >= 0.3.0}
 BuildRequires:  %{python_module cleo >= 0.8.1}
@@ -61,9 +63,9 @@ Requires:       python-html5lib >= 1.0
 Requires:       python-keyring >= 21.2.0
 # cachecontrol[filecache]
 Requires:       python-lockfile >= 0.9
-Requires:       python-pkginfo >= 1.5
 Requires:       python-packaging >= 20.4
 Requires:       python-pexpect >= 4.7.0
+Requires:       python-pkginfo >= 1.5
 Requires:       python-poetry-core >= 1.0.7
 Requires:       python-requests >= 2.18
 Requires:       python-requests-toolbelt >= 0.9.1
