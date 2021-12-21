@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 21 06:41:03 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.56:
+  * Re-implement change printing and parsing.
+  * Add a root inode (initial support for submodules).
+  * Fix a deprecation warning in ed25519-dalek.
+
+-------------------------------------------------------------------
 Fri Nov  5 03:07:30 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues

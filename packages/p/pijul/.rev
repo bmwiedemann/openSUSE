@@ -85,4 +85,15 @@
     <comment></comment>
     <requestid>929551</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f060a5a3c89538eb131071cf8f4971c1</srcmd5>
+    <version>1.0.0~alpha.56</version>
+    <time>1640108444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0-alpha.56:
+  * Re-implement change printing and parsing.
+  * Add a root inode (initial support for submodules).
+  * Fix a deprecation warning in ed25519-dalek.</comment>
+    <requestid>941815</requestid>
+  </revision>
 </revisionlist>
