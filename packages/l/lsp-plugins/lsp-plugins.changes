@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 21 10:23:18 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.31
+
+  * Fixed X11 error handling routine that could crash under certain
+  * conditions.
+  * Better support for musl libc (contributed by Artur Sinila).
+  * Added support of VERBOSE parameter for build system (contributed
+    by Artur Sinila).
+  * Fixed possible system crash in profiler plugin.
+  * Updated LV2 TTL generator, now instrument plugins are better
+    compatible with Ardour DAW.
+  * Updated french translation (contributed by wargreen at Github
+    and Olivier Humbert).
+  * Migrated hyperlinks from HTTP to HTTPS protocol (contributed
+    by Bruno Vernay).
+  * Added support of build for 32-bit and 64-bit RISC-V architecture
+    (contributed by Xeonacid at GitHub).
+  * Fixed window issue for the Fluxbox window manager.
+  * Fixed build for ARMv8 architecture (contributed by Marek Szuba).
+ 
+-------------------------------------------------------------------
 Mon May 10 13:49:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop owning directories provided by filesystem (bsc#1184786)
