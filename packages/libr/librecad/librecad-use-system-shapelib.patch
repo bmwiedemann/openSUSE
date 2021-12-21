@@ -5,10 +5,8 @@ build: avoid using bundled shapelib
  plugins/importshp/importshp.pro |   11 +++--------
  1 file changed, 3 insertions(+), 8 deletions(-)
 
-Index: LibreCAD-2.0.8/plugins/importshp/importshp.pro
-===================================================================
---- LibreCAD-2.0.8.orig/plugins/importshp/importshp.pro
-+++ LibreCAD-2.0.8/plugins/importshp/importshp.pro
+--- a/plugins/importshp/importshp.pro
++++ b/plugins/importshp/importshp.pro
 @@ -17,12 +17,9 @@ include(../../common.pri)
  # For plugins
  INCLUDEPATH    += ../../librecad/src/plugins
@@ -23,10 +21,10 @@ Index: LibreCAD-2.0.8/plugins/importshp/importshp.pro
 +HEADERS += importshp.h
 +LIBS += -lshp
  
+ # Installation Directory
  win32 {
-         DLLDESTDIR = ../../windows/resources/plugins
 @@ -36,5 +33,3 @@ unix {
- 	TARGET = ../../unix/resources/plugins/$$PLUGIN_NAME
+         DESTDIR = ../../unix/resources/plugins
      }
  }
 -

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 20 09:15:40 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 2.2.0-rc3
+  * major release
+  * DWG imports are more reliable now
+  * and a lot more of bugfixes and improvements
+- remove (they are in upstream now)
+  * 0001-fix-build-with-gcc-9.patch
+  * add-boost-tuple-include-to-fix-build.patch
+  * ensured-all-objects-are-shown-when-a-layer-is-toggle.patch
+  * fix-build-with-Qt-5.11.patch
+  * fix-build-with-Qt-5.15.patch
+- remove qcad provides/obsoletes -- it's an ancient history
+
+-------------------------------------------------------------------
 Tue May  4 07:30:44 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - add add-boost-tuple-include-to-fix-build.patch

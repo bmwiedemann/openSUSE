@@ -1,2 +1,2 @@
 # We are not a library, dammit
-addFilter("libre.* shlib-policy-")
+addFilter("explicit-lib-dependency librecad")

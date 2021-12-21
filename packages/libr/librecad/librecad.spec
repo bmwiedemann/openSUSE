@@ -16,8 +16,10 @@
 #
 
 
+%define tar_version 2.2.0-rc3
+
 Name:           librecad
-Version:        2.1.3
+Version:        2.2.0~rc3
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
@@ -25,7 +27,7 @@ Group:          Productivity/Graphics/CAD
 URL:            http://librecad.org/
 
 #Git-Web:       https://github.com/LibreCAD/LibreCAD
-Source:         https://github.com/LibreCAD/LibreCAD/archive/%version.tar.gz
+Source:         https://github.com/LibreCAD/LibreCAD/archive/%{tar_version}.tar.gz#/librecad-%{tar_version}.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
 Source2:        http://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
@@ -33,16 +35,11 @@ Source3:        http://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
 Source4:        http://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
-Patch1:         ensured-all-objects-are-shown-when-a-layer-is-toggle.patch
-Patch2:         fix-build-with-Qt-5.11.patch
-Patch3:         fix-build-with-Qt-5.15.patch
 Patch4:         librecad-no-date.diff
 Patch5:         librecad-use-system-libdxfrw.patch
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 Patch8:         librecad-use-system-shapelib.patch
-Patch9:         0001-fix-build-with-gcc-9.patch
-Patch10:        add-boost-tuple-include-to-fix-build.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7
@@ -52,21 +49,18 @@ BuildRequires:  muparser-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wqy-microhei-fonts
-BuildRequires:  (pkgconfig(libdxfrw) or pkgconfig(libdxfrw0))
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libdxfrw) >= 1
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun):desktop-file-utils
 Requires(postun):shared-mime-info
 Recommends:     %name-parts
-# old qcad had a newer version, so we provide all versions here.
-Provides:       qcad
-Obsoletes:      qcad <= 2.0.5
 
 %description
 LibreCAD is a Qt4 Computer-aided design (CAD) software package for 2D design
@@ -83,7 +77,7 @@ Collection of parts for LibreCAD, a Qt4 application to design 2D
 CAD drawings.
 
 %prep
-%setup -qn LibreCAD-%version -a 2 -a 3 -a 4
+%setup -qn LibreCAD-%{tar_version} -a2 -a3 -a4
 %autopatch -p1
 
 pc="libdxfrw"
@@ -102,7 +96,7 @@ rm -rf libraries/libdxfrw
 rm -rf plugins/importshp/shapelib
 
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
-sed -i 's/\r$//' LICENSE-MIT.txt LICENSE_KST32B_v2.txt license-lc_opengost-fonts.txt
+sed -i 's/\r$//' licenses/{MIT,KST32B_v2,lc_opengost-fonts}.txt
 
 %build
 echo 'DISABLE_POSTSCRIPT = true' > librecad/src/custom.pri
@@ -134,7 +128,7 @@ install -Dpm0644 "librecad/res/main/%name.png" "$b/%_datadir/pixmaps/%name.png"
 install -Dpm0644 "desktop/%name.sharedmimeinfo" "$b/%_datadir/mime/packages/%name.xml"
 install -Dpm0644 "%_sourcedir/ttf2lff.1" "$b/%_mandir/man1/"
 
-mkdir -p "$b/%_datadir/%name/library/architecture" \
+install -d "$b/%_datadir/%name/library/architecture" \
 	"$b/%_datadir/%name/library/electronics" \
 	"$b/%_datadir/%name/library/electrical"
 cp -a Architect8-LCAD "$b/%_datadir/%name/library/architecture/"
@@ -159,7 +153,7 @@ perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/l
 
 %files
 %doc README.md
-%license LICENSE* gpl-2.0* license-lc_opengost-fonts.txt
+%license LICENSE licenses/*txt
 %_bindir/librecad
 %_bindir/ttf2lff
 %_libdir/%name
