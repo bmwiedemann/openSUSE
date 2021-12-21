@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 17 15:55:52 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.14: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.14
+
+-------------------------------------------------------------------
 Wed Dec  1 21:44:34 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - provide configuration for PHP-FPM out of the box (boo#1192414)

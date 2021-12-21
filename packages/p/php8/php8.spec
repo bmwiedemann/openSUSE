@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.0.13
+Version:        8.0.14
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -142,7 +142,7 @@ BuildRequires:  pkgconfig(libzip) >= 0.11
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
-BuildRequires:  pkgconfig(sqlite3) > 3.7.4
+BuildRequires:  pkgconfig(sqlite3) >= 3.7.4
 BuildRequires:  pkgconfig(zlib) >= 1.2.0.4
 %if %{build_firebird}
 # firebird-devel was merged into libfbclient2-devel for firebird 3

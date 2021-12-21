@@ -160,4 +160,13 @@
 - package missing php.ini for PHP-FPM (boo#1192672) (forwarded request 935073 from adkorte)</comment>
     <requestid>935380</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3b8104367877af12313d22a182b11969</srcmd5>
+    <version>8.0.14</version>
+    <time>1640108423</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0.14: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.14</comment>
+    <requestid>941267</requestid>
+  </revision>
 </revisionlist>
