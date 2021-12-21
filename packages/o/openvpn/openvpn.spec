@@ -24,12 +24,12 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        LGPL-2.1-only AND SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Networking/Security
-URL:            http://openvpn.net/
+URL:            https://openvpn.net/
 Source:         https://swupdate.openvpn.org/community/releases/openvpn-%{version}.tar.xz
 Source1:        https://swupdate.openvpn.org/community/releases/openvpn-%{version}.tar.xz.asc
 Source3:        %{name}.README.SUSE

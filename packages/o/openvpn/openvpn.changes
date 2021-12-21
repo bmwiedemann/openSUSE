@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 15 21:21:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.5:
+  * SWEET32/64bit cipher deprecation change was postponed to 2.7
+  * improve "make check" to notice if "openvpn --show-cipher" crashes
+  * improve argv unit tests
+  * ensure unit tests work with mbedTLS builds without BF-CBC ciphers
+  * include "--push-remove" in the output of "openvpn --help"
+  * fix error in iptables syntax in example firewall.sh script
+  * fix "resolvconf -p" invocation in example "up" script
+  * fix "common_name" environment for script calls when
+    "--username-as-common-name" is in effect (Trac #1434)
+  * move "push-peer-info" documentation from "server options" to "client"
+  * correct "foreign_option_{n}" typo in manpage
+  * README.down-root: fix plugin module name
+
+-------------------------------------------------------------------
 Wed Dec  8 14:40:22 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Drop 0001-preform-deferred-authentication-in-the-background.patch
