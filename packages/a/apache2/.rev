@@ -1989,4 +1989,14 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
 - do not consider php tests, they do not run anyway</comment>
     <requestid>933435</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>0a4135c91cab5df744da15083d53e83f</srcmd5>
+    <version>2.4.52</version>
+    <time>1640108422</time>
+    <user>dimstar_suse</user>
+    <comment>changlog update for 2.4.52:
+CVE-2021-44224 boo#1193943
+CVE-2021-44790 boo#1193942 (forwarded request 941816 from AndreasStieger)</comment>
+    <requestid>941819</requestid>
+  </revision>
 </revisionlist>

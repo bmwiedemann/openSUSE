@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Dec 20 11:26:49 UTC 2021 - David Anes <david.anes@suse.com>
+
+- version update to 2.4.52:
+  * fix CVE-2021-44224: NULL dereference or SSRF in forward proxy
+    configurations [boo#1193943]
+  * fix CVE-2021-44790: buffer overflow when parsing multipart
+    content in mod_lua [boo#1193942]
+  *) http: Enforce that fully qualified uri-paths not to be forward-proxied
+     have an http(s) scheme, and that the ones to be forward proxied have a
+     hostname, per HTTP specifications.
+  *) OpenSSL autoconf detection improvement: pick up openssl.pc in the
+     already sent it to the client.
+  *) mod_http: Correctly sent a 100 Continue status code when sending an interim
+     response as result of an Expect: 100-Continue in the request and not the
+     current status code of the request
+  *) mod_dav: Some DAV extensions, like CalDAV, specify both document
+     elements and property elements that need to be taken into account
+     when generating a property. The document element and property element
+     are made available in the dav_liveprop_elem structure by calling
+     dav_get_liveprop_element()
+  *) mod_dav: Add utility functions dav_validate_root_ns(),
+     dav_find_child_ns(), dav_find_next_ns(), dav_find_attr_ns() and
+     dav_find_attr() so that other modules get to play too.
+  *) mpm_event: Restart stopping of idle children after a load peak
+  *) mod_http2: fixes 2 regressions in server limit handling.
+     1. When reaching server limits, such as MaxRequestsPerChild, the
+        HTTP/2 connection send a GOAWAY frame much too early on new
+        connections, leading to invalid protocol state and a client
+        failing the request
+        The module now initializes the HTTP/2 protocol correctly and
+        allows the client to submit one request before the shutdown
+        via a GOAWAY frame is being announced.
+     2. A regression in v1.15.24 was fixed that could lead to httpd
+        child processes not being terminated on a graceful reload or
+        when reaching MaxConnectionsPerChild. When unprocessed h2
+        requests were queued at the time, these could stall.
+        See <https://github.com/icing/mod_h2/issues/212>.
+  *) mod_ssl: Add build support for OpenSSL v3
+  *) mod_proxy_connect: Honor the smallest of the backend or client timeout
+     while tunneling
+  *) mod_proxy: SetEnv proxy-nohalfclose (or alike) allows to disable TCP
+     half-close forwarding when tunneling protocols
+  *) core: Be safe with ap_lingering_close() called with a socket NULL-ed by
+     a third-party module.  PR 65627.
+  *) mod_md: Fix memory leak in case of failures to load the private key.
+  *) mod_md: adding v2.4.8 with the following changes
+    - Added support for ACME External Account Binding (EAB).
+      Use the new directive `MDExternalAccountBinding` to provide the
+      server with the value for key identifier and hmac as provided by
+      your CA.
+      While working on some servers, EAB handling is not uniform
+      across CAs. First tests with a Sectigo Certificate Manager in
+      demo mode are successful. But ZeroSSL, for example, seems to
+      regard EAB values as a one-time-use-only thing, which makes them
+      fail if you create a seconde account or retry the creation of the
+      first account with the same EAB.
+    - The directive 'MDCertificateAuthority' now checks if its parameter
+      is a http/https url or one of a set of known names. Those are
+      'LetsEncrypt', 'LetsEncrypt-Test', 'Buypass' and 'Buypass-Test'
+      for now and they are not case-sensitive.
+      The default of LetsEncrypt is unchanged.
+    - `MDContactEmail` can now be specified inside a `<MDomain dnsname>`
+      section.
+    - Treating 401 HTTP status codes for orders like 403, since some ACME
+      servers seem to prefer that for accessing oders from other accounts.
+    - When retrieving certificate chains, try to read the repsonse even
+      if the HTTP Content-Type is unrecognized.
+    - Fixed a bug that reset the error counter of a certificate renewal
+      and prevented the increasing delays in further attempts.
+    - Fixed the renewal process giving up every time on an already existing
+      order with some invalid domains. Now, if such are seen in a previous
+      order, a new order is created for a clean start over again.
+      See <https://github.com/icing/mod_md/issues/268>
+    - Fixed a mixup in md-status handler when static certificate files
+      and renewal was configured at the same time.
+  *) mod_md: values for External Account Binding (EAB) can
+     now also be configured to be read from a separate JSON
+     file. This allows to keep server configuration permissions
+     world readable without exposing secrets.
+  *) mod_proxy_uwsgi: Remove duplicate slashes at the beginning of PATH_INFO.
+
+-------------------------------------------------------------------
 Wed Nov 24 11:04:43 UTC 2021 - pgajdos@suse.com
 
 - httpd-framework updated to svn1894461
