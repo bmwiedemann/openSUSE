@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 13 17:32:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.19.0
+  * Fixed parsing of Defined values in the Apache plugin to allow
+    for = in the value.
+
+-------------------------------------------------------------------
 Tue Aug 10 13:49:41 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to version 1.18.0

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot-apache
-Version:        1.18.0
+Version:        1.20.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0
@@ -29,8 +29,6 @@ BuildRequires:  %{python_module augeas}
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module zope.component}
-BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       apache2
@@ -38,8 +36,6 @@ Requires:       augeas-lenses
 Requires:       python-acme >= %{version}
 Requires:       python-augeas
 Requires:       python-certbot >= %{version}
-Requires:       python-zope.component
-Requires:       python-zope.interface
 BuildArch:      noarch
 %python_subpackages
 
