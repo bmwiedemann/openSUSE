@@ -1,7 +1,7 @@
 #
 # spec file for package radeontop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           radeontop
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Tool to view Radeon GPU utilization
 License:        GPL-3.0-only
@@ -56,7 +56,7 @@ export CFLAGS="%{optflags}"
 %files
 %license COPYING
 %doc README.md
-%{_sbindir}/%{name}
+%{_bindir}/%{name}
 %{_libdir}/lib%{name}_xcb.so
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
