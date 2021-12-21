@@ -24,7 +24,7 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -46,7 +46,7 @@ Source16:       initialize_cache_if_needed.sh
 Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch2:         old_nettle_compat.patch
-Patch3:	harden_squid.service.patch
+Patch3:         harden_squid.service.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  expat
 BuildRequires:  fdupes
