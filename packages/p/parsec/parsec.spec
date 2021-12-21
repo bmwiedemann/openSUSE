@@ -33,6 +33,8 @@ Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
 Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-c1cf912.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/parallaxsecond/parsec/issues/569
+Patch0:         harden_parsec.service.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -75,6 +77,7 @@ sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
 # all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"]
 # But disable "trusted-service-provider" until we have a trusted-services package
 echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "all-authenticators"]' >> Cargo.toml
+%patch0 -p1
 
 %build
 export PROTOC=%{_bindir}/protoc

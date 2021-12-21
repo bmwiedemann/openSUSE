@@ -5,6 +5,15 @@ Thu Dec  9 11:05:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
   users to access the service - boo#1193484 - CVE-2021-36781
 
 -------------------------------------------------------------------
+Fri Oct 15 07:01:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_parsec.service.patch
+  Modified:
+  * parsec.service
+  * Upstream submission: https://github.com/parallaxsecond/parsec/issues/569
+
+-------------------------------------------------------------------
 Mon Sep 27 10:18:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Allow access to /run/parsec to all users

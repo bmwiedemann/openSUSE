@@ -1,0 +1,22 @@
+Index: parsec-0.8.0/systemd-daemon/parsec.service
+===================================================================
+--- parsec-0.8.0.orig/systemd-daemon/parsec.service
++++ parsec-0.8.0/systemd-daemon/parsec.service
+@@ -3,6 +3,17 @@ Description=Parsec Service
+ Documentation=https://parallaxsecond.github.io/parsec-book/parsec_service/install_parsec_linux.html
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ WorkingDirectory=/home/parsec/
+ ExecStart=/usr/libexec/parsec/parsec --config /etc/parsec/config.toml
+ 

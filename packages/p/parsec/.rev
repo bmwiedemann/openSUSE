@@ -65,4 +65,16 @@
 </comment>
     <requestid>937794</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>12e3e30cc4c4a94baaa00120be654e2b</srcmd5>
+    <version>0.8.0</version>
+    <time>1640108451</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_parsec.service.patch
+  Modified:
+  * parsec.service
+  * Upstream submission: https://github.com/parallaxsecond/parsec/issues/569</comment>
+    <requestid>941864</requestid>
+  </revision>
 </revisionlist>
