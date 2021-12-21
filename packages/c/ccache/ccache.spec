@@ -25,6 +25,7 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch1:         xxhash-avoid-armv6-unaligned-access.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libzstd-devel >= 1.1.2
@@ -38,7 +39,7 @@ being done again. Supported languages are C, C++, Objective-C and
 Objective-C++.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

@@ -1,0 +1,17 @@
+Index: ccache-4.5.1/src/third_party/xxhash.h
+===================================================================
+--- ccache-4.5.1.orig/src/third_party/xxhash.h
++++ ccache-4.5.1/src/third_party/xxhash.h
+@@ -806,10 +806,8 @@ XXH_PUBLIC_API XXH128_hash_t XXH128(cons
+  * Prefer these methods in priority order (0 > 1 > 2 > 3)
+  */
+ #ifndef XXH_FORCE_MEMORY_ACCESS   /* can be defined externally, on command line for example */
+-#  if !defined(__clang__) && defined(__GNUC__) && defined(__ARM_FEATURE_UNALIGNED) && defined(__ARM_ARCH) && (__ARM_ARCH == 6)
+-#    define XXH_FORCE_MEMORY_ACCESS 2
+-#  elif !defined(__clang__) && ((defined(__INTEL_COMPILER) && !defined(_WIN32)) || \
+-  (defined(__GNUC__) && (defined(__ARM_ARCH) && __ARM_ARCH >= 7)))
++#  if !defined(__clang__) && ((defined(__INTEL_COMPILER) && !defined(_WIN32)) || \
++  (defined(__GNUC__) && (defined(__ARM_ARCH) && __ARM_ARCH >= 6)))
+ #    define XXH_FORCE_MEMORY_ACCESS 1
+ #  endif
+ #endif

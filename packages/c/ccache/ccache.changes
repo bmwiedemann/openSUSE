@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 17 15:25:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add xxhash-avoid-armv6-unaligned-access.patch (bsc#1193317) 
+
+-------------------------------------------------------------------
 Thu Dec  2 21:57:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.1:
