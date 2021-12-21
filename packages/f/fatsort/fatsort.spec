@@ -1,7 +1,7 @@
 #
 # spec file for package fatsort
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           fatsort
-Version:        1.6.3.622
+Version:        1.6.4.625
 Release:        0
 Summary:        FAT Filesystem Sorting Utility
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            http://fatsort.sourceforge.net
+URL:            https://fatsort.sourceforge.io/
 Source0:        https://sourceforge.net/projects/fatsort/files/fatsort-%{version}.tar.xz
 BuildRequires:  help2man
 
@@ -38,10 +38,8 @@ transmitted to the device. FATSort can help here.
 %make_build CFLAGS="%{optflags}"
 
 %install
-install -Dpm 0755 -p src/%{name}   \
-  %{buildroot}%{_sbindir}/%{name}
-install -Dpm 0644 -p man/%{name}.1 \
-  %{buildroot}%{_mandir}/man1/%{name}.1
+install -Dpm 0755 -p src/%{name}   %{buildroot}%{_sbindir}/%{name}
+install -Dpm 0644 -p man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %license LICENSE.txt

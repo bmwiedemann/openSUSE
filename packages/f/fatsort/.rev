@@ -71,4 +71,12 @@
   * test makefile now returns error code</comment>
     <requestid>826006</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>13b69cf49943ad4a660fdda1f864faa5</srcmd5>
+    <version>1.6.4.625</version>
+    <time>1640108442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941800</requestid>
+  </revision>
 </revisionlist>

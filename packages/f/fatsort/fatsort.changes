@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 20 21:52:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4.625:
+  * Fixed randomization for fatXX.
+  * added test cases for randomization option 
+
+-------------------------------------------------------------------
 Wed Aug 12 11:03:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.3.622:
