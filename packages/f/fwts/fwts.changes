@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 21 09:34:50 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 21.12.00:
+  * lib: fwts_version.h - update to V21.12.00
+  * debian: update changelog
+  * dmicheck: skip scanning smbios in /dev/mem on aarch64
+  * s3: increase s2idle_residency to u64 to avoid overflows
+  * s3: fix incorrect error messages for s2idle_residency
+  * acpi: uniqueid: clean up pedantic static analysis warnings
+  * s4: clean up pedantic static analysis warnings
+
+-------------------------------------------------------------------
 Fri Dec  3 07:17:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 21.11.00:
