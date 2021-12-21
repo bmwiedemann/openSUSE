@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 21 18:13:05 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 1.22.0
+  * sync with main certbot package
+- Refresh python-acme.keyring
+
+-------------------------------------------------------------------
 Mon Dec 13 17:27:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.20.0
