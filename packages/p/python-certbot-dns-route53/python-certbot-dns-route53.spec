@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot-dns-route53
-Version:        1.18.0
+Version:        1.22.0
 Release:        0
 Summary:        Route53 DNS Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-rou
 BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module certbot >= %{version}}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
