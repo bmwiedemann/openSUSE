@@ -1,0 +1,17 @@
+diff -Nur xsnow-3.3.6/data/xsnow.desktop.in new/data/xsnow.desktop.in
+--- xsnow-3.3.6/data/xsnow.desktop.in	2021-11-05 15:48:34.000000000 +0100
++++ new/data/xsnow.desktop.in	2021-12-04 18:04:18.694425129 +0100
+@@ -4,11 +4,11 @@
+ Exec=xsnow
+ Icon=xsnow
+ Type=Application
+-Categories=Game;
++Categories=Game;Simulation
+ Terminal=false
+ Name[en_US]=xsnow
+ Keywords=christmas;santa;snow;xmas
+-Version=XSNOW_VERSION
++Version=1.0
+ StartupNotify=true
+ Actions=start;nomenu;
+ 

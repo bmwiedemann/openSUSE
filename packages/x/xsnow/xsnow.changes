@@ -1,0 +1,251 @@
+-------------------------------------------------------------------
+Sat Dec  4 16:58:43 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to version 3.3.6:
+  * selfrep.c, utils.c: better implementation of writing the tar
+    ball.
+  * windows.c: do_wupdate(): force update windows every 6th call
+    implement -ignoretop -ignorebottom, inclusive buttons in 'snow'
+    panel
+  * some minor adjustments in the ui
+  * snow.c: genxpmflake(): place first dot indeed in the 
+    middle (0,0) and not in a corner
+  * simplemake.sh: correct call to toascii.sh
+  * windows.c: do_wupdate(): force update windows every 10th call
+  * xsnow.h: re-evaluated timings
+  * scenery.c: add ClearScreen() in do_initbaum()
+- Updated to version 3.3.5:
+  * docs.c: document XFCE compositing requirement
+  * implemented -selfrep
+  * adapted simplemake.sh
+- Updated to version 3.3.4:
+  * flags.c: remove dependency from libxml2, .xsnowrc has now different
+    format
+  * main.c: add check for existing colors for TreeColor, BirdsColor and 
+    SnowColor
+  * doit.h: change colors "snow" and "chartreuse" into hex
+  * scenery.c: scenery_init(): sanitize Flags.TreeType
+- Rebase xsnow-desktop_file.patch.
+- Rebase xsnow-bindir.patch.
+
+-------------------------------------------------------------------
+Thu Dec  2 16:43:42 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.3:
+  * Add metainfo: data/xsnow.appdata.xml, mv src/xsnow.desktop to
+    data/xsnow.desktop, add flag '-b' to awk in gen_ui_xml.sh.
+  * Implement flag -changelog, add some old ChangeLogs, found in
+    the README of version 1.42, gen_ui_xml.sh: remove flag '-b'
+    from awk ('-b' only valid for gawk), return exit code of awk
+    command.
+  * docs.c: document xcompmgr problem, scenery.c: explicit convert
+    (myScale*w+2) and (myScale*h+2) to int, to keep g++ happy.
+  * Dependencies: made up-to-date.
+  * moon.c: add #include <stdlib.h>.
+- Rebase xsnow-desktop_file.patch.
+- Rebase xsnow-bindir.patch.
+
+-------------------------------------------------------------------
+Sat Nov 13 05:08:16 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 3.3.2
+  - Remove redundand files maketar, makectags
+- Update to 3.3.1
+  - Fix issues with LXDE desktop and xscreensaver
+- Update to 3.3.0
+  - Replace transparent.{c,h} with maketrans.{c,h}
+  - Add overall scale factor
+  - All drawings using cairo
+  - Use xdbe (double buffer) when not using cairo
+  - Moon and birds also when painting on root window
+  - doit.h:default followsanta = 0
+  - windows.c: do not snow on window with exactly 
+    width=SnowWinWidth, x=0, y<100
+  - Sanitize scenery.c with respect to color of the vintage tree
+- Update to 3.2.3
+  - Minor adaption in simplemake.sh
+  - Make use of VERSION in config.h
+  - Adapt simplemake.sh 
+  - ixpm.c: correct stupid bug in xpm_set_color()
+  - Remove UNUSED
+  - Extended range of XSelectInput somewhat
+  - Change timing of do_wupdate to look more frequently if 
+    something has changed
+- Update to 3.2.2
+  - Change 'changes' into Flags.Changes
+  - Change gdkwindow -> NULL, several files
+  - ui.c: better behaviour of 'below windows' - 'confirm to click'
+    combo
+  - flags.c flags.h: separate FLAGS for default and vintage
+  - docs.c: some minor additions
+  - buttons.h: change togglecode into scalecode
+  - flags.h uitils.h: transport some macro's
+  - ui.c: add documention about flags and buttons
+  - main.c: optionally move windows to 0,0 (movewindow())
+    Flags.MoveWindow --movewindow
+  - some tweaks MoveWindow
+  - more tweaks for MoveWindow
+  - Use also XConfigureWindow to set below or above. Now behaviour
+    is OK when running in FVWM + xcompmgr or compton
+  - transparent.c: fixed 'show desktop' issue by re-adding:
+    gdk_window_set_type_hint(gdk_window,GDK_WINDOW_TYPE_HINT_DOCK);
+  - wmctrl.c: add check for _NET_SHOWING_DESKTOP for visibility of
+    windows
+- windows.c: keep SnowWin below if Flags.BelowAll. Needed when
+  SnowWin is not click-through.
+  - add -theme flag. No button: too complicated for me.
+  - make theme chooseable with a button
+  - ui.c: minor tweaks
+- Update to 3.2.1
+  - utils.h: add fflush(NULL) to UIDO and UIDOS
+  - moon.c: create halo surface for painting.
+  - fine tuning of ui graphics
+  - start simplifying ui.c
+  - doit.h flags.h: change DOIT macro's
+  - docs.c:make it better
+  - add option -hidemenu, add this to xsnow.desktop
+  - better format noisy output
+  - use #include "undefall.inc" to undef frquently used macros
+  - simplify glade-id's
+  - stratify ui.c code
+- Update to 3.2.0
+  - use 256x256 xpm for moon
+  - start Santa, aware of moon position
+  - adapt some trivial texts
+  - add halo around moon
+  - add show-stars button
+  - add grey-out for moon buttons if not compositing manager
+  - add notice about that in the celestials tab
+  - fix bug in moon.c: show moon, independent of birds
+  - some experiments with halo colours
+  - moon.c: fix memory leak: halo_draw()
+  - docs.c: adapt man page
+  - ui.c: better way to grey out moon buttons 
+  - configure.ac: remove test for alloca, and tell kdtree.c
+    not to use alloca
+  - ui.c: remove malicious assert from report_tree_type()
+  - utils.h: create macros UIDO and UIDOS to better deal with
+    if(Flags.x != OldFlags.x) ....
+  - many functions: replace construct above with UIDO or UIDOS
+  - Ack in man page for picture of moon.
+- Update to 3.1.10
+  - add moon and show-noshow for moon
+  - put wind, stars, moon, meteorites in celestials
+  - add slider for moon speed
+  - add button for moon size
+  - let Santa like to hover the moon
+- Update to 3.1.9
+  - place 'Xsnow running' to a place wher this does not appear in
+    xsnow -h or xsnow-H
+  - wmctrl.c: a second check if window is hidden, based
+    on WM_STATE
+    see: https://tronche.com/gui/x/icccm/sec-4.html#s-4.1.3.1
+  - typos in docs.c
+  - wmctrl.c: use XQueryTree to find windows to snow on if
+    _NET and _GTK are not available.
+  - Use also XGetWindowAttributes to determine if a window
+    is visible.
+  - change max number of scenery items to 60
+  - wmctrl.c: use XGetWindowAttributes in stead of XGetGeometry
+- Update to 3.1.8
+  - use config.h to determine if alloca.h should be included
+    configure.ac, Makefile.am: use pkg-config to locate 
+    X11, Xpm, xt, xproto
+  - configure.ac: remove tests for libraries, relying on
+    pkg-config now
+  - remove uses of alloca, except ik kdtree.c
+  - define USE_LIST_NODE_ALLOCATOR and  NO_ALLOCA in kdtree.c
+  - remove USE_LIST_NODE_ALLOCATOR from Makefile.am
+  - snow.c: free local variables in genxpmflake()
+- Rebase
+  - xsnow-bindir.patch
+  - xsnow-desktop_file.patch
+
+-------------------------------------------------------------------
+Thu Dec  3 18:12:06 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 3.1.7 (only changes from 3.1.6)
+  - windows.c: take care of redfining Rootwindow if xscreensaver
+    is detected
+- Run spec-cleaner
+- Rebase
+  - xsnow-bindir.patch
+  - xsnow-desktop_file.patch
+
+-------------------------------------------------------------------
+Tue Dec 24 12:24:00 UTC 2019 - Santa <santa@northpole.org>
+
+- Update to 2.0.15
+  * Changed timing loop
+  * Find Desktop in Gnome and KDE
+  * Can run in user-pointed window (-xwininfo)
+  * Added another kind of tree
+  * Added starts
+  * Added meteorite
+  * Changed algorithm for fallen snow
+  * nosnowarea
+- add patches
+  * xsnow-bindir.patch
+  * xsnow-desktop_file.patch
+
+-------------------------------------------------------------------
+Wed Dec 27 15:59:21 CET 2006 - sndirsch@suse.de
+
+- fixed kroot path (Bug #230787) 
+
+-------------------------------------------------------------------
+Sun Jul 23 16:52:04 CEST 2006 - sndirsch@suse.de
+
+- fixed build for X.Org 7 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul  4 12:33:11 CEST 2005 - sndirsch@suse.de
+
+- use RPM_OPT_FLAGS 
+
+-------------------------------------------------------------------
+Wed Jan 19 17:53:49 CET 2005 - sndirsch@suse.de
+
+- xsnow-1.42.diff:
+  * fixed "'variable' is used uninitialized" warning (gcc 4)
+
+-------------------------------------------------------------------
+Wed Dec  1 12:26:48 CET 2004 - sndirsch@suse.de
+
+- use wrapper to fix the KDE root window problem (Bug #48572)
+
+-------------------------------------------------------------------
+Sun Jan 11 11:34:07 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Wed Apr 23 10:30:50 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Feb  4 15:57:58 CET 2003  - fehr@suse.de
+
+- update to version 1.42 for KDE compatibility
+
+-------------------------------------------------------------------
+Wed Sep 18 01:26:52 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides
+
+-------------------------------------------------------------------
+Mon May 29 11:13:34 MEST 2000 - fehr@suse.de
+
+- moved content of Makefile.Linux to spec file
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+

@@ -1,0 +1,7 @@
+<package name="xsnow" project="openSUSE:Factory">
+  <title>A Christmas Animation</title>
+  <description>A nice animation. Santa Claus drives across the screen, pulled by his
+reindeer. It snows and the snow accumulates on top of the windows.
+</description>
+  <devel project="X11:Utilities" package="xsnow"/>
+</package>
