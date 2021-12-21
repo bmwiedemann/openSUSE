@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 19 17:45:15 UTC 2021 - Josua Mayer <josua.m@t-online.de>
+
+- Add aarch64 to ExclusiveArch: VAAPI is currently usable with the
+  amdgpu driver on aarch64 devices with Radeon PCIe GPUs.
+
+-------------------------------------------------------------------
 Thu Sep 16 10:04:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop building doc sub-package, we will in the future use
