@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Dec 19 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.4.1
+
+  Added:
+  * Expose "ScriptEditor::edit" to scripting
+  * TextEdit: Allow toggling bookmark gutter
+  * TextEdit: methods to get position from column and line
+  * "Input.is_physical_key_pressed()" method
+  * Expose "intersect_point" in 3D physics server
+  * BVH: option for expanded AABBs in leaves
+  * Support for OpenXR export configurations
+
+  Changed:
+  * Remove editor splash screen with sponsors logo
+  * Clamp rotation for up/down orbiting shortcuts
+  * Sort and group theme properties in docs,
+    improve formatting for theme and enums
+
+  Fixed:
+  * TileSet editor workspace breaking
+  * Only add light occlusion for visible TileMaps
+  * Selecting next/previous subtile in TileSet editor
+  * Swapped rest pose action names in the Skeleton2D editor
+  * Theme Editor crash when clicking the element picker
+  * Don't ignore the type mismatch in GDScript setter function
+  * GDScript: Support multiline indexing with "[]"
+  * Prevent LSP adding signal callbacks to non GDScripts
+  * RichTextLabel: Right alignment regression
+  * RichTextLabel: min/max line width calculation
+  * Support for CSG and GridMap in glTF scene export
+  * Crash when exporting meshes to glTF that have no skin
+  * HTTP request headers being included in response
+  * Potential infinite loop when connecting HTTPClient
+  * WebRTC returning packets from peers too early
+  * Volume calculation for cylinders in GodotPhysics
+  * Errors in KinematicBody when floor is destroyed or removed
+  * Double use of seed in random Particles shader variables
+  * Update CanvasItem when MultiMesh instance transform changes
+  * Portals: Allow user to set roaming expansion margin
+  * Incorrect VisualServer RID cleanup in various locations
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.1/Godot_v3.4.1-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Mon Nov 8 12:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.4
