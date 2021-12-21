@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:56:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop python 3.6 support since python-google-api-python-client
+  dropped it
+
+-------------------------------------------------------------------
 Tue Aug 10 14:08:47 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to version 1.18.0
