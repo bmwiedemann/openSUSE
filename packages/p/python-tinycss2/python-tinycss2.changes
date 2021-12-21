@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 17 14:03:36 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Tue Nov 23 17:41:46 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.1.1

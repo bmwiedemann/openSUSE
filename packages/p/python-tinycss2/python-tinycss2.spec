@@ -31,7 +31,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-flake8}
 BuildRequires:  %{python_module pytest-isort}
