@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1639755028.beaaca21f
+Version:        4.6.1640096856.6da5eed26
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -278,7 +278,7 @@ sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
 #for double checking
 %if %{with tests}
 sed -i '/Perl::Tidy/d' cpanfile
-cpanm --installdeps --with-feature=test .
+cpanm -n --mirror http://no.where/ --installdeps --with-feature=test .
 %endif
 
 # we don't really need the tidy test

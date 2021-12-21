@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 21 16:04:18 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1640096856.6da5eed26:
+  * Force cpanm to always use a trusted HTTPS mirror
+  * docs: Provide simple example command for 'Manual daemon setup'
+  * docs: Make 'Martchus' specific development helper less prominent
+  * Only show advanced restart button where applicable
+  * templates: Use small link-type restart buttons to resemble old look
+  * t: Use signatures in ui/26-jobs_restart.t
+  * Add advanced restart dropdown menu
+  * Remove log messages because missing details-*-.json files are expected
+  * Send AMQP event for `label:linked` comments
+  * Send AMQP event for bugref takeover comments with relevant information
+  * Add proper signal handling in needle scan minion task
+
+-------------------------------------------------------------------
 Sun Dec 19 08:04:15 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1639755028.beaaca21f:
