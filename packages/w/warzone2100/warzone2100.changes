@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Dec 20 20:38:48 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.2.4
+  * General:
+    * Fix: Prebuilt ally gates not being passable
+    * Fix: Cleanup old log files
+    * Fix: Various crashes and resource leaks
+  * Campaign:
+    * Change: Ignore VTOLs when a campaign enemy group unit can't
+      hit them 
+    * Change: Better target selections by sorting targets
+      relative to group average coordinate
+    * Change: Add a time range to cam3-1 launch / detonate sounds
+    * Change: Make the winning requirements for Beta-end more clear
+    * Change: Make Gamma 5 a little more hectic on Hard / Insane
+      difficulty
+  * Multiplayer:
+    * Add: Additional lobby chat slash commands, cmdinterface
+      event output
+    * Change: Set default AI back to Nexus 
+    * Change: Make some AIs easier when using Easy difficulty
+    * Change: Remove old Cobra Hard / Insane weapon perks 
+    * Fix: Repeated game over message
+    * Fix: Add campaign Collective and Nexus structures back into
+      mp stats file, fixing old maps
+  * Challenges:
+    * Fix: Specify specific AIs for "Back to Basics" and
+      "Hide Behind Me"
+- Drop warzone2100-fix-building-with-vk-1.2.198.patch,fixed
+  upstream: gh#Warzone2100/warzone2100#2479
+
+-------------------------------------------------------------------
 Sat Dec  4 06:28:49 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100-fix-building-with-vk-1.2.198.patch, fix for
