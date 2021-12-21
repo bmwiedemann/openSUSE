@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 21 16:43:18 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20211209.2669efd:
+  * Fix file handling in lines pass.
+  * Allow and document building on windows
+  * Remove tests.
+  * handle user-defined literals for remove-namespace pass
+  * skip CallExpr if CurrentStmt is null
+  * Fix README
+  * Fix formatting.
+  * Improve wording related to compiler warnings.
+
+-------------------------------------------------------------------
 Fri Nov 26 09:58:16 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20211126.bd7809f:

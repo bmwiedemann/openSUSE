@@ -673,4 +673,20 @@
   * Discourage -Werror in README.md</comment>
     <requestid>934014</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b0604f60313f9aacc94ed34ee59c5257</srcmd5>
+    <version>2.4.0+git.20211209.2669efd</version>
+    <time>1640108458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20211209.2669efd:
+  * Fix file handling in lines pass.
+  * Allow and document building on windows
+  * Remove tests.
+  * handle user-defined literals for remove-namespace pass
+  * skip CallExpr if CurrentStmt is null
+  * Fix README
+  * Fix formatting.
+  * Improve wording related to compiler warnings.</comment>
+    <requestid>941895</requestid>
+  </revision>
 </revisionlist>
