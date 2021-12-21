@@ -198,4 +198,32 @@
   * chore: update SBOM generation (#1349)</comment>
     <requestid>935778</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>25331e648d633623b6514e96d12dfaba</srcmd5>
+    <version>0.21.3</version>
+    <time>1640108441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.3:
+  * fix(docs): typo (#1488)
+  * feat(plugin): Add option to update plugin (#1462)
+  * fix: fixed skipFiles/skipDirs flags for relative path (#1482)
+  * feat (plugin): add list and info command for plugin (#1452)
+  * fix: set up a vulnerability severity (#1458)
+  * chore: add arm64 deb package (#1480)
+  * Link to trivy tutorial on Semaphore (#1449)
+  * refactor(helm): externalize env vars to configMap (#1345)
+  * docs: provide more information on scanning Google's GCR (#1426)
+  * docs(misconfiguration): added instruction for misconfiguration detection (#1428)
+  * Update git-repository.md (#1430)
+  * fix(hooks): exclude unrelated lib types from system files filtering (#1431)
+  * chore: run `go fmt` (#1429)
+  * fix(sarif): change `help` field in the sarif template. (#1423)
+  * Update fanal with cfsec version update (#1425)
+  * Replace deprecated option in goreleaser (#1406)
+  * feat(alpine): support 3.15 (#1422)
+  * chore: test the helm chart in the PR and used the commit hash (#1414)
+  * chore(deps): bump alpine from 3.14 to 3.15.0 (#1417)
+  * chore(release): add ubuntu older versions to deploy script (#1416)</comment>
+    <requestid>941786</requestid>
+  </revision>
 </revisionlist>
