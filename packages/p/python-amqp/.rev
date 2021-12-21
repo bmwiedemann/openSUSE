@@ -375,4 +375,17 @@
   - Moved to GitHub actions CI (#359)</comment>
     <requestid>900656</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f71edf20aaf95408e8f3d0f1872b4191</srcmd5>
+    <version>5.0.8</version>
+    <time>1640108416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.8:
+  - Reduce memory usage of Connection (#377)
+  - Add additional error handling around code where an OSError 
+    may be raised on failed connections. Fixes (#378)
+  - Remove dependency to case
+  - Bugfix: not closing socket after server disconnect</comment>
+    <requestid>941637</requestid>
+  </revision>
 </revisionlist>
