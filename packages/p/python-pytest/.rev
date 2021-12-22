@@ -954,4 +954,23 @@
  *  Enable compatibility with pluggy 1.0 or later.</comment>
     <requestid>920178</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>c5efe4db289adeed01c1252eeb5d4ec8</srcmd5>
+    <version>6.2.5</version>
+    <time>1640200662</time>
+    <user>dimstar_suse</user>
+    <comment>- Using URLs for Patches looks like a great idea, but it is too
+  unstable. Please, don't.
+- Add pytest-pr8664-py3.10-test_trial_error-fail.patch
+  * gh#pytest-dev/pytest#8664
+- Add pytest-pr9417-py3.10.1-fail.patch
+  * gh#pytest-dev/pytest#9417
+- Disable libalternatives usage until all python-pytest* packages
+  are on the same page (see sr#926611)
+- Disable all update-alternatives install calls if libalternatives
+  is used.
+- Use libalternatives instead of update-alternatives.
+</comment>
+    <requestid>941699</requestid>
+  </revision>
 </revisionlist>

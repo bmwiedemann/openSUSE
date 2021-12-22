@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec 20 19:52:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Using URLs for Patches looks like a great idea, but it is too
+  unstable. Please, don't.
+
+-------------------------------------------------------------------
+Sun Dec 19 14:08:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add pytest-pr8664-py3.10-test_trial_error-fail.patch
+  * gh#pytest-dev/pytest#8664
+- Add pytest-pr9417-py3.10.1-fail.patch
+  * gh#pytest-dev/pytest#9417
+- Disable libalternatives usage until all python-pytest* packages
+  are on the same page (see sr#926611)
+
+-------------------------------------------------------------------
+Wed Oct 20 15:51:17 UTC 2021 - schubi <schubi@localhost>
+
+- Disable all update-alternatives install calls if libalternatives
+  is used.
+
+-------------------------------------------------------------------
+Fri Oct  1 06:25:34 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Tue Sep 14 09:22:10 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 6.2.5

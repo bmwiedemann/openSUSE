@@ -1,0 +1,25 @@
+From 51293de324fc04e778c753a0fd66cb10fe05bf14 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Wed, 12 May 2021 13:30:46 +0200
+Subject: [PATCH] Ignore DeprecationWarnings in test_trial_error
+
+Fixes https://github.com/pytest-dev/pytest/issues/8663
+---
+ testing/test_unittest.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: pytest-6.2.5/testing/test_unittest.py
+===================================================================
+--- pytest-6.2.5.orig/testing/test_unittest.py
++++ pytest-6.2.5/testing/test_unittest.py
+@@ -533,7 +533,9 @@ class TestTrialUnittest:
+                 # will crash both at test time and at teardown
+         """
+         )
+-        result = testdir.runpytest("-vv", "-oconsole_output_style=classic")
++        result = testdir.runpytest(
++            "-vv", "-oconsole_output_style=classic", "-W", "ignore::DeprecationWarning"
++        )
+         result.stdout.fnmatch_lines(
+             [
+                 "test_trial_error.py::TC::test_four FAILED",

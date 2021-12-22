@@ -16,6 +16,14 @@
 #
 
 
+# https://build.opensuse.org/request/show/926611#comment-1560144
+%bcond_with pytest_is_ready_for_alts
+%if 0%{?suse_version} > 1500 && %{with pytest_is_ready_for_alts}
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -33,11 +41,15 @@ Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest-pr8664-py3.10-test_trial_error-fail.patch -- gh#pytest-dev/pytest#8664
+Patch0:         pytest-pr8664-py3.10-test_trial_error-fail.patch
+# PATCH-FIX-UPSTREAM pytest-pr9417-py3.10.1-fail.patch -- gh#pytest-dev/pytest#9417
+Patch1:         pytest-pr9417-py3.10.1-fail.patch
 BuildRequires:  %{python_module setuptools >= 42.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 19.2.0
 Requires:       python-importlib-metadata >= 0.12
 Requires:       python-iniconfig
@@ -47,8 +59,13 @@ Requires:       python-py >= 1.8.2
 Requires:       python-setuptools
 Requires:       python-toml
 Requires:       python-wcwidth
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Obsoletes:      python-pytest-doc
 BuildArch:      noarch
 %if %{with test}
@@ -78,7 +95,7 @@ The pytest framework makes it easy to write small tests, yet scales to support
 complex functional testing for applications and libraries.
 
 %prep
-%setup -q -n pytest-%{version}
+%autosetup -p1 -n pytest-%{version}
 # fix gh#pytest-dev/pytest#7891 still happening for Leap
 sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
 
@@ -99,7 +116,13 @@ sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
 %endif
 
 %if ! %{with test}
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pytest
+
 %post
+%if ! %{with libalternatives}
 # py.test was the master until Oct 2020. boo#1178547
 alternatives=$(update-alternatives --quiet --list py.test 2> /dev/null) && (
   update-alternatives --remove-all py.test
@@ -113,6 +136,7 @@ alternatives=$(update-alternatives --quiet --list py.test 2> /dev/null) && (
     fi
   done
 ) ||:
+%endif
 %python_install_alternative pytest py.test
 
 %postun
