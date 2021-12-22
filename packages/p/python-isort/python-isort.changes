@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 19 20:17:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip deprecated requirementslib for all flavors
+
+-------------------------------------------------------------------
+Sun Dec 19 17:58:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip the requirementslib tests on python310 too
+
+-------------------------------------------------------------------
 Sun Nov 14 21:09:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 5.10.1:

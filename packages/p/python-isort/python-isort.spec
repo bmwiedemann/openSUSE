@@ -44,7 +44,6 @@ Requires(postun):update-alternatives
 Recommends:     python-colorama >= 0.4.3
 Recommends:     python-pip-api
 Recommends:     python-pipreqs
-Recommends:     python-requirementslib
 Suggests:       git
 BuildArch:      noarch
 %if %{with test}
@@ -60,8 +59,6 @@ BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
-# requirementslib not ready for python 3.9 yet -- gh#sarugaku/requirementslib#288
-BuildRequires:  %{python_module requirementslib >= 1.5 if %python-base < 3.9}
 BuildRequires:  git
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
@@ -110,9 +107,10 @@ ignoretests+=" --ignore tests/benchmark"
 # test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 donttest="(test_setting_combinations and test_isort_is_idempotent)"
-# requirementslib is not available yet for python39
+# requirementslib is not available yet for python 3.9 or greater, 
+# it's a deprecated finder for isort so we drop it
 # https://github.com/sarugaku/requirementslib/issues/288
-python39_donttest=" or (test_deprecated_finders and test_pipfile_finder)"
+donttest+=" or (test_deprecated_finders and test_pipfile_finder)"
 
 ORIGPATH=$PATH
 %{python_expand # install isort and required example projects into custom root

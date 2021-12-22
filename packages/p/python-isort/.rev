@@ -451,4 +451,14 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>932831</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a0e1a4f88896dfb431768ed00423baa8</srcmd5>
+    <version>5.10.1</version>
+    <time>1640200660</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip deprecated requirementslib for all flavors
+- Skip the requirementslib tests on python310 too
+</comment>
+    <requestid>941539</requestid>
+  </revision>
 </revisionlist>
