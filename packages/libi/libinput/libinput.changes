@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 19:28:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing pkgconfig(wayland-protocols) BuildRequires:
+  Previously pulled in by an other package.
+
+-------------------------------------------------------------------
 Mon Dec 13 10:01:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.19.3

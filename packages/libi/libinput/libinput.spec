@@ -66,6 +66,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(wayland-protocols)
 %endif
 BuildRequires:  pkgconfig(libevdev) >= 0.4
 BuildRequires:  pkgconfig(libudev)
