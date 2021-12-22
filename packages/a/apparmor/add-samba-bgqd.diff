@@ -14,12 +14,11 @@ Date:   Fri Oct 15 22:02:36 2021 +0200
     
     Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1191532
 
-diff --git a/profiles/apparmor.d/samba-bgqd b/profiles/apparmor.d/samba-bgqd
-new file mode 100644
-index 00000000..c81c64f1
+Index: apparmor-3.0.3/profiles/apparmor.d/samba-bgqd
+===================================================================
 --- /dev/null
-+++ b/profiles/apparmor.d/samba-bgqd
-@@ -0,0 +1,18 @@
++++ apparmor-3.0.3/profiles/apparmor.d/samba-bgqd
+@@ -0,0 +1,20 @@
 +abi <abi/3.0>,
 +
 +include <tunables/global>
@@ -35,13 +34,15 @@ index 00000000..c81c64f1
 +  @{PROC}/sys/kernel/core_pattern r,
 +  @{run}/samba/samba-bgqd.pid wk,
 +
++  /usr/lib*/samba/samba-bgqd m,
++
 +  # Site-specific additions and overrides. See local/README for details.
 +  include if exists <local/samba-bgqd>
 +}
-diff --git a/profiles/apparmor.d/usr.sbin.smbd b/profiles/apparmor.d/usr.sbin.smbd
-index 92305564..b8fdad15 100644
---- a/profiles/apparmor.d/usr.sbin.smbd
-+++ b/profiles/apparmor.d/usr.sbin.smbd
+Index: apparmor-3.0.3/profiles/apparmor.d/usr.sbin.smbd
+===================================================================
+--- apparmor-3.0.3.orig/profiles/apparmor.d/usr.sbin.smbd
++++ apparmor-3.0.3/profiles/apparmor.d/usr.sbin.smbd
 @@ -24,6 +24,8 @@ profile smbd /usr/{bin,sbin}/smbd {
    capability sys_resource,
    capability sys_tty_config,

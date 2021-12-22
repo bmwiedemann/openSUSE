@@ -2218,4 +2218,13 @@ libapparmor:
 NOTE: Without this patch, dovecot is spamming the audit.log with denials. Please accept ASAP.</comment>
     <requestid>941547</requestid>
   </revision>
+  <revision rev="161" vrev="7">
+    <srcmd5>05773e1643f2a0e112ecc4368a8be087</srcmd5>
+    <version>3.0.3</version>
+    <time>1640200661</time>
+    <user>dimstar_suse</user>
+    <comment>-  Modify add-samba-bgqd.diff: Add new rule to fix new &quot;DENIED
+   operation=&quot;file_mmap&quot; violation in SLE15-SP4; (bsc#1192336).</comment>
+    <requestid>941697</requestid>
+  </revision>
 </revisionlist>

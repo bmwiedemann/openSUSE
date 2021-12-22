@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 20 11:01:50 UTC 2021 - Noel Power <nopower@suse.com>
+
+-  Modify add-samba-bgqd.diff: Add new rule to fix new "DENIED
+   operation="file_mmap" violation in SLE15-SP4; (bsc#1192336).
+
+-------------------------------------------------------------------
 Sun Dec 19 21:42:54 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - add openssl-engdef-mr818.diff: Allow reading /etc/ssl/engdef.d/ and

@@ -81,7 +81,8 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # update abstractions/python and profiles for python 3.10 (submitted upstream 2021-08-11 https://gitlab.com/apparmor/apparmor/-/merge_requests/783)
 Patch7:         profiles-python-3.10-mr783.diff
 
-# add samba-bgqd profile (submitted upstream 2021-10-15 https://gitlab.com/apparmor/apparmor/-/merge_requests/807)
+# add samba-bgqd profile (accepted upstream 2021-10-15 https://gitlab.com/apparmor/apparmor/-/merge_requests/807)
+# updated for boo#1192336 (merged upstream 2021-12-20 https://gitlab.com/apparmor/apparmor/-/merge_requests/819 in 3.0 and master)
 Patch8:         add-samba-bgqd.diff
 
 # aa-notify: Add support for reading s390x and aarch64 wtmp file (boo#1181155) (merged upstream 2021-11-08 in master and 3.0 branch - https://gitlab.com/apparmor/apparmor/-/merge_requests/809)
