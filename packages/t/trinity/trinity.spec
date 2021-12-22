@@ -17,7 +17,7 @@
 
 
 Name:           trinity
-Version:        1.9+git.20211011
+Version:        1.9+git.20211129
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only

@@ -690,4 +690,14 @@
   * protect other children's shm from corruption</comment>
     <requestid>926479</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1e1e162d714b33157b2b072edbed0588</srcmd5>
+    <version>1.9+git.20211129</version>
+    <time>1640200692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20211129:
+  * reduce variable scoping
+  * do not let created timer send SIGINT signal</comment>
+    <requestid>942086</requestid>
+  </revision>
 </revisionlist>
