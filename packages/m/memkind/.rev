@@ -231,4 +231,12 @@ numbers.
 - Add memkind-fix-build.diff for our AS_NEEDED setup. (forwarded request 924218 from aginies)</comment>
     <requestid>924219</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4d20aea756c8caa2178b2f26d87e8688</srcmd5>
+    <version>1.12.0</version>
+    <time>1640200671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942068</requestid>
+  </revision>
 </revisionlist>
