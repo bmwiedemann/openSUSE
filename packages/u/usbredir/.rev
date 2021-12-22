@@ -116,4 +116,12 @@ Tested the build localy (forwarded request 114808 from worldcitizen)</comment>
     <comment></comment>
     <requestid>914041</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>40aecc6a31afc73a308915066fa7da4e</srcmd5>
+    <version>0.12.0</version>
+    <time>1640200667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941785</requestid>
+  </revision>
 </revisionlist>

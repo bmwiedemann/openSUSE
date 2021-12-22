@@ -18,7 +18,7 @@
 
 
 Name:           usbredir
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        A protocol for redirecting USB traffic
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
