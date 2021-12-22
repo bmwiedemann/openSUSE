@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 21 11:36:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.31:
+  + input: Fix a crash with touch on GtkScale.
+  + clipboard: Avoid a double-free.
+  + css: Avoid a crash with radial gradients.
+  + GtkFileChooser: Don't leak search results.
+  + GtkTextView: Support css letterspacing.
+  + Wayland:
+    - Reset position when hiding popups.
+    - Ignore globals we did not bind ourselves.
+    - Avoid infinite loops when hiding surfaces.
+    - Avoid clipboard-related lockups.
+  + X11:
+    - Trap errors while doing XRANDR calls.
+    - Support touchpad gestures with XI 2.4.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:55:10 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
