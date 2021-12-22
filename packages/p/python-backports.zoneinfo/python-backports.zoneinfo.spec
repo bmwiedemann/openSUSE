@@ -16,27 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%if %{python3_version_nodots} >= 39
-%define skip_python3 1
-%endif
+%define skip_python39 1
+%define skip_python310 1
 Name:           python-backports.zoneinfo
 Version:        0.2.1
 Release:        0
 Summary:        Backport of new features in Python's zoneinfo module
 License:        Python-2.0
 Group:          Development/Languages/Python
-Source:         backports.zoneinfo-%{version}.tar.gz
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest}
+URL:            https://github.com/pganssle/zoneinfo
+Source:         https://github.com/pganssle/zoneinfo/archive/refs/tags/%{version}.tar.gz#/backports.zoneinfo-%{version}-gh.tar.gz
+BuildRequires:  %{python_module devel < 3.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module hypothesis >= 5.7.0}
+BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+BuildRequires:  %{python_module importlib_resources if %python-base < 3.7}
+BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  timezone
+# /SECTION
 %if 0%{?python_version_nodots} < 37
 Requires:       python-importlib_resources
 %endif
@@ -47,7 +54,7 @@ This package provides backports of new features in Python's zoneinfo module
 under the backports namespace.
 
 %prep
-%setup -q -n backports.zoneinfo-%{version}
+%setup -q -n zoneinfo-%{version}
 
 %build
 %python_build
@@ -56,10 +63,12 @@ under the backports namespace.
 %python_install
 %python_expand rm %{buildroot}%{$python_sitearch}/backports/__init__.py*
 %python_expand rm -f %{buildroot}%{$python_sitearch}/backports/__pycache__/__init__*.py*
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-#pytest
+# incompatible system timezone data: 4x3 tests fail
+donttest="((ZoneInfoDatetimeSubclassTest or ZoneInfoSubclassTest or ZoneInfoTest or ZoneInfoV1Test) and (test_folds_from_utc or test_bad_keys or test_folds_and_gaps))"
+%pytest_arch -n auto -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

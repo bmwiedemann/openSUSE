@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 21 14:54:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix flavor skips for TW. skip_python3 would skip all flavors.
+- Add URL tag
+- Use Github archive for tests (deselect 12 tests failing due to
+  incompatible system timezone data in relation to outdated test
+  timezone data)
+
+-------------------------------------------------------------------
 Sat Oct 16 23:09:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Initial package 
