@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 02 10:28:02 CET 2021 - aschnell@suse.com
+
+- handle multipath and DM RAID during loading of devicegraph
+- version 0.0.8
+
+-------------------------------------------------------------------
 Tue Nov 23 08:14:04 CET 2021 - aschnell@suse.com
 
 - added command 'show tree' to show tree of devices
