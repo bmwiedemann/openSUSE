@@ -18,16 +18,17 @@
 
 # define libraries
 %define libcodecs libwscodecs2
-%define libtap libwiretap11
-%define libutil libwsutil12
-%define libwire libwireshark14
+%define libtap libwiretap12
+%define libutil libwsutil13
+%define libwire libwireshark15
+%define org_name org.wireshark.Wireshark
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
 %else
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.4.10
+Version:        3.6.0
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -37,6 +38,7 @@ Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
 Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
 Patch10:        wireshark-0001-dumpcap-permission-denied.patch
+BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glib2-devel >= 2.32
@@ -171,7 +173,6 @@ This package contains the Qt based UI for Wireshark.
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut -d= -f2`  %{SOURCE0}" | sha256sum -c
 
 %autosetup -p1
-sed -i 's/^Icon=wireshark.png$/Icon=wireshark/' wireshark*.desktop
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'
@@ -198,12 +199,6 @@ ln -fs tshark %{buildroot}%{_bindir}/tethereal
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}
 install -d -m 0755 %{buildroot}%{_mandir}/man1/
-# install separate appdata files corresponding to .desktop files for AppStore integration
-install -d -m0755 %{buildroot}%{_datadir}/appdata
-install -m644 wireshark.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-sed -i -e "/<description>/i \ \ \ \ <name>Wireshark (QT) Network Analyzer<\/name>" \
-       -e "/<description>/i \ \ \ \ <summary>QT interface for wireshark network traffic analyzer<\/summary>" \
-    %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 # -devel
 install -d -m 0755  %{buildroot}%{_includedir}/wireshark
@@ -223,13 +218,12 @@ install -m 644 epan/crypt/*.h			"${IDIR}/epan/crypt"
 install -m 644 epan/ftypes/*.h			"${IDIR}/epan/ftypes"
 install -m 644 epan/dfilter/*.h			"${IDIR}/epan/dfilter"
 install -m 644 epan/dissectors/*.h		"${IDIR}/epan/dissectors"
-install -m 644 epan/wmem/*.h			"${IDIR}/epan/wmem"
 install -m 644 wiretap/*.h			"${IDIR}/wiretap"
 install -m 644 wsutil/*.h			"${IDIR}/wsutil"
 
 install -D -m 0644 image/wsicon48.png %{buildroot}%{_datadir}/pixmaps/wireshark.png
-install -D -m 0644 wireshark.desktop %{buildroot}%{_datadir}/applications/wireshark.desktop
-%suse_update_desktop_file %{name}
+install -D -m 0644 %{org_name}.desktop %{buildroot}%{_datadir}/applications/%{org_name}.desktop
+%suse_update_desktop_file %{org_name}
 
 rm -f %{buildroot}%{_datadir}/doc/wireshark/*.html
 
@@ -290,14 +284,13 @@ exit 0
 %files ui-qt
 %{_bindir}/wireshark
 %{_bindir}/ethereal
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/wireshark.appdata.xml
-%{_datadir}/applications/wireshark.desktop
+%{_datadir}/applications/%{org_name}.desktop
 %{_datadir}/pixmaps/wireshark.png
-%{_datadir}/icons/hicolor/*/apps/wireshark.png
-%{_datadir}/icons/hicolor/*/mimetypes/application-wireshark-doc.png
-%{_datadir}/icons/hicolor/scalable/apps/wireshark.svg
-%{_datadir}/mime/packages/wireshark.xml
+%{_datadir}/icons/hicolor/*/apps/%{org_name}.png
+%{_datadir}/icons/hicolor/*/mimetypes/%{org_name}-mimetype.png
+%{_datadir}/icons/hicolor/scalable/apps/%{org_name}.svg
+%{_datadir}/mime/packages/%{org_name}.xml
+%{_datadir}/metainfo/%{org_name}.metainfo.xml
 
 %post ui-qt
 %desktop_database_post

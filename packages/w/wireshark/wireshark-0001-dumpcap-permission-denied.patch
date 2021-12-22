@@ -6,11 +6,11 @@ Date:   Wed Jan 13 14:18:36 2021 +0100
 
 diff --git a/capchild/capture_sync.c b/capchild/capture_sync.c
 index f31914886a..d3baab6c50 100644
---- a/capchild/capture_sync.c
-+++ b/capchild/capture_sync.c
-@@ -21,6 +21,10 @@
- 
- #include <wsutil/strtoi.h>
+--- a/capture/capture_sync.c
++++ b/capture/capture_sync.c
+@@ -24,6 +24,10 @@
+ #include <wsutil/wslog.h>
+ #include <wsutil/ws_assert.h>
  
 +#include <sys/stat.h>
 +#include <fcntl.h>
@@ -19,7 +19,7 @@ index f31914886a..d3baab6c50 100644
  #ifdef _WIN32
  #include <wsutil/unicode-utils.h>
  #include <wsutil/win32-utils.h>
-@@ -570,11 +574,22 @@ sync_pipe_start(capture_options *capture_opts, capture_session *cap_session, inf
+@@ -592,11 +596,22 @@ sync_pipe_start(capture_options *capture_opts, capture_session *cap_session, inf
           * Child process - run dumpcap with the right arguments to make
           * it just capture with the specified capture parameters
           */
@@ -44,7 +44,7 @@ index f31914886a..d3baab6c50 100644
          sync_pipe_errmsg_to_parent(2, errmsg, "");
  
          /* Exit with "_exit()", so that we don't close the connection
-@@ -805,6 +820,7 @@ sync_pipe_open_command(char* const argv[], int *data_read_fd,
+@@ -827,6 +842,7 @@ sync_pipe_open_command(char* const argv[], int *data_read_fd,
           * Child process - run dumpcap with the right arguments to make
           * it just capture with the specified capture parameters
           */
@@ -52,7 +52,7 @@ index f31914886a..d3baab6c50 100644
          dup2(data_pipe[PIPE_WRITE], 1);
          ws_close(data_pipe[PIPE_READ]);
          ws_close(data_pipe[PIPE_WRITE]);
-@@ -812,8 +828,18 @@ sync_pipe_open_command(char* const argv[], int *data_read_fd,
+@@ -834,8 +850,18 @@ sync_pipe_open_command(char* const argv[], int *data_read_fd,
          ws_close(sync_pipe[PIPE_READ]);
          ws_close(sync_pipe[PIPE_WRITE]);
          execv(argv[0], argv);
