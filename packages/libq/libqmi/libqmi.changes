@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Dec 20 23:02:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Mention libqmi.keyring
+
+-------------------------------------------------------------------
+Mon Dec 20 22:15:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.30.2:
+  * libqmi-glib:
+     ** Added support for 'hsic', 'bam-dmux' and 'unknown' endpoint types.
+     ** Added support for QMAPv2, QMAPv3 and QMAPv4 data aggregation types.
+     ** Added support for 'NGRAN' access technology identifier.
+     ** New 'qmi_device_add_link_with_flags()' method, in order to give e.g. rmnet
+	specific checksum offload related flags when creating a new link.
+   * qmicli:
+     ** New '--nas-get-preferred-networks' command.
+     ** New '--nas-set-preferred-networks' command.
+     ** New '--uim-get-configuration' command.
+     ** New '--uim-depersonalization' command.
+     ** New '--wms-get-routes' command.
+     ** New '--dpm-open-port' command.
+     ** New '--dpm-close-port' command.
+     ** Updated '--wds-create-profile' with an additional 'apn-type-mask' setting.
+     ** Updated '--wds-modify-profile' with an additional 'apn-type-mask' setting.
+     ** Updated '--link-add' with an additional optional 'flags' setting.
+   * qmi-network:
+     ** New PROFILE configuration setting to allow specifying which WDS profile to
+	use when connecting.
+     ** New IP-TYPE configuration setting to allow selecting the IP type requested
+   * collections:
+     ** basic: added voice call management operations.
+     ** basic: added voice supplementary service related operations.
+     ** basic: added NAS preferred networks related operations.
+     ** basic: added NAS network reject indications.
+     ** basic: added UIM depersonalization related operations.
+   * Several other minor improvements and fixes.
+- add gpg validation 
+
+-------------------------------------------------------------------
 Wed Aug 25 11:47:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.28.8

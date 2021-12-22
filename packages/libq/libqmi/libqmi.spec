@@ -1,7 +1,7 @@
 #
 # spec file for package libqmi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,8 @@
 
 
 %define _soname libqmi-glib5
-
 Name:           libqmi
-Version:        1.28.8
+Version:        1.30.2
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
@@ -28,8 +27,9 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://www.freedesktop.org/wiki/Software/libqmi/
 Source0:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz
+Source1:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz.asc
+Source98:       libqmi.keyring
 Source99:       libqmi-rpmlintrc
-
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(gio-2.0)
@@ -88,7 +88,7 @@ sed -i "s|env python|python3|g" build-aux/qmi-codegen/*
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{_soname} -p /sbin/ldconfig
 %postun -n %{_soname} -p /sbin/ldconfig
