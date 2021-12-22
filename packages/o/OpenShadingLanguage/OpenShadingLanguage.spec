@@ -53,6 +53,7 @@ BuildRequires:  cmake(OpenImageIO) >= 2.0
 BuildRequires:  cmake(pugixml)
 Requires:       %{name}-common-headers = %{version}
 Recommends:     %{name}-doc = %{version}
+ExcludeArch:    %{ix86}
 
 %description
 Open Shading Language (OSL) is a language for programmable shading
