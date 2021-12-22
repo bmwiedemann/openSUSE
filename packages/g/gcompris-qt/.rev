@@ -171,4 +171,18 @@
     <comment></comment>
     <requestid>880573</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a0f8942db47d09a0f031a73cc7624ec1</srcmd5>
+    <version>2.0</version>
+    <time>1640200694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to major release 2.0
+  + Full detail at https://gcompris.net/news/2021-12-17-en.html
+- Packaging
+  + Review buildrequires QT &gt;= 5.9.0, Remove Qt5XmlPatterns and Qt5Xml
+    add conditionnal Qt5QmlModels (or Qt5Qml for older Leap)
+  + Adjust LICENSE to new SPDX folder
+Should be build &amp; tested in par with gcompris-qt-voices</comment>
+    <requestid>942091</requestid>
+  </revision>
 </revisionlist>

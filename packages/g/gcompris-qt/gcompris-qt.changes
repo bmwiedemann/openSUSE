@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 18 08:37:33 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to major release 2.0
+  + Full detail at https://gcompris.net/news/2021-12-17-en.html
+- Packaging
+  + Review buildrequires QT >= 5.9.0, Remove Qt5XmlPatterns and Qt5Xml
+    add conditionnal Qt5QmlModels (or Qt5Qml for older Leap)
+  + Adjust LICENSE to new SPDX folder
+
+-------------------------------------------------------------------
 Mon Mar 22 13:43:04 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to maintenance bugfix release 1.1
@@ -6,26 +16,26 @@ Mon Mar 22 13:43:04 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
   + A build for Ubuntu Touch has been added.
   + The spelling of the Turkish districts has been fixed.
   + We added a minimal .msi alternative package for Windows.
-  + The GCompris executable has been relicenced to AGPLv3 due to 
+  + The GCompris executable has been relicenced to AGPLv3 due to
     a dependency of analog electricity.
   + On the translation side:
-    - Albanian, Belarusian, Brazilian Portuguese and Russian have 
+    - Albanian, Belarusian, Brazilian Portuguese and Russian have
       been completed.
-    - Irish Gaelic and Macedonian have returned 
+    - Irish Gaelic and Macedonian have returned
       (partial translation above 80% for now).
-    - Wordset for vocabulary activities has been added for Albanian 
+    - Wordset for vocabulary activities has been added for Albanian
       and Macedonian.
     - All the voices have been added for Lithuanian.
   + 27 languages fully supported
   + 4 languages partially supported: German (91%), Irish Gaelic (87%)
-    Lithuanian (96%) and Norwegian Nynorsk (85%). 
+    Lithuanian (96%) and Norwegian Nynorsk (85%).
 - Packaging
   + Adapt license to AGPLv3 to conform new upstream state
 
 -------------------------------------------------------------------
 Mon Mar  1 08:26:23 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Remove unused libbox2d-devel buildrequires deps. libbox2d is 
+- Remove unused libbox2d-devel buildrequires deps. libbox2d is
   offered by qml-box2d
 - Packaging Update copyright year
 
@@ -41,7 +51,7 @@ Sun Feb 28 21:33:31 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 Thu Nov 19 19:18:40 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 1.0 20 years birthday edition
-  + new major feature: the addition of the Activity Settings menu 
+  + new major feature: the addition of the Activity Settings menu
     with Dataset selection for more than 50 activities.
   + 4 new activities:
     - Analog Electricity activity
@@ -53,7 +63,7 @@ Thu Nov 19 19:18:40 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 Sat Jun 27 14:07:48 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 0.97.1
-  + bugfix version for system using qt > 5.12 
+  + bugfix version for system using qt > 5.12
 - Packaging
   + spec-cleaner minimal
 
@@ -62,9 +72,9 @@ Tue Dec 10 07:29:54 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 0.97
   This new version contains 2 new activities:
-  + A programming maze: to learn the basics of programming with a 
+  + A programming maze: to learn the basics of programming with a
     few instructions
-  + Baby tangram: to learn the basics of tangram 
+  + Baby tangram: to learn the basics of tangram
   New features:
   + new sub-categories to organize activities
   + new background music feature and audio tracks
@@ -92,7 +102,7 @@ Tue Dec 10 07:29:54 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
   + fix hint image size in photo_hunter
   + fix layout in color_mix
  and lots of other small fixes...
-- Packaging spec-clean minimal (copyright, deps order) 
+- Packaging spec-clean minimal (copyright, deps order)
 - Update url to https scheme
 
 -------------------------------------------------------------------
@@ -114,9 +124,9 @@ Mon Mar  4 17:14:05 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
     - Finnish (90%)
     - Indonesian (100%)
     - Norwegian Nynorsk (97%)
-    - Polish (100%) 
+    - Polish (100%)
   + All download are now made with https.
-  + Known issues: the progress bar for downloads doesn’t work 
+  + Known issues: the progress bar for downloads doesn’t work
     anymore due to https usage.
 - Packaging small clean-up (trailing space)
 
@@ -124,7 +134,7 @@ Mon Mar  4 17:14:05 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 Fri Jan  4 15:15:50 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 0.95
-  + New activities 
+  + New activities
     Binary bulbs: to learn how to count in binary
     Railroad activity: to train visual memory
     Solar System: to learn about our solar system
@@ -142,11 +152,11 @@ Fri Jan  4 15:15:50 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 - Packaging
   + Remove upstream merged patch 35278731_0.91_backport.patch
   + Renew spec file with spec-cleaner
-  
+
 -------------------------------------------------------------------
 Mon Jun 11 12:26:06 UTC 2018 - bruno@ioda-net.ch
 
-- Really fix 42.3 with defined %mail_build 
+- Really fix 42.3 with defined %mail_build
 
 -------------------------------------------------------------------
 Mon Jun 11 07:34:03 UTC 2018 - bruno@ioda-net.ch
@@ -158,7 +168,7 @@ Mon Jun 11 07:34:03 UTC 2018 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Mon May 21 13:17:05 UTC 2018 - bruno@ioda-net.ch
 
-- Fix broken build Leap 42.3 by defining %make_build if not exist 
+- Fix broken build Leap 42.3 by defining %make_build if not exist
 
 -------------------------------------------------------------------
 Sun May 20 15:28:14 UTC 2018 - astieger@suse.com
@@ -193,16 +203,16 @@ Thu May 17 18:22:00 UTC 2018 - bruno@ioda-net.ch
    - main bar, fix some items size
    - remove unused images
   + Translations
-   16 languages fully supported: British English, Catalan, Catalan 
-   (Valencian), Chinese Traditional, Dutch, French, Greek, 
+   16 languages fully supported: British English, Catalan, Catalan
+   (Valencian), Chinese Traditional, Dutch, French, Greek,
    Indonesian, Irish Gaelic, Italian, Polish, Portuguese, Romanian,
    Spanish, Swedish, Ukrainian.
-   15 languages partially supported: Norwegian Nynorsk (97%), Hindi 
-   (96%), Turkish (90%), Scottish Gaelic (86%), Galician (86%), 
-   Brazilian Portuguese (84%), Belarusian (84%), German (81%), 
+   15 languages partially supported: Norwegian Nynorsk (97%), Hindi
+   (96%), Turkish (90%), Scottish Gaelic (86%), Galician (86%),
+   Brazilian Portuguese (84%), Belarusian (84%), German (81%),
    Chinese Simplified (79%), Russian (78%), Estonian (77%), Slovak
   (76%), Finnish (76%), Slovenian (69%), Breton (65%).
-  If you want to help completing one of these translations or 
+  If you want to help completing one of these translations or
   adding a new one, please contact upstream.
 
 -------------------------------------------------------------------
@@ -219,7 +229,7 @@ Wed Mar 14 21:38:12 UTC 2018 - bruno@ioda-net.ch
   + 8 new activities:
   * A calendar activity where the child learns how to use it
   * Another activity based on calendar where the child has to find
-    the date corresponding at a date + some days further/before 
+    the date corresponding at a date + some days further/before
     this date
   * An activity to learn how people on a family are related and how
     to call this relation
@@ -227,9 +237,9 @@ Wed Mar 14 21:38:12 UTC 2018 - bruno@ioda-net.ch
   * An extension of memory activities where the child has to match
     lowercase letters with their corresponding uppercase
   * The same activity in two players mode with Tux
-  * The Gtk+ port and improved submarine activity where the child 
+  * The Gtk+ port and improved submarine activity where the child
     learns a basic overview on how to run a submarine
-  * The digital electricity activity where the child can use 
+  * The digital electricity activity where the child can use
     different components to create an electric schema. There is also
     a tutorial mode to explain how to use each component
   + bug fixes:
@@ -255,7 +265,7 @@ Sat Sep 30 12:37:28 UTC 2017 - bruno@ioda-net.ch
   + Add Indonesian locale
   + Fix the missing copyright and licence info
   + Fix a font issue on windows version
-  + Add a new minimal version with software rendering 
+  + Add a new minimal version with software rendering
     (requires Qt 5.8)
 
 -------------------------------------------------------------------
@@ -263,11 +273,11 @@ Sat Aug 26 16:00:18 UTC 2017 - bruno@ioda-net.ch
 
 - Upgrade to last release 0.80
   This new version contains 6 new activities:
-  + a categorization activity where the child has to categorize 
+  + a categorization activity where the child has to categorize
     item depending on the theme (by Divyam Madaan)
-  + a guess count game where the child has to find the good 
+  + a guess count game where the child has to find the good
     operations to find a given number (by Rahul Yadav)
-  + a game where you have to let the computer put the last ball in 
+  + a game where you have to let the computer put the last ball in
     a row (by Utkarsh Tiwari)
   + as above but the child plays with a friend (Utkarsh Tiwari)
   + a checkers game (by Johnny Jazeix)
@@ -279,8 +289,8 @@ Sat Aug 26 16:00:18 UTC 2017 - bruno@ioda-net.ch
   + new icons
   + Updated graphics on several activities
   + lots of bug fixes
-  + website translation migrated to KDE infrastructure and 
-    translated in Belarusian, Catalan, Catalan (Valencia), 
+  + website translation migrated to KDE infrastructure and
+    translated in Belarusian, Catalan, Catalan (Valencia),
     Romanian, Portuguese and Ukrainian
   + new mingw windows builds
   + partial translations in Greek and Hindi
@@ -301,21 +311,21 @@ Mon Feb 13 13:13:13 UTC 2017 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Sat Dec 24 08:12:54 UTC 2016 - bruno@ioda-net.ch
 
-- New 0.70 version contains 8 new activities, half of them being 
+- New 0.70 version contains 8 new activities, half of them being
   created by last Google Summer of Code students:
-  * an activity where the child has to move elements to build a 
+  * an activity where the child has to move elements to build a
     given model (crane by Stefan Toncu)
   * an activity to draw the numbers (drawnumbers by Nitish Chauhan)
   * an activity to draw the letters (drawletters by Nitish Chauhan)
-  * an activity to find on which words a given letter belongs 
+  * an activity to find on which words a given letter belongs
     (letter-in-word by Akshat Tandon)
   * the nine men morris game against Tux (nine_men_morris by Pulkit
     Gupta)
-  * the nine men morris game with a friend 
+  * the nine men morris game with a friend
     (nine_men_morris_2_players by Pulkit Gupta)
   * an activity to learn to split a given number of candies amongst
     children (share by Stefan Toncu)
-  * an activity to learn roman numbers (roman_numerals by Bruno 
+  * an activity to learn roman numbers (roman_numerals by Bruno
     Coudoin)
   + new features and bug fixes:
     * search feature by Rishabh Gupta
@@ -323,10 +333,10 @@ Sat Dec 24 08:12:54 UTC 2016 - bruno@ioda-net.ch
     * hint icon in the bar (used in photohunter) by Johnny Jazeix
     * neon build by Jonathan Riddell
     * openSUSE Tumbleweed build by Bruno Friedmann
-    * archlinux (https://aur.archlinux.org/packages/gcompris-qt/) 
+    * archlinux (https://aur.archlinux.org/packages/gcompris-qt/)
       by Jose Riha
     * KaOS (http://kaosx.tk/packages/index.php?act=show&subdir=\
-      build&sortby=date&file=gcompris-0.70-1-x86_64.pkg.tar.xz) 
+      build&sortby=date&file=gcompris-0.70-1-x86_64.pkg.tar.xz)
       by demm
     * package on mageia cauldron by Timothee Giet
     * word list for Slovakia by Jose Riha
@@ -355,25 +365,25 @@ Mon Aug  8 19:44:59 UTC 2016 - bruno@ioda-net.ch
   Complete release changes at http://gcompris.net/news-en.html
   + New activities are:
     baby_word_processor
-    tangram 
+    tangram
     explore_momuments
-    graph_coloring 
-    land_safe 
+    graph_coloring
+    land_safe
     photo_hunter
-  + Updated images for chess, hangman and horizontal/vertical 
+  + Updated images for chess, hangman and horizontal/vertical
     reading activities along with the gcompris logo.
-  + Lots of little fixes/improvements have been done (storing and 
-    restoring the window's width/height at start-up, docbook 
-    updated, levels/images bonus, adding an internal dataset for 
-    words games so that we no more expect the network to run 
+  + Lots of little fixes/improvements have been done (storing and
+    restoring the window's width/height at start-up, docbook
+    updated, levels/images bonus, adding an internal dataset for
+    words games so that we no more expect the network to run
     GCompris.
-  + Translation side 17 languages fully supported: 
-    Belarusian, British English, Brazilian Portuguese, Catalan, 
-    Catalan (Valencian), Chinese Simplified, Dutch, French, 
-    Galician, Italian, Norwegian Nynorsk, Polish, Portuguese, 
+  + Translation side 17 languages fully supported:
+    Belarusian, British English, Brazilian Portuguese, Catalan,
+    Catalan (Valencian), Chinese Simplified, Dutch, French,
+    Galician, Italian, Norwegian Nynorsk, Polish, Portuguese,
     Romanian, Spanish, Swedish, Ukrainian.
-  + some partially: Breton (88%), Chinese Traditional (97%), 
-    Estonian (82%), Finnish (74%), German (93%), Russian (83%), 
+  + some partially: Breton (88%), Chinese Traditional (97%),
+    Estonian (82%), Finnish (74%), German (93%), Russian (83%),
     Slovak (76%), Slovenian (82%), Turkish (82%)
 
 -------------------------------------------------------------------
@@ -392,18 +402,18 @@ Sun Jul 17 19:41:55 UTC 2016 - bruno@ioda-net.ch
 
 - Added also as sources in spec
   + gcompris-qt-rpmlintrc
-  + fetch_voices.sh 
+  + fetch_voices.sh
 
 -------------------------------------------------------------------
 Tue Jul  5 17:29:46 UTC 2016 - bruno@ioda-net.ch
 
-- Fixed definitively upstream src url checked with obs service. 
+- Fixed definitively upstream src url checked with obs service.
 
 -------------------------------------------------------------------
 Sun Jul  3 15:11:47 UTC 2016 - bruno@ioda-net.ch
 
-- Packaging : 
-  + fix upstream url source 
+- Packaging :
+  + fix upstream url source
   + Remove second %changelog
   + Add rpmlintrc (man page for binary)
 - Refresh voices.tar.xz with recent upstream updates
@@ -411,7 +421,7 @@ Sun Jul  3 15:11:47 UTC 2016 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Wed May 25 13:31:29 UTC 2016 - bruno@ioda-net.ch
 
-- Update to upstream 0.60 new version 
+- Update to upstream 0.60 new version
 - remove merged upstream-fix-compilation-on-openSUSE.patch
 
 -------------------------------------------------------------------
@@ -425,18 +435,18 @@ Mon Jan 18 13:28:07 UTC 2016 - bruno@ioda-net.ch
 
 - Update to upstream 0.52 new version
 	It includes all the little patches and improvements from master (
-	without new activities or features). Most important is the 
+	without new activities or features). Most important is the
 	lang activity that was not available in French.
-- Remove upstream merged patches 
+- Remove upstream merged patches
   add-option-to-disable-qml-box2d-module-and-depending-activites.patch
-  robustify_Qt-plugin_and_qml-path_detection.patch 
+  robustify_Qt-plugin_and_qml-path_detection.patch
 - Refreshed content of voices-ogg
 
 -------------------------------------------------------------------
 Sat Jan  2 09:56:18 UTC 2016 - bruno@ioda-net.ch
 
 - Added upstream patch for Box2D qml-box2d detection
-  robustify_Qt-plugin_and_qml-path_detection.patch 
+  robustify_Qt-plugin_and_qml-path_detection.patch
 
 -------------------------------------------------------------------
 Sun Dec 27 16:00:52 UTC 2015 - bruno@ioda-net.ch
@@ -451,7 +461,7 @@ Sun Dec 27 16:00:52 UTC 2015 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Sat Sep 12 15:55:31 UTC 2015 - bruno@ioda-net.ch
 
-- Initial packaging for obs for gcompris-qt the new qt based. 
+- Initial packaging for obs for gcompris-qt the new qt based.
 - The packaging is done by splitting translations, activities, and
   voices from the main binaries.
   Activities is the only one required package for main build.

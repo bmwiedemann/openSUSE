@@ -18,7 +18,7 @@
 
 
 Name:           gcompris-qt
-Version:        1.1
+Version:        2.0
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        AGPL-3.0-or-later
@@ -35,29 +35,32 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qml-box2d
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
 # We don't want the Administrative documentation
 # BuildRequires:  kdoctools-devel
-BuildRequires:  pkgconfig(Qt5Core) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Script) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Sensors) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.9.0
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(Qt5QmlModels) >= 5.9.0
+%else
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.9.0
+%endif
+BuildRequires:  pkgconfig(Qt5Quick) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Script) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Sensors) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
 BuildRequires:  pkgconfig(openssl)
 # Runtime requirements, it doesn't start without them (boo#1011125)
 Requires:       %{name}-activities = %{version}
-Requires:       libQt5Multimedia5 >= 5.7.0
-Requires:       libQt5Svg5 >= 5.7.0
-Requires:       libqt5-qtgraphicaleffects >= 5.7.0
-Requires:       libqt5-qtquickcontrols >= 5.7.0
+Requires:       libQt5Multimedia5 >= 5.9.0
+Requires:       libQt5Svg5 >= 5.9.0
+Requires:       libqt5-qtgraphicaleffects >= 5.9.0
+Requires:       libqt5-qtquickcontrols >= 5.9.0
 Requires:       qml-box2d
 Recommends:     %{name}-voices = %{version}
 Provides:       gcompris = 17.10
@@ -116,7 +119,7 @@ install -d %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/
 install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/gcompris-qt.svg
 
 %files
-%license COPYING.txt COPYING-GPLv3
+%license LICENSES/*
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/icons/hicolor/256x256/
@@ -127,7 +130,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 %{_datadir}/metainfo/org.kde.gcompris.appdata.xml
 
 %files activities
-%license COPYING.txt COPYING-GPLv3
+%license LICENSES/*
 %doc README.md
 #Activities
 %dir %{_datadir}/%{name}
@@ -135,7 +138,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 %{_datadir}/%{name}/rcc/*.rcc
 
 %files lang
-%license COPYING.txt COPYING-GPLv3
+%license LICENSES/*
 %doc README.md
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/*.qm
