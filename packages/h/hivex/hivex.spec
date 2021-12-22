@@ -78,6 +78,7 @@ Hivex is a Windows Registry Hive extraction library.
 %if %{with python_bindings}
 %package -n python3-hivex
 Summary:        Python bindings for libhivex
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 Provides:       python-hivex = %{version}-%{release}
 Obsoletes:      python-hivex < %{version}-%{release}
