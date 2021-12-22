@@ -1715,4 +1715,14 @@
   * Fix relative URLs in playlists (glgo#World/lollypop#2785).</comment>
     <requestid>940090</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>212b764a8906e9906df6ea1e896c8580</srcmd5>
+    <version>1.4.26</version>
+    <time>1640200682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.26:
+  * Fix an issue with miniplayer (glgo#World/lollypop#2868).
+</comment>
+    <requestid>941985</requestid>
+  </revision>
 </revisionlist>
