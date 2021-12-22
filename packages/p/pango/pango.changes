@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 16 23:13:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.2:
+  + Fix a problem with font fallback for Arabic.
+  + Fix handling of fonts without a space glyph.
+  + Various documentation improvements.
+  + Fix build issues.
+
+-------------------------------------------------------------------
 Sat Dec 11 15:23:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.50.1:
