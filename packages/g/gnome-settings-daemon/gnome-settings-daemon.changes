@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 01:48:48 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase patches:
+  + gnome-settings-daemon-notify-idle-resumed.patch
+
+-------------------------------------------------------------------
 Sun Sep 19 19:21:06 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 41.0:

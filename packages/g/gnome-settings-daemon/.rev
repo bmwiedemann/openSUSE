@@ -1381,4 +1381,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 920946 from dimstar)</comment>
     <requestid>921626</requestid>
   </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>5963db573dc6b5c80c1c8dbd47679c84</srcmd5>
+    <version>41.0</version>
+    <time>1640200675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941913</requestid>
+  </revision>
 </revisionlist>
