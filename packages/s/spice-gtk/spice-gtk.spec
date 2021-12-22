@@ -75,6 +75,7 @@ BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
 Requires(pre):  permissions
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
+BuildRequires:  pkgconfig(wayland-protocols)
 
 %description
 A Gtk client and libraries for SPICE remote desktop servers, (Linux and Windows)

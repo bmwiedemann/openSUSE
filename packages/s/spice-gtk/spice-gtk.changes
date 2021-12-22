@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 17:03:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit pkgconfig(wayland-protocols) BuildRequires, meson
+  checks for it.
+
+-------------------------------------------------------------------
 Thu Dec  9 04:46:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-pyparsing.patch:
