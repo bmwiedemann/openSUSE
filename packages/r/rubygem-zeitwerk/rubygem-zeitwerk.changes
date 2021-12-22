@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Dec 21 23:10:24 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.5.1
+
+## 2.5.1 (20 October 2021)
+
+* Restores support for namespaces that are not hashable. For example namespaces that override the `hash` method with a different arity as shown in [#188](https://github.com/fxn/zeitwerk/issues/188).
+
+## 2.5.0 (20 October 2021)
+
+### Breaking changes
+
+* Requires Ruby 2.5.
+
+* Deletes the long time deprecated preload API. Instead of:
+
+  ```ruby
+  loader.preload("app/models/user.rb")
+  ```
+
+  just reference the constant on setup:
+
+  ```ruby
+  loader.on_setup { User }
+  ```
+
+  If you want to eager load a namespace, use the constants API:
+
+  ```ruby
+  loader.on_setup do
+    Admin.constants(false).each { |cname| Admin.const_get(cname) }
+  end
+  ```
+
+### Bug fixes
+
+* Fixes a bug in which a certain valid combination of overlapping trees managed by different loaders and ignored directories was mistakenly reported as having conflicting directories.
+
+* Detects external namespaces defined with `Module#autoload`. If your project reopens a 3rd party namespace, Zeitwerk already detected it and did not consider the namespace to be managed by the loader (automatically descends, ignored for reloads, etc.). However, the loader did not do that if the namespace had only an autoload in the 3rd party code yet to be executed. Now it does.
+
+### Callbacks
+
+* Implements `Zeitwerk::Loader#on_setup`, which allows you to configure blocks of code to be executed on setup and on each reload. When the callback is fired, the loader is ready, you can refer to project constants in the block.
+
+  See the [documentation](https://github.com/fxn/zeitwerk#the-on_setup-callback) for further details.
+
+* There is a new catch-all `Zeitwerk::Loader#on_load` that takes no argument and is triggered for all loaded objects:
+
+  ```ruby
+  loader.on_load do |cpath, value, abspath|
+    # ...
+  end
+  ```
+
+  Please, remember that if you want to trace the activity of a loader, `Zeitwerk::Loader#log!` logs plenty of information.
+
+  See the [documentation](https://github.com/fxn/zeitwerk#the-on_load-callback) for further details.
+
+* The block of the existing `Zeitwerk::Loader#on_load` receives also the value stored in the constant, and the absolute path to its corresponding file or directory:
+
+  ```ruby
+  loader.on_load("Service::NotificationsGateway") do |klass, abspath|
+    # ...
+  end
+  ```
+
+  Remember that blocks can be defined to take less arguments than passed. So this change is backwards compatible. If you had
+
+  ```ruby
+  loader.on_load("Service::NotificationsGateway") do
+    Service::NotificationsGateway.endpoint = ...
+  end
+  ```
+
+  That works.
+
+* Implements `Zeitwerk::Loader#on_unload`, which allows you to configure blocks of code to be executed before a certain class or module gets unloaded:
+
+  ```ruby
+  loader.on_unload("Country") do |klass, _abspath|
+    klass.clear_cache
+  end
+  ```
+
+  These callbacks are invoked during unloading, which happens in an unspecified order. Therefore, they should not refer to reloadable constants.
+
+  You can also be called for all unloaded objects:
+
+  ```ruby
+  loader.on_unload do |cpath, value, abspath|
+    # ...
+  end
+  ```
+
+  Please, remember that if you want to trace the activity of a loader, `Zeitwerk::Loader#log!` logs plenty of information.
+
+  See the [documentation](https://github.com/fxn/zeitwerk/blob/master/README.md#the-on_unload-callback) for further details.
+
+### Assorted
+
+* Performance improvements.
+
+* Documentation improvements.
+
+* The method `Zeitwerk::Loader#eager_load` accepts a `force` flag:
+
+  ```ruby
+  loader.eager_load(force: true)
+  ```
+
+  If passed, eager load exclusions configured with `do_not_eager_load` are not honoured (but ignored files and directories are).
+
+  This may be handy for test suites that eager load in order to ensure all files define the expected constant.
+
+* Eliminates internal use of `File.realpath`. One visible consequence is that  in logs root dirs are shown as configured if they contain symlinks.
+
+* When an autoloaded file does not define the expected constant, Ruby clears state differently starting with Ruby 3.1. Unloading has been revised to be compatible with both behaviours.
+
+* Logging prints a few new traces.
+
+-------------------------------------------------------------------
 Fri Dec 11 03:23:04 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.4.2
