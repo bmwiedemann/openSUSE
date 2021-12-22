@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 20:42:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add dependency on kcoreaddons (boo#1193959)
+- Drop Requires(post,postun) of shared-mime-info, not needed
+
+-------------------------------------------------------------------
 Sun Jun 13 14:21:18 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-Freetype-and-FontConfig-Linkage.patch to fix build with

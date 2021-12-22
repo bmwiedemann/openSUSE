@@ -24,7 +24,7 @@ Name:           calligra
 Version:        3.2.1
 Release:        0
 Summary:        Libraries and Base Files for the Calligra Suite
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
@@ -105,10 +105,10 @@ BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(poppler-qt5)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 Recommends:     %{name}-doc = %{version}
 Recommends:     %{name}-lang = %{version}
+# For mimetype definitions
+Requires:       kcoreaddons
 Suggests:       calligra-karbon
 Suggests:       calligra-plan
 Suggests:       calligra-sheets
