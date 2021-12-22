@@ -17,7 +17,7 @@
 
 
 Name:           xscreensaver
-Version:        5.45
+Version:        6.02
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -44,6 +44,8 @@ Patch42:        xscreensaver-webcollage-dictpath.patch
 Patch43:        xscreensaver-disable-upgrade-nagging-message.patch
 # PATCH-FEATURE-OPENSUSE xscreensaver-bug-reports.patch bnc890595 sbrabec@suse.cz -- Ask reporters to upgrade before reporting bugs.
 Patch45:        xscreensaver-bug-reports.patch
+# PATCH-FIX-UPSTREAM xscreensaver-6.02-marbling-std-c.patch sbrabec@suse.com -- Fix compilation with older gcc and on aarch64.
+Patch46:        xscreensaver-6.02-marbling-std-c.patch
 BuildRequires:  automake
 BuildRequires:  bc
 BuildRequires:  gdmflexiserver
@@ -159,6 +161,7 @@ This packages contains additional graphics demos.
 %patch42
 %patch43 -p1
 %patch45 -p1
+%patch46 -p1
 # KDE, GNOME and MATE have there own screensavers:
 echo 'NotShowIn=KDE;GNOME;MATE;' >> driver/screensaver-properties.desktop.in
 cp -f %{SOURCE4} xscreensaver-desktops-generate
@@ -183,11 +186,8 @@ autoreconf -fi
 export ac_cv_gcc_accepts_std=no
 # Disable direct PAM use and shadow (both needs suid).
 %configure \
-  --with-hackdir=%{_libdir}/xscreensaver             \
-  --with-x-app-defaults=%{_datadir}/X11/app-defaults \
   --with-configdir=%{_sysconfdir}/xscreensaver       \
   --without-kerberos                                 \
-  --with-passwd-helper=/sbin/unix2_chkpwd            \
   --with-gl                                          \
   --with-gle                                         \
   --with-pixbuf                                      \
@@ -236,13 +236,13 @@ for hack in $(grep -v '#' %{SOURCE2}); do
     [ -f %{buildroot}%{_mandir}/man6/$hack.6* ] && echo "%doc %{_mandir}/man6/$hack.6*" >> %{name}-data.lst
     [ -f %{buildroot}%{_sysconfdir}/xscreensaver/$hack.xml ] && echo "%config %{_sysconfdir}/xscreensaver/$hack.xml" >> %{name}-data.lst
     [ -f %{buildroot}%{_datadir}/applications/screensavers/$hack.desktop ] && echo "%{_datadir}/applications/screensavers/$hack.desktop" >> %{name}-data.lst
-    echo "%{_libdir}/xscreensaver/$hack" >> %{name}-data.lst
+    echo "%{_libexecdir}/xscreensaver/$hack" >> %{name}-data.lst
 done
 for hack in $(grep -v '#' %{SOURCE3}); do
     [ -f %{buildroot}%{_mandir}/man6/$hack.6* ] && echo "%doc %{_mandir}/man6/$hack.6*" >> %{name}-data-extra.lst
     [ -f %{buildroot}%{_sysconfdir}/xscreensaver/$hack.xml ] && echo "%config %{_sysconfdir}/xscreensaver/$hack.xml" >> %{name}-data-extra.lst
     [ -f %{buildroot}%{_datadir}/applications/screensavers/$hack.desktop ] && echo "%{_datadir}/applications/screensavers/$hack.desktop" >> %{name}-data-extra.lst
-    echo "%{_libdir}/xscreensaver/$hack" >> %{name}-data-extra.lst
+    echo "%{_libexecdir}/xscreensaver/$hack" >> %{name}-data-extra.lst
 done
 
 %files
@@ -250,19 +250,26 @@ done
 %{_bindir}/xscreensaver
 %{_bindir}/xscreensaver-command
 %{_bindir}/xscreensaver-demo
-%{_bindir}/xscreensaver-gl-helper
-%{_bindir}/xscreensaver-systemd
+%{_bindir}/xscreensaver-settings
 %{_datadir}/applications/xscreensaver-properties.desktop
+%{_datadir}/fonts/xscreensaver
 %{_datadir}/pixmaps/xscreensaver.xpm
 %dir %{_datadir}/xscreensaver
 %{_datadir}/xscreensaver/ui
+%{_libexecdir}/xscreensaver/xscreensaver-auth
+%{_libexecdir}/xscreensaver/xscreensaver-gfx
+%{_libexecdir}/xscreensaver/xscreensaver-gl-visual
+%{_libexecdir}/xscreensaver/xscreensaver-systemd
 %dir %{_prefix}/lib/X11/app-defaults
 %{_prefix}/lib/X11/app-defaults/XScreenSaver
 %{_mandir}/man1/xscreensaver.*
 %{_mandir}/man1/xscreensaver-command.*
 %{_mandir}/man1/xscreensaver-demo.*
-%{_mandir}/man6/xscreensaver-gl-helper.*
-%{_mandir}/man1/xscreensaver-systemd.*
+%{_mandir}/man1/xscreensaver-settings.*
+%{_mandir}/man6/xscreensaver-auth.*
+%{_mandir}/man6/xscreensaver-gfx.*
+%{_mandir}/man6/xscreensaver-gl-visual.*
+%{_mandir}/man6/xscreensaver-systemd.*
 %config %{_sysconfdir}/pam.d/xscreensaver
 %dir %{_sysconfdir}/xscreensaver/
 %config %{_sysconfdir}/xscreensaver/README
@@ -270,22 +277,22 @@ done
 %files lang -f %{name}.lang
 
 %files data -f %{name}-data.lst
-%dir %{_libdir}/xscreensaver/
+%dir %{_libexecdir}/xscreensaver/
 %dir %{_sysconfdir}/xscreensaver/
 %dir %{_datadir}/applications/screensavers/
 
 %files data-extra -f %{name}-data-extra.lst
-%dir %{_libdir}/xscreensaver/
+%dir %{_libexecdir}/xscreensaver/
+%{_libexecdir}/xscreensaver/xscreensaver-getimage
+%{_libexecdir}/xscreensaver/xscreensaver-getimage-file
+%{_libexecdir}/xscreensaver/xscreensaver-getimage-video
+%{_libexecdir}/xscreensaver/xscreensaver-text
 %dir %{_sysconfdir}/xscreensaver/
 %dir %{_datadir}/applications/screensavers/
 # Screensavers using those utilities are in this package.
-%{_bindir}/xscreensaver-getimage
-%{_bindir}/xscreensaver-getimage-file
-%{_bindir}/xscreensaver-getimage-video
-%{_bindir}/xscreensaver-text
-%{_mandir}/man1/xscreensaver-getimage.*
-%{_mandir}/man1/xscreensaver-getimage-file.*
-%{_mandir}/man1/xscreensaver-getimage-video.*
-%{_mandir}/man1/xscreensaver-text.*
+%{_mandir}/man6/xscreensaver-getimage.*
+%{_mandir}/man6/xscreensaver-getimage-file.*
+%{_mandir}/man6/xscreensaver-getimage-video.*
+%{_mandir}/man6/xscreensaver-text.*
 
 %changelog

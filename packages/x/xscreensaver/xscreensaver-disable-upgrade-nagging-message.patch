@@ -1,10 +1,10 @@
-Index: xscreensaver-5.40/driver/prefs.c
+Index: xscreensaver-6.02/driver/prefsw.c
 ===================================================================
---- xscreensaver-5.40.orig/driver/prefs.c
-+++ xscreensaver-5.40/driver/prefs.c
-@@ -1735,36 +1735,5 @@ senesculent_p (void)
-      upgrading it again -- which would be the worst possible outcome for
-      everyone involved, most especially the users.
+--- xscreensaver-6.02.orig/driver/prefsw.c
++++ xscreensaver-6.02/driver/prefsw.c
+@@ -1520,36 +1520,5 @@ senescent_p (void)
+      security-critical software that they are running is dangerously out
+      of date.
    */
 -
 -  time_t now = time ((time_t *) 0);				/*   d   */
