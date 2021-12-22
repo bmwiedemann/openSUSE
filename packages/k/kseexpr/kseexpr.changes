@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 21 09:33:15 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Rename %lang option to %released to pass Factory review
+
+-------------------------------------------------------------------
+Wed Dec 15 15:04:33 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.0.4.0
+  * Add support for LLVM 13
+  * Fix copy-paste typo in range comment parsing (kde#442853)
+  * ExprEditor: replace index for line/column when reporting errors
+  * Reject malformed curve and ccurve calls at parse time
+  * Do not look LLVM up unless explicitly enabled
+- Add signature file and keyring
+
+-------------------------------------------------------------------
 Tue Jul 13 10:27:16 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 4.0.3.0

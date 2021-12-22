@@ -17,15 +17,19 @@
 
 
 %define sover 4
-%bcond_without lang
+%bcond_without released
 Name:           kseexpr
-Version:        4.0.3.0
+Version:        4.0.4.0
 Release:        0
 Summary:        The embeddable expression engine fork for Krita
 License:        GPL-3.0-or-later AND Apache-2.0 AND BSD-3-Clause AND MIT
 Group:          Productivity/Graphics/Other
 URL:            https://invent.kde.org/graphics/kseexpr/
-Source0:        https://download.kde.org/stable/%{name}/4.0.3/%{name}-%{version}.tar.gz
+Source0:        https://download.kde.org/stable/%{name}/4.0.4/%{name}-%{version}.tar.gz
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/4.0.4/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(Qt5Core)
@@ -72,7 +76,7 @@ Development headers and libraries for %{name}.
 %install
 %cmake_install
 
-%if %{with lang}
+%if %{with released}
 %find_lang seexpr2 %{name}.lang --with-qt
 %endif
 
@@ -94,7 +98,7 @@ Development headers and libraries for %{name}.
 %{_libdir}/libKSeExpr.so
 %{_libdir}/libKSeExprUI.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
