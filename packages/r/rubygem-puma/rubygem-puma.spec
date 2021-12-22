@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma
-Version:        5.5.0
+Version:        5.5.2
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 21 00:24:34 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 5.5.2
+  https://github.com/puma/puma/security/advisories/GHSA-48w2-rm65-62xx
+  Re-allows UTF-8 in HTTP header values
+
+-------------------------------------------------------------------
 Sat Oct  9 09:16:35 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 5.5.0
