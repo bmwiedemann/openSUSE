@@ -110,4 +110,13 @@ Last piece to fix boo#1011125</comment>
     <comment></comment>
     <requestid>880572</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cad460b5198b28f1af833252b67505e6</srcmd5>
+    <version>2.0~20211218</version>
+    <time>1640200694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0~20211218 for gcompris-qt 2.0 (as such need to be build/tested in paar with gcompris-qt)
+</comment>
+    <requestid>942089</requestid>
+  </revision>
 </revisionlist>
