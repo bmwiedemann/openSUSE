@@ -3481,4 +3481,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Make missing-call-to-setgroups-before-setuid only warning.</comment>
     <requestid>940892</requestid>
   </revision>
+  <revision rev="376" vrev="1">
+    <srcmd5>5be9b1f3fcbfa0f192a7932f48a7e969</srcmd5>
+    <version>2.2.0+git20211221.2fbc146</version>
+    <time>1640200658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20211221.2fbc146:
+  * fix connman-nmcompat whitelisting (bsc#1192827) - resides in a sub-package</comment>
+    <requestid>941851</requestid>
+  </revision>
 </revisionlist>

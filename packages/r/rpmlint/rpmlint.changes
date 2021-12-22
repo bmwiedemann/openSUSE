@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 13:24:47 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.2.0+git20211221.2fbc146:
+  * fix connman-nmcompat whitelisting (bsc#1192827) - resides in a sub-package
+
+-------------------------------------------------------------------
 Thu Dec 16 12:54:38 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.2.0+git20211216.95ed862:
