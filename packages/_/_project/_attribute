@@ -5,7 +5,7 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1172073: '20211203'
-  boo#1176553: '20211220'
+  boo#1176553: '20211221'
   boo#1177461: '20210626'
   boo#1180358: '20210829'
   boo#1183082: '20210826'
@@ -536,7 +536,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20211221'
+    <value>failed: ''
 published: '20211220'
 publishing: '20211220'
 testing: '20211221'
