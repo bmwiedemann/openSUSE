@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        21.1.3
+Version:        21.1.4
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

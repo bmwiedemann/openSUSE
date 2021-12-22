@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 14 15:44:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.4
+  * Fixes for multiple input validation failures in X server extensions:
+    + CVE-2021-4008/ZDI-CAN-14192 SProcRenderCompositeGlyphs out-of-bounds access (boo#1193030)
+    + CVE-2021-4009/ZDI-CAN 14950 SProcXFixesCreatePointerBarrier out-of-bounds access (boo#1190487)
+    + CVE-2021-4010/ZDI-CAN-14951 SProcScreenSaverSuspend out-of-bounds access (boo#1190488)
+    + CVE-2021-4011/ZDI-CAN-14952 SwapCreateRegister out-of-bounds access (boo#1190489)
+  * This release also includes other fixes such as:
+    + Store EGLcontext to avoid superfluous eglMakeCurrent() calls
+    + Prefer EGLStream with NVIDIA proprietary driver if both GBM and EGLstream are available
+
+-------------------------------------------------------------------
 Mon Nov  8 11:45:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.3
