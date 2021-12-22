@@ -787,4 +787,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment>- Skip some broken tests with new pyparsing.</comment>
     <requestid>936400</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>133e82850141eae6dc4f78d4b35a2627</srcmd5>
+    <version>3.5.1</version>
+    <time>1640200659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940873</requestid>
+  </revision>
 </revisionlist>

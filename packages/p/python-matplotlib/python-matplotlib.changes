@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Dec 14 18:40:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip tests which crash with oom
+
+-------------------------------------------------------------------
+Sun Dec 12 18:26:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.5.1
+  * https://matplotlib.org/stable/users/prev_whats_new/whats_new_3.5.0.html
+  * Figure and Axes creation / management
+    - subplot_mosaic supports simple Axes sharing
+    - Figure now has draw_without_rendering method
+    - Figure __init__ passes keyword arguments through to set
+  * Plotting methods
+    - Add Annulus patch
+    - set_data method for FancyArrow patch
+    - New arrow styles in ArrowStyle and ConnectionPatch
+    - Setting collection offset transform after initialization
+  * Colors and colormaps
+    - Colormap registry (experimental)
+    - Image interpolation now possible at RGBA stage
+    - imshow supports half-float arrays
+    - A callback registry has been added to Normalize objects
+  * Titles, ticks, and labels
+    - Settings tick positions and labels simultaneously in
+      set_ticks
+  * Fonts and Text
+    - Triple and quadruple dot mathtext accents
+    - Font properties of legend title are configurable
+    - Text and TextBox added parse_math option
+    - Text can be positioned inside TextBox widget
+    - Simplifying the font setting for usetex mode
+    - Type 42 subsetting is now enabled for PDF/PS backends
+  * rcParams improvements
+    - Allow setting default legend labelcolor globally
+  * 3D Axes improvements
+    - Axes3D now allows manual control of draw order
+    - Allow changing the vertical axis in 3d plots
+    - plot_surface supports masked arrays and NaNs
+    - 3D plotting methods support data keyword argument
+  * Interactive tool improvements
+    - Colorbars now have pan and zoom functionality
+    - Updated the appearance of Slider widgets
+    - Removing points on a PolygonSelector
+    - Dragging selectors
+    - Clearing selectors
+    - Setting artist properties of selectors
+    - Ignore events outside selection
+    - CallbackRegistry objects gain a method to temporarily block
+      signals
+    - Directional sizing cursors
+  * Sphinx extensions
+    - More configuration of mathmpl sphinx extension
+  * Backend-specific improvements
+    - GTK backend
+    - Qt backends
+    - HiDPI support in Cairo-based, GTK, and Tk backends
+    - Qt figure options editor improvements
+    - WX backends support mouse navigation buttons
+    - WebAgg uses asyncio instead of Tornado
+- Add gtk4 and gtk-common subpackages
+
+-------------------------------------------------------------------
 Wed Dec  8 04:42:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip some broken tests with new pyparsing. 
