@@ -1,0 +1,23 @@
+diff --git a/vcl/unx/gtk3/gtkinst.cxx b/vcl/unx/gtk3/gtkinst.cxx
+index 6b592b3..2fce9eb 100644
+--- a/vcl/unx/gtk3/gtkinst.cxx
++++ b/vcl/unx/gtk3/gtkinst.cxx
+@@ -21415,12 +21415,16 @@ public:
+         gtk_popover_set_relative_to(m_pPopover, pWidget);
+ #endif
+         gtk_popover_set_pointing_to(m_pPopover, &aRect);
+-        gtk_popover_popup(m_pPopover);
++        // in GTK 3.22 you can just call gtk_popover_popup() to get it to show with transitions,
++        // but on SLE-12-SP5 we just have GTK 3.20, so enable transitions and show it to get the
++        // same effect
++        gtk_popover_set_transitions_enabled(m_pPopover, true);
++        gtk_widget_show(GTK_WIDGET(m_pPopover));
+     }
+ 
+     virtual void popdown() override
+     {
+-        gtk_popover_popdown(m_pPopover);
++        gtk_widget_hide(GTK_WIDGET(m_pPopover));
+     }
+ 
+     virtual ~GtkInstancePopover() override

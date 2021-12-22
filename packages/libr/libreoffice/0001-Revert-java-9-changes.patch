@@ -31,31 +31,6 @@ index f4850a8cb2dc..c2df878df1d7 100644
           path here. Note that this is not the location of the java command but the
           location of the entire distribution. In case of cross-compiling, this
           is the JDK of the host os. Use --with-build-platform-configure-options
-@@ -8004,12 +8004,20 @@ if test "$ENABLE_JAVA" != ""; then
-                 reg_get_value "$WIN_HOST_BITS" "HKEY_LOCAL_MACHINE/SOFTWARE/JavaSoft/JDK/$ver/JavaHome"
-                 reg_jdk_home=$regvalue
-             fi
--
--            if test -f "$reg_jdk_home/lib/jvm.lib" -a -f "$reg_jdk_home/bin/java.exe"; then
--                with_jdk_home="$reg_jdk_home"
-+            if test -z "$with_jdk_home"; then
-+                for ver in 1.8; do
-+                    reg_get_value "$bitness" "HKEY_LOCAL_MACHINE/SOFTWARE/JavaSoft/Java Development Kit/$ver/JavaHome"
-+                    if test -n "$regvalue"; then
-+                        _jdk_home=$regvalue
-+                        break
-+                    fi
-+                done
-+            fi
-+            if test -f "$_jdk_home/lib/jvm.lib" -a -f "$_jdk_home/bin/java.exe"; then
-+                with_jdk_home="$_jdk_home"
-                 howfound="found automatically"
-             else
--                AC_MSG_ERROR([No JDK found, pass the --with-jdk-home option pointing to a $WIN_HOST_BITS-bit JDK >= 9])
-+                AC_MSG_ERROR([No JDK found, pass the --with-jdk-home option pointing to a $bitness-bit JDK])
-             fi
-         else
-             test "$build_os" = "cygwin" && with_jdk_home=`win_short_path_for_make "$with_jdk_home"`
 @@ -8089,7 +8097,24 @@ if test "$ENABLE_JAVA" != "" -a "$cross_compiling" != "yes"; then
          elif test `$JAVAINTERPRETER -version 2>&1 | $AWK '{ print }' | $GREP -c "BEA"` -gt 0; then
              AC_MSG_ERROR([No valid check available. Please check the block for your desired java in configure.ac])

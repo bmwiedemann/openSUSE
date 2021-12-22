@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.2.4.1
+Version:        7.2.5.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -107,6 +107,8 @@ Patch6:         gcc11-fix-error.patch
 Patch7:         pld-skia-patches.patch
 # PATCH-FIX-UPSTREAM https://bugs.documentfoundation.org/show_bug.cgi?id=137924 Use proper DPI without requiring window handle
 Patch8:         fix-wayland-scaling-in-plasma.patch
+Patch9:         fix_math_desktop_file.patch
+Patch10:        fix_gtk_popover_on_3.20.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -180,7 +182,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(graphite2) >= 0.9.3
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.42
 BuildRequires:  pkgconfig(harfbuzz-icu) >= 0.9.42
 BuildRequires:  pkgconfig(hunspell)
@@ -189,11 +191,11 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libabw-0.1)
 BuildRequires:  pkgconfig(libcdr-0.1) >= 0.1
 BuildRequires:  pkgconfig(libclucene-core)
-BuildRequires:  pkgconfig(libe-book-0.1) >= 0.1.1
+BuildRequires:  pkgconfig(libe-book-0.1) >= 0.1.2
 BuildRequires:  pkgconfig(libeot) >= 0.01
 BuildRequires:  pkgconfig(libepubgen-0.1)
 BuildRequires:  pkgconfig(libetonyek-0.1) >= 0.1.10
-BuildRequires:  pkgconfig(libexttextcat) >= 3.1.1
+BuildRequires:  pkgconfig(libexttextcat) >= 3.4.1
 BuildRequires:  pkgconfig(libfreehand-0.1)
 BuildRequires:  pkgconfig(liblangtag)
 BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
@@ -222,7 +224,7 @@ BuildRequires:  pkgconfig(nss) >= 3.9.3
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(redland)
 BuildRequires:  pkgconfig(sane-backends)
-BuildRequires:  pkgconfig(serf-1) >= 1.1.0
+BuildRequires:  pkgconfig(serf-1) >= 1.3.9
 BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.28
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
@@ -260,7 +262,7 @@ ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_75_0.tar.xz
-Source2023:     %{external_url}/poppler-21.01.0.tar.xz
+Source2023:     %{external_url}/poppler-21.11.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.10.tar.gz
 %else
 BuildRequires:  libboost_date_time-devel
@@ -273,8 +275,8 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-68_1-src.tgz
-Source2022:     %{external_url}/icu4c-68_1-data.zip
+Source2021:     %{external_url}/icu4c-69_1-src.tgz
+Source2022:     %{external_url}/icu4c-69_1-data.zip
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 BuildRequires:  java-devel >= 1.8
@@ -300,6 +302,10 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildConflicts: java < 9
 BuildConflicts: java-devel < 9
 BuildConflicts: java-headless < 9
+%endif
+%if 0%{?suse_version}
+# needed by python3_sitelib
+BuildRequires:  python-rpm-macros
 %endif
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel
@@ -364,7 +370,11 @@ Provides:       libreoffice-branding-openSUSE = 4.0.1
 Obsoletes:      libreoffice-branding-openSUSE < 4.0.1
 Provides:       libreoffice-branding-SLE = 4.0.1
 Obsoletes:      libreoffice-branding-SLE < 4.0.1
+%if 0%{suse_version} < 1500
+Supplements:    packageand(libreoffice:branding-openSUSE)
+%else
 Supplements:    (libreoffice and branding-openSUSE)
+%endif
 BuildArch:      noarch
 
 %description branding-upstream
@@ -573,11 +583,20 @@ This package contains some GNOME extensions and GTK2 interface for LibreOffice.
 Summary:        Gtk3 interface for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name}-gnome = %{version}
+%if 0%{suse_version} < 1500
+Supplements:    packageand(libreoffice:gnome-session)
+Supplements:    packageand(libreoffice:mate-session-manager)
+Supplements:    packageand(libreoffice:xfce4-session)
+%if !%{with kdeintegration}
+Supplements:    packageand(libreoffice:plasma5-workspace)
+%endif
+%else
 Supplements:    (libreoffice and gnome-session)
 Supplements:    (libreoffice and mate-session-manager)
 Supplements:    (libreoffice and xfce4-session)
 %if !%{with kdeintegration}
 Supplements:    (libreoffice and plasma5-workspace)
+%endif
 %endif
 
 %description gtk3
@@ -587,7 +606,11 @@ This package contains Gtk3 interface rendering option for LibreOffice.
 Summary:        Qt5/KDE Frameworks interface for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name} = %{version}
+%if 0%{suse_version} < 1500
 Supplements:    packageand(libreoffice:plasma5-workspace)
+%else
+Supplements:    (libreoffice and plasma5-workspace)
+%endif
 Provides:       %{name}-kde4 = %{version}
 Obsoletes:      %{name}-kde4 < %{version}
 
@@ -987,7 +1010,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 %if 0%{?suse_version} < 1500
+%patch10 -p1
 %patch101 -p1
 %endif
 %patch990 -p1
@@ -1148,7 +1173,6 @@ export NOCONFIGURE=yes
         --enable-scripting-beanshell \
         --enable-scripting-javascript \
         --enable-build-opensymbol \
-        --disable-vlc \
         --disable-ccache \
         --disable-coinmp \
         --enable-symbols \
@@ -1339,8 +1363,10 @@ for i in file-lists/*.txt; do
             # python3 has __pycache__ dir while py2 does not
             pydir="${j%/*}"
             pyname="${j##*/}"
-            echo "%dir ${pydir}/__pycache__/" >> "${i}"
-            echo "${pydir}/__pycache__/${pyname%.*}*.pyc" >> "${i}"
+            if compgen -G "%{buildroot}${pydir}/__pycache__/${pyname%.*}*.pyc" > /dev/null; then
+                echo "%dir ${pydir}/__pycache__/" >> "${i}"
+                echo "${pydir}/__pycache__/${pyname%.*}*.pyc" >> "${i}"
+            fi
         done
     fi
 done
