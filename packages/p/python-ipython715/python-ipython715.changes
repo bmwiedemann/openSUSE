@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 21 16:48:35 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Don't build this legacy package for python310
+
+-------------------------------------------------------------------
 Wed Oct  6 09:54:21 UTC 2021 - Stean Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.

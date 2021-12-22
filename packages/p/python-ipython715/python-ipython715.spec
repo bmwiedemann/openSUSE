@@ -31,8 +31,9 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%define         skip_python310 1
 
 %bcond_without  iptest
 Name:           python-ipython715%{psuffix}
@@ -48,7 +49,7 @@ Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtcons
 Patch1:         ipython-jedi018.patch
 Patch2:         skiptests.patch
 BuildRequires:  %{python_module backcall}
-BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module base >= 3.5 with %python-base < 3.10}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
