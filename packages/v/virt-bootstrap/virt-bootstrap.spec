@@ -17,10 +17,8 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%if 0%{suse_version} >= 1550
 # python-libguestfs is python3 only
 %define pythons python3
-%endif
 Name:           virt-bootstrap
 Version:        1.1.1
 Release:        0
@@ -29,12 +27,13 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://github.com/virt-manager/virt-bootstrap
 Source:         http://virt-manager.org/download/sources/virt-bootstrap/%{name}-%{version}.tar.gz
+BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module libguestfs}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-libguestfs
-Requires:       python-passlib
+Requires:       python3-libguestfs
+Requires:       python3-passlib
 Requires:       skopeo
 Requires:       virt-sandbox
 BuildArch:      noarch
