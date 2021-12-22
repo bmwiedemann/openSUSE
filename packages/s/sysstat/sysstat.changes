@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 20 23:00:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.4:
+   * iostat: Always display persistent names with option -j.
+   * iostat: Fix how device mapper names are taken into account when
+     entered on the command line.
+   * mpstat: Don't display offline CPU.
+   * mpstat: Fix values displayed when an offline CPU goes back online.
+   * mpstat: Fix untrusted loop bound.
+   * mpstat: Update non regression tests.
+   * Use `grep -E` instead of deprecated `egrep`.
+   * Spelling and grammar fixes.
+   * Update man pages with correct spelling of "JavaScript".
+
+-------------------------------------------------------------------
 Wed Nov 24 12:33:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

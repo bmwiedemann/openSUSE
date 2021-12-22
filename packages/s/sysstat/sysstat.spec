@@ -17,7 +17,7 @@
 
 
 Name:           sysstat
-Version:        12.4.3
+Version:        12.4.4
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
