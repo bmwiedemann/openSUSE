@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 22 09:08:52 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable ix86 builds (resulting in build errors)
+  Given the purpose and usage pattern, running this program as 32bit
+  version doesn't make much sense anyway
+
+-------------------------------------------------------------------
 Sat Dec  4 03:41:17 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.0.0 

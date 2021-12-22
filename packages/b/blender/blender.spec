@@ -222,6 +222,7 @@ Requires:       audaspace-plugins
 %ifarch x86_64
 Requires:       %{name}-cycles-devel = %{version}
 %endif
+ExcludeArch:    %{ix86}
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
