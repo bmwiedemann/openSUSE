@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 20 22:48:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 36.0.1
+  * Updates test vectors to match python-cryptography 36.0.1
+
+-------------------------------------------------------------------
 Sat Nov 27 09:50:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 36.0.0
