@@ -1,15 +1,14 @@
-Index: squid-5.2/tools/systemd/squid.service
+Index: squid-5.3/tools/systemd/squid.service
 ===================================================================
---- squid-5.2.orig/tools/systemd/squid.service
-+++ squid-5.2/tools/systemd/squid.service
-@@ -11,6 +11,19 @@ Documentation=man:squid(8)
+--- squid-5.3.orig/tools/systemd/squid.service
++++ squid-5.3/tools/systemd/squid.service
+@@ -11,6 +11,18 @@ Documentation=man:squid(8)
  After=network.target network-online.target nss-lookup.target
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
-+ProtectHome=true
 +PrivateDevices=true
 +ProtectHostname=true
 +ProtectClock=true
@@ -18,7 +17,7 @@ Index: squid-5.2/tools/systemd/squid.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=notify
  PIDFile=/var/run/squid.pid
  ExecStartPre=/usr/sbin/squid --foreground -z

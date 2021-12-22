@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 22 14:03:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Adjust harden_squid.service.patch to resolve boo#1193938
+
+-------------------------------------------------------------------
 Sat Dec 11 09:36:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3:

@@ -69,15 +69,14 @@ BuildRequires:  pkgconfig(tdb)
 Requires(pre):  permissions
 Recommends:     logrotate
 Provides:       http_proxy
-%if 0%{suse_version} <= 1500
+%{?systemd_ordering}
+%if 0%{?suse_version} <= 1500
 # due to package rename
 # Wed Aug 15 17:40:30 UTC 2012
 # remove this after SLE15
 Provides:       %{name}3 = %{version}
 Obsoletes:      %{name}3 < %{version}
 %endif
-
-%{?systemd_ordering}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -236,7 +235,6 @@ make check %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
 %else
-
 %pre
 # we need this group for /usr/sbin/pinger
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}
