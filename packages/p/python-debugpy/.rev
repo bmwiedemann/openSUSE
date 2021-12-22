@@ -16,4 +16,12 @@
   * Look for the correct pthread library.</comment>
     <requestid>915711</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fc2cb82871d0363b2b6c01817ac1582</srcmd5>
+    <version>1.5.1</version>
+    <time>1640200670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941846</requestid>
+  </revision>
 </revisionlist>

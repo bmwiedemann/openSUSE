@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 20 23:00:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.1
+  * no release notes other than a bunch of github PR and issue
+    numbers: https://github.com/microsoft/debugpy/releases
+  * Python 3.10 is now fully supported
+- Drop pydevd-openSUSE-attach-autoarch.patch, upstream changed
+  architecture support logic
+- Drop correct-pthread-library-name.patch merged upstream
+- Remove performance tweak not compatible with older gdb
+  * gh#microsoft/debugpy#762
+
+-------------------------------------------------------------------
 Thu Sep  2 09:01:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add correct-pthread-library-name.patch:

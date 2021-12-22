@@ -25,22 +25,19 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Python 3.6 is officially supported, but debugpy is in openSUSE for ipykernel 6 which is for Python >= 3.7.
-# Skip Py36 in order to save resources.
+%{?!python_module:%define python_module() python3-%{**}}
+# Python 2 and 3.6 are officially supported, but debugpy is in openSUSE for ipykernel 6 which is for Python >= 3.7.
+# Skip Py2 in Leap and Py36 in TW in order to save resources.
+%define skip_python2 1
 %define skip_python36 1
 %define modname debugpy
 Name:           python-%{modname}%{psuffix}
-Version:        1.3.0
+Version:        1.5.1
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
 URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE pydevd-openSUSE-attach-autoarch.patch -- support more than intel: use rpmbuild compiled attach library and let gdb figure out the architecture automatically. code@bnavigator.de
-Patch0:         pydevd-openSUSE-attach-autoarch.patch
-# PATCH-FIX-UPSTREAM gh#microsoft/debugpy#716
-Patch1:         correct-pthread-library-name.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -67,17 +64,17 @@ debugpy is an implementation of the Debug Adapter Protocol for Python.
 %prep
 %autosetup -p1 -n %{modname}-%{version}
 
-# don't remove vendored pydevd until it is packaged as a separate package (which is not upstream's intention)
-# rm -rv src/debugpy/_vendored
+# don't remove vendored pydevd: upstream's intention is to always bundle it. Development happens in debugpy anyway
 
 # remove precompiled libs
 rm src/debugpy/_vendored/pydevd/pydevd_attach_to_process/*.{so,dll,dylib,exe,pdb}
 # remove script interpreter lines
 sed -i '1 {/^#!/ d}' \
-  src/debugpy/_vendored/pydevd/pydevd_attach_to_process/winappdbg/*/*.py \
-  src/debugpy/_vendored/pydevd/_pydevd_frame_eval/vendored/bytecode/tests/sanitytest.py
+  src/debugpy/_vendored/pydevd/pydevd_attach_to_process/winappdbg/*/*.py
 # remove gitignore file
 find src/debugpy/_vendored/pydevd/ -name .gitignore -delete
+# remove a performance tweak not compatible with older gdb: https://github.com/microsoft/debugpy/issues/762
+sed -i '/set auto-solib-add off/d' src/debugpy/_vendored/pydevd/pydevd_attach_to_process/add_code_to_python_process.py
 
 %build
 %if ! %{with test}
@@ -88,7 +85,16 @@ cp -r src/debugpy/_vendored src/debugpy/_vendored_clean
 rm -r src/debugpy/_vendored
 cp -r src/debugpy/_vendored_clean src/debugpy/_vendored
 pushd src/debugpy/_vendored/pydevd/pydevd_attach_to_process/linux_and_mac/
-g++ %{optflags} -shared -o ../attach_SUSE.so -fPIC -nostartfiles attach.cpp
+# see /src/debugpy/_vendored/pydevd/pydevd_attach_to_process/add_code_to_python_process.py::get_target_filename
+pyarch=$(python3 -c 'import platform; print(platform.machine())')
+g++ %{optflags} -shared -o ../attach_${pyarch}.so -fPIC -nostartfiles attach.cpp
+# if on intel architectures, use the default upstream names
+%ifarch x86_64
+mv ../attach_${pyarch}.so ../attach_linux_amd64.so
+%endif
+%ifarch %ix86
+mv ../attach_${pyarch}.so ../attach_linux_x86.so
+%endif
 popd
 %{$python_build}
 }
@@ -98,8 +104,8 @@ popd
 %if !%{with test}
 # Dont compile pydevd again
 export SKIP_CYTHON_BUILD=1
-%{python_expand # override install-lib: the vendored pydevd is not pure
-%{$python_install} --install-lib %{$python_sitearch}
+%python_install
+%{python_expand # remove source files
 rm -r %{buildroot}%{$python_sitearch}/debugpy/_vendored/pydevd/pydevd_attach_to_process/{common,linux_and_mac,windows}/
 rm %{buildroot}%{$python_sitearch}/debugpy/_vendored/pydevd/_*/*.{c,h,pxd,pyx}
 %fdupes %{buildroot}%{$python_sitearch}
@@ -108,11 +114,10 @@ rm %{buildroot}%{$python_sitearch}/debugpy/_vendored/pydevd/_*/*.{c,h,pxd,pyx}
 
 %if %{with test}
 %check
+export DEBUGPY_TEST=1
 # extra flags are not added
 donttest="test_custom_python_args"
-# breakpoints and killing fail
-donttest+=" or (test_flask and (breakpoint or exception))"
-%pytest_arch -x -rfEs -k "not ($donttest)"
+%pytest_arch -k "not ($donttest)"
 %endif
 
 %if ! %{with test}
