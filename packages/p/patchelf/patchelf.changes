@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 15 20:45:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.3:
+  * this release adds support for static, pre-compiled patchelf binaries
+  * make version number in tarball easier to use for packagers
+  * build fix: add missing include
+  * Bug fixes:
+    - Fix corrupted library names when using --replace-needed multiple times
+    - Fix setting an empty rpath
+    - Don't try to parse .dynamic section of type NOBITS
+    - Fix use-after-free in normalizeNoteSegments
+    - Correct EINTR handling in writeFile
+    - MIPS: Adjust PT_MIPS_ABIFLAGS segment and DT_MIPS_RLD_MAP_REL dynamic section if present
+    - Fix binaries without .gnu.hash section
+  * Support loongarch architecture
+  * Remove limits on output file size for elf files
+  * Allow reading rpath from file
+  * Requires now C++17 for building
+
+-------------------------------------------------------------------
 Sat Oct 16 12:24:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13:

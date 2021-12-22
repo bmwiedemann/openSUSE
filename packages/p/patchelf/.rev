@@ -128,4 +128,12 @@
   * patchelf: Fix alignment issues with contiguous note sections</comment>
     <requestid>925683</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d182e18e059cca3f7ae2ba6b3dcfcb18</srcmd5>
+    <version>0.14.3</version>
+    <time>1640200669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941812</requestid>
+  </revision>
 </revisionlist>

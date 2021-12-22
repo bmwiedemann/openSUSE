@@ -17,7 +17,7 @@
 
 
 Name:           patchelf
-Version:        0.13
+Version:        0.14.3
 Release:        0
 Summary:        A utility for patching ELF binaries
 License:        GPL-3.0-only
@@ -32,7 +32,7 @@ libraries.  It can change the dynamic loader ("ELF interpreter") of
 executables and change the RPATH of executables and libraries.
 
 %prep
-%setup -q -n %{name}-0.13.20210805.a949ff2
+%setup -q
 
 %build
 %configure
