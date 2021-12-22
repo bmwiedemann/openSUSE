@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec 20 19:40:43 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to version 3.4.2
+  * fallensnow.c: other algorithm for drawing fallen snow
+  * Santa.c: Santa is now moon-seeking, also when birds are not
+    showing but only half of the time
+  * fallensnow.c: fallen snow at the bottom changes shape every
+    few minutes
+  * no spikes anymore on top of fallensnow
+  * define minimum height of bottom fallensnow
+  * ui.c: set_default_tab(): remove memory leak
+  * fallensnow.c: CreateSurfaceFromFallen(): some minor details
+  * fix issue that 'make install' always remakes selfrep.o
+  * selfrep.c: if sizeof(tarfile) < 1000 characters, assume that
+    this can be safely send to a tty
+- Update to 3.4.1
+  * ui.c: more checks on ui_running
+  * configure.ac, Makefile.am, data: some small adaptions for
+    freeBSD
+- Update to 3.4.0
+  * first try to add background to the xscreensaver mode:
+    use ~/xsnowbackground.jpg
+  * src:Makefile.am: remove .deps/* from CLEANFILES
+  * configure.ac: move execution of 'make dist' to the very end
+  * replace imagemagick for background with gtk/gdk
+  * implement choose-background button
+  * xsnow.desktop: change version to 1.5, include xsnow-version 
+    in comment
+  * implement flag -bg
+  * xsnow.h: set time_snowflakes to 0.02 * global.cpufactor
+  * improve file selector for xscreensaver
+  * flags.c: add -treeoverlap and -notreeoverlap
+             add -birdsscale
+             add -transparency
+  * ui.xml: add corresponding command line flag to tooltips
+  * remove all from libmagickwand
+  * minor changes in xscreensaver menu
+  * prevent calling gtk_label_set_text() when there is no menu
+  * ui.c: ui(): move setting of ui_running to start of ui(), in order
+    to see version number in 'settings' tab
+- Rebase xsnow-desktop_file.patch.
+- Rebase xsnow-bindir.patch.
+
+-------------------------------------------------------------------
 Sat Dec  4 16:58:43 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to version 3.3.6:
