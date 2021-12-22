@@ -29,13 +29,13 @@
 %bcond_with python
 %endif
 Name:           nghttp2%{psuffix}
-Version:        1.43.0
+Version:        1.46.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://nghttp2.org/
-Source:         https://github.com/tatsuhiro-t/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz
+Source:         https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE nghttp2-remove-python-build.patch
 Patch0:         nghttp2-remove-python-build.patch
@@ -155,10 +155,10 @@ autoreconf -fiv
   --disable-python-bindings \
 %endif
   %{nil}
-make %{?_smp_mflags} all
+%make_build all
 %if %{with python}
 pushd python
-make %{?_smp_mflags} nghttp2.c
+%make_build nghttp2.c
 %python3_build
 popd
 %endif
@@ -182,7 +182,7 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 
 %check
 # One test fails if python-sphinx is not present
-make %{?_smp_mflags} check ||:
+%make_build check ||:
 
 %if !%{with python}
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
