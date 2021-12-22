@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 17 14:19:48 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.4.1
+  * several fixes as outlined here
+    https://www.thunderbird.net/en-US/thunderbird/91.4.1/releasenotes/
+  MFSA 2021-55 (bsc#1193845)
+  * CVE-2021-4126 (bmo#1732310)
+    OpenPGP signature status doesn't consider additional message
+    content
+  * CVE-2021-44538 (bmo#1744056)
+    Matrix chat library libolm bundled with Thunderbird
+    vulnerable to a buffer overflow
+- updated _constraints
+
+-------------------------------------------------------------------
 Thu Dec  2 08:55:33 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.4.0

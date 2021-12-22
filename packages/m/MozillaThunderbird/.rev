@@ -3951,4 +3951,22 @@ I cannot test locally unfortunately.
     bmo#1737009, bmo#1739372, bmo#1739421)</comment>
     <requestid>936365</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>16b75a5a800d17963896328ee1bfd9b3</srcmd5>
+    <version>91.4.1</version>
+    <time>1640200662</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.4.1
+  * several fixes as outlined here
+    https://www.thunderbird.net/en-US/thunderbird/91.4.1/releasenotes/
+  MFSA 2021-55 (bsc#1193845)
+  * CVE-2021-4126 (bmo#1732310)
+    OpenPGP signature status doesn't consider additional message
+    content
+  * CVE-2021-44538 (bmo#1744056)
+    Matrix chat library libolm bundled with Thunderbird
+    vulnerable to a buffer overflow
+- updated _constraints</comment>
+    <requestid>941707</requestid>
+  </revision>
 </revisionlist>
