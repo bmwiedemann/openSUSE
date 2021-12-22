@@ -51,4 +51,18 @@ The spec file was imported from Fedora and adapted for SUSE.</comment>
     <comment></comment>
     <requestid>927756</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c454b2879990bcaf830c4a36f8b4b220</srcmd5>
+    <version>1.1.0</version>
+    <time>1640200698</time>
+    <user>dimstar_suse</user>
+    <comment>* 
+- Update to new version 1.1.0:
+  - Fix timeout handling for asynchronous method calls
+  - Add support for unregistering signal handler
+  - Add support for chrono literals in sdbus-c++-xml2cpp generator
+  - Additional little fixes and improvements in code, build system, and documentation
+</comment>
+    <requestid>942130</requestid>
+  </revision>
 </revisionlist>

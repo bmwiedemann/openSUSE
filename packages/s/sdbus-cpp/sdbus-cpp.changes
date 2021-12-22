@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+* Wed Dec 22 14:02:26 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.1.0:
+  - Fix timeout handling for asynchronous method calls
+  - Add support for unregistering signal handler
+  - Add support for chrono literals in sdbus-c++-xml2cpp generator
+  - Additional little fixes and improvements in code, build system, and documentation
+
+-------------------------------------------------------------------
 * Mon Oct 25 14:48:52 UTC 2021 - Luca Boccassi <bluca@debian.org>
 
 - Update to new version 1.0.0

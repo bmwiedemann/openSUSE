@@ -19,7 +19,7 @@
 
 
 %global version_major 1
-%global version_minor 0
+%global version_minor 1
 %global version_micro 0
 
 Name:           sdbus-cpp
