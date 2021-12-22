@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 21 20:59:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.10.0:
+  * Fix the filenames in the comments of **.h and add SPDX identifiers.
+  * Add -DINSTALL_TO_DATADIR=... in CMakeLists.txt
+    "Install libdir files to the architecture independent datadir (e.g for Debian)"
+  * Minor README.asciidoc reformatting.
+  * Thanks to pert from #debian-mentoring.
+- Make use of new INSTALL_TO_DATADIR option, switch to noarch
+
+-------------------------------------------------------------------
 Mon Nov 30 13:36:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.8.0:

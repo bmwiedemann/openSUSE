@@ -1,7 +1,7 @@
 #
 # spec file for package rinutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rinutils
-Version:        0.8.0
+Version:        0.10.0
 Release:        0
 Summary:        Shlomi Fish's gnu11 C Library of Random headers
 License:        MIT
@@ -35,6 +35,7 @@ Shlomi Fish's gnu11 C Library of Random headers.
 %package devel
 Summary:        Shlomi Fish's gnu11 C Library of Random headers
 Group:          Development/Libraries/C and C++
+BuildArch:      noarch
 
 %description devel
 Shlomi Fish's gnu11 C Library of Random headers.
@@ -43,7 +44,7 @@ Shlomi Fish's gnu11 C Library of Random headers.
 %autosetup -p1
 
 %build
-%cmake -DWITH_TEST_SUITE=OFF
+%cmake -DWITH_TEST_SUITE=OFF -DINSTALL_TO_DATADIR=ON
 %cmake_build
 
 %install
@@ -53,8 +54,8 @@ Shlomi Fish's gnu11 C Library of Random headers.
 %license LICENSE
 %doc README.asciidoc NEWS.asciidoc
 %{_includedir}/rinutils/
-%{_libdir}/pkgconfig/*.pc
-%dir %{_libdir}/cmake/
-%{_libdir}/cmake/Rinutils/
+%{_datadir}/pkgconfig/*.pc
+%dir %{_datadir}/cmake/
+%{_datadir}/cmake/Rinutils/
 
 %changelog
