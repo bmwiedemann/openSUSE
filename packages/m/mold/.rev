@@ -7,4 +7,14 @@
     <comment>Add new Modern Linker (mold) package.</comment>
     <requestid>941885</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>17f440c248f17eee097cc6f6863c3f5a</srcmd5>
+    <version>1.0.0</version>
+    <time>1640200690</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore -Wno-sign-compare for now.
+
+- Use system package for tbb and xxhash.</comment>
+    <requestid>942074</requestid>
+  </revision>
 </revisionlist>

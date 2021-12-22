@@ -28,7 +28,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
+BuildRequires:  tbb-devel
 PreReq:         update-alternatives
+
+%define build_args "SYSTEM_TBB=1 SYSTEM_XXHASH=1"
 
 %description
 mold is a faster drop-in replacement for existing Unix linkers.
@@ -43,19 +46,18 @@ build time especially in rapid debug-edit-rebuild cycles.
 %build
 export CC=gcc
 export CXX=g++
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -Wno-sign-compare"
 export CXXFLAGS="${CFLAGS}"
-
 export MANDIR=%{_mandir}
 export LIBDIR=%{_libdir}
 export BINDIR=%{_bindir}
-%make_build
+%make_build %{build_args}
 
 %install
 export MANDIR=%{_mandir}
 export LIBDIR=%{_libdir}
 export BINDIR=%{_bindir}
-%make_install
+%make_install %{build_args}
 
 %post
 "%_sbindir/update-alternatives" --install \

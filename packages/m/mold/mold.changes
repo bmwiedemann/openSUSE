@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 21 17:04:56 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Ignore -Wno-sign-compare for now.
+
+-------------------------------------------------------------------
+Tue Dec 21 16:35:38 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use system package for tbb and xxhash.
+
+-------------------------------------------------------------------
 Tue Dec 21 15:03:07 UTC 2021 - Mark Nefedov <mark_nefedov@runbox.com>
 
 - Start with version 1.0.0.
