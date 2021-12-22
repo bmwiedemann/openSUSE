@@ -1,5 +1,0 @@
-<package name="python-requirementslib" project="openSUSE:Factory">
-  <title></title>
-  <description>A tool for converting between pip-style and pipfile requirements</description>
-  <devel project="devel:languages:python" package="python-requirementslib"/>
-</package>
