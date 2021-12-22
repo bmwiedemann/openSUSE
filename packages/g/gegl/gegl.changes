@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 21 19:08:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.34: 
+  + Operations:
+    - magick-load: use g_spawn_async instead of system to run the
+      image magick convert fallback - preventing shell expansion on
+      non-escaped/filtered paths in constructed commandline.
+    - ripple: avoid a possible division by zero.
+  + Build:
+    - Explicit dependency specification in meson for generated CL
+      files.
+    - ctx has been moved to be part of gegl-common.so nearer to the
+      operations using it avoiding polluting the GEGL library
+      symbol table with the ctx symbols.
+
+-------------------------------------------------------------------
 Wed Oct 27 21:23:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Re-enable luajit for ppc64, ppc64le, and s390x. We now have
@@ -20,13 +36,13 @@ Thu Sep 30 14:28:08 UTC 2021 - Michael Gorse <mgorse@suse.com>
 Sat Sep 18 22:50:48 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.4.32: 
-  - Docs/testing:
+  + Docs/testing:
     - Fixes and improvements to the test system ands it integration
       for comparing/keeping track of hashes of operation output by
       John Marshall including and overhaul of reference
       compositions and hashes, improving development as well as
       documentation.
-  - Operations:
+  + Operations:
      - distance-transform: 
      - openexr: fix build with newer OpenEXR 3
      - negative-darkroom: contrast boost and illuminant adjustment
@@ -34,7 +50,7 @@ Sat Sep 18 22:50:48 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
        more black and white paper presets.
      - fill-path: 32bit float RGB and CMYK color processing, using
        ctx as renderer.
-  - Core:
+  + Core:
     - Fixing of leaks and dead code removal in json op handling,
       branch hints in buffer tile handling.
 - drop patch gegl-openexr3.patch:
