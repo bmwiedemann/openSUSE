@@ -62,7 +62,8 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang = %{version}
+# For mimetype definitions
+Requires:       kcoreaddons
 # some icons were part of the main calligra package before 3.1.0
 Conflicts:      calligra < 3.1.0
 Obsoletes:      calligra5-plan

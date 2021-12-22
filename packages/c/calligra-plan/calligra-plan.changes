@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 21 20:46:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add dependency on kcoreaddons (boo#1193959)
+
+-------------------------------------------------------------------
 Thu Jan 28 19:24:32 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.3.0
