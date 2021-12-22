@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">mv-ddr-marvell-armada-atf</param>
     <param name="versionformat">master</param>
-    <param name="revision">55139f6e5893201c908f9d9c91bc76858def83a6</param>
+    <param name="revision">5d41a995637de1dbc93f193db6ef0c8954cab316</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*mv-ddr-marvell*.tar</param>

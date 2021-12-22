@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 10 14:16:59 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 2.6:
+  * changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/tree/docs/change-log.md
+- Update mv-ddr-marvell-armada-atf-master to latest version
+- Drop upstreamed patch:
+  * atf-2411053.diff
+- Add patch to allow to use non-git checkouts:
+  * atf-allow-non-git-dir.patch
+
+-------------------------------------------------------------------
 Tue Jul  6 12:16:36 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update mv-ddr-marvell to use master branch as upstream recommends

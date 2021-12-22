@@ -50,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.5
+Version:        2.6
 Release:        0
-%define srcversion 2.5
+%define srcversion 2.6
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
@@ -64,8 +64,7 @@ Source:         https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snap
 Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
-# PATCH-FIX-UPSTREAM - https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/9990
-Patch1:         atf-2411053.diff
+Patch1:         atf-allow-non-git-dir.patch
 Patch150:       A3700_utils-drop-git.patch
 Patch151:       fix-A3700-gcc11.patch
 %if "%{platform}" != ""
