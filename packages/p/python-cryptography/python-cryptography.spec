@@ -20,7 +20,7 @@
 %define skip_python2 1
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           python-cryptography
-Version:        36.0.0
+Version:        36.0.1
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause

@@ -601,4 +601,13 @@
   * The previous behavior can be restored with:</comment>
     <requestid>934527</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ff0a93e79e84237faad9bdb6a192be8e</srcmd5>
+    <version>36.0.1</version>
+    <time>1640200663</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 36.0.1:
+  * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 1.1.1m.</comment>
+    <requestid>941719</requestid>
+  </revision>
 </revisionlist>
