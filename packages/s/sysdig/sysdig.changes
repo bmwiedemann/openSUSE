@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 17 13:15:04 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add sysdig-0.27.0-fixi586.patch to fix build of armv7 and i586 [#1717]
+
+-------------------------------------------------------------------
 Wed Oct 13 06:37:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Gentoo patch to fix build with grpc 1.41 (gh#draios/sysdig#1778)

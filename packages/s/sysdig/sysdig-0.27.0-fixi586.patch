@@ -1,0 +1,35 @@
+https://github.com/draios/sysdig/pull/1717
+
+From 92b02d72f3fd26e8b1de6fa202d3213a07c5870f Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 9 Dec 2020 06:12:49 +0100
+Subject: [PATCH] Fix compilation on i586
+
+without this patch, compilation failed with
+ERROR: modpost: "__umoddi3" [/home/abuild/rpmbuild/BUILD/sysdig-0.27.0/build/driver/src/sysdig-probe.ko] undefined!
+
+sysdig-CLA-1.0-signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+---
+ driver/main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/driver/main.c b/driver/main.c
+index fab205eff..81cfde9d4 100644
+--- a/driver/main.c
++++ b/driver/main.c
+@@ -1523,13 +1523,14 @@ static inline int drop_event(struct ppm_consumer_t *consumer,
+ 	}
+ 
+ 	if (consumer->dropping_mode) {
++		nanoseconds ns2 = ns;
+ 		if (drop_flags & UF_ALWAYS_DROP) {
+ 			ASSERT((drop_flags & UF_NEVER_DROP) == 0);
+ 			return 1;
+ 		}
+ 
+ 		if (consumer->sampling_interval < SECOND_IN_NS &&
+-		    (ns % SECOND_IN_NS) >= consumer->sampling_interval) {
++		    do_div(ns2, SECOND_IN_NS) >= consumer->sampling_interval) {
+ 			if (consumer->is_dropping == 0) {
+ 				consumer->is_dropping = 1;
+ 				record_drop_e(consumer, ns, drop_flags);

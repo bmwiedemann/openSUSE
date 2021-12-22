@@ -25,6 +25,7 @@ Group:          System/Monitoring
 URL:            http://www.sysdig.org/
 Source0:        https://github.com/draios/%{name}/archive/%{version}/sysdig-%{version}.tar.gz
 Patch0:         0001-sysdig-fix-linking-with-grpc-1.41.patch
+Patch1:         sysdig-0.27.0-fixi586.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -43,7 +44,7 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    %{arm} aarch64 %{ix86}
+ExcludeArch:    aarch64
 %kernel_module_package
 
 %description
