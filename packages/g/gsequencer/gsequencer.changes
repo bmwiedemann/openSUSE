@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 21 20:23:56 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.14.3 implemented AgsHybridSynth powered by new
+  ags-fx-synth effect processor.
+- implemented ags-fx-chorus.
+- implemented enabled port of ags-fx-low-pass and ags-fx-high-pass.
+- minor improvements.
+
+-------------------------------------------------------------------
 Mon Dec 13 11:06:18 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.13.7 fixed dependent code of refactored objects
