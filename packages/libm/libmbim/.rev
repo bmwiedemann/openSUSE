@@ -282,4 +282,31 @@
     <comment></comment>
     <requestid>866096</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0b729e1ddfde4062800d8908a1d9c7f7</srcmd5>
+    <version>1.26.2</version>
+    <time>1640200667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.2:
+  + The GUdev optional build/runtime requirement is now fully
+    dropped, it's no longer used.
+  + Implemented new link management operations, exclusively for the
+    cdc_mbim driver for now. These new operations allow creating or
+    deleting VLAN network interfaces in order to run multiplexed
+    data sessions over one single physical network interface.
+  + Added support for the Microsoft-defined SAR service, including
+    the following operations:
+    - MBIM_CID_MS_SAR_CONFIG
+    - MBIM_CID_MS_SAR_TRANSMISSION_STATUS
+  + libmbim-glib:
+    - Logic updated to make sure full packets are written at once,
+      instead of writing them in chunks.
+    - Updated the &quot;LTE attach status&quot; APIs in order to avoid
+      creating unneeded struct types in the interface. The older
+      methods have been deprecated and maintained in the library
+      for compatibility purposes only.
+  + Bugfixes.
+- Drop pkgconfig(gudev-1.0) BuildRequires: no longer used.</comment>
+    <requestid>941787</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 Name:           libmbim
-Version:        1.24.6
+Version:        1.26.2
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gudev-1.0) >= 147
 
 %description
 libmbim is a glib-based library for talking to WWAN modems and devices
