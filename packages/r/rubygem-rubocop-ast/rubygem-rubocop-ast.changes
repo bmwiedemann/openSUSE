@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 22 00:31:11 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.15.0
+
+  ## 1.15.0 (2021-12-12)
+
+  ### New features
+
+  * [#10219](https://github.com/rubocop/rubocop/pull/10219): Add `value_omission` method to `AST::PairNode` for Ruby 3.1's hash value omission. ([@koic][])
+
+  ## 1.14.0 (2021-12-02)
+
+  ### New features
+
+  * [#218](https://github.com/rubocop/rubocop-ast/pull/218): Support Ruby 3.1's anonymous block forwarding syntax. ([@koic][])
+
+  ## 1.13.0 (2021-11-07)
+
+  ### New features
+
+  * [#213](https://github.com/rubocop/rubocop-ast/pull/213): Make `Node#numeric_type?` aware of rational and complex literals. ([@koic][])
+
+-------------------------------------------------------------------
 Sat Oct  9 09:19:45 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.12.0
