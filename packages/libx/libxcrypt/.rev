@@ -155,4 +155,14 @@
   verify source signature</comment>
     <requestid>936522</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>efca1d6a2bcf96403242f83adb246a0c</srcmd5>
+    <version>4.4.27</version>
+    <time>1640200658</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.27:
+  * Limit the maximum amount of rbytes to 64 bytes (512 bits) for yescrypt,
+    gost-yescrypt, and scrypt</comment>
+    <requestid>941718</requestid>
+  </revision>
 </revisionlist>
