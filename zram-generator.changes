@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Nov 26 15:16:23 UTC 2021 - Benjamin Brunner <bbrunner@suse.com>
+
+- Temporary pre-generate man-pages, to avoid dependency on
+  rubygem-ronn, which is no longer maintained
+
+-------------------------------------------------------------------
+Thu Nov 11 08:54:15 UTC 2021 -  Benjamin Brunner <bbrunner@suse.com> 
+
+- Update to version 1.0.1~git25.5e0ec60:
+  * make: add BUILDTYPE switch
+  * make: add "clippy" target
+  * Use ?= instead of = for Makefile defaults
+  * Do not warn on deprecated options
+  * Fix the reference to the directory/device option name
+  * Fix clippy
+  * Fix clippy job
+  * Warn on deprecated memory-limit
+  * Remove deprecated values from test data, move their tests to 11-obsolete
+  * Obsolete zram-fraction and max-zram-size in favour of new, arbitrary-expression, zram-size
+
+-------------------------------------------------------------------
+Wed Nov  3 12:12:53 UTC 2021 - Benjamin Brunner <bbrunner@suse.com>
+
+- Initial package for zram-generator (jsc#SLE-18818)
