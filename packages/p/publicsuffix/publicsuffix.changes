@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 21 12:19:05 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20211213:
+  * Adding ravendb.cloud domain to allow separation between users (#1468)
+
+-------------------------------------------------------------------
 Wed Dec  8 10:37:15 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211207:
