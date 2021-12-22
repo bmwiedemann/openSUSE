@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 21 09:40:12 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt to ruby3 (bsc#1193192)
+- 4.4.9
+
+-------------------------------------------------------------------
+Mon Dec 20 16:19:11 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Switch to the new suse-connect-ng backend (jsc#CSD-21)
+- 4.4.8
+
+-------------------------------------------------------------------
 Thu Dec 16 13:51:06 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed typo (bsc#1193800)
