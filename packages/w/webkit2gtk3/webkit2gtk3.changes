@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 21 15:03:42 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.34.3:
+  + Make audio tools (like mixers) display the actual name of the
+    application producing sound, instead of a generic one.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Tue Dec 14 13:30:29 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Typo fix for %define usegcc10.
