@@ -5437,4 +5437,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Freeze when calling term_wait() in a close callback.</comment>
     <requestid>932951</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>5ec2300b2255f46ae08dd48c1240f09f</srcmd5>
+    <version>8.2.3863</version>
+    <time>1640200671</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.3863, fixes the following problems
+  * Freeze when calling term_wait() in a close callback.
+  * Xxd code has duplicate expressions.
+  * List of distributed files is outdated.
+  * Header for source file is outdated.
+  * Count for 'operatorfunc' in Visual mode is not redone.
+  * Vim9: The &quot;no effect&quot; error is not given for all registers.
+  * Using &lt;sfile&gt; in a function gives an unexpected result.
+  * GTK: when using ligatures the cursor is drawn wrong.
+  * &quot;verbose pwd&quot; is incorrect after dropping files on Vim.
+  * Vim9: error for variable declared in while loop.
+  * Vim9: for loop variable can be a list member.
+  * Vim9: no error for :lock or :unlock with unknown variable.
+  * Can only get text properties one line at a time.
+  * Terminal ANSI colors may be wrong.
+  * GTK: a touch-drag does not update the selection.
+  * Compiler warning for using size_t for int.
+  * Vim9: no error for an evironment variable by itself.
+  * Vim9: debug text misses one line of return statement.
+  * Duplicate code in xxd.
+  * Integer overflow with large line number.
+  * Overflow check uses wrong number.
+  * Test for put with large count fails.
+  * Illegal memory access if malloc() fails.
+  * Using %S in printf() does not work correctly.
+  * Cannot adjust sign highlighting for 'cursorline'.
+  * Cannot use a lambda for 'tagfunc'.
+  * Libvterm is outdated.
+  * Building libvterm fails with MSVC.
+  * Messages may be corrupted.</comment>
+    <requestid>941861</requestid>
+  </revision>
 </revisionlist>

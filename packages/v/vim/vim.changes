@@ -1,4 +1,245 @@
 -------------------------------------------------------------------
+Tue Dec 21 14:21:55 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3863, fixes the following problems
+  * Freeze when calling term_wait() in a close callback.
+  * Xxd code has duplicate expressions.
+  * List of distributed files is outdated.
+  * Header for source file is outdated.
+  * Count for 'operatorfunc' in Visual mode is not redone.
+  * Vim9: The "no effect" error is not given for all registers.
+  * Using <sfile> in a function gives an unexpected result.
+  * GTK: when using ligatures the cursor is drawn wrong.
+  * "verbose pwd" is incorrect after dropping files on Vim.
+  * Vim9: error for variable declared in while loop.
+  * Vim9: for loop variable can be a list member.
+  * Vim9: no error for :lock or :unlock with unknown variable.
+  * Can only get text properties one line at a time.
+  * Terminal ANSI colors may be wrong.
+  * GTK: a touch-drag does not update the selection.
+  * Compiler warning for using size_t for int.
+  * Vim9: no error for an evironment variable by itself.
+  * Vim9: debug text misses one line of return statement.
+  * Duplicate code in xxd.
+  * Integer overflow with large line number.
+  * Overflow check uses wrong number.
+  * Test for put with large count fails.
+  * Illegal memory access if malloc() fails.
+  * Using %S in printf() does not work correctly.
+  * Cannot adjust sign highlighting for 'cursorline'.
+  * Cannot use a lambda for 'tagfunc'.
+  * Libvterm is outdated.
+  * Building libvterm fails with MSVC.
+  * Messages may be corrupted.
+  * Buffer overflow with long help argument.
+  * Error checks repeated several times.
+  * Restarting Insert mode in prompt buffer too often when a callback switches
+  windows and comes back. (Sean Dewar)
+  * Build failure with unsigned char.
+  * Crash when allocating signal stack fails.
+  * When ml_get_buf() fails it messes up IObuff.
+  * Using freed memory when vim_strsave() fails.
+  * Unused runtime file.
+  * After a put the '] mark is on the last byte of a multi-byte character.
+  * Illegal memory access.
+  * objc file detected as Octave. (Antony Lee)
+  * Repeated code in xxd.
+  * Cannot drag popup window after click on a status line. (Sergey Vlasov)
+  * Vim9: assigning to a script variable drops the required type.
+  * Vim9: cannot use `=expr` in :...do commands.
+  * Blockwise insert does not handle autoindent properly.
+  * Visual studio project files are not recognized.
+  * Filetype detection often mixes up Forth and F#.
+  * Blockwise insert does not handle autoindent properly when tab is inserted.
+  * The window title is not updated when dragging the scrollbar.
+  * ex_let_one() is too long.
+  * Vim9: "filter #pat# cmd" does not work.
+  * Build failure with small features.
+  * Vim9: cannot use :func inside a :def function.
+  * Coverity warns for possibly using a NULL pointer.
+  * Cannot use quotes in the count of an Ex command.
+  * Confusing error for missing key.
+  * Vim9: error for invalid assignment when skipping.
+  * Cannot drag a popup without a border.
+  * Match highlighting continues over breakindent.
+  * The +title feature adds a lot of #ifdef but little code.
+  * Text property highlighting continues over breakindent.
+  * Vim9: invalid LHS is not possible.
+  * First key in dict is seen as curly expression and fails.
+  * Most people call F# "fsharp" and not "fs".
+  * Vim9: cannot use a list declaration in a :def function.
+  * Cannot pass a lambda name to function() or funcref(). (Yegappan Lakshmanan)
+  * Text property highlighting is used on Tab.
+  * Vim9: constant expression of elseif not recognized.
+  * Vim9: test fails with different error.
+  * Vim9: backtick expression expanded when not desired.
+  * Vim9: backtick expression expanded for :global.
+  * Vim9: memory leak when compiling :elseif fails.
+  * Cannot use Vim9 lambda for 'tagfunc'.
+  * MS-Windows: No error message if vimgrep pattern is not matching.
+  * Some unused assignments and ugly code in xxd.
+  * Vim9: valgrind reports spurious problems for a test.
+  * Vim9: range without a command is not compiled.
+  * Vim9: error for constant list size is only given at runtime.
+  * Compiler warns for unused variable without the +textprop feature. (John
+  Marriott)
+  * MS-Windows: test sometimes runs into existing swap file.
+  * Vim9: Internal error when invoking closure in legacy context.
+  * Using memory freed by losing the clipboard selection. (Dominique Pellé)
+  * Amiga: superfluous messages for freeing lots of yanked text.
+  * When using 'linebreak' a text property starts too early.
+  * Build error for missing error message in small build.
+  * Cannot use a lambda for 'completefunc' and 'omnifunc'.
+  * README file in a config directory gets wrong filetype.
+  * In a gnome terminal keys are recognized as mouse events.
+  * Internal error when passing range() to list2blob().
+  * No support for squirrels.
+  * "/etc/Muttrc.d/README" gets filetype muttrc.
+  * "set! termcap" shows codes in one column, but not keys.
+  * "set! termcap" test fails.
+  * Vim9: using "legacy" before range does not work.
+  * Vim9: crash when no pattern match found.
+  * Cannot use a lambda for 'imactivatefunc'.
+  * Test fails without the channel feature. (Dominique Pellé)
+  * Test fails without the 'autochdir' option.
+  * Screen is cleared when a FocusLost autocommand triggers.
+  * In wrong directory when using win_execute() with 'acd' set.
+  * Memory left allocated on exit when using Tcl.
+  * Using freed memory in open command.
+  * Dec mouse test fails without gnome terminfo entry.
+  * ":sign" can add a highlight group without a name.
+  * E854 is not tested; some spelling suggestions are not tested.
+  * Autochdir test fails without the +channel feature.
+  * Cannot disassemble function starting with "debug" or "profile".
+  * Cannot remove highlight from an existing sign. (James McCoy)
+  * Giving an error for an empty sign argument breaks a plugin.
+  * Error messages are everywhere.
+  * Error messages are everywhere.
+  * Cannot assign a lambda to an option that takes a function.
+  * Build error when using Photon GUI.
+  * Vim9: function unreferenced while called is never deleted.
+  * Undesired changing of the indent of the first formatted line.
+  * Coverity warns for using a buffer in another scope.
+  * might crash when callback is not valid.
+  * An overlong highlight group name is silently truncated.
+  * Options that take a function insufficiently tested.
+  * Quickfix buffer becomes hidden while still in a window.
+  * Not automatically handling gnome terminal mouse like xterm.
+  * Focus change is not passed on to a terminal window.
+  * If the quickfix buffer is wiped out getqflist() still returns its number.
+  * When editing the command line a FocusLost callback may cause the screen
+  to scroll up.
+  * Cannot see any text when window was made zero lines or zero columns.
+  * Vim9: cannot use a lambda for 'opfunc' and others.
+  * Converting a funcref to a string leaves out "g:", causing the meaning
+  of the name depending on the context.
+  * Crash when using NULL partial.
+  * timer_info() has the wrong repeat value in a timer callback. (Sergey
+  Vlasov)
+  * Zig files are not recognized.
+  * New compiler warnings from clang-12 and clang-13.
+  * Vim9: accessing freed memory when checking type.
+  * Timer info test fails on slow machine.
+  * Wrong window size when a modeline changes 'columns' and there is more
+  than one tabpage. (Michael Soyka)
+  * Test for command line height fails.
+  * Vim9: lambda compiled without outer context when debugging.
+  * When a tags file line is long a tag may not be found.
+  * Spell file write error not checked.
+  * Lambda debug test fails in some configurations.
+  * Using freed memory when defining a user command from a user command.
+  * ":cd" works differently on MS-Windows.
+  * The option window script is outdated.
+  * Vim9: no error if a function shadows a script variable.
+  * Confusing error for using a variable as a function.
+  * The help for options is outdated.
+  * Running CI on MacOS with gcc is not useful.
+  * Test fails because of using Vim9 syntax in legacy function.
+  * No proper formatting of a C line comment after a statement.
+  * Lambda for option that is a function may be garbage collected.
+  * Test_window_minimal_size can fail on a slow machine.
+  * Test for term_gettitle() fails in some environments.
+  * Build error with +cindent but without +smartindent.
+  * Setting *func options insufficiently tested.
+  * Using "g:Func" as a funcref does not work in script context because "g:"
+  is dropped.
+  * Vim9: cannot find script-local func using "s:". (Yegappan Lakshmanan)
+  * Too many #ifdefs.
+  * The funcexe_T struct members are not named consistently.
+  * No good reason to limit the message history in the tiny version.
+  * A :def callback function postpones an error message.
+  * Edit test hangs or fails.
+  * When cross compiling the output of "uname" cannot be set. (Ben Reeves)
+  * If a terminal shows in two windows, only one is redrawn.
+  * Terminal in two windows test fails on some systems.
+  * Crash when 'writedelay' is set and using a terminal window to execute
+  a shell command.
+  * Script context not set when copying 'swf' and 'ts'.
+  * i3config files are not recognized.
+  * Terminal focus test fails sometimes.
+  * Vim9: can call import with star directly.
+  * Vim9: obsolete TODO items
+  * Vim9: crash when garbage collecting a nested partial. (Virginia Senioria)
+  * Vim9: expr4 test fails on MS-Windows.
+  * The opfunc error test fails on a slow machine.
+  * Vim9: leaking memory in numbered function test.
+  * confusing error when using :cc without error list. (Gary Johnson)
+  * .csx files and .sln files are not recognized.
+  * Vim9: cannot have a multi-line dict inside a block.
+  * Compiler warning for posible loss of data on MS-Windows.
+  * Vim9: Not using NL as command end does not work for :autocmd.
+  * Cannot filter or map characters in a string.
+  * Test fails because error message changed.
+  * "vrc" does not replace composing characters, while "rc" does.
+  * ASAN test run fails.
+  * Leaking memory in map() and filter(), cannot use a string argument in
+  Vim9 script.
+  * Test for visual replace is in wrong function.
+  * No ASAN support for MSVC.
+  * Various comments could be improved.
+  * Vim9: using "g:Func" as a funcref does not work in a :def function.
+  * Huntr badge does not really fit in the list.
+  * when opening a terminal from a timer the first typed character is
+  lost. (Virginia Senioria)
+  * No error when setting a func option to a script-local function.
+  * Error messages are spread out.
+  * Opfunc test fails when missing feature changes function name. (Dominique
+  Pellé)
+  * Test fails because of changed error message.
+  * Error from term_start() not caught by try/catch.
+  * Test_out_cb often fails on Mac.
+  * The inline-function example does not work.
+  * Vim9: comment after expression not skipped to find NL.
+  * QNX: crash when compiled with GUI but using terminal.
+  * Cannot use script-local function for setting *func options.
+  * Using \z() with \z1 not tested for syntax highlighting.
+  * Useless test for negative index in check functions.
+  * Vim9: outdated TODO items, disabled tests that work.
+  * Vim9: can change locked list and list items.
+  * Dep3patch files are not recognized.
+  * Vim9: no type error if assigning a value with type func(number) to a
+  variable of type func(string).
+  * Vim9: test fails when the channel feature is missing.
+  * No error when using control character for 'lcs' or 'fcs'.
+  * Illegal memory access when using a lambda with an error.
+  * Cannot use reduce() for a string.
+  * Functions implementing reduce and map are too long.
+  * Illegal memory access when displaying a partial.
+  * Vim9: overhead when comparing string, dict or function.
+  * Vim9: not enough tests.
+  * Vim9: not enough tests.
+  * Vim9: inconsistent arguments for test functions.
+  * Illegal memory access when displaying a blob.
+  * Vim9: not enough tests.
+  * Vim9: inconsistent error for using function().
+  * Vim9: not enough tests.
+  * Vim9: some code lines not tested.
+  * Vim9: codecov struggles with the file size.
+  * List of distributed files is outdated.
+  * Crash on exit with EXITFREE and using win_execute().
+  * Various build flags accidentally enabled.
+
+-------------------------------------------------------------------
 Mon Nov 22 09:04:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix boo#1192871
