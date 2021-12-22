@@ -3946,7 +3946,6 @@ unsorted:
   - fwnncom 
   - fwts 
   - fwupd-devel 
-  - fwupdtpmevlog 
   - fxload 
   - fzf 
   - fzf-bash-completion 
@@ -16179,6 +16178,7 @@ unsorted:
   - mojo-executor-javadoc 
   - mojo-parent 
   - moka-icon-theme 
+  - mold: [x86_64] 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -18234,6 +18234,7 @@ unsorted:
   - os-autoinst-qemu-kvm: [x86_64] 
   - os-autoinst-qemu-x86: [x86_64] 
   - os-autoinst-s390-deps: [x86_64] 
+  - os-autoinst-swtpm: [x86_64] 
   - os-maven-plugin 
   - os-maven-plugin-javadoc 
   - os-service-types-doc 
@@ -22257,7 +22258,6 @@ unsorted:
   - python36-certbot-apache 
   - python36-certbot-dns-cloudflare 
   - python36-certbot-dns-digitalocean 
-  - python36-certbot-dns-google 
   - python36-certbot-dns-rfc2136 
   - python36-certbot-dns-route53 
   - python36-certbot-nginx 
@@ -23118,7 +23118,6 @@ unsorted:
   - python36-mysql-to-sqlite3 
   - python36-mysqlclient 
   - python36-napalm 
-  - python36-napalm-arubaos-switch 
   - python36-napalm-asa 
   - python36-napalm-digineo-procurve 
   - python36-napalm-procurve 
@@ -23465,6 +23464,7 @@ unsorted:
   - python36-pygn 
   - python36-pyhcl 
   - python36-pyhibp 
+  - python36-pyicumessageformat 
   - python36-pyinotify 
   - python36-pyjavaproperties 
   - python36-pyjokes 
@@ -26359,6 +26359,7 @@ unsorted:
   - python38-pygn 
   - python38-pyhcl 
   - python38-pyhibp 
+  - python38-pyicumessageformat 
   - python38-pyipp 
   - python38-pyjavaproperties 
   - python38-pyjnius 
@@ -28344,7 +28345,6 @@ unsorted:
   - python39-django-tagging 
   - python39-django-tastypie 
   - python39-django-timezone-field 
-  - python39-django-treebeard 
   - python39-django-user-agents 
   - python39-django-utils-six 
   - python39-django-webpack-loader 
@@ -29455,6 +29455,7 @@ unsorted:
   - python39-pygraphviz 
   - python39-pyhcl 
   - python39-pyhibp 
+  - python39-pyicumessageformat 
   - python39-pyinotify 
   - python39-pyipp 
   - python39-pyjavaproperties 
@@ -31579,7 +31580,6 @@ unsorted:
   - ruby3.0-rubygem-rails-i18n 
   - ruby3.0-rubygem-rainbow 
   - ruby3.0-rubygem-raindrops 
-  - ruby3.0-rubygem-rake-12_0 
   - ruby3.0-rubygem-rake-compiler 
   - ruby3.0-rubygem-rb-fsevent 
   - ruby3.0-rubygem-rb-inotify 
@@ -42637,6 +42637,7 @@ unsorted:
   - xsetpointer 
   - xslide 
   - xsm 
+  - xsnow 
   - xsom 
   - xsom-javadoc 
   - xsp 
