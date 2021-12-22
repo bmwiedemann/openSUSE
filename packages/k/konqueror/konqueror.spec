@@ -53,8 +53,9 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+Requires:       webenginepart
 Recommends:     dolphin-part
-Recommends:     kwebkitpart
+Recommends:     %{name}-plugins
 Obsoletes:      kde-baseapps5-libkonq < %{version}
 Provides:       kde-baseapps5-libkonq = %{version}
 Obsoletes:      kde-baseapps-libkonq < %{version}
