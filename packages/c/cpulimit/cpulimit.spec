@@ -2,7 +2,7 @@
 #
 # spec file for package cpulimit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 Name:           cpulimit
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Limit the CPU Usage of a Process
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://limitcpu.sourceforge.net/
-Source0:        http://prdownloads.sourceforge.net/limitcpu/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/limitcpu/%{name}-%{version}.tar.gz
 Patch0:         %{name}-2.2-do_not_forget_version.patch
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
