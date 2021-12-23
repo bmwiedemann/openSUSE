@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 23 06:44:15 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.26
+Fixed
+  * CEA::VSD incorrect bit offset for DVI_Dual field.
+  * reparsing of CEA-header group should not be possible
+    (returned uninitialized rcode).
+
+-------------------------------------------------------------------
 Tue Apr 20 02:21:19 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.25

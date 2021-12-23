@@ -286,4 +286,16 @@ Fixed
     FieldsAr.Empty() is necessary for ForcedGroupRefresh()</comment>
     <requestid>886813</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a94b1e9f8f66f538d12a2eb608e3df39</srcmd5>
+    <version>0.0.26</version>
+    <time>1640278426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.26
+Fixed
+  * CEA::VSD incorrect bit offset for DVI_Dual field.
+  * reparsing of CEA-header group should not be possible
+    (returned uninitialized rcode).</comment>
+    <requestid>942188</requestid>
+  </revision>
 </revisionlist>
