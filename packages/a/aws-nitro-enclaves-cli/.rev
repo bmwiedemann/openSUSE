@@ -7,4 +7,12 @@
     <comment>- Initial version 1.1.0~git8.a46465e (bsc#1179544, jsc#SLE-22954)</comment>
     <requestid>933722</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57766e0be690588fc82e891f8994c303</srcmd5>
+    <version>1.1.0~git16.860cfe4</version>
+    <time>1640278421</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942147</requestid>
+  </revision>
 </revisionlist>
