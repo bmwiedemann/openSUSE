@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 23 06:11:31 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.4.4
+  * Fix issue with filenames with no directory causing error
+- No notable changes in 1.4.3
+- Changes in 1.4.2:
+  * Hashable Path objects, and more.
+
+-------------------------------------------------------------------
 Sat Feb 13 08:13:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (scipy) 

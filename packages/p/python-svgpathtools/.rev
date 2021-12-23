@@ -48,4 +48,16 @@
     <comment>- skip python 3.6 (scipy)</comment>
     <requestid>871593</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>100eb65aad000045a05c5ac3a32fa1d0</srcmd5>
+    <version>1.4.4</version>
+    <time>1640278424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.4
+  * Fix issue with filenames with no directory causing error
+- No notable changes in 1.4.3
+- Changes in 1.4.2:
+  * Hashable Path objects, and more.</comment>
+    <requestid>942186</requestid>
+  </revision>
 </revisionlist>
