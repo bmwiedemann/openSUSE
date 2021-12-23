@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 16 11:11:14 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1737:
+  * savestate.cpp: log the savestate revision on revision mismatch (#5894)
+  * Add libyuv (#5623)
+  * Add support for SDL controller accelerometer/gyro events
+
+-------------------------------------------------------------------
 Wed Dec  8 22:54:14 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - nightly1733
 
 - fix build for Leap 15.4
