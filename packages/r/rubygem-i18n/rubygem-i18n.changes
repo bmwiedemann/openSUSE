@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 21 00:32:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.8.11
+  - Fix typo in documentation by @rkh in #565
+  - Improve available locale check in Simple backend by
+    @codealchemy in #566
+  - Fix typo in Simple backend JSON test by @codealchemy in #572
+  - Fix a build error when using Psych 4.0 by @koic in #569
+
+-------------------------------------------------------------------
 Tue Apr 20 13:36:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.8.10

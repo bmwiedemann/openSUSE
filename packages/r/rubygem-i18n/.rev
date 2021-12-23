@@ -256,4 +256,12 @@
     <comment>update (forwarded request 887014 from mschnitzer)</comment>
     <requestid>887018</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cceba7f408d18c9f910dad58aa757d9a</srcmd5>
+    <version>1.8.11</version>
+    <time>1640278407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942022</requestid>
+  </revision>
 </revisionlist>
