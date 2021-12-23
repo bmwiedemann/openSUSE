@@ -228,4 +228,16 @@
     <comment></comment>
     <requestid>917966</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ff27fad9fb04633080ecd4cbc62d1b01</srcmd5>
+    <version>1.40</version>
+    <time>1640278416</time>
+    <user>dimstar_suse</user>
+    <comment>- connman-nmcompat manages D-Bus permissions for NetworkManager service.
+  However, these rules are different than the ones NetworkManager setup.
+  Allow the installation of only either of them. Fixes bsc#1192827
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed</comment>
+    <requestid>940531</requestid>
+  </revision>
 </revisionlist>

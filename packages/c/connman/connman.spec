@@ -77,7 +77,6 @@ Group:          Documentation/Man
 %description doc
 Documentation in form of man pages for Connman (Connection Manager).
 
-
 ##############################
 #Plugins
 ##############################
@@ -118,6 +117,7 @@ Requires:       vpnc
 %description plugin-vpnc
 Provides VPNC support for Connman (Connection Manager).
 
+
 #-------------------------------------
 %package plugin-openvpn
 Summary:        OpenVPN plugin for connman
@@ -129,6 +129,7 @@ Requires:       openvpn
 %description plugin-openvpn
 Provides OpenVPN support for Connman (Connection Manager).
 
+
 #-------------------------------------
 %package plugin-pptp
 Summary:        PPTP plugin for connman
@@ -137,6 +138,7 @@ Requires:       %{name} >= %{version}
 
 %description plugin-pptp
 Provides PPTP support for Connman (Connection Manager).
+
 
 #-------------------------------------
 %package plugin-wireguard
@@ -167,6 +169,7 @@ Requires:       %{name} >= %{version}
 %description plugin-l2tp
 Provides L2TP (Layer 2 Tunneling Protocol) support for Connman (Connection Manager).
 
+
 #-------------------------------------
 %package plugin-iospm
 Summary:        Intel OSPM plugin for connman
@@ -178,6 +181,7 @@ Requires:       ppp
 %description plugin-iospm
 Provides Intel OSPM support for Connman (Connection Manager).
 
+
 #-------------------------------------
 %package test
 Summary:        Test and example scripts for connman
@@ -187,14 +191,19 @@ Requires:       %{name} >= %{version}
 %description test
 Provides test and example scripts for Connman (Connection Manager).
 
+
 #-------------------------------------
 %package nmcompat
 Summary:        NetworkManager compatibility for connman
 Group:          System/Daemons
 Requires:       %{name} >= %{version}
+# This package install D-Bus rules that are different than the ones from
+# NetworkManager, only allow the installation of one of them
+Conflicts:      NetworkManager
 
 %description nmcompat
 Provides NetworkManager compatibility for Connman (Connection Manager).
+
 
 #-------------------------------------
 %package plugin-polkit
@@ -206,6 +215,7 @@ Requires:       polkit
 
 %description plugin-polkit
 Provides PolicyKit support for Connman (Connection Manager).
+
 
 #-------------------------------------
 %package client

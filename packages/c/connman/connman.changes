@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 26 14:14:41 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- connman-nmcompat manages D-Bus permissions for NetworkManager service.
+  However, these rules are different than the ones NetworkManager setup.
+  Allow the installation of only either of them. Fixes bsc#1192827
+
+-------------------------------------------------------------------
+Fri Oct 15 12:11:29 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
 Mon Aug 30 08:28:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):
