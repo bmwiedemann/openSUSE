@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20211221" schemaversion="4.1">
+<image name="OBS__MicroOS___20211222" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211221</productvar>
+      <productvar name="VERSION">20211222</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211221,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211222,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211221/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211222/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -667,6 +667,8 @@
       <repopackage name="python38-dbus-python" arch="x86_64"/>
       <repopackage name="python38-distro" arch="x86_64"/>
       <repopackage name="python38-dragonmapper" arch="x86_64"/>
+      <repopackage name="python38-FontTools" arch="x86_64"/>
+      <repopackage name="python38-fs" arch="x86_64"/>
       <repopackage name="python38-gobject" arch="x86_64"/>
       <repopackage name="python38-greenlet" arch="x86_64"/>
       <repopackage name="python38-hanzidentifier" arch="x86_64"/>
