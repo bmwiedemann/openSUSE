@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 19 17:14:21 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build also nano variants of the libraries. The flags/features
+  are the same as used e.g. by ARM for their toolchain, or
+  fedora; most notably syscalls are not supplied, as this targets
+  bare metal.
+
+-------------------------------------------------------------------
 Wed Jun  9 20:13:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - disable all but the arm dependencies for ring 

@@ -164,4 +164,12 @@
     <comment>- disable all but the arm dependencies for ring (forwarded request 900731 from dirkmueller)</comment>
     <requestid>906419</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>665b0528ac8c8ff4dda48e23cc34d097</srcmd5>
+    <version>4.1.0</version>
+    <time>1640278422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942155</requestid>
+  </revision>
 </revisionlist>

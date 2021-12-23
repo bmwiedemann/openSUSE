@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package newlib
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -73,22 +73,33 @@ that make them easily usable on embedded products.
 
 %build
 %if "%{flavor}" != ""
-mkdir build-dir
-cd build-dir
-# On %%ix86 hosts newlib is documented to be buildable as shared library via --with-newlib,
-# but it fails to build for us and we don't need a host library at the moment.
-../configure \
+for variant in nano regular; do
+    mkdir build-${variant}-dir
+    pushd build-${variant}-dir
+    # On %%ix86 hosts newlib is documented to be buildable as shared library via --with-newlib,
+    # but it fails to build for us and we don't need a host library at the moment.
+    export CFLAGS_FOR_TARGET="-O2 -g -ffunction-sections -fdata-sections"
+    FEATURES="--disable-nls"
+    if [[ "${variant}" == "nano" ]]; then
+	export CFLAGS_FOR_TARGET="-Os -g"
+	FEATURES="${FEATURES} --enable-newlib-nano-malloc --enable-lite-exit --enable-newlib-nano-formatted-io --disable-newlib-supplied-syscalls"
+    fi
+    ../configure \
 	--prefix=%{_prefix} --libdir=%{_libdir} --mandir=%{_mandir} --infodir=%{_infodir} \
 	--target=%{target} \
-	--with-build-sysroot=%{sysroot}
+	--with-build-sysroot=%{sysroot} \
+	$FEATURES \
 %ifarch %{ix86}
 %if 0
 	--with-newlib \
 %endif
 %endif
-	CFLAGS="%{optflags}"
+	CFLAGS="%{optflags}" \
+	%{nil}
 
-%make_build
+    %make_build
+    popd
+done
 %endif
 
 %install
@@ -101,8 +112,26 @@ export NO_DEBUGINFO_STRIP_DEBUG=true
 : >debugsourcefiles.list
 : >debugsources.list
 
-cd build-dir
-%make_install
+for variant in nano regular; do
+    pushd build-${variant}-dir
+    if [[ "${variant}" == "regular" ]]; then
+        %make_install
+    else
+        %make_install DESTDIR=/tmp/newlib-nano
+	multilibs=$(%{target}-gcc --print-multi-lib)
+	for multilib in ${multilibs}; do
+	    multilib="${multilib%%;*}"
+	    for l in libc libg librdimon libstdc++ libsupc++; do
+		test -f /tmp/newlib-nano/%{_prefix}/%{target}/lib/${multilib}/${l}.a || continue
+		install -m 0644 -D /tmp/newlib-nano/%{_prefix}/%{target}/lib/${multilib}/${l}.a \
+		                        %{buildroot}%{_prefix}/%{target}/lib/${multilib}/${l}_nano.a
+	    done
+	done
+	install -m 0644 -D -t %{buildroot}%{_prefix}/%{target}/include/newlib-nano/ /tmp/newlib-nano/%{_prefix}/%{target}/include/newlib.h
+    fi
+    popd
+done
+
 %fdupes %{buildroot}
 %endif
 
