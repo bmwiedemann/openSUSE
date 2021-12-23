@@ -162,7 +162,7 @@ unsorted:
   - OpenImageDenoise-devel: [x86_64] 
   - OpenImageIO 
   - OpenImageIO-devel 
-  - OpenImageIO-plugin-osl 
+  - OpenImageIO-plugin-osl: [x86_64] 
   - OpenLP 
   - OpenMoji-Black 
   - OpenMoji-Color 
@@ -174,12 +174,12 @@ unsorted:
   - OpenSceneGraph34 
   - OpenSceneGraph34-examples 
   - OpenSceneGraph34-plugins 
-  - OpenShadingLanguage 
-  - OpenShadingLanguage-MaterialX-shaders-source 
-  - OpenShadingLanguage-common-headers 
-  - OpenShadingLanguage-devel 
-  - OpenShadingLanguage-doc 
-  - OpenShadingLanguage-example-shaders-source 
+  - OpenShadingLanguage: [x86_64] 
+  - OpenShadingLanguage-MaterialX-shaders-source: [x86_64] 
+  - OpenShadingLanguage-common-headers: [x86_64] 
+  - OpenShadingLanguage-devel: [x86_64] 
+  - OpenShadingLanguage-doc: [x86_64] 
+  - OpenShadingLanguage-example-shaders-source: [x86_64] 
   - OpenSubdiv-devel 
   - PDAL 
   - PDAL-bash-completion 
@@ -5009,7 +5009,7 @@ unsorted:
   - ghc-optparse-simple: [x86_64] 
   - ghc-optparse-simple-devel: [x86_64] 
   - ghc-pandoc: [x86_64] 
-  - ghc-pandoc-devel: [x86_64] 
+  - ghc-pandoc-devel: [x86_64] # devel package of dvd:pandoc 
   - ghc-pandoc-types: [x86_64] 
   - ghc-pandoc-types-devel: [x86_64] 
   - ghc-parallel: [x86_64] 
@@ -7694,17 +7694,14 @@ unsorted:
   - jupyter-ipyleaflet 
   - jupyter-ipympl 
   - jupyter-ipympl-jupyterlab 
-  - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
-  - jupyter-jupyter-client 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
   - jupyter-jupyter_contrib_core 
-  - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_dashboards 
   - jupyter-jupyter_highlight_selected_word 
   - jupyter-jupyter_latex_envs 
@@ -7720,17 +7717,13 @@ unsorted:
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
   - jupyter-nbclassic 
-  - jupyter-nbconvert 
   - jupyter-nbconvert-doc 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
   - jupyter-nbdime-git 
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
-  - jupyter-nbformat 
   - jupyter-nbinteract 
-  - jupyter-notebook 
-  - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
   - jupyter-octave-kernel 
@@ -7744,7 +7737,6 @@ unsorted:
   - jupyter-sidecar-jupyterlab 
   - jupyter-vispy 
   - jupyter-voila 
-  - jupyter-widgetsnbextension 
   - jvnet-parent 
   - jvyamlb 
   - jwnl 
@@ -10516,7 +10508,6 @@ unsorted:
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
-  - libfabric1 
   - libfabric1-32bit: [x86_64] 
   - libfakekey-devel 
   - libfaketime 
@@ -11423,7 +11414,6 @@ unsorted:
   - libindicator7 
   - libindidriver1 
   - libindilx200-1 
-  - libinfinipath4 
   - libinfinipath4-32bit: [x86_64] 
   - libinfinity-1_0-0 
   - libinfinity-devel 
@@ -12505,10 +12495,10 @@ unsorted:
   - libosinfo-devel 
   - libosip2-12 
   - libosip2-devel 
-  - liboslcomp1_11 
-  - liboslexec1_11 
-  - liboslnoise1_11 
-  - liboslquery1_11 
+  - liboslcomp1_11: [x86_64] 
+  - liboslexec1_11: [x86_64] 
+  - liboslnoise1_11: [x86_64] 
+  - liboslquery1_11: [x86_64] 
   - libosmcomp5 
   - libosmcomp5-32bit: [x86_64] 
   - libosmgpsmap-1_0-1 
@@ -12870,10 +12860,8 @@ unsorted:
   - libpskc-devel 
   - libpsl-devel 
   - libpsl5-32bit: [x86_64] 
-  - libpsm2-2: [x86_64] 
   - libpsm2-compat: [x86_64] 
-  - libpsm2-devel: [x86_64] 
-  - libpsm_infinipath1 
+  - libpsm2-devel: [x86_64] # devel package of dvd:libpsm2-2 
   - libpsm_infinipath1-32bit: [x86_64] 
   - libpspell15 
   - libpspell15-32bit: [x86_64] 
@@ -12922,10 +12910,8 @@ unsorted:
   - libpython2_7-1_0-32bit: [x86_64] 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit: [x86_64] 
-  - libpython3_6m1_0 
   - libpython3_6m1_0-32bit: [x86_64] 
   - libpython3_8-1_0-32bit: [x86_64] 
-  - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
   - libqaccessibilityclient-qt5-devel 
   - libqalculate-devel 
@@ -13965,7 +13951,7 @@ unsorted:
   - libtermkey-devel 
   - libtermkey1 
   - libtesseract4 
-  - libtestshade1_11 
+  - libtestshade1_11: [x86_64] 
   - libtevent-devel 
   - libtevent-util-devel 
   - libtexlua53-5 
@@ -14113,16 +14099,12 @@ unsorted:
   - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
   - libucl1 
-  - libucm-devel: [x86_64] 
-  - libucm0: [x86_64] 
+  - libucm-devel: [x86_64] # devel package of dvd:libuct0 
   - libucommon8 
-  - libucp-devel: [x86_64] 
-  - libucp0: [x86_64] 
+  - libucp-devel: [x86_64] # devel package of dvd:libuct0 
   - libucpp13 
-  - libucs-devel: [x86_64] 
-  - libucs0: [x86_64] 
-  - libuct-devel: [x86_64] 
-  - libuct0: [x86_64] 
+  - libucs-devel: [x86_64] # devel package of dvd:libuct0 
+  - libuct-devel: [x86_64] # devel package of dvd:libuct0 
   - libudev-devel: [i586] # devel package of dvd:systemd-lang 
   - libudev-devel-32bit: [x86_64] 
   - libudev-mini-devel 
@@ -14428,8 +14410,8 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
-  - libwireshark14 
-  - libwiretap11 
+  - libwireshark15 
+  - libwiretap12 
   - libwlroots9 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
@@ -14468,7 +14450,7 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwsutil12 
+  - libwsutil13 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -16178,7 +16160,7 @@ unsorted:
   - mojo-executor-javadoc 
   - mojo-parent 
   - moka-icon-theme 
-  - mold: [x86_64] 
+  - mold 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -16333,7 +16315,6 @@ unsorted:
   - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
   - mpg123-sdl-32bit: [x86_64] 
-  - mpi-selector 
   - mpiP-gnu-mpich-hpc 
   - mpiP-gnu-mpich-hpc-devel 
   - mpiP-gnu-mpich-hpc-doc 
@@ -18053,8 +18034,8 @@ unsorted:
   - openmpi2-libs-32bit: [x86_64] 
   - openmpi2-macros-devel 
   - openmpi2-testsuite 
-  - openmpi3 
-  - openmpi3-config 
+  - openmpi3: [i586] 
+  - openmpi3-config: [i586] 
   - openmpi3-devel 
   - openmpi3-docs 
   - openmpi3-gnu-hpc 
@@ -18062,12 +18043,12 @@ unsorted:
   - openmpi3-gnu-hpc-devel-static 
   - openmpi3-gnu-hpc-docs 
   - openmpi3-gnu-hpc-macros-devel 
-  - openmpi3-libs 
+  - openmpi3-libs: [i586] 
   - openmpi3-libs-32bit: [x86_64] 
   - openmpi3-macros-devel 
   - openmpi3-testsuite 
-  - openmpi4 
-  - openmpi4-config 
+  - openmpi4: [x86_64] 
+  - openmpi4-config: [x86_64] 
   - openmpi4-devel 
   - openmpi4-docs 
   - openmpi4-gnu-hpc 
@@ -18075,7 +18056,7 @@ unsorted:
   - openmpi4-gnu-hpc-devel-static 
   - openmpi4-gnu-hpc-docs 
   - openmpi4-gnu-hpc-macros-devel 
-  - openmpi4-libs 
+  - openmpi4-libs: [x86_64] 
   - openmpi4-libs-32bit: [x86_64] 
   - openmpi4-macros-devel 
   - openmpi4-testsuite 
@@ -18423,7 +18404,6 @@ unsorted:
   - pamixer 
   - pan 
   - pan-lang 
-  - pandoc: [x86_64] 
   - pango-devel 
   - pango-devel-32bit: [x86_64] 
   - pango-tools 
@@ -21165,8 +21145,6 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
-  - python-rpm-generators 
-  - python-rpm-macros 
   - python-rtslib-fb-common 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
@@ -21184,7 +21162,6 @@ unsorted:
   - python-tables-doc 
   - python-tk 
   - python-tooz-doc 
-  - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-typeshed 
   - python-zope.deprecation-doc 
@@ -21556,13 +21533,11 @@ unsorted:
   - python310-testsuite 
   - python310-tk 
   - python310-tools 
-  - python36 
   - python36-32bit: [x86_64] 
   - python36-APScheduler 
   - python36-AnyQt 
   - python36-Arpeggio 
   - python36-Authlib 
-  - python36-Automat 
   - python36-BTrees 
   - python36-BTrees-devel 
   - python36-Babel 
@@ -21669,7 +21644,6 @@ unsorted:
   - python36-PyECLib 
   - python36-PyFxA 
   - python36-PyGithub 
-  - python36-PyHamcrest 
   - python36-PyICU 
   - python36-PyInstaller 
   - python36-PyJWT 
@@ -21741,7 +21715,6 @@ unsorted:
   - python36-TermRecord 
   - python36-Trolly 
   - python36-Trololio 
-  - python36-Twisted 
   - python36-TxSNI 
   - python36-URLObject 
   - python36-UkPostcodeParser 
@@ -21835,7 +21808,6 @@ unsorted:
   - python36-apache-libcloud 
   - python36-apipkg 
   - python36-apns2 
-  - python36-appdirs 
   - python36-application 
   - python36-applicationinsights 
   - python36-apptools 
@@ -21869,7 +21841,6 @@ unsorted:
   - python36-atpublic 
   - python36-atspi 
   - python36-attr 
-  - python36-attrs 
   - python36-audiogrep 
   - python36-audioread 
   - python36-augeas 
@@ -22171,12 +22142,10 @@ unsorted:
   - python36-backports.entry_points_selectable 
   - python36-backports.zoneinfo 
   - python36-baron 
-  - python36-base 
   - python36-base-32bit: [x86_64] 
   - python36-base58 
   - python36-bashate 
   - python36-basictracer 
-  - python36-bcrypt 
   - python36-beautifulsoup4 
   - python36-before-after 
   - python36-behave 
@@ -22264,7 +22233,6 @@ unsorted:
   - python36-certifi 
   - python36-certipy 
   - python36-certstream 
-  - python36-cffi 
   - python36-cfgdiff 
   - python36-cfgv 
   - python36-cfscrape 
@@ -22281,7 +22249,6 @@ unsorted:
   - python36-cl 
   - python36-cleo 
   - python36-cli-helpers 
-  - python36-click 
   - python36-click-aliases 
   - python36-click-completion 
   - python36-click-default-group 
@@ -22327,7 +22294,6 @@ unsorted:
   - python36-confluent-kafka 
   - python36-confpy 
   - python36-confusable-homoglyphs 
-  - python36-constantly 
   - python36-construct 
   - python36-contexter 
   - python36-contextlib2 
@@ -22362,7 +22328,6 @@ unsorted:
   - python36-croniter 
   - python36-crontab 
   - python36-crumbs 
-  - python36-cryptography 
   - python36-cryptography-vectors 
   - python36-css-html-js-minify 
   - python36-css-parser 
@@ -22376,7 +22341,6 @@ unsorted:
   - python36-ctypescrypto 
   - python36-curio 
   - python36-curlylint 
-  - python36-curses 
   - python36-curtsies 
   - python36-cwcwidth 
   - python36-cx_Freeze 
@@ -22399,7 +22363,6 @@ unsorted:
   - python36-datrie 
   - python36-dbf 
   - python36-dbfread 
-  - python36-dbm 
   - python36-dbus-deviation 
   - python36-dbus-python 
   - python36-dbus-python-devel 
@@ -22720,9 +22683,7 @@ unsorted:
   - python36-gmpy 
   - python36-gmpy2 
   - python36-gns3fy 
-  - python36-gobject 
   - python36-gobject-Gdk 
-  - python36-gobject-cairo 
   - python36-gobject-devel 
   - python36-goobook 
   - python36-google-api-core 
@@ -22769,7 +22730,6 @@ unsorted:
   - python36-gwosc 
   - python36-gyp 
   - python36-h11 
-  - python36-h2 
   - python36-hammett 
   - python36-hanzidentifier 
   - python36-happybase 
@@ -22788,7 +22748,6 @@ unsorted:
   - python36-hkdf 
   - python36-hl7apy 
   - python36-holidays 
-  - python36-hpack 
   - python36-hstspreload 
   - python36-html2text 
   - python36-html5-parser 
@@ -22811,8 +22770,6 @@ unsorted:
   - python36-husl 
   - python36-hvac 
   - python36-hyper 
-  - python36-hyperframe 
-  - python36-hyperlink 
   - python36-hypothesis 
   - python36-hypothesis-auto 
   - python36-hypothesis-fspaths 
@@ -22821,7 +22778,6 @@ unsorted:
   - python36-icalendar 
   - python36-identify 
   - python36-idle 
-  - python36-idna 
   - python36-idna_ssl 
   - python36-ifaddr 
   - python36-ifconfig-parser 
@@ -22831,9 +22787,7 @@ unsorted:
   - python36-imbox 
   - python36-immutables 
   - python36-impacket 
-  - python36-importlib-metadata 
   - python36-importlib-resources 
-  - python36-incremental 
   - python36-infinity 
   - python36-inflect 
   - python36-inflection 
@@ -23084,7 +23038,6 @@ unsorted:
   - python36-mohawk 
   - python36-mongoengine 
   - python36-monotonic 
-  - python36-more-itertools 
   - python36-moreorless 
   - python36-moretools 
   - python36-moto 
@@ -23202,7 +23155,6 @@ unsorted:
   - python36-openwrt-luci-rpc 
   - python36-orange-canvas-core 
   - python36-ordered-namespace 
-  - python36-ordered-set 
   - python36-orderedmultidict 
   - python36-osc-tiny 
   - python36-oscrypto 
@@ -23211,7 +23163,6 @@ unsorted:
   - python36-outcome 
   - python36-ovirt-engine-sdk 
   - python36-pa-ringbuffer 
-  - python36-packaging 
   - python36-padaos 
   - python36-padatious 
   - python36-paho-mqtt 
@@ -23285,7 +23236,6 @@ unsorted:
   - python36-pikepdf 
   - python36-pilkit 
   - python36-pingparsing 
-  - python36-pip 
   - python36-pip-api 
   - python36-pip-licenses 
   - python36-pip-shims 
@@ -23387,7 +23337,6 @@ unsorted:
   - python36-pyLibravatar 
   - python36-pyModis 
   - python36-pyOCD 
-  - python36-pyOpenSSL 
   - python36-pyPEG2 
   - python36-pyRFC3339 
   - python36-pyRXP 
@@ -23399,8 +23348,6 @@ unsorted:
   - python36-pyalsaaudio 
   - python36-pyaml 
   - python36-pyannotate 
-  - python36-pyasn1 
-  - python36-pyasn1-modules 
   - python36-pybars3 
   - python36-pybeam 
   - python36-pybind11 
@@ -23419,7 +23366,6 @@ unsorted:
   - python36-pyclipper 
   - python36-pycodestyle 
   - python36-pycountry 
-  - python36-pycparser 
   - python36-pycryptodome 
   - python36-pycryptodomex 
   - python36-pyct 
@@ -23517,7 +23463,6 @@ unsorted:
   - python36-pyp 
   - python36-pypandoc: [x86_64] 
   - python36-pyparallel 
-  - python36-pyparsing 
   - python36-pyperclip 
   - python36-pyperf 
   - python36-pypi-search 
@@ -23541,7 +23486,6 @@ unsorted:
   - python36-pyscard 
   - python36-pyscreenshot 
   - python36-pysendfile 
-  - python36-pyserial 
   - python36-pysha3 
   - python36-pyshark 
   - python36-pyshould 
@@ -23838,7 +23782,6 @@ unsorted:
   - python36-requestsexceptions 
   - python36-requirements-detector 
   - python36-requirements-parser 
-  - python36-requirementslib 
   - python36-requre 
   - python36-resolvelib 
   - python36-responses 
@@ -23915,10 +23858,8 @@ unsorted:
   - python36-serpent 
   - python36-serpy 
   - python36-serverfiles 
-  - python36-service_identity 
   - python36-setproctitle 
   - python36-setupmeta 
-  - python36-setuptools 
   - python36-setuptools-declarative-requirements 
   - python36-setuptools-git 
   - python36-setuptools-rust 
@@ -23951,7 +23892,6 @@ unsorted:
   - python36-sip5-devel 
   - python36-sip6-devel 
   - python36-siphashc 
-  - python36-six 
   - python36-slackclient 
   - python36-sleekxmpp 
   - python36-slimit 
@@ -24158,7 +24098,6 @@ unsorted:
   - python36-typepy 
   - python36-typer 
   - python36-typing-inspect 
-  - python36-typing_extensions 
   - python36-typogrify 
   - python36-tzlocal 
   - python36-u-msgpack-python 
@@ -24308,7 +24247,6 @@ unsorted:
   - python36-zetup 
   - python36-zhon 
   - python36-zict 
-  - python36-zipp 
   - python36-zipstream 
   - python36-zodbpickle 
   - python36-zope.cachedescriptors 
@@ -24321,7 +24259,6 @@ unsorted:
   - python36-zope.exceptions 
   - python36-zope.hookable 
   - python36-zope.i18nmessageid 
-  - python36-zope.interface 
   - python36-zope.location 
   - python36-zope.proxy 
   - python36-zope.proxy-devel 
@@ -24344,7 +24281,6 @@ unsorted:
   - python38-BTrees 
   - python38-BTrees-devel 
   - python38-BitVector 
-  - python38-Brotli 
   - python38-CCColUtils 
   - python38-CacheControl 
   - python38-CairoSVG 
@@ -24391,7 +24327,6 @@ unsorted:
   - python38-Flask-Testing 
   - python38-Flask-WTF 
   - python38-Flask-doc 
-  - python38-FontTools 
   - python38-FormEncode 
   - python38-GitPython 
   - python38-Glances 
@@ -24436,7 +24371,6 @@ unsorted:
   - python38-PeachPy: [x86_64] 
   - python38-PeakUtils 
   - python38-Pebble 
-  - python38-Pillow-tk 
   - python38-Pint 
   - python38-Protego 
   - python38-PsyLab 
@@ -24512,7 +24446,6 @@ unsorted:
   - python38-SQLAlchemy-Utils 
   - python38-Scrapy 
   - python38-SecretStorage 
-  - python38-Send2Trash 
   - python38-Shapely 
   - python38-SimpleWebSocketServer 
   - python38-SoundCard 
@@ -24956,7 +24889,6 @@ unsorted:
   - python38-azure-synapse-spark 
   - python38-azure-template 
   - python38-babelfish 
-  - python38-backcall 
   - python38-backoff 
   - python38-backports.entry_points_selectable 
   - python38-backports.zoneinfo 
@@ -24985,7 +24917,6 @@ unsorted:
   - python38-bitstruct 
   - python38-bjoern 
   - python38-black 
-  - python38-bleach 
   - python38-blessed 
   - python38-blessings 
   - python38-blinker: [i586] 
@@ -25218,11 +25149,9 @@ unsorted:
   - python38-ddt 
   - python38-deap 
   - python38-debian 
-  - python38-debugpy 
   - python38-deepdiff 
   - python38-deepmerge 
   - python38-defcon 
-  - python38-defusedxml 
   - python38-delegator 
   - python38-delegator.py 
   - python38-demjson 
@@ -25402,7 +25331,6 @@ unsorted:
   - python38-enaml 
   - python38-encore 
   - python38-entrypoint2 
-  - python38-entrypoints 
   - python38-environ-config 
   - python38-environmental-override 
   - python38-envisage 
@@ -25487,7 +25415,6 @@ unsorted:
   - python38-flower 
   - python38-fluent 
   - python38-flufl.testing 
-  - python38-fluidity-sm 
   - python38-flup 
   - python38-folium 
   - python38-fontMath 
@@ -25502,7 +25429,6 @@ unsorted:
   - python38-fritzconnection 
   - python38-frozendict 
   - python38-frozenlist 
-  - python38-fs 
   - python38-ftfy 
   - python38-ftputil 
   - python38-fudge 
@@ -25573,7 +25499,6 @@ unsorted:
   - python38-graphene-django 
   - python38-graphql-core 
   - python38-graphql-relay 
-  - python38-graphviz 
   - python38-greenlet-devel 
   - python38-grpc-google-iam-v1 
   - python38-grpcio 
@@ -25582,7 +25507,6 @@ unsorted:
   - python38-gscholar 
   - python38-gsm0338 
   - python38-gspread 
-  - python38-gssapi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - python38-gsw 
   - python38-guessit 
   - python38-guzzle_sphinx_theme 
@@ -25680,27 +25604,21 @@ unsorted:
   - python38-intervals 
   - python38-intervaltree 
   - python38-invocations 
-  - python38-invoke 
   - python38-iocapture 
   - python38-ipdb 
   - python38-iptables 
   - python38-ipy 
   - python38-ipydatawidgets 
   - python38-ipyevents 
-  - python38-ipykernel 
   - python38-ipyleaflet 
   - python38-ipympl 
-  - python38-ipyparallel 
   - python38-ipyscales 
   - python38-ipysheet 
-  - python38-ipython 
   - python38-ipython-iptest 
   - python38-ipython715 
   - python38-ipython715-iptest 
-  - python38-ipython_genutils 
   - python38-ipyvolume 
   - python38-ipywebrtc 
-  - python38-ipywidgets 
   - python38-irc 
   - python38-isc_dhcp_leases 
   - python38-iso3166 
@@ -25728,7 +25646,6 @@ unsorted:
   - python38-javapackages 
   - python38-javaproperties 
   - python38-jdatetime 
-  - python38-jedi 
   - python38-jedihttp 
   - python38-jeepney 
   - python38-jellyfish 
@@ -25760,15 +25677,12 @@ unsorted:
   - python38-jsonpointer: [i586] 
   - python38-jsonref 
   - python38-jsonrpclib-pelix 
-  - python38-jsonschema: [i586] 
   - python38-jsonslicer 
   - python38-jsonxs 
   - python38-junit-xml 
   - python38-junitxml 
   - python38-junos-eznc 
   - python38-jupyter 
-  - python38-jupyter-client 
-  - python38-jupyter-core 
   - python38-jupyter-jupyterlab-server 
   - python38-jupyter-jupyterlab-server-test 
   - python38-jupyter-nbutils 
@@ -25784,9 +25698,7 @@ unsorted:
   - python38-jupyter_latex_envs 
   - python38-jupyter_nbextensions_configurator 
   - python38-jupyterlab 
-  - python38-jupyterlab-pygments 
   - python38-jupyterlab-templates 
-  - python38-jupyterlab-widgets 
   - python38-jupytext 
   - python38-jwcrypto 
   - python38-k5test 
@@ -25844,7 +25756,6 @@ unsorted:
   - python38-leather 
   - python38-lesscpy 
   - python38-leveldb 
-  - python38-lexicon 
   - python38-lfdfiles 
   - python38-lhafile 
   - python38-lib3to6 
@@ -25909,7 +25820,7 @@ unsorted:
   - python38-markdown2 
   - python38-marshmallow 
   - python38-marshmallow-enum 
-  - python38-matplotlib-inline 
+  - python38-matplotlib-gtk4 
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
   - python38-matplotlib-testdata 
@@ -25936,7 +25847,6 @@ unsorted:
   - python38-minio 
   - python38-miniupnpc 
   - python38-misaka 
-  - python38-mistune 
   - python38-mitmproxy 
   - python38-mizani 
   - python38-mkdocs 
@@ -25960,11 +25870,9 @@ unsorted:
   - python38-moto 
   - python38-moto-all 
   - python38-moto-server 
-  - python38-mpi4py 
   - python38-mpi4py-devel 
   - python38-mplcursors 
   - python38-mpld3 
-  - python38-mpmath 
   - python38-mrcz 
   - python38-mrkd 
   - python38-msal 
@@ -26002,10 +25910,7 @@ unsorted:
   - python38-nautilus 
   - python38-nautilus-devel 
   - python38-nbclassic 
-  - python38-nbclient 
-  - python38-nbconvert 
   - python38-nbdime 
-  - python38-nbformat 
   - python38-nbindex-jupyter 
   - python38-nbinteract 
   - python38-nbsmoke 
@@ -26018,7 +25923,6 @@ unsorted:
   - python38-ndg-httpsclient 
   - python38-neovim 
   - python38-neovim-remote 
-  - python38-nest-asyncio 
   - python38-nested-lookup 
   - python38-net-snmp 
   - python38-netCDF4 
@@ -26034,7 +25938,6 @@ unsorted:
   - python38-nodeenv 
   - python38-nornir 
   - python38-nose2 
-  - python38-notebook 
   - python38-notebook-lang 
   - python38-nox 
   - python38-npTDMS 
@@ -26117,14 +26020,12 @@ unsorted:
   - python38-pan-python 
   - python38-pandas-datareader 
   - python38-pandas-ext 
-  - python38-pandocfilters 
   - python38-panel 
   - python38-panflute 
   - python38-papermill 
   - python38-parallax 
   - python38-param 
   - python38-parameterized 
-  - python38-paramiko 
   - python38-paramiko-expect 
   - python38-parfive 
   - python38-parse 
@@ -26132,7 +26033,6 @@ unsorted:
   - python38-parsedatetime 
   - python38-parsel 
   - python38-parsimonious 
-  - python38-parso 
   - python38-parsy 
   - python38-partd 
   - python38-parted 
@@ -26179,7 +26079,6 @@ unsorted:
   - python38-phue 
   - python38-physt 
   - python38-pick 
-  - python38-pickleshare 
   - python38-pifpaf 
   - python38-pika 
   - python38-pika-pool 
@@ -26206,7 +26105,6 @@ unsorted:
   - python38-plette 
   - python38-plotly 
   - python38-plotly-jupyter 
-  - python38-pluggy 
   - python38-pluginbase 
   - python38-plumbum 
   - python38-plyvel 
@@ -26247,9 +26145,7 @@ unsorted:
   - python38-progress 
   - python38-progressbar 
   - python38-progressbar2 
-  - python38-prometheus-client 
   - python38-promise 
-  - python38-prompt_toolkit 
   - python38-prompt_toolkit1 
   - python38-proselint 
   - python38-proto-plus 
@@ -26345,7 +26241,6 @@ unsorted:
   - python38-pyfeyn 
   - python38-pyfiglet 
   - python38-pyflakes 
-  - python38-pyftpdlib 
   - python38-pyfuse3 
   - python38-pygal 
   - python38-pygaljs 
@@ -26437,11 +26332,9 @@ unsorted:
   - python38-pyroma 
   - python38-pyroomacoustics 
   - python38-pyroute2 
-  - python38-pyrsistent: [i586] 
   - python38-pysaml2 
   - python38-pyscard 
   - python38-pyscreenshot 
-  - python38-pysendfile 
   - python38-pysha3 
   - python38-pyshark 
   - python38-pyshould 
@@ -26459,7 +26352,6 @@ unsorted:
   - python38-pytaglib 
   - python38-pyte 
   - python38-pytesseract 
-  - python38-pytest 
   - python38-pytest-aiofiles 
   - python38-pytest-aiohttp 
   - python38-pytest-arraydiff 
@@ -26745,7 +26637,6 @@ unsorted:
   - python38-requestsexceptions 
   - python38-requirements-detector 
   - python38-requirements-parser 
-  - python38-requirementslib 
   - python38-requre 
   - python38-resampy 
   - python38-resolvelib 
@@ -26978,7 +26869,6 @@ unsorted:
   - python38-swapper 
   - python38-swifter 
   - python38-sybil 
-  - python38-sympy 
   - python38-system_hotkey 
   - python38-systemd 
   - python38-tableauserverclient 
@@ -27000,14 +26890,12 @@ unsorted:
   - python38-tenacity 
   - python38-tensorpac 
   - python38-termcolor 
-  - python38-terminado 
   - python38-terminaltables 
   - python38-termstyle 
   - python38-tesserocr 
   - python38-test-server 
   - python38-testfixtures 
   - python38-testflo 
-  - python38-testpath 
   - python38-testrepository 
   - python38-testresources 
   - python38-testscenarios 
@@ -27057,8 +26945,6 @@ unsorted:
   - python38-tox-no-internet 
   - python38-tox-wheel 
   - python38-tpfd 
-  - python38-tqdm 
-  - python38-traitlets 
   - python38-traits 
   - python38-traitsui 
   - python38-traittypes 
@@ -27196,7 +27082,6 @@ unsorted:
   - python38-whichcraft 
   - python38-whitenoise 
   - python38-whois_similarity_distance 
-  - python38-widgetsnbextension 
   - python38-wikipedia 
   - python38-wirerope 
   - python38-wiring 
@@ -27277,17 +27162,14 @@ unsorted:
   - python38-zope.testbrowser-test 
   - python38-zope.testing 
   - python38-zope.testrunner 
-  - python38-zopfli 
   - python38-zstandard 
   - python38-zstd 
   - python38-zxcvbn 
-  - python39 
   - python39-32bit: [x86_64] 
   - python39-APScheduler 
   - python39-AnyQt 
   - python39-Arpeggio 
   - python39-Authlib 
-  - python39-Automat 
   - python39-BTrees 
   - python39-BTrees-devel 
   - python39-Babel 
@@ -27410,7 +27292,6 @@ unsorted:
   - python39-PyECLib 
   - python39-PyFxA 
   - python39-PyGithub 
-  - python39-PyHamcrest 
   - python39-PyICU 
   - python39-PyInstaller 
   - python39-PyJWT 
@@ -27492,7 +27373,6 @@ unsorted:
   - python39-Transplant 
   - python39-Trolly 
   - python39-Trololio 
-  - python39-Twisted 
   - python39-TxSNI 
   - python39-URLObject 
   - python39-UkPostcodeParser 
@@ -27595,7 +27475,6 @@ unsorted:
   - python39-apipkg 
   - python39-apiron 
   - python39-apns2 
-  - python39-appdirs 
   - python39-application 
   - python39-applicationinsights 
   - python39-apptools 
@@ -27634,7 +27513,6 @@ unsorted:
   - python39-atpublic 
   - python39-atspi 
   - python39-attr 
-  - python39-attrs 
   - python39-aubio 
   - python39-audio-degrader 
   - python39-audiogrep 
@@ -27941,14 +27819,11 @@ unsorted:
   - python39-backcall 
   - python39-backoff 
   - python39-backports.entry_points_selectable 
-  - python39-backports.zoneinfo 
   - python39-baron 
-  - python39-base 
   - python39-base-32bit: [x86_64] 
   - python39-base58 
   - python39-bashate 
   - python39-basictracer 
-  - python39-bcrypt 
   - python39-beautifulsoup4 
   - python39-before-after 
   - python39-behave 
@@ -28055,7 +27930,6 @@ unsorted:
   - python39-certifi 
   - python39-certipy 
   - python39-certstream 
-  - python39-cffi 
   - python39-cfgdiff 
   - python39-cfgv 
   - python39-cfn-lint 
@@ -28077,7 +27951,6 @@ unsorted:
   - python39-cl 
   - python39-cleo 
   - python39-cli-helpers 
-  - python39-click 
   - python39-click-aliases 
   - python39-click-completion 
   - python39-click-default-group 
@@ -28128,7 +28001,6 @@ unsorted:
   - python39-confluent-kafka 
   - python39-confpy 
   - python39-confusable-homoglyphs 
-  - python39-constantly 
   - python39-construct 
   - python39-contexter 
   - python39-contextlib2 
@@ -28165,7 +28037,6 @@ unsorted:
   - python39-croniter 
   - python39-crontab 
   - python39-crumbs 
-  - python39-cryptography 
   - python39-cryptography-vectors 
   - python39-css-html-js-minify 
   - python39-css-parser 
@@ -28181,7 +28052,6 @@ unsorted:
   - python39-cufflinks 
   - python39-curio 
   - python39-curlylint 
-  - python39-curses 
   - python39-curtsies 
   - python39-cwcwidth 
   - python39-cx_Freeze 
@@ -28214,7 +28084,6 @@ unsorted:
   - python39-datrie 
   - python39-dbf 
   - python39-dbfread 
-  - python39-dbm 
   - python39-dbus-deviation 
   - python39-dbus-python 
   - python39-dbus-python-devel 
@@ -28566,9 +28435,7 @@ unsorted:
   - python39-gmpy 
   - python39-gmpy2 
   - python39-gns3fy 
-  - python39-gobject 
   - python39-gobject-Gdk 
-  - python39-gobject-cairo 
   - python39-gobject-devel 
   - python39-goobook 
   - python39-google-api-core 
@@ -28619,7 +28486,6 @@ unsorted:
   - python39-gwyfile 
   - python39-gyp 
   - python39-h11 
-  - python39-h2 
   - python39-h5netcdf 
   - python39-h5py 
   - python39-h5py-openmpi1 
@@ -28649,7 +28515,6 @@ unsorted:
   - python39-holidays 
   - python39-holoviews 
   - python39-hotdoc 
-  - python39-hpack 
   - python39-hstspreload 
   - python39-html2text 
   - python39-html5-parser 
@@ -28676,8 +28541,6 @@ unsorted:
   - python39-hvac 
   - python39-hvplot 
   - python39-hyper 
-  - python39-hyperframe 
-  - python39-hyperlink 
   - python39-hypothesis 
   - python39-hypothesis-auto 
   - python39-hypothesis-fspaths 
@@ -28686,7 +28549,6 @@ unsorted:
   - python39-icalendar 
   - python39-identify 
   - python39-idle 
-  - python39-idna 
   - python39-idna_ssl 
   - python39-ifaddr 
   - python39-ifconfig-parser 
@@ -28705,7 +28567,6 @@ unsorted:
   - python39-importlib-resources 
   - python39-imread 
   - python39-imreg 
-  - python39-incremental 
   - python39-infinity 
   - python39-inflect 
   - python39-inflection 
@@ -28962,7 +28823,9 @@ unsorted:
   - python39-marshmallow-enum 
   - python39-matplotlib 
   - python39-matplotlib-cairo 
+  - python39-matplotlib-gtk-common 
   - python39-matplotlib-gtk3 
+  - python39-matplotlib-gtk4 
   - python39-matplotlib-inline 
   - python39-matplotlib-latex 
   - python39-matplotlib-qt5 
@@ -29165,7 +29028,6 @@ unsorted:
   - python39-orange-canvas-core 
   - python39-orange-widget-base 
   - python39-ordered-namespace 
-  - python39-ordered-set 
   - python39-orderedmultidict 
   - python39-osc-tiny 
   - python39-oscrypto 
@@ -29175,7 +29037,6 @@ unsorted:
   - python39-outcome 
   - python39-ovirt-engine-sdk 
   - python39-pa-ringbuffer 
-  - python39-packaging 
   - python39-padaos 
   - python39-padatious 
   - python39-paho-mqtt 
@@ -29260,7 +29121,6 @@ unsorted:
   - python39-pikepdf 
   - python39-pilkit 
   - python39-pingparsing 
-  - python39-pip 
   - python39-pip-api 
   - python39-pip-licenses 
   - python39-pip-shims 
@@ -29369,7 +29229,6 @@ unsorted:
   - python39-pyLibravatar 
   - python39-pyModis 
   - python39-pyOCD 
-  - python39-pyOpenSSL 
   - python39-pyPEG2 
   - python39-pyRFC3339 
   - python39-pyRXP 
@@ -29382,8 +29241,6 @@ unsorted:
   - python39-pyalsaaudio 
   - python39-pyaml 
   - python39-pyannotate 
-  - python39-pyasn1 
-  - python39-pyasn1-modules 
   - python39-pybars3 
   - python39-pybeam 
   - python39-pybind11 
@@ -29403,7 +29260,6 @@ unsorted:
   - python39-pycocotools 
   - python39-pycodestyle 
   - python39-pycountry 
-  - python39-pycparser 
   - python39-pycryptodome 
   - python39-pycryptodomex 
   - python39-pycsw 
@@ -29510,7 +29366,6 @@ unsorted:
   - python39-pyp 
   - python39-pypandoc: [x86_64] 
   - python39-pyparallel 
-  - python39-pyparsing 
   - python39-pyperclip 
   - python39-pyperf 
   - python39-pypet 
@@ -29542,7 +29397,6 @@ unsorted:
   - python39-pyscard 
   - python39-pyscreenshot 
   - python39-pysendfile 
-  - python39-pyserial 
   - python39-pysha3 
   - python39-pyshark 
   - python39-pyshould 
@@ -29953,10 +29807,8 @@ unsorted:
   - python39-serpent 
   - python39-serpy 
   - python39-serverfiles 
-  - python39-service_identity 
   - python39-setproctitle 
   - python39-setupmeta 
-  - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
   - python39-setuptools-rust 
@@ -29996,7 +29848,6 @@ unsorted:
   - python39-sip5-devel 
   - python39-sip6-devel 
   - python39-siphashc 
-  - python39-six 
   - python39-sklearn-pandas 
   - python39-skyfield 
   - python39-slackclient 
@@ -30239,7 +30090,6 @@ unsorted:
   - python39-typepy 
   - python39-typer 
   - python39-typing-inspect 
-  - python39-typing_extensions 
   - python39-typogrify 
   - python39-tzlocal 
   - python39-u-msgpack-python 
@@ -30431,7 +30281,6 @@ unsorted:
   - python39-zope.exceptions 
   - python39-zope.hookable 
   - python39-zope.i18nmessageid 
-  - python39-zope.interface 
   - python39-zope.location 
   - python39-zope.proxy 
   - python39-zope.proxy-devel 
@@ -32628,7 +32477,9 @@ unsorted:
   - syntax-highlighting-devel 
   - syntax-highlighting-imports 
   - sysbench 
-  - sysdig: [x86_64] 
+  - sysdig 
+  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-pae: [i586] 
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
@@ -42880,6 +42731,7 @@ unsorted:
   - zopfli 
   - zp 
   - zpaq 
+  - zram-generator 
   - zsh-htmldoc 
   - zsync 
   - zutils 
