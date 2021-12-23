@@ -1,10 +1,11 @@
 -------------------------------------------------------------------
 Tue Dec 21 15:03:42 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.34.3:
+- Update to version 2.34.3 (boo#1194019):
   + Make audio tools (like mixers) display the actual name of the
     application producing sound, instead of a generic one.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2021-30887, CVE-2021-30890.
 
 -------------------------------------------------------------------
 Tue Dec 14 13:30:29 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
@@ -91,7 +92,9 @@ Wed Sep 22 16:18:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.34.0 (boo#1192063):
   + Fix another regression in JavaScriptCore on 32bit systems.
-  + Security fixes: CVE-2021-30846, CVE-2021-30851.
+  + Security fixes: CVE-2021-30846, CVE-2021-30851, CVE-2021-30818,
+  CVE-2021-30823, CVE-2021-30884, CVE-2021-30888, CVE-2021-30889,
+  CVE-2021-30897.
 
 -------------------------------------------------------------------
 Mon Sep 20 02:33:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
@@ -159,7 +162,8 @@ Sun Sep 19 19:00:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
 - Update to version 2.32.4 (boo#1190701):
   + Do not append .asc extension to downloaded text/plain files.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2021-30848, CVE-2021-30849, CVE-2021-30858.
+  + Security fixes: CVE-2021-30848, CVE-2021-30849, CVE-2021-30858,
+  CVE-2021-30809, CVE-2021-30836.
 - Drop fix-lto.patch: fixed upstream.
 
 -------------------------------------------------------------------
