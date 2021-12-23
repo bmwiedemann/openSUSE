@@ -10,10 +10,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/docs/index.rst b/docs/index.rst
-index 5f7eaaa632c4e1e4569bd9996801..17e560e0cb8d46f71ba4f13803c0 100644
+index 0b9ee9901d952c37cf3f9aefeffc..0669fc4cca6d0298cfab566857ba 100644
 --- a/docs/index.rst
 +++ b/docs/index.rst
-@@ -10,6 +10,7 @@ Welcome to QEMU's documentation!
+@@ -11,6 +11,7 @@ Welcome to QEMU's documentation!
     :maxdepth: 2
     :caption: Contents:
  

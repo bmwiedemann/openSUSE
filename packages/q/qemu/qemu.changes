@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Dec 22 08:51:15 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix testsuite failures by not using modules when building tests
+  (and some other, also testsuite related, spec file problems)
+
+-------------------------------------------------------------------
+Tue Dec 21 04:18:07 UTC 2021 - Lin Ma <lma@suse.com>
+
+- [JIRA] (SLE-20965) Make QEMU guests more failsafe when resizing
+  SCSI passthrough disks
+  * Patches added:
+    scsi-generic-replace-logical-block-count.patch
+
+-------------------------------------------------------------------
+Thu Dec 16 21:54:06 UTC 2021 - Li Zhang <li.zhang@suse.com>
+
+- Add an audio-oss sub-package
+
+-------------------------------------------------------------------
+Thu Dec 16 21:44:17 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add some new (mostly documentation) files in the package
+
+-------------------------------------------------------------------
+Thu Dec 16 18:14:26 UTC 2021 - Li Zhang <li.zhang@suse.com>
+
+- Remove option --audio-drv-list because audio is detected by
+  meson automatically in latest version. 
+
+-------------------------------------------------------------------
+Thu Dec 16 17:59:41 UTC 2021 - Li Zhang <li.zhang@suse.com>
+
+- Remove options --disable-jemalloc and --disable-tcmalloc
+  which are changed in v6.2.0. 
+
+-------------------------------------------------------------------
+Thu Dec 16 16:32:27 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to v 6.2.0. For full release notese, see:
+  * https://wiki.qemu.org/ChangeLog/6.2.
+  Be sure to also check the following pages:
+  * https://qemu-project.gitlab.io/qemu/about/removed-features.html
+  * https://qemu-project.gitlab.io/qemu/about/deprecated.html
+  Some notable changes:
+  * virtio-mem: guest memory dumps are now fully supported, along
+    with pre-copy/post-copy migration and background guest snapshots
+  * QMP: support for nw DEVICE_UNPLUG_GUEST_ERROR to detect
+    guest-reported hotplug failures
+  * TCG: improvements to TCG plugin argument syntax, and multi-core
+    support for cache plugin
+  * 68k: improved support for Apple’s NuBus, including ability to
+    load declaration ROMs, and slot IRQ support
+  * ARM: macOS hosts with Apple Silicon CPUs now support ‘hvf’
+    accelerator for AArch64 guests
+  * ARM: emulation support for Fujitsu A64FX processor model
+  * ARM: emulation support for kudo-mbc machine type
+  * ARM: M-profile MVE extension is now supported for Cortex-M55
+  * ARM: ‘virt’ machine now supports an emulated ITS (Interrupt
+    Translation Service) and supports more than 123 CPUs in
+    emulation mode
+  * ARM: xlnx-zcu102 and xlnx-versal-virt machines now support
+    BBRAM and eFUSE devices
+  * PowerPC: improved POWER10 support for the ‘powernv’ machine type
+  * PowerPC: initial support for POWER10 DD2.0 CPU model
+  * PowerPC: support for FORM2 PAPR NUMA descriptions for ‘pseries’ machine type
+  * RISC-V: support for Zb[abcs] instruction set extensions
+  * RISC-V: support for vhost-user and numa mem options across all boards
+  * RISC-V: SiFive PWM support
+  * x86: support for new Snowridge-v4 CPU model
+  * x86: guest support for Intel SGX
+  * x86: AMD SEV guests now support measurement of kernel binary when doing
+    direct kernel boot (not using a bootloader)
+* Patches dropped:
+  9pfs-fix-crash-in-v9fs_walk.patch
+  block-introduce-max_hw_iov-for-use-in-sc.patch
+  hmp-Unbreak-change-vnc.patch
+  hw-acpi-ich9-Add-compat-prop-to-keep-HPC.patch
+  hw-i386-acpi-build-Deny-control-on-PCIe-.patch
+  i386-cpu-Remove-AVX_VNNI-feature-from-Co.patch
+  net-vmxnet3-validate-configuration-value.patch
+  pcie-rename-native-hotplug-to-x-native-h.patch
+  plugins-do-not-limit-exported-symbols-if.patch
+  plugins-execlog-removed-unintended-s-at-.patch
+  qemu-nbd-Change-default-cache-mode-to-wr.patch
+  qemu-sockets-fix-unix-socket-path-copy-a.patch
+  target-arm-Don-t-skip-M-profile-reset-en.patch
+  target-i386-add-missing-bits-to-CR4_RESE.patch
+  tcg-arm-Fix-tcg_out_vec_op-function-sign.patch
+  uas-add-stream-number-sanity-checks.patch
+  vhost-vsock-fix-migration-issue-when-seq.patch
+  virtio-balloon-don-t-start-free-page-hin.patch
+  virtio-mem-pci-Fix-memory-leak-when-crea.patch
+  virtio-net-fix-use-after-unmap-free-for-.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 19:16:51 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Reinstate Lin Ma's fixes for bsc#1192147 as they were

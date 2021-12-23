@@ -18,7 +18,7 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/target/i386/tcg/helper-tcg.h b/target/i386/tcg/helper-tcg.h
-index 2510cc244e91c91adfaffbb69674..b1903b2d86ac067ebe90212b25e0 100644
+index 0a4401e917f9a0b40fb95bf947fd..ef916d40e8c9497853b265a1e7b4 100644
 --- a/target/i386/tcg/helper-tcg.h
 +++ b/target/i386/tcg/helper-tcg.h
 @@ -26,7 +26,7 @@

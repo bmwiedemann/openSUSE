@@ -17,7 +17,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  5 files changed, 19 insertions(+), 19 deletions(-)
 
 diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
-index 87a6ac92e69f23c1ce799d16512a..edb83b7a1c77f7bb75c371330b2c 100644
+index 418a0e3649443ee89e8fdad436f5..408983026669e531dcb84230dd23 100644
 --- a/roms/seabios/Makefile
 +++ b/roms/seabios/Makefile
 @@ -22,7 +22,7 @@ LD=$(CROSS_PREFIX)ld
@@ -59,7 +59,7 @@ index b8e92a525730442815a0dce78f45..6963847a8b5d3e4bf9340a67afe2 100755
  #
  # This file may be distributed under the terms of the GNU GPLv3 license.
 diff --git a/roms/seabios/scripts/layoutrom.py b/roms/seabios/scripts/layoutrom.py
-index 6616721d1b584892074491b292ba..c6d003273990ae66ca62bc36fe07 100755
+index abebf0211fa9627cec31cce76b8d..34b3e68f556af124346755e87c58 100755
 --- a/roms/seabios/scripts/layoutrom.py
 +++ b/roms/seabios/scripts/layoutrom.py
 @@ -81,8 +81,8 @@ def fitSections(sections, fillsections):
@@ -125,7 +125,7 @@ index 6616721d1b584892074491b292ba..c6d003273990ae66ca62bc36fe07 100755
          sys.exit(1)
      return 1
  
-@@ -691,7 +691,7 @@ def main():
+@@ -695,7 +695,7 @@ def main():
      li = doLayout(sections, config, genreloc)
  
      # Exported symbols

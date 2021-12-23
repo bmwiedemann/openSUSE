@@ -8,20 +8,22 @@ This reverts commit ec87b5daca761039bbcf781eedbe4987f790836f.
 No need. In our build system submodules are checked out.
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
+[DF: Rebased on top of 6.2.0]
 ---
- roms/Makefile                  | 1 -
+ roms/Makefile                  | 2 --
  tests/uefi-test-tools/Makefile | 1 -
- 2 files changed, 2 deletions(-)
+ 2 files changed, 3 deletions(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index 38b71afb0757bd717154afd6a92d..6ea8edd9fcf6bb0cdc1f1602f241 100644
+index 66d06f5831303c3d41e943290389..6ea8edd9fcf6bb0cdc1f1602f241 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
-@@ -151,7 +151,6 @@ build-efi-roms: build-pxe-roms
+@@ -151,8 +151,6 @@ build-efi-roms: build-pxe-roms
  #    efirom
  #
  edk2-basetools:
--	cd edk2/BaseTools && git submodule update --init --force
+-	cd edk2/BaseTools && git submodule update --init --force \
+-		Source/C/BrotliCompress/brotli
  	$(MAKE) -C edk2/BaseTools \
  		PYTHON_COMMAND=$${EDK2_PYTHON_COMMAND:-python3} \
  		EXTRA_OPTFLAGS='$(EDK2_BASETOOLS_OPTFLAGS)' \

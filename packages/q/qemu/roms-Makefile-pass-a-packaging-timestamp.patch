@@ -20,7 +20,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index eeb5970348cd6d28fa4165d25562..38b71afb0757bd717154afd6a92d 100644
+index b967b53bb76ee8a94fc9b37e4460..66d06f5831303c3d41e943290389 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
 @@ -52,6 +52,12 @@ SEABIOS_EXTRAVERSION="-prebuilt.qemu.org"
@@ -59,7 +59,7 @@ index eeb5970348cd6d28fa4165d25562..38b71afb0757bd717154afd6a92d 100644
  		CROSS_COMPILE=$(x86_64_cross_prefix) \
  		$(patsubst %,bin-x86_64-efi/%.efidrv,$(pxerom_targets))
  
-@@ -150,7 +158,9 @@ edk2-basetools:
+@@ -151,7 +159,9 @@ edk2-basetools:
  		EXTRA_LDFLAGS='$(EDK2_BASETOOLS_LDFLAGS)'
  
  slof:

@@ -24,7 +24,7 @@ Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
  2 files changed, 34 insertions(+)
 
 diff --git a/include/qemu/module.h b/include/qemu/module.h
-index 3deac0078b9d4d62d0549427b7ec..49d46532000e8c7211d43f7b705c 100644
+index 5fcc323b2a79d5adfdf27fa19bf7..ed051a6c0e7df56015e25936e641 100644
 --- a/include/qemu/module.h
 +++ b/include/qemu/module.h
 @@ -73,6 +73,7 @@ bool module_load_one(const char *prefix, const char *lib_name, bool mayfail);

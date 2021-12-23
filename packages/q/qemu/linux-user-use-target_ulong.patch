@@ -10,35 +10,18 @@ it to a negative number, breaking lseek for example.
 Pass syscall arguments as ulong always.
 
 Signed-off-by: Alexander Graf <agraf@suse.de>
+[JRZ: changes from linux-user/qemu.h wass moved to linux-user/user-internals.h]
+Signed-off-by: Jose R Ziviani <jziviani@suse.de>
 ---
- linux-user/qemu.h    |  8 ++++----
- linux-user/syscall.c | 18 +++++++++---------
+ linux-user/syscall.c        | 18 +++++++++---------
+ linux-user/user-internals.h |  8 ++++----
  2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 3b0b6b75fe8f1c5a5a5eb56ff99d..6a1d9b2d90da099bb2faaebbd265 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -231,10 +231,10 @@ abi_long memcpy_to_target(abi_ulong dest, const void *src,
- void target_set_brk(abi_ulong new_brk);
- abi_long do_brk(abi_ulong new_brk);
- void syscall_init(void);
--abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
--                    abi_long arg2, abi_long arg3, abi_long arg4,
--                    abi_long arg5, abi_long arg6, abi_long arg7,
--                    abi_long arg8);
-+abi_long do_syscall(void *cpu_env, int num, abi_ulong arg1,
-+                    abi_ulong arg2, abi_ulong arg3, abi_ulong arg4,
-+                    abi_ulong arg5, abi_ulong arg6, abi_ulong arg7,
-+                    abi_ulong arg8);
- extern __thread CPUState *thread_cpu;
- void cpu_loop(CPUArchState *env);
- const char *target_strerror(int err);
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 3e206c14c12d48a2ee7d242f6f13..54dcd38709918dd5f8aa8013ee17 100644
+index d4f3295b9d1837126f35d8357e80..381066e788eb36c1d6ca5b872353 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8182,10 +8182,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
+@@ -8346,10 +8346,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
   * of syscall results, can be performed.
   * All errnos that do_syscall() returns must be -TARGET_<errcode>.
   */
@@ -53,7 +36,7 @@ index 3e206c14c12d48a2ee7d242f6f13..54dcd38709918dd5f8aa8013ee17 100644
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
-@@ -10794,7 +10794,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -10807,7 +10807,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
               */
              ret = -TARGET_EINVAL;
              if (cpu_isar_feature(aa64_sve, env_archcpu(cpu_env))
@@ -62,7 +45,7 @@ index 3e206c14c12d48a2ee7d242f6f13..54dcd38709918dd5f8aa8013ee17 100644
                  CPUARMState *env = cpu_env;
                  ARMCPU *cpu = env_archcpu(env);
                  uint32_t vq, old_vq;
-@@ -13163,10 +13163,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -13176,10 +13176,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
      return ret;
  }
  
@@ -77,3 +60,22 @@ index 3e206c14c12d48a2ee7d242f6f13..54dcd38709918dd5f8aa8013ee17 100644
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
+diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
+index 661612a088b5c4e37f8f9fbcb6af..db24553432003b2faa3957d63c3d 100644
+--- a/linux-user/user-internals.h
++++ b/linux-user/user-internals.h
+@@ -60,10 +60,10 @@ int info_is_fdpic(struct image_info *info);
+ 
+ void target_set_brk(abi_ulong new_brk);
+ void syscall_init(void);
+-abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+-                    abi_long arg2, abi_long arg3, abi_long arg4,
+-                    abi_long arg5, abi_long arg6, abi_long arg7,
+-                    abi_long arg8);
++abi_long do_syscall(void *cpu_env, int num, abi_ulong arg1,
++                    abi_ulong arg2, abi_ulong arg3, abi_ulong arg4,
++                    abi_ulong arg5, abi_ulong arg6, abi_ulong arg7,
++                    abi_ulong arg8);
+ extern __thread CPUState *thread_cpu;
+ void cpu_loop(CPUArchState *env);
+ const char *target_strerror(int err);

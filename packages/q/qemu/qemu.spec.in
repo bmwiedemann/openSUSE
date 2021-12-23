@@ -506,6 +506,16 @@ Requires:       qemu-ui-spice-core
 %description audio-spice
 This package contains a module for Spice based audio support for QEMU.
 
+%package audio-oss
+Summary:        OSS based audio support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+%{qemu_module_conflicts}
+
+%description audio-oss
+This package contains a module for OSS based audio support for QEMU.
+
 %package block-curl
 Summary:        cURL block support for QEMU
 Group:          System/Emulators/PC
@@ -940,6 +950,7 @@ This package provides QTest accelerator for testing QEMU.
 %else
 BuildRequires:  bc
 BuildRequires:  qemu-arm = %{qemuver}
+BuildRequires:  qemu-audio-oss = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
 BuildRequires:  qemu-audio-pa = %{qemuver}
 BuildRequires:  qemu-audio-jack = %{qemuver}
@@ -1015,7 +1026,7 @@ opensbi-riscv64-generic-fw_dynamic.elf}
 %define s390x_default_firmware {s390-ccw.img s390-netboot.img}
 %define s390x_extra_firmware {%nil}
 %define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
-kvmvapic.bin pvh.bin}
+multiboot_dma.bin kvmvapic.bin pvh.bin}
 %define x86_extra_firmware {bios.bin bios-256k.bin bios-microvm.bin qboot.rom \
 pxe-e1000.rom pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom \
 pxe-virtio.rom sgabios.bin vgabios-ati.bin vgabios-bochs-display.bin \
@@ -1130,6 +1141,10 @@ cd %blddir
 %endif
 %if "%flavor" != "testsuite"
 	--disable-qom-cast-debug \
+	--enable-modules \
+	--disable-module-upgrades \
+%else
+	--disable-modules \
 %endif
 	--with-git-submodules=ignore \
 %if "%{name}" != "qemu-linux-user"
@@ -1137,12 +1152,9 @@ cd %blddir
 	--with-default-devices \
 	--enable-system --disable-linux-user \
 	--enable-tools --enable-guest-agent \
-	--enable-modules \
-	--disable-module-upgrades \
 	--enable-slirp=system \
 	--enable-pie \
 	--enable-docs \
-	--audio-drv-list="pa alsa jack" \
 	--enable-attr \
 	--disable-auth-pam \
 	--enable-bochs \
@@ -1165,7 +1177,6 @@ cd %blddir
 	--disable-hax \
 	--disable-hvf \
 	--enable-iconv \
-	--disable-jemalloc \
 %if %{kvm_available}
 	--enable-kvm \
 %else
@@ -1229,7 +1240,6 @@ cd %blddir
 	--enable-smartcard \
 	--enable-snappy \
 	--enable-spice \
-	--disable-tcmalloc \
 	--enable-tpm \
 	--enable-usb-redir \
 	--enable-vde \
@@ -1272,7 +1282,6 @@ cd %blddir
 	--disable-modules \
 	--disable-pie \
 	--disable-docs \
-	--audio-drv-list="" \
 	--disable-blobs \
 	--disable-bochs \
 	--disable-capstone \
@@ -1444,7 +1453,7 @@ make %{?_smp_mflags} -C %srcdir/roms opensbi64-generic CROSS_COMPILE=
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
-# TODO: Some of these are actually overwritten during the following make's
+# XXX: What's the point of all this, if we need to rebuild everything anyway?!?
 ln -s %_bindir/qemu-img qemu-img
 ln -s %_bindir/qemu-ga qemu-ga
 ln -s %_bindir/qemu-io qemu-io
@@ -1463,8 +1472,8 @@ do
   ln -s %_datadir/qemu/$i pc-bios/$i
 done
 
-for conf in %{_builddir}/%buildsubdir/default-configs/targets/*-softmmu.mak; do
-  arch=`echo "$conf" | sed -e 's|%{_builddir}/%buildsubdir/default-configs/targets/\(.*\)-softmmu.mak|\1|g'`
+for conf in %{_builddir}/%buildsubdir/configs/targets/*-softmmu.mak; do
+  arch=`echo "$conf" | sed -e 's|%{_builddir}/%buildsubdir/configs/targets/\(.*\)-softmmu.mak|\1|g'`
   if $(unlink $arch-softmmu/qemu-system-$arch); then
     ln -s %_bindir/qemu-system-$arch $arch-softmmu/qemu-system-$arch
   fi
@@ -1794,6 +1803,9 @@ fi
 %dir %_docdir/%name/tools
 %dir %_docdir/%name/user
 %_docdir/%name/.buildinfo
+%if %{legacy_qemu_kvm}
+%_docdir/%name/supported.html
+%endif
 %_docdir/%name/about/build-platforms.html
 %_docdir/%name/about/deprecated.html
 %_docdir/%name/about/index.html
@@ -1815,55 +1827,62 @@ fi
 %_docdir/%name/devel/kconfig.html
 %_docdir/%name/devel/loads-stores.html
 %_docdir/%name/devel/memory.html
+%_docdir/%name/devel/migration.html
 %_docdir/%name/devel/modules.html
 %_docdir/%name/devel/multi-process.html
-%_docdir/%name/devel/migration.html
 %_docdir/%name/devel/multi-thread-tcg.html
 %_docdir/%name/devel/qapi-code-gen.html
-%_docdir/%name/devel/qom.html
 %_docdir/%name/devel/qgraph.html
+%_docdir/%name/devel/qom.html
 %_docdir/%name/devel/qtest.html
 %_docdir/%name/devel/reset.html
 %_docdir/%name/devel/s390-dasd-ipl.html
 %_docdir/%name/devel/secure-coding-practices.html
 %_docdir/%name/devel/stable-process.html
 %_docdir/%name/devel/style.html
+%_docdir/%name/devel/submitting-a-patch.html
+%_docdir/%name/devel/submitting-a-patch.html
+%_docdir/%name/devel/submitting-a-pull-request.html
+%_docdir/%name/devel/submitting-a-pull-request.html
 %_docdir/%name/devel/tcg-icount.html
 %_docdir/%name/devel/tcg-plugins.html
 %_docdir/%name/devel/tcg.html
 %_docdir/%name/devel/testing.html
 %_docdir/%name/devel/tracing.html
+%_docdir/%name/devel/trivial-patches.html
+%_docdir/%name/devel/trivial-patches.html
 %_docdir/%name/devel/ui.html
 %_docdir/%name/devel/vfio-migration.html
-%_docdir/%name/devel/writing-qmp-commands.html
+%_docdir/%name/devel/writing-monitor-commands.html
 %_docdir/%name/genindex.html
 %_docdir/%name/index.html
 %_docdir/%name/interop/barrier.html
 %_docdir/%name/interop/bitmaps.html
-%_docdir/%name/interop/dbus.html
 %_docdir/%name/interop/dbus-vmstate.html
+%_docdir/%name/interop/dbus.html
 %_docdir/%name/interop/index.html
 %_docdir/%name/interop/live-block-operations.html
 %_docdir/%name/interop/pr-helper.html
 %_docdir/%name/interop/qemu-ga-ref.html
 %_docdir/%name/interop/qemu-qmp-ref.html
 %_docdir/%name/interop/qemu-storage-daemon-qmp-ref.html
-%_docdir/%name/interop/vhost-user.html
 %_docdir/%name/interop/vhost-user-gpu.html
+%_docdir/%name/interop/vhost-user.html
 %_docdir/%name/interop/vhost-vdpa.html
 %_docdir/%name/objects.inv
 %_docdir/%name/search.html
 %_docdir/%name/searchindex.js
+%_docdir/%name/specs/acpi_cpu_hotplug.html
 %_docdir/%name/specs/acpi_hest_ghes.html
 %_docdir/%name/specs/acpi_hw_reduced_hotplug.html
+%_docdir/%name/specs/acpi_mem_hotplug.html
+%_docdir/%name/specs/acpi_nvdimm.html
+%_docdir/%name/specs/acpi_pci_hotplug.html
 %_docdir/%name/specs/index.html
 %_docdir/%name/specs/ppc-spapr-numa.html
 %_docdir/%name/specs/ppc-spapr-xive.html
 %_docdir/%name/specs/ppc-xive.html
 %_docdir/%name/specs/tpm.html
-%if %{legacy_qemu_kvm}
-%_docdir/%name/supported.html
-%endif
 %_docdir/%name/system/arm/aspeed.html
 %_docdir/%name/system/arm/collie.html
 %_docdir/%name/system/arm/cpu-features.html
@@ -1890,13 +1909,14 @@ fi
 %_docdir/%name/system/arm/sabrelite.html
 %_docdir/%name/system/arm/sbsa.html
 %_docdir/%name/system/arm/stellaris.html
+%_docdir/%name/system/arm/stm32.html
 %_docdir/%name/system/arm/sx1.html
 %_docdir/%name/system/arm/versatile.html
 %_docdir/%name/system/arm/vexpress.html
 %_docdir/%name/system/arm/virt.html
 %_docdir/%name/system/arm/xlnx-versal-virt.html
 %_docdir/%name/system/arm/xscale.html
-%_docdir/%name/system/arm/stm32.html
+%_docdir/%name/system/authz.html
 %_docdir/%name/system/barrier.html
 %_docdir/%name/system/bootindex.html
 %_docdir/%name/system/cpu-hotplug.html
@@ -1905,13 +1925,17 @@ fi
 %_docdir/%name/system/devices/net.html
 %_docdir/%name/system/devices/nvme.html
 %_docdir/%name/system/devices/usb.html
+%_docdir/%name/system/devices/vhost-user-rng.html
 %_docdir/%name/system/devices/vhost-user.html
 %_docdir/%name/system/devices/virtio-pmem.html
 %_docdir/%name/system/gdb.html
 %_docdir/%name/system/generic-loader.html
 %_docdir/%name/system/guest-loader.html
+%_docdir/%name/system/i386/cpu.html
+%_docdir/%name/system/i386/kvm-pv.html
 %_docdir/%name/system/i386/microvm.html
 %_docdir/%name/system/i386/pc.html
+%_docdir/%name/system/i386/sgx.html
 %_docdir/%name/system/images.html
 %_docdir/%name/system/index.html
 %_docdir/%name/system/invocation.html
@@ -1933,8 +1957,8 @@ fi
 %_docdir/%name/system/qemu-manpage.html
 %_docdir/%name/system/quickstart.html
 %_docdir/%name/system/riscv/microchip-icicle-kit.html
-%_docdir/%name/system/riscv/sifive_u.html
 %_docdir/%name/system/riscv/shakti-c.html
+%_docdir/%name/system/riscv/sifive_u.html
 %_docdir/%name/system/riscv/virt.html
 %_docdir/%name/system/s390x/3270.html
 %_docdir/%name/system/s390x/bootdevices.html
@@ -1942,7 +1966,6 @@ fi
 %_docdir/%name/system/s390x/protvirt.html
 %_docdir/%name/system/s390x/vfio-ap.html
 %_docdir/%name/system/s390x/vfio-ccw.html
-%_docdir/%name/system/authz.html
 %_docdir/%name/system/secrets.html
 %_docdir/%name/system/security.html
 %_docdir/%name/system/target-arm.html
@@ -1954,8 +1977,8 @@ fi
 %_docdir/%name/system/target-riscv.html
 %_docdir/%name/system/target-rx.html
 %_docdir/%name/system/target-s390x.html
-%_docdir/%name/system/target-sparc64.html
 %_docdir/%name/system/target-sparc.html
+%_docdir/%name/system/target-sparc64.html
 %_docdir/%name/system/target-xtensa.html
 %_docdir/%name/system/targets.html
 %_docdir/%name/system/tls.html
@@ -1965,8 +1988,8 @@ fi
 %_docdir/%name/tools/qemu-img.html
 %_docdir/%name/tools/qemu-nbd.html
 %_docdir/%name/tools/qemu-pr-helper.html
-%_docdir/%name/tools/qemu-trace-stap.html
 %_docdir/%name/tools/qemu-storage-daemon.html
+%_docdir/%name/tools/qemu-trace-stap.html
 %_docdir/%name/tools/virtfs-proxy-helper.html
 %_docdir/%name/tools/virtiofsd.html
 %_docdir/%name/user/index.html
@@ -1999,6 +2022,7 @@ fi
 %_datadir/%name/linuxboot.bin
 %_datadir/%name/linuxboot_dma.bin
 %_datadir/%name/multiboot.bin
+%_datadir/%name/multiboot_dma.bin
 %_datadir/%name/pvh.bin
 %dir %_docdir/qemu-x86
 %_docdir/qemu-x86/supported.txt
@@ -2102,6 +2126,11 @@ fi
 %_datadir/%name/forsplits/05
 %dir %_libdir/%name
 %_libdir/%name/audio-spice.so
+
+%files audio-oss
+%defattr(-, root, root)
+%dir %_libdir/%name
+%_libdir/%name/audio-oss.so
 
 %files block-curl
 %defattr(-, root, root)

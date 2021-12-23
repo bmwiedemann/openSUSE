@@ -8,7 +8,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
-index edb83b7a1c77f7bb75c371330b2c..74a01853f26458d94d4a4e056b7b 100644
+index 408983026669e531dcb84230dd23..5ced69cd8be94d36c8aaa887ce73 100644
 --- a/roms/seabios/Makefile
 +++ b/roms/seabios/Makefile
 @@ -13,7 +13,7 @@ export CONFIG_SHELL       := sh

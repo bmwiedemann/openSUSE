@@ -8,7 +8,7 @@ References: bsc#1190135
 Signed-off-by: Jose R Ziviani <jose.ziviani@suse.com>
 ---
  block.c                         | 37 +++++++++++++++++++++++----------
- docs/about/deprecated.rst       | 20 ++++++++++++++++++
+ docs/about/deprecated.rst       | 23 ++++++++++++++++++++
  docs/about/removed-features.rst | 19 -----------------
  qemu-img.c                      |  6 ++----
  tests/qemu-iotests/040          |  4 ++--
@@ -17,13 +17,13 @@ Signed-off-by: Jose R Ziviani <jose.ziviani@suse.com>
  tests/qemu-iotests/114.out      | 11 ++++++----
  tests/qemu-iotests/301          |  4 +++-
  tests/qemu-iotests/301.out      | 16 ++++++++++++--
- 10 files changed, 85 insertions(+), 56 deletions(-)
+ 10 files changed, 88 insertions(+), 56 deletions(-)
 
 diff --git a/block.c b/block.c
-index e97ce0b1c83eb68db8abccfe9086..06f5ff49ee79ab5d423008ecc20e 100644
+index 0ac5b163d2aa19368ff54f2bc04a..a4dda8c7b6e1c76e7e5c8712475b 100644
 --- a/block.c
 +++ b/block.c
-@@ -5119,7 +5119,7 @@ int coroutine_fn bdrv_co_check(BlockDriverState *bs,
+@@ -5337,7 +5337,7 @@ int coroutine_fn bdrv_co_check(BlockDriverState *bs,
   * -ENOTSUP - format driver doesn't support changing the backing file
   */
  int bdrv_change_backing_file(BlockDriverState *bs, const char *backing_file,
@@ -32,7 +32,7 @@ index e97ce0b1c83eb68db8abccfe9086..06f5ff49ee79ab5d423008ecc20e 100644
  {
      BlockDriver *drv = bs->drv;
      int ret;
-@@ -5133,8 +5133,10 @@ int bdrv_change_backing_file(BlockDriverState *bs, const char *backing_file,
+@@ -5351,8 +5351,10 @@ int bdrv_change_backing_file(BlockDriverState *bs, const char *backing_file,
          return -EINVAL;
      }
  
@@ -45,7 +45,7 @@ index e97ce0b1c83eb68db8abccfe9086..06f5ff49ee79ab5d423008ecc20e 100644
      }
  
      if (drv->bdrv_change_backing_file != NULL) {
-@@ -6647,11 +6649,24 @@ void bdrv_img_create(const char *filename, const char *fmt,
+@@ -6873,11 +6875,24 @@ void bdrv_img_create(const char *filename, const char *fmt,
              goto out;
          } else {
              if (!backing_fmt) {
@@ -75,7 +75,7 @@ index e97ce0b1c83eb68db8abccfe9086..06f5ff49ee79ab5d423008ecc20e 100644
              }
              if (size == -1) {
                  /* Opened BS, have no size */
-@@ -6668,9 +6683,9 @@ void bdrv_img_create(const char *filename, const char *fmt,
+@@ -6894,9 +6909,9 @@ void bdrv_img_create(const char *filename, const char *fmt,
          }
          /* (backing_file && !(flags & BDRV_O_NO_BACKING)) */
      } else if (backing_file && !backing_fmt) {
@@ -89,13 +89,16 @@ index e97ce0b1c83eb68db8abccfe9086..06f5ff49ee79ab5d423008ecc20e 100644
  
      if (size == -1) {
 diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 6d438f1c8d41e19c4fc976d1c7da..638f1000cbd19a72aa456104446f 100644
+index ff7488cb63b93830f75093030add..a5de09adbe9fd84b897101b31999 100644
 --- a/docs/about/deprecated.rst
 +++ b/docs/about/deprecated.rst
-@@ -300,6 +300,26 @@ this CPU is also deprecated.
- Related binaries
- ----------------
+@@ -401,6 +401,29 @@ The ``I7200`` guest CPU relies on the nanoMIPS ISA, which is deprecated
+ (the ISA has never been upstreamed to a compiler toolchain). Therefore
+ this CPU is also deprecated.
  
++Related binaries
++----------------
++
 +qemu-img backing file without format (since 5.1)
 +''''''''''''''''''''''''''''''''''''''''''''''''
 +
@@ -120,15 +123,15 @@ index 6d438f1c8d41e19c4fc976d1c7da..638f1000cbd19a72aa456104446f 100644
  -----------------------
  
 diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index cbfa1a8e31a69200c2bb97ddffb1..afadc8f7e0fc4e2377ee85d6166c 100644
+index d42c3341dee4462adb8496691575..15b34368f99fc649595507c742a1 100644
 --- a/docs/about/removed-features.rst
 +++ b/docs/about/removed-features.rst
-@@ -678,25 +678,6 @@ backing chain should be performed with ``qemu-img rebase -u`` either
+@@ -670,25 +670,6 @@ backing chain should be performed with ``qemu-img rebase -u`` either
  before or after the remaining changes being performed by amend, as
  appropriate.
  
--qemu-img backing file without format (removed in 6.1)
--'''''''''''''''''''''''''''''''''''''''''''''''''''''
+-``qemu-img`` backing file without format (removed in 6.1)
+-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 -
 -The use of ``qemu-img create``, ``qemu-img rebase``, or ``qemu-img
 -convert`` to create or modify an image that depends on a backing file
@@ -150,10 +153,10 @@ index cbfa1a8e31a69200c2bb97ddffb1..afadc8f7e0fc4e2377ee85d6166c 100644
  -------------
  
 diff --git a/qemu-img.c b/qemu-img.c
-index 3ebd09245290878c24c8f1412146..4da817857f3efccc2bd83297500b 100644
+index 6570fc67dd37a708cbe379331930..0239bdd6d09d635acee68ac28c36 100644
 --- a/qemu-img.c
 +++ b/qemu-img.c
-@@ -2549,10 +2549,8 @@ static int img_convert(int argc, char **argv)
+@@ -2553,10 +2553,8 @@ static int img_convert(int argc, char **argv)
  
      if (out_baseimg_param) {
          if (!qemu_opt_get(opts, BLOCK_OPT_BACKING_FMT)) {
@@ -167,10 +170,10 @@ index 3ebd09245290878c24c8f1412146..4da817857f3efccc2bd83297500b 100644
      }
  
 diff --git a/tests/qemu-iotests/040 b/tests/qemu-iotests/040
-index f3677de9dfde326ad85515ec8bfa..ba7cb34ce8cf95df6fa63f9eb8f0 100755
+index 6af5ab9e764cc5a061712a622a81..26ebe0b02f75a13c05ec5d938f53 100755
 --- a/tests/qemu-iotests/040
 +++ b/tests/qemu-iotests/040
-@@ -920,8 +920,8 @@ class TestCommitWithOverriddenBacking(iotests.QMPTestCase):
+@@ -915,8 +915,8 @@ class TestCommitWithOverriddenBacking(iotests.QMPTestCase):
      def setUp(self):
          qemu_img('create', '-f', iotests.imgfmt, self.img_base_a, '1M')
          qemu_img('create', '-f', iotests.imgfmt, self.img_base_b, '1M')

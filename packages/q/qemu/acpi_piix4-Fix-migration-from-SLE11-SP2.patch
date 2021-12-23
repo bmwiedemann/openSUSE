@@ -16,7 +16,7 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 48f7a1edbcbc06461ecb23699a87..d32441fadf7bfc6fbb930addd697 100644
+index f0b5fac44a14279ac3c66834bfb1..42c1a7a816cbdb22b16876dc6f8c 100644
 --- a/hw/acpi/piix4.c
 +++ b/hw/acpi/piix4.c
 @@ -278,7 +278,7 @@ static bool piix4_vmstate_need_smbus(void *opaque, int version_id)

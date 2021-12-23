@@ -12,10 +12,10 @@ Signed-off-by: Jose R Ziviani <jose.ziviani@suse.com>
  2 files changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/qemu-img.c b/qemu-img.c
-index 908fd0cce5b4fc90a4798ea4a1c4..3ebd09245290878c24c8f1412146 100644
+index f036a1d428db21205ded31bd3035..6570fc67dd37a708cbe379331930 100644
 --- a/qemu-img.c
 +++ b/qemu-img.c
-@@ -3810,9 +3810,6 @@ static int img_rebase(int argc, char **argv)
+@@ -3822,9 +3822,6 @@ static int img_rebase(int argc, char **argv)
      if (ret == -ENOSPC) {
          error_report("Could not change the backing file to '%s': No "
                       "space left in the file header", out_baseimg);

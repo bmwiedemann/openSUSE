@@ -15,7 +15,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/roms/seabios/Makefile b/roms/seabios/Makefile
-index 74a01853f26458d94d4a4e056b7b..16627562900bbca4b68c6f1df220 100644
+index 5ced69cd8be94d36c8aaa887ce73..e0c51a4e455e9796437b7f59dd17 100644
 --- a/roms/seabios/Makefile
 +++ b/roms/seabios/Makefile
 @@ -73,6 +73,7 @@ COMMONCFLAGS += $(call cc-option,$(CC),-fstack-check=no,)

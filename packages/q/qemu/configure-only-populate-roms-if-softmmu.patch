@@ -12,10 +12,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 9a79a004d7cf1952cf3f4178e099..2a3073da6bd818cc2391c1d8f515 100755
+index 48c21775f3a90c91631d90bd6e3e..e53fc9b91a69870e354ba2f27475 100755
 --- a/configure
 +++ b/configure
-@@ -4413,7 +4413,7 @@ fi
+@@ -3373,7 +3373,7 @@ fi
  
  # Only build s390-ccw bios if we're on s390x and the compiler has -march=z900
  # or -march=z10 (which is the lowest architecture level that Clang supports)
