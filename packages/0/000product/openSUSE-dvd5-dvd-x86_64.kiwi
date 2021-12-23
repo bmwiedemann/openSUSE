@@ -317,7 +317,6 @@
       <repopackage name="container-selinux"/>
       <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
-      <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
       <repopackage name="cpio"/>
       <repopackage name="cpio-lang"/>
@@ -969,7 +968,6 @@
       <repopackage name="incidenceeditor-lang"/>
       <repopackage name="indic-fonts"/>
       <repopackage name="info"/>
-      <repopackage name="info-std"/>
       <repopackage name="initviocons"/>
       <repopackage name="inkscape"/>
       <repopackage name="inkscape-extensions-extra"/>
@@ -991,7 +989,7 @@
       <repopackage name="iproute2"/>
       <repopackage name="ipset"/>
       <repopackage name="iptables"/>
-      <repopackage name="iptraf-ng"/>
+      <repopackage name="iptraf-ng" arch="x86_64"/>
       <repopackage name="iputils"/>
       <repopackage name="ipw-firmware"/>
       <repopackage name="irda"/>
@@ -1216,20 +1214,20 @@
       <repopackage name="kirigami2-lang"/>
       <repopackage name="kiriki"/>
       <repopackage name="kiriki-lang"/>
-      <repopackage name="kismet"/>
-      <repopackage name="kismet-capture-bt-geiger"/>
-      <repopackage name="kismet-capture-freaklabs-zigbee"/>
-      <repopackage name="kismet-capture-linux-bluetooth"/>
-      <repopackage name="kismet-capture-linux-wifi"/>
-      <repopackage name="kismet-capture-nrf-51822"/>
-      <repopackage name="kismet-capture-nrf-52840"/>
-      <repopackage name="kismet-capture-nrf-mousejack"/>
-      <repopackage name="kismet-capture-rz-killerbee"/>
-      <repopackage name="kismet-capture-sdr-rtl433"/>
-      <repopackage name="kismet-capture-sdr-rtladsb"/>
-      <repopackage name="kismet-capture-sdr-rtlamr"/>
-      <repopackage name="kismet-capture-ti-cc2540"/>
-      <repopackage name="kismet-logtools"/>
+      <repopackage name="kismet" arch="x86_64"/>
+      <repopackage name="kismet-capture-bt-geiger" arch="x86_64"/>
+      <repopackage name="kismet-capture-freaklabs-zigbee" arch="x86_64"/>
+      <repopackage name="kismet-capture-linux-bluetooth" arch="x86_64"/>
+      <repopackage name="kismet-capture-linux-wifi" arch="x86_64"/>
+      <repopackage name="kismet-capture-nrf-51822" arch="x86_64"/>
+      <repopackage name="kismet-capture-nrf-52840" arch="x86_64"/>
+      <repopackage name="kismet-capture-nrf-mousejack" arch="x86_64"/>
+      <repopackage name="kismet-capture-rz-killerbee" arch="x86_64"/>
+      <repopackage name="kismet-capture-sdr-rtl433" arch="x86_64"/>
+      <repopackage name="kismet-capture-sdr-rtladsb" arch="x86_64"/>
+      <repopackage name="kismet-capture-sdr-rtlamr" arch="x86_64"/>
+      <repopackage name="kismet-capture-ti-cc2540" arch="x86_64"/>
+      <repopackage name="kismet-logtools" arch="x86_64"/>
       <repopackage name="kitemmodels-imports"/>
       <repopackage name="kiten"/>
       <repopackage name="kiten-lang"/>
@@ -2701,7 +2699,7 @@
       <repopackage name="librscg1_0"/>
       <repopackage name="librsvg-2-2"/>
       <repopackage name="librsync2"/>
-      <repopackage name="librtlsdr0"/>
+      <repopackage name="librtlsdr0" arch="x86_64"/>
       <repopackage name="librubberband2"/>
       <repopackage name="libruby2_7-2_7"/>
       <repopackage name="libruby3_0-3_0"/>
@@ -2774,7 +2772,7 @@
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
       <repopackage name="libsnmp40"/>
-      <repopackage name="libSoapySDR0_8"/>
+      <repopackage name="libSoapySDR0_8" arch="x86_64"/>
       <repopackage name="libsodium23"/>
       <repopackage name="libsoftokn3"/>
       <repopackage name="libsoftokn3-hmac"/>
@@ -2991,7 +2989,7 @@
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc_audio_processing1"/>
-      <repopackage name="libwebsockets19"/>
+      <repopackage name="libwebsockets19" arch="x86_64"/>
       <repopackage name="libwinpr2-2"/>
       <repopackage name="libwireplumber-0_4-0"/>
       <repopackage name="libwmf-0_2-7"/>
@@ -3500,7 +3498,7 @@
       <repopackage name="opensuse-welcome-lang"/>
       <repopackage name="openSUSE-xfce-icon-theme"/>
       <repopackage name="openvpn"/>
-      <repopackage name="opie"/>
+      <repopackage name="opie" arch="x86_64"/>
       <repopackage name="opie-32bit" arch="x86_64"/>
       <repopackage name="orca"/>
       <repopackage name="orca-lang"/>
@@ -3523,7 +3521,6 @@
       <repopackage name="pam"/>
       <repopackage name="pam-32bit" arch="x86_64"/>
       <repopackage name="pam-config"/>
-      <repopackage name="pam-doc"/>
       <repopackage name="pam-manpages"/>
       <repopackage name="pam_apparmor"/>
       <repopackage name="pam_apparmor-32bit" arch="x86_64"/>
@@ -3555,7 +3552,6 @@
       <repopackage name="patterns-base-basesystem"/>
       <repopackage name="patterns-base-basic_desktop"/>
       <repopackage name="patterns-base-console"/>
-      <repopackage name="patterns-base-documentation"/>
       <repopackage name="patterns-base-enhanced_base"/>
       <repopackage name="patterns-base-minimal_base"/>
       <repopackage name="patterns-base-selinux"/>
@@ -3915,7 +3911,7 @@
       <repopackage name="powertop-lang" arch="x86_64"/>
       <repopackage name="ppp"/>
       <repopackage name="pptp"/>
-      <repopackage name="pptpd"/>
+      <repopackage name="pptpd" arch="x86_64"/>
       <repopackage name="pragha"/>
       <repopackage name="pragha-lang"/>
       <repopackage name="pragha-plugins"/>
@@ -3923,7 +3919,7 @@
       <repopackage name="presage-data"/>
       <repopackage name="printproto-devel" arch="x86_64"/>
       <repopackage name="prison-qt5-imports"/>
-      <repopackage name="privoxy"/>
+      <repopackage name="privoxy" arch="x86_64"/>
       <repopackage name="procinfo"/>
       <repopackage name="procmail"/>
       <repopackage name="procps"/>
@@ -4143,7 +4139,7 @@
       <repopackage name="python38-ply"/>
       <repopackage name="python38-prettytable"/>
       <repopackage name="python38-prompt_toolkit"/>
-      <repopackage name="python38-protobuf"/>
+      <repopackage name="python38-protobuf" arch="x86_64"/>
       <repopackage name="python38-psutil"/>
       <repopackage name="python38-psycopg2"/>
       <repopackage name="python38-ptyprocess"/>
@@ -4342,10 +4338,10 @@
       <repopackage name="rsyslog"/>
       <repopackage name="rt2860"/>
       <repopackage name="rtkit"/>
-      <repopackage name="rtl-sdr"/>
-      <repopackage name="rtl-sdr-udev"/>
+      <repopackage name="rtl-sdr" arch="x86_64"/>
+      <repopackage name="rtl-sdr-udev" arch="x86_64"/>
       <repopackage name="rtl8812au-kmp-default" arch="x86_64"/>
-      <repopackage name="rtl_433"/>
+      <repopackage name="rtl_433" arch="x86_64"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>
@@ -4944,7 +4940,6 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
-      <repopackage name="systemd-doc"/>
       <repopackage name="systemd-icon-branding-openSUSE"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
