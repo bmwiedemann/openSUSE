@@ -1285,4 +1285,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>933499</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>15d4f09c58489c64fd9207766766dc60</srcmd5>
+    <version>2.3.4</version>
+    <time>1640278415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942136</requestid>
+  </revision>
 </revisionlist>

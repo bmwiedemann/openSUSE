@@ -3,11 +3,11 @@
  g10/gpg.c    |    9 +++++++++
  2 files changed, 27 insertions(+)
 
-Index: gnupg-2.3.0/doc/gpg.texi
+Index: gnupg-2.3.4/doc/gpg.texi
 ===================================================================
---- gnupg-2.3.0.orig/doc/gpg.texi
-+++ gnupg-2.3.0/doc/gpg.texi
-@@ -2178,6 +2178,24 @@ implies, this option is for experts only
+--- gnupg-2.3.4.orig/doc/gpg.texi
++++ gnupg-2.3.4/doc/gpg.texi
+@@ -2196,6 +2196,24 @@ implies, this option is for experts only
  understand the implications of what it allows you to do, leave this
  off. @option{--no-expert} disables this option.
  
@@ -32,28 +32,28 @@ Index: gnupg-2.3.0/doc/gpg.texi
  @end table
  
  
-Index: gnupg-2.3.0/g10/gpg.c
+Index: gnupg-2.3.4/g10/gpg.c
 ===================================================================
---- gnupg-2.3.0.orig/g10/gpg.c
-+++ gnupg-2.3.0/g10/gpg.c
-@@ -437,6 +437,7 @@ enum cmd_and_opt_values
-     oNoIncludeKeyBlock,
+--- gnupg-2.3.4.orig/g10/gpg.c
++++ gnupg-2.3.4/g10/gpg.c
+@@ -442,6 +442,7 @@ enum cmd_and_opt_values
      oChUid,
      oForceSignKey,
+     oForbidGenKey,
 +    oSetLegacyFips,
  
      oNoop
    };
-@@ -870,6 +871,7 @@ static gpgrt_opt_t opts[] = {
-   ARGPARSE_s_s (oAEADAlgo,   "aead-algo", "@"),
+@@ -877,6 +878,7 @@ static gpgrt_opt_t opts[] = {
    ARGPARSE_s_s (oDigestAlgo, "digest-algo", "@"),
    ARGPARSE_s_s (oCertDigestAlgo, "cert-digest-algo", "@"),
+   ARGPARSE_s_n (oOverrideComplianceCheck, "override-compliance-check", "@"),
 +  ARGPARSE_s_n (oSetLegacyFips, "set-legacy-fips", "@"),
  
  
    ARGPARSE_header (NULL, N_("Options for unattended use")),
-@@ -3688,6 +3690,14 @@ main (int argc, char **argv)
-             opt.flags.full_timestrings = 1;
+@@ -3725,6 +3727,14 @@ main (int argc, char **argv)
+             mopt.forbid_gen_key = 1;
              break;
  
 +         case oSetLegacyFips:

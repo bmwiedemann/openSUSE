@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 22 16:08:08 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.3.4:
+  * gpg: New option --min-rsa-length
+  * gpg: New option --forbid-gen-key
+  * gpg: New option --override-compliance-check
+  * gpgconf: New command --show-configs
+  * agent,dirmngr,keyboxd: New option --steal-socket
+  * gpg: Fix printing of binary notations
+  * gpg: Remove stale ultimately trusted keys from the trustdb
+  * gpg: Fix indentation of --print-mds and --print-md sha512
+  * gpg: Emit gpg 2.2 compatible Ed25519 signature
+  * gpgsm: Detect circular chains in --list-chain
+  * dirmngr: Make reading resolv.conf more robust
+  * dirmngr: Ask keyservers to provide the key fingerprints
+  * gpgconf: Allow changing gpg's deprecated keyserver option
+  * gpg-wks-server: Fix created file permissions
+  * scd: Support longer data for ssh-agent authentication with
+    openpgp cards
+  * scd: Modify DEVINFO behavior to support looping forever
+  * Silence warning about the rootdir under Unices w/o a mounted
+    /proc file system
+  * Fix possible build problems about missing include files
+
+-------------------------------------------------------------------
 Tue Oct 12 19:20:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.3.3:
