@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 23 04:24:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.9
+  * Fixed reading from stdin when it's not a TTY.
+  * Function-like parameters are now checked for redefinition
+    (more than one parameter having the same name).
+  * Added the standard C++ types std::ispanstream,
+    std::stacktrace_entry, and std::wispanstream.
+
+-------------------------------------------------------------------
 Tue Dec 14 18:33:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.8

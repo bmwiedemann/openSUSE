@@ -402,4 +402,12 @@
     <comment>- Update to release 11.8</comment>
     <requestid>940558</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b5b49c9d4b4301a90acce54269fad06e</srcmd5>
+    <version>11.9</version>
+    <time>1640278424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.9</comment>
+    <requestid>942159</requestid>
+  </revision>
 </revisionlist>
