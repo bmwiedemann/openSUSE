@@ -17,9 +17,9 @@
 
 
 Name:           boost-defaults
-Version:        1.77.0
+Version:        1.78.0
 Release:        0
-%define boost_version 1_77_0
+%define boost_version 1_78_0
 Summary:        Default Boost C++ Libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
@@ -68,7 +68,6 @@ Requires:       libboost_headers%{boost_version}-devel
 %description -n libboost_headers-devel
 A collection of header-only libraries for Boost. This package
 installs the dafault version.
-
 
 %package     -n libboost_atomic-devel
 Summary:        Development headers for Boost.Atomic
@@ -177,7 +176,6 @@ algorithms. The core algorithm patterns are Breadth First Search, Depth
 First Search, and Uniform Cost Search.
 
 This package installs the default Boost version of the library.
-
 
 %package     -n libboost_iostreams-devel
 Summary:        Development headers for Boost.IOStreans library
@@ -432,8 +430,8 @@ This package contains development headers for Boost.TypeErasure library.
 
 This package installs the default Boost version of the library.
 
-
 %prep
+
 %build
 cp %{SOURCE1} .
 
