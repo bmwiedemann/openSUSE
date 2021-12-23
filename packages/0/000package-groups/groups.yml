@@ -323,6 +323,11 @@ dvd:
   # DVD over size by > 40MB (kernel change to zstd); need space - dleuenberger, 20211119
   - MozillaThunderbird: [locked]
 
+  # We newly hav ethree python libs on the DVD; quick fix is blocking them, longer we want to find out why
+  # dleuenberger, 20211223
+  - libpython3_6m1_0: [locked]
+  - libpython3_9-1_0: [locked]
+
   # DVD a little too big remove fonts (starting with renamed noto cjk fonts) - rbrown, 20210819
   - noto-sans-sc-bold-fonts: [locked]
   - noto-sans-sc-fonts: [locked]
