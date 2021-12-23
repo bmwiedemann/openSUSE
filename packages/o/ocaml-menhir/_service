@@ -5,7 +5,7 @@
     <param name='exclude'>coq-menhirlib</param>
     <param name='exclude'>exec.sh</param>
     <param name="filename">ocaml-menhir</param>
-    <param name="revision">9a6f0ef085588e06f20e365d44b067de8034bb22</param>
+    <param name="revision">d740c62da84578476eff5f1d3e5ad5649eaf7489</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.inria.fr/fpottier/menhir.git</param>

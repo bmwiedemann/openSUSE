@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-menhir
-Version:        20211012
+Version:        20211215
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        LR(1) parser generator for the OCaml programming language
@@ -27,8 +27,8 @@ Url:            https://opam.ocaml.org/packages/menhir
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  time
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-rpm-macros >= 20211027
 BuildRequires:  ocamlfind(unix)
 
 %description
