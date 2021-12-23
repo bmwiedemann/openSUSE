@@ -26,8 +26,10 @@ Release:        0
 Summary:        Apache Portable Runtime (APR) Utility Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            http://apr.apache.org/
+URL:            https://apr.apache.org/
 Source:         http://www.apache.org/dist/apr/apr-util-%{version}.tar.bz2
+Source2:        http://www.apache.org/dist/apr/apr-util-%{version}.tar.bz2.asc
+Source3:        %{name}.keyring
 Patch1:         apr-util-1.4.1-testmemcache-initialize-values-array.patch
 Patch2:         apr-util-visibility.patch
 # PATCH-FIX-OPENSUSE apr-util-mariadb-10.2.patch dimstar@opensuse.org -- Fix build with mariadb 10.2
@@ -51,7 +53,6 @@ BuildRequires:  postgresql-devel >= 9.1.0
 BuildRequires:  sqlite-devel
 BuildRequires:  zlib-devel
 %requires_ge    libapr1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A companion library to APR, the Apache Portable Runtime.
@@ -71,13 +72,13 @@ Summary:        Development files for the Apache Portable Runtime (APR) Utility 
 # until this is fixed the devel package should require those
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Provides:       libapr-util1-devel = %{version}
-Obsoletes:      libapr-util1-devel < %{version}-%{release}
 Requires:       %{libname} = %{version}
 Requires:       apr-devel
 Requires:       gdbm-devel
 Requires:       libexpat-devel
 Requires:       openldap2-devel
+Provides:       libapr-util1-devel = %{version}
+Obsoletes:      libapr-util1-devel < %{version}-%{release}
 
 %description devel
 This subpackage contains header files for developing applications
@@ -135,11 +136,11 @@ sed -i -e '/OBJECTS_all/s, dbd/apr_dbd_[^ ]*\.lo,,g' build-outputs.mk
     --with-mysql \
     --with-pgsql \
     --with-gdbm
-make %{?_smp_mflags} CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF -fvisibility=hidden"
-make %{?_smp_mflags} dox
+%make_build CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF -fvisibility=hidden"
+%make_build dox
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 mv docs/dox/html html
 # multiacrh anti-borker
 perl -pi -e "s|^LDFLAGS=.*|LDFLAGS=\"\"|g" %{buildroot}%{_bindir}/apu-%{apuver}-config
@@ -148,23 +149,21 @@ perl -pi -e "s|-I%{_includedir}/mysql||g" %{buildroot}%{_bindir}/apu-%{apuver}-c
 # unpackaged files
 rm -f %{buildroot}/%{_libdir}/aprutil.exp
 
-find %{buildroot} -type f -name "*.la" -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 # fails on qemu, works on real hardware
 %if !0%{?qemu_user_space_build:1}
 # We are not thread safe in tests
-make -j1 check
+%make_build -j1 check
 %endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc CHANGES
-%doc LICENSE
-%doc NOTICE
+%license LICENSE
+%doc CHANGES NOTICE
 %{_libdir}/libaprutil-%{apuver}.so.*
 %dir %{dso_libdir}
 %{dso_libdir}/apr_ldap*
@@ -172,19 +171,19 @@ make -j1 check
 %{dso_libdir}/apr_crypto_openssl*
 
 %files -n %{libname}-dbd-mysql
-%defattr(-,root,root,-)
+%license LICENSE
 %{dso_libdir}/apr_dbd_mysql*
 
 %files -n %{libname}-dbd-pgsql
-%defattr(-,root,root,-)
+%license LICENSE
 %{dso_libdir}/apr_dbd_pgsql*
 
 %files -n %{libname}-dbd-sqlite3
-%defattr(-,root,root,-)
+%license LICENSE
 %{dso_libdir}/apr_dbd_sqlite3*
 
 %files devel
-%defattr(-,root,root)
+%license LICENSE
 %doc html
 %dir %{includedir}
 %{includedir}/*.h

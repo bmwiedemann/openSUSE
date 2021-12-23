@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 21 10:50:47 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key (taken from apr package) and validate
+  source signature
+- run spec-cleaner and mark license files as %license
+
+-------------------------------------------------------------------
 Tue Oct 19 14:42:46 UTC 2021 - pgajdos@suse.com
 
 - fix shlib-policy-name-error [bsc#1191748]
