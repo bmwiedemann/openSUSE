@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 21 08:44:56 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- version 0.6.68
+- sysctl: process sysctl.d directories as in sysctl --system
+- sysctl: fix sysctl values for loopback device (bsc#1181163, bsc#1178357)
+- dhcp4: add option to set route pref-src to dhcp IP (bsc#1192353)
+- cleanup: warnings, time calculations and dhcp fixes (bsc#1188019)
+- wireless: reconnect on unexpected wpa_supplicant restart (bsc#1183495)
+- tuntap: avoid sysfs attr read error (bsc#1192311)
+- ifstatus: fix warning of unexpected interface flag combination (bsc#1192164)
+
+-------------------------------------------------------------------
 Thu Nov  4 08:06:33 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 
 - dbus: config files in /usr shouldn't be marked as config in spec

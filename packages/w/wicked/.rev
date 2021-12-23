@@ -1597,4 +1597,19 @@
 - dracut: initial fixes and improved option handling (boo#1182227)</comment>
     <requestid>929130</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>eef9af04f601a0303de16cefdb36e564</srcmd5>
+    <version>0.6.68</version>
+    <time>1640278408</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.68
+- sysctl: process sysctl.d directories as in sysctl --system
+- sysctl: fix sysctl values for loopback device (bsc#1181163, bsc#1178357)
+- dhcp4: add option to set route pref-src to dhcp IP (bsc#1192353)
+- cleanup: warnings, time calculations and dhcp fixes (bsc#1188019)
+- wireless: reconnect on unexpected wpa_supplicant restart (bsc#1183495)
+- tuntap: avoid sysfs attr read error (bsc#1192311)
+- ifstatus: fix warning of unexpected interface flag combination (bsc#1192164)</comment>
+    <requestid>942094</requestid>
+  </revision>
 </revisionlist>
