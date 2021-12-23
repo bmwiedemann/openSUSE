@@ -16,16 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Tests require root access
+
 %bcond_with tests
 Name:           fatrace
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        System wide file access event reporting utility
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/martinpitt/fatrace
-Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/martinpitt/fatrace/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  glibc-devel
 
 %description
