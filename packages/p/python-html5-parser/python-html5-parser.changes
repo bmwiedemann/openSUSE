@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 23 11:59:31 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Skip python2 to fix build error for Leap in devel repo.
+
+-------------------------------------------------------------------
 Fri Oct 15 08:27:05 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.4.10
