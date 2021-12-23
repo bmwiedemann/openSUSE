@@ -25,6 +25,8 @@ Summary:        A collection of helpers and mock objects for unit tests and doc 
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM testfixtures-pr167-sybil3.patch -- gh#simplistix/testfixtures#167
+Patch0:         testfixtures-pr167-sybil3.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}

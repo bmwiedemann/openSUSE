@@ -1,0 +1,88 @@
+Index: testfixtures-6.18.3/docs/conftest.py
+===================================================================
+--- testfixtures-6.18.3.orig/docs/conftest.py
++++ testfixtures-6.18.3/docs/conftest.py
+@@ -1,8 +1,16 @@
+ from doctest import REPORT_NDIFF, ELLIPSIS
+ 
+ from sybil import Sybil
+-from sybil.parsers.doctest import DocTestParser, FIX_BYTE_UNICODE_REPR
+-from sybil.parsers.codeblock import CodeBlockParser
++from sybil.parsers.doctest import DocTestParser
++try:
++    from sybil.parsers.doctest import FIX_BYTE_UNICODE_REPR
++except ImportError:
++    # sybil 3 removed the optionflag
++    FIX_BYTE_UNICODE_REPR = 0
++try:
++    from sybil.parsers.codeblock import PythonCodeBlockParser
++except ImportError:
++    from sybil.parsers.codeblock import CodeBlockParser as PythonCodeBlockParser
+ from sybil.parsers.capture import parse_captures
+ 
+ from testfixtures.compat import PY3
+@@ -13,7 +21,7 @@ if PY3:
+     pytest_collect_file = Sybil(
+         parsers=[
+             DocTestParser(optionflags=REPORT_NDIFF|ELLIPSIS|FIX_BYTE_UNICODE_REPR),
+-            CodeBlockParser(['print_function']),
++            PythonCodeBlockParser(['print_function']),
+             parse_captures,
+             FileParser('tempdir'),
+         ],
+Index: testfixtures-6.18.3/docs/django.txt
+===================================================================
+--- testfixtures-6.18.3.orig/docs/django.txt
++++ testfixtures-6.18.3/docs/django.txt
+@@ -23,7 +23,7 @@ Traceback (most recent call last):
+ AssertionError: SampleModel not as expected:
+ <BLANKLINE>
+ same:
+-[u'id']
++['id']
+ <BLANKLINE>
+ values differ:
+ 'value': 1 != 2
+@@ -38,7 +38,7 @@ Traceback (most recent call last):
+ AssertionError: SampleModel not as expected:
+ <BLANKLINE>
+ same:
+-[u'id']
++['id']
+ <BLANKLINE>
+ values differ:
+ 'value': 1 != 2
+@@ -70,7 +70,7 @@ Traceback (most recent call last):
+ AssertionError: SampleModel not as expected:
+ <BLANKLINE>
+ same:
+-['created', u'id', 'value']
++['created', 'id', 'value']
+ <BLANKLINE>
+ values differ:
+ 'not_editable': 1 != 2
+Index: testfixtures-6.18.3/testfixtures/tests/conftest.py
+===================================================================
+--- testfixtures-6.18.3.orig/testfixtures/tests/conftest.py
++++ testfixtures-6.18.3/testfixtures/tests/conftest.py
+@@ -1,6 +1,10 @@
+ from sybil import Sybil
+ from sybil.parsers.doctest import  DocTestParser
+-from sybil.parsers.codeblock import CodeBlockParser
++try:
++    from sybil.parsers.codeblock import PythonCodeBlockParser
++except ImportError:
++    # sybil < 3 has it under the old name
++    from sybil.parsers.codeblock import CodeBlockParser as PythonCodeBlockParser
+ from sybil.parsers.capture import parse_captures
+ 
+ from testfixtures import TempDirectory
+@@ -18,7 +22,7 @@ def sybil_teardown(namespace):
+ pytest_collect_file = Sybil(
+     parsers=[
+         DocTestParser(),
+-        CodeBlockParser(),
++        PythonCodeBlockParser(),
+         parse_captures,
+         FileParser('tempdir'),
+     ],
