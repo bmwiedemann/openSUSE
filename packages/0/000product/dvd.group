@@ -2492,9 +2492,7 @@
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpython2_7-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpython3_6m1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpython3_8-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libpython3_9-1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libqaccessibilityclient-qt5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqalculate22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqb100" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3651,45 +3649,6 @@
     <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="python36" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-Automat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-PyHamcrest" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-attrs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-base" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-cffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-click" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-constantly" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-curses" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-dbm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-gobject" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-gobject-cairo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-h2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-hpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-idna" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-importlib-metadata" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-incremental" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-more-itertools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-ordered-set" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-packaging" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pip" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-pyserial" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-six" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-zipp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python36-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-Automat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-Babel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3977,42 +3936,6 @@
     <package name="python38-zope.schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-zopfli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python39" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-Automat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-PyHamcrest" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-attrs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-base" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-cffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-click" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-constantly" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-curses" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-dbm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-gobject" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-gobject-cairo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-h2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-hpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-hyperlink" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-idna" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-incremental" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-ordered-set" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-packaging" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pip" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-pyserial" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-six" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python39-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qca-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qca-qt5-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
