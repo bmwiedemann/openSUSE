@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 22 13:07:23 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1a0297bfbf (2021-12-01):
+  * firmware: board_info: Add upstream dtb names for cm1 & 3
+  * firmware: board_info: Add upstream dtb name for cm4
+    See: #1660
+  * firmware: platform: Allow users to disable camera boot HMAC check
+    See: #1657
+  * firmware: clock: 2711: Fix potential API issue in 2711 VCO setup
+  * firmware: arm_loader: Enable USB MSD boot mode on Zero 2 W
+  * firmware: isp: Fix Rec.709 colour space problems
+
+-------------------------------------------------------------------
 Mon Nov 22 08:34:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix deps for raspberrypi-firmware-config and raspberrypi-firmware-config-camera
