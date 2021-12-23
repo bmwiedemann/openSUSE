@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 16 08:10:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.7.11:
+ - Add testcase for wildcard match.
+ - Update test data and readme link.
+   - Fixes issue #19
+ - Update PSL.
+- Update to version 0.7.10:
+ - Update PSL.
+- Update to version 0.7.9:
+ - Update PSL.
+
+-------------------------------------------------------------------
 Sun May 30 10:42:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.7.8:
