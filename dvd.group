@@ -142,8 +142,8 @@
     <package name="arphic-ukai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="arphic-uming-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="arptables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="arpwatch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="arpwatch-ethercodes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="arpwatch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arpwatch-ethercodes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="aspell-en" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="at" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="at-spi2-atk-common" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -181,7 +181,7 @@
     <package name="baobab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bash-sh" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -300,7 +300,6 @@
     <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="container-selinux" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="coreutils-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -908,14 +907,13 @@
     <package name="icewm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="icewm-lite" supportstatus="unsupported"/> <!-- reason: dvd:icewm-lite -->
     <package name="icewm-theme-branding" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
-    <package name="iftop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="iftop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="iio-sensor-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="imlib2-loaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="incidenceeditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="info-std" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="initviocons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="inkscape" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inkscape-extensions-extra" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -937,7 +935,6 @@
     <package name="iproute2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ipset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="iptables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="iptraf-ng" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="iputils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ipw-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="irda" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -1161,20 +1158,6 @@
     <package name="kirigami2-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kiriki" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kiriki-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-bt-geiger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-freaklabs-zigbee" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-linux-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-linux-wifi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-nrf-51822" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-nrf-52840" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-nrf-mousejack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-rz-killerbee" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-sdr-rtl433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-sdr-rtladsb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-sdr-rtlamr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-ti-cc2540" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-logtools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kitemmodels-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kiten" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kiten-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1573,7 +1556,6 @@
     <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libSPIRV-Tools-suse23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libSoapySDR0_8" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libWPEBackend-fdo-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2372,8 +2354,8 @@
     <package name="libosinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libosinfo-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libosinfo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libospf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="libospfapiclient0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="libospf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libospfapiclient0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libostree" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libostree-1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libotf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2397,7 +2379,7 @@
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libpcreposix0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="libpcreposix0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2568,7 +2550,6 @@
     <package name="librscg1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librsync2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby2_7-2_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby3_0-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2616,8 +2597,8 @@
     <package name="libsmbios-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmbios_c2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmbldap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsmi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
-    <package name="libsmi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="libsmi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libsmi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsmputils1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libsnapper5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2801,7 +2782,6 @@
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebrtc_audio_processing1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libwebsockets19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwinpr2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwireplumber-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2888,7 +2868,7 @@
     <package name="libzapojit-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libzebra1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="libzebra1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzhuyin13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libzimg2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzio1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2951,19 +2931,19 @@
     <package name="malcontent-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="malcontent-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-it" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="man-pages" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-cs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-da" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-de" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-el" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-es" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-fr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-hu" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-it" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-pl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-posix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="man-pages-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="man-pages-pl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-posix" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="man-pages-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="man-pages-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="manufacturer-PPDs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="mariadb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3062,7 +3042,7 @@
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="mtr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="mtr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="mugshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="multipath-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="mutt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3118,7 +3098,7 @@
     <package name="nfs-kernel-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nkf" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="nmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="nmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs16" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="notification-daemon" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3180,7 +3160,6 @@
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openvpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="opie" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="orca" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="orca-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="os-prober" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3194,7 +3173,6 @@
     <package name="package-update-indicator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="pam-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pam_apparmor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam_mount" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3219,7 +3197,6 @@
     <package name="patterns-base-basesystem" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-basic_desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="patterns-base-console" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="patterns-base-documentation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="patterns-base-enhanced_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="patterns-base-minimal_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-base-selinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3262,7 +3239,7 @@
     <package name="patterns-kde-kde_yast" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_yast -->
     <package name="patterns-media-rest_cd_core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="patterns-media-rest_dvd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="patterns-network-network_admin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="patterns-network-network_admin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="patterns-office-office" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-server-dhcp_dns_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="patterns-server-directory_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -3569,14 +3546,12 @@
     <package name="powerdevil5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ppp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pptp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pptpd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pragha" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pragha-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pragha-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="prctl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="presage-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="prison-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="privoxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="procinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="procmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="procps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3788,7 +3763,6 @@
     <package name="python38-ply" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-prettytable" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-prompt_toolkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python38-protobuf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python38-psycopg2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3936,7 +3910,7 @@
     <package name="qtdeclarative-imports-provides-qt5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="quadrapassel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="quadrapassel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="quagga" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="quagga" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="quota" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="quota-nfs" supportstatus="unsupported"/> <!-- reason: dvd:quota-nfs -->
     <package name="radvd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
@@ -3946,7 +3920,7 @@
     <package name="re2c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="read-only-root-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="readcd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="readline-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="readline-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rebootmgr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="redis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="reiserfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3972,9 +3946,6 @@
     <package name="rsyslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rt2860" supportstatus="unsupported"/> <!-- reason: dvd:rt2860 -->
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl-sdr-udev" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl_433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-solv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4563,7 +4534,6 @@
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="systemd-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-presets-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4581,7 +4551,7 @@
     <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="tar-rmt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="tcpdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="tcpdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="tcsh" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="tcsh-lang" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="technisat-usb2-firmware" supportstatus="unsupported"/> <!-- reason: dvd:technisat-usb2-firmware -->
@@ -4814,7 +4784,7 @@
     <package name="wget" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5201,7 +5171,22 @@
     <package name="hexchat" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hexchat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="iptraf-ng" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kimageformats-eps" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-bt-geiger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-freaklabs-zigbee" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-linux-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-linux-wifi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-nrf-51822" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-nrf-52840" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-nrf-mousejack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-rz-killerbee" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-sdr-rtl433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-sdr-rtladsb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-sdr-rtlamr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-capture-ti-cc2540" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kismet-logtools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5214,6 +5199,7 @@
     <package name="libICE6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libSM-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libSoapySDR0_8" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSvtAv1Enc0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libX11-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libX11-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5356,6 +5342,7 @@
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libsamba-credentials1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsamba-errors0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsamba-hostconfig0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5400,6 +5387,7 @@
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libwbclient0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libwebsockets19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu_net-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu_xml-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5431,6 +5419,7 @@
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="opie" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5452,7 +5441,9 @@
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="powertop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="powertop-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="pptpd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="printproto-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="privoxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-libguestfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-virt-bootstrap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-PyJWT" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5471,11 +5462,15 @@
     <package name="python38-hexdump" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-protobuf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-requests-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="rtl-sdr-udev" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="rtl_433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

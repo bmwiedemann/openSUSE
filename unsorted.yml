@@ -2305,6 +2305,7 @@ unsorted:
   - coredns-for-k8s1.23 
   - coredns-for-k8s1.23-extras 
   - corepack16 
+  - coreutils-doc 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -7030,6 +7031,7 @@ unsorted:
   - infinoted 
   - influxdb 
   - influxdb-devel 
+  - info-std 
   - info2html 
   - infos-creator-rpm 
   - ini4j 
@@ -7148,6 +7150,7 @@ unsorted:
   - iproute2-bash-completion 
   - ipset-devel 
   - iptables-backend-nft 
+  - iptraf-ng: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - ipv6gen 
   - ipv6toolkit 
   - ipvsadm 
@@ -8053,9 +8056,23 @@ unsorted:
   - kirigami-gallery-lang 
   - kirigami-lang 
   - kirigami2-devel 
+  - kismet: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - kismet-capture-bt-geiger: [i586] 
+  - kismet-capture-freaklabs-zigbee: [i586] 
+  - kismet-capture-linux-bluetooth: [i586] 
+  - kismet-capture-linux-wifi: [i586] 
+  - kismet-capture-nrf-51822: [i586] 
+  - kismet-capture-nrf-52840: [i586] 
+  - kismet-capture-nrf-mousejack: [i586] 
   - kismet-capture-nrf-nxp-kw41z 
+  - kismet-capture-rz-killerbee: [i586] 
+  - kismet-capture-sdr-rtl433: [i586] 
+  - kismet-capture-sdr-rtladsb: [i586] 
+  - kismet-capture-sdr-rtlamr: [i586] 
   - kismet-capture-ti-cc-2531 
+  - kismet-capture-ti-cc2540: [i586] 
   - kismet-devel 
+  - kismet-logtools: [i586] 
   - kissfft: [x86_64] 
   - kissfft-devel: [x86_64] 
   - kitemmodels-devel 
@@ -9195,6 +9212,7 @@ unsorted:
   - libSimGearCore-2020_3_11 
   - libSoQt20 
   - libSoapyOsmoSDR0 
+  - libSoapySDR0_8: [i586] 
   - libSoundTouch1-32bit: [x86_64] 
   - libStatTimer2: [x86_64] 
   - libSvtAv1Dec0: [x86_64] 
@@ -13434,6 +13452,7 @@ unsorted:
   - librsvg-devel 
   - librsync-devel 
   - librtaudio6 
+  - librtlsdr0: [i586] 
   - librtmidi6 
   - librtprocess-devel 
   - librtprocess0 
@@ -14420,6 +14439,7 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
+  - libwebsockets19: [i586] 
   - libweston-9 
   - libweston-9-0 
   - libweston-desktop-9-0 
@@ -18193,6 +18213,7 @@ unsorted:
   - openxcom 
   - opera-uget-integrator 
   - opi 
+  - opie: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - oping 
   - opmsg 
   - oprofile 
@@ -18382,6 +18403,7 @@ unsorted:
   - palm-db-tools 
   - pam-devel 
   - pam-devel-32bit: [x86_64] 
+  - pam-doc 
   - pam-extra 
   - pam-extra-32bit: [x86_64] 
   - pam-test 
@@ -18517,6 +18539,7 @@ unsorted:
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
   - patterns-base-bootloader: [i586] 
+  - patterns-base-documentation 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
   - patterns-base-minimal_base-32bit 
@@ -20755,6 +20778,7 @@ unsorted:
   - ppsspp-common 
   - ppsspp-headless 
   - ppsspp-qt 
+  - pptpd: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - pqiv 
   - pqiv-ffmpeg 
   - pqiv-gdkpixbuf 
@@ -20789,6 +20813,7 @@ unsorted:
   - printer-driver-brlaser 
   - printproto-devel: [i586] 
   - prison-qt5-devel 
+  - privoxy: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - privoxy-doc 
   - procdump 
   - procenv 
@@ -26238,6 +26263,7 @@ unsorted:
   - python38-prompt_toolkit1 
   - python38-proselint 
   - python38-proto-plus 
+  - python38-protobuf: [i586] 
   - python38-proton-client 
   - python38-protonvpn-nm-lib 
   - python38-proxy.py 
@@ -31289,10 +31315,13 @@ unsorted:
   - rt-tests 
   - rtags 
   - rtaudio-devel 
+  - rtl-sdr: [i586] 
   - rtl-sdr-devel 
+  - rtl-sdr-udev: [i586] 
   - rtl8812au 
   - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
+  - rtl_433: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
   - rtorrent 
@@ -32650,6 +32679,7 @@ unsorted:
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
+  - systemd-doc 
   - systemd-experimental 
   - systemd-journal-remote 
   - systemd-mini 
