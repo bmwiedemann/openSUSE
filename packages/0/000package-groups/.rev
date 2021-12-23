@@ -1238,4 +1238,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1640246156</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="172" vrev="170">
+    <srcmd5>a1a8b5823642ec6aea95ba64abda3c85</srcmd5>
+    <version>unknown</version>
+    <time>1640253512</time>
+    <user>dimstar_suse</user>
+    <comment>No jupyter on the DVD - no space for such things</comment>
+  </revision>
 </revisionlist>
