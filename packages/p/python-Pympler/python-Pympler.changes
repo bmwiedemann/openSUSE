@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 22 00:18:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0:
+  * Added
+    + Python 3.10 support
+    + Added type annotations to various Pympler modules which are checked via
+      Mypy
+  * Removed
+    + Python 2.7 and 3.5 support
+  * Fixed
+    + Fix summarizing objects at higher verbosity levels -- By Colin Watson
+    + Fix tree widget import for Python 3.5 and higher -- By Felix Jung (#77)
+    + Fix compatibility issues with numpy 1.19 and later -- By Jean
+      Brouwers (#121)
+    + Fix object filtering by size in muppy -- By Kris Jurka
+    + Fix documentation typos -- By Tim Gates
+- Use pytest to run the test suite. 
+
+-------------------------------------------------------------------
 Sat Feb 27 06:35:24 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.9

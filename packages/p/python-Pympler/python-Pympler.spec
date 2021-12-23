@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pympler
-Version:        0.9
+Version:        1.0
 Release:        0
 Summary:        A tool to analyze the memory behavior of Python objects
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pympler/pympler
 Source:         https://files.pythonhosted.org/packages/source/P/Pympler/Pympler-%{version}.tar.gz
 Patch0:         pympler-flaky-tests.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +53,7 @@ can easily be identified.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py test
+%pytest -k 'not (test_otracker_diff or test_repr_function or test_stracker or test_snapshot_members or test_charts)'
 
 %files %{python_files}
 %license LICENSE

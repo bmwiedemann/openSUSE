@@ -32,4 +32,26 @@
     <comment></comment>
     <requestid>875641</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a6532f47d035b58aaacacec3c926a02</srcmd5>
+    <version>1.0</version>
+    <time>1640278408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0:
+  * Added
+    + Python 3.10 support
+    + Added type annotations to various Pympler modules which are checked via
+      Mypy
+  * Removed
+    + Python 2.7 and 3.5 support
+  * Fixed
+    + Fix summarizing objects at higher verbosity levels -- By Colin Watson
+    + Fix tree widget import for Python 3.5 and higher -- By Felix Jung (#77)
+    + Fix compatibility issues with numpy 1.19 and later -- By Jean
+      Brouwers (#121)
+    + Fix object filtering by size in muppy -- By Kris Jurka
+    + Fix documentation typos -- By Tim Gates
+- Use pytest to run the test suite.</comment>
+    <requestid>942029</requestid>
+  </revision>
 </revisionlist>
