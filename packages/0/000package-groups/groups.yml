@@ -328,6 +328,7 @@ dvd:
   - libpython3_6m1_0: [locked]
   - libpython3_9-1_0: [locked]
   - jupyter-jupyter_core-filesystem: [locked]
+  - python38-tornado5: [locked]
 
   # DVD a little too big remove fonts (starting with renamed noto cjk fonts) - rbrown, 20210819
   - noto-sans-sc-bold-fonts: [locked]
