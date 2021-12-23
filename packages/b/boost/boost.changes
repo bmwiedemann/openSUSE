@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 21 09:08:17 CET 2021 - aschnell@suse.com
+
+- update to 1.78.0:
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_78_0.html
+- boost-math.patch: removed
+- 0001-b2-fix-install.patch: added from upstream
+
+-------------------------------------------------------------------
 Mon Oct 25 19:15:41 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Fix boost nowide development not requiring the library itself

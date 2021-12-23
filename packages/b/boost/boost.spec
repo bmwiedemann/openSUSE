@@ -1,5 +1,5 @@
 #
-# spec file for package %{base_name}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.77.0
-%define _ver 1_77_0
-%define package_version 1_77_0
+%define ver 1.78.0
+%define _ver 1_78_0
+%define package_version 1_78_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,15 +235,15 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.77.0
+Version:        1.78.0
 Release:        0
-%define library_version 1_77_0
+%define library_version 1_78_0
 
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.boost.org
-Source0:	https://boostorg.jfrog.io/artifactory/main/release/%{version}/source/boost_%{_ver}.tar.bz2
+Source0:        https://boostorg.jfrog.io/artifactory/main/release/%{version}/source/boost_%{_ver}.tar.bz2
 Source1:        boost-rpmlintrc
 Source3:        https://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
 Source4:        existing_extra_docs
@@ -266,14 +266,14 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
-Patch23:        boost-math.patch
+Patch23:        0001-b2-fix-install.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libicu-devel
-BuildRequires:  zlib-devel
 BuildRequires:  xz-devel
+BuildRequires:  zlib-devel
 %if %{with boost_fiber}
 BuildRequires:  gcc-c++ > 5
 %else
@@ -640,9 +640,9 @@ This package contains the Boost.Filesystem library.
 %package     -n libboost_filesystem%{library_version}-devel
 Summary:        Development headers for Boost.Filesystem library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_atomic%{library_version}-devel = %{version}
 Requires:       libboost_filesystem%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
-Requires:       libboost_atomic%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_filesystem-devel-impl
@@ -694,8 +694,8 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_iostreams%{library_version} = %{version}
 Requires:       pkgconfig(bzip2)
-Requires:       pkgconfig(zlib)
 Requires:       pkgconfig(liblzma)
+Requires:       pkgconfig(zlib)
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_iostreams-devel-impl
 Conflicts:      libboost_iostreams1_66_0-devel
@@ -1212,8 +1212,8 @@ This package contains Boost::JSON runtime library.
 %package     -n libboost_json%{library_version}-devel
 Summary:        Development headers for Boost.JSON library
 Group:          Development/Libraries/C and C++
-Requires:       libboost_json%{library_version} = %{version}
 Requires:       libboost_container%{library_version}-devel = %{version}
+Requires:       libboost_json%{library_version} = %{version}
 Conflicts:      libboost_json-devel-impl
 Provides:       libboost_json-devel-impl = %{version}
 
@@ -1258,7 +1258,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p2
-%patch23 -p2
+%patch23 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1530,7 +1530,6 @@ rm %{buildroot}%{package_libdir}/libboost_exception.so
 rm %{buildroot}%{package_libdir}/libboost_exception.so.%{version}
 
 # not used or duplicated in boost-extra flavour
-rm -r %{buildroot}%{package_libdir}/cmake/boost_stacktrace_{backtrace,windbg}*
 rm -r %{buildroot}%{package_libdir}/cmake/boost_exception-*
 rm -r %{buildroot}%{package_libdir}/cmake/boost_graph_parallel-%{version}
 
@@ -1780,9 +1779,7 @@ EOF
 
 %files -n libboost_fiber%{library_version}-devel
 %dir %{package_libdir}/cmake/boost_fiber-%{version}
-%dir %{package_libdir}/cmake/boost_fiber_numa-%{version}
 %{package_libdir}/cmake/boost_fiber-%{version}/*
-%{package_libdir}/cmake/boost_fiber_numa-%{version}/*
 %{package_libdir}/libboost_fiber.so
 
 %endif
