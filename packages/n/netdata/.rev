@@ -2819,4 +2819,607 @@ Improvements
     <comment></comment>
     <requestid>933219</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7199302507ec4201da85ba16046ecb4a</srcmd5>
+    <version>1.32.1</version>
+    <time>1640278423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.32.1 (go.d.plugin 0.31.0)
+Bug fixes
+  * Use the chart id instead of chart name in response to incoming
+    cloud context queries
+    (gh#netdata/netdata#11898)
+  * Fix used_swap alarm calculation
+    (gh#netdata/netdata#11868)
+  * Initialize enabled parameter to 1 in AlarmLogHealth message
+    (gh#netdata/netdata#11856)
+- Changes in 1.32.0:
+New Cloud backend and Agent communication protocol
+This Agent release supports our new Cloud backend. From here, we
+will be offering much faster and simpler communication, reliable
+alerts and exchange of metadata, and first-time support for the
+parent-child relationship of Netdata agents. This is the first
+Agent release that allows Netdata Cloud to use the Netdata Agent as
+a distributed time-series database that supports replication and
+query routing, for every metric!
+eBPF latency monitoring, container monitoring, and more
+We use eBPF to monitor all running processes, without the
+cooperation of the processes and without sniffing data traffic.
+This new release includes 13 new eBPF monitoring features,
+including I/O latency, BTRFS, EXT4, NFS, XFS and ZFS latencies,
+IRQs latencies, extended swap monitoring, and more.
+Machine learning (ML) powered anomaly detection
+​This release links Netdata Agent with dlib, the popular C++
+machine learning algorithms library, which we use to automatically
+detect anomalies out-of-the-box, at the edge! Once enabled, Netdata
+trains an ML model for every metric, which is then used to detect
+outliers in real-time. The resulting &quot;anomaly bit&quot; (where 0=normal,
+1=anomalous) associated with each database entry is stored
+alongside the raw metric value with zero additional storage
+overhead! This feature is still in development, so it is disabled
+by default. If you would like to test it and provide feedback, you
+can go to the new [ml] section in netdata.conf and set enabled=yes
+to turn on anomaly detection. After restarting Netdata, you should
+see the Anomaly Detection menu with charts highlighting the overall
+number and percent of anomalous metrics on your node. This can be a
+very useful single number summary of the state of your node.
+New timezone selector and time controls in the user interface
+We implemented a new timezone picker and time controls to enhance
+administrative abilities in the dashboard.
+Dashboard
+  * Add various updates to dashboard info
+    (gh#netdata/netdata#11639)
+  * Add timex plugin chart descriptions
+    (gh#netdata/netdata#11635)
+  * Add proc plugin zfs chart descriptions
+    (gh#netdata/netdata#11630)
+  * Add proc plugin infiniband chart descriptions
+    (gh#netdata/netdata#11628)
+  * Add proc plugin pagetypeinfo chart descriptions
+    (gh#netdata/netdata#11627)
+  * Add proc plugin net_wireless chart descriptions
+    (gh#netdata/netdata#11626)
+  * Add proc plugin net_rpc_nfs and net_rpc_nfsd chart descriptions
+    (gh#netdata/netdata#11625)
+  * Add proc plugin power_supply chart descriptions
+    (gh#netdata/netdata#11619)
+  * Add cgroups plugin systemd services chart descriptions
+    (gh#netdata/netdata#11618)
+  * Add cgroups plugin chart descriptions
+    (gh#netdata/netdata#11607)
+  * Add apps plugin chart descriptions
+    (gh#netdata/netdata#11601)
+  * Add proc plugin vmstat chart descriptions
+    (gh#netdata/netdata#11597)
+  * Add proc plugin ksm chart descriptions
+    (gh#netdata/netdata#11595)
+  * Add proc plugin edac chart descriptions
+    (gh#netdata/netdata#11589)
+  * Add proc plugin stat chart descriptions
+    (gh#netdata/netdata#11586)
+  * Add proc plugin net_stat_synproxy chart descriptions
+    (gh#netdata/netdata#11581)
+  * Add proc plugin softirqs chart descriptions
+    (gh#netdata/netdata#11577)
+  * Add proc plugin net_stat_conntrack chart descriptions
+    (gh#netdata/netdata#11576)
+  * Add proc plugin uptime chart descriptions
+    (gh#netdata/netdata#11569)
+  * Add proc plugin net_sockstat and net_sockstat6 chart
+    descriptions
+    (gh#netdata/netdata#11567)
+  * Add proc plugin net_snmp6 chart descriptions
+    (gh#netdata/netdata#11565)
+  * Add proc plugin net_sctp_snmp chart descriptions
+    (gh#netdata/netdata#11564)
+  * Add proc plugin net_snmp chart descriptions
+    (gh#netdata/netdata#11557)
+  * Add proc plugin net_netstat chart descriptions
+    (gh#netdata/netdata#11554)
+  * Add proc plugin net_ip_vs_stats chart descriptions
+    (gh#netdata/netdata#11546)
+  * Add proc plugin net_dev chart descriptions
+    (gh#netdata/netdata#11543)
+  * Add proc plugin meminfo chart descriptions
+    (gh#netdata/netdata#11541)
+  * Add proc plugin mdstat chart descriptions
+    (gh#netdata/netdata#11537)
+  * Add proc plugin interrupts chart descriptions
+    (gh#netdata/netdata#11532)
+  * Add proc plugin diskstats chart descriptions
+    (gh#netdata/netdata#11528)
+  * Add proc plugin ipc semaphores chart descriptions
+    (gh#netdata/netdata#11523)
+  * Remove 'vernemq.queue_messages_in_queues' from dashboard info
+    (gh#netdata/netdata#11403)
+  * Move MD arrays charts under Disks
+    (gh#netdata/netdata#11119)
+Collectors
+  * New
+    + Add Traefik collector (go.d/traefik)
+      (gh#netdata/go.d.plugin#605)
+    + Add HAProxy collector (go.d/haproxy)
+      (gh#netdata/go.d.plugin#599)
+    + Add Mongodb collector (go.d/mongodb)
+      (gh#netdata/go.d.plugin#598)
+    + Add Ethereum Node collector (go.d/geth)
+      (gh#netdata/go.d.plugin#585)
+  * Improvements
+    + Add AWS to apps_groups.conf
+      (gh#netdata/netdata#11826)
+    + Show stats for systemd protected mount points
+      (diskspace plugin) (gh#netdata/netdata#11767)
+    + Add support for v1.7.0+ (go.d/coredns)
+      (gh#netdata/go.d.plugin#619)
+    + Add &quot;/basic_status&quot; job nginx.conf (go.d/nginx)
+      (gh#netdata/go.d.plugin#612)
+    + Add sharding metrics (go.d/mongodb)
+      (gh#netdata/go.d.plugin#609)
+    + Add thread operations metrics (go.d/mysql)
+      (gh#netdata/go.d.plugin#607)
+    + Add replica sets metrics (go.d/mongodb)
+      (gh#netdata/go.d.plugin#604)
+    + Add databases metrics (go.d/mongodb)
+      (gh#netdata/go.d.plugin#602)
+    + Add more OS(OperatingSystem) charts (go.d/wmi)
+      (gh#netdata/go.d.plugin#593)
+    + Add caddy job to prometheus.conf (go.d/prometheus)
+      (gh#netdata/go.d.plugin#581)
+    + Add AOF file size metrics (go.d/redis)
+      (gh#netdata/go.d.plugin#578)
+    + Add openethereum/geth jobs to prometheus.con
+      (go.d/prometheus) (gh#netdata/go.d.plugin#578)
+    + Update whois/whois-parser packages and add timeout
+      configuration option (go.d/whoisquery)
+      (gh#netdata/go.d.plugin#576)
+    + Disable reporting min/avg/max group uptime by default
+      (apps plugin) (gh#netdata/netdata#11609)
+    + Add sorting of the list of databases in alphabetical order
+      (python.d/postgres) (gh#netdata/netdata#11580)
+    + Add terra related binaries to blockchains group (apps plugin)
+      (gh#netdata/netdata#11437)
+    + Add instruction per cycle charts (perf plugin)
+      (gh#netdata/netdata#11392)
+    + Add autovacuum and tx wraparound charts (python.d/postgres)
+      (gh#netdata/netdata#11267)
+    + Add web3 and blockchains groups (apps plugin)
+      (gh#netdata/netdata#11220)
+    + Implement merging user/stock configuration files
+      (python.d plugin) (gh#netdata/netdata#11217)
+    + Rename default job from 'local' to 'anomalies'
+      (python.d/anomalies) (gh#netdata/netdata#11178)
+    + Add standby lag and blocking transactions charts
+      (python.d/postgres) (gh#netdata/netdata#11169)
+  * Bug fixes
+    + Fix renaming for cgroups with dots in the path
+      (cgroups plugin) (gh#netdata/netdata#11775)
+    + Fix exiting on SIGPIPE (go.d plugin)
+      (gh#netdata/go.d.plugin#630)
+    + Fix domain syntax validation (go.d/whoisquery)
+      (gh#netdata/go.d.plugin#629)
+    + Fix missing NONE in valid request methods (go.d/squidlog)
+      (gh#netdata/go.d.plugin#621)
+    + Remove wrong &quot;queue_messages_in_queues&quot; chart (go.d/vernemq)
+      (gh#netdata/go.d.plugin#601)
+    + Fix HTTP/socket client initialization order (go.d/phpfpm)
+      (gh#netdata/go.d.plugin#591)
+    + Fix scraping metrics when resources are not discovered
+      (go.d/vsphere)
+      (gh#netdata/go.d.plugin#589)
+    + Fix LTSV log format parsing (go.d/weblog)
+      (gh#netdata/go.d.plugin#584)
+    + Fix expiration date parsing (go.d/whoisquery)
+      (gh#netdata/go.d.plugin#575)
+    + Fix containers name resolution for crio/containerd runtime
+      (cgroups plugin)
+      (gh#netdata/netdata#11756)
+    + Add sensors to charts.d.conf and add a note on how to enable
+      it (charts.d plugin)
+      (gh#netdata/netdata#11715)
+    + Fix crashing of the wal query if wal-file was removed
+      concurrently (python.d/postgres)
+      (gh#netdata/netdata#11697)
+    + Fix &quot;lsns: unknown column&quot; logging (cgroups plugin)
+      (gh#netdata/netdata#11687)
+    + Fix nfsd RPC metrics and remove unused nfsd charts and
+      metrics (proc/nfsd)
+      (gh#netdata/netdata#11632)
+    + Fix &quot;proc4ops&quot; chart family (proc/nfsd)
+      (gh#netdata/netdata#11623)
+    + Fix swap size calculation (cgroups plugin)
+      (gh#netdata/netdata#11617)
+    + Fix RSS memory counter for systemd services (cgroups plugin)
+      (gh#netdata/netdata#11616)
+    + Fix VBE parsing (python.d/varnish)
+      (gh#netdata/netdata#11596)
+    + Remove unused synproxy chart (proc/synproxy)
+      (gh#netdata/netdata#11582)
+    + Fix zpool state parsing (proc/zfs)
+      (gh#netdata/netdata#11545)
+    + Fix null values returned by '_cat/indices' API
+      (python.d/elasticsearch)
+      (gh#netdata/netdata#11501)
+    + Fix replication_slot chart on standby (python.d/postgres)
+      (gh#netdata/netdata#11455)
+    + Fix an inconsistent status check (charts.d/apcupsd)
+      (gh#netdata/netdata#11435)
+    + Fix plugin name (stats.d plugin)
+      (gh#netdata/netdata#11400)
+    + Fix lack of &quot;module&quot; in chart definition (all chart.d modules)
+      (gh#netdata/netdata#11390)
+    + Fix various python modules charts contexts
+      (python.d/smartd_log, mysql, zscores)
+      (gh#netdata/netdata#11310)
+    + Fix current operation charts title and context (proc/mdstat)
+      (gh#netdata/netdata#11289)
+    + Fix handling of adding slabs after discovery
+      (slabinfo plugin) (gh#netdata/netdata#11257)
+eBPF
+  * New
+    + Add MD flush calls tracking
+      (gh#netdata/netdata#11681)
+    + Add shared memory system calls tracking
+      (gh#netdata/netdata#11560)
+    + Add OOM kills tracking
+      (gh#netdata/netdata#11470)
+    + Add soft IRQ latency tracking
+      (gh#netdata/netdata#11445)
+    + Add hard IRQ latency tracking
+      (gh#netdata/netdata#11410)
+    + Add mount/umount calls tracking
+      (gh#netdata/netdata#11358)
+    + Add btrfs latency monitoring
+      (gh#netdata/netdata#11348)
+    + Add ZFS latency monitoring
+      (gh#netdata/netdata#11330)
+    + Add NFS latency monitoring
+      (gh#netdata/netdata#11313)
+    + Add disk latency monitoring
+      (gh#netdata/netdata#11276)
+    + Add XFS latency monitoring
+      (gh#netdata/netdata#11238)
+    + Add ext4 latency monitoring
+      (gh#netdata/netdata#11224)
+    + Add extended swap monitoring
+      (gh#netdata/netdata#11090)
+  * Improvements
+    + Add (eBPF) to submenu
+      (gh#netdata/netdata#11721)
+    + Process monitoring cleanup and improvements
+      (gh#netdata/netdata#11643)
+    + Add integration with cgroups plugin (socket, shared memory,
+      cachestat)
+      (gh#netdata/netdata#11642)
+    + Add integration with cgroups plugin (process,
+      file descriptor, VFS, directory cache and OOMkill)
+      (gh#netdata/netdata#11611)
+    + Add initial integration with cgroups plugin (swap)
+      (gh#netdata/netdata#11573)
+    + Add integration with cgroups plugin (create shared memory
+      with cgroups)
+      (gh#netdata/netdata#11559)
+    + Update charts descriptions
+      (gh#netdata/netdata#11547)
+    + Convert eBPF submenus to lowercase
+      (gh#netdata/netdata#11511)
+    + Socket monitoring code improvements and update charts
+      descriptions
+      (gh#netdata/netdata#11441)
+    + Move file operation monitoring to a separate thread
+      (gh#netdata/netdata#11401)
+    + Add module names for threads
+      (gh#netdata/netdata#11387)
+    + Move repeating part of latency chart descriptions to the
+      family level
+      (gh#netdata/netdata#11363)
+    + Reduce plugin's memory usage
+      (gh#netdata/netdata#11256)
+    + Assorted improvements and fixes
+      (gh#netdata/netdata#11230)
+    + Move VFS monitoring to a separate threads and add new charts
+      (gh#netdata/netdata#11187)
+  * Bug fixes
+    + Fix command line arguments
+      (gh#netdata/netdata#11670)
+    + Fix hardirq/softirq value init logic
+      (gh#netdata/netdata#11471)
+    + Fix VFS index reference
+      (gh#netdata/netdata#11356)
+    + Fix a case when multiple eBPF plugins are running
+      (gh#netdata/netdata#11287)
+    + Fix applying configuration options
+      (gh#netdata/netdata#11253)
+    + Fix a segfault when ebpf_load_program returns null pointer
+      (gh#netdata/netdata#11203)
+    + Fix a wrong pointer to a function and move parser to main
+      thread
+      (gh#netdata/netdata#11152)
+Health
+  * Improvements
+    + Remove pihole_blocked_queries alert
+      (gh#netdata/netdata#11829)
+    + Improve check for supported -F parameter in sendmail
+      (gh#netdata/netdata#11506)
+    + Add custom e-mail headers
+      (gh#netdata/netdata#11454)
+    + Add 'cockroachdb_underreplicated_ranges' alarm
+      (gh#netdata/netdata#11360)
+    + Disable 'oom_kill' alarm on k8s nodes
+      (gh#netdata/netdata#11359)
+    + Add geth stock alarms
+      (gh#netdata/netdata#11341)
+    + Remove pythond modules specific last_collected alarms
+      (gh#netdata/netdata#11307)
+    + Remove CockroachDB deprecated alarms
+      (gh#netdata/netdata#11235)
+    + Add new email notification template
+      (gh#netdata/netdata#11219)
+    + Add system clock synchronization state alarm
+      (gh#netdata/netdata#11177)
+    + Add python.d/go.d jobs last_collected_secs alarms
+      (gh#netdata/netdata#11168)
+    + Make stocks alarms less sensitive
+      (gh#netdata/netdata#11153)
+  * Bug fixes
+    + Fix swap_used alarm calculation
+      (gh#netdata/netdata#11672)
+    + Fix ram level alarms
+      (gh#netdata/netdata#11452)
+    + Fix 'gearman_workers_queued' alarm
+      (gh#netdata/netdata#11361)
+    + Fix sending MS Teams notifications to multiple channels
+      (gh#netdata/netdata#11355)
+    + Fix sendmail 'unrecognized option: F' issue
+      (gh#netdata/netdata#11283)
+    + Update old logo to new one
+      (gh#netdata/netdata#11263)
+    + Swap class and type attributes in stock alarm configurations
+      (gh#netdata/netdata#11240)
+    + Fix alarm line 'charts' matching
+      (gh#netdata/netdata#11204)
+Other
+  * Improvements
+    + Clean compilation warnings
+      (gh#netdata/netdata#11810)
+    + Fix coverity issues
+      (gh#netdata/netdata#11809)
+    + Add commands to check and fix database corruption
+      (gh#netdata/netdata#11828)
+    + Use two digits after the decimal point for the anomaly rate.
+      (gh#netdata/netdata#11804)
+    + Always queue alerts to aclk_alert
+      (gh#netdata/netdata#11806)
+    + Add some logging for cloud new architecture to access.log
+      (gh#netdata/netdata#11788)
+    + Delete from aclk alerts table if ack'ed from cloud one day
+      ago
+      (gh#netdata/netdata#11779)
+    + Remove feature flag for ACLK new cloud architecture
+      (gh#netdata/netdata#11774)
+    + Insert alert into aclk_alert directly instead of queuing it
+      (gh#netdata/netdata#11769)
+    + Store and submit dimension delete messages for new cloud
+      architecture
+      (gh#netdata/netdata#11765)
+    + Implement cloud initiated disconnect command
+      (gh#netdata/netdata#11723)
+    + Announce proto capability and enable if cloud supports
+      (gh#netdata/netdata#11476)
+    + Add exit points between env and OTP
+      (gh#netdata/netdata#11751)
+    + Improve the ACLK sync process for the new cloud architecture
+      (gh#netdata/netdata#11744)
+    + Disable C++ warnings from dlib library.
+      (gh#netdata/netdata#11738)
+    + Add queue removed alerts to cloud for new architecture
+      (gh#netdata/netdata#11704)
+    + Add support to stream chart labels on a parent - child setup
+      (gh#netdata/netdata#11675)
+    + Add snapshot message for cloud new architecture
+      (gh#netdata/netdata#11664)
+    + Add protobuf to -W buildinfo output.
+      (gh#netdata/netdata#11634)
+    + Add new alarm status protocol messages
+      (gh#netdata/netdata#11612)
+    + Add local webserver API/v1 call &quot;aclk&quot;
+      (gh#netdata/netdata#11588)
+    + Make New Cloud architecture optional for ACLK-NG
+      (gh#netdata/netdata#11587)
+    + Enable additional functionality for the new cloud
+      architecture
+      (gh#netdata/netdata#11579)
+    + Add alert message support for ACLK new architecture
+      (gh#netdata/netdata#11552)
+    + Add support for Anomaly Detection MVP
+      (gh#netdata/netdata#11548)
+    + Add New Cloud Protocol files to CMake
+      (gh#netdata/netdata#11536)
+    + Add archive uploads for dist, package build, and static
+      build checks.
+      (gh#netdata/netdata#11534)
+    + Add node message support for ACLK new architecture
+      (gh#netdata/netdata#11514)
+    + Clean netdata naming
+      (gh#netdata/netdata#11484)
+    + Add aclk/cloud state command to netdatacli
+      (gh#netdata/netdata#11462)
+    + Add chart message support for ACLK new architecture
+      (gh#netdata/netdata#11447)
+    + Add Alert Related API for new protocol
+      (gh#netdata/netdata#11424)
+    + Update SQLite version from v3.33.0 to 3.36.0
+      (gh#netdata/netdata#11423)
+    + Add SQLite unit tests
+      (gh#netdata/netdata#11422)
+    + Add NodeInstanceInfo API
+      (gh#netdata/netdata#11419)
+    + Use SQLite to store the health log and alert configurations.
+      (gh#netdata/netdata#11399)
+    + Add ACLK synchronization event loop
+      (gh#netdata/netdata#11396)
+    + Add HTTP basic authentication to Prometheus remote write and
+      HTTP versions of Graphite, JSON, OpenTSDB
+      (gh#netdata/netdata#11394)
+    + Add new Cloud chart related parsers and generators
+      (gh#netdata/netdata#11393)
+    + Remove warning when GCC 8.x is used
+      (gh#netdata/netdata#11389)
+    + Add support to allow ACLK-NG to grow MQTT buffer
+      (gh#netdata/netdata#11340)
+    + Add support for bundled protobuf
+      (gh#netdata/netdata#11335)
+    + Add ACLK-NG cloud request type charts
+      (gh#netdata/netdata#11326)
+    + Add HTTP access log messages for ACLK-NG
+      (gh#netdata/netdata#11318)
+    + Add a log message when the page cache manager sleeps for
+      more than 1 second.
+      (gh#netdata/netdata#11314)
+    + Add hop count for children
+      (gh#netdata/netdata#11311)
+    + Remove access check for install-type file
+      (gh#netdata/netdata#11288)
+    + Support TLS SNI in ACLK-NG
+      (gh#netdata/netdata#11285)
+    + Make ACLK-NG the default if available
+      (gh#netdata/netdata#11272)
+    + Add extra posthog attributes
+      (gh#netdata/netdata#11237)
+    + Add support to ACLK-NG for new Cloud NodeInstance related
+      msgs
+      (gh#netdata/netdata#11234)
+    + Add support so ACLK NG and Legacy can coexist
+      (gh#netdata/netdata#11225)
+    + Move cleanup of obsolete charts to a separate thread
+      (gh#netdata/netdata#11222)
+    + Add check to only report the exit code when anonymous
+      statistics script fails
+      (gh#netdata/netdata#11215)
+    + Reduce memory needed per dimension
+      (gh#netdata/netdata#11212)
+    + Improve dbengine intialization to ignore journal files that
+      can not be read
+      (gh#netdata/netdata#11210)
+    + Use memory mode RAM if memory mode dbengine is specified but
+      not available
+      (gh#netdata/netdata#11207)
+    + Improve return status check for the execution of anonymous
+      statistics script
+      (gh#netdata/netdata#11188)
+    + Reuse the SN_EXISTS bit to track anomaly status.
+      (gh#netdata/netdata#11154)
+    + Remove deprecated command line options
+      (gh#netdata/netdata#11149)
+    + Remove unecessary relative paths when including headers.
+      (gh#netdata/netdata#11124)
+    + Add field to provide UTC offset in seconds and edit health
+      config command
+      (gh#netdata/netdata#11051)
+  * Bug fixes
+    + Set NETDATA_CONTAINER_OS_DETECTION properly
+      (gh#netdata/netdata#11827)
+    + Fix agent crash when ACLK sync thread is not initialized
+      (gh#netdata/netdata#11820)
+    + Simple fix for the data API query
+      (gh#netdata/netdata#11787)
+    + Use the proper format specifier when logging configuration
+      options.
+      (gh#netdata/netdata#11795)
+    + Use correct hop count if host is already in memory
+      (gh#netdata/netdata#11785)
+    + Fix proc/interrupts parser
+      (gh#netdata/netdata#11783)
+    + Skip sending hidden dimensions via ACLK
+      (gh#netdata/netdata#11770)
+    + Fix host hop count reported to the cloud
+      (gh#netdata/netdata#11768)
+    + Fix log if D_ACLK is used
+      (gh#netdata/netdata#11763)
+    + Fix retention message duration when no local metrics are
+      found
+      (gh#netdata/netdata#11762)
+    + Fix an issue with incomplete payload served when https is
+      enabled
+      (gh#netdata/netdata#11754)
+    + Fix a type in the popocorn information message
+      (gh#netdata/netdata#11745)
+    + Fix /api/v1/info if ml-info is missing
+      (gh#netdata/netdata#11739)
+    + Fix typo in aclk_query.c
+      (gh#netdata/netdata#11737)
+    + Fix online chart in NG not updated properly
+      (gh#netdata/netdata#11734)
+    + Fix coverity CID #373610
+      (gh#netdata/netdata#11719)
+    + Fix loading old and custom dashboards
+      (gh#netdata/netdata#11710)
+    + Fix coverity issues 373612 &amp; 373611
+      (gh#netdata/netdata#11684)
+    + Fix warnings from -Wformat-truncation=2
+      (gh#netdata/netdata#11676)
+    + Fix interval usage and reduce I/O
+      (gh#netdata/netdata#11662)
+    + Fix build issue related to legacy aclk and new arch code
+      (gh#netdata/netdata#11655)
+    + Fix typo in URL when calling env
+      (gh#netdata/netdata#11651)
+    + Fix false poll timeout
+      (gh#netdata/netdata#11650)
+    + Fix chart config overflow
+      (gh#netdata/netdata#11645)
+    + Fix an overflow when unsigned integer subtracted
+      (gh#netdata/netdata#11638)
+    + Fix coverity issues 373400-373402
+      (gh#netdata/netdata#11631)
+    + Fix proper initialization struct with zeroes
+      (gh#netdata/netdata#11621)
+    + Fix https client
+      (gh#netdata/netdata#11608)
+    + Fix CID 339027 and reverse arguments
+      (gh#netdata/netdata#11578)
+    + Fix resource leak when analytics thread stops
+      (gh#netdata/netdata#11575)
+    + Fix coverity report issues CID_373247-373251
+      (gh#netdata/netdata#11549)
+    + Fix coverity issues for health config
+      (gh#netdata/netdata#11535)
+    + Fix issue with log messages appearing in the terminal
+      instead of the error.log on startup
+      (gh#netdata/netdata#11524)
+    + Fix issues in Alarm API
+      (gh#netdata/netdata#11491)
+    + Fix list corruption in ACLK sync code and remove fatal
+      (gh#netdata/netdata#11444)
+    + Fix coverity reported issues 372243 - 372248
+      (gh#netdata/netdata#11429)
+    + Fix CID 372233 to CID 372236
+      (gh#netdata/netdata#11411)
+    + Fix bundled protobuf linkage on systems needing -latomic
+      (gh#netdata/netdata#11406)
+    + Fix coverity issue 372222
+      (gh#netdata/netdata#11404)
+    + Fix typo in analytics.c
+      (gh#netdata/netdata#11329)
+    + Fix coverity errors in ACLK
+      (gh#netdata/netdata#11322)
+    + Fix confusing error in ACLK Legacy
+      (gh#netdata/netdata#11278)
+    + Fix an issue to send correct aclk implementation used by
+      agent to posthog.
+      (gh#netdata/netdata#11247)
+    + Fix error on --disable-cloud
+      (gh#netdata/netdata#11244)
+    + Fix mqtt_websockets submodule version
+      (gh#netdata/netdata#11196)
+    + Fix claiming script exit code when daemon not running and
+      the claim was successful
+      (gh#netdata/netdata#11195)
+    + Fix loading of class, component and type from health log
+      when sufficient fields are detected.
+      (gh#netdata/netdata#11193)
+    + Fix typo in aclk.c
+      (gh#netdata/netdata#11170)
+</comment>
+    <requestid>942157</requestid>
+  </revision>
 </revisionlist>
