@@ -19,18 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-Pyro4
-Version:        4.80
+Version:        4.81
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
 URL:            https://github.com/irmen/Pyro4
 Source:         https://files.pythonhosted.org/packages/source/P/Pyro4/Pyro4-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM Pyro4-pr238-py310-cmethod-smethod.patch gh#irmen/Pyro4#238
+Patch0:         Pyro4-pr238-py310-cmethod-smethod.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-serpent >= 1.27
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     ca-certificates
 Recommends:     python-cloudpickle >= 0.4.0
 Recommends:     python-dill >= 0.2.6
@@ -64,7 +66,7 @@ building distributed applications. Pyro is a pure Python library and
 runs on many different platforms and Python versions.
 
 %prep
-%setup -q -n Pyro4-%{version}
+%autosetup -p1 -n Pyro4-%{version}
 
 %build
 %python_build
@@ -80,7 +82,6 @@ runs on many different platforms and Python versions.
 %python_clone -a %{buildroot}%{_bindir}/pyro4-test-echoserver
 
 %check
-# testContextAndSock missing cert fixtures https://github.com/irmen/Pyro4/issues/216
 # socket tests require at least lo interface thus skip them
 skip="testContextAndSock"
 skip+=" or testGetIP or testAutoClean"
@@ -115,6 +116,7 @@ export PYTHONPATH=${PWD}/tests/PyroTests
 %python_alternative %{_bindir}/pyro4-ns
 %python_alternative %{_bindir}/pyro4-nsc
 %python_alternative %{_bindir}/pyro4-test-echoserver
-%{python_sitelib}/*
+%{python_sitelib}/Pyro4
+%{python_sitelib}/Pyro4-%{version}*-info
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 21 18:29:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.81
+  * fix some typo's in docs
+  * corrected some minor other things in docs
+  * Python 3.9 is now included in the unit test runs
+  * No actual code changes.
+- (update just to satisfy the weekly report on d:l:python* scripts)
+- Add patch Pyro4-pr238-py310-cmethod-smethod.patch
+  * gh#irmen/Pyro4#238
+
+-------------------------------------------------------------------
 Fri Feb 26 05:42:18 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v4.80
