@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 16 07:13:04 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.022:
+  * Add experimental route geoip to rewrite baseurl in .repo (#242)
+  * Set MirrorCache useragent for scan jobs (#240)
+  * Add RestartSec to backstage systemd files (#241)
+
+-------------------------------------------------------------------
+Sun Dec 12 13:09:46 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.021:
+  * Handle timeouts in mirror_probe_projects (#238)
+  * Track projects on mirrors and do skip scans accordingly (#237)
+
+-------------------------------------------------------------------
+Thu Dec 09 06:22:21 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.020:
+  * Do not try to find mirror outside region when ROOT_COUNTRY is set (#236)
+  * Special handling unversioned media symlinks (#235)
+  * Import hash create folder (#233)
+
+-------------------------------------------------------------------
 Thu Dec 02 05:33:04 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.019:
