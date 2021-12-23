@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 22 16:16:03 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.14.5 fixed automation editor to respect toggled
+  and integer ports and apply lower correct.
+
+-------------------------------------------------------------------
 Tue Dec 21 20:23:56 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.14.3 implemented AgsHybridSynth powered by new
