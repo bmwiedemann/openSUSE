@@ -152,4 +152,95 @@
     <comment></comment>
     <requestid>932766</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1f92a7e0ee884614310b748ae58f114</srcmd5>
+    <version>0.12.5</version>
+    <time>1640278425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.5
+  * Fix docs for new and init commands in maturin --help
+    gh#PyO3/maturin#734
+  * Fix undefined auditwheel policy panic
+    gh#PyO3/maturin#740
+  * Fix upload::canonicalize_name() regex subst
+    gh#PyO3/maturin#741
+  * Bump serde from 1.0.130 to 1.0.131
+    gh#PyO3/maturin#745
+  * Bump sha2 from 0.9.8 to 0.10.0
+    gh#PyO3/maturin#746
+  * Add Cargo.lock to sdist when --locked or --frozen specified
+    gh#PyO3/maturin#749
+  * Implement auditwheel repair with patchelf
+    gh#PyO3/maturin#742
+  * Support pyo3 abi3-py310 feature
+    gh#PyO3/maturin#750
+- Changes in 0.12.4:
+  * Bump anyhow from 1.0.50 to 1.0.51
+    gh#PyO3/maturin#717
+  * init: new command similar to cargo init
+    gh#PyO3/maturin#719
+  * Don't package non-path-dep crates in sdist for workspaces
+    gh#PyO3/maturin#720
+  * Update keyring to 1.0.0
+    gh#PyO3/maturin#721
+  * Reorganize upload feature
+    gh#PyO3/maturin#726
+  * Allow pip warnings in maturin develop command
+    gh#PyO3/maturin#732
+  * Add a Python import hook
+    gh#PyO3/maturin#729
+- Changes in 0.12.3:
+  * Use platform tag from sysconfig.platform on non-portable Linux
+    gh#PyO3/maturin#709
+  * Warn missing cffi package dependency
+    gh#PyO3/maturin#711
+  * new: include function example for PyO3 bindings
+    gh#PyO3/maturin#713
+- Changes in 0.12.2:
+  * Add a maturin new command for bootstrapping new projects
+    gh#PyO3/maturin#705
+  * Add docs for maturin new command
+    gh#PyO3/maturin#707
+- Changes in 0.12.1:
+  * Add support for cross compiling PyPy wheels
+    gh#PyO3/maturin#687
+  * Add a runnable field to PythonInterpreter
+    gh#PyO3/maturin#691
+- Changes in 0.12.0:
+  * Add PEP 660 support
+    gh#PyO3/maturin#648
+  * Refactor develop command to act identical to PEP 660 editable
+    wheels
+    gh#PyO3/maturin#653
+  * Bump anyhow from 1.0.44 to 1.0.45
+    gh#PyO3/maturin#664
+  * Upgrade pyo3 to 0.15 in test crates
+    gh#PyO3/maturin#665
+  * Fix typos discovered by codespell
+    gh#PyO3/maturin#666
+  * Add mdbook based user guide
+    gh#PyO3/maturin#658
+  * Allow building for non-abi3 pypy wheels when the abi3 feature
+    is enabled
+    gh#PyO3/maturin#678
+  * Bump serde_json from 1.0.69 to 1.0.70
+    gh#PyO3/maturin#683
+  * Bump keyring from 0.10.1 to 0.10.4
+    gh#PyO3/maturin#682
+- Changes in 0.11.5:
+  * Fix typo in Readme
+    gh#PyO3/maturin#638
+  * Re-export __doc__ in __init__.py for pure Rust project
+    gh#PyO3/maturin#639
+  * Fix musllinux auditwheel wrongly detects libc forbidden link
+    gh#PyO3/maturin#643
+  * Fix Win32 Conda Python Interpreters by @formlogic-robert in
+    gh#PyO3/maturin#644
+  * Upgrade python-pkginfo to 0.5.0
+    gh#PyO3/maturin#645
+  * Fix cross compilation for Python 3.10
+    gh#PyO3/maturin#646
+</comment>
+    <requestid>942187</requestid>
+  </revision>
 </revisionlist>
