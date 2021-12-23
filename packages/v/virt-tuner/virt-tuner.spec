@@ -28,6 +28,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://github.com/cbosdo/virt-tuner
 Source:         %{name}-%{version}.tar.gz
+BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
