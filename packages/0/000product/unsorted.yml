@@ -5009,7 +5009,7 @@ unsorted:
   - ghc-optparse-simple: [x86_64] 
   - ghc-optparse-simple-devel: [x86_64] 
   - ghc-pandoc: [x86_64] 
-  - ghc-pandoc-devel: [x86_64] # devel package of dvd:pandoc 
+  - ghc-pandoc-devel: [x86_64] 
   - ghc-pandoc-types: [x86_64] 
   - ghc-pandoc-types-devel: [x86_64] 
   - ghc-parallel: [x86_64] 
@@ -7694,14 +7694,17 @@ unsorted:
   - jupyter-ipyleaflet 
   - jupyter-ipympl 
   - jupyter-ipympl-jupyterlab 
+  - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
+  - jupyter-jupyter-client 
   - jupyter-jupyter-full-width 
   - jupyter-jupyter-themer 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_cms 
   - jupyter-jupyter_contrib_core 
+  - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_dashboards 
   - jupyter-jupyter_highlight_selected_word 
   - jupyter-jupyter_latex_envs 
@@ -7717,13 +7720,17 @@ unsorted:
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
   - jupyter-nbclassic 
+  - jupyter-nbconvert 
   - jupyter-nbconvert-doc 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
   - jupyter-nbdime-git 
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
+  - jupyter-nbformat 
   - jupyter-nbinteract 
+  - jupyter-notebook 
+  - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
   - jupyter-octave-kernel 
@@ -7737,6 +7744,7 @@ unsorted:
   - jupyter-sidecar-jupyterlab 
   - jupyter-vispy 
   - jupyter-voila 
+  - jupyter-widgetsnbextension 
   - jvnet-parent 
   - jvyamlb 
   - jwnl 
@@ -10508,6 +10516,7 @@ unsorted:
   - libfabric 
   - libfabric-devel 
   - libfabric-devel-32bit: [x86_64] 
+  - libfabric1 
   - libfabric1-32bit: [x86_64] 
   - libfakekey-devel 
   - libfaketime 
@@ -11414,6 +11423,7 @@ unsorted:
   - libindicator7 
   - libindidriver1 
   - libindilx200-1 
+  - libinfinipath4 
   - libinfinipath4-32bit: [x86_64] 
   - libinfinity-1_0-0 
   - libinfinity-devel 
@@ -12860,8 +12870,10 @@ unsorted:
   - libpskc-devel 
   - libpsl-devel 
   - libpsl5-32bit: [x86_64] 
+  - libpsm2-2: [x86_64] 
   - libpsm2-compat: [x86_64] 
-  - libpsm2-devel: [x86_64] # devel package of dvd:libpsm2-2 
+  - libpsm2-devel: [x86_64] 
+  - libpsm_infinipath1 
   - libpsm_infinipath1-32bit: [x86_64] 
   - libpspell15 
   - libpspell15-32bit: [x86_64] 
@@ -14101,12 +14113,16 @@ unsorted:
   - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
   - libucl1 
-  - libucm-devel: [x86_64] # devel package of dvd:libuct0 
+  - libucm-devel: [x86_64] 
+  - libucm0: [x86_64] 
   - libucommon8 
-  - libucp-devel: [x86_64] # devel package of dvd:libuct0 
+  - libucp-devel: [x86_64] 
+  - libucp0: [x86_64] 
   - libucpp13 
-  - libucs-devel: [x86_64] # devel package of dvd:libuct0 
-  - libuct-devel: [x86_64] # devel package of dvd:libuct0 
+  - libucs-devel: [x86_64] 
+  - libucs0: [x86_64] 
+  - libuct-devel: [x86_64] 
+  - libuct0: [x86_64] 
   - libudev-devel: [i586] # devel package of dvd:systemd-lang 
   - libudev-devel-32bit: [x86_64] 
   - libudev-mini-devel 
@@ -16317,6 +16333,7 @@ unsorted:
   - mpg123-pulse-32bit: [x86_64] 
   - mpg123-sdl 
   - mpg123-sdl-32bit: [x86_64] 
+  - mpi-selector 
   - mpiP-gnu-mpich-hpc 
   - mpiP-gnu-mpich-hpc-devel 
   - mpiP-gnu-mpich-hpc-doc 
@@ -18036,8 +18053,8 @@ unsorted:
   - openmpi2-libs-32bit: [x86_64] 
   - openmpi2-macros-devel 
   - openmpi2-testsuite 
-  - openmpi3: [i586] 
-  - openmpi3-config: [i586] 
+  - openmpi3 
+  - openmpi3-config 
   - openmpi3-devel 
   - openmpi3-docs 
   - openmpi3-gnu-hpc 
@@ -18045,12 +18062,12 @@ unsorted:
   - openmpi3-gnu-hpc-devel-static 
   - openmpi3-gnu-hpc-docs 
   - openmpi3-gnu-hpc-macros-devel 
-  - openmpi3-libs: [i586] 
+  - openmpi3-libs 
   - openmpi3-libs-32bit: [x86_64] 
   - openmpi3-macros-devel 
   - openmpi3-testsuite 
-  - openmpi4: [x86_64] 
-  - openmpi4-config: [x86_64] 
+  - openmpi4 
+  - openmpi4-config 
   - openmpi4-devel 
   - openmpi4-docs 
   - openmpi4-gnu-hpc 
@@ -18058,7 +18075,7 @@ unsorted:
   - openmpi4-gnu-hpc-devel-static 
   - openmpi4-gnu-hpc-docs 
   - openmpi4-gnu-hpc-macros-devel 
-  - openmpi4-libs: [x86_64] 
+  - openmpi4-libs 
   - openmpi4-libs-32bit: [x86_64] 
   - openmpi4-macros-devel 
   - openmpi4-testsuite 
@@ -18406,6 +18423,7 @@ unsorted:
   - pamixer 
   - pan 
   - pan-lang 
+  - pandoc: [x86_64] 
   - pango-devel 
   - pango-devel-32bit: [x86_64] 
   - pango-tools 
@@ -21147,6 +21165,8 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
+  - python-rpm-generators 
+  - python-rpm-macros 
   - python-rtslib-fb-common 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
@@ -24487,6 +24507,7 @@ unsorted:
   - python38-SQLAlchemy-Utils 
   - python38-Scrapy 
   - python38-SecretStorage 
+  - python38-Send2Trash 
   - python38-Shapely 
   - python38-SimpleWebSocketServer 
   - python38-SoundCard 
@@ -24958,6 +24979,7 @@ unsorted:
   - python38-bitstruct 
   - python38-bjoern 
   - python38-black 
+  - python38-bleach 
   - python38-blessed 
   - python38-blessings 
   - python38-blinker: [i586] 
@@ -25190,9 +25212,11 @@ unsorted:
   - python38-ddt 
   - python38-deap 
   - python38-debian 
+  - python38-debugpy 
   - python38-deepdiff 
   - python38-deepmerge 
   - python38-defcon 
+  - python38-defusedxml 
   - python38-delegator 
   - python38-delegator.py 
   - python38-demjson 
@@ -25372,6 +25396,7 @@ unsorted:
   - python38-enaml 
   - python38-encore 
   - python38-entrypoint2 
+  - python38-entrypoints 
   - python38-environ-config 
   - python38-environmental-override 
   - python38-envisage 
@@ -25456,6 +25481,7 @@ unsorted:
   - python38-flower 
   - python38-fluent 
   - python38-flufl.testing 
+  - python38-fluidity-sm 
   - python38-flup 
   - python38-folium 
   - python38-fontMath 
@@ -25540,6 +25566,7 @@ unsorted:
   - python38-graphene-django 
   - python38-graphql-core 
   - python38-graphql-relay 
+  - python38-graphviz 
   - python38-greenlet-devel 
   - python38-grpc-google-iam-v1 
   - python38-grpcio 
@@ -25548,6 +25575,7 @@ unsorted:
   - python38-gscholar 
   - python38-gsm0338 
   - python38-gspread 
+  - python38-gssapi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - python38-gsw 
   - python38-guessit 
   - python38-guzzle_sphinx_theme 
@@ -25645,14 +25673,17 @@ unsorted:
   - python38-intervals 
   - python38-intervaltree 
   - python38-invocations 
+  - python38-invoke 
   - python38-iocapture 
   - python38-ipdb 
   - python38-iptables 
   - python38-ipy 
   - python38-ipydatawidgets 
   - python38-ipyevents 
+  - python38-ipykernel 
   - python38-ipyleaflet 
   - python38-ipympl 
+  - python38-ipyparallel 
   - python38-ipyscales 
   - python38-ipysheet 
   - python38-ipython-iptest 
@@ -25660,6 +25691,7 @@ unsorted:
   - python38-ipython715-iptest 
   - python38-ipyvolume 
   - python38-ipywebrtc 
+  - python38-ipywidgets 
   - python38-irc 
   - python38-isc_dhcp_leases 
   - python38-iso3166 
@@ -25718,12 +25750,15 @@ unsorted:
   - python38-jsonpointer: [i586] 
   - python38-jsonref 
   - python38-jsonrpclib-pelix 
+  - python38-jsonschema: [i586] 
   - python38-jsonslicer 
   - python38-jsonxs 
   - python38-junit-xml 
   - python38-junitxml 
   - python38-junos-eznc 
   - python38-jupyter 
+  - python38-jupyter-client 
+  - python38-jupyter-core 
   - python38-jupyter-jupyterlab-server 
   - python38-jupyter-jupyterlab-server-test 
   - python38-jupyter-nbutils 
@@ -25739,7 +25774,9 @@ unsorted:
   - python38-jupyter_latex_envs 
   - python38-jupyter_nbextensions_configurator 
   - python38-jupyterlab 
+  - python38-jupyterlab-pygments 
   - python38-jupyterlab-templates 
+  - python38-jupyterlab-widgets 
   - python38-jupytext 
   - python38-jwcrypto 
   - python38-k5test 
@@ -25797,6 +25834,7 @@ unsorted:
   - python38-leather 
   - python38-lesscpy 
   - python38-leveldb 
+  - python38-lexicon 
   - python38-lfdfiles 
   - python38-lhafile 
   - python38-lib3to6 
@@ -25888,6 +25926,7 @@ unsorted:
   - python38-minio 
   - python38-miniupnpc 
   - python38-misaka 
+  - python38-mistune 
   - python38-mitmproxy 
   - python38-mizani 
   - python38-mkdocs 
@@ -25911,6 +25950,7 @@ unsorted:
   - python38-moto 
   - python38-moto-all 
   - python38-moto-server 
+  - python38-mpi4py 
   - python38-mpi4py-devel 
   - python38-mplcursors 
   - python38-mpld3 
@@ -25951,7 +25991,10 @@ unsorted:
   - python38-nautilus 
   - python38-nautilus-devel 
   - python38-nbclassic 
+  - python38-nbclient 
+  - python38-nbconvert 
   - python38-nbdime 
+  - python38-nbformat 
   - python38-nbindex-jupyter 
   - python38-nbinteract 
   - python38-nbsmoke 
@@ -25964,6 +26007,7 @@ unsorted:
   - python38-ndg-httpsclient 
   - python38-neovim 
   - python38-neovim-remote 
+  - python38-nest-asyncio 
   - python38-nested-lookup 
   - python38-net-snmp 
   - python38-netCDF4 
@@ -25979,6 +26023,7 @@ unsorted:
   - python38-nodeenv 
   - python38-nornir 
   - python38-nose2 
+  - python38-notebook 
   - python38-notebook-lang 
   - python38-nox 
   - python38-npTDMS 
@@ -26061,12 +26106,14 @@ unsorted:
   - python38-pan-python 
   - python38-pandas-datareader 
   - python38-pandas-ext 
+  - python38-pandocfilters 
   - python38-panel 
   - python38-panflute 
   - python38-papermill 
   - python38-parallax 
   - python38-param 
   - python38-parameterized 
+  - python38-paramiko 
   - python38-paramiko-expect 
   - python38-parfive 
   - python38-parse 
@@ -26186,6 +26233,7 @@ unsorted:
   - python38-progress 
   - python38-progressbar 
   - python38-progressbar2 
+  - python38-prometheus-client 
   - python38-promise 
   - python38-prompt_toolkit1 
   - python38-proselint 
@@ -26373,6 +26421,7 @@ unsorted:
   - python38-pyroma 
   - python38-pyroomacoustics 
   - python38-pyroute2 
+  - python38-pyrsistent: [i586] 
   - python38-pysaml2 
   - python38-pyscard 
   - python38-pyscreenshot 
@@ -26931,12 +26980,14 @@ unsorted:
   - python38-tenacity 
   - python38-tensorpac 
   - python38-termcolor 
+  - python38-terminado 
   - python38-terminaltables 
   - python38-termstyle 
   - python38-tesserocr 
   - python38-test-server 
   - python38-testfixtures 
   - python38-testflo 
+  - python38-testpath 
   - python38-testrepository 
   - python38-testresources 
   - python38-testscenarios 
@@ -27123,6 +27174,7 @@ unsorted:
   - python38-whichcraft 
   - python38-whitenoise 
   - python38-whois_similarity_distance 
+  - python38-widgetsnbextension 
   - python38-wikipedia 
   - python38-wirerope 
   - python38-wiring 

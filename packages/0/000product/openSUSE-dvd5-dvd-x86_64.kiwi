@@ -1032,14 +1032,6 @@
       <repopackage name="json-glib-lang"/>
       <repopackage name="juk"/>
       <repopackage name="juk-lang"/>
-      <repopackage name="jupyter-ipyparallel"/>
-      <repopackage name="jupyter-jupyter-client"/>
-      <repopackage name="jupyter-jupyter_core-filesystem"/>
-      <repopackage name="jupyter-nbconvert"/>
-      <repopackage name="jupyter-nbformat"/>
-      <repopackage name="jupyter-notebook"/>
-      <repopackage name="jupyter-notebook-filesystem"/>
-      <repopackage name="jupyter-widgetsnbextension"/>
       <repopackage name="k3b"/>
       <repopackage name="k3b-lang"/>
       <repopackage name="k4dirstat"/>
@@ -1719,7 +1711,6 @@
       <repopackage name="libexttextcat"/>
       <repopackage name="libexttextcat-2_0-0"/>
       <repopackage name="libf2fs8"/>
-      <repopackage name="libfabric1"/>
       <repopackage name="libfakekey0"/>
       <repopackage name="libfarstream-0_2-5"/>
       <repopackage name="libfastjson4"/>
@@ -1999,7 +1990,6 @@
       <repopackage name="libImath-3_1-29"/>
       <repopackage name="libImlib2-1"/>
       <repopackage name="libimobiledevice-1_0-6"/>
-      <repopackage name="libinfinipath4"/>
       <repopackage name="libini_config5"/>
       <repopackage name="libinih0"/>
       <repopackage name="libinotifytools0"/>
@@ -2546,8 +2536,6 @@
       <repopackage name="libproxy1-pacrunner-webkit"/>
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
-      <repopackage name="libpsm2-2" arch="x86_64"/>
-      <repopackage name="libpsm_infinipath1"/>
       <repopackage name="libpst4"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
@@ -2897,10 +2885,6 @@
       <repopackage name="libturbojpeg0"/>
       <repopackage name="libtwolame0"/>
       <repopackage name="libubsan1"/>
-      <repopackage name="libucm0" arch="x86_64"/>
-      <repopackage name="libucp0" arch="x86_64"/>
-      <repopackage name="libucs0" arch="x86_64"/>
-      <repopackage name="libuct0" arch="x86_64"/>
       <repopackage name="libudev-devel" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudev1-32bit" arch="x86_64"/>
@@ -3368,7 +3352,6 @@
       <repopackage name="MozillaFirefox-branding-openSUSE"/>
       <repopackage name="MozillaFirefox-translations-common"/>
       <repopackage name="mpg123-openal"/>
-      <repopackage name="mpi-selector"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
       <repopackage name="msr-safe-kmp-default" arch="x86_64"/>
@@ -3496,9 +3479,6 @@
       <repopackage name="openconnect-bash-completion"/>
       <repopackage name="openconnect-lang"/>
       <repopackage name="openldap2-client"/>
-      <repopackage name="openmpi3" arch="x86_64"/>
-      <repopackage name="openmpi3-config" arch="x86_64"/>
-      <repopackage name="openmpi3-libs" arch="x86_64"/>
       <repopackage name="OpenPrintingPPDs-ghostscript"/>
       <repopackage name="OpenPrintingPPDs-hpijs"/>
       <repopackage name="OpenPrintingPPDs-postscript"/>
@@ -3555,7 +3535,6 @@
       <repopackage name="pam_ssh"/>
       <repopackage name="pam_ssh-32bit" arch="x86_64"/>
       <repopackage name="pam_unix"/>
-      <repopackage name="pandoc" arch="x86_64"/>
       <repopackage name="paper"/>
       <repopackage name="paperkey"/>
       <repopackage name="paprefs" arch="x86_64"/>
@@ -3975,8 +3954,6 @@
       <repopackage name="python-falcon-doc"/>
       <repopackage name="python-gobject2"/>
       <repopackage name="python-gtk"/>
-      <repopackage name="python-rpm-generators"/>
-      <repopackage name="python-rpm-macros"/>
       <repopackage name="python-tqdm-bash-completion"/>
       <repopackage name="python-xml"/>
       <repopackage name="python2-pycairo"/>
@@ -4033,7 +4010,6 @@
       <repopackage name="python38-bcrypt"/>
       <repopackage name="python38-Beaker"/>
       <repopackage name="python38-beautifulsoup4"/>
-      <repopackage name="python38-bleach"/>
       <repopackage name="python38-blinker" arch="x86_64"/>
       <repopackage name="python38-boto3"/>
       <repopackage name="python38-botocore"/>
@@ -4059,9 +4035,7 @@
       <repopackage name="python38-Cycler"/>
       <repopackage name="python38-dbm"/>
       <repopackage name="python38-dbus-python"/>
-      <repopackage name="python38-debugpy"/>
       <repopackage name="python38-decorator"/>
-      <repopackage name="python38-defusedxml"/>
       <repopackage name="python38-deprecation"/>
       <repopackage name="python38-distro"/>
       <repopackage name="python38-dkimpy"/>
@@ -4070,7 +4044,6 @@
       <repopackage name="python38-docutils"/>
       <repopackage name="python38-dragonmapper"/>
       <repopackage name="python38-ecdsa"/>
-      <repopackage name="python38-entrypoints"/>
       <repopackage name="python38-et_xmlfile"/>
       <repopackage name="python38-evtx" arch="x86_64"/>
       <repopackage name="python38-extras"/>
@@ -4079,7 +4052,6 @@
       <repopackage name="python38-filetype"/>
       <repopackage name="python38-fixtures"/>
       <repopackage name="python38-flufl.lock"/>
-      <repopackage name="python38-fluidity-sm"/>
       <repopackage name="python38-FontTools"/>
       <repopackage name="python38-fs"/>
       <repopackage name="python38-fsspec"/>
@@ -4096,9 +4068,8 @@
       <repopackage name="python38-gobject-Gdk"/>
       <repopackage name="python38-google-auth" arch="x86_64"/>
       <repopackage name="python38-google-auth-oauthlib" arch="x86_64"/>
-      <repopackage name="python38-graphviz"/>
       <repopackage name="python38-greenlet"/>
-      <repopackage name="python38-gssapi"/>
+      <repopackage name="python38-gssapi" arch="x86_64"/>
       <repopackage name="python38-gst"/>
       <repopackage name="python38-gunicorn"/>
       <repopackage name="python38-h2"/>
@@ -4115,27 +4086,17 @@
       <repopackage name="python38-importlib-resources"/>
       <repopackage name="python38-incremental"/>
       <repopackage name="python38-iniconfig"/>
-      <repopackage name="python38-invoke"/>
       <repopackage name="python38-ipaddr"/>
-      <repopackage name="python38-ipykernel"/>
-      <repopackage name="python38-ipyparallel"/>
       <repopackage name="python38-ipython"/>
       <repopackage name="python38-ipython_genutils"/>
-      <repopackage name="python38-ipywidgets"/>
       <repopackage name="python38-jdcal"/>
       <repopackage name="python38-jedi"/>
       <repopackage name="python38-Jinja2"/>
       <repopackage name="python38-jmespath"/>
-      <repopackage name="python38-jsonschema"/>
-      <repopackage name="python38-jupyter-client"/>
-      <repopackage name="python38-jupyter-core"/>
-      <repopackage name="python38-jupyterlab-pygments"/>
-      <repopackage name="python38-jupyterlab-widgets"/>
       <repopackage name="python38-kiwisolver"/>
       <repopackage name="python38-lazr.config"/>
       <repopackage name="python38-lazr.delegates"/>
       <repopackage name="python38-ldap" arch="x86_64"/>
-      <repopackage name="python38-lexicon"/>
       <repopackage name="python38-libvirt-python"/>
       <repopackage name="python38-libxml2"/>
       <repopackage name="python38-linecache2"/>
@@ -4151,22 +4112,15 @@
       <repopackage name="python38-matplotlib-gtk3"/>
       <repopackage name="python38-matplotlib-inline"/>
       <repopackage name="python38-matplotlib-tk"/>
-      <repopackage name="python38-mistune"/>
       <repopackage name="python38-more-itertools"/>
-      <repopackage name="python38-mpi4py"/>
       <repopackage name="python38-mpmath"/>
       <repopackage name="python38-msgpack"/>
       <repopackage name="python38-multidict"/>
       <repopackage name="python38-mysqlclient"/>
-      <repopackage name="python38-nbclient"/>
-      <repopackage name="python38-nbconvert"/>
-      <repopackage name="python38-nbformat"/>
-      <repopackage name="python38-nest-asyncio"/>
       <repopackage name="python38-netaddr"/>
       <repopackage name="python38-netifaces"/>
       <repopackage name="python38-networkx"/>
       <repopackage name="python38-nose"/>
-      <repopackage name="python38-notebook"/>
       <repopackage name="python38-notify2"/>
       <repopackage name="python38-numexpr"/>
       <repopackage name="python38-numpy"/>
@@ -4177,8 +4131,6 @@
       <repopackage name="python38-outcome"/>
       <repopackage name="python38-packaging"/>
       <repopackage name="python38-pandas"/>
-      <repopackage name="python38-pandocfilters"/>
-      <repopackage name="python38-paramiko"/>
       <repopackage name="python38-parso"/>
       <repopackage name="python38-passlib"/>
       <repopackage name="python38-pbr"/>
@@ -4190,7 +4142,6 @@
       <repopackage name="python38-pluggy"/>
       <repopackage name="python38-ply"/>
       <repopackage name="python38-prettytable"/>
-      <repopackage name="python38-prometheus-client"/>
       <repopackage name="python38-prompt_toolkit"/>
       <repopackage name="python38-protobuf"/>
       <repopackage name="python38-psutil"/>
@@ -4222,7 +4173,6 @@
       <repopackage name="python38-pyOpenSSL"/>
       <repopackage name="python38-pyparsing"/>
       <repopackage name="python38-pyreadstat"/>
-      <repopackage name="python38-pyrsistent"/>
       <repopackage name="python38-pysendfile"/>
       <repopackage name="python38-pyserial"/>
       <repopackage name="python38-pysmbc"/>
@@ -4257,7 +4207,6 @@
       <repopackage name="python38-scour"/>
       <repopackage name="python38-scrypt"/>
       <repopackage name="python38-semanage"/>
-      <repopackage name="python38-Send2Trash"/>
       <repopackage name="python38-service_identity"/>
       <repopackage name="python38-setools"/>
       <repopackage name="python38-setproctitle"/>
@@ -4273,8 +4222,6 @@
       <repopackage name="python38-sympy"/>
       <repopackage name="python38-tables"/>
       <repopackage name="python38-tabulate"/>
-      <repopackage name="python38-terminado"/>
-      <repopackage name="python38-testpath"/>
       <repopackage name="python38-testtools"/>
       <repopackage name="python38-thrift"/>
       <repopackage name="python38-tk"/>
@@ -4293,7 +4240,6 @@
       <repopackage name="python38-urwid"/>
       <repopackage name="python38-wcwidth"/>
       <repopackage name="python38-webencodings"/>
-      <repopackage name="python38-widgetsnbextension"/>
       <repopackage name="python38-wrapt"/>
       <repopackage name="python38-xarray"/>
       <repopackage name="python38-xlrd"/>
