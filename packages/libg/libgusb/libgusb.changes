@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 22 12:12:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.3.9:
+  - Add g_usb_device_get_string_descriptor_bytes()
+  - Do not double-reference USB devices
+  - Fix hotplug handling and signal emission during enumerate
+  - Add the GUsbEndpoint methods to the docs
+  - Add g_usb_device_get_string_descriptor_bytes_full
+  - Fix hotplug after threaded device removal
+  - Don't hard-code the list of OS supporting --version-script
+
+-------------------------------------------------------------------
 Fri Jan  8 07:46:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: build libgusb2-32bit, which is a dependency to
