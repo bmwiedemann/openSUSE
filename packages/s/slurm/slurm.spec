@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 37
-%define ver 21.08.4
+%define ver 21.08.5
 %define _ver _21_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -1269,6 +1269,7 @@ exit 0
 %{_mandir}/man5/slurm.*
 %{_mandir}/man5/cgroup.*
 %{_mandir}/man5/gres.*
+%{_mandir}/man5/helpers.*
 %{_mandir}/man5/nonstop.conf.5.*
 %{_mandir}/man5/oci.conf.5.gz
 %{_mandir}/man5/topology.*

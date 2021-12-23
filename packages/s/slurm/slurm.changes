@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Dec 22 09:24:28 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- update to 21.08.5 with following changes:
+  * Fix issue where typeless GRES node updates were not immediately reflected.
+  * Fix setting the default scrontab job working directory so that it's the home
+    of the different user (*u <user>) and not that of root or SlurmUser editor.
+  * Fix stepd not respecting SlurmdSyslogDebug.
+  * Fix concurrency issue with squeue.
+  * Fix job start time not being reset after launch when job is packed onto
+    already booting node.
+  * Fix updating SLURM_NODE_ALIASES for jobs packed onto powering up nodes.
+  * Cray - Fix issues with starting hetjobs.
+  * auth/jwks - Print fatal() message when jwks is configured but file could
+    not be opened.
+  * If sacctmgr has an association with an unknown qos as the default qos
+    print 'UNKN*###' instead of leaving a blank name.
+  * Correctly determine task count when giving --cpus-per-gpu, --gpus and
+    *-ntasks-per-node without task count.
+  * slurmctld - Fix places where the global last_job_update was not being set
+    to the time of update when a job's reason and description were updated.
+  * slurmctld - Fix case where a job submitted with more than one partition
+    would not have its reason updated while waiting to start.
+  * Fix memory leak in node feature rebooting.
+  * Fix time limit permanetly set to 1 minute by backfill for job array tasks
+    higher than the first with QOS NoReserve flag and PreemptMode configured.
+  * Fix sacct -N to show jobs that started in the current second
+  * Fix issue on running steps where both SLURM_NTASKS_PER_TRES and
+    SLURM_NTASKS_PER_GPU are set.
+  * Handle oversubscription request correctly when also requesting
+    *-ntasks-per-tres.
+  * Correctly detect when a step requests bad gres inside an allocation.
+  * slurmstepd - Correct possible deadlock when UnkillableStepTimeout triggers.
+  * srun - use maximum number of open files while handling job I/O.
+  * Fix writing to Xauthority files on root_squash NFS exports, which was
+    preventing X11 forwarding from completing setup.
+  * Fix regression in 21.08.0rc1 that broke --gres=none.
+  * Fix srun --cpus-per-task and --threads-per-core not implicitly setting
+    *-exact. It was meant to work this way in 21.08.
+  * Fix regression in 21.08.0 that broke dynamic future nodes.
+  * Fix dynamic future nodes remembering active state on restart.
+  * Fix powered down nodes getting stuck in COMPLETING+POWERED_DOWN when job is
+    cancelled before nodes are powering up.
+
+
+
+-------------------------------------------------------------------
 Wed Nov 17 08:33:13 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to 21.08.4 which fixes (CVE-2021-43337) which is only present
