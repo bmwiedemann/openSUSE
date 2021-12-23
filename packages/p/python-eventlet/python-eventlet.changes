@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 16 20:11:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.33.0
+  * green.thread: unlocked Lock().release() should raise exception,
+    returned True
+  * wsgi: Don’t break HTTP framing during 100-continue handling
+  * Python 3.10 partial support
+  * greendns: Create a DNS resolver lazily rather than on import
+  * ssl: GreenSSLContext minimum_version and maximum_version
+    setters
+- Refresh denosing patches: merge remove_nose.patch and
+  remove_nose_part_2.patch into denose-eventlet.patch
+- Refresh newdnspython.patch
+
+-------------------------------------------------------------------
 Sun Nov  7 21:12:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.32.0:

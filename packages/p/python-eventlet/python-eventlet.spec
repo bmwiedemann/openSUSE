@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-eventlet
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
@@ -27,13 +28,11 @@ URL:            http://eventlet.net
 Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#eventlet/eventlet#638 mcepl@suse.com
 # Removes dependency on nose
-Patch0:         remove_nose.patch
+Patch0:         denose-eventlet.patch
 # PATCH-FIX-UPSTREAM newdnspython.patch mcepl@suse.com -- patch is from gh#rthalley/dnspython#519, discussion in gh#eventlet/eventlet#638
 Patch1:         newdnspython.patch
-# Really remove the dependency on nose
-Patch3:         remove_nose_part_2.patch
 BuildRequires:  %{python_module setuptools}
-%if 0%{?suse_version} < 1550
+%if %{with python2}
 BuildRequires:  python2-monotonic >= 1.4
 %endif
 BuildRequires:  fdupes
@@ -95,6 +94,8 @@ skiptests="(BackdoorTest and test_server)"
 skiptests+=" or test_dns_methods_are_green or test_noraise_dns_tcp"
 # These are flaky inside the OBS environment
 skiptests+=" or test_fork_after_monkey_patch or test_send_1k_req_rep or test_cpu_usage_after_bind"
+# tracebacks in denosed suite with pytest inside obs presumably work different than when upstream is running nose?
+skiptests+=" or test_leakage_from_tracebacks"
 
 # Unknown Python 3.6 specific errors
 # TypeError: _wrap_socket() argument 1 must be _socket.socket, not SSLSocket
@@ -104,6 +105,10 @@ python36_skiptests+=" or ssl_test or wsgi_test"
 %if %python3_version_nodots == 36
 python3_skiptests+="$python36_skiptests"
 %endif
+# https://github.com/eventlet/eventlet/issues/730
+python310_skiptests+=" or test_patcher_existing_locks_locked"
+# https://github.com/eventlet/eventlet/issues/739
+python310_skiptests+=" or test_017_ssl_zeroreturnerror"
 # no subdir recursion https://github.com/eventlet/eventlet/issues/638#issuecomment-676085599
 %pytest -o norecursedirs="tests/*" -k "not ($skiptests ${$python_skiptests})" ${$python_pytest_param}
 

@@ -1,7 +1,141 @@
-diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpool_test.py
---- eventlet-0.26.1-orig/tests/dagpool_test.py	2020-08-17 16:48:04.393065291 +0700
-+++ eventlet-0.26.1/tests/dagpool_test.py	2020-08-17 16:48:42.049502450 +0700
-@@ -162,7 +162,7 @@
+Index: eventlet-0.33.0/setup.py
+===================================================================
+--- eventlet-0.33.0.orig/setup.py
++++ eventlet-0.33.0/setup.py
+@@ -27,7 +27,7 @@ setuptools.setup(
+             'README.rst'
+         )
+     ).read(),
+-    test_suite='nose.collector',
++    test_suite='tests',
+     classifiers=[
+         "Development Status :: 4 - Beta",
+         "Intended Audience :: Developers",
+Index: eventlet-0.33.0/eventlet.egg-info/SOURCES.txt
+===================================================================
+--- eventlet-0.33.0.orig/eventlet.egg-info/SOURCES.txt
++++ eventlet-0.33.0/eventlet.egg-info/SOURCES.txt
+@@ -175,7 +175,6 @@ tests/greenthread_test.py
+ tests/hub_test.py
+ tests/mock.py
+ tests/mysqldb_test.py
+-tests/nosewrapper.py
+ tests/openssl_test.py
+ tests/os_test.py
+ tests/parse_results.py
+@@ -275,4 +274,4 @@ tests/stdlib/test_threading_local.py
+ tests/stdlib/test_timeout.py
+ tests/stdlib/test_urllib.py
+ tests/stdlib/test_urllib2.py
+-tests/stdlib/test_urllib2_localnet.py
+\ No newline at end of file
++tests/stdlib/test_urllib2_localnet.py
+Index: eventlet-0.33.0/tests/greenio_test.py
+===================================================================
+--- eventlet-0.33.0.orig/tests/greenio_test.py
++++ eventlet-0.33.0/tests/greenio_test.py
+@@ -9,8 +9,6 @@ import socket as _orig_sock
+ import sys
+ import tempfile
+ 
+-from nose.tools import eq_
+-
+ import eventlet
+ from eventlet import event, greenio, debug
+ from eventlet.hubs import get_hub
+@@ -39,7 +37,7 @@ def expect_socket_timeout(function, *arg
+         raise AssertionError("socket.timeout not raised")
+     except socket.timeout as e:
+         assert hasattr(e, 'args')
+-        eq_(e.args[0], 'timed out')
++        assert e.args[0] == 'timed out'
+ 
+ 
+ def min_buf_size():
+@@ -674,8 +672,8 @@ class TestGreenSocket(tests.LimitedTestC
+         sender.sendto(b'second', 0, address)
+ 
+         sender_address = ('127.0.0.1', sender.getsockname()[1])
+-        eq_(receiver.recvfrom(1024), (b'first', sender_address))
+-        eq_(receiver.recvfrom(1024), (b'second', sender_address))
++        assert receiver.recvfrom(1024) == (b'first', sender_address)
++        assert receiver.recvfrom(1024) == (b'second', sender_address)
+ 
+ 
+ def test_get_fileno_of_a_socket_works():
+Index: eventlet-0.33.0/tests/nosewrapper.py
+===================================================================
+--- eventlet-0.33.0.orig/tests/nosewrapper.py
++++ eventlet-0.33.0/tests/nosewrapper.py
+@@ -1,20 +1,13 @@
+ """ This script simply gets the paths correct for testing eventlet with the
+ hub extension for Nose."""
+-import nose
+ from os.path import dirname, realpath, abspath
+ import sys
++import unittest
+ 
+ 
+ parent_dir = dirname(dirname(realpath(abspath(__file__))))
+ if parent_dir not in sys.path:
+     sys.path.insert(0, parent_dir)
+ 
+-# hudson does a better job printing the test results if the exit value is 0
+-zero_status = '--force-zero-status'
+-if zero_status in sys.argv:
+-    sys.argv.remove(zero_status)
+-    launch = nose.run
+-else:
+-    launch = nose.main
+-
+-launch(argv=sys.argv)
++if __name__ == '__main__':
++    unittest.main()
+Index: eventlet-0.33.0/tests/__init__.py
+===================================================================
+--- eventlet-0.33.0.orig/tests/__init__.py
++++ eventlet-0.33.0/tests/__init__.py
+@@ -20,7 +20,7 @@ import sys
+ import unittest
+ import warnings
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ 
+ import eventlet
+ from eventlet import tpool
+@@ -223,7 +223,6 @@ class LimitedTestCase(unittest.TestCase)
+ def check_idle_cpu_usage(duration, allowed_part):
+     if resource is None:
+         # TODO: use https://code.google.com/p/psutil/
+-        from nose.plugins.skip import SkipTest
+         raise SkipTest('CPU usage testing not supported (`import resource` failed)')
+ 
+     r1 = resource.getrusage(resource.RUSAGE_SELF)
+Index: eventlet-0.33.0/tests/dagpool_test.py
+===================================================================
+--- eventlet-0.33.0.orig/tests/dagpool_test.py
++++ eventlet-0.33.0/tests/dagpool_test.py
+@@ -5,7 +5,6 @@
+ @brief  Test DAGPool class
+ """
+ 
+-from nose.tools import *
+ import eventlet
+ from eventlet.dagpool import DAGPool, Collision, PropagateError
+ import six
+@@ -13,8 +12,8 @@ from contextlib import contextmanager
+ import itertools
+ 
+ 
+-# Not all versions of nose.tools.assert_raises() support the usage in this
+-# module, but it's straightforward enough to code that explicitly.
++# Not all versions of assert_raises() support the usage in this module,
++# but it's straightforward enough to code that explicitly.
+ @contextmanager
+ def assert_raises(exc):
+     """exc is an exception class"""
+@@ -163,7 +162,7 @@ class Capture(object):
                      # a set. Make a set containing its elements.
                      setlist.append(set(subseq))
          # Now that we've massaged 'sequence' into 'setlist', compare.
@@ -10,7 +144,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  # ****************************************************************************
-@@ -190,14 +190,14 @@
+@@ -191,14 +190,14 @@ def test_init():
          with check_no_suspend():
              results = pool.waitall()
          # with no spawn() or post(), waitall() returns preload data
@@ -27,7 +161,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  def test_wait_each_empty():
-@@ -215,10 +215,10 @@
+@@ -216,10 +215,10 @@ def test_wait_each_preload():
          with check_no_suspend():
              # wait_each() may deliver in arbitrary order; collect into a dict
              # for comparison
@@ -40,7 +174,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  def post_each(pool, capture):
-@@ -256,7 +256,7 @@
+@@ -257,7 +256,7 @@ def test_wait_posted():
      eventlet.spawn(post_each, pool, capture)
      gotten = pool.wait("bcdefg")
      capture.add("got all")
@@ -49,7 +183,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
                    dict(b=2, c=3,
                         d="dval", e="eval",
                         f="fval", g="gval"))
-@@ -284,7 +284,7 @@
+@@ -285,7 +284,7 @@ def test_spawn_collision_spawn():
      pool = DAGPool()
      pool.spawn("a", (), lambda key, results: "aval")
      # hasn't yet even started
@@ -58,7 +192,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
      with assert_raises(Collision):
          # Attempting to spawn again with same key should collide even if the
          # first spawned greenthread hasn't yet had a chance to run.
-@@ -292,7 +292,7 @@
+@@ -293,7 +292,7 @@ def test_spawn_collision_spawn():
      # now let the spawned eventlet run
      eventlet.sleep(0)
      # should have finished
@@ -67,7 +201,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
      with assert_raises(Collision):
          # Attempting to spawn with same key collides even when the greenthread
          # has completed.
-@@ -323,60 +323,60 @@
+@@ -324,60 +323,60 @@ def test_spawn_multiple():
      capture.step()
      # but none of them has yet produced a result
      for k in "defgh":
@@ -160,7 +294,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
      capture.validate([
          ["h got b", "h got c"],
-@@ -431,13 +431,13 @@
+@@ -432,13 +431,13 @@ def test_spawn_many():
      spin()
      # verify that e completed (also that post(key) within greenthread
      # overrides implicit post of return value, which would be None)
@@ -176,7 +310,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
                    [set(["a done"]),
                     set(["b done", "c done"]),
                     set(["d done"]),
-@@ -465,7 +465,7 @@
+@@ -466,7 +465,7 @@ def test_wait_each_all():
      for pos in range(len(keys)):
          # next value from wait_each()
          k, v = next(each)
@@ -185,7 +319,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
          # advance every pool greenlet as far as it can go
          spin()
          # everything from keys[:pos+1] should have a value by now
-@@ -493,7 +493,7 @@
+@@ -494,7 +493,7 @@ def test_kill():
      pool.kill("a")
      # didn't run
      spin()
@@ -194,7 +328,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
      # killing it forgets about it
      with assert_raises(KeyError):
          pool.kill("a")
-@@ -504,7 +504,7 @@
+@@ -505,7 +504,7 @@ def test_kill():
      with assert_raises(KeyError):
          pool.kill("a")
      # verify it ran to completion
@@ -203,7 +337,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  def test_post_collision_preload():
-@@ -532,7 +532,7 @@
+@@ -533,7 +532,7 @@ def test_post_collision_spawn():
      pool.kill("a")
      # now we can post
      pool.post("a", 3)
@@ -212,7 +346,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
      pool = DAGPool()
      pool.spawn("a", (), lambda key, result: 4)
-@@ -552,10 +552,10 @@
+@@ -553,10 +552,10 @@ def test_post_replace():
      pool = DAGPool()
      pool.post("a", 1)
      pool.post("a", 2, replace=True)
@@ -227,7 +361,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  def waitfor(capture, pool, key):
-@@ -597,14 +597,14 @@
+@@ -598,14 +597,14 @@ def test_waitall_exc():
      try:
          pool.waitall()
      except PropagateError as err:
@@ -247,7 +381,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  def test_propagate_exc():
-@@ -615,20 +615,20 @@
+@@ -616,20 +615,20 @@ def test_propagate_exc():
      try:
          pool["c"]
      except PropagateError as errc:
@@ -277,7 +411,7 @@ diff -ur eventlet-0.26.1-orig/tests/dagpool_test.py eventlet-0.26.1/tests/dagpoo
  
  
  def test_wait_each_exc():
-@@ -680,13 +680,13 @@
+@@ -681,13 +680,13 @@ def test_post_get_exc():
              pass
  
      # wait_each_success() filters
