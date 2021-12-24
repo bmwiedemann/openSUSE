@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Dec 16 16:47:08 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Update to 4.2
+  * Add support for NTPv4 extension field improving synchronisation
+    stability and resolution of root delay and dispersion
+    (experimental)
+  * Add support for NTP over PTP (experimental)
+  * Add support for AES-CMAC and hash functions in GnuTLS
+  * Improve server interleaved mode to be more reliable and support
+    multiple clients behind NAT
+  * Update seccomp filter
+  * Fix RTC support with 64-bit time_t on 32-bit Linux
+  * Fix seccomp filter to work correctly with bind*device directives
+- Obsoleted patches:
+  * chrony-refid-internal-md5.patch
+  * harden_chrony-wait.service.patch
+  * harden_chronyd.service.patch
+- Update clknetsim to snapshot 470b5e9.
+
+-------------------------------------------------------------------
+Tue Dec  7 10:08:53 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Add chrony-htonl.patch to work around undocumented behaviour of
+  htonl() in older glibc versions (SLE-12) on 64 bit big endian
+  architectures (s390x).
+
+-------------------------------------------------------------------
+Fri Nov 19 16:39:44 UTC 2021 - Reinhard Max <max@suse.com>
+
+- SLE bugs that have been fixed in openSUSE up to this point
+  without explicit references: bsc#1183783, bsc#1184400,
+  bsc#1171806, bsc#1161119, bsc#1159840.
+- Obsoleted SLE patches:
+  * chrony-fix-open.patch
+  * chrony-gettimeofday.patch
+  * chrony-ntp-era-split.patch
+  * chrony-pidfile.patch
+  * chrony-select-timeout.patch
+  * chrony-urandom.patch
+  * chrony.sysconfig
+  * clknetsim-glibc-2.31.patch
+
+-------------------------------------------------------------------
 Fri Oct  8 14:52:41 UTC 2021 - Reinhard Max <max@suse.com>
 
 - boo#1190926: PrivateDevices is too strict, we might need to

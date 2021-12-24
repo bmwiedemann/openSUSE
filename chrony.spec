@@ -30,14 +30,14 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver f89702d
+%global clknetsim_ver 470b5e9
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 %define chrony_helper %{_libexecdir}/chrony/helper
 Name:           chrony
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -64,9 +64,7 @@ Patch0:         chrony-config.patch
 Patch1:         chrony-service-helper.patch
 Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
-Patch4:         chrony-refid-internal-md5.patch
-Patch5:         harden_chrony-wait.service.patch
-Patch6:         harden_chronyd.service.patch
+Patch7:         chrony-htonl.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -132,7 +130,7 @@ Provides:       %name-pool-nonempty
 Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
-RemovePathPostfixes: .suse
+Removepathpostfixes:.suse
 
 %description pool-suse
 This package configures chrony to use the SUSE NTP server pool by
@@ -147,7 +145,7 @@ Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 Supplements:    (chrony and branding-openSUSE)
-RemovePathPostfixes: .opensuse
+Removepathpostfixes:.opensuse
 
 %description pool-openSUSE
 This package configures chrony to use the openSUSE NTP server pool by
@@ -161,7 +159,7 @@ Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
 Supplements:    (chrony and branding-SLE)
-RemovePathPostfixes: .empty
+Removepathpostfixes:.empty
 
 %description pool-empty
 This package provides an empty /etc/chrony.d/pool.conf file for
@@ -173,12 +171,10 @@ e.g. because the servers will be set via DHCP.
 %prep
 %setup -q -a 10
 %patch0 -p1
-%patch1 -p1
+%patch1
 %patch2 -p1
 %patch3
-%patch4
-%patch5 -p1
-%patch6
+%patch7
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
