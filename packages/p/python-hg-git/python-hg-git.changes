@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 23 09:04:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't use python_modoule for requires, but rather rely on the
+  macros to rewrite the dependencies. Otherwise we get a dependency
+  on all python flavors.
+
+-------------------------------------------------------------------
 Fri Dec 17 12:55:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 0.10.3:

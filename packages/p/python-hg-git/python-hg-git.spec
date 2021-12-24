@@ -40,8 +40,8 @@ BuildRequires:  git
 BuildRequires:  mercurial
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       %{python_module dulwich >= 0.19.0}
 Requires:       mercurial
+Requires:       python-dulwich >= 0.19.0
 BuildArch:      noarch
 Provides:       mercurial-extension-hg-git = %{version}-%{release}
 Obsoletes:      mercurial-extension-hg-git < %{version}-%{release}
