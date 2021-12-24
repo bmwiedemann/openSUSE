@@ -50,7 +50,6 @@ Requires:       %{name} = %{version}-%{release}
 %description devel
 The %{name}-devel package includes the header files for the %{name} package.
 
-
 %prep
 %setup -q
 

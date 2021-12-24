@@ -36,8 +36,8 @@ Wed Jan 20 07:33:13 UTC 2021 - Wang Jun <jgwang@suse.com>
 Tue Nov 10 12:32:15 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-anthy.spec: add a depending to anthy, to avoid the 
-  crash(bnc#1178502). 
-  
+  crash(bnc#1178502, jsc#ECO-3104).
+ 
 -------------------------------------------------------------------
 Fri Sep 20 22:26:20 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
