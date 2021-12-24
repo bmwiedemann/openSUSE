@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-photutils
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -38,18 +38,21 @@ BuildRequires:  python-rpm-macros
 Requires:       python >= 3.7
 Requires:       python-astropy >= 4.0
 Requires:       python-numpy >= 1.17
+Recommends:     python-Bottleneck
 Recommends:     python-gwcs >= 0.12
 Recommends:     python-matplotlib >= 2.2
 Recommends:     python-scikit-image >= 0.14.2
 Recommends:     python-scikit-learn
 Recommends:     python-scipy >= 1.6.0
 # SECTION test requirements
+BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module astropy >= 4.0}
-BuildRequires:  %{python_module pytest-astropy >= 0.7}
+BuildRequires:  %{python_module gwcs >= 0.12}
+BuildRequires:  %{python_module matplotlib >= 2.2}
+BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module scikit-image >= 0.14.2}
 BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module scipy >= 1.6.0}
-BuildRequires:  python3-dbm
 # /SECTION
 %python_subpackages
 
@@ -74,7 +77,7 @@ cd ..
 # Use astropy test suite logic. Calling pytest directly would require
 # duplicate in-place building of extensions.
 %{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
-$python -B -c "import photutils, sys; sys.exit(photutils.test(args=\"-v\"))"
+$python -B -c "import photutils, sys; sys.exit(photutils.test(args=\"-v -rsfEx\"))"
 }
 
 %files %{python_files}
