@@ -104,4 +104,12 @@
     <comment>Qt 6.2.2 (forwarded request 936299 from cgiboudeaux)</comment>
     <requestid>936301</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2568bb74aa9d57b05ecdc99d7e1e63f1</srcmd5>
+    <version>6.2.2</version>
+    <time>1640373799</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase the memory constraint to fix a oom failure</comment>
+    <requestid>942346</requestid>
+  </revision>
 </revisionlist>

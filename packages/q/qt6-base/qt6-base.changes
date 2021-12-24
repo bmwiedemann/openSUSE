@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 22 13:47:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase the memory constraint to fix a oom failure
+
+-------------------------------------------------------------------
 Wed Dec  1 10:05:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.2
