@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 22 13:42:30 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use clang11 in SLE15 SP4 and newer too, not just in SLE15 SP3 
+
+-------------------------------------------------------------------
 Wed Dec  1 10:06:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.2

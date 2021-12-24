@@ -95,4 +95,12 @@
     <comment>Qt 6.2.2 (forwarded request 936299 from cgiboudeaux)</comment>
     <requestid>936322</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ac23ade19c7cdcc28f356ed7c05df2bf</srcmd5>
+    <version>6.2.2</version>
+    <time>1640373795</time>
+    <user>dimstar_suse</user>
+    <comment>- Use clang11 in SLE15 SP4 and newer too, not just in SLE15 SP3</comment>
+    <requestid>942331</requestid>
+  </revision>
 </revisionlist>
