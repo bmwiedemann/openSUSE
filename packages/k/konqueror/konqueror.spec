@@ -50,12 +50,13 @@ BuildRequires:  cmake(KF5Su)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 Requires:       webenginepart
-Recommends:     dolphin-part
 Recommends:     %{name}-plugins
+Recommends:     dolphin-part
 Obsoletes:      kde-baseapps5-libkonq < %{version}
 Provides:       kde-baseapps5-libkonq = %{version}
 Obsoletes:      kde-baseapps-libkonq < %{version}
@@ -177,8 +178,6 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/kcontrol/pics/overlapping.png
 %{_kf5_sharedir}/konqueror/
 
-
-
 %files -n webenginepart
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/parts/
@@ -218,6 +217,7 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/kf5/parts/fsviewpart.so
 %{_kf5_plugindir}/kf5/parts/konq_sidebar.so
 %{_kf5_plugindir}/khtmlsettingsplugin.so
+%{_kf5_plugindir}/khtmlttsplugin.so
 %{_kf5_plugindir}/kimgallery.so
 %{_kf5_plugindir}/konq_shellcmdplugin.so
 %{_kf5_plugindir}/konqsidebar_bookmarks.so
@@ -240,6 +240,7 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_translator.*
 %{_kf5_sharedir}/khtml/kpartplugins/plugin_webarchiver.*
+%{_kf5_sharedir}/khtml/kpartplugins/khtmltts.*
 %{_kf5_sharedir}/khtml/kpartplugins/uachangerplugin.*
 %{_kf5_sharedir}/konqsidebartng/entries/bookmarks.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/fonts.desktop
@@ -259,16 +260,15 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_translator.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_webarchiver.*
+%{_kf5_sharedir}/kwebkitpart/kpartplugins/khtmltts.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/uachangerplugin.*
-%{_kf5_sharedir}/webenginepart/kpartplugins/akregator_konqfeedicon.desktop
-%{_kf5_sharedir}/webenginepart/kpartplugins/akregator_konqfeedicon.rc
-%{_kf5_sharedir}/webenginepart/kpartplugins/autorefresh.desktop
-%{_kf5_sharedir}/webenginepart/kpartplugins/autorefresh.rc
-%{_kf5_sharedir}/webenginepart/kpartplugins/khtmlsettingsplugin.desktop
-%{_kf5_sharedir}/webenginepart/kpartplugins/khtmlsettingsplugin.rc
+%{_kf5_sharedir}/webenginepart/kpartplugins/akregator_konqfeedicon.*
+%{_kf5_sharedir}/webenginepart/kpartplugins/autorefresh.*
+%{_kf5_sharedir}/webenginepart/kpartplugins/khtmlsettingsplugin.*
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_babelfish.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_translator.desktop
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_webarchiver.*
+%{_kf5_sharedir}/webenginepart/kpartplugins/khtmltts.*
 %{_kf5_sharedir}/webenginepart/kpartplugins/uachangerplugin.*
 
 %files devel
