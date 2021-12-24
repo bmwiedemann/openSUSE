@@ -27,13 +27,27 @@
   <overwrite>
     <conditions>
       <arch>aarch64</arch>
-      <arch>armv6l</arch>
-      <arch>armv7l</arch>
     </conditions>
     <hardware>
       <physicalmemory>
         <size unit="G">12</size>
       </physicalmemory>
+    </hardware>
+  </overwrite>
+<!--  armv6/7 have lower requirements -->
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <processors>4</processors>
+      <physicalmemory>
+        <size unit="G">5</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">30</size>
+      </disk>
     </hardware>
   </overwrite>
 </constraints>

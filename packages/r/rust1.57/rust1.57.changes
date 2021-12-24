@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 15 08:11:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax constraints for armv6/7
+
+-------------------------------------------------------------------
 Fri Dec 10 00:38:42 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update 0001-Resolve-error-in-bootstrap-where-id-not-used.patch to account for
