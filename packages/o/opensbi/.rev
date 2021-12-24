@@ -66,4 +66,24 @@
     <comment>- Drop sifivefu540 flavor (forwarded request 911068 from Andreas_Schwab)</comment>
     <requestid>911069</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ae9bfb86b3c3caf5042da1d67393390f</srcmd5>
+    <version>1.0</version>
+    <time>1640373804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 1.0
+  * SBI HSM suspend as defined by SBI v0.3 specification
+  * Position independent execution for firmware
+  * Ticket based spinlocks
+  * Simplified / reduced platform callbacks
+  * ACLINT MTIMER and MSWI support
+  * SBI PMU extension as defined by SBI v0.3 specification
+  * Simple FDT based GPIO driver framework
+  * Improved reset driver framework along with various reset drivers
+  * Generic timer delay loop APIs
+  * RISC-V Sscofpmf extension support
+  * Simple FDT based I2C driver framework along with SiFive I2C driver
+  * UART drivers for Gaisler and LiteX platforms (forwarded request 942351 from Andreas_Schwab)</comment>
+    <requestid>942352</requestid>
+  </revision>
 </revisionlist>

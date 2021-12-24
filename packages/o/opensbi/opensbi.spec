@@ -23,13 +23,13 @@ Name:           opensbi
 %else
 Name:           opensbi-%{target}
 %endif
-Version:        0.9
+Version:        1.0
 Release:        0
 Summary:        RISC-V Open Source Supervisor Binary Interface
 License:        BSD-2-Clause
 Group:          System/Boot
-URL:            https://github.com/riscv/opensbi
-Source:         https://github.com/riscv/opensbi/archive/v%{version}.tar.gz#/opensbi-%{version}.tar.gz
+URL:            https://github.com/riscv-software-src/opensbi
+Source:         https://github.com/riscv-software-src/opensbi/archive/v%{version}.tar.gz#/opensbi-%{version}.tar.gz
 ExclusiveArch:  riscv64
 %if "%{target}" != ""
 BuildRequires:  u-boot-%{target}
