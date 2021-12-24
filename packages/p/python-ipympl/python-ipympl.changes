@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Dec 24 21:39:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.8.4 w/ jupyter-matplotlib v0.10.4
+  * Try fixing the automatic release CI job by @martinRenou in #408
+  * Improve toolbar positioning by @martinRenou in #407
+- Release 0.8.3
+  * Update CI badge for github actions by @ianhi in #384
+  * Add configurable throttling for pan_zoom by @martinRenou in
+    #393
+  * Webpack: Remove docs build by @martinRenou in #394
+  * Slow down pre-commit autoupdates by @ianhi in #398
+  * Fix nbconvert pdf export by @martinRenou in #404
+  * Refactor image embedding logic and fix nbconvert HTML export by
+    @martinRenou in #406
+  * Refactor toolbar by @martinRenou in #396
+- Release 0.8.2
+  * Fix issue with Pyolite workaround #382
+- Release 0.8.1
+  * Save plot image in the Widget model #376
+  * Mock Tornado for JupyterLite #381
+  * Fix DPI for static image #380
+  * Improve rubberband #371
+  * Pre-commit setup #362
+  * Bug fixes:
+  * Fix import when not in IPython context #364
+- Release 0.8.0
+  * ipympl now saves the static plot image in the Notebook #343
+  * jupyter-matplotlib has switched to TypeScript #314
+- Release 0.7.0
+  * Added support improved keyhandling in matplotlib 3.4 #310
+    (@tacaswell)
+  * Update the integration with ipython #305 (@ianhi)
+
+-------------------------------------------------------------------
 Mon Mar  1 10:06:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove unused tarball source

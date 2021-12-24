@@ -67,4 +67,41 @@
     <comment></comment>
     <requestid>875985</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3651cd8436e5b2dc7984af3ca9cabbf1</srcmd5>
+    <version>unknown</version>
+    <time>1640385528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.8.4 w/ jupyter-matplotlib v0.10.4
+  * Try fixing the automatic release CI job by @martinRenou in #408
+  * Improve toolbar positioning by @martinRenou in #407
+- Release 0.8.3
+  * Update CI badge for github actions by @ianhi in #384
+  * Add configurable throttling for pan_zoom by @martinRenou in
+    #393
+  * Webpack: Remove docs build by @martinRenou in #394
+  * Slow down pre-commit autoupdates by @ianhi in #398
+  * Fix nbconvert pdf export by @martinRenou in #404
+  * Refactor image embedding logic and fix nbconvert HTML export by
+    @martinRenou in #406
+  * Refactor toolbar by @martinRenou in #396
+- Release 0.8.2
+  * Fix issue with Pyolite workaround #382
+- Release 0.8.1
+  * Save plot image in the Widget model #376
+  * Mock Tornado for JupyterLite #381
+  * Fix DPI for static image #380
+  * Improve rubberband #371
+  * Pre-commit setup #362
+  * Bug fixes:
+  * Fix import when not in IPython context #364
+- Release 0.8.0
+  * ipympl now saves the static plot image in the Notebook #343
+  * jupyter-matplotlib has switched to TypeScript #314
+- Release 0.7.0
+  * Added support improved keyhandling in matplotlib 3.4 #310
+    (@tacaswell)
+  * Update the integration with ipython #305 (@ianhi)</comment>
+    <requestid>942376</requestid>
+  </revision>
 </revisionlist>
