@@ -1,11 +1,188 @@
 -------------------------------------------------------------------
+Wed Dec 22 13:36:05 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- fencer: get current time correctly
+  * 0001-Fix-fencer-get-current-time-correctly.patch
+
+-------------------------------------------------------------------
+Wed Dec 22 13:25:51 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211124.ada5c3b36 (Pacemaker-2.1.2):
+- fencer: add missing space to topology message
+- controller: handle remote connection start timeouts correctly
+
+-------------------------------------------------------------------
+Wed Dec 22 11:24:15 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20211116.8db4569e4 (Pacemaker-2.1.2-rc2):
+- fencing: mark state as done if remapped "on" times out
+- Fix OCF_RA_INSTALL_DIR Autoconf variable name in pkg-config files
+- daemons: Free memory at the end of fail_pending_op.
+
+-------------------------------------------------------------------
+Wed Dec 22 11:17:24 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20211104.62c36e2b1 (Pacemaker-2.1.2-rc1):
+- Use user_include_exclude_cb in crm_mon more. (clbz#5485)
+- Only set default sections in crm_mon once. (clbz#5485)
+- fencer: improve messages for dynamic target queries (rh#1470834)
+- fencer: consolidate messages for asynchronous results (rh#1470834)
+- fencer: log a message when out of memory for dynamic target search (rh#1470834)
+- libcrmservice: distinguish local and global configuration errors (rh#1470834)
+- libcrmservice: improve messages for pre-execution failures in child (rh#1470834)
+
+-------------------------------------------------------------------
+Wed Dec 22 10:35:46 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20211028.70f82d2c0:
+- attrd: check election status upon loss of a voter to prevent unexpected pending (bsc#1191676)
+
+-------------------------------------------------------------------
+Wed Dec 22 10:23:59 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20211028.7ee8b5bdd:
+- tools: select technical or human-friendly output of failed actions (rh#1470834)
+- controller,executor: tweak action result messages (rh#1470834)
+- install init scripts only if not using systemd
+- executor: log execution status and exit reason with results (rh#1470834)
+- executor: improve result message (rh#1470834)
+- controller: log exit reason with action results (rh#1470834)
+- controller: make executor result messages more consistent (rh#1470834)
+- daemon metadata: Output OCF-1.1-style metadata for enum options
+- libcrmservice: avoid memory leak when checking systemd unit existence
+- fencer: avoid memory leak on async execution failure (rh#1470834)
+- fencer: report correct code for CIB secret failure (rh#1470834)
+- libcrmservice: improve exit codes for child execution failures (rh#1470834)
+- cib,pacemakerd,libcrmcommon,libcrmservice: improve child completion logs (rh#1470834)
+- executor: map nagios warnings to OCF "degraded" result code (rh#1470834)
+- schemas: update crm_resource API schema for --force-* changes (rh#1470834)
+- tools: show exit reason for crm_resource --force-* (rh#1470834)
+- daemons: Be more careful about restarting subdaemons. (clbz#5225)
+- daemons: Re-register UID/GID with corosync on restart.
+- tools: handle crm_resource --force-* failures consistently (rh#1470834)
+- tools: improve check for supported standards in crm_resource --force-* (rh#1470834)
+- tools: map LSB status to OCF correctly with crm_resource --force-check (rh#1470834)
+- tools: show detailed message with crm_resource --force-* failure (rh#1470834)
+- daemons: Correct which subdaemons need the cluster.
+- daemons: Keep track of which daemons need corosync.
+- libcrmservice: improve handling of too many nagios parameters (rh#1470834)
+- executor,libstonithd,libcrmservice: better error handling for generic actions (rh#1470834)
+- libcrmservice: set exit reason for some memory errors when creating action (rh#1470834)
+- executor,libcrmservice: set exit reason for invalid arguments (rh#1470834)
+- executor: use exit reason from service library when available (rh#1470834)
+- libcrmservice: set exit reason for internal errors (rh#1470834)
+- tools: avoid double free with crm_resource --force-*
+- tools: avoid error message when no stdout
+- fencing: improve error handling when executing fence actions (rh#1470834)
+- libcrmservice: check for memory errors when creating an action (rh#1470834)
+- executor,libcrmservice: don't overwrite execution status from execute_action() (rh#1470834)
+- executor,controller,libcrmservice: use PCMK_OCF_UNKNOWN_ERROR for timeouts (rh#1470834)
+- libcrmservice: don't assert for mainloop error (rh#1470834)
+- libcrmservice: ensure rc/status are set for meta-data failures (rh#1470834)
+- libcrmservice: ensure synchronous file action always sets rc and status (rh#1470834)
+- libcrmservice: use NAGIOS_STATE_UNKNOWN for internal nagios errors (rh#1470834)
+- libcrmservice: use standard-appropriate exit code for signal management failures (rh#1470834)
+- libcrmservice: properly detect systemd unit existence (rh#1470834)
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-943295_pacemaker-lrmd-log-notice.patch
+
+-------------------------------------------------------------------
+Mon Dec 20 14:35:20 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20210924.be206af22:
+- fenced: Change query timeout calculation.
+- resources: update HealthIOWait agent for OCF 1.1
+- resources: add integer parameter validation to HealthIOWait
+- resources: fix HealthIOWait validate action
+
+-------------------------------------------------------------------
+Mon Dec 20 12:44:34 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20210923.ce81ff72e:
+- tools: Properly display supported output formats in crm_mon.
+- libcrmservice: avoid possible use-of-NULL
+- libcrmservice: update systemd agent meta-data for OCF 1.1
+- libcrmservice: set default execution status for systemd actions to error (rh#1470834)
+- libcrmservice: ensure status is set when masking systemd errors (rh#1470834)
+- libcrmservice: ensure rc/status are set when parsing systemd results (rh#1470834)
+- libcrmservice: ensure execution status is set after parsing status result (rh#1470834)
+- libcrmservice: ensure rc/status are set after invoking systemd unit paths (rh#1470834)
+- libcrmservice: ensure rc/status are set after systemd LoadUnit calls (rh#1470834)
+- libcrmservice: ensure rc/status are set when loading systemd unit (rh#1470834)
+- libcrmservice: set rc and status appropriately for systemd timeouts (rh#1470834)
+- libcrmservice: handle corner cases when creating action (rh#1470834)
+- libcrmservice: always set rc/status when executing files (rh#1470834)
+- libcrmservice: always set rc/status when executing systemd actions (rh#1470834)
+- libstonithd: check libcrmservice status rather than exit code for timeouts (rh#1470834)
+- fencer: avoid assertions in delegate_from_xml()
+- scheduler: quote execution status in failed action output (rh#1470834)
+- liblrmd: don't mask errors from sending IPC (rh#1470834)
+- executor: set exit reason for stonith resource action failures (rh#1470834)
+- controller: set exit reason for executor communication timeout (rh#1470834)
+- controller: use OCF timeout exit code for executor communication timeout (rh#1470834)
+- controller: set exit reason when using synthesize_lrmd_failure() (rh#1470834)
+- controller: set exit reason when using fake_op_status() (rh#1470834)
+- controller,libpacemaker: set exit reason for internal errors (rh#1470834)
+
+-------------------------------------------------------------------
+Mon Dec 20 10:05:39 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20210910.89c5b06a3:
+- controller: use "not connected" status for remote execution failure (rh#1470834)
+- controller: send error reply if can't initiate action via executor (rh#1470834)
+- controller: improve messages for failed resource agent actions (rh#1470834)
+- tools: better error message if crm_resource can't create action (rh#1470834)
+- controller: set exit reason when remote connection start fails (rh#1470834)
+- tools: better error messages for crm_resource executor failures (rh#1470834)
+- fenced: add support for mapping pcmk_delay_base pr node
+- scheduler: use existing epoch-to-string function in failed action display (rh#1470834)
+- scheduler: add exit reason to failed action string only if present (rh#1470834)
+- scheduler: add timing details to failed action strings only when available (rh#1470834)
+- scheduler: ensure failed action display handles NULL values (rh#1470834)
+- fence_watchdog: fix malformed xml in metadata
+- fenced: support escaped characters as values in pcmk_host_map
+- fenced: Added nanosecond field to operation completion data.
+- controller: use sensible message for poke of disconnected executor (rh#1470834)
+- controller: improve messages for remote executor connection failure (rh#1470834)
+- controller: improve message for failed local executor connection (rh#1470834)
+- scheduler: reword "multiply active" message (rh#1470834)
+- libcrmcluster: reword initial quorum message (rh#1470834)
+- libcrmcluster: downgrade message for CPG messages sent (rh#1470834)
+- scheduler: improve migration threshold message (rh#1470834)
+- fencer: downgrade reboot remapping to notice
+- controller: handle malformed CIB diffs better
+- scheduler: avoid memory leak for invalid ordering constraints
+- scheduler: improve bad id-ref handling
+- scheduler: downgrade inverse ordering failure to warning
+- fence_watchdog: fix version output needed for help2man
+- rpm: package fence_watchdog in base-package
+- watchdog-fencing: Silence warning without node restriction
+- tools: If there are no nodes, don't add an extra blank line.
+- watchdog-fencing: allow restriction to certain nodes
+
+-------------------------------------------------------------------
+Wed Dec  8 14:47:53 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- pacemaker.rpmlintrc: filter out shlib-policy-name-error (bsc#1191776)
+
+-------------------------------------------------------------------
+Wed Dec 08 14:14:53 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.1+20210909.77db57872 (Pacemaker-2.1.1):
+- liblrmd: avoid segfault on TLS connection errors
+- tools: Fix a segfault when calling "crm_simulate -U".
+- tools: make exit-code stdout/stderr consistent with --version
+
+-------------------------------------------------------------------
 Fri Sep 10 14:17:49 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.0+20210816.c6a4f6e6c (Pacemaker-2.1.1-rc3) :
 - crm_resource: translate LSB rc to exit code and fix resources_find_service_class() call
 - controller: ensure newly joining node learns the node names of non-DCs (bsc#1180618)
 - controller: ensure lost node's transient attributes are cleared without DC (rh#1986998)
-  
+ 
 -------------------------------------------------------------------
 Fri Sep 10 14:04:23 UTC 2021 - Yan Gao <ygao@suse.com>
 
@@ -108,7 +285,7 @@ Mon Aug 16 15:24:26 UTC 2021 - Yan Gao <ygao@suse.com>
 - Update to version 2.1.0+20210617.8c0c4eff9:
 - Purge remote node attribute when the node is up. (bsc#1186693)
 - Merge:
-  * bsc#1186693-clean-attrd-attributes-when-remote-node-is-up.patch 
+  * bsc#1186693-clean-attrd-attributes-when-remote-node-is-up.patch
 
 -------------------------------------------------------------------
 Mon Aug 16 14:57:35 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -347,7 +524,7 @@ Sun Mar 21 17:21:29 UTC 2021 - Yan Gao <ygao@suse.com>
 - Update to version 2.0.5+20210310.83e765df6:
 - controller: re-joined node gets the host names of non-DC nodes (bsc#1180618)
 - Merge:
-  * bsc#1180618-0001-Fix-crmd-update-crm_peer_cache.patch 
+  * bsc#1180618-0001-Fix-crmd-update-crm_peer_cache.patch
 
 -------------------------------------------------------------------
 Sun Mar 21 16:05:07 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -362,10 +539,10 @@ Sun Mar 21 15:32:59 UTC 2021 - Yan Gao <ygao@suse.com>
 - Update to version 2.0.5+20210302.64e0c771d:
 - crm_mon.rng/crm_resource.rng: Change the schema type of 'expected' and 'call' to integer. (rh#1931332)
 - Merge:
-  * rh#1931332-0003-Med-Change-the-schema-type-of-expected-and-call-to-i.patch 
-  * rh#1931332-0002-Med-Copy-crm_mon.rng-and-crm_resource.rng-in-prepara.patch 
-  * rh#1931332-0001-Med-Generate-xml-crm_mon.rng-from-the-contents-of-xm.patch 
-  * rh#1931332-0000-Feature-xml-Move-resource-related-XML-schema-into-it.patch 
+  * rh#1931332-0003-Med-Change-the-schema-type-of-expected-and-call-to-i.patch
+  * rh#1931332-0002-Med-Copy-crm_mon.rng-and-crm_resource.rng-in-prepara.patch
+  * rh#1931332-0001-Med-Generate-xml-crm_mon.rng-from-the-contents-of-xm.patch
+  * rh#1931332-0000-Feature-xml-Move-resource-related-XML-schema-into-it.patch
 
 -------------------------------------------------------------------
 Sun Mar 21 15:13:49 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -394,7 +571,7 @@ Sun Mar 21 14:39:24 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - iso8601: prevent sec overrun before adding up as long long
 - Merge:
-  * 0001-Fix-iso8601-prevent-sec-overrun-before-adding-up-as-.patch 
+  * 0001-Fix-iso8601-prevent-sec-overrun-before-adding-up-as-.patch
 
 - crmadmin: tweaks
 - scheduler: route monitor cancellations behind moving remote connections correctly
@@ -409,19 +586,19 @@ Sat Mar 20 13:53:24 UTC 2021 - Yan Gao <ygao@suse.com>
 - Update to version 2.0.5+20210223.dbc27b2ac:
 - fencer: optimize merging of fencing history by removing unneeded entries on creation of history diff (bsc#1181744)
 - Merge:
-  * bsc#1181744-0004-Refactor-fencer-optimize-merging-of-fencing-history-.patch 
+  * bsc#1181744-0004-Refactor-fencer-optimize-merging-of-fencing-history-.patch
 
 - fencing: new function stonith_op_state_pending() for checking if a fencing operation is in pending state (bsc#1181744)
 - Merge:
-  * bsc#1181744-0003-Refactor-fencing-new-function-stonith_op_state_pendi.patch 
+  * bsc#1181744-0003-Refactor-fencing-new-function-stonith_op_state_pendi.patch
 
 - fencer: update outdated pending operations according to returned ones from remote peer history (bsc#1181744)
 - Merge:
-  * bsc#1181744-0002-Fix-fencer-update-outdated-pending-operations-accord.patch 
+  * bsc#1181744-0002-Fix-fencer-update-outdated-pending-operations-accord.patch
 
 - fencer: broadcast returned fencing operations to update outdated pending ones in remote peer history (bsc#1181744)
 - Merge:
-  * bsc#1181744-0001-Fix-fencer-broadcast-returned-fencing-operations-to-.patch 
+  * bsc#1181744-0001-Fix-fencer-broadcast-returned-fencing-operations-to-.patch
 
 -------------------------------------------------------------------
 Sat Mar 20 13:45:07 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -445,17 +622,17 @@ Sat Mar 20 12:38:19 UTC 2021 - Yan Gao <ygao@suse.com>
 - Update to version 2.0.5+20210205.46cf48d27:
 - execd: Skips merging of canceled fencing monitors.(Fix:#CLBZ5393)
 - Merge:
-  * 0001-Mid-execd-Skips-merging-of-canceled-fencing-monitors.patch 
+  * 0001-Mid-execd-Skips-merging-of-canceled-fencing-monitors.patch
 
 - crm_mon: detect when run on remote-node
 
 - tools: get cibsecret stash working again
 - Merge:
-  * 0001-Fix-tools-get-cibsecret-stash-working-again.patch 
+  * 0001-Fix-tools-get-cibsecret-stash-working-again.patch
 
 - fencing: remove any devices that are not installed
 - Merge:
-  * 0001-Fix-fencing-remove-any-devices-that-are-not-installe.patch 
+  * 0001-Fix-fencing-remove-any-devices-that-are-not-installe.patch
 
 - crm_mon: suppress pacemakerd-status for non-text output
 - crm_mon: retry fencer connection as not fatal initially
@@ -545,7 +722,7 @@ Tue Mar 16 13:48:17 UTC 2021 - Yan Gao <ygao@suse.com>
 - liblrmd: Limit node name addition to proxied attrd update commands (rh#1907726)
 
 - Merge:
-  * rh#1907726-0001-Fix-liblrmd-Limit-node-name-addition-to-proxied-attr.patch 
+  * rh#1907726-0001-Fix-liblrmd-Limit-node-name-addition-to-proxied-attr.patch
 
 -------------------------------------------------------------------
 Fri Jan 29 12:42:52 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -559,7 +736,7 @@ Thu Jan 28 14:28:18 UTC 2021 - Yan Gao <ygao@suse.com>
 - Update to version 2.0.5+20210104.8ae19fdf9:
 - attrd: prevent leftover attributes of shutdown node in cib (bsc#1173668)
 - Merge:
-  * bsc#1173668-0001-Fix-attrd-prevent-leftover-attributes-of-shutdown-no.patch 
+  * bsc#1173668-0001-Fix-attrd-prevent-leftover-attributes-of-shutdown-no.patch
 
 -------------------------------------------------------------------
 Thu Jan 28 14:22:47 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -592,7 +769,7 @@ Thu Jan 28 14:22:47 UTC 2021 - Yan Gao <ygao@suse.com>
 - fencer: use singular or plural correctly in messages
 - pacemakerd: improve error message when -S can't connect
 - libcrmcommon: improve messages when adding a log file
-- libcrmcommon: drop unformatted log message about log permissions
+- libcrmcommon: drop unformatted log message about log permissions (bsc#1190821)
 - libcrmcommon: drop unnecessary parent check when adding log file
 - daemons: improve client name used in log messages
 - ipc_client: Use libqb to get auth data for ipcc connections
@@ -650,7 +827,7 @@ Mon Jan 25 12:29:58 UTC 2021 - Yan Gao <ygao@suse.com>
 - crmadmin: implement formatted output (bsc#1178865)
 
 - Drop obsolete:
-  * bsc#1178865-0001-Fix-crmadmin-printing-DC-quietly-if-needed.patch 
+  * bsc#1178865-0001-Fix-crmadmin-printing-DC-quietly-if-needed.patch
 
 -------------------------------------------------------------------
 Sun Dec 06 12:32:29 UTC 2020 - Yan Gao <ygao@suse.com>
@@ -1769,7 +1946,7 @@ Thu Jan 31 08:07:34 UTC 2019 - ygao@suse.com
 - CTS: really don't require nodes to be specified if listing tests (bsc#1114840)
 - controller: really avoid closing attrd IPC for temporary failures
 - controller: clear election dampening when DC is lost
-  
+ 
 -------------------------------------------------------------------
 Mon Jan 28 10:24:10 UTC 2019 - ygao@suse.com
 
@@ -1950,7 +2127,7 @@ Thu Oct  4 09:35:38 UTC 2018 - ygao@suse.com
 - pacemaker-based: drop declared, errant option never backed in tree
 - crm_mon: don't exit directly from cib_connect on error
 - scheduler: honor asymmetric orderings even when restarting
-  
+ 
 -------------------------------------------------------------------
 Thu Sep 13 09:59:39 UTC 2018 - ygao@suse.com
 
@@ -2299,7 +2476,7 @@ Fri Apr  6 15:39:19 UTC 2018 - ygao@suse.com
 Fri Apr  6 14:49:31 UTC 2018 - ygao@suse.com
 
 - Update to version 1.1.18+20180406.18fe1cc2b:
-- XML: upgrade-2.10.xsl: add transform for automatic upgrades to latest schema 
+- XML: upgrade-2.10.xsl: add transform for automatic upgrades to latest schema
 - Log: establish correct character string literals also with qb_logt sink
 - pengine: fix swapped warning message arguments leading to segfault (bsc#1090538)
 - cts-pengine: add regression test for notifications for unrunnable actions
@@ -2620,7 +2797,7 @@ Wed Nov 29 12:05:00 UTC 2017 - ygao@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:48:52 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------

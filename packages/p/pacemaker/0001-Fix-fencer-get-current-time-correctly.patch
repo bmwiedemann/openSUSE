@@ -1,0 +1,43 @@
+From 0339e89f3238b31df78b864dae8684b82c370741 Mon Sep 17 00:00:00 2001
+From: Ken Gaillot <kgaillot@redhat.com>
+Date: Mon, 13 Dec 2021 15:22:40 -0600
+Subject: [PATCH] Fix: fencer: get current time correctly
+
+f52bc8e1ce (2.1.2) introduced a regression by using clock_gettime() with
+CLOCK_MONOTONIC to get the current time. Use qb_util_timespec_from_epoch_get()
+instead (which as of this writing uses clock_gettime() with CLOCK_REALTIME if
+available, and falls back to gettimeofday() if not).
+---
+ daemons/fenced/fenced_commands.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/daemons/fenced/fenced_commands.c b/daemons/fenced/fenced_commands.c
+index f34cb4f13..7685cb8c3 100644
+--- a/daemons/fenced/fenced_commands.c
++++ b/daemons/fenced/fenced_commands.c
+@@ -2746,19 +2746,14 @@ bool fencing_peer_active(crm_node_t *peer)
+     return FALSE;
+ }
+ 
+-void set_fencing_completed(remote_fencing_op_t * op)
++void
++set_fencing_completed(remote_fencing_op_t *op)
+ {
+-#ifdef CLOCK_MONOTONIC
+     struct timespec tv;
+ 
+-    clock_gettime(CLOCK_MONOTONIC, &tv);
+-
++    qb_util_timespec_from_epoch_get(&tv);
+     op->completed = tv.tv_sec;
+     op->completed_nsec = tv.tv_nsec;
+-#else
+-    op->completed = time(NULL);
+-    op->completed_nsec = 0L;
+-#endif
+ }
+ 
+ /*!
+-- 
+2.31.1
+

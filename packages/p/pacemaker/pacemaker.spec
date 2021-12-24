@@ -84,9 +84,8 @@
 
 # Python-related definitions
 
-## Path to Python interpreter (leave commented to auto-detect,
-## or uncomment and edit to use a specific version)
-%global python_path /usr/bin/python%{python3_version}
+## Prefer Python 3 definitions explicitly, in case 2 is also available
+%global python_path %{__python3}
 
 # Keep sane profiling data if requested
 %if %{with profiling}
@@ -107,7 +106,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.0+20210816.c6a4f6e6c
+Version:        2.1.2+20211124.ada5c3b36
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -129,6 +128,7 @@ Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch9:         pacemaker-cts-StartCmd.patch
 Patch10:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+Patch11:        0001-Fix-fencer-get-current-time-correctly.patch
 # Required for core functionality
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -146,6 +146,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  resource-agents
 BuildRequires:  sed
 BuildRequires:  pkgconfig(bzip2)
+# Required for "make check"
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(corosync) >= 2.0.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42
@@ -159,6 +161,7 @@ BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  python-rpm-macros
 Requires:       %{name}-cli = %{version}-%{release}
 Requires:       corosync >= 2.0.0
 Requires:       libpacemaker3 = %{version}-%{release}
@@ -348,6 +351,7 @@ manager.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 
@@ -414,10 +418,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # advanced users, we can reconsider.
 rm -f %{buildroot}/%{_sbindir}/notifyServicelogEvent
 rm -f %{buildroot}/%{_sbindir}/ipmiservicelogd
-
-# Don't ship init scripts for systemd based platforms
-rm -f %{buildroot}/%{_initddir}/pacemaker
-rm -f %{buildroot}/%{_initddir}/pacemaker_remote
 
 %if %{with coverage}
 GCOV_BASE=%{buildroot}/%{_var}/lib/pacemaker/gcov
@@ -538,6 +538,7 @@ fi
 %{_libexecdir}/pacemaker/*
 
 %{_sbindir}/fence_legacy
+%{_sbindir}/fence_watchdog
 
 %{_mandir}/man7/pacemaker-controld.7%{ext_man}
 %{_mandir}/man7/pacemaker-schedulerd.7%{ext_man}
@@ -546,6 +547,7 @@ fi
 %{_mandir}/man7/ocf_pacemaker_o2cb.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_remote.7%{ext_man}
 %{_mandir}/man8/fence_legacy.8%{ext_man}
+%{_mandir}/man8/fence_watchdog.8%{ext_man}
 %{_mandir}/man8/pacemakerd.8%{ext_man}
 
 %doc %{_datadir}/pacemaker/alerts
@@ -614,6 +616,7 @@ fi
 %exclude %{_mandir}/man7/ocf_pacemaker_remote.*
 %{_mandir}/man8/*
 %exclude %{_mandir}/man8/fence_legacy.*
+%exclude %{_mandir}/man8/fence_watchdog.*
 %exclude %{_mandir}/man8/pacemakerd.*
 %exclude %{_mandir}/man8/pacemaker-remoted.*
 

@@ -1881,4 +1881,41 @@
   * pacemaker-daemon-symlinks.patch (forwarded request 919748 from yan_gao)</comment>
     <requestid>919749</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>04f77ac36330c8f5b5d0a91073fbb184</srcmd5>
+    <version>2.1.2+20211124.ada5c3b36</version>
+    <time>1640373779</time>
+    <user>dimstar_suse</user>
+    <comment>- fencer: get current time correctly
+  * 0001-Fix-fencer-get-current-time-correctly.patch
+
+- Update to version 2.1.2+20211124.ada5c3b36 (Pacemaker-2.1.2):
+- fencer: add missing space to topology message
+- controller: handle remote connection start timeouts correctly
+
+- Update to version 2.1.1+20211116.8db4569e4 (Pacemaker-2.1.2-rc2):
+- fencing: mark state as done if remapped &quot;on&quot; times out
+- Fix OCF_RA_INSTALL_DIR Autoconf variable name in pkg-config files
+- daemons: Free memory at the end of fail_pending_op.
+
+- Update to version 2.1.1+20211104.62c36e2b1 (Pacemaker-2.1.2-rc1):
+- Use user_include_exclude_cb in crm_mon more. (clbz#5485)
+- Only set default sections in crm_mon once. (clbz#5485)
+- fencer: improve messages for dynamic target queries (rh#1470834)
+- fencer: consolidate messages for asynchronous results (rh#1470834)
+- fencer: log a message when out of memory for dynamic target search (rh#1470834)
+- libcrmservice: distinguish local and global configuration errors (rh#1470834)
+- libcrmservice: improve messages for pre-execution failures in child (rh#1470834)
+
+- Update to version 2.1.1+20211028.70f82d2c0:
+- attrd: check election status upon loss of a voter to prevent unexpected pending (bsc#1191676)
+
+- Update to version 2.1.1+20211028.7ee8b5bdd:
+- tools: select technical or human-friendly output of failed actions (rh#1470834)
+- controller,executor: tweak action result messages (rh#1470834)
+- install init scripts only if not using systemd
+- executor: log execution status and exit reason with results (rh#1470834)
+- executor: improve result message (rh#1470834) (forwarded request 942220 from yan_gao)</comment>
+    <requestid>942221</requestid>
+  </revision>
 </revisionlist>
