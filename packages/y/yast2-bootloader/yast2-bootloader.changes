@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 23 16:13:08 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Always check tpm device for trusted boot (bsc#1193886)
+- 4.4.11
+
+-------------------------------------------------------------------
 Fri Dec 10 12:05:57 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
 
 - rely on yast-storage-ng to detect UEFI boot support status (bsc#937067)
