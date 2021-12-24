@@ -17,21 +17,13 @@
 
 
 Name:           PrusaSlicer
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PrusaSlicer-issue6681-openvdb.patch -- gh#prusa3d/PrusaSlicer#6681
-Patch0:         https://github.com/prusa3d/PrusaSlicer/commit/e6507594fb6893156056c2123822a2b37f7f179d.patch#/PrusaSlicer-issue6681-openvdb.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-catch2upd.patch -- gh#prusa3d/PrusaSlicer#6518
-Patch1:         https://github.com/prusa3d/PrusaSlicer/commit/60768d32486cf05635cc355cbdea906aa60b17a8.patch#/PrusaSlicer-catch2upd.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-pr6590-updateTBB.patch - gh#prusa3d/PrusaSlicer#6590
-Patch2:         PrusaSlicer-pr6590-updateTBB.patch
-#  gh#prusa3d/PrusaSlicer#7332
-Source1:        https://raw.githubusercontent.com/theofficialgman/PrusaSlicer/TBB-Fix/cmake/modules/FindTBB.cmake
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
@@ -58,6 +50,7 @@ BuildRequires:  nlopt-devel
 BuildRequires:  openexr-devel
 BuildRequires:  openvdb-devel >= 5
 BuildRequires:  openvdb-tools
+BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel >= 3.1
@@ -76,8 +69,8 @@ It also works with Mach3, LinuxCNC and Machinekit controllers.
 %if 0%{?suse_version}
 sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
 %endif
-rm -r resources/data/flatpak
-cp %{SOURCE1} cmake/modules/FindTBB.cmake
+# this is not prusaslicer specific, space mouse users install it themselves
+rm resources/udev/90-3dconnexion.rules
 
 %build
 # The build process really acquires that much memory per job. We are
@@ -101,17 +94,6 @@ cp %{SOURCE1} cmake/modules/FindTBB.cmake
 %install
 %cmake_install
 
-for res in 32 128 192; do
-  mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/
-  ln -sr %{buildroot}%{_datadir}/%{name}/icons/%{name}_${res}px.png \
-         %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/%{name}.png
-  ln -sr %{buildroot}%{_datadir}/%{name}/icons/%{name}-gcodeviewer_${res}px.png \
-         %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/%{name}-gcodeviewer.png
-done
-
-mkdir -p %{buildroot}%{_datadir}/applications
-mv %{buildroot}%{_datadir}/{PrusaSlicer/,}applications/PrusaSlicer.desktop
-mv %{buildroot}%{_datadir}/{PrusaSlicer/,}applications/PrusaGcodeviewer.desktop
 %suse_update_desktop_file -r PrusaSlicer Graphics 3DGraphics Science Engineering
 %suse_update_desktop_file -r PrusaGcodeviewer Graphics 3DGraphics
 
@@ -157,7 +139,7 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 %{_bindir}/prusa-slicer
 %{_bindir}/prusa-gcodeviewer
 %dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/{icons,models,profiles,shaders,udev}/
+%{_datadir}/%{name}/{icons,models,profiles,shaders,udev,data,shapes}/
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 %{_datadir}/icons/hicolor/192x192/apps/%{name}.png

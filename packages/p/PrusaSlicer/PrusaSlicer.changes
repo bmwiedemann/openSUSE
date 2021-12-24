@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 24 14:39:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.0
+  * Big changelog since v2.3.3, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+  * Send system info: new dialog for telemetry. Opt-in.
+- Drop patches
+  *  PrusaSlicer-catch2upd.patch
+  *  PrusaSlicer-issue6681-openvdb.patch
+  *  PrusaSlicer-pr6590-updateTBB.patch
+
+-------------------------------------------------------------------
 Tue Nov 23 11:21:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Make compatible with TBB 2021
