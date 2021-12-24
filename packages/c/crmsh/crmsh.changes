@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 24 09:40:10 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211224.922207f9:
+  * Dev: doc: Rename hb_report as crm report
+  * Dev: crm report: Get distribution info correctly and reuse it
+  * Dev: behave: Change in functional test for previous crm report changes
+  * Dev: crm_report: Integrate report log into crmsh logging
+  * Dev: crm_report: Move hb_report directory to crmsh/report
+
+-------------------------------------------------------------------
+Fri Dec 24 06:32:59 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211224.05c264ee:
+  * Dev: log: Print new line when input using default value in interactive mode
+
+-------------------------------------------------------------------
+Fri Dec 24 00:51:04 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211224.bfa7e2d9:
+  * Fix: bootstrap: Change log info when need to change user login shell (bsc#1194026)
+
+-------------------------------------------------------------------
 Wed Dec 22 06:46:57 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211222.9360f963:
