@@ -604,4 +604,12 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>fix qgis build</comment>
     <requestid>929207</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>fdefc12aa0af1aa961f4da1be9a4572c</srcmd5>
+    <version>5.15.6</version>
+    <time>1640373775</time>
+    <user>dimstar_suse</user>
+    <comment>fix subpackage dependencies</comment>
+    <requestid>942215</requestid>
+  </revision>
 </revisionlist>

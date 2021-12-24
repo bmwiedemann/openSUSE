@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 23 09:09:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependencies of python-qt5-remoteobjects: do not require all
+  python flavors (i.e. avoid requires python_module).
+
+-------------------------------------------------------------------
 Thu Nov  4 10:07:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove py_ssize_t_clean argument from QtCoremod.sip in order to

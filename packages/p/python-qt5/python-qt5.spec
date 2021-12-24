@@ -177,7 +177,7 @@ This package contains programming examples for PyQt5.
 %package quick3d
 Summary:        Python bindings for QtQuick3D
 Group:          Development/Libraries/Python
-Requires:       %{python_module qt5 = %{version}}
+Requires:       python-qt5 = %{version}
 
 %description quick3d
 PyQt is a set of Python bindings for the Qt framework.
@@ -187,7 +187,7 @@ This package contains the extension for QtQuick3D.
 %package remoteobjects
 Summary:        Python bindings for QtRemoteObjects
 Group:          Development/Libraries/Python
-Requires:       %{python_module qt5 = %{version}}
+Requires:       python-qt5 = %{version}
 
 %description remoteobjects
 PyQt is a set of Python bindings for the Qt framework.
