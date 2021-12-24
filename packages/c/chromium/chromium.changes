@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 24 11:24:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Added patches:
+  * chromium-96-freetype-unbundle.patch
+  * chromium-96-EnumTable-crash.patch
+- Unbundle freetype on TW
+- Unbundle icu on 15.4
+- Disable lto and update _constraints on aarch64
+- Remove MEIPreload: it gets installed through component updater
+
+-------------------------------------------------------------------
 Wed Dec 15 10:54:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Revert to gcc10 on TW: gcc11 is entirely broken

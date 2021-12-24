@@ -20,12 +20,10 @@
 %define outputdir ${TMPOUT}
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %bcond_without system_icu
-%bcond_with system_vpx
 %else
 %bcond_with system_icu
-%bcond_with system_vpx
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %bcond_without pipewire
@@ -34,18 +32,21 @@
 %endif
 %bcond_without system_ffmpeg
 %bcond_without system_zlib
-%bcond_with system_freetype
-%ifarch %{arm} aarch64
+%bcond_with system_vpx
+%ifarch aarch64
 %bcond_with swiftshader
+%bcond_with lto
 %else
 %bcond_without swiftshader
+%bcond_without lto
 %endif
 %if 0%{?suse_version} >= 1550
 %bcond_without system_harfbuzz
+%bcond_without system_freetype
 %else
 %bcond_with system_harfbuzz
+%bcond_with system_freetype
 %endif
-%bcond_without lto
 %bcond_with clang
 Name:           chromium
 Version:        96.0.4664.110
@@ -104,6 +105,8 @@ Patch73:        chromium-96-CommandLine-include.patch
 Patch74:        chromium-96-RestrictedCookieManager-tuple.patch
 Patch75:        chromium-96-DrmRenderNodePathFinder-include.patch
 Patch76:        chromium-96-CouponDB-include.patch
+Patch77:        chromium-96-freetype-unbundle.patch
+Patch78:        chromium-96-EnumTable-crash.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -269,7 +272,10 @@ BuildRequires:  libstdc++6-devel-gcc10
 BuildRequires:  lld12
 BuildRequires:  llvm12
 %else
+#!BuildIgnore:  gcc
 BuildRequires:  clang
+BuildRequires:  gcc10
+BuildRequires:  libstdc++6-devel-gcc10
 BuildRequires:  lld
 BuildRequires:  llvm
 %endif
@@ -743,8 +749,10 @@ myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
+%if %{with lto} && %{with clang}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 myconf_gn+=" use_thin_lto=true"
+%endif
 %endif
 myconf_gn+=" use_lld=true"
 %else

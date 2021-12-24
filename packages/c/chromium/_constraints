@@ -26,6 +26,9 @@
       <cpu>
       <flag>asimdrdm</flag>
       </cpu>
+      <memory>
+        <size unit="G">12</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>

@@ -53,13 +53,6 @@ find "${OUTPUTDIR}/locales" -type f -name '*.pak' -print -exec \
     cp -a {} "${STAGEDIR}/${INSTALLDIR}/locales/" \;
 find "${STAGEDIR}/${INSTALLDIR}/locales" -type f -print -exec chmod 644 {} \;
 
-# MEI Preload
-if [ -f "${OUTPUTDIR}/MEIPreload/manifest.json" ]; then
-    install -m 755 -d "${STAGEDIR}/${INSTALLDIR}/MEIPreload/"
-    install -m 644 "${OUTPUTDIR}/MEIPreload/manifest.json" "${STAGEDIR}/${INSTALLDIR}/MEIPreload/"
-    install -m 644 "${OUTPUTDIR}/MEIPreload/preloaded_data.pb" "${STAGEDIR}/${INSTALLDIR}/MEIPreload/"
-fi
-
 # ANGLE
 if [ -f "${OUTPUTDIR}/libEGL.so" ]; then
     for file in libEGL.so libGLESv2.so;

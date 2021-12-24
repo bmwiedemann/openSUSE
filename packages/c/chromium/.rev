@@ -3838,4 +3838,19 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>fix</comment>
     <requestid>940698</requestid>
   </revision>
+  <revision rev="312" vrev="2">
+    <srcmd5>23b37bdf900bcc39bb159dc3cfe24b27</srcmd5>
+    <version>96.0.4664.110</version>
+    <time>1640373797</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches:
+  * chromium-96-freetype-unbundle.patch
+  * chromium-96-EnumTable-crash.patch
+- Unbundle freetype on TW
+- Unbundle icu on 15.4
+- Disable lto and update _constraints on aarch64
+- Remove MEIPreload: it gets installed through component updater
+</comment>
+    <requestid>942340</requestid>
+  </revision>
 </revisionlist>
