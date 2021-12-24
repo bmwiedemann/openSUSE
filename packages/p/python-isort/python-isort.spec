@@ -49,7 +49,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module colorama >= 0.4.3}
-BuildRequires:  %{python_module hypothesis-auto}
 BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module natsort}
