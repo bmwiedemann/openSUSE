@@ -1,7 +1,8 @@
+#
 # spec file for package python-pyliblo
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Fabio Pesari
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +13,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:          python-pyliblo
-Version:       0.10.0
-Release:       0
-Summary:       Python bindings for the liblo Open Sound Control (OSC) library
-License:       LGPL-2.1+
-Group:         Development/Languages/Python
-URL:           http://das.nasophon.de/pyliblo/
-Source0:       pyliblo-%{version}.tar.gz
-BuildRoot:     %{_tmppath}/%{name}-%{version}-build
-BuildRequires: %{python_module devel}
-BuildRequires: %{python_module Cython}
-BuildRequires: liblo-devel
+Name:           python-pyliblo
+Version:        0.10.0
+Release:        0
+Summary:        Python bindings for the liblo Open Sound Control (OSC) library
+License:        LGPL-2.1-or-later
+Group:          Development/Languages/Python
+URL:            http://das.nasophon.de/pyliblo/
+Source0:        pyliblo-%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module devel}
+BuildRequires:  liblo-devel
 
 %description
-pyliblo is a Python wrapper for the liblo OSC library. 
-It supports almost the complete functionality of liblo, 
-allowing you to send and receive OSC messages using a nice and simple Python API. 
+pyliblo is a Python wrapper for the liblo OSC library.
+It supports almost the complete functionality of liblo,
+allowing you to send and receive OSC messages using a nice and simple Python API.
 
 %package -n pyliblo-tools
 Summary:        Tools for python-pyliblo
 Group:          Productivity/Multimedia/Sound/Utilities
-Requires:       %{python_module pyliblo} = %{version}
+Requires:       python3-pyliblo = %{version}
 
 %description -n pyliblo-tools
 This package contains command-line tools from python-pyliblo.

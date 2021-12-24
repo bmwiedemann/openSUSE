@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 23 08:56:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python3-pyliblo by the -tools package instead of
+  %{python_module pyliblo}: the latter form actually requires all
+  python flavors, which was surely not intended.
+
+-------------------------------------------------------------------
 Sat Sep 26 08:27:38 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Copypac'ed from home:geekositalia:daw for boo#1177001
