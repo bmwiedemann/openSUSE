@@ -1,6 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 24 05:47:34 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-enable Python 3.9
+
+-------------------------------------------------------------------
 Mon Dec 20 11:17:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
+- Disabled Python 3.9
 - Upgrade to 4.5.1:
   - Removed unnecessary default in MP's depth field.
   - Add support for custom primary key fields with custom names.
