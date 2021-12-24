@@ -1,0 +1,18 @@
+From: Simon Vogl <simon.vogl@gmx.net>
+Date: Thu, 23 Dec 2021 22:54:14 UTC
+Subject: [PATCH] Fix compilation error of QMPlay2 on openSUSE Leap 15.3
+
+This patch is required to prevent QMPlay2 from crashing during compilation on openSUSE Leap 15.3 as it now uses PW_KEY_NODE_RATE
+which isn't implemented in openSUSE Leap 15.3's version of libpipewire-0.3 yet, hence "node.rate" needs to be set directly instead.
+
+--- a/src/modules/PipeWire/PipeWireWriter.cpp
++++ b/src/modules/PipeWire/PipeWireWriter.cpp
+@@ -385,7 +385,7 @@
+         nullptr
+     );
+     pw_properties_setf(props, PW_KEY_NODE_LATENCY, "%u/%u", m_nFrames, m_rate);
+-    pw_properties_setf(props, PW_KEY_NODE_RATE, "1/%u", m_rate);
++    pw_properties_setf(props, "node.rate", "1/%u", m_rate);
+ 
+     LoopLocker locker(m_threadLoop);
+ 

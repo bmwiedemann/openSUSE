@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 23 22:54:14 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-pipewire-build-error.patch to fix a compilation error on openSUSE Leap 15.3
+- Update to version 21.12.24
+   * add audio, video, subtitles streams, programs and chapters into menu,
+   * add key shortcuts to change audio and subtitles streams,
+   * improve Vulkan initialization,
+   * fix some possible crashes,
+   * other minor fixes.
+
+-------------------------------------------------------------------
 Tue Dec  7 21:41:49 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Removed Added 0001-fix-vulkan-instance-initialization.patch as it is merged upstream
