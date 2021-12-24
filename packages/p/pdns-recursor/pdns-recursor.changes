@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 17 16:08:44 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.6.0
+  Compared to the previous major (4.5) release of PowerDNS Recursor, this
+  release contains several sets of changes:
+    * The ability to flush records from the caches on a incoming
+      notify requests.
+    * A rewrite of the outgoing TCP code, adding both re-use of
+      connections and support for DoT to authoritative servers or
+      forwarders.
+    * Many improvements in the area of metrics: more metrics are
+      collected and more metrics are now exported in a Prometheus
+      friendly way.
+    * A new Zone to Cache function that will retrieve a zone (using
+      AXFR, HTTP, HTTPS or a local file) periodically and insert the
+      contents into the record cache, allowing the cache to be always hot
+      for a zone. This can be used for the root or any other zone.
+    * An experimental Event Tracing function, providing insight into
+      the time taken by the steps in the process of resolving a name.
+
+-------------------------------------------------------------------
 Fri Nov  5 12:00:12 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.5.7:
