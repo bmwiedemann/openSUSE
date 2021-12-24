@@ -1,0 +1,12 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionprefix">0.10.3+hg</param>
+    <param name="url">https://foss.heptapod.net/mercurial/hg-git</param>
+    <param name="scm">hg</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>
