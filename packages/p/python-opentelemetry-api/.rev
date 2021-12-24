@@ -39,4 +39,41 @@
     <comment></comment>
     <requestid>891320</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8691678854145243d09a47d1ffb1f093</srcmd5>
+    <version>1.5.0</version>
+    <time>1640373792</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.5.0
+  - Add pre and post instrumentation entry points (#1983)
+  - Fix documentation on well known exporters and variable OTEL_TRACES_EXPORTER
+    which were misnamed (#2023)
+  - `opentelemetry-sdk` `get_aggregated_resource()` returns default resource and
+    service name whenever called (#2013)
+  - `opentelemetry-distro` &amp; `opentelemetry-sdk` Moved Auto Instrumentation Configurator
+    code to SDK to let distros use its default implementation (#1937)
+  - Add Trace ID validation to meet TraceID spec (#1992)
+  - Fixed Python 3.10 incompatibility in `opentelemetry-opentracing-shim` tests (#2018)
+  - `opentelemetry-sdk` added support for `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` (#2044)
+  - `opentelemetry-sdk` Fixed bugs (#2041, #2042 &amp; #2045) in Span Limits (#2044)
+  - `opentelemetry-sdk` Add support for `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` env var (#2056)
+  - `opentelemetry-sdk` Treat limit even vars set to empty values as unset/unlimited. (#2054)
+  - `opentelemetry-api` Attribute keys must be non-empty strings. (#2057)
+- from version 1.4.0
+  + Added
+    - Moved `opentelemetry-instrumentation` to core repository. (#1959)
+    - Add support for OTLP Exporter Protobuf over HTTP (#1868)
+    - Dropped attributes/events/links count available exposed on ReadableSpans. (#1893)
+    - Added dropped count to otlp, jaeger and zipkin exporters. (#1893)
+    - Give OTLPHandler the ability to process attributes (#1952)
+    - Add global LogEmitterProvider and convenience function get_log_emitter (#1901)
+    - Add OTLPHandler for standard library logging module (#1903)
+  + Changed
+    - Updated `opentelemetry-opencensus-exporter` to use `service_name` of spans
+      instead of resource (#1897)
+    - Added descriptions to the env variables mentioned in the opentelemetry-specification
+      (#1898)
+    - Ignore calls to `Span.set_status` with `StatusCode.UNSET` and also if previous (forwarded request 929148 from glaubitz)</comment>
+    <requestid>929161</requestid>
+  </revision>
 </revisionlist>

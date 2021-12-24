@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-opentelemetry-api
-Version:        1.1.0
+Version:        1.5.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
@@ -35,6 +35,7 @@ Requires:       python-setuptools
 Requires:       python-aiocontextvars
 %endif
 # SECTION test requirements
+BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
