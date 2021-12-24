@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Dec 21 19:22:16 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.10.30
+	- Core:
+    - Do not follow subpixel font rendering choice from system
+      settings for text layer rendering. These systems are useful
+      for GUI rendering on a screen of a specific type and pixel
+      order. Yet when rendering an image which can be zoomed in or
+      out, showed on various screens or even printed, subpixel font
+      rendering doesn't make sense.
+    - Rewrite the core selection drawing logics so that it works on
+      macOS Big Sur and over. This is a backport (adapted to GTK+2)
+      of the fix brought in GIMP 2.99.8 for Wayland and macOS.
+    - Ignore MakerNote metadata tag at export and only store the
+      tags that go in it, hence avoiding partial invalid metadata.
+    - Color picking from Colors dockable can now use the
+      Freedesktop portal.
+    - On Windows, move from GetICMProfile() to
+      WcsGetDefaultColorProfile() because the former is broken in
+      Windows 11.
+	 - Plug-ins:
+     - metadata-viewer: improve how XMP tags with multiple values
+       are handled and shown (now each value on a separate line for
+       better readability).
+	   - metadata-editor:
+       * XMP array tags of type BAG and SEQ are now on separate
+         lines.
+       * Comparing XMP tags with equivalent IPTC tags with multiple
+         values, each value is compared individually, instead of
+         comparing the list as a whole.
+     - Many robustness improvements and other fixes to the metadata
+       plug-ins.
+     - AVIF: prefer AOM encoder for export.
+     - PSD:
+       * Skip sanity check for mask of rendered layers as some layer
+         mask have invalid dimensions in such cases. They will now
+         be loaded correctly.
+       * Fixed loading of CMYK PSD files without alpha.
+       * Fixed loading of CMYK images without layers.
+       * Fixed loading of merged image of a 16 bit per channel RGBA
+         PSD file with the alpha channel opaque.
+      - PBM: large file export now always works and does not depend
+        anymore on the platform's long int size.
+      - Screenshot:
+        * GNOME shell implementation dropped because the D-Bus API
+          has been restricted to core components for security
+          reasons, thus our plug-in was failing.
+        * KDE portal moved as last fallback after the X
+          implementation (when running on X) and Freedesktop portal,
+          because KDE is also starting to block API calls for
+          security reasons.
+- drop 0001-Issue-6210-Subpixel-font-rendering-system-settings-s.patch
+  included in update
+
+-------------------------------------------------------------------
 Fri Oct 22 09:50:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add upstream patch (GIMP issue #6210)

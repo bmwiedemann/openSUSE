@@ -2024,4 +2024,12 @@ General:
     <comment></comment>
     <requestid>926970</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>6df609b27a1131ba0935aeb80936a468</srcmd5>
+    <version>2.10.30</version>
+    <time>1640373774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.30</comment>
+    <requestid>942151</requestid>
+  </revision>
 </revisionlist>

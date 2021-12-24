@@ -31,7 +31,7 @@
 %bcond_without python_plugin
 %endif
 Name:           gimp
-Version:        2.10.28
+Version:        2.10.30
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -42,8 +42,6 @@ Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
 Source99:       baselibs.conf
-# https://gitlab.gnome.org/GNOME/gimp/-/commit/a08055f1a18886fdacaf0cba5887b7ff2f687732
-Patch0:         0001-Issue-6210-Subpixel-font-rendering-system-settings-s.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
@@ -52,7 +50,7 @@ BuildRequires:  fontconfig-devel >= 2.12.4
 BuildRequires:  gcc-c++
 BuildRequires:  gdk-pixbuf-loader-rsvg
 # For some odd reason build needs gegl executable.
-BuildRequires:  gegl >= 0.4.32
+BuildRequires:  gegl >= 0.4.34
 BuildRequires:  ghostscript-devel
 # Explicitly needed, otherwise ghostscript-mini is used during the
 # build, and it's not enough for gimp.
@@ -74,7 +72,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.8
-BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.32
+BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.34
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.32
