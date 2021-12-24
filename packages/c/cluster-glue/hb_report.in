@@ -12,6 +12,8 @@ die() {
 	exit 1
 }
 [ "$(basename "$PARENT_COMMAND")" = "crm" ] && die "called itself in a loop, aborting"
+
+echo "WARNING: Command \"$PROG\" is deprecated, please use \"crm report\""
 if which crm > /dev/null 2>&1; then
 	crm report "$@"
 elif [ -x /usr/sbin/crm ]; then

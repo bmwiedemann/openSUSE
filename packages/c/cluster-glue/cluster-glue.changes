@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 23 07:35:03 UTC 2021 - XinLiang <XLiang@suse.com>
+
+- hb_report.in: Add a warning for hb_report command is deprecated, guide user to use "crm report" directly (jsc#SLE-22499)  
+
+-------------------------------------------------------------------
 Thu May 27 10:50:16 UTC 2021 - varkoly@suse.com
 
 - Update to version 1.0.12+v1.git.1622055853.1753f5e0:
