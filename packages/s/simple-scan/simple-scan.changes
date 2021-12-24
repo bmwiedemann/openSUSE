@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 23 12:04:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.7:
+  + Fix replacing underscore with space in scanner names.
+  + Delete autosave records after creating new document.
+  + Add the device name to the label if there are several identical
+    models.
+  + Fix autosave of Page Side property.
+
+-------------------------------------------------------------------
 Sun Oct 31 16:38:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.6:
