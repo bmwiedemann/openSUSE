@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 27 17:45:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unpin natsort for example project
+
+-------------------------------------------------------------------
 Thu Dec 23 17:51:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove hypothesis-auto test requirement. It is actually not used

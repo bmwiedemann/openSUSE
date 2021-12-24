@@ -86,6 +86,9 @@ hypothesis.settings.register_profile(
 )
 " >> tests/conftest.py
 
+# unpin natsort in example plugin
+sed -i 's/natsort = "^/natsort = ">=/' example_isort_sorting_plugin/pyproject.toml
+
 %build
 %pyproject_wheel
 
