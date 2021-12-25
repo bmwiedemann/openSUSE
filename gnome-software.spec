@@ -30,6 +30,8 @@ Source0:        https://download.gnome.org/sources/gnome-software/41/%{name}-%{v
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
+# PATCH-FIX-UPSTREAM gnome-software-flatpak-refresh-no-interaction.patch bsc#1123722 glgo#GNOME/gnome-software!1145 sckang@suse.com -- flatpak: Set no-interaction correctly when refreshing
+Patch1:         gnome-software-flatpak-refresh-no-interaction.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
