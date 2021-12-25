@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-jbuilder
-Version:        2.11.2
+Version:        2.11.5
 Release:        0
 %define mod_name jbuilder
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ Create JSON structures via a Builder-style DSL.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.md MIT-LICENSE README.md" \
+  --doc-files="MIT-LICENSE README.md" \
   -f
 
 %gem_packages
