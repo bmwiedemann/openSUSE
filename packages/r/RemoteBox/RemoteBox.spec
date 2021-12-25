@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,18 @@
 # to remotebox so filter it
 %global __provides_exclude ^perl\\(vboxService\\)
 Name:           RemoteBox
-Version:        2.7
+Version:        3.0
 Release:        0
 Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later
+Group:          System/Emulators/PC
 URL:            http://knobgoblin.org.uk
 Source0:        http://knobgoblin.org.uk/downloads/%{name}-%{version}.tar.bz2
 Patch0:         RemoteBox-2.7_fix-env-script-interpreter.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 Requires:       freerdp
-Requires:       perl-Gtk2
+Requires:       perl-Gtk3
 Requires:       perl-SOAP-Lite
 Requires:       xdg-utils
 BuildArch:      noarch

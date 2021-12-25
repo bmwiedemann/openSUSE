@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 23 11:56:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0
+  - RemoteBox has been ported to Gtk3.
+    Review the requirements before updating to ensure your
+    operating system is compatible.
+- Changes from 2.8
+  The changes don't really justify a release however this is likely
+  to be the last release of RemoteBox based on Gtk2 as RemoteBox is
+  being ported to Gtk3.
+  - Removed hearbeat option as it's no longer required
+  - Server memory bar updates changed to 58 seconds
+  - Added option to bind the RDP/VNC server for a guest to a 
+    specific IP or hostname.
+  - Fixed copy and clone of disks. Regression caused by passsing
+    incorrect datatype to the API
+  - Added OS icon for Windows 11
+
+-------------------------------------------------------------------
 Wed Feb 19 20:53:35 UTC 2020 - chri@gallochri.com
 
 - RemoteBox-2.6_fix-env-script-interpreter.patch remamed for to
