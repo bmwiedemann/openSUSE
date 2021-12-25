@@ -1,17 +1,61 @@
 -------------------------------------------------------------------
+Fri Dec 24 23:57:39 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.47.0
+  * Better compatibility with Django 4.0
+  * New providers: Gumroad.
+  * Added a new setting SOCIALACCOUNT_LOGIN_ON_GET that controls
+    whether or not the endpoints for initiating a social login
+    (for example, "/accounts/google/login/") require a POST request
+    to initiate the handshake. As requiring a POST is more secure,
+    the default of this new setting is False.
+- from v0.46.0
+  * New providers: Gitea, MediaWiki.
+  * New translations: Georgian, Mongolian.
+  * Django 3.2 compatibility.
+- from v0.45.0
+  * New providers: Feishu, NetIQ, Frontier, CILogin.
+- from v0.44.0
+  * In previous versions, the mechanism to prevent too many failed login
+    attempts (ACCOUNT_LOGIN_ATTEMPTS_LIMIT) could be bypassed by
+    changing the casing of the login.
+  * The certificate key part of the SOCIALACCOUNT_PROVIDERS
+    configuration has been renamed to certificate_key. This is done
+    to prevent the key from being displayed without being masked
+    in Django debug pages.
+  * Better compatibility with Django 3.2
+- from v0.43.0
+  * New translation: Slovenian.
+  * If ACCOUNT_LOGIN_ATTEMPTS_LIMIT is set and the user successfully
+    resets their password, the timeout is cleared to allow immediate
+    login.
+  * You can now limit the amount of email addresses a user can
+    associate to his account by setting ACCOUNT_MAX_EMAIL_ADDRESSES.
+  * New providers: Apple, Okta, Stocktwits, Zoho, Zoom.
+  * If email verification is set to mandatory, the email address you use
+    to login with must now be verified as well.
+    In previous versions, it was sufficient if the account had at least
+    one verified email address, not necessarily the one used to login with.
+  * Added a new setting: ACCOUNT_SIGNUP_REDIRECT_URL -- the URL
+    (or URL name) to redirect to directly after signing up.
+  * In previous versions, the allauth app included a base.html template.
+    This template could conflict with an equally named template at project
+    level. Therefore, base.html has now been moved to account/base.html
+
+-------------------------------------------------------------------
 Tue Jun  9 10:00:44 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.42.0
- * New providers: EDX, Yandex, Mixer.
- * Fixed Twitch get_avatar_url() 
- * The Facebook API version now defaults to v7.0.
+  * New providers: EDX, Yandex, Mixer.
+  * Fixed Twitch get_avatar_url() 
+  * The Facebook API version now defaults to v7.0.
 
 -------------------------------------------------------------------
 Tue Jan  7 09:59:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.41.0:
-  * Fixes CVE-2019-19844: Potential account hijack via password reset form
-  bsc#1159447
+  * Fixes CVE-2019-19844: Potential account hijack via password
+    reset form bsc#1159447
   * Dropped Python 2 and Django 1 compatibility.
 - Do not bother with the lang subpkg as it is needed to have languages
   to be present always anyway
