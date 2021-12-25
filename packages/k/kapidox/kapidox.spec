@@ -37,6 +37,7 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 Requires:       doxygen

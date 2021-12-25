@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 25 10:42:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require python-rpm-macros at build time to fix an installation
+  issue on Leap 15.3.
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
