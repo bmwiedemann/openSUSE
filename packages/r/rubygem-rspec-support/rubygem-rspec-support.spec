@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-support
-Version:        3.10.2
+Version:        3.10.3
 Release:        0
 %define mod_name rspec-support
 %define mod_full_name %{mod_name}-%{version}

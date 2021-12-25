@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 25 09:32:57 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.10.3
+
+  ### 3.10.3 / 2021-11-03
+  [Full Changelog](http://github.com/rspec/rspec-support/compare/v3.10.2...v3.10.3)
+
+  Bug Fixes:
+
+  * Use `Mutex#owned?` to allow `RSpec::Support::ReentrantMutex` to work in
+    nested Fibers on Ruby 3.0 and later. (Benoit Daloze, #503, #504)
+  * Support `end`-less methods in `RSpec::Support::Source::Token`
+    so that RSpec won't hang when an `end`-less method raises an error. (Yuji Nakayama, #505)
+
+-------------------------------------------------------------------
 Sat Feb  6 11:36:43 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.10.2
