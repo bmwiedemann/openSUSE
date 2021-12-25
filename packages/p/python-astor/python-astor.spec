@@ -84,6 +84,7 @@ chmod a-x astor/rtrip.py
 %check
 # https://github.com/berkerpeksag/astor/issues/196
 python39_donttest="test_convert_stdlib"
+python310_donttest=${python39_donttest}
 %pytest tests ${$python_donttest:+ -k "not (${$python_donttest})"}
 
 %files %{python_files}
