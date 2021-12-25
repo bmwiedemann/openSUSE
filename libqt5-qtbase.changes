@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 24 11:45:16 UTC 2021 - fabian@ritter-vogt.de
+
+- Update to version 5.15.2+kde268:
+  * Adapt for q_EVP_PKEY_base_id → q_EVP_PKEY_get_base_id rename in OpenSSL 3
+  * Don't use a deprecated function if built/linked with OpenSSL v3
+  * Diffie-Hellman parameters: remove useless 'fix'
+  * Dont's use DTLS_MAX_VERSION when setting SSL_CTX
+  * Avoid mixing atomic futex changes and QAtomic
+  * Fix qtdeclarative baseline test failure for text tables
+  * Don't let text table cells shrink below their minimum width (boo#1176530)
+  * Don't shrink a column when it spans multiple columns
+  * Use icon themes in QPrintPreviewDialog [if they exist]
+  * QAbstractFileEngine: fix UB (data race) on qt_file_engine_handlers_in_use
+  * Increment reference count when restoring reference
+  * Reject truncated and corrupt ascii pnm images
+  * Fix handling of Sunday in POSIX time-zone rules
+  * Fix developer build
+- Drop patches, support for OpenSSL < 1.1.0 is no longer necessary:
+  * 0001-Lower-required-version-of-OpenSSL-to-1.1.0.patch
+  * fix-build-openssl-1.1.0.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 07:14:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde254:

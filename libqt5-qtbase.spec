@@ -29,7 +29,7 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.2+kde254
+Version:        5.15.2+kde268
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
@@ -47,8 +47,6 @@ Source3:        baselibs.conf
 Source4:        qtlogging.ini
 Source99:       libqt5-qtbase-rpmlintrc
 # patches 0-1000 are openSUSE and/or non-upstream(able) patches #
-Patch1:         0001-Lower-required-version-of-OpenSSL-to-1.1.0.patch
-Patch2:         fix-build-openssl-1.1.0.patch
 Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
 # Proposed: https://bugreports.qt.io/browse/QTBUG-88491
 Patch4:         0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch
