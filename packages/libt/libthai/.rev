@@ -304,4 +304,17 @@
   * Updated word break dictionary. (forwarded request 829045 from dirkmueller)</comment>
     <requestid>829534</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c206eaf38b2a63b8716ecf6f9e7737b7</srcmd5>
+    <version>0.1.29</version>
+    <time>1640459794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.29.
+  * Rewritten thbrk test.
+  * More compliance with UAX#14 (Unicode Line Breaking Algorithm)
+    for thbrk.
+  * Fix a typo in TIS-620 character name in tis.h.
+  * Updated word break dictionary. (forwarded request 942001 from andythe_great)</comment>
+    <requestid>942318</requestid>
+  </revision>
 </revisionlist>

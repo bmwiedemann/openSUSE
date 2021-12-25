@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 21 20:27:42 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.1.29.
+  * Rewritten thbrk test.
+  * More compliance with UAX#14 (Unicode Line Breaking Algorithm)
+    for thbrk.
+  * Fix a typo in TIS-620 character name in tis.h.
+  * Updated word break dictionary.
+
+-------------------------------------------------------------------
 Mon Aug 24 20:37:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.1.28:
