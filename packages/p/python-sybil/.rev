@@ -88,4 +88,24 @@
     <comment></comment>
     <requestid>874534</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c115a3453c88b7df0054aa611fa803de</srcmd5>
+    <version>3.0.0</version>
+    <time>1640459785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Require pytest 6.2.0.
+  * Drop Python 2 support.
+  * Add support for Python 3.10
+  * Remove the encoding parameter to
+    :class:`~sybil.parsers.doctest.DocTestParser` as it is no longer used.
+  * :class:`~sybil.parsers.codeblock.CodeBlockParser` has been renamed to
+    :class:`~sybil.parsers.codeblock.PythonCodeBlockParser`, see the
+    :ref:`codeblock-parser` documentation for details.
+  * Support has been added to check examples in Python source code in
+    addition to documentation source files.
+  * :attr:`~sybil.parsers.doctest.FIX_BYTE_UNICODE_REPR` has been removed
+    as it should no longer be needed.</comment>
+    <requestid>940129</requestid>
+  </revision>
 </revisionlist>

@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-sybil
-Version:        2.0.1
+Version:        3.0.0
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cjw296/sybil
 Source:         https://files.pythonhosted.org/packages/source/s/sybil/sybil-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
