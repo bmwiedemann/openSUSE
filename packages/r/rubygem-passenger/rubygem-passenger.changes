@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Dec 22 00:13:27 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.12
+
+   * [Debian] Fix compilation on 32 bit arm. Contributed by Antonio Terceiro.
+   * [Debian] Add Bullseye Debian packages.
+   * Add formatted error messages to responses. Contributed by Mohammad Aboelnour.
+   * Fixes for running under WSL 1. Contributed by Luke Pearce. Closes GH-2036.
+   * Upgrades Boost to 1.77. To go along with 32 bit arm fix.
+   * [MacOS] Fixes autodetection of openssl lib on apple silicon. Contributed by Taketo Takashima. Closes GH-2389.
+   * Reconnect to mongoid databases after fork, like we do for ActiveRecord. Contributed by Mohammad Aboelnour.
+   * [Ubuntu] add missing apache name in instance registry dir detection.
+   * [Ubuntu] replace hirsute apt packages with impish.
+   * [Nginx] add new config option to choose the status code returned when application spawning fails. (passenger_spawn_exception_status_code).
+   * Updated various library versions used in precompiled binaries (used for e.g. gem installs):
+
+   - ccache: 4.4.1 → 4.4.2
+   - cmake: 3.21.2 → 3.21.4
+   - curl: 7.78.0 → 7.79.1
+   - git: 2.33.0 → 2.33.1
+   - gnupg: 2.3.2 → 2.3.3
+   - rubygems: 3.2.27 → 3.2.30
+   - s3cmd: 2.1.0 → 2.2.0
+
+- Updated 0001-suse.patch to let it apply again
+
+-------------------------------------------------------------------
+Thu Oct 21 14:10:19 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.11
+
+  * Fix compilation on GCC 4.4, fixes a regression in 6.0.8 where
+    Passenger would no longer compiler without a C++11 compiler.
+
+  * [CentOS] Fix version detection on CentOS Stream. Contributed by Taketo…
+
+-------------------------------------------------------------------
 Wed Jun 23 00:59:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove execute bit from a Python script to stop requiring /usr/bin/python 

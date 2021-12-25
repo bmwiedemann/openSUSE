@@ -106,8 +106,6 @@
   # because of those files being missing.
   sed -i 's/"src\/cxx_supportlib\/vendor-modified\/boost\/thread\/detail\/thread.hpp.orig".freeze, //g' passenger-*.gemspec
   sed -i 's/"src\/cxx_supportlib\/vendor-modified\/boost\/thread\/once.hpp.orig".freeze, //g' passenger-*.gemspec
-  rm src/cxx_supportlib/vendor-modified/boost/thread/detail/thread.hpp.orig
-  rm src/cxx_supportlib/vendor-modified/boost/thread/once.hpp.orig
   # Do not install a Python script with +x
   chmod a-x src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
 :pre_install: |-
