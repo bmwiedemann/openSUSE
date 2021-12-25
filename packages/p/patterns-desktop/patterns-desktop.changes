@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  2 14:10:28 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Recommend the package power-profiles-daemon, to allow easy
+  tweaking of CPU and other power related settings.
+
+-------------------------------------------------------------------
 Fri Nov  6 14:40:04 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Rename laptop pattern to mobile (jsc#SLE-11520).
