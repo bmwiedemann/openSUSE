@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 19 17:30:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.3.4
+  * no release notes, works with python310
+- Drop 07e24913.patch released upstream
+
+-------------------------------------------------------------------
 Fri Feb 26 23:46:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add 07e24913.patch to fix s390x and ppc64

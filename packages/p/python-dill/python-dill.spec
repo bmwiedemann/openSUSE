@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dill
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
 Source:         https://files.pythonhosted.org/packages/source/d/dill/dill-%{version}.zip
-Patch0:         https://github.com/uqfoundation/dill/commit/07e24913.patch
 BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,7 +36,7 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  python3-dbm
 %endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-objgraph >= 1.7.2
 BuildArch:      noarch
 %python_subpackages
@@ -55,7 +54,6 @@ session in a single command.
 
 %prep
 %setup -q -n dill-%{version}
-%patch0 -p1
 find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %build
@@ -71,11 +69,13 @@ find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-# Creative; copied from .travis.yml
 failed=0
+%{python_expand # Creative; copied from .travis.yml
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
 for test in tests/test_*.py; do
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python $test || failed=1
+  $python $test || failed=1
 done
+}
 exit $failed
 
 %post
