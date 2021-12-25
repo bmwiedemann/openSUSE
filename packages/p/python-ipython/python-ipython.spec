@@ -30,13 +30,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 # Python 3.6 was officiallay supported with IPython up to 7.15
 %define         skip_python36 1
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.29.0
+Version:        7.30.1
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -44,6 +44,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
+# PATCH-FIX-UPSTREAM ipython-pr13282-py310-inspect.patch -- gh#ipython/ipython#13282, gh#ipython/ipython#13412
+Patch0:         ipython-pr13282-py310-inspect.patch
+# PATCH-FIX-UPSTREAM ipython-pr13371-py310-oserror.patch -- gh#ipython/ipython#13371
+Patch1:         ipython-pr13371-py310-oserror.patch
 BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
@@ -83,6 +87,7 @@ BuildArch:      noarch
 %if %{with test}
 # test requirements are specified in the iptest subpackage below
 BuildRequires:  %{python_module ipython-iptest = %{version}}
+BuildRequires:  %{python_module testsuite}
 %endif
 %if !%{with test}
 BuildRequires:  desktop-file-utils
@@ -142,6 +147,9 @@ Requires:       python-nose >= 0.10.1
 Requires:       python-numpy >= 1.17
 Requires:       python-requests
 Requires:       python-testpath
+%if %{with libalternatives}
+Requires:       alts
+%endif
 Provides:       python-jupyter_ipython-iptest = %{version}
 Obsoletes:      python-jupyter_ipython-iptest < %{version}
 
@@ -150,7 +158,7 @@ This package provides the iptest command, which is used for
 testing software that uses %{name}.
 
 %prep
-%setup -q -n ipython-%{version}
+%autosetup -p1 -n ipython-%{version}
 
 %build
 %python_build
@@ -202,8 +210,8 @@ desktop-file-edit --set-comment="Enhanced interactive Python %{$python_bin_suffi
 %suse_update_desktop_file -i -r ipython-%{$python_bin_suffix} "System;TerminalEmulator;"
 }
 
-# These can be run stand-alone, so make them executable rather than removing shebang
-%{python_expand find %{buildroot}%{$python_sitelib} -type f -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" {} \;
+%{python_expand # These can be run stand-alone, so make them executable rather than removing shebang
+find %{buildroot}%{$python_sitelib} -type f -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" {} \;
 find %{buildroot}%{$python_sitelib} -type f -name "*.py" -exec sed -i "s|^#!%{_bindir}/python$|#!%{__$python}|" {} \;
 find %{buildroot}%{$python_sitelib} -type f -name "*.py" -exec grep -q "#!%{__$python}" {} \; -exec chmod a+x {} \;
 

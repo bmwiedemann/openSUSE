@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Dec 20 18:35:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patches for Python 3.10
+  * ipython-pr13282-py310-inspect.patch -- gh#ipython/ipython#13282
+  * ipython-pr13371-py310-oserror.patch -- gh#ipython/ipython#13371
+  * gh#ipython/ipython#13412
+
+-------------------------------------------------------------------
+Sun Dec 19 19:24:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.30.1
+  * IPython 7.30 fixes a couple of bugs introduce in previous
+    releases (in particular with respect to path handling), and
+    introduce a few features and improvements:
+  * Notably we will highlight PR #13267 “Document that %run can
+    execute notebooks and ipy scripts.”, which is the first commit
+    of Fernando Pérez since mid 2016 (IPython 5.1). If you are new
+    to IPython, Fernando created IPython in 2001. The other most
+    recent contribution of Fernando to IPython itself was May 2018,
+    by reviewing and merging PRs. I want to note that Fernando is
+    still active but mostly as a mentor and leader of the whole
+    Jupyter organisation, but we’re still happy to see him
+    contribute code !
+  * PR #13290 “Use sphinxify (if available) in object_inspect_mime
+    path” should allow richer Repr of docstrings when using
+    jupyterlab inspector.
+  * PR #13311 make the debugger use ThreadPoolExecutor for debugger
+    cmdloop. This should fix some issues/infinite loop, but let us
+    know if you come across any regressions. In particular this
+    fixes issues with kmaork/madbg, a remote debugger for IPython.
+  * Note that this is likely the ante-penultimate release of
+    IPython 7.x as a stable branch, as I hope to release IPython
+    8.0 as well as IPython 7.31 next month/early 2022.
+
+-------------------------------------------------------------------
 Fri Nov 12 21:30:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.29.0

@@ -1,0 +1,176 @@
+From fc57ec912eec9da4c33d8db5416fdb2dada706e7 Mon Sep 17 00:00:00 2001
+From: Nikita Kniazev <nok.raven@gmail.com>
+Date: Mon, 1 Nov 2021 19:09:58 +0300
+Subject: [PATCH 1/5] Handle changed exception type from inspect.getabsfile
+ (bpo-44648)
+
+https://bugs.python.org/issue44648 (Python 3.10+)
+---
+ IPython/core/oinspect.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: ipython-7.30.1/IPython/core/oinspect.py
+===================================================================
+--- ipython-7.30.1.orig/IPython/core/oinspect.py
++++ ipython-7.30.1/IPython/core/oinspect.py
+@@ -305,13 +305,13 @@ def find_file(obj) -> str:
+     fname = None
+     try:
+         fname = inspect.getabsfile(obj)
+-    except TypeError:
++    except (OSError, TypeError):
+         # For an instance, the file that matters is where its class was
+         # declared.
+         if hasattr(obj, '__class__'):
+             try:
+                 fname = inspect.getabsfile(obj.__class__)
+-            except TypeError:
++            except (OSError, TypeError):
+                 # Can happen for builtins
+                 pass
+     except:
+Index: ipython-7.30.1/IPython/core/tests/test_magic_arguments.py
+===================================================================
+--- ipython-7.30.1.orig/IPython/core/tests/test_magic_arguments.py
++++ ipython-7.30.1/IPython/core/tests/test_magic_arguments.py
+@@ -7,6 +7,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ import argparse
++import sys
+ from nose.tools import assert_equal
+ 
+ from IPython.core.magic_arguments import (argument, argument_group, kwds,
+@@ -74,7 +75,12 @@ def foo(self, args):
+ 
+ 
+ def test_magic_arguments():
+-    assert_equal(magic_foo1.__doc__, '::\n\n  %foo1 [-f FOO]\n\n A docstring.\n\noptional arguments:\n  -f FOO, --foo FOO  an argument\n')
++    # “optional arguments” was replaced with “options” in argparse help
++    # https://docs.python.org/3/whatsnew/3.10.html#argparse
++    # https://bugs.python.org/issue9694
++    options = "optional arguments" if sys.version_info < (3, 10) else "options"
++
++    assert_equal(magic_foo1.__doc__, f"::\n\n  %foo1 [-f FOO]\n\n A docstring.\n\n{options}:\n  -f FOO, --foo FOO  an argument\n")
+     assert_equal(getattr(magic_foo1, 'argcmd_name', None), None)
+     assert_equal(real_name(magic_foo1), 'foo1')
+     assert_equal(magic_foo1(None, ''), argparse.Namespace(foo=None))
+@@ -86,32 +92,32 @@ def test_magic_arguments():
+     assert_equal(magic_foo2(None, ''), argparse.Namespace())
+     assert hasattr(magic_foo2, 'has_arguments')
+ 
+-    assert_equal(magic_foo3.__doc__, '::\n\n  %foo3 [-f FOO] [-b BAR] [-z BAZ]\n\n A docstring.\n\noptional arguments:\n  -f FOO, --foo FOO  an argument\n\nGroup:\n  -b BAR, --bar BAR  a grouped argument\n\nSecond Group:\n  -z BAZ, --baz BAZ  another grouped argument\n')
++    assert_equal(magic_foo3.__doc__, f"::\n\n  %foo3 [-f FOO] [-b BAR] [-z BAZ]\n\n A docstring.\n\n{options}:\n  -f FOO, --foo FOO  an argument\n\nGroup:\n  -b BAR, --bar BAR  a grouped argument\n\nSecond Group:\n  -z BAZ, --baz BAZ  another grouped argument\n")
+     assert_equal(getattr(magic_foo3, 'argcmd_name', None), None)
+     assert_equal(real_name(magic_foo3), 'foo3')
+     assert_equal(magic_foo3(None, ''),
+                        argparse.Namespace(bar=None, baz=None, foo=None))
+     assert hasattr(magic_foo3, 'has_arguments')
+ 
+-    assert_equal(magic_foo4.__doc__, '::\n\n  %foo4 [-f FOO]\n\n A docstring.\n\noptional arguments:\n  -f FOO, --foo FOO  an argument\n')
++    assert_equal(magic_foo4.__doc__, f"::\n\n  %foo4 [-f FOO]\n\n A docstring.\n\n{options}:\n  -f FOO, --foo FOO  an argument\n")
+     assert_equal(getattr(magic_foo4, 'argcmd_name', None), None)
+     assert_equal(real_name(magic_foo4), 'foo4')
+     assert_equal(magic_foo4(None, ''), argparse.Namespace())
+     assert hasattr(magic_foo4, 'has_arguments')
+ 
+-    assert_equal(magic_foo5.__doc__, '::\n\n  %frobnicate [-f FOO]\n\n A docstring.\n\noptional arguments:\n  -f FOO, --foo FOO  an argument\n')
++    assert_equal(magic_foo5.__doc__, f"::\n\n  %frobnicate [-f FOO]\n\n A docstring.\n\n{options}:\n  -f FOO, --foo FOO  an argument\n")
+     assert_equal(getattr(magic_foo5, 'argcmd_name', None), 'frobnicate')
+     assert_equal(real_name(magic_foo5), 'frobnicate')
+     assert_equal(magic_foo5(None, ''), argparse.Namespace(foo=None))
+     assert hasattr(magic_foo5, 'has_arguments')
+ 
+-    assert_equal(magic_magic_foo.__doc__, '::\n\n  %magic_foo [-f FOO]\n\n A docstring.\n\noptional arguments:\n  -f FOO, --foo FOO  an argument\n')
++    assert_equal(magic_magic_foo.__doc__, f"::\n\n  %magic_foo [-f FOO]\n\n A docstring.\n\n{options}:\n  -f FOO, --foo FOO  an argument\n")
+     assert_equal(getattr(magic_magic_foo, 'argcmd_name', None), None)
+     assert_equal(real_name(magic_magic_foo), 'magic_foo')
+     assert_equal(magic_magic_foo(None, ''), argparse.Namespace(foo=None))
+     assert hasattr(magic_magic_foo, 'has_arguments')
+ 
+-    assert_equal(foo.__doc__, '::\n\n  %foo [-f FOO]\n\n A docstring.\n\noptional arguments:\n  -f FOO, --foo FOO  an argument\n')
++    assert_equal(foo.__doc__, f"::\n\n  %foo [-f FOO]\n\n A docstring.\n\n{options}:\n  -f FOO, --foo FOO  an argument\n")
+     assert_equal(getattr(foo, 'argcmd_name', None), None)
+     assert_equal(real_name(foo), 'foo')
+     assert_equal(foo(None, ''), argparse.Namespace(foo=None))
+Index: ipython-7.30.1/IPython/core/tests/test_completer.py
+===================================================================
+--- ipython-7.30.1.orig/IPython/core/tests/test_completer.py
++++ ipython-7.30.1/IPython/core/tests/test_completer.py
+@@ -12,6 +12,7 @@ import unittest
+ from contextlib import contextmanager
+ 
+ import nose.tools as nt
++import pytest
+ 
+ from traitlets.config.loader import Config
+ from IPython import get_ipython
+@@ -29,6 +30,15 @@ from IPython.core.completer import (
+ )
+ from nose.tools import assert_in, assert_not_in
+ 
++if sys.version_info >= (3, 10):
++    import jedi
++    from pkg_resources import parse_version
++
++    # Requires https://github.com/davidhalter/jedi/pull/1795
++    jedi_issue = parse_version(jedi.__version__) <= parse_version("0.18.0")
++else:
++    jedi_issue = False
++
+ # -----------------------------------------------------------------------------
+ # Test functions
+ # -----------------------------------------------------------------------------
+@@ -381,6 +391,8 @@ class TestCompleter(unittest.TestCase):
+                 matches = c.all_completions("TestCl")
+                 assert matches == ['TestClass'], jedi_status
+                 matches = c.all_completions("TestClass.")
++                if jedi_status and jedi_issue:
++                    continue
+                 assert len(matches) > 2, jedi_status
+                 matches = c.all_completions("TestClass.a")
+                 assert matches == ['TestClass.a', 'TestClass.a1'], jedi_status
+@@ -435,6 +447,7 @@ class TestCompleter(unittest.TestCase):
+             "encoding" in c.signature
+         ), "Signature of function was not found by completer"
+ 
++    @pytest.mark.xfail(jedi_issue, reason="Known failure on jedi<=0.18.0")
+     def test_deduplicate_completions(self):
+         """
+         Test that completions are correctly deduplicated (even if ranges are not the same)
+Index: ipython-7.30.1/IPython/lib/tests/test_pretty.py
+===================================================================
+--- ipython-7.30.1.orig/IPython/lib/tests/test_pretty.py
++++ ipython-7.30.1/IPython/lib/tests/test_pretty.py
+@@ -7,14 +7,15 @@
+ 
+ from collections import Counter, defaultdict, deque, OrderedDict
+ import os
++import pytest
+ import types
+ import string
++import sys
+ import unittest
+ 
+ import nose.tools as nt
+ 
+ from IPython.lib import pretty
+-from IPython.testing.decorators import skip_without
+ 
+ from io import StringIO
+ 
+@@ -118,12 +119,12 @@ def test_sets():
+         yield nt.assert_equal, got_output, expected_output
+ 
+ 
+-@skip_without('xxlimited')
+ def test_pprint_heap_allocated_type():
+     """
+     Test that pprint works for heap allocated types.
+     """
+-    import xxlimited
++    module_name = "xxlimited" if sys.version_info < (3, 10) else "xxlimited_35"
++    xxlimited = pytest.importorskip(module_name)
+     output = pretty.pretty(xxlimited.Null)
+     nt.assert_equal(output, 'xxlimited.Null')
+ 
