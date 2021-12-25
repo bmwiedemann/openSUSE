@@ -1083,4 +1083,18 @@
     <comment></comment>
     <requestid>941340</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>f5d462fb076f34d7b6a981062e62d03c</srcmd5>
+    <version>1.50.3</version>
+    <time>1640459795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.50.3:
+  + pango-view: Add --serialize-to option for easy bug reporting.
+  + Revert a transformation change that broke metrics for vertical
+    text.
+  + Handle fonts without space glyph (such as icon fonts) better.
+  + Fix some corner cases of line width accounting.
+  + Fix line height with emulated Small Caps. (forwarded request 942237 from iznogood)</comment>
+    <requestid>942319</requestid>
+  </revision>
 </revisionlist>

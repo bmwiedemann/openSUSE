@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 23 12:02:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.3:
+  + pango-view: Add --serialize-to option for easy bug reporting.
+  + Revert a transformation change that broke metrics for vertical
+    text.
+  + Handle fonts without space glyph (such as icon fonts) better.
+  + Fix some corner cases of line width accounting.
+  + Fix line height with emulated Small Caps.
+
+-------------------------------------------------------------------
 Thu Dec 16 23:13:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.50.2:
