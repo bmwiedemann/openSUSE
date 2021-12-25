@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 25 01:02:56 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate tests on Leap 15.2
+- Update to v3.13.1
+  * Revert schema naming changes with function based `@api_view`
+  * Fix CursorPagination parameter schema type
+- from v3.13
+  * Django 4.0 support
+  * Fields arguments are now keyword-only
+
+-------------------------------------------------------------------
 Thu Sep  9 20:41:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.12.4:
