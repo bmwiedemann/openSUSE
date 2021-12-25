@@ -20,7 +20,7 @@
 %bcond_without tests
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.11.1
+Version:        2.12.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -31,24 +31,25 @@ Source:         https://github.com/PyCQA/pylint/archive/refs/tags/v%{version}.ta
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.8
+Requires:       python-astroid >= 2.9
 Requires:       python-isort >= 4.2.5
 Requires:       python-mccabe >= 0.6
 Requires:       python-platformdirs >= 2.2
-Requires:       python-toml >= 0.7.1
+Requires:       python-toml >= 0.9.2
 %if 0%{?python_version_nodots} < 310
 Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
-BuildRequires:  %{python_module astroid >= 2.8}
+BuildRequires:  %{python_module GitPython > 3}
+BuildRequires:  %{python_module astroid >= 2.9}
 BuildRequires:  %{python_module isort >= 4.2.5}
 BuildRequires:  %{python_module mccabe >= 0.6}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toml >= 0.7.1}
-BuildRequires:  %{python_module typing-extensions >= 3.10}
+BuildRequires:  %{python_module toml >= 0.9.2}
+BuildRequires:  %{python_module typing-extensions >= 3.10 if %python-base < 3.10}
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -74,6 +75,8 @@ feature.
 %prep
 %autosetup -p1 -n pylint-%{version}
 sed -i '1{/^#!/ d}' pylint/__main__.py
+# unpin upper bounds for astroid and mccabe
+sed -i -e 's/\(mccabe>=.*\),<.*/\1/' -e 's/\(astroid>=.*\),<.*/\1/' setup.cfg
 
 %build
 export LC_ALL="en_US.UTF-8"
