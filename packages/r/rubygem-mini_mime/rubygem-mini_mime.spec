@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mini_mime
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 %define mod_name mini_mime
 %define mod_full_name %{mod_name}-%{version}
