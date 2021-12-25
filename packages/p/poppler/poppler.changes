@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 22 13:10:44 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use gcc11 when building in SLE/Leap since a Qt6 header file
+  includes <filesystem> which was still experimental in gcc7.
+
+-------------------------------------------------------------------
 Thu Dec  2 22:12:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.12.0:

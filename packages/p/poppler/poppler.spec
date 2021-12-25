@@ -41,7 +41,11 @@ URL:            https://poppler.freedesktop.org
 Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.58
 BuildRequires:  openjpeg2
@@ -211,6 +215,9 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 %if "%{flavor}" == "qt5"
 export MOCQT5='%{_libqt5_bindir}/moc'
 export MOCQT52='%{_libqt5_bindir}/moc'
+%endif
+%if 0%{?suse_version} < 1550
+export CXX=g++-11
 %endif
 
 # make introspection scanner (g-ir-scanner) work with older build envs
