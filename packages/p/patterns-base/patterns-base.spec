@@ -138,7 +138,9 @@ Requires:       rpm
 Requires:       system-user-nobody
 Requires:       systemd
 Requires:       util-linux
-Requires:       zypper
+# We don't necessarily want zypper in specific minimal environments
+# e.g. buildroots and locked down appliance environments
+Recommends:     zypper
 %if 0%{?sle_version}
 Recommends:     SUSEConnect
 Recommends:     rollback-helper

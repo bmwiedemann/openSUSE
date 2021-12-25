@@ -171,6 +171,12 @@ Tue Feb 16 09:36:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 - Suggest ed to prefer it over busybox-ed
 
 -------------------------------------------------------------------
+Sat Jan 30 16:44:32 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Downgrade zypper to Recommends in the base pattern so buildroots
+  and appliance builds can go without it when desired
+
+-------------------------------------------------------------------
 Tue Jan 26 09:20:12 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - bootloader pattern should not require a base pattern
