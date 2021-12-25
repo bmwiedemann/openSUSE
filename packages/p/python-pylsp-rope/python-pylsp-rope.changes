@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 18 17:55:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.1.8:
+  - Add refactor extract method/variable including similar statements
+    variant
+  - Add refactor extract global method/variable variant
+
+-------------------------------------------------------------------
 Tue Nov 23 17:38:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.1.7:
