@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 19 15:29:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add zope.exceptions-pr19+pr21-py310.patch
+  * gh#zopefoundation/zope.exceptions#21
+
+-------------------------------------------------------------------
 Tue Jul 21 09:01:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.4

@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.exceptions
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            http://cheeseshop.python.org/pypi/zope.exceptions
 Source:         https://files.pythonhosted.org/packages/source/z/zope.exceptions/zope.exceptions-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM zope.exceptions-pr19+pr21-py310.patch -- gh#zopefoundation/zope.exceptions#21
+Patch0:         zope.exceptions-pr19+pr21-py310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,7 +54,7 @@ This package contains exception interfaces and implementations which are so
 general purpose that they don't belong in Zope application-specific packages.
 
 %prep
-%setup -q -n zope.exceptions-%{version}
+%autosetup -p1 -n zope.exceptions-%{version}
 
 %build
 %python_build
@@ -72,7 +74,10 @@ general purpose that they don't belong in Zope application-specific packages.
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope/
+%{python_sitelib}/zope/exceptions
+%{python_sitelib}/zope.exceptions-%{version}*-info
+%{python_sitelib}/zope.exceptions-%{version}*-nspkg.pth
 %endif
 
 %changelog
