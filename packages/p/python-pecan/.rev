@@ -267,4 +267,19 @@
     <comment></comment>
     <requestid>923428</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8b20b06df0fbbe8e1a5bd8d580d4501c</srcmd5>
+    <version>1.4.1</version>
+    <time>1640459786</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * add support for Python 3.10
+  * added trove classifiers for Python 3.6 - 3.9
+  * fixed a bug related to setuptools as a dependency
+  * fixed a bug that broke pecan when used with certain
+   versions of SQLAlchemy 
+- drop 0001-Support-SQLAlchemy-1.4.x.patch,
+  0002-Fix-typo-from-bad-copy-paste.patch: obsolete (upstream)</comment>
+    <requestid>941482</requestid>
+  </revision>
 </revisionlist>

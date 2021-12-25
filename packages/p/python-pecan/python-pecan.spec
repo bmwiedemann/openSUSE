@@ -25,15 +25,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pecan
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
 URL:            https://github.com/pecan/pecan
 Source:         https://files.pythonhosted.org/packages/source/p/pecan/pecan-%{version}.tar.gz
 Patch0:         pecan-no-kajiki.patch
-Patch1:         0001-Support-SQLAlchemy-1.4.x.patch
-Patch2:         0002-Fix-typo-from-bad-copy-paste.patch
 BuildRequires:  %{python_module Genshi >= 0.7}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Mako >= 0.4.0}
@@ -78,8 +76,6 @@ A WSGI object-dispatching web framework.
 %prep
 %setup -q -n pecan-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 sed -ie "/^uwsgi$/d" test-requirements.txt
 sed -ie "/^pep8$/d" test-requirements.txt
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 11 22:31:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * add support for Python 3.10
+  * added trove classifiers for Python 3.6 - 3.9
+  * fixed a bug related to setuptools as a dependency
+  * fixed a bug that broke pecan when used with certain
+   versions of SQLAlchemy 
+- drop 0001-Support-SQLAlchemy-1.4.x.patch,
+  0002-Fix-typo-from-bad-copy-paste.patch: obsolete (upstream)
+
+-------------------------------------------------------------------
 Tue Oct  5 14:24:02 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts
