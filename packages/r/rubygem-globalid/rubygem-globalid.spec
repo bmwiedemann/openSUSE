@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-globalid
-Version:        0.5.2
+Version:        1.0.0
 Release:        0
 %define mod_name globalid
 %define mod_full_name %{mod_name}-%{version}

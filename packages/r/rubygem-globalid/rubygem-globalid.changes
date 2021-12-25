@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 25 00:09:14 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.0
+
+  Stable API release.
+
+  The code is the same as the 0.6.0 release.
+
+-------------------------------------------------------------------
+Fri Dec 24 23:59:47 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.6.0
+
+  * Add ActiveRecord::FixtureSet.signed_global_id helper to generate signed ids inside fixtures.
+
+-------------------------------------------------------------------
 Wed Aug 25 05:12:40 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 0.5.2
