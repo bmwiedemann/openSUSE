@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 25 07:34:49 UTC 2021 - stigpro@outlook.fr
+
+- Update to version 6.0.1~git0.1e7fff0:
+  * fix(docs): use correct manpage section numbering
+  * docs: add matrix badge
+  * chore: bump vergen to latest
+  * chore(cli): derive Default for Opt
+  * docs: update README benchmarks
+  * docs: update documentation as a preparation for v6's release. (#237)
+  * chore: bring back `export-config` flag (#236)
+  * chore: bump libmacchina to v4.0.2
+  * chore: freeze color-to-tui at v0.1.3
+  * docs: update README
+  * Fix the change of path of the config file
+
+-------------------------------------------------------------------
 Thu Nov 11 11:41:10 UTC 2021 - stigpro@outlook.fr
 
 - Update to version 5.0.4~git0.72b9c2b:

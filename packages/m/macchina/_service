@@ -3,7 +3,7 @@
     <param name="url">https://github.com/Macchina-CLI/macchina.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">v5.0.4</param>
+    <param name="revision">v6.0.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>

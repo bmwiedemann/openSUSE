@@ -17,7 +17,7 @@
 
 
 Name:           macchina
-Version:        5.0.4~git0.72b9c2b
+Version:        6.0.1~git0.1e7fff0
 Release:        0
 Summary:        Fast, minimal and customizable system information frontend
 License:        MIT
@@ -26,8 +26,8 @@ URL:            https://github.com/Macchina-CLI/macchina#macchina
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Recommends:     wmctrl
 BuildRequires:  cargo-packaging
+Recommends:     wmctrl
 ExcludeArch:    armv7l
 ExcludeArch:    i586
 
@@ -42,12 +42,12 @@ cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
-strip target/release/macchina
+strip target/release/%{name}
 
 %install
 %{cargo_install}
 mkdir -p %{buildroot}%{_datadir}/%{name}
-install -m0644 -t %{buildroot}%{_datadir}/%{name} macchina.toml
+install -m0644 -t %{buildroot}%{_datadir}/%{name} doc/%{name}.toml
 
 %check
 %ifarch "x86_64"
