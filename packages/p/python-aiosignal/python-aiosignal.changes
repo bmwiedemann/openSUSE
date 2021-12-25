@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Dec 20 21:08:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing test dependency pytest-asyncio
+
+-------------------------------------------------------------------
+Sat Dec 11 19:21:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for version 1.2.0
+- required by aiohttp 3.8
