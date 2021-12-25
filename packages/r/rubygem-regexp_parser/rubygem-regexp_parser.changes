@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 25 21:37:11 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.2.0
+
+  ### Added
+
+  - Added support for 13 new unicode properties introduced in Ruby 3.1.0-dev
+
+-------------------------------------------------------------------
 Tue Mar 16 04:04:24 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.1.1

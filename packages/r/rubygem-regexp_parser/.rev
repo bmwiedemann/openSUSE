@@ -103,4 +103,12 @@
     <comment>update (forwarded request 879328 from mschnitzer)</comment>
     <requestid>879330</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c76387431b5b22d7f5227c1d902262c7</srcmd5>
+    <version>2.2.0</version>
+    <time>1640473813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942475</requestid>
+  </revision>
 </revisionlist>
