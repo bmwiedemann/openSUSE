@@ -162,4 +162,17 @@
       (@Carreau)</comment>
     <requestid>921010</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1fc6a0e9c2f613579e4a34353365ecdd</srcmd5>
+    <version>6.4.2</version>
+    <time>1640459787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.4.2
+  * Enabled rich rendering of variables in the debugger #787
+    (@JohanMabille)
+  * Remove setting of the eventloop function in the InProcessKernel
+    #781 (@rayosborn)
+  * Add python version classifiers #783 (@emuccino)</comment>
+    <requestid>941537</requestid>
+  </revision>
 </revisionlist>

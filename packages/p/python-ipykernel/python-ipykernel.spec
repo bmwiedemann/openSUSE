@@ -20,7 +20,8 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-ipykernel
-Version:        6.4.1
+# Note: Don't update to > 6.4 until you can update traitlets 4, which is required for python36
+Version:        6.4.2
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -30,10 +31,8 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipyke
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
-Requires:       hicolor-icon-theme
 Requires:       jupyter-jupyter-client
 Requires:       python-debugpy >= 1.0
 Requires:       python-ipython >= 7.23.1

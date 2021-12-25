@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 19 19:59:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.4.2
+  * Enabled rich rendering of variables in the debugger #787
+    (@JohanMabille)
+  * Remove setting of the eventloop function in the InProcessKernel
+    #781 (@rayosborn)
+  * Add python version classifiers #783 (@emuccino)
+
+-------------------------------------------------------------------
 Wed Sep 22 15:23:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Deduplicate files in _jupyter_kernel_dir.
