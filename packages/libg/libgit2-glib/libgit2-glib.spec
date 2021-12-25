@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2-glib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libgit2-glib
-Version:        0.99.0+16
+Version:        1.0.0.1
 Release:        0
 Summary:        GLib wrapper library around libgit2
 License:        LGPL-2.1-or-later

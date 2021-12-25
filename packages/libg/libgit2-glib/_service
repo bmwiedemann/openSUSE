@@ -1,11 +1,13 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/libgit2-glib.git</param>
-    <param name="revision">master</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">v.(.*)</param>
-    <param name="changesgenerate">enable</param>
+    <param name="revision">v1.0.0.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+<!--    <param name="changesgenerate">enable</param>
+-->
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

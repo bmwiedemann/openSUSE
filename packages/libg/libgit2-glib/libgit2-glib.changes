@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 23 12:07:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.0.1:
+  + Fix deprecation.
+- Changes from version 1.0.0:
+  + Allow diff without repository.
+  + Allow null options on ggit_checkout API.
+  + Invalid path resolving relative path on windows.
+  + Add git_repository_set_head_detached to the public API.
+  + Added a wrapper function for git_remote_prune.
+  + Several meson improvements.
+  + Misc bug fixes.
+
+-------------------------------------------------------------------
 Thu Apr 16 20:43:07 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.99.0+16:
