@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-async_timeout
-Version:        3.0.1
+Version:        4.0.1
 Release:        0
 Summary:        Timeout context manager for asyncio programs
 License:        Apache-2.0
@@ -30,11 +30,13 @@ BuildRequires:  %{python_module base >= 3.5.3}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
+Requires:       python-typing_extensions
 Provides:       python-async-timeout = %{version}
 Obsoletes:      python-async-timeout < %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -53,7 +55,7 @@ sed -i -e '/addopts/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

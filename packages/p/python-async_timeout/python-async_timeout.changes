@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec 11 18:40:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.1 
+  * Fix regression:
+    - Don't raise TimeoutError from timeout object that doesn't
+      enter into async context manager
+    - Use call_soon() for raising TimeoutError if deadline is
+      reached on entering into async context manager (#258)
+  * Make Timeout class available in __all__.
+- Release 4.0.0
+  * Implemented timeout_at(deadline) (#117)
+  * Supported timeout.deadline and timeout.expired properties.
+  * Dropped timeout.remaining property: it can be calculated as
+    timeout.deadline - loop.time()
+  * Dropped timeout.timeout property that returns a relative
+    timeout based on the timeout object creation time; the absolute
+    timeout.deadline should be used instead.
+  * Added the deadline modification methods: timeout.reject(),
+    timeout.shift(delay), timeout.update(deadline).
+  * Deprecated synchronous context manager usage
+
+-------------------------------------------------------------------
 Wed Jan 27 07:40:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix Obsolete/Provides to work with multiple python3 flavors
