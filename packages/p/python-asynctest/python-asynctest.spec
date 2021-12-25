@@ -20,6 +20,7 @@
 %define skip_python2 1
 %define skip_python38 1
 %define skip_python39 1
+%define skip_python310 1
 Name:           python-asynctest
 Version:        0.13.0
 Release:        0
