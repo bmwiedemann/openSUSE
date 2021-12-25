@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 24 22:54:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.29.0:
+  - Added `change-preview(...)` action to change the `--preview` command
+      - cf. `preview(...)` is a one-off action that doesn't change the
+        default preview command
+  - Added `change-preview-window(...)` action
+      - You can rotate through the different options separated by `|`
+        ```sh
+        fzf --preview 'cat {}' --preview-window right:40% \
+            --bind 'ctrl-/:change-preview-window(right,70%|down,40%,border-top|hidden|)'
+        ```
+  - Fixed rendering of the prompt line when overflow occurs with
+    `--info=inline`
+
+-------------------------------------------------------------------
 Sat Nov 13 19:44:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.0:
