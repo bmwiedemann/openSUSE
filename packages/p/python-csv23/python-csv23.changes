@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 19 14:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.3
+  * Drop Python 3.5 support and tag Python 3.9 and 3.10 support
+
+-------------------------------------------------------------------
 Sun Oct 11 14:20:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Release (only imposed from testing) minimum version for mock
