@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 23 17:20:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add cd4c50db38ea9421deb83f25935a27531aa756a9.patch: wayland:
+  Protect against enter events for empty surfaces.
+
+-------------------------------------------------------------------
 Tue Dec 15 11:02:17 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO (boo#1133118) as it works now.

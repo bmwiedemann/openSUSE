@@ -1,7 +1,7 @@
 #
 # spec file for package clutter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Development/Libraries/GNOME
 URL:            http://clutter-project.org/
 Source0:        https://download.gnome.org/sources/clutter/1.26/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM cd4c50db38ea9421deb83f25935a27531aa756a9.patch -- wayland: Protect against enter events for empty surfaces
+Patch0:         https://gitlab.gnome.org/GNOME/clutter/-/commit/cd4c50db38ea9421deb83f25935a27531aa756a9.patch
 
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
