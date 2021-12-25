@@ -257,4 +257,12 @@
     <comment>update (forwarded request 858649 from mschnitzer)</comment>
     <requestid>858650</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8a395b32a9eca84053dfca19bdb1e0e1</srcmd5>
+    <version>2.6.1</version>
+    <time>1640459806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942435</requestid>
+  </revision>
 </revisionlist>
