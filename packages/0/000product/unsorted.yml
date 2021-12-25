@@ -7695,8 +7695,6 @@ unsorted:
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyleaflet 
-  - jupyter-ipympl 
-  - jupyter-ipympl-jupyterlab 
   - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipyvolume 
@@ -7722,6 +7720,8 @@ unsorted:
   - jupyter-jupytext-jupyterlab 
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
+  - jupyter-matplotlib 
+  - jupyter-matplotlib-jupyterlab 
   - jupyter-nbclassic 
   - jupyter-nbconvert 
   - jupyter-nbconvert-doc 
@@ -28347,6 +28347,7 @@ unsorted:
   - python39-django-tagging 
   - python39-django-tastypie 
   - python39-django-timezone-field 
+  - python39-django-treebeard 
   - python39-django-user-agents 
   - python39-django-utils-six 
   - python39-django-webpack-loader 
