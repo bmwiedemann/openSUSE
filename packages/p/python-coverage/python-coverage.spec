@@ -16,39 +16,31 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-coverage
-Version:        5.5
+Version:        6.2
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM traced_file_absolute.patch gh#nedbat/coveragepy#1161 mcepl@suse.com
-# traced file names seem to be absolute now?
-Patch0:         traced_file_absolute.patch
-# PATCH-FIX-UPSTREAM 0001-make-data-collection-operations-thread-safe.patch gh#nedbat/coveragepy#commit-e36b42e2db46 alarrosa@suse.com
-# Make data collection operations thread safe
-Patch1:         0001-make-data-collection-operations-thread-safe.patch
-# PATCH-FIX-UPSTREAM change__file__report-dir.patch gh#nedbat/coveragepy#1161 mcepl@suse.com
-# Fix yet another regression in Python 3.8.10, this time about __file__ value for directories.
-Patch2:         change__file__report-dir.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+# SECTION test requirements
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= 4.57}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module unittest-mixins}
-BuildRequires:  %{python_module xml}
-BuildRequires:  %{pythons}
+BuildRequires:  %{python_module tomli}
+# for database (sqlite3) support
+BuildRequires:  %pythons
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-setuptools
-Requires:       python-toml
+# coverage[toml]
+Recommends:     python-tomli
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
@@ -61,14 +53,8 @@ library to determine which lines are executable, and which have been executed.
 %prep
 %autosetup -p1 -n coverage-%{version}
 
-# do not require xdist
+# we define everything necessary ourselves below
 sed -i -e '/addopts/d' setup.cfg
-# writes in /usr/
-rm tests/test_process.py
-# summary differs trivialy
-rm tests/test_summary.py
-# requires additional plugins
-rm tests/test_plugins.py
 
 %build
 %python_build
@@ -80,18 +66,6 @@ rm -vf %{buildroot}%{_bindir}/coverage{2,3}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# GetZipBytesTest.test_get_encoded_zip_files - needs zip command
-# test_egg - needs generated egg file
-# test_doctest - weird doctest importing
-# test_unicode - differs between py2/py3
-# test_version - checks for non-compiled variant, we ship only compiled one
-# test_multiprocessing_with_branching - whitespace issue in regexp
-# test_farm, test_encoding, test_multi - tries to write in /usr
-# test_dothtml_not_python - no idea
-# test_bytes
-# test_one_of
-# test_xdist_sys_path_nuttiness_is_fixed - xdist check that we actually fail on purpose
-# test_debug_sys_ctracer - requires dep on ctracer
 export LANG=en_US.UTF8
 %{python_expand # Link executables to flavor specific build areas, to be used for testing. build/ is shuffled around by python_expand
 mkdir build/bin
@@ -100,12 +74,35 @@ for filepath in %{buildroot}%{_bindir}/coverage*-%{$python_bin_suffix}; do
   unsuffixed=${filename/-%{$python_bin_suffix}/}
   ln -s $filepath build/bin/$unsuffixed
 done
+# indicate a writeable .pth directory for tests
+mkdir -p build/mysite
+cp %{python_sitearch}/zzzz-import-failed-hooks.pth build/mysite/
 }
+# the tests need the empty leading part for importing local test projects"
+export PYTHONPATH=":$PWD/build/mysite"
+
 export PATH="$(pwd)/build/bin:$PATH"
+
 %python_exec -mcoverage debug sys
-# the tests need the empty leading part for importing local test projects, the x is a dummy"
-export PYTHONPATH=":x"
-%pytest_arch -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes or test_encoding or test_multi or test_xdist_sys_path_nuttiness_is_fixed or test_debug_sys_ctracer)'
+
+# installs some test modules into tests/ (flavor agnostic)
+python3 igor.py zip_mods
+
+# test_version - checks for non-compiled variant, we ship only compiled one
+donttest="test_version"
+# test_xdist_sys_path_nuttiness_is_fixed - xdist check that we actually fail on purpose
+donttest+=" or test_xdist_sys_path_nuttiness_is_fixed"
+# test_debug_sys_ctracer - requires dep on ctracer
+donttest+=" or test_debug_sys_ctracer"
+# does not find a usable venv
+donttest+=" or test_venv"
+# writes in /usr/
+donttest+=" or test_process"
+# requires additional plugins
+donttest+=" or test_plugins"
+
+%pytest_arch -n auto --no-flaky-report -k "$donttest" -rp ||:
+%pytest_arch -n auto --no-flaky-report -k "not ($donttest)"
 
 %post
 %python_install_alternative coverage

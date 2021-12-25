@@ -1,4 +1,188 @@
 -------------------------------------------------------------------
+Thu Dec  9 17:16:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2
+  * Feature: Now the --concurrency setting can now have a list of
+    values, so that threads and another lightweight threading
+    package can be measured together, such as
+    --concurrency=gevent,thread. Closes issue 1012 and issue 1082.
+  * Fix: A module specified as the source setting is imported
+    during startup, before the user program imports it. This could
+    cause problems if the rest of the program isn't ready yet. For
+    example, issue 1203 describes a Django setting that is accessed
+    before settings have been configured. Now the early import is
+    wrapped in a try/except so errors then don't stop execution.
+  * Fix: A colon in a decorator expression would cause an exclusion
+    to end too early, preventing the exclusion of the decorated
+    function. This is now fixed.
+  * Fix: The HTML report now will not overwrite a .gitignore file
+    that already exists in the HTML output directory (follow-on for
+    issue 1244).
+  * API: The exceptions raised by Coverage.py have been
+    specialized, to provide finer-grained catching of exceptions by
+    third-party code.
+  * API: Using suffix=False when constructing a Coverage object
+    with multiprocessing wouldn't suppress the data file suffix
+    (issue 989). This is now fixed.
+  * Debug: The coverage debug data command will now sniff out
+    combinable data files, and report on all of them.
+  * Debug: The coverage debug command used to accept a number of
+    topics at a time, and show all of them, though this was never
+    documented. This no longer works, to allow for command-line
+    options in the future.
+- Release notes for 6.1.2
+  * Python 3.11 is supported (tested with 3.11.0a2). One still-open
+    issue has to do with exits through with-statements.
+  * Fix: When remapping file paths through the [paths] setting
+    while combining, the [run] relative_files setting was ignored,
+    resulting in absolute paths for remapped file names (issue
+    1147). This is now fixed.
+  * Fix: Complex conditionals over excluded lines could have
+    incorrectly reported a missing branch (issue 1271). This is now
+    fixed.
+  * Fix: More exceptions are now handled when trying to parse
+    source files for reporting. Problems that used to terminate
+    coverage.py can now be handled with [report] ignore_errors.
+    This helps with plugins failing to read files
+    (django_coverage_plugin issue 78).
+  * Fix: Removed another vestige of jQuery from the source tarball
+    (issue 840).
+  * Fix: Added a default value for a new-to-6.x argument of an
+    internal class. This unsupported class is being used by
+    coveralls (issue 1273). Although I'd rather not "fix"
+    unsupported interfaces, it's actually nicer with a default
+    value.
+- Release notes for 6.1.1
+  * Fix: The sticky header on the HTML report didn't work unless
+    you had branch coverage enabled. This is now fixed: the sticky
+    header works for everyone. (Do people still use coverage
+    without branch measurement!? j/k)
+  * Fix: When using explicitly declared namespace packages, the
+    "already imported a file that will be measured" warning would
+    be issued (issue 888). This is now fixed.
+- Release notes for 6.1
+  * Deprecated: The annotate command and the Coverage.annotate
+    function will be removed in a future version, unless people let
+    me know that they are using it. Instead, the html command gives
+    better-looking (and more accurate) output, and the report -m
+    command will tell you line numbers of missing lines. Please get
+    in touch if you have a reason to use annotate over those better
+    options: ned@nedbatchelder.com.
+  * Feature: Coverage now sets an environment variable,
+    COVERAGE_RUN when running your code with the coverage run
+    command. The value is not important, and may change in the
+    future. Closes issue 553.
+  * Feature: The HTML report pages for Python source files now have
+    a sticky header so the file name and controls are always
+    visible.
+  * Feature: The xml and json commands now describe what they wrote
+    where.
+  * Feature: The html, combine, xml, and json commands all accept a
+    -q/--quiet option to suppress the messages they write to stdout
+    about what they are doing (issue 1254).
+  * Feature: The html command writes a .gitignore file into the
+    HTML output directory, to prevent the report from being
+    committed to git. If you want to commit it, you will need to
+    delete that file. Closes issue 1244.
+  * Feature: Added support for PyPy 3.8.
+  * Fix: More generated code is now excluded from measurement. Code
+    such as attrs boilerplate, or doctest code, was being measured
+    though the synthetic line numbers meant they were never
+    reported. Once Cython was involved though, the generated .so
+    files were parsed as Python, raising syntax errors, as reported
+    in issue 1160. This is now fixed.
+  * Fix: When sorting human-readable names, numeric components are
+    sorted correctly: file10.py will appear after file9.py. This
+    applies to file names, module names, environment variables, and
+    test contexts.
+  * Performance: Branch coverage measurement is faster, though you
+    might only notice on code that is executed many times, such as
+    long-running loops.
+  * Build: jQuery is no longer used or vendored (issue 840 and
+    issue 1118). Huge thanks to Nils Kattenbeck (septatrix) for the
+    conversion to vanilla JavaScript in pull request 1248.
+- Release notes for 6.0.2
+  * Namespace packages being measured weren't properly handled by
+    the new code that ignores third-party packages. If the
+    namespace package was installed, it was ignored as a
+    third-party package. That problem (issue 1231) is now fixed.
+  * Packages named as "source packages" (with source, or
+    source_pkgs, or pytest-cov's --cov) might have been only
+    partially measured. Their top-level statements could be marked
+    as unexecuted, because they were imported by coverage.py before
+    measurement began (issue 1232). This is now fixed, but the
+    package will be imported twice, once by coverage.py, then again
+    by your test suite. This could cause problems if importing the
+    package has side effects.
+  * The :meth:`.CoverageData.contexts_by_lineno` method was
+    documented to return a dict, but was returning a defaultdict.
+    Now it returns a plain dict. It also no longer returns negative
+    numbered keys.
+- Release notes for 6.0.1
+  * In 6.0, the coverage.py exceptions moved from coverage.misc to
+    coverage.exceptions. These exceptions are not part of the
+    public supported API, CoverageException is. But a number of
+    other third-party packages were importing the exceptions from
+    coverage.misc, so they are now available from there again
+    (issue 1226).
+  * Changed an internal detail of how tomli is imported, so that
+    tomli can use coverage.py for their own test suite (issue
+    1228).
+  * Defend against an obscure possibility under code obfuscation,
+    where a function can have an argument called "self", but no
+    local named "self" (pull request 1210). Thanks, Ben Carlsson.
+- Release notes for 6.0
+  * The coverage html command now prints a message indicating where
+    the HTML report was written. Fixes issue 1195.
+  * The coverage combine command now prints messages indicating
+    each data file being combined. Fixes issue 1105.
+  * The HTML report now includes a sentence about skipped files due
+    to skip_covered or skip_empty settings. Fixes issue 1163.
+  * Unrecognized options in the configuration file are no longer
+    errors. They are now warnings, to ease the use of coverage
+    across versions. Fixes issue 1035.
+  * Fix handling of exceptions through context managers in Python
+    3.10. A missing exception is no longer considered a missing
+    branch from the with statement. Fixes issue 1205.
+  * Fix another rarer instance of "Error binding parameter 0 -
+    probably unsupported type." (issue 1010).
+  * Creating a directory for the coverage data file now is safer
+    against conflicts when two coverage runs happen simultaneously
+    (pull 1220). Thanks, Clément Pit-Claudel.
+- Release notes for Version 6.0b1
+  * Dropped support for Python 2.7, PyPy 2, and Python 3.5.
+  * Added support for the Python 3.10 match/case syntax.
+  * Data collection is now thread-safe. There may have been rare
+    instances of exceptions raised in multi-threaded programs.
+  * Plugins (like the Django coverage plugin) were generating
+    "Already imported a file that will be measured" warnings about
+    Django itself. These have been fixed, closing issue 1150.
+  * Warnings generated by coverage.py are now real Python warnings.
+  * Using --fail-under=100 with coverage near 100% could result in
+    the self-contradictory message total of 100 is less than
+    fail-under=100. This bug (issue 1168) is now fixed.
+  * The COVERAGE_DEBUG_FILE environment variable now accepts stdout
+    and stderr to write to those destinations.
+  * TOML parsing now uses the tomli library.
+  * Some minor changes to usually invisible details of the HTML
+    report:
+  * Use a modern hash algorithm when fingerprinting, for
+    high-security environments (issue 1189). When generating the
+    HTML report, we save the hash of the data, to avoid
+    regenerating an unchanged HTML page. We used to use MD5 to
+    generate the hash, and now use SHA-3-256. This was never a
+    security concern, but security scanners would notice the MD5
+    algorithm and raise a false alarm.
+  * Change how report file names are generated, to avoid leading
+    underscores (issue 1167), to avoid rare file name collisions
+    (issue 584), and to avoid file names becoming too long (issue
+    580).
+- Drop patches
+  * 0001-make-data-collection-operations-thread-safe.patch
+  * change__file__report-dir.patch
+  * traced_file_absolute.patch
+
+-------------------------------------------------------------------
 Wed May 12 09:29:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add change__file__report-dir.patch to fix another issue repored
