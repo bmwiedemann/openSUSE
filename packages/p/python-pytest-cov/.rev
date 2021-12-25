@@ -207,4 +207,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>931974</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>99364b90df0443957bff6d57183cff08</srcmd5>
+    <version>3.0.0</version>
+    <time>1640459789</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-coverage-62.patch:
+  * Support coverage &gt;= 6.2</comment>
+    <requestid>941559</requestid>
+  </revision>
 </revisionlist>

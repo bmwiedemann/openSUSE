@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -33,6 +33,8 @@ Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/schlamar/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov/issues/509
+Patch0:         support-coverage-62.patch
 BuildRequires:  %{python_module coverage >= 5.2.1}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
