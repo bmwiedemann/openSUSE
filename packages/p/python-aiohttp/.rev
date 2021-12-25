@@ -221,4 +221,12 @@
     <comment>- Update python39-failures.patch to only fire with Python 3.9.7.</comment>
     <requestid>931926</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7701e682956f954714e9686d7b9c8bdd</srcmd5>
+    <version>3.8.1</version>
+    <time>1640459785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940345</requestid>
+  </revision>
 </revisionlist>
