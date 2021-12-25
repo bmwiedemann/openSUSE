@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 24 08:00:54 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-software-flatpak-refresh-no-interaction.patch: flatpak:
+  Set no-interaction correctly when refreshing(bsc#1123722,
+  glgo#GNOME/gnome-software!1145).
+
+-------------------------------------------------------------------
 Fri Dec  3 18:12:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:

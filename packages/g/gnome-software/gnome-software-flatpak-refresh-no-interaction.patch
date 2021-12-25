@@ -1,0 +1,44 @@
+From 65314257a6166fff7f8c80725a7aa3e52be29ad2 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Fri, 24 Dec 2021 15:13:49 +0800
+Subject: [PATCH] flatpak: Set no-interaction correctly when refreshing
+
+A GS_PLUGIN_FLAGS_INTERACTIVE flags will be set based on whether the
+plugin action should be interactive or not. Set no-interaction value
+of FlatpakInstallation according to that flag.
+
+This fixes the issue where an polkit authentication dialog pops up
+when GNOME Software is running in the background and trying to check
+updates, if the polkit rules for
+org.freedesktop.Flatpak.appstream-update requires authorisation.
+
+https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1561
+---
+ plugins/flatpak/gs-plugin-flatpak.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/plugins/flatpak/gs-plugin-flatpak.c b/plugins/flatpak/gs-plugin-flatpak.c
+index 29ba2970..4784282c 100644
+--- a/plugins/flatpak/gs-plugin-flatpak.c
++++ b/plugins/flatpak/gs-plugin-flatpak.c
+@@ -269,7 +269,17 @@ gs_plugin_refresh (GsPlugin *plugin,
+ {
+ 	GsPluginData *priv = gs_plugin_get_data (plugin);
+ 	for (guint i = 0; i < priv->flatpaks->len; i++) {
++		FlatpakInstallation *installation;
+ 		GsFlatpak *flatpak = g_ptr_array_index (priv->flatpaks, i);
++		g_autoptr(FlatpakInstallation) installation_clone = NULL;
++
++		installation = gs_flatpak_get_installation (flatpak);
++		installation_clone = g_object_ref (installation);
++
++		/* Let flatpak know if it is a background operation */
++		flatpak_installation_set_no_interaction (installation_clone,
++							 !gs_plugin_has_flags (plugin, GS_PLUGIN_FLAGS_INTERACTIVE));
++
+ 		if (!gs_flatpak_refresh (flatpak, cache_age, cancellable, error))
+ 			return FALSE;
+ 	}
+-- 
+2.33.1
+

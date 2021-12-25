@@ -804,4 +804,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>936205</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>8c0cb953b71bbcb7b7e1ba67cb178020</srcmd5>
+    <version>41.2</version>
+    <time>1640459799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942433</requestid>
+  </revision>
 </revisionlist>
