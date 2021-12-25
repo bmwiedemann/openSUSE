@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 24 23:54:55 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.13.0
+
+  ### Bug fixes
+
+  * Loofah::HTML::DocumentFragment#text no longer serializes top-level comment children. [[#221](https://github.com/flavorjones/loofah/issues/221)]
+
+-------------------------------------------------------------------
 Wed Aug 25 05:14:19 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.12.0
