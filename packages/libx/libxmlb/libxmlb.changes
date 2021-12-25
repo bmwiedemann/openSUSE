@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 22 12:07:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.3.6:
+  - Add support for LZMA decompression
+  - Add locking for file monitors
+  - Modernise property declaration
+  - Add iterator for XbNode attributes and children
+  - Put tail after the node when exporting XbBuilderNode
+  - Ensure _IS_TOKENIZED is set if tokens are added manually
+  - Ensure we never add too many tokens to the silo
+  - Remove the G_ALIGNOF checks to fix compile with old GLib
+    versions
+  - Use the correct pkgconfig export package name in the GIR file
+- Add pkgconfig(liblzma) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sat Oct  3 14:59:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.2.1:
@@ -22,7 +38,7 @@ Sat Oct  3 14:59:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
  - Do not use the node cache when building indexes (Richard Hughes)
  - Lazy load more arrays to reduce RSS usage (Philip Withnall)
  - Report silo versions when versions mismatch (Robert Ancell)
- 
+
 -------------------------------------------------------------------
 Fri Jul 10 19:11:47 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 

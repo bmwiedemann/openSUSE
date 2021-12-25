@@ -77,4 +77,23 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>844081</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fe83e1b57d3558406cb67f9bffeedc5d</srcmd5>
+    <version>0.3.6</version>
+    <time>1640459794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.6:
+  - Add support for LZMA decompression
+  - Add locking for file monitors
+  - Modernise property declaration
+  - Add iterator for XbNode attributes and children
+  - Put tail after the node when exporting XbBuilderNode
+  - Ensure _IS_TOKENIZED is set if tokens are added manually
+  - Ensure we never add too many tokens to the silo
+  - Remove the G_ALIGNOF checks to fix compile with old GLib
+    versions
+  - Use the correct pkgconfig export package name in the GIR file
+- Add pkgconfig(liblzma) BuildRequires: new dependency.</comment>
+    <requestid>942315</requestid>
+  </revision>
 </revisionlist>
