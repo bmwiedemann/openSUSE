@@ -1,5 +1,5 @@
 #
-# spec file for package python-mock
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -33,14 +33,14 @@ Summary:        A Python Mocking and Patching Library for Testing
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://www.voidspace.org.uk/python/mock/
-# no tests in sdis
-# Source:         https://files.pythonhosted.org/packages/source/m/mock/mock-%{version}.tar.gz
+# no tests in PyPI sdist, use Github
 Source:         https://github.com/testing-cabal/mock/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mock-pr497-fixmixup-496.patch -- fix mixup of import, gh#/testing-cabal#496
+Patch0:         https://github.com/testing-cabal/mock/pull/497.patch#/mock-pr497-fixmixup-496.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildArch:      noarch
@@ -55,7 +55,7 @@ arguments they were called with. You can also specify return values and set
 needed attributes in the normal way.
 
 %prep
-%setup -q -n mock-%{version}
+%autosetup -p1 -n mock-%{version}
 
 %build
 %python_build
@@ -75,7 +75,8 @@ needed attributes in the normal way.
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst CHANGELOG.rst
-%{python_sitelib}/*
+%{python_sitelib}/mock
+%{python_sitelib}/mock-%{version}*-info
 %endif
 
 %changelog

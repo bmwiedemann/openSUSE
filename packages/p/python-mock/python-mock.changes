@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 19 12:36:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add mock-pr497-fixmixup-496.patch fix mixup of import in 
+  Python 3.10
+  * gh#/testing-cabal#496
+  * gh#/testing-cabal#497
+
+-------------------------------------------------------------------
 Sun Jan 24 18:10:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:

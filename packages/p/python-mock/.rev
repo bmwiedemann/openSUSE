@@ -253,4 +253,12 @@
   Returning true from ``__exit__()`` silences now the exception.</comment>
     <requestid>866397</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0d8b5144b277d4fdc961cdd5c6ed3ad6</srcmd5>
+    <version>4.0.3</version>
+    <time>1640459789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941560</requestid>
+  </revision>
 </revisionlist>
