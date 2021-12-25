@@ -19,14 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-astroid
-Version:        2.8.5
+Version:        2.9.0
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://github.com/PyCQA/astroid/archive/refs/tags/v%{version}.tar.gz#/astroid-%{version}-gh.tar.gz
 BuildRequires:  %{python_module lazy-object-proxy >= 1.4}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typed-ast >= 1.4 if %python-base < 3.8}

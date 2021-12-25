@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  9 12:30:06 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.9.0
+  * Add ``end_lineno`` and ``end_col_offset`` attributes to astroid nodes.
+  * Always treat ``__class_getitem__`` as a classmethod.
+  * Add missing ``as_string`` visitor method for ``Unknown`` node.
+  * Fix crash on inference of subclasses created from ``Class().__subclasses__``
+  * Fix bug with Python 3.7.0 / 3.7.1 and ``typing.NoReturn``.
+
+-------------------------------------------------------------------
 Sat Nov 13 20:22:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.5:

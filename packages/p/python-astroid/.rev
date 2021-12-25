@@ -313,4 +313,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
   * Fix incorrect filtering of assignment expressions statements</comment>
     <requestid>931287</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e75bf240a9d2d6ff5afbd011f34c44ef</srcmd5>
+    <version>2.9.0</version>
+    <time>1640459782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938244</requestid>
+  </revision>
 </revisionlist>
