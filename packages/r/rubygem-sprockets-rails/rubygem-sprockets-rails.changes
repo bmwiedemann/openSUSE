@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 21 23:55:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.4.2
+
+  # What's Changed
+
+  * Fix protocol relative URLs amended accidentally by @PikachuEXE in #485
+  * Add assets.resolve_assets_in_css_urls configuration option to allow disabling AssetUrlProcessor by @rmacklin in #489
+
+  # New Contributors
+
+  * @PikachuEXE made their first contribution in #485
+  * @rmacklin made their first contribution in #489
+
+-------------------------------------------------------------------
 Sat Sep 12 12:34:28 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.2.2
