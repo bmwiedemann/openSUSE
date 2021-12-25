@@ -554,4 +554,12 @@
     Therefore, `ansi.style()` no longer accepts colors as strings.</comment>
     <requestid>936100</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>db1cf7a16e3872a10425b780ed32a04a</srcmd5>
+    <version>2.3.3</version>
+    <time>1640459786</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>941446</requestid>
+  </revision>
 </revisionlist>

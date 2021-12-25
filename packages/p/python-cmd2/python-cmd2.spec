@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT

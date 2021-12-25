@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 11 22:08:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.3:
+  * Added clearer exception handling to `BorderedTable` and `SimpleTable`.
+
+-------------------------------------------------------------------
 Mon Dec  6 18:04:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:
