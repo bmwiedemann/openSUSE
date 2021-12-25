@@ -68,14 +68,8 @@ management of containerized applications.
 It groups containers that make up an application into logical units
 for management and discovery.
 
-<<<<<<< .mine
-
-
-=======
-
->>>>>>> .new
-
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
