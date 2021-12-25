@@ -1,0 +1,37 @@
+diff --git a/cheroot/workers/threadpool.py b/cheroot/workers/threadpool.py
+index 57e6588dd..6305085de 100644
+--- a/cheroot/workers/threadpool.py
++++ b/cheroot/workers/threadpool.py
+@@ -108,7 +108,7 @@ def run(self):
+ 
+         Retrieves incoming connections from thread pool.
+         """
+-        self.server.stats['Worker Threads'][self.getName()] = self.stats
++        self.server.stats['Worker Threads'][self.name] = self.stats
+         try:
+             self.ready = True
+             while True:
+@@ -176,9 +176,9 @@ def start(self):
+         for i in range(self.min):
+             self._threads.append(WorkerThread(self.server))
+         for worker in self._threads:
+-            worker.setName(
++            worker.name = (
+                 'CP Server {worker_name!s}'.
+-                format(worker_name=worker.getName()),
++                format(worker_name=worker.name),
+             )
+             worker.start()
+         for worker in self._threads:
+@@ -226,9 +226,9 @@ def grow(self, amount):
+ 
+     def _spawn_worker(self):
+         worker = WorkerThread(self.server)
+-        worker.setName(
++        worker.name = (
+             'CP Server {worker_name!s}'.
+-            format(worker_name=worker.getName()),
++            format(worker_name=worker.name),
+         )
+         worker.start()
+         return worker

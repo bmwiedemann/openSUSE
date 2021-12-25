@@ -1,5 +1,5 @@
 #
-# spec file for package python-cheroot
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -33,6 +33,9 @@ Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
 URL:            https://github.com/cherrypy/cheroot
 Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Patch0:         https://github.com/cherrypy/cheroot/pull/370.diff#/cheroot-pr370-py310-threaddeprecations.patch
+Patch1:         https://github.com/cherrypy/cheroot/pull/371.diff#/cheroot-pr371-py310-threaddeprecations.patch
+Patch2:         https://github.com/cherrypy/cheroot/commit/0b16749ecdfa064315fc7908f6865071fc33d778.diff#/cheroot-c0b1b167-py310-threaddeprecations.patch
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module setuptools >= 34.4}
@@ -88,7 +91,7 @@ Requires:       python-selectors2
 Cheroot is the pure-Python HTTP server used by CherryPy.
 
 %prep
-%autosetup -n cheroot-%{version} -p1
+%autosetup -p1 -n cheroot-%{version} -p1
 # do not check coverage
 sed -i '/--cov/ d' pytest.ini
 
@@ -106,6 +109,8 @@ sed -i '/--cov/ d' pytest.ini
 # do not want to add python-jaraco.context to Ring1
 pytest_opts="--ignore  cheroot/test/test_wsgi.py"
 %endif
+# https://github.com/cherrypy/cheroot/issues/355
+pytest_opts+=" -p no:threadexception"
 # test_tls_client_auth[...-False-localhost-builtin] fails ocassionally on server-side OBS
 %pytest $pytest_opts -k "not (test_tls_client_auth and False-localhost-builtin)"
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 19 21:13:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patches fixing test suite failures due to Python 3.10
+  deprecations:
+  * cheroot-pr370-py310-threaddeprecations.patch
+  * cheroot-pr371-py310-threaddeprecations.patch
+  * cheroot-c0b1b167-py310-threaddeprecations.patch
+- Skip threadexceptions plugin for Pytest 6.2
+
+-------------------------------------------------------------------
 Tue Oct  5 13:46:46 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts
