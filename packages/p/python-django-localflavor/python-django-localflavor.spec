@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-localflavor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-localflavor
-Version:        3.0.1
+Version:        3.1
 Release:        0
 Summary:        Country-specific Django helpers
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/django/django-localflavor
-Source:         https://github.com/django/django-localflavor/archive/%{version}.tar.gz#/django-localflavour-%{version}.tar.gz
+Source:         https://github.com/django/django-localflavor/archive/%{version}.tar.gz#/django-localflavor-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,6 +59,6 @@ Country-specific Django helpers.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/*localflavor*/
 
 %changelog
