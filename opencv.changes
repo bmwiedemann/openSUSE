@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sat Dec 25 17:43:11 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.5, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version455
+  * Audio support as part of VideoCapture API: GStreamer #21264
+  * Updated SOVERSION handling rules: #21178
+  * DNN module patches:
+    + Added tests to cover ONNX conformance test suite: #21088
+    + Improved layers / activations / supported more models
+    + Upgraded builtin protobuf from 3.5.2 to 3.19.1
+    + More optimizations for RISC-V platform
+    + Intel® Inference Engine backend ( OpenVINO™ ):
+            added support for OpenVINO 2021.4.2 LTS release
+  * G-API module:
+    + G-API framework:
+      - Fixed issue with accessing 1D data from cv::RMat: #21103
+      - Restricted passing the G-API types to graph inputs/outputs
+        for execution: #21041
+      - Various fixes in G-API Doxygen reference: #20924
+      - Renamed various internal structures for consistency #20836 #21040
+    + Fluid backend:
+      - Introduced a better vectorized version of Resize: #20664.
+      - Added vectorized version of Multiply kernel: #21024
+      - Added vectorized version of Divide kernel: #20914
+      - Added vectorized version of AddC kernel: #21119
+      - Added vectorized version of SubC kernel: #21158
+      - Added vectorized version of MulC kernel: #21177
+      - Added vectorized version of SubRC kernel: #21231
+      - Enabled SIMD dispatching for AbsDiffC: #21204
+    + OpenCL backend:
+      - Fixed sporadic test failures in Multiply kernel running
+        on GPU: #21205
+    + Intel® OpenVINO™ inference backend:
+      - Extended ie::Params to support static batch size as input
+        to inference: #20856
+      - Enabled 2D input tensor support in IE backend: #20925
+      - Fixed various issues with imported (pre-compiled)
+        networks: #20918
+    + Media integration:
+      - Introduced a GStreamer-based pipeline source for
+        G-API: #20709
+      - Completed the integration of Intel® oneVPL as a pipeline
+        source for G-API #20773 with device selection #20738,
+	asynchronous execution #20901, intial demux support #21022,
+	and GPU-side memory allocation via DirectX 11 #21049.
+    + Samples:
+      - Replaced custom kernels with now-standard G-API operations
+        in several samples #21106
+      - Moved API snippets from G-API samples to a dedicated
+        place #20857
+    + Other changes and fixes:
+      - Fixed various static analysis issues for OpenVINO 2021.4
+        release: #21083 and #21212
+      - Fixed various build warnings introduced after OpenVINO
+        update: #20937
+      - Continued clean-up in the G-API test suite on GTest macros
+        #20922 and test data #20995
+      - Added custom accuracy comparison functions to Fluid
+        performance tests: #21150.
+  * And many other contributions:
+    + Added QRcode encoder: #17889
+    + GSoC - OpenCV.js: Accelerate OpenCV.js DNN via WebNN: #20406
+    + Add conventional Bayer naming: #20970
+    + (opencv_contrib) Add Radon transform function to ximgproc: #3090
+    + (opencv_contrib) New superpixel algorithm (F-DBSCAN): #3093
+    + Created Stitching Tool: #21020
+    + Improve CCL with new algorithms and tests: #21275
+    + (opencv_contrib) Update ArUco tutorial: #3126
+- Adjust memory constraints (mostly required for aarch64 on Leap)
+- Add 0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
+
+-------------------------------------------------------------------
 Wed Nov 24 21:53:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.4:
