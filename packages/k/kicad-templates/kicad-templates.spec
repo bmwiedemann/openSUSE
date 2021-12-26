@@ -16,11 +16,11 @@
 #
 
 
-# 5.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 5.0.0
+# 6.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 6.0.0
 
 Name:           kicad-templates
-Version:        5.1.12
+Version:        6.0.0
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
