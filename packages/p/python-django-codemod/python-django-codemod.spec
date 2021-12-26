@@ -16,9 +16,10 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-codemod
-Version:        1.0.0
+Version:        1.6.6
 Release:        0
 Summary:        Collections of libCST codemodders to upgrade Django
 License:        MIT
@@ -31,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-libcst
+Requires:       python-pathspec
 Requires:       python-rich
 Recommends:     python-setuptools
 Requires(post):   update-alternatives
@@ -38,6 +40,7 @@ Requires(postun):  update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pathspec}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module parameterized}
@@ -72,7 +75,7 @@ sed -i '/addopts/d' pyproject.toml
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc CHANGELOG.md README.md docs/*.md
 %license LICENSE
 %python_alternative %{_bindir}/djcodemod
 %{python_sitelib}/*

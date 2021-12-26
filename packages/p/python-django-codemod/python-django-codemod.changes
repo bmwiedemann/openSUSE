@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Dec 25 23:09:58 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.6.6
+- from v1.6.0
+  * Support admin's ACTION_CHECKBOX_NAME compatibility import removal
+  * Support BaseContext, Context, ContextPopException and
+    RequestContext compatibility imports removal
+  * Support for BoundField compatibility import removal
+  * Support for pretty_name compatibility import removal
+  * Support for FieldDoesNotExist compatibility import removal
+  * Support for EmptyResultSet compatibility imports removal 
+- from v1.5.7
+  * Rewrite parent module renaming logic
+- from v1.5.6
+  * Disable rename parent module imported
+- from v1.5.4
+  * Issue with command shadowing built-in
+  * Add a missing type hints in cli
+  * Type checking error
+- from v1.5.1
+  * Avoid extra spaces around kwargs in InlineHasAddPermissionsTransformer
+- from v1.5.0
+  * Handle deprecation for NullBooleanField
+  * Avoid spaces around kwarg in FixedOffsetTransformer
+  * Avoid extra whitespaces in kwargs from OnDeleteTransformer
+- from v1.4.1
+  * Update type annotations
+- from v1.4.0
+  * Handle rename when parent module is imported
+- from v1.3.6
+  * Mypy issues when following imports
+  * Type hint issues
+  * Error with star import
+- from v1.3.4
+  * Don't confuse kwargs with symbol to codemod
+- from v1.3.3
+  * Bug with attributes accessing
+  * Bug with scopes
+  * Add some missing type hints
+- from v1.3.2
+  * Bug when url() route uses the regex kwarg
+- from v1.3.1
+  * Support another slug pattern
+  * Migrate partial patterns to path
+- from v1.3.0
+  * Add fixer for django.utils.http.cookie_date
+- from v1.2.0
+  * Make it runnable as pre-commit hook
+- from v1.1.0
+  * Ignore files according to .gitignore
+
+-------------------------------------------------------------------
 Thu Nov 26 08:48:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.0.0
