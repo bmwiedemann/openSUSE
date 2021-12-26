@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 26 04:03:06 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove dj-test-settings.patch merged upstream
+- Update to v2.3
+  * Added Django 4.0 support.
+  * Added M2M field support.
+  * Added PARLER_CACHE_PREFIX for sites that share the same cache.
+- from v2.2.1
+  * Added support for Django 3.2.
+  * Added support for python 3.9.
+  * Dropped support for Python 3.5.
+  * Fixed deprecation warning for providing_args in Django Signals.
+
+-------------------------------------------------------------------
 Sat Jul 24 03:25:16 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add dj-test-settings.patch to support Django 3.2
@@ -8,6 +22,9 @@ Sun Oct  4 10:23:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
 - Update to v2.2
+  * Added support for Django 3.1.
+  * Drop support for Python 2.7.
+  * Drop support for Django 1.11, 2.0, 2.1.
 
 -------------------------------------------------------------------
 Tue Mar 31 02:23:22 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>

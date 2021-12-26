@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-parler
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Simple Django model translations
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/edoburu/django-parler
 Source:         https://github.com/django-parler/django-parler/archive/v%{version}.tar.gz#/django-parler-%{version}.tar.gz
-Patch0:         dj-test-settings.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,11 +40,10 @@ BuildRequires:  %{python_module six}
 %python_subpackages
 
 %description
-Simple Django model translations without nasty hacks, featuring nice admin integration.
+Simple Django model translations without nasty hacks, including admin integration.
 
 %prep
 %setup -q -n django-parler-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -55,10 +53,10 @@ Simple Django model translations without nasty hacks, featuring nice admin integ
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py
+%python_exec runtests.py -v 2
 
 %files %{python_files}
-%doc AUTHORS README.rst
+%doc AUTHORS CHANGES.rst README.rst docs/*.rst docs/*/*.rst
 %license LICENSE
 %{python_sitelib}/*
 
