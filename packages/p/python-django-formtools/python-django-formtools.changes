@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 26 11:51:09 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Updated URL to be https://github.com/jazzband/django-formtools
+- Remove unneeded BuildRequires isort
+- Update to v2.3
+  * Dropped testing for Django 1.11, 2.0 and 2.1.
+  * Added support for Django 3.1 and Python 3.9.
+  * Added support for Django 3.2 and 4.0.
+  * Dropped support for Django 3.0.
+  * Dropped support for Python 3.5.
+
+-------------------------------------------------------------------
 Tue Jan  7 09:23:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2:

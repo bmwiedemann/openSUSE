@@ -54,4 +54,12 @@
 - Remove merged patch django-21.patch</comment>
     <requestid>761486</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f120366624a2067cdaa37fab6ec64031</srcmd5>
+    <version>2.3</version>
+    <time>1640521839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942596</requestid>
+  </revision>
 </revisionlist>
