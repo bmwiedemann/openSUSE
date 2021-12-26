@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec 26 06:33:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.0.2
+  * If a non-UTF8 file was found when looking for templates, it
+    would fail when reading during the reporting phase, ending
+    execution. This failure is now raised in a way that can be
+    ignored with a .coveragerc setting of
+    [report] ignore_errors=True.
+  * When using source=., an existing coverage HTML report directory
+    would be found and believed to be unmeasured HTML template files
+- from v2.0.0
+  * Drop support for Python 3.4 and 3.5.
+  * A setting is available: template_extensions lets you set the file
+    extensions that will be considered when looking for unused templates
+  * Fix an issue on Windows where file names were being compared
+    case-sensitively, causing templates to be missed
+  * Fix an issue where tag libraries can't be found if imported
+    during test collection.
+
+-------------------------------------------------------------------
 Thu May 20 08:34:52 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest macro

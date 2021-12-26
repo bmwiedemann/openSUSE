@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-coverage-plugin
-Version:        1.8.0
+Version:        2.0.2
 Release:        0
 Summary:        Django template coveragepy plugin
 License:        Apache-2.0
@@ -59,8 +59,8 @@ Django template coverage.py plugin
 %pytest
 
 %files %{python_files}
+%doc README.rst
 %license LICENSE.txt
-%doc HISTORY.rst README.rst
 %{python_sitelib}/*
 
 %changelog
