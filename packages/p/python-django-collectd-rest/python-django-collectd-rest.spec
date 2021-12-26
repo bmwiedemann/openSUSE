@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-collectd-rest
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        A simple Django application to demonstrate RRD plots
 License:        BSD-2-Clause

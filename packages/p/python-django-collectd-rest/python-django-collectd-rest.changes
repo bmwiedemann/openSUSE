@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 12:47:51 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.2.3
+  - Fix Django4 build
+
+-------------------------------------------------------------------
 Mon Sep 20 11:50:49 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use setup.py test
