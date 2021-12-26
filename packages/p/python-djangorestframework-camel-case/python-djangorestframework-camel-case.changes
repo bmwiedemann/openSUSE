@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 26 04:21:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove Source tests.py
+- Update to v1.3.0
+  * Fix ignore fields
+  * Add json_underscoreize to CamelCaseJSONRenderer
+  * Replace force_text with force_str to remove deprecation warnings
+
+-------------------------------------------------------------------
 Tue Nov  2 12:30:32 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

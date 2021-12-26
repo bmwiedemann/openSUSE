@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-djangorestframework-camel-case
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Camel case JSON support for Django REST framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/vbabiy/djangorestframework-camel-case
 Source:         https://files.pythonhosted.org/packages/source/d/djangorestframework-camel-case/djangorestframework-camel-case-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/vbabiy/djangorestframework-camel-case/master/tests.py
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +39,6 @@ Camel case JSON support for Django REST framework.
 
 %prep
 %setup -q -n djangorestframework-camel-case-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build
