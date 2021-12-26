@@ -1,0 +1,557 @@
+From 6a20559b402493ff29eac7368b5d7b4569a64884 Mon Sep 17 00:00:00 2001
+From: zihengchang <zihengx.chang@intel.com>
+Date: Thu, 9 Sep 2021 15:47:43 +0800
+Subject: [PATCH] New features, camera tunning and fixes
+
+Support 6 camera input and output 8k video
+Support opecv4.x
+Add json file calibration data of new insta camera
+Fix code indentation
+---
+ configure.ac                          |   5 +-
+ m4/xcam-utils.m4                      |   4 +-
+ modules/gles/gl_stitcher.cpp          |   4 +
+ modules/ocv/cv_capi_feature_match.cpp |   2 +
+ modules/ocv/cv_capi_feature_match.h   |   2 +
+ modules/soft/Makefile.am              |   2 +-
+ modules/soft/soft_stitcher.cpp        |   2 +
+ modules/vulkan/vk_stitcher.cpp        |   4 +
+ tests/camera_calibration_insta.json   | 115 +++++++++++++++++++++++
+ tests/test-surround-view.cpp          |   8 +-
+ tests/test_sv_params.h                | 129 ++++++++++++++++++++++++++
+ xcore/interface/stitcher.cpp          |   2 +-
+ 12 files changed, 271 insertions(+), 8 deletions(-)
+ create mode 100644 tests/camera_calibration_insta.json
+
+diff --git a/configure.ac b/configure.ac
+index 0319a700..0161e947 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,7 +29,7 @@ AC_SUBST(XCAM_LT_LDFLAGS)
+ 
+ # xcam required OpenCV version [XCAM_REQUIRE_CV_MIN, XCAM_REQUIRE_CV_MAX)
+ XCAM_REQUIRE_CV_MIN=3.0.0
+-XCAM_REQUIRE_CV_MAX=4.0.0
++XCAM_REQUIRE_CV_MAX=5.0.0
+ 
+ # xcam required OpenSceneGraph version
+ XCAM_REQUIRE_OSG_MIN=3.3.2
+@@ -81,7 +81,7 @@ XCAM_CHECK_DOXYGEN($enable_docs, [], enable_docs="no")
+ XCAM_CHECK_AVX512($enable_avx512, ENABLE_AVX512=1, ENABLE_AVX512=0)
+ XCAM_CHECK_OSG($enable_render, $XCAM_REQUIRE_OSG_MIN, ENABLE_RENDER=1, ENABLE_RENDER=0)
+ XCAM_CHECK_DNN($enable_dnn, $OPENVINO_IE_INC_PATH, $OPENVINO_IE_LIBS_PATH, ENABLE_DNN=1, ENABLE_DNN=0)
+-XCAM_CHECK_OPENCV($enable_opencv, $XCAM_REQUIRE_CV_MIN, $XCAM_REQUIRE_CV_MAX, HAVE_OPENCV=1, HAVE_OPENCV=0)
++XCAM_CHECK_OPENCV($enable_opencv, $XCAM_REQUIRE_CV_MIN, $XCAM_REQUIRE_CV_MAX, HAVE_OPENCV=1, HAVE_OPENCV=0, OPENCV_VERSION3=1, OPENCV_VERSION3=0)
+ XCAM_CHECK_OCV_VIDEOSTAB($HAVE_OPENCV, ENABLE_DVS=1, ENABLE_DVS=0)
+ XCAM_CHECK_DVS_OCL($HAVE_OPENCV, ENABLE_DVS_CL_PATH=1, ENABLE_DVS_CL_PATH=0)
+ XCAM_CHECK_GST($enable_gst, $GST_API_VERSION, $GST_VERSION_MIN, ENABLE_GST=1, ENABLE_GST=0)
+@@ -116,6 +116,7 @@ XCAM_DEFINE_MACOR(ENABLE_AVX512, $ENABLE_AVX512, have avx instruction)
+ XCAM_DEFINE_MACOR(ENABLE_RENDER, $ENABLE_RENDER, enable texture render)
+ XCAM_DEFINE_MACOR(ENABLE_DNN, $ENABLE_DNN, have dnn)
+ XCAM_DEFINE_MACOR(HAVE_OPENCV, $HAVE_OPENCV, have opencv)
++XCAM_DEFINE_MACOR(OPENCV_VERSION3, $OPENCV_VERSION3, opencv version3)
+ XCAM_DEFINE_MACOR(ENABLE_DVS, $ENABLE_DVS, have dvs)
+ XCAM_DEFINE_MACOR(ENABLE_DVS_CL_PATH, $ENABLE_DVS_CL_PATH, enable dvs cl path)
+ XCAM_DEFINE_MACOR(ENABLE_CAPI, $ENABLE_CAPI, enable capi)
+diff --git a/m4/xcam-utils.m4 b/m4/xcam-utils.m4
+index aefaf907..a93c45c6 100644
+--- a/m4/xcam-utils.m4
++++ b/m4/xcam-utils.m4
+@@ -55,7 +55,7 @@ AC_DEFUN([XCAM_CHECK_DOXYGEN],
+         [$3])
+ ])
+ 
+-# XCAM_CHECK_OPENCV([$1:value], [$2:ocv-min], [$3:ocv-max], [$4:if-found], [$5:if-not-found])
++# XCAM_CHECK_OPENCV([$1:value], [$2:ocv-min], [$3:ocv-max], [$4:if-found], [$5:if-not-found]， [$6:if-opencv3.x], [$7:if-not-opencv3.x])
+ AC_DEFUN([XCAM_CHECK_OPENCV],
+ [
+     AS_IF([test "x$1" = "xyes"],
+@@ -72,6 +72,8 @@ AC_DEFUN([XCAM_CHECK_OPENCV],
+                 [AC_MSG_ERROR(OpenCV required version: >= $2 && < $3)])
+         ],
+         [$5])
++    AS_IF([test $ocv_major_version == 3], [$6], [$7])
++    AC_MSG_NOTICE(OPENCV_major_version: $ocv_major_version)
+ ])
+ 
+ # XCAM_CHECK_OCV_VIDEOSTAB([$1:value], [$2:if-found], [$3:if-not-found])
+diff --git a/modules/gles/gl_stitcher.cpp b/modules/gles/gl_stitcher.cpp
+index 1cdf46ad..22ac110a 100644
+--- a/modules/gles/gl_stitcher.cpp
++++ b/modules/gles/gl_stitcher.cpp
+@@ -746,15 +746,19 @@ StitcherImpl::create_feature_match (SmartPtr<FeatureMatch> &matcher)
+     case FMCluster:
+         matcher = FeatureMatch::create_cluster_feature_match ();
+         break;
++#if OPENCV_VERSION3
+     case FMCapi:
+         matcher = FeatureMatch::create_capi_feature_match ();
+         break;
++#endif
+     default:
+         XCAM_LOG_ERROR ("gl-stitcher unsupported feature match mode: %d", fm_mode);
+         return XCAM_RETURN_ERROR_PARAM;
+     }
+ #else
++#if OPENCV_VERSION3
+     matcher = FeatureMatch::create_capi_feature_match ();
++#endif
+ #endif
+     XCAM_ASSERT (matcher.ptr ());
+ 
+diff --git a/modules/ocv/cv_capi_feature_match.cpp b/modules/ocv/cv_capi_feature_match.cpp
+index d478f3c0..e24416b7 100644
+--- a/modules/ocv/cv_capi_feature_match.cpp
++++ b/modules/ocv/cv_capi_feature_match.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include "cv_capi_feature_match.h"
+ 
++#if OPENCV_VERSION3
+ #define XCAM_CV_CAPI_FM_DEBUG 0
+ 
+ namespace XCam {
+@@ -249,3 +250,4 @@ FeatureMatch::create_capi_feature_match ()
+ }
+ 
+ }
++#endif
+diff --git a/modules/ocv/cv_capi_feature_match.h b/modules/ocv/cv_capi_feature_match.h
+index f1f87948..26c60629 100644
+--- a/modules/ocv/cv_capi_feature_match.h
++++ b/modules/ocv/cv_capi_feature_match.h
+@@ -31,6 +31,7 @@
+ #include <cv.h>
+ #else
+ #include <opencv2/imgproc/imgproc_c.h>
++#if OPENCV_VERSION3
+ #include <opencv2/video/tracking_c.h>
+ #endif
+ 
+@@ -72,3 +73,4 @@ class CVCapiFeatureMatch
+ }
+ 
+ #endif // CV_CAPI_FEATURE_MATCH_H
++#endif
+diff --git a/modules/soft/Makefile.am b/modules/soft/Makefile.am
+index 9c4fbdb9..fa398221 100644
+--- a/modules/soft/Makefile.am
++++ b/modules/soft/Makefile.am
+@@ -31,7 +31,7 @@ xcam_soft_sources = \
+     soft_geo_tasks_priv.cpp      \
+     soft_copy_task.cpp           \
+     soft_stitcher.cpp            \
+-   $(NULL)
++    $(NULL)
+ 
+ libxcam_soft_la_SOURCES = \
+     $(xcam_soft_sources) \
+diff --git a/modules/soft/soft_stitcher.cpp b/modules/soft/soft_stitcher.cpp
+index 35081216..dde33d19 100644
+--- a/modules/soft/soft_stitcher.cpp
++++ b/modules/soft/soft_stitcher.cpp
+@@ -470,8 +470,10 @@ StitcherImpl::init_feature_match (uint32_t idx)
+         _overlaps[idx].matcher = FeatureMatch::create_default_feature_match ();
+     else if (fm_mode == FMCluster)
+         _overlaps[idx].matcher = FeatureMatch::create_cluster_feature_match ();
++#if OPENCV_VERSION3
+     else if (fm_mode == FMCapi)
+         _overlaps[idx].matcher = FeatureMatch::create_capi_feature_match ();
++#endif
+     else {
+         XCAM_LOG_ERROR ("unsupported FeatureMatchMode: %d", fm_mode);
+         XCAM_ASSERT (false);
+diff --git a/modules/vulkan/vk_stitcher.cpp b/modules/vulkan/vk_stitcher.cpp
+index 06ec8a77..9e12fd7c 100644
+--- a/modules/vulkan/vk_stitcher.cpp
++++ b/modules/vulkan/vk_stitcher.cpp
+@@ -423,15 +423,19 @@ StitcherImpl::init_feature_matchers ()
+             matcher = FeatureMatch::create_default_feature_match ();
+         else if (fm_mode == FMCluster)
+             matcher = FeatureMatch::create_cluster_feature_match ();
++#if OPENCV_VERSION3
+         else if (fm_mode == FMCapi)
+             matcher = FeatureMatch::create_capi_feature_match ();
++#endif
+         else {
+             XCAM_LOG_ERROR (
+                 "vk-stitcher(%s) unsupported FeatureMatchMode: %d",
+                 XCAM_STR (_stitcher->get_name ()), fm_mode);
+         }
+ #else
++#if OPENCV_VERSION3
+         matcher = FeatureMatch::create_capi_feature_match ();
++#endif
+ #endif
+         XCAM_ASSERT (matcher.ptr ());
+ 
+diff --git a/tests/camera_calibration_insta.json b/tests/camera_calibration_insta.json
+new file mode 100644
+index 00000000..9d7fae84
+--- /dev/null
++++ b/tests/camera_calibration_insta.json
+@@ -0,0 +1,115 @@
++{
++	"info": "",
++	"sn": "",
++	"model": 2,
++	"rig": [
++		0.0,
++		0.0,
++		0.0
++	],
++	"cameras": {
++		"camera":[
++			{
++				"type": 25,
++				"radius": 2040.0,
++				"cx": 1900.0,
++				"cy": 1410.0,
++				"yaw": 0.0,
++				"pitch": 0.0,
++				"roll": 92.3,
++				"w": 3840,
++				"h": 2880,
++				"fov": 200.0,
++				"t": [	0.0,
++					0.0,
++					0.0
++				]
++			},
++			{
++				"type": 25,
++				"radius": 1984.0,
++				"cx": 1920.0,
++				"cy": 1440.0,
++				"yaw": 0.0,
++				"pitch": 0.0,
++				"roll": 90.2,
++				"w": 3840,
++				"h": 2880,
++				"fov": 200.0,
++				"t": [
++					0.0,
++					0.0,
++					0.0
++				]
++			},
++			{
++				"type": 25,
++				"radius": 1984.0,
++				"cx": 1860.0,
++				"cy": 1480.0,
++				"yaw": 0.0,
++				"pitch": 0.0,
++				"roll": 89.3,
++				"w": 3840,
++				"h": 2880,
++				"fov": 200.0,
++				"t": [
++					0.0,
++					0.0,
++					0.0
++				]
++			},
++			{
++				"type": 25,
++				"radius": 1984.0,
++				"cx": 1944.0,
++				"cy": 1460.0,
++				"yaw": 0.0,
++				"pitch": 0.0,
++				"roll": 90.8,
++				"w": 3840,
++				"h": 2880,
++				"fov": 200.0,
++				"t": [
++					0.0,
++					0.0,
++					0.0
++				]
++			},
++			{
++				"type": 25,
++				"radius": 1984.0,
++				"cx": 1910.0,
++				"cy": 1420.0,
++				"yaw": 0.0,
++				"pitch": 0.0,
++				"roll": 90.5,
++				"w": 3840,
++				"h": 2880,
++				"fov": 200.0,
++				"t": [
++					0.0,
++					0.0,
++					0.0
++				]
++			},
++			{
++				"type": 25,
++				"radius": 1984.0,
++				"cx": 1928.0,
++				"cy": 1440.0,
++				"yaw": 0.0,
++				"pitch": 0.0,
++				"roll": 89.7,
++				"w": 3840,
++				"h": 2880,
++				"fov": 200.0,
++				"t": [
++					0.0,
++					0.0,
++					0.0
++				]
++			}
++		]
++	}
++}
+diff --git a/tests/test-surround-view.cpp b/tests/test-surround-view.cpp
+index 1e7297df..2fff0a3e 100644
+--- a/tests/test-surround-view.cpp
++++ b/tests/test-surround-view.cpp
+@@ -528,7 +528,7 @@ static void usage(const char* arg0)
+             "\t--in-format         optional, pixel format, select from [nv12/yuv], default: nv12\n"
+             "\t--fisheye-num       optional, the number of fisheye lens, default: 4\n"
+             "\t--cam-model         optional, camera model\n"
+-            "\t                    select from [cama2c1080p/camb4c1080p/camc3c8k/camd3c8k], default: camb4c1080p\n"
++            "\t                    select from [cama2c1080p/camb4c1080p/camc3c8k/camc6c8k/camd3c8k], default: camb4c1080p\n"
+             "\t--blend-pyr-levels  optional, the pyramid levels of blender, default: 2\n"
+             "\t--dewarp-mode       optional, fisheye dewarp mode, select from [sphere/bowl], default: bowl\n"
+             "\t--scopic-mode       optional, scopic mode, select from [mono/stereoleft/stereoright], default: mono\n"
+@@ -705,6 +705,8 @@ int main (int argc, char *argv[])
+                 cam_model = CamB4C1080P;
+             else if (!strcasecmp (optarg, "camc3c8k"))
+                 cam_model = CamC3C8K;
++            else if (!strcasecmp (optarg, "camc6c8k"))
++                cam_model = CamC6C8K;
+             else if (!strcasecmp (optarg, "camd3c8k"))
+                 cam_model = CamD3C8K;
+             else {
+@@ -852,7 +854,7 @@ int main (int argc, char *argv[])
+         printf ("input%d file:\t\t%s\n", i, ins[i]->get_file_name ());
+     }
+     printf ("camera model:\t\t%s\n", cam_model == CamA2C1080P ? "cama2c1080p" :
+-            (cam_model == CamB4C1080P ? "camb4c1080p" : (cam_model == CamC3C8K ? "camc3c8k" : "camd3c8k")));
++            (cam_model == CamB4C1080P ? "camb4c1080p" : (cam_model == CamC3C8K ? "camc3c8k" : (cam_model == CamC6C8K ? "camc6c8k" : "camd3c8k"))));
+     printf ("fisheye number:\t\t%d\n", fisheye_num);
+     printf ("stitch module:\t\t%s\n", module == SVModuleGLES ? "GLES" :
+             (module == SVModuleVulkan ? "Vulkan" : (module == SVModuleSoft ? "Soft" : "Unknown")));
+@@ -931,7 +933,7 @@ int main (int argc, char *argv[])
+     }
+ 
+ #if ENABLE_FISHEYE_IMG_ROI
+-    if (module == SVModuleGLES && (cam_model == CamC3C8K || cam_model == CamD3C8K)) {
++    if (module == SVModuleGLES && (cam_model == CamC3C8K || cam_model == CamC6C8K || cam_model == CamD3C8K)) {
+         StitchInfo info = (module == SVModuleSoft) ?
+                           soft_stitch_info (cam_model, scopic_mode) : gl_stitch_info (cam_model, scopic_mode);
+ 
+diff --git a/tests/test_sv_params.h b/tests/test_sv_params.h
+index 7610aa1b..25e70534 100644
+--- a/tests/test_sv_params.h
++++ b/tests/test_sv_params.h
+@@ -30,6 +30,7 @@ enum CamModel {
+     CamA2C1080P = 0,
+     CamB4C1080P,
+     CamC3C8K,
++    CamC6C8K,
+     CamD3C8K
+ };
+ 
+@@ -57,6 +58,7 @@ static const char *extrinsic_names[] = {
+ static const char *camera_calibration_json_names[] = {
+     "",
+     "",
++    "camera_calibration_insta.json",
+     "",
+     "k_camera_calibration.json"
+ };
+@@ -94,6 +96,15 @@ get_fisheye_img_roi_radius (
+         }
+         break;
+     }
++    case CamC6C8K: {
++        roi_radius[0] = 1787;
++        roi_radius[1] = 1787;
++        roi_radius[2] = 1787;
++        roi_radius[3] = 1787;
++        roi_radius[4] = 1787;
++        roi_radius[5] = 1787;
++        break;
++    }
+     case CamD3C8K: {
+         switch (scopic_mode) {
+         case ScopicStereoLeft: {
+@@ -169,6 +180,15 @@ viewpoints_range (CamModel model, float *range)
+         range[2] = 144.0f;
+         break;
+     }
++    case CamC6C8K: {
++        range[0] = 72.0f;
++        range[1] = 72.0f;
++        range[2] = 72.0f;
++        range[3] = 72.0f;
++        range[4] = 72.0f;
++        range[5] = 72.0f;
++        break;
++    }
+     case CamD3C8K: {
+         range[0] = 132.0f;
+         range[1] = 132.0f;
+@@ -203,6 +223,13 @@ fm_region_ratio (CamModel model)
+         ratio.height = 1.0f / 3.0f;
+         break;
+     }
++    case CamC6C8K: {
++        ratio.pos_x = 0.0f;
++        ratio.width = 1.0f;
++        ratio.pos_y = 1.0f / 3.0f;
++        ratio.height = 1.0f / 3.0f;
++        break;
++    }
+     case CamD3C8K: {
+         ratio.pos_x = 0.0f;
+         ratio.width = 1.0f;
+@@ -260,6 +287,17 @@ soft_fm_config (CamModel model)
+         cfg.max_track_error = 6.0f;
+         break;
+     }
++    case CamC6C8K: {
++        cfg.stitch_min_width = 136;
++        cfg.min_corners = 4;
++        cfg.offset_factor = 0.95f;
++        cfg.delta_mean_offset = 256.0f;
++        cfg.recur_offset_error = 4.0f;
++        cfg.max_adjusted_offset = 24.0f;
++        cfg.max_valid_offset_y = 20.0f;
++        cfg.max_track_error = 6.0f;
++        break;
++    }
+     case CamD3C8K: {
+         cfg.stitch_min_width = 256;
+         cfg.min_corners = 4;
+@@ -394,6 +432,46 @@ soft_stitch_info (CamModel model, StitchScopicMode scopic_mode)
+         }
+         break;
+     }
++    case CamC6C8K: {
++        info.merge_width[0] = 256;
++        info.merge_width[1] = 256;
++        info.merge_width[2] = 256;
++        info.merge_width[3] = 256;
++        info.merge_width[4] = 256;
++        info.merge_width[5] = 256;
++
++        info.fisheye_info[0].intrinsic.cx = 1907.0f;
++        info.fisheye_info[0].intrinsic.cy = 1440.0f;
++        info.fisheye_info[0].intrinsic.fov = 200.0f;
++        info.fisheye_info[0].radius = 1984.0f;
++        info.fisheye_info[0].extrinsic.roll = 90.3f;
++        info.fisheye_info[1].intrinsic.cx = 1920.0f;
++        info.fisheye_info[1].intrinsic.cy = 1440.0f;
++        info.fisheye_info[1].intrinsic.fov = 200.0f;
++        info.fisheye_info[1].radius = 1984.0f;
++        info.fisheye_info[1].extrinsic.roll = 90.0f;
++        info.fisheye_info[2].intrinsic.cx = 1920.0f;
++        info.fisheye_info[2].intrinsic.cy = 1440.0f;
++        info.fisheye_info[2].intrinsic.fov = 200.0f;
++        info.fisheye_info[2].radius = 1984.0f;
++        info.fisheye_info[2].extrinsic.roll = 90.2f;
++        info.fisheye_info[3].intrinsic.cx = 1920.0f;
++        info.fisheye_info[3].intrinsic.cy = 1440.0f;
++        info.fisheye_info[3].intrinsic.fov = 200.0f;
++        info.fisheye_info[3].radius = 1984.0f;
++        info.fisheye_info[3].extrinsic.roll = 90.0f;
++        info.fisheye_info[4].intrinsic.cx = 1920.0f;
++        info.fisheye_info[4].intrinsic.cy = 1440.0f;
++        info.fisheye_info[4].intrinsic.fov = 200.0f;
++        info.fisheye_info[4].radius = 1984.0f;
++        info.fisheye_info[4].extrinsic.roll = 91.2f;
++        info.fisheye_info[5].intrinsic.cx = 1914.0f;
++        info.fisheye_info[5].intrinsic.cy = 1440.0f;
++        info.fisheye_info[5].intrinsic.fov = 200.0f;
++        info.fisheye_info[5].radius = 1984.0f;
++        info.fisheye_info[5].extrinsic.roll = 90.1f;
++        break;
++    }
+     case CamD3C8K: {
+         switch (scopic_mode) {
+         case ScopicStereoLeft: {
+@@ -494,6 +572,17 @@ gl_fm_config (CamModel model)
+         cfg.max_track_error = 6.0f;
+         break;
+     }
++    case CamC6C8K: {
++        cfg.stitch_min_width = 136;
++        cfg.min_corners = 4;
++        cfg.offset_factor = 0.95f;
++        cfg.delta_mean_offset = 256.0f;
++        cfg.recur_offset_error = 4.0f;
++        cfg.max_adjusted_offset = 24.0f;
++        cfg.max_valid_offset_y = 20.0f;
++        cfg.max_track_error = 6.0f;
++        break;
++    }
+     case CamD3C8K: {
+         cfg.stitch_min_width = 256;
+         cfg.min_corners = 4;
+@@ -584,6 +673,46 @@ gl_stitch_info (CamModel model, StitchScopicMode scopic_mode)
+         }
+         break;
+     }
++    case CamC6C8K: {
++        info.merge_width[0] = 256;
++        info.merge_width[1] = 256;
++        info.merge_width[2] = 256;
++        info.merge_width[3] = 256;
++        info.merge_width[4] = 256;
++        info.merge_width[5] = 256;
++
++        info.fisheye_info[0].intrinsic.cx = 1907.0f;
++        info.fisheye_info[0].intrinsic.cy = 1440.0f;
++        info.fisheye_info[0].intrinsic.fov = 200.0f;
++        info.fisheye_info[0].radius = 1984.0f;
++        info.fisheye_info[0].extrinsic.roll = 90.3f;
++        info.fisheye_info[1].intrinsic.cx = 1920.0f;
++        info.fisheye_info[1].intrinsic.cy = 1440.0f;
++        info.fisheye_info[1].intrinsic.fov = 200.0f;
++        info.fisheye_info[1].radius = 1984.0f;
++        info.fisheye_info[1].extrinsic.roll = 90.0f;
++        info.fisheye_info[2].intrinsic.cx = 1920.0f;
++        info.fisheye_info[2].intrinsic.cy = 1440.0f;
++        info.fisheye_info[2].intrinsic.fov = 200.0f;
++        info.fisheye_info[2].radius = 1984.0f;
++        info.fisheye_info[2].extrinsic.roll = 90.2f;
++        info.fisheye_info[3].intrinsic.cx = 1920.0f;
++        info.fisheye_info[3].intrinsic.cy = 1440.0f;
++        info.fisheye_info[3].intrinsic.fov = 200.0f;
++        info.fisheye_info[3].radius = 1984.0f;
++        info.fisheye_info[3].extrinsic.roll = 90.0f;
++        info.fisheye_info[4].intrinsic.cx = 1920.0f;
++        info.fisheye_info[4].intrinsic.cy = 1440.0f;
++        info.fisheye_info[4].intrinsic.fov = 200.0f;
++        info.fisheye_info[4].radius = 1984.0f;
++        info.fisheye_info[4].extrinsic.roll = 91.2f;
++        info.fisheye_info[5].intrinsic.cx = 1914.0f;
++        info.fisheye_info[5].intrinsic.cy = 1440.0f;
++        info.fisheye_info[5].intrinsic.fov = 200.0f;
++        info.fisheye_info[5].radius = 1984.0f;
++        info.fisheye_info[5].extrinsic.roll = 90.1f;
++        break;
++    }
+     case CamD3C8K: {
+         switch (scopic_mode) {
+         case ScopicStereoLeft: {
+diff --git a/xcore/interface/stitcher.cpp b/xcore/interface/stitcher.cpp
+index 0f79a9cc..40f1cc28 100644
+--- a/xcore/interface/stitcher.cpp
++++ b/xcore/interface/stitcher.cpp
+@@ -336,7 +336,7 @@ Stitcher::estimate_round_slices ()
+         return XCAM_RETURN_NO_ERROR;
+ 
+     XCAM_FAIL_RETURN (
+-        ERROR, _camera_num && _camera_num < XCAM_STITCH_MAX_CAMERAS, XCAM_RETURN_ERROR_PARAM,
++        ERROR, _camera_num && _camera_num <= XCAM_STITCH_MAX_CAMERAS, XCAM_RETURN_ERROR_PARAM,
+         "stitcher: camera num was not set, or camera num(%d) exceed max camera value(%d)",
+         _camera_num, XCAM_STITCH_MAX_CAMERAS);
+ 

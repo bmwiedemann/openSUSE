@@ -1,0 +1,79 @@
+From d30b792aa9fb08ca755d27f62b859bc321c5eac0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 18 Dec 2021 00:17:23 +0100
+Subject: [PATCH] Fix multiple definitions of XCam::ShaderID (ODR violation)
+
+The IDs are only required inside the respective private namespaces, so
+move it. This matches e.g. gl_blender.cpp and vk_blender.cpp.
+---
+ modules/gles/gl_fastmap_blender.cpp | 12 ++++++------
+ modules/gles/gl_geomap_handler.cpp  | 16 ++++++++--------
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/modules/gles/gl_fastmap_blender.cpp b/modules/gles/gl_fastmap_blender.cpp
+index 3ee6bab..d100f7f 100644
+--- a/modules/gles/gl_fastmap_blender.cpp
++++ b/modules/gles/gl_fastmap_blender.cpp
+@@ -24,12 +24,6 @@
+ 
+ namespace XCam {
+ 
+-enum ShaderID {
+-    ShaderFastmapBlendY = 0,
+-    ShaderFastmapBlendUVNV12,
+-    ShaderFastmapBlendUVYUV420
+-};
+-
+ static const GLShaderInfo shaders_info[] = {
+     {
+         GL_COMPUTE_SHADER,
+@@ -53,6 +47,12 @@ static const GLShaderInfo shaders_info[] = {
+ 
+ namespace GLFastmapBlendPriv {
+ 
++enum ShaderID {
++    ShaderFastmapBlendY = 0,
++    ShaderFastmapBlendUVNV12,
++    ShaderFastmapBlendUVYUV420
++};
++
+ class Impl
+ {
+ public:
+diff --git a/modules/gles/gl_geomap_handler.cpp b/modules/gles/gl_geomap_handler.cpp
+index 342d271..fd88bf0 100644
+--- a/modules/gles/gl_geomap_handler.cpp
++++ b/modules/gles/gl_geomap_handler.cpp
+@@ -27,14 +27,6 @@
+ 
+ namespace XCam {
+ 
+-enum ShaderID {
+-    ShaderComMapNV12 = 0,    // NV12 common mapping
+-    ShaderComMapYUV420,      // YUV420 common mapping
+-    ShaderFastMapY,          // Y planar fast mapping
+-    ShaderFastMapUVNV12,     // NV12 UV planar fast mapping
+-    ShaderFastMapUVYUV420    // YUV420 UV planar fast mapping
+-};
+-
+ static const GLShaderInfo shaders_info[] = {
+     {
+         GL_COMPUTE_SHADER,
+@@ -70,6 +62,14 @@ static const GLShaderInfo shaders_info[] = {
+ 
+ namespace GLGeoMapPriv {
+ 
++enum ShaderID {
++    ShaderComMapNV12 = 0,    // NV12 common mapping
++    ShaderComMapYUV420,      // YUV420 common mapping
++    ShaderFastMapY,          // Y planar fast mapping
++    ShaderFastMapUVNV12,     // NV12 UV planar fast mapping
++    ShaderFastMapUVYUV420    // YUV420 UV planar fast mapping
++};
++
+ class ComMap
+ {
+ public:
+-- 
+2.34.1
+

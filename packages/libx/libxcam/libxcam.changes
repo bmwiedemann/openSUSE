@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 17 22:27:31 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Really build against OpenCV4 (on TW), add
+  * 0001-gl-stitch_support_EGL_initialize_by_GBM.patch
+  * 0001-New_features_camera_tunning_and_fixes.patch
+  * 0001-pkg_config_check_opencv_module_version.patch
+- Fix ODR violation, add
+  * 0001-Fix-multiple-definitions-of-XCam-ShaderID-ODR-violat.patch
+
+-------------------------------------------------------------------
 Mon Oct 18 23:31:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

@@ -1,0 +1,241 @@
+From b40c249bcfbf85da66fba416c6480d5ac6ff2ecb Mon Sep 17 00:00:00 2001
+From: Zong Wei <wei.zong@intel.com>
+Date: Thu, 11 Mar 2021 16:28:35 +0800
+Subject: [PATCH] gl-stitch: support EGL initialize by GBM
+
+ * allow gles program to run without requiring a window system
+---
+ configure.ac                  |  2 ++
+ modules/gles/Makefile.am      |  4 +++
+ modules/gles/egl/egl_base.cpp | 49 ++++++++++++++++++++++++++++++++---
+ modules/gles/egl/egl_base.h   | 12 ++++++++-
+ tests/test-surround-view.cpp  | 25 ++++++++++++++----
+ 5 files changed, 83 insertions(+), 9 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0e80aab9..0319a700 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,6 +73,7 @@ XCAM_ARG_ENABLE(json, --enable-json, enable_json, no, enable camera calibration
+ XCAM_CHECK_MODULE($enable_drm, libdrm, LIBDRM, HAVE_LIBDRM=1, HAVE_LIBDRM=0)
+ XCAM_CHECK_MODULE($enable_libcl, OpenCL, LIBCL, HAVE_LIBCL=1, HAVE_LIBCL=0)
+ XCAM_CHECK_MODULE($enable_gles, gl, LIBGL, HAVE_GLES=1, HAVE_GLES=0)
++XCAM_CHECK_MODULE($enable_gles, gbm, LIBGBM, HAVE_GBM=1, HAVE_GBM=0)
+ XCAM_CHECK_MODULE($enable_vulkan, vulkan, LIBVULKAN, HAVE_VULKAN=1, HAVE_VULKAN=0)
+ 
+ XCAM_CHECK_GAWK($HAVE_LIBCL, $HAVE_GLES)
+@@ -109,6 +110,7 @@ XCAM_DEFINE_MACOR(ENABLE_PROFILING, $ENABLE_PROFILING, enable profiling)
+ XCAM_DEFINE_MACOR(HAVE_LIBDRM, $HAVE_LIBDRM, have libdrm)
+ XCAM_DEFINE_MACOR(HAVE_LIBCL, $HAVE_LIBCL, have libcl)
+ XCAM_DEFINE_MACOR(HAVE_GLES, $HAVE_GLES, have gles)
++XCAM_DEFINE_MACOR(HAVE_GBM, $HAVE_GBM, have gbm)
+ XCAM_DEFINE_MACOR(HAVE_VULKAN, $HAVE_VULKAN, have vulkan)
+ XCAM_DEFINE_MACOR(ENABLE_AVX512, $ENABLE_AVX512, have avx instruction)
+ XCAM_DEFINE_MACOR(ENABLE_RENDER, $ENABLE_RENDER, enable texture render)
+diff --git a/modules/gles/Makefile.am b/modules/gles/Makefile.am
+index 2c6acd43..5bc05904 100644
+--- a/modules/gles/Makefile.am
++++ b/modules/gles/Makefile.am
+@@ -17,6 +17,10 @@ if HAVE_OPENCV
+ XCAM_GLES_LIBS += $(top_builddir)/modules/ocv/libxcam_ocv.la
+ endif
+ 
++if HAVE_GBM
++XCAM_GLES_LIBS += $(LIBGL_LIBS) -lgbm
++endif
++
+ xcam_gles_sources = \
+     gles_std.cpp           \
+     gl_buffer.cpp          \
+diff --git a/modules/gles/egl/egl_base.cpp b/modules/gles/egl/egl_base.cpp
+index 694ac54b..835e0c52 100644
+--- a/modules/gles/egl/egl_base.cpp
++++ b/modules/gles/egl/egl_base.cpp
+@@ -26,6 +26,10 @@ EGLBase::EGLBase ()
+     : _display (EGL_NO_DISPLAY)
+     , _context (EGL_NO_CONTEXT)
+     , _surface (EGL_NO_SURFACE)
++#if HAVE_GBM
++    , _node_name (NULL)
++    , _gbm_device (NULL)
++#endif
+ {
+ }
+ 
+@@ -47,11 +51,19 @@ EGLBase::~EGLBase ()
+     }
+ }
+ 
++
+ bool
+-EGLBase::init ()
++EGLBase::init (const char* node_name)
+ {
+-    bool ret = get_display (EGL_DEFAULT_DISPLAY, _display);
+-    XCAM_FAIL_RETURN (ERROR, ret, false, "EGLInit: get display failed");
++    bool ret = false;
++    if (NULL != node_name) {
++        XCAM_LOG_DEBUG ("EGL init: %s", node_name);
++        ret = get_display (node_name, _display);
++        XCAM_FAIL_RETURN (ERROR, ret, false, "EGLInit: get display failed");
++    } else {
++        ret = get_display (EGL_DEFAULT_DISPLAY, _display);
++        XCAM_FAIL_RETURN (ERROR, ret, false, "EGLInit: get display failed");
++    }
+ 
+     EGLint major, minor;
+     ret = initialize (_display, &major, &minor);
+@@ -74,6 +86,37 @@ EGLBase::init ()
+     return true;
+ }
+ 
++bool
++EGLBase::get_display (const char *node_name, EGLDisplay &display)
++{
++#if HAVE_GBM
++    if (!node_name) {
++        XCAM_LOG_ERROR ("get disply device node name is NULL!");
++        return false;
++    }
++    _node_name = strndup (node_name, XCAM_MAX_STR_SIZE);
++
++    int32_t fd = open (_node_name, O_RDWR);
++    XCAM_FAIL_RETURN (ERROR, fd > 0, false, "EGLInit: EGL open device node:%s failed", _node_name);
++
++    _gbm_device = gbm_create_device (fd);
++    XCAM_FAIL_RETURN (ERROR, _gbm_device != NULL, false, "EGLInit: EGL create gbm device failed");
++
++    display = eglGetPlatformDisplay (EGL_PLATFORM_GBM_MESA, _gbm_device, NULL);
++    XCAM_FAIL_RETURN (
++        ERROR, display != EGL_NO_DISPLAY, false,
++        "EGLInit: get display failed");
++    return true;
++#else
++    XCAM_UNUSED (node_name);
++    display = eglGetDisplay (EGL_DEFAULT_DISPLAY);
++    XCAM_FAIL_RETURN (
++        ERROR, display != EGL_NO_DISPLAY, false,
++        "EGLInit: get display failed");
++    return true;
++#endif
++}
++
+ bool
+ EGLBase::get_display (NativeDisplayType native_display, EGLDisplay &display)
+ {
+diff --git a/modules/gles/egl/egl_base.h b/modules/gles/egl/egl_base.h
+index baa9a10c..152aa53c 100644
+--- a/modules/gles/egl/egl_base.h
++++ b/modules/gles/egl/egl_base.h
+@@ -23,6 +23,11 @@
+ 
+ #include <gles/egl/egl_utils.h>
+ 
++#if HAVE_GBM
++#include <gbm.h>
++#include <fcntl.h>
++#endif
++
+ namespace XCam {
+ 
+ class EGLBase {
+@@ -30,8 +35,9 @@ class EGLBase {
+     explicit EGLBase ();
+     ~EGLBase ();
+ 
+-    bool init ();
++    bool init (const char* node_name = NULL);
+ 
++    bool get_display (const char *node_name, EGLDisplay &display);
+     bool get_display (NativeDisplayType native_display, EGLDisplay &display);
+     bool initialize (EGLDisplay display, EGLint *major, EGLint *minor);
+     bool choose_config (
+@@ -54,6 +60,10 @@ class EGLBase {
+     EGLDisplay        _display;
+     EGLContext        _context;
+     EGLSurface        _surface;
++#if HAVE_GBM
++    char              *_node_name;
++    gbm_device        *_gbm_device;
++#endif
+ };
+ 
+ }
+diff --git a/tests/test-surround-view.cpp b/tests/test-surround-view.cpp
+index cf378525..8bd0ae13 100644
+--- a/tests/test-surround-view.cpp
++++ b/tests/test-surround-view.cpp
+@@ -526,6 +526,7 @@ int main (int argc, char *argv[])
+     CamModel cam_model = CamB4C1080P;
+     FrameMode frame_mode = FrameMulti;
+     SVModule module = SVModuleNone;
++    const char* device_node = NULL;
+     GeoMapScaleMode scale_mode = ScaleSingleConst;
+     FeatureMatchMode fm_mode = FMNone;
+     FisheyeDewarpMode dewarp_mode = DewarpBowl;
+@@ -545,6 +546,7 @@ int main (int argc, char *argv[])
+ 
+     const struct option long_opts[] = {
+         {"module", required_argument, NULL, 'm'},
++        {"device-node", required_argument, NULL, 'D'},
+         {"input", required_argument, NULL, 'i'},
+         {"output", required_argument, NULL, 'o'},
+         {"in-w", required_argument, NULL, 'w'},
+@@ -591,6 +593,11 @@ int main (int argc, char *argv[])
+                 return -1;
+             }
+             break;
++        case 'D':
++            XCAM_ASSERT (optarg);
++            device_node = optarg;
++            break;
++
+         case 'i':
+             XCAM_ASSERT (optarg);
+             PUSH_STREAM (SVStream, ins, optarg);
+@@ -785,6 +792,12 @@ int main (int argc, char *argv[])
+     for (uint32_t i = 0; i < ins.size (); ++i) {
+         printf ("input%d file:\t\t%s\n", i, ins[i]->get_file_name ());
+     }
++    printf ("camera model:\t\t%s\n", cam_model == CamA2C1080P ? "cama2c1080p" :
++            (cam_model == CamB4C1080P ? "camb4c1080p" : (cam_model == CamC3C8K ? "camc3c8k" : "camd3c8k")));
++    printf ("fisheye number:\t\t%d\n", fisheye_num);
++    printf ("stitch module:\t\t%s\n", module == SVModuleGLES ? "GLES" :
++            (module == SVModuleVulkan ? "Vulkan" : (module == SVModuleSoft ? "Soft" : "Unknown")));
++    printf ("device node:\t\t%s\n", device_node != NULL ? device_node : "Not specified, use default model");
+     printf ("output file:\t\t%s\n", outs[IdxStitch]->get_file_name ());
+     printf ("input width:\t\t%d\n", input_width);
+     printf ("input height:\t\t%d\n", input_height);
+@@ -793,9 +806,6 @@ int main (int argc, char *argv[])
+     printf ("topview width:\t\t%d\n", topview_width);
+     printf ("topview height:\t\t%d\n", topview_height);
+     printf ("input format:\t\t%s\n", input_format == V4L2_PIX_FMT_YUV420 ? "yuv" : "nv12");
+-    printf ("fisheye number:\t\t%d\n", fisheye_num);
+-    printf ("camera model:\t\t%s\n", cam_model == CamA2C1080P ? "cama2c1080p" :
+-            (cam_model == CamB4C1080P ? "camb4c1080p" : (cam_model == CamC3C8K ? "camc3c8k" : "camd3c8k")));
+     printf ("blend pyr levels:\t%d\n", blend_pyr_levels);
+     printf ("dewarp mode: \t\t%s\n", dewarp_mode == DewarpSphere ? "sphere" : "bowl");
+     printf ("scopic mode:\t\t%s\n", (scopic_mode == ScopicMono) ? "mono" :
+@@ -825,7 +835,12 @@ int main (int argc, char *argv[])
+ 
+         egl = new EGLBase ();
+         XCAM_ASSERT (egl.ptr ());
+-        XCAM_FAIL_RETURN (ERROR, egl->init (), -1, "init EGL failed");
++
++        if (NULL == device_node) {
++            XCAM_FAIL_RETURN (ERROR, egl->init (), -1, "init EGL failed");
++        } else {
++            XCAM_FAIL_RETURN (ERROR, egl->init (device_node), -1, "init EGL failed");
++        }
+     }
+ #else
+     if (module == SVModuleGLES) {
+@@ -856,7 +871,7 @@ int main (int argc, char *argv[])
+ #if ENABLE_FISHEYE_IMG_ROI
+     if (module == SVModuleGLES && (cam_model == CamC3C8K || cam_model == CamD3C8K)) {
+         StitchInfo info = (module == SVModuleSoft) ?
+-           soft_stitch_info (cam_model, scopic_mode) : gl_stitch_info (cam_model, scopic_mode);
++                          soft_stitch_info (cam_model, scopic_mode) : gl_stitch_info (cam_model, scopic_mode);
+ 
+         get_fisheye_info (cam_model, scopic_mode, info.fisheye_info);
+ 

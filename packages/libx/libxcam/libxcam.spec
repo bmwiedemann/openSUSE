@@ -26,6 +26,14 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/01org/libxcam
 Source0:        https://github.com/01org/libxcam/archive/release_%{version}.tar.gz
+# PATCH-FIX-UPSTREAM OpenCV 4.x support, part 1
+Patch0:         https://github.com/intel/libxcam/commit/b40c249bcfbf85da66fba416c6480d5ac6ff2ecb.patch#/0001-gl-stitch_support_EGL_initialize_by_GBM.patch
+# PATCH-FIX-UPSTREAM OpenCV 4.x support, part 2
+Patch1:         https://github.com/intel/libxcam/commit/6a20559b402493ff29eac7368b5d7b4569a64884.patch#/0001-New_features_camera_tunning_and_fixes.patch
+# PATCH-FIX-UPSTREAM OpenCV 4.x support, part 3
+Patch2:         https://github.com/intel/libxcam/commit/ea99d89082c2473c2e22c848bff4f9f537af3fde.patch#/0001-pkg_config_check_opencv_module_version.patch
+# PATCH-FIX-UPSTREAM Fix ODR violation
+Patch3:         0001-Fix-multiple-definitions-of-XCam-ShaderID-ODR-violat.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -40,7 +48,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_intel)
 %endif
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(opencv4)
+%else
 BuildRequires:  pkgconfig(opencv)
+%endif
 BuildRequires:  pkgconfig(vulkan)
 
 %description
@@ -71,7 +83,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-release_%{version}
+%autosetup -p1 -n %{name}-release_%{version}
 
 %build
 autoreconf -fiv
