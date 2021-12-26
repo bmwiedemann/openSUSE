@@ -343,4 +343,12 @@ Date separators added for better orientation in the program lists of the plugins
     <comment></comment>
     <requestid>903804</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f1a11d90229e5d499d53a9736880ef8a</srcmd5>
+    <version>4.2.4</version>
+    <time>1640521833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942567</requestid>
+  </revision>
 </revisionlist>
