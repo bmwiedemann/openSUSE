@@ -1,0 +1,95 @@
+From 2610f9162e5e6a05bd4b2cb8136e72d23110399b Mon Sep 17 00:00:00 2001
+From: Hasan Ramezani <hasan.r67@gmail.com>
+Date: Thu, 25 Nov 2021 00:28:03 +0100
+Subject: [PATCH] Django main (#528)
+
+* Fix failing test in Django main
+
+* Remove extra setting that causes RemovedInDjango50Warning
+
+* Repace logger.warn with logger.warning
+---
+ project/project/settings.py           | 2 --
+ project/tests/urlconf_without_silk.py | 4 ++--
+ silk/profiling/profiler.py            | 8 ++++----
+ silk/request_filters.py               | 2 +-
+ 4 files changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/project/project/settings.py b/project/project/settings.py
+index 6ba95b88..e3586db7 100644
+--- a/project/project/settings.py
++++ b/project/project/settings.py
+@@ -57,8 +57,6 @@
+ 
+ USE_I18N = True
+ 
+-USE_L10N = True
+-
+ USE_TZ = True
+ 
+ LOGGING = {
+diff --git a/project/tests/urlconf_without_silk.py b/project/tests/urlconf_without_silk.py
+index 0b730053..88e073c2 100644
+--- a/project/tests/urlconf_without_silk.py
++++ b/project/tests/urlconf_without_silk.py
+@@ -1,7 +1,7 @@
+-from django.conf.urls import include, url
++from django.urls import include, re_path
+ 
+ urlpatterns = [
+-    url(
++    re_path(
+         r'^example_app/',
+         include('example_app.urls', namespace='example_app')
+     ),
+diff --git a/silk/profiling/profiler.py b/silk/profiling/profiler.py
+index bd492aee..66610abf 100644
+--- a/silk/profiling/profiler.py
++++ b/silk/profiling/profiler.py
+@@ -11,7 +11,7 @@
+ from silk.config import SilkyConfig
+ from silk.models import _time_taken
+ 
+-Logger = logging.getLogger('silk.profiling.profiler')
++logger = logging.getLogger('silk.profiling.profiler')
+ 
+ 
+ # noinspection PyPep8Naming
+@@ -35,7 +35,7 @@ def __exit__(self, exc_type, exc_val, exc_tb):
+             end_time = timezone.now()
+             exception_raised = exc_type is not None
+             if exception_raised:
+-                Logger.error('Exception when performing meta profiling, dumping trace below')
++                logger.error('Exception when performing meta profiling, dumping trace below')
+                 traceback.print_exception(exc_type, exc_val, exc_tb)
+             request = getattr(DataCollector().local, 'request', None)
+             if request:
+@@ -102,7 +102,7 @@ def __enter__(self):
+                     'start_time': timezone.now(),
+                 }
+         else:
+-            Logger.warn('Cannot execute silk_profile as silk is not installed correctly.')
++            logger.warning('Cannot execute silk_profile as silk is not installed correctly.')
+ 
+     def _finalise_queries(self):
+         collector = DataCollector()
+@@ -172,7 +172,7 @@ def wrapped_target(*args, **kwargs):
+ 
+             return decorator(target)
+         else:
+-            Logger.warning('Cannot execute silk_profile as silk is not installed correctly.')
++            logger.warning('Cannot execute silk_profile as silk is not installed correctly.')
+             return target
+ 
+     def distinct_queries(self):
+diff --git a/silk/request_filters.py b/silk/request_filters.py
+index db0ecc6e..4ecaa5d4 100644
+--- a/silk/request_filters.py
++++ b/silk/request_filters.py
+@@ -228,5 +228,5 @@ def filters_from_request(request):
+                 f = filter_class(value)
+                 filters[ident] = f
+             except FilterValidationError:
+-                logger.warn(f'Validation error when processing filter {typ}({value})')
++                logger.warning(f'Validation error when processing filter {typ}({value})')
+     return filters

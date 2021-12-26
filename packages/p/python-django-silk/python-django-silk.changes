@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Dec 26 09:52:54 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace no-longer necessary _service with PyPI tarball
+- Add 2610f91.patch to fix a test incompatibility with Django 4.
+- Tidy build dependencies and remove unnecessary Pygments dep.
+- Upgrade to v4.2.0
+  * Passed wsgi request to SILKY_PYTHON_PROFILER_FUNC
+  * Added Django 3.1 & 3.2 to test matrix
+  * Replace url with re_path for Django 4.0
+  * Do not crash when silk app is not included in urls
+  * Add the SILKY_JSON_ENSURE_ASCII configuration item to support
+    Chinese
+  * Add row view for requests page
+  * RequestModelFactory: fallback if request body too large
+  * Add query execution plan to sql_detail
+  * Add Python 3.9 compatibility
+  * Replace re_path with path
+  * Fix transaction error for mysql
+  * parse query when count joins to match only Keyword
+  * fix: DB connection to ClearDB when multiple databases
+  * fix: DataCollector sql_queries model not found on
+    filter(request=self.request)
+  * Generate missing row.css from sass
+  * Filter null values from most time overall summary
+  * Ensure sorting between longest requests
+  * Filter null values from most db time summary
+  * Ensure sorting between most db time requests
+  * Temporary fix for testing Django 2.2
+  * Fix egg metadata error
+  * Fixed a bug that the profile tab could not be opened
+    when the source code contains Japanese
+  * fix incorrectly made decorator
+  * Ensure sorting between most db queries requests
+  * Add tests that access the actual DB
+  * remove python 2 style codes from across the codebase
+  * Fix broken test on Windows 10 (SQLite)
+  * Remove Make Migrations
+  * Add Python 3.10 compatibility
+
+-------------------------------------------------------------------
 Thu Dec  2 12:41:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Skip python 3.6 since python-networkx does not support it
