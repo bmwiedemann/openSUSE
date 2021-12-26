@@ -19,21 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-polymorphic
-Version:        3.0.0
+Version:        3.1
 Release:        0
 Summary:        Polymorphic inheritance for Django models
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/django-polymorphic/django-polymorphic
-Source:         https://github.com/django-polymorphic/django-polymorphic/archive/%{version}.tar.gz#/django-polymorphic-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/django-polymorphic/django-polymorphic/master/runtests.py
+Source:         https://github.com/django-polymorphic/django-polymorphic/archive/v%{version}.tar.gz#/django-polymorphic-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.1}
 BuildRequires:  %{python_module dj-database-url}
 # /SECTION
 %python_subpackages
@@ -43,7 +42,6 @@ Seamless polymorphic inheritance for Django models.
 
 %prep
 %setup -q -n django-polymorphic-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -53,10 +51,10 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py
+%python_exec runtests.py -v 2
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst docs/*.rst
 %license LICENSE
 %{python_sitelib}/*
 
