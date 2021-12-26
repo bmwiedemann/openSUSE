@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 26 10:51:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.1.3
+  * Add django 4.0 support.
+  * Remove django 1.11, 2.0, 2.1 support.
+- from v1.1.2
+  * Use gettext_lazy instead of ugettext_lazy
+
+-------------------------------------------------------------------
 Sun Sep 13 12:18:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.1.1
