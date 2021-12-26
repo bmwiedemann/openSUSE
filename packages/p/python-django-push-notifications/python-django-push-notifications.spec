@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-push-notifications
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module apns2}
 BuildRequires:  %{python_module djangorestframework >= 3.7}
+BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
@@ -48,6 +49,7 @@ to WebPush (Chrome, Firefox and Opera) in Django.
 
 %prep
 %setup -q -n django-push-notifications-%{version}
+djcodemod run --removed-in 4.0 push_notifications/{admin,fields,models}.py
 
 %build
 %python_build

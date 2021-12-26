@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 26 14:34:58 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- - Use django-codemod to make Django 4 compatible
+
+-------------------------------------------------------------------
 Thu Aug  6 05:50:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the tests with updated pytest macros
