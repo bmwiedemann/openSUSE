@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-geoposition
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://github.com/philippbosch/django-geoposition
 Source:         https://files.pythonhosted.org/packages/source/d/django-geoposition/django-geoposition-%{version}.tar.gz
 Patch0:         pr_110.patch
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +42,7 @@ Django model field that can hold a geoposition, and corresponding admin widget.
 %prep
 %setup -q -n django-geoposition-%{version}
 %patch0 -p1
+djcodemod run --removed-in 4.0 geoposition/fields.py geoposition/forms.py geoposition/widgets.py
 
 %build
 %python_build
@@ -53,7 +55,7 @@ Django model field that can hold a geoposition, and corresponding admin widget.
 
 %check
 export DJANGO_SETTINGS_MODULE=geoposition.tests.settings
-%python_exec -m django test geoposition
+%python_exec -m django test -v2 geoposition
 
 %files %{python_files}
 %doc AUTHORS README.rst

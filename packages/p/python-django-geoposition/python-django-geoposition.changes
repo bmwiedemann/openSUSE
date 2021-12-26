@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 26 11:25:13 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use django-codemod to fix Django 4 support
+
+-------------------------------------------------------------------
 Mon Oct  5 02:29:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add patch pr_110.patch and activate test suite
