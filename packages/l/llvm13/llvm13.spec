@@ -146,6 +146,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
@@ -672,7 +673,7 @@ TARGETS_TO_BUILD="host;AMDGPU;BPF;NVPTX"
 TARGETS_TO_BUILD="host;BPF"
 %endif
 
-mem_per_compile_job=900000
+mem_per_compile_job=1000000
 %ifarch i586 ppc armv6hl armv7hl
 # 32-bit arches need less memory than 64-bit arches.
 mem_per_compile_job=600000

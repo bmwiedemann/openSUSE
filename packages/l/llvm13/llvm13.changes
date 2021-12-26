@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 18 15:05:40 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- BuildRequires: python-rpm-macros to fix Leap 15.3 build.
+- More memory for GCC compile jobs.
+
+-------------------------------------------------------------------
 Fri Nov 12 13:30:15 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add FileCheck into the devel package, as is required for testing
