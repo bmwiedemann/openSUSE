@@ -28,6 +28,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libofa-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-fasteners
 BuildRequires:  python3-mutagen >= 1.37
