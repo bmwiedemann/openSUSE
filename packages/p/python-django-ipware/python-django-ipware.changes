@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 26 10:44:22 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.0.2
+  * Added support for Python 3.10
+- from v4.0.1
+  * Added test for django 4.0
+- from v4.0.0
+  * Added test to cover more proxy scenarios
+- from v3.0.3-3.0.7
+  * Clean ups
+- from v3.0.2
+  * Add support for ppc64le
+
+-------------------------------------------------------------------
 Sun Sep 13 12:42:46 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

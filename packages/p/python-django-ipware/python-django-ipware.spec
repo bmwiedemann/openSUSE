@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-ipware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-ipware
-Version:        3.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Django utility application that returns client's real IP address
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/un33k/django-ipware
-Source:         https://files.pythonhosted.org/packages/source/d/django-ipware/django-ipware-%{version}.tar.gz
+Source:         https://github.com/un33k/django-ipware/archive/refs/tags/v%{version}.tar.gz#/django-ipware-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
