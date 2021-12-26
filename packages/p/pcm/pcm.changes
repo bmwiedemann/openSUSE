@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 26 11:25:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202112:
+* pcm: expose DRAM_GT_REQUESTS and DRAM_IA_REQUESTS bandwdith metrics
+* pcm: added client IO and GT bandwidth metrics to CSV output
+* pcm-memory: added -u option (clear screen before stat update)
+* pcm-memory: added -s option (silent mode)
+* pcm-memory: add csv print support for DRAM rank monitoring
+* pcm-memory: disable pmem output when rank monitoring is enabled
+* pcm-power: support for <1 sec delay
+* pcm-raw: added -i option (limits the number of iterations/samples)
+* pcm-raw: add support of IRP events
+* pcm-raw: add thousand separator and tab separator options
+* pcm-pcie: support 8 socket platforms
+* pcm-power: add core power license statistics
+* various small fixes and enhancements
+
+-------------------------------------------------------------------
 Sat Oct 30 15:15:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to 202110:
