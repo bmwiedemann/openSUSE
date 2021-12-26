@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Dec 25 22:21:58 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.0.3.2
+
+  v3.0.3.2 (2021-12-08)
+  ---------------------
+
+  Bugs fixed:
+   * dedenter.rb: fix an encoding/squiggly heredoc regression (#836) (hmdne)
+
+  v3.0.3.1 (2021-11-29)
+  ---------------------
+
+  Features implemented:
+   * ruby31.y: parse anonymous block argument. (#833) (Ilya Bylich)
+   * ruby31.y: parse forward argument without parentheses (#832) (Ilya Bylich)
+
+  v3.0.3.0 (2021-11-25)
+  ---------------------
+
+  API modifications:
+   * Bump maintenance branches to 3.0.3, 2.7.5, and 2.6.9 (#829) (Koichi ITO)
+
+  Features implemented:
+   * lexer.rl: parse meta-control-hex chars in regexes starting from 3.1 (#828) (Ilya Bylich)
+   * builder.rb: warn on duplicate hash key literals. (#827) (Ilya Bylich)
+   * ruby31.y: Allow value omission in Hash literals (#818) (Svyatoslav Kryukov)
+   * ruby31.y: Allow omission of parentheses in one line pattern matching (#816) (Koichi ITO)
+   * ruby31.y: Add pattern matching pin support for instance/class/global variables (#813) (Koichi ITO)
+
+  Bugs fixed:
+   * ruby31.y: handle local variables as hash labels with omitted values (#820) (Ilya Bylich)
+   * lexer.rl: Fix handling of beginless ranges at start of line (#822) (Matijs van Zuijlen)
+   * dedenter.rb: Fix squiggly heredoc line continuation handling (#819) (Matijs van Zuijlen)
+   * lexer.rl: fix incompatible delimiters on percent literal (#808) (Masataka Pocke Kuwabara)
+
+-------------------------------------------------------------------
 Sun Jul 11 10:51:59 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.0.2.0
