@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 24 21:39:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.9.0:
+  * Promotion of ScalarT now increases the number of floating
+    point mantissa bits on all tested architectures, including ARM
+    v8. Demotion is the reverse.
+  * The default limit for the truncated() member function is now
+    std::numericlimits<ScalarT>::epsilon().
+  * The constructor from framedmulti<> to matrixmulti<> now uses
+    the default truncation before the transform, and the
+    constructor from matrixmulti<> to framedmulti<> uses the
+    default truncation after the transform.
+  * The truncation of output via operator<<() now depends on
+    ostream precision(). See test17 for examples.
+
+-------------------------------------------------------------------
 Thu Oct 21 11:51:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.8.5:

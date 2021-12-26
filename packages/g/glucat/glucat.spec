@@ -17,7 +17,7 @@
 
 
 Name:           glucat
-Version:        0.8.5
+Version:        0.9.0
 Release:        0
 Summary:        Library of C++ templates implementing universal Clifford algebras
 License:        LGPL-3.0-only
