@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20211224" schemaversion="4.1">
+<image name="OBS__openSUSE___20211225" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211224</productvar>
+      <productvar name="VERSION">20211225</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211224,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211225,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211224/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211225/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3663,6 +3663,7 @@
       <repopackage name="python38-aiodns"/>
       <repopackage name="python38-aiohttp"/>
       <repopackage name="python38-aioitertools"/>
+      <repopackage name="python38-aiosignal"/>
       <repopackage name="python38-aiosmtpd"/>
       <repopackage name="python38-alembic"/>
       <repopackage name="python38-apipkg"/>
@@ -3721,6 +3722,7 @@
       <repopackage name="python38-fixtures"/>
       <repopackage name="python38-flufl.lock"/>
       <repopackage name="python38-FontTools"/>
+      <repopackage name="python38-frozenlist"/>
       <repopackage name="python38-fs"/>
       <repopackage name="python38-fsspec"/>
       <repopackage name="python38-future"/>
