@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 09 00:06:51 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20211209.3834c04:
+  * fix flavor executable substitution
+
+-------------------------------------------------------------------
+Wed Dec 08 14:19:11 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20211208.d090fb9:
+  * Add python310 flavor macros to compile set
+
+-------------------------------------------------------------------
 Fri Oct 22 12:47:07 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 20211022.38e7c70:

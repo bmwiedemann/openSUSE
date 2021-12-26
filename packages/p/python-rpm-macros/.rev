@@ -442,4 +442,16 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>926976</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a6b5e8ad114e53d9f5b7aa1c32edb53d</srcmd5>
+    <version>20211209.3834c04</version>
+    <time>1640521815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211209.3834c04:
+  * fix flavor executable substitution
+- Update to version 20211208.d090fb9:
+  * Add python310 flavor macros to compile set
+</comment>
+    <requestid>937339</requestid>
+  </revision>
 </revisionlist>
