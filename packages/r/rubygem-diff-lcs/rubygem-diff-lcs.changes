@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec 25 22:32:52 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.0
+
+  * Updated the CI configuration and monkey-patch Hoe.
+
+  * Kenichi Kamiya fixed a test configuration deprecation in SimpleCov. [#69]
+
+  * Tien introduced several corrections and code improvements:
+
+    - Removed an off-by-one error when calculating an index value by embracing
+      Ruby iteration properly. This had a side-effect of fixing a long-standing
+      bug in `#traverse_sequences` where the traversal would not be transitive.
+      That is, `LCS(s2, s1)` should produce a sequence that is transitive with
+      `LCS(s1, s2)` on traversal, and applying the diff computed from those
+      results would result in equivalent changes that could be played forward or
+      backward as appropriate. [#71], [#75]
+
+    - The above fix resulted in a changed order of the longest common subsequence
+      when callbacks were applied. After analysis, it was determined that the
+      computed subsequence was _equivalent_ to the prior version, so the test was
+      updated. This also resulted in the clarification of documentation when
+      traversing the subsequences. [#79]
+
+    - An infinite loop case in the case where Diff::LCS would be included into an
+      enumerable class has been fixed. [#73]
+
+    - Clarified the purpose of a threshold test in calculation of LCS. [#72],
+      [#80]
+
+  * Removed autotest directory
+
+-------------------------------------------------------------------
 Mon Jul 13 17:24:56 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.4.4
