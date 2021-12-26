@@ -80,6 +80,10 @@ Provides:       ocaml-lablgtk-devel = %{version}
 Obsoletes:      ocaml-lablgtk-devel < %{version}
 Provides:       lablgtk2:/usr/lib/ocaml/lablgtk2/glib.cmi
 Requires:       %{name} = %{version}
+Requires:       pkgconfig(gtk+-2.0)
+%if %{with ocaml_lablgtk2_rsvg}
+Requires:       pkgconfig(librsvg-2.0)
+%endif
 
 %description devel
 LablGTK2 uses the rich type system of Objective Caml 3 to provide a

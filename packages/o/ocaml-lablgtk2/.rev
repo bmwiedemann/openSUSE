@@ -247,4 +247,12 @@
   build native target unconditionally</comment>
     <requestid>887305</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>83bbcd81059d480eb4cde95e969bce09</srcmd5>
+    <version>2.18.11</version>
+    <time>1640521823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942493</requestid>
+  </revision>
 </revisionlist>
