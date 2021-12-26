@@ -21,16 +21,12 @@
 %define skip_python36 1
 %define skip_python39 1
 Name:           python-django-pandas
-Version:        0.6.2
+Version:        0.6.6
 Release:        0
 Summary:        Tools for working with pandas in Django projects
 License:        BSD-3-Clause
 URL:            https://github.com/chrisdev/django-pandas/
 Source:         https://files.pythonhosted.org/packages/source/d/django-pandas/django-pandas-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/chrisdev/django-pandas/pull/126.patch#/merged_pr_126.patch
-# PATCH-FIX-OPENSUSE no-test_verbose.patch gh#chrisdev/django-pandas#137 mcepl@suse.com
-# Skip failing test
-Patch1:         no-test_verbose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +47,7 @@ BuildRequires:  %{python_module six}
 Tools for working with pandas in Django projects.
 
 %prep
-%autosetup -p1 -n django-pandas-%{version}
+%setup -q -n django-pandas-%{version}
 
 sed -i 's/==/>=/;/coverage/d' setup.py
 
