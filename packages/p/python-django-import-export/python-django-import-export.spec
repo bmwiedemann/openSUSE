@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-import-export
-Version:        2.5.0
+Version:        2.7.1
 Release:        0
 Summary:        Django data importing and exporting
 License:        BSD-2-Clause
@@ -36,6 +36,7 @@ Requires:       python-tablib >= 0.14.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module diff-match-patch}
 BuildRequires:  %{python_module tablib >= 0.14.0}
 # /SECTION
@@ -64,6 +65,6 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/*import[-_]export*/
 
 %changelog

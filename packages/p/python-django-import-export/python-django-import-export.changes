@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec 26 12:39:08 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.7.1
+  * Removed django_extensions from example app settings
+  * Added support for Django 4.0
+- from v2.7.0
+  * Big integer support for Integer widget
+  * Added skip_html_diff meta attribute
+  * Add ability to rollback the import on validation error
+  * Fix crash when deleting via admin site
+  * Use Github secret in CI script instead of hard-coded password
+  * Documentation: correct error in example application which leads to crash
+- from v2.6.1
+  * Revert 'dark mode' css: causes issues in django2.2
+- from v2.6.0
+  * Added guard for null 'options' to fix crash
+  * Updated import.css to support dark mode
+  * Fixed regression where overridden mixin methods are not called
+  * Fix xls/xlsx import of Time fields
+  * Added support for 'to_encoding' attribute
+  * Fix minor date formatting issue for date with years < 1000
+  * Translate the zh_Hans missing part
+  * Remove code duplication from mixins.py and admin.py
+  * don't test Django main branch with python36,37
+  * Support Django 3.2
+  * Rephrase logical clauses in docstrings
+  * Support multiple databases
+  * Add Farsi translated messages in the locale
+  * Update Russian translations
+  * Append export admin action using ModelAdmin.get_actions
+  * CachedInstanceLoader defaults to empty when import_id is missing
+  * Add kwargs to import_row, import_object and import_field
+  * Call load_workbook() with data_only flag
+
+-------------------------------------------------------------------
 Tue May 18 11:07:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip python36 build: no pandas.
