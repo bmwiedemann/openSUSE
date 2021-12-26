@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 24 12:38:56 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.3
+  - Added UI language for Dutch.
+  - Updated UI translations.
+  - Fixed the simple text renderer (build error, hanging).
+  - Fixed time zone of the "valid from" time in created client certificates.
+
+-------------------------------------------------------------------
 Wed Dec  8 22:39:51 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.9.2
