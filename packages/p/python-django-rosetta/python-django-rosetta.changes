@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 26 08:29:46 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.9.8
+  * Test against Django 4.0
+- from v0.9.7
+  * Arabic translation
+  * Translations via the DeepL API
+  * Fixed unicode handling in gettext headers
+  * Remove six as a dependency
+  * Move context and comment hints into the right-most column
+  * Add extra styles block to the base template
+
+-------------------------------------------------------------------
 Fri Jul 23 09:25:23 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.9.6
