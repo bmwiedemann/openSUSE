@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec 25 23:19:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Remove superfluous _service file
+- Add patch:
+  * fetchcontent.patch (handle bundled dependencies)
+
+-------------------------------------------------------------------
+Fri Dec 24 16:03:03 UTC 2021 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.9.1
+  * Fix actions versions
+  * Bump version to 2.9.1
+  * Add LibreTranslate and Lingva to popup window
+  * Skip app executable for release upload
+  * Specify only major action versions
+  * Update Italian localization from Crowdin
+  * Update Finnish localization from Crowdin
+  * Update Finnish localization from Crowdin
+  * Update Hungarian localization from Crowdin
+  * Update Turkish localization from Crowdin
+
+-------------------------------------------------------------------
 Tue Sep  1 19:18:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.1
