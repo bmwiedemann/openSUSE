@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Dec 22 19:38:14 UTC 2021 - wbauer@tmo.at
+
+- update to version 4.2.4
+  * Add support for ARM 64 CPU under macOS
+  * High CPU load after installing plugins
+  * support native full screen mode under macOS for restoring after
+    startup
+  * support OpenJDK usage for transportable version under macOS
+  * Don't count programs more than once in Favorite tree
+  * High CPU load when showing current reminders
+  * Small naming improvements
+  * GUI drawing problems after deleting certain plugins
+  * Add import of Android Favorites definitions
+  * Ask plugin before saving settings or data
+  * Add option to highlight channels in programtable by mouse entering
+    channel label
+  * CCME in ReminderList
+  * Episode title too dark in program info for dark background colors
+  * High CPU usage while displaying reminder list
+  * Add method to get filter by name for FilterManager
+  * Provide panel for selection of filter
+  * Add maximum wait time for closing TV-Browser during running
+    data update
+  * Possible exception during data update
+  * NPE when filter file is broken
+  * Add warning if Acronis True Image is used on system
+  * Other plugins should be able to request deleting of Reminder
+  * Reminder and Favorites cannot receive programs
+  * Season number parameter causes Exception
+
+-------------------------------------------------------------------
 Thu Jul  1 08:44:59 UTC 2021 - wbauer@tmo.at
 
 - update to version 4.2.3
