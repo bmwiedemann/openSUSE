@@ -4,7 +4,7 @@ Mon Nov 22 10:48:54 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 - The following issues have already been fixed in this package but weren't
   previously mentioned in the changes file:
   bsc#1189320
-  CVE-2021-2145, bsc#1185872
+  CVE-2021-2154, bsc#1185872
   CVE-2021-2166, bsc#1185870
   CVE-2021-27928, bsc#1183770
   MDEV-23851
