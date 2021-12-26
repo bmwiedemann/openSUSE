@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 26 12:08:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use django-codemod to finish Django 4 compatibility
+- Update to 3.16.5
+  * Fix default_app_config RemovedInDjango41Warning warning
+  * Fix Django 4 Exception 'never_cache didn't receive an HttpRequest'
+- from v3.16.4
+  * Add default_auto_field to satisfy Django 4.0
+- from v3.16.2
+  * Fix text alignment for time column in Safari
+- from v3.16.1
+  * Fix Celery ping health check functionality with multiple workers
+- from v3.16.0
+  * Add second celery health chat that uses ping instead of executing a task
+- from v3.15.0
+  * Split celery timeout into two separate settings
+- from v3.14.3
+  * Use default cache timeout instead of 1s
+- from v3.14.2
+  * Resolve Django 4.0 deprecation warnings
+- from v3.14.1
+  * Revert "Clean results task Health Check"
+
+-------------------------------------------------------------------
 Thu Sep 17 10:41:14 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Workaround upstream packaging problem omitting sub-packages
