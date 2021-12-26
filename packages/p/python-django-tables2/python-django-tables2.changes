@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 24 04:34:19 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Prevent building on Leap Python 3.6
+- Update to v2.4.1
+  * Add Persian (Farsi) locale
+  * Improved error message if openpyxl is not installed
+  * Use correct mime type for xlsx
+  * Add support for django 4.0, drop support for python 3.5
+- from v2.4.0
+  * Add support for django 3.2 and python 3.9, drop support for django 3.0
+  * Add Django 3.0 and 3.1 trove classifiers
+  * Strip leading and trailing whitespace from TemplateColumn.value()
+  * Providing link for django-bootstrap3
+  * Fix for crash on windows while deleting temp file
+
+-------------------------------------------------------------------
 Tue May 18 11:06:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip python36 build: no pandas

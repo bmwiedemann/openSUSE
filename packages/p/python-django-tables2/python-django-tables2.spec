@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-tables2
-Version:        2.3.4
+Version:        2.4.1
 Release:        0
 Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause
@@ -29,11 +29,12 @@ Source:         https://github.com/jieter/django-tables2/archive/v%{version}.tar
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Suggests:       python-tablib
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-filter >= 2.3.0}
 BuildRequires:  %{python_module fudge}
 BuildRequires:  %{python_module mock}
@@ -58,11 +59,12 @@ does for HTML forms.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# fudge causes two test failures on Python 3.6 from Leap
 %python_exec ./manage.py test
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/django[-_]tables2*/
 
 %changelog
