@@ -22,7 +22,7 @@
 %endif
 
 %define libname lib%{name}
-%define soname 4_5
+%define soname 405
 # disabled by default as many fail
 %bcond_with    tests
 %bcond_without gapi
@@ -35,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -43,8 +43,10 @@ License:        BSD-3-Clause AND GPL-2.0-only AND Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# This is the FACE module from the opencv_contrib package. Packaged separately to prevent too much unstable modules
+# Several modules from the opencv_contrib package
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
@@ -76,10 +78,12 @@ BuildRequires:  ade-devel >= 0.1.0
 BuildRequires:  openblas-devel
 %endif
 %if %{with python2}
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(python)
 BuildRequires:  python2-numpy-devel
 %endif
 %if %{with python3}
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-numpy-devel
 BuildRequires:  pkgconfig(python3)
 %endif
@@ -268,6 +272,7 @@ This package contains the documentation and examples for the OpenCV library.
 
 %prep
 %setup -q -a 1
+%autopatch -p1
 
 # Only copy over modules we need
 mv opencv_contrib-%{version}/modules/{aruco,face,tracking,optflow,plot,shape,superres,videostab,ximgproc} modules/

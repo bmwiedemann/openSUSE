@@ -1,0 +1,35 @@
+From 2835c13cbd14f4f41996a2c1f73ef860c89c20f1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 26 Dec 2021 00:08:06 +0100
+Subject: [PATCH] highgui: Fix unresolved OpenGL functions for Qt backend
+
+The Qt backend directly calls some OpenGL functions (glClear, glHint,
+glViewport), but since OCV 4.5.5 the GL libraries are no longer part
+of the global extra dependencies. When linking with "-Wl,--no-undefined"
+this causes linker errors:
+
+`opencv-4.5.5/modules/highgui/src/window_QT.cpp:3307: undefined reference to `glClear'`
+
+Related issues: #21299
+---
+ modules/highgui/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/modules/highgui/CMakeLists.txt b/modules/highgui/CMakeLists.txt
+index 6123ea1436..45e66dfa1e 100644
+--- a/modules/highgui/CMakeLists.txt
++++ b/modules/highgui/CMakeLists.txt
+@@ -279,6 +279,10 @@ if(OPENCV_HIGHGUI_BUILTIN_BACKEND STREQUAL "WIN32UI" AND HAVE_OPENGL AND OPENGL_
+   ocv_target_link_libraries(${the_module} PRIVATE "${OPENGL_LIBRARIES}")
+ endif()
+ 
++if(OPENCV_HIGHGUI_BUILTIN_BACKEND MATCHES "^QT" AND HAVE_OPENGL AND OPENGL_LIBRARIES)
++  ocv_target_link_libraries(${the_module} PRIVATE "${OPENGL_LIBRARIES}")
++endif()
++
+ if(MSVC AND NOT BUILD_SHARED_LIBS AND BUILD_WITH_STATIC_CRT)
+   set_target_properties(${the_module} PROPERTIES LINK_FLAGS "/NODEFAULTLIB:atlthunk.lib /NODEFAULTLIB:atlsd.lib /NODEFAULTLIB:libcmt.lib /DEBUG")
+ endif()
+-- 
+2.34.1
+
