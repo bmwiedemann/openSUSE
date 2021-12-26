@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-model-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define skip_python2 1
 Name:           python-django-model-utils
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        Django model mixins and utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/carljm/django-model-utils/
-Source:         https://github.com/jazzband/django-model-utils/archive/%{version}.tar.gz#/django-model-utils-%{version}.tar.gz
-# PATCH-FIX-SUSE switch to sqlite from pgsql during testing
+URL:            https://github.com/jazzband/django-model-utils
+Source:         https://files.pythonhosted.org/packages/source/d/django-model-utils/django-model-utils-%{version}.tar.gz
+# Upstreamed to https://github.com/jazzband/django-model-utils/pull/516
 Patch0:         use-sqlite.patch
 BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 Requires:       python-Django >= 2.0
 BuildArch:      noarch
@@ -53,6 +54,7 @@ Django model mixins and utilities.
 %check
 # skip JoinManagerTest tests as they need proper DB (pgsql/mysql)
 export PYTHONPATH=.
+export SQLITE=1
 %pytest -k 'not JoinManagerTest'
 
 %files %{python_files}

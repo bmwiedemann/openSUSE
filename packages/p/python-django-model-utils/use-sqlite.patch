@@ -1,19 +1,46 @@
-Index: django-model-utils-3.2.0/tests/settings.py
-===================================================================
---- django-model-utils-3.2.0.orig/tests/settings.py
-+++ django-model-utils-3.2.0/tests/settings.py
-@@ -5,12 +5,8 @@ INSTALLED_APPS = (
+commit e6833a2d52849e01dfeb3fe4a88093678fd88d93
+Author: John Vandenberg <jayvdb@gmail.com>
+Date:   Sun Dec 26 12:31:12 2021 +0800
+
+    Allow running tests using sqlite
+
+diff --git a/tests/settings.py b/tests/settings.py
+index 4ead542..83946b3 100644
+--- a/tests/settings.py
++++ b/tests/settings.py
+@@ -4,16 +4,25 @@ INSTALLED_APPS = (
+     'model_utils',
      'tests',
  )
- DATABASES = {
+-DATABASES = {
 -    "default": {
 -        "ENGINE": "django.db.backends.postgresql_psycopg2",
--        "NAME": os.environ.get("DJANGO_DATABASE_NAME_POSTGRES", "modelutils"),
--        "USER": os.environ.get("DJANGO_DATABASE_USER_POSTGRES", 'postgres'),
--        "PASSWORD": os.environ.get("DJANGO_DATABASE_PASSWORD_POSTGRES", ""),
--        "HOST": os.environ.get("DJANGO_DATABASE_HOST_POSTGRES", ""),
-+    'default': {
-+        'ENGINE': 'django.db.backends.sqlite3'
-     },
- }
+-        "NAME": os.environ.get("DB_NAME", "modelutils"),
+-        "USER": os.environ.get("DB_USER", 'postgres'),
+-        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+-        "HOST": os.environ.get("DB_HOST", "localhost"),
+-        "PORT": os.environ.get("DB_PORT", 5432)
+-    },
+-}
++
++if os.environ.get('SQLITE'):
++    DATABASES = {
++        'default': {
++            'ENGINE': 'django.db.backends.sqlite3',
++        },
++    }
++else:
++    DATABASES = {
++        "default": {
++            "ENGINE": "django.db.backends.postgresql_psycopg2",
++            "NAME": os.environ.get("DB_NAME", "modelutils"),
++            "USER": os.environ.get("DB_USER", 'postgres'),
++            "PASSWORD": os.environ.get("DB_PASSWORD", ""),
++            "HOST": os.environ.get("DB_HOST", "localhost"),
++            "PORT": os.environ.get("DB_PORT", 5432)
++        },
++    }
++
  SECRET_KEY = 'dummy'
+ 
+ CACHES = {

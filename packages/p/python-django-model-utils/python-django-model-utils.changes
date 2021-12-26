@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Dec 26 04:35:03 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.2.0
+  * Add support for Django 3.2
+  * Drop support for Django 3.0
+  * Add support for Python 3.10
+  * Added urlsafe token field.
+  * Introduce context manager for FieldTracker state reset
+  * Fix performance regression of FieldTracker on FileField subclasses
+    on Django 3.1+
+- from v4.1.1
+  * Applied isort to codebase
+  * Fix TypeError in save when model inherits from both
+    TimeStampModel and StatusModel.
+- from v4.1.0
+  * FieldTracker now marks fields as not changed after
+    refresh_from_db respecting fields argument
+  * FieldTracker now respects update_fields changed in overridden
+    save() method
+  * FieldTracker now resets states after pre_save() and not anymore
+    save() signals, possibly altering the behaviour of overridden
+    save() methods
+  * Update InheritanceQuerySetMixin to avoid querying too much tables
+  * TimeStampedModel now automatically adds 'modified' field as an
+    update_fields parameter even if it is forgotten while using save()
+  * Replace ugettext_lazy with gettext_lazy
+  * Add available_objects manager to SoftDeletableModel and add
+    deprecation warning to objects manager.
+  * StatusModel now automatically adds 'status_changed' field during
+    save as an update_fieldsparameter when 'status' is present in it
+    to make sure it is not forgotten.
+  * Drop support for Django 2.1
+  * Add support for Python 3.9
+  * Add support for Django 3.1
+
+-------------------------------------------------------------------
 Wed Sep  2 09:31:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Fix test execution
