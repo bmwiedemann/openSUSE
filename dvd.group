@@ -3638,6 +3638,7 @@
     <package name="python38-aiodns" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-aiohttp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-aioitertools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-aiosignal" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-aiosmtpd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-alembic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-apipkg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3689,6 +3690,7 @@
     <package name="python38-filetype" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-flufl.lock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python38-frozenlist" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-fsspec" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-future" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

@@ -21057,7 +21057,6 @@ unsorted:
   - python-acitoolkit-doc 
   - python-acitoolkit-doc-applications 
   - python-acitoolkit-doc-samples 
-  - python-aiohttp-doc 
   - python-altgraph-doc 
   - python-atomicwrites-doc 
   - python-automaton-doc 
@@ -21831,6 +21830,7 @@ unsorted:
   - python36-aioquic 
   - python36-aioredis 
   - python36-aioresponses 
+  - python36-aiosignal 
   - python36-aiosmtpd 
   - python36-aiosmtplib 
   - python36-aiosqlite 
@@ -25519,7 +25519,6 @@ unsorted:
   - python38-freezegun 
   - python38-fritzconnection 
   - python38-frozendict 
-  - python38-frozenlist 
   - python38-ftfy 
   - python38-ftputil 
   - python38-fudge 
@@ -27566,6 +27565,7 @@ unsorted:
   - python39-aioredis 
   - python39-aioresponses 
   - python39-aiorpcX 
+  - python39-aiosignal 
   - python39-aiosmtpd 
   - python39-aiosmtplib 
   - python39-aiosqlite 
