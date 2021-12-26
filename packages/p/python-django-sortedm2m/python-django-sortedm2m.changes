@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 26 13:35:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use PyPI tarball instead of GitHub tarball
+- Update to v3.1.1
+  * Fixed JS bug for popup in Django admin
+- Update to v3.1.0
+  * Fixed jQuery UI error
+  * Added support for Django 3.2
+- Update to v3.0.2
+  * Restored admin/js/jquery.init.js
+- Update to v3.0.1
+  * Added all locales to distributable
+  * Added missing files to MANIFEST.in, and removed .DS_Store files
+  * Added German and Spanish translations
+  * Removed admin/js/jquery.init.js from SortedCheckboxSelectMultiple
+
+-------------------------------------------------------------------
 Thu May  7 07:48:13 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v3.0.0
