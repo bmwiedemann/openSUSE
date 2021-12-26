@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(sunpinyin-2.0)
 Requires:       sunpinyin-data
-Provides:       locale(ibus:zh_CN;zh_SG)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

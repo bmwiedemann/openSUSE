@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 15 10:17:30 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Remove locale macro in SPEC: disable default installation, allow
+  the end user to choose install or not (jsc#SLE-3872).
+
+-------------------------------------------------------------------
 Thu Nov  4 14:27:12 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix ibus-sunpinyin-setup can not launch.

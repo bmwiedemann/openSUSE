@@ -28,4 +28,12 @@
     <comment>- Fix ibus-sunpinyin-setup can not launch. (forwarded request 929648 from hillwood)</comment>
     <requestid>929649</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f8d5626e0fdc53ea8ed6374c10e6f3f9</srcmd5>
+    <version>2.0.99.2</version>
+    <time>1640521832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942566</requestid>
+  </revision>
 </revisionlist>
