@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/selwin/django-user_agents
 Source:         https://files.pythonhosted.org/packages/source/d/django-user_agents/django-user_agents-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module user-agents}
@@ -44,6 +45,9 @@ it uses `user-agents <https://github.com/selwin/python-user-agents>`_.
 
 %prep
 %setup -q -n django-user_agents-%{version}
+
+djcodemod run --removed-in 4.0 django_user_agents/tests/urls.py
+
 mkdir -p django_user_agents/tests/templates/
 touch django_user_agents/tests/templates/test.html
 cat > ./django_user_agents/tests/templates/test_filters.html << EOF
