@@ -1,7 +1,7 @@
 #
 # spec file for package python-modernize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dbm
 Requires:       python-fissix
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dbm}
@@ -58,6 +58,9 @@ sed -i 's/"--cov.*",//g' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# ensure that pickled cache files from fissix don't interfere between flavors
+%python_expand mkdir build/cache
+export XDG_CACHE_HOME=$PWD/build/cache
 %pytest
 
 %post
@@ -73,6 +76,9 @@ sed -i 's/"--cov.*",//g' pyproject.toml
 %license LICENSE
 %python_alternative %{_bindir}/modernize
 %python_alternative %{_bindir}/python-modernize
-%{python_sitelib}/*
+%{python_sitelib}/libmodernize
+%{python_sitelib}/modernize.py
+%pycache_only %{python_sitelib}/__pycache__/modernize.*.pyc
+%{python_sitelib}/modernize-%{version}*-info
 
 %changelog
