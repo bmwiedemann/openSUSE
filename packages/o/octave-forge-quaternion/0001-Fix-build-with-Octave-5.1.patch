@@ -1,0 +1,33 @@
+--- ./quaternion/DESCRIPTION
++++ ./quaternion/DESCRIPTION
+@@ -5,7 +5,7 @@ Author: Lukas Reichlin <lukas.reichlin@gmail.com>
+ Maintainer: Lukas Reichlin <lukas.reichlin@gmail.com>
+ Title: Quaternion
+ Description: Quaternion package for GNU Octave, includes a quaternion class with overloaded operators
+-Depends: octave (>= 3.8.0)
++Depends: octave (>= 4.4.0)
+ Autoload: no
+ License: GPLv3+
+ Url: http://octave.sf.net
+--- ./quaternion/src/is_real_array.cc
++++ ./quaternion/src/is_real_array.cc
+@@ -1,6 +1,6 @@
+ /*
+ 
+-Copyright (C) 2010-2015   Lukas F. Reichlin
++Copyright (C) 2010-2016   Lukas F. Reichlin
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -46,8 +46,8 @@ Avoid nasty stuff like @code{true = isreal (\"a\")}.\n\
+         {
+             // args(i).ndims () should be always >= 2
+             if (args(i).ndims () < 2
+-                || ! ((args(i).is_numeric_type () && args(i).is_real_type ())
+-                      || args(i).is_bool_type ()))
++                || ! ((args(i).isnumeric () && args(i).isreal ())
++                      || args(i).islogical ()))
+             {
+                 retval = false;
+                 break;
+--
