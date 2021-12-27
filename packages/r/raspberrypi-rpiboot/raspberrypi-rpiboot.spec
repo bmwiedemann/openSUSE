@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-rpiboot
-Version:        49a2a4f
+Version:        0~git0.e5e4994
 Release:        0
 Summary:        Raspberry Pi rpiboot tool
 License:        Apache-2.0
