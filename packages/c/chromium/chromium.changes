@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 26 23:02:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Define GNU_SOURCE and fix the below patched issues
+- Removed patches:
+  * chromium-86-f_seal.patch
+  * chromium-90-fseal.patch
+
+-------------------------------------------------------------------
 Fri Dec 24 11:24:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added patches:

@@ -86,9 +86,7 @@ Patch15:        chromium-96-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch19:        chromium-86-nearby-include.patch
-Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
-Patch25:        chromium-90-fseal.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch44:        chromium-95-libyuv-aarch64.patch
@@ -615,7 +613,7 @@ export CXXFLAGS="${CXXFLAGS} -Wno-attributes"
 # ignore warnings due to gcc bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84055)
 export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 # ingore new gcc 8 warnings that aren't yet handled upstream
-export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else"
+export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -D_GNU_SOURCE"
 # for wayland
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
 %if %{with clang}
