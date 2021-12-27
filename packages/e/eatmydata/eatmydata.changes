@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 24 09:58:03 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 130:
+  * add syncfs() wrapper
+- drop libeatmydata-105-remove-dpkg.patch, upsteam
+
+-------------------------------------------------------------------
 Thu Mar 12 11:37:28 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

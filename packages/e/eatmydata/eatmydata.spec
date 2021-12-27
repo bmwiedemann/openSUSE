@@ -1,7 +1,7 @@
 #
 # spec file for package eatmydata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eatmydata
-Version:        105
+Version:        130
 Release:        0
 Summary:        A library to disable fsync calls
 License:        GPL-3.0-only
@@ -25,9 +25,8 @@ Group:          Development/Tools/Other
 URL:            https://www.flamingspork.com/projects/libeatmydata/
 Source0:        http://www.flamingspork.com/projects/libeatmydata/libeatmydata-%{version}.tar.gz
 Source1:        http://www.flamingspork.com/projects/libeatmydata/libeatmydata-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
-Source3:        %{name}-rpmlintrc
-Patch1:         libeatmydata-105-remove-dpkg.patch
+Source2:        https://www.flamingspork.com/stewart.gpg#/%{name}.keyring
+Source3:        eatmydata-rpmlintrc
 
 %description
 libeatmydata is a small LD_PRELOAD library designed to (transparently)
@@ -45,14 +44,15 @@ this software no longer crash safe.
 %install
 %make_install
 rm -rf %{buildroot}%{_libexecdir}/debug
-rm -f %{buildroot}/%{_libdir}/libeatmydata.la
+find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -name "*.a" -print -delete
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS README.md
 %attr(0755,root,root) %{_bindir}/eatmydata
 %attr(0755,root,root) %{_libexecdir}/eatmydata.sh
 %{_libdir}/libeatmydata.so*
