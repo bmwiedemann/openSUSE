@@ -244,4 +244,12 @@
   Fix build with linux-glibc-devel 5.13.</comment>
     <requestid>903835</requestid>
   </revision>
+  <revision rev="24" vrev="20">
+    <srcmd5>028f7c4e196043f4aef66dd9be529146</srcmd5>
+    <version>9.0.1</version>
+    <time>1640617635</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942666</requestid>
+  </revision>
 </revisionlist>
