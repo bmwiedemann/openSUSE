@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 26 10:13:49 CET 2021 - tiwai@suse.de
+
+- Update to version 1.2.6.3:
+  * ucm2/Qualcomm/apq8096: Change plughw to hw to access card
+  * ucm2/Qualcomm/apq8016-sbc: Change plughw to hw to access card
+  * ucm2: Add support for RT5650 on MediaTek SoCs
+  * sof-soundwire: use absolute path in SectionUseCase 
+
+-------------------------------------------------------------------
 Fri Dec 10 14:02:26 CET 2021 - tiwai@suse.de
 
 - Update to version 1.2.6.2:
