@@ -16,11 +16,11 @@
 #
 
 
-%define tar_ver 514
+%define tar_ver 515
 %define so_ver 5.1
 %define libname libscintilla5
 Name:           scintilla
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        A source code editing component
 License:        MIT

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 24 21:59:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.5:
+  * ScintillaEditPy, Python bindings for Qt using PySide, has been
+    removed.
+  * When calling SCI_GETTEXT, SCI_GETSELTEXT, and SCI_GETCURLINE
+    with a NULL buffer argument to discover the length that should
+    be allocated, do not include the terminating NUL in the
+    returned value.
+  * Fix assertion failure with autocompletion list when order is
+    SC_ORDER_CUSTOM or SC_ORDER_PERFORMSORT and the list is empty.
+    Bug #2294.
+  * On GTK using Wayland, display autocompletion with window on a
+    secondary monitor. Bug #2296, Bug #2261. 
+
+-------------------------------------------------------------------
 Fri Nov 19 12:36:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.4:
