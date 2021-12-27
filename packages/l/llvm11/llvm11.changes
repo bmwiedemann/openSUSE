@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 18 15:05:40 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- BuildRequires: python-rpm-macros to fix Leap 15.3 build.
+
+-------------------------------------------------------------------
 Mon Aug 16 08:36:03 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Add llvm-systemz-args-handling.patch to fix s390 argument handling.
