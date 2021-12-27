@@ -883,7 +883,6 @@
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="ibus-sunpinyin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-cangjie" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
