@@ -52,4 +52,12 @@
   * allow overriding HTTP_HOST with DjangoTestApp.__init__. Fixed #102</comment>
     <requestid>731203</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8fc7417cbe3fae691ee15d1cac4b7222</srcmd5>
+    <version>1.9.9</version>
+    <time>1640617644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942761</requestid>
+  </revision>
 </revisionlist>

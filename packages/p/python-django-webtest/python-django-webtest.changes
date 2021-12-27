@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 27 11:33:49 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove 01d1d59.patch merged upstream
+- Update to v1.9.9
+  * Add Django 4 support
+  * Remove Django 2 support
+
+-------------------------------------------------------------------
+Mon Dec 27 10:30:06 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add 01d1d59.patch for Django 4.0 compatibility
+- Update to 1.9.8:
+  * Add some useful metadata for the project's PyPI listing
+  * Minor changes to documentation
+  * Update getting session in DjangoTestApp.
+  * Remove py27/py35 support
+
+-------------------------------------------------------------------
 Mon Sep 16 08:47:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.9.7:

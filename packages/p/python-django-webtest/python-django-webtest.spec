@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-webtest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-webtest
-Version:        1.9.7
+Version:        1.9.9
 Release:        0
 Summary:        Django integration for WebTest
 License:        MIT
@@ -57,6 +57,6 @@ popd
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.txt CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/*[Ww]ebtest*/
 
 %changelog
