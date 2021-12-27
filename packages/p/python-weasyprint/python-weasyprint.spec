@@ -29,9 +29,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/WeasyPrint
 Source:         https://files.pythonhosted.org/packages/source/w/weasyprint/weasyprint-%{version}.tar.gz
 Source100:      python-weasyprint-rpmlintrc
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Requires:       libgobject-2_0-0
 Requires:       pango
 Requires:       python-Pillow >= 4.0.0
@@ -82,19 +86,28 @@ designed for pagination, and meant to be easy to hack on.
 sed -i '/addopts/d' pyproject.toml
 
 %build
-%python_build
+export PYTHONPATH=$PWD
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/weasyprint
 
 %check
 # gh#Kozea/WeasyPrint#1503
 %pytest -k 'not (test_relative_links_missing_base_link or test_links)' tests
 
+%post
+%python_install_alternative weasyprint
+
+%postun
+%python_uninstall_alternative weasyprint
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
+%python_alternative %{_bindir}/weasyprint
 %{python_sitelib}/weasyprint
 %{python_sitelib}/weasyprint-%{version}*-info
 

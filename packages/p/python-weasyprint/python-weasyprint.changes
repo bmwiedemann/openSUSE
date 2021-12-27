@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 22 23:52:20 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- port to the pyproject build to get the commandline for weasyprint
+  back (boo#1194029)
+
+-------------------------------------------------------------------
 Thu Dec 16 11:37:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: FontTools dropped support
