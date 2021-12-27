@@ -144,6 +144,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
