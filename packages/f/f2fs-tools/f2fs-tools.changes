@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  1 18:41:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.14.0+g67 (972d7107)
+  [boo#1191235]
+
+-------------------------------------------------------------------
 Mon May  3 08:32:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove /usr/sbin/sg_write_buffer. This file is already provided

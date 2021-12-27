@@ -155,4 +155,12 @@
   by sg3_utils as /usr/bin/sg_write_buffer.</comment>
     <requestid>894099</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>78ee9536ecc0b9b0cf683d9a95d4039e</srcmd5>
+    <version>1.14.0.g67</version>
+    <time>1640617636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 1.14.0+g67 (972d7107) [boo#1191235]</comment>
+    <requestid>942701</requestid>
+  </revision>
 </revisionlist>

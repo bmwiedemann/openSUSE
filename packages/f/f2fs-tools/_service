@@ -3,8 +3,10 @@
 		<param name="url">https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git</param>
 		<param name="scm">git</param>
 		<param name="filename">f2fs-tools</param>
-		<param name="revision">v1.14.0</param>
-		<param name="version">1.14.0</param>
+		<param name="revision">972d71073af32a1854aeece018746a9f8021dd14</param>
+		<param name="parent-tag">v1.14.0</param>
+		<param name="versionformat">@PARENT_TAG@.g@TAG_OFFSET@</param>
+		<param name="versionrewrite-pattern">v?(.*)</param>
 	</service>
 	<service mode="disabled" name="recompress">
 		<param name="file">*.tar</param>

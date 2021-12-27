@@ -17,7 +17,7 @@
 
 
 Name:           f2fs-tools
-Version:        1.14.0
+Version:        1.14.0.g67
 Release:        0
 Summary:        Utilities for the Flash-friendly Filesystem (F2FS)
 License:        GPL-2.0-only AND LGPL-2.1-only
