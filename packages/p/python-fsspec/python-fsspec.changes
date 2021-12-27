@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Dec 24 23:06:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Release 2021.11.1
+  Enhancements
+  * allow compression for fs.open (#826)
+  * batch more async operations (#824)
+  * allow github backend for alternate URL (#815)
+  * speec up reference filesystem (#811)
+  Fixes
+  * fixes for parquet functionality (#821, 817)
+  * typos and docs (#839, 833, 816)
+  * local root (#829)
+  Other
+  * remove BlockSizeError for http (#830)
+- Release 2021.11.0
+  Enhancement
+  * parquet-specific module and cache type (#813, #806)
+  Fixes
+  * empty ranges (#802, 801, 803)
+  * doc typos (#791, 808)
+  * entrypoints processing (#784)
+  * cat in ZIP (#789)
+  Other
+  * move to fsspec org
+  * doc deps (#786, 791)
+- Release 2021.10.1
+  Fixes
+  * Removed inaccurate ZipFileSystem.cat() override so that the base class' version is used (#789)
+  * fix entrypoint processing (#784)
+  * case where no blocks of a block-cache have yet been loaded (#801)
+  * don't fetch empty ranges (#802, 803)
+  Other
+  * simplify doc deps (#786, 791)
+- Release 2021.10.0
+  Fixes
+  * only close http connector if present (#779)
+  * hdfs strip protocol (#778)
+  * fix filecache with check_files (#772)
+  * put_file to use _parent (#771)
+  Other
+  * add kedro link (#781)
+- Release 2021.09.0
+  Enhancement
+  * http put from file-like (#764)
+  * implement webhdfs cp/rm_file (#762)
+  * multiple (and concurrent) cat_ranges (#744)
+  Fixes
+  * sphinx warnings (#769)
+  * lexists for links (#757)
+  * update versioneer (#750)
+  * hdfs updates (#749)
+  * propagate async timeout error (#746)
+  * fix local file seekable (#743)
+  * fix http isdir when does not exist (#741)
+  Other
+  * ocifs, arrow added (#754, #765)
+  * promote url_to_fs to top level (#753)
+
+-------------------------------------------------------------------
 Tue Sep 21 10:00:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.8.1

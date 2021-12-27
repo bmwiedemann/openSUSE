@@ -140,4 +140,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>920851</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6428daeda98963ab5b7eede1623f8cbd</srcmd5>
+    <version>2021.11.1</version>
+    <time>1640617637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942710</requestid>
+  </revision>
 </revisionlist>
