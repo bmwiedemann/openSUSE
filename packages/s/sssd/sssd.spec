@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
@@ -549,6 +549,7 @@ fi
 %_libexecdir/%name/sssd_pam
 %_libexecdir/%name/sssd_ssh
 %_libexecdir/%name/sssd_sudo
+%_libexecdir/%name/sss_analyze
 %_libexecdir/%name/sss_signal
 %_libexecdir/%name/sssd_check_socket_activated_responders
 %dir %sssdstatedir
@@ -644,6 +645,7 @@ fi
 %dir %_libdir/%name/
 %_libdir/%name/libsss_krb5.so
 %dir %_datadir/%name/
+%_datadir/%name/krb5-snippets/
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-krb5.conf
 %dir %_mandir/??/

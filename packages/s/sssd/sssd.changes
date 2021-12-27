@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 23 14:52:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.2
+  * Quick log out and log in did not correctly refresh user's
+    initgroups in no_session PAM schema due to lingering systemd
+    processes.
+
+-------------------------------------------------------------------
 Tue Nov 23 16:11:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
