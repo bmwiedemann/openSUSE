@@ -40,4 +40,12 @@
 - Drop {Build,}Requires on six</comment>
     <requestid>935318</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>df97a3446dfb9c993c2c4f080857208a</srcmd5>
+    <version>3.1.1</version>
+    <time>1640617642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942733</requestid>
+  </revision>
 </revisionlist>
