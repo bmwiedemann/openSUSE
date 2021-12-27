@@ -112,7 +112,7 @@ ExclusiveArch:  do-not-build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        0.6.18
+Version:        0.6.18.5
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -120,8 +120,6 @@ Group:          Development/Languages/Python
 URL:            https://nuitka.net
 Source:         https://files.pythonhosted.org/packages/source/N/Nuitka/Nuitka-%{version}.tar.gz
 Source1:        nuitka-rpmlintrc
-# This is upstreamed to https://github.com/Nuitka/Nuitka/pull/1300
-Patch0:         tests-ignore-qt6-dirs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -216,7 +214,6 @@ used in the same way as pure Python objects.
 
 %prep
 %setup -q -n Nuitka-%{version}
-%autopatch -p1
 # De-vendor
 rm -r nuitka/build/inline_copy/appdirs/
 rm -r nuitka/build/inline_copy/atomicwrites/
@@ -255,13 +252,8 @@ sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_r
 # https://github.com/Nuitka/Nuitka/issues/965
 sed -Ei 's/(NumpyUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
 
-# These two are fixed in the next patch release
-
-# GlfwUsing failure https://github.com/Nuitka/Nuitka/issues/1297
-rm tests/standalone/GlfwUsing.py
-
-# MatplotlibUsing failure https://github.com/Nuitka/Nuitka/issues/1298
-rm tests/standalone/MatplotlibUsing.py
+# https://github.com/Nuitka/Nuitka/issues/1340
+rm tests/standalone/PandasUsing.py
 
 # adjust mtime so that deduplicating the cache files after install does not make them inconsistent
 find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
@@ -333,10 +325,12 @@ export PATH=$PWD/build/testbin:$PATH
 # Also numpy causes the opengl tests to OOM
 if [[ "$python" != "python2" ]]; then
   mv tests/standalone/FlaskUsing.py /tmp
+  mv tests/standalone/MatplotlibUsing.py /tmp
   mv tests/standalone/OpenGLUsing.py /tmp
-  mv tests/standalone/PandasUsing.py /tmp
+  mv tests/standalone/PandasUsing.py /tmp || true
   mv tests/standalone/PendulumUsing.py /tmp
   # NumpyUsing.py can OOM on ppc64 & ppc64le
+  mv tests/standalone/NumpyUsing.py /tmp
 fi
 
 export NUITKA_EXTRA_OPTIONS="--debug"
@@ -387,11 +381,18 @@ rm -r /tmp/* ||:
 # Please add/remove --debug periodically as many bugs
 # have been found with/without this flag.
 
+# https://github.com/Nuitka/Nuitka/issues/1338 is a current failure with `--debug`
+export NUITKA_EXTRA_OPTIONS=""
+
 # A patchelf failure in Pandasusing on gcc Leap 15.2 py36 has occurred once
 # It may be the same problem as https://github.com/Nuitka/Nuitka/issues/1298
 # which will be fixed in the next patch release
 
-export NUITKA_EXTRA_OPTIONS=""
+
+# https://github.com/Nuitka/Nuitka/issues/1338
+if [[ "$python" == "python2" ]]; then
+  mv tests/standalone/MatplotlibUsing.py /tmp
+fi
 
 CC=gcc $python ./tests/run-tests --no-other-python
 
