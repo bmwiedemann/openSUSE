@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 27 05:30:13 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.14.9 fixed wave form editor selection.
+- new since 3.14.7 fixed wave form editor cursor, enabling you
+  to proper copy & paste within it.
+- new since 3.14.6 fixed missing filename restore from XML of
+  AgsAudiorec.
+- fixed ALSA and OSSv4 export thread.
+- fixed missing start of AgsAudiorec while export.
+- minor improvements.
+
+-------------------------------------------------------------------
 Wed Dec 22 16:16:03 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.14.5 fixed automation editor to respect toggled
