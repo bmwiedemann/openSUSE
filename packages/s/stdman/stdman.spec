@@ -1,7 +1,7 @@
 #
 # spec file for package stdman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stdman
-Version:        2020.11.17
+Version:        2021.12.21
 Release:        0
 Summary:        C++ stdlib man pages
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Documentation/Man
 URL:            https://github.com/jeaye/stdman
 Source0:        https://github.com/jeaye/stdman/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  fdupes
 Requires:       man
 
 %description
@@ -49,6 +50,8 @@ This package provides the full cppreference documentation in the man format.
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1087430
 mkdir -p %{buildroot}%{_mandir}/man3
 cp -pr ./man/*.3 %{buildroot}%{_mandir}/man3/
+
+%fdupes %{buildroot}%{_mandir}/man3/
 
 %files
 %doc README.md
