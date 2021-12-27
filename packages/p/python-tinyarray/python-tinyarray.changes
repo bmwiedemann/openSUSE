@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 24 23:49:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.4:
+  * Fixes for python 3.10.
+
+-------------------------------------------------------------------
 Wed Apr 21 10:04:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36: no NumPy (NEP 29)

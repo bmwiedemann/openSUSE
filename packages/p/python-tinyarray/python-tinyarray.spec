@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-tinyarray
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Arrays of numbers for Python, optimized for small sizes
 License:        BSD-2-Clause
