@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 20 10:32:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  - Unicode 14 support
+  - Support `GNUInstallDirs` in CMake build
+  - `cmake` build now installs `pkg-config` file
+  - Various build and portability improvements.
+
+-------------------------------------------------------------------
 Tue Dec 29 14:07:32 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.1:
