@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec 27 12:33:01 UTC 2021 - wbauer@tmo.at
+
+- Update to 0.99.13
+  * Add audio control window.
+  * Add some menu shortcuts.
+  * Add build optimizations.
+  * Better keyboard and mouse wheel support.
+  * Improved key binding editor.
+  * Massive code cleanup.
+  * Massive graphics optimizations.
+  * Drop mrl path length limit.
+  * Add utf8 and clipboard support for text input fields.
+  * Add skin shared pixmap and text position features.
+  * Xinetic skin update.
+  * Many small fixes and optimizations.
+  * Update german translation.
+  * Update french translation.
+  * Build fixes.
+  * Faster build.
+  * Separate xitk and X11 stuff pt 1.
+- Drop no longer necessary patches:
+  * xine-ui-lirc.diff
+  * fix-crashes.patch
+- Rebase xine-ui-crippled-LOCAL.diff
+- Add Fix-build.patch from upstream to fix build failures on arm
+  and ppc
+
+-------------------------------------------------------------------
 Wed Jun 10 04:51:41 UTC 2020 - wbauer@tmo.at
 
 - Add fix-crashes.patch to fix crashes when using older skins

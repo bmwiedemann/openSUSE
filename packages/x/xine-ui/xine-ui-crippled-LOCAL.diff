@@ -1,8 +1,8 @@
 Index: configure.ac
 ===================================================================
---- configure.ac.orig	2018-01-23 15:09:34.754548489 +0200
-+++ configure.ac	2018-01-23 15:10:06.827563191 +0200
-@@ -711,6 +711,7 @@ AC_DEFUN([XINE_LOCATE_MEDIA],
+--- configure.ac.orig	2021-12-22 20:01:36.559078984 +0100
++++ configure.ac	2021-12-27 13:23:23.150781964 +0100
+@@ -745,6 +745,7 @@ AC_DEFUN([XINE_LOCATE_MEDIA],
  
  XINE_LOCATE_MEDIA([XINE_LOGO_MRL], [jpg png mpv], [mpv], [xine-ui_logo], [logo], [official logo MRL])
  XINE_LOCATE_MEDIA([XINE_LOGO2_MRL], [mpg], [mpg], [xine-ui_logo], [logo2], [official logo MRL])
@@ -12,8 +12,8 @@ Index: configure.ac
  XINE_VISDIR="${datadir}/xine/visuals"
 Index: misc/xine-check.sh.in
 ===================================================================
---- misc/xine-check.sh.in.orig	2018-01-23 15:09:34.754548489 +0200
-+++ misc/xine-check.sh.in	2018-01-23 15:10:06.827563191 +0200
+--- misc/xine-check.sh.in.orig	2021-12-22 20:01:36.547078985 +0100
++++ misc/xine-check.sh.in	2021-12-27 13:23:23.154781964 +0100
 @@ -593,7 +593,13 @@ if test -n "$skindir"; then
        if test -f xine-ui_logo.mpv || test -f xine-ui_logo.png || test -f xine-ui_logo.jpg; then
          msg logo-exists
@@ -29,11 +29,27 @@ Index: misc/xine-check.sh.in
        fi
        skins=
        for dir in *; do
+Index: src/xitk/actions.c
+===================================================================
+--- src/xitk/actions.c.orig	2021-12-22 20:01:36.567078984 +0100
++++ src/xitk/actions.c	2021-12-27 13:23:23.158781964 +0100
+@@ -226,7 +226,10 @@ void gui_display_logo (gGui_t *gui) {
+   panel_update_channel_display (gui->panel);
+ 
+   if(gui->display_logo)
+-    (void) gui_xine_open_and_play (gui, (char *)gui->logo_mrl, NULL, 0, 0, 0, 0, 1);
++    (void) gui_xine_open_and_play (gui, (char *) ((gui->logo_select) ?
++       gui->logo_crippled_mrl :
++       gui->logo_mrl),
++       NULL, 0, 0, 0, 0, 1);
+ 
+   gui->logo_mode = 1;
+ 
 Index: src/xitk/common.h
 ===================================================================
---- src/xitk/common.h.orig	2018-01-23 15:09:34.754548489 +0200
-+++ src/xitk/common.h	2018-01-23 15:10:06.827563191 +0200
-@@ -246,6 +246,8 @@ typedef struct {
+--- src/xitk/common.h.orig	2021-12-22 20:01:36.571078984 +0100
++++ src/xitk/common.h	2021-12-27 13:23:23.154781964 +0100
+@@ -212,6 +212,8 @@ struct gGui_st {
  
    int                       logo_mode;
    const char               *logo_mrl;
@@ -44,9 +60,9 @@ Index: src/xitk/common.h
    int                       display_logo;
 Index: src/xitk/main.c
 ===================================================================
---- src/xitk/main.c.orig	2018-01-23 15:09:34.758548614 +0200
-+++ src/xitk/main.c	2018-01-23 15:10:12.923756244 +0200
-@@ -410,6 +410,10 @@ static void main_change_logo_cb(void *da
+--- src/xitk/main.c.orig	2021-12-22 20:01:36.619078983 +0100
++++ src/xitk/main.c	2021-12-27 13:23:23.154781964 +0100
+@@ -289,6 +289,10 @@ static void main_change_logo_cb(void *da
    gGui_t *gui = data;
    gui->logo_mrl = cfg->str_value;
  }
@@ -57,7 +73,7 @@ Index: src/xitk/main.c
  static void sub_autoload_cb(void *data, xine_cfg_entry_t *cfg) {
    gGui_t *gui = data;
    gui->subtitle_autoload = cfg->num_value;
-@@ -1420,6 +1424,9 @@ int main(int argc, char *argv[]) {
+@@ -1239,6 +1243,9 @@ int main(int argc, char *argv[]) {
    char                  **session_argv     = NULL;
    int                     session_argv_num = 0;
    int                     retval           = 0;
@@ -65,14 +81,14 @@ Index: src/xitk/main.c
 +  const char * const     *d;
 +  int                     i;
    pthread_mutexattr_t     mutexattr;
-   
-   /* Set stdout always line buffered to get every     */
-@@ -2276,6 +2283,21 @@ int main(int argc, char *argv[]) {
+ 
+   gui_init_params_t       gui_params;
+@@ -2072,6 +2079,21 @@ int main(int argc, char *argv[]) {
    gui->logo_has_changed = 0;
    gui->logo_mrl = xine_config_register_string (gui->xine, "gui.logo_mrl", USE_XINE_LOGO_MRL,
-     _("Logo MRL"), CONFIG_NO_HELP, CONFIG_LEVEL_EXP, main_change_logo_cb, gGui);
+     _("Logo MRL"), CONFIG_NO_HELP, CONFIG_LEVEL_EXP, main_change_logo_cb, gui);
 +  gui->logo_crippled_mrl = xine_config_register_string (gui->xine, "gui.logo_crippled_mrl", XINE_LOGO_CRIPPLED_MRL,
-+    _("Logo MRL (reduced functionality)"), CONFIG_NO_HELP, CONFIG_LEVEL_EXP, main_change_logo_crippled_cb, gGui);
++    _("Logo MRL (reduced functionality)"), CONFIG_NO_HELP, CONFIG_LEVEL_EXP, main_change_logo_crippled_cb, gui);
 +
 +  /*
 +   * Check for important codecs and select logo
@@ -89,63 +105,44 @@ Index: src/xitk/main.c
  
    gui->event_queue = xine_event_new_queue(gui->stream);
    xine_event_create_listener_thread (gui->event_queue, event_listener, gui);
-Index: src/xitk/videowin.c
+Index: src/xitk/panel.c
 ===================================================================
---- src/xitk/videowin.c.orig	2018-01-23 15:09:34.758548614 +0200
-+++ src/xitk/videowin.c	2018-01-23 15:22:49.568151904 +0200
-@@ -2085,6 +2085,8 @@ void video_window_get_mag (float *xmag,
+--- src/xitk/panel.c.orig	2021-12-22 20:01:36.615078983 +0100
++++ src/xitk/panel.c	2021-12-27 13:23:23.158781964 +0100
+@@ -221,11 +221,14 @@ static void _panel_exit (xui_panel_t *pa
   * Change displayed logo, if selected skin want to customize it.
   */
- void video_window_update_logo (xui_vwin_t *vwin) {
+ static void _update_logo (xui_panel_t *panel) {
 +  char                *mrl_entry;
 +  char                *mrl_default;
    xine_cfg_entry_t     cfg_entry;
    const char          *skin_logo;
    int                  cfg_err_result;
-@@ -2094,7 +2096,8 @@ void video_window_get_mag (float *xmag,
-   if (!vwin)
-     return;
-   
--  cfg_err_result = xine_config_lookup_entry (vwin->gui->xine, "gui.logo_mrl", &cfg_entry);
-+  mrl_entry = (vwin->gui->logo_select) ? "gui.logo_crippled_mrl" : "gui.logo_mrl";
-+  cfg_err_result = xine_config_lookup_entry (vwin->gui->xine, mrl_entry, &cfg_entry);
-   skin_logo = xitk_skin_get_logo (vwin->gui->skin_config);
-   
+ 
+-  cfg_err_result = xine_config_lookup_entry (panel->gui->xine, "gui.logo_mrl", &cfg_entry);
++  mrl_entry = (panel->gui->logo_select) ? "gui.logo_crippled_mrl" : "gui.logo_mrl";
++  cfg_err_result = xine_config_lookup_entry (panel->gui->xine, mrl_entry, &cfg_entry);
+   skin_logo = xitk_skin_get_logo (panel->gui->skin_config);
+ 
    if(skin_logo) {
-@@ -2103,7 +2106,7 @@ void video_window_get_mag (float *xmag,
+@@ -236,7 +239,7 @@ static void _update_logo (xui_panel_t *p
  	goto __done;
      }
-     
--    config_update_string("gui.logo_mrl", skin_logo);
-+    config_update_string(mrl_entry, skin_logo);
+ 
+-    config_update_string (panel->gui->xine, "gui.logo_mrl", skin_logo);
++    config_update_string (panel->gui->xine, mrl_entry, skin_logo);
      goto __play_logo_now;
-     
+ 
    }
-@@ -2118,8 +2121,9 @@ void video_window_get_mag (float *xmag,
+@@ -251,8 +254,9 @@ static void _update_logo (xui_panel_t *p
  #else
  #  define USE_XINE_LOGO_MRL XINE_LOGO_MRL
  #endif
--    if (vwin->logo_synthetic && (cfg_err_result) && (strcmp (cfg_entry.str_value, USE_XINE_LOGO_MRL))) {
--        config_update_string ("gui.logo_mrl", USE_XINE_LOGO_MRL);
-+    mrl_default = (vwin->gui->logo_select) ? XINE_LOGO_CRIPPLED_MRL : USE_XINE_LOGO_MRL;
-+    if (vwin->logo_synthetic && (cfg_err_result) && (strcmp (cfg_entry.str_value, mrl_default))) {
-+        config_update_string (mrl_entry, mrl_default);
+-    if (panel->logo_synthetic && (cfg_err_result) && (strcmp (cfg_entry.str_value, USE_XINE_LOGO_MRL))) {
+-        config_update_string (panel->gui->xine, "gui.logo_mrl", USE_XINE_LOGO_MRL);
++    mrl_default = (panel->gui->logo_select) ? XINE_LOGO_CRIPPLED_MRL : USE_XINE_LOGO_MRL;
++    if (panel->logo_synthetic && (cfg_err_result) && (strcmp (cfg_entry.str_value, mrl_default))) {
++        config_update_string (panel->gui->xine, mrl_entry, mrl_default);
  
      __play_logo_now:
-       
-Index: src/xitk/actions.c
-===================================================================
---- src/xitk/actions.c.orig	2018-01-23 15:10:06.827563191 +0200
-+++ src/xitk/actions.c	2018-01-23 15:18:26.783585471 +0200
-@@ -257,7 +257,10 @@ void gui_display_logo(void) {
-   panel_update_channel_display (gui->panel);
  
-   if(gui->display_logo)
--    (void) gui_xine_open_and_play((char *)gui->logo_mrl, NULL, 0, 0, 0, 0, 1);
-+    (void) gui_xine_open_and_play((char *) ((gui->logo_select) ?
-+       gui->logo_crippled_mrl :
-+       gui->logo_mrl),
-+       NULL, 0, 0, 0, 0, 1);
- 
-   gui->logo_mode = 1;
-   

@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(xxf86vm)
 Summary:        Video player with plugins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
-Version:        0.99.12
+Version:        0.99.13
 Release:        0
 Url:            http://xine.sourceforge.net
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -64,9 +64,8 @@ Source99:       baselibs.conf
 Patch0:         xine-ui-various.diff
 #PATCH_FIX-OPENSUSE xine-ui-desktop.patch davejplater@gmail.com - remove desktop file errors
 Patch1:         xine-ui-desktop.patch
-Patch2:         xine-ui-lirc.diff
 # PATCH-FIX-UPSTREAM
-Patch3:         fix-crashes.patch
+Patch2:         Fix-build.patch
 # *** SUSE only changes
 Patch50:        xine-ui-crippled-LOCAL.diff
 Patch60:        xine-ui-AUTOMAKE.diff
@@ -88,9 +87,7 @@ Authors:
 echo %{with distributable}
 %setup -q
 %patch2 -p1
-%patch3 -p1
 %patch0
-#%%patch22 -p1
 %patch50 -p0
 %patch60
 %patch1
@@ -173,11 +170,14 @@ done
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/xine.png
+%{_datadir}/icons/hicolor/scalable/apps/xine.svgz
 %dir %{_datadir}/xine
 %dir %{_datadir}/xine/skins
+%{_datadir}/xine/skins/missing.png
 %{_datadir}/xine/skins/xine-ui_logo.mpg
 %{_datadir}/xine/skins/xine-ui_logo.png
 %{_datadir}/xine/skins/xine-ui_logo-crippled.png
+%{_datadir}/xine/skins/xine_64.png
 %{_datadir}/xine/skins/xine_splash.png
 %{_datadir}/xine/skins/xinetic
 %{_datadir}/xine/skins/CelomaChrome
