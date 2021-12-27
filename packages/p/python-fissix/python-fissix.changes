@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 25 21:00:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.11.13
+  * Fix: except fixer checks against the value of a node (#42, #43)
+  * Improved urllib fixer to include __version__ (#44)
+  * Tested against Python 3.9 (#32, #45)
+- Release 21.6.6
+  * New fixer for sorted() and list.sort() (#25)
+  * Token helpers for LBrace, RBrace, and Colon (#34)
+  * Fix for long used as keyword argument name (#28)
+  * Fix for exceptions with "as" keyword (#40)
+  * Support for running tests outside of source tree (#31)
+  * Documentation for fixers, general API, and usage (#23, #24,
+    #29)
+- Fix caching interference between flavors
+- Build with PEP517 flit-core.
+
+-------------------------------------------------------------------
 Fri Sep 18 15:33:11 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
