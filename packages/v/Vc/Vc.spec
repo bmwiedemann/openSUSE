@@ -40,6 +40,7 @@ sets.
 %package devel
 Summary:        Development Files for Vc
 Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel-static = %{version}
 
 %description devel
 Vc is a free software library to ease explicit vectorization of C++ code. It

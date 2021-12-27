@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 24 12:16:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix Vc-devel dependencies.
+  VcTargets.cmake defines the Vc::Vc target which points to
+  libVc.a. Vc-devel needs an explicit dependency on the package
+  containing the static library.
+
+-------------------------------------------------------------------
 Sat Jun  5 17:12:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 compatibility fix:
