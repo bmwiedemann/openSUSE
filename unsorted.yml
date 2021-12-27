@@ -2542,6 +2542,7 @@ unsorted:
   - crossguid-devel 
   - crosstool-ng 
   - crow-translate 
+  - crow-translate-lang 
   - crudini 
   - crun 
   - cryfs 
@@ -2737,10 +2738,6 @@ unsorted:
   - deadbeef-devel 
   - deadbeef-lang 
   - deadbeef-plugin-mpris2 
-  - deal_II-devel: [x86_64] 
-  - deal_II-openmpi2-devel: [x86_64] 
-  - deal_II-openmpi3-devel: [x86_64] 
-  - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
   - debootstrap 
   - debugedit 
@@ -6867,6 +6864,7 @@ unsorted:
   - ibus-kkc 
   - ibus-rime 
   - ibus-skk 
+  - ibus-sunpinyin 
   - ibus-table-cns11643 
   - ibus-table-compose 
   - ibus-table-devel 
@@ -10291,10 +10289,6 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_3_1: [x86_64] 
-  - libdeal_II9_3_1-openmpi2: [x86_64] 
-  - libdeal_II9_3_1-openmpi3: [x86_64] 
-  - libdeal_II9_3_1-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -12440,16 +12434,16 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv4_5 
-  - libopencv_aruco4_5 
-  - libopencv_face4_5 
-  - libopencv_highgui4_5 
-  - libopencv_imgcodecs4_5 
-  - libopencv_objdetect4_5 
-  - libopencv_superres4_5 
-  - libopencv_videoio4_5 
-  - libopencv_videostab4_5 
-  - libopencv_ximgproc4_5 
+  - libopencv405 
+  - libopencv_aruco405 
+  - libopencv_face405 
+  - libopencv_highgui405 
+  - libopencv_imgcodecs405 
+  - libopencv_objdetect405 
+  - libopencv_superres405 
+  - libopencv_videoio405 
+  - libopencv_videostab405 
+  - libopencv_ximgproc405 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -28341,6 +28335,7 @@ unsorted:
   - python39-django-seed 
   - python39-django-sekizai 
   - python39-django-settings-toml 
+  - python39-django-silk 
   - python39-django-sortedm2m 
   - python39-django-storages 
   - python39-django-tables2 
