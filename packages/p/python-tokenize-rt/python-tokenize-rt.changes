@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 26 20:33:05 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use GitHub tarball to activate tests
+- Tidy spec
+- Update to v4.2.1
+  * Fix token offsets following multiline string
+- from v4.2.0
+  * Fix position of empty NEWLINE at no-eol eof
+  * Remove ?s now that offsets are populated
+  * Fix UNIMPORTANT_WS offsets for implicit continuation
+  * Add offsets for added tokens
+- from v4.1.0
+  * Add link to future-annotations
+  * Add performance hack from python3.10
+
+-------------------------------------------------------------------
 Sat Jul  4 09:58:26 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - initial package for version 4.0.0.
