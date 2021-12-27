@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 23 09:17:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop definition of python-tox-doc: this subpackage is not being
+  built.
+
+-------------------------------------------------------------------
 Sun Sep 26 21:52:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.24.4:
