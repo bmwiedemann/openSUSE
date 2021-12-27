@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 27 10:43:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.4:
+  * Fix division
+  * Fix nullptr dereferencing from std::shared_ptr
+  * Revert "FBXConverter : Fix timescales of FBX animations"
+  * Use correct XmlParser-methods and add some missing casts
+  * Bug: Export crashes when any of the meshes contains texture coordinate names #4243
+  * Bugfix/import crashes
+  * Fix a typo in the Visual-Studio Dll-Versions
+  * Enable C++11 and C99
+  * Fixed cmake error: No known features for C compiler when using the assimp library from another project
+  * fix test/models/3DS/IMAGE1.bmp: is jpg
+  * Fix compile error when ASSIMP_BUILD_NO_X3D_IMPORTER is define.
+
+-------------------------------------------------------------------
 Sun Dec  5 08:52:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.1.3

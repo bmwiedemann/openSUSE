@@ -2,8 +2,9 @@
     <service name="tar_scm" mode="disabled">
         <param name="scm">git</param>
         <param name="url">git://github.com/assimp/assimp</param>
-        <param name="revision">v5.1.3</param>
-        <param name="versionformat">5.1.3</param>
+        <param name="revision">v5.1.4</param>
+        <param name="versionformat">@PARENT_TAG@</param>
+        <param name="versionrewrite-pattern">v(.*)</param>
         <!-- non-OSI media -->
         <param name="exclude">test/models-nonbsd</param>
     </service>

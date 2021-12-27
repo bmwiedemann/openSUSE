@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
