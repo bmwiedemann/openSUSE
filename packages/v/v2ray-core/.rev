@@ -283,4 +283,12 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 935001 from jsegitz)</comment>
     <requestid>935008</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>15d3a1ca3a9842587481105ecdc478dc</srcmd5>
+    <version>4.44.0</version>
+    <time>1640617647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942765</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 25 14:01:53 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.44.0
+  * Fix DoS attack vulnerability in CommandSwitchAccountFactory. (@geeknik)
+  * Apply timeout to DNS outbound. (#1330 @nekohasekai)
+
+-------------------------------------------------------------------
 Wed Dec  1 08:11:01 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

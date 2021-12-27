@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v4
 
 Name:           v2ray-core
-Version:        4.43.0
+Version:        4.44.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
