@@ -226,4 +226,23 @@
   * chore(release): add ubuntu older versions to deploy script (#1416)</comment>
     <requestid>941786</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0604ee904bb62a2bb78be6f4d8dca4ac</srcmd5>
+    <version>0.22.0</version>
+    <time>1640693827</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.22.0:
+  * fix(java/pom): ignore unsupported requirements (#1514)
+  * feat(cli): warning for root command (#1516)
+  * BREAKING: disable JAR detection in fs/repo scanning (#1512)
+  * feat(scan): support --offline-scan option (#1511)
+  * fix: improve memory usage (#1509)
+  * feat(java): support pom.xml (#1501)
+  * docs: fixing rust link to security advisory (#1504)
+  * Add missing IacMetdata (#1505)
+  * feat(jar): add file path (#1498)
+  * feat(rpm): support NDB (#1497)
+  * feat: added misconfiguration field for html.tpl (#1444)</comment>
+    <requestid>942895</requestid>
+  </revision>
 </revisionlist>
