@@ -941,7 +941,7 @@ Prefer: -zziplib-devel-32bit
 Prefer: -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby2.7-rubygem-fast_gettext
+Prefer: ruby2.7-rubygem-fast_gettext ruby3.0-rubygem-fast_gettext
 Prefer: ruby2.7-rubygem-i18n
 Prefer: ruby2.7-rubygem-rack
 Prefer: ruby2.7-rubygem-sass-rails
@@ -1429,7 +1429,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
 Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
 Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
-Prefer: -ruby3.0-rubygem-rspec-3_5
+Prefer: -ruby3.0-rubygem-rspec-3_5 -ruby2.7-rubygem-rspec-3_5
 Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass-rails
