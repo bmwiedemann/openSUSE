@@ -20,11 +20,12 @@
 %define pkg_name lua-language-server
 
 Name:           lua-language-server
-Version:        2.5.5
+Version:        2.5.6
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
 URL:            https://github.com/sumneko/lua-language-server
+# Checkout from git is required because of gh#sumneko/lua-language-server#878
 Source0:        %{name}-%{version}.tar.gz
 Source1:        lua-lsp-launcher.sh
 Source2:        README.suse-maint.md

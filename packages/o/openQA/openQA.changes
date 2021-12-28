@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 28 09:48:08 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1640601401.0c8908a82:
+  * Remove log messages because missing details-*-.json files are expected
+  * t: Move variables into fitting subtest scope in ui/26-jobs_restart.t
+  * templates: Fix redirection to clones on advanced restart actions
+  * templates: Fix styling of restart dropdown with proper classes
+  * Revert "Missing details-*-.json files are expected"
+  * Add retry of openQA jobs based on test variables
+  * t: Split out job referal test from 10-jobs.t
+  * Use signatures in OpenQA::Downloader
+  * Load heavy-weight Archive::Extract dynamically
+  * Remove unnecessary import in OpenQA::Schema::Result::Assets
+  * t: Remove unused parser imports from 10-jobs.t
+  * t: Use consistent subtest blocks in 10-jobs.t for all test statements
+  * t: Split out 10-jobs-results as 10-jobs is getting big
+
+-------------------------------------------------------------------
 Tue Dec 21 16:04:18 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1640096856.6da5eed26:

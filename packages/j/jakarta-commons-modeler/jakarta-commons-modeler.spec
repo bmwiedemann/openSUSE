@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-commons-modeler
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define base_name	modeler
 %define short_name	commons-%{base_name}
 Name:           jakarta-commons-modeler
-Version:        2.0
+Version:        2.0.1
 Release:        0
 Summary:        Jakarta Commons Modeler Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/commons/modeler/
-Source0:        %{short_name}-%{version}-src.tar.bz2
+URL:            https://commons.apache.org/dormant/commons-modeler/
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jakarta-commons-digester
@@ -93,8 +94,15 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -a dist/docs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
+# convert DOS lineenedings to unix
+sed -i 's/\r$//' NOTICE.txt
+sed -i 's/\r$//' RELEASE-NOTES.txt
+sed -i 's/\r$//' xdocs/*.xml
+sed -i 's/\r$//' xdocs/style/*.css
+
 %files
-%doc LICENSE.txt NOTICE.txt RELEASE-NOTES.txt xdocs
+%doc NOTICE.txt RELEASE-NOTES.txt xdocs
+%license LICENSE.txt
 %{_javadir}/*
 
 %files javadoc

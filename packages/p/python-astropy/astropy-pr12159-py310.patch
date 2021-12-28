@@ -1,0 +1,137 @@
+From dea513d07ab6bc5bb3585cc33ead4bb6df2f8a8d Mon Sep 17 00:00:00 2001
+From: "P. L. Lim" <2090236+pllim@users.noreply.github.com>
+Date: Thu, 9 Sep 2021 15:51:50 -0400
+Subject: [PATCH] Backport PR #11962: Fix warnings with Python 3.10
+
+---
+ .github/workflows/ci_cron_weekly.yml | 6 +++---
+ .github/workflows/ci_workflows.yml   | 5 +++++
+ astropy/convolution/convolve.py      | 6 +++++-
+ astropy/io/fits/util.py              | 6 +++---
+ astropy/tests/tests/test_imports.py  | 2 +-
+ astropy/utils/console.py             | 2 +-
+ docs/changes/11962.other.rst         | 1 +
+ tox.ini                              | 2 +-
+ 8 files changed, 20 insertions(+), 10 deletions(-)
+ create mode 100644 docs/changes/11962.other.rst
+
+diff --git a/.github/workflows/ci_cron_weekly.yml b/.github/workflows/ci_cron_weekly.yml
+index 207fc7d372f..66ecabedd77 100644
+--- a/.github/workflows/ci_cron_weekly.yml
++++ b/.github/workflows/ci_cron_weekly.yml
+@@ -29,10 +29,10 @@ jobs:
+           # that gives too many false positives due to URL timeouts. We also
+           # install all dependencies via pip here so we pick up the latest
+           # releases.
+-          - name: Python 3.7 with dev version of key dependencies
++          - name: Python 3.10 with dev version of key dependencies
+             os: ubuntu-latest
+-            python: 3.7
+-            toxenv: py37-test-devdeps
++            python: '3.10.0-alpha - 3.10.0'
++            toxenv: py310-test-devdeps
+ 
+           - name: Documentation link check
+             os: ubuntu-latest
+diff --git a/.github/workflows/ci_workflows.yml b/.github/workflows/ci_workflows.yml
+index ee3dd88fe4e..2d596e1f16c 100644
+--- a/.github/workflows/ci_workflows.yml
++++ b/.github/workflows/ci_workflows.yml
+@@ -58,6 +58,11 @@ jobs:
+             python: 3.9
+             toxenv: py39-test
+ 
++          - name: Python 3.10 with minimal dependencies
++            os: ubuntu-latest
++            python: '3.10.0-alpha - 3.10.0'
++            toxenv: py310-test-devdeps
++
+           # NOTE: In the build below we also check that tests do not open and
+           # leave open any files. This has a performance impact on running the
+           # tests, hence why it is not enabled by default.
+diff --git a/astropy/convolution/convolve.py b/astropy/convolution/convolve.py
+index 86ef46e0a72..416bcd4247b 100644
+--- a/astropy/convolution/convolve.py
++++ b/astropy/convolution/convolve.py
+@@ -4,6 +4,7 @@
+ 
+ import os
+ import ctypes
++import warnings
+ from functools import partial
+ 
+ import numpy as np
+@@ -22,7 +23,10 @@
+ LIBRARY_PATH = os.path.dirname(__file__)
+ 
+ try:
+-    _convolve = load_library("_convolve", LIBRARY_PATH)
++    with warnings.catch_warnings():
++        # distutils.sysconfig module is deprecated in Python 3.10
++        warnings.simplefilter('ignore', DeprecationWarning)
++        _convolve = load_library("_convolve", LIBRARY_PATH)
+ except Exception:
+     raise ImportError("Convolution C extension is missing. Try re-building astropy.")
+ 
+diff --git a/astropy/io/fits/util.py b/astropy/io/fits/util.py
+index 157b8634fdd..06e9108511c 100644
+--- a/astropy/io/fits/util.py
++++ b/astropy/io/fits/util.py
+@@ -210,9 +210,9 @@ def ignore_sigint(func):
+     def wrapped(*args, **kwargs):
+         # Get the name of the current thread and determine if this is a single
+         # threaded application
+-        curr_thread = threading.currentThread()
+-        single_thread = (threading.activeCount() == 1 and
+-                         curr_thread.getName() == 'MainThread')
++        curr_thread = threading.current_thread()
++        single_thread = (threading.active_count() == 1 and
++                         curr_thread.name == 'MainThread')
+ 
+         class SigintHandler:
+             def __init__(self):
+diff --git a/astropy/tests/tests/test_imports.py b/astropy/tests/tests/test_imports.py
+index 2ce1442447a..d13c956f0f9 100644
+--- a/astropy/tests/tests/test_imports.py
++++ b/astropy/tests/tests/test_imports.py
+@@ -19,7 +19,7 @@ def onerror(name):
+ 
+     for imper, nm, ispkg in pkgutil.walk_packages(['astropy'], 'astropy.',
+                                                   onerror=onerror):
+-        imper.find_module(nm)
++        imper.find_spec(nm)
+ 
+ 
+ def test_toplevel_namespace():
+diff --git a/astropy/utils/console.py b/astropy/utils/console.py
+index 797859d8ba6..3de95bb07d7 100644
+--- a/astropy/utils/console.py
++++ b/astropy/utils/console.py
+@@ -121,7 +121,7 @@ def isatty(file):
+     ttys.
+     """
+     if (multiprocessing.current_process().name != 'MainProcess' or
+-            threading.current_thread().getName() != 'MainThread'):
++            threading.current_thread().name != 'MainThread'):
+         return False
+ 
+     if hasattr(file, 'isatty'):
+diff --git a/docs/changes/11962.other.rst b/docs/changes/11962.other.rst
+new file mode 100644
+index 00000000000..d57a7d978f2
+--- /dev/null
++++ b/docs/changes/11962.other.rst
+@@ -0,0 +1 @@
++Fix deprecation warnings with Python 3.10
+diff --git a/tox.ini b/tox.ini
+index 3414bb3f3b5..42a6590f915 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,6 +1,6 @@
+ [tox]
+ envlist =
+-    py{37,38,39,dev}-test{,-alldeps,-oldestdeps,-devdeps,-numpy117,-numpy118,-numpy119}{,-cov}{,-clocale}
++    py{37,38,39,310,dev}-test{,-alldeps,-oldestdeps,-devdeps,-numpy117,-numpy118,-numpy119}{,-cov}{,-clocale}
+     build_docs
+     linkcheck
+     codestyle

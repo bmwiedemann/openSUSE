@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>873546</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9a5898ff45de445e5b1a3cf69e073529</srcmd5>
+    <version>2.5.2</version>
+    <time>1640690777</time>
+    <user>dimstar_suse</user>
+    <comment>- What was I thinking? Description and Summary had nothing to di
+  with this package.
+</comment>
+    <requestid>942812</requestid>
+  </revision>
 </revisionlist>

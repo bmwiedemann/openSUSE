@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
+
+- Add python-rpm-macros (bsc#1180125)
+
+-------------------------------------------------------------------
 Thu Nov 12 08:24:10 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Update patch for aarch64 support. Does not break full emulation case.

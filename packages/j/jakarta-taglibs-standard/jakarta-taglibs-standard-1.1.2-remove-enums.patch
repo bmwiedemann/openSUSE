@@ -1,0 +1,207 @@
+Index: standard/examples/src/org/apache/taglibs/standard/examples/startup/Init.java
+===================================================================
+--- standard/examples/src/org/apache/taglibs/standard/examples/startup/Init.java.orig
++++ standard/examples/src/org/apache/taglibs/standard/examples/startup/Init.java
+@@ -122,10 +122,10 @@ public class Init implements ServletCont
+ 	/**
+ 	 * Enumeration
+ 	 */
+-	Enumeration enum_ = numberMap.keys();
++	Enumeration enum2 = numberMap.keys();
+ 	// don't use 'enum' for attribute name because it is a 
+ 	// reserved word in EcmaScript.
+-        sce.getServletContext().setAttribute("enumeration", enum_);
++        sce.getServletContext().setAttribute("enumeration", enum2);
+ 
+ 	/**
+ 	 * Message arguments for parametric replacement
+Index: standard/src/org/apache/taglibs/standard/extra/spath/SPathParser.java
+===================================================================
+--- standard/src/org/apache/taglibs/standard/extra/spath/SPathParser.java.orig
++++ standard/src/org/apache/taglibs/standard/extra/spath/SPathParser.java
+@@ -437,8 +437,8 @@ public class SPathParser implements SPat
+         jj_expentry[i] = jj_lasttokens[i];
+       }
+       boolean exists = false;
+-      for (java.util.Enumeration enum_ = jj_expentries.elements(); enum_.hasMoreElements();) {
+-        int[] oldentry = (int[])(enum_.nextElement());
++      for (java.util.Enumeration enum2 = jj_expentries.elements(); enum2.hasMoreElements();) {
++        int[] oldentry = (int[])(enum2.nextElement());
+         if (oldentry.length == jj_expentry.length) {
+           exists = true;
+           for (int i = 0; i < jj_expentry.length; i++) {
+Index: standard/src/org/apache/taglibs/standard/functions/Functions.java
+===================================================================
+--- standard/src/org/apache/taglibs/standard/functions/Functions.java.orig
++++ standard/src/org/apache/taglibs/standard/functions/Functions.java
+@@ -204,11 +204,11 @@ public class Functions {
+             return count;
+         }            
+         if (obj instanceof Enumeration) {
+-            Enumeration enum_ = (Enumeration)obj;
++            Enumeration enum2 = (Enumeration)obj;
+             count = 0;
+-            while (enum_.hasMoreElements()) {
++            while (enum2.hasMoreElements()) {
+                 count++;
+-                enum_.nextElement();
++                enum2.nextElement();
+             }
+             return count;
+         }
+@@ -231,4 +231,4 @@ public class Functions {
+         
+         return buf.toString();
+     }
+-}
++}
+\ No newline at end of file
+Index: standard/src/org/apache/taglibs/standard/lang/jstl/ImplicitObjects.java
+===================================================================
+--- standard/src/org/apache/taglibs/standard/lang/jstl/ImplicitObjects.java.orig
++++ standard/src/org/apache/taglibs/standard/lang/jstl/ImplicitObjects.java
+@@ -980,13 +980,13 @@ public class ImplicitObjects
+ 
+ 	    List l = new ArrayList ();
+ 
+-	    Enumeration enum_ = request.getHeaders ((String) pKey);
++	    Enumeration enum2 = request.getHeaders ((String) pKey);
+ 
+-	    if (enum_ != null) {
++	    if (enum2 != null) {
+ 
+-	      while (enum_.hasMoreElements ()) {
++	      while (enum2.hasMoreElements ()) {
+ 
+-		l.add (enum_.nextElement ());
++		l.add (enum2.nextElement ());
+ 
+ 	      }
+ 
+Index: standard/src/org/apache/taglibs/standard/lang/jstl/parser/ELParser.java
+===================================================================
+--- standard/src/org/apache/taglibs/standard/lang/jstl/parser/ELParser.java.orig
++++ standard/src/org/apache/taglibs/standard/lang/jstl/parser/ELParser.java
+@@ -1104,8 +1104,8 @@ public class ELParser implements ELParse
+         jj_expentry[i] = jj_lasttokens[i];
+       }
+       boolean exists = false;
+-      for (java.util.Enumeration enum_ = jj_expentries.elements(); enum_.hasMoreElements();) {
+-        int[] oldentry = (int[])(enum_.nextElement());
++      for (java.util.Enumeration enum2 = jj_expentries.elements(); enum2.hasMoreElements();) {
++        int[] oldentry = (int[])(enum2.nextElement());
+         if (oldentry.length == jj_expentry.length) {
+           exists = true;
+           for (int i = 0; i < jj_expentry.length; i++) {
+Index: standard/src/org/apache/taglibs/standard/tag/common/fmt/SetLocaleSupport.java
+===================================================================
+--- standard/src/org/apache/taglibs/standard/tag/common/fmt/SetLocaleSupport.java.orig
++++ standard/src/org/apache/taglibs/standard/tag/common/fmt/SetLocaleSupport.java
+@@ -401,9 +401,9 @@ public abstract class SetLocaleSupport e
+     private static Locale findFormattingMatch(PageContext pageContext,
+ 					      Locale[] avail) {
+ 	Locale match = null;
+-	for (Enumeration enum_ = Util.getRequestLocales((HttpServletRequest)pageContext.getRequest());
+-	     enum_.hasMoreElements(); ) {
+-            Locale locale = (Locale)enum_.nextElement();
++	for (Enumeration enum2 = Util.getRequestLocales((HttpServletRequest)pageContext.getRequest());
++	     enum2.hasMoreElements(); ) {
++            Locale locale = (Locale)enum2.nextElement();
+ 	    match = findFormattingMatch(locale, avail);
+ 	    if (match != null) {
+ 		break;
+Index: standard/src/org/apache/taglibs/standard/tag/common/xml/XPathUtil.java
+===================================================================
+--- standard/src/org/apache/taglibs/standard/tag/common/xml/XPathUtil.java.orig
++++ standard/src/org/apache/taglibs/standard/tag/common/xml/XPathUtil.java
+@@ -74,10 +74,10 @@ public class XPathUtil {
+         globalVarSize = 0;
+         Vector variableVector = new Vector ( );
+         // Now construct attributes in different scopes
+-        Enumeration enum_ = pageContext.getAttributeNamesInScope( 
++        Enumeration enum2 = pageContext.getAttributeNamesInScope(
+             PageContext.PAGE_SCOPE );
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( PAGE_NS_URL, PAGE_P, varName); 
+             //Adding both namespace qualified QName and just localName
+             variableVector.addElement( varQName );
+@@ -86,10 +86,10 @@ public class XPathUtil {
+             variableVector.addElement( new QName(null, varName ) );
+             globalVarSize++;
+         }
+-        enum_ = pageContext.getAttributeNamesInScope( 
++        enum2 = pageContext.getAttributeNamesInScope(
+             PageContext.REQUEST_SCOPE );
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( REQUEST_NS_URL,REQUEST_P, varName); 
+             //Adding both namespace qualified QName and just localName
+             variableVector.addElement( varQName );
+@@ -97,10 +97,10 @@ public class XPathUtil {
+             variableVector.addElement( new QName(null, varName ) );
+             globalVarSize++;
+         }
+-        enum_ = pageContext.getAttributeNamesInScope( 
++        enum2 = pageContext.getAttributeNamesInScope(
+             PageContext.SESSION_SCOPE );
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( SESSION_NS_URL, SESSION_P,varName); 
+             //Adding both namespace qualified QName and just localName
+             variableVector.addElement( varQName );
+@@ -108,10 +108,10 @@ public class XPathUtil {
+             variableVector.addElement( new QName(null, varName ) );
+             globalVarSize++;
+         }
+-        enum_ = pageContext.getAttributeNamesInScope( 
++        enum2 = pageContext.getAttributeNamesInScope(
+             PageContext.APPLICATION_SCOPE );
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( APP_NS_URL, APP_P,varName ); 
+             //Adding both namespace qualified QName and just localName
+             variableVector.addElement( varQName );
+@@ -119,25 +119,25 @@ public class XPathUtil {
+             variableVector.addElement( new QName(null, varName ) );
+             globalVarSize++;
+         }
+-        enum_ = pageContext.getRequest().getParameterNames();
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        enum2 = pageContext.getRequest().getParameterNames();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( PARAM_NS_URL, PARAM_P,varName ); 
+             //Adding both namespace qualified QName and just localName
+             variableVector.addElement( varQName );
+             globalVarSize++;
+         }
+-        enum_ = pageContext.getServletContext().getInitParameterNames();
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        enum2 = pageContext.getServletContext().getInitParameterNames();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( INITPARAM_NS_URL, INITPARAM_P,varName ); 
+             //Adding both namespace qualified QName and just localName
+             variableVector.addElement( varQName );
+             globalVarSize++;
+         }
+-        enum_ = ((HttpServletRequest)pageContext.getRequest()).getHeaderNames();
+-        while ( enum_.hasMoreElements() ) {
+-            String varName = (String)enum_.nextElement();
++        enum2 = ((HttpServletRequest)pageContext.getRequest()).getHeaderNames();
++        while ( enum2.hasMoreElements() ) {
++            String varName = (String)enum2.nextElement();
+             QName varQName = new QName ( HEADER_NS_URL, HEADER_P,varName ); 
+             //Adding namespace qualified QName 
+             variableVector.addElement( varQName );

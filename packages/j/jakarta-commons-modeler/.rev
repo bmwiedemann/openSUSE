@@ -127,4 +127,12 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527006</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d80e390076f904df1405fc358c058923</srcmd5>
+    <version>2.0.1</version>
+    <time>1640690798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942905</requestid>
+  </revision>
 </revisionlist>

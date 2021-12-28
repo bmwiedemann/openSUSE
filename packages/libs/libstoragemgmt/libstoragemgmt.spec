@@ -26,7 +26,7 @@
 %define python3 0
 %endif
 Name:           libstoragemgmt
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Storage array management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,13 +40,17 @@ BuildRequires:  gcc-c++
 BuildRequires:  libconfig-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-BuildRequires:  sysuser-tools
+# Packages that have been removed
+Obsoletes:      %{name}-netapp-plugin < %{version}-%{release}
+Obsoletes:      %{name}-nfs-plugin-clibs < %{version}-%{release}
+Obsoletes:      %{name}-nstor-plugin < %{version}-%{release}
 %sysusers_requires
 %systemd_requires
 %if 0%{python3}
@@ -73,11 +77,6 @@ BuildRequires:  procps
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(check)
 %endif
-
-# Packages that have been removed
-Obsoletes:      %{name}-netapp-plugin < %{version}-%{release}
-Obsoletes:      %{name}-nfs-plugin-clibs < %{version}-%{release}
-Obsoletes:      %{name}-nstor-plugin < %{version}-%{release}
 %if 0%{python3}
 Obsoletes:      python3-%{name}-clibs < %{version}-%{release}
 %else
@@ -295,7 +294,7 @@ install -m 644 tools/udev/90-scsi-ua.rules \
     %{buildroot}%{_udevrulesdir}/90-scsi-ua.rules
 install -m 755 tools/udev/scan-scsi-target \
     %{buildroot}%{_prefix}/lib/udev/scan-scsi-target
-   
+
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 
@@ -425,7 +424,7 @@ fi
 %files
 %{_mandir}/man1/lsmcli.1%{?ext_man}
 %{_mandir}/man1/lsmd.1%{?ext_man}
-%{_mandir}/man5/lsmd.conf.5*
+%{_mandir}/man5/lsmd.conf.5%{?ext_man}
 %{_bindir}/lsmcli
 %{_bindir}/lsmd
 %{_bindir}/simc_lsmplugin

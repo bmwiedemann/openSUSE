@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-jaf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define official_name activation
 Name:           gnu-jaf
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        GNU implementation of the JavaBeans Activation Framework
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            http://java.sun.com/products/javabeans/glasgow/jaf.html
-Source:         %{official_name}-%{version}.tar.bz2
+URL:            https://www.gnu.org/software/classpathx/jaf/jaf.html
+Source:         http://ftp.gnu.org/gnu/classpathx/%{official_name}-%{version}.tar.gz
 BuildRequires:  ant
 BuildRequires:  antlr
 BuildRequires:  java-devel >= 1.8

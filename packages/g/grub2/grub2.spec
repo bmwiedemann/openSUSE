@@ -316,6 +316,18 @@ Patch797:       0001-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
 Patch798:       0001-arm64-Fix-EFI-loader-kernel-image-allocation.patch
 Patch799:       0002-Arm-check-for-the-PE-magic-for-the-compiled-arch.patch
 Patch800:       0001-fs-btrfs-Make-extent-item-iteration-to-handle-gaps.patch
+Patch801:       0001-Factor-out-grub_efi_linux_boot.patch
+Patch802:       0002-Fix-race-in-EFI-validation.patch
+Patch803:       0003-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
+Patch804:       0004-Try-to-pick-better-locations-for-kernel-and-initrd.patch
+Patch805:       0005-x86-efi-Use-bounce-buffers-for-reading-to-addresses-.patch
+Patch806:       0006-x86-efi-Re-arrange-grub_cmd_linux-a-little-bit.patch
+Patch807:       0007-x86-efi-Make-our-own-allocator-for-kernel-stuff.patch
+Patch808:       0008-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
+Patch809:       0009-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
+Patch810:       0010-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
+Patch811:       0011-Also-define-GRUB_EFI_MAX_ALLOCATION_ADDRESS-for-RISC.patch
+Patch812:       0001-grub-mkconfig-restore-umask-for-grub.cfg.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -1006,7 +1018,7 @@ fi
 %doc README.ibm3215
 %endif
 %dir /boot/%{name}
-%ghost /boot/%{name}/grub.cfg
+%ghost %attr(600, root, root) /boot/%{name}/grub.cfg
 %{_sysconfdir}/bash_completion.d/grub
 %config(noreplace) %{_sysconfdir}/default/grub
 %dir %{_sysconfdir}/grub.d

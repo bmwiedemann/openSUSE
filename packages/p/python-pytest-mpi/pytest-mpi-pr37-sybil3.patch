@@ -1,0 +1,32 @@
+From 7efec75885899b3b215c579b146a1a58e2c00d8e Mon Sep 17 00:00:00 2001
+From: James Tocknell <aragilar@gmail.com>
+Date: Sun, 12 Dec 2021 14:50:32 +1100
+Subject: [PATCH] Fix sybil conftest
+
+---
+ docs/conftest.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/docs/conftest.py b/docs/conftest.py
+index 2f9a4ff..d91c8cc 100644
+--- a/docs/conftest.py
++++ b/docs/conftest.py
+@@ -3,14 +3,14 @@
+ import pytest
+ 
+ from sybil import Sybil
+-from sybil.parsers.codeblock import CodeBlockParser
+-from sybil.parsers.doctest import DocTestParser, FIX_BYTE_UNICODE_REPR
++from sybil.parsers.codeblock import PythonCodeBlockParser
++from sybil.parsers.doctest import DocTestParser
+ from sybil.parsers.skip import skip
+ 
+ pytest_collect_file = Sybil(
+     parsers=[
+-        DocTestParser(optionflags=ELLIPSIS|FIX_BYTE_UNICODE_REPR),
+-        CodeBlockParser(),
++        DocTestParser(optionflags=ELLIPSIS),
++        PythonCodeBlockParser(),
+         skip,
+     ],
+     pattern='*.rst',

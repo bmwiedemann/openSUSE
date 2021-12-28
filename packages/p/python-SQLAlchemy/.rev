@@ -843,4 +843,18 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>940113</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>014bc8bc3e2afd5dc533cf8b739c0e79</srcmd5>
+    <version>1.4.29</version>
+    <time>1640690771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.29:
+  - truly, just plenty of small bugfixes, see the changelog on the Web
+    https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.29
+- update to 1.4.28:
+  Bugfixes, see 
+  * https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.28 
+</comment>
+    <requestid>942807</requestid>
+  </revision>
 </revisionlist>

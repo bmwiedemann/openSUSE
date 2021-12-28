@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 28 09:01:48 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Update to 1.1.2, a missing released version that went into oblivion.
+- Update Source0 to download from apache website.
+- Marked LICENSE file as a license.
+- Rebased patches:
+  * CVE-2015-0254.patch
+  * jakarta-taglibs-standard-1.1.2-build.patch
+    (replaces jakarta-taglibs-standard-1.1.1-build.patch)
+  * jakarta-taglibs-standard-1.1.2-remove-enums.patch
+    (replaces jakarta-taglibs-standard-1.1.1-remove-enums.patch)
+
+-------------------------------------------------------------------
 Mon Sep 18 15:40:25 UTC 2017 - fstrba@suse.com
 
 - Modified patch:

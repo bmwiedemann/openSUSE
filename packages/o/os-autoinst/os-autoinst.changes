@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 28 10:05:49 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1640620511.76c851d7:
+  * Use a constant for default max typing interval
+  * t: Add video-console testing with generalhw backend
+  * t: Add video_stream console tests
+  * generalhw: Improve logging of run_cmd()
+  * generalhw: Prevent RWP::Session stealing exit code from IPC::Run
+  * Do not limit saving assets to qemu backend only
+  * backend: Avoid re-entrant close_pipes() call
+  * generalhw: Add GENERAL_HW_IMAGE_CMD
+  * generalhw: Wrap GENERAL_HW_ARG_VARIABLES_BY_CMD
+  * generalhw: Make run_cmd more generic
+  * Add stall detection to video-stream console
+  * Add support for v4l2 device as an input to video-stream console
+  * Add video-stream console support to generalhw backend
+  * Add video-stream console
+  * dist: Move swtpm "files" out of unnecessary ifarch
+  * README: Add a section how to verify a runtime environment
+  * Fix podman pull link
+
+-------------------------------------------------------------------
 Tue Dec 21 16:26:41 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1640094932.fc9361df:

@@ -16,17 +16,16 @@
 #
 
 
-%define uver	3_9_1
+%define uver	3_10_1
 Name:           geos
-Version:        3.9.1
+Version:        3.10.1
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-URL:            https://trac.osgeo.org/geos/
+URL:            https://libgeos.org
 Source0:        https://download.osgeo.org/%{name}/%{name}-%{version}.tar.bz2
-Source1:        %{name}-config.1
-BuildRequires:  fdupes
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -37,11 +36,11 @@ in C++. This includes all the OpenGIS "Simple Features for SQL" spatial
 predicate functions and spatial operators, as well as specific JTS topology
 functions such as IsValid().
 
-%package -n libgeos-%{uver}
+%package -n libgeos%{uver}
 Summary:        Geometry Engine library
 Group:          System/Libraries
 
-%description -n libgeos-%{uver}
+%description -n libgeos%{uver}
 GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
 Suite (JTS). As such, it aims to contain the complete functionality of JTS
 in C++. This includes all the OpenGIS "Simple Features for SQL" spatial
@@ -61,7 +60,7 @@ interface for the (C++) GEOS library.
 %package devel
 Summary:        Development files for GEOS
 Group:          Development/Libraries/C and C++
-Requires:       libgeos-%{uver} = %{version}
+Requires:       libgeos%{uver} = %{version}
 Requires:       libgeos_c1 = %{version}
 Provides:       lib%{name}-devel = %{version}
 
@@ -79,37 +78,29 @@ use GEOS.
 %setup -q
 
 %build
-# Disable inline for armv6/7 - https://trac.osgeo.org/geos/ticket/993
-%configure \
-%ifarch %{arm}
-  --disable-inline \
-%endif
-  --disable-static
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
-# tests fail with older releases and non-intel architectures
-# while this was reported to upstream, there has been no reply
-%ifarch %{ix86} x86_64
 %check
-make %{?_smp_mflags} check
-%endif
+# path needs to be exported otherwise unit tests will fail
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
+%ctest
 
 %install
-%make_install
-install -Dpm 0644 %{SOURCE1} \
-  %{buildroot}%{_mandir}/man1/geos-config.1
-# do not ship static libraries or la files
-find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
-%fdupes %{buildroot}%{python_sitelib}
+%cmake_install
 
-%post   -n libgeos-%{uver} -p /sbin/ldconfig
-%postun -n libgeos-%{uver} -p /sbin/ldconfig
+%post   -n libgeos%{uver} -p /sbin/ldconfig
+%postun -n libgeos%{uver} -p /sbin/ldconfig
 %post   -n libgeos_c1 -p /sbin/ldconfig
 %postun -n libgeos_c1 -p /sbin/ldconfig
 
-%files -n libgeos-%{uver}
+%files
 %license COPYING
-%{_libdir}/libgeos-%{version}.so
+%{_bindir}/geosop
+
+%files -n libgeos%{uver}
+%license COPYING
+%{_libdir}/libgeos.so.*
 
 %files -n libgeos_c1
 %license COPYING
@@ -117,11 +108,12 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 
 %files devel
 %license COPYING
-%doc AUTHORS NEWS README.md ChangeLog
-%{_mandir}/man1/%{name}-config.1%{ext_man}
-%{_bindir}/%{name}-config
+%doc AUTHORS NEWS README.md
+%{_bindir}/geos-config
 %{_includedir}/*
 %{_libdir}/pkgconfig/%{name}.pc
+%dir %{_libdir}/cmake/GEOS
+%{_libdir}/cmake/GEOS/geos-*
 %{_libdir}/lib%{name}.so
 %{_libdir}/lib%{name}_c.so
 

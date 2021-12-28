@@ -274,4 +274,12 @@ Dependencies:
   * Require Python 3.6 or later.</comment>
     <requestid>785245</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6c78416782b1f54d6c1f41b99f3859e</srcmd5>
+    <version>19.0.1</version>
+    <time>1640690787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942842</requestid>
+  </revision>
 </revisionlist>

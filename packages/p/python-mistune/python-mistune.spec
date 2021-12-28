@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistune
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,38 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-mistune
-Version:        0.8.4
+%{?!python_module:%define python_module() python3-%{**}}
+%define modname mistune
+%define skip_python2 1
+Name:           python-%{modname}
+Version:        2.0.0
 Release:        0
-Summary:        A markdown parser in pure Python
+Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lepture/mistune
-Source0:        https://files.pythonhosted.org/packages/source/m/mistune/mistune-%{version}.tar.gz
+Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
 %description
-A markdown parser in pure Python, inspired by marked.
+A Python Markdown parser with renderers and plugins,
+compatible with sane CommonMark rules.
 
 %prep
-%setup -q -n mistune-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,10 +55,8 @@ A markdown parser in pure Python, inspired by marked.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
-%{python_sitelib}/mistune.py*
-%pycache_only %{python_sitelib}/__pycache__/*
-%dir %{python_sitelib}/mistune-%{version}-py*.egg-info
-%{python_sitelib}/mistune-%{version}-py*.egg-info/*
+%doc README.md
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info
 
 %changelog

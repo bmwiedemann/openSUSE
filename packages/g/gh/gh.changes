@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 28 05:29:04 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 2.4.0
+	- Add repo edit command by @g14a in gh#cli/cli#4318
+	- release create: add --generate-notes functionality by @Sixeight in gh#cli/cli#4467
+	- release create: add interactive mode to choose a tag name by @sguzmanm in gh#cli/cli#4525
+	- pr merge: allow editing commit subject by @cristiand391 in gh#cli/cli#3344
+	- secret set: allow importing secrets from a dotenv file by @lpessoa in gh#cli/cli#4534
+	- run list/view: add --json export functionality by @cristiand391 in gh#cli/cli#3869
+	- Refresh man pages by @mislav in gh#cli/cli#4939
+	- Add installation instructions for pkgsrc by @bsiegert in gh#cli/cli#4931
+	- pr view: ensure that PR reviews are always rendered in --comments mode by @mislav in gh#cli/cli#4848
+	- api: handle HTTP 409 error message from the server by @mislav in gh#cli/cli#4862
+	- issue edit: fix race condition when updating labels by @despreston in gh#cli/cli#4861
+	- browse: support --commit with the repo override flag by @bchadwic in gh#cli/cli#4845
+	- repo create: fix printing repo URL in no-TTY mode by @mislav in gh#cli/cli#4904
+	- repo sync: use the new merge-upstream API if available by @mislav in gh#cli/cli#4942
+	- run: display and treat "Cancelled" status as a failure by @bchadwic in gh#cli/cli#4850
+	- extension upgrade: an already up-to-date extension should not a produce a failure by @tisonkun in gh#cli/cli#4857
+	- Avoid showing non-open PRs as related to the default branch by @AyushRawal in gh#cli/cli#4285
+	- git remotes: fix treating ssh.github.com as a github.com host by @mislav in gh#cli/cli#4938
+	- Bump Cobra to 1.3.0 for improved completion support by @mislav in gh#cli/cli#4936
+	- Bump spinner to 1.18.0 by @mislav in gh#cli/cli#4937
+
+-------------------------------------------------------------------
 Mon Dec 20 07:50:14 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Change issue references in the changelog to proper OBS abbreviations

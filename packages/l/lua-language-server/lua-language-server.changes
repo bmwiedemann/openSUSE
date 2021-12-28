@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 27 18:27:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 2.5.6:
+  - chore: update lua-resty-websocket library annotations
+  - Update OpenResty typedefs, annotations, and configuration
+
+-------------------------------------------------------------------
 Fri Dec 17 14:50:40 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.5.5

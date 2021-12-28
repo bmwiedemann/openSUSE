@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 18 07:37:24 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.3:
+  * Fix endianess issues for big endian
+  * Fix megaraid plugin for volume_raid_info for RAID10, add test
+  * Megaraid, changes to support latest storcli utility
+  * Misc. CI test improvements, code clean-up
+
+-------------------------------------------------------------------
 Sun Jun 13 13:26:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator

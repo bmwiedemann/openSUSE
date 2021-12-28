@@ -45,7 +45,7 @@ Patch14:        0005-run.py-Introduce-blk-disk-argument.patch
 Patch15:        0006-Minor-sanitize_disk_args-cleanup.patch
 Patch16:        aarch64-Fix-aarch64-support.patch
 BuildRequires:  %{python_module setuptools}
-#BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros
 Requires:       busybox-static
 Requires:       qemu
 BuildArch:      noarch

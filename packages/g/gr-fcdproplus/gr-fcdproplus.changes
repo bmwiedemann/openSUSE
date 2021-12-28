@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 27 19:04:49 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fix build for Tumbleweed, now python3-six is needed here too
+
+-------------------------------------------------------------------
 Wed Sep 23 18:28:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add python3-six as BR conditionally for Leap systems

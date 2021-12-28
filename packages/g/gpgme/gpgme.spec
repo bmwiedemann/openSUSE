@@ -47,6 +47,12 @@ Patch0:         gpgme-1.16.0-Use-after-free-in-t-edit-sign-test.patch
 Patch1:         gpgme-1.16.0-t-various-testSignKeyWithExpiration-32-bit.patch
 # PATCH-FIX-UPSTREAM bsc#1189089 Use glibc's closefrom
 Patch2:         gpgme-use-glibc-closefrom.patch
+# PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D545
+Patch3:         gpgme-D545-python310.patch
+# PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D546
+Patch4:         gpgme-D546-python310.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -212,6 +218,9 @@ This package contains the bindings to use the library in Qt C++ applications.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+./autogen.sh
 
 %build
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})

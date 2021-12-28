@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 19 17:47:53 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- signed-char.patch: fix bad use of plain char
+
+-------------------------------------------------------------------
 Mon Dec 13 12:32:18 UTC 2021 - pgajdos@suse.com
 
 - version update to 10.96.4

@@ -16,10 +16,10 @@
 #
 
 
-%global qualifier R-4.18-202012021800
+%global qualifier R-4.22-202111241800
 %global jdk15_revision 1055f2102e6e
 Name:           ecj
-Version:        4.18
+Version:        4.22
 Release:        0
 Summary:        Eclipse Compiler for Java
 License:        EPL-2.0 AND GPL-2.0-only WITH Classpath-exception-2.0
@@ -43,7 +43,7 @@ Patch0:         %{name}-rpmdebuginfo.patch
 # Include java API stubs in build with java < 15
 Patch1:         javaAPI.patch
 BuildRequires:  ant
-BuildRequires:  java-devel >= 10
+BuildRequires:  java-devel >= 11
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -56,10 +56,11 @@ the JDT Core batch compiler.
 %setup -q -c -a 1
 %patch0 -p1
 %if %{?pkg_vcmp:%pkg_vcmp java-devel < 15}%{!?pkg_vcmp:1}
-%patch1
+%patch1 -p1
 %endif
 
-sed -i -e 's|debuglevel=\"lines,source\"|debug=\"yes\"|g' build.xml
+# debug is already present in new versions
+# sed -i -e 's|debuglevel=\"lines,source\"|debug=\"yes\"|g' build.xml
 
 mkdir -p scripts/binary/META-INF/
 cp %{SOURCE4} scripts/binary/META-INF/MANIFEST.MF

@@ -120,4 +120,12 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527059</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>161d3cd81315124941903ba45d2a0712</srcmd5>
+    <version>1.1.2</version>
+    <time>1640690796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942904</requestid>
+  </revision>
 </revisionlist>

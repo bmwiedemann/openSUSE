@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 27 19:59:44 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.14.10 fixed notation, automation and wave lists
+  to do not allow duplicates.
+- fixed corrupted selection with duplicates.
+- minor improvements.
+
+-------------------------------------------------------------------
 Mon Dec 27 05:30:13 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.14.9 fixed wave form editor selection.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 27 17:29:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add astropy-pr12159-py310.patch -- gh#astropy/astropy#12159
+
+-------------------------------------------------------------------
 Thu Oct 28 20:50:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip test_no_numpy_warnings[contours] due to wrong MPL version

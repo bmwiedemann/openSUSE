@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1640094932.fc9361df
+Version:        4.6.1640620511.76c851d7
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -257,9 +257,9 @@ cd %{__builddir}
 %files qemu-kvm
 
 %files qemu-x86
+%endif
 
 %files swtpm
-%endif
 
 %files s390-deps
 

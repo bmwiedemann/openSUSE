@@ -17,7 +17,7 @@
 
 
 Name:           dtv-scan-tables
-Version:        20210430
+Version:        20211214
 Release:        0
 Summary:        Scan files for digital TV applications v3
 License:        GPL-2.0-or-later AND LGPL-2.1-only

@@ -33,6 +33,8 @@ Summary:        MPI plugin for pytest
 License:        BSD-3-Clause
 URL:            https://pytest-mpi.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mpi/pytest-mpi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest-mpi-pr37-sybil3.patch -- gh#aragilar/pytest-mpi#37
+Patch0:         pytest-mpi-pr37-sybil3.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +45,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{mpiver}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sybil}
+BuildRequires:  %{python_module sybil >= 3}
 # /SECTION
 %python_subpackages
 
@@ -51,7 +53,7 @@ BuildRequires:  %{python_module sybil}
 mpi plugin for pytest to collect information from openmpi-based tests.
 
 %prep
-%setup -q -n pytest-mpi-%{version}
+%autosetup -p1 -n pytest-mpi-%{version}
 
 %build
 %python_build

@@ -26,6 +26,8 @@ Summary:        Django library to help interaction with Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/django-mailman3
 Source:         https://files.pythonhosted.org/packages/source/d/django-mailman3/django-mailman3-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM dj40.patch https://gitlab.com/mailman/django-mailman3/-/merge_requests/150
+Patch0:         dj40.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,10 +53,11 @@ Obsoletes:      python38-django-mailman3 < %{version}-%{release}
 %python_subpackages
 
 %description
-Django library to help interaction with Mailman
+Django library to help interaction with Mailman.
 
 %prep
 %setup -q -n django-mailman3-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -64,7 +67,7 @@ Django library to help interaction with Mailman
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH='.' $python %{_bindir}/django-admin.py test --settings=django_mailman3.tests.settings_test
+%python_expand PYTHONPATH='.' $python -m django test -v2 --settings=django_mailman3.tests.settings_test
 
 %files %{python_files}
 %doc README.rst

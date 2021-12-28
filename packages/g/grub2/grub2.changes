@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 21 03:03:47 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix CVE-2021-3981 (bsc#1189644)
+  * 0001-grub-mkconfig-restore-umask-for-grub.cfg.patch
+
+-------------------------------------------------------------------
+Fri Dec 17 10:42:33 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix can't allocate initrd error (bsc#1191378) 
+  * 0001-Factor-out-grub_efi_linux_boot.patch
+  * 0002-Fix-race-in-EFI-validation.patch
+  * 0003-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
+  * 0004-Try-to-pick-better-locations-for-kernel-and-initrd.patch
+  * 0005-x86-efi-Use-bounce-buffers-for-reading-to-addresses-.patch
+  * 0006-x86-efi-Re-arrange-grub_cmd_linux-a-little-bit.patch
+  * 0007-x86-efi-Make-our-own-allocator-for-kernel-stuff.patch
+  * 0008-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
+  * 0009-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
+  * 0010-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
+  * 0011-Also-define-GRUB_EFI_MAX_ALLOCATION_ADDRESS-for-RISC.patch
+
+-------------------------------------------------------------------
 Wed Dec  8 14:16:58 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Add support for simplefb (boo#1193532).

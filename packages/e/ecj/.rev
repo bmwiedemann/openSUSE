@@ -211,4 +211,12 @@
     <comment>upgrade to newer version</comment>
     <requestid>926145</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>03829c9a9b39f81db0d2bc1475ce90cb</srcmd5>
+    <version>4.22</version>
+    <time>1640690781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942824</requestid>
+  </revision>
 </revisionlist>

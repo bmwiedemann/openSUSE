@@ -71,6 +71,7 @@ Source100:      python-astropy-rpmlintrc
 # https://docs.astropy.org/en/v4.3post1/install.html#requirements
 # PATCH-FIX-UPSTREAM astropy-pr12006-cfitsio4.patch  gh#astropy/astropy#12006
 Patch1:         https://github.com/astropy/astropy/pull/12006.patch#/astropy-pr12006-cfitsio4.patch
+Patch2:         https://github.com/astropy/astropy/pull/12159.patch#/astropy-pr12159-py310.patch
 BuildRequires:  %{python_module Cython >= 0.29.22}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel >= 3.7}

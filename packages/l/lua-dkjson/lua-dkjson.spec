@@ -1,7 +1,7 @@
 #
 # spec file for package lua-dkjson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,15 @@
 %define uptag    release_2_5
 Version:        2.5.2
 Release:        0
-Summary:        A feature-rich command-line argument parser
+Summary:        David Kolf's JSON module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            http://dkjson.org/
 Source:         http://dkolf.de/src/dkjson-lua.fsl/tarball/%{uptag}/dkjson.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildArch:      noarch
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
+BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-dkjson
@@ -39,9 +39,14 @@ Name:           %{flavor}-dkjson
 %endif
 
 %description
-Argparse supports positional arguments, options, flags, optional
-arguments, subcommands and more. Argparse automatically generates usage,
-help, and error messages, and can generate shell completion scripts.
+dkjson is a module for encoding and decoding JSON data. It
+supports UTF-8.
+
+JSON (JavaScript Object Notation) is a format for serializing
+data based on the syntax for JavaScript data structures.
+
+dkjson is written in Lua without any dependencies, but
+when LPeg is available dkjson can use it to speed up decoding.
 
 %prep
 %setup -q -n %{uptag}/%{mod_name}

@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-taglibs-standard
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define short_name      taglibs-standard
 Name:           jakarta-taglibs-standard
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Open Source Implementation of the JSP Standard Tag Library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://tomcat.apache.org/taglibs/
-Source0:        jakarta-taglibs-standard-%{version}-src.tar.bz2
+URL:            http://tomcat.apache.org/taglibs/
+Source0:        http://archive.apache.org/dist/jakarta/taglibs/standard/source/%{name}-%{version}-src.tar.gz
 Patch0:         %{name}-%{version}-build.patch
 Patch1:         %{name}-java6-compatibility.patch
 Patch2:         %{name}-%{version}-remove-enums.patch
@@ -89,6 +89,7 @@ cp -pr standard/dist/standard/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
+%license LICENSE
 %doc standard/README_src.txt standard/README_bin.txt standard/dist/doc/doc/standard-doc/*.html
 %{_javadir}/*
 

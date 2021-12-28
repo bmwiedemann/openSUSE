@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Mon Dec 27 15:03:23 UTC 2021 - Chris Josten <chris+suse@netsoj.nl>
+
+- Update to version 2.098.1
+  * DMD Compiler regression fixes
+    * [REG2.084.0] Bogus slice assignment in recursive CTFE call
+    * spurious deprecation warnings on function calls within with(X) 
+      blocks while X has a deprecated alias this target
+    * OpDispatch does not work for structs with constructor and 
+      destructor
+    * error in static struct initialization causes wrong position for 
+      subsequent members, producing extra errors
+    * alias this returns 'null' for ref types when put into array 
+      initializer
+    * Rebindable does not work when class has alias this to inout 
+      property
+    * A case of compiler crash when using auto ref
+    * Spurious "non-constant expression" error with immutable 
+      constructors
+    * Compiler segfault on static array in a struct at CTFE
+    * [REG2.097] Error: mismatched function return type inference of 
+      void and noreturn
+    * Compiler crash when attempting to assign to function
+    * [REG 2.098-rc.2] -checkaction=context of a shared type with an 
+      opCast fails to compile
+    * CTFE fails to iterate over associative array previously indexed
+      with implicit conversion to enum base type
+    * [REG2.094] function with tuple parameter with default argument 
+      fails if there's a qualifier
+    * [REG2.098] Apparent CTFE regression wrt. alias this
+    * Invalid error message for void return from non-void functions
+    * importC: incomplete array type must have initializer
+    * Invalid duplicate case error when the switched value has errors
+    * Segfault for function literal in struct initializer with 
+      previous errors
+    * wrong deprecation about empty statement
+    * [REG 2.098] Error: function 'core.stdc.stdio.vfprintf' 
+      'pragma(printf)' functions must be 
+      'extern(C) int vfprintf([parameters...], const(char)*, va_list)'
+    * more arguments than fields allowed in struct constructor
+    * importC: Error: undefined reference to 'parameter' when no 
+      parameter names in forward declaration
+    * importC: Error: variable 'var' extern symbols cannot have 
+      initializers
+    * importC: Segmentation fault indexing global array at run-time
+    * ICE on overloaded constructors
+
+  * DMD Compiler bug fixes
+    * ReturnStatement[CallExp(DotVarExp)]: Corrupted runtime on missed 
+      manifest constant propagation
+    * Wrong cast of float constant to bool
+    * 'export' keyword on OSX/Linux globals causing segfaults
+    * [ICE] AssertError@dmd/optimize.d(691): Assertion failure
+    * Internal compiler assertion
+    * ICE (illegal instruction) with bad code
+    * cod1: Assertion failure for noreturn parameter
+    * ice for global / tls variable of type noreturn
+    * ice when dmd computes the alignment of an union containing a 
+      noreturn
+    * importC: Parser accepts arrays with incomplete element types
+    * ImportC: #pragma pack is not implemented
+    * Link error for virtual destructor of C++ class in DLL
+    * ImportC: error parsing compound literal with more than one value
+      at function scope.
+    * importC: Error: C non-array initializer not supported yet
+    * importC: Error: cannot use non-constant CTFE pointer in an 
+      initializer
+    * Wrong overload selected for @safe delegate
+    * noreturn functions are allowed to return normally
+    * importC: Error: unknown, when compiling source with non-constant 
+      initializer.
+    * importC: Error: static variable cannot be read at compile time
+    * importC: Error: unknown, when compiling source with typedef'd 
+      initializer
+    * importC: Error: can't subtract '__tag2[1]' from pointer
+    * importC: Error: cannot pass argument '0' of type 'int' to 
+      parameter 'const(char)*'
+    * importC: Error: cannot modify 'const' expression '(*s).field'
+    * importC: Error: 'switch' statement without a 'default'; use 
+      'final switch' or add 'default: assert(0);' or add 
+      'default: break;'
+    * importC: Error: cannot implicitly convert expression of type 
+      'extern (C) int(int a)' to 'const(extern (C) int function(int))'
+    * importC: [ICE] Error: struct no size because of forward reference
+    * importC: Error: cannot implicitly convert expression of type 
+      'const(char*)' to 'char*'
+    * importC: Error: array index 0 is out of bounds
+    * ImportC: parse gnu attributes after a function parameter
+    * importC: static variables/functions emit global symbols
+    * ImportC: casting result of postfix operator on a parenthesized 
+      expression to a typedef’d type is parsed incorrectly
+    * ImportC: Lots of errors when compiling tomlc99
+    * ImportC: address of member of struct can’t be taken at compile 
+      time.
+    * [REG 2.093][ICE] Bus error at dmd/lexer.d:398
+    * Explicit cast between classes incorrectly goes through 
+      'alias this' inside CTFE
+    * importC: D name mangling applied to forward declaration of 
+      function inside function
+    * ImportC: const pointer (not pointer to const) is treated as 
+      transitive const
+    * importC: function 'func' conflicts with function 'func' when 
+      using static in forward declaration
+    * importC: float literal should support leading zero
+    * ImportC: extra semicolon not allowed outside of functions
+    * DMD compiler errors on Illumos/Solaris
+    * ImportC: cannot implicitly convert expression S(0) of type S to 
+      int in an S array
+    * ImportC: decay of function to typedef'd const function pointer 
+      causes ICE.
+    * importC: Error: undefined reference to '__builtin_va_start' and
+      '__builtin_va_end'
+    * importC: Debug information for C sources have DW_AT_language set 
+      to D.
+    * importC: Segmentation fault initializing va_list with 
+      __builtin_va_start
+    * importC: Error: cannot convert string literal to 'void*'
+
+  * Phobos regression fixes
+    * [REG2.069] TaskPool.reduce fails to compile "cannot get frame 
+      pointer to D main"
+
+  * Phobos bug fixes
+    * OpenBSD: Add OpenBSD to std/system.d OS list
+    * Array!T.init.data crashes
+
+  * Phobos enhancements
+    * data should work with const/immutable Array's
+    * Nullable is not copyable when templated type has elaborate copy 
+      ctor
+    * std.traits.fqnType is missing support for typeof(null)
+
+  * Druntime regression fixes
+    * [REG2.091] Wrong file read during exception stringification 
+      leads to SIGBUS
+    * std.meta.allSatisfy in mutual recursion classes cannot be 
+      compiled
+    * core.demangle does not support noreturn
+
+  * Druntime bug fixes
+    * Unify polyImpl implementations
+    * Remove useless conditional assignment of DISABLED_TESTS in 
+      posix.mak
+
+  * Druntime enhancements
+    * Explicitly cast backtrace results to int
+
+- Update to version 2.098.0
+  * Compiler changes
+  * Add Alias Assignment
+  * Accessing C Declarations From D Via ImportC Compiler
+  * Using the syntax (args) => {} now triggers a deprecation message
+  * Improvements for the C++ header generation
+  * -preview=dtorfields is now enabled by default
+  * Add .min, .max, etc. properties for vector types
+  * Using a mutable variable as a switch case now triggers an error
+  * Out of bounds array access now gives a better error message
+  * Class allocators have been removed from the language
+  * Initialization of immutable global data from static this now 
+    triggers an error
+  * Add -target=<triple> for operating system, c, and c++ runtime 
+    cross compilation
+  * Default initialization of union field that isn't the first member 
+    now triggers an error
+
+  * Runtime changes
+    * TypeInfo names for aggregates are fully qualified and hence 
+      unique now
+    * A concurrent GC for Posix systems
+    * Improve POSIX imports
+
+  * Library changes
+    * New function isValidCharacter in std.utf
+
+  * Dub changes
+    * Added support for environment variables to use compilation and 
+      run (or test) option to the dub settings file and 
+      dub.json/dub.sdl.
+
+
+-------------------------------------------------------------------
 Tue Jun  8 14:17:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.097.0

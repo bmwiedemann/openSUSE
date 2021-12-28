@@ -1,7 +1,7 @@
 #
 # spec file for package cglib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %bcond_with tests
-%global tarball_name RELEASE_3_2_4
+%global tarball_name RELEASE_3_3_0
 Name:           cglib
-Version:        3.2.4
+Version:        3.3.0
 Release:        0
 Summary:        Code Generation Library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://cglib.sourceforge.net/
-Source0:        https://github.com/cglib/cglib/archive/%{tarball_name}.tar.gz
+URL:            https://github.com/cglib/cglib
+Source0:        https://github.com/cglib/cglib/archive/refs/tags/%{tarball_name}.tar.gz
 Source1:        %{name}-%{version}-build.tar.xz
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 22 15:02:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 19.0.1 
+  * #176: Fix issues with version number reporting. Restored
+    version version number reporting in bot and client.
+  * ``irc.client`` no longer exposes a ``VERSION`` or
+    ``VERSION_STRING``. To get the version, call
+    ``importlib.metadata.version('irc')`` directly.
+
+-------------------------------------------------------------------
 Sun Mar 15 09:48:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 18.0.0:

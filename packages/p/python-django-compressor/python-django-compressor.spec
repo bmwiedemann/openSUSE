@@ -20,7 +20,7 @@
 %define mod_name django_compressor
 %define skip_python2 1
 Name:           python-django-compressor
-Version:        2.4.1
+Version:        3.1
 Release:        0
 Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
 License:        Apache-2.0 AND BSD-3-Clause AND MIT
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module calmjs}
 BuildRequires:  %{python_module csscompressor}
 BuildRequires:  %{python_module django-appconf >= 1.0}
-BuildRequires:  %{python_module django-sekizai >= 0.9.0}
+BuildRequires:  %{python_module django-sekizai >= 2.0.0}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
@@ -53,7 +53,7 @@ Requires:       python-rjsmin >= 1.1.0
 Requires:       python-slimit
 Recommends:     python-Brotli >= 1.0.6
 Recommends:     python-calmjs
-Suggests:       python-django-sekizai >= 0.9.0
+Suggests:       python-django-sekizai >= 2.0.0
 Provides:       python-django_compressor = %{version}
 Obsoletes:      python-django_compressor < %{version}
 BuildArch:      noarch
@@ -75,9 +75,7 @@ template tag.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/django-compressor/django-compressor/issues/998
-#  Upstream needs to fix the tests to work with new python stack
-#%%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=compressor.test_settings compressor --pythonpath=`pwd` -v2
+%python_expand $python -m django test --settings=compressor.test_settings compressor --pythonpath=`pwd` -v2
 
 %files %{python_files}
 %license LICENSE

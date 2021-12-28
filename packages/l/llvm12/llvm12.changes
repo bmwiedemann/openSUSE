@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 18 15:05:40 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- BuildRequires: python-rpm-macros to fix Leap 15.3 build.
+
+-------------------------------------------------------------------
 Thu Oct 28 09:30:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable tests that seem to hang on armv6

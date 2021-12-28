@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Dec 28 08:59:59 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.10.1:
+  * Fix mistake in constants used to select WKB flavor in C API (GH489, Paul Ramsey)
+  * Fix crash when reducing precision on a LinearRing (#1135, Paul Ramsey)
+  * Fix GeoJSON crash on invalid input (GH498, Even Rouault)
+  * Use std::sqrt exclusively for Solaris build (Paul Ramsey)
+  * Fix mistaken version numbers in some parts of 3.10.0 (Paul Ramsey)
+- Changes for version 3.10.0:
+  * Preserve ordering of lines in overlay results (Martin Davis)
+  * Check for invalid geometry before fixing polygonal result in Densifier
+    and DPSimplifier (Martin Davis)
+  * Fix overlay handling of flat interior lines (JTS-685, Martin Davis)
+  * Fix IsValidOp to correctly report invalid nested MultiPolygons (#1112, Martin Davis)
+  * Fix BufferOp to avoid artifacts in certain polygon buffers (#1101, Martin Davis)
+  * Fix IsValidOp to correctly report certain kinds of invalid LinearRings (Martin Davis)
+  * Improve STRtree performance through TemplateSTRtree implementation (Daniel Baston)
+  * Fix DiscreteFrechetDistance to use initial points of input lines (#1128, Martin Davis)
+  * Autoconf build system is dropped in favour of CMake
+    See README.md and INSTALL.md for examples of usage
+  * Libtool is no longer used for in favour of CMake
+    Therefor libgeos.la is no longer built/installed
+  * #1094, #1090: Drop inlines.cpp to address duplicate symbols on many platforms
+    (Regina Obe)
+  * GH475: Do not return NaN from GEOSProjectNormalized_r (Paul Ramsey)
+  * GH442: BufferOp now returns unique_ptr<Geometry> result (Paul Ramsey)
+- Drop geos-config.1
+- Update project and download URL
+
+-------------------------------------------------------------------
 Tue Nov 16 07:45:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable inline to fix build on armv6/7

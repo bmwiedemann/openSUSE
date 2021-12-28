@@ -1,5 +1,5 @@
 #
-# spec file for package python-incremental-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -35,8 +35,8 @@ Source:         https://files.pythonhosted.org/packages/source/i/incremental/inc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       %{python_module Twisted >= 16.4.0}
-Suggests:       %{python_module click >= 6.0}
+Suggests:       python-Twisted >= 16.4.0
+Suggests:       python-click >= 6.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Twisted >= 16.4.0}

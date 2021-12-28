@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 27 16:50:06 UTC 2021 - David Anes <david.anes@suse.com>
+
+- update to 6.5.26:
+  * When using wolfSSL 5.0.0, work around a bug that appears to hit wolfSSL when
+  receiving handshake records while still in SSL_peek(). Workaround is to read
+  1 byte and cache it, then call SSL_peek() again. This affects only some servers.
+  * New serbian translation.
+
+-------------------------------------------------------------------
 Sat Dec 11 23:23:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.5.25:

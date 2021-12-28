@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 23 09:30:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use %{python_module …} for suggests, as this would suggest
+  all python flavors. Rather rely on the python singlespec macros
+  to rewrite as needed.
+
+-------------------------------------------------------------------
 Sun May  9 16:52:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.3.0:

@@ -1,6 +1,7 @@
 #
-# spec file
+# spec file for package python-pytest-mockito
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Fabrice Bauzac-Stehly
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,6 +14,8 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
@@ -27,15 +30,15 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kaste/pytest-mockito
 Source:         https://github.com/kaste/pytest-mockito/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module mockito}
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       python
-Requires:       %{python_module pytest}
-Requires:       %{python_module mockito}
+Requires:       python-mockito
+Requires:       python-pytest
 BuildArch:      noarch
 %python_subpackages
 

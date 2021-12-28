@@ -17,10 +17,10 @@
 
 
 %define bootstrap_version 2.078.0
-%define sover	0_97
+%define sover	0_98
 %define auto_bootstrap 1
 Name:           dmd
-Version:        2.097.0
+Version:        2.098.1
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0

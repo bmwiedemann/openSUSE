@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 28 08:23:03 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Update to 2.0.1:
+  * Modeler 2.0.1 is binary and source compatible with Modeler 2.0
+  * Bugs fixed:
+    - ant jar in trunk fails
+    - MbeansDescriptorsDigesterSource.java is never build if just 
+    setting commons-digester.jar property in build.properties
+    - ant.properties is missing from the Modeler jar
+    - mbeans-descriptors.dtd is missing from the Modeler jar and
+    binary distro
+- Clean spec file and rpm-lint warnings:
+  * License is marked as a license file
+  * Docs endlines are converted to UNIX.
+
+-------------------------------------------------------------------
 Mon Sep 18 11:43:04 UTC 2017 - fstrba@suse.com
 
 - Removed patch:

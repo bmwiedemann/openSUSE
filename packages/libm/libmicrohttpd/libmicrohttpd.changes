@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Dec 27 09:52:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 0.9.75:
+  * fixes for where "monotonic" clock may jump back
+
+-------------------------------------------------------------------
+Mon Dec 20 19:41:33 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 0.9.74:
+  * new experimental implementation of WebSockets disabled by default
+  * improved compliance with the RFC HTTP specifications
+  * new implementation of reply header forming
+  * new implementation of request chunked encoding parsing
+  * new automatic error replies
+  * Keep-alive header is omitted by default for HTTP/1.1 connections.
+    Use of header can be enforced by response flag.
+  * Chunked encoding is used for HTTP/1.1 non-keep-alive connections
+    for responses with unknown size. Previously MHD used "indication
+    of the end of the response by closing connection" in such cases,
+    however it is not correct for HTTP/1.1 connections as per HTTP
+    RFC.
+  * As required by HTTP RFC, use HTTP/1.1 version instead of HTTP/1.0
+    in reply headers when client is HTTP/1.0 . HTTP/1.0 version can
+    be enforced by response flag.
+  * User response headers are used in replies in the same order as
+    was added by application.
+  * Allowed tab characters in response header values.
+  * All custom "Connection:" response headers are automatically
+    combined into single "Connection:" header.
+  * "keep-alive" token silently dropped from custom "Connection:"
+    response header. "Keep-alive" cannot be enforced and used
+    automatically if possible.
+  * Allow tab character in custom response header value.
+  * Disallow space character in custom response header value.
+  * Do not allow responses with 1xx codes for HTTP/1.0 requests.
+  * Detected and reported incorrect "Upgrade" responses.
+
+-------------------------------------------------------------------
 Tue May 18 09:54:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmicrohttpd 0.9.73:

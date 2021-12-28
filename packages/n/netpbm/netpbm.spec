@@ -41,6 +41,8 @@ Patch2:         %{name}-security-code.patch
 Patch3:         %{name}-security-scripts.patch
 Patch4:         %{name}-gcc-warnings.patch
 Patch5:         makeman-py3.patch
+# PATCH-FIX-UPSTREAM fix bad use of plain char
+Patch6:         signed-char.patch
 # PATCH-FIX-UPSTREAM fix dependency on byte order
 Patch7:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 21 08:46:21 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 8.1:
+ * tests/select11.sh, tests/select12.sh, tests/select13.sh,
+ tests/select19.sh, tests/select21.sh: Added some text and
+ comments, to test that they are correctly skipped.
+ * tests/select31.sh, tests/select32.sh, Makefile.am: Added two
+ tests for the sibling selector (~).
+ * selmatch.c: Sibling selector failed to skip non-element nodes.
+ * dict.c: Deleting an entry with dict_destroy() made entries with
+ the same hash value that were stored in subsequent slots
+ inaccessible. The dict_destroy() function isn't used in any of the
+ HTML-XML-utils, but other programs may borrow this module.
+
+-------------------------------------------------------------------
 Tue Nov  2 20:39:02 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 8.0:

@@ -54,7 +54,6 @@ BuildRequires:  %{python_module pyparsing >= 2.2.1}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-appdirs >= 1.4.3
 Requires:       python-base >= 3.6
 Requires:       python-ordered-set >= 3.1.1

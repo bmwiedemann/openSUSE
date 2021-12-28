@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 15 14:37:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to release 9.16.24
+  This upgrade fixes the following bugs:
+  * mdig now honors the operating system's preferred ephemeral port
+    range.
+  * Fix a "named" crash related to removing and restoring a
+    `catalog-zone` entry in the configuration file and running
+    `rndc reconfig`.
+  * dns_sdlz_putrr failed to process some valid resource records.
+  * dnssec-dsfromkey failed to omit revoked keys.
+  Functional change:
+  * Change the message when accepting TCP connection has failed to
+    say "Accepting TCP connection failed" and change the log level
+    for ISC_R_NOTCONNECTED, ISC_R_QUOTA and ISC_R_SOFTQUOTA results
+    codes from ERROR to INFO.
+    [bind-9.16.24.tar.xz]
+
+-------------------------------------------------------------------
 Fri Dec  3 07:52:38 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to 9.16.23

@@ -17,7 +17,7 @@
 
 
 Name:           ruby
-Version:        2.7
+Version:        3.0
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         README

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 26 09:03:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite
+- Update to v3.1
+  * Fix error with verbose offline compression when
+    COMPRESS_OFFLINE_CONTEXT is a generator
+- from v3.0
+  * Officially support for Python 3.9 and 3.10 as well as
+    Django 3.1, 3.2 and 4.0
+  * Drop support for Django 1.11, 2.1 and 3.0
+  * Drop support for Python 2.x and 3.4
+  * Fix compatibility with Jinja 3.x
+  * Require django-sekizai 2.0 for django-sekizai extension
+  * Make template compression in compress command threaded to
+    improve performance
+  * Correctly handle relative paths in ``extends`` tags
+  * Enable ``rCSSMinFilter`` by default
+  * Fix various deprecation warnings
+  * Add ability to pass a logger to various classes & methods
+  * Removed deprecated ``COMPRESS_JS_FILTERS`` and
+    ``COMPRESS_CSS_FILTERS`` settings
+  * Fix offline compression race condition, which could result in incomplete manifest
+
+-------------------------------------------------------------------
 Tue May 25 11:07:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.4.1

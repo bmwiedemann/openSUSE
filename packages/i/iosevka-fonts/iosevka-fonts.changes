@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 27 08:00:20 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v11.2.3
+  * Changes of version 11.2.3
+    = Make webfont formats customizable (#1266).
+    = Fix localization of Macedonian GJE (#1267).
+
+-------------------------------------------------------------------
 Sun Dec 19 20:58:01 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.2.2

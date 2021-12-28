@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 27 15:58:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- add pytest-mpi-pr37-sybil3.patch -- gh#aragilar/pytest-mpi#37
+
+-------------------------------------------------------------------
 Sun Sep 26 15:50:10 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix build for SLES/Leaps

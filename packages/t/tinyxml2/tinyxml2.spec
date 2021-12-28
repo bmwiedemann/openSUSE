@@ -16,10 +16,10 @@
 #
 
 
-%define so_version 8
+%define so_version 9
 %define lib_package lib%{name}-%{so_version}
 Name:           tinyxml2
-Version:        8.1.0
+Version:        9.0.0
 Release:        0
 Summary:        Basic XML parser in C++
 License:        Zlib

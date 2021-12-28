@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 24 13:05:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patches to support building bindings packages for
+  Python 3.10
+  * gpgme-D545-python310.patch -- https://dev.gnupg.org/D545
+  * gpgme-D546-python310.patch -- https://dev.gnupg.org/D546
+
+-------------------------------------------------------------------
 Thu Aug  5 10:29:27 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with glibc 2.34: [bsc#1189089]

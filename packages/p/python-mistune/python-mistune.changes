@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 26 17:24:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Cleanup specfile
+- Unskip python36: required by httpbin
+
+-------------------------------------------------------------------
+Thu Dec 16 19:49:28 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building on openSUSE 15.3
+
+-------------------------------------------------------------------
+Mon Dec  6 13:13:49 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.0.0:
+  - Complete rewrite of the package with quite modern API.
+
+-------------------------------------------------------------------
+Wed Nov 24 10:16:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Revert to 0.* version, because 2.* breaks python-m2r in the
+  current moment.
+
+-------------------------------------------------------------------
 Fri Oct 23 14:42:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Use %pycache_only %python_sitelib instead of %python3_sitelib
