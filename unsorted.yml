@@ -17797,6 +17797,7 @@ unsorted:
   - octave-forge-optics 
   - octave-forge-optim 
   - octave-forge-parallel 
+  - octave-forge-quaternion 
   - octave-forge-queueing 
   - octave-forge-secs1d 
   - octave-forge-secs3d 
@@ -22831,7 +22832,6 @@ unsorted:
   - python36-hyperframe 
   - python36-hyperlink 
   - python36-hypothesis 
-  - python36-hypothesis-auto 
   - python36-hypothesis-fspaths 
   - python36-hypothesmith 
   - python36-i3ipc 
@@ -25656,7 +25656,6 @@ unsorted:
   - python38-hvplot 
   - python38-hyper 
   - python38-hypothesis 
-  - python38-hypothesis-auto 
   - python38-hypothesis-fspaths 
   - python38-hypothesmith 
   - python38-i3ipc 
@@ -28677,7 +28676,6 @@ unsorted:
   - python39-hyperframe 
   - python39-hyperlink 
   - python39-hypothesis 
-  - python39-hypothesis-auto 
   - python39-hypothesis-fspaths 
   - python39-hypothesmith 
   - python39-i3ipc 
