@@ -18,7 +18,7 @@
 
 
 Name:           pdftk
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        A handy tool for manipulating PDF
 License:        GPL-2.0-or-later
