@@ -16,18 +16,18 @@
 #
 
 
-%global unversion 2_4_1
+%global unversion 2_4_2
 Name:           expat
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://libexpat.github.io
 Source0:        https://github.com/libexpat/libexpat/releases/download/R_%{unversion}/expat-%{version}.tar.xz
-Source1:        %{name}faq.html
+Source1:        https://github.com/libexpat/libexpat/releases/download/R_%{unversion}/expat-%{version}.tar.xz.asc
 Source2:        baselibs.conf
-Source3:        https://github.com/libexpat/libexpat/releases/download/R_%{unversion}/expat-%{version}.tar.xz.asc
+Source3:        %{name}faq.html
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -63,7 +63,7 @@ in libexpat.
 %prep
 %setup -q
 
-cp %{SOURCE1} .
+cp %{SOURCE3} .
 rm -f examples/*.dsp
 
 %build
@@ -93,19 +93,17 @@ chmod 0644 examples/elements.c
 %postun -n libexpat1 -p /sbin/ldconfig
 
 %files
-%{_docdir}/%{name}
 %license COPYING
-%doc README.md expatfaq.html
+%doc AUTHORS README.md expatfaq.html
 %doc doc/reference.html doc/style.css doc/valid-xhtml10.png
 %doc examples/elements.c examples/outline.c examples/Makefile.am examples/Makefile.in
-%doc AUTHORS Changes
+%doc changelog
 %{_bindir}/xmlwf
 
 %files -n libexpat1
 %{_libdir}/libexpat.so.*
 
 %files -n libexpat-devel
-
 %{_includedir}/*
 %{_libdir}/libexpat.so
 %{_libdir}/pkgconfig/expat.pc

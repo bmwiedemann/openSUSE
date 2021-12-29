@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 27 16:02:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * Link againgst libm for function "isnan"
+  * Include expat_config.h as early as possible
+  * Autotools: Include files with release archives:
+    - buildconf.sh
+    - fuzz/*.c
+  * Autotools: Sync CMake templates
+  * docs: Document that function XML_GetBuffer may return NULL
+    when asking for a buffer of 0 (zero) bytes size
+  * docs: Fix return value docs for both
+    XML_SetBillionLaughsAttackProtection* functions
+  * Version info bumped from 9:1:8 to 9:2:8
+
+-------------------------------------------------------------------
 Mon May 24 08:17:12 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.4.1:
