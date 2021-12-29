@@ -6,8 +6,8 @@
         <param name="revision">2.5.6</param>
         <param name="version">2.5.6</param>
     </service>
-    <service name="tar" mode="buildtime" />
-    <service name="recompress" mode="buildtime">
+    <service name="tar" mode="disabled" />
+    <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>
         <param name="compression">gz</param>
     </service>

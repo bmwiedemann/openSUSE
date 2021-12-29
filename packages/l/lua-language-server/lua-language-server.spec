@@ -26,18 +26,20 @@ Summary:        Lua Language Server coded by Lua
 License:        MIT
 URL:            https://github.com/sumneko/lua-language-server
 # Checkout from git is required because of gh#sumneko/lua-language-server#878
-Source0:        %{name}-%{version}.tar.gz
+# Source0:        %%{name}-%%{version}.tar.gz
+Source0:        https://github.com/sumneko/%{pkg_name}/releases/download/%{version}/%{pkg_name}-%{version}-submodules.zip
 Source1:        lua-lsp-launcher.sh
 Source2:        README.suse-maint.md
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
+BuildRequires:  unzip
 
 %description
 This package provides a Language Server Protocol (LSP) implementation for Lua.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -c
 
 %build
 export CFLAGS="%{optflags}"

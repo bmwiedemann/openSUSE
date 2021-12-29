@@ -34,4 +34,14 @@
 </comment>
     <requestid>942840</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ec6b934d4ac0361d1a626d14afb3f4b7</srcmd5>
+    <version>2.5.6</version>
+    <time>1640808655</time>
+    <user>dimstar_suse</user>
+    <comment>- With help of upstream, I finally found the released upstream
+  zip archive.
+</comment>
+    <requestid>942982</requestid>
+  </revision>
 </revisionlist>
