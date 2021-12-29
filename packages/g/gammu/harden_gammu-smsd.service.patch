@@ -1,0 +1,21 @@
+Index: gammu-1.42.0/contrib/init/gammu-smsd.service
+===================================================================
+--- gammu-1.42.0.orig/contrib/init/gammu-smsd.service
++++ gammu-1.42.0/contrib/init/gammu-smsd.service
+@@ -4,6 +4,16 @@ Documentation=man:gammu-smsd(1)
+ After=mysql.service postgresql.service network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ EnvironmentFile=-/etc/sysconfig/gammu-smsd
+ # Run daemon as root user
+ ExecStart=${CMAKE_INSTALL_FULL_BINDIR}/gammu-smsd --pid=/var/run/gammu-smsd.pid --daemon

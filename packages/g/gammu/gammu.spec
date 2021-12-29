@@ -31,6 +31,7 @@ Patch1:         gammu-remove-gplv3-files.patch
 Patch2:         0001-Enable-fPIE-pie.patch
 Patch3:         0001-Update-Python-scripts-to-Python-3.patch
 Patch4:         0001-Docs-Adjust-attributes-order-to-avoid-bugs-in-breath.patch
+Patch5:	harden_gammu-smsd.service.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gettext
@@ -189,6 +190,7 @@ This package contains the Gammu SMS daemon shared library.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 # GPL-3.0 licensed files, bnc#775397
 rm -rf contrib/sms-gammu2android

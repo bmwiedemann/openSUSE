@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:32:06 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_gammu-smsd.service.patch
+
+-------------------------------------------------------------------
 Tue Apr  6 09:39:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Add patches to fix build failures in Tumbleweed:
