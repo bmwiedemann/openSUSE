@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 28 17:37:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2
+  * Suppressed PytestAssertRewriteWarning. [#4]
+  * Do not show astropy-helpers version in packages that don't use
+    it. [#16]
+  * Removed compatibility code for astropy < 4.0, and for
+    astropy-helpers. [#32]
+  * Removed astropy dependency. [#19, #34]
+  * Bumped minimum supported Python version to 3.7 and various
+    infrastructure updates. [#23, #39]
+- Drop patches
+  * pytest-astropy-header-pr16-no-helper-version.patch
+  * pytest-astropy-header-pr29-nohelpers.patch
+
+-------------------------------------------------------------------
 Wed Dec  9 09:49:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix test failures

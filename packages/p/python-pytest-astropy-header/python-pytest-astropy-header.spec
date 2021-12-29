@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest-astropy-header
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,36 @@
 #
 
 
-%define modname pytest-astropy-header
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
-# current astropy in TW requires python >= 3.7
-%define skip_python36 1
 %bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define modname pytest-astropy-header
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-%{modname}%{psuffix}
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        Pytest plugin to add diagnostic information to the header of the test output
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/pytest-astropy-header
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
-Patch0:         https://github.com/astropy/pytest-astropy-header/pull/16.patch#/pytest-astropy-header-pr16-no-helper-version.patch
-Patch1:         https://github.com/astropy/pytest-astropy-header/pull/29.patch#/pytest-astropy-header-pr29-nohelpers.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.8
+Requires:       python-pytest >= 4.6
 %if %{with test}
-# Patch0 and Patch1: helpers got removed in astropy 4
 BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest >= 2.8}
+BuildRequires:  %{python_module pytest >= 4.6}
 %endif
 %python_subpackages
 
@@ -81,7 +79,7 @@ export PYTHONPATH=$(pwd)
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %{python_sitelib}/pytest_astropy_header
-%{python_sitelib}/pytest_astropy_header-%{version}-py*.egg-info
+%{python_sitelib}/pytest_astropy_header-%{version}*-info
 %endif
 
 %changelog
