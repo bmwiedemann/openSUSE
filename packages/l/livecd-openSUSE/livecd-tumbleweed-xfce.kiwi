@@ -477,6 +477,8 @@
     <ignore name="libreoffice"/>
     <package name="aaa_base" replaces="gimp"/>
     <ignore name="gimp"/>
+    <package name="aaa_base" replaces="pidgin"/>
+    <ignore name="pidgin"/>
     <package name="aaa_base" replaces="simple-scan"/>
     <ignore name="simple-scan"/>
     <package name="xf86-video-vmware" arch="i686,x86_64"/>

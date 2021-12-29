@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Wed Dec 29 10:41:40 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
-- list-xfce: Drop gimp from the XFCE Live image: no space left.
+- list-xfce: Drop gimp and pidgin from the XFCE Live image: no
+  space left.
 
 -------------------------------------------------------------------
 Thu Dec  2 14:45:48 UTC 2021 - Fabian Vogt <fvogt@suse.com>

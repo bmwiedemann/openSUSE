@@ -30,6 +30,7 @@ buildignore engrampa-lang
 buildignore libreoffice
 
 buildignore gimp
+buildignore pidgin
 
 # Pulls in sane-backends
 buildignore simple-scan
