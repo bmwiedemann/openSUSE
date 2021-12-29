@@ -142,4 +142,14 @@
   * Slovenian translation (@Bor Plestenjak).</comment>
     <requestid>777600</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>837dee8a1ec78f46efabf17c5d27aaa4</srcmd5>
+    <version>4.0.1</version>
+    <time>1640808650</time>
+    <user>dimstar_suse</user>
+    <comment>- Activate test suite using only-sqlite-test-db.patch
+- Remove build dependencies mysqlclient &amp; psycopg2
+- Update to v4.0.1</comment>
+    <requestid>942944</requestid>
+  </revision>
 </revisionlist>

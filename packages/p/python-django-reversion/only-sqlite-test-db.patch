@@ -1,0 +1,31 @@
+commit 89982858fd1d7b070acba079dac8d35872541d4e
+Author: John Vandenberg <jayvdb@gmail.com>
+Date:   Tue Dec 28 09:52:48 2021 +0800
+
+    Remove mysql and postgres databases
+
+diff --git a/tests/test_project/settings.py b/tests/test_project/settings.py
+index dc346d9..f07e648 100644
+--- a/tests/test_project/settings.py
++++ b/tests/test_project/settings.py
+@@ -81,20 +81,6 @@ DATABASES = {
+         "ENGINE": "django.db.backends.sqlite3",
+         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+     },
+-    "postgres": {
+-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+-        "HOST": os.environ.get("DJANGO_DATABASE_HOST_POSTGRES", ""),
+-        "NAME": os.environ.get("DJANGO_DATABASE_NAME_POSTGRES", "test_project"),
+-        "USER": os.environ.get("DJANGO_DATABASE_USER_POSTGRES", getpass.getuser()),
+-        "PASSWORD": os.environ.get("DJANGO_DATABASE_PASSWORD_POSTGRES", ""),
+-    },
+-    "mysql": {
+-        "ENGINE": "django.db.backends.mysql",
+-        "HOST": os.environ.get("DJANGO_DATABASE_HOST_MYSQL", ""),
+-        "NAME": os.environ.get("DJANGO_DATABASE_NAME_MYSQL", "test_project"),
+-        "USER": os.environ.get("DJANGO_DATABASE_USER_MYSQL", getpass.getuser()),
+-        "PASSWORD": os.environ.get("DJANGO_DATABASE_PASSWORD_MYSQL", ""),
+-    },
+ }
+ 
+ 
