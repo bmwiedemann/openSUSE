@@ -18,6 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-coloredlogs
 Version:        15.0.1
 Release:        0
@@ -30,7 +32,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/coloredlogs/col
 # With using alternatives, we don't have versionless command in time of %%check
 Patch0:         test_cli_conversion_test.patch
 BuildRequires:  %{python_module capturer >= 2.4}
-BuildRequires:  %{python_module humanfriendly >= 7.1}
+BuildRequires:  %{python_module humanfriendly >= 9.1}
 BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module pytest-cov >= 2.3.1}
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module verboselogs >= 1.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-capturer >= 2.4
-Requires:       python-humanfriendly >= 7.1
+Requires:       python-humanfriendly >= 9.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-verboselogs >= 1.7
