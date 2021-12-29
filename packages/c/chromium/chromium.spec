@@ -62,6 +62,7 @@ Source104:      chromium-symbolic.svg
 # https://source.chromium.org/chromium/chromium/src/+/refs/tags/%%{version}:chrome/installer/linux/common/installer.include
 Source105:      INSTALL.sh
 #
+Source106:      chrome-wrapper
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -319,6 +320,10 @@ mkdir $HOME/bin
 export PYTHON=python3
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
+
+# use our wrapper
+rm chrome/installer/linux/common/wrapper
+cp %{SOURCE106} chrome/installer/linux/common/wrapper
 
 # Remove bundled libs
 keeplibs=(

@@ -3861,4 +3861,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>fseal</comment>
     <requestid>942656</requestid>
   </revision>
+  <revision rev="314" vrev="4">
+    <srcmd5>d87bdb7e0ed74bce6276acd46a73bd51</srcmd5>
+    <version>96.0.4664.110</version>
+    <time>1640808666</time>
+    <user>dimstar_suse</user>
+    <comment>wayland</comment>
+    <requestid>943058</requestid>
+  </revision>
 </revisionlist>
