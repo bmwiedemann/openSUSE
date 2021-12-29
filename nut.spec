@@ -1,7 +1,7 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 %define MODELPATH	%{_libexecdir}/ups/driver
 %define STATEPATH	%{_localstatedir}/lib/ups
 %define CONFPATH	%{_sysconfdir}/ups
+%define PIDPATH 	%{_rundir}
 %define NUT_USER	upsd
 %define NUT_GROUP	daemon
 %define LBRACE		(
@@ -59,9 +60,9 @@ Patch11:        openssl-1_1.patch
 Patch12:        nut-upssched.patch
 Patch13:        reproducible.patch
 Patch14:        nutscanner-ftbfs.patch
-Patch15:	harden_nut-driver.service.patch
-Patch16:	harden_nut-monitor.service.patch
-Patch17:	harden_nut-server.service.patch
+Patch15:        harden_nut-driver.service.patch
+Patch16:        harden_nut-monitor.service.patch
+Patch17:        harden_nut-server.service.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  avahi-devel
@@ -209,6 +210,7 @@ export CXXFLAGS="%{optflags} -std=gnu++14"
 	--with-cgipath=%{CGIPATH} \
 	--with-statepath=%{STATEPATH} \
 	--with-drvpath=%{MODELPATH} \
+        --with-pidpath=%{PIDPATH} \
 	--with-user=%{NUT_USER} \
 	--with-group=%{NUT_GROUP} \
 	--with-udev-dir=%{_udevrulesdir}/.. \
