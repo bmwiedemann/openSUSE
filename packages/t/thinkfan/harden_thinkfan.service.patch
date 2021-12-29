@@ -1,0 +1,21 @@
+Index: thinkfan-1.3.0/rcscripts/systemd/thinkfan.service.cmake
+===================================================================
+--- thinkfan-1.3.0.orig/rcscripts/systemd/thinkfan.service.cmake
++++ thinkfan-1.3.0/rcscripts/systemd/thinkfan.service.cmake
+@@ -4,6 +4,16 @@ After=sysinit.target
+ After=systemd-modules-load.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++RestrictRealtime=true
++# end of automatic additions 
+ EnvironmentFile=-/etc/sysconfig/thinkfan
+ Type=forking
+ ExecStart=@CMAKE_INSTALL_PREFIX@/sbin/thinkfan $THINKFAN_ARGS

@@ -29,11 +29,14 @@ URL:            https://github.com/vmatare/thinkfan/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        thinkfan-sysconfig
 Patch1:         thinkfan-systemd.patch
+Patch2:         harden_thinkfan-sleep.service.patch
+Patch3:         harden_thinkfan-wakeup.service.patch
+Patch4:         harden_thinkfan.service.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libatasmart-devel
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  yaml-cpp-devel
+BuildRequires:  pkgconfig(systemd)
 
 %description
 A simple fan control program. Read temperatures, check them against configured

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 24 15:12:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_thinkfan-sleep.service.patch
+  * harden_thinkfan-wakeup.service.patch
+  * harden_thinkfan.service.patch
+
+-------------------------------------------------------------------
 Wed Nov 17 18:54:36 UTC 2021 - Maciej Borzecki <maciek.borzecki@gmail.com>
 
 - Spec cleanup for submission to openSUSE:Factory
