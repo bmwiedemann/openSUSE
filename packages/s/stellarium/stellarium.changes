@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 25 11:06:11 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.21.3:
+  * Better handling of minor bodies with outdated orbital elements
+  * "Goto next day at same altitude" functionality for selected objects
+  * Mark a few special points on the planets
+  * Three refined Arab skycultures
+  * Updated Mul-Apin skyculture with new artwork
+  * Improved OnlineQueries and Satellites plugin
+  * Fixed a problem with LX200 telescopes
+  * Many fixes in core and plugins
+- Remove upstreamed patches
+  - stellarium-documentation.patch
+  - stellarium-remove-qt-5_12-code.patch
+  - stellarium-minimum-qt-5_9.patch
+
+-------------------------------------------------------------------
 Mon Sep 27 19:23:15 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.21.2:

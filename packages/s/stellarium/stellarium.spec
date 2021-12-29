@@ -19,7 +19,7 @@
 %global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
 
 Name:           stellarium
-Version:        0.21.2
+Version:        0.21.3
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -28,12 +28,9 @@ URL:            http://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-Patch0:         stellarium-remove-qt-5_12-code.patch
-Patch1:         stellarium-minimum-qt-5_9.patch
-Patch2:         stellarium-documentation.patch
-BuildRequires:  cmake >= 2.8.11
+BuildRequires:  cmake >= 2.8.12
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 4.8.1
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtpaths
 BuildRequires:  pkgconfig
@@ -64,10 +61,7 @@ time, similar to what can be observed with human eyes through
 binoculars or a small telescope.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup
 
 %build
 export QT_HASH_SEED=0
@@ -89,9 +83,7 @@ export QT_HASH_SEED=0
 
 %suse_update_desktop_file -c stellarium Stellarium "Planetarium in your computer" stellarium stellarium Science Astronomy
 mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
-%fdupes %{buildroot}%{_datadir}/%{name}
-# remove duplicated desktop file
-rm -f %{buildroot}%{_datadir}/applications/stellarium.desktop
+%fdupes %{buildroot}%{_datadir}
 # remove all zero size files
 find %{buildroot}%{_datadir}/%{name}/skycultures -type f -size 0 -delete
 
