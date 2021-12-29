@@ -1,8 +1,8 @@
 #
 # spec file for package reveng
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           reveng
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        An arbitrary-precision CRC calculator and algorithm finder
 License:        GPL-3.0-or-later
