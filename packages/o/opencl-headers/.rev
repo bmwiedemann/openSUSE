@@ -233,4 +233,13 @@
   * update headers for cl_khr_integer_dot_product (#170)</comment>
     <requestid>933216</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cca735f7c390c1c9e7c2544a705972d6</srcmd5>
+    <version>2.2+git.20211214</version>
+    <time>1640808664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git.20211214:
+  * Add definitions for cl_arm_protected_memory_allocation (#187)</comment>
+    <requestid>943045</requestid>
+  </revision>
 </revisionlist>
