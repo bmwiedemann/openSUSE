@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 27 20:34:26 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.0:
+  * Update the data to conform to Unicode 14
+  * Add per_code_point variants of utf8 and utf16 functions
+  * Do not always break after the last character
+
+-------------------------------------------------------------------
+Mon May 17 08:44:28 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3:
+  * conform to Unicode 13
+  * Change the handling of ellipses as per UAX# 14-45
+  * Fix the handling of leading spaces
+
+-------------------------------------------------------------------
+Mon Mar 18 14:11:13 UTC 2019 - lars@linux-schulserver.de - 4.1
+
+- Update to version 4.1:
+  * Update the code and data to conform to Unicode 11.0.0, especially 
+    adding support for extended pictographs in word and grapheme breaking
+  * ZWJ support has been much improved (it was broken)
+  * Make minor tweaks to the project files
+- run tests - added: 
+  + LineBreakTest.txt, 
+  + WordBreakTest.txt and 
+  + GraphemeBreakTest.txt
+  from http://www.unicode.org/Public/UNIDATA/auxiliary/ to run the 
+  tests offline
+- spec file cleanup:
+  + put documentation into devel package
+  + use %%license macro, if possible
+
+-------------------------------------------------------------------
 Wed Feb 14 12:22:53 UTC 2018 - aloisio@gmx.com
 
 - Update to version 4.0
