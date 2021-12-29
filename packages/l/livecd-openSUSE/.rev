@@ -1345,4 +1345,11 @@
 - Drop no longer maintained X video drivers: glint, mach64 and tga.</comment>
     <requestid>935223</requestid>
   </revision>
+  <revision rev="167" vrev="167">
+    <srcmd5>f77a5939aef9fb62e904e244f601bbba</srcmd5>
+    <version>unknown</version>
+    <time>1640774544</time>
+    <user>dimstar_suse</user>
+    <comment>- list-xfce: Drop gimp from the XFCE Live image: no space left.</comment>
+  </revision>
 </revisionlist>

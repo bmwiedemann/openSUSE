@@ -55,6 +55,7 @@
     <package name="live-langset-data"/>
     <package name="live-add-yast-repos"/>
     <!-- used by config.sh -->
+    <package name="fdupes"/>
     <package name="zstd"/>
     <archive name="livecd-udev.tar.xz"/>
     

@@ -29,6 +29,8 @@ buildignore engrampa-lang
 # Remove Libreoffice as it's too big
 buildignore libreoffice
 
+buildignore gimp
+
 # Pulls in sane-backends
 buildignore simple-scan
 
