@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 28 12:52:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop Fix_icons_installation.patch and package scaled icons
+
+-------------------------------------------------------------------
 Wed Oct 20 18:24:58 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix build by fixing the %files section for renamed/removed files

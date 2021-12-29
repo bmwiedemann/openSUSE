@@ -28,11 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://www.kdab.com/gammaray
 Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix_icons_installation.patch -- Don't try to install multiple copies in exotic subdirs
-Patch0:         Fix_icons_installation.patch
-# PATCH-FIX-UPSTREAM
 BuildRequires:  binutils-devel
-BuildRequires:  cmake >= 3.1
+BuildRequires:  cmake >= 3.4
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz-gnome
@@ -125,10 +122,11 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %files
 %license LICENSE.*
 %doc CHANGES README.txt
-%dir %{_datadir}/icons/hicolor/512x512/
-%dir %{_datadir}/icons/hicolor/512x512/apps/
 %{_bindir}/gammaray
 %{_datadir}/applications/GammaRay.desktop
+# scaled directories are not owned by hicolor
+%dir %{_datadir}/icons/hicolor/*@*/
+%dir %{_datadir}/icons/hicolor/*@*/apps/
 %{_datadir}/icons/hicolor/*/apps/GammaRay.png
 %{_docdir}/%{name}/
 %{_libdir}/gammaray/
