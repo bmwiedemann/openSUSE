@@ -119,4 +119,12 @@ Add remove-unittest2.patch fixing the code.</comment>
     <comment></comment>
     <requestid>831399</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>8a81928c042a1e29105d434d8796a9d5</srcmd5>
+    <version>6.10.0</version>
+    <time>1640808637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942856</requestid>
+  </revision>
 </revisionlist>

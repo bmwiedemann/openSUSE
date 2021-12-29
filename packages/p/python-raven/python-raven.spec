@@ -1,7 +1,7 @@
 #
 # spec file for package python-raven
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/r/raven/raven-%{v
 Patch0:         remove-unittest2.patch
 Patch1:         pytest4.patch
 Patch2:         fix-tests.patch
-BuildRequires:  %{python_module Django}
+# https://github.com/getsentry/raven-python/commit/20caf26ff33ac1efbace74ef99d6f0f911720568
+Patch3:         raven-fix-flask-test.patch
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module Flask-Login >= 0.2.0}
 BuildRequires:  %{python_module Logbook}
@@ -44,19 +45,24 @@ BuildRequires:  %{python_module celery >= 2.5}
 BuildRequires:  %{python_module exam >= 0.5.2}
 BuildRequires:  %{python_module kombu}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module pytest-timeout >= 0.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tornado >= 4.1}
+# async errors on tornado6
+BuildRequires:  %{python_module tornado < 6 if %python-base < 3.10}
 BuildRequires:  %{python_module vine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} < 1550
+# not compatible with Django 4 in TW
+BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pytest-django}
+%endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Flask >= 0.8
 Recommends:     python-blinker >= 1.1
 BuildArch:      noarch
@@ -73,8 +79,7 @@ support for any WSGI-compatible web application.
 %prep
 %setup -q -n raven-%{version}
 %autopatch -p1
-
-rm -f setup.cfg tox.ini pytest.ini
+sed -i 's/--cov=raven//' setup.cfg
 
 %build
 %python_build
@@ -86,8 +91,9 @@ rm -f setup.cfg tox.ini pytest.ini
 %python_expand rm -rf %{buildroot}/%{$python_sitelib}/raven/data/cacert.pem
 
 %check
-export DJANGO_SETTINGS_MODULE=tests.contrib.django.settings
-%pytest -k 'not (TornadoAsyncClientTestCase or TornadoTransportTests)'
+# no tornado5 in py310
+python310_flags="--ignore tests/contrib/tornado --ignore tests/transport/tornado"
+%pytest -k 'not (TornadoTransportTests and (test_send or test__sending))' ${$python_flags}
 
 %post
 %python_install_alternative raven
@@ -99,6 +105,7 @@ export DJANGO_SETTINGS_MODULE=tests.contrib.django.settings
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/raven
-%{python_sitelib}/*
+%{python_sitelib}/raven
+%{python_sitelib}/raven-%{version}*-info
 
 %changelog
