@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 24 08:50:55 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Added 'lsm' section to the security schema (jsc#SLE-22069)
+- 4.4.7
+
+-------------------------------------------------------------------
 Fri Nov 19 12:20:02 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Add 'efi' element to the rules schema (jsc#SLE-18819)

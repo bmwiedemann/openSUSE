@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.4.6
+Version:        4.4.7
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -81,8 +81,8 @@ BuildRequires:  yast2-s390
 %endif
 BuildRequires:  yast2-samba-client
 BuildRequires:  yast2-samba-server
-# sys_gid_max, sys_gid_min, sys_uid_max,... in security.rnc
-BuildRequires:  yast2-security >= 4.2.8
+# Added lsm section to security.rnc
+BuildRequires:  yast2-security >= 4.4.2
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-sound
 BuildRequires:  yast2-squid
