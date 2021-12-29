@@ -25,20 +25,20 @@ Summary:        A collection of helpers and mock objects for unit tests and doc 
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM testfixtures-pr167-sybil3.patch -- gh#simplistix/testfixtures#167
-Patch0:         testfixtures-pr167-sybil3.patch
-BuildRequires:  %{python_module Django}
+# PATCH-FIX-UPSTREAM testfixtures-sybil3-py310.patch -- gh#simplistix/testfixtures#167
+Patch0:         testfixtures-sybil3-py310.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sybil}
+BuildRequires:  %{python_module sybil >= 3}
 BuildRequires:  %{python_module zope.component}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Django if (%python-base without python36-base)}
+BuildRequires:  %{python_module pytest-django if (%python-base without python36-base)}
 Suggests:       python-Django
 Suggests:       python-Twisted
-Suggests:       python-sybil
+Suggests:       python-sybil >= 3
 Suggests:       python-zope.component
 BuildArch:      noarch
 %python_subpackages
@@ -70,7 +70,8 @@ chmod a-x docs/*.txt
 %check
 export DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
 export PYTHONPATH=$(pwd)
-%pytest testfixtures/tests
+python36_flags="--ignore testfixtures/tests/test_django"
+%pytest testfixtures/tests ${$python_flags}
 
 %files %{python_files}
 %license LICENSE.txt

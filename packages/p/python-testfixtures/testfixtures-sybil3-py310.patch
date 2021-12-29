@@ -1,0 +1,336 @@
+From c89af9e0dc372180728389e5459847511abbd60a Mon Sep 17 00:00:00 2001
+From: Chris Withers <chris@withers.org>
+Date: Sat, 21 Aug 2021 08:41:03 +0100
+Subject: [PATCH] Merge pull request #158 from sbraz/py310
+
+tests: fix with Python 3.10 (changed exception messages)
+---
+ testfixtures/compat.py             |  1 +
+ testfixtures/tests/test_popen.py   | 41 ++++++++++++++++++------------
+ testfixtures/tests/test_replace.py | 24 ++++++++++-------
+ 3 files changed, 41 insertions(+), 25 deletions(-)
+
+Index: testfixtures-6.18.3/testfixtures/compat.py
+===================================================================
+--- testfixtures-6.18.3.orig/testfixtures/compat.py
++++ testfixtures-6.18.3/testfixtures/compat.py
+@@ -5,6 +5,7 @@ PY_VERSION = sys.version_info[:2]
+ 
+ PY_36_PLUS = PY_VERSION >= (3, 6)
+ PY_37_PLUS = PY_VERSION >= (3, 7)
++PY_310_PLUS = PY_VERSION >= (3, 10)
+ 
+ 
+ if PY_VERSION > (3, 0):
+Index: testfixtures-6.18.3/testfixtures/tests/test_popen.py
+===================================================================
+--- testfixtures-6.18.3.orig/testfixtures/tests/test_popen.py
++++ testfixtures-6.18.3/testfixtures/tests/test_popen.py
+@@ -6,7 +6,7 @@ from testfixtures.mock import call
+ from testfixtures import ShouldRaise, compare, Replacer
+ 
+ from testfixtures.popen import MockPopen, PopenBehaviour
+-from testfixtures.compat import BytesLiteral, PY2
++from testfixtures.compat import BytesLiteral, PY2, PY_310_PLUS
+ 
+ import signal
+ 
+@@ -471,10 +471,11 @@ class Tests(TestCase):
+         ], Popen.mock.method_calls)
+ 
+     def test_invalid_parameters(self):
++        message = "__init__() got an unexpected keyword argument 'foo'"
++        if PY_310_PLUS:
++            message = "MockPopenInstance." + message
+         Popen = MockPopen()
+-        with ShouldRaise(TypeError(
+-                "__init__() got an unexpected keyword argument 'foo'"
+-        )):
++        with ShouldRaise(TypeError(message)):
+             Popen(foo='bar')
+ 
+     def test_invalid_method_or_attr(self):
+@@ -492,39 +493,43 @@ class Tests(TestCase):
+             process.foo
+ 
+     def test_invalid_communicate_call(self):
++        message = "communicate() got an unexpected keyword argument 'foo'"
++        if PY_310_PLUS:
++            message = "MockPopenInstance." + message
+         Popen = MockPopen()
+         Popen.set_command('bar')
+         process = Popen('bar')
+-        with ShouldRaise(TypeError(
+-                "communicate() got an unexpected keyword argument 'foo'"
+-        )):
++        with ShouldRaise(TypeError(message)):
+             process.communicate(foo='bar')
+ 
+     def test_invalid_wait_call(self):
++        message = "wait() got an unexpected keyword argument 'foo'"
++        if PY_310_PLUS:
++            message = "MockPopenInstance." + message
+         Popen = MockPopen()
+         Popen.set_command('bar')
+         process = Popen('bar')
+-        with ShouldRaise(TypeError(
+-                "wait() got an unexpected keyword argument 'foo'"
+-        )):
++        with ShouldRaise(TypeError(message)):
+             process.wait(foo='bar')
+ 
+     def test_invalid_send_signal(self):
++        message = "send_signal() got an unexpected keyword argument 'foo'"
++        if PY_310_PLUS:
++            message = "MockPopenInstance." + message
+         Popen = MockPopen()
+         Popen.set_command('bar')
+         process = Popen('bar')
+-        with ShouldRaise(TypeError(
+-                "send_signal() got an unexpected keyword argument 'foo'"
+-        )):
++        with ShouldRaise(TypeError(message)):
+             process.send_signal(foo='bar')
+ 
+     def test_invalid_terminate(self):
++        message = "terminate() got an unexpected keyword argument 'foo'"
++        if PY_310_PLUS:
++            message = "MockPopenInstance." + message
+         Popen = MockPopen()
+         Popen.set_command('bar')
+         process = Popen('bar')
+-        with ShouldRaise(TypeError(
+-                "terminate() got an unexpected keyword argument 'foo'"
+-        )):
++        with ShouldRaise(TypeError(message)):
+             process.terminate(foo='bar')
+ 
+     def test_invalid_kill(self):
+@@ -535,6 +540,8 @@ class Tests(TestCase):
+             text = 'kill() takes exactly 1 argument (2 given)'
+         else:
+             text = 'kill() takes 1 positional argument but 2 were given'
++            if PY_310_PLUS:
++                text = "MockPopenInstance." + text
+         with ShouldRaise(TypeError(text)):
+             process.kill('moo')
+ 
+@@ -546,6 +553,8 @@ class Tests(TestCase):
+             text = 'poll() takes exactly 1 argument (2 given)'
+         else:
+             text = 'poll() takes 1 positional argument but 2 were given'
++            if PY_310_PLUS:
++                text = "MockPopenInstance." + text
+         with ShouldRaise(TypeError(text)):
+             process.poll('moo')
+ 
+Index: testfixtures-6.18.3/testfixtures/tests/test_replace.py
+===================================================================
+--- testfixtures-6.18.3.orig/testfixtures/tests/test_replace.py
++++ testfixtures-6.18.3/testfixtures/tests/test_replace.py
+@@ -13,7 +13,7 @@ import os
+ 
+ from testfixtures.tests import sample1
+ from testfixtures.tests import sample2
+-from ..compat import PY3
++from ..compat import PY3, PY_310_PLUS
+ 
+ from warnings import catch_warnings
+ 
+@@ -259,19 +259,25 @@ class TestReplace(TestCase):
+         self.failIf(hasattr(sample1, 'foo'))
+ 
+     def test_replace_delattr_cant_remove(self):
++        if PY_310_PLUS:
++            message = "cannot set 'today' attribute of " \
++                      "immutable type 'datetime.datetime'"
++        else:
++            message = "can't set attributes of " \
++                      "built-in/extension type 'datetime.datetime'"
+         with Replacer() as r:
+-            with ShouldRaise(TypeError(
+-                "can't set attributes of "
+-                "built-in/extension type 'datetime.datetime'"
+-                    )):
++            with ShouldRaise(TypeError(message)):
+                 r.replace('datetime.datetime.today', not_there)
+ 
+     def test_replace_delattr_cant_remove_not_strict(self):
++        if PY_310_PLUS:
++            message = "cannot set 'today' attribute of " \
++                      "immutable type 'datetime.datetime'"
++        else:
++            message = "can't set attributes of " \
++                      "built-in/extension type 'datetime.datetime'"
+         with Replacer() as r:
+-            with ShouldRaise(TypeError(
+-                "can't set attributes of "
+-                "built-in/extension type 'datetime.datetime'"
+-                    )):
++            with ShouldRaise(TypeError(message)):
+                 r.replace('datetime.datetime.today', not_there, strict=False)
+ 
+     def test_replace_dict_remove_key(self):
+Index: testfixtures-6.18.3/conftest.py
+===================================================================
+--- /dev/null
++++ testfixtures-6.18.3/conftest.py
+@@ -0,0 +1,32 @@
++from doctest import REPORT_NDIFF, ELLIPSIS
++
++from sybil import Sybil
++from sybil.parsers.doctest import DocTestParser
++from sybil.parsers.codeblock import PythonCodeBlockParser
++from sybil.parsers.capture import parse_captures
++from sybil.parsers.skip import skip
++
++from testfixtures import TempDirectory
++from testfixtures.sybil import FileParser
++
++
++def sybil_setup(namespace):
++    # _tempdir is in case it's overwritten by a test.
++    namespace['tempdir'] = namespace['_tempdir'] = TempDirectory()
++
++
++def sybil_teardown(namespace):
++    namespace['_tempdir'].cleanup()
++
++
++pytest_collect_file = Sybil(
++    parsers=[
++        DocTestParser(optionflags=REPORT_NDIFF|ELLIPSIS),
++        PythonCodeBlockParser(),
++        parse_captures,
++        FileParser('tempdir'),
++        skip,
++    ],
++    patterns=['*.txt', '*.py'],
++    setup=sybil_setup, teardown=sybil_teardown,
++).pytest()
+Index: testfixtures-6.18.3/docs/conftest.py
+===================================================================
+--- testfixtures-6.18.3.orig/docs/conftest.py
++++ /dev/null
+@@ -1,21 +0,0 @@
+-from doctest import REPORT_NDIFF, ELLIPSIS
+-
+-from sybil import Sybil
+-from sybil.parsers.doctest import DocTestParser, FIX_BYTE_UNICODE_REPR
+-from sybil.parsers.codeblock import CodeBlockParser
+-from sybil.parsers.capture import parse_captures
+-
+-from testfixtures.compat import PY3
+-from testfixtures.sybil import FileParser
+-
+-
+-if PY3:
+-    pytest_collect_file = Sybil(
+-        parsers=[
+-            DocTestParser(optionflags=REPORT_NDIFF|ELLIPSIS|FIX_BYTE_UNICODE_REPR),
+-            CodeBlockParser(['print_function']),
+-            parse_captures,
+-            FileParser('tempdir'),
+-        ],
+-        pattern='*.txt',
+-    ).pytest()
+Index: testfixtures-6.18.3/docs/files.txt
+===================================================================
+--- testfixtures-6.18.3.orig/docs/files.txt
++++ testfixtures-6.18.3/docs/files.txt
+@@ -612,7 +612,7 @@ from the documentation to use for use in
+ 
+ __ https://docs.pytest.org/en/latest/
+ 
+-.. literalinclude:: ../testfixtures/tests/conftest.py
++.. literalinclude:: ../../testfixtures/conftest.py
+ 
+ Writing files
+ ~~~~~~~~~~~~~
+Index: testfixtures-6.18.3/testfixtures/tests/conftest.py
+===================================================================
+--- testfixtures-6.18.3.orig/testfixtures/tests/conftest.py
++++ /dev/null
+@@ -1,27 +0,0 @@
+-from sybil import Sybil
+-from sybil.parsers.doctest import  DocTestParser
+-from sybil.parsers.codeblock import CodeBlockParser
+-from sybil.parsers.capture import parse_captures
+-
+-from testfixtures import TempDirectory
+-from testfixtures.sybil import FileParser
+-
+-
+-def sybil_setup(namespace):
+-    namespace['tempdir'] = TempDirectory()
+-
+-
+-def sybil_teardown(namespace):
+-    namespace['tempdir'].cleanup()
+-
+-
+-pytest_collect_file = Sybil(
+-    parsers=[
+-        DocTestParser(),
+-        CodeBlockParser(),
+-        parse_captures,
+-        FileParser('tempdir'),
+-    ],
+-    pattern='*.txt',
+-    setup=sybil_setup, teardown=sybil_teardown,
+-).pytest()
+Index: testfixtures-6.18.3/testfixtures/tests/test_sybil.py
+===================================================================
+--- testfixtures-6.18.3.orig/testfixtures/tests/test_sybil.py
++++ testfixtures-6.18.3/testfixtures/tests/test_sybil.py
+@@ -77,9 +77,7 @@ class TestFileParser(TestCase):
+             .. topic:: file.txt
+              :class: write-file
+             
+-              .. code-block:: python
+-            
+-              print "hello"
++              print("hello")
+               out = 'there'
+             
+               foo = 'bar'
+@@ -89,7 +87,7 @@ class TestFileParser(TestCase):
+             expected=[
+                 C(FileBlock,
+                   path='file.txt',
+-                  content='.. code-block:: python\n\nprint "hello"'
++                  content='print("hello")'
+                           '\nout = \'there\'\n\nfoo = \'bar\'\n',
+                   action='write'),
+             ])
+Index: testfixtures-6.18.3/docs/django.txt
+===================================================================
+--- testfixtures-6.18.3.orig/docs/django.txt
++++ testfixtures-6.18.3/docs/django.txt
+@@ -23,7 +23,7 @@ Traceback (most recent call last):
+ AssertionError: SampleModel not as expected:
+ <BLANKLINE>
+ same:
+-[u'id']
++['id']
+ <BLANKLINE>
+ values differ:
+ 'value': 1 != 2
+@@ -38,7 +38,7 @@ Traceback (most recent call last):
+ AssertionError: SampleModel not as expected:
+ <BLANKLINE>
+ same:
+-[u'id']
++['id']
+ <BLANKLINE>
+ values differ:
+ 'value': 1 != 2
+@@ -70,7 +70,7 @@ Traceback (most recent call last):
+ AssertionError: SampleModel not as expected:
+ <BLANKLINE>
+ same:
+-['created', u'id', 'value']
++['created', 'id', 'value']
+ <BLANKLINE>
+ values differ:
+ 'not_editable': 1 != 2

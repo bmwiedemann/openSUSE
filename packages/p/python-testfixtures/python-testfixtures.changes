@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 26 09:32:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Replace testfixtures-pr167-sybil3.patch by
+  testfixtures-sybil3-py310.patch -- gh#simplistix/testfixtures#167
+- Don't test Django on python36: Django 4 dropped support for
+  Python < 3.8
+
+-------------------------------------------------------------------
 Tue Dec 21 18:13:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add testfixtures-pr167-sybil3.patch
