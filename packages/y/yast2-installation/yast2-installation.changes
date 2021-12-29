@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 27 07:22:50 UTC 2021 - Knut Alejandro Anderssen González <kanderssen@suse.com>
+
+- Add support for selecting and configuring the desired Linux
+  Security Module during installation (jsc#SLE-22069)
+- 4.4.31
+
+-------------------------------------------------------------------
 Thu Dec 16 13:43:05 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Self-update now supports relative URLs (relurl://), it defines
