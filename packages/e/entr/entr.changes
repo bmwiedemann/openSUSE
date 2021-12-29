@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 28 17:28:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1
+  * Detect files moved to or from directories on Linux.
+  * Allow detection of directory entries beginning with '.' by
+    specifying '-d' twice.
+  * Only reset terminal settings in exit handler if settings were
+    changed.
+
+-------------------------------------------------------------------
 Sun Jul  4 11:56:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0
