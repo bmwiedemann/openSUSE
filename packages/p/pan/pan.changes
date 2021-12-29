@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 24 19:36:17 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.149:
+  * Fix freeze when loading group with non-ascii characters in
+    subject.
+  * Avoid mojibake in Subject and Headers.
+  * Fix x-face folding.
+  * Add Base64-encoded Face header.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 26 22:39:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.148:

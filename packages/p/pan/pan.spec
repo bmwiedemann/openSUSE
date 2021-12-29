@@ -17,7 +17,7 @@
 
 
 Name:           pan
-Version:        0.148
+Version:        0.149
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
@@ -76,9 +76,9 @@ NOCONFIGURE=1 ./autogen.sh
 %doc %{_datadir}/help/C/%{name}/
 %{_mandir}/man?/pan.?%{ext_man}
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/applications/*.%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/*.%{name}.png
+%{_datadir}/metainfo/*.%{name}.metainfo.xml
 
 %files lang -f %{name}.lang
 
