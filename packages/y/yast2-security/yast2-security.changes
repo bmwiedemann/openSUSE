@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 29 11:47:15 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Added back the selinux boot parameter when selinux is selected
+  and not disabled in order to switch on SELinux (jsc#SLE-22069)
+- 4.4.3
+
+-------------------------------------------------------------------
+Wed Dec 22 23:06:57 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add support for selecting and configuring the desired Linux 
+  Security Module (jsc#SLE-22069)
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Jul 14 13:51:18 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Add Security#SafeRead to allow detecting read errors when calling
