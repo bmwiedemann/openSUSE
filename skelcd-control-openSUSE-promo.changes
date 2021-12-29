@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 27 17:29:08 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Added 'lsm' section for selecting and configuring the desired
+  Linux Security Module (jsc#SLE-22069)
+- 20211227
+
+-------------------------------------------------------------------
 Mon Sep  6 09:44:46 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Define default ntp servers (bsc#1180699)
