@@ -322,6 +322,9 @@ dvd:
   # DVD over size by > 40MB (kernel change to zstd); need space - dleuenberger, 20211119
   - MozillaThunderbird: [locked]
 
+  # Only rzby 3 stufg
+  - libruby2_7-2_7: [locked]
+
   # We newly hav ethree python libs on the DVD; quick fix is blocking them, longer we want to find out why
   # dleuenberger, 20211223
   - libpython3_6m1_0: [locked]
