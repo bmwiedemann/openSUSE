@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 27 10:54:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.4.1
+  * Adds support for HTTP 409 when allocation is unsuccessful.
+  * Set ObjectChanges.postchange_data and .prechange_data to
+    JsonField.
+- Update to version 6.4.0
+  * Use display field in Record.__str__() to support future models
+  * Update docstrings for DetailEndpoint and Prefixes.available_*
+  * Add wireless app (for NetBox 3.1+)
+
+-------------------------------------------------------------------
 Sun Dec  5 14:59:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.3.0
