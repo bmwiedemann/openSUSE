@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 27 18:23:19 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41:
+  + Manage if there's no textconv config
+  + Convert to text using gitattributes config
+  + Side by side diff text renderers
+  + Read setup for smart commits from git config
+  + Show diff stats only on text renderer
+  + Put image renderer first on stack
+  + Allow to diff images as text if its mime type supports it
+  + Add new-window action to desktop file
+  + Fix the ninja call in one of the building guides
+  + TextView needs to be wrapped in a scroll view
+  + Fix libgitg-date test package failure
+  + Use GUri instead of SoupURI
+- Use released tag in service.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:34:47 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

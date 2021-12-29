@@ -2,10 +2,9 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gitg.git</param>
-    <param name="revision">master</param>
-    <param name="versionformat">3.32.1+@TAG_OFFSET@</param>
+    <param name="revision">refs/tags/v41</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

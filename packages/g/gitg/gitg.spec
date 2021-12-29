@@ -17,7 +17,7 @@
 
 
 Name:           gitg
-Version:        3.32.1+312
+Version:        41
 Release:        0
 Summary:        Git repository viewer
 License:        GPL-2.0-or-later
