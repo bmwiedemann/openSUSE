@@ -152,4 +152,19 @@
     <comment></comment>
     <requestid>896997</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6eb7bd020a6a62fd0f1bc5a21272961f</srcmd5>
+    <version>1.3.5</version>
+    <time>1640808643</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hyperkitty-fix-mistune-2.0-imports.patch ... two function
+  moved in mistune 2.0 (gl#mailman/hyperkitty#379).
+- Add a patch that fixes compatibility with the full release of mistune 2.0
+- Update to version 1.3.5
+  * https://gitlab.com/mailman/hyperkitty/-/blob/1.3.5/doc/news.rst
+- Fixes CVE-2021-35057
+- Removed obsolete python-HyperKitty-CVE-2021-33038.patch
+</comment>
+    <requestid>941157</requestid>
+  </revision>
 </revisionlist>

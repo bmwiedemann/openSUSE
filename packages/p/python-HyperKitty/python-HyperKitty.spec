@@ -35,7 +35,7 @@
 # mailman is built only for primary python3 flavor
 %define pythons python3
 Name:           python-HyperKitty
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
@@ -53,13 +53,17 @@ Source22:       hyperkitty-runjob.timer
 #
 Source30:       README.SUSE.md
 #
+# PATCH-FIX-OPENSUSE hyperkitty-settings.patch mcepl@suse.com
+# hard-code locations of configuration files
 Patch0:         hyperkitty-settings.patch
-# CVE-2021-33038 [bsc#1186575], information disclosure when importing a private mailing list
-Patch1:         python-HyperKitty-CVE-2021-33038.patch
+# PATCH-FIX-UPSTREAM hyperkitty-fix-mistune-2.0-imports.patch gl#mailman/hyperkitty#379 mcepl@suse.com
+# Two elements moved in mistune 2.0
+Patch1:         hyperkitty-fix-mistune-2.0-imports.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module libsass}
+BuildRequires:  %{python_module mistune >= 2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  acl
 BuildRequires:  fdupes
@@ -73,12 +77,13 @@ Requires:       python-django-debug-toolbar >= 2.2
 Requires:       python-django-extensions >= 1.3.7
 Requires:       python-django-gravatar2 >= 1.0.6
 Requires:       python-django-haystack >= 2.8.0
-Requires:       python-django-mailman3 >= 1.2.0
-Requires:       python-django-q >= 1.0.0
+Requires:       python-django-mailman3 >= 1.3.7
+Requires:       python-django-q >= 1.3.9
 Requires:       python-djangorestframework >= 3.0.0
 Requires:       python-flufl.lock
 Requires:       python-libsass
-Requires:       python-mailmanclient >= 3.1.1
+Requires:       python-mailmanclient >= 3.3.2
+Requires:       python-mistune
 Requires:       python-networkx >= 1.9.1
 Requires:       python-python-dateutil >= 2.0
 Requires:       python-pytz >= 2012
@@ -93,12 +98,14 @@ BuildRequires:  %{python_module django-compressor >= 1.3}
 BuildRequires:  %{python_module django-extensions >= 1.3.7}
 BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module django-haystack >= 2.8.0}
-BuildRequires:  %{python_module django-mailman3 >= 1.2.0}
-BuildRequires:  %{python_module django-q >= 1.0.0}
+BuildRequires:  %{python_module django-mailman3 >= 1.3.7}
+BuildRequires:  %{python_module django-q >= 1.3.9}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module flufl.lock}
-BuildRequires:  %{python_module mailmanclient >= 3.1.1}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module mailmanclient >= 3.3.2}
+BuildRequires:  %{python_module mistune}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module networkx >= 1.9.1}
 BuildRequires:  %{python_module pytest-django}
