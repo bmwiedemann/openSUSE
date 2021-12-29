@@ -4,6 +4,5 @@
 Also the control files for some base products and a language add-on is present.
 
 </description>
-  <devel project="YaST:Head" package="yast2-installation-control"/>
   <url>https://github.com/yast/yast-installation-control</url>
 </package>
