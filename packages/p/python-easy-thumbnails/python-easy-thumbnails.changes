@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 24 06:03:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.8
+  * Add support for thumbnailing SVG images.
+- from v2.7.2
+  * Add support for Django 3.2 and Python-3.10.
+  * Do not close image after loading content.
+  * In management command thumbnail_cleanup, replace print-statements
+    against stdout.write.
+  * Use Python format strings whereever possible.
+- from v2.7.1
+  * Add support for Django 3.1
+
+-------------------------------------------------------------------
 Thu Oct 14 08:18:24 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use setup.py test

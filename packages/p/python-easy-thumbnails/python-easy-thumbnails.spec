@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-easy-thumbnails
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Easy thumbnails for Django
 License:        BSD-2-Clause
@@ -29,12 +29,19 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
+Requires:       python-lxml
 Requires:       python-Pillow
+Requires:       python-reportlab
+Requires:       python-svglib
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module cssselect2}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module reportlab}
+BuildRequires:  %{python_module svglib}
 # /SECTION
 %python_subpackages
 
