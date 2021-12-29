@@ -79,8 +79,6 @@ runtime.
 %pom_remove_plugin org.apache.maven.plugins:maven-jarsigner-plugin cglib-sample
 %pom_remove_plugin -r :maven-javadoc-plugin
 
-%pom_xpath_inject "pom:dependency[pom:artifactId='ant']" "<optional>true</optional>" cglib
-
 %pom_remove_parent
 
 %build

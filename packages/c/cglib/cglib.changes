@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 29 14:35:14 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Don't inject <optional>true</optional> in cglib pom, as 3.3.0
+  already provides that option and it makes the POM xml incorrect. 
+
+-------------------------------------------------------------------
 Mon Dec 27 14:36:52 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Update to upstream 3.3.0
