@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 29 09:58:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.3:
+  + Improve Autocrypt-related error messages.
+  + Improvements to communication with GnuPG key servers.
+  + Create standard-compatible HTML messages.
+  + Implement sender-dependent HTML message preferences.
+  + Reuse HTTP connections when rendering HTML messages.
+  + Do not send empty Reply-To, Cc, etc headers.
+  + More robust IMAP parser and response handling.
+  + Code cleanups, platform-dependent build fixes.
+
+-------------------------------------------------------------------
 Mon Dec 28 11:23:40 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.6.2:

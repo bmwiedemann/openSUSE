@@ -1,7 +1,7 @@
 #
 # spec file for package balsa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           balsa
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
 URL:            https://pawsa.fedorapeople.org/balsa/
-Source0:        %{url}/%{name}-%{version}.tar.bz2
+Source0:        %{url}/%{name}-%{version}.tar.xz
+
 BuildRequires:  compface-devel
 BuildRequires:  fdupes
 BuildRequires:  gpgme-devel >= 1.8.0
