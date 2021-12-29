@@ -1554,4 +1554,12 @@
     <comment>- Update to release 2021.12.01</comment>
     <requestid>934893</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>eebb164a34853e658bc82987f91cf02b</srcmd5>
+    <version>2021.12.17</version>
+    <time>1640808653</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to youtube-dl 2021.12.17</comment>
+    <requestid>943036</requestid>
+  </revision>
 </revisionlist>
