@@ -1,4 +1,6 @@
 addFilter('devel-file-in-non-devel-package .*/wcs/.*')
 addFilter('hidden-file-or-dir .*/tests/data/.*')
 addFilter('zero-length .*/tests/data/.*')
-addFilter('zero-length .*/index\.html')
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1191584
+addFilter('unstripped-binary-or-object .*python.*\.so')
+addFilter('shared-library-without-dependency-information .*python.*\.so')

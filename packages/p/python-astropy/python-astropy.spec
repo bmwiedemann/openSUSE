@@ -59,7 +59,7 @@
 # upcoming python3 multiflavor: minimum supported python is 3.7
 %define         skip_python36 1
 Name:           python-astropy%{psuffix}
-Version:        4.3.1
+Version:        5.0
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -68,43 +68,46 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# https://docs.astropy.org/en/v4.3post1/install.html#requirements
-# PATCH-FIX-UPSTREAM astropy-pr12006-cfitsio4.patch  gh#astropy/astropy#12006
-Patch1:         https://github.com/astropy/astropy/pull/12006.patch#/astropy-pr12006-cfitsio4.patch
-Patch2:         https://github.com/astropy/astropy/pull/12159.patch#/astropy-pr12159-py310.patch
+# https://docs.astropy.org/en/v5.0/install.html#requirements
 BuildRequires:  %{python_module Cython >= 0.29.22}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module PyYAML >= 3.13}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.17}
-BuildRequires:  %{python_module pyerfa >= 1.7.3}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module numpy-devel >= 1.18}
+BuildRequires:  %{python_module packaging >= 19.0}
+BuildRequires:  %{python_module pyerfa >= 2.0}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML >= 3.13
 Requires:       python-dbm
-Requires:       python-numpy >= 1.17
-Requires:       python-pyerfa >= 1.7.3
+Requires:       python-numpy >= 1.18
+Requires:       python-packaging >= 19.0
+Requires:       python-pyerfa >= 2.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     libxml2-tools
 Recommends:     python-Bottleneck
-Recommends:     python-PyYAML >= 3.13
 Recommends:     python-asdf >= 2.6
 Recommends:     python-beautifulsoup4
 Recommends:     python-bleach
 Recommends:     python-h5py
 Recommends:     python-html5lib
 Recommends:     python-jplephem
-Recommends:     python-matplotlib >= 3
+Recommends:     python-matplotlib >= 3.1
 Recommends:     python-mpmath
 Recommends:     python-pandas
+Recommends:     python-pyarrow >= 5
 Recommends:     python-scipy >= 1.1
 Recommends:     python-setuptools
 Recommends:     python-sortedcontainers
+Recommends:     python-typing_extensions
 Conflicts:      perl-Data-ShowTable
+Conflicts:      python-matplotlib = 3.4.0
 %if %{with system_cfitsio}
 BuildRequires:  pkgconfig(cfitsio)
 %endif
@@ -117,18 +120,18 @@ BuildRequires:  pkgconfig(wcslib) >= 7
 %if %{with test}
 # SECTION Optional requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module asdf >= 2.6}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 3}
+BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module scipy >= 1.1}
+BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module sortedcontainers}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  libxml2-tools
 # /SECTION
 # SECTION test requirements
@@ -136,8 +139,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 4.2}
 BuildRequires:  %{python_module objgraph}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pytest-astropy}
+BuildRequires:  %{python_module pytest-astropy >= 0.9}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module sgp4}
@@ -155,6 +157,8 @@ managing them.
 %if !%{with test}
 %prep
 %autosetup -p1 -n astropy-%{version}
+# avoid rpmlint zero-length error for empty module
+echo '# empty module' > astropy/samp/setup_package.py
 
 # Make sure bundled libs are not used
 %if %{with system_cfitsio}
@@ -205,8 +209,8 @@ done
   # gh#astropy/astropy#12017
   donttest+=" or test_stats"
 %endif
-# https://github.com/astropy/astropy/issues/12050
-donttest+=" or (test_no_numpy_warnings and contours)"
+# this one is flaky
+donttest+=" or test_color_print3"
 testselect_expr="${donttest:+-k \"not (${donttest# or })\"}"
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace

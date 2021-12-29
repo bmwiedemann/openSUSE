@@ -1244,4 +1244,39 @@
     <comment></comment>
     <requestid>942835</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>106a30de72fe9dd23348cfab417956e2</srcmd5>
+    <version>5.0</version>
+    <time>1640808652</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip flaky test_color_print3
+- Update to version 5.0
+  * https://docs.astropy.org/en/stable/whatsnew/5.0.html
+  * Astropy 5.0 is a major release that adds significant new
+    functionality since the 4.3.x series of releases. In addition,
+    it is a long-term support release (LTS) which will be supported
+    with bug fixes for two years. In particular, this release
+    includes:
+  * Support for reading, writing, and converting Cosmology
+  * Cosmology units module
+  * New Models
+  * Added support for dask arrays in tables
+  * Added support for registering array-like objects as mixin
+    columns
+  * Support for reading and writing tables to Parquet format
+  * Support for reading and writing tables to MRT format
+  * Support for masked quantity columns, including masked FITS
+    columns with units
+  * Converting SkyCoord to QTable
+  * New Unified I/O architecture
+  * In addition to these major changes, Astropy v5.0 includes a
+    large number of smaller improvements and bug fixes, which
+    are described in the Full Changelog.
+    https://docs.astropy.org/en/stable/changelog.html#changelog
+- Drop patches fixed upstream
+  * astropy-pr12006-cfitsio4.patch
+  * astropy-pr12159-py310.patch
+</comment>
+    <requestid>942986</requestid>
+  </revision>
 </revisionlist>
