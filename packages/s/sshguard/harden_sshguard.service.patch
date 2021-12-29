@@ -1,0 +1,24 @@
+Index: sshguard-2.4.2/examples/sshguard.service
+===================================================================
+--- sshguard-2.4.2.orig/examples/sshguard.service
++++ sshguard-2.4.2/examples/sshguard.service
+@@ -9,6 +9,19 @@ After=libvirtd.service
+ After=firewalld.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStartPre=-/usr/sbin/iptables -N sshguard
+ ExecStart=/usr/local/sbin/sshguard
+ Restart=always

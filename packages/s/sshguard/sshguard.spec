@@ -41,6 +41,7 @@ Source3:        sshguard.init
 Source4:        sshguard.whitelist
 # PATCH-FIX-UPSTREAM sshguard-gcc5.patch
 Patch0:         sshguard-gcc5.patch
+Patch1:	harden_sshguard.service.patch
 Requires:       openssh
 Requires(pre):  %fillup_prereq
 
@@ -53,6 +54,7 @@ attacker's address with a firewall rule.
 %setup -q
 %patch0 -p1
 find . -type f -iname "*.swp" -print -exec rm {} \;
+%patch1 -p1
 
 %build
 %configure \

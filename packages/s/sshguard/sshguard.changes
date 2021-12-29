@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 23 15:32:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_sshguard.service.patch
+  Modified:
+  * sshguard.service
+
+-------------------------------------------------------------------
 Sun May 16 12:39:45 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - Changed 'BACKEND' to "/usr/libexec/sshg-fw-iptables" from incorrect syntax
