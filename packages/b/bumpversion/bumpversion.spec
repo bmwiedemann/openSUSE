@@ -1,7 +1,7 @@
 #
 # spec file for package bumpversion
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bumpversion
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        Version-bump your software with a single command
 License:        MIT
 Group:          Development/Tools/Version Control
-Url:            https://github.com/peritus/bumpversion
+URL:            https://github.com/peritus/bumpversion
 Source:         https://files.pythonhosted.org/packages/source/b/bumpversion/bumpversion-%{version}.tar.gz
-BuildRequires:  python3-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
+Requires:       python3-base
 Provides:       python-bumpversion = %version
 Obsoletes:      python-bumpversion < %version
 BuildArch:      noarch
@@ -47,7 +48,6 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
 %doc README.rst
-%{_bindir}/bumpversion
 %{python3_sitelib}/bumpversion*
 
 %changelog
