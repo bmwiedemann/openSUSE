@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 24 20:39:50 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.1:
+  * Fix /sys/dev/* symlinks; regression from 0.15.3
+    (gh#martinpitt/umockdev#155).
+- Changes from version 0.17.0:
+  * Add ioctls necessary to record/replay hidraw devices.
+  * meson: Respect includedir option.
+  * tests: Fix for Fedora koji emulated architectures s390x and
+    arm.
+
+-------------------------------------------------------------------
 Fri Sep 24 20:29:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add umocdev Requires to devel sub-package, packages using

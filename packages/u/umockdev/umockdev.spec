@@ -19,7 +19,7 @@
 %define shlib libumockdev0
 %define shlibpre libumockdev-preload0
 Name:           umockdev
-Version:        0.16.3
+Version:        0.17.1
 Release:        0
 Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
