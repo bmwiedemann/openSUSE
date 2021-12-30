@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python310 1
 Name:           python-sphinx-autodoc-typehints
 Version:        1.12.0
 Release:        0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 27 17:20:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python310: Not ready yet. Factory needs only the primary
+  python3 flavor
+
+-------------------------------------------------------------------
 Tue Aug  3 09:42:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.12.0:
