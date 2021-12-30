@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 29 08:44:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v1.2.4:
+  * small fixes from PVS scan
+  * tests: do no require installation to run tests
+
+-------------------------------------------------------------------
 Mon Apr 20 17:13:49 UTC 2020 - Markos Chandras <markos@chandras.me>
 
 - Disable debug package on Fedora (https://en.opensuse.org/Fedora_packaging)
