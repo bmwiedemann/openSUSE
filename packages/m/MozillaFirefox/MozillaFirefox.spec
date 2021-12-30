@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          95
-%define mainver        %major.0.1
-%define orig_version   95.0.1
+%define mainver        %major.0.2
+%define orig_version   95.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -223,6 +223,8 @@ Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
 Patch29:        mozilla-silence-no-return-type.patch
 Patch31:        mozilla-bmo531915.patch
+Patch32:        mozilla-bmo1745560.patch
+Patch33:        mozilla-bmo1744896.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -351,6 +353,8 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch28 -p1
 %patch29 -p1
 %patch31 -p1
+%patch32 -p1
+%patch33 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1

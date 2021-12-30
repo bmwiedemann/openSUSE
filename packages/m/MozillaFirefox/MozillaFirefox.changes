@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 28 17:45:28 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patches:
+  * mozilla-bmo1745560.patch: Fix build against wayland 1.20.
+  * mozilla-bmo1744896.patch: Create WaylandVsyncSource on window
+    creation
+
+-------------------------------------------------------------------
+Mon Dec 20 21:57:30 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 95.0.2
+  * Addresses frequent crashes experienced by users with C/E/Z-Series
+    "Bobcat" CPUs running on Windows 7, 8, and 8.1.
+- updated constraints for ppc and x86-64
+
+-------------------------------------------------------------------
 Fri Dec 17 13:49:16 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 95.0.1 (bsc#1193845)

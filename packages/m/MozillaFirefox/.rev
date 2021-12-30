@@ -5317,4 +5317,20 @@
     Dark mode set at OS level (bmo#1740518)</comment>
     <requestid>941230</requestid>
   </revision>
+  <revision rev="353" vrev="1">
+    <srcmd5>3d96da4406dbfde33084adcfb09f50a8</srcmd5>
+    <version>95.0.2</version>
+    <time>1640876128</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches:
+  * mozilla-bmo1745560.patch: Fix build against wayland 1.20.
+  * mozilla-bmo1744896.patch: Create WaylandVsyncSource on window
+    creation
+
+- Mozilla Firefox 95.0.2
+  * Addresses frequent crashes experienced by users with C/E/Z-Series
+    &quot;Bobcat&quot; CPUs running on Windows 7, 8, and 8.1.
+- updated constraints for ppc and x86-64</comment>
+    <requestid>943041</requestid>
+  </revision>
 </revisionlist>

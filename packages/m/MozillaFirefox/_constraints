@@ -51,7 +51,7 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">16</size>
+        <size unit="G">18</size>
       </memory>
     </hardware>
   </overwrite>
@@ -62,10 +62,10 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">25</size>
+        <size unit="G">36</size>
       </disk>
       <physicalmemory>
-        <size unit="G">10</size>
+        <size unit="G">11</size>
       </physicalmemory>
       <memoryperjob>
         <size unit="M">2500</size>
