@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 28 22:54:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing BR typing_extensions
+
+-------------------------------------------------------------------
+Mon Dec 27 18:24:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add tests-skip-django-py36.patch -- no Django 4 for python36
+
+-------------------------------------------------------------------
 Sun May 16 13:01:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v3.2.0

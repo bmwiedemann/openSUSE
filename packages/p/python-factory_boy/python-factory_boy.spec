@@ -25,13 +25,15 @@ Summary:        Python test fixtures
 License:        MIT
 URL:            https://github.com/rbarrois/factory_boy
 Source:         https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+# PATCH-FEATURE-OPENSUSE  tests-skip-django-py36.patch -- don't test django on python36: no python36-Django 4, code@bnavigator.de
+Patch0:         tests-skip-django-py36.patch
 BuildRequires:  %{python_module Faker >= 0.7.0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module setuptools >= 0.8}
-BuildRequires:  %{pythons}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Django if (%python-base without python36-base)}
 Requires:       python-Faker >= 0.7.0
 BuildArch:      noarch
 %python_subpackages
@@ -40,7 +42,7 @@ BuildArch:      noarch
 A test fixtures replacement based on thoughtbot's factory_girl for Ruby.
 
 %prep
-%setup -q -n factory_boy-%{version}
+%autosetup -p1 -n factory_boy-%{version}
 # needs running mongo
 rm tests/test_mongoengine.py
 sed -i -e '/test_mongoengine/d' tests/__init__.py

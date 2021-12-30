@@ -122,4 +122,14 @@
     <comment></comment>
     <requestid>893472</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2ab7c31693f778204fafae5cf05454e3</srcmd5>
+    <version>3.2.0</version>
+    <time>1640876120</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BR typing_extensions
+- Add tests-skip-django-py36.patch -- no Django 4 for python36
+</comment>
+    <requestid>942993</requestid>
+  </revision>
 </revisionlist>
