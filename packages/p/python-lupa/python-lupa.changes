@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 29 00:48:53 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Adjust BuildRequires for lua
+
+-------------------------------------------------------------------
 Sun Dec 12 15:54:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10
