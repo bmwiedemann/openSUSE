@@ -65,4 +65,12 @@
   * Prevent cache shard attribute access when unsafe</comment>
     <requestid>849007</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>baec9c2430a63a87b92f7164bed3c721</srcmd5>
+    <version>5.3.0</version>
+    <time>1640876125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943001</requestid>
+  </revision>
 </revisionlist>

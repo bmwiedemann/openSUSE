@@ -1,7 +1,7 @@
 #
 # spec file for package python-diskcache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-diskcache
-Version:        5.1.0
+Version:        5.3.0
 Release:        0
 Summary:        Disk and file backed cache
 License:        Apache-2.0
 URL:            http://www.grantjenks.com/docs/diskcache/
-Source:         https://github.com/grantjenks/python-diskcache/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module mock}
+Source:         https://github.com/grantjenks/python-diskcache/archive/v%{version}.tar.gz#/diskcache-%{version}.tar.gz
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Django if (%python-base without python36-base)}
+BuildRequires:  %{python_module pytest-django if (%python-base without python36-base)}
 Requires:       python
 BuildArch:      noarch
 %python_subpackages
@@ -44,6 +45,7 @@ in pure Python, and compatible with Django.
 
 %prep
 %setup -q
+sed -i '/--cov/d' tox.ini
 
 %build
 %python_build
@@ -53,13 +55,16 @@ in pure Python, and compatible with Django.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i '/-n auto/d' tox.ini
-rm tests/test_djangocache.py
-%pytest
+# No python36-Django 4 on TW
+python36_flags=("--ignore" "tests/test_doctest.py" "-k" "not README.rst")
+# Broken since Django 3.2 -- https://github.com/grantjenks/python-diskcache/issues/210
+donttest_djangocache="--ignore tests/test_djangocache.py"
+%pytest "${$python_flags[@]}" ${donttest_djangocache}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/diskcache
+%{python_sitelib}/diskcache-%{version}*-info
 
 %changelog

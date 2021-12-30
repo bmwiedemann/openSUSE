@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 27 13:20:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.0
+  * Support for Python 3.10 in testing (#238)
+  * Add support for Python 3.10
+  * Update copyright to 2022
+  * Bump version to 5.3.0
+  * Add Python 3.10 to the README
+- Avoid django test collections errors on python 3.6:#
+  no python36-Django 4
+- Keep ignoring djangocache tests due to
+  gh#grantjenks/python-diskcache#210
+
+-------------------------------------------------------------------
 Tue Nov 17 05:43:53 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.1.0:
