@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 28 10:51:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Do not disable python36 here. This package is so deep in the
+  dependency tree, you have to do it globally.
+
+-------------------------------------------------------------------
+Mon Dec 27 10:57:58 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Upstream supoorted only python >= 3.5, so disable python 2 and
+  also python 3.6 (End of support).
+
+-------------------------------------------------------------------
 Mon Sep  6 13:54:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.2

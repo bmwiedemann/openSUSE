@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-ordered-set
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
@@ -30,6 +30,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define skip_python2 1
 Name:           python-%{modname}%{psuffix}
 Version:        4.0.2
 Release:        0
