@@ -17,7 +17,7 @@
 
 
 Name:           btop
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
