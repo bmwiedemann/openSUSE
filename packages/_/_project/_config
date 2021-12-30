@@ -1395,6 +1395,17 @@ Macros:
 %rubydevelruby30() ruby3.0-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
 %rubydevelxruby30() %{expand:%%{rubydevelx%*}}
 
+### And now Ruby 3.1
+
+%rubygemsruby31() rubygem(ruby:3.1.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby31() %{expand:%%{rubygemsx%*}}
+
+%rubyruby31() ruby3.1 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby31() %{expand:%%{rubyx%*}}
+
+%rubydevelruby31() ruby3.1-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby31() %{expand:%%{rubydevelx%*}}
+
 ### Things to define default ruby stuff for the distro
 
 %rb_default_ruby        ruby30
@@ -1405,6 +1416,7 @@ Macros:
 %rb_build_versions      ruby27 ruby30
 :Macros
 
+%if "%{_project}" != "openSUSE:Factory:Staging:L"
 Macros:
 %_with_ruby27               1
 %_with_ruby30               1
@@ -1412,6 +1424,7 @@ Macros:
 
 %define _with_ruby27         1
 %define _with_ruby30         1
+%endif
 
 %define rb_default_ruby        ruby30
 %define rb_default_ruby_suffix ruby3.0
@@ -1429,7 +1442,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
 Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
 Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
-Prefer: -ruby3.0-rubygem-rspec-3_5 -ruby2.7-rubygem-rspec-3_5
+Prefer: -ruby3.0-rubygem-rspec-3_5 -ruby2.7-rubygem-rspec-3_5 -ruby3.1-rubygem-rspec-3_5
 Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass-rails
