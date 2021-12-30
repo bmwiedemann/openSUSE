@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 28 21:43:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add fix-yaml-loader.patch, PyYAML 6 broke it.
+
+-------------------------------------------------------------------
 Wed Aug 18 13:52:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.6.0

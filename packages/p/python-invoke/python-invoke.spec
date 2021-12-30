@@ -30,6 +30,8 @@ URL:            http://www.pyinvoke.org
 Source:         https://files.pythonhosted.org/packages/source/i/invoke/invoke-%{version}.tar.gz
 Patch0:         0001-Make-test-fallback-to-system-modules-when-vendorized.patch
 Patch1:         pytest4.patch
+# PATCH-FIX-OPENSUSE fix-yaml-loader.patch -- we devendorize PyYAML, which requires the Loader flag now. code@bnavigator.de
+Patch2:         fix-yaml-loader.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,12 +62,9 @@ Invoke is a Python (2.7 and 3.4+) task execution tool & library, drawing
 inspiration from various sources to arrive at a powerful & clean feature set.
 
 %prep
-%setup -q -n invoke-%{version}
+%autosetup -p1 -n invoke-%{version}
 # Remove bundled libs, import will fallback to system provided libs
 rm -fr invoke/vendor/*
-
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build
