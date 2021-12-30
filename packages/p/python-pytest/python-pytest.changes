@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 28 16:52:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patch pytest-pr9173-importlib-py310.patch
+  * gh#pytest-dev/pytest#9173
+  * refresh pytest-pr9417-py3.10.1-fail.patch
+  * fixes asdf related errors: gh#asdf-format/asdf#1027
+
+-------------------------------------------------------------------
 Mon Dec 20 19:52:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Using URLs for Patches looks like a great idea, but it is too

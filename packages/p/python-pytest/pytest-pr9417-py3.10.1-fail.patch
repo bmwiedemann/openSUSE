@@ -12,11 +12,11 @@ Fix #9413
  testing/test_skipping.py   | 2 --
  2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
-index 92e2dc6be7..bbc48adb49 100644
---- a/.github/workflows/main.yml
-+++ b/.github/workflows/main.yml
-@@ -78,7 +78,7 @@ jobs:
+Index: pytest-6.2.5/.github/workflows/main.yml
+===================================================================
+--- pytest-6.2.5.orig/.github/workflows/main.yml
++++ pytest-6.2.5/.github/workflows/main.yml
+@@ -75,7 +75,7 @@ jobs:
              os: windows-latest
              tox_env: "py39-xdist"
            - name: "windows-py310"
@@ -25,7 +25,7 @@ index 92e2dc6be7..bbc48adb49 100644
              os: windows-latest
              tox_env: "py310-xdist"
  
-@@ -108,7 +108,7 @@ jobs:
+@@ -105,7 +105,7 @@ jobs:
              os: ubuntu-latest
              tox_env: "py39-xdist"
            - name: "ubuntu-py310"
@@ -34,11 +34,11 @@ index 92e2dc6be7..bbc48adb49 100644
              os: ubuntu-latest
              tox_env: "py310-xdist"
            - name: "ubuntu-pypy3"
-diff --git a/testing/test_skipping.py b/testing/test_skipping.py
-index a0b5cddabc..3010943607 100644
---- a/testing/test_skipping.py
-+++ b/testing/test_skipping.py
-@@ -1143,8 +1143,6 @@ def test_func():
+Index: pytest-6.2.5/testing/test_skipping.py
+===================================================================
+--- pytest-6.2.5.orig/testing/test_skipping.py
++++ pytest-6.2.5/testing/test_skipping.py
+@@ -1126,8 +1126,6 @@ def test_errors_in_xfail_skip_expression
      pypy_version_info = getattr(sys, "pypy_version_info", None)
      if pypy_version_info is not None and pypy_version_info < (6,):
          markline = markline[5:]

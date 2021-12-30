@@ -43,8 +43,10 @@ URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pytest-pr8664-py3.10-test_trial_error-fail.patch -- gh#pytest-dev/pytest#8664
 Patch0:         pytest-pr8664-py3.10-test_trial_error-fail.patch
+# PATCH-FIX-UPSTREAM pytest-pr9173-importlib-py310.patch -- gh#pytest-dev/pytest#9173
+Patch1:         pytest-pr9173-importlib-py310.patch
 # PATCH-FIX-UPSTREAM pytest-pr9417-py3.10.1-fail.patch -- gh#pytest-dev/pytest#9417
-Patch1:         pytest-pr9417-py3.10.1-fail.patch
+Patch2:         pytest-pr9417-py3.10.1-fail.patch
 BuildRequires:  %{python_module setuptools >= 42.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
