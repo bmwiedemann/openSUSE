@@ -2475,4 +2475,12 @@
                   regression in about:logins</comment>
     <requestid>935043</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>3a7267e451f9b193c6e796ce1bba8770</srcmd5>
+    <version>3.73.1</version>
+    <time>1640876137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943071</requestid>
+  </revision>
 </revisionlist>

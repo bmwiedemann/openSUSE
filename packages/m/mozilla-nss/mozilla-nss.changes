@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 29 11:27:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to NSS 3.73.1:
+  * Add SHA-2 support to mozilla::pkix's OSCP implementation
+
+-------------------------------------------------------------------
 Wed Dec  1 17:45:43 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.73
