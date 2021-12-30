@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2  1
 %define         skip_python36 1
 Name:           python-veusz
@@ -33,8 +33,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sip4-devel}
-BuildRequires:  %{python_module sip4}
+BuildRequires:  %{python_module sip-devel}
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -86,12 +85,7 @@ find -name \*~ | xargs rm -f
 sed -E -i "/\#!\/usr\/bin\/env python/d" veusz/veusz_{listen,main}.py
 
 %build
-# no-strict-aliasing required for python2
-%ifpython2
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-%else
 export CFLAGS="%{optflags}"
-%endif
 
 %python_build
 
@@ -109,17 +103,17 @@ desktop-file-install -m 0644 \
 # move icon files to /usr/share/pixmaps/veusz
 %python_expand install -m 0644 %{SOURCE3} %{buildroot}%{$python_sitearch}/veusz/icons/veusz_256.png
 mkdir -p %{buildroot}%{_datadir}/pixmaps/veusz
-ln -s %{python_sitearch}/veusz/icons %{buildroot}%{_datadir}/pixmaps/veusz
+ln -s %{python3_sitearch}/veusz/icons %{buildroot}%{_datadir}/pixmaps/veusz
 
 # hardlink main veusz icon also into hicolor-icon-theme dir (for desktop file)
 for size in 16 32 48 64 128 256; do
     odir=%{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps
     mkdir -p $odir
-    ln -s %{python_sitearch}/veusz/icons/veusz_${size}.png ${odir}/veusz.png
+    ln -s %{python3_sitearch}/veusz/icons/veusz_${size}.png ${odir}/veusz.png
 done
 odir=%{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 mkdir -p $odir
-ln -s %{python_sitearch}/veusz/icons/veusz.svg $odir/veusz.svg
+ln -s %{python3_sitearch}/veusz/icons/veusz.svg $odir/veusz.svg
 
 # install man pages
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -128,8 +122,7 @@ install -p Documents/man-page/veusz.1 -m 0644 %{buildroot}%{_mandir}/man1
 # Remove an unneeded hidden file from documentation
 rm Documents/manual/html/.buildinfo
 
-%fdupes %{buildroot}%{python_sitearch}/veusz/
-%fdupes %{buildroot}%{python3_sitearch}/veusz/
+%python_expand %fdupes %{buildroot}%{$python_sitearch}/veusz/
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
