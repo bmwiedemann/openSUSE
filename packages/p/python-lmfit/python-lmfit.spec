@@ -16,20 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-lmfit
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 URL:            https://lmfit.github.io/lmfit-py/
 Source:         https://files.pythonhosted.org/packages/source/l/lmfit/lmfit-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asteval >= 0.9.21
+Requires:       python-asteval >= 0.9.22
 Requires:       python-numpy >= 1.18
 Requires:       python-scipy >= 1.3
 Recommends:     python-dill
@@ -39,10 +40,10 @@ Recommends:     python-pandas
 Recommends:     python-uncertainties >= 3.0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module asteval >= 0.9.21}
+BuildRequires:  %{python_module asteval >= 0.9.22}
 BuildRequires:  %{python_module numpy >= 1.18}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.3}
+BuildRequires:  %{python_module scipy >= 1.4}
 BuildRequires:  %{python_module uncertainties >= 3.0.1}
 # /SECTION
 %python_subpackages
@@ -69,6 +70,8 @@ questionable.
 %prep
 %setup -q -n lmfit-%{version}
 sed -i -e '/^#!\//, 1d' lmfit/jsonutils.py
+# only coverage related pytest flags here. remove
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build
@@ -78,16 +81,16 @@ sed -i -e '/^#!\//, 1d' lmfit/jsonutils.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_exec -c "import sys, lmfit, numpy, scipy, asteval, uncertainties, six;
+%{python_exec -c "import sys, lmfit, numpy, scipy, asteval, uncertainties;
 print('Python: {}\n\n'
-'lmfit: {}, scipy: {}, numpy: {}, asteval: {}, uncertainties: {}, six: {}'.format(
+'lmfit: {}, scipy: {}, numpy: {}, asteval: {}, uncertainties: {}'.format(
     sys.version,
     lmfit.__version__,
     scipy.__version__,
     numpy.__version__,
     asteval.__version__,
-    uncertainties.__version__,
-    six.__version__))"}
+    uncertainties.__version__
+))"}
 
 cat << 'EOF' >> testexample.py
 import numpy as np
@@ -121,10 +124,16 @@ cat testexample.py
 
 %python_exec testexample.py
 
-# We don't care about speed, and test_itercb is architecture-specific
-# test_model_nan_policy - fails on non x86_64
-# test_shgo_scipy_vs_lmfit_2 - fails on non x86_64
-%pytest -k 'not speed and not (test_model_nan_policy or test_shgo_scipy_vs_lmfit_2)'
+# We don't care about speed
+donttest="speed"
+# these tests fail on non x86_64. Upstream does not care: https://github.com/lmfit/lmfit-py/issues/692
+donttest+=" or test_model_nan_policy"
+donttest+=" or test_shgo_scipy_vs_lmfit_2"
+# fails on 32-bit
+if [ $(getconf LONG_BIT) -ne 64 ]; then
+  donttest+=" or (test_itercb_minimizer_class and leastsq and False)"
+fi
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst THANKS.txt
