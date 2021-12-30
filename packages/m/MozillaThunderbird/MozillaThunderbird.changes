@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 28 20:20:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add mozilla-bmo1745560.patch: Fix build against wayland 1.20.
+
+-------------------------------------------------------------------
 Fri Dec 17 14:19:48 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.4.1

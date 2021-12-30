@@ -207,6 +207,7 @@ Patch28:        mozilla-libavcodec58_91.patch
 Patch29:        mozilla-silence-no-return-type.patch
 Patch30:        mozilla-bmo531915.patch
 Patch31:        mozilla-bmo1724679.patch
+Patch32:        mozilla-bmo1745560.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -309,6 +310,7 @@ fi
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
 %endif
 
 %build

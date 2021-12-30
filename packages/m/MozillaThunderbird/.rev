@@ -3969,4 +3969,12 @@ I cannot test locally unfortunately.
 - updated _constraints</comment>
     <requestid>941707</requestid>
   </revision>
+  <revision rev="270" vrev="2">
+    <srcmd5>b5b7067c1893e7b0385046c6d8ec6c92</srcmd5>
+    <version>91.4.1</version>
+    <time>1640876128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943034</requestid>
+  </revision>
 </revisionlist>
