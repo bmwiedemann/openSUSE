@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 29 15:18:48 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the junit bom dependency for now as it breaks the build of
+  other packages like log4j.
+  * Add apache-commons-lang3-junit-bom.patch
+
+-------------------------------------------------------------------
+Wed Dec 29 12:49:05 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Fix component version in default.properties to 3.12 
+
+-------------------------------------------------------------------
 Fri Dec 24 14:28:12 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Updated download URL.

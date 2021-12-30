@@ -28,6 +28,7 @@ URL:            https://commons.apache.org/proper/commons-lang/
 Source0:        https://dlcdn.apache.org/commons/lang/source/%{short_name}-%{version}-src.tar.gz
 Source1:        build.xml
 Source2:        default.properties
+Patch0:         apache-commons-lang3-junit-bom.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -57,6 +58,8 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
+%patch0 -p1
+
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 sed -i 's/\r//' *.txt

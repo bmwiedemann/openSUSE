@@ -1,0 +1,23 @@
+Index: commons-lang3-3.12.0-src/pom.xml
+===================================================================
+--- commons-lang3-3.12.0-src.orig/pom.xml
++++ commons-lang3-3.12.0-src/pom.xml
+@@ -513,18 +513,6 @@
+     </contributor>
+   </contributors>
+ 
+-  <dependencyManagement>
+-    <dependencies>
+-      <dependency>
+-        <groupId>org.junit</groupId>
+-        <artifactId>junit-bom</artifactId>
+-        <version>5.7.1</version>
+-        <type>pom</type>
+-        <scope>import</scope>
+-      </dependency>
+-    </dependencies>
+-  </dependencyManagement>
+-
+   <!-- Lang should depend on very little -->
+   <dependencies>
+     <!-- testing -->
