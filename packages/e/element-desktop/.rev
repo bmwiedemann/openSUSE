@@ -72,4 +72,17 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 </comment>
     <requestid>940305</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a717ad5c4a69965c71ea4c81b27d5f7</srcmd5>
+    <version>1.9.8</version>
+    <time>1640876140</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/943183
+- Version 1.9.8
+  * Mostly small bugfixes and minor improvements
+  * Fix WebGL
+  * See https://github.com/vector-im/element-desktop/releases/tag/v1.9.8
+</comment>
+    <requestid>943184</requestid>
+  </revision>
 </revisionlist>
