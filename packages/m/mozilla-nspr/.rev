@@ -721,4 +721,12 @@ require it nevertheless
     size for DNS queries</comment>
     <requestid>910949</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>afc00c18e28c83bac4fffe36a0cb1128</srcmd5>
+    <version>4.33</version>
+    <time>1640876129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943050</requestid>
+  </revision>
 </revisionlist>

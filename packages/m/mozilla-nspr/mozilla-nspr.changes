@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 29 11:14:31 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.33:
+  * fixes to build system and export of private symbols 
+
+-------------------------------------------------------------------
 Mon Aug  9 12:36:58 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - added a ccache conditional
