@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 26 08:55:47 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 8.0.2
+  Major changes:
+  * Type hints
+  * Bug where sorting paths fail if one of the paths is '.'.
+  * Compose unicode characters when using locale to ensure sorting
+    is correct across all locales.
+  * Explicit testing for Python 3.10
+  * Support for Python 3.4 and Python 3.5 has been removed.
+
+-------------------------------------------------------------------
 Mon Feb  1 18:02:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.1:

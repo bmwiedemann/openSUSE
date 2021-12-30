@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-natsort
-Version:        7.1.1
+Version:        8.0.2
 Release:        0
 Summary:        Natural sorting in Python
 License:        MIT
@@ -37,8 +37,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Recommends:     python-PyICU >= 1.0.0
 Recommends:     python-fastnumbers >= 2.0.0
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
