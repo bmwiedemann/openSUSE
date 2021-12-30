@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 29 10:53:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to upstream version 1.7.32
+  * In the slf4j-simple module, SimpleLogger now caters for
+    concurrent access.
+- Update to upstream version 1.7.31
+  * In the jcl-over-slf4j module avoid Object to String conversion.
+  * In the log4j-over-slf4j module added empty constructors for
+    ConsoleAppender.
+
+-------------------------------------------------------------------
 Sat Apr 11 19:11:24 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Don't use %%mvn_artifact, but %%add_maven_depmap for the

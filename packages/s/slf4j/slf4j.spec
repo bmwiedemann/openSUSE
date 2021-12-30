@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,11 @@
 
 
 Name:           slf4j
-Version:        1.7.30
+Version:        1.7.32
 Release:        0
 Summary:        Simple Logging Facade for Java
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://www.slf4j.org/
 Source0:        https://github.com/qos-ch/%{name}/archive/v_%{version}.tar.gz

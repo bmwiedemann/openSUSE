@@ -1,7 +1,7 @@
 #
-# spec file for package slf4j-sources
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,11 @@
 
 %global base_name slf4j
 Name:           %{base_name}-sources
-Version:        1.7.30
+Version:        1.7.32
 Release:        0
 Summary:        SLF4J Source JARs
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://www.slf4j.org/
 Source0:        https://github.com/qos-ch/%{base_name}/archive/v_%{version}.tar.gz
