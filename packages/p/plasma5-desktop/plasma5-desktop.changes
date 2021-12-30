@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 28 11:34:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix empty window appearing on activity switching
+  (kde#443968, boo#1193960):
+  * 0001-SwitcherBackend-Only-create-the-workaround-window-on.patch
+
+-------------------------------------------------------------------
 Tue Nov 30 14:59:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.4

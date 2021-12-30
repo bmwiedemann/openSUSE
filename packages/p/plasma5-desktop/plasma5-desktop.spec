@@ -43,6 +43,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-SwitcherBackend-Only-create-the-workaround-window-on.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-No-usr-bin-env-in-shebangs.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
