@@ -17,7 +17,7 @@
 
 
 Name:           libgsf
-Version:        1.14.47
+Version:        1.14.48
 Release:        0
 Summary:        I/O library for dealing with structured file formats
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

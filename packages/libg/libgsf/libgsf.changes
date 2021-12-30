@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 28 09:09:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.48:
+  + Add "zip64" readable property of GsfInfileZip.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:59:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
