@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Wed Dec 29 12:23:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
-
-- Use our own copy of the wrapper so that we can use the fixes
-  for Wayland
-
--------------------------------------------------------------------
 Sun Dec 26 23:02:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Define GNU_SOURCE and fix the below patched issues

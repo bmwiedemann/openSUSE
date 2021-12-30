@@ -3869,4 +3869,11 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>wayland</comment>
     <requestid>943058</requestid>
   </revision>
+  <revision rev="315" vrev="5">
+    <srcmd5>4937cb14897db41b9123fed48d61c511</srcmd5>
+    <version>96.0.4664.110</version>
+    <time>1640876034</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1194182</comment>
+  </revision>
 </revisionlist>
