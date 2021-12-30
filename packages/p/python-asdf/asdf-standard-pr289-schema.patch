@@ -1,0 +1,704 @@
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/time/time-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/time/time-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/time/time-1.1.0.yaml
+@@ -79,9 +79,15 @@ examples:
+           format: jyear
+           scale: tdb
+           location:
+-            x: 6378100
+-            y: 0
+-            z: 0
++            x: !unit/quantity-1.1.0
++              value: 6378100
++              unit: !unit/unit-1.0.0 m
++            y: !unit/quantity-1.1.0
++              value: 0
++              unit: !unit/unit-1.0.0 m
++            z: !unit/quantity-1.1.0
++              value: 0
++              unit: !unit/unit-1.0.0 m
+ 
+ definitions:
+   iso_time:
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.0.0.yaml
+@@ -17,12 +17,10 @@ examples:
+     - |
+       !transform/add-1.0.0
+         forward:
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.0.0
++            offset: 2.0
++          - !transform/shift-1.0.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.1.0.yaml
+@@ -17,12 +17,10 @@ examples:
+     - |
+       !transform/add-1.1.0
+         forward:
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.1.0
++            offset: 2.0
++          - !transform/shift-1.1.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.1.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/add-1.2.0.yaml
+@@ -17,12 +17,10 @@ examples:
+     - |
+       !transform/add-1.2.0
+         forward:
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.2.0
++            offset: 2.0
++          - !transform/shift-1.2.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.2.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.0.0.yaml
+@@ -25,12 +25,10 @@ examples:
+     - |
+       !transform/compose-1.0.0
+         forward:
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 2
+-            n_outputs: 1
++          - !transform/shift-1.0.0
++            offset: 2.0
++          - !transform/shift-1.0.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.1.0.yaml
+@@ -25,12 +25,10 @@ examples:
+     - |
+       !transform/compose-1.1.0
+         forward:
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 2
+-            n_outputs: 1
++          - !transform/shift-1.1.0
++            offset: 2.0
++          - !transform/shift-1.1.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.1.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/compose-1.2.0.yaml
+@@ -25,12 +25,10 @@ examples:
+     - |
+       !transform/compose-1.2.0
+         forward:
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 2
+-            n_outputs: 1
++          - !transform/shift-1.2.0
++            offset: 2.0
++          - !transform/shift-1.2.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.2.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.0.0.yaml
+@@ -48,15 +48,12 @@ examples:
+     - |
+       !transform/concatenate-1.0.0
+         forward:
+-          - !transform/generic-1.0.0
+-            n_inputs: 2
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 2
+-            n_outputs: 1
++          - !transform/shift-1.0.0
++            offset: 2.0
++          - !transform/shift-1.0.0
++            offset: 3.0
++          - !transform/shift-1.0.0
++            offset: 5.0
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.1.0.yaml
+@@ -48,15 +48,12 @@ examples:
+     - |
+       !transform/concatenate-1.1.0
+         forward:
+-          - !transform/generic-1.1.0
+-            n_inputs: 2
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 2
+-            n_outputs: 1
++          - !transform/shift-1.1.0
++            offset: 2.0
++          - !transform/shift-1.1.0
++            offset: 3.0
++          - !transform/shift-1.1.0
++            offset: 5.0
+ 
+ allOf:
+   - $ref: "transform-1.1.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/concatenate-1.2.0.yaml
+@@ -48,15 +48,12 @@ examples:
+     - |
+       !transform/concatenate-1.2.0
+         forward:
+-          - !transform/generic-1.2.0
+-            n_inputs: 2
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 2
+-            n_outputs: 1
++          - !transform/shift-1.2.0
++            offset: 2.0
++          - !transform/shift-1.2.0
++            offset: 3.0
++          - !transform/shift-1.2.0
++            offset: 5.0
+ 
+ allOf:
+   - $ref: "transform-1.2.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.0.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/divide-1.0.0
+         forward:
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.0.0
++            offset: 2.0
++          - !transform/shift-1.0.0
++            offset: 2.0
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.1.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/divide-1.1.0
+         forward:
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.1.0
++            offset: 2.0
++          - !transform/shift-1.1.0
++            offset: 2.0
+ 
+ allOf:
+   - $ref: "transform-1.1.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/divide-1.2.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/divide-1.2.0
+         forward:
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.2.0
++            offset: 2.0
++          - !transform/shift-1.2.0
++            offset: 2.0
+ 
+ allOf:
+   - $ref: "transform-1.2.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/generic-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/generic-1.0.0.yaml
++++ /dev/null
+@@ -1,22 +0,0 @@
+-%YAML 1.1
+----
+-$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+-id: "http://stsci.edu/schemas/asdf/transform/generic-1.0.0"
+-tag: "tag:stsci.edu:asdf/transform/generic-1.0.0"
+-title: >
+-  A generic transform.
+-description: >
+-  This is used **entirely** for bootstrapping purposes so one can
+-  create composite models including transforms that haven't yet been
+-  written.  **IT WILL NOT BE IN THE FINAL VERSION OF THE SPEC**.
+-
+-allOf:
+-  - $ref: "transform-1.0.0"
+-  - type: object
+-    properties:
+-      n_inputs:
+-        type: integer
+-      n_outputs:
+-        type: integer
+-    required: [n_inputs, n_outputs]
+-...
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/generic-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/generic-1.1.0.yaml
++++ /dev/null
+@@ -1,22 +0,0 @@
+-%YAML 1.1
+----
+-$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+-id: "http://stsci.edu/schemas/asdf/transform/generic-1.1.0"
+-tag: "tag:stsci.edu:asdf/transform/generic-1.1.0"
+-title: >
+-  A generic transform.
+-description: >
+-  This is used **entirely** for bootstrapping purposes so one can
+-  create composite models including transforms that haven't yet been
+-  written.  **IT WILL NOT BE IN THE FINAL VERSION OF THE SPEC**.
+-
+-allOf:
+-  - $ref: "transform-1.1.0"
+-  - type: object
+-    properties:
+-      n_inputs:
+-        type: integer
+-      n_outputs:
+-        type: integer
+-    required: [n_inputs, n_outputs]
+-...
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/generic-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/generic-1.2.0.yaml
++++ /dev/null
+@@ -1,22 +0,0 @@
+-%YAML 1.1
+----
+-$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+-id: "http://stsci.edu/schemas/asdf/transform/generic-1.2.0"
+-tag: "tag:stsci.edu:asdf/transform/generic-1.2.0"
+-title: >
+-  A generic transform.
+-description: >
+-  This is used **entirely** for bootstrapping purposes so one can
+-  create composite models including transforms that haven't yet been
+-  written.  **IT WILL NOT BE IN THE FINAL VERSION OF THE SPEC**.
+-
+-allOf:
+-  - $ref: "transform-1.2.0"
+-  - type: object
+-    properties:
+-      n_inputs:
+-        type: integer
+-      n_outputs:
+-        type: integer
+-    required: [n_inputs, n_outputs]
+-...
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.0.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/multiply-1.0.0
+         forward:
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.0.0
++            offset: 2.0
++          - !transform/shift-1.0.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.1.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/multiply-1.1.0
+         forward:
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.1.0
++            offset: 2.0
++          - !transform/shift-1.1.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.1.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/multiply-1.2.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/multiply-1.2.0
+         forward:
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.2.0
++            offset: 2.0
++          - !transform/shift-1.2.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.2.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.0.0.yaml
+@@ -10,14 +10,8 @@ description: |
+   This transform allows the order of the input axes to be shuffled and
+   returned as the output axes.
+ 
+-  It is a list made up of integers or "constant markers".  Each item
+-  in the list corresponds to an output axis.  For each item:
+-
+-  - If an integer, it is the index of the input axis to send to the
+-    output axis.
+-
+-  - If a constant, it must be a single item which is a constant value
+-    to send to the output axis.
++  It is a list made up of integers, each corresponding to an index of
++  the input axis to send to the output axis.
+ 
+   If only a list is provided, the number of input axes is
+   automatically determined from the maximum index in the list.  If an
+@@ -46,14 +40,6 @@ examples:
+   -
+     - For 2 input axes, add a third axis which is a constant
+     - |
+-        !transform/remap_axes-1.0.0
+-          mapping: [0, 1, !core/constant-1.0.0 42]
+-
+-  -
+-    - |
+-        The above example is equivalent to the following, and ASDF
+-        implementations are free to normalize it thusly:
+-    - |
+         !transform/concatenate-1.0.0
+           forward:
+             - !transform/remap_axes-1.0.0
+@@ -74,9 +60,7 @@ definitions:
+   mapping:
+     type: array
+     items:
+-      anyOf:
+-        - type: integer
+-        - $ref: "../core/constant-1.0.0"
++      type: integer
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.1.0.yaml
+@@ -10,14 +10,8 @@ description: |
+   This transform allows the order of the input axes to be shuffled and
+   returned as the output axes.
+ 
+-  It is a list made up of integers or "constant markers".  Each item
+-  in the list corresponds to an output axis.  For each item:
+-
+-  - If an integer, it is the index of the input axis to send to the
+-    output axis.
+-
+-  - If a constant, it must be a single item which is a constant value
+-    to send to the output axis.
++  It is a list made up of integers, each corresponding to an index of
++  the input axis to send to the output axis.
+ 
+   If only a list is provided, the number of input axes is
+   automatically determined from the maximum index in the list.  If an
+@@ -46,21 +40,13 @@ examples:
+   -
+     - For 2 input axes, add a third axis which is a constant
+     - |
+-        !transform/remap_axes-1.1.0
+-          mapping: [0, 1, !core/constant-1.0.0 42]
+-
+-  -
+-    - |
+-        The above example is equivalent to the following, and ASDF
+-        implementations are free to normalize it thusly:
+-    - |
+         !transform/concatenate-1.1.0
+           forward:
+             - !transform/remap_axes-1.1.0
+               mapping: [0]
+             - !transform/remap_axes-1.1.0
+               mapping: [1]
+-            - !transform/constant-1.0.0
++            - !transform/constant-1.1.0
+               value: 42
+ 
+   -
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/remap_axes-1.2.0.yaml
+@@ -10,14 +10,8 @@ description: |
+   This transform allows the order of the input axes to be shuffled and
+   returned as the output axes.
+ 
+-  It is a list made up of integers or "constant markers".  Each item
+-  in the list corresponds to an output axis.  For each item:
+-
+-  - If an integer, it is the index of the input axis to send to the
+-    output axis.
+-
+-  - If a constant, it must be a single item which is a constant value
+-    to send to the output axis.
++  It is a list made up of integers, each corresponding to an index of
++  the input axis to send to the output axis.
+ 
+   If only a list is provided, the number of input axes is
+   automatically determined from the maximum index in the list.  If an
+@@ -46,21 +40,13 @@ examples:
+   -
+     - For 2 input axes, add a third axis which is a constant
+     - |
+-        !transform/remap_axes-1.2.0
+-          mapping: [0, 1, !core/constant-1.0.0 42]
+-
+-  -
+-    - |
+-        The above example is equivalent to the following, and ASDF
+-        implementations are free to normalize it thusly:
+-    - |
+         !transform/concatenate-1.2.0
+           forward:
+             - !transform/remap_axes-1.2.0
+               mapping: [0]
+             - !transform/remap_axes-1.2.0
+               mapping: [1]
+-            - !transform/constant-1.3.0
++            - !transform/constant-1.2.0
+               value: 42
+ 
+   -
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.0.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/subtract-1.0.0
+         forward:
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.0.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.0.0
++            offset: 2.0
++          - !transform/shift-1.0.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.0.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.1.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/subtract-1.1.0
+         forward:
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.1.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.1.0
++            offset: 2.0
++          - !transform/shift-1.1.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.1.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/transform/subtract-1.2.0.yaml
+@@ -19,12 +19,10 @@ examples:
+     - |
+       !transform/subtract-1.2.0
+         forward:
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
+-          - !transform/generic-1.2.0
+-            n_inputs: 1
+-            n_outputs: 2
++          - !transform/shift-1.2.0
++            offset: 2.0
++          - !transform/shift-1.2.0
++            offset: 3.0
+ 
+ allOf:
+   - $ref: "transform-1.2.0"
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.0.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/version_map-1.0.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.0.0.yaml
+@@ -29,7 +29,6 @@ tags:
+   tag:stsci.edu:asdf/transform/cylindrical_perspective: 1.0.0
+   tag:stsci.edu:asdf/transform/divide: 1.0.0
+   tag:stsci.edu:asdf/transform/domain: 1.0.0
+-  tag:stsci.edu:asdf/transform/generic: 1.0.0
+   tag:stsci.edu:asdf/transform/gnomonic: 1.0.0
+   tag:stsci.edu:asdf/transform/hammer_aitoff: 1.0.0
+   tag:stsci.edu:asdf/transform/healpix: 1.0.0
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.1.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/version_map-1.1.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.1.0.yaml
+@@ -28,7 +28,6 @@ tags:
+   tag:stsci.edu:asdf/transform/cylindrical_equal_area: 1.1.0
+   tag:stsci.edu:asdf/transform/cylindrical_perspective: 1.1.0
+   tag:stsci.edu:asdf/transform/divide: 1.1.0
+-  tag:stsci.edu:asdf/transform/generic: 1.1.0
+   tag:stsci.edu:asdf/transform/gnomonic: 1.1.0
+   tag:stsci.edu:asdf/transform/hammer_aitoff: 1.1.0
+   tag:stsci.edu:asdf/transform/healpix: 1.1.0
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.2.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/version_map-1.2.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.2.0.yaml
+@@ -28,7 +28,6 @@ tags:
+   tag:stsci.edu:asdf/transform/cylindrical_equal_area: 1.2.0
+   tag:stsci.edu:asdf/transform/cylindrical_perspective: 1.2.0
+   tag:stsci.edu:asdf/transform/divide: 1.1.0
+-  tag:stsci.edu:asdf/transform/generic: 1.1.0
+   tag:stsci.edu:asdf/transform/gnomonic: 1.1.0
+   tag:stsci.edu:asdf/transform/hammer_aitoff: 1.1.0
+   tag:stsci.edu:asdf/transform/healpix: 1.1.0
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.3.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/version_map-1.3.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.3.0.yaml
+@@ -30,7 +30,6 @@ tags:
+   tag:stsci.edu:asdf/transform/cylindrical_equal_area: 1.2.0
+   tag:stsci.edu:asdf/transform/cylindrical_perspective: 1.2.0
+   tag:stsci.edu:asdf/transform/divide: 1.1.0
+-  tag:stsci.edu:asdf/transform/generic: 1.1.0
+   tag:stsci.edu:asdf/transform/gnomonic: 1.1.0
+   tag:stsci.edu:asdf/transform/hammer_aitoff: 1.1.0
+   tag:stsci.edu:asdf/transform/healpix: 1.1.0
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.4.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/version_map-1.4.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.4.0.yaml
+@@ -33,7 +33,6 @@ tags:
+   tag:stsci.edu:asdf/transform/cylindrical_perspective: 1.3.0
+   tag:stsci.edu:asdf/transform/divide: 1.2.0
+   tag:stsci.edu:asdf/transform/fix_inputs: 1.2.0
+-  tag:stsci.edu:asdf/transform/generic: 1.2.0
+   tag:stsci.edu:asdf/transform/gnomonic: 1.2.0
+   tag:stsci.edu:asdf/transform/hammer_aitoff: 1.2.0
+   tag:stsci.edu:asdf/transform/healpix: 1.2.0
+Index: asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.5.0.yaml
+===================================================================
+--- asdf-2.8.3.orig/asdf-standard/schemas/stsci.edu/asdf/version_map-1.5.0.yaml
++++ asdf-2.8.3/asdf-standard/schemas/stsci.edu/asdf/version_map-1.5.0.yaml
+@@ -45,7 +45,6 @@ tags:
+   tag:stsci.edu:asdf/transform/fix_inputs: 1.2.0
+   tag:stsci.edu:asdf/transform/gaussian1d: 1.0.0
+   tag:stsci.edu:asdf/transform/gaussian2d: 1.0.0
+-  tag:stsci.edu:asdf/transform/generic: 1.2.0
+   tag:stsci.edu:asdf/transform/gnomonic: 1.2.0
+   tag:stsci.edu:asdf/transform/hammer_aitoff: 1.2.0
+   tag:stsci.edu:asdf/transform/healpix: 1.2.0

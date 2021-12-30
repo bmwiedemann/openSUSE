@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 28 18:57:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patches for working with newer gwcs and asdf-astropy
+  * asdf-pr1034-tags.patch
+  * asdf-standard-pr289-schema.patch
+
+-------------------------------------------------------------------
 Mon Dec 13 18:43:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.8.3

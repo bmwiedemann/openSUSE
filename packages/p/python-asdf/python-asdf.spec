@@ -35,6 +35,10 @@ Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM asdf-pr1034-tags.patch -- gh#asdf-format/asdf#1034
+Patch0:         asdf-pr1034-tags.patch
+# PATCH-FIX-UPSTREAM asdf-standard-pr289-schema.patch  -- gh#asdf-format/asdf-standard#289
+Patch1:         asdf-standard-pr289-schema.patch
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module importlib-resources >= 3 if %python-base < 3.9}
 BuildRequires:  %{python_module jmespath >= 0.6.2}
@@ -79,7 +83,7 @@ interchange format for scientific data. This package contains the
 Python implementation of the ASDF Standard.
 
 %prep
-%setup -q -n asdf-%{version}
+%autosetup -p1 -n asdf-%{version}
 sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
 chmod a-x asdf/extern/RangeHTTPServer.py
 sed -i 's/\r$//' asdf/tests/data/example_schema.json
