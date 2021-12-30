@@ -48,6 +48,7 @@ BuildRequires:  libbraille-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
