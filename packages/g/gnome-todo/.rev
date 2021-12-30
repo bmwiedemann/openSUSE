@@ -181,4 +181,16 @@
   documentation=false to meson. (forwarded request 929181 from dimstar)</comment>
     <requestid>929702</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d994975af23a74af1658853f0f6f41ce</srcmd5>
+    <version>41.0</version>
+    <time>1640880627</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fdupes BuildRequires and macro, remove duplicate files. Add
+  a note about why we are passing introspection=false to meson and
+  not building introspection support (brings a dependency on a
+  private library).
+</comment>
+    <requestid>943239</requestid>
+  </revision>
 </revisionlist>

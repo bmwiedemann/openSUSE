@@ -26,6 +26,7 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Todo
 Source0:        https://download.gnome.org/sources/gnome-todo/41/%{name}-%{version}.tar.xz
 
+BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -74,8 +75,9 @@ GNOME desktop environment.
 %autosetup -p1
 
 %build
+# NOTE: We are not building introspection support as that introduces a dep on a private lib, last checked ver 41.0
 %meson \
-        -Dintrospection=false \
+	-Dintrospection=false \
 	%{nil}
 %meson_build
 
@@ -83,6 +85,7 @@ GNOME desktop environment.
 %meson_install
 %suse_update_desktop_file -r org.gnome.Todo Office ProjectManagement
 %find_lang %{name} %{?no_lang_C}
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
@@ -95,7 +98,6 @@ GNOME desktop environment.
 %{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Todo*
 %{_datadir}/icons/hicolor/symbolic/actions/
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.Todo.appdata.xml
 
 %files devel

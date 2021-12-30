@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 29 09:47:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fdupes BuildRequires and macro, remove duplicate files. Add
+  a note about why we are passing introspection=false to meson and
+  not building introspection support (brings a dependency on a
+  private library).
+
+-------------------------------------------------------------------
 Thu Nov  4 13:14:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop passing the no longer used nor recognized option
