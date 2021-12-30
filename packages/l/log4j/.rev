@@ -278,4 +278,12 @@
     <comment>bsc#1193887, bsc#1193888, CVE-2021-45105</comment>
     <requestid>941419</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>244eb37085e59b4d826583a084139bda</srcmd5>
+    <version>2.17.1</version>
+    <time>1640880628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943087</requestid>
+  </revision>
 </revisionlist>

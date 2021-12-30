@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 29 08:34:08 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Update to 2.17.1 [bsc#1194127, CVE-2021-44832] 
+  * Fixed bugs:
+    - JdbcAppender now uses JndiManager to access JNDI resources.
+      JNDI is only enabled when system property log4j2.enableJndiJdbc 
+      is set to true.
+    - Remove unused method.
+    - ExtendedLoggerWrapper.logMessage no longer double-logs when
+      location is requested.
+    - log4j-to-slf4j no longer re-interpolates formatted message
+      contents.
+    - Correct SpringLookup package name in Interpolator.
+    - log4j-to-slf4j takes the provided MessageFactory into account.
+    - Fix MapLookup to lookup MapMessage before DefaultMap.
+    - Buffered I/O checked had inverted logic in 
+      RollingFileAppenderBuidler.
+    - Fix NPE when input is null in 
+      StrSubstitutor.replace(String, Properties).
+    - Lookups with no prefix only read values from the configuration
+      properties as expected.
+    - Reduce ignored package scope of KafkaAppender.
+
+-------------------------------------------------------------------
 Sat Dec 18 15:29:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key to verify source signature

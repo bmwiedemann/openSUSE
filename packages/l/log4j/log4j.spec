@@ -17,7 +17,7 @@
 
 
 Name:           log4j
-Version:        2.17.0
+Version:        2.17.1
 Release:        0
 Summary:        Java logging package
 License:        Apache-2.0
