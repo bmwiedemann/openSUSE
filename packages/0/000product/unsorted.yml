@@ -14170,7 +14170,7 @@ unsorted:
   - libunbound-devel-mini 
   - libunibilium4 
   - libunibreak-devel 
-  - libunibreak3 
+  - libunibreak5 
   - libunicap-devel 
   - libunicap2 
   - libunicap2-32bit: [x86_64] 
@@ -22331,7 +22331,6 @@ unsorted:
   - python36-colorama 
   - python36-colorcet 
   - python36-colorclass 
-  - python36-coloredlogs 
   - python36-colorlog 
   - python36-colorlover 
   - python36-colour 
@@ -23580,7 +23579,6 @@ unsorted:
   - python36-pytest 
   - python36-pytest-aiofiles 
   - python36-pytest-aiohttp 
-  - python36-pytest-astropy-header 
   - python36-pytest-asyncio 
   - python36-pytest-attrib 
   - python36-pytest-base-url 
@@ -24317,6 +24315,7 @@ unsorted:
   - python36-yaspin 
   - python36-yaswfp 
   - python36-yg.lockfile 
+  - python36-youtube-dl 
   - python36-yq 
   - python36-zake 
   - python36-zc.buildout 
@@ -27249,6 +27248,7 @@ unsorted:
   - python38-yaspin 
   - python38-yaswfp 
   - python38-yg.lockfile 
+  - python38-youtube-dl 
   - python38-yq 
   - python38-yt 
   - python38-zake 
@@ -30407,6 +30407,7 @@ unsorted:
   - python39-yaspin 
   - python39-yaswfp 
   - python39-yg.lockfile 
+  - python39-youtube-dl 
   - python39-yq 
   - python39-yt 
   - python39-zake 
@@ -42845,6 +42846,10 @@ unsorted:
   - you-get-bash-completion 
   - you-get-fish-completion 
   - you-get-zsh-completion 
+  - youtube-dl 
+  - youtube-dl-bash-completion 
+  - youtube-dl-fish-completion 
+  - youtube-dl-zsh-completion 
   - ypserv 
   - yt-dlp 
   - yt-dlp-bash-completion 
