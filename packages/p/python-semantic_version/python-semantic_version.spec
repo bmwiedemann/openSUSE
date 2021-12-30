@@ -33,13 +33,16 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rbarrois/python-semanticversion
 Source:         https://files.pythonhosted.org/packages/source/s/semantic_version/semantic_version-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sematicversion-pr123-dj40.patch -- gh#rbarrois/python-semanticversion#123
+Patch1:         sematicversion-pr123-dj40.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module pytest}
+# Django 4.0 dropped support for Python < 3.8
+BuildRequires:  %{python_module Django >= 1.11 if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
@@ -48,7 +51,7 @@ This small python library provides a few tools to handle `SemVer`_ in Python.
 It follows strictly the 2.0.0 version of the SemVer scheme.
 
 %prep
-%setup -q -n semantic_version-%{version}
+%autosetup -p1 -n semantic_version-%{version}
 
 %build
 %python_build
@@ -61,14 +64,17 @@ It follows strictly the 2.0.0 version of the SemVer scheme.
 
 %if %{with test}
 %check
-%pytest
+# Django 4.0 dropped support for Python < 3.8
+python36_flags="--ignore tests/test_django.py"
+%pytest ${$python_flags}
 
 %else
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/*
+%{python_sitelib}/semantic_version
+%{python_sitelib}/semantic_version-%{version}*-info
 %endif
 
 %changelog

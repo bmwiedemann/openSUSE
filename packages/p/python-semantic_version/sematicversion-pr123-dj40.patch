@@ -1,0 +1,30 @@
+From 93c7028c8d4f2ca894734f39b7cb393b259c4cab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Barrois?= <raphael.barrois@paylead.fr>
+Date: Mon, 8 Nov 2021 14:18:29 +0100
+Subject: [PATCH 3/4] Add support for Django 4.0
+
+The gettext_lazy function has a different name between Django 2.x and
+4.x; use the right one according to the version.
+
+Closes #113, #121
+
+Index: semantic_version-2.8.5/semantic_version/django_fields.py
+===================================================================
+--- semantic_version-2.8.5.orig/semantic_version/django_fields.py
++++ semantic_version-2.8.5/semantic_version/django_fields.py
+@@ -4,8 +4,14 @@
+ 
+ import warnings
+ 
++import django
+ from django.db import models
+-from django.utils.translation import ugettext_lazy as _
++
++if django.VERSION >= (3, 0):
++    # See https://docs.djangoproject.com/en/dev/releases/3.0/#features-deprecated-in-3-0
++    from django.utils.translation import gettext_lazy as _
++else:
++    from django.utils.translation import ugettext_lazy as _
+ 
+ from . import base
+ 

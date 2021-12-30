@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 27 11:47:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make it work with Django 4
+  * add sematicversion-pr123-dj40.patch
+  * gh#rbarrois/python-semanticversion#123
+  * Don't test django app on python36: Django 4 dropped it
+
+-------------------------------------------------------------------
 Fri Dec 10 07:01:40 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add the package suffix to Name to have multibuild work correctly. 
