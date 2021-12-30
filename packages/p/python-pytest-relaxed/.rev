@@ -59,4 +59,12 @@
     <comment>- Add missing BuildRequires on six.</comment>
     <requestid>931875</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>8a5590eda8bf9b4b91e1ee868879ee3d</srcmd5>
+    <version>1.1.5</version>
+    <time>1640876127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943004</requestid>
+  </revision>
 </revisionlist>

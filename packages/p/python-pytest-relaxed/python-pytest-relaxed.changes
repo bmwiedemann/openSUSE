@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 28 20:34:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python310 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
 Wed Nov 17 03:44:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on six. 

@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python310 1
 Name:           python-pytest-relaxed
 Version:        1.1.5
 Release:        0
