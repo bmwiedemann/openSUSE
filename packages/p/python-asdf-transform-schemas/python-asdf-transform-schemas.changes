@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Dec 28 15:23:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.2.0
+- Required by python-asdf-astropy which is required by gwcs-0.18
