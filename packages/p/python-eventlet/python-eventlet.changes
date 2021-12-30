@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 26 14:03:52 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add python-eventlet-FTBFS2028.patch to fix build in 2028 (boo#1102840)
+
+-------------------------------------------------------------------
 Thu Dec 16 20:11:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 0.33.0

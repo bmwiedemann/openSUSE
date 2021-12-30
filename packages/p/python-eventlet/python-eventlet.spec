@@ -31,6 +31,8 @@ Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventl
 Patch0:         denose-eventlet.patch
 # PATCH-FIX-UPSTREAM newdnspython.patch mcepl@suse.com -- patch is from gh#rthalley/dnspython#519, discussion in gh#eventlet/eventlet#638
 Patch1:         newdnspython.patch
+# PATCH-FIX-UPSTREAM https://github.com/eventlet/eventlet/pull/643
+Patch2:         python-eventlet-FTBFS2028.patch
 BuildRequires:  %{python_module setuptools}
 %if %{with python2}
 BuildRequires:  python2-monotonic >= 1.4
