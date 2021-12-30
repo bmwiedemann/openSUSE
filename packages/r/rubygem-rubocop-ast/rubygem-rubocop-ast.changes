@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 30 12:37:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.15.1
+
+  ### Bug fixes
+
+  * [#10220](https://github.com/rubocop/rubocop/pull/10220): Make `AST::Node#receiver` aware of `csend` block method calls. ([@koic][])
+
+-------------------------------------------------------------------
 Wed Dec 22 00:31:11 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.15.0

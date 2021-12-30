@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>942035</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6607c63818fce19b971f2563b2f07c96</srcmd5>
+    <version>1.15.1</version>
+    <time>1640876142</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 943209 from mschnitzer)</comment>
+    <requestid>943210</requestid>
+  </revision>
 </revisionlist>
