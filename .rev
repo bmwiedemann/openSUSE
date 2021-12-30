@@ -355,4 +355,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>932590</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>294ac33f83681926a453d8a2dda689c4</srcmd5>
+    <version>1.20.0</version>
+    <time>1640876113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940951</requestid>
+  </revision>
 </revisionlist>
