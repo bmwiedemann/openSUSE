@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 29 08:05:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.0.12:
+  * check for null byte only at the end of the user given
+    input length (fix #23)
+
+-------------------------------------------------------------------
 Mon May  3 16:12:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.0.11

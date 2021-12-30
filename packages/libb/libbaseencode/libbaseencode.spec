@@ -16,18 +16,19 @@
 #
 
 
+%define libsoname %{name}1
 %if 0%{?fedora_version}
 %global debug_package %{nil}
 %endif
-%define libsoname %{name}1
 Name:           libbaseencode
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        Base32 and base64 encoding library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/paolostivanin/%{name}
-Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
+Source1:        https://github.com/paolostivanin/%{name}/releases/download/v%{version}/v%{version}.tar.gz.asc
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
