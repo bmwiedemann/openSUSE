@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>019612511d61f1e769327580b09179de</srcmd5>
+    <version>0.1.0</version>
+    <time>1640876145</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial specfile for v0.1.0
+- Required by asdf-astropy, which is required by gwcs 0.18</comment>
+    <requestid>943221</requestid>
+  </revision>
+</revisionlist>
