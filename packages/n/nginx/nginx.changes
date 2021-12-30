@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 29 11:03:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Updated to 1.21.5
+  * https://nginx.org/en/CHANGES
+  * Build with the PCRE2.
+  * Supported the $ssl_curve variable.
+  * Fixed connections might hang when using HTTP/2 without SSL
+    with the "sendfile" and "aio" directives.
+
+-------------------------------------------------------------------
 Fri Nov  5 21:24:19 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 1.21.4

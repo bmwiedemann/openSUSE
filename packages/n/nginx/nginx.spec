@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.21.4
+Version:        1.21.5
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -53,7 +53,7 @@ BuildRequires:  libatomic-ops-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  nginx-macros
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -88,7 +88,7 @@ Requires:       libatomic-ops-devel
 Requires:       libxslt-devel
 Requires:       nginx = %{version}
 Requires:       openssl-devel
-Requires:       pcre-devel
+Requires:       pcre2-devel
 Requires:       pkgconfig
 Requires:       vim
 Requires:       zlib-devel

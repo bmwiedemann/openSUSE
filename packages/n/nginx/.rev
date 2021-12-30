@@ -849,4 +849,17 @@
 - drop vim-plugin-nginx, now is provided directly by vim </comment>
     <requestid>930156</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5c9b8005de57a6c5f666979b6fae35ff</srcmd5>
+    <version>1.21.5</version>
+    <time>1640876130</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.21.5
+  * https://nginx.org/en/CHANGES
+  * Build with the PCRE2.
+  * Supported the $ssl_curve variable.
+  * Fixed connections might hang when using HTTP/2 without SSL
+    with the &quot;sendfile&quot; and &quot;aio&quot; directives.</comment>
+    <requestid>943052</requestid>
+  </revision>
 </revisionlist>
