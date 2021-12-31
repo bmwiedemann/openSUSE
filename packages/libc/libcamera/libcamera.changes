@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 29 11:35:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add optional pkgconfig(libtiff-4) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Oct  1 20:07:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.0.0+g3076 (d79b412)
