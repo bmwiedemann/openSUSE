@@ -5,25 +5,25 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1172073: '20211203'
-  boo#1176553: '20211229'
+  boo#1176553: '20211230'
   boo#1183454: '20211230'
   boo#1189869: '20211207'
-  boo#1190434: '20211229'
+  boo#1190434: '20211230'
   boo#1190670: '20211128'
-  boo#1190823: '20211229'
+  boo#1190823: '20211230'
   boo#1191225: '20211210'
-  boo#1191603: '20211229'
+  boo#1191603: '20211230'
   boo#1192118: '20211117'
   boo#1192420: '20211106'
   boo#1192667: '20211128'
   boo#1192701: '20211123'
-  boo#1192812: '20211229'
+  boo#1192812: '20211230'
   boo#1192921: '20211122'
   boo#1192940: '20211121'
   boo#1192959: '20211121'
   boo#1193016: '20211127'
   boo#1193038: '20211124'
-  boo#1193133: '20211229'
+  boo#1193133: '20211230'
   boo#1193134: '20211126'
   boo#1193344: '20211202'
   boo#1193345: '20211211'
@@ -31,7 +31,7 @@
   boo#1193547: '20211208'
   boo#1193695: '20211214'
   boo#1193758: '20211214'
-  boo#1193909: '20211229'
+  boo#1193909: '20211230'
   boo#1194054: '20211230'
   bsc#1161276: '20211230'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
@@ -105,7 +105,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20211230</value>
+    <value>20211231</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
