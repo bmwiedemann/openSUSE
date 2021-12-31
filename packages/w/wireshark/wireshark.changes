@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 30 09:41:01 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.1: 
+  * CVE-2021-4185: RTMPT dissector infinite loop.
+  * CVE-2021-4184: BitTorrent DHT dissector infinite loop.
+  * CVE-2021-4183: pcapng file parser crash.
+  * CVE-2021-4182: RFC 7468 file parser infinite loop.
+  * CVE-2021-4181: Sysdig Event dissector crash.
+  * Kafka dissector infinite loop. Issue 17811.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.1.html
+
+-------------------------------------------------------------------
 Tue Dec 20 12:45:39 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.0:
