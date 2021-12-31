@@ -18,18 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-# Astropy dropped Python 3.6 
+# Astropy dropped Python 3.6
 # But gwcs still supports it, so keep the -base, requirement below for potential Leap backports
 %define skip_python36 1
 Name:           python-gwcs
-Version:        0.16.1
+Version:        0.18.0
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://gwcs.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
-BuildRequires:  %{python_module asdf}
+BuildRequires:  %{python_module asdf >= 2.8.1}
+BuildRequires:  %{python_module asdf-astropy}
+BuildRequires:  %{python_module asdf_wcs_schemas}
 BuildRequires:  %{python_module astropy >= 4.1}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module numpy}
@@ -38,13 +40,15 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asdf
+Requires:       python-asdf >= 2.8.1
+Requires:       python-asdf-astropy
+Requires:       python-asdf_wcs_schemas
 Requires:       python-astropy >= 4.1
 Requires:       python-numpy
 Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-doctestplus}
+BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -72,6 +76,6 @@ World Coordinate System of astronomical data.
 %doc README.rst
 %license licenses/LICENSE.rst licenses/README.rst
 %{python_sitelib}/gwcs
-%{python_sitelib}/gwcs-%{version}-py*.egg-info
+%{python_sitelib}/gwcs-%{version}*-info
 
 %changelog
