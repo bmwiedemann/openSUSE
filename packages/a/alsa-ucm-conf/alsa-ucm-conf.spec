@@ -24,6 +24,7 @@ License:        BSD-3-Clause
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
+Patch1:         0001-HDA-DualCodecs-fix-typo-in-Speaker-condition.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1

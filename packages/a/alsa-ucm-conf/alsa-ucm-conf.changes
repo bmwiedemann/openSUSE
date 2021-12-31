@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 30 09:17:42 CET 2021 - tiwai@suse.de
+
+- Fix a regression in HDA-DualCodecs:
+  0001-HDA-DualCodecs-fix-typo-in-Speaker-condition.patch
+
+-------------------------------------------------------------------
 Sun Dec 26 10:13:49 CET 2021 - tiwai@suse.de
 
 - Update to version 1.2.6.3:

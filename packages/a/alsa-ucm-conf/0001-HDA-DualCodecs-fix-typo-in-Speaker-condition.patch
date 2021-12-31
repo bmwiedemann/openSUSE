@@ -1,0 +1,35 @@
+From 0b2aa9d22f8897cbe68f1aa2ffe437ad3194ec4b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 27 Dec 2021 22:05:16 +0100
+Subject: [PATCH] HDA-DualCodecs: fix typo in Speaker condition
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA/DualCodecs/HiFi.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ucm2/HDA/DualCodecs/HiFi.conf b/ucm2/HDA/DualCodecs/HiFi.conf
+index 7dcd6b045921..1f7e58d8e4a8 100644
+--- a/ucm2/HDA/DualCodecs/HiFi.conf
++++ b/ucm2/HDA/DualCodecs/HiFi.conf
+@@ -19,7 +19,7 @@ SectionVerb {
+ If.speaker {
+ 	Condition {
+ 		Type ControlExists
+-		Control "name='Speaker Volume Switch'"
++		Control "name='Speaker Playback Switch'"
+ 	}
+ 	True {
+ 		SectionVerb {
+@@ -100,7 +100,7 @@ SectionDevice."Headphones" {
+ 	If.speaker {
+ 		Condition {
+ 			Type ControlExists
+-			Control "name='Speaker Volume Switch'"
++			Control "name='Speaker Playback Switch'"
+ 		}
+ 		True.Value.JackHWMute "Speaker"
+ 	}
+-- 
+2.31.1
+
