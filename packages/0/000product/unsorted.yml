@@ -24652,6 +24652,10 @@ unsorted:
   - python38-asciimatics 
   - python38-asciitree 
   - python38-asdf 
+  - python38-asdf-astropy 
+  - python38-asdf-coordinates-schemas 
+  - python38-asdf-transform-schemas 
+  - python38-asdf-wcs-schemas 
   - python38-asgiref 
   - python38-asn1crypto 
   - python38-aspectlib 
@@ -27612,6 +27616,10 @@ unsorted:
   - python39-asciimatics 
   - python39-asciitree 
   - python39-asdf 
+  - python39-asdf-astropy 
+  - python39-asdf-coordinates-schemas 
+  - python39-asdf-transform-schemas 
+  - python39-asdf-wcs-schemas 
   - python39-asgiref 
   - python39-asn1crypto 
   - python39-aspectlib 
