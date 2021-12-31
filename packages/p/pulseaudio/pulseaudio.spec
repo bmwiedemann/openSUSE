@@ -355,7 +355,7 @@ System user for PulseAudio
       -Dsystem-group=pulse \
       -Daccess-group=pulse-access     \
       -Drunning-from-build-tree=false \
-      -Dpulsedsp-location='%{_prefix}/\\$$LIB/pulseaudio' \
+      -Dpulsedsp-location='%{_prefix}/\$LIB/pulseaudio' \
       -Dudevrulesdir="%{_udevrulesdir}"      \
       -Dsystemduserunitdir="%{_userunitdir}" \
       -Db_pie=true \
