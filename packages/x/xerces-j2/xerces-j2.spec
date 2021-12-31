@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-j2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,25 @@
 #
 
 
-%global cvs_version 2_12_0
+%global cvs_version 2_12_1
 %define __requires_exclude system.bundle
 Name:           xerces-j2
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        Java XML parser
 License:        Apache-2.0 AND W3C
 Group:          Development/Libraries/Java
-URL:            http://xerces.apache.org/xerces2-j/
-Source0:        http://www.eu.apache.org/dist/xerces/j/source/Xerces-J-src.%{version}.tar.gz
+URL:            https://xerces.apache.org/xerces2-j/
+Source0:        https://dlcdn.apache.org//xerces/j/source/Xerces-J-src.%{version}.tar.gz
 Source1:        %{name}-version.sh
 Source2:        %{name}-constants.sh
 Source3:        %{name}-version.1
 Source4:        %{name}-constants.1
-Source5:        http://repo.maven.apache.org/maven2/xerces/xercesImpl/%{version}/xercesImpl-%{version}.pom
+Source5:        https://repo.maven.apache.org/maven2/xerces/xercesImpl/%{version}/xercesImpl-%{version}.pom
 # Patch the build so that it doesn't try to use bundled xml-commons source
 # Also remove the use of the special taglets and xjavac task
 Patch0:         %{name}-build.patch
-Patch1:         xerces-2_11_0-jdk7.patch
-Patch2:         %{name}-manifest.patch
+Patch1:         %{name}-manifest.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -88,9 +87,9 @@ Requires:       %{name} = %{version}-%{release}
 %setup -q -n xerces-%{cvs_version}
 find "(" -name "*.class" -o -name "*.jar" ")" -delete
 find -type f -exec dos2unix {} \;
+
 %patch0 -p1
-%patch1 -p1
-%patch2
+%patch1
 
 %build
 mkdir -p tools

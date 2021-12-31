@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Dec 28 17:26:24 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Removed patch xerces-2_11_0-jdk7.patch:
+  * this patch is already applied upstream
+- Upgrade to upstream 2.12.1:
+  * This release is a bug fix release. It fixes few bugs which were
+  present in Xerces-J 2.12.0 and also includes a few other minor 
+  enhancements.
+    + Implemented few fixes for XML Schema identity constraints, 
+      within Xerces's XML Schema 1.0 and 1.1 validators. 
+    + When XML Schema 1.1 validations are done, where xs:assert 
+      are contained within xs:override, the XPath expressions 
+      within xs:assert can't see XML namespace bindings specified
+      at certain locations in schema documents.
+    + When XML Schema 1.1 validations are done, when the schema
+      document is specified via xsi:schemaLocation attribute in 
+      the XML document, when full XPath 2.0 is used with CTA, for
+      certain use cases validation was not occurring correctly.
+    + For certain cases, while doing XML Schema 1.1 xs:assert
+      validations, error messages appeared like following 
+      'FOAR0001 - Division by zero'. Modified such error messages,
+      to now contain the character ':' instead of '-' (since, the
+      character '-' can be confused with a negation symbol).	
+    + The 'XML Schema 1.1 structures' REC in the section, "3.2.3
+      Constraints on XML Representations of Attribute Declarations 
+      (Schema Representation Constraint: Attribute Declaration 
+      Representation)" mentions, '5 If fixed and use are both 
+      present, use must not have the actual value prohibited'. 
+      This functionality is newly introduced in XML Schema 1.1. 
+      Fixed a runtime validation issue for this XSD clause, when
+      XSD 1.1 implementation is invoked in XSD 1.0 mode.
+    + Xerces-J was previously not building from sources when Java
+      9+ was used.
+    + XML Schema 1.1 has introduced the attribute 'ref' on xs:key,
+      xs:unique and xs:keyref. When certain suchschema documents
+      were processed by Xerces-J's XSD 1.1 implementation in XSD 
+      1.0 mode, a java.lang.NullPointerException was displayed to
+      the user when the schema document is processed with Xerces 
+      sample jaxp.SourceValidator.
+    + Fixed minor bugs and made various improvements.
+    + Added many new tests to the regression since the previous
+      Xerces release, for Xerces's XML Schema 1.0 and 1.1 
+      implementations.
+
+-------------------------------------------------------------------
 Wed Apr 17 10:41:24 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove bogus dependency
