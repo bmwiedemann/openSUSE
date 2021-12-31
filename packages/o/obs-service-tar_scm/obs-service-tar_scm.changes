@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 23 09:01:11 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.29.1634038025.85bfc3f:
+  * fix test cases
+  * fix various linter problems with pylint 2.11.1
+  * disable consider-using-f-string in pylint
+  * added TC for _stash_pop_required
+  * assertTarIsDeeply now more verbose in case of failure
+  * remove tearDown/Trace from testenv.py
+  * fix regression to keep local changes when running in osc
+
+-------------------------------------------------------------------
 Mon Sep 20 13:35:30 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.28.1632141620.a8837d3:
