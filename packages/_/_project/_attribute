@@ -5,19 +5,19 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1172073: '20211203'
-  boo#1176553: '20211230'
-  boo#1183454: '20211230'
+  boo#1176553: '20211231'
+  boo#1183454: '20211231'
   boo#1189869: '20211207'
   boo#1190434: '20211230'
   boo#1190670: '20211128'
-  boo#1190823: '20211230'
+  boo#1190823: '20211231'
   boo#1191225: '20211210'
   boo#1191603: '20211230'
   boo#1192118: '20211117'
   boo#1192420: '20211106'
   boo#1192667: '20211128'
   boo#1192701: '20211123'
-  boo#1192812: '20211230'
+  boo#1192812: '20211231'
   boo#1192921: '20211122'
   boo#1192940: '20211121'
   boo#1192959: '20211121'
@@ -55,7 +55,7 @@
   poo#104325: '20211227'
   poo#104505: '20211229'
   poo#80628: '20211223'
-  poo#91383: '20211230'
+  poo#91383: '20211231'
   poo#96611: '20211109'
   poo#99039: '20211110'
   poo#99057: '20211229'
@@ -105,7 +105,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20211231</value>
+    <value>20220101</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -433,10 +433,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20211230'
+    <value>failed: '20211231'
 published: '20211228'
 publishing: '20211228'
-testing: '20211230'
+testing: '20211231'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
