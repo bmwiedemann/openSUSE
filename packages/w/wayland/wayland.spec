@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define _version 1.20.0
+%define _version 1.19.0
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %define eglversion 99~%_version
 %else
@@ -37,11 +37,12 @@ Source:         http://wayland.freedesktop.org/releases/%name-%version.tar.xz
 Source2:        http://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
+
 BuildRequires:  c_compiler
 BuildRequires:  c++_compiler
+BuildRequires:  meson
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
-BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(expat)
