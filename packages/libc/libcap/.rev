@@ -411,4 +411,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>934430</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f7eb5e46bc36639b867c46b450a835b3</srcmd5>
+    <version>2.62</version>
+    <time>1641135984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.62:
+  * Bug fix for Go package &quot;cap&quot; and launching
+  * Build cleanups
+  * Documentation updates: cap_max_bits has a man page entry
+  * Recognize default securebits as a libcap mode: HYBRID</comment>
+    <requestid>943181</requestid>
+  </revision>
 </revisionlist>
