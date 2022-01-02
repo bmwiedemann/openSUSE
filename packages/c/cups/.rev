@@ -1218,4 +1218,11 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>943130</requestid>
   </revision>
+  <revision rev="161" vrev="8">
+    <srcmd5>c26f8459d144d35ccbc99b238233d4c7</srcmd5>
+    <version>2.3.3op2</version>
+    <time>1641120876</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1193134</comment>
+  </revision>
 </revisionlist>

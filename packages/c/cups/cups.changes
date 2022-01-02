@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Fri Oct 15 07:31:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
-
-- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
-  * harden_cups.service.patch
-
--------------------------------------------------------------------
 Mon Jun  7 13:23:25 CEST 2021 - jsmeix@suse.de
 
 - Provide /usr/share/cups/ppdc/ in the "cups" main package
