@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 30 12:14:35 UTC 2021 - Matthias Bach <marix@marix.org> - 5.9.0
+
+- Upgrade to version 5.9.0
+  * Security enhancements
+- Upgrade Go version used for compilation to 1.16
+- Added vendor-5.9.0.tar.xz providing vendored dependencies, as
+  upstream no longer vendors them.
+
+-------------------------------------------------------------------
 Sat Oct  2 08:53:49 UTC 2021 - Matthias Bach <marix@marix.org> - 5.8.1
 
 - Upgrade to version 5.8.1

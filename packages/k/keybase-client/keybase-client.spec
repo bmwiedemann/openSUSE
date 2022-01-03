@@ -18,7 +18,7 @@
 
 
 Name:           keybase-client
-Version:        5.8.1
+Version:        5.9.0
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause
@@ -27,11 +27,14 @@ URL:            https://github.com/keybase/client/
 Source:         client-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        keybase.service
+Source3:        vendor-%{version}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  go1.14
+BuildRequires:  go1.16
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
 BuildRequires:  pkgconfig
+BuildRequires:  tar
+BuildRequires:  xz
 BuildRequires:  pkgconfig(systemd)
 %{go_nostrip}
 %{?systemd_ordering}
@@ -46,6 +49,7 @@ up keys for such accounts that people have created a proof for.
 
 %prep
 %setup -q -n client-%{version}
+tar -xaf %{SOURCE3}
 
 %build
 %{goprep} github.com/keybase/client/go
