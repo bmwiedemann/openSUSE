@@ -633,4 +633,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment></comment>
     <requestid>932490</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>19efb0beb41110344abfa8e9737a5480</srcmd5>
+    <version>1.8.7</version>
+    <time>1641203340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943246</requestid>
+  </revision>
 </revisionlist>

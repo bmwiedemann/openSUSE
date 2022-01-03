@@ -339,7 +339,18 @@ fi
 %ghost %_sysconfdir/alternatives/ip6tables-restore
 %ghost %_sysconfdir/alternatives/ip6tables-save
 %else
-%_datadir/libalternatives/
+%_datadir/libalternatives/ip6tables/1.conf
+%dir %_datadir/libalternatives/ip6tables
+%_datadir/libalternatives/ip6tables-restore/1.conf
+%dir %_datadir/libalternatives/ip6tables-restore
+%_datadir/libalternatives/ip6tables-save/1.conf
+%dir %_datadir/libalternatives/ip6tables-save
+%_datadir/libalternatives/iptables/1.conf
+%dir %_datadir/libalternatives/iptables
+%_datadir/libalternatives/iptables-restore/1.conf
+%dir %_datadir/libalternatives/iptables-restore
+%_datadir/libalternatives/iptables-save/1.conf
+%dir %_datadir/libalternatives/iptables-save
 %endif
 %_sbindir/iptables
 %_sbindir/iptables-restore
@@ -362,15 +373,39 @@ fi
 %ghost %_sysconfdir/alternatives/ebtables
 %ghost %_sysconfdir/alternatives/ebtables-restore
 %ghost %_sysconfdir/alternatives/ebtables-save
-%else
-%_datadir/libalternatives/
-%endif
 %_sbindir/iptables
 %_sbindir/iptables-restore
 %_sbindir/iptables-save
 %_sbindir/ip6tables
 %_sbindir/ip6tables-restore
 %_sbindir/ip6tables-save
+%else
+%_datadir/libalternatives/arptables/2.conf
+%dir %_datadir/libalternatives/arptables
+%_datadir/libalternatives/arptables-restore/2.conf
+%dir %_datadir/libalternatives/arptables-restore
+%_datadir/libalternatives/arptables-save/2.conf
+%dir %_datadir/libalternatives/arptables-save
+%_datadir/libalternatives/ebtables/2.conf
+%dir %_datadir/libalternatives/ebtables
+%_datadir/libalternatives/ebtables-restore/2.conf
+%dir %_datadir/libalternatives/ebtables-restore
+%_datadir/libalternatives/ebtables-save/2.conf
+%dir %_datadir/libalternatives/ebtables-save
+%_datadir/libalternatives/ip6tables/2.conf
+%dir %_datadir/libalternatives/ip6tables
+%_datadir/libalternatives/ip6tables-restore/2.conf
+%dir %_datadir/libalternatives/ip6tables-restore
+%_datadir/libalternatives/ip6tables-save/2.conf
+%dir %_datadir/libalternatives/ip6tables-save
+%_datadir/libalternatives/iptables/2.conf
+%dir %_datadir/libalternatives/iptables
+%_datadir/libalternatives/iptables-restore/2.conf
+%dir %_datadir/libalternatives/iptables-restore
+%_datadir/libalternatives/iptables-save/2.conf
+%dir %_datadir/libalternatives/iptables-save
+%_datadir/libalternatives/iptables-save/2.conf
+%endif
 %_sbindir/arptables
 %_sbindir/arptables-restore
 %_sbindir/arptables-save

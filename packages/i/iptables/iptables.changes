@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 30 15:05:20 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Only use nftables backend when iptables-backend-nft is installed
+  when using libalternatives
+
+-------------------------------------------------------------------
 Fri Nov 19 11:17:27 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix libalternatives configuration for ebtables and arptables
