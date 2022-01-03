@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 21 03:08:45 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Scope-Upper/Changes
+
+  0.33    2021-12-20 20:30 UTC
+          + Fix : [RT #114816] resources/remote/url points to web interface
+                  META files now follow version 2.0 of the CPAN META spec.
+                  Thanks Kent Fredric for reporting.
+          + Fix : [RT #139823] : Perl 5 blead breads t/07-context_info.t
+                  t/07-context_info.t has been hardened against warning bits
+                  changes.
+                  Thanks Jim Keenan and Tony Cook for reporting and contributing
+                  a fix.
+
+-------------------------------------------------------------------
 Tue Jul 16 10:03:44 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.32

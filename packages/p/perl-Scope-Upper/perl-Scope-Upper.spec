@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Scope-Upper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-Name:           perl-Scope-Upper
-Version:        0.32
-Release:        0
 %define cpan_name Scope-Upper
+Name:           perl-Scope-Upper
+Version:        0.33
+Release:        0
 Summary:        Act on upper scopes
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/V/VP/VPIT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -50,11 +48,11 @@ uplevel ;
   * uniquely identify contexts with uid and validate_uid.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -65,7 +63,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README samples
 
 %changelog
