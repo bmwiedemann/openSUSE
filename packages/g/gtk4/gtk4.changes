@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Thu Dec 30 15:43:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6.0:
+  + GtkProgressBar: Fix handling of "inverted".
+  + GtkLabel: Add a "natural wrap mode" property to influence how
+    natural width is determined.
+  + GtkTextView: Scroll insertion on-screen after undo / redo.
+  + gsk: Abort region diffing when changes are too complex.
+  + gdk:
+    - Avoid compressing discrete scroll events.
+    - Fix problems with hiding windows.
+    - Improve GL and GLES version checks.
+  + Wayland: Support new high-contrast setting.
+  + Inspector: Add DND inspection support.
+  + build: Avoid deprecated meson apis.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec 18 20:20:00 UTC 2021 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 4.5.1:
+  + GtkWidget sizing has been rewritten to implement
+    width-for-height more properly. This had some fallout, and some
+    widgets may still not react kindly to the new way of doing
+    things. See https://blog.gtk.org/2021/12/03/sizable-news/ for
+    details, and please file issues if you notice fallout.
+  + Rename git `master` branch to `main`
+  + Css:
+    - Fully support font-variant-caps
+    - Fix a crash with gradients
+  + Make various widgets activatable:
+    - GtkComboBox
+    - GtkDropDown
+  + GtkPopover: Make focus indicators not disappear
+  + GtkTextView:
+    - Don't leave embedded children stranded when scrolling
+    - Don't insert Emoji into non-editable textviews
+    - Fix Emoji chooser positioning
+    - Fix problems with pasting text
+    - Improve scroll-to-mark behavior
+    - Support right-aligned, centered and decimal tabs
+    - Make child anchor replacement character settable
+    - Provide more context to input methods
+  + GtkDragIcon: Provide default icons for paintables and files
+  + GtkBuilder: Speed up template precompilation
+  + Actions:
+    - Reduce allocations during signal emissions
+    - Avoid duplication and unnecessary recursion
+  + Inspector:
+    - Show the selected im-module in the General tab
+    - Add a clipboard viewer
+    - Make the recorder record events too
+    - Add a graph visualizing gtk_widget_measure()
+  + Gsk:
+    - Fix hexbox rendering
+    - Fix transformed linear gradient rendering
+  + Printing: Fix dialog-less printing
+  + X11:
+    - Improve behavior of windows drags on headerbar controls
+    - Trap errors for RANDR changes
+    - Fix problems with drag icons
+  + Wayland: Ensure we prefer the Wayland im-module over others
+  + Updated translations.
+- Changes from version 4.5.0:
+  + gsk:
+    - Drop the GL renderer in favor of NGL
+    - Rename NGL to GL
+    - Fix some coordinate overflow issues
+    - Reimplement texture upload and download for better support of
+      image formats and color spaces
+    - New api:
+      * gsk_transform_skew
+      * gsk_transform_to_2d_components
+  + gdk:
+    - Support HSL in gdk_rgba_parse
+    - Use libpng, libjpeg and libtiff directly when loading
+      textures, and support more image formats (including 16bit and
+      float formats)
+    - New apis:
+      * gdk_texture_new_from_bytes
+      * gdk_texture_new_from_filename
+      * gdk_texture_download_float
+      * gdk_texture_save_to_png_bytes
+      * gdk_texture_save_to_tiff
+      * gdk_texture_save_to_tiff_bytes
+      * gdk_display_create_gl_context
+    - Implement GIcon and GLoadableIcon in GdkTexture
+    - Move EGL initialization to the frontend
+    - Use configless EGL contexts, if supported
+    - Use >8bit pixel formats, if supported and requested
+  + css:
+    - Add support for line-height
+    - Add support for text-transform
+  + theme: Fixes for buttons in toolbars
+  + input:
+    - Update compose sequences from libX11 1.7.2
+    - Accept replacement string longer than 20 characters
+  + text:
+    - Implement sloped caret drawing
+    - Add a gtk-hint-font-metrics setting to switch font rendering
+      to be more similar to GTK3
+  + GtkTextView:
+    - Add support for line height
+    - Add support for text transforms
+    - Misc fixes for css->pango attribute translations
+    - Invalidate pango contexts when font settings change
+    - Improve undo grouping when overwriting
+  + GtkListView:
+    - Make tree indentation more flexible with
+      GtkTreeExpander:indent-for-icon
+  + GtkMenuButton: Support custom children
+  + GtkFlowBox: Add prepend and append
+  + GtkCalendar: Fix handling of weeks starting on Monday
+  + GtkWindow: Add a titlebar property
+  + GtkDropDown: Add a show-arrow property
+  + GtkPopoverMenu: Support a use-markup attribute in menu models
+  + Add GtkSymbolicPaintable
+  + Tools: Support DND in gtk4-node-editor and the inspector's
+    recorder
+  + Demos: Improve the font rendering demo
+  + Build:
+    - Require Pango 1.49
+    - Require libpng, libtiff and libjpeg
+    - Speed up handling of resources during build
+  + X11: Support touchpad gestures with XInput 2.4
+  + Updated translations.
+- Drop gtk4-fix-link-to-g_signal_emit.patch: fixed upstream.
+- Add docutils, pkgconfig(libjpeg), pkgconfig(libpng) and
+  pkgconfig(libtiff-4) BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
 Sat Nov 13 14:52:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop baselibs.conf, there should not be any consumers of 32bit

@@ -22,20 +22,17 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.4.1
+Version:        4.6.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.4/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.6/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
-
-# PATCH-FIX-UPSTREAM  gtk4-fix-link-to-g_signal_emit.patch glgo#GNOME/gtk!4108 yfjiang@suse.com -- Fix link to g_signal_emit() in doc
-Patch0:         gtk4-fix-link-to-g_signal_emit.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
@@ -45,6 +42,7 @@ BuildRequires:  Mesa-libGLESv2-devel
 %endif
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  docutils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools >= 0.19.7
@@ -75,7 +73,10 @@ BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(pango) >= 1.47.0
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(pango) >= 1.49.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(rest-0.7)
