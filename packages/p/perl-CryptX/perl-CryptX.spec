@@ -18,7 +18,7 @@
 
 %define cpan_name CryptX
 Name:           perl-CryptX
-Version:        0.074
+Version:        0.075
 Release:        0
 Summary:        Cryptographic toolkit
 License:        Artistic-1.0 OR GPL-1.0-or-later
