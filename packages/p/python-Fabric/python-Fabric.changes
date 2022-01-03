@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 28 21:46:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test on python310 -- gh#bitprophet/pytest-relaxed#12
+  (This is mainly required by azure-cli in the primary python3
+  flavor)
+
+-------------------------------------------------------------------
 Thu Aug 12 11:15:13 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.0:

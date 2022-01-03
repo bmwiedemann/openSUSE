@@ -32,13 +32,15 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 1.3}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module paramiko >= 2.4}
-BuildRequires:  %{python_module pytest-relaxed}
-# gh#bitprophet/pytest-relaxed#12
-BuildRequires:  %{python_module pytest < 6.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION only test for Python < 3.10
+# gh#bitprophet/pytest-relaxed#12
+BuildRequires:  %{python_module pytest-relaxed if %python-base < 3.10}
+BuildRequires:  %{python_module pytest < 6.1 if %python-base < 3.10}
+# /SECTION
 Requires:       python-cryptography >= 1.1
 Requires:       python-decorator
 Requires:       python-invoke >= 1.3
@@ -46,6 +48,8 @@ Requires:       python-paramiko >= 2.4
 Requires:       python-pathlib2
 Requires:       python-setuptools
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      python-Fabric3
 Provides:       python-Fabric2 = %{version}
 Provides:       python-Fabric3 = %{version}
@@ -86,6 +90,8 @@ sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py int
 %python_clone -a %{buildroot}%{_bindir}/fab
 
 %check
+# only test for Python < 3.10 -- gh#bitprophet/pytest-relaxed#12
+alias pytest-3.10='echo "Not testing: no pytest<6 on python 3.10"'
 %pytest tests/
 
 %post
@@ -98,6 +104,7 @@ sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py int
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/fab
-%{python_sitelib}/*
+%{python_sitelib}/fabric
+%{python_sitelib}/fabric-%{version}*-info
 
 %changelog
