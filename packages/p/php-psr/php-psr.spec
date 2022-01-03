@@ -1,7 +1,7 @@
 #
 # spec file for package php-psr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,19 @@ ExclusiveArch:  do-not-build
 %else
 %define php_name %{flavor}
 %endif
-
 %define php_extdir  %(%{__php_config} --extension-dir)
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %define pkg_name    psr
-
 Name:           %{php_name}-%{pkg_name}
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        PSR Extension Module
 License:        BSD-2-Clause
 Group:          Development/Libraries/PHP
-URL:            http://www.php-fig.org/psr/
+URL:            https://pecl.php.net/package/psr
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
-BuildRequires:  %{php_name}-devel
+BuildRequires:  %{php_name}-devel >= 7.3.0
 BuildRequires:  gcc
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
