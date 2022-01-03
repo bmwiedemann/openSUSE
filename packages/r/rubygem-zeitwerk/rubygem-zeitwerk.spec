@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-zeitwerk
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-zeitwerk
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 %define mod_name zeitwerk
 %define mod_full_name %{mod_name}-%{version}
