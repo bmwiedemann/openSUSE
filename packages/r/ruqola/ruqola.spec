@@ -17,7 +17,7 @@
 
 
 Name:           ruqola
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
