@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-# SciPy 1.6.0 dropped Python 3.6
 %define skip_python36 1
 Name:           python-control
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            http://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,8 +55,6 @@ operations for analysis and design of feedback control systems.
 %autosetup -p1 -n control-%{version}
 #remove shebang
 sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
-# don't install toplevel benchmarks package
-sed -i "s/find_packages()/find_packages(exclude=['benchmarks'])/" setup.py
 
 %build
 %python_build
@@ -74,11 +71,7 @@ export MPLBACKEND="Qt5Agg"
 if [[ $(getconf LONG_BIT) == 32 ]]; then
 export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
 fi
-%if 0%{?suse_version} < 1550
-# segfault: free() error in Leap numpy library
-%define donttest -k "not (test_clean_part or test_pzmap)"
-%endif
-%pytest %{?donttest}
+%pytest
 
 %files %{python_files}
 %doc ChangeLog README.rst
