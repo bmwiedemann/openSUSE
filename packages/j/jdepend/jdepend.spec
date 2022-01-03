@@ -1,7 +1,7 @@
 #
 # spec file for package jdepend
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define section		free
 Name:           jdepend
-Version:        2.9.1
+Version:        2.10
 Release:        0
 Summary:        Java Design Quality Metrics
-License:        BSD-3-Clause
+License:        MIT
 Group:          Development/Libraries/Java
-URL:            http://www.clarkware.com/
-Source0:        %{url}software/%{name}-%{version}.tar.bz2
-Source1:        https://repo1.maven.org/maven2/jdepend/%{name}/%{version}/%{name}-%{version}.pom
+URL:            http://www.clarkware.com/software/JDepend.html
+Source0:        https://github.com/clarkware/jdepend/archive/refs/tags/%{version}.tar.gz
+Source1:        %{name}-%{version}.pom
 Patch0:         jdepend-target16.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
@@ -58,8 +58,6 @@ This package contains demonstration and sample files for JDepend.
 %setup -q
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
-# fix strange permissions
-find . -type d -exec chmod 755 {} \;
 %patch0 -b .target15
 
 %build
@@ -74,16 +72,16 @@ install -m 644 dist/%{name}-%{version}.jar \
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 655 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
+install -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
 %add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
 
-# demo
+# # demo
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -pr sample %{buildroot}%{_datadir}/%{name}
 
 %files
-%license LICENSE
-%doc CHANGES README
+%attr(644, root, root) %license LICENSE.md
+%attr(644, root, root) %doc CHANGELOG.md README.md
 %{_javadir}/*
 %{_mavenpomdir}/*
 %if %{defined _maven_repository}
@@ -93,6 +91,6 @@ cp -pr sample %{buildroot}%{_datadir}/%{name}
 %endif
 
 %files demo
-%{_datadir}/%{name}
+%attr(644, root, root) %{_datadir}/%{name}
 
 %changelog
