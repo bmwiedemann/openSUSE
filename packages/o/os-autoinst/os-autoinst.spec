@@ -1,7 +1,7 @@
 #
 # spec file for package os-autoinst
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1640620511.76c851d7
+Version:        4.6.1640797853.158869d0
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
