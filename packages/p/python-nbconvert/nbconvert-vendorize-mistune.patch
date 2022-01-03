@@ -1,0 +1,25 @@
+Index: nbconvert-6.0.7/nbconvert/filters/markdown_mistune.py
+===================================================================
+--- nbconvert-6.0.7.orig/nbconvert/filters/markdown_mistune.py
++++ nbconvert-6.0.7/nbconvert/filters/markdown_mistune.py
+@@ -18,7 +18,7 @@ except ImportError:
+     # Python 2
+     from cgi import escape as html_escape
+ 
+-import mistune
++from nbconvert.vendor import mistune
+ 
+ from pygments import highlight
+ from pygments.lexers import get_lexer_by_name
+Index: nbconvert-6.0.7/setup.py
+===================================================================
+--- nbconvert-6.0.7.orig/setup.py
++++ nbconvert-6.0.7/setup.py
+@@ -212,7 +212,6 @@ setup_args = dict(
+ )
+ 
+ setup_args['install_requires'] = [
+-    'mistune>=0.8.1,<2',
+     'jinja2>=2.4',
+     'pygments>=2.4.1',
+     'jupyterlab_pygments',

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Dec 31 16:28:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Revert to 6.0.7
+  * We can't have a newer version without traitlets 5. But we
+    can't have traitlets 5 as long as python36 is active
+- Vendorize mistune 0.8.4
+  * Add nbconvert-vendorize-mistune.patch
+  * gh#jupyter/nbconvert#1685
+- Alternativize flavored entry-point. For 6.3: do it with dejavu
+
+-------------------------------------------------------------------
+Thu Dec 30 18:01:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to the version 6.3.0:
+  - Bugfixes:
+    - Update state filter
+    - Add slide numbering
+    - Fix HTML templates mentioned in help docs
+    - Add the ability to fully customize widget_renderer_url
+    - Enable users to customize MathJax URLs
+    - Add CLI configuration for disable-chromium-sandbox
+    - Enables webpdf to be rendered with templates
+    - Adds dejavu
+  - Significant Changes¶
+    - Dropped Python 3.6 and added Python 3.9
+    - Convert execute preprocessor wrapper to resemble papermill
+  - Comprehensive notes¶
+    - Feature: support static widgets in Reveal.js slides PR
+      #1553:
+    - Feature: add speaker notes to Reveal.js template
+    - Add correct output mimetype to WebPDF exporter
+    - Set mimetype for webpdf correctly
+    - Fix docstring issue and a broken link
+    - Add CLI example for removing cell tag syntax
+    - Include output of stdin stream in lab template
+    - Don’t use a shell to call inkscape
+    - JupyterLab export as HTML with widgets fails to load
+      widgets
+    - Move note inside Reveal.js HTML slideshow
+    - fix issue 1507: broken command line option
+      –CSSHTMLHeaderPreprocessor.style=
+    - Fix order of template paths
+    - Changed documentation of external_exporters
+    - Fix template precedence when using a custom template
+    - add pip to docs envt
+    - Fix CI By Adding PIP to conda envt for docs build
+    - Explicitly install pip in docs environment.yml
+    - small update to docs hide cell
+    - Allow child templates to override mathjax
+    - Allow get_export_names to skip configuration check
+    - Update docs: Tex Live package on Ubuntu
+    - Test jupyter_client
+    - Update jupyterlab css
+    - Webpdf: Use a temporary file instead of an URL
+    - Applied patch for marking network changes
+    - Change webpdf display name
+    - Allow disabling pyppeteer sandbox
+    - Make pagination configurable in webpdf
+    - Fix Reveal.js version in documentation
+    - Fix dangling reference to get_template_paths()
+    - Solved svg2pdf conversion error if Inkscape is installed
+      into the default path on a windows machine
+    - Update version dependency of traitlets
+    - Update execute.py
+    - Fix code output indentation when running nbconvert
+      –no-input
+    - #1428 add docstring
+    - Update nbconvert_library.ipynb
+    - Supports isolated iframe when converting to HTML
+
+-------------------------------------------------------------------
 Sat Oct 30 17:35:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Do not require webpdf extra pyppeteer on tests. Not usefully
