@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 31 12:18:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.6:
+  - Fix for with-statement when return is used in the context.
+  - Early support type hints in the code (by Jennifer Taylor).
+
+-------------------------------------------------------------------
 Thu Apr 22 04:37:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.5:
@@ -16,6 +23,8 @@ Fri Jan 17 17:08:17 CET 2020 - Matej Cepl <mcepl@suse.com>
 - Remove python-faulthandler BR (it is optional and the package
   is Python 2-only, in Python 3 the module is in the standard
   library).
+- Use tarball from GitHub, not PyPI, because the former contains
+  tests.
 
 -------------------------------------------------------------------
 Fri May 24 12:20:38 UTC 2019 - pgajdos@suse.com

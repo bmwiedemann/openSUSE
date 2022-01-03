@@ -51,4 +51,35 @@
   * Allow to rename functions starting with an uppercase letter.</comment>
     <requestid>887395</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9e57fa0162ad60220acdbbd986ce9f25</srcmd5>
+    <version>0.7.6</version>
+    <time>1641203360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.6:
+  - Fix for with-statement when return is used in the context.
+  - Early support type hints in the code (by Jennifer Taylor).
+- Update to 0.7.5:
+  * Support for Python 3.9.
+  * Small docs improvements.
+  * Allow to rename functions starting with an uppercase letter. 
+- Update to 0.7.3:
+  - add examples in the wild
+  - Reflect AST changes in Python 3.8.
+  - use markdown for pypi long_description
+- Remove python-faulthandler BR (it is optional and the package
+  is Python 2-only, in Python 3 the module is in the standard
+  library).
+- Use tarball from GitHub, not PyPI, because the former contains
+  tests.
+- version update to 0.7.1
+  * fix style error
+  * Quicker op_equals
+- Update to 0.7.0:
+  * Add ability to reduce overloading of add, mul, equals and truthy
+- Trim history, and hypotheses from description.
+- Initial version
+</comment>
+    <requestid>943311</requestid>
+  </revision>
 </revisionlist>
