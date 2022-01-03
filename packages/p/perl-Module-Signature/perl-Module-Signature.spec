@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Signature
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
+%define cpan_name Module-Signature
 Name:           perl-Module-Signature
-Version:        0.87
+Version:        0.88
 Release:        0
 #Upstream: SUSE-Public-Domain
-%define cpan_name Module-Signature
 Summary:        Module signature file manipulation
 License:        CC0-1.0 AND (GPL-1.0-or-later OR Artistic-1.0)
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.36
 BuildRequires:  perl(IPC::Run)
 %{perl_requires}
 # MANUAL BEGIN
@@ -63,14 +62,14 @@ authors are strongly encouraged to regenerate their _SIGNATURE_ files.
 Users verifying old SHA1 signature files will receive a warning.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -81,7 +80,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2020.pub README
+%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub README
 
 %changelog
