@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 22 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.47
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.47	- 2021-12-21, H.Merijn Brand
+      * Make error 2014 catchable
+      * Suppress empty lines on empty input (issue 34)
+      * Perl 6 -> Raku in docs (RT#136864)
+      * IETF changed their URLs
+      * Add some documentation for Google hist (Nigel)
+
+-------------------------------------------------------------------
 Thu Mar 25 03:08:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.46
