@@ -1,5 +1,5 @@
 #
-# spec file for package python-mistune
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -20,7 +20,7 @@
 %define modname mistune
 %define skip_python2 1
 Name:           python-%{modname}
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause

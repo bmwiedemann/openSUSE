@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 31 17:09:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * Fix XSS for image link syntax.
+
+-------------------------------------------------------------------
 Sun Dec 26 17:24:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Cleanup specfile
