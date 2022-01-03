@@ -20,7 +20,7 @@
 %bcond_without python2
 %bcond_without python36
 Name:           python-hyper
-Version:        0.7.0+git88.18b629b
+Version:        0.7.0+git89.b77e758
 Release:        0
 Summary:        HTTP/2 Client for Python
 License:        MIT
@@ -38,13 +38,14 @@ BuildRequires:  %{python_module h2 > 2.5.0}
 BuildRequires:  %{python_module hyperframe >= 3.2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module rfc3986 >= 1.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  openssl(cli)
 BuildRequires:  python-rpm-macros
+BuildRequires:  openssl(cli)
 Requires:       python-brotlipy >= 0.7.0
 Requires:       python-h2 > 2.5.0
 Requires:       python-hyperframe >= 3.2

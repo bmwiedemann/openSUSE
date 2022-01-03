@@ -75,4 +75,22 @@
     <comment></comment>
     <requestid>926427</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6513df812c533a86d9c9401ac7ef3cc</srcmd5>
+    <version>0.7.0+git89.b77e758</version>
+    <time>1641203355</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0+git89.b77e758:
+  * goodbye
+  * Add a fix to make it possible to add window_manager to HTTP20Adapter.
+  * Add support for brotli compression
+  * Fix crash on getting unsupported content-encoding
+  * fix HTTP/1.1 response body length
+  * fix HTTP/1.1 response body length
+  * fix some error
+  * Add test function for length of the HTTP/1.1 response-body.
+  * fix HEAD request body length
+</comment>
+    <requestid>943294</requestid>
+  </revision>
 </revisionlist>
