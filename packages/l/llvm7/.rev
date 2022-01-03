@@ -240,4 +240,13 @@
   Fix build with linux-glibc-devel 5.13.</comment>
     <requestid>903836</requestid>
   </revision>
+  <revision rev="29" vrev="22">
+    <srcmd5>d52eb3ab21f280964631045c6ab1a9a5</srcmd5>
+    <version>7.0.1</version>
+    <time>1641203402</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove man page for FileCheck that we don't ship.
+- BuildRequires: python-rpm-macros to fix Leap 15.3 build.</comment>
+    <requestid>943488</requestid>
+  </revision>
 </revisionlist>

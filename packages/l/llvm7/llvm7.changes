@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  2 16:43:12 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove man page for FileCheck that we don't ship.
+
+-------------------------------------------------------------------
+Sat Dec 18 15:05:40 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- BuildRequires: python-rpm-macros to fix Leap 15.3 build.
+
+-------------------------------------------------------------------
 Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:

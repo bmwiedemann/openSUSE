@@ -1,7 +1,7 @@
 #
 # spec file for package llvm7
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,6 +126,7 @@ BuildRequires:  fdupes
 BuildRequires:  libstdc++-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -831,6 +832,7 @@ rm -f %{buildroot}%{python3_sitearch}/six.*
 %endif
 
 # Stuff we don't want to include
+rm %{buildroot}%{_mandir}/man1/FileCheck.1
 rm %{buildroot}%{_mandir}/man1/lit.1
 
 rm -rf %{buildroot}%{_includedir}/lld
@@ -871,7 +873,7 @@ binfiles=( bugpoint diagtool dsymutil llc lli \
            lldb lldb-argdumper lldb-mi lldb-server lldb-test \
 %endif
            ld.lld lld lld-link ld64.lld wasm-ld )
-manfiles=( FileCheck bugpoint diagtool dsymutil llc lli \
+manfiles=( bugpoint diagtool dsymutil llc lli \
            llvm-ar llvm-as llvm-bcanalyzer llvm-build llvm-cov llvm-diff \
            llvm-dis llvm-dwarfdump llvm-exegesis llvm-extract llvm-lib llvm-link llvm-mca \
            llvm-nm llvm-profdata llvm-readobj llvm-stress llvm-symbolizer llvm-pdbutil \
@@ -1093,7 +1095,6 @@ rm -rf ./stage1 ./build
    --slave %{_bindir}/sanstats sanstats %{_bindir}/sanstats-%{_relver} \
    --slave %{_bindir}/verify-uselistorder verify-uselistorder %{_bindir}/verify-uselistorder-%{_relver} \
    --slave %{_bindir}/yaml2obj yaml2obj %{_bindir}/yaml2obj-%{_relver} \
-   --slave %{_mandir}/man1/FileCheck.1%{ext_man} FileCheck.1%{ext_man} %{_mandir}/man1/FileCheck-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/bugpoint.1%{ext_man} bugpoint.1%{ext_man} %{_mandir}/man1/bugpoint-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/dsymutil.1%{ext_man} dsymutil.1%{ext_man} %{_mandir}/man1/dsymutil-%{_relver}.1%{ext_man} \
    --slave %{_mandir}/man1/llc.1%{ext_man} llc.1%{ext_man} %{_mandir}/man1/llc-%{_relver}.1%{ext_man} \
@@ -1355,7 +1356,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/verify-uselistorder
 %ghost %{_sysconfdir}/alternatives/yaml2obj
 
-%{_mandir}/man1/FileCheck.1%{ext_man}
 %{_mandir}/man1/bugpoint.1%{ext_man}
 %{_mandir}/man1/dsymutil.1%{ext_man}
 %{_mandir}/man1/llc.1%{ext_man}
@@ -1381,7 +1381,6 @@ fi
 %{_mandir}/man1/llvm-symbolizer.1%{ext_man}
 %{_mandir}/man1/opt.1%{ext_man}
 %{_mandir}/man1/tblgen.1%{ext_man}
-%{_mandir}/man1/FileCheck-%{_relver}.1%{ext_man}
 %{_mandir}/man1/bugpoint-%{_relver}.1%{ext_man}
 %{_mandir}/man1/dsymutil-%{_relver}.1%{ext_man}
 %{_mandir}/man1/llc-%{_relver}.1%{ext_man}
@@ -1407,7 +1406,6 @@ fi
 %{_mandir}/man1/llvm-symbolizer-%{_relver}.1%{ext_man}
 %{_mandir}/man1/opt-%{_relver}.1%{ext_man}
 %{_mandir}/man1/tblgen-%{_relver}.1%{ext_man}
-%ghost %{_sysconfdir}/alternatives/FileCheck.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/bugpoint.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/dsymutil.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/llc.1%{ext_man}
