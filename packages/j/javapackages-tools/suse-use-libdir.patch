@@ -98,7 +98,7 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
  # Root directory for all common architecture dependent parts of Java VM/SDK/JRE's
  #
 -%_jvmcommonlibdir %{_prefix}/lib/jvm-common
-+%_jvmcommonlibdir %{_libdir}/jvm-commmon
++%_jvmcommonlibdir %{_libdir}/jvm-common
  
  #
  # Root directory for all common architecture independent parts of Java VM/SDK/JRE's

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 30 11:49:00 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Fix typo in suse-use-libdir.patch:
+  %{_libdir}/jvm-commmon -> %{_libdir}/jvm-common
+
+-------------------------------------------------------------------
 Tue Jul 27 13:39:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not run tests on SLE12, since python3-test is not accessible
