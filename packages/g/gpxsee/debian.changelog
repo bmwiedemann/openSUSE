@@ -1,3 +1,10 @@
+gpxsee (10.1) stable; urgency=low
+
+  * Added support for TwoNav data files (TRK, RTE, WPT).
+  * Extended waypoint icon set.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 02 Jan 2022 15:09:29 +0100
+
 gpxsee (10.0) stable; urgency=low
 
   * Added support for (GPS) positioning.
