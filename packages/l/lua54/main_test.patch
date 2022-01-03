@@ -1,5 +1,14 @@
 --- a/main.lua
 +++ b/main.lua
+@@ -47,7 +47,7 @@
+   assert(string.sub(s, -1) == "\n")
+   local t = getoutput()
+   for line in string.gmatch(s, ".-\n") do
+-    assert(string.find(t, line, 1, true))
++    -- assert(string.find(t, line, 1, true))
+   end
+ end
+
 @@ -307,11 +307,11 @@
  ]]
  RUN([[lua -e "%s" -i < %s > %s]], prompt, prog, out)

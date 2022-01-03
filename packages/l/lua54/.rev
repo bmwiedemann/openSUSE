@@ -130,4 +130,20 @@
 </comment>
     <requestid>934303</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>41280bcbb95050368b7e9c9951b95a1b</srcmd5>
+    <version>5.4.3</version>
+    <time>1641203338</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable readline support in Lua, the way to do this changed
+  in Lua 5.4
+- Because we are linking with readline add GPLv3+ only to the
+  main package
+- Subsequently, update main_test.patch to ignore another test
+- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 9,10,12 for build and tests respectively. Bug 11 changes
+  interface of luaD_pretailcall.
+</comment>
+    <requestid>943308</requestid>
+  </revision>
 </revisionlist>

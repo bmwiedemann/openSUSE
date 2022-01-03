@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 30 18:34:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Re-enable readline support in Lua, the way to do this changed
+  in Lua 5.4
+- Because we are linking with readline add GPLv3+ only to the
+  main package
+- Subsequently, update main_test.patch to ignore another test
+
+-------------------------------------------------------------------
+Thu Dec 30 13:41:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 9,10,12 for build and tests respectively. Bug 11 changes
+  interface of luaD_pretailcall.
+
+-------------------------------------------------------------------
 Sat Nov 27 16:54:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update upstream-bugs.patch and upstream-bugs-test.patch to fix

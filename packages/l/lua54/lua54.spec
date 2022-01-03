@@ -29,7 +29,7 @@ Name:           lua54%{name_ext}
 Version:        5.4.3
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
-License:        MIT
+License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 URL:            http://www.lua.org
 Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
@@ -74,6 +74,7 @@ of C functions, written in ANSI C.
 
 %package devel
 Summary:        Development files for lua
+License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
@@ -94,6 +95,7 @@ application.
 
 %package -n %{libname}
 Summary:        The Lua integration library
+License:        MIT
 Group:          System/Libraries
 # Compat as libtool changes the soname
 %ifarch aarch64 x86_64 ppc64 ppc64le s390x riscv64
@@ -120,6 +122,7 @@ of C functions, written in ANSI C.
 
 %package doc
 Summary:        Documentation for Lua, a small embeddable language
+License:        MIT
 Group:          Documentation/HTML
 BuildArch:      noarch
 Supplements:    (lua54 and patterns-base-documentation)
@@ -157,17 +160,14 @@ cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_
 
 %build
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
-make %{_smp_mflags} VERBOSE=1 -C src \
+make linux-readline %{_smp_mflags} VERBOSE=1 -C src \
     CC="cc" \
-    MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_USE_LINUX -DLUA_COMPAT_MODULE" \
-    MYLIBS="-Wl,-E -ldl -lreadline -lhistory -lncurses" \
+    MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_COMPAT_MODULE" \
     V=%{major_version} \
-    LIBTOOL="libtool --quiet" \
-    all
+    LIBTOOL="libtool --quiet"
 
 %install
 %make_install \
-    V=%{major_version} \
     LIBTOOL="libtool --quiet" \
     INSTALL_TOP="%{buildroot}%{_prefix}" \
     INSTALL_LIB="%{buildroot}%{_libdir}"
