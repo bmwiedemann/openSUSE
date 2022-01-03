@@ -54,4 +54,25 @@
     <comment>- BuildRequires on the dataclasses module if using python 3.6</comment>
     <requestid>867347</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4ca691faebaeb43d860cbe5b6b8e8377</srcmd5>
+    <version>0.19.0</version>
+    <time>1641203364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.0:
+  - Added the license to the source distribution, thanks to
+    Joshua Adelman
+  - Added Python 3.9 and 3.10 support, this includes fixing
+    Python 3.10 compatibility, thanks to Torge Matthies
+  - Improved the documentation, thanks to Takahiro Kojima
+  - Improved the source distribution so that it can be used to
+    build and install wheels, thanks to Janusz Skonieczny
+  - Added requirements files for easier development, thanks to
+    Greg Eremeev
+  - Removed Python 3.5 support
+  - Fixed a bug where only one of multiple NoInject annotations
+    was interpreted
+</comment>
+    <requestid>943322</requestid>
+  </revision>
 </revisionlist>

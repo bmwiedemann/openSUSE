@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 31 13:01:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.19.0:
+  - Added the license to the source distribution, thanks to
+    Joshua Adelman
+  - Added Python 3.9 and 3.10 support, this includes fixing
+    Python 3.10 compatibility, thanks to Torge Matthies
+  - Improved the documentation, thanks to Takahiro Kojima
+  - Improved the source distribution so that it can be used to
+    build and install wheels, thanks to Janusz Skonieczny
+  - Added requirements files for easier development, thanks to
+    Greg Eremeev
+  - Removed Python 3.5 support
+  - Fixed a bug where only one of multiple NoInject annotations
+    was interpreted
+
+-------------------------------------------------------------------
 Thu Jan 28 04:00:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - BuildRequires on the dataclasses module if using python 3.6 

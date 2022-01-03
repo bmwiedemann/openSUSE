@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-injector
-Version:        0.18.3
+Version:        0.19.0
 Release:        0
 Summary:        Python dependency injection framework, inspired by Guice
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  ((python3-dataclasses and python3-base < 3.7) or (python36-dataclasses and python36-base))
 Requires:       python
-Requires:       python-typing_extensions >= 3.7.4
+Requires:       (python-typing_extensions if python-base < 3.8)
 BuildArch:      noarch
 %python_subpackages
 
