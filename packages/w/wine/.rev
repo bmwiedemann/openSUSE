@@ -4256,4 +4256,13 @@
 - updated to 7.0-rc2 release candidate</comment>
     <requestid>942897</requestid>
   </revision>
+  <revision rev="362" vrev="2">
+    <srcmd5>3d8b0f940601cb1c90d2021886af844e</srcmd5>
+    <version>7.0~rc3</version>
+    <time>1641203353</time>
+    <user>dimstar_suse</user>
+    <comment>- strip the debuginfo out of the PE binaries for now, saves 2/3 space.
+  bsc#1192292 (forwarded request 943296 from msmeissn)</comment>
+    <requestid>943297</requestid>
+  </revision>
 </revisionlist>
