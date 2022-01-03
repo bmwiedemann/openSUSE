@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan  1 12:51:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.6.1:
+  - api: allow nvim_buf_set_extmark to accept end_row key
+  - diagnostic: assert that diagnostics have line number and
+    column
+  - diagnostic: clamp diagnostics on negative line numbers
+  - diagnostic: escape special chars in file names
+  - diagnostic: respect "if_many" source option for virtual text
+  - diagnostic: set effective buffer number for DiagnosticChanged
+    autocmd
+  - diagnostic: set effective buffer number in autocmd (again)
+  - lua: do not cast offset to char_u in str_utf_start
+  - lsp: avoid attaching to unloaded buffers
+  - lsp: call config on_exit handler before context is cleared
+  - lsp: fix nil-index behavior for UTF-8 in _str_*index_enc
+    methods
+  - lsp: handle offset encoding
+  - lsp: progress handlers should return vim.NIL on error
+  - options: disallow empty 'fdc' and 'scl'
+  - quickfix: avoid O(N^2) when filling from string typval
+  - screenpos, float: add top and left border adjustment
+  - terminal: fix resize crash with pending scrollback
+  - ui: close floating window on BufLeave event
+  - uri: change scheme pattern to not include the comma character
+  - lsp,diagnostic: open folds in jump-related functions
+  - lsp: add buf_detach_client
+  - lsp: use vim.ui.select for selecting lsp client
+  - runtime: new checkhealth filetype
+
+-------------------------------------------------------------------
 Tue Nov 30 18:22:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.6.0 (details on
