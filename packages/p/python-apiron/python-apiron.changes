@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  2 10:35:31 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.1.0
+  * Add py.typed file so mypy can check against package types in downstream applications
+  * Use interpolation for logging messages to avoid wasted computation
+
+-------------------------------------------------------------------
 Sun Aug 29 08:36:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 6.0.0.post1
