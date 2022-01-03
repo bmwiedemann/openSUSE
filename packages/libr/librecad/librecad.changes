@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  1 16:38:27 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- fix paths creation (e.g. fonts loading) by:
+  * 0001-Revert-AppImage-build-on-GitHub-Actions-with-go-appi.patch
+  * 0002-Revert-RS_System-getDirectoryList-add-plugins-folder.patch
+  * 0003-Revert-fix-RS_System-getDirectoryList-use-relative-p.patch
+(did the revert and waiting for the upstream fix)
+
+-------------------------------------------------------------------
 Mon Dec 20 09:15:40 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 2.2.0-rc3

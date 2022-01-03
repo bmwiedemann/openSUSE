@@ -1,0 +1,32 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Sat, 1 Jan 2022 17:36:05 +0100
+Subject: Revert "RS_System::getDirectoryList() - add plugins folder for
+ AppImage"
+Patch-mainline: waiting for fix
+References: paths fix
+
+This reverts commit 7484ec976afbcb8624243e5dae338fbf0df1d9a2.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ librecad/src/lib/engine/rs_system.cpp | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/librecad/src/lib/engine/rs_system.cpp b/librecad/src/lib/engine/rs_system.cpp
+index 9103eff3302c..b0a346303038 100644
+--- a/librecad/src/lib/engine/rs_system.cpp
++++ b/librecad/src/lib/engine/rs_system.cpp
+@@ -579,10 +579,6 @@ QStringList RS_System::getDirectoryList(const QString& _subDirectory) {
+ 
+     // Redhat style:
+     dirList.append( QDir::cleanPath( binDir + "/../share/" + appDirName + "/" + subDirectory));
+-
+-    if (QStringLiteral( "plugins") == subDirectory) {
+-        dirList.append( QDir::cleanPath( binDir + "/../lib/" + appDirName));
+-    }
+ #endif
+ 
+ #ifdef Q_OS_MAC
+-- 
+2.34.1
+
