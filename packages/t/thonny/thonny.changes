@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 28 15:59:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove unused unmaintained python3-pytest-black test requirement
+- Reactivate rudimentary test suite on TW
+- Find and mark language files
+
+-------------------------------------------------------------------
 Wed Nov 10 11:02:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.3.14:

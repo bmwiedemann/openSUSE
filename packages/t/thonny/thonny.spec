@@ -38,7 +38,7 @@ BuildRequires:  python3-docutils
 BuildRequires:  python3-jedi
 BuildRequires:  python3-pylint
 BuildRequires:  python3-pyserial
-BuildRequires:  python3-pytest-black
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tk
 BuildRequires:  update-desktop-files
@@ -64,6 +64,7 @@ Thonny is a Python IDE meant for learning programming.
 %package        lang
 Summary:        Translations for Thonny IDE
 Requires:       thonny = %{version}
+Requires:       python(abi) = %{python3_version}
 
 %description    lang
 Provides translations for Thonny IDE
@@ -95,16 +96,17 @@ for size in 16 22 32 48 64 128 192 256; do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
   cp packaging/icons/thonny-${size}x${size}.png %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/thonny.png
 done
+# find and mark locale files
+%python_find_lang thonny
 # fdupes
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
-# Disable tests on Tumbleweed since they are broken with multi python support atm
-%if 0%{suse_version} < 1500
-#Skip test as requires Display.
-export PYTHONPATH="%{buildroot}%{python3_sitearch}:%{buildroot}%{python3_sitelib}"
-python3 -m pytest -k 'not test_locals_marker'
-%endif
+# Skip test as requires Display.
+pytest_flags=(-k 'not test_locals_marker')
+# failed to access /dev/ttyACM0
+pytest_flags+=(--ignore misc/mp/threads_test.py)
+%pytest "${pytest_flags[@]}"
 
 %post
 # update desktop database
@@ -122,15 +124,15 @@ exit 0
 %doc CHANGELOG.rst CONTRIBUTING.rst CREDITS.rst
 %license LICENSE.txt
 %{_bindir}/thonny
-%dir %{python3_sitelib}/thonny
-%{python3_sitelib}/thonny/*
-%dir %{python3_sitelib}/thonny*.egg-info
-%{python3_sitelib}/thonny*.egg-info/*
+%{python3_sitelib}/thonny
+%{python3_sitelib}/thonny-%{version}*-info
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/metainfo/%{desktop_file_name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/thonny.png
 
-%files lang
-%{python3_sitelib}/thonny/locale/
+%files lang -f python3-thonny.lang
+%dir %{python3_sitelib}/thonny/locale/
+%dir %{python3_sitelib}/thonny/locale/*
+%dir %{python3_sitelib}/thonny/locale/*/LC_MESSAGES
 
 %changelog
