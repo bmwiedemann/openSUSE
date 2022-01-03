@@ -22,7 +22,7 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.14.6
+Version:        0.15.1
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,21 +34,22 @@ Source2:        %{name}.keyring
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gperf
-BuildRequires:  lmdb-devel
 BuildRequires:  meson >= 0.48
 %if %{with vala}
 BuildRequires:  vala
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
+BuildRequires:  itstool
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(yaml-0.1)
+BuildRequires:  pkgconfig(xmlb) >= 0.3.6
 Recommends:     curl
 
 %description
