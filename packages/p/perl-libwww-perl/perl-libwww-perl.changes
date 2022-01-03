@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 18 03:11:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.60
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.60      2021-12-17 22:29:57Z
+      - Warn if updating modification time of mirrored file fails (GH#399) (Ville Skyttä)
+
+-------------------------------------------------------------------
 Fri Dec  3 03:09:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.59
