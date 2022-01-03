@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  1 21:48:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * Reduces or eliminates brute force search for POLY in many
+    cases by finding the greatest common divisor of differences
+    between codewords.
+
+-------------------------------------------------------------------
 Tue Dec 28 09:17:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Upstream changed the tarball
