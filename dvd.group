@@ -557,6 +557,7 @@
     <package name="gdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gdm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gdm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gdm-schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gdmflexiserver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gedit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2841,7 +2842,7 @@
     <package name="libxklavier16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxml2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxml2-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
-    <package name="libxmlb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libxmlb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxmlsec1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxmlsec1-nss1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxmlsec1-openssl1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3309,6 +3310,7 @@
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Encode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->

@@ -2824,6 +2824,7 @@ unsorted:
   - deepin-system-monitor 
   - deepin-system-monitor-lang 
   - deepin-terminal 
+  - deepin-terminal-devel 
   - deepin-terminal-lang 
   - deepin-turbo 
   - deepin-turbo-devel 
@@ -3960,6 +3961,8 @@ unsorted:
   - galculator 
   - galculator-lang 
   - galene 
+  - galera-4 
+  - galera-4-wsrep-provider 
   - gama 
   - gamemoded 
   - gamin-devel 
@@ -5845,6 +5848,7 @@ unsorted:
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-lollypop 
+  - gnome-shell-search-provider-wike 
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-matcha 
   - gnome-shell-theme-plata 
@@ -6016,6 +6020,8 @@ unsorted:
   - golang-gopkgin-check 
   - golang-org-x-sys 
   - golang-packaging 
+  - goldendict 
+  - goldendict-lang 
   - gom-devel 
   - goobox 
   - goobox-lang 
@@ -10159,8 +10165,8 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto46 
-  - libcrypto46-32bit: [x86_64] 
+  - libcrypto47 
+  - libcrypto47-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_6_0 
   - libcryptopp8_6_0-32bit: [x86_64] 
@@ -12504,6 +12510,10 @@ unsorted:
   - libopus0-32bit: [x86_64] 
   - libopusenc-devel 
   - libopusenc0 
+  - liboqs-devel 
+  - liboqs-devel-32bit: [x86_64] 
+  - liboqs0 
+  - liboqs0-32bit: [x86_64] 
   - liborc-0_4-0-32bit: [x86_64] 
   - liborcania2_2 
   - liborcus-devel 
@@ -13367,6 +13377,7 @@ unsorted:
   - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
+  - libresprite 
   - libressl 
   - libressl-devel 
   - libressl-devel-32bit: [x86_64] 
@@ -13760,8 +13771,8 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
-  - libssl48 
-  - libssl48-32bit: [x86_64] 
+  - libssl50 
+  - libssl50-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
   - libsss_certmap-devel 
@@ -13976,6 +13987,7 @@ unsorted:
   - libtensorflow_framework2-gnu-hpc: [x86_64] 
   - libtensorflow_framework2-gnu-openmpi2-hpc: [x86_64] 
   - libteredo5 
+  - libterminalwidget5-0 
   - libtermkey-devel 
   - libtermkey1 
   - libtesseract4 
@@ -14021,8 +14033,8 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-9 
   - libtirpc-devel 
-  - libtls20 
-  - libtls20-32bit: [x86_64] 
+  - libtls22 
+  - libtls22-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -19137,7 +19149,6 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
-  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -31118,6 +31129,7 @@ unsorted:
   - rehex 
   - reiser4progs 
   - reiser4progs-devel 
+  - rekor 
   - relaxngDatatype 
   - relaxngcc 
   - relaxngcc-javadoc 
@@ -42159,6 +42171,8 @@ unsorted:
   - widelands-debug 
   - wiggle 
   - wiiuse-devel 
+  - wike 
+  - wike-lang 
   - wildmidi 
   - wildmidi-devel 
   - wimlib-devel 
