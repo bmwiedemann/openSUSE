@@ -32,11 +32,15 @@ BuildRequires:  %{python_module python-dateutil >= 2.4}
 BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module text-unidecode >= 1.3}
+BuildRequires:  %{python_module typing-extensions >= 3.10.0.2 if %python-base < 3.8}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.4
 Requires:       python-text-unidecode >= 1.3
+%if 0%{python_version_nodots} < 38
+Requires:       python-typing-extensions >= 3.10.0.2
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Obsoletes:      python3-fake-factory < %{version}-%{release}
