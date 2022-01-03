@@ -575,4 +575,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>936093</requestid>
   </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>9c3a5d1ee049fb6a2e5100ff6ff442da</srcmd5>
+    <version>3.3.3</version>
+    <time>1641203377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943398</requestid>
+  </revision>
 </revisionlist>

@@ -62,6 +62,9 @@ BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+BuildRequires:  python-rpm-macros
+%endif
 %if %{with tests_support}
 BuildRequires:  python3-lxml
 BuildRequires:  python3-pytest

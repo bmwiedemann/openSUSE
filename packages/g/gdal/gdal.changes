@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 31 19:53:12 UTC 2021 - D. Berge <opensuse@navlost.eu>
+
+- Fix build on Leap 15.3
+
+-------------------------------------------------------------------
 Mon Nov 29 17:26:20 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Fix xerces detection by adding --with-xerces-inc parameter
