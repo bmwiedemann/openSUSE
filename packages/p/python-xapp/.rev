@@ -69,4 +69,12 @@
 Don't change permission, leave it at 644.</comment>
     <requestid>898049</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb8e652b046805c247d8b54e3d14de42</srcmd5>
+    <version>2.2.1</version>
+    <time>1641203405</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>943504</requestid>
+  </revision>
 </revisionlist>

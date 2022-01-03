@@ -20,7 +20,7 @@
 %define _name python3-xapp
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xapp
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Python XApp library
 License:        GPL-2.0-or-later
