@@ -2,7 +2,7 @@
 # spec file for package deepin-terminal
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 #
 
 
+%define  _name  deepin-terminal-reborn
+%define  apiver 5
+%define  sover  0
+%define  dtkver 5.5.0
+
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
 %else
@@ -24,58 +29,89 @@
 %endif
 
 Name:           deepin-terminal
-Version:        5.0.4.3
+Version:        5.4.24
 Release:        0
 Summary:        Deepin terminal
-License:        GPL-3.0-only AND GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          System/X11/Terminals
-URL:            https://github.com/linuxdeepin/deepin-terminal-gtk
-Source0:        https://github.com/linuxdeepin/deepin-terminal-gtk/archive/%{version}/%{name}-gtk-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM deepin-terminal-xcb.vapi-missing-return-statement-at-end-of-subroutine-body.patch
-Patch0:         deepin-terminal-xcb.vapi-missing-return-statement-at-end-of-subroutine-body.patch
+URL:            https://github.com/linuxdeepin/deepin-terminal-reborn
+Source0:        https://github.com/linuxdeepin/deepin-terminal-reborn/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix link failed on 64bit
+Patch1:         recompile-with-fPIC.patch
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  cmake
+BuildRequires:  dtkcore
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
+BuildRequires:  gtest
+BuildRequires:  gmock
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  intltool >= 0.35.0
-BuildRequires:  libxml2-tools
-BuildRequires:  readline-devel
+BuildRequires:  libQt5Widgets-private-headers-devel
+BuildRequires:  lxqt-build-tools-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  vala
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(atspi-2)
+BuildRequires:  pkgconfig(dframeworkdbus)
+BuildRequires:  pkgconfig(dtkcore) >= 5.5.0
+BuildRequires:  pkgconfig(dtkgui) >= 5.5.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gdk-x11-3.0)
-BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(vapigen)
-BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-ewmh)
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %lang_package
 
 %description
-Deepin Terminal is an advanced terminal emulator with workspace, multiple
+Deepin Terminal is an advanced terminal emulator with workspace, multiple 
 windows, remote management, quake mode and other features.
 
+%package -n libterminalwidget%{apiver}-%{sover}
+Summary:        Deepin-terminal libraries
+Group:          System/Libraries
+
+%description -n libterminalwidget%{apiver}-%{sover}
+This package contains the libraries for deepin-terminal
+
+%package devel
+Summary:        Development tools for deepin-terminal
+Group:          Development/Libraries/Other
+Requires:       libterminalwidget%{apiver}-%{sover}
+
+%description devel
+The deepin-terminal-devel package contains the header files and developer
+docs for deepin-terminal.
+
 %prep
-%autosetup -p1 -n %{name}-gtk-%{version}
-sed -i 's|return @@PROJECT_PATH@@;|return "%{_datadir}/%{name}";|' project_path.c.in
+%autosetup -n %{name}-%{version}
+sed -i '/<QHash>/i#include <QObject>\n#include <QMap>' 3rdparty/terminalwidget/lib/SessionManager.h
+sed -i '/LXQtCompilerSettings/a remove_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII)' 3rdparty/terminalwidget/CMakeLists.txt
+sed -i 's|default-config.json|src/assets/other/default-config.json|' CMakeLists.txt
+sed -i '/#include <QPainter>/a #include <QPainterPath>' 3rdparty/terminalwidget/lib/TerminalDisplay.cpp \
+3rdparty/terminalwidget/lib/konsole_wcwidth.cpp \
+3rdparty/terminalwidget/lib/konsole_wcwidth.h \
+src/views/focusframe.cpp \
+src/views/themepreviewarea.cpp
+
+sed -i '/#include <QDebug>/a #include <QPainterPath>' src/views/customthemesettingdialog.cpp
 
 %build
 %cmake -DCMAKE_INSTALL_DIR=%{_prefix} \
-       -DUSE_VENDOR_LIB=OFF \
+       -DDTKCORE_TOOL_DIR=%{_libdir}/libdtk-%{dtkver}/DCore/bin/ \
        -DVERSION=%{version}-%{distribution}
 %if 0%{?sle_version} > 150000 && 0%{?is_opensuse}
 %cmake_build
@@ -87,24 +123,37 @@ make %{?_smp_mflags}
 %cmake_install
 
 %suse_update_desktop_file %{name}
-%find_lang %{name}
 %fdupes %{buildroot}
+
+%post -n libterminalwidget%{apiver}-%{sover} -p /sbin/ldconfig
+%postun -n libterminalwidget%{apiver}-%{sover} -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
-%doc README.md CHANGELOG.md
+%doc README.md
 %license LICENSE
 %dir %{_datadir}/%{name}
-%dir %{_prefix}/lib/%{name}
 %{_bindir}/%{name}
-%{_prefix}/lib/%{name}/ssh_login.sh
-%{_datadir}/%{name}/style.css
-%{_datadir}/%{name}/theme
-%{_datadir}/%{name}/image
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/terminalwidget%{apiver}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
+%exclude %{_datadir}/terminalwidget%{apiver}/translations
 
-%files lang -f %{name}.lang
+%files -n libterminalwidget%{apiver}-%{sover}
+%defattr(-,root,root,-)
+%{_libdir}/libterminalwidget%{apiver}.so.*
+
+%files lang
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/translations
+%{_datadir}/terminalwidget%{apiver}/translations
+
+%files devel
+%defattr(-,root,root,-)
+%{_libdir}/libterminalwidget%{apiver}.so
+%{_libdir}/pkgconfig/terminalwidget%{apiver}.pc
+%{_includedir}/terminalwidget%{apiver}
+%{_libdir}/cmake/terminalwidget%{apiver}
 
 %changelog

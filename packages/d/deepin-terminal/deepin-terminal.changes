@@ -1,20 +1,52 @@
 -------------------------------------------------------------------
-Fri Apr 16 11:56:42 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+Fri Dec 31 01:48:56 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Set version 
+- Update version to 5.4.24
+  * Fix bugs
 
 -------------------------------------------------------------------
-Fri Feb  5 13:34:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+Fri Oct 29 02:14:54 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.0.4.3
-  * Fix issues on VTE 0.60+ 
-  * Fix blur offset in new KWin 
-  * Fix: crash if distribution.info is missing 
-  * feat: use GTK menu if deepin-menu is not available to use
-  * feat: add support for `allow_hyperlink` which can be enabled from config
-  * feat: basic wayland support
-  * feat: support distribution.info file for deepin/DDE variant distributions
-- Drop deepin-terminal-system-vte.patch, fixed by upsteam
+- Update version to 5.4.16
+  * Remove some wayland code
+  * Remove .transifexrc
+  * Optimize ut
+  * Update manual documents
+  * Update translations
+  * Fix bugs
+
+-------------------------------------------------------------------
+Sat Jul 31 12:38:23 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.10
+  * Opimize test
+  * Limit the window's width as the screen's width
+  * Update translations
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Fri Jun  4 13:30:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Stop owning directories provided by filesystem and other packages
+  (every dir should only have one owner) (boo#1184786)   
+
+-------------------------------------------------------------------
+Thu May  6 07:46:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update dtk api to 5.5.0 
+
+-------------------------------------------------------------------
+Sun Apr 11 14:07:53 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.0.20
+  * Fix bugs
+- Add recompile-with-fPIC.patch. Fix link failed on 64bit
+
+-------------------------------------------------------------------
+Tue Sep 15 14:15:36 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.26, redesign the deepin-terminal by Qt
+- drop deepin-terminal-xcb.vapi-missing-return-statement-at-end-of-subroutine-body.patch
 
 -------------------------------------------------------------------
 Thu Aug 27 13:05:49 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
