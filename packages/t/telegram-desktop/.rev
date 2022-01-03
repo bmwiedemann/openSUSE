@@ -745,4 +745,28 @@
 </comment>
     <requestid>941852</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>add013f81fabdb9491577b729162b490</srcmd5>
+    <version>3.4.2</version>
+    <time>1641203349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.2
+  * Bug fixes and other minor improvements.
+
+- Update to 3.4.1
+  * Bug fixes and other minor improvements.
+
+- Update to 3.4.0
+  * Send reactions to messages.
+  * Group and Channel admins can enable reactions in their chat
+    via '...' * menu &gt; Manage &gt; Reactions.
+  * Select text when typing and choose 'Formatting &gt; Spoiler'
+    in the context menu to hide some or all of the contents of
+    a message.
+  * Click on the spoiler in chat to reveal its hidden text.
+  * Spoiler formatting hides text in chat, as well as in
+    the chat list and notifications.
+- Update tg_owt</comment>
+    <requestid>943407</requestid>
+  </revision>
 </revisionlist>
