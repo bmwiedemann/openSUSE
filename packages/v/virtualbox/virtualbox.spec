@@ -302,11 +302,6 @@ and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
-
-
-
-
-
 ##########################################
 
 %package qt
@@ -325,11 +320,6 @@ Obsoletes:      %{name}-ose-qt < %{version}
 %description qt
 This package contains the code for the GUI used to control VMs.
 
-
-
-
-
-
 #########################################
 
 %package websrv
@@ -341,11 +331,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
 
 #########################################
 
@@ -360,11 +345,6 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
-
-
-
-
-
 
 ###########################################
 
@@ -385,11 +365,6 @@ Requires(pre):  net-tools-deprecated
 %description guest-tools
 VirtualBox guest addition tools.
 
-
-
-
-
-
 ###########################################
 
 %package -n python3-%{name}
@@ -409,11 +384,6 @@ Obsoletes:      python3-%{name}-ose < %{version}
 %description -n python3-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
-
-
-
-
-
 ###########################################
 
 %package devel
@@ -427,11 +397,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
-
-
-
 
 ###########################################
 
@@ -464,11 +429,6 @@ Source files for %{name} guest kernel modules
 These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
-
-
-
-
-
 ###########################################
 
 %package guest-desktop-icons
@@ -480,11 +440,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
-
-
-
 
 ###########################################
 

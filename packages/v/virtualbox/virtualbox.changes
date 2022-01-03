@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 30 17:53:07 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Tumbleweed no longer assigns the group "users" to a user, which breaks TW guests under VirtualBox.
+  This is fixed by adding 'TAG+="uaccess"' to the udev rule that creates /dev/vboxuser. Thanks to Andrei Borzenkov
+  for help with this problem. This fixes boo#1194065.
+
+-------------------------------------------------------------------
 Tue Dec 14 06:42:13 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Added BuildRequires python-rpm-macros to fix build errors with SLE_15_SP2 (Thanks Ben Greiner)
