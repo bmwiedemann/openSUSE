@@ -17,7 +17,7 @@
 
 
 Name:           libressl
-Version:        3.3.5
+Version:        3.4.2
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -47,31 +47,31 @@ LibreSSL is an open-source implementation of the Secure Sockets Layer
 OpenSSL, with the aim of refactoring the OpenSSL code so as to
 provide a more secure implementation.
 
-%package -n libcrypto46
+%package -n libcrypto47
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libcrypto46
+%description -n libcrypto47
 The "crypto" library implements a wide range of cryptographic
 algorithms used in various Internet standards. The services provided
 by this library are used by the LibreSSL implementations of SSL, TLS
 and S/MIME, and they have also been used to implement SSH, OpenPGP,
 and other cryptographic standards.
 
-%package -n libssl48
+%package -n libssl50
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libssl48
+%description -n libssl50
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
 
-%package -n libtls20
+%package -n libtls22
 Summary:        A simplified interface for the OpenSSL/LibreSSL TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libtls20
+%description -n libtls22
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
@@ -82,11 +82,11 @@ libssl) for secure client and server communications.
 %package devel
 Summary:        Development files for LibreSSL, an SSL/TLS protocol implementation
 Group:          Development/Libraries/C and C++
-Requires:       libcrypto46 = %version
-Requires:       libssl48 = %version
-Requires:       libtls20 = %version
+Requires:       libcrypto47 = %version
+Requires:       libssl50 = %version
+Requires:       libtls22 = %version
 Conflicts:      libopenssl-devel
-Conflicts:      otherproviders(ssl-devel)
+Conflicts:      ssl-devel
 
 %description devel
 LibreSSL is an open-source implementation of the Secure Sockets Layer
@@ -143,12 +143,12 @@ if ! make check %{?_smp_mflags}; then
 	exit 1
 fi
 
-%post   -n libcrypto46 -p /sbin/ldconfig
-%postun -n libcrypto46 -p /sbin/ldconfig
-%post   -n libssl48 -p /sbin/ldconfig
-%postun -n libssl48 -p /sbin/ldconfig
-%post   -n libtls20 -p /sbin/ldconfig
-%postun -n libtls20 -p /sbin/ldconfig
+%post   -n libcrypto47 -p /sbin/ldconfig
+%postun -n libcrypto47 -p /sbin/ldconfig
+%post   -n libssl50 -p /sbin/ldconfig
+%postun -n libssl50 -p /sbin/ldconfig
+%post   -n libtls22 -p /sbin/ldconfig
+%postun -n libtls22 -p /sbin/ldconfig
 
 %files
 %dir %_sysconfdir/ssl/
@@ -161,13 +161,13 @@ fi
 %_mandir/man8/*.8*
 %doc COPYING
 
-%files -n libcrypto46
+%files -n libcrypto47
 %_libdir/libcrypto.so.*
 
-%files -n libssl48
+%files -n libssl50
 %_libdir/libssl.so.*
 
-%files -n libtls20
+%files -n libtls22
 %_libdir/libtls.so.*
 
 %files devel

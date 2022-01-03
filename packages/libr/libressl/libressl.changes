@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 30 17:49:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.2 [boo#1190853]
+  * Add support for OpenSSL 1.1.1 TLSv1.3 APIs.
+  * Enable the new x509 validator.
+
+-------------------------------------------------------------------
 Thu Dec  9 19:41:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to release 3.3.5

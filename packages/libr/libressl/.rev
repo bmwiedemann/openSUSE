@@ -474,4 +474,12 @@
     <comment></comment>
     <requestid>938272</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e6cec065db51c1030e151324a534cd91</srcmd5>
+    <version>3.4.2</version>
+    <time>1641203350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.4.2 [boo#1190853]</comment>
+    <requestid>943262</requestid>
+  </revision>
 </revisionlist>
