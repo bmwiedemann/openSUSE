@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Copyright (c) 2011 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Let the wrapped binary know that it has been run through the wrapper.
+export CHROME_WRAPPER="`readlink -f "$0"`"
+
+HERE="`dirname "$CHROME_WRAPPER"`"
+
+export CHROME_VERSION_EXTRA="@@CHANNEL@@"
+
+# We don't want bug-buddy intercepting our crashes. http://crbug.com/24120
+export GNOME_DISABLE_CRASH_DIALOG=SET_BY_GOOGLE_CHROME
+
+# This provides a much better experience on Wayland.
+#if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+#  ARGS="--ozone-platform=wayland"
+#fi
+
+# Sanitize std{in,out,err} because they'll be shared with untrusted child
+# processes (http://crbug.com/376567).
+exec < /dev/null
+exec > >(exec cat)
+exec 2> >(exec cat >&2)
+
+# Note: exec -a below is a bashism.
+exec -a "$0" "$HERE/@@PROGNAME@@" "$ARGS" "$@"

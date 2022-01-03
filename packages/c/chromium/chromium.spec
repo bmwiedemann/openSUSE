@@ -35,10 +35,8 @@
 %bcond_with system_vpx
 %ifarch aarch64
 %bcond_with swiftshader
-%bcond_with lto
 %else
 %bcond_without swiftshader
-%bcond_without lto
 %endif
 %if 0%{?suse_version} >= 1550
 %bcond_without system_harfbuzz
@@ -48,6 +46,12 @@
 %bcond_with system_freetype
 %endif
 %bcond_with clang
+%if 0%{?suse_version} >= 1550
+# Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
+%bcond_with lto
+%else
+%bcond_without lto
+%endif
 Name:           chromium
 Version:        96.0.4664.110
 Release:        0
@@ -62,6 +66,7 @@ Source104:      chromium-symbolic.svg
 # https://source.chromium.org/chromium/chromium/src/+/refs/tags/%%{version}:chrome/installer/linux/common/installer.include
 Source105:      INSTALL.sh
 #
+Source106:      chrome-wrapper
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -280,13 +285,13 @@ BuildRequires:  llvm
 %endif
 %if %{without clang}
 BuildRequires:  binutils-gold
-#%if %{?suse_version} >= 1550
-#BuildRequires:  gcc
-#BuildRequires:  gcc-c++
-#%else
+%if %{?suse_version} >= 1550
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%else
 BuildRequires:  gcc10
 BuildRequires:  gcc10-c++
-#%endif
+%endif
 %endif
 
 %description
@@ -319,6 +324,10 @@ mkdir $HOME/bin
 export PYTHON=python3
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
+
+# use our wrapper
+rm chrome/installer/linux/common/wrapper
+cp %{SOURCE106} chrome/installer/linux/common/wrapper
 
 # Remove bundled libs
 keeplibs=(
@@ -587,17 +596,17 @@ build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 export CC=clang
 export CXX=clang++
 %else
-#%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500
 export CC=gcc-10
 export CXX=g++-10
 # some still call gcc/g++
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
-#%else
-#export CC=gcc
-#export CXX=g++
-#%endif
+%else
+export CC=gcc
+export CXX=g++
+%endif
 %endif
 export AR=ar
 export NM=nm

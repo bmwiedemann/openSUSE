@@ -3876,4 +3876,17 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1194182</comment>
   </revision>
+  <revision rev="316" vrev="6">
+    <srcmd5>415d504e0fff53d3248d3057d5a2ed62</srcmd5>
+    <version>96.0.4664.110</version>
+    <time>1641203363</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert wayland fixes because it doesn't handle GPU correctly
+  (boo#1194182)
+- Use GCC 11, but disable LTO (boo#1194055).
+- Use our own copy of the wrapper so that we can use the fixes
+  for Wayland
+</comment>
+    <requestid>943312</requestid>
+  </revision>
 </revisionlist>
