@@ -1,0 +1,10 @@
+<package name="wike" project="openSUSE:Factory">
+  <title>A Wikipedia reader for the GNOME Desktop</title>
+  <description>Wike is a Wikipedia reader for the GNOME Desktop. Provides access to all the
+content of this online encyclopedia in a native application, with a simpler and
+distraction-free view of articles.
+
+</description>
+  <devel project="GNOME:Apps" package="wike"/>
+  <url>https://github.com/hugolabe/Wike</url>
+</package>
