@@ -17,20 +17,21 @@
 
 
 Name:           vokoscreenNG
-Version:        3.0.9
+Version:        3.1.0
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/vkohaupt/vokoscreenNG
-Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz
+Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - Add AppStream metadata - PR#94
 Patch0:         add_appstream_metadata.patch
 BuildRequires:  appstream-glib
-BuildRequires:  gstreamer-devel
+BuildRequires:  gstreamer-devel >= 1.12.5
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.14.0
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -38,8 +39,6 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 
-Requires:       gstreamer >= 1.12.5
-Requires:       libQt5Core5 >= 5.9.4
 %if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
 %else

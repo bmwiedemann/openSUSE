@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 31 20:48:05 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.0
+  * The Help button has been removed from the title bar of the Player,
+    VideoPath and Cisco-License dialog
+  * Change system-filedialog to Qt-filedialog
+  * Fusion is now the style for all operating systems
+  * vokoscreenNG create his own images from all tabs
+  * Camera, Magnifier, Showclick and Halo added to the Systray menu
+  * Global keyboard shortcuts can be changed
+  * Added tooltip for global magnifier shortcut
+  * The camera window is now also displayed over a full screen window
+  * Countdown: Better look without compositer
+  * Countdown: Hide from taskbar
+  * Countdown: Added cancel button
+  * Better integration "mouse over activates window"
+  * Combobox resolution was not deactivated if no camera was found
+  * Better hint if no audio recording device was found
+  * Option to show mouse clicks
+
+-------------------------------------------------------------------
 Wed May 26 09:21:40 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.9

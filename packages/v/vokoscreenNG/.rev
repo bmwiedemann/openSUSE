@@ -95,4 +95,28 @@
     <comment></comment>
     <requestid>896269</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>36f7a1c58f5cf9cb75af3e4078eac97e</srcmd5>
+    <version>3.1.0</version>
+    <time>1641203394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0
+  * The Help button has been removed from the title bar of the Player,
+    VideoPath and Cisco-License dialog
+  * Change system-filedialog to Qt-filedialog
+  * Fusion is now the style for all operating systems
+  * vokoscreenNG create his own images from all tabs
+  * Camera, Magnifier, Showclick and Halo added to the Systray menu
+  * Global keyboard shortcuts can be changed
+  * Added tooltip for global magnifier shortcut
+  * The camera window is now also displayed over a full screen window
+  * Countdown: Better look without compositer
+  * Countdown: Hide from taskbar
+  * Countdown: Added cancel button
+  * Better integration &quot;mouse over activates window&quot;
+  * Combobox resolution was not deactivated if no camera was found
+  * Better hint if no audio recording device was found
+  * Option to show mouse clicks (forwarded request 943361 from tux93)</comment>
+    <requestid>943483</requestid>
+  </revision>
 </revisionlist>
