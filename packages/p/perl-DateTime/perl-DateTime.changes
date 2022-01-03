@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 24 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.55
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.55   2021-12-23
+
+  - Another documentation fix release. This fixes some mistakes, fixes some
+    broken links, and removes all references to the long-dead datetime.perl.org
+    site.
+
+-------------------------------------------------------------------
 Sat Dec  5 03:06:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.54

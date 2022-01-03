@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-Name:           perl-DateTime
-Version:        1.54
-Release:        0
 %define cpan_name DateTime
+Name:           perl-DateTime
+Version:        1.55
+Release:        0
 Summary:        Date and time object for Perl
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
@@ -64,10 +62,7 @@ Requires:       perl(parent)
 
 %description
 DateTime is a class for the representation of date/time combinations, and
-is part of the Perl DateTime project. For details on this project please
-see http://datetime.perl.org/. The DateTime site has a FAQ which may help
-answer many "how do I do X?" questions. The FAQ is at
-http://datetime.perl.org/wiki/datetime/page/FAQ.
+is part of the Perl DateTime project.
 
 It represents the Gregorian calendar, extended backwards in time before its
 creation (in 1582). This is sometimes known as the "proleptic Gregorian
@@ -81,11 +76,12 @@ how dates are often written using "BCE/CE" or "BC/AD".
 For infinite datetimes, please see the DateTime::Infinite module.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -96,8 +92,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS leaptab.txt README.md TODO
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS leaptab.txt precious.toml README.md TODO
 %license LICENSE
 
 %changelog
