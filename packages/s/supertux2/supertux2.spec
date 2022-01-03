@@ -18,7 +18,7 @@
 
 %define _name   supertux
 Name:           supertux2
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Jump'n run game
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later AND GPL-2.0-or-later AND GPL-1.0-only
@@ -41,6 +41,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(openal)
@@ -60,7 +61,7 @@ for res in png xpm; do
     cp -f data/images/engine/icons/{%{_name},%{name}}.$res
 done
 sed -i 's/%{_name}.\(png\|xpm\)/%{name}.\1/g' CMakeLists.txt
-sed -i 's|^\(Icon=\).*$|\1%{name}|' %{name}.desktop
+sed -i 's|^\(Icon=\).*$|\1%{name}|' %{name}.desktop.in
 
 %build
 # Since there are .so files involved, we need stronger than PIE: PIC.

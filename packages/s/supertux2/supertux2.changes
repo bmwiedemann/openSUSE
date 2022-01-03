@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Dec 26 23:30:54 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.6.3:
+  * WASM compilation: nightlies can now be played directly in the browser
+  * Added swimming
+  * Added walljumping
+  * Autotiles
+  * Updated animations
+  * Refreshed many contrib worldmaps
+  * Many updates to paths, with easing, bezier curves, path sharing between objects, and more
+  * Remade the crystal tileset
+  * Many new snow tiles
+  * Many new objects, like the sideways bumper and falling blocks
+  * Custom particles
+  * A new rublight object
+  * Official binaries for FreeBSD, Linux 32-bit and Ubuntu Touch
+  * Added in-game progress statistics
+  * New color picker based on OKLab
+  * Add-on creator, to easily create add-on packages with your world
+  * Rework of the Revenge in Redmond worldmap
+  * Added timeshift ambience in the worldmap
+  * Skippable cutscenes
+  * Editor auto-saves at regular intervals
+  * Optional integration with Discord
+  * Updated translations
+
+-------------------------------------------------------------------
 Thu Sep  2 10:11:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Reenable PIE/PIC.
