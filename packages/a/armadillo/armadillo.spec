@@ -18,7 +18,7 @@
 
 %define soname libarmadillo10
 Name:           armadillo
-Version:        10.7.5
+Version:        10.7.6
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
@@ -59,9 +59,7 @@ This package provides the shared libraries for armadillo.
 %package        doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description    doc
 Armadillo is a C++ linear algebra library (matrix maths).
