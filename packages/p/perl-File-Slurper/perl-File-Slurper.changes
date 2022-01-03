@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 26 03:07:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-File-Slurper/Changes
+
+  0.013     2021-12-25 10:09:17+01:00 Europe/Amsterdam
+            Always split on newlines in read_lines
+
+-------------------------------------------------------------------
 Wed Feb 21 06:21:07 UTC 2018 - coolo@suse.com
 
 - updated to 0.012
