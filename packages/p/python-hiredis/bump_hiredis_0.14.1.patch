@@ -1,0 +1,40 @@
+From 638cd0d1909616afa44ce534cd5dd77f91edf295 Mon Sep 17 00:00:00 2001
+From: Guy Korland <gkorland@gmail.com>
+Date: Wed, 18 Mar 2020 11:53:41 +0200
+Subject: [PATCH 1/3] upgrade hiredis to 0.14.1
+
+---
+ vendor/hiredis | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/reader.c
++++ b/src/reader.c
+@@ -169,7 +169,7 @@ redisReplyObjectFunctions hiredis_Object
+ static void Reader_dealloc(hiredis_ReaderObject *self) {
+     // we don't need to free self->encoding as the buffer is managed by Python
+     // https://docs.python.org/3/c-api/arg.html#strings-and-buffers
+-    redisReplyReaderFree(self->reader);
++	redisReaderFree(self->reader);
+     Py_XDECREF(self->protocolErrorClass);
+     Py_XDECREF(self->replyErrorClass);
+ 
+@@ -293,7 +293,7 @@ static PyObject *Reader_feed(hiredis_Rea
+       goto error;
+     }
+ 
+-    redisReplyReaderFeed(self->reader, (char *)buf.buf + off, len);
++    redisReaderFeed(self->reader, (char *)buf.buf + off, len);
+     PyBuffer_Release(&buf);
+     Py_RETURN_NONE;
+ 
+@@ -312,8 +312,8 @@ static PyObject *Reader_gets(hiredis_Rea
+         return NULL;
+     }
+ 
+-    if (redisReplyReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
+-        errstr = redisReplyReaderGetError(self->reader);
++    if (redisReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
++        errstr = redisReaderGetError(self->reader);
+         /* protocolErrorClass might be a callable. call it, then use it's type */
+         err = createError(self->protocolErrorClass, errstr, strlen(errstr));
+         if (err != NULL) {

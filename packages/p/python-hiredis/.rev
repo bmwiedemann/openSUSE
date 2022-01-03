@@ -43,4 +43,15 @@
     <comment></comment>
     <requestid>876522</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>25391c4a92af2ab7cf1329b01dd8a85b</srcmd5>
+    <version>1.1.0</version>
+    <time>1641203367</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bump_hiredis_0.14.1.patch to allow using more recent (and
+  without some CVEs) version of hiredis.
+  * BUGFIX: READEME.md has UTF-8 characters, setup.py will fail on
+    systems where the locale is not UTF-8. (see #89)</comment>
+    <requestid>943349</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,9 @@
-Index: hiredis-py-1.0.0/setup.py
-===================================================================
---- hiredis-py-1.0.0.orig/setup.py
-+++ hiredis-py-1.0.0/setup.py
+---
+ setup.py |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+--- a/setup.py
++++ b/setup.py
 @@ -11,8 +11,7 @@ def version():
    return module.__version__
  

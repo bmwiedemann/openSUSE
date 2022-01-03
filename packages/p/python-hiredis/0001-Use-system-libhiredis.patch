@@ -12,10 +12,8 @@ Patch-Name: 0001-Use-system-libhiredis.patch
  setup.py | 9 ++++++---
  1 file changed, 6 insertions(+), 3 deletions(-)
 
-Index: hiredis-py-1.0.0/setup.py
-===================================================================
---- hiredis-py-1.0.0.orig/setup.py
-+++ hiredis-py-1.0.0/setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -13,7 +13,8 @@ def version():
  ext = Extension("hiredis.hiredis",
    sources=sorted(glob.glob("src/*.c") +

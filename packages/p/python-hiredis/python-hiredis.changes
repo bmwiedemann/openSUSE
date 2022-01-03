@@ -5,13 +5,16 @@ Mon Feb  1 09:48:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
   * Allow "encoding" and "errors" attributes to be updated at runtime (see #96)
 - Drop fix_build_dir_in_tests.patch
 - Add hiredis1.patch to fix build with hiredis 1.0.0
+- Add bump_hiredis_0.14.1.patch to allow using more recent (and
+  without some CVEs) version of hiredis.
 
 -------------------------------------------------------------------
 Thu Jan 16 08:54:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.1:
   * Permit all allowed values of codec errors (see #86)
-  * BUGFIX: READEME.md has UTF-8 characters, setup.py will fail on systems where the locale is not UTF-8. (see #89)
+  * BUGFIX: READEME.md has UTF-8 characters, setup.py will fail on
+    systems where the locale is not UTF-8. (see #89)
 - Drop merged patch 0002-Fix-README.md-has-unicode.patch
 
 -------------------------------------------------------------------

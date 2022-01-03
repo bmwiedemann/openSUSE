@@ -4,16 +4,12 @@ Date: Mon, 1 Mar 2021 20:48:33 +0200
 Subject: [PATCH] Bump hiredis from 0.13.3 to 1.0.0
 
 ---
- setup.py       |  2 +-
- src/reader.c   | 64 +++++++++++++++++++++++++++++++++++++++++++-------
- test/reader.py | 36 ++++++++++++++++++++++++++++
- vendor/hiredis |  2 +-
- 4 files changed, 93 insertions(+), 11 deletions(-)
+ src/reader.c   |   56 +++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ test/reader.py |   36 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 87 insertions(+), 5 deletions(-)
 
-Index: hiredis-py-1.1.0/src/reader.c
-===================================================================
---- hiredis-py-1.1.0.orig/src/reader.c
-+++ hiredis-py-1.1.0/src/reader.c
+--- a/src/reader.c
++++ b/src/reader.c
 @@ -69,8 +69,26 @@ static void *tryParentize(const redisRea
      PyObject *parent;
      if (task && task->parent) {
@@ -74,7 +70,7 @@ Index: hiredis-py-1.1.0/src/reader.c
      return tryParentize(task, obj);
  }
  
-@@ -148,28 +180,42 @@ static void *createIntegerObject(const r
+@@ -148,21 +180,35 @@ static void *createIntegerObject(const r
      return tryParentize(task, obj);
  }
  
@@ -111,38 +107,8 @@ Index: hiredis-py-1.1.0/src/reader.c
      freeObject           // void (*freeObject)(void*);
  };
  
- static void Reader_dealloc(hiredis_ReaderObject *self) {
-     // we don't need to free self->encoding as the buffer is managed by Python
-     // https://docs.python.org/3/c-api/arg.html#strings-and-buffers
--    redisReplyReaderFree(self->reader);
-+    redisReaderFree(self->reader);
-     Py_XDECREF(self->protocolErrorClass);
-     Py_XDECREF(self->replyErrorClass);
- 
-@@ -293,7 +339,7 @@ static PyObject *Reader_feed(hiredis_Rea
-       goto error;
-     }
- 
--    redisReplyReaderFeed(self->reader, (char *)buf.buf + off, len);
-+    redisReaderFeed(self->reader, (char *)buf.buf + off, len);
-     PyBuffer_Release(&buf);
-     Py_RETURN_NONE;
- 
-@@ -312,8 +358,8 @@ static PyObject *Reader_gets(hiredis_Rea
-         return NULL;
-     }
- 
--    if (redisReplyReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
--        errstr = redisReplyReaderGetError(self->reader);
-+    if (redisReaderGetReply(self->reader, (void**)&obj) == REDIS_ERR) {
-+        errstr = redisReaderGetError(self->reader);
-         /* protocolErrorClass might be a callable. call it, then use it's type */
-         err = createError(self->protocolErrorClass, errstr, strlen(errstr));
-         if (err != NULL) {
-Index: hiredis-py-1.1.0/test/reader.py
-===================================================================
---- hiredis-py-1.1.0.orig/test/reader.py
-+++ hiredis-py-1.1.0/test/reader.py
+--- a/test/reader.py
++++ b/test/reader.py
 @@ -118,6 +118,42 @@ class ReaderTest(TestCase):
      self.reader.feed((":%d\r\n" % value).encode("ascii"))
      self.assertEquals(value, self.reply())
