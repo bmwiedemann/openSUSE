@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 28 07:02:11 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add hyperkitty-django4.patch to support Django 4
+
+-------------------------------------------------------------------
 Fri Dec 17 10:25:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add hyperkitty-fix-mistune-2.0-imports.patch ... two function

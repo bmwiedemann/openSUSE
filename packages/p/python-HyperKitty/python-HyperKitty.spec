@@ -59,6 +59,8 @@ Patch0:         hyperkitty-settings.patch
 # PATCH-FIX-UPSTREAM hyperkitty-fix-mistune-2.0-imports.patch gl#mailman/hyperkitty#379 mcepl@suse.com
 # Two elements moved in mistune 2.0
 Patch1:         hyperkitty-fix-mistune-2.0-imports.patch
+# PATCH-FIX-UPSTREAM hyperkitty-django4.patch gl#mailman/hyperkitty#384 jayvdb@gmail.com
+Patch2:         hyperkitty-django4.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
@@ -151,10 +153,13 @@ This package holds the uwsgi configuration.
 cp %{SOURCE30} .
 touch settings_local.py
 
-# Copy exmaple_project to just build the static files
+%patch2 -p1
+
+# Copy example_project to just build the static files
 rsync -a example_project/* build_static_files
 
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
