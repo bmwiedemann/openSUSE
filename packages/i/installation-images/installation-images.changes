@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Dec 31 17:47:28 UTC 2021 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/installation-images#560
+- Add s390x to architecture list for net_repos (boo#1193479)
+- Define zsystems as the_arch for s390x
+- 17.32
+
+--------------------------------------------------------------------
 Mon Dec 27 09:32:28 UTC 2021 - jreidinger@suse.cz
 
 - merge gh#openSUSE/installation-images#559

@@ -55,6 +55,9 @@ ExclusiveArch:  do_not_build
 %ifarch ppc64 ppc64le
 %define the_arch ppc
 %endif
+%ifarch s390x
+%define the_arch zsystems
+%endif
 %ifarch riscv64
 %define the_arch riscv
 %endif
@@ -74,7 +77,7 @@ ExclusiveArch:  do_not_build
 %define net_repo https://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
 %else
 %define with_exfat 1
-%ifarch %arm aarch64 ppc64 ppc64le riscv64
+%ifarch %arm aarch64 ppc64 ppc64le riscv64 s390x
 %define net_repo https://download.opensuse.org/ports/%{the_arch}/tumbleweed/repo/oss/
 %else
 %define net_repo https://download.opensuse.org/tumbleweed/repo/oss
@@ -683,7 +686,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.31
+Version:        17.32
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
