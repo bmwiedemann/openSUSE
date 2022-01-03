@@ -37,6 +37,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         qt5-quick3d-assimp-5.1.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Bump-version.patch
 BuildRequires:  fdupes
