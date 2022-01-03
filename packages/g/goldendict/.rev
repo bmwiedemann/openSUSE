@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b78e56785824acbad6f6654b5d4ed4f</srcmd5>
+    <version>1.5.0~rc2+git.20211231T234821</version>
+    <time>1641203374</time>
+    <user>dimstar_suse</user>
+    <comment>return back of GoldenDict, with Qt5WebEngine instead of deprecated Qt5WebKit</comment>
+    <requestid>943356</requestid>
+  </revision>
+</revisionlist>
