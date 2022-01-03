@@ -1,0 +1,7 @@
+<package name="libresprite" project="openSUSE:Factory">
+  <title>LibreSprite</title>
+  <description>Animated sprite editor and pixel art tool
+</description>
+  <devel project="games:tools" package="libresprite"/>
+  <url>https://libresprite.github.io/</url>
+</package>
