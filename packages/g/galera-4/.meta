@@ -1,0 +1,11 @@
+<package name="galera-4" project="openSUSE:Factory">
+  <title>Galera: a synchronous multi-master wsrep provider (replication engine)</title>
+  <description>Galera is a fast synchronous multimaster wsrep provider (replication engine)
+for transactional databases and similar applications. For more information
+about wsrep API see http://launchpad.net/wsrep. For a description of Galera
+replication engine see http://www.codership.com.
+
+</description>
+  <devel project="server:database" package="galera-4"/>
+  <url>http://galeracluster.com/</url>
+</package>
