@@ -1,7 +1,7 @@
 #
 # spec file for package jcommon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define section free
 Name:           jcommon
-Version:        1.0.23
+Version:        1.0.24
 Release:        0
 Summary:        Common library
 License:        LGPL-2.1-only
-URL:            http://www.jfree.org/jcommon/index.php
+URL:            https://www.jfree.org/jcommon/
+# see _service file for Source0
 Source0:        jcommon-%{version}.tar.xz
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  fdupes
@@ -50,8 +51,6 @@ jfreechart
 %setup -q
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
-
-%{pom_remove_parent}
 
 %build
 export CLASSPATH=%(build-classpath junit)
