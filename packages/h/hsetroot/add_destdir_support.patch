@@ -1,14 +1,37 @@
-diff --color -ruN hsetroot-1.0.5.ori/Makefile hsetroot-1.0.5/Makefile
---- hsetroot-1.0.5.ori/Makefile	2019-11-15 12:09:41.000000000 +0100
-+++ hsetroot-1.0.5/Makefile	2021-10-05 12:16:40.331730695 +0200
-@@ -30,8 +30,8 @@
+From 4d4cc8293c6b00c9b2977b3e71c526193a80ab44 Mon Sep 17 00:00:00 2001
+From: Jani Juhani Sinervo <jani@sinervo.fi>
+Date: Wed, 27 Oct 2021 16:05:20 +0300
+Subject: [PATCH] Add DESTDIR to help with packaging
+
+Git-commit: 4d4cc8293c6b00c9b2977b3e71c526193a80ab44
+
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a1217d9..d485357 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,6 +5,7 @@ CFLAGS?=-g -O2 -Wall
+ LDFLAGS?=
+ 
+ PREFIX?=/usr/local
++DESTDIR?=
+ 
+ # arch hardening
+ #CPPFLAGS+=-D_FORTIFY_SOURCE=2
+@@ -34,8 +35,8 @@ hsetroot: hsetroot.o
  hsr-outputs: hsr-outputs.o
  
  install: hsetroot hsr-outputs
 -	install -st $(PREFIX)/bin/ hsetroot
 -	install -st $(PREFIX)/bin/ hsr-outputs
-+	install -Dt $(DESTDIR) hsetroot
-+	install -Dt $(DESTDIR) hsr-outputs
++	install -st $(DESTDIR)$(PREFIX)/bin/ hsetroot
++	install -st $(DESTDIR)$(PREFIX)/bin/ hsr-outputs
  
  clean:
  	rm -f *.o hsetroot hsr-outputs
+-- 
+2.33.1
+

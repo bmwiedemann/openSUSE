@@ -1,7 +1,7 @@
 #
 # spec file for package hsetroot
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,18 +20,17 @@ Name:           hsetroot
 Version:        1.0.5
 Release:        0
 Summary:        Advanced wallpaper tool for X
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/X11/Utilities
-Url:            https://github.com/himdel/hsetroot
+URL:            https://github.com/himdel/hsetroot
 Source:         https://github.com/himdel/hsetroot/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        hsetroot.1
+Source1:        %{name}.1
 Patch0:         add_destdir_support.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  freetype2-devel
-BuildRequires:  imlib2-devel
+Patch1:         hsetroot-Fix-installation.patch
 BuildRequires:  pkgconfig
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xinerama)
 Requires:       imlib2-filters
 Requires:       imlib2-loaders
 
@@ -52,20 +51,21 @@ hsetroot also supports alpha-channels when rendering things.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot}%{_bindir} install
-install -p -D -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man1/hsetroot.1
-
+export PREFIX=%{_prefix}
+%make_install
+install -p -D -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %{_bindir}/%{name}
 %{_bindir}/hsr-outputs
 %{_mandir}/man1/%{name}.1%{ext_man}
+%license LICENSE
 %doc README.md
 
 %changelog
