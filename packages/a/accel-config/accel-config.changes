@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 30 15:11:29 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.4:
+  * Add -e/--enable and -f/--force features to load-config command
+  * Add more sample configuration files for different usages
+  * Add multi-descriptor support
+- Update to version 3.4.3:
+  * Remove redundant dependencies (kmod and udev)
+  * Bug fixes and code cleanup
+  * DSA test adds device and wq selection
+  * DSA test adds no opcode operation support
+
+-------------------------------------------------------------------
 Fri Oct  8 13:28:16 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.4.2
