@@ -140,6 +140,7 @@ providing graphical log-ins and managing local and remote displays.
 %package -n libgdm1
 Summary:        Client Library for Communicating with GDM Greeter Server
 Group:          System/Libraries
+Requires:       %{name}-schema
 Recommends:     gdm
 
 %description -n libgdm1
@@ -156,6 +157,15 @@ providing graphical log-ins and managing local and remote displays.
 
 This package provides the GObject Introspection bindings for
 communicating with the GDM greeter server.
+
+%package schema
+Summary:        Config schema for GDM
+Group:          System/Libraries
+BuildArch:      noarch
+
+%description schema
+The GNOME Display Manager is a system service that is responsible for
+providing graphical log-ins and managing local and remote displays.
 
 %package devel
 Summary:        Libraries for GDM -- Development Files
@@ -342,7 +352,6 @@ dconf update
 %{_datadir}/dconf/profile/gdm
 %{_datadir}/gdm/
 %{_datadir}/gnome-session/sessions/gnome-login.session
-%{_datadir}/glib-2.0/schemas/org.gnome.login-screen.gschema.xml
 %{_pamdir}/pam_gdm.so
 %dir %{_libexecdir}/gdm
 %{_libexecdir}/gdm/gdm-*
@@ -378,6 +387,9 @@ dconf update
 
 %files -n typelib-1_0-Gdm-1_0
 %{_libdir}/girepository-1.0/Gdm-1.0.typelib
+
+%files schema
+%{_datadir}/glib-2.0/schemas/org.gnome.login-screen.gschema.xml
 
 %files devel
 %{_includedir}/gdm/

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 30 04:28:16 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Move
+  %{_datadir}/glib-2.0/schemas/org.gnome.login-screen.gschema.xml
+  from main package to new gdm-schema split package and make
+  libgdm1 depend on the new gdm-schema split package. Currently,
+  the gdm-schema is required for gnome-shell to work, but
+  gnome-shell only depends on libgdm1 and not on gdm as a whole,
+  causing a crash of gnome-shell if the gdm main package is not
+  installed. By moving the gdm-schema to it's own split package and
+  making libgdm1 actually require it, the crash can be prevented.
+  Fixes boo#1194183.
+
+-------------------------------------------------------------------
 Wed Dec  8 03:36:08 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-restart-greeter-session-after-crash.patch: When active vt
