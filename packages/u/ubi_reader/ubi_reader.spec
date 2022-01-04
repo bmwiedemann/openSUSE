@@ -1,8 +1,8 @@
 #
 # spec file for package ubi_reader
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2018-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           ubi_reader
-Version:        0.6.3
+Version:        0.7.1
 Release:        0
 Summary:        Extract files from UBI and UBIFS images
 License:        LGPL-3.0-or-later
@@ -37,7 +37,7 @@ data from UBI and UBIFS images.
 
 The following tools are included:
  - ubireader_display_info:
-   Show information about UBI or UBIFS image.  
+   Show information about UBI or UBIFS image.
  - ubireader_extract_files:
    Extract contents of a UBI or UBIFS image.
  - ubireader_extract_images:
@@ -62,6 +62,7 @@ find ubireader -name "*.py" | xargs sed -i -e '/^#!\//, 1d'
 %files
 %license LICENSE
 %doc README.md
+%{_bindir}/ubireader_display_blocks
 %{_bindir}/ubireader_display_info
 %{_bindir}/ubireader_extract_files
 %{_bindir}/ubireader_extract_images

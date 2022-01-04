@@ -15,4 +15,12 @@
     <comment>Forward the current version of ubi_reader to Factory</comment>
     <requestid>883345</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c2c575d363f319584fce40cf407703ef</srcmd5>
+    <version>0.7.1</version>
+    <time>1641321479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943725</requestid>
+  </revision>
 </revisionlist>
