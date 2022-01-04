@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue Dec 21 18:53:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use update-alternatives for plugin.cfg
+
+-------------------------------------------------------------------
+Thu Dec 16 14:47:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 13.2.4
+  * PixelFormat: use red channel when packing PF_A8 to match OpenGL
+  * Ogre.h: include OgreUnifiedHighLevelGpuProgram.h
+  * Vulkan:
+    * add swizzling for PF_A8
+    * enable PF_DEPTH32
+- Add ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4.patch from upstream
+  fixes linking issues with version 13.2.2+
+- Update to 13.2.1
+  * Frustum: deprecate getProjectionMatrixRS
+  * Mesh: drop mSkeletonName as it always matches mSkeleton
+  * update zip/ miniz to 2.2.0
+  * Media: drop obsolete HLMS shaders
+  * RTSS: allow targeting glslang
+  * Overlay: fix missing bits for HiDPI support
+  * Terrain: GLSL - add Vulkan support
+  * GLSLang: use latest GLSL version to get all features
+  * Vulkan: add new RenderSystem based on ogre-next version
+  * GL*: drop superflous GLHardwarePixelBuffer indirection
+  * update imgui to 1.85
+  * Many other features and bug fixes, full list is available:
+    https://github.com/OGRECave/ogre/releases/tag/v13.2.0
+- Added 0001-Fix-plugins-not-installed-into-OGRE_PLUGINS_PATH.patch
+  install plugins into configured plugin path
+- Added 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+  support system wide installed vulkan.
+
+-------------------------------------------------------------------
+Tue Dec 14 09:36:02 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 13.1.1
+  * add Rectangle2D to Ogre.h
+  * Deprecated - drop duplicate definition of aligned_vector
+  * RTSS: implement two-sided lighting
+  * Bites: Use Qt 6 for OgreBitesQt if present
+  * UnifiedShader:
+    * add texture2DArray support and refactor respective sample
+    * initial support for glslang
+  * GLSLang: enable standard params & add vulkan support
+  * Many other features and bug fixes, full list is available:
+    https://github.com/OGRECave/ogre/releases/tag/v13.1.0
+
+-------------------------------------------------------------------
+Tue Dec 14 09:15:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 13.0.1, version scheme changed. With breaking changes:
+  * Deprecated std wrappers and SceneType into OgreDeprecated.h
+  * Several private structures are not exposed anymore
+  * Dopped
+    * "Custom Render Queues" support
+    * deprecated SceneLoader API
+    * long-standing hard deprecations
+    * most of texture_alias API
+    * ParticleIterator
+    * _StringBase & _StringStreamBase indirection
+    * subroutine API in favor of specialization constants
+    * support for TEX_TYPE_2D_RECT
+  * rename Media/ShadowVolume to Media/Main
+  * add API for exporting scene hierarchy + dotscene implementation
+  * add GLSLang shader compiler plugin
+  * Many other new features and bug fixes, full list available:
+    https://github.com/OGRECave/ogre/releases/tag/v13.0.0
+
+-------------------------------------------------------------------
+Fri Dec 10 23:33:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.12.13
+  * Add API for exporting scene hierarchy + dotscene implementation
+  * DDSCodec - disable mips instead of decompressing
+  * FileSystemLayer - also look relative to lib for configs on Linux
+  * MaterialSerializer - do not export RTSS techniques by default
+  * Root - catch bad config options in restoreConfig
+  * SceneManager::createLight - add convenience param to specify Type
+  * TRect - add asserts to merge & intersect
+  * Viewport - disable clearBuffers if clearEveryFrame is off
+  * Overlay: Font - Texture must be removed to allow reloading
+  * Terrain: Delete plane when shutting down.
+  * A lot bug fixes
+- Add fix-assimp-cmake.patch, fixes assimp detection by cmake
+
+-------------------------------------------------------------------
 Mon Sep  6 08:19:56 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - Ogre is incompatible with OpenEXR v3. OpenEXR is an optional

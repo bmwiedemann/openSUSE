@@ -1,19 +1,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">4</size>
+      <size unit="M">4800</size>
     </disk>
+    <memory>
+      <size unit="G">6</size>
+    </memory>
   </hardware>
-
-  <overwrite>
-    <conditions>
-      <arch>ppc64le</arch>
-      <arch>ppc64</arch>
-    </conditions>
-    <hardware>
-      <physicalmemory>
-        <size unit="G">6</size>
-      </physicalmemory>
-    </hardware>
-  </overwrite>
 </constraints>

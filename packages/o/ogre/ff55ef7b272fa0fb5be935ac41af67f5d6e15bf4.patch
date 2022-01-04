@@ -1,0 +1,81 @@
+From ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4 Mon Sep 17 00:00:00 2001
+From: Pavel Rojtberg <rojtberg@gmail.com>
+Date: Tue, 14 Dec 2021 20:01:34 +0100
+Subject: [PATCH] add -Wl,--no-undefined and fix fallout
+
+---
+ CMakeLists.txt                      | 4 ++++
+ PlugIns/GLSLang/CMakeLists.txt      | 2 +-
+ RenderSystems/GL/CMakeLists.txt     | 2 +-
+ RenderSystems/Vulkan/CMakeLists.txt | 3 ++-
+ ci-build.cmake                      | 2 +-
+ 5 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 830f4cc0d04..5a5b4a93668 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,6 +32,10 @@ if(WIN32)
+   set(CMAKE_SUPPRESS_REGENERATION true)
+ endif()
+ 
++# prefer GLVND
++if(POLICY CMP0072)
++  cmake_policy(SET CMP0072 NEW)
++endif()
+ # use legacy swig mode
+ if(POLICY CMP0078)
+   cmake_policy(SET CMP0078 OLD)
+diff --git a/PlugIns/GLSLang/CMakeLists.txt b/PlugIns/GLSLang/CMakeLists.txt
+index b504cb45ba5..91f675f7288 100644
+--- a/PlugIns/GLSLang/CMakeLists.txt
++++ b/PlugIns/GLSLang/CMakeLists.txt
+@@ -17,7 +17,7 @@ elseif(WIN32)
+     target_link_directories(Plugin_GLSLangProgramManager PRIVATE $ENV{VULKAN_SDK}/lib)
+     target_link_libraries(Plugin_GLSLangProgramManager PUBLIC OgreMain shaderc_combined)
+ else()
+-    target_link_libraries(Plugin_GLSLangProgramManager PUBLIC OgreMain glslang HLSL OSDependent OGLCompiler SPIRV)
++    target_link_libraries(Plugin_GLSLangProgramManager PUBLIC OgreMain glslang HLSL OSDependent OGLCompiler SPIRV SPIRV-Tools SPIRV-Tools-opt)
+ endif()
+ 
+ ogre_config_framework(Plugin_GLSLangProgramManager)
+diff --git a/RenderSystems/GL/CMakeLists.txt b/RenderSystems/GL/CMakeLists.txt
+index 22b85a7a6b8..2cd599fd1cb 100644
+--- a/RenderSystems/GL/CMakeLists.txt
++++ b/RenderSystems/GL/CMakeLists.txt
+@@ -63,7 +63,7 @@ add_definitions(-DOGRE_GLPLUGIN_EXPORTS ${OGRE_VISIBILITY_FLAGS})
+ #Note that in the next row SOURCE_FILES are added last. This is to prevent compilation problems of unity build found on Windows Visual Studio. 
+ #In this situation any file added after the "glew.cpp" file, which belongs to the SOURCE_FILES package, does not compile
+ add_library(RenderSystem_GL ${OGRE_LIB_TYPE} ${HEADER_FILES} ${GLSL_SOURCE} ${ATIFS_SOURCE} ${NVPARSE_SOURCE} ${SOURCE_FILES})
+-target_link_libraries(RenderSystem_GL PUBLIC OgreMain PRIVATE OgreGLSupport)
++target_link_libraries(RenderSystem_GL PUBLIC OgreMain PRIVATE OgreGLSupport OpenGL::GL)
+ target_include_directories(RenderSystem_GL PUBLIC 
+     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+     $<INSTALL_INTERFACE:include/OGRE/RenderSystems/GL>)
+diff --git a/RenderSystems/Vulkan/CMakeLists.txt b/RenderSystems/Vulkan/CMakeLists.txt
+index 1b782d81ffa..8d8b92d3a18 100755
+--- a/RenderSystems/Vulkan/CMakeLists.txt
++++ b/RenderSystems/Vulkan/CMakeLists.txt
+@@ -29,9 +29,10 @@ elseif(ANDROID)
+ else()
+     set_source_files_properties("${CMAKE_CURRENT_SOURCE_DIR}/src/volk.c"
+         PROPERTIES COMPILE_DEFINITIONS VK_USE_PLATFORM_XLIB_KHR)
++    target_link_libraries(RenderSystem_Vulkan PRIVATE ${X11_LIBRARIES})
+ endif()
+ 
+-target_link_libraries(RenderSystem_Vulkan PUBLIC OgreMain)
++target_link_libraries(RenderSystem_Vulkan PUBLIC OgreMain PRIVATE ${CMAKE_DL_LIBS})
+ 
+ target_include_directories(RenderSystem_Vulkan PUBLIC
+     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+diff --git a/ci-build.cmake b/ci-build.cmake
+index f18f240a74c..beb4473c011 100644
+--- a/ci-build.cmake
++++ b/ci-build.cmake
+@@ -1,5 +1,5 @@
+ set(GENERATOR)
+-set(OTHER -DCMAKE_CXX_FLAGS=-Werror)
++set(OTHER -DCMAKE_CXX_FLAGS=-Werror -DCMAKE_SHARED_LINKER_FLAGS=-Wl,--no-undefined)
+ set(CROSS)
+ 
+ set(CMAKE_BUILD_TYPE Debug)

@@ -1,1 +1,3 @@
 addFilter("ogre-demos.*: E: devel-file-in-non-devel-package")
+# This is a shader not a devel file
+addFilter("ogre-media.*: E: devel-file-in-non-devel-package")

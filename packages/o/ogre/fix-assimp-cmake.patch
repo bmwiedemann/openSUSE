@@ -1,0 +1,46 @@
+From 4d46175873a7e5ddaaa84c9162eed3b8a3e97737 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 14 Dec 2021 17:17:37 +0100
+Subject: [PATCH 1/2] Assimp: Fix detection of assimp >= 5.1
+
+---
+ CMake/Dependencies.cmake | 8 ++++----
+ CMakeLists.txt           | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMake/Dependencies.cmake b/CMake/Dependencies.cmake
+index 39c1c238c..226daef1c 100644
+--- a/CMake/Dependencies.cmake
++++ b/CMake/Dependencies.cmake
+@@ -251,11 +251,11 @@ find_package(ZLIB)
+ macro_log_feature(ZLIB_FOUND "zlib" "Simple data compression library" "http://www.zlib.net" FALSE "" "")
+ 
+ # Assimp
+-find_package(ASSIMP QUIET)
+-macro_log_feature(ASSIMP_FOUND "Assimp" "Needed for the AssimpLoader Plugin" "https://www.assimp.org/" FALSE "" "")
++find_package(assimp QUIET)
++macro_log_feature(assimp_FOUND "Assimp" "Needed for the AssimpLoader Plugin" "https://www.assimp.org/" FALSE "" "")
+ 
+-if(ASSIMP_FOUND)
+-  # workaround horribly broken assimp cmake
++if(assimp_FOUND)
++  # workaround horribly broken assimp cmake, fixed with assimp 5.1
+   add_library(fix::assimp INTERFACE IMPORTED)
+   set_target_properties(fix::assimp PROPERTIES
+       INTERFACE_LINK_LIBRARIES "${ASSIMP_LIBRARIES}"
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 830f4cc0d..4a137c70e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -318,7 +318,7 @@ cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_GL "Build OpenGL RenderSystem" TR
+ cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_GLES2 "Build OpenGL ES 2.x RenderSystem" TRUE "OPENGLES2_FOUND;NOT WINDOWS_STORE;NOT WINDOWS_PHONE" FALSE)
+ cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_METAL "Build Metal RenderSystem" FALSE "APPLE" FALSE)
+ option(OGRE_BUILD_RENDERSYSTEM_VULKAN "Build Vulkan RenderSystem" FALSE)
+-cmake_dependent_option(OGRE_BUILD_PLUGIN_ASSIMP "Build Open Asset Import plugin" TRUE "ASSIMP_FOUND" FALSE)
++cmake_dependent_option(OGRE_BUILD_PLUGIN_ASSIMP "Build Open Asset Import plugin" TRUE "assimp_FOUND" FALSE)
+ cmake_dependent_option(OGRE_BUILD_RENDERSYSTEM_TINY "Build Tiny RenderSystem (software-rendering)" FALSE "NOT ANDROID" FALSE)
+ option(OGRE_BUILD_PLUGIN_BSP "Build BSP SceneManager plugin" TRUE)
+ option(OGRE_BUILD_PLUGIN_OCTREE "Build Octree SceneManager plugin" TRUE)
+-- 
+2.34.1
+

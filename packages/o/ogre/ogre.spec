@@ -1,7 +1,7 @@
 #
 # spec file for package ogre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,20 @@
 #
 
 
-%define im_version 1.79
-%define _version 1-12-12
-%define soname 1_12_12
+%define major 13
+%define minor 2
+%define third 4
+%define sover  %{major}.%{minor}
+%define soname %{major}_%{minor}
+%define plugin_dir %{_libdir}/OGRE%{soname}
+# Version from https://github.com/OGRECave/ogre/blob/v%version/Components/Overlay/CMakeLists.txt#L25
+%define im_version 1.85
+# CG is non free, so not build by default
 %bcond_with cg
 # OpenEXR v3 is incompatible https://github.com/OGRECave/ogre/issues/2179
 %bcond_with openexr
 Name:           ogre
-Version:        1.12.12
+Version:        %{major}.%{minor}.%{third}
 Release:        0
 Summary:        Object-Oriented Graphics Rendering Engine
 License:        LGPL-2.1-only
@@ -32,29 +38,37 @@ URL:            https://www.ogre3d.org/
 Source0:        https://github.com/OGRECave/ogre/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{im_version}.tar.gz#/imgui-%{im_version}.tar.gz
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM python3-sitelib.patch -- Detect correct python sitelib path
+# PATCH-FIX-UPSTREAM python3-sitelib.patch -- https://github.com/OGRECave/ogre/pull/2317
 Patch0:         python3-sitelib.patch
-BuildRequires:  cmake
+# PATCH-FIX-UPSTREAM fix-assimp-cmake.patch -- https://github.com/OGRECave/ogre/pull/2318
+Patch1:         fix-assimp-cmake.patch
+# PATCH-FIX-UPSTREAM ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4.patch -- Fix linking with no-undefined set
+Patch2:         https://github.com/OGRECave/ogre/commit/ff55ef7b272fa0fb5be935ac41af67f5d6e15bf4.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-plugins-not-installed-into-OGRE_PLUGINS_PATH.patch -- https://github.com/OGRECave/ogre/pull/2320
+Patch3:         0001-Fix-plugins-not-installed-into-OGRE_PLUGINS_PATH.patch
+# PATCH-FEAT-UPSTREAM 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+Patch4:         0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+BuildRequires:  cmake >= 3.10
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
+BuildRequires:  glslang-devel
 BuildRequires:  imgui-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  swig
+BuildRequires:  cmake(SPIRV-Tools)
+BuildRequires:  cmake(assimp)
 BuildRequires:  mono(mcs)
-%if %{with openexr}
-BuildRequires:  pkgconfig(OpenEXR)
-%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(assimp)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xrandr)
@@ -62,6 +76,9 @@ BuildRequires:  pkgconfig(zziplib)
 Obsoletes:      libOgreMain <= %{version}
 %if %{with cg}
 BuildRequires:  cg-devel
+%endif
+%if %{with openexr}
+BuildRequires:  pkgconfig(OpenEXR) < 3.0
 %endif
 
 %description
@@ -74,6 +91,8 @@ objects and other intuitive classes.
 
 %package media
 Summary:        Required media files for OGRE
+# There must only one media package installed! As using programs hardcode the path
+Conflicts:      %{name}-media < %{version}
 
 %description media
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -98,7 +117,7 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 %package -n libOgreMain%{soname}
 Summary:        Ogre 3D: an open source graphics engine
 Group:          System/Libraries
-Recommends:     %{name}-media = %{version}
+Recommends:     %{name}-media >= %{version}
 Recommends:     libOgreMain%{soname}-codecs
 Recommends:     libOgreMain%{soname}-plugins
 
@@ -146,6 +165,9 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 Summary:        Ogre 3D: an open source graphics engine
 Group:          System/Libraries
 Provides:       libOgreMain-plugins = %{version}
+Conflicts:      libOgreMain-plugins <= 1.12.13
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n libOgreMain%{soname}-plugins
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -297,7 +319,7 @@ Reusable utilities for rapid prototyping with Ogre.
 %package -n libOgreMeshLodGenerator-devel
 Summary:        Development headers for Mesh LOD
 Group:          Development/Libraries/C and C++
-Requires:       libOgreMeshLodGenerator%{soname}
+Requires:       libOgreMeshLodGenerator%{soname} = %{version}
 
 %description -n libOgreMeshLodGenerator-devel
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -446,19 +468,21 @@ This package contains the documentation for OGRE.
 
 %prep
 %setup -q -a1
-%patch0 -p1
+%autopatch -p1
 dos2unix ./Docs/ogre_style.css
 
 %build
 mkdir %{__builddir}
-ln -s {../,%{__builddir}}/imgui-%{im_version}
-%cmake -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+ln -s {..,%{__builddir}}/imgui-%{im_version}
+%cmake \
+      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DOGRE_LIB_DIRECTORY=%{_lib} \
-      -DOGRE_INSTALL_SAMPLES=ON \
-      -DOGRE_INSTALL_SAMPLES_SOURCE=ON \
+      -DOGRE_BUILD_SAMPLES=ON \
       -DOGRE_INSTALL_DOCS=ON \
+      -DOGRE_PLUGINS_PATH="%{_lib}/OGRE%{soname}" \
+      -DOGRE_BUILD_RENDERSYSTEM_VULKAN=ON \
       -DOGRE_BUILD_DEPENDENCIES=OFF
 %cmake_build
 
@@ -466,8 +490,31 @@ ln -s {../,%{__builddir}}/imgui-%{im_version}
 %cmake_install
 mkdir -p "%{buildroot}%{_docdir}"
 mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
+# Install samples' source
+mkdir -p %{buildroot}%{_datadir}/OGRE
+cp -R Samples %{buildroot}%{_datadir}/OGRE/
+# create a dummy target for /etc/alternatives/ogre (plugins config)
+mv %{buildroot}%{_datadir}/OGRE/plugins.cfg %{buildroot}%{_datadir}/OGRE/plugins%{sover}.cfg
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -s -f %{_sysconfdir}/alternatives/ogre %{buildroot}%{_datadir}/OGRE/plugins.cfg
+# Fix file and directory permissions
+find %{buildroot}%{_datadir}/OGRE/ -type f -exec chmod 0644 \{\} +
+find %{buildroot}%{_datadir}/OGRE/ -type d -exec chmod 0755 \{\} +
+# Remove duplicates
 %fdupes %{buildroot}%{_includedir}/OGRE
 %fdupes %{buildroot}%{_datadir}
+
+%post -n libOgreMain%{soname}-plugins
+update-alternatives --install \
+  %{_datadir}/OGRE/plugins.cfg \
+  ogre \
+  %{_datadir}/OGRE/plugins%{sover}.cfg \
+  $(printf '%02d%02d' %{major} %{minor})
+
+%postun -n libOgreMain%{soname}-plugins
+if [ ! -f %{_datadir}/OGRE/plugins%{sover}.cfg ] ; then
+   update-alternatives --remove ogre %{_datadir}/OGRE/plugins%{sover}.cfg
+fi
 
 %post -n libOgreBites%{soname} -p /sbin/ldconfig
 %postun -n libOgreBites%{soname} -p /sbin/ldconfig
@@ -493,13 +540,13 @@ mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
 %files -n libOgreMain%{soname}
 %license LICENSE
 %dir %{_libdir}/OGRE
-%{_libdir}/libOgreMain.so.%{version}
+%{_libdir}/libOgreMain.so.%{sover}
 
 %files media
 %dir %{_datadir}/OGRE
 %dir %{_datadir}/OGRE/Media
 %{_datadir}/OGRE/resources.cfg
-%{_datadir}/OGRE/Media/ShadowVolume
+%{_datadir}/OGRE/Media/Main
 %{_datadir}/OGRE/Media/RTShaderLib
 %{_datadir}/OGRE/Media/Terrain/
 
@@ -514,57 +561,62 @@ mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
 %{python3_sitelib}/Ogre
 
 %files -n libOgreMain%{soname}-codecs
-%{_libdir}/OGRE/Codec_Assimp.so{,.%{version}}
+%{plugin_dir}/Codec_Assimp.so{,.%{sover}}
+%{plugin_dir}/Codec_FreeImage.so{,.%{sover}}
+%{plugin_dir}/Codec_STBI.so{,.%{sover}}
 %if %{with openexr}
-%{_libdir}/OGRE/Codec_EXR.so{,.%{version}}
+%{plugin_dir}/Codec_EXR.so{,.%{sover}}
 %endif
-%{_libdir}/OGRE/Codec_FreeImage.so{,.%{version}}
-%{_libdir}/OGRE/Codec_STBI.so{,.%{version}}
 
 %files -n libOgreMain%{soname}-plugins
+%dir %{plugin_dir}
+%{_datadir}/OGRE/plugins%{sover}.cfg
 %{_datadir}/OGRE/plugins.cfg
-%{_libdir}/OGRE/RenderSystem_GL.so{,.%{version}}
-%{_libdir}/OGRE/RenderSystem_GL3Plus.so{,.%{version}}
-%{_libdir}/OGRE/RenderSystem_GLES2.so{,.%{version}}
-%{_libdir}/OGRE/Plugin_BSPSceneManager.so{,.%{version}}
-%{_libdir}/OGRE/Plugin_DotScene.so{,.%{version}}
-%{_libdir}/OGRE/Plugin_OctreeZone.so{,.%{version}}
-%{_libdir}/OGRE/Plugin_OctreeSceneManager.so{,.%{version}}
-%{_libdir}/OGRE/Plugin_ParticleFX.so{,.%{version}}
-%{_libdir}/OGRE/Plugin_PCZSceneManager.so{,.%{version}}
+%ghost %{_sysconfdir}/alternatives/plugins.cfg
+%{plugin_dir}/RenderSystem_GL.so{,.%{sover}}
+%{plugin_dir}/RenderSystem_GL3Plus.so{,.%{sover}}
+%{plugin_dir}/RenderSystem_GLES2.so{,.%{sover}}
+%{plugin_dir}/RenderSystem_Vulkan.so{,.%{sover}}
+%{plugin_dir}/Plugin_BSPSceneManager.so{,.%{sover}}
+%{plugin_dir}/Plugin_DotScene.so{,.%{sover}}
+%{plugin_dir}/Plugin_OctreeZone.so{,.%{sover}}
+%{plugin_dir}/Plugin_OctreeSceneManager.so{,.%{sover}}
+%{plugin_dir}/Plugin_ParticleFX.so{,.%{sover}}
+%{plugin_dir}/Plugin_PCZSceneManager.so{,.%{sover}}
+%{plugin_dir}/Plugin_GLSLangProgramManager.so{,.%{sover}}
 
 %if %{with cg}
 %files -n libOgreMain%{soname}-plugin-Cg
-%dir %{_libdir}/OGRE/
-%{_libdir}/OGRE/Plugin_CgProgramManager.so{,.%{version}}
+%dir %{plugin_dir}
+%{plugin_dir}/Plugin_CgProgramManager.so{,.%{sover}}
 %endif
 
 %files -n libOgreBites%{soname}
-%{_libdir}/libOgreBites.so.%{version}
+%{_libdir}/libOgreBites.so.%{sover}
 
 %files -n libOgreBitesQt%{soname}
-%{_libdir}/libOgreBitesQt.so.%{version}
+%{_libdir}/libOgreBitesQt.so.%{sover}
 
 %files -n libOgreMeshLodGenerator%{soname}
-%{_libdir}/libOgreMeshLodGenerator.so.%{version}
+%{_libdir}/libOgreMeshLodGenerator.so.%{sover}
 
 %files -n libOgrePaging%{soname}
-%{_libdir}/libOgrePaging.so.%{version}
+%{_libdir}/libOgrePaging.so.%{sover}
 
 %files -n libOgreProperty%{soname}
-%{_libdir}/libOgreProperty.so.%{version}
+%{_libdir}/libOgreProperty.so.%{sover}
 
 %files -n libOgreOverlay%{soname}
-%{_libdir}/libOgreOverlay.so.%{version}
+%{_libdir}/libOgreOverlay.so.%{sover}
 
 %files -n libOgreVolume%{soname}
-%{_libdir}/libOgreVolume.so.%{version}
+%{_libdir}/libOgreVolume.so.%{sover}
 
 %files -n libOgreRTShaderSystem%{soname}
-%{_libdir}/libOgreRTShaderSystem.so.%{version}
+%{_libdir}/libOgreRTShaderSystem.so.%{sover}
 
 %files -n libOgreTerrain%{soname}
-%{_libdir}/libOgreTerrain.so.%{version}
+%{_libdir}/libOgreTerrain.so.%{sover}
 
 %files -n libOgreMain-devel
 %dir %{_includedir}/OGRE/
@@ -625,7 +677,7 @@ mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
 %{_libdir}/OGRE/Samples/
 %{_bindir}/SampleBrowser
 %{_datadir}/OGRE/Media/*
-%exclude %{_datadir}/OGRE/Media/ShadowVolume
+%exclude %{_datadir}/OGRE/Media/Main
 %exclude %{_datadir}/OGRE/Media/RTShaderLib
 %exclude %{_datadir}/OGRE/Media/Terrain/
 %{_datadir}/OGRE/GLX_backdrop.png

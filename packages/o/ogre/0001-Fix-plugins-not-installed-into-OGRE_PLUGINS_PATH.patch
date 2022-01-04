@@ -1,0 +1,112 @@
+diff --git a/CMake/ConfigureBuild.cmake b/CMake/ConfigureBuild.cmake
+index ebb9be452..4a1f2f4cc 100644
+--- a/CMake/ConfigureBuild.cmake
++++ b/CMake/ConfigureBuild.cmake
+@@ -157,11 +157,9 @@ endif ()
+ 
+ # Create the pkg-config package files on Unix systems
+ if (UNIX)
+-  set(OGRE_PLUGIN_PREFIX "")
+   set(OGRE_PLUGIN_EXT ".so")
+   set(OGRE_PAGING_ADDITIONAL_PACKAGES "")
+   if (OGRE_STATIC)
+-    set(OGRE_PLUGIN_PREFIX "lib")
+     set(OGRE_PLUGIN_EXT ".a")
+   endif ()
+ 
+diff --git a/CMake/Templates/OGRE-PCZ.pc.in b/CMake/Templates/OGRE-PCZ.pc.in
+index d974fbebd..4f77a0ea5 100644
+--- a/CMake/Templates/OGRE-PCZ.pc.in
++++ b/CMake/Templates/OGRE-PCZ.pc.in
+@@ -1,11 +1,11 @@
+ prefix=@OGRE_PREFIX_PATH@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@OGRE_LIB_DIRECTORY@
++plugindir=${prefix}/@OGRE_PLUGINS_PATH@
+ includedir=${prefix}/include
+ 
+ Name: OGRE-PCZ
+ Description: Portal-Connected Zone Scene Manager for OGRE
+ Version: @OGRE_VERSION@
+ Requires: OGRE = @OGRE_VERSION@
+-Libs: ${libdir}/OGRE/@OGRE_PLUGIN_PREFIX@Plugin_PCZSceneManager@OGRE_LIB_SUFFIX@@OGRE_PLUGIN_EXT@ ${libdir}/OGRE/@OGRE_PLUGIN_PREFIX@Plugin_OctreeZone@OGRE_LIB_SUFFIX@@OGRE_PLUGIN_EXT@ -Wl,-rpath,${libdir}/OGRE
++Libs: -L${plugindir} -lPlugin_PCZSceneManager@OGRE_LIB_SUFFIX@ -lPlugin_OctreeZone@OGRE_LIB_SUFFIX@
+ Cflags: -I${includedir}/OGRE/Plugins/PCZSceneManager -I${includedir}/OGRE/Plugins/OctreeZone @OGRE_CFLAGS@
+diff --git a/CMake/Templates/OGRE.pc.in b/CMake/Templates/OGRE.pc.in
+index 5d752f299..26e471d8f 100644
+--- a/CMake/Templates/OGRE.pc.in
++++ b/CMake/Templates/OGRE.pc.in
+@@ -2,7 +2,7 @@ prefix=@OGRE_PREFIX_PATH@
+ exec_prefix=${prefix}
+ libdir=${prefix}/@OGRE_LIB_DIRECTORY@
+ includedir=${prefix}/include
+-plugindir=${libdir}/OGRE
++plugindir=${prefix}/@OGRE_PLUGINS_PATH@
+ 
+ Name: OGRE
+ Description: Object-Oriented Graphics Rendering Engine
+diff --git a/CMake/Templates/OGREStatic.pc.in b/CMake/Templates/OGREStatic.pc.in
+index 39a748eed..4e4202bb8 100644
+--- a/CMake/Templates/OGREStatic.pc.in
++++ b/CMake/Templates/OGREStatic.pc.in
+@@ -2,7 +2,7 @@ prefix=@OGRE_PREFIX_PATH@
+ exec_prefix=${prefix}
+ libdir=${prefix}/@OGRE_LIB_DIRECTORY@
+ includedir=${prefix}/include
+-plugindir=${libdir}/OGRE
++plugindir=${prefix}/@OGRE_PLUGINS_PATH@
+ 
+ Name: OGRE (static lib)
+ Description: Object-Oriented Graphics Rendering Engine
+diff --git a/CMake/Utils/OgreConfigTargets.cmake b/CMake/Utils/OgreConfigTargets.cmake
+index 772aa32b5..f8edc9e7a 100644
+--- a/CMake/Utils/OgreConfigTargets.cmake
++++ b/CMake/Utils/OgreConfigTargets.cmake
+@@ -48,7 +48,6 @@ if (WIN32)
+   set(OGRE_LIB_RELWDBG_PATH "")
+   set(OGRE_LIB_MINSIZE_PATH "")
+   set(OGRE_LIB_DEBUG_PATH "")
+-  set(OGRE_PLUGIN_PATH "/OGRE")
+   set(OGRE_SAMPLE_PATH "/OGRE/Samples")
+ elseif (UNIX)
+   set(OGRE_RELEASE_PATH "")
+@@ -68,11 +67,6 @@ elseif (UNIX)
+   if(APPLE AND APPLE_IOS)
+     set(OGRE_LIB_RELEASE_PATH "/Release")
+   endif(APPLE AND APPLE_IOS)
+-  if (OGRE_BUILD_LIBS_AS_FRAMEWORKS)
+-    set(OGRE_PLUGIN_PATH "/")
+-  else()
+-    set(OGRE_PLUGIN_PATH "/OGRE")
+-  endif()
+   set(OGRE_SAMPLE_PATH "/OGRE/Samples")
+ endif ()
+ 
+@@ -137,9 +131,16 @@ function(ogre_install_target TARGETNAME SUFFIX EXPORT)
+ 		ARCHIVE DESTINATION "${OGRE_LIB_DIRECTORY}${OGRE_LIB_DEBUG_PATH}${SUFFIX}"
+ 		FRAMEWORK DESTINATION "${OGRE_LIB_DIRECTORY}${OGRE_DEBUG_PATH}/Debug")
+ 	endif()
+-
+ endfunction(ogre_install_target)
+ 
++function(ogre_install_plugin TARGETNAME)
++    if (OGRE_BUILD_LIBS_AS_FRAMEWORKS)
++        ogre_install_target(${TARGETNAME} "/" TRUE)
++    else()
++        install(TARGETS ${PLUGINNAME} DESTINATION ${OGRE_PLUGINS_PATH})
++    endif()
++endfunction(ogre_install_plugin)
++
+ # setup common target settings
+ function(ogre_config_common TARGETNAME)
+   set_target_properties(${TARGETNAME} PROPERTIES
+@@ -259,7 +260,8 @@ function(ogre_config_plugin PLUGINNAME)
+       set_target_properties(${PLUGINNAME} PROPERTIES PREFIX "")
+     endif (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+   endif (OGRE_STATIC)
+-  ogre_install_target(${PLUGINNAME} ${OGRE_PLUGIN_PATH} TRUE)
++
++  ogre_install_plugin(${PLUGINNAME})
+ 
+   if (OGRE_INSTALL_PDB)
+     # install debug pdb files
