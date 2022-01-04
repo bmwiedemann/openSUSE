@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  3 03:51:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compilation error due to detected OOB access, add
+  0001-Avoid-out-of-bounds-access-for-monochrome-images-in-.patch
+- Fix compilation with CMake >= 3.22, add
+  0001-Replace-deprecated-removed-GLUT_glut_LIBRARY-with-GL.patch
+- Reenable OpenEXR with OpenEXR >= 3.x detection fix, add
+  0001-Prefer-upstream-CMake-Config-Mode-files-for-OpenEXR.patch
+
+-------------------------------------------------------------------
 Thu Nov 18 13:05:49 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use OpenCV 4 on Tumbleweed

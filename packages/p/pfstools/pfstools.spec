@@ -1,7 +1,7 @@
 #
 # spec file for package pfstools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Only compatible with OpenEXR <= 2.5.x
-%bcond_with openexr
+
+%bcond_without openexr
 
 %define _libname libpfs2
 Name:           pfstools
@@ -31,11 +31,17 @@ Patch1:         %{name}-gcc.patch
 Patch2:         pfstools-octinstall.patch
 Patch3:         pfstools-stdlib.patch
 Patch4:         pfstools-1.8.1-fix-return-in-nonvoid.patch
-# PATCH-FIX-OPENSUSE - https://sourceforge.net/p/pfstools/bugs/45/
+# PATCH-FIX-UPSTREAM - https://sourceforge.net/p/pfstools/bugs/45/
 Patch5:         pfstools-fix-libpfs-linkage.patch
 # patch derived from https://github.com/pld-linux/pfstools/commit/67bd2304e516545f2b203f975ac5dd30d2b479b3
 # I guess it could go upstream as is; sent email to mantiuk at gmail
 Patch7:         pfstools-ImageMagick7.patch
+# PATCH-FIX-UPSTREAM - https://sourceforge.net/p/pfstools/bugs/52/
+Patch8:         0001-Avoid-out-of-bounds-access-for-monochrome-images-in-.patch
+# PATCH-FIX-UPSTREAM - https://sourceforge.net/p/pfstools/bugs/53/
+Patch9:         0001-Replace-deprecated-removed-GLUT_glut_LIBRARY-with-GL.patch
+# PATCH-FIX-UPSTREAM - https://sourceforge.net/p/pfstools/bugs/54/
+Patch10:        0001-Prefer-upstream-CMake-Config-Mode-files-for-OpenEXR.patch
 # previous versions of cmake don't support ImageMagick 7
 BuildRequires:  cmake >= 3.9.0
 BuildRequires:  doxygen
@@ -48,7 +54,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(Magick++)
 %if %{with openexr}
-BuildRequires:  pkgconfig(OpenEXR) < 3.0
+BuildRequires:  pkgconfig(OpenEXR)
 %endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)

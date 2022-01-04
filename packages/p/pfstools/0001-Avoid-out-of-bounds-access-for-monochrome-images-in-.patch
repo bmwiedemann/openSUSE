@@ -1,0 +1,40 @@
+From 98543dd4f71a302f9c05605ef7f4a7031b2f5da1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 3 Jan 2022 04:48:55 +0100
+Subject: [PATCH] Avoid out-of-bounds access for monochrome images in pfsview
+
+GCC rightfully complains when `lutPixFloor[257*2] is accessed, enlarge
+so the largest used index is size-1.
+
+Also fix check for value=+inf in clipping check.
+
+Fixes https://sourceforge.net/p/pfstools/bugs/52/
+---
+ src/pfsview/pfsview_widget.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/pfsview/pfsview_widget.cpp b/src/pfsview/pfsview_widget.cpp
+index 0c8e98f..c7ba599 100644
+--- a/src/pfsview/pfsview_widget.cpp
++++ b/src/pfsview/pfsview_widget.cpp
+@@ -340,7 +340,7 @@ static void mapFrameToImage( pfs::Array2D *R, pfs::Array2D *G, pfs::Array2D *B,
+   assert( !color || (color && B != NULL) );
+ 
+   
+-  float lutPixFloor[257*2];
++  float lutPixFloor[257*2+1];
+   QRgb lutPixel[257*2];
+   int lutSize;
+   if( !color && ( negativeTreatment == NEGATIVE_GREEN_SCALE ||
+@@ -491,7 +491,7 @@ static void mapFrameToImage( pfs::Array2D *R, pfs::Array2D *G, pfs::Array2D *B,
+         // Single channel
+         int p = binarySearchPixels( (*R)(index), lutPixFloor, lutSize );        
+         pixel = lutPixel[p];
+-        if( infNaNTreatment == INFNAN_MARK_AS_RED && (p == 0 || p == LUTSIZE+1)) 
++        if( infNaNTreatment == INFNAN_MARK_AS_RED && (p == 0 || p == lutSize - 1))
+           if( !std::isfinite( (*R)(index) ) ) {   // x is NaN or Inf 
+             pixel = QColor( 255, 0, 0 ).rgb();
+           }
+-- 
+2.34.1
+

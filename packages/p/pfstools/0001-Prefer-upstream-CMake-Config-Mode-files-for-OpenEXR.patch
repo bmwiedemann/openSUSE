@@ -1,0 +1,35 @@
+From 95c5e87b8fe19cc6d067e1c2ce6239a5ba413a1c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 3 Jan 2022 06:09:25 +0100
+Subject: [PATCH] Prefer upstream CMake Config Mode files for OpenEXR
+
+The bundled FindOpenEXR.cmake Find Module is quite outdated, import
+the OpenEXR target from its upstream definition.
+---
+ CMakeLists.txt | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2923cf..a33293b 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,7 +106,15 @@ OPTION(WITH_OpenEXR "Compile with OpenEXR library" ON)
+ 
+ if( WITH_OpenEXR )
+ 
+-find_package (OpenEXR)
++find_package (OpenEXR NO_MODULE)
++if( TARGET OpenEXR::OpenEXR )
++  set( OPENEXR_FOUND TRUE )
++  set( OPENEXR_LIBRARIES OpenEXR::OpenEXR )
++  get_target_property( OPENEXR_INCLUDE_DIR OpenEXR::OpenEXR INTERFACE_INCLUDE_DIRECTORIES )
++else ()
++  find_package (OpenEXR MODULE)
++endif ()
++
+ if( NOT OPENEXR_FOUND )
+ MESSAGE( STATUS "OpenEXR not found. The following command will not be
+ compiled: pfsinexr pfsoutexr. " )
+-- 
+2.34.1
+

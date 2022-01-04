@@ -1,0 +1,29 @@
+From ad570c8d82732ba1d85e1b23de679f04f2fb23d5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 3 Jan 2022 05:20:30 +0100
+Subject: [PATCH] Replace deprecated/removed GLUT_glut_LIBRARY with GLUT::GLUT
+ target
+
+GLUT_glut_LIBRARY has been removed with CMake 3.22, see
+https://gitlab.kitware.com/cmake/cmake/-/issues/23018
+---
+ src/pfsglview/CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/pfsglview/CMakeLists.txt b/src/pfsglview/CMakeLists.txt
+index b4d74fb..aa632bd 100644
+--- a/src/pfsglview/CMakeLists.txt
++++ b/src/pfsglview/CMakeLists.txt
+@@ -11,8 +11,7 @@ endif()
+ 
+ add_executable(pfsglview pfsglview.cpp picture_io.cpp module.cpp m_histogram.cpp m_status.cpp m_on_screen_display.cpp)
+ 
+-# TODO: Use ${GLUT_LIBRARY} instead.
+-target_link_libraries(pfsglview ${OPENGL_LIBRARIES} ${GLUT_glut_LIBRARY} pfs)
++target_link_libraries(pfsglview ${OPENGL_LIBRARIES} GLUT::GLUT pfs)
+ 
+ install (TARGETS pfsglview DESTINATION bin)
+ install (FILES pfsglview.1 DESTINATION ${MAN_DIR})
+-- 
+2.34.1
+
