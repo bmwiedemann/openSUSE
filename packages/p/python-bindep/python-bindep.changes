@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jan  4 09:01:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.1:
+  * Add old python packaging pin
+  * Add release note for rocky and manjaro
+  * feat: Add test support for Manjaro Linux
+  * feat: Add support for Manjaro Linux
+  * Require packaging
+  * Add Rocky Linux support
+  * Correctly skip sdist building in tox.ini
+  * Fix formatting issues in docs
+  * Build releases on ubuntu-focal
+  * Update contributor doc and readme
+  * Overhaul Python package metadata
+  * Remove release note about rpm path references
+  * Build docs for OpenDev
+  * Move all jobs in-repo
+  * Publish release notes
+  * Add missing release notes
+  * Assure bindep can be called as a module
+  * ArchLinux: ignore unrelated warnings from pacman
+  * Fixed pep8 job
+  * Add centos 8 and focal testing
+  * Cull the test bindep file
+  * Use abstracted virtualenv\_command from ensure-pip
+  * Tolerate missing bindep.txt when using --profiles
+  * Add OracleLinux support
+  * Fix test execution failure on Darwin
+  * Expose base python version as an atom
+  * Fix emerge testcases
+  * Replace Trusty with Bionic in the testing
+  * Some cleanups
+  * Add bindep.txt for pypy
+  * Change openstack-dev to openstack-discuss
+  * Add dependency version examples to README
+  * Switch to opensuse-15 nodeset for bindep testing
+  * Use Python 3.x by default for testing
+  * OpenDev Migration Patch
+  * Adds job to test bindep on Fedora
+  * Fix bindep --brief for arch linux
+  * Replace deprecated bindep-fallback testing
+  * Allow mentioning tools paths in bindep
+  * Fix apk handling of warnings/output problems
+  * Add openSUSE 15.0 testing
+  * Update docs building
+
+-------------------------------------------------------------------
 Tue Dec  4 12:46:08 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

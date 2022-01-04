@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>667815</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb8e1dd5d4c5d4b1e25f1a9b56dcf366</srcmd5>
+    <version>2.10.1</version>
+    <time>1641321494</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.1:
+  * Add old python packaging pin
+  * Add release note for rocky and manjaro
+  * feat: Add test support for Manjaro Linux
+  * feat: Add support for Manjaro Linux
+  * Require packaging
+  * Add Rocky Linux support
+  * Correctly skip sdist building in tox.ini
+  * Fix formatting issues in docs
+  * Build releases on ubuntu-focal
+  * Update contributor doc and readme
+  * Overhaul Python package metadata
+  * Remove release note about rpm path references
+  * Build docs for OpenDev
+  * Move all jobs in-repo
+  * Publish release notes
+  * Add missing release notes
+  * Assure bindep can be called as a module
+  * ArchLinux: ignore unrelated warnings from pacman
+  * Fixed pep8 job
+  * Add centos 8 and focal testing
+  * Cull the test bindep file
+  * Use abstracted virtualenv\_command from ensure-pip
+  * Tolerate missing bindep.txt when using --profiles
+  * Add OracleLinux support
+  * Fix test execution failure on Darwin
+  * Expose base python version as an atom
+  * Fix emerge testcases
+  * Replace Trusty with Bionic in the testing
+  * Some cleanups</comment>
+    <requestid>943785</requestid>
+  </revision>
 </revisionlist>

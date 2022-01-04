@@ -1,7 +1,7 @@
 #
 # spec file for package python-bindep
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,26 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global pythons python3
 Name:           python-bindep
-Version:        2.8.1
+Version:        2.10.1
 Release:        0
 Summary:        Binary dependency utility
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://docs.openstack.org/infra/bindep
+URL:            https://docs.openstack.org/infra/bindep
 Source:         https://files.pythonhosted.org/packages/source/b/bindep/bindep-%{version}.tar.gz
 BuildRequires:  %{python_module Parsley}
+BuildRequires:  %{python_module cliff}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 Requires:       python-Parsley
 Requires:       python-distro
-Requires:       python-pbr
+Requires:       python-packaging
+Requires:       python-pbr >= 2.0.0
 BuildArch:      noarch
-
 %python_subpackages
+
 %description
 Bindep is a tool for checking the presence of binary packages needed to
 use an application / library. It started life as a way to make it easier to set
@@ -58,11 +61,10 @@ installed before `pip` can be used - such as `virtualenv` and `pip` itself.
 %postun
 %python_uninstall_alternative bindep
 
-## %check
-## python setup.py testr
+# %check
+# %xpython_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.rst ChangeLog AUTHORS NEWS.rst
 %python_alternative %{_bindir}/bindep
