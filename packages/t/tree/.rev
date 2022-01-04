@@ -181,4 +181,40 @@
     <comment></comment>
     <requestid>657085</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>81a6a480446955226e2c6eb1a4279f54</srcmd5>
+    <version>2.0.0</version>
+    <time>1641321453</time>
+    <user>dimstar_suse</user>
+    <comment>- tree 2.0.0:
+  * Simplified code
+  * Adds --info to print information about files/directories from
+    information found in .info files
+  * In HTML output, comments show as mouse over tooltips
+  * Output un-indented JSON on file descriptor 3 (&quot;stddata&quot;)
+    automatically if file descriptor 3 is present
+  * Always HTML escape filenames in HTML output even when -C is used
+  * Return a non-zero exit status if there is a failure to open any directory.
+  * Added --gitignore option to filter out files specified by
+    .gitignore files. (also reads $GIT_DIR/info/exclude if present.)
+  * To facilitate gitignore, adds support for ** on pattern matching
+    to allow /**/ to match a single /
+  * Now also supports multiple -I and -P instances
+  * Now prints meta data for the top level directory as well.
+  * Properly sort --fromfile input
+  * Make tree colorization use reset (rs code in dir_colors,)
+    not normal color when resetting attributes
+  * Honor -n (no color) even if the CLICOLOR_FORCE environment
+    variable is set
+  * Fix --sort option to not require =
+  * Defer sorting for --du until the entire sub-directory tree has
+    been processed.
+  * Fix JSON string escaping such that it is not using the HTML
+    escaping
+  * Add --filesfirst option
+  * XML/HTML/JSON output needs to be mutually exclusive, last
+    command line switch wins
+- drop tree-makefile.patch</comment>
+    <requestid>943563</requestid>
+  </revision>
 </revisionlist>

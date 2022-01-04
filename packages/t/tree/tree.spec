@@ -1,7 +1,7 @@
 #
 # spec file for package tree
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tree
-Version:        1.8.0
+Version:        2.0.0
 Release:        0
 Summary:        File listing as a tree
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-Url:            http://mama.indstate.edu/users/ice/tree/
+URL:            http://mama.indstate.edu/users/ice/tree/
 Source0:        http://mama.indstate.edu/users/ice/tree/src/%{name}-%{version}.tgz
-Patch0:         %{name}-makefile.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Tree is a recursive directory listing command that produces a depth
@@ -34,10 +32,9 @@ LS_COLORS environment variable is set and output is to tty.
 
 %prep
 %setup -q
-%patch0
 
 %build
-make OPTFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -46,9 +43,9 @@ install -m 644 doc/%{name}.1 %{buildroot}%{_mandir}/man1
 install -m 755 %{name} %{buildroot}%{_bindir}
 
 %files
-%defattr(-,root,root)
-%doc CHANGES LICENSE README
+%license LICENSE
+%doc CHANGES README
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
