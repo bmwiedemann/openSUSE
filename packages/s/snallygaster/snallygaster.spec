@@ -17,7 +17,7 @@
 
 
 Name:           snallygaster
-Version:        0.0.10
+Version:        0.0.11
 Release:        0
 Summary:        Tool to scan for hidden files on HTTP servers
 License:        CC0-1.0

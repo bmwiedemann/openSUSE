@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 28 16:53:13 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.0.11:
+ - disable python 3.11 tests for now due to pylint/wrapt incompatibility
+ - fix pylint warning use-implicit-booleaness-not-comparison
+ - add detection of symfony debugging mode on 404 pages
+ - support v3 php-cs-fixer format and rename test
+ - enable onlinetests in GH actions
+ - improve apache server info detection / avoid false positives by adding closing h1 tag
+ - remove apache perl status, add documentation for apache-info check
+ - update check for apache-info, check for perl-info still need improving
+   add check for apache server info and perl-status
+ - Readme: add openSUSE package
+
+-------------------------------------------------------------------
 Fri Jun 18 06:37:49 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 0.0.10:
