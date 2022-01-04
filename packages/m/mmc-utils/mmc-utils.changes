@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:12:03 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1+git.20211220:
+  * mmc_cmds: add HS400 data rates
+  * mmc-utils: Use printf() to extract and print fw version
+  * mmc-utils: Add note for CMDQ_MODE_EN runtime value
+
+-------------------------------------------------------------------
 Tue Oct 19 07:56:22 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20210930:

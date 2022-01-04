@@ -194,4 +194,15 @@
   * mmc-utils: One further optimization of trimming routine</comment>
     <requestid>926154</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e2bed014b9f325fb683dc248a04dcc11</srcmd5>
+    <version>0.1+git.20211220</version>
+    <time>1641321479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1+git.20211220:
+  * mmc_cmds: add HS400 data rates
+  * mmc-utils: Use printf() to extract and print fw version
+  * mmc-utils: Add note for CMDQ_MODE_EN runtime value</comment>
+    <requestid>943731</requestid>
+  </revision>
 </revisionlist>
