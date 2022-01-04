@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Pipely
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-IO-Pipely
-Version:        0.005
-Release:        0
 %define cpan_name IO-Pipely
-Summary:        Portably create pipe() or pipe-like handles, one way or another.
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/IO-Pipely/
-Source:         http://www.cpan.org/authors/id/R/RC/RCAPUTO/%{cpan_name}-%{version}.tar.gz
+Name:           perl-IO-Pipely
+Version:        0.006
+Release:        0
+Summary:        Portably create pipe() or pipe-like handles, one way or another
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCAPUTO/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Carp) >= 1.26
-BuildRequires:  perl(Exporter) >= 5.68
-BuildRequires:  perl(Fcntl) >= 1.06
-BuildRequires:  perl(IO::Socket) >= 1.31
-BuildRequires:  perl(Scalar::Util) >= 1.29
-BuildRequires:  perl(Test::More) >= 0.98
-BuildRequires:  perl(base) >= 2.18
-Requires:       perl(Exporter) >= 5.68
-Requires:       perl(Fcntl) >= 1.06
-Requires:       perl(IO::Socket) >= 1.31
-Requires:       perl(base) >= 2.18
+BuildRequires:  perl(Carp) >= 1.42
+BuildRequires:  perl(Exporter) >= 5.72
+BuildRequires:  perl(Fcntl) >= 1.13
+BuildRequires:  perl(IO::Socket) >= 1.38
+BuildRequires:  perl(Scalar::Util) >= 1.46_02
+BuildRequires:  perl(Symbol) >= 1.08
+BuildRequires:  perl(Test::More) >= 1.302120
+Requires:       perl(Exporter) >= 5.72
+Requires:       perl(Fcntl) >= 1.13
+Requires:       perl(IO::Socket) >= 1.38
+Requires:       perl(Symbol) >= 1.08
 %{perl_requires}
 
 %description
@@ -65,14 +64,14 @@ operating system's capabilities and the number of directions requested. The
 autodetection may be overridden by specifying a particular pipe type.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -80,7 +79,7 @@ autodetection may be overridden by specifying a particular pipe type.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc CHANGES LICENSE README README.mkdn
+%doc CHANGES README README.mkdn
+%license LICENSE
 
 %changelog
