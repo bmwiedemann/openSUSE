@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 31 18:04:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.10.2
+  * Revert "Delay list -> dict conversation to end (#192)" #234
+    (@blink1073)
+  * Fix issue where preferredPath is incorrectly calculated #233
+    (@mlucool) Maintenance and upkeep improvements
+  * Add downstream test workflow #232 (@blink1073)
+- Release 2.10.1
+  * Restore back older export for workspaces #229 (@fcollonval)
+- Release 2.10.0
+  * Move workspace management in jupyterlab_server #227
+    (@fcollonval)
+  * Delay list -> dict conversation to end #192 (@vidartf)
+- Release 2.9.0
+  * Add overrides.d for settings defaults #224 (@bollwyvl)
+  * Add page_config_hook #220 (@minrk)
+  * Enforce labels on PRs #221 (@blink1073)
+  * Fix caching of conda env in CI #218 (@blink1073)
+  * pyproject.toml: clarify build system version #222
+    (@adamjstewart)
+- Fix import of mistune in tests due to our mitigation of
+  gh#jupyter/nbconvert#1685
+
+-------------------------------------------------------------------
 Sun Oct 17 17:55:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Really update to 2.8.2 (was 2.8.1 before)

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define oldpython python
 Name:           jupyter-jupyterlab-server
-Version:        2.8.2
+Version:        2.10.2
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module entrypoints >= 0.2.2}
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module jsonschema >= 3.0.1}
 BuildRequires:  %{python_module jupyter_server >= 1.4}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module packaging > 0.9}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -87,7 +87,7 @@ BuildRequires:  %{python_module wheel}
 This package is used to launch an application built using JupyterLab.
 
 %package test
-Summary:        jupyterlab_server[test] requirements
+Summary:        The jupyterlab_server[test] requirements
 Provides:       python-jupyterlab-server-test = %{version}-%{release}
 Obsoletes:      python-jupyterlab-server-test < %{version}-%{release}
 Requires:       python-ipykernel
@@ -107,6 +107,10 @@ Metapackage for the jupyterlab_server[test] requirement specifier
 %autosetup -p1 -n jupyterlab_server-%{version}
 # remove color and coverage flags from pytest
 sed -i '/addopts/ d' pyproject.toml
+# mistune is imported in tests and normally installed as transitive requirement
+# from jupyter-server/nbconvert, but we had to vendorize it -- gh#jupyter/nbconvert#1685
+sed -i jupyterlab_server/tests/test_licenses_api.py \
+  -e 's/import mistune/from nbconvert.filters.markdown_mistune import mistune/'
 
 %build
 %python_build
