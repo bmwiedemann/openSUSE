@@ -30,4 +30,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854018</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93c4cab1ae8fdd947404487469ab64b8</srcmd5>
+    <version>0.3.1</version>
+    <time>1641321463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.1
+  + Enhancement: Better concurrency (#61, #63, #100)
+  + Bugfix: Now supports user home dir in drive root on Windows (#83, #84)
+  + Enhancement: This package can now be run inside container
+  + Enhancement: Improvement compatibility with PyInstaller 3.5 on Python 2.7 (#85, #91)
+  + Enhancement: Catchable exception when persistence is unavailable (#92, #93)
+  + Enhancement: Support dependency portalocker 2.0+ (#94, #97)
+  + Enhancement: Improve documentation (#77, #102)
+  + Including license in release package (#76) (forwarded request 943618 from glaubitz)</comment>
+    <requestid>943621</requestid>
+  </revision>
 </revisionlist>
