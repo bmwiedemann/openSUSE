@@ -286,4 +286,18 @@
   * Allow for arbitrary Table keyword arguments in create_table_from_selectable</comment>
     <requestid>927590</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7e519765b91f12cac9804f3fa5be1d71</srcmd5>
+    <version>0.38.2</version>
+    <time>1641321457</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.38.2:
+  - Added inherit_cache=False in order to avoid SQLAlchemy warnings
+    in `cast_locale_expr`
+  - Added cache_ok=True for various different types
+  - Removed CompositeArray. Instead of CompositeArray one should use
+    ARRAY(dimensions=1)
+  - Made ChoicesType only convert lists to tuples internally.</comment>
+    <requestid>943585</requestid>
+  </revision>
 </revisionlist>

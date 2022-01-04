@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  3 11:34:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.2:
+  - Added inherit_cache=False in order to avoid SQLAlchemy warnings
+    in `cast_locale_expr`
+  - Added cache_ok=True for various different types
+  - Removed CompositeArray. Instead of CompositeArray one should use
+    ARRAY(dimensions=1)
+  - Made ChoicesType only convert lists to tuples internally.
+
+-------------------------------------------------------------------
 Tue Oct 26 20:15:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.37.9:
