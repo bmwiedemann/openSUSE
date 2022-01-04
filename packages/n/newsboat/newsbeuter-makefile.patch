@@ -1,10 +1,10 @@
-diff -urEbw newsboat-2.22.1/Makefile newsboat-2.22.1.new/Makefile
---- newsboat-2.22.1/Makefile	2021-01-09 22:45:30.000000000 +0100
-+++ newsboat-2.22.1.new/Makefile	2021-01-11 09:52:03.615052577 +0100
-@@ -47,7 +47,8 @@
+diff -urEbw newsboat-2.26/Makefile newsboat-2.26.new/Makefile
+--- newsboat-2.26/Makefile	2021-12-27 18:42:16.000000000 +0100
++++ newsboat-2.26.new/Makefile	2022-01-04 17:02:49.852828690 +0100
+@@ -51,7 +51,8 @@
  
  WARNFLAGS=-Werror -Wall -Wextra -Wunreachable-code
- INCLUDES=-Iinclude -Istfl -Ifilter -I. -Irss -I$(relative_cargo_target_dir)/cxxbridge/libnewsboat-ffi/src/
+ INCLUDES=-Iinclude -Istfl -Ifilter -I. -Irss -I$(relative_cargo_target_dir)/cxxbridge/
 -BARE_CXXFLAGS=-std=c++11 -O2 -ggdb $(INCLUDES)
 +OPTFLAGS=-ggdb
 +BARE_CXXFLAGS=-std=c++11 $(OPTFLAGS) $(INCLUDES)

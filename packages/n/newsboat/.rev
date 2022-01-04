@@ -805,4 +805,33 @@ run -osc service localrun format_spec_file to fix copyright
     <comment></comment>
     <requestid>936386</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>771f46e0630f6d43d1249a6b6c6c4cea</srcmd5>
+    <version>2.26</version>
+    <time>1641321497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26:
+  Added:
+  * `confirm-mark-feed-read` setting (enabled by default) (#1781)
+  * `miniflux-min-items` setting to control how many articles to load for each
+    feed
+  * A script to bookmark articles to buku
+  * A gruvbox color scheme
+  Changed:
+  * Bumped minimum supported Rust version to 1.53.0
+  * Accept empty feed title when bookmarking on autopilot (#243)
+  * `:save` command now uses `save-path` setting to resolve relative paths (#1689)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Italian (Mauro Scomparin), Polish (Michał Siemek), Russian,
+    Ukrainian (Alexander Batischev), and Turkish (Emir Sari)
+  * Updated vendored library optional-lite to 3.5.0, json.hpp to 3.10.4
+  Removed:
+  * Ability to switch away from modal dialogs (e.g. FileBrowser) (#117)
+  Fixed:
+  * Relative URLs in articles are now resolved relative to their permalink when
+    the feed doesn't set the `xml:base` (#1818,
+    https://github.com/akrennmair/newsbeuter/issues/507)
+  * Starred items not being synchronized to NextCloud News (#743)</comment>
+    <requestid>943797</requestid>
+  </revision>
 </revisionlist>

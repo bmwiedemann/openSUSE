@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan  4 15:58:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.26:
+  Added:
+  * `confirm-mark-feed-read` setting (enabled by default) (#1781)
+  * `miniflux-min-items` setting to control how many articles to load for each
+    feed
+  * A script to bookmark articles to buku
+  * A gruvbox color scheme
+  Changed:
+  * Bumped minimum supported Rust version to 1.53.0
+  * Accept empty feed title when bookmarking on autopilot (#243)
+  * `:save` command now uses `save-path` setting to resolve relative paths (#1689)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Italian (Mauro Scomparin), Polish (Michał Siemek), Russian,
+    Ukrainian (Alexander Batischev), and Turkish (Emir Sari)
+  * Updated vendored library optional-lite to 3.5.0, json.hpp to 3.10.4
+  Removed:
+  * Ability to switch away from modal dialogs (e.g. FileBrowser) (#117)
+  Fixed:
+  * Relative URLs in articles are now resolved relative to their permalink when
+    the feed doesn't set the `xml:base` (#1818,
+    https://github.com/akrennmair/newsbeuter/issues/507)
+  * Starred items not being synchronized to NextCloud News (#743)
+
+-------------------------------------------------------------------
 Fri Nov  5 03:59:36 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues
