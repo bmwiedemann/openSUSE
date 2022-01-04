@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
-URL:            https://assimp.org/
+URL:            https://www.assimp.org/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  dos2unix
