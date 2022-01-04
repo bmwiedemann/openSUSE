@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan  3 16:58:23 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.1
+  - Add database of SDL gamepad mappings (more gamepads will
+    be enabled by default)
+  - Add proper printing information about connected devices to logs
+  - Add handling SIGABRT (with printing stack)
+  - Crashes linked with deleting child objects
+  - Broken Auto Profile list on Windows
+  - Auto Profile Wrongly Shows Languages
+  - Add note about lack of AutoProfiles for Wayland users
+  - Add message informaing about solutions in case of problems
+    with uinput
+  - Log improvements
+  - Disable calibration for devices without joysticks
+  - Clarification of names and --profile flag description
+  - Update copyright date
+  - Cleanup daemon launching
+  - Make Changelog links clickable
+  - Print descriptions of devices in logs
+  - Add experimental support for clang
+  - CI: Add concurrency and remove redundant lines
+  - CI: Add CodeQL and infer static code analysis
+
+-------------------------------------------------------------------
 Mon Nov  1 20:26:57 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2.0
