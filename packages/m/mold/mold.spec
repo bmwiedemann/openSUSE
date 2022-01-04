@@ -1,7 +1,7 @@
 #
 # spec file for package mold
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mold
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
-Url:            https://github.com/rui314/mold
-Source:         https://github.com/rui314/mold/archive/refs/tags/v%{version}.tar.gz
+URL:            https://github.com/rui314/mold
+Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
+BuildRequires:  tbb-devel
+BuildRequires:  tbb-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
-BuildRequires:  tbb-devel
 PreReq:         update-alternatives
 
-%define build_args "SYSTEM_TBB=1 SYSTEM_XXHASH=1"
+%define build_args SYSTEM_TBB=1 SYSTEM_XXHASH=1
 
 %description
 mold is a faster drop-in replacement for existing Unix linkers.
@@ -41,7 +42,7 @@ mold is created for increasing developer productivity by reducing
 build time especially in rapid debug-edit-rebuild cycles.
 
 %prep
-%autosetup -p1 -n mold-%{version}
+%autosetup -p1
 
 %build
 export CC=gcc
@@ -54,6 +55,7 @@ export BINDIR=%{_bindir}
 %make_build %{build_args}
 
 %install
+export PREFIX=%{_prefix}
 export MANDIR=%{_mandir}
 export LIBDIR=%{_libdir}
 export BINDIR=%{_bindir}
@@ -79,6 +81,8 @@ fi
 %{_bindir}/ld.mold
 %{_bindir}/ld64.mold
 %dir %{_libdir}/mold
+%{_libexecdir}/mold/ld
+%dir %{_libexecdir}/mold
 %{_libdir}/mold/mold-wrapper.so
 %{_mandir}/man1/mold.1.gz
 

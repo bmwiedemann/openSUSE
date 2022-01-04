@@ -17,4 +17,35 @@
 - Use system package for tbb and xxhash.</comment>
     <requestid>942074</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47321d9eae1f820067541a2efd750783</srcmd5>
+    <version>1.0.1</version>
+    <time>1641321449</time>
+    <user>dimstar_suse</user>
+    <comment>- Start using %{_libexecdir} as an installation location.
+
+- Remove quotationsmarks from build_args as it prevented the use
+  of system packages for TBB and xxHash.
+- Drop configure-fix.patch as xxHash is used from system package,
+  so we don't need to patch the wrong configuration of xxHash.
+- Use telling name of source tarball, adjust GitHub url to have
+  matching names.
+
+- Update to version 1.0.1:
+  * make install now creates /usr/local/libexec/mold/ld as
+  a symlink to the mold executable. We do this for GCC.
+  By passing -B/usr/local/libexec/mold, you can tell GCC to use ld
+  inside that directory instead of /usr/bin/ld. (e8dcecf)
+  * xxHash library is now included in the mold's source tree as a subtree for ease of building.
+    If you want to link against a libxxhash in a system library directory, pass SYSTEM_XXHASH=1 to make. (665bffa)
+  * The extern &quot;C++&quot; directive is now supported in the dynamic list. (7aa5c39)
+  * --color-diagnostics is supported. mold used to ignore that flag. (6e290aa)
+  * Not only * but also ? are now treated as special characters in the version script wildcard pattern. (31b0248)
+  * The --threads=N option has been added as
+    an alias for --thread-count=N. (f9ff048)
+  * The following option has been added: --defsym (f6e8006), -z nodefaultlib (8c86c28),
+    -z separate-code, -z noseparate-code and -z separate-lodable-segments (5601cf4), -z max-page-size (f3766cd)
+- Add workaround patch configure-fix.patch.</comment>
+    <requestid>943544</requestid>
+  </revision>
 </revisionlist>
