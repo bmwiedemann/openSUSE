@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jan  4 13:28:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.0
+  * Add compatibility with pathlib paths (#49)
+  * Fix thread compatibility of modern windows implementation (#59)
+  * Fix handling of UNC names in legacy windows implementation
+    (#57)
+- Release Version 1.7.1
+  * Fix handling of UNC names (#57)
+  * Changed conditional for when to try to use pyobjc version (#51)
+  * Add console_script entry point (#50)
+  * Increased python CI versions (#52, #54)
+  * Fix minor issue in setup.py (#53)
+  * Fix issue with windows tests importing modules on non-windows
+    (#55)
+  * Unit test cleanups, rewrites, and flake8 cleanups
+  * Windows: Fix legacy windows platform for multi-byte unicode and
+    add tests
+  * macOS: Add alternative pyobjc version to potentially improve
+    compatibility (#51)
+  * Add main method which allows calling via python -m send2trash
+    somefile
+  * Windows: Add support for using IFileOperation when pywin32 is
+    present on Vista and newer
+  * Add support for passing multiple files at once in a list
+  * Windows: Batch multi-file calls to improve performance (#42)
+  * Windows: Fix issue with SHFileOperation failing silently when
+    path is not found (#33)
+- Drop python2.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 10:34:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.0:

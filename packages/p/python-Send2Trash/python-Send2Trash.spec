@@ -1,7 +1,7 @@
 #
 # spec file for package python-Send2Trash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,21 @@
 # test scripts missing
 %define         oldpython python
 Name:           python-Send2Trash
-Version:        1.5.0
+Version:        1.8.0
 Release:        0
 Summary:        Python library to send files to the Trash location
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/hsoft/send2trash
-Source:         https://files.pythonhosted.org/packages/source/S/Send2Trash/Send2Trash-%{version}.tar.gz
-Patch0:         python2.patch
+URL:            https://github.com/arsenetar/send2trash
+Source:         https://github.com/arsenetar/send2trash/archive/refs/tags/%{version}.tar.gz#/Send2Trash-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       typelib(GObject)
 Requires:       typelib(Gio)
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %ifpython2
 Obsoletes:      %{oldpython}-send2trash < %{version}
 Provides:       %{oldpython}-send2trash = %{version}
@@ -51,23 +53,31 @@ to its own implementation of the trash specifications from
 freedesktop.org.
 
 %prep
-%setup -q -n Send2Trash-%{version}
-%patch0 -p1
+%setup -q -n send2trash-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/send2trash
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover
+%pytest
+
+%post
+%python_install_alternative send2trash
+
+%postun
+%python_uninstall_alternative send2trash
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%python_alternative %{_bindir}/send2trash
+%{python_sitelib}/send2trash
+%{python_sitelib}/Send2Trash-%{version}*-info
 
 %changelog

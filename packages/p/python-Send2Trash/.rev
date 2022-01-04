@@ -37,4 +37,12 @@
   * python2.patch</comment>
     <requestid>682096</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4872f1f9f65f07c68501691c9e9cecdc</srcmd5>
+    <version>1.8.0</version>
+    <time>1641321494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943779</requestid>
+  </revision>
 </revisionlist>
