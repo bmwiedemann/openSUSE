@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Thu Dec 30 15:30:19 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
-
-- Revert wayland fixes because it doesn't handle GPU correctly
-  (boo#1194182)
-
--------------------------------------------------------------------
-Thu Dec 30 08:38:17 UTC 2021 - Martin Liška <mliska@suse.cz>
-
-- Use GCC 11, but disable LTO (boo#1194055).
-
--------------------------------------------------------------------
-Wed Dec 29 12:23:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
-
-- Use our own copy of the wrapper so that we can use the fixes
-  for Wayland
-
--------------------------------------------------------------------
 Sun Dec 26 23:02:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Define GNU_SOURCE and fix the below patched issues
