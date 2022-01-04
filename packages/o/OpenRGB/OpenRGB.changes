@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Mon Jan  3 18:36:19 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7
+  New Features:
+  * Improved plugin architecture - Plugins can now be easily
+    installed from Settings and are versioned to ensure
+    compatibility.
+    + Plugins include effects engine, E1.31 receiver, visual map
+      editor, and more.
+  * Settings tabs for various configurable features so you don't
+    have to manually edit settings file
+    + E1.31 Devices
+    + Serial Devices
+    + QMK OpenRGB Protocol
+    + Philips Hue
+    + Philips Wiz
+    + Yeelight
+  * Log console
+    + Log console can be enabled in settings, allows to view the
+      log in the GUI under Information
+  * Save To Device
+    + On supported controllers, the Save To Device button allows
+      you to save the selected mode and color configuration to
+      device internal memory
+  * Brightness Control
+    + On supported controllers, you can adjust the brightness
+      with the Brightness slider
+  * Autostart Settings
+    + Configure OpenRGB to automatically start on login in the
+      Settings tab
+    + Configure auto-start options such as start server, load
+      profile, and more
+  * Zone resize dialog prompts users to resize uninitialized
+    zero-size zones
+  New Device Support:
+  * Additional GPUs added to detection list from Gigabyte, ASUS,
+    MSI, EVGA, Sapphire, and more
+  * Additional MSI Mystic Light motherboards tested and added
+  * Logitech mouse issues from 0.6 have been fixed
+  * Logitech G213 keyboard modes
+  * Philips Hue (normal and Entertainment mode) support
+  * Corsair Commander Core
+  * HyperX Alloy Origins Core
+  * Alienware G5 SE
+  * ASUS ROG Pugio and general improvements for ASUS mice
+  * ASUS ROG Throne headset stand
+  * ASUS ROG Strix Scope
+  * Additional Razer devices added to Razer Controller
+  * Obinslab Anne Pro 2
+  * ASUS Aura SMBus controller renamed to ENE SMBus controller
+    and expanded
+    + Conflict with Crucial DRAM fixed
+    + ASUS 3xxx GPU support added, these GPUs use an ENE
+      controller
+    + XPG Spectrix S40G NVMe SSD (ENE controller), requires
+      running as Administrator/root
+  * HP Omen 30L
+  * Cooler Master RGB Controller
+  * Cooler Master ARGB Controller direct mode
+  * Wooting keyboard improvements
+  * Blinkinlabs BlinkyTape
+  * Alienware AW510K Keyboard
+  * Corsair K100 keyboard
+  * SteelSeries Rival 600
+  * SteelSeries Rival 7x0
+  * Logitech G915, G915 TKL
+  * Logitech G Pro
+  * Sinowealth 0016 keyboard
+  * Fix HyperX device flickering, especially HyperX FPS RGB
+  * Re-enable all Crucial DRAM addresses, should fix missing
+    Crucial detection
+  * Gigabyte RGB Fusion 2 GPUs
+  * EVGA 3xxx GPUs
+  * EVGA KINGPIN 1080Ti and 1080 FTW2
+  * ASUS Strix Evolve mouse
+  * MSI GPU direct mode
+  Bug Fixes:
+    + Fixed a detection issue with USB interface/page/usage
+      values
+    + Improved layouts and keymaps of many devices
+    + Improve log manager formatting
+    + Fix issues with WMI multiple initialization
+    + Several small UI improvements
+    + Fix crash when using certain Logitech mice (G502 Hero and
+      G502 PS)
+    + Fix crash related to unloading plugins
+  Known Issues:
+  * Some newly added NVIDIA GPU controllers don't work on Linux.
+    This seems to be an issue with NVIDIA's proprietary driver's
+    I2C and SMBus functionality.
+    + ASUS Aura 3xxx (ENE) GPUs
+    + EVGA 3xxx GPUs
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+  Notes:
+  * Due to changes in device names, existing profiles you have
+    saved from previous versions may not work and will need to
+    be recreated.  Same goes for saved addressable controller
+    sizes.
+  * If upgrading from a release prior to OpenRGB 0.6, it is
+    recommended to disable OpenRazer or OpenRazer-win32 in the
+    settings. This allows use of the new Razer controller with
+    better device support.
+  * Due to plugin versioning change, you may have to delete your
+    old plugins manually before OpenRGB will install new ones.
+    To do this, go to the Settings tab, under General Settings
+    click Open Settings Folder.  Close OpenRGB, then delete the
+    plugins folder in this directory. Reopen OpenRGB and you can
+    install new plugins from the settings tab.
+- Refresh OpenRGB-use_system_libs.patch
+- Drop OpenRGB-Logitch_G502_detect.patch and
+  OpenRGB-Logitch_G502_PID.patch (merged upstream)
+- Add OpenRGB-fix_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
 Tue Sep 28 15:44:06 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add OpenRGB-Logitch_G502_detect.patch and

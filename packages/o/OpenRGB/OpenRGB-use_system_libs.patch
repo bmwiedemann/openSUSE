@@ -1,28 +1,28 @@
-Index: OpenRGB-release_0.6/OpenRGB.pro
+Index: OpenRGB-release_0.7/OpenRGB.pro
 ===================================================================
---- OpenRGB-release_0.6.orig/OpenRGB.pro
-+++ OpenRGB-release_0.6/OpenRGB.pro
-@@ -50,7 +50,6 @@ INCLUDEPATH +=
-     dependencies/ColorWheel                                                                     \
-     dependencies/CRCpp/                                                                         \
+--- OpenRGB-release_0.7.orig/OpenRGB.pro
++++ OpenRGB-release_0.7/OpenRGB.pro
+@@ -62,7 +62,6 @@ INCLUDEPATH +=
+     dependencies/hueplusplus-1.0.0/include                                                      \
+     dependencies/hueplusplus-1.0.0/include/hueplusplus                                          \
      dependencies/json/                                                                          \
 -    dependencies/libe131/src/                                                                   \
      dependencies/libcmmk/include/                                                               \
      i2c_smbus/                                                                                  \
      i2c_tools/                                                                                  \
-@@ -376,7 +375,6 @@ SOURCES +=
-     Controllers/LogitechController/LogitechProtocolCommon.cpp \
-     dependencies/dmiinfo.cpp                                                                    \
-     dependencies/ColorWheel/ColorWheel.cpp                                                      \
+@@ -522,7 +521,6 @@ SOURCES +=
+     dependencies/hueplusplus-1.0.0/src/UPnP.cpp                                                 \
+     dependencies/hueplusplus-1.0.0/src/Utils.cpp                                                \
+     dependencies/hueplusplus-1.0.0/src/ZLLSensors.cpp                                           \
 -    dependencies/libe131/src/e131.c                                                             \
      dependencies/libcmmk/src/libcmmk.c                                                          \
      main.cpp                                                                                    \
      cli.cpp                                                                                     \
-@@ -828,6 +826,7 @@ unix:!macx {
-     LIBS +=                                                                                     \
-     -lusb-1.0                                                                                   \
-     -lstdc++fs                                                                                  \
-+    $$system(pkg-config --libs libe131)
+@@ -1188,6 +1186,7 @@ unix:!macx {
+     -lmbedx509                                                                                  \
+     -lmbedtls                                                                                   \
+     -lmbedcrypto                                                                                \
++    $$system(pkg-config --libs libe131)                                                         \
  
-     #-------------------------------------------------------------------------------------------#
-     # Determine which hidapi to use based on availability                                       #
+     COMPILER_VERSION = $$system($$QMAKE_CXX " -dumpversion")
+     if (!versionAtLeast(COMPILER_VERSION, "9")) {

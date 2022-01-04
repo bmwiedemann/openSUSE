@@ -1,7 +1,7 @@
 #
 # spec file for package OpenRGB
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           OpenRGB
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Open source RGB lighting control
 License:        GPL-2.0-only
@@ -25,11 +25,10 @@ URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
 Patch1:         OpenRGB-use_system_libs.patch
-# PATCH-FIX-UPSTREAM OpenRGB-Logitch_G502_detect.patch
-Patch2:         OpenRGB-Logitch_G502_detect.patch
-# PATCH-FIX-UPSTREAM OpenRGB-Logitch_G502_PID.patch
-Patch3:         OpenRGB-Logitch_G502_PID.patch
+# PATCH-FIX-OPENSUSE OpenRGB-fix_return_in_nonvoid.patch
+Patch4:         OpenRGB-fix_return_in_nonvoid.patch
 BuildRequires:  gcc-c++
+BuildRequires:  mbedtls-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)

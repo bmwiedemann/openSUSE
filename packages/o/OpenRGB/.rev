@@ -41,4 +41,41 @@
 </comment>
     <requestid>922037</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ad91a7f865716024f5656f50e51a562</srcmd5>
+    <version>0.7</version>
+    <time>1641321470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7
+  New Features:
+  * Improved plugin architecture - Plugins can now be easily
+    installed from Settings and are versioned to ensure
+    compatibility.
+    + Plugins include effects engine, E1.31 receiver, visual map
+      editor, and more.
+  * Settings tabs for various configurable features so you don't
+    have to manually edit settings file
+    + E1.31 Devices
+    + Serial Devices
+    + QMK OpenRGB Protocol
+    + Philips Hue
+    + Philips Wiz
+    + Yeelight
+  * Log console
+    + Log console can be enabled in settings, allows to view the
+      log in the GUI under Information
+  * Save To Device
+    + On supported controllers, the Save To Device button allows
+      you to save the selected mode and color configuration to
+      device internal memory
+  * Brightness Control
+    + On supported controllers, you can adjust the brightness
+      with the Brightness slider
+  * Autostart Settings
+    + Configure OpenRGB to automatically start on login in the
+      Settings tab
+    + Configure auto-start options such as start server, load
+      profile, and more (forwarded request 943651 from alois)</comment>
+    <requestid>943652</requestid>
+  </revision>
 </revisionlist>
