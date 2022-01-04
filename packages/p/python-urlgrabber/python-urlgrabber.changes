@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 22 09:27:55 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add missing bugzilla references (bsc#1152514) (bsc#1146683)
+
+-------------------------------------------------------------------
 Tue Dec 21 14:02:50 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Use binary mode when reopening files
