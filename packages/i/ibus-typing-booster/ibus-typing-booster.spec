@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.15.11
+Version:        2.15.14
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -47,13 +47,11 @@ BuildRequires:  python3-packaging
 BuildRequires:  python3-pyxdg
 %endif
 %if 0%{?suse_version} == 1320
-BuildRequires:  myspell-cs_CZ
 BuildRequires:  myspell-de
 BuildRequires:  myspell-en
 BuildRequires:  myspell-es
 BuildRequires:  myspell-it_IT
 %else
-BuildRequires:  myspell-cs_CZ
 BuildRequires:  myspell-de
 BuildRequires:  myspell-de_DE
 BuildRequires:  myspell-en
