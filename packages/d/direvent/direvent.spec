@@ -1,7 +1,7 @@
 #
 # spec file for package direvent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           direvent
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        File system directory change monitoring tool
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ URL:            https://www.gnu.org/software/direvent/
 Source:         http://ftp.gnu.org/gnu/direvent/%{name}-%{version}.tar.gz
 Source2:        http://ftp.gnu.org/gnu/direvent/%{name}-%{version}.tar.gz.sig
 Source3:        https://puszcza.gnu.org.ua/people/viewgpg.php?user_id=101#/%{name}.keyring
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
 GNU Direvent monitors events in the file system directories. For each event
@@ -40,20 +38,14 @@ the event and the location within the file system where it occured.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} tests
+%make_build tests
 
 %install
 %make_install
 %find_lang %{name}
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files -f %{name}.lang
 %license COPYING
