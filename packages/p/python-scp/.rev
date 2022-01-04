@@ -86,4 +86,13 @@
 </comment>
     <requestid>928534</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e0f00b6add9438d69065804e860d9b1</srcmd5>
+    <version>0.14.2</version>
+    <time>1641321459</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.2:
+  * Don't fail if the remote path is a PurePath not a Path</comment>
+    <requestid>943598</requestid>
+  </revision>
 </revisionlist>
