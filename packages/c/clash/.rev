@@ -17,4 +17,28 @@ A rule-based tunnel in Go.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>940274</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e46a7eb881b640d406e6b00b8848942</srcmd5>
+    <version>1.9.0</version>
+    <time>1641321472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0:
+  * Chore: update dependencies
+  * Fix: multiple port string parsing overflow (#1868)
+  * Chore: remove forward compatible code
+  * Chore: ReCreate* do side effect job (#1849)
+  * Chore: remove reduce regex compile (#1855)
+  * Fix: when both providers and proxies are present, use the health check configuration for proxies (#1821)
+  * Chore: builtin right mime of .js (#1808)
+  * Feature: add linux/arm/v6 for the container image (#1771)
+  * Fix: fakeip pool cycle used
+  * Fix: provider filter potential panic
+  * Feature: add filter on proxy provider (#1511)
+  * Fix: should return io.EOF immediately
+  * Change: use nop packet conn for reject
+  * Fix: revert ssr udp fix
+  * Fix: bind iface should throw control error
+</comment>
+    <requestid>943704</requestid>
+  </revision>
 </revisionlist>

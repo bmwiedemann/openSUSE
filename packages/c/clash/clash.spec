@@ -1,5 +1,7 @@
+#
 # spec file for package clash
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Xu Zhao (i@xuzhao.net)
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
@@ -15,7 +17,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global build_time      %(date -u +'%Y-%m-%dT%H:%M:%SZ')
+
+%global build_time      2022-01-03T14:57:41Z
+# date -u +'%Y-%m-%dT%H:%M:%SZ'
 
 %global provider        github
 %global provider_tld    com
@@ -25,7 +29,7 @@
 %global import_path     %{provider_prefix}/%{repo}
 
 Name:           clash
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A rule-based tunnel in Go
 License:        GPL-3.0-only

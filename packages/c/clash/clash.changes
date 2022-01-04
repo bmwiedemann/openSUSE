@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 03 14:54:25 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.9.0:
+  * Chore: update dependencies
+  * Fix: multiple port string parsing overflow (#1868)
+  * Chore: remove forward compatible code
+  * Chore: ReCreate* do side effect job (#1849)
+  * Chore: remove reduce regex compile (#1855)
+  * Fix: when both providers and proxies are present, use the health check configuration for proxies (#1821)
+  * Chore: builtin right mime of .js (#1808)
+  * Feature: add linux/arm/v6 for the container image (#1771)
+  * Fix: fakeip pool cycle used
+  * Fix: provider filter potential panic
+  * Feature: add filter on proxy provider (#1511)
+  * Fix: should return io.EOF immediately
+  * Change: use nop packet conn for reject
+  * Fix: revert ssr udp fix
+  * Fix: bind iface should throw control error
+
+-------------------------------------------------------------------
 Sun Dec 05 10:55:19 UTC 2021 - Orville Q. Song <orville@anislet.dev>
 
 - Update to version 1.8.0:
