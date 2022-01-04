@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 21 15:33:22 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Add initrd_support_ztd-compressed_modules.patch:
+  backport of 4306a131c6cd to add support of zstd compressed kernel
+  modules.
+
+-------------------------------------------------------------------
 Sun Sep 12 10:20:30 UTC 2021 - ohering@suse.de
 
 - Restore ExclusiveArch, continue to follow libguestfs

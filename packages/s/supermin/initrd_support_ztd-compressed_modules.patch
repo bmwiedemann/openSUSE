@@ -1,0 +1,83 @@
+From 4306a131c6cde92f8d0a2dd9376f4096ee538eff Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Thu, 5 Aug 2021 08:16:28 +0100
+Subject: [PATCH] initrd: Support ztd-compressed modules
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1990209
+---
+ README                    |  2 ++
+ configure.ac              |  3 +++
+ src/config.ml.in          |  1 +
+ src/format_ext2_initrd.ml | 16 ++++++++++++++--
+ 4 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/README b/README
+index e5187a6..ccd6f96 100644
+--- a/README
++++ b/README
+@@ -102,6 +102,8 @@ are building:
+ 
+   xzcat (command) - if your kernel uses xz-compressed modules
+ 
++  zstdcat (command) - if your kernel uses zstd-compressed modules
++
+ Building and installing
+ -----------------------
+ 
+diff --git a/configure.ac b/configure.ac
+index cd5d8c0..ad86ca5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -157,6 +157,9 @@ AC_PATH_PROG(ZCAT,[zcat],[no])
+ dnl Check for xzcat, only needed if you have xz-compressed kernel modules.
+ AC_PATH_PROG(XZCAT,[xzcat],[no])
+ 
++dnl Check for zstdcat, only needed if you have zstd-compressed kernel modules.
++AC_PATH_PROG(ZSTDCAT,[zstdcat],[no])
++
+ dnl mke2fs.
+ AC_PATH_PROG([MKE2FS],[mke2fs],[no],
+              [$PATH$PATH_SEPARATOR/sbin$PATH_SEPARATOR])
+diff --git a/src/config.ml.in b/src/config.ml.in
+index 313d6e6..b0953dc 100644
+--- a/src/config.ml.in
++++ b/src/config.ml.in
+@@ -39,6 +39,7 @@ let urpmi = "@URPMI@"
+ let yumdownloader = "@YUMDOWNLOADER@"
+ let xzcat = "@XZCAT@"
+ let zcat = "@ZCAT@"
++let zstdcat = "@ZSTDCAT@"
+ let zypper = "@ZYPPER@"
+ 
+ let mke2fs = "@MKE2FS@"
+diff --git a/src/format_ext2_initrd.ml b/src/format_ext2_initrd.ml
+index 6268442..98d2692 100644
+--- a/src/format_ext2_initrd.ml
++++ b/src/format_ext2_initrd.ml
+@@ -106,12 +106,24 @@ let rec build_initrd debug tmpdir modpath initrd =
+           visit deps;
+ 
+           (* Copy module to the init directory.
+-           * Uncompress the module, if the name ends in .xz or .gz.
++           * Uncompress the module, if the name ends in .zst, .xz or .gz.
+            *)
+           let basename = Filename.basename modl in
+           let basename =
+             let len = String.length basename in
+-            if Config.xzcat <> "no" &&
++            if Config.zstdcat <> "no" &&
++                 Filename.check_suffix basename ".zst"
++            then (
++              let basename = String.sub basename 0 (len-4) in
++              let cmd = sprintf "%s %s > %s"
++                                (quote Config.zstdcat)
++                                (quote (modpath // modl))
++                                (quote (initdir // basename)) in
++              if debug >= 2 then printf "supermin: %s\n" cmd;
++              run_command cmd;
++              basename
++            )
++            else if Config.xzcat <> "no" &&
+                  Filename.check_suffix basename ".xz"
+             then (
+               let basename = String.sub basename 0 (len-3) in

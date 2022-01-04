@@ -31,6 +31,8 @@ Patch0:         Avoid-lstat-Value-too-large-for-defined-data-type.patch
 Patch10:        suse_release.patch
 Patch11:        supermin-kernel_version_compressed.patch
 Patch12:        disable-test-if-newer-ext2.patch
+# Backport of https://github.com/libguestfs/supermin/commit/4306a131c6cde92f8d0a2dd9376f4096ee538eff.patch
+Patch13:        initrd_support_ztd-compressed_modules.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -48,6 +50,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 BuildRequires:  zypper
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(ext2fs)
