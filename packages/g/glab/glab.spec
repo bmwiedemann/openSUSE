@@ -1,6 +1,8 @@
+#
 # spec file for package glab
 #
-# Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global build_date      %(date +%Y-%m-%d)
+
+%global build_date      2021-01-03
+#date +%Y-%m-%d
 
 %global provider        github
 %global provider_tld    com
@@ -32,18 +36,18 @@ Group:          Development/Tools/Other
 URL:            https://github.com/profclems/glab
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-vendor.tar.xz
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
-BuildRequires:  %{python_module Sphinx}
-Suggests:	glab-doc
+Suggests:       glab-doc
 
 %description
 glab is an open-source GitLab command line tool bringing GitLab's cool features to your command line.
 
 %package doc
-Summary:	Documentation for GLab
-Group:		Documentation/HTML
-BuildArch:	noarch
+Summary:        Documentation for GLab
+Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 glab is an open-source GitLab command line tool bringing GitLab's cool features to your command line.
