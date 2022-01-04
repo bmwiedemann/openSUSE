@@ -1,7 +1,7 @@
 #
 # spec file for package frescobaldi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,19 +38,18 @@ Requires:       python3-poppler-qt5
 Requires:       python3-qt5
 Requires:       python3-qt5-sip
 Requires:       python3-qtwebengine-qt5
-Recommends:     libportmidi0
+Recommends:     libportmidi2
 Recommends:     python3-pycups
 BuildArch:      noarch
 
 %description
-Frescobaldi is a LilyPond sheet music editor. It aims to be powerful, yet 
+Frescobaldi is a LilyPond sheet music editor. It aims to be powerful, yet
 lightweight and easy to use.
 
-You can edit LilyPond documents and build and preview them with a mouse click. 
-Clicking on notes in the PDF preview places the text cursor in the right place. 
-A score wizard is provided to quickly setup a music score. There are editing 
+You can edit LilyPond documents and build and preview them with a mouse click.
+Clicking on notes in the PDF preview places the text cursor in the right place.
+A score wizard is provided to quickly setup a music score. There are editing
 tools to manipulate the rhythm, acticulations, lyrics hyphenation, etc.
-
 
 %prep
 %setup -q -a 1
