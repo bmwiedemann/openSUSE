@@ -261,4 +261,12 @@
   to fix crashes when running armv6 userspace on armv8 64-bit kernels</comment>
     <requestid>893241</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e8e433da8eb9ba635133c81a55cc70db</srcmd5>
+    <version>1.5.1</version>
+    <time>1641321446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943560</requestid>
+  </revision>
 </revisionlist>

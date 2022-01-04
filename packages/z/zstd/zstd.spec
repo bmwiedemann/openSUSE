@@ -1,7 +1,7 @@
 #
 # spec file for package zstd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 1
 %define libname lib%{name}%{major}
 Name:           zstd
-Version:        %{major}.5.0
+Version:        %{major}.5.1
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -89,9 +89,9 @@ Needed for compiling programs that link with the library.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -std=c++11"
+export CXXFLAGS="$CFLAGS -std=c++11"
 # lib-mt is alias for multi-threaded library support
-%make_build -C lib lib-mt
+%make_build prefix=%{_prefix} libdir=%{_libdir} -C lib lib-mt
 for dir in programs contrib/pzstd; do
   %make_build -C "$dir"
 done
@@ -103,7 +103,7 @@ export CXXFLAGS="%{optflags} -std=c++11"
 #make %{?_smp_mflags} -C contrib/pzstd test-pzstd
 
 %install
-%make_install V=1 VERBOSE=1 PREFIX=%{_prefix} LIBDIR=%{_libdir}
+%make_install V=1 VERBOSE=1 prefix=%{_prefix} libdir=%{_libdir}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
 
