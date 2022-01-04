@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  4 13:15:32 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.4.3
+  Features:
+  * The kinopoisk.ru data source was updated (kde#447435).
+  * The Album template was improved to account for possible changes
+    in the Tracks field.
+  Improvements and Bug Fixes:
+  * Fixed bug with opening target=_blank links (kde#445871).
+  * Fixed crashing bug in audio file importer (kde#446551).
+
+-------------------------------------------------------------------
 Tue Nov  9 11:08:09 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.4.2
