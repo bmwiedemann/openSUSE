@@ -142,4 +142,12 @@
   *  Avoid hardcoded font family name in vpiano</comment>
     <requestid>923561</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4d60722b44e99d6091fcbda45db4d258</srcmd5>
+    <version>2.5.0</version>
+    <time>1641321473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943716</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  3 18:00:06 UTC 2022 - Giordano Boschetti <geekosdaw@gmail.com>
+
+- Update to 2.5.0
+
+  * Documentation/deprecation of Drumstick::File functions affected by QTextCodec
+  * Documented new build options and Qt6Core5Compat dependency for Drumstick::File
+  * Raised macOS deployment target to 10.13 (High Sierra)
+  * RT, VPiano: Fixed ALSA backend, enable empty input connection.
+  * New build options: BUILD_ALSA, BUILD_FILE, BUILD_RT, BUILD_WIDGETS
+  * Reduced usage of Qt6Core5Compat to the minimum
+  * Widgets: changed the white keys background picture depending on the key background color
+  * VPiano: new option to display inverted key colors
+  * fix for ticket #37: WRK format markers are not decoded
+  * Widgets library Swedish translation updated. Thanks to Magnus Johansson.
+  * Widgets library Czech translation updated. Thanks to Pavel Fric.
+
+-------------------------------------------------------------------
 Wed Oct  6 17:21:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.4.0
