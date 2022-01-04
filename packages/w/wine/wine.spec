@@ -342,13 +342,6 @@ mv %{buildroot}/%{_mandir}/fr.UTF-8 %{buildroot}/%{_mandir}/fr
 mv %{buildroot}/%{_mandir}/pl.UTF-8 %{buildroot}/%{_mandir}/pl
 %endif
 
-%ifarch x86_64
-find %{buildroot}/usr/lib64/wine/x86_64-windows/ -type f | xargs /usr/bin/x86_64-w64-mingw32-strip --strip-debug
-%endif
-%ifarch %ix86
-find %{buildroot}/usr/lib/wine/i386-windows/ -type f| xargs /usr/bin/i686-w64-mingw32-strip --strip-debug
-%endif
-
 tar -xjf %{SOURCE5}
 # Copied from Ubuntu Wine out of debian.diff
 # https://launchpad.net/~ubuntu-wine/+archive/ppa/+packages
