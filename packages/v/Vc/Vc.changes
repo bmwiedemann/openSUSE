@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  4 18:40:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Added a missing include for GCC11.
+  * Fixed a corner case in the unit tests
+  * Fixed a warning in the unit tests.
+  * Removed the deprecated Vector<T, VectorAbi::Scalar>::reinterpretCast
+    to fix a warning with GCC10
+  * Avoid potentially pessimizing std::move in return statements.
+  * Avoid redefinition of bit_scan{forward,reverse} macros.
+  * Improved performance of simized random access containers
+- drop 0001-Add-missing-include-to-simdarray.h-275.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Dec 24 12:16:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix Vc-devel dependencies.

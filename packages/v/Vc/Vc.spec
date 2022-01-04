@@ -1,7 +1,7 @@
 #
 # spec file for package Vc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 Name:           Vc
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Collection of SIMD Vector Classes
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/VcDevel/Vc/
 Source0:        https://github.com/VcDevel/Vc/releases/download/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-include-to-simdarray.h-275.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
