@@ -1,7 +1,7 @@
 #
 # spec file for package debhelper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           debhelper
-Version:        13.5.2
+Version:        13.6
 Release:        0
 Summary:        Helper programs for debian/rules
 License:        GPL-2.0-or-later
