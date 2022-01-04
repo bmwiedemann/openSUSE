@@ -689,4 +689,18 @@
   * Improve wording related to compiler warnings.</comment>
     <requestid>941895</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a486cc815a315de8fbd4de2199378fb1</srcmd5>
+    <version>2.4.0+git.20220104.21c4e26</version>
+    <time>1641321474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20220104.21c4e26:
+  * Remove C-Reduce test-case.
+  * skip non VarDecl for getInitExprFromBase
+  * Fix topformflat sanity check in lines pass.
+  * Use repology.
+
+- Add chardet as a Requirement.</comment>
+    <requestid>943772</requestid>
+  </revision>
 </revisionlist>

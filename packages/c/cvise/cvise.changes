@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 04 13:49:40 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20220104.21c4e26:
+  * Remove C-Reduce test-case.
+  * skip non VarDecl for getInitExprFromBase
+  * Fix topformflat sanity check in lines pass.
+  * Use repology.
+
+-------------------------------------------------------------------
+Tue Jan  4 09:05:26 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add chardet as a Requirement.
+
+-------------------------------------------------------------------
 Tue Dec 21 16:43:18 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20211209.2669efd:

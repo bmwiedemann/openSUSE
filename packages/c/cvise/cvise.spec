@@ -1,7 +1,7 @@
 #
 # spec file for package cvise
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.4.0+git.20211209.2669efd
+Version:        2.4.0+git.20220104.21c4e26
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -44,6 +44,7 @@ Requires:       colordiff
 Requires:       indent
 Requires:       llvm
 Requires:       python3-Pebble
+Requires:       python3-chardet
 Requires:       python3-psutil
 Requires:       unifdef
 
