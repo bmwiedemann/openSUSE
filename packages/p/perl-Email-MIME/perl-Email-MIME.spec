@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-MIME
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Email-MIME
-Version:        1.949
-Release:        0
 %define cpan_name Email-MIME
+Name:           perl-Email-MIME
+Version:        1.952
+Release:        0
 Summary:        Easy MIME message handling
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Email::Address::XS)
@@ -37,6 +35,7 @@ BuildRequires:  perl(Email::MessageID)
 BuildRequires:  perl(Email::Simple) >= 2.212
 BuildRequires:  perl(Email::Simple::Creator)
 BuildRequires:  perl(Email::Simple::Header)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(MIME::Types) >= 1.13
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Test::More) >= 0.96
@@ -60,11 +59,11 @@ parts, and allows you access to various parts of the message. Headers are
 decoded from MIME encoding.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -75,7 +74,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
