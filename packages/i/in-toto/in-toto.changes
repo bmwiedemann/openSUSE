@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Jan  3 11:16:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use python_subpackages: as this is an application, not a
+  python module, we want the package to be called in-toto, not
+  python3-in-toto. Use static python3-FOO (Build)?Requires.
+
+-------------------------------------------------------------------
+Mon Jan  3 10:44:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use pythons python3
+
+-------------------------------------------------------------------
+Mon Dec 27 09:21:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner, update copyright year, use pypi tarball, remove
+  service madness, add missing changes file
+
+-------------------------------------------------------------------
+Mon Dec 27 09:20:42 UTC 2021 - Adrian Schröter <adrian.schroeter@suse.com>
+
+- Initial package 

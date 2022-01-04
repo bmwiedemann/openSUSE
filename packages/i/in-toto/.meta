@@ -1,0 +1,5 @@
+<package name="in-toto" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:tools" package="in-toto"/>
+</package>
