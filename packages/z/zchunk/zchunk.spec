@@ -1,7 +1,7 @@
 #
 # spec file for package zchunk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,6 @@
 %global somajor 1
 %global libname libzck%{somajor}
 %global devname libzck-devel
-
 Name:           zchunk
 Version:        1.1.16
 Release:        0
@@ -29,6 +28,7 @@ License:        BSD-2-Clause AND MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/zchunk/zchunk
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch1:         zstd-1.5.1.patch
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
