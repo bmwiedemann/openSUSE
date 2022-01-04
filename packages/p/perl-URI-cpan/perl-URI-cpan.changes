@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 16 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.008
+   see /usr/share/doc/packages/perl-URI-cpan/Changes
+
+  1.008     2021-12-15 15:53:55-05:00 America/New_York
+          - fix prereqs to rely on URI, not the unindexed URI::_generic
+
+-------------------------------------------------------------------
 Tue Sep 14 19:55:23 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - refresh spec file

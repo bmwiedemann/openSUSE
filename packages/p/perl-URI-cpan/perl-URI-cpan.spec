@@ -18,22 +18,23 @@
 
 %define cpan_name URI-cpan
 Name:           perl-URI-cpan
-Version:        1.007
+Version:        1.008
 Release:        0
-License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        URLs that refer to things on the CPAN
+License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::DistnameInfo)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(URI)
-BuildRequires:  perl(URI::_generic)
 BuildRequires:  perl(parent)
 Requires:       perl(CPAN::DistnameInfo)
-Requires:       perl(URI::_generic)
+Requires:       perl(URI)
 Requires:       perl(parent)
 %{perl_requires}
 
