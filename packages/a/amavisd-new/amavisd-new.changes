@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 10:18:56 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- amavisd-new should require packets perl-IO-stringy and perl-Net-LibIDN
+  (bsc#1193291) 
+
+-------------------------------------------------------------------
 Wed Jul 28 07:49:46 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:
