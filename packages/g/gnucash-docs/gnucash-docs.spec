@@ -17,7 +17,7 @@
 
 
 Name:           gnucash-docs
-Version:        4.6
+Version:        4.9
 Release:        9.1
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source:         https://sourceforge.net/projects/gnucash/files/gnucash%20(stable
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel
 BuildRequires:  xsltproc
+BuildRequires:  cmake
 BuildArch:      noarch
 Recommends:     %{_bindir}/gnome-help
 
@@ -41,18 +42,19 @@ balanced books. This is the documentation module for GnuCash.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 %find_lang gnucash-guide %{?no_lang_C}
 %find_lang gnucash-help %{?no_lang_C}
+%{__rm} -rf %{buildroot}%{_datadir}/gnucash-docs
 %fdupes %{buildroot}%{_datadir}
 
 %files -f gnucash-guide.lang -f gnucash-help.lang
 %license COPYING
-%doc AUTHORS COPYING-DOCS HACKING NEWS README
+%doc AUTHORS COPYING-DOCS NEWS README
 # Own dirs so we do not have to depend on libgnome
 %dir %{_datadir}/gnome
 %dir %{_datadir}/gnome/help

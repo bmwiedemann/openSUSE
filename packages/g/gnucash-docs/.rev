@@ -401,4 +401,15 @@
     <comment></comment>
     <requestid>905765</requestid>
   </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>9496408a0c16a78cd62834fce71f2b61</srcmd5>
+    <version>4.9</version>
+    <time>1641321466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.9
+  + Switch build system to cmake
+  + See NEWS for details
+</comment>
+    <requestid>943635</requestid>
+  </revision>
 </revisionlist>
