@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 26 03:09:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.031
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.031 2021-12-25 23:43:19+01:00
+
+      - Fix several rare test cases:
+      - Support literal escaped tabs
+      - Allow only one digit for block scalar indent indicator
+      - Allow comments at the end of directives
+      - Match word boundary after '%YAML'
+      - Allow tabs and multiple spaces between directive elements
+      - Forbid lines starting with tabs in block mode
+      - After tabs no further indentation elements allowed
+
+-------------------------------------------------------------------
 Mon Nov  8 03:08:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.030
