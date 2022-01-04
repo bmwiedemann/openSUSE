@@ -426,4 +426,27 @@
     <comment></comment>
     <requestid>926793</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5f384478471641b93372aa804aab0fa8</srcmd5>
+    <version>0.11.11</version>
+    <time>1641321496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.11:
+  Fixes and improvements:
+  * net.server_epoll: Prioritize network events over timers to improve
+    performance under heavy load
+  * mod_pep: Add some memory usage limits
+  * mod_pep: Prevent creation of services for non-existent users
+  * mod_pep: Free resources on user deletion (needed a restart previously)
+  Minor changes:
+  * mod_pep: Free resources on reload
+  * mod_c2s: Indicate stream secure state in error text when no stream features to offer
+  * MUC: Fix logic for access to affiliation lists
+  * net.server_epoll: Improvements to shutdown procedure #1670
+  * net.server_epoll: Fix potential issue with rescheduling of timers
+  * prosodyctl: Fix to ensure LuaFileSystem is loaded when needed
+  * util.startup: Fix handling of unknown command line flags (e.g. -h)
+  * Fix version number reported as ‘unknown’ on *BSD</comment>
+    <requestid>943791</requestid>
+  </revision>
 </revisionlist>

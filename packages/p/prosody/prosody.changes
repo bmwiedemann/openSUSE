@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  4 15:43:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.11:
+  Fixes and improvements:
+  * net.server_epoll: Prioritize network events over timers to improve
+    performance under heavy load
+  * mod_pep: Add some memory usage limits
+  * mod_pep: Prevent creation of services for non-existent users
+  * mod_pep: Free resources on user deletion (needed a restart previously)
+  Minor changes:
+  * mod_pep: Free resources on reload
+  * mod_c2s: Indicate stream secure state in error text when no stream features to offer
+  * MUC: Fix logic for access to affiliation lists
+  * net.server_epoll: Improvements to shutdown procedure #1670
+  * net.server_epoll: Fix potential issue with rescheduling of timers
+  * prosodyctl: Fix to ensure LuaFileSystem is loaded when needed
+  * util.startup: Fix handling of unknown command line flags (e.g. -h)
+  * Fix version number reported as ‘unknown’ on *BSD
+
+-------------------------------------------------------------------
 Wed Oct 20 14:28:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

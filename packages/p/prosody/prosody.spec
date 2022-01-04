@@ -1,7 +1,7 @@
 #
 # spec file for package prosody
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _piddir /run
 Name:           prosody
-Version:        0.11.10
+Version:        0.11.11
 Release:        0
 Summary:        Communications server for Jabber/XMPP
 License:        MIT
