@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  3 15:43:19 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Removed ProtectKernelTunables from the hardenings. Changed
+  * harden_thinkfan-sleep.service.patch
+  * harden_thinkfan-wakeup.service.patch
+  * harden_thinkfan.service.patch
+
+-------------------------------------------------------------------
 Wed Nov 24 15:12:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
