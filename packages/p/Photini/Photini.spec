@@ -1,7 +1,7 @@
 #
 # spec file for package Photini
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Photini
-Version:        2021.12.0
+Version:        2022.1.0
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
