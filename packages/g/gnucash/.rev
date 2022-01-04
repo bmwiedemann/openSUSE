@@ -925,4 +925,16 @@
     <comment></comment>
     <requestid>922761</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>8cc5702d64255693ce358afe5afff783</srcmd5>
+    <version>4.9</version>
+    <time>1641321466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.9
+  + Bugfixes
+- Remove 285017793d2c0c9f5a8d52b3db42944480e3f557.patch: No longer
+  required as the underlying issue has been fixed in release 
+</comment>
+    <requestid>943639</requestid>
+  </revision>
 </revisionlist>

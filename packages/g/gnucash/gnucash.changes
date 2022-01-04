@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  2 16:35:59 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 4.9
+  + Bugfixes
+- Remove 285017793d2c0c9f5a8d52b3db42944480e3f557.patch: No longer
+  required as the underlying issue has been fixed in release 
+
+-------------------------------------------------------------------
 Fri Oct  1 12:48:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 4.8
