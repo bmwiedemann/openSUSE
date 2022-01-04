@@ -1,5 +1,5 @@
 #
-# spec file for package python-jupyter-server
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,6 +17,15 @@
 
 
 #
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -25,8 +34,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-Name:           python-jupyter-server
-Version:        1.11.2
+Name:           python-jupyter-server%{psuffix}
+Version:        1.13.1
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -34,23 +43,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-server/jupyter_server
 # need the release tarball for the static stylesheets
 Source:         https://github.com/jupyter-server/jupyter_server/releases/download/v%{version}/jupyter_server-%{version}.tar.gz
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module Send2Trash}
-BuildRequires:  %{python_module anyio >= 3.1.0}
-BuildRequires:  %{python_module argon2-cffi}
-BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jupyter-client >= 6.1.1}
-BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module jupyter_packaging}
-BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module nbformat}
-BuildRequires:  %{python_module prometheus_client}
-BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module terminado >= 0.8.3}
-BuildRequires:  %{python_module tornado >= 6.1}
-BuildRequires:  %{python_module traitlets >= 4.2.1}
-BuildRequires:  %{python_module websocket-client}
+
 # We need the full stdlib
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -79,14 +74,9 @@ Requires(postun):update-alternatives
 %endif
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
-# SECTION extras_require test
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module pytest-console-scripts}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-tornasync}
-BuildRequires:  %{python_module requests}
-# /SECTION
+%if %{with test}
+BuildRequires:  %{python_module jupyter-server-test = %{version}}
+%endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter-server = %{version}-%{release}
 Obsoletes:      jupyter-jupyter-server < %{version}-%{release}
@@ -117,6 +107,7 @@ Metapackage for the jupyter_server[test] requirement specifier
 %prep
 %setup -q -n jupyter_server-%{version}
 
+%if ! %{with test}
 %build
 %python_build
 
@@ -124,11 +115,22 @@ Metapackage for the jupyter_server[test] requirement specifier
 %python_install
 %python_clone -a  %{buildroot}%{_bindir}/jupyter-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %{python_expand # provide u-a entrypoints in the correct flavor version -- installed packages and jupyter-server
-mkdir build/testbin
-for bin in %{_bindir}/*-%{$python_bin_suffix} %{buildroot}%{_bindir}/*-%{$python_bin_suffix} ; do
+mkdir -p build/xdgflavorconfig
+export XDG_CONFIG_HOME=$PWD/build/xdgflavorconfig
+if [ -d /usr/share/libalternatives/ ]; then
+  for b in /usr/share/libalternatives/*; do
+    if [ -e "${b}/%{$python_version_nodots}.conf" ]; then
+        alts -n $(basename ${b}) -p %{$python_version_nodots}
+    fi
+  done
+fi
+mkdir -p build/testbin
+for bin in %{_bindir}/*-%{$python_bin_suffix}; do
   # four percent into 1 by rpm/python expansions
   ln -s ${bin} build/testbin/$(basename ${bin%%%%-%{$python_bin_suffix}})
 done
@@ -140,7 +142,9 @@ if [ -e ~/.local/share/jupyter ]; then
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
 %pytest jupyter_server
+%endif
 
+%if ! %{with test}
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative jupyter-server
@@ -160,5 +164,6 @@ fi
 
 %files %{python_files test}
 %license COPYING.md
+%endif
 
 %changelog

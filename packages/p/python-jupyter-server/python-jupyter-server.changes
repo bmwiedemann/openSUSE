@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Dec 31 15:55:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.1
+  * nudge both the shell and control channels #636 (@Zsailer)
+  * Persistent session storage #614 (@Zsailer)
+  * Nudge on the control channel instead of the shell #628
+    (@JohanMabille)
+  * Clean up downstream tests #629 (@blink1073)
+  * Clean up version info handling #620 (@blink1073)
+  * Await _finish_kernel_start #617 (@jtpio)
+  * Update to Python 3.10 in the CI workflows #618 (@jtpio)
+  * Use maintainer-tools base setup action #616 (@blink1073)
+  * Consistent logging method #607 (@mwakaba2)
+  * Use pending kernels #593 (@blink1073)
+  * Set xsrf cookie on base url #612 (@minrk)
+  * Update jpserver_extensions trait to work with traitlets 5.x
+    #610 (@Zsailer)
+  * Fix allow_origin_pat property to properly parse regex #603
+    (@havok2063)
+  * Enforce labels on PRs #613 (@blink1073)
+  * Normalize file name and path in test_api #608 (@toonn)
+
+-------------------------------------------------------------------
+Mon Nov 15 18:42:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Multibuild :test flavor, avoid possible buildcycles
+- Fix libalternatives in test flavor
+
+-------------------------------------------------------------------
 Fri Nov 12 21:41:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.11.2
