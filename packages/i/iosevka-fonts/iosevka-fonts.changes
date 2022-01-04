@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 27 21:22:00 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v11.2.4
+  * Changes of version 11.2.4
+    = Add spacing grade quasi-proportional-extension-only.
+    = Fix broken geometry of a.double-storey-tailed under
+      heavy weights.
+    = Fix broken geometry of Cyrillic Iotified Es under
+      heavy weights.
+
+-------------------------------------------------------------------
 Mon Dec 27 08:00:20 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.2.3
