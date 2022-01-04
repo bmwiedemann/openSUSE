@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jan  1 17:29:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.3
+  New features
+  * Added the Nuked OPL3 AdLib emulator as an alternative to DBOPL
+    (selectable in the Sound options). Nuked OPL3 is more
+    accurate but also uses more CPU. The difference in CPU load has
+    little impact on most systems, but it does matter on low-end
+    devices like Raspberry Pi Zero.
+  * Added a "sound test" button to the Sound options (play a chosen
+    sound effect)
+  Improvements
+  * Improved sound effect quality for certain digital sounds
+    (SB_nn.MNI files in VOC format) by using a more accurate ADPCM
+    decoding algorithm (same as DosBox's SoundBlaster emulation).
+  * Slightly improved sound effect quality for AdLib sounds by
+    running the emulator at the native OPL2 frequency (49716 Hz).
+  * In widescreen mode, the camera now tries to avoid showing
+    out-of-bounds parts of the map if possible, by restricting
+    downward scrolling unless it's necessary to keep the player on
+    screen.
+  * Added 75 to the list of pre-defined FPS limits for the FPS
+    limiter.
+  Bug fixes
+  * Fixed a soft-lock that could occur when killing a ceiling
+    sucker at exactly the same time as it sucked up Duke.
+  * When dying due to shooting an airlock and then respawning at a
+    checkpoint, Duke would remain in the spinning animation. This
+    is now fixed.
+  * Fixed a small visual glitch appearing during the fade-out of
+    the intro movie.
+  * The credits screen shown during the attract mode loop didn't
+    react to any key press aside from ESC, this is now fixed.
+  * Under certain circumstances, the main menu would respond to a
+    keypress that happened during the intro or another menu. This
+    is now fixed.
+  * Fixed visual glitches (bright lines between tiles) that could
+    occur at certain resolutions/window sizes when using high-res
+    replacement graphics.
+  * Fixed an issue that made high-resolution backdrop replacements
+    appear as low resolution under certain circumstances.
+  * Fixed right side of the HUD being partially cut off at certain
+    window sizes/resolutions.
+- Drop not longer needed patches:
+  * fix-find-boost-program_options.patch
+
+-------------------------------------------------------------------
 Sun Nov 21 17:58:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.2

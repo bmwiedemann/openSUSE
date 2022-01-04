@@ -1,8 +1,8 @@
 #
 # spec file for package RigelEngine
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,14 @@
 
 
 Name:           RigelEngine
-Version:        0.8.2beta
+Version:        0.8.3beta
 Release:        0
 Summary:        A modern reimplementation of the game Duke Nukem II
 License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/lethal-guitar/RigelEngine
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE: fix-find-boost-program_options
-Patch1:         fix-find-boost-program_options.patch
-BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.12
-BuildRequires:  libboost_program_options-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(sdl2)
@@ -49,7 +45,6 @@ available shareware version.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 %if 0%{?sle_version} >= 150100 && 0%{?is_opensuse}
