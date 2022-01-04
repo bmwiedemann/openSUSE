@@ -18,10 +18,10 @@
 
 %define cpan_name HTML-Selector-XPath
 Name:           perl-HTML-Selector-XPath
-Version:        0.25
+Version:        0.26
 Release:        0
-License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        CSS Selector to XPath compiler
+License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
