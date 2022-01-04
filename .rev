@@ -617,4 +617,14 @@ Please forward to Factory and 13.1
     <comment></comment>
     <requestid>908988</requestid>
   </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>84885dc3f57b60ca81292e4d174c7c10</srcmd5>
+    <version>2.12.1</version>
+    <time>1641321495</time>
+    <user>dimstar_suse</user>
+    <comment>- amavisd-new should require packets perl-IO-stringy and perl-Net-LibIDN
+  (bsc#1193291) 
+</comment>
+    <requestid>943788</requestid>
+  </revision>
 </revisionlist>

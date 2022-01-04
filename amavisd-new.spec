@@ -53,11 +53,13 @@ Requires:       perl(Compress::Raw::Zlib) >= 2.017
 Requires:       perl(Compress::Zlib) >= 1.35
 Requires:       perl(Convert::BinHex)
 Requires:       perl(Digest::MD5) >= 2.22
+Requires:       perl(IO::Stringy)
 Requires:       perl(MIME::Base64)
 Requires:       perl(MIME::Parser)
 Requires:       perl(Mail::DKIM) >= 0.31
 Requires:       perl(Mail::Internet) >= 1.58
 Requires:       perl(Net::Domain)
+Requires:       perl(Net::LibIDN)
 Requires:       perl(Net::Server) >= 2.0
 Requires:       perl(Time::HiRes) >= 1.49
 Requires:       perl(Unix::Syslog)
