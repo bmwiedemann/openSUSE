@@ -453,6 +453,7 @@ Prefer: -budgie-desktop
 Prefer: python36-tornado -python36-tornado5 
 Prefer: python38-tornado -python38-tornado5
 Prefer: python39-tornado -python39-tornado5
+Prefer: python310-tornado -python310-tornado5
 Prefer: -python36-ipykernel5 -python38-ipykernel5 python39-ipykernel5
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
@@ -475,7 +476,7 @@ Prefer: -python39-sip4 -python39-sip4-devel
 Prefer: -pipewire-libjack-0_3-devel libjack0
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python39-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
+Prefer: python39-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit python310-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
