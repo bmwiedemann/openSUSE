@@ -1,7 +1,7 @@
 #
 # spec file for package portmidi
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%if 0%{?suse_version} >= 1590
+%bcond_without java
+%else
+%bcond_with    java
+%endif
+
+%define soname  2
 Name:           portmidi
-%define soname  0
-Version:        217
+Version:        2.0.2
 Release:        0
 Summary:        Real-time MIDI input/output audio tools
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Midi
-Url:            http://sourceforge.net/apps/trac/portmedia/wiki/portmidi
-# http://prdownloads.sourceforge.net/portmedia/portmidi-src-217.zip
-Source0:        portmidi-src-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch1:         portmidi-fix_build.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         portmidi-fix_pmdefaults_startup_script.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         portmidi-fix_java_cmake.patch
-Source99:       portmidi-rpmlintrc
+URL:            https://github.com/PortMidi/portmidi
+Source:         https://github.com/PortMidi/portmidi/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  alsa-devel >= 0.9
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.21
 BuildRequires:  gcc-c++
-BuildRequires:  glibc-devel
-BuildRequires:  java-devel
-BuildRequires:  make
+%if %{with java}
+BuildRequires:  java-devel >= 11
+%else
+Obsoletes:      portmidi-java <= %{version}-%{release}
+%endif
 Requires:       libportmidi%{soname} = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 PortMidi -- real-time MIDI input/output.
@@ -70,6 +69,7 @@ other libraries that use PortMidi.
 %package java
 Summary:        Java native bindings for %{name}
 Group:          Development/Libraries/Java
+Requires:       java
 Requires:       libportmidi%{soname} = %{version}
 
 %description java
@@ -77,95 +77,75 @@ PortMidi -- real-time MIDI input/output.
 This package contains bindings to use %{name} from Java.
 
 %prep
-%setup -q -n "%{name}"
-%patch1
-%patch2
-%if 0%{?suse_version} >= 1200
-%patch3
-%endif
-
-perl -ne 'print $1,"\n" if /^\+{3}\s+(.+)\s+\d{4}-\d{2}-\d{2}\s+/' <"%{PATCH2}" | while read f; do
-    sed -i -e 's|@@JAVADIR@@|%{_javadir}|g' "$f"
-done
-
-find . -type f -name '*.txt' -exec chmod 0644 {} \;
-find . -type f -name 'README*.txt' -exec sed -i -e 's/\r$//' {} \;
+%autosetup -p1
+find -type f -iname \*.txt -print0 | xargs -r0 chmod a-x
+find -type f -iname \*.txt -print0 | xargs -r0 perl -p -i -e 's|\r\n|\n|g'
 
 %build
-LIBSUFFIX=$(echo "%{_lib}" | sed 's|^lib||')
-mkdir -p inst/{bin,lib}
-OD="$PWD/inst"
-
-# don't use a "build" subdir, doesn't work
-OPTFLAGS="%{optflags}" \
-cmake \
-    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-    -DCMAKE_INSTALL_PREFIX:PATH="%{_prefix}" \
-    -DBIN_INSTALL_DIR="%{_bindir}" \
-    -DLIB_INSTALL_DIR="%{_libdir}" \
-    -DINC_INSTALL_DIR="%{_includedir}" \
-    -DLIB_SOVERSION="%{soname}" \
-    -DLIB_VERSION="%{soname}.%{version}" \
-    -DCMAKE_SKIP_RPATH=TRUE \
-    -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
-    -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags}" \
-    -DCMAKE_BUILD_TYPE=release \
-    -DCMAKE_STRIP="/usr/bin/touch" \
-    -DLIB_SUFFIX="$LIBSUFFIX" \
-    -DCMAKE_RUNTIME_OUTPUT_DIRECTORY="$OD/bin" \
-    -DCMAKE_LIBRARY_OUTPUT_DIRECTORY="$OD/lib" \
-    -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY="$OD/lib" \
-    .
-
-make %{?_smp_flags}
+%cmake \
+  %if %{with java}
+  -DBUILD_JAVA_NATIVE_INTERFACE:BOOL=ON \
+  -DBUILD_PMDEFAULTS:BOOL=ON \
+  %endif
+  -DBUILD_PORTMIDI_TESTS:BOOL=ON
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} install
-
-pushd inst/bin
-for f in *; do
-    [ -x "$f" ] || continue
-    install -m0755 "$f" "%{buildroot}%{_bindir}/%{name}-$f"
+%cmake_install
+pushd build
+for binary in $(find pm_test/ -maxdepth 1 -type f -executable) ; do
+  bin="$(basename ${binary})"
+  install -D -m 0755 "${binary}" %{buildroot}%{_bindir}/portmidi-${bin}
 done
-popd #inst/bin
-# remove static lib
-rm -rf %{buildroot}%{_libdir}/libportmidi_s.a
-# Added missing libporttime.so symlink
-cd %{buildroot}%{_libdir}
-ln -s libportmidi.so libporttime.so
+popd
+
+install -D -m 0644 pm_java/pmdefaults/pmdefaults.jar %{buildroot}%{_javadir}/pmdefaults.jar
+cat > %{buildroot}%{_bindir}/pmdefaults <<EOF
+#!/bin/bash
+exec java -jar "@@JAVADIR@@/pmdefaults.jar" "$@" >/dev/null
+EOF
+chmod a+rx %{buildroot}%{_bindir}/pmdefaults
 
 %post   -n libportmidi%{soname} -p /sbin/ldconfig
-
 %postun -n libportmidi%{soname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%{_bindir}/pmdefaults
+%{_bindir}/portmidi-fast
+%{_bindir}/portmidi-fastrcv
 %{_bindir}/portmidi-latency
-%{_bindir}/portmidi-mm
 %{_bindir}/portmidi-midiclock
 %{_bindir}/portmidi-midithread
 %{_bindir}/portmidi-midithru
-%{_bindir}/portmidi-sysex
-%{_bindir}/portmidi-test
+%{_bindir}/portmidi-mm
+%{_bindir}/portmidi-multivirtual
 %{_bindir}/portmidi-qtest
+%{_bindir}/portmidi-recvvirtual
+%{_bindir}/portmidi-sendvirtual
+%{_bindir}/portmidi-sysex
+%{_bindir}/portmidi-testio
+%{_bindir}/portmidi-virttest
 
 %files -n libportmidi%{soname}
-%defattr(-,root,root)
-%doc license.txt README.txt pm_linux/README_LINUX.txt
-%{_libdir}/libportmidi.so.%{soname}
-%{_libdir}/libportmidi.so.%{soname}.%{version}
+%license license.txt
+%doc README.txt pm_linux/README_LINUX.txt
+%{_libdir}/libportmidi.so.*
 
 %files devel
-%defattr(-,root,root)
-%{_includedir}/portmidi.h
-%{_includedir}/porttime.h
 %{_libdir}/libportmidi.so
-%{_libdir}/libporttime.so
+%{_includedir}/portmidi.h
+%{_includedir}/pmutil.h
+%{_includedir}/porttime.h
+%{_libdir}/cmake/PortMidi/
+%{_libdir}/pkgconfig/portmidi.pc
 
+%post   java -p /sbin/ldconfig
+%postun java -p /sbin/ldconfig
+
+%if %{with java}
 %files java
-%defattr(-,root,root)
-%{_libdir}/libpmjni.so
+%{_bindir}/pmdefaults
+%{_libdir}/libpmjni.so*
 %{_javadir}/pmdefaults.jar
+%endif
 
 %changelog

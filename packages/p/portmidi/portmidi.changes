@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jan  3 20:44:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.0.2
+  - build system fixes
+- drop 7ed4da65ff67fa2b22eccd88beb743bd2dff6bfb.patch
+- require cmake >= 3.21
+
+-------------------------------------------------------------------
+Fri Dec 31 02:26:55 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- restore the java package with the pmdefaults app
+  7ed4da65ff67fa2b22eccd88beb743bd2dff6bfb.patch
+- restore test tools again
+
+-------------------------------------------------------------------
+Thu Dec 30 05:57:14 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.0.1
+  PortMidi has a new extended API with Pm_CreateVirtualInput(),
+  Pm_CreateVirtualOutput(), and Pm_DeleteVirtualDevice() so we are
+  calling this major version 2. Other changes include:
+
+ - More careful rate limiting on macOS to allow faster IO to real
+   devices, while still limiting flow through IAC bus and virtual
+   ports that might cause macOS to drop messages.
+ - Many updates to CMake files, including install and package
+   functions.
+ - Elimination of scorealign, portsmf, and PortMidi support for
+   several other languages. (We'll try to maintain links to active
+   projects or host language support in separate repos within this
+   PortMidi project.)
+ - Only basic support for Java and PmDefaults program. Current plan
+   is to eliminate PmDefaults, Pm_GetDefaultInputDeviceID(), and
+   Pm_GetDefaultOutputDeviceID() at the end of 2022, moving
+   jportmidi and pmjni library to another repo unless users
+   complain. Unfortunately, operating systems never introduced
+   preferred MIDI devices analogous to preferred Audio devices.
+ - A few other bug fixes such as Unicode handling are now included.
+- drop patches from upstream:
+  portmidi-fix_build.patch
+  portmidi-fix_java_cmake.patch
+  portmidi-fix_pmdefaults_startup_script.patch
+- drop rpmlintrc as we no longer need it
+- modernize spec file
+- drop java subpackage for now
+
+-------------------------------------------------------------------
 Mon Aug 25 10:30:06 UTC 2014 - cornelis@solcon.nl
 
 - Correct license to MIT
