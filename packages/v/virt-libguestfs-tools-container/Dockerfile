@@ -30,11 +30,14 @@ RUN zypper -n install \
               jfsutils \
               kernel-kvmsmall \
               ldmtool \
+              libguestfs \
+              libguestfs-devel \
               mdadm \
               parted \
               qemu-tools \
               qemu-x86 \
               reiserfs \
+              supermin \
               xfsprogs \
               xorriso \
               zerofree && \
@@ -42,5 +45,13 @@ RUN zypper -n install \
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
+
+# Make a "fixed appliance" for libguestfs.
+# Note: the resulting 'appliance/root' is a sparse file. Docker does not
+# preserve sparseness hence a compressed tarball is created.
+RUN LIBGUESTFS_BACKEND=direct \
+    LIBGUESTFS_DEBUG=1 \
+    libguestfs-make-fixed-appliance --xz && \
+    rm -rf /var/tmp/.guestfs-*
 
 ENTRYPOINT [ "/entrypoint.sh" ]

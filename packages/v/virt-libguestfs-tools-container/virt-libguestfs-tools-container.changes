@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:49:43 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Make a "fixed appliance" for libguestfs
+- Explicitly install libguestfs{,-devel} and supermin
+
+-------------------------------------------------------------------
 Tue Aug  3 07:33:03 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Initial container for libguestfs-tools

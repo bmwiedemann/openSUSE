@@ -7,4 +7,12 @@
     <comment>Submit KubeVirt container for libguestfs tools to Factory</comment>
     <requestid>911084</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>45effc2b71a994c5b65088be6f1d2e1b</srcmd5>
+    <version>unknown</version>
+    <time>1641326589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943762</requestid>
+  </revision>
 </revisionlist>
