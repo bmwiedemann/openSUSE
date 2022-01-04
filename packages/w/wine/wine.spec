@@ -1,7 +1,7 @@
 #
 # spec file for package wine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 7.0-rc3
-Version:        7.0~rc3
+%define realver 7.0-rc4
+Version:        7.0~rc4
 Release:        0
 
 %if "%{flavor}" != ""
@@ -161,7 +161,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 7.0-rc3
+%define staging_version 7.0-rc4
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -340,6 +340,11 @@ mv %{buildroot}/%{_mandir}/de.UTF-8 %{buildroot}/%{_mandir}/de
 mv %{buildroot}/%{_mandir}/fr.UTF-8 %{buildroot}/%{_mandir}/fr
 %ifnarch x86_64 aarch64
 mv %{buildroot}/%{_mandir}/pl.UTF-8 %{buildroot}/%{_mandir}/pl
+%endif
+
+%ifarch %ix86 x86_64
+# Use plain strip, which unlike the MinGW variant preserves the wine builtin marker
+find %{buildroot}/usr/lib*/wine/*-windows/ -type f -exec strip --strip-debug {} +
 %endif
 
 tar -xjf %{SOURCE5}

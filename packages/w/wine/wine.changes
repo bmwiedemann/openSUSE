@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  3 22:28:51 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use plain strip instead of MinGW strip to preserve the important
+  builtin dll marker
+
+-------------------------------------------------------------------
+Mon Jan  3 09:20:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.0-rc4 release candidate
+  - Bug fixes only, we are in code freeze.
+- update staging to 7.0-rc4 release
+
+-------------------------------------------------------------------
+Wed Dec 29 15:00:09 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- strip the debuginfo out of the PE binaries for now, saves 2/3 space.
+  bsc#1192292
+
+-------------------------------------------------------------------
 Mon Dec 27 08:14:52 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.0-rc3 release candidate
