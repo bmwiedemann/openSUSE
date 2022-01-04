@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sun Jan  2 13:25:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.1:
+  + Include pre-built stylesheet and docs into release tarballs.
+
+-------------------------------------------------------------------
+Fri Dec 31 12:23:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.0:
+  + Rework GtkInspector page to not require a module, remove
+    -Dinspector
+  + Accessibility fixes in action row, flap, leaflet, preferences
+    group, preferences page, status page, view switcher, window
+  + Animation:
+    - Properly mark AdwAnimation as abstract
+    - Make ADW_DURATION_INFINITE introspectable
+  + Carousel: Fix reorder(), prepend() and insert() behavior
+  + Clamp Layout: Fix measure() behavior
+  + Demo:
+    - Split every page into separate files
+    - Remove .app-notification demo
+    - Fix the animation skip button sensitivity
+    - Fix capitalization
+    - Various cleanups
+  + Add a hello world example
+  + Documentation:
+    - Add a screenshot generator, update all screenshots
+    - Add widget screenshots
+    - Update build instructions
+    - Update visual index
+    - New pages:
+      . Initialization
+      . Adaptive Layouts
+      . Boxed Lists
+      . Styles and Appearance
+      . Named Colors
+      . Style Classes
+  + Various small updates
+  + Leaflet: Fix property notification ordering when starting a
+    swipe
+  + Stylesheet:
+    - Improve emoji chooser styles
+    - Add hover style to .activatable GtkGridView children
+    - Fix menu checks
+    - Fix @warning_fg_color to be legible against @warning_bg_color
+  + Tab Bar: Fix various layout warnings
+  + Tab View:
+    - Implement adding pages from ui files
+    - Propagate Alt-[0-9] if selected tab doesn't change
+  + Toast Overlay: Implement adding toasts from ui files
+  + Updated translations.
+- Stop passing inspector=false to meson, no longer needed, nor
+  recognized, dropped upstream.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Add explicit pkgconfig BuildRequires.
+
+-------------------------------------------------------------------
+Sat Dec 18 21:26:18 UTC 2021 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Adwaita docs are now generated (with new pkgconfig(gi-docgen)
+  BuildRequires) and packaged in a seperate subpackage called
+  "libadwaita-docs".
+
+-------------------------------------------------------------------
+Sat Dec 18 21:05:11 UTC 2021 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 1.0.0~beta.1:
+  + Build
+    - Depend on GTK 4.5.0.
+    - Depend on GLib 2.66.
+    - Fix building as a subproject.
+    - Remove unused dependencies.
+  + Introduce AdwToastOverlay for showing in-app notifications
+  + Introduce AdwAnimation - a basic animation API:
+    - AdwTimedAnimation provides simple time-based animations.
+    - AdwSpringAnimation provides flexible animations based on
+      spring physics.
+    - Replace adw_ease_out_cubic() with adw_easing_ease().
+    - Make adw_lerp() public.
+  + adw_init() now automatically calls gtk_init().
+  + Use G_DEFINE_FINAL_TYPE if available.
+  + Action Row: Increase spacing between title and subtitle.
+  + Carousel:
+    - Use spring animations for scrolling, replace
+      animation-duration with scroll-params.
+    - Remove adw_carousel_scroll_to_full(), add 'animate' parameter
+      to adw_carousel_scroll_to() instead.
+  + Flap: Use spring animations for reveal, replace reveal-duration
+    with reveal-params.
+  + Leaflet:
+    - Rename can-swipe-back/forward to can-navigate-back/forward,
+      make them handle mouse back/forward buttons, back/forward
+      keys, as well as Alt+arrow shortcuts.
+    - Make child transitions use spring animations, replace
+      child-transition-duration with child-transition-params.
+  + Preferences Page: Remove adaptive margins - they never worked
+    properly.
+  + Preferences Window:
+    - Rename can-swipe-back to can-navigate-back, following the
+      equivalent AdwLeaflet change.
+    - Add API to show toasts.
+  + Swipe Tracker:
+    - Move 'begin-swipe' signal to when the swipe actually starts
+      instead of when it's detected; add 'prepare' to replace it.
+    - Replace duration with velocity in the 'end-swipe' signal.
+  + Status Page: Update title label style.
+  + Style Manager:
+    - Set GtkSettings:gtk-application-prefer-dark-theme=true for
+      dark.
+    - Properly reset enable-animations.
+  + Stylesheet:
+    - New style classes:
+      * entry.success to match entry.warning and entry.error
+      * Generic .success to match .warning and .error.
+      * checkbutton.selection-mode
+    - Tweak accent color in dark variant, use
+      accent_color/accent_bg_color more consistently.
+    - Consistently support regular/bg/fg variants for success,
+      warning and error colors.
+    - Make menu items taller.
+    - Make checked buttons more visible.
+    - Update entry style.
+    - Update GtkTreeView and GtkColumnView header style.
+    - Tweak check button style.
+    - Update window and popover shadows.
+    - Make boxed lists use shadows as well.
+    - Use white accent color for .osd.
+    - Use tabular figures for GtkCalendar.
+    - Support .navigation-sidebar in combination with .background.
+    - Remove the GtkButton .outline class.
+    - Remove .content-view check buttons.
+    - Fix check hover styles in menus.
+  + Tab Bar: Fix needs-attention indicators.
+  + Tab View: Remove shortcut-widget, use managed shortcuts
+    instead.
+  + View Stack:
+    - Layout fixes
+    - Remove crossfade transition.
+  + View Switcher:
+    - Update styles.
+    - Fix measure() criticals.
+    - Fix a crash when hiding the visible child.
+    - Fix outlines in high contrast mode.
+  + View Switcher Title: Always hide switcher in mobile.
+  + Various fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov  2 21:57:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.0~alpha.4:

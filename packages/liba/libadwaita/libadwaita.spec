@@ -1,7 +1,7 @@
 #
 # spec file for package libadwaita
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           libadwaita
-Version:        1.0.0~alpha.4
+Version:        1.0.1
 Release:        0
 Summary:        Adwaita library for mobile device UIs using GTK/GNOME
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libadwaita
 Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  fdupes
 BuildRequires:  meson >= 0.59.0
+BuildRequires:  pkgconfig
 BuildRequires:  sassc
 BuildRequires:  vala
 BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(gi-docgen)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.4.0
+BuildRequires:  pkgconfig(gtk4) >= 4.5.0
 %lang_package
 
 %description
@@ -43,6 +46,13 @@ Provides:       %{name} = %{version}
 
 %description -n libadwaita-1-0
 The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
+
+%package docs
+Summary:        Developer documentation for libadwaita
+BuildArch:      noarch
+
+%description docs
+This package contains developer documentation for the Adwaita library.
 
 %package devel
 Summary:        Development files for the Adwaita library
@@ -68,13 +78,14 @@ This package provides the GObject Introspection bindings for Adwaita.
 %meson \
 	-Dexamples=false \
 	-Dintrospection=enabled \
-	-Dinspector=false \
+	-Dgtk_doc=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name}
+%fdupes %{buildroot}%{_datadir}
 
 %{ldconfig_scriptlets -n libadwaita-1-0}
 
@@ -87,6 +98,9 @@ This package provides the GObject Introspection bindings for Adwaita.
 
 %files -n typelib-1_0-Adw-1
 %{_libdir}/girepository-1.0/Adw-1.typelib
+
+%files docs
+%{_datadir}/doc/%{name}-1/
 
 %files devel
 %{_includedir}/libadwaita-1/
