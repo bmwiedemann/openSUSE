@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 26 14:23:01 UTC 2021 - guillaume.gardet@opensuse.org
+
+- Update to version 0~git20211125:
+  * Shake motions to middle mouse (#243)
+  * Fix real Wiimote (#242)
+  * Remove analog properties for Classic Controller Pro + swap L/R and ZL/ZR (#240)
+  * Re-introduce "Wiimote IR" core options (#229)
+  * backport https://github.com/dolphin-emu/dolphin/commit/7d9276c3401d99d601bcd6fb1ca1e2c9cd4a3e97 (#232)
+
+-------------------------------------------------------------------
+Wed Sep 22 13:37:38 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210916:
+  * backport https://github.com/dolphin-emu/dolphin/commit/4cdcbb6ab28596653635ab91b1ccd0332629925a (#230)
+  * Fix sideways tilt (#228)
+
+-------------------------------------------------------------------
 Fri Sep 10 15:37:37 UTC 2021 - i@guoyunhe.me
 
 - Update to version 0~git20210909:

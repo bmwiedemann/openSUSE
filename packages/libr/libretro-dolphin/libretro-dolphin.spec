@@ -17,7 +17,7 @@
 
 
 Name:           libretro-dolphin
-Version:        0~git20210909
+Version:        0~git20211125
 Release:        0
 Summary:        Dolphin libretro core for Nintendo GameCube and Wii emulation
 License:        GPL-3.0-only
@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libminiupnpc-devel
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hidapi-hidraw)
@@ -40,7 +41,6 @@ BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb)
-BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(openthreads)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sfml-network)
