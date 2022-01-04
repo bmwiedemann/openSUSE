@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 29 17:21:18 UTC 2021 - Marcus Hann <marcus@hhra.uk>
+
+- Update to 1.1.2
+  If you are using Terraform CLI v1.1.0 or v1.1.1, please upgrade to this new version as soon as possible.
+
+  Terraform CLI v1.1.0 and v1.1.1 both have a bug where a failure to construct the apply-time graph can cause Terraform to incorrectly report success and save an empty state, effectively "forgetting" all existing infrastructure. Although configurations that already worked on previous releases should not encounter this problem, it's possible that incorrect future configuration changes would trigger this behavior during the apply step. 
+
+  BUG FIXES:
+  * config: Fix panic when using -target in combination with moved blocks within modules (#30189)
+  * core: Fix condition which could lead to an empty state being written when there is a failure building the apply graph (#30199)
+- From version 1.1.1
+  BUG FIXES:
+  * core: Fix crash with orphaned module instance due to changed count or for_each value (#30151)
+  * core: Fix regression where some expressions failed during validation when referencing resources expanded with count or for_each (#30171)
+
+-------------------------------------------------------------------
 Thu Dec  9 11:54:23 UTC 2021 - Marcus Hann <marcus@hhra.uk>
 
 - Update to 1.1.0
