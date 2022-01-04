@@ -17,17 +17,15 @@
 
 
 Name:           autotrash
-Version:        0.2.0
+Version:        0.4.4
 Release:        0
 Summary:        Tool to automatically purge old trashed files
 License:        GPL-3.0-or-later
 URL:            http://www.logfish.net/pr/autotrash/
-Source:         https://github.com/bneijt/autotrash/archive/v%{version}.tar.gz
-# autotrash has been generated using pandoc -s -t man < doc/autotrash.md > autotrash.1
-Source1:        autotrash.1
+Source:         https://files.pythonhosted.org/packages/source/a/autotrash/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       python3
-BuildRequires:  python3
+BuildRequires:  python3-setuptools
 
 %description
 Autotrash is a small python script to automatically remove (permanently delete)
@@ -36,24 +34,16 @@ information.
 
 %prep
 %setup -q
-# if the pre-built autotrash.1 is outdated, the build will fail
-cp %{SOURCE1} doc
 
 %build
 python3 setup.py build
 
-cd doc
-make
-
 %install
 python3 setup.py install --skip-build --root %{buildroot}
 
-mkdir -p %{buildroot}%{_mandir}/man1
-cp -a doc/%{name}.1* %{buildroot}%{_mandir}/man1
-
 %files
-%doc COPYING README.md TODO
-%{_mandir}/man1/autotrash.1*
+%license LICENSE.txt
+%doc README.md
 %{_bindir}/autotrash
 %{python3_sitelib}/*
 

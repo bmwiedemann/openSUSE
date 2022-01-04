@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 29 10:25:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.4:
+  + Tiny bit of love: change default template for systemd unit
+    files to also contain a link to the project on github.
+- Changes from version 0.4.3:
+  + This release only fixes the license rendering on pypi.
+- Changes from version 0.4.2:
+  + Drop arrow dependency.
+- Changes from version 0.4.1:
+  + Release 0.4.1 but now with a package description in PyPi.
+- Changes from version 0.4.0;
+  + New --install feature to add systemctl timer.
+- Changes from version 0.3.0:
+  + A date parsing issue (#15) inspired me to revamp the
+    distribution and packaging.
+  + The package is no longer a single python script, but a full
+    python package you will be able to install from PyPi shortly.
+- Changes from version 0.2.1:
+  + Prevent UnboundLocalError when --max-free is set and enough
+    space free.
+- Drop injected man page: upstream no longer maintains it
+  apparently.
+- Add python3-setuptools BuildRequires: new build dependency.
+
+-------------------------------------------------------------------
 Tue May 11 09:38:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire pandoc (as it does not exist on all
