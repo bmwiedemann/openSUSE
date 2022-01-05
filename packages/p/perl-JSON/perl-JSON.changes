@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 18 03:07:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.04
+   see /usr/share/doc/packages/perl-JSON/Changes
+
+  4.04 2021-12-17
+      - updated backportPP with JSON::PP 4.07
+
+-------------------------------------------------------------------
 Sun Jan 24 18:07:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.03:

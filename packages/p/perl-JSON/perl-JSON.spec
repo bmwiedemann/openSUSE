@@ -16,13 +16,12 @@
 #
 
 
-Name:           perl-JSON
-Version:        4.03
-Release:        0
 %define cpan_name JSON
+Name:           perl-JSON
+Version:        4.04
+Release:        0
 Summary:        JSON (JavaScript Object Notation) encoder/decoder
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -50,11 +49,11 @@ migration from backend to backend should be reasonably easy. For details,
 see each backend module you use.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -65,7 +64,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
