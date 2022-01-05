@@ -26,10 +26,12 @@ License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          System/Base
 URL:            https://github.com/heftig/rtkit
 Source:         https://github.com/heftig/rtkit/releases/download/v%{version}/rtkit-%{version}.tar.xz
+Source1:        rtkit.sysusers
 Patch0:	harden_rtkit-daemon.service.patch
 BuildRequires:  automake
 BuildRequires:  libcap-devel
 BuildRequires:  pkg-config
+BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  vim
 BuildRequires:  xz
@@ -39,6 +41,7 @@ BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 Requires:       polkit
 Requires(pre):  dbus-1
+%sysusers_requires
 
 %description
 RealtimeKit is a D-Bus system service that changes the scheduling policy of
@@ -51,6 +54,7 @@ scheduling to be used by normal user processes.
 %patch0 -p1
 
 %build
+%sysusers_generate_pre %{SOURCE1} rtkit rtkit.conf
 autoreconf -fiv
 export CFLAGS="%{optflags} -fPIE -Wno-format-nonliteral -Wno-format-security"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
@@ -66,15 +70,12 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcrtkit-daemon
 install -D -m 0644 org.freedesktop.RealtimeKit1.xml %{buildroot}/%{_datadir}/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
+install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/rtkit.conf
 
 %preun
 %service_del_preun rtkit-daemon.service
 
-%pre
-groupadd -r rtkit >/dev/null 2>&1 || :
-%{_bindir}/id rtkit >/dev/null 2>&1 || \
-        useradd -r -g rtkit -c 'RealtimeKit' -s /bin/false -d /var/lib/empty rtkit
-
+%pre -f rtkit.pre
 %service_add_pre rtkit-daemon.service
 
 %post
@@ -101,5 +102,6 @@ dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesk
 %{_mandir}/man8/rtkitctl.8%{ext_man}
 %{_sbindir}/rcrtkit-daemon
 %{_unitdir}/rtkit-daemon.service
+%{_sysusersdir}/rtkit.conf
 
 %changelog
