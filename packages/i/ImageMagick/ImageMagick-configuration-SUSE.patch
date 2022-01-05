@@ -1,6 +1,6 @@
 --- policy.xml.orig	2020-12-28 15:22:47.380782086 +0100
 +++ policy.xml	2020-12-28 15:24:10.637332778 +0100
-@@ -79,4 +79,23 @@
+@@ -79,4 +79,24 @@
    <!-- <policy domain="system" name="shred" value="2"/> -->
    <!-- <policy domain="system" name="precision" value="6"/> -->
    <!-- <policy domain="system" name="font" value="/path/to/unicode-font.ttf"/> -->
@@ -20,6 +20,7 @@
 +  <policy domain="coder" rights="write" pattern="PS3" />
 +  <policy domain="coder" rights="write" pattern="PDF" />
 +  <policy domain="coder" rights="write" pattern="XPS" />
++  <policy domain="coder" rights="write" pattern="EPI" />
 +  <policy domain="coder" rights="write" pattern="EPS" />
 +  <policy domain="coder" rights="write" pattern="PCL" />
 +  <policy domain="path" rights="none" pattern="@*"/>

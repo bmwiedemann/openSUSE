@@ -3226,4 +3226,19 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * set threads to 1 when using ASAN to avoid false positive memory leaks. (forwarded request 939554 from dirkmueller)</comment>
     <requestid>940165</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>cbe92ce3523d3c0b6504e0008d17a59c</srcmd5>
+    <version>7.1.0.19</version>
+    <time>1641386350</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0.19:
+  * support -integral option.
+  * possible DoS for certain SVG constructs (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4626).
+
+- update to 7.1.0.18:
+  * support face index for font collections, e.g. msgothic.ttc[1].
+  * Improved adjustment of page offset when resizing an image. (forwarded request 943180 from dirkmueller)</comment>
+    <requestid>943529</requestid>
+  </revision>
 </revisionlist>
