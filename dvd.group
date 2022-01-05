@@ -3334,6 +3334,7 @@
     <package name="perl-IO-Socket-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-IO-String" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IO-Tty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-IO-stringy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IP-Country" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IPC-Run3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Image-ExifTool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3361,6 +3362,7 @@
     <package name="perl-Net-DNS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-HTTP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-Ident" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Net-LibIDN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-Patricia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-SMTP-SSL" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="perl-Net-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
