@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Jan 3 11:55:47 UTC 2022 - jreidinger@suse.cz
+
+- merge gh#openSUSE/installation-images#561
+- Remove more binaries appearing with Ruby 3.1 (bsc#1193192)
+- 17.33
+
+--------------------------------------------------------------------
 Fri Dec 31 17:47:28 UTC 2021 - opensuse-packaging@opensuse.org
 
 - merge gh#openSUSE/installation-images#560
