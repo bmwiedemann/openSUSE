@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:21:37 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Modified gdb_uefi.py.in for python3 (bsc#1192126)
+    - change 'long' to 'int' 
+    - using
+        print ('
+      instead of
+        print "
+
+-------------------------------------------------------------------
 Thu Dec 23 03:31:18 UTC 2021 - jlee@suse.com
 
 - Removed useless patch files because they are merged to edk2-stable202111
@@ -32,7 +42,7 @@ Tue Dec 21 03:29:06 UTC 2021 - Joey Lee <jlee@suse.com>
 	Add SMM NV variable support in universal UEFI payload
 	Add TDVF to OvmfPkg
 	Make package and platform builds reproducible across source format changes
-    - Patches (git log --oneline --reverse edk2-stable202105~..edk2-stable202108):
+    - Patches (git log --oneline --reverse edk2-stable202108~..edk2-stable202111):
 	7b4a99be8a CryptoPkg: BaseCryptLib fix incorrect param order
 	82f7e315d6 MdeModulePkg/PeiCore: Remove MigrateSecModulesInFv()
 	8b15024dc7 Maintainers: Add kraxel as Reviewer to ArmVirtPkg and OvmfPkg
@@ -286,6 +296,11 @@ Tue Dec 21 03:29:06 UTC 2021 - Joey Lee <jlee@suse.com>
                 - 9f3eda177a    edk2-stable202111-rc1~216
         - ovmf-OvmfPkg-OvmfXen-Fix-build-with-QemuKernelLoaderFsDxe.patch  
                 - 4473834e7d    edk2-stable202111-rc1~203
+    - The edk2-stable202111 includes the following patches for bsc#1192126
+      to fix unlimited reset. (bsc#1192126)
+        80e67af9af OvmfPkg: introduce a common work area
+        ab77b6031b OvmfPkg/ResetVector: update SEV support to use new work area format
+        b9af5037b2 OvmfPkg/ResetVector: move the GHCB page setup in AmdSev.asm
 
 -------------------------------------------------------------------
 Wed Dec  8 11:26:32 UTC 2021 - jlee@suse.com
