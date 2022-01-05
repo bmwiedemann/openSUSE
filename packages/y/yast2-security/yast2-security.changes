@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  4 12:06:48 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Related to jsc#SLE-22069:
+  - Autoyast LSM section: added "selectable" option to the section
+  - Do not propose a default LSM configuration when it is declared
+    as not configurable in the control file or AutoYaST
+- 4.4.4
+
+-------------------------------------------------------------------
 Wed Dec 29 11:47:15 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Added back the selinux boot parameter when selinux is selected
