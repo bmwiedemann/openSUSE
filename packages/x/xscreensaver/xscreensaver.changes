@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  1 11:04:15 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Reenable PAM (boo#1194058).
+
+-------------------------------------------------------------------
 Tue Dec 21 02:58:51 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Do not own /usr/share/fonts. It belongs to filesystem.

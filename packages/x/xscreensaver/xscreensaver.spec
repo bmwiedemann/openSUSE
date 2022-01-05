@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -194,7 +194,8 @@ export ac_cv_gcc_accepts_std=no
   --with-jpeg                                        \
   --with-xshm-ext                                    \
   --with-xdbe-ext                                    \
-  --without-pam                                      \
+  --with-pam                                         \
+  --enable-pam-account                               \
   --without-shadow                                   \
   --with-login-manager=%{_bindir}/gdmflexiserver     \
   --with-image-directory=%{_datadir}/wallpapers      \
