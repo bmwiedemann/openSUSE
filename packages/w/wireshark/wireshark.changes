@@ -2,12 +2,16 @@
 Thu Dec 30 09:41:01 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.1: 
-  * CVE-2021-4185: RTMPT dissector infinite loop.
-  * CVE-2021-4184: BitTorrent DHT dissector infinite loop.
-  * CVE-2021-4183: pcapng file parser crash.
-  * CVE-2021-4182: RFC 7468 file parser infinite loop.
-  * CVE-2021-4181: Sysdig Event dissector crash.
-  * Kafka dissector infinite loop. Issue 17811.
+  * CVE-2021-4185: RTMPT dissector infinite loop (boo#1194166)
+  * CVE-2021-4184: BitTorrent DHT dissector infinite loop (boo#1194167)
+  * CVE-2021-4183: pcapng file parser crash (boo#1194168)
+  * CVE-2021-4182: RFC 7468 file parser infinite loop (boo#1194169)
+  * CVE-2021-4181: Sysdig Event dissector crash (boo#1194170)
+  * CVE-2021-4190: Kafka dissector infinite loop (boo#1194171)
+  * Add '-o console.log.level:' transitional option for backward-
+    compatibilty replacing the 'console.log.level' preference
+    removed in 3.6.0. Only avoids cli failures and will be removed
+    in the future.
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-3.6.1.html
 
