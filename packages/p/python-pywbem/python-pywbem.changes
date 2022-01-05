@@ -1,4 +1,284 @@
 -------------------------------------------------------------------
+Sun Dec 26 15:34:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.0
+  **Incompatible changes:**
+  * The `WBEMListener.start()` method may raise new exceptions
+    `pywbem.ListenerPortError`, `pywbem.ListenerPromptError` and
+    `pywbem.ListenerCertificateError`. The `OSError` and `IOError`
+    exceptions raised in earlier versions may still be raised for
+    other, less common cases. For details, see the corresponding
+    item in the Enhancements section, below.
+  * Changed 'SubscriptionManager.add_filter()' method to use the
+    'SourceNamespaces' property (allows multiple namespaces) of the
+    'CIM_IndicationFilter' class instead of the deprecated
+    'SourceNamespace' property (allows only single namespace).
+    This changed the name of the positional 'source_namespace'
+    parameter to 'source_namespaces`. The new parameter allows both
+    string and list of strings as values.
+
+    This change brings the subscription manager in line with the
+    incorporation of the 'SourceNamespaces' property made to this
+    CIM class definition by DMTF CIM schema release 2.22.0.
+
+    An optional 'source_namespace' keyword parameter has been added
+    to the 'add_filter()'method to account for any case where a
+    WBEM Server cannot handle the SourceNamespaces property. The
+    primary incompatibility will be that the instance created for
+    CIM_Indication filter now has a property named
+    'SourceNamespaces' instead of 'SourceNamespace'. See further
+    comments below and issue #2725.
+  * Changed the 'SubscriptionManager.add_filter()' method to no
+    longer allow specifying the 'filter_id' parameter for permanent
+    filters. The documentation had already disallowed that case,
+    but the code allowed it. (issue #2757)
+  * Added code to fail compile or creation in pywbem_mock of
+    instance of Abstract class. Before this the WBEM server might
+    fail the attempt but the MOF compiler and pywbem_mock would
+    build the instance (see issue # 2742).
+  * The new simplified format of the automatically generated 'Name'
+    property of owned indication filters causes existing filters
+    with the old format to be ignored and a Python warning of type
+    'pywbem.OldNameFilterWarning' will be issued. Such owned filter
+    instances need to be either removed as owned filters with a
+    prior version of pywbem, or as permanent filters with this
+    version of pywbem. (issue #2765)
+  * Removed the
+    'pywbem.WBEMSubscriptionManager.add_listener_destinations()'
+    method, because the new naming approach for listener
+    destinations requires either a name or an ID and that does not
+    work well with supporting multiple destinations in one method
+    call. Use the new 'add_destination()' method instead. (issue
+    #2766)
+  * The new simplified format of the automatically generated 'Name'
+    property of owned listener destinations causes existing
+    destinations with the old format to be ignored and a Python
+    warning of type 'pywbem.OldNameDestinationWarning' will be
+    issued. Such owned destination instances need to be either
+    removed as owned destinations with a prior version of pywbem,
+    or as permanent destinations with this version of pywbem.
+    (issue #2766)
+
+  **Bug fixes:**
+  * Fixes bug in compiler where log of ModifyClass request failure
+    was not surrounded by verbose test (if p.parse.verbose:). See
+    pywbemcli issue #395,
+  * Fixes several issues in WBEMSubscriptionManager:
+    - Fixed the discrepancy between documentation and code in
+      add_filter() regarding 'filter_id', 'name' and ownership
+      type: The only allowed combinations are now owned filters
+      with 'filter_id' and permanent filters with 'name'. (issue
+      #2757)
+    - add_filter() and add_destinations() methods  can no longer
+      modify existing instances on the WBEM server. They can only
+      create new instances.
+    - Modified the algorithm to determine owned filters and
+      instances so they are are correctly recovered from the WBEM
+      server when the WBEMSubscriptionManager is restarted (before
+      this they could be returned as not-owned object).
+    - Change to use WBEM server systemname as the value of the
+      SystemName property.
+    - Removed code that built instance path for new filter and
+      destination instances since that was used only to try to
+      determine if instance existed to make the create/modify
+      decision.
+    - Added the client host as a component of the Name property for
+      owned filters and destinations. (issue #2701).
+    - Fix issue where windows indication throughput is very slow.
+      It is in the range of 1 indication every 2 seconds.  The
+      issue is not pywbem but windows itself apparently because of
+      hosts file and DNS configuration such that using localhost
+      builds in a delay. This can be fixed by using an IP address
+      127.0.0.1 for the indication listener or modifying the hosts
+      table in windows. For this test we chose to just change the
+      host name  See issue #528)
+    - Fixes issue with SubscriptionManager class where
+      add_destinations loses the input parameter owned if there are
+      multiple urls in the listener_urls parameter (see issue
+      #2715)
+    - Fixes issue where add_subscription returned wrong instance if
+      the instance already exists. (See issue #2719)
+    - Fix issues in SubscriptionManager.add_destination to add
+      optional parameter which populates the destination
+      PersistenceType property. (See issue #2712)
+    - Add capability to mock subscription providers to execute
+      ModifyInstance (See issue #2722)
+    - Fixed pywbem_mock and the MOF_compiler to test for creation
+      or compile of an instance with a creation class that has the
+      Abstract qualifier. This will fail since abstract classes
+      cannot be instantiated. (see issue #2742)
+    - Removed use of unittest.Mock in
+      pywbem_mock.FakedWBEMConnection to use mock versions of
+      _imethodcall and _methodcall and simply duck typed the
+      methods. (see issue #2755)
+    - Fixed issue in pywbem SubscriptionManager where duplicate
+      add_destination() resulted in good return rather than
+      CIMError.  The code where the Name property is different but
+      the URL the same was modified to test for both URL and
+      persistence type equality before returning the existing
+      instance. (See issue $ 2782)
+  * Fixes MOF compiler issue  where the compiler was allowing array
+    properties to have corresponding instances instantiated with
+    non-array values and vice-versa. This now causes a parse error.
+    (See issue # 2786)
+  * Docs: Fixed an error with the autodocsumm and Sphinx 4.0.0.
+    (issue #2697)
+  * Jupyter Notebook: Ignored safety issues 40380..40386 in order
+    to continue supporting it with Python 2.7. (issue #2703)
+  * Windows: Removed dependency on bash command in pip upgrade in
+    Makefile. (issue #2713)
+  * WBEM listener: Fixed the incorrect Content-Type header value
+    'text/html' that was set in its export responses by changing
+    that to 'text/xml'. (part of issue #2729)
+  * WBEM listener: Removed the incorrect check for the
+    Accept-Encoding header value when processing export requests to
+    be consistent with DSP0200 which requires that WBEM listeners
+    must support any value. (part of issue #2729)
+  * Fixed installation with setup.py on ubuntu for Python 2.7, 3.4,
+    3.5, by pinning yamlloader to <1.0.0. (issue #2745)
+  * Mitigated Pylint issue 'deprecated-method' when using
+    time.perf_counter() on Python versions 3.6 and 3.7. (issue
+    #2768)
+  * Mitigated new Pylint error 'not-an-iterable' when using
+    'WBEMServer' properties that return lists and use deferred
+    initialization. (issue #2770)
+  * Security - Added 42218 42253 42254 42297 42298 42203 to safety
+    ignore list. These were new safety issues 1 Nov 2021. The
+    modules are all in development, and Jupyter notebook.
+  * Fix incompatibility between Sphinx 1.8.5 (version for python <=
+    3.5) and docutils 0.18.  (See issue # 2787).
+  * Modified dev-requirements and rtd-requirements to require
+    Sphinx >= 3.54.
+  * Modify dev-requirements.txt to limit version of more-itertools
+    to  < 8.10.1 for python < 3.6. See issue #2796
+  * Fixed new issues raised by Pylint 2.12.1.
+  * Fixed error when installing virtualenv in install test on
+    Python 2.7.
+  
+  **Enhancements:**
+  * Improved the running of indication listeners via
+    `WBEMListener.start()`:
+    - The method will now raise a new exception
+      `pywbem.ListenerPortError` when the port is in use, instead
+      of the previous `socket.error` on Python 2 and `OSError` on
+      Python 3 that had confusing or unspecific error messages.
+    - The method will now raise a new exception
+      `pywbem.ListenerCertificateError` when using HTTPS and there
+      is an issue with the server certificate file, private key
+      file, or invalid password for the private key file, instead
+      of the previous `ssl.SSLError` or `OSError` that had
+      confusing or unspecific error messages.
+    - The method will now raise a new exception
+      `pywbem.ListenerPromptError` when using HTTPS and the prompt
+      for the password of the private key file was interrupted or
+      ended, instead of the previous `IOError` or `OSError` that
+      had unspecific error messages.
+    - If the private key file is protected with a password, the
+      password prompt now states the path name of the private key
+      file in the prompt message.
+    - Add optional initialization parameter `url` to pywbem_mock
+      FakedWBEMConnection class. This allows a different URL than
+      the default http://FakedWBEMConnection:5988. With this, tests
+      can be executed with multiple simultaneous mock environments
+      pywbem. (See issue #2711)
+  * Test: Added support for validating the structure of
+    user-defined properties in the easy-server server and vault
+    files. As part of that, increased the minimum version of the
+    'pytest-easy-server' package to 0.8.0. (issue #2660)
+  * Added providers to the pywbem_mock environment for the  3
+    classes required to manage subscriptions in a WBEM server.
+    (See issue #2704)
+  * Finalized the support for SI units that was experimental so
+    far, i.e. the 'pywbem.siunit()' and 'pywbem.siunit_obj()'
+    functions. (issue #2653)
+  * Modify 'SubscriptionManager.add_filter()' to use the
+    CIM_IndicationFilter property 'SourceNamespaces' in place of
+    the deprecated 'SourceNamespace'. (see issue #2725 and the
+    **Incompatible changes:** section above)
+  * Added support for the ExportIndication export operation by
+    extending 'WBEMConnection' to be able of targeting a WBEM
+    listener instead of a WBEM server, and by adding an
+    'ExportIndication()' method to 'WBEMConnection'. The
+    'default_namespace' and 'use_pull_operations' init parameters
+    and properties are ignored when targeting a WBEM listener.
+    (issue #2729)
+  * Test: Improved diff display when assertion in test_recorder.py
+    fails.
+  * Added toleration support for WBEM servers that return a CIM
+    status CIM_ERR_FAILED when pywbem issues a pull operation and
+    the server does not support it. Note that DSP0200 requires the
+    use of CIM status CIM_ERR_NOT_SUPPORTED in this case, but at
+    least one WBEM server returns CIM_ERR_FAILED. (issue #2736)
+  * Added a 'copy()' method to 'WBEMConnection',
+    'FakedWBEMConnection', 'LogOperationRecorder', and
+    'TestClientRecorder'. The 'copy()' method returns a copy of the
+    object where user-specified attributes are copied and any
+    additional internal state is reset. In case of
+    'FakedWBEMConnection', the repository and registries of the
+    original object are reused by the new object. (issue #2750)
+  * The init methods of 'WBEMConnection' and 'LogOperationRecorder'
+    now copy any mutable input arguments in order to ensure the new
+    object is decoupled from the user-provided objects. (related to
+    issue #2750)
+  * Changed the WBEMConnection.timeout property to be settable.
+    This allows adjusting the timeout after the connection has been
+    created. (issue #2752)
+  * Pylint: Removed pinning of Pylint to <2.7.0 because the
+    performance issue can also be addressed by disabling the
+    similarity checker, and addressed Pylint issues reported by
+    Pylint 2.9. (issue #2672)
+  * Simplified the format of the automatically generated 'Name'
+    property of owned indication filters from: ``"pywbemfilter:"
+    {ownership} ":" {client_host} ":" {submgr_id} ":" {filter_id}
+    ":" {guid}`` to: ``"pywbemfilter:" {submgr_id} ":"
+    {filter_id}``. The client host was removed in order to allow
+    different client systems to be used. The ownership was removed
+    because filters with an auto-generated Name are always owned.
+    The GUID was removed to make the name predictable and the
+    uniqueness it attempted to guarantee is now achieved by
+    rejecting the creation of filters with the same name. Overall,
+    this change makes the name much more suitable for use in CLI
+    tools such as pywbemcli. (issue #2765)
+  * Added a `ToleratedSchemaIssueWarning` class with its base class
+    `Warning`. The new `ToleratedSchemaIssueWarning` is expected to
+    be used where the MOF compiler or code detects issues in the
+    CIM Schema that are either tolerated or corrected.
+  * Added a 'pywbem.WBEMSubscriptionManager.add_destination()'
+    method that makes the way the 'Name' property is created for
+    listener destination intances consistent with how that is now
+    done for indication filters: There is a new parameter 'name'
+    that directly sets the 'Name' property for permanent
+    destinations, and a new parameter 'destination_id' that is used
+    for creating the 'Name' property for owned destinations. The
+    format of the generated 'Name' property has been changed from:
+    ``"pywbemdestination:" {ownership} ":" {client_host} ":"
+    {submgr_id} ":" {guid}`` to: ``"pywbemdestination:" {submgr_id}
+    ":" {destination_id}``. The client host was removed in order to
+    allow different client systems to be used. The ownership was
+    removed because destinations with an auto-generated Name are
+    always owned. The GUID was removed to make the name predictable
+    and the uniqueness it attempted to guarantee is now achieved by
+    rejecting the creation of destinations with the same name.
+    Overall, this change makes the name much more suitable for use
+    in CLI tools such as pywbemcli. (issue #2766)
+  * Fixed install error of PyYAML 6.0b1 on Python 2.7 during
+    installtest, by pinning it to <6.0.
+  * Fixed install error of wrapt 1.13.0 on Python 2.7 on Windows
+    due to lack of MS Visual C++ 9.0 on GitHub Actions, by pinning
+    it to <1.13.
+  * Fixed install error of yanked jsonschema 4.0.0 on Python <3.7,
+    by excluding it.
+  * Enhanced test matrix on GitHub Actions to always include Python
+    2.7 and Python 3.4 on Ubuntu, and Python 2.7 and Python 3.5 on
+    macOS and Windows.
+  * Support for Python 3.10: Added Python 3.10 in GitHub Actions
+    tests, and in package metadata.
+
+  **Cleanup:**
+  * Extend tests for SubscriptionManager to utilize pytest and
+    cover error cases.
+
+-------------------------------------------------------------------
 Fri Oct 22 19:45:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.2.0
