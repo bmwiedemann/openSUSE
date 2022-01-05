@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 15 21:11:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * The Userspace RCU 0.13 release is mostly a library soname version bump
+    to address an ABI incompatibility between the 0.10 and { 0.11, 0.12 }
+    releases. see https://lists.lttng.org/pipermail/lttng-dev/2021-June/030023.html
+
+-------------------------------------------------------------------
 Mon Mar  8 23:28:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.2:

@@ -18,22 +18,20 @@
 #
 
 
-%define soname  6
+%define soname  8
 Name:           userspace-rcu
-Version:        0.12.2
+Version:        0.13.0
 Release:        0
 Summary:        Userspace Read-Copy-Update Library
-License:        LGPL-2.1-or-later AND MIT AND GPL-2.0-or-later AND GPL-3.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND GPL-3.0-or-later
 Group:          System/Libraries
-URL:            http://lttng.org/urcu
-Source0:        http://lttng.org/files/urcu/userspace-rcu-%{version}.tar.bz2
-Source1:        http://lttng.org/files/urcu/userspace-rcu-%{version}.tar.bz2.asc
+URL:            https://liburcu.org/
+Source0:        https://lttng.org/files/urcu/userspace-rcu-%{version}.tar.bz2
+Source1:        https://lttng.org/files/urcu/userspace-rcu-%{version}.tar.bz2.asc
 Source2:        userspace-rcu.keyring
 Source99:       baselibs.conf
-BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
-BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
 
@@ -73,7 +71,6 @@ accesses to detect grace periods after which memory reclamation is possible.
 %setup -q
 
 %build
-autoreconf -fi
 %configure --disable-silent-rules --disable-static
 %make_build
 
