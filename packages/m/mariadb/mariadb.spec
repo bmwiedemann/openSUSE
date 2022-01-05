@@ -36,7 +36,9 @@
 %define with_mroonga 0
 %define with_rocksdb 0
 %endif
-%if 0%{?is_opensuse}
+# Build galera on SLE. Galera requires mariadb >= 10.5, so only
+# build it on SLE15SP3 onwards
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300
 %bcond_without galera
 %else
 %bcond_with    galera
@@ -245,19 +247,12 @@ This package contains the standard clients for MariaDB.
 Summary:        The configuration files and scripts for galera replication
 Group:          Productivity/Databases/Tools
 Requires:       %{name} = %{version}
-# galera-3 is not in openSUSE:Factory now
-#Requires:       galera-3 >= 25.3.18
+Requires:       galera-4
 Requires:       iproute2
 Requires:       lsof
 Requires:       rsync
 Requires:       socat
 Requires:       which
-# We need Conflicts here as galera_new_cluster (and use_galera_new_cluster.conf)
-# and galera_recovery scripts were in mariadb package but now they are in galera
-# subpackage
-Conflicts:      mariadb <= 10.1.25
-# wsrep_* scripts were in mariadb-tools subpackage but now they are in galera subpackage
-Conflicts:      mariadb-tools <= 10.1.25
 
 %description galera
 This package contains configuration files and scripts that are

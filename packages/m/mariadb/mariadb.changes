@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 30 12:01:56 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Build mariadb-galera on SLE
+- Add dependency on galera-4 for mariadb-galera
+- Remove old constraints for mariadb-galera
+
+-------------------------------------------------------------------
 Mon Nov 22 10:48:54 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - The following issues have already been fixed in this package but weren't
