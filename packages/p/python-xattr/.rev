@@ -185,4 +185,15 @@
   * Fix classifiers list</comment>
     <requestid>934513</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d54c6347f04b58f6dcc06102e10d1f77</srcmd5>
+    <version>0.9.9</version>
+    <time>1641386364</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.9:
+  * Fix regression in xattr console script
+  * Add -c clear option
+  * Add note about Linux namespace requirement</comment>
+    <requestid>943599</requestid>
+  </revision>
 </revisionlist>

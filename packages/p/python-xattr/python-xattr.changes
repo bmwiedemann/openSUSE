@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:36:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.9:
+  * Fix regression in xattr console script
+  * Add -c clear option
+  * Add note about Linux namespace requirement
+
+-------------------------------------------------------------------
 Mon Nov 29 11:01:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.8:
