@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 31 13:12:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Tue Nov 16 10:49:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
