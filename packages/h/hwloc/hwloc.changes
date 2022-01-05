@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Dec  5 21:39:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Backends
+    + Expose two cpukinds for energy-efficient cores (icestorm) and
+      high-performance cores (firestorm) on Apple M1 on Mac OS X.
+    + Use sysfs CPU "capacity" to rank hybrid cores by efficiency
+      on Linux when available (mostly on recent ARM platforms for now).
+    + Improve HWLOC_MEMBIND_BIND (without the STRICT flag) on Linux kernel
+      >= 5.15: If more than one node is given, the kernel may now use all
+      of them instead of only the first one before falling back to others.
+    + Expose cache os_index when available on Linux, it may be needed
+      when using resctrl to configure cache partitioning, memory bandwidth
+      monitoring, etc.
+    + Add a "XGMIHops" distances matrix in the RSMI backend for AMD GPU
+      interconnected through XGMI links.
+    + Expose AMD GPU memory information (VRAM and GTT) in the RSMI backend.
+    + Add OS devices such as "bxi0" for Atos/Bull BXI HCAs on Linux.
+  * Tools
+    + lstopo has a better placement algorithm with respect to I/O
+      objects, see --children-order in the manpage for details.
+    + hwloc-annotate may now change object subtypes and cache or memory
+      sizes.
+  * Build
+    + Allow to specify the ROCm installation for building the RSMI backend:
+      - Use a custom installation path if specified with --with-rocm=<dir>.
+      - Use /opt/rocm-<version> if specified with --with-rocm-version=<version>
+	or the ROCM_VERSION environment variable.
+      - Try /opt/rocm if it exists.
+      - See "How do I enable ROCm SMI and select which version to use?"
+	in the FAQ for details.
+    + Add a CMakeLists for Windows under contrib/windows-cmake/ .
+  * Documentation
+    + Add FAQ entry "How do I create a custom heterogeneous and
+       asymmetric topology?"
+
+-------------------------------------------------------------------
 Sat Jul 17 13:13:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0: 
