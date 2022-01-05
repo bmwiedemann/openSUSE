@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 23:31:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- reenable babeltrace on armv6/v7 (switch to excludearch) 
+
+-------------------------------------------------------------------
 Mon Aug 31 12:58:07 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Add riscv64 to ExclusiveArch

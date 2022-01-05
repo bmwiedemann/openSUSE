@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           babeltrace
 Version:        1.5.8
 Release:        0
 Summary:        Common Trace Format Babel Tower
-License:        MIT AND GPL-2.0-only
+License:        GPL-2.0-only AND MIT
 URL:            https://diamon.org/babeltrace
 Source:         https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2
 Source1:        https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2.asc
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(libelf) >= 0.154
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  %ix86 x86_64 aarch64 ppc64le ppc64 riscv64 s390x
+ExcludeArch:    s390 ppc
 
 %description
 This project provides trace read and write libraries, as well as a
