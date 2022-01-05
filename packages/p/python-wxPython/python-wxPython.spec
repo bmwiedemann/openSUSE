@@ -1,7 +1,7 @@
 #
-# spec file for package python-wxPython
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         oldpython python
 %define         X_display ":98"
 %bcond_with     test
 %bcond_without  syswx
@@ -27,11 +24,58 @@
 %else
 %define wx_args --gtk3 -v
 %endif
-%if %{with test}
-# No numpy for Python 3.6
+
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%flavor" == ""
+# factory-auto requires the main build_flavor to match the specfile name
+%define pprefix python
+%define python_module() no-build-without-multibuild-flavor
+ExclusiveArch:  donotbuild
+%else
+%define pprefix %flavor
+%if 0%{suse_version} >= 1599
+# Tumbleweed has a varying number of python3 flavors. The flavor
+# selection here and in _multibuild must be kept in sync with the Factory
+# prjconf definition for pythons. If a skip is missing, all builds fail.
+# Extraneous build_flavors and skips are excluded automatically so future
+# additions can be included here early and old flavors can be removed some time
+# after the global drop in Factory.
+%if "%flavor" != "python36"
 %define skip_python36 1
 %endif
-Name:           python-wxPython
+%if "%flavor" != "python38"
+%define skip_python38 1
+%endif
+%if "%flavor" != "python39"
+%define skip_python39 1
+%endif
+%if "%flavor" != "python310"
+%define skip_python310 1
+%endif
+%else
+# SLE/Leap: python3 only
+%if "%flavor" != "python3"
+%define pythons %{nil}
+%else
+%define pythons python3
+%define python3_provides %{nil}
+%endif
+%endif
+# The obs server-side interpreter cannot use lua or rpm shrink
+%if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    "
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%else
+%define python_files() -n %flavor-%{**}
+%define python_module() %flavor-%{**}
+%define python_exec python%{expand:%%%{flavor}_bin_suffix}
+%define python_version %{expand:%%%{flavor}_version}
+%define python_sitearch %{expand:%%%{flavor}_sitearch}
+%define python_provides %{expand:%%%{flavor}_provides}
+%endif
+%endif
+
+Name:           %{pprefix}-wxPython
 Version:        4.1.1
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
@@ -46,6 +90,13 @@ Patch0:         fix_no_return_in_nonvoid.patch
 Patch1:         use_stl_build.patch
 # PATCH-FIX-UPSTREAM wxPython-4.1.1-fix-overrides.patch -- Fix build with wxWidgets 3.1.5 (gh#wxWidgets/Phoenix#1909)
 Patch2:         wxPython-4.1.1-fix-overrides.patch
+# PATCH-FIX-UPSTREAM 2039-bunch-py310-fixes.patch gh#wxWidgets/Phoenix#2039 mcepl@suse.com
+#  Fix a bunch of Python 3.10 issues with pure-Python classes and demos
+Patch3:         2039-bunch-py310-fixes.patch
+# PATCH-FIX-UPSTREAM additional-310-fixes.patch bsc#[0-9]+ mcepl@suse.com
+# collection of patches:
+Patch4:         additional-310-fixes.patch
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -73,11 +124,18 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 %endif
-Requires:       python-six
+Requires:       %{pprefix}-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Conflicts:      python-wxWidgets
-Provides:       python-wxWidgets = %{version}
+Conflicts:      %{pprefix}-wxWidgets
+Provides:       %{pprefix}-wxWidgets = %{version}
+%if "%{python_provides}" != ""
+# for TW primary flavor provider
+Conflicts:      %{python_provides}-wxWidgets
+Provides:       %{python_provides}-wxPython = %{version}-%{release}
+Provides:       %{python_provides}-wxWidgets = %{version}
+Obsoletes:      %{python_provides}-wxPython < %{version}-%{release}
+%endif
 %if %{with test}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
@@ -89,11 +147,6 @@ BuildRequires:  wxWidgets-lang
 BuildRequires:  xorg-x11-server
 BuildRequires:  pkgconfig(cppunit)
 %endif
-%ifpython2
-Conflicts:      %{oldpython}-wxWidgets
-Provides:       %{oldpython}-wxWidgets = %{version}
-%endif
-%python_subpackages
 
 %description
 Phoenix is a reimplementation of wxPython. Like the "classic"
@@ -108,31 +161,35 @@ platform specific code.
 Summary:        Languages for package %{name}
 Group:          System/Libraries
 Requires:       %{name} = %{version}
-Requires:       python-base
+Requires:       python(abi) = %python_version
 Supplements:    (bundle-lang-other and %{name})
 Provides:       %{name}-lang-all = %{version}
+%if "%{python_provides}" != ""
+# for TW primary flavor provider
+Provides:       %{python_provides}-wxPython-lang = %{version}-%{release}
+Obsoletes:      %{python_provides}-wxPython-lang < %{version}-%{release}
+%endif
 
 %description lang
 Provides translations to the package %{name}.
 
 %prep
 %autosetup -n wxPython-%{version} -p1
+
 sed -i -e '/^#!\//, 1d' wx/py/*.py
 sed -i -e '/^#!\//, 1d' wx/tools/*.py
 sed -i -e '/^#!\//, 1d' wx/py/tests/*.py
+echo "# empty module" >> wx/lib/pubsub/core/itopicdefnprovider.py
 
 %build
 export CFLAGS="%{optflags}"
 export DOXYGEN=%{_bindir}/doxygen
-%python_expand $python build.py build %{wx_args}
+%python_exec build.py build %{wx_args}
 
 %install
-%python_expand $python build.py install %{wx_args} --destdir=%{buildroot} --extra_setup="-O1 --force"
-# build.py install helpfully installs built shared libraries for all versions,
-# so remove those for other versions.
-%{python_expand find %{buildroot}%{$python_sitearch} -name *.so ! -name *cpython-%{$python_version_nodots}*so -delete}
+%python_exec build.py install %{wx_args} --destdir=%{buildroot} --extra_setup="-O1 --force"
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%fdupes %{buildroot}%{_libdir}
 
 %python_clone -a %{buildroot}%{_bindir}/helpviewer
 %python_clone -a %{buildroot}%{_bindir}/img2png
@@ -146,6 +203,8 @@ export DOXYGEN=%{_bindir}/doxygen
 %python_clone -a %{buildroot}%{_bindir}/wxdemo
 %python_clone -a %{buildroot}%{_bindir}/wxdocs
 %python_clone -a %{buildroot}%{_bindir}/wxget
+
+%find_lang wxstd
 
 %check
 %if %{with test}
@@ -173,12 +232,12 @@ mv wx_temp wx
 %endif
 
 %post
-%{python_install_alternative pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget}
+%python_install_alternative pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget
 
 %postun
-%{python_uninstall_alternative pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget}
+%python_uninstall_alternative pywxrc
 
-%files %{python_files}
+%files
 %license LICENSE.txt license/*.txt
 %doc CHANGES.rst README.rst TODO.rst
 %python_alternative %{_bindir}/helpviewer
@@ -197,7 +256,9 @@ mv wx_temp wx
 %{python_sitearch}/wx/
 %exclude %{python_sitearch}/wx/locale/
 
-%files %{python_files lang}
-%{python_sitearch}/wx/locale/
+%files lang -f wxstd.lang
+%dir %{python_sitearch}/wx/locale/
+%dir %{python_sitearch}/wx/locale/*
+%dir %{python_sitearch}/wx/locale/*/LC_MESSAGES
 
 %changelog

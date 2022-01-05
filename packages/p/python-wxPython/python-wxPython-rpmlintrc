@@ -1,1 +1,3 @@
 addFilter("devel-file-in-non-devel-package")
+# the multibuild flavors need differently named source packages
+addFilter("invalid-spec-name")
