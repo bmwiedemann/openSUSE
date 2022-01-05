@@ -7021,6 +7021,7 @@ unsorted:
   - imv 
   - imwheel 
   - imx-usb-loader 
+  - in-toto 
   - inarpd 
   - incidenceeditor-devel 
   - include-what-you-use 
@@ -8830,26 +8831,26 @@ unsorted:
   - libOSMesa8 
   - libOSMesa8-32bit: [x86_64] 
   - libOgreBites-devel 
-  - libOgreBites1_12_12 
-  - libOgreBitesQt1_12_12 
+  - libOgreBites13_2 
+  - libOgreBitesQt13_2 
   - libOgreMain-devel 
-  - libOgreMain1_12_12 
-  - libOgreMain1_12_12-codecs 
-  - libOgreMain1_12_12-plugins 
+  - libOgreMain13_2 
+  - libOgreMain13_2-codecs 
+  - libOgreMain13_2-plugins 
   - libOgreMeshLodGenerator-devel 
-  - libOgreMeshLodGenerator1_12_12 
+  - libOgreMeshLodGenerator13_2 
   - libOgreOverlay-devel 
-  - libOgreOverlay1_12_12 
+  - libOgreOverlay13_2 
   - libOgrePaging-devel 
-  - libOgrePaging1_12_12 
+  - libOgrePaging13_2 
   - libOgreProperty-devel 
-  - libOgreProperty1_12_12 
+  - libOgreProperty13_2 
   - libOgreRTShaderSystem-devel 
-  - libOgreRTShaderSystem1_12_12 
+  - libOgreRTShaderSystem13_2 
   - libOgreTerrain-devel 
-  - libOgreTerrain1_12_12 
+  - libOgreTerrain13_2 
   - libOgreVolume-devel 
-  - libOgreVolume1_12_12 
+  - libOgreVolume13_2 
   - libOpenCL1 
   - libOpenCL1-32bit: [x86_64] 
   - libOpenCOLLADABaseUtils0_3 
@@ -9402,6 +9403,7 @@ unsorted:
   - libadolc2-32bit: [x86_64] 
   - libadwaita-1-0 
   - libadwaita-devel 
+  - libadwaita-docs 
   - libadwaita-lang 
   - libadwaitaqt-devel 
   - libadwaitaqt1-32bit: [x86_64] 
@@ -12838,7 +12840,7 @@ unsorted:
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
-  - libportmidi0 
+  - libportmidi2 
   - libpostproc55_9-32bit: [x86_64] 
   - libpowerman0 
   - libppl14 
@@ -19331,7 +19333,6 @@ unsorted:
   - perl-IO-Stty 
   - perl-IO-Tee 
   - perl-IO-TieCombine 
-  - perl-IO-stringy 
   - perl-IPC-Run 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
@@ -19577,7 +19578,6 @@ unsorted:
   - perl-Net-IP 
   - perl-Net-IPv4Addr 
   - perl-Net-Jabber 
-  - perl-Net-LibIDN 
   - perl-Net-Libproxy 
   - perl-Net-Netmask 
   - perl-Net-OAuth 
@@ -20152,6 +20152,7 @@ unsorted:
   - pfsglview 
   - pfstools 
   - pfstools-devel 
+  - pfstools-exr 
   - pfstools-imgmagick 
   - pfstools-octave 
   - pfsview 
@@ -21266,6 +21267,7 @@ unsorted:
   - python3-bandit 
   - python3-barbicanclient 
   - python3-bcc 
+  - python3-bindep 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_78_0 
   - python3-botan 
@@ -22220,7 +22222,6 @@ unsorted:
   - python36-billiard 
   - python36-binary 
   - python36-binaryornot 
-  - python36-bindep 
   - python36-biplist 
   - python36-bitarray 
   - python36-bitstring 
@@ -23932,6 +23933,7 @@ unsorted:
   - python36-scrypt 
   - python36-scspell3k 
   - python36-sdnotify 
+  - python36-securesystemslib 
   - python36-selection 
   - python36-selectors2 
   - python36-selenium 
@@ -25006,7 +25008,6 @@ unsorted:
   - python38-billiard 
   - python38-binary 
   - python38-binaryornot 
-  - python38-bindep 
   - python38-biopython 
   - python38-biplist 
   - python38-bitarray 
@@ -26832,6 +26833,7 @@ unsorted:
   - python38-scspell3k 
   - python38-sdnotify 
   - python38-seaborn 
+  - python38-securesystemslib 
   - python38-selection 
   - python38-selectors2 
   - python38-selenium 
@@ -27980,7 +27982,6 @@ unsorted:
   - python39-billiard 
   - python39-binary 
   - python39-binaryornot 
-  - python39-bindep 
   - python39-biopython 
   - python39-biplist 
   - python39-bitarray 
@@ -29963,6 +29964,7 @@ unsorted:
   - python39-scspell3k 
   - python39-sdnotify 
   - python39-seaborn 
+  - python39-securesystemslib 
   - python39-selection 
   - python39-selectors2 
   - python39-selenium 
