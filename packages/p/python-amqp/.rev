@@ -388,4 +388,13 @@
   - Bugfix: not closing socket after server disconnect</comment>
     <requestid>941637</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c559675b51317e6177969a6f8e2f2ac6</srcmd5>
+    <version>5.0.9</version>
+    <time>1641386363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.9:
+  - Append to _used_channel_ids in _used_channel_ids</comment>
+    <requestid>943597</requestid>
+  </revision>
 </revisionlist>
