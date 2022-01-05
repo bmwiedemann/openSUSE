@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 31 16:27:23 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt to ruby3.1 (bsc#1193192)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Dec 21 14:19:55 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt to ruby3 (bsc#1193192)
