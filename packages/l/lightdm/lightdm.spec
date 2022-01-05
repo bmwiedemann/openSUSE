@@ -49,6 +49,7 @@ Source6:        50-suse-defaults.conf
 Source7:        users.conf
 Source8:        lightdm.pam
 Source9:        lightdm-autologin.pam
+Source10:       lightdm.sysusers
 # PATCH-FEATURE-OPENSUSE lightdm-sysconfig-support.patch gber@opensuse.org -- Adds support for reading configuration options from /etc/sysconfig/displaymanager and /etc/sysconfig/windowmanager
 Patch0:         lightdm-sysconfig-support.patch
 # PATCH-FEATURE-OPENSUSE lightdm-xauthlocalhostname-support.patch boo#796230 gber@opensuse.org -- Set XAUTHLOCALHOSTNAME to the hostname for local logins to avoid issues in the session in case the hostname changes
@@ -70,6 +71,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  vala
 BuildRequires:  xdm
 BuildRequires:  yelp-tools
@@ -97,7 +99,7 @@ Requires:       gdmflexiserver
 Requires:       lightdm-greeter
 # Uses pam configuration and relies on scripts provided by xdm.
 Requires:       xdm
-Requires(pre):  pwdutils
+%sysusers_requires
 Recommends:     %{name}-lang
 # Migrate users from lxdm to lightdm - we only obsolete up to version 0.5.
 Obsoletes:      lxdm < 0.5
@@ -196,6 +198,7 @@ Qt5-based LightDM clients.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE10} lightdm lightdm.conf
 export MOC4='%{_bindir}/moc'
 export MOC5='%{_libqt5_bindir}/moc'
 NOCONFIGURE=1 ./autogen.sh
@@ -268,12 +271,11 @@ install -Dpm 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/lightdm/users.conf
 sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/50-suse-defaults.conf
 %endif
 
+install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/lightdm.conf
+
 %find_lang %{name} %{?no_lang_C}
 
-%pre
-%{_sbindir}/groupadd -r lightdm 2> /dev/null || :
-%{_sbindir}/useradd -r -g lightdm -s /bin/false -c "LightDM daemon" \
-  -d %{_localstatedir}/lib/lightdm lightdm 2> /dev/null || :
+%pre -f lightdm.pre
 for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
   test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
 done
@@ -362,6 +364,7 @@ fi
 %attr(711,root,root) %dir %{_localstatedir}/cache/lightdm/
 %{_mandir}/man1/lightdm.1%{?ext_man}
 %{_mandir}/man1/dm-tool.1%{?ext_man}
+%{_sysusersdir}/lightdm.conf
 
 %files lang -f %{name}.lang
 

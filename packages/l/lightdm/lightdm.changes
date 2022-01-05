@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 31 23:02:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to systemd-sysusers
+
+-------------------------------------------------------------------
 Tue Oct 19 08:51:42 UTC 2021 - Max Lin <mlin@suse.com>
 
 - Replace /usr/etc to /etc for products if suse_version < 1550
