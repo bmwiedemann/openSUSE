@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jan  3 11:56:47 UTC 2022 - Libor Pecháček <lpechacek@suse.com>
+
+- kdump-0.9.2-mkdumprd-properly-pass-compression-params.patch: Fix
+  malformation in passing Dracut compression parameters in mkdumprd
+  (bsc#1193765).
+- Refresh existing patches.
+
+-------------------------------------------------------------------
+Thu Dec  9 08:23:35 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Sync with SLE15-SP4 changelog. These patches were never applied
+  to Factory:
+  * kdump-avoid-endless-loop-EAI_AGAIN.patch
+  * kdump-calibrate-Add-LUKS2-Argon2-requirements-to-the-reser.patch
+  * kdump-calibrate-Fix-kernel-command-line-parsing.patch
+  * kdump-do-not-add-rd.neednet.patch
+  * kdump-Do-not-list-all-block-devices-if-no-block-devices-ar.patch
+  * kdump-ensure-initrd.target.wants-directory.patch
+  * kdump-Enumerate-all-BTRFS-devices-for-btrfs-mount-points.patch
+  * kdump-Implement-KString-isHexNumber.patch
+  * kdump-install-etc-resolv.conf-using-resolved-path.patch
+  * kdump-Mount-and-device-resolution-using-libmount-and-lsblk.patch
+  * kdump-remove-console-hvc0-from-commandline.patch
+  * kdump-set-serial-console-from-Xen-cmdline.patch
+
+-------------------------------------------------------------------
+Wed Dec  8 15:06:58 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 0.9.2
+  * Isolate fadump initrd within the default one (jsc#SLE-18272)
+  * Bug fixes
+  * Code cleanups
+- Remove patches that have been upstreamed:
+  * kdump-mounts.cc-Include-sys-ioctl.h.patch
+  * kdump-Add-bootdev-to-dracut-command-line.patch
+  * kdump-do-not-iterate-past-end-of-string.patch
+  * kdump-fix-incorrect-exit-code-checking.patch
+  * kdump-avoid-endless-loop-on-EAI_AGAIN.patch
+  * kdump-install-real-resolv.conf.patch
+  * kdump-Store-kdump-initrd-in-kernel-image-path.patch
+- Remove patches that have been solved differently:
+  * kdump-on-error-option-yesno.patch
+
+-------------------------------------------------------------------
 Thu Nov 25 21:04:51 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - kdump-Store-kdump-initrd-in-kernel-image-path.patch: Fix kdumprd
@@ -45,6 +89,7 @@ Fri Mar  5 16:27:03 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
   * Add build dependency on libmount
   * Drop build dependency on OpenSSL
   * Build with --stdc=c++11
+  * Bug fixes (bsc#1173914, bsc#1177196, bsc#1180513)
 - Remove patches that have been upstreamed:
   * kdump-block-initrd-parse-etc.service.patch
   * kdump-fadump-avoid-multipath-optimizations.patch

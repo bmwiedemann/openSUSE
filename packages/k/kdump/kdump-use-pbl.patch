@@ -15,7 +15,7 @@ Acked-by: Petr Tesarik <ptesarik@suse.com>
 
 --- a/init/CMakeLists.txt
 +++ b/init/CMakeLists.txt
-@@ -65,7 +65,6 @@ INSTALL(
+@@ -51,7 +51,6 @@ INSTALL(
  INSTALL(
      FILES
          ${CMAKE_CURRENT_SOURCE_DIR}/mkdumprd
@@ -25,19 +25,15 @@ Acked-by: Petr Tesarik <ptesarik@suse.com>
      PERMISSIONS
 --- a/init/load.sh
 +++ b/init/load.sh
-@@ -214,18 +214,10 @@ function fadump_bootloader()
+@@ -255,14 +255,10 @@ function fadump_bootloader()
      local newstate="$1"
  
      # check if the old configuration is still valid
 -    boot_opts=$(kdump-bootloader.pl --get)
 -    nofadump_opts=$(echo "$boot_opts" | remove_from_commandline 'fadump')
--    old_opts=$($KDUMPTOOL -F /dev/null -C <(echo "$boot_opts") \
--		dump_config --usage dump --format kernel --nodefault)
      if [ "$newstate" = on ] ; then
--	curr_opts=$($KDUMPTOOL dump_config --usage dump --format kernel --nodefault)
--	if [ "$old_opts" != "$curr_opts" -o \
--            "$boot_opts" = "$nofadump_opts" ] ; then
--	    kdump-bootloader.pl --update fadump=on "$curr_opts"
+-	if [ "$boot_opts" = "$nofadump_opts" ] ; then
+-	    kdump-bootloader.pl --update fadump=on
 -	fi
 -    elif [ "$boot_opts" != "$nofadump_opts" ] ; then
 -	kdump-bootloader.pl --update
@@ -78,7 +74,7 @@ Acked-by: Petr Tesarik <ptesarik@suse.com>
 -	    my $param = $rawparam;
 -	    $param =~ s/"//g;
 -	    $param =~ s/=(.*)//;
--	    if (! ($param =~ /^KDUMP(TOOL)?_|^MAKEDUMPFILE_|^fadump$/)) {
+-	    if (! ($param =~ /^fadump$/)) {
 -		$result .= " " if length($result);
 -		$result .= $rawparam;
 -	    }

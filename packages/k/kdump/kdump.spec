@@ -1,7 +1,7 @@
 #
 # spec file for package kdump
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
@@ -34,14 +34,7 @@ Source:         %{name}-%{version}.tar.bz2
 Source2:        %{name}-rpmlintrc
 Patch1:         %{name}-fillupdir-fixes.patch
 Patch9:         %{name}-use-pbl.patch
-Patch10:        %{name}-on-error-option-yesno.patch
-Patch11:        %{name}-mounts.cc-Include-sys-ioctl.h.patch
-Patch12:        %{name}-Add-bootdev-to-dracut-command-line.patch
-Patch13:        %{name}-do-not-iterate-past-end-of-string.patch
-Patch14:        %{name}-fix-incorrect-exit-code-checking.patch
-Patch15:        %{name}-avoid-endless-loop-on-EAI_AGAIN.patch
-Patch16:        %{name}-install-real-resolv.conf.patch
-Patch17:        %{name}-Store-kdump-initrd-in-kernel-image-path.patch
+Patch10:        %{name}-0.9.2-mkdumprd-properly-pass-compression-params.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -98,13 +91,6 @@ after a crash dump has occured.
 %endif
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
 
 %build
 export CXXFLAGS="%{optflags} -std=c++11"
@@ -198,11 +184,12 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %{_fillupdir}/sysconfig.kdump
 %dir %{dracutlibdir}
 %dir %{dracutlibdir}/modules.d
-%{dracutlibdir}/modules.d/99kdump/
+%{dracutlibdir}/modules.d/*
 %dir /lib/kdump
 /lib/kdump/*
 %dir /usr/lib/kdump
 /usr/lib/kdump/70-kdump.rules
+/usr/lib/kdump/kdump-save
 %{_unitdir}/kdump.service
 %{_unitdir}/kdump-early.service
 %{_sbindir}/rckdump
