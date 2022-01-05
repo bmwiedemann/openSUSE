@@ -18,46 +18,51 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 # Selenium and memcached are not operational
 %bcond_with selenium
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        3.2.9
+Version:        4.0
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/3.2/Django-%{version}.tar.gz
-Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
+Source:         https://www.djangoproject.com/m/releases/4.0/Django-%{version}.tar.gz
+Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argon2-cffi >= 16.1.0}
-BuildRequires:  %{python_module asgiref >= 3.3.2}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module asgiref >= 3.4.1}
+BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module geoip2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.2.2}
-BuildRequires:  %{python_module tblib}
+BuildRequires:  %{python_module tblib >= 1.5.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 Requires:       python
-Requires:       python-Pillow
+Requires:       python-Pillow >= 6.2.0
 Requires:       python-argon2-cffi >= 16.1.0
-Requires:       python-asgiref >= 3.3.2
+Requires:       python-asgiref >= 3.4.1
+%if "%{python_flavor}" == "python38"
+Requires:       python-backports.zoneinfo
+%endif
 Requires:       python-pytz
 Requires:       python-setuptools
 Requires:       python-sqlparse >= 0.2.2
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
 Recommends:     python-PyYAML
 Recommends:     python-bcrypt
@@ -103,13 +108,11 @@ echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 %install
 %python_install
 
-%python_clone -a %{buildroot}%{_bindir}/django-admin.py
 %python_clone -a %{buildroot}%{_bindir}/django-admin
 
 %{python_expand install -D -m 0644 extras/django_bash_completion %{buildroot}%%{_datadir}/bash-completion/completions/django_bash_completion-%{$python_bin_suffix}.sh
 # Fix wrong-script-interpreter
 sed -i "s|^#!%{_bindir}/env python$|#!%{_bindir}/$python|" \
-  %{buildroot}%{$python_sitelib}/django/bin/django-admin.py \
   %{buildroot}%{$python_sitelib}/django/conf/project_template/manage.py-tpl
 }
 %python_compileall
@@ -123,22 +126,21 @@ export LANG=en_US.UTF8
 export PYTHONDONTWRITEBYTECODE=1
 %if %{with selenium}
 export PATH=%{_libdir}/chromium:$PATH
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:. xvfb-run $python tests/runtests.py -v 2 --selenium=chrome
+%python_expand PYTHONPATH=.:%{buildroot}%{$python_sitelib} xvfb-run $python tests/runtests.py -v 2 --selenium=chrome
 %else
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:. $python tests/runtests.py -v 2
+%python_expand PYTHONPATH=.:%{buildroot}%{$python_sitelib} $python tests/runtests.py -v 2
 %endif
 
 %post
-%{python_install_alternative django-admin.py django-admin}
+%{python_install_alternative django-admin}
 
-%preun
-%python_uninstall_alternative django-admin
+%postun
+%{python_uninstall_alternative django-admin}
 
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
 %python_alternative %{_bindir}/django-admin
-%python_alternative %{_bindir}/django-admin.py
 %{_datadir}/bash-completion/completions/django_bash_completion-%{python_bin_suffix}.sh
 %{python_sitelib}/django
 %{python_sitelib}/Django-%{version}-py*.egg-info

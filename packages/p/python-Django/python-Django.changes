@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec 27 12:11:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix u-a scriptlet dependency.
+- Remove python36 conditional on numpy dep.
+
+-------------------------------------------------------------------
+Fri Dec 24 02:26:37 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Avoid dependency on backports.zoneinfo except on Python 3.8
+
+-------------------------------------------------------------------
+Mon Dec 20 10:37:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Clean up PYTHONPATH to make test_extra_tests_build_suite pass.
+
+-------------------------------------------------------------------
+Tue Dec  7 14:09:24 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0
+  This is just a summary. Full release notes are available at
+  https://docs.djangoproject.com/en/4.0/releases/4.0/.
+  - Django 4.0 supports Python 3.8, 3.9, and 3.10. We highly
+    recommend and only officially support the latest release of
+    each series.
+    The Django 3.2.x series is the last to support Python 3.6 and
+    3.7.
+  - The Python standard library’s zoneinfo is now the default
+    timezone implementation in Django. This is the next step in
+    the migration from using pytz to using zoneinfo. Django 3.2
+    allowed the use of non-pytz time zones. Django 4.0 makes
+    zoneinfo the default implementation. Support for pytz is now
+    deprecated and will be removed in Django 5.0.
+  - The new *expressions positional argument of
+    UniqueConstraint() enables creating functional unique
+    constraints on expressions and database functions. 
+  - The new scrypt password hasher is more secure and recommended
+    over PBKDF2. However, it’s not the default as it requires
+    OpenSSL 1.1+ and more memory.
+  - Redis cache backend
+  - Template based form rendering. Forms, Formsets, and ErrorList
+    are now rendered using the template engine to enhance
+    customization. 
+
+-------------------------------------------------------------------
 Tue Nov  2 12:45:45 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.9
