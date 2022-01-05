@@ -1077,4 +1077,14 @@ Now with build cycle removed.</comment>
   * Adding ravendb.cloud domain to allow separation between users (#1468)</comment>
     <requestid>941843</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>dec492720e31f32fe237d465f3195b83</srcmd5>
+    <version>20211230</version>
+    <time>1641386374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211230:
+  * util: gTLD data autopull updates for 2021-12-30T15:13:57 UTC (#1494)
+  * util: gTLD data autopull updates for 2021-12-22T15:14:13 UTC (#1492)</comment>
+    <requestid>943729</requestid>
+  </revision>
 </revisionlist>
