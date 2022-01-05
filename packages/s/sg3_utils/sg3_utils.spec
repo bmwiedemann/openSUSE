@@ -1,7 +1,7 @@
 #
 # spec file for package sg3_utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           sg3_utils
-Version:        1.47
-%global lname libsgutils2-%(echo %{version} | sed y/./_/)-2
+Version:        1.47+2.388b767
+%global lname libsgutils2-%(echo %{version} | sed 'y/./_/;s/+.*//')-2
 Release:        0
 Summary:        A collection of tools that send SCSI commands to devices
 License:        BSD-3-Clause AND GPL-2.0-or-later

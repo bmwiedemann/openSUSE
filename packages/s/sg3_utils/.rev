@@ -562,4 +562,16 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     sg_scsi_status_is_bad() and sg_get_zone_type_str()</comment>
     <requestid>931031</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2609c6ab2df27b6ed8997e903ea1472d</srcmd5>
+    <version>1.47+2.388b767</version>
+    <time>1641386379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.47+2.388b767:
+  * rescan-scsi-bus.sh: apply fix for '-r' (boo#1194293)
+  * _service: use openSUSE github repo again (with cherry-picks
+    from upstream)
+  * spec file: suppress commit ID in library version</comment>
+    <requestid>943754</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 04 11:47:02 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.47+2.388b767:
+  * rescan-scsi-bus.sh: apply fix for '-r' (boo#1194293)
+  * _service: use openSUSE github repo again (with cherry-picks
+    from upstream)
+  * spec file: suppress commit ID in library version
+
+-------------------------------------------------------------------
 Thu Nov 11 21:15:17 UTC 2021 - mwilck@suse.com
 
 - Update to version 1.47:

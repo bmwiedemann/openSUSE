@@ -1,13 +1,13 @@
 <services>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
-    <param name="url">https://github.com/doug-gilbert/sg3_utils</param>
+    <param name="url">https://github.com/openSUSE/sg3_utils</param>
     <param name="filename">sg3_utils</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.%h</param> 
     <param name="match-tag">r[0-9]\.[0-9]*</param>
     <param name="versionrewrite-pattern">r([^+]*)(\+[1-9\..*])?(\+0\..*)?</param>
     <param name="versionrewrite-replacement">\1\2</param>
-    <param name="revision">master</param>
+    <param name="revision">factory</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

@@ -3,4 +3,6 @@
                 <param name="url">https://github.com/openSUSE/sg3_utils.git</param>
               <param name="changesrevision">6aa67ed94a6c135d6a462c55b3764732259b162e</param></service><service name="tar_scm">
                 <param name="url">https://github.com/doug-gilbert/sg3_utils</param>
-              <param name="changesrevision">ed556a52933d29309849dbb24ba49f8b829c1058</param></service></servicedata>
+              <param name="changesrevision">ed556a52933d29309849dbb24ba49f8b829c1058</param></service><service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/sg3_utils</param>
+              <param name="changesrevision">388b7673ddb5f106a4420a50a764932b3e4082c9</param></service></servicedata>
