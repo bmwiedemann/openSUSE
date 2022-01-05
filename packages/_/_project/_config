@@ -444,7 +444,7 @@ Prefer: go -go1.13
 Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common
 
 # have choice for html2text
-Prefer: -python36-html2text -python38-html2text -python39-html2text
+Prefer: -python36-html2text -python38-html2text -python39-html2text -python310-html2text
 
 # have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
 Prefer: -budgie-desktop
