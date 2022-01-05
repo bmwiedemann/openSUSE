@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.2
+Version:        21.1.3
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -240,6 +240,8 @@ Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 
 Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 
+Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -393,6 +395,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1900 -p1
 %patch1910 -p1
 %patch1920 -p1
+%patch1930 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects

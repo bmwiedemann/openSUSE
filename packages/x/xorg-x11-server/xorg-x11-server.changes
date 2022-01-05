@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan  3 21:03:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_xfree86-activate-GPU-screens-on-autobind.patch 
+  * Part of the original patch by Dave Airlie has landed
+    078277e4d92f05a90c4715d61b89b9d9d38d68ea, this contains the
+    remainder of what was in SUSE before Xorg 21.1. 
+    (github issue#1254, boo#1192751)
+
+-------------------------------------------------------------------
+Mon Jan  3 18:29:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.3
+  * This release fixes several regressions since 1.20.x and 21.1.1 
+    + glx/dri: Filter out fbconfigs that don't have a supported pixmap format
+    + xf86/logind: Fix compilation error when built without logind/platform bus
+    + xf86/logind: fix missing call to vtenter if the platform device is not paused
+    + Convert more funcs to use InternalEvent.
+    + os: Try to discover the current seat with the XDG_SEAT var first
+
+-------------------------------------------------------------------
 Wed Dec 15 15:08:07 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- Update to version 21.1.1
+- Update to version 21.1.2
   * This release fixes 4 recently reported security vulnerabilities and
     several regressions.
   * In particular, the real physical dimensions are no longer reported
