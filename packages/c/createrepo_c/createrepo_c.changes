@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 30 04:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- python3-nose is not required for the testsuite, update BuildRequires
+  to the actual package used, python3-setuptools. 
+
+-------------------------------------------------------------------
 Wed Jun 30 15:35:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 0.17.3

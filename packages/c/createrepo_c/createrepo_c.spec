@@ -92,7 +92,7 @@ BuildRequires:  libmodulemd-devel >= 2.3.0
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 %if %{with tests}
 BuildRequires:  python3
-BuildRequires:  python3-nose
+BuildRequires:  python3-setuptools
 %endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  bash-completion-devel
