@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 22 10:11:19 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 4.3.2:
+  * #9917: C and C++, parse fundamental types no matter the order of simple type
+    specifiers.
+
+-------------------------------------------------------------------
 Sat Nov 27 21:14:22 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.3.1:
