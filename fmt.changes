@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jan  3 10:11:22 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.1.0
+  * Optimized chrono formatting.
+    + Processing of some specifiers such as %z and %Y is now up
+      to 10-20 times faster, for example on GCC 11 with
+      libstdc++.
+  * Implemented subsecond formatting for chrono durations.
+  * Fixed handling of precision 0 when formatting chrono
+    durations.
+  * Fixed an overflow on invalid inputs in the tm formatter.
+  * Added fmt::group_digits that formats integers with a
+    non-localized digit separator (comma) for groups of three
+    digits.
+  * Added support for faint, conceal, reverse and blink text
+    styles.
+  * Added experimental support for compile-time floating point
+    formatting.
+  * Added UDL-based named argument support to compile-time
+    format string checks.
+  * Implemented escaping of string range elements.
+  * Switched to JSON-like representation of maps and sets for
+    consistency with Python's str.format.
+  * Extended fmt::join to support C++20-only ranges.
+  * Optimized handling of non-const-iterable ranges and
+    implemented initial support for non-const-formattable types.
+  * Disabled implicit conversions of scoped enums to integers
+    that was accidentally introduced in earlier versions.
+  * Deprecated implicit conversion of [const] signed char* and
+    [const] unsigned char* to C strings.
+  * Deprecated _format, a legacy UDL-based format API.
+  * Marked format, formatted_size and to_string as [[nodiscard]].
+  * Added missing diagnostic when trying to format function and
+    member pointers as well as objects convertible to pointers
+    which is explicitly disallowed.
+  * Optimized writing to a contiguous buffer with format_to_n.
+  * Optimized writing to non-char buffers.
+  * Decimal point is now localized when using the L specifier.
+  * Improved floating point formatter implementation.
+  * Fixed handling of very large precision in fixed format.
+  * Made a table of cached powers used in FP formatting static.
+  * Resolved a lookup ambiguity with C++20 format-related
+    functions due to ADL.
+  * Removed unnecessary inline namespace qualification.
+  * Implemented argument forwarding in format_to_n.
+  * Fixed handling of implicit conversions in fmt::to_string and
+    format string compilation.
+  * Changed the default access mode of files created by
+    fmt::output_file to -rw-r--r-- for consistency with fopen.
+  * Make fmt::ostream::flush public.
+  * Improved C++14/17 attribute detection.
+  * Improved documentation.
+  * Improved fuzzers and added a fuzzer for chrono timepoint
+    formatting.
+  * Added the FMT_SYSTEM_HEADERS CMake option setting which
+    marks {fmt}'s headers as system. It can be used to suppress
+    warnings.
+  * Added the Bazel build system support.
+  * Improved build configuration and tests.
+  * Fixed various warnings and compilation issues.
+
+-------------------------------------------------------------------
 Sat Jul  3 05:28:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 8.0.1
