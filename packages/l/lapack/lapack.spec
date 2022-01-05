@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Patch2:         Fix-MinGW-build-error.patch
 Patch3:         Fix-some-minor-inconsistencies-in-LAPACKE_czgesvdq.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/ea2a102d3827.patch
 Patch4:         Avoid-out-of-bounds-accesses-in-complex-EIG-tests.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/38f3eeee3108b18158409ca2a100e6fe03754781
+Patch5:         Fix-out-of-bounds-read.patch
 
 BuildRequires:  gcc-fortran
 BuildRequires:  python3-base

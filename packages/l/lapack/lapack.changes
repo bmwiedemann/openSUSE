@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  3 08:34:37 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add Fix-out-of-bounds-read.patch to fix out of bound reads when
+  user input is not validated properly.  (bsc#1193562, CVE-2021-4048)
+
+-------------------------------------------------------------------
 Mon Jul 19 08:24:18 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Rename conflicting MIN.3 and MAX.3 manpages into lapack-{MAX,MIN}.3

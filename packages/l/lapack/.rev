@@ -431,4 +431,12 @@ An alternative would be to use the older manpages or to pre-generate them.
   %install: managed by update-alternatives and packaged as ghost.</comment>
     <requestid>907083</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>83541209ab274dc5899a96e79d1470d1</srcmd5>
+    <version>3.9.0</version>
+    <time>1641386372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943650</requestid>
+  </revision>
 </revisionlist>
