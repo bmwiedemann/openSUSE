@@ -212,4 +212,20 @@
 - drop remove_shebang.patch (upstream)</comment>
     <requestid>934627</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6806844ad68bdf58a301acdf59f71554</srcmd5>
+    <version>1.9.2</version>
+    <time>1641386365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.2:
+  * Fix for global simple type naming
+  * Improve error reporting for encoded data
+  * Fix attribute duplicates in attribute group
+  * Add process_skipped optional argument to decoding/encoding
+  * Add iter_decode() to document level API
+  * Enhance XMLResource class adding usage of pathlib.Path objects
+    for source and base_url arguments
+  * Fix for issue #273</comment>
+    <requestid>943601</requestid>
+  </revision>
 </revisionlist>

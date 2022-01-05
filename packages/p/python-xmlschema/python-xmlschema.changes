@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:40:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * Fix for global simple type naming
+  * Improve error reporting for encoded data
+  * Fix attribute duplicates in attribute group
+  * Add process_skipped optional argument to decoding/encoding
+  * Add iter_decode() to document level API
+  * Enhance XMLResource class adding usage of pathlib.Path objects
+    for source and base_url arguments
+  * Fix for issue #273
+
+-------------------------------------------------------------------
 Mon Nov 29 20:24:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:
