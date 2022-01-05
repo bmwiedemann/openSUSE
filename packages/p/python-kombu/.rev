@@ -789,4 +789,25 @@
   * Return empty list instead of InconsistencyError when exchange table is empty</comment>
     <requestid>939990</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>521898a074a0e87cfdda3f703ff771ce</srcmd5>
+    <version>5.2.3</version>
+    <time>1641386366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.3:
+  * Allow redis &gt;= 4.0.2.
+  * Fix PyPy CI jobs.
+  * SQS transport: detect FIFO queue properly by checking queue URL (#1450).
+  * Ensure that restore is atomic in redis transport (#1444).
+  * Restrict setuptools&gt;=59.1.1,&lt;59.7.0.
+  * Bump minimum py-amqp to v5.0.9 (#1462).
+  * Reduce memory usage of Transport (#1470).
+  * Prevent event loop polling on closed redis transports (and causing leak).
+  * Respect connection timeout (#1458)
+  * prevent redis event loop stopping on ‘consumer: Cannot connect’ (#1477).
+  * Bump redis version to &gt;= 3.4.1.
+  * try latest sqs dependencies to fix security warning.
+  * Tests &amp; dependency updates</comment>
+    <requestid>943612</requestid>
+  </revision>
 </revisionlist>

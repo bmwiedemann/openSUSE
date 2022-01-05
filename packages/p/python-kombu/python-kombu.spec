@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-kombu
-Version:        5.2.0
+Version:        5.2.3
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -29,8 +29,8 @@ BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro4}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module amqp >= 5.0.6}
-BuildRequires:  %{python_module boto3 >= 1.4.4}
+BuildRequires:  %{python_module amqp >= 5.0.9}
+BuildRequires:  %{python_module boto3 >= 1.9.12}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module case >= 1.5.2}
 BuildRequires:  %{python_module importlib-metadata >= 0.18}
@@ -38,11 +38,11 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pycurl >= 7.43.0.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module redis >= 3.3.11}
+BuildRequires:  %{python_module redis >= 3.4.1}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-amqp >= 5.0.6
+Requires:       python-amqp >= 5.0.9
 Requires:       python-cached-property
 Requires:       python-importlib-metadata >= 0.18
 Requires:       python-setuptools
