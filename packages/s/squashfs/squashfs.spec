@@ -1,7 +1,7 @@
 #
 # spec file for package squashfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,40 +17,37 @@
 
 
 Name:           squashfs
-Version:        4.4
+Version:        4.5
 Release:        0
 Summary:        A Read-Only File System with Efficient Compression
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            http://squashfs.sourceforge.net/
-Source0:        http://sourceforge.net/projects/squashfs/files/squashfs/%{name}%{version}/%{name}%{version}.tar.gz
+URL:            https://github.com/plougher/squashfs-tools
+Source0:        https://github.com/plougher/squashfs-tools/archive/refs/tags/4.5.tar.gz
 Patch0:         squashfs-64k.patch
 Patch1:         squashfs-thread-limit
+BuildRequires:  lzma-devel
+BuildRequires:  lzo-devel
+BuildRequires:  zlib-devel
+Supplements:    filesystem(squashfs)
 %if %{?suse_version} > 1315
 BuildRequires:  liblz4-devel
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150100
 BuildRequires:  libzstd-devel
 %endif
-BuildRequires:  lzma-devel
-BuildRequires:  lzo-devel
-BuildRequires:  zlib-devel
-Supplements:    filesystem(squashfs)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains the userland utilities to create and read
 squashfs images.
 
 %prep
-%setup -q -n squashfs%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n squashfs-tools-%{version}
 
 %build
 %define _lto_cflags %{nil}
-sed -i -e "s|-O2|%{optflags} -fcommon|" squashfs-tools/Makefile
-make %{?_smp_mflags} -C squashfs-tools XZ_SUPPORT=1 LZO_SUPPORT=1 \
+sed -i -e "s|-O2|%{optflags}|" squashfs-tools/Makefile
+%make_build -C squashfs-tools XZ_SUPPORT=1 LZO_SUPPORT=1 \
 %if %{?suse_version} > 1315
    LZ4_SUPPORT=1 \
 %endif
@@ -63,8 +60,8 @@ mkdir -p %{buildroot}%{_bindir}
 install -m 755 squashfs-tools/{un,mk}squashfs %{buildroot}%{_bindir}
 
 %files
-%defattr(-,root,root)
-%doc README-%{version} ACKNOWLEDGEMENTS CHANGES COPYING USAGE
+%license COPYING
+%doc README-%{version} ACKNOWLEDGEMENTS CHANGES USAGE
 %{_bindir}/*squashfs
 
 %changelog

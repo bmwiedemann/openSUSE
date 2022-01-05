@@ -1,9 +1,28 @@
-diff -dupr squashfs4.4/squashfs-tools/mksquashfs.c squashfs4.4_new/squashfs-tools/mksquashfs.c
---- squashfs4.4/squashfs-tools/mksquashfs.c	2019-08-29 03:58:04.000000000 +0200
-+++ squashfs4.4/squashfs-tools/mksquashfs.c	2019-10-21 15:34:39.393253955 +0200
-@@ -4948,9 +4948,9 @@ void write_filesystem_tables(struct squa
- 	SQUASHFS_INSWAP_SUPER_BLOCK(sBlk); 
- 	write_destination(fd, SQUASHFS_START, sizeof(*sBlk), sBlk);
+Index: squashfs-tools-4.5/squashfs-tools/mksquashfs.c
+===================================================================
+--- squashfs-tools-4.5.orig/squashfs-tools/mksquashfs.c
++++ squashfs-tools-4.5/squashfs-tools/mksquashfs.c
+@@ -5954,7 +5954,7 @@ static void print_options(FILE *stream,
+ 	fprintf(stream, "-root-gid <gid>\t\tset root directory group to <gid>\n");
+ 	fprintf(stream, "-force-uid <uid>\tset all file uids to <uid>\n");
+ 	fprintf(stream, "-force-gid <gid>\tset all file gids to <gid>\n");
+-	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 4K\n");
++	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 64K\n");
+ 	fprintf(stream, "-keep-as-directory\tif one source directory is specified, ");
+ 	fprintf(stream, "create a root\n");
+ 	fprintf(stream, "\t\t\tdirectory containing that directory, rather than the\n");
+@@ -6112,7 +6112,7 @@ static void print_sqfstar_options(FILE *
+ 	fprintf(stream, "-root-gid <gid>\t\tset root directory group to <gid>\n");
+ 	fprintf(stream, "-force-uid <uid>\tset all file uids to <uid>\n");
+ 	fprintf(stream, "-force-gid <gid>\tset all file gids to <gid>\n");
+-	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 4K\n");
++	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 64K\n");
+ 	fprintf(stream, "\nFilesystem filter options:\n");
+ 	fprintf(stream, "-ef <exclude_file>\tlist of exclude dirs/files.  ");
+ 	fprintf(stream, "One per line\n");
+@@ -6877,9 +6877,9 @@ print_sqfstar_compressor_options:
+ 	set_progressbar_state(FALSE);
+ 	write_filesystem_tables(&sBlk);
  
 -	if(!nopad && (i = bytes & (4096 - 1))) {
 -		char temp[4096] = {0};
@@ -14,12 +33,3 @@ diff -dupr squashfs4.4/squashfs-tools/mksquashfs.c squashfs4.4_new/squashfs-tool
  	}
  
  	close(fd);
-@@ -5898,7 +5898,7 @@ printOptions:
- 			ERROR("-force-uid <uid>\tset all file uids to <uid>\n");
- 			ERROR("-force-gid <gid>\tset all file gids to <gid>\n");
- 			ERROR("-nopad\t\t\tdo not pad filesystem to a multiple "
--				"of 4K\n");
-+				"of 64K\n");
- 			ERROR("-keep-as-directory\tif one source directory is "
- 				"specified, create a root\n");
- 			ERROR("\t\t\tdirectory containing that directory, "

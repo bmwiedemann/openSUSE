@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 11 23:03:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5:
+  *  Mksquashfs now supports "Actions".
+  * New sqfstar command which will create a Squashfs image from a tar archive.
+  * Tar style handling of source pathnames in Mksquashfs.
+  * Cpio style handling of source pathnames in Mksquashfs.
+  * New option to throttle the amount of CPU and I/O.
+  * Mksquashfs now allows no source directory to be specified.
+  * New Pseudo file "R" definition which allows a Regular file
+    o be created with data stored within the Pseudo file.
+  * Symbolic links are now followed in extract files
+  * Unsquashfs now supports "exclude" files.
+  * Max depth traversal option added.
+  * Unsquashfs can now output a "Pseudo file" representing the
+    input Squashfs filesystem.
+  * New -one-file-system option in Mksquashfs.
+  * New -no-hardlinks option in Mksquashfs.
+  * Exit code in Unsquashfs changed to distinguish between
+    non-fatal errors (exit 2), and fatal errors (exit 1).
+  * Xattr id count added in Unsquashfs "-stat" output.
+  * Unsquashfs "write outside directory" exploit fixed.
+  * Error handling in Unsquashfs writer thread fixed.
+  * Fix failure to truncate destination if appending aborted.
+  * Prevent Mksquashfs reading the destination file. 
+
+-------------------------------------------------------------------
 Tue Sep  1 17:16:30 UTC 2020 - Björn Voigt <bjoernv@arcor.de>
 
 - enabled ZSTD compression support for openSUSE >= 15.1
