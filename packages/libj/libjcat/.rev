@@ -48,4 +48,12 @@
   * Do not fail verification if compiled without an engine</comment>
     <requestid>931244</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99deec66d23ca6b7f788a434da80512c</srcmd5>
+    <version>0.1.9</version>
+    <time>1641386355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943564</requestid>
+  </revision>
 </revisionlist>

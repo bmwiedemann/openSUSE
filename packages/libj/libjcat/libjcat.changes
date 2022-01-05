@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 20 22:03:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.9:
+  * Set which backends are supported in the pkgconfig file
+  * Use -Dcli=false to reduce the install size
+  * Return an error if we try to self-sign no bytes of data
+  * Show a more accurate output when not all engines are enabled
+
+-------------------------------------------------------------------
 Sat Nov 13 11:57:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.8:
