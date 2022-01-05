@@ -1,7 +1,7 @@
 #
 # spec file for package python-prettytable
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Christian Berendt.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-prettytable
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
