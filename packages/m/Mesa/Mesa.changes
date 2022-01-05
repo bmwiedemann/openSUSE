@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 31 12:42:24 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.3.3
+  * Bug fixes
+  * Assassin’s Creed Syndicate crashes with Mesa 21.3.0+ ACO
+  * [21.3 regression] swr: Build failure with MSVC
+  * anv: dEQP-VK.graphicsfuzz.spv-stable-pillars-volatile-nontemporal-store fails
+
+-------------------------------------------------------------------
 Wed Dec  1 23:15:13 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.3.1
