@@ -5474,4 +5474,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Messages may be corrupted.</comment>
     <requestid>941861</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>b85b804dc54f0a278162e0979a622ee6</srcmd5>
+    <version>8.2.3995</version>
+    <time>1641386381</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.3995, fixes the following problems
+- fixed boo#1194219
+  * Various build flags accidentally enabled.
+  * Cannot disable requesting key codes from xterm.
+  * Vim9: compiler complains about using &quot;try&quot; as a struct member.
+  * Vim9: type checking global variables is inconsistent.
+  * Implementation of some list functions too complicated.
+  * Vim9: function test fails.
+  * Vim9: type checking for &quot;any&quot; is inconsistent.
+  context menu. (Gabriel Dupras)
+  * List.c contains code for dict and blob.
+  * Vim9: finddir() and uniq() return types can be more specific.
+  * go.mod files are not recognized.
+  * Cannot highlight the number column for a sign.
+  * gcc complains about buffer overrun.
+  * 'cindent' does not recognize inline namespace.
+  * Function does not abort after a type error in compare
+  * Vim9: debugger tries to read more lines than there are.
+  * getreg() and getregtype() contain dead code.
+  * Solution filter files are not recognized.
+  * More duplicated code in f_getreginfo().
+  * Crash when switching to other regexp engine fails.
+  * Crash when clearing the argument list while using it.
+  * Arglist test fails.
+  * Can define autocmd for every event by using &quot;au!&quot;.
+  * E1135 is used for two different errors.
+  * The argument list may contain duplicates.
+  * Duplicate code for translating script-local function name.
+  * Vim9: type check for using v: variables is basic.
+  * When modifyOtherKeys is used CTRL-C is not recognized.</comment>
+    <requestid>943787</requestid>
+  </revision>
 </revisionlist>

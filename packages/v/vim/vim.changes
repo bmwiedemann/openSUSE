@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Jan  4 14:54:47 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3995, fixes the following problems
+- fixed boo#1194219
+  * Various build flags accidentally enabled.
+  * Cannot disable requesting key codes from xterm.
+  * Vim9: compiler complains about using "try" as a struct member.
+  * Vim9: type checking global variables is inconsistent.
+  * Implementation of some list functions too complicated.
+  * Vim9: function test fails.
+  * Vim9: type checking for "any" is inconsistent.
+  context menu. (Gabriel Dupras)
+  * List.c contains code for dict and blob.
+  * Vim9: finddir() and uniq() return types can be more specific.
+  * go.mod files are not recognized.
+  * Cannot highlight the number column for a sign.
+  * gcc complains about buffer overrun.
+  * 'cindent' does not recognize inline namespace.
+  * Function does not abort after a type error in compare
+  * Vim9: debugger tries to read more lines than there are.
+  * getreg() and getregtype() contain dead code.
+  * Solution filter files are not recognized.
+  * More duplicated code in f_getreginfo().
+  * Crash when switching to other regexp engine fails.
+  * Crash when clearing the argument list while using it.
+  * Arglist test fails.
+  * Can define autocmd for every event by using "au!".
+  * E1135 is used for two different errors.
+  * The argument list may contain duplicates.
+  * Duplicate code for translating script-local function name.
+  * Vim9: type check for using v: variables is basic.
+  * When modifyOtherKeys is used CTRL-C is not recognized.
+  * Vim9: many local variables are initialized with an instruction.
+  * Vim9: no proper type check for first argument of call().
+  * Vim9: confusing error when using function() with a number.
+  * Vim9: no test for nested function not available later.
+  * Vim9: the second argument of map() and filter() is not checked at
+  compile time.
+  * Vim9: not sufficient testing for variable initialization.
+  * Vim9: test for map() on string fails.
+  * It is not easy to use a script-local function for an option.
+  * Vim9: Cannot set 'cpo' in main .vimrc if using Vim9 script.
+  * Vim9: double free with nested :def function.
+  * "gM" does not count tabs as expected.
+  * Vim9: skip expression type is not checked at compile time.
+  * Dockerfile using prefix name not recognized.
+  * Vim9 help still contains "under development" warnings.
+  * Error messages are spread out.
+  * Cannot use a script-local function for 'foldtext'.
+  * Containerfile using prefix name not recognized.
+  * When the compare function of sort() produces and error then sort()
+  does not abort.
+  * Vim9: type check for filter() does not accept unknown.
+  * The ins_complete() function is much too long.
+  * Help for expressions does not mention Vim9 syntax.
+  * Various spelling mistakes in comments.
+  * illegal memory access when completing with invalid bytes.
+  * No error for passing an invalid line number to append().
+  * The eval.txt help file is way too big.
+  * Function list test fails.
+  * Vim9: wrong argument for append() results in two errors.
+  * Restoring directory after using another window is inefficient.
+  * The way xdiff is used is inefficient.
+  * Cannot build with dynamic Ruby 3.1.
+  * Vim9: double free if a nested function has a line break in the argument
+  list.
+  * Vim9: no error if something follows :enddef in a nested function.
+  * Diff mode confused by NUL bytes.
+  * Build failure without the 'autochdir' option. (John Marriott)
+  * Vim9: double free when using lambda.
+  * Heredoc test fails.
+  * Using unititialized variable.
+  * getcmdline() argument has a misleading type.
+  * Coverity reports a memory leak.
+  * C line comment not formatted properly.
+  * After ":cd" fails ":cd -" is incorrect.
+  * Repeating line comment is undesired for "O" command.
+  * CTRL-U in Insert mode does not fix the indent.
+  * No proper test for maintaining change mark in diff mode.
+  * Insert mode completion function is too long.
+  * Line comment start is also found in a string.
+  * Match highlight disappears when doing incsearch for ":s/pat".
+  * SIGTSTP is not handled.
+  * Coverity reports a possible memory leak.
+  * Compiler warning from gcc for uninitialized variable.
+  * Insert mode completion functions are too long.
+  * Vim9: partial variable argument types are wrong, leading to a crash.
+  * When an internal error makes Vim exit the error is not seen.
+  * Unnecessary check for NULL pointer.
+  * Vim9: failure with partial with unknown argument count.
+  * Using freed memory with /\%V.
+  * Going beyond the end of the line with /\%V.
+  * Vim9: memory leak when text after a nested function.
+  * First line not redrawn when adding lines to an empty buffer.
+  * Insert completion code is too complicated.
+  * Vim9: no error for shadowing if script var is declared later.
+  * Duplicate assignment.
+  * Build failure compiling xxd with "-std=c2x".
+  * Error messages are spread out.
+  * Build fails for missing error message.
+  * Build failure with tiny and small features. (Tony Mechelynck)
+  * Some common lisp and scheme files not recognized.
+  * Vim9: no easy way to check if Vim9 script is supported.
+  * When using feedkeys() abbreviations may be blocked.
+  * Error messages are spread out.
+  * Build failure.
+  * Value of MAXCOL not available in Vim script.
+  * Error messages are spread out.
+  * Build fails.
+  * Error messages are spread out.
+  * Tiny build fails.
+  * Vim9: LISTAPPEND instruction does not check for a locked list.
+  * Error messages are spread out.
+  * FEARG_LAST is never used. (Dominique Pellé)
+  * Error messages are spread out.
+  * Build error when using dynamycally loaded Python 3.
+  * Vim9: the feature is not mentioned in the right places.
+  * If 'operatorfunc' invokes an operator the remembered Visual mode may be
+  changed. (Naohiro Ono)
+  * Vim9: debugging a for loop doesn't stop before it starts.
+  * Some lines of code not covered by tests.
+  * Error messages are spread out.
+  * Tiny build fails.
+  * Some insert completion code is not tested.
+  * Testing wrong operator.
+  * Vim9: error when extending dict<any> with another type that it was
+  initialized with.
+  * Wrong local-additions in the help with language mix.
+  * When recording a change in Select mode the first typed character appears
+  twice.
+  * Vim9: extend() complains about the type even when it was not declared.
+  * Not all sshconfig files are detected as such.
+
+-------------------------------------------------------------------
 Tue Dec 21 14:21:55 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.3863, fixes the following problems
