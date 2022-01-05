@@ -1,7 +1,7 @@
 #
 # spec file for package libeconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.4.2+git20211111.c7a2c52
+Version:        0.4.4+git20220104.962774f
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later

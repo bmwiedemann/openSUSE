@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 04 11:22:44 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.4+git20220104.962774f:
+  * Fixed i586 build (#158)
+
+-------------------------------------------------------------------
+Tue Jan 04 10:27:32 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.2+git20220104.5dfd69d:
+  * Reading numbers with different bases (e.g. oktal) (bsc#1193632) (#157)
+
+-------------------------------------------------------------------
 Thu Nov 11 14:22:24 UTC 2021 - schubi@suse.com
 
 - Update to version libeconf-0.4.2+git20211111.c7a2c52:
