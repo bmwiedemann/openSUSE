@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:12:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Reduce complexity by not rewriting subpackages at all.
+  Multibuild flavors now must be a superset of all existing
+  python3 flavors.
+
+-------------------------------------------------------------------
+Tue Jan  4 22:28:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- The difference of a single whitespace character is significant
+
+-------------------------------------------------------------------
+Tue Jan  4 13:58:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Appease factory-auto bot about package src name
+
+-------------------------------------------------------------------
+Tue Jan  4 10:18:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add additional patches fixing the situation with Python 3.10
+  compatibility:
+  - 2039-bunch-py310-fixes.patch (from gh#wxWidgets/Phoenix#2039)
+  - additional-310-fixes.patch (from various commits on master)
+
+-------------------------------------------------------------------
+Wed Dec 29 10:23:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Split out the TW python3 flavors into multibuild using the
+  python_subpackage_only mechanism: Multiple python3 flavors
+  sequentially require too much space and time in one build.
+
+-------------------------------------------------------------------
 Sat Jun 12 16:32:57 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Bump required wxWidgets version to 3.1.5.

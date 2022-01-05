@@ -1,0 +1,7 @@
+<multibuild>
+  <package>python3</package>
+  <package>python36</package>
+  <package>python38</package>
+  <package>python39</package>
+  <package>python310</package>
+</multibuild>

@@ -1,0 +1,83 @@
+---
+ docker/build/ubuntu-18.04/Dockerfile |    4 +++-
+ docker/build/ubuntu-20.04/Dockerfile |    2 +-
+ wx/lib/agw/flatnotebook.py           |   14 +++++++-------
+ wx/svg/__init__.py                   |    4 ++--
+ 4 files changed, 13 insertions(+), 11 deletions(-)
+
+--- a/docker/build/ubuntu-18.04/Dockerfile
++++ b/docker/build/ubuntu-18.04/Dockerfile
+@@ -53,6 +53,7 @@ RUN \
+         apt-get install -y python3.7 python3.7-dev libpython3.7-dev python3.7-venv; \
+         apt-get install -y python3.8 python3.8-dev libpython3.8-dev python3.8-venv; \
+         apt-get install -y python3.9 python3.9-dev libpython3.9-dev python3.9-venv; \
++        apt-get install -y python3.10 python3.10-dev libpython3.10-dev python3.10-venv; \
+         apt-get clean;
+ 
+ # Add files from host into the container
+@@ -72,7 +73,8 @@ RUN \
+         python3.6 -m venv venvs/Py36; \
+         python3.7 -m venv venvs/Py37; \
+         python3.8 -m venv venvs/Py38; \
+-        python3.9 -m venv venvs/Py39;
++        python3.9 -m venv venvs/Py39; \
++        python3.10 -m venv venvs/Py310;
+ 
+ # Define default command
+ CMD ["/bin/bash", "-l"]
+--- a/docker/build/ubuntu-20.04/Dockerfile
++++ b/docker/build/ubuntu-20.04/Dockerfile
+@@ -3,7 +3,7 @@ FROM ubuntu:20.04
+ 
+ # Set environment variables
+ ENV DIST_NAME=ubuntu-20.04
+-ENV USE_DEADSNAKES=no
++ENV USE_DEADSNAKES=yes
+ ENV USER=wxpy
+ ENV HOME=/home/$USER
+ ENV PYTHONUNBUFFERED=1
+--- a/wx/lib/agw/flatnotebook.py
++++ b/wx/lib/agw/flatnotebook.py
+@@ -925,14 +925,14 @@ def DrawButton(dc, rect, focus, upperTab
+ 
+     if focus:
+         if upperTabs:
+-            leftPt = wx.Point(rect.x, rect.y + (rect.height / 10)*8)
+-            rightPt = wx.Point(rect.x + rect.width - 2, rect.y + (rect.height / 10)*8)
++            leftPt = wx.Point(rect.x, int(rect.y + (rect.height / 10)*8))
++            rightPt = wx.Point(rect.x + rect.width - 2, int(rect.y + (rect.height / 10)*8))
+         else:
+-            leftPt = wx.Point(rect.x, rect.y + (rect.height / 10)*5)
+-            rightPt = wx.Point(rect.x + rect.width - 2, rect.y + (rect.height / 10)*5)
++            leftPt = wx.Point(rect.x, int(rect.y + (rect.height / 10)*5))
++            rightPt = wx.Point(rect.x + rect.width - 2, int(rect.y + (rect.height / 10)*5))
+     else:
+-        leftPt = wx.Point(rect.x, rect.y + (rect.height / 2))
+-        rightPt = wx.Point(rect.x + rect.width - 2, rect.y + (rect.height / 2))
++        leftPt = wx.Point(rect.x, int(rect.y + (rect.height / 2)))
++        rightPt = wx.Point(rect.x + rect.width - 2, int(rect.y + (rect.height / 2)))
+ 
+     # Define the top region
+     top = wx.Rect(rect.GetTopLeft(), rightPt)
+@@ -2765,7 +2765,7 @@ class FNBRendererFirefox2(FNBRenderer):
+         if pageTextColour is not None:
+             dc.SetTextForeground(pageTextColour)
+ 
+-        dc.DrawText(pc.GetPageText(tabIdx), posx + textOffset, imageYCoord)
++        dc.DrawText(pc.GetPageText(tabIdx), int(posx + textOffset), imageYCoord)
+ 
+         # draw 'x' on tab (if enabled)
+         if pc.HasAGWFlag(FNB_X_ON_TAB) and tabIdx == pc.GetSelection():
+--- a/wx/svg/__init__.py
++++ b/wx/svg/__init__.py
+@@ -132,8 +132,8 @@ class SVGimage(SVGimageBase):
+         """
+         size = wx.Size(*size)
+         if window:
+-            size.width *= window.GetContentScaleFactor()
+-            size.height *= window.GetContentScaleFactor()
++            size.width = int(size.width * window.GetContentScaleFactor())
++            size.height = int(size.height * window.GetContentScaleFactor())
+ 
+         # We can only have one overall scale factor for both dimensions with
+         # this rasterization method, so chose either the minimum of width or
