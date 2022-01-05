@@ -95,4 +95,14 @@
   * Adds the following new architectures: loongarch, xtensa, nios2, e2k. (forwarded request 935845 from dirkmueller)</comment>
     <requestid>935947</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>415f032fe2d11394824237b24a62c710</srcmd5>
+    <version>3.1.7</version>
+    <time>1641386348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.7:
+  * Reintroduce macros, if DOUBLE_CONVERSION_NON_PREFIXED_MACROS is set
+  * Also add support for Synopsys ARC64 architecture (forwarded request 943179 from dirkmueller)</comment>
+    <requestid>943528</requestid>
+  </revision>
 </revisionlist>

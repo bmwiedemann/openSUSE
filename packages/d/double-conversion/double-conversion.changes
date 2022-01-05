@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 30 09:36:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.7:
+  * Reintroduce macros, if DOUBLE_CONVERSION_NON_PREFIXED_MACROS is set
+  * Also add support for Synopsys ARC64 architecture 
+
+-------------------------------------------------------------------
 Sun Dec  5 18:57:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.6:

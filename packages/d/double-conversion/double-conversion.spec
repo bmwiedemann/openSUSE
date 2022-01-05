@@ -19,7 +19,7 @@
 %define lib_ver 3
 %define libname libdouble-conversion3
 Name:           double-conversion
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Binary-decimal and decimal-binary routines for IEEE doubles
 License:        BSD-3-Clause
