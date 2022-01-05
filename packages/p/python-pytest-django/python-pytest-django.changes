@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Dec 27 15:43:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.5.2
+  * Bugfixes
+  * Fix regression in v4.5.0 -
+    pytest.mark.django_db(reset_sequence=True) now implies
+    transaction=True again.
+- Release v4.5.1
+  * Bugfixes
+  * Fix regression in v4.5.0 - database tests inside (non-unittest)
+    classes were not ordered correctly to run before non-database
+    tests, same for transactional tests before non-transactional
+    tests.
+- Release v4.5.0
+  * Improvements
+  * Add support for :ref:`rollback emulation/serialized rollback
+    <test-case-serialized-rollback>`. The
+    :func:`pytest.mark.django_db` marker has a new
+    serialized_rollback option, and a
+    :fixture:`django_db_serialized_rollback` fixture is added.
+  * Official Python 3.10 support.
+  * Official Django 4.0 support (tested against 4.0rc1 at the time
+    of release).
+  * Drop official Django 3.0 support. Django 2.2 is still
+    supported, and 3.0 will likely keep working until 2.2 is
+    dropped, but it's not tested.
+  * Added pyproject.toml file.
+  * Skip Django's setUpTestData mechanism in pytest-django tests.
+    It is not used for those, and interferes with some planned
+    features. Note that this does not affect setUpTestData in
+    unittest tests (test classes which inherit from Django's
+    TestCase).
+  * Bugfixes
+  * Fix :fixture:`live_server` when using an in-memory SQLite
+    database.
+  * Fix typing of assertTemplateUsed and assertTemplateNotUsed.
+- Release v4.4.0
+  * Improvements
+  * Add a fixture :fixture:`django_capture_on_commit_callbacks` to
+    capture :func:`transaction.on_commit()
+    <django.db.transaction.on_commit>` callbacks in tests.
+- Release v4.3.0
+  * Improvements
+  * Add experimental :ref:`multiple databases <multi-db>` (multi
+    db) support.
+  * Add type annotations. If you previously excluded pytest_django
+    from your type-checker, you can remove the exclusion.
+  * Documentation improvements.
+- Release v4.2.0
+  * Improvements
+  * Official Django 3.2 support.
+  * Documentation improvements.
+  * Bugfixes
+  * Disable atomic durability check on non-transactional tests
+    (#910).
+- Skip python36: no python36-Django 4 in TW
+
+-------------------------------------------------------------------
 Wed Oct 28 23:58:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Disable Python 2

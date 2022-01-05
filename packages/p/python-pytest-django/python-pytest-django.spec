@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-django
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-pytest-django
-Version:        4.1.0
+Version:        4.5.2
 Release:        0
 Summary:        A Django plugin for py.test
 License:        BSD-3-Clause
@@ -28,7 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/p
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest > 5.4.0}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module setuptools_scm >= 1.11.1}
+BuildRequires:  %{python_module setuptools_scm >= 5.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -73,6 +74,7 @@ export PYTHONPATH=$(pwd)
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst docs/*.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_django
+%{python_sitelib}/pytest_django-%{version}*-info
 
 %changelog
