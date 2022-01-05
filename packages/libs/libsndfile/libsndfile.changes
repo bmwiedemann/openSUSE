@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  3 08:35:12 CET 2022 - tiwai@suse.de
+
+- Fix heap buffer overflow in flac_buffer_copy (CVE-2021-4156,
+  bsc#1194006):
+  libsndfile-CVE-2021-4156.patch
+
+-------------------------------------------------------------------
 Fri Jul 23 12:59:11 CEST 2021 - tiwai@suse.de
 
 - Fix heap buffer overflow vulnerability in msadpcm_decode_block

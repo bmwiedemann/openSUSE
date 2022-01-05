@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch34:        sndfile-deinterlace-channels-check.patch
 Patch35:        ms_adpcm-Fix-and-extend-size-checks.patch
+Patch40:        libsndfile-CVE-2021-4156.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake
