@@ -1,7 +1,7 @@
 #
 # spec file for package libkolabxml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Summary:        Kolab XML Format Schema Definitions Library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://kolab.org/about/libkolabxml
-Source:         http://mirror.kolabsys.com/pub/releases/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Make-sure-boost-is-found-when-using-libkolabxml.patch
 BuildRequires:  cmake
@@ -196,7 +196,8 @@ This package provides the php bindings for Libkolabxml
 %endif
 
 # parallel build is too unstable currently
-make -j1
+# run xsd without ASLR to workaround boo#1060506
+setarch -R make -j1
 
 %install
 %cmake_install

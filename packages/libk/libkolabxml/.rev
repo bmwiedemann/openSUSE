@@ -298,4 +298,14 @@ Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
   to make sure we only use CMake's FindBoost.cmake module. (boo#1180633)</comment>
     <requestid>860979</requestid>
   </revision>
+  <revision rev="34" vrev="13">
+    <srcmd5>6ed8767dd3a3fa2080cd4f520056d493</srcmd5>
+    <version>1.1.6</version>
+    <time>1641386354</time>
+    <user>dimstar_suse</user>
+    <comment>- Strip the URL from 'Source:'. The download link is dead.
+
+- Run xsd without ASLR to workaround boo#1060506</comment>
+    <requestid>943543</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  3 08:53:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip the URL from 'Source:'. The download link is dead.
+
+-------------------------------------------------------------------
+Sun Jan  2 06:46:14 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Run xsd without ASLR to workaround boo#1060506
+
+-------------------------------------------------------------------
 Wed Nov 11 14:45:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch
