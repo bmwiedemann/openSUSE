@@ -538,4 +538,15 @@ source service setup which messed up my spec file.
     (apm_bios, sonypi, toshiba, legacy rtc) (bsc#1192974) (forwarded request 941662 from mwilck)</comment>
     <requestid>941664</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e107775b12ca235281dc8232163a41b8</srcmd5>
+    <version>16.0.18</version>
+    <time>1641386380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.18:
+  * cdrom: Disable autoclose by default (boo#1165047).
+  * Make regenerate-initrd-posttrans compatible with Dracut's 
+    UEFI mode (unified kernel image) (forwarded request 943765 from mwilck)</comment>
+    <requestid>943766</requestid>
+  </revision>
 </revisionlist>

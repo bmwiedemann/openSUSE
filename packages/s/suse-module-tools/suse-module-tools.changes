@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  4 13:32:10 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.18:
+  * cdrom: Disable autoclose by default (boo#1165047).
+  * Make regenerate-initrd-posttrans compatible with Dracut's 
+    UEFI mode (unified kernel image)
+
+-------------------------------------------------------------------
 Mon Dec 20 13:13:04 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.17:
