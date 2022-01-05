@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Fri Dec 31 19:58:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Need typed_ast for all flavors in testing
+- Skip failing tests on 32-bit: gh#python/mypy#11148
+
+-------------------------------------------------------------------
+Fri Dec 31 17:17:41 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add missing g++ compiler for tests 
+
+-------------------------------------------------------------------
+Fri Dec 31 16:40:37 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add python-psutil as optional dependency.
+
+-------------------------------------------------------------------
+Fri Dec 31 11:48:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update requirements
+- Reenable testsuite by including the typed_ast stubs manually
+
+-------------------------------------------------------------------
+Wed Dec 22 20:10:32 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.930:
+ - New Feature: Explicit Type Aliases (PEP 613)
+  - You can now explicitly mark an assignment as a type alias, by using typing.TypeAlias
+  - For more context, see the docs or PEP 613.
+ - New Feature: NotRequired in TypedDicts
+  - You can now define individual TypedDict items as non-required by using typing_extensions.NotRequired. Previously this could only be configured at TypedDict level (by using total=).
+  - You can also use typing_extensions.Required to mark an item as required in a non-total TypedDict.
+ - New Feature: ParamSpec (Experimental)
+  - Mypy now partially support ParamSpec, which was introduced in Python 3.10. This makes it possible to define type variables that range over the parameter specification of a callable type. In particular, it allows giving precise types for some decorators that change the return type of the decorated function.
+ - Miscellaneous New Features
+  - Define a GitHub Action that makes it easier to run mypy in GitHub CI workflows (Elvis Pranskevichus, PR 11320)
+  - Allow mypy to run self check on PyPy 3.8 beta (Ethan Smith, PR 11350)
+  - Check that enum values are unique (Nikita Sobolev, PR 11267)
+  - Make enum classess with values implicitly final (Nikita Sobolev, PR 11247)
+  - Make enum members implicitly final (Nikita Sobolev, PR 10852)
+  - Allow NamedTuple to be used as a type that accepts all named tuples, as an experimental extension (Nikita Sobolev, PR 11162)
+  - Allow booleans to be narrowed to literal types (Ethan Leba, PR 10389)
+  - Add slots=True support for @dataclass (Nikita Sobolev, PR 11483)
+  - Add slots=True support for @attr.s (Nikita Sobolev, PR 11489)
+  - Support the typing_extensions.OrderedDict alias (Nikita Sobolev, PR 11533)
+ - Usability and Documentation Improvements
+  - Add better NamedTuple error messages (Nikita Sobolev, PR 11127)
+  - Show all overloads in error message (Akuli, PR 9177)
+  - Fix error message for dataclasses.field with positional argument (Hiroshi Ogawa, PR 11180)
+  - Fix error message for f-string and str-bytes-safe (Nikita Sobolev, PR 11139)
+  - Add documentation for type: ignore (Tushar Sadhwani, PR 11358)
+  - Support --exclude more than once on command line (Nipunn Koorapati, PR 11329)
+  - Use list[int] instead of List[int] in documentation (PR 11377, PR 11450) (Nick Crews)
+  - Remove builtins. from error messages (97littleleaf11, PR 11522)
+  - Document explicit type aliases (Nikita Sobolev, PR 11800)
+  - Improve documentation of annotating generator functions (Alex Waygood, PR 11623)
+  - Improve error message for nested TypedDict (97littleleaf11, PR 11658)
+  - Exit gracefully on KeyboardInterrupt (Marc Mueller, PR 10725)
+ - Optimizations: This release includes some optimizations that make mypy a bit faster (in addition to mypyc performance improvements discussed below):
+  - Enable --fast-exit by default to speed up mypy (Jukka Lehtosalo, PR 11541)
+  - Only read the stdlib versions dictionary once per run (Jukka Lehtosalo, PR 11542)
+  - Optimize commonly used function (Jukka Lehtosalo, PR 11543)
+  - Minor optimization/cleanup (Jukka Lehtosalo, PR 11544)
+  - Reduce the number of executed local imports (Jukka Lehtosalo, PR 11545)
+ - Mypyc Fixes and Improvements
+  - Add missing type coercions (Jared Hance, PR 11176)
+  - Support --allow-redefinition (Jared Hance, PR 11175)
+  - Constant fold integer operations and string concatenation (Jukka Lehtosalo, PR 11194)
+  - Use optimized implementation for builtins.sum (Sara Sinback and 97littleleaf11, PR 10268)
+  - Move mypyc to console_scripts to fix running on Windows 10 (谭九鼎, PR 11494)
+  - Make min(x, y) faster(Chetan Khanna and 97littleleaf11, PR 10265)
+  - Make max(x, y) faster (97littleleaf11, PR 11530)
+  - Speed up reference counting operations by inlining them in commonly executed blocks (Jukka Lehtosalo, PR 11540)
+  - Add support for attrs classes (Chad Dombrova, PR 11328)
+  - Port mypyc to Python 3.11 (Victor Stinner, PR 11652)
+  - Reduce the amount of debug information included in compiled extension modules (Nehal J Wani, PR 11526)
+ - Other Notable Fixes and Improvements
+  - Fix semantic analysis of assignment expressions (Shantanu, PR 11153)
+  - Fixes mypy crash on protocol with contravariant variable (Nikita Sobolev, PR 11135)
+  - Warn about unused ignores when not all specified error codes are used (Hiroshi Ogawa, PR 11178)
+  - Improve type narrowing for walrus operator in conditional statements (Shantanu, PR 11202)
+  - Fix literal type compatibility checking special case (Nikita Sobolev, PR 11236)
+  - Rename API method builtin_type to named_type (97littleleaf11, PR 11224)
+  - Fix narrowing information not propagated in assignment and boolean expressions (Ran Benita, PR 11207)
+  - Fix narrowing of a nested union of TypedDicts (Ran Benita, PR 11204)
+  - Fix case mismatching modules during namespace package search (Nipunn Koorapati, PR 11261)
+  - Disallow invalid identifiers from getting implicit bazel __init__.py (Nipunn Koorapati, PR 11268)
+  - Don’t type check lambdas nested in unchecked functions (Nikita Sobolev, PR 11213)
+  - Update None.__bool__ to return Literal[False] (Nikita Sobolev, PR 11290)
+  - Relax type checking of % formatting when the right operand is an iterable (97littleleaf11, PR 11319)
+  - Fix crash with namespace packages when generating html reports (Nikita Sobolev, PR 11338)
+  - Allow slice syntax in Annotated types (Zac Hatfield-Dodds, PR 11345)
+  - Show warning if self / cls argument is missing (Nikita Sobolev, PR 11317)
+  - Improve subtype checking of TypeGuard types (Nikita Sobolev, PR 11314)
+  - Fix type narrowing for overlaping runtime types (Nikita Sobolev, PR 11273)
+  - Do not use TypeGuard context for lambda (Nikita Sobolev, PR 11417)
+  - Check reachability in module bodies (Nikita Sobolev, PR 11361)
+  - Check that __new__ in a metaclass returns a subtype of type (Nikita Sobolev, PR 11420)
+  - Improve support of contextlib.asynccontextmanager (Barnaby Shearer, PR 11352)
+  - Discard deprecated builtin_type (97littleleaf11, PR 11343)
+  - Don't look in user site packages when using a virtual env (Dimitri Merejkowsky, PR 11444)
+  - Update stubgen to preserve string literals in annotations (Imad Eddine Rezgui, PR 11292)
+  - Fix issue with exporting names in the presence of __getattr__ (Shantanu, PR 11411)
+  - Reject duplicate bases when defining TypedDict (97littleleaf11, PR 11485)
+  - Fix type inference for index expression with a bounded TypeVar (Ilya Labun, PR 11434)
+  - Fix get_dynamic_class_hook in some scenarios (Jade Lin, PR 10904)
+  - Check print >> properly (Nikita Sobolev, PR 11576)
+  - Correctly handle cls in protocol classmethod (Ilia Novoselov, PR 11119)
+  - Use current Python version, rather than hardcoding 3.6, in stubgen (Shantanu, PR 10907)
+  - Don't use ModuleType.__getattr__ if we know module symbols (Jukka Lehtosalo, PR 11597)
+  - Fix strict equality when using the latest typeshed (Jukka Lehtosalo, PR 11599)
+  - Make sure ClassVar does not contain type variables (Nikita Sobolev, PR 11585)
+  - Allow overriding attributes with methods (Nikita Sobolev, PR 11561)
+  - Don’t generate an error for PEP 593 Annotated with a string literal second argument (Seth Yastrov, PR 10777)
+  - Install types to the correct environment (Konstantin Weddige, PR 11457)
+  - Support decorators in additional contexts (Nikita Sobolev, PR 11150)
+  - Fix crash involving unreachable binary operations (Shantanu, PR 11680)
+  - Fix None assignments with mypy daemon cache (Christian Bundy, PR 11574)
+  - Handle OSError when accessing the mtime of a mypy cache file (Zac Hatfield-Dodds, PR 11718)
+  - Special case some special Enum properties to be non-final (Nikita Sobolev, PR 11713)
+  - Fix crash involving undefined cyclic import * (Shantanu, PR 11681)
+  - Remove incorrect assumption about file system case sensitivity (Shantanu, PR 11708)
+  - Fix compatibility of bool and Literal[True, False] (Nikita Sobolev, PR 11709)
+  - Allow subclassing enums with annotations and no values (Nikita Sobolev, PR 11579)
+
+-------------------------------------------------------------------
+Wed Dec 22 11:34:33 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.921:
+ - Bug Fixes Included in This Release:
+  - Fix regression in PathLike (Shantanu, PR 11785)
+  - Allow calling a function with name _ (Jukka Lehtosalo, PR 11810)
+  - Fix signature in curses and corresponding dmypy bug (Shantanu, PR 11785)
+
+-------------------------------------------------------------------
+Thu Dec 16 08:04:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.920:
+ - Making a Variable Optional in an Else Block
+  - Now mypy alllows more general conditionally defined variables with optional types. Previously mypy allowed this only if a None assignment happened first. Now this is also supported. Implemented by Michael J. Sullivan in PR 11002.
+ - Type Checking __slots__ Assignment
+  - For classes that define the special __slots__ attribute, mypy will now report an error on assigning to attributes that are not found in the slots definitions (this matches runtime semantics).
+  - Note that this feature does not work for dynamically computed slots. Implemented by Nikita Sobolev in PR 10864.
+ - Partial Python 3.10 Support
+  - We now ship binary wheels for Python 3.10 and mypy supports the new Python 3.10 union type syntax.
+  - Some new features, including the match statement, ParamSpec and TypeAlias are not supported yet.
+ - Python 3.5 Is No Longer Supported
+  - Python 3.5 reached its end of life more than a year ago. Its support was deprecated in mypy 0.910 and it is no longer supported in mypy 0.920.
+ - Efficient String and Bytes Formatting in Mypyc
+  - Most string and bytes formatting methods now use fast C-level logic when compiled with mypyc. This includes % formatting, the format() method, and f-strings. This was implemented by 97littleleaf11 as part of a Google Summer of Code project.
+ - Work Towards singledispatch Support
+  - The signature of the initial function variant handles the generic case and describes the external signature of the singledispatch function.
+  - This was implemented Pranav Rajpal as part of a Google Summer of Code project.
+ - Stubgen Improvements
+  - Add support for yield statements in stubgen (Sebastian Rittau, PR 10745)
+  - Handle commas in namedtuple field definition in stubgen (Vanessa Ung, PR 10828)
+ - Other Notable Fixes and Improvements
+  - Allow plugin signature hooks to return FunctionLike (to support overloads) (pranavrajpal, PR 10717)
+  - Narrow type with type variable when the upper bound is a subtype of current type (ethframe, PR 10658)
+  - Make --cache-fine-grained imply --local-partial-types (Michael J. Sullivan, PR 10737)
+  - Support new union syntax in stubs independent of target Python version and in runtime context (PR 10770, PR 10771) (Jukka Lehtosalo)
+  - Support new union type syntax with isinstance() (Jukka Lehtosalo, PR 10775)
+  - Better message if method is incompatible with base class (Anmol Takiar, PR 10572)
+  - Allow redefinition of underscore functions (named '_') (pranavrajpal, PR 10811)
+  - Properly track positional-only arguments for unannotated functions (Michael J. Sullivan, PR 10802)
+  - Fixes to type checking %c string and bytes interpolation (97littleleaf11, PR 10869)
+  - Use better error message for %c interpolation (97littleleaf11, PR 10875)
+  - Skip overlapping overload checks in ignored files (Shantanu, PR 10922)
+  - Fix ad hoc instance intersection logic (Christoph Tyralla, PR 9909)
+  - Support tuple multiplication with literal integers (hatal175, PR 10361)
+  - Fix recursion issue with nested instances and unions (Peilonrayz, PR 9663)
+  - Fix caching behavior of PEP561-installed namespace packages (Michael J. Sullivan, PR 10937)
+  - Add __dataclass_fields__ and __attrs_attrs__ to dataclasses (Timofey Kukushkin, PR 8578)
+  - Fix argument checking on empty dict with double stars (Momoko Hattori, PR 9629)
+  - Fix some type-guard-related crashes (Shantanu, PR 11061)
+  - Reject raise Err if Err can’t be called without arguments (Nikita Sobolev, PR 11125)
+  - Fix TypedDict crash with function definition (Nikita Sobolev, PR 11126)
+  - Report attribute access errors for type variable bound to a union (Christoph Tyralla, PR 11140)
+  - Fix crash on dataclasses.field(unpack) (Nikita Sobolev, PR 11137)
+  - Fix crash related to ParamSpec in mypy daemon (Jukka Lehtosalo, PR 11567)
+  - Properly type check *CustomType and CustomType function arguments (Nikita Sobolev, PR 11151)
+  - Fix crash with overload and callable object decorators (Shantanu, PR 11630)
+  - Fix crash involving explicit reexport, import cycle, and a wildcard (Shantanu, PR 11632)
+ - Mypyc Features, Fixes, and Performace Improvements
+  - Fix class-based named tuples (Jukka Lehtosalo, PR 10746)
+  - Add a special case for len() of a string value (97littleleaf11, PR 10710)
+  - Reject instance attribute access through class object (Jukka Lehtosalo, PR 10798)
+  - Speed up the construction of list objects (97littleleaf11, PR 10807)
+  - Add bytes primitive type (97littleleaf11, PR 10881)
+  - Add bytearray support (97littleleaf11, PR 10891)
+  - Optimize construction via list() and dict() (Richard Si, PR 10918)
+  - Speed up bytes join() method (jhance, PR 10929)
+  - Speed up len(bytes) (97littleleaf11, PR 10936)
+  - Speed up bytes indexing and slicing (PR 10966, PR 10950) (97littleleaf11)
+  - Speed up bytes.decode() and str.encode() (PR 10974, PR 10951) (97littleleaf11)
+  - Speed up bytes equality checks (jhance, PR 10928)
+ - Documentation Improvements
+  - Add docs about exhaustive literal and enum checks (Nikita Sobolev, PR 10860)
+  - Add ‘or’ regular expression example to --exclude documentation (Niklas Gustafsson, PR 10903)
+  - Document per-module follow_imports more explicitly (Shantanu, PR 10845)
+  - Add docs for the TypeGuard type (Nikita Sobolev, PR 10758)
+  - Update type narrowing section in common issues (Nikita Sobolev, PR 11014)
+  - Document how --no-implicit-reexport handles from X import Y as Z (Max Marrone, PR 11083)
+  - Document strict config file option (Anders Kaseorg, PR 11132)
+  - Add better type narrowing documentation (Nikita Sobolev, PR 11088)
+  - Add documentation about := and type guards (Nikita Sobolev, PR 11161)
+
+-------------------------------------------------------------------
 Tue Nov  2 19:49:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - disable the tests to fix the build temporarily
@@ -22,7 +229,7 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Don't annotate unknown argument and return types (Sebastian Rittau, PR 10626)
  - Never generate a variable initializer (Sebastian Rittau, PR 10623)
  - Use NamedTuple class syntax (Sebastian Rittau, PR 10625)
- - Use T | None (PEP 604) instead of Optional[T] (Sebastian Rittau, PR 10624) 
+ - Use T | None (PEP 604) instead of Optional[T] (Sebastian Rittau, PR 10624)
   - Other Fixes and Improvements
   - Fix some crashes from faulty casts (Shantanu, PR 10560)
  - Update docs for deferral of PEP 563 to 3.11 (Smart, PR 10655)
@@ -32,7 +239,7 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Suggest types-setuptools for pkg_resources (Sebastian Rittau, PR 10681)
  - Fix crash with assignment to variable guarded with TypeGuard (PR 10683)
  - Don't ask to install a stub package if stubs are installed (PR 10670)
- - Fix crash when inferring multiple assignment with overloaded function (PR 10689) 
+ - Fix crash when inferring multiple assignment with overloaded function (PR 10689)
 - update to version 0.900:
   - Third-party Library Stubs in Stub Packages (Breaking Change)
   - Mypy now only ships with type stubs for stdlib modules (plus typing_extensions and mypy_extensions). If you use third-party libraries that don’t include stubs or inline type annotations, you can explicitly install stub packages, usually called types-<name>.
@@ -55,7 +262,7 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - New Mypyc Features
   - Support __setitem__, __delitem__, __len__ and __contains__ in native classes (PR 10451)
  - Basic support for class-based named tuples (PR 10252)
- - Support class-based TypedDict definitions (PR 10226) 
+ - Support class-based TypedDict definitions (PR 10226)
   - Mypyc Performance Improvements
   - Pre-allocate space in list comprehensions (97littleleaf11, PR 10295)
  - Faster dict true test (97littleleaf11, PR 10333)
@@ -74,7 +281,7 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Add primitives for list.sort() and list.reverse() (PR 9897)
  - Recognize six.moves.xrange as an alias of range (PR 9896)
  - Some tagged integer micro-optimizations (PR 9801)
- - Add primitive for dict.copy (vsakkas, PR 9721) 
+ - Add primitive for dict.copy (vsakkas, PR 9721)
   - Other Mypyc Fixes and Improvements
   - Fix reference counting in dict.setdefault (97littleleaf11, PR 10334)
  - Don't coerce types checked with isinstance (Sara Sinback, PR 10245)
@@ -91,18 +298,18 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Various small doc updates (PR 10177)
  - Make mypyc docs use the same theme as mypy docs (PR 10176)
  - Fix mypyc failing to compile on CPython 3.10.0a6 (Adrian Freund, PR 10202)
- - Avoid declaring variable in C for loop initialization (Thomas Johnson, PR 10091) 
+ - Avoid declaring variable in C for loop initialization (Thomas Johnson, PR 10091)
   - Stubgen Improvements
   - Properly convert overloaded functions (Chad Dombrova, PR 9613)
  - Fix invoking mro() (Gen Xu, PR 10138)
  - Render a bit better stubs (Sergei Izmailov, PR 9903)
  - Fixed Any and Dict missing from stubgen imports list (Ashley Whetter, PR 9900)
  - Fix type error (Shantanu, PR 10523)
- - Fixes and typos (Sergei Izmailov, PR 9877) 
+ - Fixes and typos (Sergei Izmailov, PR 9877)
   - Stubtest Improvements
   - Improve build error messages (Shantanu, PR 10365)
  - Check overloads are functions, don't early return (Shantanu, PR 10258)
- - Fix signature construction for overload + implicit classmethod (Shantanu, PR 9921) 
+ - Fix signature construction for overload + implicit classmethod (Shantanu, PR 9921)
   - Documentation Updates
   - Add security documentation for --install-types (Adam Weeden, PR 10555)
  - Improve documentation of extending mypy (Nikita Sobolev, PR 10222)
@@ -110,7 +317,7 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fix incomplete error codes documentation (Iulian Onofrei, PR 9799)
  - Document explicit_package_bases config file option (Sam Bull, PR 10020)
  - Clarify that mypy_path is relative to current working directory (Gustav Gränsbo, PR 9959)
- - Emphasise that users probably want --follow-imports=normal (Shantanu, PR 9955) 
+ - Emphasise that users probably want --follow-imports=normal (Shantanu, PR 9955)
   - Other Notable Fixes and Improvements
   - Make ignore_missing_imports work for third-party libraries which previously had bundled stubs (PR 10582)
  - Restrict the number of errors shown when there are missing stubs (PR 10579)
@@ -173,7 +380,7 @@ Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Detect invalid value for --custom-typeshed-dir (PR 9985)
  - Fix pip install for new typeshed (Ivan Levkivskyi, PR 9976)
  - Report incompatible assignments for descriptors with overloaded __set__ methods (Christoph Tyralla, PR 9893)
- - Fix TypedDict.get("missing_key") with string literal (Adrian Freund, PR 9906) 
+ - Fix TypedDict.get("missing_key") with string literal (Adrian Freund, PR 9906)
 - update to version0.812L
  - Improved Source File Finding
   - Mypy 0.800 changed how mypy finds modules if you run mypy as mypy directory/ or mypy -p package. Mypy started looking for source files in directories without a __init__.py file. This is often the expected behavior, and it avoids excluding some files that should be type checked.
@@ -213,7 +420,7 @@ Sat Jan 23 19:22:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    The necessity to repeatedly import various types and special forms from typing has been a long-term nuisance for users of static type checking and Python.
    Two new Python features improve this situation and are now supported by mypy:
        PEP 585 lets you use list[int] instead of List[int] (no need to import List and other generic collections from typing).
-       PEP 604 lets you write X | Y instead of Union[X, Y], and X | None instead of Optional[X] (no need to import Union or Optional from typing). 
+       PEP 604 lets you write X | Y instead of Union[X, Y], and X | None instead of Optional[X] (no need to import Union or Optional from typing).
    Note: Using list[int] requires Python 3.9 and X | Y requires Python 3.10 (alpha) in order to work at runtime. To use them on older versions of Python, use from __future__ import annotations. This allows them to be used in type annotations, but the older variants (or string literal escaping) may be required in non-annotation contexts, such as in type aliases. See the docs for more details.
    Here is an example that uses the new features:
        from __future__ import annotations
@@ -232,7 +439,7 @@ Sat Jan 23 19:22:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - When you run mypy as mypy <directory>, look for source files recursively also inside directories without a __init__.py (PR 9614)
   - Support namespace packages with -p (PR 9683)
   - Log encountered source files when running mypy with -v (PR 9672)
-  - Document the new module finding behavior (PR 9923) 
+  - Document the new module finding behavior (PR 9923)
  - Other Notable Improvements and Bug Fixes
   - Only treat import X as X as a re-export in stubs (Shantanu, PR 9515)
   - Fix package imports with aliases in stubgen (Chad Dombrova, PR 9534)
@@ -250,12 +457,12 @@ Sat Jan 23 19:22:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fix case folding of missing keys error message for TypedDicts (Marti Raudsepp, PR 9757)
   - Fix generic inheritance of __init__() methods in dataclasses and attrs classes (Nate McMaster, PR 9383, PR 9380)
   - Add more information to error message on too few arguments (Abhinay Pandey, PR 9796)
-  - Document PEP 585, 563, 604, and related functionality (Shantanu, PR 9763) 
+  - Document PEP 585, 563, 604, and related functionality (Shantanu, PR 9763)
  - Mypyc Improvements
    We use mypyc to compile mypy into fast C extension modules. This release includes many mypyc improvements.
    Xuanda Yang finished the migration to use a new, lower-level compiler intermediate representation in his Google Summer of Code project.
  - New supported Python features:
-  - Support the walrus operator (:=) (Michael J. Sullivan, PR 9624) 
+  - Support the walrus operator (:=) (Michael J. Sullivan, PR 9624)
  - Performance improvements:
   - Add primitives for list sort and list reverse (Jukka Lehtosalo, PR 9897)
   - Recognize six.moves.xrange again as an alias of range (Jukka Lehtosalo, PR 9896)
@@ -272,12 +479,12 @@ Sat Jan 23 19:22:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Add primitives for bitwise ops (Jukka Lehtosalo, PR 9529)
   - Speed up in operations for list/tuple (Johan Dahlin, PR 9004)
   - Add primitives for list, str and tuple slicing (Jukka Lehtosalo, PR 9283)
-  - Speed up tuple equality checks (Xuanda Yang, PR 9343) 
+  - Speed up tuple equality checks (Xuanda Yang, PR 9343)
  - Bug fixes:
   - Always add implicit None return type to __init__ method (Thomas Johnson, PR 9866)
   - Fix deallocation of deeply nested data structures (Michael J. Sullivan, PR 9839)
   - Fix using package imported inside a function (Jukka Lehtosalo, PR 9782)
-  - Fix type of for loop index register in for over range (Jukka Lehtosalo, PR 9634) 
+  - Fix type of for loop index register in for over range (Jukka Lehtosalo, PR 9634)
 
 -------------------------------------------------------------------
 Fri Jan 22 15:48:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
@@ -341,7 +548,7 @@ Sun Oct 11 06:53:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Various optimizations (PR 8903, PR 8870) (Michael J. Sullivan and Xuanda Yang, PR 9245)
   - Make it easier to write mypyc test cases (PR 9094)
  - Typeshed Updates
-  - Many improvements were made to typeshed — too many to list. 
+  - Many improvements were made to typeshed — too many to list.
 
 -------------------------------------------------------------------
 Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -360,7 +567,7 @@ Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Add narrowing unions with bool literals via identity check (Steve Dignam, PR 8821)
   - Always allow to cast to Any without warnings (oda, PR 8544)
   - Suggest solutions for a typo in a key of a TypedDict (Felicián Németh, PR 8483)
-  - Provide more context about why incompatible with supertype is an error (Chetan Khanna, PR 8866) 
+  - Provide more context about why incompatible with supertype is an error (Chetan Khanna, PR 8866)
  - Other Notable Improvements and Bug Fixes:
   - Fix handling dependencies to __call__ in mypy daemon (PR 8494)
   - Various improvements to stubtest (PR 8502, PR 8886) (Shantanu)
@@ -378,7 +585,7 @@ Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Allow attrs keyword-only arguments at any position (Markus Schmaus, PR 8803)
   - Detect duplicate keys in call-based TypedDict definitions (PR 8849)
   - Look at arguments when generating constraints for an overload (PR 8845)
-  - Fix potential wrong-file error message for unsupported types (PR 8854) 
+  - Fix potential wrong-file error message for unsupported types (PR 8854)
  - Typeshed Updates
   - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here.
 - update to version 0.770:
@@ -427,7 +634,7 @@ Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fix incorrect name lookup for decorated methods (Xuanda Yang, PR 8175)
   - Fix simplifying unions with type aliases (Xuanda Yang, PR 8146)
   - Fix crash when overriding __init__ in a dataclass subclass (Jacob Beck, PR 8159)
-  - Fix some daemon crashes involving classes becoming generic (PR 8157) 
+  - Fix some daemon crashes involving classes becoming generic (PR 8157)
  - Documentation and Error Reporting Improvements
   - Use fully qualified names in error messages for class names resembling builtins(Mukuntha N S, PR 8425)
   - Improve diagnostics involving missing stubs for a library that is installed in site-packages (Michael Lee, PR 8238)
@@ -440,18 +647,18 @@ Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Add a new error code for errors about unreachability (Denys Halenok, PR 8312)
   - Fix error indicator position in code with tabs (dosisod, PR 8307)
   - Document --local-partial-types (Xuanda Yang, PR 8201)
-  - Update documentation for Literal types (Michael Lee, PR 8152) 
+  - Update documentation for Literal types (Michael Lee, PR 8152)
  - Stubtest rewrite
    stubtest is a tool that compares stub definitions to what it finds at runtime with introspection and reports back inconsistencies. It got a complete rewrite. Some features of the new stubtest are:
   - Find missing, extraneous or mistyped classes, methods, functions and attributes in the stubs
   - Check presence, names and kinds of function arguments, accounting for overloads, decorators, *args and kwargs. Checks argument types against their default values, accounting for type vars.
   - Checks @property, @classmethod, @staticmethod declarations
-  - Check types of module level and class level attributes and enums 
+  - Check types of module level and class level attributes and enums
  - Some results of this:
   - We now run stubtest in typeshed CI (for stdlib)
   - We’ve fixed about 1900 issues in typeshed definitions
   - We’ve greatly improved Python 3.8 support in typeshed and it’ll be easier to make the changes needed for future Python versions
-  - We’ve uncovered a handful of issues in Python itself 
+  - We’ve uncovered a handful of issues in Python itself
  - Typeshed Updates:
   - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here.
 
@@ -472,9 +679,9 @@ Wed Jan  1 11:15:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Type Signature Suggestions for Tools
  - Type Inference Improvements
  - Fixes to Regressions
-  - Fix regression introduced in 0.750: union (non-)simplification should not affect type inference (PR 8095) 
+  - Fix regression introduced in 0.750: union (non-)simplification should not affect type inference (PR 8095)
  - Breaking Changes
-  - Make the error code of a binary operation involving overload operator, for consistency (PR 8124) 
+  - Make the error code of a binary operation involving overload operator, for consistency (PR 8124)
  - Other Notable Improvements and Bug Fixes
   - Generate error when assigning an Enum or TypedDict type to an attribute (Xuanda Yang, PR 8107)
   - Fix relative path calculation if path is on a different drive on Windows (Netzeband, PR 8094)
@@ -489,9 +696,9 @@ Wed Jan  1 11:15:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fix --warn-return-any false positive when returning Any from a function declared to return object (Xuanda Yang, PR 8011)
   - Stubgen: Split @abstractproperty into @abstractmethod and @property (Xuanda Yang, PR 8066)
   - Stubgen: Give a better error message when using a .pyd file as target (Xuanda Yang, PR 8063)
-  - Update stubgen documentation (PR 8031) 
+  - Update stubgen documentation (PR 8031)
  - Typeshed Updates
-  - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here. 
+  - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here.
 -------------------------------------------------------------------
 Thu Dec 12 12:09:10 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
@@ -534,7 +741,7 @@ Mon Jul 15 19:52:39 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fix binding of self-types on unions (PR 7152)
   - Add more details for Invalid type errors (PR 7166)
   - Fix custom __init__() in dataclasses (Ryan Gonzalez, PR 7168)
-  - Better support for indexing with unions of literal types (Michael Lee, PR 6558) 
+  - Better support for indexing with unions of literal types (Michael Lee, PR 6558)
 
 -------------------------------------------------------------------
 Sun Jun 30 11:35:29 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -584,7 +791,7 @@ Mon Aug 27 10:38:25 UTC 2018 - mimi.vx@gmail.com
 - fix install deps
   * support for dataclasses
   * better support for PEP 561
-  * adds support for dmypy run and a host of other small 
+  * adds support for dmypy run and a host of other small
   * many other imporvents
 
 -------------------------------------------------------------------
@@ -610,15 +817,15 @@ Sat Apr 14 11:48:34 UTC 2018 - sebix+novell.com@sebix.at
   * Fix operator access on Type[...] (PR 4823, fixes issue 4789)
   * Remove incorrect override check on overloaded methods (PR 4810 by Michael Lee, fixes issue 4565)
   * Handle NotImplemented returned from __ne__ (PR 4770 by Peter Ludemann, fixes issue 4767)
-  * Options in mypy.ini should be spelled with underscores, not hyphens (PR 4754 by Emil Hessman, fixes issue 4753) 
+  * Options in mypy.ini should be spelled with underscores, not hyphens (PR 4754 by Emil Hessman, fixes issue 4753)
  * Documentation Improvements
   * Add coroutines to cheat sheet (PR 4677 by Rob Day)
   * Add None return/strict-optional to common issues (PR 4594 by Viet Hung Nguyen)
-  * Mention that SupportsInt and friends don't support arithmetic (PR 4781, fixes issue 4758) 
+  * Mention that SupportsInt and friends don't support arithmetic (PR 4781, fixes issue 4758)
  * Stubgen Improvements
   * Emit Any type annotations for unannotated arguments (PR 4774 by Matt Gilson, fixes issue 4766)
   * Fix stubgen --recursive to only generate stubs for requested submodules. (PR 4845 by Matt Gilson, fixes issue 4844)
-  * Properly format Callables (PR 4650 by Evan Hubinger, fixes issue 4640) 
+  * Properly format Callables (PR 4650 by Evan Hubinger, fixes issue 4640)
 
 -------------------------------------------------------------------
 Fri Mar 23 19:57:09 UTC 2018 - sebix+novell.com@sebix.at
@@ -668,7 +875,7 @@ Sat Oct 21 20:44:08 UTC 2017 - sebix+novell.com@sebix.at
   * Allow assignments to multiple targets from union types (Ivan Levkivskyi, PR 4067)
   * Allow definitions of subscripted type aliases such as Item = Tuple[int, str] within functions (Ivan Levkivskyi, PR 4000)
   * Narrow type of optional left operand of in operator if the collection items aren’t optional (Ivan Levkivskyi, PR 4072)
-  * Generate an error if <unknown> type would be inferred for a variable (PR 4112) 
+  * Generate an error if <unknown> type would be inferred for a variable (PR 4112)
  * Notable Bugs Fixed
   * Fix errors not being reported for some modules with incremental mode by deleting cache file for a module if errors are found (Ivan Levkivskyi, PR 4045)
   * Fix incremental mode crash related to Type[...] types (Ivan Levkivskyi, PR 4038)
@@ -677,7 +884,7 @@ Sat Oct 21 20:44:08 UTC 2017 - sebix+novell.com@sebix.at
   * Fixes to non-method attributes with callable types (Elazar Gershuni, PR 4016)
   * Fix function overloading based on Type[...] types (Ivan Levkivskyi, PR 4037)
   * Fix processing invalid overloaded function definitions (Elazar Gershuni, PR 4064)
-  * Fix handling of disallow_any/disallow_untyped_defs combination in mypy config file (Jelle Zijlstra, PR 4076) 
+  * Fix handling of disallow_any/disallow_untyped_defs combination in mypy config file (Jelle Zijlstra, PR 4076)
 
 -------------------------------------------------------------------
 Wed Aug  9 15:57:18 UTC 2017 - sebix+novell.com@sebix.at
@@ -693,9 +900,9 @@ Thu Jul 27 08:32:18 UTC 2017 - sebix+novell.com@sebix.at
   * Fix bug in cache updates and improve cache logging (PR 3708)
   * Fix per-file strict Optional interaction with default-None args (PR 3686)
   * Fix crash in --quick mode when aliases are re-exported (Ivan Levkivskyi, PR 3740)
-  * Fix crash on incompatible redefinition in named tuple (Ivan Levkivskyi, PR 3760) 
+  * Fix crash on incompatible redefinition in named tuple (Ivan Levkivskyi, PR 3760)
  * Typeshed Bugs Fixed
-  * Fix regressions in csv.DictReader (Thomas Grainger, PRs 1475 and 1478) 
+  * Fix regressions in csv.DictReader (Thomas Grainger, PRs 1475 and 1478)
 
 -------------------------------------------------------------------
 Sat Jul 15 20:02:55 UTC 2017 - sebix+novell.com@sebix.at

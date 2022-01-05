@@ -16,35 +16,55 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without test
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define typed_ast_version 1.5.1
 Name:           mypy
-Version:        0.910
+Version:        0.930
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
+# License Source1: Apache-2.0. Only for the test suite, not packaged here.
+Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
 Source99:       mypy-rpmlintrc
-BuildRequires:  %{python_module mypy_extensions >= 0.4.0}
+BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typed-ast >= 1.4.0}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+BuildRequires:  %{python_module tomli >= 1.1.0}
+BuildRequires:  %{python_module typed-ast >= 1.4.0 if %python-base < 3.8}
+BuildRequires:  %{python_module typing_extensions >= 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mypy_extensions >= 0.4.0
+Requires:       python-mypy_extensions >= 0.4.3
+Requires:       python-tomli >= 1.1.0
+Requires:       python-typing_extensions >= 3.10
+%if 0%{?python_version_nodots} < 38
 Requires:       python-typed-ast >= 1.4.0
-Requires:       python-typing_extensions >= 3.7.4
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}
 %endif
+Suggests:       python-psutil >= 4.0
 BuildArch:      noarch
-# SECTION tests
-BuildRequires:  %{python_module pytest}
-# /SECTION
+%if %{with test}
+BuildRequires:  %{python_module attrs >= 18}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module importlib-metadata >= 4.6.1}
+BuildRequires:  %{python_module lxml >= 4}
+BuildRequires:  %{python_module psutil >= 4}
+BuildRequires:  %{python_module pytest >= 6.2}
+BuildRequires:  %{python_module pytest-forked >= 1.3}
+BuildRequires:  %{python_module pytest-xdist >= 1.34}
+BuildRequires:  %{python_module typed-ast >= 1.4.0}
+BuildRequires:  %{python_module virtualenv >= 20.6}
+BuildRequires:  gcc-c++
+%endif
 # SECTION docs
 BuildRequires:  python3-Sphinx >= 1.4.4
 BuildRequires:  python3-sphinx_rtd_theme >= 0.1.9
@@ -63,10 +83,13 @@ Mypy's type system features type inference, gradual typing, generics
 and union types.
 
 %prep
-%autosetup -n mypy-%{version} -p1
+%autosetup -n mypy-%{version} -p1 -a1
 
 sed -i '/env python3/d' ./mypy/stubgenc.py
 sed -i '/env python3/d' ./mypy/stubgen.py
+
+mkdir mystubs
+mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs mystubs/typed_ast
 
 %build
 %python_build
@@ -84,14 +107,29 @@ popd
 %python_clone -a  %{buildroot}%{_bindir}/stubtest
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if %{with test}
 %check
-# disable the tests as they require additional stubs and it's unclear how to proceed: https://lists.opensuse.org/archives/list/python@lists.opensuse.org/message/3BC3BP62EHPECYEGRXLL33D7LDFHPOPO/
-#sed -i '/plugin/d' ./mypy_self_check.ini
-#sed -i '/warn_unused_ignores/d' ./mypy_self_check.ini
-#sed -i '/python_version.*$/d' ./mypy_self_check.ini
-#%%python_exec -m mypy --config-file mypy_self_check.ini -p mypy
-# py.test3 -v … we need to analyze subset of tests which would be
-# available and without large dependencies.
+
+sed -i mypy_self_check.ini \
+    -e '/python_version.*$/d' \
+    -e '/warn_unused_ignores/d'
+
+%{python_expand # self-check with manually provided stubs for typed_ast
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export MYPYPATH=./mystubs
+$python -m mypy --config-file mypy_self_check.ini -p mypy
+}
+unset PYTHONPATH
+# cannot compile unoptimized with suse headers
+export MYPYC_OPT_LEVEL=2
+if [ $(getconf LONG_BIT) -ne 64 ]; then
+  # https://github.com/python/mypy/issues/11148
+  donttest+=" or testSubclassSpecialize or testMultiModuleSpecialize"
+  # fails only in python36 (EOL)
+  python36_donttest+=" or testIntOps"
+fi
+%pytest -n auto -k "not (testallexcept ${donttest} ${$python_donttest})"
+%endif
 
 %post
 %python_install_alternative mypy dmypy mypyc stubgen stubtest
@@ -102,7 +140,9 @@ popd
 %files %{python_files}
 %doc docs/README.md docs/build/html/
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mypy
+%{python_sitelib}/mypyc
+%{python_sitelib}/mypy-%{version}*-info
 %python_alternative %{_bindir}/dmypy
 %python_alternative %{_bindir}/mypy
 %python_alternative %{_bindir}/mypyc
