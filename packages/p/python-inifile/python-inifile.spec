@@ -1,7 +1,7 @@
 #
 # spec file for package python-inifile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-inifile
-Version:        0.4
+Version:        0.4.1
 Release:        0
 License:        BSD-3-Clause
 Summary:        A small INI library for Python
-Url:            https://github.com/mitsuhiko/python-inifile
+URL:            https://github.com/mitsuhiko/python-inifile
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/i/inifile/inifile-%{version}.zip
-Source1:        https://raw.githubusercontent.com/mitsuhiko/python-inifile/master/LICENSE
-Source2:        https://raw.githubusercontent.com/mitsuhiko/python-inifile/master/hello.ini
-Source3:        https://raw.githubusercontent.com/mitsuhiko/python-inifile/master/test.py
-BuildRequires:  python-rpm-macros
+Source0:        https://files.pythonhosted.org/packages/source/i/inifile/inifile-%{version}.tar.gz
+# Files missing from tarball
+Source1:        missing_files.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  unzip
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %python_subpackages
@@ -39,9 +38,8 @@ BuildArch:      noarch
 A small INI library for Python.
 
 %prep
-%setup -q -n inifile-%{version}
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
-python3 -m lib2to3 -w -n --no-diffs test.py
+%setup -q -a1 -n inifile-%{version}
+%autopatch -p1
 
 %build
 %python_build
