@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  5 15:06:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix deps for %check on Leap/Backports
+
+-------------------------------------------------------------------
 Sat Sep 25 09:17:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Only test the toplevel directory files by default.

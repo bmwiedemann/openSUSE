@@ -7,4 +7,12 @@
     <comment>required by tensorflow2 2.6.0 (currently specified in python-Keras:test)</comment>
     <requestid>921785</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eaa0f96f16cf4a246db32cc461fde0ea</srcmd5>
+    <version>2.6.0</version>
+    <time>1641480668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944063</requestid>
+  </revision>
 </revisionlist>

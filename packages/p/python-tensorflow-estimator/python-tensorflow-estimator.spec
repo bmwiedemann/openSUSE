@@ -51,8 +51,13 @@ ExcludeArch:    %{ix86}
 BuildRequires:  %{python_module keras = %{version}}
 BuildRequires:  %{python_module tensorflow-estimator = %{version}}
 BuildRequires:  %{python_module tensorboard = %{version}}
+%if 0%{?suse_version} < 1599
+# Leap 15.x / SLE15-SPx still use python 3.6
+BuildRequires:  %{python_module typing_extensions}
+%endif
 BuildRequires:  %{python_module scikit-learn}
-BuildRequires:  tensorflow2
+#2.6+ allows "from tensorflow.python.profiler import trace"
+BuildRequires:  tensorflow2 >= 2.6
 %endif
 %python_subpackages
 
