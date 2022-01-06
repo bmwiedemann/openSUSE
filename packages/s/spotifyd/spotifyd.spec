@@ -1,7 +1,7 @@
 #
 # spec file for package spotifyd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
+%define spotifyd_features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
 Name:           spotifyd
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Spotify client running as a UNIX daemon
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/Spotifyd/spotifyd
-Source0:        https://github.com/Spotifyd/spotifyd/archive/refs/tags/v%{version}.tar.gz#/spotifyd-%{version}.tar.gz
-Source1:        vendor.tar.bz2
-Patch0:	harden_spotifyd.service.patch
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
+Patch0:         harden_spotifyd.service.patch
 BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  rinstall
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(avahi-client)
@@ -41,31 +45,14 @@ protocol, which makes it show up as a device that can be controlled from
 the official clients.
 
 %prep
-%setup -q -a1
-%patch0 -p1
-
+%autosetup -a1 -p1
 mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+cp %{SOURCE2} .cargo/config
 
 %build
-cargo build \
-  --release \
-  --locked %{?_smp_mflags} \
-  --features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
+%{cargo_build} --features %{spotifyd_features}
 
 %install
-cargo install \
-  --no-track \
-  --root=%{buildroot}%{_prefix} \
-  --path . \
-  --features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
-
 install -pm0755 -D target/release/spotifyd %{buildroot}%{_bindir}/spotifyd
 install -pm0644 -D contrib/spotifyd.service %{buildroot}%{_userunitdir}/spotifyd.service
 

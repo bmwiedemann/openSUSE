@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 14 17:14:34 UTC 2021 - danilo.spinella@suse.com
+
+- Update to version 0.3.3:
+  * Bump version: 0.3.2 -> 0.3.3
+  * One last clippy warning
+  * More clippy errors
+  * Fix a first round of lint checks
+  * Run rustfmt to pass lint check
+  * Switch to not importing librespot root (which is binary) in favour of smaller libraries
+  * docs: Minor comment additions for MacOS
+  * Fix normalization.
+  * Fix polling in DBUS init
+- Update spec file to use cargo-packaging
+
+-------------------------------------------------------------------
 Tue Nov 23 15:19:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
