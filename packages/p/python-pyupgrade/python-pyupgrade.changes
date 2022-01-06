@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan  3 11:37:47 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 2.31.0:
+ - rewrite string formatting with **locals()
+- update to version 2.30.1:
+ - don't rewrite six.reraise with named args
+- update to version 2.30.0:
+ - rewrite abspath(__file__) to __file__ in py39+
+ - fix __path__ type annotation
+ - fix the diff output of `forced str("native") literals` section
+ - improve coverage pragmas with covdefaults 2.1
+ - Use org-default .github/FUNDING.yml
+   Committed via https://github.com/asottile/all-repos
+ - Rewrite docs examples with commented code to use diffs
+
+-------------------------------------------------------------------
+Tue Dec 28 16:15:14 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 2.30.0:
+ - rewrite abspath(__file__) to __file__ in py39+
+ - fix __path__ type annotation
+ - fix the diff output of `forced str("native") literals` section
+ - improve coverage pragmas with covdefaults 2.1
+ - Use org-default .github/FUNDING.yml
+   Committed via https://github.com/asottile/all-repos
+ - Rewrite docs examples with commented code to use diffs
+- update to version 2.29.1:
+ - prevent rewriting union types with forward annotations
+ - replace exit(main()) with raise SystemExit(main())
+   Committed via https://github.com/asottile/all-repos
+
+-------------------------------------------------------------------
 Tue Nov 16 07:44:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 2.29.1:
