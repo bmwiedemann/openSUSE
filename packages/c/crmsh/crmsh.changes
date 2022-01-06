@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 04 09:19:17 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220104.b683bf0d:
+  * Dev: bootstrap: Avoid duplicated setting for rsc_defaults
+
+-------------------------------------------------------------------
+Wed Dec 29 09:18:10 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211229.ace94b1f:
+  * Dev: testcase: Adjust original testcase based on previous changes
+  * Fix: ui_configure: Give a deprecated warning when using "ms" subcommand (bsc#1194125)
+  * Fix: xmlutil: Parse promotable clone correctly and also consider compatibility (bsc#1194125)
+
+-------------------------------------------------------------------
 Fri Dec 24 09:40:10 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211224.922207f9:
