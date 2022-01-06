@@ -498,7 +498,7 @@ When this package gets updated it installs the latest version of %name. \
 # same for non-singlespec (using internal %%_hpc_python3)
 %hpc_python_sitearch_no_singlespec %{_hpc_python_sysconfig_path %{?_hpc_python3:/usr/bin/python3}%{!?_hpc_python3:%{expand:%__%{python_flavor}}} platlib %{?hpc_prefix}}
 
-%_hpc_python_ver() %(%1 -c "import sys as s;print(s.version[:3]);")
+%_hpc_python_ver() %(%1 -c "import sysconfig as s; print(s.get_config_var('py_version_short'));")
 
 # get the (abbreviated) python version used for package and directory names (singlespec).
 %hpc_python_version %{_hpc_python_ver %{expand:%__%{python_flavor}}}

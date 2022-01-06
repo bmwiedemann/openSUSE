@@ -5,8 +5,8 @@
     <param name="package-meta">no</param>
     <param name="exclude">.git</param>
     <param name="filename">suse-hpc</param>
-    <param name="versionformat">0.4.%h</param>
-    <param name="revision">ac4858f24744588523da51f7fba4ea419187388e</param>
+    <param name="versionformat">0.5.%cd.%h</param>
+    <param name="revision">07cc46c5ab791219e5971581868fd20b7d661d32</param>
 	<param name="extract">general/dlinfo.c</param>
 	<param name="extract">general/macros.hpc</param>
 	<param name="extract">general/hpc_elf.pl</param>
@@ -16,5 +16,8 @@
   <service name="recompress" mode="disabled">
     <param name="file">suse-hpc*.tar</param>
     <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">suse-hpc</param>
   </service>
 </services>

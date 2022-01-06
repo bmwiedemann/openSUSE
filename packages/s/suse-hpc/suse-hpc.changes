@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  5 16:00:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.5.20211210.07cc46c
+  * support python 3.10 version string (#8)
+- Update _service to save git date and hash to version
+
+-------------------------------------------------------------------
 Sat Oct 23 09:08:29 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Cope with the fact that RPM 4.17 no longer has
