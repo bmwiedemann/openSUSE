@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  5 22:48:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Shorten Summary to silence rpmlint. 
+
+-------------------------------------------------------------------
 Wed Jun  5 08:07:54 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Initial packaging (version 0.3.2)
