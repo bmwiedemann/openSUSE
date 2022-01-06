@@ -1,7 +1,7 @@
 #
 # spec file for package sparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           sparse
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
 Group:          Development/Tools/Building
-URL:            https://sparse.wiki.kernel.org/index.php/Main_Page
+URL:            https://sparse.docs.kernel.org/
 Source:         https://mirrors.edge.kernel.org/pub/software/devel/sparse/dist/%{name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

@@ -452,4 +452,12 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
   * 0004-sindex.1-Use-for-a-plain-quote-char.patch (forwarded request 867120 from pluskalm)</comment>
     <requestid>867123</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>94af0f7b4e94d52282353479cd357a66</srcmd5>
+    <version>0.6.4</version>
+    <time>1641480678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944145</requestid>
+  </revision>
 </revisionlist>
