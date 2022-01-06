@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  4 19:05:56 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tree 2.0.1:
+  * Make patterns ending in '/' match directories (but not files)
+    for -I / -P, should also fix issues with --gitignore as well
+  - Fix --gitignore not matching files relative to the path of the
+    .gitignore
+
+-------------------------------------------------------------------
 Wed Dec 22 16:29:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tree 2.0.0:
