@@ -1,7 +1,7 @@
 #
 # spec file for package python-Lektor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-Lektor
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        A static content management system
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lektor/lektor/
-Source:         https://github.com/lektor/lektor/archive/%{version}.tar.gz#/Lektor-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM werkzeug_rename.patch gh#lektor/lektor#911 mcepl@suse.com
-# werkzeug.posixemulation doesn't exist anymore
-Patch0:         werkzeug_rename.patch
-Patch1:         more_recent_werkzeug.patch
+Source0:        https://github.com/lektor/Lektor/archive/refs/tags/v%{version}.tar.gz#/Lektor-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM new_version_of_mistune.patch gh#lektor/lektor#944 mcepl@suse.com
+# Make package working with mistune 2.*
+Patch0:         new_version_of_mistune.patch
+# PATCH-FIX-UPSTREAM skip-network-tests.patch gh#lektor/lektor#982 mcepl@suse.com
+# mark tests as requiring network connection, so we can skip them
+Patch1:         skip-network-tests.patch
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
@@ -60,7 +65,6 @@ BuildRequires:  %{python_module cryptography >= 1.3.4}
 BuildRequires:  %{python_module filetype >= 1.0.7}
 BuildRequires:  %{python_module inifile}
 BuildRequires:  %{python_module mistune >= 0.7.0}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pytest-click}
@@ -87,15 +91,11 @@ a CMS and a static blog engine.
 %prep
 %autosetup -p1 -n lektor-%{version}
 
-sed -i '/pytest-pylint/d;/pytest-cov/d' setup.py
-
-rm pytest.ini
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/lektor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -103,8 +103,8 @@ rm pytest.ini
 export LANG=en_US.UTF8
 # Test suite expects a git repo
 git init
-# These failures not yet investigated gh#lektor/lektor#918
-%pytest -k 'not (test_build_continue_in_existing_nonempty_dir and not test_build and not test_thumbnail_quality or test_build_continue_in_existing_nonempty_dir or test_build or test_deprecated_build_flag or test_thumbnail_dimensions_real or test_thumbnails_similar or test_thumbnails_differing or test_thumbnail_quality or test_plugin_build_events_via_cli or test_plugin_clean_events_via_cli or test_env_extra_flag_passthrough or test_multiple_extra_flags or test_plugin_bad_params)'
+# test_markdown_links is skipped because of gh#lektor/lektor#982
+%pytest -k 'not (network or test_markdown_links)'
 
 %post
 %python_install_alternative lektor

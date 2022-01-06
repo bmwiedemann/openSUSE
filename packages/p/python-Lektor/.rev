@@ -83,4 +83,28 @@
     <comment></comment>
     <requestid>937361</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ceaafa7451a397daf39bf1eb63107c9</srcmd5>
+    <version>3.3.0</version>
+    <time>1641480681</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 3.3.0:
+  - This release drops support for versions of Python before
+    3.6. In particular, Python 2.7 is no longer supported.
+  - Quite a few bugs have been fixed since the previous release.
+  - The Admin UI has seen a major refactor and various
+    performance optimisations. It has been rewritten in
+    Typescript, and updated to use v5 of the Bootstrap CSS
+    framework.
+- Remove unnecessary patches:
+  - more_recent_werkzeug.patch
+  - werkzeug_rename.patch
+- Added patches making things working:
+  - new_version_of_mistune.patch (gh#lektor/lektor#944) make the
+    package work with mistune 2.*
+  - skip-network-tests.patch (gh#lektor/lektor#982) we build in
+    the network isolated environment, we need to make tests which
+    need it</comment>
+    <requestid>944195</requestid>
+  </revision>
 </revisionlist>

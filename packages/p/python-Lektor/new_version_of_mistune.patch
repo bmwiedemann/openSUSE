@@ -1,0 +1,114 @@
+From 20c01cf12fab27c26d1bb0b66c9dca5904cfa148 Mon Sep 17 00:00:00 2001
+From: Evilham <cvs@evilham.com>
+Date: Sun, 10 Oct 2021 20:45:50 +0200
+Subject: [PATCH 1/5] Support newer mistune versions in addition to older ones
+
+It looks like lepture has been busy and mistune 2.0.0 is about to be
+released, there is already some software that depends on its alpha/rc
+versions and rather than backporting that, it makes more sense to
+prepare Lektor to be compatible with the newer version.
+
+This patch aims to introduce minimal changes to achieve that while
+keeping compatibility with mistune 0.8.X.
+---
+ lektor/markdown.py |   68 +++++++++++++++++++++++++++++++++++------------------
+ setup.cfg          |    2 -
+ 2 files changed, 46 insertions(+), 24 deletions(-)
+
+--- a/lektor/markdown.py
++++ b/lektor/markdown.py
+@@ -11,30 +11,50 @@ from lektor.context import get_ctx
+ 
+ _markdown_cache = threading.local()
+ 
++_old_mistune = int(mistune.__version__.split(".", maxsplit=1)[0]) < 2
+ 
+-class ImprovedRenderer(mistune.Renderer):
+-    def link(self, link, title, text):
+-        if self.record is not None:
+-            url = url_parse(link)
+-            if not url.scheme:
+-                link = self.record.url_to("!" + link, base_url=get_ctx().base_url)
+-        link = escape(link)
+-        if not title:
+-            return '<a href="%s">%s</a>' % (link, text)
+-        title = escape(title)
+-        return '<a href="%s" title="%s">%s</a>' % (link, title, text)
++if _old_mistune:
+ 
+-    def image(self, src, title, text):
+-        if self.record is not None:
+-            url = url_parse(src)
+-            if not url.scheme:
+-                src = self.record.url_to("!" + src, base_url=get_ctx().base_url)
+-        src = escape(src)
+-        text = escape(text)
+-        if title:
+-            title = escape(title)
+-            return '<img src="%s" alt="%s" title="%s">' % (src, text, title)
+-        return '<img src="%s" alt="%s">' % (src, text)
++    class ImprovedRenderer(mistune.Renderer):
++        def link(self, link, title, text):
++            return _render_link(link, text, title, record=self.record)
++
++        def image(self, src, title, text):
++            return _render_image(src, text, title, record=self.record)
++
++else:
++
++    class ImprovedRenderer(mistune.HTMLRenderer):
++        def link(self, link, text=None, title=None):
++            return _render_link(link, text, title, record=self.record)
++
++        def image(self, src, alt=None, title=None):
++            return _render_image(src, alt, title, record=self.record)
++
++
++def _render_link(link, text=None, title=None, record=None):
++    if record is not None:
++        url = url_parse(link)
++        if not url.scheme:
++            link = record.url_to("!" + link, base_url=get_ctx().base_url)
++    link = escape(link)
++    if not title:
++        return '<a href="%s">%s</a>' % (link, text)
++    title = escape(title)
++    return '<a href="%s" title="%s">%s</a>' % (link, title, text)
++
++
++def _render_image(src, alt="", title=None, record=None):
++    if record is not None:
++        url = url_parse(src)
++        if not url.scheme:
++            src = record.url_to("!" + src, base_url=get_ctx().base_url)
++    src = escape(src)
++    alt = escape(alt)
++    if title:
++        title = escape(title)
++        return '<img src="%s" alt="%s" title="%s">' % (src, alt, title)
++    return '<img src="%s" alt="%s">' % (src, alt)
+ 
+ 
+ class MarkdownConfig:
+@@ -56,7 +76,9 @@ def make_markdown(env):
+     env.plugin_controller.emit("markdown-config", config=cfg)
+     renderer = cfg.make_renderer()
+     env.plugin_controller.emit("markdown-lexer-config", config=cfg, renderer=renderer)
+-    return mistune.Markdown(renderer, **cfg.options)
++    if _old_mistune:
++        return mistune.Markdown(renderer, **cfg.options)
++    return mistune.create_markdown(renderer=renderer, **cfg.options)
+ 
+ 
+ def markdown_to_html(text, record=None):
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -37,7 +37,7 @@ install_requires =
+     Flask
+     inifile>=0.4.1
+     Jinja2>=3.0
+-    mistune>=0.7.0,<2
++    mistune>=0.7.0,<3.0
+     pip
+     python-slugify
+     requests[security]
