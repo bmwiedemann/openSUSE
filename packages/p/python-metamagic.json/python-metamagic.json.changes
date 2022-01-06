@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 05:50:48 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-collections-abc.patch:
+  * Use now current module path
+
+-------------------------------------------------------------------
 Wed Dec  8 13:48:30 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, not required

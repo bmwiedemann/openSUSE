@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>937360</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>cc963222f7cbc7e4847fb8f32a5b7ae4</srcmd5>
+    <version>0.9.6</version>
+    <time>1641480678</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-collections-abc.patch:
+  * Use now current module path</comment>
+    <requestid>944146</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-metamagic.json
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Version:        0.9.6
 Release:        0
 Summary:        Python JSON encoder
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://github.com/sprymix/metamagic.json
 Source:         https://files.pythonhosted.org/packages/source/m/metamagic.json/metamagic.json-%{version}.tar.gz
+Patch0:         use-collections-abc.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -39,7 +39,7 @@ A Python 3 implementation of a JSON encoder for Python objects
 designed to be compatible with native JSON decoders in various web browsers.
 
 %prep
-%setup -q -n metamagic.json-%{version}
+%autosetup -p1 -n metamagic.json-%{version}
 touch metamagic/__init__.py
 
 sed -i 's/from metamagic.utils.debug import assert_raises/from pytest import raises as assert_raises/' metamagic/json/tests/test_encoder.py
