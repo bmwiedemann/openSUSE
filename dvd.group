@@ -235,7 +235,7 @@
     <package name="bubblewrap-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_internet -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -243,7 +243,7 @@
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_internet -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2703,7 +2703,7 @@
     <package name="libunwind" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libupnp17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liburcu6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusb-0_1-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4748,8 +4748,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
