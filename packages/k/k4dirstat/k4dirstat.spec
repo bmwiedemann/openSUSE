@@ -1,7 +1,7 @@
 #
 # spec file for package k4dirstat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           k4dirstat
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -36,10 +36,9 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Core) >= 5.14
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     k4dirstat-lang = %{version}
 
 %description
 K4DirStat (KDE Directory Statistics) is a small utility program that sums up

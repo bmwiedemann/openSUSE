@@ -71,4 +71,21 @@
   * Fix all compilation warnings with Qt 5.15 and KDE 5.85</comment>
     <requestid>923565</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2f7bbd773f5e25f351179e8c46e1c4cc</srcmd5>
+    <version>3.4.0</version>
+    <time>1641480683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0
+  * Refresh tree after deleting a file
+  * Count directory sizes as 0 if excluded
+  * Fix a crash when unfolding a empty &lt;Files&gt; folder
+  * Updated Dutch translation
+  * Always save the allocated size to cache files and correct
+    saved size of hard links
+  * Display size of over-allocated files properly
+  * Use allocated size to compute folder size recursively
+    (i.e. no longer under estimate folders with many small files).</comment>
+    <requestid>944217</requestid>
+  </revision>
 </revisionlist>

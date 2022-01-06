@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  6 11:05:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.4.0
+  * Refresh tree after deleting a file
+  * Count directory sizes as 0 if excluded
+  * Fix a crash when unfolding a empty <Files> folder
+  * Updated Dutch translation
+  * Always save the allocated size to cache files and correct
+    saved size of hard links
+  * Display size of over-allocated files properly
+  * Use allocated size to compute folder size recursively
+    (i.e. no longer under estimate folders with many small files).
+
+-------------------------------------------------------------------
 Wed Oct  6 17:30:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.3.0
