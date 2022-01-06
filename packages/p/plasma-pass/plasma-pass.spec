@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-pass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lang_name plasma_applet_org.kde.plasma.pass
 %define kf5_min_version 5.57.0
 %define qt_min_version 5.11
-%bcond_without lang
+%bcond_without released
 Name:           plasma-pass
 Version:        1.2.0
 Release:        0
@@ -28,7 +28,7 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz.sig
 Source2:        plasma-pass.keyring
 %endif
@@ -36,6 +36,7 @@ Source2:        plasma-pass.keyring
 Patch0:         0001-Fix-build-Qt-5.12.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5I18n) >= %{kf5_min_version}
 BuildRequires:  cmake(KF5ItemModels) >= %{kf5_min_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_min_version}
@@ -45,7 +46,6 @@ BuildRequires:  cmake(Qt5DBus) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Qml) >= %{qt_min_version}
 BuildRequires:  pkgconfig(liboath)
-Recommends:     %{name}-lang
 Recommends:     password-store
 
 %description
@@ -63,7 +63,7 @@ generated and stored by the "pass" password manager.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
  %find_lang %{lang_name} %{name}.lang
 %endif
 
@@ -81,11 +81,11 @@ generated and stored by the "pass" password manager.
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.pass/
 %{_kf5_qmldir}/org/kde/plasma/private/plasmapass/libplasmapassplugin.so
 %{_kf5_qmldir}/org/kde/plasma/private/plasmapass/qmldir
-%if %{pkg_vcmp cmake(KF5Plasma) < 5.84}
+%if %{pkg_vcmp cmake(KF5Plasma) < 5.84} || %{pkg_vcmp cmake(KF5Plasma) >= 5.89}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.pass.desktop
 %endif
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

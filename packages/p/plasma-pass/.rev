@@ -46,4 +46,12 @@
   desktop files in %_kf5_servicesdir anymore.</comment>
     <requestid>906923</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7eb34a916cc8150d13145bf373ee4801</srcmd5>
+    <version>1.2.0</version>
+    <time>1641480666</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix installation with plasma-framework 5.89.</comment>
+    <requestid>944050</requestid>
+  </revision>
 </revisionlist>
