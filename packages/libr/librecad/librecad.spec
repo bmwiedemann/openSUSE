@@ -35,9 +35,7 @@ Source3:        http://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
 Source4:        http://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
-Patch0:         0001-Revert-AppImage-build-on-GitHub-Actions-with-go-appi.patch
-Patch1:         0002-Revert-RS_System-getDirectoryList-add-plugins-folder.patch
-Patch2:         0003-Revert-fix-RS_System-getDirectoryList-use-relative-p.patch
+Patch0:         0001-fixed-1488-getDirectoryList-failed-on-Linux-when-lib.patch
 Patch4:         librecad-no-date.diff
 Patch5:         librecad-use-system-libdxfrw.patch
 Patch6:         librecad-install.diff

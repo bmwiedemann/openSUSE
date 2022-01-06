@@ -213,4 +213,17 @@
     <comment></comment>
     <requestid>943431</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0fa0ae37a83d5cdfcfc6909e774c1efd</srcmd5>
+    <version>2.2.0~rc3</version>
+    <time>1641480684</time>
+    <user>dimstar_suse</user>
+    <comment>- replace the revert by an upstream fix
+  * add 0001-fixed-1488-getDirectoryList-failed-on-Linux-when-lib.patch
+  * remove
+    0001-Revert-AppImage-build-on-GitHub-Actions-with-go-appi.patch
+    0002-Revert-RS_System-getDirectoryList-add-plugins-folder.patch
+    0003-Revert-fix-RS_System-getDirectoryList-use-relative-p.patch (forwarded request 944220 from jirislaby)</comment>
+    <requestid>944222</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  6 11:44:32 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- replace the revert by an upstream fix
+  * add 0001-fixed-1488-getDirectoryList-failed-on-Linux-when-lib.patch
+  * remove
+    0001-Revert-AppImage-build-on-GitHub-Actions-with-go-appi.patch
+    0002-Revert-RS_System-getDirectoryList-add-plugins-folder.patch
+    0003-Revert-fix-RS_System-getDirectoryList-use-relative-p.patch
+
+-------------------------------------------------------------------
 Sat Jan  1 16:38:27 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - fix paths creation (e.g. fonts loading) by:
