@@ -58,6 +58,7 @@ Tue Dec 20 12:45:39 UTC 2021 - Robert Frohl <rfrohl@suse.com>
     provider GUID.
   * "Follow DCCP stream" feature to filter for and extract the contents of DCCP streams.
   * Wireshark now supports dissecting RTP packets with OPUS payloads.
+  * Added support for Shared Memory Communications (SMC) (jsc#SLE-18727)
 - Further features, bug fixes and new and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-3.6.0.html
 - updated patch to work with upstream changes
