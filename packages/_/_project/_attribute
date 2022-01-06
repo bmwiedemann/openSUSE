@@ -4,20 +4,20 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1172073: '20211203'
-  boo#1176553: '20220104'
-  boo#1183454: '20220104'
+  boo#1172073: '20220105'
+  boo#1176553: '20220105'
+  boo#1183454: '20220105'
   boo#1189869: '20211207'
   boo#1190434: '20220104'
   boo#1190670: '20211128'
-  boo#1190823: '20220102'
+  boo#1190823: '20220105'
   boo#1191225: '20211210'
   boo#1191603: '20220104'
   boo#1192118: '20211117'
   boo#1192420: '20211106'
   boo#1192667: '20211128'
   boo#1192701: '20211123'
-  boo#1192812: '20220104'
+  boo#1192812: '20220105'
   boo#1192921: '20211122'
   boo#1192940: '20211121'
   boo#1192959: '20211121'
@@ -33,8 +33,8 @@
   boo#1193758: '20211214'
   boo#1193909: '20220104'
   boo#1194054: '20220103'
-  boo#1194208: '20220104'
-  bsc#1161276: '20220104'
+  boo#1194208: '20220105'
+  bsc#1161276: '20220105'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
   poo#100991: '20211117'
   poo#101109: '20211102'
@@ -55,11 +55,11 @@
   poo#104163: '20220103'
   poo#104325: '20211227'
   poo#104505: '20211229'
-  poo#104541: '20220104'
+  poo#104541: '20220105'
   poo#104542: '20220103'
   poo#104559: '20220102'
-  poo#80628: '20211223'
-  poo#91383: '20220104'
+  poo#80628: '20220105'
+  poo#91383: '20220105'
   poo#96611: '20211109'
   poo#99039: '20211110'
   poo#99057: '20220103'
@@ -109,7 +109,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220105</value>
+    <value>20220106</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -437,7 +437,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220105'
 published: '20220103'
 publishing: '20220103'
 testing: '20220105'
