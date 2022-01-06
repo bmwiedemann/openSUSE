@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpi4py
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 
 Name:           python-mpi4py
-Version:        3.1.1
+Version:        3.1.3
 Release:        0
 Summary:        MPI for Python
 License:        BSD-2-Clause
@@ -135,11 +135,16 @@ EOL
 export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
 export OMPI_MCA_rmaps_base_oversubscribe=yes
+donttest="test_spawn"
+%ifarch %ix86
+# https://github.com/mpi4py/mpi4py/issues/105
+donttest+="|test_io"
+%endif
 rm -rf build _build.*
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 rm -rf build _build.*
 %setup_openmpi
-%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="test_spawn"
+%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="$donttest"
 }
 
 %files %{python_files}
