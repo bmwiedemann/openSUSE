@@ -1,7 +1,7 @@
 #
 # spec file for package bottom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           bottom
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT
 Group:          System/Monitoring
 URL:            https://github.com/ClementTsang/bottom
-Source:         https://github.com/ClementTsang/bottom/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/ClementTsang/bottom/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo

@@ -1,5 +1,5 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">bottom-0.6.4</param>
+    <param name="srcdir">bottom-0.6.6</param>
   </service>
 </services>
