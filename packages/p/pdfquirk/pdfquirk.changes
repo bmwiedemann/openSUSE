@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  5 08:21:50 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fix Requires: Does not need img2pdf any more, but ImageMagick 
+
+-------------------------------------------------------------------
+Wed Jan  5 08:18:19 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 0.95. Feature and bugfix release.
+- Add spanish translation as new source. It was provided after the 
+  release of 0.95 and will go away with the next version of pdfquirk 
+
+-------------------------------------------------------------------
 Wed Jan  6 12:48:01 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Add the tarball again and set name properly. 
