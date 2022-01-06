@@ -18,4 +18,12 @@
 - Spec cleanup</comment>
     <requestid>906920</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>af21e509f3ec1d2310cfbcff0137c2c2</srcmd5>
+    <version>1.1</version>
+    <time>1641480680</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix installation (again). Upstream changed their mind.</comment>
+    <requestid>944208</requestid>
+  </revision>
 </revisionlist>

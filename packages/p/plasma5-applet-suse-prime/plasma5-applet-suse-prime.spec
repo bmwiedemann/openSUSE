@@ -50,8 +50,6 @@ A Plasma 5 applet for controlling SUSE Prime.
 %doc README.md
 %{_kf5_appstreamdir}/org.kde.plasma.prime.appdata.xml
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.prime/
-%if %{pkg_vcmp plasma-framework-devel < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.prime.desktop
-%endif
 
 %changelog
