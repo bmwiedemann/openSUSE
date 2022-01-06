@@ -1,7 +1,7 @@
 #
 # spec file for package nsjail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           nsjail
-Version:        3.0
+Version:        3.0+git72.dccf911
 Release:        0
 Summary:        A light-weight process isolation tool
 License:        Apache-2.0
 Group:          System/GUI/Other
 URL:            https://nsjail.com
-Source0:        https://github.com/google/nsjail/archive/%{version}.tar.gz#/nsjail-%{version}.tar.gz
-Source1:        kafel.tar.gz
+Source0:        nsjail-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -42,7 +41,7 @@ A light-weight process isolation tool, making use of Linux namespaces and
 seccomp-bpf syscall filters (with help of the kafel bpf language)
 
 %prep
-%setup -qa1
+%setup -qa0
 
 %build
 %define _lto_cflags %{nil}
@@ -67,6 +66,7 @@ install -m 644 configs/*.cfg %{buildroot}/%{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/demo-dont-use-chrome-with-net.cfg
 %config %{_sysconfdir}/%{name}/firefox-with-cloned-net.cfg
 %config %{_sysconfdir}/%{name}/firefox-with-net.cfg
+%config %{_sysconfdir}/%{name}/firefox-with-net-wayland.cfg
 %config %{_sysconfdir}/%{name}/home-documents-with-xorg-no-net.cfg
 %config %{_sysconfdir}/%{name}/imagemagick-convert.cfg
 %config %{_sysconfdir}/%{name}/static-busybox-with-execveat.cfg

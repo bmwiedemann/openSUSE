@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Jan 05 08:34:49 UTC 2022 - jsegitz@suse.com
+
+- Changed version string to 3.0+git72.dccf911 and adjusted
+  service file. The previous version scheme results in version
+  strings that are "lower" that e.g. 3.0.
+
+-------------------------------------------------------------------
+Wed Jan 05 03:41:13 UTC 2022 - william.brown@suse.com
+
+- Update to version 3.0~git72.dccf911:
+  * log: use TEMP_FAILURE_RETRY instead of fallback to dprintf
+  * make indent
+  * Fix compile using `FROM ubuntu:20.04`
+  * cgroup2: use cgroup_mem_swap_max and cgroup_mem_memsw_max
+  * cgroup2: support cgroup_mem_memsw_max
+  * fix mem clean in finishFromParent
+  * Fix whitespace in kafel
+  * Fix build
+  * Update kafel for RISC-V support
+  * Add support for setting cgroup memory.memsw.limit_in_bytes
+  * Allow mount options to contain colons.
+  * macros: make NS_VALSTR_STRUCT accept unsigned/64-bit vals
+  * configs/firefox-with-net-wayland.cfg: retain original WAYLAND_DISPLAY value
+  * The default rlimit_as value is 4096, not 512.
+  * configs: firefox+wayland example
+  * config.proto: renumerate fields
+  * configs/imagemagick: alternative file conversion command
+  * Fix duplicate field number
+  * Fix formatting
+  * Update kafel - x86 build fixes
+  * cgroup: write period before quota
+  * rtprio, msgqueue - defaulting to 'soft'
+  * Renaming use_switchroot option with no_pivotroot
+  * Consistentency with  RLIMIT_* constant name
+  * Adding a warning when switchroot is used
+  * Added rt, memlock & msgq limits
+  * subproc: warn about CLONE_NEWTIME and clone(), and remove notice about CLONE_NEWCGROUP as the kernel versions should be now new enough for its support
+  * subproc: debug log for unshare()
+  * Merge branch '_test_switchroot_alternative'
+  * No Yoda
+  * cmdline: clone_newcgroup -> true by default; clone_newtime should be false
+  * Comment fix
+  * Added use_switchroot option
+  * make indent
+  * MACVLAN modes support
+  * Enable support for clone3() and for CLONE_NEWTIME
+  * Fixed macro in subproc.cc
+  * Initial support for CLONE_NEWTIME
+  * Update kafel to include bugfixes
+  * configs/ - add comments to config files using #
+  * Bump kafel
+  * Yet another bugfix Kafel version bump
+  * update kafel again to include a bugfix.
+  * Update kafel
+  * Fix default value of cgroup_cpu_mount in README
+  * Fix typo in command line description
+  * net: add support for max_conns
+  * subproc: refer users to dmesg in case si_syscall==31 (SIGSYS)
+  * Fix build
+  * Add new capabilities, ignore unsupported caps for bounding set
+  * nsjail: don't add connections to the proxy map if launching a new process failed
+  * subproc: kill a process once in the -Ml mode once the TCP connection has ended
+  * make indent
+  * remove build dependency on which
+  * Makefile: compile kafel with -fPIE (maybe fixes #149)
+  * Fix compilation errors on old gcc (5.4.0)
+  * config.proto: make indent
+  * config.proto: renumerate config fields
+
+-------------------------------------------------------------------
+Wed Jan 05 03:32:47 UTC 2022 - william.brown@suse.com
+
+- Add _service file to allow updating directly from git
+
+-------------------------------------------------------------------
 Tue Jul 28 09:10:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0:
