@@ -1,7 +1,7 @@
 #
 # spec file for package mdbtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libmdb    libmdb3
 %define libmdbsql libmdbsql3
 Name:           mdbtools
-Version:        0.9.3
+Version:        1.0.0
 Release:        0
 Summary:        A Suite of Libraries and Programs to Access Microsoft Access Databases
 License:        GPL-2.0-or-later
@@ -127,8 +127,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/mdb*.h
 %{_libdir}/libmdbsql.so
 %{_libdir}/libmdb.so
-%{_libdir}/libmdbodbc.so
-%{_libdir}/libmdbodbcW.so
+%dir %{_libdir}/odbc
+%{_libdir}/odbc/libmdbodbc.so
+%{_libdir}/odbc/libmdbodbcW.so
 %{_libdir}/pkgconfig/libmdb.pc
 %{_libdir}/pkgconfig/libmdbsql.pc
 

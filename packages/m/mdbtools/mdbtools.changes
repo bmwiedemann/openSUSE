@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan  4 22:58:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Install `libmdbodbc.so` and `libmdbodbcW.so` into ${libdir}/odbc 
+  * Do not install `mdb-sql` if SQL support was not built 
+  * Do not install `libmdbsql.pc` if SQL support was not built
+  * Simplify `--cflags` for libmdb
+  * Provide correct `--cflags` for libmdbsql
+  * Copy date formats when cloning handles 
+  * Fix incorrect reading of double values 
+  * Fix accidental reads of non-index data 
+  * New `mdb_set_repid_fmt()` for setting the format of Rep IDs (UUIDs)  
+  * New case-insensitive, Unicode-aware `ILIKE` operator 
+  * New `<>` (not equal) operator 
+  * Improved support for comparing floating-point values to integers
+  * Improved support for floating point literals with no fractional digits (e.g. "3.")
+  * Add support for querying Rep IDs
+  * Format boolean values correctly as `SQL_C_CHAR` 
+  * Add support for the `SQL_C_WCHAR` (UTF-16) return type 
+  * The Unicode driver (`libmdbodbcW.so`) no longer uses iconv 
+  * Add support for older iODBC installations lacking `odbcinst.h`
+  * Convert table names to lower case when exporting to PostgreSQL 
+  * Use `CREATE IF NOT EXISTS` when exporting to PostgreSQL 
+  * Fix issue where byte columns with values > 127 were exported as negative numbers
+  * Deprecate tool
+
+-------------------------------------------------------------------
 Wed May 19 06:23:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to new upstream url
