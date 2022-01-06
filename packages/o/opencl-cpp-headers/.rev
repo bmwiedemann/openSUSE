@@ -57,4 +57,13 @@
   * Synchronize with OpenCL v3.0.8 specification release.</comment>
     <requestid>903839</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1c5676351cb5777b52a25dcf45cf133f</srcmd5>
+    <version>2.0.16</version>
+    <time>1641480648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.16.
+  * Synchronize with OpenCL v3.0.10 specification release.</comment>
+    <requestid>943877</requestid>
+  </revision>
 </revisionlist>
