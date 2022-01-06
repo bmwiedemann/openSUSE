@@ -443,4 +443,18 @@
   * adjust range detection for filenames containing or starting with -</comment>
     <requestid>875385</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5999ad972baad9f208752b5e960baeec</srcmd5>
+    <version>2.5.28</version>
+    <time>1641480664</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.28 release
+  * show-preview: fixed to be a moving picture by using explicit memory based file
+  * --parsable: new option for listing files in parsable form
+  * --filenumber FILENUMBER: new option to allow --filename %n start at another number than 1.
+  * wait-event: sending SIGUSR1 signal to gphoto2 during a running --wait-event / --capture-tethered will trigger image capture
+  * ctrl-c also now cancels multi-file actions
+  * translations: updated german</comment>
+    <requestid>944046</requestid>
+  </revision>
 </revisionlist>

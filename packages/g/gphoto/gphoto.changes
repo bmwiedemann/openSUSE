@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:42:22 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.5.28 release
+  * show-preview: fixed to be a moving picture by using explicit memory based file
+  * --parsable: new option for listing files in parsable form
+  * --filenumber FILENUMBER: new option to allow --filename %n start at another number than 1.
+  * wait-event: sending SIGUSR1 signal to gphoto2 during a running --wait-event / --capture-tethered will trigger image capture
+  * ctrl-c also now cancels multi-file actions
+  * translations: updated german
+
+-------------------------------------------------------------------
 Sun Feb 21 12:12:23 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.5.27 release
