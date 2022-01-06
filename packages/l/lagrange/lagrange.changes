@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:02:10 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.5
+  - Fixed misshapen button borders (SDL 2.0.16 line drawing workaround).
+  - Fixed actions being triggered when navigating via home row keys.
+
+-------------------------------------------------------------------
 Tue Jan  4 09:35:33 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.9.4
