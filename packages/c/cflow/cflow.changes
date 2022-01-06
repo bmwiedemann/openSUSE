@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:52:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7:
+  * Multiple start functions are allowed
+  * New option --target=FUNCTION
+  * New output format: dot
+  The '-f dot' (or '--format=dot') option instructs cflow to output
+  graph as a description in DOT language, suitable as input to graphviz
+  programs.
+  * Bugfixes:
+  ** CVE-2019-16165
+  ** CVE-2019-16166
+  ** Fix parsing of K&R style function declarations
+  ** Improve parsing of typecasts
+  ** Fix recursive call detection
+ 
+-------------------------------------------------------------------
 Wed Jun 19 09:26:16 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update license information
