@@ -1,7 +1,7 @@
 #
 # spec file for package qtractor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qtractor
-Version:        0.9.22
+Version:        0.9.24
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
@@ -25,8 +25,6 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://qtractor.org/
 #GitClone:      https://github.com/rncbc/qtractor
 Source0:        https://download.sourceforge.net/qtractor/qtractor-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE qtractor-powerpc.patch dvaleev@suse.com -- Fix build on ppc
-Patch0:         qtractor-powerpc.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -66,7 +64,6 @@ specially dedicated to the personal home-studio.
 
 %prep
 %setup -q
-%patch0
 
 %build
 %cmake
