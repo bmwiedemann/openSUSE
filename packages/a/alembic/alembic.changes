@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:13:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Make sure we export the IlmBase requirement in CMake when using OpenEXR 2 to
+    fulfill the Imath requirement.
+  * Address report from GCC Undefined Behavior Sanitizer by initializing a couple
+    of bools in OXform. 
+  * Fix compile issue when using C++17 with Microsoft Visual Studio and use a
+    hopefully much faster find first bit set when using that compiler. (Issue 358)
+  * One of the fuzzer tests were was failing with 32 bit builds because of a
+    different exception message.
+  * Fix a bug with 32 bit memory mapped Windows builds.
+  * Look for boost python a little differently, falling back on existing behavior.
+
+-------------------------------------------------------------------
 Wed May 19 12:53:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.8.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package alembic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define libname libAlembic1_8
 Name:           alembic
-Version:        1.8.1
+Version:        1.8.3
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
