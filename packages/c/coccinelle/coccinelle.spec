@@ -26,6 +26,7 @@ URL:            http://coccinelle.lip6.fr/
 Source0:        %name-%version.tar.xz
 Source1:        %name.rpmlintrc
 Patch1:         kill-env.diff
+ExclusiveArch:  aarch64 ppc64le s390x x86_64
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
