@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  5 16:08:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.0
+  * add python 3.10 support, #2885 by @PrettyWood
+  * Discriminated unions, #619 by @PrettyWood
+  * Config.smart_union for better union logic, #2092 by @PrettyWood
+  * Binaries for Macos M1 CPUs, #3498 by @samuelcolvin
+  * Complex types can be set via nested environment variables, e.g.
+    foo___bar, #3159 by @Air-Mark
+  * add a dark mode to pydantic documentation, #2913 by @gbdlin
+  * Add support for autocomplete in VS Code via
+    __dataclass_transform__, #2721 by @tiangolo
+  * Add "exclude" as a field parameter so that it can be configured
+    using model config, #660 by @daviskirk
+- Full changelog in HISTORY.md
+
+-------------------------------------------------------------------
 Thu May 13 11:07:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.8.2 (bsc#1186019, CVE-2021-29510)

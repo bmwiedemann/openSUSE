@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -30,13 +30,12 @@ Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar
 BuildRequires:  %{python_module email_validator >= 1.0.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
-BuildRequires:  (python36-dataclasses if python36-base)
 %if 0%{?python_version_nodots} == 36
 Requires:       python-dataclasses
 %endif
