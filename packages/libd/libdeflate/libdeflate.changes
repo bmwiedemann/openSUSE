@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  4 22:37:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8:
+  * Added `-t` (test) option to `libdeflate-gunzip`.
+  * Unaligned access optimizations are now enabled on WebAssembly builds.
+  * Fixed a build error when building with the Intel C Compiler (ICC).
+  * Fixed a build error when building with uClibc.
+  * libdeflate's CI system has switched from Travis CI to GitHub Actions.
+  * Made some improvements to test scripts.
+
+-------------------------------------------------------------------
 Wed Jan 13 21:46:16 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Add workaround build fail due issue in dwz by deleting 

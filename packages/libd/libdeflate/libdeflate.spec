@@ -1,7 +1,7 @@
 #
 # spec file for package libdeflate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 0
 %define libname %{name}%{major}
 Name:           libdeflate
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
@@ -96,6 +96,5 @@ ln -s ./libdeflate-gzip %{buildroot}%{_bindir}/libdeflate-gunzip
 %doc README.md
 %{_includedir}/libdeflate.h
 %{_libdir}/libdeflate.so
-
 
 %changelog
