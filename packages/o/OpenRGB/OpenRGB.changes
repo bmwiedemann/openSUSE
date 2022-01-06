@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 03:42:47 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Disable link time optimization as this causes a segfault during 
+  startup when loading in controllers.
+
+-------------------------------------------------------------------
 Mon Jan  3 18:36:19 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.7

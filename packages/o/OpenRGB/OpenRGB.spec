@@ -44,6 +44,7 @@ Accessing the SMBus is a potentially dangerous operation, so exercise caution.
 %autosetup -p1 -n %{name}-release_%{version}
 
 %build
+%define _lto_cflags %{nil}
 %qmake5
 %make_build
 
