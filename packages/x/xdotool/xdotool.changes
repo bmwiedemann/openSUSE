@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:25:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2021022.1:
+  * Fix a bug causing `make create-package-deb` to fail. (#362)
+  * Revert XWayland detection. Some parts of xdotool do not work under
+    XWayland. However, many features *do* work on XWayland, and rejecting
+    XWayland caused problems for several
+    folks who were otherwise happily using xdotool under Wayland/XWayland. (#346, #355)
+
+-------------------------------------------------------------------
 Sat Oct 16 12:11:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.20210903.1:
