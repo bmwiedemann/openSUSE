@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 05 02:13:49 UTC 2022 - wbrown@suse.de
+
+- Update to version 20220105:
+  * Assigned RUSTSEC-2021-0134 to rental (#1137)
+  * Report that rental is no longer maintained (#1136)
+  * Assigned RUSTSEC-2020-0160 to shamir (#1135)
+  * Turn the issue about shamir into an advisory (#1134)
+  * Assigned RUSTSEC-2021-0133 to cargo-download (#1133)
+  * Mark cargo-download unmaintained (#1132)
+  * Mark arrow advisories as fixed in https://github.com/apache/arrow-rs/issues/817 (#1131)
+  * Assigned RUSTSEC-2021-0132 to compu-brotli-sys (#1130)
+  * CVE-2020-8927 for compu-brotli-sys (#1129)
+  * Assigned RUSTSEC-2021-0131 to brotli-sys (#1128)
+
+-------------------------------------------------------------------
 Fri Dec 10 04:08:52 UTC 2021 - wbrown@suse.de
 
 - Update to version 20211210:
