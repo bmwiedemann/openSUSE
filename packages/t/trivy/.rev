@@ -245,4 +245,12 @@
   * feat: added misconfiguration field for html.tpl (#1444)</comment>
     <requestid>942895</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4e8b7ae3dc0c79c7798845071418baf7</srcmd5>
+    <version>0.22.0</version>
+    <time>1641480668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.22.0 (jsc#SLE-18339):</comment>
+    <requestid>944093</requestid>
+  </revision>
 </revisionlist>

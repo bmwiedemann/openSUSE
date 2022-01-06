@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Dec 28 09:50:49 UTC 2021 - dmueller@suse.com
 
-- Update to version 0.22.0:
+- Update to version 0.22.0 (jsc#SLE-18339):
   * fix(java/pom): ignore unsupported requirements (#1514)
   * feat(cli): warning for root command (#1516)
   * BREAKING: disable JAR detection in fs/repo scanning (#1512)
