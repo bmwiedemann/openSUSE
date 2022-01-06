@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  4 15:10:17 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Upgrade to version 3.4.1 bugfix release
+  + Full changelog https://github.com/OSGeo/gdal/blob/v3.4.0/gdal/NEWS
+  + Explicitly add a call to autogen.sh
+  + Upstream PCIDSK: fix write heap-buffer-overflow boo#1194263
+- Removed GDALmake.opt.in.patch due to cc1plus: warning:
+  -I gcore: No such file or directory [-Wmissing-include-dirs]
+- Add conditionnal support for hdf4 boo#1192614 on Leap
+  build -with hdf4_support can be enabled
+- Update copyright year
+
+-------------------------------------------------------------------
 Fri Dec 31 19:53:12 UTC 2021 - D. Berge <opensuse@navlost.eu>
 
 - Fix build on Leap 15.3

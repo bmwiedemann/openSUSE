@@ -1,7 +1,7 @@
 #
 # spec file for package gdal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define soversion 29
+%define soversion 30
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -25,10 +25,11 @@
 %bcond_with fgdb_support
 %bcond_with kml_support
 %bcond_with sfcgal_support
+%bcond_with hdf4_support
 %bcond_with heif_support
 %bcond_with tests_support
 Name:           gdal
-Version:        3.3.3
+Version:        3.4.1
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -37,8 +38,6 @@ Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ve
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
 Patch0:         gdal-perl.patch
-# Fix occasional parallel build failure
-Patch1:         GDALmake.opt.in.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -113,6 +112,9 @@ BuildRequires:  pkgconfig(sfcgal)
 %if %{with heif_support}
 BuildRequires:  libheif-devel
 %endif
+%if %{with hdf4_support}
+BuildRequires:  hdf-devel
+%endif
 %if %{with ecw5_support}
 BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 %else
@@ -155,6 +157,7 @@ Requires:       %{name} = %{version}-%{release}
 
 %description -n perl-%{name}
 Perl bindings for GDAL - Geo::GDAL, Geo::OGR and Geo::OSR modules.
+Deprecated - will be removed in 3.5
 
 %package -n python3-%{pypi_package_name}
 Summary:        GDAL Python3 module
@@ -199,6 +202,7 @@ done
 
 # Remove shebang in scripts located in non executable dir
 find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python3/d' {} \;
+find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python/d' {} \;
 # Fix wrong /usr/bin/env python3
 find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
 
@@ -213,6 +217,7 @@ ln -s %{_includedir} $ECW_INC_PATH
 %endif
 
 %build
+./autogen.sh
 %configure \
         --prefix=%{_prefix}     \
         --includedir=%{_includedir}/gdal \
@@ -281,6 +286,9 @@ ln -s %{_includedir} $ECW_INC_PATH
         --with-opencl           \
         --without-hdf4          \
         --with-hdf5             \
+%if %{with hdf4_support}
+        --with-hdf4             \
+%endif
         --with-webp             \
         --disable-rpath         \
         --enable-lto
@@ -381,7 +389,7 @@ popd
 
 %files
 %license LICENSE.TXT
-%doc NEWS PROVENANCE.TXT
+%doc NEWS.md PROVENANCE.TXT
 %{_bindir}/gdal_contour
 %{_bindir}/gdal_create
 %{_bindir}/gdal_grid
@@ -408,7 +416,6 @@ popd
 %{_bindir}/ogrinfo
 %{_bindir}/ogrlineref
 %{_bindir}/ogrtindex
-%{_bindir}/testepsg
 %{_datadir}/gdal
 %{_mandir}/man1/gdal_contour.1%{?ext_man}
 %{_mandir}/man1/gdal_create.1%{?ext_man}
@@ -471,7 +478,7 @@ popd
 
 %files devel
 %license LICENSE.TXT
-%doc NEWS PROVENANCE.TXT
+%doc NEWS.md PROVENANCE.TXT
 %if %{with docs}
 %doc doc/build/html/
 %endif
@@ -484,7 +491,7 @@ popd
 
 %files -n perl-%{name}
 %license LICENSE.TXT
-%doc NEWS PROVENANCE.TXT
+%doc NEWS.md PROVENANCE.TXT
 %{perl_vendorarch}/Geo/GDAL.pm
 %dir %{perl_vendorarch}/Geo/GDAL
 %{perl_vendorarch}/Geo/GDAL/Const.pm
@@ -507,7 +514,7 @@ popd
 
 %files -n python3-%{pypi_package_name}
 %license LICENSE.TXT
-%doc NEWS PROVENANCE.TXT
+%doc NEWS.md PROVENANCE.TXT
 %{python3_sitearch}/*
 
 %changelog
