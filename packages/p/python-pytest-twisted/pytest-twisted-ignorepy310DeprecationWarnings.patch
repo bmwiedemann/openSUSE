@@ -1,0 +1,39 @@
+Index: pytest-twisted-1.13.4/pytest.ini
+===================================================================
+--- pytest-twisted-1.13.4.orig/pytest.ini
++++ pytest-twisted-1.13.4/pytest.ini
+@@ -1,3 +1,5 @@
+ [pytest]
+ addopts = --verbose
+-filterwarnings = error
++filterwarnings =
++    error
++    ignore:currentThread:DeprecationWarning
+Index: pytest-twisted-1.13.4/testing/test_basic.py
+===================================================================
+--- pytest-twisted-1.13.4.orig/testing/test_basic.py
++++ pytest-twisted-1.13.4/testing/test_basic.py
+@@ -94,8 +94,13 @@ def skip_if_no_async_generators():
+ 
+ 
+ @pytest.fixture
+-def cmd_opts(request):
++def cmd_opts(request, testdir):
+     reactor = request.config.getoption("reactor", "default")
++    pytest_ini_file = """
++    [pytest]
++    filterwarnings = ignore:currentThread:DeprecationWarning
++    """
++    testdir.makefile(".ini", pytest=pytest_ini_file)
+     return (
+         sys.executable,
+         "-m",
+@@ -370,6 +375,8 @@ def test_async_fixture(testdir, cmd_opts
+     [pytest]
+     markers =
+         redgreenblue
++    filterwarnings =
++        ignore:currentThread:DeprecationWarning
+     """
+     testdir.makefile('.ini', pytest=pytest_ini_file)
+     test_file = """

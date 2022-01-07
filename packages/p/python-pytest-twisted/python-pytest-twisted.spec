@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-twisted
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-twisted
-Version:        1.13.2
+Version:        1.13.4
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-twisted
-Source:         https://github.com/pytest-dev/pytest-twisted/archive/v%{version}.tar.gz
+Source:         https://github.com/pytest-dev/pytest-twisted/archive/v%{version}.tar.gz#/pytest-twisted-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE pytest-twisted-ignorepy310DeprecationWarnings.patch -- upstream wants this fixed in twisted itself -- gh#pytest-dev/pytest-twisted/146
+Patch0:         pytest-twisted-ignorepy310DeprecationWarnings.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module greenlet}
@@ -46,7 +48,7 @@ which uses the twisted framework. test functions can return Deferred
 objects and pytest will wait for their completion with this plugin.
 
 %prep
-%setup -q -n pytest-twisted-%{version}
+%autosetup -p1 -n pytest-twisted-%{version}
 
 %build
 %python_build
@@ -56,14 +58,13 @@ objects and pytest will wait for their completion with this plugin.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-# test_inline_callbacks_in_pytest_deprecation - breaks with the new pytest 5.x series
-# test_blockon_in_pytest_deprecation - breaks with the new pytest 5.x series
-%pytest -k 'not test_blockon_in_pytest_deprecation and not test_inline_callbacks_in_pytest_deprecation'
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_twisted.py*
+%pycache_only %{python_sitelib}/__pycache__/pytest_twisted.*
+%{python_sitelib}/pytest_twisted-%{version}*-info
 
 %changelog
