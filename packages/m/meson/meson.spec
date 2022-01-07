@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.59.4
+Version:        0.60.3
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -41,6 +41,7 @@ Source2:        meson.keyring
 Patch1:         meson-test-installed-bin.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch2:         meson-distutils.patch
+
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -68,6 +69,7 @@ BuildRequires:  gcc-obj-c++
 BuildRequires:  gcc-objc
 BuildRequires:  gettext
 BuildRequires:  git
+BuildRequires:  gmock
 BuildRequires:  gnustep-make
 BuildRequires:  googletest-devel
 BuildRequires:  itstool
@@ -89,7 +91,6 @@ BuildRequires:  python2-devel
 BuildRequires:  distribution-release
 BuildRequires:  python3-gobject
 BuildRequires:  python3-pytest-xdist
-BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel-static
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -144,7 +145,7 @@ Domain Specific Language.
 Summary:        Vim support for meson.build files
 Group:          Productivity/Text/Editors
 Requires:       vim
-Supplements:    packageand(vim:%{name})
+Supplements:    (vim and %{name})
 BuildArch:      noarch
 
 %description vim
@@ -164,9 +165,9 @@ This package provides support for meson.build files in Vim.
 %patch2 -p1
 %endif
 
-# We do not have gmock available at this moment - can't run the test suite for it
-rm -r "test cases/frameworks/3 gmock" \
-      "test cases/frameworks/1 boost" \
+# We do not have appleframeworks available at this moment - can't run the test suite for it
+# boost is currently borked too
+rm -r "test cases/frameworks/1 boost" \
       "test cases/objc/2 nsstring"
 
 # AddressSanitizer fails here because of ulimit.
