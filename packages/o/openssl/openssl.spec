@@ -18,7 +18,7 @@
 
 %define _sonum  1_1
 Name:           openssl
-Version:        1.1.1l
+Version:        1.1.1m
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 # Yes there is no license but to not confuse people keep it aligned to the pkg
