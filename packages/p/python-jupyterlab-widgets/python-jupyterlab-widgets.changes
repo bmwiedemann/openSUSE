@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  6 12:49:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Use the js version for the jupyter package
+
+-------------------------------------------------------------------
+Thu Jan  6 12:20:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add ipywidgets-pr3138-pr3194-packaging.patch for python310
+  packaging
+- Actually adds the JS files now
+
+-------------------------------------------------------------------
 Sun Oct 17 20:43:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for 1.0.2

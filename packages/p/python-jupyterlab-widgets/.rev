@@ -7,4 +7,16 @@
     <comment>new subpackage of ipywidgets</comment>
     <requestid>925905</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a469fa81349531d6599b0d5dbd3d0228</srcmd5>
+    <version>unknown</version>
+    <time>1641555945</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the js version for the jupyter package
+- Add ipywidgets-pr3138-pr3194-packaging.patch for python310
+  packaging
+- Actually adds the JS files now
+</comment>
+    <requestid>944237</requestid>
+  </revision>
 </revisionlist>

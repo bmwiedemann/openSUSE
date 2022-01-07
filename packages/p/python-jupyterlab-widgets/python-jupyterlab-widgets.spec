@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-widgets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,42 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pyver 1.0.2
+%define jupver 3.0.1
 Name:           python-jupyterlab-widgets
-Version:        1.0.2
+Version:        %{pyver}
 Release:        0
 Summary:        A JupyterLab extension for Jupyter/IPython widgets
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/ipywidgets
-Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_widgets/jupyterlab_widgets-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_widgets/jupyterlab_widgets-%{pyver}.tar.gz
+# PATCH-FIX-UPSTREAM ipywidgets-pr3138-pr3194-packaging.patch -- gh#jupyter-widgets/ipywidgets#3138 gh#jupyter-widgets/ipywidgets#3194
+Patch1:         ipywidgets-pr3138-pr3194-packaging.patch
 Source99:       python-jupyterlab-widgets-rpmlintrc
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module jupyter_packaging}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-jupyterlab-filesystem
+BuildRequires:  python-rpm-macros
+Requires:       jupyter-jupyterlab-widgets
 BuildArch:      noarch
-Provides:       python-jupyterlab_widgets = %{version}-%{release}
+Provides:       python-jupyterlab_widgets = %{pyver}-%{release}
 %python_subpackages
 
 %description
 A JupyterLab 3.0 extension for Jupyter/IPython widgets
 
+%package -n jupyter-jupyterlab-widgets
+Summary:        A JupyterLab extension for Jupyter/IPython widgets - Jupyter JS files
+Version:        %{jupver}
+Provides:       jupyter-jupyterlab_widgets = %{jupver}-%{release}
+Requires:       jupyter-jupyterlab-filesystem
+
+%description -n jupyter-jupyterlab-widgets
+A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyter JS files
+
 %prep
-%setup -q -n jupyterlab_widgets-%{version}
+%autosetup -p1 -n jupyterlab_widgets-%{pyver}
 
 %build
 %python_build
@@ -55,6 +70,10 @@ $python -c 'import jupyterlab_widgets'
 %doc README.md
 %license LICENSE
 %{python_sitelib}/jupyterlab_widgets
-%{python_sitelib}/jupyterlab_widgets-%{version}*-info
+%{python_sitelib}/jupyterlab_widgets-%{pyver}*-info
+
+%files -n jupyter-jupyterlab-widgets
+%license LICENSE
+%{_jupyter_labextensions_dir3}/@jupyter-widgets
 
 %changelog
