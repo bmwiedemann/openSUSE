@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests%{psuffix}
-Version:        2.26.0
+Version:        2.27.1
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://python-requests.org/
+URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch

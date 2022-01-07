@@ -763,4 +763,12 @@
 - drop 5711.patch: upstream</comment>
     <requestid>928315</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>39bbe652b14fd259044ddc51c9183674</srcmd5>
+    <version>2.27.1</version>
+    <time>1641555881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944115</requestid>
+  </revision>
 </revisionlist>
