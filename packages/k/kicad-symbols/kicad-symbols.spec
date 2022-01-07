@@ -16,11 +16,12 @@
 #
 
 
-# 5.x.y are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 5.0.0
+# 6.x.y are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 6.0.0
 
 Name:           kicad-symbols
-Version:        5.1.12
+Version:        6.0.0
+%define file_version 6.0.0
 Release:        0
 Summary:        Schematic symbol library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
@@ -28,14 +29,14 @@ Summary:        Schematic symbol library for KiCad
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
-Source:         https://gitlab.com/kicad/libraries/kicad-symbols/-/archive/%{version}/kicad-symbols-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source:         https://gitlab.com/kicad/libraries/kicad-symbols/-/archive/%{file_version}/kicad-symbols-%{file_version}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildArch:      noarch
 Requires:       kicad-footprints = %{version}
 Provides:       kicad-library = %{version}
 Provides:       kicad-symbols = %{compatversion}
 Obsoletes:      kicad-library < 5.0.0
+BuildArch:      noarch
 
 %description
 KiCad is a software suite used for Electronic Design Automation (EDA).
@@ -43,11 +44,10 @@ KiCad is a software suite used for Electronic Design Automation (EDA).
 This is the schematic symbol library package for KiCad.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{file_version}
 
 %build
-%cmake \
-    -DKICAD_DATA:PATH=%{_datadir}/kicad
+%cmake
 %cmake_build
 
 %install
