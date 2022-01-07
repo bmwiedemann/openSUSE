@@ -3490,4 +3490,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * fix connman-nmcompat whitelisting (bsc#1192827) - resides in a sub-package</comment>
     <requestid>941851</requestid>
   </revision>
+  <revision rev="377" vrev="1">
+    <srcmd5>bb3e1ba39621a2d35819ae3452667a6a</srcmd5>
+    <version>2.2.0+git20220103.bda86d8</version>
+    <time>1641555864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220103.bda86d8:
+  * 64-bit powerpc targets do not have executable stack.</comment>
+    <requestid>943549</requestid>
+  </revision>
 </revisionlist>

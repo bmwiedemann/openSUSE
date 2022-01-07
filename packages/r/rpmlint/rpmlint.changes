@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 03 09:42:35 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220103.bda86d8:
+  * 64-bit powerpc targets do not have executable stack.
+
+-------------------------------------------------------------------
 Tue Dec 21 13:24:47 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.2.0+git20211221.2fbc146:
