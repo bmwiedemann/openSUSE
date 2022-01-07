@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Jan  6 14:49:19 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- cosign 1.4.1 release, initial import
+- provides signing / verification support for sigstore

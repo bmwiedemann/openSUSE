@@ -1,0 +1,15 @@
+<package name="cosign" project="openSUSE:Factory">
+  <title>cosign</title>
+  <description>
+Cosign aims to make signatures invisible infrastructure.
+
+Cosign supports:
+
+- Hardware and KMS signing
+- Bring-your-own PKI
+- Our free OIDC PKI (Fulcio)
+- Built-in
+</description>
+  <devel project="security" package="cosign"/>
+  <url>https://github.com/sigstore/cosign</url>
+</package>
