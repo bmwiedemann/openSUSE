@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:56:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not introduce ibus-gtk4-32bit unless there will be demand for
+  it: drop its definition from baselibs.conf.
+
+-------------------------------------------------------------------
+Tue Dec 21 14:51:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix name of gtk4 flavor generated packages (was ibus-gtk4-gtk4).
+
+-------------------------------------------------------------------
+Thu Dec 16 11:25:07 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split build of gtk4 module into an own flavor, allowing us to
+  break a build cycle.
+
+-------------------------------------------------------------------
+Sun Oct  3 13:51:18 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Enable GTK 4 IM Module for Leap 15.4 and Tumbleweed
+- Remove ibus-python-install-dir.patch
+  * Not used for build anymore
+
+-------------------------------------------------------------------
 Wed Sep  8 13:04:55 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Refresh ibus-socket-name-compatibility.patch

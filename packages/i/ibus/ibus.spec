@@ -1,7 +1,7 @@
 #
-# spec file for package ibus
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,32 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%nil
+
+%define with_gtk4 0
 %define with_wayland 1
 %define with_emoji 1
+
+%if "%{flavor}" == "gtk4"
+%define with_gtk4 1
+%define nsuffix _%{flavor}
+%endif
+
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %else
 %define use_usretc 1
 %endif
 
-Name:           ibus
+%define _name   ibus
+Name:           %{_name}%{?nsuffix}
 Version:        1.5.25
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/ibus/
-Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{_name}-%{version}.tar.gz
 Source2:        README.SUSE
 Source3:        xim.ibus.suse.template
 Source4:        xim.d-ibus-121
@@ -39,8 +49,6 @@ Source7:        macros.ibus
 Source10:       ibus-autostart
 Source11:       ibus-autostart.desktop
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE ibus-python-install-dir.patch ftake@geeko.jp
-Patch0:         ibus-python-install-dir.patch
 # PATFH-FIX-OPENSUSE ibus-xim-fix-re-focus-after-lock.patch bnc#874869 tiwai@suse.de
 # Fix lost XIM input after screenlock
 Patch4:         ibus-xim-fix-re-focus-after-lock.patch
@@ -67,6 +75,8 @@ Patch15:        ibus-socket-name-compatibility.patch
 Patch16:        ibus-missing-include.patch
 # PATCH-FIX-UPSTREAM ibus-fix-wrong-cursor-location.patch gh#ibus/ibus#2337
 Patch17:        ibus-fix-wrong-cursor-location.patch
+BuildRequires:  pkgconfig(iso-codes)
+%if ! 0%{?with_gtk4}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -81,7 +91,6 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dconf) >= 0.7.5
 BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(python3)
 # copy_deep method is supported since 0.31.1
@@ -92,7 +101,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(xkbcommon)
 %if %{with_emoji}
-Requires:       %{name}-dict-emoji = %{version}
+Requires:       %{_name}-dict-emoji = %{version}
 %endif
 Requires:       dconf
 Requires:       iso-codes
@@ -112,6 +121,7 @@ BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
 BuildRequires:  unicode-emoji
 BuildRequires:  pkgconfig(cldr-emoji-annotation)
 %endif
+%endif
 
 %description
 IBus, short for Intelligent Input Bus, is an input framework. IBus
@@ -119,6 +129,7 @@ plugins then provide the particular logic how to translate keypresses
 to input characters and possibly show disambiguation windows around
 the text cursor.
 
+%if ! 0%{?with_gtk4}
 %package -n libibus-1_0-5
 Summary:        IBus libraries
 Group:          System/Libraries
@@ -148,7 +159,7 @@ This package contains data of emoji dictionary for IBus and other applications
 %package gtk
 Summary:        IBus input method support for gtk2 applications
 Group:          System/I18n/Chinese
-Requires:       %{name} = %{version}
+Requires:       %{_name} = %{version}
 Supplements:    (ibus and gtk2)
 %{gtk2_immodule_requires}
 
@@ -159,7 +170,7 @@ This package contains ibus im module for use by gtk2.
 Summary:        IBus input method support for gtk3 applications
 Group:          System/I18n/Chinese
 BuildRequires:  pkgconfig(gtk+-3.0)
-Requires:       %{name} = %{version}
+Requires:       %{_name} = %{version}
 Supplements:    (ibus and gtk3)
 %{gtk3_immodule_requires}
 
@@ -182,8 +193,24 @@ docs for ibus.
 
 %lang_package
 
+%else
+
+%package -n %{_name}-gtk4
+Summary:        IBus input method support for gtk4 applications
+# on 15.4, both gtk4-devel and gtk4-devel-32bit provide pkgconfig(gtk4)
+Group:          System/I18n/Chinese
+BuildRequires:  gtk4-devel
+BuildRequires:  pkgconfig(dbus-1)
+Requires:       %{_name} = %{version}
+Supplements:    (ibus and gtk4)
+%{gtk4_immodule_requires}
+
+%description -n %{_name}-gtk4
+This package contains ibus im module for use by gtk4.
+%endif
+
 %prep
-%setup -q
+%setup -q -n %{_name}-%{version}
 #%patch0 -p1
 %patch4 -p1
 %patch8 -p1
@@ -209,25 +236,34 @@ cp -r %{SOURCE11} .
 
 %build
 %configure --disable-static \
-           --enable-gtk3 \
-           --enable-vala \
+           --libexecdir=%{_libdir}/ibus \
+%if %{with_wayland}
+           --enable-wayland \
+%endif
 %if %{with_emoji}
            --enable-emoji-dict \
 %else
            --disable-emoji-dict \
 %endif
+           --disable-python2 \
+%if ! 0%{?with_gtk4}
+           --enable-gtk3 \
+           --enable-vala \
            --enable-appindicator \
            --with-python=python3 \
-           --disable-python2 \
            --enable-python-library \
            --enable-introspection \
-           --enable-dconf \
            --enable-gtk-doc \
-%if %{with_wayland}
-           --enable-wayland \
-%endif
            --enable-surrounding-text \
-           --libexecdir=%{_libdir}/ibus
+%else
+           --disable-dconf \
+           --disable-emoji-dict \
+           --disable-unicode-dict \
+           --disable-xim \
+           --disable-gtk2 \
+           --disable-gtk3 \
+           --enable-gtk4 \
+%endif
 
 # non-parallel to have reproducible results in spite of non-deterministic build scripts https://github.com/ibus/ibus/issues/2272
 make
@@ -235,6 +271,10 @@ make
 %install
 %make_install
 
+# Remove libtool archives
+find %{buildroot} -type f -name "*.la" -delete -print
+
+%if ! 0%{?with_gtk4}
 # autostart
 mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
 install -m 644 xim.d-ibus-121 %{buildroot}%{_distconfdir}/X11/xim.d/ibus
@@ -255,9 +295,6 @@ pushd %{buildroot}%{_distconfdir}/X11/xim.d/
         popd
     done
 popd
-
-# remove static libs
-find %{buildroot} -type f -name "*.la" -delete -print
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 ln -sf %{_datadir}/icons/hicolor/48x48/apps/ibus-keyboard.png \
@@ -301,6 +338,31 @@ dconf update
 %postun gtk3
 %{gtk3_immodule_postun}
 
+%else
+
+# cleanup stuff that is packaged as part of the main ibus flavor
+rm -rf %{buildroot}%{_datadir}
+rm -rf %{buildroot}%{_includedir}
+rm -rf %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{_libdir}/ibus
+rm -rf %{buildroot}%{_libdir}/libibus*
+rm -rf %{buildroot}%{_libdir}/pkgconfig
+
+%post -n %{_name}-gtk4
+%{gtk4_immodule_post}
+
+%postun -n %{_name}-gtk4
+#{gtk4_immodule_postun} there is a syntax error in the macro from gtk4-devel
+if [ $1 -eq 0 ]; then
+  if [[ -x %{_bindir}/gio-querymodules-64 ]]; then
+    %{_bindir}/gio-querymodules-64 %{_libdir}/gtk-4.0/4.0.0/immodules
+  else
+    %{_bindir}/gio-querymodules %{_libdir}/gtk-4.0/4.0.0/immodules
+  fi
+fi
+%endif
+
+%if ! 0%{?with_gtk4}
 %files
 %doc AUTHORS README README.SUSE xim.ibus.suse.template
 %license COPYING
@@ -385,5 +447,12 @@ dconf update
 %{_datadir}/gir-1.0/IBus-1.0.gir
 %{_datadir}/vala/vapi/ibus-1.0.deps
 %{_datadir}/vala/vapi/ibus-1.0.vapi
+
+%else
+
+%files -n %{_name}-gtk4
+%dir %{_libdir}/gtk-4.0/4.0.0/immodules
+%{_libdir}/gtk-4.0/4.0.0/immodules/libim-ibus.so
+%endif
 
 %changelog
