@@ -7,4 +7,12 @@
     <comment>basic solution for https://code.djangoproject.com/ticket/361 which was wontfix</comment>
     <requestid>874319</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>62797fd1b2bbbbdc42c9cf477498e013</srcmd5>
+    <version>1.0.0</version>
+    <time>1641556004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944653</requestid>
+  </revision>
 </revisionlist>
