@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  7 01:16:26 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
 Sat Dec 25 23:09:58 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.6.6
