@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkgconfig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-pkgconfig
-Version:        1.5.1
+Version:        1.5.5
 Release:        0
 Summary:        Interface Python with pkg-config
 License:        MIT
@@ -40,7 +41,7 @@ BuildArch:      noarch
 
 %description
 A Python module to interface with the pkg-config
-command line tool 
+command line tool
 
 %prep
 %setup -q -n pkgconfig-%{version}
