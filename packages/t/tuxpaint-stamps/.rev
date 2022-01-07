@@ -37,4 +37,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705928</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b6cd0e5f53777312a241f86d7709e42</srcmd5>
+    <version>2021.11.25</version>
+    <time>1641555970</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.11.25
+  - lot of new stamps and sounds from all over the world
+    please refer to /usr/share/doc/packages/tuxpaint-stamps/CHANGES.txt
+    for a detailed list and contributors
+
+- update to 2021.06.28
+  - lot of new stamps and sounds from all over the world
+    please refer to /usr/share/doc/packages/tuxpaint-stamps/CHANGES.txt
+    for a detailed list and contributors
+- Run spec-cleaner</comment>
+    <requestid>944540</requestid>
+  </revision>
 </revisionlist>

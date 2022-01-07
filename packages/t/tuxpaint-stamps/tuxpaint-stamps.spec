@@ -1,7 +1,7 @@
 #
 # spec file for package tuxpaint-stamps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,17 @@
 
 
 Name:           tuxpaint-stamps
-Version:        2018.09.01
+Version:        2021.11.25
 Release:        0
 Summary:        Rubber stamps collection for Tux Paint
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://www.tuxpaint.org/
-Source0:        %{name}-%{version}.tar.bz2
-Requires:       tuxpaint-stamps-category
-BuildArch:      noarch
-%if 0%{?suse_version} > 1020
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+Requires:       tuxpaint-stamps-category
 Recommends:     tuxpaint
-%else
-Requires:       tuxpaint
-%endif
+BuildArch:      noarch
 %if 0%{?suse_version}
 Recommends:     tuxpaint-stamps-animals
 Recommends:     tuxpaint-stamps-clothes
@@ -50,7 +46,6 @@ Recommends:     tuxpaint-stamps-symbols
 Recommends:     tuxpaint-stamps-town
 Recommends:     tuxpaint-stamps-vehicles
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains the documentation for the 'Rubber Stamp' images
@@ -223,105 +218,86 @@ which can be used with the "Stamp" tool within Tux Paint.
 
 %install
 make DATA_PREFIX=%{buildroot}/%{_datadir}/tuxpaint/ install-all
-%if 0%{?suse_version} > 1020
 %fdupes %{buildroot}
-%endif
 
 %files
-%defattr(-,root,root)
 %doc docs/*
 %dir %{_datadir}/tuxpaint/stamps
 
 %files animals
-%defattr(-,root,root)
 %{_datadir}/tuxpaint/stamps/animals
 
 %files clothes
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/clothes
 
 %files food
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/food
 
 %files hobbies
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/hobbies
 
 %files household
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/household
 
 %files medical
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/medical
 
 %files military
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/military
 
 %files naturalforces
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/naturalforces
 
 %files people
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/people
 
 %files plants
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/plants
 
 %files seasonal
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/seasonal
 
 %files space
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/space
 
 %files sports
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/sports
 
 %files symbols
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/symbols
 
 %files town
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/town
 
 %files vehicles
-%defattr(-,root,root)
 %dir %{_datadir}/tuxpaint
 %dir %{_datadir}/tuxpaint/stamps
 %{_datadir}/tuxpaint/stamps/vehicles
