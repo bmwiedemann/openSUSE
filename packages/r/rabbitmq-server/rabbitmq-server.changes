@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  6 14:54:59 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.12
+  * See https://github.com/rabbitmq/rabbitmq-server/blob/v3.9.x/release-notes/3.9.12.md
+    for the full changelog.
+  * Core Server Bug Fixes and Enhancements
+    - (Fix) Authentication and authorization backend exceptions
+      could potentially leak user-provided credentials to node log.
+    - Unnamed parameters and policies in definition files will now
+      be rejected as invalid.
+
+-------------------------------------------------------------------
 Thu Dec  2 15:17:05 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.11
