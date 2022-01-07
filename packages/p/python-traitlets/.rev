@@ -64,4 +64,12 @@
     <user>dimstar_suse</user>
     <comment>Revert to 4.x, compatible with python36; unblockrngs</comment>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f05ac9880e7bdfb7853d71185e48de0c</srcmd5>
+    <version>5.1.1</version>
+    <time>1641555915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>944210</requestid>
+  </revision>
 </revisionlist>

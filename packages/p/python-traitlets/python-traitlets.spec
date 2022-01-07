@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitlets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-traitlets
-Version:        4.3.3
+Version:        5.1.1
 Release:        0
-Summary:        Traitlets Python config system
+Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/traitlets
 Source:         https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-%{version}.tar.gz
-BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-decorator
-Requires:       python-ipython_genutils
-Requires:       python-six
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python-mock
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -59,14 +48,13 @@ A configuration system for Python applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd docs
-%pytest ../traitlets/tests
+%pytest
 
 %files %{python_files}
 %doc README.md
 %doc examples/
 %license COPYING.md
 %{python_sitelib}/traitlets/
-%{python_sitelib}/traitlets-%{version}-py*.egg-info
+%{python_sitelib}/traitlets-%{version}*-info
 
 %changelog
