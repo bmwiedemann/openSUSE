@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
 Wed Sep  2 09:28:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Fix test execution
