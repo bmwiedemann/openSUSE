@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioquic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-aioquic
-Version:        0.9.7
+Version:        0.9.17
 Release:        0
 Summary:        Python implementation of QUIC and HTTP/3
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aiortc/aioquic
 Source:         https://files.pythonhosted.org/packages/source/a/aioquic/aioquic-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+# PATCH-FIX-OPENSUSE cryptography.patch -- we can't pin to old cryptography and thus don't get expected test exceptions, code@bnavigator.de
+Patch1:         cryptography.patch
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -35,21 +38,19 @@ BuildRequires:  pkgconfig(openssl)
 Requires:       python-certifi
 Requires:       python-cryptography >= 2.5
 Requires:       python-pylsqpack >= 0.3.3
-Requires:       (python-dataclasses if python-base < 3.8)
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 2.5}
 BuildRequires:  %{python_module pylsqpack >= 0.3.3}
-BuildRequires:  (python3-dataclasses if python3-base < 3.8)
-BuildRequires:  (python36-dataclasses if python36-base)
 # /SECTION
 %python_subpackages
 
 %description
-An implementation of QUIC and HTTP/3.
+A library for the QUIC network protocol in Python. It features a minimal TLS
+1.3 implementation, a QUIC stack and an HTTP/3 stack.
 
 %prep
-%setup -q -n aioquic-%{version}
+%autosetup -p1 -n aioquic-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -67,6 +68,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/aioquic
+%{python_sitearch}/aioquic-%{version}*-info
 
 %changelog
