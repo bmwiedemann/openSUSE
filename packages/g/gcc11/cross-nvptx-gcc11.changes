@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 15 10:39:51 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to gcc-11 branch head (d4a1d3c4b377f1d4acb), git1173
+  * Fix D memory corruption in -M output.
+  * Fix ICE in is_this_parameter with coroutines.  [boo#1193659]
+
+-------------------------------------------------------------------
 Fri Nov 26 15:01:01 UTC 2021 - Michael Matz <matz@suse.com>
 
 - Enable the cross compilers also on i586

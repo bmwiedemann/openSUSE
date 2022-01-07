@@ -188,4 +188,14 @@ The compiler is NOT used by default.</comment>
   Part of [jsc#OBS-124].</comment>
     <requestid>934094</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d909663e6bd4cf9ac1bb59730eba31a8</srcmd5>
+    <version>11.2.1+git1173</version>
+    <time>1641555872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-11 branch head (d4a1d3c4b377f1d4acb), git1173
+  * Fix D memory corruption in -M output.
+  * Fix ICE in is_this_parameter with coroutines.  [boo#1193659]</comment>
+    <requestid>943613</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package cross-arm-none-gcc11
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,7 +109,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.2.1+git1018
+Version:        11.2.1+git1173
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -117,7 +117,6 @@ Release:        0
 %if %{suse_version} < 1310
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %endif
-Group:          Development/Languages/C and C++
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
 Source2:        gcc11-rpmlintrc
@@ -236,8 +235,8 @@ ExclusiveArch:  x86_64
 %if "%{cross_arch}" == "amdgcn"
 # amdgcn uses the llvm assembler and linker, llvm-mc-12 doesn't
 # work at the moment so require llvm11
-BuildRequires:  llvm11
 BuildRequires:  lld
+BuildRequires:  llvm11
 Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
 Requires:       lld
 Requires:       llvm11
@@ -282,9 +281,10 @@ Requires:       libstdc++6-devel-gcc11
 AutoReqProv:    off
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
 
 %description
 The GNU Compiler Collection as a cross-compiler targeting %{cross_arch}.
@@ -833,7 +833,7 @@ install -s $RPM_BUILD_ROOT/%{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix} \
 install -s $RPM_BUILD_ROOT/%{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix} \
 	$RPM_BUILD_ROOT/env/usr/bin/gcc
 
-for back in cc1 cc1plus; do
+for back in cc1 cc1plus; do 
 	install -s -D $RPM_BUILD_ROOT/%{targetlibsubdir}/$back \
 		$RPM_BUILD_ROOT/env%{targetlibsubdir}/$back
 done
