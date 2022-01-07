@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 30 13:28:06 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.5.0
+  * no longer maintaining the app for sailfishos
+  * sync upstream openssl (1.1.1k)
+  * add github workflows to test the build
+  * fix empty cover sources
+  * fix unused variables in deezer plugin
+  * fix deprecated append in lastfm plugin
+  * fix null parent of delegate card
+  * fix null parent of delegate listitem
+  * upgrade android build to ndk 18b
+  * purge unsupported device lollipop
+  * support device marshmallow
+  * support device lollipop
+  * do not pre configure the manifest in the package sources
+  * translations failed on lollipop qt>5.11
+  * sync upstream libnoson(2.6.0)
+  * make RequestImpl copyable
+  * upgrade build win64
+  * update github workflow
+  * update android build
+  * tag qml resources for initial version 5.9
+  * clone qml resources for qt version 5.15
+  * 515: fix implicitly defined onFoo properties in Connections
+  * set Qt5 min version 5.9.5
+  * add headers to ide view
+  * compat qt6: use QRegularExpression instead QRegExp
+  * compat Qt6: QMutex, QVariant 
+  * qt translations must be added to assets
+  * from qt5.15 do not import qmldir if plugins are static
+  * add doc to build for lollipop
+  * add doc to build for marshmallow
+  * enable using noson submodule
+  * allow building static plugins without building libflac
+  * Fix track title width
+  * Fix jittery animation when changing page
+
+-------------------------------------------------------------------
 Tue Apr 13 19:57:09 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 4.4.9

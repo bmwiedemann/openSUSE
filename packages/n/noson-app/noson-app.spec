@@ -1,7 +1,7 @@
 #
 # spec file for package noson-app
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           noson-app
-Version:        4.4.9
+Version:        4.5.0
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(noson) = 2.4.1
+BuildRequires:  pkgconfig(noson) = 2.6.0
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 
