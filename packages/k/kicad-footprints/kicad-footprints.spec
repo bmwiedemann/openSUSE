@@ -16,11 +16,12 @@
 #
 
 
-# 5.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 5.0.0
+# 6.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 6.0.0
 
 Name:           kicad-footprints
-Version:        5.1.12
+Version:        6.0.0
+%define file_version 6.0.0
 Release:        0
 Summary:        Footprint library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
@@ -28,7 +29,7 @@ Summary:        Footprint library for KiCad
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
-Source:         https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/%{version}/kicad-footprints-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source:         https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/%{file_version}/kicad-footprints-%{file_version}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -43,11 +44,10 @@ KiCad is a software suite used for Electronic Design Automation (EDA).
 This is the footprints library package for KiCad.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{file_version}
 
 %build
-%cmake \
-    -DKICAD_DATA:PATH=%{_datadir}/kicad
+%cmake
 %cmake_build
 
 %install
