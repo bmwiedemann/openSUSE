@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 28 16:26:48 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.3.
+  * Move new symbolic icons to xapp library
+
+-------------------------------------------------------------------
+Thu Dec  9 01:27:33 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.2.
+  * l10n: Update translations
+- Update to version 3.2.1
+  * Add fit to width and fit to height (#155)
+  * l10n: Update POT
+- Update to version 3.2.0
+  * Disable dark mode in Xfce
+  * help: Reorder shortcuts (#153)
+  * zoom: Use CAIRO_FILTER_GOOD while zooming (#147)
+  * Refresh when the picture is modified externally (#152)
+- Update to version 3.0.2
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Thu Jun 17 09:43:14 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 3.0.1.
