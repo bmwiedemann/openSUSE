@@ -1,7 +1,7 @@
 #
 # spec file for package pkcs11-helper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           pkcs11-helper
-Version:        1.25.1
+Version:        1.27.0
 Release:        0
 Summary:        Helper Library for the Use with Smart Cards and the PKCS#11 API
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/OpenSC/OpenSC/wiki
-Source:         https://github.com/OpenSC/pkcs11-helper/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/OpenSC/OpenSC/wiki
+Source0:        https://github.com/OpenSC/%{name}/releases/download/%{name}-1.27/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -80,7 +80,7 @@ using a simple API.
   --disable-crypto-engine-polarssl \
   --disable-crypto-engine-mbedtls \
   --disable-crypto-engine-cryptoapi
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

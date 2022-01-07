@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 13 20:11:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27.0:
+  * core: handle PIN expiration after C_Login as C_Login may take a while
+  * core: return explict success when plugin&play and no threading and no
+    safefork, thanks to Tunnelblick
+  * openssl: build with openssl ec disabled
+  * openssl: support RSA_NO_PADDING padding, thanks to Selva Nair
+  * core: reduce mutex lock scope of add/remove provider, thanks to Frank Morgner
+  * core: improve the fork fixup sequence
+
+-------------------------------------------------------------------
 Thu Aug  8 10:56:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own %{_datadir}/aclocal: when we might switch to pkgconf instead
