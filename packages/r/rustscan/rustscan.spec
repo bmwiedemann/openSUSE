@@ -1,7 +1,7 @@
 #
 # spec file for package rustscan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,16 @@
 
 
 Name:           rustscan
-Version:        2.0.1
+Version:        2.0.1+0
 Release:        0
 Summary:        Fast network port scanner
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/RustScan/RustScan
-Source:         https://github.com/RustScan/RustScan/archive/%{version}.tar.gz#/RustScan-%{version}.tar.gz
+Source:         RustScan-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  cargo
-BuildRequires:  rust
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
 Requires:       nmap
 
 %description
@@ -37,19 +37,13 @@ pipe them into Nmap.
 %prep
 %setup -qa1 -n RustScan-%{version}
 mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+cp %{SOURCE2} .cargo/config
 
 %build
-cargo build --release --locked %{?_smp_mflags}
+%{cargo_build}
 
 %install
-cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+%{cargo_install}
 
 %files
 %license LICENSE

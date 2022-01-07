@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  7 01:12:38 UTC 2022 - William Brown <william.brown@suse.com>
+
+- resolve bsc#1194119 (CVE-2021-45710)
+- Add cargo_vendor service to assist with updates
+- Use cargo-packaging and relevant macros to improve spec
+
+-------------------------------------------------------------------
 Fri Nov  5 04:00:35 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues
