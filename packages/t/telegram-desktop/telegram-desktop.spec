@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
