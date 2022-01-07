@@ -51,4 +51,14 @@
   - add support for Python 3.9 PR #88</comment>
     <requestid>857111</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98b41cf5ee448d3fc08204f546d2b53d</srcmd5>
+    <version>1.3.2</version>
+    <time>1641555892</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.2:
+  - Add support for Python 3.10, drop official support Python 3.6
+  - Remove direct accesses to ob_type in C-API use Py_TYPE instead</comment>
+    <requestid>943952</requestid>
+  </revision>
 </revisionlist>
