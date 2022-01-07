@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:22:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix parameters passed to meson:
+  * access-group, => access_group, system-group => system_group,
+    and system-user => system_user for them to actually have an
+    effect.
+
+-------------------------------------------------------------------
 Thu Dec 30 10:02:56 CET 2021 - tiwai@suse.de
 
 - Fix a typo in padsp LD_PRELOAD setup (bsc#1194074)

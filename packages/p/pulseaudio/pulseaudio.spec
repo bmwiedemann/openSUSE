@@ -351,9 +351,9 @@ System user for PulseAudio
       -Dhal-compat=false   \
       -Dgsettings=enabled  \
       -Ddoxygen=false      \
-      -Dsystem-user=pulse  \
-      -Dsystem-group=pulse \
-      -Daccess-group=pulse-access     \
+      -Dsystem_user=pulse  \
+      -Dsystem_group=pulse \
+      -Daccess_group=pulse-access     \
       -Drunning-from-build-tree=false \
       -Dpulsedsp-location='%{_prefix}/\$LIB/pulseaudio' \
       -Dudevrulesdir="%{_udevrulesdir}"      \
