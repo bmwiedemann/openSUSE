@@ -1515,4 +1515,41 @@
   requirements. bsc#1191764 (forwarded request 926033 from msmeissn)</comment>
     <requestid>926034</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>a407d80037c44ba54307a839a14599de</srcmd5>
+    <version>2.5.28</version>
+    <time>1641555921</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.28 release 
+  general:
+  * OS/2 support removed (broken and unused since at least 2006)
+  * remove built-in rpm packaging (use distro packaging instead)
+  * remove linux-hotplug rule creation (removed from distros around 2006)
+  * remaining text which was iso-8859 is UTF-8 now (except one po file)
+  * To override docdir and htmldir, use configure arguments --docdir=
+    and --htmldir= instead of --with-doc-dir= and --with-html-dir=
+  * some code cleanups, especially handling of include files and i18n handling
+  ptp2:
+  * wait event
+    * property changes now reported with &quot;'name' to 'value'&quot; added
+    * object info changes now reported as FILE_CHANGED events (e.g. if you change protection flags)
+  * Nikon J1: capture fixed
+  * Olympus: fixed that wait time was twice as long as required if no events arrived
+  * Sigma Fp: added basic beta support for capture, live view and config.
+  * Sony:
+    * mark all widgets as read-write again, read-only logic was not 100% correct
+    * speed-ups and fixes to the stepping based config setting
+  * Canon EOS
+    * handle newer EOS R series reporting of configs (ISO, Aperture, Shutterspeed)
+    * track UI lock state to avoid device busy reports
+    * fixed &quot;zoom&quot; range settings (for lenses with powered zoom, also for today Powershot)
+  * Fuji:
+    * ptpip improvements
+    * bug fixes
+    * some Fuji cameras have now liveview only for webcam (need new firmware)
+  * various small fixes and code cleanups
+  * New ids:
+    * Sony Alpha-RX1R II, ILCE-7C, ZV-E10, A6600, DSC HX-80, ILCE-7RM3A, ILCE-7RM4A, DSC-A7S III</comment>
+    <requestid>944203</requestid>
+  </revision>
 </revisionlist>

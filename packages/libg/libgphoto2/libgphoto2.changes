@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:40:27 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.5.28 release 
+  general:
+  * OS/2 support removed (broken and unused since at least 2006)
+  * remove built-in rpm packaging (use distro packaging instead)
+  * remove linux-hotplug rule creation (removed from distros around 2006)
+  * remaining text which was iso-8859 is UTF-8 now (except one po file)
+  * To override docdir and htmldir, use configure arguments --docdir=
+    and --htmldir= instead of --with-doc-dir= and --with-html-dir=
+  * some code cleanups, especially handling of include files and i18n handling
+
+  ptp2:
+  * wait event
+    * property changes now reported with "'name' to 'value'" added
+    * object info changes now reported as FILE_CHANGED events (e.g. if you change protection flags)
+  * Nikon J1: capture fixed
+  * Olympus: fixed that wait time was twice as long as required if no events arrived
+  * Sigma Fp: added basic beta support for capture, live view and config.
+  * Sony:
+    * mark all widgets as read-write again, read-only logic was not 100% correct
+    * speed-ups and fixes to the stepping based config setting
+  * Canon EOS
+    * handle newer EOS R series reporting of configs (ISO, Aperture, Shutterspeed)
+    * track UI lock state to avoid device busy reports
+    * fixed "zoom" range settings (for lenses with powered zoom, also for today Powershot)
+  * Fuji:
+    * ptpip improvements
+    * bug fixes
+    * some Fuji cameras have now liveview only for webcam (need new firmware)
+  * various small fixes and code cleanups
+  * New ids:
+    * Sony Alpha-RX1R II, ILCE-7C, ZV-E10, A6600, DSC HX-80, ILCE-7RM3A, ILCE-7RM4A, DSC-A7S III
+    * Nikon Coolpix B500, Zfc
+    * Canon EOS M50m2, Digital IXUS 132
+    * Fuji X-Pro3, GFX 100S, X100V
+
+  canon:
+  * fixed wait event crashes
+  * correctly mark read only config widgets as read-only
+
+  pentax:
+  * fix PEF raw files for non-K100D
+
+  translations:
+  * updated german, french, polish, ukrainian
+
+-------------------------------------------------------------------
 Mon Oct 18 14:27:17 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - split out libgphoto2_port for now to meet new shared library policy

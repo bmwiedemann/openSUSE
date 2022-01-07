@@ -1,7 +1,7 @@
 #
 # spec file for package libgphoto2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ Obsoletes:      libgphoto2-64bit
 Summary:        A Digital Camera Library
 License:        LGPL-2.1-or-later
 Group:          Hardware/Camera
-Version:        2.5.27
+Version:        2.5.28
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz
 Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz.asc
@@ -173,8 +173,7 @@ rm %buildroot/%_libdir/*.la
 rm %buildroot/%_libdir/libgphoto2/%version/*.la
 rm %buildroot/%_libdir/libgphoto2_port/0.12.0/*.la
 
-rm %buildroot/%_defaultdocdir/%name/README.packaging
-rm -R %buildroot/%_defaultdocdir/%name/linux-hotplug
+rm -rf %buildroot/usr/share/doc/libgphoto2_port
 
 %find_lang libgphoto2-%major
 %find_lang libgphoto2_port-12
@@ -212,6 +211,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %files -n libgphoto2-%major
 %defattr(-,root,root)
+%doc AUTHORS NEWS README
 %_libdir/libgphoto2
 # support files for konica camlib
 %_datadir/%name
@@ -223,14 +223,15 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %files -n libgphoto2_port12
 %defattr(-,root,root)
+%doc libgphoto2_port/README libgphoto2_port/AUTHORS libgphoto2_port/NEWS
 %_libdir/libgphoto2_port
 %_libdir/libgphoto2_port.so.*
 %_datadir/libgphoto2_port
 
 %files -n libgphoto2-doc
 %defattr(-,root,root)
-%dir %_defaultdocdir/%name
-%_defaultdocdir/%name/*
+%dir /usr/share/doc/%name
+/usr/share/doc/%name/*
 %_mandir/man3/libgphoto2.3*
 %_mandir/man3/libgphoto2_port.3*
 
