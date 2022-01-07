@@ -1,4 +1,40 @@
 --------------------------------------------------------------------
+Wed Jan 5 11:30:11 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#854
+- use make_shared instead of new when creating actions for the
+  actiongraph
+- 4.4.70
+
+--------------------------------------------------------------------
+Tue Jan 4 16:01:28 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#853
+- added const
+- 4.4.69
+
+--------------------------------------------------------------------
+Wed Dec 22 16:13:50 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#852
+- added Luks::reset_activation_infos()
+
+--------------------------------------------------------------------
+Wed Dec 22 02:23:47 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Dec 21 19:34:00 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Dec 21 07:46:02 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+
+--------------------------------------------------------------------
 Mon Dec 20 11:11:39 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#851

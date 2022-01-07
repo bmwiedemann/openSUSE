@@ -1,7 +1,7 @@
 #
 # spec file for package libstorage-ng
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.4.68
+Version:        4.4.70
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
