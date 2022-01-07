@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:25:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.82.0:
+  * Fix issue-585: reading tiff rgb with tiffbpl = 1.5 * packedbpl.
+  * Fix issue-586: failure to properly wrap tiff-g4 in pdf without
+    transcoding.  The fix is to do transcoding for tiff-g4, as was
+    done before April 2021.
+- add ea2bb8c9cf61d3eba2589cfaac05f59a33b4110d.patch to fix test
+  failures to i586
+
+-------------------------------------------------------------------
+Thu Jun 24 19:34:39 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 1.81.1.
+  * Added choice of codec (JP2 or J2K) when writing jp2k files.
+  * Fix use of hashmap with key based on dna.
+- Changes in 1.81.0.
+  * Fixed problems with tiff pdf wrapping photometry.
+  * Fixed scaling issues in prog/cleanpdf for printing.
+  * New progs: tiffpdftest, hashtest.
+  * Fixed uninitialized data error in pixAddBorderGeneral() and
+    pixRemoveBorderGeneral().
+  * Rewrote Numa functions that discretize into bins. Have binning by
+    both sorting and histogram.
+  * Rewrote and simplified pixGetRankColorArray() and pixGetBinnedColor().
+  * Added tests to prog/rankbin_reg.c.
+  * Simplified fpixCopy() and dpixCopy(), and functions that use them.
+  * Check input for bilateral transforms.
+  * Add function for splitting a file evenly by lines.
+  * Check input for getFilenamesInDirectory().
+  * Many new fuzzers.
+  * Use size_t for all size inputs to ascii85 encoding/decoding.
+  * New regression tests: encoding_reg.c, binmorph6_reg.c,
+    flipdetect_reg.c.
+  * Reworked concatpdf for generality, using the Poppler package.
+  * Removed dwa flipdetection from the library. All the dwa code is now
+    in flipdetectdwa.c.notused. Likewise prog/flipselgen.c is retained
+    for completeness, renamed flipselgen.c.notused, and is not compiled.
+  * Added hashmap utility (hashmap.c, hashmap.h).
+  * Removed functions using dnahash on strings, pts and doubles.
+  * Improved the speed of hashing for strings and doubles.
+  * Added function for tiling images in pairs for comparison.
+  * Added null terminations to serialized strings written to memory,
+    preventing buffer overrun by strlen() [fixed by Stefan Weil].
+  * No longer use "NoInit" versions of pix creation in leptonica.
+    because they risk reading uninitialized data. These functions remain
+    in the library because they are in use in applications.
+  * Add two composite binarization functions, from prog/binarize_set.
+  * Giulio Lunati fixed pnm reading to work with stdin input.
+  * Removed several of the boxa compare and modify functions.
+  * Implemented reading jpeg200 data encded in j2k "codestream" format.
+    Can now read data in both jp2 and j2k.
+
+-------------------------------------------------------------------
 Wed Jul 29 20:50:16 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 1.80.0.

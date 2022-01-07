@@ -1,7 +1,7 @@
 #
 # spec file for package leptonica
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define major   5
-
 Name:           leptonica
-Version:        1.80.0
+Version:        1.82.0
 Release:        0
 Summary:        Library for image processing and image analysis applications
 License:        BSD-2-Clause
@@ -27,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://leptonica.org/
 Source0:        http://leptonica.org/source/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch1:         https://github.com/DanBloomberg/leptonica/commit/ea2bb8c9cf61d3eba2589cfaac05f59a33b4110d.patch
 BuildRequires:  giflib-devel
 BuildRequires:  gnuplot
 BuildRequires:  libjpeg-devel
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Library for efficient image processing and image analysis operations.
@@ -66,13 +65,13 @@ Group:          Productivity/Graphics/Other
 Programs for manipulating images.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
     --disable-static \
     --program-prefix=lept-
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -89,16 +88,14 @@ rm -fr %{buildroot}%{_libdir}/cmake/
 
 %check
 # Don't run multiple jobs: some tests failed somehow.
-make check
+%make_build -j1 check
 
 %post -n liblept%{major} -p /sbin/ldconfig
-
 %postun -n liblept%{major} -p /sbin/ldconfig
 
 %files -n liblept%{major}
 %license leptonica-license.txt
 %doc version-notes.html moller52.jpg
-%defattr(-,root,root)
 %{_libdir}/liblept.so.*
 
 %files devel
