@@ -17,4 +17,12 @@
 - Remove merged patch python-django-gravatar2-fix-testsuite.patch</comment>
     <requestid>777583</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0f5698ec353fa21e98fc0f9d86f93799</srcmd5>
+    <version>1.4.4</version>
+    <time>1641556015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944674</requestid>
+  </revision>
 </revisionlist>
