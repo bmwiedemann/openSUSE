@@ -1,7 +1,7 @@
-Index: openssl-1.1.1j/crypto/err/openssl.txt
+Index: openssl-1.1.1m/crypto/err/openssl.txt
 ===================================================================
---- openssl-1.1.1j.orig/crypto/err/openssl.txt
-+++ openssl-1.1.1j/crypto/err/openssl.txt
+--- openssl-1.1.1m.orig/crypto/err/openssl.txt
++++ openssl-1.1.1m/crypto/err/openssl.txt
 @@ -754,6 +754,9 @@ EVP_F_EVP_DIGESTINIT_EX:128:EVP_DigestIn
  EVP_F_EVP_ENCRYPTDECRYPTUPDATE:219:evp_EncryptDecryptUpdate
  EVP_F_EVP_ENCRYPTFINAL_EX:127:EVP_EncryptFinal_ex
@@ -58,7 +58,7 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  KDF_F_TLS1_PRF_ALG:111:tls1_prf_alg
  OBJ_F_OBJ_ADD_OBJECT:105:OBJ_add_object
  OBJ_F_OBJ_ADD_SIGID:107:OBJ_add_sigid
-@@ -2341,6 +2364,7 @@ EVP_R_ONLY_ONESHOT_SUPPORTED:177:only on
+@@ -2344,6 +2367,7 @@ EVP_R_ONLY_ONESHOT_SUPPORTED:177:only on
  EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE:150:\
  	operation not supported for this keytype
  EVP_R_OPERATON_NOT_INITIALIZED:151:operaton not initialized
@@ -66,7 +66,7 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  EVP_R_OUTPUT_WOULD_OVERFLOW:184:output would overflow
  EVP_R_PARTIALLY_OVERLAPPING:162:partially overlapping buffers
  EVP_R_PBKDF2_ERROR:181:pbkdf2 error
-@@ -2378,6 +2402,7 @@ KDF_R_MISSING_SEED:106:missing seed
+@@ -2436,6 +2460,7 @@ KDF_R_MISSING_SEED:106:missing seed
  KDF_R_UNKNOWN_PARAMETER_TYPE:103:unknown parameter type
  KDF_R_VALUE_ERROR:108:value error
  KDF_R_VALUE_MISSING:102:value missing
@@ -74,10 +74,10 @@ Index: openssl-1.1.1j/crypto/err/openssl.txt
  OBJ_R_OID_EXISTS:102:oid exists
  OBJ_R_UNKNOWN_NID:101:unknown nid
  OCSP_R_CERTIFICATE_VERIFY_ERROR:101:certificate verify error
-Index: openssl-1.1.1j/crypto/evp/build.info
+Index: openssl-1.1.1m/crypto/evp/build.info
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/build.info
-+++ openssl-1.1.1j/crypto/evp/build.info
+--- openssl-1.1.1m.orig/crypto/evp/build.info
++++ openssl-1.1.1m/crypto/evp/build.info
 @@ -9,7 +9,8 @@ SOURCE[../../libcrypto]=\
          p_open.c p_seal.c p_sign.c p_verify.c p_lib.c p_enc.c p_dec.c \
          bio_md.c bio_b64.c bio_enc.c evp_err.c e_null.c \
@@ -88,10 +88,10 @@ Index: openssl-1.1.1j/crypto/evp/build.info
          e_old.c pmeth_lib.c pmeth_fn.c pmeth_gn.c m_sigver.c \
          e_aes_cbc_hmac_sha1.c e_aes_cbc_hmac_sha256.c e_rc4_hmac_md5.c \
          e_chacha20_poly1305.c cmeth_lib.c
-Index: openssl-1.1.1j/crypto/evp/evp_err.c
+Index: openssl-1.1.1m/crypto/evp/evp_err.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/evp_err.c
-+++ openssl-1.1.1j/crypto/evp/evp_err.c
+--- openssl-1.1.1m.orig/crypto/evp/evp_err.c
++++ openssl-1.1.1m/crypto/evp/evp_err.c
 @@ -60,6 +60,9 @@ static const ERR_STRING_DATA EVP_str_fun
      {ERR_PACK(ERR_LIB_EVP, EVP_F_EVP_ENCRYPTFINAL_EX, 0),
       "EVP_EncryptFinal_ex"},
@@ -126,10 +126,10 @@ Index: openssl-1.1.1j/crypto/evp/evp_err.c
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_OUTPUT_WOULD_OVERFLOW),
      "output would overflow"},
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PARTIALLY_OVERLAPPING),
-Index: openssl-1.1.1j/crypto/evp/evp_local.h
+Index: openssl-1.1.1m/crypto/evp/evp_local.h
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/evp_local.h
-+++ openssl-1.1.1j/crypto/evp/evp_local.h
+--- openssl-1.1.1m.orig/crypto/evp/evp_local.h
++++ openssl-1.1.1m/crypto/evp/evp_local.h
 @@ -41,6 +41,11 @@ struct evp_cipher_ctx_st {
      unsigned char final[EVP_MAX_BLOCK_LENGTH]; /* possible final block */
  } /* EVP_CIPHER_CTX */ ;
@@ -142,10 +142,10 @@ Index: openssl-1.1.1j/crypto/evp/evp_local.h
  int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
                               int passlen, ASN1_TYPE *param,
                               const EVP_CIPHER *c, const EVP_MD *md,
-Index: openssl-1.1.1j/crypto/evp/evp_pbe.c
+Index: openssl-1.1.1m/crypto/evp/evp_pbe.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/evp_pbe.c
-+++ openssl-1.1.1j/crypto/evp/evp_pbe.c
+--- openssl-1.1.1m.orig/crypto/evp/evp_pbe.c
++++ openssl-1.1.1m/crypto/evp/evp_pbe.c
 @@ -12,6 +12,7 @@
  #include <openssl/evp.h>
  #include <openssl/pkcs12.h>
@@ -154,10 +154,10 @@ Index: openssl-1.1.1j/crypto/evp/evp_pbe.c
  #include "evp_local.h"
  
  /* Password based encryption (PBE) functions */
-Index: openssl-1.1.1j/crypto/evp/kdf_lib.c
+Index: openssl-1.1.1m/crypto/evp/kdf_lib.c
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/crypto/evp/kdf_lib.c
++++ openssl-1.1.1m/crypto/evp/kdf_lib.c
 @@ -0,0 +1,165 @@
 +/*
 + * Copyright 2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -324,10 +324,10 @@ Index: openssl-1.1.1j/crypto/evp/kdf_lib.c
 +    return ctx->kmeth->derive(ctx->impl, key, keylen);
 +}
 +
-Index: openssl-1.1.1j/crypto/evp/p5_crpt2.c
+Index: openssl-1.1.1m/crypto/evp/p5_crpt2.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/p5_crpt2.c
-+++ openssl-1.1.1j/crypto/evp/p5_crpt2.c
+--- openssl-1.1.1m.orig/crypto/evp/p5_crpt2.c
++++ openssl-1.1.1m/crypto/evp/p5_crpt2.c
 @@ -1,5 +1,5 @@
  /*
 - * Copyright 1999-2016 The OpenSSL Project Authors. All Rights Reserved.
@@ -476,10 +476,10 @@ Index: openssl-1.1.1j/crypto/evp/p5_crpt2.c
  }
  
  int PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
-Index: openssl-1.1.1j/crypto/evp/pbe_scrypt.c
+Index: openssl-1.1.1m/crypto/evp/pbe_scrypt.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/pbe_scrypt.c
-+++ openssl-1.1.1j/crypto/evp/pbe_scrypt.c
+--- openssl-1.1.1m.orig/crypto/evp/pbe_scrypt.c
++++ openssl-1.1.1m/crypto/evp/pbe_scrypt.c
 @@ -7,135 +7,12 @@
   * https://www.openssl.org/source/license.html
   */
@@ -750,10 +750,10 @@ Index: openssl-1.1.1j/crypto/evp/pbe_scrypt.c
  }
 +
  #endif
-Index: openssl-1.1.1j/crypto/evp/pkey_kdf.c
+Index: openssl-1.1.1m/crypto/evp/pkey_kdf.c
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/crypto/evp/pkey_kdf.c
++++ openssl-1.1.1m/crypto/evp/pkey_kdf.c
 @@ -0,0 +1,255 @@
 +/*
 + * Copyright 2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -1010,10 +1010,10 @@ Index: openssl-1.1.1j/crypto/evp/pkey_kdf.c
 +    pkey_kdf_ctrl_str
 +};
 +
-Index: openssl-1.1.1j/include/crypto/evp.h
+Index: openssl-1.1.1m/include/crypto/evp.h
 ===================================================================
---- openssl-1.1.1j.orig/include/crypto/evp.h
-+++ openssl-1.1.1j/include/crypto/evp.h
+--- openssl-1.1.1m.orig/include/crypto/evp.h
++++ openssl-1.1.1m/include/crypto/evp.h
 @@ -112,6 +112,24 @@ extern const EVP_PKEY_METHOD hkdf_pkey_m
  extern const EVP_PKEY_METHOD poly1305_pkey_meth;
  extern const EVP_PKEY_METHOD siphash_pkey_meth;
@@ -1039,19 +1039,19 @@ Index: openssl-1.1.1j/include/crypto/evp.h
  struct evp_md_st {
      int type;
      int pkey_type;
-Index: openssl-1.1.1j/crypto/kdf/build.info
+Index: openssl-1.1.1m/crypto/kdf/build.info
 ===================================================================
---- openssl-1.1.1j.orig/crypto/kdf/build.info
-+++ openssl-1.1.1j/crypto/kdf/build.info
+--- openssl-1.1.1m.orig/crypto/kdf/build.info
++++ openssl-1.1.1m/crypto/kdf/build.info
 @@ -1,3 +1,3 @@
  LIBS=../../libcrypto
  SOURCE[../../libcrypto]=\
 -        tls1_prf.c kdf_err.c hkdf.c scrypt.c
 +        tls1_prf.c kdf_err.c kdf_util.c hkdf.c scrypt.c pbkdf2.c
-Index: openssl-1.1.1j/crypto/kdf/hkdf.c
+Index: openssl-1.1.1m/crypto/kdf/hkdf.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/kdf/hkdf.c
-+++ openssl-1.1.1j/crypto/kdf/hkdf.c
+--- openssl-1.1.1m.orig/crypto/kdf/hkdf.c
++++ openssl-1.1.1m/crypto/kdf/hkdf.c
 @@ -8,32 +8,33 @@
   */
  
@@ -1518,10 +1518,10 @@ Index: openssl-1.1.1j/crypto/kdf/hkdf.c
  
   err:
      OPENSSL_cleanse(prev, sizeof(prev));
-Index: openssl-1.1.1j/crypto/kdf/kdf_err.c
+Index: openssl-1.1.1m/crypto/kdf/kdf_err.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/kdf/kdf_err.c
-+++ openssl-1.1.1j/crypto/kdf/kdf_err.c
+--- openssl-1.1.1m.orig/crypto/kdf/kdf_err.c
++++ openssl-1.1.1m/crypto/kdf/kdf_err.c
 @@ -1,6 +1,6 @@
  /*
   * Generated by util/mkerr.pl DO NOT EDIT
@@ -1577,10 +1577,10 @@ Index: openssl-1.1.1j/crypto/kdf/kdf_err.c
      {0, NULL}
  };
  
-Index: openssl-1.1.1j/crypto/kdf/kdf_local.h
+Index: openssl-1.1.1m/crypto/kdf/kdf_local.h
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/crypto/kdf/kdf_local.h
++++ openssl-1.1.1m/crypto/kdf/kdf_local.h
 @@ -0,0 +1,22 @@
 +/*
 + * Copyright 2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -1604,10 +1604,10 @@ Index: openssl-1.1.1j/crypto/kdf/kdf_local.h
 +                int (*ctrl)(EVP_KDF_IMPL *impl, int cmd, va_list args),
 +                int cmd, const char *md_name);
 +
-Index: openssl-1.1.1j/crypto/kdf/kdf_util.c
+Index: openssl-1.1.1m/crypto/kdf/kdf_util.c
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/crypto/kdf/kdf_util.c
++++ openssl-1.1.1m/crypto/kdf/kdf_util.c
 @@ -0,0 +1,73 @@
 +/*
 + * Copyright 2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -1682,10 +1682,10 @@ Index: openssl-1.1.1j/crypto/kdf/kdf_util.c
 +    return call_ctrl(ctrl, impl, cmd, md);
 +}
 +
-Index: openssl-1.1.1j/crypto/kdf/pbkdf2.c
+Index: openssl-1.1.1m/crypto/kdf/pbkdf2.c
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/crypto/kdf/pbkdf2.c
++++ openssl-1.1.1m/crypto/kdf/pbkdf2.c
 @@ -0,0 +1,264 @@
 +/*
 + * Copyright 2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -1951,10 +1951,10 @@ Index: openssl-1.1.1j/crypto/kdf/pbkdf2.c
 +    HMAC_CTX_free(hctx_tpl);
 +    return ret;
 +}
-Index: openssl-1.1.1j/crypto/kdf/scrypt.c
+Index: openssl-1.1.1m/crypto/kdf/scrypt.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/kdf/scrypt.c
-+++ openssl-1.1.1j/crypto/kdf/scrypt.c
+--- openssl-1.1.1m.orig/crypto/kdf/scrypt.c
++++ openssl-1.1.1m/crypto/kdf/scrypt.c
 @@ -8,25 +8,34 @@
   */
  
@@ -2543,10 +2543,10 @@ Index: openssl-1.1.1j/crypto/kdf/scrypt.c
 +}
  
  #endif
-Index: openssl-1.1.1j/crypto/kdf/tls1_prf.c
+Index: openssl-1.1.1m/crypto/kdf/tls1_prf.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/kdf/tls1_prf.c
-+++ openssl-1.1.1j/crypto/kdf/tls1_prf.c
+--- openssl-1.1.1m.orig/crypto/kdf/tls1_prf.c
++++ openssl-1.1.1m/crypto/kdf/tls1_prf.c
 @@ -8,11 +8,15 @@
   */
  
@@ -2830,10 +2830,10 @@ Index: openssl-1.1.1j/crypto/kdf/tls1_prf.c
              OPENSSL_clear_free(tmp, olen);
              return 0;
          }
-Index: openssl-1.1.1j/doc/man3/EVP_KDF_CTX.pod
+Index: openssl-1.1.1m/doc/man3/EVP_KDF_CTX.pod
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/doc/man3/EVP_KDF_CTX.pod
++++ openssl-1.1.1m/doc/man3/EVP_KDF_CTX.pod
 @@ -0,0 +1,217 @@
 +=pod
 +
@@ -3052,10 +3052,10 @@ Index: openssl-1.1.1j/doc/man3/EVP_KDF_CTX.pod
 +L<https://www.openssl.org/source/license.html>.
 +
 +=cut
-Index: openssl-1.1.1j/doc/man7/EVP_KDF_HKDF.pod
+Index: openssl-1.1.1m/doc/man7/EVP_KDF_HKDF.pod
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/doc/man7/EVP_KDF_HKDF.pod
++++ openssl-1.1.1m/doc/man7/EVP_KDF_HKDF.pod
 @@ -0,0 +1,180 @@
 +=pod
 +
@@ -3237,10 +3237,10 @@ Index: openssl-1.1.1j/doc/man7/EVP_KDF_HKDF.pod
 +L<https://www.openssl.org/source/license.html>.
 +
 +=cut
-Index: openssl-1.1.1j/doc/man7/EVP_KDF_PBKDF2.pod
+Index: openssl-1.1.1m/doc/man7/EVP_KDF_PBKDF2.pod
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/doc/man7/EVP_KDF_PBKDF2.pod
++++ openssl-1.1.1m/doc/man7/EVP_KDF_PBKDF2.pod
 @@ -0,0 +1,78 @@
 +=pod
 +
@@ -3320,10 +3320,10 @@ Index: openssl-1.1.1j/doc/man7/EVP_KDF_PBKDF2.pod
 +L<https://www.openssl.org/source/license.html>.
 +
 +=cut
-Index: openssl-1.1.1j/doc/man7/EVP_KDF_SCRYPT.pod
+Index: openssl-1.1.1m/doc/man7/EVP_KDF_SCRYPT.pod
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/doc/man7/EVP_KDF_SCRYPT.pod
++++ openssl-1.1.1m/doc/man7/EVP_KDF_SCRYPT.pod
 @@ -0,0 +1,149 @@
 +=pod
 +
@@ -3474,10 +3474,10 @@ Index: openssl-1.1.1j/doc/man7/EVP_KDF_SCRYPT.pod
 +L<https://www.openssl.org/source/license.html>.
 +
 +=cut
-Index: openssl-1.1.1j/doc/man7/EVP_KDF_TLS1_PRF.pod
+Index: openssl-1.1.1m/doc/man7/EVP_KDF_TLS1_PRF.pod
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/doc/man7/EVP_KDF_TLS1_PRF.pod
++++ openssl-1.1.1m/doc/man7/EVP_KDF_TLS1_PRF.pod
 @@ -0,0 +1,142 @@
 +=pod
 +
@@ -3621,10 +3621,10 @@ Index: openssl-1.1.1j/doc/man7/EVP_KDF_TLS1_PRF.pod
 +L<https://www.openssl.org/source/license.html>.
 +
 +=cut
-Index: openssl-1.1.1j/include/openssl/evperr.h
+Index: openssl-1.1.1m/include/openssl/evperr.h
 ===================================================================
---- openssl-1.1.1j.orig/include/openssl/evperr.h
-+++ openssl-1.1.1j/include/openssl/evperr.h
+--- openssl-1.1.1m.orig/include/openssl/evperr.h
++++ openssl-1.1.1m/include/openssl/evperr.h
 @@ -56,6 +56,9 @@ int ERR_load_EVP_strings(void);
  # define EVP_F_EVP_ENCRYPTDECRYPTUPDATE                   219
  # define EVP_F_EVP_ENCRYPTFINAL_EX                        127
@@ -3657,10 +3657,10 @@ Index: openssl-1.1.1j/include/openssl/evperr.h
  # define EVP_R_OUTPUT_WOULD_OVERFLOW                      184
  # define EVP_R_PARTIALLY_OVERLAPPING                      162
  # define EVP_R_PBKDF2_ERROR                               181
-Index: openssl-1.1.1j/include/openssl/kdferr.h
+Index: openssl-1.1.1m/include/openssl/kdferr.h
 ===================================================================
---- openssl-1.1.1j.orig/include/openssl/kdferr.h
-+++ openssl-1.1.1j/include/openssl/kdferr.h
+--- openssl-1.1.1m.orig/include/openssl/kdferr.h
++++ openssl-1.1.1m/include/openssl/kdferr.h
 @@ -23,6 +23,23 @@ int ERR_load_KDF_strings(void);
  /*
   * KDF function codes.
@@ -3700,10 +3700,10 @@ Index: openssl-1.1.1j/include/openssl/kdferr.h
 +# define KDF_R_WRONG_OUTPUT_BUFFER_SIZE                   112
  
  #endif
-Index: openssl-1.1.1j/include/openssl/kdf.h
+Index: openssl-1.1.1m/include/openssl/kdf.h
 ===================================================================
---- openssl-1.1.1j.orig/include/openssl/kdf.h
-+++ openssl-1.1.1j/include/openssl/kdf.h
+--- openssl-1.1.1m.orig/include/openssl/kdf.h
++++ openssl-1.1.1m/include/openssl/kdf.h
 @@ -10,10 +10,50 @@
  #ifndef HEADER_KDF_H
  # define HEADER_KDF_H
@@ -3782,10 +3782,10 @@ Index: openssl-1.1.1j/include/openssl/kdf.h
  }
  # endif
  #endif
-Index: openssl-1.1.1j/include/openssl/ossl_typ.h
+Index: openssl-1.1.1m/include/openssl/ossl_typ.h
 ===================================================================
---- openssl-1.1.1j.orig/include/openssl/ossl_typ.h
-+++ openssl-1.1.1j/include/openssl/ossl_typ.h
+--- openssl-1.1.1m.orig/include/openssl/ossl_typ.h
++++ openssl-1.1.1m/include/openssl/ossl_typ.h
 @@ -97,6 +97,8 @@ typedef struct evp_pkey_asn1_method_st E
  typedef struct evp_pkey_method_st EVP_PKEY_METHOD;
  typedef struct evp_pkey_ctx_st EVP_PKEY_CTX;
@@ -3795,10 +3795,10 @@ Index: openssl-1.1.1j/include/openssl/ossl_typ.h
  typedef struct evp_Encode_Ctx_st EVP_ENCODE_CTX;
  
  typedef struct hmac_ctx_st HMAC_CTX;
-Index: openssl-1.1.1j/test/build.info
+Index: openssl-1.1.1m/test/build.info
 ===================================================================
---- openssl-1.1.1j.orig/test/build.info
-+++ openssl-1.1.1j/test/build.info
+--- openssl-1.1.1m.orig/test/build.info
++++ openssl-1.1.1m/test/build.info
 @@ -44,7 +44,8 @@ INCLUDE_MAIN___test_libtestutil_OLB = /I
            ssl_test_ctx_test ssl_test x509aux cipherlist_test asynciotest \
            bio_callback_test bio_memleak_test \
@@ -3820,10 +3820,10 @@ Index: openssl-1.1.1j/test/build.info
    SOURCE[x509_time_test]=x509_time_test.c
    INCLUDE[x509_time_test]=../include
    DEPEND[x509_time_test]=../libcrypto libtestutil.a
-Index: openssl-1.1.1j/test/evp_kdf_test.c
+Index: openssl-1.1.1m/test/evp_kdf_test.c
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/test/evp_kdf_test.c
++++ openssl-1.1.1m/test/evp_kdf_test.c
 @@ -0,0 +1,237 @@
 +/*
 + * Copyright 2018-2019 The OpenSSL Project Authors. All Rights Reserved.
@@ -4062,10 +4062,10 @@ Index: openssl-1.1.1j/test/evp_kdf_test.c
 +#endif
 +    return 1;
 +}
-Index: openssl-1.1.1j/test/evp_test.c
+Index: openssl-1.1.1m/test/evp_test.c
 ===================================================================
---- openssl-1.1.1j.orig/test/evp_test.c
-+++ openssl-1.1.1j/test/evp_test.c
+--- openssl-1.1.1m.orig/test/evp_test.c
++++ openssl-1.1.1m/test/evp_test.c
 @@ -1705,13 +1705,14 @@ static const EVP_TEST_METHOD encode_test
      encode_test_run,
  };
@@ -4277,10 +4277,10 @@ Index: openssl-1.1.1j/test/evp_test.c
      &keypair_test_method,
      &keygen_test_method,
      &mac_test_method,
-Index: openssl-1.1.1j/test/pkey_meth_kdf_test.c
+Index: openssl-1.1.1m/test/pkey_meth_kdf_test.c
 ===================================================================
---- openssl-1.1.1j.orig/test/pkey_meth_kdf_test.c
-+++ openssl-1.1.1j/test/pkey_meth_kdf_test.c
+--- openssl-1.1.1m.orig/test/pkey_meth_kdf_test.c
++++ openssl-1.1.1m/test/pkey_meth_kdf_test.c
 @@ -1,5 +1,5 @@
  /*
 - * Copyright 2017-2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -4484,17 +4484,10 @@ Index: openssl-1.1.1j/test/pkey_meth_kdf_test.c
  }
  #endif
  
-Index: openssl-1.1.1j/test/recipes/30-test_evp_data/evpkdf.txt
+Index: openssl-1.1.1m/test/recipes/30-test_evp_data/evpkdf.txt
 ===================================================================
---- openssl-1.1.1j.orig/test/recipes/30-test_evp_data/evpkdf.txt
-+++ openssl-1.1.1j/test/recipes/30-test_evp_data/evpkdf.txt
-@@ -1,5 +1,5 @@
- #
--# Copyright 2001-2017 The OpenSSL Project Authors. All Rights Reserved.
-+# Copyright 2001-2018 The OpenSSL Project Authors. All Rights Reserved.
- #
- # Licensed under the OpenSSL license (the "License").  You may not use
- # this file except in compliance with the License.  You can obtain a copy
+--- openssl-1.1.1m.orig/test/recipes/30-test_evp_data/evpkdf.txt
++++ openssl-1.1.1m/test/recipes/30-test_evp_data/evpkdf.txt
 @@ -15,7 +15,7 @@
  Title = TLS1 PRF tests (from NIST test vectors)
  
@@ -4754,7 +4747,7 @@ Index: openssl-1.1.1j/test/recipes/30-test_evp_data/evpkdf.txt
  Output = 2c91117204d745f3500d636a62f64f0ab3bae548aa53d423b0d1f27ebba6f5e5673a081d70cce7acfc48
 @@ -303,3 +303,133 @@ Ctrl.r = r:8
  Ctrl.p = p:1
- Result = INTERNAL_ERROR
+ Result = KDF_MISMATCH
  
 +Title = PBKDF2 tests
 +
@@ -4886,10 +4879,10 @@ Index: openssl-1.1.1j/test/recipes/30-test_evp_data/evpkdf.txt
 +Ctrl.digest = digest:sha512
 +Output = 00ef42cdbfc98d29db20976608e455567fdddf14
 +
-Index: openssl-1.1.1j/test/recipes/30-test_evp_data/evppkey_kdf.txt
+Index: openssl-1.1.1m/test/recipes/30-test_evp_data/evppkey_kdf.txt
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/test/recipes/30-test_evp_data/evppkey_kdf.txt
++++ openssl-1.1.1m/test/recipes/30-test_evp_data/evppkey_kdf.txt
 @@ -0,0 +1,305 @@
 +#
 +# Copyright 2001-2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -5196,10 +5189,10 @@ Index: openssl-1.1.1j/test/recipes/30-test_evp_data/evppkey_kdf.txt
 +Ctrl.p = p:1
 +Result = INTERNAL_ERROR
 +
-Index: openssl-1.1.1j/test/recipes/30-test_evp_kdf.t
+Index: openssl-1.1.1m/test/recipes/30-test_evp_kdf.t
 ===================================================================
 --- /dev/null
-+++ openssl-1.1.1j/test/recipes/30-test_evp_kdf.t
++++ openssl-1.1.1m/test/recipes/30-test_evp_kdf.t
 @@ -0,0 +1,13 @@
 +#! /usr/bin/env perl
 +# Copyright 2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -5214,10 +5207,10 @@ Index: openssl-1.1.1j/test/recipes/30-test_evp_kdf.t
 +use OpenSSL::Test::Simple;
 +
 +simple_test("test_evp_kdf", "evp_kdf_test");
-Index: openssl-1.1.1j/test/recipes/30-test_evp.t
+Index: openssl-1.1.1m/test/recipes/30-test_evp.t
 ===================================================================
---- openssl-1.1.1j.orig/test/recipes/30-test_evp.t
-+++ openssl-1.1.1j/test/recipes/30-test_evp.t
+--- openssl-1.1.1m.orig/test/recipes/30-test_evp.t
++++ openssl-1.1.1m/test/recipes/30-test_evp.t
 @@ -15,7 +15,7 @@ use OpenSSL::Test qw/:DEFAULT data_file/
  setup("test_evp");
  
@@ -5227,10 +5220,10 @@ Index: openssl-1.1.1j/test/recipes/30-test_evp.t
      "evpcase.txt", "evpccmcavs.txt" );
  
  plan tests => scalar(@files);
-Index: openssl-1.1.1j/util/libcrypto.num
+Index: openssl-1.1.1m/util/libcrypto.num
 ===================================================================
---- openssl-1.1.1j.orig/util/libcrypto.num
-+++ openssl-1.1.1j/util/libcrypto.num
+--- openssl-1.1.1m.orig/util/libcrypto.num
++++ openssl-1.1.1m/util/libcrypto.num
 @@ -4626,3 +4626,11 @@ FIPS_drbg_get_strength
  FIPS_rand_strength                      6380	1_1_0g	EXIST::FUNCTION:
  FIPS_drbg_get_blocklength               6381	1_1_0g	EXIST::FUNCTION:
@@ -5243,10 +5236,10 @@ Index: openssl-1.1.1j/util/libcrypto.num
 +EVP_KDF_ctrl_str                        6595	1_1_1b	EXIST::FUNCTION:
 +EVP_KDF_size                            6596	1_1_1b	EXIST::FUNCTION:
 +EVP_KDF_derive                          6597	1_1_1b	EXIST::FUNCTION:
-Index: openssl-1.1.1j/util/private.num
+Index: openssl-1.1.1m/util/private.num
 ===================================================================
---- openssl-1.1.1j.orig/util/private.num
-+++ openssl-1.1.1j/util/private.num
+--- openssl-1.1.1m.orig/util/private.num
++++ openssl-1.1.1m/util/private.num
 @@ -22,6 +22,7 @@ CRYPTO_EX_dup
  CRYPTO_EX_free                          datatype
  CRYPTO_EX_new                           datatype
@@ -5255,10 +5248,10 @@ Index: openssl-1.1.1j/util/private.num
  EVP_PKEY_gen_cb                         datatype
  EVP_PKEY_METHOD                         datatype
  EVP_PKEY_ASN1_METHOD                    datatype
-Index: openssl-1.1.1j/crypto/evp/e_chacha20_poly1305.c
+Index: openssl-1.1.1m/crypto/evp/e_chacha20_poly1305.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/e_chacha20_poly1305.c
-+++ openssl-1.1.1j/crypto/evp/e_chacha20_poly1305.c
+--- openssl-1.1.1m.orig/crypto/evp/e_chacha20_poly1305.c
++++ openssl-1.1.1m/crypto/evp/e_chacha20_poly1305.c
 @@ -14,8 +14,8 @@
  
  # include <openssl/evp.h>
@@ -5269,10 +5262,10 @@ Index: openssl-1.1.1j/crypto/evp/e_chacha20_poly1305.c
  # include "crypto/chacha.h"
  
  typedef struct {
-Index: openssl-1.1.1j/crypto/evp/encode.c
+Index: openssl-1.1.1m/crypto/evp/encode.c
 ===================================================================
---- openssl-1.1.1j.orig/crypto/evp/encode.c
-+++ openssl-1.1.1j/crypto/evp/encode.c
+--- openssl-1.1.1m.orig/crypto/evp/encode.c
++++ openssl-1.1.1m/crypto/evp/encode.c
 @@ -11,8 +11,8 @@
  #include <limits.h>
  #include "internal/cryptlib.h"

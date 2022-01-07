@@ -41,7 +41,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1l
+Version:        1.1.1m
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -113,7 +113,7 @@ Patch55:        openssl-1_1-disable-test_srp-sslapi.patch
 Patch56:        openssl-add_rfc3526_rfc7919.patch
 Patch57:        openssl-1_1-use-include-directive.patch
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} && ! 0%{?sle_version}
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 Requires:       crypto-policies
 %endif
 Conflicts:      ssl
@@ -134,7 +134,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
 Group:          Productivity/Networking/Security
-%if 0%{?suse_version} && ! 0%{?sle_version}
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 Requires:       crypto-policies
 %endif
 Recommends:     ca-certificates-mozilla
