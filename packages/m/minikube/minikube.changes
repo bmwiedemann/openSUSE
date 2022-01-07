@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:16:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.0:
+  * Add --no-kubernetes flag to start minikube without kubernetes #12848
+  * minikube addons list shows addons if cluster does not exist #12837
+  * virtualbox: change default host-only-cidr #12811
+  * fix zsh completion #12841
+  * Fix starting on Windows with VMware driver on non C: drive #12819
+
+-------------------------------------------------------------------
 Tue Oct  5 12:37:39 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
 
 - update to 1.23.2:

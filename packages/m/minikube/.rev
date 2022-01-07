@@ -356,4 +356,17 @@
     <comment></comment>
     <requestid>923249</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c61367770174087b5074c9a2652ddfa7</srcmd5>
+    <version>1.24.0</version>
+    <time>1641555931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24.0:
+  * Add --no-kubernetes flag to start minikube without kubernetes #12848
+  * minikube addons list shows addons if cluster does not exist #12837
+  * virtualbox: change default host-only-cidr #12811
+  * fix zsh completion #12841
+  * Fix starting on Windows with VMware driver on non C: drive #12819</comment>
+    <requestid>943850</requestid>
+  </revision>
 </revisionlist>
