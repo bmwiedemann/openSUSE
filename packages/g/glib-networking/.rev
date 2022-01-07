@@ -606,4 +606,12 @@ a newer version not fitting</comment>
     <comment></comment>
     <requestid>937833</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>eb26fa7f45d8952d3e67d6a2adbc08d6</srcmd5>
+    <version>2.70.1</version>
+    <time>1641555897</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase testsuite timeout (forwarded request 943750 from Andreas_Schwab)</comment>
+    <requestid>944042</requestid>
+  </revision>
 </revisionlist>

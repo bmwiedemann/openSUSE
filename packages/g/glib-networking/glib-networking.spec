@@ -1,7 +1,7 @@
 #
 # spec file for package glib-networking
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ Currently, there is only a proxy module based on libproxy.
 %find_lang %{name}
 
 %check
-%meson_test
+%meson_test --timeout=90
 
 %post
 %{glib2_gio_module_post}
