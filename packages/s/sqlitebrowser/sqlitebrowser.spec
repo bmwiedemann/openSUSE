@@ -1,7 +1,7 @@
 #
 # spec file for package sqlitebrowser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,11 +39,8 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
 # not on SLE-12
 %if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
 BuildRequires:  antlr-devel
@@ -74,6 +71,10 @@ Controls and guided dialogs are available for users to:
   -DQSCINTILLA_INCLUDE_DIR=%{_includedir}/qt5/Qsci \
   -DQSCINTILLA_LIBRARY=%{_libdir}/libqscintilla2_qt5.so \
   -DBUILD_SHARED_LIBS=OFF \
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+  -DFORCE_INTERNAL_QSCINTILLA=ON \
+%endif
+  -Dsqlcipher=1 \
   -Wno-dev
 
 %cmake_build
@@ -95,14 +96,6 @@ Type=Application
 Icon=%{name}
 EOF
 %suse_update_desktop_file %{name}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %doc README.md currentrelease

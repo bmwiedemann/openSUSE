@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  4 12:16:26 UTC 2022 - marec <marec@detebe.org>
+
+- Fixed build for Leap
+- Added support for sqlcipher
+- Removed obsolete %post and %postun section
+
+-------------------------------------------------------------------
 Mon May 24 19:09:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.2:
@@ -13,7 +20,7 @@ Wed Jan  6 12:58:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Completely reworked interface for accessing DBHub.io
   * Add .Net DateTime.Ticks to list of supported display formats (#2378)
   * Add more options for setting font sizes (#2306)
-  * New predefined settings for simplified window layout (#2307) 
+  * New predefined settings for simplified window layout (#2307)
   * see https://sqlitebrowser.org/blog/version-3-12-1-released/
 
 -------------------------------------------------------------------
@@ -120,7 +127,7 @@ Tue Aug 29 16:59:44 UTC 2017 - wbauer@tmo.at
 Thu Jan 19 12:38:53 UTC 2017 - hpj@urpla.net
 
 - switch to qmake build: cmake is badly broken ATM
-- update to version 3.9.1 
+- update to version 3.9.1
   * Major features
     - DBHub.io was recently announced.
     - Future releases of DB Browser for SQLite will optionally be able to save and retrieve your SQLite databases "in the cloud".
