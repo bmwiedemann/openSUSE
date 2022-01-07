@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1641243369.d5c49a55
+Version:        4.6.1641477883.20dfb00e
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later

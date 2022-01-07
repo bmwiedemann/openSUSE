@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 06 20:42:58 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1641477883.20dfb00e:
+  * Fix 02-test_ocr.t after bmwqemu::vars change
+  * t: Ensure 100% statement coverage of consoles/virtio_terminal.pm
+  * consoles: Avoid all external facing API calls
+  * Automatically detect KVM in qemu if available
+
+-------------------------------------------------------------------
 Tue Jan 04 09:48:15 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1641243369.d5c49a55:
