@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 25 16:56:09 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 6.0.0
+  See https://www.kicad.org/blog/2021/12/KiCad-6.0.0-Release/ for details.
+- Drop no longer necessary kicad-suse-help-path.patch
+- Add 0001-Use-library-target-install-for-python-module-to-fix-.patch
+- Adjust disk constraints (now 11G)
+
+-------------------------------------------------------------------
 Thu Nov 18 03:32:50 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.12
