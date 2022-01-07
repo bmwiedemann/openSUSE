@@ -1,0 +1,87 @@
+From 98c8519b832ddb93021c3eeb8eee0f5e51c49197 Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Thu, 30 Sep 2021 08:53:13 -0500
+Subject: [PATCH 3/4] ofpathname: Fix nvme support in ANA mode
+
+References: jsc#SLE-18643
+Upstream: accepted (expected in 1.3.10)
+Git-commit: 98c8519b832ddb93021c3eeb8eee0f5e51c49197
+
+nvme_core.multipath is Y by defaut in the latest rhel
+and sles linux release. The patch fixes the issue when
+nvme_core.multipath=Y
+
+Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ scripts/ofpathname | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/ofpathname b/scripts/ofpathname
+index c4d81f2..310ee3e 100755
+--- a/scripts/ofpathname
++++ b/scripts/ofpathname
+@@ -640,6 +640,7 @@ l2of_nvme()
+     # disk: nvmeX, nvmeXnY; not nvmeXnYpZ
+     local devdisk="${DEVICE%p[0-9]*}"
+ 
++    local dev_ctrl=${devdisk%n[0-9]*}
+     # namespace id: Y in nvmeXnY, nvmeXnYpZ
+     local devnsid="${devdisk#nvme[0-9]*n}"
+     if [[ $devnsid = $devdisk ]]; then
+@@ -656,7 +657,7 @@ l2of_nvme()
+     local dir
+     local found=0
+ 
+-    for dir in `$FIND /sys/devices -name "$DEVICE"`; do
++    for dir in `$FIND /sys/devices -name "$dev_ctrl"`; do
+         cd $dir
+ 
+         goto_dir $PWD "device/devspec"
+@@ -666,8 +667,10 @@ l2of_nvme()
+             found=1
+             if [[ -n $devnsid ]]; then
+                 # Linux logical nsid might not match nvme controller nsid
+-                goto_dir $dir "nsid"
+-                devnsid=`$CAT $PWD/nsid | tr -d '\000'`
++                for nsid_dir in `$FIND /sys/devices -name "DEVICE"`; do
++                    goto_dir $dir_dir "nsid"
++                    devnsid=`$CAT $PWD/nsid | tr -d '\000'`
++                done
+             fi
+             break
+         fi
+@@ -1056,7 +1059,8 @@ ofpathname_to_logical()
+ 
+     # Remove any possible partition reference
+     PART=$(expr "$DEVICE" : '.*\(:[0-9]\)')
+-    if [[ -n $PART ]] ; then
++    if [[ -n $PART ]] && \
++    [[ $DEVTYPE != "nvme" ]]; then
+         PART=${PART:1}
+         DEVICE=${DEVICE%:[0-9]}
+     fi
+@@ -1083,7 +1087,8 @@ ofpathname_to_logical()
+     fi
+ 
+     # Add any previously stripped partition reference
+-    if [[ -n $PART ]] ; then
++    if [[ -n $PART ]] && \
++    [[ $DEVTYPE != "nvme" ]]; then
+         LOGICAL_DEVNAME=$LOGICAL_DEVNAME$PART
+     fi
+ 
+@@ -1650,6 +1655,10 @@ of2l_nvme()
+             continue
+         fi
+ 
++        if [[ "$PWD" == *"nvme-fabrics"* ]]; then
++            continue
++        fi
++
+         goto_dir $PWD "devspec"
+         local devspec=`$CAT ./devspec 2>/dev/null`
+ 
+-- 
+2.34.1
+

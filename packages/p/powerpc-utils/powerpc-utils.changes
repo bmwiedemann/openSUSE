@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  5 19:10:13 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Add support for vnic backup device for HNV (jsc#SLE-23097).
+   + 0001-hcnmgr-Support-vNIC-as-backup-device.patch
+   + 0002-hcnmgr-Remove-some-dead-code.patch
+- Add support for NVMf devices (jsc#SLE-18643).
+   + 0003-ofpathname-Fix-nvme-support-in-ANA-mode.patch
+   + 0004-ofpathname-Add-support-for-NVMf-devices.patch
+
+-------------------------------------------------------------------
 Fri Oct 29 07:38:02 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Avoid error with HCN IDs containing same consecutive bytes (bsc#1192095 ltc#194963).

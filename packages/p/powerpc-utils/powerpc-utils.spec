@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,10 @@ Patch2:         ofpathname_powernv.patch
 Patch4:         libvirt-service-dep.patch
 Patch5:         lsdevinfo-optimize-criteria-filtering.patch
 Patch6:         hcnmgr-Avoid-hexdum-squeezing-consecutive-identical-.patch
+Patch7:         0001-hcnmgr-Support-vNIC-as-backup-device.patch
+Patch8:         0002-hcnmgr-Remove-some-dead-code.patch
+Patch9:         0003-ofpathname-Fix-nvme-support-in-ANA-mode.patch
+Patch10:        0004-ofpathname-Add-support-for-NVMf-devices.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
