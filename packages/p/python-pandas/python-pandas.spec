@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -88,12 +88,14 @@ BuildRequires:  %{python_module XlsxWriter >= 1.0.2}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lxml >= 4.3.0}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numexpr >= 2.7.0}
 BuildRequires:  %{python_module openpyxl >= 3.0.0}
 BuildRequires:  %{python_module pandas = %{version}}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module xlrd >= 1.2.0}
 BuildRequires:  xclip
 BuildRequires:  xvfb-run

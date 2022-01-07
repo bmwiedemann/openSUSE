@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:56:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.3.5
+  * Fixed regression in Series.equals() when comparing floats with
+    dtype object to None (GH44190)
+  * Fixed regression in merge_asof() raising error when array was
+    supplied as join key (GH42844)
+  * Fixed regression when resampling DataFrame with DateTimeIndex
+    with empty groups and uint8, uint16 or uint32 columns
+    incorrectly raising RuntimeError (GH43329)
+  * Fixed regression in creating a DataFrame from a timezone-aware
+    Timestamp scalar near a Daylight Savings Time transition
+    (GH42505)
+  * Fixed performance regression in read_csv() (GH44106)
+  * Fixed regression in Series.duplicated() and
+    Series.drop_duplicates() when Series has Categorical dtype with
+    boolean categories (GH44351)
+  * Fixed regression in GroupBy.sum() with timedelta64[ns] dtype
+    containing NaT failing to treat that value as NA (GH42659)
+  * Fixed regression in RollingGroupby.cov() and
+    RollingGroupby.corr() when other had the same shape as each
+    group would incorrectly return superfluous groups in the result
+    (GH42915) 
+
+-------------------------------------------------------------------
 Wed Oct 20 12:29:00 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 1.3.4
