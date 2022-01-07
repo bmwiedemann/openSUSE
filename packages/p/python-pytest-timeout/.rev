@@ -87,4 +87,20 @@
     <comment></comment>
     <requestid>846349</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>861c1cc16419f16a195ee810e9e315b7</srcmd5>
+    <version>2.0.2</version>
+    <time>1641555917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+  * Fix debugger detection on OSX, thanks Alexander Pacha.
+  * Fix Python 2 removal, thanks Nicusor Picatureanu.
+  * Increase pytest requirement to &gt;=5.0.0. Thanks Dominic Davis-Foster.
+  * Use thread timeout method when plugin is not called from main thread
+    to avoid crash.
+  * Fix pycharm debugger detection so timeouts are not triggered during
+    debugger usage.
+  * Dropped support for Python 2, minimum pytest version upported is 5.0.0.</comment>
+    <requestid>944139</requestid>
+  </revision>
 </revisionlist>

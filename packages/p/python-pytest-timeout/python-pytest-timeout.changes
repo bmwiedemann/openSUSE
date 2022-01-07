@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  6 01:39:29 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.2:
+  * Fix debugger detection on OSX, thanks Alexander Pacha.
+  * Fix Python 2 removal, thanks Nicusor Picatureanu.
+  * Increase pytest requirement to >=5.0.0. Thanks Dominic Davis-Foster.
+  * Use thread timeout method when plugin is not called from main thread
+    to avoid crash.
+  * Fix pycharm debugger detection so timeouts are not triggered during
+    debugger usage.
+  * Dropped support for Python 2, minimum pytest version upported is 5.0.0. 
+
+-------------------------------------------------------------------
 Thu Nov  5 14:37:31 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 1.4.2
