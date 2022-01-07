@@ -58,4 +58,12 @@
     <comment>- Use pytest to run the testsuite.</comment>
     <requestid>928895</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>43cd6db2e6de90303c1081721c35ac18</srcmd5>
+    <version>3.0.10</version>
+    <time>1641555971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944538</requestid>
+  </revision>
 </revisionlist>

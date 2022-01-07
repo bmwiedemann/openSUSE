@@ -27,14 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Cors/Flas
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.9
-BuildArch:      noarch
-%if 0%{?suse_version} < 1500
-BuildRequires:  %{python_module six}
 Requires:       python-six
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -56,9 +54,7 @@ making cross-origin AJAX possible.
 
 %files %{python_files}
 %license LICENSE
-%dir %{python_sitelib}/flask_cors
-%{python_sitelib}/flask_cors/*
-%dir %{python_sitelib}/Flask_Cors-%{version}-py*.egg-info
-%{python_sitelib}/Flask_Cors-%{version}-py*.egg-info/*
+%{python_sitelib}/flask_cors
+%{python_sitelib}/Flask_Cors-%{version}*-info
 
 %changelog
