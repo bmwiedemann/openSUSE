@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 06 07:02:42 UTC 2022 - william.brown@suse.com
+
+- resolve bsc#1194119 (CVE-2021-45710)
+
+-------------------------------------------------------------------
 Mon Nov  1 00:37:07 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add ownership of directories that are considered unowned in leap15.3

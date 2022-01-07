@@ -1,7 +1,7 @@
 #
 # spec file for package rustup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
 # All modifications and additions to the file contributed by third parties
