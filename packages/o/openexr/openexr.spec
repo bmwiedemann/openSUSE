@@ -1,7 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
+# CVE-2021-45942 [bsc#1194333], heap-based buffer overflow in Imf_3_1:LineCompositeTask:execute
+Patch0:         openexr-CVE-2021-45942.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  fltk-devel
 BuildRequires:  freeglut-devel
