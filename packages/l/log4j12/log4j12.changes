@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  4 12:50:19 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Fix 'chainsaw' package: [bsc#1193184 - Chainsaw does not start]
+  * log4j-chainsaw.sh:
+    + Add proper BASE_JARS, using log4j12 instead of log4j.
+  * Add missing dependency to log4j12 for 'chainsaw' package.
+
+-------------------------------------------------------------------
 Thu Dec 16 10:11:54 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Remove src/main/java/org/apache/log4j/net/JMSAppender.java from
