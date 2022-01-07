@@ -75,4 +75,20 @@
     <comment></comment>
     <requestid>734959</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7abd3e0613d333340219d297e7ed65ec</srcmd5>
+    <version>0.9.26</version>
+    <time>1641555962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.26:
+  - please refer to /usr/share/doc/packages/tuxpaint/CHANGES.txt
+    for a detailed list and contributors
+- Run spec-cleaner
+- dropped kdelibs4-removal.patch
+- Rebase tuxpaint-import-eval.patch
+- Add BuildRequires ImageMagick, libimagequant-devel, xdg-utils 
+- Add tuxpaint-makefile.patch for disable update-desktop-database
+</comment>
+    <requestid>944527</requestid>
+  </revision>
 </revisionlist>

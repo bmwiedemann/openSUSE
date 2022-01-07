@@ -1,0 +1,24 @@
+diff -Nur tuxpaint-0.9.26/Makefile new/Makefile
+--- tuxpaint-0.9.26/Makefile	2021-06-29 01:46:55.000000000 +0200
++++ new/Makefile	2021-10-02 16:38:32.509556525 +0200
+@@ -79,6 +79,7 @@
+ #   <HOSTROOT>/lib            Library files.
+ #   <HOSTROOT>/lib/pkgconfig  *.pc files.
+ #
++HOST:=
+ ifdef HOST
+   ifndef HOSTROOT
+     $(error Must set HOSTROOT to cross compile)
+@@ -924,9 +925,9 @@
+ 	  xdg-desktop-menu install tux4kids-tuxpaint.desktop ; \
+ 	  rm ./tux4kids-tuxpaint.desktop ; \
+ 	fi
+-	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
+-	  update-desktop-database ; \
+-	fi
++#	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
++#	  update-desktop-database ; \
++#	fi
+ 
+ # Install the PNG icon (for KDE desktop, etc.)
+ # and the 24-color 32x32 XPM (for other Window managers):

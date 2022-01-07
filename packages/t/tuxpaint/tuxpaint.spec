@@ -1,7 +1,7 @@
 #
 # spec file for package tuxpaint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 %define         gnomedir   %(gnome-config --prefix)
 Name:           tuxpaint
-Version:        0.9.23
+Version:        0.9.26
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://www.tuxpaint.org/
-Source:         http://sourceforge.net/projects/tuxpaint/files/tuxpaint/%{version}/%{name}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/tuxpaint/files/tuxpaint/%{version}/%{name}-%{version}.tar.gz
 Source1:        tuxpaint-rpmlintrc
-# PATCH-FIX-OPENSUSE 0001-Prepare-the-kdelibs4-removal.patch
-Patch0:         kdelibs4-removal.patch
-Patch1:         tuxpaint-import-eval.patch
+Patch0:         tuxpaint-import-eval.patch
+# PATCH-FIX-OPENSUSE tuxpaint-makefile.patch -- Disable update-desktop-database, because it do not work
+Patch1:         tuxpaint-makefile.patch
+BuildRequires:  ImageMagick
 BuildRequires:  SDL-devel
 BuildRequires:  SDL_Pango-devel
 BuildRequires:  SDL_image-devel
@@ -36,8 +37,10 @@ BuildRequires:  SDL_mixer-devel
 BuildRequires:  SDL_ttf-devel > 2.0.8
 BuildRequires:  fribidi-devel
 BuildRequires:  gperf
+BuildRequires:  libimagequant-devel
 BuildRequires:  libpaper-devel
 BuildRequires:  libpng-devel
+BuildRequires:  xdg-utils
 BuildRequires:  zlib-devel
 #
 # openSUSE
@@ -105,33 +108,34 @@ Header files and development documentation for tuxpaint.
 %prep
 %setup -q
 %patch0 -p1
-%patch1  -b .import-eval-patch
+%patch1 -p1
+
 find . -name CVS   -print0 | xargs -0 rm -rf
 find docs/ -type f -print0 | xargs -0 chmod -v 644
 
 make PREFIX=%{_prefix} MAGIC_PREFIX=%{_libdir}/%{name}/plugins tp-magic-config
 
 %build
-make %{?_smp_mflags} \
+%make_build \
      PREFIX=%{_prefix} \
      CFLAGS="%{optflags}" \
-     MAGIC_PREFIX=%{_libdir}/%{name}/plugins -lpng14
+     MAGIC_PREFIX=%{_libdir}/%{name}/plugins
 
 %install
 %if ! 0%{?suse_version}
 mkdir -p %{buildroot}
 %endif
-make install install-kde-icons \
-             PREFIX="%{_prefix}" \
-             X11_ICON_PREFIX="%{buildroot}/%{_datadir}/pixmaps" \
-             MAGIC_PREFIX="%{buildroot}/%{_libdir}/%{name}/plugins" \
-             GNOME_PREFIX="%{_prefix}" \
-             KDE_ICON_PREFIX="%{_datadir}/icons" \
+make install \
+     PREFIX="%{_prefix}" \
+     X11_ICON_PREFIX="%{buildroot}/%{_datadir}/pixmaps" \
+     MAGIC_PREFIX="%{buildroot}/%{_libdir}/%{name}/plugins" \
+     GNOME_PREFIX="%{_prefix}" \
+     KDE_ICON_PREFIX="%{_datadir}/icons" \
 %if 0%{?suse_version}
-             DEVDOC_PREFIX="%{buildroot}/%{_defaultdocdir}/%{name}-devel" \
-             DOC_PREFIX="%{buildroot}/%{_defaultdocdir}/%{name}" \
+     DEVDOC_PREFIX="%{buildroot}/%{_defaultdocdir}/%{name}-devel" \
+     DOC_PREFIX="%{buildroot}/%{_defaultdocdir}/%{name}" \
 %endif
-             DESTDIR=%{buildroot}
+     DESTDIR=%{buildroot}
 
 find %{buildroot}/%{_mandir} -type f -exec chmod 644 {} \;
 find %{buildroot} -type d -exec chmod 0755 {} \;
@@ -148,8 +152,10 @@ desktop-file-install --dir %{buildroot}/%{_datadir}/applications \
     %{buildroot}/%{_datadir}/applications/tuxpaint.desktop
 rm -rf %{buildroot}/%{_docdir}/%{name}
 %endif
+
 # remove unneeded scripts
 rm %{buildroot}/%{_datadir}/%{name}/fonts/locale/zh_tw_docs/*.{sh,py,pe}
+
 # find lang
 %find_lang %{name}
 
@@ -170,30 +176,6 @@ rm %{buildroot}/%{_datadir}/%{name}/fonts/locale/zh_tw_docs/*.{sh,py,pe}
 %{_datadir}/%{name}/
 %{_datadir}/pixmaps/%{name}.*
 %{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor
-%if 0%{?suse_version} <= 1130
-# locales not in official openSUSE distribution
-%dir %{_datadir}/locale/en_ZA
-%dir %{_datadir}/locale/en_ZA/LC_MESSAGES
-%dir %{_datadir}/locale/gos
-%dir %{_datadir}/locale/gos/LC_MESSAGES
-%dir %{_datadir}/locale/nr
-%dir %{_datadir}/locale/nr/LC_MESSAGES
-%dir %{_datadir}/locale/oj
-%dir %{_datadir}/locale/oj/LC_MESSAGES
-%dir %{_datadir}/locale/tlh
-%dir %{_datadir}/locale/tlh/LC_MESSAGES
-%if ! %{defined fedora}
-%dir %{_datadir}/locale/twi
-%dir %{_datadir}/locale/twi/LC_MESSAGES
-%endif
-%dir %{_datadir}/locale/shs
-%dir %{_datadir}/locale/shs/LC_MESSAGES
-%dir %{_datadir}/locale/son
-%dir %{_datadir}/locale/son/LC_MESSAGES
-%dir %{_datadir}/locale/zam
-%dir %{_datadir}/locale/zam/LC_MESSAGES
-%endif
 
 %files devel
 %if 0%{?suse_version}
