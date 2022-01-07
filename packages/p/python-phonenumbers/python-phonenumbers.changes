@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  6 18:17:03 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- version update to 8.12.40:
+  New to_string() methods have been added for enum-like classes,
+  emitting strings that describe integer values known to be enum values.
+
+-------------------------------------------------------------------
 Mon Dec 13 12:19:06 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - version update to 8.12.39
