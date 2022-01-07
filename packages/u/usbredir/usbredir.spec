@@ -1,7 +1,7 @@
 #
 # spec file for package usbredir
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -76,7 +76,7 @@ of this protocol.
 %setup -n %{name}-%{version}
 
 %build
-%meson -Dllvm-fuzz=disabled
+%meson
 %meson_build
 
 %install

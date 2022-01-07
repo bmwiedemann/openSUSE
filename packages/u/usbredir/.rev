@@ -124,4 +124,12 @@ Tested the build localy (forwarded request 114808 from worldcitizen)</comment>
     <comment></comment>
     <requestid>941785</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>64e01e1f416bc9172cf614d4c5f7db91</srcmd5>
+    <version>0.12.0</version>
+    <time>1641555869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944022</requestid>
+  </revision>
 </revisionlist>
