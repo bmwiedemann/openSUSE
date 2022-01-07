@@ -1,10 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/yewstack/yew"]
-git = "https://github.com/yewstack/yew"
-rev = "1280dfd8315b893e96727b5ca5ad852919563823"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"

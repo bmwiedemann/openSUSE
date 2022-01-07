@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 07 00:59:36 UTC 2022 - wbrown@suse.de
+
+- resolve bsc#1194119 (CVE-2021-45710)
+
+-------------------------------------------------------------------
+Fri Dec 31 00:11:55 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha7~git0.c8468199:
+  * (cargo-release) version 1.1.0-alpha.7
+  * Pre-release update and cleanup (#631)
+  * Improve autofocus to oauth2 (#630)
+  * Finalise email changes for oidc (#629)
+  * Temp use env filter (#628)
+  * 20211216 tracing cleanup (#627)
+  * Art attribution
+  * Refactor of value and addition of base types for business attributes (#626)
+  * Add xmas logo
+  * Add rinstall file (#625)
+
+-------------------------------------------------------------------
 Fri Oct 01 02:10:02 UTC 2021 - wbrown@suse.de
 
 - bsc#1191031 - use _pam_moduledir in spec macros

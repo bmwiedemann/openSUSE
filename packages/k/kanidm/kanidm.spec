@@ -1,7 +1,7 @@
 #
 # spec file for package kanidm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        1.1.0~alpha6~git0.c9f4b1d
+Version:        1.1.0~alpha7~git0.c8468199
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -108,9 +108,9 @@ export RUSTFLAGS="%{rustflags}"
 export KANIDM_BUILD_PROFILE=release_suse_generic
 cargo build --offline --release
 # Now, move the completions to easier to install locations.
-mkdir %{_builddir}/%{name}-%{version}/target/release/_completions
-cp %{_builddir}/%{name}-%{version}/target/release/build/*/out/_kanidm* %{_builddir}/%{name}-%{version}/target/release/_completions/
-cp %{_builddir}/%{name}-%{version}/target/release/build/*/out/kanidm*.bash %{_builddir}/%{name}-%{version}/target/release/_completions/
+# mkdir %{_builddir}/%{name}-%{version}/target/release/_completions
+# cp %{_builddir}/%{name}-%{version}/target/release/build/*/out/_kanidm* %{_builddir}/%{name}-%{version}/target/release/_completions/
+# cp %{_builddir}/%{name}-%{version}/target/release/build/*/out/kanidm*.bash %{_builddir}/%{name}-%{version}/target/release/_completions/
 
 %install
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}
@@ -154,23 +154,23 @@ install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.s
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
 install -m 0640 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm_badlist_preprocess   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_badlist_preprocess
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm_ssh_authorizedkeys_direct   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_ssh_authorizedkeys_direct
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm_cache_clear   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_cache_clear
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm_cache_invalidate   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_cache_invalidate
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm_ssh_authorizedkeys   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_ssh_authorizedkeys
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/_kanidm_unixd_status   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_unixd_status
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm_badlist_preprocess   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_badlist_preprocess
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm_ssh_authorizedkeys_direct   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_ssh_authorizedkeys_direct
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm_cache_clear   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_cache_clear
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm_cache_invalidate   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_cache_invalidate
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm_ssh_authorizedkeys   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_ssh_authorizedkeys
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm_unixd_status   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm_unixd_status
 
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidmd.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidmd.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm_badlist_preprocess.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_badlist_preprocess.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm_ssh_authorizedkeys_direct.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys_direct.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm_cache_clear.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_cache_clear.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm_cache_invalidate.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_cache_invalidate.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/_completions/kanidm_unixd_status.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_unixd_status.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidmd.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidmd.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_badlist_preprocess.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_badlist_preprocess.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys_direct.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys_direct.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_cache_clear.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_cache_clear.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_cache_invalidate.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_cache_invalidate.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_unixd_status.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_unixd_status.sh
 
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/SUMMARY.md %{buildroot}%{_datadir}/kanidm/docs/SUMMARY.md
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/accounts_and_groups.md %{buildroot}%{_datadir}/kanidm/docs/accounts_and_groups.md
