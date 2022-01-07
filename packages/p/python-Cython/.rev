@@ -684,4 +684,17 @@
   * The declaration of ``PyUnicode_CompareWithASCIIString()`` in ``cpython.unicode`` was incorrect.</comment>
     <requestid>936122</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>821197df0dc75ed082173566e3e72d98</srcmd5>
+    <version>0.29.26</version>
+    <time>1641555874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.26:
+  * An incompatibility with CPython 3.11.0a3 was resolved.
+  * The ``in`` operator failed on literal lists with starred
+    expressions.
+  * A C compiler warning in PyPy about a missing struct field
+    initialisation was resolved.</comment>
+    <requestid>943796</requestid>
+  </revision>
 </revisionlist>

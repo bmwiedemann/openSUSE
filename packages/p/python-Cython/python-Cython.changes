@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 15:59:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.26:
+  * An incompatibility with CPython 3.11.0a3 was resolved.
+  * The ``in`` operator failed on literal lists with starred
+    expressions.
+  * A C compiler warning in PyPy about a missing struct field
+    initialisation was resolved.
+
+-------------------------------------------------------------------
 Mon Dec  6 20:16:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.25:
