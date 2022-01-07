@@ -1,7 +1,7 @@
 #
 # spec file for package libglvnd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 Name:           libglvnd
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        The GL Vendor-Neutral Dispatch library
 License:        MIT
