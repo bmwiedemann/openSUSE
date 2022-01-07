@@ -1,7 +1,7 @@
-Index: qbittorrent-4.3.8/dist/unix/systemd/qbittorrent-nox@.service.in
+Index: qbittorrent-4.4.0/dist/unix/systemd/qbittorrent-nox@.service.in
 ===================================================================
---- qbittorrent-4.3.8.orig/dist/unix/systemd/qbittorrent-nox@.service.in
-+++ qbittorrent-4.3.8/dist/unix/systemd/qbittorrent-nox@.service.in
+--- qbittorrent-4.4.0.orig/dist/unix/systemd/qbittorrent-nox@.service.in
++++ qbittorrent-4.4.0/dist/unix/systemd/qbittorrent-nox@.service.in
 @@ -7,6 +7,18 @@ After=local-fs.target network-online.tar
  [Service]
  Type=simple
@@ -20,4 +20,4 @@ Index: qbittorrent-4.3.8/dist/unix/systemd/qbittorrent-nox@.service.in
 +# end of automatic additions 
  User=%i
  ExecStart=@EXPAND_BINDIR@/qbittorrent-nox
- 
+ TimeoutStopSec=1800

@@ -1,7 +1,7 @@
 #
 # spec file for package qbittorrent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.3.9
+Version:        4.4.0
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -33,24 +33,21 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_system-devel >= 1.65
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.11
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 2.0.4
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
 # For search engines.
 Recommends:     python3
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(libtorrent-rasterbar-1) >= 1.2.12
-%else
-BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2.12
-%endif
 
 %description
 qBittorrent is a bittorrent client programmed in C++ and Qt that
@@ -69,8 +66,7 @@ uses libtorrent-rasterbar. This subpackage contains a command-line
 version.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 for ui in nox gui; do
@@ -114,7 +110,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 %doc AUTHORS Changelog README.md TODO
 %{_bindir}/%{name}
 %{_datadir}/applications/org.qbittorrent.qBittorrent.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/icons/hicolor/*/status/%{name}-tray.png
 %{_datadir}/icons/hicolor/scalable/status/%{name}-tray*.svg
 %{_datadir}/metainfo/org.qbittorrent.qBittorrent.appdata.xml

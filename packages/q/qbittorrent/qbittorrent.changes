@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Jan  7 07:59:00 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.0
+  New features:
+  * Support for v2 torrents along with libtorrent 2.0.x support
+  * Support for Qt6
+  * Expose libtorrent hashing_threads settings
+  * Add "Notification timeout" option
+  * Add `connection_speed` to advanced settings
+  * Announce to all trackers if IP changed
+  * Add tooltip for various columns
+  * Add context menu to toggle content tab columns
+  * Add filter "Checking" to side panel
+  * Add "Forced metadata downloading" state
+  * Remember last viewed page in Options dialog
+  * Add tooltip to listening port spinbox
+  * Add "Skip hash check" option for watched folders
+  * Add "Show torrent options" double-click action
+  * Allow setting temp folder per torrent/catergory
+  * Support folder based UI Themes
+  Bug fixes:
+  * Save "resume data" once file priority is changed
+  * Show priority menu at top level if there is no other in Add
+    New Torrent dialog
+  * Capitalize "peer flags" descriptions
+  * Reorder peer flags
+  * Show "last activity" value under all circumstances
+  * Elide text from the right for all columns' header
+  * Fix startup with different profiles
+  * Move a few torrent context menu actions into "Torrent
+    options" dialog
+  * Allow deselecting radio buttons in "Torrent options" for
+    mixed torrents
+  * Apply file priority changes correctly
+  * Use proper string for Korean language
+  * Disable "add peers" menu items instead of hiding it
+  * Disable system tray icon menu when app is exiting
+  * Show GUI lock icon after system tray icon is initialized
+  * Apply selected layout to displayed torrent content in "Add
+    New Torrent" dialog
+  Web UI:
+  * Add reverse proxy source IP resolution
+  * Support navigating UI tables with arrow keys
+  * Support expanding/collapsing UI folders with arrow keys
+  * Support sorting UI tables via touch
+  * Add pieces progress bar to General tab
+  * Update authors page
+  * Set icon sizes attribute
+  * Add meta application name
+  * Sort WebUI language selection values
+  * Use correct URL scheme in user prompt when HTTPS is enabled
+  RSS:
+  * Stick Unread row to top in RSS feed list
+  * Correctly use fallback icons for RSS feed in GUI
+  Search:
+  * Add context menu for tabs in search widget
+  * Add more download options to torrent search result
+    right-click menu
+  Experimental:
+  * Setting to store/load fastresume/torrent files in an SQLite
+    database
+  Other:
+  * Prolong wait time for shutdown for qbittorrent-nox
+  * Install vector program icon
+  * Many internal code refactorings and bug fixing by many people
+- Refresh harden_qbittorrent-nox@.service.patch
+
+-------------------------------------------------------------------
 Sun Oct 31 15:54:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.9
