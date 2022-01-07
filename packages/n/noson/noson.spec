@@ -1,7 +1,7 @@
 #
 # spec file for package noson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           noson
-Version:        2.4.1
+Version:        2.6.0
 Release:        0
 Summary:        C++ library for accessing sonos devices
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/janbar/noson/
-Source0:        https://github.com/janbar/noson/archive/%{version}.tar.gz
+Source0:        https://github.com/janbar/noson/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel

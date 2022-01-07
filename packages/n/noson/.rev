@@ -129,4 +129,22 @@
 </comment>
     <requestid>885151</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e82b2fb061cd6af7a8f1a140c94f18fe</srcmd5>
+    <version>2.6.0</version>
+    <time>1641555965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0
+  * add support for changing sub gain
+  * The SetEQ/GetEQ actually use i2
+  * Add support for volume in decibel
+  * add github workflows to test the build on ubuntu-latest
+  * show the badge of build status
+  * Update build-ubuntu-latest.yml 
+  * implement the move constructor for the shared pointer
+  * fix const qualifier of returned shared_ptr
+- Change source URL according to upstream
+</comment>
+    <requestid>944526</requestid>
+  </revision>
 </revisionlist>

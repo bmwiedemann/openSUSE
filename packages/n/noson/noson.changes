@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 30 11:23:50 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.6.0
+  * add support for changing sub gain
+  * The SetEQ/GetEQ actually use i2
+  * Add support for volume in decibel
+  * add github workflows to test the build on ubuntu-latest
+  * show the badge of build status
+  * Update build-ubuntu-latest.yml 
+  * implement the move constructor for the shared pointer
+  * fix const qualifier of returned shared_ptr
+- Change source URL according to upstream
+
+-------------------------------------------------------------------
 Tue Apr 13 19:46:06 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
 
 - Update to 2.4.1
