@@ -24,7 +24,7 @@ Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Dictionary
 Url:            http://goldendict.org/
-Version:        1.5.0~rc2+git.20211231T234821
+Version:        1.5.0~rc2+git.20220104T210116
 Release:        0
 Source0:        goldendict-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

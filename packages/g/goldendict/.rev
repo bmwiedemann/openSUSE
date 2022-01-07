@@ -7,4 +7,15 @@
     <comment>return back of GoldenDict, with Qt5WebEngine instead of deprecated Qt5WebKit</comment>
     <requestid>943356</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a7c3c5cebe53c812c77f23b281e1e0a4</srcmd5>
+    <version>1.5.0~rc2+git.20220104T210116</version>
+    <time>1641555942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0~rc2+git.20220104T210116:
+  Fixed some regressions related to opening of links to other words
+  of dictionaries.
+</comment>
+    <requestid>944200</requestid>
+  </revision>
 </revisionlist>

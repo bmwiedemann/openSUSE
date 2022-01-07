@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 19:54:38 UTC 2022 - <opensuse.lietuviu.kalba@gmail.com>
+- Update to version 1.5.0~rc2+git.20220104T210116:
+  Fixed some regressions related to opening of links to other words
+  of dictionaries.
+
+-------------------------------------------------------------------
 Fri Dec 31 13:10:05 UTC 2021 - <opensuse.lietuviu.kalba@gmail.com>
 
 - Switch to GoldenDict variant with Qt5WebEngine 
