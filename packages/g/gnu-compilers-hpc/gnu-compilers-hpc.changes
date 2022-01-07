@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:45:02 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- fix _multibuild with a correct list of gcc version
+
+-------------------------------------------------------------------
 Wed Oct  6 18:50:31 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Use %_rpmmacrodir instead of %{_sysconfdir}/rpm (boo#1191381).

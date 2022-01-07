@@ -1,7 +1,7 @@
 #
 # spec file for package gnu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,10 +49,15 @@ ExclusiveArch:  do_not_build
 
 %if "%flavor" == "gnu10-hpc"
 %define c_f_ver 10
-%endif
+%endif 
 
 %if "%flavor" == "gnu11-hpc"
 %define c_f_ver 11
+%endif
+
+# For Factory only build the default
+%if 0%{?suse_version} > 1500 && "%flavor" != "gnu-hpc"
+ExclusiveArch:  do-not-build
 %endif
 
 %{!?_rpmmacrodir:%define _rpmmacrodir %{_sysconfdir}/rpm}
