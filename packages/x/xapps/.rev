@@ -303,4 +303,22 @@
     <comment></comment>
     <requestid>933953</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>91a9bceda3abcd27dbfde9d34483ce2e</srcmd5>
+    <version>2.2.8</version>
+    <time>1641555938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.8.
+  * l10n: Update translations
+- Update to version 2.2.7
+  * icons: Add xapp-view-fit-height-symbolic and
+    xapp-view-fit-width-symbolic
+- Update to version 2.2.6.
+  * Update documentation
+  * xapp-favorites.c: Unescape the file uri before using it for
+    display.
+  * l10n: Update translations
+</comment>
+    <requestid>944048</requestid>
+  </revision>
 </revisionlist>

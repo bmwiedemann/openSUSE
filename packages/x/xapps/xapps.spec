@@ -1,7 +1,7 @@
 #
 # spec file for package xapps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define soname  libxapp
 %define sover   1
 Name:           xapps
-Version:        2.2.5
+Version:        2.2.8
 Release:        0
 Summary:        XApp library and common files
 License:        GPL-3.0-or-later

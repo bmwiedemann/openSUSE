@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan  2 21:36:28 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 2.2.8.
+  * l10n: Update translations
+- Update to version 2.2.7
+  * icons: Add xapp-view-fit-height-symbolic and
+    xapp-view-fit-width-symbolic
+
+-------------------------------------------------------------------
+Thu Dec  9 00:56:43 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.2.6.
+  * Update documentation
+  * xapp-favorites.c: Unescape the file uri before using it for
+    display.
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Mon Nov 22 16:54:03 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.2.5.
