@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan 06 07:05:06 UTC 2022 - william.brown@suse.com
+
+- resolve bsc#1194119 (CVE-2021-45710)
+
+-------------------------------------------------------------------
+Thu Dec 16 04:40:45 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.2.15~git0.6b6d2f7:
+  * (cargo-release) version 0.2.15
+  * Update docs/Releasing.md
+  * Workaround tiny_http issue #151 by disabling HTTP pipelining
+  * Upgrade itertools to 0.10
+  * Run `cargo update`
+  * Add C compiler versions to the hash calculation when available
+  * Move lru-disk-cache to an internal module
+  * Fix clippy warnings in lru-disk-cache
+  * Still read config file from Library/Preferences if it exists
+  * Revert "Upgrade redis to 0.18"
+
+-------------------------------------------------------------------
+Thu Dec 16 00:25:03 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Enable build on s390x, remove support for gcs which depends on ring.
+
+-------------------------------------------------------------------
 Fri Nov 26 12:56:12 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build also on armv6
