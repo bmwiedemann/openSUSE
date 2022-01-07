@@ -1,7 +1,7 @@
 #
 # spec file for package yaml-cpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define library_name libyaml-cpp0_6
+%define library_name libyaml-cpp0_7
 Name:           yaml-cpp
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        YAML parser and emitter in C++
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jbeder/yaml-cpp/
 Source:         https://github.com/jbeder/yaml-cpp/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM bsc#1032144 CVE-2017-5950 Stack overflow in SingleDocParser::HandleNode()
-Patch0:         yaml-cpp-CVE-2017-5950.patch
+Patch1:         https://github.com/felix2010/yaml-cpp/commit/a339bea6bb7bd461a41e874f78b46a5af98277ff.patch#/untabify-cmakelists.patch
+Patch2:         https://github.com/felix2010/yaml-cpp/commit/c1f987850a6282435f499bee76b12e32d7472f12.patch#/fix-cmake-export.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  sed
@@ -85,9 +85,9 @@ make %{?_smp_mflags}
 %{_libdir}/libyaml-cpp.so.*
 
 %files devel
+%{_datadir}/pkgconfig/yaml-cpp.pc
+%{_datadir}/cmake/%{name}/
 %{_includedir}/yaml-cpp/
 %{_libdir}/libyaml-cpp.so
-%{_libdir}/pkgconfig/yaml-cpp.pc
-%{_libdir}/cmake/%{name}/
 
 %changelog

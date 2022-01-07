@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  4 17:56:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add fix-cmake-export.patch  untabify-cmakelists.patch (bsc#1191137)
+
+-------------------------------------------------------------------
+Mon Aug 30 18:47:21 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Adjust library dependency reference
+
+-------------------------------------------------------------------
+Mon Aug 30 16:14:47 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to 0.7.0:
+  * Bazel support
+  * CMake improvements
+  * Adopts many modern C++ syntaxes
+  * Bug fixes
+  * Obsoletes yaml-cpp-CVE-2017-5950.patch (fixed by DepthGuard)
+
+-------------------------------------------------------------------
 Tue Dec 17 14:57:04 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Update to 0.6.3:

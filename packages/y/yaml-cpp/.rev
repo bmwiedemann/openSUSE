@@ -130,4 +130,12 @@
   * yaml-cpp-fix-pie.patch</comment>
     <requestid>760350</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b4aa82e4ecfcb849cf42f46158336454</srcmd5>
+    <version>0.7.0</version>
+    <time>1641555878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943831</requestid>
+  </revision>
 </revisionlist>
