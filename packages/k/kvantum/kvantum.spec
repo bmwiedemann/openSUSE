@@ -17,13 +17,12 @@
 
 
 Name:           kvantum
-Version:        0.20.2
+Version:        1.0.0
 Release:        0
 Summary:        SVG-based theme engine for Qt5
 License:        GPL-3.0-or-later
 URL:            https://github.com/tsujan/Kvantum
 Source0:        https://github.com/tsujan/Kvantum/archive/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  kwindowsystem-devel
