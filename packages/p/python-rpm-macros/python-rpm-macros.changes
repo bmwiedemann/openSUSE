@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 06 08:16:03 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 20220106.80d3756:
+  * Keep python38 as primary python3
+  * Add python310 to the buildset
+  * Move python39 to the primary place in %pythons
+  * Disable python36 flavor in Factory buildset
+
+-------------------------------------------------------------------
 Thu Dec 09 00:06:51 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 20211209.3834c04:

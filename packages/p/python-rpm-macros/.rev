@@ -454,4 +454,17 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>937339</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3b7b996867cb6e50c4c04ac9feac1818</srcmd5>
+    <version>20220106.80d3756</version>
+    <time>1641555908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220106.80d3756:
+  * Keep python38 as primary python3
+  * Add python310 to the buildset
+  * Move python39 to the primary place in %pythons
+  * Disable python36 flavor in Factory buildset
+</comment>
+    <requestid>944185</requestid>
+  </revision>
 </revisionlist>

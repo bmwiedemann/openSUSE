@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm-macros
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-rpm-macros
-Version:        20211209.3834c04
+Version:        20220106.80d3756
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
