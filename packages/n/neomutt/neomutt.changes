@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Jan  5 10:06:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20211029 (bsc#1185705, CVE-2021-32055):
+  * Notmuch: support separate database and mail roots without .notmuch
+  * fix notmuch crash on open failure
+  * fix crypto crash handling pgp keys
+  * fix ncrypt/pgp file_get_size return check
+  * fix restore case-insensitive header sort
+  * fix pager redrawing of long lines
+  * fix notmuch: check database dir for xapian dir
+  * fix notmuch: update index count after <entire-thread>
+  * fix protect hash table against empty keys
+  * fix prevent real_subj being set but empty
+  * fix leak when saving fcc
+  * fix leak after <edit-or-view-raw-message>
+  * fix leak after trash to hidden mailbox
+  * fix leak restoring postponed emails
+  * fix new mail notifications
+  * fix pattern compilation error for ( !>(~P) )
+  * fix menu display on window resize
+  * Stop batch mode emails with no argument or recipients
+  * Add sanitize call in print mailcap function
+  * fix hdr_order to use the longest match
+  * fix (un)setenv to not return an error with unset env vars
+  * fix Imap sync when closing a mailbox
+  * fix segfault on OpenBSD current
+  * sidebar: restore sidebar_spoolfile colour
+  * fix assert when displaying a file from the browser
+  * fix exec command in compose
+  * fix check_stats for Notmuch mailboxes
+  * Fallback: Open Notmuch database without config
+  * fix gui hook commands on startup
+  * threads: implement the $use_threads feature
+  * https://neomutt.org/feature/use-threads
+  * hooks: allow a -noregex param to folder and mbox hooks
+  * mailing lists: implement list-(un)subscribe using RFC2369 headers
+  * mailcap: implement x-neomutt-nowrap flag
+  * pager: add $local_date_header option
+  * imap, smtp: add support for authenticating using XOAUTH2
+  * Allow <sync-mailbox> to fail quietly
+  * imap: speed up server-side searches
+  * pager: improve skip-quoted and skip-headers
+  * notmuch: open database with user's configuration
+  * notmuch: implement <vfolder-window-reset>
+  * config: allow += modification of my_ variables
+  * notmuch: tolerate file renames behind neomutt's back
+  * pager: implement $pager_read_delay
+  * notmuch: validate nm_query_window_timebase
+  * notmuch: make $nm_record work in non-notmuch mailboxes
+  * compose: add $greeting - a welcome message on top of emails
+  * notmuch: show additional mail in query windows
+  * imap: fix crash on external IMAP events
+  * notmuch: handle missing libnotmuch version bumps
+  * imap: add sanity check for qresync
+  * notmuch: allow windows with 0 duration
+  * index: fix index selection on <collapse-all>
+  * imap: fix crash when sync'ing labels
+  * search: fix searching by Message-Id in <mark-message>
+  * threads: fix double sorting of threads
+  * stats: don't check mailbox stats unless told
+  * alias: fix crash on empty query
+  * pager: honor mid-message config changes
+  * mailbox: don't propagate read-only state across reopens
+  * hcache: fix caching new labels in the header cache
+  * crypto: set invalidity flags for gpgme/smime keys
+  * notmuch: fix parsing of multiple type=
+  * notmuch: validate $nm_default_url
+  * messages: avoid unnecessary opening of messages
+  * imap: fix seqset iterator when it ends in a comma
+  * build: refuse to build without pcre2 when pcre2 is linked in ncurses
+
+-------------------------------------------------------------------
 Sat Apr 24 18:01:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop owning directories provided by filesystem (bsc#1184787) 
