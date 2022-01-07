@@ -1,8 +1,34 @@
 -------------------------------------------------------------------
+Fri Nov  5 07:51:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing introspection=true, vapi=true and plugins=true to
+  meson, no longer needed.
+
+-------------------------------------------------------------------
+Mon Sep 27 19:34:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gedit-fix-open-crash.patch: open-selector: Fix crash
+  introduced in GDateTime port.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:34:00 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
   (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Fri Aug  6 12:42:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Replace use of Tepl and AMTK
+  + Use sourceview4 in the snap build
+  + Enable OpenLink plugin by default
+  + Warn when trying to open a big file and allow to cancel
+  + Port open-selector to GDateTime
+  + Allow disabling gspell and python options
+  + Fix parsing of font-family strgins when they contain whitespace
+  * Updated translations.
+- Drop pkgconfig(tepl-6) BuildRequires: no longer needed.
 
 -------------------------------------------------------------------
 Sat Apr 17 12:59:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -91,7 +117,7 @@ Fri Mar 20 20:42:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix External Tools plugin.
   + Fix Snippets plugin.
   + Other bug fixes.
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Fri Mar  6 17:44:59 UTC 2020 - bjorn.lie@gmail.com

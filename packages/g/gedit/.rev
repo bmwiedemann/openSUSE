@@ -1053,4 +1053,29 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930900</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>b295372b7d0d4ff1f6c62c1f470517b6</srcmd5>
+    <version>41.alpha</version>
+    <time>1641555870</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop passing introspection=true, vapi=true and plugins=true to
+  meson, no longer needed.
+
+- Add gedit-fix-open-crash.patch: open-selector: Fix crash
+  introduced in GDateTime port.
+
+- Update to version 41.alpha:
+  + Replace use of Tepl and AMTK
+  + Use sourceview4 in the snap build
+  + Enable OpenLink plugin by default
+  + Warn when trying to open a big file and allow to cancel
+  + Port open-selector to GDateTime
+  + Allow disabling gspell and python options
+  + Fix parsing of font-family strgins when they contain whitespace
+  * Updated translations.
+- Drop pkgconfig(tepl-6) BuildRequires: no longer needed.
+
+  + Updated translations. (forwarded request 944032 from dimstar)</comment>
+    <requestid>944043</requestid>
+  </revision>
 </revisionlist>

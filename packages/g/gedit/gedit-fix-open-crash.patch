@@ -1,0 +1,37 @@
+From 624af5fed418c2be0939f42e75c4e9c4744d98d7 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Mon, 27 Sep 2021 15:07:52 -0400
+Subject: [PATCH] open-selector: Fix crash introduced in GDateTime port
+
+commit acf14cc04f1e66c4c726d9a0b193bf39a28ca8b0 moved FileItems
+over to using GDateTime instead of GTimeVal.
+
+This reduced code complexity pretty nicely, but it unfortunately
+introduced a bug, where the sort_items_by_mru function was treating
+the FileItems themselves as GDateTime objects. That bug causes a
+crash when opening files.
+
+This commit fixes the problem by using the ->accessed members
+instead of the file items themselves.
+
+Closes: https://gitlab.gnome.org/GNOME/gedit/-/issues/465
+---
+ gedit/gedit-open-document-selector.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gedit/gedit-open-document-selector.c b/gedit/gedit-open-document-selector.c
+index bc3d0548d..e46f01568 100644
+--- a/gedit/gedit-open-document-selector.c
++++ b/gedit/gedit-open-document-selector.c
+@@ -312,7 +312,7 @@ sort_items_by_mru (FileItem *a,
+ {
+ 	g_assert (a != NULL && b != NULL);
+ 
+-	return g_date_time_compare (b, a);
++	return g_date_time_compare (b->accessed, a->accessed);
+ }
+ 
+ static GList *
+-- 
+GitLab
+

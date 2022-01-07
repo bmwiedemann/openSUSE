@@ -18,17 +18,19 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        40.1
+Version:        41.alpha
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/41/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
 Patch1:         gedit-plugins-python-env.patch
+# PATCH-FIX-UPSTREAM gedit-fix-open-crash.patch -- open-selector: Fix crash introduced in GDateTime port
+Patch2:         gedit-fix-open-crash.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 0.9.3
@@ -39,8 +41,8 @@ BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.52
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52
+BuildRequires:  pkgconfig(gio-2.0) >= 2.64
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
@@ -49,7 +51,6 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(tepl-6) >= 5.99.0
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -107,9 +108,6 @@ This subpackage contains the header files for creating gedit plugins.
 
 %build
 %meson \
-	-Dintrospection=true \
-	-Dvapi=true \
-	-Dplugins=true \
 	-Dgtk_doc=true \
 	%{nil}
 %meson_build
@@ -141,7 +139,7 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
-%{_libdir}/gedit/libgedit-40.0.so
+%{_libdir}/gedit/libgedit-%{version}.so
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one
@@ -153,6 +151,8 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/plugins/libfilebrowser.so
 %{_libdir}/gedit/plugins/modelines.plugin
 %{_libdir}/gedit/plugins/libmodelines.so
+%{_libdir}/gedit/plugins/libopenlinks.so
+%{_libdir}/gedit/plugins/openlinks.plugin
 %{_libdir}/gedit/plugins/pythonconsole/
 %{_libdir}/gedit/plugins/pythonconsole.plugin
 %{_libdir}/gedit/plugins/quickopen/
