@@ -1,7 +1,7 @@
 #
 # spec file for package xsettingsd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xsettingsd
-Version:        0.0+git20171105
+Version:        1.0.2
 Release:        0
 Summary:        Provides settings to X11 applications
 License:        BSD-3-Clause
 Group:          System/X11/Utilities
 URL:            https://github.com/derat/xsettingsd
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/derat/xsettingsd/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
@@ -56,7 +56,7 @@ done
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/%{name}
 %{_bindir}/dump_xsettings
 %{_mandir}/man?/%{name}.?%{?ext_man}

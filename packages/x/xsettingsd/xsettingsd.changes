@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:23:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix from Phil Miller to make dump_xsettingsd return 1 on error.
+  * Support for building using CMake from Andreas Sturmlechner and Peter Eszlari.
+  * systemd service file from Peter Eszlari. 
+
+-------------------------------------------------------------------
 Sat May  1 18:39:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 
