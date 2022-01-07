@@ -16,15 +16,15 @@
 #
 
 
-# 5.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
-%define compatversion 5.0.0
+# 6.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
+%define compatversion 6.0.0
 
 # LZMA compression is too slow and causes frequent build failures
 # due to timeouts
 %define _binary_payload w5T.xzdio
 
 Name:           kicad-packages3D
-Version:        5.1.12
+Version:        6.0.0
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
@@ -64,10 +64,9 @@ library components for rendering and mechanical CAD (MCAD) integration.
 %doc README.md CREDITS.md
 %license LICENSE.md
 %dir %{_datadir}/kicad/
-%dir %{_datadir}/kicad/modules/
-%dir %{_datadir}/kicad/modules/packages3d
-%dir %{_datadir}/kicad/modules/packages3d/*
-%{_datadir}/kicad/modules/packages3d/*/*.step
-%{_datadir}/kicad/modules/packages3d/*/*.wrl
+%dir %{_datadir}/kicad/3dmodels
+%dir %{_datadir}/kicad/3dmodels/*
+%{_datadir}/kicad/3dmodels/*/*.step
+%{_datadir}/kicad/3dmodels/*/*.wrl
 
 %changelog
