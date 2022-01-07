@@ -17,7 +17,7 @@
 
 
 Name:           vorta
-Version:        0.7.8
+Version:        0.8.2
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only
@@ -63,8 +63,6 @@ ransomware and theft.
 %prep
 %setup -q
 %patch0 -p1
-# https://github.com/borgbase/vorta/issues/1136
-sed -i '/pytest-runner/d' setup.cfg
 
 %build
 export LANG=en_US.UTF-8

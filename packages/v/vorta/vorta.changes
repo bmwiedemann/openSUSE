@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 29 16:26:51 UTC 2021 - Marcus Hann <marcus@hhra.uk>
+
+- Update to 0.8.2
+  * Refactor Borg job scheduling. By @bastiencyr
+  * Remove APScheduler dependency and use QTimer directly
+  * Python 3.10 compatibility
+
+- Update to 0.8.1
+  * Use native threading module in job_manager. (#1096)
+  * Fix next_job timer logic. By @jayeclark (#1100)
+  * Remove jobs if scheduler setting is changed. (#1105)
+  * Remove jobs before deleting profile (#1107)
+  * Make sure correct sources are removed (#1110)
+  * Address DB Locking issues (#1109)
+  * Refactor: Split up vorta/models.py (#1112)
+  * Notify on failed repo checks (#1113)
+
+- Update to 0.8.0
+  * Implement multiple queues. By @bastiencyr (#1045)
+  * Show backup size with excludes applied. By @freder (#961)
+  * Remove APScheduler dependency, Python 3.10 support (#1086)
+  * Add tooltip containing path name. By @XXXBold (#1072)
+  * Increases the maximum allowed number in prune keep. By @lstrz (#1089)
+  * Always handle autosave setting when saving SettingsModel. By @phihos (#1093)
+
+-------------------------------------------------------------------
 Fri Dec 10 09:12:30 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is deprecated
