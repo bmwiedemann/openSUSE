@@ -1,7 +1,7 @@
-Index: tuxpaint-config-0.0.13/src/tuxpaint-config.1
+Index: tuxpaint-config-0.0.18/src/tuxpaint-config.1
 ===================================================================
---- tuxpaint-config-0.0.13.orig/src/tuxpaint-config.1
-+++ tuxpaint-config-0.0.13/src/tuxpaint-config.1
+--- tuxpaint-config-0.0.18.orig/src/tuxpaint-config.1
++++ tuxpaint-config-0.0.18/src/tuxpaint-config.1
 @@ -29,14 +29,12 @@ Display a list of all commandline option
  Show the license (GNU GPL) under which Tux Paint is released.
  

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan  6 21:11:17 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 0.0.18
+  - please refer to /usr/share/doc/packages/tuxpaint-config/CHANGES.txt
+    for a detailed list and contributors
+- Needs libunibreak (libunibreak-devel) now
+- Rebased all patches:
+  + tuxpaint-config-desktop.patch
+  + tuxpaint-config-docpath.patch
+  + tuxpaint-config-manpage.patch
+
+-------------------------------------------------------------------
+Sat Oct  2 08:04:12 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 0.0.17:
+  - please refer to /usr/share/doc/packages/tuxpaint-config/CHANGES.txt
+    for a detailed list and contributors
+- Drop reproducible.patch, fixed upstream in 0.0.14
+- Drop tuxpaint-config-missing_includes.patch, fixed upstream
+- Rebase the patches
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Jul 14 03:11:25 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to override build date (boo#1047218)

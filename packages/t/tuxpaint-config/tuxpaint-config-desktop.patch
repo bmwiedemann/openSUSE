@@ -1,8 +1,8 @@
-Index: tuxpaint-config-0.0.13/src/tuxpaint-config.desktop
+Index: tuxpaint-config-0.0.18/src/tuxpaint-config.desktop
 ===================================================================
---- tuxpaint-config-0.0.13.orig/src/tuxpaint-config.desktop
-+++ tuxpaint-config-0.0.13/src/tuxpaint-config.desktop
-@@ -84,8 +84,9 @@ Comment[uk]=Налаштування Tux
+--- tuxpaint-config-0.0.18.orig/src/tuxpaint-config.desktop
++++ tuxpaint-config-0.0.18/src/tuxpaint-config.desktop
+@@ -99,8 +99,9 @@ Comment[uk]=Налаштування Tux
  Comment[vec]=Confegura Tux Paint
  Comment[vi]=Cấu hình TuxPaint
  Comment[zh_TW]=設定 Tux Paint

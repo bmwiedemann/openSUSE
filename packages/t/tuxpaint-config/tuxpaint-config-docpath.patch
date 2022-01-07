@@ -1,17 +1,17 @@
-Index: tuxpaint-config-0.0.13/Makefile
+Index: tuxpaint-config-0.0.18/Makefile
 ===================================================================
---- tuxpaint-config-0.0.13.orig/Makefile
-+++ tuxpaint-config-0.0.13/Makefile
-@@ -36,7 +36,7 @@ DATA_PREFIX=$(PREFIX)/share/tuxpaint-con
+--- tuxpaint-config-0.0.18.orig/Makefile
++++ tuxpaint-config-0.0.18/Makefile
+@@ -37,7 +37,7 @@ DATA_PREFIX=$(PREFIX)/share/tuxpaint-con
  
  # Docs and man page:
  
 -DOC_PREFIX=$(PREFIX)/share/doc/tuxpaint-config/
-+DOC_PREFIX=$(PREFIX)/share/doc/packages/tuxpaint/tuxpaint-config/
++DOC_PREFIX=$(PREFIX)/share/doc/packages/tuxpaint-config/
  MAN_PREFIX=$(PREFIX)/share/man/
  
  
-@@ -154,7 +154,6 @@ install-win32:
+@@ -179,7 +179,6 @@ install-win32:
  # to do this as superuser ("root"))
  
  install:	install-bin install-data install-man install-doc \
