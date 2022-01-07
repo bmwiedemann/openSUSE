@@ -9,8 +9,12 @@
   <service name="cargo_vendor" mode="disabled">
     <param name="srcdir">greetd</param>
     <param name="compression">gz</param>
+    <param name="update">true</param>
   </service>
   <service mode="disabled" name="set_version"/>
+  <service name="cargo_audit" mode="disabled">
+    <param name="srcdir">greetd</param>
+  </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>
