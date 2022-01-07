@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  4 16:03:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.5 (bsc#1193752, CVE-2021-43818):
+  * A vulnerability (GHSL-2021-1038) in the HTML cleaner allowed sneaking script
+    content through SVG images.
+  * A vulnerability (GHSL-2021-1037) in the HTML cleaner allowed sneaking script
+    content through CSS imports and other crafted constructs.
+
+-------------------------------------------------------------------
 Wed Nov 24 21:23:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.4:

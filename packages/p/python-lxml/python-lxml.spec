@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lxml
-Version:        4.6.4
+Version:        4.6.5
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
 BuildRequires:  fdupes
-BuildRequires:  libxml2-devel >= 2.7.0
+BuildRequires:  libxml2-devel >= 2.9.5
 BuildRequires:  libxslt-devel >= 1.1.23
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9.1
