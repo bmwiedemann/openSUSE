@@ -94,9 +94,6 @@ Requires:       jupyter-jupyter_core-filesystem = %{version}
 Provides:       %{python_module jupyterlab-filesystem = %{version}}
 Provides:       %{python_module jupyterlab-macros-devel = %{version}}
 Provides:       jupyter-jupyterlab-macros-devel = %{version}
-# jupyterlab-widgets is no longer available as a python package
-Provides:       jupyter-jupyterlab-widgets = 0.7
-Obsoletes:      jupyter-jupyterlab-widgets < 0.7
 
 %description -n jupyter-jupyterlab-filesystem
 This package provides common directories and macros used by many
