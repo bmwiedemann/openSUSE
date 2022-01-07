@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  6 20:20:03 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add subtle missed python3-requests runtime requirement due to
+  python script not checking it at build-time, but declared in
+  requirements.txt.
+
+-------------------------------------------------------------------
 Sat Sep 25 02:06:54 UTC 2021 - malcolmlewis@opensuse.org
 
 - Add missing requires on python3-gobject-Gdk and python3-pycairo.

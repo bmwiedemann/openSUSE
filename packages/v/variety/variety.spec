@@ -1,7 +1,7 @@
 #
 # spec file for package variety
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,6 +54,7 @@ Requires:       python3-httplib2
 Requires:       python3-lxml
 Requires:       python3-pycairo
 Requires:       python3-pycurl
+Requires:       python3-requests
 Requires:       yelp
 # MANUAL END
 BuildArch:      noarch
