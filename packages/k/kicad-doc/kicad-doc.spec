@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        5.1.12
+Version:        6.0.0
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -77,6 +77,7 @@ BuildRequires:  tex(phvb8t.tfm)
 BuildRequires:  tex(psyr.tfm)
 BuildRequires:  tex(ptmr8t.tfm)
 BuildRequires:  tex(pzdr.tfm)
+BuildRequires:  tex(upquote.sty)
 BuildRequires:  tex(xeCJK.sty)
 BuildRequires:  tex(xltxtra.sty)
 # kicad-doc owns the directories
@@ -196,6 +197,11 @@ This package contains Chinese documentation and tutorials for KiCad
 
 %patch0
 
+# These files are actually GIFs, https://gitlab.com/kicad/services/kicad-doc/-/issues/822
+mv src/gerbview/images/zh/gerbview_x2_attribute.{png,gif}
+mv src/gerbview/images/zh/gerbview_x2_component.{png,gif}
+mv src/gerbview/images/zh/gerbview_x2_net.{png,gif}
+
 %if %{with pdf}
 # Workaround for dblatex bug #117 - randomly selected warning symbol
 cp /usr/share/dblatex/latex/graphics/warning.pdf CMakeSupport/
@@ -207,9 +213,10 @@ cp /usr/share/dblatex/latex/graphics/warning.pdf CMakeSupport/
 # SOURCE_DATE_EPOCH affirmation variable used by TeX
 export FORCE_SOURCE_DATE=1
 # Do not build PL translations, bad interaction of po4a, asciidoc and xetex (gh#KiCad/kicad-doc#697)
-%cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DBUILD_FORMATS='pdf;' -DLANGUAGES='ca;de;en;es;fr;id;it;ja;ru;zh'
+# RU also fails, "Undefined control sequence \cyrchar."
+%cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DADOC_TOOLCHAIN=asciidoc -DPDF_GENERATOR=dblatex -DBUILD_FORMATS='pdf;' -DLANGUAGES='ca;de;en;es;fr;id;it;ja;zh'
 %else
-%cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DBUILD_FORMATS='html;'
+%cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DADOC_TOOLCHAIN=asciidoc -DBUILD_FORMATS='html;'
 %endif
 %{make_jobs}
 
@@ -255,10 +262,10 @@ done
 %if %{without pdf}
 %files pl
 %{_docdir}/kicad/help/pl/
-%endif
 
 %files ru
 %{_docdir}/kicad/help/ru/
+%endif
 
 %files zh
 %{_docdir}/kicad/help/zh/
