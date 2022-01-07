@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan  5 13:12:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add noexecstack.patch (bsc#1194337) 
+
+-------------------------------------------------------------------
+Mon Jan  3 09:18:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix pkgconfig pc file settings by passing in right prefix during build
+
+-------------------------------------------------------------------
+Mon Dec 27 14:59:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * perf: rebalanced compression levels, to better match the intended speed/level curve
+  * perf: faster huffman decoder, using x64 assembly
+  * perf: slightly faster high speed modes (strategies fast & dfast)
+  * perf: improved binary size and faster compilation times
+  * perf: new row64 mode, used notably in level 12
+  * perf: faster mid-level compression speed in presence of highly repetitive patterns
+  * perf: minor compression ratio improvements for small data at high levels
+  * perf: reduced stack usage (mostly useful for Linux Kernel)
+  * perf: faster compression speed on incompressible data
+  * perf: on-demand reduced ZSTD_DCtx state size, using build macro ZSTD_DECODER_INTERNAL_BUFFER, at a small cost of performance
+  * build: allows hiding static symbols in the dynamic library, using build macro
+  * build: support for m68k (Motorola 68000's)
+  * build: improved AIX support
+  * build: improved meson unofficial build
+  * cli : custom memory limit when training dictionary (#2925)
+  * cli : report advanced parameters information when compressing in very verbose mode (``-vv`)
+
+-------------------------------------------------------------------
 Fri May 14 20:34:25 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 1.5.0

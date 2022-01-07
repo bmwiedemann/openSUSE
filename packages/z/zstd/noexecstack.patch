@@ -1,0 +1,40 @@
+From 9a9d1ec6f4536ffeb745f360ef010cefd125bfd0 Mon Sep 17 00:00:00 2001
+From: "W. Felix Handte" <w@felixhandte.com>
+Date: Wed, 29 Dec 2021 17:47:12 -0800
+Subject: [PATCH] Mark Huffman Decoder Assembly `noexecstack` on All
+ Architectures
+
+Apparently, even when the assembly file is empty (because
+`ZSTD_ENABLE_ASM_X86_64_BMI2` is false), it still is marked as possibly
+needing an executable stack and so the whole library is marked as such. This
+commit applies a simple patch for this problem by moving the noexecstack
+indication outside the macro guard.
+
+This commit builds on #2857.
+
+This commit addresses #2963.
+---
+ lib/decompress/huf_decompress_amd64.S | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/decompress/huf_decompress_amd64.S b/lib/decompress/huf_decompress_amd64.S
+index 98173cce86..706786bb0d 100644
+--- a/lib/decompress/huf_decompress_amd64.S
++++ b/lib/decompress/huf_decompress_amd64.S
+@@ -1,7 +1,5 @@
+ #include "../common/portability_macros.h"
+ 
+-#if ZSTD_ENABLE_ASM_X86_64_BMI2
+-
+ /* Stack marking
+  * ref: https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
+  */
+@@ -9,6 +7,8 @@
+ .section .note.GNU-stack,"",%progbits
+ #endif
+ 
++#if ZSTD_ENABLE_ASM_X86_64_BMI2
++
+ /* Calling convention:
+  *
+  * %rdi contains the first argument: HUF_DecompressAsmArgs*.
