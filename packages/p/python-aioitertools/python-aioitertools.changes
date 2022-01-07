@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 22:21:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add aioitertools-remove-loop.patch for python310 compatibility
+  gh#omnilib/aioitertools#84
+
+-------------------------------------------------------------------
 Tue Aug 17 10:11:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8.0:
