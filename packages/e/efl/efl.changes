@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:35:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop unkown meson paramter -Demotion-loaders-disabler. Meson
+  prior to 0.60 ignored it, recent meson version fails.
+
+-------------------------------------------------------------------
 Wed Jul  7 03:22:16 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Fix typo in description

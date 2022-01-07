@@ -1,7 +1,7 @@
 #
 # spec file for package efl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -481,7 +481,6 @@ dark (upstream) theme.
 
 Icon themes to match the openSUSE Enlightenment themes are also available.
 
-
 %prep
 %setup -q
 %autopatch -p1
@@ -513,9 +512,6 @@ export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDE
     -Dharfbuzz=true \
 %if 0%{?xinput22_present}
     -Dxinput22=true \
-%endif
-%if 0%{?xine_present}
-    -Demotion-loaders-disabler=gstreamer,gstreamer1,libvlc \
 %endif
     -Dsystemd=true \
     -Dfb=true \
