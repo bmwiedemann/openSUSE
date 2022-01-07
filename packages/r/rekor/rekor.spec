@@ -1,5 +1,7 @@
 #
-# Copyright (c) 2021 SUSE LLC
+# spec file for package rekor
+#
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,19 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define apps cli
 
 Name:           rekor
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
-%define revision e4303a8
+%define revision 5025a24e2861d1876d67a09cf6bfad0ee76d64c8
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
-Url:            https://github.com/sigstore/rekor
+URL:            https://github.com/sigstore/rekor
 Source:         https://github.com/sigstore/rekor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  golang(API)
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API)
 %{go_nostrip}
 
 %description

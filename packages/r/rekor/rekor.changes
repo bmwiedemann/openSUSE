@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  6 14:52:16 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.4.0
+  Highlights
+
+  - Adds hashed rekord type that can be used to upload signatures along with the hashed content signed (#501)
+
+-------------------------------------------------------------------
 Wed Dec  8 16:58:06 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - prepare building of the serve part
