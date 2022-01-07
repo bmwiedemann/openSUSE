@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 04:48:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch currentThread-deprecated.patch:
+  * Do not call a deprecated method which causes reactor startup to abort. 
+
+-------------------------------------------------------------------
 Fri Dec 10 17:04:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix Source tags

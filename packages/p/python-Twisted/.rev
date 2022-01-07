@@ -1371,4 +1371,13 @@
     <comment></comment>
     <requestid>939434</requestid>
   </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>823a93bc31e9bae2410f9db5b520d62b</srcmd5>
+    <version>21.7.0</version>
+    <time>1641555918</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch currentThread-deprecated.patch:
+  * Do not call a deprecated method which causes reactor startup to abort.</comment>
+    <requestid>944143</requestid>
+  </revision>
 </revisionlist>

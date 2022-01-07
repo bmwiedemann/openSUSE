@@ -1,7 +1,7 @@
 #
 # spec file for package python-Twisted
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch4:         no-cython_test_exception_raiser.patch
 Patch5:         no-pygtkcompat.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
+# PATCH-FIX-OPENSUSE do not throw DeprecatationWarning, upstream's fix is an API break
+Patch7:         currentThread-deprecated.patch
 BuildRequires:  %{python_module Automat >= 0.8.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
