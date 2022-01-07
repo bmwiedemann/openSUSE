@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec 24 21:01:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.10.0:
+  * Long list of changes, see
+    https://gitlab.kitware.com/paraview/paraview/-/blob/master/Documentation/release/ParaView-5.10.0.md
+- Drop patches incorporated upstream:
+  * paraview-gcc11-limits.patch.
+  * paraview-vtkioss-link-pthread.patch.
+- Update guides and tutorials.
+- Update _constraits to require 22 GiB for build to prevent
+  out-of-disk-space build failures.
+- Add arguments to cmake command to turn off system installed
+  libraries individually where these are not available;
+  specifically turn off system vtkcatalyst, exprtk, fmt, and ioss.
+- Add paraview-include-sstream.patch -- Add patch from upstream to
+  include missing headers and adapt to apply with p1
+  (https://gitlab.kitware.com/vtk/vtk/-/merge_requests/8597).
+- Add rpmlintrc snippet to suppress warnings about shared lib
+  versioning: we use a versioning consistent with package
+  major.minor version which is needed due to upstream's otherwise
+  inconsistent so versions, but rpmlint does not like this.
+
+-------------------------------------------------------------------
 Thu Dec 16 13:50:10 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64

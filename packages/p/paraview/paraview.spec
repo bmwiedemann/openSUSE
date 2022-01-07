@@ -1,7 +1,7 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define major_ver 5.9
-%define shlib libparaview5_9
+%define major_ver 5.10
+%define shlib libparaview5_10
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
@@ -31,7 +31,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        5.9.1
+Version:        5.10.0
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -46,10 +46,8 @@ Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewTutorial-%{
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
 Patch2:         fix-libharu-missing-m.patch
-# PATCH-FIX-UPSTREAM paraview-vtkioss-link-pthread.patch badshah400@gmail.com -- Link against pthread when building vtkioss [https://gitlab.kitware.com/paraview/paraview/-/issues/20495]
-Patch3:         paraview-vtkioss-link-pthread.patch
-# PATCH-FIX-UPSTREAM paraview-gcc11-limits.patch badshah400@gmail.com -- Include limits header wherever required to fix compilation with GCC 11 [https://gitlab.kitware.com/vtk/vtk/-/issues/18194]
-Patch4:         paraview-gcc11-limits.patch
+# PATCH-FIX-UPSTREAM paraview-include-sstream.patch -- Add patch from upstream to include missing headers and adapt to apply with p1 (https://gitlab.kitware.com/vtk/vtk/-/merge_requests/8597)
+Patch3:         paraview-include-sstream.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -81,6 +79,7 @@ BuildRequires:  python3-qt5-devel
 BuildRequires:  readline-devel
 BuildRequires:  utfcpp-devel
 BuildRequires:  wget
+BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
@@ -205,7 +204,11 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DVTK_BUILD_QT_DESIGNER_PLUGIN:BOOL=OFF \
        -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
        -DPARAVIEW_BUILD_WITH_EXTERNAL:BOOL=ON \
+       -DVTK_MODULE_USE_EXTERNAL_ParaView_vtkcatalyst:BOOL=OFF \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF}
 
@@ -243,6 +246,7 @@ rm %{buildroot}%{_bindir}/paraview-config
 %dir %{_libdir}/vtk/
 %dir %{_libdir}/vtk/hierarchy
 %{_libdir}/vtk/hierarchy/ParaView/
+%{_libdir}/catalyst/
 
 %files -n %{shlib}
 %{_libdir}/*.so.*

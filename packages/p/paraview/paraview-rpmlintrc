@@ -2,5 +2,6 @@
 # See https://gitlab.kitware.com/paraview/paraview/issues/19706
 addFilter("non-executable-in-bin .*/usr/bin/paraview\.conf")
 addFilter("script-without-shebang .*/usr/bin/paraview\.conf")
+addFilter("libparaview5_10.* shlib-policy-name-error")
 
 
