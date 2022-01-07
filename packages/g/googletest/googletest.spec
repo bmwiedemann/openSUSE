@@ -1,7 +1,7 @@
 #
 # spec file for package googletest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   googlemock
 Name:           googletest
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause
@@ -87,18 +87,22 @@ mkdir -p %{buildroot}%{_includedir}/gmock/src && install -m 0644 googlemock/src/
 mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/* %{buildroot}%{_includedir}/gtest/src
 
 %files -n gtest
-%license %{name}/LICENSE
-%doc %{name}/CONTRIBUTORS %{name}/README.md
+%license LICENSE
+%doc README.md
 %{_libdir}/libgtest.so
+%{_libdir}/libgtest.so.%{version}
 %{_libdir}/libgtest_main.so
+%{_libdir}/libgtest_main.so.%{version}
 %{_includedir}/gtest
 %{_libdir}/pkgconfig/gtest*.pc
 
 %files -n gmock
-%license %{_name}/LICENSE
-%doc %{_name}/CONTRIBUTORS %{_name}/README.md
+%license LICENSE
+%doc README.md
 %{_libdir}/libgmock.so
+%{_libdir}/libgmock.so.%{version}
 %{_libdir}/libgmock_main.so
+%{_libdir}/libgmock_main.so.%{version}
 %{_includedir}/gmock
 %{_libdir}/cmake/GTest
 %{_libdir}/pkgconfig/gmock*.pc
