@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 21:38:56 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix calling keywords for IssuesReporter in ruby3 (bsc#1194342)
+- 4.4.31
+
+-------------------------------------------------------------------
 Mon Jan  3 09:22:05 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Display LUKS2 configuration checkbox in the installer console
