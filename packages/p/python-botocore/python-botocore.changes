@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Jan  5 15:59:59 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.23.28
+  * api-change:``rekognition``: This release introduces a new field IndexFacesModelVersion, which is
+    the version of the face detect and storage model that was used when indexing the face vector.
+  * api-change:``s3``: Minor doc-based updates based on feedback bugs received.
+  * enhancement:JSONFileCache: Add support for __delitem__ in JSONFileCache
+  * api-change:``s3control``: Documentation updates for the renaming of Glacier to Glacier Flexible
+    Retrieval.
+- from version 1.23.27
+  * api-change:``sagemaker``: The release allows users to pass pipeline definitions as Amazon S3
+    locations and control the pipeline execution concurrency using ParallelismConfiguration. It also
+    adds support of EMR jobs as pipeline steps.
+  * api-change:``rds``: Multiple doc-only updates for Relational Database Service (RDS)
+  * api-change:``mediaconvert``: AWS Elemental MediaConvert SDK has added strength levels to the
+    Sharpness Filter and now permits OGG files to be specified as sidecar audio inputs.
+  * api-change:``greengrassv2``: This release adds the API operations to manage the Greengrass role
+    associated with your account and to manage the core device connectivity information. Greengrass V2
+    customers can now depend solely on Greengrass V2 SDK for all the API operations needed to manage
+    their fleets.
+  * api-change:``detective``: Added and updated API operations to support the Detective integration
+    with AWS Organizations. New actions are used to manage the delegated administrator account and the
+    integration configuration.
+- from version 1.23.26
+  * api-change:``nimble``: Amazon Nimble Studio adds support for users to upload files during a
+    streaming session using NICE DCV native client or browser.
+  * api-change:``chime-sdk-messaging``: The Amazon Chime SDK now supports updating message attributes
+    via channel flows
+  * api-change:``imagebuilder``: Added a note to infrastructure configuration actions and data types
+    concerning delivery of Image Builder event messages to encrypted SNS topics. The key that's used to
+    encrypt the SNS topic must reside in the account that Image Builder runs under.
+  * api-change:``workmail``: This release allows customers to change their email monitoring
+    configuration in Amazon WorkMail.
+  * api-change:``transfer``: Property for Transfer Family used with the FTPS protocol. TLS Session
+    Resumption provides a mechanism to resume or share a negotiated secret key between the control and
+    data connection for an FTPS session.
+  * api-change:``lookoutmetrics``: This release adds support for Causal Relationships. Added new
+    ListAnomalyGroupRelatedMetrics API operation and InterMetricImpactDetails API data type
+  * api-change:``mediaconnect``: You can now use the Fujitsu-QoS protocol for your MediaConnect
+    sources and outputs to transport content to and from Fujitsu devices.
+  * api-change:``qldb``: Amazon QLDB now supports journal exports in JSON and Ion Binary formats.
+    This release adds an optional OutputFormat parameter to the ExportJournalToS3 API.
+- from version 1.23.25
+  * api-change:``customer-profiles``: This release adds an optional parameter, ObjectTypeNames to the
+    PutIntegration API to support multiple object types per integration option. Besides, this release
+    introduces Standard Order Objects which contain data from third party systems and each order object
+    belongs to a specific profile.
+  * api-change:``sagemaker``: This release adds a new ContentType field in AutoMLChannel for
+    SageMaker CreateAutoMLJob InputDataConfig.
+  * api-change:``forecast``: Adds ForecastDimensions field to the DescribeAutoPredictorResponse
+  * api-change:``securityhub``: Added new resource details objects to ASFF, including resources for
+    Firewall, and RuleGroup, FirewallPolicy Added additional details for AutoScalingGroup,
+    LaunchConfiguration, and S3 buckets.
+  * api-change:``location``: Making PricingPlan optional as part of create resource API.
+  * api-change:``redshift``: This release adds API support for managed Redshift datashares. Customers
+    can now interact with a Redshift datashare that is managed by a different service, such as AWS Data
+    Exchange.
+  * api-change:``apigateway``: Documentation updates for Amazon API Gateway
+  * api-change:``devops-guru``: Adds Tags support to DescribeOrganizationResourceCollectionHealth
+  * api-change:``imagebuilder``: This release adds support for importing and exporting VM Images as
+    part of the Image Creation workflow via EC2 VM Import/Export.
+  * api-change:``datasync``: AWS DataSync now supports FSx Lustre Locations.
+  * api-change:``finspace-data``: Make dataset description optional and allow s3 export for dataviews
+
+-------------------------------------------------------------------
 Thu Dec 16 11:23:31 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.23.24
