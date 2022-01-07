@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  5 10:29:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Raise `GitWildMatchPatternError` for invalid git patterns.
+  * Fix for duplicate leading double-asterisk, and edge cases.
+  * Fix matching absolute paths.
+  * API change: `util.normalize_files()` now returns a
+    `Dict[str, List[pathlike]]` instead of a `Dict[str, pathlike]`.
+  * Added type hinting.
+
+-------------------------------------------------------------------
 Tue Jun  1 07:24:28 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

@@ -67,4 +67,18 @@
     <comment></comment>
     <requestid>896588</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>24cb27320c23644c8701477c83c0c445</srcmd5>
+    <version>0.9.0</version>
+    <time>1641555894</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Raise `GitWildMatchPatternError` for invalid git patterns.
+  * Fix for duplicate leading double-asterisk, and edge cases.
+  * Fix matching absolute paths.
+  * API change: `util.normalize_files()` now returns a
+    `Dict[str, List[pathlike]]` instead of a `Dict[str, pathlike]`.
+  * Added type hinting.</comment>
+    <requestid>943953</requestid>
+  </revision>
 </revisionlist>
