@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 22:04:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.6.0
+  * fix 'PY_SSIZE_T_CLEAN will be required for # formats'
+
+-------------------------------------------------------------------
 Tue Oct 13 17:13:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire snappy-devel instead of pkgconfig(snappy): snappy

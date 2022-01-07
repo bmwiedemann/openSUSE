@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-snappy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-snappy
-Version:        0.5.4
+Version:        0.6.0
 Release:        0
 Summary:        Python library for the snappy compression library
 License:        BSD-3-Clause
