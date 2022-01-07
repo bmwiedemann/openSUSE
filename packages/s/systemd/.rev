@@ -5661,4 +5661,21 @@ handle manual pages that consist only of a .so directive such as
 - Update the dependencies of the systemd-testsuite sub-package.</comment>
     <requestid>933100</requestid>
   </revision>
+  <revision rev="342" vrev="2">
+    <srcmd5>d4ff2084632898a67878cc602407722c</srcmd5>
+    <version>249.7</version>
+    <time>1641555873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update systemd-user PAM service again
+  Change the default implementation of pam_setcred() again, previously
+  customized to run the full &quot;auth&quot; PAM stack and only call pam_deny.so which is
+  basically the SUSE default behavior without pam_warn.so.
+  This is considered safer, especially on SLE where a regression was spotted by
+  QA.
+
+- move files related to static nodes to udev
+
+- Replace S:$n references with SOURCE$n. Makes vim * search work.</comment>
+    <requestid>943712</requestid>
+  </revision>
 </revisionlist>

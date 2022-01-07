@@ -2,18 +2,19 @@
 #
 # Used by systemd --user instances.
 
-# This is not about authentication per se (user@.service is a system
-# service anyway) but to give the possibility to user services
-# (especially those like gnome-terminal, see [1]) to have theirs
-# credentials extended similar to the ones received by a user when he
-# logs in (and the full PAM authentication stack is run). See [2] and
-# [3] for details.
+# Override the default behavior of the "auth" PAM stack and don't throw a
+# warning each time a user instance is started, which is the default behavior of
+# the PAM stack when no auth is defined. Indeed PID1 calls pam_setcred() when
+# the user instance is about to be started to allow some user services, such as
+# gnome-terminal, to extend theirs credentials similar to the ones received by a
+# user when he logs in (and the full PAM authentication stack is run). For some
+# details, see:
 #
-# [1] https://gitlab.gnome.org/GNOME/gdm/-/issues/393
-# [2] https://github.com/systemd/systemd/issues/11198
-# [3] https://bugzilla.suse.com/show_bug.cgi?id=1190515
+# https://gitlab.gnome.org/GNOME/gdm/-/issues/393
+# https://github.com/systemd/systemd/issues/11198
+# https://bugzilla.suse.com/show_bug.cgi?id=1190515
 #
-auth include common-auth
+auth     required pam_deny.so
 
 account  include  common-account
 

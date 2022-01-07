@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  4 08:23:19 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Update systemd-user PAM service again
+
+  Change the default implementation of pam_setcred() again, previously
+  customized to run the full "auth" PAM stack and only call pam_deny.so which is
+  basically the SUSE default behavior without pam_warn.so.
+
+  This is considered safer, especially on SLE where a regression was spotted by
+  QA.
+
+-------------------------------------------------------------------
+Tue Dec  7 12:05:55 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- move files related to static nodes to udev
+
+-------------------------------------------------------------------
+Wed Nov 24 10:40:01 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace S:$n references with SOURCE$n. Makes vim * search work.
+
+-------------------------------------------------------------------
 Mon Nov 22 08:48:12 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 523f32df573d459551760b072cb62906f4a2cf23 (merge of 249.7)
@@ -281,6 +303,7 @@ Mon Aug  2 12:54:44 UTC 2021 - Franck Bui <fbui@suse.com>
   This includes the following bug fixes:
 
     - upstream commit 6fb61918ccdd0610b425d5b0e5417751f8f8f783 (bsc#1182870)
+    - upstream commit 6fe2a70b9160e35fdeed9d37bd31727c2d46a8b2 (jsc#SLE-17798)
 
   - Rebased 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
             0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch

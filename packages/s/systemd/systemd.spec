@@ -1,7 +1,7 @@
 #
 # spec file for package systemd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -725,8 +725,8 @@ rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/sysv-convert
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/migrated
 
-install -m0755 -D %{S:3}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-convert
-install -m0755 -D %{S:4}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-install
+install -m0755 -D %{SOURCE3}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-convert
+install -m0755 -D %{SOURCE4}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-install
 %endif
 
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
@@ -735,7 +735,7 @@ mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
 # Package the scripts used to fix all packaging issues. Also drop the
 # "scripts-{systemd/udev}" prefix which is used because osc doesn't
 # allow directory structure...
-for s in %{S:100} %{S:101} %{S:102}; do
+for s in %{SOURCE100} %{SOURCE101} %{SOURCE102}; do
 	install -m0755 -D $s %{buildroot}%{_prefix}/lib/systemd/scripts/${s#*/scripts-systemd-}
 done
 
@@ -759,7 +759,7 @@ rm -rf %{buildroot}/etc/systemd/system/*.target.{requires,wants}
 rm -f %{buildroot}/etc/systemd/system/default.target
 
 # Replace upstream systemd-user with the openSUSE one.
-install -m0644 -D --target-directory=%{buildroot}%{_pam_vendordir} %{S:2}
+install -m0644 -D --target-directory=%{buildroot}%{_pam_vendordir} %{SOURCE2}
 
 # don't enable wall ask password service, it spams every console (bnc#747783)
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -824,7 +824,7 @@ mkdir -p %{buildroot}%{_systemd_system_env_generator_dir}
 mkdir -p %{buildroot}%{_systemd_user_env_generator_dir}
 
 # ensure after.local wrapper is called
-install -m 644 %{S:11} %{buildroot}%{_unitdir}/
+install -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/
 ln -s ../after-local.service %{buildroot}%{_unitdir}/multi-user.target.wants/
 
 # ghost directories with default permissions.
@@ -867,7 +867,7 @@ echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
 # still keep the remaining paths that still don't have a better home
 # in suse.conf.
 rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var}.conf
-install -m 644 %{S:5} %{buildroot}%{_tmpfilesdir}/suse.conf
+install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/suse.conf
 
 # The content of the files shipped by systemd doesn't match the
 # defaults used by SUSE. Don't ship those files but leave the decision
@@ -891,7 +891,7 @@ fi
 
 # kbd-model-map.legacy is used to provide mapping for legacy keymaps,
 # which may still be used by yast.
-cat %{S:14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
+cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
 # Don't ship systemd-journald-audit.socket as there's no other way for
 # us to prevent journald from recording audit messages in the journal
@@ -1304,6 +1304,8 @@ fi
 %exclude %{_unitdir}/*.target.wants/systemd-hwdb*.*
 %exclude %{_unitdir}/initrd-udevadm-cleanup-db.service
 %exclude %{_unitdir}/kmod-static-nodes.service
+%exclude %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
+%exclude %{_tmpfilesdir}/static-nodes-permissions.conf
 %exclude %{_unitdir}/systemd-nspawn@.service
 %if %{with machined}
 %exclude %{_prefix}/lib/systemd/systemd-machined
@@ -1651,6 +1653,8 @@ fi
 %dir %{_unitdir}
 %{_prefix}/lib/systemd/systemd-udevd
 %{_unitdir}/kmod-static-nodes.service
+%{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
+%{_tmpfilesdir}/static-nodes-permissions.conf
 %{_unitdir}/systemd-udev*.service
 %{_unitdir}/systemd-udevd*.socket
 %{_unitdir}/systemd-hwdb*.*
