@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 16:35:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.11:
+  * Implemented a --no-recursion command line option to disable recursion
+    from registrar to registry servers.
+  * Updated the .pro, .vu and .xxx TLD servers.
+  * Updated the list of new gTLDs.
+  * Removed 7 new gTLDs which are no longer active.
+ 
+-------------------------------------------------------------------
 Mon Jul  5 07:44:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.10:
