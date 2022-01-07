@@ -1,7 +1,7 @@
 #
 # spec file for package qpdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_version 28
 Name:           qpdf
-Version:        10.4.0
+Version:        10.5.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -27,9 +27,14 @@ URL:            https://qpdf.sourceforge.io/
 Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
+Patch1:         build-without-pdf.patch
 BuildRequires:  gcc-c++
+BuildRequires:  ghostscript
 BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  tiff
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(openssl)
 
@@ -73,15 +78,18 @@ This packages contains the shared libraries required for the qpdf
 package.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure --disable-static \
+           --enable-werror \
            --enable-crypto-openssl \
+	   --enable-html-doc \
            --disable-implicit-crypto \
            --docdir='${datarootdir}'/doc/packages/%{name} \
-           --enable-show-failed-test-output
+           --enable-show-failed-test-output \
+           --enable-test-compare-images
 %make_build
 
 %check
@@ -93,22 +101,21 @@ rm -rf qpdf/qtest # Unicode data can't be redistributed freely
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
-mkdir -p %{buildroot}%{_docdir}/%{name}/html
-mv %{buildroot}%{_docdir}/%{name}/*.{css,html,pdf} %{buildroot}%{_docdir}/%{name}/html
+%make_build doc-dist DOC_DEST=%{buildroot}%{_docdir}/%{name}
 
 %post -n libqpdf%{so_version} -p /sbin/ldconfig
 %postun -n libqpdf%{so_version} -p /sbin/ldconfig
 
 %files
 %dir %{_docdir}/%{name}
-%doc ChangeLog
+%doc ChangeLog README-doc.txt
 %license Artistic-2.0
 %{_bindir}/*
 %{_mandir}/man1/*
 
 %files htmldoc
-%dir %{_docdir}/%{name}/html
-%doc %{_docdir}/%{name}/html/*
+%doc %{_docdir}/%{name}/html
+%doc %{_docdir}/%{name}/singlehtml
 
 %files -n libqpdf%{so_version}
 %{_libdir}/libqpdf.so.%{so_version}*

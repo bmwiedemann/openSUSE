@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jan  4 16:24:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.5.0:
+  * Since qpdf version 8, using object accessor methods on an
+    instance of ``QPDFObjectHandle`` may create warnings if the
+    object is not of the expected type. These warnings now have an
+    error code of ``qpdf_e_object`` instead of
+    ``qpdf_e_damaged_pdf``. Also, comments have been added to
+    :file:`QPDFObjectHandle.hh` to explain in more detail what the
+    behavior is. See :ref:`object-accessors` for a more in-depth
+    discussion.
+  * Add ``Pl_Buffer::getMallocBuffer()`` to initialize a buffer
+    allocated with ``malloc()`` for better cross-language
+    interoperability.
+  * Overhaul error handling for the object handle functions C API.
+    Some rare error conditions that would previously have caused a
+    crash are now trapped and reported, and the functions that
+    generate them return fallback values. See comments in the
+    ``ERROR HANDLING`` section of :file:`include/qpdf/qpdf-c.h` for
+    details. In particular, exceptions thrown by the underlying C++
+    code when calling object accessors are caught and converted into
+    errors. The errors can be checked by calling ``qpdf_has_error``.
+    Use ``qpdf_silence_errors`` to prevent the error from being
+    written to stderr.
+  * Add ``qpdf_get_last_string_length`` to the C API to get the
+    length of the last string that was returned. This is needed to
+    handle strings that contain embedded null characters.
+  * Add ``qpdf_oh_is_initialized`` and
+    ``qpdf_oh_new_uninitialized`` to the C API to make it possible
+    to work with uninitialized objects.
+  * Add ``qpdf_oh_new_object`` to the C API. This allows you to
+    clone an object handle.
+  * Add ``qpdf_get_object_by_id``, ``qpdf_make_indirect_object``,
+    and ``qpdf_replace_object``, exposing the corresponding methods
+    in ``QPDF`` and ``QPDFObjectHandle``.
+- add build-without-pdf.patch to fix documentation installation
+- enable documentation build, enable tests, enable werror
+
+-------------------------------------------------------------------
 Fri Nov 26 21:59:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.4.0:

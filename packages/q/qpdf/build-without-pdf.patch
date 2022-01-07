@@ -1,0 +1,14 @@
+--- qpdf-10.5.0/manual/build.mk
++++ qpdf-10.5.0/manual/build.mk
+@@ -50,6 +50,8 @@
+ 	else \
+ 	    mkdir -p $(DOC_DEST); \
+ 	fi
+-	cp -r $(DOC_OUT)/html doc
+-	cp -r $(DOC_OUT)/singlehtml doc
+-	cp $(PDF_TARGET) $(DOC_DEST)/qpdf-manual.pdf
++	cp -r $(DOC_OUT)/html $(DOC_DEST)
++	cp -r $(DOC_OUT)/singlehtml $(DOC_DEST)
++ifeq ($(BUILD_PDF),1)
++	cp -p $(PDF_TARGET) $(DOC_DEST)/qpdf-manual.pdf
++endif
