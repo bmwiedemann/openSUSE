@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
 Tue Apr  6 11:09:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Normalize pytest settings
