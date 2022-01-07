@@ -255,4 +255,12 @@
   allows Remind to be compiled with some very old C compilers.</comment>
     <requestid>925380</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fb52418116f1456ca391a925f95053a2</srcmd5>
+    <version>3.3.11</version>
+    <time>1641555958</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>944499</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Dec 30 15:20:00 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 3.3 Patch 11 - 2021-12-30
+
+- IMPROVEMENT: TkRemind: Save the print dialog settings so they persist.
+
+- IMPROVEMENT: TkRemind: Show queue in sorted order.
+
+- IMPROVEMENT: TkRemind: Pass "-r" flag to inotifywait
+
+- IMPROVEMENT: TkRemind: Draw moon phases with Tk canvas items rather than
+  using PNG images.  This lets them change color along with other TkRemind
+  preferences.
+
+- IMPROVEMENT: TkRemind: Underline editable reminders when the pointer enters
+  them; fire up the editor with either Button-1 or Button-3 for
+  non-TkRemind-generated reminders.
+
+- NEW FUNCTION: Remind: Add the isany() built-in function.
+
+- IMPROVEMENT: rem2html: Add class names indicating number of rows in calendar
+
+- IMPROVEMENT: remind: In -z0 mode, sleep with higher precision to ensure we
+  wake as close to possible to each 1-minute boundary.
+
+- IMPROVEMENT: rem2html: Coalesce table.rem-cal CSS into one block.  Thanks
+  to Ian! D. Allen for pointing this out.
+
+- IMPROVEMENT: examples/defs.rem: Modernize the examples and get rid of some
+  cruft.
+
+- CHANGE: Add $Latitude and $Longitude system variables.  Deprecate
+  $LatDeg, $LatMin, $LatSec, $LongDeg, $LongMin and $LongSec.
+
+- CHANGE: Test: Add "dump $" to test.rem.
+
+-------------------------------------------------------------------
+Tue Nov 30 15:04:45 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- Changes to remind 
+
+* VERSION 3.3 Patch 10 - 2021-11-30
+
+- IMPROVEMENT: TkRemind: Apply window and text colors to all GUI elements
+  including buttons and status labels.
+
+- NEW FEATURE: The new ADDOMIT keyword can shorten reminder files.
+  The command:
+
+      REM ...whatever... ADDOMIT MSG Foo
+
+  behaves identically to:
+
+      REM ...whatever... SATISFY 1
+      IF trigvalid()
+          OMIT [trigdate()] MSG Foo
+      ENDIF
+
+  For example, Labour Day can be displayed and omitted as follows:
+
+      REM Mon 1 Sep SCANFROM -7 ADDOMIT MSG Labour Day
+
+- UPDATE: Update contrib/remind-conf-mode to latest release
+
+- CHANGE: The parser does not auto-convert numbers 90-99 to 1990-1999.  This
+  was messing up things like "DURATION 90".  It also means you can no longer
+  abbreviate the years 1990-1999 as 90-99.
+
+- BUG FIX: Various documentation fixes
+
+- BUG FIX: When switching users with the "-u" option, call initgroups()
+  to properly set group membership list.
+
+-------------------------------------------------------------------
 Fri Oct 15 07:30:07 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - rem2html is included, cleanup of specfile

@@ -17,15 +17,15 @@
 
 
 Name:           remind
-Version:        3.3.9
+Version:        3.3.11
 Release:        0
-%define tar_version 03.03.09
+%define tar_version 03.03.11
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            http://www.roaringpenguin.com/products/remind
 Source0:        %{name}-%{tar_version}.tar.gz
-Source100:      %{name}-%{version}-rpmlintrc
+Source100:      %{name}-rpmlintrc
 Patch0:         remind-nostrip.patch
 BuildRequires:  perl
 BuildRequires:  perl-Getopt-Long-Descriptive
