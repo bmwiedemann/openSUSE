@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 22:46:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.21:
+  * add debug code to read some private rsrc data
+  + allow to read some MacWrite which does not have printer informations
+  * add a parser for Scoop files
+  * add a parser for ScriptWriter files
+  * add a parser for ReadySetGo 1-4 files
+
+-------------------------------------------------------------------
 Fri Sep 17 10:01:06 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.3.20:
