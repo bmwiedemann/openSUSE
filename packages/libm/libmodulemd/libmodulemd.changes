@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:06:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop unknown meson parameters: developer_build,
+  with_py2_overrides, with_py3_overrides.
+
+-------------------------------------------------------------------
 Fri Aug 27 02:33:44 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 2.13.0

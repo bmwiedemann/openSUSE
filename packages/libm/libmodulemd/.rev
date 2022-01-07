@@ -202,4 +202,12 @@
   + &quot;modulemd-validator --version&quot; command returns 0 exit code now.</comment>
     <requestid>914471</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9da80bcac851e651ae7cc2b06a8c774b</srcmd5>
+    <version>2.13.0</version>
+    <time>1641555867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944021</requestid>
+  </revision>
 </revisionlist>

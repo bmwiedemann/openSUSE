@@ -1,7 +1,7 @@
 #
 # spec file for package libmodulemd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,7 +54,6 @@ BuildRequires:  gcc-c++
 %description
 C Library for manipulating module metadata files.
 
-
 %package -n modulemd-validator
 Summary:        Tool for validating modulemd data
 Group:          System/Packages
@@ -104,9 +103,7 @@ This package provides files for developing applications to use %{name}.
 %autosetup -p1 -n modulemd-%{libmodulemd_version}
 
 %build
-%meson -Ddeveloper_build=false \
-       -Dwith_py3_overrides=true -Dwith_py2_overrides=false
-
+%meson
 %meson_build
 
 %check
