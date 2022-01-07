@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>925899</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>76424415225edb829953c54b5bea5075</srcmd5>
+    <version>7.6.5</version>
+    <time>1641555946</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ipywidgets-pr2655-collectionsabc.patch for python310 support (forwarded request 944469 from bnavigator)</comment>
+    <requestid>944470</requestid>
+  </revision>
 </revisionlist>

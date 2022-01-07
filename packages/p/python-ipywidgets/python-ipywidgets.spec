@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipywidgets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/ipywidgets
 Source0:        https://files.pythonhosted.org/packages/source/i/ipywidgets/ipywidgets-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ipywidgets-pr2655-collectionsabc.patch -- gh#jupyter-widgets/ipywidgets#2655
+Patch0:         https://github.com/jupyter-widgets/ipywidgets/commit/f9a13dbb3b8f1ffefef483bdb4c14f04f7743ff1.patch#/ipywidgets-pr2655-collectionsabc.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,7 +61,7 @@ Provides:       jupyter-ipywidgets = %{version}
 Interactive HTML widgets for Jupyter notebooks and the IPython kernel.
 
 %prep
-%setup -q -n ipywidgets-%{version}
+%autosetup -p1 -n ipywidgets-%{version}
 
 %build
 %python_build
