@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 30 14:23:20 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Migrate to sysusers for creating garb user
+
+-------------------------------------------------------------------
 Thu Nov 18 15:04:35 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 26.4.10:

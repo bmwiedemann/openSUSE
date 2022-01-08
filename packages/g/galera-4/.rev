@@ -7,4 +7,12 @@
     <comment>Re-add galera to Factory</comment>
     <requestid>943200</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f9ba076b9ca92a1daf4313629442eb</srcmd5>
+    <version>26.4.10</version>
+    <time>1641680579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>944498</requestid>
+  </revision>
 </revisionlist>

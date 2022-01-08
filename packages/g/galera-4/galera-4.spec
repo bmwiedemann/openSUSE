@@ -35,6 +35,7 @@ Group:          Productivity/Databases/Tools
 URL:            https://galeracluster.com/
 Source:         http://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz
 Source1:        http://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz.asc
+Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
 BuildRequires:  boost-devel
 BuildRequires:  check-devel
@@ -44,6 +45,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  mariadb >= %{mariadb_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  sysuser-tools
 Requires:       %{name}-wsrep-provider
 Conflicts:      galera-3
 %if 0%{?suse_version} >= 1500
@@ -116,10 +118,13 @@ export CXXFLAGS="$CXXFLAGS -Wno-implicit-fallthrough"
 %else
 scons %{?_smp_mflags} deterministic_tests=1 version=%{version} ssl=1 system_asio=1 boost_pool=1
 %endif
+%sysusers_generate_pre %{SOURCE2} garb garb-user.conf
 
 %install
 install -D -m 644 garb/files/garb.service %{buildroot}%{_unitdir}/garb.service
 install -D -m 755 garb/files/garb-systemd %{buildroot}%{_bindir}/garb-systemd
+mkdir -p %{buildroot}%{_sysusersdir}
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
 install -D -m 644 garb/files/garb.cnf        %{buildroot}%{_fillupdir}/sysconfig.garb
 
@@ -156,6 +161,7 @@ EOF
 %{_mandir}/man8/garbd.8%{?ext_man}
 #
 %dir %attr(0750,garb,garb) %{homedir}
+%{_sysusersdir}/garb-user.conf
 # /garb
 # plugin
 %if %{with split_package}
@@ -168,10 +174,7 @@ EOF
 %{libs}/libgalera_smm.so
 %config %{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf
 
-%pre
-# Create user and group on the system if necessary
-%{_sbindir}/groupadd -r garb >/dev/null 2>&1 || :
-%{_sbindir}/useradd -g garb -s /bin/false -r -c "Galera Arbitrator" -d %{homedir} garb >/dev/null 2>&1 || :
+%pre -f garb.pre
 
 %service_add_pre garb.service
 
