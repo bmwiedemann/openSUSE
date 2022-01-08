@@ -1,7 +1,7 @@
 #
 # spec file for package hunspell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 Recommends:     %{name}-tools
 Recommends:     unzip
+# bsc#1193627
+Suggests:       myspell-en_US
 
 %description
 Hunspell is a spell checker and morphological analyzer library and
