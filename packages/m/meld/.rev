@@ -630,4 +630,12 @@
   (jsc#SLE-21105). (forwarded request 919973 from sbrabec)</comment>
     <requestid>920294</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e0e7477c859e49a738e169b34c910fe9</srcmd5>
+    <version>3.21.1</version>
+    <time>1641680614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944777</requestid>
+  </revision>
 </revisionlist>

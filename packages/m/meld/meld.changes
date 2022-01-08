@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan  7 15:06:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.21.1:
+  + UI changes:
+    - A new custom per-pane location display widget replaces the
+      standard GTK+ file chooser button and our existing
+      placeholder path display, including actions for opening
+      containing folder and copying file paths.
+    - Version control comparison has had its action bar modernised
+      in line with file and folder comparison.
+  + Features:
+    - The find bar now remembers the previous search across panes.
+    - We show a warning to the user if they're trying to compare a
+      file or folder to itself.
+    - Meld no longer uses custom file chooser dialogs, improving
+      portability and flatpak behaviour.
+    - Two pane comparisons now allow Alt+Right/Left to work in
+      either pane.
+    - Certain header bar actions (e.g., conflict navigation,
+      filters) are now only shown in their appropriate comparison
+      types.
+    - The application title no longer includes the per-comparison
+      label.
+    - Add a preference for GTK's dark theme support.
+    - Retain clipboard contents after exiting Meld.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 16 02:03:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

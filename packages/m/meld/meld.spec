@@ -1,7 +1,7 @@
 #
 # spec file for package meld
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           meld
-Version:        3.21.0
+Version:        3.21.1
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
