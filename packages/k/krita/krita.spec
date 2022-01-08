@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 # Enable VC only on x86*
 %ifarch %{ix86} x86_64
 %bcond_without vc
@@ -24,21 +24,16 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.4.8
+Version:        5.0.2
 Release:        0
 Summary:        Digital Painting Application
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
+License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Support-building-with-OpenEXR-3.patch
-%ifnarch %{arm} aarch64
-# Causes build failure on ARM currently
-# 2021-07-24: Disabled for Tumbleweed (kde#435474)
-%if 0%{?suse_version} < 1550
-BuildRequires:  OpenColorIO-devel
-%endif
+%if %{with released}
+Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
+Source2:        krita.keyring
 %endif
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
@@ -92,15 +87,19 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(OpenColorIO)
+BuildRequires:  pkgconfig(libmypaint)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xi) >= 1.4.99.1
-Recommends:     %{name}-lang = %{version}
 Recommends:     python3-qt5
 Obsoletes:      calligra-krita < %{version}
 Provides:       calligra-krita = %{version}
 %if %{with vc}
 BuildRequires:  Vc-devel-static
 %endif
+# it has an intree copy now and no longer works with the external copy
+Conflicts:      krita-plugin-gmic
 
 %description
 Krita is a painting program. It supports concept art, texture and
@@ -132,7 +131,7 @@ export CXXFLAGS="%{optflags} -DHAS_ONLY_OPENGL_ES"
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file -r org.kde.krita      Qt KDE Graphics RasterGraphics
-%if %{with lang}
+%if %{with released}
 %kf5_find_lang %{name}
 %endif
 
@@ -140,6 +139,11 @@ chmod -x %{buildroot}%{_kf5_applicationsdir}/*.desktop
 
 # remove shebang to avoid rpmlint warning, that file is not supposed to be run directly anyway
 sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita/sceditor/highlighter.py
+
+rm \
+  %{buildroot}%{_includedir}/kis_qmic_interface.h \
+  %{buildroot}%{_includedir}/kis_qmic_plugin_interface.h \
+  %{buildroot}%{_includedir}/kritaqmicinterface_export.h
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -176,7 +180,7 @@ sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita
 %files devel
 %{_kf5_libdir}/libkrita*.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

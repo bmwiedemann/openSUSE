@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jan  7 08:11:30 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.0.2
+  * See https://krita.org/en/item/krita-5-0-2/
+  * Fix a crash when changing the Instant Preview setting of a
+    brush preset
+  * Fix a crash when there are ABR brush libraries present with an
+    uppercase ABR extension (kde#447454)
+  * Fix a similar issue with Krita resource bundles with an upper
+    case .BUNDLE extension
+  * Fix a crash when undoing multiple layer operations too quickly
+    (kde#447462)
+  * Workaround a crash when a transform mask is applied to a
+    passthrough group (kde#447506)
+  * Fix toolbox arrow buttons not visible on starting Krita
+  * Fix the photoshop compatibilty shortcut profile (kde#447771)
+  * Restore the QImageIO fallback for loading WebP images
+  * Make the dock widget titlebars so they can be smaller
+  * Disable all accelerator keys for dockers
+  * Fix a race condition in the image metadata system
+  * Fix the tool option widget's layout sporadically going wrong
+    (kde#447522)
+  * Update fill layers correctly when changing the options from a
+    Python script (kde#447807)
+  * Fix the built-in file dialog's image preview (kde#447806)
+  * Fix the slowness opening and closing documents if there are
+    many resource bundles present (kde#447298)
+- Drop redundant recommendation of the -lang package
+- Add signature file and keyring
+
+-------------------------------------------------------------------
+Thu Dec 23 19:10:11 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.0.0
+  * See https://krita.org/en/item/krita-5-0-released/
+- drop 0001-Support-building-with-OpenEXR-3.patch:
+  included in update
+- add BR to mypaint to enable the new brushes
+- add BR for OpenColorIO and WebP to enable both features as well
+
+-------------------------------------------------------------------
 Wed Aug 25 09:39:44 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 4.4.8:
