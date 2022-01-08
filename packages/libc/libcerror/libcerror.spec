@@ -18,23 +18,25 @@
 
 Name:           libcerror
 %define lname	libcerror1
-Version:        20210512
+Version:        20220101
 Release:        0
 Summary:        Library for C error functions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcerror
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libcerror/releases/download/%version/libcerror-beta-%version.tar.gz
+Source2:        https://github.com/libyal/libcerror/releases/download/%version/libcerror-beta-%version.tar.gz.asc
+Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
-BuildRequires:  pkg-config
 BuildRequires:  pkg-config
 
 %description
 A library for C error functions.
 
-This package is part of the libyal library collection and is used by other libraries in the collection
+This package is part of the libyal library collection and is used by
+other libraries in the collection.
 
 %package -n %lname
 Summary:        Library for C error functions
@@ -43,7 +45,8 @@ Group:          System/Libraries
 %description -n %lname
 A library for C error functions.
 
-This subpackage contains the actual shared object library
+This package is part of the libyal library collection and is used by
+other libraries in the collection.
 
 %package devel
 Summary:        Development files for libcerror, a C error library
