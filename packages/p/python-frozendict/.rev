@@ -25,4 +25,73 @@
     <comment></comment>
     <requestid>707818</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20fdf1e55dc9a6305c4421e70deca272</srcmd5>
+    <version>2.1.3</version>
+    <time>1641680646</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+- Update to 2.1.3:
+  - renamed popitem in delete_by_index in coold
+  - removed pop() from coold
+  - substituted _PyObject_GC_(UN)TRACK with PyObject_GC_(Un)Track
+  - readding needed internal cpython header files for version &gt;=
+    3.8
+  - restored compilation of dictobject.c
+  - cleaning up thing for more canonical compilation (testing on
+    3.7 only for now)
+  - added segfault debugger and pure py builder
+  - add cibuildwheel
+  - fixed regression for coold.set() in Python 3.6
+  - added to __repr__ in pure py version the module name,
+    consistently with C extension
+  - added support for | operand for C extension and for pure py
+    version 3.6 - 3.8
+  - added type hinting support for C extension
+  - restored Py_BUILD_CORE instead of Py_BUILD_CORE_MODULE
+  - updated code for cpython 3.7
+  - readded deprecated FrozenOrderedDict
+  - added pure py version of coold
+  - fixed repr for subclasses
+  - support for python 3.10
+  - inhibited __ior__ in py version
+  - added 3.7 and 3.8 c ext ; fixed subclass bugs
+  - added python 3.8 support
+  - aligned immutability exceptions with stdlib
+  - other minor changes to readme
+  - now __init__ does not throw an exception is reinvoked, as
+    frozenset. Notable speedup in creation.
+  - returned to the dict API, __hash__() apart
+  - change `change __sub__ to be consistent with __and__
+  - change `isdisjoint` accordingly to new `__and__` behavior
+  - added `by=&quot;items&quot; to `sorted()` method
+  - docstring for __and__
+  - now __and__ returns the intersection between a frozendict and
+    a dict-like only with the *items* in common. Order of the
+    *second parameter* is preserved.
+  - get_deep() implemented
+  - implemented isdisjoint()
+  - improved bitwise end operator unit test
+  - implemented method sorted()
+  - added &amp; operator (intersection)
+  - implemented the CPython frozenset hash method. More slow but
+    more memory-friendly
+  - fixed deepcopy; various micro-optimizations; other minors
+  - reverted calculation of hash using frozenset
+  - improving `hash` speed and memory consumption
+  - copy() and frozendict(another_frozendict) does return the
+    same instance
+  - fixed repr()
+  - __sub__ now supports also text-like and generators-like
+    iterables
+  - now values of frozendict can be unhashable, as tuple.
+    hash(myfrozendict) will raise an exception in that case; now
+    empty frozendict is a singleton, like tuple and frozenset
+  - speed improvements to constructor
+  - removed useless attempt of micro-optimization
+  - speedup to creating a copy of a frozendict; added testcase
+    and benchmarks
+</comment>
+    <requestid>944909</requestid>
+  </revision>
 </revisionlist>

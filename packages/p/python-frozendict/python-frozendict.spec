@@ -1,7 +1,7 @@
 #
 # spec file for package python-frozendict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+# Do not enable multibuild unless seriously necessary, it in
+# combination with arch is a right mess!
 Name:           python-frozendict
-Version:        1.2
+Version:        2.1.3
 Release:        0
 Summary:        An immutable dictionary
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/slezica/python-frozendict
 Source:         https://files.pythonhosted.org/packages/source/f/frozendict/frozendict-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -44,15 +48,15 @@ dictionaries where immutability is desired.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# no upstream tests
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
-%{python_sitelib}/frozendict-%{version}-py*.egg-info/
-%{python_sitelib}/frozendict
+%doc README.md
+%{python_sitearch}/frozendict-%{version}-py*.egg-info/
+%{python_sitearch}/frozendict
 
 %changelog
