@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-power-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-power-manager/start
 Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.16/%{name}-%{version}.tar.bz2
 Source1:        xfce4-power-manager.xml
+Patch0:         inhibit_dpms.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -102,7 +103,7 @@ This package provides the openSUSE look and feel for the Xfce Power Manager.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 # xfce4-pm-helper is only needed on non-systemd systems
 xsltproc --nonet - ./src/org.xfce.power.policy.in2 <<'EOF' \
