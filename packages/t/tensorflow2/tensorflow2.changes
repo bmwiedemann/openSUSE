@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  7 10:15:53 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Leap 15.x / Backports: Do not build non-Lite versions since python3-numpy
+  and python3-scipy are too old for Keras/TF2
+
+-------------------------------------------------------------------
 Tue Nov  9 13:26:21 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to 2.6.2 which is bug fix release which just fixes an issue where

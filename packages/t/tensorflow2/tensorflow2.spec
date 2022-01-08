@@ -311,7 +311,7 @@ BuildRequires:  jsoncpp-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-turbo
 BuildRequires:  libnsync-devel
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1599
 BuildRequires:  libjpeg62-turbo
 %endif
 BuildRequires:  libjpeg-devel
@@ -380,7 +380,13 @@ ExclusiveArch:  do_not_build
 %if %{is_lite}
 ExcludeArch:    %ix86
 %else
+%if 0%{?suse_version} < 1599
+# Leap: Do not build since python3-numpy and python3-scipy are too old for Keras/TF2
+ExclusiveArch:  do_not_build
+%else
+# Tumbleweed
 ExcludeArch:    %ix86 %arm
+%endif
 %endif
 
 %description
