@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220106" schemaversion="4.1">
+<image name="OBS__openSUSE___20220107" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220106</productvar>
+      <productvar name="VERSION">20220107</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220106,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220107,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220106/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220107/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -106,7 +106,6 @@
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
-      <repopackage name="amtk-5-lang"/>
       <repopackage name="analitza"/>
       <repopackage name="apache-commons-logging"/>
       <repopackage name="apache2"/>
@@ -879,6 +878,7 @@
       <repopackage name="ibus-dict-emoji"/>
       <repopackage name="ibus-gtk"/>
       <repopackage name="ibus-gtk3"/>
+      <repopackage name="ibus-gtk4"/>
       <repopackage name="ibus-lang"/>
       <repopackage name="ibus-libpinyin"/>
       <repopackage name="ibus-libzhuyin"/>
@@ -1332,7 +1332,6 @@
       <repopackage name="libaio1"/>
       <repopackage name="libalternatives1"/>
       <repopackage name="libamd2"/>
-      <repopackage name="libamtk-5-0"/>
       <repopackage name="libAnalitza5"/>
       <repopackage name="libao-plugins4"/>
       <repopackage name="libao4"/>
@@ -2634,7 +2633,6 @@
       <repopackage name="libteamdctl0"/>
       <repopackage name="libtelepathy-glib0"/>
       <repopackage name="libtelepathy-logger3"/>
-      <repopackage name="libtepl-6-0"/>
       <repopackage name="libtevent-util0"/>
       <repopackage name="libtevent0"/>
       <repopackage name="libtextstyle0"/>
@@ -2859,7 +2857,7 @@
       <repopackage name="libxxhash0"/>
       <repopackage name="libyajl2"/>
       <repopackage name="libyaml-0-2"/>
-      <repopackage name="libyaml-cpp0_6"/>
+      <repopackage name="libyaml-cpp0_7"/>
       <repopackage name="libyelp0"/>
       <repopackage name="libyui-ncurses-pkg15"/>
       <repopackage name="libyui-ncurses15"/>
@@ -3753,7 +3751,6 @@
       <repopackage name="python38-iniconfig"/>
       <repopackage name="python38-ipaddr"/>
       <repopackage name="python38-ipython"/>
-      <repopackage name="python38-ipython_genutils"/>
       <repopackage name="python38-jdcal"/>
       <repopackage name="python38-jedi"/>
       <repopackage name="python38-Jinja2"/>
@@ -3802,7 +3799,6 @@
       <repopackage name="python38-Pillow"/>
       <repopackage name="python38-Pillow-tk"/>
       <repopackage name="python38-pip"/>
-      <repopackage name="python38-pluggy"/>
       <repopackage name="python38-ply"/>
       <repopackage name="python38-prettytable"/>
       <repopackage name="python38-prompt_toolkit"/>
@@ -3839,7 +3835,6 @@
       <repopackage name="python38-pysmbc"/>
       <repopackage name="python38-PySocks"/>
       <repopackage name="python38-pyspnego"/>
-      <repopackage name="python38-pytest"/>
       <repopackage name="python38-python-dateutil"/>
       <repopackage name="python38-python-lzo"/>
       <repopackage name="python38-python-memcached"/>
@@ -4570,7 +4565,6 @@
       <repopackage name="telepathy-idle"/>
       <repopackage name="telepathy-logger"/>
       <repopackage name="telepathy-mission-control"/>
-      <repopackage name="tepl-6-lang"/>
       <repopackage name="terminfo"/>
       <repopackage name="terminfo-base"/>
       <repopackage name="terminfo-iterm"/>
