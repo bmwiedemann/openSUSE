@@ -1,7 +1,7 @@
 #
 # spec file for package amavisd-milter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amavisd-milter
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Sendmail milter for amavisd-new using the AM.PDP protocol
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ Source0:        https://github.com/prehor/%{name}/releases/download/%{version}/%
 Source1:        %{name}.service
 BuildRequires:  sendmail-devel >= 8.12.0
 Requires:       amavisd-new
-Supplements:    packageand(amavisd-new:sendmail)
+Supplements:    (amavisd-new and sendmail)
 Conflicts:      %{name} < %{version}
 %{?systemd_ordering}
 
