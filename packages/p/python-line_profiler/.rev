@@ -40,4 +40,28 @@
     <comment></comment>
     <requestid>887569</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>76bfb399230034fa905bee6885308b5f</srcmd5>
+    <version>3.4.0</version>
+    <time>1641680612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0
+  * Drop support for Python &lt;= 3.5.x
+  * FIX: #104 issue with new IPython kernels
+  * Wheels for musllinux are now included
+  * FIX: Fix bug where lines were not displayed in Jupyter&gt;=6.0 via
+    #93
+- Release 3.3.1
+  * CHANGE: moving forward, new pypi releases will be signed with
+    the GPG key 2A290272C174D28EA9CA48E9D7224DAF0347B114 for
+    PyUtils-CI openpyutils@gmail.com. For reference, older versions
+    were signed with either
+    262A1DF005BE5D2D5210237C85CD61514641325F or
+    1636DAF294BA22B89DBB354374F166CFA2F39C18.
+- Release 3.2.5
+  * Include c source files in manifest (#74)
+- Fix IPython requirements
+- Fix platform install dir</comment>
+    <requestid>944765</requestid>
+  </revision>
 </revisionlist>
