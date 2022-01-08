@@ -1,7 +1,7 @@
 #
 # spec file for package libcdatetime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %define lname	libcdatetime1
 Name:           libcdatetime
-Version:        20210512
+Version:        20220104
 Release:        0
 Summary:        Library for C date and time functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libcdatetime
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libyal/libcdatetime/releases/download/%version/libcdatetime-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libcdatetime/releases/download/%version/libcdatetime-alpha-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -61,7 +63,7 @@ applications that want to make use of libcdatetime.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 
