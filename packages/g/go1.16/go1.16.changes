@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan  6 20:38:08 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.13 (released 2022-01-06) includes fixes to the compiler,
+  linker, runtime, and the net/http package.
+  Refs boo#1182345 go1.16 release tracking
+  * go#50449 x/net/http2: http.Server.WriteTimeout does not fire if the http2 stream's window is out of space.
+  * go#50296 cmd/link: does not set section type of .init_array correctly
+  * go#50194 runtime/race: building for iOS, but linking in object file built for macOS
+  * go#50072 runtime: race detector SIGABRT or SIGSEGV on macOS Monterey
+  * go#49923 cmd/link: support more load commands on Mach-O
+  * go#49412 cmd/compile: internal compiler error: Op...LECall and OpDereference have mismatched mem
+  * go#48115 runtime: mallocs cause "base outside usable address space" panic when running on iOS 14
+
+-------------------------------------------------------------------
 Thu Dec  9 17:31:00 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16.12 (released 2021-12-09) includes security fixes to the
   syscall and net/http packages.
   Refs boo#1182345 go1.16 release tracking
-  CVE-2021-44716 CVE-2021-44717 
+  CVE-2021-44716 CVE-2021-44717
   * boo#1193598 go#50057 CVE-2021-44717
   * go#50066 syscall: don’t close fd 0 on ForkExec error
   * boo#1193597 go#50058 CVE-2021-44716

@@ -270,4 +270,21 @@
   * go#50064 net/http: limit growth of header canonicalization cache (forwarded request 938740 from jfkw)</comment>
     <requestid>938752</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>be318759c5e554e1c545f8c36dcc0412</srcmd5>
+    <version>1.16.13</version>
+    <time>1641680586</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.16.13 (released 2022-01-06) includes fixes to the compiler,
+  linker, runtime, and the net/http package.
+  Refs boo#1182345 go1.16 release tracking
+  * go#50449 x/net/http2: http.Server.WriteTimeout does not fire if the http2 stream's window is out of space.
+  * go#50296 cmd/link: does not set section type of .init_array correctly
+  * go#50194 runtime/race: building for iOS, but linking in object file built for macOS
+  * go#50072 runtime: race detector SIGABRT or SIGSEGV on macOS Monterey
+  * go#49923 cmd/link: support more load commands on Mach-O
+  * go#49412 cmd/compile: internal compiler error: Op...LECall and OpDereference have mismatched mem
+  * go#48115 runtime: mallocs cause &quot;base outside usable address space&quot; panic when running on iOS 14 (forwarded request 944559 from jfkw)</comment>
+    <requestid>944561</requestid>
+  </revision>
 </revisionlist>
