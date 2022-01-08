@@ -189,4 +189,12 @@ reports this as a valid minimum, the guest won't start.
     <comment></comment>
     <requestid>942458</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>485cc3bd36ab6f4bfff52496e885a7ca</srcmd5>
+    <version>3.0</version>
+    <time>1641680625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944816</requestid>
+  </revision>
 </revisionlist>

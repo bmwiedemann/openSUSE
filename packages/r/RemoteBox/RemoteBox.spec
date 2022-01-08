@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,13 @@ License:        GPL-2.0-or-later
 Group:          System/Emulators/PC
 URL:            http://knobgoblin.org.uk
 Source0:        http://knobgoblin.org.uk/downloads/%{name}-%{version}.tar.bz2
-Patch0:         RemoteBox-2.7_fix-env-script-interpreter.patch
+Patch0:         RemoteBox-3.0_fix-env-script-interpreter.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 Requires:       freerdp
 Requires:       perl-Gtk3
 Requires:       perl-SOAP-Lite
+Requires:       typelib-1_0-GdkPixdata-2_0
 Requires:       xdg-utils
 BuildArch:      noarch
 

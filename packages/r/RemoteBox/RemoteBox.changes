@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  7 14:25:48 UTC 2022 - gallochri <chri@gallochri.com>
+
+- Update RemoteBox.spec file
+  - Renamed patch RemoteBox-2.7_fix-env-script-interpreter.patch
+    to RemoteBox-3.0_fix-env-script-interpreter.patch
+  - Added Requires typelib-1_0-GdkPixdata-2_0
+
+-------------------------------------------------------------------
 Thu Dec 23 11:56:21 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.0
