@@ -18,7 +18,7 @@
 
 %define sover   8
 Name:           fmt
-Version:        8.1.0
+Version:        8.1.1
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
