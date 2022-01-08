@@ -1,9 +1,7 @@
 #
 # spec file for package aqbanking
 #
-# Copyright (c) 2021 SUSE S.A.
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018 SUSE LINUX GmbH, Nürnberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +26,10 @@
 %define          fronts_datadir %{_datadir}/%{_name}/frontends
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
-%define          releasever  394
-%define          ascreleasever 393
+%define          releasever  400
+%define          ascreleasever 399
 Name:           aqbanking
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only

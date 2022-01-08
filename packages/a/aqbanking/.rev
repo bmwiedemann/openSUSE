@@ -1111,4 +1111,12 @@ Added SUSE-Free-Art-1.3 to the spreadsheet linked at license.opensuse.org (forwa
     <comment></comment>
     <requestid>940319</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>05b715a622a6b516bdabfe048aa11d01</srcmd5>
+    <version>6.4.1</version>
+    <time>1641680661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944932</requestid>
+  </revision>
 </revisionlist>
