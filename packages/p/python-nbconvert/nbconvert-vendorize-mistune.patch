@@ -1,7 +1,7 @@
-Index: nbconvert-6.0.7/nbconvert/filters/markdown_mistune.py
+Index: nbconvert-6.3.0/nbconvert/filters/markdown_mistune.py
 ===================================================================
---- nbconvert-6.0.7.orig/nbconvert/filters/markdown_mistune.py
-+++ nbconvert-6.0.7/nbconvert/filters/markdown_mistune.py
+--- nbconvert-6.3.0.orig/nbconvert/filters/markdown_mistune.py
++++ nbconvert-6.3.0/nbconvert/filters/markdown_mistune.py
 @@ -18,7 +18,7 @@ except ImportError:
      # Python 2
      from cgi import escape as html_escape
@@ -11,10 +11,10 @@ Index: nbconvert-6.0.7/nbconvert/filters/markdown_mistune.py
  
  from pygments import highlight
  from pygments.lexers import get_lexer_by_name
-Index: nbconvert-6.0.7/setup.py
+Index: nbconvert-6.3.0/setup.py
 ===================================================================
---- nbconvert-6.0.7.orig/setup.py
-+++ nbconvert-6.0.7/setup.py
+--- nbconvert-6.3.0.orig/setup.py
++++ nbconvert-6.3.0/setup.py
 @@ -212,7 +212,6 @@ setup_args = dict(
  )
  

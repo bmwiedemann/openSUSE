@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan  7 22:23:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't build on Python 3.6 (SLE/Leap backports safeguard)
+
+-------------------------------------------------------------------
+Thu Jan  6 11:23:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.4.0
+  * Optionally speed up validation by @gwincr11 in #1672
+  * Adding missing div compared to JupyterLab DOM structure by
+    @SylvainCorlay in #1678
+  * Allow passing extra args to code highlighter by @yuvipanda in
+    #1683
+  * Prevent page breaks in outputs when printing by @SylvainCorlay
+    in #1679
+  * Add collapsers to template by @SylvainCorlay in #1689
+  * Fix recent pandoc latex tables by adding calc and array (#1536,
+    #1566) by @cgevans in #1686
+  * Add an invalid notebook error by @gwincr11 in #1675
+  * Fix typos in execute.py by @TylerAnderson22 in #1692
+  * Modernize latex greek math handling (partially fixes #1673) by
+    @cgevans in #1687
+  * Fix use of deprecated API and update test matrix by @blink1073
+    in #1696
+  * Update nbconvert_library.ipynb by @letterphile in #1695
+  * Changelog for 6.4 by @blink1073 in #1697
+- Remove the doc package 
+
+-------------------------------------------------------------------
+Fri Dec 31 16:57:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Now update to 6.3.0
+  * traitlets 5 is ready
+  * for changelog see below
+
+-------------------------------------------------------------------
 Fri Dec 31 16:28:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Revert to 6.0.7
@@ -26,6 +62,66 @@ Thu Dec 30 18:01:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
     - Dropped Python 3.6 and added Python 3.9
     - Convert execute preprocessor wrapper to resemble papermill
   - Comprehensive notes¶
+    - Feature: support static widgets in Reveal.js slides PR
+      #1553:
+    - Feature: add speaker notes to Reveal.js template
+    - Add correct output mimetype to WebPDF exporter
+    - Set mimetype for webpdf correctly
+    - Fix docstring issue and a broken link
+    - Add CLI example for removing cell tag syntax
+    - Include output of stdin stream in lab template
+    - Don’t use a shell to call inkscape
+    - JupyterLab export as HTML with widgets fails to load
+      widgets
+    - Move note inside Reveal.js HTML slideshow
+    - fix issue 1507: broken command line option
+      –CSSHTMLHeaderPreprocessor.style=
+    - Fix order of template paths
+    - Changed documentation of external_exporters
+    - Fix template precedence when using a custom template
+    - add pip to docs envt
+    - Fix CI By Adding PIP to conda envt for docs build
+    - Explicitly install pip in docs environment.yml
+    - small update to docs hide cell
+    - Allow child templates to override mathjax
+    - Allow get_export_names to skip configuration check
+    - Update docs: Tex Live package on Ubuntu
+    - Test jupyter_client
+    - Update jupyterlab css
+    - Webpdf: Use a temporary file instead of an URL
+    - Applied patch for marking network changes
+    - Change webpdf display name
+    - Allow disabling pyppeteer sandbox
+    - Make pagination configurable in webpdf
+    - Fix Reveal.js version in documentation
+    - Fix dangling reference to get_template_paths()
+    - Solved svg2pdf conversion error if Inkscape is installed
+      into the default path on a windows machine
+    - Update version dependency of traitlets
+    - Update execute.py
+    - Fix code output indentation when running nbconvert
+      –no-input
+    - #1428 add docstring
+    - Update nbconvert_library.ipynb
+    - Supports isolated iframe when converting to HTML
+
+-------------------------------------------------------------------
+Thu Dec 30 18:01:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to the version 6.3.0:
+  - Bugfixes:
+    - Update state filter
+    - Add slide numbering
+    - Fix HTML templates mentioned in help docs
+    - Add the ability to fully customize widget_renderer_url
+    - Enable users to customize MathJax URLs
+    - Add CLI configuration for disable-chromium-sandbox
+    - Enables webpdf to be rendered with templates
+    - Adds dejavu
+  - Significant Changes
+    - Dropped Python 3.6 and added Python 3.9
+    - Convert execute preprocessor wrapper to resemble papermill
+  - Comprehensive notes
     - Feature: support static widgets in Reveal.js slides PR
       #1553:
     - Feature: add speaker notes to Reveal.js template

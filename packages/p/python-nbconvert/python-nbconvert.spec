@@ -1,7 +1,7 @@
 #
-# spec file for package python-nbconvert
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,42 +25,43 @@
 %bcond_with test
 %endif
 
-# Note: only update to > 6.0 when there is no python36 Jupyter stack anymore
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define doc_ver 6.0.7
 Name:           python-nbconvert%{psuffix}
-Version:        6.0.7
+Version:        6.4.0
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
-Source1:        https://media.readthedocs.org/pdf/nbconvert/%{doc_ver}/nbconvert.pdf
-Source2:        https://media.readthedocs.org/htmlzip/nbconvert/%{doc_ver}/nbconvert.zip
 # License Source3: BSD-3-Clause
 Source3:        https://files.pythonhosted.org/packages/source/m/mistune/mistune-0.8.4.tar.gz
 # PATCH-FIX-OPENSUSE nbconvert-vendorize-mistune.patch -- gh#jupyter/nbconvert#1685
 Patch1:         nbconvert-vendorize-mistune.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       jupyter-nbconvert = %{version}
-Requires:       python-Jinja2
-Requires:       python-Pygments
+Requires:       python-Jinja2 >= 2.4
+Requires:       python-Pygments >= 2.4.1
 Requires:       python-bleach
 Requires:       python-defusedxml
 Requires:       python-entrypoints >= 0.2.2
-Requires:       python-jupyter-client >= 5.3.1
 Requires:       python-jupyter-core
 Requires:       python-jupyterlab-pygments
-Requires:       python-mistune >= 0.7.4
 Requires:       python-nbclient >= 0.5
 Requires:       python-nbformat >= 4.4
 Requires:       python-pandocfilters >= 1.4.1
 Requires:       python-testpath
-Requires:       python-traitlets >= 4.2
+Requires:       python-traitlets >= 5.0
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -75,27 +76,10 @@ Provides:       python-jupyter_nbconvert = %{version}
 Obsoletes:      python-jupyter_nbconvert < %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module Pebble}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module entrypoints >= 0.2.2}
 BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter-client >= 5.3.1}
-BuildRequires:  %{python_module jupyter-core}
-BuildRequires:  %{python_module jupyterlab-pygments}
-BuildRequires:  %{python_module mistune >= 0.7.4}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nbclient >= 0.5}
-BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module nbformat >= 4.4}
-BuildRequires:  %{python_module pandocfilters >= 1.4.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module tornado >= 4.0}
-BuildRequires:  %{python_module traitlets >= 4.2}
+BuildRequires:  %{python_module ipywidgets >= 7}
+BuildRequires:  %{python_module nbconvert = %{version}}
+BuildRequires:  %{python_module pytest-dependency}
 %endif
 %python_subpackages
 
@@ -108,7 +92,6 @@ This package provides the python interface.
 %package     -n jupyter-nbconvert
 Summary:        Conversion of Jupyter Notebooks
 Requires:       jupyter-ipykernel
-Requires:       jupyter-jupyter-client >= 4.2
 Requires:       jupyter-jupyter-core
 Requires:       jupyter-nbformat >= 4.4
 Requires:       python3-nbconvert = %{version}
@@ -138,25 +121,12 @@ via Jinja templates.
 
 This package pulls in the LaTeX dependencies for nbconvert.
 
-%package     -n jupyter-nbconvert-doc
-Summary:        Documentation for Jupyter's notebook converter
-Provides:       %{python_module jupyter_nbconvert-doc = %{version}}
-Provides:       %{python_module nbconvert-doc = %{version}}
-Obsoletes:      %{python_module jupyter_nbconvert-doc < %{version}}
-
-%description -n jupyter-nbconvert-doc
-Documentation and help files for Jupyter's notebook converter.
-
 %prep
 %autosetup -p1 -n nbconvert-%{version} -b3
 
-cp %{SOURCE1} .
 mkdir nbconvert/vendor
 touch nbconvert/vendor/__init__.py
 cp ../mistune-0.8.4/mistune.py nbconvert/vendor/
-unzip %{SOURCE2} -d docs
-mv docs/nbconvert-* docs/html
-rm docs/html/.buildinfo
 sed -i -e '/^#!\//, 1d' nbconvert/nbconvertapp.py
 sed -i -e '/^#!\//, 1d' nbconvert/filters/filter_links.py
 
@@ -171,11 +141,7 @@ sed -i -e "/nbclient/ s/,<.*'/'/" setup.py
 %python_install
 
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbconvert
-
-mkdir -p %{buildroot}%{_docdir}/jupyter-nbconvert
-
-cp %{SOURCE1} %{buildroot}%{_docdir}/jupyter-nbconvert/
-cp -r docs/html %{buildroot}%{_docdir}/jupyter-nbconvert/
+%python_clone -a %{buildroot}%{_bindir}/jupyter-dejavu
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_docdir}/jupyter-nbconvert/
@@ -198,7 +164,7 @@ popd
 %python_libalternatives_reset_alternative jupyter-nbconvert
 
 %post
-%python_install_alternative jupyter-nbconvert
+%python_install_alternative jupyter-nbconvert jupyter-dejavu
 
 %postun
 %python_uninstall_alternative jupyter-nbconvert
@@ -206,9 +172,10 @@ popd
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/nbconvert-%{version}-py*.egg-info
+%{python_sitelib}/nbconvert-%{version}*-info
 %{python_sitelib}/nbconvert/
 %python_alternative %{_bindir}/jupyter-nbconvert
+%python_alternative %{_bindir}/jupyter-dejavu
 
 %files -n jupyter-nbconvert
 %license LICENSE
@@ -218,12 +185,6 @@ popd
 
 %files -n jupyter-nbconvert-latex
 %license LICENSE
-
-%files -n jupyter-nbconvert-doc
-%license LICENSE
-%dir %{_docdir}/jupyter-nbconvert/
-%{_docdir}/jupyter-nbconvert/nbconvert.pdf
-%{_docdir}/jupyter-nbconvert/html
 %endif
 
 %changelog
