@@ -36,4 +36,19 @@
     <comment>update</comment>
     <requestid>925714</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>62d8154ad5860949d6b85d530434a0ce</srcmd5>
+    <version>1.1.1+5</version>
+    <time>1641680616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1+5:
+  * Rename schemas
+  * Rebrand.
+  * Update README to point to Open Collective and libera IRC
+    channels
+  * Enable application and key files to be moved to trash.
+  * Update copyright to 2021
+</comment>
+    <requestid>944787</requestid>
+  </revision>
 </revisionlist>

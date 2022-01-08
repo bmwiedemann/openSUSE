@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop-view
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,23 +16,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define org org.buddiesofbudgie
 Name:           budgie-desktop-view
-Version:        1.1.1
+Version:        1.1.1+5
 Release:        0
 Summary:        Official Budgie Desktop icons application / implementation
 License:        Apache-2.0
 Group:          System/GUI/Other
-URL:            https://getsol.us/solus/experiences/
-Source:         https://github.com/getsolus/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.xz
-Source1:        https://github.com/getsolus/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+URL:            https://github.com/BuddiesOfBudgie/budgie-desktop-view
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gdk-3.0)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
 
 %description
 Budgie Desktop View is the official Budgie desktop icons application / implementation
@@ -49,9 +47,9 @@ Budgie Desktop View is the official Budgie desktop icons application / implement
 
 %files
 %license LICENSE.md
-%{_bindir}/us.getsol.budgie-desktop-view
-%{_distconfdir}/xdg/autostart/us.getsol.budgie-desktop-view-autostart.desktop
-%{_datadir}/applications/us.getsol.budgie-desktop-view.desktop
-%{_datadir}/glib-2.0/schemas/us.getsol.budgie-desktop-view.gschema.xml
+%{_bindir}/%{org}.budgie-desktop-view
+%{_distconfdir}/xdg/autostart/%{org}.budgie-desktop-view-autostart.desktop
+%{_datadir}/applications/%{org}.budgie-desktop-view.desktop
+%{_datadir}/glib-2.0/schemas/%{org}.budgie-desktop-view.gschema.xml
 
 %changelog

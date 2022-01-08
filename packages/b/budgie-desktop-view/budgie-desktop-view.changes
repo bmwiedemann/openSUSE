@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 07 11:23:07 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.1.1+5:
+  * Rename schemas
+  * Rebrand.
+  * Update README to point to Open Collective and libera IRC
+    channels
+  * Enable application and key files to be moved to trash.
+  * Update copyright to 2021
+
+-------------------------------------------------------------------
 Sat Oct 16 15:37:38 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - clean spec file
