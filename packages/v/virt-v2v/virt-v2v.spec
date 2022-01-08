@@ -1,7 +1,7 @@
 #
 # spec file for package virt-v2v
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # The source directory.
 %global source_directory 1.44-stable
 Name:           virt-v2v
-Version:        1.44.0
+Version:        1.44.2
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -56,6 +56,7 @@ BuildRequires:  ocaml-ounit-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
+BuildRequires:  qemu-tools
 BuildRequires:  perl(Sys::Guestfs)
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 Requires:       %{_bindir}/gawk
