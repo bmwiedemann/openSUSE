@@ -1,0 +1,29 @@
+From d11e0e20ba2d67365180cfd79ca8995170817697 Mon Sep 17 00:00:00 2001
+From: Andrew Bell <andrew.bell.ia@gmail.com>
+Date: Thu, 3 Jun 2021 07:50:50 -0400
+Subject: [PATCH] Don't run large file mapping test on WIN32.
+
+---
+ test/unit/UtilsTest.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/unit/UtilsTest.cpp b/test/unit/UtilsTest.cpp
+index 26a715854d..7ad985cbc9 100644
+--- a/test/unit/UtilsTest.cpp
++++ b/test/unit/UtilsTest.cpp
+@@ -477,6 +477,8 @@ TEST(UtilsTest, escapeJSON)
+     EXPECT_EQ(escaped, "\\u0001\\t\\f\\n\\\\\\\"\\u0016");
+ }
+ 
++// Don't run if we are WIN32
++#if !defined(_WIN32) || defined(_WIN64)
+ TEST(UtilsTest, map)
+ {
+     Support::Tempfile temp;
+@@ -536,5 +538,6 @@ TEST(UtilsTest, map)
+     EXPECT_EQ(std::string(c), "Another.");
+     FileUtils::unmapFile(ctx);
+ }
++#endif // guard for 32-bit windows
+ 
+ }

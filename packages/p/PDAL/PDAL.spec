@@ -1,7 +1,7 @@
 #
 # spec file for package PDAL
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Friedmann Bruno, Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,17 +24,28 @@ Name:           PDAL
 Version:        2.3.0
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
-License:        BSD-3-Clause
+# The code is licensed BSD except for:
+# - filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
+# - vendor/arbiter/*, plugins/nitf/io/nitflib.h and plugins/oci/io/OciWrapper.* are Expat/MIT
+# - plugins/e57/io/{src,include}/* is BSD-3-Clause
+# - plugins/e57/libE57Format/{src,include}/* is Boost 1-0
+License:        Apache-2.0 AND BSD-3-Clause AND MIT AND BSL-1.0
 Group:          Productivity/Graphics/CAD
 URL:            https://www.pdal.io/
 Source0:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2
 Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2.md5
+# Unbundle some bundled libraries inspired by Fedora work at
+# https://src.fedoraproject.org/rpms/PDAL/blob/rawhide/f/PDAL_unbundle.patch
+Patch0:         PDAL_unbundle.patch
+# Upstream : fix 32bits tests
+Patch1:         https://github.com/PDAL/PDAL/commit/d11e0e20.patch
 # Source2:      https://www.pdal.io/PDAL.pdf
 BuildRequires:  bash-completion
 BuildRequires:  cairo-devel
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cunit-devel
 BuildRequires:  curl-devel
+BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
@@ -79,6 +90,14 @@ BuildRequires:  pkgconfig(libpq)
 # Doesn't exist on obs BuildRequires:  python3-breathe
 Requires:       lib%{name}%{soname} = %{version}
 Provides:       pdal = %{version}
+# https://github.com/connormanning/arbiter bundled in vendor/arbiter
+Provides:       bundled(arbiter)
+# https://github.com/mkazhdan/PoissonRecon bundled in vendor/kazhdan
+Provides:       bundled(PoissonRecon)
+# https://github.com/jlblancoc/nanoflann bundled in vendor/nanoflann
+Provides:       bundled(nanoflann)
+# https://github.com/nlohmann/json bundled in vendor/nlohmann
+Provides:       bundled(nlohmann)
 
 %description
 PDAL is a C++ BSD library for translating and manipulating point cloud data.
@@ -111,7 +130,7 @@ PDAL is focused more on data access and translation than PCL.
 %package bash-completion
 Summary:        Bash completion for PDAL
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -121,8 +140,8 @@ This package contain the bash completion command for PDAL.
 Summary:        Development files and tools for PDAL applications
 Group:          Development/Libraries/C and C++
 Requires:       cmake
-Requires:       lib%{name}%{soname} = %{version}
 Requires:       laszip-devel
+Requires:       lib%{name}%{soname} = %{version}
 Requires:       libboost_filesystem-devel
 Requires:       libboost_headers-devel
 Requires:       libboost_program_options-devel
@@ -147,7 +166,9 @@ This package provides the documentation and sources of examples and data demos o
 PDAL algorithms.
 
 %prep
-%autosetup -n %{name}-%{version}-src
+%autosetup -p1 -n %{name}-%{version}-src
+# Remove some bundled libraries	to use system
+rm -rf vendor/{eigen,gtest,pdalboost}
 # Fix all wrong shebang and move to python3 only
 find . -type f -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} +
 
@@ -157,6 +178,11 @@ find ./doc/ -type f -iname "*.orig" -o -iname ".gitignore" -delete
 find ./doc/ -type f -iname "*.ai" -delete
 
 %build
+%ifarch ppc64le
+# boo#1194109 and upstream https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102059
+%define _lto_cflags %{nil}
+%endif
+
 %cmake \
     -DCMAKE_VERBOSE_MAKEFILE=ON  \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
@@ -180,6 +206,7 @@ find ./doc/ -type f -iname "*.ai" -delete
     -DBUILD_PLUGIN_ICEBRIDGE=OFF \
     -DBUILD_PLUGIN_NITF=OFF \
     -DBUILD_PLUGIN_PGPOINTCLOUD=ON \
+    -DBUILD_PGPOINTCLOUD_TESTS:BOOL=OFF \
     -DBUILD_PLUGIN_GREYHOUND=OFF \
     -DBUILD_PLUGIN_PCL=OFF \
     ..
@@ -211,6 +238,23 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 #ctest -V
 #popd
 
+%check
+## test the compiled code (see doc/project/testing.rst)
+# we skip tests for selected architectures which need upstream fixes
+%ifarch armv7hl aarch64 ppc64le s390x
+%ctest --output-on-failure || true
+%else
+## we skip the PG test (BUILD_PGPOINTCLOUD_TESTS:BOOL=OFF):
+# PGUSER=pdal PGPASSWORD=password PGHOST=localhost PGPORT=5432 ctest -V
+%ifarch i686
+# https://github.com/PDAL/PDAL/issues/3501 should work with PROJ 8.2 and gdal 3.2.3.
+%ctest || :
+%else
+# https://github.com/PDAL/PDAL/issues/3501
+%ctest || :
+%endif
+%endif
+
 %post -n lib%{name}%{soname} -p /sbin/ldconfig
 
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig
@@ -223,11 +267,16 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 %license LICENSE.txt
 %doc AUTHORS.txt README.md RELEASENOTES.txt
 %{_libdir}/libpdal_base.so.%{sovers}
+%{_libdir}/libpdal_base.so.%{soname}
 # Plugins
 %{_libdir}/libpdal_plugin_kernel_fauxplugin.so.%{sovers}
+%{_libdir}/libpdal_plugin_kernel_fauxplugin.so.%{soname}
 %{_libdir}/libpdal_plugin_reader_pgpointcloud.so.%{sovers}
+%{_libdir}/libpdal_plugin_reader_pgpointcloud.so.%{soname}
 %{_libdir}/libpdal_plugin_writer_pgpointcloud.so.%{sovers}
+%{_libdir}/libpdal_plugin_writer_pgpointcloud.so.%{soname}
 %{_libdir}/libpdal_util.so.%{sovers}
+%{_libdir}/libpdal_util.so.%{soname}
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
@@ -238,18 +287,11 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 %license LICENSE.txt
 %doc AUTHORS.txt README.md CONTRIBUTING.md
 %{_includedir}/pdal
-# old compatibility link
-%exclude %{_libdir}/libpdal_*.so.10
 %{_libdir}/libpdal_base.so
 %{_libdir}/libpdal_plugin_kernel_fauxplugin.so
 %{_libdir}/libpdal_plugin_reader_pgpointcloud.so
 %{_libdir}/libpdal_plugin_writer_pgpointcloud.so
 %{_libdir}/libpdal_util.so
-%{_libdir}/libpdal_base.so.%{soname}
-%{_libdir}/libpdal_plugin_kernel_fauxplugin.so.%{soname}
-%{_libdir}/libpdal_plugin_reader_pgpointcloud.so.%{soname}
-%{_libdir}/libpdal_plugin_writer_pgpointcloud.so.%{soname}
-%{_libdir}/libpdal_util.so.%{soname}
 %{_libdir}/libpdalcpp.so
 %{_libdir}/pkgconfig/pdal.pc
 %{_libdir}/cmake/PDAL

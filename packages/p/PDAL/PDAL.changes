@@ -1,8 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan  7 16:29:16 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Fix the -devel dangling symlink by moving to libPDAL
+  libpdal_*.so.%{soname} symlinks to libpdal_*.%{sovers}
+  rpmlint not more complain.
+
+-------------------------------------------------------------------
+Fri Jan  7 10:37:32 UTC 2022 - D. Berge <opensuse@navlost.eu>
+
+- Add `Provides:` so that PDAL-devel can find libPDAL.
+
+-------------------------------------------------------------------
+Wed Dec 29 17:17:47 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Review licenses of subpart: The code is licensed BSD except for:
+  + filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
+  + vendor/arbiter/*, plugins/nitf/io/nitflib.h and plugins/oci/io/OciWrapper.* are Expat/MIT
+  + plugins/e57/io/{src,include}/* is BSD-3-Clause
+  + plugins/e57/libE57Format/{src,include}/* is Boost 1-0
+- Create a patch PDAL_unbundle.patch to sort out eigen3 and boost
+  + Eigen3 system now used fixing boo#1194109
+- Fixing boo#1194109 ppc64le build by disabling lto until upstream
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102059 is fixed
+- Add Provides for
+  + bundled(arbiter)
+  + bundled(PoissonRecon)
+  + bundled(nanoflann)
+  + bundled(nlohmann)
+- Add %check section following what's Fedora is doing
+  + Add upstream patch for testing 32bits d11e0e20.patch
+
+-------------------------------------------------------------------
 Sun Aug 15 12:20:32 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to 2.3.0 version
-  complete description https://github.com/PDAL/PDAL/releases/tag/2.3.0 
+  complete description https://github.com/PDAL/PDAL/releases/tag/2.3.0
 
 -------------------------------------------------------------------
 Sat Aug 14 17:16:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
@@ -24,7 +56,7 @@ Fri Aug 13 08:29:11 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 Sun Nov 15 08:15:50 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Rework BuildRequires as only libpq is really needed
-  + Indicate -DPOSTGRESQL_INCLUDE_DIR build flag 
+  + Indicate -DPOSTGRESQL_INCLUDE_DIR build flag
   + Remove postgresql-devel postgresql-server-devel buildrequires
 - Fix a sed instruction to use -i
 
@@ -48,7 +80,7 @@ Mon Sep 21 13:15:28 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de> 2.2.0
 -------------------------------------------------------------------
 Wed Jun 17 13:49:44 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Add a manual fix for PDALConfig.cmake where the 
+- Add a manual fix for PDALConfig.cmake where the
   @PDAL_CONFIG_LIBRARY_DIRS@ is wrongly expanded.
 
 -------------------------------------------------------------------

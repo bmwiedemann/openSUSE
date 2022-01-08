@@ -1,0 +1,294 @@
+diff -rup a/cmake/gtest.cmake b/cmake/gtest.cmake
+--- a/cmake/gtest.cmake	2021-05-28 02:52:49.000000000 +0200
++++ b/cmake/gtest.cmake	2021-12-28 22:17:41.157270687 +0100
+@@ -5,7 +5,7 @@ if (MSVC)
+ endif()
+ 
+ set(GOOGLETEST_VERSION 1.10.0)
+-add_subdirectory(vendor/gtest)
++# add_subdirectory(vendor/gtest)
+ 
+ set(FPHSA_NAME_MISMATCHED 1) # Suppress warnings, see https://cmake.org/cmake/help/v3.17/module/FindPackageHandleStandardArgs.html
+ find_package(absl QUIET)
+diff -rup a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-05-28 02:52:50.000000000 +0200
++++ b/CMakeLists.txt	2021-12-28 22:07:39.474190770 +0100
+@@ -67,7 +67,6 @@ else()
+ endif()
+ set(PDAL_LIB_NAME pdalcpp)
+ set(PDAL_UTIL_LIB_NAME pdal_util)
+-set(PDAL_BOOST_LIB_NAME pdal_boost)
+ set(PDAL_KAZHDAN_LIB_NAME pdal_kazhdan)
+ set(PDAL_TEST_SUPPORT_OBJS pdal_test_support)
+ 
+@@ -140,6 +139,8 @@ include(${PDAL_CMAKE_DIR}/dimension.cmak
+ include(${PDAL_CMAKE_DIR}/arbiter.cmake)
+ include(${PDAL_CMAKE_DIR}/nlohmann.cmake)
+ include(${PDAL_CMAKE_DIR}/openssl.cmake) # Optional
++find_package(PkgConfig REQUIRED)
++PKG_CHECK_MODULES(EIGEN REQUIRED eigen3)
+ 
+ #------------------------------------------------------------------------------
+ # generate the pdal_features.hpp header
+@@ -185,7 +186,6 @@ if (WITH_TESTS)
+     add_subdirectory(test)
+ endif()
+ add_subdirectory(dimbuilder)
+-add_subdirectory(vendor/pdalboost)
+ add_subdirectory(vendor/arbiter)
+ add_subdirectory(vendor/kazhdan)
+ add_subdirectory(pdal/util)
+@@ -267,13 +267,12 @@ target_include_directories(${PDAL_BASE_L
+         ${ROOT_DIR}
+         ${PROJECT_BINARY_DIR}/include
+         ${PDAL_VENDOR_DIR}
+-        ${PDAL_VENDOR_DIR}/eigen
+-        ${PDAL_VENDOR_DIR}/pdalboost
+         ${LIBXML2_INCLUDE_DIR}
+         ${ZSTD_INCLUDE_DIRS}
+         ${NLOHMANN_INCLUDE_DIR}
+         ${GDAL_INCLUDE_DIR}
+         ${LASZIP_INCLUDE_DIR}
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ target_link_libraries(${PDAL_BASE_LIB_NAME}
+     PRIVATE
+diff -rup a/pdal/util/CMakeLists.txt b/pdal/util/CMakeLists.txt
+--- a/pdal/util/CMakeLists.txt	2021-05-28 02:52:49.000000000 +0200
++++ b/pdal/util/CMakeLists.txt	2021-12-28 22:08:12.917894919 +0100
+@@ -36,7 +36,7 @@ PDAL_ADD_FREE_LIBRARY(${PDAL_UTIL_LIB_NA
+ target_link_libraries(${PDAL_UTIL_LIB_NAME}
+     PRIVATE
+         ${BACKTRACE_LIBRARIES}
+-        ${PDAL_BOOST_LIB_NAME}
++        boost_filesystem
+         ${CMAKE_DL_LIBS}
+         ${CMAKE_THREAD_LIBS_INIT}
+ )
+diff -rup a/pdal/util/FileUtils.cpp b/pdal/util/FileUtils.cpp
+--- a/pdal/util/FileUtils.cpp	2021-05-28 02:52:49.000000000 +0200
++++ b/pdal/util/FileUtils.cpp	2021-12-28 22:09:39.097132189 +0100
+@@ -167,25 +167,25 @@ std::ostream *openExisting(const std::st
+ bool directoryExists(const std::string& dirname)
+ {
+     //ABELL - Seems we should be calling is_directory
+-    return pdalboost::filesystem::exists(toNative(dirname));
++    return boost::filesystem::exists(toNative(dirname));
+ }
+ 
+ 
+ bool createDirectory(const std::string& dirname)
+ {
+-    return pdalboost::filesystem::create_directory(toNative(dirname));
++    return boost::filesystem::create_directory(toNative(dirname));
+ }
+ 
+ 
+ bool createDirectories(const std::string& dirname)
+ {
+-    return pdalboost::filesystem::create_directories(toNative(dirname));
++    return boost::filesystem::create_directories(toNative(dirname));
+ }
+ 
+ 
+ void deleteDirectory(const std::string& dirname)
+ {
+-    pdalboost::filesystem::remove_all(toNative(dirname));
++    boost::filesystem::remove_all(toNative(dirname));
+ }
+ 
+ 
+@@ -195,15 +195,15 @@ std::vector<std::string> directoryList(c
+ 
+     try
+     {
+-        pdalboost::filesystem::directory_iterator it(dir);
+-        pdalboost::filesystem::directory_iterator end;
++        boost::filesystem::directory_iterator it(dir);
++        boost::filesystem::directory_iterator end;
+         while (it != end)
+         {
+             files.push_back(it->path().string());
+             it++;
+         }
+     }
+-    catch (pdalboost::filesystem::filesystem_error&)
++    catch (boost::filesystem::filesystem_error&)
+     {
+         files.clear();
+     }
+@@ -243,13 +243,13 @@ void closeFile(std::istream* in)
+ 
+ bool deleteFile(const std::string& file)
+ {
+-    return pdalboost::filesystem::remove(toNative(file));
++    return boost::filesystem::remove(toNative(file));
+ }
+ 
+ 
+ void renameFile(const std::string& dest, const std::string& src)
+ {
+-    pdalboost::filesystem::rename(toNative(src), toNative(dest));
++    boost::filesystem::rename(toNative(src), toNative(dest));
+ }
+ 
+ 
+@@ -260,9 +260,9 @@ bool fileExists(const std::string& name)
+ 
+     try
+     {
+-        return pdalboost::filesystem::exists(toNative(name));
++        return boost::filesystem::exists(toNative(name));
+     }
+-    catch (pdalboost::filesystem::filesystem_error&)
++    catch (boost::filesystem::filesystem_error&)    
+     {
+     }
+     return false;
+@@ -272,8 +272,8 @@ bool fileExists(const std::string& name)
+ /// \return  0 on error or invalid file type.
+ uintmax_t fileSize(const std::string& file)
+ {
+-    pdalboost::system::error_code ec;
+-    uintmax_t size = pdalboost::filesystem::file_size(toNative(file), ec);
++    boost::system::error_code ec;
++    uintmax_t size = boost::filesystem::file_size(toNative(file), ec);
+     if (ec)
+         size = 0;
+     return size;
+@@ -297,7 +297,7 @@ std::string readFileIntoString(const std
+ 
+ std::string getcwd()
+ {
+-    const pdalboost::filesystem::path p = pdalboost::filesystem::current_path();
++    const boost::filesystem::path p = boost::filesystem::current_path();
+     return addTrailingSlash(p.string());
+ }
+ 
+@@ -327,7 +327,7 @@ std::string toCanonicalPath(std::string
+ // otherwise, make it absolute (relative to current working dir) and return that
+ std::string toAbsolutePath(const std::string& filename)
+ {
+-    return pdalboost::filesystem::absolute(toNative(filename)).string();
++    return boost::filesystem::absolute(toNative(filename)).string();
+ }
+ 
+ 
+@@ -339,7 +339,7 @@ std::string toAbsolutePath(const std::st
+ std::string toAbsolutePath(const std::string& filename, const std::string base)
+ {
+     const std::string newbase = toAbsolutePath(base);
+-    return pdalboost::filesystem::absolute(toNative(filename),
++    return boost::filesystem::absolute(toNative(filename),
+         toNative(newbase)).string();
+ }
+ 
+@@ -362,8 +362,8 @@ std::string getFilename(const std::strin
+ // Get the directory part of a filename.
+ std::string getDirectory(const std::string& path)
+ {
+-    const pdalboost::filesystem::path dir =
+-         pdalboost::filesystem::path(toNative(path)).parent_path();
++    const boost::filesystem::path dir =
++         boost::filesystem::path(toNative(path)).parent_path();
+     return addTrailingSlash(dir.string());
+ }
+ 
+@@ -384,13 +384,13 @@ std::string stem(const std::string& path
+ // Determine if the path represents a directory.
+ bool isDirectory(const std::string& path)
+ {
+-    return pdalboost::filesystem::is_directory(toNative(path));
++    return boost::filesystem::is_directory(toNative(path));
+ }
+ 
+ // Determine if the path is an absolute path
+ bool isAbsolutePath(const std::string& path)
+ {
+-    return pdalboost::filesystem::path(toNative(path)).is_absolute();
++    return boost::filesystem::path(toNative(path)).is_absolute();
+ }
+ 
+ 
+diff -rup a/test/unit/CMakeLists.txt b/test/unit/CMakeLists.txt
+--- a/test/unit/CMakeLists.txt	2021-05-28 02:52:49.000000000 +0200
++++ b/test/unit/CMakeLists.txt	2021-12-28 21:48:33.736198324 +0100
+@@ -34,7 +34,7 @@ PDAL_ADD_TEST(pdal_eigen_test
+         ${PDAL_SRC_DIR}/private/MathUtils.cpp
+ 
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_file_utils_test FILES FileUtilsTest.cpp)
+ PDAL_ADD_TEST(pdal_georeference_test FILES GeoreferenceTest.cpp)
+@@ -43,7 +43,7 @@ PDAL_ADD_TEST(pdal_kdindex_test
+         KDIndexTest.cpp
+     INCLUDES
+         ${PDAL_VENDOR_DIR}
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_kernel_test FILES KernelTest.cpp)
+ PDAL_ADD_TEST(pdal_log_test FILES LogTest.cpp)
+@@ -70,7 +70,7 @@ PDAL_ADD_TEST(pdal_point_view_test
+     FILES
+         PointViewTest.cpp
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_point_table_test FILES PointTableTest.cpp)
+ 
+@@ -189,13 +189,13 @@ PDAL_ADD_TEST(pdal_io_pcd_reader_test
+     FILES
+         io/PcdReaderTest.cpp
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_io_pcd_writer_test
+     FILES
+         io/PcdWriterTest.cpp
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_io_ply_reader_test
+     FILES
+@@ -231,7 +231,7 @@ PDAL_ADD_TEST(pdal_filters_chipper_test
+         filters/ChipperTest.cpp
+     INCLUDES
+         ${NLOHMANN_INCLUDE_DIR}
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_filters_nndistance_test
+     FILES
+@@ -282,7 +282,7 @@ PDAL_ADD_TEST(pdal_filters_icp_test
+     FILES
+         filters/IcpFilterTest.cpp
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen
++        ${EIGEN_INCLUDE_DIRS}
+ )
+ PDAL_ADD_TEST(pdal_filters_info_test FILES filters/InfoFilterTest.cpp)
+ PDAL_ADD_TEST(pdal_filters_lloydkmeans_test FILES filters/LloydKMeansFilterTest.cpp)
+@@ -303,7 +303,7 @@ PDAL_ADD_TEST(pdal_filters_planefit_test
+     FILES
+         filters/PlaneFitFilterTest.cpp
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen)
++        ${EIGEN_INCLUDE_DIRS})
+ PDAL_ADD_TEST(pdal_filters_pmf_test FILES filters/PMFFilterTest.cpp)
+ PDAL_ADD_TEST(pdal_filters_reprojection_test FILES
+     filters/ReprojectionFilterTest.cpp)
+@@ -328,7 +328,7 @@ PDAL_ADD_TEST(pdal_filters_splitter_test
+     FILES
+         filters/SplitterTest.cpp
+     INCLUDES
+-        ${PDAL_VENDOR_DIR}/eigen)
++        ${EIGEN_INCLUDE_DIRS})
+ PDAL_ADD_TEST(pdal_filters_stats_test FILES filters/StatsFilterTest.cpp)
+ PDAL_ADD_TEST(pdal_filters_transformation_test FILES
+     filters/TransformationFilterTest.cpp)

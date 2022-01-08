@@ -7,4 +7,33 @@
     <comment>Needed for QGIS</comment>
     <requestid>913568</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4318cd649af8b0f873d08536f30f322</srcmd5>
+    <version>2.3.0</version>
+    <time>1641680596</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the -devel dangling symlink by moving to libPDAL
+  libpdal_*.so.%{soname} symlinks to libpdal_*.%{sovers}
+  rpmlint not more complain.
+- Review licenses of subpart: The code is licensed BSD except for:
+  + filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
+  + vendor/arbiter/*, plugins/nitf/io/nitflib.h and plugins/oci/io/OciWrapper.* are Expat/MIT
+  + plugins/e57/io/{src,include}/* is BSD-3-Clause
+  + plugins/e57/libE57Format/{src,include}/* is Boost 1-0
+- Create a patch PDAL_unbundle.patch to sort out eigen3 and boost
+  + Eigen3 system now used fixing boo#1194109
+- Fixing boo#1194109 ppc64le build by disabling lto until upstream
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102059 is fixed
+- Add Provides for
+  + bundled(arbiter)
+  + bundled(PoissonRecon)
+  + bundled(nanoflann)
+  + bundled(nlohmann)
+- Add %check section following what's Fedora is doing
+  + Add upstream patch for testing 32bits d11e0e20.patch
+- Update to 2.3.0 version
+  complete description https://github.com/PDAL/PDAL/releases/tag/2.3.0
+</comment>
+    <requestid>944872</requestid>
+  </revision>
 </revisionlist>
