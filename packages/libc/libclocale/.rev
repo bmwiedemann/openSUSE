@@ -95,4 +95,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Add keyring</comment>
     <requestid>933930</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fdd344dd684f7deec1692af481842013</srcmd5>
+    <version>20220107</version>
+    <time>1641680649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220107</comment>
+    <requestid>944889</requestid>
+  </revision>
 </revisionlist>
