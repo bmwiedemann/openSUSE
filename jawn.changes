@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  7 10:46:23 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1194358, CVE-2022-21653]
+  * DoS caused by a hash collision in SimpleFacade and MutableFacade
+  * Add jawn-CVE-2022-21653.patch
+
+-------------------------------------------------------------------
 Tue Dec  3 10:29:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jawn 0.14.1 built for scala 2.10.x
