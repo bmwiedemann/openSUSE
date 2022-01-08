@@ -8,19 +8,6 @@ Description=Service enabling compressing RAM with zRam
 After=multi-user.target
 
 [Service]
-# added automatically, for details please see
-# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-ProtectSystem=full
-ProtectHome=true
-PrivateDevices=true
-ProtectHostname=true
-ProtectClock=true
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectKernelLogs=true
-ProtectControlGroups=true
-RestrictRealtime=true
-# end of automatic additions 
 Type=oneshot
 ExecStart=/usr/sbin/zramswapon
 ExecStop=/usr/sbin/zramswapoff

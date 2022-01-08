@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-zram-service
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2018 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Systemd service for zram
 License:        GPL-2.0-only
 Group:          System/Daemons
-Url:            https://code.launchpad.net/~elementary-os/elementaryos/zramswap-enabler
+URL:            https://code.launchpad.net/~elementary-os/elementaryos/zramswap-enabler
 Source0:        zramswap-enabler-0.2.1.tar.bz2
 #Source0:       bzr branch lp:~elementary-os/elementaryos/zramswap-enabler
 Source1:        zramswapon

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:18:04 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop hardenings again. The current set causes issues (bsc#1193402)
+
+-------------------------------------------------------------------
 Wed Nov 24 12:39:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
