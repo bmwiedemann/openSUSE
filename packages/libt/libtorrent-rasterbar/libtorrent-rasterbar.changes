@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  8 19:20:10 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update boost version requirement
+
+-------------------------------------------------------------------
 Sun Jan  2 08:26:53 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add libtorrent-rasterbar-boost_178.patch (fix Factory build)
