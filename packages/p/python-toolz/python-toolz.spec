@@ -1,7 +1,7 @@
 #
 # spec file for package python-toolz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-toolz
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        List processing tools and functional utilities for python
 License:        BSD-3-Clause
@@ -56,6 +56,6 @@ A set of python utility functions for iterators, functions, and dictionaries.
 %license LICENSE.txt
 %{python_sitelib}/toolz/
 %{python_sitelib}/tlz/
-%{python_sitelib}/toolz-%{version}-py*.egg-info/
+%{python_sitelib}/toolz-%{version}*-info/
 
 %changelog
