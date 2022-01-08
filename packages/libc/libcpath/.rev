@@ -86,4 +86,12 @@ summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184909 from greg
     <comment></comment>
     <requestid>898210</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>34de02890a7172dff6eaf971dfcab155</srcmd5>
+    <version>20220108</version>
+    <time>1641680649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220108</comment>
+    <requestid>944890</requestid>
+  </revision>
 </revisionlist>
