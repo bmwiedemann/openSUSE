@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed May 19 02:28:43 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Merge Leap, Tumbleweed and SLE into a single package
+  (bump major version from 84 to 89).
+- Update to version 89.87.20210518.c8ca1c2f:
+  * Generate previous context for patterns po files
+  * Update README.md
+  * Import strings from SLE branch into patterns po files
+  * Remove reference to obsolete rpm-groups
+  * Update strings with both Leap and SLE support
+  * prepare_split_tw_leap.sh: Accept more files
+  * Add support for urls_sle.txt
+  * Include updates from SLE branch - SLE support - Remove rpm-groups - Make package translations optional
+  * Update with Leap 15.3 specific strings
+  * Bump URLs for 15.3
+  * Added translation using Weblate (Central Atlas Tamazight)
+  * Added translation using Weblate (Hindi)
+  * Added translation using Weblate (Sinhala)
+  * Added translation using Weblate (Turkish)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Central Atlas Tamazight)
+  * Translated using Weblate (Chinese (China) (zh_CN))
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan) (zh_TW))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (English (United Kingdom))
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Ukrainian)
+
+-------------------------------------------------------------------
+Thu May 28 13:42:29 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20200507.e55fbcdc:
+  * Translations for openSUSE Leap 15.2 RC poo#61278
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Indonesian)
+
+-------------------------------------------------------------------
 Sat Mar 14 07:58:58 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20200314.d01661e1:

@@ -1,7 +1,7 @@
 #
 # spec file for package package-translations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           package-translations
-Version:        84.87.20200314.d01661e1
+Version:        89.87.20210518.c8ca1c2f
 Release:        0
 Summary:        Summary and Descriptions Translations
 License:        BSD-3-Clause
@@ -29,7 +29,7 @@ URL:            https://github.com/openSUSE/packages-i18n/
 
 %define build_languages cs de es fr hu it ja lt nl nn ru uk zh_CN
 
-%description 
+%description
 This package provides translations for our packages. You don't want to install this
 package on your system, it's only useful when you create openSUSE media.
 
