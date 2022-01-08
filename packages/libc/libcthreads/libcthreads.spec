@@ -1,7 +1,7 @@
 #
 # spec file for package libcthreads
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcthreads
 %define lname	libcthreads1
-Version:        20211115
+Version:        20220102
 Release:        0
 Summary:        Library for C threads functions
 License:        LGPL-3.0-or-later
