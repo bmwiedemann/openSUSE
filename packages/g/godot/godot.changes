@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 29 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.4.2
+
+  Fixed:
+  * BaseButton's localization for tooltip text with shortcut
+  * Size issue for ARVR managed viewport
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.2/Godot_v3.4.2-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Sun Dec 19 12:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.4.1
