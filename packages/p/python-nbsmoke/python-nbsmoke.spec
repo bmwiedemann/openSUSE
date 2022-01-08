@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbsmoke
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbsmoke
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Basic notebook checks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz-dev/nbsmoke
 Source:         https://files.pythonhosted.org/packages/source/n/nbsmoke/nbsmoke-%{version}.tar.gz
-Source99:       python-nbsmoke-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,12 +61,6 @@ Provides:       jupyter-nbsmoke = %{version}
 Basic notebook smoke tests for checking whether the notebooks run,
 and whether they contain lint.
 
-WARNING: early stage proof of concept; work in progress. Use at your
-own risk.
-
-In particular, this extension is supposed to handle ipython magics as
-far as possible, but has not yet been widely tested.
-
 %prep
 %setup -q -n nbsmoke-%{version}
 
@@ -76,18 +69,15 @@ far as possible, but has not yet been widely tested.
 
 %install
 %python_install
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# unix socket problem in OBS
-donttest="test_run_good_html"
-# linter problem
-python39_donttest="or test_lint_bad"
-%pytest -k "not ($donttest ${$python_donttest})"
+# needs to import from sourcedir
+export PYTHONPATH=":x"
+%pytest -p pytester
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/nbsmoke-%{version}*-info
 %{python_sitelib}/nbsmoke/

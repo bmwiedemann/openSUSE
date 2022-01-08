@@ -89,4 +89,13 @@
 - Enable test suite (forwarded request 931402 from bnavigator)</comment>
     <requestid>931403</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2bd2bae42db53aa218cd269c223775f0</srcmd5>
+    <version>0.6.0</version>
+    <time>1641680662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0
+  * Change template file name for nbconvert &gt;= 6 (forwarded request 944945 from bnavigator)</comment>
+    <requestid>944946</requestid>
+  </revision>
 </revisionlist>
