@@ -1,7 +1,7 @@
 #
 # spec file for package libcnotify
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 Name:           libcnotify
 %define lname	libcnotify1
-Version:        20210411
+Version:        20220108
 Release:        0
 Summary:        Library for C notify functions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcnotify
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libcnotify/releases/download/%version/libcnotify-beta-%version.tar.gz
+Source2:        https://github.com/libyal/libcnotify/releases/download/%version/libcnotify-beta-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -57,7 +59,7 @@ applications that want to make use of libcnotify.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 
