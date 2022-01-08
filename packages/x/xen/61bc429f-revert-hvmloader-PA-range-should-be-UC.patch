@@ -1,0 +1,44 @@
+
+References: bsc#1193447
+
+# Commit ea187c0b7a73c26258c0e91e4f3656989804555f
+# Date 2021-12-17 08:56:15 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+revert "hvmloader: PA range 0xfc000000-0xffffffff should be UC"
+
+This reverts commit c22bd567ce22f6ad9bd93318ad0d7fd1c2eadb0d.
+
+While its description is correct from an abstract or real hardware pov,
+the range is special inside HVM guests. The range being UC in particular
+gets in the way of OVMF, which places itself at [FFE00000,FFFFFFFF].
+While this is benign to epte_get_entry_emt() as long as the IOMMU isn't
+enabled for a guest, it becomes a very noticable problem otherwise: It
+takes about half a minute for OVMF to decompress itself into its
+designated address range.
+
+And even beyond OVMF there's no reason to have e.g. the ACPI memory
+range marked UC.
+
+Fixes: c22bd567ce22 ("hvmloader: PA range 0xfc000000-0xffffffff should be UC")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/tools/firmware/hvmloader/cacheattr.c
++++ b/tools/firmware/hvmloader/cacheattr.c
+@@ -98,12 +98,12 @@ void cacheattr_init(void)
+     {
+         uint64_t base = pci_mem_start, size;
+ 
+-        for ( i = 0; !(base >> 32) && (i < nr_var_ranges); i++ )
++        for ( i = 0; (base != pci_mem_end) && (i < nr_var_ranges); i++ )
+         {
+             size = PAGE_SIZE;
+             while ( !(base & size) )
+                 size <<= 1;
+-            while ( ((base + size) < base) || ((base + size - 1) >> 32) )
++            while ( ((base + size) < base) || ((base + size) > pci_mem_end) )
+                 size >>= 1;
+ 
+             wrmsr(MSR_MTRRphysBase(i), base);

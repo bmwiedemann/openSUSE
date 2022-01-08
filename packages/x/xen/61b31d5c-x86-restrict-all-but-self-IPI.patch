@@ -1,0 +1,39 @@
+# Commit 7621880de0bb40bae6436a5b106babc0e4718f4d
+# Date 2021-12-10 10:26:52 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86: avoid wrong use of all-but-self IPI shorthand
+
+With "nosmp" I did observe a flood of "APIC error on CPU0: 04(04), Send
+accept error" log messages on an AMD system. And rightly so - nothing
+excludes the use of the shorthand in send_IPI_mask() in this case. Set
+"unaccounted_cpus" to "true" also when command line restrictions are the
+cause.
+
+Note that PV-shim mode is unaffected by this change, first and foremost
+because "nosmp" and "maxcpus=" are ignored in this case.
+
+Fixes: 5500d265a2a8 ("x86/smp: use APIC ALLBUT destination shorthand when possible")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/mpparse.c
++++ b/xen/arch/x86/mpparse.c
+@@ -85,9 +85,14 @@ void __init set_nr_cpu_ids(unsigned int
+ 	if (!park_offline_cpus)
+ 		tot_cpus = max_cpus;
+ 	nr_cpu_ids = min(tot_cpus, NR_CPUS + 0u);
+-	if (park_offline_cpus && nr_cpu_ids < num_processors)
+-		printk(XENLOG_WARNING "SMP: Cannot bring up %u further CPUs\n",
+-		       num_processors - nr_cpu_ids);
++	if (nr_cpu_ids < num_processors)
++	{
++		unaccounted_cpus = true;
++		if (park_offline_cpus)
++			printk(XENLOG_WARNING
++			       "SMP: Cannot bring up %u further CPUs\n",
++			       num_processors - nr_cpu_ids);
++	}
+ 
+ #ifndef nr_cpumask_bits
+ 	nr_cpumask_bits = ROUNDUP(nr_cpu_ids, BITS_PER_LONG);

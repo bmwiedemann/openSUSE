@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.16.0_02
+Version:        4.16.0_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -155,6 +155,10 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         61b31d5c-x86-restrict-all-but-self-IPI.patch
+Patch2:         61b88e78-x86-CPUID-TSXLDTRK-definition.patch
+Patch3:         61bc429f-revert-hvmloader-PA-range-should-be-UC.patch
+Patch4:         61d5687a-x86-spec-ctrl-opt_srb_lock-default.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

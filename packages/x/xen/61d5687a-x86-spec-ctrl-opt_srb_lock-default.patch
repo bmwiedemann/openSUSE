@@ -1,0 +1,26 @@
+# Commit 31f3bc97f4508687215e459a5e35676eecf1772b
+# Date 2022-01-05 09:44:26 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/spec-ctrl: Fix default calculation of opt_srb_lock
+
+Since this logic was introduced, opt_tsx has become more complicated and
+shouldn't be compared to 0 directly.  While there are no buggy logic paths,
+the correct expression is !(opt_tsx & 1) but the rtm_disabled boolean is
+easier and clearer to use.
+
+Fixes: 8fe24090d940 ("x86/cpuid: Rework HLE and RTM handling")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/spec_ctrl.c
++++ b/xen/arch/x86/spec_ctrl.c
+@@ -1245,7 +1245,7 @@ void __init init_speculation_mitigations
+          */
+         if ( opt_srb_lock == -1 &&
+              (caps & (ARCH_CAPS_MDS_NO|ARCH_CAPS_TAA_NO)) == ARCH_CAPS_MDS_NO &&
+-             (!cpu_has_hle || ((caps & ARCH_CAPS_TSX_CTRL) && opt_tsx == 0)) )
++             (!cpu_has_hle || ((caps & ARCH_CAPS_TSX_CTRL) && rtm_disabled)) )
+             opt_srb_lock = 0;
+ 
+         val &= ~MCU_OPT_CTRL_RNGDS_MITG_DIS;

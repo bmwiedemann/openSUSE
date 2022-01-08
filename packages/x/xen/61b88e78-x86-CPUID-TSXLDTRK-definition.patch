@@ -1,0 +1,87 @@
+# Commit 249e0f1d8f203188ccdcced5a05c2149739e1566
+# Date 2021-12-14 12:30:48 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/cpuid: Fix TSXLDTRK definition
+
+TSXLDTRK lives in CPUID leaf 7[0].edx, not 7[0].ecx.
+
+Bit 16 in ecx is LA57.
+
+Fixes: a6d1b558471f ("x86emul: support X{SUS,RES}LDTRK")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/tools/libs/light/libxl_cpuid.c
++++ b/tools/libs/light/libxl_cpuid.c
+@@ -209,7 +209,6 @@ int libxl_cpuid_parse_config(libxl_cpuid
+         {"avx512-vnni",  0x00000007,  0, CPUID_REG_ECX, 11,  1},
+         {"avx512-bitalg",0x00000007,  0, CPUID_REG_ECX, 12,  1},
+         {"avx512-vpopcntdq",0x00000007,0,CPUID_REG_ECX, 14,  1},
+-        {"tsxldtrk",     0x00000007,  0, CPUID_REG_ECX, 16,  1},
+         {"rdpid",        0x00000007,  0, CPUID_REG_ECX, 22,  1},
+         {"cldemote",     0x00000007,  0, CPUID_REG_ECX, 25,  1},
+ 
+@@ -220,6 +219,7 @@ int libxl_cpuid_parse_config(libxl_cpuid
+         {"srbds-ctrl",   0x00000007,  0, CPUID_REG_EDX,  9,  1},
+         {"md-clear",     0x00000007,  0, CPUID_REG_EDX, 10,  1},
+         {"serialize",    0x00000007,  0, CPUID_REG_EDX, 14,  1},
++        {"tsxldtrk",     0x00000007,  0, CPUID_REG_EDX, 16,  1},
+         {"cet-ibt",      0x00000007,  0, CPUID_REG_EDX, 20,  1},
+         {"ibrsb",        0x00000007,  0, CPUID_REG_EDX, 26,  1},
+         {"stibp",        0x00000007,  0, CPUID_REG_EDX, 27,  1},
+--- a/tools/misc/xen-cpuid.c
++++ b/tools/misc/xen-cpuid.c
+@@ -128,7 +128,6 @@ static const char *const str_7c0[32] =
+     [10] = "vpclmulqdq",       [11] = "avx512-vnni",
+     [12] = "avx512-bitalg",
+     [14] = "avx512-vpopcntdq",
+-    [16] = "tsxldtrk",
+ 
+     [22] = "rdpid",
+     /* 24 */                   [25] = "cldemote",
+@@ -171,7 +170,7 @@ static const char *const str_7d0[32] =
+     [10] = "md-clear",            [11] = "rtm-always-abort",
+     /* 12 */                [13] = "tsx-force-abort",
+     [14] = "serialize",
+-
++    [16] = "tsxldtrk",
+     [18] = "pconfig",
+     [20] = "cet-ibt",
+ 
+--- a/xen/arch/x86/x86_emulate/x86_emulate.c
++++ b/xen/arch/x86/x86_emulate/x86_emulate.c
+@@ -2000,7 +2000,6 @@ amd_like(const struct x86_emulate_ctxt *
+ #define vcpu_has_avx512_vnni() (ctxt->cpuid->feat.avx512_vnni)
+ #define vcpu_has_avx512_bitalg() (ctxt->cpuid->feat.avx512_bitalg)
+ #define vcpu_has_avx512_vpopcntdq() (ctxt->cpuid->feat.avx512_vpopcntdq)
+-#define vcpu_has_tsxldtrk()    (ctxt->cpuid->feat.tsxldtrk)
+ #define vcpu_has_rdpid()       (ctxt->cpuid->feat.rdpid)
+ #define vcpu_has_movdiri()     (ctxt->cpuid->feat.movdiri)
+ #define vcpu_has_movdir64b()   (ctxt->cpuid->feat.movdir64b)
+@@ -2009,6 +2008,7 @@ amd_like(const struct x86_emulate_ctxt *
+ #define vcpu_has_avx512_4fmaps() (ctxt->cpuid->feat.avx512_4fmaps)
+ #define vcpu_has_avx512_vp2intersect() (ctxt->cpuid->feat.avx512_vp2intersect)
+ #define vcpu_has_serialize()   (ctxt->cpuid->feat.serialize)
++#define vcpu_has_tsxldtrk()    (ctxt->cpuid->feat.tsxldtrk)
+ #define vcpu_has_avx_vnni()    (ctxt->cpuid->feat.avx_vnni)
+ #define vcpu_has_avx512_bf16() (ctxt->cpuid->feat.avx512_bf16)
+ 
+--- a/xen/include/public/arch-x86/cpufeatureset.h
++++ b/xen/include/public/arch-x86/cpufeatureset.h
+@@ -239,7 +239,6 @@ XEN_CPUFEATURE(VPCLMULQDQ,    6*32+10) /
+ XEN_CPUFEATURE(AVX512_VNNI,   6*32+11) /*A  Vector Neural Network Instrs */
+ XEN_CPUFEATURE(AVX512_BITALG, 6*32+12) /*A  Support for VPOPCNT[B,W] and VPSHUFBITQMB */
+ XEN_CPUFEATURE(AVX512_VPOPCNTDQ, 6*32+14) /*A  POPCNT for vectors of DW/QW */
+-XEN_CPUFEATURE(TSXLDTRK,      6*32+16) /*a  TSX load tracking suspend/resume insns */
+ XEN_CPUFEATURE(RDPID,         6*32+22) /*A  RDPID instruction */
+ XEN_CPUFEATURE(CLDEMOTE,      6*32+25) /*A  CLDEMOTE instruction */
+ XEN_CPUFEATURE(MOVDIRI,       6*32+27) /*a  MOVDIRI instruction */
+@@ -278,6 +277,7 @@ XEN_CPUFEATURE(MD_CLEAR,      9*32+10) /
+ XEN_CPUFEATURE(RTM_ALWAYS_ABORT, 9*32+11) /*! June 2021 TSX defeaturing in microcode. */
+ XEN_CPUFEATURE(TSX_FORCE_ABORT, 9*32+13) /* MSR_TSX_FORCE_ABORT.RTM_ABORT */
+ XEN_CPUFEATURE(SERIALIZE,     9*32+14) /*a  SERIALIZE insn */
++XEN_CPUFEATURE(TSXLDTRK,      9*32+16) /*a  TSX load tracking suspend/resume insns */
+ XEN_CPUFEATURE(CET_IBT,       9*32+20) /*   CET - Indirect Branch Tracking */
+ XEN_CPUFEATURE(IBRSB,         9*32+26) /*A  IBRS and IBPB support (used by Intel) */
+ XEN_CPUFEATURE(STIBP,         9*32+27) /*A  STIBP */

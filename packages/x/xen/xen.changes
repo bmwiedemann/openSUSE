@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan  6 16:05:00 CET 2022 - jbeulich@suse.com
+
+- bsc#1193447 - Slow execution of hvmloader+ovmf when VM contains
+  an sriov device
+  61bc429f-revert-hvmloader-PA-range-should-be-UC.patch
+- Upstream bug fixes (bsc#1027519)
+  61b31d5c-x86-restrict-all-but-self-IPI.patch
+  61b88e78-x86-CPUID-TSXLDTRK-definition.patch
+  61d5687a-x86-spec-ctrl-opt_srb_lock-default.patch
+
+-------------------------------------------------------------------
+Tue Jan  4 15:51:15 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Collect active VM config files in the supportconfig plugin
+  xen-supportconfig
+
+-------------------------------------------------------------------
 Thu Dec  9 09:36:20 MST 2021 - carnold@suse.com
 
 - bsc#1193307 - pci backend does not exist when attach a vf to a pv
