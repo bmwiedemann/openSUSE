@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  8 09:35:22 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.21
+  - Fix serial port listing on Apple M1 Macs
+  - Truncate RED Brick log file view to 10MB
+  - Improve hex input mode for RS232 Bricklet 2.0
+  - Improve compatibility with Python 3.10
+  - Fix OpenGL problems on macOS 12
+
+-------------------------------------------------------------------
 Tue Nov  9 19:00:57 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.20
