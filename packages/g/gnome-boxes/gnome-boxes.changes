@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  7 15:17:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.3:
+  + Fix crash with absent storage volumes.
+  + Go to display-view after importing a box.
+
+-------------------------------------------------------------------
 Fri Dec  3 18:05:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:
