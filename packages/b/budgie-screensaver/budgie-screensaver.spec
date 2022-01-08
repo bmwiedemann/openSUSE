@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-screensaver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,12 +23,12 @@
 %define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
-Version:        4.0+0
+Version:        4.0+2
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-URL:            https://github.com/getsolus/budgie-screensaver
+URL:            https://github.com/BuddiesOfBudgie/budgie-screensaver
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE remove-old-automake-macros.patch
 Patch0:         remove-old-automake-macros.patch
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xxf86vm)
 Requires:       pam
+Requires:       procps
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(xxf86misc)
 %endif
@@ -71,14 +72,10 @@ Fork of GNOME Screensaver for Budgie 10
 %autosetup -p1
 
 %build
-export AUTOPOINT='intltoolize --copy --automake'
-touch ./ABOUT-NLS
 mkdir m4
-mkdir build-aux
-touch build-aux/config.rpath
+intltoolize -c -f --automake
 autoreconf -fiv
 %configure\
-	--libexecdir=%{_libexecdir}/budgie-screensaver\
 	--with-pam-prefix=%{_sysconfdir}\
 	--enable-authentication-scheme=helper\
 	--with-passwd-helper="%{chkpwd}"\
@@ -97,7 +94,7 @@ cp %{buildroot}%{_datadir}/applications/budgie-screensaver.desktop %{buildroot}%
 %license COPYING
 %config(noreplace) %{_sysconfdir}/pam.d/budgie-screensaver
 %{_bindir}/*
-%{_libexecdir}/budgie-screensaver
+%{_libexecdir}/*
 %{_datadir}/applications/budgie-screensaver.desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_mandir}/man1/*

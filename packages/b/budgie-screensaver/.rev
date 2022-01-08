@@ -73,4 +73,18 @@
 </comment>
     <requestid>893282</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2c1d4134ce9b9eff954265122e78269c</srcmd5>
+    <version>4.0+2</version>
+    <time>1641680617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0+2:
+  * Sort out renames
+  * Have a couple deferred re-attempts to kill gjs.
+  * Remove dbus service file as it results in a race condition with
+    gnome-settings-daemon that can cause double prompts.
+  * Fix Makefile for distcheck + dist
+</comment>
+    <requestid>944789</requestid>
+  </revision>
 </revisionlist>

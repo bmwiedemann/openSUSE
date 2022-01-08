@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 07 11:24:13 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 4.0+2:
+  * Sort out renames
+  * Have a couple deferred re-attempts to kill gjs.
+  * Remove dbus service file as it results in a race condition with
+    gnome-settings-daemon that can cause double prompts.
+  * Fix Makefile for distcheck + dist
+
+-------------------------------------------------------------------
 Sat May 15 08:47:19 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix missed change in gnome-screensaver-helper.patch

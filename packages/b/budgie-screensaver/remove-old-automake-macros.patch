@@ -34,20 +34,18 @@ index c573924..942457e 100644
 +++ b/configure.ac
 @@ -5,6 +5,8 @@ AC_INIT([budgie-screensaver],
          [4.0],
-         [https://github.com/getsolus/budgie-screensaver])
+         [https://github.com/BuddiesOfBudgie/budgie-screensaver])
  
 +AC_CONFIG_MACRO_DIR([m4])
 +AC_CONFIG_AUX_DIR([build-aux])
  AC_CONFIG_SRCDIR(src/gnome-screensaver.c)
  
  AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-xz tar-ustar])
-@@ -33,7 +34,8 @@ GETTEXT_PACKAGE=budgie-screensaver
+@@ -33,7 +34,6 @@ GETTEXT_PACKAGE=budgie-screensaver
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of default gettext domain])
  
 -AM_GLIB_GNU_GETTEXT
-+AM_GNU_GETTEXT([external])
-+AM_GNU_GETTEXT_VERSION([0.17])
  GLIB_GSETTINGS
  
  # Dependencies
