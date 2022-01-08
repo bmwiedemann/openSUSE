@@ -24,6 +24,9 @@ License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://userbase.kde.org/KJots/
 Source0:        https://download.kde.org/stable/kjots/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         noteshared-add-missing-library-to-link-list.patch
+Patch1:         Adapt-to-new-Akonadi-libraries.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
@@ -51,7 +54,7 @@ This package contains KJOTS, a note taking application using Akonadi.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

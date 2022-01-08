@@ -79,4 +79,14 @@
     <comment></comment>
     <requestid>902932</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dc5e8d9e605e20d7587b8bd138b0e002</srcmd5>
+    <version>5.1.0</version>
+    <time>1641680633</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches to fix build with Akonadi 21.12:
+  * noteshared-add-missing-library-to-link-list.patch
+  * Adapt-to-new-Akonadi-libraries.patch</comment>
+    <requestid>944836</requestid>
+  </revision>
 </revisionlist>

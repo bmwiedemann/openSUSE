@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:53:36 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patches to fix build with Akonadi 21.12:
+  * noteshared-add-missing-library-to-link-list.patch
+  * Adapt-to-new-Akonadi-libraries.patch
+
+-------------------------------------------------------------------
 Tue Jun 29 05:46:43 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 5.1.0:
