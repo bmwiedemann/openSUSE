@@ -1,7 +1,7 @@
 #
 # spec file for package rehex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rehex
-Version:        0.3.92
+Version:        0.4.1
 Release:        0
 Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only
@@ -26,6 +26,7 @@ Source0:        https://github.com/solemnwarning/rehex/archive/%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libunistring-devel
 BuildRequires:  update-desktop-files
 %if 0%{?suse_version} > 1500
 BuildRequires:  wxWidgets-3_0-devel
