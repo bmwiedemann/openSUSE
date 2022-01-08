@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan  7 16:09:29 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- remove service files
+
+-------------------------------------------------------------------
+Thu Jan 06 14:33:13 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 8.3.1:
+ - Bugfixes
+  - Stop implying --no-ignore-parent when --no-vcs-ignore is supplied, see #907, #901, #908 (@tmccombs)
+  - fd no longer waits for the whole traversal if the only matches arrive within max_buffer_time, see #868 and #895 (@tavianator)
+  - --max-results=1 now immediately quits after the first result, see #867 (@tavianator)
+  - fd -h does not panic anymore when stdout is closed, see #897
+ - Changes
+  - Disable jemalloc on FreeBSD, see #896 (@xanderio)
+  - Updated man page, see #912 (@rlue)
+  - Updated zsh completions, see #932 (@tmccombs)
+
+-------------------------------------------------------------------
 Mon Nov 29 08:09:38 UTC 2021 - sebix+novell.com@sebix.at
 
 - Update to version 8.3.0:

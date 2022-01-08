@@ -123,4 +123,14 @@ Changes
 </comment>
     <requestid>936384</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>badb0abd8617b25ea6eeda5ef1fc725b</srcmd5>
+    <version>8.3.1</version>
+    <time>1641680622</time>
+    <user>dimstar_suse</user>
+    <comment>- remove service files to fix build
+
+- Update to version 8.3.1</comment>
+    <requestid>944794</requestid>
+  </revision>
 </revisionlist>
