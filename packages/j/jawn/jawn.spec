@@ -1,7 +1,7 @@
 #
 # spec file for package jawn
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source100:      https://repo1.maven.org/maven2/org/typelevel/%{name}-ast_%{scala
 Source101:      https://repo1.maven.org/maven2/org/typelevel/%{name}-parser_%{scala_version}/%{version}/%{name}-parser_%{scala_version}-%{version}.pom
 Source102:      https://repo1.maven.org/maven2/org/typelevel/%{name}-util_%{scala_version}/%{version}/%{name}-util_%{scala_version}-%{version}.pom
 Source103:      https://repo1.maven.org/maven2/org/typelevel/%{name}-json4s_%{scala_version}/%{version}/%{name}-json4s_%{scala_version}-%{version}.pom
+#PATCH-FIX-UPSTREAM bsc#1194358 CVE-2022-21653: DoS caused by a hash collision
+Patch0:         jawn-CVE-2022-21653.patch
 BuildRequires:  ant-scala
 BuildRequires:  javapackages-local
 BuildRequires:  json4s-jackson
@@ -83,7 +85,7 @@ JSON into an AST as quickly as possible.
 This package contains support to parse to json4s AST.
 
 %prep
-%setup -q -a1
+%autosetup -a1 -p1
 
 %{mvn_package} :%{name}-{*}_%{scala_version} @1
 
