@@ -369,4 +369,12 @@
     <comment>Conflict gnome-shell it's existence breaks locking</comment>
     <requestid>934027</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0409a85fa3c5a2c43568008d154d5788</srcmd5>
+    <version>10.5.3+36</version>
+    <time>1641680619</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>944791</requestid>
+  </revision>
 </revisionlist>

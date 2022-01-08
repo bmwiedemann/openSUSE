@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 07 11:18:46 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.5.3+36:
+  * Require GNOME Stack 40 or later
+  * Revert "Require GNOME Stack 41 (alpha+)"
+  * Exclude Adwaita and HighContrast from Icon themes selection.
+    Neither support Budgie.
+  * Prevent crash when deleting twice the same applet
+  * Add /usr/bin binary man-pages.
+  * Add gnome-screensaver as a possible compilation option.
+  * Update copyright year to 2022
+  * Rename budgie-desktop-view schema.
+    Requires git build of new budgie desktop view
+  * Add Matrix badge to README
+  * meson: Drop spurious 3rd positional argument to
+    gnome.compile_resources
+
+-------------------------------------------------------------------
 Fri Nov 26 11:08:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Conflict gnome-shell it's existence breaks locking

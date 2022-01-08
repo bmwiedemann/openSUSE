@@ -20,12 +20,12 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.3+12
+Version:        10.5.3+36
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
-URL:            https://getsol.us/solus/experiences/
+URL:            https://github.com/BuddiesOfBudgie/budgie-desktop
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         override-syntax.patch
 # Solus stupid 1000
@@ -57,8 +57,9 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
-Requires:       budgie-desktop-view
-Requires:       budgie-screensaver
+# rebrand
+Requires:       budgie-desktop-view >= 1.1.1+5
+Requires:       budgie-screensaver >= 4.0+2
 Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
@@ -176,6 +177,7 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %license LICENSE LICENSE.LGPL2.1
 %{_datadir}/gnome-session
 %{_bindir}/budgie-*
+%{_mandir}/man1/*%{?ext_man}
 %{_datadir}/applications/budgie-*.desktop
 %{_datadir}/backgrounds
 %{_datadir}/glib-2.0/schemas/com.solus-project.*.gschema.xml
