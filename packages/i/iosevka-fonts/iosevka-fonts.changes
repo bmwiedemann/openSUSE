@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  8 12:35:36 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v11.2.5
+  * Changes of version 11.2.5
+    = Add split-slash variants of 0 (#1270).
+    = Add ligation set for Dafny (#1271).
+
+-------------------------------------------------------------------
 Mon Dec 27 21:22:00 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.2.4
