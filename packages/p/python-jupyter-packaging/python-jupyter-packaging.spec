@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-packaging
-Version:        0.10.6
+Version:        0.11.1
 Release:        0
 Summary:        Jupyter Packaging Utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter-packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter_packaging-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools >= 46.4.0}

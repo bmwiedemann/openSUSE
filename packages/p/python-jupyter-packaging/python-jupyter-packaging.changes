@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 21 14:19:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.1
+  * Fix running testsuite within virtualenv #111 (@jnahmias)
+
+-------------------------------------------------------------------
+Fri Nov 12 21:35:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.0
+  * Drop support for Python 3.6 and add support for Python 3.10
+
+-------------------------------------------------------------------
 Sun Oct 17 17:34:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.6
