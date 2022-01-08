@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  7 20:46:48 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU gama 2.17:
+  * library libgama changed from OBJECTS to static in CMakeLists.txt
+  * minor changes needed by qgama to implement xml input format export
+  * new function Observation::raw_value()
+
+-------------------------------------------------------------------
 Sat Nov 27 18:40:15 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU gama 2.16:
