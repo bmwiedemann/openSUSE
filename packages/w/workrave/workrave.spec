@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define upstream_version    1_10_48
+%define upstream_version    1_10_49
 Name:           workrave
-Version:        1.10.48
+Version:        1.10.49
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-only

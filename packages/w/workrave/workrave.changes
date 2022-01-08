@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  5 20:34:12 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.49
+ - Adds support for GNOME Shell 41 (#342, Timo Jyrinki)
+ - Inno Setup improvement (#353, Kaleb Luedtke)
+
+-------------------------------------------------------------------
 Sun Aug 15 19:36:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove obsolete fix-wayland-gnome-crash.patch
