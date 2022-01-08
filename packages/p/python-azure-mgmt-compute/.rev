@@ -191,4 +191,16 @@
     CHANGELOG.md file provided with this package (forwarded request 926038 from glaubitz)</comment>
     <requestid>926052</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad8c3be5d4fd10ff39e837aef1a872a6</srcmd5>
+    <version>24.0.0</version>
+    <time>1641680605</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 24.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 944710 from glaubitz)</comment>
+    <requestid>944743</requestid>
+  </revision>
 </revisionlist>
