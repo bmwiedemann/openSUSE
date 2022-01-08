@@ -1,7 +1,7 @@
 #
 # spec file for package python-mitmproxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,6 +106,18 @@ sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/utils/emoji.py
 sed -i 's/,\s*<.*"/"/g' setup.py
 rm mitmproxy/contrib/kaitaistruct/make.sh
 
+sed -i 's/--color=yes//' setup.cfg
+
+echo "
+# increase test deadline for slow obs executions
+import hypothesis
+hypothesis.settings.register_profile(
+    'obs',
+    deadline=5000,
+    suppress_health_check=[hypothesis.HealthCheck.too_slow]
+)
+" >> test/conftest.py
+
 %build
 %python_build
 
@@ -120,7 +132,7 @@ rm mitmproxy/contrib/kaitaistruct/make.sh
 # test_refresh fails on i586... wrong timestamp type, maybe?
 # test_rollback and test_output[None-expected_out0-expected_err0] just randomly fail on i586
 # test_get_version fails to mock updated git version
-%pytest -k "not (test_refresh or test_rollback or test_output or test_get_version)"
+%pytest -k "not (test_refresh or test_rollback or test_output or test_get_version)" --hypothesis-profile="obs"
 
 %post
 %python_install_alternative mitmdump
