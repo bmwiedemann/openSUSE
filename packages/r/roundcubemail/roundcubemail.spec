@@ -18,9 +18,9 @@
 
 %define roundcubepath %{apache_serverroot}/%{name}
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
-%define php_name      %(php -r "print 'php' . PHP_MAJOR_VERSION;")
+
 Name:           roundcubemail
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-or-later
@@ -40,17 +40,17 @@ Patch0:         %{name}-config_dir.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2
 BuildRequires:  php-cli
-Requires:       %{php_name}-dom
-Requires:       %{php_name}-exif
-Requires:       %{php_name}-gettext
-Requires:       %{php_name}-iconv
-Requires:       %{php_name}-intl
-Requires:       %{php_name}-json
-Requires:       %{php_name}-mbstring
-Requires:       %{php_name}-openssl
-Requires:       apache2-mod_%{php_name}
+Requires:       php-dom
+Requires:       php-exif
+Requires:       php-gettext
+Requires:       php-iconv
+Requires:       php-intl
+Requires:       php-json
+Requires:       php-mbstring
+Requires:       php-openssl
+Requires(pre):  mod_php_any
+Requires:       mod_php_any
 ## Requires: for upstream dep package
-Requires:       %{php_name}-sockets
 Requires:       php-pear-Auth_SASL >= 1.0.6
 Requires:       php-pear-MDB2_Driver_mysqli
 Requires:       php-pear-Mail_Mime >= 1.10.0
@@ -59,13 +59,15 @@ Requires:       php-pear-Net_LDAP2
 Requires:       php-pear-Net_SMTP >= 1.8.1
 Requires:       php-pear-Net_Sieve >= 1.4.3
 Requires:       php-pear-Net_Socket >= 1.0.12
-Requires:       (%{php_name}-mysql or %{php_name}-pgsql)
-Recommends:     %{php_name}-fileinfo
-Recommends:     %{php_name}-imagick
-Recommends:     %{php_name}-zip
+Requires:       php-sockets
+Requires:       (php-mysql or php-pgsql)
 Recommends:     logrotate
+Recommends:     php-fileinfo
+Recommends:     php-imagick
 Recommends:     php-pear-Crypt_GPG >= 1.6.3
-Suggests:       %{php_name}-mysql
+Recommends:     php-zip
+Suggests:       php-mysql
+Suggests:       php-sqlite
 Conflicts:      roundcube-framework
 Provides:       roundcube_framework = %{version}
 BuildArch:      noarch
@@ -125,8 +127,8 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/logrotate.d
 install %{SOURCE5} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 
 # extract roundcube-framework
-install -d -m 0755 %{buildroot}/%{_datadir}/%{php_name}
-mv program/lib/Roundcube %{buildroot}%{_datadir}/%{php_name}/Roundcube
+install -d -m 0755 %{buildroot}/%{_datadir}/php
+mv program/lib/Roundcube %{buildroot}%{_datadir}/php/Roundcube
 
 # install roundcubemail
 install -d -m 0755 %{buildroot}/%{roundcubepath}
@@ -246,8 +248,9 @@ if [ ${1:-0} -eq 1 ]; then
   if [ -x %{_sbindir}/a2enmod ]; then
   # enable required apache modules
   %if 0%{?suse_version} > 01500
+    PHP_MODULE=$(php -r "print 'php' . PHP_MAJOR_VERSION;")
     if ! grep -q php %{_sysconfdir}/sysconfig/apache2 1>&2 2>/dev/null; then
-      %{_sbindir}/a2enmod -q %{php_name}    || %{_sbindir}/a2enmod %{php_name}
+      %{_sbindir}/a2enmod -q $PHP_MODULE    || %{_sbindir}/a2enmod $PHP_MODULE
     fi
   %endif
     for module in alias brotli deflate expires filter headers rewrite setenvif version ; do
@@ -344,7 +347,8 @@ exit 0
 %{roundcubepath}/SQL
 %{roundcubepath}/temp
 %{roundcubepath}/vendor/
-%{_datadir}/%{php_name}/Roundcube
+%dir %{_datadir}/php
+%{_datadir}/php/Roundcube
 %attr(-, wwwrun, root) %{_localstatedir}/log/%{name}
 %attr(-, wwwrun, root) %{_localstatedir}/lib/%{name}
 

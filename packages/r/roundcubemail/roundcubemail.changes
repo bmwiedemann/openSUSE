@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 31 12:03:35 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.5.2
+  * OAuth: pass 'id_token' to 'oauth_login' plugin hook (#8214)
+  * OAuth: fix expiration of short-lived oauth tokens (#8147)
+  * OAuth: fix relative path to assets if /index.php/foo/bar url is used (#8144)
+  * OAuth: no auto-redirect on imap login failures (#8370)
+  * OAuth: refresh access token in 'refresh' plugin hook (#8224)
+  * Fix so folder search parameters are honored by subscriptions_option plugin (#8312)
+  * Fix password change with Directadmin driver (#8322, #8329)
+  * Fix so css files in plugins/jqueryui/themes will be minified too (#8337)
+  * Fix handling of unicode/special characters in custom From input (#8357)
+  * Fix some PHP8 compatibility issues (#8363)
+  * Fix chpass-wrapper.py helper compatibility with Python 3 (#8324)
+  * Fix scrolling and missing Close button in the Select image dialog in Elastic/mobile (#8367)
+  * Security: fix cross-site scripting (XSS) via HTML messages with malicious CSS content
+- added Suggests: php-sqlite
+
+-------------------------------------------------------------------
+Tue Dec 28 13:25:37 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- use the virtual provides from each PHP module, to allow the installation
+  of roundcubemail with various PHP versions. 
+  The only problem, we are currently facing is the automatic 
+  enablement of the PHP apache module during post-installation: 
+  Trying to evaluate the correct PHP module now during post as well, 
+  which should eleminate the pre-definition of the required 
+  PHP-Version during build completely.
+  See https://build.opensuse.org/request/show/940859 for the initial
+  discussion.
+
+-------------------------------------------------------------------
 Sun Nov 28 20:14:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.5.1
