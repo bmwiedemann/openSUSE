@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  6 19:50:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 295-overagreesive-escape_url.patch make
+  mistune.util.escape_url less aggressive
+  (gh#lepture/mistune#295).
+
+-------------------------------------------------------------------
 Fri Dec 31 17:09:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.1

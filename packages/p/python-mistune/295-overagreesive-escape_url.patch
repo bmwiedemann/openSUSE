@@ -1,0 +1,34 @@
+From fc2cd53d7698e432ab5b250ffac53458263a49e2 Mon Sep 17 00:00:00 2001
+From: Jeff Dairiki <dairiki@dairiki.org>
+Date: Thu, 6 Jan 2022 09:30:32 -0800
+Subject: [PATCH] Make mistune.util.escape_url less aggressive
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This adds ';', '!', and '$' to the set of characters which will be
+passed unmolested by escape_url.  These are all in RFC 3986 reserved
+character list — that is to say: escaping these may change the meaning
+of a URL.
+---
+ mistune/util.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/mistune/util.py b/mistune/util.py
+index 192f6ef..f99fe37 100644
+--- a/mistune/util.py
++++ b/mistune/util.py
+@@ -20,7 +20,12 @@ def escape(s, quote=True):
+ 
+ 
+ def escape_url(link):
+-    safe = '/#:()*?=%@+,&'
++    safe = (
++        ':/?#@'           # gen-delims - '[]' (rfc3986)
++        '!$&()*+,;='      # sub-delims - "'" (rfc3986)
++        '%'               # leave already-encoded octets alone
++    )
++
+     if html is None:
+         return quote(link.encode('utf-8'), safe=safe)
+     return html.escape(quote(html.unescape(link), safe=safe))
