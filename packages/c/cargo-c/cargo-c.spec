@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
