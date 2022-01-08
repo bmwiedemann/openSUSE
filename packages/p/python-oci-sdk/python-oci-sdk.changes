@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Jan  5 14:12:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.53.0
+  * Fixes the potential data corruption issue as described in
+    https://github.com/oracle/oci-python-sdk/issues/410.
+    Customers using FIPS compliant openssl versions are advised
+    to enable FIPS with the ways described in
+    https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/fips-libraries.html.
+- from version 2.53.0
+  * Support for node replacement in the VMWare Solution service
+  * Support for ingestion of SQL stats metrics in the Operations Insights service
+  * Support for AWR hub integration in the Operations Insights service
+  * Support for automatically generating logical entities from filename patterns and
+    relationships between business terms across glossaries in the Data Catalog service
+  * Support for automatic start/stop at scheduled times in the Database service
+  * Support for cloud VM cluster resources on autonomous dedicated
+    databases in the Database service
+  * Support for external Hive metastores in the Big Data service
+  * Support for batch detection/inference in the AI Language service
+  * Support for dimensions on monitoring targets in the Service Connector Hub service
+  * Support for invoice operations in the Account Management service
+  * Support for custom CA trust stores in the API Gateway service
+  * Support for generating scoped database tokens in the Identity service
+  * Support for database passwords for users, for logging into database
+    accounts, in the Identity service
+  * Fixed an issue where multipart upload operations to Object Storage
+    service throws SSLError on Oracle Linux instances
+- from version 2.52.1
+  * Support for the Application Management service
+  * Support for getting the inventory of JMS resources and listing Java
+    runtime usage in a specified host in the Java Management service
+  * Support for categories, entity topology, and verifying scheduled
+    tasks in the Logging Analytics service
+  * Support for RAC databases in the GoldenGate service
+  * Support for querying additional fields of a resource using
+    return clauses in the Search service
+  * Support for key versions and key version OCIDs in the Key Management service
+- from version 2.52.0
+  * Support for SQL Tuning Advisor in the Database Management service
+  * Support for listing users and getting user details in the Database Management service
+  * Support for autonomous databases in the Database Management service
+  * Support for enabling and disabling Database Management features on
+    autonomous databases in the Database service
+  * Support for the Solaris platform in the Management Agent Cloud service
+  * Support for cross-compartment operations in the Operations Insights service
+  * Support for listing deployment backups in the GoldenGate service
+  * Support for standard tags in the Identity service
+  * Support for viewing problems for deleted targets in the Cloud Guard service
+  * Support for choosing a platform version while creating a platform
+    instance in the Blockchain Platform service
+  * Support for custom IPSec connection tunnel internet key exchange
+    phase 1 and phase 2 encryption algorithms in the Networking service
+  * Support for pagination when listing work requests corresponding to
+    an APM domain in the Application Performance Monitoring service
+  * Support for the "deleted" lifecycle state on APM domains
+    in the Application Performance Monitoring service
+  * Support for calling Oracle Cloud Infrastructure services in
+    the eu-milan-1 and me-abudhabi-1 regions
+  * Support for retries enabled by default in all operations of the
+    DevOps, Build, and Source Code Management services
+
+-------------------------------------------------------------------
 Mon Nov 29 12:50:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.51.0
