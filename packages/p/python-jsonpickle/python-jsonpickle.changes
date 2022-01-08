@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 19:51:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't test and recommend unmaintained packages demjson and
+  feedparser
+
+-------------------------------------------------------------------
 Mon Feb 15 21:52:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.0.0

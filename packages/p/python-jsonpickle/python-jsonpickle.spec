@@ -37,7 +37,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib_metadata
 %endif
 Recommends:     python-simplejson
-Suggests:       python-demjson
 Suggests:       python-ujson
 Suggests:       python-yajl
 Suggests:       python-numpy
@@ -53,8 +52,6 @@ BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %if ! 0%{?_with_ringdisabled}
 # Test these in a normal devel project or locally, but not when staging with Ring1
-BuildRequires:  %{python_module demjson}
-BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module ujson}
 BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 BuildRequires:  %{python_module scikit-learn if (%python-base without python36-base)}
