@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Mon Jan  3 11:31:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 21.07:
+  * The sorting order of files in archives was slightly changed to be more
+    consistent for cases where the name of some directory is the same as the
+    prefix part of the name of another directory or file.
+  * TAR archives created by 7-Zip now are more consistent with archives
+    created by GNU TAR program.
+- Remove unneeded pach remove-rar-handler.patch
+- Use the tarball in place of the 7zip archive as Source
+
+-------------------------------------------------------------------
+Wed Dec 22 20:48:46 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Extract source archive with bsdtar instead of p7zip
+- Fixup line breaks of documentation files
+
+-------------------------------------------------------------------
+Tue Dec 21 21:13:09 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to version 21.06
+  * Bug in LZMA encoder in file LzmaEnc.c was fixed:
+    - LzmaEnc_MemEncode(), LzmaEncode() and LzmaCompress() could work
+      incorrectly, if size value for output buffer is smaller than size
+      required for all compressed data.
+    - LzmaEnc_Encode() could work incorrectly, if callback
+      ISeqOutStream::Write() doesn't write all compressed data.
+    - NCompress::NLzma::CEncoder::Code() could work incorrectly,
+      if callback ISequentialOutStream::Write() returns error code.
+  * Bug in versions 21.00-21.05 was fixed:
+    7-Zip didn't set attributes of directories during archive extracting.
+
+- update to version 21.04
+  * 7-Zip now reduces the number of working CPU threads for compression,
+    if RAM size is not enough for compression with big LZMA2 dictionary.
+  * 7-Zip now can create and check "file.sha256" and "file.sha1" text
+    files that contain the list of file names and SHA-1 / SHA-256
+    checksums in format compatible with sha1sum/sha256sum programs.
+
+- update to version 21.03
+  * The maximum dictionary size for LZMA/LZMA2 compressing was increased
+    to 4 GB (3840 MiB).
+  * Minor speed optimizations in LZMA/LZMA2 compressing.
+
+-------------------------------------------------------------------
+Tue Dec 21 00:07:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove more -W flags for the Leap 15.x build to succeed
+
+-------------------------------------------------------------------
+Tue Jul  6 14:36:25 UTC 2021 danilo.spinella@suse.com
+
+- Create initial version
+- Add remove-rar-handler.patch
