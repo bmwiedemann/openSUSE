@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define lname libuna1
 
 Name:           libuna%psuffix
-Version:        20210801
+Version:        20220102
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
@@ -40,11 +40,11 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdatetime) >= 20200510
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 %if "@BUILD_FLAVOR@" != "mini"
 BuildRequires:  pkgconfig(libcfile) >= 20201229
 %endif
-BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libclocale) >= 20210526
 BuildRequires:  pkgconfig(libcnotify) >= 20200913
 
 %description
@@ -100,25 +100,25 @@ autoreconf -fi
 
 %install
 %make_install
-rm -f "%{buildroot}/%{_libdir}"/*.la
+rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname%psuffix -p /sbin/ldconfig
 %postun -n %lname%psuffix -p /sbin/ldconfig
 
 %files -n %lname%psuffix
 %license COPYING
-%{_libdir}/libuna.so.1*
+%_libdir/libuna.so.1*
 
 %if "@BUILD_FLAVOR@" != "mini"
 %files tools
-%{_bindir}/una*
-%{_mandir}/man1/unaexport.1*
+%_bindir/una*
+%_mandir/man1/unaexport.1*
 %endif
 
 %files devel
-%{_includedir}/libuna*
-%{_libdir}/libuna.so
-%{_libdir}/pkgconfig/libuna.pc
-%{_mandir}/man3/libuna.3*
+%_includedir/libuna*
+%_libdir/libuna.so
+%_libdir/pkgconfig/libuna.pc
+%_mandir/man3/libuna.3*
 
 %changelog

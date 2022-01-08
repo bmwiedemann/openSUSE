@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  2 21:30:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220102
+  * Unspecified improvements to Mac OS codepage support and tests.
+
+-------------------------------------------------------------------
 Thu Nov 25 19:17:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Unconditionally run autoreconf because of patches
