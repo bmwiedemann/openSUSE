@@ -1,7 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@
 
 # NEP 29: numpy, scipy do not have a python36 flavor package in TW
 %define skip_python36 1
+# Py2 no longer supported by upstream
+%define skip_python2 1
 
 %define shliblal liblal20
 %define shliblalsupport liblalsupport14
@@ -34,7 +36,7 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal%{psuffix}
-Version:        7.1.2
+Version:        7.1.5
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
@@ -140,7 +142,7 @@ This package provides the octave module for lal.
 %autosetup -p1 -n lal-%{version}
 
 %build
-%{python_expand # Necessary to run %%configure with all python flavors
+%{python_expand # Necessary to run configure with all python flavors
 export PYTHON=$python
 mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build

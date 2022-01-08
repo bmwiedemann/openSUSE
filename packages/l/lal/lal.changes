@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  2 23:16:49 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.1.5:
+  * No release notes.
+- Disable python2 since this is no longer supported by upstream.
+
+-------------------------------------------------------------------
 Fri Sep 10 14:48:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix test flavour after renaming srcrpm in previous commit.
