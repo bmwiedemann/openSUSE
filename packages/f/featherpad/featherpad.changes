@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan  7 14:09:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.1:
+  * Fixed highlighting of Markdown's single-line codes with multiple
+    back-quotes.
+  * Prevented a rare hang-like behavior with some malformed
+    XML documents.
+  * Fixed the positions of instant tab tool-tips with Qt6.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:08:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * A problem is fixed in saving with UTF-16.
+  * A very rare stack overflow is prevented when matching brackets
+    inhuge files.
+  * The maximum number of recent files is increased to 50.
+  * Added Tcl syntax highlighting.
+  * Lots of keywords are added to syntax highlighting for
+    various programming languages.
+  * Fixes and improvements to XML and Lua syntax highlighting.
+  * Enabled experimental compilation against Qt6.
+    The default cmake compilation is still against Qt5.
+
+-------------------------------------------------------------------
 Fri Oct 15 10:59:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.1:

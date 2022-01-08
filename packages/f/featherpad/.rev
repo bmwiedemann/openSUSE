@@ -404,4 +404,29 @@
   * Better inertial scrolling with touchpad and sensitive devices.</comment>
     <requestid>925412</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>482176d19e1a10e01f92b78275003abc</srcmd5>
+    <version>1.1.1</version>
+    <time>1641680610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Fixed highlighting of Markdown's single-line codes with multiple
+    back-quotes.
+  * Prevented a rare hang-like behavior with some malformed
+    XML documents.
+  * Fixed the positions of instant tab tool-tips with Qt6.
+
+- Update to 1.1.0:
+  * A problem is fixed in saving with UTF-16.
+  * A very rare stack overflow is prevented when matching brackets
+    inhuge files.
+  * The maximum number of recent files is increased to 50.
+  * Added Tcl syntax highlighting.
+  * Lots of keywords are added to syntax highlighting for
+    various programming languages.
+  * Fixes and improvements to XML and Lua syntax highlighting.
+  * Enabled experimental compilation against Qt6.
+    The default cmake compilation is still against Qt5.</comment>
+    <requestid>944750</requestid>
+  </revision>
 </revisionlist>
