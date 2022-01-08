@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop-branding
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Callum Farmer <callumjfarmer13@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %define bversion %{nsuffix}
 %endif
 Name:           budgie-desktop-branding
-Version:        20211016.1
+Version:        20220107.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-only
@@ -48,6 +48,10 @@ Requires:       budgie-desktop
 Requires:       gtk3-metatheme-greybird-geeko
 # Best themes/icons for Budgie in openSUSE
 Requires:       wallpaper-branding-%{nsuffix}
+Requires:       adwaita-icon-theme
+Requires:       gio-branding-%{nsuffix}
+Requires:       hicolor-icon-theme
+Requires:       sound-theme-freedesktop
 Recommends:     MozillaFirefox
 # Recommend openSUSE favourited packages
 Recommends:     gnome-terminal
@@ -65,8 +69,10 @@ desktop environment.
 %if !0%{?is_backports}
 %package upstream
 Summary:        Upstream branding of the Budgie Desktop Environment
+Requires:       adwaita-icon-theme
 Requires:       budgie-desktop
 Requires:       gtk3-metatheme-greybird
+Requires:       hicolor-icon-theme
 Supplements:    (budgie-desktop and branding-upstream)
 Conflicts:      budgie-desktop-branding
 Provides:       budgie-desktop-branding = %{version}
@@ -94,7 +100,6 @@ true
 %if 0%{?sle_version} < 150300
 sed -e 's-5120x2880-1920x1200-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
-sed -e 's|SLE-default-static-lockscreen.xml|SLE-default-static.xml|g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
 %endif
 

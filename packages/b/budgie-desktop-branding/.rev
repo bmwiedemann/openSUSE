@@ -84,4 +84,14 @@
     <comment>update</comment>
     <requestid>925715</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cea87e92e8765f994a812bdadbe9dc32</srcmd5>
+    <version>20220107.1</version>
+    <time>1641680619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220107.1:
+  * add default cursor definition
+</comment>
+    <requestid>944793</requestid>
+  </revision>
 </revisionlist>
