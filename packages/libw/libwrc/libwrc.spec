@@ -1,7 +1,7 @@
 #
 # spec file for package libwrc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,36 +18,38 @@
 
 Name:           libwrc
 %define lname	libwrc1
-Version:        20210425
+Version:        20220104
 Release:        0
 Summary:        Library to support the Windows Resource Compiler format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libwrc
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libwrc/releases/download/%version/libwrc-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libwrc/releases/download/%version/libwrc-experimental-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcdata) >= 20210625
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
+BuildRequires:  pkgconfig(libclocale) >= 20210526
 BuildRequires:  pkgconfig(libcnotify) >= 20200913
 BuildRequires:  pkgconfig(libcpath) >= 20200623
 BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libcthreads) >= 20211115
 BuildRequires:  pkgconfig(libexe) >= 20210424
 BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libfwevt) >= 20210508
-BuildRequires:  pkgconfig(libfwnt) >= 20210421
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libfwevt) >= 20211219
+BuildRequires:  pkgconfig(libfwnt) >= 20210906
+BuildRequires:  pkgconfig(libuna) >= 20220102
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -90,7 +92,7 @@ Python 3 bindings for libwrc
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
