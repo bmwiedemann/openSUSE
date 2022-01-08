@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  7 21:37:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.0:
+  * See CHANGELOG.md for full changelog since 0.1.20
+  * Compatibility with updated jupyterlab and notebook
+- Test in multibuild
+- Use correct jinja2 test templates
+
+-------------------------------------------------------------------
 Mon Apr  6 08:27:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1.21:
