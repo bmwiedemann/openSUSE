@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-debreach
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-django-debreach
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Middleware to protect against the BREACH attack in Django
 License:        BSD-2-Clause
 URL:            https://github.com/lpomfrey/django-debreach
 Source:         https://files.pythonhosted.org/packages/source/d/django-debreach/django-debreach-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -34,22 +36,22 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Adds middleware and context processors to give some protection against the BREACH attack in Django
+Adds middleware and context processors to give some protection against the BREACH attack in Django.
 
 %prep
 %setup -q -n django-debreach-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONPATH=`pwd`
 export DJANGO_SETTINGS_MODULE='test_project.settings'
-%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test debreach --pythonpath=`pwd`
+%python_expand $python -m django test debreach -v2 --pythonpath=`pwd`
 
 %files %{python_files}
 %license LICENSE
