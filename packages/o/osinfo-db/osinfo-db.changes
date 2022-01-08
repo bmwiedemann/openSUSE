@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  5 07:43:06 MST 2022 - carnold@suse.com
+
+- Update to database version 20211216
+  osinfo-db-20211216.tar.xz
+- Drop add-missing-oracle-linux-versions.patch
+
+-------------------------------------------------------------------
 Tue Nov 23 10:11:44 MST 2021 - carnold@suse.com
 
 - jsc#SLE-17764 - Dev: Support Oracle Linux as a guest VM. See also
