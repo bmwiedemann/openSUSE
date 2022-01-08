@@ -1,7 +1,7 @@
 #
 # spec file for package python-gcsfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,46 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# the test suite moved to a docker simulator which we cannot run inside an obs environment
+%bcond_with fulltest
 %define         skip_python2 1
 %define         skip_python36 1
-%define         ghversiontag 2021.07.0
+%define         ghversiontag 2021.11.1
 Name:           python-gcsfs
-Version:        2021.7.0
+Version:        2021.11.1
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/dask/gcsfs
-# Use the GitHub tarball: It contains the VCR recordings (test data to mock network requests)
-Source:         https://github.com/dask/gcsfs/archive/refs/tags/%{ghversiontag}.tar.gz#/gcsfs-%{version}-gh.tar.gz
+URL:            https://github.com/fsspec/gcsfs
+# Use the GitHub tarball for test data
+Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{ghversiontag}.tar.gz#/gcsfs-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp
-Requires:       python-decorator
-Requires:       python-fsspec >= 2021.07.0
+Requires:       python-decorator > 4.1.2
+Requires:       python-fsspec == %{version}
 Requires:       python-google-auth >= 1.2
 Requires:       python-google-auth-oauthlib
+Requires:       python-google-cloud-storage
 Requires:       python-requests
 Recommends:     dask
 Recommends:     python-gcsfs-fuse = %{version}
 Suggests:       python-crcmod
 BuildArch:      noarch
 # SECTION test requirements
+# always import in order to detect dependency breakages at build time
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module fsspec >= 2021.07.0}
+BuildRequires:  %{python_module decorator > 4.1.2}
+BuildRequires:  %{python_module fsspec == %{version}}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
+BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module vcrpy}
 # /SECTION
 %python_subpackages
 
@@ -72,6 +76,7 @@ This package provides the optional FUSE interface.
 
 %prep
 %autosetup -p1 -n gcsfs-%{ghversiontag}
+sed -i 's/--color=yes//' setup.cfg
 
 %build
 %python_build
@@ -81,9 +86,12 @@ This package provides the optional FUSE interface.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export GCSFS_RECORD_MODE=none
 export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcsfs/tests/fake-secret.json
+%if %{with fulltest}
 %pytest -rfEs
+%else
+%pytest -rfEs -k test_checkers
+%endif
 
 %files %{python_files}
 %doc README.rst

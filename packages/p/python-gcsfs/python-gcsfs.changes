@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  6 20:44:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.11.1
+  * don't touch cache when doing find with a prefix (#437)
+- Release 2021.11.0
+  * move to fsspec org
+  * add support for google fixed_key_metadata (#429)
+  * deprecate content_encoding parameter of setxattrs method (#429)
+  * use emulator for resting instead of vcrpy (#424)
+- Release 2021.10.1
+  * url signing (#411)
+  * default callback (#422)
+- Release 2021.10.0
+  * min version for decorator
+  * default callback in get (#422)
+- Release 2021.09.0
+  * correctly recognise 404 (#419)
+  * fix for .details due to upstream (#417)
+  * callbacks in get/put (#416)
+  * "%" in paths (#415)
+- Release 2021.08.1
+  * don't retry 404s (#406)
+- Disable most of the testsuite because the setup moved from vcrpy
+  to a docker based simulator
+
+-------------------------------------------------------------------
 Wed Aug 18 10:29:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.07.0
