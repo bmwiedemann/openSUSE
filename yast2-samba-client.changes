@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:46:40 UTC 2021 - Noel Power <nopower@suse.com>
+
+- With latest versions of samba (>=4.15.0) calling 'net ads lookup'
+  with '-U%' fails; (boo#1193533).
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
