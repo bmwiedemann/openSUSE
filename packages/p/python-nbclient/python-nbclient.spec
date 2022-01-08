@@ -23,6 +23,11 @@
 %else
 %define psuffix %{nil}
 %bcond_with test
+%if 0%{suse_version} <= 1500 && 0%{?sle_version} <= 150300
+# The requirements are not available in the correct versions
+# remove this if you see the :flavor build succeeding
+ExclusiveArch: donotbuild
+%endif
 %endif
 
 %if 0%{?suse_version} > 1500
