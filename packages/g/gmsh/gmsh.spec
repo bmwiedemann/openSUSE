@@ -1,7 +1,7 @@
 #
 # spec file for package gmsh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define libver 4_8
+%define libver 4_9
 %bcond_with static_lib
 %bcond_with pdf_doc
 Name:           gmsh
-Version:        4.8.3
+Version:        4.9.3
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later
@@ -30,6 +30,8 @@ Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
 Patch2:         gmsh-3.0.5-add-shebang-to-onelab.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-mpeg_encode-Do-not-free-stack-allocated-frame.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel >= 3.4.0
 BuildRequires:  cmake >= 2.8
@@ -120,6 +122,7 @@ Requires:       julia
 Requires:       libgmsh%{libver}
 Suggests:       %{name}-demos
 Supplements:    packageand(julia:gmsh)
+BuildArch:      noarch
 
 %description  -n gmsh-julia
 Gmsh is a 3D finite element grid generator with a build-in CAD engine
@@ -133,6 +136,7 @@ Group:          Development/Libraries
 Requires:       libgmsh%{libver}
 Suggests:       %{name}-demos
 Supplements:    packageand(python3-base:gmsh)
+BuildArch:      noarch
 
 %description  -n python3-gmsh
 Gmsh is a 3D finite element grid generator with a build-in CAD engine
@@ -174,7 +178,7 @@ mv doc/texinfo/gmsh.info %{buildroot}%{_infodir}
 
 chmod 755 %{buildroot}/%{_bindir}/*
 
-%fdupes %{buildroot}/%{_docdir}/%{name}/{demos,tutorial}
+%fdupes %{buildroot}/%{_docdir}/%{name}/{examples,tutorials}
 
 # mv python API into python's search path, dito for julia
 mkdir -p %{buildroot}%{python3_sitelib}
@@ -223,7 +227,7 @@ mv %{buildroot}%{_libdir}/gmsh.jl %{buildroot}%{_datadir}/julia/gmsh.jl
 
 %files demos
 %dir %{_docdir}/%{name}
-%{_docdir}/%{name}/demos
-%{_docdir}/%{name}/tutorial
+%{_docdir}/%{name}/examples
+%{_docdir}/%{name}/tutorials
 
 %changelog

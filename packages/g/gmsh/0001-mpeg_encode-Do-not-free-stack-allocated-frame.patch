@@ -1,0 +1,28 @@
+From 57db3c77a4a52a219bffccf183659ec981d130f3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 8 Jan 2022 12:23:30 +0000
+Subject: [PATCH] mpeg_encode: Do not free() stack allocated frame
+
+Frame_Resize is only called from ReadFrame in readframe.cpp, mf/tempFrame
+being an object allocated on the stack.
+
+Found by GCC static analysis.
+---
+ contrib/mpeg_encode/frame.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/contrib/mpeg_encode/frame.cpp b/contrib/mpeg_encode/frame.cpp
+index 2ab775fcc..e80e2c6bd 100644
+--- a/contrib/mpeg_encode/frame.cpp
++++ b/contrib/mpeg_encode/frame.cpp
+@@ -124,7 +124,6 @@ else{
+   }
+ /* Free memory */
+ free(frameA);
+-free(mf);
+ }
+ /*========================================================
+ * Resize_Width
+-- 
+2.34.1
+
