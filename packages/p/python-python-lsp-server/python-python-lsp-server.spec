@@ -33,7 +33,10 @@ BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 1.7.0}
 BuildRequires:  %{python_module flake8 >= 4.0.0 with %python-flake8 < 4.1.0}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pycodestyle >= 2.8.0 with %python-pycodestyle < 2.9.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
@@ -44,9 +47,7 @@ BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 0.10.5}
 BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module yapf}
-BuildRequires:  %{python_module matplotlib  if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas  if (%python-base without python36-base)}
+
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-jedi >= 0.17.2
@@ -101,14 +102,17 @@ will be enabled:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%{python_expand # provide pylint command in correct flavor
+mkdir -p build/testbin
+ln -s %{_bindir}/pylint-%{$python_bin_suffix} build/testbin/pylint
+}
+export PATH="$PWD/build/testbin:$PATH"
 # Remove pytest addopts
 rm setup.cfg
 %if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
   # Test failure on Leap 15 due to mock hiccup
   donttest+=" or test_flake8_config_param or test_flake8_executable_param"
 %endif
-# don't test numpy on python36: NEP 29
-python36_donttest=" or test_numpy or test_pandas or test_matplotlib"
 %pytest -ra -k "not (dummy_k_expr_start ${donttest} ${$python_donttest})" -vv
 
 %post
