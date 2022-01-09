@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  9 15:24:11 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 0.8.0
+  * Added aiofiles.os.replace. #107
+  * Added aiofiles.os.{makedirs, removedirs}.
+  * Added aiofiles.os.path.{exists, isfile, isdir, getsize, getatime,
+    getctime, samefile, sameopenfile}. #63
+  * Added suffix, prefix, dir args to aiofiles.tempfile.TemporaryDirectory. #116
+
+-------------------------------------------------------------------
 Wed Jun 16 15:13:33 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.7.0
