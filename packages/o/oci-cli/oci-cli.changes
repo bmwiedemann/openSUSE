@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Wed Jan  5 15:46:29 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.4.1
+  * Bug when using ``oci os object put`` from STDIN. Please see `github issue
+    #490 <https://github.com/oracle/oci-cli/issues/490>`_ for more details.
+- from version 3.4.0
+  * Support for node replacement in the VMWare Solution service
+    * ``oci ocvs esxi-host create --failed-esxi-host-id`` 
+  * Support for ingestion of SQL stats metrics in the Operations Insights service
+    * ``oci opsi database-insights ingest-sql-stats --database-id``
+  * Support for AWR hub integration in the Operations Insights service
+    * ``oci opsi awr-hubs``
+    * ``oci opsi operations-insights-warehouse-users``
+    * ``oci opsi operations-insights-warehouses``
+  * Support for automatically generating logical entities from filename patterns and
+    relationships between business terms across glossaries in the Data Catalog service
+    * ``oci data-catalog pattern create --file-path-prefix``
+    * ``oci data-catalog pattern update --file-path-prefix``
+    * ``oci data-catalog pattern validate --file-path-prefix``
+    * ``oci data-catalog entity list-aggregated-physical --is-include-properties``
+    * ``oci data-catalog entity create --type-key``
+  * Support for automatic start/stop at scheduled times in the Database service
+    * Option ``--scheduled-operations`` for the following operations under ``oci db
+      autonomous-database``:  ``create, create-adb-cross-region-data-guard-details,
+      create-from-backup-id, create-from-backup-timestamp, create-from-clone,
+      create-refreshable-clone, update``
+  * Support for cloud VM cluster resources on autonomous dedicated databases in the Database service
+    * ``oci db autonomous-container-database create  --cloud-autonomous-vm-cluster-id
+      --peer-cloud-autonomous-vm-cluster-id``
+    * ``oci db autonomous-container-database list --cloud-autonomous-vm-cluster-id``
+    * ``oci db cloud-autonomous-vm-cluster``
+    * ``oci db cloud-vm-cluster create | update --ocpu-count``
+    * ``oci db vm-cluster create | udpate --data-storage-size-in-gbs --ocpu-count``
+  * Support for external Hive metastores in the Big Data service
+    * ``oci bds bds-metastore-configuration``
+  * [Breaking] Support for batch detection/inference in the AI Language service
+    * ``oci ai language batch*``
+  * Support for invoice operations in the Account Management service
+    * ``oci osp-gateway``
+  * Support for custom CA trust stores in the API Gateway service
+    * ``oci api-gateway gateway create --ca-bundles``
+    * ``oci api-gateway gateway update --ca-bundles`` 
+  * Support for generating scoped database token to be used to authorize
+    Identity Service users to OCI database services
+    * ``oci iam db-token get`` 
+  * Support for database passwords for users, for logging into database
+    accounts, in the Identity service
+    * ``oci iam user create-db-credential``
+    * ``oci iam user delete-db-credential``
+    * ``oci iam user list-db-credentials``
+    * ``oci iam user update --db-user-name``
+    * ``oci iam user update-user-capabilities --can-use-db-credentials``
+- from version 3.3.3
+  * Support for Resource Discovery and Monitoring service
+    * ``oci appmgmt-control``
+  * Support for finding and listing locations of all default OCI CLI installs.
+    * ``oci setup find-installations``
+  * Support for the following in the Log Analytics service
+    * Log analytics categories
+      * ``oci log-analytics category``
+    * List entity topology
+      * ``oci log-analytics entity-topology list``
+    * Verify Scheduled Task
+      * ``oci log-analytics scheduled-task verify``
+  * Support for the following in the Java Management service
+    * Retrieve the inventory of JMS resources in the specified compartment.
+      * ``oci jms fleet summarize-resource-inventory --compartment-id``
+    * List Java Runtime usage in a specified host filtered by query parameters.
+      * ``oci jms jre-usage list --compartment-id --host-id``
+  * Support for RAC Databases in GoldenGate Service
+    * ``oci goldengate database-registration create --session-mode``
+    * ``oci goldengate database-registration update --session-mode``
+  * New parameter for listing Java Runtime usage in a fleet.
+    * ``oci jms jre-usage summarize --jre-security-status``
+  * Bug while upgrading OCI CLI autocomplete
+    * ``oci setup autocomplete``
+- from version 3.3.2
+  * Support for custom IPSecConnection Tunnel Internet Key Exchange
+    phase 1 and phase 2 encryption algorithms in the Network service
+    * ``oci network allowed-ike-ip-sec-parameters get``
+    * ``oci network ip-sec-connection-tunnel-error-details get-ip-sec-connection-tunnel-error``
+    * ``oci network tunnel-route list-ip-sec-connection``
+    * ``oci network tunnel-security-association list-ip-sec-connection``
+  * Database Management service
+    * Support for listing and retrieving user details
+      * ``oci database-management managed-database list-users``
+      * ``oci database-management managed-database get-user``
+      * ``oci database-management managed-database list-roles``
+      * ``oci database-management managed-database list-system-privileges``
+      * ``oci database-management managed-database list-object-privileges``
+      * ``oci database-management managed-database list-consumer-group-privileges``
+      * ``oci database-management managed-database list-proxy-users``
+      * ``oci database-management managed-database list-proxied-for-users``
+      * ``oci database-management managed-database list-data-access-containers``
+    * Support for SQL Tuning Advisors
+      * ``oci database-management sql-tuning-task``
+  * Support for enabling and disabling Database Management features
+    in the Autonomous Database service
+    * ``oci db autonomous-database enable-autonomous-database-management``
+    * ``oci db autonomous-database disable-autonomous-database-management``
+  * Support for listing and retrieving deployment backups in the GoldenGate service
+    * ``oci goldengate deployment-backup list``
+    * ``oci goldengate deployment-backup get``
+  * Support for standard tags in the Identity service
+    * ``oci iam tag import-standard-tags``
+    * ``oci iam tag get-standard-tag-template``
+    * ``oci iam tag list-standard-tag-namespaces``
+  * Support for Solaris platform in the Management Agent service
+    * ``oci management-agent agent list --platform-type SOLARIS``
+    * ``oci management-agent plugin list --platform-type SOLARIS``
+  * Support for cross-compartment support in the Operations Insights service
+    * ``oci opsi <group> <command> --compartment-id-in-subtree``
+  * Support for pagination when listing work requests and new lifecycle
+    state `DELETED` in the APM service
+    * ``oci apm-control-plane work-request list-apm-domain --limit, --page``
+    * ``oci apm-control-plane apm-domain list --lifecycle-state DELETED``
+  * Support for fetching problems for `DELETED` targets in the Cloud Guard service
+    * ``oci cloud-guard problem update-bulk-problem-status --status DELETED``
+    * ``oci cloud-guard problem update-problem-status --status DELETED``
+    * ``oci cloud-guard problem list --status DELETED``
+  * Support for upgrading a platform instance and choosing version when
+    creating a platform instance in the Blockchain service
+    * ``oci blockchain blockchain-platform upgrade``
+    * ``oci blockchain blockchain-platform create --platform-version``
+  * Bug when using the install script with both --optional-features and
+    --oci-cli-version parameters. Please see `github issue #370
+    <https://github.com/oracle/oci-cli/issues/370>`_ for more details.
+
+-------------------------------------------------------------------
 Mon Nov 29 14:22:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.1
