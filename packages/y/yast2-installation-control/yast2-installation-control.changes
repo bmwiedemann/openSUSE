@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  4 11:47:25 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- LSM section: added "selectable" option to the section
+  (related to jsc#SLE-22069).
+- 4.4.8
+
+-------------------------------------------------------------------
 Mon Dec 27 17:51:45 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Added "lsm" section for selecting and configuring the desired
