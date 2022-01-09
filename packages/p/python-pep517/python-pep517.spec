@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,11 +90,10 @@ python3 -m pip wheel \
   --no-build-isolation \
   --progress-bar off \
   --verbose \
-  -w dist/ \
-  .
+  -w . .
 
 %install
-%pyproject_install dist/pep517-%{version}-py2.py3-none-any.whl
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>935041</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>9c04d378ba6822d8b0e541ee3d650862</srcmd5>
+    <version>0.12.0</version>
+    <time>1641764992</time>
+    <user>dimstar_suse</user>
+    <comment>- Make it work with old python-rpm-macros (forwarded request 945131 from bnavigator)</comment>
+    <requestid>945132</requestid>
+  </revision>
 </revisionlist>
