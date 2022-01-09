@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 09 01:58:26 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1641523544.d8e770957:
+  * apparmor: Allow access to subfolders under /tmp
+
+-------------------------------------------------------------------
 Wed Jan 05 17:53:34 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1641405207.b1b3cfd35:
