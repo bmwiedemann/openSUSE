@@ -1,7 +1,7 @@
 #
 # spec file for package amsynth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amsynth
-Version:        1.12.2
+Version:        1.12.4
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(dssi)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(liblo)
+BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
 
 %description

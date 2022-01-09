@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  8 16:09:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.12.4:
+  * Fixed lv2 .ttl syntax error - gh#amsynth/amsynth#199
+- Changes from version 1.12.3:
+  * Added PatriksBank04 and PatriksBank05 - gh#amsynth/amsynth#197
+  * Fixed click when playing a note for the first time -
+    gh#amsynth/amsynth#196
+  * Stopped vendoring lv2 headers; install lv2-dev (or similar)
+    via your package manager.
+- New BuildRequries: pkgconfig(lv2) required to build lv2 plugin.
+
+-------------------------------------------------------------------
 Fri Sep 10 09:11:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build man pages on %ix86: pandoc does not exist on
