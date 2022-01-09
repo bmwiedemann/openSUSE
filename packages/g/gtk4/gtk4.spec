@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,9 @@ Source:         https://download.gnome.org/sources/gtk/4.6/%{_name}-%{version}.t
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
+
+# PATCH-FIX-UPSTREAM  gtk4-make-our-stack-noexec.patch glgo#GNOME/gtk!4330 teohhanhui@gmail.com -- Make our stack noexec
+Patch0:         gtk4-make-our-stack-noexec.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas

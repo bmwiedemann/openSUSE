@@ -396,4 +396,12 @@
     <comment></comment>
     <requestid>943301</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>4d3530ae1bef23d1ae6a57aeab5857fe</srcmd5>
+    <version>4.6.0</version>
+    <time>1641764998</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gtk4-make-our-stack-noexec.patch: Make our stack noexec. (forwarded request 944686 from teohhanhui)</comment>
+    <requestid>944754</requestid>
+  </revision>
 </revisionlist>

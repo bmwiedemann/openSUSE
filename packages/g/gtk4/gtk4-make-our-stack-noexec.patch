@@ -1,0 +1,38 @@
+From 46509b6dd28c58ae8dd7e2c02a82a3ccb2751e88 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Tue, 4 Jan 2022 07:51:56 -0500
+Subject: [PATCH] Make our stack noexec
+
+The change to use ld and objcopy for resources
+had some side-effects: it leaked a few symbols
+and made our stack executable. We don't want that.
+
+Use -z nonexecstack and --strip-all to avoid this.
+
+Fixes: #4598
+---
+ gtk/meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gtk/meson.build b/gtk/meson.build
+index 91aefe1b17..6ce2c18320 100644
+--- a/gtk/meson.build
++++ b/gtk/meson.build
+@@ -927,6 +927,7 @@ if not meson.is_cross_build() and build_machine.system() == 'linux' and objcopy.
+       input : gtk_gresource,
+       output : 'gtkresources_blob.o',
+       command : [ld,
++                 '-z', 'noexecstack',
+                  '-r',
+                  '-b','binary',
+                  '@INPUT@',
+@@ -937,6 +938,7 @@ if not meson.is_cross_build() and build_machine.system() == 'linux' and objcopy.
+     input : gtk_resources_binary,
+     output : 'gtkresources_blob2.o',
+     command : [objcopy,
++                 '--strip-all',
+                  '--add-symbol','_gtk_resource_data=.data:0',
+                  '@INPUT@',
+                  '@OUTPUT@'])
+-- 
+GitLab
