@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  8 12:32:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.2:
+  + Fix error logging on empty server response.
+- Remove spurious-executable-perm in ChangeLog not needed, nor
+  wanted.
+
+-------------------------------------------------------------------
 Sun Sep 26 11:15:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.1:

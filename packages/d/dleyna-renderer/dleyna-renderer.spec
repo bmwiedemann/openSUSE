@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-renderer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dleyna-renderer
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Discover and manipulate Digital Media Renderers
 License:        LGPL-2.1-only
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(gssdp-1.2)
 BuildRequires:  pkgconfig(gupnp-1.2)
-BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.11.5
+BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.12.9
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
 Provides:       dbus(dleyna-renderer-service) = %{version}
@@ -63,6 +63,9 @@ Digital Media Renderers. An implementation of such a service for linux is also i
 
 %install
 %meson_install
+
+# Remove spurious-executable-perm not needed, nor wanted
+chmod -x ChangeLog
 
 %files
 %license COPYING
