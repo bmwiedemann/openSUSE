@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,16 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        22.2.1
+Version:        22.3.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
 URL:            https://github.com/zeromq/pyzmq
 Source:         https://files.pythonhosted.org/packages/source/p/pyzmq/pyzmq-%{version}.tar.gz
 Source1:        python-pyzmq-rpmlintrc
+# PATCH-FIX-UPSTREAM less-flaky.patch bsc#[0-9]+ mcepl@suse.com
+# Make test suite less flaky
+Patch0:         less-flaky.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +43,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  zeromq-devel
 # SECTION Test requirements
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
@@ -106,13 +111,15 @@ export LANG=en_US.UTF-8
 # This test wants to build a custom cython extension, but does
 # not have the source files installed into the buildroot
 SKIPPED_TESTS+=" or test_cython"
+# unreliable socket handling in obs environment
+SKIPPED_TESTS+=" or test_log"
 %if 0%{?suse_version} < 1550
 # tries to open a network connection on older distributions
 SKIPPED_TESTS+=" or test_null"
 %endif
 mkdir cleantest
 pushd cleantest
-%pytest_arch --pyargs zmq -k "not (${SKIPPED_TESTS:4})" --timeout 120 -ra
+%pytest_arch --pyargs zmq -k "not (${SKIPPED_TESTS:4})" --timeout 1200
 popd
 %endif
 

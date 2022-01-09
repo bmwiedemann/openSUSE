@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan  5 23:03:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip test_log due to flaky socket handling inside obs environments.
+- Add less-flaky.patch to increase flakiness of test_retry_poll
+  and test_timeout.
+
+-------------------------------------------------------------------
+Wed Oct 13 13:26:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 22.3.0:
+  - Fix strlcpy compilation issues on alpine, freebsd. Adds new
+    build-time dependency on packaging.
+  - In event-loop integration: warn instead of raise when
+    triggering callback on a socket whose context has been
+    closed.
+  - Bundled libzmq in wheels backport a patch to avoid crashes
+    due to inappropriate closing of libsodium's random generator
+    when using CurveZMQ.
+  - New ResourceWarnings when contexts and sockets are closed by
+    garbage collection, which can be a source of hangs and leaks
+    (matches open files)
+
+-------------------------------------------------------------------
 Wed Aug 11 10:15:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 22.2.1

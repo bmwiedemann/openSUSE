@@ -1,0 +1,27 @@
+---
+ zmq/tests/test_poll.py        |    2 +-
+ zmq/tests/test_retry_eintr.py |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/zmq/tests/test_poll.py
++++ b/zmq/tests/test_poll.py
+@@ -192,7 +192,7 @@ class TestSelect(PollZMQTestCase):
+         self.assertTrue(s1 not in rlist)
+         self.assertTrue(s2 not in rlist)
+ 
+-    @mark.flaky(reruns=3)
++    @mark.flaky()
+     def test_timeout(self):
+         """make sure select timeout has the right units (seconds)."""
+         s1, s2 = self.create_bound_pair(zmq.PAIR, zmq.PAIR)
+--- a/zmq/tests/test_retry_eintr.py
++++ b/zmq/tests/test_retry_eintr.py
+@@ -60,7 +60,7 @@ class TestEINTRSysCall(BaseZMQTestCase):
+         self.assertRaises(zmq.Again, push.send, b('buf'))
+         assert self.timer_fired
+ 
+-    @mark.flaky(reruns=3)
++    @mark.flaky()
+     def test_retry_poll(self):
+         x, y = self.create_bound_pair()
+         poller = zmq.Poller()

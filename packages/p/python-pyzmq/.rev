@@ -407,4 +407,27 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
     <comment></comment>
     <requestid>911433</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e67342ddf89e2535616717a928b06bc2</srcmd5>
+    <version>22.3.0</version>
+    <time>1641764989</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_log due to flaky socket handling inside obs environments.
+- Add less-flaky.patch to increase flakiness of test_retry_poll
+  and test_timeout.
+- Update to 22.3.0:
+  - Fix strlcpy compilation issues on alpine, freebsd. Adds new
+    build-time dependency on packaging.
+  - In event-loop integration: warn instead of raise when
+    triggering callback on a socket whose context has been
+    closed.
+  - Bundled libzmq in wheels backport a patch to avoid crashes
+    due to inappropriate closing of libsodium's random generator
+    when using CurveZMQ.
+  - New ResourceWarnings when contexts and sockets are closed by
+    garbage collection, which can be a source of hangs and leaks
+    (matches open files)
+</comment>
+    <requestid>944927</requestid>
+  </revision>
 </revisionlist>
