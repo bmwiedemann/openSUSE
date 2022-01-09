@@ -1,7 +1,7 @@
 #
 # spec file for package libcsplit
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcsplit
 %define lname	libcsplit1
-%define timestamp 20200703
-Version:        0~%timestamp
+Version:        20220109
 Release:        0
-Summary:        Library for cross-platform C split string functions
-License:        LGPL-3.0+
+Summary:        Library for C split string functions
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libcsplit/wiki
-Source:         https://github.com/libyal/libcsplit/releases/download/%timestamp/%{name}-beta-%timestamp.tar.gz
-#BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20130904
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/libyal/libcsplit
+Source:         https://github.com/libyal/libcsplit/releases/download/%version/libcsplit-beta-%version.tar.gz
+Source2:        https://github.com/libyal/libcsplit/releases/download/%version/libcsplit-beta-%version.tar.gz.asc
+Source9:        %name.keyring
+Patch1:         system-libs.patch
+BuildRequires:  c_compiler
+BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libcerror) >= 20201121
 
 %description
-A library for cross-platform C split string functions.
+A library for C split string functions.
 
 This package is part of the libyal library collection and is used by other libraries in the collection
 
 %package -n %lname
-Summary:        Library for cross-platform C split string functions
+Summary:        Library for C split string functions
 Group:          System/Libraries
 
 %description -n %lname
-Library for cross-platform C split string functions.
+Library for C split string functions.
 
 Part of the libyal family of libraries.
 
@@ -53,25 +57,26 @@ Also see:
     libcnotify; notification functions
     libcfile; file functions
     libcpath; path functions
-    libcthreads; threads functions 
+    libcthreads; threads functions
 
 %package devel
-Summary:        Development files for libcsplit, a cross-platform C split string library
+Summary:        Development files for libcsplit, a C split string library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %{version}
 
 %description devel
-A library for cross-platform C split string functions.
+A library for C split string functions.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libcsplit.
 
 %prep
-%setup -qn libcsplit-%timestamp
+%autosetup -p1
 
 %build
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -81,14 +86,10 @@ rm -f "%{buildroot}/%{_libdir}"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_libdir}/libcsplit.so.1*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
 %license COPYING*
 %{_includedir}/libcsplit*
 %{_libdir}/libcsplit.so
