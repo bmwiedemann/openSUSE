@@ -2113,4 +2113,12 @@ Recommended for 12.3</comment>
     <comment></comment>
     <requestid>936209</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>a728be4002c12f298ef218304af1643a</srcmd5>
+    <version>3.42.3</version>
+    <time>1641765005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944804</requestid>
+  </revision>
 </revisionlist>
