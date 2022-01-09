@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan  8 10:21:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- rename n_no-sse2-on-ix86.patch to
+  n_no-sse2-on-ix86-except-for-intel-drivers.patch
+  * no longer disable sse2 support for intel drivers, since this
+    breaks build, which is probably unresolvable (boo1190409)
+
+-------------------------------------------------------------------
+Thu Jan  6 16:34:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_no-sse2-on-ix86.patch
+  * disabled sse2 support on %ix86 (boo#1190409)
+
+-------------------------------------------------------------------
 Fri Dec 31 12:42:24 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.3.3

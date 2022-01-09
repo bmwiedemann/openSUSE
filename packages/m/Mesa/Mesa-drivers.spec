@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-drivers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,7 @@ Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
 Patch300:       n_buildfix-21.3.0.patch
+Patch400:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -770,6 +771,9 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch100 -p1
 %patch200 -p1
 %patch300 -p1
+%ifarch %{ix86}
+%patch400 -p1
+%endif
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

@@ -4673,4 +4673,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>943627</requestid>
   </revision>
+  <revision rev="425" vrev="297">
+    <srcmd5>82176ff7c890d167c70c7983b72ad6c4</srcmd5>
+    <version>unknown</version>
+    <time>1641765007</time>
+    <user>dimstar_suse</user>
+    <comment>- rename n_no-sse2-on-ix86.patch to
+  n_no-sse2-on-ix86-except-for-intel-drivers.patch
+  * no longer disable sse2 support for intel drivers, since this
+    breaks build, which is probably unresolvable (boo1190409)
+
+- n_no-sse2-on-ix86.patch
+  * disabled sse2 support on %ix86 (boo#1190409)</comment>
+    <requestid>944902</requestid>
+  </revision>
 </revisionlist>
