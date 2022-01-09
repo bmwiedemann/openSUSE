@@ -1,7 +1,7 @@
 #
 # spec file for package rakkess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rakkess
-Version:        0.4.7
+Version:        0.5.0
 Release:        0
 Summary:        Utility to show an access matrix for k8s server resources
 License:        Apache-2.0
@@ -47,7 +47,7 @@ export GOARCH=arm64
 %endif
 %ifarch s390x ppc64le
 export GOARCH=%{_arch}
-export CGO_ENABLED=0 
+export CGO_ENABLED=0
 %endif
 PLATFORMS=linux make dev VERSION=%{version}
 

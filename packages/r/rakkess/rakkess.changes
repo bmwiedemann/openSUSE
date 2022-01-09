@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 05 14:38:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.5.0:
+  * Include arm64-darwin assets in fileset for release
+  * Increase timeout for linter
+  * Create tag v0.5.0
+  * Fix some code findings
+  * Remove obsolete test case
+  * Move diff command behind a flag in root cmd
+  * Bump codecov to v2 (#151)
+  * Add new `diff` subcommand to compare access rules
+  * Rename some symbols
+  * Decouple rendering from result type(s)
+  * Add abstraction for the output matrix
+  * Move MatrixPrinter interface
+  * Simplify and remove unnecessary types
+  * Switch to builtin cobra completion implementation (#148)
+  * Update dependencies (#143)
+  * Switch from logrus to k8s.io/klog/v2 (#147)
+  * Upgrade to GitHub-native Dependabot (#144)
+  * Produce binary for darwin-arm64 (#142)
+
+-------------------------------------------------------------------
 Mon Mar 08 15:14:56 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.4.7:
