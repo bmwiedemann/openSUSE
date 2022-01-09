@@ -1,7 +1,7 @@
 #
 # spec file for package python-h2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-h2
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
-Patch0:         https://github.com/python-hyper/h2/pull/1248.patch#/h2-pr1248-disable-hypothesis-healthcheck.patch
 BuildRequires:  %{python_module hpack >= 2.3}
 BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.49}
@@ -39,12 +38,22 @@ BuildArch:      noarch
 
 %description
 Pure-Python implementation of a HTTP/2 protocol stack.
-It’s written from the ground up to be embeddable in whatever program
+It's written from the ground up to be embeddable in whatever program
 you choose to use, ensuring that you can speak HTTP/2 regardless of
 your programming paradigm.
 
 %prep
 %autosetup -p1 -n h2-%{version}
+
+echo "
+# increase test deadline for slow obs executions
+import hypothesis
+hypothesis.settings.register_profile(
+    'obs',
+    deadline=5000,
+    suppress_health_check=[hypothesis.HealthCheck.too_slow]
+)
+" >> test/conftest.py
 
 %build
 %python_build
@@ -54,16 +63,12 @@ your programming paradigm.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# flaky in OBS
-# - test_changing_max_frame_size
-# - test_range_of_acceptable_outputs
-# - test_connection_only_empty & test_delegated_eq (hypothesis on s390x)
-%pytest -k 'not (test_changing_max_frame_size or test_range_of_acceptable_outputs or test_connection_only_empty or test_delegated_eq)'
+%pytest --hypothesis-profile=obs
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/h2
-%{python_sitelib}/h2-%{version}-py*.egg-info
+%{python_sitelib}/h2-%{version}*-info
 
 %changelog
