@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,17 +27,18 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-flit-core%{psuffix}
-Version:        3.4.0
+Version:        3.6.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause
-URL:            https://github.com/takluyver/flit
-Source:         https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
+URL:            https://github.com/pypa/flit
+Source0:        https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
+Source1:        https://github.com/pypa/flit/raw/%{version}/flit_core/build_dists.py
 BuildRequires:  %{python_module base >= 3.6}
 %if %{with test}
+BuildRequires:  %{python_module flit-core = %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module tomli}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,6 +52,7 @@ Flit is a simple way to put Python packages and modules on PyPI.
 
 %prep
 %setup -q -n flit_core-%{version}
+cp %{SOURCE1} .
 
 %build
 # https://flit.readthedocs.io/en/latest/bootstrap.html
@@ -63,13 +65,19 @@ mkdir -p %{buildroot}%{$python_sitelib}
 unzip dist/flit_core-%{version}-py3-none-any.whl -d %{buildroot}%{$python_sitelib}
 rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 }
-%python_compileall
+%{python_expand # debundle after the bootstrap. See vendor/README
+sed -i 's/from .vendor import tomli/import tomli/'  %{buildroot}%{$python_sitelib}/flit_core/config.py
+rm -r %{buildroot}%{$python_sitelib}/flit_core/vendor
+}
+%{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-%pytest
+# make sure we do not test the sources but the debundled package
+rm flit_core/*.py pyproject.toml
+%pytest -rfEs
 %endif
 
 %if !%{with test}

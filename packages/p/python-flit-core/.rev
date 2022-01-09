@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>925548</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7e3443c7068bc92865b60873c1f13b91</srcmd5>
+    <version>3.6.0</version>
+    <time>1641764991</time>
+    <user>dimstar_suse</user>
+    <comment>- Back to bootstrap without pip (forwarded request 945128 from bnavigator)</comment>
+    <requestid>945129</requestid>
+  </revision>
 </revisionlist>
