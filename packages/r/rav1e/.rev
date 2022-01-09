@@ -128,4 +128,12 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>940924</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>75b2f680d83dfaee3ab725d32241c168</srcmd5>
+    <version>0.5.1+0</version>
+    <time>1641765001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944779</requestid>
+  </revision>
 </revisionlist>

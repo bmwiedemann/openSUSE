@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  7 00:58:39 UTC 2022 - William Brown <william.brown@suse.com>
+
+- resolve bsc#1194113 (CVE-2018-25023)
+- resolve bsc#1194119 (CVE-2021-45710)
+
+-------------------------------------------------------------------
 Tue Dec 14 19:16:10 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.5.1+0:
