@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  7 21:26:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 20220107
+  * Add jupyter-rpm-macros metapackage
+  * provide convenience macro %_jupyter_config for distinction
+    between _distconfdir (15.4 and TW) and _sysconfdir (15.3)
+
+-------------------------------------------------------------------
 Thu Jan  6 12:41:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - jupyter-jupyterlab-widgets is a real package (again).

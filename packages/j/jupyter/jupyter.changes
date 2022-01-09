@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  7 21:33:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip python2: There is no python2-qtconsole
+
+-------------------------------------------------------------------
 Sun Nov 14 18:14:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Require python(abi) in order to silence rpmlint 

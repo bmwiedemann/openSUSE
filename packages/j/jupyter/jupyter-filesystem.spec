@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-filesystem
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           jupyter-filesystem
 URL:            https://jupyter.org/
-Version:        20211114
+Version:        20220107
 Release:        0
 %define tar_ver 1.0.0
 Summary:        Common directories shared by Jupyter packages
@@ -52,7 +52,9 @@ jupyter_core.
 
 %define _jupyter_prefix          %{_datadir}/jupyter/
 %define _jupyter_kernel_dir      %{_jupyter_prefix}/kernels/
-%define _jupyter_confdir         %{_distconfdir}/jupyter/
+%define _jupyter_confdir         %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/jupyter/
+%define _jupyter_distconfig      %{?_distconfdir:1}%{nil}
+%define _jupyter_config          %{!?_distconfdir:%config}%{nil}
 
 %package     -n jupyter-notebook-filesystem
 Summary:        Common directories shared by Jupyter notebook packages
@@ -105,6 +107,16 @@ JupyterLab.
 %define _jupyter_lab_dir            %{_jupyter_prefix}/lab/
 %define _jupyter_labextensions_dir  %{_jupyter_lab_dir}/extensions/
 %define _jupyter_labextensions_dir3  %{_jupyter_prefix}/labextensions/
+
+%package     -n jupyter-rpm-macros
+Summary:        Macros for building Jupyter RPM packages
+Requires:       jupyter-jupyter_core-filesystem = %{version}
+Requires:       jupyter-jupyterlab-filesystem = %{version}
+Requires:       jupyter-notebook-filesystem = %{version}
+
+%description -n jupyter-rpm-macros
+This package provides macros for building packages that interface with
+Jupyter, Notebook or Jupyterlab.
 
 %prep
 %setup -q -n jupyter-%{tar_ver}
@@ -178,5 +190,8 @@ mkdir -p %{buildroot}%{_jupyter_labextensions_dir3}
 %dir %{_jupyter_lab_dir}
 %dir %{_jupyter_labextensions_dir}
 %dir %{_jupyter_labextensions_dir3}
+
+%files -n jupyter-rpm-macros
+%license LICENSE
 
 %changelog

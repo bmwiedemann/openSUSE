@@ -67,4 +67,17 @@
     <comment></comment>
     <requestid>944234</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d8cb6bfae9981c7dd12467ec0b83cb13</srcmd5>
+    <version>1.0.0</version>
+    <time>1641764991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20220107
+  * Add jupyter-rpm-macros metapackage
+  * provide convenience macro %_jupyter_config for distinction
+    between _distconfdir (15.4 and TW) and _sysconfdir (15.3)
+- Skip python2: There is no python2-qtconsole
+</comment>
+    <requestid>945107</requestid>
+  </revision>
 </revisionlist>

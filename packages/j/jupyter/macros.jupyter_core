@@ -1,8 +1,8 @@
 %_jupyter_prefix          %{_datadir}/jupyter/
 %_jupyter_kernel_dir      %{_jupyter_prefix}/kernels/
-%_jupyter_confdir         %{_distconfdir}/jupyter/
-
-%_jupyter_distconfig 1
+%_jupyter_confdir         %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/jupyter/
+%_jupyter_distconfig      %{?_distconfdir:1}%{nil}
+%_jupyter_config          %{!?_distconfdir:%config}%{nil}
 
 %jupyter_move_config \
   if [ "$(dirname %{_prefix}/etc/jupyter/)" != "$(dirname %{_jupyter_confdir})" ]; then \
