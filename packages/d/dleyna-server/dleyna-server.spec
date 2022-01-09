@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           dleyna-server
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A DLNA media server
 License:        LGPL-2.1-only
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.36
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
 BuildRequires:  pkgconfig(gssdp-1.2) >= 0.13.2
 BuildRequires:  pkgconfig(gupnp-1.2) >= 0.20.3
-BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.11.5
+BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.12.9
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
 BuildRequires:  pkgconfig(libxml-2.0)
