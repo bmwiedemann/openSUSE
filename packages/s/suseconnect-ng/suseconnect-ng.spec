@@ -1,7 +1,7 @@
 #
 # spec file for package suseconnect-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,11 @@
 %global provider_prefix github.com/SUSE/connect-ng
 %global import_path     %{provider_prefix}
 
+# set this to 1 to enable hwinfo test in %check
+%global test_hwinfo 0
+
 Name:           suseconnect-ng
-Version:        0.0.4~git0.64b80e9
+Version:        0.0.5~git0.bbb5544
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -32,6 +35,18 @@ BuildRequires:  go >= 1.16
 BuildRequires:  golang-packaging
 BuildRequires:  ruby-devel
 BuildRequires:  zypper
+%if 0%{?test_hwinfo}
+%global test_hwinfo_args -test-hwinfo
+# packages required only for hwinfo tests
+%ifarch %ix86 ia64 x86_64 %arm aarch64
+BuildRequires:  dmidecode
+%endif
+%ifarch s390x
+BuildRequires:  s390-tools
+%endif
+BuildRequires:  systemd
+%endif # test_hwinfo
+
 Obsoletes:      SUSEConnect < 0.3.99
 Provides:       SUSEConnect = 0.3.99
 Obsoletes:      zypper-migration-plugin < 0.99
@@ -52,12 +67,12 @@ Requires:       dmidecode
 %ifarch s390x
 Requires:       s390-tools
 %endif
-Requires:       systemd
 Requires:       zypper
 # lscpu is only used on those
 %ifarch x86_64 aarch64
 Requires:       util-linux
 %endif
+Recommends:     systemd
 
 %description
 This package provides a command line tool for connecting a
@@ -84,7 +99,6 @@ suseconnect-ng functions.
 Summary:        Ruby bindings for libsuseconnect library.
 Group:          System/Management
 Requires:       libsuseconnect
-Requires:       rubygem(ffi)
 
 %description -n suseconnect-ruby-bindings
 This package provides bindings needed to use libsuseconnect from Ruby scripts.
@@ -124,7 +138,7 @@ find %_builddir/..
 rm -rf %buildroot/usr/share/go
 
 %check
-%gotest -v %import_path/internal/connect
+%gotest -v %import_path/internal/connect %{?test_hwinfo_args}
 %gotest -v %import_path/suseconnect
 make -C %_builddir/go/src/%import_path gofmt
 

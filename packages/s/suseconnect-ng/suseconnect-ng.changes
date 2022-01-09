@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 07 13:45:50 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.5~git0.bbb5544:
+  * Switch from rubygem-ffi to fiddle
+  * Cleanup services during migration (bsc#1161891)
+  * Allow non-root users to see usage text
+  * Add option to not fail dup as much
+  * Move APIVersion declaration to file where it is used
+  * Add flag to enable/disable hwinfo test
+  * Add ARM cluster count to hwinfo and fix test
+  * Simplify parsing JSON error response
+  * Add --gpg-auto-import-keys for zypper ref
+  * Rename main.go to logging.go
+  * Fix typo
+  * Remove init() from the connect package
+  * Move CFG variable declaration to config.go
+  * Move AppName const to the file where it is used
+  * Use testing.Helper() in test helpers
+  * Add ppc64le support
+  * Disable UUID test
+  * Add test tools to BuildRequires
+  * Ignore UUID errors
+  * Run basic hwinfo sanity test on build service
+  * Update code comments to match shim behavior.
+  * Remove dependency on systemd
+  * Only run httputil DumpResponse when needed
+
+-------------------------------------------------------------------
 Wed Dec 01 14:31:18 UTC 2021 - jan.suse@zerebecki.de
 
 - Update to version 0.0.4~git0.64b80e9:
