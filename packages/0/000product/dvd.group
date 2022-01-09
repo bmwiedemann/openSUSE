@@ -5214,6 +5214,7 @@
     <package name="libconfig11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libcrc32c1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptmount0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptsetup12-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5413,8 +5414,15 @@
     <package name="python38-fusepy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-gcsfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-gcsfs-fuse" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-google-api-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-google-auth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-google-auth-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-google-cloud-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-google-cloud-storage" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-google-crc32c" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-google-resumable-media" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-googleapis-common-protos" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-grpcio" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-hexdump" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->

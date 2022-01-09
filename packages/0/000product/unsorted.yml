@@ -11,6 +11,7 @@ unsorted:
   - 4ti2-devel 
   - 6tunnel 
   - 7kaa 
+  - 7zip 
   - AppCSXCAD 
   - AppStream-devel 
   - AppStream-doc 
@@ -5827,6 +5828,8 @@ unsorted:
   - gnome-passwordsafe-lang 
   - gnome-patch-translation 
   - gnome-pie 
+  - gnome-podcasts 
+  - gnome-podcasts-lang 
   - gnome-pomodoro 
   - gnome-pomodoro-lang 
   - gnome-power-manager 
@@ -7735,7 +7738,6 @@ unsorted:
   - jupyter-matplotlib-jupyterlab 
   - jupyter-nbclassic 
   - jupyter-nbconvert 
-  - jupyter-nbconvert-doc 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
   - jupyter-nbdime-git 
@@ -8000,7 +8002,7 @@ unsorted:
   - kicad-doc-ru 
   - kicad-doc-zh 
   - kicad-footprints 
-  - kicad-lang: [x86_64] 
+  - kicad-lang 
   - kicad-lang-bg 
   - kicad-lang-ca 
   - kicad-lang-cs 
@@ -10161,7 +10163,7 @@ unsorted:
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
-  - libcrc32c1 
+  - libcrc32c1: [i586] 
   - libcreaterepo_c-devel 
   - libcreg-devel 
   - libcreg-tools 
@@ -13458,7 +13460,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_0_4 
+  - librssguard-4_1_1 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14064,11 +14066,8 @@ unsorted:
   - libtool-32bit: [x86_64] 
   - libtorch: [x86_64] 
   - libtorrent-devel 
-  - libtorrent-rasterbar-1-devel 
-  - libtorrent-rasterbar-1-doc 
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
-  - libtorrent-rasterbar10 
   - libtorrent-rasterbar2_0 
   - libtorrent21 
   - libtotem_pg5 
@@ -21420,7 +21419,6 @@ unsorted:
   - python3-libsoc 
   - python3-libstoragemgmt 
   - python3-libtorrent-rasterbar 
-  - python3-libtorrent-rasterbar-1 
   - python3-libvhdi 
   - python3-libvmdk 
   - python3-libvoikko 
@@ -21610,6 +21608,7 @@ unsorted:
   - python310-Delorean 
   - python310-Deprecated 
   - python310-Django 
+  - python310-Dumper 
   - python310-Durus 
   - python310-EasyProcess 
   - python310-EditorConfig 
@@ -21621,7 +21620,7 @@ unsorted:
   - python310-Flask-Babel 
   - python310-Flask-BabelEx 
   - python310-Flask-Bootstrap 
-  - python310-Flask-Caching: [i586] 
+  - python310-Flask-Caching 
   - python310-Flask-Compress 
   - python310-Flask-Cors 
   - python310-Flask-Gravatar 
@@ -21843,6 +21842,7 @@ unsorted:
   - python310-alembic 
   - python310-allpairspy 
   - python310-alsa 
+  - python310-altair 
   - python310-altair-widgets 
   - python310-altgraph 
   - python310-amqp 
@@ -21917,6 +21917,7 @@ unsorted:
   - python310-autodocsumm 
   - python310-autopage 
   - python310-autopep8 
+  - python310-autoray 
   - python310-autoupgrade-ng 
   - python310-avahi 
   - python310-avro 
@@ -22253,6 +22254,7 @@ unsorted:
   - python310-bottle 
   - python310-bowler 
   - python310-bpython 
+  - python310-bqplot 
   - python310-branca 
   - python310-breathe 
   - python310-brewer2mpl 
@@ -22296,6 +22298,8 @@ unsorted:
   - python310-certbot 
   - python310-certbot-apache 
   - python310-certbot-dns-cloudflare 
+  - python310-certbot-dns-digitalocean 
+  - python310-certbot-dns-google 
   - python310-certbot-dns-rfc2136 
   - python310-certbot-dns-route53 
   - python310-certbot-nginx 
@@ -22371,6 +22375,7 @@ unsorted:
   - python310-contextlib2 
   - python310-contextvars 
   - python310-control 
+  - python310-conu 
   - python310-convertdate 
   - python310-cookiecutter 
   - python310-cookies 
@@ -22450,6 +22455,7 @@ unsorted:
   - python310-debian 
   - python310-debugpy 
   - python310-decorator 
+  - python310-deepdiff 
   - python310-deepmerge 
   - python310-defcon 
   - python310-defusedxml 
@@ -22470,6 +22476,7 @@ unsorted:
   - python310-dicttoxml 
   - python310-diff-match-patch 
   - python310-diffimg 
+  - python310-digitalocean 
   - python310-dill 
   - python310-discid 
   - python310-discogs-client 
@@ -22495,6 +22502,7 @@ unsorted:
   - python310-django-contrib-comments 
   - python310-django-cors-headers 
   - python310-django-coverage-plugin 
+  - python310-django-debreach 
   - python310-django-debug-toolbar 
   - python310-django-dj-inmemorystorage 
   - python310-django-environ 
@@ -22534,6 +22542,7 @@ unsorted:
   - python310-django-settings-toml 
   - python310-django-silk 
   - python310-django-sortedm2m 
+  - python310-django-storages 
   - python310-django-timezone-field 
   - python310-django-treebeard 
   - python310-django-user-agents 
@@ -22622,6 +22631,7 @@ unsorted:
   - python310-exrex 
   - python310-extension-helpers 
   - python310-extras 
+  - python310-extratools 
   - python310-ez_setup 
   - python310-fabio: [x86_64] 
   - python310-factory_boy 
@@ -22667,6 +22677,7 @@ unsorted:
   - python310-flaky 
   - python310-flasgger 
   - python310-flask-jwt-extended 
+  - python310-flask-oidc 
   - python310-flatbuffers 
   - python310-flatdict 
   - python310-fleming 
@@ -22707,6 +22718,8 @@ unsorted:
   - python310-fuzzywuzzy 
   - python310-gTTS 
   - python310-gTTS-token 
+  - python310-gcsfs 
+  - python310-gcsfs-fuse 
   - python310-gear 
   - python310-ged4py 
   - python310-genfire 
@@ -22739,7 +22752,18 @@ unsorted:
   - python310-gobject-cairo 
   - python310-gobject-devel 
   - python310-goobook 
+  - python310-google-api-core 
+  - python310-google-api-python-client 
+  - python310-google-auth 
+  - python310-google-auth-httplib2 
+  - python310-google-auth-oauthlib 
+  - python310-google-cloud-core 
+  - python310-google-cloud-kms 
+  - python310-google-cloud-speech 
+  - python310-google-cloud-storage 
+  - python310-google-cloud-translate 
   - python310-google-crc32c 
+  - python310-google-resumable-media 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
   - python310-gpg 
@@ -22748,7 +22772,7 @@ unsorted:
   - python310-gprof2dot 
   - python310-gps3 
   - python310-gpxpy 
-  - python310-grab: [i586] 
+  - python310-grab 
   - python310-graphql-core 
   - python310-graphql-relay 
   - python310-graphviz 
@@ -22760,6 +22784,7 @@ unsorted:
   - python310-grpcio-tools 
   - python310-gscholar 
   - python310-gsm0338 
+  - python310-gspread 
   - python310-gssapi 
   - python310-gst 
   - python310-gsw 
@@ -22828,6 +22853,7 @@ unsorted:
   - python310-hypothesis 
   - python310-hypothesis-fspaths 
   - python310-hypothesmith 
+  - python310-i3ipc 
   - python310-icalendar 
   - python310-identify 
   - python310-idle 
@@ -22868,14 +22894,18 @@ unsorted:
   - python310-ipdb 
   - python310-iptables 
   - python310-ipy 
+  - python310-ipydatawidgets 
   - python310-ipyevents 
   - python310-ipykernel 
+  - python310-ipyleaflet 
   - python310-ipympl 
   - python310-ipyparallel 
+  - python310-ipyscales 
   - python310-ipysheet 
   - python310-ipython 
   - python310-ipython-iptest 
   - python310-ipython_genutils 
+  - python310-ipyvolume 
   - python310-ipywebrtc 
   - python310-ipywidgets 
   - python310-irc 
@@ -22932,6 +22962,7 @@ unsorted:
   - python310-jsonpatch 
   - python310-jsonpath-ng 
   - python310-jsonpath-rw 
+  - python310-jsonpickle 
   - python310-jsonpointer 
   - python310-jsonref 
   - python310-jsonrpclib-pelix 
@@ -22986,6 +23017,7 @@ unsorted:
   - python310-knack 
   - python310-kombu 
   - python310-korean-lunar-calendar 
+  - python310-kubernetes 
   - python310-kwant: [x86_64] 
   - python310-l20n 
   - python310-labels 
@@ -23169,6 +23201,7 @@ unsorted:
   - python310-nbdime 
   - python310-nbformat 
   - python310-nbindex-jupyter 
+  - python310-nbsmoke 
   - python310-nbsphinx 
   - python310-nbsphinx-link 
   - python310-nbval 
@@ -23219,6 +23252,9 @@ unsorted:
   - python310-nxapi-plumbing 
   - python310-o2sclpy 
   - python310-oauth2 
+  - python310-oauth2client 
+  - python310-oauth2client-flask 
+  - python310-oauth2client-gce 
   - python310-oauthlib 
   - python310-objgraph 
   - python310-oci-sdk 
@@ -23226,7 +23262,7 @@ unsorted:
   - python310-octave-kernel 
   - python310-odfpy 
   - python310-odorik 
-  - python310-ogr: [x86_64] 
+  - python310-ogr 
   - python310-oiffile 
   - python310-oktaloginwrapper 
   - python310-olefile 
@@ -23238,6 +23274,8 @@ unsorted:
   - python310-openapi-spec-validator 
   - python310-opencensus 
   - python310-opencensus-context 
+  - python310-opencensus-ext-azure 
+  - python310-opencensus-ext-threading 
   - python310-opengl 
   - python310-opengl-accelerate 
   - python310-openidc-client 
@@ -23286,6 +23324,7 @@ unsorted:
   - python310-parsimonious 
   - python310-parso 
   - python310-parsy 
+  - python310-partd 
   - python310-particle 
   - python310-parver 
   - python310-pass_python_keyring 
@@ -23476,6 +23515,7 @@ unsorted:
   - python310-pycxx-devel 
   - python310-pydantic 
   - python310-pydash 
+  - python310-pydata-google-auth 
   - python310-pydata-sphinx-theme 
   - python310-pydbus 
   - python310-pydenticon 
@@ -23591,7 +23631,7 @@ unsorted:
   - python310-pysendfile 
   - python310-pyserial 
   - python310-pysha3 
-  - python310-pyshark: [x86_64] 
+  - python310-pyshark 
   - python310-pyshould 
   - python310-pyshp 
   - python310-pysmb 
@@ -23650,6 +23690,7 @@ unsorted:
   - python310-pytest-isort 
   - python310-pytest-json-report 
   - python310-pytest-lazy-fixture 
+  - python310-pytest-listener 
   - python310-pytest-localserver 
   - python310-pytest-metadata 
   - python310-pytest-mock 
@@ -23662,6 +23703,7 @@ unsorted:
   - python310-pytest-plus 
   - python310-pytest-profiling 
   - python310-pytest-pycodestyle 
+  - python310-pytest-pyramid-server 
   - python310-pytest-pythonpath 
   - python310-pytest-qt 
   - python310-pytest-random-order 
@@ -23672,6 +23714,7 @@ unsorted:
   - python310-pytest-repeat 
   - python310-pytest-rerunfailures 
   - python310-pytest-responsemock 
+  - python310-pytest-server-fixtures 
   - python310-pytest-services 
   - python310-pytest-shutil 
   - python310-pytest-socket 
@@ -23766,6 +23809,7 @@ unsorted:
   - python310-pythondialog 
   - python310-pythonfinder 
   - python310-pythonwhois 
+  - python310-pythreejs 
   - python310-pytidylib 
   - python310-pytils 
   - python310-pytimeparse 
@@ -23876,7 +23920,7 @@ unsorted:
   - python310-requestsexceptions 
   - python310-requirements-detector 
   - python310-requirements-parser 
-  - python310-requre: [x86_64] 
+  - python310-requre 
   - python310-resolvelib 
   - python310-responses 
   - python310-restructuredtext_lint 
@@ -23950,7 +23994,7 @@ unsorted:
   - python310-scspell3k 
   - python310-sdnotify 
   - python310-securesystemslib 
-  - python310-selection: [i586] 
+  - python310-selection 
   - python310-selenium 
   - python310-semanage 
   - python310-semantic_version 
@@ -23980,6 +24024,7 @@ unsorted:
   - python310-sidecar 
   - python310-sievelib 
   - python310-sigal 
+  - python310-signedjson 
   - python310-simpleaudio 
   - python310-simplebayes 
   - python310-simpleeval 
@@ -24082,6 +24127,7 @@ unsorted:
   - python310-stomp.py 
   - python310-stomper 
   - python310-straight-plugin 
+  - python310-streamz 
   - python310-strict-rfc3339 
   - python310-strictyaml 
   - python310-stripe 
@@ -24098,6 +24144,7 @@ unsorted:
   - python310-svgwrite 
   - python310-svneverever 
   - python310-swapper 
+  - python310-swifter 
   - python310-sybil 
   - python310-sympy 
   - python310-system_hotkey 
@@ -24142,6 +24189,7 @@ unsorted:
   - python310-thespian 
   - python310-threadpoolctl 
   - python310-three-merge 
+  - python310-threevis 
   - python310-thrift 
   - python310-thriftpy2 
   - python310-tifffile 
@@ -24163,6 +24211,7 @@ unsorted:
   - python310-tomli-w 
   - python310-tomlkit 
   - python310-tools 
+  - python310-toolz 
   - python310-toposort 
   - python310-topy 
   - python310-torch: [x86_64] 
@@ -24180,6 +24229,7 @@ unsorted:
   - python310-traceback2 
   - python310-traitlets 
   - python310-traits 
+  - python310-traittypes 
   - python310-transaction 
   - python310-transip 
   - python310-translate-toolkit 
@@ -24252,6 +24302,7 @@ unsorted:
   - python310-vcver 
   - python310-vcversioner 
   - python310-vdirsyncer 
+  - python310-vega 
   - python310-vega_datasets 
   - python310-venusian 
   - python310-venusian-doc 
@@ -24292,14 +24343,14 @@ unsorted:
   - python310-watermark 
   - python310-wcwidth 
   - python310-weasyprint 
-  - python310-web.py: [x86_64] 
+  - python310-web.py 
   - python310-web_cache 
   - python310-webassets 
   - python310-webcolors 
   - python310-webencodings 
   - python310-weblate-language-data 
   - python310-weblate-schemas 
-  - python310-weblib: [i586] 
+  - python310-weblib 
   - python310-webruntime 
   - python310-websocket-client 
   - python310-websockets 
@@ -24329,6 +24380,7 @@ unsorted:
   - python310-xapian 
   - python310-xapian-haystack 
   - python310-xapp 
+  - python310-xarray 
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
@@ -24351,6 +24403,7 @@ unsorted:
   - python310-xsge_tiled 
   - python310-xvfbwrapper 
   - python310-xxhash 
+  - python310-yafe 
   - python310-yamldoc 
   - python310-yamllint 
   - python310-yamlloader 
@@ -24407,15 +24460,11 @@ unsorted:
   - python36-32bit: [x86_64] 
   - python36-APScheduler 
   - python36-Cheetah3 
-  - python36-Fabric: [x86_64] 
-  - python36-Flask-Caching: [x86_64] 
   - python36-Flask-Security-Too 
   - python36-LHAPDF 
-  - python36-Lektor: [i586] 
   - python36-PyCondor 
   - python36-PyECLib 
   - python36-PyRSS2Gen 
-  - python36-PyVirtualDisplay: [i586] 
   - python36-Shapely 
   - python36-ZEO 
   - python36-ZODB 
@@ -24444,7 +24493,6 @@ unsorted:
   - python36-blue 
   - python36-boto 
   - python36-bytecode 
-  - python36-certbot-dns-digitalocean 
   - python36-cfgdiff 
   - python36-chainmap 
   - python36-chart-studio 
@@ -24453,7 +24501,6 @@ unsorted:
   - python36-colorclass 
   - python36-combi 
   - python36-compileall2 
-  - python36-conu 
   - python36-coverage-config-reload-plugin 
   - python36-coverage-env-plugin 
   - python36-coveralls 
@@ -24467,7 +24514,6 @@ unsorted:
   - python36-dbm 
   - python36-demjson 
   - python36-devel 
-  - python36-digitalocean 
   - python36-dirtyjson 
   - python36-django-auth-ldap 
   - python36-django-avatar 
@@ -24477,7 +24523,6 @@ unsorted:
   - python36-django-compressor 
   - python36-django-countries 
   - python36-django-crispy-forms 
-  - python36-django-debreach 
   - python36-django-extra-views 
   - python36-django-filter 
   - python36-django-grappelli 
@@ -24494,7 +24539,6 @@ unsorted:
   - python36-django-rest-invitations 
   - python36-django-rest-knox 
   - python36-django-sekizai 
-  - python36-django-storages 
   - python36-django-tagging 
   - python36-django-tastypie 
   - python36-djet 
@@ -24504,45 +24548,26 @@ unsorted:
   - python36-envisage 
   - python36-ephem 
   - python36-expiringdict 
-  - python36-extratools 
   - python36-feedparser 
   - python36-ffmpeg-python 
-  - python36-flask-oidc 
   - python36-flask-restplus 
   - python36-flask-restx 
   - python36-flufl.lock 
   - python36-fysom 
   - python36-gast 
-  - python36-gevent: [x86_64] 
   - python36-github3.py 
   - python36-gmpy2 
-  - python36-google-api-core 
-  - python36-google-auth 
-  - python36-google-auth-httplib2 
-  - python36-google-auth-oauthlib 
-  - python36-google-cloud-core 
-  - python36-google-cloud-kms 
-  - python36-google-cloud-speech 
-  - python36-google-cloud-storage 
-  - python36-google-cloud-translate 
   - python36-google-pasta 
-  - python36-google-resumable-media 
-  - python36-grab: [x86_64] 
   - python36-graphene 
   - python36-graphene-django 
-  - python36-gspread 
   - python36-gwdatafind 
   - python36-hatch 
   - python36-hyper 
-  - python36-i3ipc 
   - python36-idle 
   - python36-injector 
-  - python36-ipyparallel: [x86_64] 
   - python36-jirafs 
   - python36-jsonlib-python3 
-  - python36-jsonpickle 
   - python36-junos-eznc 
-  - python36-kubernetes 
   - python36-labelImg 
   - python36-leather 
   - python36-librouteros 
@@ -24559,22 +24584,13 @@ unsorted:
   - python36-napalm-asa 
   - python36-napalm-digineo-procurve 
   - python36-napalm-procurve 
-  - python36-nbsmoke 
   - python36-ncclient 
   - python36-nornir 
   - python36-ntfy 
-  - python36-oauth2client 
-  - python36-oauth2client-flask 
-  - python36-oauth2client-gce 
-  - python36-ogr: [i586] 
   - python36-oic 
   - python36-oletools 
-  - python36-opencensus-ext-azure 
-  - python36-opencensus-ext-threading 
   - python36-opentelemetry-api 
   - python36-pampy 
-  - python36-parsimonious: [x86_64] 
-  - python36-partd 
   - python36-parted 
   - python36-pcodedmp 
   - python36-pep8-naming 
@@ -24588,27 +24604,21 @@ unsorted:
   - python36-podman 
   - python36-pony 
   - python36-pre-commit 
-  - python36-psutil: [x86_64] 
-  - python36-pulsectl: [i586] 
   - python36-pyclipper 
-  - python36-pydata-google-auth 
   - python36-pyeapi 
   - python36-pyface 
   - python36-pyls-spyder 
   - python36-pylsp-rope 
   - python36-pymisp 
   - python36-pypiserver 
-  - python36-pyshark 
+  - python36-pyshark: [x86_64] 
   - python36-pysvn 
   - python36-pytest-aiofiles 
   - python36-pytest-djangoapp 
   - python36-pytest-flakes 
   - python36-pytest-helpers-namespace 
-  - python36-pytest-listener 
   - python36-pytest-mypy 
   - python36-pytest-parallel 
-  - python36-pytest-pyramid-server 
-  - python36-pytest-server-fixtures 
   - python36-pytest-verbose-parametrize 
   - python36-python-crfsuite 
   - python36-python-crontab: [x86_64] 
@@ -24628,19 +24638,16 @@ unsorted:
   - python36-raven-aiohttp 
   - python36-redfish 
   - python36-requests-gssapi 
-  - python36-requre: [i586] 
   - python36-rich 
   - python36-rollbar 
   - python36-rpmlb 
   - python36-rss2email 
   - python36-s3fs 
-  - python36-selection: [x86_64] 
   - python36-selectors2 
   - python36-semver 
   - python36-setuptools-declarative-requirements 
   - python36-sgmllib3k 
   - python36-shortuuid 
-  - python36-signedjson 
   - python36-siosocks 
   - python36-sleekxmpp 
   - python36-softlayer 
@@ -24656,18 +24663,14 @@ unsorted:
   - python36-tinyrecord 
   - python36-tk 
   - python36-tools 
-  - python36-toolz 
   - python36-traitsui 
   - python36-transitions 
   - python36-twodict 
-  - python36-txZMQ: [i586] 
   - python36-ucsmsdk 
   - python36-uncompyle6 
   - python36-unicodedata2 
   - python36-varlink 
   - python36-watchgod: [i586] 
-  - python36-web.py: [i586] 
-  - python36-weblib 
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
@@ -24698,6 +24701,7 @@ unsorted:
   - python38-Delorean 
   - python38-Deprecated 
   - python38-Django 
+  - python38-Dumper 
   - python38-Durus 
   - python38-EasyProcess 
   - python38-EditorConfig 
@@ -25882,20 +25886,20 @@ unsorted:
   - python38-gns3fy 
   - python38-gobject-devel 
   - python38-goobook 
-  - python38-google-api-core 
+  - python38-google-api-core: [i586] 
   - python38-google-api-python-client 
   - python38-google-auth: [i586] 
   - python38-google-auth-httplib2 
   - python38-google-auth-oauthlib: [i586] 
-  - python38-google-cloud-core 
+  - python38-google-cloud-core: [i586] 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
-  - python38-google-cloud-storage 
+  - python38-google-cloud-storage: [i586] 
   - python38-google-cloud-translate 
-  - python38-google-crc32c 
+  - python38-google-crc32c: [i586] 
   - python38-google-pasta 
-  - python38-google-resumable-media 
-  - python38-googleapis-common-protos 
+  - python38-google-resumable-media: [i586] 
+  - python38-googleapis-common-protos: [i586] 
   - python38-googlemaps 
   - python38-gpg 
   - python38-gpgme 
@@ -25911,7 +25915,7 @@ unsorted:
   - python38-graphviz 
   - python38-greenlet-devel 
   - python38-grpc-google-iam-v1 
-  - python38-grpcio 
+  - python38-grpcio: [i586] 
   - python38-grpcio-gcp 
   - python38-grpcio-tools 
   - python38-gscholar 
@@ -27635,6 +27639,7 @@ unsorted:
   - python39-Delorean 
   - python39-Deprecated 
   - python39-Django 
+  - python39-Dumper 
   - python39-Durus 
   - python39-EasyProcess 
   - python39-EditorConfig 
