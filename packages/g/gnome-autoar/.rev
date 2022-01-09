@@ -114,4 +114,12 @@
   tests=true to meson, run tests during build. (forwarded request 928257 from iznogood)</comment>
     <requestid>929582</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c77dc96ab9439da7788b37735e9bd14b</srcmd5>
+    <version>0.4.2</version>
+    <time>1641765000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944774</requestid>
+  </revision>
 </revisionlist>

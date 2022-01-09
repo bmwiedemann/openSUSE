@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-autoar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-autoar
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later
@@ -131,10 +131,10 @@ This package brings files required to develop against gnome-autoar
 %files -n libgnome-autoar-0-0
 %license COPYING
 %{_libdir}/libgnome-autoar-0.so.0
-%{_libdir}/libgnome-autoar-0.so.0.1.1
+%{_libdir}/libgnome-autoar-0.so.0.1.2
 
 %files -n libgnome-autoar-gtk-0-0
 %{_libdir}/libgnome-autoar-gtk-0.so.0
-%{_libdir}/libgnome-autoar-gtk-0.so.0.1.1
+%{_libdir}/libgnome-autoar-gtk-0.so.0.1.2
 
 %changelog

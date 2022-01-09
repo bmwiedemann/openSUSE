@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  7 15:01:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.2:
+  + Fix extraction to root directory.
+  + Fix extraction of raw format archives.
+  + Do not leave read-only directory in the tree after running
+    tests.
+
+-------------------------------------------------------------------
 Sat Oct 30 10:12:46 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.1:
