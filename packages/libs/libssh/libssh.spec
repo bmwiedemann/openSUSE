@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,8 @@ Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
 Patch0:         0001-disable-timeout-test-on-slow-buildsystems.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Soften-behaviour-of-the-Compression-no-yes-option.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel

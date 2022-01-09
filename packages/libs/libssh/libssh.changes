@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 13:58:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to make the compression option more compatible (boo#1192731):
+  * 0001-Soften-behaviour-of-the-Compression-no-yes-option.patch
+
+-------------------------------------------------------------------
 Thu Aug 26 13:15:59 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.9.6 (bsc#1189608, CVE-2021-3634)

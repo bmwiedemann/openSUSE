@@ -1,0 +1,103 @@
+From 14991ad0718c137828e780308fc1f7027293ec15 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 23 Dec 2021 12:34:00 +0100
+Subject: [PATCH] Soften behaviour of the Compression=no/yes option
+
+Currently Compression=no (the default) force-disables zlib algos, while
+Compression=yes force-enables it. This means that mismatching options between
+client and server lead to connection failure. This can easily happen if the
+server has default settings but the client specifies Compression=yes.
+
+OpenSSH treats the option as a "prefer compression" setting:
+Compression=no  -> none,zlib@openssh.com,zlib (default)
+Compression=yes -> zlib@openssh.com,zlib,none
+
+This commit changes the libssh behaviour to the same as OpenSSH.
+
+Signed-off-by: Fabian Vogt <fabian@ritter-vogt.de>
+Reviewed-by: Andreas Schneider <asn@cryptomilk.org>
+Reviewed-by: Jakub Jelen <jjelen@redhat.com>
+---
+ src/kex.c                         |  6 +++---
+ src/options.c                     |  8 ++++----
+ tests/unittests/torture_config.c  | 10 ++++++----
+ tests/unittests/torture_options.c | 29 +++++++++++++++++++++++++----
+ 4 files changed, 38 insertions(+), 15 deletions(-)
+
+Index: libssh-0.9.6/src/kex.c
+===================================================================
+--- libssh-0.9.6.orig/src/kex.c
++++ libssh-0.9.6/src/kex.c
+@@ -94,7 +94,7 @@
+ #endif /* HAVE_LIBCRYPTO */
+ 
+ #ifdef WITH_ZLIB
+-#define ZLIB "none,zlib,zlib@openssh.com"
++#define ZLIB "none,zlib@openssh.com,zlib"
+ #else
+ #define ZLIB "none"
+ #endif
+@@ -218,8 +218,8 @@ static const char *default_methods[] = {
+   AES BLOWFISH DES,
+   "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1",
+   "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1",
+-  "none",
+-  "none",
++  ZLIB,
++  ZLIB,
+   "",
+   "",
+   NULL
+Index: libssh-0.9.6/src/options.c
+===================================================================
+--- libssh-0.9.6.orig/src/options.c
++++ libssh-0.9.6/src/options.c
+@@ -844,10 +844,10 @@ int ssh_options_set(ssh_session session,
+                 return -1;
+             } else {
+                 if (strcasecmp(value,"yes")==0){
+-                    if(ssh_options_set_algo(session,SSH_COMP_C_S,"zlib@openssh.com,zlib") < 0)
++                    if(ssh_options_set_algo(session,SSH_COMP_C_S,"zlib@openssh.com,zlib,none") < 0)
+                         return -1;
+                 } else if (strcasecmp(value,"no")==0){
+-                    if(ssh_options_set_algo(session,SSH_COMP_C_S,"none") < 0)
++                    if(ssh_options_set_algo(session,SSH_COMP_C_S,"none,zlib@openssh.com,zlib") < 0)
+                         return -1;
+                 } else {
+                     if (ssh_options_set_algo(session, SSH_COMP_C_S, v) < 0)
+@@ -862,10 +862,10 @@ int ssh_options_set(ssh_session session,
+                 return -1;
+             } else {
+                 if (strcasecmp(value,"yes")==0){
+-                    if(ssh_options_set_algo(session,SSH_COMP_S_C,"zlib@openssh.com,zlib") < 0)
++                    if(ssh_options_set_algo(session,SSH_COMP_S_C,"zlib@openssh.com,zlib,none") < 0)
+                         return -1;
+                 } else if (strcasecmp(value,"no")==0){
+-                    if(ssh_options_set_algo(session,SSH_COMP_S_C,"none") < 0)
++                    if(ssh_options_set_algo(session,SSH_COMP_S_C,"none,zlib@openssh.com,zlib") < 0)
+                         return -1;
+                 } else {
+                     if (ssh_options_set_algo(session, SSH_COMP_S_C, v) < 0)
+Index: libssh-0.9.6/tests/unittests/torture_config.c
+===================================================================
+--- libssh-0.9.6.orig/tests/unittests/torture_config.c
++++ libssh-0.9.6/tests/unittests/torture_config.c
+@@ -345,12 +345,14 @@ static void torture_config_new(void **st
+     assert_string_equal(session->opts.bindaddr, BIND_ADDRESS);
+ #ifdef WITH_ZLIB
+     assert_string_equal(session->opts.wanted_methods[SSH_COMP_C_S],
+-                        "zlib@openssh.com,zlib");
++                        "zlib@openssh.com,zlib,none");
+     assert_string_equal(session->opts.wanted_methods[SSH_COMP_S_C],
+-                        "zlib@openssh.com,zlib");
++                        "zlib@openssh.com,zlib,none");
+ #else
+-    assert_null(session->opts.wanted_methods[SSH_COMP_C_S]);
+-    assert_null(session->opts.wanted_methods[SSH_COMP_S_C]);
++    assert_string_equal(session->opts.wanted_methods[SSH_COMP_C_S],
++                        "none");
++    assert_string_equal(session->opts.wanted_methods[SSH_COMP_S_C],
++                        "none");
+ #endif /* WITH_ZLIB */
+     assert_int_equal(session->opts.StrictHostKeyChecking, 0);
+     assert_int_equal(session->opts.gss_delegate_creds, 1);
