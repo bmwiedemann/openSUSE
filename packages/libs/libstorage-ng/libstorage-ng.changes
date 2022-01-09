@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Sun Jan 9 15:09:21 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.4.72
+
+--------------------------------------------------------------------
+Fri Jan 7 16:03:07 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#855
+- made some memory handling exception safe
+- coding style
+- 4.4.71
+
+--------------------------------------------------------------------
 Wed Jan 5 11:30:11 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#854
