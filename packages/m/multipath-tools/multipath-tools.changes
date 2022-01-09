@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  7 19:51:14 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Version 0.8.8+13+suse.79c3556f
+  * code-wise identical to 0.8.8+38+suse.2bdd3a14
+    (previous version number was too high by mistake)
+
+-------------------------------------------------------------------
 Mon Dec 06 15:53:53 UTC 2021 - mwilck@suse.com
 
 - Update to 0.8.8+38+suse.2bdd3a14.obscpio

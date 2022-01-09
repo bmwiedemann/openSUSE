@@ -1555,4 +1555,19 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
     - add bounds and consistency checks in SCSI VPD parsing code</comment>
     <requestid>936067</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>a721a29de5c4b5bd46ff8fa6c9be6912</srcmd5>
+    <version>0.8.8+13+suse.79c3556f</version>
+    <time>1641765006</time>
+    <user>dimstar_suse</user>
+    <comment>This is to fix the wrong version number in the previous commit
+(+38), which had been created by a bogus merge made by the obs_scm service.
+
+- Version 0.8.8+13+suse.79c3556f
+  * code-wise identical to 0.8.8+38+suse.2bdd3a14
+    (previous version number was too high by mistake)
+
+see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comment>
+    <requestid>944828</requestid>
+  </revision>
 </revisionlist>
