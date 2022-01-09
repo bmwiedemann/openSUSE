@@ -1,7 +1,7 @@
 #
 # spec file for package libsigsegv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define somajor	2
 %define lname	  libsigsegv%{somajor}
 Name:           libsigsegv
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Library for Handling Page Faults in User Mode
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ Group:          System/Libraries
 URL:            https://www.gnu.org/software/libsigsegv/
 Source0:        https://ftp.gnu.org/pub/gnu/libsigsegv/libsigsegv-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/libsigsegv/libsigsegv-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source2:        http://savannah.gnu.org/people/viewgpg.php?user_id=1871#/%{name}.keyring
 Patch0:         libsigsegv-2.12-lto.dif
 BuildRequires:  pkgconfig
 
