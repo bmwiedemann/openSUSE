@@ -19,7 +19,7 @@
 Name:           liboqs
 Version:        0.7.1
 Release:        0
-Summary:        Open source C library for quantum-resistant cryptographic algorithms
+Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
 Group:          Productivity/Security
 Url:            https://github.com/open-quantum-safe/liboqs/
@@ -29,7 +29,6 @@ Patch0:		liboqs-fix-build.patch
 BuildRequires:	cmake
 BuildRequires:	libopenssl-devel
 BuildRequires:	doxygen
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 liboqs is an open source C library for quantum-resistant cryptographic
@@ -37,11 +36,11 @@ algorithms. Details about liboqs can be found in README.md. See in
 particular limitations on intended use.
 
 %package -n liboqs0
-Summary:        Open source C library for quantum-resistant cryptographic algorithms
+Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
 %description -n liboqs0
-liboqs is an open source C library for quantum-resistant cryptographic 
+liboqs is a C library for quantum-resistant cryptographic 
 algorithms. Details about liboqs can be found in README.md. See in
 particular limitations on intended use.
 
@@ -55,14 +54,12 @@ liboqs is an open source C library for quantum-resistant cryptographic
 algorithms. Details about liboqs can be found in README.md. See in
 particular limitations on intended use.
 
-
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir build
-export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -std=gnu11"
+export RPM_OPT_FLAGS="%optflags -std=gnu11"
 cd build
 cmake -DBUILD_SHARED_LIBS=ON ..
 %cmake_build 
@@ -77,17 +74,13 @@ fi
 rmdir %buildroot/usr/local/
 
 %post -n liboqs0 -p /sbin/ldconfig
-
-
 %postun -n liboqs0 -p /sbin/ldconfig
 
 %files -n liboqs0
-%defattr(-,root,root)
 %license LICENSE.txt 
 /%{_libdir}/liboqs.so.0*
 
 %files devel
-%defattr(-,root,root)
 %license LICENSE.txt 
 %dir %{_includedir}/oqs
 %{_includedir}/oqs/*
@@ -96,6 +89,5 @@ rmdir %buildroot/usr/local/
 %dir /%_libdir/cmake/liboqs/
 /%_libdir/cmake/liboqs/liboqsConfig-noconfig.cmake
 /%_libdir/cmake/liboqs/liboqsConfig.cmake
-
 
 %changelog

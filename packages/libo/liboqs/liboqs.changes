@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  2 18:26:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies from description. Remove old specfile
+  constructs.
+
+-------------------------------------------------------------------
 Fri Nov 12 13:08:09 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - initial import of the liboqs Open Quantum Safe library, version 0.7.1
