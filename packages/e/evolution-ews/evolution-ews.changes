@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  7 16:38:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.3:
+  + Misc: Hide some headers' value in EWS_DEBUG=2 output.
+  + Bugs fixed: glgo#GNOME/evolution-ews#174.
+
+-------------------------------------------------------------------
 Fri Oct 29 18:19:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.1:
   + ConfigLookup: Change values saved to the lookup result
   + Addressbook: Fix two memory leaks
-  + Bugs fixed: glgo#GNOME/evolution-ews3,
+  + Bugs fixed: glgo#GNOME/evolution-ews#3,
     glgo#GNOME/evolution-ews#164, glgo#GNOME/evolution-ews#165,
     glgo#GNOME/evolution-ews#166.
   + Updated translations.
