@@ -6,7 +6,7 @@
     <param name="filename">kured</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.6.1</param>
+    <param name="revision">1.9.1</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service name="recompress" mode="disabled">

@@ -1,4 +1,190 @@
 -------------------------------------------------------------------
+Fri Jan 07 11:32:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.1:
+  * prepare release 1.9.1
+  * small fix in deprecation log messages
+  * don't print env variable values in the logs (some are sensitive)
+  * prepare 1.9.0
+  * Update README.md
+  * Add chart configuration for json logging
+- rebase patch kured-imagePullPolicy.patch onto 1.9.1
+
+-------------------------------------------------------------------
+Fri Jan  7 11:23:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go 1.16 or higher
+
+-------------------------------------------------------------------
+Fri Jan 07 11:15:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.9.0:
+  * build(deps): bump github.com/spf13/viper from 1.10.0 to 1.10.1
+  * build(deps): bump github.com/spf13/cobra from 1.2.1 to 1.3.0
+  * build(deps): bump github.com/spf13/viper from 1.9.0 to 1.10.0
+  * build(deps): bump nick-invision/retry from 2.5.1 to 2.6.0
+  * build(deps): bump github.com/spf13/viper from 1.8.1 to 1.9.0
+  * update to test against k8s 1.2{1,2,3} kind images
+  * ensure go version for tests
+  * Update k8s dependencies to 0.22.4
+  * update image tag to 1.8.2
+  * use sprintf for value in log
+  * minor restructure and adding log for flag to env var binding
+  * dedup const block
+  * address review comments
+  * bind environment variables to cobra flags with viper
+  * Exclude terminated pods from the blocking mechanism
+
+-------------------------------------------------------------------
+Fri Jan 07 11:12:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.2:
+  * fix ghcr.io login
+  * Move to GHCR as a backup for Docker Hub
+  * build(deps): bump alpine from 3.14 to 3.15.0 in /cmd/kured
+  * follow up to #465
+  * update docker images too
+  * feat: update chart to 2.10.1 w/ 1.8.1 kured image
+  * build(deps): bump nick-invision/retry from 2.5.0 to 2.5.1
+  * Support json logformatter
+  * build(deps): bump github.com/prometheus/common from 0.32.0 to 0.32.1
+  * build(deps): bump github.com/prometheus/common from 0.31.1 to 0.32.0
+  * build(deps): bump github.com/containrrr/shoutrrr from 0.5.1 to 0.5.2
+  * feat: update to 1.8.0
+  * feat: add also missing prefer-no-schedule-taint
+  * feat: add reboot-sentinel-command to helm-chart
+  * fix: correct indent ref: #447
+  * docs: updated version table
+  * removed notifications/slack package
+  * Add reboot-delay CLI argument to docs, manifests and helm charts
+  * Add --alert-firing-only parameter to chart
+
+-------------------------------------------------------------------
+Fri Jan 07 11:10:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.0:
+  * Revert "[WIP] Add quay.io as second registry"
+  * Bump nick-invision/retry from 2.4.1 to 2.5.0
+  * doc: some clarification for release-docs
+  * Bump github.com/prometheus/common from 0.31.0 to 0.31.1
+  * Add jackfrancis to MAINTAINERS
+  * build: add quay.io as second registry
+  * update to go 1.16 (follow the load of k8s 1.21)
+  * build: added k8s@1.22 and dropped k8s@1.19
+  * feat: updated to k8s@1.21
+  * fix: don't use nil context in drain helper
+  * Bump github.com/prometheus/common from 0.30.0 to 0.31.0
+  * Bump guyarb/golang-test-annoations from 0.4.0 to 0.5.0
+  * Add force-reboot and drain timeouts to chart config and ds
+  * fix: do not use array for stale action (#433)
+  * Bump github.com/containrrr/shoutrrr from 0.5.0 to 0.5.1
+  * build: updated to alpine@3.14
+  * Bump github.com/containrrr/shoutrrr from 0.4.4 to 0.5.0
+  * Change default updateStrategy to RollingUpdate (#420)
+  * Add `reboot-delay` command line argument
+  * Add --alert-firing-only parameter to only consider firing alerts
+  * Bump github.com/prometheus/common from 0.29.0 to 0.30.0 (#414)
+  * Restructuring Prometheus client, added unit-tests to regex-queries active alerts (#386)
+  * Added possibility to mount volumes (#407)
+  * fix: common default reboot command for code and chart
+  * Bump actions/stale from 3.0.19 to 4
+  * link to versioned shoutrrr docs
+  * Bump github.com/spf13/cobra from 1.1.3 to 1.2.1
+  * Bump helm/kind-action from 1.1.0 to 1.2.0
+  * our 'good first issue' issue label has no '-', add 'keep'
+  * Added rebootCommand values (#394)
+  * Bump nick-invision/retry from 2.4.0 to 2.4.1
+  * Bump github.com/prometheus/common from 0.25.0 to 0.29.0
+  * fix slack deprecation notice
+  * Bump helm/chart-testing-action from 2.0.1 to 2.1.0
+  * sort parameters alphabetically
+  * Add documentation for lockReleaseDelay parameter
+  * Add lockReleaseDelay parameter to helm chart
+  * doc: update image-version
+  * update chart definition to include --notify-url
+
+-------------------------------------------------------------------
+Fri Jan  7 11:05:19 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rebase patch systemctl-path.patch to 1.7.1
+
+-------------------------------------------------------------------
+Fri Jan 07 10:40:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.7.0:
+  * doc: add compat-line for 1.7.0
+  * use latest kind
+  * Bounce kubernetes testing versions
+  * Bump github.com/prometheus/common from 0.24.0 to 0.25.0
+  * Bump actions/stale from 3.0.18 to 3.0.19
+  * update golang.org/x/crypto - break out of #349
+  * Bump github.com/prometheus/common from 0.23.0 to 0.24.0
+  * Clarify and simplify tests
+  * Bump github.com/prometheus/common from 0.18.0 to 0.23.0
+  * docu: update url for ms teams notifications, fixes #362
+  * Use stable kind-action
+  * Bump github.com/prometheus/client_golang from 1.8.0 to 1.10.0
+  * Bump github.com/containrrr/shoutrrr from 0.4.3 to 0.4.4
+  * Bump github.com/containrrr/shoutrrr from 0.4.2 to 0.4.3
+  * Update kured-ds.yaml
+  * Reduce false positives in chart testing
+  * Add prometheus export metrics functional testing
+  * Add parameter for delaying release of lock
+  * update to latest k8s deps of 1.20 branch
+  * Expose SkipWaitForDeleteTimeoutSeconds and explicitly return when cordonning fails
+  * Update the default drain timeout to be infinite
+  * Don't panic if the cordon fails and force-reboot is true
+  * Refactor force-drain to be a drain-timeout in general
+  * chore: retry daemonset get operations
+  * Add force-reboot after force-timeout duration has been exceeded
+  * Bump github.com/containrrr/shoutrrr from 0.4.1 to 0.4.2
+  * Update deps
+  * Add chart-testing target-branch
+  * udpate Dev docs to latest
+  * Update github actions
+  * Change default branch to 'main'.
+  * feat: use chart appVersion as default image-tag
+  * Fix invoke reboot for custom commands
+  * Implement universal notification mechanism
+  * Bump guyarb/golang-test-annoations from v0.3.0 to v0.4.0
+  * Add go tests
+  * Fix the Fatal calls using formatting
+  * Add flexible commands parameters
+  * Refactor reboot blocks
+  * Fix periodic jobs
+  * Update the deprecated DeleteLocalData
+  * Bouncing go.mod with latest kubernetes packages
+  * change comment accordingly
+  * extend close-duration for stale issues and prs
+  * update chart definition to include --annotate-nodes
+  * Adding a MAINTAINERS file
+  * update to alpine 3.13
+  * Bump github.com/sirupsen/logrus from 1.8.0 to 1.8.1
+  * add node annotations
+  * always drain before reboot
+  * Bump actions/stale from v3.0.17 to v3.0.18
+  * Bump actions/stale from v3.0.16 to v3.0.17
+  * Bump github.com/sirupsen/logrus from 1.7.0 to 1.8.0
+  * Bump github.com/spf13/cobra from 1.1.2 to 1.1.3
+  * Bump github.com/spf13/cobra from 1.1.1 to 1.1.2
+  * Point to CNCF Code of Conduct
+  * Bump actions/stale from v3.0.15 to v3.0.16
+  * add podLabels parameter
+  * Bump actions/stale from v3.0.14 to v3.0.15
+  * change taint config to be disabled by default
+  * Update helm chart README using Make
+  * Update helm chart
+  * remove taint in case the reboot is not needed anymore
+  * updated README
+  * cache taint state to avoid unnecessary API calls
+  * Allow to disable tainting during pending node reboot by setting the taint name to an empty string.
+  * fixed type & renamed variable
+  * taint node with PreferNoSchedule to prevent receiving (and double draining) additional pods from other rebooting nodes
+  * fixed call of log.Fatal instead of log.Fatalf
+  * avoid indentations to ease readability
+  * Expose the service name and maxUnavailable for rolling updates in the helm chart
+
+-------------------------------------------------------------------
 Tue Feb 02 12:16:48 UTC 2021 - kukuk@suse.com
 
 - Update to version 1.6.1:

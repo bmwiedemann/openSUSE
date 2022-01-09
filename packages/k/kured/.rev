@@ -220,4 +220,12 @@
   - Added support for time wrap in timewindow.Contains</comment>
     <requestid>868637</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a4577f1adee9deae02a84a831cd9868</srcmd5>
+    <version>1.9.1</version>
+    <time>1641764993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944738</requestid>
+  </revision>
 </revisionlist>

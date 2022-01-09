@@ -1,12 +1,26 @@
-diff -urN kured-1.4.0.old/cmd/kured/main.go kured-1.4.0/cmd/kured/main.go
---- kured-1.4.0.old/cmd/kured/main.go	2020-04-30 18:07:30.000000000 +0200
-+++ kured-1.4.0/cmd/kured/main.go	2020-05-17 14:13:01.956576943 +0200
-@@ -261,7 +261,7 @@
- 	}
+From af6c6e783403978273208a45c137c273935604fb Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Fri, 7 Jan 2022 11:57:28 +0100
+Subject: [PATCH] cmd/kured/main.go: Fix path to systemctl
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ cmd/kured/main.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmd/kured/main.go b/cmd/kured/main.go
+index 6f6cfeb..e6d3a2f 100644
+--- a/cmd/kured/main.go
++++ b/cmd/kured/main.go
+@@ -126,7 +126,7 @@ func main() {
+ 		"Taint name applied during pending node reboot (to prevent receiving additional pods from other rebooting nodes). Disabled by default. Set e.g. to \"weave.works/kured-node-reboot\" to enable tainting.")
+ 	rootCmd.PersistentFlags().StringVar(&rebootSentinelCommand, "reboot-sentinel-command", "",
+ 		"command for which a zero return code will trigger a reboot command")
+-	rootCmd.PersistentFlags().StringVar(&rebootCommand, "reboot-command", "/bin/systemctl reboot",
++	rootCmd.PersistentFlags().StringVar(&rebootCommand, "reboot-command", "/usr/bin/systemctl reboot",
+ 		"command to run when a reboot is required")
  
- 	// Relies on hostPID:true and privileged:true to enter host mount space
--	rebootCmd := newCommand("/usr/bin/nsenter", "-m/proc/1/ns/mnt", "/bin/systemctl", "reboot")
-+	rebootCmd := newCommand("/usr/bin/nsenter", "-m/proc/1/ns/mnt", "/usr/bin/systemctl", "reboot")
- 	if err := rebootCmd.Run(); err != nil {
- 		log.Fatalf("Error invoking reboot command: %v", err)
- 	}
+ 	rootCmd.PersistentFlags().StringVar(&slackHookURL, "slack-hook-url", "",
+-- 
+2.34.1
+

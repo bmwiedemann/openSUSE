@@ -1,7 +1,7 @@
 #
 # spec file for package kured
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # Project upstream commit.
 %define commit 685f328
 Name:           kured
-Version:        1.6.1
+Version:        1.9.1
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Patch:          systemctl-path.patch
 Patch1:         kured-imagePullPolicy.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) = 1.16
 ExcludeArch:    s390
 
 %description

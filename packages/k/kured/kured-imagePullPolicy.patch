@@ -1,8 +1,19 @@
-diff -urN kured-1.4.0.old/kured-ds.yaml kured-1.4.0/kured-ds.yaml
---- kured-1.4.0.old/kured-ds.yaml	2020-04-30 18:07:30.000000000 +0200
-+++ kured-1.4.0/kured-ds.yaml	2020-05-18 09:20:34.176054210 +0200
-@@ -32,7 +32,7 @@
-           image: docker.io/weaveworks/kured
+From 02dac25422b9b8f594dc4426bfaa8604f37ec74d Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Fri, 7 Jan 2022 13:40:30 +0100
+Subject: [PATCH] kured-ds.yaml: set imagePullPolicy to Always
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ kured-ds.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kured-ds.yaml b/kured-ds.yaml
+index 15869c4..b226865 100644
+--- a/kured-ds.yaml
++++ b/kured-ds.yaml
+@@ -32,7 +32,7 @@ spec:
+           image: docker.io/weaveworks/kured:1.9.1
                   # If you find yourself here wondering why there is no
                   # :latest tag on Docker Hub,see the FAQ in the README
 -          imagePullPolicy: IfNotPresent
@@ -10,3 +21,6 @@ diff -urN kured-1.4.0.old/kured-ds.yaml kured-1.4.0/kured-ds.yaml
            securityContext:
              privileged: true # Give permission to nsenter /proc/1/ns/mnt
            env:
+-- 
+2.34.1
+
