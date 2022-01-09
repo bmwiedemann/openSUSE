@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jan 05 20:10:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.18:
+  * Issue #1402 Sort functionality does not work properly on v0.25.16. With Feelings!
+
+-------------------------------------------------------------------
+Wed Jan 05 19:53:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.17:
+  * Issue #1402 Sort functionality does not work properly on v0.25.16
+  * Issue #1401 Nothin selected when last item deleted
+
+-------------------------------------------------------------------
+Wed Jan 05 19:48:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.16:
+  * Issue #1398 Pod logs containing brackets not in k9s logs output
+  * Issue #1397 Regression: k9s no longer starts in current context namespace since v0.25.12
+  * Issue #1358 Namespaces list is empty
+  * Issue #956 Feature request : Default column sort (by resource view)
+
+-------------------------------------------------------------------
+Wed Jan 05 19:44:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.15:
+  * Issue #1384 Leaving Logs View Causes Crash: "panic: send on closed channel" - with feelings!
+-------------------------------------------------------------------
+Wed Jan 05 19:41:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.14:
+  * Issue #1384 Leaving Logs View Causes Crash: "panic: send on closed channel"
+
+-------------------------------------------------------------------
+Wed Jan 05 19:38:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.13:
+  * Issue #1382 Watcher failed for screendumps
+  * Issue #1381 --request-timeout affects logs streaming
+  * Issue #1380 :pulse returning error: expecting a TableRow but got *v1.Table
+  * Issue #1376 Events are not sorted correctly by dates - with feelings...
+  * Issue #1291 K9s do not show any error when is unable to get logs, just do not show anything.
+
+-------------------------------------------------------------------
+Wed Jan 05 19:33:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.12:
+  * Issue #1378 Regression: Namespace filters are no longer applied on startup
+  * Issue #1376 Events not sorted correctly by dates
+  * Issue #1375 Unable to show port forwards
+  * Issue #1374 --all-namespaces does not work v0.25.10
+  * Issue #1373 change namespace not possible
+
+-------------------------------------------------------------------
+Wed Jan 05 19:29:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.10:
+  * update rev
+  * must get moore sleep!
+  * k9s: release v0.25.9 (#1364)
+  * Add customizable dump directory property (#1321)
+  * Add flux trace shortcut to flux plugin (#1356)
+  * Add rose-pine skin (#1363)
+
+-------------------------------------------------------------------
 Sun Dec 05 10:43:07 UTC 2021 - dmueller@suse.com
 
 - Update to version 0.25.8:
