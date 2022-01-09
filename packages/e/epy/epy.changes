@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Jan 08 23:30:07 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2022.1.8+git.1641653565.c1f9b4e:
+  * Update README.md: added AUR installation
+  * Delete .mkpkg script
+
+-------------------------------------------------------------------
+Sat Jan 08 07:31:46 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2021.10.23+git.1641627031.7bd659d:
+  * .mkpkg -> Makefile
+  * Patch PKGBUILD
+
+-------------------------------------------------------------------
+Sat Jan 08 07:19:58 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2021.10.23+git.1641622438.69c2f80:
+  * Hotfix: curses has no attrib window in termux
+  * Added default color config
+  * Added PKGBUILD for Arch
+  * Adjust setup.py and pyproject.toml to include epy_extras
+  * Cleanup on failed ebook initialization
+  * Initial prepackaging kindleunpack with epy
+  * Use setuptools as setup backend instead of poetry
+  * Update version and README.md
+  * Change history matching key from filepath to title author
+  * Initial library implementation
+  * Always calculate reading_progress whenever possible, just not always shown
+  * Refactor attribute name
+  * Fixed book metadata
+  * Add (sup|sub)script lookup table
+  * Implement HTMLtoLines._group_spans_by_row()
+  * Hotfix: adjust starting_line for inline style
+  * Add text mark/span grouper method
+  * Initial refactor: inline styling
+  * Add ipdb dev dependency
+  * Hotfix: Skip adding toc entry for empty label name
+  * Update development env using poetry
+  * Fix path resolver for Mobi.get_img_bytstr()
+  * Add tests
+  * Add requirements-dev.txt
+  * Add support for Epub==v1.0 and simplify path resolver
+  * Remove bad try-except block
+  * Refactor Epub and Mobi object
+  * Hotfix: Update docstr
+  * Fixed plethora type issues
+  * Added SpeakerBaseModel as TTS engine wrapper
+  * Use mimic instead of pico2wave. (#44)
+  * Update README.md: remove AUR installation instruction
+  * Update .gitignore
+  * Fixed unavailable curses.A_ITALIC and update version
+  * Update LICENSE
+  * Allow setting language for TTS. (#43)
+- Remove upstreamed mimic.patch.
+
+-------------------------------------------------------------------
 Mon Dec 20 19:39:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Replace tts_lang.patch with mimic.patch, switching the TTS engine to

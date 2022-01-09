@@ -1,7 +1,7 @@
 #
 # spec file for package epy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           epy
-Version:        2021.10.23+git.1636702550.2ab1584
+Version:        2022.1.8+git.1641653565.c1f9b4e
 Release:        0
 Summary:        CLI ebook reader
 License:        GPL-3.0-only
 URL:            https://github.com/wustho/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mimic.patch gh#wustho/epy#42 mcepl@suse.com
-# Use mimic instead of non-free svox.
-Patch0:         mimic.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-mobi
 BuildRequires:  python3-setuptools
@@ -54,6 +51,9 @@ CLI Ebook reader. Fork of epr with these extra features:
 
 %prep
 %autosetup -p1 -n epy-%{version}
+
+# All those shebangs are just harmful
+find . -name \*.py -exec sed -i "1{/#!\/usr\/bin\/env python/d}" '{}' \;
 
 %build
 python3 setup.py build

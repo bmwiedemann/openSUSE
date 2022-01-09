@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionprefix">2021.10.23+git</param>
+    <param name="versionprefix">2022.1.8+git</param>
     <param name="url">https://github.com/wustho/epy.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git*</param>

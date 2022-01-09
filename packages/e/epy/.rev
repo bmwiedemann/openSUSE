@@ -37,4 +37,41 @@
 </comment>
     <requestid>941693</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e86ed1f923602c2f001aa3ccda2087d</srcmd5>
+    <version>2022.1.8+git.1641653565.c1f9b4e</version>
+    <time>1641765010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022.1.8+git.1641653565.c1f9b4e:
+  * Update README.md: added AUR installation
+  * Delete .mkpkg script
+
+- Update to version 2021.10.23+git.1641627031.7bd659d:
+  * .mkpkg -&gt; Makefile
+  * Patch PKGBUILD
+
+- Update to version 2021.10.23+git.1641622438.69c2f80:
+  * Hotfix: curses has no attrib window in termux
+  * Added default color config
+  * Added PKGBUILD for Arch
+  * Adjust setup.py and pyproject.toml to include epy_extras
+  * Cleanup on failed ebook initialization
+  * Initial prepackaging kindleunpack with epy
+  * Use setuptools as setup backend instead of poetry
+  * Update version and README.md
+  * Change history matching key from filepath to title author
+  * Initial library implementation
+  * Always calculate reading_progress whenever possible, just not always shown
+  * Refactor attribute name
+  * Fixed book metadata
+  * Add (sup|sub)script lookup table
+  * Implement HTMLtoLines._group_spans_by_row()
+  * Hotfix: adjust starting_line for inline style
+  * Add text mark/span grouper method
+  * Initial refactor: inline styling
+  * Add ipdb dev dependency
+  * Hotfix: Skip adding toc entry for empty label name
+  * Update development env using poetry</comment>
+    <requestid>944964</requestid>
+  </revision>
 </revisionlist>
