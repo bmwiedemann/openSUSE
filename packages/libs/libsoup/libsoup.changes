@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  7 14:57:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.4:
+  + Fix HTTP/2 not properly handling socket timeouts.
+  + Improvements to test reliablity.
+  + Fix cross-compiling to Windows.
+  + Fix tests with development glib-networking.
+  + Expose soup_uri_copy() to Vala.
+
+-------------------------------------------------------------------
 Wed Nov 24 20:07:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.3:

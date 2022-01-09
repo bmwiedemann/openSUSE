@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
