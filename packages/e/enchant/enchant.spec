@@ -1,7 +1,7 @@
 #
 # spec file for package enchant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ This package provides data/configuration files for libenchant.
 
 %package -n enchant-2-backend-aspell
 Summary:        Aspell backend for the Enchant spell checking library
-Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libaspell.so))
+Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libaspell.so)))
 Provides:       enchant-2-backend
 
 %description -n enchant-2-backend-aspell
@@ -76,7 +76,7 @@ libraries.
 
 %package -n enchant-2-backend-hunspell
 Summary:        Hunspell backend for the Enchant spell checking library
-Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libhunspell.so))
+Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libhunspell.so)))
 Provides:       enchant-2-backend
 
 %description -n enchant-2-backend-hunspell
@@ -86,7 +86,7 @@ libraries.
 
 %package -n enchant-2-backend-nuspell
 Summary:        Nuspell backend for the Enchant spell checking library
-Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libnuspell.so))
+Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libnuspell.so)))
 Provides:       enchant-2-backend
 
 %description -n enchant-2-backend-nuspell
@@ -96,7 +96,7 @@ libraries.
 
 %package -n enchant-2-backend-voikko
 Summary:        Voikko backend for the Enchant spell checking library
-Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libvoikko.so))
+Supplements:    packageand(libenchant-2-2:%(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libvoikko.so)))
 Provides:       enchant-2-backend
 Provides:       locale(libenchant-2-2:fi)
 

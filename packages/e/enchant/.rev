@@ -342,4 +342,12 @@
   upstream.</comment>
     <requestid>879962</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c4237057495b202861785bce2d251f2e</srcmd5>
+    <version>2.2.15</version>
+    <time>1641764997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944751</requestid>
+  </revision>
 </revisionlist>
