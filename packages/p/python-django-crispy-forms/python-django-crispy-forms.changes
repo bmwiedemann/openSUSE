@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan  9 00:52:24 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.13.0
+  * Added support for Django 4.0
+- from v1.12.0
+  * Fixed rendering of grouped checkboxes and radio inputs in the
+    Bootstrap 4 template pack.
+  * Introduced new input_size argument to AppendedText,
+    PrependedText and PrependedAppendedText. This allows the size
+    of these grouped inputs to be changed in the Bootstrap 4
+    template pack
+  * Confirmed support for Django 3.2
+  * Dropped support for Python 3.5
+  * Dropped support for Django 3.0
+
+-------------------------------------------------------------------
 Wed May 12 12:42:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.11.2

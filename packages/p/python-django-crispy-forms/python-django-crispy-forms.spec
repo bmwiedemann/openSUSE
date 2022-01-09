@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-crispy-forms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}
-Version:        1.11.2
+Version:        1.13.0
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
@@ -56,11 +56,12 @@ Django.
 
 %check
 export DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings
-%python_exec -m pytest -rs crispy_forms/tests/
+export PYTHONPATH=${PWD}
+%pytest -rs crispy_forms/tests/
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CONTRIBUTORS.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/*crispy[-_]forms*/
 
 %changelog
