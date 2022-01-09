@@ -1,7 +1,7 @@
 #
 # spec file for package libphdi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 Name:           libphdi
 %define lname	libphdi1
-Version:        20210424
+Version:        20220110
 Release:        0
 Summary:        Library and tools to access the Parallels Hard Disk images
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libphdi
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libphdi/releases/download/%version/libphdi-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libphdi/releases/download/%version/libphdi-experimental-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  bison
 BuildRequires:  c_compiler
@@ -94,7 +96,7 @@ Python 3 bindings for libphdi.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
