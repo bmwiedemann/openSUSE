@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 14:07:12 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Add /etc/dnf/modules.d directory to -data subpackage (boo#1193706)
+
+-------------------------------------------------------------------
 Wed Nov  3 11:23:00 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update 4.10.0

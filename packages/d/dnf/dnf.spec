@@ -215,6 +215,8 @@ popd
 
 %find_lang %{name}
 
+mkdir -p %{buildroot}%{confdir}/modules.d
+mkdir -p %{buildroot}%{confdir}/modules.defaults.d
 mkdir -p %{buildroot}%{confdir}/repos.d
 mkdir -p %{buildroot}%{confdir}/vars
 mkdir -p %{buildroot}%{pluginconfpath}
@@ -275,6 +277,8 @@ popd
 %dir %{confdir}
 %dir %{pluginconfpath}
 %dir %{confdir}/aliases.d
+%dir %{confdir}/modules.d
+%dir %{confdir}/modules.defaults.d
 %dir %{confdir}/protected.d
 %dir %{confdir}/repos.d
 %dir %{confdir}/vars
