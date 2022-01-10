@@ -1,7 +1,7 @@
 #
 # spec file for package dummy-release
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ echo -e "Welcome to Dummy Product (%{_target_cpu}) - Kernel %%r (%%t)." > $RPM_B
 touch $RPM_BUILD_ROOT/etc/motd
 
 echo 'NAME=Dummy' > $RPM_BUILD_ROOT/etc/os-release
+echo 'ID="suse"' >> $RPM_BUILD_ROOT/etc/os-release
 echo 'ID_LIKE="suse"' >> $RPM_BUILD_ROOT/etc/os-release
 echo 'VERSION_ID="Dummy"' >> $RPM_BUILD_ROOT/etc/os-release
 

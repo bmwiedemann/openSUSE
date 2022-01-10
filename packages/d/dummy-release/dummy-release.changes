@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 10 08:42:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add  ID="suse" to etc/os-release; there is at least one test
+  suite (python-Nuitka) that expects an ID= field. Without it,
+  we're forced to use the more expensive openSUSE-release for the
+  test suite.
+
+-------------------------------------------------------------------
 Fri Dec 11 09:26:31 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added 'VERSION_ID="Dummy"' string to /etc/os-release as some
@@ -13,7 +21,7 @@ Tue Mar 19 12:44:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
 -------------------------------------------------------------------
 Thu Aug 10 10:26:00 CEST 2017 - behlert@suse.de
 
-- update version, drop /etc/SuSE-release 
+- update version, drop /etc/SuSE-release
 
 -------------------------------------------------------------------
 Tue Jul 18 05:06:58 UTC 2017 - jimmy@boombatower.com
