@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan  9 19:29:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.6.5
+  * only skip listwrap on for small height objects
+  * changes to allow for deprecated stuff in Python-3.11
+- Update to 3.6.4
+  * try to improve multi-frag paragraph justification
+  * fix justification condition
+  * allow validator OneOf to take re.Pattern
+- Update to 3.6.3
+  * modernisation of para.py contribution from <Andrews Searle at BMC dot com>
+  * many changes to .github workflows
+  * changes to setup.py to support cibuildwheel
+  * _FindSplitterMixin protect against deepcopy failure
+  * allow textAnnotation to have QuadPoints keyword
+
+-------------------------------------------------------------------
 Tue Nov 16 20:49:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Increase verbosity of running the test suite.
@@ -43,7 +60,7 @@ Tue Nov 16 12:39:08 UTC 2021 - ecsos <ecsos@opensuse.org>
   * minor cosmetics in renderPM C extension and add fontSize setattr 
   * allow a bounding box constraint in definePath
   * efficiency savings in text2Path
-  * refactor transformation math and text2Path functionality	
+  * refactor transformation math and text2Path functionality  
   * allow a renderPM plugin cairo backend package rlPyCairo
 - Update to 3.5.61
   * Allow legend column control of vertical alignment

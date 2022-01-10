@@ -305,4 +305,12 @@
   * restore broken MANIFEST.in somehow overwritten by Robin :(</comment>
     <requestid>931859</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>46fd382cedbfb086cfa88031c2445592</srcmd5>
+    <version>3.6.5</version>
+    <time>1641855696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945239</requestid>
+  </revision>
 </revisionlist>
