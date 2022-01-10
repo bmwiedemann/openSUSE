@@ -1,7 +1,7 @@
 #
 # spec file for package qjackctl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qjackctl
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
@@ -57,7 +57,7 @@ including a enhanced patchbay and connection control features.
 
 %prep
 %setup -q
-sed -i '/^X-SuSE-translate/d' src/%{name}.desktop
+sed -i '/^X-SuSE-translate/d' src/org.rncbc.%{name}.desktop
 
 %build
 %cmake -DCONFIG_QT6=0
@@ -71,18 +71,18 @@ install -Dm 0644 src/translations/*.qm %{buildroot}%{_datadir}/%{name}/translati
 install -Dm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%doc AUTHORS ChangeLog README TODO TRANSLATORS
-%license COPYING
+%doc ChangeLog README TRANSLATORS
+%license LICENSE
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/32x32/apps
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/metainfo
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.rncbc.%{name}.desktop
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.rncbc.%{name}.xml
 %{_mandir}/man?/%{name}.*
 
 %files lang
