@@ -7756,6 +7756,7 @@ unsorted:
   - jupyter-pythreejs-jupyterlab 
   - jupyter-qgrid 
   - jupyter-qtconsole 
+  - jupyter-rpm-macros 
   - jupyter-server-mathjax 
   - jupyter-sidecar-jupyterlab 
   - jupyter-vispy 
@@ -10934,7 +10935,7 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
-  - libgmsh4_8 
+  - libgmsh4_9 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
   - libgnome-keyring-devel 
@@ -22502,11 +22503,13 @@ unsorted:
   - python310-django-contrib-comments 
   - python310-django-cors-headers 
   - python310-django-coverage-plugin 
+  - python310-django-crispy-forms 
   - python310-django-debreach 
   - python310-django-debug-toolbar 
   - python310-django-dj-inmemorystorage 
   - python310-django-environ 
   - python310-django-eremaea2 
+  - python310-django-filter 
   - python310-django-formtools 
   - python310-django-geoposition 
   - python310-django-gravatar2 
@@ -22543,6 +22546,7 @@ unsorted:
   - python310-django-silk 
   - python310-django-sortedm2m 
   - python310-django-storages 
+  - python310-django-tables2 
   - python310-django-timezone-field 
   - python310-django-treebeard 
   - python310-django-user-agents 
@@ -23576,6 +23580,8 @@ unsorted:
   - python310-pylint 
   - python310-pylons-sphinx-themes 
   - python310-pylru 
+  - python310-pyls-spyder 
+  - python310-pylsp-rope 
   - python310-pylsqpack 
   - python310-pylzma 
   - python310-pymacaroons 
@@ -23769,7 +23775,9 @@ unsorted:
   - python310-python-jose 
   - python310-python-json-logger 
   - python310-python-louvain 
+  - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
+  - python310-python-lsp-server 
   - python310-python-magic 
   - python310-python-memcached 
   - python310-python-mimeparse 
@@ -24522,9 +24530,7 @@ unsorted:
   - python36-django-classy-tags 
   - python36-django-compressor 
   - python36-django-countries 
-  - python36-django-crispy-forms 
   - python36-django-extra-views 
-  - python36-django-filter 
   - python36-django-grappelli 
   - python36-django-invitations 
   - python36-django-money 
@@ -24607,8 +24613,6 @@ unsorted:
   - python36-pyclipper 
   - python36-pyeapi 
   - python36-pyface 
-  - python36-pyls-spyder 
-  - python36-pylsp-rope 
   - python36-pymisp 
   - python36-pypiserver 
   - python36-pyshark: [x86_64] 
@@ -24625,8 +24629,6 @@ unsorted:
   - python36-python-datamatrix 
   - python36-python-gammu 
   - python36-python-jsonschema-objects 
-  - python36-python-lsp-black 
-  - python36-python-lsp-server 
   - python36-python-lzo 
   - python36-python-multipart 
   - python36-python-prctl 
