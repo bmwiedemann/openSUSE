@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan  3 09:47:24 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+
+- Fix download URL
+  * This release contains a "v" in front of the version number
+    in the URL
+
+-------------------------------------------------------------------
+Mon Dec 27 08:23:49 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.1.0
+  * Single <D:propstat> element in PROPPATCH response
+  * Allow multiple <D:set> and <D:remove> elements
+  * Improve log messages
+  * Fix date filter
+  * Improve sanitization of collection properties
+  * Cancel mkcalendar request on error
+  * Use renameat2 on Linux for atomic overwriting of collections
+  * Command Line Parser
+    * Disallow abbreviated arguments
+    * Support backend specific options and HTTP headers
+    * Optional argument for boolean options
+    * Load no config file for --config without argument
+  * Allow float for server->timeout setting
+  * Fix is-not-defined filter in addressbook-query report
+  * Add python type hints
+  * Add multifilesystem_nolock storage
+  * Add support for Python 3.9 and 3.10
+  * Drop support for Python 3.5
+  * Fix compatibility with Evolution (Exceptions from recurrence rules)
+
+-------------------------------------------------------------------
 Tue Sep 28 07:06:52 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - system-user-radicale.conf: remove leading spaces, SLE15 does
