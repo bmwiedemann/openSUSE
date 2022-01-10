@@ -1,7 +1,7 @@
 #
 # spec file for package mutter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 Patch4:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-UPSTREAM mutter-allow-disable-hardware-cursors.patch glgo#GNOME/mutter!2150 alynx.zhou@suse.com -- Add a debug environment variable to disable hardware cursors.
 Patch5:         mutter-allow-disable-hardware-cursors.patch
+# PATCH-FIX-UPSTREAM mutter-initialize-saved_rect_fullscreen.patch glgo#GNOME/mutter!2210, bsc#1185444 alynx.zhou@suse.com -- Initialize saved_rect_fullscreen to fix fullscreen for some program like Stellarium.
+Patch6:         mutter-initialize-saved_rect_fullscreen.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -146,6 +148,7 @@ applications that want to make use of the mutter library.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}

@@ -1,0 +1,43 @@
+From 157555cf0e7aaef32892c5576e81ba2154d14a0d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Fri, 7 Jan 2022 16:30:19 +0100
+Subject: [PATCH] window: Initialize saved_rect_fullscreen too
+
+We save the window rect before going fullscreen to a dedicated variable,
+so we can go back to the correct dimension. We also have a dedicated
+variable for returning from other window states, e.g. maximized, and
+this one we initialized when creating the MetaWindow. This meant that we
+could always rely on this being up to date on X11 windows that were
+mapped maximized or fullscreen.
+
+What the commit that introduced the saved rect dedicated for going
+unfullscreen missed was to initialize the new saved rectangle too when
+creating the MetaWindow. This resulted in windows mapped as fullscreen
+often ending up misbehaving when unfullscreening, as mutter would tell
+them to unfullscreen to 0x0.
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/1786
+Fixes: a51ad8f932cb55bdd8a62fc5d8d10af7fc62b0a0
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2210>
+
+
+(cherry picked from commit 13f35ab0640631566f52c80583b09fe4e3dc3685)
+---
+ src/core/window.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/window.c b/src/core/window.c
+index 9b3f54df9e..6623951613 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -1054,6 +1054,7 @@ _meta_window_shared_new (MetaDisplay         *display,
+ 
+   /* And this is our unmaximized size */
+   window->saved_rect = window->rect;
++  window->saved_rect_fullscreen = window->rect;
+   window->unconstrained_rect = window->rect;
+ 
+   window->depth = attrs->depth;
+-- 
+GitLab
+

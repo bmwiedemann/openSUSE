@@ -1523,4 +1523,16 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>941314</requestid>
   </revision>
+  <revision rev="178" vrev="3">
+    <srcmd5>be591bd4e481e03b347d9df279784ee4</srcmd5>
+    <version>41.2</version>
+    <time>1641855709</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-initialize-saved_rect_fullscreen.patch: Some
+  applications that starts in fullscreen disappear when switching
+  back to normal size mode, because mutter forget to initialize
+  saved_rect_fullscreen which is used for unfullscreen, this patch
+  fixes it (glgo#GNOME/mutter!2210, bsc#1185444). (forwarded request 945213 from AZhou)</comment>
+    <requestid>945290</requestid>
+  </revision>
 </revisionlist>
