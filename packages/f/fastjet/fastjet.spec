@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -149,6 +149,9 @@ This package provides python3 bindings for fastjet.
 
 # REMOVE libtool ARCHIVES
 find %{buildroot} -type f -name "*.la" -delete -print
+
+# Remove rpaths from fastjet-contrib script
+sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
 
 %fdupes %{buildroot}%{python3_sitelib}/
 
