@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan  7 23:36:48 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add fix upstream 0001-GTG-0.5-fix-meson-build-failure.patch based
+  on commit 1809d10663ae3d8f69c04138b66f9b4e66ee14f6.
+  Fix i18n.merge_file() that got "build_always_stale" keyword
+  argument removed from Meson 0.60 release.
+- Add sed call to fix shebang issues (env python3, or unneeded
+  shebang) for gtg binary, networkmanager.py, info.py and
+  script_pocketmod.
+
+-------------------------------------------------------------------
+Tue Jan  4 22:45:50 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add explicit python-rpm-macros build requirement to avoid
+  openSUSE Leap build failures due to package not being pulled
+  automatically.
+- Update "GPL-3.0+" license tag to "GPL-3.0-or-later" following
+  SPDX-3.0 format.
+- Make use of version macro in Source tag rather than hardcode.
+- Drop deprecated BuildRoot tag.
+
+-------------------------------------------------------------------
 Mon Apr 26 11:55:57 UTC 2021 - Daike Yu <yu.daike@suse.com>
 
 - Use python3_sitelib to allow successful build on Leap

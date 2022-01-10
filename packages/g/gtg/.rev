@@ -7,4 +7,12 @@
     <comment>Update to version 0.5 (boo#1184389)</comment>
     <requestid>888950</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>455bd010fa1678eec7b253c7d1d01cfd</srcmd5>
+    <version>0.5</version>
+    <time>1641855205</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream patch to fix meson. (forwarded request 945174 from luc14n0)</comment>
+    <requestid>945295</requestid>
+  </revision>
 </revisionlist>
