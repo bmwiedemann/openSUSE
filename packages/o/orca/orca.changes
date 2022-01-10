@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 10 07:29:17 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Add python-rpm-macros BuildRequires in case some build
+  environment does not pull it automatically. This is needed by
+  macros like %{python3_sitelib}.
+
+-------------------------------------------------------------------
 Wed Dec  1 17:30:18 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package orca
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  liblouis-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.3
 BuildRequires:  python3-brlapi >= 0.5.1
 BuildRequires:  python3-gobject >= 3.18
