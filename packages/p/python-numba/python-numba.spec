@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
+%define skip_python310 1
+%define plainpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -36,12 +37,12 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
 Patch0:         fix-max-name-size.patch
-# PATCH-FIX-UPSTREAM support numpy 1.21 -- gh#numba/numba#7176, gh#numba/numba#7483
+# PATCH-FIX-UPSTREAM support numpy 1.21 -- gh#numba/numba#7176, gh#numba/numba#7483, gh#numpy/numpy#20376
 Patch1:         numba-pr7483-numpy1_21.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.18}
+BuildRequires:  %{python_module devel >= 3.7 with %python-devel < 3.10}
+BuildRequires:  %{python_module numpy-devel >= 1.18 with %python-numpy-devel < 1.22}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -49,8 +50,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  tbb-devel >= 2021
 Requires:       python-llvmlite < 0.38
 Requires:       python-llvmlite >= 0.37
-Requires:       python-numpy >= 1.18
 Requires:       python-scipy >= 0.16
+Requires:       (python-numpy >= 1.18 with python-numpy < 1.22)
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-Jinja2
@@ -95,6 +96,7 @@ Summary:        Development files for numba applications
 Requires:       %{name} = %{version}
 Requires:       python-devel
 Requires:       python-numpy-devel >= 1.11
+Requires:       %{plainpython}(abi) = %{python_version}
 
 %description    devel
 This package contains files for developing applications using numba.

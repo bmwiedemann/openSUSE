@@ -242,4 +242,16 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>932339</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e012d42d07430e35ca5b560771b0dedf</srcmd5>
+    <version>0.54.1</version>
+    <time>1641855235</time>
+    <user>dimstar_suse</user>
+    <comment>- Numba &lt;0.55 is not compatible with Python 3.10 or NumPy 1.22
+  gh#numba/numba#7557
+- Add test skip to numba-pr7483-numpy1_21.patch due to numpy update
+  gh#numpy/numpy#20376
+</comment>
+    <requestid>945418</requestid>
+  </revision>
 </revisionlist>

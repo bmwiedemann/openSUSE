@@ -79,7 +79,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
 ===================================================================
 --- numba-0.54.1.orig/numba/np/ufunc/_internal.c
 +++ numba-0.54.1/numba/np/ufunc/_internal.c
-@@ -275,6 +275,7 @@ static PyMemberDef dufunc_members[] = {
+@@ -276,6 +276,7 @@ static PyMemberDef dufunc_members[] = {
   */
  
  static struct _ufunc_dispatch {
@@ -87,7 +87,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
      PyCFunctionWithKeywords ufunc_reduce;
      PyCFunctionWithKeywords ufunc_accumulate;
      PyCFunctionWithKeywords ufunc_reduceat;
-@@ -285,7 +286,7 @@ static struct _ufunc_dispatch {
+@@ -286,7 +287,7 @@ static struct _ufunc_dispatch {
  } ufunc_dispatch;
  
  static int
@@ -96,7 +96,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
  {
      int result = 0;
      PyMethodDef * crnt = PyUFunc_Type.tp_methods;
-@@ -328,6 +329,16 @@ init_ufunc_dispatch(void)
+@@ -329,6 +330,16 @@ init_ufunc_dispatch(void)
              result = -1; /* Unknown method */
          }
          if (result < 0) break;
@@ -113,7 +113,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
      }
      if (result == 0) {
          /* Sanity check. */
-@@ -343,6 +354,7 @@ init_ufunc_dispatch(void)
+@@ -344,6 +355,7 @@ init_ufunc_dispatch(void)
      return result;
  }
  
@@ -121,7 +121,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
  static PyObject *
  dufunc_reduce(PyDUFuncObject * self, PyObject * args, PyObject *kws)
  {
-@@ -367,6 +379,47 @@ dufunc_outer(PyDUFuncObject * self, PyOb
+@@ -368,6 +380,47 @@ dufunc_outer(PyDUFuncObject * self, PyOb
      return ufunc_dispatch.ufunc_outer((PyObject*)self->ufunc, args, kws);
  }
  
@@ -169,7 +169,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
  #if NPY_API_VERSION >= 0x00000008
  static PyObject *
  dufunc_at(PyDUFuncObject * self, PyObject * args)
-@@ -567,6 +620,41 @@ static struct PyMethodDef dufunc_methods
+@@ -568,6 +621,41 @@ static struct PyMethodDef dufunc_methods
      {NULL, NULL, 0, NULL}           /* sentinel */
  };
  
@@ -211,7 +211,7 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
  static PyObject *
  dufunc_getfrozen(PyDUFuncObject * self, void * closure)
  {
-@@ -680,8 +768,15 @@ MOD_INIT(_internal)
+@@ -681,8 +769,15 @@ MOD_INIT(_internal)
          return MOD_ERROR_VAL;
  
      PyDUFunc_Type.tp_new = PyType_GenericNew;
@@ -228,3 +228,15 @@ Index: numba-0.54.1/numba/np/ufunc/_internal.c
      if (PyType_Ready(&PyDUFunc_Type) < 0)
          return MOD_ERROR_VAL;
      Py_INCREF(&PyDUFunc_Type);
+Index: numba-0.54.1/numba/tests/test_array_reductions.py
+===================================================================
+--- numba-0.54.1.orig/numba/tests/test_array_reductions.py
++++ numba-0.54.1/numba/tests/test_array_reductions.py
+@@ -725,6 +725,7 @@ class TestArrayReductions(MemoryLeakMixi
+         self.check_npdatetime(array_argmax)
+         self.check_nptimedelta(array_argmax)
+ 
++    @unittest.skip("https://github.com/numpy/numpy/issues/20376")
+     def test_median_npdatetime(self):
+         self.check_nptimedelta(array_median_global)
+ 
