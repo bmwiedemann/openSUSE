@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan  8 19:41:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.54.6:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Allow boxing of non-external SimpleType structs
+      . Cast given default-value of struct with possible member
+        initializer
+      . Clear existing length values when revisiting a slice
+        expression
+    - vala:
+      . Allow unsafe assignment of integer to enum while reporting
+        a notice
+      . Non nullable enum types are simple types
+      . Correctly replace "in" expression in pre-/postconditions of
+        method
+  + Bindings: gio-2.0: Add custom MemoryOutputStream.with_*data()
+    wrappers
+
+-------------------------------------------------------------------
 Thu Dec 16 10:27:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.54.5:

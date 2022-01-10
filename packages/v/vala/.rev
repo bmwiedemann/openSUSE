@@ -1140,4 +1140,12 @@
     <comment></comment>
     <requestid>941313</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>c2a6cbee4bbb72b254494f5a2e8f3f73</srcmd5>
+    <version>0.54.6</version>
+    <time>1641855707</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel 0.54.6 (forwarded request 944943 from iznogood)</comment>
+    <requestid>945285</requestid>
+  </revision>
 </revisionlist>
