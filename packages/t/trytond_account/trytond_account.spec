@@ -18,7 +18,7 @@
 
 %define majorver 5.0
 Name:           trytond_account
-Version:        %{majorver}.19
+Version:        %{majorver}.20
 Release:        0
 Summary:        The "account" module for the Tryton ERP system
 License:        GPL-3.0+
@@ -29,6 +29,7 @@ Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools 
+BuildRequires:  python-rpm-macros
 Requires:       trytond 
 Requires:       trytond_company 
 Requires:       trytond_currency 
