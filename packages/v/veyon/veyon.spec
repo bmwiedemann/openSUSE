@@ -23,6 +23,7 @@ Summary:        Computer monitoring and classroom management
 License:        GPL-2.0-or-later
 URL:            https://veyon.io/
 Source:         https://github.com/veyon/veyon/releases/download/v%{version}/veyon-%{version}-src.tar.bz2
+Patch0:	harden_veyon.service.patch
 BuildRequires:  cmake
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gcc-c++
