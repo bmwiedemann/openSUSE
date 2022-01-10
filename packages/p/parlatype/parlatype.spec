@@ -1,7 +1,7 @@
 #
 # spec file for package parlatype
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define c_lib   libparlatype5
 Name:           parlatype
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://gkarsay.github.io/parlatype/
 Source:         https://github.com/gkarsay/parlatype/releases/download/v%{version}/parlatype-%{version}.tar.gz
-Patch0:         parlatype-asr.patch
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
 BuildRequires:  glib2-devel >= 2.58
@@ -67,7 +66,6 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson -Ddeepspeech=false -Dpocketsphinx=false

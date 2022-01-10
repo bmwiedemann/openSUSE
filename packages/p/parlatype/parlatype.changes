@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:19:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1:
+  * New: Added MPRIS interface, fix #86
+  * New: Switched to Weblate for translations
+  * Fix: Setting initial position failed in some cases
+  * Fix: Build and tests failed on WIN32
+  * Fix: Help pages for Preferences Dialog were not updated
+  * Fix: Adapt to builds without ASR
+- Remove parlatype-asr.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Nov  4 09:58:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move translated help to -lang package.
