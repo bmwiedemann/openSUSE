@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 10 14:05:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8.1:
+  - Implement MypyItem.collect for pytest < 6.0
+  - Update dev deps and extend static checks
+  - Test with mypy 0.8
+- Add 121-recent-mypy.patch to make the test suite pass with the
+  recent mypy.
+
+-------------------------------------------------------------------
 Tue Feb 23 12:50:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
-- Update to v0.8.0
+- Update to v0.8.0:
+  - Stop injecting MypyStatusItem in
+    pytest_collection_modifyitems to fix --looponfail
+  - Add support for Python 3.9
+  - Create MypyResults
 
 -------------------------------------------------------------------
 Mon Sep  7 06:00:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
