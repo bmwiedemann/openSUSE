@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  3 16:52:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.10
+  * const (and volatile) qualifiers for void as a function
+    "parameter" (even via a typedef) are now correctly flagged as
+    an error.
+  * A restricted pointer to a non-object, e.g., function, is now
+    correctly flagged as an error.
+
+-------------------------------------------------------------------
 Thu Dec 23 04:24:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.9
