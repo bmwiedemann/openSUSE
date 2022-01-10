@@ -1,7 +1,7 @@
 #
 # spec file for package python-semver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-semver
-Version:        2.13.0
+Version:        3.0.0~dev.2+41+g4d2df08
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-semver/python-semver
-Source:         https://files.pythonhosted.org/packages/source/s/semver/semver-%{version}.tar.gz
+#Source:         https://files.pythonhosted.org/packages/source/s/semver/semver-%%{version}.tar.gz
+Source:         https://github.com/python-semver/python-semver/archive/refs/heads/feature/tests-for-py310.tar.gz#/semver-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
 Conflicts:      python-node-semver
 BuildArch:      noarch
@@ -42,7 +43,7 @@ A Python module for semantic versioning. Simplifies comparing versions.
 See also http://semver.org/
 
 %prep
-%setup -q -n semver-%{version}
+%setup -q -n python-semver-feature-tests-for-py310
 sed -i '/-cov/d' setup.cfg
 
 %build
@@ -66,7 +67,7 @@ sed -i '/-cov/d' setup.cfg
 %files %{python_files}
 %doc README.rst
 %{python_sitelib}/semver*
-%pycache_only %{python_sitelib}/__pycache__/semver*
+#%%pycache_only %%{python_sitelib}/__pycache__/semver*
 %python_alternative %{_bindir}/pysemver
 
 %changelog
