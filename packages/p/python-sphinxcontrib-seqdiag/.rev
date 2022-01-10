@@ -43,4 +43,14 @@
 - Stop building python2 version. No longer supported upstream</comment>
     <requestid>778945</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d66f173d213faead1d8e6ad84c1fb7e</srcmd5>
+    <version>3.0.0</version>
+    <time>1641855246</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * drop python 3.5/3.6
+  * add python 3.9+ support</comment>
+    <requestid>945423</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:27:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * drop python 3.5/3.6
+  * add python 3.9+ support 
+
+-------------------------------------------------------------------
 Tue Feb 25 06:26:01 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to version 2.0.0:

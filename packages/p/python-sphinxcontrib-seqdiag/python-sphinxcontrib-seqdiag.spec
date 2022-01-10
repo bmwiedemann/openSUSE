@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-seqdiag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-sphinxcontrib-seqdiag
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Sphinx "seqdiag" extension
 License:        BSD-2-Clause
