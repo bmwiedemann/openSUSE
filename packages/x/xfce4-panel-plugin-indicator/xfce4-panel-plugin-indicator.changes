@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  9 18:35:41 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.4.1:
+  * Remove the placeholder "No Indicators" button.
+  * Fix compilation warnings.
+  * autotools: Some updates.
+  * Update translations.
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.4.0:

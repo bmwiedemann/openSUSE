@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel-plugin-indicator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   xfce4-indicator-plugin
 %define _version 2.4
 Name:           xfce4-panel-plugin-indicator
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Plugin to display information from applications in the Xfce panel
 License:        GPL-2.0-or-later
@@ -32,8 +32,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  xfce4-panel-devel >= 4.11.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(ayatana-indicator3-0.4) >= 0.6.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(libayatana-ido3-0.4) >= 0.4.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.11.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.9.0
