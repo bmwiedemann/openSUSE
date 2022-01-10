@@ -103,4 +103,14 @@
   * python 3.9/3.10 support</comment>
     <requestid>936297</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5c9f7e14dc0dcdf56fd3ba1fe65ad0bc</srcmd5>
+    <version>1.5.1.0</version>
+    <time>1641855713</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1.0:
+  * update libzstd to 1.5.1 - follow upstream
+  * fix passing VERSION string to compiler</comment>
+    <requestid>945299</requestid>
+  </revision>
 </revisionlist>
