@@ -29,12 +29,3 @@ Index: php-8.0.0/php.ini-production
  
  ; Maximum number of links.  -1 means no limit.
  ; http://php.net/mysqli.max-links
-@@ -1347,7 +1347,7 @@ session.save_handler = files
- ; where MODE is the octal representation of the mode. Note that this
- ; does not overwrite the process's umask.
- ; http://php.net/session.save-path
--;session.save_path = "/tmp"
-+session.save_path = "/var/lib/php8"
- 
- ; Whether to use strict session mode.
- ; Strict session mode does not accept an uninitialized session ID, and

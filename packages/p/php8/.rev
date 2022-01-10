@@ -169,4 +169,13 @@
   https://www.php.net/ChangeLog-8.php#8.0.14</comment>
     <requestid>941267</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>fb9b1ef32f32c1a47b6c07dc44ea417f</srcmd5>
+    <version>8.0.14</version>
+    <time>1641855719</time>
+    <user>dimstar_suse</user>
+    <comment>- use /tmp to store session information (boo#1194414)
+  % php-ini.patch (forwarded request 945111 from adkorte)</comment>
+    <requestid>945332</requestid>
+  </revision>
 </revisionlist>
