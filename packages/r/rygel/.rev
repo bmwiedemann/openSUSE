@@ -704,4 +704,15 @@
   (jsc#SLE-21105). (forwarded request 920440 from sbrabec)</comment>
     <requestid>920593</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>7fe8d225420cbb98690d1e6c0a662711</srcmd5>
+    <version>0.40.3</version>
+    <time>1641855207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.40.3:
+  + Tracker3:
+    - Fix deadlock on start-up.
+    - Use the correct graph name for Videos. (forwarded request 945105 from iznogood)</comment>
+    <requestid>945286</requestid>
+  </revision>
 </revisionlist>

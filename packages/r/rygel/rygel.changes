@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  9 10:24:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.40.3:
+  + Tracker3:
+    - Fix deadlock on start-up.
+    - Use the correct graph name for Videos.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:20:09 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
