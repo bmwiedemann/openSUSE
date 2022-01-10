@@ -1,7 +1,7 @@
 #
 # spec file for package python-injector
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,19 @@ Summary:        Python dependency injection framework, inspired by Guice
 License:        BSD-3-Clause
 URL:            https://github.com/alecthomas/injector
 Source:         https://github.com/alecthomas/injector/archive/%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.9}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+# /SECTION
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  ((python3-dataclasses and python3-base < 3.7) or (python36-dataclasses and python36-base))
+BuildRequires:  python-rpm-macros >= 20210131
 Requires:       python
-Requires:       (python-typing_extensions if python-base < 3.8)
+%if %{python_version_nodots} < 39
+Requires:       python-typing_extensions >= 3.7.4
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,6 +73,7 @@ rm pytest.ini
 %files %{python_files}
 %license COPYING
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/injector
+%{python_sitelib}/injector-%{version}*-info
 
 %changelog

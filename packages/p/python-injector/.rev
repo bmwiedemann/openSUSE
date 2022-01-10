@@ -75,4 +75,60 @@
 </comment>
     <requestid>943322</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>78eb083ea310e013db9207151cda0e49</srcmd5>
+    <version>0.19.0</version>
+    <time>1641855225</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test and runtime requirements
+- Update to 0.19.0:
+  - Added the license to the source distribution, thanks to
+    Joshua Adelman
+  - Added Python 3.9 and 3.10 support, this includes fixing
+    Python 3.10 compatibility, thanks to Torge Matthies
+  - Improved the documentation, thanks to Takahiro Kojima
+  - Improved the source distribution so that it can be used to
+    build and install wheels, thanks to Janusz Skonieczny
+  - Added requirements files for easier development, thanks to
+    Greg Eremeev
+  - Removed Python 3.5 support
+  - Fixed a bug where only one of multiple NoInject annotations
+    was interpreted
+- BuildRequires on the dataclasses module if using python 3.6 
+- Update to 0.18.3:
+  * Fixed Python 3.5.3 compatibility
+  * Added remaining type hints to the codebase so that the client code can
+    have better static typing safety
+  * Fixed UnsatisfiedRequirement string representation (this time for real)
+  * Added forward return type reference support to provider methods
+- Update to 0.18.1:
+  * Various minor fixes and support for new python
+- Depend on full python interpreter for sqlite module
+- version update to 0.17.0
+  * Added support for using `typing.Dict` and `typing.List` in multibindings. See :meth:`multibind &lt;injector.Binder.multibind&gt;`.
+  * Added multibinding-specific :func:`provider &lt;injector.provider&gt;` variant: :func:`multiprovider &lt;injector.multiprovider&gt;`
+  * Deprecated using :func:`provider &lt;injector.provider&gt;` for multibindings
+  * Fixed failure to provide a default value to a `NewType`-aliased type with auto_bind enabled
+  * Deprecated :func:`Key &lt;injector.Key&gt;`, :func:`SequenceKey &lt;injector.SequenceKey&gt;` and
+    :func:`MappingKey &lt;injector.MappingKey&gt;` – use real types or type aliases instead
+  * Deprecated using single-item lists and dictionaries for multibindings - use real types or type aliases instead
+  Technically backwards incompatible:
+  * typing.List and typing.Dict specializations are now explicitly disallowed as :meth:`bind &lt;injector.Binder.bind&gt;`
+    interfaces and types returned by :func:`provider &lt;injector.provider&gt;`-decorated methods
+- update to version 0.16.2
+  * Added support for overriding injectable parameters with positional 
+    arguments (previously only possible with keyword arguments)
+  * Fixed crashes caused by typed self in method signatures
+  * Dropped Python 3.4 support 
+  * Removed previously deprecated constructs: with_injector, 
+    Injector.install_into, Binder.bind_scope
+  * Dependencies are no longer injected into Module.configure and 
+    raw module functions
+  * Removed unofficial support for injecting into parent class 
+    constructors
+- Switch to github tarball to get both tests and license file
+- Initial package (v0.15.0)
+</comment>
+    <requestid>945365</requestid>
+  </revision>
 </revisionlist>
