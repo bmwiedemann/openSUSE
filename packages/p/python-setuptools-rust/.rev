@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>934317</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be91e94c45095804df4c94169838630d</srcmd5>
+    <version>1.0.0</version>
+    <time>1641855714</time>
+    <user>dimstar_suse</user>
+    <comment>- skip building for python 2.x, as the setuptools we have is no
+  longer compatible with it</comment>
+    <requestid>945301</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 11:54:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip building for python 2.x, as the setuptools we have is no
+  longer compatible with it 
+
+-------------------------------------------------------------------
 Sat Nov 27 13:25:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (1.0.0) 
