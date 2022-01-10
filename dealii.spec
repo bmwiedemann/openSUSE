@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.3.1
+%define sover 9.3.2
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -84,12 +84,14 @@
 %endif
 
 Name:           %{pname}
-Version:        9.3.1
+Version:        9.3.2
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
 URL:            https://www.dealii.org/
 Source0:        https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dealii-boost-1_78_compat.patch gh#dealii/dealii#13037 badshah400@gmail.com -- Fix includes to avoid build failures against boost 1.77+; patch taken from upstream git master commit and backported for version 9.3.2
+Patch0:         dealii-boost-1_78_compat.patch
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
