@@ -503,4 +503,12 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
 - remove mtools-aliasing.diff (obsolete) (forwarded request 934243 from dirkmueller)</comment>
     <requestid>934480</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>368ca3b7ed34b968dfcb81379cf7f3b0</srcmd5>
+    <version>4.0.37</version>
+    <time>1641855720</time>
+    <user>dimstar_suse</user>
+    <comment>mtools 4.0.37 (forwarded request 945017 from AndreasStieger)</comment>
+    <requestid>945333</requestid>
+  </revision>
 </revisionlist>

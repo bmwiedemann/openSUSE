@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  9 07:15:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.37:
+  * Removed mclasserase commands, which doesn't fit the coding
+    structure of the rest of mtools
+  * Add support to -i option to mcd
+  * Document -i in mtools.1
+  * Fix a missing commad error in floppyd_io.c
+
+-------------------------------------------------------------------
 Sat Nov 27 13:11:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.36:
