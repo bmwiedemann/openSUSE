@@ -1,7 +1,7 @@
-Index: aexpect-1.6.2/aexpect/client.py
+Index: aexpect-1.6.4/aexpect/client.py
 ===================================================================
---- aexpect-1.6.2.orig/aexpect/client.py
-+++ aexpect-1.6.2/aexpect/client.py
+--- aexpect-1.6.4.orig/aexpect/client.py
++++ aexpect-1.6.4/aexpect/client.py
 @@ -25,6 +25,7 @@ import threading
  import shutil
  import select
@@ -10,13 +10,13 @@ Index: aexpect-1.6.2/aexpect/client.py
  import locale
  import logging
  
-@@ -178,7 +179,8 @@ class Spawn(object):
+@@ -179,7 +180,8 @@ class Spawn:
  
          # Start the server (which runs the command)
          if command:
 -            helper_cmd = utils_path.find_command('aexpect_helper')
 +            minor = sys.version_info.minor
-+            helper_cmd = utils_path.find_command('aexpect_helper-3.%s' % minor)
-             self._aexpect_helper = subprocess.Popen([helper_cmd],   # pylint: disable=R1732
++            helper_cmd = utils_path.find_command(f'aexpect_helper-3.{minor}')
+             self._aexpect_helper = subprocess.Popen([helper_cmd],  # pylint: disable=R1732
                                                      shell=True,
                                                      stdin=subprocess.PIPE,

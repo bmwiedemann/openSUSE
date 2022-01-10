@@ -31,4 +31,15 @@
 - Switch to pytest, and skip two truculent tests</comment>
     <requestid>912370</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd426bf9baf8cc0cd66d4b4c123b3bfc</srcmd5>
+    <version>1.6.4</version>
+    <time>1641855180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  * No changelog available.
+- Refresh helper-version-in-cmdline.patch.
+- Add missing {Build,}Requires on six.</comment>
+    <requestid>945165</requestid>
+  </revision>
 </revisionlist>

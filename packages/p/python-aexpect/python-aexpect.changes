@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 10 01:14:20 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.4:
+  * No changelog available.
+- Refresh helper-version-in-cmdline.patch.
+- Add missing {Build,}Requires on six. 
+
+-------------------------------------------------------------------
 Mon Aug 16 08:53:00 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.6.2:

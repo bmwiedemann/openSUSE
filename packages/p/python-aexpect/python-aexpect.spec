@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %global         pkgname aexpect
 Name:           python-%{pkgname}
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        Python library to control interactive applications
 License:        GPL-2.0-only
@@ -30,10 +30,12 @@ Patch0:         helper-version-in-cmdline.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
