@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Jan  2 21:51:49 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 5.2.7.
+  * cs_calendar.py: Update gnome's 24h preference when ours gets
+    updated.
+  * settings api demo: Fix dependency example to match description.
+  * notification applet: Remove leftover log statement.
+  * power applet: Show a generic panel icon even if there's only a
+    single coarse-level device attached.
+  * screenshot.js: Add SelectArea method.
+  * calendar applet: Improve event dot positioning.
+  * [calendar applet] Make new dates translatable (#10560)
+  * calendar applet: Re-organize multi-day string construction.
+  * calendar applet: Use the ► unicode symbol in place of '->' for
+    event times.
+  * Checking None values to prevent crashes (#10552)
+  * Fix minimize effect when there is no icon geometry set by a
+    window- list.
+  * events: Actual time should be used with time_format, not a
+    date-only.
+  * calendar events: Clicking on the selected date over the event
+    list will open gnome-calendar.
+  * screenshot.js: Cancel an area selection op if the
+    rubberbanding is completed with a width or height of 0.
+  * Fix warning about using var for module exports. (#10568)
+- Update to version 5.2.6.
+  * calendar: Have the 'no events' icon/label open gnome-calendar
+    when clicked.
+  * calendar: Fix theme typo, close the calendar popup when
+    launching gnome-calendar.
+  * calendar: some default theme improvements for buttons.
+  * screenshot.js: Adjust area coordinates by the ui scale.
+  * cinnamon-calendar-server.py: Don't assume that an event will
+    have a last-modified property.
+  * cinnamon-calendar-server: Fix typo
+  * calendar applet: Handle multi-day events.
+  * Calendar applet: Fix a few translation and date-format issues.
+  * calendar applet: some cleanup.
+  * calendar applet: Enable opening gnome-calendar to a specific
+    day when the 'no events' button is clicked.
+  * calendar: Fix missing prefix in bindir path for D-Bus service
+  * build: Don't hardcode the libexec path for the
+    cinnamon-calendar- server bin file.
+  * cinnamon-screenshot.c: Fall back to a full screenshot when
+    there is no default focus window.
+  * cinnamon-screenshot.c: Don't take a screenshot of the "Desktop"
+    window when taking a 'window' screenshot.
+  * calendar applet: Show countdown text for multiday events that
+    start today on any day the event will be active.
+  * l10n: Generate files
+  * l10n: Update POT
+- Update to version 5.2.5
+  * calendar: Remove using GOA for calendar source discovery.
+  * runDialog.js: Take the global.ui_scale into account when
+    setting the dialog width.
+
+-------------------------------------------------------------------
 Tue Dec  7 20:35:25 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.2.4.
