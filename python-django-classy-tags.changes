@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  9 01:42:13 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add dj40.patch for Django 4 compatibility
+- Skip Python 2 to allow Python 3 Leap to build
+
+-------------------------------------------------------------------
 Tue May 25 10:27:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Do not package tests

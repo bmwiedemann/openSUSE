@@ -1,0 +1,21 @@
+commit cee75e71eaefa96f849ef995d27c547e75324bba
+Author: John Vandenberg <jayvdb@gmail.com>
+Date:   Sun Jan 9 09:37:25 2022 +0800
+
+    Force tag value to be string before rendering
+    
+    Fixes https://github.com/django-cms/django-classy-tags/issues/65
+
+diff --git a/classytags/core.py b/classytags/core.py
+index 28213cb..c4d7754 100644
+--- a/classytags/core.py
++++ b/classytags/core.py
+@@ -148,7 +148,7 @@ class Tag(TagMeta('TagMeta', (Node,), {})):
+         items = self.kwargs.items()
+         kwargs = dict([(key, value.resolve(context)) for key, value in items])
+         kwargs.update(self.blocks)
+-        return self.render_tag(context, **kwargs)
++        return str(self.render_tag(context, **kwargs))
+ 
+     def render_tag(self, context, **kwargs):
+         """
