@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>922718</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>78947cf3348e671cbe59f80ff4408709</srcmd5>
+    <version>1.0.20210914</version>
+    <time>1641855181</time>
+    <user>dimstar_suse</user>
+    <comment>Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_wg-quick@.service.patch</comment>
+    <requestid>945229</requestid>
+  </revision>
 </revisionlist>

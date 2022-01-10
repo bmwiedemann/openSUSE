@@ -1,0 +1,21 @@
+Index: wireguard-tools-1.0.20210914/src/systemd/wg-quick@.service
+===================================================================
+--- wireguard-tools-1.0.20210914.orig/src/systemd/wg-quick@.service
++++ wireguard-tools-1.0.20210914/src/systemd/wg-quick@.service
+@@ -11,6 +11,16 @@ Documentation=https://git.zx2c4.com/wire
+ Documentation=https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=false
++ProtectHostname=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ RemainAfterExit=yes
+ ExecStart=/usr/bin/wg-quick up %i
