@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-blockdiag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Test files missing
 %bcond_with     test
 Name:           python-sphinxcontrib-blockdiag
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Sphinx "blockdiag" extension
 License:        BSD-2-Clause

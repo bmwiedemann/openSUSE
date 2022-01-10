@@ -35,4 +35,14 @@
 - drop py2 support</comment>
     <requestid>778792</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2339f1ffbd9def25d44fe5717d4016c</srcmd5>
+    <version>3.0.0</version>
+    <time>1641855247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * drop python 3.5/3.6 support
+  * add python 3.9+ support</comment>
+    <requestid>945424</requestid>
+  </revision>
 </revisionlist>
