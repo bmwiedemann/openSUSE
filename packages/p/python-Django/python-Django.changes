@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 10 09:27:36 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0.1 (CVE-2021-45115, CVE-2021-45452, bsc#1194117)
+  + CVE-2021-45115: Denial-of-service possibility in
+    UserAttributeSimilarityValidator
+  + CVE-2021-45452: Potential directory-traversal via Storage.save()
+  + Fixed a regression in Django 4.0 that caused a crash of
+    assertFormsetError() on a formset named form
+  + Fixed a bug in Django 4.0 that caused a crash on booleans with the
+    RedisCache backend
+  + Relaxed the check added in Django 4.0 to reallow use of a
+    duck-typed HttpRequest in
+    django.views.decorators.cache.cache_control() and never_cache()
+    decorators
+  + Fixed a regression in Django 4.0 that caused creating bogus
+    migrations for models that reference swappable models such as
+    auth.User
+  + Fixed a long standing bug in Geometry Collections and Polygon that
+    caused a crash on some platforms (reported on macOS based on the
+    ARM64 architecture)
+
+-------------------------------------------------------------------
 Mon Dec 27 12:11:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix u-a scriptlet dependency.

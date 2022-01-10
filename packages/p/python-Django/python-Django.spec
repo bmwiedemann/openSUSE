@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.0
+Version:        4.0.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -38,7 +38,6 @@ BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argon2-cffi >= 16.1.0}
 BuildRequires:  %{python_module asgiref >= 3.4.1}
-BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
@@ -51,6 +50,7 @@ BuildRequires:  %{python_module tblib >= 1.5.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
 Requires:       python
 Requires:       python-Pillow >= 6.2.0
 Requires:       python-argon2-cffi >= 16.1.0
