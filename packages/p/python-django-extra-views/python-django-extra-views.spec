@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/AndrewIngram/django-extra-views
 Source:         https://github.com/AndrewIngram/django-extra-views/archive/%{version}.tar.gz#/django-extra-views-%{version}.tar.gz
 Patch0:         https://patch-diff.githubusercontent.com/raw/AndrewIngram/django-extra-views/pull/233.patch#/merged_pr_233.patch
+Patch1:         merged_10881330.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,6 +47,7 @@ Extra class-based views for Django.
 %prep
 %setup -q -n django-extra-views-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -61,6 +63,6 @@ export DJANGO_SETTINGS_MODULE=extra_views_tests.settings
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/*extra[-_]views*/
 
 %changelog
