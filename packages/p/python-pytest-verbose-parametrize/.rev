@@ -25,4 +25,14 @@
     <comment>- Skip integration tests</comment>
     <requestid>725258</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>645244db40a7a5ff59e062b9ce26abce</srcmd5>
+    <version>1.7.0</version>
+    <time>1641855230</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Iterable-collections.patch to avoid Python 3.10
+  incompatibility (gh#man-group/pytest-plugins#197).
+</comment>
+    <requestid>945369</requestid>
+  </revision>
 </revisionlist>

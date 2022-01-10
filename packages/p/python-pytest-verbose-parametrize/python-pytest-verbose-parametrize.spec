@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-verbose-parametrize
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-verbose-parametrize/pytest-verbose-parametrize-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Iterable-collections.patch gh#man-group/pytest-plugins#197 mcepl@suse.com
+# Python 3.10 finally really killed collections class, which are now in
+# collections.abc
+Patch0:         Iterable-collections.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,6 +50,8 @@ More descriptive output for parametrized py.test tests.
 
 %prep
 %setup -q -n pytest-verbose-parametrize-%{version}
+%autopatch -p1
+
 # we can't do integration tests as py2 and py3 can be different versions
 # and the script simply calls $bindir/pytest
 rm tests/integration/test_verbose_parametrize.py

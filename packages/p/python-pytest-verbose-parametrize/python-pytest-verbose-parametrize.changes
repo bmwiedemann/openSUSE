@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:09:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add Iterable-collections.patch to avoid Python 3.10
+  incompatibility (gh#man-group/pytest-plugins#197).
+
+-------------------------------------------------------------------
 Thu Aug 22 09:05:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip integration tests
