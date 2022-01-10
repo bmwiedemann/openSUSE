@@ -24615,7 +24615,6 @@ unsorted:
   - python36-pyface 
   - python36-pymisp 
   - python36-pypiserver 
-  - python36-pyshark: [x86_64] 
   - python36-pysvn 
   - python36-pytest-aiofiles 
   - python36-pytest-djangoapp 
@@ -24625,7 +24624,6 @@ unsorted:
   - python36-pytest-parallel 
   - python36-pytest-verbose-parametrize 
   - python36-python-crfsuite 
-  - python36-python-crontab: [x86_64] 
   - python36-python-datamatrix 
   - python36-python-gammu 
   - python36-python-jsonschema-objects 
@@ -24672,7 +24670,6 @@ unsorted:
   - python36-uncompyle6 
   - python36-unicodedata2 
   - python36-varlink 
-  - python36-watchgod: [i586] 
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
