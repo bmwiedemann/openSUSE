@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-filter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/carltongibson/django-filter
 Source:         https://files.pythonhosted.org/packages/source/d/django-filter/django-filter-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module coreapi}
 BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module mock}
@@ -59,6 +60,6 @@ requires Python 2.7 or higher. For usage and installation instructions, consult 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES.rst README.rst docs/{*.txt,ref/*.txt}
-%{python_sitelib}/*
+%{python_sitelib}/*django[-_]filter*/
 
 %changelog
