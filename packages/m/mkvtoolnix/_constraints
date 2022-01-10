@@ -1,15 +1,20 @@
 <constraints>
+  <hardware>
+    <disk>
+      <size unit="M">8000</size>
+    </disk>
+    <physicalmemory>
+      <size unit="M">7000</size>
+    </physicalmemory>
+  </hardware>
   <overwrite>
     <conditions>
-      <arch>ppc64</arch>
-      <arch>ppc64le</arch>
+      <arch>armv7l</arch>
+      <arch>armv6l</arch>
     </conditions>
     <hardware>
-      <disk>
-        <size unit="M">8000</size>
-      </disk>
       <physicalmemory>
-        <size unit="M">7000</size>
+        <size unit="M">4000</size>
       </physicalmemory>
     </hardware>
   </overwrite>
