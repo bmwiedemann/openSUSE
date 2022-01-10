@@ -34,4 +34,25 @@
     <comment></comment>
     <requestid>826313</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16b6db8768e4fde26845a323032a7d3a</srcmd5>
+    <version>4.0.5</version>
+    <time>1641855245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.5:
+  - Drop support for EOL Python 2.7 and 3.4
+  - Add python_requires to help pip
+  - Upgrade Python syntax with pyupgrade --py3-plus
+  - Require pytest 5+ to remove hasattr('from_parent') check
+  - Fix typo: setup.cfg or pytest.ini
+  - implement collect
+  - switch to cooperative ctors and correct node trees to future
+    proof
+  - Remove FlakesItem.collect
+  - Remove add_marker backward compat check
+  - Remove tokenize.open backward compat
+  - Prepare for upcoming pytest 7.0 deprecations
+</comment>
+    <requestid>945416</requestid>
+  </revision>
 </revisionlist>

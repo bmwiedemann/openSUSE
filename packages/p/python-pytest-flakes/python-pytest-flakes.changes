@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 10 21:23:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 4.0.5:
+  - Drop support for EOL Python 2.7 and 3.4
+  - Add python_requires to help pip
+  - Upgrade Python syntax with pyupgrade --py3-plus
+  - Require pytest 5+ to remove hasattr('from_parent') check
+  - Fix typo: setup.cfg or pytest.ini
+  - implement collect
+  - switch to cooperative ctors and correct node trees to future
+    proof
+  - Remove FlakesItem.collect
+  - Remove add_marker backward compat check
+  - Remove tokenize.open backward compat
+  - Prepare for upcoming pytest 7.0 deprecations
+
+-------------------------------------------------------------------
 Thu Aug 13 08:50:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 4.0.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flakes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-flakes
-Version:        4.0.1
+Version:        4.0.5
 Release:        0
 Summary:        Pytest plugin to check source code with pyflakes
 License:        MIT
