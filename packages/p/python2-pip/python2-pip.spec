@@ -1,7 +1,7 @@
 #
 # spec file for package python2-pip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,7 @@ BuildRequires:  python2-setuptools
 Requires:       ca-certificates
 Requires:       coreutils
 Requires:       python2-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(pre):  update-alternatives
 Recommends:     ca-certificates-mozilla
 BuildArch:      noarch
 
@@ -55,21 +54,11 @@ rm src/pip/_vendor/certifi/cacert.pem
 
 %install
 %python2_install
-
-# update-alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-touch %{buildroot}%{_sysconfdir}/alternatives/pip
-ln -sf %{_sysconfdir}/alternatives/pip \
-     %{buildroot}%{_bindir}/pip
-
 %fdupes %{buildroot}%{python2_sitelib}
 
-%post
-# can't use `python_install_alternative` because it's pipX.Y, not pip-X.Y
-%{_sbindir}/update-alternatives --install %{_bindir}/pip \
-    pip %{_bindir}/pip2.7 27
-
-%postun
+%pre
+# remove previous u-a usage early so an update of pip packages for python3 does not fail
+# boo#1194429
 if [ ! -f %{_bindir}/pip ] ; then
     %{_sbindir}/update-alternatives --remove pip %{_bindir}/pip2.7
 fi
@@ -77,9 +66,8 @@ fi
 %files
 %license LICENSE.txt
 %doc AUTHORS.txt NEWS.rst README.rst
-%ghost %{_sysconfdir}/alternatives/pip
 %{_bindir}/pip%{python2_version}
-%{_bindir}/pip
+%exclude %{_bindir}/pip
 %{_bindir}/pip2
 %{python2_sitelib}/pip-%{version}-py*.egg-info
 %{python2_sitelib}/pip

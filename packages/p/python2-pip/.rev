@@ -15,4 +15,12 @@
     <comment>- Fix use of alternatives</comment>
     <requestid>796257</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>00a7b9e57e0d05b243a13c9f4b66252e</srcmd5>
+    <version>20.0.2</version>
+    <time>1641855215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945327</requestid>
+  </revision>
 </revisionlist>

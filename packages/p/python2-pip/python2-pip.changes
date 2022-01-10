@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 10 11:01:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove alternatives usage
+- required for fixing boo#1194429: all alternatives providers of
+  /usr/bin/pip need to use the same logic.
+
+-------------------------------------------------------------------
 Wed Apr 22 10:02:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Fix use of alternatives
