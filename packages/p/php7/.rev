@@ -1191,4 +1191,13 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   https://www.php.net/ChangeLog-7.php#7.4.27</comment>
     <requestid>941269</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>dae8981fd727a69d491d34099d23280e</srcmd5>
+    <version>7.4.27</version>
+    <time>1641855718</time>
+    <user>dimstar_suse</user>
+    <comment>- use /tmp to store session information (boo#1194414)
+  % php-ini.patch (forwarded request 945110 from adkorte)</comment>
+    <requestid>945331</requestid>
+  </revision>
 </revisionlist>

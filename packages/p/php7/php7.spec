@@ -168,8 +168,6 @@ BuildRequires:  php-fpm = %{version}
 %if "%{flavor}" == ""
 Requires:       php-sapi = %{version}
 Requires:       timezone
-Requires(pre):  group(www)
-Requires(pre):  user(wwwrun)
 Recommends:     php-ctype = %{version}
 Recommends:     php-dom = %{version}
 Recommends:     php-iconv = %{version}
@@ -318,6 +316,8 @@ Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires:       php = %{version}
+Requires:       group(www)
+Requires:       user(wwwrun)
 Provides:       php-fpm = %{version}
 Provides:       php-sapi = %{version}
 Conflicts:      php-fpm < %{version}
@@ -1284,8 +1284,6 @@ for f in %{buildroot}%{extension_dir}/*; do
     fi
     echo "${zend_}extension=$ext.so" >> %{buildroot}%{php_sysconf}/conf.d/$ext.ini
 done
-# directory for sessions
-install -d %{buildroot}%{_localstatedir}/lib/%{php_name}
 # fix symlink (bnc#734176)
 ln -s %{_bindir}/php %{buildroot}%{_bindir}/%{php_name}
 # install the macros file:
@@ -1366,7 +1364,6 @@ fi
 %dir %{extension_dir}
 %dir %{php_sysconf}
 %dir %{php_sysconf}/conf.d
-%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}
 
 %files cli
 %defattr(-, root, root)
