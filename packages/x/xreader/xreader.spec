@@ -1,7 +1,7 @@
 #
 # spec file for package xreader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        3.0.0
+Version:        3.2.2
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -203,14 +203,13 @@ A plugin for Xreader to read Pixbuf documents.
 
 %build
 %meson \
--Ddbus=true \
 -Dintrospection=true \
 -Ddjvu=true \
 -Ddvi=true \
 -Dt1lib=true \
 -Dpixbuf=true \
 -Dcomics=true \
--Dhelp_files=true \
+-Dhelp_files=true
 
 %meson_build
 

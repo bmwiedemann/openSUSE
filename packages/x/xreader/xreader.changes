@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 10 17:43:48 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Removed unused -Dbus option.
+
+-------------------------------------------------------------------
+Tue Jan  4 02:22:36 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.2.
+  * l10n: Update translations
+- Update to version 3.2.1
+  * Gsettings: Remove state schema reference
+- Update to version 3.2.0
+  * Add an option to hide the menu bar
+  * Make show-toolbar a global setting
+  * Update the README. (#498)
+  * window: Don't show any toolbar in fullscreen
+  * rtl: Fix arrow key navigation in mangas
+  * metadata: Save the number of pages
+  * Remove landing view
+  * l10n: Update POT
+- Update to version 3.0.2
+  * l10n: Update translations
+- Update to version 3.0.1
+  * annotation icons added (#491)
+  * attachment popup fix (#492)
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Thu Jun  3 09:12:57 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 3.0.0.
