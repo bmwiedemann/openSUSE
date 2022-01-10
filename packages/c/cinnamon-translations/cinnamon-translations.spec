@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-translations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _version 4.0.0
+%define _version 5.0.0
 Name:           cinnamon-translations
-Version:        4.8.0
+Version:        5.2.1
 Release:        0
 Summary:        Translation files for the Cinnamon desktop
 License:        GPL-2.0-or-later

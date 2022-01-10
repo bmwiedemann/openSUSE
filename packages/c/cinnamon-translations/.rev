@@ -169,4 +169,15 @@
 </comment>
     <requestid>855393</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>24a8c38d56ecf0687b6e742e3f00e10c</srcmd5>
+    <version>5.2.1</version>
+    <time>1641855179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.1.
+  * Update translations - andy great &lt;andythe_great@pm.me&gt;
+  * Updated copyright year.
+</comment>
+    <requestid>945164</requestid>
+  </revision>
 </revisionlist>
