@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -27,15 +27,18 @@ URL:            https://qsynth.sourceforge.net/qsynth-index.html
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
 Patch1:         qsynth-fix_desktop_file.patch
 BuildRequires:  cmake
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.0.0
 Recommends:     %{name}-lang
 
@@ -49,19 +52,22 @@ toolkit using Qt Designer.
 %autosetup -p1
 
 %build
+%if 0%{?sle_version} >= 150400
+export CXX=g++-11
+%endif
 %cmake
 %cmake_build
 
 %install
 %cmake_install
-%suse_update_desktop_file -r "%{name}" AudioVideo Midi
+%suse_update_desktop_file -r "org.rncbc.%{name}" AudioVideo Midi
 %find_lang %{name} --with-qt
 
 %files
 %doc ChangeLog
-%license COPYING
+%license LICENSE
 %{_bindir}/qsynth
-%{_datadir}/applications/qsynth.desktop
+%{_datadir}/applications/org.rncbc.%{name}.desktop
 %{_datadir}/icons/*/*/apps/qsynth.png
 %{_datadir}/icons/hicolor/scalable/apps/qsynth.svg
 %{_datadir}/metainfo

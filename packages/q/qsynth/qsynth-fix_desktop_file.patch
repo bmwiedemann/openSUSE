@@ -1,7 +1,7 @@
-Index: qsynth-0.5.0/src/qsynth.desktop
+Index: qsynth-0.9.5/src/org.rncbc.qsynth.desktop
 ===================================================================
---- qsynth-0.5.0.orig/src/qsynth.desktop
-+++ qsynth-0.5.0/src/qsynth.desktop
+--- qsynth-0.9.5.orig/src/org.rncbc.qsynth.desktop
++++ qsynth-0.9.5/src/org.rncbc.qsynth.desktop
 @@ -15,4 +15,3 @@ Terminal=false
  Type=Application
  StartupWMClass=qsynth

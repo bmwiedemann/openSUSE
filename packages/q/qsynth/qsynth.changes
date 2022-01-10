@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  9 20:26:06 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.5
+  * Dropped autotools (autoconf, automake, etc.) build system.
+  * Fixed for Qt6 plugins path eg. widget theme or styles.
+- Switch build to Qt6
+- Refresh qsynth-fix_desktop_file.patch
+
+-------------------------------------------------------------------
 Sun Jul  4 15:44:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.4
