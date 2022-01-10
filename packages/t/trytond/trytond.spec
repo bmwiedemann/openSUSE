@@ -1,8 +1,8 @@
 #
 # spec file for package trytond
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2015-2021 Dr. Axel Braun
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2015-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.42
+Version:        %{majorver}.43
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -39,6 +39,7 @@ Patch1:         revert_werkzeug_setup.patch
 Patch2:         fix_werkzeug_2.x.patch
 Patch3:         Update_changed_fields.diff
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
 BuildRequires:  python3-lxml >= 2.0
