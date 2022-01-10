@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan  8 11:59:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2:
+  + Context: Fix a memory leak if ACL was used
+  + RootDevice: Deprecate get_relative_location call
+  + RootDevice, Device & Service: Fix use-after-free if Service
+    lives longer than RootDevice
+  + Service: Declare _valist functions deprecated
+  + ServiceAction: Deprecate _return() call
+  + ServiceProxy:
+    - Fix re-queueing the message if POST fails
+    - Fix double-free on ProxyAction
+  + ServiceProxyAction: add _set() to the public API
+  + ControlPoint: Deprecate get_context() call
+  + Doc:
+    - Add missing ContextFilter description
+    - Add note regarding ACL and host_path()
+    - Add note regarding error handling of call API
+- Add gupnp-build-man-pages.patch: Build and install the manpage.
+
+-------------------------------------------------------------------
 Mon Dec  6 17:58:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.1:

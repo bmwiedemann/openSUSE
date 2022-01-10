@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define sover 1.2
 
 Name:           gupnp
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.0-or-later
@@ -29,6 +29,9 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
 Source0:        https://download.gnome.org/sources/gupnp/1.4/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM gupnp-build-man-pages.patch -- Build and install the manpage
+Patch0:         gupnp-build-man-pages.patch
+
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
