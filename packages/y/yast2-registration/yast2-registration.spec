@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.4.10
+Version:        4.4.11
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -28,15 +28,13 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
 # ProductSpec API
-BuildRequires:  suseconnect-ruby-bindings
 BuildRequires:  yast2 >= 4.4.21
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-slp >= 3.1.9
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.5
-# FFI is needed by suseconnect-ruby-bindings, this ensures the correct Ruby version
-# is installed, it fixes the "have choice for rubygem(ffi)" dependency problem
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:ffi)
+# uses Fiddle instead of FFI
+BuildRequires:  suseconnect-ruby-bindings > 0.0.4
 # ProductSpec API
 BuildRequires:  yast2-packager >= 4.4.13
 BuildRequires:  yast2-update >= 3.1.36
@@ -46,13 +44,11 @@ Requires:       yast2 >= 4.4.21
 # "dupAllowVendorChange" option in Pkg.SetSolverFlags()
 Requires:       yast2-pkg-bindings >= 3.1.34
 # N_() method
-Requires:       suseconnect-ruby-bindings
 Requires:       yast2-ruby-bindings >= 3.1.12
-# FFI is needed by suseconnect-ruby-bindings, this ensures the correct Ruby version
-# is installed, it fixes the "have choice for rubygem(ffi)" dependency problem
+# uses Fiddle instead of FFI
+Requires:       suseconnect-ruby-bindings > 0.0.4
 Requires:       yast2-add-on >= 3.1.8
 Requires:       yast2-slp >= 3.1.9
-Requires:       rubygem(%{rb_default_ruby_abi}:ffi)
 # ProductSpec API
 Requires:       yast2-packager >= 4.4.13
 Requires:       yast2-update >= 3.1.36

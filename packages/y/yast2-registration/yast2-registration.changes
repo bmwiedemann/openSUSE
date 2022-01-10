@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 10 09:51:02 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Removed rubygem-ffi dependency, suse-connect-ng now uses
+  Fiddle which is part of Ruby stdlib (related to jsc#CSD-21)
+- 4.4.11
+
+-------------------------------------------------------------------
 Fri Dec 31 16:11:06 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt to ruby3.1 (bsc#1193192)

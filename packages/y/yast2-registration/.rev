@@ -1952,4 +1952,12 @@
     <comment>submit new version 4.4.10</comment>
     <requestid>943533</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>5390ff0abc6a9f4fcfc6290a24565f57</srcmd5>
+    <version>4.4.11</version>
+    <time>1641855702</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.11</comment>
+    <requestid>945258</requestid>
+  </revision>
 </revisionlist>
