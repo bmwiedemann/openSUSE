@@ -212,4 +212,12 @@
     <comment>Bugfix Release</comment>
     <requestid>936094</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>957aec65186ba46ac2e71c34c073ceed</srcmd5>
+    <version>5.0.17</version>
+    <time>1641855221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>945352</requestid>
+  </revision>
 </revisionlist>
