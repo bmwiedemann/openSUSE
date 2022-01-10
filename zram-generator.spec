@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package zram-generator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _systemd_util_dir /usr/lib/systemd
 
 Name:           zram-generator
-Version:        1.0.1~git25.5e0ec60
+Version:        1.1.1~git5.8612dbb
 Release:        0
 Summary:        Systemd unit generator for zram swap devices
 License:        MIT
@@ -77,5 +77,5 @@ export SYSTEMD_UTIL_DIR=%{_systemd_util_dir}
 %{_unitdir}/systemd-zram-setup@.service
 %{_mandir}/man8/zram-generator.8*
 %{_mandir}/man5/zram-generator.conf.5*
-%changelog
 
+%changelog

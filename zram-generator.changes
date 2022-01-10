@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan  7 01:26:50 UTC 2022 - William Brown <william.brown@suse.com>
+
+- resolve bsc#1194113 (CVE-2018-25023)
+- resolve bsc#1194119 (CVE-2021-45710)
+
+-------------------------------------------------------------------
+Fri Jan 07 01:25:47 UTC 2022 - bbrunner@suse.com
+
+- Update to version 1.1.1~git5.8612dbb:
+  * Update install from source instruction
+  * Document workaround for making zram mounts user-writable (c.f. #146)
+  * Issue warning if /s/b/z0/backing_dev doesn't exist and wb-dev= set
+  * Skip test if unshare fails
+  * Accept NOMAN in Makefile, disabling build: and install: manpage processing
+  * Version 1.1.1
+  * Bump minimum rust-ini to 0.15, first one with ordered keys
+  * Don't CLONE_NEWUSER when already root. Privatise all mounts first
+  * Add Aqs around README mails
+  * Update my author mail
+
+-------------------------------------------------------------------
 Fri Nov 26 15:16:23 UTC 2021 - Benjamin Brunner <bbrunner@suse.com>
 
 - Temporary pre-generate man-pages, to avoid dependency on
