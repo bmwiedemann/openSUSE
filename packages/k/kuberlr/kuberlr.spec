@@ -1,7 +1,7 @@
 #
 # spec file for package kuberlr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+
 Name:           kuberlr
-Version:        0.3.1
+Version:        0.4.1
 Release:        0
 Summary:        A tool that simplifies the management of multiple versions of kubectl
 License:        Apache-2.0
@@ -26,15 +28,14 @@ URL:            https://github.com/flavio/kuberlr
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.13
+BuildRequires:  golang(API) = 1.16
 Requires(post): %fillup_prereq
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if 0%{?suse_version} <= 1500
 Conflicts:      kubernetes-client
 %endif
 Provides:       kubernetes-client-provider = %{version}
-%{go_nostrip}
 
 %description
 kuberlr (kube-ruler) is a simple wrapper for kubectl. Its main purpose is to
@@ -42,17 +43,17 @@ make it easy to manage clusters running different versions of kubernetes.
 
 %prep
 %setup -q -a1
+%setup -q -T -D -a 1
 
 %build
-export TAG="v%{version}"
-export CLOSEST_TAG="v%{version}"
-%make_build build
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags="-X=github.com/flavio/kuberlr/pkg/kuberlr.Version=%{version}" \
+   -o %{name} ./cmd/%{name}
 
 %install
-export TAG="v%{version}"
-export CLOSEST_TAG="v%{version}"
-%make_install
-install -D -m 0755 ~/go/bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 %if 0%{?suse_version} <= 1500
 install -D -m 0644 %{name}.conf.example %{buildroot}/%{_sysconfdir}/%{name}.conf
 %else

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jan 07 15:40:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.4.1:
+  * Tag release 0.4.1
+  * Fixing issue of process holding on to file during rename
+
+-------------------------------------------------------------------
+Fri Jan 07 15:36:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.4.0:
+  * Release version 0.4.0
+  * Fix error reporting inside of downloader
+  * Add `get` command
+  * Update github.com/blang/semver dependency
+  * Don't parse kubectl commandline with flag.Parse()
+
+-------------------------------------------------------------------
+Fri Jan 07 15:32:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.3.2:
+  * Tag version v0.3.2
+  * Act on linter directives
+  * Copy the temp file to dest only if rename fails
+  * style improvements - no functional change
+  * download the hash before the document
+  * ioutil.TempFile returns an open file object
+  * Convert the sha mismatch error msg into a custom error
+  * When downloading versions of kubectl, verify their contents against known SHA256 hashes
+  * Remove vendored tree
+  * Allow to override build date with SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
+Fri Jan  7 14:44:42 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go 1.16 or higher
+- major overhaul of the package to adhere to common go build commands
+  - use 'buildmode=pie'
+  - strip binary
+  - do not use the Makefile, instead directly run the few commands
+
+-------------------------------------------------------------------
 Fri Sep 11 11:27:41 UTC 2020 - dmueller@suse.com
 
 - Update to version 0.3.1:
