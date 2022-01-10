@@ -33,6 +33,7 @@ Patch2:         pr-402-h2-settings-fix.patch
 Patch3:         tests-mark-rpmfail_getaddrinfo.patch
 Patch4:         fix-j1-tests.patch
 Patch5:         http20.patch
+Patch6:         py310.patch
 BuildRequires:  %{python_module brotlipy >= 0.7.0}
 BuildRequires:  %{python_module h2 > 2.5.0}
 BuildRequires:  %{python_module hyperframe >= 3.2}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  9 03:34:01 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add py310.patch to fix Python 3.10 builds
+
+-------------------------------------------------------------------
 Fri Dec 31 09:46:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.7.0+git89.b77e758:
