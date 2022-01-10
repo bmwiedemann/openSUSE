@@ -109,6 +109,9 @@ make install libdir=%{buildroot}%{_libdir}/ \
 	     docdir=%{buildroot}/%{_docdir}/fltk-devel/html/ \
 	     mandir=%{buildroot}%{_mandir} STRIP=true
 rm -r %{buildroot}%{_mandir}/cat*
+# Strip out "-pie" from fltk-config LDFLAGS, which breaks linking to
+# libfltk from a shared library
+sed -i -e '/LDFLAGS=/ { s@-pie@ @ }' %{buildroot}%{_bindir}/fltk-config
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

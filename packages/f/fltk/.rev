@@ -378,4 +378,13 @@ Feel free to revert the update to submit it to Factory or to leave the request o
 - Use bzip2 compressed sources</comment>
     <requestid>935949</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>dd4d45ca4d208b486816c15fc0acd37f</srcmd5>
+    <version>1.3.8</version>
+    <time>1641855721</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix LDFLAGS reported by fltk-config (strip -pie), which breaks
+  building shared libraries linking to libfltk (boo#1194419) (forwarded request 944936 from StefanBruens)</comment>
+    <requestid>945334</requestid>
+  </revision>
 </revisionlist>
