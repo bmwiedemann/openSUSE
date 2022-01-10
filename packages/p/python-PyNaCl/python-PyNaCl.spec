@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyNaCl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-PyNaCl
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
 License:        Apache-2.0
@@ -35,7 +36,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(libsodium) >= 1.0.18
 Requires:       python-cffi
 Requires:       python-six
 # SECTION test requirements
