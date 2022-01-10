@@ -34,4 +34,13 @@
     <comment>- needed for jira#SLE/SLE-19965, jira#SLE/SLE-19964, jira#SLE/SLE-18653</comment>
     <requestid>921811</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16564e3225f5967f570e9f82c2f55ca0</srcmd5>
+    <version>1.1.9</version>
+    <time>1641855723</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.9, which is needed by new 5xx.yy.zz
+  Nvidia driver (upcoming G06 driver series)</comment>
+    <requestid>945353</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libnvidia-egl-wayland
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define lname libnvidia-egl-wayland%{so_ver}
 %define rname egl-wayland
 Name:           libnvidia-egl-wayland
-Version:        1.1.7
+Version:        1.1.9
 Release:        0
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(eglexternalplatform) >= 1.1
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl-backend) >= 3
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(x11)

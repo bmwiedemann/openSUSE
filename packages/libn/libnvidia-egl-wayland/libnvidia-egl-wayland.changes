@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 14:19:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.9, which is needed by new 5xx.yy.zz
+  Nvidia driver (upcoming G06 driver series)
+
+-------------------------------------------------------------------
 Mon Sep 27 13:49:26 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - needed for jira#SLE/SLE-19965, jira#SLE/SLE-19964, jira#SLE/SLE-18653
