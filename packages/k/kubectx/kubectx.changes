@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 07 14:23:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.4:
+  * stop using XDG_CACHE_HOME as home directory (#299)
+  * add -V/--version flag to go implementations (#295)
+
+-------------------------------------------------------------------
 Wed May 26 17:37:45 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
 - rework spec with recommendations from SR#895481
