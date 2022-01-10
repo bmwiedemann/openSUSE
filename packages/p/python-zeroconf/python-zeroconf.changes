@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  3 10:29:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.1:
+  * Dropped Python 3.6 support
+  * Handle Service types that end with another service type
+  * Improve performance of query scheduler
+  * Avoid linear type searches in ServiceBrowsers 
+
+-------------------------------------------------------------------
 Mon Nov 29 11:04:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.37.0:
