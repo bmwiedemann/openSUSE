@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan  9 21:44:48 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.8.5.0
+  * GRC
+    + GRC now runs on Fedora 35 ... Gtk initialization checks were
+      too strict
+    + Fix: dependent variables sometimes fail to evaluate
+    + Change type aliasing to allow interleaved short/byte to be
+      connected to vectors of short/byte. Stricter type checking
+      was added previously and caused some blocks to be unconnectable
+      when using these types.
+    + Account for scale factor when computing drawing area size
+    + Tooltips fixed for categories and modules
+  * gr-digital
+    + Fix yml file for Header/Payload Demux
+  * gr-dtv
+    + Add energy normalization for DVB-S2X constellations.
+  * gr-filter
+    + Remove pyqwt and qt4 from filter_design
+  * gr-qtgui
+    + Enable use of Qwt 6.2
+    + Remove unusable int type in Number Sink yml
+    + RangeWidget - implement Eng & EngSlider
+- Patch 0003-enables-use-of-qwt-6_2.patch removed (applied upstream).
+
+-------------------------------------------------------------------
 Tue Oct 19 09:55:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable again LTO on %{arm} as it builds properly now

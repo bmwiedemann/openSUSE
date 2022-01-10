@@ -16,10 +16,10 @@
 #
 
 
-%define sover  3_8_4
+%define sover  3_8_5
 %bcond_without docs
 Name:           gnuradio
-Version:        3.8.4.0
+Version:        3.8.5.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
 Patch1:         revert-23cece0d0.patch
 Patch2:         0001-gr-digital-glfsr.h-drop-boost-cstdint.hpp-and-use-cs.patch
-Patch3:         0003-enables-use-of-qwt-6_2.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.8
 BuildRequires:  cppunit-devel
