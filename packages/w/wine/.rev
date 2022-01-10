@@ -4281,4 +4281,14 @@
   builtin dll marker (forwarded request 943667 from Vogtinator)</comment>
     <requestid>943713</requestid>
   </revision>
+  <revision rev="365" vrev="1">
+    <srcmd5>f56eca37f1ddd16d03203302ac8d4783</srcmd5>
+    <version>7.0~rc5</version>
+    <time>1641855182</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0-rc5 release candidate
+  - Bug fixes only, we are in code freeze.
+- update staging to 7.0-rc5 release</comment>
+    <requestid>945236</requestid>
+  </revision>
 </revisionlist>
