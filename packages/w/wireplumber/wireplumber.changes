@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jan 10 09:50:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Reformat .changes file to limit lines to 67 chars when possible.
+
+-------------------------------------------------------------------
+Sat Jan  8 16:12:57 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.4.6:
+  * Fix a lot of race condition bugs that would cause strange
+    crashes or many log messages being printed when streaming
+    clients would connect and disconnect very fast.
+  * Improve the logic for selecting a default target device.
+  * Fix switching to headphones when the wired headphones are
+    plugged in.
+  * Fix an issue where "udevadm trigger" would break wireplumber.
+  * Fix an issue where switching profiles of a device could kill
+    client nodes.
+  * Fix briefly switching output to a secondary device when
+    switching device profiles (#85)
+  * Fix "wpctl status" showing default device selections when
+    dealing with module-loopback virtual sinks and sources.
+  * WirePlumber now ignores hidden files from the config directory.
+  * Fix an interoperability issue with jackdbus.
+  * Fix an issue where pulseaudio tcp clients would not have
+    permissions to connect to PipeWire.
+  * Fix a crash in the journald logger with NULL debug messages.
+  * Enable real-time priority for the bluetooth nodes to run in RT.
+  * Make the default stream volume configurable.
+  * Scripts are now also looked up in
+    $XDG_CONFIG_HOME/wireplumber/scripts
+  * Update documentation on configuring WirePlumber and fixed some
+    more documentation issues.
+  * Add support for using strings as log level selectors in
+    WIREPLUMBER_DEBUG.
+- Drop patches merged upstream:
+  * 0001-m-reserve-device-replace-the-hash-table-key-on-new-insert.patch
+  * 0002-policy-node-wait-for-nodes-when-we-become-unlinked.patch
+- Add patch from upstream to fix a pulse client hanging issue:
+  * 0001-policy-node-schedule-rescan-without-timeout-if-defined-target-is-not-found.patch
+- Add patch from upstream to fix an issue with
+  libpipewire-module-echo-cancel:
+  * 0002-policy-node-find-best-linkable-if-default-one-cannot-be-linked.patch
+
+-------------------------------------------------------------------
 Wed Dec 15 13:48:27 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove many build dependencies which aren't really needed

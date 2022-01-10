@@ -1,7 +1,7 @@
 #
 # spec file for package wireplumber
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define pipewire_minimum_version 0.3.32
+%define pipewire_minimum_version 0.3.43
 %define apiver 0.4
 %define apiver_str 0_4
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,8 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-m-reserve-device-replace-the-hash-table-key-on-new-insert.patch
-Patch1:         0002-policy-node-wait-for-nodes-when-we-become-unlinked.patch
+Patch0:         0001-policy-node-schedule-rescan-without-timeout-if-defined-target-is-not-found.patch
+Patch1:         0002-policy-node-find-best-linkable-if-default-one-cannot-be-linked.patch
 Patch100:       reduce-meson-required-version.patch
 # docs
 BuildRequires:  doxygen
@@ -54,7 +54,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.32
+BuildRequires:  pkgconfig(libpipewire-0.3) >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(systemd)

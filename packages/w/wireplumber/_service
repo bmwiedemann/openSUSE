@@ -4,10 +4,10 @@
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/wireplumber.git</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">0.4.5</param>
+    <param name="revision">0.4.6</param>
     <param name="versionformat">@PARENT_TAG@</param>
 <!--
-    <param name="versionprefix">0.4.1+git</param>
+    <param name="versionprefix">0.4.6+git</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
 -->
   </service>
