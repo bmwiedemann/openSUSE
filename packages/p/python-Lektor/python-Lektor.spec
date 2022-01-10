@@ -103,8 +103,7 @@ a CMS and a static blog engine.
 export LANG=en_US.UTF8
 # Test suite expects a git repo
 git init
-# test_markdown_links is skipped because of gh#lektor/lektor#982
-%pytest -k 'not (network or test_markdown_links)'
+%pytest -k 'not network'
 
 %post
 %python_install_alternative lektor

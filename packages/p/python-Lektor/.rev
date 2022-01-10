@@ -107,4 +107,16 @@
     need it</comment>
     <requestid>944195</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e735e7109b8e53a0c30ace47c38364cb</srcmd5>
+    <version>3.3.0</version>
+    <time>1641855174</time>
+    <user>dimstar_suse</user>
+    <comment>HAS TO GO TOGETHER WITH sr#944542 
+
+- We don't have to skip failing test due to new version of
+  mistune.
+</comment>
+    <requestid>944543</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 20:02:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- We don't have to skip failing test due to new version of
+  mistune.
+
+-------------------------------------------------------------------
 Wed Jan  5 16:39:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 3.3.0:
