@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 18:47:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Re-add fwupdx64.efi.signed symlink (boo#1192206)
+
+-------------------------------------------------------------------
 Thu Oct  7 05:39:32 UTC 2021 - Joey Lee <jlee@suse.com>
 
 - Initial package. fwupd-efi 1.1.

@@ -7,4 +7,12 @@
     <comment>Initial package. fwupd-efi 1.1</comment>
     <requestid>926490</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>feb886b06156cef20941c4ec4e6aa463</srcmd5>
+    <version>1.1</version>
+    <time>1641855694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945211</requestid>
+  </revision>
 </revisionlist>

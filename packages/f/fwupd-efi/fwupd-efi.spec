@@ -72,6 +72,10 @@ distro_name="The openSUSE project"
 export BRP_PESIGN_FILES='%{_libexecdir}/fwupd/efi/fwupd*.efi'
 %meson_install
 
+# link fwupd*.efi.signed to fwupd*.efi (bsc#1129466)
+FWUPD_EFI=`basename %{buildroot}/%{_libexecdir}/fwupd/efi/fwupd*.efi`
+ln -s %{_libexecdir}/fwupd/efi/$FWUPD_EFI %{buildroot}/%{_libexecdir}/fwupd/efi/$FWUPD_EFI.signed
+
 # do not need pc file yet 
 rm $RPM_BUILD_ROOT%{_libdir}/pkgconfig/fwupd-efi.pc
 
