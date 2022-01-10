@@ -1,7 +1,7 @@
 #
 # spec file for package keepass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name KeePass
 Name:           keepass
-Version:        2.49
+Version:        2.50
 Release:        0
 Summary:        Password Manager
 License:        GPL-2.0-or-later
@@ -34,6 +34,8 @@ BuildRequires:  unzip
 BuildRequires:  xdotool-devel
 BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xsel
+Recommends:     libargon2-1
+Recommends:     libgcrypt20
 Recommends:     xdotool
 BuildArch:      noarch
 

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 10 20:59:40 UTC 2022 - Matthias Bach <marix@marix.org> - 2.50
+
+- Update to 2.50
+  * New Features:
+    + On most Linux systems, AES-KDF is now about 4 times as fast as before, if the 'libgcrypt' library is installed.
+    + On most Linux systems, Argon2d and Argon2id are now about 3 times as fast as before (for default parameters), if the 'libargon2' library is installed.
+    + The option 'Enter master key on secure desktop' is now also supported by master key prompt dialogs shown during imports, confirmations (before exporting, printing, changing the master key, ...) and trigger actions.
+    + The option 'Enter master key on secure desktop' is now also supported by master key creation/change dialogs.
+    + The key file/provider combo boxes in the master key dialogs now have a tooltip that shows the current value, if the value is very long.
+    + Added password generation button in the entry string field dialog.
+    + When double-clicking the title cell of an entry in the main entry list while holding down the Shift key, the title is now copied to the clipboard.
+    + Added support for detecting the latest versions of Chromium on Unix-like systems (for 'Open with ...' commands in the 'URL(s)' menu, for the {GOOGLECHROME} placeholder, ...).
+    + In the 'URL(s)' menu, there now are separate commands for Google Chrome and Chromium, if both are installed.
+    + Enhanced support for detecting Vivaldi, Brave, Pale Moon and Epiphany.
+    + Added support for importing Kaspersky Password Manager 9.0.2 TXT files.
+    + Bitwarden import module: added support for importing subfolders, and collection names are now imported as tags.
+    + In the 'About KeePass' dialog, each item in the components list now has a tooltip that shows the file/folder path of the component, if it is installed.
+    + In the 'About KeePass' dialog, a double-click onto a component now shows the component file/folder with the file manager.
+    + In the 'About KeePass' dialog, the components list now has a context menu that provides the following new commands: 'Show with File Manager', 'Copy Version/Status' and 'Copy Path'.
+  * Improvements:
+    + If the option 'An entry matches if one of its tags is contained in the target window title' is turned on, auto-type now additionally considers tags inherited from groups.
+    + The built-in password generation patterns 'Hex Key - *-Bit' now use upper-case hexadecimal symbols.
+    + Improved Spr variance check of the password generator (custom string references, ...).
+    + All commands in the password generator menu (shown by the password generator buttons in entry/string dialogs) support the option 'Show dialog for collecting user input as additional entropy' now.
+  * Bugfixes:
+    + Column header context menus are not shown for non-report list views anymore.
+    + When copying a URL to the clipboard fails, the main entry list is updated now.
+    + Toggling the password generator option 'Show dialog for collecting user input as additional entropy' now causes a switch to the '(Custom)' profile.
+    + In the TAN wizard dialog, group names containing ampersands are displayed correctly now.
+- Add recommends to libargon2-1 and libgrypt20 as Keepass can use
+  those for faster operations.
+
+
+-------------------------------------------------------------------
 Sun Sep 12 09:25:21 UTC 2021 - Matthias Bach <marix@marix.org> - 2.49
 
 - Update to 2.49
