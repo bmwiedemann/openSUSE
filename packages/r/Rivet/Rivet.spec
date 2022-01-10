@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -156,7 +156,7 @@ sed -Ei "1s:^#!\s*%{_bindir}/env bash:#!/bin/bash:" %{buildroot}%{_bindir}/*
 # /SECTION
 
 # SECTION Remove rpaths from config binaries and pkgconfig file
-sed -i "s|-Wl,-rpath,||g" %{buildroot}%{_bindir}/rivet-config
+sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/rivet-config
 # /SECTION
 
 find %{buildroot} -type f -name "*.la" -delete -print
