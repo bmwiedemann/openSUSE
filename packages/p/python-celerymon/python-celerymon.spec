@@ -1,7 +1,7 @@
 #
 # spec file for package python-celerymon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-celerymon
-Version:        1.0.3
+Version:        1.0.3+git.1572430376.dac5d9f
 Release:        0
 Summary:        Real-time monitoring of Celery workers
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/ask/celerymon/
-Source:         https://files.pythonhosted.org/packages/source/c/celerymon/celerymon-%{version}.tar.gz
+URL:            https://github.com/auvipy/celery-flower
+Source:         celery-flower-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_py2k_bug.patch bsc#1192677 mcepl@suse.com
+# Remove py2k error
+Patch0:         fix_py2k_bug.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-celery
 Requires:       python-tornado
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,7 +42,10 @@ BuildArch:      noarch
 celerymon - Real-time monitoring of Celery workers
 
 %prep
-%setup -q -n celerymon-%{version}
+%autosetup -p1 -n celery-flower-%{version}
+
+find -name "*.js" -o -name "*.php" -exec sed -i 's/\r$//' {} \;
+find -name '*.htm' -exec chmod -x {} \;
 
 %build
 %python_build
@@ -46,6 +53,11 @@ celerymon - Real-time monitoring of Celery workers
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/celerymon
+
+%{python_expand \
+find %{buildroot}%{$python_sitelib} \( -name '*.js' -o -name '*.php' -o -name '*.tsv' \) -exec chmod -x {} \;
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %post
 %python_install_alternative celerymon
@@ -57,6 +69,6 @@ celerymon - Real-time monitoring of Celery workers
 %license LICENSE
 %doc AUTHORS README
 %python_alternative %{_bindir}/celerymon
-%{python_sitelib}/*
+%{python_sitelib}/celerymon*
 
 %changelog

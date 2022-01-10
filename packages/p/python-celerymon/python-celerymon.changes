@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 10 21:40:09 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 1.0.3+git.1572430376.dac5d9f:
+  * Unable to start as python manage.py celery mon - fixed.
+  * fixing state imports
+  * updating file permissions for celerymon.py
+  * unrolling generators before json encoding
+  * adding a global state object
+  * adding unrolling for islice objects
+  * fixing isinstance
+  * Allow the page to be viewed on HTTPS as well
+- Add fix_py2k_bug.patch removing py2k-based syntax error
+  (bsc#1192677, gh#auvipy/celery-flower#28)
+
+-------------------------------------------------------------------
 Wed May 27 09:36:42 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

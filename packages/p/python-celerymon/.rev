@@ -87,4 +87,23 @@
     <comment></comment>
     <requestid>809823</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c3d354785fb45aae1a09f725c580b069</srcmd5>
+    <version>1.0.3+git.1572430376.dac5d9f</version>
+    <time>1641855244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3+git.1572430376.dac5d9f:
+  * Unable to start as python manage.py celery mon - fixed.
+  * fixing state imports
+  * updating file permissions for celerymon.py
+  * unrolling generators before json encoding
+  * adding a global state object
+  * adding unrolling for islice objects
+  * fixing isinstance
+  * Allow the page to be viewed on HTTPS as well
+- Add fix_py2k_bug.patch removing py2k-based syntax error
+  (bsc#1192677, gh#auvipy/celery-flower#28)
+</comment>
+    <requestid>945417</requestid>
+  </revision>
 </revisionlist>

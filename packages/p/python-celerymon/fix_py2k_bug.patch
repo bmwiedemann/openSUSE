@@ -1,0 +1,18 @@
+---
+ celerymon/bin/celerymon.py |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+--- a/celerymon/bin/celerymon.py
++++ b/celerymon/bin/celerymon.py
+@@ -91,9 +91,8 @@ class MonitorCommand(Command):
+ 
+             try:
+                 monitor.start()
+-            except Exception, exc:
+-                logger.error('celerymon raised exception %r',
+-                             exc, exc_info=True)
++            except Exception:
++                logger.exception('celerymon raised exception')
+             except KeyboardInterrupt:
+                 pass
+ 
