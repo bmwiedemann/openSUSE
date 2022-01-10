@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 04 13:47:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.2:
+  * Upgrade for K3s HA and fix for merging config on Windows
+    PR #360 Expand --local-path string for Windows by @alexellis
+    PR #359 Added instructions for using --server-user by @cbrachem
+    PR #355 Add --token to HA external datastore command by @Waterdrips
+    PR #354 Build badge with Github CI link by @rashedkvm
+    PR #353 Added GitHub Actions build status using workflow name by @rashedkvm
+    PR #340 Add a blog post to the README by @adyanth
+  * Commits
+    - b3b7106 Expand --local-path string for Windows by @sralloza
+    - 73b7f03 Added instructions for using --server-user by @cbrachem
+    - 080b9cf Add --token to HA external datastore command by @Waterdrips
+    - 38c1dc5 Update README.md by @alexellis
+    - 99811f1 Update README.md by @alexellis
+    - 57e86ae Update README.md by @alexellis
+    - cdcebfb Build badge with Github CI link by @rashedkvm
+    - 40f3ff6 Added build badge using workflow name by @rashedkvm
+    - 2a52d3c Update README.md by @alexellis
+    - 9b6964f Update README.md by @alexellis
+    - b53a140 Update README.md by @alexellis
+    - 9717ee3 Add a blog post to the README by @adyanth
+    - 4c0bbd5 Update pre-reqs in ToC by @alexellis
+    - 89d15f2 Update README with note on passwordless sudo by @alexellis
+    - 2d28f9e Update README.md by @alexellis
+    - 75b863e Update ISSUE_TEMPLATE.md by @alexellis
+    - 26db404 Update .DEREK.yml by @alexellis
+
+-------------------------------------------------------------------
+Tue Jan 04 13:44:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.1:
+  * Set the k3s version to stable
+  * Commits:
+    - 95cf0b1 Set the k3s version to stable by @alexellis
+    - 3315af5 Update README.md by @alexellis
+    - 6fde5ef Fix two ToC links by @alexellis
+    - 337fef3 Update headings and add 2fa note by @alexellis
+
+-------------------------------------------------------------------
 Mon May 17 17:04:27 UTC 2021 - kastl@b1-systems.de
 
 - Update to version 0.11.0:
