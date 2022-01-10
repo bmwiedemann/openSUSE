@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 10 03:31:33 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add upstream 0001-Retro-GTK-1.0.2-fix-meson-build-failure.patch
+  based on commit 8016c10e7216394bc66281f2d9be740140b6fad6 to fix
+  pkg.generate() that got "export_packages" and "namespace" keyword
+  arguments removed in Meson 0.60 release.
+
+-------------------------------------------------------------------
 Mon Mar 22 07:52:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.2:

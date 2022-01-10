@@ -1,7 +1,7 @@
 #
 # spec file for package retro-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 # Use of library versioning and name versioning macros to facilitate updatings
 %define namever 1-0
 %define libver  1
+
 Name:           retro-gtk
 Version:        1.0.2
 Release:        0
@@ -26,7 +27,12 @@ Summary:        Toolkit to write Gtk+3-based frontends to libretro
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://git.gnome.org/browse/retro-gtk
-Source0:        https://download.gnome.org/sources/retro-gtk/1.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/1.0/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-meson-build-failure.patch -- luc14n0@opensuse.org
+# based on commit 8016c10e7216394bc66281f2d9be740140b6fad6.
+# Fix pkg.generate() that got "export_packages" and "namespace"
+# keyword arguments removed in Meson 0.60 release.
+Patch0001:      0001-Retro-GTK-1.0.2-fix-meson-build-failure.patch
 
 BuildRequires:  gobject-introspection-devel >= 0.6.7
 BuildRequires:  meson >= 0.50.0
