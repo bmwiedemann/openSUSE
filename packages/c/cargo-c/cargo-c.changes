@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 10 10:12:10 UTC 2022 - asn@cryptomilk.org
+
+- Update to version 0.9.6~git0.68e65ad:
+  * Prepare for release
+  * Bump cargo
+  * Support custom paths for data files as it is available for includes
+  * Fix the datadir description
+  * Change the configuration paths for datadir
+  * Add datadir destination path customization
+  * Suppress warning about dead code for Common
+  * Add datadir support
+  * Make sure the right rust is used on deploy
+  * Bump the edition in the examples
+
+-------------------------------------------------------------------
 Thu Jan 06 06:58:06 UTC 2022 - william.brown@suse.com
 
 - resolve bsc#1194113 (CVE-2018-25023)

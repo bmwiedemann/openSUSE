@@ -3,12 +3,11 @@
     <param name="url">https://github.com/lu-zero/cargo-c.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">v0.8.1</param>
+    <param name="revision">v0.9.6</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">william.brown@suse.com</param>
   </service>
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">

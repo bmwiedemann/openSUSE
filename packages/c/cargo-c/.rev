@@ -87,4 +87,23 @@ Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)
     <comment></comment>
     <requestid>944583</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8444df44c2e4da7c80ace47116989bbf</srcmd5>
+    <version>0.9.6~git0.68e65ad</version>
+    <time>1641855703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.6~git0.68e65ad:
+  * Prepare for release
+  * Bump cargo
+  * Support custom paths for data files as it is available for includes
+  * Fix the datadir description
+  * Change the configuration paths for datadir
+  * Add datadir destination path customization
+  * Suppress warning about dead code for Common
+  * Add datadir support
+  * Make sure the right rust is used on deploy
+  * Bump the edition in the examples
+</comment>
+    <requestid>945259</requestid>
+  </revision>
 </revisionlist>
