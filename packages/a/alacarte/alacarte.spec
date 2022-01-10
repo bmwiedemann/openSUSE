@@ -1,7 +1,7 @@
 #
 # spec file for package alacarte
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.2
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  update-desktop-files
