@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  4 18:55:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20211102.0:
+  * absl::Cord is now implemented as a b-tree. The new implementation offers
+    improved performance in most workloads.
+  * absl::SimpleHexAtoi() has been added to strings library for parsing
+    hexadecimal strings 
+
+-------------------------------------------------------------------
 Wed Jun 30 11:18:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20210324.2 (LTS):
