@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-Name:           libcamera
 %define lname   libcamera-suse7
-Version:        0.0.0+g3076.d79b4120
+Name:           libcamera
+Version:        0.0.0+g3381.1db1e31e
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,8 +34,8 @@ BuildRequires:  c++_compiler
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Gui-devel
 BuildRequires:  libQt5Widgets-devel
-BuildRequires:  meson >= 0.55
-BuildRequires:  pkg-config
+BuildRequires:  meson >= 0.53
+BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-ply
