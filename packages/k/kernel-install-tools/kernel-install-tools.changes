@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 18:49:15 UTC 2022 - jeffm@suse.com
+
+- Update to version 0.2.10:
+  * Support non-x86 architectures.
+
+-------------------------------------------------------------------
 Wed Nov 10 19:56:48 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
 
 - Cleaned up rpmlint warnings and made usrmerge support cleaner.

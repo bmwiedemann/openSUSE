@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-install-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           kernel-install-tools
-Version:        0.2.8
+Version:        0.2.10
 Release:        0
-Summary:	Useful tools for installing self-built kernels
-Group:		Development/Tools/Other
-License:        GPL-2.0
+Summary:        Useful tools for installing self-built kernels
+Group:          Development/Tools/Other
+License:        GPL-2.0-only
 URL:            https://github.com/jeffmahoney/kernel-install-tools
 Source:         %{name}-%{version}.tar.xz
-Requires:	openssl
-Requires:	pesign
-Requires:	mozilla-nss-tools
+Requires:       mozilla-nss-tools
+Requires:       openssl
+Requires:       pesign
 
-BuildArch:	noarch
+BuildArch:      noarch
 
 %description
 A collection of tools useful for installing self-built kernels.
