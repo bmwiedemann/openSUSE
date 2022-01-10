@@ -48,4 +48,14 @@
     <comment></comment>
     <requestid>924949</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac884858b07be6ded5b28452304d0a46</srcmd5>
+    <version>3.0.0</version>
+    <time>1641855244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * support python 3.9+
+  * remove support of python 3.5/3.6</comment>
+    <requestid>945422</requestid>
+  </revision>
 </revisionlist>
