@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-classy-tags
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-classy-tags
 Version:        2.0.0
 Release:        0
@@ -24,11 +25,13 @@ Summary:        Class based template tags for Django
 License:        MIT
 URL:            https://github.com/ojii/django-classy-tags
 Source:         https://github.com/divio/django-classy-tags/archive/%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.11}
+# https://github.com/django-cms/django-classy-tags/pull/66
+Patch0:         dj40.patch
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,6 +41,8 @@ which is fully compatible with the current Django templating infrastructure.
 
 %prep
 %setup -q -n django-classy-tags-%{version}
+%patch0 -p1
+sed -i 's/verbosity=1/verbosity=2/' tests/settings.py
 
 %build
 %python_build
@@ -54,7 +59,7 @@ export PYTHONPATH='.'
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/classytags
-%{python_sitelib}/django_classy_tags*egg-info
+%{python_sitelib}/classytags/
+%{python_sitelib}/django_classy_tags*egg-info/
 
 %changelog
