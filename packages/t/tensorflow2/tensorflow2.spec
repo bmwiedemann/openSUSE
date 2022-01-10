@@ -226,6 +226,7 @@ Patch22:        tensorflow-2.6.0-tf-keras-hdf5-3.patch
 Patch23:        tensorflow-2.6.0-compile-with-protobuf-3.16.patch
 # cuda header is fetched on vanilla, disable it the hard way
 
+%if !%{is_lite}
 # See https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py
 Requires:       python3
 Requires:       python3-Keras-Preprocessing
@@ -249,6 +250,7 @@ Requires:       python3-numpy-%{compiler_family}%{?c_f_ver}-hpc
 Requires:       python3-numpy
 %endif
 Requires:       python3-pip
+%endif
 %if !%{is_lite}
 %if %{with hpc}
 Provides:       python3-tensorflow-%{compiler_family}%{?c_f_ver}-hpc

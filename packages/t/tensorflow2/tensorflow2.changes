@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 14:03:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- tensorflow2-lite version does not need all the python dependencies
+  listed for tensorflow2
+
+-------------------------------------------------------------------
 Fri Jan  7 10:15:53 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Leap 15.x / Backports: Do not build non-Lite versions since python3-numpy
