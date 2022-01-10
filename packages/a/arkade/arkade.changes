@@ -1,4 +1,289 @@
 -------------------------------------------------------------------
+Tue Jan 04 19:42:06 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.11:
+  * Fixed k3d binary template for ming os target
+  * Update Portainer app to use helm chart.
+  * Update README.md
+  * Fix k10multicluster app
+  * Fix variable in help message for k10
+  * Fix for prometheus flag in K10 app
+
+-------------------------------------------------------------------
+Tue Jan  4 19:41:42 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go 1.16 or higher
+
+-------------------------------------------------------------------
+Tue Jan 04 19:38:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.10:
+  * Update spacing on app
+  * Prevent kanister installation on ARM clusters
+  * Update README for 52 apps
+  * added kanister app
+  * Update 40 charts to 48
+  * Reformat testimonials
+  * Reduce depth of ToC for README
+  * feature: add clusterctl tool to arkade
+  * Fix inlets pro download link for arm64 darwin with test case
+
+-------------------------------------------------------------------
+Tue Jan 04 19:37:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.9:
+  * Fix kube-bench download
+  * Added missing test cases for terraform and packer
+  * Fix `packer` arm64 install
+  * Fix `terraform` arm64 install
+  * feat: add waypoint app to arkade
+  * Fix domain and ip settings for GitLab app
+  * feat: add prometheus to arkade
+  * Update links to arkade's down contributing guide
+  * Give arkade its own, simpler contribution guide.
+  * Build badge updated with Github CI link
+
+-------------------------------------------------------------------
+Tue Jan 04 19:34:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.8:
+  * Fix issue blocking use of Apple M1
+  * feat: Add waypoint cli to arkade
+  * Add missing help / examples for os/arch flags in get command
+
+-------------------------------------------------------------------
+Tue Jan 04 19:32:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.7:
+  * fix: update krew binary download
+  * Support --arch and --os flags for arkade get
+  * Rename flags for inlets-operator
+  * Added GitHub Actions build status using workflow name
+
+-------------------------------------------------------------------
+Tue Jan 04 19:29:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.6:
+  * Fix docker registry ingress app for k8s 1.22
+  * Add new-line after arkade get completes
+  * Update istio app version
+  * Bump version of cert-manager to v1.5.4
+  * Update README.md
+  * kubectl: update kubectl version to the one that supports arm64
+
+-------------------------------------------------------------------
+Tue Jan 04 19:24:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.5:
+  * Add dry-run flag for preflight command
+  * Add preflight command
+  * Add line break after post installation msg
+  * Add tests for DownloadURLs
+  * Update version overwriting in tool check
+  * Added CockroachDB to install command, with arm install prevention.
+  * Update check for tools existence
+  * Refactor and add tests for post download msg templates
+  * Add multi-tool download support
+  * Rename flag for OIDC connector for openfaas
+  * Refactoring a unit test for flags
+  * Add rollout status command to block until ready
+
+-------------------------------------------------------------------
+Tue Jan 04 19:22:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.4:
+  * Update usage message for install command
+  * Return an error in case of an unknown app to install command
+
+-------------------------------------------------------------------
+Tue Jan 04 19:18:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.3:
+  * Add flags for Prometheus, EULA and clusterName
+  * Add Kasten to README
+  * Update examples and long message
+  * Update message for info on k10
+  * Add app and info message for k10 app
+  * Add k10 app to arkade
+  * Bump golang.org/x/mod from 0.5.0 to 0.5.1
+  * Move from io/ioutil to io and os package
+
+-------------------------------------------------------------------
+Tue Jan 04 19:16:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.2:
+  * Add devspace, tilt, autok3s and k3s as downloads
+  * remove version, it will fetch the latest available
+  * Update cosign to v1.2.0
+
+-------------------------------------------------------------------
+Tue Jan 04 19:12:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.1:
+  * feat: add kubescape support
+  * feat: add GoReleaser CLI support
+  * Added code to prevent arm deployment
+  * Added official metallb
+  * Add dive tool
+
+-------------------------------------------------------------------
+Tue Jan 04 19:04:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.0:
+  * Update tests for dynamic version apps
+  * Convert some apps to BinaryTemplate and latest versions
+  * Fix for downloading krew
+  * Add plain list output for tools
+  * Enable dynamic versions for #510
+  * Update flux CLI to 0.16.2
+
+-------------------------------------------------------------------
+Tue Jan 04 19:02:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.29:
+  * Update README / docs for arkade get with @ symbol
+  * Allow @ syntax to specify version flag in arkade get
+
+-------------------------------------------------------------------
+Tue Jan 04 18:59:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.28:
+  * Bump golang.org/x/mod from 0.4.2 to 0.5.0
+  * Update argocd-autopilot version
+  * Add tfsec to arkade
+  * Remove duplicate apps
+  * Add a ToC
+
+-------------------------------------------------------------------
+Tue Jan 04 18:44:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.27:
+  * Add command to generate markdown table for apps
+  * Add developer workflow
+  * Add rekor CLI fixes #488
+  * Add cassandra app
+  * Fix formatting in rabbitmq
+  * Add rabbitmq app
+  * Rename kanister to kanctl
+
+-------------------------------------------------------------------
+Tue Jan 04 18:40:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.26:
+  * Add documentation updates to PR template
+  * Print out the number of apps and CLIs
+  * Update lists of apps
+  * Add quotes
+  * Add CLI tools for K10 project
+
+-------------------------------------------------------------------
+Tue Jan 04 18:37:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.25:
+  * cosign: update tool to use release 1.0.0
+  * Add Kyverno to arkade
+  * Update .DEREK.yml
+  * Add equinix metal-cli
+
+-------------------------------------------------------------------
+Tue Jan 04 18:35:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.24:
+  * Add Cosign CLI to arkade
+
+-------------------------------------------------------------------
+Tue Jan 04 18:35:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.23:
+  * Bump gh CLI version
+  * gofmting
+  * adding jq cli tool
+  * Add k0s and k0sctl binary to the tools list to make it downloadable by using 'arkade get ...' command
+  * Apply go fmt
+  * Use text/template instead of html/template for binary url
+  * Add porter CLI to arkade
+  * Add check for Intel only to Jenkins app
+  * fix: support ingress in k8s 1.22+ for registry ingress app
+  * fix: support ingress on k8s 1.22+
+  * Update domain for downloads
+  * Add Packet CLI (aka Equinix Metal CLI) to arkade
+
+-------------------------------------------------------------------
+Tue Jan 04 18:23:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.22:
+  * Add kgctl
+  * Confluent Kafka added to supported applications
+  * Resolve go.sum conflicts
+  * Update to Go 1.16 for arkade
+  * fix version not used in Binarytemplate
+  * Add kubetail CLI
+  * pkg/get: fix typos in tests
+  * Update ISSUE_TEMPLATE.md
+  * Update PULL_REQUEST_TEMPLATE.md
+  * Add nova cli
+  * influx CLI added
+  * Bump github.com/spf13/cobra from 1.1.3 to 1.2.1
+
+-------------------------------------------------------------------
+Tue Jan 04 18:21:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.21:
+  * Fix values names for kafka-connector
+
+-------------------------------------------------------------------
+Tue Jan 04 18:13:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.20:
+  * Fix kubectl incorrect download URL version
+  * Fix description for helm on ASCII table.
+
+-------------------------------------------------------------------
+Tue Jan 04 18:09:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.19:
+  * Fix download for armv6l of inlets PRO
+  * Add output mode for tool table
+  * Add description tag to tool argocd-autopilot
+  * Update kubebuilder 3.1.0
+  * Add ASCII table with description for CLI tools
+  * Add argocd-autopilot 0.2.1
+  * Update terraform 1.0.0
+  * Create test table for kubectl tool
+
+-------------------------------------------------------------------
+Tue Jan 04 18:06:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.18:
+  * update tests based on review feeback
+  * add initial tests for inletsoperator_app
+  * Fix test for ARM64 download
+  * Fix download template URLs
+  * k9s version upgrade to v0.24.10
+  * makefile: more specific windows/amd64 target
+  * Add test for kubectl on arm64
+  * tools: fix get kubectl logic for arm64 downloads
+  * Add polaris CLI
+  * Bump the nats cli version to 0.23
+  * Istio updated to 1.10.0
+
+-------------------------------------------------------------------
+Tue Jan 04 13:54:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.17:
+  * Continue to use darwin x86 for M1
+
+-------------------------------------------------------------------
+Tue Jan 04 13:52:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.16:
+  * Fix #409 for arm64 usage
+  * Extract local variable
+  * Update flag help message to show default
+  * Default the inlets-pro license location
+  * Update README.md
+
+-------------------------------------------------------------------
 Sun May 23 15:41:55 UTC 2021 - kastl@b1-systems.de
 
 - Update to version 0.7.15:
