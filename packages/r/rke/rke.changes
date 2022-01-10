@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Tue Jan  4 12:43:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.3.3:
+  * Enhancements
+    - Introduced new Kubernetes images v1.22.4-rancher1, v1.21.7-rancher1 and v1.20.13-rancher1.
+  * Fixes
+    - Fixed an issue where custom encryption config didn't work in cluster.yml. [#2701]
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.22.4-rancher1-1
+      - v1.21.7-rancher1-1
+      - v1.20.13-rancher1-1
+      - v1.19.16-rancher1-2
+      - v1.18.20-rancher1-3
+  * New Images in v1.22.4-rancher1, v1.21.7-rancher1 and v1.20.13-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.22.4-rancher1
+      - rancher/hyperkube:v1.21.7-rancher1
+      - rancher/hyperkube:v1.20.13-rancher1
+
+-------------------------------------------------------------------
+Tue Jan  4 12:36:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.3.2:
+  * Enhancements
+    - Introduced new Kubernetes images v1.21.6-rancher1, v1.20.12-rancher1 and v1.19.16-rancher1.
+    - Introduced new nginx-ingress image nginx-0.49.3-rancher1 to address CVE-2021-25742 for v1.21.6-rancher1, v1.20.12-rancher1 and v1.19.16-rancher1.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.21.6-rancher1-1
+      - v1.20.12-rancher1-1
+      - v1.19.16-rancher1-1
+      - v1.18.20-rancher1-2
+  * New Images in v1.21.6-rancher1, v1.20.12-rancher1, v1.19.16-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.21.6-rancher1
+      - rancher/hyperkube:v1.20.12-rancher1
+      - rancher/hyperkube:v1.19.16-rancher1
+
+-------------------------------------------------------------------
+Tue Jan  4 12:33:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.3.1:
+  * Enhancements
+    - Introduced new Kubernetes images v1.21.5-rancher1, v1.20.11-rancher1, and v1.19.15-rancher1.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.21.5-rancher1-1
+      - v1.20.11-rancher1-2
+      - v1.19.15-rancher1-2
+      - v1.18.20-rancher1-2
+  * New Images in v1.20.9-rancher1, v1.19.13-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.21.5-rancher1
+      - rancher/hyperkube:v1.20.11-rancher1
+      - rancher/hyperkube:v1.19.15-rancher1
+
+-------------------------------------------------------------------
+Tue Jan 04 12:16:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.3.0:
+  * Enhancements
+    - Introduced support for Kubernetes v1.21.
+    - Introduced option to enable cri-dockerd for Kubernetes v1.21.
+    - Introduced support to enable IPv6DualStack for Kubernetes v1.21. #1902
+    - Introduced support for ECR plugin #28693
+  * Major Bug Fixes since v1.2.11
+    - Fixed an issue where etcd snapshot-restore fails with encryption and custom certs #2559
+    - Fixed an issue for v1.21 clusters where Flannel pods do not come active on SELinux enabled nodes #2620
+    - Fixed an issue where etcd-snapshot save without local state file waits for state file to get copied #2492
+    - Fixed an issue where proxy env vars weren't unset correctly for bastion host #2525
+    - Fixed an issue for vsphere clusters where addon jobs don't complete before timeout #2535
+    - Fixed an issue where etcd fails to find hostname certs with uppercase cert names. #2485
+    - Fixed an issue where cert generate-csr does not reflect changes to nodes #2571
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.21.4-rancher1-1
+      - v1.20.10-rancher1-2
+      - v1.19.14-rancher1-2
+      - v1.18.20-rancher1-2
+
+-------------------------------------------------------------------
+Tue Jan 04 11:39:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.2.15:
+  * Enhancements
+    - Introduced new Kubernetes images v1.20.13-rancher1.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.20.13-rancher1-1
+      - v1.19.16-rancher1-1
+      - v1.18.20-rancher1-2
+      - v1.17.17-rancher2-3
+  * New Images in v1.20.13-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.20.13-rancher1
+
+-------------------------------------------------------------------
+Tue Jan 04 11:36:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.2.14:
+  * Enhancements
+    - Introduced new Kubernetes images v1.20.12-rancher1 and v1.19.16-rancher1.
+    - Introduced new nginx-ingress image nginx-0.49.3-rancher1 to address CVE-2021-25742 for v1.20.12-rancher1 and v1.19.16-rancher1.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+  - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+     - v1.20.12-rancher1-1
+     - v1.19.16-rancher1-1
+     - v1.18.20-rancher1-2
+     - v1.17.17-rancher2-3
+  * New Images in v1.20.12-rancher1, v1.19.16-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.20.12-rancher1
+      - rancher/hyperkube:v1.19.16-rancher1
+
+-------------------------------------------------------------------
+Tue Jan 04 11:25:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.2.13:
+  * Enhancements
+    - Introduced new Kubernetes images v1.20.11-rancher1, and v1.19.15-rancher1.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.20.11-rancher1-1
+      - v1.19.15-rancher1-1
+      - v1.18.20-rancher1-2
+      - v1.17.17-rancher2-3
+  * New Images in v1.20.9-rancher1, v1.19.13-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.20.11-rancher1
+      - rancher/hyperkube:v1.19.15-rancher1
+
+-------------------------------------------------------------------
+Tue Jan 04 11:23:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.2.12:
+  * Update kdm data
+  * Updated nginx ingress addon to remove admission batch jobs if they exist
+
+-------------------------------------------------------------------
 Thu Jul 29 19:12:41 UTC 2021 - kastl@b1-systems.de
 
 - Update to version 1.2.11:

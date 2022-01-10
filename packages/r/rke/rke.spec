@@ -1,7 +1,7 @@
 #
 # spec file for package rke
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           rke
-Version:        1.2.11
+Version:        1.3.3
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
 URL:            https://github.com/rancher/rke
 Source:         rke-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.13
+BuildRequires:  go >= 1.16
 
 %description
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
