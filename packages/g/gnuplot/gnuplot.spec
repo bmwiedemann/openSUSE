@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,7 @@ BuildRequires:  tex(subfigure.sty)
 BuildRequires:  tex(textgreek.sty)
 %endif
 URL:            http://www.gnuplot.info/
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 %global         underscore 5_4
 %if "%{flavor}" == ""

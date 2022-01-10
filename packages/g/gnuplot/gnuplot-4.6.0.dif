@@ -52,7 +52,7 @@
  alldoc2gih_CPPFLAGS = -DALL_TERM_DOC $(AM_CPPFLAGS)
 --- gnuplot-5.4.0/src/gadgets.h
 +++ gnuplot-5.4.0/src/gadgets.h	2020-07-17 07:27:48.183763305 +0000
-@@ -514,7 +514,7 @@ extern TBOOLEAN	clip_lines2;
+@@ -515,7 +515,7 @@ extern TBOOLEAN	clip_lines2;
  extern TBOOLEAN	clip_points;
  extern TBOOLEAN	clip_radial;
  

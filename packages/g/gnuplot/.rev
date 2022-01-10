@@ -977,4 +977,32 @@
 - Update to gnuplot 5.4.2</comment>
     <requestid>898022</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>67af65dfc70dc2e0da0c2ab7ed0f5daf</srcmd5>
+    <version>5.4.3</version>
+    <time>1641855705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.3
+  * NEW &quot;set pm3d border retrace&quot; will use quadrangle color for the border
+  * NEW &quot;nogrid&quot; flag for plots to opt out of dgrid3d processing
+  * NEW option &quot;above|below y=&lt;val&gt;&quot; for &quot;plot with fillsteps&quot;
+  * NEW &quot;set style histogram nokeyseparators&quot; suppress blank key entries Bug #2473
+  * CHANGE always allow palette color for non-plot elements of 2D plot
+  * FIX contours were incorrectly allocated space in the key even if &quot;notitle&quot;
+  * FIX evaluation of unary minus in front of ternary operator Bug #2468
+  * FIX arm and s390 require &quot;signed char&quot; Bugs #2467 #2450
+  * FIX range errors if &quot;smooth csplines&quot; applied with x-axis reversed Bug #2465
+  * FIX handle various corner cases found by fuzzing
+  * FIX textcolor should accept &quot;linetype N&quot;  Bug #2459
+  * FIX Windows:  handling of Window messages for piped input Bugs #2204 #2412
+  * FIX aquaterm: auto-configuration use of Frameworks  Bug #2419
+  * FIX qt:       pm3d quadrangle borders for transparent surfaces
+  * FIX png/gif:  gdlib auto-configuration issues
+  * FIX dumb:     limit enhanced text markup to single-line vertical displacement
+- This update fixes CVE-2021-44917 (boo#1194017)
+- Port patches
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch</comment>
+    <requestid>945279</requestid>
+  </revision>
 </revisionlist>
