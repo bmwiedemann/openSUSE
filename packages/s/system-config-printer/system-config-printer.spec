@@ -1,7 +1,7 @@
 #
 # spec file for package system-config-printer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
 BuildRequires:  update-desktop-files

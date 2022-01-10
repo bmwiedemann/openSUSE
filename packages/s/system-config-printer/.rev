@@ -797,4 +797,14 @@
     <comment></comment>
     <requestid>936212</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>6c0d08d02a87117d2a8e52093e5762ec</srcmd5>
+    <version>1.5.15</version>
+    <time>1641855712</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-rpm-macros BuildRequires in case some build
+  environment does not pull it automatically. This is needed by
+  macros like %{python3_sitelib}. (forwarded request 945230 from yfjiang)</comment>
+    <requestid>945293</requestid>
+  </revision>
 </revisionlist>
