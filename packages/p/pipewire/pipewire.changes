@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  5 16:23:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.43:
+  * Highlights:
+    - Flatpak apps such as Ardour can now remove links again.
+    - Many fixes to pulse-server. Memory usage should be improved.
+      Some crashes are fixed. Underrun handling should work better.
+      Better compatibility with GStreamer based applications after
+      seeking.
+    - Many of the samplerate and quantum changes bugs in previous
+      releases were fixed. This fixes some issues where the
+      microphone would fail to work.
+    - Many more small fixes and improvements all over the place.
+
+-------------------------------------------------------------------
 Thu Dec 16 16:42:31 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Revert the merge of spa-plugins and modules into the library

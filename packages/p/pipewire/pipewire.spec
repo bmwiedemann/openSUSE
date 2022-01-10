@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -53,7 +53,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.42
+Version:        0.3.43
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -71,14 +71,14 @@ BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
 %if %{with libcamera}
-BuildRequires:  pkgconfig(libcamera) >= 0~3015
+BuildRequires:  pkgconfig(libcamera) >= 0.0.0+g3381.1db1e31e
 %endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libcap)
