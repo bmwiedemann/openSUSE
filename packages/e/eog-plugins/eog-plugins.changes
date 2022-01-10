@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  9 19:42:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.26.8:
+  + Exif Display: make _eog_util_make_valid_utf8 static.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:33:17 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

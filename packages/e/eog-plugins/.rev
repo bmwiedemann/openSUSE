@@ -435,4 +435,14 @@
   (jsc#SLE-21105). (forwarded request 920393 from sbrabec)</comment>
     <requestid>920565</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>33f5482ce641e7c9729725c899159884</srcmd5>
+    <version>3.26.8</version>
+    <time>1641855207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.8:
+  + Exif Display: make _eog_util_make_valid_utf8 static.
+  + Updated translations. (forwarded request 945153 from iznogood)</comment>
+    <requestid>945287</requestid>
+  </revision>
 </revisionlist>
