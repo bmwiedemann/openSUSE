@@ -588,4 +588,12 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>918854</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f55268cfdcc8debe18c41c6ce827025c</srcmd5>
+    <version>43.1</version>
+    <time>1641855205</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 944937 from iznogood)</comment>
+    <requestid>945294</requestid>
+  </revision>
 </revisionlist>
