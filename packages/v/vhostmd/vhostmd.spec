@@ -1,7 +1,7 @@
 #
 # spec file for package vhostmd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Patch1:         manpage.patch
 Patch2:         value-newline.patch
 Patch3:         libmetrics-link.patch
 Patch4:         relax-virtio-config-requirement.patch
+Patch5:         harden_vhostmd.service.patch
 BuildRequires:  libtool
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2
@@ -89,6 +90,7 @@ resource usage from within virtual machines.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %if ! %{with_xen}

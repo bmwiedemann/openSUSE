@@ -1,0 +1,22 @@
+Index: vhostmd-1.1/vhostmd.service
+===================================================================
+--- vhostmd-1.1.orig/vhostmd.service
++++ vhostmd-1.1/vhostmd.service
+@@ -4,6 +4,17 @@ After=libvirtd.service
+ Documentation=man:vhostmd(8)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ ExecStart=/usr/sbin/vhostmd
+ ExecReload=/bin/kill -HUP $MAINPID

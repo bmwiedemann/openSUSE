@@ -271,4 +271,13 @@ regression introduced by the last update. See bsc#1152803 for details.
     <comment></comment>
     <requestid>769746</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>b51dee3135800bd681ca1dbf39b8b24d</srcmd5>
+    <version>1.1</version>
+    <time>1641855231</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hardening to systemd service (bsc#1181400)
+  harden_vhostmd.service.patch</comment>
+    <requestid>945374</requestid>
+  </revision>
 </revisionlist>
