@@ -33,10 +33,15 @@ Sun Sep 23 08:06:31 UTC 2018 - sean@suspend.net
 
 - new upstream release of pcmanfm 1.3.0
 
-  * Fixed potential access violation, use runtime user dir instead of tmp diri for single instance socket.
-  * Fixed an issue with losing icons on desktop, when file name has a ‘[‘ char.
+  * Fixed potential access violation, use runtime user dir instead
+    of tmp diri for single instance socket.
+    boo#1039140 CVE-2017-8934
+  * Fixed an issue with losing icons on desktop, when file name
+    has a ‘[‘ char.
   * Added a missing tooltip for ‘New Window’ toolbar button.
-  * Fixed an issue when single instance socket directory did not exist (see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=874753).
+  * Fixed an issue when single instance socket directory did not
+    exist
+
 -------------------------------------------------------------------
 Sun Dec 25 12:34:19 UTC 2016 - trcs@gmx.com
 
