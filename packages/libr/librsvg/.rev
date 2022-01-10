@@ -952,4 +952,12 @@
     <comment></comment>
     <requestid>941341</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>15a4cd266e1a7b6a827753188839316c</srcmd5>
+    <version>2.52.5</version>
+    <time>1641855708</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changelog with SLE/Leap. (forwarded request 945171 from yfjiang)</comment>
+    <requestid>945288</requestid>
+  </revision>
 </revisionlist>

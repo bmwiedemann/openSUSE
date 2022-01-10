@@ -19,6 +19,12 @@ Fri Dec 17 20:14:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
     rctree, selectors, system-deps.
 
 -------------------------------------------------------------------
+Thu Dec  2 17:20:05 UTC 2021 - Federico Mena Quintero <federico@suse.com>
+
+- Remove librsvg-s390x-cairo-has-current-point.patch - it is included
+  in the upstream tarball now.
+
+-------------------------------------------------------------------
 Thu Nov 18 22:05:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable testsuite for now, let upstream figure out the issue with
@@ -42,6 +48,13 @@ Sat Nov 13 16:52:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
       that only manifests itself in s/390x due to its calling
       convention. See
       https://github.com/gtk-rs/gtk-rs-core/issues/335
+
+-------------------------------------------------------------------
+Sat Nov  6 00:40:22 UTC 2021 - Federico Mena Quintero <federico@suse.com>
+
+- Add librsvg-s390x-cairo-has-current-point.patch for
+  https://github.com/gtk-rs/gtk-rs-core/issues/335 - otherwise the
+  test suite fails on s390x due to a bug in the cairo-rs bindings.
 
 -------------------------------------------------------------------
 Tue Nov  2 04:12:22 UTC 2021 - William Brown <william.brown@suse.com>
