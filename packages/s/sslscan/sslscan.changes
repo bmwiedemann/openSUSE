@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  4 18:30:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.11:
+  * Add --iana-names option to use IANA/RFC cipher names
+  * Improve signature algorithm detection
+
+-------------------------------------------------------------------
 Tue May 11 21:50:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.10:

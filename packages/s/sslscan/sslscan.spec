@@ -1,7 +1,7 @@
 #
 # spec file for package sslscan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 Name:           sslscan
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        SSL cipher scanning tool
 License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Diagnostic
+URL:            https://github.com/rbsec/sslscan
 Source:         https://github.com/rbsec/sslscan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Patches copied from Debian package
 Patch1:         fedora-sslscan-patents.patch
