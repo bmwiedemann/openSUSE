@@ -1,7 +1,7 @@
 #
 # spec file for package uriparser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define so_ver  1
 Name:           uriparser
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        A strictly RFC 3986 compliant URI parsing library
 License:        BSD-3-Clause AND LGPL-2.1-or-later
