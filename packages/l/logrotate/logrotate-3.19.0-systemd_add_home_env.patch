@@ -1,0 +1,11 @@
+diff -ur logrotate-3.19.0.orig/examples/logrotate.service logrotate-3.19.0/examples/logrotate.service
+--- logrotate-3.19.0.orig/examples/logrotate.service	2020-08-21 15:02:38.000000000 +0200
++++ logrotate-3.19.0/examples/logrotate.service	2022-01-07 21:28:10.258744210 +0100
+@@ -12,6 +12,7 @@
+ Nice=19
+ IOSchedulingClass=best-effort
+ IOSchedulingPriority=7
++Environment=HOME=/root
+ 
+ # hardening options
+ #  details: https://www.freedesktop.org/software/systemd/man/systemd.exec.html

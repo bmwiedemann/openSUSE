@@ -1,7 +1,7 @@
 #
 # spec file for package logrotate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           logrotate
-Version:        3.18.1
+Version:        3.19.0
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
@@ -29,8 +29,7 @@ Source1:        logrotate.wtmp
 Source2:        logrotate.default
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source100:      %{name}-rpmlintrc
-Patch0:         logrotate-3.13.0-systemd_add_home_env.patch
-Patch1:         logrotate-dont_warn_on_size=_syntax.patch
+Patch0:         logrotate-3.19.0-systemd_add_home_env.patch
 BuildRequires:  acl
 BuildRequires:  libacl-devel
 BuildRequires:  pkgconfig
@@ -51,7 +50,6 @@ It manages plain files only and is not involved in systemd's journal rotation.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %configure \
