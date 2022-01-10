@@ -1,7 +1,7 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@
 %bcond_with cfssl
 %endif
 Name:           keylime
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
 URL:            https://github.com/keylime/keylime
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-v%{version}.tar.xz
 Source1:        keylime.xml
 # PATCH-FIX-OPENSUSE version.diff
 Patch1:         version.diff
@@ -123,7 +123,7 @@ Recommends:     %{name}-firewalld = %{version}
 Subpackage of %{name} for verifier service.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 %if %{with cfssl}
 sed -i "s/ca_implementation = cfssl/ca_implementation = openssl/g" keylime.conf
 %endif

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Jan 10 12:05:37 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.2.1:
+  * Another addition to gitignore
+  * Update .gitignore with more Keylime-specific files
+  * json: add support for sqlalchemy.engine.row.Row in newer sqlalchemy
+  * ima_ast: check if the PCR is the same as in the config
+  * Fix permissions issue on volume mount in run_local.sh
+  * Make run_local.sh use a local copy of the repo
+  * Small updates to GOVERNANCE.md
+  * Move cargo-tarpaulin install to separate command
+  * config: drop registrar_* TLS options in [registrar] section
+  * Fix missing && in Dockerfile
+  * Remove simplejson from scripts and docs
+  * Replace simplejson with built-in json module
+  * Add rust-keylime container dependencies
+  * config: fix getboolean with fallback
+  * Clean up CI scripts and rewrite run_local.sh
+  * ima: for ToMToU errors skip template content validation
+  * ima: Use a set of entry numbers and file offsets to remember multiple positions
+  * Rename CONTRIBUTORS.md to CONTRIBUTING.md
+  * Update GOVERNANCE.md to match MAINTAINERS.md rename
+  * Update MAINTAINERS
+  * Update README: remove Gitter, Travis CI
+  * ca: Use UTC when setting certificate validity
+  * Tenant commands return json
+  * scripts: Allow passing a base policy to create_policy tool
+  * ima: Handle the case of ima-sig with a path with spaces in them
+  * add length to string object
+  * scripts: Implement create_policy to create the JSON allowlist from files
+  * ima: Also add a sha256 default boot_aggregate hash with 64 '0's
+  * ima: Use seek() to get to the last known last entry
+  * ima: Extend allowlist to be able to handle generic ima-buf entries
+  * ima: Extend JSON allowlist with 'ima' entry and 'ignored_keyrings'
+  * ima: Populate verifier keyrings with keys taken from ima-buf log line
+  * ima: Remove methods from ImaKeyring that are now in ImaKeyrings
+  * ima: Start passing ima_keyrings through APIs replacing ima_keyring
+  * Extend AgentAttestState with ima_keyrings field and use it
+  * ima: Implement ImaKeyrings class to support multiple keyrings
+  * verifier: Extend verifier DB to persist learned keyrings
+  * Fix a couple of pylint errors
+  * ima: Fix spurious attestation failures
+  * ima: make ToMToU errors not a failure by default
+  * Simple fix for tenant error message printout.
+  * pylint: Fix errors related to R1714
+  * pylint: Suppress C0201, C0209 and W0602 newly reported errors
+  * installer: do not install tpm2-abrmd
+  * tpm: by default use /dev/tpmrm0 instead of tpm2-abrmd
+  * verifier: add option to send revocation messages via webhook
+
+-------------------------------------------------------------------
 Wed Dec 15 13:22:32 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Fix keylime configuration file attributes
