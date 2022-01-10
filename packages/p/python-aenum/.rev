@@ -71,4 +71,16 @@ https://build.opensuse.org/request/show/612101</comment>
 </comment>
     <requestid>914827</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca177fa79da040b90662e8b5cc5577c3</srcmd5>
+    <version>3.1.5</version>
+    <time>1641855222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.5:
+  * fix support of `auto()` kwds
+  * rename `aenum.property` to `aenum.enum_property`
+  * fix `extend_enum()` for unhashable values
+  * fix `extend_enum()` for most cases</comment>
+    <requestid>945349</requestid>
+  </revision>
 </revisionlist>

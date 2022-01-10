@@ -2,9 +2,11 @@
  aenum/test.py |    2 ++
  1 file changed, 2 insertions(+)
 
---- a/aenum/test.py
-+++ b/aenum/test.py
-@@ -6218,6 +6218,7 @@ CONVERT_TEST_EIO = 7
+Index: aenum-3.1.5/aenum/test.py
+===================================================================
+--- aenum-3.1.5.orig/aenum/test.py
++++ aenum-3.1.5/aenum/test.py
+@@ -6569,6 +6569,7 @@ CONVERT_TEST_EIO = 7
  CONVERT_TEST_EBUS = 7    # and this one
  
  class TestIntEnumConvert(TestCase):
@@ -12,7 +14,7 @@
      def test_convert_value_lookup_priority(self):
          test_type = IntEnum._convert_(
                  'UnittestConvert',
-@@ -6238,6 +6239,7 @@ class TestIntEnumConvert(TestCase):
+@@ -6589,6 +6590,7 @@ class TestIntEnumConvert(TestCase):
                      ],
                  )
  

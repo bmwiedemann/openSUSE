@@ -2,9 +2,11 @@
  aenum/test.py |   32 ++++++++++++++++----------------
  1 file changed, 16 insertions(+), 16 deletions(-)
 
---- a/aenum/test.py
-+++ b/aenum/test.py
-@@ -48,13 +48,18 @@ def load_tests(loader, tests, ignore):
+Index: aenum-3.1.5/aenum/test.py
+===================================================================
+--- aenum-3.1.5.orig/aenum/test.py
++++ aenum-3.1.5/aenum/test.py
+@@ -49,13 +49,18 @@ def load_tests(loader, tests, ignore):
      return tests
  
  class TestCase(unittest.TestCase):
@@ -17,14 +19,14 @@
  
 +    def setUp(self):
 +        self.tempdir = tempfile.mkdtemp()
-+        if pyver >= 3.0:
++        if pyver >= (3, ):
 +            test_v3.tempdir = self.tempdir
 +        # self.addCleanup(shutil.rmtree, self.tempdir, True)
 +
  
  # for pickle tests
  try:
-@@ -903,6 +908,8 @@ class TestEnum(TestCase):
+@@ -943,6 +948,8 @@ class TestEnum(TestCase):
              IDES_OF_MARCH = 2013, 3, 15
          self.Holiday = Holiday
  
@@ -33,7 +35,7 @@
      def test_set_name(self):
          class Descriptor(object):
              name = None
-@@ -2011,7 +2018,7 @@ class TestEnum(TestCase):
+@@ -2051,7 +2058,7 @@ class TestEnum(TestCase):
          # for use with both Python 2/3
          JSONEnum = JSONEnumMeta('JsonEnum', (Enum, ), {})
  
@@ -42,7 +44,7 @@
          with open(test_file, 'w') as f:
              f.write(
                  '[{"name":"Afghanistan","alpha-2":"AF","country-code":"004","notes":{"description":"pretty"}},'
-@@ -4122,6 +4129,8 @@ class TestFlag(TestCase):
+@@ -4002,6 +4009,8 @@ class TestFlag(TestCase):
              CE = 1<<19
          self.Open = Open
  
@@ -51,7 +53,7 @@
      def test_set_name(self):
          class Descriptor(object):
              name = None
-@@ -4384,7 +4393,7 @@ class TestFlag(TestCase):
+@@ -4264,7 +4273,7 @@ class TestFlag(TestCase):
          self.assertEqual(AS.STREET._value_, 32)
          self.assertEqual(AS.SECONDARY_TYPE._value_, 128)
          self.assertEqual((AS.NAME | AS.STREET)._value_, 48, "%r is not 48" % (AS.NAME | AS.STREET))
@@ -60,7 +62,7 @@
      def test_iteration(self):
          C = self.Color
          self.assertEqual(list(C), [C.RED, C.GREEN, C.BLUE])
-@@ -5093,6 +5102,8 @@ class TestIntFlag(TestCase):
+@@ -4957,6 +4966,8 @@ class TestIntFlag(TestCase):
          self.Color = Color
          self.Open = Open
  
@@ -69,7 +71,7 @@
      def test_set_name(self):
          class Descriptor(object):
              name = None
-@@ -6315,10 +6326,10 @@ class TestStackoverflowAnswers(TestCase)
+@@ -6127,10 +6138,10 @@ class TestStackoverflowAnswers(TestCase)
                          fh.write('#define %s %r\n' % (enum.name, enum.value))
          class Arduino(CHeader):
              _order_ = 'ONE TWO'
@@ -82,18 +84,22 @@
                  data = fh.read()
          self.assertEqual(textwrap.dedent("""\
                  initial header stuff here
-@@ -6347,14 +6358,3 @@ class TestStackoverflowAnswers(TestCase)
-             SIX = "SIX"
-         #
-         self.assertTrue(LabelEnum.has_name('Enum_Three'))
+@@ -6595,18 +6606,3 @@ class TestIntEnumConvert(TestCase):
+                           if name[0:2] not in ('CO', '__')],
+                          [], msg='Names other than CONVERT_TEST_* found.')
+ 
 -
 -
 -if __name__ == '__main__':
 -    tempdir = tempfile.mkdtemp()
 -    try:
--        if pyver >= 3.0:
+-        if PY3:
 -            test_v3.tempdir = tempdir
--        unittest.main()
+-        test = unittest.main(exit=False)
+-        sys.stdout.flush()
+-        for name, reason in test.result.skipped:
+-            print("%s: %s" % (name, reason))
 -    finally:
 -        shutil.rmtree(tempdir, True)
+-        sys.exit(len(test.result.errors or test.result.failures) and 1 or 0)
 -

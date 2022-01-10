@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 10 14:57:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.5:
+  * fix support of `auto()` kwds
+  * rename `aenum.property` to `aenum.enum_property`
+  * fix `extend_enum()` for unhashable values
+  * fix `extend_enum()` for most cases
+
+-------------------------------------------------------------------
 Sat Aug 28 20:45:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Convert test script into proper unittest module and then skip
