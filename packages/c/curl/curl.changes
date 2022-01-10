@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Sun Jan  9 21:24:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.81.0:
+  * mime: use percent-escaping for multipart form field and file names
+  * asyn-ares: ares_getaddrinfo needs no happy eyeballs timer
+  * azure: make the "w/o HTTP/SMTP/IMAP" build disable SSL proper
+  * BINDINGS: add cURL client for PostgreSQL
+  * BINDINGS: add one from Everything curl and update a link
+  * checksrc: detect more kinds of NULL comparisons we avoid
+  * CI: build examples for additional code verification
+  * CI: bump job to use mbedtls 3.1.0
+  * cmake: don't set _USRDLL on a static Windows build
+  * cmake: prevent dev warning due to mismatched arg
+  * cmake: private identifiers use CURL_ instead of CMAKE_ prefix
+  * config.d: update documentation to match the path search
+  * configure: add -lm to configure for rustls build.
+  * configure: better diagnostics if hyper is built wrong
+  * configure: don't enable TLS when --without-* flags are used
+  * configure: fix runtime-lib detection on macOS
+  * curl.1: require "see also" for every documented option
+  * curl: improve error message for --head with -J
+  * curl_easy_cleanup.3: remove from multi handle first
+  * curl_easy_escape.3: call curl_easy_cleanup in example
+  * curl_easy_unescape.3: call curl_easy_cleanup in example
+  * curl_multi_init.3: fix EXAMPLE formatting
+  * curl_multi_perform/socket_action.3: clarify what errors mean
+  * curl_share_setopt.3: split out options into their own manpages
+  * CURLOPT_STDERR.3: does not work with libcurl as a win32 DLL
+  * digest: compute user:realm:pass digest w/o userhash
+  * docs/checksrc: Add documentation for STRERROR
+  * docs/cmdline-opts: do not say "protocols: all"
+  * docs/examples: workaround broken -Wno-pedantic-ms-format
+  * docs/HTTP3: describe how to setup a h3 reverse-proxy for testing
+  * docs/INSTALL.md: typo fix : added missing "get" verb
+  * docs/URL-SYNTAX.md: space is not fine in a given URL
+  * docs: add known bugs list to HTTP3.md
+  * docs: address proselint nits
+  * docs: consistent manpage SYNOPSIS
+  * docs: fix dead links, remove ECH.md
+  * docs: fix typo in OpenSSL 3 build instructions
+  * docs: Update the Reducing Size section
+  * example/progressfunc: remove code for old libcurls
+  * examples/multi-single.c: remove WAITMS()
+  * FAQ: typo fix : "yout" ➤ "your"
+  * ftp: disable warning 4706 in MSVC
+  * gen.pl: improve example output format
+  * github workflow: add wolfssl (removed from zuul)
+  * github/workflows: add mbedtls and mbedtls-clang (removed from zuul)
+  * gtls: check return code for gnutls_alpn_set_protocols
+  * hash: lazy-alloc the table in Curl_hash_add()
+  * http2:set_transfer_url() return early on OOM
+  * HTTP3: update quiche build instructions
+  * http: enable haproxy support for hyper backend
+  * http: Fix CURLOPT_HTTP200ALIASES
+  * http_proxy: don't close the socket (too early)
+  * insecure.d: detail its use for SFTP and SCP as well
+  * insecure.d: expand and clarify
+  * libcurl-multi.3: "SOCKS proxy handshakes" are not blocking
+  * libcurl-security.3: mention address and URL mitigations
+  * libssh2: fix error message for sha256 mismatch
+  * libtest: avoid "assignment within conditional expression"
+  * lift: ignore is a deprecated config option, use ignoreRules
+  * linkcheck.yml: add CI job that checks markdown links
+  * m4/curl-compilers: tell clang -Wno-pointer-bool-conversion
+  * Makefile.m32: rename -winssl option to -schannel and tidy up
+  * mbedTLS: add support for CURLOPT_CAINFO_BLOB
+  * mbedtls: fix CURLOPT_SSLCERT_BLOB
+  * mbedtls: fix private member designations for v3.1.0
+  * misc: remove unused doh flags when CURL_DISABLE_DOH is defined
+  * misc: s/e-mail/email
+  * multi: cleanup the socket hash when destroying it
+  * multi: handle errors returned from socket/timer callbacks
+  * multi: shut down CONNECT in Curl_detach_connnection
+  * netrc.d: edit the .netrc example to look nicer
+  * ngtcp2: verify the server cert on connect (quictls)
+  * ngtcp2: verify the server certificate for the gnutls case
+  * nss:set_cipher don't clobber the cipher list
+  * openldap: implement STARTTLS
+  * openldap: process search query response messages one by one
+  * openldap: several minor improvements
+  * openldap: simplify ldif generation code
+  * openssl: check the return value of BIO_new()
+  * openssl: define HAVE_OPENSSL_VERSION for OpenSSL 1.1.0+
+  * openssl: remove `RSA_METHOD_FLAG_NO_CHECK` handling if unavailable
+  * openssl: remove usage of deprecated `SSL_get_peer_certificate`
+  * openssl: use non-deprecated API to read key parameters
+  * page-footer: add a mention of how to report bugs to the man page
+  * page-footer: document more environment variables
+  * request.d: refer to 'method' rather than 'command'
+  * retry-all-errors.d: make the example complete
+  * runtests: make the SSH library a testable feature
+  * rustls: read of zero bytes might be okay
+  * rustls: remove comment about checking handshaking
+  * rustls: remove incorrect EOF check
+  * sha256/md5: return errors when init fails
+  * socks5: use appropriate ATYP for numerical IP address host names
+  * test1156: enable for hyper
+  * test1156: fixup the stdout check for Windows
+  * test1525: tweaked for hyper
+  * test1526: enable for hyper
+  * test1527: enable for hyper
+  * test1528: enable for hyper
+  * test1554: adjust for hyper
+  * test1556: adjust for hyper
+  * test302[12]: run only with the libssh2 backend
+  * test661: enable for hyper
+  * tests/CI.md: add more information on CI environments
+  * tests/data/test302[12]: fix MSYS2 path conversion of hostpubsha256
+  * tftp: mark protocol as not possible to do over CONNECT
+  * tool_findfile: updated search for a file in the homedir
+  * tool_operate: only set SSH related libcurl options for SSH URLs
+  * tool_operate: warn if too many output arguments were found
+  * url.c: fix the SIGPIPE comment for Curl_close
+  * url: check ssl_config when re-use proxy connection
+  * url: reduce ssl backend count for CURL_DISABLE_PROXY builds
+  * urlapi: accept port number zero
+  * urlapi: if possible, shorten given numerical IPv6 addresses
+  * urlapi: provide more detailed return codes
+  * urlapi: reject short file URLs
+  * version_win32: Check build number and platform id
+  * vtls/rustls: adapt to the updated rustls_version proto
+  * writeout: fix %{http_version} for HTTP/3
+  * x509asn1: return early on errors
+  * zuul.d: update rustls-ffi to version 0.8.2
+  * zuul: fix quiche build pointing to wrong Cargo
+
+-------------------------------------------------------------------
 Tue Nov 16 16:16:49 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.80.0:
