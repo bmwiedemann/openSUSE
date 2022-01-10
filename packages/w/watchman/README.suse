@@ -1,0 +1,11 @@
+The SUSE packaging of watchman ships a systemd service and socket unit that
+can be used for running a system wide per-user instance of watchman via
+systemd. To do so you need to execute the following commands as root:
+
+    TARGETUSER=myuser
+    systemctl enable watchman@${TARGETUSER}.socket
+    systemctl enable watchman@${TARGETUSER}.service
+    systemctl start watchman@${TARGETUSER}.socket
+
+After doing so any `watchman` invocations you perform as `$USER` should talk
+to the systemd controlled instance of watchman.

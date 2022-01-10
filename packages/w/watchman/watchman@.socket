@@ -7,14 +7,14 @@ Accept=false
 SocketMode=0640
 SocketUser=%i
 SocketGroup=users
-# the mode for the implicitly created, intermediate %i-state directory
-DirectoryMode=0750
-# this explicitly sets the ownership of the user's state directory
-# there seems to be no built-in way to achieve this via systemd options
-# this needs to be post-start, because otherwise the directory is not yet
-# created by systemd
-ExecStartPost=/usr/bin/chown %i:users /run/watchman/%i-state
-
+# the mode for any implicitly created, intermediate %i-state directories
+DirectoryMode=0700
+# run as the unprivileged target user (for ExecStartPRe below)
+User=%i
+# this explicitly creates the user's state directory
+# this needs to be pre-start, because we want to make sure the state directory
+# is sane before systemd starts using it.
+ExecStartPre=/usr/libexec/watchman/create_state_dir /run/watchman/%i-state
 
 [Install]
 WantedBy=sockets.target

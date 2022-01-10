@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo "$0: <path-to-state-dir>" 1>&2
+	exit 1
+fi
+
+STATE_DIR="$1"
+
+cd -P "$STATE_DIR" 2>/dev/null
+if [ $? -eq 0 ]; then
+	if [ `pwd` != "$STATE_DIR" ]; then
+		echo "$STATE_DIR: appears to be a symlink" 1>&2
+		exit 1
+	fi
+
+	# state directory already exists. make sure it is has correct ownership.
+	owner=`stat -c "%U" .`
+	if [ "$owner" == "$USER" ]; then
+		# state dir is sane
+		exit 0
+	fi
+
+	echo "$STATE_DIR: already existing with bad ownership" 1>&2
+	exit 1
+else
+	mkdir -m2700 "$STATE_DIR"
+fi

@@ -79,4 +79,19 @@
   the look automatic and don't contain generated autotools files).</comment>
     <requestid>810772</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2a51dbe2681c4df15b9c636285654953</srcmd5>
+    <version>unknown</version>
+    <time>1641855226</time>
+    <user>dimstar_suse</user>
+    <comment>- ship README.suse that explains how to use the template systemd units
+- add user writable bit for systemd service and socket files
+- properly handle state directory creation in /run/watchman/$USER-state. The
+  former approach was susceptible to a local privilege escalation using
+  symlinks (CVE-2022-21944, bsc#1194470).
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * watchman@.service</comment>
+    <requestid>945357</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package watchman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source0:        https://github.com/facebook/watchman/archive/v%{version}.tar.gz
 Source1:        watchman.conf
 Source2:        watchman@.service
 Source3:        watchman@.socket
+Source4:        watchman_create_state_dir
+Source5:        README.suse
 # prevent the build system overwriting the autotools docdir in a hard-coded way
 Patch0:         %{name}_4.7.0_makefile-am.diff
 Patch1:         0001-Replaced-memset-calls-with-appopriate-C-11-init-or-a.patch
@@ -184,10 +186,15 @@ install -d -m 0755 %{build_tmpfiles}
 install -m 0644 %{SOURCE1} %{build_tmpfile_conf}
 
 %define build_unitdir %{buildroot}%{_unitdir}
-install -D -m 444 %{SOURCE2} %{build_unitdir}/%{name}@.service
-install -D -m 444 %{SOURCE3} %{build_unitdir}/%{name}@.socket
+install -D -m 644 %{SOURCE2} %{build_unitdir}/%{name}@.service
+install -D -m 644 %{SOURCE3} %{build_unitdir}/%{name}@.socket
 
 %define tmpfile_conf %{_tmpfilesdir}/%{name}.conf
+
+mkdir -p %{buildroot}/%{_libexecdir}/watchman
+install -m 755 %{SOURCE4} %{buildroot}/%{_libexecdir}/watchman/create_state_dir
+
+install -m 644 %{SOURCE5} %{buildroot}/%{docdir}/README.suse
 
 %files
 %doc %docdir
@@ -197,6 +204,8 @@ install -D -m 444 %{SOURCE3} %{build_unitdir}/%{name}@.socket
 %if 0%{?sle_version} <= 120200
 %dir %{_tmpfilesdir}
 %endif
+%dir %{_libexecdir}/watchman/
+%{_libexecdir}/watchman/create_state_dir
 
 %{tmpfile_conf}
 # avoid rpmlint warning tmpfile-not-in-filelist
@@ -226,7 +235,6 @@ install -D -m 444 %{SOURCE3} %{build_unitdir}/%{name}@.socket
 %service_add_post %{name}@.socket %{name}@.service
 # to initially create the statedir without reboot
 # NOTE: This macro is not available in older versions of systemd-rpm-macros,
-# causing builds on openSUSE_Leap < 42_2 to fail currently.
 %tmpfiles_create %{tmpfile_conf}
 
 %preun
