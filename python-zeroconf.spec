@@ -1,7 +1,7 @@
 #
 # spec file for package python-zeroconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-zeroconf
-Version:        0.36.12
+Version:        0.38.1
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
