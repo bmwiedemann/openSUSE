@@ -24,4 +24,16 @@
   * no upstream changelog</comment>
     <requestid>731284</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ebe1276abc6f854cc5a9fdbac4ad194e</srcmd5>
+    <version>31.0.0</version>
+    <time>1641855224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 31.0.0:
+  * fix tests
+  * remove python 3.4, 3.5
+  * fix(scanner): compat code 
+  * fix: reduce test-requirements.txt</comment>
+    <requestid>945354</requestid>
+  </revision>
 </revisionlist>

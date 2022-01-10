@@ -1,7 +1,7 @@
 #
 # spec file for package python-varlink
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-varlink
-Version:        30.3.0
+Version:        31.0.0
 Release:        0
 Summary:        Python implementation of the Varlink protocol
 License:        Apache-2.0
