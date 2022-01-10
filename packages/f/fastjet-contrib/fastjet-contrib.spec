@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet-contrib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define shlib libfastjetcontribfragile
 Name:           fastjet-contrib
-Version:        1.046
+Version:        1.048
 Release:        0
 Summary:        A library of 3rd-party add-ons to FastJet
 License:        GPL-2.0-only
