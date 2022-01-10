@@ -219,4 +219,12 @@
     <comment></comment>
     <requestid>942824</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f87a4cfc7800bfc25cd74ff3b179ada6</srcmd5>
+    <version>4.18</version>
+    <time>1641855229</time>
+    <user>dimstar_suse</user>
+    <comment>revert upgrade to fix tycho build</comment>
+    <requestid>945366</requestid>
+  </revision>
 </revisionlist>

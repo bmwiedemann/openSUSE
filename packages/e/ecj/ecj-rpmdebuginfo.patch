@@ -1,10 +1,13 @@
 ### Eclipse Workspace Patch 1.0
 #P org.eclipse.jdt.core
-Index: ecj-4.22/org/eclipse/jdt/internal/compiler/batch/Main.java
+Index: batch/org/eclipse/jdt/internal/compiler/batch/Main.java
 ===================================================================
---- ecj-4.22.orig/org/eclipse/jdt/internal/compiler/batch/Main.java
-+++ ecj-4.22/org/eclipse/jdt/internal/compiler/batch/Main.java
-@@ -3089,6 +3089,29 @@ public void configure(String[] argv) {
+RCS file: /cvsroot/eclipse/org.eclipse.jdt.core/batch/org/eclipse/jdt/internal/compiler/batch/Main.java,v
+retrieving revision 1.327
+diff -u -r1.327 Main.java
+--- batch/org/eclipse/jdt/internal/compiler/batch/Main.java	21 Apr 2008 15:00:59 -0000	1.327
++++ batch/org/eclipse/jdt/internal/compiler/batch/Main.java	20 Nov 2008 19:26:57 -0000
+@@ -2609,6 +2609,29 @@
  		this.options.put(CompilerOptions.OPTION_Process_Annotations, CompilerOptions.ENABLED);
  	}
  

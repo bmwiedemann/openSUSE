@@ -1,7 +1,5 @@
-Index: ecj-4.22/build.xml
-===================================================================
---- ecj-4.22.orig/build.xml
-+++ ecj-4.22/build.xml
+--- build.xml.orig	2020-09-02 22:05:12.000000000 +0200
++++ build.xml	2021-03-16 14:41:19.331235267 +0100
 @@ -18,16 +18,20 @@
  	<property name="output" value="bin" />
  	<property name="jar_file" value="ecj.jar" />
@@ -17,10 +15,10 @@ Index: ecj-4.22/build.xml
  		<javac srcdir="${basedir}" destdir="${output}"
 +					encoding="utf-8"
  					debuglevel="lines,source"
- 					debug="true"
- 					release="11">
--			<compilerarg line="-Xlint:none --patch-module java.compiler=javax17api.jar"/>
-+			<compilerarg line="-Xlint:none --patch-module java.compiler=${toString:build.path}"/>
+ 					source="1.8"
+ 					target="1.8">
+-			<compilerarg line="-Xlint:none"/>
++			<compilerarg line="-Xlint:none" value="-Xbootclasspath/p:${toString:build.path}"/>
  		</javac>
  
  		<delete file="${basedir}/META-INF/MANIFEST.MF" failonerror="false"/>
