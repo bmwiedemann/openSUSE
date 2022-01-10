@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>892683</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fffb5295a8b8de87999970438d436b0e</srcmd5>
+    <version>0.15.2</version>
+    <time>1641855243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.2:
+  - Ignore temporary attributes from project settings module (see
+    gh#idlesign/pytest-djangoapp#21).
+- Add django_4.patch making the package compatible with Django
+  4.* (gh#idlesign/pytest-djangoapp#23).
+</comment>
+    <requestid>945411</requestid>
+  </revision>
 </revisionlist>

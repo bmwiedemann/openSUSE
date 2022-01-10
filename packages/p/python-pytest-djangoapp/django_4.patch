@@ -1,0 +1,29 @@
+---
+ pytest_djangoapp/tests/testapp/urls.py |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- a/pytest_djangoapp/tests/testapp/urls.py
++++ b/pytest_djangoapp/tests/testapp/urls.py
+@@ -1,4 +1,4 @@
+-from django.conf.urls import url
++from django.urls import re_path as url
+ from django.http import HttpResponse
+ 
+ from pytest_djangoapp.compat import get_urlpatterns
+@@ -7,13 +7,15 @@ from pytest_djangoapp.compat import get_
+ def raise_exception(request):
+     raise Exception('This one should be handled by 500 technical view')
+ 
++def is_ajax(req):
++    return req.headers.get('x-requested-with') == 'XMLHttpRequest'
+ 
+ def index(request, some_id):
+ 
+     if request.method == 'POST':
+         return HttpResponse('json')
+ 
+-    if request.is_ajax():
++    if is_ajax(request):
+         return HttpResponse('ajaxed')
+ 
+     from django.templatetags.static import static
