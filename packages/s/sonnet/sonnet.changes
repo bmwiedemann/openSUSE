@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:48:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Don't access an out of bounds index into a QString
+  * WIP: Change the build system to enable building with Qt 6
+
+-------------------------------------------------------------------
 Sat Dec  4 22:57:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
