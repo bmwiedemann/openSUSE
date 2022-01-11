@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:48:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * [imgur] Improve grammar of upload notification text
+  * [imgur] Show deletion url in notification (kde#394181)
+  * [imgur] Copy link to clipboard and show notification (kde#437347)
+  * Don't build bluetooth plugin on non-Linux
+  * Unbreak the Nextcloud plugin
+  * Add Twitter URL plugin
+
+-------------------------------------------------------------------
 Sat Dec  4 22:57:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
