@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan  9 02:37:08 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Relax dependency on optional dependency pip to allow building on
+  Leap
+- Add pr_1698.patch for Django 4.0 support
+- Update to v3.1.5
+  * fix for removed get_installed_distributions function 
+  * crude way slow down to avoid HTTPTooManyRequests
+  * ignore failing get_installed_distributions import for mypy
+- from v3.1.4
+  * Fix: set_default_site, improve django.contrib.sites application detection
+  * Improvement: documentation, Fix name of mixin in docs
+  * Improvement: mypy, type ignore backwards compatible imports
+  * Improvement: graph_models, add --rankdir to change graph direction
+  * Improvement: runserver_plus, Add --sql-truncate cli modifier
+  * Improvement: shell_plus, Add --sql-truncate cli modifier
+- from v3.1.3
+  * Fix: Django 3.2, Run tests against Django 3.2
+  * Fix: Django 3.2, Handle warnings for default_app_config (#1654)
+  * Fix: sqldiff, Fix for missing field/index in model case
+
+-------------------------------------------------------------------
 Thu Dec  2 12:36:09 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop python 3.6 support since python-pygraphviz dropped it

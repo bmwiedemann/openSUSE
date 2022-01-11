@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-extensions
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %define skip_python2 1
-%global skip_python36 1
 Name:           python-django-extensions
-Version:        3.1.3
+Version:        3.1.5
 Release:        0
 Summary:        Extensions for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
+# https://github.com/django-extensions/django-extensions/pull/1698
+Patch0:         pr_1698.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 Requires:       python-Django >= 2.2
@@ -49,7 +50,7 @@ BuildRequires:  %{python_module django-json-widget}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pip >= 20.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pytest-django}
@@ -66,6 +67,7 @@ additions for Django projects.
 
 %prep
 %setup -q -n django-extensions-%{version}
+%patch0 -p1
 rm setup.cfg
 
 # Most PipCheckerTests tests fail when using network to connect to PyPI
@@ -83,13 +85,14 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
+export PYTHONPATH=${PWD}
 # test_should_colorize_noclasses_with_default_lexer - minor html output differences
 # test_no_models_dot_py fails to generate a .dot file
 %pytest -rs -v -k 'not ((PipCheckerTests and not test_pipchecker_when_requirements_file_does_not_exist) or test_should_colorize_noclasses_with_default_lexer or test_no_models_dot_py)'
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst docs/*.rst
-%{python_sitelib}/*
+%doc CHANGELOG.md README.rst docs/*.rst
+%{python_sitelib}/*django[-_]extensions*/
 
 %changelog

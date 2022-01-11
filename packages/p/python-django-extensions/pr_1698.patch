@@ -1,0 +1,308 @@
+From e4465cc3b62e47a932555e7568db6fdfe852c8f0 Mon Sep 17 00:00:00 2001
+From: Samuele Zanon <webs86@gmail.com>
+Date: Fri, 7 Jan 2022 12:12:47 +0100
+Subject: [PATCH 1/9] Convert smart_text in smart_str for Django 4.0
+ compatibility
+
+---
+ django_extensions/management/commands/dumpscript.py         | 4 ++--
+ django_extensions/management/commands/show_template_tags.py | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/django_extensions/management/commands/dumpscript.py b/django_extensions/management/commands/dumpscript.py
+index 086a8c81e..98392f4c5 100644
+--- a/django_extensions/management/commands/dumpscript.py
++++ b/django_extensions/management/commands/dumpscript.py
+@@ -41,7 +41,7 @@
+ )
+ from django.db.models.deletion import Collector
+ from django.utils import timezone
+-from django.utils.encoding import force_str, smart_text
++from django.utils.encoding import force_str, smart_str
+ 
+ from django_extensions.management.utils import signalcommand
+ 
+@@ -205,7 +205,7 @@ def get_imports(self):
+         Return a dictionary of import statements, with the variable being
+         defined as the key.
+         """
+-        return {self.model.__name__: smart_text(self.model.__module__)}
++        return {self.model.__name__: smart_str(self.model.__module__)}
+     imports = property(get_imports)
+ 
+     def get_lines(self):
+diff --git a/django_extensions/management/commands/show_template_tags.py b/django_extensions/management/commands/show_template_tags.py
+index 79561890e..399dd262e 100644
+--- a/django_extensions/management/commands/show_template_tags.py
++++ b/django_extensions/management/commands/show_template_tags.py
+@@ -8,7 +8,7 @@
+ from django.core.management import color
+ from django.core.management import BaseCommand
+ from django.utils import termcolors
+-from django.utils.encoding import smart_text
++from django.utils.encoding import smart_str
+ 
+ from django_extensions.compat import load_tag_library
+ from django_extensions.management.color import _dummy_style_func
+@@ -41,7 +41,7 @@ def format_block(block, nlspaces=0):
+     http://code.activestate.com/recipes/145672/
+     """
+     # separate block into lines
+-    lines = smart_text(block).split('\n')
++    lines = smart_str(block).split('\n')
+ 
+     # remove leading/trailing empty lines
+     while lines and not lines[0]:
+
+From 057e12ba4c674ba204d505346e1c93e257a50597 Mon Sep 17 00:00:00 2001
+From: Samuele Zanon <webs86@gmail.com>
+Date: Fri, 7 Jan 2022 12:46:56 +0100
+Subject: [PATCH 2/9] Fix urls test
+
+---
+ tests/management/commands/test_show_urls.py | 8 ++++----
+ tests/testapp/urls.py                       | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tests/management/commands/test_show_urls.py b/tests/management/commands/test_show_urls.py
+index 0d647ba84..45ef05f76 100644
+--- a/tests/management/commands/test_show_urls.py
++++ b/tests/management/commands/test_show_urls.py
+@@ -1,7 +1,7 @@
+ # -*- coding: utf-8 -*-
+ from io import StringIO
+ 
+-from django.conf.urls import url
++from django.urls import re_path
+ from django.core.management import CommandError, call_command
+ from django.http import HttpResponse
+ from django.test import TestCase
+@@ -20,9 +20,9 @@ class ClassView(View):
+ 
+ 
+ urlpatterns = [
+-    url(r'lambda/view', lambda request: HttpResponse('OK')),
+-    url(r'function/based/', function_based_view, name='function-based-view'),
+-    url(r'class/based/', ClassView.as_view(), name='class-based-view'),
++    re_path(r'lambda/view', lambda request: HttpResponse('OK')),
++    re_path(r'function/based/', function_based_view, name='function-based-view'),
++    re_path(r'class/based/', ClassView.as_view(), name='class-based-view'),
+ ]
+ 
+ 
+diff --git a/tests/testapp/urls.py b/tests/testapp/urls.py
+index f6c2848e9..01845b724 100644
+--- a/tests/testapp/urls.py
++++ b/tests/testapp/urls.py
+@@ -16,7 +16,7 @@
+     1. Import the include() function: from django.conf.urls import url, include
+     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+ """
+-from django.conf.urls import url
++from django.urls import re_path
+ from django.contrib import admin
+ from django.contrib.auth import views as auth_views
+ 
+@@ -24,7 +24,7 @@
+ logout_view = auth_views.LogoutView.as_view() if hasattr(auth_views, 'LogoutView') else auth_views.logout
+ 
+ urlpatterns = [
+-    url(r'^login/$', login_view, {'template_name': 'login.html'}, name="login"),
+-    url(r'^logout/$', logout_view, name="logout"),
+-    url(r'^admin/', admin.site.urls),
++    re_path(r'^login/$', login_view, {'template_name': 'login.html'}, name="login"),
++    re_path(r'^logout/$', logout_view, name="logout"),
++    re_path(r'^admin/', admin.site.urls),
+ ]
+
+From ac0a03481a69109b4a0adec69780e0423befb37d Mon Sep 17 00:00:00 2001
+From: Samuele Zanon <webs86@gmail.com>
+Date: Fri, 7 Jan 2022 13:53:52 +0100
+Subject: [PATCH 5/9] Fix test show urls for django 4.0
+
+---
+ tests/management/commands/test_show_urls.py | 62 ++++++++++++++++-----
+ 1 file changed, 49 insertions(+), 13 deletions(-)
+
+diff --git a/tests/management/commands/test_show_urls.py b/tests/management/commands/test_show_urls.py
+index 45ef05f76..cafa34f88 100644
+--- a/tests/management/commands/test_show_urls.py
++++ b/tests/management/commands/test_show_urls.py
+@@ -7,6 +7,7 @@
+ from django.test import TestCase
+ from django.test.utils import override_settings
+ from django.views.generic.base import View
++from django import VERSION
+ 
+ from unittest.mock import Mock, patch
+ 
+@@ -57,14 +58,23 @@ def test_should_show_urls_unsorted_but_same_order_as_found_in_url_patterns(self,
+         lines = m_stdout.getvalue().splitlines()
+         self.assertIn('/lambda/view\ttests.management.commands.test_show_urls.<lambda>', lines[0])
+         self.assertIn('/function/based/\ttests.management.commands.test_show_urls.function_based_view\tfunction-based-view', lines[1])
+-        self.assertIn('/class/based/\ttests.management.commands.test_show_urls.ClassView\tclass-based-view', lines[2])
++        
++        if VERSION >= (4, 0):
++            self.assertIn('/class/based/\ttests.management.commands.test_show_urls.view\tclass-based-view', lines[2])
++        else:
++            self.assertIn('/class/based/\ttests.management.commands.test_show_urls.ClassView\tclass-based-view', lines[2])
+ 
+     @patch('sys.stdout', new_callable=StringIO)
+     def test_should_show_urls_sorted_alphabetically(self, m_stdout):
+         call_command('show_urls', verbosity=3)
+ 
+         lines = m_stdout.getvalue().splitlines()
+-        self.assertEqual('/class/based/\ttests.management.commands.test_show_urls.ClassView\tclass-based-view', lines[0])
++
++        if VERSION >= (4, 0):
++            self.assertEqual('/class/based/\ttests.management.commands.test_show_urls.view\tclass-based-view', lines[0])
++        else:
++            self.assertEqual('/class/based/\ttests.management.commands.test_show_urls.ClassView\tclass-based-view', lines[0])
++
+         self.assertEqual('/function/based/\ttests.management.commands.test_show_urls.function_based_view\tfunction-based-view', lines[1])
+         self.assertEqual('/lambda/view\ttests.management.commands.test_show_urls.<lambda>', lines[2])
+ 
+@@ -72,29 +82,45 @@ def test_should_show_urls_sorted_alphabetically(self, m_stdout):
+     def test_should_show_urls_in_json_format(self, m_stdout):
+         call_command('show_urls', '--format=json')
+ 
+-        self.assertJSONEqual(m_stdout.getvalue(), [
++        json = [
+             {"url": "/lambda/view", "module": "tests.management.commands.test_show_urls.<lambda>", "name": "", "decorators": ""},
+-            {"url": "/function/based/", "module": "tests.management.commands.test_show_urls.function_based_view", "name": "function-based-view", "decorators": ""},
+-            {"url": "/class/based/", "module": "tests.management.commands.test_show_urls.ClassView", "name": "class-based-view", "decorators": ""}
+-        ])
++            {"url": "/function/based/", "module": "tests.management.commands.test_show_urls.function_based_view", "name": "function-based-view", "decorators": ""}
++        ]
++
++        if VERSION >= (4, 0):
++            json.append({"url": "/class/based/", "module": "tests.management.commands.test_show_urls.view", "name": "class-based-view", "decorators": ""})
++        else:
++            json.append({"url": "/class/based/", "module": "tests.management.commands.test_show_urls.ClassView", "name": "class-based-view", "decorators": ""})
++
++        self.assertJSONEqual(m_stdout.getvalue(), json)
+         self.assertEqual(len(m_stdout.getvalue().splitlines()), 1)
+ 
+     @patch('sys.stdout', new_callable=StringIO)
+     def test_should_show_urls_in_pretty_json_format(self, m_stdout):
+         call_command('show_urls', '--format=pretty-json')
+ 
+-        self.assertJSONEqual(m_stdout.getvalue(), [
++        json = [
+             {"url": "/lambda/view", "module": "tests.management.commands.test_show_urls.<lambda>", "name": "", "decorators": ""},
+-            {"url": "/function/based/", "module": "tests.management.commands.test_show_urls.function_based_view", "name": "function-based-view", "decorators": ""},
+-            {"url": "/class/based/", "module": "tests.management.commands.test_show_urls.ClassView", "name": "class-based-view", "decorators": ""}
+-        ])
++            {"url": "/function/based/", "module": "tests.management.commands.test_show_urls.function_based_view", "name": "function-based-view", "decorators": ""}
++        ]
++
++        if VERSION >= (4, 0):
++            json.append({"url": "/class/based/", "module": "tests.management.commands.test_show_urls.view", "name": "class-based-view", "decorators": ""})
++        else:
++            json.append({"url": "/class/based/", "module": "tests.management.commands.test_show_urls.ClassView", "name": "class-based-view", "decorators": ""})
++
++        self.assertJSONEqual(m_stdout.getvalue(), json)
+         self.assertEqual(len(m_stdout.getvalue().splitlines()), 20)
+ 
+     @patch('sys.stdout', new_callable=StringIO)
+     def test_should_show_urls_in_table_format(self, m_stdout):
+         call_command('show_urls', '--format=table')
+ 
+-        self.assertIn('/class/based/    | tests.management.commands.test_show_urls.ClassView           | class-based-view    |', m_stdout.getvalue())
++        if VERSION >= (4, 0):
++            self.assertIn('/class/based/    | tests.management.commands.test_show_urls.view                | class-based-view    |', m_stdout.getvalue())
++        else:
++            self.assertIn('/class/based/    | tests.management.commands.test_show_urls.ClassView           | class-based-view    |', m_stdout.getvalue())
++
+         self.assertIn('/function/based/ | tests.management.commands.test_show_urls.function_based_view | function-based-view |', m_stdout.getvalue())
+         self.assertIn('/lambda/view     | tests.management.commands.test_show_urls.<lambda>            |                     |', m_stdout.getvalue())
+ 
+@@ -103,7 +129,12 @@ def test_should_show_urls_in_aligned_format(self, m_stdout):
+         call_command('show_urls', '--format=aligned')
+ 
+         lines = m_stdout.getvalue().splitlines()
+-        self.assertEqual('/class/based/      tests.management.commands.test_show_urls.ClassView             class-based-view      ', lines[0])
++        
++        if VERSION >= (4, 0):
++            self.assertEqual('/class/based/      tests.management.commands.test_show_urls.view                  class-based-view      ', lines[0])  
++        else: 
++            self.assertEqual('/class/based/      tests.management.commands.test_show_urls.ClassView             class-based-view      ', lines[0])  
++
+         self.assertEqual('/function/based/   tests.management.commands.test_show_urls.function_based_view   function-based-view   ', lines[1])
+         self.assertEqual('/lambda/view       tests.management.commands.test_show_urls.<lambda>                                    ', lines[2])
+ 
+@@ -112,6 +143,11 @@ def test_should_show_urls_with_no_color_option(self, m_stdout):
+         call_command('show_urls', '--no-color')
+ 
+         lines = m_stdout.getvalue().splitlines()
+-        self.assertEqual('/class/based/\ttests.management.commands.test_show_urls.ClassView\tclass-based-view', lines[0])
++
++        if VERSION >= (4, 0):
++            self.assertEqual('/class/based/\ttests.management.commands.test_show_urls.view\tclass-based-view', lines[0])
++        else:
++            self.assertEqual('/class/based/\ttests.management.commands.test_show_urls.ClassView\tclass-based-view', lines[0])
++        
+         self.assertEqual('/function/based/\ttests.management.commands.test_show_urls.function_based_view\tfunction-based-view', lines[1])
+         self.assertEqual('/lambda/view\ttests.management.commands.test_show_urls.<lambda>', lines[2])
+
+From 3233a136342100dc6dbd7052884f83d5f4d1e10a Mon Sep 17 00:00:00 2001
+From: Samuele Zanon <webs86@gmail.com>
+Date: Fri, 7 Jan 2022 13:57:40 +0100
+Subject: [PATCH 6/9] remove re_path with path in urls configurations
+
+---
+ tests/management/commands/test_show_urls.py | 8 ++++----
+ tests/testapp/urls.py                       | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tests/management/commands/test_show_urls.py b/tests/management/commands/test_show_urls.py
+index cafa34f88..2bf4cfbd8 100644
+--- a/tests/management/commands/test_show_urls.py
++++ b/tests/management/commands/test_show_urls.py
+@@ -1,7 +1,7 @@
+ # -*- coding: utf-8 -*-
+ from io import StringIO
+ 
+-from django.urls import re_path
++from django.urls import path
+ from django.core.management import CommandError, call_command
+ from django.http import HttpResponse
+ from django.test import TestCase
+@@ -21,9 +21,9 @@ class ClassView(View):
+ 
+ 
+ urlpatterns = [
+-    re_path(r'lambda/view', lambda request: HttpResponse('OK')),
+-    re_path(r'function/based/', function_based_view, name='function-based-view'),
+-    re_path(r'class/based/', ClassView.as_view(), name='class-based-view'),
++    path('lambda/view', lambda request: HttpResponse('OK')),
++    path('function/based/', function_based_view, name='function-based-view'),
++    path('class/based/', ClassView.as_view(), name='class-based-view'),
+ ]
+ 
+ 
+diff --git a/tests/testapp/urls.py b/tests/testapp/urls.py
+index 01845b724..da1031ba3 100644
+--- a/tests/testapp/urls.py
++++ b/tests/testapp/urls.py
+@@ -16,7 +16,7 @@
+     1. Import the include() function: from django.conf.urls import url, include
+     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+ """
+-from django.urls import re_path
++from django.urls import path
+ from django.contrib import admin
+ from django.contrib.auth import views as auth_views
+ 
+@@ -24,7 +24,7 @@
+ logout_view = auth_views.LogoutView.as_view() if hasattr(auth_views, 'LogoutView') else auth_views.logout
+ 
+ urlpatterns = [
+-    re_path(r'^login/$', login_view, {'template_name': 'login.html'}, name="login"),
+-    re_path(r'^logout/$', logout_view, name="logout"),
+-    re_path(r'^admin/', admin.site.urls),
++    path('login/', login_view, {'template_name': 'login.html'}, name="login"),
++    path('logout/', logout_view, name="logout"),
++    path('admin/', admin.site.urls),
+ ]
+
