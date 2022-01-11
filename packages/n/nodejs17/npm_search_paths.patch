@@ -1,0 +1,32 @@
+Index: node-git.113133badb/deps/npm/lib/commands/help-search.js
+===================================================================
+--- node-git.113133badb.orig/deps/npm/lib/commands/help-search.js
++++ node-git.113133badb/deps/npm/lib/commands/help-search.js
+@@ -17,7 +17,7 @@ class HelpSearch extends BaseCommand {
+       throw this.usageError()
+     }
+ 
+-    const docPath = path.resolve(__dirname, '..', '..', 'docs/content')
++    const docPath = '/usr/share/doc/packages/nodejs'
+     const files = await glob(`${docPath}/*/*.md`)
+     const data = await this.readFiles(files)
+     const results = await this.searchFiles(args, data, files)
+Index: node-git.113133badb/deps/npm/lib/npm.js
+===================================================================
+--- node-git.113133badb.orig/deps/npm/lib/npm.js
++++ node-git.113133badb/deps/npm/lib/npm.js
+@@ -329,7 +329,13 @@ class Npm extends EventEmitter {
+   }
+ 
+   get globalPrefix () {
+-    return this.config.globalPrefix
++    let prefix = this.config.globalPrefix
++
++    // don't poop all over distro territory - use /usr/local instead
++    if (prefix === '/usr')
++      return '/usr/local'
++
++    return prefix;
+   }
+ 
+   set globalPrefix (r) {

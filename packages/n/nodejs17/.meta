@@ -1,0 +1,6 @@
+<package name="nodejs17" project="openSUSE:Factory">
+  <title>NodeJS 17.x</title>
+  <description>CURRENT release codestream</description>
+  <devel project="devel:languages:nodejs" package="nodejs17"/>
+  <url>https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V17.md</url>
+</package>

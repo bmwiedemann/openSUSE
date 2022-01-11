@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Jan 11 18:43:05 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 17.3.1:
+  Security update fixing the following issues:
+
+  * Improper handling of URI Subject Alternative Names (Medium)
+   (CVE-2021-44531, bsc#1194511)
+  * Certificate Verification Bypass via String Injection (Medium)
+   (CVE-2021-44532, bsc#1194512)
+  * Incorrect handling of certificate subject and issuer fields (Medium)
+   (CVE-2021-44533, bsc#1194513)
+  * Prototype pollution via console.table properties (Low)
+   (CVE-2022-21824, bsc#1194514)
+
+-------------------------------------------------------------------
+Tue Jan  4 12:14:24 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- rsa-pss-revert.patch: temp revert functionality requiring newer openssl
+
+-------------------------------------------------------------------
+Mon Jan  3 19:04:23 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Initial package of version 17.3.0. For complete list of changes
+  since 16.x series, please see
+  https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V17.md#17.3.0
+
+- patches carried from 16.x series with some adaptations include
+  cares_public_headers.patch, fix_ci_tests.patch, flaky_test_rerun.patch,
+  legacy_python.patch, linker_lto_jobs.patch, manual_configure.patch,
+  node-gyp-addon-gypi.patch, nodejs-libpath.patch, npm_search_paths.patch,
+  openssl_binary_detection.patch, skip_no_console.patch,
+  sle12_python3_compat.patch, test-skip-y2038-on-32bit-time_t.patch,
+  versioned.patch
+
