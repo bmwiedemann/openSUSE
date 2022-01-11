@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kitinerary
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -92,7 +92,7 @@ to build programs that use the kitinerary library.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --with-qt --all-name
 %endif
 
@@ -119,7 +119,7 @@ to build programs that use the kitinerary library.
 %{_kf5_cmakedir}/KPimItinerary/
 %{_kf5_libdir}/libKPimItinerary.so
 
-%if %{with lang}
+%if %{with released}
 %files -n libKPimItinerary5-lang -f %{name}.lang
 %endif
 

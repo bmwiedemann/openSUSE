@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fixes for vitolus extractor
+  * Extract UIC operator code from SNCF TER barcodes
+  * Make proper json
+  * Find more reservation number variants in SNCF TER PDF tickets
+  * Add extractor script for Amtrak tickets
+  * Make the VIA Rail extractor work both with a full PDF or just the barcode
+
+-------------------------------------------------------------------
 Fri Dec  3 19:22:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
