@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 10 08:28:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire generic distribution-release instead of
+  openSUSE-release: has the main advantage of not rerunning the
+  test suite multiple times a day, whenever openSUSE-release is
+  being recalculated.
+- No longer enable multibuild flavors for python 3.6 on
+  suse_version >= 1550.
+
+-------------------------------------------------------------------
 Fri Dec 24 10:13:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove tests-ignore-qt6-dirs.patch merged upstream

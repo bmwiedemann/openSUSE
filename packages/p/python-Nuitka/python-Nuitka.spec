@@ -1,7 +1,7 @@
 #
-# spec file for package python-Nuitka%{?psuffix}
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ ExclusiveArch:  do-not-build
 ExclusiveArch:  do-not-build
 %endif
 %if "%{flavor}" == "clang-test-py36"
+ExclusiveArch:  do-not-build
 %bcond_without  test_clang
 %bcond_with     test_gcc
 %define pythons python36
@@ -93,6 +94,7 @@ ExclusiveArch:  do-not-build
 ExclusiveArch:  do-not-build
 %endif
 %if "%{flavor}" == "gcc-test-py36"
+ExclusiveArch:  do-not-build
 %bcond_with     test_clang
 %bcond_without  test_gcc
 %define pythons python36
@@ -134,12 +136,12 @@ Requires:       python-boltons
 Requires:       python-devel
 Requires:       scons
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
-Recommends:     python-tqdm
 Recommends:     patchelf
+Recommends:     python-tqdm
 Recommends:     strace
 Suggests:       execstack
 Suggests:       gdb
@@ -159,8 +161,8 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module boltons}
-BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module glfw}
+BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module gtk if (%python-base with python-base)}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module idna}
@@ -185,8 +187,8 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  %{python_module zstd}
 BuildRequires:  ccache
 BuildRequires:  chrpath
+BuildRequires:  distribution-release
 BuildRequires:  gdb
-BuildRequires:  openSUSE-release
 BuildRequires:  patchelf
 BuildRequires:  strace
 BuildRequires:  tk
@@ -387,7 +389,6 @@ export NUITKA_EXTRA_OPTIONS=""
 # A patchelf failure in Pandasusing on gcc Leap 15.2 py36 has occurred once
 # It may be the same problem as https://github.com/Nuitka/Nuitka/issues/1298
 # which will be fixed in the next patch release
-
 
 # https://github.com/Nuitka/Nuitka/issues/1338
 if [[ "$python" == "python2" ]]; then
