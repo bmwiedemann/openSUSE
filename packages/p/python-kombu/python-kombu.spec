@@ -40,12 +40,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module redis >= 3.4.1}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
+BuildRequires:  %{python_module vine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-amqp >= 5.0.9
 Requires:       python-cached-property
 Requires:       python-importlib-metadata >= 0.18
 Requires:       python-setuptools
+Requires:       python-vine
 Recommends:     python-Brotli >= 1.0.0
 Recommends:     python-PyYAML >= 3.10
 Obsoletes:      python-carrot

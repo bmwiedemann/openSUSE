@@ -810,4 +810,12 @@
   * Tests &amp; dependency updates</comment>
     <requestid>943612</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>b700919f6c375e50cfab91b91dc4de9d</srcmd5>
+    <version>5.2.3</version>
+    <time>1641932241</time>
+    <user>dimstar_suse</user>
+    <comment>- add vine dependency</comment>
+    <requestid>945463</requestid>
+  </revision>
 </revisionlist>
