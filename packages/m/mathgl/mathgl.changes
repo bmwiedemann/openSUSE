@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Dec 24 23:06:28 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5:
+  * Add functions ‘sum’, ‘prod’ at formula evaluation, like
+    ‘sum(_i^2,5)’ will produce 30=0+1^2+2^2+3^2+4^2, and
+    ‘prod(1+_i,5)’ will produce 120=5!. You can nest them for
+    variables ‘_i’,‘_j’,...,‘_z’, like ‘sum(sum(_j+_i^2,5),5)’
+    will give 200.
+  * Add user-defined functions ‘fn1()’...‘fn9()’ at formula
+    evaluation, like ‘fn1(3)\x^_1’ will produce x^3.
+  * Add functions ‘value’, ‘spline’ at formula evaluation, like
+    ‘value(a,5)’ will give value of 6-th element of a, i.e. a[5].
+  * Add keep for keeping the data phase/sign or value along line i
+    and j in given direction
+  * Add mglODEs() (i.e. extend ode) for solving PDE, cascades and
+    etc.
+  * Add dcont to draw a set of curves, which are intersection of
+    two isosurfaces at given level.
+  * Add lines to draw a set of lines with arrows between points.
+  * Add first, last to get array of first/last indexes of values
+    larger specified one along given direction.
+  * Add bernoulli, binomial, brownian, discrete, exponential,
+    gaussian, shuffle, uniform, uniformint for data filling by
+    random numbers with different distributions.
+  * Add readbin to read data from binary files.
+  * Add texparse to enable/disable TeX-like command parsing at
+    text output.
+  * Update ode: regularization is used if dt*tmax<0 (total time
+    may differ, but number of steps still the same).
+  * Add mgl_default_graph() – the global (default) pointer to HMGL
+    for keeping plot settings, simplifying external scripts and
+    capture it in GUI.
+  * Add style ‘p’ in command smooth to use parabolic smoothing of
+    arbitrary points.
+  * Allow background for scaling image, centering image and
+    tessellate image as mosaic.
+  * Allow filling background by the specified color.
+  * Allow masks for candle, area, region, bars, barh, chart, tape,
+    face, polygon, ellipse, rhomb.
+  * Allow single value specification for contour level in cont,
+    contd, contp, contv, cont3, dcont, tricont.
+  * Add mgl_dual_save_hdf(), mgl_real_save_hdf(),
+    mgl_int_save_hdf() for saving single number in HDF5 file.
+  * Add mgl_formula_calc(), mgl_formula_calc_c() for evaluating
+    textual formulas of arbitrary set of data arrays.
+  * Add mglDataList – global mglDataA* collection for
+    viewing/changing in GUI data from external languages (like,
+    Python, ...).
+  * Add Armadillo interface for mglData and mglDataC.
+  * If nsub parameter of command hist is negative (nsub<0) then
+    the linear interpolation is used instead of spline one.
+  * Add dark text colors for mgllab.
+  * Minor bugfixes.
+  * OBSOLETE: Qt4 interface will be disabled in the next release.
+  * OBSOLETE: Functions colorbar will have extra argument opt for
+    options, similarly to axis and other plotting functions. In
+    C++ and SWIG-based interfaces this change "masked" by
+    providing the default value for the argument. 
+- Minor rebase of mathgl-fix-python-module-path.patch to apply
+  cleanly against updated version.
+- Bump library so version appropriately.
+- Enable python3 bindings: now supported by upstream; build only
+  for default python3 flavour.
+- Disable python bindings for Leap, since python >= 3.8 is
+  required whereas Leap 15.2/3 only have python 3.6.
+- Re-enable octave bindings.
+- Rename python sub-package to have name consistent with
+  openSUSE's python3 package naming guidelines.
+- Update _constraints to require 8 GB disk space as required by
+  updated version.
+- Drop sed fix for location of numpy header file: no longer
+  needed.
+
+-------------------------------------------------------------------
 Sun Mar 28 18:35:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded WebKit build requirements.

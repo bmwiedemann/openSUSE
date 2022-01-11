@@ -24,25 +24,27 @@
 %else
 %define omp_ver %{nil}
 %endif
-# NO PYTHON3 SUPPORT FROM UPSTREAM
-%if 0%{?suse_version} > 1500
-%bcond_with python
-%else
+
+# At least python 3.8 is required; Leap <= 15.3 only has python 3.6
+%if 0%{?suse_version} >= 1550
 %bcond_without python
+%else
+%bcond_with python
 %endif
+%define skip_python2 1
+
 # oct_version must be x.y.z
 %define oct_version %{version}
-%define somajor 7.5.0
-%define libversion 7_5_0
+%define somajor 7.6.0
+%define libversion 7_6_0
 
-# NOT COMPATIBLE WITH OCTAVE >= 6
-%bcond_with octave
+%bcond_without octave
 
 %if 0%{?fedora_version}
 %define _defaultdocdir %{_docdir}
 %endif
 Name:           mathgl
-Version:        2.4.4
+Version:        2.5
 Release:        0
 Summary:        Library for making scientific graphics
 License:        GPL-3.0-only
@@ -84,8 +86,9 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  texlive-latex
 BuildRequires:  wxWidgets-devel >= 3
 %if %{with python}
-BuildRequires:  python-devel
-BuildRequires:  python-numpy-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-numpy-devel
 %endif
 %if %{with octave}
 BuildRequires:  octave-devel
@@ -277,11 +280,11 @@ console modes and for embedding into other programs.
 This package provides Octave interface for MathGL.
 %endif
 
-%package -n     python-mathgl
+%package -n     %{python_prefix}-mathgl
 Summary:        Libraries and header files for the MathGL library
-Requires:       python-base
+Provides:       python3-mathgl = %{version}
 
-%description -n python-mathgl
+%description -n %{python_prefix}-mathgl
 MathGL is a library for making scientific graphics. It provides data
 plotting and handling of large data arrays, as well as window and
 console modes and for embedding into other programs.
@@ -349,10 +352,6 @@ execute MGL scripts, set up, rotate graphics, and so on.
 # Correct octave-mathgl version
 sed -i 's/2.0/%{oct_version}/' lang/DESCRIPTION
 
-# Correct location of numpy/arrayobject.h header file
-numpy_h=%{python_sitearch}/numpy/core/include/numpy/arrayobject.h
-sed -i "s|<numpy/arrayobject.h>|\"${numpy_h}\"|" lang/numpy.i
-
 # convert EOL encodings, maintaining timestames
 sed -i 's/\r$//' AUTHORS README
 
@@ -390,7 +389,7 @@ cmake \
       -Denable-python=%{?with_python:on}%{!?with_python:off} \
       -Denable-lua=on                         \
       -Denable-octave=%{?with_octave:on}%{!?with_octave:off} \
-      -Denable-octave-install=off             \
+      -Denable-octave-install=%{?with_octave:on}%{!?with_octave:off} \
       -Denable-mgltex=on                      \
       -Denable-json-sample=off                \
       -Denable-doc-html=on                    \
@@ -557,8 +556,8 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %endif
 
 %if %{with python}
-%files -n python-mathgl
-%{python2_sitearch}/*
+%files -n %{python_prefix}-mathgl
+%{python3_sitearch}/*
 %endif
 
 %files tex

@@ -1,8 +1,8 @@
-Index: mathgl-2.4.3/examples/CMakeLists.txt
+Index: mathgl-2.4.4+svn1661/examples/CMakeLists.txt
 ===================================================================
---- mathgl-2.4.3.orig/examples/CMakeLists.txt
-+++ mathgl-2.4.3/examples/CMakeLists.txt
-@@ -4,6 +4,10 @@ file(COPY ${CMAKE_SOURCE_DIR}/examples/s
+--- mathgl-2.4.4+svn1661.orig/examples/CMakeLists.txt
++++ mathgl-2.4.4+svn1661/examples/CMakeLists.txt
+@@ -5,6 +5,10 @@ file(COPY ${CMAKE_SOURCE_DIR}/examples/s
  file(COPY ${CMAKE_SOURCE_DIR}/examples/wnd_samples.cpp DESTINATION ${CMAKE_BINARY_DIR}/examples)
  add_executable(mgl_example wnd_samples.cpp full_test.cpp samples.cpp)
  target_link_libraries(mgl_example mgl-static ${getopt_lib-static})
@@ -13,7 +13,7 @@ Index: mathgl-2.4.3/examples/CMakeLists.txt
  if(CMAKE_BUILD_TYPE STREQUAL "Debug" AND CMAKE_COMPILER_IS_GNUCXX AND enable-lcov)
  	setup_target_for_coverage(
  	    NAME mgl_coverage
-@@ -16,17 +20,29 @@ if(MGL_HAVE_FLTK)
+@@ -17,17 +21,29 @@ if(MGL_HAVE_FLTK)
  	include_directories(${FLTK_INCLUDE_DIR})
  	add_executable(mgl_fltk_example wnd_samples.cpp fltk_example.cpp)
  	target_link_libraries(mgl_fltk_example mgl-fltk)
@@ -43,7 +43,7 @@ Index: mathgl-2.4.3/examples/CMakeLists.txt
  endif(MGL_HAVE_WX)
  
  if(QT_ENABLED)
-@@ -34,17 +50,33 @@ if(QT_ENABLED)
+@@ -35,17 +51,33 @@ if(QT_ENABLED)
  	if(enable-qt5)
  		include(../scripts/qt5.cmake)
  		target_link_libraries(mgl_qt_example mgl-qt5)
