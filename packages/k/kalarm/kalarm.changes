@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fix bad calendar files preventing command line actions from running
+  * Fix crash when a resource is removed
+  * If KAlarm already running, don't exit if a new activation has command line errors
+  * Fix resource ID numbers not working in command line & DBUS commands
+  * Bug 446749: Don't disable alarms after command line action (kde#446749)
+  * Bug 446749: Perform command line actions if KAlarm is already running
+  * Treat empty read-only, or non-existent, calendar files as loaded
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
