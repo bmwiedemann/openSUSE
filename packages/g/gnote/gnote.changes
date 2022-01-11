@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 10 20:04:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Fixes:
+    - Fix duplicate condition in SyncManager.
+    - Fix date formatting when second is single digit.
+    - Fix excessive saves due to rogue marks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Dec  1 20:55:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add conditional for ldconfig_scriptlets and reinstate post(un)
