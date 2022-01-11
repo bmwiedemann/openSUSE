@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:47:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.20:
+  - fix error in microseconds while rounding datetime fractions >= 9999995
+  - fix mypy problems
+  - copy-paste error in folded scalar comment attachment
+  - fix 411, indent error comment between key empty seq value
+
+-------------------------------------------------------------------
 Mon Nov 29 11:01:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.17:
