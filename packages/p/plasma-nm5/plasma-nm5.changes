@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- No code changes since 5.23.4
+
+-------------------------------------------------------------------
 Fri Dec 10 18:15:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix package build with plasma-framework 5.89.0.
