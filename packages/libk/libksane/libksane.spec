@@ -20,16 +20,16 @@
 %define lname libKF5Sane
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           libksane
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE scanning library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -87,7 +87,7 @@ scanners and other imaging devices supported by SANE.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
   %endif
 
@@ -107,7 +107,7 @@ scanners and other imaging devices supported by SANE.
 %{_kf5_includedir}/ksane_version.h
 %{_kf5_libdir}/%{lname}.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
