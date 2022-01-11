@@ -16,21 +16,21 @@
 #
 
 
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kio
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -38,6 +38,10 @@ Source2:        frameworks.keyring
 Patch0:         kio_help-fallback-to-kde4-docs.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
+# gcc7 is too old for std::transform_reduce
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  krb5-devel
 BuildRequires:  libacl-devel
@@ -81,9 +85,6 @@ Requires:       %{name}-core = %{version}
 Requires:       kded >= %{_kf5_bugfix_version}
 # KIO/FileDialog uses klauncher directly, but we can't add Requires, as that would introduce dep cycle
 Recommends:     kinit
-%if %{with lang}
-Recommends:     %{name}-lang = %{version}
-%endif
 
 %description
 This framework implements almost all the file management functions you
@@ -139,6 +140,10 @@ Development files.
 %define _lto_cflags %{nil}
 %endif
 
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build
 %cmake_build
 
@@ -146,7 +151,7 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
 %endif
@@ -156,7 +161,7 @@ Development files.
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
