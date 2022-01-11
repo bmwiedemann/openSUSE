@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:24:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Hide welcome screen as soon as we know we're loading a file (kde#441529)
+  * Do not highlight file after compression (kde#440663)
+  * Fix extraction "Dolphin Actions" not abiding "Open destination folder
+    after extracting" setting. (kde#319134)
+  * Kerfuffle CreateJob: delete addJob in dtor (kde#443540)
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
