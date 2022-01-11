@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           libkdepim
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -67,7 +67,7 @@ This package contains the libkdepim library.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
 %endif
 
@@ -125,7 +125,7 @@ The development package for the libkdepim libraries
 %{_kf5_libdir}/libKF5Libkdepim.so
 %{_kf5_mkspecsdir}/qt_Libkdepim.pri
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
