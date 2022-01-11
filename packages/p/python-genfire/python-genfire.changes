@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:01:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros dependency 
+
+-------------------------------------------------------------------
 Fri Feb 12 23:52:18 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - NEP 29: python36-numpy and -scipy are no longer available in TW

@@ -1,7 +1,7 @@
 #
 # spec file for package python-genfire
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module scipy >= 0.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 4.1.1
 Requires:       python-PyQt5 >= 5.5.0
 Requires:       python-numpy >= 1.12.1
@@ -47,7 +48,7 @@ Requires:       python-setuptools
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
