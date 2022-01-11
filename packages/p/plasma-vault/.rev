@@ -694,4 +694,12 @@
     <comment>- Fix package build with plasma-framework 5.89.0.</comment>
     <requestid>939464</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>d6104fea6e2764e5e102ebbd54c8c0ce</srcmd5>
+    <version>5.23.5</version>
+    <time>1641932246</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 943820 from Vogtinator)</comment>
+    <requestid>943991</requestid>
+  </revision>
 </revisionlist>
