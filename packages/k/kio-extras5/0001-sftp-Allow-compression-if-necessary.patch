@@ -1,0 +1,43 @@
+From f3ad370f237c69c018c968bab6f79b16c27edbba Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 16 Nov 2021 08:35:45 +0100
+Subject: [PATCH] sftp: Allow compression if necessary
+
+Specifying only "none" as compression method causes the exchange to fail if
+the server doesn't support "none".
+
+Use the same options as OpenSSH does by default. The Compression=yes/no option
+in the config file overrides them if specified.
+
+Setting the options explicitly can be dropped in the future after libssh
+adjusts its built-in defaults.
+
+(cherry picked from commit c5a9722de86f111ded36488e9bb676a70e80aea0)
+---
+ sftp/kio_sftp.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/sftp/kio_sftp.cpp b/sftp/kio_sftp.cpp
+index 1afc51f5..c90aab76 100644
+--- a/sftp/kio_sftp.cpp
++++ b/sftp/kio_sftp.cpp
+@@ -592,13 +592,13 @@ Result SFTPInternal::sftpOpenConnection(const AuthInfo &info)
+         return Result::fail(KIO::ERR_INTERNAL, i18n("Could not disable Nagle's Algorithm."));
+     }
+ 
+-    // Don't use any compression
+-    rc = ssh_options_set(mSession, SSH_OPTIONS_COMPRESSION_C_S, "none");
++    // Prefer not to use compression
++    rc = ssh_options_set(mSession, SSH_OPTIONS_COMPRESSION_C_S, "none,zlib@openssh.com,zlib");
+     if (rc < 0) {
+         return Result::fail(KIO::ERR_INTERNAL, i18n("Could not set compression."));
+     }
+ 
+-    rc = ssh_options_set(mSession, SSH_OPTIONS_COMPRESSION_S_C, "none");
++    rc = ssh_options_set(mSession, SSH_OPTIONS_COMPRESSION_S_C, "none,zlib@openssh.com,zlib");
+     if (rc < 0) {
+         return Result::fail(KIO::ERR_INTERNAL, i18n("Could not set compression."));
+     }
+-- 
+2.33.1
+
