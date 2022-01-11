@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kanagram
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
 URL:            https://apps.kde.org/kanagram
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -65,7 +65,7 @@ Kanagram is a letter order game.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -85,7 +85,7 @@ Kanagram is a letter order game.
 %{_kf5_knsrcfilesdir}/kanagram.knsrc
 %{_kf5_sharedir}/kanagram/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
