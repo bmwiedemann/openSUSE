@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           itinerary
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://apps.kde.org/itinerary
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -91,11 +91,11 @@ install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
 %ctest
 %endif
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --all-name
 %endif
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Don't break the timeline page when leaving development mode
+  * Also make unit tests work against older KF versions without KI18nLocaleData
+  * Fix station map platforms being mis-detected without live data
+  * Get at least one live data update even for far future elements
+  * Add 21.12.0 release notes
+  * Fix ASAN unit test failure on the CI
+  * Sanity-check model indexes
+  * Fix certificate ordering when facing invalid dates
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
