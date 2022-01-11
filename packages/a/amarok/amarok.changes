@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 06 11:37:06 UTC 2022 - christophe@krop.fr
+
+- Update to version 2.9.75git.20220102T131246~92aa01de32:
+  * cmake: drop the recently removed upnpcollection
+  * Remove upnpcollection plugin
+  * Add -DQT_NO_CAST_TO_ASCII and fix compilation
+  * Fixed non-resuming playback on startup
+  * Enable new Gitlab CI
+  * Add include of algorithm for std::sort and std::stable_sort
+  * Replace functions deprecated in Qt 5.9 and earlier
+  * Update Readme
+
+-------------------------------------------------------------------
 Wed Sep 08 06:43:42 UTC 2021 - christophe@krop.fr
 
 - Update to version 2.9.75git.20210830T182443~10309f00af:
   * Set Attributes before constructing the Application
   * Port away from KRandom, bump Qt req. ver. to 5.10
-- Rebase amarok-2.9.75git.20210830T182443~10309f00af.tar.xz
+- Rebase 0001-Work-around-QTBUG-75797-for-openQA.patch
 - Update translations
 
 -------------------------------------------------------------------
