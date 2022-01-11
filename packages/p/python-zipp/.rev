@@ -143,4 +143,15 @@
   *  Remove news file intended only for CPython.</comment>
     <requestid>925743</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1caeac7c379c897273ba3533e260cd8</srcmd5>
+    <version>3.7.0</version>
+    <time>1641932230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0:
+  * Require Python 3.7 or later.
+
+- add python-rpm-macros buildrequires</comment>
+    <requestid>945425</requestid>
+  </revision>
 </revisionlist>

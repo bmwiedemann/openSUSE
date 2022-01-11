@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
@@ -38,6 +39,7 @@ BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-more-itertools
 BuildArch:      noarch
 %if %{with test}
