@@ -19,16 +19,16 @@
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kcalutils
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -44,7 +44,7 @@ BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Test)
 #  Only with stable builds
-%if %{with lang}
+%if %{with released}
 %requires_eq    grantlee5
 %endif
 
@@ -75,7 +75,7 @@ Provides:       kcalutils5-devel = %{version}
 This package contains necessary include files and libraries needed
 to develop applications wanting to use kcalutils.
 
-%if %{with lang}
+%if %{with released}
 %lang_package
 %endif
 
@@ -88,7 +88,7 @@ to develop applications wanting to use kcalutils.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
   %endif
 
@@ -111,7 +111,7 @@ to develop applications wanting to use kcalutils.
 %files
 %{_libdir}/grantlee/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
