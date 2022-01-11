@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyECLib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python310 1
 Name:           python-PyECLib
 Version:        1.6.0
 Release:        0
