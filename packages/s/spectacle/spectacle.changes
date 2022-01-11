@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:26:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Check for right/middle click in Platform*.cpp
+  * Do not show error message when canceling with rightclick while in rectangluar mode (kde#446882)
+  * Cancel drag and drop if there is no screenshot in the preview.
+  * Disable buttons that shouldn't be available when no screenshot was taken (kde#446578)
+  * Disable Annotate button when there's no image
+
+-------------------------------------------------------------------
 Fri Dec  3 19:23:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
