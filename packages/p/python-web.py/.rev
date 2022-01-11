@@ -157,4 +157,12 @@
 </comment>
     <requestid>903207</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>85bf639ea0f3611d1afe1a84a5e45bbe</srcmd5>
+    <version>0.62</version>
+    <time>1641940965</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros</comment>
+    <requestid>945684</requestid>
+  </revision>
 </revisionlist>

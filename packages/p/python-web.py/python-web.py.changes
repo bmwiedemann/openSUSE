@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:13:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros 
+
+-------------------------------------------------------------------
 Wed Jun 30 10:44:53 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip ApplicationTest.test_routing test (reported upstream as gh#webpy/webpy#712)

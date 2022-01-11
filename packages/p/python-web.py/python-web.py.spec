@@ -1,7 +1,7 @@
 #
 # spec file for package python-web.py
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://webpy.org/
 Source:         https://files.pythonhosted.org/packages/source/w/web.py/web.py-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-cheroot
 BuildArch:      noarch
 # SECTION test requirements
