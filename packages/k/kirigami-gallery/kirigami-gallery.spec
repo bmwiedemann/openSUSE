@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kirigami-gallery
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://apps.kde.org/kirigami2.gallery
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -65,7 +65,7 @@ code examples on cgit
 %kf5_makeinstall -C build
 %suse_update_desktop_file -G "Kirigami Gallery" org.kde.kirigami2.gallery GUIDesigner
 
-%if %{with lang}
+%if %{with released}
 %find_lang kirigamigallery %{name}.lang --with-qt
 %endif
 
@@ -75,7 +75,7 @@ code examples on cgit
 %{_kf5_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
 %{_kf5_bindir}/kirigami2gallery
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
