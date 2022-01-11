@@ -1,7 +1,7 @@
 #
 # spec file for package spack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -55,7 +55,6 @@ Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
 Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
-Patch9:         leap-container.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod

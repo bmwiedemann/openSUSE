@@ -203,4 +203,12 @@
   so that spack writes to $HOME if started as user (forwarded request 940447 from mslacken)</comment>
     <requestid>940448</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bbe1cd95f6cf54866b0f9ebea6cffc9d</srcmd5>
+    <version>0.17.1</version>
+    <time>1641932382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945414</requestid>
+  </revision>
 </revisionlist>
