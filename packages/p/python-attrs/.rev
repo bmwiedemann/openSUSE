@@ -160,4 +160,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>897252</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>55dd6148c76f56c009fd0429f0e21f16</srcmd5>
+    <version>21.4.0</version>
+    <time>1641932231</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.4.0:
+  * Fixed the test suite on PyPy3.8 where ``cloudpickle`` does not work.
+  * Fixed ``coverage report`` for projects that use ``attrs`` and don't
+    set a ``--source``.
+  * When using ``@define``, converters are now run by default when
+    setting an attribute on an instance -- additionally to validators.
+  * ``import attrs`` has finally landed!
+  * ``attr.asdict(retain_collection_types=False)`` (default)
+    dumps collection-esque keys as tuples.
+  * ``__match_args__`` are now generated to support Python 3.10's
+  * If the class-level *on_setattr* is set to ``attrs.setters.validate``
+    (default in ``@define`` and ``@mutable``) but no field defines
+    a validator, pretend that it's not set.
+  * The generated ``__repr__`` is significantly faster on Pythons with
+    f-strings.
+  * Attributes transformed via ``field_transformer`` are wrapped with
+    ``AttrsClass`` again.
+  * Generated source code is now cached more efficiently for identical classes.
+  * Added ``attrs.converters.to_bool()``.
+  * ``attrs.resolve_types()`` now resolves types of subclasses after
+    the parents are resolved.
+  * Added new validators: ``lt(val)`` (&lt; val), ``le(va)`` (≤ val),
+    ``ge(val)`` (≥ val), ``gt(val)`` (&gt; val), and ``maxlen(n)``.
+  * ``attrs`` classes are now fully compatible with cloudpickle
+  * Added new context manager ``attrs.validators.disabled()`` and
+    functions ``attrs.validators.(set|get)_disabled()``.
+    They deprecate ``attrs.(set|get)_run_validators()``.
+    All functions are interoperable and modify the same internal state.
+    They are not – and never were – thread-safe, though.</comment>
+    <requestid>945429</requestid>
+  </revision>
 </revisionlist>
