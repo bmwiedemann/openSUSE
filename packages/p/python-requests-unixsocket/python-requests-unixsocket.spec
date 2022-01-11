@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-unixsocket
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-unixsocket
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        UNIX domain socket backend for python-requests
 License:        Apache-2.0
@@ -30,12 +30,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 1.1
-Requires:       python-urllib3 >= 1.8
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 1.1}
-BuildRequires:  %{python_module urllib3 >= 1.8}
 BuildRequires:  %{python_module waitress}
 # /SECTION
 %python_subpackages
@@ -47,7 +45,7 @@ HTTP via a UNIX domain socket.
 %prep
 %setup -q -n requests-unixsocket-%{version}
 # do not require additional test deps
-sed -i -e '/addopts/d' pytest.ini 
+sed -i -e '/addopts/d' pytest.ini
 
 %build
 %python_build
