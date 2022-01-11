@@ -96,21 +96,17 @@ install -m 0755 arp2ethers %{buildroot}%{_bindir}
 
 %pre
 %service_add_pre arpwatch.service
-%service_add_pre arpwatch@.service
 
 %preun
 %service_del_preun arpwatch.service
-%service_del_preun arpwatch@.service
 
 %post
 %fillup_only
 %tmpfiles_create %{_tmpfilesdir}/arpwatch.conf
 %service_add_post arpwatch.service
-%service_add_post arpwatch@.service
 
 %postun
 %service_del_postun arpwatch.service
-%service_del_postun arpwatch@.service
 
 %files
 %{_unitdir}/arpwatch.service
