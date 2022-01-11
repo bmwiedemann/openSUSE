@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * lsp: Do not HTML escape markdown text
+  * Fix blame not visible after switching to a 'diff view'
+  * SemanticTokens: Use size_t as argument for type (kde#447553)
+  * lsp: Handle client/RegisterCapability
+  * Fix incorrect blame info parsing when summary has '\t'
+  * ColorBrackets: Fix disconnecting wrong view
+  * Fix 2 second delays for everything semantic highlighting related
+  * do nothing if use canceled project open (kde#447194)
+  * Ensure to clean up saved ranges when docs close
+  * enable/disable project actions (kde#445494)
+  * Fix segfault on session change
+  * try to fix compile on FreeBSD
+  * build 'Colored brackets for readability' plugin in master
+  * fix sessions segfault because of invalid iterator (kde#446863)
+  * appstream: Remove duplicated release info
+  * Fix LSPTooltip sizing
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0

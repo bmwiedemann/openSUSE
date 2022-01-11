@@ -19,16 +19,16 @@
 %define _appstreamkpackage 0%(cat %{_kf5_cmakedir}/KF5Package/KF5PackageMacros.cmake | grep -q 'appstream-metainfo' && echo 1)
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kate
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://kate-editor.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -101,7 +101,7 @@ plugins and data files for Kate and KWrite editors.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -146,7 +146,7 @@ plugins and data files for Kate and KWrite editors.
 %{_kf5_sharedir}/katexmltools/
 %{_kf5_sharedir}/plasma/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
