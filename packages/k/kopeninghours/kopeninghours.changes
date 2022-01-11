@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:26:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Turn nthMask into a vector of entries, to preserve intervals and ordering (kde#445963)
+  * Extended monthdays: remove ascending requirement
+  * Extend the extended syntax for month day sets
+  * Fix OpeningHours::simplifiedExpression not really being const
+  * Simplify "Feb 1-29" to "Feb" (kde#446252)
+  * Consider "through" as alternative range separator (kde#446136)
+  * Do not repeat months when unnecessary (kde#446224)
+  * Fix autocorrect for cases where the state differs (kde#445787)
+  * Add more Spanish state values (kde#446134)
+  * Support 4 digit times to the extend possible (kde#446137)
+  * Merge adjacent single weekday and time range selectors (kde#445784)
+  * Convert 24/7 rules to timespan selectors when used in a timespan context (kde#445962)
+  * Add Russian language support for states and sun-based events (kde#445785)
+  * Parse Russian long-form time ranges
+  * Add localized Russian month names
+  * Parse localized Russian day names
+
+-------------------------------------------------------------------
 Fri Dec  3 19:22:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0

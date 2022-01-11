@@ -16,15 +16,15 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kopeninghours
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -66,7 +66,7 @@ library.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man
 %endif
 
@@ -94,7 +94,7 @@ export QT_QPA_PLATFORM=offscreen
 %{_kf5_cmakedir}/KOpeningHours/
 %{_kf5_libdir}/libKOpeningHours.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
