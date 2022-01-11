@@ -18,16 +18,16 @@
 
 %define qt5_version 5.15.0
 %define kf5_version 5.64.0
-%bcond_without lang
+%bcond_without released
 Name:           elisa
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://apps.kde.org/elisa
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -84,7 +84,7 @@ built and played.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -102,7 +102,7 @@ built and played.
 %{_kf5_libdir}/elisa/
 %{_kf5_qmldir}/org/kde/elisa/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
