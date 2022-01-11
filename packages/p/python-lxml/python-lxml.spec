@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lxml
-Version:        4.6.5
+Version:        4.7.1
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
