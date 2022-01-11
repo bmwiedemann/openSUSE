@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kdesdk-kioslaves
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -49,7 +49,7 @@ This package contains additional KIO slaves.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang kio5_perldoc kio_perldoc.lang
 %endif
 
@@ -71,7 +71,7 @@ This KDE KIO slave allows to browse the Perl documentation.
 %{_kf5_plugindir}/kf5/kio/perldoc.so
 %{_kf5_sharedir}/kio_perldoc/pod2html.pl
 
-%if %{with lang}
+%if %{with released}
 %files -n kio_perldoc-lang -f kio_perldoc.lang
 %endif
 
