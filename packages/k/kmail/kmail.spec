@@ -19,16 +19,16 @@
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kmail
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://apps.kde.org/kmail2
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -112,7 +112,7 @@ Provides:       kmail5 = %{version}
 Obsoletes:      kmail5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
+%if %{with released}
 %requires_eq    libKF5PimCommon5
 %requires_eq    libKF5PimCommonAkonadi5
 %requires_eq    messagelib
@@ -149,7 +149,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -235,7 +235,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_iconsdir}/hicolor/scalable/apps/kmail.svg
 %{_kf5_iconsdir}/breeze-dark/*/emblems/gpg-key-trust-level-*.svg
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
