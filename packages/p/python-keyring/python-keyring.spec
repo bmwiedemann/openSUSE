@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyring
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-keyring
-Version:        23.2.1
+Version:        23.5.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0

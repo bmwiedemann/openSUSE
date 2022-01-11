@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:45:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.5.0:
+  * Require Python 3.7 or later.
+  * #551: Fixed docs warnings.
+  * #549: EnvironCredential now allows for equality
+    comparison.
+  * #529: macOS backend is no longer viable if the API module
+    cannot be loaded. Prevents "symbol not found" errors on
+    macOS 11 (Big Sur) and later when a "universal2" binary
+    is not used (available for Python 3.8.7 and later).
+  * #547: Tests no longer attempt to run macOS backends even
+    on macOS when the backend is non-viable.
+  * #542: Change get_credential to return generic Credential.
+
+-------------------------------------------------------------------
 Fri Sep 24 09:21:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 23.2.1:

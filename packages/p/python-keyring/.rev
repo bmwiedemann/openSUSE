@@ -477,4 +477,23 @@
   * Support new importlib-metadata.</comment>
     <requestid>921255</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>662660078501217ec04441ab807a9a49</srcmd5>
+    <version>23.5.0</version>
+    <time>1641932232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.5.0:
+  * Require Python 3.7 or later.
+  * #551: Fixed docs warnings.
+  * #549: EnvironCredential now allows for equality
+    comparison.
+  * #529: macOS backend is no longer viable if the API module
+    cannot be loaded. Prevents &quot;symbol not found&quot; errors on
+    macOS 11 (Big Sur) and later when a &quot;universal2&quot; binary
+    is not used (available for Python 3.8.7 and later).
+  * #547: Tests no longer attempt to run macOS backends even
+    on macOS when the backend is non-viable.
+  * #542: Change get_credential to return generic Credential.</comment>
+    <requestid>945432</requestid>
+  </revision>
 </revisionlist>
