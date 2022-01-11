@@ -19,16 +19,16 @@
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           akregator
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Utilities
 URL:            https://apps.kde.org/akregator
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -90,7 +90,7 @@ browser for news reading.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -128,7 +128,7 @@ browser for news reading.
 %{_kf5_servicetypesdir}/akregator_plugin.desktop
 %{_kf5_sharedir}/akregator/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
