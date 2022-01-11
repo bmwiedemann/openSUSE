@@ -1,7 +1,7 @@
 #
 # spec file for package python-langtable
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
