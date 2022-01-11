@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Icon documentation: add note about Cuttlefish
+  * ContextDrawer: fix documentation for "footer"
+  * Fix type error introduced in 52ce01c
+  * Add licenses to example files
+  * WheelHandler: Improve consistency with scrolling in Qt Widgets, add more properties
+  * Fix navigation buttons on layers
+  * Fix typo in search field documentation
+  * FormLayout: Switch an instance of let to var
+  * Add missing include (qt6 build)
+  * ShadowedRectangle: Add renderType option
+  * Dialog: Remove warning
+  * AboutPage: show spinner feedback while loading remote icon
+  * AboutPage: Only mess with the URL when we are dealing with KDE products (kde#444554)
+  * AboutItem: don't multiply sizes by devicePixelRatio
+  * AboutItem: Fix incorrect usage of height: and width: inside layouts
+  * OverlaySheet: Modify anchors on tall headers imperatively
+  * globaltoolbar: Use strict === equality in JavaScript
+  * Add explicit restore mode to avoid warning
+  * PageRowGlobalToolBarUI: don't animate opacity, take two (kde#417636)
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0

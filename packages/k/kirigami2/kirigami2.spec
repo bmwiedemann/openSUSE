@@ -17,21 +17,21 @@
 
 
 %define lname libKF5Kirigami2-5
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kirigami2
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -49,7 +49,7 @@ BuildRequires:  cmake(Qt5Test) >= 5.15.0
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang = %{version}
-%if %{with lang}
+%if %{with released}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
@@ -87,7 +87,7 @@ Development files.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang libkirigami2plugin --with-qt --without-mo
 %endif
 
@@ -110,7 +110,7 @@ Development files.
 %{_kf5_mkspecsdir}/qt_Kirigami2.pri
 %{_libdir}/cmake/KF5Kirigami2/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f libkirigami2plugin.lang
 %endif
 
