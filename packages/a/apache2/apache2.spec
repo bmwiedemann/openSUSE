@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -200,6 +200,8 @@ Patch100:       apache-test-application-xml-type.patch
 Patch101:       apache-test-turn-off-variables-in-ssl-var-lookup.patch
 # PATCH:    reverted logic, DirectorySlash NotFound is available in trunk onlyyet
 Patch102:       apache-test-DirectorySlash-NotFound-logic.patch
+# https://svn.apache.org/viewvc?view=revision&revision=1896889
+Patch103:       apache2-perl-io-socket.patch
 BuildRequires:  apache-rpm-macros-control
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
 BuildRequires:  apr-devel >= 1.5.0
@@ -329,6 +331,9 @@ provides HTTP services in sync with the current HTTP standards.
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
+(cd httpd-framework
+%patch103 -p4
+)
 
 #
 # BUILD
