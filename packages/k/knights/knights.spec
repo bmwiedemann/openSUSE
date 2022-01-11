@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           knights
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://apps.kde.org/knights
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -77,7 +77,7 @@ against each other.
 %suse_update_desktop_file -r org.kde.knights Qt KDE Game BoardGame
 %endif
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}
 %{kf5_find_htmldocs}
 %endif
@@ -97,7 +97,7 @@ against each other.
 %{_kf5_kxmlguidir}/knights/
 %{_kf5_sharedir}/knights/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
