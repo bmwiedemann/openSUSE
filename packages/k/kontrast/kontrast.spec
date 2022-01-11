@@ -17,15 +17,15 @@
 
 
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kontrast
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
 URL:            https://apps.kde.org/kontrast
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -60,7 +60,7 @@ used together.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}
 %endif
 
@@ -73,7 +73,7 @@ used together.
 %{_kf5_bindir}/kontrast
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kontrast.svg
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
