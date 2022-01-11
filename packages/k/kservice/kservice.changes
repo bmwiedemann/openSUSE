@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Wrap KServiceTypeTrader methods to create instances also in KCOREADDONS
+    visibility guard
+  * Not use toLower on DesktopEntryName
+  * QVariant(QVariant::Type) constructor is explicit in Qt6
+  * Change the build system to enable building with Qt 6
+  * Expand deprecation docs for KServiceTypeTrader
+  * Deprecate KServiceTypeTrader class
+  * Emit deprecation warning for KServiceType class
+  * Deprecate KPluginInfo in favor of KPluginMetaData
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0

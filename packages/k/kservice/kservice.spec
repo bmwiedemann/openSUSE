@@ -16,21 +16,21 @@
 #
 
 
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kservice
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Plugin framework for desktop services
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -55,9 +55,6 @@ BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 Recommends:     kded >= %{_kf5_bugfix_version}
 Obsoletes:      libKF5Service4
-%if %{with lang}
-Recommends:     %{name}-lang = %{version}
-%endif
 
 %description
 Provides a plugin framework for handling desktop services. Services can
@@ -90,14 +87,14 @@ application specific code. Development files
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --with-man --all-name
 %endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
