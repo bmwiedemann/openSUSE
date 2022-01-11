@@ -16,4 +16,12 @@
     <comment></comment>
     <requestid>702989</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c60abd7d557c6c0ccb9eee532846e37c</srcmd5>
+    <version>0.3.2</version>
+    <time>1641940963</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros dependency</comment>
+    <requestid>945682</requestid>
+  </revision>
 </revisionlist>
