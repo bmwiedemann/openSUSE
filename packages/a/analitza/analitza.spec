@@ -19,16 +19,16 @@
 %define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           analitza
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/education/analitza
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -85,7 +85,7 @@ add mathematical features to programs.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --with-qt --all-name
   %endif
 
@@ -105,7 +105,7 @@ add mathematical features to programs.
 %{_kf5_qmldir}/
 %{_kf5_sharedir}/libanalitza/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
