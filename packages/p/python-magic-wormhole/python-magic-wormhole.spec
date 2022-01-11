@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ BuildRequires:  %{python_module tqdm >= 4.13.0}
 BuildRequires:  %{python_module txtorcon >= 0.19.3}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Automat
 Requires:       python-PyNaCl
 Requires:       python-click

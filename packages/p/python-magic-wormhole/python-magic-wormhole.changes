@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:10:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros dependency 
+
+-------------------------------------------------------------------
 Wed Jul 14 10:40:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer build for python 3.6: not all dependencies are
