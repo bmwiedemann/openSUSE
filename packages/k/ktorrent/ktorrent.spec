@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           ktorrent
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://apps.kde.org/ktorrent
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -112,7 +112,7 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 
 %fdupes -s %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}
 %{kf5_find_htmldocs}
 %endif
@@ -141,7 +141,7 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 %{_kf5_sharedir}/ktorrent/
 %endif
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

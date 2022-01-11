@@ -976,4 +976,12 @@ This should fix the failures seen in Staging:E</comment>
     <comment>KDE Gear 21.12.0</comment>
     <requestid>938018</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>4a538b451a8d21d83bdd47894a57a2b1</srcmd5>
+    <version>21.12.1</version>
+    <time>1641932345</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.1</comment>
+    <requestid>944400</requestid>
+  </revision>
 </revisionlist>
