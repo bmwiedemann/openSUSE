@@ -1,7 +1,7 @@
 #
 # spec file for package ofono
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Sergey Kondakov <virtuousfox@gmail.com>.
 # Copyright (c) 2014 Bernd Wachter <bwachter@lart.info>.
 #
@@ -19,7 +19,7 @@
 
 
 Name:           ofono
-Version:        1.33
+Version:        1.34
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ URL:            https://01.org/ofono
 Source0:        https://www.kernel.org/pub/linux/network/ofono/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/linux/network/ofono/sha256sums.asc#/%{name}-%{version}.tar.xz.sig
 Source2:        http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x589DA6B1#/ofono.keyring
-Patch0:	harden_ofono.service.patch
+Patch0:         harden_ofono.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bluez) >= 4.85
 BuildRequires:  pkgconfig(dbus-1)

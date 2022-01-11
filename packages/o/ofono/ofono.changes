@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:52:08 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.34:
+  * Fix issue with handling device info of Quectel modems.
+  * Fix issue with handling callback for RIL dial manager.
+
+-------------------------------------------------------------------
 Wed Oct 13 06:33:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
