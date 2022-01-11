@@ -104,4 +104,27 @@
     <comment></comment>
     <requestid>874687</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b81ae2683e4a6b004cf01b150625ea35</srcmd5>
+    <version>8.1.0</version>
+    <time>1641932395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.0:
+  * Update FFmpeg to 4.3.2 for the binary wheels.
+  * Provide binary wheels for Python 3.10 (:issue:`820`).
+  * Stop providing binary wheels for end-of-life Python 3.6.
+  * Fix args order in Frame.__repr__ (:issue:`749`).
+  * Fix documentation to remove unavailable QUIET log level (:issue:`719`).
+  * Expose codec_context.codec_tag (:issue:`741`).
+  * Add example for encoding with a custom PTS (:issue:`725`).
+  * Use av_packet_rescale_ts in Packet._rebase_time() (:issue:`737`).
+  * Do not hardcode errno values in test suite (:issue:`729`).
+  * Use av_guess_format for output container format (:issue:`691`).
+  * Fix setting CodecContext.extradata (:issue:`658`, :issue:`740`).
+  * Fix documentation code block indentation (:issue:`783`).
+  * Fix link to Conda installation instructions (:issue:`782`).
+  * Export AudioStream from av.audio (:issue:`775`).
+  * Fix setting CodecContext.extradata (:issue:`801`).</comment>
+    <requestid>945472</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-av
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-av
-Version:        8.0.3
+Version:        8.1.0
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
@@ -40,7 +39,7 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -71,8 +70,8 @@ sed -Ei 's/(from .common import .*), fate_suite(, .*)?/\1\2\ndef fate_suite(*a):
 
 %check
 mv av .av
-# Skipping 4 tests requiring mpeg4 codec
-%pytest_arch tests -k 'not (test_codec_mpeg4 or test_encoding_with_pts or test_stream_index or test_video_default_options)'
+# Skipping tests requiring mpeg4 codec
+%pytest_arch tests -k 'not (test_codec_mpeg4 or test_encoding_with_pts or test_stream_index or test_video_default_options or test_codec_tag or test_decoder_extradata or test_encoder_extradata)'
 mv .av av
 
 %files %{python_files}
