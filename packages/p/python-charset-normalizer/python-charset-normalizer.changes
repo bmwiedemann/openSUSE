@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 10 23:01:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.10:
+  * Fallback match entries might lead to UnicodeDecodeError for large bytes
+    sequence
+  * Skipping the language-detection (CD) on ASCII
+
+-------------------------------------------------------------------
 Mon Dec  6 20:08:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.9:

@@ -143,4 +143,15 @@
   * Wrong logging level applied when setting kwarg `explain` to True</comment>
     <requestid>936118</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>888e8dc36a26a707b1acaa5b2308af91</srcmd5>
+    <version>2.0.10</version>
+    <time>1641932236</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.10:
+  * Fallback match entries might lead to UnicodeDecodeError for large bytes
+    sequence
+  * Skipping the language-detection (CD) on ASCII</comment>
+    <requestid>945443</requestid>
+  </revision>
 </revisionlist>
