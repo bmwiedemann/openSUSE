@@ -1,7 +1,7 @@
 #
 # spec file for package torbrowser-launcher
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz#
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PySocks
 BuildRequires:  python3-devel
 BuildRequires:  python3-distro
