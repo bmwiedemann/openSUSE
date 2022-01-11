@@ -19,16 +19,16 @@
 %define rname   kwalletmanager
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kwalletmanager5
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://apps.kde.org/kwalletmanager5
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -73,7 +73,7 @@ This application allows you to manage your KDE password wallet.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -97,7 +97,7 @@ This application allows you to manage your KDE password wallet.
 %{_kf5_sharedir}/kxmlgui5/
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmkwallet5.policy
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
