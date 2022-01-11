@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:26:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * If restored or started hidden in systray, report start done to WM directly
+  * Hide window to systray using SNI, for consistent storing of any window info
+  * Help GNOME shell to know there is only one window/instance of Konversation
+  * Set StartupWMClass in desktop file
+  * Fix broken restore by session management
+  * Fix unused empty space on tabbar if separate tab close button is disabled (kde#382056)
+  * Fix quitting app without confirm dialog after previous canceling of quit (kde#444440)
+  * Support and use modern code for Strikethrough formatting
+  * On activation by KDBusService set proper startupId/activation token (kde#430561)
+  * Channel Settings UI: bump max value of "User limit" to 99999 (kde#446673)
+  * Fix plural arg string->int for log msg "[...] channel limit to %1 nicks."
+  * Bugfix: Correct behaviour of "case sensitive" tab completion option (kde#442109)
+  * Add CI to stable branch
+
+-------------------------------------------------------------------
 Fri Dec  3 19:22:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
