@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kjumpingcube
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Tactical board game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://apps.kde.org/kjumpingcube
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -71,7 +71,7 @@ this you can gain more fields and finally win the board over.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -87,7 +87,7 @@ this you can gain more fields and finally win the board over.
 %{_kf5_debugdir}/kjumpingcube.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kjumpingcube.*
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
