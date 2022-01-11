@@ -19,16 +19,16 @@
 %define rname kde-dev-scripts
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without  lang
+%bcond_without released
 Name:           kdesdk-scripts
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -70,7 +70,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
 %endif
 %{kf5_post_install}
@@ -90,7 +90,7 @@ cp kf5/* %{buildroot}%{_datadir}/kf5-port-scripts/
 %doc README
 %{_datadir}/kf5-port-scripts/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
