@@ -159,4 +159,12 @@
   * [upstream] track some more gnome packages</comment>
     <requestid>922019</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb60c4a4ff33f8cad64b3434d4fa3862</srcmd5>
+    <version>0.104+20</version>
+    <time>1641932426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945644</requestid>
+  </revision>
 </revisionlist>

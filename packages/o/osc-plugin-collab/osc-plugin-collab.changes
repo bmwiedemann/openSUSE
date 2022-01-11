@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 11 17:57:23 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 0.104+20:
+  * osc-collab-runner: self-heal when runaway task is detected
+  * openSUSE config: Track GNOME:Factory as GNOME Stable project
+  * gnome-versions: arrive in 2022, where GNOME >= 40
+
+-------------------------------------------------------------------
 Tue Sep 28 14:33:01 UTC 2021 - dimstar@opensuse.org
 
 - Update to version 0.104+17:
