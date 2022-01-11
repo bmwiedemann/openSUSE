@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kde-dev-utils
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -80,7 +80,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang kuiviewer
     %find_lang kpartloader
   %endif
@@ -111,7 +111,7 @@ export CFLAGS="%{optflags} -fPIC"
 %license LICENSES/*
 %{_kf5_bindir}/kpartloader
 
-%if %{with lang}
+%if %{with released}
 %files -n kuiviewer-lang -f kuiviewer.lang
 
 %files -n kpartloader-lang -f kpartloader.lang
