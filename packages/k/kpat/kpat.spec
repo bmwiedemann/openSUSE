@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kpat
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Card
 URL:            https://apps.kde.org/kpat
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -86,7 +86,7 @@ more. The game has nice graphics and many different carddecks.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -114,7 +114,7 @@ more. The game has nice graphics and many different carddecks.
 %{_kf5_mandir}/man6/kpat.6.gz
 %{_kf5_sharedir}/mime/packages/kpatience.xml
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
