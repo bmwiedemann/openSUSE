@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Jan 11 10:42:42 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add fix-python-readlink.patch, fixing the project for python < 3.9.
+
+-------------------------------------------------------------------
+Tue Jan 11 09:49:42 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.20:
+  * project: prune sample hooks
+  * project: drop support for symlinking internal .git files
+  * project: abort a bit earlier before migrating .git/
+  * Revert "sync: dropped "NOTICE: --use-superproject is in beta ..." message."
+  * project: stop symlinking info dir under .git/
+  * project: stop symlinking description file under .git/
+  * project: stop symlinking svn under .git/
+  * project: clean up now unused code
+  * sync: dropped "NOTICE: --use-superproject is in beta ..." message.
+  * sync: With --mirror option, don't display no-use-superproject... message.
+
+-------------------------------------------------------------------
+Mon Jan 10 22:23:54 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.19:
+  * project: migrate worktree .git/ dirs to symlinks
+  * init, sync: fixed flake8 warnings.
+  * superproject: Inherit --no-use-superproject with --mirror option.
+  * sync: Handle tag ref in "upstream" field
+  * project: init hooks in objdir only
+  * sync: link the internal-fs-layout doc into checkouts
+  * git-review: add config file
+  * SUBMITTING_PATCHES: link to commit message style docs
+  * man: refresh pages
+  * help: fix grammar in help text
+
+-------------------------------------------------------------------
+Thu Jan  6 09:10:45 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 2.19.

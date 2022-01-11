@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://gerrit.googlesource.com/git-repo</param>
+              <param name="changesrevision">98bb76577d9e7e0ffdeb643f1654ec006f6bbc8c</param></service></servicedata>
