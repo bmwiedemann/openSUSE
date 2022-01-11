@@ -17,16 +17,16 @@
 
 
 %define rname kdev-python
-%bcond_without lang
+%bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -55,7 +55,7 @@ Obsoletes:      kdevelop4-plugin-python3 < %{version}
 %description
 A KDevelop plugin which provides Python language support, including code completion and debugging using PDB.
 
-%if %{with lang}
+%if %{with released}
 %package lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -80,7 +80,7 @@ Provides translations to the package %{name}
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang kdevpython %{name}.lang
 %endif
 
@@ -99,7 +99,7 @@ Provides translations to the package %{name}
 %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevpythonsupport/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
