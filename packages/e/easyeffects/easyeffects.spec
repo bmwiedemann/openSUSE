@@ -1,7 +1,7 @@
 #
 # spec file for package easyeffects
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           easyeffects
-Version:        6.1.5+0~git.e13f757d
+Version:        6.2.1
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zita-convolver-devel
-BuildRequires:  pkgconfig(glibmm-2.68)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.0.0
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libbs2b)
 BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libpipewire-0.3)
@@ -55,7 +55,9 @@ BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
+BuildRequires:  pkgconfig(sigc++-3.0)
 BuildRequires:  pkgconfig(sndfile)
+
 Requires:       dconf
 Recommends:     lv2-calf >= 0.90.1
 Recommends:     lv2-lsp-plugins
@@ -93,7 +95,6 @@ LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
             -Db_ndebug=true \
             -Dc_args="${CFLAGS}" \
             -Dcpp_args="${CXXFLAGS}" \
-            -Dld_args="${LDFLAGS}" \
             || (cat */meson-logs/meson-log.txt; exit 1)
 
 %meson_build
