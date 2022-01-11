@@ -261,4 +261,13 @@
   * Fixed a build error when WMA support is enabled. (forwarded request 943267 from ukbeast89)</comment>
     <requestid>943295</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>634bdbec869109f37a3757e4b36e697c</srcmd5>
+    <version>22.01</version>
+    <time>1641932402</time>
+    <user>dimstar_suse</user>
+    <comment>- update 22.01:
+  * Continued work on the experimental Wine/Win32 platform backend. (forwarded request 945404 from ukbeast89)</comment>
+    <requestid>945517</requestid>
+  </revision>
 </revisionlist>
