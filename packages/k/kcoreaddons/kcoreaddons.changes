@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Introduce K_PLUGIN_CLASS macro for creating plugin factory without metadata
+  * Don't hardcode kservicestypes5 as search path
+  * Put QT_VERSION check around Kdelibs4Migration class
+  * FindProcstat: Fix CMake warning and use an imported target
+  * Don't put the plugins in a "/plugins" sub-dir in the builddir
+  * KPluginFactory: report errors from QPluginLoader
+  * Use directly stream operators
+  * Now it returns qsizetype in qt6
+  * KF5CoreAddonsMacros: Replace "." with "_" for
+    KPLUGINFACTORY_PLUGIN_CLASS_INTERNAL_NAME compile definition
+  * Clarify deprecation docs of KPluginLoader::factory
+  * Write value of QT_MAJOR_VERSION in cmake config file
+  * Build system changes to compile against Qt6
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
