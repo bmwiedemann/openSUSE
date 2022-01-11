@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           korganizer
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://apps.kde.org/korganizer
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -95,7 +95,7 @@ KOrganizer is a calendar application by KDE.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -159,7 +159,7 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/korganizer/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
