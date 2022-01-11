@@ -17,21 +17,21 @@
 
 
 %define lname   libKF5WidgetsAddons5
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kwidgetsaddons
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Large set of desktop widgets
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -42,7 +42,7 @@ BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
 BuildRequires:  cmake(Qt5UiTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
-%if %{with lang}
+%if %{with released}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
@@ -56,9 +56,6 @@ Summary:        Large set of desktop widgets
 Group:          System/GUI/KDE
 %requires_ge    libQt5Widgets5
 Obsoletes:      libKF5WidgetsAddons4
-%if %{with lang}
-Recommends:     %{lname}-lang = %{version}
-%endif
 
 %description -n %{lname}
 This repository contains add-on widgets and classes for applications
@@ -91,14 +88,14 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}5 --with-qt --without-mo
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files -n %{lname}-lang -f %{name}5.lang
 %endif
 
