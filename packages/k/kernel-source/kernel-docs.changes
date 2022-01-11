@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Mon Jan 10 08:26:30 CET 2022 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/random-fix-crash-on-multiple-early-calls-to-add_bootloader_randomness.patch.
+  * Update upstream status
+  * Update to the latest (upstream) version
+  * Move it within series to upstream-soon patches
+- commit c4ca5fd
+
+-------------------------------------------------------------------
+Mon Jan 10 08:06:30 CET 2022 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/rtw89-update-partition-size-of-firmware-header-on-sk.patch.
+  Update upstream status.
+- commit a6f5d1b
+
+-------------------------------------------------------------------
+Mon Jan 10 00:27:51 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.16 final
+- refresh configs (headers only)
+- commit b8251b4
+
+-------------------------------------------------------------------
+Fri Jan  7 10:38:24 CET 2022 - tiwai@suse.de
+
+- Refresh BT workaround patch (bsc#1193124)
+  Fix yet another broken device 8086:0aa7
+- commit 163b552
+
+-------------------------------------------------------------------
+Wed Jan  5 12:57:35 CET 2022 - jslaby@suse.cz
+
+- Linux 5.15.13 (bsc#1012628).
+- Input: i8042 - enable deferred probe quirk for ASUS UM325UA
+  (bsc#1012628).
+- tomoyo: Check exceeded quota early in
+  tomoyo_domain_quota_is_ok() (bsc#1012628).
+- tomoyo: use hwight16() in tomoyo_domain_quota_is_ok()
+  (bsc#1012628).
+- net/sched: Extend qdisc control block with tc control block
+  (bsc#1012628).
+- parisc: Clear stale IIR value on instruction access rights trap
+  (bsc#1012628).
+- platform/mellanox: mlxbf-pmc: Fix an IS_ERR() vs NULL bug in
+  mlxbf_pmc_map_counters (bsc#1012628).
+- platform/x86: apple-gmux: use resource_size() with res
+  (bsc#1012628).
+- memblock: fix memblock_phys_alloc() section mismatch error
+  (bsc#1012628).
+- ALSA: hda: intel-sdw-acpi: harden detection of controller
+  (bsc#1012628).
+- ALSA: hda: intel-sdw-acpi: go through HDAS ACPI at max depth
+  of 2 (bsc#1012628).
+- recordmcount.pl: fix typo in s390 mcount regex (bsc#1012628).
+- powerpc/ptdump: Fix DEBUG_WX since generic ptdump conversion
+  (bsc#1012628).
+- efi: Move efifb_setup_from_dmi() prototype from arch headers
+  (bsc#1012628).
+- selinux: initialize proto variable in
+  selinux_ip_postroute_compat() (bsc#1012628).
+- scsi: lpfc: Terminate string in lpfc_debugfs_nvmeio_trc_write()
+  (bsc#1012628).
+- net/mlx5: DR, Fix NULL vs IS_ERR checking in
+  dr_domain_init_resources (bsc#1012628).
+- net/mlx5: Fix error print in case of IRQ request failed
+  (bsc#1012628).
+- net/mlx5: Fix SF health recovery flow (bsc#1012628).
+- net/mlx5: Fix tc max supported prio for nic mode (bsc#1012628).
+- net/mlx5e: Wrap the tx reporter dump callback to extract the sq
+  (bsc#1012628).
+- net/mlx5e: Fix interoperability between XSK and ICOSQ recovery
+  flow (bsc#1012628).
+- net/mlx5e: Fix ICOSQ recovery flow for XSK (bsc#1012628).
+- net/mlx5e: Use tc sample stubs instead of ifdefs in source file
+  (bsc#1012628).
+- net/mlx5e: Delete forward rule for ct or sample action
+  (bsc#1012628).
+- udp: using datalen to cap ipv6 udp max gso segments
+  (bsc#1012628).
+- selftests: Calculate udpgso segment count without header
+  adjustment (bsc#1012628).
+- sctp: use call_rcu to free endpoint (bsc#1012628).
+- net/smc: fix using of uninitialized completions (bsc#1012628).
+- net: usb: pegasus: Do not drop long Ethernet frames
+  (bsc#1012628).
+- net: ag71xx: Fix a potential double free in error handling paths
+  (bsc#1012628).
+- net: lantiq_xrx200: fix statistics of received bytes
+  (bsc#1012628).
+- NFC: st21nfca: Fix memory leak in device probe and remove
+  (bsc#1012628).
+- net/smc: don't send CDC/LLC message if link not ready
+  (bsc#1012628).
+- net/smc: fix kernel panic caused by race of smc_sock
+  (bsc#1012628).
+- igc: Fix TX timestamp support for non-MSI-X platforms
+  (bsc#1012628).
+- drm/amd/display: Send s0i2_rdy in stream_count == 0 optimization
+  (bsc#1012628).
+- drm/amd/display: Set optimize_pwr_state for DCN31 (bsc#1012628).
+- ionic: Initialize the 'lif->dbid_inuse' bitmap (bsc#1012628).
+- net/mlx5e: Fix wrong features assignment in case of error
+  (bsc#1012628).
+- net: bridge: mcast: add and enforce query interval minimum
+  (bsc#1012628).
+- net: bridge: mcast: add and enforce startup query interval
+  minimum (bsc#1012628).
+- selftests/net: udpgso_bench_tx: fix dst ip argument
+  (bsc#1012628).
+- selftests: net: Fix a typo in udpgro_fwd.sh (bsc#1012628).
+- net: bridge: mcast: fix br_multicast_ctx_vlan_global_disabled
+  helper (bsc#1012628).
+- net/ncsi: check for error return from call to nla_put_u32
+  (bsc#1012628).
+- selftests: net: using ping6 for IPv6 in udpgro_fwd.sh
+  (bsc#1012628).
+- fsl/fman: Fix missing put_device() call in fman_port_probe
+  (bsc#1012628).
+- i2c: validate user data in compat ioctl (bsc#1012628).
+- nfc: uapi: use kernel size_t to fix user-space builds
+  (bsc#1012628).
+- uapi: fix linux/nfc.h userspace compilation errors
+  (bsc#1012628).
+- drm/nouveau: wait for the exclusive fence after the shared
+  ones v2 (bsc#1012628).
+- drm/amdgpu: When the VCN(1.0) block is suspended, powergating
+  is explicitly enabled (bsc#1012628).
+- drm/amdgpu: add support for IP discovery gc_info table v2
+  (bsc#1012628).
+- drm/amd/display: Changed pipe split policy to allow for
+  multi-display pipe split (bsc#1012628).
+- xhci: Fresco FL1100 controller should not have BROKEN_MSI
+  quirk set (bsc#1012628).
+- usb: gadget: f_fs: Clear ffs_eventfd in ffs_data_clear
+  (bsc#1012628).
+- usb: mtu3: add memory barrier before set GPD's HWO
+  (bsc#1012628).
+- usb: mtu3: fix list_head check warning (bsc#1012628).
+- usb: mtu3: set interval of FS intr and isoc endpoint
+  (bsc#1012628).
+- nitro_enclaves: Use get_user_pages_unlocked() call to handle
+  mmap assert (bsc#1012628).
+- binder: fix async_free_space accounting for empty parcels
+  (bsc#1012628).
+- scsi: vmw_pvscsi: Set residual data length conditionally
+  (bsc#1012628).
+- Input: appletouch - initialize work before device registration
+  (bsc#1012628).
+- Input: spaceball - fix parsing of movement data packets
+  (bsc#1012628).
+- mm/damon/dbgfs: fix 'struct pid' leaks in
+  'dbgfs_target_ids_write()' (bsc#1012628).
+- net: fix use-after-free in tw_timer_handler (bsc#1012628).
+- fs/mount_setattr: always cleanup mount_kattr (bsc#1012628).
+- perf intel-pt: Fix parsing of VM time correlation arguments
+  (bsc#1012628).
+- perf script: Fix CPU filtering of a script's switch events
+  (bsc#1012628).
+- perf scripts python: intel-pt-events.py: Fix printing of switch
+  events (bsc#1012628).
+- commit 01786ae
+
+-------------------------------------------------------------------
+Mon Jan  3 22:08:02 CET 2022 - dmueller@suse.com
+
+- Revert "config: disable BTRFS_ASSERT in default kernels"
+  This was pushed without enough review, reverting.
+- commit e86c2a0
+
+-------------------------------------------------------------------
+Mon Jan  3 22:06:52 CET 2022 - dmueller@suse.com
+
+- Revert "config: disable BTRFS_ASSERT in default kernels"
+  This was pushed without enough review, reverting.
+- commit 4fb1cfd
+
+-------------------------------------------------------------------
+Mon Jan  3 18:57:33 CET 2022 - dsterba@suse.com
+
+- Revert "config: disable BTRFS_ASSERT in default kernels"
+  This reverts commit 81985a674cf03fa1ef7c290050be04e57f8490dc.
+  This is a change affecting correctness, trading it for some performance.
+  This was done without prior discussion with btrfs people, so revert it
+  to previous state.
+- commit 55f2c08
+
+-------------------------------------------------------------------
+Mon Jan  3 14:20:39 CET 2022 - tiwai@suse.de
+
+- media: Revert "media: uvcvideo: Set unique vdev name based in
+  type" (bsc#1193255).
+- commit b3f1eb0
+
+-------------------------------------------------------------------
+Sun Jan  2 23:42:24 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.16-rc8
+- commit b59b474
+
+-------------------------------------------------------------------
+Fri Dec 31 22:04:07 CET 2021 - schwab@suse.de
+
+- config: Enable CONFIG_CMA on riscv64
+  Non-default dependent config changes:
+- DMA_CMA=y
+- commit c0aa71e
+
+-------------------------------------------------------------------
+Thu Dec 30 17:51:40 CET 2021 - tiwai@suse.de
+
+- igc: Do not enable crosstimestamping for i225-V models
+  (bsc#1193039).
+- commit a77f415
+
+-------------------------------------------------------------------
 Wed Dec 29 15:50:16 CET 2021 - jslaby@suse.cz
 
 - Update config files.
@@ -217,11 +434,31 @@ Wed Dec 29 14:46:54 CET 2021 - jslaby@suse.cz
 - commit 202eb92
 
 -------------------------------------------------------------------
+Sun Dec 26 23:02:40 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.16-rc7
+- refresh
+  - patches.suse/add-product-identifying-information-to-vmcoreinfo.patch
+- refresh configs
+- commit cce91fd
+
+-------------------------------------------------------------------
 Thu Dec 23 07:47:43 CET 2021 - jslaby@suse.cz
 
 - Disable patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch (bsc#1194007)
   Better to disable it completely.
 - commit 730a488
+
+-------------------------------------------------------------------
+Wed Dec 22 20:47:38 CET 2021 - dmueller@suse.com
+
+- config: disable BTRFS_ASSERT in default kernels
+  BTRFS_ASSERT is marked as developer only option and hence
+  shouldn't be enabled in the default kernel. we enable it
+  in the debug flavor now.
+  This improves performance of a fio randrw run by over 21% and
+  reduces code size by 25%.
+- commit 6567403
 
 -------------------------------------------------------------------
 Wed Dec 22 12:56:56 CET 2021 - jslaby@suse.cz
@@ -521,6 +758,41 @@ Wed Dec 22 12:56:56 CET 2021 - jslaby@suse.cz
 - commit 9903b31
 
 -------------------------------------------------------------------
+Mon Dec 20 16:01:34 CET 2021 - dmueller@suse.com
+
+- add kvmsmall flavor for aarch64
+- commit 1775f8c
+
+-------------------------------------------------------------------
+Sun Dec 19 23:54:35 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.16-rc6
+- refresh configs
+- disable
+  patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch
+  - needs an update after mainline commit 33fab972497a ("btrfs: fix double
+    free of anon_dev after failure to create subvolume")
+- commit ccebb20
+
+-------------------------------------------------------------------
+Sun Dec 19 23:48:12 CET 2021 - mkubecek@suse.cz
+
+- config: enable and refresh arm architectures
+- commit 487d839
+
+-------------------------------------------------------------------
+Fri Dec 17 16:14:03 CET 2021 - dmueller@suse.com
+
+- kernel-obs-build: remove duplicated/unused parameters
+  lbs=0 - this parameters is just giving "unused parameter" and it looks
+  like I can not find any version that implemented this.
+  rd.driver.pre=binfmt_misc is not needed when setup_obs is used, it
+  alread loads the kernel module.
+  quiet and panic=1 will now be also always added by OBS, so we don't have
+  to set it here anymore.
+- commit 972c692
+
+-------------------------------------------------------------------
 Fri Dec 17 11:21:52 CET 2021 - jslaby@suse.cz
 
 - Linux 5.15.10 (bsc#1012628).
@@ -600,6 +872,27 @@ Thu Dec 16 20:00:51 CET 2021 - jslaby@suse.cz
 - netfilter: selftest: conntrack_vrf.sh: fix file permission
   (bsc#1012628).
 - commit edf812e
+
+-------------------------------------------------------------------
+Thu Dec 16 18:04:37 CET 2021 - mbrugger@suse.com
+
+- armv6hl: Update config files.
+  Update config to v5.16-rc5
+- commit fcea0c3
+
+-------------------------------------------------------------------
+Thu Dec 16 17:56:10 CET 2021 - mbrugger@suse.com
+
+- armv7hl: Update config files.
+  Update config to v5.16-rc3
+- commit 36ef1bb
+
+-------------------------------------------------------------------
+Thu Dec 16 14:23:14 CET 2021 - mbrugger@suse.com
+
+- arm64: Update config files.
+  Update configs to v5.16-rc5
+- commit 99d3870
 
 -------------------------------------------------------------------
 Tue Dec 14 22:23:55 CET 2021 - dmueller@suse.com
@@ -910,6 +1203,13 @@ Tue Dec 14 11:22:56 CET 2021 - jslaby@suse.cz
 - commit 3f92609
 
 -------------------------------------------------------------------
+Mon Dec 13 17:37:31 CET 2021 - msuchanek@suse.de
+
+- config: INPUT_EVBUG=n (bsc#1192974).
+  Debug driver unsuitable for production, only enabled on ppc64.
+- commit 4e0adba
+
+-------------------------------------------------------------------
 Mon Dec 13 11:24:00 CET 2021 - dmueller@suse.com
 
 - kernel-obs-build: inform build service about virtio-serial
@@ -926,11 +1226,23 @@ Mon Dec 13 11:20:18 CET 2021 - dmueller@suse.com
 - commit e2f6026
 
 -------------------------------------------------------------------
+Mon Dec 13 00:21:11 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.16-rc5
+- commit c317c11
+
+-------------------------------------------------------------------
 Fri Dec 10 14:13:56 CET 2021 - tiwai@suse.de
 
 - Update BT fix patch for regression with 8087:0026 device (bsc#1193124)
   Also corrected the references and patch description
-- commit 634695b
+- commit ee06149
+
+-------------------------------------------------------------------
+Thu Dec  9 11:30:20 CET 2021 - ohering@suse.de
+
+- Disable hyperv_fb in favour of hyperv_drm (jsc#SLE-19733)
+- commit f85f403
 
 -------------------------------------------------------------------
 Wed Dec  8 09:54:39 CET 2021 - jslaby@suse.cz
@@ -1286,6 +1598,14 @@ Wed Dec  8 09:54:39 CET 2021 - jslaby@suse.cz
 - commit b92986a
 
 -------------------------------------------------------------------
+Sun Dec  5 23:47:45 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.16-rc4
+- eliminated 1 patch:
+  - patches.suse/rtw89-update-partition-size-of-firmware-header-on-sk.patch
+- commit d1dc164
+
+-------------------------------------------------------------------
 Fri Dec  3 12:32:42 CET 2021 - tiwai@suse.de
 
 - xhci: Fix commad ring abort, write all 64 bits to CRCR register
@@ -1297,7 +1617,7 @@ Thu Dec  2 17:25:25 CET 2021 - tiwai@suse.de
 
 - Bluetooth: Apply initial command workaround for more Intel chips
   (bsc#83f2dafe2a62).
-- commit dc51f96
+- commit 9c66401
 
 -------------------------------------------------------------------
 Thu Dec  2 07:24:06 CET 2021 - jslaby@suse.cz
@@ -1615,7 +1935,14 @@ Wed Dec  1 09:25:41 CET 2021 - tiwai@suse.de
 
 - mwifiex: Fix skb_over_panic in mwifiex_usb_recv()
   (CVE-2021-43976 bsc#1192847).
-- commit c216596
+- commit 62666c5
+
+-------------------------------------------------------------------
+Sun Nov 28 23:42:01 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.16-rc3
+- refresh configs
+- commit e8ae228
 
 -------------------------------------------------------------------
 Fri Nov 26 15:48:59 CET 2021 - msuchanek@suse.de
@@ -2135,6 +2462,21 @@ Mon Nov 22 06:37:17 CET 2021 - jslaby@suse.cz
   objects" (bsc#1012628).
 - Update config files.
 - commit f51b3ce
+
+-------------------------------------------------------------------
+Sun Nov 21 23:08:24 CET 2021 - mkubecek@suse.cz
+
+- update to 5.16-rc2
+- refresh
+  - patches.suse/suse-hv-guest-os-id.patch
+- update configs (restore values before 5.14-rc1)
+  - PSTORE_ZONE=m
+  - PSTORE_BLK=m
+  - PSTORE_BLK_BLKDEV=""
+  - PSTORE_BLK_KMSG_SIZE=64
+  - PSTORE_BLK_MAX_REASON=2
+  - MTD_PSTORE=m
+- commit 696d453
 
 -------------------------------------------------------------------
 Fri Nov 19 07:08:33 CET 2021 - jslaby@suse.cz
@@ -3711,7 +4053,7 @@ Wed Nov 17 06:40:00 CET 2021 - jslaby@suse.cz
 Tue Nov 16 16:15:34 CET 2021 - iivanov@suse.de
 
 - random: fix crash on multiple early calls to add_bootloader_randomness() (bsc#1184924)
-- commit 3f996f1
+- commit e24ee9e
 
 -------------------------------------------------------------------
 Tue Nov 16 14:24:20 CET 2021 - tiwai@suse.de
@@ -3721,7 +4063,19 @@ Tue Nov 16 14:24:20 CET 2021 - tiwai@suse.de
 - ALSA: usb-audio: Add minimal-mute notion in dB mapping table
   (bsc#1192375).
 - ALSA: usb-audio: Use int for dB map values (bsc#1192375).
-- commit 0ea1c07
+- ALSA: usb-audio: Fix dB level of Bose Revolve+ SoundLink
+  (bsc#1192375).
+- ALSA: usb-audio: Add minimal-mute notion in dB mapping table
+  (bsc#1192375).
+- ALSA: usb-audio: Use int for dB map values (bsc#1192375).
+- commit 7a21313
+
+-------------------------------------------------------------------
+Tue Nov 16 11:42:57 CET 2021 - tiwai@suse.de
+
+- rtw89: update partition size of firmware header on skb->data
+  (bsc#1188303).
+- commit 4e4f5f9
 
 -------------------------------------------------------------------
 Tue Nov 16 11:39:22 CET 2021 - tiwai@suse.de
@@ -3740,7 +4094,126 @@ Tue Nov 16 11:37:43 CET 2021 - msuchanek@suse.de
 Tue Nov 16 11:37:11 CET 2021 - tiwai@suse.de
 
 - Drop downstream rtw89 fix patch, to be replaced with the upstream fix
-- commit b9cd6cb
+- commit 9ba8358
+
+-------------------------------------------------------------------
+Mon Nov 15 00:26:08 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.16-rc1
+- eliminated 26 patches (13 stable, 13 mainline)
+  - patches.kernel.org/*
+  - patches.suse/ALSA-usb-audio-Restrict-rates-for-the-shared-clocks.patch
+  - patches.suse/Bluetooth-sco-Fix-lock_sock-blockage-by-memcpy_from_.patch
+  - patches.suse/Input-i8042-Add-quirk-for-Fujitsu-Lifebook-T725.patch
+  - patches.suse/arm64-dts-rockchip-Disable-CDN-DP-on-Pinebook-Pro.patch
+  - patches.suse/rtw89-Fix-two-spelling-mistakes-in-debug-messages.patch
+  - patches.suse/rtw89-Fix-variable-dereferenced-before-check-sta.patch
+  - patches.suse/rtw89-Remove-redundant-check-of-ret-after-call-to-rt.patch
+  - patches.suse/rtw89-add-Realtek-802.11ax-driver.patch
+  - patches.suse/rtw89-fix-error-function-parameter.patch
+  - patches.suse/rtw89-fix-return-value-check-in-rtw89_cam_send_sec_k.patch
+  - patches.suse/rtw89-fix-return-value-in-hfc_pub_cfg_chk.patch
+  - patches.suse/rtw89-remove-duplicate-register-definitions.patch
+  - patches.suse/rtw89-remove-unneeded-semicolon.patch
+- refresh
+  - patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  - patches.suse/suse-hv-guest-os-id.patch
+- disable ARM architectures (need config update)
+- new config options
+  - General setup
+    - PREEMPT_DYNAMIC=y
+  - Processor type and features
+    - SCHED_CLUSTER=y
+    - STRICT_SIGALTSTACK_SIZE=n
+  - Networking support
+    - NETFILTER_EGRESS=y
+    - MCTP=y
+  - File systems
+    - EROFS_FS_ZIP_LZMA=y
+  - Library routines
+    - XZ_DEC_MICROLZMA=y
+  - Kernel hacking
+    - DEBUG_PREEMPT=n
+    - PREEMPT_TRACER=n
+  - SCSI device support
+    - SCSI_UFS_HWMON=y
+  - Network device support
+    - AMT=m
+    - NET_VENDOR_ASIX=y
+    - SPI_AX88796C=m
+    - SPI_AX88796C_COMPRESSION=y
+    - ICE_SWITCHDEV=y
+    - MT7921S=m
+  - Character devices
+    - RPMSG_TTY=m
+  - CEC support
+    - CEC_GPIO=m
+    - CEC_PIN_ERROR_INJ=n
+  - Multimedia support
+    - VIDEO_HI846=m
+    - VIDEO_OV13B10=m
+  - Graphics support
+    - DRM_DEBUG_MODESET_LOCK=n
+    - DRM_I915_PXP=y
+  - Sound card support
+    - SND_SOC_AMD_VANGOGH_MACH=m
+    - SND_SOC_AMD_ACP6x=m
+    - SND_SOC_AMD_ACP_COMMON=m
+    - SND_SOC_AMD_YC_MACH=m
+    - SND_AMD_ASOC_RENOIR=m
+    - SND_SOC_AMD_LEGACY_MACH=m
+    - SND_SOC_AMD_SOF_MACH=m
+    - SND_SOC_INTEL_SOF_ES8336_MACH=m
+    - SND_SOC_CS35L41_SPI=m
+    - SND_SOC_CS35L41_I2C=m
+    - SND_SOC_MAX98520=m
+    - SND_SOC_RT9120=m
+    - SND_SOC_NAU8821=m
+  - HID support
+    - HID_XIAOMI=m
+    - HID_NINTENDO=m
+    - NINTENDO_FF=y
+  - X86 Platform Specific Device Drivers
+    - NVIDIA_WMI_EC_BACKLIGHT=m
+    - INTEL_ISHTP_ECLITE=m
+    - BARCO_P50_GPIO=m
+  - Industrial I/O support
+    - ADXL313_I2C=n
+    - ADXL313_SPI=n
+    - ADXL355_I2C=n
+    - ADXL355_SPI=n
+    - SCD4X=n
+    - SENSEAIR_SUNRISE_CO2=n
+    - ADRF6780=n
+    - MAX31865=m
+  - Misc devices
+    - INTEL_MEI_PXP=m
+    - KEYBOARD_CYPRESS_SF=m
+    - SENSORS_MAX6620=m
+    - HT16K33=n
+    - ALIBABA_ENI_VDPA=m
+    - MLXREG_LC=m
+  - OF dependent (i386, ppc64/ppc64le, riscv64)
+    - SPI_CADENCE_XSPI=m
+    - DRM_PANEL_EDP=m
+    - DRM_PANEL_SAMSUNG_S6D27A1=n
+    - DRM_PANEL_SHARP_LS060T1SX01=n
+  - i386
+    SND_AUDIO_GRAPH_CARD2=n
+    SND_TEST_COMPONENT=m
+  - ppc64
+    - IPMI_IPMB=m
+  - s390x
+    - COMMAND_LINE_SIZE=4096 (default)
+  - riscv64
+    - TIME_NS=y
+    - VIRTUALIZATION=y
+    - KVM=m
+    - SND_AUDIO_GRAPH_CARD2=n
+    - SND_TEST_COMPONENT=m
+  - */debug
+    - DRM_DEBUG_MODESET_LOCK=y
+- commit 2e30d30
 
 -------------------------------------------------------------------
 Sat Nov 13 15:10:02 CET 2021 - jslaby@suse.cz
@@ -3926,6 +4399,22 @@ Wed Nov  3 09:29:23 CET 2021 - mkubecek@suse.cz
   - patches.suse/rtw89-remove-duplicate-register-definitions.patch
   - patches.suse/rtw89-remove-unneeded-semicolon.patch
 - commit 2e35b89
+
+-------------------------------------------------------------------
+Mon Nov  1 19:35:24 CET 2021 - mcgrof@suse.com
+
+- Drop patches where were added for ustat()
+  glibc doesn't expose this system call anymore, and so no point in
+  carrying this delta. LTP does test for this but the test uses its
+  own headers instead of libc for it. It is not worth carrying this
+  delta for a deprecated call.
+  This patch set was tested with kernel-ci and found no new regressions
+  with btrfs.
+- Delete
+  patches.suse/btrfs-fs-super.c-add-new-super-block-devices-super_block_d.patch.
+- Delete patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch.
+  (Cherry picked from commit ea7c7f6bd63bd560c95f994b1aff269fa53bfc8d)
+- commit 9fa259a
 
 -------------------------------------------------------------------
 Mon Nov  1 07:51:41 CET 2021 - tiwai@suse.de

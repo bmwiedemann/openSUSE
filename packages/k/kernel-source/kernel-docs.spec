@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-docs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.15
-%define patchversion 5.15.12
+%define srcversion 5.16
+%define patchversion 5.16.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        5.15.12
+Version:        5.16.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g375fcb8
+Release:        <RELEASE>.g487d6b3
 %else
 Release:        0
 %endif
@@ -64,7 +64,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-375fcb87638047c7e130d76112ab841fa890d814
+Provides:       %name-srchash-487d6b361ff2ff56bbc7ee16277566dbd788104f
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

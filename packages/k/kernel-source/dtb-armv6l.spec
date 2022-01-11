@@ -1,7 +1,7 @@
 #
 # spec file for package dtb-armv6l
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.15
-%define patchversion 5.15.12
+%define srcversion 5.16
+%define patchversion 5.16.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        5.15.12
+Version:        5.16.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g375fcb8
+Release:        <RELEASE>.g487d6b3
 %else
 Release:        0
 %endif

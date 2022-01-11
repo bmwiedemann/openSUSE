@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-build
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.15.12
+%define patchversion 5.16.0
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-375fcb87638047c7e130d76112ab841fa890d814
+BuildRequires:  kernel%kernel_flavor-srchash-487d6b361ff2ff56bbc7ee16277566dbd788104f
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.15.12
+Version:        5.16.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g375fcb8
+Release:        <RELEASE>.g487d6b3
 %else
 Release:        0
 %endif
@@ -109,7 +109,7 @@ cat > /usr/lib/dracut/modules.d/80obs/setup_obs.sh <<EOF
 #!/bin/sh
 info "Loading kernel modules for OBS"
 info "  Loop..."
-modprobe -q loop max_loop=64 lbs=0 || modprobe -q loop max_loop=64
+modprobe -q loop max_loop=64
 info "  binfmt misc..."
 modprobe -q binfmt_misc
 EOF
@@ -169,7 +169,7 @@ cp -v /boot/%{kernel_name}-*%{kernel_flavor} %{buildroot}/.build.kernel.kvm
 cp -v /tmp/initrd.kvm %{buildroot}/.build.initrd.kvm
 
 # inform worker kernel parameters to invoke
-CMDLINE="quiet panic=1 elevator=noop nmi_watchdog=0 rw rd.driver.pre=binfmt_misc"
+CMDLINE="elevator=noop nmi_watchdog=0 rw"
 %if 0%{?suse_version} && 0%{?suse_version} < 1315
 # kvmclock has always been disabled for old kernels, keep it for historic compatibility
 CMDLINE+=" no-kvmclock"
