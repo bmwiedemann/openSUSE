@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Use version-less and non-deprecated data install dir variable
+  * ActionReply: remove operator<< and operator>>
+  * Change the build system to enable building with Qt 6
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
