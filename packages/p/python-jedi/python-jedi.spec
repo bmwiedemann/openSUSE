@@ -28,7 +28,7 @@ URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module parso >= 0.8.0}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes

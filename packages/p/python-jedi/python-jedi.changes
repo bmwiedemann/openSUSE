@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 23:17:12 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Force pytest >= 5 for successful 15.3 build in d:l:p
+
+-------------------------------------------------------------------
 Fri Dec 10 20:53:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.1
