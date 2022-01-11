@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 11:11:11 UTC 2022 - olaf@aepfle.de
+
+- Implement the migration to PCRE2 by specifying the build dependency
+- Remove obsolete libwrap option
+
+-------------------------------------------------------------------
 Thu Dec  2 18:29:33 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Updated to 0.23.5

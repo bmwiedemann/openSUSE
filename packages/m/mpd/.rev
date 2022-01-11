@@ -571,4 +571,12 @@
   * GCC 12 build fixes</comment>
     <requestid>935317</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5d50575ad0bbae2bf7ae959204eff498</srcmd5>
+    <version>0.23.5</version>
+    <time>1641932419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945578</requestid>
+  </revision>
 </revisionlist>

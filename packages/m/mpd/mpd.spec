@@ -84,6 +84,7 @@ BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(shine)
 BuildRequires:  pkgconfig(shout)
@@ -148,7 +149,6 @@ This package contains optional documentation provided in addition to this packag
     -Dinotify=true \
     -Dipv6=enabled \
     -Dsoundcloud=disabled \
-    -Dlibwrap=disabled \
     -Dmikmod=enabled \
     -Dopenal=enabled \
     -Doss=disabled \
@@ -212,6 +212,7 @@ This package contains optional documentation provided in addition to this packag
     -Dao=enabled \
     -Dpulse=enabled \
     -Dtremor=disabled \
+    -Dpcre=enabled \
     -Dsystemd_system_unit_dir=%{_unitdir} \
     -Dsystemd_user_unit_dir=%{_userunitdir}
 %meson_build
