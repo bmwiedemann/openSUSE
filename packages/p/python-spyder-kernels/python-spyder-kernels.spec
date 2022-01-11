@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-kernels
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,6 +82,12 @@ all inside the IDE.
 %check
 # flaky for obs
 donttest="test_dask_multiprocessing"
+# these fail server-side but not when testing with osc build
+donttest+=" or (test_console_kernel and test_cwd_in_sys_path)"
+donttest+=" or (test_console_kernel and test_multiprocessing)"
+donttest+=" or (test_console_kernel and test_runfile)"
+donttest+=" or (test_console_kernel and test_np_threshold)"
+donttest+=" or (test_console_kernel and test_matplotlib_inline)"
 
 %pytest -k "not (${donttest})" -ra
 
