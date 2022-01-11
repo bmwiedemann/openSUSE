@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Remove QDesktopWidget include, not used any where
+  * Change build system for building against qt6
+  * Wrap deprecated KDelarative::ConfigModule::aboutData method call in
+    deprecation wrappers
+  * Deprecate KPluginSelector class
+  * Allow KCMUtils to build without deprecated KCoreAddons methods
+  * Update showNavigationButtons to use enum type
+  * Fix PluginPage deprecation docs
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
