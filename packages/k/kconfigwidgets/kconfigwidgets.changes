@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Fix conditions used in cmake.in config file
+  * [kcolorschememodel] Read .colors files from assets on Android
+  * Sync default colors from Breeze Light color scheme
+  * kcommandbar: Don't warn if action is separator
+  * WIP: Change the build system to enable building with Qt 6
+  * [kcmodule] Deprecate aboutData and componentData
+  * [KCommandBar] Fix resetting m_hasActionsWithIcons
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
