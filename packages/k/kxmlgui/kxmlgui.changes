@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:48:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Port deprecated method
+  * Fix nested @ expansion in CMake config file
+  * [KToolBar] Add actions from delayed toolbutton menus to context menu
+  * Change the build system to enable building with Qt6
+  * Do not steal all keys from shortcut
+
+-------------------------------------------------------------------
 Sat Dec  4 22:57:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
