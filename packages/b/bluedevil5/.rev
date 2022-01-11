@@ -992,4 +992,12 @@
     <comment>KDE Plasma 5.23.4</comment>
     <requestid>934783</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>f7dcdef38e3364f319da7978ad92f3bc</srcmd5>
+    <version>5.23.5</version>
+    <time>1641932026</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 943820 from Vogtinator)</comment>
+    <requestid>943960</requestid>
+  </revision>
 </revisionlist>
