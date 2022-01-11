@@ -2,11 +2,11 @@
 Mon Dec 20 08:43:27 UTC 2021 - jslaby@suse.cz
 
 - Update to version 1.0.1+git.20211110:
-  * fixed heap use after free vulnerability CVE-2021-21900
+  * fixed heap use after free vulnerability CVE-2021-21900 (bsc#1192938)
   * minor improvements to dwg2dxf, formatting and message output on success
-  * fixed heap buffer overflow vulnerability CVE-2021-21899
+  * fixed heap buffer overflow vulnerability CVE-2021-21899 (bsc#1192937)
   * dwg2dxf - enable debug output of libdxfrw by command line switch
-  * fixed out-of-bounds write vulnerability CVE-2021-21898
+  * fixed out-of-bounds write vulnerability CVE-2021-21898 (bsc#1192936)
   * fixed please note section formatting
   * updated README.md for LibreCAD_3 branch and sf.net successor
   * fixed LibreCAD 2 issue #1371, read failed with binary DXF
