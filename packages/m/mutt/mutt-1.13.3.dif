@@ -16,7 +16,7 @@
                                  CPPFLAGS="$CPPFLAGS -I${withval}/include"
                          fi
                          LDFLAGS="$LDFLAGS -L${withval}/lib"
-@@ -801,8 +801,12 @@ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-
+@@ -746,8 +746,12 @@ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-
  	  else
              if test "$with_ssl" != "yes"
              then
@@ -31,7 +31,7 @@
              fi
              saved_LIBS="$LIBS"
  
-@@ -889,8 +893,12 @@ AC_ARG_WITH(sasl, AS_HELP_STRING([--with
+@@ -834,8 +838,12 @@ AC_ARG_WITH(sasl, AS_HELP_STRING([--with
  
            if test "$with_sasl" != "yes"
            then
@@ -98,7 +98,7 @@
    else
 --- mx.c
 +++ mx.c	2020-01-14 13:04:28.102878757 +0000
-@@ -1476,6 +1476,9 @@ void mx_update_context (CONTEXT *ctx, in
+@@ -1485,6 +1485,9 @@ void mx_update_context (CONTEXT *ctx, in
    {
      h = ctx->hdrs[msgno];
  

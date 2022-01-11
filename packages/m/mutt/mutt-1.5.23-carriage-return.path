@@ -8,7 +8,7 @@
 
 --- crypt-gpgme.c
 +++ crypt-gpgme.c	2019-11-13 13:46:16.512388398 +0000
-@@ -2733,7 +2733,7 @@ static void copy_clearsigned (gpgme_data
+@@ -2731,7 +2731,7 @@ static void copy_clearsigned (gpgme_data
  
      if (armor_header)
      {
@@ -19,7 +19,7 @@
      }
 --- lib.c
 +++ lib.c	2019-11-13 13:42:00.245189313 +0000
-@@ -684,6 +684,17 @@ int mutt_strcmp(const char *a, const cha
+@@ -693,6 +693,17 @@ int mutt_strcmp(const char *a, const cha
    return strcmp(NONULL(a), NONULL(b));
  }
  
@@ -39,7 +39,7 @@
    return strcasecmp(NONULL(a), NONULL(b));
 --- lib.h
 +++ lib.h	2019-11-13 13:47:17.399247662 +0000
-@@ -200,6 +200,7 @@ int mutt_copy_stream (FILE *, FILE *);
+@@ -215,6 +200,7 @@ int mutt_copy_stream (FILE *, FILE *);
  int mutt_copy_bytes (FILE *, FILE *, size_t);
  int mutt_strcasecmp (const char *, const char *);
  int mutt_strcmp (const char *, const char *);
@@ -49,7 +49,7 @@
  int mutt_strcoll (const char *, const char *);
 --- pager.c
 +++ pager.c	2019-11-13 13:48:32.257845120 +0000
-@@ -840,7 +840,7 @@ resolve_types (char *buf, char *raw, str
+@@ -975,7 +975,7 @@ resolve_types (char *buf, char *raw, str
      lineInfo[n].type = MT_COLOR_NORMAL;
    else if (check_attachment_marker ((char *) raw) == 0)
      lineInfo[n].type = MT_COLOR_ATTACHMENT;
@@ -60,7 +60,7 @@
  
 --- pgp.c
 +++ pgp.c	2019-11-13 13:51:06.746954963 +0000
-@@ -373,7 +373,7 @@ static void pgp_copy_clearsigned (FILE *
+@@ -371,7 +371,7 @@ static void pgp_copy_clearsigned (FILE *
        continue;
      }
  
@@ -69,7 +69,7 @@
        break;
  
      if (armor_header)
-@@ -448,11 +448,11 @@ int pgp_application_pgp_handler (BODY *m
+@@ -446,11 +446,11 @@ int pgp_application_pgp_handler (BODY *m
        could_not_decrypt = 0;
        decrypt_okay_rc = 0;
  
@@ -84,7 +84,7 @@
          pgp_keyblock = 1;
        else
        {
-@@ -482,10 +482,10 @@ int pgp_application_pgp_handler (BODY *m
+@@ -480,10 +480,10 @@ int pgp_application_pgp_handler (BODY *m
  
  	fputs (buf, tmpfp);
  
@@ -98,7 +98,7 @@
  	  break;
  	/* remember optional Charset: armor header as defined by RfC4880 */
  	if (mutt_strncmp ("Charset: ", buf, 9) == 0)
-@@ -748,11 +748,11 @@ static int pgp_check_traditional_one_bod
+@@ -746,11 +746,11 @@ static int pgp_check_traditional_one_bod
    {
      if (mutt_strncmp ("-----BEGIN PGP ", buf, 15) == 0)
      {
@@ -113,7 +113,7 @@
  	key = 1;
      }
    }
-@@ -1300,9 +1300,9 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1299,9 +1299,9 @@ BODY *pgp_sign_message (BODY *a)
     */
    while (fgets (buffer, sizeof (buffer) - 1, pgpout) != NULL)
    {

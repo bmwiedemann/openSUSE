@@ -6,10 +6,10 @@ Index: init.h
 
 --- init.h
 +++ init.h	2020-01-14 13:28:27.408149074 +0000
-@@ -4534,6 +4534,7 @@ struct option_t MuttVars[] = {
+@@ -4691,6 +4691,7 @@ struct option_t MuttVars[] = {
    ** Also see $$copy_decode_weed, $$pipe_decode_weed, $$print_decode_weed.
    */
-   { "wrap",             DT_NUM,  R_PAGER, {.p=&Wrap}, {.l=0} },
+   { "wrap",             DT_NUM,  R_PAGER_FLOW, {.p=&Wrap}, {.l=0} },
 +  { "wrapcolumn",       DT_SYN,  R_NONE, {.p="wrap"}, {.p=0} },
    /*
    ** .pp

@@ -10,7 +10,7 @@
 
 --- Makefile.am
 +++ Makefile.am	2020-01-14 13:28:45.787807571 +0000
-@@ -33,7 +33,7 @@ mutt_SOURCES = \
+@@ -34,7 +34,7 @@ mutt_SOURCES = \
  	edit.c enter.c flags.c init.c filter.c from.c \
  	getdomain.c group.c \
  	handler.c hash.c hdrline.c headers.c help.c hook.c keymap.c \
@@ -19,13 +19,13 @@
  	postpone.c query.c recvattach.c recvcmd.c \
  	rfc822.c rfc1524.c rfc2047.c rfc2231.c rfc3676.c \
  	score.c send.c sendlib.c signal.c sort.c \
-@@ -96,7 +96,7 @@ mutt_dotlock_SOURCES = mutt_dotlock.c
+@@ -97,7 +97,7 @@ mutt_dotlock_SOURCES = mutt_dotlock.c
  mutt_dotlock_LDADD = $(LIBOBJS)
  mutt_dotlock_DEPENDENCIES = $(LIBOBJS)
  
 -mutt_pgpring_SOURCES = pgppubring.c pgplib.c lib.c extlib.c sha1.c md5.c pgppacket.c ascii.c
 +mutt_pgpring_SOURCES = opennfs.c pgppubring.c pgplib.c lib.c extlib.c sha1.c md5.c pgppacket.c ascii.c
- mutt_pgpring_LDADD = $(LIBOBJS) $(INTLLIBS)
+ mutt_pgpring_LDADD = $(LIBOBJS) $(LIBINTL)
  mutt_pgpring_DEPENDENCIES = $(LIBOBJS) $(INTLDEPS)
  
 --- mbox.c
@@ -73,7 +73,7 @@
        {
 --- mutt.h
 +++ mutt.h	2020-01-14 13:28:45.787807571 +0000
-@@ -1199,4 +1199,7 @@ typedef struct
+@@ -1202,4 +1202,7 @@ typedef struct
  #include "lib.h"
  #include "globals.h"
  
@@ -83,7 +83,7 @@
  #endif /*MUTT_H*/
 --- muttlib.c
 +++ muttlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2599,6 +2599,10 @@ int safe_open (const char *path, int fla
+@@ -2534,6 +2534,10 @@ int safe_open (const char *path, int fla
    BUFFER *safe_file = NULL;
    BUFFER *safe_dir = NULL;
  
@@ -94,7 +94,7 @@
    if (flags & O_EXCL)
    {
      safe_file = mutt_buffer_pool_get ();
-@@ -2627,7 +2631,7 @@ int safe_open (const char *path, int fla
+@@ -2562,7 +2566,7 @@ int safe_open (const char *path, int fla
  
    if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
      goto cleanup;
@@ -230,7 +230,7 @@
 +}
 --- sendlib.c
 +++ sendlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2517,7 +2517,11 @@ send_msg (const char *path, char **args,
+@@ -2557,7 +2557,11 @@ send_msg (const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
  	/* *tempfile will be opened as stdout */

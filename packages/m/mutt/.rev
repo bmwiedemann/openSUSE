@@ -1230,4 +1230,41 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
 - Append the gpg usage to system wide Muttrc (boo#1188235)</comment>
     <requestid>906282</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>af4d6034d805bbd66fd7ef7c2e7e60b5</srcmd5>
+    <version>2.1.5</version>
+    <time>1641932412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 2.1.5
+  * This is a bug-fix release, fixing two SMTP authentication
+    issues, a crash bug on NetBSD, and a couple other issues.
+  * Mutt 2.1.4 was released on December 11, 2021.  This is a bug-fix
+    release, fixing a performance issue when used with DavMail.
+  * Mutt 2.1.3 was released on September 10, 2021.  This is a
+    bug-fix release, fixing some of the fixes in the last release.  IMAP
+    and QRESYNC users are advised to upgrade.
+  * Mutt 2.1.2 was released on August 24, 2021.  This is an
+    important bug-fix release, fixing a potential data-loss IMAP
+    bug, a couple QRESYNC bugs, and a few other issues.  IMAP users
+    are strongly advised to upgrade.
+  * Mutt 2.1.1 was released on July 12, 2021.  This is a bug-fix
+    release, fixing some redraw issues and a problem with the new List
+    Menu for mbox mailboxes.
+  * Mutt 2.1.0 was released on June 12, 2021.  This release has new
+    features and bug fixes.
+  ! The -d option allows a negative number. If negative, debug files are
+    not rotated. The debug level is the absolute value.
+  + &lt;view-pager&gt; in the attachment menu uses a copiousoutput mailcap
+    entry, or falls back to raw text.
+  + &lt;view-mailcap&gt;, &lt;view-pager&gt;, and &lt;view-text&gt; functions added to the
+    compose menu.
+  + &lt;view-alt-pager&gt; in the compose menu allows previewing the output
+    of the $send_multipart_alternative_filter the way &lt;view-pager&gt; does.
+  + &lt;list-action&gt;, bound to Esc-L in the index and pager menu, brings
+    up a menu of operations to perform on mailing list emails, such as
+    subscribe/unsubscribe.
+  + &lt;skip-headers&gt;, bound to 'H' in the pager, will skip to the first
+    blank line following the headers.</comment>
+    <requestid>945563</requestid>
+  </revision>
 </revisionlist>

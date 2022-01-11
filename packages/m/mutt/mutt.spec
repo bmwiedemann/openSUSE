@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.0.7
+Version:        2.1.5
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -38,6 +38,8 @@ Source6:        mutt_oauth2.py-3.6
 Source7:        mutt_oauth2.py.README
 Source8:        backports-datetime-fromisoformat-1.0.0.tar.gz
 Source9:        mutt.mailcap
+Source10:       https://bitbucket.org/mutt/mutt/downloads/mutt-%{version}.tar.gz.asc
+Source11:       mutt.keyring
 Patch0:         %{name}-1.13.3.dif
 # http://www.spinnaker.de/mutt/compressed/
 Patch2:         %{name}-1.5.9i-pgpewrap.diff

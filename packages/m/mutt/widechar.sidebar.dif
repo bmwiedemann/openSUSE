@@ -3,7 +3,7 @@
  1 file changed, 6 insertions(+), 5 deletions(-)
 
 --- handler.c
-+++ handler.c	2018-07-04 13:48:57.285110213 +0000
++++ handler.c	2022-01-11 10:41:03.491446992 +0000
 @@ -781,7 +781,7 @@ static void enriched_set_flags (const wc
  static int text_enriched_handler (BODY *a, STATE *s)
  {
@@ -12,7 +12,7 @@
 +    TEXT, TEXT_GOTWC, LANGLE, TAG, BOGUS_TAG, NEWLINE, ST_EOF, DONE
    } state = TEXT;
  
-   long bytes = a->length;
+   LOFF_T bytes = a->length;
 @@ -811,7 +811,7 @@ static int text_enriched_handler (BODY *
    {
      if (state != ST_EOF)
@@ -42,7 +42,7 @@
  	}
  	break;
  
-@@ -1589,7 +1590,7 @@ void mutt_decode_attachment (BODY *b, ST
+@@ -1586,7 +1587,7 @@ void mutt_decode_attachment (BODY *b, ST
   * strip all trailing spaces to improve interoperability;
   * if $text_flowed is unset, simply verbatim copy input
   */

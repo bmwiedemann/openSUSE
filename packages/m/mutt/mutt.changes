@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Jan 11 10:50:42 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.1.5
+  * This is a bug-fix release, fixing two SMTP authentication
+    issues, a crash bug on NetBSD, and a couple other issues.
+  * Mutt 2.1.4 was released on December 11, 2021.  This is a bug-fix
+    release, fixing a performance issue when used with DavMail.
+  * Mutt 2.1.3 was released on September 10, 2021.  This is a
+    bug-fix release, fixing some of the fixes in the last release.  IMAP
+    and QRESYNC users are advised to upgrade.
+  * Mutt 2.1.2 was released on August 24, 2021.  This is an
+    important bug-fix release, fixing a potential data-loss IMAP
+    bug, a couple QRESYNC bugs, and a few other issues.  IMAP users
+    are strongly advised to upgrade.
+  * Mutt 2.1.1 was released on July 12, 2021.  This is a bug-fix
+    release, fixing some redraw issues and a problem with the new List
+    Menu for mbox mailboxes.
+  * Mutt 2.1.0 was released on June 12, 2021.  This release has new
+    features and bug fixes.
+  ! The -d option allows a negative number. If negative, debug files are
+    not rotated. The debug level is the absolute value.
+  + <view-pager> in the attachment menu uses a copiousoutput mailcap
+    entry, or falls back to raw text.
+  + <view-mailcap>, <view-pager>, and <view-text> functions added to the
+    compose menu.
+  + <view-alt-pager> in the compose menu allows previewing the output
+    of the $send_multipart_alternative_filter the way <view-pager> does.
+  + <list-action>, bound to Esc-L in the index and pager menu, brings
+    up a menu of operations to perform on mailing list emails, such as
+    subscribe/unsubscribe.
+  + <skip-headers>, bound to 'H' in the pager, will skip to the first
+    blank line following the headers.
+  ! ~h patterns over IMAP and POP3 will only download the headers of the
+    message.  However with message caching enabled (via $message_cachedir)
+    the whole message will still be downloaded.
+  + $ssl_verify_host_override allows manually specifying the host name
+    to verify a server certificate against.
+  ! --enable-hcache, with no particular backend enabled, will scan in
+    the order: kyotocabinet, tokyocabinet, lmdb, qdbm, gdbm, bdb.
+  ! $allow_ansi understands 256-color ANSI escape sequences.
+  + $message_id_format can be used to specify a custom message-id
+    format.  Since it's a format string, this can also use a filter.
+    Please use this option with care, as Mutt won't check if your
+    message-id is legal.
+  ! mailboxes -nonotify will poll a mailbox for new mail, but will not
+    trigger new mail notifications (e.g. $beep_new or $new_mail_command).
+  ! $reverse_name affects tagged reply/forward/compose-to-sender
+    actions too.
+  ! ANSI sequences are filtered for inline-forwarded autoview content,
+    in addition to replies.
+  ! $forward_decrypt is now a quadoption, defaulting 'yes' for backward
+    compatibility.
+  ! Pattern functions, (e.g. search and limit) can be interrupted with
+    ctrl-c.
+  ! The default mailto_allow list now includes cc, in-reply-to, and
+    references.
+  + $sort_browser_mailboxes controls mailbox browsing, and defaults
+    "unsorted".  $sort_browser now only controls directory browsing.
+  ! $sort_browser and $sort_browser_mailboxes "unsorted" now means the
+    order added (e.g. specified in the muttrc).  Switching back to
+    "unsorted" will now resort in that order (previously it was a no-op.)
+  ! In the browser ".." is excluded from sorting and kept at the top.
+  ! Temp filenames generated for mailcap invocation now allow non-ascii
+    characters.
+  + $local_date_header, when unset, causes the date in the Date header
+    to be formatted using the GMT timezone.
+- Port patches 
+  * aw.listreply.diff
+  * bsc907453-CVE-2014-9116-jessie.patch
+  * mutt-1.10.1-imap.patch
+  * mutt-1.13.3.dif
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.5.21-mailcap.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.6.1-opennfs.dif
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * widechar.sidebar.dif
+- Add keyring and signing of the tarball
+
+-------------------------------------------------------------------
 Wed Jul 14 11:07:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add mutt_oauth2.py ported to python 3.6 

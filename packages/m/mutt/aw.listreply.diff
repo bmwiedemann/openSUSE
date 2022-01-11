@@ -8,9 +8,9 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
 
 --- init.h
 +++ init.h	2020-01-14 13:35:13.352604037 +0000
-@@ -1864,6 +1864,13 @@ struct option_t MuttVars[] = {
-   ** from your spool mailbox to your $$mbox mailbox, or as a result of
-   ** a ``$mbox-hook'' command.
+@@ -1960,6 +1960,13 @@ struct option_t MuttVars[] = {
+   ** If \fIset\fP, convert the date in the Date header of sent emails into local
+   ** (sender's) timezone.
    */
 +  { "list_reply",	DT_QUAD, R_NONE, {.l=OPT_LISTREPLY}, {.l=MUTT_NO} },
 +  /*
@@ -24,7 +24,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
    ** .pp
 --- mutt.h
 +++ mutt.h	2020-01-14 13:32:27.595685455 +0000
-@@ -341,6 +341,7 @@ enum
+@@ -342,6 +342,7 @@ enum
  #endif
    OPT_SUBJECT,
    OPT_VERIFYSIG,      /* verify PGP signatures */
