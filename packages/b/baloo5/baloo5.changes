@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Adapt build system for building against qt6
+  * [kioslaves/tags] Set proper display name for root entry (kde#416389)
+  * Port away from deprecated QMap::insertMulti & related KFileMetadata API
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
