@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:16:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.1:
+  * cythonized functions can now be decorated.
+  * fixed an issue in the `decorator_apply` example and
+  * regression fix for the "fix" in version 5.1 broke
+  ` decorator.contextmanager` even more. Both issues are now solved.
+
+-------------------------------------------------------------------
 Sat Oct 16 20:56:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
