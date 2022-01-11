@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  7 15:11:37 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * xboxdrv.service
+
+-------------------------------------------------------------------
 Tue Aug 24 10:12:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move modprobe.d files out of /etc
