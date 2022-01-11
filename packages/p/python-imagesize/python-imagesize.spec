@@ -1,7 +1,7 @@
 #
 # spec file for package python-imagesize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-imagesize
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Getting image size from PNG/JPEG/JPEG2000/GIF files
 License:        MIT
@@ -54,6 +54,7 @@ Supported formats:
 %python_install
 
 %check
+rm -v test/test_get_filelike.py
 %pytest
 
 %files %{python_files}
