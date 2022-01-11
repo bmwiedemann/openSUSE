@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           messagelib
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -114,7 +114,7 @@ This package contains source headers for messagelib.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
 %endif
 
@@ -161,7 +161,7 @@ This package contains source headers for messagelib.
 %{_kf5_libdir}/libKF5WebEngineViewer.so
 %{_kf5_mkspecsdir}/qt_*.pri
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
