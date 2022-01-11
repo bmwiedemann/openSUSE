@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           zanshin
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://zanshin.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -60,7 +60,7 @@ job and personal life. You will never forget anything anymore.
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file org.kde.zanshin Utility TimeUtility
-%if %{with lang}
+%if %{with released}
   %find_lang %{name}
 %endif
 
@@ -84,7 +84,7 @@ job and personal life. You will never forget anything anymore.
 %{_kf5_servicesdir}/plasma-runner-zanshin.desktop
 %{_kf5_servicesdir}/zanshin_part.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
