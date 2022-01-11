@@ -18,21 +18,21 @@
 
 %define rname kxmlrpcclient
 %define lname libKF5XmlRpcClient5
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kxmlrpcclient5
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Library containing simple XML-RPC Client support
 License:        BSD-2-Clause
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -48,9 +48,6 @@ Library containing simple XML-RPC Client support.
 %package -n %{lname}
 Summary:        Library containing simple XML-RPC Client support
 Group:          Development/Libraries/KDE
-%if %{with lang}
-Recommends:     %{lname}-lang = %{version}
-%endif
 
 %description  -n %{lname}
 Library containing simple XML-RPC Client support.
@@ -76,14 +73,14 @@ Library containing simple XML-RPC Client support. Development files.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang libkxmlrpcclient5 %{name}.lang
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files -n %{lname}-lang -f %{name}.lang
 %endif
 
