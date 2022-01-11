@@ -95,4 +95,14 @@
   * bugfixes</comment>
     <requestid>857153</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e48a1abdcdda199d111e9937fb4fb859</srcmd5>
+    <version>1.0.3</version>
+    <time>1641932239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * add python 3.10 support
+  * bugfixes</comment>
+    <requestid>945449</requestid>
+  </revision>
 </revisionlist>
