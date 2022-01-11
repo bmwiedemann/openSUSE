@@ -19,16 +19,16 @@
 %define sonum   6
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           libktorrent
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://apps.kde.org/ktorrent
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -97,7 +97,7 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang libktorrent5 %{name}.lang
 %endif
 
@@ -114,7 +114,7 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %doc ChangeLog RoadMap
 %{_kf5_libdir}/libKF5Torrent.so.*
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
