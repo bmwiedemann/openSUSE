@@ -30,6 +30,7 @@ BuildRequires:  %{python_module Parsley}
 BuildRequires:  %{python_module cliff}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 Requires:       python-Parsley
 Requires:       python-distro
 Requires:       python-packaging

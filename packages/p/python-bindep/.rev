@@ -44,4 +44,12 @@
   * Some cleanups</comment>
     <requestid>943785</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c124d10352da6e75749598b9413186aa</srcmd5>
+    <version>2.10.1</version>
+    <time>1641940958</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros dependency</comment>
+    <requestid>945675</requestid>
+  </revision>
 </revisionlist>
