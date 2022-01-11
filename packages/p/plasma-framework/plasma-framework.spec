@@ -17,21 +17,21 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           plasma-framework
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -145,7 +145,7 @@ Plasma library and runtime components based upon KF5 and Qt5
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --with-man --all-name
 %endif
 
@@ -159,7 +159,7 @@ fi
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 # LC_SCRIPTS is not recognized by find-lang.sh
 %lang(lt) %{_datadir}/locale/lt/LC_SCRIPTS
