@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           ksmtp
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -76,7 +76,7 @@ to build programs that use the KSMTP library.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --with-qt --all-name
   %endif
 
@@ -96,7 +96,7 @@ to build programs that use the KSMTP library.
 %{_kf5_libdir}/libKPimSMTP.so
 %{_kf5_mkspecsdir}/qt_KSMTP.pri
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
