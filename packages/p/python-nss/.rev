@@ -42,4 +42,12 @@
 </comment>
     <requestid>856065</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9ebd09f922246da06860b4341b09c4e3</srcmd5>
+    <version>1.0.1</version>
+    <time>1641940967</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros</comment>
+    <requestid>945689</requestid>
+  </revision>
 </revisionlist>

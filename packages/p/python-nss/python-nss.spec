@@ -1,7 +1,7 @@
 #
 # spec file for package python-nss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           python-nss
 Version:        1.0.1
 Release:        0
 Summary:        Python bindings for mozilla-nss and mozilla-nspr
-License:        MPL-1.1+ OR GPL-2.0-or-later OR LGPL-2.0-or-later
+License:        GPL-2.0-or-later OR MPL-1.1+ OR LGPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Python_binding_for_NSS
 Source:         https://files.pythonhosted.org/packages/source/p/python-nss/python-nss-%{version}.tar.bz2
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  mozilla-nspr-devel
 BuildRequires:  mozilla-nss-devel
+BuildRequires:  python-rpm-macros
 # Required for tests
 BuildRequires:  mozilla-nss-tools
 %python_subpackages
