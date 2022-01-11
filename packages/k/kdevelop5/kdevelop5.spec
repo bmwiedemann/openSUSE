@@ -18,16 +18,16 @@
 
 %define rname   kdevelop
 %define libkdev_major 57
-%bcond_without lang
+%bcond_without released
 Name:           kdevelop5
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -145,7 +145,7 @@ Conflicts:      libkdevplatform4-devel
 This package contains the development files for building integrated
 developments environments based on the KDevelop framework.
 
-%if %{with lang}
+%if %{with released}
 %package lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -184,7 +184,7 @@ Provides translations to the package kdevplatform
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
   names="kdevandroid kdevappwizard kdevastyle kdevbazaar kdevclang kdevclassbrowser \
          kdevclangtidy kdevclazy kdevcmake kdevcmakebuilder kdevcodeutils kdevcompileanalyzercommon \
          kdevcontextbrowser kdevcppcheck kdevcustombuildsystem kdevcustomdefinesandincludes \
@@ -282,7 +282,7 @@ Provides translations to the package kdevplatform
 %{_kf5_libdir}/libKDevPlatform*.so
 %{_kf5_prefix}/include/kdevplatform/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 
 %files -n kdevplatform-lang -f kdevplatform.lang
