@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Change the build system to enable building with Qt6
+  * partviewer test: Add assertion to make sure we load the plugin factory successful
+  * Increase KF_DISABLE_DEPRECATED_BEFORE_AND_AT to latest released frameworks version
+  * Silence deprecation warning for KMimeTypeTrader in compatibility block
+  * Silence deprecation warnings in deprecated KParts::Plugin class
+  * Port deprecated KFileItemActions::associatedApplications method call
+  * Port deprecated KService::instantiatePlugin method call
+  * Call KPluginFactory::create overload without plugin keyword
+  * Deprecate KParts::Plugin class
+  * Port KPart template away from deprecated KPluginLoader
+  * Port from KPluginLoader::findPlugins to KPluginMetaData::findPlugins
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
