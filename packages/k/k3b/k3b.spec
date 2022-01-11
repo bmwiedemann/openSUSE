@@ -16,19 +16,19 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 %bcond_without ffmpeg
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            https://apps.kde.org/k3b
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -125,7 +125,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -176,7 +176,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_libdir}/libk3bdevice.so
 %{_kf5_libdir}/libk3blib.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
