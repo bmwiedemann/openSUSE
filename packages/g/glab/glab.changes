@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 11 02:28:38 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.22.0:
+  * feat: Add group flag to mr list command (#931)
+  * chore: Update Arch README link to official repos
+  * fix: Write aliases to symlink if it exists (#930)
+  * added push mirror and command (#887)
+  * feature: Read config directory from GLAB_CONFIG_DIR (#921)
+  * feature: add variable update command (#902)
+  * feat(mr): Only output MR URL to stdout if output is not a TTY (#883)
+  * fix(mr_create/issue_create): add encoding to title and change description encoding (#871)
+  * fix: add linebreak to check-output msg (#895)
+  * mr: deprecate `mr for` command
+  * Require Go 1.17+ (#898)
+  * feature: add variable delete command (#890)
+  * Add support for terminal hyperlinks (#852)
+  * Update docs for `ci run` to include passing variables
+  * commands/project/create: fix typo
+  * update dependencies (#884)
+  * fix: allow setting variable without using --value (#881)
+  * fix: obsolete % char for weights
+  * fix(mr-create): escape titles in new MR preview URLs
+  * fix(ci status): add check for pending pipelines
+  * refactor: rename Squash to SquashBeforeMerge
+  * Handle invalid job id
+  * Apply improvements from code review
+  * feat(command/ci/retry): Add new command to retry CI jobs
+  * Update README.md
+  * Update README.md
+  * docs(README): add awesome-go badge to README
+  * fix: weird condition when prompt disabled
+  * feat(mr update): add --squash parameter
+  * fix ci pipeline view incorrect timestamp being used
+  * ci: fix the linter by targeting the pull request instead of the target
+  * refactor: rename Squash to SquashBeforeMerge
+  * chore: remove colon
+  * docs(template): use different header styles for the Pull Request template
+  * feat(mr create): add --squash parameter
+  * docs(mr create): remove doc entry as it's automatically generated
+  * docs(mr create): add --reviewer parameter to docs
+  * feat(mr create): add --reviewer parameter
+  * chore: use errors.Is instead of error equality
+  * docs(readme): update Fosshost.org logo location
+  * add remoteName flag to 'create project' command
+  * fix(ci trace): exit normally when prompts are interrupted
+  * docs: remove --autofill references
+  * docs(update): v1.21.1
+
+-------------------------------------------------------------------
 Tue Jan  4 08:12:22 UTC 2022 - Orville Q. Song <orville@anislet.dev>
 
 - Fix for reproducible builds

@@ -17,8 +17,7 @@
 #
 
 
-%global build_date      2021-01-03
-#date +%Y-%m-%d
+%global build_date      2021-01-11
 
 %global provider        github
 %global provider_tld    com
@@ -28,7 +27,7 @@
 %global import_path     %{provider_prefix}/%{repo}
 
 Name:           glab
-Version:        1.21.1
+Version:        1.22.0
 Release:        0
 Summary:        An open-source GitLab command line tool
 License:        MIT
