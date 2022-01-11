@@ -18,9 +18,9 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kiten
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Japanese Reference/Study Tool
 # Data files are under CC-BY-SA-3.0 (edict) and CC-BY-SA-4.0 ("kanjidic"/SKIP numbers therein)
@@ -28,7 +28,7 @@ License:        GPL-2.0-or-later AND CC-BY-SA-3.0 AND CC-BY-SA-4.0
 Group:          Amusements/Teaching/Language
 URL:            https://apps.kde.org/kiten
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -100,7 +100,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -138,7 +138,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_sharedir}/fonts/kanjistrokeorders/
 %{_kf5_sharedir}/fonts/kanjistrokeorders/KanjiStrokeOrders.ttf
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
