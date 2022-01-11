@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 07:29:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.6.post1:
+  * Skip test_import_bootlocale() on Python 3.10
+
+-------------------------------------------------------------------
 Thu Jan 21 08:25:38 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Suggests for python-Markdown and python-Pygments

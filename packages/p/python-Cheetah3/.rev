@@ -122,4 +122,13 @@
     <comment></comment>
     <requestid>865319</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f08bfdcbdf47ff402a37a691c9db74ef</srcmd5>
+    <version>3.2.6.post1</version>
+    <time>1641932399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.6.post1:
+  * Skip test_import_bootlocale() on Python 3.10</comment>
+    <requestid>945513</requestid>
+  </revision>
 </revisionlist>
