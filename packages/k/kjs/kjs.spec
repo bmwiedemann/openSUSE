@@ -17,21 +17,21 @@
 
 
 %define sonum   5
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kjs
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        KDE Javascript engine
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -76,9 +76,6 @@ Requires:       extra-cmake-modules
 Requires:       libKF5JS%{sonum} = %{version}
 Requires:       libKF5JSApi%{sonum} = %{version}
 Requires:       cmake(Qt5Core) >= 5.15.0
-%if %{with lang}
-Recommends:     %{name}-devel-lang = %{version}
-%endif
 
 %description devel
 This library provides an ECMAScript compatible interpreter. The ECMA standard
@@ -99,7 +96,7 @@ Microsoft's JScript. Development files.
   chmod +x %{buildroot}%{_kf5_datadir}/kjs/create_hash_table
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --with-man --all-name
 %endif
 
@@ -108,7 +105,7 @@ Microsoft's JScript. Development files.
 %post -n libKF5JSApi%{sonum} -p /sbin/ldconfig
 %postun -n libKF5JSApi%{sonum} -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files devel-lang -f %{name}.lang
 %endif
 
