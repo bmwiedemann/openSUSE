@@ -768,4 +768,83 @@
 </comment>
     <requestid>914387</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dd6a1b1edb5ddf083719d2c371f04c8b</srcmd5>
+    <version>4.8.0</version>
+    <time>1641932424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.0:
+  - Add fix_relative_text_links feature, defaults to true.
+  - Make Scribble Hub spoilers &amp; footnotes look nicer PR#733,
+    thanks Epicpkmn11!
+  - Add averrating metadata to adapter_novelfull.
+  - Fix for cover_min_size causing failures with SVG images when
+    no_image_processing:true.
+  - Set default slow_down_sleep_time:2 for [www.asianfanfics.com]
+  - Deviantart date fix (closes #768), also storyId and extratags
+    changes, thanks jcotton42
+  - New Site: www.deviantart.com, thanks jcotton42 (see #765 and
+    #374)
+  - New Site: psychfic.com (re-added), thanks HappyFaceSpider
+    Closes #764
+  - adapter_storiesonlinenet: Take rating from 'Age' field on
+    scifistories/finestories - Thanks bpothier
+  - adapter_ficbooknet: Fix for site change.
+  - Code for FlareSolverr v2.0.X, can't handle images.
+  - Update translations.
+  - adapter_royalroadcom: fix for ancient bug reading unixtime
+    attr that's come back after years. #753
+  - fictionalley-archive.org: Convert adapter_fictionalleyorg to
+    adapter_fictionalleyarchiveorg.
+  - adapter_storiesonlinenet: Fix for site updates, login and
+    dates.
+  - adapter_wwwutopiastoriescom: Add
+    siterating_votes,siterating,siterank_of,siterank,v iews #750
+  - Fix for more arbitrary py3 incompatibility(MutableSet).
+    Closes #748
+  - Update bundled certifi to 2021.10.08
+  - Switch config _filelist feature from using
+    urllig.request.build_opener to fetcher.RequestsFetcher.
+  - Switching royalroad.com specific 'get from imap' code to use
+    fetcher instead of urllib. For #746
+  - adapter_wwwutopiastoriescom: Split 'eroticatags' metadata
+    entry rather than single string. Closes #744
+  - Handle errors in royalroad email links better.
+  - Fix for flaresolverr_proxy doing get urls from page
+  - Add flaresolverr_proxy_protocol setting to allow for https,
+    #739, submitted by TheCakeIsNaOH
+  - Remove site www.squidge.org/peja now hosted on
+    squidgeworld.org
+  - Remove site faerie-archive.com - redirects to some sketchy
+    looking ad sites.
+  - Remove site fanfiction-junkies.de - redirects to ad site.
+  - Remove site it-could-happen.net - redirects to some sketchy
+    looking ad sites.
+  - Remove site sebklaine.net - redirects to some sketchy looking
+    ad sites.
+  - Remove site nha.magical-worlds.us - redirects to something
+    unrelated.
+  - Fix for adapter_wuxiaworldsite site change - chapter list in
+    page HTML now.
+  - Better error message for AO3 login-required series. Closes
+    #736
+  - Accept wuxiaworldsite.com as alias for wuxiaworld.site.
+  - Don't retry connection to flaresolverr proxy and report
+    specifically on fail. Closes #737
+  - Tweak XF tagsfromtitle in defaults.ini to not break &amp;
+  - Fix for adapter_asianfanficscom - site changed author URLs.
+  - Fix for FFF plugin not recognizing the same ffnet story URL
+    when the title changes.
+  - Add order_threadmarks_by_date_categories option, closes #733
+  - Add feature use_flaresolverr_proxy
+  - Fix for asianfanfics.com site change, thanks oh45454545.
+    inject_chapter_title setting may be unneeded now?
+  - Add 'min' for minutes to parse_relative_date_string() #731
+  - Fix for dateutils change(#731) breaking royalroad
+  - Fixes for site changes in adapter_webnovelcom. #731
+  - Add POST request for wuxiaworld.site site changers. Closes
+    #729.
+</comment>
+    <requestid>945636</requestid>
+  </revision>
 </revisionlist>
