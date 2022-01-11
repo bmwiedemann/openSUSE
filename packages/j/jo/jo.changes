@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan  5 16:14:18 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.6
+  * FIX: repair tests broken by AUTHORS change
+  * FIX: repair make distcheck by removing copied _jo zsh functions
+
+-------------------------------------------------------------------
+Tue Jan  4 11:59:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.5
+  * NEW: replace asserts with human errors
+  * NEW: zsh completion
+  * FIX: several cleanups
+  * NEW: Meson build
+  * NEW: option to deduplicate keys
+  * NEW: Filter functionality
+  * FIX: file embedding
+  * FIX: add missing tests to Makefile.am
+
+-------------------------------------------------------------------
 Tue May 18 11:16:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire pandoc: it's not available on all

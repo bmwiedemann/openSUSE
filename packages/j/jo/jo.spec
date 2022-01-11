@@ -1,7 +1,7 @@
 #
 # spec file for package jo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jo
-Version:        1.4
+Version:        1.6
 Release:        0
 Summary:        JSON output from a shell
 License:        GPL-2.0-or-later AND MIT
@@ -37,11 +37,20 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Text/Utilities
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    (jo and bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
 Bash completion script for %{name}.
+
+%package zsh-completion
+Summary:        ZSH completion for %{name}
+Group:          Productivity/Text/Utilities
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+zsh shell completions for %{name}.
 
 %prep
 %setup -q
@@ -54,6 +63,8 @@ export bashcompdir=%{_datadir}/bash-completion/completions/
 
 %install
 %make_install
+install -d %{buildroot}/%{_sysconfdir}/zsh_completion.d
+mv %{buildroot}%{_datadir}/zsh/site-functions/_jo %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
 
 %check
 %make_build check
@@ -66,5 +77,9 @@ export bashcompdir=%{_datadir}/bash-completion/completions/
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}.bash
+
+%files zsh-completion
+%dir %{_sysconfdir}/zsh_completion.d
+%config %{_sysconfdir}/zsh_completion.d/%{name}
 
 %changelog
