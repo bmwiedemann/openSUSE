@@ -19,16 +19,16 @@
 %define rname audiocd-kio
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kio_audiocd
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -69,7 +69,7 @@ This package contains the development files for the audiocd kio slave
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -103,7 +103,7 @@ This package contains the development files for the audiocd kio slave
 %{_includedir}/audiocdplugins_export.h
 %{_kf5_libdir}/libaudiocdplugins.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
