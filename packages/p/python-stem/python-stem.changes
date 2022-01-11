@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:12:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros 
+
+-------------------------------------------------------------------
 Fri May 14 08:28:16 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add mostly cosmetic mock.patch to fix python39 build
