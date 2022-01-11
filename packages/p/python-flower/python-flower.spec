@@ -1,7 +1,7 @@
 #
 # spec file for package python-flower
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.0.0}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Babel >= 1.0
 Requires:       python-celery >= 5.0.0
 Requires:       python-certifi
@@ -48,7 +49,7 @@ Requires:       python-prometheus_client >= 0.8.0
 Requires:       python-pytz
 Requires:       python-tornado >= 5.0.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-futures

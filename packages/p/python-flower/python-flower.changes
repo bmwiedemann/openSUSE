@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 20:58:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros dependency 
+
+-------------------------------------------------------------------
 Tue Feb  2 00:18:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pr_1021.patch for Celery 5.0 support
