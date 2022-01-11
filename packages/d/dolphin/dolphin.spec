@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           dolphin
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://apps.kde.org/dolphin
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -101,7 +101,7 @@ Provides:       dolphin5-devel = %{version}
 %description devel
 This package contains the libraries used by Dolphin and Konqueror.
 
-%if %{with lang}
+%if %{with released}
 %package -n %{name}-part-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -125,7 +125,7 @@ Provides translations for the "%{name}" package.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -182,7 +182,7 @@ Provides translations for the "%{name}" package.
 %{_kf5_prefix}/include/Dolphin/
 %{_kf5_prefix}/include/dolphin_export.h
 
-%if %{with lang}
+%if %{with released}
 %files part-lang -f %{name}.lang
 %dir %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/
 %lang(fi) %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/dolphin/
