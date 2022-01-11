@@ -20,16 +20,16 @@
 %define rname print-manager
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kde-print-manager
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -80,7 +80,7 @@ kde-print-manager provides tools for managing print jobs and printers.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
   %endif
   %suse_update_desktop_file -r org.kde.PrintQueue Utility DesktopUtility
@@ -114,7 +114,7 @@ kde-print-manager provides tools for managing print jobs and printers.
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.printmanager.desktop
 %endif
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

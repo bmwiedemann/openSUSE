@@ -667,4 +667,12 @@
   * Fix plugin name in .desktop file (kde#426834)</comment>
     <requestid>939454</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>1eca0e39a15515d0adb5bb354091bd5a</srcmd5>
+    <version>21.12.1</version>
+    <time>1641932101</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.1</comment>
+    <requestid>944307</requestid>
+  </revision>
 </revisionlist>
