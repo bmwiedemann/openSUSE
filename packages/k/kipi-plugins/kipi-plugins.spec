@@ -16,16 +16,16 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kipi-plugins
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -68,7 +68,7 @@ applications.
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" common/libkipiplugins/tools/kpversion.h.cmake.in
 
-%if %{with lang}
+%if %{with released}
 # Workaround for kde#369517 - vkontakte installs translations even if not built
 rm po/*/kipiplugin_vkontakte.po
 %endif
@@ -83,7 +83,7 @@ rm po/*/kipiplugin_vkontakte.po
 # Not needed, the package doesn't actually provide any shared libraries
 rm -f %{buildroot}%{_kf5_libdir}/libKF5kipiplugins.so
 
-%if %{with lang}
+%if %{with released}
 %find_lang kipiplugins %{name}.lang
 
 for i in dropbox facebook flickr googleservices imageshack imgur jalbum kmlexport mediawiki piwigo printimages rajce remotestorage sendimages smug yandexfotki
@@ -109,7 +109,7 @@ done
 %{_kf5_servicesdir}/kipiplugin_*.desktop
 %{_kf5_sharedir}/kipiplugin_*/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
