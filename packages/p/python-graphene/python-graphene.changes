@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 03:34:27 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip two tests with different output on Python 3.10
+- Update to v3.0.0
+  * See https://github.com/graphql-python/graphene/wiki/v3-release-notes
+
+-------------------------------------------------------------------
 Mon Jan 25 01:50:46 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Adjust test invocation to fix builds
