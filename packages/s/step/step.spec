@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           step
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://apps.kde.org/step
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 BuildRequires:  libqt5-linguist-devel
@@ -74,7 +74,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name --with-qt
     %{kf5_find_htmldocs}
   %endif
@@ -96,7 +96,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_kxmlguidir}/step/stepui.rc
 %{_kf5_sharedir}/mime/packages/org.kde.step.xml
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %dir %{_kf5_sharedir}/locale/nn/LC_SCRIPTS/
 %dir %{_kf5_sharedir}/locale/nn/LC_SCRIPTS/step
