@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 # These packages are found and can be used by spack, /etc/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
 # Distinguish between packages we recommend and packages which
-%define spack_trigger_recommended autoconf bash bison bzip2 cmake-full ccache cpio diffutils findutils flex gcc gcc-c++ gcc-fortran git-lfs make m4 ncurses-devel libtool openssl perl-base pkgconf pkgconf-pkg-config python3-basetar info xz
+%define spack_trigger_recommended autoconf bash bison bzip2 cmake-full ccache cpio diffutils findutils flex gcc gcc-c++ gcc-fortran git-lfs make m4 ncurses-devel libtool openssl perl-base pkgconf pkg-config python3-base tar info xz
 # packages recognized by spack, but not recommended
 %define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel gcc7 gcc8 gcc9 gcc10 gcc11 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran
 # non oss packages
@@ -44,7 +44,7 @@ URL:            https://spack.io
 Source0:        https://github.com/spack/spack/archive/v%{version}.tar.gz#/spack-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        spack-rpmlintrc
-Source3:        run-find-external.sh
+Source3:        run-find-external.sh.in
 Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
 # Source5 is from https://docs.python.org/3/objects.inv, but has permanent changes so using a static version
 Source5:        objects.inv
@@ -55,6 +55,7 @@ Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
 Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
+Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod
@@ -289,6 +290,7 @@ cp -r bin/sbang %{buildroot}/%{_bindir}
 cp -r bin/spack* %{buildroot}%{_bindir}/
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
 install -m 755 %{S:3} %{buildroot}/%{spack_dir}/run-find-external.sh
+sed -i -e 's#@@_sysconfdir@@#%{_sysconfdir}#' %{buildroot}/%{spack_dir}/run-find-external.sh
 
 # Make spack only to write to home dir of user, if run as user
 sed -i 's@\(\sroot:\) /opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
@@ -411,6 +413,7 @@ install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-g
 %fdupes %{buildroot}%{spack_dir}
 %fdupes %{buildroot}%{_datarootdir}/spack
 %fdupes %{buildroot}%{_localstatedir}/lib/spack
+%{?_distconfdir:%fdupes %{buildroot}/%{_distconfdir}/spack}
 %else
 mkdir -p %{buildroot}%{_infodir}
 mkdir -p %{buildroot}%{_mandir}/man1

@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -e %{_sysconfdir}/spack/no_rpm_trigger ] ; then
+if [ -e @@_sysconfdir@@/spack/no_rpm_trigger ] ; then
   exit 0
 fi
 if [ "x$(id -u)" != "x0" ] ; then

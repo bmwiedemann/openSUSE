@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 12 09:50:56 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix run-find-external.sh script: RPM macros are not expanded
+  in external scripts.
+  * Rename: run-find-external.sh to run-find-external.sh.in
+- Fix list of recommended packages.
+- Add support for container building using a SLE base container.
+  * Add-support-for-container-building-using-a-SLE-base-container.patch
+
+-------------------------------------------------------------------
 Mon Jan 10 12:45:19 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - updated to spack 0.17.1 with following chnages:

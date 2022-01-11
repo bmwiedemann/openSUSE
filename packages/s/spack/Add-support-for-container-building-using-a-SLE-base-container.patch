@@ -1,0 +1,35 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Jan 12 13:51:57 2022 +0100
+Subject: Add support for container building using a SLE base container
+Patch-mainline: Not yet
+Git-commit: 9fa0183f8bcff032d20ce3ae4f8e5e5b1e3dea9b
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ lib/spack/spack/container/images.json | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+diff --git a/lib/spack/spack/container/images.json b/lib/spack/spack/container/images.json
+index b82596f2..64ac94a5 100644
+--- a/lib/spack/spack/container/images.json
++++ b/lib/spack/spack/container/images.json
+@@ -41,6 +41,19 @@
+         "image": "opensuse/leap:latest"
+       }
+     },
++    "suse/sle:15": {
++      "bootstrap": {
++        "template": "container/sle15.dockerfile"
++      },
++      "os_package_manager": "zypper",
++      "build": "spack/leap15",
++      "build_tags": {
++        "develop": "latest"
++      },
++      "final": {
++        "image": "registry.suse.com/suse/sle15:latest"
++      }
++    },
+     "nvidia/cuda:11.2.1": {
+       "bootstrap": {
+         "template": "container/cuda_11_2_1.dockerfile",
