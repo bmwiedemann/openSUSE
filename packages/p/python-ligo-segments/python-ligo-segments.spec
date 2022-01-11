@@ -1,7 +1,7 @@
 #
 # spec file for package python-ligo-segments
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,33 @@
 #
 
 
+# Disable tests for 32-bit archs as lal is not supported there
+%ifarch %ix86
+%bcond_with tests
+%else
+%bcond_without tests
+%endif
+
 %define skip_python2 1
 Name:           python-ligo-segments
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Representations of semi-open intervals
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://git.ligo.org/lscsoft/ligo-segments
 Source:         https://files.pythonhosted.org/packages/source/l/ligo-segments/ligo-segments-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE python-ligo-segments-disable-lal-tests.patch badshah400@gmail.com -- Disable tests requiring lal to avoid circular build dependency on lal (which also requires python-ligo-segments)
-Patch0:         python-ligo-segments-disable-lal-tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION For tests
+%if %{with tests}
+BuildRequires:  %{python_module lal}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
+%endif
 # /SECTION
-BuildRequires:  fdupes
 Requires:       python-six
 
 %python_subpackages
@@ -53,6 +62,7 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%if %{with tests}
 %check
 %{python_expand export PYTHON=$python
 export PYTHONDONTWRITEBYTECODE=1
@@ -62,12 +72,12 @@ pushd test-%{$python_bin_suffix}
 %make_build check
 popd
 }
+%endif
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/ligo/
-%{python_sitearch}/ligo_segments-%{version}-py%{python_version}.egg-info/
-%{python_sitearch}/ligo_segments-%{version}-py%{python_version}-nspkg.pth
+%{python_sitearch}/ligo_segments-%{version}-py%{python_version}.egg-info
 
 %changelog
