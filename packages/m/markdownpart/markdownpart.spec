@@ -20,16 +20,16 @@
 %define qt5_version 5.15.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           markdownpart
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -56,7 +56,7 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}
 %endif
 
@@ -69,7 +69,7 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %{_kf5_plugindir}/kf5/parts/markdownpart.so
 %{_kf5_servicesdir}/markdownpart.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
