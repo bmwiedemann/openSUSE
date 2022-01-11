@@ -5678,4 +5678,27 @@ handle manual pages that consist only of a .so directive such as
 - Replace S:$n references with SOURCE$n. Makes vim * search work.</comment>
     <requestid>943712</requestid>
   </revision>
+  <revision rev="343" vrev="3">
+    <srcmd5>012463b23c82c942119b1924c375b082</srcmd5>
+    <version>249.7</version>
+    <time>1641943585</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches to fix CVE-2021-3997 (bsc#1194178)
+  5000-shared-rm_rf-refactor-rm_rf_children_inner-to-shorte.patch
+  5001-shared-rm_rf-refactor-rm_rf-to-shorten-code-a-bit.patch
+  5002-shared-rm-rf-loop-over-nested-directories-instead-of.patch
+  These patches will be dropped and cherry-picked from upstream once upstream
+  will commit them in their main branch.
+
+- Import commit a54f80116ccf105dff11aef5d18dd110ebd3e8ee
+  30cbebc56f tmpfiles: 'st' may have been used uninitialized
+  5443654ec0 macro: add new helper RET_NERRNO()
+  8d90ecc435 rm-rf: optionally fsync() after removing directory tree
+  591344010d rm-rf: refactor rm_rf_children(), split out body of directory iteration loop
+  8c7762c4f1 Bump the max number of inodes for /dev to a million (bsc#1192858)
+  dc9476c881 journal: don't remove the flushed flag when journald is stopped
+  29efc29efd TEST-10: don't attempt to write a byte to the socket
+  773fb785b6 Bump the max number of inodes for /dev to 128k (bsc#1192858)</comment>
+    <requestid>945520</requestid>
+  </revision>
 </revisionlist>

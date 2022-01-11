@@ -32,7 +32,7 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.57.g523f32df57
+%define suse_version +suse.66.ga54f80116c
 %define _testsuitedir /usr/lib/systemd/tests
 
 %if 0%{?bootstrap}
@@ -209,6 +209,12 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
+
+# The following patches address CVE-2021-3997. They will be moved to the git
+# repo once the issue will become public and upstream will release them.
+Patch5000:      5000-shared-rm_rf-refactor-rm_rf_children_inner-to-shorte.patch
+Patch5001:      5001-shared-rm_rf-refactor-rm_rf-to-shorten-code-a-bit.patch
+Patch5002:      5002-shared-rm-rf-loop-over-nested-directories-instead-of.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
