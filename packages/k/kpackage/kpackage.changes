@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * PackagePrivate: use unique_ptr for fallbackPackage
+  * Add a service type property definition for NoDisplay
+  * Fix macro. We need to use specific rcc program
+  * Fix compile against qt6
+  * Change build system for building against qt6
+  * Port away from KPluginMetaData::serviceTypes
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
