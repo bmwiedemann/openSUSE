@@ -18,9 +18,9 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           konqueror
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -29,7 +29,7 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://apps.kde.org/konqueror
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -119,7 +119,7 @@ Development package for the konqueror libraries.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -278,7 +278,7 @@ Development package for the konqueror libraries.
 %{_kf5_includedir}/
 %{_includedir}/konqsidebarplugin.h
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:26:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * appstream: Remove duplicated release info
+
+-------------------------------------------------------------------
 Tue Dec 21 21:19:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Build the TTS plugin
