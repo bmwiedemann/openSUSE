@@ -1,17 +1,17 @@
-Index: pyparted-3.11.1/tests/baseclass.py
+Index: pyparted-3.11.7/tests/baseclass.py
 ===================================================================
---- pyparted-3.11.1.orig/tests/baseclass.py
-+++ pyparted-3.11.1/tests/baseclass.py
-@@ -68,7 +68,7 @@ class RequiresFileSystem(unittest.TestCa
-         os.write(fd, b"0")
-         f.close()
+--- pyparted-3.11.7.orig/tests/baseclass.py
++++ pyparted-3.11.7/tests/baseclass.py
+@@ -72,7 +72,7 @@ class RequiresFileSystem(unittest.TestCa
+         os.write(self.fd, b"0")
+         self.f.close()
  
 -        os.system("mke2fs -F -q %s" % (self.path,))
 +        os.system("/usr/sbin/mke2fs -F -q %s" % (self.path,))
  
          self._device = _ped.device_get(self.path)
          self._geometry = _ped.Geometry(self._device, 0, self._device.length - 1)
-@@ -133,7 +133,7 @@ class RequiresDeviceAlignment(RequiresDe
+@@ -137,7 +137,7 @@ class RequiresDeviceAlignment(RequiresDe
  class RequiresLabeledDevice(RequiresDevice):
      def setUp(self):
          RequiresDevice.setUp(self)
@@ -20,7 +20,7 @@ Index: pyparted-3.11.1/tests/baseclass.py
  
  # Base class for any test case that requires a _ped.Disk or parted.Disk.
  class RequiresDisk(RequiresDevice):
-@@ -150,7 +150,7 @@ class RequiresMount(RequiresDevice):
+@@ -161,7 +161,7 @@ class RequiresMount(RequiresDevice):
          self.mountpoint = None
  
      def mkfs(self):

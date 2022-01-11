@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jan 11 10:09:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.7:
+  * Do not remove the generated tarballs. 
+  * Update the RELEASE file. 
+  * tests: Fix flag_get_name tests 
+  * Avoid potential NULL dereferences in pydisk.c and pytimer.c 
+  * New - example to query device capacity 
+  * correct spelling mistake 
+  * Make the partition name a property on parted.Partition objects 
+  * 'from collections' -> 'from collections.abc' 
+  * Add some more examples
+  * Small correction to the PED_EXCEPTION_FIX handling. 
+  * Restore returning None for get_name
+  * Handle PED_EXCEPTION_FIX 
+  * check for undefined flags
+  * added support for newer pyparted versions
+  * Support pypi.python.org for releases 
+  * Forgot the "/" in the path name 
+  * Remove assumption that temp devices get created in /tmp 
+  * Adjust test case numbers for GeometryWriteTestCase again
+  * Revert "Use copy.deepcopy() rather than .duplicate()"
+  * Remove another unnecessary os.close() from baseclass.py
+  * Remove rogue close() call in baseclass.py
+  * Ignore the 'const' and just use these values as 'char *'
+  * Use copy.deepcopy
+  * More file descriptor close statements.
+  * Fixes for the RequiresDeviceNode class
+  * Use a smaller length for GeometryWriteTestCase
+  * Close the RequiresDeviceNode file descriptor before removal.
+  * Fix writing NULL sectors using a Geometry object
+  * Use Decimal
+  * Fix reference to fedorahosted.org in README 
+  * Check for PartedException for upper disk and partition get flag ops.
+  * Only define PARTITION_ESP if libparted provides PED_PARTITION_ESP
+  * Only define PARTITION_IRST if libparted provides PED_PARTITION_IRST
+  * I did not remember, Debian spells it "libparted-dev".
+  * Add support for RISC-V
+  * Typo fix: mimimum -> minimum
+  * Replace 'iff' with 'if and only if' in pynatmath.h.
+  * Fix a type for the get_max_primary_partition_count() doc string.
+  * Remove *_LAST_FLAG checks
+  * Use Decimal for Device.getSize
+  * Update the 'twine upload' line in the Makefile
+  * Don't intentionally prohibit Python 2 usage 
+  * mips64 support 
+  * Require at least libparted 3.3 and python 3.7
+  * pedmodule.c: Fix partition enum flag handling
+  * Add support for chromeos_kernel and bls_boot partition flags
+  * Move exception declarations to _pedmodule.c
+  * Use preprocessor for the _ped module and what constants to include.
+  * Reduce libparted requirement to 3.2 
+  * Update the pypi target in the Makefile 
+  * Reduce minimum Python required to 3.5 
+  * Set PY_SSIZE_T_CLEAN for the build 
+  * add nvme support
+  * Update RELEASE file to make last step be "make pypi" 
+- drop no-last-flag-check.patch, python-parted-unittests.patch: obsolete
+- drop -fcommon, obsolete
+
+-------------------------------------------------------------------
 Tue Jun  2 12:08:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Enable -fcommon which is not default with GCC10.

@@ -36,4 +36,41 @@
     <comment>- Enable -fcommon which is not default with GCC10.</comment>
     <requestid>810836</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed1e88493b5e3ee0dffbfd5c9cb93545</srcmd5>
+    <version>3.11.7</version>
+    <time>1641932406</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.7:
+  * Do not remove the generated tarballs. 
+  * Update the RELEASE file. 
+  * tests: Fix flag_get_name tests 
+  * Avoid potential NULL dereferences in pydisk.c and pytimer.c 
+  * New - example to query device capacity 
+  * correct spelling mistake 
+  * Make the partition name a property on parted.Partition objects 
+  * 'from collections' -&gt; 'from collections.abc' 
+  * Add some more examples
+  * Small correction to the PED_EXCEPTION_FIX handling. 
+  * Restore returning None for get_name
+  * Handle PED_EXCEPTION_FIX 
+  * check for undefined flags
+  * added support for newer pyparted versions
+  * Support pypi.python.org for releases 
+  * Forgot the &quot;/&quot; in the path name 
+  * Remove assumption that temp devices get created in /tmp 
+  * Adjust test case numbers for GeometryWriteTestCase again
+  * Revert &quot;Use copy.deepcopy() rather than .duplicate()&quot;
+  * Remove another unnecessary os.close() from baseclass.py
+  * Remove rogue close() call in baseclass.py
+  * Ignore the 'const' and just use these values as 'char *'
+  * Use copy.deepcopy
+  * More file descriptor close statements.
+  * Fixes for the RequiresDeviceNode class
+  * Use a smaller length for GeometryWriteTestCase
+  * Close the RequiresDeviceNode file descriptor before removal.
+  * Fix writing NULL sectors using a Geometry object
+  * Use Decimal</comment>
+    <requestid>945553</requestid>
+  </revision>
 </revisionlist>
