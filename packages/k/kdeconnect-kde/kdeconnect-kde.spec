@@ -16,18 +16,18 @@
 #
 
 
-%bcond_without  lang
+%bcond_without released
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://community.kde.org/KDEConnect
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -110,7 +110,7 @@ ZSH command line completion support for %{name}.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 for translation_file in kdeconnect-{app,cli,core,fileitemaction,indicator,interfaces,kcm,kded,kio,nautilus-extension,plugins,settings,sms,urlhandler} plasma_applet_org.kde.kdeconnect; do
     %find_lang $translation_file %{name}.lang
 done
@@ -186,7 +186,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_sharedir}/plasma/
 %{_prefix}/lib/firewalld/services/%{name}.xml
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
