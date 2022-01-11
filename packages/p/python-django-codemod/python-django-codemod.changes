@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:39:58 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.7.0
+  * Avoid imports in try blocks
+
+-------------------------------------------------------------------
 Fri Jan  7 01:16:26 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
