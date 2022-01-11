@@ -1,0 +1,27 @@
+From e128140d08c1faadc21ba42b81eefd451092f162 Mon Sep 17 00:00:00 2001
+From: Adrien Plazas <kekun.plazas@laposte.net>
+Date: Mon, 3 Jan 2022 09:11:30 +0100
+Subject: [PATCH] flatpak: Don't build the libportal docs
+
+This avoids useless work and fixes the build as gi-docgen is missing.
+---
+ build-aux/flatpak/org.gnome.Todo.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/build-aux/flatpak/org.gnome.Todo.json b/build-aux/flatpak/org.gnome.Todo.json
+index 44b83d66..ff3bd23c 100644
+--- a/build-aux/flatpak/org.gnome.Todo.json
++++ b/build-aux/flatpak/org.gnome.Todo.json
+@@ -144,7 +144,8 @@
+             "name" : "libportal",
+             "buildsystem" : "meson",
+             "config-opts" : [
+-                "-Dbackends=gtk4"
++                "-Dbackends=gtk4",
++                "-Ddocs=false"
+             ],
+             "sources" : [
+                 {
+-- 
+GitLab
+

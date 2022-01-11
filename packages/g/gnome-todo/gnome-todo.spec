@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-todo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,17 @@
 
 
 Name:           gnome-todo
-Version:        41.0
+Version:        41.0+72
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Todo
-Source0:        https://download.gnome.org/sources/gnome-todo/41/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM e128140d08c1faadc21ba42b81eefd451092f162.patch -- Do not build doc for flatpak builds
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-todo/-/commit/e128140d08c1faadc21ba42b81eefd451092f162.patch
+# PATCH-FIX-UPSTREAM 3e1f4da8c0e536c09ffaf3b43fe2eb5dc17cc23e.patch -- Adjust to libportal changes
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-todo/-/commit/3e1f4da8c0e536c09ffaf3b43fe2eb5dc17cc23e.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -72,7 +76,9 @@ GNOME desktop environment.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup
+%patch0 -R -p1
+%patch1 -R -p1
 
 %build
 # NOTE: We are not building introspection support as that introduces a dep on a private lib, last checked ver 41.0

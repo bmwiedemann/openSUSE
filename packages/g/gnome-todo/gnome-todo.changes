@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 11 19:26:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.0+72:
+  + Fix execution with GTK 4.6 and libadwaita 1.0.
+- Add and Reverse-apply
+  3e1f4da8c0e536c09ffaf3b43fe2eb5dc17cc23e.patch and
+  e128140d08c1faadc21ba42b81eefd451092f162.patch: git master would
+  rely on libportal-gtk4, which we do not yet have.
+
+-------------------------------------------------------------------
 Wed Dec 29 09:47:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fdupes BuildRequires and macro, remove duplicate files. Add
