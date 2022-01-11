@@ -19,21 +19,19 @@
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kdepim-runtime
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-POP3-Fix-SSL-connections.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -111,7 +109,7 @@ use PIM applications.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -141,7 +139,7 @@ use PIM applications.
 %{_kf5_sharedir}/akonadi/
 %{_kf5_sharedir}/mime/packages/kdepim-mime.xml
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

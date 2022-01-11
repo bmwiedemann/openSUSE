@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * pop3: Properly reload settings on configuration change (kde#447005)
+  * POP3: Fix SSL connections (kde#446751)
+  * Use QFormLayout here
+- Drop upstream patch:
+  * 0001-POP3-Fix-SSL-connections.patch
+
+-------------------------------------------------------------------
 Sun Dec 12 11:52:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change to fix pop3 connections:
