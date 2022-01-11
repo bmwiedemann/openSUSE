@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Support numeric sort and filter roles next to role names
+  * Add TODO for removing invokable removeRows wrappers with Qt 6.4
+  * Add missing qt6 porting code
+  * Compile against qt6
+  * Forward removeRow(s) to QML
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
