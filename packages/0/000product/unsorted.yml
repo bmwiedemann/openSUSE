@@ -2742,6 +2742,10 @@ unsorted:
   - deadbeef-devel 
   - deadbeef-lang 
   - deadbeef-plugin-mpris2 
+  - deal_II-devel: [x86_64] 
+  - deal_II-openmpi2-devel: [x86_64] 
+  - deal_II-openmpi3-devel: [x86_64] 
+  - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
   - debootstrap 
   - debugedit 
@@ -10306,6 +10310,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
+  - libdeal_II9_3_2: [x86_64] 
+  - libdeal_II9_3_2-openmpi2: [x86_64] 
+  - libdeal_II9_3_2-openmpi3: [x86_64] 
+  - libdeal_II9_3_2-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -10951,7 +10959,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro14 
-  - libgnuradio-3_8_4 
+  - libgnuradio-3_8_5 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
@@ -21816,7 +21824,9 @@ unsorted:
   - python310-adapt-parser 
   - python310-addict 
   - python310-aeidon 
+  - python310-aenum 
   - python310-aesara 
+  - python310-aexpect 
   - python310-afdko 
   - python310-aina 
   - python310-aiobotocore 
@@ -21863,6 +21873,7 @@ unsorted:
   - python310-apache-libcloud 
   - python310-apipkg 
   - python310-apiron 
+  - python310-apns2 
   - python310-appdirs 
   - python310-application 
   - python310-applicationinsights 
@@ -22268,6 +22279,7 @@ unsorted:
   - python310-bugzillatools 
   - python310-build 
   - python310-buttplug 
+  - python310-bytecode 
   - python310-cPyparsing 
   - python310-cached-property 
   - python310-cachelib 
@@ -22444,6 +22456,7 @@ unsorted:
   - python310-dateparser 
   - python310-dateutils 
   - python310-datrie 
+  - python310-dbf 
   - python310-dbfread 
   - python310-dbm 
   - python310-dbus-deviation 
@@ -22498,8 +22511,10 @@ unsorted:
   - python310-django-bootstrap3 
   - python310-django-cacheops 
   - python310-django-ckeditor 
+  - python310-django-classy-tags 
   - python310-django-codemod 
   - python310-django-collectd-rest 
+  - python310-django-compressor 
   - python310-django-contrib-comments 
   - python310-django-cors-headers 
   - python310-django-coverage-plugin 
@@ -22509,6 +22524,7 @@ unsorted:
   - python310-django-dj-inmemorystorage 
   - python310-django-environ 
   - python310-django-eremaea2 
+  - python310-django-extra-views 
   - python310-django-filter 
   - python310-django-formtools 
   - python310-django-geoposition 
@@ -22528,12 +22544,14 @@ unsorted:
   - python310-django-minio-storage 
   - python310-django-model-utils 
   - python310-django-nine 
+  - python310-django-pandas 
   - python310-django-parler 
   - python310-django-perf-rec 
   - python310-django-pglocks 
   - python310-django-phonenumber-field 
   - python310-django-picklefield 
   - python310-django-polymorphic 
+  - python310-django-push-notifications 
   - python310-django-qsessions 
   - python310-django-redis 
   - python310-django-registration 
@@ -22542,6 +22560,7 @@ unsorted:
   - python310-django-reversion 
   - python310-django-rosetta 
   - python310-django-seed 
+  - python310-django-sekizai 
   - python310-django-settings-toml 
   - python310-django-silk 
   - python310-django-sortedm2m 
@@ -22610,6 +22629,7 @@ unsorted:
   - python310-emcee 
   - python310-emoji 
   - python310-empy 
+  - python310-enaml 
   - python310-encore 
   - python310-entrypoint2 
   - python310-entrypoints 
@@ -22813,6 +22833,7 @@ unsorted:
   - python310-happybase 
   - python310-haproxyctl 
   - python310-hashids 
+  - python310-hatch 
   - python310-hawkauthlib 
   - python310-hcloud 
   - python310-hdf5storage: [x86_64] 
@@ -22852,6 +22873,7 @@ unsorted:
   - python310-hupper 
   - python310-husl 
   - python310-hvac 
+  - python310-hyper 
   - python310-hyperframe 
   - python310-hyperlink 
   - python310-hypothesis 
@@ -23674,6 +23696,7 @@ unsorted:
   - python310-pytest-dependency 
   - python310-pytest-describe 
   - python310-pytest-django 
+  - python310-pytest-djangoapp 
   - python310-pytest-doctestplus 
   - python310-pytest-dotenv 
   - python310-pytest-echo 
@@ -23684,6 +23707,7 @@ unsorted:
   - python310-pytest-fixture-config 
   - python310-pytest-flake8 
   - python310-pytest-flake8dir 
+  - python310-pytest-flakes 
   - python310-pytest-flask 
   - python310-pytest-forked 
   - python310-pytest-freezegun 
@@ -23703,6 +23727,7 @@ unsorted:
   - python310-pytest-mockito 
   - python310-pytest-mpi 
   - python310-pytest-mpl 
+  - python310-pytest-mypy 
   - python310-pytest-openfiles 
   - python310-pytest-order 
   - python310-pytest-percent 
@@ -23743,6 +23768,7 @@ unsorted:
   - python310-pytest-trio 
   - python310-pytest-twisted 
   - python310-pytest-vcr 
+  - python310-pytest-verbose-parametrize 
   - python310-pytest-virtualenv 
   - python310-pytest-xdist 
   - python310-pytest-xprocess 
@@ -24006,6 +24032,7 @@ unsorted:
   - python310-selenium 
   - python310-semanage 
   - python310-semantic_version 
+  - python310-semver 
   - python310-sentry-sdk 
   - python310-seqdiag 
   - python310-serpent 
@@ -24029,6 +24056,7 @@ unsorted:
   - python310-shellingham 
   - python310-shijian 
   - python310-shodan 
+  - python310-shortuuid 
   - python310-sidecar 
   - python310-sievelib 
   - python310-sigal 
@@ -24206,6 +24234,8 @@ unsorted:
   - python310-timeout-decorator 
   - python310-tinyarray 
   - python310-tinycss2 
+  - python310-tinydb 
+  - python310-tinyrecord 
   - python310-tinyrpc 
   - python310-titlecase 
   - python310-tk 
@@ -24305,6 +24335,7 @@ unsorted:
   - python310-validate_email 
   - python310-validators 
   - python310-varint 
+  - python310-varlink 
   - python310-vatnumber 
   - python310-vcrpy 
   - python310-vcver 
@@ -24478,8 +24509,6 @@ unsorted:
   - python36-ZODB 
   - python36-acitoolkit 
   - python36-adblock 
-  - python36-aenum 
-  - python36-aexpect 
   - python36-affine 
   - python36-agate 
   - python36-agate-dbf 
@@ -24490,7 +24519,6 @@ unsorted:
   - python36-agate-stats 
   - python36-aiosmtpd 
   - python36-aiosmtplib 
-  - python36-apns2 
   - python36-asteval 
   - python36-atpublic 
   - python36-autoflake 
@@ -24500,7 +24528,6 @@ unsorted:
   - python36-blist 
   - python36-blue 
   - python36-boto 
-  - python36-bytecode 
   - python36-cfgdiff 
   - python36-chainmap 
   - python36-chart-studio 
@@ -24518,7 +24545,6 @@ unsorted:
   - python36-curses 
   - python36-cytoolz 
   - python36-dash 
-  - python36-dbf 
   - python36-dbm 
   - python36-demjson 
   - python36-devel 
@@ -24527,10 +24553,7 @@ unsorted:
   - python36-django-avatar 
   - python36-django-bootstrap4 
   - python36-django-braces 
-  - python36-django-classy-tags 
-  - python36-django-compressor 
   - python36-django-countries 
-  - python36-django-extra-views 
   - python36-django-grappelli 
   - python36-django-invitations 
   - python36-django-money 
@@ -24539,12 +24562,10 @@ unsorted:
   - python36-django-oidc-provider 
   - python36-django-oscar 
   - python36-django-pipeline 
-  - python36-django-push-notifications 
   - python36-django-pyscss 
   - python36-django-request 
   - python36-django-rest-invitations 
   - python36-django-rest-knox 
-  - python36-django-sekizai 
   - python36-django-tagging 
   - python36-django-tastypie 
   - python36-djet 
@@ -24567,10 +24588,7 @@ unsorted:
   - python36-graphene 
   - python36-graphene-django 
   - python36-gwdatafind 
-  - python36-hatch 
-  - python36-hyper 
   - python36-idle 
-  - python36-injector 
   - python36-jirafs 
   - python36-jsonlib-python3 
   - python36-junos-eznc 
@@ -24617,12 +24635,8 @@ unsorted:
   - python36-pypiserver 
   - python36-pysvn 
   - python36-pytest-aiofiles 
-  - python36-pytest-djangoapp 
-  - python36-pytest-flakes 
   - python36-pytest-helpers-namespace 
-  - python36-pytest-mypy 
   - python36-pytest-parallel 
-  - python36-pytest-verbose-parametrize 
   - python36-python-crfsuite 
   - python36-python-datamatrix 
   - python36-python-gammu 
@@ -24644,10 +24658,8 @@ unsorted:
   - python36-rss2email 
   - python36-s3fs 
   - python36-selectors2 
-  - python36-semver 
   - python36-setuptools-declarative-requirements 
   - python36-sgmllib3k 
-  - python36-shortuuid 
   - python36-siosocks 
   - python36-sleekxmpp 
   - python36-softlayer 
@@ -24659,8 +24671,6 @@ unsorted:
   - python36-taskw 
   - python36-test-server 
   - python36-testsuite 
-  - python36-tinydb 
-  - python36-tinyrecord 
   - python36-tk 
   - python36-tools 
   - python36-traitsui 
@@ -24669,7 +24679,6 @@ unsorted:
   - python36-ucsmsdk 
   - python36-uncompyle6 
   - python36-unicodedata2 
-  - python36-varlink 
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
@@ -24833,7 +24842,6 @@ unsorted:
   - python38-PyWebDAV3 
   - python38-PyWebDAV3-GNUHealth 
   - python38-PyX 
-  - python38-Pydap 
   - python38-Pykka 
   - python38-Pympler 
   - python38-Pyphen 
@@ -27784,7 +27792,6 @@ unsorted:
   - python39-PyWebDAV3-GNUHealth 
   - python39-PyX 
   - python39-PyYAML 
-  - python39-Pydap 
   - python39-Pygments 
   - python39-Pykka 
   - python39-Pympler 
