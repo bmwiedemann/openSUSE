@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:22:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.30:
+ * Support staging submodules.
+ * Drop deprecated Index.iterblobs and iter_fresh_blobs.
+ * Unify clone behaviour of ``Repo.clone`` and
+   ``porcelain.clone``, and add branch parameter for
+   clone.
+ * Fix hook test on Mac OSX / Linux when dulwich is
+   not installed system-wide.
+ * Cope with gecos being unset.
+ * Allow adding files to repository in pre-commit hook.
+ * Raise SubmoduleEncountered in ``tree_lookup_path``.
+
+-------------------------------------------------------------------
 Sat Nov 13 20:25:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.26:
