@@ -47,4 +47,41 @@
     <comment></comment>
     <requestid>872837</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>225b4c947f3ec2b9bea725fa8b9b2849</srcmd5>
+    <version>2.16.0</version>
+    <time>1641932393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.0:
+  * add warning for regexes containing [\/] or [/\\].
+  * move hook template back to bash resolving shebang-portability issues.
+  * add support for fail_fast at the individual hook level.
+  * allow passthrough of GIT_CONFIG_KEY_*, GIT_CONFIG_VALUE_*, and GIT_CONFIG_COUNT.
+  * fix temporary file stashing with for submodule.recurse=1.
+  * ban broken importlib-resources versions.
+  * replace exit(...) with raise SystemExit(...) for portability.
+  * add support for hooks written in dart.
+  * add support for post-rewrite hooks.
+  * fix check-useless-excludes with exclude matching broken symlink.
+  * eliminate duplicate mutable sha warning messages for pre-commit autoupdate.
+  * fix force-push of disparate histories using git&gt;=2.28.
+  * fix check-useless-excludes and check-hooks-apply matching non-root .pre-commit-config.yaml.
+  * pre-commit-ci/issues#84 issue by @billsioros.
+  * During pre-push hooks, expose local branch as PRE_COMMIT_LOCAL_BRANCH.
+  * Improve container id detection for docker-beside-docker with custom hostname.
+  * Read legacy hooks in an encoding-agnostic way.
+  * Fix execution of docker hooks for docker-in-docker.
+  * Attempt to mount from host with docker-in-docker.
+  * Enable repo: local for r hooks.
+  * Avoid warnings with mismatched renv versions.
+  * Fix race condition when stashing files in multiple parallel invocations
+  * pre-commit/mirrors-prettier#7 issue by @DeltaXWizard.
+  * Fix permissions of root folder in ruby archives.
+  * Fix r hooks when hook repo is a package
+  * Add support for post-merge hook.
+  * Add r as a supported hook language.
+  * Fix installation of local golang repositories for go 1.16.
+  * Fix language: golang repositories containing recursive submodules</comment>
+    <requestid>945468</requestid>
+  </revision>
 </revisionlist>

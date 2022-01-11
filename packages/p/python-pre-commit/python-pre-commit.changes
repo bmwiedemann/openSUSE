@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jan 11 01:29:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.16.0:
+  * add warning for regexes containing [\/] or [/\\].
+  * move hook template back to bash resolving shebang-portability issues.
+  * add support for fail_fast at the individual hook level.
+  * allow passthrough of GIT_CONFIG_KEY_*, GIT_CONFIG_VALUE_*, and GIT_CONFIG_COUNT.
+  * fix temporary file stashing with for submodule.recurse=1.
+  * ban broken importlib-resources versions.
+  * replace exit(...) with raise SystemExit(...) for portability.
+  * add support for hooks written in dart.
+  * add support for post-rewrite hooks.
+  * fix check-useless-excludes with exclude matching broken symlink.
+  * eliminate duplicate mutable sha warning messages for pre-commit autoupdate.
+  * fix force-push of disparate histories using git>=2.28.
+  * fix check-useless-excludes and check-hooks-apply matching non-root .pre-commit-config.yaml.
+  * pre-commit-ci/issues#84 issue by @billsioros.
+  * During pre-push hooks, expose local branch as PRE_COMMIT_LOCAL_BRANCH.
+  * Improve container id detection for docker-beside-docker with custom hostname.
+  * Read legacy hooks in an encoding-agnostic way.
+  * Fix execution of docker hooks for docker-in-docker.
+  * Attempt to mount from host with docker-in-docker.
+  * Enable repo: local for r hooks.
+  * Avoid warnings with mismatched renv versions.
+  * Fix race condition when stashing files in multiple parallel invocations
+  * pre-commit/mirrors-prettier#7 issue by @DeltaXWizard.
+  * Fix permissions of root folder in ruby archives.
+  * Fix r hooks when hook repo is a package
+  * Add support for post-merge hook.
+  * Add r as a supported hook language.
+  * Fix installation of local golang repositories for go 1.16.
+  * Fix language: golang repositories containing recursive submodules
+  * Allow ci as a top-level map for configuration for https://pre-commit.ci
+  * Add warning for mutable rev in configuration
+  * Add warning for /* in top-level files / exclude regexes
+  * Expose PRE_COMMIT_REMOTE_BRANCH environment variable during pre-push hooks
+  * Produce error message for language / language_version for non-installable languages
+  * Fix execution in worktrees in subdirectories of bare repositories
+  * Fix cleanup code on docker volumes for go
+  * Fix default value for types_or so symlink and directory can be matched
+  * Improve error message for "hook goes missing"
+  * Add warning for /* in files / exclude regexes
+  * Add types_or which allows matching multiple disparate types in a hook
+  * Improve cleanup for language: dotnet
+  * Fix conflict with external rbenv and language_version: default
+  * Improve performance of git status / git diff commands by ignoring submodules
+  * Allow default language_version of system when the homedir is /
+  * Update sample-config versions
+  * Add --negate option to language: pygrep hooks
+  * Add zipapp support
+  * #1616 PR by @asottile.
+  * Exit with distinct codes: 1 (user error), 3 (unexpected error), 130 (^C)
+  * Improve healthy() check for language: node + language_version: system hooks when the system executable goes missing.
+  * pre-commit/action#45 issue by @KOliver94.
+  * Fix excess whitespace in error log traceback
+  * Fix language: ruby hooks when --format-executable is present in a gemrc
+  * Move cygwin / win32 mismatch error earlier to catch msys2 mismatches
+  * Remove -p workaround for old virtualenv
+  * Fix language: node installations to not symlink outside of the environment
+  * pre-commit-ci/issues#2 issue by @DanielJSottile.
+  * Don't identify shim executables as valid system for defaulting language_version for language: node / language: ruby
+
+-------------------------------------------------------------------
 Tue Feb 16 11:29:34 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - Fix build for multiple python flavors 
