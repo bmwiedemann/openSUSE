@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           libkmahjongg
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -81,7 +81,7 @@ develop games that uses Mahjongg tiles.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
 %endif
 %fdupes -s %{buildroot}
@@ -105,7 +105,7 @@ develop games that uses Mahjongg tiles.
 %{_kf5_includedir}/KMahjongg/
 %{_kf5_libdir}/libKF5KMahjongglib.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
