@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:38:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.2
+  * Support Python 3.10
+- No further release notes found
+  * Dropped support for Python <= 3.4
+  * Officially uses pytest now
+
+-------------------------------------------------------------------
 Mon Mar 30 14:32:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use pytest instead of nose 
