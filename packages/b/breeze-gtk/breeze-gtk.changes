@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  4 14:58:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * gtk3: custom GTK properties are case sensitive
+  * gtk3, gtk4: don't treat buttons with icons as toolbuttons
+
+-------------------------------------------------------------------
 Tue Nov 30 14:59:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.4
