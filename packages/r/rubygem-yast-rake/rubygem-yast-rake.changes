@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  6 15:06:25 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Support multiple Rubocop versions (bsc#1139270)
+- 0.2.44
+
+-------------------------------------------------------------------
 Mon Nov 29 20:38:08 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Make webrick dependency just optional to avoid another build
