@@ -17,16 +17,16 @@
 
 
 %define rname   kdev-php
-%bcond_without lang
+%bcond_without released
 Name:           kdevelop5-plugin-php
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -68,7 +68,7 @@ Requires:       kdevelop5-plugin-php = %{version}
 This package contains the development files needed in order to use the
 kdevelop5-plugin-php API.
 
-%if %{with lang}
+%if %{with released}
 %package lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -94,7 +94,7 @@ Provides translations to the package %{name}
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang kdevphp %{name}.lang
 %endif
 
@@ -115,7 +115,7 @@ Provides translations to the package %{name}
 %{_includedir}/kdev-php/
 %{_kf5_cmakedir}/KDevPHP/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
