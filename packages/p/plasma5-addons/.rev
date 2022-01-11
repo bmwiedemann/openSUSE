@@ -1024,4 +1024,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>KDE Plasma 5.23.4</comment>
     <requestid>934815</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>e671469065ba2025d06eacfc842ee229</srcmd5>
+    <version>5.23.5</version>
+    <time>1641932057</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 943820 from Vogtinator)</comment>
+    <requestid>943992</requestid>
+  </revision>
 </revisionlist>
