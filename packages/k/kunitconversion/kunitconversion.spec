@@ -17,21 +17,21 @@
 
 
 %define lname   libKF5UnitConversion5
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kunitconversion
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Tool for converting physical units
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -53,9 +53,6 @@ well as converting between different unit systems (e.g. liters, gallons).
 %package -n %{lname}
 Summary:        Converting physical units
 Group:          System/GUI/KDE
-%if %{with lang}
-Recommends:     %{lname}-lang = %{version}
-%endif
 
 %description -n %{lname}
 KUnitConversion provides functions to convert values in different physical
@@ -88,14 +85,14 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}5
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files -n %{lname}-lang -f %{name}5.lang
 %endif
 

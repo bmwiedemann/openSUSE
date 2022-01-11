@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Prepare KUnitConversion::UnitCategory to become non-virtual in KF6
+  * Change the build system to enable building with Qt6
+  * Prepare for KUnitConversion::Unit to become non-virtual in KF6
+  * Fix cache file removal in valuetest
+  * Fix cyclic reference between Unit and UnitCategory
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
