@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,12 +92,14 @@ installation of this package requires a 3D library such as Mesa.
 %patch2
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CFLAGS="-fPIC"
-export LDFLAGS="-pie"
 %configure \
+  --with-optim="%{_lto_cflags} -ffat-lto-objects" \
   --enable-shared \
+  --disable-localjpeg \
+  --disable-localzlib \
+  --disable-localpng \
   --enable-threads
+
 %make_build
 cd documentation
 %make_build html
@@ -109,9 +111,6 @@ make install libdir=%{buildroot}%{_libdir}/ \
 	     docdir=%{buildroot}/%{_docdir}/fltk-devel/html/ \
 	     mandir=%{buildroot}%{_mandir} STRIP=true
 rm -r %{buildroot}%{_mandir}/cat*
-# Strip out "-pie" from fltk-config LDFLAGS, which breaks linking to
-# libfltk from a shared library
-sed -i -e '/LDFLAGS=/ { s@-pie@ @ }' %{buildroot}%{_bindir}/fltk-config
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

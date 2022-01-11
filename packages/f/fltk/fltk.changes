@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 10 21:19:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop explicit pie flags setting and use --with-optim to 
+  pass in optimizer flags (bsc#1194419), binary is pie now
+  automatically 
+- disable building against local copies of libjpeg etc
+
+-------------------------------------------------------------------
 Sat Jan  8 17:16:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix LDFLAGS reported by fltk-config (strip -pie), which breaks

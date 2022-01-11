@@ -387,4 +387,15 @@ Feel free to revert the update to submit it to Factory or to leave the request o
   building shared libraries linking to libfltk (boo#1194419) (forwarded request 944936 from StefanBruens)</comment>
     <requestid>945334</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>ae04e05a1958c0d5e317b58e84a97748</srcmd5>
+    <version>1.3.8</version>
+    <time>1641932242</time>
+    <user>dimstar_suse</user>
+    <comment>- drop explicit pie flags setting and use --with-optim to 
+  pass in optimizer flags (bsc#1194419), binary is pie now
+  automatically 
+- disable building against local copies of libjpeg etc (forwarded request 945410 from dirkmueller)</comment>
+    <requestid>945510</requestid>
+  </revision>
 </revisionlist>
