@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kbounce
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
 URL:            https://apps.kde.org/kbounce
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -88,7 +88,7 @@ finding new and advanced strategies to catch as many balls as possible.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -104,7 +104,7 @@ finding new and advanced strategies to catch as many balls as possible.
 %{_kf5_iconsdir}/hicolor/*/apps/kbounce.*
 %{_kf5_sharedir}/kbounce/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
