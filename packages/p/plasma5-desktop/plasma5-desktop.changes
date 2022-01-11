@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 11 08:16:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Apply openSUSE branding of favorites as patch:
+  * 0001-Apply-branding-to-default-favorites.patch
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * [kcms/keyboard] Fix setting options on X11 (kde#443609)
+  * [kcms/keyboard] Fix fallback handling in X11Helper::getGroupNames
+  * SwitcherBackend: Only create the workaround window on wayland (kde#443968)
+  * Touchpad KCM: Don't write default values to active config (kde#427771)
+  * Change ListView code to match GridView
+  * Fix GridView size/position
+  * Move plasmoid specific properties out of singleton (kde#443131)
+  * kcms/touchpad/applet: Fix mousearea lookup
+  * containments/panel: Fix initial sizing
+  * kcms/touchpad/applet: Make the popup close on click (kde#445982)
+- Drop patches, fixed upstream:
+  * 0001-SwitcherBackend-Only-create-the-workaround-window-on.patch
+
+-------------------------------------------------------------------
 Tue Dec 28 11:34:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix empty window appearing on activity switching

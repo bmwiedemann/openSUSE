@@ -1,0 +1,46 @@
+From 4950f9e782f51d0829e4b9080fe8b19975167f63 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 11 Jan 2022 09:12:32 +0100
+Subject: [PATCH] Apply branding to default favorites
+
+5.23.5 broke reading kickoffrc, which is the only way to specify default
+favorites outside of patching Plasma itself. See
+https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/793 for details.
+As a workaround, copy favorites from plasma-openSUSE into the config, and:
+- Update desktop filenames (fix Amarok, LO for both Leap/TW)
+- Remove Amarok
+- Add Kate
+---
+ applets/kicker/package/contents/config/main.xml  | 2 +-
+ applets/kickoff/package/contents/config/main.xml | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/applets/kicker/package/contents/config/main.xml b/applets/kicker/package/contents/config/main.xml
+index 0141730f6..c8965f91a 100644
+--- a/applets/kicker/package/contents/config/main.xml
++++ b/applets/kicker/package/contents/config/main.xml
+@@ -38,7 +38,7 @@
+     </entry>
+     <entry name="favoriteApps" type="StringList">
+       <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
+-      <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover</default>
++      <default>preferred://browser,org.kde.kontact.desktop,writer.desktop,libreoffice-writer.desktop,org.kde.digikam.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,systemsettings.desktop,org.kde.Help.desktop,org.kde.konsole.desktop</default>
+     </entry>
+     <entry name="favoriteSystemActions" type="StringList">
+       <label>List of system action favorites.</label>
+diff --git a/applets/kickoff/package/contents/config/main.xml b/applets/kickoff/package/contents/config/main.xml
+index 802c53940..24c46ee4c 100644
+--- a/applets/kickoff/package/contents/config/main.xml
++++ b/applets/kickoff/package/contents/config/main.xml
+@@ -11,7 +11,7 @@
+         </entry>
+         <entry name="favorites" type="StringList">
+             <label>List of general favorites. Supported values are menu id's (usually .desktop file names), special URLs that expand into default applications (e.g. preferred://browser), document URLs and KPeople contact URIs.</label>
+-            <default>preferred://browser,kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,ktp-contactlist.desktop,org.kde.kate.desktop,org.kde.discover.desktop</default>
++            <default>preferred://browser,org.kde.kontact.desktop,writer.desktop,libreoffice-writer.desktop,org.kde.digikam.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,systemsettings.desktop,org.kde.Help.desktop,org.kde.konsole.desktop</default>
+         </entry>
+         <entry name="systemFavorites" type="StringList">
+             <label>List of system action favorites.</label>
+-- 
+2.34.0
+

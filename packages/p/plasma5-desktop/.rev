@@ -1485,4 +1485,13 @@
     <comment></comment>
     <requestid>942948</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>776e47740c8b0c25efabc2a6ab53ed39</srcmd5>
+    <version>5.23.5</version>
+    <time>1641932224</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply openSUSE branding of favorites as patch:
+  * 0001-Apply-branding-to-default-favorites.patch (forwarded request 945530 from Vogtinator)</comment>
+    <requestid>945531</requestid>
+  </revision>
 </revisionlist>
