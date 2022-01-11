@@ -232,4 +232,12 @@
     <comment>- Fix package build with plasma-framework 5.89.0.</comment>
     <requestid>939456</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1ea47157ea9ac0f80bd9c11602a5978e</srcmd5>
+    <version>5.23.5</version>
+    <time>1641932249</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 943820 from Vogtinator)</comment>
+    <requestid>943997</requestid>
+  </revision>
 </revisionlist>
