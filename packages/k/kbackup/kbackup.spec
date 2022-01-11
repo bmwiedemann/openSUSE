@@ -16,18 +16,18 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kbackup
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://apps.kde.org/kbackup
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -63,7 +63,7 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --with-qt --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -80,7 +80,7 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %{_kf5_kxmlguidir}/kbackup/
 %{_mandir}/man1/kbackup.1.gz
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
