@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Make it compile against qt6
+  * Bump KF_DISABLE_DEPRECATED_BEFORE_AND_AT value to latest released frameworks
+  * Port away from deprecated KPluginLoader
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0

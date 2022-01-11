@@ -17,21 +17,21 @@
 
 
 %define rname kpeople
-%define _tar_path 5.89
+%define _tar_path 5.90
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kpeople5
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Library for access to contacts and identity holders
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         %{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -47,9 +47,6 @@ BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Sql) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
-%if %{with lang}
-Recommends:     %{name}-lang
-%endif
 
 %description
 A library that provides access to all contacts and the people who hold them.
@@ -76,14 +73,14 @@ Development files for kpeople5.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang kpeople5 %{name}.lang
 %endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
