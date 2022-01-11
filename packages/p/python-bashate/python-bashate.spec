@@ -1,7 +1,7 @@
 #
 # spec file for package python-bashate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
-BuildRequires:  python-argparse
+BuildRequires:  python-rpm-macros
 # OpenStack package: stestr is only available for primary python3, only test on this flavor
 BuildRequires:  python3-stestr
 Requires:       python-Babel >= 0.9.6

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 20:55:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros dependency
+- remove python2 requirement - this is a python 3.x only package 
+
+-------------------------------------------------------------------
 Mon Nov 29 10:49:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
