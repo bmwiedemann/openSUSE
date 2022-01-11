@@ -11,12 +11,12 @@ I disagree, but that does not help much.
  src/buffer/katetextbuffer.cpp | 3 +--
  2 files changed, 1 insertion(+), 10 deletions(-)
 
-Index: ktexteditor-5.56.0git.20200212T090427~0a08d45f/src/CMakeLists.txt
+Index: ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/CMakeLists.txt
 ===================================================================
---- ktexteditor-5.56.0git.20200212T090427~0a08d45f.orig/src/CMakeLists.txt	2020-02-12 09:04:27.000000000 +0100
-+++ ktexteditor-5.56.0git.20200212T090427~0a08d45f/src/CMakeLists.txt	2020-02-14 13:41:26.731436038 +0100
-@@ -373,15 +373,6 @@
- ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KTextEditor)
+--- ktexteditor-5.62.0git.20220101T121918~6bf059d3.orig/src/CMakeLists.txt
++++ ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/CMakeLists.txt
+@@ -395,15 +395,6 @@ include(ECMGeneratePriFile)
+ ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
  install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
  
 -
@@ -31,11 +31,11 @@ Index: ktexteditor-5.56.0git.20200212T090427~0a08d45f/src/CMakeLists.txt
  # add part
  add_subdirectory(part)
  
-Index: ktexteditor-5.56.0git.20200212T090427~0a08d45f/src/buffer/katetextbuffer.cpp
+Index: ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/buffer/katetextbuffer.cpp
 ===================================================================
---- ktexteditor-5.56.0git.20200212T090427~0a08d45f.orig/src/buffer/katetextbuffer.cpp	2020-02-12 09:04:27.000000000 +0100
-+++ ktexteditor-5.56.0git.20200212T090427~0a08d45f/src/buffer/katetextbuffer.cpp	2020-02-14 13:41:26.731436038 +0100
-@@ -869,7 +869,7 @@
+--- ktexteditor-5.62.0git.20220101T121918~6bf059d3.orig/src/buffer/katetextbuffer.cpp
++++ ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/buffer/katetextbuffer.cpp
+@@ -818,7 +818,7 @@ bool TextBuffer::saveBuffer(const QStrin
  
  TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filename)
  {

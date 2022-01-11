@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Add a formatting commit to ignore-list
+  * try to fix behavior for vimode on completion (kde#444883)
+  * Change build system to make building against qt6
+  * Apply word filter on async completion models (kde#444883)
+  * Validates the input method attributes received from input method. (kde#443977)
+  * fix compile on Mac if EditorConfig is found
+  * Remove unused exporting of SwapFile class symbols
+  * Fix cursor position after completion tail restore
+  * let cmake generate the PCH header completely
+  * Introduce PCH support
+  * Color current indentation line differently
+  * Fix unused capture warning
+  * Vimode-keyparser: Make some functions more efficient
+  * Use KTextEditor::Range by value
+- Rebase 0001-Disable-KAuth-integration.patch
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0

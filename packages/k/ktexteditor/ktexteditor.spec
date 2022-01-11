@@ -20,17 +20,17 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.89
-%bcond_without lang
+%define _tar_path 5.90
+%bcond_without released
 Name:           ktexteditor
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -92,14 +92,14 @@ This subpackage provides the header files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}5
 %endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files -n %{name}-lang -f %{name}5.lang
 %endif
 
@@ -111,8 +111,6 @@ This subpackage provides the header files.
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
-%dir %{_kf5_sharedir}/kdevappwizard/
-%{_kf5_sharedir}/kdevappwizard/templates/
 %{_kf5_debugdir}/ktexteditor.categories
 %{_kf5_debugdir}/*.renamecategories
 
@@ -122,6 +120,9 @@ This subpackage provides the header files.
 %dir %{_kf5_includedir}/*/
 %{_kf5_includedir}/*/
 %{_kf5_includedir}/*.h
+%dir %{_kf5_sharedir}/kdevfiletemplates
+%dir %{_kf5_sharedir}/kdevfiletemplates/templates
+%{_kf5_sharedir}/kdevfiletemplates/templates/ktexteditor-plugin.tar.bz2
 %{_kf5_mkspecsdir}/qt_KTextEditor.pri
 
 %changelog
