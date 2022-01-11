@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fix volume slider scroll speed regression (kde#446909)
+  * Fix Favorite button size on list items (kde#446911)
+  * always restore local files that still exists in playlist
+  * add media play list for restoring local track from files not db
+  * Use Kirigami.Icon for icons, rather than Image (kde#446446)
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
