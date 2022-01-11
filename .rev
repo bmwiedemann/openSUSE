@@ -35,4 +35,12 @@
     <comment>- six is needed by testsuite</comment>
     <requestid>930143</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>86f0efd82942b92259f719ddfc41259c</srcmd5>
+    <version>1.6.0</version>
+    <time>1641932410</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.10 for now</comment>
+    <requestid>945557</requestid>
+  </revision>
 </revisionlist>
