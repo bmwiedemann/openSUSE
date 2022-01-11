@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 16.08 in KA, but 16.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without  lang
+%bcond_without released
 Name:           kopete
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://apps.kde.org/kopete
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -103,7 +103,7 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file org.kde.kopete Network InstantMessaging
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -150,7 +150,7 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %{_kf5_libdir}/libkopete*.so
 %{_kf5_libdir}/liboscar.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
