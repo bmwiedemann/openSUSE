@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 20:52:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python macro dependency 
+
+-------------------------------------------------------------------
 Tue Aug 31 18:03:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - skip python36: apiron on TW does not support Python 3.6 anymore

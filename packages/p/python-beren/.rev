@@ -43,4 +43,12 @@
     <comment></comment>
     <requestid>917371</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>224f791d90c8b4d83cc2df8feac5c75c</srcmd5>
+    <version>0.7.1</version>
+    <time>1641937731</time>
+    <user>dimstar_suse</user>
+    <comment>- add python macro dependency</comment>
+    <requestid>945673</requestid>
+  </revision>
 </revisionlist>
