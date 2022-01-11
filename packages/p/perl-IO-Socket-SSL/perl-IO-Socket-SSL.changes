@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 23 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.073
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.073
+  - fix behavior and tests for openssl 3.0.1
+  - fix #110 - prevent internal error warning in some cases
+
+-------------------------------------------------------------------
 Tue Aug 17 03:06:30 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.072
