@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:35:23 UTC 2022 - Jason Record <jason.record@suse.com>
+
+- Changes to version 3.1.19
+  + Made /proc directory and network names spaces configurable (bsc#1193868)
+
+-------------------------------------------------------------------
+Wed Dec 15 13:28:40 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to version 3.1.19
+  + Removed chronyc DNS lookups with -n switch (bsc#1193732)
+
+-------------------------------------------------------------------
+Wed Nov 17 13:56:16 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Merged Include udev rules in /lib/udev/rules.d/ #113
+- Merged Move localmessage/warm logs out of messages.txt to new localwarn.txt #87
+
+-------------------------------------------------------------------
+Mon Oct 18 21:20:28 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- getappcore identifies compressed core files (bsc#1191794)
+
+-------------------------------------------------------------------
 Mon Oct  4 17:38:56 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Installing to /usr/sbin instead of /sbin (bsc#1191096)
