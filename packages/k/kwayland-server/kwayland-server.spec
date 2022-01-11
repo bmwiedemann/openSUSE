@@ -1,7 +1,7 @@
 #
 # spec file for package kwayland-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.23.4
+Version:        5.23.5
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
