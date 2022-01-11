@@ -18,9 +18,9 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           okular
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -28,7 +28,7 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://okular.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -142,7 +142,7 @@ Document viewing program; supports document in various formats
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
@@ -257,7 +257,7 @@ Document viewing program; supports document in various formats
 %{_kf5_libdir}/libOkular5Core.so
 %{_kf5_prefix}/include/okular/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

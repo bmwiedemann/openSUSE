@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:26:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fix opening some password protected documents
+  * CI: Debian has removed clazy from testing, use the one in unstable for now
+  * Fix uninitialized memory read when opening the settings
+  * Fix crash when adding stamps to the quick annotations (kde#447409)
+  * Make CI happy
+
+-------------------------------------------------------------------
 Fri Dec  3 19:23:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
