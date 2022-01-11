@@ -1,16 +1,16 @@
-Index: psutil-5.8.0/psutil/tests/test_misc.py
+Index: psutil-5.9.0/psutil/tests/test_misc.py
 ===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_misc.py
-+++ psutil-5.8.0/psutil/tests/test_misc.py
-@@ -354,6 +354,7 @@ class TestMisc(PsutilTestCase):
-         check(psutil.disk_usage(os.getcwd()))
-         check(psutil.users())
+--- psutil-5.9.0.orig/psutil/tests/test_misc.py
++++ psutil-5.9.0/psutil/tests/test_misc.py
+@@ -368,6 +368,7 @@ class TestMisc(PsutilTestCase):
  
+     # XXX: https://github.com/pypa/setuptools/pull/2896
+     @unittest.skipIf(APPVEYOR, "temporarily disabled due to setuptools bug")
 +    @unittest.skipIf(True, 'does not work on obs')
      def test_setup_script(self):
          setup_py = os.path.join(ROOT_DIR, 'setup.py')
          if CI_TESTING and not os.path.exists(setup_py):
-@@ -667,7 +668,7 @@ class TestScripts(PsutilTestCase):
+@@ -710,7 +711,7 @@ class TestScripts(PsutilTestCase):
              src = f.read()
          ast.parse(src)
  
@@ -19,20 +19,20 @@ Index: psutil-5.8.0/psutil/tests/test_misc.py
          # make sure all example scripts have a test method defined
          meths = dir(self)
          for name in os.listdir(SCRIPTS_DIR):
-@@ -685,7 +686,7 @@ class TestScripts(PsutilTestCase):
-                 if not stat.S_IXUSR & os.stat(path)[stat.ST_MODE]:
-                     self.fail('%r is not executable' % path)
+@@ -729,7 +730,7 @@ class TestScripts(PsutilTestCase):
+                     if not stat.S_IXUSR & os.stat(path)[stat.ST_MODE]:
+                         raise self.fail('%r is not executable' % path)
  
 -    def test_disk_usage(self):
 +    def _test_disk_usage(self):
          self.assert_stdout('disk_usage.py')
  
      def test_free(self):
-Index: psutil-5.8.0/psutil/tests/test_linux.py
+Index: psutil-5.9.0/psutil/tests/test_linux.py
 ===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_linux.py
-+++ psutil-5.8.0/psutil/tests/test_linux.py
-@@ -675,7 +675,7 @@ class TestSystemCPUCountLogical(PsutilTe
+--- psutil-5.9.0.orig/psutil/tests/test_linux.py
++++ psutil-5.9.0/psutil/tests/test_linux.py
+@@ -683,7 +683,7 @@ class TestSystemCPUCountLogical(PsutilTe
          self.assertEqual(psutil.cpu_count(logical=True), num)
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
@@ -41,8 +41,8 @@ Index: psutil-5.8.0/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          num = len([x for x in out.split('\n') if not x.startswith('#')])
          self.assertEqual(psutil.cpu_count(logical=True), num)
-@@ -718,7 +718,7 @@ class TestSystemCPUCountLogical(PsutilTe
- class TestSystemCPUCountPhysical(PsutilTestCase):
+@@ -726,7 +726,7 @@ class TestSystemCPUCountLogical(PsutilTe
+ class TestSystemCPUCountCores(PsutilTestCase):
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
 -    def test_against_lscpu(self):
@@ -50,7 +50,7 @@ Index: psutil-5.8.0/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          core_ids = set()
          for line in out.split('\n'):
-@@ -1068,7 +1068,7 @@ class TestSystemDiskPartitions(PsutilTes
+@@ -1072,7 +1072,7 @@ class TestSystemDiskPartitions(PsutilTes
  
      @unittest.skipIf(not hasattr(os, 'statvfs'), "os.statvfs() not available")
      @skip_on_not_implemented()
@@ -59,7 +59,7 @@ Index: psutil-5.8.0/psutil/tests/test_linux.py
          # test psutil.disk_usage() and psutil.disk_partitions()
          # against "df -a"
          def df(path):
-@@ -1242,7 +1242,7 @@ class TestSystemDiskIoCounters(PsutilTes
+@@ -1246,7 +1246,7 @@ class TestSystemDiskIoCounters(PsutilTes
                  self.assertEqual(ret.read_count, 1)
                  self.assertEqual(ret.write_count, 5)
  
@@ -68,11 +68,11 @@ Index: psutil-5.8.0/psutil/tests/test_linux.py
          def exists(path):
              if path == '/proc/diskstats':
                  return False
-Index: psutil-5.8.0/psutil/tests/test_posix.py
+Index: psutil-5.9.0/psutil/tests/test_posix.py
 ===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_posix.py
-+++ psutil-5.8.0/psutil/tests/test_posix.py
-@@ -376,7 +376,7 @@ class TestSystemAPIs(PsutilTestCase):
+--- psutil-5.9.0.orig/psutil/tests/test_posix.py
++++ psutil-5.9.0/psutil/tests/test_posix.py
+@@ -377,7 +377,7 @@ class TestSystemAPIs(PsutilTestCase):
      # AIX can return '-' in df output instead of numbers, e.g. for /proc
      @unittest.skipIf(AIX, "unreliable on AIX")
      @retry_on_failure()
@@ -81,10 +81,10 @@ Index: psutil-5.8.0/psutil/tests/test_posix.py
          def df(device):
              out = sh("df -k %s" % device).strip()
              line = out.split('\n')[1]
-Index: psutil-5.8.0/psutil/tests/test_system.py
+Index: psutil-5.9.0/psutil/tests/test_system.py
 ===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_system.py
-+++ psutil-5.8.0/psutil/tests/test_system.py
+--- psutil-5.9.0.orig/psutil/tests/test_system.py
++++ psutil-5.9.0/psutil/tests/test_system.py
 @@ -200,6 +200,7 @@ class TestMiscAPIs(PsutilTestCase):
          self.assertLess(bt, time.time())
  
@@ -102,10 +102,10 @@ Index: psutil-5.8.0/psutil/tests/test_system.py
          def check_ntuple(nt):
              self.assertIsInstance(nt.device, str)
              self.assertIsInstance(nt.mountpoint, str)
-Index: psutil-5.8.0/psutil/tests/test_contracts.py
+Index: psutil-5.9.0/psutil/tests/test_contracts.py
 ===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_contracts.py
-+++ psutil-5.8.0/psutil/tests/test_contracts.py
+--- psutil-5.9.0.orig/psutil/tests/test_contracts.py
++++ psutil-5.9.0/psutil/tests/test_contracts.py
 @@ -246,6 +246,7 @@ class TestSystemAPITypes(PsutilTestCase)
              self.assertIsInstance(k, str)
              self.assert_ntuple_of_nums(v, type_=(int, long))
@@ -114,11 +114,11 @@ Index: psutil-5.8.0/psutil/tests/test_contracts.py
      def test_disk_partitions(self):
          # Duplicate of test_system.py. Keep it anyway.
          for disk in psutil.disk_partitions():
-Index: psutil-5.8.0/psutil/tests/test_process.py
+Index: psutil-5.9.0/psutil/tests/test_process.py
 ===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_process.py
-+++ psutil-5.8.0/psutil/tests/test_process.py
-@@ -344,6 +344,7 @@ class TestProcess(PsutilTestCase):
+--- psutil-5.9.0.orig/psutil/tests/test_process.py
++++ psutil-5.9.0/psutil/tests/test_process.py
+@@ -343,6 +343,7 @@ class TestProcess(PsutilTestCase):
  
      @unittest.skipIf(not HAS_IONICE, "not supported")
      @unittest.skipIf(not LINUX, "linux only")

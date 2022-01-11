@@ -597,4 +597,33 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment>- Update skip-obs.patch to also skip TestProcess.test_ionice_linux</comment>
     <requestid>933615</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>61295afd67c87edf34b2a6e1b7cee26f</srcmd5>
+    <version>5.9.0</version>
+    <time>1641932234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.9.0:
+  * [Linux]: `cpu_freq()`_ is slow on systems with many CPUs. Read current
+    frequency values for all CPUs from ``/proc/cpuinfo`` instead of opening many
+    files in ``/sys`` fs.  (patch by marxin)
+  * `NoSuchProcess`_ message now specifies if the PID has been reused.
+  * error classes (`NoSuchProcess`_, `AccessDenied`_, etc.) now have a better
+    formatted and separated ``__repr__`` and ``__str__`` implementations.
+  * [Linux]: `disk_partitions()`_: convert ``/dev/root`` device (an alias
+    used on some Linux distros) to real root device path.
+  * ``PSUTIL_DEBUG`` mode now prints file name and line number of the debug
+    messages coming from C extension modules.
+  * rewrite HISTORY.rst to use hyperlinks pointing to psutil API doc.
+  * [Linux]: `wait_procs()`_ should catch ``subprocess.TimeoutExpired``
+  exception.
+  * [Linux]: `sensors_battery()`_ can raise ``TypeError`` on PureOS.
+  * [Linux]: psutil does not handle ``ENAMETOOLONG`` when accessing process
+  file descriptors in procfs.  (patch by Nikita Radchenko)
+  * **[critical]**: ``memoize_when_activated`` decorator is not thread-safe.
+  * **[critical]**: `process_iter()`_ is not thread safe and can raise
+  ``TypeError`` if invoked from multiple threads.
+  * [Linux]: `cpu_freq()`_ return order is wrong on systems with more than
+  9 CPUs.</comment>
+    <requestid>945437</requestid>
+  </revision>
 </revisionlist>

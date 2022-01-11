@@ -1,7 +1,7 @@
 #
 # spec file for package python-psutil
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %bcond_without python2
 Name:           python-psutil
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
