@@ -127,4 +127,31 @@
     <comment>- fix for prettytable rename</comment>
     <requestid>934076</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6b0fbbf70339aebc7bfc9c21364d6f9d</srcmd5>
+    <version>5.9.8</version>
+    <time>1641932397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.8:
+  * Fix code blocks formatting of The Solution section docs #1534
+  * Add retry decorator to documentation #1535
+  * Updated utility docs #1536
+  * Add Exceptions to Documentation #1537
+  * Forces specific encoding on XMLRPC requests #1543
+  * Add sensor data to hardware #1544
+  * Ignoring f-string related messages for tox for now #1548
+  * Fix account events #1546
+  * Improved loadbal details #1549
+  * Fix initialized accountmanger #1552
+  * Fix hw billing reports 0 items #1556
+  * Update API docs link and remove travisCI mention #1557
+  * Fix errors with vs bandwidth #1563
+  * Add Item names to vs billing report #1564
+  * Mapping is now in collections.abc #1565
+  * fix vs placementgroup list #1567
+  * fixed up snapshot-notification cli commands #1569 
+  * loadbal l7policies #1553
+  * snapshot notify #1554</comment>
+    <requestid>945474</requestid>
+  </revision>
 </revisionlist>
