@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:47:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Drop lib prefix when building for Windows (kde#446950)
+  * Remove defunct manual khotnewstuff_upload test
+  * Compile fixes for Qt 6
+  * Fix i18n* functions for knewstuff-dialog not existing
+  * Port all KF deprecations until 5.89
+  * Unnest private classes, use std::unique_ptr to manage lifetime
+  * Generate own export header for KNSWidgets module
+  * Fix include install directory
+  * Fix library name
+  * Move KNS3::Action class to new KNSWidgets submodule
+  * New class: KNS3::Action
+
+-------------------------------------------------------------------
 Sat Dec  4 22:56:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
