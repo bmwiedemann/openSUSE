@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan  4 10:25:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fix multiple bins should always stay tabbed together.
+  * Fix shortcuts sometimes broken on fullscreen monitor.
+  * Enforce 29.97 fps when using a clip with 29.94 or 29.96 fps.
+  * Fix audio thumbs not created after profile change.
+  * Fix compilation warnings (function type compatibility)
+  * Ripple: fix strange behaviour on Windows and macOS
+  * Add xml ui for audiolevelgraph effect and other xml format fixes
+  * Improvements and fixes for the status bar message field
+  * Add ripple test for single track groups
+  * Fix ripple in several scenarios with groups
+  * Improve Keybind Info with compositions
+  * Fix crash on clip insert in ripple mode
+  * Fix archiving.
+  * Fix keyframe disappearing in timeline after moving the previous one in effect stack
+  * Don't allow undo when resizing clip/composition (fixes crash)
+  * Fix freeze on multiple title clip duplication. (kde#443507)
+  * Fix mistake in last commit
+  * Various fixes on project opening with missing proxies (playlist and timeremap broken)
+  * Add more ripple tests
+  * Fix ripple of groups after commit c1b0f275
+  * Restructure ripple code to make it possible to run more tests
+  * Fix mix corruption when moving a clip with start and end mixes to another track, add test
+  * Fix concurrency crash with autosave and multicam mode
+  * Fix crash on extract frame if image was already part of the project
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
