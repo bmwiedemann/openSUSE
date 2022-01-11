@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyScss
 Version:        1.3.7
 Release:        0
@@ -25,18 +26,19 @@ Summary:        pyScss, a Scss compiler for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Kronuz/pyScss
-Source:         https://files.pythonhosted.org/packages/source/p/pyScss/pyScss-%{version}.tar.gz
+Source:         https://github.com/Kronuz/pyScss/archive/refs/tags/%{version}.tar.gz#/pyScss-%{version}.tar.gz
+Patch0:         pr_411.patch
+Patch1:         merged_pr_408.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  pcre-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -56,6 +58,8 @@ http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html
 
 %prep
 %setup -q -n pyScss-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -73,6 +77,10 @@ export CFLAGS="%{optflags}"
 %postun
 %python_uninstall_alternative pyscss
 %python_uninstall_alternative less2scss
+
+%check
+# test_stdio depends on 'python' binary
+%pytest -k 'not test_stdio'
 
 %files %{python_files}
 %license LICENSE

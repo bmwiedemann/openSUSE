@@ -86,4 +86,12 @@
   * fix setup.py compatibility with newer setuptools</comment>
     <requestid>798863</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b2810c95456c33be3d9803ea882a4c1e</srcmd5>
+    <version>1.3.7</version>
+    <time>1641932423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945620</requestid>
+  </revision>
 </revisionlist>

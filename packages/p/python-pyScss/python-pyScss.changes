@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 11 11:19:13 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate tests
+- Add missing build dependency six
+- Add pr_411.patch for Python 3.10 support
+- Add merged_pr_408.patch for pytest 6 support
+- Disable Python 2 builds due to incompatibility
+
+-------------------------------------------------------------------
 Wed Apr 29 10:35:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.3.7:

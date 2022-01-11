@@ -1,0 +1,48 @@
+From 5d880813f9706f71f33d5fc585b36ffbf4dbfe75 Mon Sep 17 00:00:00 2001
+From: Stanislav Levin <slev@altlinux.org>
+Date: Wed, 5 Aug 2020 13:35:45 +0300
+Subject: [PATCH] Add compatibility against Pytest 5.4+
+
+The direct construction of nodes is deprecated since Pytest 5.4 [0]:
+> The construction of nodes now should use the named constructor
+from_parent. This limitation in api surface intends to enable
+better/simpler refactoring of the collection tree.
+    This means that instead of MyItem(name="foo", parent=collector, obj=42)
+one now has to invoke MyItem.from_parent(collector, name="foo").
+
+[0]: https://docs.pytest.org/en/stable/deprecations.html#node-construction-changed-to-node-from-parent
+
+Fixes: https://github.com/Kronuz/pyScss/issues/407
+Signed-off-by: Stanislav Levin <slev@altlinux.org>
+---
+ conftest.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/conftest.py b/conftest.py
+index 535bb68..86c213a 100644
+--- a/conftest.py
++++ b/conftest.py
+@@ -58,7 +58,10 @@ def pytest_collect_file(path, parent):
+         parts = str(path).split(path.sep)
+         # -4 tests / -3 files / -2 directory / -1 file.scss
+         if parts[-4:-2] == ['tests', 'files']:
+-            return SassFile(path, parent)
++            if hasattr(SassFile, "from_parent"):
++                return SassFile.from_parent(parent, fspath=path)
++            else:
++                return SassFile(path, parent)
+ 
+ 
+ class SassFile(pytest.File):
+@@ -67,7 +70,10 @@ def collect(self):
+         if not fontforge and parent_name == 'fonts':
+             pytest.skip("font tests require fontforge")
+ 
+-        yield SassItem(str(self.fspath), self)
++        if hasattr(SassItem, "from_parent"):
++            yield SassItem.from_parent(parent=self, name=str(self.fspath))
++        else:
++            yield SassItem(str(self.fspath), self)
+ 
+ 
+ class SassItem(pytest.Item):
