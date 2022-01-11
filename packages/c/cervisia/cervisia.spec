@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           cervisia
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://apps.kde.org/cervisia
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -66,7 +66,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -98,7 +98,7 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_servicesdir}/org.kde.cervisiapart5.desktop
 %{_kf5_servicesdir}/org.kde.cvsservice5.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
