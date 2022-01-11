@@ -17,17 +17,17 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.89
-%bcond_without lang
+%define _tar_path 5.90
+%bcond_without released
 Name:           solid
-Version:        5.89.0
+Version:        5.90.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(libplist)
 %endif
 BuildRequires:  pkgconfig(libudev)
-%if %{with lang}
+%if %{with released}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
@@ -62,7 +62,6 @@ interacting with hardware independently of the underlying operating system.
 %package -n %{lname}
 Summary:        KDE Desktop hardware abstraction
 Group:          System/GUI/KDE
-Recommends:     %{lname}-lang = %{version}
 Recommends:     %{name}-imports = %{version}
 Recommends:     %{name}-tools = %{version}
 Recommends:     media-player-info
@@ -116,14 +115,14 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name}5 --with-qt --without-mo
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with lang}
+%if %{with released}
 %files -n %{lname}-lang -f %{name}5.lang
 %endif
 
