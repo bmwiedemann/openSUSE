@@ -18,16 +18,16 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kruler
-Version:        21.12.0
+Version:        21.12.1
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://apps.kde.org/kruler
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
@@ -58,7 +58,7 @@ A screen ruler for the Plasma desktop environment
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -74,7 +74,7 @@ A screen ruler for the Plasma desktop environment
 %{_kf5_notifydir}/kruler.notifyrc
 %{_kf5_sharedir}/kruler/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
