@@ -1,7 +1,7 @@
 #
 # spec file for package latte-dock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Smith AR <audoban@openmailbox.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,17 +19,17 @@
 
 %global __requires_exclude qmlimport\\(org\\.kde\\.latte\\.private\\.app
 
-%bcond_without lang
+%bcond_without released
 %define kf5_version 5.48.0
 Name:           latte-dock
-Version:        0.10.6
+Version:        0.10.7
 Release:        0
 Summary:        Replacement Dock for Plasma Desktops
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/plasma/latte-dock
 Source0:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz.sig
 Source2:        latte-dock.keyring
 %endif
@@ -86,7 +86,7 @@ It animates its contents by using a parabolic zoom effect and tries to be there 
 %if 0%{?suse_version}
 %suse_update_desktop_file -r org.kde.%{name} Utility DesktopUtility
 %endif
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --all-name
 %endif
 
@@ -111,7 +111,7 @@ It animates its contents by using a parabolic zoom effect and tries to be there 
 %{_kf5_knsrcfilesdir}/latte-indicators.knsrc
 %{_kf5_knsrcfilesdir}/latte-layouts.knsrc
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

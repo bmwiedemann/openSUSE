@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 11 11:47:08 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.7
+  * Multi-Screen: always trust KWin under X11 in order to set
+    correct struts for panels and docks (kde#447595)
+  * Automatically offset centered applets when the left or right
+    widgets overlap the centered one
+  * WindowsGoBelow: show properly during startup (kde#448099)
+  * KWinEdges: calculate accurately their size and position
+  * Improve applets dragging during rearrange and configure widgets
+    mode
+  * Hide thin tooltips properly at some cases that were stuck
+    (kde#443645)
+  * Fill one pixel gap of justify splitters during rearrange and
+    configure widgets mode
+  * Fix, windows belong to screen whenever they are touching it.
+    This way a window could belong in more than one screens and be
+    taken into account for visibility modes and active window
+    tracking
+  * Remove file extensions for layouts and templates properly in
+    order to identify the layout or template name
+  * Fix build for Freebsd
+  * X11: force OnAllDesktops for all docks and panels during
+    creation (kde#447689)
+  * Fix empty availableScreenRegion broadcast to Plasma
+
+-------------------------------------------------------------------
 Sat Dec 18 14:54:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.10.6
