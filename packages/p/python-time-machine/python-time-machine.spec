@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-machine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-time-machine
 Group:          Development/Languages/Python
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT

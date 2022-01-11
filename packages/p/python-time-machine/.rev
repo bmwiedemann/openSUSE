@@ -41,4 +41,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>941878</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>55b9d81d066bc622406345955d1c0c04</srcmd5>
+    <version>2.6.0</version>
+    <time>1641932405</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0:
+  * Drop Python 3.6 support.
+
+- update to version 2.5.0:
+  * Add ``time_machine.escape_hatch``, which provides functions to bypass
+    time-machine.
+    Thanks to Matt Pegler for the feature request in `Issue #206
+    &lt;https://github.com/adamchainz/time-machine/issues/206&gt;`__.</comment>
+    <requestid>945538</requestid>
+  </revision>
 </revisionlist>
