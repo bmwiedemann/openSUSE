@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan  3 12:48:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * systemd unit: update to systemd v250
+  * separate dynamic StringDetect rule to avoid copies in StringDetect::doMath()
+  * prefer to construct the rule directly in the vector rather than a move
+  * automatically replace StringDetect to DetectChar, Detect2Chars or AnyChar when possible
+  * use std::weak_ptr::owner_before instead of weak_ptr::expired() and weak_ptr::lock() for better performance
+  * use non-deprecated function
+  * Update test file for OrgMode
+  * link and macro replacement marker
+  * very basic support for [[link]] and [[link][desc]]
+  * support implicit link in normal text
+  * Change the build system to enable building with Qt6
+  * SQL and SQL (PostgreSQL): nested comments support (kde#442449)
+  * GnuPlot: fix a lot of issue (kde#442181)
+  * PHP: add readonly, never and some functions/classes/constants of php-8.1
+  * Bash and Zsh: support of ${!2} (kde#440360)
+  * Bash: more unixcommands (GNU coreutils and some others) (kde#439211)
+  * Fix compilation error on Qt6
+  * Fix language specification comments
+  * Rename MIME type text/x-objcpp-src => text/x-objc++src
+  * Add Homuncuius.theme
+  * remove rawhtml, not needed
+  * Add grammar for RETRO Forth
+
+-------------------------------------------------------------------
 Sat Dec  4 22:57:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.89.0
