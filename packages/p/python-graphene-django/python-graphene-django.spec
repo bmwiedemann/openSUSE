@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene-django
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree
 Requires:       python-Django >= 2.2
-Requires:       python-graphene >= 3.0.0b5
+Requires:       python-graphene >= 2.9.9
 Requires:       python-graphql-core >= 3.1.0
 Requires:       python-graphql-relay
 Requires:       python-promise >= 2.1
@@ -45,7 +45,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-filter >= 2}
 BuildRequires:  %{python_module djangorestframework >= 3.6.3}
-BuildRequires:  %{python_module graphene >= 3.0.0b5}
+BuildRequires:  %{python_module graphene >= 2.9.9}
 BuildRequires:  %{python_module graphql-core >= 3.1.0}
 BuildRequires:  %{python_module graphql-relay}
 BuildRequires:  %{python_module mock}

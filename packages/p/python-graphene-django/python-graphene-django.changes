@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 10:45:59 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Loosen depencencies to allow graphene v3.0.0
+
+-------------------------------------------------------------------
 Sun Dec 26 08:02:29 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Use django-codemod to make test suite Django 4 compatible
