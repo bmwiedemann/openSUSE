@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 12 08:01:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros dependency 
+
+-------------------------------------------------------------------
 Thu Aug 26 10:49:07 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use setup.py test

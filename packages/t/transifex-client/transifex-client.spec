@@ -1,7 +1,7 @@
 #
 # spec file for package transifex-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/transifex/transifex-client
 Source:         https://github.com/transifex/transifex-client/archive/%{version}.tar.gz
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-mock >= 3.0.5
 BuildRequires:  python3-python-slugify
