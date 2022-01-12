@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 11 17:49:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.3:
+  + Improve window tracking
+  + Simplify scroll fade shader to work with old hardware
+  + Tweak (un)minimize animations
+  + Don't wake up screen in DND mode
+  + Fix immediately withdrawn notifications getting stuck
+  + Honor XDG SingleMainWindow key in .desktop files
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Modernize our Supplements in gnome-shell-calendar sub-package.
+
+-------------------------------------------------------------------
 Fri Dec 17 04:09:17 UTC 2021 - QK ZHU <qkzhu@suse.com>
 
 - Add gnome-shell-exit-crash-workaround.patch: 

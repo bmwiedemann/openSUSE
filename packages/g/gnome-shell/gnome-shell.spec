@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        41.2
+Version:        41.3
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -160,7 +160,7 @@ Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 # The clock / calendar applet in the panel requires e-d-s (bnc#795793).
 Requires:       evolution-data-server
-Supplements:    packageand(%{name}:evolution-data-server)
+Supplements:    (%{name} and evolution-data-server)
 
 %description calendar
 This package adds support for Evolution Calendar, such as appointments
