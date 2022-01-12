@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Jan 11 17:20:22 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.1+git0.86b093a51:
+  * [RELEASE] Released version 2.5.1
+  * CI: github actions: clean default step conditions
+  * BUILD: cpuset: fix build issue on macos introduced by previous change
+  * BUG/MAJOR: mux-h1: Don't decrement .curr_len for unsent data
+  * BUG/MINOR: ssl: Store client SNI in SSL context in case of ClientHello error
+  * BUG/MEDIUM: mworker: don't use _getsocks in wait mode
+  * BUG/MEDIUM: http-ana: Preserve response's FLT_END analyser on L7 retry
+  * BUG/MINOR: cli: fix _getsocks with musl libc
+  * BUILD/MINOR: tools: solaris build fix on dladdr.
+  * CI: github actions: update OpenSSL to 3.0.1
+  * BUILD/MINOR: cpuset FreeBSD 14 build fix.
+  * REGTESTS: ssl: update of a crt with server deletion
+  * BUG/MEDIUM: ssl: free the ckch instance linked to a server
+  * BUG/MINOR: ssl: free the fields in srv->ssl_ctx
+  * CI: Github Actions: do not show VTest failures if build failed
+  * BUILD: makefile: add -Wno-atomic-alignment to work around clang abusive warning
+  * MINOR: cpuset: switch to sched_setaffinity for FreeBSD 14 and above.
+  * MINOR: proxy: add option idle-close-on-response
+  * MINOR: debug: add support for -dL to dump library names at boot
+  * MINOR: debug: add ability to dump loaded shared libraries
+  * MINOR: compat: detect support for dl_iterate_phdr()
+  * REGTESTS: ssl: fix ssl_default_server.vtc
+  * BUG/MEDIUM: ssl: initialize correctly ssl w/ default-server
+  * BUILD: opentracing: display warning in case of using OT_USE_VARS at compile time
+  * DEBUG: ssl: make sure we never change a servername on established connections
+  * DOC: fix misspelled keyword "resolve_retries" in resolvers
+  * BUILD: ssl: unbreak the build with newer libressl
+  * BUG/MINOR: mux-h1: Fix splicing for messages with unknown length
+  * BUG/MEDIUM: mux-h1: Fix splicing by properly detecting end of message
+  * BUG/MEDIUM: peers: properly skip conn_cur from incoming messages
+  * BUG/MEDIUM: backend: fix possible sockaddr leak on redispatch
+  * MINOR: pools: work around possibly slow malloc_trim() during gc
+  * MINOR: ssl: Remove empty lines from "show ssl ocsp-response" output
+  * BUG/MEDIUM: mworker/cli: crash when trying to access an old PID in prompt mode
+  * DOC: config: fix error-log-format example
+  * DOC: config: retry-on list is space-delimited
+  * DOC: config: Specify %Ta is only available in HTTP mode
+  * DOC: spoe: Clarify use of the event directive in spoe-message section
+  * BUG/MINOR: cli/server: Don't crash when a server is added with a custom id
+  * MINOR: http-rules: Add capture action to http-after-response ruleset
+  * IMPORT: slz: use the correct CRC32 instruction when running in 32-bit mode
+  * BUILD: tree-wide: avoid warnings caused by redundant checks of obj_types
+  * MINOR: cli: "show version" displays the current process version
+  * BUG/MEDIUM: sample: Fix memory leak in sample_conv_jwt_member_query
+  * BUILD: bug: Fix error when compiling with -DDEBUG_STRICT_NOCRASH
+  * MINOR: mux-h1: Improve H1 traces by adding info about http parsers
+  * BUG/MINOR: mworker: deinit of thread poller was called when not initialized
+  * BUG/MEDIUM: mworker: FD leak of the eventpoll in wait mode
+  * BUG/MEDIUM: h1: Properly reset h1m flags when headers parsing is restarted
+  * BUG/MAJOR: segfault using multiple log forward sections.
+  * BUG/MEDIUM: resolvers: Detach query item on response error
+  * BUG/MINOR: server: Don't rely on last default-server to init server SSL context
+  * BUG/MINOR: vars: Fix the set-var and unset-var converters
+  * BUILD: evports: remove a leftover from the dead_fd cleanup
+  * BUG/MEDIUM: cli: Properly set stream analyzers to process one command at a time
+  * BUG/MINOR: lua: remove loop initial declarations
+  * BUG/MINOR: lua: don't expose internal proxies
+  * BUG/MINOR: httpclient: allow to replace the host header
+  * BUG/MINOR: cache: Fix loop on cache entries in "show cache"
+
+-------------------------------------------------------------------
 Tue Nov 23 15:17:02 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.5.0+git0.f2e0833f1:

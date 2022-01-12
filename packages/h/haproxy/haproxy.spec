@@ -13,6 +13,8 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+%bcond_with quic
 %if 0%{?suse_version} >= 1230
 %bcond_without tcp_fast_open
 %bcond_without network_namespace
@@ -53,7 +55,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.5.0+git0.f2e0833f1
+Version:        2.5.1+git0.86b093a51
 Release:        0
 #
 #
@@ -171,6 +173,9 @@ make %{?_smp_mflags} \
     LIB="%{_lib}" \
     PREFIX="%{_prefix}" \
     USE_PROMEX=1 \
+    %if %{with quic}
+    USE_QUIC=1 \
+    %endif
     %if %{with opentracing}
     USE_OT=1 \
     %endif
