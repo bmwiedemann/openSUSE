@@ -33,4 +33,12 @@
     <comment>- add xml dependencies</comment>
     <requestid>930175</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e57bb6d5a70ef79933cbe46edab2154b</srcmd5>
+    <version>0.7</version>
+    <time>1642029732</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros dependency</comment>
+    <requestid>945679</requestid>
+  </revision>
 </revisionlist>
