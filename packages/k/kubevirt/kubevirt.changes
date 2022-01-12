@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 06:29:18 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.49.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.49.0
+  Includes the fix for CVE-2021-43565 (bsc#1193930)
+
+-------------------------------------------------------------------
 Thu Dec 16 07:23:09 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 0.48.1
