@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  7 12:46:46 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v38.1
+  - Major fixes for hns provider
+
+-------------------------------------------------------------------
 Thu Dec  2 15:13:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v38.0 (jsc#SLE-18383)

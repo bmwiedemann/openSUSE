@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@
 %define with_pyverbs 0
 %endif
 
-%define         git_ver .0.02361e3b8659
+%define         git_ver .0.f291942cf7c9
 Name:           rdma-core
-Version:        38.0
+Version:        38.1
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
