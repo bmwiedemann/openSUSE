@@ -2308,6 +2308,7 @@ unsorted:
   - coredns-for-k8s1.23 
   - coredns-for-k8s1.23-extras 
   - corepack16 
+  - corepack17 
   - coreutils-doc 
   - coreutils-single 
   - coreutils-testsuite 
@@ -5588,6 +5589,7 @@ unsorted:
   - git-mr 
   - git-p4 
   - git-remote-gcrypt 
+  - git-repo 
   - git-review 
   - git-subrepo 
   - git-subrepo-bash-completion 
@@ -5813,6 +5815,7 @@ unsorted:
   - gnome-keyring-sharp 
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
+  - gnome-kiosk 
   - gnome-klotski 
   - gnome-klotski-lang 
   - gnome-latex 
@@ -7620,6 +7623,7 @@ unsorted:
   - jnr-x86asm-javadoc 
   - jo 
   - jo-bash-completion 
+  - jo-zsh-completion 
   - joda-convert 
   - joda-convert-javadoc 
   - joda-time 
@@ -8203,6 +8207,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8778,12 +8783,29 @@ unsorted:
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
+  - libKF5Bookmarks5-lang 
+  - libKF5Codecs5-lang 
+  - libKF5Completion5-lang 
+  - libKF5ConfigCore5-lang 
+  - libKF5DBusAddons5-lang 
+  - libKF5DNSSD5-lang 
+  - libKF5GlobalAccel5-lang 
+  - libKF5Holidays5-lang 
+  - libKF5ItemViews5-lang 
+  - libKF5JobWidgets5-lang 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDGantt2-5 
   - libKF5MediaPlayer5 
   - libKF5ModemManagerQt-devel 
   - libKF5NetworkManagerQt-devel 
+  - libKF5NewStuffWidgets5 
+  - libKF5Notifications5-lang 
+  - libKF5Solid5-lang 
+  - libKF5SonnetCore5-lang 
+  - libKF5SyntaxHighlighting5-lang 
+  - libKF5WidgetsAddons5-lang 
+  - libKF5WindowSystem5-lang 
   - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-lang 
   - libKOSM1 
@@ -11979,13 +12001,13 @@ unsorted:
   - libmfx-gen-devel: [x86_64] 
   - libmfx-gen1_2: [x86_64] 
   - libmfx-samples: [x86_64] 
-  - libmgl-fltk7_5_0 
-  - libmgl-glut7_5_0 
-  - libmgl-mpi7_5_0 
-  - libmgl-qt5-7_5_0 
-  - libmgl-wnd7_5_0 
-  - libmgl-wx7_5_0 
-  - libmgl7_5_0 
+  - libmgl-fltk7_6_0 
+  - libmgl-glut7_6_0 
+  - libmgl-mpi7_6_0 
+  - libmgl-qt5-7_6_0 
+  - libmgl-wnd7_6_0 
+  - libmgl-wx7_6_0 
+  - libmgl7_6_0 
   - libmhash2 
   - libmicro 
   - libmicrohttpd-devel 
@@ -15180,7 +15202,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -17180,8 +17202,11 @@ unsorted:
   - nodejs14 
   - nodejs14-devel 
   - nodejs14-docs 
+  - nodejs16 
   - nodejs16-devel 
   - nodejs16-docs 
+  - nodejs17-devel 
+  - nodejs17-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -17429,6 +17454,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm14 
+  - npm16 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -17842,6 +17868,7 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
+  - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
   - oddjob 
@@ -17977,11 +18004,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -21606,6 +21636,7 @@ unsorted:
   - python310-CairoSVG 
   - python310-Cerberus 
   - python310-Chameleon 
+  - python310-Cheetah3 
   - python310-CherryPy 
   - python310-CommonMark 
   - python310-ConfigArgParse 
@@ -21850,6 +21881,7 @@ unsorted:
   - python310-ajsonrpc 
   - python310-akismet 
   - python310-alabaster 
+  - python310-aldjemy 
   - python310-alembic 
   - python310-allpairspy 
   - python310-alsa 
@@ -21931,6 +21963,7 @@ unsorted:
   - python310-autopep8 
   - python310-autoray 
   - python310-autoupgrade-ng 
+  - python310-av 
   - python310-avahi 
   - python310-avro 
   - python310-awpa 
@@ -22311,8 +22344,14 @@ unsorted:
   - python310-certbot 
   - python310-certbot-apache 
   - python310-certbot-dns-cloudflare 
+  - python310-certbot-dns-cloudxns 
   - python310-certbot-dns-digitalocean 
+  - python310-certbot-dns-dnsimple 
+  - python310-certbot-dns-dnsmadeeasy 
   - python310-certbot-dns-google 
+  - python310-certbot-dns-linode 
+  - python310-certbot-dns-luadns 
+  - python310-certbot-dns-nsone 
   - python310-certbot-dns-rfc2136 
   - python310-certbot-dns-route53 
   - python310-certbot-nginx 
@@ -22432,6 +22471,7 @@ unsorted:
   - python310-cwcwidth 
   - python310-cx_Freeze 
   - python310-cymruwhois 
+  - python310-cytoolz 
   - python310-czifile 
   - python310-d2to1 
   - python310-daemonize 
@@ -22517,6 +22557,7 @@ unsorted:
   - python310-django-compressor 
   - python310-django-contrib-comments 
   - python310-django-cors-headers 
+  - python310-django-countries 
   - python310-django-coverage-plugin 
   - python310-django-crispy-forms 
   - python310-django-debreach 
@@ -22524,6 +22565,7 @@ unsorted:
   - python310-django-dj-inmemorystorage 
   - python310-django-environ 
   - python310-django-eremaea2 
+  - python310-django-extensions 
   - python310-django-extra-views 
   - python310-django-filter 
   - python310-django-formtools 
@@ -22578,6 +22620,7 @@ unsorted:
   - python310-djangorestframework-simplejwt 
   - python310-djvulibre 
   - python310-dkimpy 
+  - python310-dns-lexicon 
   - python310-dnslib 
   - python310-dnspython 
   - python310-doc 
@@ -22797,6 +22840,8 @@ unsorted:
   - python310-gps3 
   - python310-gpxpy 
   - python310-grab 
+  - python310-graphene 
+  - python310-graphene-django 
   - python310-graphql-core 
   - python310-graphql-relay 
   - python310-graphviz 
@@ -22816,6 +22861,7 @@ unsorted:
   - python310-gunicorn 
   - python310-guzzle_sphinx_theme 
   - python310-gwcs 
+  - python310-gwdatafind 
   - python310-gwosc 
   - python310-gwyfile 
   - python310-gyp 
@@ -23090,6 +23136,7 @@ unsorted:
   - python310-libxml2 
   - python310-license-expression 
   - python310-ligo-lw 
+  - python310-ligo-segments 
   - python310-ligotimegps 
   - python310-line_profiler 
   - python310-linecache2 
@@ -23351,6 +23398,7 @@ unsorted:
   - python310-parso 
   - python310-parsy 
   - python310-partd 
+  - python310-parted 
   - python310-particle 
   - python310-parver 
   - python310-pass_python_keyring 
@@ -23442,6 +23490,7 @@ unsorted:
   - python310-pprintpp 
   - python310-pproxy 
   - python310-praatio 
+  - python310-pre-commit 
   - python310-precis-i18n 
   - python310-precise-runner 
   - python310-preggy 
@@ -24058,6 +24107,7 @@ unsorted:
   - python310-shodan 
   - python310-shortuuid 
   - python310-sidecar 
+  - python310-sidpy 
   - python310-sievelib 
   - python310-sigal 
   - python310-signedjson 
@@ -24095,6 +24145,7 @@ unsorted:
   - python310-social-auth-app-django 
   - python310-social-auth-core 
   - python310-socketpool 
+  - python310-softlayer 
   - python310-sortedcollections 
   - python310-sortedcontainers 
   - python310-sortinghat 
@@ -24146,6 +24197,7 @@ unsorted:
   - python310-sphobjinv 
   - python310-spidev 
   - python310-spotipy 
+  - python310-spyder-kernels 
   - python310-sqlalchemy-migrate 
   - python310-sqlite-fts4 
   - python310-sqlite-utils 
@@ -24498,11 +24550,9 @@ unsorted:
   - python36 
   - python36-32bit: [x86_64] 
   - python36-APScheduler 
-  - python36-Cheetah3 
   - python36-Flask-Security-Too 
   - python36-LHAPDF 
   - python36-PyCondor 
-  - python36-PyECLib 
   - python36-PyRSS2Gen 
   - python36-Shapely 
   - python36-ZEO 
@@ -24543,7 +24593,6 @@ unsorted:
   - python36-csvkit 
   - python36-curlylint 
   - python36-curses 
-  - python36-cytoolz 
   - python36-dash 
   - python36-dbm 
   - python36-demjson 
@@ -24553,7 +24602,6 @@ unsorted:
   - python36-django-avatar 
   - python36-django-bootstrap4 
   - python36-django-braces 
-  - python36-django-countries 
   - python36-django-grappelli 
   - python36-django-invitations 
   - python36-django-money 
@@ -24585,9 +24633,6 @@ unsorted:
   - python36-github3.py 
   - python36-gmpy2 
   - python36-google-pasta 
-  - python36-graphene 
-  - python36-graphene-django 
-  - python36-gwdatafind 
   - python36-idle 
   - python36-jirafs 
   - python36-jsonlib-python3 
@@ -24595,7 +24640,6 @@ unsorted:
   - python36-labelImg 
   - python36-leather 
   - python36-librouteros 
-  - python36-ligo-segments 
   - python36-limnoria 
   - python36-lzmaffi 
   - python36-mechanize 
@@ -24615,7 +24659,6 @@ unsorted:
   - python36-oletools 
   - python36-opentelemetry-api 
   - python36-pampy 
-  - python36-parted 
   - python36-pcodedmp 
   - python36-pep8-naming 
   - python36-pikepdf 
@@ -24627,14 +24670,12 @@ unsorted:
   - python36-plyvel 
   - python36-podman 
   - python36-pony 
-  - python36-pre-commit 
   - python36-pyclipper 
   - python36-pyeapi 
   - python36-pyface 
   - python36-pymisp 
   - python36-pypiserver 
   - python36-pysvn 
-  - python36-pytest-aiofiles 
   - python36-pytest-helpers-namespace 
   - python36-pytest-parallel 
   - python36-python-crfsuite 
@@ -24662,7 +24703,6 @@ unsorted:
   - python36-sgmllib3k 
   - python36-siosocks 
   - python36-sleekxmpp 
-  - python36-softlayer 
   - python36-sorl-thumbnail 
   - python36-sphinx-argparse 
   - python36-starlette 
@@ -26250,6 +26290,7 @@ unsorted:
   - python38-markdown2 
   - python38-marshmallow 
   - python38-marshmallow-enum 
+  - python38-mathgl 
   - python38-matplotlib-gtk4 
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
@@ -26796,7 +26837,6 @@ unsorted:
   - python38-pyte 
   - python38-pytesseract 
   - python38-pytest 
-  - python38-pytest-aiofiles 
   - python38-pytest-aiohttp 
   - python38-pytest-arraydiff 
   - python38-pytest-astropy 
@@ -29900,7 +29940,6 @@ unsorted:
   - python39-pyte 
   - python39-pytesseract 
   - python39-pytest 
-  - python39-pytest-aiofiles 
   - python39-pytest-aiohttp 
   - python39-pytest-arraydiff 
   - python39-pytest-astropy 
@@ -42219,7 +42258,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
-  - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - vhba-kmp-default 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
