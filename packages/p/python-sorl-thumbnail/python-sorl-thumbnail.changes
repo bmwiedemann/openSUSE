@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 05:31:30 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update tests to run on Django 4
+- Disable boto related tests on Python 3.10 due to missing dependency
+- Disable TestDescriptors tests on all test runs
+
+-------------------------------------------------------------------
 Wed Oct 13 08:14:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip test_orientation with

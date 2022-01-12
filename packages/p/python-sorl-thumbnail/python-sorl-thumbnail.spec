@@ -1,7 +1,7 @@
 #
 # spec file for package python-sorl-thumbnail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/sorl-thumbnail
 Source:         https://files.pythonhosted.org/packages/source/s/sorl-thumbnail/sorl-thumbnail-%{version}.tar.gz
+BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,7 +43,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2}
 BuildRequires:  %{python_module Wand}
-BuildRequires:  %{python_module boto}
+BuildRequires:  %{python_module boto if python-base < 3.10}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis}
@@ -74,6 +75,8 @@ Features at a glance
 %prep
 %setup -q -n sorl-thumbnail-%{version}
 
+djcodemod run --removed-in 4.0 tests/*/urls.py
+
 %build
 %python_build
 
@@ -86,32 +89,35 @@ export LANG=en_US.UTF-8
 
 PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings.pil
-%pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+# TestDescriptors: gh#jazzband/sorl-thumbnail#673
+# TemplateTestCaseB & test_image_file_deserialize: three tests use online resources
+skip_tests="TestDescriptors or test_image_file_deserialize or (TemplateTestCaseB and (test_portrait or test_url))"
+%pytest -rs -k "not ($skip_tests)"
 export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
 # test_orientation skipped because of gh#jazzband/sorl-thumbnail#676
-%pytest -rs -k 'not (TemplateTestCaseB or test_image_file_deserialize or test_orientation)'
+%pytest -rs -k "not ($skip_tests or test_orientation)"
 export DJANGO_SETTINGS_MODULE=tests.settings.dbm
-%pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+%pytest -rs -k "not ($skip_tests)"
 export DJANGO_SETTINGS_MODULE=tests.settings.graphicsmagick
-%pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+%pytest -rs -k "not ($skip_tests)"
 export DJANGO_SETTINGS_MODULE=tests.settings.wand
-%pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+%pytest -rs -k "not ($skip_tests)"
 
 # pgmagick is not installed in all environments
 %{python_expand if [ -d %{$python_sitearch}/pgmagick/ ]; then
   export DJANGO_SETTINGS_MODULE=tests.settings.pgmagick
-  $python -m pytest -rs -k 'not (TemplateTestCaseB or test_image_file_deserialize or test_is_valid_image)'
+  $python -m pytest -rs -k "not ($skip_tests)"
 fi
 }
 
 %{_sbindir}/redis-server &
 export DJANGO_SETTINGS_MODULE=tests.settings.redis
-# skipping test_write and test_no_source_get_image skipped as they count open file descriptors and sometimes is off
-%pytest -rs -k 'not (TemplateTestCaseB or test_image_file_deserialize or test_no_source_get_image or test_write)'
+%pytest -rs -k "not ($skip_tests)"
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/sorl/
+%{python_sitelib}/*sorl[-_]thumbnail*/
 
 %changelog
