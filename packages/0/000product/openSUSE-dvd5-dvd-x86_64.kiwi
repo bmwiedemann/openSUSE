@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220110" schemaversion="4.1">
+<image name="OBS__openSUSE___20220111" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220110</productvar>
+      <productvar name="VERSION">20220111</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220110,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220111,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220110/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220111/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1312,7 +1312,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -2081,19 +2081,15 @@
       <repopackage name="libKF5BalooEngine5-lang"/>
       <repopackage name="libKF5BluezQt6"/>
       <repopackage name="libKF5Bookmarks5"/>
-      <repopackage name="libKF5Bookmarks5-lang"/>
       <repopackage name="libKF5CalendarCore5"/>
       <repopackage name="libKF5CalendarEvents5"/>
       <repopackage name="libKF5CalendarSupport5"/>
       <repopackage name="libKF5CalendarUtils5"/>
       <repopackage name="libKF5Cddb5"/>
       <repopackage name="libKF5Codecs5"/>
-      <repopackage name="libKF5Codecs5-lang"/>
       <repopackage name="libKF5CompactDisc5"/>
       <repopackage name="libKF5Completion5"/>
-      <repopackage name="libKF5Completion5-lang"/>
       <repopackage name="libKF5ConfigCore5"/>
-      <repopackage name="libKF5ConfigCore5-lang"/>
       <repopackage name="libKF5ConfigGui5"/>
       <repopackage name="libKF5ConfigWidgets5"/>
       <repopackage name="libKF5ConfigWidgets5-lang"/>
@@ -2103,22 +2099,18 @@
       <repopackage name="libKF5Crash5"/>
       <repopackage name="libKF5DAV5"/>
       <repopackage name="libKF5DBusAddons5"/>
-      <repopackage name="libKF5DBusAddons5-lang"/>
       <repopackage name="libKF5Declarative5"/>
       <repopackage name="libKF5Declarative5-lang"/>
       <repopackage name="libKF5DNSSD5"/>
-      <repopackage name="libKF5DNSSD5-lang"/>
       <repopackage name="libKF5DocTools5"/>
       <repopackage name="libKF5Emoticons5"/>
       <repopackage name="libKF5EventViews5"/>
       <repopackage name="libKF5GlobalAccel5"/>
-      <repopackage name="libKF5GlobalAccel5-lang"/>
       <repopackage name="libKF5GlobalAccelPrivate5"/>
       <repopackage name="libKF5GrantleeTheme5"/>
       <repopackage name="libKF5Gravatar5"/>
       <repopackage name="libKF5GuiAddons5"/>
       <repopackage name="libKF5Holidays5"/>
-      <repopackage name="libKF5Holidays5-lang"/>
       <repopackage name="libKF5I18n5"/>
       <repopackage name="libKF5I18n5-lang"/>
       <repopackage name="libKF5IconThemes5"/>
@@ -2129,9 +2121,7 @@
       <repopackage name="libKF5IncidenceEditor5"/>
       <repopackage name="libKF5ItemModels5"/>
       <repopackage name="libKF5ItemViews5"/>
-      <repopackage name="libKF5ItemViews5-lang"/>
       <repopackage name="libKF5JobWidgets5"/>
-      <repopackage name="libKF5JobWidgets5-lang"/>
       <repopackage name="libKF5JS5"/>
       <repopackage name="libKF5JSApi5"/>
       <repopackage name="libKF5KCMUtils5"/>
@@ -2163,7 +2153,6 @@
       <repopackage name="libKF5NewStuff5-lang"/>
       <repopackage name="libKF5NewStuffCore5"/>
       <repopackage name="libKF5Notifications5"/>
-      <repopackage name="libKF5Notifications5-lang"/>
       <repopackage name="libKF5NotifyConfig5"/>
       <repopackage name="libKF5NotifyConfig5-lang"/>
       <repopackage name="libKF5Parts5"/>
@@ -2184,16 +2173,13 @@
       <repopackage name="libKF5Sane5"/>
       <repopackage name="libKF5Screen7"/>
       <repopackage name="libKF5Solid5"/>
-      <repopackage name="libKF5Solid5-lang"/>
       <repopackage name="libKF5SonnetCore5"/>
-      <repopackage name="libKF5SonnetCore5-lang"/>
       <repopackage name="libKF5SonnetUi5"/>
       <repopackage name="libKF5Style5"/>
       <repopackage name="libKF5Su5"/>
       <repopackage name="libKF5Su5-lang"/>
       <repopackage name="libKF5Syndication5"/>
       <repopackage name="libKF5SyntaxHighlighting5"/>
-      <repopackage name="libKF5SyntaxHighlighting5-lang"/>
       <repopackage name="libKF5TextWidgets5"/>
       <repopackage name="libKF5TextWidgets5-lang"/>
       <repopackage name="libKF5ThreadWeaver5"/>
@@ -2203,9 +2189,7 @@
       <repopackage name="libKF5UnitConversion5-lang"/>
       <repopackage name="libKF5Wallet5"/>
       <repopackage name="libKF5WidgetsAddons5"/>
-      <repopackage name="libKF5WidgetsAddons5-lang"/>
       <repopackage name="libKF5WindowSystem5"/>
-      <repopackage name="libKF5WindowSystem5-lang"/>
       <repopackage name="libKF5XmlGui5"/>
       <repopackage name="libKF5XmlGui5-lang"/>
       <repopackage name="libkgantt-lang"/>
@@ -3191,7 +3175,6 @@
       <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
-      <repopackage name="lttng-modules-kmp-default" arch="x86_64"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3429,7 +3412,7 @@
       <repopackage name="nkf"/>
       <repopackage name="nmap"/>
       <repopackage name="nodejs-common"/>
-      <repopackage name="nodejs16"/>
+      <repopackage name="nodejs17"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-coloremoji-fonts"/>
@@ -3443,7 +3426,7 @@
       <repopackage name="noto-serif-tc-bold-fonts"/>
       <repopackage name="noto-serif-tc-fonts"/>
       <repopackage name="noto-serif-tc-regular-fonts"/>
-      <repopackage name="npm16"/>
+      <repopackage name="npm17"/>
       <repopackage name="nscd"/>
       <repopackage name="nss-mdns"/>
       <repopackage name="nss-mdns-32bit" arch="x86_64"/>
@@ -3466,9 +3449,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -5131,7 +5111,6 @@
       <repopackage name="vacation"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vendor-reset-kmp-default" arch="x86_64"/>
-      <repopackage name="vhba-kmp-default" arch="x86_64"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
