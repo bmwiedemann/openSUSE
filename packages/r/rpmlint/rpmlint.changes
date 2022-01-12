@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 07 12:51:43 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220106.43867d0:
+  * Use readelf --debug-dump=no-follow-links if available.
+  * Do not use ObjdumpParser if not needed.
+  * Add icingaweb2 group
+  * Filter unused-rpmlintrc-filter for late checks.
+
+-------------------------------------------------------------------
+Wed Jan 05 05:52:40 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220105.2ac5ee1:
+  * Use different Python package for ZStandard
+
+-------------------------------------------------------------------
 Mon Jan 03 09:42:35 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220103.bda86d8:

@@ -3499,4 +3499,19 @@ oddjob-gpupdate isn't blocked)</comment>
   * 64-bit powerpc targets do not have executable stack.</comment>
     <requestid>943549</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>848586b27a53cd92464c259f7546a9c9</srcmd5>
+    <version>2.2.0+git20220106.43867d0</version>
+    <time>1642029721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220106.43867d0:
+  * Use readelf --debug-dump=no-follow-links if available.
+  * Do not use ObjdumpParser if not needed.
+  * Add icingaweb2 group
+  * Filter unused-rpmlintrc-filter for late checks.
+
+- Update to version 2.2.0+git20220105.2ac5ee1:
+  * Use different Python package for ZStandard</comment>
+    <requestid>944735</requestid>
+  </revision>
 </revisionlist>
