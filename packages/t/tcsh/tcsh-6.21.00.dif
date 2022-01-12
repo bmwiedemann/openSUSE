@@ -39,7 +39,7 @@
  #endif /* _h_config */
 --- config_f.h
 +++ config_f.h	2021-04-27 07:41:53.192829973 +0000
-@@ -63,7 +63,12 @@
+@@ -74,7 +74,12 @@
  /*
   * LOGINFIRST   Source ~/.login before ~/.cshrc
   */
@@ -53,7 +53,7 @@
  
  /*
   * VIDEFAULT    Make the VI mode editor the default
-@@ -157,7 +162,7 @@
+@@ -168,7 +173,7 @@
   *		successful, set $REMOTEHOST to the name or address of the
   *		host
   */
@@ -172,7 +172,7 @@
  #endif /* SYSMALLOC */
 --- tc.func.c
 +++ tc.func.c	2021-04-27 07:41:53.196829900 +0000
-@@ -721,9 +721,13 @@ auto_lock(void)
+@@ -739,9 +739,13 @@ auto_lock(void)
  	    handle_pending_signals();
  	    errno = 0;
  	}
@@ -187,7 +187,7 @@
  
  #else
  
-@@ -1939,7 +1943,7 @@ getremotehost(int dest_fd)
+@@ -1957,7 +1961,7 @@ getremotehost(int dest_fd)
  	     * have not caught up yet.
  	     */
  	    addr.s_addr = inet_addr(name);

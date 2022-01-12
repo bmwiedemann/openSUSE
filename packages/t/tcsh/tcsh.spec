@@ -1,7 +1,7 @@
 #
 # spec file for package tcsh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tcsh
-Version:        6.23.00
+Version:        6.23.02
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
