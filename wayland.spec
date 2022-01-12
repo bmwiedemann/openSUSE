@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define _version 1.19.0
+%define _version 1.20.0
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %define eglversion 99~%_version
 %else
@@ -37,12 +37,13 @@ Source:         http://wayland.freedesktop.org/releases/%name-%version.tar.xz
 Source2:        http://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
-
+# PATCH-FIX-UPSTREAM wayland-shm-Close-file-descriptors-not-needed.patch bsc#1194190 alynx.zhou@suse.com -- Close file descriptors not needed to prevent Xwayland crash.
+Patch1:         wayland-shm-Close-file-descriptors-not-needed.patch
 BuildRequires:  c_compiler
 BuildRequires:  c++_compiler
-BuildRequires:  meson
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(expat)
@@ -115,7 +116,7 @@ Requires:       libwayland-cursor0 = %_version
 Requires:       libwayland-egl1 = %eglversion
 Requires:       libwayland-server0 = %_version
 %if 0%{?suse_version} >= 1500
-%if 0%{?suse_version} >= 1550
+%if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400)
 Provides:       libwayland-egl-devel = 18.1.5
 Obsoletes:      libwayland-egl-devel < 18.1.5 
 %else

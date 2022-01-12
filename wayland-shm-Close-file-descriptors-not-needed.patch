@@ -1,0 +1,74 @@
+From b20428663afa1a6351eb943b5f2992a744c18797 Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <ofourdan@redhat.com>
+Date: Mon, 10 Jan 2022 15:10:07 +0100
+Subject: [PATCH] shm: Close file descriptors not needed
+
+Commit 5a981ee8 implemented a fallback path for platforms which do not
+support mremap() such as FreeBSD.
+
+To do so, the file descriptor for the mmap() is not closed immediately
+but instead kept as long as the pool exists.
+
+That induces more file descriptors kept open for longer, which in turn
+may cause problems as wl_shm may be using a lot of file descriptors,
+especially with Xwayland which can create a lot of pixmaps on behalf of
+its X11 clients.
+
+For platforms where mremap() is available, keeping those file
+descriptors opened is a bit of a waste and may cause exhaustion of file
+descriptors sooner that before commit 5a981ee8.
+
+Only keep the mmap() file descriptor open on platforms which do not
+implement mremap()  and close it immediately as before on others.
+
+Signed-off-by: Olivier Fourdan <ofourdan@redhat.com>
+Closes: https://gitlab.freedesktop.org/xorg/xserver/-/issues/1283
+---
+ src/wayland-shm.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/wayland-shm.c b/src/wayland-shm.c
+index 63ac0d7d..17ab77f4 100644
+--- a/src/wayland-shm.c
++++ b/src/wayland-shm.c
+@@ -65,10 +65,12 @@ struct wl_shm_pool {
+ 	char *data;
+ 	ssize_t size;
+ 	ssize_t new_size;
++#ifndef MREMAP_MAYMOVE
+ 	/* The following three fields are needed for mremap() emulation. */
+ 	int mmap_fd;
+ 	int mmap_flags;
+ 	int mmap_prot;
++#endif
+ 	bool sigbus_is_impossible;
+ };
+ 
+@@ -153,7 +155,9 @@ shm_pool_unref(struct wl_shm_pool *pool, bool external)
+ 		return;
+ 
+ 	munmap(pool->data, pool->size);
++#ifndef MREMAP_MAYMOVE
+ 	close(pool->mmap_fd);
++#endif
+ 	free(pool);
+ }
+ 
+@@ -344,10 +348,14 @@ shm_create_pool(struct wl_client *client, struct wl_resource *resource,
+ 				       strerror(errno));
+ 		goto err_free;
+ 	}
++#ifndef MREMAP_MAYMOVE
+ 	/* We may need to keep the fd, prot and flags to emulate mremap(). */
+ 	pool->mmap_fd = fd;
+ 	pool->mmap_prot = prot;
+ 	pool->mmap_flags = flags;
++#else
++	close(fd);
++#endif
+ 	pool->resource =
+ 		wl_resource_create(client, &wl_shm_pool_interface, 1, id);
+ 	if (!pool->resource) {
+-- 
+GitLab
+
