@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 18:04:46 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Remove libsmbclient-devel BuildRequires in favor of
+  pkgconfig(smbclient)
+
+-------------------------------------------------------------------
 Thu Dec 23 14:52:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.2

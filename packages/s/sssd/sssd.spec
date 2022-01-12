@@ -40,7 +40,6 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  krb5-devel >= 1.12
 BuildRequires:  libcmocka-devel
-BuildRequires:  libsmbclient-devel
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
@@ -72,6 +71,7 @@ BuildRequires:  pkgconfig(ndr_nbt)
 BuildRequires:  pkgconfig(p11-kit-1) >= 0.23.3
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
