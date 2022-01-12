@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>656223</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>509e4d2747095b5dc511fa4827b1ee49</srcmd5>
+    <version>20170319</version>
+    <time>1642016459</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove kismet from suggested packages: this has only an impact on
+  the DVD content, where we need some space.</comment>
+  </revision>
 </revisionlist>

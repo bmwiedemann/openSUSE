@@ -61,7 +61,6 @@ Recommends:     mtr
 Suggests:       mrtg
 Suggests:       openvpn
 Suggests:       opie
-Suggests:       kismet
 Suggests:       iptraf-ng
 Suggests:       privoxy
 Suggests:       pptpd

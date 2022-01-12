@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 12 19:40:27 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove kismet from suggested packages: this has only an impact on
+  the DVD content, where we need some space.
+
+-------------------------------------------------------------------
 Fri Dec  7 13:15:48 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Adjust icons to state of yast2-theme package
