@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 12 05:46:52 UTC 2022 - nick wang <nwang@suse.com>
+
+- bsc#1194567, update to 1.12.0
+ * Added node evacuate command
+ * Added external files support
+ * Fix incorrect backup_delete parameter
+ * Added Resource.clone()
+ * Added snapshot-delete optional node_names list
+ * Added rscgrp adjust method
+ * Added node restore delete resources/snapshots option
+ * fix exception with empty nodes in snapshot-definition
+ * (Multi)Linstor() accepts now addition user-agent info
+ * update linstor common-consts(bcache)
+ * Relicensed as LGPLv3
+ * Added option to re-use client in HighLvl-API
+ * Added methods for shard-sp/exos support
+ * API 1.12.0 compat
+
+-------------------------------------------------------------------
+Thu Dec 23 09:02:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-protobuf instead of wronly used python_module: the
+  latter would add dependencies to all python versions.
+
+-------------------------------------------------------------------
 Tue Jan 26 06:07:49 UTC 2021 - nick wang <nwang@suse.com>
 
 - bsc#1181397, update to 1.6.0

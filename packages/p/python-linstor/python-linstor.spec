@@ -1,7 +1,7 @@
 #
 # spec file for package python-linstor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-linstor
-Version:        1.6.0
+Version:        1.12.0
 Release:        0
 Summary:        Python API for Linstor
 License:        GPL-3.0-only
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/LINBIT/linstor-api-py
-Source:         http://www.linbit.com/downloads/linstor/%{name}-%{version}.tar.gz
+Source:         https://pkg.linbit.com//downloads/linstor/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  protobuf-devel
-Requires:       %{python_module protobuf}
+Requires:       python-protobuf
 %python_subpackages
 
 %description
