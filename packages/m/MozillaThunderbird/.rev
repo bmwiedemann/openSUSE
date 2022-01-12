@@ -3977,4 +3977,41 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>943034</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>8fe1a174975d45f36083dd2ca6e8267a</srcmd5>
+    <version>91.5.0</version>
+    <time>1642029734</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.5.0
+  https://www.thunderbird.net/en-US/thunderbird/91.5.0/releasenotes
+  MFSA 2022-03 (bsc#1194547)
+  * CVE-2022-22746 (bmo#1735071)
+    Calling into reportValidity could have lead to fullscreen
+    window spoof
+  * CVE-2022-22743 (bmo#1739220)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-22742 (bmo#1739923)
+    Out-of-bounds memory access when inserting text in edit mode
+  * CVE-2022-22741 (bmo#1740389)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-22740 (bmo#1742334)
+    Use-after-free of ChannelEventQueue::mOwner
+  * CVE-2022-22738 (bmo#1742382)
+    Heap-buffer-overflow in blendGaussianBlur
+  * CVE-2022-22737 (bmo#1745874)
+    Race condition when playing audio files
+  * CVE-2021-4140 (bmo#1746720)
+    Iframe sandbox bypass with XSLT
+  * CVE-2022-22748 (bmo#1705211)
+    Spoofed origin on external protocol launch dialog
+  * CVE-2022-22745 (bmo#1735856)
+    Leaking cross-origin URLs through securitypolicyviolation event
+  * CVE-2022-22744 (bmo#1737252)
+    The 'Copy as curl' feature in DevTools did not fully escape
+    website-controlled data, potentially leading to command injection
+  * CVE-2022-22747 (bmo#1735028)
+    Crash when handling empty pkcs7 sequence
+  * CVE-2022-22739 (bmo#1744158)</comment>
+    <requestid>945701</requestid>
+  </revision>
 </revisionlist>
