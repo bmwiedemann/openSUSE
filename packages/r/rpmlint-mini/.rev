@@ -913,4 +913,14 @@ undo bootstrap workaround</comment>
   by _pydecimal.py python module.</comment>
     <requestid>917098</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>c70920f0778592f58f5d241e6af6a99d</srcmd5>
+    <version>MACRO</version>
+    <time>1642029723</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix spec file: install zstdandard package properly.
+
+- Add rpmlintrc filter for pycparser Python package.</comment>
+    <requestid>945540</requestid>
+  </revision>
 </revisionlist>

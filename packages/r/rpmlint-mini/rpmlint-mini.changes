@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 10 19:47:37 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Fix spec file: install zstdandard package properly.
+
+-------------------------------------------------------------------
+Mon Jan 10 15:31:47 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add rpmlintrc filter for pycparser Python package.
+
+-------------------------------------------------------------------
 Mon Sep  6 12:12:52 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Install %{_libdir}/libmpdec*.so.* to venv as it can be used

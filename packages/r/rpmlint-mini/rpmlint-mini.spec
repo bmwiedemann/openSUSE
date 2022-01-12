@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-mini
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,7 @@ for file in $(cat %{SOURCE1}); do
   install -D -m 644 $exp %{buildroot}/opt/testing/lib/python%{py3_ver}/$exp
 done
 popd
-cp -a %{python_sitearch}/{rpm,zstd}* %{buildroot}/opt/testing/lib/python%{py3_ver}/site-packages
+cp -a %{python_sitearch}/{rpm,zstd,zstandard}* %{buildroot}/opt/testing/lib/python%{py3_ver}/site-packages
 cp -a %{python_sitelib} %{buildroot}/opt/testing/lib/python%{py3_ver}
 cp -a %{_libdir}/libpython%{py3_ver}*.so.* %{buildroot}/opt/testing/lib
 cp -a %{_libdir}/libexpat*.so.* %{buildroot}/opt/testing/lib
