@@ -92,12 +92,11 @@ make %{?_smp_mflags}
 rm "%{buildroot}%{_libdir}/libsigsegv.la"
 
 %check
-%if 0%{?qemu_user_space_build:1}
-# qemu does not support stack overflows well ;)
-make %{?_smp_mflags} check TESTS='sigsegv1 sigsegv2 sigsegv3'
-%else
-make %{?_smp_mflags} check
+%if 0%{?qemu_user_space_build}
+# qemu does not support stack overflows well
+export XFAIL_TESTS="test-catch-stackoverflow1 test-catch-stackoverflow2"
 %endif
+make %{?_smp_mflags} check
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

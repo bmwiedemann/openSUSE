@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 21:18:10 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- test-catch-stackoverflow1 and test-catch-stackoverflow2 are expected to
+  fail under qemu
+
+-------------------------------------------------------------------
 Fri Jan  7 20:53:26 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.14:
