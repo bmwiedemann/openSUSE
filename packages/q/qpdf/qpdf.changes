@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 21:58:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add fix-signedness-warning.patch (build for aarch64) 
+
+-------------------------------------------------------------------
 Tue Jan  4 16:24:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.5.0:

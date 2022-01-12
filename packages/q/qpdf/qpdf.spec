@@ -28,6 +28,7 @@ Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{ve
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
 Patch1:         build-without-pdf.patch
+Patch2:         https://github.com/qpdf/qpdf/pull/605.patch#/fix-signedness-warning.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
 BuildRequires:  libjpeg8-devel
