@@ -1,7 +1,7 @@
 #
 # spec file for package linstor-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define python_linstor 1.6
+%define python_linstor 1.12
 Name:           linstor-client
-Version:        1.6.1
+Version:        1.12.0
 Release:        0
 Summary:        DRBD distributed resource management utility
 License:        GPL-3.0-only
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/LINBIT/linstor-client
-Source:         http://www.linbit.com/downloads/linstor/%{name}-%{version}.tar.gz
+Source:         https://pkg.linbit.com//downloads/linstor/%{name}-%{version}.tar.gz
 Patch1:         change-location-of-bash-completion.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module linstor >= %{python_linstor}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       %{python_module linstor >= %{python_linstor}}
+Requires:       python-linstor >= %{python_linstor}}
 %python_subpackages
 
 %description

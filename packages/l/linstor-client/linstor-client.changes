@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 12 05:54:54 UTC 2022 - nick wang <nwang@suse.com>
+
+- bsc#1194567, update to 1.12.0
+ * Added node evacuate command
+ * Added external files commands
+ * Fixed parsing exos create ctrl_b_ip
+ * Fixed backup machine readable outputs shouldn't be wrapped in list
+ * Resource group added adjust command
+ * Added snapshot delete --nodes parameter
+ * Node list show optional eviction time
+ * Node restore added delete resources/snapshots options
+ * Resource group added adjust command
+ * add client user-agent info
+ * node info: show also info for combined nodes
+ * Resource involved: remove debug output and an error while filtering
+ * Fixed deprecated setup.cfg variable
+ * New resource involved command: Show involved resources from a node
+ * Added exos commands
+ * interactive: fixed help with a command
+ * Fixed incorrect git-hash shown in version output
+
+-------------------------------------------------------------------
+Thu Dec 23 09:01:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-linstor instead of python-module linstor: the
+  python singlespec macors will rewrite this to the coresponding
+  version, as opposed to python_module, which requires all flavors.
+
+-------------------------------------------------------------------
 Tue Jan 26 06:23:29 UTC 2021 - nick wang <nwang@suse.com>
 
 - bsc#1181397, update to 1.6.1

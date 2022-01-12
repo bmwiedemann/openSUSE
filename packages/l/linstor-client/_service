@@ -5,10 +5,10 @@
     <param name="filename">linstor-client</param>
 <!--
     build service using release linstor-client atm.
-    <param name="version">1.6.1</param>
+    <param name="version">1.12.0</param>
     Need to use the corresponding linstor-api-py
 -->
-    <param name="versionformat">1.6.1+git.%h</param>
+    <param name="versionformat">1.12.0+git.%h</param>
     <param name="revision">master</param>
   </service>
 
