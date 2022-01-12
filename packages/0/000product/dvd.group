@@ -834,7 +834,6 @@
     <package name="guile-modules-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gupnp-av" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gupnp-dlna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gutenprint" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gvfs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gvfs-backend-afc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gvfs-backend-samba" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
