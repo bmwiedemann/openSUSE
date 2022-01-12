@@ -5110,20 +5110,6 @@
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="iptraf-ng" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kimageformats-eps" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-bt-geiger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-freaklabs-zigbee" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-linux-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-linux-wifi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-nrf-51822" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-nrf-52840" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-nrf-mousejack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-rz-killerbee" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-sdr-rtl433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-sdr-rtladsb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-sdr-rtlamr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-capture-ti-cc2540" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="kismet-logtools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5137,7 +5123,6 @@
     <package name="libICE6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libSM-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSM6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libSoapySDR0_8" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSvtAv1Enc0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libX11-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libX11-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5281,7 +5266,6 @@
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libsamba-credentials1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsamba-errors0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsamba-hostconfig0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5326,7 +5310,6 @@
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libwbclient0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libwebsockets19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu_net-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu_xml-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5413,10 +5396,7 @@
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl-sdr-udev" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl_433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

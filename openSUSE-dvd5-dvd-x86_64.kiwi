@@ -1213,20 +1213,6 @@
       <repopackage name="kirigami2-lang"/>
       <repopackage name="kiriki"/>
       <repopackage name="kiriki-lang"/>
-      <repopackage name="kismet" arch="x86_64"/>
-      <repopackage name="kismet-capture-bt-geiger" arch="x86_64"/>
-      <repopackage name="kismet-capture-freaklabs-zigbee" arch="x86_64"/>
-      <repopackage name="kismet-capture-linux-bluetooth" arch="x86_64"/>
-      <repopackage name="kismet-capture-linux-wifi" arch="x86_64"/>
-      <repopackage name="kismet-capture-nrf-51822" arch="x86_64"/>
-      <repopackage name="kismet-capture-nrf-52840" arch="x86_64"/>
-      <repopackage name="kismet-capture-nrf-mousejack" arch="x86_64"/>
-      <repopackage name="kismet-capture-rz-killerbee" arch="x86_64"/>
-      <repopackage name="kismet-capture-sdr-rtl433" arch="x86_64"/>
-      <repopackage name="kismet-capture-sdr-rtladsb" arch="x86_64"/>
-      <repopackage name="kismet-capture-sdr-rtlamr" arch="x86_64"/>
-      <repopackage name="kismet-capture-ti-cc2540" arch="x86_64"/>
-      <repopackage name="kismet-logtools" arch="x86_64"/>
       <repopackage name="kitemmodels-imports"/>
       <repopackage name="kiten"/>
       <repopackage name="kiten-lang"/>
@@ -2682,7 +2668,6 @@
       <repopackage name="librscg1_0"/>
       <repopackage name="librsvg-2-2"/>
       <repopackage name="librsync2"/>
-      <repopackage name="librtlsdr0" arch="x86_64"/>
       <repopackage name="librubberband2"/>
       <repopackage name="libruby3_0-3_0"/>
       <repopackage name="librygel-core-2_6-2"/>
@@ -2754,7 +2739,6 @@
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
       <repopackage name="libsnmp40"/>
-      <repopackage name="libSoapySDR0_8" arch="x86_64"/>
       <repopackage name="libsodium23"/>
       <repopackage name="libsoftokn3"/>
       <repopackage name="libsoftokn3-hmac"/>
@@ -2970,7 +2954,6 @@
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc_audio_processing1"/>
-      <repopackage name="libwebsockets19" arch="x86_64"/>
       <repopackage name="libwinpr2-2"/>
       <repopackage name="libwireplumber-0_4-0"/>
       <repopackage name="libwmf-0_2-7"/>
@@ -4324,10 +4307,7 @@
       <repopackage name="rsyslog"/>
       <repopackage name="rt2860"/>
       <repopackage name="rtkit"/>
-      <repopackage name="rtl-sdr" arch="x86_64"/>
-      <repopackage name="rtl-sdr-udev" arch="x86_64"/>
       <repopackage name="rtl8812au-kmp-default" arch="x86_64"/>
-      <repopackage name="rtl_433" arch="x86_64"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>
