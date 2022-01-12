@@ -1,0 +1,83 @@
+From 9986afc17621fba80df9493a6bf9343334fce77d Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Tue, 11 Jan 2022 14:32:54 +0100
+Subject: [PATCH] Drop dataclasses module usage
+
+Dataclasses module is not present in Python 3.6, an interpreter still
+used in some distributions.
+
+Even there is a 3rd party compatibility module, the current usage seems
+not properly justified.  For example, in one of the dataclasses there is
+an user-provided `__init__` constructor.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ keylime/failure.py | 7 ++++---
+ keylime/ima_ast.py | 5 +++--
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+Index: keylime-v6.2.1/keylime/failure.py
+===================================================================
+--- keylime-v6.2.1.orig/keylime/failure.py
++++ keylime-v6.2.1/keylime/failure.py
+@@ -5,7 +5,6 @@ Copyright 2021 Thore Sommer
+ Tagging of failure events that might cause revocation in Keylime.
+ '''
+ import ast
+-import dataclasses
+ import enum
+ import functools
+ import json
+@@ -19,7 +18,6 @@ logger = keylime_logging.init_logging("f
+ 
+ 
+ @functools.total_ordering
+-@dataclasses.dataclass(frozen=True)
+ class SeverityLabel:
+     """
+     Severity label that can be attached to an event.
+@@ -30,6 +28,10 @@ class SeverityLabel:
+     name: str
+     severity: int
+ 
++    def __init__(self, name, severity):
++        self.name = name
++        self.severity = severity
++
+     def __lt__(self, other):
+         return self.severity < other.severity
+ 
+@@ -49,7 +51,6 @@ class Component(enum.Enum):
+     DEFAULT = "default"
+ 
+ 
+-@dataclasses.dataclass
+ class Event:
+     """
+     Event that might be the reason for revocation.
+Index: keylime-v6.2.1/keylime/ima_ast.py
+===================================================================
+--- keylime-v6.2.1.orig/keylime/ima_ast.py
++++ keylime-v6.2.1/keylime/ima_ast.py
+@@ -13,7 +13,6 @@ import codecs
+ import hashlib
+ import struct
+ import abc
+-import dataclasses
+ 
+ from typing import Dict, Callable, Any, Optional
+ from keylime import config
+@@ -33,10 +32,12 @@ NULL_BYTE = ord('\0')
+ COLON_BYTE = ord(':')
+ 
+ 
+-@dataclasses.dataclass
+ class Validator:
+     functions: Dict[Any, Callable]
+ 
++    def __init__(self, functions):
++        self.functions = functions
++
+     def get_validator(self, class_type) -> Callable:
+         validator = self.functions.get(class_type, None)
+         if validator is None:

@@ -38,6 +38,8 @@ Patch1:         version.diff
 Patch2:         keylime.conf.diff
 # PATCH-FIX-OPENSUSE config-libefivars.diff
 Patch3:         config-libefivars.diff
+# PATCH-FIX-UPSTREAM 0001-Drop-dataclasses-module-usage.patch (gh#keylime/keylime!827)
+Patch4:         0001-Drop-dataclasses-module-usage.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -124,7 +126,7 @@ Subpackage of %{name} for verifier service.
 
 %prep
 %autosetup -p1 -n %{name}-v%{version}
-%if %{with cfssl}
+%if !%{with cfssl}
 sed -i "s/ca_implementation = cfssl/ca_implementation = openssl/g" keylime.conf
 %endif
 

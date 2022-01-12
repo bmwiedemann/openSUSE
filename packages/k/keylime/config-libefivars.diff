@@ -1,8 +1,8 @@
-Index: keylime-6.2.0/keylime/config.py
+Index: keylime-v6.2.1/keylime/config.py
 ===================================================================
---- keylime-6.2.0.orig/keylime/config.py
-+++ keylime-6.2.0/keylime/config.py
-@@ -311,7 +311,7 @@ MEASUREDBOOT_ML = '/sys/kernel/security/
+--- keylime-v6.2.1.orig/keylime/config.py
++++ keylime-v6.2.1/keylime/config.py
+@@ -310,7 +310,7 @@ MEASUREDBOOT_ML = '/sys/kernel/security/
  MEASUREDBOOT_IMPORTS = get_config().get('cloud_verifier', 'measured_boot_imports', fallback='').split(',')
  MEASUREDBOOT_POLICYNAME = get_config().get('cloud_verifier', 'measured_boot_policy_name', fallback='accept-all')
  
