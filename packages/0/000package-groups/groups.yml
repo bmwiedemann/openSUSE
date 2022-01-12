@@ -287,6 +287,9 @@ dvd:
   ## more space needed - dimstar - 20180419
   - amarok-lang: [locked]
 
+  ## and more space needed - dimstar - 20220112
+  - gutenprint: [locked]
+
   - libqt5-qtdeclarative-devel: [locked]
 
   # lock to align with package-lists solution

@@ -1269,4 +1269,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1640764775</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="177" vrev="175">
+    <srcmd5>6491fe61455d7907c529d8ac8753e7fe</srcmd5>
+    <version>unknown</version>
+    <time>1642009683</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gutenprint off the DVD; it's aging</comment>
+  </revision>
 </revisionlist>
