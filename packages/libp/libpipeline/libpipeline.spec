@@ -1,7 +1,7 @@
 #
 # spec file for package libpipeline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,21 @@
 
 %define lname   libpipeline1
 Name:           libpipeline
-Version:        1.5.3
+Version:        1.5.5
 Release:        0
 Summary:        A pipeline manipulation library
 License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://www.nongnu.org/libpipeline/
+#
+# Back to download from savannah.nongnu.org for a fully bootstrapped
+# tar ball without the need of autoconfig and gl
+# Compare       https://gitlab.com/cjwatson/libpipeline/-/releases
+#
 Source0:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 libpipeline is a C library for setting up and running pipelines of
@@ -72,14 +77,13 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
   --enable-socketpair-pipe \
   --with-pic=yes \
   --with-gnu-ld
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 rm -vf %{buildroot}%{_libdir}/libpipeline.la
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
@@ -89,10 +93,10 @@ rm -vf %{buildroot}%{_libdir}/libpipeline.la
 %files devel
 %defattr(-,root,root,0755)
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_libdir}/libpipeline.so
 %{_libdir}/pkgconfig/libpipeline.pc
 %{_includedir}/pipeline.h
-%{_mandir}/man3/*.3*
+%{_mandir}/man3/*.3%{?ext_man}
 
 %changelog

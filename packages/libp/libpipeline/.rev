@@ -112,4 +112,23 @@
   * Various portability improvements, via Gnulib. (forwarded request 834162 from dirkmueller)</comment>
     <requestid>835205</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>65c0268ab0987a67bbbf816433ed0cb8</srcmd5>
+    <version>1.5.5</version>
+    <time>1642029723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.5:
+  * Move release process to GitLab CI.
+- Back to download from savannah.nongnu.org for a fully bootstrapped
+  tar ball without the need of autoconfig and gl
+  Compare https://gitlab.com/cjwatson/libpipeline/-/releases
+  and     https://gitlab.com/cjwatson/libpipeline/-/packages/4425007
+
+- Use autoconf 
+
+- update to 1.5.4:
+  * Building libpipeline now requires Autoconf &gt;= 2.64.
+  * Developmed moved to Gitlab</comment>
+    <requestid>945521</requestid>
+  </revision>
 </revisionlist>
