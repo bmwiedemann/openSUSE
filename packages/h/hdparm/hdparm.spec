@@ -1,7 +1,7 @@
 #
 # spec file for package hdparm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hdparm
-Version:        9.62
+Version:        9.63
 Release:        0
 Summary:        A Program to get and set hard disk parameters
 License:        SUSE-Permissive

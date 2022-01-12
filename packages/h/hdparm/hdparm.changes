@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 18:06:50 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 9.63:
+  * new --sanitize-overwrite-passes flag, courtesy Michal Grzedzicki.
+  * "Plurals patch" from Martin Guy.
+
+-------------------------------------------------------------------
 Mon May 10 20:30:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.62:
