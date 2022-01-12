@@ -1,6 +1,6 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  066aba2f6d1fbc0fe31d1864d539714041404fe6
+# Parent  ebd7e379c85889b6f8dba0542479110ab1f6b059
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
@@ -152,15 +152,15 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
 diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz.build
 --- a/extensions/spellcheck/src/moz.build
 +++ b/extensions/spellcheck/src/moz.build
-@@ -26,8 +26,10 @@ LOCAL_INCLUDES += [
+@@ -23,8 +23,10 @@ LOCAL_INCLUDES += [
+     "../hunspell/glue",
+     "../hunspell/src",
+     "/dom/base",
  ]
  EXPORTS.mozilla += [
      "mozInlineSpellChecker.h",
      "mozSpellChecker.h",
  ]
- 
- if CONFIG["CC_TYPE"] in ("clang", "gcc"):
-     CXXFLAGS += ["-Wno-error=shadow"]
 +
 +CXXFLAGS += ['-fno-devirtualize']
 diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp

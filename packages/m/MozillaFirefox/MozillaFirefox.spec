@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #               2006-2021 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          95
-%define mainver        %major.0.2
-%define orig_version   95.0.2
+%define major          96
+%define mainver        %major.0
+%define orig_version   96.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -116,8 +116,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.32
-BuildRequires:  mozilla-nss-devel >= 3.71
+BuildRequires:  mozilla-nspr-devel >= 4.33
+BuildRequires:  mozilla-nss-devel >= 3.73.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -203,28 +203,25 @@ Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
-Patch6:         mozilla-sandbox-fips.patch
-Patch7:         mozilla-fix-aarch64-libopus.patch
-Patch9:         mozilla-s390-context.patch
-Patch10:        mozilla-pgo.patch
-Patch11:        mozilla-reduce-rust-debuginfo.patch
-Patch13:        mozilla-bmo1005535.patch
-Patch14:        mozilla-bmo1568145.patch
-Patch15:        mozilla-bmo1504834-part1.patch
-Patch16:        mozilla-bmo1504834-part2.patch
-Patch17:        mozilla-bmo1504834-part3.patch
-Patch19:        mozilla-bmo1512162.patch
-Patch20:        mozilla-fix-top-level-asm.patch
-Patch21:        mozilla-bmo1504834-part4.patch
-Patch22:        mozilla-bmo849632.patch
-Patch25:        mozilla-bmo998749.patch
-Patch26:        mozilla-bmo1626236.patch
-Patch27:        mozilla-s390x-skia-gradient.patch
-Patch28:        mozilla-libavcodec58_91.patch
-Patch29:        mozilla-silence-no-return-type.patch
-Patch31:        mozilla-bmo531915.patch
-Patch32:        mozilla-bmo1745560.patch
-Patch33:        mozilla-bmo1744896.patch
+Patch5:         mozilla-fix-aarch64-libopus.patch
+Patch6:         mozilla-s390-context.patch
+Patch7:         mozilla-pgo.patch
+Patch8:         mozilla-reduce-rust-debuginfo.patch
+Patch9:         mozilla-bmo1005535.patch
+Patch10:        mozilla-bmo1568145.patch
+Patch11:        mozilla-bmo1504834-part1.patch
+Patch12:        mozilla-bmo1504834-part2.patch
+Patch13:        mozilla-bmo1504834-part3.patch
+Patch14:        mozilla-bmo1512162.patch
+Patch15:        mozilla-fix-top-level-asm.patch
+Patch16:        mozilla-bmo1504834-part4.patch
+Patch17:        mozilla-bmo849632.patch
+Patch18:        mozilla-bmo998749.patch
+Patch19:        mozilla-bmo1626236.patch
+Patch20:        mozilla-s390x-skia-gradient.patch
+Patch21:        mozilla-libavcodec58_91.patch
+Patch22:        mozilla-silence-no-return-type.patch
+Patch23:        mozilla-bmo531915.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -333,28 +330,25 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
+%patch23 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1

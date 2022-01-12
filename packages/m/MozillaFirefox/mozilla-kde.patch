@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  d065e5213c971b1f80d4a13458c412a3a25f7c1c
+# Parent  9db1669be16001a48b62d147070fb75f60bac251
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -81,7 +81,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -118,16 +118,20 @@ EXPORTS.mozilla += [
+@@ -119,16 +119,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -808,12 +808,12 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
-@@ -80,17 +80,19 @@ else:
+@@ -78,17 +78,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "ui
+ else:
+     # These files can't be built in unified mode because they redefine LOG.
      SOURCES += [
          osdir + "/nsOSHelperAppService.cpp",
      ]
-     if CONFIG["CC_TYPE"] in ("clang", "gcc"):
-         CXXFLAGS += ["-Wno-error=shadow"]
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
      UNIFIED_SOURCES += [
@@ -828,7 +828,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
      UNIFIED_SOURCES += [
-@@ -128,16 +130,17 @@ include("/ipc/chromium/chromium-config.m
+@@ -126,16 +128,17 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -1260,7 +1260,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -136,16 +136,17 @@ FINAL_LIBRARY = "xul"
+@@ -135,16 +135,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
