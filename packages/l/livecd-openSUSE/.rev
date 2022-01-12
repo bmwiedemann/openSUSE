@@ -1360,4 +1360,12 @@
     <comment>- list-xfce: Drop gimp and pidgin from the XFCE Live image: no
   space left.</comment>
   </revision>
+  <revision rev="169" vrev="169">
+    <srcmd5>2cc0aa98c28840552bb6ddeeb0b7cb8a</srcmd5>
+    <version>unknown</version>
+    <time>1641980550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945777</requestid>
+  </revision>
 </revisionlist>

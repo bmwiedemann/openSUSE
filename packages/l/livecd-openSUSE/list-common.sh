@@ -133,6 +133,7 @@ buildignore expect
 buildignore m4
 buildignore mutt
 buildignore net-snmp
+buildignore procmail
 buildignore recode
 buildignore spax
 
@@ -200,6 +201,9 @@ buildignore open-vm-tools
 
 # Pulls in tcl
 buildignore usb_modeswitch
+
+# Of course it's too big
+buildignore gstreamer-plugins-rs
 
 # Make vim smaller
 buildignore vim-data

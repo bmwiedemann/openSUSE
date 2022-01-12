@@ -257,6 +257,8 @@
     <ignore name="mutt"/>
     <package name="aaa_base" replaces="net-snmp"/>
     <ignore name="net-snmp"/>
+    <package name="aaa_base" replaces="procmail"/>
+    <ignore name="procmail"/>
     <package name="aaa_base" replaces="recode"/>
     <ignore name="recode"/>
     <package name="aaa_base" replaces="spax"/>
@@ -338,6 +340,8 @@
     <ignore name="open-vm-tools"/>
     <package name="aaa_base" replaces="usb_modeswitch"/>
     <ignore name="usb_modeswitch"/>
+    <package name="aaa_base" replaces="gstreamer-plugins-rs"/>
+    <ignore name="gstreamer-plugins-rs"/>
     <package name="aaa_base" replaces="vim-data"/>
     <ignore name="vim-data"/>
     <package name="patterns-yast-yast2_basis"/>
