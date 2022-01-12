@@ -1,7 +1,7 @@
 #
 # spec file for package rrdtool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,12 +61,13 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pango-devel >= 1.14
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       dejavu
 %if 0%{?suse_version} >= 1500
 Patch13:        python3.patch
-Patch14:	harden_rrdcached.service.patch
+Patch14:        harden_rrdcached.service.patch
 %endif
 %if %{with python}
 BuildRequires:  %{python}-devel

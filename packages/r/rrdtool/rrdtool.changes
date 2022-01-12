@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:16:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros
+
+-------------------------------------------------------------------
 Tue Nov 16 08:36:04 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
