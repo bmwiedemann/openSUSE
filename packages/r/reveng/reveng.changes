@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:54:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  * Added algorithms CRC-32/MEF and CRC-64/MS from the CRC
+    catalogue.
+
+-------------------------------------------------------------------
 Sat Jan  1 21:48:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0
