@@ -1368,4 +1368,12 @@
     <comment></comment>
     <requestid>945777</requestid>
   </revision>
+  <revision rev="170" vrev="170">
+    <srcmd5>b83437d0b7501f059a38098a2e591e94</srcmd5>
+    <version>unknown</version>
+    <time>1641990411</time>
+    <user>dimstar_suse</user>
+    <comment>- list-xfce: Ignore gdb (forwarded request 945822 from favogt)</comment>
+    <requestid>945823</requestid>
+  </revision>
 </revisionlist>

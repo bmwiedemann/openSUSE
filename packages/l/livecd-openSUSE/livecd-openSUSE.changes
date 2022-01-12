@@ -2,6 +2,7 @@
 Wed Jan 12 09:14:26 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Ignore gstreamer-plugins-rs and procmail
+- list-xfce: Ignore gdb
 
 -------------------------------------------------------------------
 Wed Dec 29 10:41:40 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>

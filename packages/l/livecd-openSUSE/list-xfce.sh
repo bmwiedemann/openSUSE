@@ -29,6 +29,9 @@ buildignore engrampa-lang
 # Remove Libreoffice as it's too big
 buildignore libreoffice
 
+# Save a bit of space
+buildignore gdb
+
 buildignore gimp
 buildignore pidgin
 
