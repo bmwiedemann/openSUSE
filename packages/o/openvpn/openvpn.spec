@@ -57,20 +57,17 @@ Requires:       sysvinit-tools
 %systemd_ordering
 
 %description
-OpenVPN is a full-featured SSL VPN solution which can accommodate a wide
+OpenVPN is an SSL VPN solution which can accommodate a wide
 range of configurations, including remote access, site-to-site VPNs,
-WiFi security, and enterprise-scale remote access solutions with load
+WiFi security, and remote access solutions with load
 balancing, failover, and fine-grained access-controls.
 
 OpenVPN implements OSI layer 2 or 3 secure network extension using the
-industry standard SSL/TLS protocol, supports flexible client
+SSL/TLS protocol, supports flexible client
 authentication methods based on certificates, smart cards, and/or
 2-factor authentication, and allows user or group-specific access
 control policies using firewall rules applied to the VPN virtual
 interface.
-
-OpenVPN runs on: Linux, Windows 2000/XP and higher, OpenBSD, FreeBSD,
-NetBSD, Mac OS X, and Solaris.
 
 OpenVPN is not a web application proxy and does not operate through a
 web browser.
@@ -132,7 +129,7 @@ sed -e "s|@PLUGIN_LIBDIR@|%{_libdir}/openvpn/plugins|g" \
 sed -e "s|%{_localstatedir}/run|%{_rundir}|g" < %{SOURCE8} > %{name}.service
 
 # %%doc items shouldn't be executable.
-find contrib sample -type f -exec chmod a-x \{\} \;
+find contrib sample -type f -exec chmod a-x \{\} +
 
 %build
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -W -Wall -fno-strict-aliasing"
@@ -154,7 +151,7 @@ export IPROUTE="%{_sbindir}/ip"
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -print -exec rm -f {} +
 mkdir -p %{buildroot}/%{_sysconfdir}/openvpn
 mkdir -p %{buildroot}/%{_rundir}/openvpn
 mkdir -p %{buildroot}/%{_datadir}/openvpn
@@ -174,7 +171,7 @@ install -m 755 %{SOURCE5} sample/sample-scripts/client-netconfig.down
 
 # we install docs via spec into _defaultdocdir/name/management-notes.txt
 rm -rf %{buildroot}%{_datadir}/doc/{OpenVPN,%{name}}
-find sample -name .gitignore | xargs rm -f
+find sample -name .gitignore -exec rm -f {} +
 
 %pre
 %service_add_pre %{name}.target
@@ -187,14 +184,14 @@ if test $1 -ge 1 -a \
 	-x /bin/systemctl -a \
 	-f %{_sysconfdir}/sysconfig/openvpn -a \
 	-f %{_fillupdir}/sysconfig.openvpn && \
-	/bin/systemctl --quiet is-enabled openvpn.service &>/dev/null ;
+	/bin/systemctl --quiet is-enabled openvpn.service >/dev/null 2>/dev/null;
 then
 	. %{_sysconfdir}/sysconfig/openvpn
 	try_service_cgroup_join()
 	{
 		local p="%{_localstatedir}/run/openvpn/${1}.pid"
 		local t="/sys/fs/cgroup/systemd/system/openvpn@.service/${1}"
-		/sbin/checkproc -p "$p" "%{_sbindir}/openvpn" &>/dev/null || return 0
+		/sbin/checkproc -p "$p" "%{_sbindir}/openvpn" >/dev/null 2>/dev/null || return 0
 		test -d "$t" || mkdir -p "$t" 2>/dev/null || return 1
 		cat "$p" > "$t/tasks" 2>/dev/null || return 1
 	}

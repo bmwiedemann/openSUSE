@@ -28,6 +28,13 @@ Wed Dec  8 14:40:22 UTC 2021 - Reinhard Max <max@suse.com>
   * openvpn-CVE-2018-9336.patch
 
 -------------------------------------------------------------------
+Sat Dec  4 15:52:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bashisms and use POSIX sh syntax.
+- Use more efficient find commands.
+- Trim marketing filler words from description.
+
+-------------------------------------------------------------------
 Sat Oct 16 10:05:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.4:
