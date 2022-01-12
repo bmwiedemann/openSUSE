@@ -8079,23 +8079,23 @@ unsorted:
   - kirigami-gallery-lang 
   - kirigami-lang 
   - kirigami2-devel 
-  - kismet: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - kismet-capture-bt-geiger: [i586] 
-  - kismet-capture-freaklabs-zigbee: [i586] 
-  - kismet-capture-linux-bluetooth: [i586] 
-  - kismet-capture-linux-wifi: [i586] 
-  - kismet-capture-nrf-51822: [i586] 
-  - kismet-capture-nrf-52840: [i586] 
-  - kismet-capture-nrf-mousejack: [i586] 
+  - kismet 
+  - kismet-capture-bt-geiger 
+  - kismet-capture-freaklabs-zigbee 
+  - kismet-capture-linux-bluetooth 
+  - kismet-capture-linux-wifi 
+  - kismet-capture-nrf-51822 
+  - kismet-capture-nrf-52840 
+  - kismet-capture-nrf-mousejack 
   - kismet-capture-nrf-nxp-kw41z 
-  - kismet-capture-rz-killerbee: [i586] 
-  - kismet-capture-sdr-rtl433: [i586] 
-  - kismet-capture-sdr-rtladsb: [i586] 
-  - kismet-capture-sdr-rtlamr: [i586] 
+  - kismet-capture-rz-killerbee 
+  - kismet-capture-sdr-rtl433 
+  - kismet-capture-sdr-rtladsb 
+  - kismet-capture-sdr-rtlamr 
   - kismet-capture-ti-cc-2531 
-  - kismet-capture-ti-cc2540: [i586] 
+  - kismet-capture-ti-cc2540 
   - kismet-devel 
-  - kismet-logtools: [i586] 
+  - kismet-logtools 
   - kissfft: [x86_64] 
   - kissfft-devel: [x86_64] 
   - kitemmodels-devel 
@@ -9252,7 +9252,7 @@ unsorted:
   - libSimGearCore-2020_3_11 
   - libSoQt20 
   - libSoapyOsmoSDR0 
-  - libSoapySDR0_8: [i586] 
+  - libSoapySDR0_8 
   - libSoundTouch1-32bit: [x86_64] 
   - libStatTimer2: [x86_64] 
   - libSvtAv1Dec0: [x86_64] 
@@ -13498,7 +13498,7 @@ unsorted:
   - librsvg-devel 
   - librsync-devel 
   - librtaudio6 
-  - librtlsdr0: [i586] 
+  - librtlsdr0 
   - librtmidi6 
   - librtprocess-devel 
   - librtprocess0 
@@ -14485,7 +14485,7 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
-  - libwebsockets19: [i586] 
+  - libwebsockets19 
   - libweston-9 
   - libweston-9-0 
   - libweston-desktop-9-0 
@@ -31691,13 +31691,13 @@ unsorted:
   - rt-tests 
   - rtags 
   - rtaudio-devel 
-  - rtl-sdr: [i586] 
+  - rtl-sdr 
   - rtl-sdr-devel 
-  - rtl-sdr-udev: [i586] 
+  - rtl-sdr-udev 
   - rtl8812au 
   - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
-  - rtl_433: [i586] 
+  - rtl_433 
   - rtl_433-devel 
   - rtmidi-devel 
   - rtorrent 
