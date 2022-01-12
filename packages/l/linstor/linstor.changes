@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jan 12 06:15:16 UTC 2022 - nick wang <nwang@suse.com>
+
+- bsc#1194567, update to 1.17.0 
+ * Nodes can now be evacuated on purpose
+ * Browsing the controller port, will now redirect to the /ui if installed
+ * Check for all DRBD to be updated before allow resize
+ * Do not send crypt key before node authentication
+ * Autoplace do not count evicted resources
+ * Fixed CRD volume definition loading errors
+ * Fixed node reconnector deadlock
+ * Add remote SPDK support
+ * Fix migratedisk without body content
+ * Fix toggledisk reuse node-ids
+ * Fix autosnapshotshipping only work once
+ * Fix toggledisk missing layerstack bug
+ * Fix BCache trying to register too often
+ * Fix Luks resize with newer cryptosetup versions
+ * Allowed new BCache layer to be used as topmost layer
+ * Fixed API-Version reported by Controller
+ * Removed invalid description in rest_v1_openapi.yaml
+ * Fix controller disable auto verify algorithm
+ * Update auto-verify algorithm list to not use algorithms with optional keys
+ * Exos: fixed setting correct properties
+ * Exos: recache settings
+ * Exos: support OverrideVlmId property
+ * Fix creating resource groups using postgresql backend
+ * Fixed re-auto-placing resource-definition on moving to different rscgrp
+ * Updated automatic-verify algorithm list for DRBD
+ * Fix migration on postgresql
+ * Fixed db migration of resource with suffix volumes (e.g. ext-metadata)
+ * Fix resource group writing to database(resulting in restart errors)
+ * Fixed deleting resource definition that had once snapshots created
+ * Allow c-max-rate 0 as DRBD setting
+ * Added auto-setting a DRBD verify algorithm on resource-definition
+ * Support for shared storage pools (same physical device)
+ * Support for Seagate Exos Enterprise storage products
+ * Added make resource available API call
+ * Reworked auto-quorum property handling, now it is properly inherited from RG or Controller
+ * Removed linstor-common.conf, settings are now stored directly in all res files
+ * Fixed checking storage pool sizes before running RG spawn (that would fail)
+ * Check if storage pool has enough space before running resize
+ * Fixed changing resource group for resource definition to persistent between restarts
+ * Fixed DRBD resource with external metadata (would always be recreated)
+ * Fixed incorrect copying of layer data in snapshots with LUKS
+ * Allow "Undelete" of a resource that is in DELETING state
+ * API-Version 1.12.0
+
+-------------------------------------------------------------------
+Thu Dec 23 09:14:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use %{python_module…} for recommends, as this would add
+  recommends to all python flavors. Rather change it to python3-…,
+  so recommend the default python modules only.
+
+-------------------------------------------------------------------
 Wed May  5 13:14:26 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)

@@ -1,7 +1,7 @@
 #
 # spec file for package linstor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,19 @@
 %define LS_PREFIX %{_datadir}/linstor-server
 %define FIREWALLD_SERVICES %{_prefix}/lib/firewalld/services
 Name:           linstor
-Version:        1.11.1
+Version:        1.17.0
 Release:        0
 Summary:        DRBD replicated volume manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/LINBIT/linstor-server
-Source:         http://www.linbit.com/downloads/linstor/%{name}-server-%{version}.tar.gz
+Source:         https://pkg.linbit.com//downloads/linstor/%{name}-server-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  firewalld
 BuildRequires:  firewall-macros
+BuildRequires:  firewalld
 BuildRequires:  gradle
 BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  java-1_8_0-openjdk-headless
-#Still in python2 actually...
 BuildRequires:  python3
 BuildArch:      noarch
 
@@ -111,8 +110,8 @@ Linstor shared components between linstor-controller and linstor-satellite
 Summary:        Linstor controller specific files
 Group:          Productivity/Clustering/HA
 Requires:       linstor-common = %{version}
-Recommends:     %{python_module linstor}
-Recommends:     %{python_module linstor-client}
+Recommends:     python3-linstor
+Recommends:     python3-linstor-client
 
 %description controller
 Linstor controller manages linstor satellites and persistent data storage.
@@ -153,8 +152,8 @@ Group:          Productivity/Clustering/HA
 Requires:       drbd-utils
 Requires:       linstor-common = %{version}
 Requires:       lvm2
-Recommends:     %{python_module linstor}
 Recommends:     %{python_module linstor-client}
+Recommends:     %{python_module linstor}
 
 %description satellite
 Linstor satellite, communicates with linstor-controller
