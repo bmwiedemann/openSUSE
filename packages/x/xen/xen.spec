@@ -221,7 +221,7 @@ Patch465:       xen.libxl.dmmd.patch
 Patch467:       xenstore-run-in-studomain.patch
 Patch468:       libxl.helper_done-crash.patch
 Patch469:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
-Patch470:       libxl-PCI-defer-backend-wait.patch
+Patch470:       libxl-Fix-PV-hotplug-and-stubdom-coldplug.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       migration-python3-conversion.patch

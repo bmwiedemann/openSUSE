@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 11 10:47:10 MST 2022 - carnold@suse.com
+
+- bsc#1193307 - pci backend does not exist when attach a vf to a pv
+  guest
+  libxl-Fix-PV-hotplug-and-stubdom-coldplug.patch
+  Drop libxl-PCI-defer-backend-wait.patch
+
+-------------------------------------------------------------------
 Thu Jan  6 16:05:00 CET 2022 - jbeulich@suse.com
 
 - bsc#1193447 - Slow execution of hvmloader+ovmf when VM contains

@@ -2654,4 +2654,12 @@
     <comment>Fix for bsc#1193447. Improved supportconfig plugin. A few other upstream fixes</comment>
     <requestid>944512</requestid>
   </revision>
+  <revision rev="310" vrev="2">
+    <srcmd5>63cac00ee1a33b76cd05d8d1f3fb9c93</srcmd5>
+    <version>4.16.0_04</version>
+    <time>1642029731</time>
+    <user>dimstar_suse</user>
+    <comment>A new version of the fix for bsc#1193307 - pci backend does not exist when attach a vf to a pv guest</comment>
+    <requestid>945654</requestid>
+  </revision>
 </revisionlist>
