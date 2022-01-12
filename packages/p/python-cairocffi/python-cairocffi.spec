@@ -1,7 +1,7 @@
 #
 # spec file for package python-cairocffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ sed -i -e 's/pytest-runner$/pytest/' \
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch} 
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
