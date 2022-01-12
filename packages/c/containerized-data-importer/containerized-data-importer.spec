@@ -1,7 +1,7 @@
 #
 # spec file for package containerized-data-importer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           containerized-data-importer
-Version:        1.42.0
+Version:        1.43.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.17
 ExclusiveArch:  x86_64
 
 %description
