@@ -1,25 +1,27 @@
-From 64454b942be9c61f3c981f7a18a77b332944d58a Mon Sep 17 00:00:00 2001
+From bb399cd140e1b22f46b019f9b0bc14e62b270ab7 Mon Sep 17 00:00:00 2001
 From: Wolfgang Bauer <wbauer@tmo.at>
-Date: Tue, 12 Nov 2019 11:15:21 +0100
-Subject: [PATCH] Revert "Exiv2 is now released with exported targets using
- cmake rules. No need to have a dedicated find exiv2 cmake script. Bump
+Date: Tue, 14 Dec 2021 17:02:22 +0100
+Subject: [PATCH] Revert "Exiv2 is now released with exported targets using 
+ cmake rules. No need to have a dedicated find exiv2 cmake script. Bump 
  minimal version to 0.27.1"
 
 This reverts commit 06e77271d72fe5e4abeb38641f3addc2cfbff126.
 
+Also, it replaces the use of `Exiv2::XmpData::eraseFamily()` (new in
+exiv2-0.27) with inline code copied from exiv2-0.27.5.
+
 Fixes build on Leap 15.x which only have exiv2 0.26.
-As there haven't been any changes other than to rely on the new cmake
-files in exiv2 0.27, there should be no problems with the older version.
 ---
- core/CMakeLists.txt                     |  14 +--
- core/app/DigikamCoreTarget.cmake        |   2 +-
- core/cmake/modules/FindExiv2.cmake      | 116 ++++++++++++++++++++++++++++++++
- core/libs/metadataengine/CMakeLists.txt |  10 ++-
- 4 files changed, 126 insertions(+), 16 deletions(-)
+ core/CMakeLists.txt                           |  14 +--
+ core/app/DigikamCoreTarget.cmake              |   2 +-
+ core/cmake/modules/FindExiv2.cmake            | 116 ++++++++++++++++++
+ core/libs/metadataengine/CMakeLists.txt       |  10 +-
+ .../metadataengine/engine/metaengine_xmp.cpp  |  23 +++-
+ 5 files changed, 148 insertions(+), 17 deletions(-)
  create mode 100644 core/cmake/modules/FindExiv2.cmake
 
 diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
-index e31e267772..d14364dc1e 100644
+index 16bba83335..174dc3c683 100644
 --- a/core/CMakeLists.txt
 +++ b/core/CMakeLists.txt
 @@ -16,7 +16,7 @@ message(STATUS "")
@@ -31,7 +33,7 @@ index e31e267772..d14364dc1e 100644
  set(OPENCV_MIN_VERSION    "3.3.0")
  set(LENSFUN_MIN_VERSION   "0.2.6.0")      # For Lens auto-correction plugin
  set(QTAV_MIN_VERSION      "1.12.0")       # For video support.
-@@ -180,9 +180,9 @@ if(NOT X265_FOUND)
+@@ -180,19 +180,15 @@ if(NOT X265_FOUND)
      set(X265_LIBRARIES "")
  endif()
  
@@ -43,7 +45,6 @@ index e31e267772..d14364dc1e 100644
                         DESCRIPTION "Required to build digiKam"
                         URL         "https://www.exiv2.org"
                         TYPE        RECOMMENDED
-@@ -189,10 +189,6 @@ set_package_properties("Exiv2"     PROPERTIES
                         PURPOSE     "Library to manage image metadata"
  )
  
@@ -63,7 +64,7 @@ index e31e267772..d14364dc1e 100644
  PRINT_LIBRARY_STATUS("libexpat"      "https://libexpat.github.io"                        "(version >= 2.0.0)"                 EXPAT_FOUND)
  PRINT_LIBRARY_STATUS("libjpeg"       "https://github.com/libjpeg-turbo/libjpeg-turbo"    "(version >= 6b)"                    JPEG_FOUND)
  PRINT_LIBRARY_STATUS("libkde"        "https://www.kde.org"                               "(version >= ${KF5_MIN_VERSION})"    KF5_FOUND)
-@@ -622,7 +618,7 @@ PRINT_OPTIONAL_LIBRARY_STATUS("OpenGL"            "https://www.mesa3d.org"
+@@ -622,7 +618,7 @@ PRINT_OPTIONAL_LIBRARY_STATUS("libqtxmlpatterns"  "https://www.qt.io"
  # ==============================================================================
  
  if(Boost_FOUND                          AND
@@ -73,10 +74,10 @@ index e31e267772..d14364dc1e 100644
     JPEG_FOUND                           AND
     KF5_FOUND                            AND
 diff --git a/core/app/DigikamCoreTarget.cmake b/core/app/DigikamCoreTarget.cmake
-index 72b424cb36..7aa6dc5a1e 100644
+index b9ec794684..d11ebc9120 100644
 --- a/core/app/DigikamCoreTarget.cmake
 +++ b/core/app/DigikamCoreTarget.cmake
-@@ -144,7 +144,7 @@ target_link_libraries(digikamcore
+@@ -145,7 +145,7 @@ target_link_libraries(digikamcore
                        ${TIFF_LIBRARIES}
                        PNG::PNG
                        ${JPEG_LIBRARIES}
@@ -208,10 +209,10 @@ index 0000000000..912ffaee0c
 +
 +mark_as_advanced(EXIV2_INCLUDE_DIR EXIV2_LIBRARY)
 diff --git a/core/libs/metadataengine/CMakeLists.txt b/core/libs/metadataengine/CMakeLists.txt
-index 64754c882c..da6fac050a 100644
+index 9e3a026035..596c701516 100644
 --- a/core/libs/metadataengine/CMakeLists.txt
 +++ b/core/libs/metadataengine/CMakeLists.txt
-@@ -9,16 +9,15 @@
+@@ -9,16 +9,15 @@ APPLY_COMMON_POLICIES()
  
  kde_enable_exceptions()
  
@@ -231,7 +232,7 @@ index 64754c882c..da6fac050a 100644
  
      DISABLE_GCC_COMPILER_WARNINGS("5.99.99" "-Wno-deprecated")
  
-@@ -81,14 +80,13 @@ set(libdmetadata_SRCS
+@@ -90,14 +89,13 @@ set(libdmetadata_SRCS
  )
  
  include_directories(
@@ -247,6 +248,40 @@ index 64754c882c..da6fac050a 100644
  )
  
  # Used by digikamcore
+diff --git a/core/libs/metadataengine/engine/metaengine_xmp.cpp b/core/libs/metadataengine/engine/metaengine_xmp.cpp
+index f5d694dfc9..ff7771001a 100644
+--- a/core/libs/metadataengine/engine/metaengine_xmp.cpp
++++ b/core/libs/metadataengine/engine/metaengine_xmp.cpp
+@@ -1234,7 +1234,28 @@ bool MetaEngine::removeXmpTag(const char* xmpTagName, bool family) const
+             }
+             else
+             {
+-                d->xmpMetadata().eraseFamily(it);
++                // https://github.com/Exiv2/exiv2/issues/521
++                // delete 'children' of XMP composites (XmpSeq and XmpBag)
++
++                // I build a StringVector of keys to remove
++                // Then I remove them with erase(....)
++                // erase() has nasty side effects on its argument
++                // The side effects are avoided by the two-step approach
++                // https://github.com/Exiv2/exiv2/issues/560
++                std::string         key(it->key());
++                Exiv2::StringVector keys;
++                while ( it != d->xmpMetadata().end() ) {
++                    if ( it->key().find(key)==0 ) {
++                        keys.push_back(it->key());
++                        it++;
++                    } else {
++                        break;
++                    }
++                }
++                // now erase the family!
++                for ( Exiv2::StringVector_i i = keys.begin() ; i != keys.end() ; i++ ) {
++                    d->xmpMetadata().erase(d->xmpMetadata().findKey(Exiv2::XmpKey(*i)));
++                }
+             }
+ 
+             return true;
 -- 
-2.16.4
+2.31.1
 

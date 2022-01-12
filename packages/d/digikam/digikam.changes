@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Dec 18 15:27:40 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.4.0
+  * https://www.digikam.org/news/2021-12-17-7.4.0_release_announcement/
+- New features (from NEWS):
+Bundles : AppImage is now compiled under Mageia 7.1 instead 6.1 for
+          a better binary compatibility with recent Linux.
+Bundles : AppImage use last Qt 5.15.2 and KF5 5.84 libraries.
+Bundles : Last stable Exiv2 0.27.5 is now used to compile Windows,
+          AppImage, and MacOS bundles.
+Plugins : New tool to share items on the network with a Motion JPEG
+          stream server.
+Showfoto: Add new left sidebar hosting a folder-view to quickly
+          explore images from local file system.
+Showfoto: Add new left sidebar hosting a stack-view to host
+          favorite contents.
+Database: Add the ability to use a local SQLite thumbnail database
+          with an external MySQL configuration.
+General : Integration of Image Quality Sorter Google Summer of Code
+          project 2021 from Phuoc Khanh LE
+          <https://community.kde.org/GSoC/2021/StatusReports/PhuocKhanhLE>
+General : Update internal Libraw to snapshot 202110
+          * Camera Format support:
+           - Sony Lossless compressed support
+           - Panasonic v6/12 bit
+          * Camera support:
+           - DJI Mavic Air 2S
+           - Fujifilm GFX 50S II;  GFX 100S, X-E4
+           - GoPro HERO9, HERO10 (if compiled w/ USE_GPR_SDK)
+           - Nikon Z fc
+           - Panasonic GH5 Mark II
+           - Pentax K3 Mark III
+           - Olympus E-P7
+           - Ricoh GR IIIx
+           - Sony A1, A7R-IIIA (ILCE-7RM3A), A7R-IVA (ILCE-7RM4A),
+             ZV-E10
+           - Canon EOS M50 Mark II was supported but not listed in
+             camera list
+- 209 bugs fixed
+- Drop Fix-compile-for-newer-Akonadi-Build-Versions.patch, merged
+  upstream
+- Update 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+  to avoid the use of a function that was added in exiv2-0.27
+- Readd libjasper-devel BuildRequires to reenable JPEG2000 support,
+  it's back in Tumbleweed since a while
+- Drop redundant recommendation of the -lang package
+- Add signature file and keyring
+
+-------------------------------------------------------------------
 Wed Dec  1 11:06:53 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-compile-for-newer-Akonadi-Build-Versions.patch to fix

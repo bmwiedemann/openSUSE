@@ -17,20 +17,22 @@
 
 
 %define soversion 7
-%bcond_without lang
+%bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.3.0
+Version:        7.4.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.digikam.org/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
+%endif
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix-compile-for-newer-Akonadi-Build-Versions.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -44,6 +46,7 @@ BuildRequires:  libboost_graph-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel >= 0.26
 BuildRequires:  libexpat-devel
+BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg8-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  liblqr-devel
@@ -99,7 +102,6 @@ BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libswscale)
 Requires:       %{name}-plugins
 Requires:       libQt5Sql5-sqlite
-Recommends:     %{name}-lang
 Recommends:     marble
 Recommends:     showfoto
 # Got merged into libimageeditor in 5.2.0
@@ -169,7 +171,6 @@ The main digikam libraries that are being shared between showfoto and digikam
 # Leap 15 only has exiv2 0.26
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 %cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON
@@ -187,7 +188,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %suse_update_desktop_file -r org.kde.showfoto Qt KDE Graphics Photography
 %endif
 
-%if %{with lang}
+%if %{with released}
 %find_lang %{name} --without-kde
 %endif
 
@@ -244,7 +245,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %{_kf5_libdir}/libdigikamdatabase.so.%{soversion}.*
 %{_kf5_libdir}/libdigikamgui.so.%{soversion}.*
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
