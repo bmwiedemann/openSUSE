@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        41.2
+Version:        41.3
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -34,13 +34,11 @@ URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
-Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
+Patch0:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
-Patch4:         mutter-disable-cvt-s390x.patch
-# PATCH-FIX-UPSTREAM mutter-allow-disable-hardware-cursors.patch glgo#GNOME/mutter!2150 alynx.zhou@suse.com -- Add a debug environment variable to disable hardware cursors.
-Patch5:         mutter-allow-disable-hardware-cursors.patch
-# PATCH-FIX-UPSTREAM mutter-initialize-saved_rect_fullscreen.patch glgo#GNOME/mutter!2210, bsc#1185444 alynx.zhou@suse.com -- Initialize saved_rect_fullscreen to fix fullscreen for some program like Stellarium.
-Patch6:         mutter-initialize-saved_rect_fullscreen.patch
+Patch1:         mutter-disable-cvt-s390x.patch
+# PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
+Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -145,10 +143,9 @@ applications that want to make use of the mutter library.
 
 %prep
 %setup -q
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}

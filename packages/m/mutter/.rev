@@ -1535,4 +1535,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   fixes it (glgo#GNOME/mutter!2210, bsc#1185444). (forwarded request 945213 from AZhou)</comment>
     <requestid>945290</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>e97228cdb309605841437a5ac1799145</srcmd5>
+    <version>41.3</version>
+    <time>1642029728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945640</requestid>
+  </revision>
 </revisionlist>

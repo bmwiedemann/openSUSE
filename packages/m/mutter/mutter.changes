@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 11 17:28:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.3:
+  + Check keyboard serials for activation
+  + Fix mixed up refresh rates in multi-monitor setups
+  + Allow disabling HW cursors
+  + Improve damage handling
+  + Consider xrandr flags for advertised modes
+  + Ensure constraints after client resize
+  + window-group: Disable culling when rendinging clone to
+    offscreen buffer
+  + Fix workspace switch animation in default plugin
+  + Fix unfullscreening of window that were mapped fullscreen
+  + Fix DMA-BUF screencasts with unredirected fullscreen windows
+  + Fix orientation changes on devices with 90°
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups.
+- Drop patches fixed upstream:
+  + mutter-allow-disable-hardware-cursors.patch
+  + mutter-initialize-saved_rect_fullscreen.patch
+- Renumber patches yet again.
+
+-------------------------------------------------------------------
 Mon Jan 10 07:14:19 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-initialize-saved_rect_fullscreen.patch: Some
@@ -6,6 +30,18 @@ Mon Jan 10 07:14:19 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
   back to normal size mode, because mutter forget to initialize
   saved_rect_fullscreen which is used for unfullscreen, this patch
   fixes it (glgo#GNOME/mutter!2210, bsc#1185444).
+
+-------------------------------------------------------------------
+Fri Dec 17 22:19:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase patches with quilt and renumber them.
+- Add mutter-window-actor-Special-case-shaped-Java-windows.patch:
+  window-actor: Special-case shaped Java windows.
+  OpenJDK wrongly assumes that shaping a window implies no shadows.
+  They got lucky until commit b975676c changed the fallback case,
+  but now their compliance tests are broken. Make them happy again
+  by special-casing shaped Java windows. Patch from fedora:
+  https://src.fedoraproject.org/rpms/mutter/raw/rawhide/f/0001-window-actor-Special-case-shaped-Java-windows.patch
 
 -------------------------------------------------------------------
 Fri Dec 17 09:00:44 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
