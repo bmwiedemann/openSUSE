@@ -5511,4 +5511,41 @@ always built-in because vim has direct perl dependencies anyway.
   * When modifyOtherKeys is used CTRL-C is not recognized.</comment>
     <requestid>943787</requestid>
   </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>f7f2eaef68d16c699f986aeee2865539</srcmd5>
+    <version>8.2.4063</version>
+    <time>1642029729</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.4063, fixes the following problems
+- fixes boo#1194559 CVE-2022-0156
+  * Not all sshconfig files are detected as such.
+  * Vim9: type checking for list and dict lacks information about declared
+  type.
+  * Vim9: not enough testing for extend() and map().
+  * Asan error for adding zero to NULL.
+  * Redundant check for NUL byte.
+  * Coverity warns for checking for NULL pointer after using it.
+  * Insert complete code uses global variables.
+  * First char typed in Select mode can be wrong.
+  * Error messages are spread out.
+  * Old compiler complains about struct init with variable.
+  * Error messages are spread out.
+  * Vim9: crash when declaring variable on the command line.
+  * Session does not restore help buffer properly when &quot;options' is missing
+  from 'sessionoptions'.
+  * Error messages are spread out.
+  * Reading one byte beyond the end of the line.
+  * Error messages are spread out.
+  * Test fails because of changed error number.
+  * Error messages are spread out.
+  * Build failure without the spell feature.
+  * Git and gitcommit file types not properly recognized.
+  * Build failure with tiny features. (Tony Mechelynck)
+  * Vim9: incorrect error for argument that is shadowing var.
+  * Gcc warns for misleading indent in Athena menu code.
+  * ml_get error when win_execute redraws with Visual selection.
+  * Vim9: import mechanism is too complicated.
+  * Debugger test fails.</comment>
+    <requestid>945641</requestid>
+  </revision>
 </revisionlist>
