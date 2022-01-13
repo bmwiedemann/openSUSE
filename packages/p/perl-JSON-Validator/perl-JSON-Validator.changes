@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  6 03:07:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.05
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.05 2022-01-06T09:33:30+0900
+   - Add EXPERIMETNAL support for coercing to array when posting form data
+
+-------------------------------------------------------------------
 Fri Dec 10 03:07:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.04
