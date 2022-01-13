@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define oname sqlite
-%define tarversion 3360000
+%define tarversion 3370100
 %bcond_with icu
 Name:           sqlite3
-Version:        3.36.0
+Version:        3.37.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain

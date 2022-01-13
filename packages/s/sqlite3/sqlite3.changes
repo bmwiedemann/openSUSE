@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jan  2 12:12:55 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.37.1:
+  * Fix a bug introduced by the UPSERT enhancements of version
+    3.35.0 that can cause incorrect byte-code to be generated for
+    some obscure but valid SQL, possibly resulting in a NULL-
+    pointer dereference.
+  * Fix an OOB read that can occur in FTS5 when reading corrupt
+    database files.
+  * Improved robustness of the --safe option in the CLI.
+  * Other minor fixes to assert() statements and test cases. 
+
+-------------------------------------------------------------------
+Tue Nov 30 09:08:31 UTC 2021 - Reinhard Max <max@suse.com>
+
+- SQLite3 3.37.0:
+  * STRICT tables provide a prescriptive style of data type
+    management, for developers who prefer that kind of thing.
+  * When adding columns that contain a CHECK constraint or a
+    generated column containing a NOT NULL constraint, the
+    ALTER TABLE ADD COLUMN now checks new constraints against
+    preexisting rows in the database and will only proceed if no
+    constraints are violated.
+  * Added the PRAGMA table_list statement.
+  * Add the .connection command, allowing the CLI to keep multiple
+    database connections open at the same time.
+  * Add the --safe command-line option that disables dot-commands
+    and SQL statements that might cause side-effects that extend
+    beyond the single database file named on the command-line.
+  * CLI: Performance improvements when reading SQL statements that
+    span many lines.
+  * Added the sqlite3_autovacuum_pages() interface.
+  * The sqlite3_deserialize() does not and has never worked
+    for the TEMP database. That limitation is now noted in the
+    documentation.
+  * The query planner now omits ORDER BY clauses on subqueries and
+    views if removing those clauses does not change the semantics
+    of the query.
+  * The generate_series table-valued function extension is modified
+    so that the first parameter ("START") is now required. This is
+    done as a way to demonstrate how to write table-valued
+    functions with required parameters. The legacy behavior is
+    available using the -DZERO_ARGUMENT_GENERATE_SERIES
+    compile-time option.
+  * Added new sqlite3_changes64() and sqlite3_total_changes64()
+    interfaces.
+  * Added the SQLITE_OPEN_EXRESCODE flag option to sqlite3_open_v2().
+  * Use less memory to hold the database schema.
+
+-------------------------------------------------------------------
 Tue Jun 22 08:55:36 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - SQLite3 3.36.0:
