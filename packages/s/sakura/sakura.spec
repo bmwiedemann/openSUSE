@@ -1,7 +1,7 @@
 #
 # spec file for package sakura
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sakura
-Version:        3.8.2
+Version:        3.8.4
 Release:        0
 Summary:        Terminal Emulator based on the VTE Library
 License:        GPL-2.0-or-later
@@ -46,9 +46,7 @@ multiple tabs in the same window.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1
+%autosetup -p1
 mv terminal-tango.svg sakura.svg
 convert -strip sakura.svg sakura.png
 # replace hard-coded ICON_DIR
@@ -56,7 +54,7 @@ sed -i -r 's|^(\s*#define\s*ICON_DIR\s+").+("\s*)$|\1%{_datadir}/pixmaps\2|g' sr
 
 %build
 %cmake -DCMAKE_C_FLAGS="%{optflags}"
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
