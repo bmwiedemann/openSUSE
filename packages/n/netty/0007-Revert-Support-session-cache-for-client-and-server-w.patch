@@ -1,4 +1,4 @@
-From e2aeb5c0e353e7cff4d58174f060cddee36cc581 Mon Sep 17 00:00:00 2001
+From e8fe2e83b2aae80c6e580e374c441ee3251e0a43 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Thu, 11 Mar 2021 12:08:33 +0100
 Subject: [PATCH 7/7] Revert "Support session cache for client and server when
@@ -13,26 +13,25 @@ This reverts commit 7d4aaa268b8a536f61fbc7711365147c58238745.
  .../handler/ssl/OpenSslSessionCache.java      | 492 ------------------
  .../netty/handler/ssl/OpenSslSessionId.java   |  66 ---
  .../java/io/netty/handler/ssl/SslContext.java |   8 +-
- .../java/io/netty/handler/ssl/SslUtils.java   |   4 -
  .../ssl/util/LazyJavaxX509Certificate.java    |   8 -
- .../ssl/ConscryptJdkSslEngineInteropTest.java |   6 -
+ .../ssl/ConscryptJdkSslEngineInteropTest.java |   8 -
  .../ConscryptOpenSslEngineInteropTest.java    |   8 -
- .../handler/ssl/ConscryptSslEngineTest.java   |  12 -
- .../ssl/JdkConscryptSslEngineInteropTest.java |  12 -
+ .../handler/ssl/ConscryptSslEngineTest.java   |  15 -
+ .../ssl/JdkConscryptSslEngineInteropTest.java |  20 +-
  .../ssl/JdkOpenSslEngineInteroptTest.java     |   2 -
  .../OpenSslConscryptSslEngineInteropTest.java |   8 -
- .../netty/handler/ssl/OpenSslEngineTest.java  |  34 --
+ .../netty/handler/ssl/OpenSslEngineTest.java  |  52 --
  .../ssl/OpenSslJdkSslEngineInteroptTest.java  |   3 +-
  .../ReferenceCountedOpenSslEngineTest.java    |   2 -
  .../io/netty/handler/ssl/SSLEngineTest.java   | 331 +-----------
  .../io/netty/handler/ssl/SslHandlerTest.java  |  75 +--
- 20 files changed, 48 insertions(+), 1275 deletions(-)
+ 19 files changed, 52 insertions(+), 1298 deletions(-)
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslClientSessionCache.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslSessionCache.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslSessionId.java
 
 diff --git a/handler/src/main/java/io/netty/handler/ssl/ExtendedOpenSslSession.java b/handler/src/main/java/io/netty/handler/ssl/ExtendedOpenSslSession.java
-index 963a9b616a..d6a4ce4955 100644
+index 5924325893..79acea7686 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/ExtendedOpenSslSession.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/ExtendedOpenSslSession.java
 @@ -15,14 +15,12 @@
@@ -51,7 +50,7 @@ index 963a9b616a..d6a4ce4955 100644
  import javax.security.cert.X509Certificate;
  import java.security.Principal;
  import java.security.cert.Certificate;
-@@ -63,23 +61,8 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
+@@ -64,23 +62,8 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
      }
  
      @Override
@@ -77,7 +76,7 @@ index 963a9b616a..d6a4ce4955 100644
      }
  
      @Override
-@@ -98,7 +81,7 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
+@@ -99,7 +82,7 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
      }
  
      @Override
@@ -86,7 +85,7 @@ index 963a9b616a..d6a4ce4955 100644
          return wrapped.getSessionContext();
      }
  
-@@ -123,22 +106,13 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
+@@ -124,22 +107,13 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
      }
  
      @Override
@@ -112,7 +111,7 @@ index 963a9b616a..d6a4ce4955 100644
      }
  
      @Override
-@@ -205,36 +179,4 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
+@@ -206,36 +180,4 @@ abstract class ExtendedOpenSslSession extends ExtendedSSLSession implements Open
      public final int getApplicationBufferSize() {
          return wrapped.getApplicationBufferSize();
      }
@@ -150,7 +149,7 @@ index 963a9b616a..d6a4ce4955 100644
 -    }
  }
 diff --git a/handler/src/main/java/io/netty/handler/ssl/JdkSslContext.java b/handler/src/main/java/io/netty/handler/ssl/JdkSslContext.java
-index b5d5e3431b..9a1b40b1bc 100644
+index a452924829..48e5237863 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/JdkSslContext.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/JdkSslContext.java
 @@ -316,6 +316,16 @@ public class JdkSslContext extends SslContext {
@@ -371,7 +370,7 @@ index 4e6ef35d23..056d55f743 100644
  }
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslSessionCache.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslSessionCache.java
 deleted file mode 100644
-index 10d02577cd..0000000000
+index 2881a457d9..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/OpenSslSessionCache.java
 +++ /dev/null
 @@ -1,492 +0,0 @@
@@ -507,7 +506,7 @@ index 10d02577cd..0000000000
 -            NativeSslSession session = iterator.next().getValue();
 -            // As we use a LinkedHashMap we can break the while loop as soon as we find a valid session.
 -            // This is true as we always drain the cache as soon as we change the timeout to a smaller value as
--            // it was set before. This way its true that the insertation order matches the timeout order.
+-            // it was set before. This way its true that the insertion order matches the timeout order.
 -            if (session.isValid(now)) {
 -                break;
 -            }
@@ -962,21 +961,6 @@ index 1c8efb7151..c3c67e0425 100644
  
      /**
       * @deprecated Use {@link #applicationProtocolNegotiator()} instead.
-diff --git a/handler/src/main/java/io/netty/handler/ssl/SslUtils.java b/handler/src/main/java/io/netty/handler/ssl/SslUtils.java
-index e57de49183..6bd6525954 100644
---- a/handler/src/main/java/io/netty/handler/ssl/SslUtils.java
-+++ b/handler/src/main/java/io/netty/handler/ssl/SslUtils.java
-@@ -473,10 +473,6 @@ final class SslUtils {
-         return TLSV13_CIPHERS.contains(cipher);
-     }
- 
--    static boolean isEmpty(Object[] arr) {
--        return arr == null || arr.length == 0;
--    }
--
-     private SslUtils() {
-     }
- }
 diff --git a/handler/src/main/java/io/netty/handler/ssl/util/LazyJavaxX509Certificate.java b/handler/src/main/java/io/netty/handler/ssl/util/LazyJavaxX509Certificate.java
 index 66a769d14a..65831c0628 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/util/LazyJavaxX509Certificate.java
@@ -997,41 +981,45 @@ index 66a769d14a..65831c0628 100644
      public void verify(PublicKey key)
              throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException,
 diff --git a/handler/src/test/java/io/netty/handler/ssl/ConscryptJdkSslEngineInteropTest.java b/handler/src/test/java/io/netty/handler/ssl/ConscryptJdkSslEngineInteropTest.java
-index b151ab4003..ca3a8bd6c6 100644
+index 6d8a9c7e3e..20af113d86 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/ConscryptJdkSslEngineInteropTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/ConscryptJdkSslEngineInteropTest.java
-@@ -22,7 +22,6 @@ import org.junit.Ignore;
- import org.junit.runner.RunWith;
- import org.junit.runners.Parameterized;
+@@ -22,9 +22,6 @@ import org.junit.jupiter.api.condition.DisabledIf;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
  
 -import javax.net.ssl.SSLSessionContext;
- import java.util.ArrayList;
- import java.util.Collection;
- import java.util.List;
-@@ -81,9 +80,4 @@ public class ConscryptJdkSslEngineInteropTest extends SSLEngineTest {
-         // TODO(scott): work around for a JDK issue. The exception should be SSLHandshakeException.
+-
+-
+ @DisabledIf("checkConscryptDisabled")
+ public class ConscryptJdkSslEngineInteropTest extends SSLEngineTest {
+ 
+@@ -75,11 +72,6 @@ public class ConscryptJdkSslEngineInteropTest extends SSLEngineTest {
          return super.mySetupMutualAuthServerIsValidServerException(cause) || causedBySSLException(cause);
      }
--
+ 
 -    @Override
 -    protected void invalidateSessionsAndAssert(SSLSessionContext context) {
 -        // Not supported by conscrypt
 -    }
- }
+-
+     @MethodSource("newTestParams")
+     @ParameterizedTest
+     @Disabled("Disabled due a conscrypt bug")
 diff --git a/handler/src/test/java/io/netty/handler/ssl/ConscryptOpenSslEngineInteropTest.java b/handler/src/test/java/io/netty/handler/ssl/ConscryptOpenSslEngineInteropTest.java
-index 893a61a4fa..3fbaf9d53c 100644
+index 9e3c485b58..ef0147e518 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/ConscryptOpenSslEngineInteropTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/ConscryptOpenSslEngineInteropTest.java
-@@ -22,7 +22,6 @@ import org.junit.runner.RunWith;
- import org.junit.runners.Parameterized;
+@@ -22,7 +22,6 @@ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
  
  import javax.net.ssl.SSLEngine;
 -import javax.net.ssl.SSLSessionContext;
  
  import java.security.Provider;
  import java.util.ArrayList;
-@@ -151,11 +150,6 @@ public class ConscryptOpenSslEngineInteropTest extends ConscryptSslEngineTest {
-         super.testSessionLocalWhenNonMutualWithKeyManager();
+@@ -162,11 +161,6 @@ public class ConscryptOpenSslEngineInteropTest extends ConscryptSslEngineTest {
+         super.testSessionLocalWhenNonMutualWithoutKeyManager(param);
      }
  
 -    @Override
@@ -1039,101 +1027,117 @@ index 893a61a4fa..3fbaf9d53c 100644
 -        // Not supported by conscrypt
 -    }
 -
+     @MethodSource("newTestParams")
+     @ParameterizedTest
      @Override
-     protected SSLEngine wrapEngine(SSLEngine engine) {
-         return Java8SslTestUtils.wrapSSLEngineForTesting(engine);
-@@ -166,8 +160,6 @@ public class ConscryptOpenSslEngineInteropTest extends ConscryptSslEngineTest {
-     protected SslContext wrapContext(SslContext context) {
-         if (context instanceof OpenSslContext) {
-             ((OpenSslContext) context).setUseTasks(useTasks);
+@@ -211,8 +205,6 @@ public class ConscryptOpenSslEngineInteropTest extends ConscryptSslEngineTest {
+             if (param instanceof OpenSslEngineTestParam) {
+                 ((OpenSslContext) context).setUseTasks(((OpenSslEngineTestParam) param).useTasks);
+             }
 -            // Explicit enable the session cache as its disabled by default on the client side.
 -            ((OpenSslContext) context).sessionContext().setSessionCacheEnabled(true);
          }
          return context;
      }
 diff --git a/handler/src/test/java/io/netty/handler/ssl/ConscryptSslEngineTest.java b/handler/src/test/java/io/netty/handler/ssl/ConscryptSslEngineTest.java
-index 66726af6ab..1fb60455e0 100644
+index 58221857f0..2698acc09e 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/ConscryptSslEngineTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/ConscryptSslEngineTest.java
-@@ -20,7 +20,6 @@ import org.junit.Ignore;
- import org.junit.runner.RunWith;
- import org.junit.runners.Parameterized;
+@@ -21,7 +21,6 @@ import org.junit.jupiter.api.condition.DisabledIf;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
  
 -import javax.net.ssl.SSLSessionContext;
  import java.security.Provider;
- import java.util.ArrayList;
- import java.util.Collection;
-@@ -79,15 +78,4 @@ public class ConscryptSslEngineTest extends SSLEngineTest {
-     @Override
-     public void testMutualAuthValidClientCertChainTooLongFailRequireClientAuth() {
+ 
+ @DisabledIf("checkConscryptDisabled")
+@@ -69,20 +68,6 @@ public class ConscryptSslEngineTest extends SSLEngineTest {
+     public void testMutualAuthValidClientCertChainTooLongFailRequireClientAuth(SSLEngineTestParam param) {
      }
--
+ 
 -    @Override
 -    protected void invalidateSessionsAndAssert(SSLSessionContext context) {
 -        // Not supported by conscrypt
 -    }
 -
--    @Ignore("Possible Conscrypt bug")
--    public void testSessionCacheTimeout() throws Exception {
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    @Disabled("Possible Conscrypt bug")
+-    @Override
+-    public void testSessionCacheTimeout(SSLEngineTestParam param) throws Exception {
 -        // Skip
 -        // https://github.com/google/conscrypt/issues/851
 -    }
- }
+-
+     @Disabled("Not supported")
+     @Override
+     public void testRSASSAPSS(SSLEngineTestParam param) {
 diff --git a/handler/src/test/java/io/netty/handler/ssl/JdkConscryptSslEngineInteropTest.java b/handler/src/test/java/io/netty/handler/ssl/JdkConscryptSslEngineInteropTest.java
-index fb6c877693..b6dc0c377d 100644
+index be453dbbfa..8d0e66f96d 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/JdkConscryptSslEngineInteropTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/JdkConscryptSslEngineInteropTest.java
-@@ -23,7 +23,6 @@ import org.junit.Test;
- import org.junit.runner.RunWith;
- import org.junit.runners.Parameterized;
+@@ -22,7 +22,13 @@ import org.junit.jupiter.api.condition.DisabledIf;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
  
--import javax.net.ssl.SSLSessionContext;
- import java.util.ArrayList;
- import java.util.Collection;
- import java.util.List;
-@@ -93,15 +92,4 @@ public class JdkConscryptSslEngineInteropTest extends SSLEngineTest {
-         // Ignore as Conscrypt does not correctly return the local certificates while the TrustManager is invoked.
++<<<<<<< HEAD
+ import javax.net.ssl.SSLSessionContext;
++=======
++import java.util.ArrayList;
++import java.util.Collection;
++import java.util.List;
++>>>>>>> 5b23a90531 (Revert "Support session cache for client and server when using native SSLEngine implementation (#10994)")
+ 
+ @DisabledIf("checkConscryptDisabled")
+ public class JdkConscryptSslEngineInteropTest extends SSLEngineTest {
+@@ -83,20 +89,6 @@ public class JdkConscryptSslEngineInteropTest extends SSLEngineTest {
          // See https://github.com/google/conscrypt/issues/634
      }
--
+ 
 -    @Override
 -    protected void invalidateSessionsAndAssert(SSLSessionContext context) {
 -        // Not supported by conscrypt
 -    }
 -
--    @Ignore("Possible Conscrypt bug")
--    public void testSessionCacheTimeout() {
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    @Disabled("Possible Conscrypt bug")
+-    @Override
+-    public void testSessionCacheTimeout(SSLEngineTestParam param) {
 -        // Skip
 -        // https://github.com/google/conscrypt/issues/851
 -    }
- }
+-
+     @Disabled("Not supported")
+     @Override
+     public void testRSASSAPSS(SSLEngineTestParam param) {
 diff --git a/handler/src/test/java/io/netty/handler/ssl/JdkOpenSslEngineInteroptTest.java b/handler/src/test/java/io/netty/handler/ssl/JdkOpenSslEngineInteroptTest.java
-index c19314aa32..f32df94370 100644
+index a0c04188b4..534beeec65 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/JdkOpenSslEngineInteroptTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/JdkOpenSslEngineInteroptTest.java
-@@ -167,8 +167,6 @@ public class JdkOpenSslEngineInteroptTest extends SSLEngineTest {
-     protected SslContext wrapContext(SslContext context) {
-         if (context instanceof OpenSslContext) {
-             ((OpenSslContext) context).setUseTasks(useTasks);
+@@ -247,8 +247,6 @@ public class JdkOpenSslEngineInteroptTest extends SSLEngineTest {
+     protected SslContext wrapContext(SSLEngineTestParam param, SslContext context) {
+         if (context instanceof OpenSslContext && param instanceof OpenSslEngineTestParam) {
+             ((OpenSslContext) context).setUseTasks(((OpenSslEngineTestParam) param).useTasks);
 -            // Explicit enable the session cache as its disabled by default on the client side.
 -            ((OpenSslContext) context).sessionContext().setSessionCacheEnabled(true);
          }
          return context;
      }
 diff --git a/handler/src/test/java/io/netty/handler/ssl/OpenSslConscryptSslEngineInteropTest.java b/handler/src/test/java/io/netty/handler/ssl/OpenSslConscryptSslEngineInteropTest.java
-index 9690765622..9588b6b90c 100644
+index b5d4903938..8014000630 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/OpenSslConscryptSslEngineInteropTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/OpenSslConscryptSslEngineInteropTest.java
-@@ -22,7 +22,6 @@ import org.junit.runner.RunWith;
- import org.junit.runners.Parameterized;
+@@ -22,7 +22,6 @@ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
  
  import javax.net.ssl.SSLEngine;
 -import javax.net.ssl.SSLSessionContext;
  import java.security.Provider;
  import java.util.ArrayList;
- import java.util.Collection;
-@@ -143,11 +142,6 @@ public class OpenSslConscryptSslEngineInteropTest extends ConscryptSslEngineTest
-         super.testSessionLocalWhenNonMutualWithKeyManager();
+ import java.util.List;
+@@ -166,11 +165,6 @@ public class OpenSslConscryptSslEngineInteropTest extends ConscryptSslEngineTest
+         super.testSessionCacheSize(param);
      }
  
 -    @Override
@@ -1144,35 +1148,53 @@ index 9690765622..9588b6b90c 100644
      @Override
      protected SSLEngine wrapEngine(SSLEngine engine) {
          return Java8SslTestUtils.wrapSSLEngineForTesting(engine);
-@@ -158,8 +152,6 @@ public class OpenSslConscryptSslEngineInteropTest extends ConscryptSslEngineTest
-     protected SslContext wrapContext(SslContext context) {
-         if (context instanceof OpenSslContext) {
-             ((OpenSslContext) context).setUseTasks(useTasks);
+@@ -183,8 +177,6 @@ public class OpenSslConscryptSslEngineInteropTest extends ConscryptSslEngineTest
+             if (param instanceof OpenSslEngineTestParam) {
+                 ((OpenSslContext) context).setUseTasks(((OpenSslEngineTestParam) param).useTasks);
+             }
 -            // Explicit enable the session cache as its disabled by default on the client side.
 -            ((OpenSslContext) context).sessionContext().setSessionCacheEnabled(true);
          }
          return context;
      }
 diff --git a/handler/src/test/java/io/netty/handler/ssl/OpenSslEngineTest.java b/handler/src/test/java/io/netty/handler/ssl/OpenSslEngineTest.java
-index 7525405f07..9207c044d5 100644
+index 9ad1c3b10f..ef559db1df 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/OpenSslEngineTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/OpenSslEngineTest.java
-@@ -1419,41 +1419,7 @@ public class OpenSslEngineTest extends SSLEngineTest {
-     protected SslContext wrapContext(SslContext context) {
-         if (context instanceof OpenSslContext) {
-             ((OpenSslContext) context).setUseTasks(useTasks);
+@@ -1514,62 +1514,10 @@ public class OpenSslEngineTest extends SSLEngineTest {
+             if (param instanceof OpenSslEngineTestParam) {
+                 ((OpenSslContext) context).setUseTasks(((OpenSslEngineTestParam) param).useTasks);
+             }
 -            // Explicit enable the session cache as its disabled by default on the client side.
 -            ((OpenSslContext) context).sessionContext().setSessionCacheEnabled(true);
          }
          return context;
      }
--
--    @Test
+ 
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
 -    @Override
--    public void testSessionCache() throws Exception {
--        super.testSessionCache();
+-    public void testSessionCache(SSLEngineTestParam param) throws Exception {
+-        assumeTrue(OpenSsl.isSessionCacheSupported());
+-        super.testSessionCache(param);
 -        assertSessionContext(clientSslCtx);
 -        assertSessionContext(serverSslCtx);
+-    }
+-
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    @Override
+-    public void testSessionCacheTimeout(SSLEngineTestParam param) throws Exception {
+-        assumeTrue(OpenSsl.isSessionCacheSupported());
+-        super.testSessionCacheTimeout(param);
+-    }
+-
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    @Override
+-    public void testSessionCacheSize(SSLEngineTestParam param) throws Exception {
+-        assumeTrue(OpenSsl.isSessionCacheSupported());
+-        super.testSessionCacheSize(param);
 -    }
 -
 -    private static void assertSessionContext(SslContext context) {
@@ -1198,54 +1220,49 @@ index 7525405f07..9207c044d5 100644
 -    protected boolean isSessionMaybeReused(SSLEngine engine) {
 -        return unwrapEngine(engine).isSessionReused();
 -    }
- }
+-
+     @MethodSource("newTestParams")
+     @ParameterizedTest
+     @Override
 diff --git a/handler/src/test/java/io/netty/handler/ssl/OpenSslJdkSslEngineInteroptTest.java b/handler/src/test/java/io/netty/handler/ssl/OpenSslJdkSslEngineInteroptTest.java
-index f0090d83dd..261b95ee88 100644
+index 0d47fd09b3..3eda99e7f9 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/OpenSslJdkSslEngineInteroptTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/OpenSslJdkSslEngineInteroptTest.java
-@@ -15,6 +15,7 @@
-  */
- package io.netty.handler.ssl;
- 
+@@ -19,6 +19,7 @@ import org.junit.jupiter.api.BeforeAll;
+ import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
 +import io.netty.util.internal.PlatformDependent;
- import org.junit.BeforeClass;
- import org.junit.Ignore;
- import org.junit.Test;
-@@ -152,8 +153,6 @@ public class OpenSslJdkSslEngineInteroptTest extends SSLEngineTest {
-     protected SslContext wrapContext(SslContext context) {
-         if (context instanceof OpenSslContext) {
-             ((OpenSslContext) context).setUseTasks(useTasks);
+ 
+ import javax.net.ssl.SSLEngine;
+ 
+@@ -194,8 +195,6 @@ public class OpenSslJdkSslEngineInteroptTest extends SSLEngineTest {
+     protected SslContext wrapContext(SSLEngineTestParam param, SslContext context) {
+         if (context instanceof OpenSslContext && param instanceof OpenSslEngineTestParam) {
+             ((OpenSslContext) context).setUseTasks(((OpenSslEngineTestParam) param).useTasks);
 -            // Explicit enable the session cache as its disabled by default on the client side.
 -            ((OpenSslContext) context).sessionContext().setSessionCacheEnabled(true);
          }
          return context;
      }
 diff --git a/handler/src/test/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngineTest.java b/handler/src/test/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngineTest.java
-index f795ed2395..b7a51b2ffe 100644
+index aa32b7de2f..01f56519ee 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngineTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngineTest.java
-@@ -78,8 +78,6 @@ public class ReferenceCountedOpenSslEngineTest extends OpenSslEngineTest {
-     protected SslContext wrapContext(SslContext context) {
-         if (context instanceof ReferenceCountedOpenSslContext) {
-             ((ReferenceCountedOpenSslContext) context).setUseTasks(useTasks);
+@@ -84,8 +84,6 @@ public class ReferenceCountedOpenSslEngineTest extends OpenSslEngineTest {
+             if (param instanceof OpenSslEngineTestParam) {
+                 ((ReferenceCountedOpenSslContext) context).setUseTasks(((OpenSslEngineTestParam) param).useTasks);
+             }
 -            // Explicit enable the session cache as its disabled by default on the client side.
 -            ((ReferenceCountedOpenSslContext) context).sessionContext().setSessionCacheEnabled(true);
          }
          return context;
      }
 diff --git a/handler/src/test/java/io/netty/handler/ssl/SSLEngineTest.java b/handler/src/test/java/io/netty/handler/ssl/SSLEngineTest.java
-index 1f46d79215..e9388833d1 100644
+index 112947e959..6ed4ea148a 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/SSLEngineTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/SSLEngineTest.java
-@@ -53,7 +53,6 @@ import org.conscrypt.OpenSSLProvider;
- import org.junit.After;
- import org.junit.Assume;
- import org.junit.Before;
--import org.junit.Ignore;
- import org.junit.Test;
- import org.mockito.ArgumentCaptor;
- import org.mockito.Mock;
-@@ -84,7 +83,6 @@ import java.security.cert.CertificateException;
+@@ -88,7 +88,6 @@ import java.security.cert.CertificateException;
  import java.util.ArrayList;
  import java.util.Arrays;
  import java.util.Collections;
@@ -1253,7 +1270,7 @@ index 1f46d79215..e9388833d1 100644
  import java.util.HashSet;
  import java.util.List;
  import java.util.Set;
-@@ -112,7 +110,6 @@ import javax.net.ssl.SSLPeerUnverifiedException;
+@@ -116,7 +115,6 @@ import javax.net.ssl.SSLPeerUnverifiedException;
  import javax.net.ssl.SSLSession;
  import javax.net.ssl.SSLSessionBindingEvent;
  import javax.net.ssl.SSLSessionBindingListener;
@@ -1261,31 +1278,31 @@ index 1f46d79215..e9388833d1 100644
  import javax.net.ssl.SSLSocketFactory;
  import javax.net.ssl.TrustManager;
  import javax.net.ssl.TrustManagerFactory;
-@@ -1287,14 +1284,14 @@ public abstract class SSLEngineTest {
+@@ -1366,14 +1364,14 @@ public abstract class SSLEngineTest {
                  .trustManager(InsecureTrustManagerFactory.INSTANCE)
                  .sslProvider(sslClientProvider())
                  // This test only works for non TLSv1.3 for now
--                .protocols(protocols())
+-                .protocols(param.protocols())
 +                .protocols(PROTOCOL_TLS_V1_2)
                  .sslContextProvider(clientSslContextProvider())
                  .build());
          SelfSignedCertificate ssc = new SelfSignedCertificate();
-         serverSslCtx = wrapContext(SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
+         serverSslCtx = wrapContext(param, SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
                  .sslProvider(sslServerProvider())
                  // This test only works for non TLSv1.3 for now
--                .protocols(protocols())
+-                .protocols(param.protocols())
 +                .protocols(PROTOCOL_TLS_V1_2)
                  .sslContextProvider(serverSslContextProvider())
                  .build());
          SSLEngine clientEngine = null;
-@@ -1309,54 +1306,10 @@ public abstract class SSLEngineTest {
+@@ -1388,54 +1386,10 @@ public abstract class SSLEngineTest {
  
-             handshake(clientEngine, serverEngine);
+             handshake(param.type(), param.delegate(), clientEngine, serverEngine);
  
--            if (protocolCipherCombo == ProtocolCipherCombo.TLSV13) {
+-            if (param.protocolCipherCombo == ProtocolCipherCombo.TLSV13) {
 -                // Allocate something which is big enough for sure
--                ByteBuffer packetBuffer = allocateBuffer(32 * 1024);
--                ByteBuffer appBuffer = allocateBuffer(32 * 1024);
+-                ByteBuffer packetBuffer = allocateBuffer(param.type(), 32 * 1024);
+-                ByteBuffer appBuffer = allocateBuffer(param.type(), 32 * 1024);
 -
 -                appBuffer.clear().position(4).flip();
 -                packetBuffer.clear();
@@ -1337,17 +1354,7 @@ index 1f46d79215..e9388833d1 100644
          } finally {
              cleanupClientSslEngine(clientEngine);
              cleanupServerSslEngine(serverEngine);
-@@ -1533,7 +1486,8 @@ public abstract class SSLEngineTest {
-         ByteBuffer cTOs = allocateBuffer(clientEngine.getSession().getPacketBufferSize());
-         ByteBuffer sTOc = allocateBuffer(serverEngine.getSession().getPacketBufferSize());
- 
--        ByteBuffer serverAppReadBuffer = allocateBuffer(serverEngine.getSession().getApplicationBufferSize());
-+        ByteBuffer serverAppReadBuffer = allocateBuffer(
-+                serverEngine.getSession().getApplicationBufferSize());
-         ByteBuffer clientAppReadBuffer = allocateBuffer(
-                 clientEngine.getSession().getApplicationBufferSize());
- 
-@@ -1547,6 +1501,7 @@ public abstract class SSLEngineTest {
+@@ -1629,6 +1583,7 @@ public abstract class SSLEngineTest {
  
          boolean clientHandshakeFinished = false;
          boolean serverHandshakeFinished = false;
@@ -1355,31 +1362,32 @@ index 1f46d79215..e9388833d1 100644
          boolean cTOsHasRemaining;
          boolean sTOcHasRemaining;
  
-@@ -2970,270 +2925,6 @@ public abstract class SSLEngineTest {
+@@ -3127,274 +3082,6 @@ public abstract class SSLEngineTest {
          }
      }
  
--    @Test
--    public void testSessionCache() throws Exception {
--        clientSslCtx = wrapContext(SslContextBuilder.forClient()
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    public void testSessionCache(SSLEngineTestParam param) throws Exception {
+-        clientSslCtx = wrapContext(param, SslContextBuilder.forClient()
 -                .trustManager(InsecureTrustManagerFactory.INSTANCE)
 -                .sslProvider(sslClientProvider())
 -                .sslContextProvider(clientSslContextProvider())
--                .protocols(protocols())
--                .ciphers(ciphers())
+-                .protocols(param.protocols())
+-                .ciphers(param.ciphers())
 -                .build());
 -        SelfSignedCertificate ssc = new SelfSignedCertificate();
--        serverSslCtx = wrapContext(SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
+-        serverSslCtx = wrapContext(param, SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
 -                .sslProvider(sslServerProvider())
 -                .sslContextProvider(serverSslContextProvider())
--                .protocols(protocols())
--                .ciphers(ciphers())
+-                .protocols(param.protocols())
+-                .ciphers(param.ciphers())
 -                .build());
 -
 -        try {
--            doHandshakeVerifyReusedAndClose("a.netty.io", 9999, false);
--            doHandshakeVerifyReusedAndClose("a.netty.io", 9999, true);
--            doHandshakeVerifyReusedAndClose("b.netty.io", 9999, false);
+-            doHandshakeVerifyReusedAndClose(param, "a.netty.io", 9999, false);
+-            doHandshakeVerifyReusedAndClose(param, "a.netty.io", 9999, true);
+-            doHandshakeVerifyReusedAndClose(param, "b.netty.io", 9999, false);
 -            invalidateSessionsAndAssert(serverSslCtx.sessionContext());
 -            invalidateSessionsAndAssert(clientSslCtx.sessionContext());
 -        } finally {
@@ -1413,24 +1421,24 @@ index 1f46d79215..e9388833d1 100644
 -        assertEquals(numSessions, numIds);
 -    }
 -
--    private void doHandshakeVerifyReusedAndClose(String host, int port, boolean reuse)
+-    private void doHandshakeVerifyReusedAndClose(SSLEngineTestParam param, String host, int port, boolean reuse)
 -            throws Exception {
 -        SSLEngine clientEngine = null;
 -        SSLEngine serverEngine = null;
 -        try {
 -            clientEngine = wrapEngine(clientSslCtx.newEngine(UnpooledByteBufAllocator.DEFAULT, host, port));
 -            serverEngine = wrapEngine(serverSslCtx.newEngine(UnpooledByteBufAllocator.DEFAULT));
--            handshake(clientEngine, serverEngine);
+-            handshake(param.type(), param.delegate(), clientEngine, serverEngine);
 -            int clientSessions = currentSessionCacheSize(clientSslCtx.sessionContext());
 -            int serverSessions = currentSessionCacheSize(serverSslCtx.sessionContext());
 -            int nCSessions = clientSessions;
 -            int nSSessions = serverSessions;
 -            boolean clientSessionReused = false;
 -            boolean serverSessionReused = false;
--            if (protocolCipherCombo == ProtocolCipherCombo.TLSV13) {
+-            if (param.protocolCipherCombo == ProtocolCipherCombo.TLSV13) {
 -                // Allocate something which is big enough for sure
--                ByteBuffer packetBuffer = allocateBuffer(32 * 1024);
--                ByteBuffer appBuffer = allocateBuffer(32 * 1024);
+-                ByteBuffer packetBuffer = allocateBuffer(param.type(), 32 * 1024);
+-                ByteBuffer appBuffer = allocateBuffer(param.type(), 32 * 1024);
 -
 -                appBuffer.clear().position(4).flip();
 -                packetBuffer.clear();
@@ -1476,7 +1484,7 @@ index 1f46d79215..e9388833d1 100644
 -
 -            assertSessionReusedForEngine(clientEngine, serverEngine, reuse);
 -
--            closeOutboundAndInbound(clientEngine, serverEngine);
+-            closeOutboundAndInbound(param.type(), clientEngine, serverEngine);
 -        } finally {
 -            cleanupClientSslEngine(clientEngine);
 -            cleanupServerSslEngine(serverEngine);
@@ -1497,20 +1505,21 @@ index 1f46d79215..e9388833d1 100644
 -        return i;
 -    }
 -
--    private void closeOutboundAndInbound(SSLEngine clientEngine, SSLEngine serverEngine) throws SSLException {
+-    private void closeOutboundAndInbound(
+-            BufferType type, SSLEngine clientEngine, SSLEngine serverEngine) throws SSLException {
 -        assertFalse(clientEngine.isInboundDone());
 -        assertFalse(clientEngine.isOutboundDone());
 -        assertFalse(serverEngine.isInboundDone());
 -        assertFalse(serverEngine.isOutboundDone());
 -
--        ByteBuffer empty = allocateBuffer(0);
+-        ByteBuffer empty = allocateBuffer(type, 0);
 -
 -        // Ensure we allocate a bit more so we can fit in multiple packets. This is needed as we may call multiple
 -        // time wrap / unwrap in a for loop before we drain the buffer we are writing in.
--        ByteBuffer cTOs = allocateBuffer(clientEngine.getSession().getPacketBufferSize() * 4);
--        ByteBuffer sTOs = allocateBuffer(serverEngine.getSession().getPacketBufferSize() * 4);
--        ByteBuffer cApps = allocateBuffer(clientEngine.getSession().getApplicationBufferSize() * 4);
--        ByteBuffer sApps = allocateBuffer(serverEngine.getSession().getApplicationBufferSize() * 4);
+-        ByteBuffer cTOs = allocateBuffer(type, clientEngine.getSession().getPacketBufferSize() * 4);
+-        ByteBuffer sTOs = allocateBuffer(type, serverEngine.getSession().getPacketBufferSize() * 4);
+-        ByteBuffer cApps = allocateBuffer(type, clientEngine.getSession().getApplicationBufferSize() * 4);
+-        ByteBuffer sApps = allocateBuffer(type, serverEngine.getSession().getApplicationBufferSize() * 4);
 -
 -        clientEngine.closeOutbound();
 -        for (;;) {
@@ -1561,27 +1570,28 @@ index 1f46d79215..e9388833d1 100644
 -        // NOOP
 -    }
 -
--    @Test
--    public void testSessionCacheTimeout() throws Exception {
--        clientSslCtx = wrapContext(SslContextBuilder.forClient()
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    public void testSessionCacheTimeout(SSLEngineTestParam param) throws Exception {
+-        clientSslCtx = wrapContext(param, SslContextBuilder.forClient()
 -                .trustManager(InsecureTrustManagerFactory.INSTANCE)
 -                .sslProvider(sslClientProvider())
 -                .sslContextProvider(clientSslContextProvider())
--                .protocols(protocols())
--                .ciphers(ciphers())
+-                .protocols(param.protocols())
+-                .ciphers(param.ciphers())
 -                .sessionTimeout(1)
 -                .build());
 -        SelfSignedCertificate ssc = new SelfSignedCertificate();
--        serverSslCtx = wrapContext(SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
+-        serverSslCtx = wrapContext(param, SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
 -                .sslProvider(sslServerProvider())
 -                .sslContextProvider(serverSslContextProvider())
--                .protocols(protocols())
--                .ciphers(ciphers())
+-                .protocols(param.protocols())
+-                .ciphers(param.ciphers())
 -                .sessionTimeout(1)
 -                .build());
 -
 -        try {
--            doHandshakeVerifyReusedAndClose("a.netty.io", 9999, false);
+-            doHandshakeVerifyReusedAndClose(param, "a.netty.io", 9999, false);
 -
 -            // Let's sleep for a bit more then 1 second so the cache should timeout the sessions.
 -            Thread.sleep(1500);
@@ -1593,49 +1603,50 @@ index 1f46d79215..e9388833d1 100644
 -        }
 -    }
 -
--    @Test
--    public void testSessionCacheSize() throws Exception {
--        clientSslCtx = wrapContext(SslContextBuilder.forClient()
+-    @MethodSource("newTestParams")
+-    @ParameterizedTest
+-    public void testSessionCacheSize(SSLEngineTestParam param) throws Exception {
+-        clientSslCtx = wrapContext(param, SslContextBuilder.forClient()
 -                .trustManager(InsecureTrustManagerFactory.INSTANCE)
 -                .sslProvider(sslClientProvider())
 -                .sslContextProvider(clientSslContextProvider())
--                .protocols(protocols())
--                .ciphers(ciphers())
+-                .protocols(param.protocols())
+-                .ciphers(param.ciphers())
 -                .sessionCacheSize(1)
 -                .build());
 -        SelfSignedCertificate ssc = new SelfSignedCertificate();
--        serverSslCtx = wrapContext(SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
+-        serverSslCtx = wrapContext(param, SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey())
 -                .sslProvider(sslServerProvider())
 -                .sslContextProvider(serverSslContextProvider())
--                .protocols(protocols())
--                .ciphers(ciphers())
+-                .protocols(param.protocols())
+-                .ciphers(param.ciphers())
 -                .build());
 -
 -        try {
--            doHandshakeVerifyReusedAndClose("a.netty.io", 9999, false);
+-            doHandshakeVerifyReusedAndClose(param, "a.netty.io", 9999, false);
 -            // As we have a cache size of 1 we should never have more then one session in the cache
--            doHandshakeVerifyReusedAndClose("b.netty.io", 9999, false);
+-            doHandshakeVerifyReusedAndClose(param, "b.netty.io", 9999, false);
 -
 -            // We should at least reuse b.netty.io
--            doHandshakeVerifyReusedAndClose("b.netty.io", 9999, true);
+-            doHandshakeVerifyReusedAndClose(param, "b.netty.io", 9999, true);
 -        } finally {
 -            ssc.delete();
 -        }
 -    }
 -
-     @Test
-     public void testSessionBindingEvent() throws Exception {
-         clientSslCtx = wrapContext(SslContextBuilder.forClient()
-@@ -3846,7 +3537,7 @@ public abstract class SSLEngineTest {
+     @MethodSource("newTestParams")
+     @ParameterizedTest
+     public void testSessionBindingEvent(SSLEngineTestParam param) throws Exception {
+@@ -4020,7 +3707,7 @@ public abstract class SSLEngineTest {
              final Promise<SecretKey> promise = sb.config().group().next().newPromise();
              serverChannel = sb.childHandler(new ChannelInitializer<Channel>() {
                  @Override
 -                protected void initChannel(Channel ch) {
 +                protected void initChannel(Channel ch) throws Exception {
-                     ch.config().setAllocator(new TestByteBufAllocator(ch.config().getAllocator(), type));
+                     ch.config().setAllocator(new TestByteBufAllocator(ch.config().getAllocator(), param.type()));
  
-                     SslHandler sslHandler = delegatingExecutor == null ?
-@@ -3904,7 +3595,7 @@ public abstract class SSLEngineTest {
+                     SslHandler sslHandler = !param.delegate() ?
+@@ -4078,7 +3765,7 @@ public abstract class SSLEngineTest {
                  new java.security.cert.X509Certificate[] { ssc.cert() }, null, ssc.key(), null, null, null);
      }
  
@@ -1645,10 +1656,10 @@ index 1f46d79215..e9388833d1 100644
          private volatile boolean verified;
  
 diff --git a/handler/src/test/java/io/netty/handler/ssl/SslHandlerTest.java b/handler/src/test/java/io/netty/handler/ssl/SslHandlerTest.java
-index 1945d1e260..d4cba7dd23 100644
+index 70aef23b60..53f5a2fcbc 100644
 --- a/handler/src/test/java/io/netty/handler/ssl/SslHandlerTest.java
 +++ b/handler/src/test/java/io/netty/handler/ssl/SslHandlerTest.java
-@@ -1143,10 +1143,6 @@ public class SslHandlerTest {
+@@ -1297,10 +1297,6 @@ public class SslHandlerTest {
                  .protocols(protocol)
                  .build();
  
@@ -1659,7 +1670,7 @@ index 1945d1e260..d4cba7dd23 100644
          final SelfSignedCertificate cert = new SelfSignedCertificate();
          final SslContext sslServerCtx = SslContextBuilder.forServer(cert.key(), cert.cert())
                  .sslProvider(provider)
-@@ -1165,41 +1161,25 @@ public class SslHandlerTest {
+@@ -1319,41 +1315,25 @@ public class SslHandlerTest {
  
          EventLoopGroup group = new NioEventLoopGroup();
          Channel sc = null;
@@ -1694,7 +1705,7 @@ index 1945d1e260..d4cba7dd23 100644
 -                                        // This test only works for non TLSv1.3 as TLSv1.3 will establish sessions after
 -                                        // the handshake is done.
 -                                        // See https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_sess_set_get_cb.html
--                                        if (!SslUtils.PROTOCOL_TLS_V1_3.equals(engine.getSession().getProtocol())) {
+-                                        if (!SslProtocols.TLS_v1_3.equals(engine.getSession().getProtocol())) {
 -                                            // First should not re-use the session
 -                                            try {
 -                                                assertEquals(handshakeCount > 1, engine.isSessionReused());
@@ -1707,7 +1718,7 @@ index 1945d1e260..d4cba7dd23 100644
                                          ctx.writeAndFlush(Unpooled.wrappedBuffer(bytes));
                                      }
                                  }
-@@ -1208,31 +1188,6 @@ public class SslHandlerTest {
+@@ -1362,31 +1342,6 @@ public class SslHandlerTest {
                      })
                      .bind(new InetSocketAddress(0)).syncUninterruptibly().channel();
  
@@ -1739,7 +1750,7 @@ index 1945d1e260..d4cba7dd23 100644
              ChannelFuture future = new Bootstrap()
                      .group(group)
                      .channel(NioSocketChannel.class)
-@@ -1255,18 +1210,11 @@ public class SslHandlerTest {
+@@ -1409,18 +1364,11 @@ public class SslHandlerTest {
                                  }
                              });
                          }
@@ -1753,7 +1764,7 @@ index 1945d1e260..d4cba7dd23 100644
 -            // This test only works for non TLSv1.3 as TLSv1.3 will establish sessions after
 -            // the handshake is done.
 -            // See https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_sess_set_get_cb.html
--            if (!SslUtils.PROTOCOL_TLS_V1_3.equals(engine.getSession().getProtocol())) {
+-            if (!SslProtocols.TLS_v1_3.equals(engine.getSession().getProtocol())) {
 -                assertEquals(isReused, engine.isSessionReused());
 -            }
 +            assertTrue(clientSslHandler.handshakeFuture().await().isSuccess());
@@ -1761,7 +1772,7 @@ index 1945d1e260..d4cba7dd23 100644
              Object obj = queue.take();
              if (obj instanceof ByteBuf) {
                  ByteBuf buffer = (ByteBuf) obj;
-@@ -1284,6 +1232,11 @@ public class SslHandlerTest {
+@@ -1438,6 +1386,11 @@ public class SslHandlerTest {
              if (cc != null) {
                  cc.close().syncUninterruptibly();
              }
@@ -1774,5 +1785,5 @@ index 1945d1e260..d4cba7dd23 100644
      }
  
 -- 
-2.30.1
+2.34.1
 

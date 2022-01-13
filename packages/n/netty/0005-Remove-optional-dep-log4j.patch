@@ -1,4 +1,4 @@
-From 704998dea3b9efcf8497e31376aebf85e9156df9 Mon Sep 17 00:00:00 2001
+From c3cfdd6de230d55050877a90a982abe1d9659e69 Mon Sep 17 00:00:00 2001
 From: Mat Booth <mat.booth@redhat.com>
 Date: Mon, 7 Sep 2020 14:29:44 +0100
 Subject: [PATCH 5/7] Remove optional dep log4j
@@ -17,7 +17,7 @@ Subject: [PATCH 5/7] Remove optional dep log4j
  delete mode 100644 common/src/main/java/io/netty/util/internal/logging/Log4JLoggerFactory.java
 
 diff --git a/common/pom.xml b/common/pom.xml
-index 938ea25c3e..589e49b943 100644
+index 472429c00b..7e9a757cde 100644
 --- a/common/pom.xml
 +++ b/common/pom.xml
 @@ -63,21 +63,6 @@
@@ -25,8 +25,8 @@ index 938ea25c3e..589e49b943 100644
        <optional>true</optional>
      </dependency>
 -    <dependency>
--      <groupId>log4j</groupId>
--      <artifactId>log4j</artifactId>
+-      <groupId>org.apache.logging.log4j</groupId>
+-      <artifactId>log4j-1.2-api</artifactId>
 -      <optional>true</optional>
 -    </dependency>
 -    <dependency>
@@ -43,7 +43,7 @@ index 938ea25c3e..589e49b943 100644
        <groupId>org.mockito</groupId>
        <artifactId>mockito-core</artifactId>
 diff --git a/common/src/main/java/io/netty/util/internal/logging/InternalLoggerFactory.java b/common/src/main/java/io/netty/util/internal/logging/InternalLoggerFactory.java
-index 80e1567c89..09ceea1667 100644
+index 7ad7db8a01..09ceea1667 100644
 --- a/common/src/main/java/io/netty/util/internal/logging/InternalLoggerFactory.java
 +++ b/common/src/main/java/io/netty/util/internal/logging/InternalLoggerFactory.java
 @@ -39,63 +39,10 @@ public abstract class InternalLoggerFactory {
@@ -70,7 +70,7 @@ index 80e1567c89..09ceea1667 100644
  
 -    private static InternalLoggerFactory useSlf4JLoggerFactory(String name) {
 -        try {
--            InternalLoggerFactory f = new Slf4JLoggerFactory(true);
+-            InternalLoggerFactory f = Slf4JLoggerFactory.INSTANCE_WITH_NOP_CHECK;
 -            f.newInstance(name).debug("Using SLF4J as the default logging framework");
 -            return f;
 -        } catch (LinkageError ignore) {
@@ -950,5 +950,5 @@ index 3d56907f38..0000000000
 -    }
 -}
 -- 
-2.30.1
+2.34.1
 

@@ -1,4 +1,4 @@
-From 315f2a4e90c5a59c7b17d07f3cab84adecad8375 Mon Sep 17 00:00:00 2001
+From f3d7187c9b860b523d331cf67467db5cfc9ff233 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Thu, 11 Feb 2021 12:46:20 +0100
 Subject: [PATCH 6/7] revert Fix native image build...
@@ -10,16 +10,16 @@ Subject: [PATCH 6/7] revert Fix native image build...
  .../io.netty/common/native-image.properties   |   5 +-
  pom.xml                                       |   2 -
  .../resolver-dns/native-image.properties      |  18 --
- .../pom.xml                                   | 100 ----------
+ .../pom.xml                                   | 102 -----------
  .../NativeClientWithNettyInitAtRuntime.java   |  36 ----
  .../testsuite/svm/client/package-info.java    |  21 ---
- testsuite-native-image-client/pom.xml         | 106 -----------
+ testsuite-native-image-client/pom.xml         | 108 -----------
  .../testsuite/svm/client/DnsNativeClient.java |  48 -----
  .../testsuite/svm/client/package-info.java    |  20 --
  .../src/main/resources/reflection-config.json |   8 -
  .../socket/InternetProtocolFamily.java        |  17 +-
  .../socket/InternetProtocolFamilyTest.java    |  36 ----
- 15 files changed, 115 insertions(+), 678 deletions(-)
+ 15 files changed, 115 insertions(+), 682 deletions(-)
  delete mode 100644 common/src/main/java/io/netty/util/NetUtilInitializations.java
  delete mode 100644 common/src/main/java/io/netty/util/NetUtilSubstitutions.java
  delete mode 100644 resolver-dns/src/main/resources/META-INF/native-image/io.netty/resolver-dns/native-image.properties
@@ -467,10 +467,10 @@ index d2f607f492..1e4620fab2 100644
 -       --initialize-at-run-time=io.netty.util.NetUtilSubstitutions$NetUtilLocalhostLazyHolder
 +Args = --initialize-at-run-time=io.netty.util.AbstractReferenceCounted,io.netty.util.concurrent.GlobalEventExecutor,io.netty.util.concurrent.ImmediateEventExecutor,io.netty.util.concurrent.ScheduledFutureTask,io.netty.util.internal.ThreadLocalRandom
 diff --git a/pom.xml b/pom.xml
-index 0341f98232..6b91405ea5 100644
+index baaac8d945..056f5856d7 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -444,8 +444,6 @@
+@@ -574,8 +574,6 @@
      <module>testsuite-shading</module>
      <module>testsuite-native</module>
      <module>testsuite-native-image</module>
@@ -505,10 +505,10 @@ index 43af984157..0000000000
 -       --initialize-at-run-time=io.netty.resolver.HostsFileEntriesResolver
 diff --git a/testsuite-native-image-client-runtime-init/pom.xml b/testsuite-native-image-client-runtime-init/pom.xml
 deleted file mode 100644
-index e91ceb33e9..0000000000
+index e6964701e0..0000000000
 --- a/testsuite-native-image-client-runtime-init/pom.xml
 +++ /dev/null
-@@ -1,100 +0,0 @@
+@@ -1,102 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<!--
 -  ~ Copyright 2020 The Netty Project
@@ -531,7 +531,7 @@ index e91ceb33e9..0000000000
 -  <parent>
 -    <groupId>io.netty</groupId>
 -    <artifactId>netty-parent</artifactId>
--    <version>4.1.60.Final</version>
+-    <version>4.1.72.Final</version>
 -  </parent>
 -
 -  <artifactId>netty-testsuite-native-image-client-runtime-init</artifactId>
@@ -540,7 +540,9 @@ index e91ceb33e9..0000000000
 -  <name>Netty/Testsuite/NativeImage/ClientRuntimeInit</name>
 -
 -  <properties>
--    <skipJapicmp>true</skipJapicmp>
+-    <japicmp.skip>true</japicmp.skip>
+-    <!-- Do not deploy this module -->
+-    <skipDeploy>true</skipDeploy>
 -  </properties>
 -
 -  <dependencies>
@@ -568,7 +570,7 @@ index e91ceb33e9..0000000000
 -  <build>
 -    <plugins>
 -      <plugin>
--        <groupId>com.oracle.substratevm</groupId>
+-        <groupId>org.graalvm.nativeimage</groupId>
 -        <artifactId>native-image-maven-plugin</artifactId>
 -        <version>${graalvm.version}</version>
 -        <executions>
@@ -680,10 +682,10 @@ index c5d8a74b31..0000000000
 -package io.netty.testsuite.svm.client;
 diff --git a/testsuite-native-image-client/pom.xml b/testsuite-native-image-client/pom.xml
 deleted file mode 100644
-index d42dbae041..0000000000
+index 6eff56ff57..0000000000
 --- a/testsuite-native-image-client/pom.xml
 +++ /dev/null
-@@ -1,106 +0,0 @@
+@@ -1,108 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<!--
 -  ~ Copyright 2020 The Netty Project
@@ -706,7 +708,7 @@ index d42dbae041..0000000000
 -  <parent>
 -    <groupId>io.netty</groupId>
 -    <artifactId>netty-parent</artifactId>
--    <version>4.1.60.Final</version>
+-    <version>4.1.72.Final</version>
 -  </parent>
 -
 -  <artifactId>netty-testsuite-native-image-client</artifactId>
@@ -715,7 +717,9 @@ index d42dbae041..0000000000
 -  <name>Netty/Testsuite/NativeImage/Client</name>
 -
 -  <properties>
--    <skipJapicmp>true</skipJapicmp>
+-    <japicmp.skip>true</japicmp.skip>
+-    <!-- Do not deploy this module -->
+-    <skipDeploy>true</skipDeploy>
 -  </properties>
 -
 -  <dependencies>
@@ -749,7 +753,7 @@ index d42dbae041..0000000000
 -  <build>
 -    <plugins>
 -      <plugin>
--        <groupId>com.oracle.substratevm</groupId>
+-        <groupId>org.graalvm.nativeimage</groupId>
 -        <artifactId>native-image-maven-plugin</artifactId>
 -        <version>${graalvm.version}</version>
 -        <executions>
@@ -927,7 +931,7 @@ index 57f7cf7d2c..369cdd28b5 100644
      /**
 diff --git a/transport/src/test/java/io/netty/channel/socket/InternetProtocolFamilyTest.java b/transport/src/test/java/io/netty/channel/socket/InternetProtocolFamilyTest.java
 deleted file mode 100644
-index 4a203057ed..0000000000
+index 6fe225b850..0000000000
 --- a/transport/src/test/java/io/netty/channel/socket/InternetProtocolFamilyTest.java
 +++ /dev/null
 @@ -1,36 +0,0 @@
@@ -949,7 +953,7 @@ index 4a203057ed..0000000000
 -package io.netty.channel.socket;
 -
 -import io.netty.util.NetUtil;
--import org.junit.Test;
+-import org.junit.jupiter.api.Test;
 -
 -import java.net.InetAddress;
 -
@@ -968,5 +972,5 @@ index 4a203057ed..0000000000
 -    }
 -}
 -- 
-2.30.1
+2.34.1
 

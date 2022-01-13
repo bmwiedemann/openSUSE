@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 14 06:31:10 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to latest upstream version 4.1.72
+  * fixes: bsc#1193672, CVE-2021-43797: possible HTTP request
+    smuggling due to insufficient validation against control
+    characters
+- Modified patches:
+  * 0001-Remove-optional-dep-Blockhound.patch
+  * 0002-Remove-optional-dep-conscrypt.patch
+  * 0003-Remove-optional-deps-jetty-alpn-and-npn.patch
+  * 0004-Remove-optional-dep-tcnative.patch
+  * 0005-Remove-optional-dep-log4j.patch
+  * 0006-revert-Fix-native-image-build.patch
+  * 0007-Revert-Support-session-cache-for-client-and-server-w.patch
+  * no-werror.patch
+    + rediff to changed context
+- Added patch:
+  * no-brotli-zstd.patch
+    + disable Brotli and Zstd compression, since we lack
+      the dependencies needed to build them
+
+-------------------------------------------------------------------
 Fri Mar 12 08:31:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to latest upstream version 4.1.60

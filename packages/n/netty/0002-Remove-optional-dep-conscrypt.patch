@@ -1,4 +1,4 @@
-From 6cff9f609fec2864e5f17aedb8c4b7110b5b66bb Mon Sep 17 00:00:00 2001
+From 3485dc2d8187354247e014904462b97e6be62f1b Mon Sep 17 00:00:00 2001
 From: Mat Booth <mat.booth@redhat.com>
 Date: Mon, 7 Sep 2020 13:24:30 +0100
 Subject: [PATCH 2/7] Remove optional dep conscrypt
@@ -7,18 +7,18 @@ Subject: [PATCH 2/7] Remove optional dep conscrypt
  handler/pom.xml                               |   6 -
  .../java/io/netty/handler/ssl/Conscrypt.java  |  75 -------
  .../handler/ssl/ConscryptAlpnSslEngine.java   | 196 ------------------
- .../JdkAlpnApplicationProtocolNegotiator.java |   8 +-
- .../java/io/netty/handler/ssl/SslHandler.java |  47 +----
+ .../JdkAlpnApplicationProtocolNegotiator.java |  11 +-
+ .../java/io/netty/handler/ssl/SslHandler.java |  46 +---
  pom.xml                                       |  10 -
- 6 files changed, 2 insertions(+), 340 deletions(-)
+ 6 files changed, 2 insertions(+), 342 deletions(-)
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/Conscrypt.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/ConscryptAlpnSslEngine.java
 
 diff --git a/handler/pom.xml b/handler/pom.xml
-index bb93416837..8bd2ba0774 100644
+index ceea6e1e8e..5c3ebbbfab 100644
 --- a/handler/pom.xml
 +++ b/handler/pom.xml
-@@ -81,12 +81,6 @@
+@@ -85,12 +85,6 @@
        <artifactId>alpn-api</artifactId>
        <optional>true</optional>
      </dependency>
@@ -315,7 +315,7 @@ index 3bc955ca09..0000000000
 -    }
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/JdkAlpnApplicationProtocolNegotiator.java b/handler/src/main/java/io/netty/handler/ssl/JdkAlpnApplicationProtocolNegotiator.java
-index 8c40d8dc91..8d7a854d62 100644
+index 9eb8f15d14..b5715e87ff 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/JdkAlpnApplicationProtocolNegotiator.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/JdkAlpnApplicationProtocolNegotiator.java
 @@ -26,8 +26,7 @@ import javax.net.ssl.SSLEngine;
@@ -325,10 +325,10 @@ index 8c40d8dc91..8d7a854d62 100644
 -    private static final boolean AVAILABLE = Conscrypt.isAvailable() ||
 -                                             JdkAlpnSslUtils.supportsAlpn() ||
 +    private static final boolean AVAILABLE = JdkAlpnSslUtils.supportsAlpn() ||
-                                              JettyAlpnSslEngine.isAvailable();
+                                              JettyAlpnSslEngine.isAvailable() ||
+                                              BouncyCastle.isAvailable();
  
-     private static final SslEngineWrapperFactory ALPN_WRAPPER = AVAILABLE ? new AlpnWrapper() : new FailureWrapper();
-@@ -119,7 +118,6 @@ public final class JdkAlpnApplicationProtocolNegotiator extends JdkBaseApplicati
+@@ -120,7 +119,6 @@ public final class JdkAlpnApplicationProtocolNegotiator extends JdkBaseApplicati
          public SSLEngine wrapSslEngine(SSLEngine engine, ByteBufAllocator alloc,
                                         JdkApplicationProtocolNegotiator applicationNegotiator, boolean isServer) {
              throw new RuntimeException("ALPN unsupported. Is your classpath configured correctly?"
@@ -336,7 +336,7 @@ index 8c40d8dc91..8d7a854d62 100644
                      + " For Jetty-ALPN, see "
                      + "https://www.eclipse.org/jetty/documentation/current/alpn-chapter.html#alpn-starting");
          }
-@@ -129,10 +127,6 @@ public final class JdkAlpnApplicationProtocolNegotiator extends JdkBaseApplicati
+@@ -130,13 +128,6 @@ public final class JdkAlpnApplicationProtocolNegotiator extends JdkBaseApplicati
          @Override
          public SSLEngine wrapSslEngine(SSLEngine engine, ByteBufAllocator alloc,
                                         JdkApplicationProtocolNegotiator applicationNegotiator, boolean isServer) {
@@ -344,21 +344,23 @@ index 8c40d8dc91..8d7a854d62 100644
 -                return isServer ? ConscryptAlpnSslEngine.newServerEngine(engine, alloc, applicationNegotiator)
 -                        : ConscryptAlpnSslEngine.newClientEngine(engine, alloc, applicationNegotiator);
 -            }
+-            if (BouncyCastle.isInUse(engine)) {
+-                return new BouncyCastleAlpnSslEngine(engine, applicationNegotiator, isServer);
+-            }
              // ALPN support was recently backported to Java8 as
              // https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8230977.
              // Because of this lets not do a Java version runtime check but just depend on if the required methods are
 diff --git a/handler/src/main/java/io/netty/handler/ssl/SslHandler.java b/handler/src/main/java/io/netty/handler/ssl/SslHandler.java
-index fbb102d884..38d411eccd 100644
+index 65ab9f8c3c..6b198f350f 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/SslHandler.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/SslHandler.java
-@@ -229,50 +229,6 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
+@@ -243,49 +243,6 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
                  return ((ReferenceCountedOpenSslEngine) engine).jdkCompatibilityMode;
              }
          },
 -        CONSCRYPT(true, COMPOSITE_CUMULATOR) {
 -            @Override
--            SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int readerIndex, int len, ByteBuf out)
--                    throws SSLException {
+-            SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int len, ByteBuf out) throws SSLException {
 -                int nioBufferCount = in.nioBufferCount();
 -                int writerIndex = out.writerIndex();
 -                final SSLEngineResult result;
@@ -369,13 +371,13 @@ index fbb102d884..38d411eccd 100644
 -                    try {
 -                        handler.singleBuffer[0] = toByteBuffer(out, writerIndex, out.writableBytes());
 -                        result = ((ConscryptAlpnSslEngine) handler.engine).unwrap(
--                                in.nioBuffers(readerIndex, len),
+-                                in.nioBuffers(in.readerIndex(), len),
 -                                handler.singleBuffer);
 -                    } finally {
 -                        handler.singleBuffer[0] = null;
 -                    }
 -                } else {
--                    result = handler.engine.unwrap(toByteBuffer(in, readerIndex, len),
+-                    result = handler.engine.unwrap(toByteBuffer(in, in.readerIndex(), len),
 -                            toByteBuffer(out, writerIndex, out.writableBytes()));
 -                }
 -                out.writerIndex(writerIndex + result.bytesProduced());
@@ -401,8 +403,8 @@ index fbb102d884..38d411eccd 100644
 -        },
          JDK(false, MERGE_CUMULATOR) {
              @Override
-             SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int readerIndex, int len, ByteBuf out)
-@@ -325,8 +281,7 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
+             SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int len, ByteBuf out) throws SSLException {
+@@ -337,8 +294,7 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
          };
  
          static SslEngineType forEngine(SSLEngine engine) {
@@ -413,14 +415,14 @@ index fbb102d884..38d411eccd 100644
  
          SslEngineType(boolean wantsDirectBuffer, Cumulator cumulator) {
 diff --git a/pom.xml b/pom.xml
-index a1cfd1b2fe..4fff3dc4e3 100644
+index 6da932c89e..a693bba2bf 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -518,16 +518,6 @@
+@@ -654,16 +654,6 @@
          <optional>true</optional>
        </dependency>
  
--      <!-- Conscrypt - needed for running tests, used for acclerating SSL with OpenSSL. -->
+-      <!-- Conscrypt - needed for running tests, used for accelerating SSL with OpenSSL. -->
 -      <dependency>
 -        <groupId>${conscrypt.groupId}</groupId>
 -        <artifactId>${conscrypt.artifactId}</artifactId>
@@ -434,5 +436,5 @@ index a1cfd1b2fe..4fff3dc4e3 100644
          Bouncy Castle - completely optional, only needed when:
          - you generate a temporary self-signed certificate using SelfSignedCertificate, and
 -- 
-2.30.1
+2.34.1
 

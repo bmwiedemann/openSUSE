@@ -1,19 +1,19 @@
-From e57c188a3eea004768c8d8a00738ed55fc79e05d Mon Sep 17 00:00:00 2001
+From 2fc86d590dc9d1ebe4adf2422b4eaef196b831b5 Mon Sep 17 00:00:00 2001
 From: Mat Booth <mat.booth@redhat.com>
 Date: Mon, 7 Sep 2020 12:17:31 +0100
 Subject: [PATCH 1/7] Remove optional dep Blockhound
 
 ---
  common/pom.xml                                |   5 -
- .../java/io/netty/util/internal/Hidden.java   | 153 ------
+ .../java/io/netty/util/internal/Hidden.java   | 156 ------
  ...ockhound.integration.BlockHoundIntegration |  14 -
  pom.xml                                       |   7 -
- transport-blockhound-tests/pom.xml            | 115 ----
- .../NettyBlockHoundIntegrationTest.java       | 497 ------------------
+ transport-blockhound-tests/pom.xml            | 126 -----
+ .../NettyBlockHoundIntegrationTest.java       | 518 ------------------
  .../netty/util/internal/localhost_server.key  |  28 -
  .../netty/util/internal/localhost_server.pem  |  17 -
  .../io/netty/util/internal/mutual_auth_ca.pem |  19 -
- 9 files changed, 855 deletions(-)
+ 9 files changed, 890 deletions(-)
  delete mode 100644 common/src/main/java/io/netty/util/internal/Hidden.java
  delete mode 100644 common/src/main/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration
  delete mode 100644 transport-blockhound-tests/pom.xml
@@ -23,7 +23,7 @@ Subject: [PATCH 1/7] Remove optional dep Blockhound
  delete mode 100644 transport-blockhound-tests/src/test/resources/io/netty/util/internal/mutual_auth_ca.pem
 
 diff --git a/common/pom.xml b/common/pom.xml
-index 366fea28c7..938ea25c3e 100644
+index 9dfba34083..472429c00b 100644
 --- a/common/pom.xml
 +++ b/common/pom.xml
 @@ -78,11 +78,6 @@
@@ -40,10 +40,10 @@ index 366fea28c7..938ea25c3e 100644
        <artifactId>mockito-core</artifactId>
 diff --git a/common/src/main/java/io/netty/util/internal/Hidden.java b/common/src/main/java/io/netty/util/internal/Hidden.java
 deleted file mode 100644
-index fab714d8ad..0000000000
+index 0d96f054b3..0000000000
 --- a/common/src/main/java/io/netty/util/internal/Hidden.java
 +++ /dev/null
-@@ -1,153 +0,0 @@
+@@ -1,156 +0,0 @@
 -/*
 - * Copyright 2019 The Netty Project
 - *
@@ -70,7 +70,7 @@ index fab714d8ad..0000000000
 -import java.util.function.Predicate;
 -
 -/**
-- * Contains classes that must be have public visibility but are not public API.
+- * Contains classes that must have public visibility but are not public API.
 - */
 -class Hidden {
 -
@@ -130,7 +130,10 @@ index fab714d8ad..0000000000
 -                    "io.netty.handler.ssl.SslHandler",
 -                    "runAllDelegatedTasks"
 -            );
--
+-            builder.allowBlockingCallsInside(
+-                    "io.netty.handler.ssl.SslHandler",
+-                    "runDelegatedTasks"
+-            );
 -            builder.allowBlockingCallsInside(
 -                    "io.netty.util.concurrent.GlobalEventExecutor",
 -                    "takeTask");
@@ -174,7 +177,7 @@ index fab714d8ad..0000000000
 -                    "parseEtcResolverOptions");
 -
 -            builder.allowBlockingCallsInside(
--                    "io.netty.resolver.HostsFileParser",
+-                    "io.netty.resolver.HostsFileEntriesProvider$ParserImpl",
 -                    "parse");
 -
 -            builder.nonBlockingThreadPredicate(new Function<Predicate<Thread>, Predicate<Thread>>() {
@@ -219,10 +222,10 @@ index e33bea796c..0000000000
 -io.netty.util.internal.Hidden$NettyBlockHoundIntegration
 \ No newline at end of file
 diff --git a/pom.xml b/pom.xml
-index 573d1bf74f..a1cfd1b2fe 100644
+index d0691b828e..6da932c89e 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -446,7 +446,6 @@
+@@ -576,7 +576,6 @@
      <module>testsuite-native-image</module>
      <module>testsuite-native-image-client</module>
      <module>testsuite-native-image-client-runtime-init</module>
@@ -230,7 +233,7 @@ index 573d1bf74f..a1cfd1b2fe 100644
      <module>microbench</module>
      <module>bom</module>
    </modules>
-@@ -770,12 +769,6 @@
+@@ -952,12 +951,6 @@
          <scope>test</scope>
        </dependency>
  
@@ -238,17 +241,17 @@ index 573d1bf74f..a1cfd1b2fe 100644
 -      <dependency>
 -        <groupId>io.projectreactor.tools</groupId>
 -        <artifactId>blockhound</artifactId>
--        <version>1.0.3.RELEASE</version>
+-        <version>1.0.6.RELEASE</version>
 -      </dependency>
      </dependencies>
    </dependencyManagement>
  
 diff --git a/transport-blockhound-tests/pom.xml b/transport-blockhound-tests/pom.xml
 deleted file mode 100644
-index 693ba89278..0000000000
+index 084776a7f5..0000000000
 --- a/transport-blockhound-tests/pom.xml
 +++ /dev/null
-@@ -1,115 +0,0 @@
+@@ -1,126 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<!--
 -  ~ Copyright 2019 The Netty Project
@@ -271,7 +274,7 @@ index 693ba89278..0000000000
 -  <parent>
 -    <groupId>io.netty</groupId>
 -    <artifactId>netty-parent</artifactId>
--    <version>4.1.60.Final</version>
+-    <version>4.1.72.Final</version>
 -  </parent>
 -
 -  <artifactId>netty-transport-blockhound-tests</artifactId>
@@ -319,6 +322,15 @@ index 693ba89278..0000000000
 -        <argLine.common>-XX:+AllowRedefinitionToAddDeleteMethods</argLine.common>
 -      </properties>
 -    </profile>
+-    <profile>
+-      <id>java17</id>
+-      <activation>
+-        <jdk>17</jdk>
+-      </activation>
+-      <properties>
+-        <argLine.common>-XX:+AllowRedefinitionToAddDeleteMethods</argLine.common>
+-      </properties>
+-    </profile>
 -  </profiles>
 -
 -  <properties>
@@ -326,7 +338,9 @@ index 693ba89278..0000000000
 -    <maven.compiler.target>1.8</maven.compiler.target>
 -    <!-- Needed for SelfSignedCertificate -->
 -    <argLine.java9.extras>--add-exports java.base/sun.security.x509=ALL-UNNAMED</argLine.java9.extras>
--    <skipJapicmp>true</skipJapicmp>
+-    <japicmp.skip>true</japicmp.skip>
+-    <!-- Do not deploy this module -->
+-    <skipDeploy>true</skipDeploy>
 -  </properties>
 -
 -  <dependencies>
@@ -366,10 +380,10 @@ index 693ba89278..0000000000
 -</project>
 diff --git a/transport-blockhound-tests/src/test/java/io/netty/util/internal/NettyBlockHoundIntegrationTest.java b/transport-blockhound-tests/src/test/java/io/netty/util/internal/NettyBlockHoundIntegrationTest.java
 deleted file mode 100644
-index 1b454a1802..0000000000
+index e470366ee9..0000000000
 --- a/transport-blockhound-tests/src/test/java/io/netty/util/internal/NettyBlockHoundIntegrationTest.java
 +++ /dev/null
-@@ -1,497 +0,0 @@
+@@ -1,518 +0,0 @@
 -/*
 - * Copyright 2019 The Netty Project
 -
@@ -421,8 +435,9 @@ index 1b454a1802..0000000000
 -import io.netty.util.concurrent.SingleThreadEventExecutor;
 -import io.netty.util.internal.Hidden.NettyBlockHoundIntegration;
 -import org.hamcrest.Matchers;
--import org.junit.BeforeClass;
--import org.junit.Test;
+-import org.junit.jupiter.api.BeforeAll;
+-import org.junit.jupiter.api.Test;
+-import org.junit.jupiter.api.Timeout;
 -import reactor.blockhound.BlockHound;
 -import reactor.blockhound.BlockingOperationError;
 -import reactor.blockhound.integration.BlockHoundIntegration;
@@ -447,15 +462,15 @@ index 1b454a1802..0000000000
 -
 -import static io.netty.buffer.Unpooled.wrappedBuffer;
 -import static org.hamcrest.MatcherAssert.assertThat;
--import static org.junit.Assert.assertEquals;
--import static org.junit.Assert.assertNull;
--import static org.junit.Assert.assertTrue;
--import static org.junit.Assert.fail;
--import static org.junit.Assume.assumeTrue;
+-import static org.junit.jupiter.api.Assertions.assertEquals;
+-import static org.junit.jupiter.api.Assertions.assertNull;
+-import static org.junit.jupiter.api.Assertions.assertTrue;
+-import static org.junit.jupiter.api.Assertions.fail;
+-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 -
 -public class NettyBlockHoundIntegrationTest {
 -
--    @BeforeClass
+-    @BeforeAll
 -    public static void setUpClass() {
 -        BlockHound.install();
 -    }
@@ -487,12 +502,14 @@ index 1b454a1802..0000000000
 -        }
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testGlobalEventExecutorTakeTask() throws InterruptedException {
 -        testEventExecutorTakeTask(GlobalEventExecutor.INSTANCE);
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testSingleThreadEventExecutorTakeTask() throws InterruptedException {
 -        SingleThreadEventExecutor executor =
 -                new SingleThreadEventExecutor(null, new DefaultThreadFactory("test"), true) {
@@ -516,7 +533,8 @@ index 1b454a1802..0000000000
 -        latch.await();
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testSingleThreadEventExecutorAddTask() throws Exception {
 -        TestLinkedBlockingQueue<Runnable> taskQueue = new TestLinkedBlockingQueue<>();
 -        SingleThreadEventExecutor executor =
@@ -547,7 +565,8 @@ index 1b454a1802..0000000000
 -        latch.await();
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testHashedWheelTimerStartStop() throws Exception {
 -        HashedWheelTimer timer = new HashedWheelTimer();
 -        Future<?> futureStart = GlobalEventExecutor.INSTANCE.submit(timer::start);
@@ -612,14 +631,25 @@ index 1b454a1802..0000000000
 -    }
 -
 -    @Test
--    public void testTrustManagerVerify() throws Exception {
--        testTrustManagerVerify("TLSv1.2");
+-    public void testTrustManagerVerifyJDK() throws Exception {
+-        testTrustManagerVerify(SslProvider.JDK, "TLSv1.2");
 -    }
 -
 -    @Test
--    public void testTrustManagerVerifyTLSv13() throws Exception {
+-    public void testTrustManagerVerifyTLSv13JDK() throws Exception {
 -        assumeTrue(SslProvider.isTlsv13Supported(SslProvider.JDK));
--        testTrustManagerVerify("TLSv1.3");
+-        testTrustManagerVerify(SslProvider.JDK, "TLSv1.3");
+-    }
+-
+-    @Test
+-    public void testTrustManagerVerifyOpenSSL() throws Exception {
+-        testTrustManagerVerify(SslProvider.OPENSSL, "TLSv1.2");
+-    }
+-
+-    @Test
+-    public void testTrustManagerVerifyTLSv13OpenSSL() throws Exception {
+-        assumeTrue(SslProvider.isTlsv13Supported(SslProvider.OPENSSL));
+-        testTrustManagerVerify(SslProvider.OPENSSL, "TLSv1.3");
 -    }
 -
 -    @Test
@@ -693,17 +723,20 @@ index 1b454a1802..0000000000
 -        }
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testUnixResolverDnsServerAddressStreamProvider_Parse() throws InterruptedException {
 -        doTestParseResolverFilesAllowsBlockingCalls(DnsServerAddressStreamProviders::unixDefault);
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testHostsFileParser_Parse() throws InterruptedException {
 -        doTestParseResolverFilesAllowsBlockingCalls(DnsNameResolverBuilder::new);
 -    }
 -
--    @Test(timeout = 5000L)
+-    @Test
+-    @Timeout(value = 5000, unit = TimeUnit.MILLISECONDS)
 -    public void testUnixResolverDnsServerAddressStreamProvider_ParseEtcResolverSearchDomainsAndOptions()
 -            throws InterruptedException {
 -        NioEventLoopGroup group = new NioEventLoopGroup();
@@ -750,9 +783,10 @@ index 1b454a1802..0000000000
 -        }
 -    }
 -
--    private static void testTrustManagerVerify(String tlsVersion) throws Exception {
+-    private static void testTrustManagerVerify(SslProvider provider, String tlsVersion) throws Exception {
 -        final SslContext sslClientCtx =
 -                SslContextBuilder.forClient()
+-                                 .sslProvider(provider)
 -                                 .protocols(tlsVersion)
 -                                 .trustManager(ResourcesUtil.getFile(
 -                                         NettyBlockHoundIntegrationTest.class, "mutual_auth_ca.pem"))
@@ -764,6 +798,7 @@ index 1b454a1802..0000000000
 -                                            ResourcesUtil.getFile(
 -                                                    NettyBlockHoundIntegrationTest.class, "localhost_server.key"),
 -                                            null)
+-                                 .sslProvider(provider)
 -                                 .protocols(tlsVersion)
 -                                 .build();
 -
@@ -950,5 +985,5 @@ index 9c9241bc65..0000000000
 -hH82y9bBeflqroOeztqMpONpWoZjlz0sWbJNvXztXINL7LaNmVYOcoUrCcxPS54T
 ------END CERTIFICATE-----
 -- 
-2.30.1
+2.34.1
 

@@ -1,19 +1,20 @@
-From 1df4d45a18d61725f4684e4bb22730dafeb6dd83 Mon Sep 17 00:00:00 2001
+From 12a2e38fcd6aa677242c542799d026f94e4ec17e Mon Sep 17 00:00:00 2001
 From: Mat Booth <mat.booth@redhat.com>
 Date: Mon, 7 Sep 2020 13:41:44 +0100
 Subject: [PATCH 4/7] Remove optional dep tcnative
 
 ---
- handler/pom.xml                               |    6 -
- .../handler/ssl/CipherSuiteConverter.java     |  494 ----
+ handler/pom.xml                               |   10 -
+ .../handler/ssl/CipherSuiteConverter.java     |  496 ----
  .../ssl/DefaultOpenSslKeyMaterial.java        |  126 -
- .../java/io/netty/handler/ssl/OpenSsl.java    |  613 ----
+ .../java/io/netty/handler/ssl/OpenSsl.java    |  726 -----
+ .../ssl/OpenSslAsyncPrivateKeyMethod.java     |   58 -
  .../OpenSslCachingKeyMaterialProvider.java    |   79 -
- .../OpenSslCachingX509KeyManagerFactory.java  |   81 -
+ .../OpenSslCachingX509KeyManagerFactory.java  |   80 -
  .../ssl/OpenSslCertificateException.java      |   81 -
  .../handler/ssl/OpenSslClientContext.java     |  211 --
  .../io/netty/handler/ssl/OpenSslContext.java  |   60 -
- .../handler/ssl/OpenSslContextOption.java     |   52 -
+ .../handler/ssl/OpenSslContextOption.java     |   61 -
  .../io/netty/handler/ssl/OpenSslEngine.java   |   41 -
  .../netty/handler/ssl/OpenSslEngineMap.java   |   35 -
  .../ssl/OpenSslKeyMaterialManager.java        |  138 -
@@ -25,23 +26,23 @@ Subject: [PATCH 4/7] Remove optional dep tcnative
  .../handler/ssl/OpenSslSessionContext.java    |  229 --
  .../handler/ssl/OpenSslSessionStats.java      |  253 --
  .../handler/ssl/OpenSslSessionTicketKey.java  |   78 -
- ...OpenSslTlsv13X509ExtendedTrustManager.java |  240 --
- .../ssl/OpenSslX509KeyManagerFactory.java     |  413 ---
+ .../ssl/OpenSslX509KeyManagerFactory.java     |  416 ---
  .../ReferenceCountedOpenSslClientContext.java |  319 --
- .../ssl/ReferenceCountedOpenSslContext.java   |  985 -------
- .../ssl/ReferenceCountedOpenSslEngine.java    | 2589 -----------------
+ .../ssl/ReferenceCountedOpenSslContext.java   | 1085 -------
+ .../ssl/ReferenceCountedOpenSslEngine.java    | 2644 -----------------
  .../ReferenceCountedOpenSslServerContext.java |  298 --
- .../java/io/netty/handler/ssl/SslContext.java |   30 +-
- .../java/io/netty/handler/ssl/SslHandler.java |   49 +-
+ .../java/io/netty/handler/ssl/SslContext.java |   32 +-
+ .../java/io/netty/handler/ssl/SslHandler.java |   47 +-
  .../handler/ssl/SslMasterKeyHandler.java      |    3 -
  .../io/netty/handler/ssl/SslProvider.java     |   20 +-
  .../handler/ssl/ocsp/OcspClientHandler.java   |   61 -
  .../netty/handler/ssl/ocsp/package-info.java  |   23 -
- pom.xml                                       |   10 -
- 34 files changed, 3 insertions(+), 8442 deletions(-)
+ pom.xml                                       |   16 -
+ 34 files changed, 3 insertions(+), 8551 deletions(-)
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/CipherSuiteConverter.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/DefaultOpenSslKeyMaterial.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSsl.java
+ delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslAsyncPrivateKeyMethod.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslCachingKeyMaterialProvider.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslCachingX509KeyManagerFactory.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslCertificateException.java
@@ -59,7 +60,6 @@ Subject: [PATCH 4/7] Remove optional dep tcnative
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslSessionContext.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslSessionStats.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslSessionTicketKey.java
- delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslTlsv13X509ExtendedTrustManager.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/OpenSslX509KeyManagerFactory.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslClientContext.java
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslContext.java
@@ -69,13 +69,17 @@ Subject: [PATCH 4/7] Remove optional dep tcnative
  delete mode 100644 handler/src/main/java/io/netty/handler/ssl/ocsp/package-info.java
 
 diff --git a/handler/pom.xml b/handler/pom.xml
-index 7bea1cd0b9..eda82722dd 100644
+index ca72ebddc0..35993667cb 100644
 --- a/handler/pom.xml
 +++ b/handler/pom.xml
-@@ -60,12 +60,6 @@
+@@ -60,16 +60,6 @@
        <artifactId>netty-codec</artifactId>
        <version>${project.version}</version>
      </dependency>
+-    <dependency>
+-      <groupId>${project.groupId}</groupId>
+-      <artifactId>netty-tcnative-classes</artifactId>
+-    </dependency>
 -    <dependency>
 -      <groupId>${project.groupId}</groupId>
 -      <artifactId>${tcnative.artifactId}</artifactId>
@@ -87,10 +91,10 @@ index 7bea1cd0b9..eda82722dd 100644
        <artifactId>bcpkix-jdk15on</artifactId>
 diff --git a/handler/src/main/java/io/netty/handler/ssl/CipherSuiteConverter.java b/handler/src/main/java/io/netty/handler/ssl/CipherSuiteConverter.java
 deleted file mode 100644
-index 2dd81371ad..0000000000
+index a9ac8307c1..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/CipherSuiteConverter.java
 +++ /dev/null
-@@ -1,494 +0,0 @@
+@@ -1,496 +0,0 @@
 -/*
 - * Copyright 2014 The Netty Project
 - *
@@ -110,6 +114,7 @@ index 2dd81371ad..0000000000
 -package io.netty.handler.ssl;
 -
 -import io.netty.util.internal.PlatformDependent;
+-import io.netty.util.internal.UnstableApi;
 -import io.netty.util.internal.logging.InternalLogger;
 -import io.netty.util.internal.logging.InternalLoggerFactory;
 -
@@ -127,7 +132,8 @@ index 2dd81371ad..0000000000
 - *
 - * @see <a href="https://en.wikipedia.org/wiki/Cipher_suite">Wikipedia page about cipher suite</a>
 - */
--final class CipherSuiteConverter {
+-@UnstableApi
+-public final class CipherSuiteConverter {
 -
 -    private static final InternalLogger logger = InternalLoggerFactory.getInstance(CipherSuiteConverter.class);
 -
@@ -243,7 +249,7 @@ index 2dd81371ad..0000000000
 -     *
 -     * @return {@code null} if the conversion has failed
 -     */
--    static String toOpenSsl(String javaCipherSuite, boolean boringSSL) {
+-    public static String toOpenSsl(String javaCipherSuite, boolean boringSSL) {
 -        String converted = j2o.get(javaCipherSuite);
 -        if (converted != null) {
 -            return converted;
@@ -372,7 +378,7 @@ index 2dd81371ad..0000000000
 -     * @param protocol The cryptographic protocol (i.e. SSL, TLS, ...).
 -     * @return The translated cipher suite name according to java conventions. This will not be {@code null}.
 -     */
--    static String toJava(String openSslCipherSuite, String protocol) {
+-    public static String toJava(String openSslCipherSuite, String protocol) {
 -        Map<String, String> p2j = o2j.get(openSslCipherSuite);
 -        if (p2j == null) {
 -            p2j = cacheFromOpenSsl(openSslCipherSuite);
@@ -719,10 +725,10 @@ index 6673044eb0..0000000000
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSsl.java b/handler/src/main/java/io/netty/handler/ssl/OpenSsl.java
 deleted file mode 100644
-index 1d934c11b2..0000000000
+index acf4eb65e6..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/OpenSsl.java
 +++ /dev/null
-@@ -1,613 +0,0 @@
+@@ -1,726 +0,0 @@
 -/*
 - * Copyright 2014 The Netty Project
 - *
@@ -754,6 +760,7 @@ index 1d934c11b2..0000000000
 -import io.netty.util.internal.EmptyArrays;
 -import io.netty.util.internal.NativeLibraryLoader;
 -import io.netty.util.internal.PlatformDependent;
+-import io.netty.util.internal.StringUtil;
 -import io.netty.util.internal.SystemPropertyUtil;
 -import io.netty.util.internal.logging.InternalLogger;
 -import io.netty.util.internal.logging.InternalLoggerFactory;
@@ -762,7 +769,9 @@ index 1d934c11b2..0000000000
 -import java.security.cert.CertificateException;
 -import java.security.cert.X509Certificate;
 -import java.util.ArrayList;
+-import java.util.Arrays;
 -import java.util.Collections;
+-import java.util.HashSet;
 -import java.util.LinkedHashSet;
 -import java.util.List;
 -import java.util.Set;
@@ -789,6 +798,13 @@ index 1d934c11b2..0000000000
 -    private static final boolean IS_BORINGSSL;
 -    static final Set<String> SUPPORTED_PROTOCOLS_SET;
 -    static final String[] EXTRA_SUPPORTED_TLS_1_3_CIPHERS;
+-    static final String EXTRA_SUPPORTED_TLS_1_3_CIPHERS_STRING;
+-    static final String[] NAMED_GROUPS;
+-
+-    // Use default that is supported in java 11 and earlier and also in OpenSSL / BoringSSL.
+-    // See https://github.com/netty/netty-tcnative/issues/567
+-    // See https://www.java.com/en/configure_crypto.html for ordering
+-    private static final String[] DEFAULT_NAMED_GROUPS = { "x25519", "secp256r1", "secp384r1", "secp521r1" };
 -
 -    // self-signed certificate for netty.io and the matching private-key
 -    private static final String CERT = "-----BEGIN CERTIFICATE-----\n" +
@@ -903,14 +919,27 @@ index 1d934c11b2..0000000000
 -            boolean supportsKeyManagerFactory = false;
 -            boolean useKeyManagerFactory = false;
 -            boolean tlsv13Supported = false;
+-            String[] namedGroups = DEFAULT_NAMED_GROUPS;
+-            String[] defaultConvertedNamedGroups = new String[namedGroups.length];
+-            for (int i = 0; i < namedGroups.length; i++) {
+-                defaultConvertedNamedGroups[i] = GroupsConverter.toOpenSsl(namedGroups[i]);
+-            }
 -
 -            IS_BORINGSSL = "BoringSSL".equals(versionString());
 -            if (IS_BORINGSSL) {
 -                EXTRA_SUPPORTED_TLS_1_3_CIPHERS = new String [] { "TLS_AES_128_GCM_SHA256",
 -                        "TLS_AES_256_GCM_SHA384" ,
 -                        "TLS_CHACHA20_POLY1305_SHA256" };
+-
+-                StringBuilder ciphersBuilder = new StringBuilder(128);
+-                for (String cipher: EXTRA_SUPPORTED_TLS_1_3_CIPHERS) {
+-                    ciphersBuilder.append(cipher).append(":");
+-                }
+-                ciphersBuilder.setLength(ciphersBuilder.length() - 1);
+-                EXTRA_SUPPORTED_TLS_1_3_CIPHERS_STRING = ciphersBuilder.toString();
 -            }  else {
 -                EXTRA_SUPPORTED_TLS_1_3_CIPHERS = EmptyArrays.EMPTY_STRINGS;
+-                EXTRA_SUPPORTED_TLS_1_3_CIPHERS_STRING = StringUtil.EMPTY_STRING;
 -            }
 -
 -            try {
@@ -920,25 +949,29 @@ index 1d934c11b2..0000000000
 -                long cert = 0;
 -                long key = 0;
 -                try {
--                    try {
--                        StringBuilder tlsv13Ciphers = new StringBuilder();
+-                    // As we delegate to the KeyManager / TrustManager of the JDK we need to ensure it can actually
+-                    // handle TLSv13 as otherwise we may see runtime exceptions
+-                    if (SslProvider.isTlsv13Supported(SslProvider.JDK)) {
+-                        try {
+-                            StringBuilder tlsv13Ciphers = new StringBuilder();
 -
--                        for (String cipher: TLSV13_CIPHERS) {
--                            String converted = CipherSuiteConverter.toOpenSsl(cipher, IS_BORINGSSL);
--                            if (converted != null) {
--                                tlsv13Ciphers.append(converted).append(':');
+-                            for (String cipher : TLSV13_CIPHERS) {
+-                                String converted = CipherSuiteConverter.toOpenSsl(cipher, IS_BORINGSSL);
+-                                if (converted != null) {
+-                                    tlsv13Ciphers.append(converted).append(':');
+-                                }
 -                            }
--                        }
--                        if (tlsv13Ciphers.length() == 0) {
--                            tlsv13Supported = false;
--                        } else {
--                            tlsv13Ciphers.setLength(tlsv13Ciphers.length() - 1);
--                            SSLContext.setCipherSuite(sslCtx, tlsv13Ciphers.toString() , true);
--                            tlsv13Supported = true;
--                        }
+-                            if (tlsv13Ciphers.length() == 0) {
+-                                tlsv13Supported = false;
+-                            } else {
+-                                tlsv13Ciphers.setLength(tlsv13Ciphers.length() - 1);
+-                                SSLContext.setCipherSuite(sslCtx, tlsv13Ciphers.toString(), true);
+-                                tlsv13Supported = true;
+-                            }
 -
--                    } catch (Exception ignore) {
--                        tlsv13Supported = false;
+-                        } catch (Exception ignore) {
+-                            tlsv13Supported = false;
+-                        }
 -                    }
 -
 -                    SSLContext.setCipherSuite(sslCtx, "ALL", false);
@@ -1023,12 +1056,51 @@ index 1d934c11b2..0000000000
 -                            SSL.freePrivateKey(key);
 -                        }
 -                    }
+-
+-                    String groups = SystemPropertyUtil.get("jdk.tls.namedGroups", null);
+-                    if (groups != null) {
+-                        String[] nGroups = groups.split(",");
+-                        Set<String> supportedNamedGroups = new LinkedHashSet<String>(nGroups.length);
+-                        Set<String> supportedConvertedNamedGroups = new LinkedHashSet<String>(nGroups.length);
+-
+-                        Set<String> unsupportedNamedGroups = new LinkedHashSet<String>();
+-                        for (String namedGroup : nGroups) {
+-                            String converted = GroupsConverter.toOpenSsl(namedGroup);
+-                            if (SSLContext.setCurvesList(sslCtx, converted)) {
+-                                supportedConvertedNamedGroups.add(converted);
+-                                supportedNamedGroups.add(namedGroup);
+-                            } else {
+-                                unsupportedNamedGroups.add(namedGroup);
+-                            }
+-                        }
+-
+-                        if (supportedNamedGroups.isEmpty()) {
+-                            namedGroups = defaultConvertedNamedGroups;
+-                            logger.info("All configured namedGroups are not supported: {}. Use default: {}.",
+-                                    Arrays.toString(unsupportedNamedGroups.toArray(EmptyArrays.EMPTY_STRINGS)),
+-                                    Arrays.toString(DEFAULT_NAMED_GROUPS));
+-                        } else {
+-                            String[] groupArray = supportedNamedGroups.toArray(EmptyArrays.EMPTY_STRINGS);
+-                            if (unsupportedNamedGroups.isEmpty()) {
+-                                logger.info("Using configured namedGroups -D 'jdk.tls.namedGroup': {} ",
+-                                        Arrays.toString(groupArray));
+-                            } else {
+-                                logger.info("Using supported configured namedGroups: {}. Unsupported namedGroups: {}. ",
+-                                        Arrays.toString(groupArray),
+-                                        Arrays.toString(unsupportedNamedGroups.toArray(EmptyArrays.EMPTY_STRINGS)));
+-                            }
+-                            namedGroups =  supportedConvertedNamedGroups.toArray(EmptyArrays.EMPTY_STRINGS);
+-                        }
+-                    } else {
+-                        namedGroups = defaultConvertedNamedGroups;
+-                    }
 -                } finally {
 -                    SSLContext.free(sslCtx);
 -                }
 -            } catch (Exception e) {
 -                logger.warn("Failed to get the list of available OpenSSL cipher suites.", e);
 -            }
+-            NAMED_GROUPS = namedGroups;
 -            AVAILABLE_OPENSSL_CIPHER_SUITES = Collections.unmodifiableSet(availableOpenSslCipherSuites);
 -            final Set<String> availableJavaCipherSuites = new LinkedHashSet<String>(
 -                    AVAILABLE_OPENSSL_CIPHER_SUITES.size() * 2);
@@ -1045,6 +1117,8 @@ index 1d934c11b2..0000000000
 -
 -            addIfSupported(availableJavaCipherSuites, defaultCiphers, DEFAULT_CIPHER_SUITES);
 -            addIfSupported(availableJavaCipherSuites, defaultCiphers, TLSV13_CIPHER_SUITES);
+-            // Also handle the extra supported ciphers as these will contain some more stuff on BoringSSL.
+-            addIfSupported(availableJavaCipherSuites, defaultCiphers, EXTRA_SUPPORTED_TLS_1_3_CIPHERS);
 -
 -            useFallbackCiphersIfDefaultIsEmpty(defaultCiphers, availableJavaCipherSuites);
 -            DEFAULT_CIPHERS = Collections.unmodifiableList(defaultCiphers);
@@ -1062,26 +1136,26 @@ index 1d934c11b2..0000000000
 -
 -            Set<String> protocols = new LinkedHashSet<String>(6);
 -            // Seems like there is no way to explicitly disable SSLv2Hello in openssl so it is always enabled
--            protocols.add(PROTOCOL_SSL_V2_HELLO);
+-            protocols.add(SslProtocols.SSL_v2_HELLO);
 -            if (doesSupportProtocol(SSL.SSL_PROTOCOL_SSLV2, SSL.SSL_OP_NO_SSLv2)) {
--                protocols.add(PROTOCOL_SSL_V2);
+-                protocols.add(SslProtocols.SSL_v2);
 -            }
 -            if (doesSupportProtocol(SSL.SSL_PROTOCOL_SSLV3, SSL.SSL_OP_NO_SSLv3)) {
--                protocols.add(PROTOCOL_SSL_V3);
+-                protocols.add(SslProtocols.SSL_v3);
 -            }
 -            if (doesSupportProtocol(SSL.SSL_PROTOCOL_TLSV1, SSL.SSL_OP_NO_TLSv1)) {
--                protocols.add(PROTOCOL_TLS_V1);
+-                protocols.add(SslProtocols.TLS_v1);
 -            }
 -            if (doesSupportProtocol(SSL.SSL_PROTOCOL_TLSV1_1, SSL.SSL_OP_NO_TLSv1_1)) {
--                protocols.add(PROTOCOL_TLS_V1_1);
+-                protocols.add(SslProtocols.TLS_v1_1);
 -            }
 -            if (doesSupportProtocol(SSL.SSL_PROTOCOL_TLSV1_2, SSL.SSL_OP_NO_TLSv1_2)) {
--                protocols.add(PROTOCOL_TLS_V1_2);
+-                protocols.add(SslProtocols.TLS_v1_2);
 -            }
 -
--            // This is only supported by java11 and later.
+-            // This is only supported by java8u272 and later.
 -            if (tlsv13Supported && doesSupportProtocol(SSL.SSL_PROTOCOL_TLSV1_3, SSL.SSL_OP_NO_TLSv1_3)) {
--                protocols.add(PROTOCOL_TLS_V1_3);
+-                protocols.add(SslProtocols.TLS_v1_3);
 -                TLSV13_SUPPORTED = true;
 -            } else {
 -                TLSV13_SUPPORTED = false;
@@ -1106,7 +1180,52 @@ index 1d934c11b2..0000000000
 -            TLSV13_SUPPORTED = false;
 -            IS_BORINGSSL = false;
 -            EXTRA_SUPPORTED_TLS_1_3_CIPHERS = EmptyArrays.EMPTY_STRINGS;
+-            EXTRA_SUPPORTED_TLS_1_3_CIPHERS_STRING = StringUtil.EMPTY_STRING;
+-            NAMED_GROUPS = DEFAULT_NAMED_GROUPS;
 -        }
+-    }
+-
+-    static String checkTls13Ciphers(InternalLogger logger, String ciphers) {
+-        if (IS_BORINGSSL && !ciphers.isEmpty()) {
+-            assert EXTRA_SUPPORTED_TLS_1_3_CIPHERS.length > 0;
+-            Set<String> boringsslTlsv13Ciphers = new HashSet<String>(EXTRA_SUPPORTED_TLS_1_3_CIPHERS.length);
+-            Collections.addAll(boringsslTlsv13Ciphers, EXTRA_SUPPORTED_TLS_1_3_CIPHERS);
+-            boolean ciphersNotMatch = false;
+-            for (String cipher: ciphers.split(":")) {
+-                if (boringsslTlsv13Ciphers.isEmpty()) {
+-                    ciphersNotMatch = true;
+-                    break;
+-                }
+-                if (!boringsslTlsv13Ciphers.remove(cipher) &&
+-                        !boringsslTlsv13Ciphers.remove(CipherSuiteConverter.toJava(cipher, "TLS"))) {
+-                    ciphersNotMatch = true;
+-                    break;
+-                }
+-            }
+-
+-            // Also check if there are ciphers left.
+-            ciphersNotMatch |= !boringsslTlsv13Ciphers.isEmpty();
+-
+-            if (ciphersNotMatch) {
+-                if (logger.isInfoEnabled()) {
+-                    StringBuilder javaCiphers = new StringBuilder(128);
+-                    for (String cipher : ciphers.split(":")) {
+-                        javaCiphers.append(CipherSuiteConverter.toJava(cipher, "TLS")).append(":");
+-                    }
+-                    javaCiphers.setLength(javaCiphers.length() - 1);
+-                    logger.info(
+-                            "BoringSSL doesn't allow to enable or disable TLSv1.3 ciphers explicitly." +
+-                                    " Provided TLSv1.3 ciphers: '{}', default TLSv1.3 ciphers that will be used: '{}'.",
+-                            javaCiphers, EXTRA_SUPPORTED_TLS_1_3_CIPHERS_STRING);
+-                }
+-                return EXTRA_SUPPORTED_TLS_1_3_CIPHERS_STRING;
+-            }
+-        }
+-        return ciphers;
+-    }
+-
+-    static boolean isSessionCacheSupported() {
+-        return version() >= 0x10100000L;
 -    }
 -
 -    /**
@@ -1296,7 +1415,7 @@ index 1d934c11b2..0000000000
 -
 -        // First, try loading the platform-specific library. Platform-specific
 -        // libraries will be available if using a tcnative uber jar.
--        if ("linux".equalsIgnoreCase(os)) {
+-        if ("linux".equals(os)) {
 -            Set<String> classifiers = PlatformDependent.normalizedLinuxClassifiers();
 -            for (String classifier : classifiers) {
 -                libNames.add(staticLibName + "_" + os + '_' + arch + "_" + classifier);
@@ -1335,6 +1454,70 @@ index 1d934c11b2..0000000000
 -    static boolean isBoringSSL() {
 -        return IS_BORINGSSL;
 -    }
+-}
+diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslAsyncPrivateKeyMethod.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslAsyncPrivateKeyMethod.java
+deleted file mode 100644
+index 27edaa629f..0000000000
+--- a/handler/src/main/java/io/netty/handler/ssl/OpenSslAsyncPrivateKeyMethod.java
++++ /dev/null
+@@ -1,58 +0,0 @@
+-/*
+- * Copyright 2021 The Netty Project
+- *
+- * The Netty Project licenses this file to you under the Apache License,
+- * version 2.0 (the "License"); you may not use this file except in compliance
+- * with the License. You may obtain a copy of the License at:
+- *
+- *   https://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+- * License for the specific language governing permissions and limitations
+- * under the License.
+- */
+-package io.netty.handler.ssl;
+-
+-import io.netty.internal.tcnative.SSLPrivateKeyMethod;
+-import io.netty.util.concurrent.Future;
+-
+-import javax.net.ssl.SSLEngine;
+-
+-public interface OpenSslAsyncPrivateKeyMethod {
+-    int SSL_SIGN_RSA_PKCS1_SHA1 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PKCS1_SHA1;
+-    int SSL_SIGN_RSA_PKCS1_SHA256 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PKCS1_SHA256;
+-    int SSL_SIGN_RSA_PKCS1_SHA384 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PKCS1_SHA384;
+-    int SSL_SIGN_RSA_PKCS1_SHA512 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PKCS1_SHA512;
+-    int SSL_SIGN_ECDSA_SHA1 = SSLPrivateKeyMethod.SSL_SIGN_ECDSA_SHA1;
+-    int SSL_SIGN_ECDSA_SECP256R1_SHA256 = SSLPrivateKeyMethod.SSL_SIGN_ECDSA_SECP256R1_SHA256;
+-    int SSL_SIGN_ECDSA_SECP384R1_SHA384 = SSLPrivateKeyMethod.SSL_SIGN_ECDSA_SECP384R1_SHA384;
+-    int SSL_SIGN_ECDSA_SECP521R1_SHA512 = SSLPrivateKeyMethod.SSL_SIGN_ECDSA_SECP521R1_SHA512;
+-    int SSL_SIGN_RSA_PSS_RSAE_SHA256 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PSS_RSAE_SHA256;
+-    int SSL_SIGN_RSA_PSS_RSAE_SHA384 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PSS_RSAE_SHA384;
+-    int SSL_SIGN_RSA_PSS_RSAE_SHA512 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PSS_RSAE_SHA512;
+-    int SSL_SIGN_ED25519 = SSLPrivateKeyMethod.SSL_SIGN_ED25519;
+-    int SSL_SIGN_RSA_PKCS1_MD5_SHA1 = SSLPrivateKeyMethod.SSL_SIGN_RSA_PKCS1_MD5_SHA1;
+-
+-    /**
+-     * Signs the input with the given key and notifies the returned {@link Future} with the signed bytes.
+-     *
+-     * @param engine                the {@link SSLEngine}
+-     * @param signatureAlgorithm    the algorithm to use for signing
+-     * @param input                 the digest itself
+-     * @return                      the {@link Future} that will be notified with the signed data
+-     *                              (must not be {@code null}) when the operation completes.
+-     */
+-    Future<byte[]> sign(SSLEngine engine, int signatureAlgorithm, byte[] input);
+-
+-    /**
+-     * Decrypts the input with the given key and notifies the returned {@link Future} with the decrypted bytes.
+-     *
+-     * @param engine                the {@link SSLEngine}
+-     * @param input                 the input which should be decrypted
+-     * @return                      the {@link Future} that will be notified with the decrypted data
+-     *                              (must not be {@code null}) when the operation completes.
+-     */
+-    Future<byte[]> decrypt(SSLEngine engine, byte[] input);
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslCachingKeyMaterialProvider.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslCachingKeyMaterialProvider.java
 deleted file mode 100644
@@ -1423,10 +1606,10 @@ index a55007dfdb..0000000000
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslCachingX509KeyManagerFactory.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslCachingX509KeyManagerFactory.java
 deleted file mode 100644
-index 2b424bbb55..0000000000
+index 7f644e2151..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/OpenSslCachingX509KeyManagerFactory.java
 +++ /dev/null
-@@ -1,81 +0,0 @@
+@@ -1,80 +0,0 @@
 -/*
 - * Copyright 2018 The Netty Project
 - *
@@ -1450,7 +1633,6 @@ index 2b424bbb55..0000000000
 -import javax.net.ssl.KeyManagerFactory;
 -import javax.net.ssl.KeyManagerFactorySpi;
 -import javax.net.ssl.ManagerFactoryParameters;
--import javax.net.ssl.X509ExtendedKeyManager;
 -import javax.net.ssl.X509KeyManager;
 -import java.security.InvalidAlgorithmParameterException;
 -import java.security.KeyStore;
@@ -1880,10 +2062,10 @@ index e50108cf35..0000000000
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslContextOption.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslContextOption.java
 deleted file mode 100644
-index 5cfd7da3d0..0000000000
+index cf7d11c09c..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/OpenSslContextOption.java
 +++ /dev/null
-@@ -1,52 +0,0 @@
+@@ -1,61 +0,0 @@
 -/*
 - * Copyright 2021 The Netty Project
 - *
@@ -1935,6 +2117,15 @@ index 5cfd7da3d0..0000000000
 -     */
 -    public static final OpenSslContextOption<OpenSslPrivateKeyMethod> PRIVATE_KEY_METHOD =
 -            new OpenSslContextOption<OpenSslPrivateKeyMethod>("PRIVATE_KEY_METHOD");
+-
+-    /**
+-     * Set the {@link OpenSslAsyncPrivateKeyMethod} to use. This allows to offload private-key operations
+-     * if needed.
+-     *
+-     * This is currently only supported when {@code BoringSSL} is used.
+-     */
+-    public static final OpenSslContextOption<OpenSslAsyncPrivateKeyMethod> ASYNC_PRIVATE_KEY_METHOD =
+-            new OpenSslContextOption<OpenSslAsyncPrivateKeyMethod>("ASYNC_PRIVATE_KEY_METHOD");
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslEngine.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslEngine.java
 deleted file mode 100644
@@ -3604,258 +3795,12 @@ index 175a37e5fa..0000000000
 -        return key.getAesKey().clone();
 -    }
 -}
-diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslTlsv13X509ExtendedTrustManager.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslTlsv13X509ExtendedTrustManager.java
-deleted file mode 100644
-index c55543a71d..0000000000
---- a/handler/src/main/java/io/netty/handler/ssl/OpenSslTlsv13X509ExtendedTrustManager.java
-+++ /dev/null
-@@ -1,240 +0,0 @@
--/*
-- * Copyright 2018 The Netty Project
-- *
-- * The Netty Project licenses this file to you under the Apache License,
-- * version 2.0 (the "License"); you may not use this file except in compliance
-- * with the License. You may obtain a copy of the License at:
-- *
-- *   https://www.apache.org/licenses/LICENSE-2.0
-- *
-- * Unless required by applicable law or agreed to in writing, software
-- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-- * License for the specific language governing permissions and limitations
-- * under the License.
-- */
--package io.netty.handler.ssl;
--
--import io.netty.util.internal.PlatformDependent;
--import io.netty.util.internal.SuppressJava6Requirement;
--
--import javax.net.ssl.SSLEngine;
--import javax.net.ssl.SSLPeerUnverifiedException;
--import javax.net.ssl.SSLSession;
--import javax.net.ssl.SSLSessionContext;
--import javax.net.ssl.X509ExtendedTrustManager;
--import java.net.Socket;
--import java.security.Principal;
--import java.security.cert.Certificate;
--import java.security.cert.CertificateException;
--import java.security.cert.X509Certificate;
--import java.util.List;
--
--/**
-- * Provide a way to use {@code TLSv1.3} with Java versions prior to 11 by adding a
-- * <a href="https://mail.openjdk.java.net/pipermail/security-dev/2018-September/018242.html>workaround</a> for the
-- * default {@link X509ExtendedTrustManager} implementations provided by the JDK that can not handle a protocol version
-- * of {@code TLSv1.3}.
-- */
--@SuppressJava6Requirement(reason = "Usage guarded by java version check")
--final class OpenSslTlsv13X509ExtendedTrustManager extends X509ExtendedTrustManager {
--
--    private final X509ExtendedTrustManager tm;
--
--    private OpenSslTlsv13X509ExtendedTrustManager(X509ExtendedTrustManager tm) {
--        this.tm = tm;
--    }
--
--    static X509ExtendedTrustManager wrap(X509ExtendedTrustManager tm) {
--        if (!SslProvider.isTlsv13Supported(SslProvider.JDK) && SslProvider.isTlsv13Supported(SslProvider.OPENSSL)) {
--            return new OpenSslTlsv13X509ExtendedTrustManager(tm);
--        }
--        return tm;
--    }
--
--    @Override
--    public void checkClientTrusted(X509Certificate[] x509Certificates, String s, Socket socket)
--            throws CertificateException {
--        tm.checkClientTrusted(x509Certificates, s, socket);
--    }
--
--    @Override
--    public void checkServerTrusted(X509Certificate[] x509Certificates, String s, Socket socket)
--            throws CertificateException {
--        tm.checkServerTrusted(x509Certificates, s, socket);
--    }
--
--    private static SSLEngine wrapEngine(final SSLEngine engine) {
--        final SSLSession session = engine.getHandshakeSession();
--        if (session != null && SslUtils.PROTOCOL_TLS_V1_3.equals(session.getProtocol())) {
--            return new JdkSslEngine(engine) {
--                @Override
--                public String getNegotiatedApplicationProtocol() {
--                    if (engine instanceof ApplicationProtocolAccessor) {
--                        return ((ApplicationProtocolAccessor) engine).getNegotiatedApplicationProtocol();
--                    }
--                    return super.getNegotiatedApplicationProtocol();
--                }
--
--                @Override
--                public SSLSession getHandshakeSession() {
--                    if (PlatformDependent.javaVersion() >= 7 && session instanceof ExtendedOpenSslSession) {
--                        final ExtendedOpenSslSession extendedOpenSslSession = (ExtendedOpenSslSession) session;
--                        return new ExtendedOpenSslSession(extendedOpenSslSession) {
--                            @Override
--                            public List getRequestedServerNames() {
--                                return extendedOpenSslSession.getRequestedServerNames();
--                            }
--
--                            @Override
--                            public String[] getPeerSupportedSignatureAlgorithms() {
--                                return extendedOpenSslSession.getPeerSupportedSignatureAlgorithms();
--                            }
--
--                            @Override
--                            public String getProtocol() {
--                                return SslUtils.PROTOCOL_TLS_V1_2;
--                            }
--                        };
--                    } else {
--                        return new SSLSession() {
--                            @Override
--                            public byte[] getId() {
--                                return session.getId();
--                            }
--
--                            @Override
--                            public SSLSessionContext getSessionContext() {
--                                return session.getSessionContext();
--                            }
--
--                            @Override
--                            public long getCreationTime() {
--                                return session.getCreationTime();
--                            }
--
--                            @Override
--                            public long getLastAccessedTime() {
--                                return session.getLastAccessedTime();
--                            }
--
--                            @Override
--                            public void invalidate() {
--                                session.invalidate();
--                            }
--
--                            @Override
--                            public boolean isValid() {
--                                return session.isValid();
--                            }
--
--                            @Override
--                            public void putValue(String s, Object o) {
--                                session.putValue(s, o);
--                            }
--
--                            @Override
--                            public Object getValue(String s) {
--                               return session.getValue(s);
--                            }
--
--                            @Override
--                            public void removeValue(String s) {
--                                session.removeValue(s);
--                            }
--
--                            @Override
--                            public String[] getValueNames() {
--                                return session.getValueNames();
--                            }
--
--                            @Override
--                            public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
--                                return session.getPeerCertificates();
--                            }
--
--                            @Override
--                            public Certificate[] getLocalCertificates() {
--                                return session.getLocalCertificates();
--                            }
--
--                            @Override
--                            public javax.security.cert.X509Certificate[] getPeerCertificateChain()
--                                    throws SSLPeerUnverifiedException {
--                                return session.getPeerCertificateChain();
--                            }
--
--                            @Override
--                            public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
--                                return session.getPeerPrincipal();
--                            }
--
--                            @Override
--                            public Principal getLocalPrincipal() {
--                                return session.getLocalPrincipal();
--                            }
--
--                            @Override
--                            public String getCipherSuite() {
--                                return session.getCipherSuite();
--                            }
--
--                            @Override
--                            public String getProtocol() {
--                                return SslUtils.PROTOCOL_TLS_V1_2;
--                            }
--
--                            @Override
--                            public String getPeerHost() {
--                                return session.getPeerHost();
--                            }
--
--                            @Override
--                            public int getPeerPort() {
--                                return session.getPeerPort();
--                            }
--
--                            @Override
--                            public int getPacketBufferSize() {
--                                return session.getPacketBufferSize();
--                            }
--
--                            @Override
--                            public int getApplicationBufferSize() {
--                                return session.getApplicationBufferSize();
--                            }
--                        };
--                    }
--                }
--            };
--        }
--        return engine;
--    }
--
--    @Override
--    public void checkClientTrusted(X509Certificate[] x509Certificates, final String s, SSLEngine sslEngine)
--            throws CertificateException {
--        tm.checkClientTrusted(x509Certificates, s, wrapEngine(sslEngine));
--    }
--
--    @Override
--    public void checkServerTrusted(X509Certificate[] x509Certificates, String s, SSLEngine sslEngine)
--            throws CertificateException {
--        tm.checkServerTrusted(x509Certificates, s, wrapEngine(sslEngine));
--    }
--
--    @Override
--    public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
--        tm.checkClientTrusted(x509Certificates, s);
--    }
--
--    @Override
--    public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
--        tm.checkServerTrusted(x509Certificates, s);
--    }
--
--    @Override
--    public X509Certificate[] getAcceptedIssuers() {
--        return tm.getAcceptedIssuers();
--    }
--}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/OpenSslX509KeyManagerFactory.java b/handler/src/main/java/io/netty/handler/ssl/OpenSslX509KeyManagerFactory.java
 deleted file mode 100644
-index c319e1e0d7..0000000000
+index df711a0bed..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/OpenSslX509KeyManagerFactory.java
 +++ /dev/null
-@@ -1,413 +0,0 @@
+@@ -1,416 +0,0 @@
 -/*
 - * Copyright 2018 The Netty Project
 - *
@@ -3872,6 +3817,9 @@ index c319e1e0d7..0000000000
 - * under the License.
 - */
 -package io.netty.handler.ssl;
+-
+-import static io.netty.util.internal.ObjectUtil.checkNonEmpty;
+-import static io.netty.util.internal.ObjectUtil.checkNotNull;
 -
 -import io.netty.buffer.ByteBufAllocator;
 -import io.netty.buffer.UnpooledByteBufAllocator;
@@ -4062,9 +4010,7 @@ index c319e1e0d7..0000000000
 -                            destroy();
 -                        }
 -                    }
--                    if (materialMap.isEmpty()) {
--                        throw new IllegalArgumentException("aliases must be non-empty");
--                    }
+-                    checkNonEmpty(materialMap, "materialMap");
 -                }
 -
 -                @Override
@@ -4112,6 +4058,7 @@ index c319e1e0d7..0000000000
 -    public static OpenSslX509KeyManagerFactory newEngineBased(X509Certificate[] certificateChain, String password)
 -            throws CertificateException, IOException,
 -                   KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+-        checkNotNull(certificateChain, "certificateChain");
 -        KeyStore store = new OpenSslKeyStore(certificateChain.clone(), false);
 -        store.load(null, null);
 -        OpenSslX509KeyManagerFactory factory = new OpenSslX509KeyManagerFactory();
@@ -4144,6 +4091,7 @@ index c319e1e0d7..0000000000
 -    public static OpenSslX509KeyManagerFactory newKeyless(X509Certificate... certificateChain)
 -            throws CertificateException, IOException,
 -            KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException {
+-        checkNotNull(certificateChain, "certificateChain");
 -        KeyStore store = new OpenSslKeyStore(certificateChain.clone(), true);
 -        store.load(null, null);
 -        OpenSslX509KeyManagerFactory factory = new OpenSslX509KeyManagerFactory();
@@ -4271,7 +4219,7 @@ index c319e1e0d7..0000000000
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslClientContext.java b/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslClientContext.java
 deleted file mode 100644
-index 317c558639..0000000000
+index 21bb540506..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslClientContext.java
 +++ /dev/null
 @@ -1,319 +0,0 @@
@@ -4502,7 +4450,7 @@ index 317c558639..0000000000
 -
 -        ExtendedTrustManagerVerifyCallback(OpenSslEngineMap engineMap, X509ExtendedTrustManager manager) {
 -            super(engineMap);
--            this.manager = OpenSslTlsv13X509ExtendedTrustManager.wrap(manager);
+-            this.manager = manager;
 -        }
 -
 -        @Override
@@ -4596,10 +4544,10 @@ index 317c558639..0000000000
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslContext.java b/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslContext.java
 deleted file mode 100644
-index 0546d1a99a..0000000000
+index 82124bfbc3..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslContext.java
 +++ /dev/null
-@@ -1,985 +0,0 @@
+@@ -1,1085 +0,0 @@
 -/*
 - * Copyright 2016 The Netty Project
 - *
@@ -4620,7 +4568,9 @@ index 0546d1a99a..0000000000
 -import io.netty.buffer.ByteBuf;
 -import io.netty.buffer.ByteBufAllocator;
 -import io.netty.handler.ssl.util.LazyX509Certificate;
+-import io.netty.internal.tcnative.AsyncSSLPrivateKeyMethod;
 -import io.netty.internal.tcnative.CertificateVerifier;
+-import io.netty.internal.tcnative.ResultCallback;
 -import io.netty.internal.tcnative.SSL;
 -import io.netty.internal.tcnative.SSLContext;
 -import io.netty.internal.tcnative.SSLPrivateKeyMethod;
@@ -4629,7 +4579,8 @@ index 0546d1a99a..0000000000
 -import io.netty.util.ResourceLeakDetector;
 -import io.netty.util.ResourceLeakDetectorFactory;
 -import io.netty.util.ResourceLeakTracker;
--import io.netty.util.internal.ObjectUtil;
+-import io.netty.util.concurrent.Future;
+-import io.netty.util.concurrent.FutureListener;
 -import io.netty.util.internal.PlatformDependent;
 -import io.netty.util.internal.StringUtil;
 -import io.netty.util.internal.SuppressJava6Requirement;
@@ -4646,8 +4597,9 @@ index 0546d1a99a..0000000000
 -import java.security.cert.CertificateNotYetValidException;
 -import java.security.cert.CertificateRevokedException;
 -import java.security.cert.X509Certificate;
--import java.util.Arrays;
+-import java.util.ArrayList;
 -import java.util.Collections;
+-import java.util.LinkedHashSet;
 -import java.util.List;
 -import java.util.Map;
 -import java.util.concurrent.Executor;
@@ -4668,6 +4620,7 @@ index 0546d1a99a..0000000000
 -import static io.netty.handler.ssl.OpenSsl.DEFAULT_CIPHERS;
 -import static io.netty.handler.ssl.OpenSsl.availableJavaCipherSuites;
 -import static io.netty.util.internal.ObjectUtil.checkNotNull;
+-import static io.netty.util.internal.ObjectUtil.checkNonEmpty;
 -import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
 -
 -/**
@@ -4686,8 +4639,9 @@ index 0546d1a99a..0000000000
 -    private static final int DEFAULT_BIO_NON_APPLICATION_BUFFER_SIZE = Math.max(1,
 -            SystemPropertyUtil.getInt("io.netty.handler.ssl.openssl.bioNonApplicationBufferSize",
 -                    2048));
+-    // Let's use tasks by default but still allow the user to disable it via system property just in case.
 -    static final boolean USE_TASKS =
--            SystemPropertyUtil.getBoolean("io.netty.handler.ssl.openssl.useTasks", false);
+-            SystemPropertyUtil.getBoolean("io.netty.handler.ssl.openssl.useTasks", true);
 -    private static final Integer DH_KEY_LENGTH;
 -    private static final ResourceLeakDetector<ReferenceCountedOpenSslContext> leakDetector =
 -            ResourceLeakDetectorFactory.instance().newResourceLeakDetector(ReferenceCountedOpenSslContext.class);
@@ -4713,6 +4667,7 @@ index 0546d1a99a..0000000000
 -    // https://mail.openjdk.java.net/pipermail/security-dev/2021-March/024758.html
 -    static final boolean CLIENT_ENABLE_SESSION_CACHE =
 -            SystemPropertyUtil.getBoolean("io.netty.handler.ssl.openssl.sessionCacheClient", false);
+-
 -    /**
 -     * The OpenSSL SSL_CTX object.
 -     *
@@ -4819,6 +4774,7 @@ index 0546d1a99a..0000000000
 -        boolean tlsFalseStart = false;
 -        boolean useTasks = USE_TASKS;
 -        OpenSslPrivateKeyMethod privateKeyMethod = null;
+-        OpenSslAsyncPrivateKeyMethod asyncPrivateKeyMethod = null;
 -
 -        if (ctxOptions != null) {
 -            for (Map.Entry<SslContextOption<?>, Object> ctxOpt : ctxOptions) {
@@ -4830,12 +4786,20 @@ index 0546d1a99a..0000000000
 -                    useTasks = (Boolean) ctxOpt.getValue();
 -                } else if (option == OpenSslContextOption.PRIVATE_KEY_METHOD) {
 -                    privateKeyMethod = (OpenSslPrivateKeyMethod) ctxOpt.getValue();
+-                } else if (option == OpenSslContextOption.ASYNC_PRIVATE_KEY_METHOD) {
+-                    asyncPrivateKeyMethod = (OpenSslAsyncPrivateKeyMethod) ctxOpt.getValue();
 -                } else {
 -                    logger.debug("Skipping unsupported " + SslContextOption.class.getSimpleName()
 -                            + ": " + ctxOpt.getKey());
 -                }
 -            }
 -        }
+-        if (privateKeyMethod != null && asyncPrivateKeyMethod != null) {
+-            throw new IllegalArgumentException("You can either only use "
+-                    + OpenSslAsyncPrivateKeyMethod.class.getSimpleName() + " or "
+-                    + OpenSslPrivateKeyMethod.class.getSimpleName());
+-        }
+-
 -        this.tlsFalseStart = tlsFalseStart;
 -
 -        leak = leakDetection ? leakDetector.track(this) : null;
@@ -4846,8 +4810,12 @@ index 0546d1a99a..0000000000
 -
 -        this.keyCertChain = keyCertChain == null ? null : keyCertChain.clone();
 -
--        unmodifiableCiphers = Arrays.asList(checkNotNull(cipherFilter, "cipherFilter").filterCipherSuites(
--                ciphers, DEFAULT_CIPHERS, availableJavaCipherSuites()));
+-        String[] suites = checkNotNull(cipherFilter, "cipherFilter").filterCipherSuites(
+-                ciphers, DEFAULT_CIPHERS, availableJavaCipherSuites());
+-        // Filter out duplicates.
+-        LinkedHashSet<String> suitesSet = new LinkedHashSet<String>(suites.length);
+-        Collections.addAll(suitesSet, suites);
+-        unmodifiableCiphers = new ArrayList<String>(suitesSet);
 -
 -        this.apn = checkNotNull(apn, "apn");
 -
@@ -4887,7 +4855,8 @@ index 0546d1a99a..0000000000
 -                    SSLContext.setCipherSuite(ctx, cipherBuilder.toString(), false);
 -                    if (tlsv13Supported) {
 -                        // Set TLSv1.3 ciphers.
--                        SSLContext.setCipherSuite(ctx, cipherTLSv13Builder.toString(), true);
+-                        SSLContext.setCipherSuite(ctx,
+-                                OpenSsl.checkTls13Ciphers(logger, cipherTLSv13Builder.toString()), true);
 -                    }
 -                }
 -            } catch (SSLException e) {
@@ -4899,6 +4868,11 @@ index 0546d1a99a..0000000000
 -            int options = SSLContext.getOptions(ctx) |
 -                          SSL.SSL_OP_NO_SSLv2 |
 -                          SSL.SSL_OP_NO_SSLv3 |
+-                          // Disable TLSv1 and TLSv1.1 by default as these are not considered secure anymore
+-                          // and the JDK is doing the same:
+-                          // https://www.oracle.com/java/technologies/javase/8u291-relnotes.html
+-                          SSL.SSL_OP_NO_TLSv1 |
+-                          SSL.SSL_OP_NO_TLSv1_1 |
 -
 -                          SSL.SSL_OP_CIPHER_SERVER_PREFERENCE |
 -
@@ -4958,6 +4932,11 @@ index 0546d1a99a..0000000000
 -            if (privateKeyMethod != null) {
 -                SSLContext.setPrivateKeyMethod(ctx, new PrivateKeyMethod(engineMap, privateKeyMethod));
 -            }
+-            if (asyncPrivateKeyMethod != null) {
+-                SSLContext.setPrivateKeyMethod(ctx, new AsyncPrivateKeyMethod(engineMap, asyncPrivateKeyMethod));
+-            }
+-            // Set the curves.
+-            SSLContext.setCurvesList(ctx, OpenSsl.NAMED_GROUPS);
 -            success = true;
 -        } finally {
 -            if (!success) {
@@ -5133,7 +5112,7 @@ index 0546d1a99a..0000000000
 -    @Deprecated
 -    @UnstableApi
 -    public final void setPrivateKeyMethod(OpenSslPrivateKeyMethod method) {
--        ObjectUtil.checkNotNull(method, "method");
+-        checkNotNull(method, "method");
 -        Lock writerLock = ctxLock.writeLock();
 -        writerLock.lock();
 -        try {
@@ -5463,9 +5442,7 @@ index 0546d1a99a..0000000000
 -            return 0;
 -        }
 -
--        if (certChain.length == 0) {
--            throw new IllegalArgumentException("certChain can't be empty");
--        }
+-        checkNonEmpty(certChain, "certChain");
 -
 -        PemEncoded pem = PemX509Certificate.toPEM(allocator, true, certChain);
 -        try {
@@ -5576,21 +5553,92 @@ index 0546d1a99a..0000000000
 -                throw e;
 -            }
 -        }
+-    }
 -
--        private static byte[] verifyResult(byte[] result) throws SignatureException {
--            if (result == null) {
--                throw new SignatureException();
--            }
--            return result;
+-    private static final class AsyncPrivateKeyMethod implements AsyncSSLPrivateKeyMethod {
+-
+-        private final OpenSslEngineMap engineMap;
+-        private final OpenSslAsyncPrivateKeyMethod keyMethod;
+-
+-        AsyncPrivateKeyMethod(OpenSslEngineMap engineMap, OpenSslAsyncPrivateKeyMethod keyMethod) {
+-            this.engineMap = engineMap;
+-            this.keyMethod = keyMethod;
 -        }
+-
+-        private ReferenceCountedOpenSslEngine retrieveEngine(long ssl) throws SSLException {
+-            ReferenceCountedOpenSslEngine engine = engineMap.get(ssl);
+-            if (engine == null) {
+-                throw new SSLException("Could not find a " +
+-                        StringUtil.simpleClassName(ReferenceCountedOpenSslEngine.class) + " for sslPointer " + ssl);
+-            }
+-            return engine;
+-        }
+-
+-        @Override
+-        public void sign(long ssl, int signatureAlgorithm, byte[] bytes, ResultCallback<byte[]> resultCallback) {
+-            try {
+-                ReferenceCountedOpenSslEngine engine = retrieveEngine(ssl);
+-                keyMethod.sign(engine, signatureAlgorithm, bytes)
+-                        .addListener(new ResultCallbackListener(engine, ssl, resultCallback));
+-            } catch (SSLException e) {
+-                resultCallback.onError(ssl, e);
+-            }
+-        }
+-
+-        @Override
+-        public void decrypt(long ssl, byte[] bytes, ResultCallback<byte[]> resultCallback) {
+-            try {
+-                ReferenceCountedOpenSslEngine engine = retrieveEngine(ssl);
+-                keyMethod.decrypt(engine, bytes)
+-                        .addListener(new ResultCallbackListener(engine, ssl, resultCallback));
+-            } catch (SSLException e) {
+-                resultCallback.onError(ssl, e);
+-            }
+-        }
+-
+-        private static final class ResultCallbackListener implements FutureListener<byte[]> {
+-            private final ReferenceCountedOpenSslEngine engine;
+-            private final long ssl;
+-            private final ResultCallback<byte[]> resultCallback;
+-
+-            ResultCallbackListener(ReferenceCountedOpenSslEngine engine, long ssl,
+-                                   ResultCallback<byte[]> resultCallback) {
+-                this.engine = engine;
+-                this.ssl = ssl;
+-                this.resultCallback = resultCallback;
+-            }
+-
+-            @Override
+-            public void operationComplete(Future<byte[]> future) {
+-                Throwable cause = future.cause();
+-                if (cause == null) {
+-                    try {
+-                        byte[] result = verifyResult(future.getNow());
+-                        resultCallback.onSuccess(ssl, result);
+-                        return;
+-                    } catch (SignatureException e) {
+-                        cause = e;
+-                        engine.initHandshakeException(e);
+-                    }
+-                }
+-                resultCallback.onError(ssl, cause);
+-            }
+-        }
+-    }
+-
+-    private static byte[] verifyResult(byte[] result) throws SignatureException {
+-        if (result == null) {
+-            throw new SignatureException();
+-        }
+-        return result;
 -    }
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngine.java b/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngine.java
 deleted file mode 100644
-index b1f5222085..0000000000
+index 0d98e6af2b..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslEngine.java
 +++ /dev/null
-@@ -1,2589 +0,0 @@
+@@ -1,2644 +0,0 @@
 -/*
 - * Copyright 2016 The Netty Project
 - *
@@ -5612,6 +5660,7 @@ index b1f5222085..0000000000
 -import io.netty.buffer.ByteBufAllocator;
 -import io.netty.handler.ssl.util.LazyJavaxX509Certificate;
 -import io.netty.handler.ssl.util.LazyX509Certificate;
+-import io.netty.internal.tcnative.AsyncTask;
 -import io.netty.internal.tcnative.Buffer;
 -import io.netty.internal.tcnative.SSL;
 -import io.netty.util.AbstractReferenceCounted;
@@ -5621,7 +5670,6 @@ index b1f5222085..0000000000
 -import io.netty.util.ResourceLeakDetectorFactory;
 -import io.netty.util.ResourceLeakTracker;
 -import io.netty.util.internal.EmptyArrays;
--import io.netty.util.internal.ObjectUtil;
 -import io.netty.util.internal.PlatformDependent;
 -import io.netty.util.internal.StringUtil;
 -import io.netty.util.internal.SuppressJava6Requirement;
@@ -5659,15 +5707,10 @@ index b1f5222085..0000000000
 -import javax.security.cert.X509Certificate;
 -
 -import static io.netty.handler.ssl.OpenSsl.memoryAddress;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_SSL_V2;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_SSL_V2_HELLO;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_SSL_V3;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_TLS_V1;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_TLS_V1_1;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_TLS_V1_2;
--import static io.netty.handler.ssl.SslUtils.PROTOCOL_TLS_V1_3;
 -import static io.netty.handler.ssl.SslUtils.SSL_RECORD_HEADER_LENGTH;
 -import static io.netty.util.internal.ObjectUtil.checkNotNull;
+-import static io.netty.util.internal.ObjectUtil.checkNotNullArrayParam;
+-import static io.netty.util.internal.ObjectUtil.checkNotNullWithIAE;
 -import static java.lang.Integer.MAX_VALUE;
 -import static java.lang.Math.min;
 -import static javax.net.ssl.SSLEngineResult.HandshakeStatus.FINISHED;
@@ -5940,8 +5983,17 @@ index b1f5222085..0000000000
 -                // Use SNI if peerHost was specified and a valid hostname
 -                // See https://github.com/netty/netty/issues/4746
 -                if (clientMode && SslUtils.isValidHostNameForSNI(peerHost)) {
--                    SSL.setTlsExtHostName(ssl, peerHost);
--                    sniHostNames = Collections.singletonList(peerHost);
+-                    // If on java8 and later we should do some extra validation to ensure we can construct the
+-                    // SNIHostName later again.
+-                    if (PlatformDependent.javaVersion() >= 8) {
+-                        if (Java8SslUtils.isValidHostNameForSNI(peerHost)) {
+-                            SSL.setTlsExtHostName(ssl, peerHost);
+-                            sniHostNames = Collections.singletonList(peerHost);
+-                        }
+-                    } else {
+-                        SSL.setTlsExtHostName(ssl, peerHost);
+-                        sniHostNames = Collections.singletonList(peerHost);
+-                    }
 -                }
 -
 -                if (enableOcsp) {
@@ -5952,7 +6004,7 @@ index b1f5222085..0000000000
 -                    SSL.setMode(ssl, SSL.getMode(ssl) | SSL.SSL_MODE_ENABLE_PARTIAL_WRITE);
 -                }
 -
--                if (isProtocolEnabled(SSL.getOptions(ssl), SSL.SSL_OP_NO_TLSv1_3, PROTOCOL_TLS_V1_3)) {
+-                if (isProtocolEnabled(SSL.getOptions(ssl), SSL.SSL_OP_NO_TLSv1_3, SslProtocols.TLS_v1_3)) {
 -                    final boolean enableTickets = clientMode ?
 -                            ReferenceCountedOpenSslContext.CLIENT_ENABLE_SESSION_TICKET_TLSV13 :
 -                            ReferenceCountedOpenSslContext.SERVER_ENABLE_SESSION_TICKET_TLSV13;
@@ -5968,6 +6020,13 @@ index b1f5222085..0000000000
 -                    }
 -                }
 -
+-                if (OpenSsl.isBoringSSL() && clientMode) {
+-                    // If in client-mode and BoringSSL let's allow to renegotiate once as the server may use this
+-                    // for client auth.
+-                    //
+-                    // See https://github.com/netty/netty/issues/11529
+-                    SSL.setRenegotiateMode(ssl, SSL.SSL_RENEGOTIATE_ONCE);
+-                }
 -                // setMode may impact the overhead.
 -                calculateMaxWrapOverhead();
 -            } catch (Throwable cause) {
@@ -6310,12 +6369,8 @@ index b1f5222085..0000000000
 -    public final SSLEngineResult wrap(
 -            final ByteBuffer[] srcs, int offset, final int length, final ByteBuffer dst) throws SSLException {
 -        // Throw required runtime exceptions
--        if (srcs == null) {
--            throw new IllegalArgumentException("srcs is null");
--        }
--        if (dst == null) {
--            throw new IllegalArgumentException("dst is null");
--        }
+-        checkNotNullWithIAE(srcs, "srcs");
+-        checkNotNullWithIAE(dst, "dst");
 -
 -        if (offset >= srcs.length || offset + length > srcs.length) {
 -            throw new IndexOutOfBoundsException(
@@ -6628,15 +6683,13 @@ index b1f5222085..0000000000
 -
 -    private SSLEngineResult newResultMayFinishHandshake(SSLEngineResult.HandshakeStatus hs,
 -                                                        int bytesConsumed, int bytesProduced) throws SSLException {
--        return newResult(mayFinishHandshake(hs != FINISHED ? getHandshakeStatus() : FINISHED),
--                         bytesConsumed, bytesProduced);
+-        return newResult(mayFinishHandshake(hs, bytesConsumed, bytesProduced), bytesConsumed, bytesProduced);
 -    }
 -
 -    private SSLEngineResult newResultMayFinishHandshake(SSLEngineResult.Status status,
 -                                                        SSLEngineResult.HandshakeStatus hs,
 -                                                        int bytesConsumed, int bytesProduced) throws SSLException {
--        return newResult(status, mayFinishHandshake(hs != FINISHED ? getHandshakeStatus() : FINISHED),
--                         bytesConsumed, bytesProduced);
+-        return newResult(status, mayFinishHandshake(hs, bytesConsumed, bytesProduced), bytesConsumed, bytesProduced);
 -    }
 -
 -    /**
@@ -6683,16 +6736,14 @@ index b1f5222085..0000000000
 -            final ByteBuffer[] dsts, int dstsOffset, final int dstsLength) throws SSLException {
 -
 -        // Throw required runtime exceptions
--        ObjectUtil.checkNotNull(srcs, "srcs");
+-        checkNotNullWithIAE(srcs, "srcs");
 -        if (srcsOffset >= srcs.length
 -                || srcsOffset + srcsLength > srcs.length) {
 -            throw new IndexOutOfBoundsException(
 -                    "offset: " + srcsOffset + ", length: " + srcsLength +
 -                            " (expected: offset <= offset + length <= srcs.length (" + srcs.length + "))");
 -        }
--        if (dsts == null) {
--            throw new IllegalArgumentException("dsts is null");
--        }
+-        checkNotNullWithIAE(dsts, "dsts");
 -        if (dstsOffset >= dsts.length || dstsOffset + dstsLength > dsts.length) {
 -            throw new IndexOutOfBoundsException(
 -                    "offset: " + dstsOffset + ", length: " + dstsLength +
@@ -6701,10 +6752,7 @@ index b1f5222085..0000000000
 -        long capacity = 0;
 -        final int dstsEndOffset = dstsOffset + dstsLength;
 -        for (int i = dstsOffset; i < dstsEndOffset; i ++) {
--            ByteBuffer dst = dsts[i];
--            if (dst == null) {
--                throw new IllegalArgumentException("dsts[" + i + "] is null");
--            }
+-            ByteBuffer dst = checkNotNullArrayParam(dsts[i], i, "dsts");
 -            if (dst.isReadOnly()) {
 -                throw new ReadOnlyBufferException();
 -            }
@@ -6714,10 +6762,7 @@ index b1f5222085..0000000000
 -        final int srcsEndOffset = srcsOffset + srcsLength;
 -        long len = 0;
 -        for (int i = srcsOffset; i < srcsEndOffset; i++) {
--            ByteBuffer src = srcs[i];
--            if (src == null) {
--                throw new IllegalArgumentException("srcs[" + i + "] is null");
--            }
+-            ByteBuffer src = checkNotNullArrayParam(srcs[i], i, "srcs");
 -            len += src.remaining();
 -        }
 -
@@ -6927,8 +6972,7 @@ index b1f5222085..0000000000
 -        }
 -    }
 -
--    private SSLEngineResult sslReadErrorResult(int error, int stackError, int bytesConsumed, int bytesProduced)
--            throws SSLException {
+-    private boolean needWrapAgain(int stackError) {
 -        // Check if we have a pending handshakeException and if so see if we need to consume all pending data from the
 -        // BIO first or can just shutdown and throw it now.
 -        // This is needed so we ensure close_notify etc is correctly send to the remote peer.
@@ -6940,13 +6984,23 @@ index b1f5222085..0000000000
 -            SSLException exception = handshakeState == HandshakeState.FINISHED ?
 -                    new SSLException(message) : new SSLHandshakeException(message);
 -            if (pendingException == null) {
--               pendingException = exception;
+-                pendingException = exception;
 -            } else {
 -                ThrowableUtil.addSuppressed(pendingException, exception);
 -            }
 -            // We need to clear all errors so we not pick up anything that was left on the stack on the next
 -            // operation. Note that shutdownWithError(...) will cleanup the stack as well so its only needed here.
 -            SSL.clearError();
+-            return true;
+-        }
+-        return false;
+-    }
+-
+-    private SSLEngineResult sslReadErrorResult(int error, int stackError, int bytesConsumed, int bytesProduced)
+-            throws SSLException {
+-        if (needWrapAgain(stackError)) {
+-            // There is something that needs to be send to the remote peer before we can teardown.
+-            // This is most likely some alert.
 -            return new SSLEngineResult(OK, NEED_WRAP, bytesConsumed, bytesProduced);
 -        }
 -        throw shutdownWithError("SSL_read", error, stackError);
@@ -6962,10 +7016,12 @@ index b1f5222085..0000000000
 -        // As rejectRemoteInitiatedRenegotiation() is called in a finally block we also need to check if we shutdown
 -        // the engine before as otherwise SSL.getHandshakeCount(ssl) will throw an NPE if the passed in ssl is 0.
 -        // See https://github.com/netty/netty/issues/7353
--        if (!isDestroyed() && SSL.getHandshakeCount(ssl) > 1 &&
+-        if (!isDestroyed() && (!clientMode && SSL.getHandshakeCount(ssl) > 1 ||
+-                // Let's allow to renegotiate once for client auth.
+-                clientMode && SSL.getHandshakeCount(ssl) > 2) &&
 -            // As we may count multiple handshakes when TLSv1.3 is used we should just ignore this here as
 -            // renegotiation is not supported in TLSv1.3 as per spec.
--            !SslUtils.PROTOCOL_TLS_V1_3.equals(session.getProtocol()) && handshakeState == HandshakeState.FINISHED) {
+-            !SslProtocols.TLS_v1_3.equals(session.getProtocol()) && handshakeState == HandshakeState.FINISHED) {
 -            // TODO: In future versions me may also want to send a fatal_alert to the client and so notify it
 -            // that the renegotiation failed.
 -            shutdown();
@@ -7033,6 +7089,49 @@ index b1f5222085..0000000000
 -        }
 -    }
 -
+-    private class TaskDecorator<R extends Runnable> implements Runnable {
+-        protected final R task;
+-        TaskDecorator(R task) {
+-            this.task = task;
+-        }
+-
+-        @Override
+-        public void run() {
+-            if (isDestroyed()) {
+-                // The engine was destroyed in the meantime, just return.
+-                return;
+-            }
+-            // The task was run, reset needTask to false so getHandshakeStatus() returns the correct value.
+-            needTask = false;
+-            task.run();
+-        }
+-    }
+-
+-    private final class AsyncTaskDecorator extends TaskDecorator<AsyncTask> implements AsyncRunnable {
+-        AsyncTaskDecorator(AsyncTask task) {
+-            super(task);
+-        }
+-
+-        @Override
+-        public void run(final Runnable runnable) {
+-            if (isDestroyed()) {
+-                // The engine was destroyed in the meantime, just return.
+-                runnable.run();
+-                return;
+-            }
+-            task.runAsync(new Runnable() {
+-                @Override
+-                public void run() {
+-                    // The task was run, reset needTask to false so getHandshakeStatus() returns the correct value.
+-                    // This needs to be done before we run the completion runnable, since that might
+-                    // query the handshake status.
+-                    needTask = false;
+-                    runnable.run();
+-                }
+-            });
+-        }
+-    }
+-
 -    @Override
 -    public final synchronized Runnable getDelegatedTask() {
 -        if (isDestroyed()) {
@@ -7042,21 +7141,10 @@ index b1f5222085..0000000000
 -        if (task == null) {
 -            return null;
 -        }
--        return new Runnable() {
--            @Override
--            public void run() {
--                if (isDestroyed()) {
--                    // The engine was destroyed in the meantime, just return.
--                    return;
--                }
--                try {
--                    task.run();
--                } finally {
--                    // The task was run, reset needTask to false so getHandshakeStatus() returns the correct value.
--                    needTask = false;
--                }
--            }
--        };
+-        if (task instanceof AsyncTask) {
+-            return new AsyncTaskDecorator((AsyncTask) task);
+-        }
+-        return new TaskDecorator<Runnable>(task);
 -    }
 -
 -    @Override
@@ -7153,7 +7241,7 @@ index b1f5222085..0000000000
 -            if (!isDestroyed()) {
 -                enabled = SSL.getCiphers(ssl);
 -                int opts = SSL.getOptions(ssl);
--                if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_3, PROTOCOL_TLS_V1_3)) {
+-                if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_3, SslProtocols.TLS_v1_3)) {
 -                    extraCiphers = OpenSsl.EXTRA_SUPPORTED_TLS_1_3_CIPHERS;
 -                    tls13Enabled = true;
 -                } else {
@@ -7204,7 +7292,7 @@ index b1f5222085..0000000000
 -                    SSL.setCipherSuites(ssl, cipherSuiteSpec, false);
 -                    if (OpenSsl.isTlsv13Supported()) {
 -                        // Set TLSv1.3 ciphers.
--                        SSL.setCipherSuites(ssl, cipherSuiteSpecTLSv13, true);
+-                        SSL.setCipherSuites(ssl, OpenSsl.checkTls13Ciphers(logger, cipherSuiteSpecTLSv13), true);
 -                    }
 -
 -                    // We also need to update the enabled protocols to ensure we disable the protocol if there are
@@ -7215,16 +7303,16 @@ index b1f5222085..0000000000
 -                    // We have no ciphers that are compatible with none-TLSv1.3, let us explicit disable all other
 -                    // protocols.
 -                    if (cipherSuiteSpec.isEmpty()) {
--                        protocols.remove(PROTOCOL_TLS_V1);
--                        protocols.remove(PROTOCOL_TLS_V1_1);
--                        protocols.remove(PROTOCOL_TLS_V1_2);
--                        protocols.remove(PROTOCOL_SSL_V3);
--                        protocols.remove(PROTOCOL_SSL_V2);
--                        protocols.remove(PROTOCOL_SSL_V2_HELLO);
+-                        protocols.remove(SslProtocols.TLS_v1);
+-                        protocols.remove(SslProtocols.TLS_v1_1);
+-                        protocols.remove(SslProtocols.TLS_v1_2);
+-                        protocols.remove(SslProtocols.SSL_v3);
+-                        protocols.remove(SslProtocols.SSL_v2);
+-                        protocols.remove(SslProtocols.SSL_v2_HELLO);
 -                    }
 -                    // We have no ciphers that are compatible with TLSv1.3, let us explicit disable it.
 -                    if (cipherSuiteSpecTLSv13.isEmpty()) {
--                        protocols.remove(PROTOCOL_TLS_V1_3);
+-                        protocols.remove(SslProtocols.TLS_v1_3);
 -                    }
 -                    // Update the protocols but not cache the value. We only cache when we call it from the user
 -                    // code or when we construct the engine.
@@ -7247,7 +7335,7 @@ index b1f5222085..0000000000
 -    public final String[] getEnabledProtocols() {
 -        List<String> enabled = new ArrayList<String>(6);
 -        // Seems like there is no way to explicit disable SSLv2Hello in openssl so it is always enabled
--        enabled.add(PROTOCOL_SSL_V2_HELLO);
+-        enabled.add(SslProtocols.SSL_v2_HELLO);
 -
 -        int opts;
 -        synchronized (this) {
@@ -7257,23 +7345,23 @@ index b1f5222085..0000000000
 -                return enabled.toArray(new String[0]);
 -            }
 -        }
--        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1, PROTOCOL_TLS_V1)) {
--            enabled.add(PROTOCOL_TLS_V1);
+-        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1, SslProtocols.TLS_v1)) {
+-            enabled.add(SslProtocols.TLS_v1);
 -        }
--        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_1, PROTOCOL_TLS_V1_1)) {
--            enabled.add(PROTOCOL_TLS_V1_1);
+-        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_1, SslProtocols.TLS_v1_1)) {
+-            enabled.add(SslProtocols.TLS_v1_1);
 -        }
--        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_2, PROTOCOL_TLS_V1_2)) {
--            enabled.add(PROTOCOL_TLS_V1_2);
+-        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_2, SslProtocols.TLS_v1_2)) {
+-            enabled.add(SslProtocols.TLS_v1_2);
 -        }
--        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_3, PROTOCOL_TLS_V1_3)) {
--            enabled.add(PROTOCOL_TLS_V1_3);
+-        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_TLSv1_3, SslProtocols.TLS_v1_3)) {
+-            enabled.add(SslProtocols.TLS_v1_3);
 -        }
--        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_SSLv2, PROTOCOL_SSL_V2)) {
--            enabled.add(PROTOCOL_SSL_V2);
+-        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_SSLv2, SslProtocols.SSL_v2)) {
+-            enabled.add(SslProtocols.SSL_v2);
 -        }
--        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_SSLv3, PROTOCOL_SSL_V3)) {
--            enabled.add(PROTOCOL_SSL_V3);
+-        if (isProtocolEnabled(opts, SSL.SSL_OP_NO_SSLv3, SslProtocols.SSL_v3)) {
+-            enabled.add(SslProtocols.SSL_v3);
 -        }
 -        return enabled.toArray(new String[0]);
 -    }
@@ -7299,52 +7387,50 @@ index b1f5222085..0000000000
 -    }
 -
 -    private void setEnabledProtocols0(String[] protocols, boolean cache) {
--        if (protocols == null) {
--            // This is correct from the API docs
--            throw new IllegalArgumentException();
--        }
+-        // This is correct from the API docs
+-        checkNotNullWithIAE(protocols, "protocols");
 -        int minProtocolIndex = OPENSSL_OP_NO_PROTOCOLS.length;
 -        int maxProtocolIndex = 0;
 -        for (String p: protocols) {
 -            if (!OpenSsl.SUPPORTED_PROTOCOLS_SET.contains(p)) {
 -                throw new IllegalArgumentException("Protocol " + p + " is not supported.");
 -            }
--            if (p.equals(PROTOCOL_SSL_V2)) {
+-            if (p.equals(SslProtocols.SSL_v2)) {
 -                if (minProtocolIndex > OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV2) {
 -                    minProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV2;
 -                }
 -                if (maxProtocolIndex < OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV2) { // lgtm[java/constant-comparison]
 -                    maxProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV2;
 -                }
--            } else if (p.equals(PROTOCOL_SSL_V3)) {
+-            } else if (p.equals(SslProtocols.SSL_v3)) {
 -                if (minProtocolIndex > OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV3) {
 -                    minProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV3;
 -                }
 -                if (maxProtocolIndex < OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV3) {
 -                    maxProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_SSLV3;
 -                }
--            } else if (p.equals(PROTOCOL_TLS_V1)) {
+-            } else if (p.equals(SslProtocols.TLS_v1)) {
 -                if (minProtocolIndex > OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1) {
 -                    minProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1;
 -                }
 -                if (maxProtocolIndex < OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1) {
 -                    maxProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1;
 -                }
--            } else if (p.equals(PROTOCOL_TLS_V1_1)) {
+-            } else if (p.equals(SslProtocols.TLS_v1_1)) {
 -                if (minProtocolIndex > OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_1) {
 -                    minProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_1;
 -                }
 -                if (maxProtocolIndex < OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_1) {
 -                    maxProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_1;
 -                }
--            } else if (p.equals(PROTOCOL_TLS_V1_2)) {
+-            } else if (p.equals(SslProtocols.TLS_v1_2)) {
 -                if (minProtocolIndex > OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_2) {
 -                    minProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_2;
 -                }
 -                if (maxProtocolIndex < OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_2) {
 -                    maxProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_2;
 -                }
--            } else if (p.equals(PROTOCOL_TLS_V1_3)) {
+-            } else if (p.equals(SslProtocols.TLS_v1_3)) {
 -                if (minProtocolIndex > OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_3) {
 -                    minProtocolIndex = OPENSSL_OP_NO_PROTOCOL_INDEX_TLSv1_3;
 -                }
@@ -7512,6 +7598,11 @@ index b1f5222085..0000000000
 -                return NEED_TASK;
 -            }
 -
+-            if (needWrapAgain(SSL.getLastErrorNumber())) {
+-                // There is something that needs to be send to the remote peer before we can teardown.
+-                // This is most likely some alert.
+-                return NEED_WRAP;
+-            }
 -            // Check if we have a pending exception that was created during the handshake and if so throw it after
 -            // shutdown the connection.
 -            if (pendingException != null) {
@@ -7533,12 +7624,24 @@ index b1f5222085..0000000000
 -        return FINISHED;
 -    }
 -
+-    private SSLEngineResult.HandshakeStatus mayFinishHandshake(
+-            SSLEngineResult.HandshakeStatus hs, int bytesConsumed, int bytesProduced) throws SSLException {
+-        return hs == NEED_UNWRAP && bytesProduced > 0 || hs == NEED_WRAP && bytesConsumed > 0 ?
+-            handshake() : mayFinishHandshake(hs != FINISHED ? getHandshakeStatus() : FINISHED);
+-    }
+-
 -    private SSLEngineResult.HandshakeStatus mayFinishHandshake(SSLEngineResult.HandshakeStatus status)
 -            throws SSLException {
--        if (status == NOT_HANDSHAKING && handshakeState != HandshakeState.FINISHED) {
--            // If the status was NOT_HANDSHAKING and we not finished the handshake we need to call
--            // SSL_do_handshake() again
--            return handshake();
+-        if (status == NOT_HANDSHAKING) {
+-            if (handshakeState != HandshakeState.FINISHED) {
+-                // If the status was NOT_HANDSHAKING and we not finished the handshake we need to call
+-                // SSL_do_handshake() again
+-                return handshake();
+-            }
+-            if (!isDestroyed() && SSL.bioLengthNonApplication(networkBIO) > 0) {
+-                // We have something left that needs to be wrapped.
+-                return NEED_WRAP;
+-            }
 -        }
 -        return status;
 -    }
@@ -7942,8 +8045,8 @@ index b1f5222085..0000000000
 -
 -        @Override
 -        public void putValue(String name, Object value) {
--            ObjectUtil.checkNotNull(name, "name");
--            ObjectUtil.checkNotNull(value, "value");
+-            checkNotNull(name, "name");
+-            checkNotNull(value, "value");
 -
 -            final Object old;
 -            synchronized (this) {
@@ -7956,7 +8059,7 @@ index b1f5222085..0000000000
 -            }
 -
 -            if (value instanceof SSLSessionBindingListener) {
--                // Use newSSLSessionBindingEvent so we alway use the wrapper if needed.
+-                // Use newSSLSessionBindingEvent so we always use the wrapper if needed.
 -                ((SSLSessionBindingListener) value).valueBound(newSSLSessionBindingEvent(name));
 -            }
 -            notifyUnbound(old, name);
@@ -7964,7 +8067,7 @@ index b1f5222085..0000000000
 -
 -        @Override
 -        public Object getValue(String name) {
--            ObjectUtil.checkNotNull(name, "name");
+-            checkNotNull(name, "name");
 -            synchronized (this) {
 -                if (values == null) {
 -                    return null;
@@ -7975,7 +8078,7 @@ index b1f5222085..0000000000
 -
 -        @Override
 -        public void removeValue(String name) {
--            ObjectUtil.checkNotNull(name, "name");
+-            checkNotNull(name, "name");
 -
 -            final Object old;
 -            synchronized (this) {
@@ -8002,7 +8105,7 @@ index b1f5222085..0000000000
 -
 -        private void notifyUnbound(Object value, String name) {
 -            if (value instanceof SSLSessionBindingListener) {
--                // Use newSSLSessionBindingEvent so we alway use the wrapper if needed.
+-                // Use newSSLSessionBindingEvent so we always use the wrapper if needed.
 -                ((SSLSessionBindingListener) value).valueUnbound(newSSLSessionBindingEvent(name));
 -            }
 -        }
@@ -8182,7 +8285,7 @@ index b1f5222085..0000000000
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslServerContext.java b/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslServerContext.java
 deleted file mode 100644
-index f143d8a4c0..0000000000
+index 07e0a5de17..0000000000
 --- a/handler/src/main/java/io/netty/handler/ssl/ReferenceCountedOpenSslServerContext.java
 +++ /dev/null
 @@ -1,298 +0,0 @@
@@ -8455,7 +8558,7 @@ index f143d8a4c0..0000000000
 -
 -        ExtendedTrustManagerVerifyCallback(OpenSslEngineMap engineMap, X509ExtendedTrustManager manager) {
 -            super(engineMap);
--            this.manager = OpenSslTlsv13X509ExtendedTrustManager.wrap(manager);
+-            this.manager = manager;
 -        }
 -
 -        @Override
@@ -8485,7 +8588,7 @@ index f143d8a4c0..0000000000
 -    }
 -}
 diff --git a/handler/src/main/java/io/netty/handler/ssl/SslContext.java b/handler/src/main/java/io/netty/handler/ssl/SslContext.java
-index 2ff8c4f1b5..1c8efb7151 100644
+index ff93d4011c..1c8efb7151 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/SslContext.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/SslContext.java
 @@ -121,11 +121,7 @@ public abstract class SslContext {
@@ -8520,18 +8623,20 @@ index 2ff8c4f1b5..1c8efb7151 100644
          default:
              throw new Error(provider.toString());
          }
-@@ -825,18 +809,6 @@ public abstract class SslContext {
+@@ -825,20 +809,6 @@ public abstract class SslContext {
                          trustCert, trustManagerFactory, keyCertChain, key, keyPassword,
                          keyManagerFactory, ciphers, cipherFilter, apn, protocols, sessionCacheSize,
                          sessionTimeout, keyStoreType);
 -            case OPENSSL:
 -                verifyNullSslContextProvider(provider, sslContextProvider);
+-                OpenSsl.ensureAvailability();
 -                return new OpenSslClientContext(
 -                        trustCert, trustManagerFactory, keyCertChain, key, keyPassword,
 -                        keyManagerFactory, ciphers, cipherFilter, apn, protocols, sessionCacheSize, sessionTimeout,
 -                        enableOcsp, keyStoreType, options);
 -            case OPENSSL_REFCNT:
 -                verifyNullSslContextProvider(provider, sslContextProvider);
+-                OpenSsl.ensureAvailability();
 -                return new ReferenceCountedOpenSslClientContext(
 -                        trustCert, trustManagerFactory, keyCertChain, key, keyPassword,
 -                        keyManagerFactory, ciphers, cipherFilter, apn, protocols, sessionCacheSize, sessionTimeout,
@@ -8540,17 +8645,16 @@ index 2ff8c4f1b5..1c8efb7151 100644
                  throw new Error(provider.toString());
          }
 diff --git a/handler/src/main/java/io/netty/handler/ssl/SslHandler.java b/handler/src/main/java/io/netty/handler/ssl/SslHandler.java
-index 38d411eccd..a08d88f269 100644
+index 6b198f350f..3b585f6f29 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/SslHandler.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/SslHandler.java
-@@ -182,53 +182,6 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
+@@ -198,51 +198,6 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
      private static final int MAX_PLAINTEXT_LENGTH = 16 * 1024;
  
      private enum SslEngineType {
 -        TCNATIVE(true, COMPOSITE_CUMULATOR) {
 -            @Override
--            SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int readerIndex, int len, ByteBuf out)
--                    throws SSLException {
+-            SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int len, ByteBuf out) throws SSLException {
 -                int nioBufferCount = in.nioBufferCount();
 -                int writerIndex = out.writerIndex();
 -                final SSLEngineResult result;
@@ -8562,14 +8666,13 @@ index 38d411eccd..a08d88f269 100644
 -                     */
 -                    ReferenceCountedOpenSslEngine opensslEngine = (ReferenceCountedOpenSslEngine) handler.engine;
 -                    try {
--                        handler.singleBuffer[0] = toByteBuffer(out, writerIndex,
--                            out.writableBytes());
--                        result = opensslEngine.unwrap(in.nioBuffers(readerIndex, len), handler.singleBuffer);
+-                        handler.singleBuffer[0] = toByteBuffer(out, writerIndex, out.writableBytes());
+-                        result = opensslEngine.unwrap(in.nioBuffers(in.readerIndex(), len), handler.singleBuffer);
 -                    } finally {
 -                        handler.singleBuffer[0] = null;
 -                    }
 -                } else {
--                    result = handler.engine.unwrap(toByteBuffer(in, readerIndex, len),
+-                    result = handler.engine.unwrap(toByteBuffer(in, in.readerIndex(), len),
 -                        toByteBuffer(out, writerIndex, out.writableBytes()));
 -                }
 -                out.writerIndex(writerIndex + result.bytesProduced());
@@ -8596,8 +8699,8 @@ index 38d411eccd..a08d88f269 100644
 -        },
          JDK(false, MERGE_CUMULATOR) {
              @Override
-             SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int readerIndex, int len, ByteBuf out)
-@@ -281,7 +234,7 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
+             SSLEngineResult unwrap(SslHandler handler, ByteBuf in, int len, ByteBuf out) throws SSLException {
+@@ -294,7 +249,7 @@ public class SslHandler extends ByteToMessageDecoder implements ChannelOutboundH
          };
  
          static SslEngineType forEngine(SSLEngine engine) {
@@ -8607,10 +8710,10 @@ index 38d411eccd..a08d88f269 100644
  
          SslEngineType(boolean wantsDirectBuffer, Cumulator cumulator) {
 diff --git a/handler/src/main/java/io/netty/handler/ssl/SslMasterKeyHandler.java b/handler/src/main/java/io/netty/handler/ssl/SslMasterKeyHandler.java
-index 5a76bd4a42..ec0a911718 100644
+index 231bd7985e..38bd913993 100644
 --- a/handler/src/main/java/io/netty/handler/ssl/SslMasterKeyHandler.java
 +++ b/handler/src/main/java/io/netty/handler/ssl/SslMasterKeyHandler.java
-@@ -135,9 +135,6 @@ public abstract class SslMasterKeyHandler extends ChannelInboundHandlerAdapter {
+@@ -139,9 +139,6 @@ public abstract class SslMasterKeyHandler extends ChannelInboundHandlerAdapter {
                              "via reflection.", e);
                  }
                  accept(secretKey, sslSession);
@@ -8769,20 +8872,26 @@ index 7e81ae6b23..0000000000
 - */
 -package io.netty.handler.ssl.ocsp;
 diff --git a/pom.xml b/pom.xml
-index e50e4e04ac..0341f98232 100644
+index f6a77538b9..baaac8d945 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -494,16 +494,6 @@
+@@ -624,22 +624,6 @@
          <version>3.0.0-alpha-5</version>
        </dependency>
  
--      <!-- Our own Tomcat Native fork - completely optional, used for accelerating SSL with OpenSSL. -->
+-      <!-- Our own Tomcat Native fork - completely optional for the native lib, used for accelerating SSL with OpenSSL. -->
+-      <dependency>
+-        <groupId>${project.groupId}</groupId>
+-        <artifactId>netty-tcnative-classes</artifactId>
+-        <version>${tcnative.version}</version>
+-        <scope>compile</scope>
+-      </dependency>
 -      <dependency>
 -        <groupId>${project.groupId}</groupId>
 -        <artifactId>${tcnative.artifactId}</artifactId>
 -        <version>${tcnative.version}</version>
 -        <classifier>${tcnative.classifier}</classifier>
--        <scope>compile</scope>
+-        <scope>runtime</scope>
 -        <optional>true</optional>
 -      </dependency>
 -
@@ -8790,5 +8899,5 @@ index e50e4e04ac..0341f98232 100644
          Bouncy Castle - completely optional, only needed when:
          - you generate a temporary self-signed certificate using SelfSignedCertificate, and
 -- 
-2.30.1
+2.34.1
 

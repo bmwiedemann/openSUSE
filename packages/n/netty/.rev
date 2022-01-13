@@ -39,4 +39,12 @@
     <comment>bsc#1183262, CVE-2021-21295</comment>
     <requestid>878593</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f31250710c9d473fedb31a1f7ea5803</srcmd5>
+    <version>4.1.72</version>
+    <time>1642112502</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1193672</comment>
+    <requestid>946202</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %global namedreltag .Final
 %global namedversion %{version}%{?namedreltag}
 Name:           netty
-Version:        4.1.60
+Version:        4.1.72
 Release:        0
 Summary:        An asynchronous event-driven network application framework and tools for Java
 License:        Apache-2.0
@@ -37,6 +37,7 @@ Patch4:         0005-Remove-optional-dep-log4j.patch
 Patch5:         0006-revert-Fix-native-image-build.patch
 Patch6:         0007-Revert-Support-session-cache-for-client-and-server-w.patch
 Patch7:         no-werror.patch
+Patch8:         no-brotli-zstd.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  make
@@ -98,6 +99,7 @@ BuildArch:      noarch
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # remove unnecessary dependency on parent POM
 %pom_remove_parent . bom dev-tools
@@ -107,7 +109,6 @@ BuildArch:      noarch
 
 # Not needed for RPM builds
 %pom_disable_module "example"
-%pom_disable_module "tarball"
 %pom_disable_module "microbench"
 
 %pom_xpath_inject 'pom:plugin[pom:artifactId="maven-remote-resources-plugin"]' '
@@ -134,6 +135,8 @@ BuildArch:      noarch
 %pom_remove_plugin -r :maven-jxr-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
 %pom_remove_plugin -r :forbiddenapis
+%pom_remove_plugin -r :revapi-maven-plugin
+%pom_remove_plugin -r :bom-helper-maven-plugin
 
 cp %{SOURCE1} common/codegen.bash
 chmod +x common/codegen.bash
@@ -154,7 +157,7 @@ chmod +x common/codegen.bash
 %pom_remove_plugin :groovy-maven-plugin common
 
 # We don't have com.oracle.substratevm
-%pom_remove_dep "com.oracle.substratevm:" common
+%pom_remove_dep "org.graalvm.nativeimage:" common
 rm common/src/main/java/io/netty/util/internal/svm/*
 
 # The protobuf-javanano API was discontinued upstream
@@ -174,6 +177,10 @@ rm codec/src/*/java/io/netty/handler/codec/compression/Lzma*.java
 rm codec/src/*/java/io/netty/handler/codec/compression/Lzf*.java
 %pom_remove_dep -r net.jpountz.lz4:lz4
 rm codec/src/*/java/io/netty/handler/codec/compression/Lz4*.java
+%pom_remove_dep -r com.aayushatharva.brotli4j:
+rm codec/src/*/java/io/netty/handler/codec/compression/Brotli*.java
+%pom_remove_dep -r com.github.luben:zstd-jni
+rm codec/src/*/java/io/netty/handler/codec/compression/Zstd*.java
 
 # Disable other codecs with extra dependencies
 %pom_remove_dep -r com.fasterxml:aalto-xml
