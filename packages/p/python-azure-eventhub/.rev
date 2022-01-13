@@ -101,4 +101,16 @@
 - Update Requires from setup.py (forwarded request 923713 from glaubitz)</comment>
     <requestid>923739</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0631a79ddda8071cc4e7d8c387be662b</srcmd5>
+    <version>5.7.0</version>
+    <time>1642112466</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 946061 from glaubitz)</comment>
+    <requestid>946120</requestid>
+  </revision>
 </revisionlist>
