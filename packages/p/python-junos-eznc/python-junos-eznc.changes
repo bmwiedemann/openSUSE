@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 20:48:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- remove selectors2 build requirement: It's unmaintained and pulled
+  in by ncclient only if necessary, i.e. on python <= 3.4, but
+  nowhere declared or used by this junos-eznc.
+
+-------------------------------------------------------------------
 Wed Oct 13 10:15:04 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.6.3
