@@ -281,4 +281,15 @@
     <comment></comment>
     <requestid>931148</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fcc1bcc8427c90356681fc4f7f537e20</srcmd5>
+    <version>2.6.4</version>
+    <time>1642112495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.4:
+  * Fixed various bugs.
+  * Remove foliate-WebKit-version.patch: Patch in the release. 
+</comment>
+    <requestid>946194</requestid>
+  </revision>
 </revisionlist>

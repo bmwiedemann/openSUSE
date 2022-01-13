@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 13 13:00:58 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 2.6.4:
+  * Fixed various bugs.
+  * Remove foliate-WebKit-version.patch: Patch in the release. 
+
+-------------------------------------------------------------------
 Fri Nov 12 13:38:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add foliate-WebKit-version.patch: Fix launch if WebKit2-5.0

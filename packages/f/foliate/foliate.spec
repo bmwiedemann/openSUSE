@@ -1,7 +1,7 @@
 #
 # spec file for package foliate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %global __requires_exclude typelib(\\(Handy\\) = 0.0|\\(Tracker\\))
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM foliate-WebKit-version.patch boo#1192627 dimstar@opensuse.org -- Fix launch in case WebKit2-5.0 happens to be installed
-Patch0:         foliate-WebKit-version.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -78,7 +76,7 @@ ln -sr %{buildroot}/%{_bindir}/%{oname} %{buildroot}/%{_bindir}/%{name}
 %{_datadir}/applications/com.github.johnfactotum.Foliate.desktop
 %{_datadir}/com.github.johnfactotum.Foliate
 %{_datadir}/glib-2.0/schemas/
-%{_datadir}/metainfo/com.github.johnfactotum.Foliate.appdata.xml
+%{_datadir}/metainfo/com.github.johnfactotum.Foliate.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/*
 
 %files lang -f %{oname}.lang
