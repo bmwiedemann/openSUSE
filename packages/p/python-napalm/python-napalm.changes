@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:55:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- remove selectors2 test requirement: It's unmaintained and pulled
+  in by ncclient only if necessary, i.e. on python <= 3.4 (!), but
+  nowhere declared or used by napalm itself.
+
+-------------------------------------------------------------------
 Wed Oct 13 12:42:18 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap 15.3

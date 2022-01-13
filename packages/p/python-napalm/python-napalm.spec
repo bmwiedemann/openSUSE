@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Requires:       python-setuptools >= 38.4.0
 Requires:       python-textfsm
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -67,7 +67,6 @@ BuildRequires:  %{python_module pyeapi >= 0.8.2}
 BuildRequires:  %{python_module pytest >= 5.4.3}
 BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module scp}
-BuildRequires:  %{python_module selectors2 >= 2.0.1}
 BuildRequires:  %{python_module setuptools >= 38.4.0}
 BuildRequires:  %{python_module textfsm}
 BuildRequires:  %{python_module typing_extensions}
@@ -80,6 +79,7 @@ interact with different router vendor devices using a unified API.
 
 %prep
 %setup -q -n napalm-%{version}
+sed -i '1{/env python/d}' napalm/pyIOSXR/*.py
 
 %build
 %python_build
