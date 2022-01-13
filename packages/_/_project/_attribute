@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220107'
   boo#1176553: '20220111'
-  boo#1183454: '20220111'
+  boo#1183454: '20220112'
   boo#1189869: '20211207'
   boo#1190434: '20220111'
   boo#1190670: '20211128'
@@ -31,7 +31,7 @@
   boo#1193547: '20211208'
   boo#1193695: '20211214'
   boo#1193758: '20211214'
-  boo#1193909: '20220110'
+  boo#1193909: '20220111'
   boo#1194054: '20220103'
   boo#1194208: '20220111'
   boo#1194544: '20220111'
@@ -56,10 +56,13 @@
   poo#104163: '20220108'
   poo#104325: '20211227'
   poo#104505: '20211229'
-  poo#104541: '20220111'
+  poo#104541: '20220112'
   poo#104542: '20220103'
   poo#104559: '20220102'
   poo#104794: '20220110'
+  poo#104851: '20220111'
+  poo#104854: '20220111'
+  poo#104859: '20220111'
   poo#80628: '20220111'
   poo#91383: '20220111'
   poo#96611: '20211109'
@@ -77,7 +80,7 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Kernel:tools
+devel-whitelist = Kernel:tools, multimedia:libs:cisco-openh264
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -439,10 +442,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220111'
-published: '20220110'
-publishing: '20220110'
-testing: '20220111'
+    <value>failed: ''
+published: '20220111'
+publishing: '20220111'
+testing: '20220112'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

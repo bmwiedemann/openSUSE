@@ -86,6 +86,10 @@ Substitute: system-packages:docker kmod kernel-default docker createrepo_c conta
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE
 %endif
 
+%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:zSystems"
+BuildFlags: excludebuild:openh264
+%endif
+
 Substitute: kiwi-setup:image  python3-kiwi createrepo_c
 Substitute: kiwi-image:tbz    python3-kiwi
 Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
