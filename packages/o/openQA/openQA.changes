@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 13 17:48:16 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642009051.9e0bfee4f:
+  * Avoid possible race condition in `t/ui/18-test-details.t`
+  * Try reloading not yet available text results
+  * Replace bugref_regex function with BUGREF_REGEX constant
+  * Avoid action at a distance issues with global config changes
+  * Avoid unhandled output in tests
+  * Change git protocol from git: to https: in fetchneedles
+  * Clarify what the '"OK" children' restarting option means
+  * Adapt documentation to new advanced restarting UI
+
+-------------------------------------------------------------------
 Sun Jan 09 01:58:26 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1641523544.d8e770957:

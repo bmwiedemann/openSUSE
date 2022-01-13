@@ -6,7 +6,7 @@
     <param name="extract">dist/rpm/openQA-worker-test.spec</param>
     <param name="extract">dist/rpm/openQA-devel-test.spec</param>
     <param name="extract">dist/rpm/openQA-client-test.spec</param>
-    <param name="url">git://github.com/os-autoinst/openQA.git</param>
+    <param name="url">https://github.com/os-autoinst/openQA.git</param>
     <param name="revision">master</param>
     <param name="versionprefix">4.6</param>
     <param name="versionformat">%ct.%h</param>
