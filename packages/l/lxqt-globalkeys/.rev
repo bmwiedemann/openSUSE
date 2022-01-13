@@ -368,4 +368,16 @@
   * Added shortcut filtering and did some code cleanup.</comment>
     <requestid>930101</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>02574f5c6e92601c38bc7e9528315753</srcmd5>
+    <version>1.0.1</version>
+    <time>1642112449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * The asynchronous behavior of Xlib is kept intact. It
+    guarantees that the global shortcut daemon starts correctly
+    with the session after a change in the behavior of
+    libx11 1.7.3.1.</comment>
+    <requestid>946076</requestid>
+  </revision>
 </revisionlist>

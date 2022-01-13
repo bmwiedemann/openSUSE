@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  7 12:57:30 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.1:
+  * The asynchronous behavior of Xlib is kept intact. It
+    guarantees that the global shortcut daemon starts correctly
+    with the session after a change in the behavior of
+    libx11 1.7.3.1.
+
+-------------------------------------------------------------------
 Mon Nov  8 09:46:01 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
