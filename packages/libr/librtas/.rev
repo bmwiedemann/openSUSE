@@ -326,4 +326,12 @@ and the doc split already present in this devel project. (forwarded request 4049
     <comment>- Add -ffat-lto-objects to avoid ppc64le build error (forwarded request 731073 from michel_mno)</comment>
     <requestid>731087</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3b9c25c633fedd3472356c471915d2e6</srcmd5>
+    <version>2.0.2</version>
+    <time>1642112447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945883</requestid>
+  </revision>
 </revisionlist>

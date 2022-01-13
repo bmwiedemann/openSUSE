@@ -1,7 +1,7 @@
 #
 # spec file for package librtas
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@ Release:        0
 Summary:        Libraries to provide access to RTAS calls and RTAS events
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64 ppc64le
-Url:            https://github.com/ibm-power-utilities/librtas
+URL:            https://github.com/ibm-power-utilities/librtas
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         librtas.fix_doc_path.patch
+Patch1:         librtasevent-Fix-memory-page-address-print-issue.patch
 
 %description
 The librtas shared library provides userspace with an interface through
@@ -77,7 +77,7 @@ contents of RTAS events.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

@@ -1,7 +1,7 @@
 #
 # spec file for package librtas-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,18 @@ BuildRequires:  libtool
 Summary:        Documents for librtas
 License:        LGPL-2.1-or-later
 Group:          Documentation/Other
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64 ppc64le
-Url:            https://github.com/ibm-power-utilities/librtas
+URL:            https://github.com/ibm-power-utilities/librtas
 Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/librtas-%{version}.tar.gz
 Patch0:         librtas.fix_doc_path.patch
+Patch1:         librtasevent-Fix-memory-page-address-print-issue.patch
 
 %description
 This package provides librtas documentation
 
 %prep
 %setup -n librtas-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 ./autogen.sh
