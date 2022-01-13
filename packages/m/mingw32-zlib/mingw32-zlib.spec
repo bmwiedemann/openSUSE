@@ -75,6 +75,7 @@ Compatibility package.
 %package devel
 Summary:        Zlib compression library (development files)
 Group:          Development/Libraries/C and C++
+Requires:       mingw32-libz = %{version}
 
 %description devel
 zlib is a general-purpose lossless data-compression library,
@@ -96,6 +97,7 @@ Minizip is a library for manipulation with files from .zip archives.
 %package -n mingw32-minizip-devel
 Summary:        Development files for the minizip library
 Group:          Development/Libraries/C and C++
+Requires:       mingw32-libminizip1 = %{version}
 
 %description -n mingw32-minizip-devel
 This package contains the libraries and header files needed for

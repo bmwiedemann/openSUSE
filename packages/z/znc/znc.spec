@@ -26,6 +26,7 @@ URL:            https://wiki.znc.in/ZNC
 Source0:        https://znc.in/releases/%{name}-%{version}.tar.gz
 Source1:        https://znc.in/releases/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+Patch0:	harden_znc.service.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -106,6 +107,7 @@ This package contains the Tcl extension to ZNC.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake \

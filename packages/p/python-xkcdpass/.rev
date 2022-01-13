@@ -44,4 +44,14 @@
 - Update to version 1.17.6</comment>
     <requestid>895041</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>30d3a81fef55c0743728c8c3c5466d6f</srcmd5>
+    <version>1.19.2</version>
+    <time>1642029757</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test (gh#redacted/XKCD-password-generator#138).
+
+- add python-rpm-macros</comment>
+    <requestid>945902</requestid>
+  </revision>
 </revisionlist>

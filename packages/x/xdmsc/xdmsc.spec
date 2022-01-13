@@ -31,6 +31,7 @@ Summary:        XTerminal -- Use SUSE Linux as an X Terminal
 License:        GPL-2.0
 Group:          System/X11/Utilities
 Source:         Xterminal-%{version}.tar.gz
+Patch0:	harden_xdmsc@.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -44,6 +45,7 @@ You will find the documentation in the following directory
 
 %prep
 %setup -n Xterminal-%{version}
+%patch0 -p1
 
 %build
     make -f Makefile.Linux compile

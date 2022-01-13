@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jan 12 20:14:28 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Upgrade to version 3.7.0
+  - Added:
+    * Imagick::COMPOSITE_SALIENCY_BLEND
+
+- Upgrade to version 3.7.0RC1
+  - Added:
+    * function Imagick::deleteOption(string $option): bool {}
+    * function Imagick::getBackgroundColor(): ImagickPixel {}
+    * function Imagick::getImageArtifacts(string $pattern = "*"): array {}
+    * function Imagick::getImageKurtosis(): array {}
+    * function Imagick::getImageMean(): array {}
+    * function Imagick::getImageRange(): array {}
+    * function Imagick::getInterpolateMethod(): int {}
+    * function Imagick::getOptions(string $pattern = "*"): array {}
+    * function Imagick::getOrientation(): int {}
+    * function Imagick::getResolution(): array {}
+    * function Imagick::getType(): int {}
+    * function Imagick::implodeImageWithMethod(float $radius,
+      int $pixel_interpolate_method): bool {}
+    * function Imagick::oilPaintImageWithSigma(float $radius, float $sigma)
+    * function Imagick::polaroidWithTextAndMethod(ImagickDraw $settings,
+      float $angle, string $caption, int $method): bool {}
+    * function Imagick::polynomialImage(array $terms): bool {}
+    * function Imagick::setDepth(int $depth): bool {}
+    * function Imagick::setExtract(string $geometry): bool {}
+    * function Imagick::setInterpolateMethod(int $method): bool{}
+    * function Imagick::setOrientation(int $orientation): bool {}
+    * function Imagick::spreadImageWithMethod(float $radius,
+      int $interpolate_method): bool {}
+    * function Imagick::swirlImageWithMethod(float $degrees,
+      int $interpolate_method): bool {}
+    * function Imagick::waveImageWithMethod(float $amplitude,
+      float $length, int $interpolate_method): bool {}
+    * Imagick::IMAGE_TYPE_BILEVEL
+    * Imagick::IMAGE_TYPE_GRAYSCALE
+    * Imagick::IMAGE_TYPE_GRAYSCALE_ALPHA
+    * Imagick::IMAGE_TYPE_PALETTE
+    * Imagick::IMAGE_TYPE_PALETTE_ALPHA
+    * Imagick::IMAGE_TYPE_TRUE_COLOR
+    * Imagick::IMAGE_TYPE_TRUE_COLOR_ALPHA
+    * Imagick::IMAGE_TYPE_COLOR_SEPARATION
+    * Imagick::IMAGE_TYPE_COLOR_SEPARATION_ALPHA
+    * Imagick::IMAGE_TYPE_OPTIMIZE
+    * Imagick::IMAGE_TYPE_PALETTE_BILEVEL_ALPHA
+    * Imagick::COMPOSITE_SEAMLESS_BLEND
+
+  - Changed:
+    * Imagick::setImageArtifact can now take null for the string value.
+    * Return type for Imagick::getImageArtifact is string|null instead of
+      string.
+
+-------------------------------------------------------------------
 Fri Dec 10 09:17:07 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Upgrade to version 3.6.0

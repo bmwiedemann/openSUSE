@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 09:37:35 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_xdmsc@.service.patch
+
+-------------------------------------------------------------------
 Wed Dec 20 09:58:47 UTC 2017 - werner@suse.de
 
 - Move forward to systemd based usage 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 20:23:51 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to release 1.7.0
+  * drop support for PHP 7.1 and older
+  * add type hinting
+
+-------------------------------------------------------------------
 Mon Feb 15 20:40:55 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Build for both php7 and php8

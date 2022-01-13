@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-synapse-artifacts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-synapse-artifacts
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Microsoft Azure Synapse Artifacts Client Library for Python
 License:        MIT
@@ -41,7 +41,7 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.20.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-synapse-nspkg >= 1.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 Provides:       python-azure-synapse = 0.1.0
 Obsoletes:      python-azure-synapse < 0.1.0
 Conflicts:      python-azure-sdk <= 2.0.0

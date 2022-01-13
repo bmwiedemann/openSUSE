@@ -1,0 +1,12 @@
+Index: python-ligo-lw-1.8.0/test/Makefile
+===================================================================
+--- python-ligo-lw-1.8.0.orig/test/Makefile
++++ python-ligo-lw-1.8.0/test/Makefile
+@@ -10,7 +10,6 @@ check : \
+ 	ligolw_test04 \
+ 	ligolw_test05 \
+ 	test_array \
+-	test_ligolw \
+ 	test_lsctables \
+ 	test_param \
+ 	test_table \

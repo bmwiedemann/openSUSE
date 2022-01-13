@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 10:35:51 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * zabbix-java-gateway.service
+
+-------------------------------------------------------------------
 Tue Oct  5 16:13:41 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.34

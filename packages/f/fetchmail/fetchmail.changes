@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 12 10:39:18 UTC 2022 - David Anes <david.anes@suse.com>
+
+- fix [bsc#1194203]:
+  * Always create fetchmail group, even if the user is already 
+  present, as a leftover from Leap 15.2 upgrade. This may happen 
+  also if user is messing with groups/users directly or upgrading 
+  from even an older fetchmail versions. 
+
+-------------------------------------------------------------------
 Mon Dec 27 16:50:06 UTC 2021 - David Anes <david.anes@suse.com>
 
 - update to 6.5.26:

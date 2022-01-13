@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 10 09:28:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.6:
+  * Add link to used enum for a better understandability
+  * Fix fuzzer crashes
+  * Fix nullptr-dereferencing
+  * Fix bone fitted check in gltf2 exporter
+- Add patch:
+  * 0001-Fix-build-with-zlib.patch (gh#assimp/assimp#4334)
+
+-------------------------------------------------------------------
 Tue Jan  4 11:59:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.1.5:

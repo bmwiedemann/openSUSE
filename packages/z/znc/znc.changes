@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 11:28:18 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_znc.service.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 12:39:28 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to 1.8.2:

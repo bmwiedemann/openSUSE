@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:48:46 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * wrapsix.service
+
+-------------------------------------------------------------------
 Thu Dec  6 21:06:36 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim dependency warning from description; this is evident from

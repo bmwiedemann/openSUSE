@@ -1,0 +1,24 @@
+Index: Xterminal-0.6/xdmsc@.service
+===================================================================
+--- Xterminal-0.6.orig/xdmsc@.service
++++ Xterminal-0.6/xdmsc@.service
+@@ -12,6 +12,19 @@ After=remote-fs.target dbus.socket syste
+ ConditionPathExists=/dev/tty0
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=/usr/lib/xdmsc/rx %I
+ Restart=always
+ RestartSec=0

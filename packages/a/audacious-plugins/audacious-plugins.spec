@@ -104,10 +104,13 @@ Extra plugins for the Audacious audio player.
 %build
 %meson \
   -Dqt=true     \
+%ifarch %{arm} aarch64
+  -Dgl-spectrum=false \
+%endif
 %if %{with faad}
-  -Dfaad=true   \
+  -Daac=true   \
 %else
-  -Dfaad=false  \
+  -Daac=false  \
 %endif
   -Dmpg123=true
 %meson_build

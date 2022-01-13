@@ -1,19 +1,19 @@
-Index: mtr.8
+Index: mtr-0.95/man/mtr.8.in
 ===================================================================
---- mtr.8.orig
-+++ mtr.8
+--- mtr-0.95.orig/man/mtr.8.in
++++ mtr-0.95/man/mtr.8.in
 @@ -114,6 +114,14 @@ mtr \- a network diagnostic tool
  ]
  .I HOSTNAME
  .SH DESCRIPTION
-+This version was compiled 
-+.BR without 
++This version was compiled
++.BR without
 +.BR GTK .
-+Therefore corresponding options doesn't work. You can use 
-+.B xmtr 
-+for work with GTK interface.
++Therefore corresponding options don't work. You can use
++.B xmtr
++for working with the GTK interface.
 +
 +.PP
- .B mtr 
- combines the functionality of the 
+ .B mtr
+ combines the functionality of the
  .B traceroute

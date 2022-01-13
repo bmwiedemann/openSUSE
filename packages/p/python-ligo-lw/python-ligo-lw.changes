@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jan 12 09:54:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches to disable tests that either will not work in an
+  OBS setting or are temporarily incompatible with Python 3.10:
+  * ligo-lw-disable-doctests.patch: Disable doctests as these are
+    not ready for py 3.10 yet.
+  * ligo-lw-disable-sqlite-test.patch: Disable sqlite test that
+    requires network resources.
+
+-------------------------------------------------------------------
+Wed Jan 12 00:39:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.0:
+  * Adjust dbtables.workingcopy error path behaviour.
+  * Remove dbtables.workingcopy compatibility code.
+  * Remove gz= compatibility keyword argument from I/O functions.
+  * Remove ligo-common from python3 requirements.
+  * Update dependencies in .spec file for RPM systems.
+  * ligo.LIGO_LW add .get_ligo_lw() class method.
+  * Expand test suite coverage.
+  * lsctables.SimInspiral generalize SNR related methods to
+    complex values.
+  * Switch test suite to python3 (python2 no longer covered by
+    test suite).
+  * Remove ilwd support code, use native strings for this type.
+  * process.py remove set_process_end_time() function.
+  * table.py remove get_table() function.
+  * param.Param introduce .value.
+  * param.Param introduce .get_param() class method.
+  * array.Array introduce .get_array() class method.
+  * ligolw_sqlite remove unused setup() function.
+  * dbtables collect ID remapping code into a class.
+  * Tokenizer drop use in Py_UNICODE in favour of wchar_t.
+  * Tokenizer no longer allow quoted delimiters to be escaped.
+  * load_url() expose context and timeout keyword arguments.
+  * Add ligolw_run_sqlite (migrated from lalapps).
+  * Add support for .bz2 and .xz compression formats.
+- Add ligolw_run_sqlite to list of bins processed by update
+  alternatives and installed for multiple py3 versions.
+
+-------------------------------------------------------------------
+Wed Apr 21 09:41:36 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Skip python2: dependency ligo-segments no longer supports
+  python2.
+
+-------------------------------------------------------------------
 Sat Feb 13 00:27:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: Due to NEP 29, python36-scipy in TW is no

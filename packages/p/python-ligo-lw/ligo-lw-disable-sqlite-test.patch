@@ -1,0 +1,12 @@
+Index: python-ligo-lw-1.8.0/test/Makefile
+===================================================================
+--- python-ligo-lw-1.8.0.orig/test/Makefile
++++ python-ligo-lw-1.8.0/test/Makefile
+@@ -2,7 +2,6 @@ PYTHON ?= python3
+ 
+ check : \
+ 	ligolw_print_test \
+-	ligolw_sqlite_test \
+ 	ligo_lw_test_01 \
+ 	ligolw_test03a \
+ 	ligolw_test03b \

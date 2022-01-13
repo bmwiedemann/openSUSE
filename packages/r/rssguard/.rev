@@ -339,4 +339,22 @@
     <comment></comment>
     <requestid>944811</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fdc3939aafe0df393c37a817a3d25ef2</srcmd5>
+    <version>4.1.2</version>
+    <time>1642029753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.2
+  Fixed:
+  * Make webengine cookies synchronization one-way because it
+    was crashing in some instances. This is likely temporary fix.
+  * Fixed RSS Guard crashing when using MariaDB backend. Problem
+    was in buggy runtime generation of DDL SQL scripts.
+  * Expanding/collapsing of categories is now EVEN MORE properly
+    persistent and behaves more correctly when filtering feed
+    list in some way.
+- Add rssguard-4.1.2-Qt512.patch
+</comment>
+    <requestid>945872</requestid>
+  </revision>
 </revisionlist>

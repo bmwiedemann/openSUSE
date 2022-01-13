@@ -1,7 +1,7 @@
 #
 # spec file for package php-lzf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ ExclusiveArch:  do-not-build
 %define pkg_sname   lzf
 
 Name:           %{php_name}-%{pkg_sname}
-Version:        1.6.8
+Version:        1.7.0
 Release:        0
 Summary:        LZF compression
 License:        PHP-3.01

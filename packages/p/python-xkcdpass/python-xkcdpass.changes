@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 12 17:19:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing test (gh#redacted/XKCD-password-generator#138).
+
+-------------------------------------------------------------------
+Tue Jan 11 21:14:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros 
+
+-------------------------------------------------------------------
 Sun May 23 07:48:24 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 1.19.2

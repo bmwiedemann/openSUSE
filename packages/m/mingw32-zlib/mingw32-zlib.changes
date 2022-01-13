@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 10:36:41 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add runtime package as dependency to development package to fix
+  running cross compiled application (boo#1194430)
+
+-------------------------------------------------------------------
 Thu Sep 30 15:18:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile for Factory resubmission:

@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gajim
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        XMPP client written in Python and Gtk3
 License:        GPL-3.0-only
@@ -31,7 +31,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.7.0
-BuildRequires:  python3-nbxmpp >= 2.0.1
+BuildRequires:  python3-nbxmpp >= 2.0.4
 BuildRequires:  python3-precis-i18n >= 1.0.0
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
@@ -46,13 +46,13 @@ Requires:       python3-precis-i18n >= 1.0.0
 Requires:       python3-pyOpenSSL >= 16.2
 Requires:       python3-pycairo >= 1.16.0
 Requires:       typelib(Soup) = 2.4
-# gajim-remote
-Recommends:     python3-dbus-python
-# WebP avatars.
-Recommends:     python3-Pillow
 # OMEMO encryption
 Recommends:     gajim-plugin-omemo
 Recommends:     python3-axolotl
+# WebP avatars.
+Recommends:     python3-Pillow
+# gajim-remote
+Recommends:     python3-dbus-python
 # zeroconf support.
 Suggests:       dbus-1-glib
 BuildArch:      noarch
@@ -83,11 +83,8 @@ Features:
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{name}-%{version}
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
-
-# FIXME: Some leftover.
-rm gajim/data/plugins/plugin_installer/config_dialog.ui~
 
 %build
 python3 setup.py build

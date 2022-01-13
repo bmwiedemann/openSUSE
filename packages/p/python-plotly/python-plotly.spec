@@ -1,7 +1,7 @@
 #
 # spec file for package python-plotly
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        5.3.1
+Version:        5.5.0
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.15.0}
 BuildRequires:  %{python_module tenacity >= 6.2.0}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyter_core-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.15.0
 Requires:       python-tenacity >= 6.2.0
@@ -44,24 +44,25 @@ Recommends:     python-pandas
 Recommends:     python-scipy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow if (%python-base without python36-base)}
+BuildRequires:  %{python_module Pillow}
+# Currently not building in TW
+#BuildRequires:  %%{python_module Shapely}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module jupyter}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module Shapely if (%python-base without python36-base)}
-BuildRequires:  %{python_module ipykernel if (%python-base without python36-base)}
-BuildRequires:  %{python_module ipython if (%python-base without python36-base)}
-BuildRequires:  %{python_module ipywidgets if (%python-base without python36-base)}
-BuildRequires:  %{python_module jupyter if (%python-base without python36-base)}
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
-BuildRequires:  %{python_module psutil if (%python-base without python36-base)}
-BuildRequires:  %{python_module pyshp if (%python-base without python36-base)}
-BuildRequires:  %{python_module pytz if (%python-base without python36-base)}
-BuildRequires:  %{python_module scikit-image if (%python-base without python36-base)}
-BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
-BuildRequires:  %{python_module statsmodels if (%python-base without python36-base)}
-BuildRequires:  %{python_module xarray if (%python-base without python36-base)}
+BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module statsmodels}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
@@ -154,6 +155,6 @@ donttest+=" or test_matplotlylib"
 
 %files -n jupyter-plotly
 %license LICENSE.txt
-%config %{_jupyter_nb_notebook_confdir}/jupyterlab-plotly.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyterlab-plotly.json
 
 %changelog

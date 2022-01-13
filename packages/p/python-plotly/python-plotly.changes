@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan 10 21:59:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.5.0
+  * Added text_auto argument to px.bar, px.histogram,
+    px.density_heatmap, px.imshow #3518
+  * Deprecated ff.create_annotated_heatmap,
+    ff.create_county_choropleth, ff.create_gantt #3518
+  * Added div_id argument to pio.to_html, pio.write_html,
+    fig.to_html and fig.write_html to optionally make its IDs
+    deterministic #3487 with thanks to @Skn0tt
+  * Fixed ValueError when ff.create_annotated_heatmap passes rgba()
+    colors into to_rgb_color_list #3478 with thanks to @janosh
+  * Updated Plotly.js to from version 2.6.3 to version 2.8.3. See
+    the plotly.js CHANGELOG for more information. Notable changes
+    include:
+    - Horizontal color bars
+    - texttemplate for histogram-like and heatmap-like traces
+- Release notes for 5.4.0
+  * Fixed error when serializing dict with mix of string and
+    non-string keys #3380
+  * The JSON serialization engines no longer sort their keys #3380
+  * Updated Plotly.js to from version 2.4.2 to version 2.6.3. See
+    the plotly.js CHANGELOG for more information. Notable changes
+    include:
+  * New subplot type smith that supports scattersmith trace types
+    for visualizing data in the complex domain
+  * Changes to Plotly.js packaging
+- Clean python36 conditionals
+- Don't wait on optional Shapely for python310: skip tests
+
+-------------------------------------------------------------------
 Sun Sep  5 16:50:51 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.3.1:

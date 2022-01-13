@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkcdpass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://files.pythonhosted.org/packages/a3/46/c86f1c11abe2679c3d
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -53,7 +54,9 @@ sed -i -e '1d' xkcdpass/xkcd_password.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#redacted/XKCD-password-generator#138
+pytest_python310_ignore="not test_entropy_printout_valid_input"
+%pytest -k "${pytest_$python_ignore}"
 
 %post
 %python_install_alternative xkcdpass

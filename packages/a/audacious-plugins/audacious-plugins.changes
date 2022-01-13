@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 12 10:22:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable gl-spectrum on %arm and aarch64 to fix build
+- Rename non-existent faad option to aac (actual name)
+
+-------------------------------------------------------------------
 Thu Jun 24 08:57:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add fix-linking-mpg123.patch, required on Leap 15.2 and 15.3,

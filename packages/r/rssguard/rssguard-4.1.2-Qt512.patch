@@ -1,0 +1,27 @@
+From b1d4bd93ec3172fb8886fdcb12af246de65bccf3 Mon Sep 17 00:00:00 2001
+From: Martin Rotter <rotter@praktik.cz>
+Date: Wed, 12 Jan 2022 09:11:21 +0100
+Subject: [PATCH] fix 5.12 build
+
+---
+ src/librssguard/gui/feedsview.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/librssguard/gui/feedsview.cpp b/src/librssguard/gui/feedsview.cpp
+index 971204006..667184567 100644
+--- a/src/librssguard/gui/feedsview.cpp
++++ b/src/librssguard/gui/feedsview.cpp
+@@ -609,7 +609,13 @@ void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
+   // NOTE: These changes are caused by filtering mechanisms
+   // and we don't want to store the values.
+   m_dontSaveExpandState = true;
++
++#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
+   expandRecursively(pidx);
++#else
++  setExpanded(pidx, true);
++#endif
++
+   m_dontSaveExpandState = false;
+ 
+   //});

@@ -7,4 +7,15 @@
     <comment>Rename php7-lzf to php-lzf</comment>
     <requestid>873878</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0063570614578aa55c4fe965d527066</srcmd5>
+    <version>1.7.0</version>
+    <time>1642029759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.0
+  * drop support for PHP 7.1 and older
+  * add type hinting
+</comment>
+    <requestid>945928</requestid>
+  </revision>
 </revisionlist>

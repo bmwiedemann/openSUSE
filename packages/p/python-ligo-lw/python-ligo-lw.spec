@@ -1,7 +1,7 @@
 #
-# spec file for package python-ligo
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,11 +30,14 @@ ExcludeArch:    %{ix86}
 # NEP29: TW does not have python36-scipy anymore, numpy and all lal packages follow
 %define         skip_python36 1
 
-%define bins ligolw_add ligolw_cut ligolw_no_ilwdchar ligolw_print ligolw_segments ligolw_sqlite
+# Dependency ligo-segments does not build for python2
+%define         skip_python2 1
+
+%define bins ligolw_add ligolw_cut ligolw_no_ilwdchar ligolw_print ligolw_segments ligolw_sqlite ligolw_run_sqlite
 %define srcname python-ligo-lw
 
 Name:           python-ligo-lw%{?psuffix}
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Python LIGO Light-Weight XML I/O Library
 License:        GPL-3.0-only
@@ -43,6 +46,10 @@ URL:            https://git.ligo.org/kipp.cannon/python-ligo-lw
 Source:         http://software.ligo.org/lscsoft/source/%{srcname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ligo-lw-segments-test-fix.patch badshah400@gmail.com -- Fix a test that randomly fails due to dictionary ordering being undefined
 Patch0:         ligo-lw-segments-test-fix.patch
+# PATCH-FIX-UPSTREAM ligo-lw-disable-doctests.patch badshah400@gmail.com -- Disable doctests as these are not ready for py 3.10 yet
+Patch1:         ligo-lw-disable-doctests.patch
+# PATCH-FIX-OPENSUSE ligo-lw-disable-sqlite-test.patch badshah400@gmail.com -- Disable sqlite test that requires network resources
+Patch3:         ligo-lw-disable-sqlite-test.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -72,7 +79,7 @@ BuildRequires:  python3
 %endif
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -82,8 +89,7 @@ I/O library for reading, writing, and interacting with documents in this
 format.
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{srcname}-%{version}
 # Replace distutils.core by setuptools to fix namespace errors
 # https://git.ligo.org/kipp.cannon/python-ligo-lw/-/issues/16
 sed -i "1{s/distutils.core/setuptools/}" setup.py

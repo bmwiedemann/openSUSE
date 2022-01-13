@@ -31,4 +31,60 @@
     <comment></comment>
     <requestid>939085</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a8f7dc982d0a3a1a8fbcfb8a548f906</srcmd5>
+    <version>3.7.0</version>
+    <time>1642029760</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 3.7.0
+  - Added:
+    * Imagick::COMPOSITE_SALIENCY_BLEND
+- Upgrade to version 3.7.0RC1
+  - Added:
+    * function Imagick::deleteOption(string $option): bool {}
+    * function Imagick::getBackgroundColor(): ImagickPixel {}
+    * function Imagick::getImageArtifacts(string $pattern = &quot;*&quot;): array {}
+    * function Imagick::getImageKurtosis(): array {}
+    * function Imagick::getImageMean(): array {}
+    * function Imagick::getImageRange(): array {}
+    * function Imagick::getInterpolateMethod(): int {}
+    * function Imagick::getOptions(string $pattern = &quot;*&quot;): array {}
+    * function Imagick::getOrientation(): int {}
+    * function Imagick::getResolution(): array {}
+    * function Imagick::getType(): int {}
+    * function Imagick::implodeImageWithMethod(float $radius,
+      int $pixel_interpolate_method): bool {}
+    * function Imagick::oilPaintImageWithSigma(float $radius, float $sigma)
+    * function Imagick::polaroidWithTextAndMethod(ImagickDraw $settings,
+      float $angle, string $caption, int $method): bool {}
+    * function Imagick::polynomialImage(array $terms): bool {}
+    * function Imagick::setDepth(int $depth): bool {}
+    * function Imagick::setExtract(string $geometry): bool {}
+    * function Imagick::setInterpolateMethod(int $method): bool{}
+    * function Imagick::setOrientation(int $orientation): bool {}
+    * function Imagick::spreadImageWithMethod(float $radius,
+      int $interpolate_method): bool {}
+    * function Imagick::swirlImageWithMethod(float $degrees,
+      int $interpolate_method): bool {}
+    * function Imagick::waveImageWithMethod(float $amplitude,
+      float $length, int $interpolate_method): bool {}
+    * Imagick::IMAGE_TYPE_BILEVEL
+    * Imagick::IMAGE_TYPE_GRAYSCALE
+    * Imagick::IMAGE_TYPE_GRAYSCALE_ALPHA
+    * Imagick::IMAGE_TYPE_PALETTE
+    * Imagick::IMAGE_TYPE_PALETTE_ALPHA
+    * Imagick::IMAGE_TYPE_TRUE_COLOR
+    * Imagick::IMAGE_TYPE_TRUE_COLOR_ALPHA
+    * Imagick::IMAGE_TYPE_COLOR_SEPARATION
+    * Imagick::IMAGE_TYPE_COLOR_SEPARATION_ALPHA
+    * Imagick::IMAGE_TYPE_OPTIMIZE
+    * Imagick::IMAGE_TYPE_PALETTE_BILEVEL_ALPHA
+    * Imagick::COMPOSITE_SEAMLESS_BLEND
+  - Changed:
+    * Imagick::setImageArtifact can now take null for the string value.
+    * Return type for Imagick::getImageArtifact is string|null instead of
+      string.
+</comment>
+    <requestid>945929</requestid>
+  </revision>
 </revisionlist>

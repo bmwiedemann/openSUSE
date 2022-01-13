@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 12 21:00:22 UTC 2022 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.27:
+  * Fix an issue with fullscreen (glgo#World/lollypop#2874).
+  * Fix an issue with tag reader (glgo#World/lollypop#2877).
+  * Fix an issue with playlists (glgo#World/lollypop#2763).
+
+-------------------------------------------------------------------
 Tue Dec 21 20:00:55 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.26:

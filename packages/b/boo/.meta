@@ -1,7 +1,0 @@
-<package name="boo" project="openSUSE:Factory">
-  <title>A CLI Scripting Language</title>
-  <description>Boo is a new object oriented statically typed programming language for
-the Common Language Infrastructure with a python inspired syntax and a
-special focus on language and compiler extensibility.</description>
-  <devel project="Mono:Factory" package="boo"/>
-</package>

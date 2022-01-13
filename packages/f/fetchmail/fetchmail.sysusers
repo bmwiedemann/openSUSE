@@ -1,3 +1,11 @@
 # Type Name ID GECOS [HOME]
+
+# during upgrade from previous versions, the group may
+# have been deleted but the user still be present. Therefore
+# we have to be sure to recreate the group, as adding only
+# the user (if already present) won't create it
+g fetchmail -
+
 u fetchmail - "mail retrieval daemon" /var/lib/fetchmail
+m fetchmail fetchmail
 

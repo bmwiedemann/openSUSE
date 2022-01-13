@@ -1725,4 +1725,15 @@
 </comment>
     <requestid>941985</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>9ccfac8a0a50a83c34b0a7029f516129</srcmd5>
+    <version>1.4.27</version>
+    <time>1642029760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.27:
+  * Fix an issue with fullscreen (glgo#World/lollypop#2874).
+  * Fix an issue with tag reader (glgo#World/lollypop#2877).
+  * Fix an issue with playlists (glgo#World/lollypop#2763).</comment>
+    <requestid>945935</requestid>
+  </revision>
 </revisionlist>

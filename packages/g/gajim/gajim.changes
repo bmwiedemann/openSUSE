@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 18 18:15:48 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.3.3:
+  * Profile: Add NOTE entry.
+  * Port AdHocCommand window to new Assistant.
+  * Update API JID for search.jabber.network integration.
+  * Provider list: Remove blabber.im.
+  * Depend on nbxmpp>=2.0.4 (CVE-2021-41055).
+  * HTTPUpload: Raise FileError if path is not accessible.
+  * Fix spell checking.
+  * Check for gstreamer GTK plugin for AV support.
+  * Jingle: Fix UnboundLocalError for transports variable.
+  * Fix test_gui_interface testsuite.
+  * Reload CSS after switching dark/light theme.
+  * Dead key improvements.
+  * Fix starting History Manager in standalone mode.
+
+-------------------------------------------------------------------
 Tue Oct 26 08:49:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add typelib(Soup) = 2.4 requires: the way the dep is encoded in

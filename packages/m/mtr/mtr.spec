@@ -1,7 +1,7 @@
 #
 # spec file for package mtr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mtr
-Version:        0.94
+Version:        0.95
 Release:        0
 Summary:        Ping and Traceroute Network Diagnostic Tool
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://www.bitwizard.nl/mtr/
-Source:         https://www.bitwizard.nl/mtr/files/mtr-%{version}.tar.gz
+Source:         https://github.com/traviscross/mtr/archive/refs/tags/v%{version}.tar.gz#/mtr-%{version}.tar.gz
 Source1:        xmtr.desktop
 Patch1:         mtr-0.75-manmtr.patch
 Patch2:         mtr-0.87-manxmtr.patch
@@ -59,9 +59,8 @@ You'll find the text mode version in the mtr package.
 
 %prep
 %setup -q
-cp mtr.8 xmtr.8
-%patch1
-%patch2 -p1
+cp man/mtr.8.in man/xmtr.8.in
+%autopatch -p1
 
 %build
 echo "%{version}" >.tarball-version

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 11 13:21:28 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.9.3
+  - DLSS should now work in supported games in combination with [dxvk-nvapi](https://github.com/jp7677/dxvk-nvapi).
+  - Optimized D3D9 shader constants by relying on `VK_EXT_robustness2` and removed the old app options for games using software vertex processing. (#2282)
+  - Added an option for more accurate emulation of D3D9 floating point behaviour and enabled that by default for a bunch of games. (#2294, #2359). This fixes issues in **Red Orchestra 2**, **Dark Souls 2** (original version), **Dog Fight 1942**, **Bayonetta**, **Rayman Origins**, **Guilty Gear Xrd** and **Richard Burns Rally**.
+  - Fixed a DXGI issue which would sometimes cause games to fail to enter fullscreen mode on some displays that do not support low rates across all resolutions (#2395).
+  - **Black Mesa**: Fixed a regression with shadows. (#2317)
+  - **Crysis 3 Remastered**: Worked around poor performance. (#2339)
+  - **Euro Truck Simulator**: Fixed a shading issue resulting in black geometry (#2312)
+  - **Injustice Gods Among Us**: Fixed missing characters on the character selection screen. (#2332)
+  - **Rocksmith 2014**: Fixed white screen on startup. (#2383)
+  - **Spliter Cell: Chaos Theory**: Fixed brightness with the shader model 3 option. (#2340)
+  - **Sim City 2013**: Fixed rendering.
+  - **The Guild 3**: Fixed artifacts in overview map.
+
+-------------------------------------------------------------------
 Mon Sep 20 15:02:04 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.9.2
