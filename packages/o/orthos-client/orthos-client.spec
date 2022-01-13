@@ -1,7 +1,7 @@
 #
 # spec file for package orthos-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           orthos-client
-Version:        1.0.135+git.c802577
+Version:        1.2.31+git.5a38e82
 Release:        0
 Summary:        Command line client for orthos2
 License:        GPL-2.0-or-later
@@ -44,10 +44,11 @@ mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_mandir}/man1
 
 install orthos2 %{buildroot}/%{_bindir}/orthos2
-install -m 644 %{S:1} %{buildroot}/%{_mandir}/man1/orthos.1
+install -m 644 %{S:1} %{buildroot}/%{_mandir}/man1/orthos2.1
 
 %files
+%doc orthosrc
 %attr(755, root, root) %{_bindir}/orthos2
-%{_mandir}/man1/orthos.1%{?ext_man}
+%{_mandir}/man1/orthos2.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 07 12:53:47 UTC 2022 - trenn@suse.de
+
+- Update to version 1.2.31+git.5a38e82:
+  * Properly add example orthosrc
+  * Add config command to show current connection stats
+  * client: Properly catch Exception on server side
+  * Add missing import in client
+  * Show logged in user in command prompt
+  * Do not enforce username, token is enough
+  * Introduce new client parameter: -c/--config to pass an addtional orthosrc config file
+  * Move user orthosrc file to ~/.config/orthosrc
+
+-------------------------------------------------------------------
 Fri Oct 15 08:48:07 UTC 2021 - trenn@suse.de
 
 - Update to version 1.0.135+git.c802577:

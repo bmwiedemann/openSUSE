@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "ORTHOS2" "1" "Oct 12, 2021" "" "Orthos2"
+.TH "ORTHOS2" "1" "Jan 07, 2022" "" "Orthos2"
 .SH NAME
 orthos2 \- Orthos Command Line Client Documenation
 .
@@ -30,22 +30,31 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.SH BASICS
+.SH COMMAND LINE INTERFACE (CLI)
+.SS Basics
 .sp
 The Orthos CLI is a simple interactive shell. You can perform following tasks with the Orthos CLI:
 .INDENT 0.0
 .IP \(bu 2
-executing complex queries such as “which machines have more than 4 CPUs” and are reserved by Ließchen Müller,
+execute complex queries such as “which machines have more than 4 CPUs” and are reserved by Manfred
 .IP \(bu 2
-reserving a machine (only for yourself!),
+reserve or release a machine
 .IP \(bu 2
-viewing detailed machine information (such as dmidecode, lspci, lsmod or hwinfo),
+trigger installation of a machine
 .IP \(bu 2
-turning power on/off or just reboot a machine,
+view detailed machine information (such as dmidecode, lspci, lsmod or hwinfo)
 .IP \(bu 2
-editing machine data.
+turn power on/off or just reboot a machine
+.IP \(bu 2
+edit machine data
+.IP \(bu 2
+Sync machines with a cobbler server
+.IP \(bu 2
+Trigger machine data scans
+.IP \(bu 2
+\&...
 .UNINDENT
-.SH INSTALL THE CLI
+.SS Install the CLI
 .sp
 Python 3 is recommended.
 .INDENT 0.0
@@ -61,7 +70,7 @@ zypper in orthos\-client
 .sp
 In the Orthos Web Client you will find also the download link \fBDownload CLI\fP to the CLI, here you have the possibility
 to download the suitable client for your distribution(.rpm). The button is in the top right corner.
-.SH CONNECTING THE CLI TO THE ORTHOS SERVER
+.SS Connecting the CLI to the Orthos Server
 .sp
 The CLI has several options how you can set up the connection to the Orthos server and adapt it to your needs.
 .INDENT 0.0
@@ -83,8 +92,9 @@ optional arguments:
   \-P PORT, \-\-port PORT  use the port specified on the command line instead of
                         the one in the config file
   \-U USER, \-\-user USER  use the username specified
-  \-\-password PASSWORD   use this password for automatic authentication (e.g.
-                        for scripting)
+  \-\-password PASSWORD   Better use \-\-token instead (Create a token in the
+                        preferences section of the user on the web
+                        interface of the server)
   \-\-token TOKEN         use this token for automatic authentication (e.g. for
                         scripting); \-U/\-\-password options will be ignored
   \-D, \-\-debug           write debugging output
@@ -115,25 +125,24 @@ your_machine:~ # orthos \-H https://orthos\-next.arch.suse.de
 .fi
 .UNINDENT
 .UNINDENT
-.SH ORTHOSRC CONFIGURATION FILE
+.SS Orthosrc configuration file
 .sp
-The orthos package installs an empty configuration file in /etc/orthosrc.
+The orthos package installs an empty configuration file in /usr/share/doc/packages/orthos\-clientorthosrc\&.
 Once you connected to the orthos server, it is recommended to copy this
 file to your local config directory: ~/.config/orthosrc
-and adapt the file to your needs
-.SH ORTHOS COMMANDS
+and adapt the file to your needs.
+.SS Orthos Command Examples
 .sp
 HELP
 .sp
 Provides help and shows you an overview of the available Orthos CLI commands.
-.sp
-Example:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
 (orthos 2.0.0) help
+
 Commands are:
 
 INFO                 Retrieve information about a machine.
@@ -156,10 +165,6 @@ HELP                 Provides help.
 .fi
 .UNINDENT
 .UNINDENT
-.sp
-The HELP can also show you the help for certain commands.
-.sp
-Example:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -180,38 +185,6 @@ Example:
 .fi
 .UNINDENT
 .UNINDENT
-.sp
-INFO
-.sp
-Retrieve information about a machine.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help info
-Command to get information about a machine.
-
-Usage:
-    INFO <fqdn>
-
-Arguments:
-    fqdn \- FQDN or hostname of the machine.
-
-Example:
-    INFO foo.suse.de
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-POWER
-.sp
-Power cycles a machine.
-.sp
-Command description:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -242,177 +215,6 @@ Example:
 .fi
 .UNINDENT
 .UNINDENT
-.sp
-REGENERATE
-.sp
-Regenerate machine\-related or service files.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help REGENERATE
-Command to regenerate machine\-related files or configuration files for various services.
-
-Usage:
-    REGENERATE <fqdn> <option>
-    REGENERATE <service>
-
-Arguments:
-    fqdn    \- FQDN or hostname of the machine.
-    option  \- Specify what machine\-related file should be regenerated.
-                Options are:
-
-motd          : Message of the day.
-
-service \- Specify which service configuration file shoud be regenerated.
-       Options are:
-             dhcp          : DHCP configuration files (superusers only).
-             serialconsole : Serial console files (superusers only).
-
-Example:
-    REGENERATE foo.suse.de motd
-    REGENERATE dhcp
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-ADD
-.sp
-Adds information to the database.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help add
-Adds items to the database. All information will be queried interactively.
-
-Usage:
-    ADD <item> [args*]
-
-Arguments:
-    item \- Specify the item which should be added. Items are:
-
-machine                       : Add a machine (superusers only).
-annotation <fqdn>             : Add an annotation to a specific
-                                machine (no bugreports).
-serialconsole <fqdn>          : Add a serial console to a specific
-                                machine (superusers only).
-remotepower <fqdn>            : Add a remote power to a specific
-                                machine (superusers only).
-virtualmachine <architecture> : Add a virtual machine on a specific
-                                architecture.
-
-Example:
-    ADD machine
-    ADD virtualmachine x86_64
-    ADD serialconsole foo.suse.de
-    ADD remotepower foo.suse.de
-    ADD annotation foo.suse.de
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-DELETE
-.sp
-Removes information from the database.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help delete
-Deletes items from the database.
-
-Usage:
-    DELETE <item> [args*]
-
-Arguments:
-    item \- Specify the item which should be deleted. Items are:
-
-machine       : Delete a machine (superusers only).
-serialconsole : Delete serial console of a specifc machine
-                (superusers only).
-remotepower   : Delete remote power of a specifc machine
-                (superusers only).
-
-Example:
-    DELETE machine
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-SERVERCONFIG
-.sp
-Show server configuration.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help serverconfig
-Show server configuration (superusers only).
-
-Usage:
-    CONFIG
-
-Example:
-    CONFIG
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-RESCAN
-.sp
-Rescan a machine.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help rescan
-Command to rescan machines. Normally all machines are scanned once a day automatically. For some reason it makes sense to rescan machines manually immediately, e.g. if new hardware has been added.
-
-Usage:
-    RESCAN <fqdn> <option>
-
-Arguments:
-    fqdn   \- FQDN or hostname of the machine.
-    option \- Specify what should be rescanned. Options are:
-
-status            : Check machine status (ping, SSH, login).
-all               : Complete scan.
-misc              : Check miscellaneous software/hardware attributes.
-installations     : Rescan installed distributions only.
-networkinterfaces : Rescan network interfaces only.
-
-Example:
-    RESCAN foo.suse.de networkinterfaces
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-RESERVE
-.sp
-Reserve machines.
-.sp
-Command description:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -433,38 +235,6 @@ Example:
 .fi
 .UNINDENT
 .UNINDENT
-.sp
-RESERVATIONHISTORY
-.sp
-Show reservation history of a machine.
-.sp
-Command description:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-(orthos 2.0.0) help RESERVATIONHISTORY
-Show reservation history of a machine.
-
-Usage:
-    RESERVATIONHISTORY <machine>
-
-Arguments:
-    machine \- FQDN or hostname of the machine.
-
-Example:
-    RESERVATIONHISTORY foo.suse.de
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-ALIAS
-.sp
-Define own aliases.
-.sp
-Command description:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -493,105 +263,101 @@ Example:
 .UNINDENT
 .UNINDENT
 .sp
-AUTH
+QUERY
 .sp
-Request authorisation manually.
+Retrieve all kind of information about a machine or general orthos data.
+This is a very powerful command. It is built up similar to a SELECT SQL
+database statement. In fact it ends up in querying the underlying orthos
+server database:
 .sp
-Command description:
+query foo, bar where binary_attribute and int_attribute > XY and char_attribute
+=~ "STRING"
+.sp
+\-> This will search for and show the results (also attributes): foo and bar
+where the condition after where matches.
+.sp
+Examples:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
-(orthos 2.0.0) auth
-Orthos password for \(aqyour_login_name\(aq:*******
-(orthos 2.0.0)
+query fqdn, cpu_physical
+query fqdn where cpu_model =~ Intel
+query fqdn where cpu_model =~ Intel OR !efi
 .ft P
 .fi
 .UNINDENT
 .UNINDENT
 .sp
-QUERY
-.sp
-Retrieve information about a machine.
-.sp
-Command description:
+More complex queries:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
-(orthos 2.0.0) help query
-Command to query machines. You can just specify a comma\-separated list of fields, then you get that fields for all machines.
-
-Example:
-
-QUERY fqdn, cpu_physical
-QUERY fqdn WHERE cpu_model =~ Intel
-QUERY fqdn WHERE cpu_model =~ Intel OR !efi
-
+# Show full names and installed distributions of all machines which
+# are not reserved (!res_by), which do run and have an orthos ssh key
+# installed and therefore could be nightly scanned (status_login)
+# which are not administrative, x86_64 machines and do have more than 7
+# CPU cores:
+query fqdn, inst_dist where !res_by and status_login and !administrative and architecture = x86_64 and cpu_cores > 7
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Use alias(es) for more complex queries:
+To permanently define and use above command as an alias (auto\-stored in
+~/.config/orthosrc), make sure to not use any quoting, just do:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+alias x86_free_running query fqdn, inst_dist where !res_by and status_login and !administrative and architecture = x86_64 and cpu_cores > 7
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+To use above defined alias (tab completion working...):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@x86_free_running
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
 Valid operators are:
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-
-!<field>            not
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+!<field>            not (binary fields only)
 == =                exactly equal
 =~                  contains
 =*                  startswith
 !=                  unequal
->  <                greater or less than (numbers only)
->= <=               greater equals or less equals (numbers only)
+>  <                greater or less than (number fields only)
+>= <=               greater equals or less equals (number fields only)
 AND                 logical conjunction
 OR                  logical disjunction
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-
 .ft P
 .fi
 .UNINDENT
 .UNINDENT
-.SH ORTHOS VARIABLES AND OBJECTS
+.SS Orthos Variables and Objects
 .sp
-The Orthos Client has many objects that you can query from the machine objects in Orthos. The names are always
-self\-explanatory and can be used for queries as described above under the QUERY command.
-.INDENT 0.0
-.IP \(bu 2
-A: active, administrative, annotation_created, annotation_reporter, annotation_text, architecture
-.IP \(bu 2
-B: bios_version, bios_date
-.IP \(bu 2
-C: check_connectivity, collect_system_information, comment, contact_email, cpu_cores, cpu_flags, cpu_id,
-cpu_model, cpu_physical, cpu_speed, cpu_threads, created
-.IP \(bu 2
-D: dhcp_filename, disk_primary_size, disk_type, dmesg, dmidecode, domain
-.IP \(bu 2
-E: efi, enclosure, enclosure_platform, enclosure_vendor
-.IP \(bu 2
-F: fqdn, fqdn_domain
-.IP \(bu 2
-G: group
-.IP \(bu 2
-H: hwinfo
-.IP \(bu 2
-I: id, iface_driver_module, iface_ethernet_type, iface_mac_address, iface_name, iface_primary, infinite, inst_active,
-inst_arch, inst_dist, inst_kernel, inst_partition, ipmi, ipv4, ipv6
-.IP \(bu 2
-K: kernel_options
-.IP \(bu 2
-L: last, last_check, lsmod, lspci, lsscsi, lsusb
-.IP \(bu 2
-N: name
-.IP \(bu 2
-P: pci_classid, pci_classname, pci_device, pci_deviceid, pci_driver, pci_revision, pci_sdeviceid, pci_sdevicename,
-pci_slot, pci_svendorid, pci_svendorname, pci_vendor, pci_vendorid, platform, product_code
-.IP \(bu 2
-R: ram, ram_amount, res_by, reserved_at, reserved_by, reserved_by_email, reserved_reason, reserved_until, rpower,
-rpower_device, rpower_management_bmc, rpower_port, rpower_power_device, rpower_type
-.IP \(bu 2
-S: sconsole, serial_baud, serial_command, serial_comment, serial_console_server, serial_cscreen_server, serial_device,
-serial_kernel_device, serial_management_bmc, serial_number, serial_port, serial_type, status_abuild, status_ipv4,
-status_ipv6, status_login, status_ping, status_ssh, system
-.IP \(bu 2
-U: updated
-.IP \(bu 2
-V: virtualization_api, vm_auto_delete, vm_capable, vm_dedicated_host, vm_max
-.UNINDENT
+The Orthos Client has many objects that you can query from the machine objects
+in Orthos. The names are self\-explanatory and can be used for queries
+as described under the \fIquery\fP command above or you use the TAB completion
+feature to see available \fIquery\fP attributes.
 .SH AUTHOR
 Thomas Renninger
 .SH COPYRIGHT
