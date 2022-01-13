@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 13 09:17:06 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-xfce: ignore shotwell
+
+-------------------------------------------------------------------
 Wed Jan 12 09:14:26 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Ignore gstreamer-plugins-rs and procmail

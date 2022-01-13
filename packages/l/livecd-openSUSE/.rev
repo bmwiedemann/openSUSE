@@ -1376,4 +1376,11 @@
     <comment>- list-xfce: Ignore gdb (forwarded request 945822 from favogt)</comment>
     <requestid>945823</requestid>
   </revision>
+  <revision rev="171" vrev="171">
+    <srcmd5>9f1bdda5337765a854211ef376192a46</srcmd5>
+    <version>unknown</version>
+    <time>1642065450</time>
+    <user>dimstar_suse</user>
+    <comment>- list-xfce: ignore shotwell</comment>
+  </revision>
 </revisionlist>

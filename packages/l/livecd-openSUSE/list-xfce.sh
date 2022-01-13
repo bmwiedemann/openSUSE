@@ -31,6 +31,7 @@ buildignore libreoffice
 
 # Save a bit of space
 buildignore gdb
+buildignore shotwell
 
 buildignore gimp
 buildignore pidgin
