@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-atpublic
 Version:        2.3
@@ -45,6 +45,10 @@ public -- @public for populating __all__.
 %prep
 %setup -q -n public-%{version}
 rm setup.cfg
+# API change in sybil 3
+if [ -d %{python3_sitelib}/sybil-3*-info ]; then
+  sed -i 's/CodeBlockParser/PythonCodeBlockParser/' conftest.py
+fi
 
 %build
 %python_build
@@ -60,6 +64,7 @@ rm setup.cfg
 %files %{python_files}
 %doc docs/NEWS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/public
+%{python_sitelib}/atpublic-%{version}*-info
 
 %changelog
