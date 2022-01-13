@@ -1,7 +1,7 @@
 #
 # spec file for package calc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define soname 2
+%define soname 2_14_0_14
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.14.0.6
+Version:        2.14.0.14
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
@@ -27,7 +27,6 @@ Group:          Productivity/Scientific/Math
 URL:            http://www.isthe.com/chongo/tech/comp/calc/index.html
 Source0:        http://www.isthe.com/chongo/src/calc/%{name}-%{version}.tar.bz2
 Source1:        README.openSUSE
-Source2:        calc-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel >= 5.5
 BuildRequires:  readline-devel >= 5.1
@@ -99,8 +98,6 @@ make -e %{makevars} chk
 
 %install
 make T=%{buildroot} %{makevars} install
-ln -s libcalc.so.%{version} %{buildroot}%{_libdir}/libcalc.so.2
-ln -s libcustcalc.so.%{version} %{buildroot}%{_libdir}/libcustcalc.so.2
 rmdir %{buildroot}%{_includedir}/calc/custom
 
 # dummy-install some docs etc. to create the symlinks

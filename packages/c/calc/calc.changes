@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Jan 12 17:00:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.14:
+  * Fixed typo in Makefile.local comment.
+- Remove calc-rpmlintrc: lib doesnt call exit() anymore
+
+-------------------------------------------------------------------
+Wed Jan 12 16:58:03 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.13:
+  * Minor tweak to seed() builtin. Updated help/srand and help/srandom.
+  * Moved Makefile.ship into Makefile.
+  * Removed custom/Makefile.head and custom/Makefile.tail.
+  * The "README.*" files and "HOWTO.INSTALL" file have been updated.
+  * By default, compiler warnings have been turned up.
+  * The readline, history and ncurses libraries are now default.
+  * We have renamed "stable" as "production".
+  * We have renamed "unstable" as "tested".
+  * Fixed bug impacting how have_ustat.h was formed.
+
+-------------------------------------------------------------------
+Wed Jan 12 16:52:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.12:
+  * Drop support for SunOS, IRIX and MINGW32_NT-5.0 targets.
+  * Drop support for CLOCK_SGI_CYCLE.  Drop testing for __MSDOS__.
+  * Minor improvement of various help files.  Made format of help
+    files more consistent.
+  * Corrected a few comments in zrandom.c, including a case where
+    the comment referred to 1007 when it should have used 2^32.
+  * Improved seed() generation.  Improved some comments in seed.c.
+    Added have_environ.c to build have_environ.h in order to
+    determine if: extern char **environ;  /* user environment */
+    is an valid external symbol.
+  * Fixed documentation that referred to the old additive 55
+    generator.  We have been using the subtractive 100 in place
+    of the additive 55 generator for a while now.
+  * Fixed depend rule for custom/Makefile.
+  * Fixed how Makefile variable SHELL is set on macOS vs. Linux.
+    Using /bin/sh on macOS due to how zsh treats globs by default.
+  * Added charbit.h to define CALC_CHARBIT which is either CHAR_BIT
+    from <limits.h> or 8 or a value set by the Makefile variable
+    CALC_CHARBIT.  Added have_limits.h to determine if <limits.h>
+    is a system include file.
+  * Fixed incorrect ustat_dev member ref in seed() builtin that
+    was part of the unreleased calc v2.12.0.11.
+
+-------------------------------------------------------------------
+Wed Jan 12 16:51:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.10:
+  * Pluged a number of memory leaks.
+  * Fixed a few cases where v_subtype was not properly initialuzed.
+  * Improved the way that internal pre-defined constants are managed.
+    Removed unused internal pre-defined constants.  Added code to
+    prevent an internal pre-defined constant (that was never allocated)
+    from being freed.
+
+-------------------------------------------------------------------
+Wed Jan 12 16:50:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.9:
+  * Due to issues with clang and Apple Silicon, ARCH_CFLAGS is now,
+    by default, empty: ARCH_CFLAGS=
+  * If you want to use, say, -march=native, then either change
+    the Makefile or make with: make all ARCH_CFLAGS='-march=native'
+  * Added arch and hardware as GNU Makefile computed values.
+    As with ${target}, ${arch} and ${hardware} is computed by uname:
+    target: uname -a
+    arch: uname -p
+    hardware: uname -m
+  * Fixed compiling calc on Apple Silicon with homebrew.  On Apple
+    Silicon, HomeBrew installs on into a different location.  The
+    Makefile checks if ${hardware} is arm64 and adjusts the location
+    of libraries such as readline and history accordingly.
+
+-------------------------------------------------------------------
+Wed Jan 12 16:49:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.7:
+  * The help and man builtin commands now return an error when a
+    help file cannot be opened, such as when there is no help file.
+  * Added palindrome.cal resource file.  For example, to find the
+    largest (highly probable) prime palindrome under 280 decimal
+    digits (text tweet limit): prevprimepal(1e280)
+
+-------------------------------------------------------------------
 Wed Nov  3 08:26:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.0.6:

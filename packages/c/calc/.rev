@@ -359,4 +359,41 @@
     + Multiplication result converted to larger type in zfunc.c</comment>
     <requestid>928961</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f1ccb66987a2ea01cf27aadab6070a8c</srcmd5>
+    <version>2.14.0.14</version>
+    <time>1642112451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.14:
+  * Fixed typo in Makefile.local comment.
+- Remove calc-rpmlintrc: lib doesnt call exit() anymore
+
+- Update to 2.14.0.13:
+  * Minor tweak to seed() builtin. Updated help/srand and help/srandom.
+  * Moved Makefile.ship into Makefile.
+  * Removed custom/Makefile.head and custom/Makefile.tail.
+  * The &quot;README.*&quot; files and &quot;HOWTO.INSTALL&quot; file have been updated.
+  * By default, compiler warnings have been turned up.
+  * The readline, history and ncurses libraries are now default.
+  * We have renamed &quot;stable&quot; as &quot;production&quot;.
+  * We have renamed &quot;unstable&quot; as &quot;tested&quot;.
+  * Fixed bug impacting how have_ustat.h was formed.
+
+- Update to 2.14.0.12:
+  * Drop support for SunOS, IRIX and MINGW32_NT-5.0 targets.
+  * Drop support for CLOCK_SGI_CYCLE.  Drop testing for __MSDOS__.
+  * Minor improvement of various help files.  Made format of help
+    files more consistent.
+  * Corrected a few comments in zrandom.c, including a case where
+    the comment referred to 1007 when it should have used 2^32.
+  * Improved seed() generation.  Improved some comments in seed.c.
+    Added have_environ.c to build have_environ.h in order to
+    determine if: extern char **environ;  /* user environment */
+    is an valid external symbol.
+  * Fixed documentation that referred to the old additive 55
+    generator.  We have been using the subtractive 100 in place
+    of the additive 55 generator for a while now.
+  * Fixed depend rule for custom/Makefile.</comment>
+    <requestid>946083</requestid>
+  </revision>
 </revisionlist>
