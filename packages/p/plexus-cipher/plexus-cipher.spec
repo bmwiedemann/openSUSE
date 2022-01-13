@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-cipher
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,18 @@
 
 
 Name:           plexus-cipher
-Version:        1.7
+Version:        2.0
 Release:        0
 Summary:        Plexus Cipher: encryption/decryption Component
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://github.com/codehaus-plexus/plexus-cipher
-# git clone https://github.com/sonatype/plexus-cipher.git
-# cd plexus-cipher/
-# note this is version 1.7 + our patches which were incorporated by upstream maintainer
-# git archive --format tar --prefix=plexus-cipher-1.7/ 0cff29e6b2e | gzip -9 > plexus-cipher-1.7.tar.gz
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/codehaus-plexus/%{name}
+Source0:        https://github.com/codehaus-plexus/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  atinject
-BuildRequires:  cdi-api
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
 BuildRequires:  sisu-inject
 BuildRequires:  xmvn-install
@@ -50,33 +46,27 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
 
 # replace %{version}-SNAPSHOT with %{version}
-%pom_xpath_replace pom:project/pom:version "<version>%{version}</version>"
-
-# fedora moved from sonatype sisu to eclipse sisu. sisu-inject-bean artifact
-# doesn't exist in eclipse sisu. this artifact contains nothing but
-# bundled classes from atinject, cdi-api, aopalliance and maybe others.
-%pom_remove_dep org.sonatype.sisu:sisu-inject-bean
-%pom_add_dep javax.inject:javax.inject:1:provided
-%pom_add_dep javax.enterprise:cdi-api:1.0:provided
-%pom_remove_dep junit:junit
-%pom_add_dep junit:junit:3.8.2:test
+%pom_xpath_set pom:project/pom:version %{version}
 
 %pom_remove_parent .
+%pom_xpath_inject pom:project "<groupId>org.codehaus.plexus</groupId>"
+%pom_change_dep -r -f ::::: :::::
 
 %mvn_file : plexus/%{name}
 
 %build
 mkdir -p lib
-build-jar-repository -s lib cdi-api atinject org.eclipse.sisu.inject
+build-jar-repository -s lib atinject org.eclipse.sisu.inject
 
 %ant compile
 %ant jar javadoc
 
 %mvn_artifact pom.xml target/%{name}-%{version}.jar
+%mvn_alias :{*} org.sonatype.plexus:@1
 
 %install
 %mvn_install

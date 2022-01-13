@@ -9,20 +9,19 @@
   <property file="maven-build.properties"/>
 
   <property name="project.artifactId" value="plexus-cipher"/>
-  <property name="project.groupId" value="org.sonatype.plexus"/>
-  <property name="project.version" value="1.7"/>
+  <property name="project.groupId" value="org.codehaus.plexus"/>
+  <property name="project.version" value="2.0"/>
   <property name="project.name" value="Plexus Cipher: encryption/decryption Component"/>
-  <property name="project.url" value="http://spice.sonatype.org/plexus-cipher"/>
+  <property name="project.url" value="https://github.com/codehaus-plexus/plexus-cipher"/>
   <property name="project.organization.name" value="Sonatype, Inc."/>
 
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
-  <property name="build.resourceDir" value="src/main/resources"/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
   <!-- ====================================================================== -->
@@ -31,7 +30,6 @@
 
   <path id="build.classpath">
     <fileset dir="lib">
-      <!-- cdi-api-1.0 jboss-interceptor-api-1.1 javax.inject-1 -->
       <include name="**/*.jar"/>
     </fileset>
   </path>
@@ -64,9 +62,6 @@
       </src>
       <classpath refid="build.classpath"/>
     </javac>
-    <copy todir="${build.outputDir}">
-      <fileset dir="${build.resourceDir}"/>
-    </copy>
   </target>
 
   <!-- ====================================================================== -->

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 13 17:22:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0
+  * needed by maven 3.8.4
+  * needed by plexus-sec-dispatcher 2.0
+
+-------------------------------------------------------------------
 Wed Mar 20 16:22:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Generate the javax.inject.Named running sisu-inject at compile
