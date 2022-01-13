@@ -1,7 +1,7 @@
 #
 # spec file for package 7zip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,28 @@ Release:        0
 Summary:        File Archivier
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
 # C/Sha1.c and C/Sha256.c are in the public domain
-License:        LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
 URL:            https://www.7-zip.org/
 Source:         https://www.7-zip.org/a/7z%{stripped_version}-src.tar.xz
+Source1:        p7zip
+Source2:        p7zip.1
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+Conflicts:      p7zip
+Conflicts:      p7zip-full
+Provides:       p7zip = %{version}
+Provides:       p7zip-full = %{version}
+Obsoletes:      p7zip < %{version}
+Obsoletes:      p7zip-full < %{version}
 
 %description
 This package contains the 7z command line utility for archiving and
 extracting various formats.
 
 %prep
-%__tar xaf %{SOURCE0}
+tar xaf %{SOURCE0}
 dos2unix DOC/*.txt
 # Remove executable perms from docs
 chmod -x DOC/*.txt
@@ -57,10 +65,24 @@ cd CPP/7zip//Bundles/Alone2
 %install
 install -d -m 755 %{buildroot}%{_bindir}
 install -Dt %{buildroot}%{_bindir} CPP/7zip/Bundles/Alone2/b/g/7zz
+# Create links the executables provided by p7zip
+ln -s %{_bindir}/7zz %{buildroot}%{_bindir}/7z
+ln -s %{_bindir}/7z %{buildroot}%{_bindir}/7za
+ln -s %{_bindir}/7z %{buildroot}%{_bindir}/7zr
+# Install p7zip wrapper and its manpage
+install -m755 %{SOURCE1} %{buildroot}%{_bindir}/p7zip
+install -m644 -Dt %{buildroot}%{_mandir}/man1 %{SOURCE2}
+# Remove a mention of the p7zip-rar package that we don't have
+sed -i 's/RAR (if the non-free p7zip-rar package is installed)//g' %{buildroot}%{_mandir}/man1/p7zip.1
 
 %files
 %license DOC/copying.txt DOC/License.txt
 %doc DOC/readme.txt DOC/7zC.txt DOC/Methods.txt DOC/src-history.txt
+%{_bindir}/7z
+%{_bindir}/7za
+%{_bindir}/7zr
 %{_bindir}/7zz
+%{_bindir}/p7zip
+%{_mandir}/man1/p7zip.1%{?ext_man}
 
 %changelog

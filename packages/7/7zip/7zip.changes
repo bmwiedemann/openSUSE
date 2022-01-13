@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 12 16:45:41 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Replace p7zip with 7zip
+  * Add p7zip and p7zip.1
+
+-------------------------------------------------------------------
 Mon Jan  3 11:31:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 21.07:
