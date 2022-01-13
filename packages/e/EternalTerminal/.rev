@@ -126,4 +126,14 @@
   and https://github.com/getsentry/sentry-native/issues/501</comment>
     <requestid>929131</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5b439d1ad024b9ddf7cc378769843412</srcmd5>
+    <version>6.1.11</version>
+    <time>1642112493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.11:
+  * Compile fixes for later versions of gcc
+- Remove et-limits.patch: upstreamed</comment>
+    <requestid>946163</requestid>
+  </revision>
 </revisionlist>

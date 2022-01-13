@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 13 14:21:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.11:
+  * Compile fixes for later versions of gcc
+- Remove et-limits.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Nov  4 08:39:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.1.9:
