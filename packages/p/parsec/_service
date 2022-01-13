@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
     <param name="compression">xz</param>
-    <param name="srcdir">parsec-0.8.0</param>
+    <param name="srcdir">parsec-0.8.1</param>
   </service>
 </services>

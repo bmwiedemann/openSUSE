@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 13:25:14 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.8.1:
+  * Changelog: https://github.com/parallaxsecond/parsec/compare/0.8.0...0.8.1
+
+-------------------------------------------------------------------
 Thu Dec  9 11:05:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix /run/parsec permission to 755. This is enough for all
