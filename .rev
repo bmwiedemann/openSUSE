@@ -2365,4 +2365,22 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * fix-build-openssl-1.1.0.patch</comment>
     <requestid>942364</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>95fb8377cc75c060498f67f5b68e66ac</srcmd5>
+    <version>5.15.2+kde268</version>
+    <time>1642112472</time>
+    <user>dimstar_suse</user>
+    <comment>  * Fallback to /tmp/runtime-$USER if XDG_RUNTIME_DIR is not set
+    or is unsafe (bsc#1172515)
+  * Fixes CVE-2020-17507, bsc#1176315
+  * Qt incorrectly calls SSL_shutdown() in OpenSSL mid-handshake
+    causing denial of service in TLS applications (bsc#1172726,
+    CVE-2020-13962, QTBUG-83450)
+  * Fixes CVE-2020-0570, bsc#1161167, bsc#1162191, QTBUG-81272
+  * Fix segfaults due to unaligned stack in QtCore5 (bsc#1155955)
+  * Add support for PostgreSQL 12 (bsc#1173758)
+  * Qt headers redefine opengl types differently than khronos headers
+    (bsc#1176130)</comment>
+    <requestid>946070</requestid>
+  </revision>
 </revisionlist>

@@ -148,6 +148,8 @@ Fri Nov 20 12:08:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
   * New bugfix release
   * For more details please see:
     http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.15.2/?h=5.15.2
+  * Fallback to /tmp/runtime-$USER if XDG_RUNTIME_DIR is not set
+    or is unsafe (bsc#1172515)
 - Drop patches, now upstream:
   * 0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch
 - Pass -confirm-license option, drop duplicates
@@ -187,7 +189,7 @@ Thu Sep 10 07:57:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.1:
   * New bugfix release
-  * Fixes CVE-2020-17507
+  * Fixes CVE-2020-17507, bsc#1176315
   * For more details please see:
     http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.15.1/?h=5.15.1
 - Drop patches, now upstream:
@@ -249,6 +251,9 @@ Fri Apr 24 07:11:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 - Update to 5.15.0-beta4:
   * New bugfix release
   * No changelog available
+  * Qt incorrectly calls SSL_shutdown() in OpenSSL mid-handshake
+    causing denial of service in TLS applications (bsc#1172726,
+    CVE-2020-13962, QTBUG-83450)
 
 -------------------------------------------------------------------
 Tue Apr 14 06:47:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
@@ -292,7 +297,7 @@ Mon Jan 27 13:13:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.14.1:
   * New bugfix release
-  * Fixes CVE-2020-0570
+  * Fixes CVE-2020-0570, bsc#1161167, bsc#1162191, QTBUG-81272
   * For more details please see:
     http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.14.1/?h=v5.14.1
 - Drop patch, should be addressed by applications meanwhile:
@@ -354,6 +359,8 @@ Thu Oct 24 13:22:25 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 - Update to 5.14.0-beta2:
   * New bugfix release
   * No changelog available
+  * Fix segfaults due to unaligned stack in QtCore5 (bsc#1155955)
+  * Add support for PostgreSQL 12 (bsc#1173758)
 - Refresh patches:
   * 0001-Revert-Always-escape-the-table-names-when-creating-t.patch
 
@@ -560,6 +567,8 @@ Thu Mar 21 10:24:28 UTC 2019 - fabian@ritter-vogt.de
   * New feature release
   * For more details about Qt 5.13 please see:
   * http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.13.0/?h=5.13
+  * Qt headers redefine opengl types differently than khronos headers
+    (bsc#1176130)
 - Remove patches, now upstream:
   * qapplication-emit-palettechanged.patch
   * reproducible-qrc-time.patch
