@@ -1,7 +1,7 @@
 #
 # spec file for package guilt
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Url:            http://www.kernel.org/pub/linux/kernel/people/jsipek/guilt/
+URL:            http://guilt.31bits.net/src/
 
 Name:           guilt
-Version:        0.35
-Release:        1
+Version:        0.36
+Release:        0
 Summary:        quilt on top of git
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
+
 Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE drop-unneeded-git-version-check.patch bnc#810667 douglarek@outlook.com
-Patch0:         drop-unneeded-git-version-check.patch
 BuildRequires:  asciidoc
 BuildRequires:  docbook_3
 BuildRequires:  docbook_4
@@ -55,7 +54,6 @@ separate history of changes made to your patches.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 make

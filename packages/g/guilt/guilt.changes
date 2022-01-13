@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 11:00:20 UTC 2022 - Yiannis Bonatakis <ioannis.bonatakis@suse.com>
+
+- Update to 0.36
+- Remove patch drop-unneeded-git-version-check.patch for https://bugzilla.suse.com/show_bug.cgi?id=810667
+
+-------------------------------------------------------------------
 Wed Mar 20 09:49:42 UTC 2013 - douglarek@outlook.com
 
 - update to 0.35
