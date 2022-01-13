@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 22 11:59:53 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 1.12.0
+- Added patch:
+  * maven-scm-1.12.0-sec-dispatcher-2.0.patch
+    + fix build with newer plexus-sec-dispatcher
+
+-------------------------------------------------------------------
 Wed Jul  1 13:50:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with jgit 5.8.0

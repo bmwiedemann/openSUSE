@@ -1,7 +1,7 @@
 #
 # spec file for package maven-scm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           maven-scm
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        Common API for doing SCM operations
 License:        Apache-2.0
@@ -27,6 +27,7 @@ URL:            https://maven.apache.org/scm
 Source0:        http://archive.apache.org/dist/maven/scm/%{name}-%{version}-source-release.zip
 # Patch to migrate to new plexus default container
 # This has been sent upstream: https://issues.apache.org/jira/browse/SCM-731
+Patch0:         maven-scm-1.12.0-sec-dispatcher-2.0.patch
 Patch1:         0001-Port-maven-scm-to-latest-version-of-plexus-default.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -75,6 +76,7 @@ Javadoc for %{name}.
 %prep
 %setup -q
 
+%patch0 -p1
 %patch1 -p1
 
 # Remove unnecessary animal sniffer
@@ -85,13 +87,11 @@ Javadoc for %{name}.
 %pom_change_dep -r :maven-project :maven-compat
 
 # Remove providers-integrity from build (we don't have mks-api)
-%pom_remove_dep org.apache.maven.scm:maven-scm-provider-integrity maven-scm-providers/maven-scm-providers-standard
 %pom_disable_module maven-scm-provider-integrity maven-scm-providers
 
 # Partially remove cvs support for removal of netbeans-cvsclient
 # It still works with cvsexe provider
 %pom_remove_dep org.apache.maven.scm:maven-scm-provider-cvsjava maven-scm-client
-%pom_remove_dep org.apache.maven.scm:maven-scm-provider-cvsjava maven-scm-providers/maven-scm-providers-standard
 %pom_disable_module maven-scm-provider-cvsjava maven-scm-providers/maven-scm-providers-cvs
 sed -i s/cvsjava.CvsJava/cvsexe.CvsExe/ maven-scm-client/src/main/resources/META-INF/plexus/components.xml
 

@@ -1,0 +1,12 @@
+diff -urEbwB maven-scm-1.12.0/maven-scm-test/src/main/java/org/apache/maven/scm/ScmTestCase.java maven-scm-1.12.0.new/maven-scm-test/src/main/java/org/apache/maven/scm/ScmTestCase.java
+--- maven-scm-1.12.0/maven-scm-test/src/main/java/org/apache/maven/scm/ScmTestCase.java	2021-09-13 07:40:54.000000000 +0200
++++ maven-scm-1.12.0.new/maven-scm-test/src/main/java/org/apache/maven/scm/ScmTestCase.java	2021-10-22 13:46:07.513329542 +0200
+@@ -150,7 +150,7 @@
+     {
+         if ( secDispatcher == null )
+         {
+-            secDispatcher = (SecDispatcher) lookup( SecDispatcher.ROLE, "mng-4384" );
++            secDispatcher = (SecDispatcher) lookup( SecDispatcher.class.getName(), "mng-4384" );
+         }
+ 
+         return secDispatcher;
