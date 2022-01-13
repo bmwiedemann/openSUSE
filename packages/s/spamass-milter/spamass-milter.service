@@ -10,6 +10,19 @@ After = spamd.service
 Before = postfix.service
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 UMask = 0022
 Environment = SOCKET=/run/spamass-milter/socket SOCKET_OPTIONS="-g postfix" EXTRA_FLAGS=
 EnvironmentFile = -/usr/etc/default/spamass-milter
