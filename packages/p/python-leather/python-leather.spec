@@ -1,7 +1,7 @@
 #
 # spec file for package python-leather
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-leather
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Python charting for 80% of humans
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/leather
-Source:         https://github.com/wireservice/leather/archive/%{version}.tar.gz
+Source:         https://github.com/wireservice/leather/archive/%{version}.tar.gz#/leather-0.3.4-gh.tar.gz
 BuildRequires:  %{python_module lxml >= 3.6.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -58,6 +58,7 @@ rm test.py
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/leather
+%{python_sitelib}/leather-%{version}*-info
 
 %changelog
