@@ -200,4 +200,16 @@
     Depend instead on standard library `unittest` and `unittest.mock`.</comment>
     <requestid>887875</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5fe7d7eb1e867d3c57b0dae17a1a8151</srcmd5>
+    <version>2.3.0</version>
+    <time>1642112471</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_double_patch.patch and remove_safe_hasattr.patch to
+  fix https://pagure.io/python-daemon/issue/53
+- Remove pytest as the test runner (apparently, the package
+  requires python3 -munittest discovery).
+</comment>
+    <requestid>946125</requestid>
+  </revision>
 </revisionlist>

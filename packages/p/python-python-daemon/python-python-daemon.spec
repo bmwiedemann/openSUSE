@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,14 @@ License:        Apache-2.0 AND GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://pagure.io/python-daemon/
 Source:         https://files.pythonhosted.org/packages/source/p/python-daemon/python-daemon-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove_safe_hasattr.patch https://pagure.io/python-daemon/issue/53 mcepl@suse.com
+# testtools.helpers.safe_hasattr has been removed and should never be mentioned again
+Patch0:         remove_safe_hasattr.patch
+# PATCH-FIX-UPSTREAM remove_double_patch.patch https://pagure.io/python-daemon/issue/62 mcepl@suse.com
+# some objects were mocked twice
+Patch1:         remove_double_patch.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module lockfile >= 0.10}
-BuildRequires:  %{python_module mock >= 1.3}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools}
@@ -49,7 +53,8 @@ same for every daemon program. A DaemonContext instance holds the behaviour and 
 process environment for the program; use the instance as a context manager to enter a daemon state.
 
 %prep
-%setup -q -n python-daemon-%{version}
+%autosetup -p1 -n python-daemon-%{version}
+
 sed -i '/docutils/d' setup.py
 
 %build
@@ -60,10 +65,7 @@ sed -i '/docutils/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_returns_standard_stream_file_descriptors fails
-# test_returns_expected_result fails with distutils error
-# Test suite is completely broken, https://pagure.io/python-daemon/issue/53
-%python_exec -m pytest -k 'not test_returns_standard_stream_file_descriptors and not test_returns_expected_result' || /bin/true
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.ASF-2 LICENSE.GPL-3

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 13 12:30:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_double_patch.patch and remove_safe_hasattr.patch to
+  fix https://pagure.io/python-daemon/issue/53
+- Remove pytest as the test runner (apparently, the package
+  requires python3 -munittest discovery).
+
+-------------------------------------------------------------------
 Thu Apr 22 19:48:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
