@@ -1,0 +1,38 @@
+From 402ed030933ffa1af74db50f737872d48f0152bb Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Thu, 9 Dec 2021 13:21:36 +0100
+Subject: [PATCH] Fixed inspectdb.tests.InspectDBTestCase.test_custom_fields()
+ on SQLite 3.37+.
+
+Use FlexibleFieldLookupDict which is case-insensitive mapping because
+SQLite 3.37+ returns some data type names uppercased e.g. TEXT.
+---
+ tests/inspectdb/tests.py |   11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+--- a/tests/inspectdb/tests.py
++++ b/tests/inspectdb/tests.py
+@@ -302,18 +302,17 @@ class InspectDBTestCase(TestCase):
+         Introspection of columns with a custom field (#21090)
+         """
+         out = StringIO()
+-        orig_data_types_reverse = connection.introspection.data_types_reverse
+-        try:
+-            connection.introspection.data_types_reverse = {
++        with mock.patch(
++            'django.db.connection.introspection.data_types_reverse.base_data_types_reverse',
++            {
+                 'text': 'myfields.TextField',
+                 'bigint': 'BigIntegerField',
+-            }
++            },
++        ):
+             call_command('inspectdb', 'inspectdb_columntypes', stdout=out)
+             output = out.getvalue()
+             self.assertIn("text_field = myfields.TextField()", output)
+             self.assertIn("big_int_field = models.BigIntegerField()", output)
+-        finally:
+-            connection.introspection.data_types_reverse = orig_data_types_reverse
+ 
+     def test_introspection_errors(self):
+         """

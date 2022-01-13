@@ -33,6 +33,11 @@ Source:         https://www.djangoproject.com/m/releases/4.0/Django-%{version}.t
 Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
+# PATCH-FIX-UPSTREAM fix_test_custom_fields_SQLite.patch gh#django/django#15168 mcepl@suse.com
+# Use FlexibleFieldLookupDict which is case-insensitive mapping
+# because SQLite 3.37+ returns some data type names upper-cased
+# e.g. TEXT.
+Patch0:         fix_test_custom_fields_SQLite.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}

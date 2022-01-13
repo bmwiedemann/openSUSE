@@ -923,4 +923,14 @@
     <comment></comment>
     <requestid>945253</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>811bff687fcac795aba787898888a25d</srcmd5>
+    <version>4.0.1</version>
+    <time>1642112448</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix_test_custom_fields_SQLite.patch fixing issues with
+  modern SQLite (gh#django/django#15168).
+</comment>
+    <requestid>945858</requestid>
+  </revision>
 </revisionlist>

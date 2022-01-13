@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 12 14:16:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_test_custom_fields_SQLite.patch fixing issues with
+  modern SQLite (gh#django/django#15168).
+
+-------------------------------------------------------------------
 Mon Jan 10 09:27:36 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.0.1 (CVE-2021-45115, CVE-2021-45452, bsc#1194117)
