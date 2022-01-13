@@ -1342,9 +1342,6 @@ unsorted:
   - bomns 
   - bonnie 
   - bonnie++ 
-  - boo 
-  - boo-2_0_9_3 
-  - boo-devel 
   - books 
   - bookworm 
   - bookworm-lang 
@@ -13492,7 +13489,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_1_1 
+  - librssguard-4_1_2 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -17200,9 +17197,6 @@ unsorted:
   - nodejs-electron: [x86_64] 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs14 
-  - nodejs14-devel 
-  - nodejs14-docs 
   - nodejs16 
   - nodejs16-devel 
   - nodejs16-docs 
@@ -17454,7 +17448,6 @@ unsorted:
   - nping 
   - npkg 
   - npm-default 
-  - npm14 
   - npm16 
   - npth-devel 
   - nqp 
@@ -22367,6 +22360,7 @@ unsorted:
   - python310-chai 
   - python310-chardet 
   - python310-charset-normalizer 
+  - python310-chart-studio 
   - python310-chartify 
   - python310-check-manifest 
   - python310-cheroot 
@@ -22466,6 +22460,7 @@ unsorted:
   - python310-cstruct 
   - python310-csv23 
   - python310-ctypescrypto 
+  - python310-cufflinks 
   - python310-curio 
   - python310-curses 
   - python310-curtsies 
@@ -22478,6 +22473,7 @@ unsorted:
   - python310-daemonize 
   - python310-daiquiri 
   - python310-dasbus 
+  - python310-dash 
   - python310-dash-core-components 
   - python310-dash-html-components 
   - python310-dash-renderer 
@@ -22701,6 +22697,7 @@ unsorted:
   - python310-extras 
   - python310-extratools 
   - python310-ez_setup 
+  - python310-ezdxf 
   - python310-fabio: [x86_64] 
   - python310-factory_boy 
   - python310-fake-useragent 
@@ -22798,6 +22795,7 @@ unsorted:
   - python310-geojson 
   - python310-geolib 
   - python310-geolinks 
+  - python310-geomdl 
   - python310-geomet 
   - python310-geopy 
   - python310-getmac 
@@ -23441,6 +23439,7 @@ unsorted:
   - python310-photutils 
   - python310-phply 
   - python310-phue 
+  - python310-physt 
   - python310-pick 
   - python310-pickleshare 
   - python310-pifpaf 
@@ -23465,6 +23464,8 @@ unsorted:
   - python310-platformdirs 
   - python310-platformio 
   - python310-plette 
+  - python310-plotly 
+  - python310-plotly-jupyter 
   - python310-pluggy 
   - python310-pluginbase 
   - python310-ply 
@@ -24147,6 +24148,7 @@ unsorted:
   - python310-social-auth-core 
   - python310-socketpool 
   - python310-softlayer 
+  - python310-sorl-thumbnail 
   - python310-sortedcollections 
   - python310-sortedcontainers 
   - python310-sortinghat 
@@ -24480,6 +24482,7 @@ unsorted:
   - python310-xerox 
   - python310-xhtml2pdf 
   - python310-xkbgroup 
+  - python310-xkcdpass 
   - python310-xlrd 
   - python310-xlwt 
   - python310-xmldiff 
@@ -24581,7 +24584,6 @@ unsorted:
   - python36-boto 
   - python36-cfgdiff 
   - python36-chainmap 
-  - python36-chart-studio 
   - python36-checkdmarc 
   - python36-cli-helpers 
   - python36-colorclass 
@@ -24594,7 +24596,6 @@ unsorted:
   - python36-csvkit 
   - python36-curlylint 
   - python36-curses 
-  - python36-dash 
   - python36-dbm 
   - python36-demjson 
   - python36-devel 
@@ -24665,8 +24666,6 @@ unsorted:
   - python36-pikepdf 
   - python36-pip-licenses 
   - python36-pipdeptree 
-  - python36-plotly 
-  - python36-plotly-jupyter 
   - python36-plumbum 
   - python36-plyvel 
   - python36-podman 
@@ -24704,7 +24703,6 @@ unsorted:
   - python36-sgmllib3k 
   - python36-siosocks 
   - python36-sleekxmpp 
-  - python36-sorl-thumbnail 
   - python36-sphinx-argparse 
   - python36-starlette 
   - python36-structlog 
@@ -24723,7 +24721,6 @@ unsorted:
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
-  - python36-xkcdpass 
   - python36-zetup 
   - python36-zodbpickle 
   - python38-32bit: [x86_64] 
