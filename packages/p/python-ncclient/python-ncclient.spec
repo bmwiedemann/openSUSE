@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without  python2
 Name:           python-ncclient
 Version:        0.6.12
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://ncclient.org
+URL:            https://ncclient.readthedocs.io/en/latest/
 Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#/ncclient-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE allow_old_sphinx.patch mcepl@suse.com
 # Allow build with old Sphinx (< 2.0) on Leap
@@ -33,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.3.0
 Requires:       python-paramiko >= 1.15.0
-%ifpython2
+%if 0%{?python_version_nodots} <= 34
 Requires:       python-selectors2 >= 2.0.1
 %endif
 Requires:       python-setuptools > 0.6
@@ -43,7 +44,12 @@ BuildRequires:  %{python_module lxml >= 3.3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module selectors2}
+%if %{with python2}
+BuildRequires:  python2-selectors2 >= 2.0.1
+%endif
+%if 0%{?python3_version_nodots} <= 34
+BuildRequires:  python3-selectors2 >= 2.0.1
+%endif
 BuildRequires:  %{python_module six}
 %python_subpackages
 

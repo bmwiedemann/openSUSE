@@ -183,4 +183,13 @@
     <comment>- Remove unneeded BuildRequires on nose.</comment>
     <requestid>923605</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>88d1488da20c3d533e1a2f5b4da2accc</srcmd5>
+    <version>0.6.12</version>
+    <time>1642112484</time>
+    <user>dimstar_suse</user>
+    <comment>- python-selectors2 is only required for python &lt;= 3.4
+</comment>
+    <requestid>946139</requestid>
+  </revision>
 </revisionlist>
