@@ -1,7 +1,7 @@
 #
 # spec file for package parsec-tool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?systemd_ordering}
 Name:           parsec-tool
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
