@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jan 10 22:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.0
+  * Shapely 1.8.0 is a transitional version. There are a few bug
+    fixes and new features, but it largely exists to warn about the
+    upcoming changes in 2.0.0. See the new migration guide for more
+    details on how to update your code from Shapely 1.8 to 2.0.
+  * Shapely 1.8.0 supports only Python versions >= 3.6. The release
+    is compatible with GEOS versions 3.6-3.10.
+  * Deprecations: The following functions and geometry attributes
+    and methods will be removed in version 2.0.0.
+    - ops.cascaded_union
+    - BaseGeometry.empty
+    - BaseGeometry.ctypes and __array_interface__
+    - multi-part geometry __len__
+    - setting custom attributes on geometry objects
+    - BaseGeometry.almost_exact
+    - Deprecation warnings will be emitted in 1.8.0 when any of
+      these features are used. 
+  * The deprecated to_wkb and to_wkt methods of BaseGeometry have
+    been removed.
+  * The STRtree nearest* methods now take an optional argument that
+    specifies exclusion of the input geometry from results (#1115).
+  * A GeometryTypeError has been added to shapely.errors and is
+    consistently raised instead of TypeError or ValueError as in
+    version 1.7. For backwards compatibility, the new exception
+    will derive from TypeError and Value error until version 2.0
+    (#1099).
+  * The STRtree class constructor now takes an optional second
+    argument, a sequence of objects to be stored in the tree. If
+    not provided, the sequence indices of the geometries will be
+    stored, as before (#1112).
+  * The STRtree class has new query_geoms, query_items,
+    nearest_geom, and nearest_item methods (#1112). The query and
+    nearest methods remain as aliases for query_geoms and
+    nearest_geom.
+  * A normalize method has been added to geometry classes, exposing
+    the GEOSNormalize algorithm (#1090).
+  * STRtree instances have a new default capacity of 10 items per
+    node (#1070).
+  * The new shapely.ops.voronoi_diagram computes the Voronoi
+    Diagram of a geometry or geometry collection (#833, #851).
+  * shapely.validation.make_valid fixes invalid geometries (#883).
+- Drop Shapely-fix-svg-collection-pr1042.patch
+
+-------------------------------------------------------------------
 Sat Apr 17 10:55:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't use and test NumPy for python36 flavor: not available on

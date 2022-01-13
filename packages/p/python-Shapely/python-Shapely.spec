@@ -1,7 +1,7 @@
 #
 # spec file for package python-Shapely
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,31 +21,22 @@
 %bcond_without test
 %define skip_python2 1
 Name:           python-Shapely
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
 URL:            https://github.com/Toblerity/Shapely
 Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Shapely-fix-svg-collection-pr1042.patch -- from gh#Toblerity/Shapely#1042 fix svg test
-Patch0:         Shapely-fix-svg-collection-pr1042.patch
 BuildRequires:  %{python_module Cython >= 0.19}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  geos-devel >= 3.3
 BuildRequires:  python-rpm-macros
-%if 0%{suse_version} >= 1550
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
-%else
-# Application:Geo does not have the support for boolean build requirements within the
-# python_module macro for the SLE/Leap repos
-BuildRequires:  %{python_module numpy-devel}
 %if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module matplotlib}
-%endif
 %endif
 Requires:       geos >= 3.3
 Recommends:     python-numpy
