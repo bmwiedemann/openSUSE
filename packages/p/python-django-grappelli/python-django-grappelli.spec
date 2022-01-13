@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-grappelli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-grappelli
-Version:        2.14.2
+Version:        3.0.1
 Release:        0
 Summary:        A skin for the Django Admin-Interface
 License:        BSD-2-Clause AND LGPL-2.1-or-later
 URL:            https://github.com/sehmaschine/django-grappelli
-Source:         https://github.com/sehmaschine/django-grappelli/archive/%{version}.tar.gz
+Source:         https://github.com/sehmaschine/django-grappelli/archive/%{version}.tar.gz#/django-grappelli-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module py >= 1.8}
 BuildRequires:  %{python_module pytest >= 5.0}
@@ -41,24 +41,27 @@ A jazzy skin for the Django Admin-Interface.
 
 %prep
 %setup -q -n django-grappelli-%{version}
+find grappelli/templates/ -type f | xargs chmod -R a-x
+find grappelli/static/grappelli/stylesheets/ -type f | xargs chmod -R a-x
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/grappelli/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 PYTHONPATH=.
 export PYTHONDONTWRITEBYTECODE=1
 export DJANGO_SETTINGS_MODULE=test_project.settings
-# test_related_lookup - uses unicode literals that break on py2
-%pytest -k 'not test_related_lookup'
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/*
+%{python_sitelib}/*grappelli*/
 
 %changelog

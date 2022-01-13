@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan 13 11:23:29 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove tests from runtime package
+- Update to v3.0.1
+  * Add compatibility with Django 4.0.
+- from v2.15.4
+  * Removed obsolete ifnotequal tag with search template.
+  * Removed duplicate Django Javascripts from Grappelli.
+  * Improved and styled Django autocompletes.
+- from v2.15.3
+  * Added missing files from previous release.
+- from v2.15.2
+  * Fixed ellipsis with pagination.
+  * Fixed redirect with switch.
+  * Fixed constance template.
+  * Fixed Django Autocompletes.
+- from v2.15.1
+  * First release of Grappelli which is compatible with Django 3.2.
+- from v2.14.4
+  * Fixed: Redirect with switch user.
+  * Improved: Remove extra filtering in AutocompleteLookup.
+  * Improved: Added import statement with URLs for quickstart docs.
+  * Improved: Added additional blocks with inlines to allow override.
+- from v2.14.3
+  * Fixed: Compatibility with Django 3.1.
+  * Fixed: Docs about adding Grappelli documentation URLS.
+
+-------------------------------------------------------------------
 Mon Aug 31 10:10:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Launch tests
