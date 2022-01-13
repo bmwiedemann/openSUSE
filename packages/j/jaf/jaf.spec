@@ -1,7 +1,7 @@
 #
 # spec file for package jaf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           jaf
 Version:        1.2.0
 Release:        0
 Summary:        JavaBeans Activation Framework
-License:        CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0 AND BSD-3-Clause
+License:        (BSD-3-Clause AND GPL-2.0-only WITH Classpath-exception-2.0) OR CDDL-1.1
 Group:          Development/Libraries/Java
 URL:            https://github.com/javaee/activation
 Source0:        activation-%{version}.tar.xz
@@ -61,7 +61,6 @@ Group:          Documentation/HTML
 %pom_xpath_inject pom:project/pom:properties "<activation.osgiversion>\${project.version}</activation.osgiversion>" activation
 
 %{mvn_alias} :javax.activation-api :activation
-%{mvn_alias} javax.activation:javax.activation-api jakarta.activation:jakarta.activation-api
 
 %build
 %{mvn_build} -- \

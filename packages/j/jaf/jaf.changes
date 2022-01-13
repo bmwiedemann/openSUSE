@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 15 11:46:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Remove alias for the new jakarta name, since it will be provided
+  by a new package
+
+-------------------------------------------------------------------
 Tue Apr 14 08:00:37 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Add alias for the new jakarta name
