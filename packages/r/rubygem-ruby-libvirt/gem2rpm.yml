@@ -16,7 +16,6 @@
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
  :preamble: |-
-   BuildRequires:  libvirt
    BuildRequires:  libvirt-devel
    BuildRequires:  pkgconfig
 #   BuildRequires: foobar

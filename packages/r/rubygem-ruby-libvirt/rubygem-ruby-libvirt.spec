@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby-libvirt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ BuildRequires:  %{rubydevel >= 1.8.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 # MANUAL
-BuildRequires:  libvirt
 BuildRequires:  libvirt-devel
 BuildRequires:  pkgconfig
 # /MANUAL

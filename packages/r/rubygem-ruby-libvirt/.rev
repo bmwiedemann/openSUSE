@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>864120</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e19c131319f04fde57267b1890cf2dda</srcmd5>
+    <version>0.7.1</version>
+    <time>1642112458</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop BuildRequires: libvirt, not necessary and very expensive (forwarded request 946013 from favogt)</comment>
+    <requestid>946025</requestid>
+  </revision>
 </revisionlist>

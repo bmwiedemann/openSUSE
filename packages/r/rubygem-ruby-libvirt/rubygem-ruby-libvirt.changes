@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 13 09:02:13 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop BuildRequires: libvirt, not necessary and very expensive
+
+-------------------------------------------------------------------
 Tue Jan  5 10:17:15 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Fix build failures with ruby 3.0
