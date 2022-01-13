@@ -1,0 +1,5 @@
+<package name="nss_synth" project="openSUSE:Factory">
+  <title>nss_synth</title>
+  <description>A module that synthesises uid/gid's from bare uid's for container compatibility</description>
+  <devel project="network:idm" package="nss_synth"/>
+</package>
