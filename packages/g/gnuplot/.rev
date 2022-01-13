@@ -1005,4 +1005,12 @@
   * gnuplot-gd.patch</comment>
     <requestid>945279</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>5c81e44ab19ea179c8cc70de88f9fb6d</srcmd5>
+    <version>5.4.3</version>
+    <time>1642112471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946015</requestid>
+  </revision>
 </revisionlist>

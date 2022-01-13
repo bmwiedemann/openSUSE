@@ -68,7 +68,7 @@ Thu Apr 22 06:29:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Thu Apr 15 13:04:05 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
-- Hardening: compile with PIC and link with PIE.
+- Hardening: compile with PIC and link with PIE (bsc#1184123).
 
 -------------------------------------------------------------------
 Thu Dec 10 07:11:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
