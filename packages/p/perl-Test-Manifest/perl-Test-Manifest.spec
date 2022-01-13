@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Manifest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Manifest
 Name:           perl-Test-Manifest
-Version:        2.022
+Version:        2.023
 Release:        0
 Summary:        Interact with a t/test_manifest file
 License:        Artistic-2.0
@@ -28,6 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
 %{perl_requires}
 
