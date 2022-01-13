@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 16:09:44 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Use the %_pam_moduledir macro in pam_mount.spec in order to
+  have the package follow UsrMerge.
+  [bsc#1190954, pam_mount.spec]
+
+-------------------------------------------------------------------
 Wed Nov  3 10:06:25 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Make symlinks between /sbin and /usr/sbin conditional as they

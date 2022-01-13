@@ -1,7 +1,7 @@
 #
 # spec file for package pam_mount
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,6 +101,7 @@ and transparent use of the OS's crypto layer.
 %build
 %configure --disable-static --with-slibdir="/%_lib" \
 	--includedir="%_includedir/libcryptmount" \
+	--with-slibdir=%{_pam_libdir} \
 	%{?_with_selinux:--with-selinux}
 %make_build
 
@@ -108,7 +109,7 @@ and transparent use of the OS's crypto layer.
 %make_install
 b="%buildroot"
 # Remove static and libtool version
-rm -f "$b/%_lib/security"/*.{a,la} "$b/%_libdir"/*.la
+rm -f $b%{_pam_moduledir}/*.{a,la} "$b/%_libdir"/*.la
 #install the docs
 mkdir -p "$b/%_docdir/%name/examples"
 cp -a doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
@@ -146,7 +147,7 @@ fi
 
 %files
 %_docdir/%name
-/%_lib/security/pam_mount*.so
+%{_pam_moduledir}/pam_mount*.so
 %_sbindir/mount.*
 %_sbindir/umount.*
 %_sbindir/pmvarrun
