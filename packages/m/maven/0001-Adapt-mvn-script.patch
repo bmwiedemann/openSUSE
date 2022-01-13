@@ -20,7 +20,7 @@ index a554c66..818cf70 100755
  #   MAVEN_OPTS      (Optional) Java runtime options used when Maven is executed.
  #   MAVEN_SKIP_RC   (Optional) Flag to disable loading of mavenrc files.
  # -----------------------------------------------------------------------------
-@@ -33,12 +33,24 @@ if [ -z "$MAVEN_SKIP_RC" ] ; then
+@@ -37,12 +37,24 @@
      . /etc/mavenrc
    fi
  
@@ -45,7 +45,7 @@ index a554c66..818cf70 100755
  # OS specific support. $var _must_ be set to either true or false.
  cygwin=false;
  mingw=false;
-@@ -63,7 +75,8 @@ done
+@@ -67,7 +79,8 @@
  
  saveddir=`pwd`
  
@@ -55,7 +55,7 @@ index a554c66..818cf70 100755
  
  # make it fully qualified
  MAVEN_HOME=`cd "$MAVEN_HOME" && pwd`
-@@ -102,7 +115,7 @@ if [ ! -x "$JAVACMD" ] ; then
+@@ -105,7 +118,7 @@
    exit 1
  fi
  

@@ -1,7 +1,172 @@
 -------------------------------------------------------------------
+Thu Jan 13 07:12:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.8.4
+  * Sub-task
+    + [MNG-6281] - ArrayIndexOutOfBoundsException caused by pom.xml
+      with invalid/duplicate XML
+  * Bug
+    + [MNG-4706] - Multithreaded building can create bad files for
+      downloaded artifacts in local repository
+    + [MNG-5307] - NPE during resolution of dependencies - parallel
+      mode
+    + [MNG-5315] - Artifact resolution sporadically fails in
+      parallel builds
+    + [MNG-5838] - Maven on No-File-Lock Systems
+    + [MNG-5868] - Adding serval times the same artifact via
+      MavenProjectHelper (attachArtifact) keep adding to the List
+      duplicate artifacts
+    + [MNG-6071] - GetResource ('/) returns 'null' if build is
+      started with -f
+    + [MNG-6216] - ArrayIndexOutOfBoundsException when parsing POM
+    + [MNG-6239] - Jansi messes up System.err and System.out
+    + [MNG-6380] - Option -Dstyle.color=always doesn't force color
+      output
+    + [MNG-6604] - Intermittent failures while downloading GAVs from
+      Nexus
+    + [MNG-6648] - 'mavenrc_pre' script does not receive arguments
+      like mavenrc in Bourne shell does
+    + [MNG-6719] - mvn color output escape keys w/ "| tee xxx.log"
+      on Win with git/bash
+    + [MNG-6737] - StackOverflowError when version ranges are
+      unsolvable and graph contains a cycle
+    + [MNG-6767] - Plugin with ${project.groupId} resolved
+      improperly
+    + [MNG-6819] - NullPointerException for
+      DefaultArtifactDescriptorReader.loadPom
+    + [MNG-6828] - DependencyResolutionException breaks
+      serialization
+    + [MNG-6842] - ProjectBuilderTest uses Guava, but Guava is not
+      defined in dependencies
+    + [MNG-6843] - Parallel build fails due to missing JAR artifacts
+      in compilePath
+    + [MNG-6850] - Prevent printing the EXEC_DIR when it's just a
+      disk letter
+    + [MNG-6921] - Maven compile with properties ${artifactId} and
+      ${project.build.finalName} occurs
+      java.lang.NullPointerException
+    + [MNG-6937] - StringSearchModelInterpolatorTest fails on
+      symlinked paths
+    + [MNG-6964] - Maven version sorting is internally inconsistent
+    + [MNG-6983] - Plugin key can get out of sync with artifactId
+      and groupId
+    + [MNG-7000] - metadata.mdo contains invalid link to schema
+    + [MNG-7032] - Option -B still showing formatting when used
+      with --version
+    + [MNG-7034] - StackOverflowError thrown if a cycle exists in
+      BOM imports
+    + [MNG-7045] - Drop CDI API from Maven
+    + [MNG-7090] - mvnDebug does not work on Java 11+
+    + [MNG-7127] - NullPointerException in
+      MavenCliTest.testStyleColors in JDK 16
+    + [MNG-7155] - make sources jar reproducible (upgrade
+      maven-source-plugin to 3.2.1)
+    + [MNG-7161] - Error thrown during uninstalling of JAnsi
+    + [MNG-7214] - Bad transitive dependency parent from CDI API
+    + [MNG-7215] - [Regression] Maven Site Plugin cannot resolve
+      parent site descriptor without locale
+    + [MNG-7216] - Revert MNG-7170
+    + [MNG-7218] - [Regression]
+      o.a.m.model.Build.getSourceDirectory() incorrectly returns
+      absolute dir on 3.8.2
+    + [MNG-7219] - [Regression] plexus-cipher missing from
+      transitive dependencies
+    + [MNG-7220] - [REGRESSION] test-classpath incorrectly resolved
+    + [MNG-7251] - Fix threadLocalArtifactsHolder leaking into
+      cloned project
+    + [MNG-7253] - Relocation message is never shown
+    + [MNG-7270] - Maven startup script (init) calls which(1) which
+      is an external command
+    + [MNG-7285] - [Regression] MavenProject.getArtifacts() not
+      returning correct value across multiple threads
+    + [MNG-7300] - [Regression] Reloading web application (Enter)
+      fails due to java.lang.ClassNotFoundException
+  * New Feature
+    + [MNG-7149] - Introduce MAVEN_DEBUG_ADDRESS in mvnDebug scripts
+    + [MNG-7164] - Add constructor MojoExecutionException(Throwable)
+  * Improvement
+    + [MNG-2802] - Concurrent-safe access to local Maven repository
+    + [MNG-6471] - Parallel builder should use the module name as
+      thread name
+    + [MNG-6754] - Set the same timestamp in multi module builds
+    + [MNG-6810] - Remove profiles in maven-model
+    + [MNG-6811] - Remove unnecessary filtering configuration
+    + [MNG-6816] - Prefer System.lineSeparator() over system
+      properties
+    + [MNG-6827] - Replace deprecated StringUtils#defaultString()
+      from Plexus Utils
+    + [MNG-6837] - Simplify detection of the MAVEN_HOME and make it
+      fully qualified on Windows
+    + [MNG-6844] - Use StandardCharsets and remove outdated
+      @SuppressWarnings
+    + [MNG-6853] - Don't box primitives where it's not needed
+    + [MNG-6859] - Build not easily reproducible when built from
+      source release archive
+    + [MNG-6873] - Inconsistent library versions notice
+    + [MNG-6967] - Improve the command line output from
+      maven-artifact
+    + [MNG-6987] - Reorder groupId before artifactId when writing an
+      exclusion using maven-model
+    + [MNG-7010] - Omit "NB: JAVA_HOME should point to a JDK not a
+      JRE" except when that is the problem
+    + [MNG-7064] - Use HTTPS for schema location in global
+      settings.xml
+    + [MNG-7080] - Add a --color option
+    + [MNG-7170] - Allow to associate pomFile/${basedir} with
+      DefaultProjectBuilder.build(ModelSource, ...)
+    + [MNG-7180] - Make --color option behave more like BSD/GNU
+      grep's --color option
+    + [MNG-7181] - Make --version support -q
+    + [MNG-7185] - Describe explicit and recommended version for
+      VersionRange.createFromVersionSpec()
+    + [MNG-7190] - Load mavenrc from /usr/local/etc also in Bourne
+      shell script
+    + [MNG-7235] - Speed improvements when calculating the sorted
+      project graph
+    + [MNG-7236] - The DefaultPluginVersionResolver should cache
+      results for the session
+  * Task
+    + [MNG-6598] - Maven 3.6.0 and Surefire problem
+    + [MNG-6884] - Cleanup POM File after version upgrade
+    + [MNG-7172] - Remove expansion of Jansi native libraries
+    + [MNG-7184] - document .mavenrc/maven_pre.bat|cmd scripts and
+      MAVEN_SKIP_RC environment variable
+    + [MNG-7252] - Fix warnings issued by dependency:analyze
+    + [MNG-7254] - Expand Windows native libraries for Jansi due to
+      JDK-8195129 (workaround)
+    + [MNG-7312] - Revert ThreadLocal approach from MNG-6843 and
+      MNG-7251
+  * Dependency upgrade
+    + [MNG-6818] - Upgrade Plexus Utils to 3.3.0
+    + [MNG-6841] - Upgrade Plexus Interpolation to 1.26
+    + [MNG-6872] - Found CVEs in your dependencies - plexus-utils
+      (tests)
+    + [MNG-6874] - Upgrade Maven Parent to 34
+    + [MNG-6886] - Upgrade plexus-cipher 1.8
+    + [MNG-6993] - Upgrade SLF4J to 1.7.30
+    + [MNG-7152] - Upgrade Maven Resolver to 1.6.3
+    + [MNG-7177] - Upgrade Maven Shared Utils to 3.3.4
+    + [MNG-7179] - Upgrade Jansi to 2.3.3
+    + [MNG-7186] - Upgrade Guice to 4.2.2
+    + [MNG-7196] - Upgrade Jansi to 2.3.4
+    + [MNG-7198] - Upgrade SLF4J to 1.7.32
+    + [MNG-7246] - Upgrade Plexus Cipher and Sec Dispatcher to 2.0
+    + [MNG-7250] - Upgrade Sisu Inject/Plexus to 0.3.5
+    + [MNG-7331] - Upgrade Jansi to 2.4.0
+- Added patch:
+  * qdox-2.0.1.patch
+    + Fix syntax error with qdox 2.0.1 and method declarations
+      containing the new keyword "record" as name of variables
+
+-------------------------------------------------------------------
+Sun Nov 21 08:49:59 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Tue Sep 14 14:44:11 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Tue May 11 09:57:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>

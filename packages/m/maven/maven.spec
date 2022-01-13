@@ -1,7 +1,7 @@
 #
 # spec file for package maven
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %bcond_with  logback
 Name:           maven
-Version:        3.8.1
+Version:        3.8.4
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -37,11 +37,14 @@ URL:            https://maven.apache.org/
 Source0:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
+Source3:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz.asc
+Source4:        https://downloads.apache.org/maven/KEYS#/%{name}.keyring
 Source10:       apache-%{name}-%{version}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 # Used only when %%without logback is in effect
 Patch2:         0002-Invoke-logback-via-reflection.patch
+Patch3:         qdox-2.0.1.patch
 Patch4:         0004-Use-non-shaded-HTTP-wagon.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
@@ -50,10 +53,9 @@ BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  atinject
-BuildRequires:  cdi-api
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  geronimo-annotation-1_0-api
+BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  hawtjni-runtime
@@ -77,13 +79,13 @@ BuildRequires:  maven-wagon-http-shared
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  modello >= 1.10
 BuildRequires:  objectweb-asm
-BuildRequires:  plexus-cipher
+BuildRequires:  plexus-cipher >= 2.0
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-sec-dispatcher
+BuildRequires:  plexus-sec-dispatcher >= 2.0
 BuildRequires:  plexus-utils
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
@@ -106,6 +108,7 @@ BuildRequires:  mvn(ch.qos.logback:logback-classic)
 %endif
 %if %{with libalternatives}
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -134,9 +137,8 @@ Requires:       apache-commons-io
 Requires:       apache-commons-lang3
 Requires:       apache-commons-logging
 Requires:       atinject
-Requires:       cdi-api
 Requires:       cglib
-Requires:       geronimo-annotation-1_0-api
+Requires:       glassfish-annotation-api
 Requires:       google-guice
 Requires:       guava
 Requires:       hawtjni-runtime
@@ -196,6 +198,7 @@ BuildArch:      noarch
 %setup -q -n apache-%{name}-%{version} -a10
 
 %patch1 -p1
+%patch3 -p1
 %patch4 -p1
 
 # not really used during build, but a precaution
@@ -295,7 +298,7 @@ for i in \
 done
 
 %install
-%mvn_install
+%{mvn_install}
 %fdupes %{buildroot}%{_javadocdir}
 
 install -d -m 755 %{buildroot}%{homedir}/boot
@@ -311,7 +314,6 @@ chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 build-jar-repository -p %{buildroot}%{homedir}/lib \
     aopalliance \
     objectweb-asm/asm \
-    cdi-api/cdi-api \
     cglib/cglib \
     commons-cli \
     commons-codec \
@@ -329,7 +331,7 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     jansi-native/jansi-native \
     atinject \
     slf4j/jcl-over-slf4j \
-    geronimo-annotation-1.0-api \
+    glassfish-annotation-api \
     junit \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \

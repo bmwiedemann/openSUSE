@@ -55,4 +55,12 @@
     <comment>Use libalternatives instead of update-alternatives</comment>
     <requestid>926877</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2009ddb18edf86de0cf39a16cb93d05e</srcmd5>
+    <version>3.8.4</version>
+    <time>1642112496</time>
+    <user>dimstar_suse</user>
+    <comment>3.8.4</comment>
+    <requestid>946191</requestid>
+  </revision>
 </revisionlist>

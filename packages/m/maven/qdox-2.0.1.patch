@@ -1,0 +1,120 @@
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/DefaultExtensionRealmCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/DefaultExtensionRealmCache.java	2022-01-13 07:08:06.182993103 +0100
+@@ -157,7 +157,7 @@
+         cache.clear();
+     }
+ 
+-    public void register( MavenProject project, Key key, CacheRecord record )
++    public void register( MavenProject project, Key key, CacheRecord record_ )
+     {
+         // default cache does not track extension usage
+     }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginArtifactsCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginArtifactsCache.java	2022-01-13 07:10:30.471820999 +0100
+@@ -198,7 +198,7 @@
+         return CacheUtils.pluginEquals( a, b );
+     }
+ 
+-    public void register( MavenProject project, Key cacheKey, CacheRecord record )
++    public void register( MavenProject project, Key cacheKey, CacheRecord record_ )
+     {
+         // default cache does not track record usage
+     }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginRealmCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginRealmCache.java	2022-01-13 07:10:02.863663262 +0100
+@@ -200,7 +200,7 @@
+         return CacheUtils.pluginEquals( a, b );
+     }
+ 
+-    public void register( MavenProject project, Key key, CacheRecord record )
++    public void register( MavenProject project, Key key, CacheRecord record_ )
+     {
+         // default cache does not track plugin usage
+     }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/ExtensionRealmCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/ExtensionRealmCache.java	2022-01-13 07:11:56.088310105 +0100
+@@ -94,8 +94,8 @@
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register( MavenProject project, Key key, CacheRecord record );
++    void register( MavenProject project, Key key, CacheRecord record_ );
+ 
+ }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/PluginArtifactsCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/PluginArtifactsCache.java	2022-01-13 08:09:14.744957009 +0100
+@@ -97,8 +97,8 @@
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register( MavenProject project, Key cacheKey, CacheRecord record );
++    void register( MavenProject project, Key cacheKey, CacheRecord record_ );
+ 
+ }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/PluginRealmCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/plugin/PluginRealmCache.java	2022-01-13 07:36:03.136896661 +0100
+@@ -90,8 +90,8 @@
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register( MavenProject project, Key key, CacheRecord record );
++    void register( MavenProject project, Key key, CacheRecord record_ );
+ 
+ }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/artifact/DefaultProjectArtifactsCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/artifact/DefaultProjectArtifactsCache.java	2022-01-13 07:12:29.108498755 +0100
+@@ -240,7 +240,7 @@
+     }
+ 
+     @Override
+-    public void register( MavenProject project, Key cacheKey, CacheRecord record )
++    public void register( MavenProject project, Key cacheKey, CacheRecord record_ )
+     {
+         // default cache does not track record usage
+     }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/artifact/ProjectArtifactsCache.java	2022-01-13 07:07:32.302798450 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/artifact/ProjectArtifactsCache.java	2022-01-13 07:12:55.192647787 +0100
+@@ -96,8 +96,8 @@
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register( MavenProject project, Key cacheKey, CacheRecord record );
++    void register( MavenProject project, Key cacheKey, CacheRecord record_ );
+ 
+ }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/DefaultProjectRealmCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/DefaultProjectRealmCache.java	2022-01-13 07:11:14.312071457 +0100
+@@ -135,7 +135,7 @@
+         cache.clear();
+     }
+ 
+-    public void register( MavenProject project, Key key, CacheRecord record )
++    public void register( MavenProject project, Key key, CacheRecord record_ )
+     {
+         // default cache does not track record usage
+     }
+--- apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/ProjectRealmCache.java	2022-01-13 07:07:32.298798428 +0100
++++ apache-maven-3.8.4/maven-core/src/main/java/org/apache/maven/project/ProjectRealmCache.java	2022-01-13 07:11:45.096247306 +0100
+@@ -85,8 +85,8 @@
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register( MavenProject project, Key key, CacheRecord record );
++    void register( MavenProject project, Key key, CacheRecord record_ );
+ 
+ }
