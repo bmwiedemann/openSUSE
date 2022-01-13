@@ -135,4 +135,15 @@
     HISTORY.rst file provided with this package (forwarded request 923718 from glaubitz)</comment>
     <requestid>923757</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c898d56404667e63968eb10f3112d723</srcmd5>
+    <version>1.5.1</version>
+    <time>1642112465</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.5.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 946059 from glaubitz)</comment>
+    <requestid>946119</requestid>
+  </revision>
 </revisionlist>
