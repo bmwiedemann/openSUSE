@@ -46,9 +46,7 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 # this package is used in projects which do not support boolean python_module BuildRequires yet :(
-%if 0%{?suse_version} >= 1550
-BuildRequires:  python36-typing_extensions
-%else
+%if 0%{?python3_version_nodots} < 37
 BuildRequires:  python3-typing_extensions
 %endif
 BuildRequires:  user(nobody)
