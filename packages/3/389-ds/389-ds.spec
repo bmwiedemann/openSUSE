@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,6 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
-# Home directory
-%global pkgname   dirsrv
-%global groupname %{pkgname}.target
-
 %define homedir %{_localstatedir}/lib/dirsrv
 %define logdir %{_localstatedir}/log/dirsrv
 %define lockdir %{_localstatedir}/lock/dirsrv
@@ -37,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.10~git0.21dd2802c
+Version:        2.0.11~git13.e14935725
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -47,7 +43,8 @@ Source:         389-ds-base-%{version}.tar.xz
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
 Source3:        vendor.tar.xz
-# Source4:        cargo_config
+Source4:        supportutils-plugin-dirsrv-v0.1.0~git0.37cb939.tar.xz
+Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
 # 389-ds does not support i686
@@ -58,6 +55,7 @@ BuildRequires:  cracklib-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel >= 4.5
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
@@ -119,6 +117,9 @@ Recommends:     cyrus-sasl-gssapi
 # and requires insecure password storage. We really should remove
 # it.
 Recommends:     cyrus-sasl-digestmd5
+# Recommended to be installed to assist with debugging and problem
+# solving.
+Recommends:     supportutils
 
 Requires(post): fillup
 Requires(post): permissions
@@ -222,6 +223,10 @@ uses the facilities provided by NSS.
 # Extract the vendor.tar.gz. The -D -T here prevents removal of the sources
 # from the previous setup step.
 %setup -q -n %{name}-base-%{version} -D -T -a 3
+# When we update and revendor, we need to move the cargo.lock to the correct place.
+cp Cargo.lock src/Cargo.lock
+# Setup support utils
+%setup -q -n %{name}-base-%{version} -D -T -a 4
 
 %build
 %sysusers_generate_pre %{SOURCE10} %{user_group} %{user_group}-user.conf
@@ -252,7 +257,7 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   --libexecdir=%{_prefix}/lib/dirsrv/ \
   --with-pythonexec="%{_bindir}/%{use_python}" \
   --with-systemd \
-  --with-systemdgroupname=%{groupname} \
+  --with-systemdgroupname=dirsrv.target \
   --with-systemdsystemunitdir="%{_unitdir}" \
   --with-systemdsystemconfdir="%{_sysconfdir}/systemd/system" \
   --with-tmpfiles-d="%{_sysconfdir}/tmpfiles.d" \
@@ -280,12 +285,17 @@ mkdir -p %{buildroot}%{logdir}
 mkdir -p %{buildroot}%{homedir}
 mkdir -p %{buildroot}%{lockdir}
 mkdir -p %{buildroot}%{_sysusersdir}
+mkdir -p %{buildroot}/usr/lib/supportconfig/plugins/
 
 #remove libtool archives and static libs
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # install extra schema files
 cp -R extra-schema "%{buildroot}/%{_datadir}/dirsrv/"
+cp %{SOURCE5} "%{buildroot}/%{_datadir}/dirsrv/schema/"
+
+# Install the support utils plugin.
+cp supportutils-plugin-dirsrv-*/dirsrv "%{buildroot}/usr/lib/supportconfig/plugins/dirsrv"
 
 # bring OpenLDAP copyright notice here because it is referenced by several extra schema files
 cp %{SOURCE2} ./
@@ -296,16 +306,24 @@ mv src/svrcore/README{,.svrcore}
 mv src/svrcore/LICENSE{,.svrcore}
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 
-%pre -f %{user_group}.pre
+# Sssshhh duplicate checker ...
+%fdupes %{buildroot}/%{_prefix}
+
+%pre
+%service_add_pre dirsrv.target
 
 %post
+%service_add_post dirsrv.target
 %fillup_only -n dirsrv
 %set_permissions %{_sbindir}/ns-slapd
-
 %verifyscript
 %verify_permissions -e %{_sbindir}/ns-slapd
 
+%preun
+%service_del_preun dirsrv.target
+
 %postun
+%service_del_postun dirsrv.target
 output=/dev/null
 # reload to pick up any changes to systemd files
 /bin/systemctl daemon-reload >$output 2>&1 || :
@@ -314,20 +332,17 @@ output=/dev/null
 %fillup_only -n dirsrv.systemd
 exit 0
 
-%preun
-%service_del_preun %{pkgname}.target
-
 %pre snmp
 %service_add_pre dirsrv-snmp.service
 
 %post snmp
-%service_add_post %{pkgname}-snmp.service
+%service_add_post dirsrv-snmp.service
 
 %preun snmp
-%service_del_preun %{pkgname}-snmp.service
+%service_del_preun dirsrv-snmp.service
 
 %postun snmp
-%service_del_postun %{pkgname}-snmp.service
+%service_del_postun dirsrv-snmp.service
 
 %post -n %{svrcorelib} -p /sbin/ldconfig
 
@@ -371,6 +386,9 @@ exit 0
 %{_prefix}/lib/sysctl.d/*
 %dir %{_datadir}/gdb/auto-load/usr/sbin/
 %{_datadir}/gdb/auto-load/usr/sbin/ns-slapd-gdb.py
+%dir %{_prefix}/lib/supportconfig
+%dir %{_prefix}/lib/supportconfig/plugins
+%attr(750,root,root) %{_prefix}/lib/supportconfig/plugins/dirsrv
 
 %files devel
 %doc README*
@@ -394,10 +412,10 @@ exit 0
 %files snmp
 %license LICENSE LICENSE.GPLv3+ LICENSE.openssl
 # TODO: README.devel
-%config(noreplace)%{_sysconfdir}/%{pkgname}/config/ldap-agent.conf
+%config(noreplace)%{_sysconfdir}/dirsrv/config/ldap-agent.conf
 %{_sbindir}/ldap-agent*
 %{_mandir}/man1/ldap-agent.1*
-%{_unitdir}/%{pkgname}-snmp.service
+%{_unitdir}/dirsrv-snmp.service
 
 %files -n lib389
 %license src/lib389/LICENSE

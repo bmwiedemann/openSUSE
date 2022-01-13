@@ -3,8 +3,7 @@
     <param name="url">https://github.com/389ds/389-ds-base.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">389-ds-base-2.0.10</param>
-    <param name="match-tag">389-ds-base-2.0.10</param>
+    <param name="revision">389-ds-base-2.0</param>
     <param name="versionrewrite-pattern">389-ds-base-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
@@ -19,9 +18,24 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">389-ds-base</param>
      <param name="compression">xz</param>
+     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">389-ds-base</param>
+  </service>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/supportutils-plugin-dirsrv.git</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.1.0</param>
+    <param name="match-tag">v0.1.0</param>
+    <param name="changesgenerate">disable</param>
+    <param name="without-version">true</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
 </services>
 

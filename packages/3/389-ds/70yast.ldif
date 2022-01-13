@@ -1,0 +1,628 @@
+dn: cn=schema
+objectClass: top
+objectClass: ldapSubentry
+objectClass: subschema
+cn: schema
+attributeTypes: ( 0.9.2342.19200300.100.1.26 NAME 'aRecord'  EQUALITY caseIgno
+ reIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.25 NAME 'KeyRecord' DESC 'Key, RFC 253
+ 5' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.52 NAME 'dhcpFailOverSplit' DESC '
+ Split between the primary and secondary servers for fail over purpose' EQUALI
+ TY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'user defined' 
+ )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.47 NAME 'nSECRecord' DESC 'NSEC, RFC 3
+ 755' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1
+ .3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.30 NAME 'dhcpAssignedHostName' DES
+ C 'This is the actual hostname that was assigned to a client. It may not be t
+ he name that was requested by the client.  The fully qualified domain name ca
+ n be determined by appending the value of "dhcpDomainName" (with a dot separa
+ tor) to this name.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.16 NAME 'dhcpClassesDN' DESC 'The 
+ distinguished name(s) of a class(es) in a subclass.' EQUALITY distinguishedNa
+ meMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.4 NAME 'dhcpRange' DESC 'The start
+ ing & ending IP Addresses in the range (inclusive), separated by a hyphen; if
+  the range only contains one address, then just the address can be specified 
+ with no hyphen.  Each range is defined as a separate value.' EQUALITY caseIgn
+ oreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( suseDefaultTemplate-oid NAME 'suseDefaultTemplate' DESC 'The
+  DN of a template that should be used by default' EQUALITY distinguishedNameM
+ atch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE X-ORIGIN 'user defined
+ ' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.13 NAME 'hInfoRecord' DESC 'host infor
+ mation, RFC 1035' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsM
+ atch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.23 NAME 'dhcpExpirationTime' DESC 
+ 'This is the time the current lease for an address expires.' EQUALITY general
+ izedTimeMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE X-ORIGIN 'use
+ r defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.0.3 NAME 'relativeDomainName' DESC 'The 
+ starting labels of a domain name' EQUALITY caseIgnoreIA5Match SUBSTR caseIgno
+ reIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defi
+ ned' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.150 NAME 'dlzTTL' DESC 'DNS time to li
+ ve - how long this record can be cached by caching DNS servers' EQUALITY inte
+ gerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'user def
+ ined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.38 NAME 'dhcpFailOverEndpointState
+ ' DESC 'Server (Failover Endpoint) state, as defined in DHCP Failover Protoco
+ l [FAILOVR]' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.55 NAME 'dhcpServerDN' DESC 'List 
+ of all  DHCP Servers in the tree. Used by dhcpLocatorObject' EQUALITY disting
+ uishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' 
+ )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.70 NAME 'dlzRetry' DESC 'SOA retry tim
+ e in seconds' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SING
+ LE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.35 NAME 'nAPTRRecord' DESC 'Naming Aut
+ hority Pointer, RFC 2915' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Sub
+ stringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.1 NAME 'dhcpPrimaryDN' DESC 'The D
+ N of the dhcpServer which is the primary server for the configuration.' EQUAL
+ ITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE 
+ X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.40 NAME 'dhcpLocatorDN' DESC 'The 
+ DN of dhcpLocator object which contain the DNs of all DHCP configuration obje
+ cts. There will be a single dhcpLocator object in the tree with links to all 
+ the DHCP objects in the tree' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.18 NAME 'aFSDBRecord' DESC 'for AFS Da
+ ta Base location, RFC 1183' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5S
+ ubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.26 NAME 'dhcpBootpFlag' DESC 'This
+  indicates whether the address was assigned via BOOTP.' EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.44 NAME 'sSHFPRecord' DESC 'SSH Key Fi
+ ngerprint, draft-ietf-secsh-dns-05.txt' EQUALITY caseIgnoreIA5Match SUBSTR ca
+ seIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'use
+ r defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.33 NAME 'dhcpRelayAgentInfo' DESC 
+ 'If the client request was received via a relay agent, this contains informat
+ ion about the relay agent that was available from the DHCP request.  This is 
+ a hex-encoded option value.' EQUALITY octetStringMatch SYNTAX 1.3.6.1.4.1.146
+ 6.115.121.1.40 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( suseNamingAttribute-oid NAME 'suseNamingAttribute' DESC 'Att
+ ributeType that should be used as the RDN' EQUALITY caseIgnoreIA5Match SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.11 NAME 'dhcpPoolDN' DESC 'The dis
+ tinguished name(s) of pools.' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.140 NAME 'dlzPreference' DESC 'DNS MX 
+ record preference.  Lower numbers have higher preference' EQUALITY integerMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'user defined' 
+ )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.9 NAME 'dhcpOptionsDN' DESC 'The d
+ istinguished name(s) of the dhcpOption objects containing the configuration o
+ ptions provided by the server.' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.
+ 1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.48 NAME 'dhcpFailOverPrimaryPort' 
+ DESC 'Port on which primary server listens for connections from its fail over
+  peer (secondary server)' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.27 X-ORIGIN 'user defined' )
+attributeTypes: ( suseDefaultValue-oid NAME 'suseDefaultValue' DESC 'an Attrib
+ ute-Value-Assertions to define defaults for specific Attributes' EQUALITY cas
+ eIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'user defined' )
+attributeTypes: ( suseSkelDir-oid NAME 'suseSkelDir'  EQUALITY caseExactIA5Mat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( suseImapServer-oid NAME 'suseImapServer'  EQUALITY caseIgnor
+ eMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'user defin
+ ed' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.19 NAME 'dhcpServiceDN' DESC 'The 
+ DN of dhcpService object(s)which contain the configuration information. Each 
+ dhcpServer object has this attribute identifying the DHCP configuration(s) th
+ at the server is associated with.' EQUALITY distinguishedNameMatch SYNTAX 1.3
+ .6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.50 NAME 'dhcpFailOverResponseDelay
+ ' DESC 'Maximum response time in seconds, before Server assumes that connecti
+ on to fail over peer has failed' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.146
+ 6.115.121.1.27 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.36 NAME 'dhcpDelayedServiceParamet
+ er' DESC 'Delay in seconds corresponding to Delayed Service Parameter configu
+ ration, as defined in  DHC Load Balancing Algorithm [RFC 3074]. ' EQUALITY in
+ tegerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'user d
+ efined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.14 NAME 'dhcpLeaseDN' DESC 'The di
+ stinguished name of a client address.' EQUALITY distinguishedNameMatch SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 0.9.2342.19200300.100.1.31 NAME 'cNAMERecord'  EQUALITY case
+ IgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.6 NAME 'dhcpNetMask' DESC 'The sub
+ net mask length for the subnet.  The mask can be easily computed from this le
+ ngth.' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALU
+ E X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.43 NAME 'dhcpDnsZoneServer' DESC '
+ Master server of the DNS Zone' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1
+ .1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( suseNextUniqueId-oid NAME 'suseNextUniqueId' DESC 'Next unus
+ ed unique ID, can be used to generate directory wide uniqe IDs' EQUALITY inte
+ gerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 S
+ INGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.21 NAME 'dhcpImplementation' DESC 
+ 'Description of the DHCP Server implementation e.g. DHCP Servers vendor.' EQU
+ ALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-
+ ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.58 NAME 'dhcpRange6' DESC 'The sta
+ rting & ending IP Addresses in the range (inclusive), separated by a hyphen; 
+ if the range only contains one address, then just the address can be specifie
+ d with no hyphen.  Each range is defined as a separate value.' EQUALITY caseI
+ gnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.0.1 NAME 'dNSClass' DESC 'The class of a
+  resource record' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( suseImapUseSsl-oid NAME 'suseImapUseSsl'  EQUALITY booleanMa
+ tch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE X-ORIGIN 'user defined' 
+ )
+attributeTypes: ( 0.9.2342.19200300.100.1.29 NAME 'nSRecord'  EQUALITY caseIgn
+ oreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.29 NAME 'dhcpRequestedHostName' DE
+ SC 'This is the hostname that was requested by the client.' EQUALITY caseIgno
+ reIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user d
+ efined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.37 NAME 'certRecord' DESC 'certificate
+ , RFC 2538' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.3 NAME 'dhcpStatements' DESC 'Flex
+ ible storage for specific data depending on what object this exists in. Like 
+ conditional statements, server parameters, etc. This allows the standard to e
+ volve without needing to adjust the schema.' EQUALITY caseIgnoreIA5Match SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.46 NAME 'dhcpFailOverPrimaryServer
+ ' DESC 'IP address or DNS name of the server playing primary role in DHC Load
+  Balancing and Fail over.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.146
+ 6.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( suseImapDefaultQuota-oid NAME 'suseImapDefaultQuota'  EQUALI
+ TY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'u
+ ser defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.24 NAME 'dhcpStartTimeOfState' DES
+ C 'This is the time of the last state change for a leased address.' EQUALITY 
+ generalizedTimeMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE X-ORIG
+ IN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.24 NAME 'SigRecord' DESC 'Signature, R
+ FC 2535' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.53 NAME 'dhcpFailOverLoadBalanceTi
+ me' DESC 'Cutoff time in seconds, after which load balance is disabled' EQUAL
+ ITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 X-ORIGIN 'user defined'
+  )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.46 NAME 'rRSIGRecord' DESC 'RRSIG, RFC
+  3755' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.31 NAME 'dhcpReservedForClient' DE
+ SC 'The distinguished name of a "dhcpClient" that an address is reserved for.
+   This may not be the same as the "dhcpAssignedToClient" attribute if the add
+ ress is being reassigned but the current lease has not yet expired.' EQUALITY
+  distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE X-O
+ RIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.130 NAME 'dlzCName' DESC 'DNS cname' S
+ UP name EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.
+ 6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.17 NAME 'dhcpSubclassesDN' DESC 'T
+ he distinguished name(s) of subclass(es).' EQUALITY distinguishedNameMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.29 NAME 'LocRecord' DESC 'Location, RF
+ C 1876' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTA
+ X 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.12 NAME 'pTRRecord' DESC 'domain name 
+ pointer, RFC 1035' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Substrings
+ Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.80 NAME 'dlzExpire' DESC 'SOA expire t
+ ime in seconds' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SI
+ NGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.10 NAME 'dlzZoneName' DESC 'DNS zone n
+ ame - domain name not including host name' SUP name EQUALITY caseIgnoreMatch 
+ SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-
+ VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.0.2 NAME 'zoneName' DESC 'The name of a 
+ zone, i.e. the name of the highest node in the zone' EQUALITY caseIgnoreIA5Ma
+ tch SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 
+ X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.39 NAME 'dhcpErrorLog' DESC 'Gener
+ ic error log attribute that allows logging error conditions within a dhcpServ
+ ice or a dhcpSubnet, like no IP addresses available for lease.' EQUALITY case
+ IgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'us
+ er defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.56 NAME 'dhcpComments' DESC 'Gener
+ ic attribute that allows coments  within any DHCP object' EQUALITY caseIgnore
+ IA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user def
+ ined' )
+attributeTypes: ( susePasswordHash-oid NAME 'susePasswordHash' DESC 'Hash meth
+ od to use for new users' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.
+ 115.121.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.43 NAME 'dSRecord' DESC 'Delegation Si
+ gner, RFC 3658' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.34 NAME 'dhcpHWAddress' DESC 'The 
+ clients hardware address that requested this IP address.' EQUALITY caseIgnore
+ IA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user def
+ ined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.41 NAME 'dhcpKeyAlgorithm' DESC 'A
+ lgorithm to generate TSIG Key' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1
+ .1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.120 NAME 'dlzIPAddr' DESC 'IP address 
+ - IPV4 should be in dot notation xxx.xxx.xxx.xxx IPV6 should be in colon nota
+ tion xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx' EQUALITY caseExactIA5Match SYNT
+ AX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.27 NAME 'dhcpDomainName' DESC 'Thi
+ s is the name of the domain sent to the client by the server.  It is essentia
+ lly the same as the value for DHCP option 15 sent to the client, and represen
+ ts only the domain - not the full FQDN.  To obtain the full FQDN assigned to 
+ the client you must prepend the "dhcpAssignedHostName" to this value with a "
+ .".' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-
+ VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.39 NAME 'dNameRecord' DESC 'Non-Termin
+ al DNS Name Redirection, RFC 2672' EQUALITY caseIgnoreIA5Match SUBSTR caseIgn
+ oreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user def
+ ined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.90 NAME 'dlzMinimum' DESC 'SOA minimum
+  time in seconds' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 
+ SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.20 NAME 'dlzHostName' DESC 'Host porti
+ on of a domain name' SUP name EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubst
+ ringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'user d
+ efined' )
+attributeTypes: ( susePlugin-oid NAME 'susePlugin' DESC 'plugin to use upon us
+ er/ group creation' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.15 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.12 NAME 'dhcpGroupDN' DESC 'The di
+ stinguished name(s)   of the groups.' EQUALITY distinguishedNameMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.8 NAME 'dhcpClassData' DESC 'Encod
+ ed text string or list of bytes expressed in hexadecimal, separated by colons
+ .  Clients match subclasses based on matching the class data with the results
+  of match or spawn with statements in the class name declarations.' EQUALITY 
+ caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN
+  'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.49 NAME 'dhcpFailOverSecondaryPort
+ ' DESC 'Port on which secondary server listens for connections from its fail 
+ over peer (primary server)' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115
+ .121.1.27 X-ORIGIN 'user defined' )
+attributeTypes: ( suseMaxPasswordLength-oid NAME 'suseMaxPasswordLength' DESC 
+ 'maximum Password length for new users' EQUALITY integerMatch ORDERING intege
+ rOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'us
+ er defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.44 NAME 'dhcpKeyDN' DESC 'The DNs 
+ of TSIG Key to use in secure dynamic updates. In case of locator object, this
+  will be list of TSIG keys.  In case of DHCP Service, Shared Network, Subnet 
+ and DNS Zone, it will be a single key.' EQUALITY distinguishedNameMatch SYNTA
+ X 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( suseMaxUniqueId-oid NAME 'suseMaxUniqueId' DESC 'upper Borde
+ r for Unique IDs' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 0.9.2342.19200300.100.1.27 NAME 'mDRecord'  EQUALITY caseIgn
+ oreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.51 NAME 'dhcpFailOverUnackedUpdate
+ s' DESC 'Number of BNDUPD messages that server can send before it receives BN
+ DACK from its fail over peer' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.1
+ 15.121.1.27 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.110 NAME 'dlzPrimaryNS' DESC 'Primary 
+ name server for this zone - should be host name not IP address' SUP name EQUA
+ LITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.15 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.37 NAME 'dhcpMaxClientLeadTime' DE
+ SC 'Maximum Client Lead Time configuration in seconds, as defined in DHCP Fai
+ lover Protocol [FAILOVR]' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.27 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.15 NAME 'dhcpLeasesDN' DESC 'The d
+ istinguished name(s) client addresses.' EQUALITY distinguishedNameMatch SYNTA
+ X 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 0.9.2342.19200300.100.1.30 NAME 'sOARecord'  EQUALITY caseIg
+ noreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( suseSearchFilter-oid NAME 'suseSearchFilter' DESC 'Search fi
+ lter to localize Objects' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X
+ -ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.5 NAME 'dhcpPermitList' DESC 'This
+  attribute contains the permit lists associated with a pool. Each permit list
+  is defined as a separate value.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.30 NAME 'dlzData' DESC 'Data for the r
+ esource record' SUP name EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstrings
+ Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'user define
+ d' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.22 NAME 'dhcpAddressState' DESC 'T
+ his stores information about the current binding-status of an address.  For d
+ ynamic addresses managed by DHCP, the values should be restricted to the foll
+ owing: "FREE", "ACTIVE", "EXPIRED", "RELEASED", "RESET", "ABANDONED", "BACKUP
+ ".  For other addresses, it SHOULD be one of the following: "UNKNOWN", "RESER
+ VED" (an address that is managed by DHCP that is reserved for a specific clie
+ nt), "RESERVED-ACTIVE" (same as reserved, but address is currently in use), "
+ ASSIGNED" (assigned manually or by some other mechanism), "UNASSIGNED", "NOTA
+ SSIGNABLE".' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.0.0 NAME 'dNSTTL' DESC 'An integer denot
+ ing time to live' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 
+ X-ORIGIN 'user defined' )
+attributeTypes: ( suseDefaultBase-oid NAME 'suseDefaultBase' DESC 'Base DN whe
+ re new Objects should be created by default' EQUALITY distinguishedNameMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 0.9.2342.19200300.100.1.28 NAME 'mXRecord'  EQUALITY caseIgn
+ oreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.54 NAME 'dhcpFailOverPeerDN' DESC 
+ 'The DNs of Fail over peers. In case of locator object, this will be list of 
+ fail over peers in the tree. In case of Subnet and pool, it will be a single 
+ Fail Over Peer' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.1
+ 21.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.14 NAME 'mInfoRecord' DESC 'mailbox or
+  mail list information, RFC 1035' EQUALITY caseIgnoreIA5Match SUBSTR caseIgno
+ reIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defi
+ ned' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.36 NAME 'kXRecord' DESC 'Key Exchange 
+ Delegation, RFC 2230' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Substri
+ ngsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.100 NAME 'dlzAdminEmail' DESC 'E-mail 
+ address of person responsible for this zone - @ should be replaced with . (pe
+ riod)' SUP name EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYN
+ TAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.2 NAME 'dhcpSecondaryDN' DESC 'The
+  DN of dhcpServer(s) which provide backup service for the configuration.' EQU
+ ALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'u
+ ser defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.47 NAME 'dhcpFailOverSecondaryServ
+ er' DESC 'IP address or DNS name of the server playing secondary role in DHC 
+ Load Balancing and Fail over.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1
+ .1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.25 NAME 'dhcpLastTransactionTime' 
+ DESC 'This is the last time a valid DHCP packet was received from the client.
+ ' EQUALITY generalizedTimeMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-V
+ ALUE X-ORIGIN 'user defined' )
+attributeTypes: ( suseMapAttribute-oid NAME 'suseMapAttribute'  EQUALITY caseI
+ gnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.40 NAME 'dlzType' DESC 'DNS record typ
+ e - A, SOA, NS, MX, etc...' SUP name EQUALITY caseIgnoreMatch SUBSTR caseIgno
+ reSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 
+ 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.32 NAME 'dhcpAssignedToClient' DES
+ C 'This is the distinguished name of a "dhcpClient" that an address is curren
+ tly assigned to.  This attribute is only present in the class when the addres
+ s is leased.' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.12 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.10 NAME 'dhcpHostDN' DESC 'the dis
+ tinguished name(s) of the dhcpHost objects.' EQUALITY distinguishedNameMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.28 NAME 'aAAARecord' DESC 'IPv6 addres
+ s, RFC 1886' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.33 NAME 'sRVRecord' DESC 'service loca
+ tion, RFC 2782' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( suseImapAdmin-oid NAME 'suseImapAdmin'  EQUALITY caseIgnoreM
+ atch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIGIN 'user defined
+ ' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.18 NAME 'dhcpSharedNetworkDN' DESC
+  'The distinguished name(s) of sharedNetworks.' EQUALITY distinguishedNameMat
+ ch SYNTAX 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.57 NAME 'dhcpClientId' DESC 'clien
+ t Identifier.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.
+ 26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.99 NAME 'sPFRecord' DESC 'Sender Polic
+ y Framework, RFC 4408' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5Substr
+ ingsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.35 NAME 'dhcpHashBucketAssignment'
+  DESC 'HashBucketAssignment bit map for the DHCP Server, as defined in DHC Lo
+ ad Balancing Algorithm [RFC 3074].' EQUALITY octetStringMatch SYNTAX 1.3.6.1.
+ 4.1.1466.115.121.1.40 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.50 NAME 'dlzSerial' DESC 'SOA record s
+ erial number' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SING
+ LE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.7 NAME 'dhcpOption' DESC 'Encoded 
+ option values to be sent to clients.  Each value represents a single option a
+ nd contains (OptionTag, Length, OptionValue) encoded in the format used by DH
+ CP.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGI
+ N 'user defined' )
+attributeTypes: ( suseSecondaryGroup-oid NAME 'suseSecondaryGroup' DESC 'secon
+ day group DN' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.42 NAME 'dhcpKeySecret' DESC 'Secr
+ et to generate TSIG Key' EQUALITY octetStringMatch SYNTAX 1.3.6.1.4.1.1466.11
+ 5.121.1.40 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.20 NAME 'dhcpVersion' DESC 'The ve
+ rsion attribute of this object.' EQUALITY caseIgnoreIA5Match SYNTAX 1.3.6.1.4
+ .1.1466.115.121.1.26 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.38 NAME 'a6Record' DESC 'A6 Record Typ
+ e, RFC 2874' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch 
+ SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.13 NAME 'dhcpSubnetDN' DESC 'The d
+ istinguished name(s) of the subnets.' EQUALITY distinguishedNameMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( suseMinPasswordLength-oid NAME 'suseMinPasswordLength' DESC 
+ 'minimum Password length for new users' EQUALITY integerMatch ORDERING intege
+ rOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'us
+ er defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.16 NAME 'tXTRecord' DESC 'text string,
+  RFC 1035' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SY
+ NTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.160 NAME 'dlzRecordID' DESC 'Unique ID
+  for each DLZ resource record' SUP name EQUALITY caseIgnoreMatch SUBSTR caseI
+ gnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE X-ORIG
+ IN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.28 NAME 'dhcpDnsStatus' DESC 'This
+  indicates the status of updating DNS resource records on behalf of the clien
+ t by the DHCP server for this address.  The value is a 16-bit bitmask.' EQUAL
+ ITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN '
+ user defined' )
+attributeTypes: ( 1.3.6.1.4.1.2428.20.1.30 NAME 'nXTRecord' DESC 'non-existant
+ , RFC 2535' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch S
+ YNTAX 1.3.6.1.4.1.1466.115.121.1.26 X-ORIGIN 'user defined' )
+attributeTypes: ( 2.16.840.1.113719.1.203.4.45 NAME 'dhcpZoneDN' DESC 'The DNs
+  of DNS Zone. In case of locator object, this will be list of DNS Zones in th
+ e tree. In case of DHCP Service, Shared Network and Subnet, it will be a sing
+ le DNS Zone.' EQUALITY distinguishedNameMatch SYNTAX 1.3.6.1.4.1.1466.115.121
+ .1.12 X-ORIGIN 'user defined' )
+attributeTypes: ( suseMinUniqueId-oid NAME 'suseMinUniqueId' DESC 'lower Borde
+ r for Unique IDs' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 
+ 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE X-ORIGIN 'user defined' )
+attributeTypes: ( 1.3.6.1.4.1.18420.1.1.60 NAME 'dlzRefresh' DESC 'SOA record 
+ refresh time in seconds' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.12
+ 1.1.27 SINGLE-VALUE X-ORIGIN 'user defined' )
+objectClasses: ( 0.9.2342.19200300.100.4.15 NAME 'dNSDomain' SUP domain STRUCT
+ URAL MAY ( aRecord $ mDRecord $ mXRecord $ nSRecord $ sOARecord $ cNAMERecord
+  ) X-ORIGIN 'user defined' )
+objectClasses: ( suseModuleConfiguration-oid NAME 'suseModuleConfiguration' DE
+ SC 'Contains configuration of Management Modules' SUP top STRUCTURAL MUST cn 
+ MAY suseDefaultBase X-ORIGIN 'user defined' )
+objectClasses: ( suseUserConfiguration-oid NAME 'suseUserConfiguration' DESC '
+ Configuration of user management tools' SUP suseModuleConfiguration STRUCTURA
+ L MAY ( suseMinPasswordLength $ suseMaxPasswordLength $ susePasswordHash $ su
+ seSkelDir $ suseNextUniqueId $ suseMinUniqueId $ suseMaxUniqueId $ suseDefaul
+ tTemplate $ suseSearchFilter $ suseMapAttribute ) X-ORIGIN 'user defined' )
+objectClasses: ( suseObjectTemplate-oid NAME 'suseObjectTemplate' DESC 'Base C
+ lass for Object-Templates' SUP top STRUCTURAL MUST cn MAY ( susePlugin $ suse
+ DefaultValue $ suseNamingAttribute ) X-ORIGIN 'user defined' )
+objectClasses: ( suseUserTemplate-oid NAME 'suseUserTemplate' DESC 'User objec
+ t template' SUP suseObjectTemplate STRUCTURAL MAY suseSecondaryGroup X-ORIGIN
+  'user defined' )
+objectClasses: ( suseGroupTemplate-oid NAME 'suseGroupTemplate' DESC 'Group ob
+ ject template' SUP suseObjectTemplate STRUCTURAL X-ORIGIN 'user defined' )
+objectClasses: ( suseGroupConfiguration-oid NAME 'suseGroupConfiguration' DESC
+  'Configuration of user management tools' SUP suseModuleConfiguration STRUCTU
+ RAL MAY ( suseNextUniqueId $ suseMinUniqueId $ suseMaxUniqueId $ suseDefaultT
+ emplate $ suseSearchFilter $ suseMapAttribute ) X-ORIGIN 'user defined' )
+objectClasses: ( suseCaConfiguration-oid NAME 'suseCaConfiguration' DESC 'Conf
+ iguration of CA management tools' SUP suseModuleConfiguration STRUCTURAL X-OR
+ IGIN 'user defined' )
+objectClasses: ( suseDnsConfiguration-oid NAME 'suseDnsConfiguration' DESC 'Co
+ nfiguration of mail server management tools' SUP suseModuleConfiguration STRU
+ CTURAL X-ORIGIN 'user defined' )
+objectClasses: ( suseDhcpConfiguration-oid NAME 'suseDhcpConfiguration' DESC '
+ Configuration of DHCP server management tools' SUP suseModuleConfiguration ST
+ RUCTURAL X-ORIGIN 'user defined' )
+objectClasses: ( suseMailConfiguration-oid NAME 'suseMailConfiguration' DESC '
+ Configuration of IMAP user management tools' SUP suseModuleConfiguration STRU
+ CTURAL MUST ( suseImapServer $ suseImapAdmin $ suseImapDefaultQuota $ suseIma
+ pUseSsl ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.1 NAME 'dhcpService' DESC 'Service 
+ object that represents the actual DHCP Service configuration. This is a conta
+ iner object.' SUP top STRUCTURAL MUST cn MAY ( dhcpPrimaryDN $ dhcpSecondaryD
+ N $ dhcpServerDN $ dhcpSharedNetworkDN $ dhcpSubnetDN $ dhcpGroupDN $ dhcpHos
+ tDN $ dhcpClassesDN $ dhcpOptionsDN $ dhcpZoneDN $ dhcpKeyDN $ dhcpFailOverPe
+ erDN $ dhcpStatements $ dhcpComments $ dhcpOption ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.2 NAME 'dhcpSharedNetwork' DESC 'Th
+ is stores configuration information for a shared network.' SUP top STRUCTURAL
+  MUST cn MAY ( dhcpSubnetDN $ dhcpPoolDN $ dhcpOptionsDN $ dhcpZoneDN $ dhcpS
+ tatements $ dhcpComments $ dhcpOption ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.3 NAME 'dhcpSubnet' DESC 'This clas
+ s defines a subnet. This is a container object.' SUP top STRUCTURAL MUST ( cn
+  $ dhcpNetMask ) MAY ( dhcpRange $ dhcpPoolDN $ dhcpGroupDN $ dhcpHostDN $ dh
+ cpClassesDN $ dhcpLeasesDN $ dhcpOptionsDN $ dhcpZoneDN $ dhcpKeyDN $ dhcpFai
+ lOverPeerDN $ dhcpStatements $ dhcpComments $ dhcpOption ) X-ORIGIN 'user def
+ ined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.4 NAME 'dhcpPool' DESC 'This stores
+  configuration information about a pool.' SUP top STRUCTURAL MUST ( cn $ dhcp
+ Range ) MAY ( dhcpClassesDN $ dhcpPermitList $ dhcpLeasesDN $ dhcpOptionsDN $
+  dhcpZoneDN $ dhcpKeyDN $ dhcpStatements $ dhcpComments $ dhcpOption ) X-ORIG
+ IN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.5 NAME 'dhcpGroup' DESC 'Group obje
+ ct that lists host DNs and parameters. This is a container object.' SUP top S
+ TRUCTURAL MUST cn MAY ( dhcpHostDN $ dhcpOptionsDN $ dhcpStatements $ dhcpCom
+ ments $ dhcpOption ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.6 NAME 'dhcpHost' DESC 'This repres
+ ents information about a particular client' SUP top STRUCTURAL MUST cn MAY ( 
+ dhcpLeaseDN $ dhcpHWAddress $ dhcpOptionsDN $ dhcpStatements $ dhcpComments $
+  dhcpOption $ dhcpClientId ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.7 NAME 'dhcpClass' DESC 'Represents
+  information about a collection of related clients.' SUP top STRUCTURAL MUST 
+ cn MAY ( dhcpSubclassesDN $ dhcpOptionsDN $ dhcpStatements $ dhcpComments $ d
+ hcpOption ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.8 NAME 'dhcpSubClass' DESC 'Represe
+ nts information about a collection of related classes.' SUP top STRUCTURAL MU
+ ST cn MAY ( dhcpClassData $ dhcpOptionsDN $ dhcpStatements $ dhcpComments $ d
+ hcpOption ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.9 NAME 'dhcpOptions' DESC 'Represen
+ ts information about a collection of options defined.' SUP top AUXILIARY MUST
+  cn MAY ( dhcpOption $ dhcpComments ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.10 NAME 'dhcpLeases' DESC 'This cla
+ ss represents an IP Address, which may or may not have been leased.' SUP top 
+ STRUCTURAL MUST ( cn $ dhcpAddressState ) MAY ( dhcpExpirationTime $ dhcpStar
+ tTimeOfState $ dhcpLastTransactionTime $ dhcpBootpFlag $ dhcpDomainName $ dhc
+ pDnsStatus $ dhcpRequestedHostName $ dhcpAssignedHostName $ dhcpReservedForCl
+ ient $ dhcpAssignedToClient $ dhcpRelayAgentInfo $ dhcpHWAddress ) X-ORIGIN '
+ user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.11 NAME 'dhcpLog' DESC 'This is the
+  object that holds past information about the IP address. The cn is the time/
+ date stamp when the address was assigned or released, the address state at th
+ e time, if the address was assigned or released.' SUP top STRUCTURAL MUST cn 
+ MAY ( dhcpAddressState $ dhcpExpirationTime $ dhcpStartTimeOfState $ dhcpLast
+ TransactionTime $ dhcpBootpFlag $ dhcpDomainName $ dhcpDnsStatus $ dhcpReques
+ tedHostName $ dhcpAssignedHostName $ dhcpReservedForClient $ dhcpAssignedToCl
+ ient $ dhcpRelayAgentInfo $ dhcpHWAddress $ dhcpErrorLog ) X-ORIGIN 'user def
+ ined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.12 NAME 'dhcpServer' DESC 'DHCP Ser
+ ver Object' SUP top STRUCTURAL MUST cn MAY ( dhcpServiceDN $ dhcpLocatorDN $ 
+ dhcpVersion $ dhcpImplementation $ dhcpHashBucketAssignment $ dhcpDelayedServ
+ iceParameter $ dhcpMaxClientLeadTime $ dhcpFailOverEndpointState $ dhcpStatem
+ ents $ dhcpComments $ dhcpOption ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.13 NAME 'dhcpTSigKey' DESC 'TSIG ke
+ y for secure dynamic updates' SUP top STRUCTURAL MUST ( cn $ dhcpKeyAlgorithm
+  $ dhcpKeySecret ) MAY dhcpComments X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.14 NAME 'dhcpDnsZone' DESC 'DNS Zon
+ e for updating leases' SUP top STRUCTURAL MUST ( cn $ dhcpDnsZoneServer ) MAY
+  ( dhcpKeyDN $ dhcpComments ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.15 NAME 'dhcpFailOverPeer' DESC 'Th
+ is class defines the Fail over peer' SUP top STRUCTURAL MUST ( cn $ dhcpFailO
+ verPrimaryServer $ dhcpFailOverSecondaryServer $ dhcpFailOverPrimaryPort $ dh
+ cpFailOverSecondaryPort ) MAY ( dhcpFailOverResponseDelay $ dhcpFailOverUnack
+ edUpdates $ dhcpMaxClientLeadTime $ dhcpFailOverSplit $ dhcpHashBucketAssignm
+ ent $ dhcpFailOverLoadBalanceTime $ dhcpComments ) X-ORIGIN 'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.16 NAME 'dhcpLocator' DESC 'Locator
+  object for DHCP configuration in the tree. There will be a single dhcpLocato
+ r object in the tree with links to all the DHCP objects in the tree' SUP top 
+ STRUCTURAL MUST cn MAY ( dhcpServiceDN $ dhcpServerDN $ dhcpSharedNetworkDN $
+  dhcpSubnetDN $ dhcpPoolDN $ dhcpGroupDN $ dhcpHostDN $ dhcpClassesDN $ dhcpK
+ eyDN $ dhcpZoneDN $ dhcpFailOverPeerDN $ dhcpOption $ dhcpComments ) X-ORIGIN
+  'user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.17 NAME 'dhcpSubnet6' DESC 'This cl
+ ass defines an IPv6 subnet. This is a container object.' SUP top STRUCTURAL M
+ UST cn MAY ( dhcpRange6 $ dhcpPoolDN $ dhcpGroupDN $ dhcpHostDN $ dhcpClasses
+ DN $ dhcpLeasesDN $ dhcpOptionsDN $ dhcpZoneDN $ dhcpKeyDN $ dhcpFailOverPeer
+ DN $ dhcpStatements $ dhcpComments $ dhcpOption $ dhcpPermitList ) X-ORIGIN '
+ user defined' )
+objectClasses: ( 2.16.840.1.113719.1.203.6.18 NAME 'dhcpPool6' DESC 'This stor
+ es configuration information about an IPv6 pool.' SUP top STRUCTURAL MUST ( c
+ n $ dhcpRange6 ) MAY ( dhcpClassesDN $ dhcpPermitList $ dhcpLeasesDN $ dhcpOp
+ tionsDN $ dhcpZoneDN $ dhcpKeyDN $ dhcpStatements $ dhcpComments $ dhcpOption
+  ) X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.10 NAME 'dlzZone' DESC 'Zone name porti
+ on of a domain name' SUP top STRUCTURAL MUST dlzZoneName X-ORIGIN 'user defin
+ ed' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.20 NAME 'dlzHost' DESC 'Host name porti
+ on of a domain name' SUP top STRUCTURAL MUST dlzHostName X-ORIGIN 'user defin
+ ed' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.30 NAME 'dlzAbstractRecord' DESC 'Data 
+ common to all DNS record types' SUP top ABSTRACT MUST ( dlzRecordID $ dlzHost
+ Name $ dlzType $ dlzTTL ) X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.40 NAME 'dlzGenericRecord' DESC 'Generi
+ c DNS record - useful when a specific object class has not been defined for a
+  DNS record' SUP dlzAbstractRecord STRUCTURAL MUST dlzData X-ORIGIN 'user def
+ ined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.50 NAME 'dlzARecord' DESC 'DNS A record
+ ' SUP dlzAbstractrecord STRUCTURAL MUST dlzIPAddr X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.60 NAME 'dlzNSRecord' DESC 'DNS NS reco
+ rd' SUP dlzGenericRecord STRUCTURAL X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.70 NAME 'dlzMXRecord' DESC 'DNS MX reco
+ rd' SUP dlzGenericRecord STRUCTURAL MUST dlzPreference X-ORIGIN 'user defined
+ ' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.80 NAME 'dlzSOARecord' DESC 'DNS SOA re
+ cord' SUP dlzAbstractRecord STRUCTURAL MUST ( dlzSerial $ dlzRefresh $ dlzRet
+ ry $ dlzExpire $ dlzMinimum $ dlzAdminEmail $ dlzPrimaryNS ) X-ORIGIN 'user d
+ efined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.90 NAME 'dlzTextRecord' DESC 'Text data
+  with spaces should be wrapped in double quotes' SUP dlzGenericRecord STRUCTU
+ RAL X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.100 NAME 'dlzPTRRecord' DESC 'DNS PTR r
+ ecord' SUP dlzGenericRecord STRUCTURAL X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.110 NAME 'dlzCNameRecord' DESC 'DNS CNa
+ me record' SUP dlzGenericRecord STRUCTURAL X-ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.18420.1.2.120 NAME 'dlzXFR' DESC 'Host allowed to
+  perform zone transfer' SUP top STRUCTURAL MUST ( dlzRecordID $ dlzIPAddr ) X
+ -ORIGIN 'user defined' )
+objectClasses: ( 1.3.6.1.4.1.2428.20.3 NAME 'dNSZone' SUP top STRUCTURAL MUST 
+ ( zoneName $ relativeDomainName ) MAY ( dNSTTL $ dNSClass $ aRecord $ mDRecor
+ d $ mXRecord $ nSRecord $ sOARecord $ cNAMERecord $ pTRRecord $ hInfoRecord $
+  mInfoRecord $ tXTRecord $ aFSDBRecord $ SigRecord $ KeyRecord $ aAAARecord $
+  LocRecord $ nXTRecord $ sRVRecord $ nAPTRRecord $ kXRecord $ certRecord $ a6
+ Record $ dNameRecord $ dSRecord $ sSHFPRecord $ rRSIGRecord $ nSECRecord $ sP
+ FRecord ) X-ORIGIN 'user defined' )
