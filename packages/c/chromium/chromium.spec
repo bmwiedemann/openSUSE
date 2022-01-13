@@ -1,7 +1,7 @@
 #
 # spec file for package chromium
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,10 +35,8 @@
 %bcond_with system_vpx
 %ifarch aarch64
 %bcond_with swiftshader
-%bcond_with lto
 %else
 %bcond_without swiftshader
-%bcond_without lto
 %endif
 %if 0%{?suse_version} >= 1550
 %bcond_without system_harfbuzz
@@ -48,8 +46,10 @@
 %bcond_with system_freetype
 %endif
 %bcond_with clang
+# Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
+%bcond_with lto
 Name:           chromium
-Version:        96.0.4664.110
+Version:        97.0.4692.71
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -62,6 +62,7 @@ Source104:      chromium-symbolic.svg
 # https://source.chromium.org/chromium/chromium/src/+/refs/tags/%%{version}:chrome/installer/linux/common/installer.include
 Source105:      INSTALL.sh
 #
+Source106:      chrome-wrapper
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -82,10 +83,9 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-96-compiler.patch
+Patch15:        chromium-97-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
-Patch19:        chromium-86-nearby-include.patch
 Patch21:        chromium-gcc11.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -99,18 +99,12 @@ Patch65:        chromium-94-sql-no-assert.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
 Patch72:        chromium-95-quiche-include.patch
-Patch73:        chromium-96-CommandLine-include.patch
-Patch74:        chromium-96-RestrictedCookieManager-tuple.patch
-Patch75:        chromium-96-DrmRenderNodePathFinder-include.patch
-Patch76:        chromium-96-CouponDB-include.patch
-Patch77:        chromium-96-freetype-unbundle.patch
 Patch78:        chromium-96-EnumTable-crash.patch
-# Google seem not too keen on merging this but GPU accel is quite important
-#  https://chromium-review.googlesource.com/c/chromium/src/+/532294
-#  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
-#  Recreated from scratch to be smaller and use system the orginal switches
-#  (default on) compared to the PR
-Patch100:       chromium-vaapi.patch
+Patch79:        chromium-97-Point-constexpr.patch
+Patch80:        chromium-97-ScrollView-reference.patch
+Patch81:        chromium-95-libyuv-arm.patch
+Patch82:        fix-tag-dragging-in-Mutter.patch
+Patch83:        fix-tag-dragging-in-KWin.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
@@ -280,13 +274,13 @@ BuildRequires:  llvm
 %endif
 %if %{without clang}
 BuildRequires:  binutils-gold
-#%if %{?suse_version} >= 1550
-#BuildRequires:  gcc
-#BuildRequires:  gcc-c++
-#%else
-BuildRequires:  gcc10
-BuildRequires:  gcc10-c++
-#%endif
+%if %{?suse_version} >= 1550
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
 %endif
 
 %description
@@ -319,6 +313,10 @@ mkdir $HOME/bin
 export PYTHON=python3
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
+
+# use our wrapper (disabled)
+#rm chrome/installer/linux/common/wrapper
+#cp %{SOURCE106} chrome/installer/linux/common/wrapper
 
 # Remove bundled libs
 keeplibs=(
@@ -587,17 +585,17 @@ build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 export CC=clang
 export CXX=clang++
 %else
-#%if 0%{?suse_version} <= 1500
-export CC=gcc-10
-export CXX=g++-10
+%if 0%{?suse_version} <= 1500
+export CC=gcc-11
+export CXX=g++-11
 # some still call gcc/g++
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
-#%else
-#export CC=gcc
-#export CXX=g++
-#%endif
+%else
+export CC=gcc
+export CXX=g++
+%endif
 %endif
 export AR=ar
 export NM=nm

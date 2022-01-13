@@ -3,7 +3,7 @@ Index: chromium-85.0.4183.69/build/config/BUILDCONFIG.gn
 --- chromium-85.0.4183.69.orig/build/config/BUILDCONFIG.gn
 +++ chromium-85.0.4183.69/build/config/BUILDCONFIG.gn
 @@ -130,6 +130,8 @@ declare_args() {
-   # separate flags.
+   # set "is_official_build" to true for any build intended to ship to end-users.
    is_official_build = false
  
 +  gcc_lto = false
