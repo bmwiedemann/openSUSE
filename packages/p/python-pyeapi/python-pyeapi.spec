@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyeapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-pyeapi
 Version:        0.8.4
 Release:        0
@@ -25,7 +26,7 @@ Summary:        Python Client for eAPI
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/arista-eosplus/pyeapi
-Source:         https://github.com/arista-eosplus/pyeapi/archive/v%{version}.tar.gz#/pyeapi-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyeapi/pyeapi-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pytest}
@@ -52,6 +53,9 @@ developing custom implementations.
 
 %prep
 %setup -q -n pyeapi-%{version}
+# Deprecated collections usage since Python 3.3
+sed -i 's/from collections import/from collections.abc import/' pyeapi/api/abstract.py
+sed -i 's/collections.Iterable/collections.abc.Iterable/' test/unit/test_utils.py
 
 %build
 %python_build
@@ -67,6 +71,7 @@ developing custom implementations.
 %license LICENSE
 %doc CHANGELOG.md README.md
 %doc examples
-%{python_sitelib}/*
+%{python_sitelib}/pyeapi
+%{python_sitelib}/pyeapi-%{version}*-info
 
 %changelog

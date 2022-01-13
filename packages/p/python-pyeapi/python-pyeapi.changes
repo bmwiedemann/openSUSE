@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 11 22:08:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix deprecated collections.abc imports still not fully fixed in
+  0.8.4 -- gh#arista-eosplus/pyeapi#195
+- Use the PyPI archive, because the git source has the wrong
+  version in its metadata
+
+-------------------------------------------------------------------
 Sat Nov 14 13:15:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.4
