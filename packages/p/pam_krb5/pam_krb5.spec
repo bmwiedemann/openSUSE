@@ -1,7 +1,7 @@
 #
 # spec file for package pam_krb5
 #
-# Copyright (c) 2017 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,9 +33,9 @@ Obsoletes:      pam_krb5-64bit
 Version:        2.4.13
 Release:        0
 Summary:        A Pluggable Authentication Module for Kerberos 5
-License:        BSD-3-Clause or LGPL-2.1+
+License:        BSD-3-Clause OR LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
-Url:            https://pagure.io/pam_krb5
+URL:            https://pagure.io/pam_krb5
 Source:         pam_krb5-%{version}.tar.bz2
 Source2:        pam_krb5-po.tar.bz2
 Source3:        baselibs.conf
@@ -59,7 +59,7 @@ supports updating your Kerberos password.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE "         \
-./configure --libdir=/%{_lib}    \
+./configure --libdir=%{_pam_libdir}    \
             --prefix=/usr        \
             --mandir=%{_mandir}  \
             --with-os-distribution="openSUSE" \
@@ -74,26 +74,26 @@ make -C po update-po
 #make check
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
-ln -sf pam_krb5.so $RPM_BUILD_ROOT/%_lib/security/pam_krb5afs.so
-rm -f $RPM_BUILD_ROOT/%_lib/security/*.la
+make install DESTDIR=%{buildroot} INSTALL="install -p"
+ln -sf pam_krb5.so %{buildroot}%{_pam_moduledir}/pam_krb5afs.so
+rm -f %{buildroot}%{_pam_moduledir}/*.la
 
 # Make the paths jive to avoid conflicts on multilib systems.
-sed -ri -e 's|/lib(64)?/|/\$LIB/|g' $RPM_BUILD_ROOT/%{_mandir}/man*/pam_krb5*.8*
+sed -ri -e 's|/lib(64)?/|/\$LIB/|g' %{buildroot}/%{_mandir}/man*/pam_krb5*.8*
 
 # Create filelist with translatins
 %{find_lang} pam_krb5
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f pam_krb5.lang
 %defattr(-,root,root,-)
 %doc README* COPYING* ChangeLog AUTHORS NEWS
 %{_bindir}/*
-%attr(555,root,root) /%{_lib}/security/pam_krb5.so
-%attr(555,root,root) /%{_lib}/security/pam_krb5afs.so
-/%{_lib}/security/pam_krb5
+%attr(555,root,root) %{_pam_moduledir}/pam_krb5.so
+%attr(555,root,root) %{_pam_moduledir}/pam_krb5afs.so
+%{_pam_moduledir}/pam_krb5
 %_mandir/man*/*.*
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 10:29:54 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Use the %_pam_moduledir macro in pam_userpass.spec in order to
+  have the package follow UsrMerge.
+  [bsc#1190951, pam_krb5.spec]
+
+-------------------------------------------------------------------
 Wed Jul 26 07:04:12 UTC 2017 - josef.moellers@suse.com
 
 - Update to 2.4.13:
