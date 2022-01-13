@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 13 18:25:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.12:
+  * util.xml: Do not allow doctypes, comments or processing
+    instructions (CVE-2022-0217)
+
+-------------------------------------------------------------------
 Tue Jan  4 15:43:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.11:

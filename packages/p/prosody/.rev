@@ -449,4 +449,14 @@
   * Fix version number reported as ‘unknown’ on *BSD</comment>
     <requestid>943791</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>18f85eee6bec63c3359c52fd7b0704f9</srcmd5>
+    <version>0.11.12</version>
+    <time>1642112504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.12:
+  * util.xml: Do not allow doctypes, comments or processing
+    instructions (CVE-2022-0217)</comment>
+    <requestid>946206</requestid>
+  </revision>
 </revisionlist>
