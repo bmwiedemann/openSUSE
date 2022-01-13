@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyface
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only AND
 Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/pyface
 Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pyface-pr958-qt5deprecation.patch -- gh#/enthought/pyface#958
+Patch0:         https://github.com/enthought/pyface/pull/958.patch#/pyface-pr958-qt5deprecation.patch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0}
@@ -63,7 +65,7 @@ the details of displaying them.
 Part of the Enthought Tool Suite (ETS).
 
 %prep
-%setup -q -n pyface-%{version}
+%autosetup -p1 -n pyface-%{version}
 
 %build
 %python_build
@@ -81,13 +83,6 @@ export ETS_TOOLKIT=qt4
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-if [ "${python_flavor}" = "python39" ]; then
-  # segfault in pyface.ui.wx.data_view.tests.test_data_wrapper.TestDataWrapper
-  export EXCLUDE_TESTS="wx"
-else
-  # unset for other flavors
-  unset EXCLUDE_TESTS
-fi
 xvfb-run --server-args "-screen 0 1920x1080x24" $python -m unittest discover -v pyface
 popd
 # wait 2 seconds before the next xvfb-run

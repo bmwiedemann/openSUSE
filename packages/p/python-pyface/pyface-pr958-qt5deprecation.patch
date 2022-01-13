@@ -1,0 +1,55 @@
+From d72d00b7c9eb9d316ec22d0e297ba2d98b1a789e Mon Sep 17 00:00:00 2001
+From: Aaron Ayres <aayres@enthought.com>
+Date: Fri, 18 Jun 2021 11:05:50 -0500
+Subject: [PATCH 1/2] fix a couple deprecation warnings in traitsUI test suite
+ on python 3.8 with pyqt5
+
+---
+ pyface/ui/qt4/console/console_widget.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyface/ui/qt4/console/console_widget.py b/pyface/ui/qt4/console/console_widget.py
+index 5023660df..cfc1980cc 100644
+--- a/pyface/ui/qt4/console/console_widget.py
++++ b/pyface/ui/qt4/console/console_widget.py
+@@ -347,7 +347,7 @@ def sizeHint(self):
+         if self.paging == "vsplit":
+             height = height * 2 + splitwidth
+ 
+-        return QtCore.QSize(width, height)
++        return QtCore.QSize(int(width), int(height))
+ 
+     # ---------------------------------------------------------------------------
+     # 'ConsoleWidget' public interface
+@@ -1966,7 +1966,7 @@ def _adjust_scrollbars(self):
+             step = viewport_height
+         diff = maximum - scrollbar.maximum()
+         scrollbar.setRange(0, maximum)
+-        scrollbar.setPageStep(step)
++        scrollbar.setPageStep(int(step))
+         # Compensate for undesirable scrolling that occurs automatically due to
+         # maximumBlockCount() text truncation.
+         if diff < 0 and document.blockCount() == document.maximumBlockCount():
+
+From 61748e3a955082451b8ce4ddd5cc38cf7e71d518 Mon Sep 17 00:00:00 2001
+From: Aaron Ayres <aayres@enthought.com>
+Date: Fri, 18 Jun 2021 11:27:18 -0500
+Subject: [PATCH 2/2] use float not np.float to avoid deprecation warning
+
+---
+ pyface/data_view/data_models/tests/test_array_data_model.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyface/data_view/data_models/tests/test_array_data_model.py b/pyface/data_view/data_models/tests/test_array_data_model.py
+index 481d62cfd..8f5adb1d1 100644
+--- a/pyface/data_view/data_models/tests/test_array_data_model.py
++++ b/pyface/data_view/data_models/tests/test_array_data_model.py
+@@ -55,7 +55,7 @@ def test_no_data(self):
+         model = ArrayDataModel(value_type=FloatValue())
+         self.assertEqual(model.data.ndim, 2)
+         self.assertEqual(model.data.shape, (0, 0))
+-        self.assertEqual(model.data.dtype, np.float)
++        self.assertEqual(model.data.dtype, float)
+         self.assertEqual(model.get_column_count(), 0)
+         self.assertTrue(model.can_have_children(()))
+         self.assertEqual(model.get_row_count(()), 0)
