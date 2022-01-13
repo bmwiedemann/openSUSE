@@ -1,7 +1,7 @@
 #
 # spec file for package maven-resolver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _buildshell /bin/bash
 %bcond_with tests
 Name:           maven-resolver
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -27,7 +27,6 @@ Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/resolver/
 Source0:        http://archive.apache.org/dist/maven/resolver/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
-Patch0:         maven-resolver-1.3.1-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
@@ -143,7 +142,6 @@ This package provides %{summary}.
 
 %prep
 %setup -q -a1
-%patch0 -p1
 
 # pointless plugin
 %pom_remove_plugin :maven-enforcer-plugin
