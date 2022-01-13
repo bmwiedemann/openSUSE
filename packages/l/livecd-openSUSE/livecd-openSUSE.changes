@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 10:28:43 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Disable initrd networking also for Xfce
+- list-xfce: add shotwell back
+
+-------------------------------------------------------------------
 Thu Jan 13 09:17:06 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-xfce: ignore shotwell

@@ -481,8 +481,6 @@
     <ignore name="libreoffice"/>
     <package name="aaa_base" replaces="gdb"/>
     <ignore name="gdb"/>
-    <package name="aaa_base" replaces="shotwell"/>
-    <ignore name="shotwell"/>
     <package name="aaa_base" replaces="gimp"/>
     <ignore name="gimp"/>
     <package name="aaa_base" replaces="pidgin"/>

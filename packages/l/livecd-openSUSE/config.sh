@@ -51,7 +51,7 @@ done
 echo '# multipath needs to be excluded from dracut as it breaks os-prober' > /etc/dracut.conf.d/no-multipath.conf
 echo 'omit_dracutmodules+=" multipath "' >> /etc/dracut.conf.d/no-multipath.conf
 
-if [ "$desktop" = "x11" ]; then
+if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 	# Forcibly exclude networking support
 	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/90kiwi-live/module-setup.sh
 	echo 'omit_dracutmodules+=" network "' >> /etc/dracut.conf.d/no-network.conf
@@ -61,7 +61,9 @@ if [ "$desktop" = "x11" ]; then
 
 	# Work around https://github.com/OSInside/kiwi/issues/1751
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
+fi
 
+if [ "$desktop" = "x11" ]; then
 	# Only used for X11 acceleration on vmwgfx, saves ~47MiB
 	rpm -e --nodeps Mesa-gallium
 

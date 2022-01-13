@@ -1383,4 +1383,13 @@
     <user>dimstar_suse</user>
     <comment>- list-xfce: ignore shotwell</comment>
   </revision>
+  <revision rev="172" vrev="172">
+    <srcmd5>47ea2792dbb4176b3551de5bbabba82e</srcmd5>
+    <version>unknown</version>
+    <time>1642112459</time>
+    <user>dimstar_suse</user>
+    <comment>- config.sh: Disable initrd networking also for Xfce
+- list-xfce: add shotwell back (forwarded request 946071 from favogt)</comment>
+    <requestid>946072</requestid>
+  </revision>
 </revisionlist>
