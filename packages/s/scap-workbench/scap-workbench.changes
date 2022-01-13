@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 13 08:11:54 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- require "ssh" at buildtime to enable remote mode. (bsc#1194604)
+
+-------------------------------------------------------------------
 Fri Jun  4 09:44:15 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.2.1+git20210604.1fc6def to fix Factory build

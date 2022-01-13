@@ -1,7 +1,7 @@
 #
 # spec file for package scap-workbench
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ Patch0:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 2.6
 BuildRequires:  openscap-devel
+# buildtime and runtime requires for remote scan detection
+BuildRequires:  openssh
+Recommends:     openssh
 # SLE 11 SP3: libopenscap needs libxslt without requiring it
 # libxslt needs pcre
 %if 0%{?suse_version} < 1140
