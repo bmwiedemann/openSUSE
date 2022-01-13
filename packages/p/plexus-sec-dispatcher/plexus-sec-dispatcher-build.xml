@@ -8,14 +8,14 @@
 
   <property file="build.properties"/>
 
-  <property name="project.groupId" value="org.sonatype.plexus"/>
+  <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-sec-dispatcher"/>
-  <property name="project.version" value="1.4"/>
-  <property name="project.url" value="http://spice.sonatype.org/${project.artifactId}"/>
+  <property name="project.version" value="2.0"/>
+  <property name="project.url" value="https://github.com/codehaus-plexus/plexus-sec-dispatcher"/>
   <property name="project.name" value="Plexus Security Dispatcher Component"/>
   <property name="project.organization.name" value="Sonatype, Inc."/>
 
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
