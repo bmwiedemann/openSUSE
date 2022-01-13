@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 08:32:42 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Import Mappnig and MutableMapping from collections.abc (bpo#37324)
+  * 004-Import-from-collections-abc.patch
+
+-------------------------------------------------------------------
 Sat Aug 14 02:31:30 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add 003-Import-from-flask-scaffold.patch to fix build with

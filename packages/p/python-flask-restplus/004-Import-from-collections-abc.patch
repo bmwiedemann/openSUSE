@@ -1,0 +1,35 @@
+Index: flask-restplus-0.13.0/flask_restplus/model.py
+===================================================================
+--- flask-restplus-0.13.0.orig/flask_restplus/model.py
++++ flask-restplus-0.13.0/flask_restplus/model.py
+@@ -5,7 +5,12 @@ import copy
+ import re
+ import warnings
+ 
+-from collections import OrderedDict, MutableMapping
++from collections import OrderedDict
++try:
++    from collections.abc import MutableMapping
++except ImportError:
++    # For Python 2.7
++    from collections import MutableMapping
+ from six import iteritems, itervalues
+ from werkzeug.utils import cached_property
+ 
+Index: flask-restplus-0.13.0/flask_restplus/schemas/__init__.py
+===================================================================
+--- flask-restplus-0.13.0.orig/flask_restplus/schemas/__init__.py
++++ flask-restplus-0.13.0/flask_restplus/schemas/__init__.py
+@@ -11,7 +11,11 @@ import io
+ import json
+ import pkg_resources
+ 
+-from collections import Mapping
++try:
++    from collections.abc import Mapping
++except ImportError:
++    # For Python 2.7
++    from collections import Mapping
+ 
+ from jsonschema import Draft4Validator
+ 
