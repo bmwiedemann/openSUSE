@@ -1,7 +1,7 @@
 #
 # spec file for package tig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tig
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 Summary:        An ncurses-based text-mode interface for git
 License:        GPL-2.0-or-later
