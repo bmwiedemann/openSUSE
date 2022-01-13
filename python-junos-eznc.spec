@@ -1,7 +1,7 @@
 #
 # spec file for package python-junos-eznc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -45,7 +45,6 @@ BuildRequires:  %{python_module pyserial}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scp >= 0.7.0}
-BuildRequires:  %{python_module selectors2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module transitions}
@@ -94,6 +93,7 @@ These capabilities include, but are not limited to:
 donttest="nonemptydonttestprefix"
 # https://github.com/Juniper/py-junos-eznc/issues/1109
 python39_donttest=" or test_sw_put_ftp"
+python310_donttest=" or test_sw_put_ftp"
 %pytest -m "not functional" --forked -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
