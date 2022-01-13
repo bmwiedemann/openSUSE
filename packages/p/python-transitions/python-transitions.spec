@@ -1,7 +1,7 @@
 #
 # spec file for package python-transitions
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytransitions/transitions
 Source:         https://files.pythonhosted.org/packages/source/t/transitions/transitions-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM transitions-fixpy310.patch -- gh#pytransitions/transitions#559
+Patch0:         transitions-fixpy310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,17 +38,17 @@ Suggests:       python-pytest
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dill}
+BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module pycodestyle}
+BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
-# pygraphviz dropped support for Python 3.6
-BuildRequires:  %{python_module graphviz if (%python-base without python36-base)}
-BuildRequires:  %{python_module pygraphviz if (%python-base without python36-base)}
 %if %{with python2}
 BuildRequires:  python2-mock
 %endif
 # png support for graphviz
 BuildRequires:  graphviz-gnome
+BuildRequires:  noto-sans-fonts
 # /SECTION
 %python_subpackages
 
@@ -55,7 +57,7 @@ The transitions package makes it convenient and relatively easy to define and
 implement FSMs (finite state machines) in python.
 
 %prep
-%setup -q -n transitions-%{version}
+%autosetup -p 1 -n transitions-%{version}
 find . -type f -exec chmod -x {} \;
 sed -i 's/\r$//' LICENSE Changelog.md README.md
 
@@ -67,7 +69,7 @@ sed -i 's/\r$//' LICENSE Changelog.md README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore tests/test_codestyle.py
+%pytest -k "not TestCodeFormat"
 
 %files %{python_files}
 %license LICENSE

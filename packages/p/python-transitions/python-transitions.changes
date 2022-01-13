@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:26:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add support for Python 3.10
+  * transitions-fixpy310.patch -- gh#pytransitions/transitions#559
+- Make sure the graphviz tests don't error out without an installed
+  font
+- Clean obsolete python36 conditionals
+
+-------------------------------------------------------------------
 Sun Oct 24 17:34:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.8.10
