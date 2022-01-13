@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 14 09:50:18 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- added python-cffi as Requires (boo#1193712)
+
+-------------------------------------------------------------------
 Thu Nov 18 14:59:52 UTC 2021 - Antoine Ginies <aginies@suse.com>
 
 - create a sub lib package

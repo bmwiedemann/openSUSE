@@ -15,23 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define major 4
-Name:       clingo
-Version:    5.5.0
-Release:    1.1
-Summary:    A grounder and solver for logic programs
-Group:      Development/Tools/Other
+Name:           clingo
+Version:        5.5.0
+Release:        1.1
+Summary:        A grounder and solver for logic programs
+Group:          Development/Tools/Other
 
-License:    MIT
-URL:        https://potassco.org/clingo/
-Source0:    https://github.com/potassco/clingo/archive/v%{version}/%{name}-%{version}.tar.gz
+License:        MIT
+URL:            https://potassco.org/clingo/
+Source0:        https://github.com/potassco/clingo/archive/v%{version}/%{name}-%{version}.tar.gz
 # Disable gcc warning no-class-memaccess, which is intended use in this case
-Patch0:     clingo.clasp-disable-class-memaccess-warning.patch
+Patch0:         clingo.clasp-disable-class-memaccess-warning.patch
 
-BuildRequires: bison
-BuildRequires: cmake
-BuildRequires: gcc-c++
-BuildRequires: re2c
+BuildRequires:  bison
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  re2c
 
 %description
 Clingo is part of the Potassco project for Answer Set Programming
@@ -41,6 +42,7 @@ such a logic program and computes answer sets representing solutions
 to the given problem.
 
 %define lib_name lib%{name}
+
 %package        -n %{lib_name}%{major}
 Summary:        Libraries file(s) for %{name}
 Group:          Development/Libraries/C and C++
@@ -51,8 +53,8 @@ Clingo is part of the Potassco project for Answer Set Programming
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
 Requires:       %{lib_name}%{major} = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -72,14 +74,17 @@ binaries are available at: http://potassco.org/
 %package -n python3-%{name}
 Summary:        Python 3 bindings for Clingo
 Requires:       %{name} = %{version}-%{release}
-BuildRequires:  python3, python3-devel
-BuildRequires: make
+Requires:       %{python_module cffi}
+BuildRequires:  %{python_module cffi}
+BuildRequires:  make
+BuildRequires:  python3
+BuildRequires:  python3-devel
 
 %description -n python3-%{name}
 This module provides functions and classes to work with ground terms and to
 control the instantiation process. In clingo builts, additional functions to
 control and inspect the solving process are available.
- 
+
 Functions defined in a python script block are callable during the
 instantiation process using @-syntax. The default grounding/solving process can
 be customized if a main function is provided.
