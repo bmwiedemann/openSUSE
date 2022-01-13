@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 13 17:59:26 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642074968.043eb0fc:
+  * Fix `consoles::VNC::new does not exist! at t/27-consoles-vnc_base.t`
+  * Prevent use of external facing API in consoles as well
+  * Prevent the use of external facing API commands in backend
+  * doc: Use consistent spelling 'hostname'
+  * doc: Document ZVM backend variables
+  * doc: Document HMC backend variables
+  * t: Add missing coverage for consoles::serial_screen
+  * t: Simplify file read/write with Mojo::File in 99-full-stack.t
+  * t: Add test for consoles::VNC
+  * t: Add consoles::vnc_base unit test
+  * t: Remove unnecessary method import in 03-testapi.t
+
+-------------------------------------------------------------------
 Sun Jan 09 02:22:09 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1641552142.fa5fd35d:

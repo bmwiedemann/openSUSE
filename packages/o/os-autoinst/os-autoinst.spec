@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1641552142.fa5fd35d
+Version:        4.6.1642074968.043eb0fc
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -202,6 +202,9 @@ export CI=1
 # account for sporadic slowness in build environments
 # https://progress.opensuse.org/issues/89059
 export OPENQA_TEST_TIMEOUT_SCALE_CI=20
+# Enable verbose test output as we can not store test artifacts within package
+# build environments in case of needing to investigate failures
+export PROVE_ARGS="--timer -v"
 cd %{__builddir}
 %cmake_build check-pkg-build
 
