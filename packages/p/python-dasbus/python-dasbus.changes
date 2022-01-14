@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  7 16:32:06 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
+
+- Add python-rpm-macros to BuildRequires.
+
+-------------------------------------------------------------------
 Tue Jun  8 13:13:14 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to dasbus-1.6
