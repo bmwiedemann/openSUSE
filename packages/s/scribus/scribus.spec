@@ -30,7 +30,10 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Use-new-hb-subset-api-with-harfbuzz-2.9.0-in-order-t.patch
+# PATCH-FIX-UPSTREAM
 Patch2:         0002-16635-Replace-hb_subset-removed-in-harfbuzz-3.0-by-h.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-16697-Avoid-modifying-container-while-iterating-it.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -114,6 +117,7 @@ cmake .. \
   -DWANT_DISTROBUILD=1 \
   -DWANT_HUNSPELL=1 \
   -DWANT_GRAPHICSMAGICK=1 \
+  -DWANT_CPP17=ON \
 %if "%{_lib}" == "lib64"
   -DWANT_LIB64=1
 %endif

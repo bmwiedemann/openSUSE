@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 13 10:47:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix potential crash on startup:
+  * 0001-16697-Avoid-modifying-container-while-iterating-it.patch
+
+-------------------------------------------------------------------
+Thu Jan 13 09:27:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass WANT_CPP17=ON to cmake, fix build with poppler 22.01.0 and
+  newer.
+
+-------------------------------------------------------------------
 Fri Sep 24 09:13:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix build with harfbuzz 3.0.0:
