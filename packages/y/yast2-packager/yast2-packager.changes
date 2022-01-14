@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 11:52:12 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Simplify slide show to support future parallel installations
+  (jsc#SLE-20437)
+- 4.4.19
+
+-------------------------------------------------------------------
 Fri Dec 10 19:37:52 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt iso handling to do properly double escaping ( fix for wrong

@@ -3112,4 +3112,12 @@
     <comment>submit new version 4.4.18</comment>
     <requestid>940418</requestid>
   </revision>
+  <revision rev="418" vrev="1">
+    <srcmd5>a2bcb30fc760e7b4bfc7296e5cac6fed</srcmd5>
+    <version>4.4.19</version>
+    <time>1642198378</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.19</comment>
+    <requestid>946231</requestid>
+  </revision>
 </revisionlist>
