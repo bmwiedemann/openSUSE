@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:16:47 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.9:
+  * resources: don't break tray icon checkboxes via CSS
+  * chore: add `tzdata` to the alpine builder
+  * fix(util): make waybar_time formatter compatible with fmt 8.1.0
+  * chore: bump supported fmt ver to 7.0.0
+  * fix: match sway workspace order with sway one
+  * fix: Missing tasks
+  * Add `fixed-center` option
+  * add to network module - signalStrengthApp shows what applications can run at current signal strength
+  * change frequency to GHz
+  * change signal strength to penalize overly strong signals
+  * man: Add waybar-inhibitor man page
+  * Add logind feature, with its 'inhibitor' module
+  * bar: Fix crash when unplugging HDMI
+  * Adjust max wifi strength that is possible
+  * Allow sink in addition to source for pulse icon
+  * feat(bar): allow customization of bar modes
+  * fix(swaybar-ipc): avoid unnecessary copy of struct swaybar_config
+  * mediaplayer.py: Exit properly on SIGPIPE
+  * Checking if emoji byte doesn't get out of bounds
+  * Add {flag} format replacement
+  * fix(bar): handle ipc connection errors.
+  * Fix sort
+  * fix(swaybar-ipc): better logs
+  * doc: document swaybar ipc options, `ipc` and `id`
+  * river/tags: Add possibility for mouse clicks
+  * Ensure MPD volume is not negative
+  * Fix divide by zero (#1303)
+  * Fix Clock crash on empty string in timezones field
+  * sway/window: include floating_nodes when considering window count for class
+  * fix(tray): fix visibility of Passive items
+  * Update catch2 dependency 2.13.3 -> 2.13.7
+  * Add cpu usage for every core
+  * sway/language: remove tabs, indent with 2 spaces
+  * Revert "Add CPU usage for every core"
+  * fixed wrong dependency for make target
+  * Add CPU usage for every core
+  * fix(config): preserve explicit null when merging objects
+  * added support for the {gwaddr} variable
+  * round brightness
+  * Only use g_memdup2 for glib >= 2.68
+  * Switch network module to read /proc/net/dev
+  * Fix memory leak and data race
+  * Fix tray icon scaling on multi-display setups
+  * Fix leak
+  * Add shortDescription
+  * feat(swaybar-ipc): handle visibility_by_modifier update
+  * feat(swaybar-ipc): handle mode update
+  * feat(swaybar-ipc): add swaybar IPC client
+  * feat(client): store bar_id argument
+  * feat(bar): attach CSS class `mode-{mode}` to window when setting mode
+  * feat(bar): use "default" mode to store global options
+  * feat(bar): store modes as a map of presets
+  * feat(bar): support swaybar `mode` for configuring window
+  * test(util): add tests for SafeSignal
+  * feat(util): optimize SafeSignal for events from the main thread
+  * fix(util): avoid creating temporary functor for each event
+  * feat(util): SafeSignal class for cross-thread signals with arguments
+  * Fix docs typos Add removing buttons Adjust handling multiple outputs.
+  * Add docs and adjust sorting
+  * Finish base implementation
+  * Add formatting and states handling
+  * Add base name representation
+  * disk: make used calculation match df(1) output
+
+-------------------------------------------------------------------
 Wed Dec  8 16:59:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Declare g++ >= 8 is needed for building.
