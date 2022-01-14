@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Jan 14 21:16:05 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Amended issues @dimstar requested
+  * dropped systemd install-time dependency
+  * joycond-autoload now depends on joycond
+
+-------------------------------------------------------------------
+Fri Jan 14 18:51:38 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Removed buildtime service runs
+- Restructured install-time dependencies
+
+-------------------------------------------------------------------
+Fri Jan 14 18:48:11 UTC 2022 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.1.0+git.51~f9a6691:
+  * Add Fedora install instructions
+  * include virt pro controller in android builds
+  * added man page
+  * support updated hid-nintendo led names
+  * udev: finally actually remove uaccess from procon
+  * udev: prevent steam from using pro controller hidraw
+  * update readme to include new virtual procon support
+  * add support for virtual uinput pro controllers
+  * Remap digital DPAD buttons to HAT inputs for Android
+  * Add SNES controller support.
+
+-------------------------------------------------------------------
+Fri Aug 13 21:06:46 UTC 2021 - Florian "sp1rit" <sp1ritCS@protonmail.com>
+
+- Initial packaging

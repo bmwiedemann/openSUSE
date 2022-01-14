@@ -1,0 +1,20 @@
+<package name="joycond" project="openSUSE:Factory">
+  <title>Userspace daemon to combine joy-cons from hid-nintendo</title>
+  <description>joycond is a linux daemon which uses the evdev devices provided by hid-nintendo (formerly known as hid-joycon) to implement joycon pairing.
+
+---
+
+When a joy-con or pro controller is connected via bluetooth or USB, the player LEDs should start blinking periodically. This signals that the controller is in pairing mode.
+
+For the pro controller, pressing both triggers will &quot;pair&quot; it.
+
+With the joy-cons, to use a single contoller alone, hold ZL and L at the same time (ZR and R for the right joy-con). Alternatively, hold both S triggers at once.
+
+To combine two joy-cons into a virtual input device, press a single trigger on both of them at the same time. A new uinput device will be created called &quot;Nintendo Switch Combined Joy-Cons&quot;.
+
+Rumble support is now functional for the combined joy-con uinput device.
+
+</description>
+  <devel project="hardware" package="joycond"/>
+  <url>https://github.com/DanielOgorchock/joycond</url>
+</package>
