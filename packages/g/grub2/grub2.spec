@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ BuildRequires:  %{pythons}
 BuildRequires:  python
 %endif
 BuildRequires:  xz-devel
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 ppc ppc64 ppc64le
 %if 0%{?suse_version} >= 1230 || 0%{?suse_version} == 1110
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  pesign-obs-integration
@@ -76,6 +76,7 @@ BuildRequires:  update-bootloader-rpm-macros
 %ifarch ppc ppc64 ppc64le
 %define grubcpu powerpc
 %define platform ieee1275
+%define brp_pesign_reservation 65536
 # emu does not build here yet... :-(
 %define emu 0
 %endif
@@ -328,6 +329,30 @@ Patch809:       0009-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
 Patch810:       0010-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
 Patch811:       0011-Also-define-GRUB_EFI_MAX_ALLOCATION_ADDRESS-for-RISC.patch
 Patch812:       0001-grub-mkconfig-restore-umask-for-grub.cfg.patch
+Patch813:       0001-ieee1275-Drop-HEAP_MAX_ADDR-and-HEAP_MIN_SIZE-consta.patch
+Patch814:       0002-ieee1275-claim-more-memory.patch
+Patch815:       0003-ieee1275-request-memory-with-ibm-client-architecture.patch
+Patch816:       0004-Add-suport-for-signing-grub-with-an-appended-signatu.patch
+Patch817:       0005-docs-grub-Document-signing-grub-under-UEFI.patch
+Patch818:       0006-docs-grub-Document-signing-grub-with-an-appended-sig.patch
+Patch819:       0007-dl-provide-a-fake-grub_dl_set_persistent-for-the-emu.patch
+Patch820:       0008-pgp-factor-out-rsa_pad.patch
+Patch821:       0009-crypto-move-storage-for-grub_crypto_pk_-to-crypto.c.patch
+Patch822:       0010-posix_wrap-tweaks-in-preparation-for-libtasn1.patch
+Patch823:       0011-libtasn1-import-libtasn1-4.18.0.patch
+Patch824:       0012-libtasn1-disable-code-not-needed-in-grub.patch
+Patch825:       0013-libtasn1-changes-for-grub-compatibility.patch
+Patch826:       0014-libtasn1-compile-into-asn1-module.patch
+Patch827:       0015-test_asn1-test-module-for-libtasn1.patch
+Patch828:       0016-grub-install-support-embedding-x509-certificates.patch
+Patch829:       0017-appended-signatures-import-GNUTLS-s-ASN.1-descriptio.patch
+Patch830:       0018-appended-signatures-parse-PKCS-7-signedData-and-X.50.patch
+Patch831:       0019-appended-signatures-support-verifying-appended-signa.patch
+Patch832:       0020-appended-signatures-verification-tests.patch
+Patch833:       0021-appended-signatures-documentation.patch
+Patch834:       0022-ieee1275-enter-lockdown-based-on-ibm-secure-boot.patch
+Patch835:       0023-x509-allow-Digitial-Signature-plus-other-Key-Usages.patch
+Patch836:       0001-grub-install-Add-SUSE-signed-image-support-for-power.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -353,8 +378,6 @@ Requires:       s390-tools
 %ifarch ppc64 ppc64le
 Requires:       powerpc-utils
 %endif
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?only_x86_64:1}
 ExclusiveArch:  x86_64
@@ -591,6 +614,33 @@ make %{?_smp_mflags}
 cd ..
 %endif
 
+FS_MODULES="btrfs ext2 xfs jfs reiserfs"
+CD_MODULES="all_video boot cat configfile echo true \
+		font gfxmenu gfxterm gzio halt iso9660 \
+		jpeg minicmd normal part_apple part_msdos part_gpt \
+		password password_pbkdf2 png reboot search search_fs_uuid \
+		search_fs_file search_label sleep test video fat loadenv"
+PXE_MODULES="tftp http"
+CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
+%ifarch %{efi}
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet"
+PXE_MODULES="${PXE_MODULES} efinet"
+%else
+CD_MODULES="${CD_MODULES} net"
+PXE_MODULES="${PXE_MODULES} net"
+%endif
+
+%ifarch x86_64
+CD_MODULES="${CD_MODULES} linuxefi"
+%else
+CD_MODULES="${CD_MODULES} linux"
+%endif
+
+GRUB_MODULES="${CD_MODULES} ${FS_MODULES} ${PXE_MODULES} ${CRYPTO_MODULES} mdraid09 mdraid1x lvm serial"
+%ifarch ppc ppc64 ppc64le
+GRUB_MODULES="${GRUB_MODULES} appendedsig memdisk tar regexp"
+%endif
+
 %ifarch %{efi}
 cd build-efi
 ../configure   				                \
@@ -602,23 +652,6 @@ cd build-efi
         --with-platform=efi                             \
         --program-transform-name=s,grub,%{name},
 make %{?_smp_mflags}
-
-#TODO: add efifwsetup module
-
-FS_MODULES="btrfs ext2 xfs jfs reiserfs"
-CD_MODULES=" all_video boot cat chain configfile echo true \
-		efifwsetup efinet font gfxmenu gfxterm gzio halt iso9660 \
-		jpeg minicmd normal part_apple part_msdos part_gpt \
-		password password_pbkdf2 png reboot search search_fs_uuid \
-		search_fs_file search_label sleep test video fat loadenv"
-PXE_MODULES="efinet tftp http"
-CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
-
-%ifarch x86_64
-CD_MODULES="${CD_MODULES} linuxefi"
-%else
-CD_MODULES="${CD_MODULES} linux"
-%endif
 
 # SBAT metadata
 %if 0%{?is_opensuse} == 1
@@ -634,7 +667,6 @@ echo "sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.m
 echo "grub,${upstream_sbat},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
 echo "grub.${distro_id},${distro_sbat},${distro_name},%{name},%{version},mail:security-team@suse.de" >> sbat.csv
 
-GRUB_MODULES="${CD_MODULES} ${FS_MODULES} ${PXE_MODULES} ${CRYPTO_MODULES} mdraid09 mdraid1x lvm serial"
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= --sbat sbat.csv \
 		-d grub-core ${GRUB_MODULES}
 %ifarch x86_64
@@ -695,6 +727,67 @@ TLFLAGS="-static"
 	%{arch_specific}                \
         --program-transform-name=s,grub,%{name},
 make %{?_smp_mflags}
+
+if [ "%{platform}" = "ieee1275" ]; then
+        cert="%{_sourcedir}/_projectcert.crt"
+        openssl x509 -in "$cert" -outform DER -out grub.der
+        cat > %{platform}-config <<'EOF'
+set root=memdisk
+set prefix=($root)/
+echo "earlycfg: root=$root prefix=$prefix"
+EOF
+        cat > ./grub.cfg <<'EOF'
+
+regexp --set 1:bdev --set 2:bpart --set 3:bpath '\(([^,]+)(,?.*)?\)(.*)' "$cmdpath"
+
+echo "bdev=$bdev"
+echo "bpart=$bpart"
+echo "bpath=$bpath"
+
+if [ "$bdev" -a "$bpart" -a "$bpath" ]; then
+  hints="--hint $bdev$bpart"
+  cfg_dir="$bpath"
+elif [ "$bdev" -a "$bpart" ]; then
+  hints="--hint $bdev$bpart"
+  cfg_dir="/boot/grub2 /grub2"
+elif [ "$bdev" ]; then
+  hints="--hint ${bdev},"
+  cfg_dir="/boot/grub2 /grub2"
+else
+  hints=""
+  cfg_dir="/boot/grub2 /grub2"
+fi
+
+set prefix=""
+set root=""
+set cfg="grub.cfg"
+for d in ${cfg_dir}; do
+  set btrfs_relative_path=1
+  echo "start searching for $d/${cfg} with $hints"
+  if search --file --set=root "${d}/${cfg}" $hints; then
+    echo "${d}/${cfg} is on $root"
+    set btrfs_relative_path=0
+    if [ -f /@"${d}"/powerpc-ieee1275/command.lst ]; then
+      set btrfs_relative_path=1
+      echo "mounting subvolume @${d}/powerpc-ieee1275 on ${d}/powerpc-ieee1275"
+      btrfs-mount-subvol ($root) "${d}"/powerpc-ieee1275 @"${d}"/powerpc-ieee1275
+    fi
+    set btrfs_relative_path=1
+    set prefix="($root)${d}"
+    break
+  fi
+done
+echo "prefix=$prefix root=$root"
+if [ -n "$prefix" ]; then
+  source "${prefix}/${cfg}"
+fi
+EOF
+        %{__tar} cvf memdisk.tar ./grub.cfg
+        ./grub-mkimage -O %{grubarch} -o grub.elf -d grub-core -x grub.der -m memdisk.tar \
+            -c %{platform}-config --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
+        ls -l "grub.elf"
+        truncate -s -%brp_pesign_reservation "grub.elf"
+fi
 %endif
 cd ..
 %endif
@@ -757,6 +850,12 @@ cd ..
 %if ! 0%{?only_efi:1}
 cd build
 %make_install
+if [ "%{platform}" = "ieee1275" ]; then
+        export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubarch}/grub.elf"
+        export BRP_PESIGN_GRUB_RESERVATION=%brp_pesign_reservation
+        install -m 444 grub.der %{buildroot}%{_datadir}/%{name}/%{grubarch}/
+        install -m 644 grub.elf %{buildroot}%{_datadir}/%{name}/%{grubarch}/
+fi
 cd ..
 %endif
 
@@ -1132,6 +1231,8 @@ fi
 %ifarch ppc ppc64 ppc64le
 # This is intentionally "grub.chrp" and not "%%{name}.chrp"
 %{_datadir}/%{name}/%{grubarch}/grub.chrp
+%{_datadir}/%{name}/%{grubarch}/grub.elf
+%{_datadir}/%{name}/%{grubarch}/grub.der
 %{_datadir}/%{name}/%{grubarch}/bootinfo.txt
 %endif
 %ifnarch ppc ppc64 ppc64le s390x %{arm}

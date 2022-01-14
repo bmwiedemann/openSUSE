@@ -10,6 +10,7 @@ GRUB_EDITENV="/usr/bin/grub2-editenv"
 GRUB_CONF="/boot/grub2/grub.cfg"
 GRUB_SETUP=
 BLKID="/usr/sbin/blkid"
+LSBLK="/usr/bin/lsblk"
 ARCH=`uname -m`
 VMLINUZ="vmlinuz"
 case $ARCH in
@@ -29,6 +30,15 @@ check-system()
 	[ -x "${GRUB_EDITENV}" ] || error_quit "ERROR: cannot find or execute ${GRUB_EDITENV}"
 	[ -x "${BLKID}" ] || error_quit "ERROR: cannot find or execute ${BLKID}"
 	[ -r "${GRUB_CONF}" ] || error_quit "ERROR: cannot find or read ${GRUB_CONF}"
+}
+
+compare-fsuuid()
+{
+	local uuids=($($LSBLK -n -o UUID $1 $2 2>/dev/null))
+	if [ ${#uuids[@]} -eq 2 ] && [ "${uuids[0]}" = "${uuids[1]}" ]; then
+		return 0
+	fi
+	return 1
 }
 
 #####################################################################
@@ -87,9 +97,13 @@ get-kernels()
 		fi
 
 		if [ "$(stat -Lc '%t:%T' $ROOT || true)" != "$(stat -Lc '%t:%T' $ROOTDEV || true)" ]; then
-			echo "  Skipping ${MENU_ENTRIES[$I]}, because its root= parameter ($ROOT)" >&2
-			echo "    does not match the current root device ($ROOTDEV)." >&2
-			continue
+			if compare-fsuuid "$ROOT" "$ROOTDEV" ; then
+				echo "  $ROOTDEV and $ROOT have the same filesystem UUID"
+			else
+				echo "  Skipping ${MENU_ENTRIES[$I]}, because its root= parameter ($ROOT)" >&2
+				echo "    does not match the current root device ($ROOTDEV)." >&2
+				continue
+			fi
 		fi
 
 		DUMMY=($LINE) # kernel (hd0,1)/boot/vmlinuz-ABC root=/dev/hda2

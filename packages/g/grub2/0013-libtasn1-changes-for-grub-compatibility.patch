@@ -1,0 +1,212 @@
+From f05ba09c9adea447d3ca837c73498b9619306180 Mon Sep 17 00:00:00 2001
+From: Daniel Axtens <dja@axtens.net>
+Date: Fri, 1 May 2020 20:44:29 +1000
+Subject: [PATCH 13/23] libtasn1: changes for grub compatibility
+
+Do a few things to make libtasn1 compile as part of grub:
+
+ - redefine _asn1_strcat. grub removed strcat so replace it with the
+   appropriate calls to memcpy and strlen. Use this internally where
+   strcat was used.
+
+ - replace c_isdigit with grub_isdigit (and don't import c-ctype from
+   gnulib) grub_isdigit provides the same functionality as c_isdigit: it
+   determines if the input is an ASCII digit without regard for locale.
+
+ - replace GL_ATTRIBUTE_PURE with __attribute__((pure)) which been
+   supported since gcc-2.96. This avoids messing around with gnulib.
+
+ - adjust libtasn1.h: drop the ASN1_API logic, it's not needed for our
+   modules. Unconditionally support const and pure attributes and adjust
+   header paths.
+
+ - adjust header paths to "grub/libtasn1.h".
+
+ - replace a 64 bit division with a call to grub_divmod64, preventing
+   creation of __udivdi3 calls on 32 bit platforms.
+
+Signed-off-by: Daniel Axtens <dja@axtens.net>
+
+---
+
+v2: Clean up strcat handling, thanks Stefan Berger.
+---
+ grub-core/lib/libtasn1/lib/decoding.c   | 11 +++++-----
+ grub-core/lib/libtasn1/lib/element.c    |  3 ++-
+ grub-core/lib/libtasn1/lib/gstr.c       |  4 ++--
+ grub-core/lib/libtasn1/lib/int.h        |  4 ++--
+ grub-core/lib/libtasn1/lib/parser_aux.c |  7 +++---
+ include/grub/libtasn1.h                 | 29 +++++++------------------
+ 6 files changed, 24 insertions(+), 34 deletions(-)
+
+diff --git a/grub-core/lib/libtasn1/lib/decoding.c b/grub-core/lib/libtasn1/lib/decoding.c
+index b8130b956..beeb6a176 100644
+--- a/grub-core/lib/libtasn1/lib/decoding.c
++++ b/grub-core/lib/libtasn1/lib/decoding.c
+@@ -32,7 +32,8 @@
+ #include <element.h>
+ #include <limits.h>
+ #include <intprops.h>
+-#include "c-ctype.h"
++
++#define c_isdigit grub_isdigit
+ 
+ #ifdef DEBUG
+ # define warn() fprintf(stderr, "%s: %d\n", __func__, __LINE__)
+@@ -2016,8 +2017,8 @@ asn1_expand_octet_string (asn1_node_const definitions, asn1_node * element,
+ 	  (p2->type & CONST_ASSIGN))
+ 	{
+ 	  strcpy (name, definitions->name);
+-	  strcat (name, ".");
+-	  strcat (name, p2->name);
++	  _asn1_strcat (name, ".");
++	  _asn1_strcat (name, p2->name);
+ 
+ 	  len = sizeof (value);
+ 	  result = asn1_read_value (definitions, name, value, &len);
+@@ -2034,8 +2035,8 @@ asn1_expand_octet_string (asn1_node_const definitions, asn1_node * element,
+ 	      if (p2)
+ 		{
+ 		  strcpy (name, definitions->name);
+-		  strcat (name, ".");
+-		  strcat (name, p2->name);
++		  _asn1_strcat (name, ".");
++		  _asn1_strcat (name, p2->name);
+ 
+ 		  result = asn1_create_element (definitions, name, &aux);
+ 		  if (result == ASN1_SUCCESS)
+diff --git a/grub-core/lib/libtasn1/lib/element.c b/grub-core/lib/libtasn1/lib/element.c
+index 8cd6b662c..150b9b377 100644
+--- a/grub-core/lib/libtasn1/lib/element.c
++++ b/grub-core/lib/libtasn1/lib/element.c
+@@ -30,9 +30,10 @@
+ #include "parser_aux.h"
+ #include <gstr.h>
+ #include "structure.h"
+-#include "c-ctype.h"
+ #include "element.h"
+ 
++#define c_isdigit grub_isdigit
++
+ void
+ _asn1_hierarchical_name (asn1_node_const node, char *name, int name_size)
+ {
+diff --git a/grub-core/lib/libtasn1/lib/gstr.c b/grub-core/lib/libtasn1/lib/gstr.c
+index 1475ed51b..b729089db 100644
+--- a/grub-core/lib/libtasn1/lib/gstr.c
++++ b/grub-core/lib/libtasn1/lib/gstr.c
+@@ -36,13 +36,13 @@ _asn1_str_cat (char *dest, size_t dest_tot_size, const char *src)
+ 
+   if (dest_tot_size - dest_size > str_size)
+     {
+-      strcat (dest, src);
++      _asn1_strcat (dest, src);
+     }
+   else
+     {
+       if (dest_tot_size > dest_size)
+ 	{
+-	  strncat (dest, src, (dest_tot_size - dest_size) - 1);
++	  memcpy (dest + dest_size, src, (dest_tot_size - dest_size) - 1);
+ 	  dest[dest_tot_size - 1] = 0;
+ 	}
+     }
+diff --git a/grub-core/lib/libtasn1/lib/int.h b/grub-core/lib/libtasn1/lib/int.h
+index 404cd1562..edfe84a0e 100644
+--- a/grub-core/lib/libtasn1/lib/int.h
++++ b/grub-core/lib/libtasn1/lib/int.h
+@@ -35,7 +35,7 @@
+ #  include <sys/types.h>
+ # endif
+ 
+-# include <libtasn1.h>
++# include "grub/libtasn1.h"
+ 
+ # define ASN1_SMALL_VALUE_SIZE 16
+ 
+@@ -115,7 +115,7 @@ extern const tag_and_class_st _asn1_tags[];
+ # define _asn1_strtoul(n,e,b) strtoul((const char *) n, e, b)
+ # define _asn1_strcmp(a,b) strcmp((const char *)a, (const char *)b)
+ # define _asn1_strcpy(a,b) strcpy((char *)a, (const char *)b)
+-# define _asn1_strcat(a,b) strcat((char *)a, (const char *)b)
++# define _asn1_strcat(a,b) memcpy((char *)a + strlen((const char *)a), (const char *)b, strlen((const char *)b) + 1)
+ 
+ # if SIZEOF_UNSIGNED_LONG_INT == 8
+ #  define _asn1_strtou64(n,e,b) strtoul((const char *) n, e, b)
+diff --git a/grub-core/lib/libtasn1/lib/parser_aux.c b/grub-core/lib/libtasn1/lib/parser_aux.c
+index c99c5a4cb..a933f03ed 100644
+--- a/grub-core/lib/libtasn1/lib/parser_aux.c
++++ b/grub-core/lib/libtasn1/lib/parser_aux.c
+@@ -26,7 +26,8 @@
+ #include "gstr.h"
+ #include "structure.h"
+ #include "element.h"
+-#include "c-ctype.h"
++
++#define c_isdigit grub_isdigit
+ 
+ char _asn1_identifierMissing[ASN1_MAX_NAME_SIZE + 1];	/* identifier name not found */
+ 
+@@ -40,7 +41,7 @@ char _asn1_identifierMissing[ASN1_MAX_NAME_SIZE + 1];	/* identifier name not fou
+ #ifdef __clang__
+ __attribute__((no_sanitize ("integer")))
+ #endif
+-     _GL_ATTRIBUTE_PURE static unsigned int _asn1_hash_name (const char *x)
++     __attribute__((__pure__)) static unsigned int _asn1_hash_name (const char *x)
+ {
+   const unsigned char *s = (unsigned char *) x;
+   unsigned h = 0;
+@@ -632,7 +633,7 @@ _asn1_ltostr (int64_t v, char str[LTOSTR_MAX_SIZE])
+   count = 0;
+   do
+     {
+-      d = val / 10;
++      d = grub_divmod64(val, 10, NULL);
+       r = val - d * 10;
+       temp[start + count] = '0' + (char) r;
+       count++;
+diff --git a/include/grub/libtasn1.h b/include/grub/libtasn1.h
+index 0c3a44881..2ea058a3b 100644
+--- a/include/grub/libtasn1.h
++++ b/include/grub/libtasn1.h
+@@ -34,29 +34,16 @@
+ #ifndef LIBTASN1_H
+ # define LIBTASN1_H
+ 
+-# ifndef ASN1_API
+-#  if defined ASN1_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+-#   define ASN1_API __attribute__((__visibility__("default")))
+-#  elif defined ASN1_BUILDING && defined _MSC_VER && ! defined ASN1_STATIC
+-#   define ASN1_API __declspec(dllexport)
+-#  elif defined _MSC_VER && ! defined ASN1_STATIC
+-#   define ASN1_API __declspec(dllimport)
+-#  else
+-#   define ASN1_API
+-#  endif
+-# endif
++/* grub: ASN1_API is not used */
++# define ASN1_API
++
++/* grub: all our supported compilers support these attributes */
++# define __LIBTASN1_CONST__  __attribute__((const))
++# define __LIBTASN1_PURE__  __attribute__((pure))
+ 
+-# ifdef __GNUC__
+-#  define __LIBTASN1_CONST__  __attribute__((const))
+-#  define __LIBTASN1_PURE__  __attribute__((pure))
+-# else
+-#  define __LIBTASN1_CONST__
+-#  define __LIBTASN1_PURE__
+-# endif
+ 
+-# include <sys/types.h>
+-# include <time.h>
+-# include <stdio.h>		/* for FILE* */
++# include <grub/types.h>
++# include <grub/time.h>
+ 
+ # ifdef __cplusplus
+ extern "C"
+-- 
+2.31.1
+

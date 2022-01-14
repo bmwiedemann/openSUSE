@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jan 14 08:39:36 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Power guest secure boot with static keys: GRUB2 signing portion
+  (jsc#SLE-18271) (bsc#1192764)
+  * 0001-grub-install-Add-SUSE-signed-image-support-for-power.patch
+
+-------------------------------------------------------------------
+Tue Jan 11 03:49:15 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Power guest secure boot with static keys: GRUB2 signing portion
+  (jsc#SLE-18271) (bsc#1192764)
+  * grub2.spec
+- Power guest secure boot with static keys: GRUB2 portion (jsc#SLE-18144)
+  (bsc#1192686)
+  * 0001-ieee1275-Drop-HEAP_MAX_ADDR-and-HEAP_MIN_SIZE-consta.patch
+  * 0002-ieee1275-claim-more-memory.patch
+  * 0003-ieee1275-request-memory-with-ibm-client-architecture.patch
+  * 0004-Add-suport-for-signing-grub-with-an-appended-signatu.patch
+  * 0005-docs-grub-Document-signing-grub-under-UEFI.patch
+  * 0006-docs-grub-Document-signing-grub-with-an-appended-sig.patch
+  * 0007-dl-provide-a-fake-grub_dl_set_persistent-for-the-emu.patch
+  * 0008-pgp-factor-out-rsa_pad.patch
+  * 0009-crypto-move-storage-for-grub_crypto_pk_-to-crypto.c.patch
+  * 0010-posix_wrap-tweaks-in-preparation-for-libtasn1.patch
+  * 0011-libtasn1-import-libtasn1-4.18.0.patch
+  * 0012-libtasn1-disable-code-not-needed-in-grub.patch
+  * 0013-libtasn1-changes-for-grub-compatibility.patch
+  * 0014-libtasn1-compile-into-asn1-module.patch
+  * 0015-test_asn1-test-module-for-libtasn1.patch
+  * 0016-grub-install-support-embedding-x509-certificates.patch
+  * 0017-appended-signatures-import-GNUTLS-s-ASN.1-descriptio.patch
+  * 0018-appended-signatures-parse-PKCS-7-signedData-and-X.50.patch
+  * 0019-appended-signatures-support-verifying-appended-signa.patch
+  * 0020-appended-signatures-verification-tests.patch
+  * 0021-appended-signatures-documentation.patch
+  * 0022-ieee1275-enter-lockdown-based-on-ibm-secure-boot.patch
+  * 0023-x509-allow-Digitial-Signature-plus-other-Key-Usages.patch
+
+-------------------------------------------------------------------
+Mon Jan 10 09:38:46 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix no menuentry is found if hibernation on btrfs RAID1 (bsc#1193090)
+  * grub2-systemd-sleep-plugin
+
+-------------------------------------------------------------------
 Tue Dec 21 03:03:47 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix CVE-2021-3981 (bsc#1189644)
