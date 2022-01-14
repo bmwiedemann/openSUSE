@@ -25,4 +25,12 @@
 </comment>
     <requestid>892427</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>523ded50d9fdeefde76bee9fd61e5da9</srcmd5>
+    <version>0.24</version>
+    <time>1642198394</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with newer auto</comment>
+    <requestid>946335</requestid>
+  </revision>
 </revisionlist>

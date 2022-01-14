@@ -1,7 +1,7 @@
 #
 # spec file for package truth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,11 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.auto.value:auto-value)
+BuildRequires:  mvn(com.google.auto.value:auto-value-annotations)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-io)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
@@ -53,6 +54,7 @@ This package contains the API documentation for %{name}.
 %pom_remove_plugin :gwt-maven-plugin core
 %pom_remove_dep :gwt-user core
 %pom_remove_dep :guava-gwt core
+%pom_add_dep com.google.auto.value:auto-value-annotations:1.6 core
 %pom_xpath_inject "pom:build/pom:plugins/pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration" "
           <testExcludes>
             <exclude>**/gwt/*.java</exclude>
