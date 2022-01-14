@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
+
+-------------------------------------------------------------------
 Mon Oct  4 07:23:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

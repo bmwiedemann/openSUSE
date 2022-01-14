@@ -130,7 +130,7 @@ echo "%"%{admin_group}"  ALL = (%{runas_user}) NOPASSWD:/usr/sbin/fetchnews" \
     > %{buildroot}%{_sysconfdir}/sudoers.d/leafnode
 
 %pre
-%service_add_pre leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
+%service_add_pre leafnode.service leafnode.socket leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 # create daemon group, if not existing
 getent group %{runas_group} >/dev/null || groupadd -r %{runas_group}  2>/dev/null || :
@@ -146,13 +146,13 @@ exit 0
 
 %post
 %set_permissions %{spooldir}/leaf.node
-%service_add_post leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
+%service_add_post leafnode.service leafnode.socket leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 %preun
-%service_del_preun leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
+%service_del_preun leafnode.service leafnode.socket leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 %postun
-%service_del_postun leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
+%service_del_postun leafnode.service leafnode.socket leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
 
 %files
 %license COPYING COPYING.LGPL
