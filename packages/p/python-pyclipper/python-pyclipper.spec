@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyclipper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-pyclipper
-Version:        1.1.0.post3
+Version:        1.3.0.post2
 Release:        0
-Summary:        Cython wrapper for the Clipper library
+Summary:        Cython wrapper for the Clipper library for clipping lines and polygons
 License:        MIT
 URL:            https://github.com/fonttools/pyclipper
-Source:         https://files.pythonhosted.org/packages/source/p/pyclipper/pyclipper-%{version}.zip
-# https://github.com/fonttools/pyclipper/pull/32
-Patch0:         python-pyclipper-no-unittest2.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pyclipper/pyclipper-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-%if %{with python2}
-# Required because of otherwise missing assertWarns
-BuildRequires:  python2-unittest2
-%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -45,12 +40,15 @@ BuildRequires:  unzip
 
 %description
 Pyclipper is a Cython wrapper exposing public functions and classes of
-the C++ translation of the `Angus Johnson's Clipper library (ver.
-6.4.2) <http://www.angusj.com/delphi/clipper.php>`__.
+the C++ translation of the `Angus Johnson's Clipper library`, a library
+for clipping and offsetting lines and polygons.
+
+The Clipper library performs line & polygon clipping - intersection,
+union, difference & exclusive-or, and line & polygon offsetting. The
+library is based on Vatti's clipping algorithm.
 
 %prep
 %setup -q -n pyclipper-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -65,6 +63,7 @@ the C++ translation of the `Angus Johnson's Clipper library (ver.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pyclipper
+%{python_sitearch}/pyclipper-%{version}*-info
 
 %changelog

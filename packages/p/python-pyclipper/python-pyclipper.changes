@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 14 09:37:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Extend package description
+- Remove python2 workarounds
+
+-------------------------------------------------------------------
+Thu Jan 13 21:58:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.0post2
+  * Export pyclipper.__version__ string (#40).
+  * Removed long-deprecated SCALING_FACTOR global variable.
+- Relese 1.2.0
+  * Release the Global Interpreter Lock (GIL) while doing more CPU
+    intensive calls to ClipperLib (union, difference, intersection,
+    minkowski, offset, etc), to allow Python apps to better
+    parallelize when using threading (#29, #30).
+- Drop python-pyclipper-no-unittest2.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 16:20:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Explain necessity of unittest2 for python2
