@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 12 09:17:01 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Use NodeJS 17 as default for TW
+
+-------------------------------------------------------------------
 Mon Jun 21 05:01:32 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Allow building for Fedora in the OBS

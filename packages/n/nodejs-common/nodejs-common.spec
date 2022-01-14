@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-common
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 ###########################################################
 
 %define NODEJS_LTS      16
-%define NODEJS_CURRENT  16
+%define NODEJS_CURRENT  17
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
