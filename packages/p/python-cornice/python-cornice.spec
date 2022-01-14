@@ -1,7 +1,7 @@
 #
 # spec file for package python-cornice
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cornice
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Define Web Services in Pyramid
 License:        MPL-2.0
@@ -33,12 +33,12 @@ BuildRequires:  fdupes
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module colander >= 1.0~b1}
-BuildRequires:  %{python_module marshmallow >= 3.0.0}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{python_module marshmallow >= 3.0.0}
 BuildRequires:  %{python_module pyramid >= 1.7}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module simplejson}
 # /SECTION
 Requires:       python-pyramid >= 1.7
 Requires:       python-venusian
