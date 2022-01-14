@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 15:08:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
 Wed Dec  1 07:21:42 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install lsscsi (needed for testing)
