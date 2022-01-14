@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 11 16:35:55 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 22.01.0:
+  core:
+   * Allow local (relative to dll) fonts dir on Windows
+   * TextOutputDev: require more spacing between columns.
+     Issue #1093
+   * Fix crash in Splash::gouraudTriangleShadedFill. Issue #1183
+   * Fix crash when calling Form::reset()
+   * GfxSeparationColorSpace: Check validity of colorspace and
+     function. Issue #1184
+   * Minor code improvements
+  glib:
+   * Include glib.h before using defines from it
+   * Close file descriptors on error
+   * Plug some memory leaks
+   * Replace use of deprecated g_memdup/g_time_zone_new
+   * Remove FD-taking functions on windows
+  utils:
+   * pdfsig: Add support for documents with passwords
+   * pdfsig: Fix signing with -sign if nss password is needed
+
+-------------------------------------------------------------------
 Wed Dec 22 13:10:44 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use gcc11 when building in SLE/Leap since a Qt6 header file
@@ -245,6 +268,7 @@ Mon Jan  4 08:14:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
     - Fix potential data loss if we try to fetch a non existing Ref after modifying the document
     - Specifically use DeviceGray instead of DefaultGray for softmasks
     - Fix various issues handling broken files
+      (including bsc#1181551, glfo#poppler/poppler#1014)
 
   + utils:
     - pdftocairo: Setmode binary for windows
