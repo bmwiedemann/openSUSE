@@ -1375,4 +1375,23 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>943188</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>a7f4ba5c1024cf86d509cdc0127ec4bf</srcmd5>
+    <version>0.10.30.1641990734.bdad8f9</version>
+    <time>1642198366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.30.1641990734.bdad8f9:
+  * fixes for python2.7 compatibility
+  * fix test cases
+  * fix various linter problems with pylint 2.11.1
+  * disable consider-using-f-string in pylint
+  * added TC for _stash_pop_required
+  * assertTarIsDeeply now more verbose in case of failure
+  * remove tearDown/Trace from testenv.py
+  * fix regression to keep local changes when running in osc
+  * various fixes to make linter happy
+  * fix tests for python 2.7
+</comment>
+    <requestid>945843</requestid>
+  </revision>
 </revisionlist>
