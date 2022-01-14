@@ -3,6 +3,8 @@
 #!BuildTag: %%TAGPREFIX%%/virt-operator:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/virt-operator:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
+#!ExclusiveArch: x86_64 aarch64
+
 # virt-operator container image
 # KUBEVIRTFROM defined in prjconf, e.g.
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
