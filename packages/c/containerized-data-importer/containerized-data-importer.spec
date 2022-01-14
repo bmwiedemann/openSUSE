@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
 BuildRequires:  golang(API) = 1.17
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 Containerized-Data-Importer (CDI) is a persistent storage management add-on for Kubernetes
@@ -114,6 +114,9 @@ the CDI container images.
 # to be 'physically' placed into the proper location.
 %setup -n go/src/kubevirt.io/%{name} -c -T
 tar --strip-components=1 -xf %{S:0}
+
+# Fix aarch64 - https://github.com/kubevirt/containerized-data-importer/issues/2048
+sed -i "s#GOARCH=amd64 ##" hack/build/build-go.sh
 
 %build
 # Hackery to determine which registry path to use in cdi-operator.yaml
