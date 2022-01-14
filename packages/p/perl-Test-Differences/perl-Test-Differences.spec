@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Differences
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Differences
 Name:           perl-Test-Differences
-Version:        0.68
+Version:        0.69
 Release:        0
 #Upstream:  All Rights Reserved. You may use, distribute and modify this software under the terms of the GNU public license, any version, or the Artistic license.
 Summary:        Test strings and data structures and show differences if not ok

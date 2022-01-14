@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  8 03:08:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.69
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.69   2022-01-07
+      - Special-case Unknown::Values objects in comparisons, as it's better to spit
+        out a diagnostic failure than to just die;
+      - Correct misleading Unicode doco
+
+-------------------------------------------------------------------
 Wed May 19 03:09:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.68
