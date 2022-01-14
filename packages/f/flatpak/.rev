@@ -705,4 +705,12 @@
     <comment></comment>
     <requestid>937398</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>fdea36ebcb558d26f74f80a7f4b9357a</srcmd5>
+    <version>1.12.3</version>
+    <time>1642198373</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>945939</requestid>
+  </revision>
 </revisionlist>

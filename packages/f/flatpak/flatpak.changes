@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jan 12 20:40:35 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.12.3:
+  + CVE-2021-43860: a malicious repository could have sent invalid
+    application metadata in a way that hides some of the app
+    permissions displayed during installation (boo#1194610)
+  + flatpak-builder could allow --mirror-screenshots-url commands
+    to create directories outside of the build directory
+    (boo#1194611)
+  + Extra-data downloading now properly handles compressed
+    content-encodings which fixes checksum verification 
+  + Note: In some corner case server setups this may require the
+    extra-data checksum to be changed
+  + Avoid unnecessary policy-kit dialog due to auto-pinning when
+    installing runtimes
+  + Better handling of updates of extensions that exist in multiple
+    repositories
+  + Fixed (initial) installation apps with renamed ids
+  + Fixed regression in updates from no-enumerate remotes
+  + We now verify checksums of summary caches, to better handle
+    local file corruption
+  + Improved cli output for non-terminal targets
+  + Flatpak run --session-bus now works
+  + Fix build with PyParsing >= 3.0.4
+  + Fixed "Since" annotations on FlatpakTransaction signals
+  + bash auto completion now doesn't complete on command name
+    aliases
+  + Minor improvements to the search command
+  + Minor improvements to the list command
+  + Minor improvements to the repair command
+  + Add more tests
+  + Updated translations.
+- Drop support-new-pyparsing.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Dec  9 04:29:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-pyparsing.patch:

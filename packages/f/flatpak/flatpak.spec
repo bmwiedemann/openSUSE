@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -38,9 +38,6 @@ Group:          System/Packages
 URL:            https://flatpak.github.io/
 Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         polkit_rules_usability.patch
-# https://github.com/flatpak/flatpak/issues/4534
-# https://gitlab.gnome.org/alexl/variant-schema-compiler/-/issues/4
-Patch1:         support-new-pyparsing.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= 0.4.1
 BuildRequires:  docbook-xsl-stylesheets
