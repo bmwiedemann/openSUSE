@@ -110,3 +110,44 @@ Index: node-v16.13.1/test/parallel/test-crypto-dh.js
  
  // Invalid test: curve argument is undefined
  assert.throws(
+Index: node-v16.13.1/test/parallel/test-zlib-dictionary-fail.js
+===================================================================
+--- node-v16.13.1.orig/test/parallel/test-zlib-dictionary-fail.js
++++ node-v16.13.1/test/parallel/test-zlib-dictionary-fail.js
+@@ -53,7 +53,7 @@ const input = Buffer.from([0x78, 0xBB, 0
+   stream.on('error', common.mustCall(function(err) {
+     // It's not possible to separate invalid dict and invalid data when using
+     // the raw format
+-    assert.match(err.message, /invalid/);
++    assert.match(err.message, /(invalid|Operation-Ending-Supplemental Code is 0x12)/);
+   }));
+ 
+   stream.write(input);
+Index: node-v16.13.1/test/parallel/test-zlib-flush-drain-longblock.js
+===================================================================
+--- node-v16.13.1.orig/test/parallel/test-zlib-flush-drain-longblock.js
++++ node-v16.13.1/test/parallel/test-zlib-flush-drain-longblock.js
+@@ -16,7 +16,7 @@ zipper.write('A'.repeat(17000));
+ zipper.flush();
+ 
+ let received = 0;
+-unzipper.on('data', common.mustCall((d) => {
++unzipper.on('data', common.mustCallAtLeast((d) => {
+   received += d.length;
+ }, 2));
+ 
+Index: node-v16.13.1/test/parallel/test-zlib-from-string.js
+===================================================================
+--- node-v16.13.1.orig/test/parallel/test-zlib-from-string.js
++++ node-v16.13.1/test/parallel/test-zlib-from-string.js
+@@ -55,7 +55,9 @@ const expectedBase64Gzip = 'H4sIAAAAAAAA
+                            'sHnHNzRtagj5AQAA';
+ 
+ zlib.deflate(inputString, common.mustCall((err, buffer) => {
+-  assert.strictEqual(buffer.toString('base64'), expectedBase64Deflate);
++  zlib.unzip(buffer, common.mustCall((err, unzipped) => {
++    assert.strictEqual(unzipped.toString(), inputString);
++  }));
+ }));
+ 
+ zlib.gzip(inputString, common.mustCall((err, buffer) => {

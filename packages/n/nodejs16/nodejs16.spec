@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs16
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.13.1
+Version:        16.13.2
 Release:        0
 
 # Double DWZ memory limits
@@ -40,6 +40,9 @@ Release:        0
 %define _dwz_max_die_limit     100000000
 
 %define node_version_number 16
+
+# TBA: openssl bsc#1192489
+%bcond_with openssl_RSA_get0_pss_params
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
@@ -86,25 +89,25 @@ Release:        0
 %define _libexecdir %{_exec_prefix}/lib
 %endif
 
-%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120400
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120400 || 0%{?fedora_version} >= 35
 %bcond_with    intree_openssl
 %else
 %bcond_without intree_openssl
 %endif
 
-%if 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 35
 %bcond_with    intree_cares
 %else
 %bcond_without intree_cares
 %endif
 
-%if 0%{?suse_version} >= 1550 
+%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 35
 %bcond_with    intree_icu
 %else
 %bcond_without intree_icu
 %endif
 
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?fedora_version} >= 35
 %bcond_with    intree_nghttp2
 %else
 %bcond_without intree_nghttp2
@@ -157,11 +160,17 @@ Patch110:       legacy_python.patch
 Patch120:       flaky_test_rerun.patch
 
 Patch132:       test-skip-y2038-on-32bit-time_t.patch
+Patch133:       rsa-pss-revert.patch
 
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
+BuildRequires:  fdupes
 BuildRequires:  pkg-config
+BuildRequires:  procps
+BuildRequires:  xz
+BuildRequires:  zlib-devel
+
 %if 0%{?suse_version}
 BuildRequires:  config(netcfg)
 %endif
@@ -178,12 +187,10 @@ BuildRequires:  config(netcfg)
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
 BuildRequires:  gcc5-c++
-%define cc_exec  gcc-5
-%define cpp_exec g++-5
+%define forced_gcc_version 5
 %else
 BuildRequires:  gcc48-c++
-%define cc_exec  gcc-4.8
-%define cpp_exec g++-4.8
+%define forced_gcc_version 4.8
 %endif
 %endif
 # sles == 11 block
@@ -191,47 +198,55 @@ BuildRequires:  gcc48-c++
 # Pick and stick with "latest" compiler at time of LTS release
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
+%if %node_version_number >= 17
+BuildRequires:  gcc10-c++
+%define forced_gcc_version 10
+%else
 %if %node_version_number >= 14
 BuildRequires:  gcc9-c++
-%define cc_exec  gcc-9
-%define cpp_exec g++-9
+%define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
 BuildRequires:  gcc7-c++
-%define cc_exec  gcc-7
-%define cpp_exec g++-7
+%define forced_gcc_version 7
 %endif
+%endif
+%endif
+%endif
+
+%if 0%{?suse_version} == 1500
+%if %node_version_number >= 17
+BuildRequires:  gcc10-c++
+%define forced_gcc_version 10
 %endif
 %endif
 # compiler selection
 
 # No special version defined, use default.
-%if ! 0%{?cc_exec:1}
+%if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
 
-BuildRequires:  fdupes
-BuildRequires:  procps
-BuildRequires:  xz
-BuildRequires:  zlib-devel
-
 # Python dependencies
-%if %node_version_number >= 12
+%if %node_version_number >= 16
+
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 BuildRequires:  python36
 %else
-BuildRequires:  python3 > 3.6.0
+BuildRequires:  python3
 %endif
 
-%if 0%{?suse_version}
-BuildRequires:  netcfg
-%endif
+%else
+%if %node_version_number >= 12
+BuildRequires:  python3
 
 %else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python2
 %else
 BuildRequires:  python
+%endif
+
 %endif
 %endif
 
@@ -244,11 +259,25 @@ BuildRequires:  user(nobody)
 
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
-%if 0%{?suse_version} >= 1500 
-BuildRequires:  libopenssl1_1-hmac
+# require patched openssl library on SLES for nodejs16
+%if %node_version_number >= 16 && 0%{?suse_version} <= 1500 && 0%{?suse_version} && 0%{with openssl_RSA_get0_pss_params}
+BuildRequires:  openssl-has-RSA_get0_pss_params
+Requires:       openssl-has-RSA_get0_pss_params
+%endif
+
+%if 0%{?suse_version}
+%if 0%{?suse_version} >= 1500
 BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
+%endif
+
+BuildRequires:  libopenssl1_1-hmac
+# /suse_version
+%endif
+
+%if 0%{?fedora_version}
+BuildRequires:  openssl >= %{openssl_req_ver}
 %endif
 
 %else
@@ -266,7 +295,7 @@ Provides:       bundled(libcares2) = 1.18.1
 %endif
 
 %if ! 0%{with intree_icu}
-BuildRequires:  pkgconfig(icu-i18n) >= 68
+BuildRequires:  pkgconfig(icu-i18n) >= 69
 %else
 Provides:       bundled(icu) = 69.1
 %endif
@@ -630,6 +659,9 @@ tar Jxf %{SOURCE11}
 %patch110 -p1
 %patch120 -p1
 %patch132 -p1
+%if ! 0%{with openssl_RSA_get0_pss_params}
+%patch133 -p1
+%endif
 %patch200 -p1
 
 # remove backup files, if any
@@ -637,6 +669,13 @@ find -name \*~ -print0 -delete
 
 # abnormalities from patching
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
+
+# downgrade node-gyp to last version that supports python 3.4 for SLE12
+%if 0%{?use_version} && 0%{?suse_version} < 1500
+rm -r  deps/npm/node_modules/node-gyp
+mkdir deps/npm/node_modules/node-gyp
+tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
+%endif
 
 %build
 # normalize shebang
@@ -660,10 +699,6 @@ find deps/openssl -name *.[ch] -delete
 rm -rf deps/icu-small
 %endif
 
-%if ! 0%{with intree_openssl}
-rm -rf deps/openssl
-%endif
-
 %if ! 0%{with intree_cares}
 find deps/cares -name *.[ch] -delete
 %endif
@@ -675,7 +710,7 @@ export PREFIX=/usr
 export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags} -fno-strict-aliasing"
 # -Wno-class-memaccess is not available in gcc < 8 (= system compiler on Leap until at least 15.3 is gcc7)
 export CXXFLAGS="%{?build_cxxflags:%build_cxxflags}%{?!build_cxxflags:%optflags} -Wno-error=return-type -fno-strict-aliasing"
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
+%if 0%{?forced_gcc_version} >= 8 || 0%{?suse_version} > 1500 || 0%{?fedora_version} >= 35
 export CXXFLAGS="\${CXXFLAGS} -Wno-class-memaccess"
 %endif
 export LDFLAGS="%{?build_ldflags}"
@@ -689,9 +724,9 @@ export CFLAGS="\${CFLAGS} -g1"
 export CXXFLAGS="\${CXXFLAGS} -g1"
 export LDFLAGS="\${LDFLAGS} -Wl,--reduce-memory-overhead"
 
-%if 0%{?cc_exec:1}
-export CC=%{?cc_exec}
-export CXX=%{?cpp_exec}
+%if 0%{?forced_gcc_version:1}
+export CC=gcc-%{forced_gcc_version}
+export CXX=g++-%{forced_gcc_version}
 %endif
 
 EOF
@@ -853,6 +888,16 @@ rm -f test/parallel/test-dns-cancel-reverse-lookup.js \
       test/parallel/test-dns-resolveany.js
 # multicast test fail since no socket?
 rm -f test/parallel/test-dgram-membership.js
+%if 0%{?fedora_version}
+# test/parallel/test-crypto-certificate.js requires OPENSSL_ENABLE_MD5_VERIFY=1
+# as SPKAC required MD5 for verification
+# https://src.fedoraproject.org/rpms/openssl/blob/rawhide/f/0006-Disable-signature-verification-with-totally-unsafe-h.patch
+export OPENSSL_ENABLE_MD5_VERIFY=1
+
+# error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake
+# failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
+rm -f test/parallel/test-tls-no-sslv3.js
+%endif
 # Run CI tests
 %if 0%{with valgrind_tests}
 # valgrind may have false positives, so do not fail on these by default

@@ -195,4 +195,26 @@
 </comment>
     <requestid>937792</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5bf48ac94b9737f6b3b77a03f8ffe09c</srcmd5>
+    <version>16.13.2</version>
+    <time>1642198361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 16.13.2:
+  Security update fixing the following issues:
+  * Improper handling of URI Subject Alternative Names (Medium)
+   (CVE-2021-44531, bsc#1194511)
+  * Certificate Verification Bypass via String Injection (Medium)
+   (CVE-2021-44532, bsc#1194512)
+  * Incorrect handling of certificate subject and issuer fields (Medium)
+   (CVE-2021-44533, bsc#1194513)
+  * Prototype pollution via console.table properties (Low)
+   (CVE-2022-21824, bsc#1194514)
+
+- fix_ci_tests.patch: fix tests on s390x
+
+- rsa-pss-revert.patch: temporarily revert functionality requiring
+  newer openssl</comment>
+    <requestid>945772</requestid>
+  </revision>
 </revisionlist>

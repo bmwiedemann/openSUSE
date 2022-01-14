@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 11 18:48:04 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 16.13.2:
+  Security update fixing the following issues:
+
+  * Improper handling of URI Subject Alternative Names (Medium)
+   (CVE-2021-44531, bsc#1194511)
+  * Certificate Verification Bypass via String Injection (Medium)
+   (CVE-2021-44532, bsc#1194512)
+  * Incorrect handling of certificate subject and issuer fields (Medium)
+   (CVE-2021-44533, bsc#1194513)
+  * Prototype pollution via console.table properties (Low)
+   (CVE-2022-21824, bsc#1194514)
+
+-------------------------------------------------------------------
+Wed Jan  5 20:50:19 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: fix tests on s390x
+
+-------------------------------------------------------------------
+Tue Jan  4 12:17:19 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- rsa-pss-revert.patch: temporarily revert functionality requiring
+  newer openssl
+
+-------------------------------------------------------------------
 Tue Dec  7 16:42:18 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 16.13.1:
