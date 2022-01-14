@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 14 17:12:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.38.0
+  * This release makes llvmlite compatible with Python 3.10. It
+    also adds an ``abiname`` option to the target machine creation
+    interface that mimics the same in LLVM. Further, a large number
+    of functions are added to the IR API to support common uses of
+    constant expressions. Finally, a number of bugs were fixed!
+
+-------------------------------------------------------------------
 Thu Sep 30 09:38:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 0.37.0
