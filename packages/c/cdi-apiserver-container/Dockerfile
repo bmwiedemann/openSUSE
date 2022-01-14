@@ -3,6 +3,8 @@
 #!BuildTag: %%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
+#!ExclusiveArch: x86_64 aarch64
+
 # cdi-apiserver container image
 # KUBEVIRTFROM defined in prjconf, e.g.
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
