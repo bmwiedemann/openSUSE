@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.31.0
+Version:        2.32.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -94,19 +94,19 @@ Requires:       python3-azure-mgmt-eventgrid >= 9.0.0
 Requires:       python3-azure-mgmt-eventhub >= 9.1.0
 Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
 Requires:       python3-azure-mgmt-hdinsight >= 9.0.0
-Requires:       python3-azure-mgmt-imagebuilder >= 0.4.0
-Requires:       python3-azure-mgmt-iotcentral >= 9.0.0b1
+Requires:       python3-azure-mgmt-imagebuilder >= 1.0.0
+Requires:       python3-azure-mgmt-iotcentral >= 9.0.0
 Requires:       python3-azure-mgmt-iothub >= 2.1.0
-Requires:       python3-azure-mgmt-iothubprovisioningservices >= 0.3.0
+Requires:       python3-azure-mgmt-iothubprovisioningservices >= 1.0.0
 Requires:       python3-azure-mgmt-keyvault >= 9.3.0
 Requires:       python3-azure-mgmt-kusto >= 0.3.0
-Requires:       python3-azure-mgmt-loganalytics >= 11.0.0
+Requires:       python3-azure-mgmt-loganalytics >= 12.0.0
 Requires:       python3-azure-mgmt-managedservices >= 1.0
 Requires:       python3-azure-mgmt-managementgroups >= 0.1
 Requires:       python3-azure-mgmt-maps >= 2.0.0
 Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       python3-azure-mgmt-media >= 7.0.0
-Requires:       python3-azure-mgmt-monitor >= 2.0.0
+Requires:       python3-azure-mgmt-monitor >= 3.0.0
 Requires:       python3-azure-mgmt-msi >= 0.2
 Requires:       python3-azure-mgmt-netapp >= 4.0.0
 Requires:       python3-azure-mgmt-network >= 19.3.0
@@ -114,9 +114,9 @@ Requires:       python3-azure-mgmt-policyinsights >= 1.0.0
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 10.0.0
 Requires:       python3-azure-mgmt-recoveryservices >= 2.0.0
-Requires:       python3-azure-mgmt-recoveryservicesbackup >= 3.0.0
+Requires:       python3-azure-mgmt-recoveryservicesbackup >= 4.0.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.0.0
-Requires:       python3-azure-mgmt-redis >= 13.0.0
+Requires:       python3-azure-mgmt-redis >= 13.1.0
 Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations >= 0.6.0
 Requires:       python3-azure-mgmt-resource >= 20.0.0
@@ -136,7 +136,7 @@ Requires:       python3-azure-mgmt-web >= 4.0.0
 Requires:       python3-azure-multiapi-storage >= 0.7.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
-Requires:       python3-azure-synapse-artifacts >= 0.9.0
+Requires:       python3-azure-synapse-artifacts >= 0.10.0
 Requires:       python3-azure-synapse-managedprivateendpoints >= 0.3.0
 Requires:       python3-azure-synapse-spark >= 0.2.0
 Requires:       python3-chardet >= 3.0.4
