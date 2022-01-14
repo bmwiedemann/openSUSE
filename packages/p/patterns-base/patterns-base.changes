@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 14 09:41:11 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install PAM manual pages instead of the PDFs
+
+-------------------------------------------------------------------
+Thu Jan 13 11:12:06 UTC 2022 - Guilherme Moro <gmoro@suse.com>
+
+- specfile cleanup
+
+-------------------------------------------------------------------
+Wed Jan 12 09:18:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Don't recommend ntfs-3g by default on TW, the kernel module got
+  improved
+
+-------------------------------------------------------------------
 Fri Dec 17 15:24:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop low-memory-monitor: It's not enabled by default, not used by

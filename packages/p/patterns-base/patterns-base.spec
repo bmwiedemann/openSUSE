@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ Provides:       pattern() = 32bit
 Provides:       pattern-icon() = pattern-cli
 Provides:       pattern-order() = 1180
 Provides:       pattern-visible()
-%obsolete_legacy_pattern 32bit
+%{obsolete_legacy_pattern 32bit}
 
 %description 32bit
 This will install the 32-bit variant of all selected patterns. This allows to execute 32-bit software.
@@ -68,9 +68,7 @@ Provides:       pattern() = apparmor
 Provides:       pattern-icon() = pattern-apparmor
 Provides:       pattern-order() = 1100
 Provides:       pattern-visible()
-%obsolete_legacy_pattern apparmor
 Requires:       pattern() = minimal_base
-
 Requires:       apparmor-abstractions
 Requires:       apparmor-parser
 Requires:       apparmor-profiles
@@ -78,12 +76,12 @@ Recommends:     apparmor-docs
 Recommends:     apparmor-utils
 Recommends:     yast2-apparmor
 Suggests:       pam_apparmor
+%{obsolete_legacy_pattern apparmor}
 %if 0%{?is_opensuse}
 Requires:       audit
 %else
 Recommends:     audit
 %endif
-Recommends:     apparmor-docs
 
 %description apparmor
 AppArmor is an application security framework that provides mandatory access control for programs. It protects from exploitation of software flaws and compromised systems. It offers an advanced tool set that automates the development of per-program application security without requiring additional knowledge.
@@ -119,14 +117,8 @@ Provides:       pattern() = base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 1030
 Provides:       pattern-visible()
-%obsolete_legacy_pattern base
-%obsolete_legacy_pattern minimal
 Requires:       pattern() = minimal_base
-
 Requires:       aaa_base
-%if %{with betatest}
-Requires:       aaa_base-malloccheck
-%endif
 Requires:       bash
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
@@ -134,24 +126,12 @@ Requires:       glibc
 Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       pam-config
+# Support multiversion(kernel) (jsc#SLE-10162)
+Requires:       purge-kernels-service
 Requires:       rpm
 Requires:       system-user-nobody
 Requires:       systemd
 Requires:       util-linux
-# We don't necessarily want zypper in specific minimal environments
-# e.g. buildroots and locked down appliance environments
-Recommends:     zypper
-%if 0%{?sle_version}
-Recommends:     SUSEConnect
-Recommends:     rollback-helper
-# SLES users expect all FS tools to be installed
-# bsc#1095916
-Recommends:     e2fsprogs
-Recommends:     btrfsprogs
-Recommends:     xfsprogs
-%endif
-# Support multiversion(kernel) (jsc#SLE-10162)
-Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
 Recommends:     elfutils
@@ -169,32 +149,49 @@ Recommends:     terminfo
 Recommends:     terminfo-iterm
 Recommends:     terminfo-screen
 Recommends:     timezone
+# We don't necessarily want zypper in specific minimal environments
+# e.g. buildroots and locked down appliance environments
+Recommends:     zypper
+# If anything requests "kernel", pick the full kernel package by default
+Suggests:       kernel-default
+# we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire
+Suggests:       libjack-devel
+# We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
+Suggests:       libz1
+# There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl
+Suggests:       openssl
+# In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
+Suggests:       openssl-1_1
+# if anything wants to recommend an MTA, openSUSE defaults to postfix (boo#1136078)
+Suggests:       postfix
+# We have two providers of psmisc, favour the regular one (not the busybox one)
+Suggests:       psmisc
+# we have two providers for 'pulseaudio' - prefer the real one for the time being
+Suggests:       pulseaudio
+# hint for aaa_base requiring /usr/bin/xz
+Suggests:       xz
+%{obsolete_legacy_pattern base}
+%{obsolete_legacy_pattern minimal}
+%if %{with betatest}
+Requires:       aaa_base-malloccheck
+%endif
+%if 0%{?sle_version}
+Recommends:     SUSEConnect
+Recommends:     btrfsprogs
+# SLES users expect all FS tools to be installed
+# bsc#1095916
+Recommends:     e2fsprogs
+Recommends:     rollback-helper
+Recommends:     xfsprogs
+%endif
 %ifarch ppc64 ppc64le
 # bsc#1098849
 Requires:       ppc64-diag
 %endif
 # Current systems suffer from entropy starvation (bsc#1131369)
-%ifarch aarch64 %ix86 x86_64 ppc64 ppc64le s390x
+%ifarch aarch64 %{ix86} x86_64 ppc64 ppc64le s390x
 Recommends:     haveged
 %endif
-# hint for aaa_base requiring /usr/bin/xz
-Suggests:       xz
-# if anything wants to recommend an MTA, openSUSE defaults to postfix (boo#1136078)
-Suggests:       postfix
-# If anything requests "kernel", pick the full kernel package by default
-Suggests:       kernel-default
-# we have two providers for 'pulseaudio' - prefer the real one for the time being
-Suggests:       pulseaudio
-# we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire
-Suggests:       libjack-devel
-# There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl
-Suggests:       openssl
-# In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
-Suggests:       openssl-1_1
-# We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
-Suggests:       libz1
-# We have two providers of psmisc, favour the regular one (not the busybox one)
-Suggests:       psmisc
 
 %description base
 This is the base runtime system.  It contains only a basic multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
@@ -218,7 +215,6 @@ Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-visible()
 %endif
 Requires:       pattern() = x11
-
 # choose icewm-default if you have a choice
 # icewm-lite is too lightweight in new release
 Requires:       icewm-default
@@ -244,9 +240,7 @@ Provides:       pattern() = console
 Provides:       pattern-icon() = pattern-cli
 Provides:       pattern-order() = 1120
 Provides:       pattern-visible()
-%obsolete_legacy_pattern console
 Requires:       pattern() = enhanced_base
-
 Recommends:     at
 Recommends:     bc
 Recommends:     ed
@@ -282,6 +276,7 @@ Suggests:       pinfo
 Suggests:       slrn
 Suggests:       units
 Suggests:       vlock
+%{obsolete_legacy_pattern console}
 
 %description console
 Applications useful for those using the console and no graphical desktop environment.
@@ -302,12 +297,11 @@ Provides:       pattern-icon() = pattern-documentation
 Provides:       pattern-order() = 1005
 Provides:       pattern-visible()
 Requires:       pattern() = minimal_base
-%obsolete_legacy_pattern documentation
-
 Requires:       man
 Recommends:     man-pages
 # note pam is in every install so no point in using packageand
-Recommends:     pam-doc
+Recommends:     pam-manpages
+%{obsolete_legacy_pattern documentation}
 
 %description documentation
 Help and Support Documentation
@@ -326,7 +320,6 @@ Provides:       pattern() = enhanced_base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 1060
 Provides:       pattern-visible()
-%obsolete_legacy_pattern enhanced_base
 Requires:       pattern() = base
 Recommends:     pattern() = apparmor
 %if 0%{?is_opensuse}
@@ -334,7 +327,6 @@ Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management
 Recommends:     pattern() = yast2_basis
 %endif
-
 Requires:       openssh
 Recommends:     aaa_base-extras
 # getfacl and setfacl
@@ -349,7 +341,6 @@ Recommends:     bzip2
 # #375103
 Recommends:     cifs-utils
 Recommends:     command-not-found
-Suggests:       scout-command-not-found
 Recommends:     cpio
 Recommends:     cpupower
 Recommends:     cryptsetup
@@ -406,8 +397,11 @@ Recommends:     netcfg
 Recommends:     nfs-client
 Recommends:     nfsidmap
 Recommends:     nscd
+# Kernel 5.15+ has an improved R/W ntfs module
+%if 0%{?suse_version} < 1550
 # mount NTFS rw (bsc#1087242)
 Recommends:     ntfs-3g
+%endif
 Recommends:     ntfsprogs
 # TODO: should this be in more places
 Recommends:     pam-config
@@ -417,17 +411,10 @@ Recommends:     pciutils-ids
 Recommends:     perl-Bootloader
 Recommends:     perl-base
 Recommends:     pinentry
+Recommends:     plymouth
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
 Recommends:     rsync
-%if 0%{?sle_version}
-# in SLE we still want /var/log/messages as all of the docu refers to it
-# TODO: if we still want it everywhere it should move back to base
-Recommends:     rsyslog
-%else
-# go for journal in TW (boo#1143144)
-Recommends:     systemd-logger
-%endif
 # Bug 424707 - Feature "Command not found" for openSUSE by default
 Recommends:     scout
 Recommends:     screen
@@ -435,13 +422,13 @@ Recommends:     sed
 Recommends:     sg3_utils
 Recommends:     smartmontools
 Recommends:     sudo
-#SUSE hardware tunings
-Recommends:     udev-extra-rules
 Recommends:     systemd-sysvinit
 Recommends:     time
 Recommends:     timezone
 # autoconfig new printers - bnc#808014
 Recommends:     udev-configure-printer
+#SUSE hardware tunings
+Recommends:     udev-extra-rules
 # lsusb is good for debugging USB devices - #401593
 Recommends:     usbutils
 # Our editor of choice
@@ -454,9 +441,19 @@ Suggests:       biosdevname
 Suggests:       cpupower
 # #437252
 Suggests:       pam_ssh
+Suggests:       scout-command-not-found
 Suggests:       xfsprogs
 Suggests:       zip
-%ifarch aarch64 %ix86 x86_64
+%{obsolete_legacy_pattern enhanced_base}
+%if 0%{?sle_version}
+# in SLE we still want /var/log/messages as all of the docu refers to it
+# TODO: if we still want it everywhere it should move back to base
+Recommends:     rsyslog
+%else
+# go for journal in TW (boo#1143144)
+Recommends:     systemd-logger
+%endif
+%ifarch aarch64 %{ix86} x86_64
 Recommends:     dmidecode
 %endif
 %ifarch ppc
@@ -468,52 +465,35 @@ Recommends:     mouseemu
 Recommends:     pdisk
 Recommends:     powerpc32
 %endif
-Recommends:     plymouth
 # Other packages we have in openSUSE and not SLE-15
 %if 0%{?is_opensuse}
 Recommends:     dmraid
 Recommends:     dosfstools
 Recommends:     ifplugd
+Recommends:     joe
 Recommends:     klogd
+Recommends:     mpt-status
 # boo#1034493
 Recommends:     nano
 Recommends:     openldap2-client
 Recommends:     prctl
-# fuser (psmisc) by default (#304694)
-Recommends:     psmisc
-Recommends:     smp_utils
-# useful for debugging
-Recommends:     strace
-# having a ftp command line client is good for moving log files
-Recommends:     tnftp
-Recommends:     tuned
-Recommends:     wireless-tools
-Recommends:     wol
-%ifarch %ix86 x86_64
-Recommends:     acpica
-%endif
-%ifarch x86_64
-Recommends:     mcelog
-%endif
-%ifarch aarch64 x86_64
-Recommends:     numactl
-%endif
-%ifarch %ix86 x86_64
-Recommends:     ucode-amd
-Recommends:     ucode-intel
-%endif
-Recommends:     joe
-Recommends:     mpt-status
-Recommends:     prctl
 Recommends:     procinfo
 Recommends:     procmail
 Recommends:     providers
+# fuser (psmisc) by default (#304694)
+Recommends:     psmisc
 Recommends:     setserial
 Recommends:     sharutils
+Recommends:     smp_utils
 Recommends:     spax
+# useful for debugging
 Recommends:     strace
 Recommends:     terminfo
+# having a ftp command line client is good for moving log files
+Recommends:     tnftp
+Recommends:     tuned
 Recommends:     vlan
+Recommends:     wireless-tools
 Recommends:     wol
 Suggests:       acpid
 Suggests:       cracklib-dict-full
@@ -536,8 +516,21 @@ Suggests:       w3m-el
 Suggests:       xdelta
 # tool for xfs
 Suggests:       xfsdump
+%ifarch %{ix86} x86_64
+Recommends:     acpica
+%endif
+%ifarch x86_64
+Recommends:     mcelog
+%endif
+%ifarch aarch64 x86_64
+Recommends:     numactl
+%endif
+%ifarch %{ix86} x86_64
+Recommends:     ucode-amd
+Recommends:     ucode-intel
+%endif
 # #754959
-%ifarch %ix86 x86_64
+%ifarch %{ix86} x86_64
 Suggests:       hyper-v
 %endif
 %endif
@@ -555,17 +548,10 @@ This is the enhanced base runtime system with lots of convenience packages.
 %pattern_primaryfunctions
 Summary:        FIPS 140-2 specific packages
 Group:          Metapackages
-Provides:       patterns-sles-fips = %{version}
 Provides:       pattern() = fips
 Provides:       pattern-icon() = pattern-basis-addon
 Provides:       pattern-order() = 3010
 Provides:       pattern-visible()
-Obsoletes:      patterns-sles-fips < %{version}
-Provides:       patterns-server-enterprise-fips = %{version}
-Obsoletes:      patterns-server-enterprise-fips < %{version}
-Provides:       patterns-server-enterprise-fips-32bit = %{version}
-Obsoletes:      patterns-server-enterprise-fips-32bit < %{version}
-
 Requires:       (dracut-fips if dracut)
 Requires:       (libcryptsetup12-hmac if libcryptsetup12)
 Requires:       (libcryptsetup12-hmac-32bit if libcryptsetup12-32bit)
@@ -583,6 +569,12 @@ Requires:       (libsoftokn3-hmac-32bit if libsoftokn3-32bit)
 Requires:       (openssh-fips if openssh-clients)
 Requires:       (openssh-fips if openssh-server)
 Requires:       (strongswan-hmac if strongswan)
+Provides:       patterns-sles-fips = %{version}
+Obsoletes:      patterns-sles-fips < %{version}
+Provides:       patterns-server-enterprise-fips = %{version}
+Obsoletes:      patterns-server-enterprise-fips < %{version}
+Provides:       patterns-server-enterprise-fips-32bit = %{version}
+Obsoletes:      patterns-server-enterprise-fips-32bit < %{version}
 
 %description fips
 This pattern installs the FIPS 140-2 specific packages that complete the various
@@ -608,16 +600,15 @@ Provides:       pattern() = minimal_base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 5190
 Provides:       pattern-visible()
-%obsolete_legacy_pattern minimal_base
-
 Requires:       branding
-Requires:       distribution-release
-# Tell the solver to default to the main product
-Suggests:       openSUSE-release
-Requires:       filesystem
 # those packages are actually useless as they don't use
 # %_keyringpath but we need them eg for kiwi
 Requires:       build-key
+Requires:       distribution-release
+Requires:       filesystem
+# Tell the solver to default to the main product
+Suggests:       openSUSE-release
+%{obsolete_legacy_pattern minimal_base}
 
 %description minimal_base
 This is the minimal runtime system. It is really a minimal system. It is intended as base for Appliances.
@@ -633,9 +624,9 @@ This is the minimal runtime system. It is really a minimal system. It is intende
 Summary:        Bootloader
 Group:          Metapackages
 Provides:       pattern() = bootloader
+Requires:       (grub2-snapper-plugin if snapper)
 #
 Requires:       grub2
-Requires:       (grub2-snapper-plugin if snapper)
 %ifarch x86_64
 # XXX: not sure this really belongs here. More like a kernel
 # rather than bootloader related thing?
@@ -684,15 +675,14 @@ Provides:       pattern-icon() = pattern-selinux
 Provides:       pattern-order() = 1110
 Provides:       pattern-visible()
 Requires:       pattern() = minimal_base
-
+Requires:       policycoreutils
+Requires:       selinux-autorelabel
+Requires:       selinux-policy
+Requires:       selinux-tools
 Recommends:     checkpolicy
 Recommends:     container-selinux
-Requires:       policycoreutils
 Recommends:     restorecond
-Requires:       selinux-policy
 Recommends:     selinux-policy-targeted
-Requires:       selinux-autorelabel
-Requires:       selinux-tools
 
 %description selinux
 Security-Enhanced Linux (SELinux) provides a mechanism for supporting access control security policies, including mandatory access controls (MAC).
@@ -713,15 +703,14 @@ Provides:       pattern() = sw_management
 Provides:       pattern-icon() = pattern-software-management
 Provides:       pattern-order() = 1360
 Provides:       pattern-visible()
-%obsolete_legacy_pattern sw_management
-# Zypper is the basic sw_management stack for *SUSE
-Requires:       zypper
-%if 0%{?sle_version}
 Recommends:     pattern() = sw_management_x11
-
+%if 0%{?sle_version}
 Recommends:     lifecycle-data
 Recommends:     zypper-lifecycle-plugin
 %endif
+# Zypper is the basic sw_management stack for *SUSE
+Requires:       zypper
+%{obsolete_legacy_pattern sw_management}
 
 %description sw_management
 This pattern provides a graphical application and a command line tool for keeping your system up to date.
@@ -740,7 +729,6 @@ Provides:       pattern() = transactional_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
 Requires:       pattern() = base
-
 Requires:       read-only-root-fs
 Requires:       rebootmgr
 Requires:       systemd-presets-branding-transactional-server
@@ -766,14 +754,13 @@ Provides:       pattern() = update_test
 Provides:       pattern-icon() = pattern-tests
 Provides:       pattern-order() = 1380
 Provides:       pattern-visible()
-%obsolete_legacy_pattern update_test
-
 Requires:       update-test-affects-package-manager
 Requires:       update-test-interactive
 Requires:       update-test-optional
 Requires:       update-test-reboot-needed
 Requires:       update-test-security
 Requires:       update-test-trivial
+%{obsolete_legacy_pattern update_test}
 
 %description update_test
 Packages used for testing that the update stack works.  These tiny packages do not have any functionality themselves.
@@ -793,7 +780,6 @@ Provides:       pattern() = x11
 Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1800
 Provides:       pattern-visible()
-%obsolete_legacy_pattern x11
 Requires:       pattern() = base
 %if 0%{?is_opensuse}
 Recommends:     pattern() = x11_enhanced
@@ -801,16 +787,14 @@ Recommends:     pattern() = x11_enhanced
 # Requires to be safe on upgrade path for SLE
 Requires:       pattern() = basic_desktop
 %endif
-
 Requires:       xf86-input-libinput
 Requires:       xorg-x11-fonts-core
 Requires:       xorg-x11-server
+# Recommend something other than xdm, default to lightdm
+Recommends:     (gdm or lightdm or sddm)
 Recommends:     dejavu-fonts
 Recommends:     libyui-qt
 Recommends:     libyui-qt-pkg
-# Recommend something other than xdm, default to lightdm
-Recommends:     (gdm or lightdm or sddm)
-Suggests:       lightdm
 Recommends:     noto-sans-fonts
 Recommends:     tigervnc
 Recommends:     x11-tools
@@ -823,7 +807,8 @@ Recommends:     xorg-x11-server-extra
 Recommends:     xterm
 Recommends:     xtermset
 Recommends:     yast2-control-center
-
+Suggests:       lightdm
+%{obsolete_legacy_pattern x11}
 # bsc#1071953
 %ifnarch s390 s390x
 Recommends:     xf86-input-vmmouse
@@ -846,25 +831,22 @@ Group:          Metapackages
 Provides:       pattern() = x11_enhanced
 Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1801
-Requires:       pattern() = enhanced_base
-Requires:       pattern() = fonts
-Requires:       pattern() = x11
-Recommends:     pattern() = x11_yast
-Recommends:     pattern() = yast2_desktop
 # For SLE-15-SPX - install basis and server here to keep behavior functionally the same
 # Jump / Leap can follow the same setup as Tumbleweed
 %if !0%{?is_opensuse}
 Recommends:     pattern() = yast2_basis
 Recommends:     pattern() = yast2_server
 %endif
-
+Requires:       pattern() = enhanced_base
+Requires:       pattern() = fonts
+Requires:       pattern() = x11
+Recommends:     pattern() = x11_yast
+Recommends:     pattern() = yast2_desktop
 # 1057377
 Requires:       glibc-locale
 Requires:       glibc-locale-base
 Requires:       xkeyboard-config
 Requires:       xorg-x11-essentials
-# make it possible to install firefox or chromium
-Recommends:     web_browser
 Recommends:     cabextract
 Recommends:     command-not-found
 Recommends:     dbus-1-glib
@@ -878,6 +860,8 @@ Recommends:     numlockx
 Recommends:     opensuse-welcome
 # #353229 - drag in empty replacements
 Recommends:     translation-update
+# make it possible to install firefox or chromium
+Recommends:     web_browser
 Recommends:     xauth
 Recommends:     xdmbgrd
 Recommends:     xkeyboard-config
@@ -890,7 +874,6 @@ Recommends:     yast2-network
 # This will install Firefox if no other browser is selected
 Suggests:       MozillaFirefox
 Suggests:       MozillaFirefox-translations
-
 %if 0%{?is_opensuse}
 # #394406
 Suggests:       desktop-data-openSUSE-extra
@@ -904,9 +887,6 @@ Recommends:     numlockx
 Recommends:     openssh-askpass
 Recommends:     susepaste
 Recommends:     susepaste-screenshot
-Suggests:       gvim
-Suggests:       hexchat
-Suggests:       wpa_supplicant-gui
 # needed e.g. for nvidia drivers
 # #302566
 Recommends:     x11-tools
@@ -915,7 +895,10 @@ Suggests:       MozillaThunderbird
 Suggests:       WindowMaker
 Suggests:       WindowMaker-applets
 Suggests:       WindowMaker-themes
+Suggests:       gvim
+Suggests:       hexchat
 Suggests:       unclutter
+Suggests:       wpa_supplicant-gui
 Suggests:       xlockmore
 Suggests:       xorg-x11-driver-video-radeonhd
 Suggests:       xorg-x11-driver-video-unichrome
@@ -946,14 +929,23 @@ Provides:       pattern-visible()
 # Patterns
 Requires:       pattern() = base
 Requires:       pattern() = x11
-# Drivers
-Requires:       xf86-input-evdev
-Requires:       xf86-input-libinput
-Requires:       xf86-video-fbdev
 # Other X11 packages
 Requires:       gconf2
 Requires:       gtk2-metatheme-adwaita
 Requires:       gtk3-metatheme-adwaita
+# X11/IceWM-specific packages
+Requires:       icewm
+Requires:       icewm-default
+Requires:       icewm-lite
+Requires:       icewm-theme-branding
+# bsc#1095870
+Requires:       libyui-ncurses-pkg
+Requires:       libyui-qt-pkg
+# for IceWM taskbar mailbox icon (bsc#1093913)
+Requires:       mutt
+Requires:       mutt-lang
+Requires:       polkit-default-privs
+Requires:       polkit-gnome-lang
 Requires:       x11-tools
 Requires:       x11perf
 Requires:       xauth
@@ -971,6 +963,10 @@ Requires:       xdmbgrd
 Requires:       xdpyinfo
 Requires:       xev
 Requires:       xeyes
+# Drivers
+Requires:       xf86-input-evdev
+Requires:       xf86-input-libinput
+Requires:       xf86-video-fbdev
 Requires:       xfd
 Requires:       xfontsel
 Requires:       xgamma
@@ -1010,27 +1006,14 @@ Requires:       xtermset
 Requires:       xvinfo
 Requires:       xwd
 Requires:       xwininfo
+Requires:       yast2-control-center-qt
 Requires:       yast2-packager
 Requires:       yast2-snapper
 Requires:       yast2-x11
-# bsc#1095870
-Requires:       libyui-ncurses-pkg
-Requires:       libyui-qt-pkg
-Requires:       yast2-control-center-qt
 # Branding
 %if ! 0%{?is_opensuse}
 Requires:       MozillaFirefox-branding-SLE
 %endif
-# X11/IceWM-specific packages
-Requires:       icewm
-Requires:       icewm-default
-Requires:       icewm-lite
-Requires:       icewm-theme-branding
-Requires:       polkit-default-privs
-Requires:       polkit-gnome-lang
-# for IceWM taskbar mailbox icon (bsc#1093913)
-Requires:       mutt
-Requires:       mutt-lang
 
 %description x11_raspberrypi
 The X Window System provides the only standard platform-independent networked graphical window system bridging the heterogeneous platforms in today's enterprise: from network servers to desktops, thin clients, laptops, and handhelds, independent of operating system and hardware.
