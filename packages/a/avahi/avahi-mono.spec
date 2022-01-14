@@ -1,7 +1,7 @@
 #
 # spec file for package avahi-mono
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -643,6 +643,10 @@ cd avahi-qt
 %make_install
 # do not install sysv init scripts
 rm -rf %{buildroot}%{_sysconfdir}/init.d/
+# Do not install ssh and sftp services
+rm -rf %{buildroot}%{_sysconfdir}/avahi/services/ssh.service
+rm -rf %{buildroot}%{_sysconfdir}/avahi/services/sftp-ssh.service
+
 %if !%{build_core}
 cd ..
 %make_build install-pkgconfigDATA DESTDIR=%{buildroot}
@@ -825,7 +829,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 
 %files
 %license LICENSE
-%doc docs/*
+%doc docs/* avahi-daemon/sftp-ssh.service avahi-daemon/ssh.service
 %dir %{_libdir}/avahi/
 # Note: This file is intentionally packaged here. It is needed for python3-avahi and avahi-utils:
 %{_libdir}/avahi/service-types.db
@@ -843,7 +847,6 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %config %{_sysconfdir}/avahi/avahi-daemon.conf
 %{_sysconfdir}/avahi/avahi-dnsconfd.action
 %dir %{_sysconfdir}/avahi/services
-%{_sysconfdir}/avahi/services/*.service
 %config(noreplace) %{_sysconfdir}/avahi/hosts
 %{_sysconfdir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Avahi.*.xml

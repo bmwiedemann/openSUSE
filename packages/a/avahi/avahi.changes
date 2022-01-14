@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 14:33:21 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Move sftp-ssh and ssh services to the doc directory. They allow
+  a host's up/down status to be easily discovered and should not
+  be enabled by default (boo#1179060).
+
+-------------------------------------------------------------------
 Mon Oct 25 13:20:49 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Change %python38_version_nodots to %suse_version which is
