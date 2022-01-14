@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 20 13:56:48 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.21:
+  * 45-stale-changes allow for multibuild specfiles with empty default flavour
+  * Fix running the checks on a directory with whitespace in its path
+  * spec_query: print line numbers on %if/%else/%endif error
+  * 20-files-present-and-references: do not complain about debian.*.triggers
+
+-------------------------------------------------------------------
 Tue Mar 09 16:54:58 UTC 2021 - adrian@suse.de
 
 - Update to version 0.21:

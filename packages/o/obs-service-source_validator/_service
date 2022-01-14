@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">git://github.com/openSUSE/obs-service-source_validator.git</param>
+    <param name="url">https://github.com/openSUSE/obs-service-source_validator.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>

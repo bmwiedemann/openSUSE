@@ -470,4 +470,16 @@ last submission had wrong tar ball for unknown reason</comment>
   * No need to compress buildtime generated tarballs</comment>
     <requestid>878046</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>4be5645f524b4105d0acfaa8d972f322</srcmd5>
+    <version>0.21</version>
+    <time>1642198364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21:
+  * 45-stale-changes allow for multibuild specfiles with empty default flavour
+  * Fix running the checks on a directory with whitespace in its path
+  * spec_query: print line numbers on %if/%else/%endif error
+  * 20-files-present-and-references: do not complain about debian.*.triggers</comment>
+    <requestid>945827</requestid>
+  </revision>
 </revisionlist>
