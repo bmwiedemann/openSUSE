@@ -491,4 +491,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>935219</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d1b17dbf413f334f5a5ba188f9f8c457</srcmd5>
+    <version>2.5.0</version>
+    <time>1642198358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946136</requestid>
+  </revision>
 </revisionlist>

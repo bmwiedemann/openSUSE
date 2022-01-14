@@ -1,7 +1,7 @@
 #
 # spec file for package freerdp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %endif
 
 Name:           freerdp
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0

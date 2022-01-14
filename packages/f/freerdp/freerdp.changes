@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 13 10:33:45 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to freerdp 2.5.0
+  * Fixed smartcard login in case a redirection occurs the pin was lost
+  * Backported windows client drawing fixes
+  * Backported improved macOS keyboard layout detection
+  * Backported TcpConnectTimeout
+  * Backported LibreSSL compatibility patches
+  * Backported signal handler backtrace
+  * Backported OpenSSL 3.0 support
+  * Backport #gh:FreeRDP/FreeRDP#7539: Wayland client clipboard issues
+  * Backport #gh:FreeRDP/FreeRDP#7509: Various fixes regarding registry
+    emulation, addin loader and updated locale detection
+  * Backport #gh:FreeRDP/FreeRDP#7466: Android android_register_pointer
+    missing initialization
+
+-------------------------------------------------------------------
 Thu Dec  2 15:02:32 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix connecting without H.264-enabled FFmpeg (boo#1190823):
