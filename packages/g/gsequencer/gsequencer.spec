@@ -22,13 +22,13 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        3.15.3
+Version:        3.16.2
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.15.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.16.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
 BuildRequires:  gcc-c++

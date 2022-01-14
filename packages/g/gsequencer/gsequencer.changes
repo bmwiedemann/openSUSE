@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 14 05:35:08 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.16.2 minor improvements.
+- new since 3.16.1 implemented AgsSF2Synth allowing you to play
+  Soundfont2 files by MIDI locale i.e. select bank and program.
+- minor improvements.
+
+-------------------------------------------------------------------
 Sat Jan  8 08:32:57 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.15.3 fixed AgsSynthUtil and AgsFMSynthUtil.
