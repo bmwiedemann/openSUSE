@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 11 00:06:20 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+Related to jsc#SLE-22069:
+  - Autoyast LSM section: added "none" section in order to mark it
+    as not selectable during the installation.
+- 4.4.7
+
+-------------------------------------------------------------------
 Mon Jan 10 10:08:44 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix security_auto client selinux requirement (bsc#1194449)
