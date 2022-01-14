@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
+
+-------------------------------------------------------------------
 Fri Dec 10 11:20:54 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Fix NPE in JNDIRealm, when userRoleAttribute is not set (bsc#1193569)

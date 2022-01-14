@@ -596,7 +596,6 @@ getent passwd tomcat >/dev/null || %{_sbindir}/useradd -c "Apache Tomcat" \
 
 %post
 %service_add_post %{name}.service
-%service_add_post %{name}@.service
 %{fillup_only %{name}}
 
 %preun
