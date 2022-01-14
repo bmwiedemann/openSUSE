@@ -961,7 +961,7 @@ exit 0
 # main package scriptlets
 %if "%{flavor}" == ""
 %pre
-%service_add_pre apache2.service apache2@.service apache2.target
+%service_add_pre apache2.service apache2.target
 exit 0
 
 %post
@@ -971,7 +971,7 @@ if grep -q "^wwwadmin:" %{_sysconfdir}/group; then
         usermod -g %{httpdgroup} %{httpduser} 2>/dev/null ||:
         usermod -s /bin/false %{httpduser} 2>/dev/null ||:
 fi
-%service_add_post apache2.service apache2@.service apache2.target
+%service_add_post apache2.service apache2.target
 %set_permissions %{_sbindir}/suexec || \
   echo "Please check %{_sysconfdir}/permissions.local for settings of %{_sbindir}/suexec ."
 %{fillup_only apache2}
@@ -987,15 +987,15 @@ exit 0
 %verify_permissions -e %{_sbindir}/suexec
 
 %preun
-%service_del_preun apache2.service apache2@.service apache2.target
+%service_del_preun apache2.service apache2.target
 exit 0
 
 %postun
 %if %{defined service_del_postun_without_restart}
-%service_del_postun_without_restart apache2.service apache2@.service apache2.target
+%service_del_postun_without_restart apache2.service apache2.target
 %else
 DISABLE_RESTART_ON_UPDATE='yes'
-%service_del_postun apache2.service apache2@.service apache2.target
+%service_del_postun apache2.service apache2.target
 %endif
 if [ "$1" = 1 ]; then
   %apache_request_restart

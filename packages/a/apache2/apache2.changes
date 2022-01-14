@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 11 12:05:55 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Align some defaults in apache2-server-tuning.conf to upstream 
+  defaults: 
+  * Updated MaxRequestWorkers and ServerLimit to 256. [bsc#1194062]
+- The old name MaxRequestsPerChild is changed to MaxConnectionsPerChild.
+  * See https://httpd.apache.org/docs/2.4/mod/mpm_common.html#maxconnectionsperchild
+
+-------------------------------------------------------------------
 Mon Jan 10 18:12:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add apache2-perl-io-socket.patch: t/ssl/ocsp.t: Handle new error
   message raised by IO-Socket-SSL 2.073.
+
+-------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
 
 -------------------------------------------------------------------
 Mon Dec 20 11:26:49 UTC 2021 - David Anes <david.anes@suse.com>
