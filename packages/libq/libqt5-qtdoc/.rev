@@ -372,4 +372,13 @@
   * 0002-Build-fixes-for-GCC-11.patch</comment>
     <requestid>895976</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>7256fa2d7b2786421b54df5602f6bdf9</srcmd5>
+    <version>5.15.2</version>
+    <time>1642198378</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints for PowerPC because need more than 8GB disk
+  (bsc#1154344).</comment>
+    <requestid>946157</requestid>
+  </revision>
 </revisionlist>
