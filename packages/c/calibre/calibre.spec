@@ -1,7 +1,7 @@
 #
 # spec file for package calibre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.33.2
+Version:        5.34.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -280,6 +280,11 @@ rm %{buildroot}%{_datadir}/metainfo/calibre-ebook-{edit,viewer}.metainfo.xml
 # Remove unneeded desktop files
 rm %{buildroot}%{_datadir}/applications/calibre-ebook-{edit,viewer}.desktop
 rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
+
+# Fix wrong path for init_calibre.py
+pushd %{buildroot}/usr/lib/
+mv %{py3_ver} python%{py3_ver}
+popd
 
 %fdupes %{buildroot}%{_prefix}
 

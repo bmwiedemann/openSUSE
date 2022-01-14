@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec 17 06:52:03 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.34.0
+  * New Features
+    - Happy holidays to everyone!
+    - Driver for the new Nook Glowlight 4
+    - Edit book: Spell check tool: Add an exclude files button to 
+      exclude some files from being     checked
+    - EPUB/MOBI Catalogs: Increase the maximum thumbnail size to
+      3 inches from 2 inches
+    - Allow creating a shortcut in Preferences->Shortcuts->Edit
+      metadata to paste metadata ignoring the value of the 
+      exclude_fields tweak
+    - E-book viewer: Displays links marked up as glossary and 
+      bibliography links as popups
+    - Add a tweak in Preferences->Tweaks to provide the sort value
+      for undefined numbers
+  * Bug Fixes
+    - Edit book: Fix pressing F8 to jump to next misspelled word 
+      not working after last word in current file
+    - Fix PDB E-reader output broken in calibre 5
+    - Edit book: Reports: Include descendant selectors that use 
+      classes when counting class usage
+    - E-book viewer: Fix an error when opening some books with 
+      highlights that span in-line text formatting
+    - MTP driver: Do not send the calibre device db files to the 
+      root folder on the Supernote A5 x as it fails
+    - ToC Editor: Workaround an occasional error when closing on
+      Windows if the file being edited is in a DropBox/antivirus
+      prone folder
+    - Fix a regression in the previous release that broke creating
+      new keyboard shortcuts
+    - Comments editor: When flowing the tool bar onto multiple
+      lines do not split up groups of buttons
+    - Various compatibility fixes for Python 3.10 used by some
+      Linux distributions
+- Fix wrong path for init_calibre.py
+
+-------------------------------------------------------------------
 Sat Dec  4 10:32:11 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.33.2
