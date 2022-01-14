@@ -1,7 +1,7 @@
 #
 # spec file for package edgar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           edgar
-Version:        1.34
+Version:        1.35
 Release:        0
 Summary:        2D platform game with a persistent world
 License:        GPL-2.0-or-later
@@ -60,7 +60,6 @@ BuildArch:      noarch
 %description data
 This package contains the game data for %{name}.
 It is required to play the game.
-
 
 %prep
 %setup -q
