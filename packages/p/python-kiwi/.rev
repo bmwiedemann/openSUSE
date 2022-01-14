@@ -1942,4 +1942,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>940169</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>19bf8938a6f040644206cd86ec54d9d5</srcmd5>
+    <version>9.24.16</version>
+    <time>1642198347</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.15 → 9.24.16
+
+- Fixed regression in compression detection
+  The change from 282529de8f612dee32d54ee868c2365dcd829220
+  Introduced a bad regression. The assumption was made that the
+  xz tool could be used to detect if a file is compressed or not.
+  However, this requires the file to be locally present. In the
+  scope of the method call is_compressed() and within a remote
+  deployment e.g PXE this is not the case. Therefore the former
+  way to &quot;detect&quot; the compression according to the .xz postfix
+  of the source filename was restored. In addition the function
+  name was changed to is_xz_compressed() because that's what the
+  method can do and not more. This Fixes #2015
+
+- Added debug option --debug-run-scripts-in-screen
+  Instead of running scripts in screen if the --debug switch is
+  set, we allow to explicitly switch on this behavior via
+  a new option. This Fixes #2010
+
+- Change packages target for bootincludes
+  Packages marked with bootinclude=&quot;true&quot; will be added to the
+  referenced kiwi boot image description if the initrd_system
+  is set to &quot;kiwi&quot; instead of &quot;dracut&quot;. The package marked was
+  primarily added to the type=&quot;image&quot; section and got only
+  added to the type=&quot;bootstrap&quot; section if no image type section
+  existed. However, it has turned out that this approach has
+  the disadvantage that packages which must be installed as
+  part of the bootstraping (e.g certificates) cannot be handled.
+  This commit changes the behavior of the bootinclude to include
+  the package always to the type=&quot;bootstrap&quot; section.</comment>
+    <requestid>946017</requestid>
+  </revision>
 </revisionlist>

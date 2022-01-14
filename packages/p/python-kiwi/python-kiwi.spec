@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.24.14
+Version:        9.24.16
 Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -278,6 +278,11 @@ Requires:       parted
 Requires:       kpartx
 Requires:       cryptsetup
 Requires:       mdadm
+Requires:       util-linux
+# lsblk is part of util-linux-systemd on openSUSE
+%if 0%{?suse_version}
+Requires:       util-linux-systemd
+%endif
 
 %description -n kiwi-systemdeps-disk-images
 Host setup helper to pull in all packages required/useful on
