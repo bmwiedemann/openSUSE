@@ -94,4 +94,12 @@
   * watchman@.service</comment>
     <requestid>945357</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>6ee097671879943837342d2b93d86fdf</srcmd5>
+    <version>unknown</version>
+    <time>1642198403</time>
+    <user>dimstar_suse</user>
+    <comment>- remove instance units from post scripts, they can not be reloaded (forwarded request 946280 from olh)</comment>
+    <requestid>946365</requestid>
+  </revision>
 </revisionlist>

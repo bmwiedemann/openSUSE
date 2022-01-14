@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
+
+-------------------------------------------------------------------
 Mon Jan 10 15:01:24 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - ship README.suse that explains how to use the template systemd units
