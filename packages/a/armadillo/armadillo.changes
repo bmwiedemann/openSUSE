@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 11 18:39:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.8.0:
+  * Faster handling of symmetric matrices by pinv() and rank().
+  * Faster handling of diagonal matrices by inv_sympd(), pinv(),
+    rank().
+  * Expanded norm() to handle integer vectors and matrices.
+  * Added datum::tau to replace 2pi.
+
+-------------------------------------------------------------------
 Fri Dec 31 18:00:35 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.7.6:
