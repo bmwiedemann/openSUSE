@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  6 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.36
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.36      2022-01-05 14:39:42Z
+      - Fix examples in HTTP::Request::Common synopsis: HTTP::Request::Common
+        does not put headers in an arrayref, unlike HTTP::Request (GH#170) (Karen
+        Etheridge)
+      - Update to contributing information (GH#171) (Håkon Hægland)
+
+-------------------------------------------------------------------
 Fri Nov 12 03:06:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.35
