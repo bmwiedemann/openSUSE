@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 22:24:07 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Remove recommends on supportutils per review
+- Remove insecure recommends on md5 sasl auth
+
+-------------------------------------------------------------------
 Mon Jan 10 05:25:04 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Add missing support utils plugin

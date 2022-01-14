@@ -113,13 +113,6 @@ Requires:       krb5
 # ldap gssapi auth, so we recommend it.
 # This used to be a requirement, but it's actually optional.
 Recommends:     cyrus-sasl-gssapi
-# This is required by rfc2831, however it's also horribly insecure
-# and requires insecure password storage. We really should remove
-# it.
-Recommends:     cyrus-sasl-digestmd5
-# Recommended to be installed to assist with debugging and problem
-# solving.
-Recommends:     supportutils
 
 Requires(post): fillup
 Requires(post): permissions
