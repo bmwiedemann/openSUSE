@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.15
+Version:        5.16
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -125,10 +125,9 @@ ln -s "%_sbindir/ip" "$b/sbin/"
 mkdir -p "$b/bin"
 ln -sf "%_sbindir/ip" "$b/bin/ip"
 %endif
-for BIN in lnstat nstat routef routel ss; do
+for BIN in lnstat nstat routel ss; do
 	ln -sf "%_sbindir/$BIN" "$b/%_bindir/$BIN"
 done
-rm "$b/%_sbindir/ifcfg"
 mkdir -p "$b/%_docdir/%name"
 cp -an README* examples/bpf "$b/%_docdir/%name/"
 %fdupes %buildroot/%_prefix
@@ -136,7 +135,6 @@ cp -an README* examples/bpf "$b/%_docdir/%name/"
 %files
 %_bindir/lnstat
 %_bindir/nstat
-%_bindir/routef
 %_bindir/routel
 %_bindir/ss
 %_sbindir/*

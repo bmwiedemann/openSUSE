@@ -15,12 +15,12 @@ Match the directory layout of openSUSE and SLE.
 @@ -14,7 +14,7 @@ endif
  
  PREFIX?=/usr
- LIBDIR?=$(PREFIX)/lib
 -SBINDIR?=/sbin
 +SBINDIR?=/usr/sbin
  CONFDIR?=/etc/iproute2
  NETNS_RUN_DIR?=/var/run/netns
  NETNS_ETC_DIR?=/etc/netns
+ DATADIR?=$(PREFIX)/share
 @@ -31,7 +31,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
  
  SHARED_LIBS = y
