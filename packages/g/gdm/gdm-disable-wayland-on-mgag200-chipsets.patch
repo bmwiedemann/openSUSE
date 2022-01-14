@@ -1,18 +1,21 @@
-Index: gdm-41.alpha/data/61-gdm.rules.in
+Index: gdm-41.3/data/61-gdm.rules.in
 ===================================================================
---- gdm-41.alpha.orig/data/61-gdm.rules.in
-+++ gdm-41.alpha/data/61-gdm.rules.in
-@@ -8,3 +8,13 @@ SUBSYSTEM=="drm", KERNEL=="card[1-9]*",
- ACTION=="add", SUBSYSTEM=="module", KERNEL=="nvidia_drm", ATTR{parameters/modeset}=="N", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
- # disable Wayland if modesetting is disabled
- IMPORT{cmdline}="nomodeset", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
+--- gdm-41.3.orig/data/61-gdm.rules.in
++++ gdm-41.3/data/61-gdm.rules.in
+@@ -1,6 +1,16 @@
+ # disable Wayland on Hi1710 chipsets
+ ATTR{vendor}=="0x19e5", ATTR{device}=="0x1711", GOTO="gdm_disable_wayland"
+ 
 +# disable Wayland on Matrox Electronics Systems Ltd. MGA G200 server engines
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0524", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0530", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0532", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0533", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0534", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0536", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0538", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0524", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0530", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0532", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0533", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0534", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0536", GOTO="gdm_disable_wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0538", GOTO="gdm_disable_wayland"
 +
+ # disable Wayland if modesetting is disabled
+ KERNEL!="card[0-9]*", GOTO="gdm_nomodeset_end"
+ SUBSYSTEM!="drm", GOTO="gdm_nomodeset_end"

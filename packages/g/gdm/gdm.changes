@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 12 19:48:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.3:
+  + Juggle Xorg's -listen/-nolisten command line change better.
+  + Fix session type selection.
+  + Fix crash.
+  + Drop vestigial gdm-pin service.
+  + XDMCP fixes.
+  + Wayland nvidia udev updates.
+  + Updated translations.
+- Rebase gdm-disable-wayland-on-mgag200-chipsets.patch.
+- Drop gdm-daemon-Infer-session-type-from-desktop-file.patch and
+  gdm-restart-greeter-session-after-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Dec 30 04:28:16 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Move

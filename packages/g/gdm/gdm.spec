@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define enable_split_authentication 0
 
 Name:           gdm
-Version:        41.0
+Version:        41.3
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -63,10 +63,6 @@ Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
 Patch14:        gdm-switch-user-tty7.patch
 # PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
 Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
-# PATCH-FIX-UPSTREAM gdm-daemon-Infer-session-type-from-desktop-file.patch bsc#1191809 glgo#GNOME/gdm#159 rstrode@redhat.com -- daemon: Infer session type from desktop file if user has no saved session type
-Patch16:        gdm-daemon-Infer-session-type-from-desktop-file.patch
-# PATCH-FIX-UPSTREAM gdm-restart-greeter-session-after-crash.patch bsc#1190230 glgo#GNOME/gdm#735 xwang@suse.com -- Restart greeter session when crashed
-Patch17:        gdm-restart-greeter-session-after-crash.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
@@ -234,8 +230,6 @@ running display manager.
 %endif
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
-%patch17 -p1
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
