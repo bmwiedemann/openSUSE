@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 06:03:29 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Added lsm 'none' section to the security schema (jsc#SLE-22069)
+- 4.4.8
+
+-------------------------------------------------------------------
 Fri Dec 24 08:50:55 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Added 'lsm' section to the security schema (jsc#SLE-22069)
