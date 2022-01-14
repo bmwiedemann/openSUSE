@@ -23,4 +23,12 @@
     <comment>Update to upstream relese 1.5.4</comment>
     <requestid>788312</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8163cf6a8b52365b0d57922a1ad761cf</srcmd5>
+    <version>1.6.1</version>
+    <time>1642198394</time>
+    <user>dimstar_suse</user>
+    <comment>1.6.1</comment>
+    <requestid>946450</requestid>
+  </revision>
 </revisionlist>

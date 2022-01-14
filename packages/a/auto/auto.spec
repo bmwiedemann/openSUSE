@@ -1,7 +1,7 @@
 #
 # spec file for package auto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global auto_ver 1.5.4
-%global common_ver 0.10
-%global service_ver 1.0-rc4
+%global auto_ver 1.6.1
+%global common_ver 1.0
+%global service_ver 1.0
 %global parent_ver 6
 Name:           auto
 Version:        %{auto_ver}
@@ -35,6 +35,8 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.squareup:javapoet)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-invoker-plugin)
+BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -50,19 +52,44 @@ Obsoletes:      %{name}-factory < %{version}-%{release}
 Common utilities for creating annotation processors.
 
 %package service
-Summary:        Provider-configuration files for ServiceLoader
+Summary:        AutoService Processor
 Group:          Development/Libraries/Java
 
 %description service
-A configuration/meta-data generator for
-java.util.ServiceLoader-style service
-providers.
+Provider-configuration files for ServiceLoader.
+
+%package service-aggregator
+Summary:        AutoService Aggregator
+Group:          Development/Libraries/Java
+
+%description service-aggregator
+Aggregator POM for @AutoService.
+
+%package service-annotations
+Summary:        AutoService Annotations
+Group:          Development/Libraries/Java
+
+%description service-annotations
+Provider-configuration files for ServiceLoader.
 
 %package value
 Summary:        Auto Value
 Group:          Development/Libraries/Java
 
 %description value
+Immutable value-type code generation for Java 1.6+.
+
+%package value-annotations
+Summary:        Auto Value Annotations
+Group:          Development/Libraries/Java
+
+%description value-annotations
+Immutable value-type code generation for Java 1.6+.
+
+%package value-parent
+Summary:        Auto Value Parent
+
+%description value-parent
 Immutable value-type code generation for Java 1.6+.
 
 %package javadoc
@@ -79,31 +106,29 @@ mv auto-auto-parent-%{parent_ver}/pom.xml .
 mv auto-auto-common-%{common_ver}/common common
 mv auto-auto-service-%{service_ver}/service service
 
+find -name '*.class' -print -delete
+find -name '*.jar' -print -delete
+
 # remove unnecessary dependency on parent POM
 %pom_remove_parent
 
 # Disable factory module due to missing dep:
 # com.google.googlejavaformat:google-java-format
 %pom_disable_module factory build-pom.xml
+# Missing dep on com.google.gwt:gwt
+%pom_disable_module src/it/functional value/pom.xml
+%pom_disable_module src/it/gwtserializer value/pom.xml
 
 # Fix deps in service module
 %pom_xpath_set "pom:parent/pom:version" 6 service
-%pom_change_dep com.google.auto:auto-common com.google.auto:auto-common:0.10 service
-
+%pom_change_dep com.google.auto:auto-common com.google.auto:auto-common:1.0 value/processor
+%pom_change_dep com.google.auto.service:auto-service com.google.auto.service:auto-service:1.0 value/processor
+#%pom_change_dep com.google.auto:auto-common com.google.auto:auto-common:0.10 service
 %pom_remove_plugin org.apache.maven.plugins:maven-checkstyle-plugin
-%pom_remove_plugin :maven-shade-plugin value
-%pom_remove_plugin :maven-invoker-plugin value
+%pom_remove_plugin :maven-shade-plugin
+%pom_remove_plugin :maven-shade-plugin value/processor
 
-# Broader guava compatibility
-sed -i -e 's/23.5-jre/20.0/' pom.xml
-sed -i -e 's/toImmutableMap/toMap/' -e 's/static com.google.common.collect.ImmutableMap/static java.util.stream.Collectors/' \
-  -e '/elementValues/s/ImmutableMap/Map/' \
-  common/src/main/java/com/google/auto/common/SimpleAnnotationMirror.java
-sed -i -e 's/toImmutableSet/toSet/' -e 's/static com.google.common.collect.ImmutableSet/static java.util.stream.Collectors/' \
-  -e '/ImmutableSet</s/ImmutableSet/Set/' \
-  service/src/main/java/com/google/auto/service/processor/AutoServiceProcessor.java
-
-%{mvn_package} :build-only __noinstall
+%mvn_package :build-only __noinstall
 
 %build
 %{mvn_build} -sf -- \
@@ -129,8 +154,20 @@ sed -i -e 's/toImmutableSet/toSet/' -e 's/static com.google.common.collect.Immut
 %doc service/README.md
 %license LICENSE.txt
 
+%files service-aggregator -f .mfiles-%{name}-service-aggregator
+%license LICENSE.txt
+
+%files service-annotations -f .mfiles-%{name}-service-annotations
+%license LICENSE.txt
+
 %files value -f .mfiles-%{name}-value
 %doc value/README.md
+%license LICENSE.txt
+
+%files value-annotations -f .mfiles-%{name}-value-annotations
+%license LICENSE.txt
+
+%files value-parent -f .mfiles-%{name}-value-parent
 %license LICENSE.txt
 
 %files javadoc -f .mfiles-javadoc
