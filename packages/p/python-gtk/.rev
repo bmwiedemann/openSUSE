@@ -324,4 +324,12 @@
   pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch. (forwarded request 893983 from dimstar)</comment>
     <requestid>893991</requestid>
   </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>3760d0d408defb486907f76eb1ca423e</srcmd5>
+    <version>2.24.0</version>
+    <time>1642198370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945918</requestid>
+  </revision>
 </revisionlist>

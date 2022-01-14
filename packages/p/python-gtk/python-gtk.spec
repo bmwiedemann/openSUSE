@@ -1,7 +1,7 @@
 #
 # spec file for package python-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  libglade2-devel
 BuildRequires:  python-cairo-devel
 BuildRequires:  python-devel
 BuildRequires:  python-gobject2-devel
+BuildRequires:  python-rpm-macros
 Requires:       %{python_gtk_req}
 # for cross-distro compatibility:
 Provides:       pygtk2 = %{version}
