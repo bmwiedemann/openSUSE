@@ -180,4 +180,12 @@
   * oidentd@.service</comment>
     <requestid>925223</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>d73f5bbb732be6d7998e2b54807c0f88</srcmd5>
+    <version>2.5.0</version>
+    <time>1642198389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946291</requestid>
+  </revision>
 </revisionlist>

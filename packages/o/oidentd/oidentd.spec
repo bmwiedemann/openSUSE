@@ -103,12 +103,12 @@ ln -fs %{_sysconfdir}/init.d/oidentd %{buildroot}%{_sbindir}/rcoidentd
 
 %if %{with systemd}
 %pre
-%service_add_pre oidentd@.service oidentd.socket
+%service_add_pre oidentd.socket
 %endif
 
 %post
 %if %{with systemd}
-%service_add_post oidentd@.service oidentd.socket
+%service_add_post oidentd.socket
 %fillup_only
 %else
 %fillup_and_insserv
@@ -116,12 +116,12 @@ ln -fs %{_sysconfdir}/init.d/oidentd %{buildroot}%{_sbindir}/rcoidentd
 
 %if %{with systemd}
 %preun
-%service_del_preun oidentd@.service oidentd.socket
+%service_del_preun oidentd.socket
 %endif
 
 %postun
 %if %{with systemd}
-%service_del_postun oidentd@.service oidentd.socket
+%service_del_postun oidentd.socket
 %else
 %restart_on_update
 %insserv_cleanup

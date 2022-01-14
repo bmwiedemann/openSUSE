@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
+
+-------------------------------------------------------------------
 Thu Oct 14 09:10:39 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Remove unsupported hardening flags when using old version
