@@ -3,6 +3,8 @@
 #!BuildTag: %%TAGPREFIX%%/virt-api:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/virt-api:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
+#!ExclusiveArch: x86_64 aarch64
+
 # virt-api container image
 # KUBEVIRTFROM defined in prjconf, e.g.
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
