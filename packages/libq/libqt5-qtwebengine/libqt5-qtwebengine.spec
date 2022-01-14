@@ -29,15 +29,15 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.7
+Version:        5.15.8
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.7
-%define so_version 5.15.7
+%define real_version 5.15.8
+%define so_version 5.15.8
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
@@ -47,8 +47,6 @@ Patch1:         disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch2:         sandbox-statx-futex_time64.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         rtc-dont-use-h264.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Fix-build-with-glibc-2.34.patch
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Jan 04 22:22:01 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.8:
+  * Update Chromium:
+    [Backport] CVE-2021-3517: libxml2: Heap-based buffer overflow
+    in xmlEncodeEntitiesInternal() in entities.c
+    [Backport] CVE-2021-3541 libxml2: Exponential entity expansion
+    attack bypasses all existing protection mechanisms
+    [Backport] CVE-2021-37984 : Heap buffer overflow in PDFium
+    [Backport] CVE-2021-37987 : Use after free in Network APIs
+    [Backport] CVE-2021-37989 : Inappropriate implementation in Blink
+    [Backport] CVE-2021-37992 : Out of bounds read in WebAudio
+    [Backport] CVE-2021-37993 : Use after free in PDF Accessibility
+    [Backport] CVE-2021-37996 : Insufficient validation of untrusted
+    input in Downloads
+    [Backport] CVE-2021-38001 : Type Confusion in V8
+    [Backport] CVE-2021-38003 : Inappropriate implementation in V8
+    [Backport] CVE-2021-38005: Use after free in loader (1/3)
+    [Backport] CVE-2021-38005: Use after free in loader (2/3)
+    [Backport] CVE-2021-38005: Use after free in loader (3/3)
+    [Backport] CVE-2021-38007: Type Confusion in V8
+    [Backport] CVE-2021-38009: Inappropriate implementation in cache
+    [Backport] CVE-2021-38010: Inappropriate implementation in serviceworkers
+    [Backport] CVE-2021-38012: Type Confusion in V8
+    [Backport] CVE-2021-38015: Inappropriate implementation in input
+    [Backport] CVE-2021-38017: Insufficient policy enforcement in iframe
+    sandbox
+    [Backport] CVE-2021-38018: Inappropriate implementation in navigation
+    [Backport] CVE-2021-38019: Insufficient policy enforcement in CORS
+    [Backport] CVE-2021-38021: Inappropriate implementation in referrer
+    [Backport] CVE-2021-38022: Inappropriate implementation in WebAuthentication
+    [Backport] CVE-2021-4057: Use after free in file API
+    [Backport] CVE-2021-4058: Heap buffer overflow in ANGLE (1/2)
+    [Backport] CVE-2021-4058: Heap buffer overflow in ANGLE (2/2)
+    [Backport] CVE-2021-4059: Insufficient data validation in loader
+    [Backport] CVE-2021-4062: Heap buffer overflow in BFCache
+    [Backport] CVE-2021-4078: Type confusion in V8
+    [Backport] CVE-2021-4079: Out of bounds write in WebRTC
+    [Backport] CVE-2021-4098: Insufficient data validation in Mojo
+    [Backport] CVE-2021-4099: Use after free in Swiftshader
+    [Backport] CVE-2021-4101: Heap buffer overflow in Swiftshader.
+    [Backport] CVE-2021-4102: Use after free in V8
+    [Backport] Dependency for CVE-2021-37989
+    [Backport] Dependency for CVE-2021-38009
+    [Backport] Security bug 1245870
+    [Backport] Security bug 1252858
+    [Backport] Security bug 1259899
+    Bump V8_PATCH_LEVEL
+    Compile with GCC 11 -std=c++20
+    Fix stack overflow on gpu channel recreate with an error
+    Use wglSetPixelFormat directly only if in software mode
+    [Backport] Handle long SIGSTKSZ in glibc > 2.33
+    [Backport] abseil-cpp: Fixes build with latest glibc
+  * Handle qtpdf compilation with static runtime
+  * Add bitcode support for qtpdf on ios
+  * Do not access accessibility from qt post routines
+  * Blacklist javascriptClipboard test on ubuntu 20.04
+  * Re-enable network-service-in-process
+  * Bump version from 5.15.7 to 5.15.8
+  * Update patch level
+  * Fix pinch gesture
+  * Fix leak of properties after XkbRF_GetNamesProp
+  * Fix leak on getDefaultScreeenId
+- Drop patch:
+  * 0001-Fix-build-with-glibc-2.34.patch
+
+-------------------------------------------------------------------
 Fri Oct 29 09:53:05 UTC 2021 - christophe@krop.fr
 
 - Update to version 5.15.7:
