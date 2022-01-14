@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 11 21:22:27 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- remove routef from links; it doesn't exist anymore
+
+-------------------------------------------------------------------
+Tue Jan 11 19:49:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 5.16:
+  * devlink: Fix cmd_dev_param_set() to check configuration mode
+  * ip: add AMT support
+  * iplink_can: fix configuration ranges in print_usage() and add
+    unit
+  * tc: flower: Fix buffer overflow on large labels
+  * ip/ipnexthop: fix unsigned overflow in parse_nh_group_type_res()
+  * tc/m_vlan: fix print_vlan() conditional on TCA_VLAN_ACT_PUSH_ETH
+  * iplink_can: add new CAN FD bittiming parameters:
+    Transmitter Delay Compensation (TDC)
+
+-------------------------------------------------------------------
 Sat Nov 13 20:03:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.15:
