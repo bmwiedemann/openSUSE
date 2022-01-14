@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 14 06:44:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use %sysusers_create_package on Tumbleweed
+- Add fix_for_smt_gt8.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 12:51:58 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.2:

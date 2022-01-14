@@ -18,7 +18,7 @@ Index: gerbera-1.9.1/scripts/systemd/gerbera.service.cmake
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+ReadWritePaths=/usr/share/gerbera/ /etc/gerbera/
++ReadWritePaths=/usr/share/gerbera/ /etc/gerbera/ /var/log/gerbera
 +# end of automatic additions 
  Type=simple
  User=gerbera

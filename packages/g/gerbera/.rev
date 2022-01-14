@@ -67,4 +67,14 @@
 </comment>
     <requestid>923735</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8b1494cd18e0013c5c5d4db6856a0ea2</srcmd5>
+    <version>1.9.2</version>
+    <time>1642198395</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %sysusers_create_package on Tumbleweed
+- Add fix_for_smt_gt8.patch
+</comment>
+    <requestid>946338</requestid>
+  </revision>
 </revisionlist>

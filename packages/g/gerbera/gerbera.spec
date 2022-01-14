@@ -1,7 +1,7 @@
 #
 # spec file for package gerbera
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,12 @@ Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%
 Source1:        config.xml
 Source2:        gerbera.sysusers.in
 Patch0:         harden_gerbera.service.patch
+# PATCH-FIX-UPSTREAM: this will be included with v1.9.3
+Patch1:         fix_for_smt_gt8.patch
+BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-%if 0%{?suse_version} <= 1550
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
-BuildRequires:  ccache
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(duktape)
@@ -60,7 +57,13 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(taglib) >= 1.11
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
+Requires:       logrotate
 %{?systemd_requires}
+%if 0%{?suse_version} <= 1550
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 Gerbera is a UPnP media server which allows streaming digital
@@ -103,7 +106,7 @@ mkdir -p %{buildroot}%{_localstatedir}/log/gerbera
 touch %{buildroot}%{_localstatedir}/log/%{name}
 mkdir -p  %{buildroot}%{_sysconfdir}/logrotate.d
 cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << 'EOF'
-/var/log/gerbera/gerbera {
+%{_localstatedir}/log/gerbera/gerbera {
 create 644 gerbera gerbera
       monthly
       compress
@@ -129,7 +132,11 @@ useradd -r -g gerbera -d %{_sysconfdir}/gerbera -s /sbin/nologin \
 
 %post
 %service_add_post %{name}.service
+%if 0%{?suse_version} > 1590
+%sysusers_create_package %{_sysusersdir}/%{name}.conf
+%else
 %sysusers_create %{_sysusersdir}/%{name}.conf
+%endif
 
 %preun
 %service_del_preun %{name}.service
