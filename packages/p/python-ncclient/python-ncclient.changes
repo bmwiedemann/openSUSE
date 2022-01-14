@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 14 17:35:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Specfile fix:
+  * Remove the Python 3.4 conditional. It the _nodots macro is not
+    known to the obs resolver.
+  * Also remove python2 lines for cleanup, not resolvable in 15.3
+    in either case.
+
+-------------------------------------------------------------------
 Tue Jan 11 20:42:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - python-selectors2 is only required for python <= 3.4

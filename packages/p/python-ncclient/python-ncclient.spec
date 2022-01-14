@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-ncclient
 Version:        0.6.12
 Release:        0
@@ -34,9 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.3.0
 Requires:       python-paramiko >= 1.15.0
-%if 0%{?python_version_nodots} <= 34
-Requires:       python-selectors2 >= 2.0.1
-%endif
 Requires:       python-setuptools > 0.6
 Requires:       python-six
 BuildArch:      noarch
@@ -44,12 +41,6 @@ BuildRequires:  %{python_module lxml >= 3.3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python2-selectors2 >= 2.0.1
-%endif
-%if 0%{?python3_version_nodots} <= 34
-BuildRequires:  python3-selectors2 >= 2.0.1
-%endif
 BuildRequires:  %{python_module six}
 %python_subpackages
 
@@ -92,7 +83,8 @@ cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ncclient
+%{python_sitelib}/ncclient-%{version}*-info
 
 %files -n python-ncclient-doc
 %doc README.md README.rst examples docs/build/html
