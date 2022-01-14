@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb87a66872e9206382aab627ca45a04e</srcmd5>
+    <version>0.0.25b</version>
+    <time>1642198383</time>
+    <user>dimstar_suse</user>
+    <comment>Has been patched to build with Factory's mozjs78 and the Python 2 dependency was removed.</comment>
+    <requestid>946235</requestid>
+  </revision>
+</revisionlist>
