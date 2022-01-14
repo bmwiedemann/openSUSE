@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 22:04:27 UTC 2022 - Federico Mena Quintero <federico@suse.com>
+
+- Add dependency on findutils, as lcov's scripts use find(1) to locate
+  various files in the user's build directories.  bsc#1194671
+
+-------------------------------------------------------------------
 Fri Oct 23 14:36:50 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Fix output of --version option.

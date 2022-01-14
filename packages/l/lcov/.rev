@@ -221,4 +221,12 @@
     <comment>- Fix output of --version option.</comment>
     <requestid>843618</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>84ec8a42bb24c8ac745f7b24f9da3af1</srcmd5>
+    <version>1.15+git.20200812.d100e6c</version>
+    <time>1642198396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946344</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lcov
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/linux-test-project/lcov
 Source0:        %{name}-%{version}.tar.xz
+Requires:       findutils
 Requires:       gcc
 Requires:       perl-GD
 Requires:       perl-PerlIO-gzip
