@@ -1,7 +1,7 @@
 #
 # spec file for package openucx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            http://openucx.org/
 Source:         https://github.com/openucx/ucx/releases/download/v%version/ucx-%version.tar.gz
 Source1:        baselibs.conf
 Patch1:         openucx-s390x-support.patch
+Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -133,7 +134,10 @@ hardware.
 
 %prep
 %setup -qn ucx-%version
+%ifarch s390x
 %patch1
+%endif
+%patch2
 
 %build
 autoreconf -fi

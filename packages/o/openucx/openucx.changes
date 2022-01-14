@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 08:42:05 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Fix UCM bistro support on non s390x archs
+- Add ucm-fix-UCX_MEM_MALLOC_RELOC.patch to disable malloc relocations by default (bsc#1194369)
+
+-------------------------------------------------------------------
 Thu Sep 23 07:35:57 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v1.11.1 (jsc#SLE-19260)
