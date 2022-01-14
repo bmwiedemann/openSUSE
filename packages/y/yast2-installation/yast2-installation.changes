@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 12 13:02:56 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Show release notes button in progress in Qt interface
+  (jsc#SLE-20437)
+- 4.4.34
+
+-------------------------------------------------------------------
 Fri Jan  7 09:02:05 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Updated yast2 dependency to ensure the new
