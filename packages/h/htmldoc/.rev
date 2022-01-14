@@ -225,4 +225,12 @@ Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 f
   + htmldoc-CVE-2021-40985.patch (forwarded request 929571 from pgajdos)</comment>
     <requestid>929621</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c31060be5a837bb3faa3cbd61806c2b8</srcmd5>
+    <version>1.9.14</version>
+    <time>1642198365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945830</requestid>
+  </revision>
 </revisionlist>

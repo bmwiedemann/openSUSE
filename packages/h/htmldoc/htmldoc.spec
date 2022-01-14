@@ -1,7 +1,7 @@
 #
 # spec file for package htmldoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           htmldoc
-Version:        1.9.12
+Version:        1.9.14
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
-# CVE-2021-40985 [bsc#1192357], buffer overflow may lead to DoS via a crafted BMP image
-Patch0:         htmldoc-CVE-2021-40985.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -42,8 +40,7 @@ HTMLDOC converts HTML source files into indexed HTML, PostScript, or
 Portable Document Format (PDF) files that can be viewed online or printed.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 
 %build
 %configure \
@@ -66,7 +63,6 @@ rm -rf %{buildroot}/home %{buildroot}%{_datadir}/doc/%{name}
 %doc CHANGES.md README.md
 %{_bindir}/htmldoc
 %{_datadir}/htmldoc
-%{_datadir}/pixmaps/htmldoc.xpm
 %{_datadir}/icons/hicolor/*x*/apps/htmldoc.png
 %{_datadir}/mime/packages/htmldoc.xml
 %{_datadir}/applications/htmldoc.desktop
