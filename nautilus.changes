@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 12 14:44:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Avoid cropping format popover in Compress dialog.
+  + Fix "Move to"/"Copy to" from Starred.
+  + Fix memory leak on tab switch.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Nov 11 07:26:51 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add BuildRequires python3-dataclasses since SLE 15 SP4 uses

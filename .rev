@@ -1444,4 +1444,12 @@ Hence, recommended to be added to 12.3</comment>
   python36 to build. (forwarded request 930806 from yfjiang)</comment>
     <requestid>930824</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>3abe53832324738fceb1f4a1b4d6abb0</srcmd5>
+    <version>41.2</version>
+    <time>1642198370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945919</requestid>
+  </revision>
 </revisionlist>
