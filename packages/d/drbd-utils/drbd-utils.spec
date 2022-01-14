@@ -16,6 +16,7 @@
 #
 
 
+%define services drbd.service
 %if !0%{?usrmerged}
 %define sbindir /sbin
 %define libdir  /lib
@@ -137,27 +138,11 @@ rm -rf %{buildroot}%{_sysconfdir}/xen
 %endif
 
 %pre
-%service_add_pre drbd.service
-%service_add_pre drbd-lvchange@.service
-%service_add_pre drbd-promote@.service
-%service_add_pre drbd-reconfigure-suspend-or-error@.service
-%service_add_pre drbd-services@.target
-%service_add_pre drbd-wait-promotable@.service
-%service_add_pre drbd@.service
-%service_add_pre drbd@.target
-%service_add_pre ocf.ra@.service
+%service_add_pre %{services}
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/drbd.conf
-%service_add_post drbd.service
-%service_add_post drbd-lvchange@.service
-%service_add_post drbd-promote@.service
-%service_add_post drbd-reconfigure-suspend-or-error@.service
-%service_add_post drbd-services@.target
-%service_add_post drbd-wait-promotable@.service
-%service_add_post drbd@.service
-%service_add_post drbd@.target
-%service_add_post ocf.ra@.service
+%service_add_post %{services}
 
 #May also overlap the $MAN_LINK in documentation/v9/Makefile.in
 for f in drbd drbdadm drbdmeta drbdsetup; do
@@ -172,26 +157,10 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %endif
 
 %preun
-%service_del_preun drbd.service
-%service_del_preun drbd-lvchange@.service
-%service_del_preun drbd-promote@.service
-%service_del_preun drbd-reconfigure-suspend-or-error@.service
-%service_del_preun drbd-services@.target
-%service_del_preun drbd-wait-promotable@.service
-%service_del_preun drbd@.service
-%service_del_preun drbd@.target
-%service_del_preun ocf.ra@.service
+%service_del_preun %{services}
 
 %postun
-%service_del_postun drbd.service
-%service_del_postun drbd-lvchange@.service
-%service_del_postun drbd-promote@.service
-%service_del_postun drbd-reconfigure-suspend-or-error@.service
-%service_del_postun drbd-services@.target
-%service_del_postun drbd-wait-promotable@.service
-%service_del_postun drbd@.service
-%service_del_postun drbd@.target
-%service_del_postun ocf.ra@.service
+%service_del_postun %{services}
 
 %files -n drbd-utils
 %config(noreplace) %{_sysconfdir}/drbd.conf
