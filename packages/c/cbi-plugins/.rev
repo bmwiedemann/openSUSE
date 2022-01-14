@@ -23,4 +23,12 @@
     <comment>Do not build against guava20</comment>
     <requestid>892447</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bcb622ccea3de9d4648a84aa1807aaa9</srcmd5>
+    <version>1.1.5</version>
+    <time>1642198392</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with newer auto</comment>
+    <requestid>946333</requestid>
+  </revision>
 </revisionlist>

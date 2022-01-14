@@ -1,7 +1,7 @@
 #
 # spec file for package cbi-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.google.auto.value:auto-value)
+BuildRequires:  mvn(com.google.auto.value:auto-value-annotations)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(de.pdark:decentxml)
@@ -75,6 +76,7 @@ sed -i -e '/SuppressFBWarnings/d' maven-plugins/eclipse-flatpak-packager/src/mai
 # Build the common module
 %pom_xpath_inject pom:modules "<module>../common/</module>" maven-plugins
 %pom_remove_dep org.eclipse.cbi:checkstyle common
+%pom_add_dep com.google.auto.value:auto-value-annotations:1.6 common
 
 # Parent pom and common module are "released" independently, but actually nothing changed yet since last releases
 sed -i -e 's/1\.0\.5-SNAPSHOT/1.0.4/' pom.xml
