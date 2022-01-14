@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>940842</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3f032d579774a1c730057b32df8ba53</srcmd5>
+    <version>1.23.0</version>
+    <time>1642198357</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase _constraints to 13GB</comment>
+    <requestid>946124</requestid>
+  </revision>
 </revisionlist>
