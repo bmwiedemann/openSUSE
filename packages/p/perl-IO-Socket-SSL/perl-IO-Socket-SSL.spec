@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Socket-SSL
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.073
+Version:        2.074
 Release:        0
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 License:        Artistic-1.0 OR GPL-1.0-or-later

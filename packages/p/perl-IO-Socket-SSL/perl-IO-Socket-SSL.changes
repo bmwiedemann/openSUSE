@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  8 03:07:59 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.074
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.074
+  - add SSL_ciphersuites option for TLS 1.3 ciphers
+  - no longer use own default for ciphers, instead use system default but disable
+    some weak ciphers which might still be enabled on older systems
+
+-------------------------------------------------------------------
 Thu Dec 23 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.073
