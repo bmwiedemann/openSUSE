@@ -11,7 +11,6 @@ unsorted:
   - 4ti2-devel 
   - 6tunnel 
   - 7kaa 
-  - 7zip 
   - AppCSXCAD 
   - AppStream-devel 
   - AppStream-doc 
@@ -7275,6 +7274,8 @@ unsorted:
   - jag 
   - jag-data 
   - jag-editor 
+  - jakarta-activation 
+  - jakarta-activation-javadoc 
   - jakarta-commons-discovery 
   - jakarta-commons-discovery-javadoc 
   - jakarta-commons-launcher 
@@ -9933,7 +9934,7 @@ unsorted:
   - libcairomm-1_16-1-32bit: [x86_64] 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2 
+  - libcalc2_14_0_14 
   - libcalcium0 
   - libcamd-doc 
   - libcamera-devel 
@@ -11878,8 +11879,8 @@ unsorted:
   - liblxpanel0 
   - liblxqt 
   - liblxqt-devel 
-  - liblxqt-globalkeys-ui0 
-  - liblxqt-globalkeys0 
+  - liblxqt-globalkeys-ui1 
+  - liblxqt-globalkeys1 
   - liblxqt-lang 
   - liblxqt1 
   - liblz1 
@@ -14408,7 +14409,6 @@ unsorted:
   - libvotca2022 
   - libvotca_csg2022 
   - libvotca_tools2022 
-  - libvotca_xtp2022: [x86_64] 
   - libvotequorum8 
   - libvotequorum8-32bit: [x86_64] 
   - libvpd2 
@@ -17465,6 +17465,7 @@ unsorted:
   - nss-resolve 
   - nss-shared-helper-devel 
   - nss-systemd 
+  - nss_synth: [x86_64] 
   - nss_wrapper 
   - ntfsprogs-extra 
   - ntl-devel 
@@ -18405,7 +18406,9 @@ unsorted:
   - p11-kit-nss-trust 
   - p11-kit-nss-trust-32bit: [x86_64] 
   - p11-kit-server 
+  - p7zip 
   - p7zip-doc 
+  - p7zip-full 
   - p8-platform-devel 
   - pacemaker 
   - pacemaker-cli 
@@ -21710,6 +21713,7 @@ unsorted:
   - python310-MouseInfo 
   - python310-MulticoreTSNE 
   - python310-Nuitka 
+  - python310-OWSLib 
   - python310-PGet 
   - python310-PTable 
   - python310-Parsley 
@@ -21798,6 +21802,7 @@ unsorted:
   - python310-SQLAlchemy-Utils 
   - python310-SecretStorage 
   - python310-Send2Trash 
+  - python310-Shapely 
   - python310-SimpleWebSocketServer 
   - python310-SoundCard 
   - python310-SoundFile 
@@ -21870,6 +21875,8 @@ unsorted:
   - python310-aioresponses 
   - python310-aiorpcX 
   - python310-aiosignal 
+  - python310-aiosmtpd 
+  - python310-aiosmtplib 
   - python310-aiosqlite 
   - python310-aiounittest 
   - python310-ajsonrpc 
@@ -21939,6 +21946,7 @@ unsorted:
   - python310-atlassian-python-api 
   - python310-atom 
   - python310-atomicwrites 
+  - python310-atpublic 
   - python310-atspi 
   - python310-attr 
   - python310-attrs 
@@ -22567,6 +22575,7 @@ unsorted:
   - python310-django-filter 
   - python310-django-formtools 
   - python310-django-geoposition 
+  - python310-django-grappelli 
   - python310-django-gravatar2 
   - python310-django-guardian 
   - python310-django-haystack 
@@ -22743,6 +22752,7 @@ unsorted:
   - python310-flasgger 
   - python310-flask-jwt-extended 
   - python310-flask-oidc 
+  - python310-flask-restplus 
   - python310-flatbuffers 
   - python310-flatdict 
   - python310-fleming 
@@ -23113,6 +23123,7 @@ unsorted:
   - python310-ldappool 
   - python310-ldaptor 
   - python310-ldas-tools-al-swig 
+  - python310-leather 
   - python310-lesscpy 
   - python310-leveldb 
   - python310-lexicon 
@@ -23585,6 +23596,7 @@ unsorted:
   - python310-pycparser 
   - python310-pycryptodome 
   - python310-pycryptodomex 
+  - python310-pycsw 
   - python310-pyct 
   - python310-pycups 
   - python310-pycurl 
@@ -23606,11 +23618,13 @@ unsorted:
   - python310-pydrive2 
   - python310-pydub 
   - python310-pydyf 
+  - python310-pyeapi 
   - python310-pyee 
   - python310-pyelftools 
   - python310-pyemd 
   - python310-pyenchant 
   - python310-pyerfa 
+  - python310-pyface 
   - python310-pyfakefs 
   - python310-pyfeyn 
   - python310-pyfiglet 
@@ -23690,6 +23704,7 @@ unsorted:
   - python310-pypipegraph 
   - python310-pypng 
   - python310-pyprimes 
+  - python310-pyproj 
   - python310-pypsexec 
   - python310-pypubsub 
   - python310-pypuppetdb 
@@ -24325,6 +24340,7 @@ unsorted:
   - python310-traittypes 
   - python310-transaction 
   - python310-transip 
+  - python310-transitions 
   - python310-translate-toolkit 
   - python310-translation-finder 
   - python310-translationstring 
@@ -24498,6 +24514,7 @@ unsorted:
   - python310-xsge_tiled 
   - python310-xvfbwrapper 
   - python310-xxhash 
+  - python310-yacron 
   - python310-yafe 
   - python310-yamldoc 
   - python310-yamllint 
@@ -24558,7 +24575,6 @@ unsorted:
   - python36-LHAPDF 
   - python36-PyCondor 
   - python36-PyRSS2Gen 
-  - python36-Shapely 
   - python36-ZEO 
   - python36-ZODB 
   - python36-acitoolkit 
@@ -24571,10 +24587,7 @@ unsorted:
   - python36-agate-remote 
   - python36-agate-sql 
   - python36-agate-stats 
-  - python36-aiosmtpd 
-  - python36-aiosmtplib 
   - python36-asteval 
-  - python36-atpublic 
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
@@ -24604,7 +24617,6 @@ unsorted:
   - python36-django-avatar 
   - python36-django-bootstrap4 
   - python36-django-braces 
-  - python36-django-grappelli 
   - python36-django-invitations 
   - python36-django-money 
   - python36-django-multiselectfield 
@@ -24627,10 +24639,8 @@ unsorted:
   - python36-expiringdict 
   - python36-feedparser 
   - python36-ffmpeg-python 
-  - python36-flask-restplus 
   - python36-flask-restx 
   - python36-flufl.lock 
-  - python36-fysom 
   - python36-gast 
   - python36-github3.py 
   - python36-gmpy2 
@@ -24640,7 +24650,6 @@ unsorted:
   - python36-jsonlib-python3 
   - python36-junos-eznc 
   - python36-labelImg 
-  - python36-leather 
   - python36-librouteros 
   - python36-limnoria 
   - python36-lzmaffi 
@@ -24660,7 +24669,6 @@ unsorted:
   - python36-oic 
   - python36-oletools 
   - python36-opentelemetry-api 
-  - python36-pampy 
   - python36-pcodedmp 
   - python36-pep8-naming 
   - python36-pikepdf 
@@ -24671,8 +24679,6 @@ unsorted:
   - python36-podman 
   - python36-pony 
   - python36-pyclipper 
-  - python36-pyeapi 
-  - python36-pyface 
   - python36-pymisp 
   - python36-pypiserver 
   - python36-pysvn 
@@ -24698,7 +24704,6 @@ unsorted:
   - python36-rpmlb 
   - python36-rss2email 
   - python36-s3fs 
-  - python36-selectors2 
   - python36-setuptools-declarative-requirements 
   - python36-sgmllib3k 
   - python36-siosocks 
@@ -24713,7 +24718,6 @@ unsorted:
   - python36-tk 
   - python36-tools 
   - python36-traitsui 
-  - python36-transitions 
   - python36-twodict 
   - python36-ucsmsdk 
   - python36-uncompyle6 
@@ -25896,7 +25900,6 @@ unsorted:
   - python38-fuse 
   - python38-fusepy: [i586] 
   - python38-fuzzywuzzy 
-  - python38-fysom 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
@@ -26491,7 +26494,6 @@ unsorted:
   - python38-pako 
   - python38-palettable 
   - python38-pamela 
-  - python38-pampy 
   - python38-pamqp 
   - python38-pan-python 
   - python38-pandas-datareader 
@@ -27191,7 +27193,6 @@ unsorted:
   - python38-seaborn 
   - python38-securesystemslib 
   - python38-selection 
-  - python38-selectors2 
   - python38-selenium 
   - python38-semantic_version 
   - python38-semver 
@@ -28907,7 +28908,6 @@ unsorted:
   - python39-fusepy 
   - python39-future 
   - python39-fuzzywuzzy 
-  - python39-fysom 
   - python39-gTTS 
   - python39-gTTS-token 
   - python39-gast 
@@ -29558,7 +29558,6 @@ unsorted:
   - python39-pako 
   - python39-palettable 
   - python39-pamela 
-  - python39-pampy 
   - python39-pamqp 
   - python39-pan-python 
   - python39-pandas 
@@ -30318,7 +30317,6 @@ unsorted:
   - python39-seaborn 
   - python39-securesystemslib 
   - python39-selection 
-  - python39-selectors2 
   - python39-selenium 
   - python39-semanage 
   - python39-semantic_version 
@@ -32976,7 +32974,7 @@ unsorted:
   - supertuxkart 
   - supertuxkart-data 
   - supervisor 
-  - supportutils 
+  - supportutils: [i586] 
   - surfraw 
   - surgescript 
   - surgescript-devel 
@@ -33053,7 +33051,7 @@ unsorted:
   - sysdig 
   - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - sysdig-kmp-pae: [i586] 
-  - sysfsutils 
+  - sysfsutils: [i586] 
   - sysfsutils-devel 
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
@@ -42390,9 +42388,6 @@ unsorted:
   - votca-tools 
   - votca-tools-devel 
   - votca-tutorials 
-  - votca-xtp: [x86_64] 
-  - votca-xtp-common: [x86_64] 
-  - votca-xtp-devel: [x86_64] 
   - voxelands 
   - vpcs 
   - vpx-tools 
