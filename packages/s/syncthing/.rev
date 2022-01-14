@@ -992,4 +992,17 @@
 </comment>
     <requestid>936278</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>94bbf5d4d31d0debb3084fc82241a0f8</srcmd5>
+    <version>1.18.6</version>
+    <time>1642198405</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.6
+  * Enhancements:
+    #8050: Display a warning when the ignore delete option is enabled
+    #8068: Request: show pending devices/folders in CLI
+- remove instance units from post scripts, they can not be reloaded
+</comment>
+    <requestid>946390</requestid>
+  </revision>
 </revisionlist>

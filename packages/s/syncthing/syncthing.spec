@@ -1,7 +1,7 @@
 #
 # spec file for package syncthing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -124,7 +124,7 @@ getent passwd strelaysrv >/dev/null || \
 %service_add_post strelaysrv.service
 
 %preun
-%service_del_preun %{name}@.service %{name}-resume.service
+%service_del_preun %{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 %systemd_user_preun %{name}.service
 %endif
