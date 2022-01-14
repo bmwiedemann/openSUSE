@@ -1,7 +1,7 @@
 #
 # spec file for package python-shodan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{!?license: %global license %doc}
 Name:           python-shodan
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Python library and command-line utility for Shodan
 License:        MIT
@@ -37,7 +37,7 @@ Requires:       python-colorama
 Requires:       python-requests >= 2.2.1
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-curses
 Suggests:       %{name}-doc
 BuildArch:      noarch
