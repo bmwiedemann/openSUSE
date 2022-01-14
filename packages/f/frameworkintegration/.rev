@@ -834,4 +834,13 @@
     <comment>KDE Frameworks 5.90.0 (forwarded request 944778 from cgiboudeaux)</comment>
     <requestid>945028</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>14deca55812e5a3999d80ee6cee81140</srcmd5>
+    <version>5.90.0</version>
+    <time>1642198367</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix a regression in 5.90.0 (kde#448237)
+  * 0001-Fix-wrong-porting-of-KNSCore-Engine-configSearchLoca.patch</comment>
+    <requestid>945855</requestid>
+  </revision>
 </revisionlist>

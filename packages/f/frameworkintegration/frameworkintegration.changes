@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 12 14:17:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix a regression in 5.90.0 (kde#448237)
+  * 0001-Fix-wrong-porting-of-KNSCore-Engine-configSearchLoca.patch
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0
