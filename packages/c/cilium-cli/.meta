@@ -1,0 +1,6 @@
+<package name="cilium-cli" project="openSUSE:Factory">
+  <title>cilium-cli</title>
+  <description>CLI to install, manage and troubleshoot Kubernetes clusters running Cilium</description>
+  <devel project="devel:kubic" package="cilium-cli"/>
+  <url>https://github.com/cilium/cilium-cli</url>
+</package>

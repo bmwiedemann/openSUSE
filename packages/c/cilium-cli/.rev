@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c7789f727841d6c44caccd1125bba29</srcmd5>
+    <version>0.10.0</version>
+    <time>1642198408</time>
+    <user>dimstar_suse</user>
+    <comment>new package cilium-cli for installing cilium into a kubernetes cluster</comment>
+    <requestid>946406</requestid>
+  </revision>
+</revisionlist>
