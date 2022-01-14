@@ -83,6 +83,7 @@ skopeo, as they all share the same datastore backend.
 Summary: Client for managing podman containers remotely
 Group:          System/Management
 Conflicts:      %{name} < 3.1.2
+Provides:       podman:%{_bindir}/%{name}-remote
 
 %description remote
 This client allows controlling podman on a separate host, e.g. over SSH.

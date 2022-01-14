@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  9 10:49:22 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add: Provides: podman:/usr/bin/podman-remote subpackage for a clearer upgrade
+  path from podman < 3.1.2
+
+-------------------------------------------------------------------
 Wed Dec 08 21:22:26 UTC 2021 - michael@stroeder.com
 
 - Update to version 3.4.4:
