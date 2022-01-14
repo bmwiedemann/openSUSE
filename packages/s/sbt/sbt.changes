@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 14 07:16:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven 3.8.4
+
+-------------------------------------------------------------------
 Fri Jul 30 12:20:42 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Build package as noarch, since it does not have archfull

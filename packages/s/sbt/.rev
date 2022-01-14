@@ -63,4 +63,12 @@
     <comment>Fix build on some architectures and build as noarch</comment>
     <requestid>909399</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>ac80ed30b045ffb988f077b469e3feef</srcmd5>
+    <version>0.13.18</version>
+    <time>1642198391</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with maven 3.8.4</comment>
+    <requestid>946330</requestid>
+  </revision>
 </revisionlist>
