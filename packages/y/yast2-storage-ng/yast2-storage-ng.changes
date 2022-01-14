@@ -1,3 +1,13 @@
+
+-------------------------------------------------------------------
+Wed Jan 12 11:12:13 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Allow to skip the activation of the rest of LUKS devices
+  (bsc#1162545).
+- Partitioner: always allow to provide password for closed LUKS
+  devices.
+- 4.4.32
+
 -------------------------------------------------------------------
 Wed Jan  5 21:38:56 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
