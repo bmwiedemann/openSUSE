@@ -51,17 +51,11 @@ make %{?_smp_mflags} V=1
 %make_install
 rm -f %{buildroot}/%{_datadir}/openfortivpn/config.template
 
-%preun
-%service_del_preun openfortivpn@.service
-
 %postun
-%service_del_postun openfortivpn@.service
-
-%pre
-%service_add_pre openfortivpn@.service
+%service_del_postun
 
 %post
-%service_add_post openfortivpn@.service
+%service_add_post
 
 %files
 %license LICENSE LICENSE.OpenSSL
