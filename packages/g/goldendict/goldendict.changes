@@ -1,5 +1,6 @@
 -------------------------------------------------------------------
 Wed Jan  5 19:54:38 UTC 2022 - <opensuse.lietuviu.kalba@gmail.com>
+
 - Update to version 1.5.0~rc2+git.20220104T210116:
   Fixed some regressions related to opening of links to other words
   of dictionaries.
@@ -163,6 +164,7 @@ Wed Sep 16 18:27:47 CEST 2009 - buschmann23@opensuse.org
 
 -------------------------------------------------------------------
 Wed Sep 16 16:29:15 CEST 2009 - buschmann23@opensuse.org
+
 - added goldendict-0.9.0-gcc44.patch
 - renamed instal-paths.patch to install-paths.patch
 
