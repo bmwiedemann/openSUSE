@@ -1,7 +1,7 @@
 #
 # spec file for package docker-client-java
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  mvn(com.fasterxml.jackson.datatype:jackson-datatype-guava)
 BuildRequires:  mvn(com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider)
 BuildRequires:  mvn(com.github.jnr:jnr-unixsocket)
 BuildRequires:  mvn(com.google.auto.value:auto-value) >= 1.4.1
+BuildRequires:  mvn(com.google.auto.value:auto-value-annotations)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-io:commons-io)
@@ -82,6 +83,9 @@ rm -rf src/{main,test}/java/com/spotify/docker/client/auth/gcr
 
 # Add dep on hk2 api
 %pom_add_dep org.glassfish.hk2:hk2-api
+
+# Add dep on auto-value-annotations
+%pom_add_dep com.google.auto.value:auto-value-annotations:1.6
 
 # Generate OSGi metadata
 %pom_add_plugin "org.apache.felix:maven-bundle-plugin" pom.xml \

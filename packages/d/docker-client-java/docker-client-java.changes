@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 17:55:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with newer auto version by adding the
+  auto-value-annotations artifact to the dependencies
+
+-------------------------------------------------------------------
 Tue May 11 18:11:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build with the legacy version of guava

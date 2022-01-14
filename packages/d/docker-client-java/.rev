@@ -18,4 +18,12 @@
 </comment>
     <requestid>892402</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>df95e7249f06459092c9ac28ea6fbb5c</srcmd5>
+    <version>8.11.7</version>
+    <time>1642198393</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with newer auto</comment>
+    <requestid>946334</requestid>
+  </revision>
 </revisionlist>
