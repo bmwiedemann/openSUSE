@@ -1,7 +1,7 @@
 #
 # spec file for package python-rich
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-rich
-Version:        10.13.0
+Version:        11.0.0
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
@@ -29,12 +29,12 @@ URL:            https://github.com/willmcgugan/rich
 Source:         https://github.com/willmcgugan/rich/archive/v%{version}.tar.gz#/rich-%{version}.tar.gz
 BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module commonmark >= 0.9.1}
+BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pygments >= 2.6.0}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8}
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-dataclasses >= 0.7 if python3-base < 3.7 else python36-dataclasses >= 0.7)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -42,8 +42,10 @@ BuildRequires:  fdupes
 Requires:       python-colorama >= 0.4.3
 Requires:       python-commonmark >= 0.9.1
 Requires:       python-pygments >= 2.6.0
-Requires:       python-typing_extensions >= 3.7.4
 Suggests:       python-ipywidgets
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typing_extensions >= 3.7.4
+%endif
 %if 0%{?python_version_nodots} < 37
 Requires:       python-dataclasses >= 0.7
 %endif

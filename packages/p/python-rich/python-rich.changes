@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Jan 14 20:08:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 11.0.0
+  * Note: as a major version bump, this version has some breaking
+    changes. These changes won't affect many people, but we like to
+    be strict about semver. See the release notes below.
+  * Added max_depth arg to pretty printing #1585
+  * Added vertical_align to Table.add_row #1590
+  * Fixed issue with pretty repr in jupyter notebook #1717
+  * Fix Traceback theme defaults override user supplied styles
+    #1786
+  * breaking Deprecated rich.console.RenderGroup, now named
+    rich.console.Group
+  * breaking Syntax.__init__ parameter lexer_name renamed to lexer
+  * Syntax constructor accepts both str and now a pygments lexer
+    #1748
+- Releases 10.16.X
+  * A bugfix for progress bars in Jupyter in this release. And a
+    new property on Text class which exports the equivalent console
+    markup.
+  * Double print of progress bar in Jupyter #1737
+  * Added Text.markup property #1751
+- Releases 10.15.X
+  * Added dynamic_progress.py to examples
+  * Added ConsoleOptions.update_height
+  * Fixed Padding not respecting height
+  * Added Text.from_ansi method
+  * Changed Some optimizations for simple strings (with only single
+    cell widths)
+  * Fixed issue with progress bar not rendering markup #1721
+  * Fixed race condition when exiting Live #1530
+  * Fix Deadlock issue #1734
+- Release 10.14.0
+  * Mostly fixes for edge cases. Added a rich_cast function to
+    rich.protocol, which is unlikely to be used outside of Rich
+    itself.
+  * Fixed progress speed not updating when total doesn't change
+  * Fixed superfluous new line in Status #1662
+  * Fixed Windows legacy width again
+  * Fixed infinite loop in set_cell_size #1682
+  * Added file protocol to URL highlighter #1681
+  * Added rich.protocol.rich_cast
+  * Allowed __rich__ to work recursively
+  * Allowed Text classes to work with sep in print #1689
+- Fix dependencies with dropping python36 quirks
+
+-------------------------------------------------------------------
 Sun Nov  7 18:35:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 10.13.0
