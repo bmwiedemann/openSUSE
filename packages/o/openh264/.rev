@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05933c781b38dea87a2b6726b8b7d62e</srcmd5>
+    <version>2.1.1</version>
+    <time>1642198384</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package of openh264 for Factory.
+
+This is per https://code.opensuse.org/leap/features/issue/22#comment-838</comment>
+    <requestid>946186</requestid>
+  </revision>
+</revisionlist>
