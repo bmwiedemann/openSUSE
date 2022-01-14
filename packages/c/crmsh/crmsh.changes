@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan 14 05:26:37 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220114.07d84c75:
+  * Dev: unittest: Adjust unit test for previous change
+  * Fix: bootstrap: Don't change pacemaker.service bootup preference (bsc#1194616)
+
+-------------------------------------------------------------------
+Fri Jan 14 03:32:50 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220114.2726e007:
+  * Fix: log: Change the log file owner as hacluster:haclient (bsc#1194619)
+  * Fix: crash_test: Adjust help output of 'crm cluster crash_test -h'(bsc#1194615)
+
+-------------------------------------------------------------------
+Fri Jan 14 02:49:39 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220114.2003afd7:
+  * Dev: crm.conf: Add OCF_1_1_SUPPORT flag to control ocf 1.1 feature
+  * Dev: doc: Introduce promotable clone and role Promoted/Unpromoted
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: unittest: Add unit test for previous changes
+  * Dev: utils: Convert Master/Slave to Promoted/Unpromoted if schema support OCF 1.1
+  * Dev: xmlutil: Replace Promoted/Unpromoted as Master/Slave when OCF 1.0 schema detected
+  * Dev: doc: Replace pingd as ocf:pacemaker:ping
+  * Dev: ui_resource: set target-role as Promoted/Unpromoted when doing promote or demote
+  * Dev: ra: Support Promoted/Unpromoted
+
+-------------------------------------------------------------------
+Wed Jan 12 15:08:41 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220112.a945df76:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: ocfs2: Fix running ocfs2 stage on cluster with diskless-sbd
+
+-------------------------------------------------------------------
+Wed Jan 12 08:42:01 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220112.6245c22e:
+  * Dev: behave: Add functional test for the new added -U option
+  * Fix: bootstrap: Change default transport type as udpu(unicast) (bsc#1132375)
+
+-------------------------------------------------------------------
 Tue Jan 04 09:19:17 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.3.1+20220104.b683bf0d:
