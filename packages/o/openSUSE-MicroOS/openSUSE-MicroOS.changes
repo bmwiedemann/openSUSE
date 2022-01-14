@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 11:29:54 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Correct SelfInstall ignition_platform to 'metal'
+- Force a full reboot on firstboot of SelfInstall to ensure ignition
+  doesn't get skipped by kiwi's regular kexec after OEM imaging
+
+-------------------------------------------------------------------
 Wed Nov 24 12:17:53 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Move kernelcmdline computation into config.sh

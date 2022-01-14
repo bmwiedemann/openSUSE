@@ -457,4 +457,14 @@
     <comment></comment>
     <requestid>933799</requestid>
   </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>c1c90e93e1271d78eb3cf7d3bfe219de</srcmd5>
+    <version>16.0.0</version>
+    <time>1642198406</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct SelfInstall ignition_platform to 'metal'
+- Force a full reboot on firstboot of SelfInstall to ensure ignition
+  doesn't get skipped by kiwi's regular kexec after OEM imaging</comment>
+    <requestid>946400</requestid>
+  </revision>
 </revisionlist>

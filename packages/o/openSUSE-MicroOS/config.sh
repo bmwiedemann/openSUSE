@@ -158,14 +158,14 @@ grub_cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0
 
 ignition_platform='metal'
 case "${kiwi_profiles}" in
-	*kvm*|*SelfInstall*) ignition_platform='qemu' ;;
+	*kvm*) ignition_platform='qemu' ;;
 	*DigitalOcean*) ignition_platform='digitalocean' ;;
 	*VMware*) ignition_platform='vmware' ;;
 	*OpenStack*) ignition_platform='openstack' ;;
 	*VirtualBox*) ignition_platform='virtualbox' ;;
 	*HyperV*) ignition_platform='metal'
 	          grub_cmdline+=('rootdelay=300') ;;
-	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*onie*) ignition_platform='metal' ;;
+	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*onie*|*SelfInstall*) ignition_platform='metal' ;;
 	*) echo "Unhandled profile?"
 	   exit 1
 	   ;;
@@ -201,6 +201,27 @@ if rpm -q ignition-dracut-grub2; then
 	mv /usr/lib/dracut/modules.d/40network/module-setup.sh{,.orig}
 	sed 's#echo "kernel-network-modules $network_handler"$#echo kernel-network-modules network-legacy; mv /usr/lib/dracut/modules.d/40network/module-setup.sh{.orig,}#' \
 		/usr/lib/dracut/modules.d/40network/module-setup.sh.orig > /usr/lib/dracut/modules.d/40network/module-setup.sh
+fi
+
+#======================================
+# Configure SelfInstall specifics
+#--------------------------------------
+if [[ "$kiwi_profiles" == *"SelfInstall"* ]]; then
+	cat > /etc/systemd/system/selfinstallreboot.service <<-EOF
+	[Unit]
+	Description=SelfInstall Image Reboot after Firstboot (to ensure ignition and such runs)
+	After=systemd-machine-id-commit.service
+	
+	[Service]
+	Type=oneshot
+	ExecStart=rm /etc/systemd/system/selfinstallreboot.service
+	ExecStart=rm /etc/systemd/system/default.target.wants/selfinstallreboot.service
+	ExecStart=systemctl --no-block reboot
+
+	[Install]
+	WantedBy=default.target
+	EOF
+	ln -s /etc/systemd/system/selfinstallreboot.service /etc/systemd/system/default.target.wants/selfinstallreboot.service
 fi
 
 #======================================
