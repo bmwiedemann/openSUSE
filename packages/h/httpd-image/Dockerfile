@@ -16,7 +16,8 @@ PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/httpd:%%PKG_VERSION%%-%RELEASE%"
 
 RUN zypper install -y --no-recommends apache2 && \
-    zypper clean
+    zypper clean && \
+    rm -rf /var/log/* /var/cache/zypp
 
 # https://httpd.apache.org/docs/2.4/stopping.html#gracefulstop
 STOPSIGNAL SIGWINCH

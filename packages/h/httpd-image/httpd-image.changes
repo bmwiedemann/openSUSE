@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 14 13:09:12 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Cleanup /var/log & /var/cache/zypp
+
+-------------------------------------------------------------------
 Thu Apr 08 09:37:09 UTC 2021 - bruno.leon@suse.com
 
 - Update to version 1617872371.cb3691c:
