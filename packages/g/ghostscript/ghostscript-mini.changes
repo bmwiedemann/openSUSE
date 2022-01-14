@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 11 13:40:10 CET 2022 - jsmeix@suse.de
+
+- CVE-2021-45949.patch fixes CVE-2021-45949
+  heap-based buffer overflow in sampled_data_finish
+  cf. https://github.com/google/oss-fuzz-vulns/blob/main/vulns/ghostscript/OSV-2021-803.yaml
+  (bsc#1194304)
+- CVE-2021-45944 use-after-free in sampled_data_sample
+  is already fixed in the Ghostscript 9.54.0 upstream sources
+  (bsc#1194303)
+
+-------------------------------------------------------------------
 Fri Sep 10 09:37:46 CEST 2021 - jsmeix@suse.de
 
 - CVE-2021-3781.patch fixes CVE-2021-3781

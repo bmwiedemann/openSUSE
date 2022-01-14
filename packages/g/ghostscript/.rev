@@ -455,4 +455,12 @@
     <comment>Ghostscript security fix CVE-2021-3781 (bsc#1190381) (forwarded request 917941 from jsmeix)</comment>
     <requestid>917942</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>1ef700797495f868402d1eb37184593d</srcmd5>
+    <version>9.54.0</version>
+    <time>1642198363</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript security fix CVE-2021-45949 (bsc#1194304) including CVE-2021-45944 (bsc#1194303) (forwarded request 945778 from jsmeix)</comment>
+    <requestid>945779</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ghostscript
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,6 +118,12 @@ Patch101:       ijs_exec_server_dont_use_sh.patch
 # cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
 # and https://bugzilla.suse.com/show_bug.cgi?id=1190381
 Patch102:       CVE-2021-3781.patch
+# Patch103 CVE-2021-45949.patch was derived for Ghostscript-9.54 from
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=2a3129365d3bc0d4a41f107ef175920d1505d1f7
+# that fixes CVE-2021-45949 heap-based buffer overflow in sampled_data_finish
+# cf. https://github.com/google/oss-fuzz-vulns/blob/main/vulns/ghostscript/OSV-2021-803.yaml
+# and https://bugzilla.suse.com/show_bug.cgi?id=1194304
+Patch103:       CVE-2021-45949.patch
 # RPM dependencies:
 # Additional RPM Provides of the ghostscript-library packages in openSUSE 11.4 from
 # "rpm -q --provides ghostscript-library" and "rpm -q --provides ghostscript-x11":
@@ -313,6 +319,12 @@ This package contains the development files for Ghostscript.
 # cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
 # and https://bugzilla.suse.com/show_bug.cgi?id=1190381
 %patch102 -p1
+# Patch103 CVE-2021-45949.patch was derived for Ghostscript-9.54 from
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=2a3129365d3bc0d4a41f107ef175920d1505d1f7
+# that fixes CVE-2021-45949 heap-based buffer overflow in sampled_data_finish
+# cf. https://github.com/google/oss-fuzz-vulns/blob/main/vulns/ghostscript/OSV-2021-803.yaml
+# and https://bugzilla.suse.com/show_bug.cgi?id=1194304
+%patch103
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
