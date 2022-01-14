@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan  5 16:00:14 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop HepMC2 dependency and build without hepmc2 support; largely
+  superseded by HepMC(3) and this change allows Leap 15.x builds
+  to proceed without HepMC2-HepMC conflicts.
+- Add BuildRequires: fastjet-plugin-siscone-devel which is needed
+  for one of the tests (test number 111).
+
+-------------------------------------------------------------------
+Sun Dec 12 21:15:04 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.306:
+  * Fixed the incorrect scale being set when applying the POWHEG
+    veto, i.e. main31.cc. Note that the number of emissions is
+    correct in 8.303, but is incorrect in 8.304 and 8.305.
+  * Fixed repeated initialization causing an ever expanding
+    physics pointer list in the main Pythia class.
+  * Fixed issue for HepMC output from Vincia, which would
+    previously issue warnings about inconsistent mother/daughter
+    relationships.
+  * Removed assert statements from Angantyr.
+  * Shortened Pythia constructor header.
+- Rebase pythia-honour-env-cxxflags.patch and
+  pythia-makefile-destdir-support.patch to apply cleanly.
+- Major rebase of pythia-remove-rpaths.patch for updated version.
+- Drop patch not required any more:
+  * pythia-disable-example23-req-MixMax_h.patch: Examples can now
+    be disabled by passing options to the run script.
+- Change BuildRequires to pkgconfig based ones wherever
+  appropriate. 
+- More examples need linking against gmp explicitly: add fixes for
+  all necessary examples to patch pythia-example71-link-gmp.patch
+  and rename it to pythia-examples-link-gmp.patch.
+- Build with Rivet and HepMC(3) support: add HepMC-devel,
+  pkgconfig(rivet) BuildRequires.
+- Update URL and source URL in keeping with upstream.
+- Minor improvements to package summaries.
+- Run spec-cleaner for minor cleanups.
+
+-------------------------------------------------------------------
 Fri Apr 16 12:30:00 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build for Leap 15.3

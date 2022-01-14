@@ -1,13 +1,13 @@
-Index: pythia8240/configure
+Index: pythia8306/configure
 ===================================================================
---- pythia8240.orig/configure
-+++ pythia8240/configure
-@@ -297,7 +297,7 @@ if [ -z "$CXX" ]; then
-     CXX="g++";
- fi
+--- pythia8306.orig/configure
++++ pythia8306/configure
+@@ -309,7 +309,7 @@ if [ "$ARCH" != "LINUX" ] && [ "$ARCH" !
+     warn "Unknown architecture $ARCH, set as LINUX."; ARCH="LINUX"; fi
+ if [ -z "$CXX" ]; then warn "CXX not set, using g++."; CXX="g++"; fi
  if [ -z "$CXX_COMMON" ]; then
 -    CXX_COMMON="${ENABLE_DEBUG}${ENABLE_64BIT}"
 +    CXX_COMMON="${CXXFLAGS} ${ENABLE_DEBUG}${ENABLE_64BIT}"
-     CXX_COMMON="$CXX_COMMON -pedantic -W -Wall -Wshadow -fPIC"; fi
+     CXX_COMMON="${CXX_COMMON}-std=c++11 -pedantic -W -Wall -Wshadow -fPIC"; fi
  if [ -z "$CXX_SHARED" ]; then
      if [ "$ARCH" = "LINUX" ];  then CXX_SHARED="-shared"; fi

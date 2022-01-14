@@ -1,133 +1,169 @@
-Index: pythia8240/Makefile
+Index: pythia8306/Makefile
 ===================================================================
---- pythia8240.orig/Makefile
-+++ pythia8240/Makefile
-@@ -64,19 +64,30 @@ ifeq ($(POWHEG_USE),true)
- endif
- 
- # Python.
--PYTHON_COMMON=-I$(PYTHON_INCLUDE) $(CXX_COMMON) -Wl,-rpath,$(PREFIX_LIB)
-+PYTHON_COMMON=-I$(PYTHON_INCLUDE) $(CXX_COMMON)
+--- pythia8306.orig/Makefile
++++ pythia8306/Makefile
+@@ -36,7 +36,11 @@ LOCAL_TMP=tmp
+ LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(LOCAL_LIB))
+ CXX_COMMON:=-I$(LOCAL_INCLUDE) $(CXX_COMMON)
+ OBJ_COMMON:=-MD $(CXX_COMMON) $(OBJ_COMMON)
+-LIB_COMMON=-Wl,-rpath,../lib:$(PREFIX_LIB) -ldl $(GZIP_LIB)
 +ifneq ($(DISABLE_RPATH),true)
-+  PYTHON_COMMON+= -Wl,-rpath,$(PREFIX_LIB)
-+endif
- ifeq ($(PYTHON_USE),true)
-   TARGETS+=$(LOCAL_LIB)/_pythia8.so
- endif
- 
- # GZIP.
- OBJ_COMMON=-MD $(CXX_COMMON)
--LIB_COMMON=-Wl,-rpath,$(PREFIX_LIB) -ldl
-+ifneq ($(DISABLE_RPATH),true)
-+  LIB_COMMON=-Wl,-rpath,$(PREFIX_LIB) -ldl
++  LIB_COMMON=-Wl,-rpath,$(PREFIX_LIB) -ldl $(GZIP_LIB)
 +else
-+  LIB_COMMON=-ldl
-+endif
- ifeq ($(GZIP_USE),true)
-   PYTHON_COMMON+= -DGZIPSUPPORT -I$(GZIP_INCLUDE)
--  PYTHON_COMMON+= -L$(GZIP_LIB) -Wl,-rpath,$(GZIP_LIB) -lz
-   OBJ_COMMON+= -DGZIPSUPPORT -I$(GZIP_INCLUDE)
--  LIB_COMMON+= -L$(GZIP_LIB) -Wl,-rpath,$(GZIP_LIB) -lz
-+  ifneq ($(DISABLE_RPATH),true)
-+    LIB_COMMON+= -Wl,-rpath,$(GZIP_LIB)
-+    PYTHON_COMMON+= -Wl,-rpath,$(GZIP_LIB)
-+  endif
-+  PYTHON_COMMON+= -L$(GZIP_LIB) -lz
-+  LIB_COMMON+= -L$(GZIP_LIB) -lz
- endif
- 
- ################################################################################
-@@ -118,12 +129,22 @@ $(LOCAL_TMP)/LHAPDF%Plugin.o: $(LOCAL_IN
- 	$(CXX) -x c++ $< -o $@ -c -MD -w $(CXX_LHAPDF)
- $(LOCAL_LIB)/libpythia8lhapdf5.so: $(LOCAL_TMP)/LHAPDF5Plugin.o\
- 	$(LOCAL_LIB)/libpythia8.a
-+ifneq ($(DISABLE_RPATH),true)
- 	$(CXX) $^ -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
- 	 -L$(LHAPDF5_LIB) -Wl,-rpath,$(LHAPDF5_LIB) -lLHAPDF -lgfortran
-+else
-+	$(CXX) $^ -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
-+	 -L$(LHAPDF5_LIB) -lLHAPDF -lgfortran
-+endif
- $(LOCAL_LIB)/libpythia8lhapdf6.so: $(LOCAL_TMP)/LHAPDF6Plugin.o\
- 	$(LOCAL_LIB)/libpythia8.a
-+ifneq ($(DISABLE_RPATH),true)
-+       $(CXX) $^ -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
-+        -L$(LHAPDF6_LIB) -Wl,-rpath,$(LHAPDF6_LIB) -lLHAPDF
-+else
- 	$(CXX) $^ -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
--	 -L$(LHAPDF6_LIB) -Wl,-rpath,$(LHAPDF6_LIB) -lLHAPDF
-+	 -L$(LHAPDF6_LIB) -lLHAPDF
++  LIB_COMMON=-ldl $(GZIP_LIB)
 +endif
  
- # POWHEG (exclude any executable ending with sh).
- $(LOCAL_TMP)/POWHEGPlugin.o: $(LOCAL_INCLUDE)/Pythia8Plugins/LHAPowheg.h
-@@ -131,9 +152,15 @@ $(LOCAL_TMP)/POWHEGPlugin.o: $(LOCAL_INC
- $(LOCAL_LIB)/libpythia8powheg%sh.so: $(POWHEG_BIN)/%sh;
- $(LOCAL_LIB)/libpythia8powheg%.so: $(POWHEG_BIN)/% $(LOCAL_TMP)/POWHEGPlugin.o\
- 	$(LOCAL_LIB)/libpythia8.a
+ # PYTHIA.
+ OBJECTS=$(patsubst $(LOCAL_SRC)/%.cc,$(LOCAL_TMP)/%.o,\
+@@ -118,9 +122,15 @@ $(LOCAL_TMP)/LHAPowheg.o: $(LOCAL_INCLUD
+ $(LOCAL_LIB)/libpythia8powheg%sh.so: $(POWHEG_BIN)%sh;
+ $(LOCAL_LIB)/libpythia8powheg%.so: $(POWHEG_BIN)% $(LOCAL_TMP)/LHAPowheg.o\
+ 	$(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
 +ifneq ($(DISABLE_RPATH),true)
-+       ln -s $< $(notdir $<); $(CXX) $(notdir $<) $(LOCAL_TMP)/POWHEGPlugin.o\
-+        $(LOCAL_LIB)/libpythia8.a -o $@ $(CXX_COMMON) $(CXX_SHARED)\
-+        $(CXX_SONAME)$(notdir $@) -Wl,-rpath,$(POWHEG_BIN); rm $(notdir $<)
+ 	ln -s $< $(notdir $<); $(CXX) $(notdir $<) $(LOCAL_TMP)/LHAPowheg.o\
+ 	 -o $@ $(CXX_COMMON) $(CXX_SHARED) -Llib -lpythia8\
+ 	 $(CXX_SONAME)$(notdir $@) -Wl,-rpath,$(POWHEG_BIN); rm $(notdir $<)
 +else
- 	ln -s $< $(notdir $<); $(CXX) $(notdir $<) $(LOCAL_TMP)/POWHEGPlugin.o\
- 	 $(LOCAL_LIB)/libpythia8.a -o $@ $(CXX_COMMON) $(CXX_SHARED)\
--	 $(CXX_SONAME)$(notdir $@) -Wl,-rpath,$(POWHEG_BIN); rm $(notdir $<)
++	ln -s $< $(notdir $<); $(CXX) $(notdir $<) $(LOCAL_TMP)/LHAPowheg.o\
++	 -o $@ $(CXX_COMMON) $(CXX_SHARED) -Llib -lpythia8\
 +	 $(CXX_SONAME)$(notdir $@); rm $(notdir $<)
 +endif
  
- # Python (turn off all warnings for readability).
- $(LOCAL_LIB)/pythia8.py: $(LOCAL_INCLUDE)/Pythia8Plugins/PythonWrapper.h
-Index: pythia8240/configure
+ # MG5 matrix element plugins.
+ mg5mes:
+Index: pythia8306/configure
 ===================================================================
---- pythia8240.orig/configure
-+++ pythia8240/configure
-@@ -32,6 +32,7 @@ Configuration options.
+--- pythia8306.orig/configure
++++ pythia8306/configure
+@@ -30,6 +30,7 @@ Configuration options.
+ --help            : Print this help message (also -h, --h, and -help).
+ --enable-debug    : Turn on debugging and disable optimization.
  --enable-optdebug : Turn on debugging but allow optimization.
- --enable-64bit  : Turn on 64-bit compilation.
- --enable-shared : Build the shared PYTHIA library during compilation.
-+--disable-rpath : Disable use of rpath for linking.
- --lcg=PLATFORM  : Specify the LCG platform to use when the
-                   --with-PACKAGE-version option, described below, is set for a
-                   given optional package [x86_64-slc6-gcc48-opt]. The packages
-@@ -87,7 +88,7 @@ Advanced options.
-                        for OS X.
++--disable-rpath   : Disable use of rpath for linking.
+ --lcg=PLATFORM    : Specify the LCG platform to use when the
+                     --with-PACKAGE-version option, described below, is set for 
+                     a given optional package [x86_64-slc6-gcc48-opt]. The 
+@@ -92,7 +93,7 @@ Advanced options.
+ --obj-common='FLAGS' : Set the common C++ flags used for object (.o) compilation
+                        only (not linking).
  BLOCKTEXT
- OPTIONS="-h --h -help --help --enable-debug --enable-optdebug --enable-64bit"
--OPTIONS+=" --enable-shared --lcg"
-+OPTIONS+=" --enable-shared --disable-rpath --lcg"
+-OPTIONS="-h --h -help --help --enable-debug --enable-optdebug --lcg"
++OPTIONS="-h --h -help --help --enable-debug --enable-optdebug --disable-rpath --lcg"
  OPTIONS+=" --prefix --prefix-bin --prefix-lib --prefix-include --prefix-share"
  for PKG in "evtgen" "fastjet3" "hepmc2" "hepmc3" "lhapdf5" "lhapdf6" "powheg"\
-     "promc" "root" "gzip" "boost" "python"; do
-@@ -285,6 +286,7 @@ if [ "$LCG_SET" != true ]; then LCG=x86_
- [ "$ENABLE_OPTDEBUG_SET"  = true ] && ENABLE_DEBUG="-g -O "
- [ "$ENABLE_64BIT_SET"  = true ] && ENABLE_64BIT="-m64 " || ENABLE_64BIT=""
- [ "$ENABLE_SHARED_SET" = true ] && ENABLE_SHARED="true" || ENABLE_SHARED="false"
-+[ "$DISABLE_RPATH_SET" = true ] && DISABLE_RPATH="true" || DISABLE_RPATH="false"
- if [ -z "$ARCH" ]; then
-     ARCH=$(uname | grep -i -o -e Linux -e Darwin);
- fi
-@@ -416,6 +418,7 @@ PREFIX_SHARE=$PREFIX_SHARE
+     "rivet" "root" "yoda" "gzip" "python" "mg5mes" "openmp" "mpich" "hdf5"\
+@@ -303,6 +304,7 @@ done
+ if [ "$LCG_SET" != true ]; then LCG=x86_64-slc6-gcc48-opt; fi
+ [ "$ENABLE_DEBUG_SET"    = true ] && ENABLE_DEBUG="-g "   || ENABLE_DEBUG="-O2 "
+ [ "$ENABLE_OPTDEBUG_SET" = true ] && ENABLE_DEBUG="-g -O "
++[ "$DISABLE_RPATH_SET"   = true ] && DISABLE_RPATH="true" || DISABLE_RPATH="false"
+ if [ -z "$ARCH" ]; then ARCH=$(uname | grep -i -o -e Linux -e Darwin); fi
+ ARCH=$(echo $ARCH | awk '{print toupper($0)}')
+ if [ "$ARCH" != "LINUX" ] && [ "$ARCH" != "DARWIN" ]; then
+@@ -427,6 +429,7 @@ PREFIX_LIB=$PREFIX_LIB
+ PREFIX_SHARE=$PREFIX_SHARE
  
  # Compilation flags (see ./configure --help for further documentation).
- ENABLE_SHARED=$ENABLE_SHARED
 +DISABLE_RPATH=$DISABLE_RPATH
  CXX=$CXX
  CXX_COMMON=$CXX_COMMON
  CXX_SHARED=$CXX_SHARED
-Index: pythia8240/examples/Makefile
+Index: pythia8306/plugins/mg5mes/Makefile
 ===================================================================
---- pythia8240.orig/examples/Makefile
-+++ pythia8240/examples/Makefile
-@@ -25,7 +25,10 @@ GZIP_INC=
- GZIP_FLAGS=
- ifeq ($(GZIP_USE),true)
-   GZIP_INC+= -DGZIPSUPPORT -I$(GZIP_INCLUDE)
--  GZIP_FLAGS+= -L$(GZIP_LIB) -Wl,-rpath,$(GZIP_LIB) -lz
-+  GZIP_FLAGS+= -L$(GZIP_LIB) -lz
-+  ifneq ($(DISABLE_RPATH),true)
-+    GZIP_FLAGS+= -Wl,-rpath,$(GZIP_LIB)
-+  endif
+--- pythia8306.orig/plugins/mg5mes/Makefile
++++ pythia8306/plugins/mg5mes/Makefile
+@@ -28,7 +28,11 @@ LOCAL_DIRS:=$(subst $(LOCAL_TMP)/,,$(wil
+ LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
+ LOCAL_MKDIRS:=$(foreach DIR,$(LOCAL_DIRS),$(shell mkdir -p $(LOCAL_TMP)/$(DIR)))
+ OBJ_COMMON=-MD -DPYTHIA8 $(CXX_COMMON) -I$(TOP_INCLUDE) -w -fpermissive
+-LIB_COMMON=-Wl,-rpath,$(TOP_LIB) -ldl $(GZIP_LIB) -Wl,-undefined,dynamic_lookup
++ifneq ($(DISABLE_RPATH),true)
++  LIB_COMMON=-Wl,-rpath,$(TOP_LIB) -ldl $(GZIP_LIB) -Wl,-undefined,dynamic_lookup
++else
++  LIB_COMMON=-ldl $(GZIP_LIB) -Wl,-undefined,dynamic_lookup
++endif
+ PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
+ 
+ # Set the wrapper, determine the objects and targets.
+Index: pythia8306/plugins/python/Makefile
+===================================================================
+--- pythia8306.orig/plugins/python/Makefile
++++ pythia8306/plugins/python/Makefile
+@@ -27,7 +27,11 @@ LOCAL_TMP=tmp
+ LOCAL_INCLUDE=include
+ LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
+ OBJ_COMMON=-MD $(CXX_COMMON) -Iinclude $(PYTHON_INCLUDE) -w -fpermissive
+-LIB_COMMON=-Wl,-rpath,$(TOP_LIB) -ldl $(GZIP_LIB)
++ifneq ($(DISABLE_RPATH),true)
++  LIB_COMMON=-Wl,-rpath,$(TOP_LIB) -ldl $(GZIP_LIB)
++else
++  LIB_COMMON=-ldl $(GZIP_LIB)
++endif
+ PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
+ 
+ # Determine the headers.
+@@ -69,9 +73,15 @@ $(LOCAL_TMP)/%.o: $(LOCAL_SRC)/%.cpp
+ 
+ # Build the library.
+ $(TOP_LIB)/pythia8.so: $(PYTHIA) $(HEADERS) $(OBJECTS)
++ifneq ($(DISABLE_RPATH),true)
+ 	$(CXX) $(OBJECTS) -o $@ $(CXX_COMMON) $(CXX_SHARED)\
+ 	 $(CXX_SONAME)$(notdir $@) $(LIB_COMMON) -L$(TOP_LIB)\
+ 	 -Wl,-rpath,$(PREFIX_LIB) -lpythia8 -Wl,-undefined,dynamic_lookup
++else
++	$(CXX) $(OBJECTS) -o $@ $(CXX_COMMON) $(CXX_SHARED)\
++	 $(CXX_SONAME)$(notdir $@) $(LIB_COMMON) -L$(TOP_LIB)\
++	 -lpythia8 -Wl,-undefined,dynamic_lookup
++endif
+ 
+ # Clean.
+ clean:
+Index: pythia8306/examples/Makefile
+===================================================================
+--- pythia8306.orig/examples/Makefile
++++ pythia8306/examples/Makefile
+@@ -26,14 +26,13 @@ ifneq ("$(wildcard ../lib/libpythia8.*)"
+   PREFIX_INCLUDE=../include
+ endif
+ CXX_COMMON:=-I$(PREFIX_INCLUDE) $(CXX_COMMON) $(GZIP_LIB)
+-CXX_COMMON+= -L$(PREFIX_LIB) -Wl,-rpath,$(PREFIX_LIB) -lpythia8 -ldl
++CXX_COMMON+= -L$(PREFIX_LIB) -lpythia8 -ldl
+ PYTHIA=$(PREFIX_LIB)/libpythia8$(LIB_SUFFIX)
+ 
+ # Fix missing runtime paths from RIVET.
+ ifeq ($(RIVET_USE),true)
+   COMMA=,
+   RIVET_LPATH=$(filter -L%,$(shell $(RIVET_BIN)$(RIVET_CONFIG) --ldflags))
+-  RIVET_RPATH=$(subst -L,-Wl$(COMMA)-rpath=,$(RIVET_LPATH))
  endif
  
- # Check distribution (use local version first, then installed version).
+ ################################################################################
+@@ -143,16 +142,14 @@ else
+ 	$(error Error: $@ requires ROOT)
+ endif
+ main92: $(PYTHIA) $$@.cc main92.so
+-	$(CXX) $@.cc main92.so -o $@ -w $(CXX_COMMON) -Wl,-rpath,./\
+-	 `$(ROOT_CONFIG) --cflags --glibs`
++	$(CXX) $@.cc main92.so -o $@ -w $(CXX_COMMON)
+ 
+ # RIVET with optional ROOT (if RIVET, use C++14).
+ main93: $(PYTHIA) $$@.cc $(if $(filter true,$(ROOT_USE)),main93.so)
+ ifeq ($(RIVET_USE),true)
+-	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -Wl,-rpath,./\
+-	 $(if $(filter true,$(ROOT_USE)),main93.so -DPY8ROOT\
++	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -DPY8ROOT\
+          $(ROOT_LIB) `$(ROOT_CONFIG) --cflags --glibs`)\
+-	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs` $(RIVET_RPATH)
++	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
+ else
+ 	$(error Error: $@ requires RIVET)
+ endif
+@@ -161,7 +158,7 @@ endif
+ main111: $(PYTHIA) $$@.cc
+ ifeq ($(RIVET_USE),true)
+ 	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -DRIVET \
+-	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs` $(RIVET_RPATH)
++	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
+ else
+ 	$(CXX) $@.cc -o $@ -w $(CXX_COMMON)
+ endif

@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,40 @@
 #
 
 
-%define ver 8245
+%define ver 8306
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.245
+Version:        8.306
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://home.thep.lu.se/~torbjorn/Pythia.html
-Source:         http://home.thep.lu.se/~torbjorn/pythia8/%{name}%{ver}.tgz
+URL:            https://pythia.org/
+Source:         https://pythia.org/download/pythia83/%{name}%{ver}.tgz
 # PATCH-FIX-UPSTREAM pythia-makefile-destdir-support.patch badshah400@gmail.com -- Add DESTDIR support to makefile to prevent touching of buildroot in the %%build section
 Patch0:         pythia-makefile-destdir-support.patch
 # PATCH-FIX-UPSTREAM pythia-honour-env-cxxflags.patch badshah400@gmail.com -- Append CXXFLAGS from env to default compilations flags; this allows us to pass RPM_OPT_FLAGS during compilation
 Patch1:         pythia-honour-env-cxxflags.patch
 # PATCH-FIX-UPSTREAM pythia-remove-rpaths.patch badshah400@gmail.com -- Delete rpath references when building libraries; patch sent upstream
 Patch2:         pythia-remove-rpaths.patch
-# PATCH-FIX-UPSTREAM pythia-example71-link-gmp.patch badshah400@gmail.com -- Fix building example 71 by adding -lgmp to the linker flag
-Patch3:         pythia-example71-link-gmp.patch
-# PATCH-FEATURE-OPENSUSE pythia-disable-example23-req-MixMax_h.patch badshah400@gmail.com -- Drop a test that requires non-free MixMax.h header
-Patch4:         pythia-disable-example23-req-MixMax_h.patch
+# PATCH-FIX-UPSTREAM pythia-examples-link-gmp.patch badshah400@gmail.com -- Fix building examples linking against gmp by adding -lgmp to the linker flag
+Patch3:         pythia-examples-link-gmp.patch
 # PATCH-FIX-OPENSUSE - a variant was sent via mail to phil...@cern.ch
 Patch5:         reproducible.patch
-BuildRequires:  HepMC2-devel
-BuildRequires:  LHAPDF-devel
+BuildRequires:  HepMC-devel
+BuildRequires:  cgal-devel
+BuildRequires:  fastjet-contrib-devel-static
 BuildRequires:  fastjet-devel
+BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  hdf5-devel
+BuildRequires:  pkgconfig
 BuildRequires:  rsync
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(lhapdf)
+BuildRequires:  pkgconfig(rivet)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Pythia can be used to generate high-energy-physics events, i.e. sets
@@ -53,7 +57,7 @@ of outgoing particles produced in the interactions between two
 incoming particles.
 
 %package -n %{soname}
-Summary:        A simulation program for particle collisions at very high energies
+Summary:        Shared library for Pythia - a simulation program for particle collisions
 Group:          System/Libraries
 
 %description -n %{soname}
@@ -74,7 +78,7 @@ the generation task to the topics of interest.
 This package provides the shared libraries for %{name}.
 
 %package -n %{soname}lhapdf6
-Summary:        A simulation program for particle collisions at very high energies
+Summary:        LHAPDF bindings for Pythia - a simulation program for particle collisions
 Group:          System/Libraries
 
 %description -n %{soname}lhapdf6
@@ -86,7 +90,7 @@ This package provides the shared libraries for the lhapdf6 bindings of
 %{name}.
 
 %package devel
-Summary:        A simulation program for particle collisions at very high energies
+Summary:        Development package for Pythia - a simulation program for particle collisions
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
 Requires:       %{soname}lhapdf6 = %{version}
@@ -101,7 +105,7 @@ This package provides the header and source files for development with
 %{name}.
 
 %package doc
-Summary:        A simulation program for particle collisions at very high energies
+Summary:        Documentation for Pythia - a simulation program for particle collisions
 Group:          Documentation/HTML
 
 %description doc
@@ -117,16 +121,17 @@ This package provides documentation for development with %{name}.
 # REMOVE NON-FREE HEADER FILE NOT USED BY PYTHIA DIRECTLY
 rm include/Pythia8Plugins/MixMax.h
 
-%build
 # FIX EOF ENCODINGS
-sed -i 's/\r$//' share/Pythia8/xmldoc/mrstlostarstar.00.dat
+sed -i 's/\r$//' share/Pythia8/pdfdata/mrstlostarstar.00.dat
 sed -i 's/\r$//' share/Pythia8/htmldoc/pythia.css
-sed -i 's/\r$//' share/Pythia8/phpdoc/pythia.css
 sed -i 's/\r$//' examples/main29.cc
 
+sed -E -i "s|%{_bindir}/env bash|/bin/bash|" examples/runmains
+
+%build
 # FOR oS > 1320, "-std=c++14" IS NEEDED FOR BUILDING EXAMPLES
 # WITH FASTJET3 (WHICH ALREADY USES THIS STD)
-CXXFLAGS="%optflags"
+CXXFLAGS="%{optflags}"
 %if 0%{?suse_version} > 1320
 export CXXFLAGS="$CXXFLAGS -std=c++14"
 %endif
@@ -135,11 +140,12 @@ export CXXFLAGS="$CXXFLAGS -std=c++14"
   --prefix-lib=%{_libdir} \
   --prefix-share=%{_docdir}/%{name} \
   --enable-shared \
-  --disable-rpath \
-  --with-lhapdf6 \
-  --with-hepmc2 \
+  --with-fastjet3 \
   --with-gzip \
-  --with-fastjet3
+  --with-hdf5 \
+  --with-hepmc3 \
+  --with-lhapdf6 \
+  --with-rivet
 
 # EXPORT PYTHIA8DATA ENV VARIABLE
 cat << EOF >> %{name}.sh
@@ -150,7 +156,7 @@ cat << EOF >> %{name}.csh
 setenv PYTHIA8DATA %{_docdir}/%{name}/xmldoc
 EOF
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -168,31 +174,20 @@ do
 done
 
 # FIX env BASED HASHBANG
-sed -E -i "s|/usr/bin/env bash|/bin/bash|" %{buildroot}%{_bindir}/pythia8-config
+sed -E -i "s|%{_bindir}/env bash|/bin/bash|" %{buildroot}%{_bindir}/pythia8-config
 
 %fdupes -s %{buildroot}%{_docdir}/%{name}/
 
 %check
+# Determine the number of CPUs available for runs
+export ncpus=%(echo %{?_smp_mflags} | sed "s/^\-j//")
 pushd examples
-./runmains
-# ADDITIONAL CHECKS FOR BINDINGS; RUN MANUALLY BECAUSE NOT ALL BINDINGS ARE ENABLED
-# HEPMC2 AND FASTJET3 TESTS
-for t in 41 71 72
-do
-  echo
-  echo Now begin main${t}
-  make %{?_smp_mflags} main${t}
-  time ./main${t} > out${t}
-done
-# TESTS 42 REQUIRES INPUT FILES; LOOP TO MAKE IT EASY TO ADD FUTURE TESTS
-for t in 42
-do
-  echo
-  echo Now begin main${t}
-  make %{?_smp_mflags} main${t}
-  time ./main${t} main${t}.cmnd hepmcout${t}.dat > out${t}
-done
-
+# SECTION Disabled examples:
+# 23: MixMax header deleted as it is non-free
+# 46, 48: Require evtgen which oS does not have packaged
+# 91, 92, 93: Require root6 which is not avaliable in Factory
+./runmains --skip="23 46 48 91 92 93" --threads="${ncpus}"
+# /SECTION
 popd
 
 %post -n %{soname} -p /sbin/ldconfig
@@ -214,13 +209,12 @@ popd
 %{_includedir}/Pythia8Plugins/
 %config %{_sysconfdir}/profile.d/%{name}.*
 %{_docdir}/%{name}/xmldoc/
+%{_docdir}/%{name}/pdfdata/
 
 %files doc
 %dir %{_docdir}/%{name}
-%{_docdir}/%{name}/phpdoc/
 %{_docdir}/%{name}/pdfdoc/
 %{_docdir}/%{name}/htmldoc/
 %{_docdir}/%{name}/examples/
-%{_docdir}/%{name}/outref/
 
 %changelog
