@@ -7,11 +7,6 @@ Fri Jan 14 09:53:22 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
     #8068: Request: show pending devices/folders in CLI
 
 -------------------------------------------------------------------
-Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
-
-- remove instance units from post scripts, they can not be reloaded
-
--------------------------------------------------------------------
 Tue Dec  7 12:46:36 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.18.5

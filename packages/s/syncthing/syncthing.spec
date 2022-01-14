@@ -124,7 +124,7 @@ getent passwd strelaysrv >/dev/null || \
 %service_add_post strelaysrv.service
 
 %preun
-%service_del_preun %{name}-resume.service
+%service_del_preun %{name}@.service %{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 %systemd_user_preun %{name}.service
 %endif
