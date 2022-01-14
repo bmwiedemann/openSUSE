@@ -1467,4 +1467,12 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930907</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>1c03f7ecba2770df8224ca836eae6558</srcmd5>
+    <version>41.3</version>
+    <time>1642198372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945921</requestid>
+  </revision>
 </revisionlist>

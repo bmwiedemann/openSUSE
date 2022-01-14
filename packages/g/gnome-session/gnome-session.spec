@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           gnome-session
-Version:        40.1.1
+Version:        41.3
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-session/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-session/41/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
-# PATCH-FIX-UPSTREAM gnome-session-exit-when-lost-name-on-bus.patch bsc#1175622 glgo!GNOME/gnome-session!60 xwang@suse.com -- gnome-session exit immediately when lost name on bus
-Patch1:         gnome-session-exit-when-lost-name-on-bus.patch
 # PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
 
@@ -106,7 +104,6 @@ functional GNOME desktop.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 %ifarch s390 s390x
 %patch2 -p1
 %endif
@@ -126,7 +123,7 @@ install -d -m755 %{buildroot}%{_bindir}
 install -m755 %{SOURCE1} %{buildroot}%{_bindir}/gnome
 install -d -m755 %{buildroot}%{_datadir}/xsessions
 install -m644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/gnome.desktop
-%find_lang %{name}-40 %{?no_lang_C}
+%find_lang %{name}-41 %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 # remove wayland files on s390/s390x
 %ifarch s390 s390x
@@ -174,6 +171,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/default.desktop
 %{_datadir}/wayland-sessions/gnome.desktop
+%{_datadir}/wayland-sessions/gnome-wayland.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 # Disabled as wayland is now the default session again.
 #{_datadir}/wayland-sessions/gnome-wayland.desktop
@@ -224,6 +222,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_userunitdir}/gnome-session@gnome.target.d
 %{_userunitdir}/gnome-session@gnome.target.d/gnome.session.conf
 
-%files lang -f %{name}-40.lang
+%files lang -f %{name}-41.lang
 
 %changelog

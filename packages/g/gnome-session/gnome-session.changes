@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 12 17:03:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.3:
+  + No changes, just version synching.
+- Changes from version 40.8:
+  + data: Install GNOME on Wayland session for X11 preferred setups
+  + Don't spew as much into log when falling back to non-systemd sessions
+  + Work better with certain versions of meson
+  + Correct screwed up check for gnome-shell
+  + Various cleanups and leak fixes
+  + Updated translations.
+- Rebase gnome-session-better-handle-empty-xdg_session_type.patch.
+- Drop gnome-session-exit-when-lost-name-on-bus.patch: no longer
+  applicable.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:40:38 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
