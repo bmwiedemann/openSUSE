@@ -1,7 +1,7 @@
 #
-# spec file for package python-canonicaljson
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define         github_user matrix-org
 %define         short_name canonicaljson
 Name:           python-%{short_name}%{psuffix}
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Canonical JSON for Python
 License:        Apache-2.0
