@@ -12,6 +12,11 @@ Thu Dec 16 07:23:09 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
   Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.48.1
 
 -------------------------------------------------------------------
+Fri Dec  3 14:13:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
 Fri Nov 26 05:49:31 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Detect SLE15 SP4 build environment

@@ -36,7 +36,7 @@ BuildRequires:  rsync
 BuildRequires:  sed
 BuildRequires:  golang(API) = 1.16
 BuildRequires:  pkgconfig(libvirt)
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 Kubevirt is a virtual machine management add-on for Kubernetes
