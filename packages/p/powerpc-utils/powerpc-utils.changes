@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 12 12:37:04 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- errinjct: sanitize devspec output of a newline if one is present (bsc#1194579 ltc#195746).
+   + errinjct-sanitize-devspec-output-of-a-newline-if-one.patch
+
+-------------------------------------------------------------------
+Wed Jan  5 21:45:23 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix reported online memory in legacy format (bsc#1191147).
+   + lparstat-Fix-reported-online-memory-in-legacy-format.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 19:10:13 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Add support for vnic backup device for HNV (jsc#SLE-23097).

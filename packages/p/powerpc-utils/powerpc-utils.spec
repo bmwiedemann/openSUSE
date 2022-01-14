@@ -34,6 +34,8 @@ Patch7:         0001-hcnmgr-Support-vNIC-as-backup-device.patch
 Patch8:         0002-hcnmgr-Remove-some-dead-code.patch
 Patch9:         0003-ofpathname-Fix-nvme-support-in-ANA-mode.patch
 Patch10:        0004-ofpathname-Add-support-for-NVMf-devices.patch
+Patch11:        lparstat-Fix-reported-online-memory-in-legacy-format.patch
+Patch12:        errinjct-sanitize-devspec-output-of-a-newline-if-one.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

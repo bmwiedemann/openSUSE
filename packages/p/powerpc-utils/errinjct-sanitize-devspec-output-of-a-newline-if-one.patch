@@ -1,0 +1,72 @@
+From d8408b429ff022ff446ac2607bc26eaf60627658 Mon Sep 17 00:00:00 2001
+From: Tyrel Datwyler <tyreld@linux.ibm.com>
+Date: Mon, 10 Jan 2022 16:55:58 -0500
+Subject: [PATCH] errinjct: sanitize devspec output of a newline if one is
+ present
+
+References: bsc#1194579 ltc#195746
+Upstream: accepted (expected 1.3.10)
+Git-commit: d8408b429ff022ff446ac2607bc26eaf60627658
+
+Linux Kernel Commit: 14c19b2a40b6 ("PCI/sysfs: Add 'devspec' newline")
+introduced a newline character at the end of the devspec result which
+historically did not have one before. When a newline is present the
+errinjct utility constructs an invalid pathname for a PCI devices /reg
+property in the device tree. As a result the tool fails to provide a
+valid config address to RTAS resulting in a (-3) Parameter Error.
+
+errinjct eeh -v -f 6 -s net/eth1 -a 0xe0800000 -m 0xff800000
+errinjct: Could not open file /proc/device-tree//pci@800000020000154/ethernet@0,1
+/reg, No such file or directory
+
+Injecting an ioa-bus-error with the following data:
+
+BUS ADDR:               e0800000
+ADDR MASK:              ff800000
+CONFIG ADDR:            1
+PHB UNIT_ID:            800000020000154
+FUNCTION:               6
+Store to PCI Memory Address Space - inject an Address Parity Error
+errinjct: RTAS error injection failed!
+
+errinjct: RTAS: ioa-bus-error: Argument error (-3)
+
+Fix this issue by nul terminating the devspec output string at the newline
+if present.
+
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/errinjct/ioa_bus_error.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/errinjct/ioa_bus_error.c b/src/errinjct/ioa_bus_error.c
+index 281b56b..fc38037 100644
+--- a/src/errinjct/ioa_bus_error.c
++++ b/src/errinjct/ioa_bus_error.c
+@@ -232,7 +232,7 @@ static int parse_sysfsname(void)
+ {
+ 	char path[BUFSZ];
+ 	char *devspec;
+-	char *at;
++	char *at, *nl;
+ 	uint32_t addr;
+ 	uint64_t phb_id;
+ 
+@@ -247,6 +247,14 @@ static int parse_sysfsname(void)
+ 	if (!devspec)
+ 		return 1;
+ 
++	/* Linux Kernel Commit: 14c19b2a40b6 ("PCI/sysfs: Add 'devspec' newline")
++	 * began reporting the devspec value for pci devices with a trailing newline.
++	 * Remove the newline if present to ensure our built pathname for obtaining
++	 * the config address is valid. */
++	nl = strchr(devspec, '\n');
++	if (nl)
++		*nl = '\0';
++
+ 	/* Now we parse something like /pci@400000000112/pci@2/ethernet@1 for
+ 	 * BUID HI =4000 and LOW 00000112 */
+ 	at = strchr(devspec, '@');
+-- 
+2.34.1
+

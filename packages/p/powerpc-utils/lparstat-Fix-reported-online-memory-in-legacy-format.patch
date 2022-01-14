@@ -1,0 +1,41 @@
+From 5d2d0a0b50ff386b7d9416e122d05214846573b6 Mon Sep 17 00:00:00 2001
+From: Thomas Abraham <tabraham@suse.com>
+Date: Tue, 12 Oct 2021 09:21:38 -0400
+Subject: [PATCH] lparstat: Fix reported online memory in legacy format
+
+References: bsc#1191147
+Upstream: merged - expected in 1.3.10
+Git-commit: 5d2d0a0b50ff386b7d9416e122d05214846573b6
+
+On systems with more than 2TB of online memory, legacy mode
+will calculate and report a negative value due to exceeding
+the maximum value for a signed 32-bit integer:
+
+$ lparstat -i | grep "Online Memory"
+Online Memory : 3771084032 kB
+
+$ lparstat -il | grep "Online Memory"
+Online Memory : -511604 MB
+
+Signed-off-by: Thomas Abraham <tabraham@suse.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/lparstat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lparstat.c b/src/lparstat.c
+index 00922c4..5ea1a62 100644
+--- a/src/lparstat.c
++++ b/src/lparstat.c
+@@ -834,7 +834,7 @@ void get_mem_total(struct sysentry *se, char *buf)
+ 	*nl = '\0';
+ 
+ 	if (o_legacy) {
+-		sprintf(buf, "%d %s", atoi(mem) / 1024, "MB");
++		sprintf(buf, "%lld %s", atoll(mem) / 1024, "MB");
+ 	} else {
+ 		sprintf(buf, "%s %s", mem, unit);
+ 	}
+-- 
+2.34.1
+
