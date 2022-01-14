@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 13 22:29:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.2
+  * no release notes
+  * new maintainer, new Github repository
+  * PEP517 style build with poetry backend
+  * Python 3.10 support by collections.abc import fix
+
+-------------------------------------------------------------------
 Thu Jun  6 11:53:02 UTC 2019 - pgajdos@suse.com
 
 - run testsuite
