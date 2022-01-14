@@ -3,6 +3,8 @@
 #!BuildTag: %%TAGPREFIX%%/cdi-uploadproxy:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/cdi-uploadproxy:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
+#!ExclusiveArch: x86_64 aarch64
+
 # cdi-uploadproxy container image
 # KUBEVIRTFROM defined in prjconf, e.g.
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
