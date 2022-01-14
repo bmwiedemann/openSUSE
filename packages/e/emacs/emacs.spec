@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -181,6 +181,8 @@ Patch29:        emacs-27.1-Xauthority4server.patch
 # This patch allows vte based terminals like gnome-terminal to get 24bit colors
 # without setting a custom terminfo, honouring COLORTERM=truecolor
 Patch30:        emacs-27.2-COLORTERM-24bit.patch
+# PATCH-FIX-UPSTREAM boo#1178942 -- emacs hang in isearch
+Patch31:        boo1178942-bedb3cb6.patch
 Patch39:        sigsegv-stack.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -299,6 +301,7 @@ and most assembler-like syntaxes.
 %patch26 -p0 -b .fmt
 %patch29 -p0 -b .xauth
 %patch30 -p1 -b .colorterm
+%patch31 -p0 -b .isearch
 %patch39 -p1
 %patch   -p0 -b .0
 %if %{without tex4pdf}

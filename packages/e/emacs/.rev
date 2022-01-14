@@ -1630,4 +1630,17 @@
     <comment></comment>
     <requestid>935770</requestid>
   </revision>
+  <revision rev="162" vrev="9">
+    <srcmd5>06e64dd0d86cd3074f218d8a6fd0877a</srcmd5>
+    <version>27.2</version>
+    <time>1642198345</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip patch boo1180353-6d8144a2.patch for emacs 25.3 as already
+  part of emacs 27.2: Was fix for boo#1180353 that was a possible
+  segmentation fault in case of stack overflow of etags
+
+- Add patch boo1178942-bedb3cb6.patch to avoid that emacs hang in
+  isearch (boo#1178942)</comment>
+    <requestid>945990</requestid>
+  </revision>
 </revisionlist>
