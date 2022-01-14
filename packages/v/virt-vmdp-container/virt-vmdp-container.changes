@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 14 09:04:24 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable only x86_64 build
+
+-------------------------------------------------------------------
 Thu Nov 25 06:13:44 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 2.5.3:

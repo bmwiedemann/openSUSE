@@ -3,6 +3,8 @@
 #!BuildTag: %%TAGPREFIX%%/vmdp:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/vmdp:%%PKG_VERSION%%.%RELEASE%
 
+#!ExclusiveArch: x86_64
+
 # Hack: workaround for https://github.com/openSUSE/obs-build/issues/487
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
