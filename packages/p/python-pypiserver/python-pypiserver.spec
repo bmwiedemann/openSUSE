@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypiserver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %bcond_without python2
 Name:           python-pypiserver
-Version:        1.3.2
+Version:        1.4.2
 Release:        0
 Summary:        Minimal PyPI server for uploading & downloading packages with pip/easy_install
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-passlib >= 1.6
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-mock
@@ -52,6 +52,7 @@ Minimal PyPI server for uploading & downloading packagesj with pip/easy_install
 
 %prep
 %setup -q -n pypiserver-%{version}
+sed -i '1{/env python/d}' pypiserver/*.py
 # we don't need the extensions for smoke testing
 rm -f pytest.ini
 
@@ -78,7 +79,8 @@ rm -f pytest.ini
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pypiserver
+%{python_sitelib}/pypiserver-%{version}*-info
 %python_alternative %{_bindir}/pypi-server
 
 %changelog
