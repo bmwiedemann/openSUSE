@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-clocks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
 Source0:        https://download.gnome.org/sources/gnome-clocks/41/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -50,7 +52,7 @@ A nice simple app to show the time, date, and alarms.
 Summary:        GNOME Clocks -- Search Provider for GNOME Shell
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (gnome-shell and %{name})
 
 %description -n gnome-shell-search-provider-gnome-clocks
 This package contains a search provider to enable GNOME Shell to get
@@ -69,6 +71,9 @@ search results from GNOME Clocks.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license LICENSE.md
