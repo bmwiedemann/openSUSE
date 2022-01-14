@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 10 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.007
+   see /usr/share/doc/packages/perl-Business-ISBN/Changes
+
+  3.007 2022-01-09T04:33:56Z
+  	* no code changes. Fix a link in README.pod.
+
+-------------------------------------------------------------------
 Wed Jan 20 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.006

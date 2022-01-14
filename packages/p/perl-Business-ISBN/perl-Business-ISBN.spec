@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISBN
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Business-ISBN
 Name:           perl-Business-ISBN
-Version:        3.006
+Version:        3.007
 Release:        0
 Summary:        Work with International Standard Book Numbers
 License:        Artistic-2.0
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Business::ISBN::Data) >= 20191107
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
 Requires:       perl(Business::ISBN::Data) >= 20191107
 %{perl_requires}
