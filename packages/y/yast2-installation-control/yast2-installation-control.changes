@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 11 09:00:19 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+Related to jsc#SLE-22069:
+  - LSM section: added "none" section in order to mark it as not
+    selectable during the installation.
+- 4.4.9
+
+-------------------------------------------------------------------
 Tue Jan  4 11:47:25 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - LSM section: added "selectable" option to the section

@@ -378,4 +378,12 @@ Advantages:
     <comment>submit new version 4.4.8</comment>
     <requestid>944770</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4040db707c14071bb34dcb31c2a2faea</srcmd5>
+    <version>4.4.9</version>
+    <time>1642198376</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.9</comment>
+    <requestid>946165</requestid>
+  </revision>
 </revisionlist>
