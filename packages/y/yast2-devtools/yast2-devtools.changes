@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 11:25:25 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Add new rubocop config for the one supported by ruby3
+  (bsc#1193192)
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Aug  4 09:54:08 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Move YaST macros to %{_rpmmacrodir} instead of %{_sysconfdir}

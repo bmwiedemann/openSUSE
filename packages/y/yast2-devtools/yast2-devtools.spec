@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-devtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-devtools
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        YaST2 - Development Tools
 License:        GPL-2.0-or-later
@@ -129,8 +129,7 @@ EOF
 %{_datadir}/YaST2/data/devtools/bin/po_add_format_hints
 %{_datadir}/YaST2/data/devtools/bin/gettextdomains
 %{_datadir}/YaST2/data/devtools/bin/ycp_puttext
-%{_datadir}/YaST2/data/devtools/data/rubocop_yast_style.yml
-%{_datadir}/YaST2/data/devtools/data/rubocop-0.71.0_yast_style.yml
+%{_datadir}/YaST2/data/devtools/data/rubocop*_yast_style.yml
 %dir %{_datadir}/YaST2/control/
 %{_datadir}/YaST2/control/control_to_glade.xsl
 
