@@ -1303,4 +1303,24 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Updated lists o AF_*, ARPHRD_*, BTRFS_*, DEVCONF_*, DM_*, ETH_P_*, (forwarded request 935077 from AndreasSchwab)</comment>
     <requestid>935078</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>e64ce8f5eae2a563ca45f497f222925e</srcmd5>
+    <version>5.16</version>
+    <time>1642198343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.16
+  * Improvements
+    * Implemented --secontext=mismatch option to find mismatches in SELinux
+      contexts.
+    * Implemented decoding of futex_waitv syscall introduced in Linux 5.16.
+    * Implemented decoding of BPF_LINK_GET_NEXT_ID and BPF_LINK_GET_FD_BY_ID bpf
+      syscall commands.
+    * Enhanced decoding of BPF_MAP_CREATE, BPF_PROG_TEST_RUN, and BPF_PROG_LOAD
+      bpf syscall commands.
+    * Enhanced decoding of BTRFS_IOC_FS_INFO ioctl command.
+    * Updated lists of AUDIT_*, BPF_*, BTRFS_*, DEVCONF_*, FAN_*, ETH_P_*,
+      IPV4_DEVCONF_*, KVM_*, NDA_*, SO_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.16. (forwarded request 945378 from AndreasSchwab)</comment>
+    <requestid>945379</requestid>
+  </revision>
 </revisionlist>
