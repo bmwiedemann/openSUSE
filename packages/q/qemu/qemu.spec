@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -175,12 +175,10 @@ Patch00039:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00040:     usb-Help-compiler-out-to-avoid-a-warning.patch
 Patch00041:     qom-handle-case-of-chardev-spice-module-.patch
 Patch00042:     doc-add-our-support-doc-to-the-main-proj.patch
-Patch00043:     Revert-qemu-img-Improve-error-for-rebase.patch
-Patch00044:     Revert-qemu-img-Require-F-with-b-backing.patch
-Patch00045:     qemu-binfmt-conf.sh-should-use-F-as-shor.patch
-Patch00046:     modules-quick-fix-a-fundamental-error-in.patch
-Patch00047:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
-Patch00048:     scsi-generic-replace-logical-block-count.patch
+Patch00043:     qemu-binfmt-conf.sh-should-use-F-as-shor.patch
+Patch00044:     modules-quick-fix-a-fundamental-error-in.patch
+Patch00045:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+Patch00046:     scsi-generic-replace-logical-block-count.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1127,8 +1125,6 @@ This package records qemu testsuite results and represents successful testing.
 %patch00044 -p1
 %patch00045 -p1
 %patch00046 -p1
-%patch00047 -p1
-%patch00048 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

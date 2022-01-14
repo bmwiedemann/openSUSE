@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 12 13:57:31 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- It's time to really start requiring -F when using -b in
+  qemu-img for us as well. Users/customers have been warned
+  in the relevant release notes (bsc#1190135)
+* Patches dropped:
+  Revert-qemu-img-Improve-error-for-rebase.patch
+  Revert-qemu-img-Require-F-with-b-backing.patch
+
+-------------------------------------------------------------------
 Wed Dec 22 08:51:15 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix testsuite failures by not using modules when building tests
