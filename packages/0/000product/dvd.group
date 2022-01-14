@@ -1,6 +1,7 @@
 <group name="dvd">
   <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
   <packagelist relationship="recommends">
+    <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="AppStream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="AppStream-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ImageMagick" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2633,7 +2634,7 @@
     <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libswscale5_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtag-extras1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtag1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3143,8 +3144,6 @@
     <package name="oxygen5-sounds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="p7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="p7zip-full" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="package-update-indicator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="package-update-indicator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5405,7 +5404,9 @@
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="supportutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="sysfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

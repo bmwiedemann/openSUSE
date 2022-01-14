@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220112" schemaversion="4.1">
+<image name="OBS__openSUSE___20220113" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220112</productvar>
+      <productvar name="VERSION">20220113</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220112,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220113,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220112/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220113/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -55,6 +55,7 @@
     </metadata>
     <repopackages>
       <repopackage name="389-ds" arch="x86_64"/>
+      <repopackage name="7zip"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
       <repopackage name="abcde"/>
@@ -3468,8 +3469,6 @@
       <repopackage name="oxygen5-sounds"/>
       <repopackage name="p11-kit"/>
       <repopackage name="p11-kit-tools"/>
-      <repopackage name="p7zip"/>
-      <repopackage name="p7zip-full"/>
       <repopackage name="package-update-indicator"/>
       <repopackage name="package-update-indicator-lang"/>
       <repopackage name="PackageKit"/>
@@ -4810,6 +4809,7 @@
       <repopackage name="sudo-plugin-python"/>
       <repopackage name="sunpinyin-data"/>
       <repopackage name="supermin" arch="x86_64"/>
+      <repopackage name="supportutils" arch="x86_64"/>
       <repopackage name="suse-module-tools"/>
       <repopackage name="susefirewall2-to-firewalld"/>
       <repopackage name="susepaste"/>
@@ -4826,6 +4826,7 @@
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
       <repopackage name="sysdig-kmp-default" arch="x86_64"/>
+      <repopackage name="sysfsutils" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>
