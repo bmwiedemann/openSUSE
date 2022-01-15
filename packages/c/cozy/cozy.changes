@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  8 17:11:11 UTC 2022 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.2.0
+  * Redesigned preference window
+  * Preferences can now be searched
+  * Fix: position slider did not update the time correctly after an import scan
+  * Fix: after an import scan the library did not display the currently playing book correctly
+  * Multiple small bug fixes
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Fri Aug 20 11:23:50 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 1.1.2
