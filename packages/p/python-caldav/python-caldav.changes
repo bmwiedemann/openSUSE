@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:28:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * urllib.quote on uuids before including it in a new URL on object creation
+  * Principal.calendar (and CalendarSet.calendar) now accepts an URL as "cal_id"
+  * Minor workaround for problem with cloud.global/e.email: urllib.quote the
+    calendar_home_set_url if it's a path and it contains the character '@'
+  * Minor fixes to improve support for SOGo
+  * Bugfix for non-ascii in the password
+  * timezones ... the API of tzlocal was changed for a short while,
+    pytz is deprecated, but icalendar only supports timestamps localized with pytz.  What a mess!
+  * Added supported-report-set to the tags (but so far no code for using it)
+  * Multiget didn't work
+  * Silly spelling mistake in one of the error classes
+  * Attempts to resolve broken ical issues with X-APPLE-STRUCTURED-EVENT
+    and X-APPLE-STRUCTURED-LOCATION (#37, ...)
+  * Compatibility issue with e.email 
+
+-------------------------------------------------------------------
 Mon Jul 12 23:22:46 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 0.8.0

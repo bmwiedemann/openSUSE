@@ -72,4 +72,26 @@
     <comment></comment>
     <requestid>906346</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>19477bdce794a27cc0974dad87afbfe1</srcmd5>
+    <version>0.8.2</version>
+    <time>1642273514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2:
+  * urllib.quote on uuids before including it in a new URL on object creation
+  * Principal.calendar (and CalendarSet.calendar) now accepts an URL as &quot;cal_id&quot;
+  * Minor workaround for problem with cloud.global/e.email: urllib.quote the
+    calendar_home_set_url if it's a path and it contains the character '@'
+  * Minor fixes to improve support for SOGo
+  * Bugfix for non-ascii in the password
+  * timezones ... the API of tzlocal was changed for a short while,
+    pytz is deprecated, but icalendar only supports timestamps localized with pytz.  What a mess!
+  * Added supported-report-set to the tags (but so far no code for using it)
+  * Multiget didn't work
+  * Silly spelling mistake in one of the error classes
+  * Attempts to resolve broken ical issues with X-APPLE-STRUCTURED-EVENT
+    and X-APPLE-STRUCTURED-LOCATION (#37, ...)
+  * Compatibility issue with e.email</comment>
+    <requestid>946640</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname caldav
 Name:           python-%{modname}
-Version:        0.8.0
+Version:        0.8.2
 Release:        0
 Summary:        CalDAV (RFC4791) client library for Python
 License:        Apache-2.0 AND GPL-3.0-or-later
