@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-docstrings
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-docstrings
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Extension for flake8 which uses pydocstyle to check docstrings
 License:        MIT

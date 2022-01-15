@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:44:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Fix ``--ignore-noqa`` by disabling ``pydocstyle``'s ``noqa`` handling. 
+
+-------------------------------------------------------------------
 Fri Jan 10 15:02:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Revert back the python2 dropping; lets do it globaly in the
