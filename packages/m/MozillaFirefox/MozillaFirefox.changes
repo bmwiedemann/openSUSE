@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 16:56:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 96.0.1
+  * Fixed: Improvements to make the parsing of content-length
+    headers more robust (bmo#1749957, boo#1194677)
+
+-------------------------------------------------------------------
 Sat Jan  8 10:32:46 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 96.0
