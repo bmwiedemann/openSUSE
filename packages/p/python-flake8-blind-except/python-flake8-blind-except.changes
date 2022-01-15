@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:39:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * B902 error added for cases where a blind ``Exception`` is caught 
+
+-------------------------------------------------------------------
 Tue Dec  4 12:48:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
