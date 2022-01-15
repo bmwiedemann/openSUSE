@@ -7,4 +7,13 @@
     <comment>end of a long chain of missing authlib dependencies</comment>
     <requestid>851897</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80877d97fe5d887f66d0ca4364950f8e</srcmd5>
+    <version>1.4.1</version>
+    <time>1642273525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * declare python 3.9+ as supported</comment>
+    <requestid>946670</requestid>
+  </revision>
 </revisionlist>

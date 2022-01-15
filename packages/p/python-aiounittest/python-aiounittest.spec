@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiounittest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiounittest
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Test AyncIO Python Code Easily
 License:        MIT
