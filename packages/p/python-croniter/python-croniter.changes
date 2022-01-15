@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:22:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Enforce validation for day=1. Before this release we used to support day=0
+    and it was silently glided to day=1 to support having both day in day in
+    4th field when it came to have 6fields cron forms (second repeat). It will
+    now raises a CroniterBadDateError. 
+
+-------------------------------------------------------------------
 Mon Dec  6 20:11:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

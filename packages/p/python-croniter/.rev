@@ -192,4 +192,16 @@
     month in 4th field when it came to have 6fields cron forms</comment>
     <requestid>936119</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3451fa69b07c88da82208368960cbca5</srcmd5>
+    <version>1.2.0</version>
+    <time>1642273522</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Enforce validation for day=1. Before this release we used to support day=0
+    and it was silently glided to day=1 to support having both day in day in
+    4th field when it came to have 6fields cron forms (second repeat). It will
+    now raises a CroniterBadDateError.</comment>
+    <requestid>946664</requestid>
+  </revision>
 </revisionlist>
