@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:49:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+- setup.py: Remove test dependency doubles
+- Do not throw error when no tracing headers are sent
+- Stop testing with Python 3.5
+- Provide meaningful error messages when failed to extract headers from carrier
+  - TextPropagator.extract raises SpanContextCorruptedException with
+    more meaningful error messages.
+  - Tracer.start_span validates type of ``references=`` preventing
+    problems for users migrating code from opentracing==1.3.0.
+
+-------------------------------------------------------------------
 Mon Dec 21 12:39:51 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v3.1.0
