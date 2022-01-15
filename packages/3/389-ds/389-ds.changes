@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 15 02:56:14 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Fix %pre macro in pkg for systemd services
+
+-------------------------------------------------------------------
 Thu Jan 13 22:24:07 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Remove recommends on supportutils per review

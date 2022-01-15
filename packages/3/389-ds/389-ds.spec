@@ -302,7 +302,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 # Sssshhh duplicate checker ...
 %fdupes %{buildroot}/%{_prefix}
 
-%pre
+%pre -f %{user_group}.pre
 %service_add_pre dirsrv.target
 
 %post
