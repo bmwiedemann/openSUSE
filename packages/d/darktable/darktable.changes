@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan  8 15:46:14 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix the previous change:
+  bcond_* is hard
+
+-------------------------------------------------------------------
+Mon Jan  3 07:38:51 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Build with intree lua for openSUSE Leap versions
+
+-------------------------------------------------------------------
+Fri Dec 31 23:23:43 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- add SDL2 BR 
+
+-------------------------------------------------------------------
+Fri Dec 24 21:47:56 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add https://github.com/darktable-org/darktable/pull/10678.patch
+  to fix build on aarch64
+
+-------------------------------------------------------------------
+Fri Dec 24 17:10:20 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.8.0
+  https://www.darktable.org/2021/12/darktable-3.8.0-released/
+  https://www.darktable.org/2021/12/darktable-3-8/
+- drop the darktable-docs package with the pdf docs
+  get them from https://www.darktable.org/resources/
+
+-------------------------------------------------------------------
 Fri Sep 10 21:57:34 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.6.1

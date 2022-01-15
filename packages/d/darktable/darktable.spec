@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %bcond_with clang
 
-%if 0%{?fedora_version} >= 33
-%bcond_without use_intree_lua
-%else
+%if 0%{?fedora_version} >= 33 || 0%{?suse_version} >= 1590
 %bcond_with    use_intree_lua
+%else
+%bcond_without use_intree_lua
 %endif
 
 %if %{with use_intree_lua}
@@ -99,11 +99,11 @@
 %endif
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
-%define force_gcc_version 7
+%global force_gcc_version 7
 %endif
 
 Name:           darktable
-Version:        3.6.1
+Version:        3.8.0
 Release:        0
 %define pkg_name darktable
 %define pkg_version %{version}
@@ -112,15 +112,12 @@ Source0:        https://github.com/darktable-org/darktable/releases/download/rel
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz.asc
 Source2:        %{pkg_name}-rpmlintrc
 #
-Source10:       https://darktable-org.github.io/dtdocs/darktable_user_manual.pdf
-# This is not online yet?
-Source14:       darktable-lua-api.pdf
-#
 Source97:       darktable.dsc
 Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
 Patch0:         darktable-old-glib.patch
+Patch1:         https://github.com/darktable-org/darktable/pull/10678.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
@@ -155,7 +152,7 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 #
 %if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(lua5.3)
+BuildRequires:  pkgconfig(lua5.4)
 %else
 BuildRequires:  pkgconfig(lua)
 %endif
@@ -193,6 +190,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(osmgpsmap-1.0)
 %endif
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 %if %{with opencl}
 BuildRequires:  opencl-headers
@@ -208,6 +206,7 @@ BuildRequires:  gmic-devel
 %if %{with avif}
 BuildRequires:  libavif-devel
 %endif
+BuildRequires:  portmidi-devel
 
 # for the sake of simplicity we do not enforce the version here
 # the package is small enough that installing it doesnt hurt
@@ -224,6 +223,7 @@ Recommends:     google-roboto-fonts
 Summary:        A virtual Lighttable and Darkroom
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
+Obsoletes:      darktable-docs < %{version}-%{release}
 
 %description
 darktable is a virtual lighttable and darkroom for photographers: it manages
@@ -260,18 +260,6 @@ lighttable. It also enables developing raw images and enhance them.
 
 This package provides the noise profiling tools to add support for new cameras.
 
-%package doc
-Summary:        Documentation for Darktable
-Group:          Documentation/Other
-BuildArch:      noarch
-
-%description doc
-darktable is a virtual lighttable and darkroom for photographers: it manages
-digital negatives in a database and can show them through a zoomable
-lighttable. It also enables developing raw images and enhance them.
-
-This package provides the user manual in PDF format.
-
 %prep
 %autosetup -p1 -n %{pkg_name}-%{version}
 
@@ -281,8 +269,8 @@ cp %{SOURCE99} .
 rm -rf src/external/CL src/external/OpenCL
 sed -i -e 's, \"external/CL/\*\.h\" , ,' src/CMakeLists.txt
 
-# Remove bundled lua
 %if %{without use_intree_lua}
+# Remove bundled lua
 rm -rf src/external/lua/
 %endif
 
@@ -358,8 +346,6 @@ make %{_smp_mflags} VERBOSE=1
 
 %find_lang darktable
 
-cp -av %{SOURCE10} %{SOURCE14} \
-   %{buildroot}%{_defaultdocdir}/%{pkg_name}
 rm %{buildroot}%{_defaultdocdir}/%{pkg_name}/LICENSE
 
 %fdupes %{buildroot}/%{_prefix}
@@ -382,7 +368,6 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %files -f darktable.lang
 %doc %{_defaultdocdir}/%{pkg_name}
 %license LICENSE
-%exclude %{_defaultdocdir}/%{pkg_name}/*.pdf
 %exclude %{_defaultdocdir}/%{pkg_name}/README.tools.basecurve.md
 %{_bindir}/darktable
 %if %{with opencl}
@@ -418,8 +403,5 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %{_libexecdir}/darktable/tools/darktable-noiseprofile
 %{_libexecdir}/darktable/tools/profiling-shot.xmp
 %{_libexecdir}/darktable/tools/subr.sh
-
-%files doc
-%{_defaultdocdir}/%{pkg_name}/*.pdf
 
 %changelog
