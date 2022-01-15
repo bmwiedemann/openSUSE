@@ -7,4 +7,14 @@
     <comment>Re-introduce to distribution (was dropped due to lack of maintainer; now maintained by me).</comment>
     <requestid>922897</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4efab629686e1a377d1e62249d14479d</srcmd5>
+    <version>1.26</version>
+    <time>1642273506</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with meson 0.60 (intel-gpu-tools_fix-meson.patch)
+  + https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/107
+</comment>
+    <requestid>946551</requestid>
+  </revision>
 </revisionlist>

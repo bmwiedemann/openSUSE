@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 14 23:41:24 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Build with meson 0.60 (intel-gpu-tools_fix-meson.patch)
+  + https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/107
+
+-------------------------------------------------------------------
 Sat May 15 22:10:00 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 1.26:

@@ -1,7 +1,7 @@
 #
 # spec file for package intel-gpu-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
 Source1:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
 Patch0:         u_%{name}-1.7-fix-bashisms.patch
+#PATCH-FIX-UPSTREAM build with latest meson (commit 963917a3)
+Patch1:         intel-gpu-tools_fix-meson.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -62,6 +64,7 @@ DRM driver.
 
 %package devel
 Summary:        Development files for %{name}
+Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 
 %description devel
@@ -70,6 +73,7 @@ Development files and library headers for %{name}
 %prep
 %setup -q -n igt-gpu-tools-%{version}
 %patch0
+%patch1 -p1
 
 %build
 %meson
