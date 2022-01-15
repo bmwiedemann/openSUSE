@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,6 @@
 %else
 %define psuffix %{nil}
 %bcond_with test
-%if 0%{suse_version} <= 1500 && 0%{?sle_version} <= 150300
-# The requirements are not available in the correct versions
-# remove this if you see the :flavor build succeeding
-ExclusiveArch: donotbuild
-%endif
 %endif
 
 %if 0%{?suse_version} > 1500
@@ -39,18 +34,16 @@ ExclusiveArch: donotbuild
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbclient%{psuffix}
-Version:        0.5.9
+Version:        0.5.10
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbclient
 Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclient-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 37
-Requires:       python-async_generator
-%endif
 Requires:       python-jupyter-client >= 6.1.5
 Requires:       python-nbformat >= 5.0
 Requires:       python-nest-asyncio
@@ -64,16 +57,11 @@ Requires(postun):update-alternatives
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module async_generator if %python-base < 3.7}
+BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter-client >= 6.1.5}
-BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module nbformat >= 5.0}
-BuildRequires:  %{python_module nest-asyncio}
+BuildRequires:  %{python_module ipywidgets < 8}
+BuildRequires:  %{python_module nbclient = %{version}}
 BuildRequires:  %{python_module pytest >= 4.1}
-BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module traitlets >= 4.2}
 BuildRequires:  %{python_module xmltodict}
 %endif
 %python_subpackages

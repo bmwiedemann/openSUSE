@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 15 19:17:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.10
+  * Fix ipywidgets version in tests #192 (@martinRenou)
+  * Compatibility with IPython 8 where tracebacks are different
+    #190 (@frenzymadness)
+  * Drop tox #187 (@davidbrochart)
+  * Drop python3.6, test python3.10 #184 (@davidbrochart)
+  * Fix typos #182 (@kianmeng)
+- Cleanup now unused specfile code for Python 3.6 distributions
+
+-------------------------------------------------------------------
 Sat Jan  8 20:19:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Do not build on SLE/Leap <= 15.3
