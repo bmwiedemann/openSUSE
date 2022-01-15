@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python310 1
 %define plainpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -29,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.54.1
+Version:        0.55.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -37,26 +36,25 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
 Patch0:         fix-max-name-size.patch
-# PATCH-FIX-UPSTREAM support numpy 1.21 -- gh#numba/numba#7176, gh#numba/numba#7483, gh#numpy/numpy#20376
-Patch1:         numba-pr7483-numpy1_21.patch
+# PATCH-FIX-UPSTREAM numba-pr7748-random32bitwidth.patch -- gh#numba/numba#7748
+Patch1:         numba-pr7748-random32bitwidth.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-BuildRequires:  %{python_module devel >= 3.7 with %python-devel < 3.10}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.18 with %python-numpy-devel < 1.22}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  tbb-devel >= 2021
-Requires:       python-llvmlite < 0.38
-Requires:       python-llvmlite >= 0.37
-Requires:       python-scipy >= 0.16
+Requires:       (python-llvmlite >= 0.38 with python-llvmlite < 0.39)
 Requires:       (python-numpy >= 1.18 with python-numpy < 1.22)
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-cffi
+Recommends:     python-scipy > 1.0
 Recommends:     python-tbb
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
@@ -69,7 +67,7 @@ BuildRequires:  %{python_module numba-devel >= %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 0.16}
+BuildRequires:  %{python_module scipy >= 1.0}
 BuildRequires:  %{python_module tbb}
 %endif
 %python_subpackages
@@ -102,17 +100,13 @@ Requires:       %{plainpython}(abi) = %{python_version}
 This package contains files for developing applications using numba.
 
 %prep
-%setup -q -n numba-%{version}
-%autopatch -p1
+%autosetup -p1 -n numba-%{version}
+sed -i -e '1{/env python/ d}' numba/misc/appdirs.py
 
-# timeouts randomly in OBS
+# random timeouts in OBS
 rm numba/tests/test_typedlist.py
 # if we reduced the amount of tests too much:
 # sed -i -e '/check_testsuite_size/ s/5000/3000/' numba/tests/test_runtests.py
-# our setup imports distutils. Not sure why, but should not be a problem.
-sed -i -e "/def test_laziness/,/def/ {/'distutils',/ d}" numba/tests/test_import.py
-
-sed -i -e '1{/env python/ d}' numba/misc/appdirs.py
 
 %build
 %if !%{with test}
@@ -136,13 +130,14 @@ sed 's|^%{buildroot}|%%exclude |' devel-files0-%{$python_bin_suffix}.files > dev
 
 %check
 %if %{with test}
-mv numba numba_temp
-export NUMBA_PARALLEL_DIAGNOSTICS=1
-%{python_expand # test the installed package
+# test the installed package, not the source without compiled modules
+mkdir emtpytestdir
+pushd emtpytestdir
+%{python_expand # numbatests: check specific tests with `osc build -M test --define="numbatests <testnames>"`
 %{_bindir}/numba-%{$python_bin_suffix} -s
-$python -m numba.runtests -v -b --exclude-tags='long_running' -m %{_smp_build_ncpus} -- numba.tests
+$python -m numba.runtests -v -b --exclude-tags='long_running' -m %{_smp_build_ncpus} -- %{?!numbatests:numba.tests}%{?numbatests}
 }
-mv numba_temp numba
+popd
 %endif
 
 %if !%{with test}

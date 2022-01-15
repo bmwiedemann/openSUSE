@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Jan 14 16:55:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.55.0
+  * This release includes a significant number important dependency
+    upgrades along with a number of new features and bug fixes.
+  * NOTE: Due to NumPy CVE-2021-33430 this release has bypassed the
+    usual release process so as to promptly provide a Numba release
+    that supports NumPy 1.21. A single release candidate (RC1) was
+    made and a few issues were reported, these are summarised as
+    follows and will be fixed in a subsequent 0.55.1 release.
+  * Known issues with this release:
+    - Incorrect result copying array-typed field of structured
+      array (#7693)
+    - Two issues in DebugInfo generation (#7726, #7730)
+    - Compilation failure for hash of floating point values on 32
+      bit Windows when using Python 3.10 (#7713).
+  * Support for Python 3.10
+  * Support for NumPy 1.21
+  * The minimum supported NumPy version is raised to 1.18 for
+    runtime (compilation however remains compatible with NumPy
+    1.11).
+  * Experimental support for isinstance.
+  * The following functions are now supported:
+    - np.broadcast_to
+    - np.float_power
+    - np.cbrt
+    - np.logspace
+    - np.take_along_axis
+    - np.average
+    - np.argmin gains support for the axis kwarg.
+    - np.ndarray.astype gains support for types expressed as
+      literal strings.
+  * For users of the Numba extension API, Numba now has a new error
+    handling mode whereby it will treat all exceptions that do not
+    inherit from numba.errors.NumbaException as a “hard error” and
+    immediately unwind the stack. This makes it much easier to
+    debug when writing @overloads etc from the extension API as
+    there’s now no confusion between Python errors and Numba
+    errors. This feature can be enabled by setting the environment
+    variable: NUMBA_CAPTURED_ERRORS='new_style'.
+  * The threading layer selection priority can now be changed via
+    the environment variable NUMBA_THREADING_LAYER_PRIORITY.
+  * Support for NVIDIA’s CUDA Python bindings.
+  * Support for 16-bit floating point numbers and their basic
+    operations via intrinsics.
+  * Streams are provided in the Stream.async_done result, making it
+    easier to implement asynchronous work queues.
+  * Support for structured types in device arrays, character
+    sequences in NumPy arrays, and some array operations on nested
+    arrays.
+  * Much underlying refactoring to align the CUDA target more
+    closely with the CPU target, which lays the groudwork for
+    supporting the high level extension API in CUDA in future
+    releases.
+  * Intel also kindly sponsored research and development into
+    native debug (DWARF) support and handling per-function
+    compilation flags:
+  * Line number/location tracking is much improved.
+  * Numba’s internal representation of containers (e.g. tuples,
+    arrays) are now encoded as structures.
+  * Numba’s per-function compilation flags are encoded into the ABI
+    field of the mangled name of the function such that it’s
+    possible to compile and differentiate between versions of the
+    same function with different flags set.
+  * There are no new general deprecations.
+  * There are no new CUDA target deprecations.
+- Drop numba-pr7483-numpy1_21.patch
+- Add numba-pr7748-random32bitwidth.patch -- gh#numba/numba#7748
+
+-------------------------------------------------------------------
 Sat Jan  8 22:19:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Numba <0.55 is not compatible with Python 3.10 or NumPy 1.22
