@@ -42,4 +42,19 @@
   * Allowing initialisation with an io.BytesIO object. (Issue 189)</comment>
     <requestid>835169</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78047602846c73bb8d3bab53b79f2788</srcmd5>
+    <version>3.1.9</version>
+    <time>1642273514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.9:
+  * Fixed a couple of outdated results in the readme (Issue 214).
+  * Some more documentation tidying.
+  * Turned off some debug code by default.
+  * Fixed a couple of failing tests in different Python versions.
+  * Fix for consistent pos initialisation semantics for different types.
+  * Change to allow wheels to be uploaded to PyPI.
+  * More work for LSB0 mode, but still not finished or documented (sorry).</comment>
+    <requestid>946638</requestid>
+  </revision>
 </revisionlist>

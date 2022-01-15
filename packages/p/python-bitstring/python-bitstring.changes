@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:22:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.9:
+  * Fixed a couple of outdated results in the readme (Issue 214).
+  * Some more documentation tidying.
+  * Turned off some debug code by default.
+  * Fixed a couple of failing tests in different Python versions.
+  * Fix for consistent pos initialisation semantics for different types.
+  * Change to allow wheels to be uploaded to PyPI.
+  * More work for LSB0 mode, but still not finished or documented (sorry).
+
+-------------------------------------------------------------------
 Thu Sep 17 11:29:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.7:
