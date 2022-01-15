@@ -2868,8 +2868,6 @@ mtk_scp: of:N*T*Cmediatek,mt8183-scp
 mtk_scp: of:N*T*Cmediatek,mt8183-scpC*
 mtk_scp: of:N*T*Cmediatek,mt8192-scp
 mtk_scp: of:N*T*Cmediatek,mt8192-scpC*
-mtk_scp: of:N*T*Cmediatek,mt8195-scp
-mtk_scp: of:N*T*Cmediatek,mt8195-scpC*
 mtk_vpu: of:N*T*Cmediatek,mt8173-vpu
 mtk_vpu: of:N*T*Cmediatek,mt8173-vpuC*
 mwifiex_pcie: pci:v000011ABd00002B30sv*sd*bc*sc*i*
@@ -3159,8 +3157,6 @@ qcom_q6v5_mss: of:N*T*Cqcom,q6v5-pil
 qcom_q6v5_mss: of:N*T*Cqcom,q6v5-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom,sc7180-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom,sc7180-mss-pilC*
-qcom_q6v5_mss: of:N*T*Cqcom,sc7280-mss-pil
-qcom_q6v5_mss: of:N*T*Cqcom,sc7280-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom,sdm845-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom,sdm845-mss-pilC*
 qcom_q6v5_pas: of:N*T*Cqcom,msm8974-adsp-pil
@@ -3181,8 +3177,6 @@ qcom_q6v5_pas: of:N*T*Cqcom,qcs404-wcss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-wcss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pasC*
-qcom_q6v5_pas: of:N*T*Cqcom,sc7280-mpss-pas
-qcom_q6v5_pas: of:N*T*Cqcom,sc7280-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-cdsp-pas

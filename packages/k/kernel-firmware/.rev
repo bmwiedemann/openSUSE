@@ -1528,4 +1528,11 @@ SR 184278 -- creates ucode-intel, which contains the ucode from microcode_ctl fo
     <comment></comment>
     <requestid>946067</requestid>
   </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>fc39cbe51747fbc80b1684aca0c38650</srcmd5>
+    <version>20211123</version>
+    <time>1642239554</time>
+    <user>dimstar_suse</user>
+    <comment>Need to fight size constrains on weekdays</comment>
+  </revision>
 </revisionlist>

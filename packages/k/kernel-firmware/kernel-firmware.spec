@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220111
+%define version_unconverted 20211123
 
 Name:           kernel-firmware
-Version:        20220111
+Version:        20211123
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -2930,8 +2930,6 @@ Supplements:    modalias(of:N*T*Cmediatek,mt8183-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8183-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scpC*)
-Supplements:    modalias(of:N*T*Cmediatek,mt8195-scp)
-Supplements:    modalias(of:N*T*Cmediatek,mt8195-scpC*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007610sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007611sv*sd*bc*sc*i*)
@@ -3975,10 +3973,6 @@ Supplements:    modalias(of:N*T*Cqcom,sc7280-dpu)
 Supplements:    modalias(of:N*T*Cqcom,sc7280-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7280-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sc7280-mdssC*)
-Supplements:    modalias(of:N*T*Cqcom,sc7280-mpss-pas)
-Supplements:    modalias(of:N*T*Cqcom,sc7280-mpss-pasC*)
-Supplements:    modalias(of:N*T*Cqcom,sc7280-mss-pil)
-Supplements:    modalias(of:N*T*Cqcom,sc7280-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-cdsp-pas)
