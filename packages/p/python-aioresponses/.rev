@@ -95,4 +95,25 @@
   again</comment>
     <requestid>864006</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f5779902c50f28c15e508f78a1cf9fc</srcmd5>
+    <version>0.7.3</version>
+    <time>1642273525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.3:
+  * Support binary bodies in responses
+  * fix flake8
+  * move RequestInfo to compat
+  * drop \`.travis.yml\`
+  * basic CI using github actions
+  * (feat) add unit tests
+  * (feat) allow for callbacks to be called before raising of exception
+  * add \`py.typed\` (PEP 561)
+  * Fix setuptools warnings by replacing dashes in keys with underscores
+  * fix version parsing
+  * version 0.7.2
+  * Update aioresponses/core.py
+  * adding catch to ignore ValueError when deepcopy is unsuccessful</comment>
+    <requestid>946669</requestid>
+  </revision>
 </revisionlist>
