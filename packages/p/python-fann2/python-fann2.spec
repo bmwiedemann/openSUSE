@@ -1,7 +1,7 @@
 #
 # spec file for package python-fann2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fann2
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Fast Artificial Neural Network Library (fann) bindings
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
-Url:            https://github.com/FutureLinkCorporation/fann2
-Source:         https://files.pythonhosted.org/packages/source/f/fann2/fann2-%{version}.tar.gz
+URL:            https://github.com/FutureLinkCorporation/fann2
+Source:         https://github.com/FutureLinkCorporation/fann2/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
