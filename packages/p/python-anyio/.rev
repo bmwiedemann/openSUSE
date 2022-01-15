@@ -89,4 +89,17 @@
   * Enabled the test suite to run without IPv6 support, trio or pytest plugin autoloading</comment>
     <requestid>934534</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>83424a0d6faf9c1e0d19be9aee4b5633</srcmd5>
+    <version>3.5.0</version>
+    <time>1642273524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  - Added ``start_new_session`` keyword argument to ``run_process()`` and ``open_process()``
+  - Fixed deadlock in synchronization primitives on asyncio which can happen if a task acquiring a
+    primitive is hit with a native (not AnyIO) cancellation with just the right timing, leaving the
+    next acquiring task waiting forever
+  - Added workaround for bpo-46313_ to enable compatibility with OpenSSL 3.0</comment>
+    <requestid>946668</requestid>
+  </revision>
 </revisionlist>

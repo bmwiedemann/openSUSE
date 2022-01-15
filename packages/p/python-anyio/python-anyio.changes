@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:36:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  - Added ``start_new_session`` keyword argument to ``run_process()`` and ``open_process()``
+  - Fixed deadlock in synchronization primitives on asyncio which can happen if a task acquiring a
+    primitive is hit with a native (not AnyIO) cancellation with just the right timing, leaving the
+    next acquiring task waiting forever
+  - Added workaround for bpo-46313_ to enable compatibility with OpenSSL 3.0
+
+-------------------------------------------------------------------
 Mon Nov 29 12:01:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.0:
