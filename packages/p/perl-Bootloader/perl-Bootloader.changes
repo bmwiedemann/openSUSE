@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jan 13 15:50:57 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#137
+- grub2 install: Support secure boot on powerpc (bsc#1192764
+  jsc#SLE-18271).
+- 0.937
+
+--------------------------------------------------------------------
 Thu Sep 16 14:32:26 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#136
