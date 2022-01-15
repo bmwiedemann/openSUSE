@@ -306,4 +306,15 @@
     <comment></comment>
     <requestid>934505</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>941b4ec244454a8f052a8aff54f815bf</srcmd5>
+    <version>2.0.4+20211112.a2691b9</version>
+    <time>1642279508</time>
+    <user>dimstar_suse</user>
+    <comment>- Retry if posix_fallocate is interrupted with EINTR (#453) (gh#ClusterLabs/libqb#451, bsc#1193737, bsc#1193912)
+  * bsc#1193737-0001-Retry-if-posix_fallocate-is-interrupted-with-EINTR-4.patch
+
+- IPC: server: avoid temporary channel priority loss, up to deadlock-worth (gh#ClusterLabs/libqb#352, rh#1718773, bsc#1188212) (forwarded request 946347 from yan_gao)</comment>
+    <requestid>946348</requestid>
+  </revision>
 </revisionlist>

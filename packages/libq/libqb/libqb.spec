@@ -1,7 +1,7 @@
 #
 # spec file for package libqb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/ClusterLabs/libqb
 Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1:         bsc#1193737-0001-Retry-if-posix_fallocate-is-interrupted-with-EINTR-4.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  autoconf
@@ -75,6 +76,7 @@ features. It provides logging, tracing, IPC, and polling.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch1 -p1
 
 %build
 if [ ! -f .tarball-version ]; then

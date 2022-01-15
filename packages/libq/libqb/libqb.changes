@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 14 08:06:10 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Retry if posix_fallocate is interrupted with EINTR (#453) (gh#ClusterLabs/libqb#451, bsc#1193737, bsc#1193912)
+  * bsc#1193737-0001-Retry-if-posix_fallocate-is-interrupted-with-EINTR-4.patch
+
+-------------------------------------------------------------------
 Thu Nov 25 15:05:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Inject package version differently into the build system
@@ -86,7 +92,7 @@ Mon May 04 11:17:51 UTC 2020 - Yan Gao <ygao@suse.com>
 - log: Set errno when qb_log_target_alloc() fails
 - ipc: Remove kqueue EOF log message
 - ipc: fix force-filesystem-sockets
-- IPC: server: avoid temporary channel priority loss, up to deadlock-worth (rh#1718773)
+- IPC: server: avoid temporary channel priority loss, up to deadlock-worth (gh#ClusterLabs/libqb#352, rh#1718773, bsc#1188212)
 - ipc: Use mkdtemp for more secure IPC files
 
 -------------------------------------------------------------------

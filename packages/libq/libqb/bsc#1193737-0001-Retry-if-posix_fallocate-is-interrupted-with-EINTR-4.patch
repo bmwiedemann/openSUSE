@@ -1,0 +1,78 @@
+From 176eae8f13278a5a3dab3699b84e1dc9a8d4ae11 Mon Sep 17 00:00:00 2001
+From: Jakub Jankowski <shasta@toxcorp.com>
+Date: Fri, 14 Jan 2022 08:57:25 +0100
+Subject: [PATCH] Retry if posix_fallocate is interrupted with EINTR (#453)
+
+Every now and then Pacemaker reports errors:
+
+  (pcmk__new_client)        debug: New IPC client 3efdbecf-c2d9-44bc-b4a6-9bcd48021ba1 for PID 27492 with uid 0 and gid 0
+  (handle_new_connection)   debug: IPC credentials authenticated (/dev/shm/qb-7271-27492-12-hfPbKY/qb)
+  (qb_ipcs_shm_connect)     debug: connecting to client [27492]
+  (qb_rb_open_2)    debug: shm size:524301; real_size:528384; rb->word_size:132096
+  (qb_rb_open_2)    debug: shm size:524301; real_size:528384; rb->word_size:132096
+  (qb_sys_mmap_file_open)   error: couldn't allocate file /dev/shm/qb-7271-27492-12-hfPbKY/qb-event-cib_rw-data: Interrupted system call (4)
+  (qb_rb_open_2)    error: couldn't create file for mmap
+  (qb_ipcs_shm_rb_open)     error: qb_rb_open:/dev/shm/qb-7271-27492-12-hfPbKY/qb-event-cib_rw: Interrupted system call (4)
+  (qb_rb_close_helper)      debug: Free'ing ringbuffer: /dev/shm/qb-7271-27492-12-hfPbKY/qb-response-cib_rw-header
+  (qb_rb_close_helper)      debug: Free'ing ringbuffer: /dev/shm/qb-7271-27492-12-hfPbKY/qb-request-cib_rw-header
+  (qb_ipcs_shm_connect)     error: shm connection FAILED: Interrupted system call (4)
+  (handle_new_connection)   error: Error in connection setup (/dev/shm/qb-7271-27492-12-hfPbKY/qb): Interrupted system call (4)
+
+While it probably might be addressed in Pacemaker code, a simple retry
+loop in case posix_fallocate(3) returns EINTR seems to be a decent
+workaround.
+
+Fixes: #451
+
+Signed-off-by: Jakub Jankowski <shasta@toxcorp.com>
+Reviewed-by: Christine Caulfield <ccaulfie@redhat.com>
+---
+ lib/unix.c | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
+
+diff --git a/lib/unix.c b/lib/unix.c
+index 2fb53d0..b631cbf 100644
+--- a/lib/unix.c
++++ b/lib/unix.c
+@@ -81,6 +81,9 @@ qb_sys_mmap_file_open(char *path, const char *file, size_t bytes,
+ 	int32_t i;
+ #endif
+ 	char *is_absolute = strchr(file, '/');
++#ifdef HAVE_POSIX_FALLOCATE
++	int32_t fallocate_retry = 5;
++#endif
+ 
+ 	if (is_absolute) {
+ 		(void)strlcpy(path, file, PATH_MAX);
+@@ -121,12 +124,22 @@ qb_sys_mmap_file_open(char *path, const char *file, size_t bytes,
+ 	}
+ #endif
+ #ifdef HAVE_POSIX_FALLOCATE
+-	if ((res = posix_fallocate(fd, 0, bytes)) != 0) {
+-		errno = res;
+-		res = -1 * res;
+-		qb_util_perror(LOG_ERR, "couldn't allocate file %s", path);
+-		goto unlink_exit;
+-	}
++	/* posix_fallocate(3) can be interrupted by a signal,
++	   so retry few times before giving up */
++	do {
++		fallocate_retry--;
++		res = posix_fallocate(fd, 0, bytes);
++		if (res == EINTR) {
++			qb_util_log(LOG_DEBUG, "got EINTR trying to allocate file %s, retrying...", path);
++			continue;
++		} else if (res != 0) {
++			errno = res;
++			res = -1 * res;
++			qb_util_perror(LOG_ERR, "couldn't allocate file %s", path);
++			goto unlink_exit;
++		}
++		break;
++	} while (fallocate_retry > 0);
+ #else
+ 	if (file_flags & O_CREAT) {
+ 		long page_size = sysconf(_SC_PAGESIZE);
+-- 
+2.31.1
+
