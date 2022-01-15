@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:58:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.3:
+  * Fixed a bug where with the latest PScript (0.7.6) 
+    Flexx wont start in the browser 
+
+-------------------------------------------------------------------
 Wed Sep  1 09:06:12 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8.2

@@ -74,4 +74,14 @@
     <comment></comment>
     <requestid>925624</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>045d96d5b4e3c19c2ed2656e88fbf96f</srcmd5>
+    <version>0.8.3</version>
+    <time>1642273519</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.3:
+  * Fixed a bug where with the latest PScript (0.7.6) 
+    Flexx wont start in the browser</comment>
+    <requestid>946652</requestid>
+  </revision>
 </revisionlist>
