@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyparallel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyparallel
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -41,15 +41,16 @@ BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module traitlets >= 4.3}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module ipython-iptest >= 4}
+# SECTION test requirements, including ipython[test] (there is no iptest package anymore)
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module ipython >= 4}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-tornado}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
 # /SECTION
 Requires:       python-entrypoints
 Requires:       python-decorator
@@ -136,7 +137,7 @@ popd
 %pytest -k 'not (test_disambiguate_ip or test_imap_infinite)'
 
 %post
-%{python_install_alternative ipcluster ipcontroller ipengine}
+%python_install_alternative ipcluster ipcontroller ipengine
 
 %postun
 %python_uninstall_alternative ipcluster
@@ -153,10 +154,9 @@ popd
 %license COPYING.md
 %doc README.md
 %{_jupyter_nbextension_dir}/ipyparallel/
-%dir %{_jupyter_prefix}/labextensions/
-%{_jupyter_prefix}/labextensions/ipyparallel-labextension
-%config %{_jupyter_server_confdir}/ipyparallel.json
-%config %{_jupyter_servextension_confdir}/ipyparallel.json
-%config %{_jupyter_nb_tree_confdir}/ipyparallel.json
+%{_jupyter_labextensions_dir3}/ipyparallel-labextension
+%_jupyter_config %{_jupyter_server_confdir}/ipyparallel.json
+%_jupyter_config %{_jupyter_servextension_confdir}/ipyparallel.json
+%_jupyter_config %{_jupyter_nb_tree_confdir}/ipyparallel.json
 
 %changelog

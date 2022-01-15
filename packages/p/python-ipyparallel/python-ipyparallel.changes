@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:56:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.0
+  * 8.1.0 is a small release, adding a few new features and
+    bugfixes.
+  * relay KeyboardInterrupt to engines in blocking `%px` magics
+  * add `Cluster.start_and_connect(activate=True)` to include
+    activation of `%px` magics in one-liner startup.
+  * initial support for Clusters tab in RetroLab
+  * ensure profile config is always loaded for
+    `Cluster(profile="xyz")`
+  * build lab extension in production mode, apply trove classifiers
+  * pass through keyword arguments to constructor in
+    `Client.broadcast_view`
+- Don't require iptest for testing anymore, removed in ipython 8
+
+-------------------------------------------------------------------
 Mon Nov 15 18:28:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip flaky imap_infinite test
