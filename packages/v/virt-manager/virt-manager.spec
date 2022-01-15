@@ -1,7 +1,7 @@
 #
 # spec file for package virt-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ Patch5:         143c6bef-virtinst-fix-error-message-format-string.patch
 Patch6:         fe8722e7-createnet-Remove-some-unnecessary-max_length-annotations.patch
 Patch7:         d9b5090e-Fix-forgetting-password-from-keyring.patch
 Patch8:         965480e8-virt-install-add-mediated-device.patch
+Patch9:         9363e1e6-virt-xml-add-support-for-mediated-devices.patch
+Patch10:        f87e96d3-hostdev-use-method-get_mdev_uuid.patch
+Patch11:        9d4002ee-tests-verify-MDEV-support.patch
+Patch12:        0e15cd51-virt-manager-enable-MDEV-support.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -176,6 +180,10 @@ machine).
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1

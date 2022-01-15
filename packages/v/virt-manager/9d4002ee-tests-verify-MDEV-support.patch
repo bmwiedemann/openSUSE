@@ -1,0 +1,185 @@
+Subject: tests: verify MDEV support
+From: Shalini Chellathurai Saroja shalini@linux.ibm.com Mon May 31 21:54:28 2021 +0200
+Date: Tue Jun 1 17:07:36 2021 -0400:
+Git: 9d4002ee0f7088c490748ffb3144c006f4e39c68
+
+Add tests to verify add, edit and remove features of mediated
+devices.
+
+Reviewed-by: Cole Robinson <crobinso@redhat.com>
+Signed-off-by: Shalini Chellathurai Saroja <shalini@linux.ibm.com>
+
+--- /dev/null
++++ b/tests/data/cli/compare/virt-xml-add-hostdev-mdev-start.xml
+@@ -0,0 +1,12 @@
++       <model type="cirrus" vram="16384" heads="1" primary="yes"/>
++     </video>
++     <memballoon model="virtio"/>
+++    <hostdev mode="subsystem" type="mdev" managed="no" model="vfio-ccw">
+++      <source>
+++        <address uuid="8e37ee90-2b51-45e3-9b25-bf8283c03110"/>
+++      </source>
+++    </hostdev>
++   </devices>
++ </domain>
++
++Domain 'test-state-shutoff' started successfully.
+--- /dev/null
++++ b/tests/data/cli/compare/virt-xml-add-hostdev-mdev.xml
+@@ -0,0 +1,14 @@
++     <vsock model="virtio">
++       <cid auto="no" address="5"/>
++     </vsock>
+++    <hostdev mode="subsystem" type="mdev" managed="no" model="vfio-ccw">
+++      <source>
+++        <address uuid="8e37ee90-2b51-45e3-9b25-bf8283c03110"/>
+++      </source>
+++    </hostdev>
++   </devices>
++   <seclabel type="dynamic" model="selinux" relabel="yes"/>
++   <keywrap>
++
++Domain 'test-for-virtxml' defined successfully.
++Changes will take effect after the domain is fully powered off.
+--- a/tests/data/cli/compare/virt-xml-edit-all.xml
++++ b/tests/data/cli/compare/virt-xml-edit-all.xml
+@@ -10,6 +10,13 @@
+        <rom bar="off"/>
+ +      <driver name="vfio"/>
+      </hostdev>
++     <hostdev mode="subsystem" type="mdev" managed="no" model="vfio-ccw">
++       <source>
++         <address uuid="b1ae8bf6-38b0-4c81-9d44-78ce3f520496"/>
++       </source>
++       <address type="ccw" cssid="0xfe" ssid="0x0" devno="0x0002"/>
+++      <driver name="vfio"/>
++     </hostdev>
+      <redirdev bus="usb" type="tcp">
+        <source mode="connect" host="localhost" service="4000"/>
+ 
+--- /dev/null
++++ b/tests/data/cli/compare/virt-xml-edit-hostdev-mdev.xml
+@@ -0,0 +1,11 @@
++       <source>
++         <address uuid="b1ae8bf6-38b0-4c81-9d44-78ce3f520496"/>
++       </source>
++-      <address type="ccw" cssid="0xfe" ssid="0x0" devno="0x0002"/>
+++      <address type="ccw" cssid="0xfe" ssid="0x0" devno="0x0008"/>
++     </hostdev>
++     <redirdev bus="usb" type="tcp">
++       <source mode="connect" host="localhost" service="4000"/>
++
++Domain 'test-for-virtxml' defined successfully.
++Changes will take effect after the domain is fully powered off.
+--- a/tests/data/cli/compare/virt-xml-edit-simple-redirdev.xml
++++ b/tests/data/cli/compare/virt-xml-edit-simple-redirdev.xml
+@@ -1,5 +1,5 @@
+        </source>
+-       <rom bar="off"/>
++       <address type="ccw" cssid="0xfe" ssid="0x0" devno="0x0002"/>
+      </hostdev>
+ -    <redirdev bus="usb" type="tcp">
+ -      <source mode="connect" host="localhost" service="4000"/>
+--- /dev/null
++++ b/tests/data/cli/compare/virt-xml-remove-hostdev-mdev.xml
+@@ -0,0 +1,15 @@
++       </source>
++       <rom bar="off"/>
++     </hostdev>
++-    <hostdev mode="subsystem" type="mdev" managed="no" model="vfio-ccw">
++-      <source>
++-        <address uuid="b1ae8bf6-38b0-4c81-9d44-78ce3f520496"/>
++-      </source>
++-      <address type="ccw" cssid="0xfe" ssid="0x0" devno="0x0002"/>
++-    </hostdev>
++     <redirdev bus="usb" type="tcp">
++       <source mode="connect" host="localhost" service="4000"/>
++       <protocol type="raw"/>
++
++Domain 'test-for-virtxml' defined successfully.
++Changes will take effect after the domain is fully powered off.
+--- a/tests/data/testdriver/testsuite.xml
++++ b/tests/data/testdriver/testsuite.xml
+@@ -259,6 +259,12 @@
+       </source>
+       <rom bar='off'/>
+     </hostdev>
++    <hostdev mode="subsystem" type="mdev" managed="no" model="vfio-ccw">
++      <source>
++        <address uuid="b1ae8bf6-38b0-4c81-9d44-78ce3f520496"/>
++      </source>
++      <address type='ccw' cssid='0xfe' ssid='0x0' devno='0x0002'/>
++    </hostdev>
+ 
+     <serial type='null'/>
+ 
+@@ -737,5 +743,31 @@
+   </capability>
+ </device>
+ 
++<device>
++  <name>mdev_8e37ee90_2b51_45e3_9b25_bf8283c03110</name>
++  <path>/sys/devices/css0/0.0.0023/8e37ee90-2b51-45e3-9b25-bf8283c03110</path>
++  <parent>css_0_0_0023</parent>
++  <driver>
++    <name>vfio_mdev</name>
++  </driver>
++  <capability type='mdev'>
++    <type id='vfio_ccw-io'/>
++    <iommuGroup number='0'/>
++  </capability>
++</device>
++
++<device>
++  <name>mdev_b1ae8bf6_38b0_4c81_9d44_78ce3f520496</name>
++  <path>/sys/devices/css0/0.0.0023/b1ae8bf6-38b0-4c81-9d44-78ce3f520496</path>
++  <parent>css_0_0_0023</parent>
++  <driver>
++    <name>vfio_mdev</name>
++  </driver>
++  <capability type='mdev'>
++    <type id='vfio_ccw-io'/>
++    <iommuGroup number='0'/>
++  </capability>
++</device>
++
+ 
+ </node>
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -1274,6 +1274,7 @@ c.add_compare("--edit mac=00:11:7f:33:44
+ c.add_compare("--edit target=hda --disk boot_order=1", "edit-select-disk-bootorder")
+ c.add_compare("--edit path=/dev/null --disk path=,target=fdb,boot_order=12", "edit-disk-unset")  # --disk matching, using empty value to unset path
+ c.add_compare("--edit --memballoon none", "edit-disable-memballoon")
++c.add_compare("--edit address.devno=0x0002 --hostdev address.devno=0x0008", "edit-hostdev-mdev")
+ 
+ c = vixml.add_category("edit and start selection", "test-state-shutoff --print-diff --start")
+ c.add_compare("--define --edit target=vda --disk boot_order=1", "start-select-disk-bootorder")
+@@ -1308,6 +1309,8 @@ c.add_compare("--remove-device --disk /d
+ c.add_compare("--remove-device --video all", "remove-video-all")
+ c.add_compare("--remove-device --host-device 0x04b3:0x4485", "remove-hostdev-name")
+ c.add_compare("--remove-device --memballoon all", "remove-memballoon")
++c.add_compare("--add-device --hostdev mdev_8e37ee90_2b51_45e3_9b25_bf8283c03110", "add-hostdev-mdev")
++c.add_compare("--remove-device --hostdev mdev_b1ae8bf6_38b0_4c81_9d44_78ce3f520496", "remove-hostdev-mdev")
+ 
+ c = vixml.add_category("add/rm devices and start", "test-state-shutoff --print-diff --start")
+ c.add_invalid("--add-device --pm suspend_to_disk=yes")  # --add-device without a device
+@@ -1318,6 +1321,7 @@ c.add_compare("--define --add-device --h
+ c.add_compare("--add-device --disk %(EXISTIMG1)s,bus=virtio,target=vdf", "add-disk-basic-start")
+ c.add_compare("--add-device --disk %(NEWIMG1)s,size=.01", "add-disk-create-storage-start")
+ c.add_compare("--remove-device --disk /dev/null", "remove-disk-path-start")
++c.add_compare("--add-device --hostdev mdev_8e37ee90_2b51_45e3_9b25_bf8283c03110", "add-hostdev-mdev-start")
+ 
+ c = vixml.add_category("add/rm devices OS KVM", "--connect %(URI-KVM)s test --print-diff --define")
+ c.add_compare("--add-device --disk %(EXISTIMG1)s", "kvm-add-disk-os-from-xml")  # Guest OS (none) from XML
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -231,7 +231,7 @@ def diff_compare(actual_out, filename=No
+             open(filename, "w").write(actual_out)
+         expect_out = open(filename).read()
+ 
+-    diff = xmlutil.diff(expect_out, actual_out,
++    diff = xmlutil.diff(expect_out.rstrip(), actual_out.rstrip(),
+             filename or '', "Generated output")
+     if diff:
+         raise AssertionError("Conversion outputs did not match.\n%s" % diff)

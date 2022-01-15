@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 13 13:33:50 MST 2022 - carnold@suse.com
+
+- jsc#SLE-20855 KVM: Enable vfio-ccw and vfio-ap in virt-* tools
+  965480e8-virt-install-add-mediated-device.patch
+  f87e96d3-hostdev-use-method-get_mdev_uuid.patch
+  9d4002ee-tests-verify-MDEV-support.patch
+  9363e1e6-virt-xml-add-support-for-mediated-devices.patch
+  0e15cd51-virt-manager-enable-MDEV-support.patch
+
+-------------------------------------------------------------------
 Tue Nov 23 10:11:44 MST 2021 - carnold@suse.com
 
 - jsc#SLE-17735 - Support Oracle Linux as a guest VM. See also

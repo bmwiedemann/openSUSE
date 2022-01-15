@@ -1,8 +1,10 @@
 References: bsc#1192238, jsc#SLE-17764
 
---- virt-manager-3.2.0/virtinst/install/urldetect.py.orig	2021-11-23 15:06:47.451081946 -0700
-+++ virt-manager-3.2.0/virtinst/install/urldetect.py	2021-11-23 15:07:43.539083283 -0700
-@@ -723,6 +723,24 @@ class _OESDistro(_SuseDistro):
+Index: virt-manager-3.2.0/virtinst/install/urldetect.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.2.0/virtinst/install/urldetect.py
+@@ -723,6 +723,26 @@ class _OESDistro(_SuseDistro):
      famregex = ".*Open Enterprise Server.*"
  
  
@@ -19,7 +21,9 @@ References: bsc#1192238, jsc#SLE-17764
 +
 +    def _detect_version(self):
 +        if self.cache.treeinfo_version:  # pragma: no cover
-+            olname = self._variant_prefix + self.cache.treeinfo_version
++            version, update = self.cache.split_version()
++            # Beginning with oracle 8 they add an extra '.0' which we ignore
++            olname = self._variant_prefix + str(version) + "." + str(update)
 +            if OSDB.lookup_os(olname):
 +                return olname
 +
@@ -27,7 +31,7 @@ References: bsc#1192238, jsc#SLE-17764
  class _DebianDistro(_DistroTree):
      # ex. http://ftp.egr.msu.edu/debian/dists/sarge/main/installer-i386/
      # daily builds: https://d-i.debian.org/daily-images/amd64/
-@@ -949,6 +967,7 @@ def _build_distro_list(osobj):
+@@ -949,6 +969,7 @@ def _build_distro_list(osobj):
          _FedoraDistro,
          _RHELDistro,
          _CentOSDistro,

@@ -1,0 +1,151 @@
+Subject: virt-manager: enable MDEV support
+From: Shalini Chellathurai Saroja shalini@linux.ibm.com Mon Jun 7 11:34:21 2021 +0200
+Date: Tue Jun 8 09:58:50 2021 -0400:
+Git: 0e15cd51dfbdaa09f7d34ed1edce2f5416130361
+
+Enable virt-manager GUI to support add, edit, remove, hot-plug and
+hot-unplug of mediated devices (like DASDs, APQNs and PCIs) in virtual
+server.
+
+It is not possible to edit MDEV when a virtual server is in
+running state, as this is not supported by libvirt.
+
+Reviewed-by: Cole Robinson <crobinso@redhat.com>
+Signed-off-by: Shalini Chellathurai Saroja <shalini@linux.ibm.com>
+
+diff --git a/tests/data/testdriver/testdriver.xml b/tests/data/testdriver/testdriver.xml
+index b8d67bac..5875732a 100644
+--- a/tests/data/testdriver/testdriver.xml
++++ b/tests/data/testdriver/testdriver.xml
+@@ -3645,6 +3645,27 @@ ba</description>
+   </capability>
+ </device>
+ 
++<device>
++  <name>css_0_0_0023</name>
++  <path>/sys/devices/css0/0.0.0023</path>
++  <parent>computer</parent>
++  <driver>
++    <name>vfio_ccw</name>
++  </driver>
++  <capability type='css'>
++    <cssid>0x0</cssid>
++    <ssid>0x0</ssid>
++    <devno>0x0023</devno>
++    <capability type='mdev_types'>
++      <type id='vfio_ccw-io'>
++        <name>I/O subchannel (Non-QDIO)</name>
++        <deviceAPI>vfio-ccw</deviceAPI>
++        <availableInstances>0</availableInstances>
++      </type>
++    </capability>
++  </capability>
++</device>
++
+ <device>
+   <name>mdev_8e37ee90_2b51_45e3_9b25_bf8283c03110</name>
+   <path>/sys/devices/css0/0.0.0023/8e37ee90-2b51-45e3-9b25-bf8283c03110</path>
+@@ -3658,6 +3679,24 @@ ba</description>
+   </capability>
+ </device>
+ 
++<device>
++  <name>ap_matrix</name>
++  <path>/sys/devices/vfio_ap/matrix</path>
++  <parent>computer</parent>
++  <driver>
++    <name>vfio_ap</name>
++  </driver>
++  <capability type='ap_matrix'>
++    <capability type='mdev_types'>
++      <type id='vfio_ap-passthrough'>
++        <name>VFIO AP Passthrough Device</name>
++        <deviceAPI>vfio-ap</deviceAPI>
++        <availableInstances>65536</availableInstances>
++      </type>
++    </capability>
++  </capability>
++</device>
++
+ <device>
+   <name>mdev_11f92c9d_b0b0_4016_b306_a8071277f8b9</name>
+   <path>/sys/devices/vfio_ap/matrix/11f92c9d-b0b0-4016-b306-a8071277f8b9</path>
+diff --git a/tests/uitests/test_addhardware.py b/tests/uitests/test_addhardware.py
+index ce3da57c..56acc2fa 100644
+--- a/tests/uitests/test_addhardware.py
++++ b/tests/uitests/test_addhardware.py
+@@ -459,6 +459,12 @@ def testAddHosts(app):
+     app.click_alert_button("device is already in use by", "Yes")
+     lib.utils.check(lambda: details.active)
+ 
++    # Add MDEV device
++    _open_addhw(app, details)
++    tab = _select_hw(addhw, "MDEV Host Device", "host-tab")
++    tab.find_fuzzy("mdev_8e37ee90_2b51_45e3_9b25_bf8283c03110",
++                   "table cell").click()
++    _finish(addhw, check=details)
+ 
+ 
+ def testAddChars(app):
+diff --git a/virtManager/addhardware.py b/virtManager/addhardware.py
+index cbf19f58..13b899c3 100644
+--- a/virtManager/addhardware.py
++++ b/virtManager/addhardware.py
+@@ -249,6 +249,10 @@ class vmmAddHardware(vmmGObjectUI):
+         add_hw_option(_("PCI Host Device"), "system-run", PAGE_HOSTDEV,
+                       nodedev_enabled, nodedev_errstr, "pci")
+ 
++        add_hw_option(_("MDEV Host Device"), "system-run", PAGE_HOSTDEV,
++                      self.conn.support.conn_nodedev(),
++                      _("Connection does not support host device enumeration"),
++                      "mdev")
+         add_hw_option(_("Video"), "video-display", PAGE_VIDEO, True,
+                       _("Libvirt version does not support video devices."))
+         add_hw_option(_("Watchdog"), "device_pci", PAGE_WATCHDOG,
+@@ -656,6 +660,9 @@ class vmmAddHardware(vmmGObjectUI):
+                       (dehex(hostdev.domain), dehex(hostdev.bus),
+                        dehex(hostdev.slot), dehex(hostdev.function)))
+ 
++        elif hostdev.uuid:
++            label += " %s" % (str(hostdev.uuid))
++
+         return label
+ 
+ 
+@@ -775,6 +782,12 @@ class vmmAddHardware(vmmGObjectUI):
+                     if dev.xmlobj.name == subdev.xmlobj.parent:
+                         prettyname += " (%s)" % subdev.pretty_name()
+ 
++            if devtype == "mdev":
++                for parentdev in self.conn.list_nodedevs():
++                    if dev.xmlobj.parent == parentdev.xmlobj.name:
++                        prettyname = "%s %s" % (
++                                parentdev.pretty_name(), prettyname)
++
+             model.append([dev.xmlobj, prettyname])
+ 
+         if len(model) == 0:
+@@ -981,11 +994,13 @@ class vmmAddHardware(vmmGObjectUI):
+ 
+         if page == PAGE_HOSTDEV:
+             # Need to do this here, since we share the hostdev page
+-            # between two different HW options
++            # between different HW options
+             row = self._get_hw_selection()
+             devtype = "usb_device"
+             if row and row[5] == "pci":
+                 devtype = "pci"
++            if row and row[5] == "mdev":
++                devtype = "mdev"
+             self._populate_hostdev_model(devtype)
+ 
+         if page == PAGE_CONTROLLER:
+@@ -1036,6 +1051,8 @@ class vmmAddHardware(vmmGObjectUI):
+             row = self._get_hw_selection()
+             if row and row[5] == "pci":
+                 return _("PCI Device")
++            if row and row[5] == "mdev":
++                return _("MDEV Device")
+             return _("USB Device")
+ 
+         raise RuntimeError("Unknown page %s" % page)  # pragma: no cover
