@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 13 21:53:19 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Require python3-cairo; needed for tray icon (boo#1193579).
+
+-------------------------------------------------------------------
 Tue Jul 13 10:22:12 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Fix missing python3-gobject-Gdk runtime dependency (boo#1187936)

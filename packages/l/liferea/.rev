@@ -92,4 +92,12 @@
     <comment>- Fix missing python3-gobject-Gdk runtime dependency (boo#1187936) (forwarded request 906090 from tux93)</comment>
     <requestid>906287</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>78d9d36c4633eb6e14e08ae47bffd16c</srcmd5>
+    <version>1.13.6</version>
+    <time>1642273506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946550</requestid>
+  </revision>
 </revisionlist>
