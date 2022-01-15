@@ -1,0 +1,19 @@
+--- jflex/src/main/java/jflex/base/IntPair.java
++++ jflex/src/main/java/jflex/base/IntPair.java
+@@ -9,8 +9,6 @@
+ 
+ package jflex.base;
+ 
+-import com.google.auto.value.AutoValue;
+-
+ /**
+  * Simple pair of integers.
+  *
+@@ -19,7 +17,6 @@ import com.google.auto.value.AutoValue;
+  * @author Gerwin Klein
+  * @version JFlex 1.8.2
+  */
+-@AutoValue
+ public abstract class IntPair {
+ 
+   public abstract int start();

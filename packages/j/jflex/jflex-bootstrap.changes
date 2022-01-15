@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 14 07:05:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.8.2
+  * fix build with recent java-cup
+- Build the bootstrap package using ant with a generated build.xml
+- Build the non-bootstrap package using maven, since its dependency
+  auto is already built with maven
+- Added patch:
+  * jflex-1.8.2-no-auto-value.patch
+    + do not process auto-value-annotations in bootstrap build
+    + the generated file is pre-generated outside build for this
+      variant
+- Removed patches:
+  * jflex-byaccj-utl.patch
+  * jflex-classpath.patch
+  * jflex-javac-no-target.patch
+  * jflex-junit4.patch
+  * jflex-no-cup-no-jflex.patch
+    + not needed in this version
+
+-------------------------------------------------------------------
 Wed Oct  4 07:49:17 UTC 2017 - fstrba@suse.com
 
 - Removed a jflex-lex-scan.patch again, so that bot is happy

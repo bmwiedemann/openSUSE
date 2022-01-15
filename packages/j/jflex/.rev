@@ -141,4 +141,12 @@
     <comment>Don't depend on java-gcj-compat</comment>
     <requestid>531061</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>adfee0088efd0cec5b3efb8b2b5a7e00</srcmd5>
+    <version>1.8.2</version>
+    <time>1642279507</time>
+    <user>dimstar_suse</user>
+    <comment>1.8.2</comment>
+    <requestid>946337</requestid>
+  </revision>
 </revisionlist>
