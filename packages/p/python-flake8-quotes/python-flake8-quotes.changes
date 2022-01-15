@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:42:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1
+  * python 3.9/3.10 added
+  * python 2 removed 
+
+-------------------------------------------------------------------
 Sat Jul 25 15:27:54 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.2.0:
