@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:10:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.4:
+  * Documentation update.
+  * Fixed #pragma in fastcluster.cpp.
+  * Fixed NumPy versions in Travis builds.
+
+-------------------------------------------------------------------
 Sun May 23 21:17:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.2.0:
