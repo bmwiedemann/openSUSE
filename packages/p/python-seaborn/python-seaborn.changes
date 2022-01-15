@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Fri Jan 14 22:05:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.2
+  * This is a minor release that addresses issues in the v0.11
+    series and adds a small number of targeted enhancements. It is
+    a recommended upgrade for all users.
+  * |Docs| A paper describing seaborn has been published in the
+    Journal of Open Source Software. The paper serves as an
+    introduction to the library and can be used to cite seaborn if
+    it has been integral to a scientific publication.
+  * |API| |Feature| In lmplot, added a new facet_kws
+    parameter and deprecated the sharex, sharey, and legend_out
+    parameters from the function signature; pass them in a
+    facet_kws dictionary instead (#2576).
+  * |Feature| Added a move_legend convenience function for
+    repositioning the legend on an existing axes or figure, along
+    with updating its properties. This function should be preferred
+    over calling ax.legend with no legend data, which does not
+    reliably work across seaborn plot types (#2643).
+  * |Feature| In histplot, added stat="percent" as an option
+    for normalization such that bar heights sum to 100 and
+    stat="proportion" as an alias for the existing
+    stat="probability" (#2461, #2634).
+  * |Feature| Added FacetGrid.refline and JointGrid.refline
+    methods for plotting horizontal and/or vertical reference lines
+    on every subplot in one step (#2620).
+  * |Feature| In kdeplot, added a warn_singular parameter to
+    silence the warning about data with zero variance (#2566).
+  * |Enhancement| In histplot, improved performance with large
+    datasets and many groupings/facets (#2559, #2570).
+  * |Enhancement| The FacetGrid, PairGrid, and JointGrid
+    objects now reference the underlying matplotlib figure with a
+    .figure attribute. The existing .fig attribute still exists but
+    is discouraged and may eventually be deprecated. The effect is
+    that you can now call obj.figure on the return value from any
+    seaborn function to access the matplotlib object (#2639).
+  * |Enhancement| In FacetGrid and functions that use it,
+    visibility of the interior axis labels is now disabled, and
+    exterior axis labels are no longer erased when adding
+    additional layers. This produces the same results for plots
+    made by seaborn functions, but it may produce different
+    (better, in most cases) results for customized facet plots
+    (#2583).
+  * |Enhancement| In FacetGrid, PairGrid, and functions that
+    use them, the matplotlib figure.autolayout parameter is
+    disabled to avoid having the legend overlap the plot (#2571).
+  * |Enhancement| The load_dataset helper now produces a more
+    informative error when fed a dataframe, easing a common
+    beginner mistake (#2604).
+  * |Fix| |Enhancement| Improved robustness to missing
+    data, including some additional support for the pd.NA type
+    (#2417, #2435).
+  * |Fix| In ecdfplot and rugplot, fixed a bug where results
+    were incorrect if the data axis had a log scale before plotting
+    (#2504).
+  * |Fix| In histplot, fixed a bug where using shrink with
+    non-discrete bins shifted bar positions inaccurately (#2477).
+  * |Fix| In displot, fixed a bug where common_norm=False was
+    ignored when faceting was used without assigning hue (#2468).
+  * |Fix| In histplot, fixed two bugs where automatically
+    computed edge widths were too thick for log-scaled histograms
+    and for categorical histograms on the y axis (#2522).
+  * |Fix| In histplot and kdeplot, fixed a bug where the alpha
+    parameter was ignored when fill=False (#2460).
+  * |Fix| In histplot and kdeplot, fixed a bug where the
+    multiple parameter was ignored when hue was provided as a
+    vector without a name (#2462).
+  * |Fix| In displot, the default alpha value now adjusts to a
+    provided multiple parameter even when hue is not assigned
+    (#2462).
+  * |Fix| In displot, fixed a bug that caused faceted 2D
+    histograms to error out with common_bins=False (#2640).
+  * |Fix| In rugplot, fixed a bug that prevented the use of
+    datetime data (#2458).
+  * |Fix| In relplot and displot, fixed a bug where the
+    dataframe attached to the returned FacetGrid object dropped
+    columns that were not used in the plot (#2623).
+  * |Fix| In relplot, fixed an error that would be raised when
+    one of the column names in the dataframe shared a name with one
+    of the plot variables (#2581).
+  * |Fix| In the relational plots, fixed a bug where legend
+    entries for the size semantic were incorrect when size_norm
+    extrapolated beyond the range of the data (#2580).
+  * |Fix| In lmplot and regplot, fixed a bug where the x axis
+    was clamped to the data limits with truncate=True (#2576).
+  * |Fix| In lmplot, fixed a bug where sharey=False did not
+    always work as expected (#2576).
+  * |Fix| In heatmap, fixed a bug where vertically-rotated
+    y-axis tick labels would be misaligned with their rows (#2574).
+  * |Fix| Fixed an issue that prevented Python from running in
+    -OO mode while using seaborn (#2473).
+  * |Docs| Improved the API documentation for theme-related
+    functions (#2573).
+  * |Docs| Added docstring pages for all methods on documented
+    classes (#2644).
+- Skip tests failing on Matplotlib 3.5
+  * gh#mwaskom/seaborn#2663
+
+-------------------------------------------------------------------
 Sat Apr 24 15:09:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add seaborn-pr2562-clustermap-colors.patch for matplotlib 3.4

@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# Scipy 1.6.0 dropped Pyhton 3.6, and NumPy 1.20 will, too.
-%define         skip_python36 1
 Name:           python-seaborn
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-3-Clause
@@ -91,7 +89,23 @@ Some of the features that seaborn offers are:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest seaborn
+# Test code is not ready for matplotlib 3.5 yet: gh#mwaskom/seaborn#2663, gh#mwaskom/seaborn#2690, gh#mwaskom/seaborn#2693 (no live code changes, only testing)
+donttest+="    (TestBoxPlotter and test_axes_data)"
+donttest+=" or (TestBoxPlotter and test_draw_missing_boxes)"
+donttest+=" or (TestBoxPlotter and test_missing_data)"
+donttest+=" or (TestCatPlot and test_plot_elements)"
+donttest+=" or (TestKDEPlotUnivariate and test_legend)"
+donttest+=" or (TestKDEPlotBivariate and test_fill_artists)"
+donttest+=" or (TestKDEPlotBivariate and test_common_norm)"
+donttest+=" or (TestKDEPlotBivariate and test_log_scale)"
+donttest+=" or (TestKDEPlotBivariate and test_bandwidth)"
+donttest+=" or (TestKDEPlotBivariate and test_weights)"
+donttest+=" or (TestKDEPlotBivariate and test_hue_ignores_cmap)"
+donttest+=" or (TestKDEPlotBivariate and test_contour_line_colors)"
+donttest+=" or (TestKDEPlotBivariate and test_levels_and_thresh)"
+donttest+=" or (TestDisPlot and test_with_rug)"
+donttest+=" or (TestDisPlot and test_bivariate_kde_norm)"
+%pytest seaborn -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE licences/*
