@@ -31,4 +31,14 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746356</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3317fa7ba4f6bf4902d683e228b84af2</srcmd5>
+    <version>0.3.2</version>
+    <time>1642273524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.2:
+  * flake8 fixes
+  * python 3.8+ fixed</comment>
+    <requestid>946667</requestid>
+  </revision>
 </revisionlist>

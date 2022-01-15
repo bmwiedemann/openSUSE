@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansicolor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # For license file
 %define tag     a5a5c31dc6de5c864a0c5684ae326972573a712b
 Name:           python-ansicolor
-Version:        0.2.6
+Version:        0.3.2
 Release:        0
 Summary:        Python module for ANSI color output and colored highlighting and diffing
 License:        Apache-2.0
