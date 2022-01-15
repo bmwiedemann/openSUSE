@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 21:41:13 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Remove telepathy dbus service, since we have telepathy disabled
+  (boo#1177663).
+
+-------------------------------------------------------------------
 Thu Sep 16 02:08:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

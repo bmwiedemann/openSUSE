@@ -770,4 +770,12 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930922</requestid>
   </revision>
+  <revision rev="105" vrev="9">
+    <srcmd5>052a58937712e3c7b695b3bbc830ef69</srcmd5>
+    <version>3.22.0</version>
+    <time>1642273508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946594</requestid>
+  </revision>
 </revisionlist>

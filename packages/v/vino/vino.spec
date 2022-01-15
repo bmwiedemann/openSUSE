@@ -1,7 +1,7 @@
 #
 # spec file for package vino
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,7 @@ A VNC Server for GNOME
 
 %install
 %make_install
+rm %{buildroot}%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Vino.service
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 
@@ -80,7 +81,7 @@ A VNC Server for GNOME
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 %{_datadir}/applications/vino-server.desktop
-%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Vino.service
+#%%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Vino.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Vino.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Vino.gschema.xml
 # Disable telepathy support
