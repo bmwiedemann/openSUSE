@@ -23,4 +23,13 @@
     <comment>rnp 0.15.2</comment>
     <requestid>911107</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e2aa21d979da2697caafe46383ca39ca</srcmd5>
+    <version>0.15.2</version>
+    <time>1642273508</time>
+    <user>dimstar_suse</user>
+    <comment>- disable tests
+</comment>
+    <requestid>946592</requestid>
+  </revision>
 </revisionlist>

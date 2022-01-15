@@ -1,8 +1,8 @@
 #
 # spec file for package rnp
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 
 %define soname 0
+%bcond_with rnp_tests
 Name:           rnp
 Version:        0.15.2
 Release:        0
@@ -30,13 +31,15 @@ BuildRequires:  gcc-c++
 # https://github.com/rnpgp/rnp/issues/1579
 BuildRequires:  git
 BuildRequires:  gpg2 >= 2.2
-BuildRequires:  gtest
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(json-c) >= 0.11
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
+%if %{with rnp_tests}
+BuildRequires:  gtest
+%endif
 
 %description
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
@@ -63,9 +66,13 @@ This package contains the files needed to build against librnp.
 %build
 %cmake \
 	-DBUILD_SHARED_LIBS=on \
-	-DBUILD_TESTING=on \
 	-DDOWNLOAD_GTEST=off \
 	-DDOWNLOAD_RUBYRNP=off \
+%if %{with rnp_tests}
+	-DBUILD_TESTING=on \
+%else
+	-DBUILD_TESTING=off \
+%endif
 
 %cmake_build
 
@@ -73,7 +80,9 @@ This package contains the files needed to build against librnp.
 %cmake_install
 
 %check
+%if %{with rnp_tests}
 %ctest
+%endif
 
 %post -n librnp%{soname} -p /sbin/ldconfig
 %postun -n librnp%{soname} -p /sbin/ldconfig
