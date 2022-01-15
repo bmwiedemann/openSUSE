@@ -1,7 +1,7 @@
 #
 # spec file for package java-cup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %global _without_bootstrap 1
-%define cvs_version        11a
+%define cvs_version        11b
 %define real_name   java-cup
+%define git_hash d69c832
+%define git_date 20210814
 %bcond_with                bootstrap
 Name:           java-cup
 Version:        0.11
@@ -26,32 +28,30 @@ Release:        0
 Summary:        LALR Parser Generator in Java
 License:        HPND
 Group:          Development/Libraries/Java
-Url:            http://www2.cs.tum.edu/projects/cup/
-# https://www2.in.tum.de/WebSVN/dl.php?repname=CUP&path=/develop/&rev=0&isdir=1
-Source0:        develop.tar.bz2
-Source1:        java-cup.script
-Source2:        java-cup-generated-files.tar.bz2
-# From          http://www2.cs.tum.edu/projects/cup/
-Source3:        java-cup.license
-Patch1:         java-cup-no-classpath-in-manifest.patch
+URL:            http://www2.cs.tum.edu/projects/cup/
+Source0:        %{real_name}-%{git_hash}.tar.xz
+Source1:        %{real_name}-generated-files.tar.xz
+Source100:      java-cup-nogit.patch.in
+Patch0:         java-cup-no-classpath-in-manifest.patch
+Patch1:         java-cup-java8.patch
 Patch2:         java-cup-no-cup-no-jflex.patch
 Patch3:         java-cup-classpath.patch
-# Missing symbolFactory initialization in lr_parser, causes sinjdoc to crash
-Patch4:         java-cup-lr_parser-constructor.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
+BuildRequires:  javapackages-tools
 BuildRequires:  xml-commons-apis-bootstrap
 BuildRequires:  xml-commons-resolver-bootstrap
-#!BuildIgnore:  xml-commons-apis xml-commons-resolver xalan-j2 xerces-j2
+#!BuildIgnore:  xalan-j2
+#!BuildIgnore:  xerces-j2
+#!BuildIgnore:  xml-commons-apis
+#!BuildIgnore:  xml-commons-resolver
 Obsoletes:      java_cup < %{version}-%{release}
 Provides:       java_cup = %{version}-%{release}
 BuildArch:      noarch
-%if %without bootstrap
+%if %{without bootstrap}
 BuildRequires:  java-cup-bootstrap
-BuildRequires:  jflex
-%endif
-# bootstrap variant is just stripped down java-cup, so it conflicts
-%if %without bootstrap
+BuildRequires:  javapackages-local
+BuildRequires:  jflex-bootstrap
 Conflicts:      java-cup-bootstrap
 %else
 Conflicts:      java-cup
@@ -69,7 +69,7 @@ java-cup is a LALR Parser Generator in Java. With v0.11, you can: *
 
 * have Your own symbol classes
 
-%if %without bootstrap
+%if %{without bootstrap}
 %package manual
 Summary:        LALR Parser Generator in Java
 Group:          Development/Libraries/Java
@@ -91,22 +91,21 @@ java-cup is a LALR Parser Generator in Java. With v0.11, you can: *
 %endif
 
 %prep
-%setup -q -n develop
+%setup -q -n %{real_name}-%{git_hash}
+cat %{SOURCE100} | sed 's#@GIT_HASH@#%{git_hash}#g' | sed 's#@GIT_DATE@#%{git_date}#g' | patch -p1 -u -l
+%patch0 -p1
 %patch1 -p1
-%if %with bootstrap
-%setup -q -T -D -a 2 -n develop
+%if %{with bootstrap}
+%setup -q -T -D -a 1 -n %{real_name}-%{git_hash}
 %patch2 -p1
 %else
-%{_bindir}/find . -name '*.jar' | %{_bindir}/xargs rm
 %patch3 -p1
 %endif
-%patch4 -p1
-perl -pi -e 's/1\.2/1.6/g' build.xml
-mkdir -p classes dist
-cp %{SOURCE3} license.txt
+find . -name '*.jar' -print -delete
+mkdir -p target/classes
 
 %build
-%if %with bootstrap
+%if %{with bootstrap}
 export CLASSPATH=
 %else
 export CLASSPATH=$(build-classpath java-cup jflex)
@@ -117,19 +116,34 @@ ant
 %install
 # jar
 mkdir -p %{buildroot}%{_javadir}
-cp -a dist/%{real_name}-%{cvs_version}.jar %{buildroot}%{_javadir}/%{real_name}-%{version}.jar
-cp -a dist/%{real_name}-%{cvs_version}-runtime.jar %{buildroot}%{_javadir}/%{real_name}-runtime-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -s ${jar} ${jar/-%{version}/}; done)
+cp -a target/dist/%{real_name}-%{cvs_version}.jar %{buildroot}%{_javadir}/%{real_name}.jar
+cp -a target/dist/%{real_name}-%{cvs_version}-runtime.jar %{buildroot}%{_javadir}/%{real_name}-runtime.jar
+
+%if %{without bootstrap}
+# maven data
+%add_maven_depmap com.github.vbmacher:%{real_name}:%{cvs_version}-%{git_date} %{real_name}.jar
+%add_maven_depmap com.github.vbmacher:%{real_name}-runtime:%{cvs_version}-%{git_date} %{real_name}-runtime.jar
+%endif
+
 # compatibility symlinks
 (cd %{buildroot}%{_javadir} && ln -s %{real_name}.jar java_cup.jar && ln -s %{real_name}-runtime.jar java_cup-runtime.jar)
 mkdir -p %{buildroot}%{_bindir}
-install -p -m 755 %{SOURCE1} %{buildroot}%{_bindir}/%{real_name}
 
+%jpackage_script java_cup.Main "" "" %{real_name}:%{real_name}-runtime %{real_name} true
+
+%if %{with bootstrap}
 %files
-%doc changelog.txt license.txt
+%{_javadir}/%{real_name}*.jar
+%else
+
+%files -f .mfiles
+%endif
+%license licence.txt
+%doc changelog.txt
 %attr(0755,root,root) %{_bindir}/%{real_name}
-%{_javadir}/*
-%if %without bootstrap
+%{_javadir}/java_cup*.jar
+
+%if %{without bootstrap}
 %files manual
 %doc manual.html
 

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 14 06:59:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to recent git checkout providing 0.11 beta
+- Modified patches:
+  * java-cup-classpath.patch
+  * java-cup-no-classpath-in-manifest.patch
+  * java-cup-no-cup-no-jflex.patch
+    + rediff to the changed context
+- Removed patch:
+  * java-cup-lr_parser-constructor.patch
+    + integrated upstream
+- Added patch:
+  * java-cup-java8.patch
+    + replace java 10+ constructs in order to be able to build
+      with java 8
+- Fetch sources using source service
+- Do not run git during the build
+
+-------------------------------------------------------------------
 Fri Feb  1 16:57:40 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - BuildIgnore xml-commons-apis xml-commons-resolver xalan-j2

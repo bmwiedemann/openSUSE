@@ -152,4 +152,12 @@
     <comment>fix build cycle</comment>
     <requestid>670621</requestid>
   </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>6614ca5e473f909cd173e2e47cdefca9</srcmd5>
+    <version>0.11</version>
+    <time>1642279507</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 0.11 beta</comment>
+    <requestid>946328</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
---- develop/build.xml.orig	2006-09-09 06:43:37.000000000 +0200
-+++ develop/build.xml	2006-09-09 06:44:10.000000000 +0200
-@@ -40,18 +40,7 @@
+--- a/build.xml
++++ b/build.xml
+@@ -44,18 +44,7 @@
      <delete dir="${dist}" />
    </target>
  
@@ -17,6 +17,6 @@
 -
 -  <target name="compile" depends="jflex">
 +  <target name="compile">
-     <copy todir="${java}"><fileset dir="${src}"></fileset></copy>
-     <javac srcdir="${java}" destdir="${classes}" verbose="off" listfiles="off" debug="on" source="1.2" target="1.2">
+     <javac srcdir="${java}" destdir="${classes}" verbose="off" listfiles="off" debug="on" source="1.8" target="1.8">
        <classpath refid="libraries"/>
+       <compilerarg value="-Xlint:unchecked" />
