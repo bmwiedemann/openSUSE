@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-sql
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-agate-sql
-Version:        0.5.6
+Version:        0.5.8
 Release:        0
 Summary:        SQL read/write support for agate
 License:        MIT
@@ -28,8 +28,6 @@ URL:            http://agate-sql.readthedocs.org/
 Source:         https://github.com/wireservice/agate-sql/archive/%{version}.tar.gz
 # we do not have crate dialect
 Patch0:         python-agate-sql-no-crate.patch
-# PATCH-FIX-UPSTREAM fix_test_fixture_33.patch gh#wireservice/agate-sql#33 mcepl@suse.com
-Patch1:         fix_test_fixture_33.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

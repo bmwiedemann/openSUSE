@@ -71,4 +71,15 @@
 </comment>
     <requestid>906050</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5acc8b2d9957735352ccfdeb39256a4c</srcmd5>
+    <version>0.5.8</version>
+    <time>1642279518</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.8:
+  * Fix tests for Linux packages.
+  * Add wheels distribution.
+- drop fix_test_fixture_33.patch: obsolete</comment>
+    <requestid>946666</requestid>
+  </revision>
 </revisionlist>

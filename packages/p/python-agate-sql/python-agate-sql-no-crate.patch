@@ -1,7 +1,9 @@
---- a/tests/test_agatesql.py
-+++ b/tests/test_agatesql.py
-@@ -149,7 +149,7 @@ class TestSQL(agate.AgateTestCase):
- );''')  # noqa
+Index: agate-sql-0.5.8/tests/test_agatesql.py
+===================================================================
+--- agate-sql-0.5.8.orig/tests/test_agatesql.py
++++ agate-sql-0.5.8/tests/test_agatesql.py
+@@ -169,7 +169,7 @@ class TestSQL(agate.AgateTestCase):
+         self.assertEqual(statement.replace('\t', '  '), dedent(expected))
  
      def test_to_sql_create_statement_with_dialects(self):
 -        for dialect in ['crate', 'mssql', 'mysql', 'postgresql', 'sqlite']:
