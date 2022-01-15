@@ -31,10 +31,15 @@ Patch1:         libvmime-nodatetime.diff
 Patch2:         libvmime-soname.diff
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  gcc-c++
+%if 0%{?centos_version}
+BuildRequires:  gnutls-devel
+%else
 BuildRequires:  libgnutls-devel
+%endif
 %if !0%{?sle_version}
 BuildRequires:  libgsasl-devel
 %endif
+BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
 %if 0%{?with_pdf}
@@ -110,7 +115,8 @@ popd
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$cf" \
 	-DCMAKE_CXX_FLAGS:STRING=" " \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_C_FLAGS:STRING=" "
+	-DCMAKE_C_FLAGS:STRING=" " \
+	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF
 %cmake_build
 
 %install

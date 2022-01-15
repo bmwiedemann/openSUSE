@@ -203,4 +203,12 @@
 (Add DEB recipe for own uses)</comment>
     <requestid>936075</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>94415b61f88f0b742892cf735c1a70a2</srcmd5>
+    <version>0.9.2.165</version>
+    <time>1642273511</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>946609</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  8 12:56:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add BuildRequires for RH/CentOS
+
+-------------------------------------------------------------------
 Sat Dec  4 16:08:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Wrap a number of build dependencies into %{?with_pdf}
