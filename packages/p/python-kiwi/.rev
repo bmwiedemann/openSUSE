@@ -1979,4 +1979,11 @@
   the package always to the type=&quot;bootstrap&quot; section.</comment>
     <requestid>946017</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>f2b2194e5b20dabb3d5452e36bba1a4a</srcmd5>
+    <version>9.24.14</version>
+    <time>1642235829</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-kiwi revision:88, using expand</comment>
+  </revision>
 </revisionlist>
