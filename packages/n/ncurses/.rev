@@ -3462,4 +3462,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>936027</requestid>
   </revision>
+  <revision rev="203" vrev="7">
+    <srcmd5>3e9ddc88788de6a605ff8896d1e1304a</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1642273504</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220101
+  + add section on releasing memory to curs_termcap.3x and
+    curs_terminfo.3x manpages.
+- Add ncurses patch 20211225
+  + improve markup, e.g., for external manpage links in the manpages
+    (prompted by report by Helge Kreutzmann).
+- Add ncurses patch 20211219
+  + install ncurses-examples programs in libexecdir, adding a wrapper
+    script to invoke those.
+  + add help-screen and screen-dump to test/combine.c
+- Rename package ncurses-tests to ncurses-examples as upstream does
+
+- Add ncurses patch 20211211
+  + add test/combine.c, to demo/test combining characters.
+
+- Add ncurses patch 20211204
+  + improve configure check for getttynam (report by Werner Fink).
+- Correct offsets of patch ncurses-6.3.dif</comment>
+    <requestid>945994</requestid>
+  </revision>
 </revisionlist>

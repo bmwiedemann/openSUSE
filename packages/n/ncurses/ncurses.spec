@@ -1,7 +1,7 @@
 #
 # spec file for package ncurses
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,13 +124,15 @@ tset  -- terminal-initialization utility
 
 reset -- terminal initialization utility
 
-%package -n ncurses-tests
+%package -n ncurses-examples
+Provides:       ncurses-tests = 6.3.20211127
+Obsoletes:      ncurses-tests <= 6.3.20211127
 Summary:        Tools using the new curses libraries
 License:        MIT
 Group:          System/Base
 Requires:       ncurses-utils >= %{version}
 
-%description -n ncurses-tests
+%description -n ncurses-examples
 The ncurses based test programs, that is a set of tools
 showing the features of the new curses libraries.
 
@@ -686,7 +688,7 @@ mv tack-* tack
 	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/" \
 	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
 	LIBS="$LDFLAGS" \
-	./configure --with-ncursesw --with-screen=ncursesw --enable-widec --enable-wattr-macros --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
+	./configure --with-ncursesw --with-screen=ncursesw --enable-widec --enable-wattr-macros --prefix=%{_prefix} --datadir=%{_datadir}/ncurses
 
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
 %if %{with usepcre2}
@@ -833,7 +835,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	CFLAGS="$CFLAGS -I%{root}%{_incdir}ncurses/ -I%{root}%{_incdir}/" \
 	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
 	LIBS="$LDFLAGS" \
-	./configure --with-ncurses --with-screen=ncurses --disable-widec --disable-wattr-macros --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
+	./configure --with-ncurses --with-screen=ncurses --disable-widec --disable-wattr-macros --prefix=%{_prefix} --datadir=%{_datadir}/ncurses
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
 %if %{with usepcre2}
 	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
@@ -1148,7 +1150,7 @@ pushd test
     mkdir -p ./%{_mandir}/man6
     cp -p $(find -name '*.6') .%{_mandir}/man6/
     (cd usr/; tar -cpSf - .) | tar -xpsSf - -C %{buildroot}%{_prefix}
-    install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses/
+    install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses-examples/
 popd
 
 %if 0%{?_crossbuild}
@@ -1167,20 +1169,7 @@ pushd test
     expect -d <<-'EOF'
 	set env(TERM) xterm
 	set timeout 20
-	spawn -noecho ".%{_libexecdir}/ncurses/newdemo"
-	send -- "x"
-	sleep 5
-	send -- "x"
-	sleep 5
-	send -- "x"
-	sleep 5
-	send -- "q"
-	wait -nowait
-	EOF
-    expect -d <<-'EOF'
-	set env(TERM) xterm
-	set timeout 20
-	spawn -noecho ".%{_libexecdir}/ncurses/newdemo"
+	spawn -noecho ".%{_libexecdir}/ncurses-examples/newdemo"
 	send -- "x"
 	sleep 5
 	send -- "x"
@@ -1238,10 +1227,11 @@ popd
 %doc %{_mandir}/man5/*%{ext_man}
 %doc AUTHORS
 
-%files -n ncurses-tests
+%files -n ncurses-examples
 %defattr(-,root,root)
-%dir %{_libexecdir}/ncurses/
-%{_libexecdir}/ncurses/*
+%{_bindir}/ncurses-examples
+%dir %{_libexecdir}/ncurses-examples/
+%{_libexecdir}/ncurses-examples/*
 %dir %{_datadir}/ncurses/
 %{_datadir}/ncurses/*
 %doc %{_mandir}/man6/*%{ext_man}

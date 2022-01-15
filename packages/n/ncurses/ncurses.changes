@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 10 09:08:02 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220101
+  + add section on releasing memory to curs_termcap.3x and
+    curs_terminfo.3x manpages.
+- Add ncurses patch 20211225
+  + improve markup, e.g., for external manpage links in the manpages
+    (prompted by report by Helge Kreutzmann).
+- Add ncurses patch 20211219
+  + install ncurses-examples programs in libexecdir, adding a wrapper
+    script to invoke those.
+  + add help-screen and screen-dump to test/combine.c
+- Rename package ncurses-tests to ncurses-examples as upstream does
+
+-------------------------------------------------------------------
+Tue Dec 14 08:19:44 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211211
+  + add test/combine.c, to demo/test combining characters.
+
+-------------------------------------------------------------------
+Mon Dec  6 13:54:34 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211204
+  + improve configure check for getttynam (report by Werner Fink).
+- Correct offsets of patch ncurses-6.3.dif
+
+-------------------------------------------------------------------
 Mon Nov 29 13:18:21 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20211127

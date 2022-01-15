@@ -28,7 +28,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5835,12 +5835,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5890,12 +5890,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -46,7 +46,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -5850,7 +5853,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5905,7 +5908,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -55,7 +55,7 @@
  CF_EOF
  fi
  
-@@ -5890,7 +5893,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5945,7 +5948,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -64,7 +64,7 @@
  CF_EOF
  fi
  
-@@ -5899,23 +5902,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5954,23 +5957,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -94,7 +94,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -5924,7 +5927,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5979,7 +5982,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -103,7 +103,7 @@
  							then
  								continue
  							fi
-@@ -5934,18 +5937,18 @@ CF_EOF
+@@ -5989,18 +5992,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -125,7 +125,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5965,9 +5968,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6020,9 +6023,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -138,7 +138,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -5987,6 +5990,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6042,6 +6045,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -354,15 +354,15 @@
 --- man/ncurses.3x
 +++ man/ncurses.3x	2021-11-22 07:20:23.625974038 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
- [See \fBterminfo\fR(\*n) for further details.]
+ [See \fBterminfo\fP(\*n) for further details.]
  .SS Datatypes
  .PP
 +Beware: the terminal your program is running may or may not have
 +the features you expect. Ncurses makes no attempt to check available
 +features in advance. This is upon the programmer.
 +.PP
- The \fBncurses\fR library permits manipulation of data structures,
- called \fIwindows\fR, which can be thought of as two-dimensional
+ The \fBncurses\fP library permits manipulation of data structures,
+ called \fIwindows\fP, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
 +++ misc/gen-pkgconfig.in	2021-11-22 07:20:23.625974038 +0000
