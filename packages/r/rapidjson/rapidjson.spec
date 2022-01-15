@@ -1,7 +1,7 @@
 #
 # spec file for package rapidjson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rapidjson
-Version:        1.1.0+git20190517.4b3d7c2f
+Version:        1.1.0+git20211015.4d6cb081
 Release:        0
 Summary:        JSON parser and generator for C++
 License:        MIT

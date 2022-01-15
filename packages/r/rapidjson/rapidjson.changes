@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 21:24:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.1.0+git20211015.4d6cb081
+  * using the git commit referenced by python-rapidjson
+  * see also changelog entry from Jun 06 2019 about the reasoning
+
+-------------------------------------------------------------------
 Wed Jun 12 10:15:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove bundled gtest and do not test as the testing only
