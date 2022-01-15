@@ -4687,4 +4687,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * disabled sse2 support on %ix86 (boo#1190409)</comment>
     <requestid>944902</requestid>
   </revision>
+  <revision rev="426" vrev="298">
+    <srcmd5>7bf2a5ffd787adfd49ca9cef02dfdd72</srcmd5>
+    <version>unknown</version>
+    <time>1642279512</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.4 
+  * bugfix release</comment>
+    <requestid>946456</requestid>
+  </revision>
 </revisionlist>

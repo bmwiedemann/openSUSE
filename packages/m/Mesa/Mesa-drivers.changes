@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 14 15:02:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.3.4 
+  * bugfix release
+
+-------------------------------------------------------------------
 Sat Jan  8 10:21:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - rename n_no-sse2-on-ix86.patch to
