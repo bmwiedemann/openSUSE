@@ -48,4 +48,12 @@
     <comment>py38 fix</comment>
     <requestid>783263</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6709a72866e6c9d14a855905341bc54</srcmd5>
+    <version>1.5</version>
+    <time>1642279514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946528</requestid>
+  </revision>
 </revisionlist>
