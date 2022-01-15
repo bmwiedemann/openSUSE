@@ -5548,4 +5548,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Debugger test fails.</comment>
     <requestid>945641</requestid>
   </revision>
+  <revision rev="298" vrev="2">
+    <srcmd5>52de502028f347b01258e5c6be362323</srcmd5>
+    <version>8.2.4063</version>
+    <time>1642279510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946430</requestid>
+  </revision>
 </revisionlist>

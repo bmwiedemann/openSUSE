@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 13 10:09:19 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- disable-unreliable-tests-arch.patch: refresh
+
+-------------------------------------------------------------------
 Tue Jan 11 18:15:23 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4063, fixes the following problems

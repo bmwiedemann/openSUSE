@@ -1,8 +1,8 @@
-Index: vim-8.2.3318/src/testdir/Make_all.mak
+Index: vim-8.2.4063/src/testdir/Make_all.mak
 ===================================================================
---- vim-8.2.3318.orig/src/testdir/Make_all.mak
-+++ vim-8.2.3318/src/testdir/Make_all.mak
-@@ -30,23 +30,17 @@ SCRIPTS_TINY_OUT = \
+--- vim-8.2.4063.orig/src/testdir/Make_all.mak
++++ vim-8.2.4063/src/testdir/Make_all.mak
+@@ -30,24 +30,18 @@ SCRIPTS_TINY_OUT = \
  
  # Tests for Vim9 script.
  TEST_VIM9 = \
@@ -13,6 +13,7 @@ Index: vim-8.2.3318/src/testdir/Make_all.mak
 -	test_vim9_expr \
  	test_vim9_fails \
 -	test_vim9_func \
+ 	test_vim9_import \
  	test_vim9_script
  
  TEST_VIM9_RES = \
@@ -23,10 +24,10 @@ Index: vim-8.2.3318/src/testdir/Make_all.mak
 -	test_vim9_expr.res \
  	test_vim9_fails.res \
 -	test_vim9_func.res \
+ 	test_vim9_import.res \
  	test_vim9_script.res
  
- # Benchmark scripts.
-@@ -222,7 +216,6 @@ NEW_TESTS = \
+@@ -224,7 +218,6 @@ NEW_TESTS = \
  	test_quickfix \
  	test_quotestar \
  	test_random \
@@ -34,7 +35,7 @@ Index: vim-8.2.3318/src/testdir/Make_all.mak
  	test_regex_char_classes \
  	test_regexp_latin \
  	test_regexp_utf8 \
-@@ -458,7 +451,6 @@ NEW_TESTS_RES = \
+@@ -460,7 +453,6 @@ NEW_TESTS_RES = \
  	test_quickfix.res \
  	test_quotestar.res \
  	test_random.res \
