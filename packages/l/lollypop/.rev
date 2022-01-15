@@ -1736,4 +1736,13 @@
   * Fix an issue with playlists (glgo#World/lollypop#2763).</comment>
     <requestid>945935</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>9ec0e8b5d62ddf39b8e1fcb0994f26a8</srcmd5>
+    <version>1.4.28</version>
+    <time>1642273527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.28:
+  * Fix a crash.</comment>
+    <requestid>946690</requestid>
+  </revision>
 </revisionlist>
