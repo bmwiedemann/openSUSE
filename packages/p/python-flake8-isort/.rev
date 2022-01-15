@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>825739</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0dc235cd04415a07458549b9758b7f3</srcmd5>
+    <version>4.1.1</version>
+    <time>1642273517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  * Support flake8 4.x
+  * Switch from travis-ci to github actions
+  * Drop python 2.7 support and 3.5 as well</comment>
+    <requestid>946647</requestid>
+  </revision>
 </revisionlist>

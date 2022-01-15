@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:40:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * Support flake8 4.x
+  * Switch from travis-ci to github actions
+  * Drop python 2.7 support and 3.5 as well
+
+-------------------------------------------------------------------
 Tue Aug 11 08:16:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 4.0.0
