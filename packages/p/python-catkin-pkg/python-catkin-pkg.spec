@@ -1,7 +1,7 @@
 #
 # spec file for package python-catkin-pkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
 
 Name:           python-catkin-pkg
-Version:        0.4.22
+Version:        0.4.24
 Release:        0
 Summary:        Catkin package library
 License:        BSD-3-Clause
@@ -34,7 +34,7 @@ Requires:       python-pyparsing
 Requires:       python-python-dateutil
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
