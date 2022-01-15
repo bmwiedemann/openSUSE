@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 13 11:58:37 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Properly merge the autoupgrade workflow when using the online
+  medium (bsc#1192437, bsc#1194440).
+- 4.4.25
+
+-------------------------------------------------------------------
 Fri Dec 17 10:33:33 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
 
 - use Y2Storage::Arch to determine whether UEFI is available (bsc#937067)
