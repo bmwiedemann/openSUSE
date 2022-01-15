@@ -1,4 +1,6 @@
 unsorted:
+  - 0ad: [x86_64] 
+  - 0ad-data 
   - 2048-cli 
   - 2ping 
   - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
@@ -965,7 +967,11 @@ unsorted:
   - auto-common 
   - auto-javadoc 
   - auto-service 
+  - auto-service-aggregator 
+  - auto-service-annotations 
   - auto-value 
+  - auto-value-annotations 
+  - auto-value-parent 
   - autobench 
   - autobuild 
   - autoconf: [i586] 
@@ -1953,6 +1959,7 @@ unsorted:
   - ciano 
   - ciano-lang 
   - cifs-utils-devel 
+  - cilium-cli 
   - cim-schema 
   - cinema 
   - cinema-lang 
@@ -12873,7 +12880,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler116-32bit: [x86_64] 
+  - libpoppler117-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -14407,8 +14414,6 @@ unsorted:
   - libvorbisenc2-32bit: [x86_64] 
   - libvoro++0 
   - libvotca2022 
-  - libvotca_csg2022 
-  - libvotca_tools2022 
   - libvotequorum8 
   - libvotequorum8-32bit: [x86_64] 
   - libvpd2 
@@ -22376,6 +22381,7 @@ unsorted:
   - python310-ciscoconfparse 
   - python310-cl 
   - python310-cleo 
+  - python310-cli-helpers 
   - python310-click 
   - python310-click-aliases 
   - python310-click-completion 
@@ -22408,6 +22414,7 @@ unsorted:
   - python310-colander 
   - python310-colorama 
   - python310-colorcet 
+  - python310-colorclass 
   - python310-coloredlogs 
   - python310-colorlog 
   - python310-colorlover 
@@ -22770,6 +22777,7 @@ unsorted:
   - python310-folium 
   - python310-fontMath 
   - python310-fontParts 
+  - python310-fontPens 
   - python310-forbiddenfruit 
   - python310-formats 
   - python310-framel 
@@ -22948,6 +22956,7 @@ unsorted:
   - python310-imageio-ffmpeg 
   - python310-imagesize 
   - python310-imbox 
+  - python310-img2pdf 
   - python310-iminuit 
   - python310-immutables 
   - python310-impacket 
@@ -23052,6 +23061,7 @@ unsorted:
   - python310-jsonxs 
   - python310-junit-xml 
   - python310-junitxml 
+  - python310-junos-eznc 
   - python310-jupyter 
   - python310-jupyter-client 
   - python310-jupyter-core 
@@ -23158,6 +23168,7 @@ unsorted:
   - python310-lit 
   - python310-livereload 
   - python310-llfuse 
+  - python310-llvmlite 
   - python310-lmdb 
   - python310-lml 
   - python310-localzone 
@@ -23275,6 +23286,11 @@ unsorted:
   - python310-mysql-to-sqlite3 
   - python310-mysqlclient 
   - python310-nagiosplugin 
+  - python310-napalm 
+  - python310-napalm-arubaos-switch 
+  - python310-napalm-asa 
+  - python310-napalm-digineo-procurve 
+  - python310-napalm-procurve 
   - python310-natsort 
   - python310-nautilus 
   - python310-nautilus-devel 
@@ -23290,6 +23306,7 @@ unsorted:
   - python310-nbval 
   - python310-nbxmpp 
   - python310-nbxmpp-doc 
+  - python310-ncclient 
   - python310-ndg-httpsclient 
   - python310-neovim 
   - python310-neovim-remote 
@@ -23309,6 +23326,7 @@ unsorted:
   - python310-nocaselist 
   - python310-node-semver 
   - python310-nodeenv 
+  - python310-nornir 
   - python310-nose 
   - python310-nose2 
   - python310-notebook 
@@ -23349,6 +23367,7 @@ unsorted:
   - python310-oiffile 
   - python310-oktaloginwrapper 
   - python310-olefile 
+  - python310-oletools 
   - python310-olm 
   - python310-opcodes 
   - python310-openapi-codec 
@@ -23428,6 +23447,7 @@ unsorted:
   - python310-patsy 
   - python310-pbkdf2 
   - python310-pbr 
+  - python310-pcodedmp 
   - python310-pdd 
   - python310-pdfminer.six 
   - python310-pdfrw 
@@ -23456,6 +23476,7 @@ unsorted:
   - python310-pifpaf 
   - python310-pika 
   - python310-pika-pool 
+  - python310-pikepdf 
   - python310-pilkit 
   - python310-pingparsing 
   - python310-pip 
@@ -23590,6 +23611,7 @@ unsorted:
   - python310-pycdio 
   - python310-pycha 
   - python310-pychm 
+  - python310-pyclipper 
   - python310-pycocotools 
   - python310-pycodestyle 
   - python310-pycountry 
@@ -23680,6 +23702,7 @@ unsorted:
   - python310-pymemcache 
   - python310-pymetar 
   - python310-pymilter 
+  - python310-pymisp 
   - python310-pymol 
   - python310-pymongo 
   - python310-pympv 
@@ -23702,6 +23725,7 @@ unsorted:
   - python310-pyperf 
   - python310-pypi-search 
   - python310-pypipegraph 
+  - python310-pypiserver 
   - python310-pypng 
   - python310-pyprimes 
   - python310-pyproj 
@@ -23778,6 +23802,7 @@ unsorted:
   - python310-pytest-forked 
   - python310-pytest-freezegun 
   - python310-pytest-git 
+  - python310-pytest-helpers-namespace 
   - python310-pytest-html 
   - python310-pytest-httpbin 
   - python310-pytest-httpserver 
@@ -24045,6 +24070,7 @@ unsorted:
   - python310-rply 
   - python310-rpm 
   - python310-rpmfile 
+  - python310-rpmlb 
   - python310-rpy2 
   - python310-rpyc 
   - python310-rq 
@@ -24108,6 +24134,7 @@ unsorted:
   - python310-setproctitle 
   - python310-setupmeta 
   - python310-setuptools 
+  - python310-setuptools-declarative-requirements 
   - python310-setuptools-git 
   - python310-setuptools-rust 
   - python310-setuptools-version-command 
@@ -24598,8 +24625,6 @@ unsorted:
   - python36-cfgdiff 
   - python36-chainmap 
   - python36-checkdmarc 
-  - python36-cli-helpers 
-  - python36-colorclass 
   - python36-combi 
   - python36-compileall2 
   - python36-coverage-config-reload-plugin 
@@ -24648,7 +24673,6 @@ unsorted:
   - python36-idle 
   - python36-jirafs 
   - python36-jsonlib-python3 
-  - python36-junos-eznc 
   - python36-labelImg 
   - python36-librouteros 
   - python36-limnoria 
@@ -24659,30 +24683,17 @@ unsorted:
   - python36-moto-all 
   - python36-moto-server 
   - python36-mrkd 
-  - python36-napalm 
-  - python36-napalm-asa 
-  - python36-napalm-digineo-procurve 
-  - python36-napalm-procurve 
-  - python36-ncclient 
-  - python36-nornir 
   - python36-ntfy 
   - python36-oic 
-  - python36-oletools 
   - python36-opentelemetry-api 
-  - python36-pcodedmp 
   - python36-pep8-naming 
-  - python36-pikepdf 
   - python36-pip-licenses 
   - python36-pipdeptree 
   - python36-plumbum 
   - python36-plyvel 
   - python36-podman 
   - python36-pony 
-  - python36-pyclipper 
-  - python36-pymisp 
-  - python36-pypiserver 
   - python36-pysvn 
-  - python36-pytest-helpers-namespace 
   - python36-pytest-parallel 
   - python36-python-crfsuite 
   - python36-python-datamatrix 
@@ -24699,12 +24710,9 @@ unsorted:
   - python36-raven-aiohttp 
   - python36-redfish 
   - python36-requests-gssapi 
-  - python36-rich 
   - python36-rollbar 
-  - python36-rpmlb 
   - python36-rss2email 
   - python36-s3fs 
-  - python36-setuptools-declarative-requirements 
   - python36-sgmllib3k 
   - python36-siosocks 
   - python36-sleekxmpp 
@@ -32974,7 +32982,7 @@ unsorted:
   - supertuxkart 
   - supertuxkart-data 
   - supervisor 
-  - supportutils: [i586] 
+  - supportutils 
   - surfraw 
   - surgescript 
   - surgescript-devel 
@@ -33051,7 +33059,7 @@ unsorted:
   - sysdig 
   - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - sysdig-kmp-pae: [i586] 
-  - sysfsutils: [i586] 
+  - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
   - syslinux-debuginfo-x86_64: [x86_64] 
@@ -42378,15 +42386,7 @@ unsorted:
   - votca 
   - votca-bash 
   - votca-common 
-  - votca-csg 
-  - votca-csg-apps 
-  - votca-csg-bash 
-  - votca-csg-common 
-  - votca-csg-devel 
-  - votca-csg-tutorials 
   - votca-devel 
-  - votca-tools 
-  - votca-tools-devel 
   - votca-tutorials 
   - voxelands 
   - vpcs 
