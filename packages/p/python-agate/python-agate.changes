@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan 15 12:54:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.3
+  * feat: Table.from_csv() accepts a row_limit keyword argument.
+    (#740)
+  * feat: Table.from_json() accepts an encoding keyword argument.
+    (#734)
+  * feat: Table.print_html() accepts a max_precision keyword
+    argument, like Table.print_table(). (#753)
+  * feat: TypeTester accepts a null_values keyword argument, like
+    individual data types. (#745)
+  * feat: Min, Max and Sum (#735) work with TimeDelta.
+  * feat: FieldSizeLimitError includes the line number in the error
+    message. (#681)
+  * feat: csv.Sniffer warns on error while sniffing CSV dialect.
+  * fix: Table.normalize() works with basic processing methods.
+    (#691)
+  * fix: Table.homogenize() works with basic processing methods.
+    (#756)
+  * fix: Table.homogenize() casts compare_values and default_row.
+    (#700)
+  * fix: Table.homogenize() accepts tuples. (#710)
+  * fix: TableSet.group_by() accepts input with no rows. (#703)
+  * fix: TypeTester warns if a column specified by the force
+    argument is not in the table, instead of raising an error.
+    (#747)
+  * fix: Aggregations return None if all values are None, instead
+    of raising an error. Note that Sum, MaxLength and MaxPrecision
+    continue to return 0 if all values are None. (#706)
+  * fix: Ensure files are closed when errors occur. (#734)
+  * build: Make PyICU an optional dependency.
+
+-------------------------------------------------------------------
 Thu Jul 15 05:36:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fixed URL of the tarball, and the tarball refreshed.

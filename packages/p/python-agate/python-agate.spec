@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %define modname agate
 Name:           python-agate
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Data analysis library optimized for humans instead of machines
 License:        MIT
@@ -28,29 +28,28 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/agate
 Source:         https://github.com/wireservice/agate/archive/refs/tags/%{version}.tar.gz#/agate-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 2.0}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module isodate >= 0.5.4}
 BuildRequires:  %{python_module leather >= 0.3.2}
-BuildRequires:  %{python_module lxml >= 0.3.2}
 BuildRequires:  %{python_module parsedatetime >= 2.1}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-slugify >= 1.2.1}
 BuildRequires:  %{python_module pytimeparse >= 1.1.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-unittest2
-%endif
+# SECTION test requirements
+BuildRequires:  %{python_module cssselect >= 0.9.1}
+BuildRequires:  %{python_module lxml >= 0.3.2}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 Requires:       python-Babel >= 2.0
-Requires:       python-future
 Requires:       python-isodate >= 0.5.4
 Requires:       python-leather >= 0.3.2
 Requires:       python-parsedatetime >= 2.1
 Requires:       python-python-slugify >= 1.2.1
 Requires:       python-pytimeparse >= 1.1.5
 Requires:       python-six >= 1.9.0
+Recommends:     python-PyICU >= 2.4.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,6 +78,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/agate
+%{python_sitelib}/agate-%{version}*-info
 
 %changelog
