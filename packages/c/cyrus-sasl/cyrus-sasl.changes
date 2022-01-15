@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 13 14:58:15 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- postfix: sasl authentication with password fails (bsc#1194265)
+  Add config parameter --with-dblib=gdbm
+- Avoid converting of /etc/sasldb2 by every update. Convert
+  /etc/sasldb2 only if it is a Berkeley DB
+
+-------------------------------------------------------------------
 Fri Jan  8 11:32:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - CVE-2020-8032: cyrus-sasl: Local privilege escalation to root

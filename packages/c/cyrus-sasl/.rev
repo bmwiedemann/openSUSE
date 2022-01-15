@@ -576,4 +576,12 @@
   The packages cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are built</comment>
     <requestid>875610</requestid>
   </revision>
+  <revision rev="62" vrev="6">
+    <srcmd5>db977a8e3eed46465413bce2122f2505</srcmd5>
+    <version>2.1.27</version>
+    <time>1642279513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946493</requestid>
+  </revision>
 </revisionlist>

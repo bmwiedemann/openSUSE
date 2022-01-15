@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -189,6 +189,7 @@ export CFLAGS="%optflags -fno-strict-aliasing"
             --with-plugindir=%{_libdir}/sasl2 \
             --with-configdir=/etc/sasl2/:%{_libdir}/sasl2 \
 	    --with-saslauthd=/run/sasl2/ \
+	    --with-dblib=gdbm \
 	    --enable-pam \
 	    --enable-sample \
 	    --enable-login \
@@ -216,7 +217,7 @@ find "%buildroot" -type f -name "*.la" -print -delete
 %pre
 #Convert password file from berkely into gdbm
 #In %pre the existing file will be dumped out
-if [ -e /etc/sasldb2 ]; then
+if  /usr/bin/db_verify /etc/sasldb2 &> /dev/null ; then
 cat <<EOF > /var/adm/update-scripts/saslpw.awk
 {
         split(\$0,b,/\\\00/)
