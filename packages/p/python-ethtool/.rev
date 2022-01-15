@@ -54,4 +54,15 @@
 </comment>
     <requestid>809511</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>43186b4a38bb6acddda596e96c0986fd</srcmd5>
+    <version>0.15</version>
+    <time>1642273520</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15:
+  - Tests are now skipped for wireguard devices
+  - pifconfig is now able to show more than one IPv4 address per interface
+  - pifconfig supports interfaces with no IPv4 address</comment>
+    <requestid>946654</requestid>
+  </revision>
 </revisionlist>

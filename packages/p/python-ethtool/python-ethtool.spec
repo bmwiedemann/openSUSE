@@ -1,7 +1,7 @@
 #
-# spec file for package python-ethtool
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pypi_name ethtool
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{pypi_name}
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Ethernet settings Python bindings
 License:        GPL-2.0-only
@@ -35,7 +35,7 @@ BuildRequires:  net-tools-deprecated
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -60,7 +60,7 @@ mv %{buildroot}{%{_bindir},%{_sbindir}}/pethtool
 %python_clone -a %{buildroot}%{_sbindir}/pethtool
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
+%pyunittest_arch -v
 
 %post
 # %%python_install_alternative for %{_sbindir} binaries
