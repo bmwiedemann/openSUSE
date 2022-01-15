@@ -4,18 +4,6 @@ Before=multi-user.target
 After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
 
 [Service]
-# added automatically, for details please see
-# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-ProtectSystem=full
-ProtectHome=true
-PrivateDevices=true
-ProtectClock=true
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectKernelLogs=true
-ProtectControlGroups=true
-RestrictRealtime=true
-# end of automatic additions 
 Type=forking
 Restart=on-abort
 ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -6 start
