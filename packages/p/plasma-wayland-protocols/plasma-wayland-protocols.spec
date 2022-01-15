@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-wayland-protocols
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           plasma-wayland-protocols
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-2.1-or-later AND MIT
