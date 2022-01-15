@@ -1,7 +1,7 @@
 #
 # spec file for package mypy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define typed_ast_version 1.5.1
 Name:           mypy
-Version:        0.930
+Version:        0.931
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT

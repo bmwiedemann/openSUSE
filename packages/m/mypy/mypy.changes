@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan  7 17:31:27 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.931:
+ - Fixes to Regressions
+  - Fix mypyc binary wheel (Michael R. Crusoe, PR 11862)
+  - Revert to treating multi-line strings as a single value for exclude in TOML files (Matt Bogosian, PR 11828)
+  - Revert to treating exclude in .ini as a single value (Matt Bogosian, PR 11881)
+  - Fix __slots__ regression (Nikita Sobolev, PR 11824)
+  - Fix regression with __module__ and similar non-final Enum attributes (Nikita Sobolev, PR 11823)
+  - Fix regression when a contextmanager yields a generic function (Anthony Sottile, PR 11870)
+  - Fix __reduce__ regression (Shantanu, PR 11866)
+  - Fix NoReturn type aliases (Nikita Sobolev, PR 11912)
+  - Fix regression in None handling with --no-strict-optional (Nikita Sobolev, PR 11717)
+  - Fix crash related to generics (Nikita Sobolev, PR 11924)
+  - Restore removed builtin_type() plugin API method (Jukka Lehtosalo, PR 11932)
+ - Other Fixes
+  - Always allow the use of type[T] in stubs (Nikita Sobolev, PR 11863)
+  - Fix PEP 585 type aliases in stubs (Shantanu, PR 11918)
+  - Fix bug with literal types in stubtest (Nikita Sobolev, PR 11931)
+
+-------------------------------------------------------------------
 Fri Dec 31 19:58:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Need typed_ast for all flavors in testing
