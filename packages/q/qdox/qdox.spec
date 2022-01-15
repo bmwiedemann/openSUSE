@@ -1,7 +1,7 @@
 #
 # spec file for package qdox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           qdox
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Tool to extract class/interface/method definitions from sources
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/paul-hammant/qdox
 Source0:        https://repo1.maven.org/maven2/com/thoughtworks/qdox/qdox/%{version}/%{name}-%{version}-project.tar.bz2
-Source1:        qdox-MANIFEST.MF
+Source1:        qdox-build.xml
+BuildRequires:  ant
 BuildRequires:  byaccj
 BuildRequires:  fdupes
 BuildRequires:  java-cup-bootstrap
@@ -47,64 +48,45 @@ API docs for %{name}.
 
 %prep
 %setup -q
+cp %{SOURCE1} build.xml
 find -name *.jar -delete
 find -name *.class -delete
 rm -rf bootstrap
-# Fix line endings
-sed -i "s|\r||" README.md
 # We don't need these plugins
 %pom_remove_plugin :animal-sniffer-maven-plugin
+%pom_remove_plugin :maven-assembly-plugin
 %pom_remove_plugin :maven-failsafe-plugin
-%pom_remove_plugin :maven-jflex-plugin
+%pom_remove_plugin :maven-invoker-plugin
+%pom_remove_plugin :jflex-maven-plugin
 %pom_remove_plugin :maven-enforcer-plugin
-
-%pom_xpath_set pom:workingDirectory '${basedir}/src/main/java/com/thoughtworks/qdox/parser/impl'
+%pom_remove_plugin :exec-maven-plugin
 
 %pom_remove_parent .
 
 %build
 # Generate scanners (upstream does this with maven-jflex-plugin)
-# Add the --inputstreamctor option if jflex is upgraded to a version 1.6 or higher
-CLASSPATH=$(build-classpath java-cup) \
-  jflex -d src/main/java/com/thoughtworks/qdox/parser/impl src/grammar/lexer.flex
-CLASSPATH=$(build-classpath java-cup) \
-  jflex -d src/main/java/com/thoughtworks/qdox/parser/impl src/grammar/commentlexer.flex
+jflex -d src/main/java/com/thoughtworks/qdox/parser/impl src/grammar/lexer.flex
+jflex -d src/main/java/com/thoughtworks/qdox/parser/impl src/grammar/commentlexer.flex
 
-# Generate the parsers using the command-line that the exec-maven-plugin uses
-GRAMMAR_PATH=$(pwd)/src/grammar/commentparser.y && \
-  (cd src/main/java/com/thoughtworks/qdox/parser/impl && \
-  byaccj -v -Jnorun -Jnoconstruct -Jclass=DefaultJavaCommentParser \
-    -Jpackage=com.thoughtworks.qdox.parser.impl ${GRAMMAR_PATH})
-GRAMMAR_PATH=$(pwd)/src/grammar/parser.y && \
-  (cd src/main/java/com/thoughtworks/qdox/parser/impl && \
-  byaccj -v -Jnorun -Jnoconstruct -Jclass=Parser \
-    -Jimplements=CommentHandler -Jsemantic=Value \
-	-Jpackage=com.thoughtworks.qdox.parser.impl \
-	-Jstack=500 ${GRAMMAR_PATH})
+# Generate parsers (upstream does this with exec-maven-plugin)
+(cd ./src/main/java/com/thoughtworks/qdox/parser/impl
+ byaccj -v -Jnorun -Jnoconstruct -Jclass=DefaultJavaCommentParser -Jpackage=com.thoughtworks.qdox.parser.impl ../../../../../../../grammar/commentparser.y
+ byaccj -v -Jnorun -Jnoconstruct -Jclass=Parser -Jimplements=CommentHandler -Jsemantic=Value -Jpackage=com.thoughtworks.qdox.parser.impl -Jstack=500 ../../../../../../../grammar/parser.y
+)
 
-# Build artifact
-mkdir -p build/classes
-javac -d build/classes -source 6 -target 6 \
-  $(find src/main/java -name \*.java)
-jar cf build/%{name}-%{version}.jar -C build/classes .
-
-# Inject OSGi manifests
-jar ufm build/%{name}-%{version}.jar %{SOURCE1}
-
-mkdir -p build/apidoc
-javadoc -d build/apidoc -source 6 -notimestamp $(find src/main/java -name \*.java)
+%ant jar javadoc
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 build/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a qdox:qdox
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -aL build/apidoc/* %{buildroot}%{_javadocdir}/%{name}
+cp -aL target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
