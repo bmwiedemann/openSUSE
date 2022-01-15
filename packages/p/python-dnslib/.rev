@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>912720</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>252657721973a1548a53f7c6aa92c3ca</srcmd5>
+    <version>0.9.18</version>
+    <time>1642273516</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.18:
+  * Validate TXID in client.py</comment>
+    <requestid>946643</requestid>
+  </revision>
 </revisionlist>
