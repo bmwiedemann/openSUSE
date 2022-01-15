@@ -1,7 +1,7 @@
 #
 # spec file for package python-casttube
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-casttube
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        YouTube chromecast api
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/ur1katz/casttube
+URL:            http://github.com/ur1katz/casttube
 Source:         https://files.pythonhosted.org/packages/source/c/casttube/casttube-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/ur1katz/casttube/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,7 +37,6 @@ casttube provides a way to interact with the Youtube Chromecast api.
 
 %prep
 %setup -q -n casttube-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -46,6 +44,7 @@ cp %{SOURCE1} .
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+rm -v %{buildroot}%{_prefix}/LICENSE
 
 %files %{python_files}
 %doc README.md
