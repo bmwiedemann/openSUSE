@@ -165,4 +165,12 @@ This is HPND, not MIT (absence of express sublicensing permission etc) (forwarde
     <comment>- fixed build against latest gcc check changes</comment>
     <requestid>906061</requestid>
   </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>2d811c4548dddf2a16bb1d197124a4a9</srcmd5>
+    <version>1.2.0</version>
+    <time>1642279522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946706</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 11:57:51 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * xfs.service
+
+-------------------------------------------------------------------
 Tue Jul 13 09:19:42 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed build against latest gcc check changes
