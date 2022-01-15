@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:24:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0: 
+  * add Quart backend 
+
+-------------------------------------------------------------------
 Mon Apr 12 09:51:09 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Run tests only on python38 flavor 

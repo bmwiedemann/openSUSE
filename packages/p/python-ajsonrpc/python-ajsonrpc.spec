@@ -1,7 +1,7 @@
 #
 # spec file for package python-ajsonrpc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ajsonrpc
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Async JSON-RPC 20 protocol + server powered by asyncio
 License:        MIT
 URL:            https://github.com/pavlov99/ajsonrpc
 Source:         https://files.pythonhosted.org/packages/source/a/ajsonrpc/ajsonrpc-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 

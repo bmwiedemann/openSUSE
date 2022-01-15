@@ -7,4 +7,13 @@
     <comment>needed by something obscure</comment>
     <requestid>884611</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f81c593d9ec1fd03e3a2b056e83d9c37</srcmd5>
+    <version>1.2.0</version>
+    <time>1642273523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0: 
+  * add Quart backend</comment>
+    <requestid>946665</requestid>
+  </revision>
 </revisionlist>
