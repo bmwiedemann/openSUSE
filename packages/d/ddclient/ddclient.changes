@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 24 07:56:20 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Modify the systemd service file so ddclient is run After
+  network-online.target instead of just network.target, since
+  running ddclient without being online is pointless.
+- Added a Wants statement for the same systemd targets as in After
+
+-------------------------------------------------------------------
 Wed Sep  1 12:27:43 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:

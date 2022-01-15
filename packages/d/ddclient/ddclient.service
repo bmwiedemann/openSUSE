@@ -1,6 +1,7 @@
 [Unit]
 Description=A Perl Client Used To Update Dynamic DNS
-After=network.target nss-lookup.target
+After=network-online.target nss-lookup.target
+Wants=network-online.target nss-lookup.target
 
 [Service]
 # added automatically, for details please see
