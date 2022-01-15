@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 13 16:06:47 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Fix DNS zone creation by fixing a maintained DNS zone check.
+  Reported and fixed by Daniel Pätzold <obel1x@web.de>
+  See github#yast/yast-dhcp-server#59.
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
