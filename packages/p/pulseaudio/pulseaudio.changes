@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 15:06:37 CET 2022 - tiwai@suse.de
+
+- Workaround for spurious errors in dump-modules command
+  (bsc#1194379):
+  pulseaudio-dump-module-Ignore-invalid-module-init-tools.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 11:22:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix parameters passed to meson:

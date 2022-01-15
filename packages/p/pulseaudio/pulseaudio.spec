@@ -53,6 +53,8 @@ Patch1:         suppress-socket-error-msg.diff
 Patch5:         qpaeq-shebang.patch
 # PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
 Patch6:         pulseaudio-old-systemd-workaround.patch
+# PATCH-FIX-OPENSUSE Workaround for suse-module-tools directory
+Patch7:         pulseaudio-dump-module-Ignore-invalid-module-init-tools.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  fdupes
@@ -344,6 +346,7 @@ System user for PulseAudio
 %if 0%{?suse_version} < 1550
 %patch6 -p1
 %endif
+%patch7 -p1
 
 %build
 %meson \
