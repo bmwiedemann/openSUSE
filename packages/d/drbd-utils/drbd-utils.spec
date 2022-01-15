@@ -16,7 +16,7 @@
 #
 
 
-%define services drbd.service
+%define services drbd.service drbd-lvchange@.service drbd-promote@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
 %if !0%{?usrmerged}
 %define sbindir /sbin
 %define libdir  /lib
