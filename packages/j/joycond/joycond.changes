@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:12:17 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Lessened reverse dependency of kmod(hid_nintendo), as otherwise
+  joycond will be installed on any machine that runs Linux >= 5.16.
+
+-------------------------------------------------------------------
+Sat Jan 15 09:31:39 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Clarified license: changed GPL-3.0 to GPL-3.0-or-later
+
+-------------------------------------------------------------------
+Fri Jan 14 22:29:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Package descriptions are not supposed to be manuals: Strip
+  instructions from package descriptions.
+- Use noun phrase for summaries/descriptions.
+
+-------------------------------------------------------------------
 Fri Jan 14 21:16:05 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Amended issues @dimstar requested

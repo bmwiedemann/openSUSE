@@ -1,8 +1,8 @@
 #
 # spec file for package joycond
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021/22 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
-# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{undefined _modulesloaddir}
 %define _modulesloaddir %{_prefix}/lib/modules-load.d/
 %endif
@@ -23,52 +24,35 @@
 Name:           joycond
 Version:        0.1.0+git.51~f9a6691
 Release:        0
-Summary:        Userspace daemon to combine joy-cons from the hid-nintendo kernel driver
+Summary:        Userspace daemon for using joy-cons with the hid-nintendo kernel driver
 Group:          Hardware/Joystick
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/DanielOgorchock/joycond
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  gcc-c++ cmake
-BuildRequires:  pkgconfig(libevdev) pkgconfig(libudev)
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
-Supplements:    kmod(hid_nintendo.ko)
+Enhances:       kmod(hid_nintendo.ko)
 Requires:       kmod(hid_nintendo.ko)
 Recommends:     %{name}-autoload
 
 %package        autoload
-Summary:        Autoload optional kmod dependencies
+Summary:        Configuration for autoloading extra joycond modules
 BuildArch:      noarch
 Requires:       %{name}
 
 %description
-joycond is a linux daemon which uses the evdev devices provided by
+joycond is a Linux daemon which uses evdev devices provided by
 hid-nintendo (formerly known as hid-joycon) to implement joycond
 pairing.
-
----
-
-When a joy-con or pro controller is connected via bluetooth or USB,
-the player LEDs should start blinking periodically. This signals
-that the controller is in pairing mode.
-
-For the pro controller, pressing both triggers will "pair" it.
-
-With the joy-cons, to use a single contoller alone, hold ZL and L at
-the same time (ZR and R for the right joy-con). Alternatively, hold
-both S triggers at once.
-
-To combine two joy-cons into a virtual input device, press a single
-trigger on both of them at the same time. A new uinput device will
-be created called "Nintendo Switch Combined Joy-Cons".
-
-Rumble support is now functional for the combined joy-con uinput
-device.
 
 %description autoload
 Configuration files to autoload optional kernel modules during
 system startup. These provide the joycond the possibility of
-signaling controller status by flashing it's LEDs.
-
+signaling controller status by flashing its LEDs.
 
 %prep
 %autosetup -p1

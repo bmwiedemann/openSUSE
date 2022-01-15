@@ -9,4 +9,20 @@
 I've amended the issues @dimstar put forward</comment>
     <requestid>946514</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f61708227818510a679bc98298f62ea6</srcmd5>
+    <version>0.1.0+git.51~f9a6691</version>
+    <time>1642273509</time>
+    <user>dimstar_suse</user>
+    <comment>- Lessened reverse dependency of kmod(hid_nintendo), as otherwise
+  joycond will be installed on any machine that runs Linux &gt;= 5.16.
+(this is quite important: it made sense when hid_nintendo was provided the hid-nintendo kmp package, however now not everyone that runs tumbleweed needs it)
+
+- Clarified license: changed GPL-3.0 to GPL-3.0-or-later
+- Package descriptions are not supposed to be manuals: Strip
+  instructions from package descriptions.
+- Use noun phrase for summaries/descriptions.
+</comment>
+    <requestid>946676</requestid>
+  </revision>
 </revisionlist>
