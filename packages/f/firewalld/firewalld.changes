@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 14 12:41:46 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 1.0.3:
+  * fix(io): _check_config() expects a dict
+  * feat(build): distribute an OCI container image
+  * fix(ipset): reduce cost of entry overlap detection
+
+-------------------------------------------------------------------
 Thu Nov 18 10:04:38 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
 
 - Update to 1.0.2:

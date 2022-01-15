@@ -25,7 +25,7 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           firewalld
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
