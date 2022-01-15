@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 15 18:56:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.11
+  eric 21.11 has been released. It fixes just a few bugs. This will be the last
+  release of the 'eric6' line of development (i.e. the one requiring PyQt5/Qt5 as
+  its execution environment). 
+
+-------------------------------------------------------------------
 Mon Oct 25 13:25:33 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 21.9

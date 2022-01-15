@@ -198,4 +198,15 @@
     <comment></comment>
     <requestid>927315</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4fcc71b5e3a1f62a0da3fc10b8e8f4bb</srcmd5>
+    <version>21.11</version>
+    <time>1642279520</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.11
+  eric 21.11 has been released. It fixes just a few bugs. This will be the last
+  release of the 'eric6' line of development (i.e. the one requiring PyQt5/Qt5 as
+  its execution environment).</comment>
+    <requestid>946701</requestid>
+  </revision>
 </revisionlist>

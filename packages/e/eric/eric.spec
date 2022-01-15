@@ -1,7 +1,7 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010-2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define distname eric6
 
 Name:           eric
-Version:        21.9
+Version:        21.11
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
@@ -28,6 +28,8 @@ Group:          Development/Tools/IDE
 URL:            https://eric-ide.python-projects.org/
 Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stable/%{version}/%{distname}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-qscintilla-qt5
 BuildRequires:  python3-qt5
 BuildRequires:  python3-qtcharts-qt5
@@ -102,6 +104,8 @@ ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 %{_datadir}/applications/%{distname}_browser.desktop
 %{_datadir}/icons/eric.png
 %{_datadir}/icons/ericWeb.png
+%{_datadir}/icons/hicolor/*/apps/eric.png
+%{_datadir}/icons/hicolor/*/apps/ericWeb.png
 %{python3_sitelib}/
 
 %files api
