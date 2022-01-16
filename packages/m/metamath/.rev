@@ -49,4 +49,22 @@ versioned alongside the program.
 - Relax dependencies.</comment>
     <requestid>876628</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8c373091630005cfc8551fd44b1d02b2</srcmd5>
+    <version>unknown</version>
+    <time>1642371485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.198.
+  * Put two spaces between $c,v on same line in /rewrap.
+  * Fix cosmetic bug in WRITE SOURCE ... /REWRAP that prevented end
+    of sentence (e.g. period) from appearing in column 79, thus
+    causing some lines to be shorter than necessary.
+- Use tarballs from GitHub because they have versioned URLs.
+- Drop data package. There are no (recent) releases and the files
+  are just taken verbatim from https://github.com/metamath/set.mm
+  anyway. Users will likely want to work on these in their home
+  directory anyway, since they're not libraries.
+- Only suggest the book to install.</comment>
+    <requestid>946709</requestid>
+  </revision>
 </revisionlist>

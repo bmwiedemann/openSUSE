@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 15 20:44:21 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.198.
+  * Put two spaces between $c,v on same line in /rewrap.
+  * Fix cosmetic bug in WRITE SOURCE ... /REWRAP that prevented end
+    of sentence (e.g. period) from appearing in column 79, thus
+    causing some lines to be shorter than necessary.
+- Use tarballs from GitHub because they have versioned URLs.
+- Drop data package. There are no (recent) releases and the files
+  are just taken verbatim from https://github.com/metamath/set.mm
+  anyway. Users will likely want to work on these in their home
+  directory anyway, since they're not libraries.
+- Only suggest the book to install.
+
+-------------------------------------------------------------------
 Wed Mar  3 22:52:42 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.196.
