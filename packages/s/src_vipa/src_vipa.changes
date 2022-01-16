@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 23 14:10:45 UTC 2021 - Jean Delvare <jdelvare@suse.com>
+
+- src_vipa-fix-abend-in-memcpy.patch: src_vipa: Fix abend in
+  memcpy (bsc#1141887 bsc#1142048 bsc#1192860)
+
+-------------------------------------------------------------------
 Fri Feb 14 19:58:13 UTC 2014 - andreas.stieger@gmx.de
 
 - update source URLs, see https://en.opensuse.org/SourceUrls

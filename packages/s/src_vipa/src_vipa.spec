@@ -1,7 +1,7 @@
 #
 # spec file for package src_vipa
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           src_vipa
-Url:            http://www.ibm.com/developerworks/linux/linux390/useful_add-ons_vipa.html
+URL:            http://www.ibm.com/developerworks/linux/linux390/useful_add-ons_vipa.html
 Version:        2.1.0
 Release:        0
 Summary:        Virtual Source IP address support for HA solutions
@@ -27,6 +27,7 @@ Source:         http://public.dhe.ibm.com/software/dw/linux390/ht_src/%name-%ver
 Source1:        http://www.ibm.com/developerworks/linux/linux390/MD5/src/%name-%version.md5
 Patch1:         src_vipa-ldlibrarypath.patch
 Patch2:         src_vipa-ignore_ldconfig.patch
+Patch3:         src_vipa-fix-abend-in-memcpy.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -46,6 +47,7 @@ popd
 %setup -q
 %patch1 -p1
 %patch2
+%patch3 -p1
 
 %build
 make SRC_VIPA_PATH=%_libdir
