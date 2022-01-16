@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 16 02:42:22 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642298632.e723f49f:
+  * Add test with 100% statement coverage for consoles::localXvnc
+  * consoles: Remove code in localXvnc unused since 5e3bc516
+  * Remove discouraged use of base POSIX import
+  * t: Make all test modules consistently executable
+  * Use Mojo::File::path for convenience consistently
+  * testapi: Allow distri class provide default for die_on_timeout
+  * Fix `consoles::VNC::new does not exist! at t/27-consoles-vnc_base.t`
+  * Prevent use of external facing API in consoles as well
+  * Prevent the use of external facing API commands in backend
+
+-------------------------------------------------------------------
 Thu Jan 13 17:59:26 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642074968.043eb0fc:
