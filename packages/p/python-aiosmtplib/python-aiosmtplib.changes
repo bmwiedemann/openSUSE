@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 17:24:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * update auth other than login
+- remove failing_smtpd_tests.patch: not needed 
+
+-------------------------------------------------------------------
 Fri May  7 20:53:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add failing_smtpd_tests.patch to fix failing tests

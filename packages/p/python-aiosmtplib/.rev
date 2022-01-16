@@ -54,4 +54,14 @@
 </comment>
     <requestid>891391</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1988c4b1f68f87375ed7f7bc59b0188f</srcmd5>
+    <version>1.1.6</version>
+    <time>1642375365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.6:
+  * update auth other than login
+- remove failing_smtpd_tests.patch: not needed</comment>
+    <requestid>946684</requestid>
+  </revision>
 </revisionlist>

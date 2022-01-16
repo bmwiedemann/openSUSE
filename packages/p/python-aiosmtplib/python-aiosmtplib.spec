@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtplib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-aiosmtplib
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cole/aiosmtplib
 Source:         https://files.pythonhosted.org/packages/source/a/aiosmtplib/aiosmtplib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM failing_smtpd_tests.patch  gh#cole/aiosmtplib#171 mcepl@suse.com
-# fix tests/smtpd.py
-Patch0:         failing_smtpd_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
