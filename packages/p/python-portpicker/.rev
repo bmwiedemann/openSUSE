@@ -36,4 +36,13 @@
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>807043</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a601a76fcbb985b5a0be4f11145a2730</srcmd5>
+    <version>1.5.0</version>
+    <time>1642371499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to to 1.5.0:
+  * python 3.10 support</comment>
+    <requestid>946778</requestid>
+  </revision>
 </revisionlist>
