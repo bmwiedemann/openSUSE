@@ -1,7 +1,7 @@
 #
 # spec file for package trng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@ Summary:        A Random Number Generator Library
 License:        BSD-3-Clause
 URL:            https://www.numbercrunch.de/trng/
 Source:         https://github.com/rabauke/trng4/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM trng-drop-findtbb-cmake-module.patch gh#rabauke/trng4#26 badshah400@gmail.com -- Drop outdated FindTBB.cmake module and depend on TBB's bundled cmake module
+Patch0:         trng-drop-findtbb-cmake-module.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  tbb-devel
-# Tests fail on aarch64, see https://github.com/rabauke/trng4/issues/21
-ExcludeArch:    aarch64
 
 %description
 TRNG is a pseudo random number generator C++ library.
@@ -61,7 +61,7 @@ This package provides the headers and devel files for developing
 applications against TRNG.
 
 %prep
-%autosetup -n %{name}4-%{version}
+%autosetup -p1 -n %{name}4-%{version}
 
 %build
 %cmake

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 15 14:11:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add trng-drop-findtbb-cmake-module.patch: Drop outdated
+  FindTBB.cmake module and depend on TBB's bundled cmake module
+  [gh#rabauke/trng4#26].
+- Enable builds for aarch64: Tests fixed.
+
+-------------------------------------------------------------------
 Thu Apr  1 00:13:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.24:
