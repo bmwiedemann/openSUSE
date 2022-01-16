@@ -1,7 +1,7 @@
 #
 # spec file for package python-emoji
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-emoji
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
