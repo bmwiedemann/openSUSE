@@ -18,7 +18,7 @@
 
 
 Name:           citra
-Version:        nightly1737
+Version:        nightly1741
 Release:        0
 Summary:        Nintendo 3DS emulator
 License:        GPL-2.0-or-later

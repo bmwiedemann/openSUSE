@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 09 13:56:20 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version nightly1741:
+  * Fix software renderer for empty texture addresses (#5893)
+  * Update cryptopp to 8.5.0 (#5669)
+  * CI: limit CI runs to citra-emu/citra
+  * CI: fix input dialog wording
+  * gitignore: ignore GitHub Actions generated files
+  * CI: make auto-publish workflow more robust and flexible ...
+  * CI: do canary merge and nightly publishing ...
+  * gl_format_reinterpreter.cpp: remove CopyImageSubData; and enable TextureView reinterpreter only on nvidia
+  * Android:file_util.cpp: remove unnecessary ROOT_DIR
+  * core/frontend/emu_window: return true when TouchPressed is consumed
+  * Add Cardboard VR
+  * core: Reset cpu_core after kernel.
+  * android: frontend: Track screen layout separately for orientation.
+  * added std::vector<V> instead of V* (#5902)
+  * android: frontend: Add MobileLandscape layout profile for mobile devices.
+  * memory: fix memory leak related to un-freed shared memory
+  * cfg: use a default subregion based on the country
+  * service/frd: don't use global system
+  * service/frd: return cfg username on GetMyScreenName
+
+-------------------------------------------------------------------
 Thu Dec 16 11:11:14 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version nightly1737:
