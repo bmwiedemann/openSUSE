@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jan 16 09:05:27 UTC 2022 - Andrey Karepin <egdfree@opensuse.org>
+
+- add libqt5-qtimageformats to recommends
+
+-------------------------------------------------------------------
+Sun Jan 16 08:39:50 UTC 2022 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 5.0
+  * "Open With" functionality to open images in other applications
+  * Image deletion
+  * Significantly better trackpad experience
+  * Localization support, with many community-supplied translations
+  * More image formats supported (.jxl, .psd, many others as kimageformats is now bundled)
+  * Zooming from original size
+  * Image now reverts to original resolution when zooming past the scaling threshold (images aren't blurry when zooming in close)
+  * Option to exit the app when the last window is closed on macOS
+  * Resize dialog now highlights text without file extension
+  * Middle click now resets scale, why not
+  * Added an option for a basic bar to show the titlebar text in fullscreen mode.
+  * Qt 6 support
+  * Reaching an invalid image now allows you to keep moving through the current folder with the arrow keys
+  * Fix Open URL not working in some cases where the app is in a non-user writable location
+  * Fix crashing on Wayland (window won't center when resizing, though)
+  * Fix smoothness issue when resizing window
+  * Fix not being able to rename on Windows
+  * Fix Mac crash when opening preferences
+  * Fix disabling recent files not working properly
+
+-------------------------------------------------------------------
 Sat Oct 31 08:34:08 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 4.0
