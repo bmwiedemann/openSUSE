@@ -1,7 +1,7 @@
 #
 # spec file for package libfplist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 Name:           libfplist
 %define lname	libfplist1
-Version:        20210502
+Version:        20220116
 Release:        0
 Summary:        Library for plist formats
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfplist
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfplist/releases/download/%version/libfplist-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfplist/releases/download/%version/libfplist-experimental-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  bison
 BuildRequires:  c_compiler
@@ -32,13 +34,13 @@ BuildRequires:  flex
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20220102
 
 %description
 libfplist is a library for plist formats.
@@ -78,7 +80,7 @@ applications that want to make use of libfplist.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 

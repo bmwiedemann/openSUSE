@@ -7,4 +7,12 @@
     <comment>New dependency of the libyal library family currently in ADI:6.  Required to allow all builds to complete.</comment>
     <requestid>899029</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab9a276ebd2570c814aee55591bcebe4</srcmd5>
+    <version>20220116</version>
+    <time>1642371519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220116</comment>
+    <requestid>946829</requestid>
+  </revision>
 </revisionlist>
