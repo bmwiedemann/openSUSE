@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 16 12:18:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14
+  * Add python2 support statement
+  * Fix 32bit int limitations
+- Includes support for Python 3.10 now
+
+-------------------------------------------------------------------
 Wed Jun 17 13:14:01 UTC 2020 - pgajdos@suse.com
 
 - nose -> pytest
