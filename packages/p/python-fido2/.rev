@@ -79,4 +79,18 @@
     <comment></comment>
     <requestid>895354</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bad451dcc4e325b0b64ca38c74b4c812</srcmd5>
+    <version>0.9.3</version>
+    <time>1642375366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * Don't fail device discovery when hidraw doesn't support HIDIOCGRAWUNIQ
+  * Support the latest Windows webauthn.h API (included in Windows 11).
+  * Add product name and serial number to HidDescriptors.
+  * Remove the need for the uhid-freebsd dependency on FreeBSD.
+- drop 0001-Don-t-use-enum.auto-Python-2.patch
+       0001-Skip-tests-on-older-Cryptography-versions.patch (upstream)</comment>
+    <requestid>946688</requestid>
+  </revision>
 </revisionlist>
