@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 12 21:04:58 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.5
+  * CVE-2022-20698: Fix for invalid pointer read that may cause a crash.
+    This issue affects 0.104.1, 0.103.4 and prior when ClamAV is compiled
+    with libjson-c and the CL_SCAN_GENERAL_COLLECT_METADATA scan option
+    (the clamscan --gen-json option) is enabled.
+  * Fixed ability to disable the file size limit with libclamav C API,
+    like this:
+
+      cl_engine_set_num(engine, CL_ENGINE_MAX_FILESIZE, 0);
+
+    This issue didn't affect ClamD or ClamScan which also can disable the
+    limit by setting it to zero using MaxFileSize 0 in clamd.conf for ClamD,
+    or clamscan --max-filesize=0 for ClamScan.
+    Note: Internally, the max file size is still set to 2 GiB. Disabling the
+    limit for a scan will fall back on the internal 2 GiB limitation.
+  * Increased the maximum line length for ClamAV config files from 512 bytes
+    to 1,024 bytes to allow for longer config option strings.
+  * SigTool: Fix insufficient buffer size for --list-sigs that caused a
+    failure when listing a database containing one or more very long
+    signatures. This fix was backported from 0.104.
+
+-------------------------------------------------------------------
 Wed Nov  3 20:52:19 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - bsc#1192346: Update to 0.103.4

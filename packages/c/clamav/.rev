@@ -1145,4 +1145,12 @@
     <comment>Fix some mistakes in the .changes file.</comment>
     <requestid>929611</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>c5531cfa4fa9395d54058d0349194bb1</srcmd5>
+    <version>0.103.5</version>
+    <time>1642371512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946798</requestid>
+  </revision>
 </revisionlist>
