@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jan 16 16:11:50 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.10.5:
+  * Summary:
+    + The previous version 3.10.4 introduced support to convert std::filesystem objects to JSON and vice versa. Unfortunately, we made the assumption that any compiler supporting C++17 would also have proper filesystem support. This was a mistake. This release introduces preprocessor checks (and means to override them) to make sure that the conversion support is only compiled if the compiler is detected to support it.
+    + All changes are backward-compatible.
+  * Bug fixes:
+    + Make sure C++17 filesystem conversions are only used if the compiler supports it. Furthermore, add defines JSON_HAS_FILESYSTEM and JSON_HAS_EXPERIMENTAL_FILESYSTEM which can be set to 0 to avoid using filesystem support altogether.std::filesystem. (gh#nlohmann/json#3090, gh#nlohmann/json#3097, gh#nlohmann/json#3156, gh#nlohmann/json#3203)
+    + Fix a compilation error with Nvidia CUDA Compiler (NVCC). (gh#nlohmann/json#3013)
+    + Fix a warning for shadowed variables. (gh#nlohmann/json#3188)
+    + Fix a warning on a pointless comparison. (gh#nlohmann/json#2712, gh#nlohmann/json#2676, gh#nlohmann/json#1390, gh#nlohmann/json#755)
+  * Improvements:
+    + Add a parameter to the update function to recursively merge objects with common keys.
+    + Extend std::hash and std::swap to work on any nlohmann::basic_json specializations rather than just nlohmann::json
+  * Further Changes:
+    + Update CI to use Clang 14, GCC 6, and Clang-Tidy 14.
+    + Update cpplint.
+    + Add build step for the Nvidia CUDA Compiler (NVCC).
+    + Remove Travis CI. (gh#nlohmann/json#3087)
+    + Compile and execute the test suite with C++17.
+    + The mkdocs-based documentation in doc/mkdocs has been totally overworked. It now has a unified structure, more examples, and contains all information from the previous Doxygen-based documentation. The single source of truth is now the documentation on https://json.nlohmann.me and in particular the API Documentation.
+    + Removed Wandbox online examples.
+    + Fix typos, links, and parameter names in the documentation.
+    + Add more examples.
+  * Deprecated functions:
+    + Passing iterator pairs or pointer/length pairs to parsing functions (basic_json::parse, basic_json::accept, basic_json::sax_parse, basic_json::from_cbor, basic_json::from_msgpack, basic_json::from_ubjson, basic_json::from_bson) via initializer lists is deprecated. Instead, pass two iterators; for instance, call basic_json::from_cbor(ptr, ptr+len) instead of basic_json::from_cbor({ptr, len}).
+    + The following functions have been deprecated in earlier versions and will be removed in the next major version (i.e., 4.0.0):
+      - Function iterator_wrapper are deprecated. Please use the member function items() instead.
+      - Functions friend std::istream& operator<<(basic_json&, std::istream&) and friend std::ostream& operator>>(const basic_json&, std::ostream&) are deprecated. Please use friend std::istream& operator>>(std::istream&, basic_json&) and friend operator<<(std::ostream&, const basic_json&) instead.
+    + All deprecations are annotated with HEDLEY_DEPRECATED_FOR to report which function to use instead.
+
+-------------------------------------------------------------------
 Tue Dec  7 09:14:52 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.10.4

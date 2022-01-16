@@ -1,7 +1,7 @@
 #
 # spec file for package nlohmann_json
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nlohmann_json
-Version:        3.10.4
+Version:        3.10.5
 Release:        0
 Summary:        JSON for Modern C++
 License:        MIT
