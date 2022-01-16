@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.19.3
+Version:        1.19.4
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
@@ -57,7 +57,7 @@ book formats. PyMuPDF can also access files with extensions *.pdf,
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-dos2unix README.md changes.rst
+dos2unix README.md changes.txt
 
 %build
 %python_build
@@ -73,7 +73,7 @@ cd /tmp
 
 %files %{python_files}
 %license COPYING
-%doc README.md changes.rst
+%doc README.md changes.txt
 %{python_sitearch}/*
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 10 12:52:19 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.4
+  * Fixed #1505. Immunize against circular outline items.
+  * Fixed #1484. Correct CropBox coordinates are now returned in
+all situations.
+  * Fixed #1479.
+  * Fixed #1474. TextPage objects are now properly deleted again.
+  * Added Page methods and attributes for PDF /ArtBox, /BleedBox,
+/TrimBox.
+  * Added global attribute TESSDATA_PREFIX for easy checking of OCR
+support.
+  * Changed Document.xref_set_key() such that dictionary keys will
+physically be removed if set to value "null".
+  * Changed Document.extract_font() to optionally return a
+dictionary (instead of a tuple).
+
+-------------------------------------------------------------------
 Fri Dec 17 13:03:20 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Update to v1.19.3
