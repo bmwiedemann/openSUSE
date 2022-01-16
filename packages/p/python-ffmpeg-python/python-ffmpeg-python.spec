@@ -1,7 +1,7 @@
 #
 # spec file for package python-ffmpeg-python
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ffmpeg-python
 Version:        0.2.0
@@ -35,7 +35,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  ffmpeg
 # /SECTION
 %python_subpackages
@@ -47,6 +46,8 @@ Python bindings for FFmpeg - with complex filtering support
 %setup -q -n ffmpeg-python-%{version}
 # https://github.com/kkroening/ffmpeg-python/issues/617
 sed -i 's:pytest-runner::' setup.py
+# https://github.com/kkroening/ffmpeg-python/issues/624
+sed -i 's/collections.Iterable/collections.abc.Iterable/' ffmpeg/_run.py
 
 %build
 %python_build
