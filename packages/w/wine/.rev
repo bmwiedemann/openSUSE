@@ -4291,4 +4291,14 @@
 - update staging to 7.0-rc5 release</comment>
     <requestid>945236</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>70fb031840b4aaca058c34d6dd40493e</srcmd5>
+    <version>7.0~rc6</version>
+    <time>1642371513</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0-rc6 release candidate
+  - Bug fixes only, we are in code freeze.
+- update staging to 7.0-rc6 release</comment>
+    <requestid>946803</requestid>
+  </revision>
 </revisionlist>
