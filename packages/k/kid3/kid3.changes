@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 15 21:06:42 UTC 2022 - enzokiel@kabelmail.de
+
+- Update to version 3.9.1
+  * New:
+    + Slovenian translation.
+  * Fixed:
+    + Crash when tags are displayed in the file list, a tag is
+      removed and then saved or when the tag is reverted.
+    + With "Filename Format/Use for playlist and folder names" it
+      is not possible to rename a folder to multiple path
+      components when a string replacement for "/" is configured.
+    + With "Filename Format/Use for playlist and folder names",
+      when path components in folders or playlists contain a ".",
+      the part after the dot is not formatted.
+    + Discogs import.
+    + MP4: "No Tag" is not displayed in file list for files without
+      metadata.
+    + MP4: Metadata is not stripped from files when tag is removed
+      (requires new TagLib).
+    + Android: Import with HTTPS (Discogs, MusicBrainz) fails with
+      "Error: TLS initialization failed".
+
+-------------------------------------------------------------------
 Sat Dec 18 11:42:19 UTC 2021 - enzokiel@kabelmail.de
 
 - Update to version 3.9.0

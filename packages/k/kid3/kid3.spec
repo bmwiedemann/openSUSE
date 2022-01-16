@@ -1,7 +1,7 @@
 #
 # spec file for package kid3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\(Kid3.*
 
 Name:           kid3
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
