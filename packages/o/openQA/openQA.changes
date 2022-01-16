@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 16 01:48:19 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642169678.8dac53cb0:
+  * apparmor: Allow /usr/bin/swtpm used by os-autoinst
+  * Avoid possible race condition in `t/ui/18-test-details.t`
+  * Try reloading not yet available text results
+  * Prevent failed testapi.pm download in doc generation
+  * Replace bugref_regex function with BUGREF_REGEX constant
+  * Avoid action at a distance issues with global config changes
+  * Fix OpenQA::Utils import statements
+  * Avoid unhandled output in tests
+
+-------------------------------------------------------------------
 Thu Jan 13 17:48:16 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642009051.9e0bfee4f:
