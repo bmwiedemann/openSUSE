@@ -75,4 +75,12 @@
     <comment>- Format with spec-cleaner</comment>
     <requestid>745362</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1d9875905f6d3757898d5bf42a14f98f</srcmd5>
+    <version>3.2.13</version>
+    <time>1642371495</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros</comment>
+    <requestid>946771</requestid>
+  </revision>
 </revisionlist>

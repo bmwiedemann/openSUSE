@@ -1,7 +1,7 @@
 #
 # spec file for package lonote
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,11 @@ Name:           lonote
 Version:        3.2.13
 Release:        0
 Summary:        A personal note-taking application
-License:        GPL-3.0-only AND Apache-2.0
+License:        Apache-2.0 AND GPL-3.0-only
 URL:            https://bitbucket.org/civalin/lonote
 Source0:        https://bitbucket.org/civalin/lonote/get/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 Requires:       python3-dbm
