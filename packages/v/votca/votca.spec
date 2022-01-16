@@ -1,8 +1,8 @@
 #
 # spec file for package votca
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Christoph Junghans
+# Copyright (c) 2021-2022 SUSE LLC
+# Copyright (c) 2021-2022 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           votca
-Version:        2022~rc2
+Version:        2022
 Release:        0
-%define         uversion 2022-rc.2
+%define         uversion %{version}
 %define         sover 2022
 Summary:        Versatile Object-oriented Toolkit for Coarse-graining Applications
 License:        Apache-2.0
@@ -70,7 +71,6 @@ Provides:       votca-csg-apps = %version-%release
 Obsoletes:      votca-xtp <= 2022~rc1
 Provides:       votca-xtp = %version-%release
 
-
 %global with_xtp 1
 # libint2 used by xtp is broken on 32-bit archs
 # https://github.com/evaleev/libint/issues/196
@@ -91,12 +91,12 @@ in disordered semiconductors.
 %package -n libvotca%sover
 Summary:        VOTCA tools library
 Group:          System/Libraries
-Obsoletes:  libvotca_tools2022 <= 2022~rc1
-Provides:   libvotca_tools2022 = %version-%release
-Obsoletes:  libvotca_csg2022 <= 2022~rc1
-Provides:   libvotca_csg2022 = %version-%release
-Obsoletes:  libvotca_xtp2022 <= 2022~rc1
-Provides:   libvotca_xtp2022 = %version-%release
+Obsoletes:      libvotca_tools2022 <= 2022~rc1
+Provides:       libvotca_tools2022 = %version-%release
+Obsoletes:      libvotca_csg2022 <= 2022~rc1
+Provides:       libvotca_csg2022 = %version-%release
+Obsoletes:      libvotca_xtp2022 <= 2022~rc1
+Provides:       libvotca_xtp2022 = %version-%release
 
 %description -n libvotca%sover
 %{votca_desc}
@@ -196,7 +196,6 @@ sed -i '1s@env @@' %{buildroot}/%{_bindir}/votca_{compare,help2doc} \
 %if %{with_xtp}
 sed -i '1s@env @@' %{buildroot}/%{_bindir}/xtp_* %{buildroot}/%{_datadir}/votca/xtp/benchmark/xtp_benchmark
 %endif
-
 
 # Move bash completion file to correct location
 mkdir -p %{buildroot}%{_datadir}/bash_completion.d

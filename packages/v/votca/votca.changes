@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 16 01:10:58 UTC 2022 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2022
+  - fix some icpc warnings ([gh#votca/votca#934])
+  - only check for pytest if testing is enabled
+    ([gh#votca/votca#930])
+  - exclude some builds from CI ([gh#votca/votca#940],
+    [gh#votca/votca#942], [gh#votca/votca#944],
+    [gh#votca/votca#945])
+  - update interface documentation ([gh#votca/votca#939])
+  - update install guide for binary packages
+    ([gh#votca/votca#936])
+  - fixed sigma plot options passing ([gh#votca/votca#943]) 
+
+-------------------------------------------------------------------
 Sun Dec 19 22:37:10 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Also obsoletes votca-csg-apps
@@ -6,7 +21,7 @@ Sun Dec 19 22:37:10 UTC 2021 - Christoph Junghans <junghans@votca.org>
 -------------------------------------------------------------------
 Thu Dec 16 03:53:04 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
-- Update to 2020-rc.2
+- Update to 2022-rc.2
   - fix iqm merge orbitals command ([gh#votca/votca#907])
   - fix bug in basisset serialization that caused wrong Vxc values
     in GW ([gh#votca/votca#910])
