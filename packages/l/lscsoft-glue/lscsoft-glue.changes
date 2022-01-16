@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 14 18:35:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lscsoft-glue-python-3.10-fixes.patch: Fix python3.10
+  compatibility; patch taken from upstream merge request
+  [https://git.ligo.org/lscsoft/glue/-/merge_requests/83].
+- Add lscsoft-glue-disable-doctest.patch: Disable some doctests
+  not yet ready for python 3.10
+- Add Requires(post) and Requires(postun) on update-alternatives.
+
+-------------------------------------------------------------------
 Mon Feb 15 10:55:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Revert the Obsoletes/Provides removal of python-glue.

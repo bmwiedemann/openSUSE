@@ -1,0 +1,17 @@
+Index: lscsoft-glue-2.1.0/test/Makefile
+===================================================================
+--- lscsoft-glue-2.1.0.orig/test/Makefile
++++ lscsoft-glue-2.1.0/test/Makefile
+@@ -1,12 +1,10 @@
+ PYTHON ?= python
+ 
+ check : \
+-	glue_ligolw_ilwd_verify \
+ 	iterutils_verify \
+ 	lal_verify \
+ 	ligolw_test01 \
+ 	test_ligolw_array \
+-	test_ligolw_ligolw \
+ 	test_ligolw_lsctables \
+ 	test_ligolw_table \
+ 	test_ligolw_tokenizer \

@@ -1,7 +1,7 @@
 #
-# spec file for package lscsoft-glue
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,10 @@ Summary:        Grid LSC User Environment
 License:        GPL-2.0-only
 URL:            http://software.ligo.org/lscsoft
 Source:         http://software.ligo.org/lscsoft/source/lscsoft-glue-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM lscsoft-glue-python-3.10-fixes.patch badshah400@gmail.com -- Fix python3.10 compatibility; patch taken from upstream merge request [https://git.ligo.org/lscsoft/glue/-/merge_requests/83]
+Patch0:         lscsoft-glue-python-3.10-fixes.patch
+# PATCH-FIX-UPSTREAM lscsoft-glue-disable-doctest.patch badshah400@gmail.com -- Disable some doctests not yet ready for python 3.10
+Patch1:         lscsoft-glue-disable-doctest.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -63,6 +67,8 @@ BuildRequires:  %{python_module lscsoft-glue = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 %endif
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -72,7 +78,7 @@ utilities.  It also provides the infrastructure for the segment
 database.
 
 %prep
-%setup -q -n lscsoft-glue-%{version}
+%autosetup -p1 -n lscsoft-glue-%{version}
 
 %build
 %python_build
