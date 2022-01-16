@@ -1,7 +1,7 @@
 #
 # spec file for package python-tables
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-tables
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
-Patch0:         Never-use-the-msse2-flag-explicitly.patch
-# PATCH-FIX-UPSTREAM PyTables-pr810-tostring.patch -- gh#PyTables/PyTables#810
-Patch1:         https://github.com/PyTables/PyTables/pull/810.patch#/PyTables-pr810-tostring.patch
-# PATCH-FIX-UPSTREAM PyTables-compat-numpy119.patch -- https://github.com/PyTables/PyTables/commit/fdd87f + typo fix.
-Patch2:         PyTables-compat-numpy119.patch
-# PATCH-FIX-UPSTREAM PyTables-skip-test_vlarray.patch -- gh#PyTables/PyTables#845
-Patch3:         PyTables-skip-test_vlarray.patch
-# PATCH-FIX-UPSTREAM tables-pr862-lowercasefdtype.patch -- gh#PyTables/PyTables#862
-Patch4:         tables-pr862-lowercasefdtype.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
-BuildRequires:  %{python_module numpy-devel >= 1.9.3}
+BuildRequires:  %{python_module numpy-devel >= 1.19}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  blosc-devel >= 1.4.1
+BuildRequires:  blosc-devel >= 1.21.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  hdf5-devel >= 1.8.4
+BuildRequires:  hdf5-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  lzo-devel
 BuildRequires:  python-rpm-macros
@@ -52,9 +43,10 @@ BuildRequires:  python3-jupyter_ipython
 BuildRequires:  python3-numpydoc
 BuildRequires:  python3-sphinx_rtd_theme
 Requires:       python-numexpr >= 2.6.2
-Requires:       python-numpy >= 1.9.3
+Requires:       python-numpy >= 1.19
+Requires:       python-packaging
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     bzip2
 Recommends:     lzo
 %python_subpackages
@@ -77,9 +69,15 @@ Documentation and help files for %{name}
 
 %prep
 %autosetup -p1 -n tables-%{version}
+# make sure we use the system blosc
+rm -r c-blosc
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+# Never use SSE2 and AVX2 because obs buildbots might support it
+# but the target does not
+export DISABLE_SSE2=1
+export DISABLE_AVX2=1
 %python_build
 
 %install
@@ -88,17 +86,26 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_clone -a %{buildroot}%{_bindir}/ptrepack
 %python_clone -a %{buildroot}%{_bindir}/ptdump
 %python_clone -a %{buildroot}%{_bindir}/pt2to3
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand #
+rm %{buildroot}%{$python_sitearch}/tables/*.c
+rm %{buildroot}%{$python_sitearch}/tables/tests/*.c
+%fdupes %{buildroot}%{$python_sitearch}
+}
+
 pushd doc
 export PYTHONPATH=%{buildroot}%{python3_sitearch}
 make html
+rm build/html/.buildinfo
 popd
-
-%fdupes doc/build/html
-%fdupes examples/
+# manual copy to buildroot so we can deduplicate
+mkdir -p %{buildroot}%{_docdir}/%{name}-doc/
+cp -r doc/build/html %{buildroot}%{_docdir}/%{name}-doc/
+cp -r examples %{buildroot}%{_docdir}/%{name}-doc/
+%fdupes %{buildroot}%{_docdir}/%{name}-doc/
 
 %check
 pushd LICENSES
+export VERBOSE=TRUE
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -B -m tables.tests.test_all
 }
@@ -117,7 +124,7 @@ popd
 %python_uninstall_alternative pt2to3
 
 %files %{python_files}
-%doc README.rst RELEASE_NOTES.txt THANKS
+%doc README.rst ANNOUNCE.txt THANKS
 %license LICENSE.txt
 %license LICENSES/*
 %python_alternative %{_bindir}/pt2to3
@@ -125,12 +132,11 @@ popd
 %python_alternative %{_bindir}/ptrepack
 %python_alternative %{_bindir}/pttree
 %{python_sitearch}/tables/
-%{python_sitearch}/tables-%{version}-py*.egg-info
+%{python_sitearch}/tables-%{version}*-info
 
 %files -n %{name}-doc
 %license LICENSE.txt
 %license LICENSES/*
-%doc doc/build/html/
-%doc examples/
+%doc %{_docdir}/%{name}-doc/
 
 %changelog

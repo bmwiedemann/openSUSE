@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Jan 16 10:40:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.7.0
+  * Compatibility with Python 3.10, numpy 1.21 and HDF5 1.12.
+  * Support for Python 3.5 has been dropped (#840 and #850).
+  * Internal C-Blosc sources updated to 1.21.1 (#931). Note that,
+    starting from C-Blosc 1.19 does not include the Snappy codec
+    sources anymore, so Snappy will be not available if you compile
+    from included sources; other packages (like conda or wheels),
+    may (or may not) include it.
+  * Switch to git submodule for the management of vendored c-blosc
+    sources.
+  * Improved code formatting and notation consistency (#873, #868,
+    #865 thanks to Miroslav Šedivý).
+  * Improve the use of modern Python including :mod:pathlib,
+    f-strings (#859, #855, #839 and #818 thanks to Miroslav
+    Šedivý).
+  * Simplified management of version information.
+  * Drop dependency on the deprecated distutils.
+  * Modernize the setup script and add support for PEP517 (#907).
+  * Fix pkg-config (setup.py) for Python 3.9 on Debian. Thanks to
+    Marco Sulla PR #792.
+  * Fix ROFileNode fails to return the fileno() (#633).
+  * Do not flush read only files (#915 thanks to @lrepiton).
+  * Drop the deprecated hdf5Version and File.open_count.
+  * the :func:get_tables_version and :func:get_hdf5_version
+    functions are now deprecated please use the coresponding
+    :data:tables.__version__ and :data:tables.hdf5_version instead.
+- Drop patches fixed upstream
+  * PyTables-compat-numpy119.patch
+  * PyTables-pr810-tostring.patch
+  * PyTables-skip-test_vlarray.patch
+  * tables-pr862-lowercasefdtype.patch
+- Replace Never-use-the-msse2-flag-explicitly.patch by use of
+  environment variable
+
+-------------------------------------------------------------------
 Wed Feb 17 22:16:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: python36-numpy was dropped in Tumbleweed
