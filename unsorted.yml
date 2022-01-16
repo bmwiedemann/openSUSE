@@ -2670,7 +2670,6 @@ unsorted:
   - dapl-utils 
   - daps 
   - darktable: [x86_64] 
-  - darktable-doc: [x86_64] 
   - darktable-tools-basecurve: [x86_64] 
   - darktable-tools-noise: [x86_64] 
   - darts 
@@ -7559,7 +7558,7 @@ unsorted:
   - jffi-native 
   - jflex 
   - jflex-bootstrap 
-  - jflex-doc 
+  - jflex-javadoc 
   - jformatstring 
   - jformatstring-javadoc 
   - jfreechart 
@@ -7641,6 +7640,8 @@ unsorted:
   - jondofox 
   - jopt-simple 
   - jopt-simple-javadoc 
+  - joycond: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - joycond-autoload: [i586] 
   - jp 
   - jp2a 
   - jp2a-bash-completion 
@@ -16937,7 +16938,7 @@ unsorted:
   - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
-  - ncurses-tests 
+  - ncurses-examples 
   - ncurses5-devel 
   - ncurses5-devel-32bit: [x86_64] 
   - ncurses5-devel-static 
@@ -21863,6 +21864,13 @@ unsorted:
   - python310-aesara 
   - python310-aexpect 
   - python310-afdko 
+  - python310-agate 
+  - python310-agate-dbf 
+  - python310-agate-excel 
+  - python310-agate-lookup 
+  - python310-agate-remote 
+  - python310-agate-sql 
+  - python310-agate-stats 
   - python310-aina 
   - python310-aiobotocore 
   - python310-aiodataloader 
@@ -21937,6 +21945,7 @@ unsorted:
   - python310-asn1crypto 
   - python310-aspectlib 
   - python310-aspy.yaml 
+  - python310-asteval 
   - python310-astor 
   - python310-astral 
   - python310-astroid 
@@ -21973,6 +21982,7 @@ unsorted:
   - python310-av 
   - python310-avahi 
   - python310-avro 
+  - python310-awkward: [i586] 
   - python310-awpa 
   - python310-aws-sam-translator 
   - python310-aws-xray-sdk 
@@ -22341,6 +22351,7 @@ unsorted:
   - python310-cassowary 
   - python310-casttube 
   - python310-catkin-pkg 
+  - python310-cauldron-notebook 
   - python310-cbor 
   - python310-cbor2 
   - python310-cchardet 
@@ -22474,6 +22485,7 @@ unsorted:
   - python310-cssutils 
   - python310-cstruct 
   - python310-csv23 
+  - python310-csvkit 
   - python310-ctypescrypto 
   - python310-cufflinks 
   - python310-curio 
@@ -23150,6 +23162,7 @@ unsorted:
   - python310-libmsym 
   - python310-libnacl 
   - python310-libpfm 
+  - python310-librosa 
   - python310-libsass 
   - python310-libusb1 
   - python310-libvirt-python 
@@ -23166,10 +23179,12 @@ unsorted:
   - python310-linstor-client 
   - python310-linux-procfs 
   - python310-lit 
+  - python310-littleutils 
   - python310-livereload 
   - python310-llfuse 
   - python310-llvmlite 
   - python310-lmdb 
+  - python310-lmfit 
   - python310-lml 
   - python310-localzone 
   - python310-locket 
@@ -23339,6 +23354,8 @@ unsorted:
   - python310-ntlm-auth 
   - python310-ntplib 
   - python310-num2words 
+  - python310-numba 
+  - python310-numba-devel 
   - python310-numcodecs 
   - python310-numericalunits 
   - python310-numexpr 
@@ -23460,6 +23477,7 @@ unsorted:
   - python310-pep517 
   - python310-peppercorn 
   - python310-percy 
+  - python310-perfume-bench 
   - python310-persistent 
   - python310-persistent-devel 
   - python310-petact 
@@ -23562,6 +23580,7 @@ unsorted:
   - python310-publicsuffixlist 
   - python310-pudb 
   - python310-pulsectl 
+  - python310-pure-eval 
   - python310-pure-sasl 
   - python310-purl 
   - python310-py 
@@ -23727,6 +23746,7 @@ unsorted:
   - python310-pypipegraph 
   - python310-pypiserver 
   - python310-pypng 
+  - python310-pyprel 
   - python310-pyprimes 
   - python310-pyproj 
   - python310-pypsexec 
@@ -23909,6 +23929,7 @@ unsorted:
   - python310-python-ptrace 
   - python310-python-qpid-proton 
   - python310-python-qprogedit 
+  - python310-python-rapidjson 
   - python310-python-redis-lock 
   - python310-python-redmine 
   - python310-python-rpm-spec 
@@ -24001,6 +24022,7 @@ unsorted:
   - python310-quantum-blackbird 
   - python310-queuelib 
   - python310-quicktions 
+  - python310-quimb: [x86_64] 
   - python310-radexreader 
   - python310-radon 
   - python310-railroad-diagrams 
@@ -24046,6 +24068,7 @@ unsorted:
   - python310-requirements-detector 
   - python310-requirements-parser 
   - python310-requre 
+  - python310-resampy 
   - python310-resolvelib 
   - python310-responses 
   - python310-restructuredtext_lint 
@@ -24119,6 +24142,7 @@ unsorted:
   - python310-scrypt 
   - python310-scspell3k 
   - python310-sdnotify 
+  - python310-seaborn 
   - python310-securesystemslib 
   - python310-selection 
   - python310-selenium 
@@ -24148,6 +24172,7 @@ unsorted:
   - python310-shaptools 
   - python310-shellingham 
   - python310-shijian 
+  - python310-shinyutils 
   - python310-shodan 
   - python310-shortuuid 
   - python310-sidecar 
@@ -24199,6 +24224,7 @@ unsorted:
   - python310-sox 
   - python310-spake2 
   - python310-spark_parser 
+  - python310-sparse 
   - python310-speaklater 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
@@ -24253,6 +24279,7 @@ unsorted:
   - python310-ssdeep 
   - python310-sshpubkeys 
   - python310-sshtunnel 
+  - python310-stack-data 
   - python310-statsd 
   - python310-statsmodels 
   - python310-stem 
@@ -24264,6 +24291,7 @@ unsorted:
   - python310-strict-rfc3339 
   - python310-strictyaml 
   - python310-stripe 
+  - python310-structlog 
   - python310-subgrab 
   - python310-subliminal 
   - python310-subprocrunner 
@@ -24320,6 +24348,7 @@ unsorted:
   - python310-textwrap3 
   - python310-thLib 
   - python310-thespian 
+  - python310-thewalrus: [x86_64] 
   - python310-threadpoolctl 
   - python310-three-merge 
   - python310-threevis 
@@ -24417,6 +24446,7 @@ unsorted:
   - python310-unsync 
   - python310-untokenize 
   - python310-unyt 
+  - python310-uproot: [i586] 
   - python310-uritemplate 
   - python310-uritools 
   - python310-url-normalize 
@@ -24607,14 +24637,6 @@ unsorted:
   - python36-acitoolkit 
   - python36-adblock 
   - python36-affine 
-  - python36-agate 
-  - python36-agate-dbf 
-  - python36-agate-excel 
-  - python36-agate-lookup 
-  - python36-agate-remote 
-  - python36-agate-sql 
-  - python36-agate-stats 
-  - python36-asteval 
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
@@ -24631,7 +24653,6 @@ unsorted:
   - python36-coverage-env-plugin 
   - python36-coveralls 
   - python36-css-parser 
-  - python36-csvkit 
   - python36-curlylint 
   - python36-curses 
   - python36-dbm 
@@ -24703,7 +24724,6 @@ unsorted:
   - python36-python-multipart 
   - python36-python-prctl 
   - python36-python-qdatamatrix 
-  - python36-python-rapidjson 
   - python36-pyuv 
   - python36-rarfile 
   - python36-rarfile-doc 
@@ -24718,7 +24738,6 @@ unsorted:
   - python36-sleekxmpp 
   - python36-sphinx-argparse 
   - python36-starlette 
-  - python36-structlog 
   - python36-tasklib 
   - python36-taskw 
   - python36-test-server 
@@ -26263,6 +26282,7 @@ unsorted:
   - python38-linstor 
   - python38-linstor-client 
   - python38-lit 
+  - python38-littleutils 
   - python38-livereload 
   - python38-llfuse 
   - python38-llvmlite 
@@ -26654,6 +26674,7 @@ unsorted:
   - python38-publicsuffixlist 
   - python38-pudb 
   - python38-pulsectl 
+  - python38-pure-eval 
   - python38-pure-sasl 
   - python38-purl 
   - python38-py-cpuinfo 
@@ -27331,6 +27352,7 @@ unsorted:
   - python38-ssdeep 
   - python38-sshpubkeys 
   - python38-sshtunnel 
+  - python38-stack-data 
   - python38-starlette 
   - python38-statsd 
   - python38-statsmodels 
@@ -29304,6 +29326,7 @@ unsorted:
   - python39-linstor-client 
   - python39-linux-procfs 
   - python39-lit 
+  - python39-littleutils 
   - python39-livereload 
   - python39-llfuse 
   - python39-llvmlite 
@@ -29732,6 +29755,7 @@ unsorted:
   - python39-publicsuffixlist 
   - python39-pudb 
   - python39-pulsectl 
+  - python39-pure-eval 
   - python39-pure-sasl 
   - python39-purl 
   - python39-py 
@@ -30466,6 +30490,7 @@ unsorted:
   - python39-ssdeep 
   - python39-sshpubkeys 
   - python39-sshtunnel 
+  - python39-stack-data 
   - python39-starlette 
   - python39-statsd 
   - python39-statsmodels 
@@ -43000,7 +43025,6 @@ unsorted:
   - xpenguins 
   - xpinguin 
   - xplanet 
-  - xplatproviders 
   - xplayer 
   - xplayer-devel 
   - xplayer-lang 

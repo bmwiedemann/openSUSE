@@ -971,8 +971,6 @@
     <package name="jhead" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="joe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="joycond" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="joycond-autoload" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="juk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5110,6 +5108,8 @@
     <package name="hexchat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="iptraf-ng" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="joycond" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="joycond-autoload" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kimageformats-eps" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
