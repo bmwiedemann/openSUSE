@@ -1,7 +1,7 @@
 #
 # spec file for package python-cu2qu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-cu2qu
-Version:        1.6.7
+Version:        1.6.7.post1
 Release:        0
 Summary:        Cubic-to-quadratic bezier curve conversion
 License:        Apache-2.0
@@ -54,7 +54,6 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand rm %{buildroot}%{$python_sitearch}/cu2qu/cu2qu.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/cu2qu
 

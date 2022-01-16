@@ -32,4 +32,13 @@
 </comment>
     <requestid>888045</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00fa4bc72917f13a4aed55d732567996</srcmd5>
+    <version>1.6.7.post1</version>
+    <time>1642371510</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.7.post1
+  * fixes build</comment>
+    <requestid>946792</requestid>
+  </revision>
 </revisionlist>
