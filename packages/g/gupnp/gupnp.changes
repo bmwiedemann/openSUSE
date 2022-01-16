@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 14 17:40:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.3:
+  + ServiceProxy:
+    - Properly propagate cancelled actions in deprecated calls.
+    - Fix deprecated async calls, again.
+
+-------------------------------------------------------------------
 Sat Jan  8 11:59:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.2:
