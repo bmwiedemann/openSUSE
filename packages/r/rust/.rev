@@ -631,4 +631,14 @@
     <comment>- Update to version 1.57.0</comment>
     <requestid>937256</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>699cc79dc66bd72df8a4becd1a607e73</srcmd5>
+    <version>1.58.0</version>
+    <time>1642371484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.58.0
+
+See SR#946556</comment>
+    <requestid>946557</requestid>
+  </revision>
 </revisionlist>
