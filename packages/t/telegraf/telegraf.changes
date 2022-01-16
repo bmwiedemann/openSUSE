@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 12 19:52:25 UTC 2022 - reichwald@b1-systems.de
+
+- Update to version 1.21.2:
+  * Add json_timestamp_layout configuration option
+  * output.http add use_batch_format configuration option
+  * Many bug fixes, see full list:
+  https://github.com/influxdata/telegraf/releases/tag/v1.21.2
+- Update to version 1.21.1:
+  * inputs.smart Add SMART plugin concurrency configuration option, nvme-cli v1.14+ support
+  * Some bug fixes, see full list:
+  https://github.com/influxdata/telegraf/releases/tag/v1.21.1
+- Update to version 1.21.0:
+  * New Input Plugins
+    * intel_pmu input plugin
+    * Linux Volume Manager input plugin
+    * Openstack input plugin
+  * New Output Plugins
+    * groundwork output plugin
+    * mongodp output plugin
+    * Azure Event Hubs output plugin
+  * Many bug fixes, see full list:
+  https://github.com/influxdata/telegraf/releases/tag/v1.21.0
+
+-------------------------------------------------------------------
 Tue Dec 14 16:21:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.20.4:
