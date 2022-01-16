@@ -1,7 +1,7 @@
 #
 # spec file for package libfole
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 Name:           libfole
 %define lname	libfole1
-Version:        20210415
+Version:        20220115
 Release:        0
 Summary:        Library for Object Linking and Embedding (OLE) data types
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfole
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfole/releases/download/%version/libfole-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libfole/releases/download/%version/libfole-alpha-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 
 %description
 libfole is a library for Object Linking and Embedding (OLE) data types.
@@ -61,7 +63,7 @@ applications that want to make use of libfole.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 
