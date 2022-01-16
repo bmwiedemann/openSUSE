@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 16 19:07:55 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.16.6 fixed AgsSF2Synth missing program and
+  resample.
+- new since 3.16.5 fixed AgsFFPlayer restore from XML.
+- minor improvements and fixes.
+
+-------------------------------------------------------------------
 Fri Jan 14 05:35:08 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.16.2 minor improvements.
