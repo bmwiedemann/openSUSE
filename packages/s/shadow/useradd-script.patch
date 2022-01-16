@@ -8,7 +8,7 @@ Index: etc/login.defs
 ===================================================================
 --- etc/login.defs.orig
 +++ etc/login.defs
-@@ -266,6 +266,13 @@ DEFAULT_HOME	yes
+@@ -238,6 +238,13 @@ DEFAULT_HOME	yes
  NONEXISTENT	/nonexistent
  
  #
@@ -26,7 +26,7 @@ Index: lib/getdef.c
 ===================================================================
 --- lib/getdef.c.orig
 +++ lib/getdef.c
-@@ -149,6 +149,7 @@ static struct itemdef def_table[] = {
+@@ -127,6 +127,7 @@ static struct itemdef def_table[] = {
  	{"UID_MAX", NULL},
  	{"UID_MIN", NULL},
  	{"UMASK", NULL},
@@ -38,7 +38,7 @@ Index: src/useradd.c
 ===================================================================
 --- src/useradd.c.orig
 +++ src/useradd.c
-@@ -2398,6 +2398,44 @@ static void check_uid_range(int rflg, ui
+@@ -2426,6 +2426,44 @@ static void check_uid_range(int rflg, ui
  
  }
  /*
@@ -83,9 +83,9 @@ Index: src/useradd.c
   * main - useradd command
   */
  int main (int argc, char **argv)
-@@ -2691,6 +2729,7 @@ int main (int argc, char **argv)
- 	nscd_flush_cache ("group");
- 	sssd_flush_cache (SSSD_DB_PASSWD | SSSD_DB_GROUP);
+@@ -2720,6 +2758,7 @@ int main (int argc, char **argv)
+ 		exit(1);
+ 	}
  
 +	call_script (user_name, user_id, user_gid, user_home);
 +

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Jan 12 16:52:39 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- The legacy code does not support /etc/login.defs.d used by YaST.
+  Enable libeconf to read it (bsc#1192954).
+
+-------------------------------------------------------------------
+Mon Jan  3 10:36:15 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.11.1:
+  * build: include lib/shadowlog_internal.h in dist tarballs
+
+-------------------------------------------------------------------
+Mon Jan  3 10:35:30 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.11:
+  * Handle possible TOCTTOU issues in usermod/userdel
+  	- (CVE-2013-4235)
+  	- Use O_NOFOLLOW when copying file
+  	- Kill all user tasks in userdel
+  * Fix useradd -D segfault
+  * Clean up obsolete libc feature-check ifdefs
+  * Fix -fno-common build breaks due to duplicate Prog declarations
+  * Have single date_to_str definition
+  * Fix libsubid SONAME version
+  * Clarify licensing info, use SPDX.
+
+-------------------------------------------------------------------
+Mon Jan  3 10:29:39 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.10:
+  * From this release forward, su from this package should be
+    considered deprecated. Please replace any users of it with su
+	from util-linux
+  * libsubid fixes
+  * Rename the test program list_subid_ranges to getsubids, write
+    a manpage, so distros can ship it.
+  * Add libeconf dep for new*idmap
+  * Allow all group types with usermod -G
+  * Avoid useradd generating empty subid range
+  * Handle NULL pw_passwd
+  * Fix default value SHA_get_salt_rounds
+  * Use https where possible in README
+  * Update content and format of README
+  * Translation updates
+  * Switch from xml2po to itstool in 'make dist'
+  * Fix double frees
+  * Add LOG_INIT configurable to useradd
+  * Add CREATE_MAIL_SPOOL documentation
+  * Create a security.md
+  * Fix su never being SIGKILLd when trapping TERM
+  * Fix wrong SELinux labels in several possible cases
+  * Fix missing chmod in chadowtb_move
+  * Handle malformed hushlogins entries
+  * Fix groupdel segv when passwd does not exist
+  * Fix covscan-found newgrp segfault
+  * Remove trailing slash on hoedir
+  * Fix passwd -l message - it does not change expirey
+  * Fix SIGCHLD handling bugs in su and vipw
+  * Remove special case for "" in usermod
+  * Implement usermod -rG to remove a specific group
+  * call pam_end() after fork in child path for su and login
+  * useradd: In absence of /etc/passwd, assume 0 == root
+  * lib: check NULL before freeing data
+  * Fix pwck segfault
+- Remove because upstreamed:
+  * shadow-4.9-pwck-segfault.patch
+  * shadow-4.9-newgrp-segfault.patch
+  * shadow-4.9-useradd-subuid.patch
+  * shadow-4.9-sgent-free.patch
+  * shadow-passwd-handle-null.patch
+  * shadow-fix-sigabrt.patch
+  * shadow-libeconf-include.patch
+  * libsubid-build-fix.patch
+- Refreshed:
+  * shadow-util-linux.patch
+  * shadow.changes
+  * shadow.keyring
+  * shadow.spec
+  * useradd-script.patch
+  * useradd-userkeleton.patch
+  * userdel-script.patch
+- Update shadow.keyring:
+  * Serge Hallyn serge@hallyn.com (B175CFA98F192AF2)
+  * Christian Brauner christian@brauner.io (4880B8C9BD0E5106FC070F4F7B3C391EFEA93624)
+
+-------------------------------------------------------------------
 Tue Nov 30 17:12:40 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Really enable USERGROUPS_ENAB [bsc#1189139].

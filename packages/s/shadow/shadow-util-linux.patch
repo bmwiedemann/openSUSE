@@ -122,7 +122,7 @@ Index: etc/login.defs
  # Max time in seconds for login(1)
  #
  LOGIN_TIMEOUT		60
-@@ -315,15 +335,6 @@ CHARACTER_CLASS         [ABCDEFGHIJKLMNO
+@@ -315,14 +335,6 @@ CHARACTER_CLASS         [ABCDEFGHIJKLMNO
  #GRANT_AUX_GROUP_SUBIDS yes
  
  #
@@ -131,7 +131,6 @@ Index: etc/login.defs
 -# Set to "yes" to prevent for all accounts
 -# Set to "superuser" to prevent for UID 0 / root (default)
 -# Set to "no" to not prevent for any account (dangerous, historical default)
--
 -PREVENT_NO_AUTH superuser
 -
 -#

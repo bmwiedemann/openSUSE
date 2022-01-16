@@ -684,4 +684,41 @@
     <comment></comment>
     <requestid>935176</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>74e5ad8053cc7d283fc07b901ee64397</srcmd5>
+    <version>4.11.1</version>
+    <time>1642371482</time>
+    <user>dimstar_suse</user>
+    <comment>- The legacy code does not support /etc/login.defs.d used by YaST.
+  Enable libeconf to read it (bsc#1192954).
+
+- Update to 4.11.1:
+  * build: include lib/shadowlog_internal.h in dist tarballs
+
+- Update to 4.11:
+  * Handle possible TOCTTOU issues in usermod/userdel
+  	- (CVE-2013-4235)
+  	- Use O_NOFOLLOW when copying file
+  	- Kill all user tasks in userdel
+  * Fix useradd -D segfault
+  * Clean up obsolete libc feature-check ifdefs
+  * Fix -fno-common build breaks due to duplicate Prog declarations
+  * Have single date_to_str definition
+  * Fix libsubid SONAME version
+  * Clarify licensing info, use SPDX.
+
+- Update to 4.10:
+  * From this release forward, su from this package should be
+    considered deprecated. Please replace any users of it with su
+	from util-linux
+  * libsubid fixes
+  * Rename the test program list_subid_ranges to getsubids, write
+    a manpage, so distros can ship it.
+  * Add libeconf dep for new*idmap
+  * Allow all group types with usermod -G
+  * Avoid useradd generating empty subid range
+  * Handle NULL pw_passwd
+  * Fix default value SHA_get_salt_rounds</comment>
+    <requestid>946483</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package shadow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.9
+Version:        4.11.1
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -59,22 +59,6 @@ Patch7:         shadow-login_defs-suse.patch
 Patch8:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch9:         disable_new_audit_function.patch
-# PATCH-FIX-UPSTREAM libsubid-build-fix.patch mvetter@suse.de -- Fix build with libsubid (f4a84e, 537b8c, fa986b)
-Patch10:        libsubid-build-fix.patch
-# PATCH-FIX-UPSTREAM shadow-libeconf-include.patch mvetter@suse.de -- Include libeconf to new*idmap (c68470)
-Patch11:        shadow-libeconf-include.patch
-# PATCH-FIX-UPSTREAM shadow-fix-sigabrt.patch mvetter@suse.de -- Fix SIGABRT https://github.com/shadow-maint/shadow/issues/394
-Patch12:        shadow-fix-sigabrt.patch
-# PATCH-FIX-UPSTREAM shadow-passwd-handle-null.patch mvetter@suse.de -- Fix passwd NULL handling https://github.com/shadow-maint/shadow/pull/398
-Patch13:        shadow-passwd-handle-null.patch
-# PATCH-FIX-UPSTREAM shadow-4.9-sgent-free.patch mvetter@suse.de -- Fix double free (boo#1190145)
-Patch14:        shadow-4.9-sgent-free.patch
-# PATCH-FIX-UPSTREAM shadow-4.9-useradd-subuid.patch mvetter@suse.de -- Fix generating empty subid range and undeclared subid_count (boo#1190146)
-Patch15:        shadow-4.9-useradd-subuid.patch
-# PATCH-FIX-UPSTREAM shadow-4.9-newgrp-segfault.patch mvetter@suse.de -- Fix segfault in newgrp (gh#437)
-Patch16:        shadow-4.9-newgrp-segfault.patch
-# PATCH-FIX-UPSTREAM shadow-4.9-pwck-segfault.patch mvetter@suse.de -- Fix segfault in pwck (gh#445)
-Patch17:        shadow-4.9-pwck-segfault.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -93,10 +77,7 @@ Requires(pre):  user(root)
 Provides:       pwdutils = 3.2.20
 Obsoletes:      pwdutils <= 3.2.19
 Provides:       useradd_or_adduser_dep
-# It should be %%if %%{defined no_config}, but OBS cannot handle it:
-%if 0%{?suse_version} >= 1550
 BuildRequires:  libeconf-devel
-%endif
 
 %description
 This package includes the necessary programs for converting plain
@@ -119,20 +100,20 @@ BuildArch:      noarch
 This package contains the default login.defs configuration file
 as used by util-linux, pam and shadow.
 
-%package -n libsubid3
+%package -n libsubid4
 Summary:        A library to manage subordinate uid and gid ranges
 Group:          System/Base
 
-%description -n libsubid3
+%description -n libsubid4
 Utility library that provides a way to manage subid ranges.
 
 %package -n libsubid-devel
-Summary:        Development files for libsubid3
+Summary:        Development files for libsubid4
 Group:          System/Base
-Requires:       libsubid3 = %{version}
+Requires:       libsubid4 = %{version}
 
 %description -n libsubid-devel
-Development files for libsubid3.
+Development files for libsubid4.
 
 %prep
 %setup -q -a 1
@@ -148,14 +129,6 @@ Development files for libsubid3.
 %if 0%{?suse_version} < 1330
 %patch9 -p1
 %endif
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -253,7 +226,7 @@ rm %{buildroot}/%{_mandir}/*/man5/passwd.5*
 
 rm -rf %{buildroot}%{_mandir}/{??,??_??}
 
-rm %{buildroot}/%{_libdir}/libsubid.la
+rm %{buildroot}/%{_libdir}/libsubid.{la,a}
 
 # Move /etc to /usr/etc
 if [ ! -d %{buildroot}%{_distconfdir} ]; then
@@ -317,8 +290,8 @@ done
 # - Migration to /usr/etc (after SLE15 and Leap 15)
 test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpmsave %{_sysconfdir}/login.defs ||:
 
-%post -n libsubid3 -p /sbin/ldconfig
-%postun -n libsubid3 -p /sbin/ldconfig
+%post -n libsubid4 -p /sbin/ldconfig
+%postun -n libsubid4 -p /sbin/ldconfig
 
 %files -f shadow.lang
 %license COPYING
@@ -364,6 +337,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
 %{_bindir}/lastlog
 %{_bindir}/sg
+%{_bindir}/getsubids
 %attr(0755,root,root) %{_sbindir}/groupadd
 %attr(0755,root,root) %{_sbindir}/groupdel
 %attr(0755,root,root) %{_sbindir}/groupmod
@@ -410,6 +384,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_mandir}/man5/subgid.5%{?ext_man}
 %{_mandir}/man1/newgidmap.1%{?ext_man}
 %{_mandir}/man1/newuidmap.1%{?ext_man}
+%{_mandir}/man1/getsubids.1%{?ext_man}
 
 %{_unitdir}/*
 
@@ -422,7 +397,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %endif
 %{_mandir}/man5/login.defs.5%{?ext_man}
 
-%files -n libsubid3
+%files -n libsubid4
 %{_libdir}/libsubid.so.*
 
 %files -n libsubid-devel
