@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftfy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ftfy
-Version:        6.0.1
+Version:        6.0.3
 Release:        0
 Summary:        Python module for repairing mis-decoded Unicode text
 License:        MIT
-URL:            https://github.com/LuminosoInsight/python-ftfy
-Source:         https://github.com/LuminosoInsight/python-ftfy/archive/v%{version}.tar.gz#/ftfy-%{version}.tar.gz
+URL:            https://github.com/rspeer/python-ftfy
+Source:         https://github.com/rspeer/python-ftfy/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

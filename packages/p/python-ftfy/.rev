@@ -57,4 +57,16 @@
     <comment></comment>
     <requestid>886559</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>90b15d79522d672a8fae29a67034d6dd</srcmd5>
+    <version>6.0.3</version>
+    <time>1642375366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.3:
+  *  Allow the keyword argument `fix_entities` as a deprecated alias for
+    `unescape_html`, raising a warning.
+  *  `ftfy.formatting` functions now disregard ANSI terminal escapes when
+    calculating text width.</comment>
+    <requestid>946691</requestid>
+  </revision>
 </revisionlist>

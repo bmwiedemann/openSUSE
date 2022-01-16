@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 17:46:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.3:
+  *  Allow the keyword argument `fix_entities` as a deprecated alias for
+    `unescape_html`, raising a warning.
+  *  `ftfy.formatting` functions now disregard ANSI terminal escapes when
+    calculating text width.
+
+-------------------------------------------------------------------
 Sat Apr 17 18:25:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.1
