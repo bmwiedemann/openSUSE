@@ -1,7 +1,7 @@
 #
 # spec file for package zinnia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if %{suse_version} < 1530
+%if 0%{?sle_version} > 0 && 0%{?sle_version} < 150400
 %define with_python 1
 %{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %else

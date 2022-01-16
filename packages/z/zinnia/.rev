@@ -66,4 +66,12 @@
   zinnia-gcc6.patch</comment>
     <requestid>939138</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>66336e611f3a84c6b0482715da9455d0</srcmd5>
+    <version>0.07</version>
+    <time>1642371489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946759</requestid>
+  </revision>
 </revisionlist>
