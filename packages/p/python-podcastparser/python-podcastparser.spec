@@ -1,7 +1,7 @@
 #
 # spec file for package python-podcastparser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-podcastparser
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        A podcast parser
 License:        ISC
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-xml
 BuildArch:      noarch
 %python_subpackages
