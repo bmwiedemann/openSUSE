@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:37:17 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.0.0
+  * Bump hiredis from 0.13.3 to 1.0.0 and consequently add support
+    for RESP3 (see #104)
+  * Add type hints (see #106)
+  * Drop support for EOL Python versions 2.7, 3.4, and 3.5 (see #103)
+- Drop obsolete patches
+  * hiredis1.patch
+  * bump_hiredis_0.14.1.patch
+- Update patches
+  * 0001-Use-system-libhiredis.patch
+  * drop-vendor-sources.patch
+
+-------------------------------------------------------------------
 Mon Feb  1 09:48:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.1.0

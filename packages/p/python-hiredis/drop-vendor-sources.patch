@@ -1,16 +1,16 @@
 ---
- setup.py |    3 +--
+setup.py |    3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
---- a/setup.py
-+++ b/setup.py
+--- a/setup.py	2022-01-15 16:32:39.379711369 +0100
++++ b/setup.py	2022-01-15 16:33:03.091710944 +0100
 @@ -11,8 +11,7 @@ def version():
    return module.__version__
  
  ext = Extension("hiredis.hiredis",
 -  sources=sorted(glob.glob("src/*.c") +
--                 ["vendor/hiredis/%s.c" % src for src in ("read", "sds")]),
+-                 ["vendor/hiredis/%s.c" % src for src in ("alloc", "read", "sds")]),
 +  sources=sorted(glob.glob("src/*.c")),
-   include_dirs=["vendor"],
    extra_link_args=["-lhiredis"])
  
+ setup(

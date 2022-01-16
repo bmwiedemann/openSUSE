@@ -54,4 +54,12 @@
     systems where the locale is not UTF-8. (see #89)</comment>
     <requestid>943349</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f7a4e9327dd958e2ce24ee6553e7048</srcmd5>
+    <version>2.0.0</version>
+    <time>1642371505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946784</requestid>
+  </revision>
 </revisionlist>
