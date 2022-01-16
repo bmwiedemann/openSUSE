@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 11 22:02:42 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.0.0.2
+  * bugfix in f5 ltm detail output
+  * tweak barracuda hardware-health snmp parameters
+
+-------------------------------------------------------------------
 Wed Nov 24 18:58:47 CET 2021 - ro@suse.de
 
 - add dependencies to perl-JSON, perl-JSON-XS, perl-File-Slurp
