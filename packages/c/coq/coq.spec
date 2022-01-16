@@ -1,7 +1,7 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %bcond_without ide
 
 Name:           coq
-Version:        8.14.1
+Version:        8.15.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -86,13 +86,11 @@ export CFLAGS='%{optflags}'
 # TODO: Add -with-doc yes
 ./configure                \
    -prefix %{_prefix}      \
-   -bindir %{_bindir}      \
    -libdir %{_libdir}/coq  \
    -mandir %{_mandir}      \
    -datadir %{_datadir}/%{name} \
    -docdir %{_docdir}/%{name} \
    -configdir %{_sysconfdir}/xdg/%{name} \
-   -coqdocdir %{_datadir}/texmf/tex/latex/misc \
 %if %{with ide}
    -coqide opt \
 %else
@@ -138,8 +136,8 @@ chmod -x %{buildroot}%{_libdir}/coq-core/tools/TimeFileMaker.py
 sed -i '1s|^#!/usr/bin/env *|#!/usr/bin/|;1s|^#!/usr/bin/python$|#!/usr/bin/python3|' \
     %{buildroot}%{_libdir}/coq-core/tools/make-{one-time-file,both-{time,single-timing}-files}.py
 
-# Remove /usr/doc that's not FHS-compliant, also we have the files elsewhere.
-rm -r %{buildroot}%{_prefix}/doc
+# Remove installed LICENSE, we put it elsewhere.
+rm %{buildroot}%{_docdir}/%{name}/coq{-core,ide,ide-server}/LICENSE
 
 # Remove superfluous man page.
 rm %{buildroot}%{_mandir}/man1/coqtop.byte.1
@@ -195,7 +193,6 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 
 %files -f dir.list -f runtime.list
 %license LICENSE CREDITS
-%doc README.md
 
 %{_bindir}/coq-tex
 %{_bindir}/coq_makefile
@@ -238,6 +235,9 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %dir %{_datadir}/texmf/tex/latex/misc
 %{_datadir}/texmf/tex/latex/misc/coqdoc.sty
 
+%dir %{_docdir}/%{name}
+%{_docdir}/%{name}/coq-core
+
 %if %{with ide}
 %files ide
 %{_bindir}/coqide
@@ -248,6 +248,9 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_datadir}/applications/coq.desktop
 %{_datadir}/icons/hicolor/256x256/apps/coq.png
 %{_datadir}/mime/packages/coq.xml
+%dir %{_docdir}/%{name}
+%{_docdir}/%{name}/coqide
+%{_docdir}/%{name}/coqide-server
 %endif
 
 %files devel -f dir.list -f devel.list
@@ -256,6 +259,7 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_libdir}/coq-core/tools/CoqMakefile.in
 
 %files doc
+%dir %{_docdir}/%{name}
 %{_docdir}/%{name}/refman
 %{_docdir}/%{name}/stdlib
 

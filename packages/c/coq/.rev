@@ -246,4 +246,28 @@
     Extraction` in a module.</comment>
     <requestid>940115</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65ca3bad456f22a8df5e4c76c6e60c8e</srcmd5>
+    <version>8.15.0</version>
+    <time>1642371485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.15.0.
+  * The `apply with` tactic no longer renames arguments unless
+    the compatibility flag `Apply With Renaming` is set.
+  * Improvements to the `auto` tactic family, fixing `Hint Unfold`
+    behavior, and generalizing the use of discrimination nets.
+  * The `typeclasses eauto` tactic has a new `best_effort` option
+    allowing it to return partial solutions to a proof search
+    problem, depending on the mode declarations associated to each
+    constraint. This mode is used by typeclass resolution during
+    type inference to provide more precise error messages.
+  * Many commands and options were deprecated or removed after
+    deprecation and more consistently support locality attributes.
+  * The `Import` command is extended with `import_categories` to
+    select the components of a module to import or not, including
+    features such as hints, coercions, and notations.
+  * A visual Ltac debugger is now available in CoqIDE.
+  * For more details, see refman/changes.html in coq-doc.</comment>
+    <requestid>946708</requestid>
+  </revision>
 </revisionlist>
