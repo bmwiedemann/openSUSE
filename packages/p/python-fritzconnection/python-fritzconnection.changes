@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Jan 15 17:26:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * New method `get_wifi_qr_code()` for QR-code creation for wifi-access
+  * New method `channel_info
+  * FritzHomeAutomation: New method `device_information
+  * FritzConnection: new command line option `-R` to reboot the system
+  * New method `get_generic_host_entries` returning a generator to iterate over
+    all entries as reported by the method `get_generic_host_entry`.
+  * The methods `get_active_hosts` and `get_hosts_info` provide additional host
+    attributes 
+  * Refactoring of the logging module `fritzconnection.core.logger` (introduced
+    in 1.7.0). Now emitting messages from INFO-level and up by default.
+  * Connection errors with the router raised from the underlying `urllib3`
+    library are caught and raised again as FritzConnectionException preserving
+    the connection error information 
+  * bugfix: logger deactivated by default 
+  * Tests extended for Python 3.10
+  * `enable` and `disable` to enable and disable a wlan network.
+  * `get_password` and `set_password` to get the current password or set a new
+    one for a wlan network.
+  * New FritzGuestWLAN library class.
+  * New FritzConnection method `reboot`.
+  * New logging module `fritzconnection.core.logger`.
+  * New arguments for FritzConnection: `pool_connections` and `pool_maxsize` to
+    adapt the default urllib3 settings (used by requests). (#114).
+  * New properties `FritzStatus.device_uptime` and
+    `FritzStatus.connection_uptime``; the latter a replacement for
+    `FritzStatus.uptime` – still existing as an alias. 
+  * bugfix: html-escape arguments in case that special characters are allowed
+    by the protocol. 
+  * bugfix: `FritzStatus.bytes_sent` will return the 32 bit value from older
+    Fritz!Box models. 
+  * bugfix: raise `FritzActionError` on accessing the mesh topology information
+    from a device not having accesss to this information. 
+  * adding code-of-conduct and contributing files to the repository.
+  * Compatibility with Fritz!OS 7.24 and newer: takes the last logged in
+    username as default in case that a username is not provided.
+  * bugfix: byte_formatter may return wrong numbers on values < 1 and has
+    raised math domain error on values == 0.D (bug introduced with version
+  * bugfix: FritzStatus library now returns a 32 bit value for *bytes_received*
+    for older Fritz!OS versions not providing the newer 64 bit information
+    instead of raising an exception. 
+  * change: Output of bitrate changed to log10 based calculation 
+  * New core module fritzmonitor for reporting realtime phone call events
+  * Library class FritzStatus with additional properties: *attenuation*,
+    *str_attenuation*, *noise_margin* and *str_noise_margin* 
+  * Library class FritzHost with additional method *get_host_name* 
+  * Namespace prefix for xml-arguments removed 
+  * Test extended for Python 3.9 
+
+-------------------------------------------------------------------
 Tue Sep 29 17:46:23 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.3.4

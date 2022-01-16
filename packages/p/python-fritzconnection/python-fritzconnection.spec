@@ -1,7 +1,7 @@
 #
 # spec file for package python-fritzconnection
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%global pythons python3
 Name:           python-fritzconnection
-Version:        1.3.4
+Version:        1.9.0
 Release:        0
 Summary:        A Python module to talk to a AVM fritzbox
 License:        MIT
@@ -36,6 +37,8 @@ Requires:       python-lxml
 Requires:       python-requests
 Requires:       python-setuptools
 BuildArch:      noarch
+Obsoletes:      python310-fritzconnection < 1.9.0
+Obsoletes:      python39-fritzconnection < 1.9.0
 %python_subpackages
 
 %description
@@ -55,17 +58,9 @@ export LC_ALL=C.utf-8
 export LC_ALL=C.utf-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-for i in fritzcall fritzconnection fritzhomeauto fritzhosts fritzphonebook fritzstatus fritzwlan ; do
-   %python_clone -a %{buildroot}%{_bindir}/${i}
-done
-
-%post
-%{python_install_alternative fritzcall fritzconnection fritzhomeauto fritzhosts fritzphonebook fritzstatus fritzwlan}
-
-%preun
-%{python_uninstall_alternative fritzcall fritzconnection fritzhomeauto fritzhosts fritzphonebook fritzstatus fritzwlan}
 
 %check
+
 # Don't run functional tests that require connections to a physical fritzbox router
 rm fritzconnection/tests/test_functional.py
 %pytest
@@ -73,13 +68,14 @@ rm fritzconnection/tests/test_functional.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%python_alternative %{_bindir}/fritzcall
-%python_alternative %{_bindir}/fritzconnection
-%python_alternative %{_bindir}/fritzhomeauto
-%python_alternative %{_bindir}/fritzhosts
-%python_alternative %{_bindir}/fritzphonebook
-%python_alternative %{_bindir}/fritzstatus
-%python_alternative %{_bindir}/fritzwlan
+%{_bindir}/fritzcall
+%{_bindir}/fritzconnection
+%{_bindir}/fritzhomeauto
+%{_bindir}/fritzhosts
+%{_bindir}/fritzmonitor
+%{_bindir}/fritzphonebook
+%{_bindir}/fritzstatus
+%{_bindir}/fritzwlan
 %{python_sitelib}/*
 
 %changelog
