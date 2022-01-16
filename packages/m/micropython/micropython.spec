@@ -1,7 +1,7 @@
 #
 # spec file for package micropython
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ install -t %{buildroot}%{_bindir} ports/unix/micropython
 # https://github.com/micropython/micropython/issues/4176
 %check
 export MICROPY_CPYTHON3=python3
-make -C ports/unix PYTHON=%{__python3} V=1 test
+make -C ports/unix PYTHON=%{_bindir}/python3 V=1 test
 %endif
 
 %files

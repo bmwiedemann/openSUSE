@@ -30,4 +30,12 @@
 </comment>
     <requestid>921407</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>962db7b10e7d38ac44d707c73cef7eda</srcmd5>
+    <version>1.17</version>
+    <time>1642371507</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid spec-cleaner messing it up</comment>
+    <requestid>946789</requestid>
+  </revision>
 </revisionlist>
