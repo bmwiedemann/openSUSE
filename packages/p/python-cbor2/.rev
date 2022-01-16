@@ -69,4 +69,17 @@
     improve security on decoding untrusted data.</comment>
     <requestid>898419</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dee1fd60d420bc5ec3fd95db7ab56726</srcmd5>
+    <version>5.4.2</version>
+    <time>1642375367</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.2:
+  * Fix segfault when initializing CBORTag with incorrect arguments 
+  * Fix sphinx build warnings 
+  * Fix SystemErrors when using C-backend, meaningful exceptions now raised 
+  * Fix precision loss when decoding base10 decimal fractions 
+  * Made CBORTag handling consistent between python and C-module</comment>
+    <requestid>946692</requestid>
+  </revision>
 </revisionlist>
