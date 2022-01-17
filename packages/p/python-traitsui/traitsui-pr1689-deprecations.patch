@@ -1,0 +1,151 @@
+From 0499a1ad2c84e967f556c90de39bc8deda1d69c3 Mon Sep 17 00:00:00 2001
+From: Aaron Ayres <aayres@enthought.com>
+Date: Fri, 18 Jun 2021 10:29:16 -0500
+Subject: [PATCH 1/4] be explicit about int
+
+---
+ traitsui/qt4/ui_panel.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/traitsui/qt4/ui_panel.py b/traitsui/qt4/ui_panel.py
+index 683b0fbe4..b39f89b3d 100644
+--- a/traitsui/qt4/ui_panel.py
++++ b/traitsui/qt4/ui_panel.py
+@@ -352,9 +352,9 @@ def sizeHint():
+         size = f()
+         if ui.view is not None:
+             if ui.view.width > 0:
+-                size.setWidth(ui.view.width)
++                size.setWidth(int(ui.view.width))
+             if ui.view.height > 0:
+-                size.setHeight(ui.view.height)
++                size.setHeight(int(ui.view.height))
+         return size
+ 
+     return sizeHint
+
+From 32f671b28346b81624e0b6305b0dabaf8d37c095 Mon Sep 17 00:00:00 2001
+From: Aaron Ayres <aayres@enthought.com>
+Date: Fri, 18 Jun 2021 11:09:00 -0500
+Subject: [PATCH 2/4] a couple more explicitly passing int
+
+---
+ traitsui/qt4/helper.py  | 2 +-
+ traitsui/qt4/ui_base.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/traitsui/qt4/helper.py b/traitsui/qt4/helper.py
+index fd56ba599..0d2261f55 100644
+--- a/traitsui/qt4/helper.py
++++ b/traitsui/qt4/helper.py
+@@ -100,7 +100,7 @@ def position_window(window, width=None, height=None, parent=None):
+ 
+     if parent is None:
+         # Center the popup on the screen.
+-        window.move((screen_dx - width) / 2, (screen_dy - height) / 2)
++        window.move(int((screen_dx - width) / 2), int((screen_dy - height) / 2))
+         return
+ 
+     # Calculate the desired size of the popup control:
+diff --git a/traitsui/qt4/ui_base.py b/traitsui/qt4/ui_base.py
+index b3705933f..d5c15d741 100644
+--- a/traitsui/qt4/ui_base.py
++++ b/traitsui/qt4/ui_base.py
+@@ -202,9 +202,9 @@ def sizeHint(self):
+         size = QtGui.QDialog.sizeHint(self)
+         view = self._ui.view
+         if view.width > 0:
+-            size.setWidth(view.width)
++            size.setWidth(int(view.width))
+         if view.height > 0:
+-            size.setHeight(view.height)
++            size.setHeight(int(view.height))
+         return size
+ 
+     def done(self, r):
+
+From de5a81e15d44070a6ae85251dc25ac8c769bd1c2 Mon Sep 17 00:00:00 2001
+From: Aaron Ayres <aayres@enthought.com>
+Date: Fri, 18 Jun 2021 11:11:50 -0500
+Subject: [PATCH 3/4] another occurence in test_splitter_prefs_restored.py
+
+---
+ traitsui/tests/test_splitter_prefs_restored.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/traitsui/tests/test_splitter_prefs_restored.py b/traitsui/tests/test_splitter_prefs_restored.py
+index 0aec027e0..4c53f21ac 100644
+--- a/traitsui/tests/test_splitter_prefs_restored.py
++++ b/traitsui/tests/test_splitter_prefs_restored.py
+@@ -36,7 +36,7 @@ def reset_prefs(self, ui_info):
+         """
+         control = getattr(ui_info, "h_split").control
+         width = control.width()
+-        control.moveSplitter(width / 2, 1)
++        control.moveSplitter(int(width / 2), 1)
+ 
+     def restore_prefs(self, ui_info):
+         """ Apply the last saved ui preferences.
+
+From 6fe3cbb8a4d3b725a6cb50f4fbcf0cd51b70ba97 Mon Sep 17 00:00:00 2001
+From: aaronayres35 <36972686+aaronayres35@users.noreply.github.com>
+Date: Mon, 21 Jun 2021 04:51:36 -0700
+Subject: [PATCH 4/4] Apply suggestions from code review
+
+Co-authored-by: Poruri Sai Rahul <rporuri@enthought.com>
+---
+ traitsui/qt4/helper.py                         | 2 +-
+ traitsui/tests/test_splitter_prefs_restored.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/traitsui/qt4/helper.py b/traitsui/qt4/helper.py
+index 0d2261f55..e9d07c6a9 100644
+--- a/traitsui/qt4/helper.py
++++ b/traitsui/qt4/helper.py
+@@ -100,7 +100,7 @@ def position_window(window, width=None, height=None, parent=None):
+ 
+     if parent is None:
+         # Center the popup on the screen.
+-        window.move(int((screen_dx - width) / 2), int((screen_dy - height) / 2))
++        window.move((screen_dx - width) // 2, (screen_dy - height) // 2)
+         return
+ 
+     # Calculate the desired size of the popup control:
+diff --git a/traitsui/tests/test_splitter_prefs_restored.py b/traitsui/tests/test_splitter_prefs_restored.py
+index 4c53f21ac..9387e2bdf 100644
+--- a/traitsui/tests/test_splitter_prefs_restored.py
++++ b/traitsui/tests/test_splitter_prefs_restored.py
+@@ -36,7 +36,7 @@ def reset_prefs(self, ui_info):
+         """
+         control = getattr(ui_info, "h_split").control
+         width = control.width()
+-        control.moveSplitter(int(width / 2), 1)
++        control.moveSplitter(width // 2, 1)
+ 
+     def restore_prefs(self, ui_info):
+         """ Apply the last saved ui preferences.
+diff -up traitsui-7.2.1/traitsui/qt4/image_enum_editor.py.int traitsui-7.2.1/traitsui/qt4/image_enum_editor.py
+--- traitsui-7.2.1/traitsui/qt4/image_enum_editor.py.int        2021-05-11 21:01:44.000000000 -0600
++++ traitsui-7.2.1/traitsui/qt4/image_enum_editor.py    2021-06-09 20:13:53.769750877 -0600
+@@ -298,7 +298,7 @@ class ImageEnumModel(QtCore.QAbstractTab
+         """ Reimplemented to return the number of rows.
+         """
+         cols = self._editor.factory.cols
+-        result = (len(self._editor.names) + cols - 1) / cols
++        result = (len(self._editor.names) + cols - 1) // cols
+         return result
+ 
+     def columnCount(self, mi):
+diff -up traitsui-7.2.1/traitsui/qt4/image_enum_editor.py.int traitsui-7.2.1/traitsui/qt4/image_enum_editor.py
+--- traitsui-7.2.1/traitsui/qt4/image_enum_editor.py.int        2021-06-09 20:34:06.018235076 -0600
++++ traitsui-7.2.1/traitsui/qt4/image_enum_editor.py    2021-06-09 20:50:00.101731826 -0600
+@@ -94,7 +94,7 @@ class SimpleEditor(BaseEditor, SimpleEnu
+             else:
+                 cols = self.factory.cols
+                 rows = (len(self.names) + cols - 1) / cols
+-                row, col = index / cols, index % cols
++                row, col = index // cols, index % cols
+                 self.control.setModelColumn(col)
+                 self.control.setCurrentIndex(row)
+             self._no_enum_update -= 1
+            

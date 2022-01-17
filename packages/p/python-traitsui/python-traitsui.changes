@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jan 16 15:11:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.1
+  * Explicitly require traits 6.2 and pyface 7.3 (#1666, #1668)
+- Release 7.2.0
+  * TraitsUI 7.2.0 is a minor release which includes numerous bug
+    fixes, documentation improvements, code maintenance changes,
+    and enhancements.
+  * The migration from on_trait_change to observe is underway. As a
+    result, TraitsUI now requires Traits >= 6.2.
+  * New display-only VideoEditor (currently only on Qt backend).
+    Exapnsion of features for the new UITester including the
+    ability to inspect UI object visibility / enabledness. Also
+    documentation for testing has been updated.
+  * Notes on upgrading: This release of TraitsUI now depends on
+    Traits 6.2+ and pyface 7.2+. Also, deprecated code / modules
+    have been removed. Namely, the :mod:traitsui.image
+    <traitsui.image> module which was moved to pyface.image,
+    editors_gen modules, Editor and EditorFactory factory methods
+    on Toolkit objects, and more. For a complete list, see PRs in
+    the "Removals" section. These were all generally unused /
+    deprecated for sometime. Also, importing directly from
+    traitsui.editors has been deprecated. Please update imports to
+    import directly from :mod:traitsui.api or
+    :mod:traitsui.editors.api.
+- Detailed changelog at
+  https://github.com/enthought/traitsui/releases/tag/7.2.0
+- Add traitsui-pr1689-deprecations.patch
+  * gh#enthought/traitsui#1689 + gh#enthought/traitsui#1681
+
+-------------------------------------------------------------------
 Tue Feb 23 19:50:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.1.1
