@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 15 20:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.1
+  * Further improvements to pending kernels managment #732
+    (@Zsailer)
+  * Test against all kernels in jupyter kernel test and clean up CI
+    #731 (@blink1073)
+  * Add support for pending kernels #712 (@blink1073)
+  * Improve restarter logic #717 (@vidartf)
+  * Set sticky bit only on the directory #711 (@ci4ic4)
+
+-------------------------------------------------------------------
 Sun Oct 17 18:33:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.6
