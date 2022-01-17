@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.4.73
+Version:        4.4.75
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -59,6 +59,7 @@ BuildRequires:  json-c-devel
 %else
 BuildRequires:  libjson-c-devel
 %endif
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(python3)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
