@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  2 23:23:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.0:
+  * No release notes.
+- Drop python2 support in keeping with upstream.
+
+-------------------------------------------------------------------
 Fri Feb 26 23:06:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to 2.0.2:

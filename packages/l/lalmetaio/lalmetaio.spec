@@ -1,7 +1,7 @@
 #
 # spec file for package lalmetaio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,12 @@
 %define shlib lib%{name}8
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
+# Support for py2 dropped by uostream
+%define skip_python2 1
 # octave >= 6 not supported
 %bcond_with    octave
 Name:           lalmetaio
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
@@ -91,10 +93,10 @@ This package provides the necessary files for using LAL MetaIO with octave.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run configure with multiple py3 flavours
 export PYTHON=$python
 mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build  
+cp -pr ./ ../${PYTHON}_build
 pushd ../${PYTHON}_build
 %configure \
   %{?with_octave:--enable-swig-octave} \
