@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  3 00:30:32 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * No release notes.
+- Drop python2 support in keeping with upstream.
+- Bump so number for shlib package.
+- Drop enum-conversion hack: no longer needed.
+
+-------------------------------------------------------------------
 Fri Feb 26 22:58:18 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.1:
