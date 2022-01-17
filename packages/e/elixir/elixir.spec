@@ -1,7 +1,7 @@
 #
 # spec file for package elixir
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           elixir
-Version:        1.12.3
+Version:        1.13.2
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -25,13 +25,12 @@ Group:          Development/Languages/Other
 URL:            http://elixir-lang.org
 Source0:        https://github.com/elixir-lang/elixir/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        macros.elixir
-Patch0:         0001-Add-retries-to-tests-that-write-to-stderr-on-Windows.patch
 BuildRequires:  gcc
 BuildRequires:  make
 # required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
-Requires:       erlang >= 21
+Requires:       erlang >= 22
 Requires:       git >= 1.7
-BuildRequires:  erlang >= 21
+BuildRequires:  erlang >= 22
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
 BuildRequires:  git >= 1.7
@@ -67,7 +66,6 @@ Elixir source code.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # Elixir wants UTF-8 locale, force it

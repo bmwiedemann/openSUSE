@@ -1,7 +1,7 @@
 #
 # spec file for package elixir-doc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           elixir-doc
-Version:        1.12.3
+Version:        1.13.2
 Release:        0
 Summary:        Documentation for elixir
 License:        Apache-2.0
