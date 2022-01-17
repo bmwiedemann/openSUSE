@@ -21,7 +21,7 @@
 %define vgit    %{nil}
 
 Name:           ipmctl
-Version:        03.00.00.0407
+Version:        03.00.00.0423
 Release:        0
 Summary:        Utility for managing Intel Optane persistent memory modules
 License:        BSD-3-Clause

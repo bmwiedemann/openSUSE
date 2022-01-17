@@ -107,4 +107,12 @@ build-infrastructure (at least for now).</comment>
     <comment></comment>
     <requestid>941244</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2db51e0a4a25e85f606a136637ab7c95</srcmd5>
+    <version>03.00.00.0423</version>
+    <time>1642455261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946984</requestid>
+  </revision>
 </revisionlist>

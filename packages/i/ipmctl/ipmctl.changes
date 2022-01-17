@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 17 13:29:39 UTC 2022 - rw@suse.com
+
+- Update to version 03.00.00.0423
+  - Add support for newer systems.  [bsc#1194354]
+  (For detailed changes see 'ChangeLog.xz')
+- Refresh patch(es)
+  (ipmctl-static-EDK2.patch.xz)
+
+-------------------------------------------------------------------
 Fri Dec 17 12:45:05 UTC 2021 - rw@suse.com
 
-- Update to version 03.00.00.0407  [jsc#SLE-18904, jsc#SLE-19429]
+- Update to version 03.00.00.0407
+  - Use recommended version.  [jsc#SLE-18904, jsc#SLE-19429]
   (For detailed changes see 'ChangeLog.xz')
 - Incorporate TianoCore EDK II build requirement as patch.
   (ipmctl-static-EDK2.patch.xz)
@@ -25,8 +35,7 @@ Fri Dec 11 13:05:13 UTC 2020 - rw@suse.com
 Tue Mar 10 14:06:35 UTC 2020 - rw@suse.com
 
 - Update to version 02.00.00.3733
-  - Sidestep feature process, hardware enablement via bugzilla.
-    [bsc#1162844]
+  - Add support for newer systems.  [bsc#1162844]
   (For detailed changes see 'ChangeLog.xz')
 
 -------------------------------------------------------------------
