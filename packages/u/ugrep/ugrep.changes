@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan  6 15:20:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 3.5.0:
+  * New --zmax=NUM option to be used with -z (--decompress) to
+    search compressed files and archives recursively stored within
+    tar/zip/cpio/pax archives, e.g. to search tar and zip files
+    stored in (compressed) tar files, in zip files etc. for up to
+    NUM recursive levels deep. The --zmax argument may range from 1
+    (default) to 99 for up to 99 decompression and de-archiving
+    steps.
+  * Improved option -U to be used for backward compatibility with
+    GNU/BSD grep by no longer flagging invalid UTF as "binary
+    files"
+
+-------------------------------------------------------------------
+Tue Jan  4 18:37:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * New Boolean search query options --files and --lines.
+    The specified Boolean search query conditions apply to
+    lines by default.
+    Because GNU/BSD grep and ugrep are generally line-based,
+    --lines is the default option.
+    Specify --files --bool to apply the specified Boolean query
+    to files as a whole: a file matches if all Boolean conditions
+    are satisfied by matching patterns anywhere in the file
+
+-------------------------------------------------------------------
 Thu Jun 24 11:39:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.3.4:
