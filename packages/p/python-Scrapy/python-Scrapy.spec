@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# python-uvloop does not support python3.6
-%define skip_python36 1
 Name:           python-Scrapy
 Version:        2.5.1
 Release:        0
@@ -60,7 +58,7 @@ BuildRequires:  %{python_module zope.interface >= 4.1.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-BuildRequires:  %{python_module dataclasses if (%python-base with python36-base)}
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 Requires:       python-Protego >= 0.1.15
 Requires:       python-PyDispatcher >= 2.0.5
 Requires:       python-Twisted >= 17.9.0
@@ -114,14 +112,16 @@ popd
 # tests/test_downloader_handlers_*.py and test_http2_client_protocol.py: no network
 # tests/test_command_check.py: twisted dns resolution of example.com error
 # no color in obs chroot console
-skiplist="not test_pformat"
+skiplist="test_pformat"
+# correct exception but not recognized due to different format
+python310_skiplist=" or test_callback_kwargs"
 %{pytest \
     --ignore tests/test_proxy_connect.py \
     --ignore tests/test_command_check.py \
     --ignore tests/test_downloader_handlers.py \
     --ignore tests/test_downloader_handlers_http2.py \
     --ignore tests/test_http2_client_protocol.py \
-    -k "${skiplist}" \
+    -k "not (${skiplist} ${$python_skiplist})" \
     -W ignore::DeprecationWarning \
     tests}
 
@@ -134,7 +134,8 @@ skiplist="not test_pformat"
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/*
+%{python_sitelib}/scrapy
+%{python_sitelib}/Scrapy-%{version}*-info
 %python_alternative %{_bindir}/scrapy
 
 %files -n %{name}-doc

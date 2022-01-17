@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 16 21:07:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip a failing test in python310: exception format not recognized
+
+-------------------------------------------------------------------
 Thu Oct  7 14:35:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.1, Security bug fix
