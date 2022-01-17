@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 17 04:39:15 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 5.2.0.
+  * util: Unset LC_* variables (#145)
+- Update to version 5.0.1.
+  * csm-logout-dialog.c: Grab focus after the widget is shown.
+- Fix build fail, fix meson build flag.
+
+-------------------------------------------------------------------
 Thu May 27 20:09:17 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.0.
