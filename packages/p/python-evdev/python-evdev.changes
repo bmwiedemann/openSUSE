@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 20:16:20 UTC 2022 - Matthias Bach <marix@marix.org>
+
+- Work around broken pytest macro on Leap 15.3
+
+-------------------------------------------------------------------
 Fri Apr  9 20:28:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add evdev-re-Pattern.patch -- gh#gvalkov/python-evdev#152

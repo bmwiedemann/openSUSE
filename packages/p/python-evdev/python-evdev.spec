@@ -1,7 +1,7 @@
 #
 # spec file for package python-evdev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,10 @@ subsystem.
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
 
 %check
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+# Work around broken pytest macro on Leap 15.3
+PYTHONPATH=dummy
+%endif
 %pytest_arch tests -k 'not test_uinput'
 
 %files %{python_files}
