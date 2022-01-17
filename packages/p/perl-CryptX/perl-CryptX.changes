@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  8 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.076
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.076   2022-01-07
+          - fix #80 github actions (mac, windows, cygwin)
+          - fix #79 isolate ltc functions (via -Wl,--exclude-libs,ALL)
+          - fix #68 Segmentation fault on Apache due to symbol clash with libasn1
+
+-------------------------------------------------------------------
 Sun Dec 26 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.075
