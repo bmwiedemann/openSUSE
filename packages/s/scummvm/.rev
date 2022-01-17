@@ -246,4 +246,12 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment>new upstream release</comment>
     <requestid>934218</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a3c60c6a75b011cc39045058da44bf72</srcmd5>
+    <version>2.5.1</version>
+    <time>1642455266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947007</requestid>
+  </revision>
 </revisionlist>
