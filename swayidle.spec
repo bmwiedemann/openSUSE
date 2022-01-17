@@ -1,7 +1,7 @@
 #
 # spec file for package swayidle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           swayidle
-Version:        1.7
+Version:        1.7.1
 Release:        0
 Summary:        Idle management daemon for Wayland
 License:        MIT
