@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 16 20:23:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove obsolete but unresolvable python36 requirement
+
+-------------------------------------------------------------------
 Thu Nov  4 10:15:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.5.0

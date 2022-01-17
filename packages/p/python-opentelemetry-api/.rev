@@ -76,4 +76,12 @@
     - Ignore calls to `Span.set_status` with `StatusCode.UNSET` and also if previous (forwarded request 929148 from glaubitz)</comment>
     <requestid>929161</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9572b4c184a9d6924b4ceb5f581c3183</srcmd5>
+    <version>1.5.0</version>
+    <time>1642455245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946889</requestid>
+  </revision>
 </revisionlist>

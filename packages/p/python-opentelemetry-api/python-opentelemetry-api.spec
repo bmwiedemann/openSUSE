@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-opentelemetry-api
 Version:        1.5.0
@@ -28,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-a
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  ((python3-aiocontextvars and python3-base < 3.7) or (python36-aiocontextvars and python36-base))
+# Note: If python3-aiocontextvars is not available, the error message will
+# be confusing: https://github.com/openSUSE/obs-build/issues/685
+BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
 BuildArch:      noarch
 Requires:       python-setuptools
 %if %{python_version_nodots} < 37
@@ -59,6 +61,7 @@ OpenTelemetry Python API
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/opentelemetry
+%{python_sitelib}/opentelemetry_api-%{version}*-info
 
 %changelog
