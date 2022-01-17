@@ -1,7 +1,7 @@
 #
 # spec file for package python-affine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module pydocstyle}
 BuildRequires:  %{python_module pytest >= 3.0}
-BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 %python_subpackages
 
@@ -56,6 +54,7 @@ Matrices describing affine transformation of the plane.
 %files %{python_files}
 %doc AUTHORS.txt CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/affine
+%{python_sitelib}/affine-%{version}*-info
 
 %changelog
