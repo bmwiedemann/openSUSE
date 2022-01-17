@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-Tiny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Config-Tiny
 Name:           perl-Config-Tiny
-Version:        2.27
+Version:        2.28
 Release:        0
 Summary:        Read/Write .ini style files with as little code as possible
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,10 +28,11 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::Spec) >= 3.3
+BuildRequires:  perl(File::Spec) >= 3.30
 BuildRequires:  perl(File::Temp) >= 0.22
 BuildRequires:  perl(Test::More) >= 1.001002
-Requires:       perl(File::Spec) >= 3.3
+BuildRequires:  perl(Test::Pod) >= 1.51
+Requires:       perl(File::Spec) >= 3.30
 Requires:       perl(File::Temp) >= 0.22
 %{perl_requires}
 

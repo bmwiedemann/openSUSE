@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  5 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.28
+   see /usr/share/doc/packages/perl-Config-Tiny/Changelog.ini
+
+  [V 2.28]
+  Date=2022-01-04T15:47:58
+  Comments= <<EOT
+  - Accept pull request from Todd Rinaldo to replace both uses of bareword filehandles
+  with my variables. With thanx.
+  - Accept 2019 pull request to Makefile.PL, for the purpose of modernization, and with
+  some slight modifications, from Grinnz.
+  - Make corresponding patches where appropriate to Tiny.pm and t/02.main.t.
+  - Thanx to Grinnz aka Dan Book for the prompting.
+  EOT
+
+-------------------------------------------------------------------
 Thu Sep 23 03:06:04 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.27
