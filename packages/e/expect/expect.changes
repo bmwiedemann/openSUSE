@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 21 15:41:30 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Fix home page URL https://core.tcl-lang.org/expect/
+
+-------------------------------------------------------------------
 Mon May 10 13:44:24 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1183904, expect-errorfd.patch:

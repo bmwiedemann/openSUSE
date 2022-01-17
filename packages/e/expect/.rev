@@ -213,4 +213,12 @@
   errorfd file descriptors should be closed when forking</comment>
     <requestid>892068</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>1b797e8af5f1ee9d87d677cb7a70746b</srcmd5>
+    <version>5.45.4</version>
+    <time>1642455227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946615</requestid>
+  </revision>
 </revisionlist>

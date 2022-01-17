@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Tool for Automating Interactive Programs
 License:        SUSE-Public-Domain
 Group:          Development/Languages/Tcl
-URL:            http://expect.nist.gov
+URL:            https://core.tcl-lang.org/expect/
 Source:         https://downloads.sourceforge.net/expect/expect%version.tar.gz
 Source1:        expect-rpmlintrc
 Patch1:         expect.patch
