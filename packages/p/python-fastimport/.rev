@@ -57,4 +57,14 @@
     <comment></comment>
     <requestid>809383</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39e30df05ae5853e33f83e50ce2404cc</srcmd5>
+    <version>0.9.14</version>
+    <time>1642455230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.14:
+  * Declare python 3.5 requirement in setup.py.
+  * Drop various other python2 helpers, test on newer versions of Python.</comment>
+    <requestid>946659</requestid>
+  </revision>
 </revisionlist>

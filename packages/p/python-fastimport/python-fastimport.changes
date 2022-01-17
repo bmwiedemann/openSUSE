@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:07:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.14:
+  * Declare python 3.5 requirement in setup.py.
+  * Drop various other python2 helpers, test on newer versions of Python.
+
+-------------------------------------------------------------------
 Tue May 26 06:34:12 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
