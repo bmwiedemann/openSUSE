@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 14:33:59 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Remove "Provides: perl-Inline-C"
+  Inline::C got split out alraedy in version 0.57 in 2014
+  https://metacpan.org/dist/Inline/changes#L114
+
+-------------------------------------------------------------------
 Fri Jan 10 03:07:43 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.86
