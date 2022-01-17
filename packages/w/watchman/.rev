@@ -102,4 +102,12 @@
     <comment>- remove instance units from post scripts, they can not be reloaded (forwarded request 946280 from olh)</comment>
     <requestid>946365</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>2a51dbe2681c4df15b9c636285654953</srcmd5>
+    <version>unknown</version>
+    <time>1642455265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947014</requestid>
+  </revision>
 </revisionlist>

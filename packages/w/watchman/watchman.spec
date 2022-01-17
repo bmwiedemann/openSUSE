@@ -220,13 +220,27 @@ install -m 644 %{SOURCE5} %{buildroot}/%{docdir}/README.suse
 # python bindings, actually
 %{_bindir}/watchman-*
 
+%pre
+%service_add_pre %{name}@.socket %{name}@.service
+
 %post
-%service_add_post
+# NOTE: when updating a warning is printed:
+#
+# Failed to try-restart watchman@s*: Unit name watchman@s* is not valid
+#
+# A similar warning is emitted during uninstall
+#
+# This seems to be an error in the generic systemd macros, they're not dealing
+# correctly with template unit files.
+%service_add_post %{name}@.socket %{name}@.service
 # to initially create the statedir without reboot
 # NOTE: This macro is not available in older versions of systemd-rpm-macros,
 %tmpfiles_create %{tmpfile_conf}
 
+%preun
+%service_del_preun %{name}@.socket %{name}@.service
+
 %postun
-%service_del_postun
+%service_del_postun %{name}@.socket %{name}@.service
 
 %changelog
