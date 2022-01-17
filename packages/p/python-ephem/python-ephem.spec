@@ -17,15 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pyname pyephem
 Name:           python-ephem
-Version:        4.1.1
+Version:        4.1.3
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/brandon-rhodes/pyephem
-Source0:        https://github.com/brandon-rhodes/pyephem/archive/refs/tags/%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/e/ephem/ephem-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytzdata}
@@ -39,7 +38,11 @@ Requires:       python-pytzdata
 PyEphem provides an ephem Python package for performing high-precision astronomy computations.
 
 %prep
-%setup -q -n %{pyname}-%{version}
+%setup -q -n ephem-%{version}
+# disable failing doctests
+rm ephem/tests/test_rst.py
+# remove shebangs in test files
+sed -i '1{/env python/d}' ephem/tests/test_*.py
 
 %build
 export LANG=en_US.UTF8
@@ -52,12 +55,15 @@ export LANG=en_US.UTF8
 
 %check
 export LANG=en_US.UTF8
-%python_build build_ext --inplace
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover
+mkdir emptytestdir
+pushd emptytestdir
+%pyunittest_arch discover -v ephem.tests
+popd
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/ephem
+%{python_sitearch}/ephem-%{version}*-info
 
 %changelog

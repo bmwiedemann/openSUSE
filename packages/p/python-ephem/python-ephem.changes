@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 17 20:46:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.3
+  * Fixed an inadvertent loss of precision in the routine that
+    computes a date’s hours, minutes, and seconds.  It was
+    sometimes returning a small negative number of seconds, which
+    caused Python’s `datetime` type to complain `ValueError: second
+    must be in 0..59`.
+- Release 4.1.2
+  * Fixed the new rising and setting routines so they properly
+    detect if a body is always below the horizon and raise a
+    NeverUpError instead of a plain ValueError.
+  * Gave bodies a new ha Hour Angle attribute, since the quantity
+    was computed internally but then discarded.
+  * Renamed the observer attribute temp to temperature, leaving an
+    alias behind to support the old spelling.
+
+-------------------------------------------------------------------
 Mon Jan 17 20:30:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:
