@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 13 10:09:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14.0
+  * Refresh while serving (#518).
+  * Enabled commandline option skip uncached (#515)
+  * Several dependencies updated
+  * Support for python 3.5 has been dropped because of its EOL, 3.9
+    has been added
+  * Several minor bugfixes
+  * Security fix to avoid potential web cache poisoning.
+- Remove -devel and pkgconfig build dependencies: This is a pure
+  python package not using any headers
+
+-------------------------------------------------------------------
 Sat Jul 24 11:30:53 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 1.13.2

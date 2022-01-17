@@ -1,7 +1,7 @@
 #
 # spec file for package python-MapProxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
 Name:           python-MapProxy
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 Summary:        Proxy for geospatial data
 License:        Apache-2.0
@@ -36,11 +36,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  geos-devel
-BuildRequires:  hdf5-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(gdal)
-BuildRequires:  pkgconfig(proj)
 %if %{with test}
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module Shapely}
@@ -66,6 +62,7 @@ Requires:       python-PyYAML
 Requires:       python-Shapely
 Requires:       python-gdal
 Requires:       python-lxml
+Requires:       (python3-pyproj if proj > 5)
 Recommends:     python-Paste
 Recommends:     python-Werkzeug
 Recommends:     python-boto3
@@ -77,10 +74,6 @@ Recommends:     python-redis
 Recommends:     python-requests
 Recommends:     python-riak
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-mapproxy < %{version}
-Provides:       %{oldpython}-mapproxy = %{version}
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
@@ -124,8 +117,6 @@ donttest+=" or TestRedisCache"
 donttest+=" or test_https_"
 # off by one error capturing the execptions
 donttest+=" or test_bad_config_geopackage_"
-# new geotif and jpeg are bogue
-donttest+=" or test_geotiff_tags"
 %pytest mapproxy -ra -k "not ($donttest)"
 
 %files %{python_files}
