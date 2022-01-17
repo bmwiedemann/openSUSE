@@ -1,7 +1,7 @@
 #
 # spec file for package lalinspiral
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,12 @@
 %define shlib lib%{name}16
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
+# Py2 dropped by upstream
+%define skip_python2 1
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalinspiral
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
@@ -117,7 +119,7 @@ This package provides the necessary files for using LAL Inspiral with octave.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=$python
 mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build
