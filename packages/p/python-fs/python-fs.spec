@@ -1,7 +1,7 @@
 #
 # spec file for package python-fs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-fs
-Version:        2.4.13
+Version:        2.4.14
 Release:        0
 Summary:        Python's filesystem abstraction layer
 License:        MIT
@@ -29,6 +29,7 @@ URL:            https://github.com/PyFilesystem/pyfilesystem2
 Source:         https://files.pythonhosted.org/packages/source/f/fs/fs-%{version}.tar.gz
 BuildRequires:  %{python_module appdirs >= 1.4.3}
 BuildRequires:  %{python_module enum34 >= 1.1.6 if %python-base < 3.4}
+BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pysendfile}

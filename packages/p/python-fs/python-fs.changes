@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:54:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.14:
+  * Added `fs.copy.copy_file_if`, `fs.copy.copy_dir_if`, and `fs.copy.copy_fs_if`.
+  * Added `fs.base.FS.getmodified`.
+  * FTP servers that do not support the MLST command now try to use the MDTM
+    command to retrieve the last modification timestamp of a resource.
+  * Fixed performance bugs in `fs.copy.copy_dir_if_newer`. Test cases were
+    adapted to catch those bugs in the future.
+  * Fixed precision bug for timestamps in `fs.OSFS.setinfo`.
+
+-------------------------------------------------------------------
 Fri Apr 16 13:02:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.13
