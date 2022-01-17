@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipykernel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-ipykernel
-# Note: Don't update to > 6.4 until you can update traitlets 4, which is required for python36
-Version:        6.4.2
+Version:        6.7.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -36,12 +34,11 @@ BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyter-client
 Requires:       python-debugpy >= 1.0
 Requires:       python-ipython >= 7.23.1
-Requires:       python-ipython_genutils
 Requires:       python-jupyter-client
 Requires:       python-jupyter-core
 Requires:       python-matplotlib-inline >= 0.1
 Requires:       python-tornado >= 4.2
-Requires:       python-traitlets >= 4.1.0
+Requires:       python-traitlets >= 5.1.0
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       %{python_module ipykernel-doc = %{version}}
@@ -59,15 +56,12 @@ Obsoletes:      jupyter-ipykernel < %{version}-%{release}
 BuildRequires:  %{python_module debugpy >= 1.0.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 7.23.1}
-BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module matplotlib-inline >= 0.1}
-# still using nose streams from ipython, but they are working on a removal
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 4.2}
-BuildRequires:  %{python_module traitlets >= 4.1.0}
+BuildRequires:  %{python_module traitlets >= 5.1.0}
 # /SECTION
 # typing is only built-in for later versions of python
 %if 0%{?suse_version} <= 1320
@@ -105,7 +99,7 @@ $python -m ipykernel install \
 %fdupes  %{buildroot}%{_jupyter_kernel_dir}
 
 %check
-%pytest -ra
+%pytest ipykernel
 
 %files %{python_files}
 %doc README.md

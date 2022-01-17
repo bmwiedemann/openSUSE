@@ -175,4 +175,32 @@
   * Add python version classifiers #783 (@emuccino)</comment>
     <requestid>941537</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b1672f7d3e1eab493003486f44e2d1cb</srcmd5>
+    <version>6.7.0</version>
+    <time>1642455228</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup specfile
+- Update dependency declarations
+- Update to 6.7.0:
+  - PR: do_one_iteration is a coroutine
+  - Clean python 2 artifacts. Fix
+  - Fix title position in changelog
+  - Set debugOptions for breakpoints in python standard library
+    source
+  - Send omit_sections to IPython to choose which sections of
+    documentation you do not want
+  - Added missing exceptionPaths field to debugInfo reply
+  - Test jupyter_kernel_test as downstream
+  - Remove nose dependency
+  - Add explicit encoding to open calls in debugger
+  - Fix the temp file name created by the debugger
+  - Enforce labels on PRs
+  - Unpin IPython, and remove some dependencies on it.
+  - Fix rich variables inspection
+  - Do not call setQuitOnLastWindowClosed() on a QCoreApplication
+  - Drop ipython_genutils requirement
+</comment>
+    <requestid>946634</requestid>
+  </revision>
 </revisionlist>

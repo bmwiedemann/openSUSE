@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jan 15 14:59:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Cleanup specfile
+- Update dependency declarations
+
+-------------------------------------------------------------------
+Fri Jan 14 17:29:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.7.0:
+  - PR: do_one_iteration is a coroutine
+  - Clean python 2 artifacts. Fix
+  - Fix title position in changelog
+  - Set debugOptions for breakpoints in python standard library
+    source
+  - Send omit_sections to IPython to choose which sections of
+    documentation you do not want
+  - Added missing exceptionPaths field to debugInfo reply
+  - Test jupyter_kernel_test as downstream
+  - Remove nose dependency
+  - Add explicit encoding to open calls in debugger
+  - Fix the temp file name created by the debugger
+  - Enforce labels on PRs
+  - Unpin IPython, and remove some dependencies on it.
+  - Fix rich variables inspection
+  - Do not call setQuitOnLastWindowClosed() on a QCoreApplication
+  - Drop ipython_genutils requirement
+
+-------------------------------------------------------------------
 Sun Dec 19 19:59:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.4.2
