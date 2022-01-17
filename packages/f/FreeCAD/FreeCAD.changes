@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 17:27:24 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.3:
+  * Lots of bugfixes, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.19.3
+
+-------------------------------------------------------------------
 Sun Jun 27 21:27:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace the QtWebKit build dependency with QtWebEngine.

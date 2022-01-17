@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@
 %bcond_with    boost_signals2
 %endif
 %bcond_with    smesh_external
+%bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.19.2
+Version:        0.19.3
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -90,8 +91,8 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5ScriptTools)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 Requires:       python3-numpy
 Requires:       python3-pyside2
