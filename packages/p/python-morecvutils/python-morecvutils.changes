@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 16 16:32:59 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- The buildservice doesn't use the coveralls package
+- Clean some script-interpreter issues reported by rpmlint
+
+-------------------------------------------------------------------
 Wed Apr 28 02:40:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Convert to singlespec, due to opencv doing the same. 

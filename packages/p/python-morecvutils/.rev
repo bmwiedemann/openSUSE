@@ -23,4 +23,12 @@
     <comment>- Convert to singlespec, due to opencv doing the same.</comment>
     <requestid>888897</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>26da5a6e732383c080c465164661b965</srcmd5>
+    <version>1.0.2</version>
+    <time>1642455247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946887</requestid>
+  </revision>
 </revisionlist>

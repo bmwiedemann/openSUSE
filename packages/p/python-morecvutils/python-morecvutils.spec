@@ -1,7 +1,7 @@
 #
 # spec file for package python-morecvutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         pythons python3
 Name:           python-morecvutils
 Version:        1.0.2
@@ -37,7 +37,6 @@ Requires:       python-numpy
 Requires:       python-opencv
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module imageio-ffmpeg}
 BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module numpy}
@@ -55,12 +54,21 @@ and AVI codec helpers.
 
 %prep
 %setup -q -n morecvutils-%{version}
+# no main section: no interpreter
+sed -i '1{/env python/d}' morecvutils/calcOptFlow.py
+# remove executable bits from Demo files
+chmod -x Demo* OpticalFlow_Python_vs_Matlab.py
 
 %build
 %python_build
 
 %install
 %python_install
+%{python_expand # main section present: make executable and patch shebang
+chmod +x %{buildroot}%{$python_sitelib}/morecvutils/getaviprop.py
+sed -i '1{s/env python.*/$python/}' %{buildroot}%{$python_sitelib}/morecvutils/getaviprop.py
+}
+%{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Don't put demos in bindir
@@ -76,6 +84,7 @@ rm %{buildroot}%{_bindir}/OpticalFlow_Python_vs_Matlab.py
 %doc Demo*
 %doc OpticalFlow_Python_vs_Matlab.py
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/morecvutils
+%{python_sitelib}/morecvutils-%{version}*-info
 
 %changelog
