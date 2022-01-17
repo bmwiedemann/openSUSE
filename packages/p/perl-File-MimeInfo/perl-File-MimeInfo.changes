@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  7 03:08:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-File-MimeInfo/Changes
+
+-------------------------------------------------------------------
 Tue Oct 27 10:47:45 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Add shared-mime-info dependency to cpanspec.yml
