@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-BigInt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt
 Name:           perl-Math-BigInt
-Version:        1.999827
+Version:        1.999829
 Release:        0
 Summary:        Arbitrary size integer/float math package
 License:        Artistic-1.0 OR GPL-1.0-or-later

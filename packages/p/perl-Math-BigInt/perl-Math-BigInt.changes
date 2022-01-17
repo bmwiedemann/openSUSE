@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan  1 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999829
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999829 2021-12-29
+   * Improve methods div_scale() and round_mode() so they work better with
+     subclasses. This fixes CPAN RT #125430.
+   * Make div_scale() accept a Math::Big(Int|Float|Rat) object as input. This
+     fixes CPAN RT #140599.
+  1.999828 2021-12-17
+   * Add new methods numerator(), denominator(), and fparts().
+   * Fix bug in to_ieee754(). Avoid that the significand overflows.
+   * Improve bpow(). Avoid unnecessary upgrading.
+   * Fix typos and improve wording.
+
+-------------------------------------------------------------------
 Mon Oct  4 03:08:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999827
