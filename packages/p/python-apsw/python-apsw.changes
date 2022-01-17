@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 17 20:40:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.37.0-r1:
+  * Allow breaking of reference cycles between objects that contain a
+    Connection or Cursor 
+  * Fixed custom VFS extension loading failure could leave the error message
+    unterminated
+  * Updated size of mutex array used by the fork checker
+  * Connections are opened with SQLITE_OPEN_EXRESCODE so open errors will also
+    include extended result codes
+  * Connection.changes() and Connection.totalchanges() use the new SQLite APIs
+    that return 64 bit values
+  * Added Connection.autovacuum_pages()
+  * Implemented Connection.serialize() and Connection.deserialize().
+  * Allow any subclass of VFS to implement WAL, not just direct subclasses
+
+-------------------------------------------------------------------
 Fri Jun 25 06:20:00 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.35.4-r1:

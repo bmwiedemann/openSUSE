@@ -1,7 +1,7 @@
 #
 # spec file for package python-apsw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define tarver  3.35.4-r1
+%define tarver  3.37.0-r1
 Name:           python-apsw
-Version:        3.35.4_r1
+Version:        3.37.0
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib

@@ -114,4 +114,24 @@
 </comment>
     <requestid>909441</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>533dbcdc53ef9fb474b1985cde347f02</srcmd5>
+    <version>3.37.0</version>
+    <time>1642455272</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.37.0-r1:
+  * Allow breaking of reference cycles between objects that contain a
+    Connection or Cursor 
+  * Fixed custom VFS extension loading failure could leave the error message
+    unterminated
+  * Updated size of mutex array used by the fork checker
+  * Connections are opened with SQLITE_OPEN_EXRESCODE so open errors will also
+    include extended result codes
+  * Connection.changes() and Connection.totalchanges() use the new SQLite APIs
+    that return 64 bit values
+  * Added Connection.autovacuum_pages()
+  * Implemented Connection.serialize() and Connection.deserialize().
+  * Allow any subclass of VFS to implement WAL, not just direct subclasses</comment>
+    <requestid>947056</requestid>
+  </revision>
 </revisionlist>
