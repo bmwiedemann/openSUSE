@@ -1,7 +1,7 @@
 #
 # spec file for package lalframe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,14 @@
 
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
+# Py2 support dropped by upstream
+%define skip_python2 1
+
 %define shlib lib%{name}11
 # No support for octave >= 6
 %bcond_with octave
 Name:           lalframe
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
@@ -92,7 +95,7 @@ This package provides the necessary files for using LAL Frame with octave.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run configure with multiple py3 flavours
 export PYTHON=$python
 mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build
