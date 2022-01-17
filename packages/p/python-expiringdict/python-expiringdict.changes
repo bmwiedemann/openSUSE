@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 16 16:02:53 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Don't check coverage
+- Extend remove-nose.patch to also remove mock
+
+-------------------------------------------------------------------
 Mon Dec  6 05:27:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-nose.patch:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-expiringdict
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-expiringdict
 Version:        1.2.1
 Release:        0
@@ -34,9 +35,6 @@ Requires:       python-dill
 Requires:       python-typing
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module coveralls}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

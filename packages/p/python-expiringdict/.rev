@@ -16,4 +16,12 @@
   * Use generic assert methods rather than nose methods.</comment>
     <requestid>935878</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>28a8dc39198ba46bf24b960667148833</srcmd5>
+    <version>1.2.1</version>
+    <time>1642455244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946885</requestid>
+  </revision>
 </revisionlist>
