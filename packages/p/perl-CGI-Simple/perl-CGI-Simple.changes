@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 12 03:06:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.280
+   see /usr/share/doc/packages/perl-CGI-Simple/Changes
+
+  1.280 2022-01-11 MANWAR
+        - Changed the version format from N.nn to N.nnn as requested.
+
+  1.27  2022-01-06 MANWAR
+        - Removed unneeded Build.PL #11, thanks @haarg.
+        - Moved prereqs to correct phase #12, thanks @haarg.
+
+  1.26  2022-01-02 MANWAR
+        - Dropped IO::Scalar prereq as suggested in PR #10, thanks @haarg.
+
+-------------------------------------------------------------------
 Tue Feb 11 03:07:31 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.25
