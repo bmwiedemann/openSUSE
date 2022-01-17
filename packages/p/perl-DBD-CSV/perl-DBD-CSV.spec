@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-CSV
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name DBD-CSV
 Name:           perl-DBD-CSV
-Version:        0.58
+Version:        0.59
 Release:        0
 Summary:        DBI driver for CSV files
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(DBD::File) >= 0.42
 BuildRequires:  perl(DBI) >= 1.628
 BuildRequires:  perl(SQL::Statement) >= 1.405
-BuildRequires:  perl(Test::More) >= 0.9
+BuildRequires:  perl(Test::More) >= 0.90
 BuildRequires:  perl(Text::CSV_XS) >= 1.01
 Requires:       perl(DBD::File) >= 0.42
 Requires:       perl(DBI) >= 1.628
@@ -41,8 +41,7 @@ Requires:       perl(Text::CSV_XS) >= 1.01
 Recommends:     perl(DBD::File) >= 0.44
 Recommends:     perl(DBI) >= 1.643
 Recommends:     perl(SQL::Statement) >= 1.414
-Recommends:     perl(Test::More) >= 1.302183
-Recommends:     perl(Text::CSV_XS) >= 1.45
+Recommends:     perl(Text::CSV_XS) >= 1.47
 %{perl_requires}
 
 %description
