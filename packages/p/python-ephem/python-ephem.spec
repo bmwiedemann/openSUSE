@@ -1,7 +1,7 @@
 #
 # spec file for package python-ephem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pyname pyephem
 Name:           python-ephem
-Version:        3.7.7.1
+Version:        4.1.1
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
-License:        LGPL-3.0-only
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/brandon-rhodes/pyephem
-Source0:        https://github.com/brandon-rhodes/pyephem/archive/v%{version}.tar.gz
+Source0:        https://github.com/brandon-rhodes/pyephem/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pytzdata
 %python_subpackages
 
 %description
@@ -54,7 +56,7 @@ export LANG=en_US.UTF8
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover
 
 %files %{python_files}
-%license LICENSE-LGPL LICENSE-GPL
+%license LICENSE
 %doc README.rst
 %{python_sitearch}/*
 

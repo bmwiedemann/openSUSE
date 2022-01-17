@@ -35,4 +35,41 @@
   and Earth satellite catalog number.</comment>
     <requestid>835116</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>170d6854fda77772b5042a6e1652e917</srcmd5>
+    <version>4.1.1</version>
+    <time>1642455273</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  * When you provide PyEphem with a Python ``datetime`` that has a time
+  zone attached, PyEphem now detects the time zone and converts the date
+  and time to UTC automatically.
+  * A new search routine had been written and tested
+  to power the :ref:`transit-rising-setting` methods
+  ``previous_rising()``,
+  ``previous_setting()``,
+  ``next_rising()``, and
+  ``next_setting()``.
+  They should no longer be susceptible to getting hung up in a loop.
+  You should also find them substantially faster.
+  * Fixed the ``constellation()`` routine so that it uses astrometric,
+  rather than apparent, right ascension and declination.  This should
+  make it more accurate along the borders of each constellation.
+  * Fixed how the underlying “libastro” library computes whether a body’s
+  image is deflected by gravity when its light passes close to the Sun.
+  Previously, users would see coordinates jump unexpectedly as the
+  deflection formula turned on and off haphazardly.
+  * Fixed the star positions in the ``ephem.stars`` star catalog by adding
+  8.75 years of proper motion to each star.  Previously, each 1991.25
+  position from the Hipparcos catalog was being incorrectly treated as a
+  2000.0 position.
+  * A new routine ``unrefract()`` lets you compute the real altitude
+  of a body that you observe in the sky at a given apparent altitude.
+  * The old ``cities.lookup()`` function is now officially deprecated.
+  Because of a Google API restriction, it stopped working in 2018.
+  * Planetary moon positions are now available through the year 2040
+  (previously, asking for a position past 2020 returned zeroes).
+  * The ``Date`` object is improved such that the return values of</comment>
+    <requestid>947053</requestid>
+  </revision>
 </revisionlist>
