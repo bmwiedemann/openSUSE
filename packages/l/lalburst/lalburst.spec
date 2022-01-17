@@ -1,7 +1,7 @@
 #
 # spec file for package lalburst
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        1.5.8
+Version:        1.5.10
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later
@@ -49,7 +49,7 @@ BuildRequires:  swig >= 3.0.10
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(lal) >= 7.1.0
 BuildRequires:  pkgconfig(lalmetaio) >= 2.0.0
-BuildRequires:  pkgconfig(lalsimulation) >= 2.5.0
+BuildRequires:  pkgconfig(lalsimulation) >= 3.0.0
 Requires:       python-glue
 Requires:       python-lal >= 7.1.0
 Requires:       python-lalmetaio >= 2.0.0
@@ -114,7 +114,7 @@ This package provides the necessary files for using LAL Burst with octave.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=$python
 mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build

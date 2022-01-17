@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  3 00:06:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.10:
+  * No release notes.
+- Update minimum version of lalsimulation in BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jan  2 22:53:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix a comment to avoid macro expansion leading to build failures
+  on Leap 15.x.
+
+-------------------------------------------------------------------
 Mon Mar  1 23:50:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.8 (no release notes).
