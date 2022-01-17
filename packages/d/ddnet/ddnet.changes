@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:58:41 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 15.8.1
+  * [Client] Support GUI/Cmd key and use it as equivalent to Ctrl
+    in default shortcuts
+  * [Client] Add cl_run_on_join to set command to execute when
+    joining server (e.g. "showall 1")
+  * [Client] Fix Unicode path/link/argument handling
+  * [Client] Remove ping filter in serverbrowser
+  * [Client] Adopt vanilla scrollbar colors and sizes
+  * [Client] Center timer in HUD
+  * [Client] Add buttons to open settings file and config directory
+  * [Client] Lower worst/best case frame time calculations
+  * [Client] Fix text selection cursor position after moving window
+    to different screen or resizing
+  * [Client] Support cl_video_show_direction 2 to show your own key
+    presses when recording
+  * [Client] Remove gfx_asyncrender_old on macOS to crash less when
+    resizing/moving window
+  * [Editor] No wasd moving when dialog is open
+  * [Editor] Fix enter behavior when creating new folder
+  * [Editor] Fix save typing when server settings are open
+  * [All] Skip UTF-8 BOM on all read text files
+  * [All] Add console_enable_colors 0 to turn off colors
+  * [All] Use dbg_asserts in Release builds again
+  * [Server] Don't shut down server when SQL queries haven't
+    finished
+  * [Server] More fixes for /swap
+  * [Server] Make /rescue handle switch freeze too
+  * [Server] Consider initial chat delays as normal mutes,
+    implement unmuteid
+  * [Server] Fix badly cut-off user names when name is too long
+  * [Server] Fix crash with switchers
+  * [Server] Don't clear client version on map change
+  * [Server] Some fixes for super
+  * [Server] Add target clientid to antibot's OnHammerHit
+
+-------------------------------------------------------------------
 Sun Nov 28 06:13:49 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 15.7
