@@ -48,6 +48,12 @@ BuildEngine: podman
 # KUBEVIRTFROM is passed to container Dockerfiles using the --build-arg option, e.g.
 # docker build --build-arg KUBEVIRTFROM=opensuse/tumbleweed ...
 BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
+%ifarch aarch64
+BuildFlags: dockerarg:TARGETARCH=arm64
+%endif
+%ifarch x86_64
+BuildFlags: dockerarg:TARGETARCH=amd64
+%endif
 %endif
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:zSystems"
 Repotype: none
@@ -915,6 +921,7 @@ Prefer: -rdma-core-devel-32bit
 Prefer: -readline-devel-32bit                         
 Prefer: -readline5-devel-32bit                        
 Prefer: -readline6-devel-32bit                        
+Prefer: -samba-devel-32bit
 Prefer: -sane-backends-devel-32bit                    
 Prefer: -solid-devel-32bit                            
 Prefer: -sonnet-devel-32bit                           
@@ -1484,7 +1491,7 @@ Macros:
 # END PYTHON STUFF
 
 # BEGIN RUST STUFF 
-Prefer: cargo1.57 cargo1.56 -cargo1.55 -cargo1.53 -cargo1.54
+Prefer: cargo1.58
 
 # Define the architectures in which Rust (and Rust crates) are available
 # NOTE: Keep this in sync with rust-srpm-macros!
