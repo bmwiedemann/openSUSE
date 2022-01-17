@@ -132,4 +132,14 @@
 </comment>
     <requestid>942993</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>48683d375ea7fc229d3a1fb66c7bc136</srcmd5>
+    <version>3.2.1</version>
+    <time>1642455230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  - Add support for Django 3.2
+  - Do not override signals receivers registered in a :meth:`~factory.django.mute_signals` context.</comment>
+    <requestid>946656</requestid>
+  </revision>
 </revisionlist>

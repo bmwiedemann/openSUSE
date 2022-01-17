@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:04:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  - Add support for Django 3.2
+  - Do not override signals receivers registered in a :meth:`~factory.django.mute_signals` context.
+
+-------------------------------------------------------------------
 Tue Dec 28 22:54:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR typing_extensions
