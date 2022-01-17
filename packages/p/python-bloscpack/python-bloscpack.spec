@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
-%define skip_python36 1
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-bloscpack
 Version:        0.16.0
 Release:        0
@@ -43,23 +42,12 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module blosc}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module cryptography >= 1.3.4}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module twine}
-BuildRequires:  %{python_module wheel}
-%if %{with python2}
-BuildRequires:  python-ipaddress
-%endif
 # /SECTION
-%ifpython2
-Requires:       python-ipaddress
-%endif
 %python_subpackages
 
 %description
@@ -99,6 +87,7 @@ export LANG=en_US.UTF-8
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/blpk
-%{python_sitelib}/*
+%{python_sitelib}/bloscpack
+%{python_sitelib}/bloscpack-%{version}*-info
 
 %changelog

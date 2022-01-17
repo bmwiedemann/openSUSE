@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 16 16:12:38 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove unused coverage packages from dependencies
+- Skip python2 builds, remove mock dependency.
+  * (unused, not testing due to still no release despite
+    gh#Blosc/bloscpack#103)
+
+-------------------------------------------------------------------
 Wed Apr 21 04:17:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
