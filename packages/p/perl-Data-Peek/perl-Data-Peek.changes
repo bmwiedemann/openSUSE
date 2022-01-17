@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  2 03:06:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-Data-Peek/ChangeLog
+
+  0.51	- 2022-01-01, H.Merijn Brand   <hmbrand@cpan.org>
+      * It's 2021
+      * Update to Devel::PPPort-3.63
+      * It's 2022
+
+-------------------------------------------------------------------
 Tue Dec 22 03:06:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.50

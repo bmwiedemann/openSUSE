@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Peek
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,23 @@
 #
 
 
-Name:           perl-Data-Peek
-Version:        0.50
-Release:        0
 %define cpan_name Data-Peek
+Name:           perl-Data-Peek
+Version:        0.51
+Release:        0
 Summary:        Collection of low-level debug facilities
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.9
+BuildRequires:  perl(Test::More) >= 0.90
 BuildRequires:  perl(Test::Warnings)
 Requires:       perl(Test::More) >= 0.9
 Requires:       perl(Test::Warnings)
-Recommends:     perl(Data::Dumper) >= 2.174
+Recommends:     perl(Data::Dumper) >= 2.183
 Recommends:     perl(Perl::Tidy)
-Recommends:     perl(Test::More) >= 1.302183
 %{perl_requires}
 
 %description
@@ -45,11 +42,11 @@ utilities that no other module provided yet, using the lowest level of the
 perl internals API as possible.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -60,7 +57,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog CONTRIBUTING.md examples README
 
 %changelog
