@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:11:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.28.5:
+  * make sure all occurrences of str() are now replaced with user-defined ntos
+  * refactored code into submodules, plus several bugfixes and improvements
+  * Merge GDEF marksets in Lookups properly
+  * Have fontTools feaLib script exit with error code when build fails
+  * Added ntos option to customize number formatting
+  * Speed up subsetting of large CFF fonts 
+  * Speculatively promote lookups to extension to speed up compilation
+
+-------------------------------------------------------------------
 Wed Dec 15 10:20:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove curves.json now included in the GitHub archive
