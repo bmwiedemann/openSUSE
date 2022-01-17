@@ -1791,6 +1791,7 @@ unsorted:
   - cargo1.55 
   - cargo1.56 
   - cargo1.57 
+  - cargo1.58 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -7759,7 +7760,6 @@ unsorted:
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
   - jupyter-nbformat 
-  - jupyter-nbinteract 
   - jupyter-notebook 
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
@@ -13879,7 +13879,6 @@ unsorted:
   - libstrophe-devel 
   - libstrophe0 
   - libsubid-devel 
-  - libsubid3 
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
@@ -15999,7 +15998,6 @@ unsorted:
   - metallb-speaker: [x86_64] 
   - metamath 
   - metamath-book 
-  - metamath-data 
   - metatheme-adapta-common 
   - metatheme-ambiance-common 
   - metatheme-ambiant-mate-common 
@@ -21367,6 +21365,7 @@ unsorted:
   - python3-fife 
   - python3-fityk 
   - python3-freezerclient 
+  - python3-fritzconnection 
   - python3-futurist 
   - python3-gcemetadata 
   - python3-gdcm 
@@ -21982,7 +21981,7 @@ unsorted:
   - python310-av 
   - python310-avahi 
   - python310-avro 
-  - python310-awkward: [i586] 
+  - python310-awkward 
   - python310-awpa 
   - python310-aws-sam-translator 
   - python310-aws-xray-sdk 
@@ -22487,8 +22486,10 @@ unsorted:
   - python310-csv23 
   - python310-csvkit 
   - python310-ctypescrypto 
+  - python310-cu2qu 
   - python310-cufflinks 
   - python310-curio 
+  - python310-curlylint 
   - python310-curses 
   - python310-curtsies 
   - python310-cwcwidth 
@@ -22742,6 +22743,7 @@ unsorted:
   - python310-fedora-messaging 
   - python310-feedgen 
   - python310-feedgenerator 
+  - python310-ffmpeg-python 
   - python310-fido2 
   - python310-fields 
   - python310-filelock 
@@ -22796,7 +22798,6 @@ unsorted:
   - python310-freeipa 
   - python310-freetype-py 
   - python310-freezegun 
-  - python310-fritzconnection 
   - python310-frozendict 
   - python310-frozenlist 
   - python310-fs 
@@ -23519,6 +23520,7 @@ unsorted:
   - python310-pluggy 
   - python310-pluginbase 
   - python310-ply 
+  - python310-plyvel 
   - python310-pmw 
   - python310-pname 
   - python310-podcastparser 
@@ -23742,6 +23744,7 @@ unsorted:
   - python310-pyparsing 
   - python310-pyperclip 
   - python310-pyperf 
+  - python310-pypet 
   - python310-pypi-search 
   - python310-pypipegraph 
   - python310-pypiserver 
@@ -23754,6 +23757,7 @@ unsorted:
   - python310-pypuppetdb 
   - python310-pyqt-builder 
   - python310-pyquery 
+  - python310-pyquil: [i586] 
   - python310-pyrad 
   - python310-pyramid 
   - python310-pyramid-chameleon 
@@ -23904,6 +23908,7 @@ unsorted:
   - python310-python-engineio 
   - python310-python-fedora 
   - python310-python-for-android 
+  - python310-python-gammu 
   - python310-python-gflags 
   - python310-python-gitlab 
   - python310-python-gnupg 
@@ -23915,6 +23920,7 @@ unsorted:
   - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
   - python310-python-lsp-server 
+  - python310-python-lzo 
   - python310-python-magic 
   - python310-python-memcached 
   - python310-python-mimeparse 
@@ -24090,6 +24096,7 @@ unsorted:
   - python310-roifile 
   - python310-roman 
   - python310-rope 
+  - python310-rpcq: [i586] 
   - python310-rply 
   - python310-rpm 
   - python310-rpmfile 
@@ -24312,6 +24319,7 @@ unsorted:
   - python310-systemd 
   - python310-tableauserverclient 
   - python310-tableprint 
+  - python310-tables 
   - python310-tablib 
   - python310-tabpy 
   - python310-tabulate 
@@ -24446,7 +24454,7 @@ unsorted:
   - python310-unsync 
   - python310-untokenize 
   - python310-unyt 
-  - python310-uproot: [i586] 
+  - python310-uproot 
   - python310-uritemplate 
   - python310-uritools 
   - python310-url-normalize 
@@ -24653,7 +24661,6 @@ unsorted:
   - python36-coverage-env-plugin 
   - python36-coveralls 
   - python36-css-parser 
-  - python36-curlylint 
   - python36-curses 
   - python36-dbm 
   - python36-demjson 
@@ -24684,7 +24691,6 @@ unsorted:
   - python36-ephem 
   - python36-expiringdict 
   - python36-feedparser 
-  - python36-ffmpeg-python 
   - python36-flask-restx 
   - python36-flufl.lock 
   - python36-gast 
@@ -24693,7 +24699,6 @@ unsorted:
   - python36-google-pasta 
   - python36-idle 
   - python36-jirafs 
-  - python36-jsonlib-python3 
   - python36-labelImg 
   - python36-librouteros 
   - python36-limnoria 
@@ -24711,16 +24716,13 @@ unsorted:
   - python36-pip-licenses 
   - python36-pipdeptree 
   - python36-plumbum 
-  - python36-plyvel 
   - python36-podman 
   - python36-pony 
   - python36-pysvn 
   - python36-pytest-parallel 
   - python36-python-crfsuite 
   - python36-python-datamatrix 
-  - python36-python-gammu 
   - python36-python-jsonschema-objects 
-  - python36-python-lzo 
   - python36-python-multipart 
   - python36-python-prctl 
   - python36-python-qdatamatrix 
@@ -25916,7 +25918,6 @@ unsorted:
   - python38-freeipa 
   - python38-freetype-py 
   - python38-freezegun 
-  - python38-fritzconnection 
   - python38-frozendict 
   - python38-ftfy 
   - python38-ftputil 
@@ -26159,8 +26160,6 @@ unsorted:
   - python38-json_tricks 
   - python38-jsondate 
   - python38-jsondiff 
-  - python38-jsonextended 
-  - python38-jsonlib-python3 
   - python38-jsonlines 
   - python38-jsonpatch: [i586] 
   - python38-jsonpath-ng 
@@ -26417,7 +26416,6 @@ unsorted:
   - python38-nbdime 
   - python38-nbformat 
   - python38-nbindex-jupyter 
-  - python38-nbinteract 
   - python38-nbsmoke 
   - python38-nbsphinx 
   - python38-nbsphinx-link 
@@ -28923,7 +28921,6 @@ unsorted:
   - python39-freeipa 
   - python39-freetype-py 
   - python39-freezegun 
-  - python39-fritzconnection 
   - python39-frozendict 
   - python39-frozenlist 
   - python39-fs 
@@ -29196,8 +29193,6 @@ unsorted:
   - python39-json_tricks 
   - python39-jsondate 
   - python39-jsondiff 
-  - python39-jsonextended 
-  - python39-jsonlib-python3 
   - python39-jsonlines 
   - python39-jsonpatch 
   - python39-jsonpath-ng 
@@ -29472,7 +29467,6 @@ unsorted:
   - python39-nbdime 
   - python39-nbformat 
   - python39-nbindex-jupyter 
-  - python39-nbinteract 
   - python39-nbsmoke 
   - python39-nbsphinx 
   - python39-nbsphinx-link 
@@ -32155,6 +32149,7 @@ unsorted:
   - rust1.55 
   - rust1.56 
   - rust1.57 
+  - rust1.58 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
