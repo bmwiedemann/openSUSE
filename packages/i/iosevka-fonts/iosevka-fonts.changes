@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 10 04:51:06 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v11.2.6
+  * Changes of version 11.2.6
+    = Fix variant selection of CIRCLED ZERO WITH SLASH (U+1F10D)
+      (#1274).
+
+-------------------------------------------------------------------
 Sat Jan  8 12:35:36 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.2.5
