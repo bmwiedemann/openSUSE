@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 15 06:10:06 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.4:
+  * change: windows: upgraded to GTK 3.24.31
+  * bugfix: #1956185 dates not accepting 2 digit year
+  * bugfix: #1955984 homebank cannot import its own CSV exports
+  * bugfix: #1955046 statistics time csv subcategory export fail
+  * bugfix: #1954017 QIF import uncheck similar txn with
+    different category
+  * bugfix: #1947931 vehicle cost CSV output incorrect values
+    in km/l column
+  * bugfix: #1945715 windows: update currency return
+    'unaccaceptable TLS certificate'
+  * bugfix: #1942494 statistics "total" percentage breakdown
+    incorrect
+  * bugfix: #1940103 (null) is shown in dialog when deleting
+    a template/scheduled
+  * bugfix: #1919063 windows: scaling in 'Top Spending' text
+    too big in UHD 3840 x 2160
+  * bugfix: #1801655 windows: button order for GtkAssistant
+    import is confusing 
+
+-------------------------------------------------------------------
 Tue Aug 10 17:47:42 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.3:

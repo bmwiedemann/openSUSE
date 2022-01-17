@@ -1,7 +1,7 @@
 #
 # spec file for package homebank
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.5.3
+Version:        5.5.4
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
