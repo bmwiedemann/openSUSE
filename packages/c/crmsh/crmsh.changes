@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 17 03:11:42 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220117.3debc274 (tag:4.4.0-rc1):
+  * Fix: adapt report to pacemaker daemon name change
+
+-------------------------------------------------------------------
+Fri Jan 14 10:03:53 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.3.1+20220114.29185644:
+  * Dev: ChangeLog: update for the recent releases
+  * Dev: update version setup.py
+
+-------------------------------------------------------------------
 Fri Jan 14 05:26:37 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.3.1+20220114.07d84c75:
