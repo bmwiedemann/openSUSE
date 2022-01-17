@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 17:42:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * test django 3.2
+  * Fix DjangoCache.delete to return True/False
+  * remove unused imports
+  * run isort
+
+-------------------------------------------------------------------
 Mon Dec 27 13:20:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.0
