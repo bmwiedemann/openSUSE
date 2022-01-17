@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  7 03:06:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.31
+   see /usr/share/doc/packages/perl-Apache-AuthCookie/Changes
+
+  3.31  2022-01-05
+     - Fix uninitialized variable warning if "Satisfy" was not set (github #15, thanks yewtc)
+
+-------------------------------------------------------------------
 Wed Apr 15 03:07:39 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 3.30
