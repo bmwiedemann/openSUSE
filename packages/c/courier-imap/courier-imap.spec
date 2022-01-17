@@ -1,7 +1,7 @@
 #
 # spec file for package courier-imap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%bcond_with     valgrind
+
 Name:           courier-imap
-Version:        5.1.4
+Version:        5.1.7
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later
@@ -48,13 +50,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  ncurses-devel
-# openssl itself for /usr/bin/openssl configure check
-BuildRequires:  postfix
+BuildRequires:  pcre2-devel
 BuildRequires:  procps
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
+%if %{with valgrind}
+BuildRequires:  valgrind
+%endif
 Requires:       courier-authlib >= 0.71
 Requires:       gdbm
 Requires:       openssl
@@ -113,7 +117,10 @@ mv libs/maildir/README.maildirquota{.txt,}
 	--with-authdaemonvar=%{_rundir}/courier-authlib \
 	--with-certdb=%{_sysconfdir}/ssl/certs \
 	--with-certsdir=%{_sysconfdir}/ssl/private \
+%if %{without valgrind}
 	--enable-workarounds-for-imap-client-bugs
+%endif
+
 %make_build
 
 %install
@@ -148,6 +155,11 @@ cat >%{buildroot}%{_datadir}/%{name}/configlist <<EOF
 EOF
 # SSL state cache directory
 install -d %{buildroot}%{_localstatedir}/cache/%{name}/
+
+%if %{with valgrind}
+%check
+make check
+%endif
 
 %pre
 %service_add_pre courier-imap-gencert.service courier-imap-ssl.service courier-imap.service

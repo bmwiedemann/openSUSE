@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 17 07:29:18 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.1.7
+  * Fix linking failure on some Linux distributions.
+
+- update to 5.1.6
+  * Fix linking failure on some Linux distributions.
+
+- update to 5.1.5
+  * Fix minor memory leaks. If valgrind is installed, "make check" will
+    run it to check for memory leaks.
+  * Convert to PCRE2.
+  * libcouriertls: use ALARM to kill couriertls if the server process
+    terminates but openssl hangs trying to shut down the socket.
+
+-------------------------------------------------------------------
 Mon Aug  2 09:16:44 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.1.4
