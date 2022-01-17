@@ -1,7 +1,7 @@
 #
 # spec file for package lalpulsar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@
 
 # astropy and numy unsupported for python < 3.7 in TW
 %define skip_python36 1
+# Py2 support drop by upstream
+%define skip_python2 1
 
 Name:           lalpulsar
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
@@ -33,8 +35,6 @@ URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalpulsar-printf-type-mismatch.patch badshah400@gmail.com -- Fix type mismatch when passing variables to printf
 Patch0:         lalpulsar-printf-type-mismatch.patch
-# PATCH-FIX-UPSTREAM lalpulsar-LineRobustStatsTest-array-length.patch badshah400@gmail.com -- Fix array length in a test so that it is consistent with the array length expected by function
-Patch1:         lalpulsar-LineRobustStatsTest-array-length.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(lal)
+BuildRequires:  pkgconfig(lalframe)
 Requires:       python-lal
 Requires:       python-numpy
 Recommends:     %{name}-data = %{version}
@@ -60,6 +61,7 @@ BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
 BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module lalframe}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -108,7 +110,7 @@ This package provides the necessary files for using LAL Pulsar with octave.
 %autosetup -p1
 
 %build
-%{python_expand # Necessary to run %%configure with both py2 and py3
+%{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=$python
 mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build
@@ -121,7 +123,7 @@ popd
 }
 
 %install
-%{python_expand # py2 and py3 make_install
+%{python_expand # Multiple py3 flavors make_install
 export PYTHON=$python
 pushd ../${PYTHON}_build
 %make_install

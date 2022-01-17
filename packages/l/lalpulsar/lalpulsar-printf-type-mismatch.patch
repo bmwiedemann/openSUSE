@@ -1,8 +1,8 @@
-Index: lalpulsar-2.0.0/lib/SFTutils.c
+Index: lalpulsar-3.1.1/lib/SFTutils.c
 ===================================================================
---- lalpulsar-2.0.0.orig/lib/SFTutils.c
-+++ lalpulsar-2.0.0/lib/SFTutils.c
-@@ -2766,7 +2766,7 @@ REAL8 XLALMathOpOverArray ( const REAL8*
+--- lalpulsar-3.1.1.orig/lib/SFTutils.c
++++ lalpulsar-3.1.1/lib/SFTutils.c
+@@ -2921,7 +2921,7 @@ REAL8 XLALMathOpOverArray ( const REAL8*
      ; /* empty statement because declaration cannot be first line in a switch case */
      size_t * sortidx;
      if ( ( sortidx = XLALMalloc ( length * sizeof(size_t) )) == NULL ) {
