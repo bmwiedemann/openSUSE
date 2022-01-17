@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 31 03:11:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.000001
+   see /usr/share/doc/packages/perl-curry/Changes
+
+  2.000001 - 2021-12-30
+    - Fixage for curry::weak::_ via the inestimable dakkar
+
+  2.000000 - 2021-12-28
+    - Support curry::_ and curry::weak::_
+
+-------------------------------------------------------------------
 Sat Jun 24 06:40:55 UTC 2017 - coolo@suse.com
 
 - updated to 1.001000
