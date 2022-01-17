@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 16 20:32:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 14.0.0
+  * Dropped support for EOL Python 2.7 and 3.5 (#47, #48)
+  * Added support for Python 3.9 and 3.10, and PyPy3
+  * Updated to Unicode 14.0 (#50) 
+
+-------------------------------------------------------------------
 Wed Mar 25 14:37:21 UTC 2020 - pgajdos@suse.com
 
 - version update to 13.0.0
