@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Jan  7 14:16:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.0:
+  *  Describe (un)restricted view in first screen
+  *  Cosmetic change
+  *  Determine (un)restricted view by verifying suid instead of euid.
+  *  Do not ignore unknown network interface
+  *  Parseable output: optionally exchange spaces in command
+  *  No setuid by default
+  *  Correct conversion to 2.7 raw files
+  *  Corrected type
+  *  Only show per-node NUMA stats when more than 1 node
+  *  Prepare man pages for version 2.7
+  *  Prepare atopconvert for version 2.7
+  *  Detect logrotation for process accounting with psacct/acct
+  *  Speed and duplex mode not correctly filled for interface
+  *  Bug solution related to discards
+  *  Support discard counter for disks and skip unused disks
+  *  ifprop.c: fix ioctl parameter after handshaking with kernel
+  *  Show gigabits/sec instead of megabits/sec for Infiniband #131
+  *  CVE: use execvp with a specified path to avoid PATH hijacking
+  *  Correct memory busy logic in atopsar
+  *  Add parseable output for per-node NUMA counters
+  *  Additions to NUMA counters Table overflow checks
+  *  Gather and show per numa cpu related statistics
+  *  Gather and show per numa memory related statistics
+  *  Correction in handling of zswap and ksm counters
+  *  Support containers created by podman
+  *  Cleanup old messages
+  *  Do not change owner to root in Makefile (#76)
+  *  Support process accounting log /var/log/account/pacct (#138)
+  *  Polish do_perfevents when atop built with NOPERFEVENT
+  *  Do not use doconvert funtion to validate counter (#160)
+  *  New counter for number of NUMA pages migrated
+  *  Modify field order and priority of paging counters
+  *  Small text modification for migrated counter
+  *  Avoid non-initialized prestat by introducing extra pointer
+  *  Function 'calcdiff' (deviate.c) used uninitialized prestat struct
+  *  Reserver space for future counters.
+  *  Clean up ignored files
+  *  Variable number of positions for sortitem
+  *  Adapt man page of atop for state selection (add state 'I').
+  *  Allow thread state 'I' with state selection (key 'Q')
+  *  Count idle threads as non-interruptible threads
+  *  Uninitialized index might cause segmentation fault.
+  *  Support NVMe multipath disk statistics
+  *  Support page migration counter
+  *  photosyst.c: fix build on musl
+  *  Use of struct ethtool_link_settings should be conditional
+  *  Cosmetic change (source code layout)
+  *  Various bug fixes and in general add 'thread' to all messages
+  *  Properly define if interface is virtual or physical
+  *  Add license info to various include files (solves issue #144)
+  *  HTTP statistics modified from -h flag to -o flag (#152)
+  *  Possible buffer overflow with huge number of seconds Number
+     of seconds will be limited to 5 positions.
+  *  Possible buffer overflow with average disk I/O
+  *  Allow process selection based on specific process states.
+  *  Correct definition of environment variable LOGOPTS
+  *  Switch to using curses vw_printw as vwprintw is deprecated
+  *  Support multiple counters 'allocstall_' in /proc/vmstat.
+  *  Avoid integer overflow when calculating PSI percentages.
+  *  Suppress irrelevant counters (solves issue #148)
+  *  Add the number of OOM kills to the -s report
+  *  Record the number of process stalls to run memory compaction
+  *  Make clean removes atopsar now (issue 145)
+  *  Add counter for the number of OOM kills to the PAG line
+  *  Add counters for zswap and KSM.
+  *  ifprop.c: fix build with kernel < 4.6
+  *  Fix initifprop() when obtaining properties of all interfaces
+  *  Fixed rounding problems in the average-per-second mode.
+- Refresh atop-makefile.patch
+- Refresh harden_atop.service.patch
+- Call make install instead of make systemdinstall
+  Default is systemd now
+
+-------------------------------------------------------------------
 Wed Aug 11 08:40:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

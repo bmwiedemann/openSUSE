@@ -2,7 +2,7 @@
 #
 # spec file for package atop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 
 Name:           atop
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Monitor for System Resources and Process Activity
 License:        GPL-2.0-only
@@ -86,7 +86,7 @@ install -d "%{buildroot}%{_sbindir}"
 install -d "%{buildroot}%{_sysconfdir}/default"
 install -Dp -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/default/atop
 
-make systemdinstall DESTDIR=%{buildroot} SYSDPATH=%{_unitdir}
+make install DESTDIR=%{buildroot} SYSDPATH=%{_unitdir}
 
 rm -f "%{buildroot}%{_localstatedir}/log/atop"/*
 

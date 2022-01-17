@@ -1,6 +1,6 @@
-diff -Nur atop-2.6.0/Makefile new/Makefile
---- atop-2.6.0/Makefile	2020-12-21 20:57:55.000000000 +0100
-+++ new/Makefile	2021-04-13 23:52:53.597971062 +0200
+diff -urEbw atop-2.7.0/Makefile atop-2.7.0.new/Makefile
+--- atop-2.7.0/Makefile	2021-12-18 12:04:24.000000000 +0100
++++ atop-2.7.0.new/Makefile	2022-01-07 15:24:44.084445219 +0100
 @@ -20,7 +20,7 @@
  PMPATH2  = /usr/lib64/pm-utils/sleep.d
  PMPATHD  = /usr/lib/systemd/system-sleep
@@ -10,31 +10,3 @@ diff -Nur atop-2.6.0/Makefile new/Makefile
  OBJMOD0  = version.o
  OBJMOD1  = various.o  deviate.o   procdbase.o
  OBJMOD2  = acctproc.o photoproc.o photosyst.o  rawlog.o ifprop.o parseable.o
-@@ -156,22 +156,22 @@
- 		chmod 644      		$(DESTDIR)$(DEFPATH)/atop
- 		#
- 		cp atop   		$(DESTDIR)$(BINPATH)/atop
--		chown root		$(DESTDIR)$(BINPATH)/atop
-+		#chown root		$(DESTDIR)$(BINPATH)/atop
- 		chmod 04711 		$(DESTDIR)$(BINPATH)/atop
- 		ln -sf atop             $(DESTDIR)$(BINPATH)/atopsar
- 		cp atopacctd  		$(DESTDIR)$(SBINPATH)/atopacctd
--		chown root		$(DESTDIR)$(SBINPATH)/atopacctd
-+		#chown root		$(DESTDIR)$(SBINPATH)/atopacctd
- 		chmod 0700 		$(DESTDIR)$(SBINPATH)/atopacctd
- 		cp atopgpud  		$(DESTDIR)$(SBINPATH)/atopgpud
--		chown root		$(DESTDIR)$(SBINPATH)/atopgpud
-+		#chown root		$(DESTDIR)$(SBINPATH)/atopgpud
- 		chmod 0700 		$(DESTDIR)$(SBINPATH)/atopgpud
- 		cp atop   		$(DESTDIR)$(BINPATH)/atop-$(VERS)
- 		ln -sf atop-$(VERS)     $(DESTDIR)$(BINPATH)/atopsar-$(VERS)
- 		cp atopconvert 		$(DESTDIR)$(BINPATH)/atopconvert
--		chown root		$(DESTDIR)$(BINPATH)/atopconvert
-+		#chown root		$(DESTDIR)$(BINPATH)/atopconvert
- 		chmod 0711 		$(DESTDIR)$(BINPATH)/atopconvert
- 		cp atopcat 		$(DESTDIR)$(BINPATH)/atopcat
--		chown root		$(DESTDIR)$(BINPATH)/atopcat
-+		#chown root		$(DESTDIR)$(BINPATH)/atopcat
- 		chmod 0711 		$(DESTDIR)$(BINPATH)/atopcat
- 		cp man/atop.1    	$(DESTDIR)$(MAN1PATH)
- 		cp man/atopsar.1 	$(DESTDIR)$(MAN1PATH)

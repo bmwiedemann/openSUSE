@@ -1,24 +1,23 @@
-Index: atop-2.6.0/atop.service
-===================================================================
---- atop-2.6.0.orig/atop.service
-+++ atop-2.6.0/atop.service
-@@ -3,6 +3,19 @@ Description=Atop advanced performance mo
+diff -urEbw atop-2.7.0/atop.service atop-2.7.0.new/atop.service
+--- atop-2.7.0/atop.service	2021-12-18 12:04:24.000000000 +0100
++++ atop-2.7.0.new/atop.service	2022-01-07 15:30:07.869528035 +0100
+@@ -3,6 +3,19 @@
  Documentation=man:atop(1)
  
  [Service]
-+# added automatically, for details please see
-+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-+ProtectSystem=full
-+ProtectHome=true
-+PrivateDevices=true
-+ProtectHostname=true
-+ProtectClock=true
-+ProtectKernelTunables=true
-+ProtectKernelModules=true
-+ProtectKernelLogs=true
-+ProtectControlGroups=true
-+RestrictRealtime=true
-+# end of automatic additions 
- Environment=LOGOPTS=""
- Environment=LOGINTERVAL=600
- Environment=LOGGENERATIONS=28
+++# added automatically, for details please see
+++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+++ProtectSystem=full
+++ProtectHome=true
+++PrivateDevices=true
+++ProtectHostname=true
+++ProtectClock=true
+++ProtectKernelTunables=true
+++ProtectKernelModules=true
+++ProtectKernelLogs=true
+++ProtectControlGroups=true
+++RestrictRealtime=true
+++# end of automatic additions 
+ Environment="LOGOPTS="
+ Environment="LOGINTERVAL=600"
+ Environment="LOGGENERATIONS=28"
