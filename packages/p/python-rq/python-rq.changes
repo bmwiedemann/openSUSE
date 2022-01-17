@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 17 18:35:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.10.1 
+  - Failure callbacks are now properly called when job is run
+    synchronously. Thanks @ericman93!
+  - Fixes a bug that could cause job keys to be left over when
+    `result_ttl=0`. Thanks @selwin!
+  - Allow `ssl_cert_reqs` argument to be passed to Redis. Thanks
+    @mgcdanny!
+  - Better compatibility with Python 3.10. Thanks @rpkak!
+  - `job.cancel()` should also remove itself from registries.
+    Thanks @joshcoden!
+  - Pubsub threads are now launched in `daemon` mode. Thanks
+    @mik3y!
+  - You can now enqueue jobs from CLI. Docs
+    [here](https://python-rq.org/docs/#cli-enqueueing). Thanks
+    @rpkak!
+  - Added a new `CanceledJobRegistry` to keep track of canceled
+    jobs. Thanks @selwin!
+  - Added custom serializer support to various places in RQ. Thanks
+    @joshcoden!
+  - `cancel_job(job_id, enqueue_dependents=True)` allows you to
+    cancel a job while enqueueing its dependents. Thanks
+    @joshcoden!
+  - Added `job.get_meta()` to fetch fresh meta value directly from
+    Redis. Thanks @aparcar!
+  - Fixes a race condition that could cause jobs to be incorrectly
+    added to FailedJobRegistry. Thanks @selwin!
+  - Requeueing a job now clears `job.exc_info`. Thanks @selwin!
+  - Repo infrastructure improvements by @rpkak.
+  - Other minor fixes by @cesarferradas and @bbayles.
+  - Added success and failure callbacks. You can now do
+    `queue.enqueue(foo, on_success=do_this, on_failure=do_that)`.
+    Thanks @selwin!
+  - Added `queue.enqueue_many()` to enqueue many jobs in one go.
+    Thanks @joshcoden!
+  - Various improvements to CLI commands. Thanks @rpkak!
+  - Minor logging improvements. Thanks @clavigne and @natbusa!
+
+-------------------------------------------------------------------
 Mon Jun 28 14:33:46 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.8.1

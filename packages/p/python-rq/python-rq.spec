@@ -1,7 +1,7 @@
 #
 # spec file for package python-rq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %define mod_name rq
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+
 Name:           python-rq
-Version:        1.8.1
+Version:        1.10.1
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/rq/rq
-Source:         https://github.com/rq/rq/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/rq/rq/archive/v%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
