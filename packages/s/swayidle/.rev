@@ -87,4 +87,16 @@
 - Remove swayidle-version.patch: upstreamed</comment>
     <requestid>913012</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed82150cc837e033d6825c3ccd6134ca</srcmd5>
+    <version>1.7.1</version>
+    <time>1642455262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Add editorconfig
+  * Improve log messages
+  * Call release() to let the server remove the timer.
+  * Allow forked processes to receive signal</comment>
+    <requestid>946990</requestid>
+  </revision>
 </revisionlist>

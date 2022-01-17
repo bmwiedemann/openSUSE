@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 17 14:23:14 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * Add editorconfig
+  * Improve log messages
+  * Call release() to let the server remove the timer.
+  * Allow forked processes to receive signal
+
+-------------------------------------------------------------------
 Tue Aug 17 18:17:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7:
