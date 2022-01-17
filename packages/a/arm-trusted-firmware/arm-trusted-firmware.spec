@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -137,6 +137,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if "%{platform}" != ""
 BuildArch:      noarch
 ExclusiveArch:  aarch64
+%endif
+%if "%{platform}" == "rpi4"
+Supplements:    modalias(of:N*T*Cbrcm%2Cbcm2711*C*)
 %endif
 
 %description
