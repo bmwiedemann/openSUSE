@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 16 13:34:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile from unused python36 conditionals
+- Require thrift 0.15.0 (+patch) for Python 3.10 compatibility
+  * gh#dask/fastparquet#514
+
+-------------------------------------------------------------------
 Sat Nov 27 20:34:53 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.7.2:

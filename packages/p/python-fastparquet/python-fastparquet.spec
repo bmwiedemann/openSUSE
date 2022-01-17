@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastparquet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define _buildshell /bin/bash
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-fastparquet
 Version:        0.7.2
 Release:        0
@@ -36,14 +35,23 @@ BuildRequires:  %{python_module pandas >= 1.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
 BuildRequires:  %{python_module setuptools}
+%if 0%{suse_version} >= 1550
+# https://github.com/dask/fastparquet/issues/514
+BuildRequires:  %{python_module thrift >= 0.15.0}
+%else
 BuildRequires:  %{python_module thrift >= 0.11.0}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam >= 2.3.0
 Requires:       python-fsspec
 Requires:       python-numpy >= 1.18
 Requires:       python-pandas >= 1.1.0
+%if 0%{python_version_nodots} >= 310
+Requires:       python-thrift >= 0.15.0
+%else
 Requires:       python-thrift >= 0.11.0
+%endif
 Recommends:     python-python-lzo
 %python_subpackages
 
