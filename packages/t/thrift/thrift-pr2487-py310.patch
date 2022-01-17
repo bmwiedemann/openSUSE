@@ -1,0 +1,154 @@
+From 5f88c7b2372884514046cc2b9b256dfdef188f1e Mon Sep 17 00:00:00 2001
+From: Ali-Akber Saifee <ali@indydevs.org>
+Date: Sat, 11 Dec 2021 08:39:24 -0800
+Subject: [PATCH] Define PY_SSIZE_T_CLEAN to use PyObject_CallFunction
+
+When using the building functions for the fallback scenario
+in readBytes, a SystemError is raised in python 3.10 (raised
+as a warning till python 3.9) due to the use of "#yi" for the output
+buffer argument.
+
+Extra test cases are added to cover serialization/deserialization
+both with compact & binary protocol both with and without the
+c-extension
+---
+ (lib/py/Makefile.am)                          |  2 +
+ lib/py/src/ext/binary.cpp                     |  1 +
+ lib/py/src/ext/compact.cpp                    |  1 +
+ .../test/test_thrift_file/TestServer.thrift   |  6 +-
+ lib/py/test/thrift_TSerializer.py             | 84 +++++++++++++++++++
+ 5 files changed, 93 insertions(+), 1 deletion(-)
+ create mode 100644 lib/py/test/thrift_TSerializer.py
+
+
+diff --git a/lib/py/src/ext/binary.cpp b/lib/py/src/ext/binary.cpp
+index 85d8d922ee..423fa8fee0 100644
+--- a/lib/py/src/ext/binary.cpp
++++ b/lib/py/src/ext/binary.cpp
+@@ -17,6 +17,7 @@
+  * under the License.
+  */
+ 
++#define PY_SSIZE_T_CLEAN
+ #include "ext/binary.h"
+ namespace apache {
+ namespace thrift {
+diff --git a/lib/py/src/ext/compact.cpp b/lib/py/src/ext/compact.cpp
+index 15a99a077f..ae89f2a655 100644
+--- a/lib/py/src/ext/compact.cpp
++++ b/lib/py/src/ext/compact.cpp
+@@ -17,6 +17,7 @@
+  * under the License.
+  */
+ 
++#define PY_SSIZE_T_CLEAN
+ #include "ext/compact.h"
+ 
+ namespace apache {
+diff --git a/lib/py/test/test_thrift_file/TestServer.thrift b/lib/py/test/test_thrift_file/TestServer.thrift
+index 0de8856a0a..7be1dbbe05 100644
+--- a/lib/py/test/test_thrift_file/TestServer.thrift
++++ b/lib/py/test/test_thrift_file/TestServer.thrift
+@@ -16,7 +16,11 @@
+ # specific language governing permissions and limitations
+ # under the License.
+ #
+- 
++
++struct Message {
++   1: optional string body,
++   2: optional i64 num,
++}
+ 
+ service TestServer{
+ 	string add_and_get_msg(1:string msg)
+diff --git a/lib/py/test/thrift_TSerializer.py b/lib/py/test/thrift_TSerializer.py
+new file mode 100644
+index 0000000000..b94165483e
+--- /dev/null
++++ b/lib/py/test/thrift_TSerializer.py
+@@ -0,0 +1,84 @@
++#
++# Licensed to the Apache Software Foundation (ASF) under one
++# or more contributor license agreements. See the NOTICE file
++# distributed with this work for additional information
++# regarding copyright ownership. The ASF licenses this file
++# to you under the Apache License, Version 2.0 (the
++# "License"); you may not use this file except in compliance
++# with the License. You may obtain a copy of the License at
++#
++#   http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing,
++# software distributed under the License is distributed on an
++# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++# KIND, either express or implied. See the License for the
++# specific language governing permissions and limitations
++# under the License.
++#
++
++import unittest
++import os
++import sys
++
++gen_path = os.path.join(
++    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "gen-py"
++)
++sys.path.append(gen_path)
++
++import _import_local_thrift  # noqa
++from thrift.protocol.TBinaryProtocol import TBinaryProtocolFactory
++from thrift.protocol.TBinaryProtocol import TBinaryProtocolAcceleratedFactory
++from thrift.protocol.TCompactProtocol import TCompactProtocolFactory
++from thrift.protocol.TCompactProtocol import TCompactProtocolAcceleratedFactory
++from thrift.transport import TTransport
++from thrift.TSerialization import serialize, deserialize
++from TestServer.ttypes import Message
++
++
++class TestSerializer(unittest.TestCase):
++    def setUp(self):
++        self.message = Message("hello thrift", 42)
++        self.binary_serialized = b"\x0b\x00\x01\x00\x00\x00\x0chello thrift\n\x00\x02\x00\x00\x00\x00\x00\x00\x00*\x00"
++        self.compact_serialized = b'\x18\x0chello thrift\x16T\x00'
++
++    def verify(self, serialized, factory):
++        self.assertEqual(serialized, serialize(self.message, factory))
++
++        self.assertEqual(
++            "hello thrift",
++            deserialize(Message(), serialized, factory).body,
++        )
++        self.assertEqual(
++            42, deserialize(Message(), serialized, factory).num
++        )
++
++        self.assertRaises(EOFError, deserialize, Message(), None, factory)
++        self.assertRaises(EOFError, deserialize, Message(), b'', factory)
++        self.assertRaises(TypeError, deserialize, Message(), "test",  factory)
++
++
++    def test_TBinaryProtocol(self):
++        buf = TTransport.TMemoryBuffer()
++        transport = TTransport.TBufferedTransportFactory().getTransport(buf)
++        factory = TBinaryProtocolFactory(transport)
++        self.verify(self.binary_serialized, factory)
++
++
++    def test_TBinaryProtocolAccelerated(self):
++        buf = TTransport.TMemoryBuffer()
++        transport = TTransport.TBufferedTransportFactory().getTransport(buf)
++        factory = TBinaryProtocolAcceleratedFactory(transport)
++        self.verify(self.binary_serialized, factory)
++
++    def test_TCompactProtocol(self):
++        factory = TCompactProtocolFactory()
++        self.verify(self.compact_serialized, factory)
++
++    def test_TCompactProtocolAccelerated(self):
++        factory = TCompactProtocolAcceleratedFactory()
++        self.verify(self.compact_serialized, factory)
++
++
++if __name__ == "__main__":
++    unittest.main()

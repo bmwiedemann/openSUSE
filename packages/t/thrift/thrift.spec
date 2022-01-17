@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define libversion 0_14_1
+%define libversion 0_15_0
 %define libgversion 0
 %bcond_without perl
 %bcond_without c
@@ -30,11 +30,9 @@
 %endif
 %if %{without python3}
 %define skip_python3 1
-%define skip_python36 1
-%define skip_python38 1
 %endif
 Name:           thrift
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
@@ -43,6 +41,8 @@ URL:            https://thrift.apache.org
 Source0:        https://www.apache.org/dist/thrift/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://www.apache.org/dist/thrift/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM thrift-pr2487-py310.patch -- gh#apache/thrift#2487 and https://issues.apache.org/jira/browse/THRIFT-5488
+Patch0:         thrift-pr2487-py310.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -76,8 +76,8 @@ BuildRequires:  perl(Class::Accessor)
 %if %{with python2} || %{with python3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  python-rpm-macros
-%if 0%{?python38_version_nodots}
-# if python multiflavor is in place yet, use it to generate subpackages
+%if 0%{?suse_version} >= 1550
+# if python multiflavor is available, use it to generate subpackages
 %define python_subpackage_only 1
 %python_subpackages
 %else
@@ -183,6 +183,7 @@ Ruby, Perl, PHP, Objective C/Cocoa, Smalltalk, Erlang, Objective
 Caml, and Haskell.
 
 %else
+
 %package -n python2-thrift
 Summary:        Python bindings for the Thrift software framework
 Group:          Development/Libraries/Python
@@ -225,7 +226,7 @@ Caml, and Haskell.
 
 %prep
 
-%setup -q
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fPIC"
