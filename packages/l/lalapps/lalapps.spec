@@ -1,7 +1,7 @@
 #
 # spec file for package lalapps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # NEP 29: astropy, numpy, scipy do not have a python36 flavor package in TW
 %define skip_python36 1
 Name:           lalapps
-Version:        7.2.0
+Version:        7.4.0
 Release:        0
 Summary:        LSC Algorithm Library Applications
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalapps-fix-uninitialised-var.patch badshah400@gmail.com -- Fix usage of uninitialised variable
 Patch0:         lalapps-fix-uninitialised-var.patch
-# PATCH-FIX-UPSTREAM lalapps-gcc11-array-bounds-decl.patch badshah400@gmail.com -- Fix building with gcc 11 by correcting array bounds declaration; patch part of upstream merge request [https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/1605]
-Patch1:         lalapps-gcc11-array-bounds-decl.patch
 # PATCH-FIX-UPSTREAM lalapps-disable-testWeave-for-non-x86_64.patch badshah400@gmail.com -- Disable Weave related tests on all but x86_64 where tolerance errors show up, see https://git.ligo.org/lscsoft/lalsuite/-/issues/105
 Patch2:         lalapps-disable-testWeave-for-non-x86_64.patch
 BuildRequires:  %{python_module astropy}
@@ -110,10 +108,6 @@ This package contains the python files
 %prep
 %autosetup -p1
 
-# FIX env-BASED HASHBANGS
-sed -Ei "1{s|/usr/bin/env python|%{_bindir}/python3|}" \
-  src/pulsar/HeterodyneSearch/make_frame_cache
-
 %build
 # Patch2 touches autotool files
 autoreconf -fvi
@@ -122,8 +116,6 @@ export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
-# FIXME: Failures because XLAL_ERROR implictly converts to function return type
-export CFLAGS+=" -Wno-enum-conversion"
 %configure --enable-swig
 %make_build
 popd
