@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 10 20:04:52 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 54.0:
+  - Always use absolute paths to get hrefs in SVG
+  - Fix many rendering problems of broken tables
+  - Fix support of fonts with SVG emojis
+  - html5lib 1.1+ is now needed.
+  - Support footnotes, with financial support from Code & Co.
+  - Handle parallel flows for floats, absolutes, table-cells
+  - Support ``text-align-last`` and ``text-align-all`` properties
+  - Draw SVG and PNG emojis
+  - Support ``overflow-wrap: anywhere``
+  - Cache SVG ``use`` tags
+  - Encode non-JPEG images as PNGs instead of JPEG2000s
+  - Don’t use ``text-transform`` text for content-based uses
+  - Don’t serialize and parse again inline SVG files
+  - Correctly handle whitespaces in bookmark labels
+  - Fix column height with ``column-span`` content
+  - Fix absolutely positioned boxes in duplicated pages
+  - Fix ``target-counter`` attribute in flex items
+  - Don’t draw empty glyphs
+  - Don’t crash when font size is really small
+
+-------------------------------------------------------------------
 Wed Dec 22 23:52:20 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - port to the pyproject build to get the commandline for weasyprint
