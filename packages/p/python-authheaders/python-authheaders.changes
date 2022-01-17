@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:55:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  - Bump version to fix pypi artifacts, no code changes
+  - Use email.utils to parse the From header addresses (Thanks to Adam Clark
+    for noting this issue and providing the fix) Fixes Github #5
+  - Correct minimum authres version requirment in setup.py
+  - Catch more errors.  Add DKIM temperror.  (Thanks to 'niftylettuce') Fixes
+    Github #18
+  - Skip DMARC records with no 'p' tag and don't raise an error (also thanks
+    to 'niftylettuce')  Fixes Github #14
+  - Fix issues with upper case characters in domain (Thanks to Mark Sapiro for
+    root causing the issue and providing a fix for the domain name regex)
+    Fixes Github #13
+  - Include ARC result comment is A-R header field when ARC fails.  Fixes
+    Github #12
+  - Handle the case where no valid From is found.  Fixes Github #15
+ 
+-------------------------------------------------------------------
 Sun Apr 12 08:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.13.0:
