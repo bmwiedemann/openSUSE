@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 31 03:07:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-TheSchwartz/Changes
+
+  1.17 2021-12-30T13:21:45Z
+
+      - schwartzmon: 'Not an ARRAY reference' in DBSet::add for at least v5.16.3 GH#12 (@trwww++)
+
+-------------------------------------------------------------------
 Sat Jul 17 03:09:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.16

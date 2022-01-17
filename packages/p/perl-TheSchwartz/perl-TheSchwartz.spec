@@ -18,7 +18,7 @@
 
 %define cpan_name TheSchwartz
 Name:           perl-TheSchwartz
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Reliable job queue
 License:        Artistic-1.0 OR GPL-1.0-or-later
