@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 15 17:54:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.10.8:
+  added certs:
+  * CN=TunTrust Root CA O=Agence Nationale de Certification Electronique
+  * CN=HARICA TLS ECC Root CA 2021 O=Hellenic Academic and Research Institutions CA
+
+-------------------------------------------------------------------
 Thu Jun 17 20:53:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.5.30:
