@@ -188,4 +188,23 @@
 </comment>
     <requestid>896766</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>487a54be9eaf264fe4b60fe12b4e5b4c</srcmd5>
+    <version>4.31.0</version>
+    <time>1642455228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.31.0:
+  * Collapse multiple retvals into a single bullet list
+  * Fix mypy issues on CI
+  * Print usage message from 'compare' doc script
+  * Test against Sphinx 4.0.3, 4.1.2 and 4.1.x branch
+  * Fix duplicate ``static`` in function declarations
+  * Directive refactoring
+  * Handle parsing errors
+  * Make doxygenfunction more robust when matching parameters
+  * Separate, link and style the changelog
+  * Update changelog and readme ahead of release
+  * CICD: Track Sphinx 4.2.x development series</comment>
+    <requestid>946639</requestid>
+  </revision>
 </revisionlist>

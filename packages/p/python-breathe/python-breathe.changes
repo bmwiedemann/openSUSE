@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 15 15:24:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.31.0:
+  * Collapse multiple retvals into a single bullet list
+  * Fix mypy issues on CI
+  * Print usage message from 'compare' doc script
+  * Test against Sphinx 4.0.3, 4.1.2 and 4.1.x branch
+  * Fix duplicate ``static`` in function declarations
+  * Directive refactoring
+  * Handle parsing errors
+  * Make doxygenfunction more robust when matching parameters
+  * Separate, link and style the changelog
+  * Update changelog and readme ahead of release
+  * CICD: Track Sphinx 4.2.x development series
+
+-------------------------------------------------------------------
 Tue Jun  1 16:05:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.30.0:
