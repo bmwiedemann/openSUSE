@@ -1,7 +1,7 @@
 #
 # spec file for package python-cassandra-driver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,6 @@ BuildRequires:  fdupes
 BuildRequires:  libev-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-Cython
-Requires:       python-blist
 Requires:       python-geomet >= 0.1
 Requires:       python-six >= 1.9
 Recommends:     python-Twisted

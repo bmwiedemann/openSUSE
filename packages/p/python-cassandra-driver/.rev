@@ -147,4 +147,12 @@
 </comment>
     <requestid>877566</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>dbc54ef3d35f41804cffd55889ee70c1</srcmd5>
+    <version>3.23.0</version>
+    <time>1642455252</time>
+    <user>dimstar_suse</user>
+    <comment>- remove blist dependency</comment>
+    <requestid>946925</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 17 09:58:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove blist dependency 
+
+-------------------------------------------------------------------
 Fri Mar  5 13:19:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch off failing tests test_nts_token_performance and
