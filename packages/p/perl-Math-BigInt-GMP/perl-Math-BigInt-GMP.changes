@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 31 03:06:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.6010
+   see /usr/share/doc/packages/perl-Math-BigInt-GMP/CHANGES
+
+  1.6010 2021-12-29
+
+   * Add static gmp_version() function (code provided by FGasper on GitHub).
+
+   * Make t/01load.t display the output from gmp_version().
+
+-------------------------------------------------------------------
 Thu Sep 30 03:08:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.6009

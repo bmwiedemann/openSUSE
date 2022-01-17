@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt-GMP
 Name:           perl-Math-BigInt-GMP
-Version:        1.6009
+Version:        1.6010
 Release:        0
 Summary:        Backend library for Math::BigInt etc. based on GMP
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -27,9 +27,11 @@ Source0:        https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/%{cpan_name}-
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Carp) >= 1.22
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.58
 BuildRequires:  perl(Math::BigInt) >= 1.999819
-BuildRequires:  perl(Test::More) >= 0.82
+BuildRequires:  perl(Test::More) >= 0.88
+Requires:       perl(Carp) >= 1.22
 Requires:       perl(Math::BigInt) >= 1.999819
 %{perl_requires}
 # MANUAL BEGIN
