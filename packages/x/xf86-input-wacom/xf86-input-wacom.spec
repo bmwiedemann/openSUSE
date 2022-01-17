@@ -29,6 +29,7 @@ Patch8:         n_02-Log-PROXIMITY-LOW-LEVEL-events.patch
 Patch9:         n_03-Log-PRESSURE-low-level-events.patch
 Patch10:        n_04-Log-BUTTON-HIGH-LEVEL-events.patch
 Patch12:        n_disable-touchscreen.patch
+Patch13:	harden_wacom-inputattach@.service.patch
 # For directory ownership
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -78,6 +79,7 @@ wacom is an X input driver and utilities for Wacom devices.
 %patch9 -p1
 %patch10 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 autoreconf -fi
