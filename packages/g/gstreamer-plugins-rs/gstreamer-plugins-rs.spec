@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-rs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -41,17 +41,17 @@ BuildRequires:  clang
 # Disable csound for now, bring issue upstream
 #BuildRequires:  csound-devel
 BuildRequires:  llvm
+BuildRequires:  git
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.51
-BuildRequires:  rust-packaging
-BuildRequires:  rust-std
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
@@ -138,6 +138,15 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstsodium.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstthreadshare.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstgtk4.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstspotify.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsttextahead.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstvideofx.so
+
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 16:22:51 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.8.0:
+  * No changelog provided by upstream 
+
+-------------------------------------------------------------------
 Wed Nov 10 18:52:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable csound plugin for now, mask all macros, BuildRequires and

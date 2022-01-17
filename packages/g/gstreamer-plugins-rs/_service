@@ -5,7 +5,7 @@
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">0.7.2</param>
+    <param name="revision">0.8.0</param>
     <param name="scm">git</param>
   </service>
   <service name="recompress" mode="disabled">
