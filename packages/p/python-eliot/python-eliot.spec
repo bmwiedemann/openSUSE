@@ -1,7 +1,7 @@
 #
 # spec file for package python-eliot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-eliot
 Version:        1.13.0
@@ -44,7 +44,9 @@ BuildRequires:  %{python_module yapf}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  ((python3-aiocontextvars and python3-base < 3.7) or (python36-aiocontextvars and python36-base))
+# Note: If python3-aiocontextvars is not available, the error message will
+# be confusing: https://github.com/openSUSE/obs-build/issues/685
+BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
 Requires:       python-boltons >= 19.0.1
 Requires:       python-pyrsistent >= 0.11.8
 Requires:       python-six
@@ -90,6 +92,7 @@ export LC_CTYPE=en_US.UTF-8
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/eliot-prettyprint
-%{python_sitelib}/*
+%{python_sitelib}/eliot
+%{python_sitelib}/eliot-%{version}*-info
 
 %changelog
