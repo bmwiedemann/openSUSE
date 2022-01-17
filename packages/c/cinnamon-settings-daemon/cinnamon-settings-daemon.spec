@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-settings-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,9 +81,6 @@ This package contains development files for cinnamon-settings-daemon.
 
 %build
 %meson \
- -Ddocs=true \
- -Ddeprecated_warnings=false \
- -Denable_smartcard=disabled \
  --libexecdir=%{_libdir}
 
 %meson_build
