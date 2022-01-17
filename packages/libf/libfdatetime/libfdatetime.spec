@@ -59,7 +59,7 @@ applications that want to make use of libfdatetime.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 

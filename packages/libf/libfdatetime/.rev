@@ -98,4 +98,12 @@ Part of summer 2013 libyal refresh (forwarded request 185006 from gregfreemyer)<
     <comment>- Update to release 20220112</comment>
     <requestid>945810</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8300ea7088b058563d70537c84c6fb1f</srcmd5>
+    <version>20220112</version>
+    <time>1642455240</time>
+    <user>dimstar_suse</user>
+    <comment>- Force autoreconf rerun due to patch presence</comment>
+    <requestid>946852</requestid>
+  </revision>
 </revisionlist>
