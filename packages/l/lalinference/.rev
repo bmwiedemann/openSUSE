@@ -44,4 +44,13 @@
     <comment></comment>
     <requestid>931954</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41c6745c4a8e30aec0aec28b4f517e64</srcmd5>
+    <version>3.0.1</version>
+    <time>1642455239</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lalinference-import-MutableMapping.patch -- lalinference.wrapper: Update import of MutableMapping; patch taken from upstream commit.
+- Update to version 3.0.1.</comment>
+    <requestid>946914</requestid>
+  </revision>
 </revisionlist>

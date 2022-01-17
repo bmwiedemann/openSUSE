@@ -1,7 +1,7 @@
 #
 # spec file for package lalinference
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define skip_python36 1
 
 Name:           lalinference
-Version:        2.0.7
+Version:        3.0.1
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
@@ -34,6 +34,8 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
+# PATCH-FIX-UPSTREAM lalinference-import-MutableMapping.patch badshah400@gmail.com -- lalinference.wrapper: Update import of MutableMapping
+Patch1:         lalinference-import-MutableMapping.patch
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module devel}

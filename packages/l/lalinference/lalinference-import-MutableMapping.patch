@@ -1,0 +1,27 @@
+From 70a0df33589d21e3cfb93d7e0ff52ab83e3741e0 Mon Sep 17 00:00:00 2001
+From: John Douglas Veitch <john.veitch@ligo.org>
+Date: Wed, 5 Jan 2022 16:01:36 +0000
+Subject: [PATCH] lalinference.wrapper: Update import of MutableMapping
+
+---
+ python/lalinference/wrapper.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/lalinference/wrapper.py b/python/lalinference/wrapper.py
+index 6c7a8f5126..79c04d2e77 100644
+--- a/python/lalinference/wrapper.py
++++ b/python/lalinference/wrapper.py
+@@ -1,8 +1,8 @@
+ import lal
+ import lalinference as li
+-import collections
++import collections.abc
+ 
+-class LIVariablesWrap(collections.MutableMapping):
++class LIVariablesWrap(collections.abc.MutableMapping):
+     def __init__(self,init=None):
+         """
+         Wrapper to present a LALInferenceVariable as a dict.
+-- 
+GitLab
+
