@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:43:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.3:
+  * Fixed regression where packages without a ``__init__.py`` file were
+    not recognized or imported correctly.
+  * Fixed regression in ``astroid.scoped_nodes`` where ``_is_metaclass``
+    was not accessible anymore.
+  * ``NodeNG.frame()`` and ``NodeNG.statement()`` will start raising ``ParentMissingError``
+    instead of ``AttributeError`` in astroid 3.0. This behaviour can already be triggered
+    by passing ``future=True`` to a ``frame()`` or ``statement()`` call.
+  * Prefer the module loader get_source() method in AstroidBuilder's
+    module_build() when possible to avoid assumptions about source
+    code being available on a filesystem.  Otherwise the source cannot
+    be found and application behavior changes when running within an
+    embedded hermetic interpreter environment (pyoxidizer, etc.).
+  * Require Python 3.6.2 to use astroid.
+  * Removed custom ``distutils`` handling for resolving paths to submodules.
+  * Fix ``deque.insert()`` signature in ``collections`` brain.
+  * Fix ``Module`` nodes not having a ``col_offset``, ``end_lineno``, and ``end_col_offset``
+    attributes.
+  * Fix typing and update explanation for ``Arguments.args`` being ``None``.
+  * Fix crash if a variable named ``type`` is subscripted in a generator expression.
+  * Enable inference of dataclass import from marshmallow_dataclass.
+    This allows the dataclasses brain to recognize dataclasses annotated by marshmallow_dataclass.
+  * Resolve symlinks in the import path
+    Fixes inference error when the import path includes symlinks (e.g. Python
+    installed on macOS via Homebrew).
+
+-------------------------------------------------------------------
 Thu Dec  9 12:30:06 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.9.0
