@@ -1,7 +1,7 @@
 #
 # spec file for package picocli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           picocli
-Version:        4.0.4
+Version:        4.6.2
 Release:        0
 Summary:        Tiny Command Line Interface
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://picocli.info/
 Source0:        https://github.com/remkop/%{name}/archive/v%{version}.tar.gz
+BuildRequires:  aqute-bnd
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  aqute-bnd
 BuildArch:      noarch
 
 %description
