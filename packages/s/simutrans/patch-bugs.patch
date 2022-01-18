@@ -1,0 +1,323 @@
+From: Michiel van der Wulp <michiel.vanderwulp@gmail.com>
+Date: 2022-01-12 13:59:01.901488731 +0100
+References: https://forum.simutrans.com/index.php/topic,21320.0.html
+References: https://forum.simutrans.com/index.php/topic,21317.msg198325.html#msg198325
+Upstream: No
+Subject: Since the release contains some severe regression bugs, which were solved in the weeks after the release, 
+the solutions were included here. See for the bugs: 
+1: Map showing network: https://forum.simutrans.com/index.php/topic,21320.0.html 
+2: The new setting "stop_halt_as_scheduled" should be disabled by default: 
+https://forum.simutrans.com/index.php/topic,21317.msg198325.html#msg198325 
+
+diff -r -u old/dataobj/schedule.cc new/dataobj/schedule.cc
+--- old/dataobj/schedule.cc	2022-01-12 13:38:46.865674285 +0100
++++ new/dataobj/schedule.cc	2022-01-10 18:46:46.903599377 +0100
+@@ -194,14 +194,14 @@
+ 
+ void schedule_t::move_entry_forward( uint8 cur )
+ {
+-	if( entries.get_count() <= 2 ) {
++	if( entries.get_count() <= 1 ) {
+ 		return;
+ 	}
+ 	// not last entry
+ 	if( cur < entries.get_count()-1 ) {
+ 		// just append everything
+ 		entries.insert_at( cur+2, entries[ cur ] );
+-		entries.remove_at( cur+1 );
++		entries.remove_at( cur );
+ 	}
+ 	else {
+ 		// last entry, just append everything
+@@ -217,7 +217,7 @@
+ 
+ void schedule_t::move_entry_backward( uint8 cur )
+ {
+-	if( entries.get_count() <= 2 ) {
++	if( entries.get_count() <= 1 ) {
+ 		return;
+ 	}
+ 
+diff -r -u old/dataobj/settings.cc new/dataobj/settings.cc
+--- old/dataobj/settings.cc	2022-01-12 15:00:25.564981557 +0100
++++ new/dataobj/settings.cc	2022-01-12 13:44:49.587214903 +0100
+@@ -300,7 +300,7 @@
+ 	frames_per_step = 4;
+ 	server_frames_ahead = 4;
+ 
+-	stop_halt_as_scheduled = true;
++	stop_halt_as_scheduled = false;
+ }
+ 
+ 
+diff -r -u old/gui/components/gui_schedule.cc new/gui/components/gui_schedule.cc
+--- old/gui/components/gui_schedule.cc	2022-01-12 13:38:46.809674664 +0100
++++ new/gui/components/gui_schedule.cc	2022-01-10 18:46:47.355603362 +0100
+@@ -322,12 +322,12 @@
+ 		}
+ 		else if( v.i & UP_FLAG ) {
+ 			uint8 up_stop = v.i & 0x00FF;
+-			schedule->move_entry_forward( up_stop );
++			schedule->move_entry_backward( up_stop );
+ 			call_listeners( schedule->get_current_stop() );
+ 		}
+ 		else if( v.i & DOWN_FLAG ) {
+ 			uint8 down_stop = v.i & 0x00FF;
+-			schedule->move_entry_backward( down_stop );
++			schedule->move_entry_forward( down_stop );
+ 			call_listeners( schedule->get_current_stop() );
+ 		}
+ 		else {
+@@ -368,23 +368,28 @@
+ 	set_table_layout(1,0);
+ 
+ 	// loading level and waiting time
+-	loading_details = add_table( 4, 1 );
++	loading_details = add_table( 3, 3 );
+ 	loading_details->set_margin( scr_size(D_MARGIN_LEFT,0), scr_size(D_MARGIN_RIGHT,0) );
+ 	{
+-		add_component(&cb_wait);
++		add_component(&cb_wait,2);
+ 		cb_wait.add_listener( this );
+ 		cb_wait.new_component<gui_scrolled_list_t::const_text_scrollitem_t>( translator::translate( "Full load" ), SYSCOL_TEXT );
+ 		cb_wait.new_component<gui_scrolled_list_t::const_text_scrollitem_t>( translator::translate( "Monthly departures" ), SYSCOL_TEXT );
++		cb_wait.set_rigid(true);
++		new_component<gui_fill_t>();
+ 
++		add_component(&lb_load_str);
++		lb_load_str.set_rigid(true);
+ 		numimp_load.add_listener(this);
++		numimp_load.set_rigid(true);
+ 		add_component(&numimp_load);
++		new_component<gui_fill_t>();
+ 
+-		add_component(&lb_departure_time);
+-
++		add_component(&lb_departure_str);
++		lb_departure_str.set_rigid(true);
+ 		departure.set_rigid(true);
+ 		departure.add_listener(this);
+ 		add_component(&departure);
+-
+ 		new_component<gui_fill_t>();
+ 	}
+ 	end_table();
+@@ -512,7 +517,8 @@
+ 	cb_wait.set_visible(false);
+ 	numimp_load.set_visible(false);
+ 	departure.set_visible(false);
+-	lb_departure_time.set_visible(false);
++	lb_load_str.set_visible(false);
++	lb_departure_str.set_visible(false);
+ 
+ 	if(  !schedule->empty()  ) {
+ 		schedule->set_current_stop( min(schedule->get_count()-1,schedule->get_current_stop()) );
+@@ -524,32 +530,38 @@
+ 			cb_wait.set_visible(true);
+ 			if( schedule->entries[current_stop].get_absolute_departures() ) {
+ 				cb_wait.set_selection( 1 );
++				lb_load_str.set_visible(true);
++				lb_load_str.set_text("Departures per month");
+ 				numimp_load.set_visible( true );
+ 				numimp_load.set_value( schedule->entries[current_stop].get_absolute_departures() );
+ 				numimp_load.set_limits( 1, 154 );
+ 				numimp_load.set_increment_mode( 1 );
+-				lb_departure_time.set_visible( true );
+-				lb_departure_time.set_text( "on the" );
++				lb_departure_str.set_visible( true );
++				lb_departure_str.set_text( "Departs at" );
+ 				departure.set_visible( true );
+ 				departure.set_ticks( schedule->entries[current_stop].waiting_time, true);
+ 			}
+ 			else {
+ 				cb_wait.set_selection( 0 );
++				lb_load_str.set_visible(true);
++				lb_load_str.set_text("Minimum load");
+ 				numimp_load.set_visible( true );
+ 				numimp_load.set_value( schedule->entries[current_stop].minimum_loading );
+ 				numimp_load.set_limits( 0, 100 );
+ 				numimp_load.set_increment_mode( gui_numberinput_t::PROGRESS );
+-				lb_departure_time.set_text( "Departure after" );
+-				lb_departure_time.set_visible( true );
++				lb_departure_str.set_text( "Max. waiting time" );
++				lb_departure_str.set_visible( true );
+ 				departure.set_visible( true );
+ 				departure.set_ticks( schedule->entries[current_stop].waiting_time, false );
+ 			}
+ 		}
+ 		else {
+ 			// waypoint
++
+ 		}
+ 	}
+ 	loading_details->set_size( loading_details->get_size() );
++	set_size(size);
+ }
+ 
+ 
+diff -r -u old/gui/components/gui_schedule.h new/gui/components/gui_schedule.h
+--- old/gui/components/gui_schedule.h	2022-01-12 13:38:46.809674664 +0100
++++ new/gui/components/gui_schedule.h	2022-01-10 18:46:47.355603362 +0100
+@@ -42,7 +42,7 @@
+ 	// always needed
+ 	button_t bt_revert, bt_return;
+ 
+-	gui_label_t lb_departure_time;
++	gui_label_t lb_load_str, lb_departure_str;
+ 	gui_numberinput_t numimp_load;
+ 	gui_combobox_t cb_wait, insert_mode;
+ 
+diff -r -u old/gui/convoi_info_t.cc new/gui/convoi_info_t.cc
+--- old/gui/convoi_info_t.cc	2022-01-12 13:38:46.849674394 +0100
++++ new/gui/convoi_info_t.cc	2022-01-12 11:09:30.840617184 +0100
+@@ -6,6 +6,7 @@
+ #include <stdio.h>
+ 
+ #include "convoi_info_t.h"
++#include "minimap.h"
+ 
+ #include "../vehicle/rail_vehicle.h"
+ #include "../simcolor.h"
+@@ -95,6 +96,7 @@
+ 	gui_frame_t::set_name(cnv->get_name());
+ 	gui_frame_t::set_owner(cnv->get_owner());
+ 
++	minimap_t::get_instance()->set_selected_cnv(cnv);
+ 	set_table_layout(1,0);
+ 
+ 	input.add_listener(this);
+@@ -351,7 +353,6 @@
+ 		line_scrollitem_t::sort_mode = line_scrollitem_t::SORT_BY_NAME;
+ 		line_selector.sort(offset);
+ 		old_line_count = cnv->get_owner()->simlinemgmt.get_line_count();
+-		old_schedule_count = scd.get_schedule()->get_count();
+ 	}
+ }
+ 
+@@ -463,6 +464,7 @@
+ 		init_line_selector();
+ 		reset_min_windowsize();
+ 	}
++	old_schedule_count = scd.get_schedule()->get_count();
+ 
+ 	line_button.enable( dynamic_cast<line_scrollitem_t*>(line_selector.get_selected_item()) );
+ 	line_button2.enable( line.is_bound() );
+@@ -518,6 +520,7 @@
+  */
+ bool convoi_info_t::action_triggered( gui_action_creator_t *comp, value_t v)
+ {
++	minimap_t::get_instance()->set_selected_cnv(cnv);
+ 	if(  comp == &line_button  ) {
+ 		// open selected line as schedule
+ 		if( line_scrollitem_t* li = dynamic_cast<line_scrollitem_t*>(line_selector.get_selected_item()) ) {
+@@ -667,12 +670,14 @@
+ 			apply_schedule();
+ 		}
+ 		scd.highlight_schedule(false);
++		minimap_t::get_instance()->set_selected_cnv(convoihandle_t());
+ 	}
+ 
+ 	if(  ev->ev_class == INFOWIN  &&  ev->ev_code == WIN_TOP  ) {
+ 		if(  switch_mode.get_aktives_tab() == &container_schedule  &&  !cnv->in_depot()  ) {
+ 			cnv->call_convoi_tool( 's', "1" );
+ 			scd.highlight_schedule( true );
++			minimap_t::get_instance()->set_selected_cnv(cnv);
+ 		}
+ 	}
+ 
+diff -r -u old/gui/line_management_gui.cc new/gui/line_management_gui.cc
+--- old/gui/line_management_gui.cc	2022-01-12 13:38:46.849674394 +0100
++++ new/gui/line_management_gui.cc	2022-01-12 11:09:30.840617184 +0100
+@@ -211,6 +211,9 @@
+ 		}
+ 		// start editing
+ 		scd.highlight_schedule(switch_mode.get_aktives_tab() == &container_schedule);
++		if (line->count_convoys() > 0) {
++			minimap_t::get_instance()->set_selected_cnv(line->get_convoy(0));
++		}
+ 	}
+ }
+ 
+@@ -253,10 +256,6 @@
+ 			scrolly_convois.clear_elements();
+ 			for( uint32 i = 0; i < line->count_convoys(); i++ ) {
+ 				convoihandle_t cnv = line->get_convoy( i );
+-				if( i == 0 ) {
+-					// just to mark the schedule on the minimap
+-					minimap_t::get_instance()->set_selected_cnv( cnv );
+-				}
+ 				scrolly_convois.new_component<gui_convoiinfo_t>( cnv );
+ 			}
+ 			has_changed = true;
+@@ -399,6 +398,10 @@
+ 
+ bool line_management_gui_t::action_triggered( gui_action_creator_t *comp, value_t v )
+ {
++	if(line->count_convoys()>0) {
++		minimap_t::get_instance()->set_selected_cnv(line->get_convoy(0));
++	}
++
+ 	if( comp == &scd ) {
+ 		if( !v.p ) {
+ 			// revert
+@@ -505,12 +508,16 @@
+ 			apply_schedule();
+ 		}
+ 		scd.highlight_schedule( false );
++		minimap_t::get_instance()->set_selected_cnv(convoihandle_t());
+ 	}
+ 
+ 	if(  ev->ev_class == INFOWIN  &&  ev->ev_code == WIN_TOP  ) {
+ 		if(  switch_mode.get_aktives_tab() == &container_schedule  ) {
+ 			scd.highlight_schedule( true );
+ 		}
++		if (line->count_convoys() > 0) {
++			minimap_t::get_instance()->set_selected_cnv(line->get_convoy(0));
++		}
+ 	}
+ 
+ 	return gui_frame_t::infowin_event( ev );
+diff -r -u old/gui/minimap.cc new/gui/minimap.cc
+--- old/gui/minimap.cc	2022-01-12 13:38:46.849674394 +0100
++++ new/gui/minimap.cc	2022-01-12 11:09:30.840617184 +0100
+@@ -1751,6 +1751,13 @@
+ 		}
+ 
+ 	}
++
++	if (current_cnv.is_bound()) {
++		for(  int i = 0;  i < current_cnv->get_vehicle_count();  i++  ) {
++			const scr_coord veh_pos = map_to_screen_coord(current_cnv->get_vehikel(i)->get_pos().get_2d()) + pos;
++			display_fillbox_wh_clip_rgb(veh_pos.x-3, veh_pos.y-3, 7, 7, color_idx_to_rgb(COL_MAGENTA), true);
++		}
++	}
+ }
+ 
+ 
+diff -r -u old/sys/simsys.cc new/sys/simsys.cc
+--- old/sys/simsys.cc	2022-01-12 13:38:46.925673878 +0100
++++ new/sys/simsys.cc	2022-01-12 14:27:30.350084491 +0100
+@@ -1027,10 +1027,12 @@
+ bool dr_download_pakset( const char *data_dir, bool portable )
+ {
+ #ifdef _WIN32
+-	std::string param(portable ? "/P /D=" : "/D=");
+-	param.append(data_dir);
+-	U16View const wparam(param.c_str());
++	int old_fullscreen = dr_suspend_fullscreen();
++
+ 	U16View const wpath_to_program(data_dir);
++	WCHAR wparam[1024];
++	swprintf(wparam, portable ? L"/P /D=%ls" : L"/D=%ls", wpath_to_program);
++
+ 
+ 	SHELLEXECUTEINFOW shExInfo;
+ 	shExInfo.cbSize = sizeof(shExInfo);
+@@ -1052,6 +1054,7 @@
+ 		WaitForSingleObject( shExInfo.hProcess, INFINITE );
+ 		CloseHandle( shExInfo.hProcess );
+ 	}
++	dr_restore_fullscreen(old_fullscreen);
+ 	return true;
+ #else
+ 	(void)portable;

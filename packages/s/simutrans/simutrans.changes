@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 10 17:31:29 UTC 2022 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 123-0
+
+- update to version 123.0
+- The most noticeable change will be the new GUI, which is now enforced in all dialogs. 
+You can now also schedule convois with fixed departure times, if you want to play 
+model railroad. Rivers now go from their source through lakes until the sea, and 
+are shippable after passing a lake. Paks can be installed now ingame. There were 
+of course also lot of bugfixes, not least thanks to the automatic testing.
+- This release is build from svn revision number 10317.
+- Added patch-bugs.patch
+- Since the release contains some severe regression bugs, which were solved in the weeks after the release, 
+the solutions were included here. See for the bugs: 
+1: Map showing network: https://forum.simutrans.com/index.php/topic,21320.0.html 
+2: The new setting  stop_halt_as_scheduled should be disabled by default: 
+https://forum.simutrans.com/index.php/topic,21317.msg198325.html#msg198325
+- Complete history can be found at (unofficial):
+  https://github.com/aburch/simutrans/blob/master/simutrans/history.txt
+
+-------------------------------------------------------------------
 Sun Oct 11 17:08:01 UTC 2020 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 122-0
 
 - update to version 122.0

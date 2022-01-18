@@ -1,8 +1,8 @@
---- old/sys/simsys.cc	2018-09-10 08:15:34.305159327 +0200
-+++ new/sys/simsys.cc	2018-09-10 08:19:59.325153888 +0200
-@@ -363,7 +363,7 @@
- 	find_directory(B_USER_DIRECTORY, &userDir);
- 	sprintf(buffer, "%s/simutrans", userDir.Path());
+--- old/sys/simsys.cc   2022-01-11 11:20:33.991101481 +0100
++++ new/sys/simsys.cc   2022-01-11 11:01:19.637291267 +0100
+@@ -395,7 +395,7 @@
+ #elif defined __ANDROID__
+ 	tstrncpy(buffer,SDL_GetPrefPath("Simutrans Team","simutrans"),lengthof(buffer));
  #else
 -	sprintf(buffer, "%s/simutrans", getenv("HOME"));
 +	sprintf(buffer, "%s/.simutrans", getenv("HOME"));

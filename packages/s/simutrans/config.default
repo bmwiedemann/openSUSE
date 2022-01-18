@@ -84,7 +84,7 @@ USE_ZSTD=0
 # In order to use the flags, add a line like this: (-Dxxx)
 # FLAGS = -DUSE_C
 
-FLAGS += -DREVISION="9274"
+FLAGS += -DREVISION="10317"
 
 # Output directories:
 #

@@ -1,7 +1,7 @@
 #
 # spec file for package simutrans
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define pkgver 122-0
+%define pkgver 123-0
 Name:           simutrans
-Version:        122.0
+Version:        123.0
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
@@ -29,6 +29,10 @@ Source1:        config.default
 Source2:        http://www.simutrans.com/images/resources/simutrans-square.svg
 # PATCH-FIX-UPSTREAM http://forum.simutrans.com/index.php?topic=11173.0
 Patch0:         simutrans-fhs-home-directory.patch
+# The next patch fixes: https://forum.simutrans.com/index.php/topic,21320.0.html 
+# and https://forum.simutrans.com/index.php/topic,21317.msg198325.html#msg198325
+# PATCH-FIX-UPSTREAM patch-bugs.patch -- Fix known regressions until next release
+Patch1:         patch-bugs.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  unzip
@@ -69,6 +73,7 @@ to simutrans .pak files.
 %prep
 %setup -q -c -n simutrans
 %patch0 -p1
+%patch1 -p1
 cp %{SOURCE1} .
 # files with the wrong line-endings, which give a rpmlint warning:
 dos2unix simutrans/*.txt
