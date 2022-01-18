@@ -1,0 +1,31 @@
+--- boto-2.49.0/boto/dynamodb/types.py
++++ boto-2.49.0/boto/dynamodb/types.py
+@@ -27,7 +27,7 @@
+ import base64
+ from decimal import (Decimal, DecimalException, Context,
+                      Clamped, Overflow, Inexact, Underflow, Rounded)
+-from collections import Mapping
++from collections.abc import Mapping
+ from boto.dynamodb.exceptions import DynamoDBNumberError
+ from boto.compat import filter, map, six, long_type
+ 
+--- boto-2.49.0/boto/mws/connection.py
++++ boto-2.49.0/boto/mws/connection.py
+@@ -109,7 +109,7 @@
+ def destructure_object(value, into, prefix, members=False):
+     if isinstance(value, boto.mws.response.ResponseElement):
+         destructure_object(value.__dict__, into, prefix, members=members)
+-    elif isinstance(value, collections.Mapping):
++    elif isinstance(value, collections.abc.Mapping):
+         for name in value:
+             if name.startswith('_'):
+                 continue
+@@ -117,7 +117,7 @@
+                                members=members)
+     elif isinstance(value, six.string_types):
+         into[prefix] = value
+-    elif isinstance(value, collections.Iterable):
++    elif isinstance(value, collections.abc.Iterable):
+         for index, element in enumerate(value):
+             suffix = (members and '.member.' or '.') + str(index + 1)
+             destructure_object(element, into, prefix + suffix,

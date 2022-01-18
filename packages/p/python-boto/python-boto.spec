@@ -1,7 +1,7 @@
 #
 # spec file for package python-boto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ URL:            https://github.com/boto/boto/
 Source:         https://files.pythonhosted.org/packages/source/b/boto/boto-%{version}.tar.gz
 Source1:        boto.cfg
 Patch:          boto-no-builtin-certs.patch
+Patch2:         boto-python310.patch
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module httpretty >= 0.7.0}
 BuildRequires:  %{python_module mock >= 1.0.1}
@@ -45,7 +46,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-paramiko >= 1.10.0
 Requires:       python-xml
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-requests >= 1.2.3
 Recommends:     python-rsa >= 3.1.4
 Suggests:       python-PyYAML >= 3.10
@@ -111,6 +112,9 @@ by Amazon Web Services. At the moment, boto supports:
 sed -i '/^#!/d' boto/{services/bs,services/result,pyami/launch_ami}.py
 rm boto/cacerts/cacerts.txt
 %patch
+%if 0%{?suse_version} >= 1500
+%patch2 -p1
+%endif
 
 %build
 %python_build
@@ -157,14 +161,16 @@ touch $HOME/.ssh/known_hosts
 %python_exec -m nose -v tests/unit -e 'test_.*(canned|custom)_policy|test_hmac|test_constructor|test_item_lookup'
 
 %post
-%{python_install_alternative asadmin bundle_image cfadmin cq cwutil dynamodb_dump dynamodb_load elbadmin fetch_file glacier instance_events kill_instance launch_instance list_instances lss3 mturk pyami_sendmail route53 s3put sdbadmin taskadmin boto.cfg}
+%{python_install_alternative asadmin bundle_image cfadmin cq cwutil dynamodb_dump dynamodb_load elbadmin fetch_file glacier instance_events kill_instance launch_instance list_instances lss3 mturk pyami_sendmail route53 s3put sdbadmin taskadmin  %{_sysconfdir}/boto.cfg}
 
-%preun
+%postun
 %python_uninstall_alternative asadmin
 
 %files %{python_files}
 %doc README.rst
-%config %python_alternative %{_sysconfdir}/boto.cfg
+%ghost /etc/alternatives/boto.cfg
+%config %{_sysconfdir}/boto.cfg
+%config %{_sysconfdir}/boto.cfg-%{python_bin_suffix}
 %python_alternative %{_bindir}/asadmin
 %python_alternative %{_bindir}/bundle_image
 %python_alternative %{_bindir}/cfadmin
@@ -186,6 +192,7 @@ touch $HOME/.ssh/known_hosts
 %python_alternative %{_bindir}/s3put
 %python_alternative %{_bindir}/sdbadmin
 %python_alternative %{_bindir}/taskadmin
-%{python_sitelib}/*
+%{python_sitelib}/boto
+%{python_sitelib}/boto-%{version}*-info
 
 %changelog

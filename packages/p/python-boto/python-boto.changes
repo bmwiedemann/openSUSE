@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 17 11:00:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add boto-python310.patch instead of sed statements 
+
+-------------------------------------------------------------------
+Thu Jan  6 19:30:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix collections for python 3.10. This breaks compatibility with
+  python2, but no Python 3.10 enabled distro will have that one
+- Fix update-alternatives
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

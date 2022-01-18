@@ -61,4 +61,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853814</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>1ba42e9f8f5a2ddd9f33eaef337d9e7a</srcmd5>
+    <version>2.49.0</version>
+    <time>1642548905</time>
+    <user>dimstar_suse</user>
+    <comment>- add boto-python310.patch instead of sed statements 
+
+- Fix collections for python 3.10. This breaks compatibility with
+  python2, but no Python 3.10 enabled distro will have that one
+- Fix update-alternatives</comment>
+    <requestid>946931</requestid>
+  </revision>
 </revisionlist>
