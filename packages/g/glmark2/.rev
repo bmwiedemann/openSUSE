@@ -237,4 +237,14 @@
   * Use highp precision modifier only on GLES</comment>
     <requestid>926156</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>67fa8e2aaf00c10d1534db7cc7ffb5cc</srcmd5>
+    <version>20211223</version>
+    <time>1642548911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211223:
+  * Build,Doc: Update files for 2021.12 release
+  * NativeStateDrm: Fix crash when we can't become DRM master</comment>
+    <requestid>947123</requestid>
+  </revision>
 </revisionlist>

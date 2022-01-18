@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 18 07:55:52 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20211223:
+  * Build,Doc: Update files for 2021.12 release
+  * NativeStateDrm: Fix crash when we can't become DRM master
+
+-------------------------------------------------------------------
 Tue Oct 19 08:08:08 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211008:
