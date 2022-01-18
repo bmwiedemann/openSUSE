@@ -1,7 +1,7 @@
 #
 # spec file for package mediastreamer2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.0.53
+Version:        5.0.66
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-3.0-or-later

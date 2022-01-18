@@ -417,4 +417,14 @@
     <comment></comment>
     <requestid>935850</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d937e463255054ee8ecd67000a2c721e</srcmd5>
+    <version>5.0.66</version>
+    <time>1642548917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.66:
+  * no changelog
+</comment>
+    <requestid>947170</requestid>
+  </revision>
 </revisionlist>
