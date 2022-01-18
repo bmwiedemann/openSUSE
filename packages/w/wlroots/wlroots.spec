@@ -1,7 +1,7 @@
 #
 # spec file for package wlroots
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define libname libwlroots9
-%bcond_without  libcap
 %bcond_without  x11_backend
 %bcond_without  xwayland
 %bcond_without  xcb_errors
@@ -50,9 +49,6 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.16
 BuildRequires:  pkgconfig(wayland-server) >= 1.16
 BuildRequires:  pkgconfig(xkbcommon)
-%if %{with libcap}
-BuildRequires:  pkgconfig(libcap)
-%endif
 %if %{with x11_backend} || %{with xwayland}
 BuildRequires:  xorg-x11-server-wayland
 BuildRequires:  pkgconfig(x11-xcb)
@@ -93,8 +89,7 @@ Pluggable, composable modules for building a Wayland compositor.
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \
-  %{?with_libcap:-Dlibcap=enabled} \
-  %{?with_x11_backend:-Dx11_backend=enabled} \
+  %{?with_x11_backend:-Dx11-backend=enabled} \
   %{?with_xwayland:-Dxwayland=enabled} \
   %{?with_xcb_errors:-Dxcb-errors=enabled}
 %meson_build

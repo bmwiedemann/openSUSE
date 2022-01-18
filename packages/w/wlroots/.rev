@@ -313,4 +313,14 @@
     <comment></comment>
     <requestid>935934</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>82b9e2ab75831ea8edd76787866cda9e</srcmd5>
+    <version>0.14.1</version>
+    <time>1642548927</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove libcap build option. It's not used since 0.11.0:
+  https://github.com/swaywm/wlroots/pull/2140
+- Fix x11 backend option: x11_backend is actually x11-backend</comment>
+    <requestid>947258</requestid>
+  </revision>
 </revisionlist>
