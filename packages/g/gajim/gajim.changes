@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 18 08:50:42 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Plugins sub-folder must be owned by a package
+
+-------------------------------------------------------------------
 Sat Dec 18 18:15:48 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.3.3:

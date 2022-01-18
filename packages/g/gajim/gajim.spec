@@ -97,6 +97,9 @@ mkdir -p %{buildroot}%{_datadir}/
 mv %{buildroot}{%{python3_sitelib}/%{name}/data,%{_datadir}/%{name}}/
 ln -s %{_datadir}/%{name} %{buildroot}%{python3_sitelib}/%{name}/data
 
+# Plugins sub-folder must be owned by a package
+mkdir %{buildroot}%{_datadir}/%{name}/plugins
+
 %suse_update_desktop_file -r org.gajim.Gajim Network InstantMessaging
 %fdupes %{buildroot}%{_prefix}/
 %find_lang %{name}
