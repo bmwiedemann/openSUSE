@@ -1,7 +1,7 @@
 #
 # spec file for package jdom2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jdom2
-Version:        2.0.6
+Version:        2.0.6.1
 Release:        0
 Summary:        Java manipulation of XML
 License:        Saxpath
@@ -31,12 +31,11 @@ Source2:        jdom-junit-template.pom
 # Disable gpg signatures
 # Process contrib and junit pom files
 Patch0:         0001-Adapt-build.patch
-# PATCH-FIX-UPSTREAM bsc#1187446 CVE-2021-33813 Fix XXE issue in SAXBuilder
-Patch1:         jdom2-CVE-2021-33813.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
 BuildRequires:  isorelax
+BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
 BuildRequires:  jaxen
 BuildRequires:  xalan-j2
@@ -67,12 +66,11 @@ find -name '*.jar' -delete
 find -name '*.class' -delete
 
 %patch0 -p1
-%patch1 -p1
 
 cp -p %{SOURCE1} maven/contrib.pom
 cp -p %{SOURCE2} maven/junit.pom
 
-sed -i 's/\r//' LICENSE.txt README.txt
+sed -i 's/\r//' LICENSE.txt
 
 # Unable to run coverage: use log4j12 but switch to log4j 2.x
 sed -i.coverage "s|coverage, jars|jars|" build.xml
@@ -80,7 +78,7 @@ sed -i.coverage "s|coverage, jars|jars|" build.xml
 %build
 mkdir lib
 build-jar-repository lib xerces-j2 xml-commons-apis jaxen junit isorelax xalan-j2 xalan-j2-serializer
-%ant -Dversion=%{version} -Dcompile.target=6 -Dcompile.source=6 -Dj2se.apidoc=%{_javadocdir}/java maven
+%{ant} -Dversion=%{version} -Dcompile.target=7 -Dcompile.source=7 -Dj2se.apidoc=%{_javadocdir}/java maven
 
 %install
 # jar
@@ -102,7 +100,7 @@ cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc CHANGES.txt COMMITTERS.txt README.txt TODO.txt
+%doc CHANGES.txt COMMITTERS.txt README.md TODO.txt
 %license LICENSE.txt
 
 %files javadoc

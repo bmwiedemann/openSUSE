@@ -23,4 +23,12 @@
     <comment>CVE-2021-33813</comment>
     <requestid>903078</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8a7ccbc5451cd491ee70f117fbe8026a</srcmd5>
+    <version>2.0.6.1</version>
+    <time>1642548909</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.6.1</comment>
+    <requestid>947124</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 18 07:47:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.0.6.1
+  * Upstream release to fix CVE-2021-33813
+- Removed patch:
+  * jdom2-CVE-2021-33813.patch
+    + integrated upstream
+- Modified patch:
+  * 0001-Adapt-build.patch
+    + rebase to changed context
+
+-------------------------------------------------------------------
 Thu Jun 17 09:17:40 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1187446, CVE-2021-33813]
