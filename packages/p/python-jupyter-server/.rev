@@ -188,4 +188,27 @@
     <comment></comment>
     <requestid>943591</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>662c073d412f7d9f51492bd9cca9f065</srcmd5>
+    <version>1.13.3</version>
+    <time>1642548903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.3
+  * More updates to unit tests for pending kernels work #662
+    (@Zsailer)
+  * bump traitlets dependency #663 (@Zsailer)
+- Update to 1.13.2
+  * Don't block the event loop when exporting with nbconvert #655
+    (@davidbrochart)
+  * Add more awaits for pending kernel in unit tests #654
+    (@Zsailer)
+  * Print IPv6 url as hostname or enclosed in brackets #652 (@op3)
+  * Run pre_save_hook before model check #643 (@davidbrochart)
+  * handle KeyError when get session #641 (@ccw630)
+  * Clean up deprecations #650 (@blink1073)
+  * Update branch references #646 (@blink1073)
+  * pyproject.toml: clarify build system version #634
+    (@adamjstewart) (forwarded request 946718 from bnavigator)</comment>
+    <requestid>946720</requestid>
+  </revision>
 </revisionlist>

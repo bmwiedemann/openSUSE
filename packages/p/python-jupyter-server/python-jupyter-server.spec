@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server%{psuffix}
-Version:        1.13.1
+Version:        1.13.3
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -43,27 +43,35 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-server/jupyter_server
 # need the release tarball for the static stylesheets
 Source:         https://github.com/jupyter-server/jupyter_server/releases/download/v%{version}/jupyter_server-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module setuptools}
-
 # We need the full stdlib
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
+%if %{with test}
+BuildRequires:  %{python_module jupyter-server-test = %{version}}
+# https://github.com/jupyter-server/jupyter_server/issues/666
+BuildRequires:  %{python_module jupyter-client >= 7.1.1}
+BuildRequires:  %{python_module pytest-timeout}
+%endif
+Requires:       python >= 3.7
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 6.1.1
-Requires:       python-jupyter-core >= 4.4.0
+Requires:       python-jupyter-core >= 4.6.0
 Requires:       python-nbconvert
 Requires:       python-nbformat
+Requires:       python-packaging
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
-Requires:       python-traitlets >= 4.2.1
+Requires:       python-traitlets >= 5
 Requires:       python-websocket-client
 %if %{with libalternatives}
 Requires:       alts
@@ -74,9 +82,6 @@ Requires(postun):update-alternatives
 %endif
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
-%if %{with test}
-BuildRequires:  %{python_module jupyter-server-test = %{version}}
-%endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter-server = %{version}-%{release}
 Obsoletes:      jupyter-jupyter-server < %{version}-%{release}
@@ -141,7 +146,7 @@ if [ -e ~/.local/share/jupyter ]; then
     echo "WARNING: Not a clean test environment."
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
-%pytest jupyter_server
+%pytest jupyter_server --timeout 60 -p no:threadexception -p no:unraisableexception
 %endif
 
 %if ! %{with test}
