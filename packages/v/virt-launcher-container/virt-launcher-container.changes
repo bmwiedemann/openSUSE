@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 10:56:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle aarch64
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
 Mon Jan 10 09:52:56 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Symlink UEFI firmware with AMD SEV support

@@ -3,11 +3,16 @@
 #!BuildTag: %%TAGPREFIX%%/virt-launcher:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/virt-launcher:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
+#!ExclusiveArch: x86_64 aarch64
+
 # virt-launcher container image
 # KUBEVIRTFROM defined in prjconf, e.g.
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
+# TARGETARCH defined in prjconf, to handle architecture specific bits
+# since TARGETARCH is not defined in OBS builds yet.
+ARG TARGETARCH
 
 # labelprefix=%%LABELPREFIX%%
 PREFIXEDLABEL org.opencontainers.image.title="kubevirt virt-launcher container"
@@ -29,21 +34,42 @@ RUN zypper -n install \
               libvirt-daemon-qemu \
               nftables \
               qemu-tools \
-              qemu-x86 \
               socat \
               tar \
               timezone \
               vim \
-              xorriso && \
-    zypper clean -a && \
+              xorriso
+#!ArchExclusiveLine: x86_64
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+              zypper -n install qemu-x86 ; \
+              fi;
+
+#!ArchExclusiveLine: aarch64
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+              zypper -n install \
+              qemu-arm \
+              qemu-uefi-aarch64 ; \
+              fi;
+
+RUN zypper clean -a && \
     mkdir -p /usr/share/kubevirt/virt-launcher
 
-RUN mkdir -p /usr/share/OVMF && \
+RUN mkdir -p /usr/share/OVMF
+
+#!ArchExclusiveLine: x86_64
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
     ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.fd && \
     ln -s ../qemu/ovmf-x86_64-vars.bin /usr/share/OVMF/OVMF_VARS.fd && \
     ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
     ln -s ../qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/OVMF/OVMF_CODE.secboot.fd && \
-    ln -s ../qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/OVMF/OVMF_VARS.secboot.fd
+    ln -s ../qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/OVMF/OVMF_VARS.secboot.fd ; \
+    fi;
+
+#!ArchExclusiveLine: aarch64
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+    ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/OVMF/AAVMF_CODE.fd && \
+    ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/OVMF/AAVMF_VARS.fd ; \
+    fi;
 
 COPY augconf /augconf
 
