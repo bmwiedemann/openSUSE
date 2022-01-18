@@ -1,7 +1,7 @@
 #
 # spec file for package qtile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define skip_python36 1
-%define skip_python2 1
 %bcond_without test
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 Name:           qtile
 Version:        0.18.1
 Release:        0
@@ -30,12 +28,6 @@ Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
 Source:         https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  %{python_module cairocffi >= 0.9.0}
-BuildRequires:  %{python_module cffi >= 1.1.0}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.11.0}
-BuildRequires:  %{python_module xcffib >= 0.10.1}
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  libpango-1_0-0
@@ -43,7 +35,13 @@ BuildRequires:  libpulse-devel
 BuildRequires:  libpulse0
 BuildRequires:  librsvg
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-cairocffi >= 0.9.0
+BuildRequires:  python3-cffi >= 1.1.0
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-six >= 1.11.0
+BuildRequires:  python3-xcffib >= 0.10.1
 BuildRequires:  update-desktop-files
 Requires:       python3-cairocffi >= 0.9.0
 Requires:       python3-cairocffi-pixbuf >= 0.9.0
@@ -52,29 +50,20 @@ Requires:       python3-six >= 1.11.0
 Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     %{python_module iwlib}
-Recommends:     %{python_module keyring}
-Recommends:     %{python_module psutil}
-Recommends:     %{python_module python-dateutil}
-Recommends:     %{python_module python-mpd2}
-Recommends:     %{python_module pyxdg}
 Recommends:     libxcb-cursor0
 Recommends:     pulseaudio
+Recommends:     python3-iwlib
+Recommends:     python3-keyring
+Recommends:     python3-psutil
+Recommends:     python3-python-dateutil
+Recommends:     python3-python-mpd2
+Recommends:     python3-pyxdg
 Recommends:     sensors
-Suggests:       %{python_module jupyter_console}
-Suggests:       %{python_module jupyter_ipykernel}
-Suggests:       %{python_module tk}
+Suggests:       python3-jupyter_console
+Suggests:       python3-jupyter_ipykernel
+Suggests:       python3-tk
 
 %if %{with test}
-BuildRequires:  %{python_module bowler}
-BuildRequires:  %{python_module cairocffi-pixbuf}
-BuildRequires:  %{python_module curses}
-BuildRequires:  %{python_module dbus_next}
-BuildRequires:  %{python_module gobject-Gdk}
-BuildRequires:  %{python_module gobject}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module xdg}
 BuildRequires:  ImageMagick
 BuildRequires:  dbus-1
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -84,6 +73,15 @@ BuildRequires:  libnotify
 BuildRequires:  libnotify-tools
 BuildRequires:  librsvg
 BuildRequires:  procps
+BuildRequires:  python3-bowler
+BuildRequires:  python3-cairocffi-pixbuf
+BuildRequires:  python3-curses
+BuildRequires:  python3-dbus_next
+BuildRequires:  python3-gobject
+BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-pytest
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-xdg
 BuildRequires:  xcalc
 BuildRequires:  xclock
 BuildRequires:  xeyes

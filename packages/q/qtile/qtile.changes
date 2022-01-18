@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 23 09:24:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do only pull in default python3 providers: this package does not
+  provide any python module, so there is no reason in pulling all
+  python flavors into the buildroot.
+
+-------------------------------------------------------------------
 Wed Sep 22 14:37:51 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
 - Update to version 0.18.1:
   * features
