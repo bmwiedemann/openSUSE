@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 18 06:06:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service
+
+-------------------------------------------------------------------
 Tue May 11 15:01:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not compile/run tests against the legacy guava20 package

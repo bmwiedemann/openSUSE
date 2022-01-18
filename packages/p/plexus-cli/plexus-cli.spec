@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,6 @@ Summary:        Command Line Interface facilitator for Plexus
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-cli
-# git clone git://github.com/codehaus-plexus/plexus-cli.git
-# git --git-dir plexus-cli/.git archive --prefix plexus-cli-1.6/ 8927458e81 | xz >plexus-cli-1.6.tar.xz
 Source0:        %{name}-%{version}.tar.xz
 Source1:        LICENSE-2.0.txt
 Source100:      %{name}-build.xml
