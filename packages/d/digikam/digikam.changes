@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 17 09:49:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.5.0
+  * https://www.digikam.org/news/2022-01-16-7.5.0_release_announcement/
+- New features (from NEWS):
+General : MacOS package, Windows installer, and AppImage bundle use
+            KF5 5.89 and KAPPS 21.12.0 frameworks.
+General : AppImage Linux bundle now support Platform Input Context
+          FCITX (https://fcitx-im.org/wiki/Fcitx_5).
+General : Improve RTL translations support.
+General : GUI internationalization and localization updates with
+          more than 50 languages available.
+General : Add OpenWith contextual menu support under MacOS.
+- 734 bugs fixed
+
+-------------------------------------------------------------------
 Sat Dec 18 15:27:40 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.4.0
