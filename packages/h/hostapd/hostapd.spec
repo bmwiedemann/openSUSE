@@ -1,7 +1,7 @@
 #
 # spec file for package hostapd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  apparmor
 Name:           hostapd
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Daemon for running a WPA capable Access Point
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -31,9 +31,6 @@ Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
 Source5:        apparmor-usr.sbin.hostapd
-Patch1:         CVE-2019-16275.patch
-Patch2:         CVE-2020-12695.patch
-Patch3:         CVE-2021-30004.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
