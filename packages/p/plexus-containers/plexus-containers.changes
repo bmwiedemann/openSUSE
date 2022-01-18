@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 18 07:57:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.1
+  * Last version before deprecation
+  * Requires Java 7 and Maven 3.2.5+
+  * Upgrade ASM to 9.2
+  * Security upgrade org.jdom:jdom2 from 2.0.6 to 2.0.6.1
+
+-------------------------------------------------------------------
 Sun Nov 24 14:46:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.1.0

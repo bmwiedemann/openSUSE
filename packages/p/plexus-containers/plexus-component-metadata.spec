@@ -1,7 +1,7 @@
 #
-# spec file for package plexus-component-metadata
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global comp_name plexus-component-metadata
 %bcond_with tests
 Name:           %{comp_name}
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Component metadata from %{base_name}
 # Most of the files are either under ASL 2.0 or MIT
@@ -82,8 +82,6 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 
 # For Maven 3 compat
 %pom_add_dep org.apache.maven:maven-core plexus-component-metadata
-
-%pom_change_dep -r :google-collections com.google.guava:guava:20.0
 
 # ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
 %pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
