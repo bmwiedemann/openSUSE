@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 18 09:49:55 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642494095.69489cc2:
+  * Fix missing parameter for consoles::vnc_base::get_last_mouse_set
+  * Use more log functions from bmwqemu
+  * Consolidate log call formats in backend::ipmi and backend::qemu
+  * generalhw: Add 'power' API support
+  * generalhw: Improve logging of run_cmd()
+  * generalhw: Prevent RWP::Session stealing exit code from IPC::Run
+  * Enable assets collection for generalhw backend too
+  * backend: Avoid re-entrant close_pipes() call
+
+-------------------------------------------------------------------
 Sun Jan 16 02:42:22 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642298632.e723f49f:
