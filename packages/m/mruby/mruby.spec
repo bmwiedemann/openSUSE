@@ -2,7 +2,7 @@
 #
 # spec file for package mruby
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,10 @@ URL:            https://github.com/mruby/mruby/
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM CVE-2021-4110.patch -- https://github.com/mruby/mruby/commit/f5e10c5a79a17939af763b1dcf5232ce47e24a34
 Patch0:         CVE-2021-4110.patch
+# PATCH-FIX-UPSTREAM CVE-2022-0240.patch -- https://github.com/mruby/mruby/commit/31fa3304049fc406a201a72293cce140f0557dca
+Patch1:         CVE-2022-0240.patch
+# PATCH-FIX-UPSTREAM CVE-2022-0080.patch -- https://github.com/mruby/mruby/commit/28ccc664e5dcd3f9d55173e9afde77c4705a9ab6
+Patch2:         CVE-2022-0080.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

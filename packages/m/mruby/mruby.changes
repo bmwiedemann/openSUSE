@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 18 08:58:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added CVE-2022-0080.patch from upstream,
+  fixed Heap-based Buffer Overflow boo#1194244 / CVE-2022-0080
+
+-------------------------------------------------------------------
+Tue Jan 18 08:47:09 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added CVE-2022-0240.patch from upstream,
+  fixed NULL Pointer Dereference boo#1194808 / CVE-2022-0240
+
+-------------------------------------------------------------------
 Thu Dec 16 11:30:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added CVE-2021-4110.patch from upstream, fixes boo#1193796 / CVE-2021-4110
