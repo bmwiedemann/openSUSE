@@ -1,7 +1,7 @@
 #
 # spec file for package kstars
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.5.6
+Version:        3.5.7
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the

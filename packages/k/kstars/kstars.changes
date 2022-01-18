@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan 18 07:08:33 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.7:
+  * Fix mount model crash where it was calling system abort instead of align abort
+  * Use KSNotification when rejection motions outside of enabled mount limits.
+  * In Edit job mode, set default button to validate job. On exit edit mode,
+    reset default button to preview.
+  * Add support for flat darks.
+  * Deactivating meridian flip while PAA is running
+  * Don't allow guidestars to redo star correspondence if it isn't the first guide frame
+  * In case we have pending in-sequence tasks, we need to suspend fast exposure to...
+  * Change label for new dither control, plus some dither and calibration code cleanup.
+  * Use xplanet to generate images for planetery bodies
+  * Fix bugs involving the reading and writing of user's notes (logs) on objects
+  * Add support to dragging mosaic panels around
+  * Display comets at almost all zooms, default names now 1AU.
+  * Fix issue where restarted guide camera was not properly reassigned as
+    the current camera due to conflicting states.
+  * Add log when restarting a driver
+  * Enable complete flat capture with ADU calculation without using previews
+  * Bugfix guiding deviation restart aborted capture
+  * PolarAlign: Add image number display in refresh phase.
+- Full changelog: https://invent.kde.org/education/kstars/-/blob/stable-3.5.7/ChangeLog
+
+-------------------------------------------------------------------
 Fri Nov 19 08:42:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.6:
