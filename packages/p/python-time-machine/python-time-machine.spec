@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-time-machine
 Group:          Development/Languages/Python
 Version:        2.6.0
@@ -27,7 +26,7 @@ License:        MIT
 URL:            https://github.com/adamchainz/time-machine
 # pypi packages don't contain the tests anymore since 2.2.0, see changelog
 Source:         https://github.com/adamchainz/time-machine/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION
@@ -36,6 +35,8 @@ BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module pytzdata}
 # /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
+%{?python_enable_dependency_generator}
 %python_subpackages
 
 %description
