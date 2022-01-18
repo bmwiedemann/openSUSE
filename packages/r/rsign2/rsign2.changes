@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 15 12:00:00 UTC 2022 - cunix@mail.de
+
+- Bump minimum Rust version to 1.46
+- Catch more vendored licenses
+
+-------------------------------------------------------------------
+Fri Jan  7 01:35:27 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update to 0.6.1
+- Change packaging to use obs_scm and cargo services
+
+-------------------------------------------------------------------
 Tue Feb 16 12:00:00 UTC 2021 - cunix@mail.de
 
 - Initial rsign2 package version 0.5.7

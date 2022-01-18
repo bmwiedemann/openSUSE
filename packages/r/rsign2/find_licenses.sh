@@ -16,6 +16,7 @@ licenses_file=$(mktemp /tmp/license_files_XXXXXXXXXX.txt)
 goahead=0
 hash_list=()
 filename_list=()
+legal_file_names="copying copyright legal licence license notice patents unlicense"
 
 if [[ -z "$vendor_licenses_dir" ]]
   then
@@ -35,11 +36,11 @@ if [[ -z "$vendor_licenses_dir" ]]
           then
             echo Searching for licenses ...
             rm $licenses_file
-            find ./*/ -iname  "license*" | sort > $licenses_file
-            find ./*/ -iname  "licence*" | sort >> $licenses_file
-            find ./*/ -iname  "copying*" | sort >> $licenses_file
-            find ./*/ -iname  "notice*" | sort >> $licenses_file
-            find ./*/ -iname  "patents*" | sort >> $licenses_file
+            for item in $legal_file_names
+              do
+                echo searching for file names starting with $item
+                find ./*/ -iname  "$item*" | sort >> $licenses_file
+              done
             goahead=1
           else
             echo "$vendor_licenses_dir" is not a directory.

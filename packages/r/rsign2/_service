@@ -1,0 +1,28 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/jedisct1/rsign2.git</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">0.6.1</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">rsign2</param>
+     <param name="compression">xz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">rsign2</param>
+  </service>
+</services>
+
+

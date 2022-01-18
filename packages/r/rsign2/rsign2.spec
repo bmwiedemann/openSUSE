@@ -1,7 +1,8 @@
 #
-# spec file for package rsign2
+# spec file
 #
-# Copyright (c) 2021 cunix
+# Copyright (c) 2021-2022 cunix
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,28 +20,29 @@
 %define _buildshell /bin/bash
 %define vlic_dir  vendored
 %define short_name  rsign
-%define last_update  20210216
+%define last_update  20220115
+
+# repeated here to guard against script deletes
+#
+# Copyright (c) 2021-2022 cunix
+#
 
 Name:           %{short_name}2
-Version:        0.5.7
+Version:        0.6.1+0
 Release:        0
 Summary:        Command-line tool to sign files and verify signatures
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/jedisct1/%{name}
-Source0:        https://codeload.github.com/jedisct1/%{name}/tar.gz/%{version}#/%{name}-%{version}.tar.gz
-# created with "cargo vendor --versioned-dirs"
-Source1:        vendor-%{version}.tar.xz
-# to verify Source1:
-Source2:        Cargo-%{version}-%{last_update}.lock
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
 # Find licenses of dependency packages.
 Source3:        find_licenses.sh
 # Install licenses of dependency packages.
 Source4:        install_licenses.sh
-BuildRequires:  cargo
-# on 20210216 at least following crates had this minimum version in README.md
-# cipher, crypto-mac, digest, generic-array, hmac, pbkdf2, scrypt, sha2, subtle
-BuildRequires:  rust >= 1.41
+# on 20220115 at least crate bitflags had this minimum version requirement
+BuildRequires:  cargo >= 1.46
 Provides:       %{short_name} = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -51,26 +53,17 @@ Rust implementation of Minisign, a tool to sign files and verify signatures.
 %setup -q -n %{name}-%{version}
 %setup -q -D -T -a 1
 
-cp %{SOURCE2} Cargo.lock
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
-mkdir $PWD/.cargo
-cat > $PWD/.cargo/config <<EOF
-[source.crates-io]
-replace-with = "vendored-sources"
-[source.vendored-sources]
-directory = "./.vendor"
-EOF
-
-cd $PWD/.vendor
+cd $PWD/vendor
 # Find licenses of dependency packages and prepare for installation
 bash %{SOURCE3} %{vlic_dir}
 
 %build
-export CARGO_HOME=$PWD/.cargo
 cargo build --release %{?_smp_mflags}
 
 %install
-export CARGO_HOME=$PWD/.cargo
 cargo install --path . --root=%{buildroot}%{_prefix}
 
 rm %{buildroot}%{_prefix}/.crates.toml
@@ -78,7 +71,7 @@ rm %{buildroot}%{_prefix}/.crates2.json
 
 # Dependency Licenses
 install -d -m 0755 %{buildroot}%{_licensedir}/%{name}/%{vlic_dir}
-bash %{SOURCE4} .vendor/%{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
+bash %{SOURCE4} vendor/%{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
 
 %files
 %{_bindir}/%{short_name}
