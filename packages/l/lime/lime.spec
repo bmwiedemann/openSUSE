@@ -1,7 +1,7 @@
 #
 # spec file for package lime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.0.53
+Version:        5.0.66
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
