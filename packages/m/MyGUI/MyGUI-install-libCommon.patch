@@ -1,10 +1,72 @@
-Index: mygui-MyGUI3.4.0/Common/CMakeLists.txt
-===================================================================
---- mygui-MyGUI3.4.0.orig/Common/CMakeLists.txt
-+++ mygui-MyGUI3.4.0/Common/CMakeLists.txt
-@@ -173,3 +173,5 @@ if(NOT WIN32)
- 		include_directories(${X11_INCLUDE_DIR})
- 	endif(UNIX AND NOT APPLE)
- endif()
-+
-+mygui_install_target(${PROJECTNAME} "")
+From 4a53f10e0260c30a38824f843b32a6d809dcc08e Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Mon, 20 Dec 2021 02:01:19 +0100
+Subject: [PATCH 2/3] Install libMyGUICommon if tools or demos are installed,
+ fixes #157
+
+---
+ CMake/Utils/MyGUIConfigTargets.cmake | 8 ++++----
+ Common/CMakeLists.txt                | 6 +++++-
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/CMake/Utils/MyGUIConfigTargets.cmake b/CMake/Utils/MyGUIConfigTargets.cmake
+index 8fb1ce43f..dc7618e67 100644
+--- a/CMake/Utils/MyGUIConfigTargets.cmake
++++ b/CMake/Utils/MyGUIConfigTargets.cmake
+@@ -173,13 +173,13 @@ function(mygui_app PROJECTNAME SOLUTIONFOLDER)
+ 	endif ()
+ 	set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER})
+ 
+-	add_dependencies(${PROJECTNAME} MyGUIEngine Common)
++	add_dependencies(${PROJECTNAME} MyGUIEngine MyGUICommon)
+ 
+ 	mygui_config_sample(${PROJECTNAME})
+ 
+ 	# link Common, Platform and MyGUIEngine
+ 	target_link_libraries(${PROJECTNAME}
+-		Common
++		MyGUICommon
+ 	)
+ 
+ 	if (NOT EMSCRIPTEN)
+@@ -285,12 +285,12 @@ function(mygui_dll PROJECTNAME SOLUTIONFOLDER)
+ 
+ 	mygui_config_lib(${PROJECTNAME})
+ 
+-	add_dependencies(${PROJECTNAME} MyGUIEngine Common)
++	add_dependencies(${PROJECTNAME} MyGUIEngine MyGUICommon)
+ 
+ 	mygui_config_sample(${PROJECTNAME})
+ 
+ 	target_link_libraries(${PROJECTNAME}
+-		Common
++		MyGUICommon
+ 	)
+ 
+ 	if (NOT EMSCRIPTEN)
+diff --git a/Common/CMakeLists.txt b/Common/CMakeLists.txt
+index 2b160ff05..1340f4373 100644
+--- a/Common/CMakeLists.txt
++++ b/Common/CMakeLists.txt
+@@ -3,7 +3,7 @@ function(mygui_add_base_manager_include PLATFORM_ID)
+ 	include_directories(../../Common/Base/${MYGUI_PLATFORM_NAME})
+ endfunction(mygui_add_base_manager_include)
+ 
+-set (PROJECTNAME Common)
++set (PROJECTNAME MyGUICommon)
+ 
+ include_directories(
+ 	.
+@@ -100,5 +100,9 @@ add_library(${PROJECTNAME} ${HEADER_FILES} ${SOURCE_FILES})
+ mygui_set_platform_name(${MYGUI_RENDERSYSTEM})
+ add_dependencies(${PROJECTNAME} MyGUI.${MYGUI_PLATFORM_NAME}Platform)
+ target_link_libraries(${PROJECTNAME} MyGUI.${MYGUI_PLATFORM_NAME}Platform)
++if (MYGUI_INSTALL_TOOLS OR MYGUI_INSTALL_DEMOS)
++	set_target_properties(${PROJECTNAME} PROPERTIES VERSION ${MYGUI_VERSION} SOVERSION "${MYGUI_VERSION_MAJOR}.${MYGUI_VERSION_MINOR}.${MYGUI_VERSION_PATCH}")
++	mygui_install_target(${PROJECTNAME} "")
++endif()
+ 
+ add_dependencies(${PROJECTNAME} MyGUIEngine)
+-- 
+2.34.1
+

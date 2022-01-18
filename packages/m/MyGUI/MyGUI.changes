@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Dec 19 16:48:27 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.4.1
+  * Implement new MSDF font
+  * Add new eventWidgetDestroyed
+  * Add support for custom shaders for each render item
+  * Add support for Unicode code points outside of the
+    Basic Multilingual Plane
+  * Allow std::function in the MyGUI::newDelegate
+  * Allow const functions and const classes in the MyGUI::newDelegate
+  * Some bug fixes
+  * Widgets
+    * Some bug fixes in ListBox and EditBox
+    * Button: make Button without "normal_checked" skin display
+      "pushed" skin
+    * Window: add borders snapping, when resizing it
+  * Platform Ogre:
+    * make it possible to use OGRE_RESOURCEMANAGER_STRICT=1 mode
+    * use Ogre::Renderable to render Gui, this fixes several issues
+      with recent Ogre version
+  * LayoutEditor: fix multi language support
+- Update MyGUI-install-libCommon.patch
+- Add 0001-Fix-linking-with-Wl-no-undefined.patch
+- Drop upstream fixed MyGUI-lib_suffix.patch,
+  MyGUI-gcc47-visibility.patch,
+  MyGUI-libs-versioning.patch
+- Add rpmlintrc
+
+-------------------------------------------------------------------
 Fri Oct 22 17:31:09 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - Renamed patches:

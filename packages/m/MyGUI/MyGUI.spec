@@ -18,9 +18,9 @@
 
 
 %define capname MYGUI
-%define _sover  3_4_0
+%define _sover  3_4_1
 Name:           MyGUI
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        A GUI library for Ogre Rendering Engine
 License:        MIT
@@ -28,14 +28,11 @@ Group:          Development/Tools/GUI Builders
 URL:            http://mygui.info/
 Source:         https://github.com/MyGUI/mygui/archive/MyGUI%{version}.tar.gz
 Source1:        %{name}.png
-# PATCH-FIX-UPSTREAM MyGUI-lib_suffix.patch
-Patch0:         %{name}-lib_suffix.patch
-# PATCH-FIX-UPSTREAM MyGUI-gcc47-visibility.patch
-Patch1:         %{name}-gcc47-visibility.patch
-# PATCH-FEATURE-OPENSUSE MyGUI-libs-versioning.patch -- Add versioning to libs; Upstream seems uninterested: https://github.com/MyGUI/mygui/issues/157
-Patch2:         MyGUI-libs-versioning.patch
-# PATCH-FEATURE-OPENSUSE MyGUI-install-libCommon.patch -- Use cmake to install libCommon
-Patch3:         MyGUI-install-libCommon.patch
+Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM MyGUI-install-libCommon.patch -- https://github.com/MyGUI/mygui/pull/233
+Patch0:         MyGUI-install-libCommon.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-linking-with-Wl-no-undefined.patch -- https://github.com/MyGUI/mygui/pull/232
+Patch1:         0001-Fix-linking-with-Wl-no-undefined.patch
 BuildRequires:  cmake
 BuildRequires:  dejavu
 BuildRequires:  dos2unix
@@ -47,8 +44,6 @@ BuildRequires:  libOIS-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  ogre-devel
-# MyGUI wants to copy plugins.cfg installed by ogre-demos
-BuildRequires:  ogre-demos
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -92,6 +87,16 @@ for games and 3D applications.
 
 This package contains the shared library for package MyGUI.
 
+%package -n libMyGUICommon%{_sover}
+Summary:        Shared library for MyGUI
+Group:          System/Libraries
+
+%description -n libMyGUICommon%{_sover}
+MyGUI is a library for creating Graphical User Interfaces (GUIs)
+for games and 3D applications.
+
+This package contains the shared library used by most MyGUI tools and demos.
+
 %package tools
 Summary:        Tools applications for MyGUI
 Group:          Development/Tools/GUI Builders
@@ -107,6 +112,7 @@ This package contains tools applications for package MyGUI.
 Summary:        Development files for MyGUI
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       libMyGUICommon%{_sover} = %{version}
 Requires:       libMyGUIEngine%{_sover} = %{version}
 Requires:       libOIS-devel
 Requires:       libOgreMain-devel
@@ -137,24 +143,19 @@ This subpackage contains the development documentation for MyGUI.
 %autopatch -p1
 
 %build
-# this is probably an error in OGRE packaging... but let's just fix the build.
-export OGRE_LIBRARIES="`pkg-config --libs OGRE` -lboost_system"
 %cmake \
+  -DMYGUI_STATIC=OFF \
+  -DMYGUI_USE_FREETYPE=ON \
+  -DMYGUI_BUILD_PLUGINS=ON \
+  -DMYGUI_BUILD_TOOLS=ON \
+  -DMYGUI_BUILD_WRAPPER=OFF \
+  -DMYGUI_INSTALL_TOOLS=ON \
+  -DMYGUI_INSTALL_DEMOS=ON \
+  -DMYGUI_INSTALL_DOCS=ON \
+  -DMYGUI_INSTALL_MEDIA=ON \
+  -DMYGUI_FULL_RPATH=OFF \
+  -DCMAKE_SKIP_RPATH=ON \
   -DCMAKE_BUILD_TYPE=release \
-  -DOGRE_LIBRARIES="$OGRE_LIBRARIES" \
-  -DMYGUI_STATIC=FALSE \
-  -DMYGUI_USE_FREETYPE=TRUE \
-  -DMYGUI_BUILD_SAMPLES=TRUE \
-  -DMYGUI_BUILD_PLUGINS=TRUE \
-  -DMYGUI_BUILD_TOOLS=TRUE \
-  -DMYGUI_BUILD_WRAPPER=FALSE \
-  -DMYGUI_INSTALL_SAMPLES=TRUE \
-  -DMYGUI_INSTALL_TOOLS=TRUE \
-  -DMYGUI_INSTALL_DOCS=TRUE \
-  -DMYGUI_INSTALL_MEDIA=TRUE \
-  -DMYGUI_INSTALL_SAMPLES_SOURCE=TRUE \
-  -DMYGUI_FULL_RPATH=FALSE \
-  -DCMAKE_SKIP_RPATH=TRUE \
   -DOGRE_CONFIG_DIR=%{_datadir}/OGRE
 
 %cmake_build
@@ -252,15 +253,12 @@ rm -r %{buildroot}%{_datadir}/%{capname}/Media/Wrapper/WrapperBaseApp
 %post -n libMyGUIEngine%{_sover} -p /sbin/ldconfig
 %postun -n libMyGUIEngine%{_sover} -p /sbin/ldconfig
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post -n libMyGUICommon%{_sover} -p /sbin/ldconfig
+%postun -n libMyGUICommon%{_sover} -p /sbin/ldconfig
 
 %files
 %doc README.md
 %license COPYING.MIT
-%{_bindir}/%{name}.sh
-%{_libdir}/lib*.so.*
-%exclude %{_libdir}/libMyGUIEngine.so.*
 %{_libdir}/Plugin_*.so
 %{_datadir}/%{capname}/
 %exclude %{_datadir}/%{capname}/Media/Demos/
@@ -277,11 +275,15 @@ rm -r %{buildroot}%{_datadir}/%{capname}/Media/Wrapper/WrapperBaseApp
 %files -n libMyGUIEngine%{_sover}
 %{_libdir}/libMyGUIEngine.so.*
 
+%files -n libMyGUICommon%{_sover}
+%{_libdir}/libMyGUICommon.so.*
+
 %files demo
 %{_bindir}/%{name}-Demo_*
 %{_datadir}/%{capname}/Media/Demos/
 
 %files tools
+%{_bindir}/%{name}.sh
 %{_bindir}/FontEditor
 %{_bindir}/ImageEditor
 %{_bindir}/LayoutEditor

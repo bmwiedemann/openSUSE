@@ -1,0 +1,42 @@
+From 4bd1332d39cfd3d42030f96903c18d8d0847f768 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Mon, 20 Dec 2021 00:44:24 +0100
+Subject: [PATCH] Fix linking with -Wl,--no-undefined
+
+---
+ CMake/Packages/FindSDL2.cmake | 6 ++++++
+ Common/CMakeLists.txt         | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMake/Packages/FindSDL2.cmake b/CMake/Packages/FindSDL2.cmake
+index ca4d209c4..4261f0efd 100644
+--- a/CMake/Packages/FindSDL2.cmake
++++ b/CMake/Packages/FindSDL2.cmake
+@@ -97,5 +97,11 @@ IF(NOT SDL2_FOUND)
+                                       VERSION_VAR SDL2_VERSION_STRING)
+ 
+     mark_as_advanced(SDL2_INCLUDE_DIR SDL2_LIBRARY)
++    add_library(SDL2::Main INTERFACE IMPORTED)
++    set_target_properties(
++		SDL2::Main PROPERTIES
++		INTERFACE_LINK_LIBRARIES "${SDL2_LIBRARY}"
++		INTERFACE_INCLUDE_DIRECTORIES "${SDL2_INCLUDE_DIR}"
++	)
+     CMAKE_POLICY(POP)
+ ENDIF(NOT SDL2_FOUND)
+diff --git a/Common/CMakeLists.txt b/Common/CMakeLists.txt
+index 1340f4373..18953e5a0 100644
+--- a/Common/CMakeLists.txt
++++ b/Common/CMakeLists.txt
+@@ -99,7 +99,7 @@ add_library(${PROJECTNAME} ${HEADER_FILES} ${SOURCE_FILES})
+ 
+ mygui_set_platform_name(${MYGUI_RENDERSYSTEM})
+ add_dependencies(${PROJECTNAME} MyGUI.${MYGUI_PLATFORM_NAME}Platform)
+-target_link_libraries(${PROJECTNAME} MyGUI.${MYGUI_PLATFORM_NAME}Platform)
++target_link_libraries(${PROJECTNAME} MyGUI.${MYGUI_PLATFORM_NAME}Platform SDL2::Main)
+ if (MYGUI_INSTALL_TOOLS OR MYGUI_INSTALL_DEMOS)
+ 	set_target_properties(${PROJECTNAME} PROPERTIES VERSION ${MYGUI_VERSION} SOVERSION "${MYGUI_VERSION_MAJOR}.${MYGUI_VERSION_MINOR}.${MYGUI_VERSION_PATCH}")
+ 	mygui_install_target(${PROJECTNAME} "")
+-- 
+2.34.1
+
