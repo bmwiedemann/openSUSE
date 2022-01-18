@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jan 13 19:05:51 UTC 2022 - jan.suse@zerebecki.de
+
+- Update some dependencies
+  * build(deps): bump nix from 0.17.0 and 0.20.0 to 0.23.1
+    This fixes the following security issues:
+    https://rustsec.org/advisories/RUSTSEC-2021-0119
+  * build(deps): bump generic-array from 0.12.3 to 0.12.4
+    This fixes a security issue:
+    https://rustsec.org/advisories/RUSTSEC-2020-0146 AKA CVE-2020-36465
+  * build(deps): bump futures-util from 0.3.6 to 0.3.15
+    This fixes a security issue:
+    https://rustsec.org/advisories/RUSTSEC-2020-0059 AKA CVE-2020-35905
+  * build(deps): bump rand_core from 0.6.1 to 0.6.3
+    This fixes a security issue:
+    https://rustsec.org/advisories/RUSTSEC-2021-0023
+    AKA CVE-2021-27378, bsc#1182432
+  * build(deps): bump hyper from 0.14.2 to 0.14.11
+    This fixes two security issues:
+    https://rustsec.org/advisories/RUSTSEC-2021-0078
+    AKA CVE-2021-32715, bsc#1188173
+    https://rustsec.org/advisories/RUSTSEC-2021-0079
+    AKA CVE-2021-32714, bsc#1188174
+  * build(deps): bump tokio from 1.0.1 to 1.15.0
+    This fixes two security issues:
+    https://rustsec.org/advisories/RUSTSEC-2021-0124
+    AKA CVE-2021-45710, bsc#1194119
+    https://rustsec.org/advisories/RUSTSEC-2021-0072 AKA CVE-2021-38191
+- Remove cargo_audit service, as it makes no sense as a service (it doesn't
+  automatically get rerun), it would make more sense during the build process
+  as then it gets rerun if the package or the vulnerability database get
+  changed
+- switch services from disabled to manual
+- remove hard coded author for tar_scm service
+
+-------------------------------------------------------------------
 Tue Nov 16 10:04:04 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - No reason to exclude armv7, since it builds properly
