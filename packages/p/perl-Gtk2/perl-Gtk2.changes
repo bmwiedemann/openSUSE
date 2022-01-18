@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 12:41:15 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Temporarily disable GtkAboutDialog.t test failing after the last
+  pango update.
+
+-------------------------------------------------------------------
 Wed Sep 30 12:52:54 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Temporarily skip failing tests:

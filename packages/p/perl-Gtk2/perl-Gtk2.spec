@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Gtk2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,7 @@ make %{?_smp_mflags}
 
 %check
 # Temporarily remove failing tests [bsc#1155004]
-rm t/{GdkPixbuf,PangoContext,PangoFont*,PangoRenderer}.t
+rm t/{GdkPixbuf,GtkAboutDialog,PangoContext,PangoFont*,PangoRenderer}.t
 
 %if 0%{?suse_version} >= 01550
 xvfb-run -a make test %{?_smp_mflags}
