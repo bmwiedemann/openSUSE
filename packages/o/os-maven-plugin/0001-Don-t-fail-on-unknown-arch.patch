@@ -8,18 +8,18 @@ Subject: [PATCH 2/2] Don't fail on unknown arch
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/main/java/kr/motd/maven/os/Detector.java b/src/main/java/kr/motd/maven/os/Detector.java
-index 9dd6688..37ced72 100644
+index 86bf6a6..e9d4dfe 100644
 --- a/src/main/java/kr/motd/maven/os/Detector.java
 +++ b/src/main/java/kr/motd/maven/os/Detector.java
-@@ -46,7 +46,7 @@ public abstract class Detector {
-         setProperty(props, DETECTED_CLASSIFIER, detectedClassifier);
+@@ -95,7 +95,7 @@ public abstract class Detector {
  
-         final String failOnUnknownOS = allProps.getProperty("failOnUnknownOS");
--        if (failOnUnknownOS == null || !failOnUnknownOS.equalsIgnoreCase("false")) {
-+        if (failOnUnknownOS != null && failOnUnknownOS.equalsIgnoreCase("true")) {
+         final String failOnUnknownOS =
+             systemPropertyOperationProvider.getSystemProperty("failOnUnknownOS");
+-        if (!"false".equalsIgnoreCase(failOnUnknownOS)) {
++        if ("true".equalsIgnoreCase(failOnUnknownOS)) {
              if (UNKNOWN.equals(detectedName)) {
                  throw new DetectionException("unknown os.name: " + osName);
              }
 -- 
-2.1.0
+2.21.0
 

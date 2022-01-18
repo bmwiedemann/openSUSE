@@ -1,7 +1,7 @@
 #
 # spec file for package os-maven-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%global vertag Final
 Name:           os-maven-plugin
-Version:        1.2.3
+Version:        1.7.0
 Release:        0
 Summary:        Maven plugin for generating platform-dependent properties
 License:        Apache-2.0
 URL:            https://github.com/trustin/os-maven-plugin/
-Source0:        https://github.com/trustin/%{name}/archive/%{name}-%{version}.Final.tar.gz
-Patch0:         0001-Port-to-current-plexus-utils.patch
-Patch1:         0002-Don-t-fail-on-unknown-arch.patch
+Source0:        https://github.com/trustin/%{name}/archive/%{name}-%{version}.tar.gz
+Patch0:         0001-Don-t-fail-on-unknown-arch.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -55,16 +54,17 @@ Summary:        API documentation for %{name}
 This package provides %{summary}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}.%{vertag}
+%setup -q -n %{name}-%{name}-%{version}
 
 %patch0 -p1
-%patch1 -p1
 
 # Remove Eclipse plugin
 %pom_remove_dep org.eclipse:ui
 %pom_remove_plugin :maven-jar-plugin
 find -name EclipseStartup.java -delete
 find -name plugin.xml -delete
+
+%pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin
 
 %build
 %{mvn_build} -f \
