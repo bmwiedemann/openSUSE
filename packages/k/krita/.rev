@@ -636,4 +636,15 @@
     <comment></comment>
     <requestid>944721</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>cbc07b3685028a9dcd067edfd7e6dd26</srcmd5>
+    <version>5.0.2</version>
+    <time>1642548919</time>
+    <user>dimstar_suse</user>
+    <comment>- convert the conflicts to recommends as we now have a working
+  krita-plugin-gmic package again
+
+- Actually install the devel files as we need them for gmic</comment>
+    <requestid>947181</requestid>
+  </revision>
 </revisionlist>

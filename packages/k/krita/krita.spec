@@ -98,8 +98,7 @@ Provides:       calligra-krita = %{version}
 %if %{with vc}
 BuildRequires:  Vc-devel-static
 %endif
-# it has an intree copy now and no longer works with the external copy
-Conflicts:      krita-plugin-gmic
+Recommends:     krita-plugin-gmic
 
 %description
 Krita is a painting program. It supports concept art, texture and
@@ -109,6 +108,7 @@ matte painters, as well as illustrations and comics.
 Summary:        Krita Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
+Requires:       cmake(Qt5Core)
 
 %description devel
 Development headers and libraries for Krita.
@@ -139,11 +139,6 @@ chmod -x %{buildroot}%{_kf5_applicationsdir}/*.desktop
 
 # remove shebang to avoid rpmlint warning, that file is not supposed to be run directly anyway
 sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita/sceditor/highlighter.py
-
-rm \
-  %{buildroot}%{_includedir}/kis_qmic_interface.h \
-  %{buildroot}%{_includedir}/kis_qmic_plugin_interface.h \
-  %{buildroot}%{_includedir}/kritaqmicinterface_export.h
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -179,6 +174,9 @@ rm \
 
 %files devel
 %{_kf5_libdir}/libkrita*.so
+%{_includedir}/kis_qmic_interface.h
+%{_includedir}/kis_qmic_plugin_interface.h
+%{_includedir}/kritaqmicinterface_export.h
 
 %if %{with released}
 %files lang -f %{name}.lang

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 14 15:55:53 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- convert the conflicts to recommends as we now have a working
+  krita-plugin-gmic package again
+
+-------------------------------------------------------------------
+Fri Jan 14 14:12:12 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Actually install the devel files as we need them for gmic
+
+-------------------------------------------------------------------
 Fri Jan  7 08:11:30 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.0.2
