@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 10:53:09 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle aarch64
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
 Fri Jun  4 12:20:49 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Include the registry in org.opensuse.reference
