@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>866034</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6d6ea5940f5b6572720497a3f57c8c87</srcmd5>
+    <version>0.2.0</version>
+    <time>1642548923</time>
+    <user>dimstar_suse</user>
+    <comment>- skip hanging socks test</comment>
+    <requestid>947209</requestid>
+  </revision>
 </revisionlist>
