@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 18 20:23:24 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.17.11:
+  * Fixed a deadlock in conn_info
+  * Fixed build on FreeBSD (workaround for hidden typedefs)
+  * Added SPDX license information
+  * Improved reporting of HTTP status codes
+  * Source-code simplifications
+  * Buildsystem improvements
+    + Check intmax_t >= int64_t on Mac OS X
+    + Improved output when pkg-config is unavailable
+  * Implemented percentage output mode for piping
+  * Fixed typos
+  * Added Turkish Translation
+
+-------------------------------------------------------------------
 Sun Nov 22 21:03:33 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 2.17.10:

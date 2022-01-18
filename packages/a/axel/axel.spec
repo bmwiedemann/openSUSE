@@ -1,7 +1,7 @@
 #
 # spec file for package axel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?license: %global license %doc}
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 Name:           axel
-Version:        2.17.10
+Version:        2.17.11
 Release:        0
 Summary:        Lightweight Download Accelerator
 License:        GPL-2.0-or-later
