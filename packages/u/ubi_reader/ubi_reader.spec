@@ -18,7 +18,7 @@
 
 
 Name:           ubi_reader
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Extract files from UBI and UBIFS images
 License:        LGPL-3.0-or-later
