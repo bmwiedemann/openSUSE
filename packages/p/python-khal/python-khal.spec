@@ -1,7 +1,7 @@
 #
 # spec file for package python-khal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ BuildRequires:  %{python_module tzlocal >= 1.0}
 BuildRequires:  %{python_module urwid >= 1.3.0}
 BuildRequires:  %{python_module vdirsyncer}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-atomicwrites
 Requires:       python-click
 Requires:       python-click-log
@@ -52,7 +53,7 @@ Requires:       python-pyxdg
 Requires:       python-tzlocal
 Requires:       python-urwid
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
