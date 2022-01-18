@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 18 06:38:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.4:
+  * OnStep: Don't show focuser tab unless found.
+  * More Lynx fixes - Step Size and Devices Types.
+  * OnStep: Remove Focuser on disconnect.
+  * Save Alignment Data to mount before sync.
+  * CCD drivers: snooping for standard epoch positions and issues
+    with fast exposure mode fixed.
+  * SkyWatcher Alt-Az iterative GOTO.
+  * Add Bayer frames software binning
+  * Add driver for Rigelsys/Astrogene1000 nFrame rotator.
+  * Send command at start to flush serial line for Pulsar/Rigel dome.
+- Remove ioptron_fixes.patch
+
+-------------------------------------------------------------------
 Fri Dec 10 13:11:58 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add ioptron_fixes.patch (bsc#1193622):
