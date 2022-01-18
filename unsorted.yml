@@ -7794,6 +7794,7 @@ unsorted:
   - jzlib 
   - jzlib-demo 
   - jzlib-javadoc 
+  - k0sctl 
   - k3b-devel 
   - k3s 
   - k3s-install 
@@ -11724,7 +11725,7 @@ unsorted:
   - liblalinspiral16: [x86_64] 
   - liblalmetaio8: [x86_64] 
   - liblalpulsar23: [x86_64] 
-  - liblalsimulation23: [x86_64] 
+  - liblalsimulation29: [x86_64] 
   - liblalsupport14: [x86_64] 
   - liblammps0 
   - liblangtag-devel 
@@ -14052,11 +14053,11 @@ unsorted:
   - libtheora0-32bit: [x86_64] 
   - libtheoradec1-32bit: [x86_64] 
   - libtheoraenc1-32bit: [x86_64] 
-  - libthrift-0_14_1 
+  - libthrift-0_15_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_14_1 
-  - libthriftz-0_14_1 
+  - libthriftnb-0_15_0 
+  - libthriftz-0_15_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -18410,9 +18411,6 @@ unsorted:
   - p11-kit-nss-trust 
   - p11-kit-nss-trust-32bit: [x86_64] 
   - p11-kit-server 
-  - p7zip 
-  - p7zip-doc 
-  - p7zip-full 
   - p8-platform-devel 
   - pacemaker 
   - pacemaker-cli 
@@ -21700,6 +21698,7 @@ unsorted:
   - python310-Kajiki 
   - python310-Kivy 
   - python310-Kivy-devel 
+  - python310-LHAPDF 
   - python310-LTTL 
   - python310-Lektor 
   - python310-Levenshtein 
@@ -21805,6 +21804,7 @@ unsorted:
   - python310-SPARQLWrapper 
   - python310-SQLAlchemy 
   - python310-SQLAlchemy-Utils 
+  - python310-Scrapy 
   - python310-SecretStorage 
   - python310-Send2Trash 
   - python310-Shapely 
@@ -21854,6 +21854,7 @@ unsorted:
   - python310-abseil 
   - python310-acefile 
   - python310-acme 
+  - python310-acoular 
   - python310-actdiag 
   - python310-adal 
   - python310-adapt-parser 
@@ -21863,6 +21864,7 @@ unsorted:
   - python310-aesara 
   - python310-aexpect 
   - python310-afdko 
+  - python310-affine 
   - python310-agate 
   - python310-agate-dbf 
   - python310-agate-excel 
@@ -22300,6 +22302,7 @@ unsorted:
   - python310-blinker 
   - python310-blockdiag 
   - python310-blosc 
+  - python310-bloscpack 
   - python310-blurb 
   - python310-bmap-tools 
   - python310-bobo 
@@ -22386,6 +22389,7 @@ unsorted:
   - python310-chart-studio 
   - python310-chartify 
   - python310-check-manifest 
+  - python310-checkdmarc 
   - python310-cheroot 
   - python310-circuitbreaker 
   - python310-ciscoconfparse 
@@ -22692,7 +22696,7 @@ unsorted:
   - python310-elasticsearch 
   - python310-elasticsearch-dsl 
   - python310-elementpath 
-  - python310-eliot: [x86_64] 
+  - python310-eliot 
   - python310-email-reply-parser 
   - python310-email_validator 
   - python310-emcee 
@@ -22705,6 +22709,7 @@ unsorted:
   - python310-environ-config 
   - python310-environmental-override 
   - python310-enzyme 
+  - python310-ephem 
   - python310-epubmerge 
   - python310-eradicate 
   - python310-espeak 
@@ -22721,6 +22726,7 @@ unsorted:
   - python310-executing 
   - python310-exiv2 
   - python310-expects 
+  - python310-expiringdict 
   - python310-exrex 
   - python310-extension-helpers 
   - python310-extras 
@@ -22738,6 +22744,7 @@ unsorted:
   - python310-fasteners 
   - python310-fastimport 
   - python310-fastnumbers 
+  - python310-fastparquet 
   - python310-fastremap 
   - python310-fb-re2 
   - python310-fedora-messaging 
@@ -23126,6 +23133,11 @@ unsorted:
   - python310-l20n 
   - python310-labels 
   - python310-lal: [x86_64] 
+  - python310-lalapps: [x86_64] 
+  - python310-lalburst: [x86_64] 
+  - python310-lalframe: [x86_64] 
+  - python310-lalinference: [x86_64] 
+  - python310-lalinspiral: [x86_64] 
   - python310-lalmetaio: [x86_64] 
   - python310-lalpulsar: [x86_64] 
   - python310-lalsimulation: [x86_64] 
@@ -23757,7 +23769,7 @@ unsorted:
   - python310-pypuppetdb 
   - python310-pyqt-builder 
   - python310-pyquery 
-  - python310-pyquil: [i586] 
+  - python310-pyquil 
   - python310-pyrad 
   - python310-pyramid 
   - python310-pyramid-chameleon 
@@ -24096,7 +24108,7 @@ unsorted:
   - python310-roifile 
   - python310-roman 
   - python310-rope 
-  - python310-rpcq: [i586] 
+  - python310-rpcq 
   - python310-rply 
   - python310-rpm 
   - python310-rpmfile 
@@ -24401,6 +24413,7 @@ unsorted:
   - python310-traceback2 
   - python310-traitlets 
   - python310-traits 
+  - python310-traitsui 
   - python310-traittypes 
   - python310-transaction 
   - python310-transip 
@@ -24440,10 +24453,12 @@ unsorted:
   - python310-ua-parser 
   - python310-uamqp 
   - python310-ufoLib2 
+  - python310-ufoProcessor 
   - python310-ufonormalizer 
   - python310-ujson 
   - python310-uncertainties 
   - python310-unicodecsv 
+  - python310-unicodedata2 
   - python310-unidiff 
   - python310-unify 
   - python310-uniseg 
@@ -24637,29 +24652,24 @@ unsorted:
   - python36-32bit: [x86_64] 
   - python36-APScheduler 
   - python36-Flask-Security-Too 
-  - python36-LHAPDF 
   - python36-PyCondor 
   - python36-PyRSS2Gen 
   - python36-ZEO 
   - python36-ZODB 
   - python36-acitoolkit 
   - python36-adblock 
-  - python36-affine 
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
   - python36-beniget 
-  - python36-blist 
   - python36-blue 
   - python36-boto 
   - python36-cfgdiff 
   - python36-chainmap 
-  - python36-checkdmarc 
   - python36-combi 
   - python36-compileall2 
   - python36-coverage-config-reload-plugin 
   - python36-coverage-env-plugin 
-  - python36-coveralls 
   - python36-css-parser 
   - python36-curses 
   - python36-dbm 
@@ -24686,10 +24696,7 @@ unsorted:
   - python36-djet 
   - python36-doc 
   - python36-doc-devhelp 
-  - python36-eliot 
   - python36-envisage 
-  - python36-ephem 
-  - python36-expiringdict 
   - python36-feedparser 
   - python36-flask-restx 
   - python36-flufl.lock 
@@ -24711,7 +24718,6 @@ unsorted:
   - python36-mrkd 
   - python36-ntfy 
   - python36-oic 
-  - python36-opentelemetry-api 
   - python36-pep8-naming 
   - python36-pip-licenses 
   - python36-pipdeptree 
@@ -24746,11 +24752,9 @@ unsorted:
   - python36-testsuite 
   - python36-tk 
   - python36-tools 
-  - python36-traitsui 
   - python36-twodict 
   - python36-ucsmsdk 
   - python36-uncompyle6 
-  - python36-unicodedata2 
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
@@ -25408,7 +25412,6 @@ unsorted:
   - python38-blessed 
   - python38-blessings 
   - python38-blinker: [i586] 
-  - python38-blist 
   - python38-blockdiag 
   - python38-blosc 
   - python38-bloscpack 
@@ -25570,7 +25573,6 @@ unsorted:
   - python38-coverage 
   - python38-coverage-config-reload-plugin 
   - python38-coverage-env-plugin 
-  - python38-coveralls 
   - python38-coveralls-check 
   - python38-cppclean 
   - python38-cpplint 
@@ -28378,7 +28380,6 @@ unsorted:
   - python39-blessed 
   - python39-blessings 
   - python39-blinker 
-  - python39-blist 
   - python39-blockdiag 
   - python39-blosc 
   - python39-bloscpack 
@@ -28554,7 +28555,6 @@ unsorted:
   - python39-coverage 
   - python39-coverage-config-reload-plugin 
   - python39-coverage-env-plugin 
-  - python39-coveralls 
   - python39-coveralls-check 
   - python39-cppclean 
   - python39-cpplint 
