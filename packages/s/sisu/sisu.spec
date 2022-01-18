@@ -1,7 +1,7 @@
 #
 # spec file for package sisu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 %global reltype release
-#global reltag .M1
 Name:           sisu
-Version:        0.3.3
+Version:        0.3.5
 Release:        0
 Summary:        Eclipse dependency injection framework
 # sisu is EPL-1.0, bundled asm is BSD
-License:        EPL-1.0 AND BSD-3-Clause
+License:        BSD-3-Clause AND EPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://eclipse.org/sisu
-Source0:        http://git.eclipse.org/c/%{name}/org.eclipse.%{name}.inject.git/snapshot/%{reltype}s/%{version}%{?reltag}.tar.xz#/org.eclipse.%{name}.inject-%{version}%{?reltag}.tar.xz
-Source1:        http://git.eclipse.org/c/%{name}/org.eclipse.%{name}.plexus.git/snapshot/%{reltype}s/%{version}%{?reltag}.tar.xz#/org.eclipse.%{name}.plexus-%{version}%{?reltag}.tar.xz
+URL:            https://www.eclipse.org/sisu/
+Source0:        https://github.com/eclipse/sisu.inject/archive/refs/tags/releases/%{version}.tar.gz#/sisu-inject-%{version}.tar.gz
+Source1:        https://github.com/eclipse/sisu.plexus/archive/refs/tags/releases/%{version}.tar.gz#/sisu-plexus-%{version}.tar.gz
 Source2:        %{name}-build.tar.xz
 Source100:      %{name}-inject.pom
 Source101:      %{name}-plexus.pom
 Patch0:         %{name}-OSGi-import-guava.patch
+Patch1:         %{name}-no-dependency-on-glassfish-servlet-api.patch
 Patch2:         %{name}-ignored-tests.patch
 Patch3:         %{name}-osgi-api.patch
 BuildRequires:  ant
@@ -39,7 +39,6 @@ BuildRequires:  atinject
 BuildRequires:  cdi-api
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
-BuildRequires:  glassfish-servlet-api
 BuildRequires:  google-guice
 BuildRequires:  guice-servlet
 BuildRequires:  javapackages-local
@@ -50,6 +49,7 @@ BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-utils
 BuildRequires:  slf4j
 BuildRequires:  testng
+BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  xz
@@ -83,15 +83,19 @@ This package contains %{summary}.
 
 %prep
 %setup -q -c -T
-tar -xf %{SOURCE0} && mv %{reltype}s/* sisu-inject && rmdir %{reltype}s
+tar xf %{SOURCE0} && mv sisu.inject-releases-%{version} sisu-inject
+tar xf %{SOURCE1} && mv sisu.plexus-releases-%{version} sisu-plexus
+tar xf %{SOURCE2}
+
 cp %{SOURCE100} sisu-inject/pom.xml
-tar -xf %{SOURCE1} && mv %{reltype}s/* sisu-plexus && rmdir %{reltype}s
 cp %{SOURCE101} sisu-plexus/pom.xml
-tar -xf %{SOURCE2}
 
 %patch0
+%patch1
 %patch2
 %patch3
+
+%pom_remove_dep :servlet-api sisu-inject
 
 for i in inject plexus; do
   %pom_xpath_set -r /pom:project/pom:version %{version} %{name}-${i}
@@ -105,7 +109,6 @@ done
 mkdir -p lib
 build-jar-repository -s lib \
   glassfish-annotation-api \
-  glassfish-servlet-api \
   google-guice-no_aop \
   guice/guice-servlet \
   javax.enterprise.inject/cdi-api \
@@ -117,10 +120,10 @@ build-jar-repository -s lib \
   plexus-containers/plexus-component-annotations \
   slf4j/api \
   testng
-%ant package javadoc
+%{ant} package javadoc
 
 for i in inject plexus; do
-  %mvn_artifact %{name}-${i}/pom.xml %{name}-${i}/target/org.eclipse.sisu.${i}-%{version}.jar
+  %{mvn_artifact} %{name}-${i}/pom.xml %{name}-${i}/target/org.eclipse.sisu.${i}-%{version}.jar
 done
 
 %install

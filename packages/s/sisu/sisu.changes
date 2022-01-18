@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 18 07:16:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 0.3.5
+- Changes of 0.3.5
+  * beo#539791 - Update cdi-api dependency to 1.2
+  * beo#575952 - Support turning off URLConnection caching for
+    container related resources
+- Changes of 0.3.4
+  * beo#552642 - Support reproducible builds by sorting generated
+    javax.inject.Named index
+  * beo#546874 - Relax bytecode check in scanner so it can scan up
+    to and including Java14
+- Added patch:
+  * sisu-no-dependency-on-glassfish-servlet-api.patch
+    + remove dependency on glassfish-servlet-api
+
+-------------------------------------------------------------------
 Mon Apr  1 23:11:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use modern tar options.
