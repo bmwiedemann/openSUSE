@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 09:04:54 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase the disk constraint since i586 builds take ~15.6 GB,
+  s390x over 22 GB and other archs ~18.8 GB.
+
+-------------------------------------------------------------------
 Mon Jan 17 16:22:51 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.8.0:

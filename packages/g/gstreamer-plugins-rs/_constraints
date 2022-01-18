@@ -1,7 +1,27 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">12</size>
+      <size unit="G">19</size>
     </disk>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">16</size>
+      </disk>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">22</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>
