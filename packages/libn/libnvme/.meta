@@ -1,0 +1,7 @@
+<package name="libnvme" project="openSUSE:Factory">
+  <title>libnvme</title>
+  <description>Library to interact with the Linux NVMe subsystem.
+</description>
+  <devel project="Base:System" package="libnvme"/>
+  <url>https://github.com/linux-nvme/libnvme</url>
+</package>
