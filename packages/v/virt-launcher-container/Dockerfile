@@ -11,8 +11,8 @@
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
 # TARGETARCH defined in prjconf, to handle architecture specific bits
-# since TARGETARCH is not defined in OBS builds yet.
-ARG TARGETARCH
+# since TARGETARCH is not defined in OBS builds yet. Default to amd64.
+ARG TARGETARCH=amd64
 
 # labelprefix=%%LABELPREFIX%%
 PREFIXEDLABEL org.opencontainers.image.title="kubevirt virt-launcher container"
@@ -39,17 +39,18 @@ RUN zypper -n install \
               timezone \
               vim \
               xorriso
+
 #!ArchExclusiveLine: x86_64
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
-              zypper -n install qemu-x86 ; \
-              fi;
+    zypper -n install qemu-x86 ; \
+    fi;
 
 #!ArchExclusiveLine: aarch64
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
-              zypper -n install \
+    zypper -n install \
               qemu-arm \
               qemu-uefi-aarch64 ; \
-              fi;
+    fi;
 
 RUN zypper clean -a && \
     mkdir -p /usr/share/kubevirt/virt-launcher

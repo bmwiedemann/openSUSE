@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 06:48:50 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Set default TARGETARCH=amd64
+- Adjust indent
+
+-------------------------------------------------------------------
 Mon Jan 10 10:56:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Handle aarch64
