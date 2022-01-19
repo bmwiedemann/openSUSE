@@ -1,7 +1,7 @@
 #
 # spec file for package spotify-qt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,19 @@
 
 
 Name:           spotify-qt
-Version:        3.7
+Version:        3.8
 Release:        0
-Summary:	Lightweight Spotify client using Qt 
-License:	GPL-3.0-or-later     
-URL:           	https://github.com/kraxarn/spotify-qt 
+Summary:        Lightweight Spotify client using Qt
+License:        GPL-3.0-only
+URL:            https://github.com/kraxarn/spotify-qt
 Source:         https://github.com/kraxarn/spotify-qt/archive/refs/tags/v%{version}.tar.gz
 Group:          Productivity/Multimedia/Sound/Players
+BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  cmake(Qt5Core)
-BuildRequires:	cmake(Qt5Svg)
-BuildRequires:	cmake(Qt5Network)
-BuildRequires:	gcc-c++
-BuildRequires:	make
-Requires:       hicolor-icon-theme
-Requires(post): hicolor-icon-theme
-Requires(post): shared-mime-info
-Requires(postun): hicolor-icon-theme
-Requires(postun): shared-mime-info
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Svg)
+Suggests:       spotifyd
 
 %description
 An unofficial Spotify client using Qt as a simpler, lighter alternative to the official client, inspired by spotify-tui. Much like spotify-tui, you need an actual Spotify client running, for example spotifyd, which can be configured from within the app. Also like other clients, controlling music playback requires Spotify Premium.
@@ -51,17 +44,15 @@ An unofficial Spotify client using Qt as a simpler, lighter alternative to the o
 %install
 %cmake_install
 
-%post
-%postun
-
 %check
 %ctest
 
 %files
+%license license
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
 %{_datadir}/icons/hicolor/scalable/
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%changelog
 
+%changelog

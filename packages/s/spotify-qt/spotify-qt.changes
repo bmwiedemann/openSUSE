@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 18 09:46:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean up spec file a bit:
+  + Drop empty post/postubn scriptlets
+  + Remove not used requires on hicolor-icon-theme,
+    shared-mime-info, and update-desktop-files.
+  + Package license file.
+  + Set license to GPL-3.0-only: there is no indication that
+    GPL-3.0-or-later is valid.
+
+-------------------------------------------------------------------
+Mon Jan 17 13:32:14 UTC 2022 - Jens K. <karatekhd@opensuse.org>
+
+- Update to version 3.8:
+  - Fixes
+    * Fixed empty context menu when right-clicking empty spaces.
+    * Fixed not updating playlist when deleting a track.
+    * Fixed incorrect track order after deleting a track in a playlist.
+    * Fixed paging not working with some lists.
+    * Fixed not removing extra spacing when using system title bar.
+    * Fixed issues with followed playlists by other users not updating properly.
+    * Fixed issue when attempting to search for nothing.
+    * Fixed issues resuming playback when last used device was no longer available.
+  - Changes
+    * Added an option to show desktop notification on track change.
+    * Added support for repeating a single track.
+    * Added support for podcasts.
+    * New and improved volume slider.
+    * Already opened artists are now re-used.
+    * Added support for mirrored title bar buttons.
+    * Added support for creating new playlists.
+    * Added support for following, and unfollowing, playlists.
+    * New status messages, replacing the status bar and desktop notifications.
+    * Added a custom font for the custom dark theme.
+    * Now continues playing tracks from search results.
+    * Now shows more artists links, for example social media links.
+    * Removed broken "PulseAudio volume control" setting.
+    * Tracks in albums now show an added date for when the album released.
+    * New categories in settings for logs and for troubleshooting.
+
+-------------------------------------------------------------------
 Sun Aug 15 21:16:01 UTC 2021 - Jens K. <jens@karatek.net>
 
 - Bump version to 3.7
