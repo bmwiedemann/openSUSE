@@ -58,4 +58,14 @@
     <comment></comment>
     <requestid>927423</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>26b90af68df71f9e90eb8bbe966682f4</srcmd5>
+    <version>3.1.0</version>
+    <time>1642633930</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Updated library to leverage 'requests' in favor of 'http.client'
+- add collections-python310.patch</comment>
+    <requestid>947367</requestid>
+  </revision>
 </revisionlist>

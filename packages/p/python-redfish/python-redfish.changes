@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 19 09:35:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Updated library to leverage 'requests' in favor of 'http.client'
+- add collections-python310.patch
+
+-------------------------------------------------------------------
 Mon Oct 25 21:00:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.3

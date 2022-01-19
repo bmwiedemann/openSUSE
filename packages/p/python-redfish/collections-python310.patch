@@ -1,0 +1,12 @@
+--- python-redfish-library-3.1.0/src/redfish/ris/rmc.py	2022-01-10 14:55:53.000000000 +0100
++++ python-redfish-library-3.1.0/src/redfish/ris/rmc.py	2022-01-16 15:02:43.088058912 +0100
+@@ -15,7 +15,8 @@
+ import copy
+ import shutil
+ import logging
+-from collections import OrderedDict, Mapping
++from collections import OrderedDict
++from collections.abc import Mapping
+ 
+ import jsonpatch
+ import jsonpath_rw
