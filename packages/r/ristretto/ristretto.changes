@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 17 17:07:17 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.12.2
+  * Add support for shared thumbnail repositories
+    (gxo#apps/ristretto#82)
+  * Add thumbnail flavor support (gxo#apps/ristretto#81)
+  * Use TreeModel IFace to walk the image list
+  * Add index and list link to RsttoImageListIter
+  * Switch to GQueue in RsttoImageList
+  * Cleanup and simplifications around thumbnail size
+  * Redistribute thumbnail sizes uniformly
+  * Disable debug checks in release mode
+  * Remove unused APIs in RsttoImageList
+  * Fix and complete file change monitoring
+  * Thumbnailer: Rework queue management
+  * Thumbnailer: Properly set the number of visible items
+  * Take the device scale into account to limit rendering quality
+  * Avoid multi-threading issue with X11 (gxo#apps/ristretto#76)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Nov 28 19:47:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.1:
