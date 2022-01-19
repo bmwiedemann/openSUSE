@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 14 09:52:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- refresh the openSUSE Backports key (bsc#1193092)
+  - gpg-pubkey-65176565-59787af5.asc
+  + gpg-pubkey-65176565-61a0ee8f.asc
+- removed old security key
+- updated security key to 2020 version
+
+-------------------------------------------------------------------
 Mon Sep 27 12:59:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only add openSUSE Backports key when building for a Leap system

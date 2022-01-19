@@ -279,4 +279,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
   (sle_version &gt; 0). Tumbleweed does not use Backports.</comment>
     <requestid>921797</requestid>
   </revision>
+  <revision rev="33" vrev="42">
+    <srcmd5>fcd92a402680df90b39086ac7645ef63</srcmd5>
+    <version>1.0</version>
+    <time>1642633910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946805</requestid>
+  </revision>
 </revisionlist>

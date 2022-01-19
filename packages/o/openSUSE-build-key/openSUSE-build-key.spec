@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-build-key
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,9 @@ Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc
 Source7:        opensuse-container-9ab48ce9-5ae3116a.asc
 # Container key SUSE Linux Enterprise
 Source8:        build-container-d4ade9c3-5a2e9669.asc
-# openSUSE Backports key (previously PackageHub, now also Leap 15.3)
-Source9:        gpg-pubkey-65176565-5d94a381.asc
+# openSUSE Backports key (previously PackageHub, now also Leap 15.3 / 15.4)
+Source9:        gpg-pubkey-65176565-61a0ee8f.asc
 Source98:       security_at_suse_de.asc
-Source99:       security_at_suse_de_old.asc
 BuildRequires:  gpg
 Conflicts:      suse-build-key
 Provides:       build-key = %{version}
@@ -59,7 +58,6 @@ used by anything. rpm/zypper use the keys in the rpm db instead.
 
 %build
 cp %{SOURCE98} .
-cp %{SOURCE99} .
 %ifarch riscv64
 cp %{SOURCE3} .
 %endif
@@ -98,7 +96,7 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 
 %files
 %defattr(644,root,root)
-%doc security_at_suse_de.asc security_at_suse_de_old.asc
+%doc security_at_suse_de.asc
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
 %attr(755,root,root) %dir %{containerkeydir}
@@ -106,7 +104,7 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
 %if 0%{?sle_version}
-%{keydir}/gpg-pubkey-65176565-5d94a381.asc
+%{keydir}/gpg-pubkey-65176565-61a0ee8f.asc
 %endif
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
