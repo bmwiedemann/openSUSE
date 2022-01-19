@@ -44,6 +44,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libpcre)
@@ -92,6 +93,7 @@ Provides Python bindings for directly talking to the watchman service from
 within Python.
 
 Additionally, some Python tools that are part of watchman will be installed.
+
 
 # %%package ruby
 # There's also a ruby interface included in watchman.

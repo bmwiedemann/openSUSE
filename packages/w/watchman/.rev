@@ -110,4 +110,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>947014</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>19bbb1445356313b2757dc79f0d72c09</srcmd5>
+    <version>unknown</version>
+    <time>1642633952</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros as dependency, fix build on on Leap 15.x (forwarded request 947442 from dsterba)</comment>
+    <requestid>947446</requestid>
+  </revision>
 </revisionlist>

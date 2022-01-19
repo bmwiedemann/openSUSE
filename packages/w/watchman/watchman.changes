@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 19 00:00:00 CET 2022 - dsterba@suse.cz
+
+- add python-rpm-macros as dependency, fix build on on Leap 15.x
+
+-------------------------------------------------------------------
 Mon Jan 10 15:01:24 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - ship README.suse that explains how to use the template systemd units
