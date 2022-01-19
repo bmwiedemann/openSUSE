@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 16 13:28:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove conditionals around patch declaration, found by Stefan Liehmann 
+
+-------------------------------------------------------------------
 Tue Jan 11 21:16:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros

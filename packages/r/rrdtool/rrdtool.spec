@@ -65,10 +65,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       dejavu
-%if 0%{?suse_version} >= 1500
 Patch13:        python3.patch
 Patch14:        harden_rrdcached.service.patch
-%endif
 %if %{with python}
 BuildRequires:  %{python}-devel
 BuildRequires:  %{python}-setuptools

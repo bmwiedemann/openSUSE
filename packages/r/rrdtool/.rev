@@ -576,4 +576,12 @@
     <comment>- add python-rpm-macros</comment>
     <requestid>945687</requestid>
   </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>e4a1e5501b35880b23d69264398eea03</srcmd5>
+    <version>1.7.2</version>
+    <time>1642633908</time>
+    <user>dimstar_suse</user>
+    <comment>- remove conditionals around patch declaration, found by Stefan Liehmann</comment>
+    <requestid>946788</requestid>
+  </revision>
 </revisionlist>
