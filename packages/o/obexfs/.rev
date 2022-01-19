@@ -152,4 +152,13 @@
     <comment>1</comment>
     <requestid>313296</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>406045ec43cc185e826ea4feb2f9c0a7</srcmd5>
+    <version>0.12</version>
+    <time>1642633951</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros as dependency, fix build on on Leap 15.x
+- use %license for license files (forwarded request 947437 from dsterba)</comment>
+    <requestid>947438</requestid>
+  </revision>
 </revisionlist>

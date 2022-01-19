@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 00:00:00 CET 2022 - dsterba@suse.cz
+
+- add python-rpm-macros as dependency, fix build on on Leap 15.x
+- use %license for license files
+
+-------------------------------------------------------------------
 Tue Jun 23 01:16:15 UTC 2015 - crrodriguez@opensuse.org
 
 - package only requires pkgconfig(fuse), pkgconfig(obexftp), remove
