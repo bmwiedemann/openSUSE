@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>880614</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>501afcce144e301d7028a18b77ac8cb1</srcmd5>
+    <version>32.0</version>
+    <time>1642633908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 32.0:
+  * Allow start attribute in ordered lists (#216)
+  * No limit rendering RST one column field names (#219)
+  * Render disabled checkboxes from Markdown (#217)
+  * support cmarkgfm&gt;=0.6.0 (#209)
+- drop remove-mock.patch, remove-six.patch: upstream</comment>
+    <requestid>946779</requestid>
+  </revision>
 </revisionlist>

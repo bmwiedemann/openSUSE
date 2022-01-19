@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 16 12:48:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 32.0:
+  * Allow start attribute in ordered lists (#216)
+  * No limit rendering RST one column field names (#219)
+  * Render disabled checkboxes from Markdown (#217)
+  * support cmarkgfm>=0.6.0 (#209)
+- drop remove-mock.patch, remove-six.patch: upstream
+
+-------------------------------------------------------------------
 Mon Mar 22 10:45:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 29.0
