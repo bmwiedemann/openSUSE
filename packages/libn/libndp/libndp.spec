@@ -1,7 +1,7 @@
 #
 # spec file for package libndp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libndp
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Library for Neighbor Discovery Protocol
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
-URL:            http://www.libndp.org/
-Source:         http://www.libndp.org/files/libndp-%{version}.tar.gz
+URL:            http://libndp.org/
+Source:         http://libndp.org/files/libndp-%{version}.tar.gz
 BuildRequires:  pkgconfig
 
 %description
@@ -54,7 +54,7 @@ programs using libndp.
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} INSTALL="install -p"

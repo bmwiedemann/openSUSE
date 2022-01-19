@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  4 22:49:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8:
+  * libndp,ndptool: use poll() instead of select() 
+  * ndptool: avoid static buffer for string in ndptool
+  * libndp: avoid static buffer for debug string in ndp_sock_recv()
+  * libndp: use thread local variables for static return arguments
+  * ndptool: fix printing dnssl lifetime in ndptool
+  * ndptool: fix potential memory leak caused by strdup 
+  * libndp: close sockfd after using to avoid handle leak  
+
+-------------------------------------------------------------------
 Wed Oct 24 14:05:56 UTC 2018 - sean@suspend.net
 
 - Update to version 1.7
