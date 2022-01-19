@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 17 09:48:54 UTC 2022 - kukuk@suse.com
+
+- Update to version 2.3+git20220117.bd53c7c:
+  - Fixes error where if custom image is used toolbox will download
+    the default image before entering an existing container. (#40)
+
+-------------------------------------------------------------------
 Wed Nov 24 14:43:54 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.2+git20211124.09791b1:

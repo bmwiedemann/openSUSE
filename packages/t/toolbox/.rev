@@ -181,4 +181,14 @@
   * Introduce -n/--nostop switch so mutiple sessions can be run inside an existing toolbox</comment>
     <requestid>933488</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5810bdb6cb84d43b4c37b97518ca8d49</srcmd5>
+    <version>2.3+git20220117.bd53c7c</version>
+    <time>1642633920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+git20220117.bd53c7c:
+  - Fixes error where if custom image is used toolbox will download
+    the default image before entering an existing container. (#40)</comment>
+    <requestid>946923</requestid>
+  </revision>
 </revisionlist>
