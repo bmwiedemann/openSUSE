@@ -19,10 +19,11 @@ declare -A RPMGPGKEYS
 
 # List of GPG keys and common names
 RPMGPGKEYS["openSUSE"]="gpg-pubkey-3dbdc284-53674dd4.asc"
-RPMGPGKEYS["openSUSE-Backports"]="gpg-pubkey-65176565-59787af5.asc"
+RPMGPGKEYS["openSUSE-Backports"]="gpg-pubkey-65176565-61a0ee8f.asc"
 RPMGPGKEYS["SuSE-SLE-15"]="gpg-pubkey-39db7c82-5847eb1f.asc"
 RPMGPGKEYS["SuSE-SLE-15.3"]="gpg-pubkey-39db7c82-5847eb1f.asc"
 RPMGPGKEYS["SuSE-SLE-15.4"]="gpg-pubkey-39db7c82-5847eb1f.asc"
+RPMGPGKEYS["SuSE-SLE-15.5"]="gpg-pubkey-39db7c82-5847eb1f.asc"
 
 # Create the target directories
 mkdir -p ${ROOTDIR}${RPMGPGKEYDIR}

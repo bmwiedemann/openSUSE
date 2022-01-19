@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 12:11:29 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Refresh GPG key link for openSUSE Backports (boo#1194871)
+- Add GPG key link for 15.5
+
+-------------------------------------------------------------------
 Fri Aug 27 14:51:30 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Fix GPG key references for updates from openSUSE backports (boo#1189892)

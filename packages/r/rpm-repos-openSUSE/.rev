@@ -49,4 +49,13 @@
     <comment>- Fix GPG key references for updates from openSUSE backports (boo#1189892)</comment>
     <requestid>914636</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f469378278ec2addf5b8824b2521b9f2</srcmd5>
+    <version>unknown</version>
+    <time>1642633943</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh GPG key link for openSUSE Backports (boo#1194871)
+- Add GPG key link for 15.5</comment>
+    <requestid>947405</requestid>
+  </revision>
 </revisionlist>
