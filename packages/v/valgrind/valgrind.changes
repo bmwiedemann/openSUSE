@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Nov  9 00:27:36 UTC 2021 - Chris Bradbury <viff3000@gmail.com>
 
-- update to 3.18.1
+- update to 3.18.1 (jsc#SLE-18639):
   * 3.18.1 fixes a number of bugs and adds support for glibc-2.34, and for new 
     platforms x86/FreeBSD and amd64/FreeBSD. Debuginfo reading is faster, and 
     Rust demangling has been improved. For PPC64, ISA 3.1 support has been
