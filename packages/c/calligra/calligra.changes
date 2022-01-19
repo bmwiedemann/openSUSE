@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 19 08:57:18 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Set-CXX_STANDARD-to-17.patch to set language standard to
+  C++17, poppler 22.01.0 needs that
+- Add Fix-some-more-warnings.patch to fix build failures with C++17
+
+-------------------------------------------------------------------
 Tue Dec 21 20:42:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add dependency on kcoreaddons (boo#1193959)

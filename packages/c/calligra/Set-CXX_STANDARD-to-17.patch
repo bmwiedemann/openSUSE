@@ -1,0 +1,32 @@
+From 9ebf8e8bb9e2f889ae01d3acfbe5fc022d5073d0 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Wed, 19 Jan 2022 10:07:04 +0100
+Subject: [PATCH] Set CXX_STANDARD to 17
+
+Poppler requires C++17 since 22.01.0.
+---
+ CMakeLists.txt | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 71272ffef2d..f2bec21b865 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -104,12 +104,8 @@ if(NOT DEFINED RELEASE_BUILD)
+ endif()
+ message(STATUS "Release build: ${RELEASE_BUILD}")
+ 
+-# use CPP-11
+-if (CMAKE_VERSION VERSION_LESS "3.1")
+-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-else ()
+-    set (CMAKE_CXX_STANDARD 11)
+-endif ()
++# use CPP-17, poppler 22.01.0 needs it
++set (CMAKE_CXX_STANDARD 17)
+ 
+ ############
+ #############
+-- 
+2.31.1
+
