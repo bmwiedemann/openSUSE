@@ -205,4 +205,13 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Fix name of build dir used in tests</comment>
     <requestid>850419</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>3659cea199478523a822903ca37d7c0f</srcmd5>
+    <version>9</version>
+    <time>1642633949</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop --simple-dmabuf-drm configure option since it has been long
+  obsoleted (and only now did meson start being strict).</comment>
+    <requestid>947429</requestid>
+  </revision>
 </revisionlist>

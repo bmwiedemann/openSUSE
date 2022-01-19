@@ -1,7 +1,7 @@
 #
 # spec file for package weston
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           weston
 Version:        9
 Release:        0
 Summary:        Wayland Reference Compositor
-License:        MIT AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND MIT
 Group:          System/X11/Servers
 URL:            https://wayland.freedesktop.org/
 
@@ -140,11 +140,6 @@ to develop plugins for Weston.
 echo "Workaround broken weston that fails to cope with -Wl,--no-undefined injected by meson/ninja"
 export LDFLAGS="%{?build_ldflags} -Wl,-z,undefs"
 %meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
-%ifarch %ix86 x86_64
-	-Dsimple-dmabuf-drm=intel \
-%else
-	-Dsimple-dmabuf-drm= \
-%endif
 	-Dtest-junit-xml=false -Dpipewire=false \
 	--includedir="%_includedir/%name"
 %meson_build

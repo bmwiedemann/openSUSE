@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 13:25:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --simple-dmabuf-drm configure option since it has been long
+  obsoleted (and only now did meson start being strict).
+
+-------------------------------------------------------------------
 Mon Nov 23 13:51:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix name of build dir used in tests
