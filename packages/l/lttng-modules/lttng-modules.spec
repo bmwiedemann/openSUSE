@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-modules
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lttng-modules
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        Licensing information for package lttng-modules
 License:        GPL-2.0-only AND LGPL-2.1-only AND MIT
@@ -28,8 +28,6 @@ Source1:        https://lttng.org/files/lttng-modules/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Source3:        %{name}-preamble
 Source4:        Module.supported
-# PATCH-FIX-UPSTREAM lttng-modules-2.13.0-linux-5.15.patch mjeanson@efficios.com -- Linux 5.15 compatibility (commit ffcc8734).
-Patch0:         lttng-modules-2.13.0-linux-5.15.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
 
@@ -39,7 +37,7 @@ This package provides licensing documentation for the lttng kmp packages.
 %kernel_module_package -p %{name}-preamble -x ec2 xen xenpae vmi um
 
 %prep
-%autosetup -p1
+%setup -q
 
 set -- *
 mkdir source obj

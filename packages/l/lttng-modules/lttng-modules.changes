@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 13:16:03 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.1:
+  * See https://git.lttng.org/?p=lttng-modules.git;a=shortlog;h=refs/tags/v2.13.1
+- Drop lttng-modules-2.13.0-linux-5.15.patch: merged upstream.
+
+-------------------------------------------------------------------
 Sat Nov 27 18:07:31 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.0:
