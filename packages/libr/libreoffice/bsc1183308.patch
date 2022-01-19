@@ -1,0 +1,1325 @@
+From 80d99306107ce3335b1eafa14e880b814eddb98c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lubo=C5=A1=20Lu=C5=88=C3=A1k?= <l.lunak@collabora.com>
+Date: Fri, 7 Jan 2022 10:01:46 +0100
+Subject: [PATCH] improve loading and rendering of many small shapes
+ (bsc#1183308)
+
+Change-Id: I1e4d3b219e0d35be040c7a675b6c668e677acba8
+---
+ comphelper/source/misc/anycompare.cxx         | 207 ++++++++++++++++++
+ .../processor2d/vclhelperbufferdevice.cxx     |  34 ++-
+ include/com/sun/star/uno/Sequence.hxx         |   2 +
+ include/comphelper/anycompare.hxx             |  22 ++
+ include/svx/sdasitm.hxx                       |  13 ++
+ .../svx/sdr/properties/defaultproperties.hxx  |   3 +-
+ include/svx/sdr/properties/properties.hxx     |   3 +-
+ include/svx/svdoashp.hxx                      |   4 +-
+ include/svx/svdobj.hxx                        |   4 +-
+ include/vcl/outdev.hxx                        |   3 +
+ solenv/clang-format/excludelist               |   1 +
+ .../sdr/properties/attributeproperties.hxx    |   3 +-
+ svx/inc/sdr/properties/captionproperties.hxx  |   3 +-
+ svx/inc/sdr/properties/circleproperties.hxx   |   3 +-
+ .../sdr/properties/connectorproperties.hxx    |   3 +-
+ .../sdr/properties/customshapeproperties.hxx  |   3 +-
+ svx/inc/sdr/properties/e3dsceneproperties.hxx |   3 +-
+ svx/inc/sdr/properties/emptyproperties.hxx    |   3 +-
+ svx/inc/sdr/properties/graphicproperties.hxx  |   3 +-
+ svx/inc/sdr/properties/groupproperties.hxx    |   3 +-
+ svx/inc/sdr/properties/measureproperties.hxx  |   3 +-
+ svx/inc/sdr/properties/pageproperties.hxx     |   3 +-
+ .../sdr/properties/rectangleproperties.hxx    |   3 +-
+ svx/inc/sdr/properties/textproperties.hxx     |   3 +-
+ svx/source/items/customshapeitem.cxx          | 129 +++++++----
+ .../sdr/properties/attributeproperties.cxx    |   6 +-
+ .../sdr/properties/captionproperties.cxx      |   5 +-
+ .../sdr/properties/circleproperties.cxx       |   5 +-
+ .../sdr/properties/connectorproperties.cxx    |   5 +-
+ .../sdr/properties/customshapeproperties.cxx  |   5 +-
+ .../sdr/properties/defaultproperties.cxx      |   3 +-
+ .../sdr/properties/e3dsceneproperties.cxx     |   8 +-
+ svx/source/sdr/properties/emptyproperties.cxx |   3 +-
+ .../sdr/properties/graphicproperties.cxx      |   7 +-
+ svx/source/sdr/properties/groupproperties.cxx |   8 +-
+ .../sdr/properties/measureproperties.cxx      |   5 +-
+ svx/source/sdr/properties/oleproperties.cxx   |   2 +-
+ svx/source/sdr/properties/pageproperties.cxx  |   3 +-
+ svx/source/sdr/properties/properties.cxx      |   2 +-
+ .../sdr/properties/rectangleproperties.cxx    |   5 +-
+ svx/source/sdr/properties/textproperties.cxx  |   5 +-
+ svx/source/svdraw/svdoashp.cxx                |   4 +-
+ svx/source/svdraw/svdobj.cxx                  |   9 +-
+ svx/source/table/cell.cxx                     |   2 +-
+ vcl/headless/svpvd.cxx                        |  37 ++--
+ vcl/source/outdev/outdev.cxx                  |   9 +
+ 46 files changed, 490 insertions(+), 112 deletions(-)
+
+diff --git a/comphelper/source/misc/anycompare.cxx b/comphelper/source/misc/anycompare.cxx
+index d802024e7502..2758062a1915 100644
+--- a/comphelper/source/misc/anycompare.cxx
++++ b/comphelper/source/misc/anycompare.cxx
+@@ -286,4 +286,211 @@ namespace comphelper
+ } // namespace comphelper
+ 
+ 
++#include <o3tl/hash_combine.hxx>
++#include <typelib/typedescription.hxx>
++
++#include <com/sun/star/uno/Sequence.hxx>
++
++using namespace ::com::sun::star;
++using ::com::sun::star::uno::TypeDescription;
++
++namespace comphelper {
++namespace {
++
++// This is like com::sun::star::uno::TypeDescription, but it uses TYPELIB_DANGER_GET
++// (which the code used originally, but it's easier to have a class to handle ownership).
++class TypeDescriptionRef
++{
++public:
++    TypeDescriptionRef(typelib_TypeDescriptionReference* typeDef)
++    {
++        TYPELIB_DANGER_GET(&typeDescr, typeDef);
++    }
++    ~TypeDescriptionRef() { TYPELIB_DANGER_RELEASE(typeDescr); }
++    typelib_TypeDescription* get() { return typeDescr; }
++    typelib_TypeDescription* operator->() { return typeDescr; }
++    bool is() { return typeDescr != nullptr; }
++    bool equals(const TypeDescriptionRef& other) const
++    {
++        return typeDescr && other.typeDescr
++               && typelib_typedescription_equals(typeDescr, other.typeDescr);
++    }
++
++private:
++    typelib_TypeDescription* typeDescr = nullptr;
++};
++
++std::optional<size_t> hashValue( size_t hash,
++                  void const * val, typelib_TypeDescriptionReference * typeRef )
++{
++    o3tl::hash_combine( hash, typeRef->eTypeClass );
++    if (typeRef->eTypeClass == typelib_TypeClass_VOID) {
++        return hash;
++    }
++    assert(val != nullptr);
++
++    switch (typeRef->eTypeClass) {
++    case typelib_TypeClass_INTERFACE: {
++        return std::nullopt; // not implemented
++    }
++    case typelib_TypeClass_STRUCT:
++    case typelib_TypeClass_EXCEPTION: {
++        TypeDescription typeDescr( typeRef );
++        if (!typeDescr.is())
++            typeDescr.makeComplete();
++        if (!typeDescr.is())
++            return std::nullopt;
++
++        typelib_CompoundTypeDescription * compType =
++            reinterpret_cast< typelib_CompoundTypeDescription * >(
++                typeDescr.get() );
++        sal_Int32 nDescr = compType->nMembers;
++
++        if (compType->pBaseTypeDescription) {
++            std::optional<size_t> tmpHash = hashValue(
++                hash, val, reinterpret_cast<
++                typelib_TypeDescription * >(
++                    compType->pBaseTypeDescription)->pWeakRef);
++            if(!tmpHash.has_value())
++                return std::nullopt;
++            hash = *tmpHash;
++        }
++
++        typelib_TypeDescriptionReference ** ppTypeRefs =
++            compType->ppTypeRefs;
++        sal_Int32 * memberOffsets = compType->pMemberOffsets;
++
++        for ( sal_Int32 nPos = 0; nPos < nDescr; ++nPos )
++        {
++            TypeDescriptionRef memberType( ppTypeRefs[ nPos ] );
++            if (!memberType.is())
++                return std::nullopt;
++
++            std::optional<size_t> tmpHash = hashValue( hash,
++                             static_cast< char const * >(
++                                 val ) + memberOffsets[ nPos ],
++                             memberType->pWeakRef );
++            if(!tmpHash.has_value())
++                return std::nullopt;
++            hash = *tmpHash;
++        }
++        break;
++    }
++    case typelib_TypeClass_SEQUENCE: {
++        TypeDescriptionRef typeDescr( typeRef );
++        if (!typeDescr.is())
++            return std::nullopt;
++
++        typelib_TypeDescriptionReference * elementTypeRef =
++            reinterpret_cast<
++            typelib_IndirectTypeDescription * >(typeDescr.get())->pType;
++        TypeDescriptionRef elementTypeDescr( elementTypeRef );
++        if (!elementTypeDescr.is())
++            return std::nullopt;
++
++        sal_Int32 nElementSize = elementTypeDescr->nSize;
++        uno_Sequence * seq =
++            *static_cast< uno_Sequence * const * >(val);
++        sal_Int32 nElements = seq->nElements;
++
++        if (nElements > 0)
++        {
++            char const * pElements = seq->elements;
++            for ( sal_Int32 nPos = 0; nPos < nElements; ++nPos )
++            {
++                std::optional<size_t> tmpHash = hashValue( hash,
++                    pElements + (nElementSize * nPos),
++                    elementTypeDescr->pWeakRef );
++                if(!tmpHash.has_value())
++                    return std::nullopt;
++                hash = *tmpHash;
++            }
++        }
++        break;
++    }
++    case typelib_TypeClass_ANY: {
++        uno_Any const * pAny = static_cast< uno_Any const * >(val);
++        return hashValue( hash, pAny->pData, pAny->pType );
++    }
++    case typelib_TypeClass_TYPE: {
++        OUString const & str = OUString::unacquired(
++            &(*static_cast<
++                     typelib_TypeDescriptionReference * const * >(val)
++                        )->pTypeName );
++        o3tl::hash_combine( hash, str.hashCode() );
++        break;
++    }
++    case typelib_TypeClass_STRING: {
++        OUString const & str = OUString::unacquired(
++            static_cast< rtl_uString * const * >(val) );
++        o3tl::hash_combine( hash, str.hashCode() );
++        break;
++    }
++    case typelib_TypeClass_ENUM: {
++        TypeDescription typeDescr( typeRef );
++        if (!typeDescr.is())
++            typeDescr.makeComplete();
++        if (!typeDescr.is())
++            return std::nullopt;
++
++        o3tl::hash_combine( hash, *static_cast< int const * >(val));
++        break;
++    }
++    case typelib_TypeClass_BOOLEAN:
++        if (*static_cast< sal_Bool const * >(val))
++            o3tl::hash_combine( hash, true );
++        else
++            o3tl::hash_combine( hash, false );
++        break;
++    case typelib_TypeClass_CHAR: {
++        o3tl::hash_combine( hash, *static_cast< sal_Unicode const * >(val));
++        break;
++    }
++    case typelib_TypeClass_FLOAT:
++        o3tl::hash_combine( hash, *static_cast< float const * >(val) );
++        break;
++    case typelib_TypeClass_DOUBLE:
++        o3tl::hash_combine( hash, *static_cast< double const * >(val) );
++        break;
++    case typelib_TypeClass_BYTE:
++        o3tl::hash_combine( hash, *static_cast< sal_Int8 const * >(val) );
++        break;
++    case typelib_TypeClass_SHORT:
++        o3tl::hash_combine( hash, *static_cast< sal_Int16 const * >(val) );
++        break;
++    case typelib_TypeClass_UNSIGNED_SHORT:
++        o3tl::hash_combine( hash, *static_cast< sal_uInt16 const * >(val) );
++        break;
++    case typelib_TypeClass_LONG:
++        o3tl::hash_combine( hash, *static_cast< sal_Int32 const * >(val) );
++        break;
++    case typelib_TypeClass_UNSIGNED_LONG:
++        o3tl::hash_combine( hash, *static_cast< sal_uInt32 const * >(val) );
++        break;
++    case typelib_TypeClass_HYPER:
++        o3tl::hash_combine( hash, *static_cast< sal_Int64 const * >(val) );
++        break;
++    case typelib_TypeClass_UNSIGNED_HYPER:
++        o3tl::hash_combine( hash, *static_cast< sal_uInt64 const * >(val) );
++        break;
++//     case typelib_TypeClass_UNKNOWN:
++//     case typelib_TypeClass_SERVICE:
++//     case typelib_TypeClass_MODULE:
++    default:
++        return std::nullopt;
++    }
++    return hash;
++}
++
++} // anon namespace
++
++
++std::optional<size_t> anyToHash( uno::Any const & value )
++{
++    size_t hash = 0;
++    return hashValue( hash, value.getValue(), value.getValueTypeRef());
++}
++
++} // namespace comphelper
++
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/drawinglayer/source/processor2d/vclhelperbufferdevice.cxx b/drawinglayer/source/processor2d/vclhelperbufferdevice.cxx
+index f6bf0f10c9f7..c80c8206a87f 100644
+--- a/drawinglayer/source/processor2d/vclhelperbufferdevice.cxx
++++ b/drawinglayer/source/processor2d/vclhelperbufferdevice.cxx
+@@ -63,6 +63,8 @@ private:
+     // virtualdevice because that isn't safe to do at least for Gtk2
+     std::map<VclPtr<VirtualDevice>, VclPtr<OutputDevice>> maDeviceTemplates;
+ 
++    static bool isSizeSuitable(const VclPtr<VirtualDevice>& device, const Size& size);
++
+ public:
+     VDevBuffer();
+     virtual ~VDevBuffer() override;
+@@ -101,6 +103,28 @@ VDevBuffer::~VDevBuffer()
+     }
+ }
+ 
++bool VDevBuffer::isSizeSuitable(const VclPtr<VirtualDevice>& device, const Size& rSizePixel)
++{
++    if (device->GetOutputWidthPixel() >= rSizePixel.getWidth()
++        && device->GetOutputHeightPixel() >= rSizePixel.getHeight())
++    {
++#if defined(UNX)
++        // HACK: See the small size handling in SvpSalVirtualDevice::CreateSurface().
++        // Make sure to not reuse a larger device when a small one should be preferred.
++        if (device->GetRenderBackendName() == "svp")
++        {
++            if (rSizePixel.getWidth() <= 32 && rSizePixel.getHeight() <= 32
++                && (device->GetOutputWidthPixel() > 32 || device->GetOutputHeightPixel() > 32))
++            {
++                return false;
++            }
++        }
++#endif
++        return true;
++    }
++    return false;
++}
++
+ VclPtr<VirtualDevice> VDevBuffer::alloc(OutputDevice& rOutDev, const Size& rSizePixel,
+                                         bool bTransparent)
+ {
+@@ -127,9 +151,7 @@ VclPtr<VirtualDevice> VDevBuffer::alloc(OutputDevice& rOutDev, const Size& rSize
+                     if (bOkay)
+                     {
+                         // found is valid
+-                        const bool bCandidateOkay(
+-                            a->buf->GetOutputWidthPixel() >= rSizePixel.getWidth()
+-                            && a->buf->GetOutputHeightPixel() >= rSizePixel.getHeight());
++                        const bool bCandidateOkay = isSizeSuitable(a->buf, rSizePixel);
+ 
+                         if (bCandidateOkay)
+                         {
+@@ -154,16 +176,14 @@ VclPtr<VirtualDevice> VDevBuffer::alloc(OutputDevice& rOutDev, const Size& rSize
+                     {
+                         // found is invalid, use candidate
+                         aFound = a;
+-                        bOkay = aFound->buf->GetOutputWidthPixel() >= rSizePixel.getWidth()
+-                                && aFound->buf->GetOutputHeightPixel() >= rSizePixel.getHeight();
++                        bOkay = isSizeSuitable(aFound->buf, rSizePixel);
+                     }
+                 }
+                 else
+                 {
+                     // none yet, use candidate
+                     aFound = a;
+-                    bOkay = aFound->buf->GetOutputWidthPixel() >= rSizePixel.getWidth()
+-                            && aFound->buf->GetOutputHeightPixel() >= rSizePixel.getHeight();
++                    bOkay = isSizeSuitable(aFound->buf, rSizePixel);
+                 }
+             }
+         }
+diff --git a/include/com/sun/star/uno/Sequence.hxx b/include/com/sun/star/uno/Sequence.hxx
+index 26a51350815b..891f631aa9f3 100644
+--- a/include/com/sun/star/uno/Sequence.hxx
++++ b/include/com/sun/star/uno/Sequence.hxx
+@@ -138,6 +138,8 @@ inline bool Sequence< E >::operator == ( const Sequence & rSeq ) const
+ {
+     if (_pSequence == rSeq._pSequence)
+         return true;
++    if (_pSequence->nElements != rSeq._pSequence->nElements)
++        return false;
+     const Type & rType = ::cppu::getTypeFavourUnsigned( this );
+     return ::uno_type_equalData(
+         const_cast< Sequence * >( this ), rType.getTypeLibType(),
+diff --git a/include/comphelper/anycompare.hxx b/include/comphelper/anycompare.hxx
+index 782c7f19951f..d0dbd3cf8d49 100644
+--- a/include/comphelper/anycompare.hxx
++++ b/include/comphelper/anycompare.hxx
+@@ -212,6 +212,28 @@ namespace comphelper
+ 
+ } // namespace comphelper
+ 
++#include <comphelper/comphelperdllapi.h>
++
++#include <optional>
++
++namespace com::sun::star::uno
++{
++class Any;
++}
++
++namespace comphelper
++{
++/** Tries to get a hash value for an ANY value.
++
++    Not all cases may be implemented, in which case no value is returned.
++
++    @param value
++           ANY value
++    @return
++           hash of given ANY value, or not available
++*/
++COMPHELPER_DLLPUBLIC std::optional<size_t> anyToHash(css::uno::Any const& value);
++}
+ 
+ #endif // INCLUDED_COMPHELPER_ANYCOMPARE_HXX
+ 
+diff --git a/include/svx/sdasitm.hxx b/include/svx/sdasitm.hxx
+index e8db1996a9c8..b6ac7404b088 100644
+--- a/include/svx/sdasitm.hxx
++++ b/include/svx/sdasitm.hxx
+@@ -48,6 +48,16 @@ private:
+ 
+     css::uno::Sequence< css::beans::PropertyValue > aPropSeq;
+ 
++    // For fast comparisons keep a hash of the content, computed on demand
++    // (unusable state is if anyToHash() returns no hash).
++    enum HashState { Unknown, Valid, Unusable };
++    mutable HashState aHashState = HashState::Unknown;
++    mutable size_t aHash;
++
++    void SetPropSeq( const css::uno::Sequence< css::beans::PropertyValue >& rPropSeq );
++    inline void UpdateHash() const;
++    inline void InvalidateHash();
++
+     public:
+ 
+             SdrCustomShapeGeometryItem();
+@@ -60,6 +70,9 @@ private:
+             SdrCustomShapeGeometryItem & operator =(SdrCustomShapeGeometryItem &&) = delete; // due to SfxPoolItem
+ 
+             virtual bool                operator==( const SfxPoolItem& ) const override;
++            virtual bool                operator<( const SfxPoolItem& ) const override;
++            virtual bool                IsSortable() const override { return true; }
++
+             virtual bool GetPresentation(SfxItemPresentation ePresentation,
+                                          MapUnit eCoreMetric, MapUnit ePresentationMetric,
+                                          OUString &rText, const IntlWrapper&) const override;
+diff --git a/include/svx/sdr/properties/defaultproperties.hxx b/include/svx/sdr/properties/defaultproperties.hxx
+index e901278d3b3e..54d50ae611fd 100644
+--- a/include/svx/sdr/properties/defaultproperties.hxx
++++ b/include/svx/sdr/properties/defaultproperties.hxx
+@@ -92,7 +92,8 @@ namespace sdr::properties
+             virtual void SetObjectItemSet(const SfxItemSet& rSet) override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // get the installed StyleSheet
+             virtual SfxStyleSheet* GetStyleSheet() const override;
+diff --git a/include/svx/sdr/properties/properties.hxx b/include/svx/sdr/properties/properties.hxx
+index 600522981dc0..8ee9573b0972 100644
+--- a/include/svx/sdr/properties/properties.hxx
++++ b/include/svx/sdr/properties/properties.hxx
+@@ -162,7 +162,8 @@ namespace sdr::properties
+ 
+             // Set a new StyleSheet. Registers as listener at the StyleSheet to get knowledge
+             // of StyleSheet changes.
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) = 0;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) = 0;
+ 
+             // Get the installed StyleSheet.
+             virtual SfxStyleSheet* GetStyleSheet() const = 0;
+diff --git a/include/svx/svdoashp.hxx b/include/svx/svdoashp.hxx
+index 65540e93a9d5..bd0dba17deb5 100644
+--- a/include/svx/svdoashp.hxx
++++ b/include/svx/svdoashp.hxx
+@@ -132,6 +132,8 @@ protected:
+     // protected destructor
+     virtual ~SdrObjCustomShape() override;
+ 
++    virtual void InternalSetStyleSheet( SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr, bool bBroadcast ) override;
++
+ public:
+     bool UseNoFillStyle() const;
+ 
+@@ -184,8 +186,6 @@ public:
+ 
+     virtual SdrGluePoint GetVertexGluePoint(sal_uInt16 nNum) const override;
+ 
+-    virtual void NbcSetStyleSheet( SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr ) override;
+-
+     // special drag methods
+     virtual bool hasSpecialDrag() const override;
+     virtual bool beginSpecialDrag(SdrDragStat& rDrag) const override;
+diff --git a/include/svx/svdobj.hxx b/include/svx/svdobj.hxx
+index 0960826d2c63..8843a8debf6e 100644
+--- a/include/svx/svdobj.hxx
++++ b/include/svx/svdobj.hxx
+@@ -623,7 +623,7 @@ public:
+     // if bDontRemoveHardAttr is false, set all attributes, which were set in the style sheet, to their default value
+     // if true, all hard attributes keep their values
+     void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr);
+-    virtual void NbcSetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr);
++    void NbcSetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr);
+     SfxStyleSheet* GetStyleSheet() const;
+ 
+     virtual bool HasTextEdit() const;
+@@ -944,6 +944,8 @@ protected:
+ 
+     const SfxItemSet* getBackgroundFillSet() const;
+ 
++    virtual void InternalSetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr, bool bBroadcast);
++
+ private:
+     struct Impl;
+     std::unique_ptr<Impl>             mpImpl;
+diff --git a/include/vcl/outdev.hxx b/include/vcl/outdev.hxx
+index 7c5f28455b25..fc83a67740c8 100644
+--- a/include/vcl/outdev.hxx
++++ b/include/vcl/outdev.hxx
+@@ -280,6 +280,9 @@ public:
+     const AllSettings&          GetSettings() const { return *mxSettings; }
+ 
+     SystemGraphicsData          GetSystemGfxData() const;
++    OUString                    GetRenderBackendName() const;
++
++    // Used by the canvas module. Despite the name it does not always return true if Cairo is supported.
+     bool                        SupportsCairo() const;
+     /// Create Surface from given cairo surface
+     cairo::SurfaceSharedPtr     CreateSurface(const cairo::CairoSurfaceSharedPtr& rSurface) const;
+diff --git a/solenv/clang-format/excludelist b/solenv/clang-format/excludelist
+index 6d6605c30c3a..c26903dfbd39 100644
+--- a/solenv/clang-format/excludelist
++++ b/solenv/clang-format/excludelist
+@@ -1382,6 +1382,7 @@ comphelper/source/misc/accessibletexthelper.cxx
+ comphelper/source/misc/accessiblewrapper.cxx
+ comphelper/source/misc/accimplaccess.cxx
+ comphelper/source/misc/anycompare.cxx
++comphelper/source/misc/anytohash.cxx
+ comphelper/source/misc/anytostring.cxx
+ comphelper/source/misc/asyncnotification.cxx
+ comphelper/source/misc/backupfilehelper.cxx
+diff --git a/svx/inc/sdr/properties/attributeproperties.hxx b/svx/inc/sdr/properties/attributeproperties.hxx
+index 9633257c5a63..3ec46eb9b62a 100644
+--- a/svx/inc/sdr/properties/attributeproperties.hxx
++++ b/svx/inc/sdr/properties/attributeproperties.hxx
+@@ -69,7 +69,8 @@ namespace sdr::properties
+             virtual ~AttributeProperties() override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // get the installed StyleSheet
+             virtual SfxStyleSheet* GetStyleSheet() const override;
+diff --git a/svx/inc/sdr/properties/captionproperties.hxx b/svx/inc/sdr/properties/captionproperties.hxx
+index c6f71529e181..c8f3fb4f30f5 100644
+--- a/svx/inc/sdr/properties/captionproperties.hxx
++++ b/svx/inc/sdr/properties/captionproperties.hxx
+@@ -47,7 +47,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // force default attributes for a specific object type, called from
+             // DefaultProperties::GetObjectItemSet() if a new ItemSet is created
+diff --git a/svx/inc/sdr/properties/circleproperties.hxx b/svx/inc/sdr/properties/circleproperties.hxx
+index 2227817d1b49..348c57d1933d 100644
+--- a/svx/inc/sdr/properties/circleproperties.hxx
++++ b/svx/inc/sdr/properties/circleproperties.hxx
+@@ -47,7 +47,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // force default attributes for a specific object type, called from
+             // DefaultProperties::GetObjectItemSet() if a new ItemSet is created
+diff --git a/svx/inc/sdr/properties/connectorproperties.hxx b/svx/inc/sdr/properties/connectorproperties.hxx
+index 8d6e14ffb64b..1577da3fb948 100644
+--- a/svx/inc/sdr/properties/connectorproperties.hxx
++++ b/svx/inc/sdr/properties/connectorproperties.hxx
+@@ -47,7 +47,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+         };
+ } // end of namespace sdr::properties
+ 
+diff --git a/svx/inc/sdr/properties/customshapeproperties.hxx b/svx/inc/sdr/properties/customshapeproperties.hxx
+index 8fa29e117bd7..0974a7facd37 100644
+--- a/svx/inc/sdr/properties/customshapeproperties.hxx
++++ b/svx/inc/sdr/properties/customshapeproperties.hxx
+@@ -56,7 +56,8 @@ namespace sdr::properties
+         public:
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // force default attributes for a specific object type, called from
+             // DefaultProperties::GetObjectItemSet() if a new ItemSet is created
+diff --git a/svx/inc/sdr/properties/e3dsceneproperties.hxx b/svx/inc/sdr/properties/e3dsceneproperties.hxx
+index e1192d022756..4606499bdffe 100644
+--- a/svx/inc/sdr/properties/e3dsceneproperties.hxx
++++ b/svx/inc/sdr/properties/e3dsceneproperties.hxx
+@@ -60,7 +60,8 @@ namespace sdr::properties
+             virtual void ClearMergedItem(const sal_uInt16 nWhich) override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // get the installed StyleSheet
+             virtual SfxStyleSheet* GetStyleSheet() const override;
+diff --git a/svx/inc/sdr/properties/emptyproperties.hxx b/svx/inc/sdr/properties/emptyproperties.hxx
+index 250c23deac0e..14af28d8a532 100644
+--- a/svx/inc/sdr/properties/emptyproperties.hxx
++++ b/svx/inc/sdr/properties/emptyproperties.hxx
+@@ -78,7 +78,8 @@ namespace sdr::properties
+             virtual void SetObjectItemSet(const SfxItemSet& rSet) override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // get the installed StyleSheet
+             virtual SfxStyleSheet* GetStyleSheet() const override;
+diff --git a/svx/inc/sdr/properties/graphicproperties.hxx b/svx/inc/sdr/properties/graphicproperties.hxx
+index 3a424f7e921d..39e4c66d237a 100644
+--- a/svx/inc/sdr/properties/graphicproperties.hxx
++++ b/svx/inc/sdr/properties/graphicproperties.hxx
+@@ -50,7 +50,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // force default attributes for a specific object type, called from
+             // DefaultProperties::GetObjectItemSet() if a new ItemSet is created
+diff --git a/svx/inc/sdr/properties/groupproperties.hxx b/svx/inc/sdr/properties/groupproperties.hxx
+index 32fe503d1dd2..36ce508a8777 100644
+--- a/svx/inc/sdr/properties/groupproperties.hxx
++++ b/svx/inc/sdr/properties/groupproperties.hxx
+@@ -91,7 +91,8 @@ namespace sdr::properties
+             virtual void SetObjectItemSet(const SfxItemSet& rSet) override;
+ 
+             // set a new StyleSheet
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // get the local StyleSheet
+             virtual SfxStyleSheet* GetStyleSheet() const override;
+diff --git a/svx/inc/sdr/properties/measureproperties.hxx b/svx/inc/sdr/properties/measureproperties.hxx
+index 77cb253be45a..0927bc89b19c 100644
+--- a/svx/inc/sdr/properties/measureproperties.hxx
++++ b/svx/inc/sdr/properties/measureproperties.hxx
+@@ -47,7 +47,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // force default attributes for a specific object type, called from
+             // DefaultProperties::GetObjectItemSet() if a new ItemSet is created
+diff --git a/svx/inc/sdr/properties/pageproperties.hxx b/svx/inc/sdr/properties/pageproperties.hxx
+index 7bd5c213fbc4..be85ed0e40f9 100644
+--- a/svx/inc/sdr/properties/pageproperties.hxx
++++ b/svx/inc/sdr/properties/pageproperties.hxx
+@@ -57,7 +57,8 @@ namespace sdr::properties
+             virtual SfxStyleSheet* GetStyleSheet() const override;
+ 
+             // set the installed StyleSheet
+-            virtual void SetStyleSheet(SfxStyleSheet* pStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // clear single item
+             virtual void ClearObjectItem(const sal_uInt16 nWhich = 0) override;
+diff --git a/svx/inc/sdr/properties/rectangleproperties.hxx b/svx/inc/sdr/properties/rectangleproperties.hxx
+index 1af85d786d9b..831e0b703c38 100644
+--- a/svx/inc/sdr/properties/rectangleproperties.hxx
++++ b/svx/inc/sdr/properties/rectangleproperties.hxx
+@@ -45,7 +45,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+         };
+ } // end of namespace sdr::properties
+ 
+diff --git a/svx/inc/sdr/properties/textproperties.hxx b/svx/inc/sdr/properties/textproperties.hxx
+index ea587a8996fb..70e5b2131381 100644
+--- a/svx/inc/sdr/properties/textproperties.hxx
++++ b/svx/inc/sdr/properties/textproperties.hxx
+@@ -59,7 +59,8 @@ namespace sdr::properties
+             virtual std::unique_ptr<BaseProperties> Clone(SdrObject& rObj) const override;
+ 
+             // set a new StyleSheet and broadcast
+-            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr) override;
++            virtual void SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast) override;
+ 
+             // force default attributes for a specific object type, called from
+             // DefaultProperties::GetObjectItemSet() if a new ItemSet is created
+diff --git a/svx/source/items/customshapeitem.cxx b/svx/source/items/customshapeitem.cxx
+index 9a86a3bdb4aa..b5dbb2374f80 100644
+--- a/svx/source/items/customshapeitem.cxx
++++ b/svx/source/items/customshapeitem.cxx
+@@ -20,6 +20,8 @@
+ #include <sal/config.h>
+ 
+ #include <o3tl/any.hxx>
++#include <comphelper/anycompare.hxx>
++#include <comphelper/anycompare.hxx>
+ #include <svx/sdasitm.hxx>
+ 
+ #include <com/sun/star/beans/PropertyValue.hpp>
+@@ -35,30 +37,7 @@ SdrCustomShapeGeometryItem::SdrCustomShapeGeometryItem()
+ SdrCustomShapeGeometryItem::SdrCustomShapeGeometryItem( const uno::Sequence< beans::PropertyValue >& rVal )
+ :   SfxPoolItem( SDRATTR_CUSTOMSHAPE_GEOMETRY )
+ {
+-    sal_Int32 i, j;
+-    aPropSeq = rVal;
+-
+-    for ( i = 0; i < aPropSeq.getLength(); i++ )
+-    {
+-        beans::PropertyValue& rPropVal = aPropSeq[ i ];
+-        std::pair<PropertyHashMap::iterator, bool> const ret(
+-                aPropHashMap.insert(std::make_pair(rPropVal.Name, i)));
+-        assert(ret.second); // serious bug: duplicate xml attribute exported
+-        if (!ret.second)
+-        {
+-            throw uno::RuntimeException(
+-                "CustomShapeGeometry has duplicate property " + rPropVal.Name);
+-        }
+-        if (auto rPropSeq = o3tl::tryAccess<uno::Sequence<beans::PropertyValue>>(
+-                rPropVal.Value))
+-        {
+-            for ( j = 0; j < rPropSeq->getLength(); j++ )
+-            {
+-                beans::PropertyValue const & rPropVal2 = (*rPropSeq)[ j ];
+-                aPropPairHashMap[ PropertyPair( rPropVal.Name, rPropVal2.Name ) ] = j;
+-            }
+-        }
+-    }
++    SetPropSeq( rVal );
+ }
+ 
+ css::uno::Any* SdrCustomShapeGeometryItem::GetPropertyValueByName( const OUString& rPropName )
+@@ -150,6 +129,7 @@ void SdrCustomShapeGeometryItem::SetPropertyValue( const css::beans::PropertyVal
+ 
+         aPropHashMap[ rPropVal.Name ] = nIndex;
+     }
++    InvalidateHash();
+ }
+ 
+ void SdrCustomShapeGeometryItem::SetPropertyValue( const OUString& rSequenceName, const css::beans::PropertyValue& rPropVal )
+@@ -197,6 +177,7 @@ void SdrCustomShapeGeometryItem::SetPropertyValue( const OUString& rSequenceName
+             }
+         }
+     }
++    InvalidateHash();
+ }
+ 
+ void SdrCustomShapeGeometryItem::ClearPropertyValue( const OUString& rPropName )
+@@ -232,17 +213,65 @@ void SdrCustomShapeGeometryItem::ClearPropertyValue( const OUString& rPropName )
+         aPropSeq.realloc( nLength - 1 );
+     }
+     aPropHashMap.erase( aHashIter );                            // removing property from hashmap
++    InvalidateHash();
+ }
+ 
+ SdrCustomShapeGeometryItem::~SdrCustomShapeGeometryItem()
+ {
+ }
++
+ bool SdrCustomShapeGeometryItem::operator==( const SfxPoolItem& rCmp ) const
+ {
+-    bool bRet = SfxPoolItem::operator==( rCmp );
+-    if ( bRet )
+-        bRet = static_cast<const SdrCustomShapeGeometryItem&>(rCmp).aPropSeq == aPropSeq;
+-    return bRet;
++    if( !SfxPoolItem::operator==( rCmp ))
++        return false;
++    const SdrCustomShapeGeometryItem& other = static_cast<const SdrCustomShapeGeometryItem&>(rCmp);
++    // This is called often by SfxItemPool, and comparing uno sequences is relatively slow.
++    // So keep a hash of the sequence and if either of the sequences has a usable hash,
++    // compare using that.
++    UpdateHash();
++    other.UpdateHash();
++    if( aHashState != other.aHashState )
++        return false;
++    if( aHashState == HashState::Valid && aHash != other.aHash )
++        return false;
++
++    return aPropSeq == other.aPropSeq;
++}
++
++bool SdrCustomShapeGeometryItem::operator<( const SfxPoolItem& rCmp ) const
++{
++    assert(dynamic_cast<const SdrCustomShapeGeometryItem*>( &rCmp ));
++    const SdrCustomShapeGeometryItem& other = static_cast<const SdrCustomShapeGeometryItem&>(rCmp);
++    // Again, try to optimize by checking hashes first (this is operator< for sorting purposes,
++    // so the ordering can be somewhat arbitrary).
++    UpdateHash();
++    other.UpdateHash();
++    if( aHashState != other.aHashState )
++        return aHashState < other.aHashState;
++    if( aHashState == HashState::Valid )
++        return aHash < other.aHash;
++
++    return comphelper::anyLess( css::uno::makeAny( aPropSeq ),
++        css::uno::makeAny( other.aPropSeq ));
++}
++
++void SdrCustomShapeGeometryItem::UpdateHash() const
++{
++    if( aHashState != HashState::Unknown )
++        return;
++    std::optional< size_t > hash = comphelper::anyToHash( css::uno::makeAny( aPropSeq ));
++    if( hash.has_value())
++    {
++        aHash = *hash;
++        aHashState = HashState::Valid;
++    }
++    else
++        aHashState = HashState::Unusable;
++}
++
++void SdrCustomShapeGeometryItem::InvalidateHash()
++{
++    aHashState = HashState::Unknown;
+ }
+ 
+ bool SdrCustomShapeGeometryItem::GetPresentation(
+@@ -273,24 +302,46 @@ bool SdrCustomShapeGeometryItem::QueryValue( uno::Any& rVal, sal_uInt8 /*nMember
+ 
+ bool SdrCustomShapeGeometryItem::PutValue( const uno::Any& rVal, sal_uInt8 /*nMemberId*/ )
+ {
+-    if ( ! ( rVal >>= aPropSeq ) )
++    css::uno::Sequence< css::beans::PropertyValue > propSeq;
++    if ( ! ( rVal >>= propSeq ) )
+         return false;
+ 
+-    for (sal_Int32 i = 0; i < aPropSeq.getLength(); ++i)
++    SetPropSeq( propSeq );
++    return true;
++}
++
++void SdrCustomShapeGeometryItem::SetPropSeq( const css::uno::Sequence< css::beans::PropertyValue >& rVal )
++{
++    if( aPropSeq == rVal )
++        return;
++
++    aPropSeq = rVal;
++    aPropHashMap.clear();
++    aPropPairHashMap.clear();
++    sal_Int32 i, j;
++
++    for ( i = 0; i < aPropSeq.getLength(); i++ )
+     {
+-        const auto& rName = aPropSeq[i].Name;
+-        bool isDuplicated = std::any_of(std::next(aPropSeq.begin(), i + 1), aPropSeq.end(),
+-            [&rName](const css::beans::PropertyValue& rProp) { return rProp.Name == rName; });
+-        if (isDuplicated)
++        beans::PropertyValue& rPropVal = aPropSeq[ i ];
++        std::pair<PropertyHashMap::iterator, bool> const ret(
++                aPropHashMap.insert(std::make_pair(rPropVal.Name, i)));
++        assert(ret.second); // serious bug: duplicate xml attribute exported
++        if (!ret.second)
+         {
+-            assert(false); // serious bug: duplicate xml attribute exported
+-            OUString const name(aPropSeq[i].Name);
+-            aPropSeq.realloc(0);
+             throw uno::RuntimeException(
+-                "CustomShapeGeometry has duplicate property " + name);
++                "CustomShapeGeometry has duplicate property " + rPropVal.Name);
++        }
++        if (auto rPropSeq = o3tl::tryAccess<uno::Sequence<beans::PropertyValue>>(
++                rPropVal.Value))
++        {
++            for ( j = 0; j < rPropSeq->getLength(); j++ )
++            {
++                beans::PropertyValue const & rPropVal2 = (*rPropSeq)[ j ];
++                aPropPairHashMap[ PropertyPair( rPropVal.Name, rPropVal2.Name ) ] = j;
++            }
+         }
+     }
+-    return true;
++    InvalidateHash();
+ }
+ 
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/svx/source/sdr/properties/attributeproperties.cxx b/svx/source/sdr/properties/attributeproperties.cxx
+index 2dfd9e819981..8b5d6050e6a2 100644
+--- a/svx/source/sdr/properties/attributeproperties.cxx
++++ b/svx/source/sdr/properties/attributeproperties.cxx
+@@ -268,8 +268,7 @@ namespace sdr::properties
+                     // problem with constructors and virtual functions in C++),
+                     // thus DontRemoveHardAttr is not needed.
+                     const_cast< AttributeProperties* >(this)->SetStyleSheet(
+-                        mpStyleSheet,
+-                        true);
++                        mpStyleSheet, true, true);
+                 }
+             }
+ 
+@@ -360,7 +359,8 @@ namespace sdr::properties
+             }
+         }
+ 
+-        void AttributeProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void AttributeProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool /*bBroadcast*/)
+         {
+             // guarantee SfxItemSet existence
+             GetObjectItemSet();
+diff --git a/svx/source/sdr/properties/captionproperties.cxx b/svx/source/sdr/properties/captionproperties.cxx
+index d073aa91b91e..ea573c6a5252 100644
+--- a/svx/source/sdr/properties/captionproperties.cxx
++++ b/svx/source/sdr/properties/captionproperties.cxx
+@@ -73,10 +73,11 @@ namespace sdr::properties
+             RectangleProperties::ItemSetChanged(rSet);
+         }
+ 
+-        void CaptionProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void CaptionProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            RectangleProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            RectangleProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // local changes
+             SdrCaptionObj& rObj = static_cast<SdrCaptionObj&>(GetSdrObject());
+diff --git a/svx/source/sdr/properties/circleproperties.cxx b/svx/source/sdr/properties/circleproperties.cxx
+index dab008ff6957..c40d5dfc87a3 100644
+--- a/svx/source/sdr/properties/circleproperties.cxx
++++ b/svx/source/sdr/properties/circleproperties.cxx
+@@ -77,10 +77,11 @@ namespace sdr::properties
+             rObj.ImpSetAttrToCircInfo();
+         }
+ 
+-        void CircleProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void CircleProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            RectangleProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            RectangleProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // local changes
+             SdrCircObj& rObj = static_cast<SdrCircObj&>(GetSdrObject());
+diff --git a/svx/source/sdr/properties/connectorproperties.cxx b/svx/source/sdr/properties/connectorproperties.cxx
+index 97063011f79c..3323c40f47f3 100644
+--- a/svx/source/sdr/properties/connectorproperties.cxx
++++ b/svx/source/sdr/properties/connectorproperties.cxx
+@@ -74,10 +74,11 @@ namespace sdr::properties
+             rObj.ImpSetAttrToEdgeInfo();
+         }
+ 
+-        void ConnectorProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void ConnectorProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            TextProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            TextProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // local changes
+             SdrEdgeObj& rObj = static_cast<SdrEdgeObj&>(GetSdrObject());
+diff --git a/svx/source/sdr/properties/customshapeproperties.cxx b/svx/source/sdr/properties/customshapeproperties.cxx
+index 07c893d1cf51..04b3c579bab7 100644
+--- a/svx/source/sdr/properties/customshapeproperties.cxx
++++ b/svx/source/sdr/properties/customshapeproperties.cxx
+@@ -161,10 +161,11 @@ namespace sdr::properties
+             UpdateTextFrameStatus(true);
+         }
+ 
+-        void CustomShapeProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void CustomShapeProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            TextProperties::SetStyleSheet( pNewStyleSheet, bDontRemoveHardAttr );
++            TextProperties::SetStyleSheet( pNewStyleSheet, bDontRemoveHardAttr, bBroadcast );
+ 
+             // update bTextFrame and RenderGeometry
+             UpdateTextFrameStatus(true);
+diff --git a/svx/source/sdr/properties/defaultproperties.cxx b/svx/source/sdr/properties/defaultproperties.cxx
+index b12e7bd5b82d..7b4d9f5e6892 100644
+--- a/svx/source/sdr/properties/defaultproperties.cxx
++++ b/svx/source/sdr/properties/defaultproperties.cxx
+@@ -227,7 +227,8 @@ namespace sdr::properties
+                 CleanupFillProperties(*mxItemSet);
+         }
+ 
+-        void DefaultProperties::SetStyleSheet(SfxStyleSheet* /*pNewStyleSheet*/, bool /*bDontRemoveHardAttr*/)
++        void DefaultProperties::SetStyleSheet(SfxStyleSheet* /*pNewStyleSheet*/, bool /*bDontRemoveHardAttr*/,
++                bool /*bBroadcast*/)
+         {
+             // no StyleSheet in DefaultProperties
+         }
+diff --git a/svx/source/sdr/properties/e3dsceneproperties.cxx b/svx/source/sdr/properties/e3dsceneproperties.cxx
+index 7635f32f806d..f911bc67aef6 100644
+--- a/svx/source/sdr/properties/e3dsceneproperties.cxx
++++ b/svx/source/sdr/properties/e3dsceneproperties.cxx
+@@ -230,7 +230,8 @@ namespace sdr::properties
+             }
+         }
+ 
+-        void E3dSceneProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void E3dSceneProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             const SdrObjList* pSub(static_cast<const E3dScene&>(GetSdrObject()).GetSubList());
+             OSL_ENSURE(nullptr != pSub, "Children of SdrObject expected (!)");
+@@ -238,7 +239,10 @@ namespace sdr::properties
+ 
+             for(size_t a = 0; a < nCount; ++a)
+             {
+-                pSub->GetObj(a)->SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++                if(bBroadcast)
++                    pSub->GetObj(a)->SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++                else
++                    pSub->GetObj(a)->NbcSetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
+             }
+         }
+ 
+diff --git a/svx/source/sdr/properties/emptyproperties.cxx b/svx/source/sdr/properties/emptyproperties.cxx
+index 3837b23bfeec..c2043768e06a 100644
+--- a/svx/source/sdr/properties/emptyproperties.cxx
++++ b/svx/source/sdr/properties/emptyproperties.cxx
+@@ -103,7 +103,8 @@ namespace sdr::properties
+             assert(!"EmptyProperties::PostItemChange() should never be called");
+         }
+ 
+-        void EmptyProperties::SetStyleSheet(SfxStyleSheet* /*pNewStyleSheet*/, bool /*bDontRemoveHardAttr*/)
++        void EmptyProperties::SetStyleSheet(SfxStyleSheet* /*pNewStyleSheet*/, bool /*bDontRemoveHardAttr*/,
++                bool /*bBroadcast*/)
+         {
+             assert(!"EmptyProperties::SetStyleSheet() should never be called");
+         }
+diff --git a/svx/source/sdr/properties/graphicproperties.cxx b/svx/source/sdr/properties/graphicproperties.cxx
+index c7a9b6913ad0..f75e9bc08616 100644
+--- a/svx/source/sdr/properties/graphicproperties.cxx
++++ b/svx/source/sdr/properties/graphicproperties.cxx
+@@ -45,7 +45,7 @@ namespace sdr::properties
+             if(pStyleSheet)
+             {
+                 // do not delete hard attributes when setting dsefault Style
+-                SetStyleSheet(pStyleSheet, true);
++                SetStyleSheet(pStyleSheet, true, true);
+             }
+             else
+             {
+@@ -111,10 +111,11 @@ namespace sdr::properties
+             RectangleProperties::ItemSetChanged(rSet);
+         }
+ 
+-        void GraphicProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void GraphicProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            RectangleProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            RectangleProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // local changes
+             SdrGrafObj& rObj = static_cast<SdrGrafObj&>(GetSdrObject());
+diff --git a/svx/source/sdr/properties/groupproperties.cxx b/svx/source/sdr/properties/groupproperties.cxx
+index 5f197c417688..176cce3dca53 100644
+--- a/svx/source/sdr/properties/groupproperties.cxx
++++ b/svx/source/sdr/properties/groupproperties.cxx
+@@ -243,7 +243,8 @@ namespace sdr::properties
+             return pRetval;
+         }
+ 
+-        void GroupProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void GroupProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             const SdrObjList* pSub(static_cast<const SdrObjGroup&>(GetSdrObject()).GetSubList());
+             OSL_ENSURE(nullptr != pSub, "Children of SdrObject expected (!)");
+@@ -251,7 +252,10 @@ namespace sdr::properties
+ 
+             for(size_t a = 0; a < nCount; ++a)
+             {
+-                pSub->GetObj(a)->SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++                if(bBroadcast)
++                    pSub->GetObj(a)->SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++                else
++                    pSub->GetObj(a)->NbcSetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
+             }
+         }
+ 
+diff --git a/svx/source/sdr/properties/measureproperties.cxx b/svx/source/sdr/properties/measureproperties.cxx
+index e503c5710810..d1eef829ddf9 100644
+--- a/svx/source/sdr/properties/measureproperties.cxx
++++ b/svx/source/sdr/properties/measureproperties.cxx
+@@ -83,10 +83,11 @@ namespace sdr::properties
+             rObj.SetTextDirty();
+         }
+ 
+-        void MeasureProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void MeasureProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            TextProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            TextProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // local changes
+             // get access to dimension line object
+diff --git a/svx/source/sdr/properties/oleproperties.cxx b/svx/source/sdr/properties/oleproperties.cxx
+index 2cdb55b70dde..587ff1d3f880 100644
+--- a/svx/source/sdr/properties/oleproperties.cxx
++++ b/svx/source/sdr/properties/oleproperties.cxx
+@@ -32,7 +32,7 @@ namespace sdr::properties
+             if(pStyleSheet)
+             {
+                 // do not delete hard attributes when setting dsefault Style
+-                SetStyleSheet(pStyleSheet, true);
++                SetStyleSheet(pStyleSheet, true, true);
+             }
+             else
+             {
+diff --git a/svx/source/sdr/properties/pageproperties.cxx b/svx/source/sdr/properties/pageproperties.cxx
+index ed75133f929f..a0cb3dd10902 100644
+--- a/svx/source/sdr/properties/pageproperties.cxx
++++ b/svx/source/sdr/properties/pageproperties.cxx
+@@ -79,7 +79,8 @@ namespace sdr::properties
+             return nullptr;
+         }
+ 
+-        void PageProperties::SetStyleSheet(SfxStyleSheet* /*pStyleSheet*/, bool /*bDontRemoveHardAttr*/)
++        void PageProperties::SetStyleSheet(SfxStyleSheet* /*pStyleSheet*/, bool /*bDontRemoveHardAttr*/,
++                bool /*bBroadcast*/)
+         {
+             // override to legally ignore the StyleSheet here
+         }
+diff --git a/svx/source/sdr/properties/properties.cxx b/svx/source/sdr/properties/properties.cxx
+index 353cdc5ede36..70baecd06420 100644
+--- a/svx/source/sdr/properties/properties.cxx
++++ b/svx/source/sdr/properties/properties.cxx
+@@ -52,7 +52,7 @@ namespace sdr::properties
+             if(pDefaultStyleSheet != GetStyleSheet())
+             {
+                 // do not delete hard attributes when setting dsefault Style
+-                SetStyleSheet(pDefaultStyleSheet, true);
++                SetStyleSheet(pDefaultStyleSheet, true, true);
+             }
+         }
+ 
+diff --git a/svx/source/sdr/properties/rectangleproperties.cxx b/svx/source/sdr/properties/rectangleproperties.cxx
+index 84b4fc17e23e..0f31491c0f8b 100644
+--- a/svx/source/sdr/properties/rectangleproperties.cxx
++++ b/svx/source/sdr/properties/rectangleproperties.cxx
+@@ -54,10 +54,11 @@ namespace sdr::properties
+         }
+ 
+         // set a new StyleSheet and broadcast
+-        void RectangleProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void RectangleProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            TextProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            TextProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // local changes
+             SdrRectObj& rObj = static_cast<SdrRectObj&>(GetSdrObject());
+diff --git a/svx/source/sdr/properties/textproperties.cxx b/svx/source/sdr/properties/textproperties.cxx
+index de5c6765de75..a81ee01f1169 100644
+--- a/svx/source/sdr/properties/textproperties.cxx
++++ b/svx/source/sdr/properties/textproperties.cxx
+@@ -238,10 +238,11 @@ namespace sdr::properties
+             return static_cast<const SdrTextObj&>(GetSdrObject());
+         }
+ 
+-        void TextProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
++        void TextProperties::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr,
++                bool bBroadcast)
+         {
+             // call parent (always first thing to do, may create the SfxItemSet)
+-            AttributeProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++            AttributeProperties::SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ 
+             // #i101556# StyleSheet has changed -> new version
+             SdrTextObj& rObj = static_cast<SdrTextObj&>(GetSdrObject());
+diff --git a/svx/source/svdraw/svdoashp.cxx b/svx/source/svdraw/svdoashp.cxx
+index 86819350e946..5eb1ea2eac31 100644
+--- a/svx/source/svdraw/svdoashp.cxx
++++ b/svx/source/svdraw/svdoashp.cxx
+@@ -2853,11 +2853,11 @@ SdrObjectUniquePtr SdrObjCustomShape::DoConvertToPolyObj(bool bBezier, bool bAdd
+     return pRetval;
+ }
+ 
+-void SdrObjCustomShape::NbcSetStyleSheet( SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr )
++void SdrObjCustomShape::InternalSetStyleSheet( SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr, bool bBroadcast )
+ {
+     // #i40944#
+     InvalidateRenderGeometry();
+-    SdrObject::NbcSetStyleSheet( pNewStyleSheet, bDontRemoveHardAttr );
++    SdrObject::InternalSetStyleSheet( pNewStyleSheet, bDontRemoveHardAttr, bBroadcast );
+ }
+ 
+ void SdrObjCustomShape::handlePageChange(SdrPage* pOldPage, SdrPage* pNewPage)
+diff --git a/svx/source/svdraw/svdobj.cxx b/svx/source/svdraw/svdobj.cxx
+index 15b9cc6dcfcf..ef2deb6a4cb4 100644
+--- a/svx/source/svdraw/svdobj.cxx
++++ b/svx/source/svdraw/svdobj.cxx
+@@ -2237,7 +2237,7 @@ void SdrObject::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHar
+     if(m_pUserCall)
+         aBoundRect0 = GetLastBoundRect();
+ 
+-    NbcSetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++    InternalSetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, true);
+     SetChanged();
+     BroadcastObjectChange();
+     SendUserCall(SdrUserCallType::ChangeAttr, aBoundRect0);
+@@ -2245,7 +2245,12 @@ void SdrObject::SetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHar
+ 
+ void SdrObject::NbcSetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr)
+ {
+-    GetProperties().SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr);
++    InternalSetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, false);
++}
++
++void SdrObject::InternalSetStyleSheet(SfxStyleSheet* pNewStyleSheet, bool bDontRemoveHardAttr, bool bBroadcast)
++{
++    GetProperties().SetStyleSheet(pNewStyleSheet, bDontRemoveHardAttr, bBroadcast);
+ }
+ 
+ // Broadcasting while setting attributes is managed by the AttrObj.
+diff --git a/svx/source/table/cell.cxx b/svx/source/table/cell.cxx
+index eafaea0a1fa7..6e5125c5844c 100644
+--- a/svx/source/table/cell.cxx
++++ b/svx/source/table/cell.cxx
+@@ -650,7 +650,7 @@ void Cell::SetStyleSheet( SfxStyleSheet* pStyleSheet, bool bDontRemoveHardAttr )
+ 
+     if( mpProperties && (mpProperties->GetStyleSheet() != pStyleSheet) )
+     {
+-        mpProperties->SetStyleSheet( pStyleSheet, bDontRemoveHardAttr );
++        mpProperties->SetStyleSheet( pStyleSheet, bDontRemoveHardAttr, true );
+     }
+ }
+ 
+diff --git a/vcl/headless/svpvd.cxx b/vcl/headless/svpvd.cxx
+index f8e9cb5e6874..4d82a46e50c4 100644
+--- a/vcl/headless/svpvd.cxx
++++ b/vcl/headless/svpvd.cxx
+@@ -76,29 +76,38 @@ void SvpSalVirtualDevice::CreateSurface(tools::Long nNewDX, tools::Long nNewDY,
+         cairo_surface_destroy(m_pSurface);
+     }
+ 
+-    if (pBuffer)
++    double fXScale, fYScale;
++    if (comphelper::LibreOfficeKit::isActive())
++    {
++        // Force scaling of the painting
++        fXScale = fYScale = comphelper::LibreOfficeKit::getDPIScale();
++    }
++    else
+     {
+-        double fXScale, fYScale;
+-        if (comphelper::LibreOfficeKit::isActive())
+-        {
+-            // Force scaling of the painting
+-            fXScale = fYScale = comphelper::LibreOfficeKit::getDPIScale();
+-        }
+-        else
+-        {
+-            dl_cairo_surface_get_device_scale(m_pRefSurface, &fXScale, &fYScale);
+-            nNewDX *= fXScale;
+-            nNewDY *= fYScale;
+-        }
++        dl_cairo_surface_get_device_scale(m_pRefSurface, &fXScale, &fYScale);
++        nNewDX *= fXScale;
++        nNewDY *= fYScale;
++    }
+ 
++    if (pBuffer)
++    {
+         m_pSurface = cairo_image_surface_create_for_data(pBuffer, CAIRO_FORMAT_ARGB32,
+                             nNewDX, nNewDY, cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, nNewDX));
+-
++        dl_cairo_surface_set_device_scale(m_pSurface, fXScale, fYScale);
++    }
++    else if(nNewDX <= 32 && nNewDY <= 32)
++    {
++        // Force image-based surface if small. Small VirtualDevice instances are often used for small
++        // temporary bitmaps that will eventually have GetBitmap() called on them, which would cause
++        // X Server roundtrip with Xlib-based surface, which may be way more costly than doing the drawing
++        // in software (which should be fairly cheap for small surfaces anyway).
++        m_pSurface = cairo_surface_create_similar_image(m_pRefSurface, CAIRO_FORMAT_ARGB32, nNewDX, nNewDY);
+         dl_cairo_surface_set_device_scale(m_pSurface, fXScale, fYScale);
+     }
+     else
+     {
+         m_pSurface = cairo_surface_create_similar(m_pRefSurface, CAIRO_CONTENT_COLOR_ALPHA, nNewDX, nNewDY);
++        // Device scale is inherited in this case.
+     }
+ }
+ 
+diff --git a/vcl/source/outdev/outdev.cxx b/vcl/source/outdev/outdev.cxx
+index 71ec101f4dd1..60d945e3465c 100644
+--- a/vcl/source/outdev/outdev.cxx
++++ b/vcl/source/outdev/outdev.cxx
+@@ -231,6 +231,15 @@ SystemGraphicsData OutputDevice::GetSystemGfxData() const
+     return mpGraphics->GetGraphicsData();
+ }
+ 
++OUString OutputDevice::GetRenderBackendName() const
++{
++    if (!mpGraphics && !AcquireGraphics())
++        return {};
++    assert(mpGraphics);
++
++    return mpGraphics->getRenderBackendName();
++}
++
+ #if ENABLE_CAIRO_CANVAS
+ 
+ bool OutputDevice::SupportsCairo() const
+-- 
+2.31.1
+

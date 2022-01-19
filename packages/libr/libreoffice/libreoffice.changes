@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 14 13:09:06 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1183308: LO-L3: Simple, seven page slide deck of 3.7MB takes
+  looong to open, start presentation mode, or move back to slide 1
+  * bsc1183308.patch
+
+-------------------------------------------------------------------
 Mon Dec 20 15:57:19 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.2.5.1
@@ -9,7 +16,7 @@ Thu Dec 16 15:07:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 - Removed unrecognized option `--disable-vlc`
   This option has been removed from upstream in commit
   https://gerrit.libreoffice.org/c/core/+/108283
-  There's no real change in our build given that the 
+  There's no real change in our build given that the
   VLC avmedia backend was explicitly disabled.
   * Fix provided by Marina Latini
 - Fix gtk popover usage on gtk 3.20
