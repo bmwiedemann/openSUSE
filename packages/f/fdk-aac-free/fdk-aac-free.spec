@@ -29,6 +29,7 @@ Group:          Productivity/Multimedia/Other
 License:        FDK-AAC
 URL:            https://cgit.freedesktop.org/~wtay/fdk-aac/log/?h=fedora
 Source0:        https://people.freedesktop.org/~wtay/fdk-aac-free-%{version}.tar.gz
+Source99:       baselibs.conf
 
 BuildRequires:  automake
 BuildRequires:  gcc

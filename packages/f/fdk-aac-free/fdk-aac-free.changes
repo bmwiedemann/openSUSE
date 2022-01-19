@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 12:03:05 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add baselibs.conf file since pipewire uses it and fdk-aac-free
+  is a dependency.
+
+-------------------------------------------------------------------
 Mon Oct 18 13:30:05 UTC 2021 - Neal Gompa <ngompa@opensuse.org>
 
 - Initial packaging derived from Fedora package
