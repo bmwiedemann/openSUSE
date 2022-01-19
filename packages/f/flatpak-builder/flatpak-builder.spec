@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-builder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flatpak-builder
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
@@ -28,18 +28,18 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
 BuildRequires:  libcap-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.24
 BuildRequires:  xmlto
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(flatpak) >= 0.11.8
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libdw)
-BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libdw) >= 0.172
+BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(ostree-1) >= 2018.7
+BuildRequires:  pkgconfig(ostree-1) >= 2017.14
 BuildRequires:  pkgconfig(yaml-0.1)
 Requires:       %{_bindir}/bzip2
 Recommends:     %{_bindir}/bzr

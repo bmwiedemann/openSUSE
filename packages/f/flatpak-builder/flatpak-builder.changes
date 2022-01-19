@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 18 20:55:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.2:
+  + CVE-2022-21682: flatpak-builder --mirror-screenshots-url
+    commands to be allowed to create directories outside the build
+    directory boo#1194611
+  + uses a new option --nofilesystem=host:reset to cancel out
+    filesystem permissions in the application manifest and
+    overrides with Flatpak >= 1.12.4
+  + show "Unexpected filesystem suffix reset, ignoring" warning
+    in other cases
+  + Make FUSE 2 optimizations opt-in
+  + Make the JSON schema introduced in 1.2.1 more complete
+
+-------------------------------------------------------------------
+Mon Jan 17 21:43:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 1.2.1:
+  + Fix debuginfo being re-processed multiple times in a manifest
+  + Change manifest parsing issues from warnings to fatal errors
+  + Add .tar.zst archive support
+  + Fix auto-detection of .7z archives
+  + Install a JSON schema for manifest format
+  + Documentation updates
+
+-------------------------------------------------------------------
 Fri Oct  8 14:53:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.0:
