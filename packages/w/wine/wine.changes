@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 19 08:38:20 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 7.0 release
+  This release represents a year of development effort and over 9,100
+  individual changes. It contains a large number of improvements that
+  are listed in the release notes below. The areas of major changes are:
+
+  - Most modules converted to PE format.
+  - Better theming support, with a bundled theme for a more modern look.
+  - Vastly improved HID stack and joystick support.
+  - New WoW64 architecture.
+
+-------------------------------------------------------------------
 Sat Jan 15 15:28:34 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.0-rc6 release candidate

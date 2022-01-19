@@ -4301,4 +4301,19 @@
 - update staging to 7.0-rc6 release</comment>
     <requestid>946803</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>75acee22521785535cc9081552f47091</srcmd5>
+    <version>7.0</version>
+    <time>1642633937</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 7.0 release
+  This release represents a year of development effort and over 9,100
+  individual changes. It contains a large number of improvements that
+  are listed in the release notes below. The areas of major changes are:
+  - Most modules converted to PE format.
+  - Better theming support, with a bundled theme for a more modern look.
+  - Vastly improved HID stack and joystick support.
+  - New WoW64 architecture.</comment>
+    <requestid>947373</requestid>
+  </revision>
 </revisionlist>
