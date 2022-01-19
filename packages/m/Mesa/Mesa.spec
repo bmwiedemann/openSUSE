@@ -142,6 +142,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
+BuildRequires:  memory-constraints
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -788,6 +789,11 @@ sed -i -e s/cpp_std=gnu++11/cpp_std=gnu++14/g meson.build
 %endif
 
 %build
+# try to avoid OOM on ppc64 (boo#1194739)
+%ifarch ppc64 ppc64le
+%limit_build -m 750
+%endif
+
 egl_platforms=x11,wayland
 
 %meson \

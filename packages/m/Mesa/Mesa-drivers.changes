@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 10:54:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- using memory-constraints on ppc64 for trying to avoid OOM during
+  build (boo#1194739)
+
+-------------------------------------------------------------------
 Fri Jan 14 15:02:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.3.4 

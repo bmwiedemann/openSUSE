@@ -4696,4 +4696,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * bugfix release</comment>
     <requestid>946456</requestid>
   </revision>
+  <revision rev="427" vrev="299">
+    <srcmd5>7a8563d9a119cabfd7df574a5dfbcdfd</srcmd5>
+    <version>unknown</version>
+    <time>1642633922</time>
+    <user>dimstar_suse</user>
+    <comment>- using memory-constraints on ppc64 for trying to avoid OOM during
+  build (boo#1194739)</comment>
+    <requestid>946939</requestid>
+  </revision>
 </revisionlist>
