@@ -1,0 +1,77 @@
+From 52753d22537cc8af9dbed6a6acc5c32c78e272b0 Mon Sep 17 00:00:00 2001
+From: Ralf Haferkamp <rhafer@suse.de>
+Date: Fri, 9 Apr 2010 11:49:37 +0200
+Subject: [PATCH] syslog facility doc
+
+We build with "--with-syslogfacility=DAEMON" since quite some
+time
+---
+ doc/install-configure.html |    4 ++--
+ doc/overview.html          |    2 +-
+ doc/text/install-configure |    4 ++--
+ doc/text/overview          |    2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/doc/install-configure.html b/doc/install-configure.html
+index 2b4b567..9b0a408 100644
+--- a/doc/install-configure.html
++++ b/doc/install-configure.html
+@@ -44,10 +44,10 @@ it does not, replace the system "<tt>syslogd</tt>" and
+ 
+ If you do not copy the "<tt>syslog/syslog.conf</tt>" file to the 
+ "<tt>/etc</tt>" directory, be sure to add support for
+-"<tt>local6.debug</tt>".  The file should include a line like:
++"<tt>daemon.debug</tt>".  The file should include a line like:
+ 
+ <pre>
+-   local6.debug  /var/log/imapd.log
++   daemon.debug  /var/log/imapd.log
+ </pre>
+ 
+ You probably also want to log SASL messages with a line like:
+diff --git a/doc/overview.html b/doc/overview.html
+index 15c351c..a63b3fd 100644
+--- a/doc/overview.html
++++ b/doc/overview.html
+@@ -622,7 +622,7 @@ server exports MIT's KPOP protocol instead of generic POP3.
+ 
+ <h3><a name="syslog">The <TT>syslog</TT> facility</a></h3>
+ 
+-The Cyrus IMAP server software sends log messages to the "<TT>local6</TT>"
++The Cyrus IMAP server software sends log messages to the "<TT>daemon</TT>"
+ syslog facility.  The severity levels used are:
+ 
+ <UL>
+diff --git a/doc/text/install-configure b/doc/text/install-configure
+index f0b88b2..0fcb597 100644
+--- a/doc/text/install-configure
++++ b/doc/text/install-configure
+@@ -28,10 +28,10 @@ Installing and configuring the IMAP Server
+            mv syslog.conf /etc/syslog.conf
+ 
+         If you do not copy the "syslog/syslog.conf" file to the "/etc"
+-        directory, be sure to add support for "local6.debug". The file
++        directory, be sure to add support for "daemon.debug". The file
+         should include a line like: 
+ 
+-           local6.debug  /var/log/imapd.log
++           daemon.debug  /var/log/imapd.log
+ 
+         You probably also want to log SASL messages with a line like: 
+ 
+diff --git a/doc/text/overview b/doc/text/overview
+index 91aa4b5..5a8c552 100644
+--- a/doc/text/overview
++++ b/doc/text/overview
+@@ -545,7 +545,7 @@ POP3 Server
+ 
+ The syslog facility
+ 
+-    The Cyrus IMAP server software sends log messages to the "local6"
++    The Cyrus IMAP server software sends log messages to the "daemon"
+     syslog facility. The severity levels used are: 
+ 
+       * CRIT - Critical errors which probably require prompt administrator
+-- 
+1.7.0.2
+

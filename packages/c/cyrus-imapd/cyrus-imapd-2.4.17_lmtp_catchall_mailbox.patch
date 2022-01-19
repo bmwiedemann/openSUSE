@@ -1,0 +1,60 @@
+From b805f266514035b6e8d63eda4ec4bf44065485cd Mon Sep 17 00:00:00 2001
+From: Ralf Haferkamp <rhafer@suse.de>
+Date: Wed, 12 Jan 2011 10:28:51 +0100
+Subject: [PATCH] New option "lmtp_catchall_mailbox"
+
+This patch introduces the new option "lmtp_catchall_mailbox". Lmtpd will
+drop mail to non-existing mailboxes into this mailbox. NOTE: This must be
+an existing local mailbox name. NOT an email address!
+(Bug#2360)
+
+diff -Ppru cyrus-imapd-2.4.17.orig/imap/lmtpengine.c cyrus-imapd-2.4.17/imap/lmtpengine.c
+--- cyrus-imapd-2.4.17.orig/imap/lmtpengine.c	2012-12-01 20:57:54.000000000 +0100
++++ cyrus-imapd-2.4.17/imap/lmtpengine.c	2014-01-27 14:05:38.800788668 +0100
+@@ -912,11 +912,27 @@ static int process_recipient(char *addr,
+     r = verify_user(ret->user, ret->domain, ret->mailbox,
+ 		    (quota_t) (ignorequota ? -1 : msg->size), msg->authstate);
+     if (r) {
+-	/* we lost */
+-	free(ret->all);
+-	free(ret->rcpt);
+-	free(ret);
+-	return r;
++	char *catchall = NULL;
++	if (r == IMAP_MAILBOX_NONEXISTENT) {
++	    catchall = config_getstring(IMAPOPT_LMTP_CATCHALL_MAILBOX);
++	    if (catchall) {
++		if (!verify_user(catchall, NULL, NULL,
++				ignorequota ? -1 : msg->size,
++				msg->authstate)) {
++		    ret->user = xstrdup(catchall);
++		} else {
++		    catchall = NULL;
++		}
++	    }
++	}
++
++	if (catchall == NULL ) {
++	    /* we lost */
++	    free(ret->all);
++	    free(ret->rcpt);
++	    free(ret);
++	    return r;
++	}
+     }
+     ret->ignorequota = ignorequota;
+ 
+diff -Ppru cyrus-imapd-2.4.17.orig/lib/imapoptions cyrus-imapd-2.4.17/lib/imapoptions
+--- cyrus-imapd-2.4.17.orig/lib/imapoptions	2012-12-01 20:57:54.000000000 +0100
++++ cyrus-imapd-2.4.17/lib/imapoptions	2014-01-27 14:04:11.256217363 +0100
+@@ -604,6 +604,10 @@ Blank lines and lines beginning with ``#
+    ldap_use_sasl are enabled, ldap_version will be automatically
+    set to 3. */
+ 
++{ "lmtp_catchall_mailbox", NULL, STRING }
++/* Send mail to mailboxes, which do not exists, to this user. NOTE: This must
++   be an existing local mailbox name. NOT an email address! */
++
+ { "lmtp_downcase_rcpt", 0, SWITCH }
+ /* If enabled, lmtpd will convert the recipient addresses to lowercase
+    (up to a '+' character, if present). */

@@ -1,0 +1,32 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-06-14 02:52:48.129456384 +0200
+
+src: make compilation with libdb-6.0 succeed
+
+db-6.0 has hit the scene.
+
+The changes for ->set_bt_compare (mbox_compar) are not yet present
+in cyrus-imapd-2.4.17.
+
+---
+ lib/cyrusdb_berkeley.c |   15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+Index: cyrus-imapd-2.3.18/lib/cyrusdb_berkeley.c
+===================================================================
+--- cyrus-imapd-2.3.18.orig/lib/cyrusdb_berkeley.c
++++ cyrus-imapd-2.3.18/lib/cyrusdb_berkeley.c
+@@ -386,8 +386,13 @@ 
+     return 0;
+ }
+ 
++#if DB_VERSION_MAJOR >= 6
++static int mbox_compar(DB *db __attribute__((unused)),
++		       const DBT *a, const DBT *b, size_t *locp)
++#else
+ static int mbox_compar(DB *db __attribute__((unused)),
+ 		       const DBT *a, const DBT *b)
++#endif
+ {
+     return bsearch_ncompare((const char *) a->data, a->size,
+ 			    (const char *) b->data, b->size);

@@ -1,0 +1,59 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: 2020-12-16 14:36:00 +0100
+Subject: fix conflicting function name
+Upstream: no
+
+Renames function gettid to gettxnid as gettid is already defined in
+unistd.h and was introduced by glibc 2.30.
+
+---
+ cyrusdb_berkeley.c |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+--- a/lib/cyrusdb_berkeley.c	2020-08-19 02:54:54.000000000 +0200
++++ b/lib/cyrusdb_berkeley.c	2020-12-16 14:33:26.831348293 +0100
+@@ -460,7 +460,7 @@ static int myclose(struct db *db)
+     return r;
+ }
+
+-static int gettid(struct txn **mytid, DB_TXN **tid, char *where)
++static int gettxnid(struct txn **mytid, DB_TXN **tid, char *where)
+ {
+     int r;
+
+@@ -503,7 +503,7 @@ static int myfetch(struct db *mydb,
+     if (data) *data = NULL;
+     if (datalen) *datalen = 0;
+
+-    r = gettid(mytid, &tid, "myfetch");
++    r = gettxnid(mytid, &tid, "myfetch");
+     if (r) return r;
+
+     memset(&k, 0, sizeof(k));
+@@ -598,7 +598,7 @@ static int foreach(struct db *mydb,
+     /* k.flags |= DB_DBT_REALLOC;
+        d.flags |= DB_DBT_REALLOC;*/
+
+-    r = gettid(mytid, &tid, "foreach");
++    r = gettxnid(mytid, &tid, "foreach");
+     if (r) return r;
+
+     if (0) {
+@@ -738,7 +738,7 @@ static int mystore(struct db *mydb,
+     assert(dbinit && db);
+     assert(key && keylen);
+
+-    r = gettid(mytid, &tid, "mystore");
++    r = gettxnid(mytid, &tid, "mystore");
+     if (r) return r;
+
+     memset(&k, 0, sizeof(k));
+@@ -851,7 +851,7 @@ static int mydelete(struct db *mydb,
+     assert(dbinit && db);
+     assert(key && keylen);
+
+-    r = gettid(mytid, &tid, "delete");
++    r = gettxnid(mytid, &tid, "delete");
+     if (r) return r;
+
+     memset(&k, 0, sizeof(k));
