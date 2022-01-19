@@ -1,7 +1,7 @@
 #
 # spec file for package mhvtl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.63_release+759.35ddb48e5262
+Version:        1.64_release+835.6beb0aa01437
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -35,6 +35,7 @@ Requires:       sg3_utils
 BuildRequires:  kernel-syms
 BuildRequires:  module-init-tools
 %endif
+BuildRequires:  fdupes
 BuildRequires:  modutils
 BuildRequires:  openssl-devel
 BuildRequires:  systemd-rpm-macros
@@ -44,10 +45,14 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
+Patch1:         %{name}-kernel-module-fix-queuecommand-arg-change.patch
+Patch2:         %{name}-kernel-module-fix-sysfs_emit-decl.patch
+Patch3:         %{name}-handle-systemd-location-correctly-for-generator.patch
+Patch4:         %{name}-fix-systemd-generator-dir.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
-%{?!_systemdgeneratordir:%define _systemdgeneratordir /usr/lib/systemd/system-generators}
+%{?!_systemdgeneratordir:%define _systemdgeneratordir %{_prefix}/lib/systemd/system-generators}
 
 %if 0%{buildkmp} == 1
 %suse_kernel_module_package -n %{name} -p %{S:2} kdump ec2 um
@@ -76,10 +81,15 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
-	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir}
+	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir} \
+	SYSTEMD_SERVICE_DIR=%{_unitdir}
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
 	rm -rf obj/$flavor
@@ -93,7 +103,9 @@ done
 %install
 %make_install \
 	MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release LIBDIR=%{_libdir} \
-	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir}
+	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir} \
+	SYSTEMD_SERVICE_DIR=%{_unitdir}
+%fdupes %{buildroot}/%{_prefix}
 %if 0%{buildkmp} == 1
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
@@ -104,7 +116,8 @@ done
 %endif
 install -d -m 755 %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
-install -d -m 755 %{buildroot}/var/lib/%{name}
+rm -rf %{buildroot}/%{mhvtl_home_dir}
+install -d -m 755 %{buildroot}/%{mhvtl_home_dir}
 
 %post
 %{service_add_post mhvtl-load-modules.service mhvtl.target vtllibrary@.service vtltape@.service}
@@ -132,6 +145,7 @@ fi
 %{_bindir}/mktape
 %{_bindir}/edit_tape
 %{_bindir}/dump_tape
+%{_bindir}/preload_tape
 %{_bindir}/tapeexerciser
 %{_bindir}/make_vtl_media
 %{_bindir}/update_device.conf
@@ -153,11 +167,11 @@ fi
 %{_unitdir}/vtltape@.service
 %{_unitdir}/vtllibrary@.service
 %dir %{mhvtl_home_dir}
-%ghost %{mhvtl_home_dir}/*
 %defattr(644,root,root)
 %{_mandir}/man1/vtlcmd.1%{ext_man}
 %{_mandir}/man1/vtllibrary.1%{ext_man}
 %{_mandir}/man1/vtltape.1%{ext_man}
+%{_mandir}/man1/preload_tape.1%{ext_man}
 %{_mandir}/man1/mktape.1%{ext_man}
 %{_mandir}/man1/make_vtl_media.1%{ext_man}
 %{_mandir}/man1/edit_tape.1%{ext_man}

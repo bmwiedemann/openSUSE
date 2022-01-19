@@ -4,8 +4,8 @@
     <param name="url">https://github.com/markh794/mhvtl.git</param>
     <param name="subdir"></param>
     <param name="filename">mhvtl</param>
-    <param name="revision">35ddb48e5262</param>
-    <param name="versionformat">1.6-3_release+@TAG_OFFSET@.%h</param>
+    <param name="revision">6beb0aa01437</param>
+    <param name="versionformat">1.6-4_release+@TAG_OFFSET@.%h</param>
     <param name="match-tag">1.[0-0]-[0-0]_release</param>
     <param name="changesgenerate">enable</param>
   </service>

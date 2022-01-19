@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue Jan 18 18:58:52 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.64_release+835.6beb0aa01437, to fix factory
+  build issues:
+  * Fix compiler warning regarding c99 standard
+  * DIV: Compare CRC32C in big-endian format
+  * Handle missing drive slots in config file.
+  * mhvtl.spec: Add preload_tape to the RPM spec file
+  * Proactively log different CRC seeding options if LBP writes fail
+  * vtllibrary: Handle library_contents.xx file with missing storage slot sequences
+  * mhvtl.ko: Fix return type of sysfs_emit()
+  * DIV: Improve reporting of LBP support
+  * DIV: Update RS-CRC seed to that in the 'test_crc'
+  * ssc: Log drive feature list
+  * DIV: Reduce log noise from LBP function if not enabled
+  * Update default library generation to LTO6 & LTO8 drives
+  * mhvtl.ko: Update to use sysfs_emit() rather than scnprintf
+  * DIV: Write block of data on LBP mis-compare.
+  * DIV: Set INQUIRY 'protect' bit if LBP is supported.
+  * Vagrant: Add ability to set headless/gui VM as argument
+  * DIV: Adding VPD page D5h
+  * DIV: Add LBP checking on write path
+  * Refactor check for no compression
+  * DIV: Add support for LBP in read path
+  * DIV: Add Mode Page Control Data Protection (0a/f0)
+  * DIV: Compile time sanity check on CRC routines
+  * DIV: Add Reed-Solomon CRC
+  * Vagrant: Yet another typo
+  * Vagrant: Fix typo in network settings
+  * Vagrant: Update to include an IP on the internal network
+  * Config scripts: Don't rely on execute bit being set
+  * Vagrant: Cleanup install.sh to make a little more robust
+  * Vagrant install file: whte space cleanup and add st driver for Ubuntu
+  * kernel Makefile: Add tape_util.o to list of files to cleanup
+  * tape_util: Fix compiler warning regarding strncpy length.
+  * Makefile: Add a rule for 'tape_util.o'
+  * mhvtl.ko: Bump kernel version to 0.18.31 / 2021-11-19
+  * mhvtl.ko: flush_kernel_dcache_page function retired
+  * make clean: Forgot about tape_util.o
+  * mhvtl.ko: Add ability to specify kernel version in build
+  * Add vagrant instructions and fix centos installation in vagrant
+  * Begin to add support for VERIFY_6 op code
+  * vtlcart: Clean up formatting of 'dump_tape'
+  * Rename FIXED to FIXED_BLOCK - description of 'fixed' was ambiguous
+  * preload_tape: Handle media EOM in a more user-friendly way
+  * preload_tape: Fix sense_buffer global vs local clash
+  * mhvtl.spec: Silence vtl media files
+  * Remove temporary files in 'make clean'
+  * default tape emulation: Add missing media types
+  * Remove stale email address from man pages.
+  * preload_tape: Add a man page entry
+  * preload_tape: Close out the data with a filemark.
+  * Add new utility 'preload_tape'
+  * Move writeBlock() to mhvtl_io.c
+  * Code consolidation: readBlock() to mhvtl_io.c
+  * Add LTO6 and 7 to man pages as valid cartridge types
+  * Add: Tape media Code reference. Fix SDLT code
+  * Comment code : media_type vs medium_density_code
+  * White-spcae cleanup
+  * device-conf-generator: respect MHVTL_CONFIG_PATH
+  * Typo: replace spaces with tabs in comment
+  * Add: Comment to hp_ultrium.c re: LTO8 and LTO6 compatibility
+  * Remove LTO6 read ability from LTO8 tapes
+  * Change LTO7 Number of Tracks to correct value
+  * Remove erroneous trailing white-space from INSTALL
+  * Improve a debug log entry to make it more readable
+  * Improve tape load/unload handling
+  * Doc: Fix VTLlibrary man page error. Fix: man page typo T10Kb -> T10KB
+  * Add: Update instructions on sg3-utils name
+  * Fix: Incorrect sg3_util package name in install instructions
+  * Fix spelling of 'debugging'
+  * mhvtl.ko: Bump kernel module version to 0.18.30 / 20211007
+  * mhvtl.spec: Updated so it will build on CentOS 8
+  * Update Changelog for difference since 1.6-3 release
+  * systemd: Update Makefile to include systemd install path
+  * OOM: /proc/<pid>/oom_adj is deprecated. Using oom_score_adj.
+  * mhvtl.ko: Update function names with 'mhvtl_' prefix
+  * Update kernel /sys/ location to suit new pseudo name space
+  Added four patches not yet upstream (but submmtted soon):
+  * mhvtl-kernel-module-fix-queuecommand-arg-change.patch
+  * mhvtl-kernel-module-fix-sysfs_emit-decl.patch
+  * mhvtl-handle-systemd-location-correctly-for-generator.patch
+  * mhvtl-fix-systemd-generator-dir.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 16:20:07 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Remoed the "BuildRequires: lzo-devel" line from the SPEC file,

@@ -1,0 +1,104 @@
+From 81e607d44da28a9bac4f04ce58e72791f6f8a7d0 Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Tue, 18 Jan 2022 12:31:14 -0800
+Subject: [PATCH] Handle systemd location correctly for generator.
+
+This now correctly handles the systemd generator
+dir being in either /lib/system or /usr/lib/systemd.
+---
+ Makefile                          |  2 +-
+ usr/Makefile                      |  1 +
+ usr/mhvtl-device-conf-generator.c | 29 ++++++++++++++++-------------
+ 3 files changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 6799957272b5..b7d487524a7b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -86,7 +86,7 @@ distclean:
+ 	$(RM) ../$(TAR_FILE)
+ 
+ install: all
+-	$(MAKE) -C usr install $(LIBDIR) $(PREFIX) $(DESTDIR)
++	$(MAKE) -C usr install $(LIBDIR) $(PREFIX) $(DESTDIR) $(SYSTEMD_SERVICE_DIR)
+ 	$(MAKE) -C scripts install $(PREFIX) $(DESTDIR)
+ 	$(MAKE) -i -C etc install $(DESTDIR) $(SYSTEMD_SERVICE_DIR)
+ 	$(MAKE) -C man man
+diff --git a/usr/Makefile b/usr/Makefile
+index 0032ffedfbcb..49ff19e73659 100644
+--- a/usr/Makefile
++++ b/usr/Makefile
+@@ -40,6 +40,7 @@ CFLAGS += -D_GNU_SOURCE
+ CFLAGS += -DMHVTL_DEBUG
+ CFLAGS += -DMHVTL_HOME_PATH=\"$(MHVTL_HOME_PATH)\"
+ CFLAGS += -DMHVTL_CONFIG_PATH=\"$(MHVTL_CONFIG_PATH)\"
++CFLAGS += -DSYSTEMD_SERVICE_DIR=\"$(SYSTEMD_SERVICE_DIR)\"
+ 
+ CLFLAGS=-shared ${RPM_OPT_FLAGS}
+ 
+diff --git a/usr/mhvtl-device-conf-generator.c b/usr/mhvtl-device-conf-generator.c
+index d7db2851ea5e..3504aa6a95d7 100644
+--- a/usr/mhvtl-device-conf-generator.c
++++ b/usr/mhvtl-device-conf-generator.c
+@@ -260,42 +260,45 @@ int main(int argc, char **argv)
+ 	if (debug_mode)
+ 		printf("DEBUG: scanning libraries ...\n");
+ 	for (ip = our_libraries.next; ip != NULL; ip = ip->next) {
+-		const char to_path[] = "/usr/lib/systemd/system/vtllibrary@.service";
+-		if (asprintf(&path, "%s/%s/vtllibrary@%d.service", working_dir, dirname, ip->num) < 0) {
++		char *from_path, *to_path;
++		if ((asprintf(&from_path, "%s/%s/vtllibrary@%d.service", working_dir, dirname, ip->num) < 0) ||
++		    (asprintf(&to_path, "%s/vtllibrary@.service", SYSTEMD_SERVICE_DIR) < 0)) {
+ 			perror("Could not allocate memory (for vtllibrary template symlink)");
+ 			exit(1);
+ 		}
+ 		if (debug_mode)
+-			(void) fprintf(stderr, "DEBUG: creating symlink: %s => %s\n", path, to_path);
+-		if (symlink(to_path, path) < 0) {
++			(void) fprintf(stderr, "DEBUG: creating symlink: %s => %s\n", from_path, to_path);
++		if (symlink(to_path, from_path) < 0) {
+ 			if (debug_mode)
+ 				(void) fprintf(stderr, "DEBUG: error: can't create symlink (%d): %s => %s\n",
+-						errno, path, to_path);
++						errno, from_path, to_path);
+ 			// clean up?
+ 			exit(1);
+ 		}
+-		free(path);
++		free(from_path);
++		free(to_path);
+ 	}
+ 	if (debug_mode)
+ 		printf("DEBUG: scanning tapes ...\n");
+ 	for (ip = our_tapes.next; ip != NULL; ip = ip->next) {
+-		const char *to_path = "/usr/lib/systemd/system/vtltape@.service";
+-		if (asprintf(&path, "%s/%s/vtltape@%d.service", working_dir, dirname, ip->num) < 0) {
++		char *from_path, *to_path;
++		if ((asprintf(&from_path, "%s/%s/vtltape@%d.service", working_dir, dirname, ip->num) < 0) ||
++		    (asprintf(&to_path, "%s/vtltape@.service", SYSTEMD_SERVICE_DIR) < 0)) {
+ 			perror("Could not allocate memory (for vtltape template symlink)");
+ 			exit(1);
+ 		}
+ 		if (debug_mode)
+-			(void) fprintf(stderr, "DEBUG: creating symlink: %s => %s\n", path, to_path);
+-		if (symlink(to_path, path) < 0) {
++			(void) fprintf(stderr, "DEBUG: creating symlink: %s => %s\n", from_path, to_path);
++		if (symlink(to_path, from_path) < 0) {
+ 			if (debug_mode)
+ 				(void) fprintf(stderr, "DEBUG: error: can't create symlink (%d): %s => %s\n",
+-						errno, path, to_path);
++						errno, from_path, to_path);
+ 			// clean up?
+ 			exit(1);
+ 		}
+-		free(path);
++		free(from_path);
++		free(to_path);
+ 	}
+ 
+-
+ 	exit(0);
+ }
+-- 
+2.26.2
+
