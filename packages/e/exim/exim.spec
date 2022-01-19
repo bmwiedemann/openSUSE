@@ -75,7 +75,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.95
-Release:        0
+Release:        1
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif

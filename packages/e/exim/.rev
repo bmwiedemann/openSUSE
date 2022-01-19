@@ -787,4 +787,13 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>922122</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>6ee5f0515bf51f5340bf00d5c2b4bc59</srcmd5>
+    <version>4.95</version>
+    <time>1642633944</time>
+    <user>dimstar_suse</user>
+    <comment>- disable ProtectHome=, it prevents local delivery (bsc#1194810)
+</comment>
+    <requestid>947395</requestid>
+  </revision>
 </revisionlist>

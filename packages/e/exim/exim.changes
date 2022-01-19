@@ -1,3 +1,7 @@
+Wed Jan 19 11:41:15 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- disable ProtectHome=, it prevents local delivery (bsc#1194810)
+
 Wed Sep 29 06:22:01 UTC 2021 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - update to exim 4.95

@@ -8,7 +8,8 @@ PrivateTmp=true
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
-ProtectHome=true
+# exim needs to access ~/.forward and MDA-files to for local delivery
+# ProtectHome=true
 PrivateDevices=true
 ProtectHostname=true
 ProtectClock=true
