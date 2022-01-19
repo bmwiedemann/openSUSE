@@ -1,7 +1,7 @@
 #
 # spec file for package frogr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,12 @@ descriptions, setting tags and managing sets and groups pools.
 
 %prep
 %autosetup
+
+### TODO: Remove this on the next release package update.
+# Fix meson option warning_level based on commit:
+# https://gitlab.gnome.org/GNOME/frogr/-/commit/623d7e397baff3a8ab1695e190b13bc60153b64c
+sed -i 's/warnlevel/warning_level/' meson.build
+###
 
 %build
 %meson \

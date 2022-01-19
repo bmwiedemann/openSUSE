@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 00:28:40 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Fix meson build warning_level (warnlevel was being used) with sed
+  command based on commit 623d7e397baff3a8ab1695e190b13bc60153b64c.
+
+-------------------------------------------------------------------
 Fri Jan 10 23:10:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.6:
