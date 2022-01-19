@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  4 21:45:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- spec file cleanup 
+
+-------------------------------------------------------------------
 Fri Feb 27 14:49:24 UTC 2015 - dimstar@opensuse.org
 
 - No longer apply libsmi-flex.patch on openSUSE Tumbleweed (> 13.2).

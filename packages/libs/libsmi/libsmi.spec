@@ -1,7 +1,7 @@
 #
 # spec file for package libsmi
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libsmi
 Version:        0.4.8
 Release:        0
-Url:            http://www.ibr.cs.tu-bs.de/projects/libsmi
 Summary:        A Library to Access SMI MIB Information
 License:        MIT
 Group:          System/Libraries
+URL:            https://www.ibr.cs.tu-bs.de/projects/libsmi
 Source:         https://www.ibr.cs.tu-bs.de/projects/%{name}/download/%{name}-%{version}.tar.gz
 Patch0:         libsmi-0.4.8-parser.patch
 Patch1:         libsmi-0.4.8-gnu-source.patch
@@ -30,11 +30,10 @@ Patch2:         libsmi-CVE-2010-2891.patch
 Patch3:         libsmi-flex.patch
 Patch4:         libsmi-bison-3.0.patch
 Patch5:         libsmi-exports.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 The purpose of libsmi is to
@@ -56,7 +55,7 @@ Requires:       glibc-devel
 
 %package -n libsmi2
 Summary:        Libsmi Shared Libraries
-Group:          System/Libraries  
+Group:          System/Libraries
 Requires:       %{name} = %{version}
 
 %description -n libsmi2
@@ -93,33 +92,30 @@ autoreconf --force --install
 	       --enable-sming \
 	       --with-mibdir=%{_datadir}/mibs
 # Parallel build disabled
-make #%{?_smp_mflags}
+%make_build #%{?_smp_mflags}
 
 %install
-make install DESTDIR=%buildroot
-rm -f %{buildroot}%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make check || cat test/test-suite.log && exit 0
+%make_build check || cat test/test-suite.log && exit 0
 
 %post -n libsmi2 -p /sbin/ldconfig
-
 %postun -n libsmi2 -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc ANNOUNCE COPYING ChangeLog README THANKS TODO doc/*.txt
-%doc %{_mandir}/man?/*
+%license COPYING
+%doc ANNOUNCE ChangeLog README THANKS TODO doc/*.txt
+%{_mandir}/man?/*
 %{_bindir}/*
 %{_datadir}/mibs
 %{_datadir}/pibs
 
 %files -n libsmi2
-%defattr(-, root, root)
 %{_libdir}/libsmi.so.*
 
 %files devel
-%defattr(-, root, root)
 %{_includedir}/*
 %{_libdir}/libsmi.so
 %{_libdir}/pkgconfig/libsmi.pc
