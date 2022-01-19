@@ -46,4 +46,12 @@
     <comment>- Update to new upstream release 2.0.15</comment>
     <requestid>725552</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8cb7d6ec53350d7fdbc7134882c0e19e</srcmd5>
+    <version>2.0.18</version>
+    <time>1642633934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947321</requestid>
+  </revision>
 </revisionlist>

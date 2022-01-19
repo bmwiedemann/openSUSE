@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 12 01:27:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.18
+  * Added TTF_GetFreeTypeVersion() and TTF_GetHarfBuzzVersion()
+  * Added support for Signed Distance Field rendering with
+    TTF_SetFontSDF() and TTF_GetFontSDF()
+  * Added optional DPI-scaling of fonts, with new functions.
+  * Added 32-bit character support.
+  * Added functions to set direction and script when using Harfbuzz.
+  * Added extended API for text measurement.
+  * Added TTF_SetFontSize() to set font size dynamically.
+  * Added 'Shaded' and 'Solid' text wrapped functions.
+  * Added TTF_HINTING_LIGHT_SUBPIXEL for better results at small
+    text sizes at a performance cost
+
+-------------------------------------------------------------------
 Fri Aug 23 11:27:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 2.0.15

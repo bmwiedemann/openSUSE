@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_ttf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,19 @@
 
 Name:           SDL2_ttf
 %define lname	libSDL2_ttf-2_0-0
-Version:        2.0.15
+Version:        2.0.18
 Release:        0
 Summary:        Simple DirectMedia Layer 2 Truetype library
 License:        Zlib
 Group:          Development/Libraries/X11
-URL:            https://libsdl.org/projects/SDL_ttf/
+URL:            https://github.com/libsdl-org/SDL_ttf
 
-#Hg-Clone:	https://hg.libsdl.org/SDL_ttf/
-Source:         https://libsdl.org/projects/SDL_ttf/release/%name-%version.tar.gz
-Source2:        baselibs.conf
+#Git-Clone:	https://github.com/libsdl-org/SDL_ttf
+Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz
+Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz.sig
+Source8:        %name.keyring
+Source9:        baselibs.conf
+BuildRequires:  c++_compiler
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(freetype2)
