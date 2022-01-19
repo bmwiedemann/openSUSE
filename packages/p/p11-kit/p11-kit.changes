@@ -75,11 +75,23 @@ Wed Apr 15 07:01:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
   * proxy: Fail early if there is no slot mapping [PR#175]
   * Remove hard dependency on libpthread [PR#177]
   * Build fixes [PR#170, PR#176]
+- Remove obsolete patches:
+  * 0001-Support-loading-new-NSS-attribute-CKA_NSS_MOZILLA_CA.patch
+  * 0001-Fix-a-typo-in-x-cetrificate-value-see-also-https-bug.patch
 
 -------------------------------------------------------------------
 Mon Dec 23 11:00:15 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - Also build documentation (boo#1013125)
+
+-------------------------------------------------------------------
+Fri Nov 15 11:02:43 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- support loading NSS attribute CKA_NSS_MOZILLA_CA_POLICY so Firefox
+  detects built in certificates (boo#1154871,
+  0001-Fix-a-typo-in-x-cetrificate-value-see-also-https-bug.patch,
+  0001-Support-loading-new-NSS-attribute-CKA_NSS_MOZILLA_CA.patch)
+
 
 -------------------------------------------------------------------
 Fri May 10 09:28:21 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -114,6 +126,61 @@ Tue Mar 27 08:33:43 UTC 2018 - lnussel@suse.de
   * install private executables in libexecdir, obsoletes p11-kit-biarch.patch
 - new server subpackage
 - change keyring to new maintainer Daiki Ueno
+
+- Changes for version 0.23.9
+  * Fix p11-kit server regressions [PR#103, PR#104]
+  * trust: Respect anyExtendedKeyUsage in CA certificates [PR#99]
+  * Build fixes related to reallocarray [PR#96, PR#98, PR#100]
+
+- Changes for version 0.23.8
+  * Improve vendor query attributes handling in PKCS#11 URI [PR#92]
+  * Add OTP and GOST mechanisms to pkcs11.h [PR#90, PR#91]
+  * New envvar P11_KIT_NO_USER_CONFIG to stop looking at user
+    configurations [PR#87]
+  * Build fixes for Solaris and 32-bit big-endian platforms [PR#81, PR#86]
+
+- Changes for version 0.23.7
+  * Fix memory issues with "p11-kit server" [PR#78]
+  * Build fixes [PR#77 ...]
+
+- Changes for version 0.23.6
+  * Port "p11-kit server" to Windows and portability fixes of the RPC
+    protocol [PR#67, PR#72, PR#74]
+  * Recover the old behavior of "trust anchor --remove" [PR#70, PR#71]
+  * Build fixes [PR#63 ...]
+
+- Changes for version 0.23.5
+  * Fix license notice of common/unix-peer.c [PR#58]
+  * Remove systemd unit files for now [PR#60]
+  * Build fixes for FreeBSD [PR#56]
+
+- Changes for version 0.23.4
+  * Recognize query attributes defined in PKCS#11 URI (RFC7512) [PR#31,
+    PR#37, PR#52]
+  * The trust policy module now recognizes CKA_NSS_MOZILLA_CA_POLICY
+    attribute, used by Firefox [#99453, PR#46]
+  * Add 'trust dump' command to dump all PKCS#11 objects in the
+    persistence format [PR#44]
+  * New experimental 'p11-kit server' command that allows PKCS#11
+    forwarding through a Unix domain socket.  A client-side module
+    p11-kit-client.so is also provided [PR#15]
+  * Add systemd unit files for exporting the proxy module through a
+    Unix domain socket [PR#35]
+  * New P11KitIter API to iterate over slots, tokens, and modules in
+    addition to objects [PR#28]
+  * libffi dependency is now optional [PR#9]
+  * Build fixes for FreeBSD, macOS, and Windows [PR#32, PR#39, PR#45]
+
+- Changes for version 0.23.3
+  * Install private executables in libexecdir [fdo#98817]
+  * Fix link error of proxy module on macOS [fdo#98022]
+  * Use new PKCS#11 URI specification for URIs [fdo#97245]
+  * Support x-init-reserved argument of C_Initialize() in remote modules
+    [fdo#80519]
+  * Incorporate changes from PKCS#11 2.40 specification
+  * Bump libtool library version
+  * Documentation fixes
+  * Build fixes [fdo#87192 ...]
 
 -------------------------------------------------------------------
 Tue Mar 20 13:26:02 CET 2018 - kukuk@suse.de
