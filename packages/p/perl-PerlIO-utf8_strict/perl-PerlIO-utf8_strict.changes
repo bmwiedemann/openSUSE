@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  9 03:08:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-PerlIO-utf8_strict/Changes
+
+  0.009     2022-01-08 17:26:23+01:00 Europe/Amsterdam
+            - Mark functions that croak as noreturn
+
+-------------------------------------------------------------------
 Sat Sep 19 03:10:56 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.008
