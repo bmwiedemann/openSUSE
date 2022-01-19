@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 14 07:29:10 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.10.2: https://github.com/onnx/onnx/releases/tag/v1.10.2
+- Rebase no-python2.patch
+- Disable python 3.10 support as onnx is not ready yet.
+- Do not run tests in parallel, since it is not parallel safe.
+
+-------------------------------------------------------------------
 Mon Feb 15 18:25:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - NEP 29: Tumbleweed does not have python36-numpy and depending

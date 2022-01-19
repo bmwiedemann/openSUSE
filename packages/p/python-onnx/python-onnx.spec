@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,10 @@
 %define skip_python2 1
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
 %define skip_python36 1
+# onnx 1.10.2 is not yet ready for python 3.10
+%define skip_python310 1
 Name:           python-onnx
-Version:        1.8.1
+Version:        1.10.2
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
@@ -152,7 +154,8 @@ donttest="   test_bvlc_alexnet_cpu \
           or test_inception_v2_cpu \
           or test_zfnet512_cpu \
           or test_resnet50_cpu"
-%pytest_arch -n auto -k "not ($donttest)" -ra
+# do not run in parallel yet - https://github.com/onnx/onnx/issues/3946#issuecomment-1015634235
+%pytest_arch -n 1 -k "not ($donttest)" -ra
 popd
 
 %post

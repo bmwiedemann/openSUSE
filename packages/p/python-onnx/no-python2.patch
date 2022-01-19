@@ -1,10 +1,8 @@
-Index: onnx-1.6.0/tools/protoc-gen-mypy.py
-===================================================================
---- onnx-1.6.0.orig/tools/protoc-gen-mypy.py
-+++ onnx-1.6.0/tools/protoc-gen-mypy.py
+--- onnx-1.10.2/tools/protoc-gen-mypy.py.orig	2022-01-19 10:03:51.018636231 +0100
++++ onnx-1.10.2/tools/protoc-gen-mypy.py	2022-01-19 10:04:17.218928895 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
-+#!/usr/bin/env python3
++#!/usr/bin/python3
  
- # Taken from https://github.com/dropbox/mypy-protobuf/blob/d984389124eae6dbbb517f766b9266bb32171510/python/protoc-gen-mypy
- # (Apache 2.0 License)
+ # SPDX-License-Identifier: Apache-2.0
+ 
