@@ -8864,7 +8864,8 @@ unsorted:
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
-  - libMyGUIEngine3_4_0 
+  - libMyGUICommon3_4_1 
+  - libMyGUIEngine3_4_1 
   - libOIS-devel 
   - libOIS1_5_0 
   - libOSMesa-devel 
@@ -11955,8 +11956,8 @@ unsorted:
   - libmaxminddb0-32bit: [x86_64] 
   - libmbedcrypto7 
   - libmbedcrypto7-32bit: [x86_64] 
-  - libmbedtls13 
-  - libmbedtls13-32bit: [x86_64] 
+  - libmbedtls14 
+  - libmbedtls14-32bit: [x86_64] 
   - libmbedx509-1 
   - libmbedx509-1-32bit: [x86_64] 
   - libmbim-devel 
@@ -21878,6 +21879,7 @@ unsorted:
   - python310-aiodns 
   - python310-aioeventlet 
   - python310-aiofiles 
+  - python310-aioftp 
   - python310-aiohttp 
   - python310-aiohttp-jinja2 
   - python310-aiohttp-socks 
@@ -22313,6 +22315,7 @@ unsorted:
   - python310-boolean.py 
   - python310-booleanOperations 
   - python310-boost-histogram 
+  - python310-boto 
   - python310-boto3 
   - python310-botocore 
   - python310-bottle 
@@ -23281,6 +23284,9 @@ unsorted:
   - python310-monotonic 
   - python310-more-itertools 
   - python310-moreorless 
+  - python310-moto 
+  - python310-moto-all 
+  - python310-moto-server 
   - python310-mpi4py 
   - python310-mpi4py-devel 
   - python310-mpld3 
@@ -23444,11 +23450,13 @@ unsorted:
   - python310-pandocfilters 
   - python310-panel 
   - python310-panflute 
+  - python310-papermill 
   - python310-parallax 
   - python310-param 
   - python310-parameterized 
   - python310-paramiko 
   - python310-paramiko-expect 
+  - python310-parfive 
   - python310-parse 
   - python310-parse_type 
   - python310-parsedatetime 
@@ -24207,6 +24215,7 @@ unsorted:
   - python310-simplekml 
   - python310-single-version 
   - python310-singledispatch 
+  - python310-siosocks 
   - python310-sip-devel 
   - python310-sip4 
   - python310-sip4-devel 
@@ -24711,9 +24720,6 @@ unsorted:
   - python36-lzmaffi 
   - python36-mechanize 
   - python36-moretools 
-  - python36-moto 
-  - python36-moto-all 
-  - python36-moto-server 
   - python36-mrkd 
   - python36-ntfy 
   - python36-oic 
@@ -24741,8 +24747,6 @@ unsorted:
   - python36-rss2email 
   - python36-s3fs 
   - python36-sgmllib3k 
-  - python36-siosocks 
-  - python36-sleekxmpp 
   - python36-sphinx-argparse 
   - python36-starlette 
   - python36-tasklib 
@@ -25425,6 +25429,7 @@ unsorted:
   - python38-boolean.py 
   - python38-booleanOperations 
   - python38-boost-histogram 
+  - python38-boto 
   - python38-bottle 
   - python38-bowler 
   - python38-bpython 
@@ -27270,7 +27275,6 @@ unsorted:
   - python38-sklearn-pandas 
   - python38-skyfield 
   - python38-slackclient 
-  - python38-sleekxmpp 
   - python38-slimit 
   - python38-slixmpp 
   - python38-slycot 
@@ -28392,6 +28396,7 @@ unsorted:
   - python39-boolean.py 
   - python39-booleanOperations 
   - python39-boost-histogram 
+  - python39-boto 
   - python39-boto3 
   - python39-botocore 
   - python39-bottle 
@@ -30396,7 +30401,6 @@ unsorted:
   - python39-sklearn-pandas 
   - python39-skyfield 
   - python39-slackclient 
-  - python39-sleekxmpp 
   - python39-slimit 
   - python39-slip 
   - python39-slip-dbus 
