@@ -393,4 +393,12 @@
     <comment></comment>
     <requestid>925115</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7c7949544bfa9c165e484a7d2d7c49e1</srcmd5>
+    <version>3.0.7</version>
+    <time>1642633940</time>
+    <user>dimstar_suse</user>
+    <comment>update lynis to 3.0.7 (forwarded request 947273 from rfrohl)</comment>
+    <requestid>947380</requestid>
+  </revision>
 </revisionlist>

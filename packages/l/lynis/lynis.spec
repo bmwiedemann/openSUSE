@@ -1,7 +1,7 @@
 #
 # spec file for package lynis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009-2013 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define _pluginsdir       %{_datadir}/lynis/plugins
 %define _dbdir            %{_datadir}/lynis/db
 Name:           lynis
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        Security and System auditing tool
 License:        GPL-3.0-only
@@ -41,8 +41,7 @@ Source9:        tests_users_wo_password
 Source10:       prepare_for_suse.sh
 Source11:       dbus-whitelist.db.openSUSE_12.2_x86_64
 Source12:       fileperms.db.openSUSE_12.2_x86_64
-# there's no signature available for 3.0.6 (https://github.com/CISOfy/lynis/issues/1211)
-#Source13:       https://downloads.cisofy.com/lynis/%{name}-%{version}.tar.gz.asc
+Source13:       https://downloads.cisofy.com/lynis/%{name}-%{version}.tar.gz.asc
 Source14:       https://cisofy.com/files/cisofy-software.pub#/%{name}.keyring
 Source15:       %{name}-rpmlintrc
 # PATCH-OPENSUSE-FIX -- thomas@novell.com - modifying for openSUSE
@@ -116,9 +115,6 @@ install -d %{buildroot}%{_dbdir}/languages
 install -pm 644 db/languages/* %{buildroot}%{_dbdir}/languages
 install -pm 644 %{SOURCE11} %{buildroot}%{_dbdir}/dbus-whitelist.db
 install -pm 644 %{SOURCE12} %{buildroot}%{_dbdir}/fileperms.db
-#rm %%{buildroot}%%{_dbdir}/fileperms.db
-#ln -s $(basename %%{SOURCE11}) %%{_dbdir}/dbus-whitelist.db
-#ln -s $(basename %%{SOURCE12}) %%{_dbdir}/fileperms.db
 
 # pacify rpmlint
 chmod +x %{buildroot}%{_pluginsdir}/custom_plugin.template
