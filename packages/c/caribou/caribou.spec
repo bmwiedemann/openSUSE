@@ -1,7 +1,7 @@
 #
 # spec file for package caribou
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files

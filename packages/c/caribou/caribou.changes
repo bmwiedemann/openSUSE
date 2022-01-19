@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 17 12:26:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Add python-rpm-macros BuildRequires in case some build
+  environment does not pull it automatically. This is needed by
+  macros like %{python3_sitelib}.
+
+-------------------------------------------------------------------
 Wed Jun 30 16:12:14 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add caribou-stop-patching-gir.patch: stop patching the GIR.
