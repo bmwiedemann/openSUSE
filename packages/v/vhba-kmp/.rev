@@ -153,4 +153,13 @@
   * Support for Linux 5.15</comment>
     <requestid>933945</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6441cb8dac1523f0c5c9e7b7b4e48344</srcmd5>
+    <version>20211218</version>
+    <time>1642633949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20211218
+  * Support for Linux 5.16 SCSI layer API updates</comment>
+    <requestid>947427</requestid>
+  </revision>
 </revisionlist>

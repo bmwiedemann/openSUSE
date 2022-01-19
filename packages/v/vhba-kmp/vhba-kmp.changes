@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 13:08:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20211218
+  * Support for Linux 5.16 SCSI layer API updates
+
+-------------------------------------------------------------------
 Thu Nov 25 23:43:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20211023
