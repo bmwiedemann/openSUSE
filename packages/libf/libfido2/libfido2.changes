@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 17:22:01 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use BuildRequires: openssl-devel instead of forcing 1.1 since 3.x
+  is now supported.
+
+-------------------------------------------------------------------
 Mon Nov  1 14:39:51 UTC 2021 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Version 1.9.0 (2021-10-27)

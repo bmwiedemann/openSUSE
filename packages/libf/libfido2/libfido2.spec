@@ -28,7 +28,7 @@ Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{versio
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  openssl-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hidapi-hidraw)
@@ -55,7 +55,7 @@ Client-to-Authenticator Protocol (CTAP 1 and 2).
 Summary:        Development files for FIDO U2F and FIDO 2.0 protocols
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{sover} = %{version}
-Requires:       libopenssl-1_1-devel
+Requires:       openssl-devel
 Conflicts:      libfido2-0_4_0
 Conflicts:      libfido2-1_0_0
 
