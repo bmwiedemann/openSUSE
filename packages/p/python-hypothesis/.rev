@@ -524,4 +524,12 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>940474</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5fdcf179e3bbf2387c55a1c2ea1e56b9</srcmd5>
+    <version>6.35.0</version>
+    <time>1642633928</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947060</requestid>
+  </revision>
 </revisionlist>

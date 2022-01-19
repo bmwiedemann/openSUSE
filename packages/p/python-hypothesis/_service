@@ -1,13 +1,16 @@
 <services>
-  <!-- python portion of github sources --> 
-  <service name="obs_scm" mode="disabled">
+  <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/HypothesisWorks/hypothesis.git</param>
     <param name="scm">git</param>
-    <param name="revision">hypothesis-python-6.31.4</param>
+    <param name="revision">hypothesis-python-6.35.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">hypothesis-python-(.*)</param>
     <param name="subdir">hypothesis-python</param>    
     <param name="filename">hypothesis-python</param>    
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="disabled" />
 </services>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 10 16:47:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 6.35.0:
+  - This release disallows using "typing.ClassVar" with
+    "from_type()" and "register_type_strategy()". Why? Because
+    "ClassVar" can only be used during "class" definition. We
+    don't generate class attributes. It also does not make sense
+    as a runtime type on its own.
+  - Updates our vendored list of top-level domains, which is used
+    by the provisional "domains()" strategy.
+  - Fixes issue #3169, an extremely rare bug which would trigger
+    if an internal least-recently-reused cache dropped a newly
+    added entry immediately after it was added.
+  - Fixes issue #3133 and issue #3144, where attempting to
+    generate Pandas series of lists or sets would fail with
+    confusing errors if you did not specify "dtype=object".
+  - Disallows using "typing.TypeAlias" with "from_type()" and
+    "register_type_strategy()". Why? Because "TypeAlias" is not
+    really a type, it is a tag for type checkers that some
+    expression is a type alias, not something else. It does not
+    make sense for Hypothesis to resolve it as a strategy.
+  - Updates our autoformatting tools, improving our code style
+    without any API changes.
+  - Drops support for Python 3.6, which reached end of life
+    upstream on 2021-12-23.
+  - Adds a temporary hook for a downstream tool, which is not
+    part of the public API.
+  - Updates our copyright headers to use a general authorship
+    statement and omit the year.
+- Skip also test_recursion_error_is_not_flaky
+  (gh#HypothesisWorks/hypothesis#3035)
+
+-------------------------------------------------------------------
 Sun Dec 12 11:40:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.31.4

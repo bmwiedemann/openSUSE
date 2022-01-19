@@ -1,8 +1,11 @@
-diff --git a/hypothesis-python/tests/conjecture/test_utils.py b/hypothesis-python/tests/conjecture/test_utils.py
-index fbb837d69..e31868140 100644
---- a/hypothesis-python/tests/conjecture/test_utils.py
-+++ b/hypothesis-python/tests/conjecture/test_utils.py
-@@ -16,7 +16,6 @@
+---
+ tests/conjecture/test_utils.py            |    3 ++-
+ tests/ghostwriter/test_expected_output.py |    2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+--- a/tests/conjecture/test_utils.py
++++ b/tests/conjecture/test_utils.py
+@@ -11,7 +11,6 @@
  from collections import Counter
  from fractions import Fraction
  
@@ -10,7 +13,7 @@ index fbb837d69..e31868140 100644
  import pytest
  
  from hypothesis import (
-@@ -218,11 +217,13 @@ def test_combine_labels_is_distinct():
+@@ -213,11 +212,13 @@ def test_combine_labels_is_distinct():
  
  
  def test_invalid_numpy_sample():
@@ -24,11 +27,9 @@ index fbb837d69..e31868140 100644
      cu.check_sample(np.array([1, 2, 3]), "array")
  
  
-diff --git a/hypothesis-python/tests/ghostwriter/test_expected_output.py b/hypothesis-python/tests/ghostwriter/test_expected_output.py
-index 6cc9294e3..1e77c539a 100644
---- a/hypothesis-python/tests/ghostwriter/test_expected_output.py
-+++ b/hypothesis-python/tests/ghostwriter/test_expected_output.py
-@@ -27,13 +27,13 @@ import re
+--- a/tests/ghostwriter/test_expected_output.py
++++ b/tests/ghostwriter/test_expected_output.py
+@@ -23,13 +23,13 @@ import re
  import sys
  from typing import Sequence
  

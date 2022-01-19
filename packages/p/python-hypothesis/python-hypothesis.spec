@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 %bcond_with ringdisabled
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -33,7 +34,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.31.4
+Version:        6.35.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -41,7 +42,7 @@ URL:            https://github.com/HypothesisWorks/hypothesis
 # Source is the `hypothesis-python` subdir of the Github repository.
 # Edit the `_service` file and run `osc service runall` for updates.
 # See also https://hypothesis.readthedocs.io/en/latest/packaging.html
-Source:         hypothesis-python-%{version}
+Source:         hypothesis-python-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dont import numpy and pandas and skip tests if these optional packages are not available.
 Patch0:         importorskip-numpy-pandas.patch
 %if 0%{?suse_version} >= 1500
@@ -110,10 +111,11 @@ PyPy3 until they support a 3.3 compatible version of the language). It does *not
 work on Jython or on Python 3.0 through 3.2.
 
 %prep
-%setup -q -n %{_sourcedir}/hypothesis-python-%{version} -T -D
+%setup -q -n hypothesis-python-%{version}
+%autopatch -p1
+
 # gh#HypothesisWorks/hypothesis#2447: make sure arr==0.0 is an array on 32-bit
 sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_gen_data.py
-%patch0 -p2
 
 %build
 %if !%{with test}
@@ -145,6 +147,8 @@ python36_donttest+=" or (test_cli_python_equivalence and json)"
 # typing_extension problem on python36 and Leap 15's python3
 python36_donttest+=" or test_mutually_recursive_types_with_typevar"
 python3_donttest+=" or test_mutually_recursive_types_with_typevar"
+# gh#HypothesisWorks/hypothesis#3035
+python3_donttest+=" or test_recursion_error_is_not_flaky"
 # requires backports.zoneinfo for python < 3.9
 python36_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
 python38_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
