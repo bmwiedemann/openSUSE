@@ -1,7 +1,7 @@
 #
 # spec file for package pam_ssh_agent_auth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 # nodebuginfo
 
+
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           pam_ssh_agent_auth
 Version:        0.10.4
 Release:        0
-Summary:        PAM module providing authentication via ssh-agent
+Summary:        Permits PAM authentication via your keyring in a forwarded ssh-agent
 License:        OpenSSL
 Group:          Development/Tools/Other
-URL:            https://github.com/jbeverly/pam_ssh_agent_auth
+URL:            https://github.com/FlorianFranzen/pam_ssh_agent_auth
 Source:         %{name}-%{version}.tar.gz
-Source99:       git-script.sh
+BuildRequires:  git-core
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  perl
@@ -36,14 +37,19 @@ BuildRequires:  sed
 pam_ssh_agent_auth is a PAM module which permits PAM
 authentication via your keyring in a forwarded ssh-agent.
 
+20220111: using https://github.com/FlorianFranzen/pam_ssh_agent_auth,
+"just-one-big-cookie" branch so that ed25519 + Yubikey works.
+
 %prep
 %setup -q -n %{name}-%{version}
 
 %build
+# 'git submodule init; git submodule update'
+#   required before being tar'd up.
 %configure \
-	--without-openssl-header-check \
-	--with-mantype=man \
-	--libexecdir=%{_pam_moduledir}
+  --without-openssl-header-check \
+  --with-mantype=man \
+  --libexecdir=%{_pam_moduledir}
 %make_build
 
 %install
@@ -56,4 +62,3 @@ authentication via your keyring in a forwarded ssh-agent.
 %{_pam_moduledir}/pam_ssh_agent_auth.so
 
 %changelog
-

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 11 20:54:12 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- [Re-]Adding pam_ssh_agent_auth-0.10.4.tar.gz which was removed,
+  repackaged and required.
+
+-------------------------------------------------------------------
+Tue Jan 11 20:52:26 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switching to https://github.com/FlorianFranzen/pam_ssh_agent_auth,
+  branch: "just-one-big-cookie" for ed25519 & Yubikey support.
+
+-------------------------------------------------------------------
 Tue Oct 19 10:50:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %_pam_moudledir - which was actually my recommendation.
