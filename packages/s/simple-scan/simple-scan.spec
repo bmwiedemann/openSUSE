@@ -1,7 +1,7 @@
 #
 # spec file for package simple-scan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/simple-scan
 Source0:        https://download.gnome.org/sources/simple-scan/40/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM 200.patch dimstar@opensuse.org -- Fix accessibility conflict of constant and its value
+Patch0:         https://gitlab.gnome.org/GNOME/simple-scan/-/merge_requests/200.patch
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
