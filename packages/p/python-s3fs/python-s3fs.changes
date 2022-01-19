@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 24 23:03:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.11.1 
+  * deal with missing ETag (#557)
+  * ClientPayloadError to retryable (#556)
+  * pin aiobotocore (#555)
+- Release 2021.11.0
+  * move to fsspec org
+  * doc tweaks (#546, 540)
+  * redondant argument in _rm_versioned_bucket_contents (#439)
+  * allow client_method in url/sign (POST, etc) (#536)
+  * revert list_v2->head for info (#545)
+- Release 2021.10.1
+  * allow other methods than GET to url/sign (#536)
+- Release 2021.10.0
+  * No changes (just released to keep pin with fsspec)
+- Release 2021.09.0
+  * check for bucket also with get_bucket_location (#533)
+  * update versioneer (#531)
+- Release 2021.08.1
+  * retry on IncompleteRead (#525)
+  * fix isdir for missing bucket (#522)
+  * raise for glob("*") (#5167)
+- Release 2021.08.0
+  * fix for aiobotocore update (#510)
+
+-------------------------------------------------------------------
 Fri Aug 13 23:41:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.07.0

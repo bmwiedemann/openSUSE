@@ -19,16 +19,17 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        2021.7.0
+Version:        2021.11.1
 Release:        0
 Summary:        Python filesystem interface for S3
 License:        BSD-3-Clause
-URL:            https://github.com/dask/s3fs/
+URL:            https://github.com/fsspec/s3fs/
 Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module aiobotocore >= 1.0.1}
+BuildRequires:  %{python_module aiobotocore >= 2.0.1}
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module boto3}
-BuildRequires:  %{python_module fsspec >= 2021.7.0}
+BuildRequires:  %{python_module fsspec = %{version}}
 BuildRequires:  %{python_module moto-server >= 2.0}
 BuildRequires:  %{python_module pytest >= 4.2.0}
 BuildRequires:  %{python_module pytest-env}
@@ -38,8 +39,9 @@ BuildRequires:  python-rpm-macros
 %if %{with python2}
 BuildRequires:  python-mock
 %endif
-Requires:       python-aiobotocore >= 1.0.1
-Requires:       python-fsspec >= 2021.7.0
+Requires:       python-aiobotocore >= 2.0.1
+Requires:       python-aiohttp
+Requires:       python-fsspec = %{version}
 Recommends:     aws-cli
 Recommends:     python-boto3
 BuildArch:      noarch
@@ -62,7 +64,8 @@ chmod -x s3fs.egg-info/*
 
 %check
 # test_anonymous_access - online test
-%pytest -k 'not test_anonymous_access'
+# test_async_close - online test
+%pytest -k 'not (test_anonymous_access or test_async_close)'
 
 %files %{python_files}
 %doc README.rst
