@@ -1,7 +1,7 @@
 #
 # spec file for package o2scl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define shlib lib%{name}0
 Name:           o2scl
-Version:        0.925
+Version:        0.926
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
@@ -27,12 +27,8 @@ URL:            https://neutronstars.utk.edu/code/o2scl/html/index.html
 Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE o2scl-disable-slow-hdf-test.patch badshah400@gmail.com -- Disable an hdf5 test that takes too long causing OBS workers to time out and build to fail
 Patch0:         o2scl-disable-slow-hdf-test.patch
-# PATCH-FIX-UPSTREAM o2scl-exp-overflow.patch gh#awsteiner/o2scl#16 badshah400@gmail.com -- Fix for overflows from GSL exp.c; patch taken from upstream git commit
-Patch1:         o2scl-exp-overflow.patch
-# PATCH-FIX-UPSTREAM o2scl-boost-math-gamma-header.patch badshah400@gmail.com -- Include boost header required for tgamma function
-Patch2:         o2scl-boost-math-gamma-header.patch
-# PATCH-FIX-UPSTREAM o2scl-cpp17-legendre-conflict.patch gh#awsteiner/o2scl#17 badshah400@gmail.com -- Rename function legendre() to legendrex() to avoid conflict with std::legendre() in c++17 (default in GCC 11)
-Patch3:         o2scl-cpp17-legendre-conflict.patch
+# PATCH-FEATURE-OPENSUSE o2scl-disable-test-without-destdir-support.patch badshah400@gmail.com -- Disable tests that use data files installed to datadir but does not support DESTDIR and therefore cannot be run in a buildroot env
+Patch1:         o2scl-disable-test-without-destdir-support.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
@@ -95,7 +91,6 @@ This package provides the documentation for %{name}.
 
 %prep
 %autosetup -p1
-sed -Ei "s/\r$//" doc/o2scl/eos/sphinx/build/html/_static/evan.eml
 
 %build
 autoreconf -fvi
@@ -108,7 +103,7 @@ export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_PRE_1_12"
   --enable-eigen \
   --disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -129,7 +124,7 @@ find %{buildroot}%{_libdir} "(" -name "*.a" -o -name "*.la" ")" -delete -print
 # Tests fail on i586/arm*/aarch64/ppc* due to tolerances in the test codes being set too low. Enable only for x86_64 until fixed
 %ifarch x86_64
 %check
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %post -n %{shlib} -p /sbin/ldconfig
@@ -141,10 +136,12 @@ make %{?_smp_mflags} check
 %files devel
 %doc AUTHORS ChangeLog README NEWS
 %license COPYING
+%{_bindir}/acol
+%{_bindir}/ame_parse
+%{_bindir}/yanic
+%{_datadir}/%{name}/
 %{_libdir}/*.so
 %{_includedir}/o2scl/
-%{_bindir}/acol
-%{_datadir}/%{name}/
 
 %files doc
 %doc %{_docdir}/%{name}/

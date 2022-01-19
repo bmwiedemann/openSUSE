@@ -1,10 +1,10 @@
-Index: o2scl-0.925/src/hdf/Makefile.am
+Index: o2scl-0.926/src/hdf/Makefile.am
 ===================================================================
---- o2scl-0.925.orig/src/hdf/Makefile.am
-+++ o2scl-0.925/src/hdf/Makefile.am
+--- o2scl-0.926.orig/src/hdf/Makefile.am
++++ o2scl-0.926/src/hdf/Makefile.am
 @@ -8,7 +8,7 @@ HDF_SRCS = hdf_file.cpp hdf_io.cpp cloud
  	acolm_o2graph.cpp acolm_df.cpp acolm_gi.cpp acolm_jo.cpp \
- 	acolm_ps.cpp acolm_tz.cpp
+ 	acolm_ps.cpp acolm_tz.cpp hdf_python.cpp
  
 -TEST_VAR = hdf_file.scr hdf_io.scr
 +TEST_VAR = hdf_file.scr
