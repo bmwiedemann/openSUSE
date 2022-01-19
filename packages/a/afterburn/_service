@@ -1,12 +1,10 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <!-- <param name="url">https://github.com/coreos/afterburn.git</param> -->
-    <param name="url">https://github.com/JanZerebecki/afterburn.git</param>
+    <param name="url">https://github.com/coreos/afterburn.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">afterburn</param>
-    <!-- <param name="revision">v5.0.0</param> -->
-    <param name="revision">origin/for-5.0</param>
+    <param name="revision">v5.2.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

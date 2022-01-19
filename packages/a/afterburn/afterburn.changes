@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 18 21:12:09 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 5.2.0:
+  * providers: log message when SSH key is removed
+  * providers: limit hostname file output value to HOST_NAME_MAX bytes
+  * Consistently un-capitalize log messages
+  * Explicitly log the hostname we write
+  * providers/microsoft: allow unused fields in goal state structs
+  * providers: only log we wrote SSH keys when we actually did
+- Update to version 5.1.0:
+  * Add PowerVS provider
+  * cli: correctly print version when --version specified
+  * cli: don't report an error when --help or --version is specified
+  * providers/packet: access metadata service over HTTPS
+  * providers/gcp: access GCP metadata service by IP address
+  * minimum supported rust version is now 1.49.0
+* Refresh fix-authorized-keys-location.patch
+
+-------------------------------------------------------------------
 Thu Jan 13 19:05:51 UTC 2022 - jan.suse@zerebecki.de
 
 - Update some dependencies

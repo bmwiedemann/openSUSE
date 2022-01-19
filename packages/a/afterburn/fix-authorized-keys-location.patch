@@ -1,6 +1,8 @@
---- src/providers/mod.rs.orig
-+++ src/providers/mod.rs
-@@ -87,8 +87,8 @@ fn write_ssh_keys(user: User, ssh_keys:
+diff --git a/src/providers/mod.rs b/src/providers/mod.rs
+index f684d22..153d473 100644
+--- a/src/providers/mod.rs
++++ b/src/providers/mod.rs
+@@ -98,8 +98,8 @@ fn write_ssh_keys(user: User, ssh_keys: Vec<PublicKey>) -> Result<()> {
          .context("failed to switch user/group")?;
  
      // get paths
@@ -10,4 +12,4 @@
 +    let file_name = "authorized_keys";
      let file_path = &dir_path.join(file_name);
  
-     if !ssh_keys.is_empty() {
+     // stringify for logging
