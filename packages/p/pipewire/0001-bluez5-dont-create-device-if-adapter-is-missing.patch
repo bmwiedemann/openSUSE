@@ -1,0 +1,57 @@
+From 67dcc0d29120572048f71fd40ab924a01ddd42fa Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Mon, 17 Jan 2022 19:10:14 +0200
+Subject: [PATCH] bluez5: don't create device if adapter is missing
+
+BlueZ may be missing adapter information for devices in some cases.
+Ignore devices without specified adapter.
+---
+ spa/plugins/bluez5/bluez5-dbus.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/spa/plugins/bluez5/bluez5-dbus.c b/spa/plugins/bluez5/bluez5-dbus.c
+index 2b7f20162..f355b08d3 100644
+--- a/spa/plugins/bluez5/bluez5-dbus.c
++++ b/spa/plugins/bluez5/bluez5-dbus.c
+@@ -1470,6 +1470,15 @@ static int device_update_props(struct spa_bt_device *device,
+ 	return 0;
+ }
+ 
++static bool device_props_ready(struct spa_bt_device *device)
++{
++	/*
++	 * In some cases, BlueZ device props may be missing part of
++	 * the information required when the interface first appears.
++	 */
++	return device->adapter && device->address;
++}
++
+ bool spa_bt_device_supports_a2dp_codec(struct spa_bt_device *device, const struct a2dp_codec *codec)
+ {
+ 	struct spa_bt_monitor *monitor = device->monitor;
+@@ -3622,6 +3631,9 @@ static void interface_added(struct spa_bt_monitor *monitor,
+ 		device_update_props(d, props_iter, NULL);
+ 		d->reconnect_state = BT_DEVICE_RECONNECT_INIT;
+ 
++		if (!device_props_ready(d))
++			return;
++
+ 		device_update_hw_volume_profiles(d);
+ 
+ 		/* Trigger bluez device creation before bluez profile negotiation started so that
+@@ -3978,6 +3990,12 @@ static DBusHandlerResult filter_cb(DBusConnection *bus, DBusMessage *m, void *us
+ 			spa_log_debug(monitor->log, "Properties changed in device %s", path);
+ 
+ 			device_update_props(d, &it[1], NULL);
++
++			if (!device_props_ready(d))
++				goto finish;
++
++			device_update_hw_volume_profiles(d);
++
+ 			spa_bt_device_add_profile(d, SPA_BT_PROFILE_NULL);
+ 		}
+ 		else if (spa_streq(iface, BLUEZ_MEDIA_ENDPOINT_INTERFACE)) {
+-- 
+GitLab
+

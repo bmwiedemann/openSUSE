@@ -61,7 +61,16 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
+Patch0:         0001-audioconvert-avoid-infinite-loop.patch
+Patch1:         0001-bluez5-handle-missing-device-and-adapter-in-quirks.patch
+Patch2:         0001-jack-remember-last-return-from-jack_get_buffer_size.patch
+Patch3:         0001-pulse-server-show-monitor-sources-with-device_class_monitor.patch
+Patch4:         0001-raop-fix-errno-check.patch
+Patch5:         0001-bluez5-dont-create-device-if-adapter-is-missing.patch
+Patch6:         0001-loop-invoke-immediately-when-loop-is-not-running.patch
+Patch7:         0001-merger-also-reconfigure-when-monitor-changes.patch
+Patch8:         0001-pw-metadata-handle-NULL-props-from-metadata-object.patch
+Patch9:         0001-alsa-improve-rate-selection.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes

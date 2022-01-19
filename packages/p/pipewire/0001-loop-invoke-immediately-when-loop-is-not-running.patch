@@ -1,0 +1,27 @@
+From 6ece5d810ce7090be07d22808f48caef96cb790d Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 18 Jan 2022 20:03:01 +0100
+Subject: [PATCH] loop: invoke immediately when loop is not running
+
+Or else we might never get our callback called or worse, block forever,
+waiting for the response.
+---
+ spa/plugins/support/loop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spa/plugins/support/loop.c b/spa/plugins/support/loop.c
+index 94f4b321f..c8bcc5b08 100644
+--- a/spa/plugins/support/loop.c
++++ b/spa/plugins/support/loop.c
+@@ -187,7 +187,7 @@ loop_invoke(void *object,
+ 	int32_t filled;
+ 	uint32_t avail, idx, offset, l0;
+ 
+-	if (pthread_equal(impl->thread, pthread_self()))
++	if (impl->thread == 0 || pthread_equal(impl->thread, pthread_self()))
+ 		return loop_invoke_inthread(impl, func, seq, data, size, block, user_data);
+ 
+ 	filled = spa_ringbuffer_get_write_index(&impl->buffer, &idx);
+-- 
+GitLab
+

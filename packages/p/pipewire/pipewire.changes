@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jan 19 16:49:42 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add several more patches from upstream 
+- BlueZ may be missing adapter information for devices in some cases.
+  Ignore devices without specified adapter:
+  * 0001-bluez5-dont-create-device-if-adapter-is-missing.patch
+- Fix a case when pipewwire could never call callbacks or even
+  block forever when loop is not running:
+  * 0001-loop-invoke-immediately-when-loop-is-not-running.patch
+- Reconfigure when monitor changes
+  * 0001-merger-also-reconfigure-when-monitor-changes.patch
+- Handle NULL props from metadata object
+  * 0001-pw-metadata-handle-NULL-props-from-metadata-object.patch
+- Improve rate selection so we don't select an invalid rate when
+  the default is set or the card is already opened in an
+  unsupported rate:
+  * 0001-alsa-improve-rate-selection.patch
+
+-------------------------------------------------------------------
+Fri Jan 14 16:34:05 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add several patches from upstream
+- Avoid an infinite loop when enumerating params of the converter:
+  * 0001-audioconvert-avoid-infinite-loop.patch
+- When the device or adapter is NULL, skip the quirk checks instead
+  of crashing:
+  * 0001-bluez5-handle-missing-device-and-adapter-in-quirks.patch
+- Remember the last returned value from jack_get_buffer_size and
+  only emit a buffersize change event when something new is
+  configured. This fixes startup of jconvolver.
+  * 0001-jack-remember-last-return-from-jack_get_buffer_size.patch
+- Better emulation of pulseaudio which shows monitor sources with
+  device.class=monitor so now pipewire does that too:
+  * 0001-pulse-server-show-monitor-sources-with-device_class_monitor.patch
+- Fix an errno check:
+  * 0001-raop-fix-errno-check.patch
+
+-------------------------------------------------------------------
+Wed Jan 12 12:48:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Added more baselibs packages and their dependencies
+
+-------------------------------------------------------------------
 Wed Jan  5 16:23:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.43:
