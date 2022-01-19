@@ -208,4 +208,41 @@
   * Refactor `BenchmarkInstance` (#1148)</comment>
     <requestid>918664</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b85d108e44d30866158181fb71ae2fff</srcmd5>
+    <version>1.6.1</version>
+    <time>1642633922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1:
+  * Creating release commit for v1.6.1
+  * Destructor not returning is expected in some cases (#1316)
+  * Address c4267 warning on MSVC (#1315)
+  * Fix `-DBENCHMARK_ENABLE_INSTALL=OFF` (Fixes #1275) (#1305)
+  * Avoid errors due to &quot;default label in switch which covers all enumeration values&quot; in Windows codepath (#1302)
+  * update googletest to latest release tag 1.11.0 (#1301)
+  * clang-tidy: readability-redundant and performance (#1298)
+  * Update user_guide.md (#1296)
+  * Fix broken link to Setup/Teardown section (#1291)
+  * Add clang-tidy check (#1290)
+  * compare.py: compute and print 'OVERALL GEOMEAN' aggregate (#1289)
+  * remove long-defunct cli parameter
+  * lose some build warnings
+  * Disable clang-tidy (unused-using-decls) (#1287)
+  * disable lint check where we know it'd fail (#1286)
+  * Add Setup/Teardown option on Benchmark. (#1269)
+  * Googletest renamed master to main today. (#1285)
+  * Remove bazelbuild/rules_cc dependency (#1283)
+  * Support for building with LLVM clang-10/clang-11 on Windows. (#1227)
+  * Fix dependency typo and unpin cibuildwheel version in wheel building … (#1263)
+  * check clang format on pull requests and merges (#1281)
+  * format tests with clang-format (#1282)
+  * clang-format Google on {src/,include/} (#1280)
+  * Fix warning with MacOS (#1276)
+  * Fixed typo in doc:  s/marcro/macro (#1274)
+  * Fix error with Fix Werror=old-style-cast  (#1272)
+  * Fix error Wshorten-64-to-32 (#1273)
+  * [cleanup] Change `== &quot;&quot;` to `.empty()` on string to avoid clang-tidy warnings (#1271)
+  * Fix un-initted error in test and fix change the API previously proposed to use std::string instead of raw char* (#1266)</comment>
+    <requestid>946943</requestid>
+  </revision>
 </revisionlist>

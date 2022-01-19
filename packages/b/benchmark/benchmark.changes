@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Jan 17 11:58:46 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.1:
+  * Creating release commit for v1.6.1
+  * Destructor not returning is expected in some cases (#1316)
+  * Address c4267 warning on MSVC (#1315)
+  * Fix `-DBENCHMARK_ENABLE_INSTALL=OFF` (Fixes #1275) (#1305)
+  * Avoid errors due to "default label in switch which covers all enumeration values" in Windows codepath (#1302)
+  * update googletest to latest release tag 1.11.0 (#1301)
+  * clang-tidy: readability-redundant and performance (#1298)
+  * Update user_guide.md (#1296)
+  * Fix broken link to Setup/Teardown section (#1291)
+  * Add clang-tidy check (#1290)
+  * compare.py: compute and print 'OVERALL GEOMEAN' aggregate (#1289)
+  * remove long-defunct cli parameter
+  * lose some build warnings
+  * Disable clang-tidy (unused-using-decls) (#1287)
+  * disable lint check where we know it'd fail (#1286)
+  * Add Setup/Teardown option on Benchmark. (#1269)
+  * Googletest renamed master to main today. (#1285)
+  * Remove bazelbuild/rules_cc dependency (#1283)
+  * Support for building with LLVM clang-10/clang-11 on Windows. (#1227)
+  * Fix dependency typo and unpin cibuildwheel version in wheel building … (#1263)
+  * check clang format on pull requests and merges (#1281)
+  * format tests with clang-format (#1282)
+  * clang-format Google on {src/,include/} (#1280)
+  * Fix warning with MacOS (#1276)
+  * Fixed typo in doc:  s/marcro/macro (#1274)
+  * Fix error with Fix Werror=old-style-cast  (#1272)
+  * Fix error Wshorten-64-to-32 (#1273)
+  * [cleanup] Change `== ""` to `.empty()` on string to avoid clang-tidy warnings (#1271)
+  * Fix un-initted error in test and fix change the API previously proposed to use std::string instead of raw char* (#1266)
+  * use docker container for ubuntu-16.04 builds (#1265)
+  * [RFC] Adding API for setting/getting benchmark_filter flag? (#1254)
+  * Allow template arguments to be specified directly on the BENCHMARK macro (#1262)
+  * Added Doxygen support. (#1228)
+  * Fix -Wdeprecated-declarations warning once more. (#1256)
+  * cmake: allow to use package config from build directory
+  * cmake: make package config relocatable
+  * GoogleTest.cmake.in: mention BENCHMARK_USE_BUNDLED_GTEST
+  * GoogleTest.cmake.in: immediately error-out after failure message, Closes #1255
+  * Introduce additional memory metrics (#1238)
+  * Fix -Wdeprecated-declarations warning triggered by clang-cl. (#1245)
+  * Cmake: options for controlling werror, disable werror for PGI compilers (#1246)
+  * cmake: eliminate redundant `target_include_directories` (#1242)
+  * Update policy to match reality
+  * Fix mention of --benchmarks in comment (#1229)
+  * Added support of packaged GTest for running unit tests. (#1226)
+  * Optimized docs installation (#1225)
+  * Remove unused parameter from lambda. (#1223)
+  * add  to final releasing step
+  * bump version to 1.6 in preparation for release
+  * COnsole reporter: if statistic produces percents, format it as such (#1221)
+  * Introduce Coefficient of variation aggregate (#1220)
+  * Statistics: add support for percentage unit in addition to time (#1219)
+  * report.py: adjust expected u-test values for tests
+  * CMake: add forgotten include(FeatureSummary) into FindPFM.cmake to fix build
+  * replace #warning with #pragma message  (#1216)
+  * force cmake version to 3.5.1
+  * [NFC] PFM: actually report package as found, and advertise description
+  * Fix links to further doc in user_guide.md (#1215)
+  * Introduce accessors for currently public data members (threads and thread_index) (#1208)
+  * Fix a -Wunreachable-code-aggressive warning (#1214)
+  * Set theme jekyll-theme-minimal
+  * wrap things that look like tags but aren't with `{% raw %}`
+  * install docs folder when installing library (#1212)
+  * add .DS_Store to .gitignore
+  * refactor the documentation to minimise `README.md` (#1211)
+  * preparing v1.5.6 release
+  * Set theme jekyll-theme-modernist
+  * so much for googletest not failing any more
+  * turn back on strict mode for googletest as it no longer breaks
+  * Change the default value of `--benchmark_filter` from "." to <empty> (#1207)
+  * Remove dead code from PredictNumItersNeeded (#1206)
+  * downgrade warnings for googletest (#1203)
+  * Add wheel and sdist building action to GH Workflow (#1180)
+  * add g++ to sanitizer buildbots (#1197)
+  * Don't return a reference when the callers all expect pointers.
+  * fix clang-tidy warnings (#1195)
+  * Fix typos (#1194)
+  * Fix type warning on certain compilers (#1193)
+  * Use C++11 atomic_signal_fence for ClobberMemory (#1190)
+  * Bazel qnx (#1192)
+  * Deduplicate test function name in python bindings example (#1189)
+  * prefix VLOG (#1187)
+  * prefix macros to avoid clashes (#1186)
+  * Move flags inside the `benchmark` namespace (#1185)
+  * Add missing trailing commas (#1182)
+  * Provide helpers to create integer lists for the given ranges. (#1179)
+  * benchmark_runner.h: Remove superfluous semi colon (#1178)
+
+-------------------------------------------------------------------
 Mon Sep 13 08:40:20 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.5:

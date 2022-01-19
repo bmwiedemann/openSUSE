@@ -1,7 +1,7 @@
 #
 # spec file for package benchmark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  lib%{name}
 %define sover   1
 Name:           benchmark
-Version:        1.5.5
+Version:        1.6.1
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
@@ -69,6 +69,8 @@ sed -e 's|libdir=${prefix}/lib|libdir=${prefix}/%{_lib}|' \
 %cmake_install
 # dont ship debug stuff
 rm -rf %{buildroot}%{_libexecdir}/debug
+# doc will be installed in different location
+rm -rf %{buildroot}%{_datadir}/doc/benchmark
 
 %check
 # path needs to be exported otherwise unit tests will fail
@@ -86,7 +88,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{_builddir}/%{name}-%{version}/build/sr
 
 %files devel
 %license LICENSE
-%doc README.md AUTHORS
+%doc README.md AUTHORS docs/*
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*.cmake
 %{_libdir}/pkgconfig/%{name}.pc
