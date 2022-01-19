@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sun Jan 16 12:26:25 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.1 (bsc#1012628).
+- workqueue: Fix unbind_workers() VS wq_worker_running() race
+  (bsc#1012628).
+- workqueue: Fix unbind_workers() VS wq_worker_sleeping() race
+  (bsc#1012628).
+- staging: r8188eu: switch the led off during deinit
+  (bsc#1012628).
+- bpf: Fix out of bounds access from invalid *_or_null type
+  verification (bsc#1012628).
+- Bluetooth: btusb: Add one more Bluetooth part for the Realtek
+  RTL8852AE (bsc#1012628).
+- Bluetooth: btusb: Fix application of sizeof to pointer
+  (bsc#1012628).
+- Bluetooth: btusb: fix memory leak in
+  btusb_mtk_submit_wmt_recv_urb() (bsc#1012628).
+- Bluetooth: btusb: enable Mediatek to support AOSP extension
+  (bsc#1012628).
+- Bluetooth: btusb: Add the new support IDs for WCN6855
+  (bsc#1012628).
+- Bluetooth: btusb: Add one more Bluetooth part for WCN6855
+  (bsc#1012628).
+- Bluetooth: btusb: Add two more Bluetooth parts for WCN6855
+  (bsc#1012628).
+- Bluetooth: btusb: Add support for Foxconn MT7922A (bsc#1012628).
+- Bluetooth: btintel: Fix broken LED quirk for legacy ROM devices
+  (bsc#1012628).
+- Bluetooth: btusb: Add support for Foxconn QCA 0xe0d0
+  (bsc#1012628).
+- Bluetooth: bfusb: fix division by zero in send path
+  (bsc#1012628).
+- ARM: dts: exynos: Fix BCM4330 Bluetooth reset polarity in I9100
+  (bsc#1012628).
+- USB: core: Fix bug in resuming hub's handling of wakeup requests
+  (bsc#1012628).
+- USB: Fix "slab-out-of-bounds Write" bug in
+  usb_hcd_poll_rh_status (bsc#1012628).
+- ath11k: Fix buffer overflow when scanning with extraie
+  (bsc#1012628).
+- mmc: sdhci-pci: Add PCI ID for Intel ADL (bsc#1012628).
+- Bluetooth: add quirk disabling LE Read Transmit Power
+  (bsc#1012628).
+- Bluetooth: btbcm: disable read tx power for some Macs with
+  the T2 Security chip (bsc#1012628).
+- Bluetooth: btbcm: disable read tx power for MacBook Air 8,1
+  and 8,2 (bsc#1012628).
+- veth: Do not record rx queue hint in veth_xmit (bsc#1012628).
+- mfd: intel-lpss: Fix too early PM enablement in the ACPI
+  ->probe() (bsc#1012628).
+- mfd: intel-lpss-pci: Fix clock speed for 38a8 UART
+  (bsc#1012628).
+- can: gs_usb: fix use of uninitialized variable, detach device
+  on reception of invalid USB data (bsc#1012628).
+- can: isotp: convert struct tpcon::{idx,len} to unsigned int
+  (bsc#1012628).
+- can: gs_usb: gs_can_start_xmit(): zero-initialize
+  hf->{flags,reserved} (bsc#1012628).
+- random: fix data race on crng_node_pool (bsc#1012628).
+- random: fix data race on crng init time (bsc#1012628).
+- platform/x86/intel: hid: add quirk to support Surface Go 3
+  (bsc#1012628).
+- drm/i915: Avoid bitwise vs logical OR warning in
+  snb_wm_latency_quirk() (bsc#1012628).
+- staging: greybus: fix stack size warning with UBSAN
+  (bsc#1012628).
+- parisc: Fix pdc_toc_pim_11 and pdc_toc_pim_20 definitions
+  (bsc#1012628).
+  Disabled:
+  patches.suse/Bluetooth-Apply-initial-command-workaround-for-more-.patch
+  as it conflicts with 95655456e7ce. Asked in bsc#1193124.
+- commit 13f032a
+
+-------------------------------------------------------------------
+Thu Jan 13 09:57:45 CET 2022 - mkubecek@suse.cz
+
+- Update patches.suse/vfs-add-super_operations-get_inode_dev
+  Copy an updated version from SLE15-SP4 with one minor refresh.
+- commit c02e2ab
+
+-------------------------------------------------------------------
+Thu Jan 13 07:07:24 CET 2022 - jgross@suse.com
+
+- Refresh
+  patches.suse/0001-usb-Add-Xen-pvUSB-protocol-description.patch.
+- Refresh
+  patches.suse/0002-usb-Introduce-Xen-pvUSB-frontend-xen-hcd.patch.
+- commit 8950040
+
+-------------------------------------------------------------------
+Wed Jan 12 01:57:03 CET 2022 - mkubecek@suse.cz
+
+- update patches metadata
+- update upstream references
+  - patches.suse/media-Revert-media-uvcvideo-Set-unique-vdev-name-bas.patch
+  - patches.suse/mwifiex-Fix-skb_over_panic-in-mwifiex_usb_recv.patch
+  - patches.suse/random-fix-crash-on-multiple-early-calls-to-add_bootloader_randomness.patch
+- commit 949bbaa
+
+-------------------------------------------------------------------
 Mon Jan 10 08:26:30 CET 2022 - jslaby@suse.cz
 
 - Refresh
