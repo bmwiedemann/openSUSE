@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 17 04:33:26 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 3.1.0.
+  * Mostly under the hood refactoring and cleanup.
+- Update for version 3.0.0.
+  * Add support for quadratic objectives.
+  * Add support for the box cone.
+  * Improve reliability and robustness of acceleration.
+  * Improve PSD cone projection.
+  * Adapt the scale parameter on the fly.
+  * Many under the hood stability and speed improvements.
+
+-------------------------------------------------------------------
 Sat Sep 18 10:39:23 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.1.4.

@@ -1,7 +1,7 @@
 #
 # spec file for package scs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           scs
-Version:        2.1.4
+Version:        3.1.0
 Release:        0
 Summary:        Numerical package for solving large-scale convex cone problems
 License:        MIT
 URL:            https://github.com/cvxgrp/scs
-Source:         https://github.com/cvxgrp/scs/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/cvxgrp/scs/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  lapack-devel
 BuildRequires:  make
 
