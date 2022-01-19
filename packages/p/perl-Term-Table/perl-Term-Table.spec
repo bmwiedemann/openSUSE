@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Term-Table
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Term-Table
-Version:        0.015
-Release:        0
 %define cpan_name Term-Table
+Name:           perl-Term-Table
+Version:        0.016
+Release:        0
 Summary:        Format a header and rows into a table
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Importer) >= 0.024
@@ -43,11 +41,11 @@ This is used by some failing tests to provide diagnostics about what has
 gone wrong. This module is able to generic format rows of data into tables.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -58,7 +56,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc appveyor.yml Changes README README.md
 %license LICENSE
 
