@@ -1,0 +1,22 @@
+Index: xrootd-4.12.8/packaging/common/cmsd@.service
+===================================================================
+--- xrootd-4.12.8.orig/packaging/common/cmsd@.service
++++ xrootd-4.12.8/packaging/common/cmsd@.service
+@@ -6,6 +6,17 @@ Requires=network-online.target
+ After=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=/usr/bin/cmsd -l /var/log/xrootd/cmsd.log -c /etc/xrootd/xrootd-%i.cfg -k fifo -s /var/run/xrootd/cmsd-%i.pid -n %i
+ User=xrootd
+ Group=xrootd

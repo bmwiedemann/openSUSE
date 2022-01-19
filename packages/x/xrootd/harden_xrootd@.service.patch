@@ -1,0 +1,22 @@
+Index: xrootd-4.12.8/packaging/common/xrootd@.service
+===================================================================
+--- xrootd-4.12.8.orig/packaging/common/xrootd@.service
++++ xrootd-4.12.8/packaging/common/xrootd@.service
+@@ -6,6 +6,17 @@ Requires=network-online.target
+ After=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=/usr/bin/xrootd -l /var/log/xrootd/xrootd.log -c /etc/xrootd/xrootd-%i.cfg -k fifo -s /var/run/xrootd/xrootd-%i.pid -n %i
+ User=xrootd
+ Group=xrootd

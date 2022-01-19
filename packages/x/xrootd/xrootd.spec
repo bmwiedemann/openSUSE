@@ -36,6 +36,10 @@ Group:          System/Daemons
 URL:            http://xrootd.org/
 Source0:        https://github.com/xrootd/xrootd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      xrootd-rpmlintrc
+Patch0:	harden_cmsd@.service.patch
+Patch1:	harden_frm_purged@.service.patch
+Patch2:	harden_frm_xfrd@.service.patch
+Patch3:	harden_xrootd@.service.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  fdupes

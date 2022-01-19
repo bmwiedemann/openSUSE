@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 10 12:39:14 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_cmsd@.service.patch
+  * harden_frm_purged@.service.patch
+  * harden_frm_xfrd@.service.patch
+  * harden_xrootd@.service.patch
+
+-------------------------------------------------------------------
 Fri Jul  2 00:31:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.12.8:
