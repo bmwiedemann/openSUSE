@@ -815,4 +815,13 @@
   * s4: clean up pedantic static analysis warnings</comment>
     <requestid>941804</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>d2805a44b7ec745de4532dd8f099e974</srcmd5>
+    <version>21.12.00</version>
+    <time>1642633936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update build dependencies (add zlib)
+</comment>
+    <requestid>947363</requestid>
+  </revision>
 </revisionlist>
