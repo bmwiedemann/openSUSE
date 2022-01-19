@@ -477,4 +477,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>942830</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>b226e7276d639ad355fc8e29ee15e32a</srcmd5>
+    <version>5.10.1</version>
+    <time>1642633915</time>
+    <user>dimstar_suse</user>
+    <comment>- Unpin black for example project (forwarded request 946837 from bnavigator)</comment>
+    <requestid>946838</requestid>
+  </revision>
 </revisionlist>

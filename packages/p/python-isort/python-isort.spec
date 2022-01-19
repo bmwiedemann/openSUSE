@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-isort%{psuffix}
 Version:        5.10.1
@@ -37,7 +38,7 @@ Source:         https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros >= 20210127.3a18043
+BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -52,6 +53,7 @@ BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module natsort}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
 BuildRequires:  %{python_module poetry}
@@ -59,7 +61,6 @@ BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  git
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
@@ -86,8 +87,10 @@ hypothesis.settings.register_profile(
 )
 " >> tests/conftest.py
 
-# unpin natsort in example plugin
+# unpin natsort in example plugin -- https://github.com/PyCQA/isort/issues/1873
 sed -i 's/natsort = "^/natsort = ">=/' example_isort_sorting_plugin/pyproject.toml
+# unpin black in example plugin
+sed -i 's/black = "^/black = ">=/' example_isort_formatting_plugin/pyproject.toml
 
 %build
 %pyproject_wheel
@@ -109,8 +112,8 @@ ignoretests+=" --ignore tests/benchmark"
 # test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 donttest="(test_setting_combinations and test_isort_is_idempotent)"
-# requirementslib is not available yet for python 3.9 or greater, 
-# it's a deprecated finder for isort so we drop it
+# The package python-requirementslib is not available anymore.
+# It's a deprecated finder for isort so we drop it
 # https://github.com/sarugaku/requirementslib/issues/288
 donttest+=" or (test_deprecated_finders and test_pipfile_finder)"
 
