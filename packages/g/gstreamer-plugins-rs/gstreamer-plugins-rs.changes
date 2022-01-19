@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 19 14:17:20 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a BuildRequires: pkgconfig(libwebp) to fix loading
+  libgstrswebp.so which was failing with an `undefined symbol:
+  WebPAnimDecoderDelete` error.
+
+-------------------------------------------------------------------
 Tue Jan 18 09:04:54 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Increase the disk constraint since i586 builds take ~15.6 GB,
