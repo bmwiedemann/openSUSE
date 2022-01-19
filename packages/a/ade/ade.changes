@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 12 15:45:28 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't leave an empty %check section if building without tests
+
+-------------------------------------------------------------------
 Tue Sep 10 18:55:12 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.1.1f
+  * Fixed warning which happens with old compilers
+    (which are still supported in OpenCV)
+- Update to version 0.1.1e
+  * Bugfix: Make size() method to return size_t value
 - Drop upstream Silence_redundant-move_warning.patch
 - Use -ffat-lto-objects to provide a proper static library.
 - Run tests by default
@@ -14,4 +23,4 @@ Mon Aug 26 09:24:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Jul  2 21:27:53 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-- Initial package version
+- Initial package version 0.1.1d

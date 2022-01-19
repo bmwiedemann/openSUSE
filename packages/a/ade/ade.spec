@@ -1,7 +1,7 @@
 #
 # spec file for package ade
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Graph construction, manipulation, and processing framework
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://opencv.org/
+URL:            https://opencv.org/
 Source0:        https://github.com/opencv/ade/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake > 3.2
@@ -62,7 +62,6 @@ sed -i -e 's@ DESTINATION lib@ DESTINATION ${CMAKE_INSTALL_LIBDIR}@' sources/ade
   %{?with_docs:-DBUILD_ADE_DOCUMENTATION=ON} \
   %{?with_tests:-DGTEST_ROOT:PATH=%{_prefix} -DENABLE_ADE_TESTING=ON} \
 
-
 %cmake_build
 
 %install
@@ -71,8 +70,8 @@ sed -i -e 's@ DESTINATION lib@ DESTINATION ${CMAKE_INSTALL_LIBDIR}@' sources/ade
 rm %{buildroot}%{_bindir}/ade-tests
 %endif
 
-%check
 %if %{with tests}
+%check
 %ctest
 %endif
 

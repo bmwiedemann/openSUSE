@@ -16,4 +16,12 @@
     <comment>Fix build with LTO, update</comment>
     <requestid>729952</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>82163f70191ea214652a9394a6fbb156</srcmd5>
+    <version>0.1.1f</version>
+    <time>1642633947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947416</requestid>
+  </revision>
 </revisionlist>
