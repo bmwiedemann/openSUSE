@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Jan 07 19:56:19 UTC 2022 - jonathan@jontech.app
+
+- Update to version 0.0.12:
+ * Fix the long standing distinguishers associated with agl's Elligator2
+   implementation (Thanks to Loup Vaillant).
+ * Replace the extra25519 import with an internal package.
+ * Update the Azure TLS certificate digest (Thanks to Philipp Winter).
+ * Make the -unsafeLogging command line switch work.
+ * Bump the version of the utls fork, add the Chrome 83 fingerprint.
+
+-------------------------------------------------------------------
+Mon Dec 13 02:51:32 UTC 2021 - Jonathan Papineau <jonathan@jontech.app>
+
+- Create obfs4 package
