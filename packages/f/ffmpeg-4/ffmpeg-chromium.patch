@@ -1,0 +1,41 @@
+commit	95aab0fd83619408995720ce53d7a74790580220
+author	liberato@chromium.org <liberato@chromium.org>	Thu Jul 08 02:01:22 2021
+committer	liberato@chromium.org <liberato@chromium.org>	Thu Jul 08 02:01:22 2021
+tree	ac725b5e2c548c8142aa7096d8184d87d3876a49
+parent	e073b7a22e4993e0a7cab80a42a21524e5349f95
+
+Add av_stream_get_first_dts for Chromium
+
+diff --git a/libavformat/avformat.h b/libavformat/avformat.h
+index cd7b0d9..b4a6dce 100644
+--- a/libavformat/avformat.h
++++ b/libavformat/avformat.h
+@@ -1010,6 +1010,10 @@
+  */
+ int64_t    av_stream_get_end_pts(const AVStream *st);
+ 
++// Chromium: We use the internal field first_dts vvv
++int64_t    av_stream_get_first_dts(const AVStream *st);
++// Chromium: We use the internal field first_dts ^^^
++
+ #define AV_PROGRAM_RUNNING 1
+ 
+ /**
+diff --git a/libavformat/utils.c b/libavformat/utils.c
+index de7580c..0ef0fe5 100644
+--- a/libavformat/utils.c
++++ b/libavformat/utils.c
+@@ -121,6 +121,13 @@
+         return AV_NOPTS_VALUE;
+ }
+ 
++// Chromium: We use the internal field first_dts vvv
++int64_t av_stream_get_first_dts(const AVStream *st)
++{
++  return st->first_dts;
++}
++// Chromium: We use the internal field first_dts ^^^
++
+ struct AVCodecParserContext *av_stream_get_parser(const AVStream *st)
+ {
+     return st->parser;
