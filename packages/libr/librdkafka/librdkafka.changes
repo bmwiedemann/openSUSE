@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  4 22:51:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Added ssl.ca.pem to add CA certificate by PEM string
+  * Upon quick repeated leader changes the transactional producer could receive
+    an OUT_OF_ORDER_SEQUENCE error from the broker 
+  * The transactional producer could stall during a transaction if the transaction
+    coordinator changed
+
+-------------------------------------------------------------------
 Sat Oct 16 10:20:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:
