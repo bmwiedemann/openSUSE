@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 12 20:25:08 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.37.2:
+  * Fix a bug introduced in version 3.35.0 (2021-03-12) that can
+    cause database corruption if a SAVEPOINT is rolled back while
+    in PRAGMA temp_store=MEMORY mode, and other changes are made,
+    and then the outer transaction commits
+  * Fix a long-standing problem with ON DELETE CASCADE and ON 
+    UPDATE CASCADE in which a cache of the bytecode used to
+    implement the cascading change was not being reset following a
+    local DDL change
+
+-------------------------------------------------------------------
 Sun Jan  2 12:12:55 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.37.1:
