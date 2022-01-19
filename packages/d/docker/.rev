@@ -1145,4 +1145,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   - 0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch</comment>
     <requestid>932375</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>587c6b06b4f682ba701bf2b172197959</srcmd5>
+    <version>20.10.12_ce</version>
+    <time>1642633918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946899</requestid>
+  </revision>
 </revisionlist>

@@ -42,8 +42,8 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 847da184ad50
-%define git_commit_epoch 1637194919
+%define git_version 459d0dfbbb51
+%define git_commit_epoch 1639303911
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
@@ -56,10 +56,10 @@
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.11_ce
+Version:        20.10.12_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.11-ce
+%define nice_version 20.10.12-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0

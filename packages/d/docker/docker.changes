@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 17 07:23:01 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.12-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#201012>.
+
+-------------------------------------------------------------------
 Thu Nov 18 08:35:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
-- Update to Docker 20.10.11-ce. See upstream changelog in the packaged
-  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1192814 CVE-2021-41190
+- Update to Docker 20.10.11-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#201011>.
+  bsc#1192814 CVE-2021-41190
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
@@ -15,8 +22,8 @@ Thu Nov 18 08:35:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 -------------------------------------------------------------------
 Wed Oct  6 02:51:16 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
-- Update to Docker 20.10.9-ce. See upstream changelog in the packaged
-  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1191355
+- Update to Docker 20.10.9-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#20109>. bsc#1191355
   CVE-2021-41089 bsc#1191015 CVE-2021-41091 bsc#1191434
   CVE-2021-41092 bsc#1191334 CVE-2021-41103 bsc#1191121
 - Rebase patches:
@@ -43,8 +50,8 @@ Mon May  3 13:24:55 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 -------------------------------------------------------------------
 Thu Apr 15 05:23:20 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
-- Update to Docker 20.10.6-ce. See upstream changelog in the packaged
-  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1184768
+- Update to Docker 20.10.6-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#20106>. bsc#1184768
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
@@ -57,8 +64,8 @@ Thu Apr 15 05:23:20 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 -------------------------------------------------------------------
 Wed Mar  3 00:49:58 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
-- Update to Docker 20.10.5-ce. See upstream changelog in the packaged
-  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1182947
+- Update to Docker 20.10.5-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#20105>. bsc#1182947
 - Update runc dependency to 1.0.0~rc93.
 - Remove upstreamed patches:
   - cli-0001-Rename-bin-md2man-to-bin-go-md2man.patch
