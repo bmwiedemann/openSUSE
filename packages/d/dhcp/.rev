@@ -1168,4 +1168,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1194722</comment>
   </revision>
+  <revision rev="130" vrev="6">
+    <srcmd5>998eaa4a9e114f38646a3faf095fda9c</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1642633921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946929</requestid>
+  </revision>
 </revisionlist>

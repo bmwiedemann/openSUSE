@@ -1,7 +1,7 @@
 #
 # spec file for package dhcp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -274,7 +274,7 @@ cat bind/install.log
 : building dhcp sources
 %make_build
 %if %{with sysusers}
-%sysusers_generate_pre %{SOURCE47} dhcp-server
+%sysusers_generate_pre %{SOURCE47} dhcp-server dhcp-user.conf
 %endif
 
 %check

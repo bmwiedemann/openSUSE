@@ -1,10 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 17 08:52:07 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop PrivateDevices and ProtectClock hardenings. They clash with
+  the chroot logic (bsc#1194722)
+
+-------------------------------------------------------------------
+Fri Jan 14 13:19:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
 Tue Oct 26 11:58:59 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Add a fallback definition for %make_build to fix build on SLE-12.
 - Handle sysusers with a bcond to improve readability and simplify
   removal once we don't have to support SLE-12 anymore.
 - bsc#1192020: Drop the obsolete dependency on "group(nogroup)".
+
+-------------------------------------------------------------------
+Mon Sep 13 13:50:50 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * dhcpd.service
+  * dhcpd6.service
+  * dhcrelay.service
+  * dhcrelay6.service
 
 -------------------------------------------------------------------
 Thu Aug  5 11:33:54 UTC 2021 - Reinhard Max <max@suse.com>
