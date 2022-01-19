@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-kiwi_metainfo_helper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           obs-service-kiwi_metainfo_helper
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Service for substituting various variables in build recipes
 License:        GPL-2.0-or-later
@@ -26,6 +26,10 @@ URL:            https://build.opensuse.org
 Source0:        kiwi_metainfo_helper.service
 Source1:        kiwi_metainfo_helper
 Source2:        README
+# For %%check
+Source3:        test.sh
+Source4:        sles-release-15.4-150400.32.2.x86_64.rpm
+BuildRequires:  diffutils
 Requires:       /usr/bin/find
 Requires:       /usr/bin/grep
 Requires:       /usr/bin/sed
@@ -42,10 +46,12 @@ cp %{SOURCE2} .
 %build
 
 %install
+mkdir -p %{buildroot}%{_prefix}/lib/obs/service/
+install -m 0644 %{SOURCE0} %{buildroot}%{_prefix}/lib/obs/service/
+install -m 0755 %{SOURCE1} %{buildroot}%{_prefix}/lib/obs/service/
 
-mkdir -p %{buildroot}%{_prefix}/lib/obs/service
-install -m 0644 %{SOURCE0} %{buildroot}%{_prefix}/lib/obs/service
-install -m 0755 %{SOURCE1} %{buildroot}%{_prefix}/lib/obs/service
+%check
+sh %{SOURCE3}
 
 %files
 %doc README

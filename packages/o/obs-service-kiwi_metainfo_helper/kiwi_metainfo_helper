@@ -34,6 +34,17 @@ else
 	fi
 fi
 
+# generate %SOURCEURL% based on DISTURL with a special case for build.suse.de
+prj=$(echo ${DISTURL} | cut -d/ -f4)
+localpath=$(echo ${DISTURL} | cut -d/ -f6-)
+rev=$(echo ${localpath} | cut -d- -f1)
+packagename=$(echo ${localpath} | cut -d- -f2- | cut -d: -f1)
+if [[ "${DISTURL}" == obs://build.suse.de/* ]]; then 
+	SOURCEURL="https://sources.suse.com/${prj}/${packagename}/${rev}/"
+else
+	SOURCEURL="https://$(echo ${DISTURL} | cut -d/ -f3)/package/show/${prj}/${packagename}?rev=${rev}"
+fi
+
 # Print all rpm files which contain os-release
 find_release_rpms() {
 	find ./repos -name \*-release\*.rpm | while read rpm; do
@@ -112,5 +123,6 @@ fi
 
 sed -i"" \
     -e "s#%DISTURL%#${DISTURL}#g" \
+    -e "s#%SOURCEURL%#${SOURCEURL}#g" \
     -e "s/%RELEASE%/${RELEASE}/g" \
     -e "s/%BUILDTIME%/$(date --utc +%FT%T.%NZ)/g" "${files[@]}"

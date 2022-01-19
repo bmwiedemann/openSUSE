@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 17 09:57:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add test suite (test.sh, sles-release-15.4-150400.32.2.x86_64.rpm)
+- Fix SOURCEURL for multibuild DISTURLs
+- Set SOURCEURL also in chroot builds
+
+-------------------------------------------------------------------
+Thu Jan 13 09:32:09 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate SOURCEURL based on DISTURL.
+- Bump version to 0.4
+
+-------------------------------------------------------------------
 Wed Jun  2 14:23:53 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Provide various modified spellings of PRETTY_NAME useful for
