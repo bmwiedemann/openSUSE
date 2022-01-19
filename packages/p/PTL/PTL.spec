@@ -1,7 +1,7 @@
 #
 # spec file for package PTL
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 2
 %define libname libptl%{sover}
 Name:           PTL
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        C++11 mutilthreading tasking system
 License:        MIT
