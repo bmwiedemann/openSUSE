@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 16 22:53:34 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.22.0+git.1642212208.d5630bf (bsc#1194613):
+  * Remove another flakey test
+  * Remove all traces of tox
+  * Update next Fedora to 35
+  * Delete a test which is probably flakey for real
+  * Bump recommended development environment to fedora 34
+  * Use yamllint on all the configuration files
+  * Add annotations to GitHub workflows
+  * No longer use --recursive for isort
+  * Update formatting for new black
+  * Establish a weekly task for future fedora
+- Remove upstreamed patches:
+  - remove_mock.patch
+
+-------------------------------------------------------------------
 Tue Aug 10 12:49:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add hypothesis_settings.patch to allow longer timeouts in OBS.

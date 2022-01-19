@@ -1,10 +1,10 @@
 ---
- tests/test_enumerate.py |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/test_enumerate.py |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 --- a/tests/test_enumerate.py
 +++ b/tests/test_enumerate.py
-@@ -90,7 +90,7 @@ class TestEnumerator(object):
+@@ -91,7 +91,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
@@ -13,7 +13,7 @@
      def test_match_subsystem(self, context, subsystem):
          """
          Subsystem match matches devices w/ correct subsystem.
-@@ -126,7 +126,7 @@ class TestEnumerator(object):
+@@ -129,7 +129,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
@@ -22,3 +22,30 @@
      def test_match_subsystem_nomatch_complete(self, context, subsystem):
          """
          Test that w/ respect to the universe of devices returned by
+@@ -147,7 +147,7 @@ class TestEnumerator(object):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SYSNAME_STRATEGY)
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=500)
+     def test_match_sys_name(self, context, sysname):
+         """
+         A sysname lookup only gives devices with that sysname.
+@@ -221,7 +221,7 @@ class TestEnumeratorMatchCombinations(ob
+             unique_by=lambda p: p[0],
+         ),
+     )
+-    @settings(max_examples=2)
++    @settings(max_examples=2, deadline=500)
+     def test_combined_property_matches(self, context, ppairs):
+         """
+         Test for behaviour as observed in #1
+@@ -246,7 +246,7 @@ class TestEnumeratorMatchCombinations(ob
+         _SYSNAME_STRATEGY,
+         _MATCH_PROPERTY_STRATEGY,
+     )
+-    @settings(max_examples=10)
++    @settings(max_examples=10, deadline=500)
+     def test_match(self, context, subsystem, sysname, ppair):
+         """
+         Test that matches from different categories are a conjunction.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyudev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyudev
-Version:        0.22.0
+Version:        0.22.0+git.1642212208.d5630bf
 Release:        0
 Summary:        Udev bindings for Python
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            http://pyudev.readthedocs.org/
-Source0:        https://files.pythonhosted.org/packages/source/p/pyudev/pyudev-%{version}.tar.gz
+Source0:        pyudev-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM pytest_register_mark.patch gh#pyudev/pyudev#404 mcepl@suse.com
 # Add missing mark registration and register and use another mark
 Patch0:         pytest_register_mark.patch
-# PATCH-FEATURE_UPSTREAM remove_mock.patch gh#pyudev/pyudev#409
-Patch1:         remove_mock.patch
 # PATCH-FIX-OPENSUSE hypothesis_settings.patch mcepl@suse.com
 # tests timeout on OBS
 Patch2:         hypothesis_settings.patch
