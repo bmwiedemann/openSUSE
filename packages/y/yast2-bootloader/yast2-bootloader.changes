@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 17 13:48:12 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast: add support for password protection (jsc#SLE-20928)
+- 4.4.13
+
+-------------------------------------------------------------------
+Mon Jan 17 08:42:08 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Add support for powerpc secure boot (bsc#1192764 jsc#SLE-18271).
+- 4.4.12
+
+-------------------------------------------------------------------
 Thu Dec 23 16:13:08 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Always check tpm device for trusted boot (bsc#1193886)
