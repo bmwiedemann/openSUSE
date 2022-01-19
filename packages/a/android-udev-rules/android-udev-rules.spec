@@ -1,7 +1,7 @@
 #
 # spec file for package android-udev-rules
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20210501
+Version:        20220102
 Release:        0
 Summary:        Android udev rules list aimed to be the most comprehensive on the net
 License:        GPL-3.0-or-later
@@ -40,7 +40,7 @@ and include many suggestions from the Archlinux and Github Communities.
 %autosetup -p1
 
 %build
-%sysusers_generate_pre android-udev.conf adbusers
+%sysusers_generate_pre android-udev.conf adbusers android-udev.conf
 
 %install
 install -D -m 0644 -t %{buildroot}%{_sysusersdir} android-udev.conf
