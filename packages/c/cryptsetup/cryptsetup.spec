@@ -1,7 +1,7 @@
 #
-# spec file for package cryptsetup
+# spec file for package cryptsetup2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define tar_version 2.4.1
+%define tar_version 2.4.3
 %define so_ver 12
 %if 0%{?is_backports}
 Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.4.1
+Version:        2.4.3
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(libargon2)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(openssl)
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 %if 0%{?is_backports}
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -71,7 +71,6 @@ targets. It allows to set up targets to read cryptoloop compatible
 volumes as well as LUKS formatted ones. The package additionally
 includes support for automatically setting up encrypted volumes at boot
 time via the config file %{_sysconfdir}/crypttab.
-
 
 %package ssh
 Summary:        Cryptsetup LUKS2 SSH token
