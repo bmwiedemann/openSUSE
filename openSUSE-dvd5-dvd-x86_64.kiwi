@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220118" schemaversion="4.1">
+<image name="OBS__openSUSE___20220120" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220118</productvar>
+      <productvar name="VERSION">20220120</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220118,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220120,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220118/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220120/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -348,7 +348,9 @@
       <repopackage name="curl"/>
       <repopackage name="cvs"/>
       <repopackage name="cvsps"/>
+      <repopackage name="cyradm"/>
       <repopackage name="cyreal-lobster-cyrillic-fonts"/>
+      <repopackage name="cyrus-imapd"/>
       <repopackage name="cyrus-sasl"/>
       <repopackage name="cyrus-sasl-crammd5"/>
       <repopackage name="cyrus-sasl-digestmd5"/>
@@ -3161,6 +3163,7 @@
       <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
+      <repopackage name="lttng-modules-kmp-default" arch="x86_64"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3236,6 +3239,7 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
+      <repopackage name="mhvtl-kmp-default" arch="x86_64"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
@@ -3619,6 +3623,8 @@
       <repopackage name="perl-Crypt-OpenSSL-RSA"/>
       <repopackage name="perl-Crypt-Rijndael"/>
       <repopackage name="perl-Crypt-SmbHash"/>
+      <repopackage name="perl-Cyrus-IMAP"/>
+      <repopackage name="perl-Cyrus-SIEVE-managesieve"/>
       <repopackage name="perl-Data-Binary"/>
       <repopackage name="perl-Data-Dump"/>
       <repopackage name="perl-Data-OptList"/>
@@ -3712,6 +3718,7 @@
       <repopackage name="perl-Sub-Install"/>
       <repopackage name="perl-Sys-Guestfs" arch="x86_64"/>
       <repopackage name="perl-Term-ReadKey"/>
+      <repopackage name="perl-Term-ReadLine-Gnu"/>
       <repopackage name="perl-Test-Kwalitee"/>
       <repopackage name="perl-Test-Pod"/>
       <repopackage name="perl-Test-Pod-Coverage"/>
@@ -5092,6 +5099,7 @@
       <repopackage name="vacation"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vendor-reset-kmp-default" arch="x86_64"/>
+      <repopackage name="vhba-kmp-default" arch="x86_64"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
