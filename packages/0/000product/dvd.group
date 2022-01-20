@@ -330,7 +330,9 @@
     <package name="curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cvs" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="cvsps" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="cyradm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyreal-lobster-cyrillic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="cyrus-imapd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3274,6 +3276,8 @@
     <package name="perl-Crypt-OpenSSL-Random" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-Rijndael" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="perl-Cyrus-IMAP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Cyrus-SIEVE-managesieve" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-DBD-SQLite" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="perl-DBD-mysql" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-DBI" supportstatus="unsupported"/> <!-- reason: dvd:git -->
@@ -3358,6 +3362,7 @@
     <package name="perl-Sub-Exporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Sub-Install" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-Term-ReadLine-Gnu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Test-Kwalitee" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Test-Pod" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Test-Pod-Coverage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -5331,7 +5336,9 @@
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="monitoring-plugins-cups" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="monitoring-plugins-nagios" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5417,6 +5424,7 @@
     <package name="v4l2loopback-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vendor-reset-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="vhba-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="virt-sandbox" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-guest-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

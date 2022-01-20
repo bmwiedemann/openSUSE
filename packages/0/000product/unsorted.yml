@@ -2618,6 +2618,10 @@ unsorted:
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
+  - cyrus-imapd-devel 
+  - cyrus-imapd-snmp 
+  - cyrus-imapd-snmp-mibs 
+  - cyrus-imapd-utils 
   - cyrus-sasl-32bit: [x86_64] 
   - cyrus-sasl-bdb 
   - cyrus-sasl-bdb-crammd5 
@@ -7602,6 +7606,8 @@ unsorted:
   - jline-javadoc 
   - jline1 
   - jline1-javadoc 
+  - jmdns 
+  - jmdns-javadoc 
   - jmock 
   - jmock-demo 
   - jmock-javadoc 
@@ -10616,6 +10622,7 @@ unsorted:
   - libfdisk-devel-static 
   - libfdisk1-32bit: [x86_64] 
   - libfdk-aac-devel 
+  - libfdk-aac2-32bit: [x86_64] 
   - libfdt-devel 
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
@@ -12392,6 +12399,8 @@ unsorted:
   - libnvidia-container1: [x86_64] 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
+  - libnvme-devel 
+  - libnvme1 
   - libnxml-devel 
   - libnxml0 
   - libnxml0-32bit: [x86_64] 
@@ -15207,7 +15216,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -16047,7 +16056,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
+  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -17536,6 +17545,7 @@ unsorted:
   - obexfs 
   - obexftp 
   - obexftp-devel 
+  - obfs4 
   - objectweb-anttask 
   - objectweb-asm 
   - objectweb-asm-javadoc 
@@ -19875,7 +19885,6 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
-  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -20412,6 +20421,8 @@ unsorted:
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-libjack-0_3-devel 
+  - pipewire-modules-0_3-32bit: [x86_64] 
+  - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
   - pix 
@@ -21440,6 +21451,7 @@ unsorted:
   - python3-libmodulemd 
   - python3-libmount 
   - python3-libmsiecf 
+  - python3-libnvme 
   - python3-libolecf 
   - python3-liborcus 
   - python3-libpamtest 
@@ -23447,6 +23459,7 @@ unsorted:
   - python310-pan-python 
   - python310-pandas 
   - python310-pandas-datareader 
+  - python310-pandas-ext: [x86_64] 
   - python310-pandocfilters 
   - python310-panel 
   - python310-panflute 
@@ -24065,6 +24078,7 @@ unsorted:
   - python310-recommonmark 
   - python310-reconfigure 
   - python310-redbaron 
+  - python310-redfish 
   - python310-redis 
   - python310-regex 
   - python310-relatorio 
@@ -24137,6 +24151,7 @@ unsorted:
   - python310-ruffus 
   - python310-runthis-sphinxext 
   - python310-rustcfg 
+  - python310-s3fs: [x86_64] 
   - python310-s3transfer 
   - python310-sadisplay 
   - python310-samplerate 
@@ -24741,11 +24756,10 @@ unsorted:
   - python36-rarfile 
   - python36-rarfile-doc 
   - python36-raven-aiohttp 
-  - python36-redfish 
   - python36-requests-gssapi 
   - python36-rollbar 
   - python36-rss2email 
-  - python36-s3fs 
+  - python36-s3fs: [i586] 
   - python36-sgmllib3k 
   - python36-sphinx-argparse 
   - python36-starlette 
@@ -42283,7 +42297,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
-  - vhba-kmp-default 
+  - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
