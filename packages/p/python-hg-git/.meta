@@ -1,5 +1,5 @@
 <package name="python-hg-git" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-hg-git"/>
+  <devel project="devel:tools:scm" package="mercurial-extension-hg-git"/>
 </package>

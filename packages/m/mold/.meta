@@ -9,6 +9,6 @@ build time especially in rapid debug-edit-rebuild cycles.
 Here is a performance comparison of GNU gold, LLVM lld, and mold for
 linking final debuginfo-enabled executables of major large programs
 on a simulated 8-core 16-threads machine.</description>
-  <devel project="devel:gcc" package="mold"/>
+  <devel project="devel:tools:compiler" package="mold"/>
   <url>https://github.com/rui314/mold</url>
 </package>

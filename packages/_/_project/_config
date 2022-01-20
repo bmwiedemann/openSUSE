@@ -1015,7 +1015,6 @@ Prefer: mx4j:log4j12-mini
 Prefer: maven-doxia-module-fo:log4j12-mini
 
 Prefer: rpcbind
-Prefer: boo
 Prefer: wicked-service
 Prefer: ant:xerces-j2
 Prefer: dhcp-client:dhcp
@@ -1659,11 +1658,9 @@ Macros:
 # %{nil}
 :Macros
 
-
 # UsrMerge - 2021-05-25
 %define usrmerged 1
 Macros:
 %usrmerged 1
 :Macros
-
 
