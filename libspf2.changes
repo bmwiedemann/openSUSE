@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 08:35:18 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.2.11 - no changelog available, bugfixes
+- Drop 0001-spf_compile.c-Correct-size-of-ds_avail.patch
+- Remove comment change from libspf2-1.2.10-libreplace.patch
+
+-------------------------------------------------------------------
 Sat Aug 14 22:14:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim unnecessary intermediate steps with /usr/bin/find.

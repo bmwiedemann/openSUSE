@@ -1,7 +1,7 @@
 #
 # spec file for package libspf2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,26 @@
 
 Name:           libspf2
 %define lname	libspf2-2
-Version:        1.2.10
+Version:        1.2.11
 Release:        0
+%global fname   %{name}-%{version}-4915c308
 Summary:        Implementation of the Sender Policy Framework
 License:        BSD-2-Clause OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.libspf2.org/
-Source0:        http://www.libspf2.org/spf/%{name}-%{version}.tar.gz
+URL:            https://www.libspf2.org/
+Source0:        %{fname}.tar.xz
 Patch0:         libspf2-1.2.10-format.patch
+# PATCH-FIX-OPENSUSE Drop usage of libreplace
 Patch1:         libspf2-1.2.10-libreplace.patch
-#PATCH-FIX-UPSTREAM: from upstream, will be in 1.2.11
-Patch2:         0001-spf_compile.c-Correct-size-of-ds_avail.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # For API docs
+BuildRequires:  automake
+BuildRequires:  autoconf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz-gd
+BuildRequires:  libtool
 # For perl bindings (Makefile.PL claims Mail::SPF is needed, but it isn't)
 BuildRequires:  perl
 BuildRequires:  perl(DynaLoader)
@@ -102,8 +105,8 @@ applications that use the libspf2 (Sender Policy Framework) library.
 Summary:        Programs for making SPF queries using libspf2
 License:        BSD-2-Clause OR LGPL-2.1-or-later
 Group:          Applications/System
-Obsoletes:      spf2 < %version-%release
-Provides:       spf2 = %version-%release
+Obsoletes:      spf2 < %{version}-%{release}
+Provides:       spf2 = %{version}-%{release}
 
 %description tools
 Programs for making SPF queries and checking their results using libspf2.
@@ -122,7 +125,7 @@ testing. While it can be used as an SPF implementation, you can also
 use Mail::SPF, which is a little more perlish.
 
 %prep
-%setup
+%setup -n %{fname}
 
 # SPF_debugf macro should always have at least two parameters
 %patch0
@@ -130,10 +133,10 @@ use Mail::SPF, which is a little more perlish.
 # libreplace is not needed on modern Linux
 rm -rf src/libreplace
 %patch1
-%patch2 -p1
 find . "(" -name Makefile.am -o -name Makefile.in ")" -exec touch {} +
 
 %build
+autoreconf -vif
 %configure --enable-perl --disable-dependency-tracking
 # using --disable-static does not build
 
@@ -176,7 +179,8 @@ LD_PRELOAD=$(pwd)/src/libspf2/.libs/libspf2.so make -C perl test
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%doc LICENSES README TODO
+%doc README TODO
+%license LICENSES
 %{_libdir}/libspf2.so.*
 
 %files devel
