@@ -1,0 +1,36 @@
+From 5cafad57982fbef0d02b7ecb0b1a2c9f221de391 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Sat, 20 Mar 2021 18:25:33 +0100
+Subject: [PATCH] indexing-notification: Remove unused variable
+
+Fallout from bd087d67f938c29776842afbc3b7bc745d2ca9a2
+
+https://gitlab.gnome.org/GNOME/gnome-photos/-/merge_requests/189
+---
+ src/photos-indexing-notification.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/photos-indexing-notification.c b/src/photos-indexing-notification.c
+index d819707e..9ac25826 100644
+--- a/src/photos-indexing-notification.c
++++ b/src/photos-indexing-notification.c
+@@ -179,7 +179,6 @@ photos_indexing_notification_check_notification_get_progress (GObject *source_ob
+   PhotosIndexingNotification *self;
+   GApplication *app;
+   GList *miners_running;
+-  GSList *running = NULL;
+   TrackerMiner *miner_files = TRACKER_MINER (source_object);
+   gboolean is_indexing_local = FALSE;
+   gboolean is_indexing_remote = FALSE;
+@@ -223,7 +222,7 @@ photos_indexing_notification_check_notification_get_progress (GObject *source_ob
+     photos_indexing_notification_destroy (self, FALSE);
+ 
+  out:
+-  g_slist_free_full (running, g_free);
++  return;
+ }
+ 
+ 
+-- 
+GitLab
+

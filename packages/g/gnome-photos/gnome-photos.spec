@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-photos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,12 @@ URL:            https://wiki.gnome.org/Design/Apps/Photos
 Source0:        https://download.gnome.org/sources/gnome-photos/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up.
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
+# PATCH-FIX-UPSTREAM gnome-photos-fix-vert-align.patch -- glgo#GNOME/gnome-photos!172 headerbar: Fix vertical alignment
+Patch1:         gnome-photos-fix-vert-align.patch
+# PATCH-FIX-UPSTREAM 5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch -- indexing-notification: Remove unused variable
+Patch2:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch
+# PATCH-FIX-UPSTREAM 1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch -- indexing-notification: Handle TrackerMiner proxy being NULL on start-up
+Patch3:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -79,7 +85,7 @@ patterns and objectives.
 Summary:        GNOME Photos -- Search Provider for GNOME Shell
 Group:          Productivity/Graphics/Viewers
 Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (gnome-shell and %{name})
 
 %description -n gnome-shell-search-provider-gnome-photos
 This package contains a search provider to enable GNOME Shell to get

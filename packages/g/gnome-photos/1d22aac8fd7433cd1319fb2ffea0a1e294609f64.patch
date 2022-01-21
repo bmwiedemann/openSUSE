@@ -1,0 +1,147 @@
+From 1d22aac8fd7433cd1319fb2ffea0a1e294609f64 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Sat, 20 Mar 2021 18:33:45 +0100
+Subject: [PATCH] indexing-notification: Handle TrackerMiner proxy being NULL
+ on start-up
+
+The TrackerMiner proxy is created asynchronously. Therefore, there's a
+possibility that it doesn't exist when a Application::miners-changed
+signal is emitted.
+
+Fallout from bd087d67f938c29776842afbc3b7bc745d2ca9a2
+
+https://gitlab.gnome.org/GNOME/gnome-photos/-/merge_requests/189
+---
+ src/photos-indexing-notification.c | 75 +++++++++++++++++++-----------
+ 1 file changed, 49 insertions(+), 26 deletions(-)
+
+diff --git a/src/photos-indexing-notification.c b/src/photos-indexing-notification.c
+index 9ac25826..d214e1fa 100644
+--- a/src/photos-indexing-notification.c
++++ b/src/photos-indexing-notification.c
+@@ -172,34 +172,14 @@ photos_indexing_notification_timeout (gpointer user_data)
+ 
+ 
+ static void
+-photos_indexing_notification_check_notification_get_progress (GObject *source_object,
+-                                                              GAsyncResult *res,
+-                                                              gpointer user_data)
++photos_indexing_notification_update_notification (PhotosIndexingNotification *self, gdouble miner_files_progress)
+ {
+-  PhotosIndexingNotification *self;
+   GApplication *app;
+   GList *miners_running;
+-  TrackerMiner *miner_files = TRACKER_MINER (source_object);
+   gboolean is_indexing_local = FALSE;
+   gboolean is_indexing_remote = FALSE;
+-  gdouble progress;
+-
+-  {
+-    g_autoptr (GError) error = NULL;
+-
+-    if (!tracker_miner_call_get_progress_finish (miner_files, &progress, res, &error))
+-      {
+-        if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+-          goto out;
+-
+-        g_warning ("Unable to get indexing progress from TrackerMiner proxy: %s", error->message);
+-        progress = 1.0;
+-      }
+-  }
+ 
+-  self = PHOTOS_INDEXING_NOTIFICATION (user_data);
+-
+-  if (progress < 1)
++  if (miner_files_progress < 1)
+     is_indexing_local = TRUE;
+ 
+   app = g_application_get_default ();
+@@ -220,6 +200,32 @@ photos_indexing_notification_check_notification_get_progress (GObject *source_ob
+     }
+   else
+     photos_indexing_notification_destroy (self, FALSE);
++}
++
++
++static void
++photos_indexing_notification_miner_files_get_progress (GObject *source_object, GAsyncResult *res, gpointer user_data)
++{
++  PhotosIndexingNotification *self;
++  TrackerMiner *miner_files = TRACKER_MINER (source_object);
++  gdouble progress;
++
++  {
++    g_autoptr (GError) error = NULL;
++
++    if (!tracker_miner_call_get_progress_finish (miner_files, &progress, res, &error))
++      {
++        if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
++          goto out;
++
++        g_warning ("Unable to get indexing progress from TrackerMiner proxy: %s", error->message);
++        progress = 1.0;
++      }
++  }
++
++  self = PHOTOS_INDEXING_NOTIFICATION (user_data);
++
++  photos_indexing_notification_update_notification (self, progress);
+ 
+  out:
+   return;
+@@ -227,15 +233,32 @@ photos_indexing_notification_check_notification_get_progress (GObject *source_ob
+ 
+ 
+ static void
+-photos_indexing_notification_check_notification (PhotosIndexingNotification *self)
++photos_indexing_notification_miner_files_progress (PhotosIndexingNotification *self)
+ {
+   tracker_miner_call_get_progress (self->miner_files,
+                                    self->cancellable,
+-                                   photos_indexing_notification_check_notification_get_progress,
++                                   photos_indexing_notification_miner_files_get_progress,
+                                    self);
+ }
+ 
+ 
++static void
++photos_indexing_notification_online_miners_changed (PhotosIndexingNotification *self)
++{
++  if (self->miner_files == NULL)
++    {
++      photos_indexing_notification_update_notification (self, 1.0);
++    }
++  else
++    {
++      tracker_miner_call_get_progress (self->miner_files,
++                                       self->cancellable,
++                                       photos_indexing_notification_miner_files_get_progress,
++                                       self);
++    }
++}
++
++
+ static void
+ photos_indexing_notification_tracker_miner (GObject *source_object, GAsyncResult *res, gpointer user_data)
+ {
+@@ -260,7 +283,7 @@ photos_indexing_notification_tracker_miner (GObject *source_object, GAsyncResult
+   self->miner_files = g_object_ref (miner_files);
+   g_signal_connect_swapped (self->miner_files,
+                             "progress",
+-                            G_CALLBACK (photos_indexing_notification_check_notification),
++                            G_CALLBACK (photos_indexing_notification_miner_files_progress),
+                             self);
+ 
+  out:
+@@ -348,7 +371,7 @@ photos_indexing_notification_init (PhotosIndexingNotification *self)
+ 
+   g_signal_connect_object (app,
+                            "miners-changed",
+-                           G_CALLBACK (photos_indexing_notification_check_notification),
++                           G_CALLBACK (photos_indexing_notification_online_miners_changed),
+                            self,
+                            G_CONNECT_SWAPPED);
+ }
+-- 
+GitLab
+

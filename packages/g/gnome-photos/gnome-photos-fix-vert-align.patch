@@ -1,0 +1,28 @@
+From a9767e638d78a7a9c2d0b54d5948cc74b8158d69 Mon Sep 17 00:00:00 2001
+From: Maximiliano Sandoval R <msandova@protonmail.com>
+Date: Mon, 5 Apr 2021 22:05:20 +0200
+Subject: [PATCH] headerbar: Fix vertical alignment
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-photos/-/issues/172
+---
+ src/photos-embed.ui | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/photos-embed.ui b/src/photos-embed.ui
+index fe893bdd..05ddd39b 100644
+--- a/src/photos-embed.ui
++++ b/src/photos-embed.ui
+@@ -21,7 +21,9 @@
+     <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+     <property name="visible">1</property>
+     <child>
+-      <object class="PhotosMainToolbar" id="toolbar"/>
++      <object class="PhotosMainToolbar" id="toolbar">
++        <property name="vexpand">False</property>
++      </object>
+     </child>
+     <child>
+       <object class="GtkOverlay" id="stack_overlay">
+-- 
+GitLab
+

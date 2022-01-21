@@ -462,4 +462,12 @@
     <comment>Fix deps for tracker; tracker 2 is no longer needed (forwarded request 885670 from dimstar)</comment>
     <requestid>886282</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>424238a87ad4e0e0128423288c469ad3</srcmd5>
+    <version>40.0</version>
+    <time>1642724715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947470</requestid>
+  </revision>
 </revisionlist>

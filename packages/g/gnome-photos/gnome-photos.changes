@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:38:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-photos-fix-vert-align.patch: Fix vertical alignment.
+  (glgo#GNOME/gnome-photos!172).
+- Add upstream bug fix patches from the stable branch:
+  + 5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch:
+    indexing-notification: Remove unused variable.
+  + 1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch:
+    indexing-notification: Handle TrackerMiner proxy being NULL on
+    start-up.
+- Update our Supplements to current standard.
+
+-------------------------------------------------------------------
 Thu Apr 15 13:26:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependencies after the move from Tracker 2 to Tracker 3:
