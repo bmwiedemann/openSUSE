@@ -156,4 +156,12 @@
     <comment>Fix a bug for non gnome users (forwarded request 931169 from iznogood)</comment>
     <requestid>931780</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b49c77e490eadcd89a490e084276e00a</srcmd5>
+    <version>1.12.0</version>
+    <time>1642724720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947476</requestid>
+  </revision>
 </revisionlist>

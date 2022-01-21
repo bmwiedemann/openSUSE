@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 17 21:02:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12.0:
+  + settings: Provide org.freedesktop.appearance.color-scheme key
+  + settings: Handle org.gnome.desktop.a11y.interface schema
+  + notification: Handle actions with targets properly
+  + Enable settings and appchooser portals by default
+  + Translation updates
+
+-------------------------------------------------------------------
 Fri Nov 12 17:34:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(gsettings-desktop-schemas) BuildRequires and
