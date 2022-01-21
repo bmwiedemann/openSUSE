@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 20 21:05:18 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.1
+  - Fixed bottom actions of the Feeds sidebar getting hidden when all entries
+    are read. This prevented switching between Unread/All filter modes.
+  - Fixed potential crash when downloading a large file (e.g., a fontpack).
+  - Linux: SDL event handling workaround adjusted to only apply to 2.0.18+.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Mon Jan 17 17:28:51 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.10.0
