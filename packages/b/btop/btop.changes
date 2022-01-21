@@ -1,11 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 18 15:13:31 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.2.0
+
+- Update to upstream release 1.2.0:
+  * Added: Support for FreeBSD, by @joske and @aristocratos
+  * Fixed (again): Account for system rolling over net speeds in Net::collect()
+  * Added: Theme gruvbox_material_dark, by @marcoradocchia
+  * Added: Option for base 10 bytes/bits
+
+-------------------------------------------------------------------
 Wed Dec 29 21:39:39 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.4
 
 - Update to upstream release 1.1.4:
-	* Fixed: Create dependency files in build directory when compiling, by @stwnt
-	* Fixed: fix CPU temp fallback on macOS, by @joske
-	* Changed: From rng::sort() to rng::stable_sort() for more stability
-	* Fixed: in_avail() can always be zero, by @pg83
+  * Fixed: Create dependency files in build directory when compiling, by @stwnt
+  * Fixed: fix CPU temp fallback on macOS, by @joske
+  * Changed: From rng::sort() to rng::stable_sort() for more stability
+  * Fixed: in_avail() can always be zero, by @pg83
 
 -------------------------------------------------------------------
 Mon Dec 13 15:14:51 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.3

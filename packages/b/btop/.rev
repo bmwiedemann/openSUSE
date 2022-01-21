@@ -91,4 +91,21 @@
     <comment></comment>
     <requestid>943242</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ee76ea87b31faf39bffd94b0abcbd0ca</srcmd5>
+    <version>1.2.0</version>
+    <time>1642724741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 1.2.0:
+  * Added: Support for FreeBSD, by @joske and @aristocratos
+  * Fixed (again): Account for system rolling over net speeds in Net::collect()
+  * Added: Theme gruvbox_material_dark, by @marcoradocchia
+  * Added: Option for base 10 bytes/bits
+
+  * Fixed: Create dependency files in build directory when compiling, by @stwnt
+  * Fixed: fix CPU temp fallback on macOS, by @joske
+  * Changed: From rng::sort() to rng::stable_sort() for more stability
+  * Fixed: in_avail() can always be zero, by @pg83</comment>
+    <requestid>947724</requestid>
+  </revision>
 </revisionlist>
