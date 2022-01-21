@@ -1,7 +1,7 @@
 #
 # spec file for package gvfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,12 +88,12 @@ APIs of libgio. There is also FUSE support that allows applications
 not using GIO to access the GVfs filesystems.
 
 %package backend-afc
-%define mobile_device_package %(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libimobiledevice.so))
+%define mobile_device_package %(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libimobiledevice-1.0.so))
 Summary:        VFS functionality for GLib -- iPod / iPhone Support
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Supplements:    packageand(gvfs:%{mobile_device_package})
+Supplements:    (gvfs and %{mobile_device_package})
 
 %description backend-afc
 This package provides a gvfs backend that supports iPod / iPhone devices.
@@ -105,7 +105,7 @@ License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       %{name}-backends = %{version}
-Supplements:    packageand(gvfs:%{smb_client_package})
+Supplements:    (gvfs and %{smb_client_package})
 
 %description backend-samba
 This package provides a gvfs backend that supports Samba.
@@ -201,6 +201,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %files
 %license COPYING daemon/trashlib/COPYING.trashlib
 %doc NEWS README.md
+%doc daemon/org.gtk.vfs.file-operations.rules
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/mounts
 %dir %{_datadir}/%{name}/remote-volume-monitors
