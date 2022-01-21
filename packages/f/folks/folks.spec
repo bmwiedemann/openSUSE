@@ -1,7 +1,7 @@
 #
 # spec file for package folks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define with_zeitgeist  0
 
 Name:           folks
-Version:        0.15.3
+Version:        0.15.4
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
