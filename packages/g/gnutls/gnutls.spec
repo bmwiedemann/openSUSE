@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,8 +46,7 @@ Source2:        gnutls.keyring
 Source3:        baselibs.conf
 Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
-Patch2:         gnutls-temporarily_disable_broken_guile_reauth_test.patch
-Patch3:         gnutls-FIPS-TLS_KDF_selftest.patch
+Patch2:         gnutls-FIPS-TLS_KDF_selftest.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -89,7 +88,8 @@ BuildRequires:  libunbound-devel
 %if %{with guile}
 BuildRequires:  guile-devel
 %endif
-%if 0%{?suse_version} && ! 0%{?sle_version}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  crypto-policies
 Requires:       crypto-policies
 %endif
 
@@ -100,13 +100,13 @@ of the IETF's TLS working group.
 
 %package -n libgnutls%{gnutls_sover}
 Summary:        The GNU Transport Layer Security Library
-# install libopenssl and libopenssl-hmac close together (bsc#1090765)
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-%if 0%{?suse_version} && ! 0%{?sle_version}
+# install libgnutls and libgnutls-hmac close together (bsc#1090765)
+Suggests:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
 %endif
-Suggests:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
 
 %description -n libgnutls%{gnutls_sover}
 The GnuTLS library provides a secure layer over a reliable transport
@@ -122,6 +122,7 @@ Requires:       libgnutls%{gnutls_sover} = %{version}-%{release}
 %description -n libgnutls%{gnutls_sover}-hmac
 FIPS SHA256 checksums of the libgnutls library.
 
+%if %{with dane}
 %package -n libgnutls-dane%{gnutls_dane_sover}
 Summary:        DANE support for the GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later
@@ -131,12 +132,13 @@ Group:          System/Libraries
 The GnuTLS project aims to develop a library that provides a secure
 layer over a reliable transport layer.
 This package contains the "DANE" part of gnutls.
+%endif
 
 %package -n libgnutlsxx%{gnutlsxx_sover}
 Summary:        C++ API for the GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-%if 0%{?suse_version} && ! 0%{?sle_version}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
 %endif
 
@@ -149,7 +151,7 @@ of the IETF's TLS working group.
 Summary:        Development package for the GnuTLS C API
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} && ! 0%{?sle_version}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
 %endif
 Requires:       glibc-devel
@@ -161,6 +163,7 @@ Provides:       gnutls-devel = %{version}-%{release}
 %description -n libgnutls-devel
 Files needed for software development using gnutls.
 
+%if %{with dane}
 %package -n libgnutls-dane-devel
 Summary:        Development package for GnuTLS DANE component
 License:        LGPL-2.1-or-later
@@ -169,6 +172,7 @@ Requires:       libgnutls-dane%{gnutls_dane_sover} = %{version}
 
 %description -n libgnutls-dane-devel
 Files needed for software development using gnutls.
+%endif
 
 %package -n libgnutlsxx-devel
 Summary:        Development package for the GnuTLS C++ API
@@ -223,7 +227,14 @@ export CXXFLAGS="%{optflags} -fPIE"
 %else
         --disable-libdane \
 %endif
+%if %{with guile}
+        --enable-guile \
+%else
+        --disable-guile \
+%endif
         --enable-fips140-mode \
+        --with-fips140-module-name="GnuTLS version" \
+        --with-fips140-module-version="%{version}-%{release}" \
         %{nil}
 
 make %{?_smp_mflags}
@@ -255,7 +266,7 @@ rm -rf %{buildroot}%{_datadir}/doc/gnutls
 
 %check
 %if ! 0%{?qemu_user_space_build}
-#make %%{?_smp_mflags} check || {
+# export GNUTLS_FORCE_FIPS_MODE=1
 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
     find -name test-suite.log -print -exec cat {} +
     exit 1

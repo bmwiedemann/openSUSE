@@ -1488,4 +1488,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
   needs to move away from 1550 due to CODE 15 SP5 plans).</comment>
     <requestid>934095</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>0d64298eb2b133b8c67e35e70e8e0378</srcmd5>
+    <version>3.7.3</version>
+    <time>1642724708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947394</requestid>
+  </revision>
 </revisionlist>
