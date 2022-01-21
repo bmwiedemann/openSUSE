@@ -713,4 +713,12 @@
     <comment>New stable release</comment>
     <requestid>945939</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>bb0b23b3c0e96ac6c88dd3344ae68c04</srcmd5>
+    <version>1.12.4</version>
+    <time>1642724722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947481</requestid>
+  </revision>
 </revisionlist>

@@ -1,13 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 18 20:52:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.12.4:
+  + reverting non-backwards-compatible behaviour changes in the
+    solution previously chosen for CVE-2022-21682 (boo#1194611)
+    Fix will be in flatpak-builder 1.2.2.
+  + Clarify documentation of --nofilesystem
+  + Improve unit test coverage around --filesystem and
+    --nofilesystem
+  + Restore compatibility with older appstream-glib versions,
+    fixing a regression in 1.12.3
+
+-------------------------------------------------------------------
 Wed Jan 12 20:40:35 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.12.3:
   + CVE-2021-43860: a malicious repository could have sent invalid
     application metadata in a way that hides some of the app
     permissions displayed during installation (boo#1194610)
-  + flatpak-builder could allow --mirror-screenshots-url commands
-    to create directories outside of the build directory
-    (boo#1194611)
+  + CVE-2022-21682: flatpak-builder could allow
+    --mirror-screenshots-url commands to create directories outside
+    of the build directory (boo#1194611)
   + Extra-data downloading now properly handles compressed
     content-encodings which fixes checksum verification 
   + Note: In some corner case server setups this may require the
