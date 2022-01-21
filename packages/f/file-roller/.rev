@@ -1182,4 +1182,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment> (forwarded request 929198 from iznogood)</comment>
     <requestid>929605</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>c3153c5ccbc755852f89753d2afca804</srcmd5>
+    <version>3.40.0+51</version>
+    <time>1642724717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947471</requestid>
+  </revision>
 </revisionlist>

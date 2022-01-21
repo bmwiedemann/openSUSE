@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 21:25:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.0+51:
+  + Updated translations.
+- Switch to git checkout via source service as upstream is not
+  doing releases. We want the updated translations.
+- Replace p7zip-full with 7zip following packaging changes of 7zip.
+
+-------------------------------------------------------------------
 Thu Nov  4 14:59:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop pass option magic=enabled to meson, no longer needed, nor

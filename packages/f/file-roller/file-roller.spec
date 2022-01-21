@@ -1,7 +1,7 @@
 #
 # spec file for package file-roller
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,16 @@
 
 
 Name:           file-roller
-Version:        3.40.0
+Version:        3.40.0+51
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://wiki.gnome.org/Apps/FileRoller
-Source0:        https://download.gnome.org/sources/file-roller/3.40/%{name}-%{version}.tar.xz
+# Disabled as we are using a git checkout via source service
+#Source0:        https://download.gnome.org/sources/file-roller/3.40/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+
 # PATCH-FIX-OPENSUSE file-roller-3.4-change-archiver-priority.patch bnc#767386 gankov@opensuse.org -- Give unzip a higher priority than 7z when unpackging zip files. Gives better results for non-latin charsets.
 Patch0:         file-roller-3.4-change-archiver-priority.patch
 # PATCH-FEATURE-OPENSUSE file-roller-pkg-match.patch bnc#696530 dimstar@opensuse.org -- List package match names for automatic installation using PK.
@@ -31,6 +34,7 @@ Patch1:         file-roller-pkg-match.patch
 # PATCH-FIX-OPENSUSE file-roller-ignore-unrar-if-wrapper.patch bsc#1072118 mgorse@suse.com -- if unrar is a wrapper script for unar, then ignore it, and use unar instead.
 Patch2:         file-roller-ignore-unrar-if-wrapper.patch
 # Needed for directory ownership
+
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -46,9 +50,9 @@ BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:  pkgconfig(libnotify) >= 0.4.3
 # Formats that we likely want to support by default
 Recommends:     bzip2
+Recommends:     7zip
 Recommends:     cpio
 Recommends:     gzip
-Recommends:     p7zip-full
 Recommends:     rpm
 Recommends:     unar
 Recommends:     unzip
