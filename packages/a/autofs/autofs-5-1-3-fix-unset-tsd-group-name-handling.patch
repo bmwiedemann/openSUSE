@@ -21,8 +21,10 @@ Acked-by: Jeff Mahoney <jeffm@suse.com>
  lib/mounts.c |    1 +
  2 files changed, 6 insertions(+), 3 deletions(-)
 
---- a/lib/macros.c
-+++ b/lib/macros.c
+Index: autofs-5.1.8/lib/macros.c
+===================================================================
+--- autofs-5.1.8.orig/lib/macros.c
++++ autofs-5.1.8/lib/macros.c
 @@ -186,15 +186,17 @@ int macro_global_addvar(const char *str,
  	}
  
@@ -52,9 +54,11 @@ Acked-by: Jeff Mahoney <jeffm@suse.com>
  		if (!val) {
  			free(def);
  			goto done;
---- a/lib/mounts.c
-+++ b/lib/mounts.c
-@@ -1475,6 +1475,7 @@ void set_tsd_user_vars(unsigned int logo
+Index: autofs-5.1.8/lib/mounts.c
+===================================================================
+--- autofs-5.1.8.orig/lib/mounts.c
++++ autofs-5.1.8/lib/mounts.c
+@@ -2384,6 +2384,7 @@ void set_tsd_user_vars(unsigned int logo
  		error(logopt, "failed to get buffer size for getpwuid_r");
  		goto free_tsv;
  	}
