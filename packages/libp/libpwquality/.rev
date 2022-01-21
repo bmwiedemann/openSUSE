@@ -167,4 +167,12 @@
 Fixed bugref (forwarded request 922054 from dimstar)</comment>
     <requestid>922106</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>5b270839060fbe8dc470cd591cc7cf3b</srcmd5>
+    <version>1.4.4</version>
+    <time>1642724721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947477</requestid>
+  </revision>
 </revisionlist>

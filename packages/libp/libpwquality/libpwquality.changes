@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 17 21:16:26 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add python-rpm-macros to BuildRequires (boo#1194757).
+
+-------------------------------------------------------------------
 Tue Sep 28 13:41:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %_pam_moduledir instead of hardcoding %{_lib}/security
