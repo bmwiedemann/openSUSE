@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 18 08:59:41 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Fix boo#1194805 by skipping linker optimizations from final
+  pkgconfig files as well as ncurses-config 
+
+-------------------------------------------------------------------
+Mon Jan 17 08:49:49 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220115
+  + improve checks for valid mouse events when an intermediate mouse
+    state is not part of the mousemask specified by the caller (report by
+    Anton Vidovic, cf: 20111022).
+  + use newer version 1.36 of gnathtml for generating Ada html files.
+
+-------------------------------------------------------------------
 Mon Jan 10 09:08:02 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220101

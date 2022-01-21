@@ -24,6 +24,7 @@
 %endif
 %bcond_with     memleakck
 %bcond_without  onlytinfo
+%bcond_with     ada
 %bcond_with     libbsd
 %bcond_with     usepcre2
 
@@ -42,6 +43,11 @@ Name:           ncurses
 BuildRequires:  db-devel
 %endif
 BuildRequires:  expect
+%if %{with ada}
+# Currently we're missing gprbuild and gprconfig
+BuildRequires:  gcc-ada
+BuildRequires:  m4
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 %if %{with libbsd}
@@ -499,7 +505,11 @@ mv tack-* tack
     > $SCREENLOG
     tail -q -s 0.5 -f $SCREENLOG & pid=$!
     %configure \
+%if %{with ada}
+	--with-ada		\
+%else
 	--without-ada		\
+%endif
 	--without-debug		\
 	--without-profile	\
 	--without-manpage-tbl	\

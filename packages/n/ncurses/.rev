@@ -3487,4 +3487,19 @@
 - Correct offsets of patch ncurses-6.3.dif</comment>
     <requestid>945994</requestid>
   </revision>
+  <revision rev="204" vrev="8">
+    <srcmd5>cee4c797e9149399e564a4d78768733c</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1642730735</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boo#1194805 by skipping linker optimizations from final
+  pkgconfig files as well as ncurses-config 
+
+- Add ncurses patch 20220115
+  + improve checks for valid mouse events when an intermediate mouse
+    state is not part of the mousemask specified by the caller (report by
+    Anton Vidovic, cf: 20111022).
+  + use newer version 1.36 of gnathtml for generating Ada html files.</comment>
+    <requestid>947194</requestid>
+  </revision>
 </revisionlist>
