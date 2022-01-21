@@ -1,0 +1,66 @@
+commit 3be5ba11a2c6fcb2dfdffa03ab4f847113f36b85
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Jan 10 11:42:58 2022 -0700
+
+    build: Only install libvirt-guests when building libvirtd
+    
+    libvirt-guests was already moved to the libvirt daemon package in commit
+    d800c50349. It only needs to be installed when building libvirtd.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Andrea Bolognani <abologna@redhat.com>
+
+Index: libvirt-8.0.0/tools/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/tools/meson.build
++++ libvirt-8.0.0/tools/meson.build
+@@ -297,29 +297,31 @@ if conf.has('WITH_SANLOCK')
+   )
+ endif
+ 
+-configure_file(
+-  input: 'libvirt-guests.sh.in',
+-  output: '@BASENAME@',
+-  configuration: tools_conf,
+-  install: true,
+-  install_dir: libexecdir,
+-  install_mode: 'rwxrwxr-x',
+-)
+-
+-if init_script == 'systemd'
+-  install_data(
+-    'libvirt-guests.sysconf',
+-    install_dir: sysconfdir / 'sysconfig',
+-    rename: 'libvirt-guests',
+-  )
+-
++if conf.has('WITH_LIBVIRTD')
+   configure_file(
+-    input: 'libvirt-guests.service.in',
++    input: 'libvirt-guests.sh.in',
+     output: '@BASENAME@',
+     configuration: tools_conf,
+     install: true,
+-    install_dir: prefix / 'lib' / 'systemd' / 'system',
++    install_dir: libexecdir,
++    install_mode: 'rwxrwxr-x',
+   )
++
++  if init_script == 'systemd'
++    install_data(
++      'libvirt-guests.sysconf',
++      install_dir: sysconfdir / 'sysconfig',
++      rename: 'libvirt-guests',
++    )
++
++    configure_file(
++      input: 'libvirt-guests.service.in',
++      output: '@BASENAME@',
++      configuration: tools_conf,
++      install: true,
++      install_dir: prefix / 'lib' / 'systemd' / 'system',
++    )
++  endif
+ endif
+ 
+ if bash_completion_dep.found()

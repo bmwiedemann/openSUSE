@@ -7,10 +7,10 @@ suse-qemu-conf-secdriver.patch, suse-qemu-conf-lockmgr.patch,
 etc.), but for now they are all lumped together in this
 single patch.
 
-Index: libvirt-7.10.0/src/qemu/qemu.conf
+Index: libvirt-8.0.0/src/qemu/qemu.conf
 ===================================================================
---- libvirt-7.10.0.orig/src/qemu/qemu.conf
-+++ libvirt-7.10.0/src/qemu/qemu.conf
+--- libvirt-8.0.0.orig/src/qemu/qemu.conf
++++ libvirt-8.0.0/src/qemu/qemu.conf
 @@ -491,10 +491,19 @@
  # isolation, but it cannot appear in a list of drivers.
  #
@@ -60,10 +60,10 @@ Index: libvirt-7.10.0/src/qemu/qemu.conf
  #
  #lock_manager = "lockd"
  
-Index: libvirt-7.10.0/src/qemu/qemu_conf.c
+Index: libvirt-8.0.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-7.10.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-7.10.0/src/qemu/qemu_conf.c
+--- libvirt-8.0.0.orig/src/qemu/qemu_conf.c
++++ libvirt-8.0.0/src/qemu/qemu_conf.c
 @@ -272,7 +272,7 @@ virQEMUDriverConfig *virQEMUDriverConfig
      cfg->slirpHelperName = g_strdup(QEMU_SLIRP_HELPER);
      cfg->dbusDaemonName = g_strdup(QEMU_DBUS_DAEMON);
@@ -73,10 +73,10 @@ Index: libvirt-7.10.0/src/qemu/qemu_conf.c
      cfg->securityRequireConfined = false;
  
      cfg->keepAliveInterval = 5;
-Index: libvirt-7.10.0/src/qemu/test_libvirtd_qemu.aug.in
+Index: libvirt-8.0.0/src/qemu/test_libvirtd_qemu.aug.in
 ===================================================================
---- libvirt-7.10.0.orig/src/qemu/test_libvirtd_qemu.aug.in
-+++ libvirt-7.10.0/src/qemu/test_libvirtd_qemu.aug.in
+--- libvirt-8.0.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-8.0.0/src/qemu/test_libvirtd_qemu.aug.in
 @@ -45,6 +45,7 @@ module Test_libvirtd_qemu =
  { "remote_websocket_port_min" = "5700" }
  { "remote_websocket_port_max" = "65535" }

@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,9 +138,27 @@
     %define wireshark_plugindir %(pkg-config --variable plugindir wireshark)/epan
 %endif
 
+# libvirt no longer distributes sysconfig files.
+# If the user has customized a sysconfig file, the RPM upgrade path will rename
+# it to .rpmsave since the file is no longer managed by RPM. To prevent a
+# regression, we rename it back after the transaction to preserve the user's
+# modifications
+%define libvirt_sysconfig_pre() \
+    for sc in %{?*} ; do \
+        test -f "%{_sysconfdir}/sysconfig/${sc}.rpmsave" || continue ; \
+        mv -v "%{_sysconfdir}/sysconfig/${sc}.rpmsave" "%{_sysconfdir}/sysconfig/${sc}.rpmsave.old" ; \
+    done \
+    %{nil}
+%define libvirt_sysconfig_posttrans() \
+    for sc in %{?*} ; do \
+        test -f "%{_sysconfdir}/sysconfig/${sc}.rpmsave" || continue ; \
+        mv -v "%{_sysconfdir}/sysconfig/${sc}.rpmsave" "%{_sysconfdir}/sysconfig/${sc}" ; \
+    done \
+    %{nil}
+
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.10.0
+Version:        8.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -219,7 +237,6 @@ BuildRequires:  dnsmasq >= 2.41
 BuildRequires:  ebtables
 BuildRequires:  iptables
 BuildRequires:  polkit >= 0.112
-BuildRequires:  radvd
 # For mount/umount in FS driver
 BuildRequires:  util-linux
 # For LVM drivers
@@ -235,8 +252,6 @@ BuildRequires:  parted
 BuildRequires:  parted-devel
 # For Multipath support
 BuildRequires:  device-mapper-devel
-# For XFS reflink clone support
-BuildRequires:  xfsprogs-devel
 %if %{with_storage_rbd}
 BuildRequires:  %{with_rbd_lib}
 %endif
@@ -286,13 +301,9 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         23b51d7b-libxl-disable-death-event.patch
-Patch1:         a4e6fba0-libxl-rename-threadinfo-struct.patch
-Patch2:         e4f7589a-libxl-shutdown-thread-name.patch
-Patch3:         b9a5faea-libxl-handle-death-thread.patch
-Patch4:         5c5df531-libxl-search-domid-in-thread.patch
-Patch5:         a7a03324-libxl-protect-logger-access.patch
-Patch6:         cbae4eaa-libxl-add-domainGetMessages.patch
+Patch0:         3be5ba11-libvirt-guests-install.patch
+Patch1:         16172741-libvirt-guests-manpage.patch
+Patch2:         8eb44616-remove-sysconfig-files.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -345,9 +356,10 @@ Group:          System/Management
 
 Requires:       %{name}-libs = %{version}-%{release}
 
-# So remote clients can access libvirt over SSH tunnel
-# (client invokes 'nc' against the UNIX socket on the server)
-Requires:       netcat-openbsd
+# netcat is needed on the server side so that clients that have
+# libvirt < 6.9.0 can connect, but newer versions will prefer
+# virt-ssh-helper
+Recommends:     netcat-openbsd
 # for modprobe of pci devices
 Requires:       modutils
 # for /sbin/ip & /sbin/tc
@@ -427,7 +439,6 @@ Requires:       %{name}-daemon = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       dnsmasq >= 2.41
 Requires:       iptables
-Requires:       radvd
 
 %description daemon-driver-network
 The network driver plugin for the libvirtd daemon, providing
@@ -1071,17 +1082,6 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 
 # init scripts
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/libvirtd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtproxyd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtlogd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtlockd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtinterfaced
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtnetworkd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtnodedevd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtnwfilterd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtsecretd
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtstoraged
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/libvirt-guests
 # Provide rc symlink backward compatibility
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirtd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtproxyd
@@ -1096,19 +1096,15 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtstoraged
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirt-guests
 
 %if %{with_qemu}
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtqemud
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtqemud
 %endif
 %if %{with_lxc}
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtlxcd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlxcd
 %endif
 %if %{with_libxl}
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtxend
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtxend
 %endif
 %if %{with_vbox}
-rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtvboxd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
 %endif
 
@@ -1136,6 +1132,7 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
 %pre daemon
+%libvirt_sysconfig_pre libvirtd virtproxyd virtlogd virtlockd libvirt-guests
 %service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 
 %post daemon
@@ -1157,64 +1154,20 @@ fi
 %service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 
 %posttrans daemon
+%libvirt_sysconfig_posttrans libvirtd virtproxyd virtlogd virtlockd libvirt-guests
 # virtlockd and virtlogd must not be restarted, particularly virtlockd since the
 # locks it uses to protect VM resources would be lost. Both are safe to re-exec.
 %{_bindir}/systemctl reload-or-try-restart virtlockd.service >/dev/null 2>&1 || :
 %{_bindir}/systemctl reload-or-try-restart virtlogd.service >/dev/null 2>&1 || :
-# The '--listen' option is incompatible with socket activation.
-# Check if the existing install uses --listen
-listen_mode=no
-if test -f %{_sysconfdir}/sysconfig/libvirtd; then
-    if grep -q -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
-        listen_mode=yes
-    fi
-    # A benefit of socket activation is libvirtd doesn't need to be running
-    # when unused. If sockets are enabled, set a timeout value if it doesn't
-    # already exist
-    if test "$listen_mode" = no && \
-            %{_bindir}/systemctl -q is-enabled libvirtd.socket; then
-        awk -i inplace "
-        /^LIBVIRTD_ARGS=/ {
-            gsub(\"^LIBVIRTD_ARGS=\", \"\")
-            gsub(\"^['\\\"]\", \"\")
-            gsub(\"['\\\"]$\", \"\")
-            printf \"LIBVIRTD_ARGS='\"
-            num = split(\$0, values)
-            got_timeout = 0
-            for ( i = 1; i <= num ; i++) {
-              if (values[i] ~ /^--timeout=/)
-                got_timeout = 1
-              if (values[i] ~ /^--timeout$/) {
-                if (i < num) {
-                  got_timeout = 1
-                  printf \"%%s \",values[i]
-                  i++
-                } else {
-                  continue
-                }
-              }
-              printf \"%%s\",values[i]
-              if (i >= 1 && i < num)
-                printf \" \"
-            }
-            if (got_timeout == 0)
-              if (num == 0)
-                printf \"--timeout 120\"
-              else
-                printf \" --timeout 120\"
-              printf \"'\n\"
-              next
-        }
-        { print } " "%{_sysconfdir}/sysconfig/libvirtd" || :
-    fi
-fi
 # All connection drivers should be installed post transaction.
 # Time to restart the daemon
 test -f %{_sysconfdir}/sysconfig/services -a \
   -z "$DISABLE_RESTART_ON_UPDATE" && . %{_sysconfdir}/sysconfig/services
 if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
   "$DISABLE_RESTART_ON_UPDATE" != 1; then
-    if test "$listen_mode" = yes; then
+    # See if user has previously modified their install to
+    # tell libvirtd to use --listen
+    if grep -q -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
         # Keep honouring --listen and *not* use systemd socket activation.
         # Switching things might confuse management tools that expect the old
         # style libvirtd
@@ -1450,6 +1403,8 @@ fi
 %attr(0755, root, root) %{_bindir}/virt-ssh-helper
 %doc %{_mandir}/man1/virt-admin.1*
 %doc %{_mandir}/man1/virt-host-validate.1*
+%doc %{_mandir}/man8/virt-ssh-helper.8*
+%doc %{_mandir}/man8/libvirt-guests.8*
 %doc %{_mandir}/man8/libvirtd.8*
 %doc %{_mandir}/man8/virtlogd.8*
 %doc %{_mandir}/man8/virtlockd.8*
@@ -1630,6 +1585,7 @@ fi
 %files daemon-driver-qemu
 %config(noreplace) %{_sysconfdir}/%{name}/virtqemud.conf
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
+%config(noreplace) %{_prefix}/lib/sysctl.d/60-qemu-postcopy-migration.conf
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
 %{_unitdir}/virtqemud.service
@@ -1747,6 +1703,7 @@ fi
 %files client
 %doc %{_mandir}/man1/virsh.1*
 %doc %{_mandir}/man1/virt-xml-validate.1*
+%doc %{_mandir}/man1/virt-pki-query-dn.1*
 %doc %{_mandir}/man1/virt-pki-validate.1*
 %{_bindir}/virsh
 %{_bindir}/virt-xml-validate

@@ -3,10 +3,10 @@ Disable TLS by default
 On SUSE distros, the default is for libvirtd to listen only on the
 Unix Domain Socket. The libvirt client still provides remote access
 via a SSH tunnel.
-Index: libvirt-7.10.0/src/remote/remote_daemon_config.c
+Index: libvirt-8.0.0/src/remote/remote_daemon_config.c
 ===================================================================
---- libvirt-7.10.0.orig/src/remote/remote_daemon_config.c
-+++ libvirt-7.10.0/src/remote/remote_daemon_config.c
+--- libvirt-8.0.0.orig/src/remote/remote_daemon_config.c
++++ libvirt-8.0.0/src/remote/remote_daemon_config.c
 @@ -98,7 +98,7 @@ daemonConfigNew(bool privileged G_GNUC_U
  
  #ifdef WITH_IP
@@ -16,10 +16,10 @@ Index: libvirt-7.10.0/src/remote/remote_daemon_config.c
  # else /* ! LIBVIRTD */
      data->listen_tls = false; /* Always honoured, --listen doesn't exist. */
  # endif /* ! LIBVIRTD */
-Index: libvirt-7.10.0/src/remote/libvirtd.conf.in
+Index: libvirt-8.0.0/src/remote/libvirtd.conf.in
 ===================================================================
---- libvirt-7.10.0.orig/src/remote/libvirtd.conf.in
-+++ libvirt-7.10.0/src/remote/libvirtd.conf.in
+--- libvirt-8.0.0.orig/src/remote/libvirtd.conf.in
++++ libvirt-8.0.0/src/remote/libvirtd.conf.in
 @@ -17,8 +17,8 @@
  # It is necessary to setup a CA and issue server certificates before
  # using this capability.
@@ -31,10 +31,10 @@ Index: libvirt-7.10.0/src/remote/libvirtd.conf.in
  
  # Listen for unencrypted TCP connections on the public TCP/IP port.
  # NB, must pass the --listen flag to the @DAEMON_NAME@ process for this to
-Index: libvirt-7.10.0/src/remote/test_libvirtd.aug.in
+Index: libvirt-8.0.0/src/remote/test_libvirtd.aug.in
 ===================================================================
---- libvirt-7.10.0.orig/src/remote/test_libvirtd.aug.in
-+++ libvirt-7.10.0/src/remote/test_libvirtd.aug.in
+--- libvirt-8.0.0.orig/src/remote/test_libvirtd.aug.in
++++ libvirt-8.0.0/src/remote/test_libvirtd.aug.in
 @@ -3,7 +3,7 @@ module Test_@DAEMON_NAME@ =
  
     test @DAEMON_NAME_UC@.lns get conf =

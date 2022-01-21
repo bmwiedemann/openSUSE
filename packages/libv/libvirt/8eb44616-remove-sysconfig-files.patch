@@ -1,0 +1,1034 @@
+commit 8eb4461645c5738674232ee26c15f5555230b7ff
+Author: Olaf Hering <olaf@aepfle.de>
+Date:   Wed Jan 12 11:45:08 2022 +0100
+
+    remove sysconfig files
+    
+    sysconfig files are owned by the admin of the host. They have the
+    liberty to put anything they want into these files. This makes it
+    difficult to provide different built-in defaults.
+    
+    Remove the sysconfig file and place the current desired default into
+    the service file.
+    
+    Local customizations can now go either into /etc/sysconfig/name
+    or /etc/systemd/system/name.service.d/my-knobs.conf
+    
+    Attempt to handle upgrades in libvirt.spec.
+    Dirty files which are marked as %config will be renamed to file.rpmsave.
+    To restore them automatically, move stale .rpmsave files away, and
+    catch any new rpmsave files in %posttrans.
+    
+    Signed-off-by: Olaf Hering <olaf@aepfle.de>
+    Reviewed-by: Andrea Bolognani <abologna@redhat.com>
+
+Index: libvirt-8.0.0/docs/daemons.rst
+===================================================================
+--- libvirt-8.0.0.orig/docs/daemons.rst
++++ libvirt-8.0.0/docs/daemons.rst
+@@ -686,3 +686,24 @@ socket unit names into the service. When
+ ``unix_sock_dir`` setting in ``virtlockd.conf`` must be changed in
+ lock-step with the equivalent setting in the unit files to ensure that
+ ``virtlockd`` can identify the sockets.
++
++Changing command line options for daemons
++=========================================
++
++Two ways exist to override the defaults in the provided service files:
++either a systemd "drop-in" configuration file, or a ``/etc/sysconfig/$daemon``
++file must be created.  For example, to change the command line option
++for a debug session of ``libvirtd``, create a file
++``/etc/systemd/system/libvirtd.service.d/debug.conf`` with the following content:
++
++   ::
++
++      [Unit]
++      Description=Virtualization daemon, with override from debug.conf
++
++      [Service]
++      Environment=G_DEBUG=fatal-warnings
++      Environment=LIBVIRTD_ARGS="--listen --verbose"
++
++After changes to systemd "drop-in" configuration files it is required to run
++``systemctl daemon-reload``.
+Index: libvirt-8.0.0/docs/remote.html.in
+===================================================================
+--- libvirt-8.0.0.orig/docs/remote.html.in
++++ libvirt-8.0.0/docs/remote.html.in
+@@ -138,9 +138,9 @@ Blank lines and comments beginning with
+         <td> 1 (on) </td>
+         <td>
+   Listen for secure TLS connections on the public TCP/IP port.
+-  Note: it is also necessary to start the server in listening mode by
+-  running it with --listen or editing /etc/sysconfig/libvirtd by uncommenting the LIBVIRTD_ARGS="--listen" line
+-  to cause the server to come up in listening mode whenever it is started.
++  Note: it is also necessary to start the server in listening mode
++  by running it with --listen or adding a LIBVIRTD_ARGS="--listen"
++  line to /etc/sysconfig/libvirtd.
+ </td>
+       </tr>
+       <tr>
+Index: libvirt-8.0.0/libvirt.spec.in
+===================================================================
+--- libvirt-8.0.0.orig/libvirt.spec.in
++++ libvirt-8.0.0/libvirt.spec.in
+@@ -206,6 +206,24 @@
+ 
+ %define tls_priority "@LIBVIRT,SYSTEM"
+ 
++# libvirt 8.1.0 stops distributing any sysconfig files.
++# If the user has customized their sysconfig file,
++# the RPM upgrade path will rename it to .rpmsave
++# because the file is no longer managed by RPM.
++# To prevent a regression we rename it back after the
++# transaction to preserve the user's modifications
++%define libvirt_sysconfig_pre() \
++    for sc in %{?*} ; do \
++        test -f "%{_sysconfdir}/sysconfig/${sc}.rpmsave" || continue ; \
++        mv -v "%{_sysconfdir}/sysconfig/${sc}.rpmsave" "%{_sysconfdir}/sysconfig/${sc}.rpmsave.old" ; \
++    done \
++    %{nil}
++%define libvirt_sysconfig_posttrans() \
++    for sc in %{?*} ; do \
++        test -f "%{_sysconfdir}/sysconfig/${sc}.rpmsave" || continue ; \
++        mv -v "%{_sysconfdir}/sysconfig/${sc}.rpmsave" "%{_sysconfdir}/sysconfig/${sc}" ; \
++    done \
++    %{nil}
+ 
+ Summary: Library providing a simple virtualization API
+ Name: libvirt
+@@ -1286,6 +1304,7 @@ fi \
+ %define libvirt_daemon_systemd_preun_priv() %systemd_preun %1.service %1-admin.socket %1.socket
+ 
+ %pre daemon
++%libvirt_sysconfig_pre libvirtd virtproxyd virtlogd virtlockd libvirt-guests
+ # 'libvirt' group is just to allow password-less polkit access to
+ # libvirtd. The uid number is irrelevant, so we use dynamic allocation
+ # described at the above link.
+@@ -1334,6 +1353,7 @@ if [ $1 -ge 1 ] ; then
+ fi
+ 
+ %posttrans daemon
++%libvirt_sysconfig_posttrans libvirtd virtproxyd virtlogd virtlockd libvirt-guests
+ if test %libvirt_daemon_needs_restart libvirtd
+ then
+     # See if user has previously modified their install to
+@@ -1374,6 +1394,9 @@ fi
+ 
+ %libvirt_daemon_finish_restart libvirtd
+ 
++%pre daemon-driver-network
++%libvirt_sysconfig_pre virtnetworkd
++
+ %post daemon-driver-network
+ %if %{with_firewalld_zone}
+     %firewalld_reload
+@@ -1393,8 +1416,11 @@ fi
+ %endif
+ 
+ %posttrans daemon-driver-network
++%libvirt_sysconfig_posttrans virtnetworkd
+ %libvirt_daemon_perform_restart virtnetworkd
+ 
++%pre daemon-driver-nwfilter
++%libvirt_sysconfig_pre virtnwfilterd
+ 
+ %post daemon-driver-nwfilter
+ %if %{with_modular_daemons}
+@@ -1406,8 +1432,11 @@ fi
+ %libvirt_daemon_systemd_preun virtnwfilterd
+ 
+ %posttrans daemon-driver-nwfilter
++%libvirt_sysconfig_posttrans virtnwfilterd
+ %libvirt_daemon_perform_restart virtnwfilterd
+ 
++%pre daemon-driver-nodedev
++%libvirt_sysconfig_pre virtnodedevd
+ 
+ %post daemon-driver-nodedev
+ %if %{with_modular_daemons}
+@@ -1419,8 +1448,11 @@ fi
+ %libvirt_daemon_systemd_preun virtnodedevd
+ 
+ %posttrans daemon-driver-nodedev
++%libvirt_sysconfig_posttrans virtnodedevd
+ %libvirt_daemon_perform_restart virtnodedevd
+ 
++%pre daemon-driver-interface
++%libvirt_sysconfig_pre virtinterfaced
+ 
+ %post daemon-driver-interface
+ %if %{with_modular_daemons}
+@@ -1432,8 +1464,11 @@ fi
+ %libvirt_daemon_systemd_preun virtinterfaced
+ 
+ %posttrans daemon-driver-interface
++%libvirt_sysconfig_posttrans virtinterfaced
+ %libvirt_daemon_perform_restart virtinterfaced
+ 
++%pre daemon-driver-secret
++%libvirt_sysconfig_pre virtsecretd
+ 
+ %post daemon-driver-secret
+ %if %{with_modular_daemons}
+@@ -1445,9 +1480,13 @@ fi
+ %libvirt_daemon_systemd_preun virtsecretd
+ 
+ %posttrans daemon-driver-secret
++%libvirt_sysconfig_posttrans virtsecretd
+ %libvirt_daemon_perform_restart virtsecretd
+ 
+ 
++%pre daemon-driver-storage
++%libvirt_sysconfig_pre virtstoraged
++
+ %post daemon-driver-storage
+ %if %{with_modular_daemons}
+ %libvirt_daemon_systemd_post virtstoraged
+@@ -1458,11 +1497,13 @@ fi
+ %libvirt_daemon_systemd_preun virtstoraged
+ 
+ %posttrans daemon-driver-storage
++%libvirt_sysconfig_posttrans virtstoraged
+ %libvirt_daemon_perform_restart virtstoraged
+ 
+ 
+ %if %{with_qemu}
+ %pre daemon-driver-qemu
++%libvirt_sysconfig_pre virtqemud
+ # We want soft static allocation of well-known ids, as disk images
+ # are commonly shared across NFS mounts by id rather than name; see
+ # https://fedoraproject.org/wiki/Packaging:UsersAndGroups
+@@ -1487,11 +1528,15 @@ exit 0
+ %libvirt_daemon_systemd_preun virtqemud
+ 
+ %posttrans daemon-driver-qemu
++%libvirt_sysconfig_posttrans virtqemud
+ %libvirt_daemon_perform_restart virtqemud
+ %endif
+ 
+ 
+ %if %{with_lxc}
++%pre daemon-driver-lxc
++%libvirt_sysconfig_pre virtlxcd
++
+ %post daemon-driver-lxc
+     %if %{with_modular_daemons}
+ %libvirt_daemon_systemd_post virtlxcd
+@@ -1502,6 +1547,7 @@ exit 0
+ %libvirt_daemon_systemd_preun virtlxcd
+ 
+ %posttrans daemon-driver-lxc
++%libvirt_sysconfig_posttrans virtlxcd
+ %libvirt_daemon_perform_restart virtlxcd
+ %endif
+ 
+@@ -1513,10 +1559,14 @@ exit 0
+     %endif
+ %libvirt_daemon_schedule_restart virtvboxd
+ 
++%pre daemon-driver-vbox
++%libvirt_sysconfig_pre virtvboxd
++
+ %preun daemon-driver-vbox
+ %libvirt_daemon_systemd_preun virtvboxd
+ 
+ %posttrans daemon-driver-vbox
++%libvirt_sysconfig_posttrans virtvboxd
+ %libvirt_daemon_perform_restart virtvboxd
+ %endif
+ 
+@@ -1528,10 +1578,14 @@ exit 0
+     %endif
+ %libvirt_daemon_schedule_restart virtxend
+ 
++%pre daemon-driver-libxl
++%libvirt_sysconfig_pre virtxend
++
+ %preun daemon-driver-libxl
+ %libvirt_daemon_systemd_preun virtxend
+ 
+ %posttrans daemon-driver-libxl
++%libvirt_sysconfig_posttrans virtxend
+ %libvirt_daemon_perform_restart virtxend
+ %endif
+ 
+@@ -1634,16 +1688,11 @@ exit 0
+ %{_unitdir}/virtlockd.socket
+ %{_unitdir}/virtlockd-admin.socket
+ %{_unitdir}/libvirt-guests.service
+-%config(noreplace) %{_sysconfdir}/sysconfig/libvirtd
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtproxyd
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtlogd
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtlockd
+ %config(noreplace) %{_sysconfdir}/libvirt/libvirtd.conf
+ %config(noreplace) %{_sysconfdir}/libvirt/virtproxyd.conf
+ %config(noreplace) %{_sysconfdir}/libvirt/virtlogd.conf
+ %config(noreplace) %{_sysconfdir}/libvirt/virtlockd.conf
+ %config(noreplace) %{_sysconfdir}/sasl2/libvirt.conf
+-%config(noreplace) %{_sysconfdir}/sysconfig/libvirt-guests
+ %config(noreplace) %{_prefix}/lib/sysctl.d/60-libvirtd.conf
+ 
+ %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd
+@@ -1717,7 +1766,6 @@ exit 0
+ %ghost %{_sysconfdir}/libvirt/nwfilter/*.xml
+ 
+ %files daemon-driver-interface
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtinterfaced
+ %config(noreplace) %{_sysconfdir}/libvirt/virtinterfaced.conf
+ %{_datadir}/augeas/lenses/virtinterfaced.aug
+ %{_datadir}/augeas/lenses/tests/test_virtinterfaced.aug
+@@ -1730,7 +1778,6 @@ exit 0
+ %{_mandir}/man8/virtinterfaced.8*
+ 
+ %files daemon-driver-network
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtnetworkd
+ %config(noreplace) %{_sysconfdir}/libvirt/virtnetworkd.conf
+ %{_datadir}/augeas/lenses/virtnetworkd.aug
+ %{_datadir}/augeas/lenses/tests/test_virtnetworkd.aug
+@@ -1754,7 +1801,6 @@ exit 0
+ %endif
+ 
+ %files daemon-driver-nodedev
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtnodedevd
+ %config(noreplace) %{_sysconfdir}/libvirt/virtnodedevd.conf
+ %{_datadir}/augeas/lenses/virtnodedevd.aug
+ %{_datadir}/augeas/lenses/tests/test_virtnodedevd.aug
+@@ -1767,7 +1813,6 @@ exit 0
+ %{_mandir}/man8/virtnodedevd.8*
+ 
+ %files daemon-driver-nwfilter
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtnwfilterd
+ %config(noreplace) %{_sysconfdir}/libvirt/virtnwfilterd.conf
+ %{_datadir}/augeas/lenses/virtnwfilterd.aug
+ %{_datadir}/augeas/lenses/tests/test_virtnwfilterd.aug
+@@ -1782,7 +1827,6 @@ exit 0
+ %{_mandir}/man8/virtnwfilterd.8*
+ 
+ %files daemon-driver-secret
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtsecretd
+ %config(noreplace) %{_sysconfdir}/libvirt/virtsecretd.conf
+ %{_datadir}/augeas/lenses/virtsecretd.aug
+ %{_datadir}/augeas/lenses/tests/test_virtsecretd.aug
+@@ -1797,7 +1841,6 @@ exit 0
+ %files daemon-driver-storage
+ 
+ %files daemon-driver-storage-core
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtstoraged
+ %config(noreplace) %{_sysconfdir}/libvirt/virtstoraged.conf
+ %{_datadir}/augeas/lenses/virtstoraged.aug
+ %{_datadir}/augeas/lenses/tests/test_virtstoraged.aug
+@@ -1855,7 +1898,6 @@ exit 0
+ 
+ %if %{with_qemu}
+ %files daemon-driver-qemu
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtqemud
+ %config(noreplace) %{_sysconfdir}/libvirt/virtqemud.conf
+ %config(noreplace) %{_prefix}/lib/sysctl.d/60-qemu-postcopy-migration.conf
+ %{_datadir}/augeas/lenses/virtqemud.aug
+@@ -1885,7 +1927,6 @@ exit 0
+ 
+ %if %{with_lxc}
+ %files daemon-driver-lxc
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtlxcd
+ %config(noreplace) %{_sysconfdir}/libvirt/virtlxcd.conf
+ %{_datadir}/augeas/lenses/virtlxcd.aug
+ %{_datadir}/augeas/lenses/tests/test_virtlxcd.aug
+@@ -1908,7 +1949,6 @@ exit 0
+ 
+ %if %{with_libxl}
+ %files daemon-driver-libxl
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtxend
+ %config(noreplace) %{_sysconfdir}/libvirt/virtxend.conf
+ %{_datadir}/augeas/lenses/virtxend.aug
+ %{_datadir}/augeas/lenses/tests/test_virtxend.aug
+@@ -1931,7 +1971,6 @@ exit 0
+ 
+ %if %{with_vbox}
+ %files daemon-driver-vbox
+-%config(noreplace) %{_sysconfdir}/sysconfig/virtvboxd
+ %config(noreplace) %{_sysconfdir}/libvirt/virtvboxd.conf
+ %{_datadir}/augeas/lenses/virtvboxd.aug
+ %{_datadir}/augeas/lenses/tests/test_virtvboxd.aug
+Index: libvirt-8.0.0/src/ch/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/ch/meson.build
++++ libvirt-8.0.0/src/ch/meson.build
+@@ -63,11 +63,6 @@ if conf.has('WITH_CH')
+     'sockets': [ 'main', 'ro', 'admin' ],
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtchd',
+-    'file': files('virtchd.sysconf'),
+-  }
+-
+   virt_install_dirs += [
+     localstatedir / 'lib' / 'libvirt' / 'ch',
+     runstatedir / 'libvirt' / 'ch',
+Index: libvirt-8.0.0/src/ch/virtchd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/ch/virtchd.service.in
++++ libvirt-8.0.0/src/ch/virtchd.service.in
+@@ -18,6 +18,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTCHD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtchd
+ ExecStart=@sbindir@/virtchd $VIRTCHD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/ch/virtchd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/ch/virtchd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtchd.service systemd unit
+-
+-VIRTCHD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/interface/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/interface/meson.build
++++ libvirt-8.0.0/src/interface/meson.build
+@@ -54,9 +54,4 @@ if conf.has('WITH_INTERFACE')
+     'name': 'virtinterfaced',
+     'in_file': files('virtinterfaced.init.in')
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtinterfaced',
+-    'file': files('virtinterfaced.sysconf'),
+-  }
+ endif
+Index: libvirt-8.0.0/src/interface/virtinterfaced.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/interface/virtinterfaced.service.in
++++ libvirt-8.0.0/src/interface/virtinterfaced.service.in
+@@ -13,6 +13,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTINTERFACED_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtinterfaced
+ ExecStart=@sbindir@/virtinterfaced $VIRTINTERFACED_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/interface/virtinterfaced.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/interface/virtinterfaced.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtinterfaced.service systemd unit
+-
+-VIRTINTERFACED_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/libxl/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/libxl/meson.build
++++ libvirt-8.0.0/src/libxl/meson.build
+@@ -78,11 +78,6 @@ if conf.has('WITH_LIBXL')
+     'in_file': files('virtxend.init.in'),
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtxend',
+-    'file': files('virtxend.sysconf'),
+-  }
+-
+   virt_install_dirs += [
+     localstatedir / 'lib' / 'libvirt' / 'libxl',
+     runstatedir / 'libvirt' / 'libxl',
+Index: libvirt-8.0.0/src/libxl/virtxend.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/libxl/virtxend.service.in
++++ libvirt-8.0.0/src/libxl/virtxend.service.in
+@@ -18,6 +18,7 @@ ConditionPathExists=/proc/xen/capabiliti
+ 
+ [Service]
+ Type=notify
++Environment=VIRTXEND_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtxend
+ ExecStart=@sbindir@/virtxend $VIRTXEND_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/libxl/virtxend.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/libxl/virtxend.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtxend.service systemd unit
+-
+-VIRTXEND_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/locking/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/locking/meson.build
++++ libvirt-8.0.0/src/locking/meson.build
+@@ -156,11 +156,6 @@ if conf.has('WITH_LIBVIRTD')
+     'in_file': files('virtlockd.init.in'),
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtlockd',
+-    'file': files('virtlockd.sysconf'),
+-  }
+-
+   if conf.has('WITH_SANLOCK')
+     virt_helpers += {
+       'name': 'libvirt_sanlock_helper',
+Index: libvirt-8.0.0/src/locking/virtlockd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/locking/virtlockd.service.in
++++ libvirt-8.0.0/src/locking/virtlockd.service.in
+@@ -7,6 +7,7 @@ Documentation=man:virtlockd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
++Environment=VIRTLOCKD_ARGS=
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtlockd
+ ExecStart=@sbindir@/virtlockd $VIRTLOCKD_ARGS
+ ExecReload=/bin/kill -USR1 $MAINPID
+Index: libvirt-8.0.0/src/locking/virtlockd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/locking/virtlockd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtlockd.service systemd unit
+-
+-VIRTLOCKD_ARGS=""
+Index: libvirt-8.0.0/src/logging/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/logging/meson.build
++++ libvirt-8.0.0/src/logging/meson.build
+@@ -101,11 +101,6 @@ if conf.has('WITH_LIBVIRTD')
+     'name': 'virtlogd',
+     'in_file': files('virtlogd.init.in'),
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtlogd',
+-    'file': files('virtlogd.sysconf'),
+-  }
+ endif
+ 
+ log_inc_dir = include_directories('.')
+Index: libvirt-8.0.0/src/logging/virtlogd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/logging/virtlogd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtlogd.service systemd unit
+-
+-VIRTLOGD_ARGS=""
+Index: libvirt-8.0.0/src/lxc/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/lxc/meson.build
++++ libvirt-8.0.0/src/lxc/meson.build
+@@ -175,11 +175,6 @@ if conf.has('WITH_LXC')
+     'in_file': files('virtlxcd.init.in'),
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtlxcd',
+-    'file': files('virtlxcd.sysconf'),
+-  }
+-
+   virt_install_dirs += [
+     localstatedir / 'lib' / 'libvirt' / 'lxc',
+     runstatedir / 'libvirt' / 'lxc',
+Index: libvirt-8.0.0/src/lxc/virtlxcd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/lxc/virtlxcd.service.in
++++ libvirt-8.0.0/src/lxc/virtlxcd.service.in
+@@ -18,6 +18,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTLXCD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtlxcd
+ ExecStart=@sbindir@/virtlxcd $VIRTLXCD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/lxc/virtlxcd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/lxc/virtlxcd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtlxcd.service systemd unit
+-
+-VIRTLXCD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/meson.build
++++ libvirt-8.0.0/src/meson.build
+@@ -208,12 +208,6 @@ virt_daemon_units = []
+ #   * in_file - source init file (required)
+ openrc_init_files = []
+ 
+-# sysconf_files
+-#   install libvirt daemon sysconf files
+-#   * name - daemon name (required)
+-#   * file - source sysconf file (required)
+-sysconf_files = []
+-
+ # virt_install_dirs:
+ #   list of directories to create during installation
+ virt_install_dirs = []
+@@ -868,16 +862,6 @@ if conf.has('WITH_LIBVIRTD')
+   endif
+ endif
+ 
+-if init_script != 'none'
+-  foreach sysconf : sysconf_files
+-    install_data(
+-      sysconf['file'],
+-      install_dir: sysconfdir / 'sysconfig',
+-      rename: [ sysconf['name'] ],
+-    )
+-  endforeach
+-endif
+-
+ if conf.has('WITH_DTRACE_PROBES')
+   custom_target(
+     'libvirt_functions.stp',
+Index: libvirt-8.0.0/src/network/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/network/meson.build
++++ libvirt-8.0.0/src/network/meson.build
+@@ -72,11 +72,6 @@ if conf.has('WITH_NETWORK')
+     'in_file': files('virtnetworkd.init.in'),
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtnetworkd',
+-    'file': files('virtnetworkd.sysconf'),
+-  }
+-
+   virt_install_dirs += [
+     localstatedir / 'lib' / 'libvirt' / 'network',
+     localstatedir / 'lib' / 'libvirt' / 'dnsmasq',
+Index: libvirt-8.0.0/src/network/virtnetworkd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/network/virtnetworkd.service.in
++++ libvirt-8.0.0/src/network/virtnetworkd.service.in
+@@ -16,6 +16,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTNETWORKD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtnetworkd
+ ExecStart=@sbindir@/virtnetworkd $VIRTNETWORKD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/network/virtnetworkd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/network/virtnetworkd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtnetworkd.service systemd unit
+-
+-VIRTNETWORKD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/node_device/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/node_device/meson.build
++++ libvirt-8.0.0/src/node_device/meson.build
+@@ -62,9 +62,4 @@ if conf.has('WITH_NODE_DEVICES')
+     'name': 'virtnodedevd',
+     'in_file': files('virtnodedevd.init.in'),
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtnodedevd',
+-    'file': files('virtnodedevd.sysconf'),
+-  }
+ endif
+Index: libvirt-8.0.0/src/node_device/virtnodedevd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/node_device/virtnodedevd.service.in
++++ libvirt-8.0.0/src/node_device/virtnodedevd.service.in
+@@ -13,6 +13,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTNODEDEVD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtnodedevd
+ ExecStart=@sbindir@/virtnodedevd $VIRTNODEDEVD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/node_device/virtnodedevd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/node_device/virtnodedevd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtnodedevd.service systemd unit
+-
+-VIRTNODEDEVD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/nwfilter/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/nwfilter/meson.build
++++ libvirt-8.0.0/src/nwfilter/meson.build
+@@ -61,10 +61,5 @@ if conf.has('WITH_NWFILTER')
+     'in_file': files('virtnwfilterd.init.in'),
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtnwfilterd',
+-    'file': files('virtnwfilterd.sysconf'),
+-  }
+-
+   subdir('xml')
+ endif
+Index: libvirt-8.0.0/src/nwfilter/virtnwfilterd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/nwfilter/virtnwfilterd.service.in
++++ libvirt-8.0.0/src/nwfilter/virtnwfilterd.service.in
+@@ -13,6 +13,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTNWFILTERD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtnwfilterd
+ ExecStart=@sbindir@/virtnwfilterd $VIRTNWFILTERD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/nwfilter/virtnwfilterd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/nwfilter/virtnwfilterd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtnwfilterd.service systemd unit
+-
+-VIRTNWFILTERD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/qemu/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/qemu/meson.build
++++ libvirt-8.0.0/src/qemu/meson.build
+@@ -165,11 +165,6 @@ if conf.has('WITH_QEMU')
+     'in_file': files('virtqemud.init.in'),
+   }
+ 
+-  sysconf_files += {
+-    'name': 'virtqemud',
+-    'file': files('virtqemud.sysconf'),
+-  }
+-
+   if conf.has('WITH_SYSCTL')
+     install_data(
+       'postcopy-migration.sysctl',
+Index: libvirt-8.0.0/src/qemu/virtqemud.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/qemu/virtqemud.service.in
++++ libvirt-8.0.0/src/qemu/virtqemud.service.in
+@@ -20,6 +20,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTQEMUD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtqemud
+ ExecStart=@sbindir@/virtqemud $VIRTQEMUD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/qemu/virtqemud.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/qemu/virtqemud.sysconf
++++ /dev/null
+@@ -1,12 +0,0 @@
+-# Customizations for the virtqemud.service systemd unit
+-
+-VIRTQEMUD_ARGS="--timeout 120"
+-
+-# Override the QEMU/SDL default audio driver probing when
+-# starting virtual machines using SDL graphics
+-#
+-# NB these have no effect for VMs using VNC, unless vnc_allow_host_audio
+-# is enabled in /etc/libvirt/qemu.conf
+-#QEMU_AUDIO_DRV=sdl
+-#
+-#SDL_AUDIODRIVER=pulse
+Index: libvirt-8.0.0/src/remote/libvirtd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/remote/libvirtd.service.in
++++ libvirt-8.0.0/src/remote/libvirtd.service.in
+@@ -28,6 +28,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=LIBVIRTD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/libvirtd
+ ExecStart=@sbindir@/libvirtd $LIBVIRTD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/remote/libvirtd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/remote/libvirtd.sysconf
++++ /dev/null
+@@ -1,21 +0,0 @@
+-# Customizations for the libvirtd.service systemd unit
+-
+-# Default behaviour is for libvirtd.service to start on boot
+-# so that VM autostart can be performed. We then want it to
+-# shutdown again if nothing was started and rely on systemd
+-# socket activation to start it again when some client app
+-# connects.
+-LIBVIRTD_ARGS="--timeout 120"
+-
+-# If systemd socket activation is disabled, then the following
+-# can be used to listen on TCP/TLS sockets
+-#LIBVIRTD_ARGS="--listen"
+-
+-# Override the QEMU/SDL default audio driver probing when
+-# starting virtual machines using SDL graphics
+-#
+-# NB these have no effect for VMs using VNC, unless vnc_allow_host_audio
+-# is enabled in /etc/libvirt/qemu.conf
+-#QEMU_AUDIO_DRV=sdl
+-#
+-#SDL_AUDIODRIVER=pulse
+Index: libvirt-8.0.0/src/remote/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/remote/meson.build
++++ libvirt-8.0.0/src/remote/meson.build
+@@ -204,11 +204,6 @@ if conf.has('WITH_REMOTE')
+       'confd': files('libvirtd.confd'),
+     }
+ 
+-    sysconf_files += {
+-      'name': 'libvirtd',
+-      'file': files('libvirtd.sysconf'),
+-    }
+-
+     virt_daemons += {
+       'name': 'virtproxyd',
+       'c_args': [
+@@ -239,11 +234,6 @@ if conf.has('WITH_REMOTE')
+       'confd': files('virtproxyd.confd'),
+     }
+ 
+-    sysconf_files += {
+-      'name': 'virtproxyd',
+-      'file': files('virtproxyd.sysconf'),
+-    }
+-
+     virt_install_dirs += [
+       localstatedir / 'log' / 'libvirt',
+     ]
+Index: libvirt-8.0.0/src/remote/virtproxyd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/remote/virtproxyd.service.in
++++ libvirt-8.0.0/src/remote/virtproxyd.service.in
+@@ -13,6 +13,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTPROXYD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtproxyd
+ ExecStart=@sbindir@/virtproxyd $VIRTPROXYD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/remote/virtproxyd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/remote/virtproxyd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtproxyd.service systemd unit
+-
+-VIRTPROXYD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/secret/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/secret/meson.build
++++ libvirt-8.0.0/src/secret/meson.build
+@@ -43,9 +43,4 @@ if conf.has('WITH_SECRETS')
+     'name': 'virtsecretd',
+     'in_file': files('virtsecretd.init.in'),
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtsecretd',
+-    'file': files('virtsecretd.sysconf'),
+-  }
+ endif
+Index: libvirt-8.0.0/src/secret/virtsecretd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/secret/virtsecretd.service.in
++++ libvirt-8.0.0/src/secret/virtsecretd.service.in
+@@ -13,6 +13,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTSECRETD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtsecretd
+ ExecStart=@sbindir@/virtsecretd $VIRTSECRETD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/secret/virtsecretd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/secret/virtsecretd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtsecretd.service systemd unit
+-
+-VIRTSECRETD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/storage/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/storage/meson.build
++++ libvirt-8.0.0/src/storage/meson.build
+@@ -125,11 +125,6 @@ if conf.has('WITH_STORAGE')
+     'name': 'virtstoraged',
+     'in_file': files('virtstoraged.init.in'),
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtstoraged',
+-    'file': files('virtstoraged.sysconf'),
+-  }
+ endif
+ 
+ if conf.has('WITH_STORAGE_DISK')
+Index: libvirt-8.0.0/src/storage/virtstoraged.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/storage/virtstoraged.service.in
++++ libvirt-8.0.0/src/storage/virtstoraged.service.in
+@@ -15,6 +15,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTSTORAGED_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtstoraged
+ ExecStart=@sbindir@/virtstoraged $VIRTSTORAGED_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/storage/virtstoraged.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/storage/virtstoraged.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtstoraged.service systemd unit
+-
+-VIRTSTORAGED_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/vbox/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/vbox/meson.build
++++ libvirt-8.0.0/src/vbox/meson.build
+@@ -68,9 +68,4 @@ if conf.has('WITH_VBOX')
+     'name': 'virtvboxd',
+     'in_file': files('virtvboxd.init.in'),
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtvboxd',
+-    'file': files('virtvboxd.sysconf'),
+-  }
+ endif
+Index: libvirt-8.0.0/src/vbox/virtvboxd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/vbox/virtvboxd.service.in
++++ libvirt-8.0.0/src/vbox/virtvboxd.service.in
+@@ -14,6 +14,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTVBOXD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtvboxd
+ ExecStart=@sbindir@/virtvboxd $VIRTVBOXD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/vbox/virtvboxd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/vbox/virtvboxd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtvboxd.service systemd unit
+-
+-VIRTVBOXD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/src/vz/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/src/vz/meson.build
++++ libvirt-8.0.0/src/vz/meson.build
+@@ -58,9 +58,4 @@ if conf.has('WITH_VZ')
+     'name': 'virtvzd',
+     'in_file': files('virtvzd.init.in'),
+   }
+-
+-  sysconf_files += {
+-    'name': 'virtvzd',
+-    'file': files('virtvzd.sysconf'),
+-  }
+ endif
+Index: libvirt-8.0.0/src/vz/virtvzd.service.in
+===================================================================
+--- libvirt-8.0.0.orig/src/vz/virtvzd.service.in
++++ libvirt-8.0.0/src/vz/virtvzd.service.in
+@@ -14,6 +14,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
++Environment=VIRTVZD_ARGS="--timeout 120"
+ EnvironmentFile=-@sysconfdir@/sysconfig/virtvzd
+ ExecStart=@sbindir@/virtvzd $VIRTVZD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+Index: libvirt-8.0.0/src/vz/virtvzd.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/src/vz/virtvzd.sysconf
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Customizations for the virtvzd.service systemd unit
+-
+-VIRTVZD_ARGS="--timeout 120"
+Index: libvirt-8.0.0/tools/libvirt-guests.sysconf
+===================================================================
+--- libvirt-8.0.0.orig/tools/libvirt-guests.sysconf
++++ /dev/null
+@@ -1,50 +0,0 @@
+-# Customizations for the libvirt-guests.service systemd unit
+-
+-# URIs to check for running guests
+-# example: URIS='default xen:///system vbox+tcp://host/system lxc:///system'
+-#URIS=default
+-
+-# action taken on host boot
+-# - start   all guests which were running on shutdown are started on boot
+-#           regardless on their autostart settings
+-# - ignore  libvirt-guests init script won't start any guest on boot, however,
+-#           guests marked as autostart will still be automatically started by
+-#           libvirtd
+-#ON_BOOT=start
+-
+-# Number of seconds to wait between each guest start. Set to 0 to allow
+-# parallel startup.
+-#START_DELAY=0
+-
+-# action taken on host shutdown
+-# - suspend   all running guests are suspended using virsh managedsave
+-# - shutdown  all running guests are asked to shutdown. Please be careful with
+-#             this settings since there is no way to distinguish between a
+-#             guest which is stuck or ignores shutdown requests and a guest
+-#             which just needs a long time to shutdown. When setting
+-#             ON_SHUTDOWN=shutdown, you must also set SHUTDOWN_TIMEOUT to a
+-#             value suitable for your guests.
+-#ON_SHUTDOWN=suspend
+-
+-# Number of guests will be shutdown concurrently, taking effect when
+-# "ON_SHUTDOWN" is set to "shutdown". If Set to 0, guests will be shutdown one
+-# after another. Number of guests on shutdown at any time will not exceed number
+-# set in this variable.
+-#PARALLEL_SHUTDOWN=0
+-
+-# Number of seconds we're willing to wait for a guest to shut down. If parallel
+-# shutdown is enabled, this timeout applies as a timeout for shutting down all
+-# guests on a single URI defined in the variable URIS. If this is 0, then there
+-# is no time out (use with caution, as guests might not respond to a shutdown
+-# request). The default value is 300 seconds (5 minutes).
+-#SHUTDOWN_TIMEOUT=300
+-
+-# If non-zero, try to bypass the file system cache when saving and
+-# restoring guests, even though this may give slower operation for
+-# some file systems.
+-#BYPASS_CACHE=0
+-
+-# If non-zero, try to sync guest time on domain resume. Be aware, that
+-# this requires guest agent with support for time synchronization
+-# running in the guest. By default, this functionality is turned off.
+-#SYNC_TIME=1
+Index: libvirt-8.0.0/tools/meson.build
+===================================================================
+--- libvirt-8.0.0.orig/tools/meson.build
++++ libvirt-8.0.0/tools/meson.build
+@@ -308,12 +308,6 @@ if conf.has('WITH_LIBVIRTD')
+   )
+ 
+   if init_script == 'systemd'
+-    install_data(
+-      'libvirt-guests.sysconf',
+-      install_dir: sysconfdir / 'sysconfig',
+-      rename: 'libvirt-guests',
+-    )
+-
+     configure_file(
+       input: 'libvirt-guests.service.in',
+       output: '@BASENAME@',

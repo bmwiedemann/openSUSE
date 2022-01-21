@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan 18 17:11:13 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- sysconfig files have not been distributed for many months. Add
+  upstream patches that improve documentation and moves service
+  default settings to the associated systemd service file.
+  3be5ba11-libvirt-guests-install.patch,
+  16172741-libvirt-guests-manpage.patch,
+  8eb44616-remove-sysconfig-files.patch
+
+-------------------------------------------------------------------
+Tue Jan 18 03:06:25 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.0.0
+  - CVE-2021-4147
+  - bsc#1191511
+  - jsc#SLE-11435, jsc#SLE-18354
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-0-0-2022-01-14
+  - Dropped patches:
+    23b51d7b-libxl-disable-death-event.patch,
+    a4e6fba0-libxl-rename-threadinfo-struct.patch,
+    e4f7589a-libxl-shutdown-thread-name.patch,
+    b9a5faea-libxl-handle-death-thread.patch,
+    5c5df531-libxl-search-domid-in-thread.patch,
+    a7a03324-libxl-protect-logger-access.patch,
+    cbae4eaa-libxl-add-domainGetMessages.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 16:36:15 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Implement domainGetMessages API

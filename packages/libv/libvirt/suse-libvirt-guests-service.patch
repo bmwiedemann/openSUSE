@@ -1,9 +1,9 @@
 Adjust libvirt-guests service to conform to SUSE standards
 
-Index: libvirt-7.10.0/tools/libvirt-guests.sh.in
+Index: libvirt-8.0.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-7.10.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-7.10.0/tools/libvirt-guests.sh.in
+--- libvirt-8.0.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-8.0.0/tools/libvirt-guests.sh.in
 @@ -20,10 +20,6 @@ sysconfdir="@sysconfdir@"
  localstatedir="@localstatedir@"
  libvirtd="@sbindir@"/libvirtd

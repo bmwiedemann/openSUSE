@@ -5,10 +5,10 @@ advertised and used by libvirt are automatically detected. Until upstream
 removes the old DEFAULT_LOADER_NVRAM approach and associated code, this
 patch will stay.
 
-Index: libvirt-7.10.0/src/qemu/qemu.conf
+Index: libvirt-8.0.0/src/qemu/qemu.conf
 ===================================================================
---- libvirt-7.10.0.orig/src/qemu/qemu.conf
-+++ libvirt-7.10.0/src/qemu/qemu.conf
+--- libvirt-8.0.0.orig/src/qemu/qemu.conf
++++ libvirt-8.0.0/src/qemu/qemu.conf
 @@ -857,10 +857,9 @@
  # for x86_64 and i686, but it's AAVMF for aarch64. The libvirt default
  # follows this scheme.
@@ -23,10 +23,10 @@ Index: libvirt-7.10.0/src/qemu/qemu.conf
  #]
  
  # The backend to use for handling stdout/stderr output from
-Index: libvirt-7.10.0/src/qemu/qemu_conf.c
+Index: libvirt-8.0.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-7.10.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-7.10.0/src/qemu/qemu_conf.c
+--- libvirt-8.0.0.orig/src/qemu/qemu_conf.c
++++ libvirt-8.0.0/src/qemu/qemu_conf.c
 @@ -98,10 +98,9 @@ qemuDriverUnlock(virQEMUDriver *driver)
  
  #ifndef DEFAULT_LOADER_NVRAM
@@ -41,10 +41,10 @@ Index: libvirt-7.10.0/src/qemu/qemu_conf.c
  #endif
  
  
-Index: libvirt-7.10.0/src/security/virt-aa-helper.c
+Index: libvirt-8.0.0/src/security/virt-aa-helper.c
 ===================================================================
---- libvirt-7.10.0.orig/src/security/virt-aa-helper.c
-+++ libvirt-7.10.0/src/security/virt-aa-helper.c
+--- libvirt-8.0.0.orig/src/security/virt-aa-helper.c
++++ libvirt-8.0.0/src/security/virt-aa-helper.c
 @@ -480,7 +480,8 @@ valid_path(const char *path, const bool
          "/usr/share/ovmf/",              /* for OVMF images */
          "/usr/share/AAVMF/",             /* for AAVMF images */
@@ -55,10 +55,10 @@ Index: libvirt-7.10.0/src/security/virt-aa-helper.c
      };
      /* override the above with these */
      const char * const override[] = {
-Index: libvirt-7.10.0/src/qemu/test_libvirtd_qemu.aug.in
+Index: libvirt-8.0.0/src/qemu/test_libvirtd_qemu.aug.in
 ===================================================================
---- libvirt-7.10.0.orig/src/qemu/test_libvirtd_qemu.aug.in
-+++ libvirt-7.10.0/src/qemu/test_libvirtd_qemu.aug.in
+--- libvirt-8.0.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-8.0.0/src/qemu/test_libvirtd_qemu.aug.in
 @@ -96,10 +96,9 @@ module Test_libvirtd_qemu =
  { "migration_port_max" = "49215" }
  { "log_timestamp" = "0" }

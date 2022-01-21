@@ -1,7 +1,7 @@
-Index: libvirt-7.10.0/tools/virt-create-rootfs
+Index: libvirt-8.0.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-7.10.0/tools/virt-create-rootfs
++++ libvirt-8.0.0/tools/virt-create-rootfs
 @@ -0,0 +1,236 @@
 +#!/bin/sh
 +set -e
@@ -239,10 +239,10 @@ Index: libvirt-7.10.0/tools/virt-create-rootfs
 +    echo "pts/0" >> "$ROOT/etc/securetty"
 +    chroot "$ROOT" /usr/bin/passwd
 +fi
-Index: libvirt-7.10.0/docs/manpages/virt-create-rootfs.rst
+Index: libvirt-8.0.0/docs/manpages/virt-create-rootfs.rst
 ===================================================================
 --- /dev/null
-+++ libvirt-7.10.0/docs/manpages/virt-create-rootfs.rst
++++ libvirt-8.0.0/docs/manpages/virt-create-rootfs.rst
 @@ -0,0 +1,88 @@
 +==================
 +virt-create-rootfs
@@ -332,22 +332,22 @@ Index: libvirt-7.10.0/docs/manpages/virt-create-rootfs.rst
 +========
 +
 +virsh(1), `https://libvirt.org/ <https://libvirt.org/>`_
-Index: libvirt-7.10.0/docs/manpages/meson.build
+Index: libvirt-8.0.0/docs/manpages/meson.build
 ===================================================================
---- libvirt-7.10.0.orig/docs/manpages/meson.build
-+++ libvirt-7.10.0/docs/manpages/meson.build
-@@ -19,6 +19,7 @@ docs_man_files = [
+--- libvirt-8.0.0.orig/docs/manpages/meson.build
++++ libvirt-8.0.0/docs/manpages/meson.build
+@@ -20,6 +20,7 @@ docs_man_files = [
    { 'name': 'virt-pki-validate', 'section': '1', 'install': true },
    { 'name': 'virt-qemu-run', 'section': '1', 'install': conf.has('WITH_QEMU') },
    { 'name': 'virt-xml-validate', 'section': '1', 'install': true },
 +  { 'name': 'virt-create-rootfs', 'section': '1', 'install': true },
  
+   { 'name': 'libvirt-guests', 'section': '8', 'install': conf.has('WITH_LIBVIRTD') },
    { 'name': 'libvirtd', 'section': '8', 'install': conf.has('WITH_LIBVIRTD') },
-   { 'name': 'virt-sanlock-cleanup', 'section': '8', 'install': conf.has('WITH_SANLOCK') },
-Index: libvirt-7.10.0/tools/meson.build
+Index: libvirt-8.0.0/tools/meson.build
 ===================================================================
---- libvirt-7.10.0.orig/tools/meson.build
-+++ libvirt-7.10.0/tools/meson.build
+--- libvirt-8.0.0.orig/tools/meson.build
++++ libvirt-8.0.0/tools/meson.build
 @@ -154,6 +154,8 @@ else
    virsh_icon_res = []
  endif
