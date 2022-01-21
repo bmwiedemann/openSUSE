@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 17 03:08:40 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.036
+   see /usr/share/doc/packages/perl-Test-LWP-UserAgent/Changes
+
+  0.036     2022-01-16 04:11:38Z
+            - use http rather than https URIs in network tests
+
+  0.035     2022-01-15 03:45:06Z
+            - fix network test that failed due to a broken redirect service
+
+-------------------------------------------------------------------
 Sat Mar  7 03:12:24 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.034
