@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
+Patch1:         0001-fsm-fix-device-rename-via-yast-bsc-1194392.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -185,6 +186,7 @@ This package provides the wicked development files.
 
 %prep
 %setup
+%patch1 -p1
 
 %build
 test -x ./configure || autoreconf --force --install

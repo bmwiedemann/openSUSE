@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 19 16:36:28 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- fsm: fix device rename via yast (bsc#1194392)
+  Reset worker config instead to reject a NULL/empty config
+  xml node -- introduced in wicked 0.6.67 by commit c2a0385.
+  [+ 0001-fsm-fix-device-rename-via-yast-bsc-1194392.patch]
+
+-------------------------------------------------------------------
 Tue Dec 21 08:44:56 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - version 0.6.68

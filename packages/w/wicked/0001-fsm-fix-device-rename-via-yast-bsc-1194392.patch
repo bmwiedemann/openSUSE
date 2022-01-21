@@ -1,0 +1,32 @@
+From cc33ea321801ad8cd6689addd47d32215925de28 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Tue, 18 Jan 2022 16:09:39 +0100
+Subject: [PATCH] fsm: fix device rename via yast (bsc#1194392)
+
+Reset worker config instead to reject a NULL/empty config
+xml node -- introduced in wicked 0.6.67 by commit c2a0385.
+
+diff --git a/src/fsm.c b/src/fsm.c
+index 416e7c49..37d588d8 100644
+--- a/src/fsm.c
++++ b/src/fsm.c
+@@ -2088,11 +2088,15 @@ ni_ifworker_set_config(ni_ifworker_t *w, xml_node_t *ifnode, const char *config_
+ {
+ 	xml_node_t *child;
+ 
+-	if (!w || xml_node_is_empty(ifnode))
++	if (!w)
+ 		return FALSE;
+ 
+ 	xml_node_free(w->config.node);
++	w->config.node = NULL;
+ 	ni_client_state_config_reset(&w->config.meta);
++	if (xml_node_is_empty(ifnode))
++		return TRUE;
++
+ 	if (!(w->config.node = xml_node_clone_ref(ifnode)))
+ 		return FALSE;
+ 
+-- 
+2.31.1
+

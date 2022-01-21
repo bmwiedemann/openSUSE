@@ -1612,4 +1612,15 @@
 - ifstatus: fix warning of unexpected interface flag combination (bsc#1192164)</comment>
     <requestid>942094</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>fd30a1eec7ddb193f514695cb0b4e024</srcmd5>
+    <version>0.6.68</version>
+    <time>1642724719</time>
+    <user>dimstar_suse</user>
+    <comment>- fsm: fix device rename via yast (bsc#1194392)
+  Reset worker config instead to reject a NULL/empty config
+  xml node -- introduced in wicked 0.6.67 by commit c2a0385.
+  [+ 0001-fsm-fix-device-rename-via-yast-bsc-1194392.patch]</comment>
+    <requestid>947475</requestid>
+  </revision>
 </revisionlist>
