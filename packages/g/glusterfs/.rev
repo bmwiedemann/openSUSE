@@ -257,4 +257,12 @@
     <comment>- Update to release 9.3</comment>
     <requestid>923583</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>788c9f20fe4ad8a4c0548d748ec15800</srcmd5>
+    <version>9.3</version>
+    <time>1642724713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947447</requestid>
+  </revision>
 </revisionlist>

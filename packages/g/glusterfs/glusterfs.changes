@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 19 00:00:00 CET 2022 - dsterba@suse.cz
+
+- add python-rpm-macros as dependency, fix build on on Leap 15.x
+
+-------------------------------------------------------------------
 Tue Sep 28 14:31:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.3
