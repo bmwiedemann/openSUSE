@@ -1,0 +1,23 @@
+From 76d5a9ec270a763c892ae28070e391cf99e0b7cd Mon Sep 17 00:00:00 2001
+From: William S Fulton <wsf@fultondesigns.co.uk>
+Date: Tue, 18 Jan 2022 21:37:02 +0000
+Subject: [PATCH] gcc-12 warning fix in test-case
+
+Closes #2145
+---
+ Examples/test-suite/nested_class.i | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Examples/test-suite/nested_class.i b/Examples/test-suite/nested_class.i
+index b10c339493e..c778a12cf7c 100644
+--- a/Examples/test-suite/nested_class.i
++++ b/Examples/test-suite/nested_class.i
+@@ -201,7 +201,7 @@ struct Outer {
+     Integer xx;
+   } MultipleInstanceAnonDerived1, MultipleInstanceAnonDerived2, *MultipleInstanceAnonDerived3, MultipleInstanceAnonDerived4[2];
+ 
+-#if defined(__GNUC__) || defined(_MSC_VER) || defined(SWIG)
++#if (defined(__GNUC__) && __GNUC__ < 12) || defined(_MSC_VER) || defined(SWIG)
+ /* some compilers do not accept these */
+   struct : public InnerMultiple {
+     Integer xx;

@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Source1:        %{name}.rpmlintrc
 
 # PATCH-FIX-UPSTREAM swig-octave-6.patch gh#swig/swig#2020 badshah400@gmail.com -- Allow swig to work with octave 6 and above; patch part of upstream merge request
 Patch0:         swig-octave-6.patch
+Patch1:         fix-gcc12-error.patch
 Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
