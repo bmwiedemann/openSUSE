@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 18 15:23:14 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Delete /etc/machine-id, necessary for ConditionFirstBoot
+- Add rw to the default boot options to fix /etc/machine-id setup
+  (bsc#1194484, see also gh#OSInside/kiwi#1650)
+
+-------------------------------------------------------------------
 Tue Nov 16 13:07:23 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
-- Install AppArmor pattern and audit
+- Install AppArmor pattern and audit (jsc#SLE-22705)
 
 -------------------------------------------------------------------
 Fri Nov 12 08:29:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>

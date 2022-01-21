@@ -226,4 +226,16 @@
     <comment></comment>
     <requestid>931917</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>aa7520b09e0c2eb4c8e72450d970fe30</srcmd5>
+    <version>84.87</version>
+    <time>1642724699</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete /etc/machine-id, necessary for ConditionFirstBoot
+- Add rw to the default boot options to fix /etc/machine-id setup
+  (bsc#1194484, see also gh#OSInside/kiwi#1650)
+
+- Install AppArmor pattern and audit (jsc#SLE-22705)</comment>
+    <requestid>947256</requestid>
+  </revision>
 </revisionlist>

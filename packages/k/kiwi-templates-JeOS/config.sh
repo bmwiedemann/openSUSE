@@ -42,7 +42,8 @@ echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 # prepare for setting root pw, timezone
 #--------------------------------------
 echo "** reset machine settings"
-rm -f /var/lib/zypp/AnonymousUniqueId \
+rm -f /etc/machine-id \
+      /var/lib/zypp/AnonymousUniqueId \
       /var/lib/systemd/random-seed
 
 #======================================
