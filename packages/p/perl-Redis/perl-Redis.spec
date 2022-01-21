@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Redis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Redis
-Version:        1.998
-Release:        0
 %define cpan_name Redis
+Name:           perl-Redis
+Version:        1.999
+Release:        0
 Summary:        Perl binding for Redis database
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAMS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA)
@@ -47,7 +45,7 @@ Requires:       perl(Try::Tiny)
 %{perl_requires}
 
 %description
-Pure perl bindings for http://redis.io/
+Pure perl bindings for https://redis.io/
 
 This version supports protocol 2.x (multi-bulk) or later of Redis available
 at https://github.com/antirez/redis/.
@@ -58,7 +56,7 @@ information to support almost all commands with same piece of code with a
 little help of 'AUTOLOAD'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -73,7 +71,6 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
