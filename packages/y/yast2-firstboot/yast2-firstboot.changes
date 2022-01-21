@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 17 11:41:43 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Add client to configure settings for WSL images (jsc#SLE-20413).
+- Provide a yast2-firstboot-wsl subpackage to deploy specific
+  firstboot config for WSL.
+- 4.4.7
+
+-------------------------------------------------------------------
 Wed Sep 29 12:43:04 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Adap clients to changes in Y2Users API (related to jsc#SLE-20592)

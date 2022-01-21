@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-firstboot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.4.6
+Version:        4.4.7
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -58,6 +58,15 @@ deployments where the system in the image is completely configured,
 however some last steps like root password and user logins have to be
 created to personalize the system.
 
+%package wsl
+Summary:        YaST2 firstboot settings for WSL images
+Group:          System/YaST
+
+Requires:       %{name} = %{version}
+
+%description wsl
+YaST2 firstboot settings for WSL images
+
 %prep
 %setup -q
 
@@ -75,6 +84,11 @@ sed -i '/<name>registration/,+1s/false/true/' control/firstboot.xml
 %yast_metainfo
 
 mkdir -p %{buildroot}%{_datadir}/firstboot/scripts
+
+mkdir -p %{buildroot}%{yast_ydatadir}
+
+install -m 644 wsl/firstboot.xml %{buildroot}%{_sysconfdir}/YaST2/firstboot-wsl.xml
+install -m 644 wsl/welcome.txt %{buildroot}%{yast_ydatadir}
 
 %check
 # verify defaults for registration
@@ -94,6 +108,12 @@ ruby -r rexml/document -e '
 %post
 %{fillup_only -n firstboot}
 
+%post wsl
+sed -i -E 's/(FIRSTBOOT_CONTROL_FILE=).+/\1"\/etc\/YaST2\/firstboot-wsl.xml"/' /etc/sysconfig/firstboot
+
+%postun wsl
+sed -i -E 's/(FIRSTBOOT_CONTROL_FILE=).+/\1""/' /etc/sysconfig/firstboot
+
 %files
 %license COPYING
 %doc %{yast_docdir}
@@ -108,6 +128,11 @@ ruby -r rexml/document -e '
 %{_datadir}/firstboot
 %{_datadir}/autoinstall
 %{_datadir}/icons/hicolor/*/apps/yast-firstboot*
-%{_sysconfdir}/YaST2
+%dir %{_sysconfdir}/YaST2
+%{_sysconfdir}/YaST2/firstboot.xml
+
+%files wsl
+%{_sysconfdir}/YaST2/firstboot-wsl.xml
+%{yast_ydatadir}/welcome.txt
 
 %changelog
