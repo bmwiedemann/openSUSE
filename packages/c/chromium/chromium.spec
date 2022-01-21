@@ -17,7 +17,7 @@
 
 
 %define rname chromium
-%define outputdir ${TMPOUT}
+%define outputdir out
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
@@ -297,10 +297,11 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %prep
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
+%if 0%{?suse_version} >= 1550
+patch -R -p1 < %{PATCH68}
+%endif
 
 %build
-mktemp -d -t chromium-XXXXXXXXXX > temp.txt
-export TMPOUT=`cat temp.txt`
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -785,7 +786,6 @@ gn gen --args="${myconf_gn}" %{outputdir}
 ninja -v %{?_smp_mflags} -C %{outputdir} chrome chromedriver
 
 %install
-export TMPOUT=`cat temp.txt`
 bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true} -o %{outputdir}
 # chromedriver
 cp -a %{outputdir}/chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver

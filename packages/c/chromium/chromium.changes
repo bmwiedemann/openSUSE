@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 09:46:50 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Revert chromium-94-ffmpeg-roll.patch on TW: fix moved to
+  FFmpeg
+
+-------------------------------------------------------------------
 Tue Jan 11 20:00:16 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 97.0.4692.71 (boo#1194331):
