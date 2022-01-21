@@ -25,7 +25,7 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfusn
 Source:         https://github.com/libyal/libfusn/releases/download/%version/libfusn-experimental-%version.tar.gz
-Source2:        https://github.com/libyal/libfusn/releases/download/%version/libfusn-experimental-%version.tar.gz.sac
+Source2:        https://github.com/libyal/libfusn/releases/download/%version/libfusn-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler

@@ -15,4 +15,12 @@
     <comment>- Update to release 20220119</comment>
     <requestid>947381</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a77d02349f74a4d81992004be33fae3e</srcmd5>
+    <version>20220119</version>
+    <time>1642724735</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide proper tarball signature file.</comment>
+    <requestid>947644</requestid>
+  </revision>
 </revisionlist>
