@@ -26,8 +26,8 @@
 Version:        1.2.17
 Release:        0
 Summary:        Java logging tool
-Group:          Development/Libraries/Java
 License:        Apache-2.0
+Group:          Development/Libraries/Java
 URL:            https://logging.apache.org/log4j/
 Source0:        http://www.apache.org/dist/logging/log4j/%{version}/log4j-%{version}.tar.gz
 # Converted from src/java/org/apache/log4j/lf5/viewer/images/lf5_small_icon.gif
@@ -35,9 +35,6 @@ Source1:        log4j-logfactor5.png
 Source2:        log4j-logfactor5.sh
 Source3:        log4j-logfactor5.desktop
 # Converted from docs/images/logo.jpg
-Source4:        log4j-chainsaw.png
-Source5:        log4j-chainsaw.sh
-Source6:        log4j-chainsaw.desktop
 Source7:        log4j.catalog
 Patch0:         log4j-logfactor5-userdir.patch
 Patch1:         log4j-javadoc-xlink.patch
@@ -48,6 +45,7 @@ Patch3:         log4j-reproducible.patch
 Patch4:         log4j-CVE-2019-17571.patch
 # PATCH-FIX-OPENSUSE -- add bundle manifest
 Patch5:         log4j12-bundle_manifest.patch
+Patch6:         log4j12-missingmodules.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -59,6 +57,7 @@ Requires:       javapackages-tools
 Requires:       jaxp_parser_impl
 Requires:       xml-apis
 Requires(pre):  coreutils
+Obsoletes:      chainsaw < 2.1
 Obsoletes:      log4j < 1.3
 Obsoletes:      log4j-mini < 1.3
 BuildArch:      noarch
@@ -98,18 +97,9 @@ Summary:        Java logging tool (Documentation)
 %description    javadoc
 Documentation javadoc for Java logging tool log4j.
 
-%package      -n chainsaw
-Group:          Development/Tools/Navigators
-URL:            https://logging.apache.org/chainsaw/
-Summary:        Log Viewer GUI
-Requires:       log4j12
-
-%description -n chainsaw
-A GUI-based Log viewer mainly for use with log4j.
-
 %package      -n logfactor5
-Group:          Development/Tools/Navigators
 Summary:        Log Viewer GUI
+Group:          Development/Tools/Navigators
 
 %description -n logfactor5
 LogFactor5 is a Swing based GUI to view log4j logs.
@@ -125,6 +115,7 @@ LogFactor5 is a Swing based GUI to view log4j logs.
 %if %{without bootstrap}
 %patch5 -p1
 %endif
+%patch6 -p1
 
 sed -i 's/\r//g' LICENSE NOTICE src/site/resources/css/*.css
 
@@ -138,7 +129,12 @@ for i in contribs/JimMoore/mail*;do
     mv new "$i"
 done
 
-rm -f src/main/java/org/apache/log4j/net/JMSAppender.java
+# Avoid exploits CVE-2021-4104 [bsc#1193662],
+# CVE-2022-23302 [bsc#1194842] and CVE-2022-23305 [bsc#1194843]
+rm -f \
+  src/main/java/org/apache/log4j/net/JMSAppender.java \
+  src/main/java/org/apache/log4j/net/JMSSink.java \
+  src/main/java/org/apache/log4j/jdbc/JDBCAppender.java
 
 %build
 %{ant} \
@@ -178,21 +174,15 @@ ln -s %{_javadocdir}/%{name} docs/api
 # scripts
 mkdir -p %{buildroot}%{_bindir}
 install -p -m 755 %{SOURCE2} %{buildroot}%{_bindir}/logfactor5
-install -p -m 755 %{SOURCE5} %{buildroot}%{_bindir}/chainsaw
 # freedesktop.org menu entries and icons
 mkdir -p %{buildroot}%{_datadir}/{applications,pixmaps}
 cp -a %{SOURCE1} \
   %{buildroot}%{_datadir}/pixmaps/logfactor5.png
 cp -a %{SOURCE3} \
   %{buildroot}%{_datadir}/applications/jpackage-logfactor5.desktop
-cp -a %{SOURCE4} \
-  %{buildroot}%{_datadir}/pixmaps/chainsaw.png
-cp -a %{SOURCE6} \
-  %{buildroot}%{_datadir}/applications/jpackage-chainsaw.desktop
 # fix perl location
 perl -p -i -e 's|/opt/perl5/bin/perl|perl|' \
 contribs/KitchingSimon/udpserver.pl
-%suse_update_desktop_file jpackage-chainsaw Development Debugger
 %suse_update_desktop_file jpackage-logfactor5 Development Debugger
 
 %endif
@@ -247,11 +237,6 @@ fi
 %files javadoc
 %dir %{_javadocdir}/%{name}
 %{_javadocdir}/%{name}/*
-
-%files -n chainsaw
-%{_bindir}/chainsaw
-%{_datadir}/applications/jpackage-chainsaw.desktop
-%{_datadir}/pixmaps/chainsaw.png
 
 %files -n logfactor5
 %{_bindir}/logfactor5

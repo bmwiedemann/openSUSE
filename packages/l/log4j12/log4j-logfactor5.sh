@@ -15,7 +15,7 @@ fi
 
 # Configuration
 MAIN_CLASS=org.apache.log4j.lf5.StartLogFactor5
-BASE_JARS="log4j xml-commons-apis jaxp_parser_impl"
+BASE_JARS="log4j12 xml-commons-apis jaxp_parser_impl"
 
 # Set parameters
 set_jvm

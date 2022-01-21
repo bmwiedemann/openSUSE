@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 19 10:24:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the chainsaw sub-package (bsc#1194844, CVE-2022-23307)
+- Remove src/main/java/org/apache/log4j/jdbc/JDBCAppender.java from
+  the build to mitigate bsc#1194843, CVE-2022-23305
+- Remove src/main/java/org/apache/log4j/net/JMSSink.java from the
+  build to mitigate bsc#1194842, CVE-2022-23302
+- Obsolete chainsaw < 2.1 by the log4j12 package
+- Added patch:
+  * log4j12-missingmodules.patch
+    + do not package org.apache.log4j.chainsaw classes
+    + package org.apache.log4j.pattern classes that will be needed
+      by apache-log4j-extras which is a dependency of chainsaw 2.x
+
+-------------------------------------------------------------------
 Tue Jan  4 12:50:19 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Fix 'chainsaw' package: [bsc#1193184 - Chainsaw does not start]
