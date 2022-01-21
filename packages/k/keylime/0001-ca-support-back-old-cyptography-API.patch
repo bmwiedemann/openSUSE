@@ -1,0 +1,95 @@
+From 57d033e9a9a5946a63c9d161381dee4830017531 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Tue, 18 Jan 2022 15:04:55 +0100
+Subject: [PATCH] ca: support back old cyptography API
+
+After [1] we moved from M2Crypto to cryptography, and we started to drop
+the use of the, now optional, `backend` parameter.  This is OK as we are
+explicit on the minimal version of cryptography, but we still use in
+other modules (like crypto.py or tpm_main.py for example) the old API.
+
+This patch use the optional `backend` parameter to unify the API usage,
+and still be compatible with some older versions of cryptography.
+
+[1] https://github.com/keylime/keylime/pull/747
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ keylime/ca_impl_cfssl.py   | 2 ++
+ keylime/ca_impl_openssl.py | 4 ++++
+ keylime/ca_util.py         | 6 +++++-
+ 3 files changed, 11 insertions(+), 1 deletion(-)
+
+Index: keylime-v6.2.1/keylime/ca_impl_cfssl.py
+===================================================================
+--- keylime-v6.2.1.orig/keylime/ca_impl_cfssl.py
++++ keylime-v6.2.1/keylime/ca_impl_cfssl.py
+@@ -127,6 +127,7 @@ def mk_cacert(name=None):
+         privkey = serialization.load_pem_private_key(
+             body['result']['private_key'].encode('utf-8'),
+             password=None,
++            backend=default_backend(),
+         )
+         cert = x509.load_pem_x509_certificate(
+             data=body['result']['certificate'].encode('utf-8'),
+@@ -212,6 +213,7 @@ def mk_signed_cert(cacert, ca_pk, name,
+         pk = serialization.load_pem_private_key(
+             body['result']['private_key'].encode('utf-8'),
+             password=None,
++            backend=default_backend(),
+         )
+         cert = x509.load_pem_x509_certificate(
+             data=body['result']['certificate'].encode('utf-8'),
+Index: keylime-v6.2.1/keylime/ca_impl_openssl.py
+===================================================================
+--- keylime-v6.2.1.orig/keylime/ca_impl_openssl.py
++++ keylime-v6.2.1/keylime/ca_impl_openssl.py
+@@ -6,6 +6,7 @@ Copyright 2017 Massachusetts Institute o
+ import datetime
+ 
+ from cryptography import x509
++from cryptography.hazmat.backends import default_backend
+ from cryptography.hazmat.primitives import hashes
+ from cryptography.hazmat.primitives.asymmetric import rsa
+ from cryptography.x509.oid import NameOID
+@@ -63,6 +64,7 @@ def mk_request(bits, common_name):
+     privkey = rsa.generate_private_key(
+         public_exponent=65537,
+         key_size=bits,
++        backend=default_backend(),
+     )
+ 
+     cert_req = x509.CertificateBuilder()
+@@ -128,6 +130,7 @@ def mk_cacert(name=None):
+     cert = cert_req.sign(
+         private_key=privkey,
+         algorithm=hashes.SHA256(),
++        backend=default_backend(),
+     )
+ 
+     return cert, privkey, pubkey
+@@ -177,6 +180,7 @@ def mk_signed_cert(cacert, ca_privkey, n
+     cert = cert_req.sign(
+         private_key=ca_privkey,
+         algorithm=hashes.SHA256(),
++        backend=default_backend(),
+     )
+     return cert, privkey
+ 
+Index: keylime-v6.2.1/keylime/ca_util.py
+===================================================================
+--- keylime-v6.2.1.orig/keylime/ca_util.py
++++ keylime-v6.2.1/keylime/ca_util.py
+@@ -88,7 +88,11 @@ def cmd_mkcert(workingdir, name):
+         config.ch_dir(workingdir, logger)
+         priv = read_private()
+         cacert = load_cert_by_path('cacert.crt')
+-        ca_pk = serialization.load_pem_private_key(priv[0]['ca'], password=None)
++        ca_pk = serialization.load_pem_private_key(
++            priv[0]['ca'],
++            password=None,
++            backend=default_backend()
++        )
+ 
+         cert, pk = ca_impl.mk_signed_cert(
+             cacert, ca_pk, name, priv[0]['lastserial'] + 1)

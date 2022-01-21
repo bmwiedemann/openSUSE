@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 18 14:28:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add 0001-config-support-merge-multiple-config-files.patch
+  This will allow the merge of config files in /usr/etc and /etc.
+- Move the configuration file to /usr/etc in new distributions
+- Add 0001-ca-support-back-old-cyptography-API.patch
+  This is only required for SLE, but the API is compatible with new versions
+
+-------------------------------------------------------------------
 Tue Jan 11 13:38:19 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add 0001-Drop-dataclasses-module-usage.patch, to support Python 3.6

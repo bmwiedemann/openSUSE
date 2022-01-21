@@ -40,6 +40,10 @@ Patch2:         keylime.conf.diff
 Patch3:         config-libefivars.diff
 # PATCH-FIX-UPSTREAM 0001-Drop-dataclasses-module-usage.patch (gh#keylime/keylime!827)
 Patch4:         0001-Drop-dataclasses-module-usage.patch
+# PATCH-FIX-UPSTREAM 0001-config-support-merge-multiple-config-files.patch (gh#keylime/keylime!829)
+Patch5:         0001-config-support-merge-multiple-config-files.patch
+# PATCH-FIX-UPSTREAM 0001-ca-support-back-old-cyptography-API.patch (gh#keylime/keylime!839)
+Patch6:         0001-ca-support-back-old-cyptography-API.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -154,7 +158,13 @@ cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if 0%{?suse_version} >= 1550
+# setup.py copy keylime.conf in /etc, but we expect it in /usr/etc
+rm %{buildroot}%{_sysconfdir}/%{srcname}.conf
+install -Dpm 600 %{srcname}.conf %{buildroot}%{_prefix}%{_sysconfdir}/%{srcname}.conf
+%else
 install -Dpm 600 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
+%endif
 install -Dpm 644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
 install -Dpm 644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
 install -Dpm 644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
@@ -253,7 +263,11 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{python_sitelib}/*
 
 %files -n %{srcname}-config
+%if 0%{?suse_version} >= 1550
+%{_prefix}%{_sysconfdir}/%{srcname}.conf
+%else
 %config(noreplace) %{_sysconfdir}/%{srcname}.conf
+%endif
 
 %files -n %{srcname}-firewalld
 %dir %{_prefix}/lib/firewalld
