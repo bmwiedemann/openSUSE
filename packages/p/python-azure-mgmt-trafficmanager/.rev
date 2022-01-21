@@ -47,4 +47,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853993</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3079829c1bc00923fd71d790362851c2</srcmd5>
+    <version>1.0.0</version>
+    <time>1642724737</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py (forwarded request 947679 from glaubitz)</comment>
+    <requestid>947682</requestid>
+  </revision>
 </revisionlist>
