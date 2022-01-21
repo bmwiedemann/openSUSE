@@ -1,7 +1,7 @@
 #
 # spec file for package kbd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ Source43:       repack_kbd.sh
 Source44:       xml2lst.pl
 Source45:       genmap4systemd.sh
 Patch0:         kbd-1.15.2-prtscr_no_sigquit.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-libkfont-Initialize-kfont_context-options.patch
 Patch2:         kbd-1.15.2-unicode_scripts.patch
 Patch3:         kbd-1.15.2-docu-X11R6-xorg.patch
 Patch4:         kbd-1.15.2-sv-latin1-keycode10.patch
@@ -117,6 +119,7 @@ cp -fp %{SOURCE20} .
 cp -fp %{SOURCE21} .
 cp -fp %{SOURCE22} .
 %patch0 -p1
+%patch1 -p1
 %patch2
 %patch3
 %patch4 -p1
