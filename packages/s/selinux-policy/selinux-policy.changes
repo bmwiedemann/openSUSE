@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 14 15:07:00 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Allow colord to use systemd hardenings (bsc#1194631)
+
+-------------------------------------------------------------------
 Thu Nov 11 14:21:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20211111. Refreshed:
