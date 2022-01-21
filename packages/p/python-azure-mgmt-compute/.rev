@@ -203,4 +203,15 @@
 - Update Requires from setup.py (forwarded request 944710 from glaubitz)</comment>
     <requestid>944743</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>21a9f8587545d60da1c28fdd4a7a5fa7</srcmd5>
+    <version>24.0.1</version>
+    <time>1642724738</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 24.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 947653 from glaubitz)</comment>
+    <requestid>947684</requestid>
+  </revision>
 </revisionlist>
