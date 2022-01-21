@@ -1,7 +1,7 @@
 #
 # spec file for package python-gast
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define srcname gast
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gast
-Version:        0.4.0
+Version:        0.5.3
 Release:        0
 Summary:        Python AST that abstracts the underlying Python version
 License:        BSD-3-Clause
