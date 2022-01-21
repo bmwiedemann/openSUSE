@@ -1,0 +1,30 @@
+From 56f7340ecb1fbbe6fce87d0a5c8d35dd13359577 Mon Sep 17 00:00:00 2001
+From: David Tschumperle <David.Tschumperle@unicaen.fr>
+Date: Sun, 16 Jan 2022 20:52:13 +0100
+Subject: [PATCH] Add '/usr/share/gmic/' to the list of folders to explore when
+ trying to load resource files.
+
+---
+ src/gmic_stdlib.gmic | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/gmic_stdlib.gmic b/src/gmic_stdlib.gmic
+index 36e024f4..ce8e3eb9 100644
+--- a/src/gmic_stdlib.gmic
++++ b/src/gmic_stdlib.gmic
+@@ -3765,9 +3765,13 @@ _input_glob :
+   path_test1=$_path_rc
+   path_test2=${-path_gimp}plug-ins/
+   path_test3=${-path_gimp}plug-ins/gmic_gimp_qt/
+-  path_test4=$g_path_unix
++  if !${-is_windows}
++    path_test4=/usr/share/gmic/
++    path_test5=$g_path_unix
++  fi
+   file_found=0
+-  repeat 5
++  repeat inf
++    if ['${path_test$>}']==0 break fi
+     file=${path_test$>}$basename
+     l[] i $file file_found=1 onfail endl
+     if $file_found break fi

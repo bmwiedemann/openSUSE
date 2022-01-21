@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Jan 18 10:11:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Jan 16 21:16:02 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- added https://github.com/dtschump/gmic/commit/56f7340ecb1fbbe6fce87d0a5c8d35dd13359577.patch
+  make it search in /usr/share/gmic/ with all clients.
+
+-------------------------------------------------------------------
+Sat Jan 15 18:48:24 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- prepare gimp 3 support
+- install also the denoise data file
+- introduce a new gmic-data subpackage and require it from all the
+  frontends so we can access it more easily once this is resolved:
+  https://discuss.pixls.us/t/fixing-more-things-in-gmic-packaging/28894
+- make bash-completion noarch
+
+-------------------------------------------------------------------
+Fri Jan 14 18:44:35 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- move shared options for all the gmic-qt versions into a define
+  to reduce duplication
+
+-------------------------------------------------------------------
+Fri Jan 14 18:41:47 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Rework patches:
+  - drop old patches with git generated copies:
+    - 5e34754707b78358ef818d542d1e81d008bb2d12.patch
+    - dont-set-gmic_build.patch
+    - gmic-krita5.patch
+    - make-build-without-gmic-cpp.patch
+  - new patches:
+    - gmic-make-build-without-gmic-cpp.patch
+    - gmic-qt-make-it-work-without-gmic-cpp.patch
+    - krita5.patch
+- Update krita patch so we can apply it as normal patch without
+  breaking other gmic-qt instances
+
+-------------------------------------------------------------------
+Fri Jan 14 17:39:09 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Remove unneeded BuildRequires fftw3-devel and cmake(KF5CoreAddons) 
+
+-------------------------------------------------------------------
+Fri Jan 14 17:31:52 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Use simpler syntax for the pkg version comparison
+
+-------------------------------------------------------------------
+Fri Jan 14 16:36:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable building with Krita 5
+  new BR: krita-devel
+  new patches:
+  - 5e34754707b78358ef818d542d1e81d008bb2d12.patch
+  - gmic-krita5.patch
+
+-------------------------------------------------------------------
+Fri Jan 14 11:01:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add dont-set-gmic_build.patch:
+  Make gmic-qt flavors build without gmic.cpp. This should help
+  with getting the new krita plugin built
+
+-------------------------------------------------------------------
+Thu Jan 13 22:27:47 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable opencv support xshm support
+  - Add BuildRequires xorg-x11-devel 
+
+-------------------------------------------------------------------
+Thu Jan 13 22:26:56 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- add missing files for to make the devel package work:
+  make-build-without-gmic-cpp.patch
+- also track series for easier patching
+
+-------------------------------------------------------------------
+Thu Jan 13 21:41:27 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add Conflicts for krita >= 5 as it needs the intree version of
+  gmic-qt now
+
+-------------------------------------------------------------------
+Thu Jan 13 21:25:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.1
+  https://discuss.pixls.us/t/on-the-road-to-3-1/28221
+
+-------------------------------------------------------------------
 Mon Dec 13 09:47:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.0.0. No changelog.

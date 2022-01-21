@@ -1,0 +1,523 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5de581b..2b46de0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,17 +29,24 @@ else()
+   message("Building for target host application: " ${GMIC_QT_HOST})
+ endif()
+ 
+-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../src/gmic.cpp")
+-  set (GMIC_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../src" CACHE STRING "Define the path to the gmic headers")
++option(ENABLE_SYSTEM_GMIC "Find GMIC shared library installed on the system" ON)
++
++if (ENABLE_SYSTEM_GMIC)
++  option(ENABLE_DYNAMIC_LINKING "Dynamically link the binaries to the GMIC shared library" ON)
+ else()
++  option(ENABLE_DYNAMIC_LINKING "Dynamically link the binaries to the GMIC shared library" OFF)
++
++  set (GMIC_LIB_PATH "${GMIC_PATH}" CACHE STRING "Define the path to the GMIC shared library")
++  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../src/gmic.cpp")
++  set (GMIC_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../src" CACHE STRING "Define the path to the gmic headers")
++  else()
+   set (GMIC_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../gmic/src" CACHE STRING "Define the path to the gmic headers")
+-endif()
++  endif()
+ 
+-message("G'MIC path: " ${GMIC_PATH})
++  message("G'MIC path: " ${GMIC_PATH})
++endif()
+ 
+-option(ENABLE_DYNAMIC_LINKING "Dynamically link the binaries to the GMIC shared library" OFF)
+ option(ENABLE_CURL "Add support for curl" ON)
+-set (GMIC_LIB_PATH "${GMIC_PATH}" CACHE STRING "Define the path to the GMIC shared library")
+ 
+ option(ENABLE_ASAN "Enable -fsanitize=address (if debug build)" ON)
+ option(ENABLE_FFTW3 "Enable FFTW3 library support" ON)
+@@ -61,55 +68,57 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+ endif()
+ 
+ 
+-#
+-# Look for G'MIC repository
+-#
+-get_filename_component(GMIC_ABSOLUTE_PATH ${GMIC_PATH} ABSOLUTE BASEDIR ${CMAKE_SOURCE_DIR})
+-if (EXISTS ${GMIC_ABSOLUTE_PATH}/gmic.cpp)
+-  message("Found G'MIC repository")
+-else()
+-  get_filename_component(TARGET_CLONE_DIR ${GMIC_ABSOLUTE_PATH}/.. ABSOLUTE)
+-  message("")
+-  message("Cannot find G'MIC repository in " ${GMIC_ABSOLUTE_PATH} )
+-  message("")
+-  message("You should try:")
+-  message("")
+-  message("   git clone https://github.com/dtschump/gmic.git " ${TARGET_CLONE_DIR}/gmic )
+-  message("")
+-  message(FATAL_ERROR "\nG'MIC repository not found")
+-endif()
++if (NOT ENABLE_SYSTEM_GMIC)
++  #
++  # Look for G'MIC repository
++  #
++  get_filename_component(GMIC_ABSOLUTE_PATH ${GMIC_PATH} ABSOLUTE BASEDIR ${CMAKE_SOURCE_DIR})
++  if (EXISTS ${GMIC_ABSOLUTE_PATH}/gmic.cpp)
++    message("Found G'MIC repository")
++  else()
++    get_filename_component(TARGET_CLONE_DIR ${GMIC_ABSOLUTE_PATH}/.. ABSOLUTE)
++    message("")
++    message("Cannot find G'MIC repository in " ${GMIC_ABSOLUTE_PATH} )
++    message("")
++    message("You should try:")
++    message("")
++    message("   git clone https://github.com/dtschump/gmic.git " ${TARGET_CLONE_DIR}/gmic )
++    message("")
++    message(FATAL_ERROR "\nG'MIC repository not found")
++  endif()
+ 
+-#
+-# Look for CImg.h and gmic_stdlib_community.h
+-#
+-set(GMIC_FILES CImg.h gmic_stdlib_community.h)
+-foreach(F ${GMIC_FILES})
++  #
++  # Look for CImg.h and gmic_stdlib_community.h
++  #
++  set(GMIC_FILES CImg.h gmic_stdlib_community.h)
++  foreach(F ${GMIC_FILES})
+   if(EXISTS ${GMIC_ABSOLUTE_PATH}/${F})
+-    message("Found " ${GMIC_PATH}/${F})
++      message("Found " ${GMIC_PATH}/${F})
+   else()
+-    message(${F} " not found")
+-    execute_process(COMMAND make -C ${GMIC_ABSOLUTE_PATH} ${F})
+-    if(EXISTS ${GMIC_ABSOLUTE_PATH}/${F})
++      message(${F} " not found")
++      execute_process(COMMAND make -C ${GMIC_ABSOLUTE_PATH} ${F})
++      if(EXISTS ${GMIC_ABSOLUTE_PATH}/${F})
+       message("Found " ${GMIC_PATH}/${F})
+-    else()
++      else()
+       message(FATAL_ERROR "\nCannot obtain " ${GMIC_PATH}/${F})
+-    endif()
++      endif()
+   endif()
+-endforeach()
++  endforeach()
+ 
+-#
+-# Ensure that gmic and CImg are the same version
+-#
+-file(STRINGS ${GMIC_ABSOLUTE_PATH}/CImg.h CIMG_VERSION REGEX "cimg_version ")
+-string(REGEX REPLACE ".*cimg_version " "" CIMG_VERSION ${CIMG_VERSION})
+-message("CImg version is [" ${CIMG_VERSION} "]")
++  #
++  # Ensure that gmic and CImg are the same version
++  #
++  file(STRINGS ${GMIC_ABSOLUTE_PATH}/CImg.h CIMG_VERSION REGEX "cimg_version ")
++  string(REGEX REPLACE ".*cimg_version " "" CIMG_VERSION ${CIMG_VERSION})
++  message("CImg version is [" ${CIMG_VERSION} "]")
+ 
+-file(STRINGS ${GMIC_ABSOLUTE_PATH}/gmic.h GMIC_VERSION REGEX "gmic_version ")
+-string(REGEX REPLACE ".*gmic_version " "" GMIC_VERSION ${GMIC_VERSION})
+-message("G'MIC version is [" ${GMIC_VERSION} "]")
++  file(STRINGS ${GMIC_ABSOLUTE_PATH}/gmic.h GMIC_VERSION REGEX "gmic_version ")
++  string(REGEX REPLACE ".*gmic_version " "" GMIC_VERSION ${GMIC_VERSION})
++  message("G'MIC version is [" ${GMIC_VERSION} "]")
+ 
+-if (NOT(${GMIC_VERSION} EQUAL ${CIMG_VERSION}))
++  if (NOT(${GMIC_VERSION} EQUAL ${CIMG_VERSION}))
+   message(FATAL_ERROR "\nVersion numbers of files 'gmic.h' (" ${GMIC_VERSION} ") and 'CImg.h' (" ${CIMG_VERSION} ") mismatch")
++  endif()
+ endif()
+ 
+ 
+@@ -128,6 +137,13 @@ endif()
+ 
+ # Required packages
+ 
++#
++# Gmic
++#
++if (ENABLE_SYSTEM_GMIC)
++  find_package(Gmic REQUIRED CONFIG)
++endif (ENABLE_SYSTEM_GMIC)
++
+ #
+ # Threads
+ #
+@@ -281,7 +297,6 @@ if(ENABLE_CURL)
+     endif()
+ endif()
+ 
+-add_definitions(-Dgmic_build)
+ add_definitions(-Dgmic_community)
+ add_definitions(-Dcimg_use_abort)
+ add_definitions(-Dgmic_is_parallel)
+@@ -360,14 +375,19 @@ elseif (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+     else()
+       string(REPLACE "-O2" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+       string(REPLACE "-O3" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+-      set_source_files_properties(${GMIC_PATH}/gmic.cpp PROPERTIES COMPILE_FLAGS "-Ofast")
++      if (NOT ENABLE_SYSTEM_GMIC)
++          set_source_files_properties(${GMIC_PATH}/gmic.cpp PROPERTIES COMPILE_FLAGS "-Ofast")
++      endif (NOT ENABLE_SYSTEM_GMIC)
+       set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -O2")
+     endif()
+ else()
+     message(FATAL_ERROR "Build type not recognized (${CMAKE_BUILD_TYPE})")
+ endif()
+ 
+-include_directories(${CMAKE_SOURCE_DIR}/src ${GMIC_PATH})
++if (NOT ENABLE_SYSTEM_GMIC)
++    include_directories(${GMIC_PATH})
++endif (NOT ENABLE_SYSTEM_GMIC)
++include_directories(${CMAKE_SOURCE_DIR}/src)
+ 
+ set (gmic_qt_SRCS
+ 
+@@ -443,11 +463,19 @@ set (gmic_qt_SRCS
+   src/Widgets/ProgressInfoWindow.h
+   src/Widgets/VisibleTagSelector.h
+   src/ZoomConstraint.h
++)
+ 
+-  ${GMIC_PATH}/gmic.h
+-  ${GMIC_PATH}/CImg.h
+-  ${GMIC_PATH}/gmic_stdlib_community.h
++if (NOT ENABLE_SYSTEM_GMIC)
++    set(gmic_qt_SRCS
++        ${gmic_qt_SRCS}
++        ${GMIC_PATH}/gmic.h
++        ${GMIC_PATH}/CImg.h
++        ${GMIC_PATH}/gmic_stdlib_community.h
++    )
++endif()
+ 
++set(gmic_qt_SRCS
++  ${gmic_qt_SRCS}
+   src/ClickableLabel.cpp
+   src/Common.cpp
+   src/OverrideCursor.cpp
+@@ -540,7 +568,9 @@ if(ENABLE_DYNAMIC_LINKING)
+     ${gmic_qt_LIBRARIES}
+     "gmic"
+     )
+-  link_directories(${GMIC_LIB_PATH})
++  if (NOT ENABLE_SYSTEM_GMIC)
++    link_directories(${GMIC_LIB_PATH})
++  endif()
+ else(ENABLE_DYNAMIC_LINKING)
+   set(gmic_qt_SRCS
+     ${gmic_qt_SRCS}
+diff --git a/gmic_qt.pro b/gmic_qt.pro
+index 53308cd..bb4ae61 100644
+--- a/gmic_qt.pro
++++ b/gmic_qt.pro
+@@ -68,7 +68,7 @@ equals( HOST, "gimp3" ) {
+ 
+ DEFINES += cimg_use_cpp11=1
+ DEFINES += cimg_use_fftw3 cimg_use_zlib
+-DEFINES += gmic_build cimg_use_abort gmic_is_parallel cimg_use_curl cimg_use_png
++DEFINES += cimg_use_abort gmic_is_parallel cimg_use_curl cimg_use_png
+ DEFINES += cimg_appname="\\\"gmic\\\""
+ 
+ equals(TIMING, "on") {
+diff --git a/src/CroppedActiveLayerProxy.cpp b/src/CroppedActiveLayerProxy.cpp
+index a5ae94e..eaf3b8e 100644
+--- a/src/CroppedActiveLayerProxy.cpp
++++ b/src/CroppedActiveLayerProxy.cpp
+@@ -27,6 +27,7 @@
+ #include <QDebug>
+ #include "Common.h"
+ #include "Host/GmicQtHost.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/CroppedImageListProxy.cpp b/src/CroppedImageListProxy.cpp
+index b1ae9f6..a2482d0 100644
+--- a/src/CroppedImageListProxy.cpp
++++ b/src/CroppedImageListProxy.cpp
+@@ -28,6 +28,7 @@
+ #include <cmath>
+ #include "Common.h"
+ #include "Host/GmicQtHost.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/FilterSelector/FavesModelReader.cpp b/src/FilterSelector/FavesModelReader.cpp
+index 184c95b..dfed485 100644
+--- a/src/FilterSelector/FavesModelReader.cpp
++++ b/src/FilterSelector/FavesModelReader.cpp
+@@ -38,6 +38,7 @@
+ #include "FilterSelector/FavesModel.h"
+ #include "Logger.h"
+ #include "Utils.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/FilterSelector/FiltersModelReader.cpp b/src/FilterSelector/FiltersModelReader.cpp
+index 871efb0..277274b 100644
+--- a/src/FilterSelector/FiltersModelReader.cpp
++++ b/src/FilterSelector/FiltersModelReader.cpp
+@@ -38,6 +38,7 @@
+ #include "LanguageSettings.h"
+ #include "Logger.h"
+ #include "Utils.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/FilterSyncRunner.cpp b/src/FilterSyncRunner.cpp
+index 1b40c4a..5d1e19a 100644
+--- a/src/FilterSyncRunner.cpp
++++ b/src/FilterSyncRunner.cpp
+@@ -30,6 +30,7 @@
+ #include "GmicStdlib.h"
+ #include "Logger.h"
+ #include "Misc.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/FilterThread.cpp b/src/FilterThread.cpp
+index de4c2c7..aad0964 100644
+--- a/src/FilterThread.cpp
++++ b/src/FilterThread.cpp
+@@ -29,6 +29,7 @@
+ #include "GmicStdlib.h"
+ #include "Logger.h"
+ #include "Misc.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/GmicProcessor.cpp b/src/GmicProcessor.cpp
+index e0bf1f1..98879b3 100644
+--- a/src/GmicProcessor.cpp
++++ b/src/GmicProcessor.cpp
+@@ -42,6 +42,7 @@
+ #include "Logger.h"
+ #include "Misc.h"
+ #include "OverrideCursor.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/GmicQt.cpp b/src/GmicQt.cpp
+index e836072..5925e94 100644
+--- a/src/GmicQt.cpp
++++ b/src/GmicQt.cpp
+@@ -45,6 +45,7 @@
+ #include "Updater.h"
+ #include "Widgets/InOutPanel.h"
+ #include "Widgets/ProgressInfoWindow.h"
++#include "CImg.h"
+ #include "gmic.h"
+ #ifdef _IS_MACOS_
+ #include <libgen.h>
+diff --git a/src/GmicStdlib.cpp b/src/GmicStdlib.cpp
+index 4abe758..02ab2d0 100644
+--- a/src/GmicStdlib.cpp
++++ b/src/GmicStdlib.cpp
+@@ -31,6 +31,7 @@
+ #include <QStringList>
+ #include "Common.h"
+ #include "Utils.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/HeadlessProcessor.cpp b/src/HeadlessProcessor.cpp
+index 446d1a8..930facb 100644
+--- a/src/HeadlessProcessor.cpp
++++ b/src/HeadlessProcessor.cpp
+@@ -40,6 +40,7 @@
+ #include "ParametersCache.h"
+ #include "Updater.h"
+ #include "Widgets/ProgressInfoWindow.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ #ifdef _IS_WINDOWS_
+diff --git a/src/Host/8bf/host_8bf.cpp b/src/Host/8bf/host_8bf.cpp
+index 816f10b..7bc7b09 100644
+--- a/src/Host/8bf/host_8bf.cpp
++++ b/src/Host/8bf/host_8bf.cpp
+@@ -42,6 +42,7 @@
+ #include "Host/GmicQtHost.h"
+ #include "ImageTools.h"
+ #include "GmicQt.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ struct Gmic8bfLayer
+diff --git a/src/Host/Gimp/host_gimp.cpp b/src/Host/Gimp/host_gimp.cpp
+index cd19443..cd0c9c6 100644
+--- a/src/Host/Gimp/host_gimp.cpp
++++ b/src/Host/Gimp/host_gimp.cpp
+@@ -38,6 +38,7 @@
+ #include "Host/GmicQtHost.h"
+ #include "ImageTools.h"
+ #include "GmicQt.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ /*
+diff --git a/src/Host/Krita/host_krita.cpp b/src/Host/Krita/host_krita.cpp
+index afb2a64..0cfc031 100644
+--- a/src/Host/Krita/host_krita.cpp
++++ b/src/Host/Krita/host_krita.cpp
+@@ -41,6 +41,7 @@
+ #include "Common.h"
+ #include "Host/GmicQtHost.h"
+ #include "GmicQt.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ /*
+diff --git a/src/Host/None/ImageDialog.cpp b/src/Host/None/ImageDialog.cpp
+index 973c0ae..55bac48 100644
+--- a/src/Host/None/ImageDialog.cpp
++++ b/src/Host/None/ImageDialog.cpp
+@@ -31,6 +31,7 @@
+ #include <QStringList>
+ #include "Common.h"
+ #include "JpegQualityDialog.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace gmic_qt_standalone
+diff --git a/src/Host/None/host_none.cpp b/src/Host/None/host_none.cpp
+index 35b68ea..300e69a 100644
+--- a/src/Host/None/host_none.cpp
++++ b/src/Host/None/host_none.cpp
+@@ -40,6 +40,7 @@
+ #include "GmicQt.h"
+ #include "Host/GmicQtHost.h"
+ #include "Host/None/ImageDialog.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ #define STRINGIFY(X) #X
+diff --git a/src/Host/PaintDotNet/host_paintdotnet.cpp b/src/Host/PaintDotNet/host_paintdotnet.cpp
+index 60bdab7..fe5eb3c 100644
+--- a/src/Host/PaintDotNet/host_paintdotnet.cpp
++++ b/src/Host/PaintDotNet/host_paintdotnet.cpp
+@@ -33,6 +33,7 @@
+ #include "Host/GmicQtHost.h"
+ #include "MainWindow.h"
+ #include "GmicQt.h"
++#include "CImg.h"
+ #include "gmic.h"
+ #include <Windows.h>
+ 
+diff --git a/src/ImageTools.cpp b/src/ImageTools.cpp
+index f27ce72..ff592b0 100644
+--- a/src/ImageTools.cpp
++++ b/src/ImageTools.cpp
+@@ -27,6 +27,7 @@
+ #include <QImage>
+ #include <QPainter>
+ #include "GmicStdlib.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ /*
+diff --git a/src/Logger.cpp b/src/Logger.cpp
+index ddff5d9..81a4af4 100644
+--- a/src/Logger.cpp
++++ b/src/Logger.cpp
+@@ -29,6 +29,7 @@
+ #include "Common.h"
+ #include "Utils.h"
+ #include "GmicQt.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index 33db6e4..4f5e650 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -61,6 +61,7 @@
+ #include "Utils.h"
+ #include "Widgets/VisibleTagSelector.h"
+ #include "ui_mainwindow.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace
+diff --git a/src/Misc.cpp b/src/Misc.cpp
+index 3a4148b..c59b272 100644
+--- a/src/Misc.cpp
++++ b/src/Misc.cpp
+@@ -38,6 +38,7 @@
+ #include "Globals.h"
+ #include "HtmlTranslator.h"
+ #include "Logger.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace
+diff --git a/src/ParametersCache.cpp b/src/ParametersCache.cpp
+index c7bcad8..8d2fc45 100644
+--- a/src/ParametersCache.cpp
++++ b/src/ParametersCache.cpp
+@@ -35,6 +35,7 @@
+ #include "Globals.h"
+ #include "Logger.h"
+ #include "Utils.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/Updater.cpp b/src/Updater.cpp
+index 47f6882..2f8e7de 100644
+--- a/src/Updater.cpp
++++ b/src/Updater.cpp
+@@ -33,6 +33,7 @@
+ #include "Logger.h"
+ #include "Misc.h"
+ #include "Utils.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/Utils.cpp b/src/Utils.cpp
+index dc0e1e4..ee6a119 100644
+--- a/src/Utils.cpp
++++ b/src/Utils.cpp
+@@ -36,6 +36,7 @@
+ #include "Common.h"
+ #include "Host/GmicQtHost.h"
+ #include "Logger.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ #ifdef _IS_WINDOWS_
+diff --git a/src/Widgets/PreviewWidget.cpp b/src/Widgets/PreviewWidget.cpp
+index 6415b46..f87edac 100644
+--- a/src/Widgets/PreviewWidget.cpp
++++ b/src/Widgets/PreviewWidget.cpp
+@@ -42,6 +42,7 @@
+ #include "Logger.h"
+ #include "Misc.h"
+ #include "OverrideCursor.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt
+diff --git a/src/Widgets/ProgressInfoWindow.cpp b/src/Widgets/ProgressInfoWindow.cpp
+index 5095528..341e2e0 100644
+--- a/src/Widgets/ProgressInfoWindow.cpp
++++ b/src/Widgets/ProgressInfoWindow.cpp
+@@ -38,6 +38,7 @@
+ #include "HeadlessProcessor.h"
+ #include "Updater.h"
+ #include "ui_progressinfowindow.h"
++#include "CImg.h"
+ #include "gmic.h"
+ 
+ namespace GmicQt

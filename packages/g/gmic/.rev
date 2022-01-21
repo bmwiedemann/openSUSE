@@ -159,4 +159,40 @@
     <comment>3.0.0 (forwarded request 940191 from cgiboudeaux)</comment>
     <requestid>940192</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1e74a0df2e9e27c88f4c26390853f0ce</srcmd5>
+    <version>3.0.1</version>
+    <time>1642724739</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec cleanup.
+
+- added https://github.com/dtschump/gmic/commit/56f7340ecb1fbbe6fce87d0a5c8d35dd13359577.patch
+  make it search in /usr/share/gmic/ with all clients.
+
+- prepare gimp 3 support
+- install also the denoise data file
+- introduce a new gmic-data subpackage and require it from all the
+  frontends so we can access it more easily once this is resolved:
+  https://discuss.pixls.us/t/fixing-more-things-in-gmic-packaging/28894
+- make bash-completion noarch
+
+- move shared options for all the gmic-qt versions into a define
+  to reduce duplication
+
+- Rework patches:
+  - drop old patches with git generated copies:
+    - 5e34754707b78358ef818d542d1e81d008bb2d12.patch
+    - dont-set-gmic_build.patch
+    - gmic-krita5.patch
+    - make-build-without-gmic-cpp.patch
+  - new patches:
+    - gmic-make-build-without-gmic-cpp.patch
+    - gmic-qt-make-it-work-without-gmic-cpp.patch
+    - krita5.patch
+- Update krita patch so we can apply it as normal patch without
+  breaking other gmic-qt instances
+
+- Remove unneeded BuildRequires fftw3-devel and cmake(KF5CoreAddons)</comment>
+    <requestid>947693</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,34 @@
+Index: gmic-3.0.1/src/gmic.h
+===================================================================
+--- gmic-3.0.1.orig/src/gmic.h
++++ gmic-3.0.1/src/gmic.h
+@@ -258,12 +258,12 @@ inline double gmic_mp_store(const Ts *co
+ 
+ #endif // #if cimg_OS==2
+ 
++#endif // #ifndef gmic_build
++
+ // Define some special character codes used for replacement in double quoted strings.
+ const char gmic_dollar = 23, gmic_lbrace = 24, gmic_rbrace = 25, gmic_comma = 26, gmic_dquote = 28,
+   gmic_store = 29; // <- this one is only used in variable names.
+ 
+-#endif // #ifndef gmic_build
+-
+ // Define main libgmic class 'gmic'.
+ //----------------------------------
+ #define gmic_image cimg_library::CImg
+
+Index: gmic-3.0.1/CMakeLists.txt
+===================================================================
+--- gmic-3.0.1.orig/CMakeLists.txt
++++ gmic-3.0.1/CMakeLists.txt
+@@ -165,7 +165,7 @@ if(BUILD_LIB)
+     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+   )
+-  install(FILES src/gmic.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
++  install(FILES src/gmic.h src/CImg.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+ endif()
+ 
+ 
+
