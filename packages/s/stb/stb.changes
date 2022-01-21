@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 20 09:27:27 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- use a date as version now
+  (every header file has it's own version now)
+- stb_perlin.h got removed, need to apply a build fix for that
+  (fix-compile.patch)
+
+-------------------------------------------------------------------
 Fri Oct 30 00:57:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 2.36 / 2020-07-13:

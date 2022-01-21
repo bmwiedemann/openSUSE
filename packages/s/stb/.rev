@@ -44,4 +44,15 @@
     <comment></comment>
     <requestid>845202</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1fdc2470dc51aef102a7f8ade6f5055e</srcmd5>
+    <version>20210910</version>
+    <time>1642724733</time>
+    <user>dimstar_suse</user>
+    <comment>- use a date as version now
+  (every header file has it's own version now)
+- stb_perlin.h got removed, need to apply a build fix for that
+  (fix-compile.patch)</comment>
+    <requestid>947642</requestid>
+  </revision>
 </revisionlist>

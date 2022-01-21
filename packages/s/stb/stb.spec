@@ -1,7 +1,7 @@
 #
 # spec file for package stb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           stb
-Version:        2.36.1594640766.b42009b
+Version:        20210910
 Release:        0
-Summary:        Single-File Public Domain Libraries for C/C++ 
+Summary:        Single-File Public Domain Libraries for C/C++
 License:        MIT OR Unlicense
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/nothings/stb
 Source0:        stb-%{version}.tar.xz
+# perlin.h got removed in git, breaking build
+Patch1:         fix-compile.patch
 BuildRequires:  c++_compiler
 BuildArch:      noarch
 
@@ -41,7 +43,6 @@ stretchy_buffer.h           | utility          | typesafe dynamic array for C (i
 stb_textedit.h              | user interface   | guts of a text editor for games etc implementing them from scratch
 stb_voxel_render.h          | 3D graphics      | Minecraft-esque voxel rendering "engine" with many more features
 stb_dxt.h                   | 3D graphics      | Fabian "ryg" Giesen's real-time DXT compressor
-stb_perlin.h                | 3D graphics      | revised Perlin noise (3D input, 1D output)
 stb_easy_font.h             | 3D graphics      | quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc
 stb_tilemap_editor.h        | game dev         | embeddable tilemap editor
 stb_herringbone_wang_tile.h | game dev         | herringbone Wang tile map generator
@@ -52,7 +53,7 @@ stb.h                       | misc             | helper functions for C, mostly 
 stb_leakcheck.h             | misc             | quick-and-dirty malloc/free leak-checking
 
 %package devel
-Summary:        Single-File Public Domain Libraries for C/C++ 
+Summary:        Single-File Public Domain Libraries for C/C++
 Group:          Development/Libraries/C and C++
 
 %description devel
@@ -79,9 +80,9 @@ stb_connected_components.h  | misc             | incrementally compute reachabil
 stb.h                       | misc             | helper functions for C, mostly redundant in C++; basically author's personal stuff
 stb_leakcheck.h             | misc             | quick-and-dirty malloc/free leak-checking
 
-
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 # nothing to do
