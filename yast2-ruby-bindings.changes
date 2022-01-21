@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 14:03:14 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added yast/rspec/helpers.rb (related to bsc#1194784)
+- 4.4.7
+
+-------------------------------------------------------------------
 Mon Nov 29 20:21:23 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Avoid timing issue in integration tests ( bsc#1193192 )
