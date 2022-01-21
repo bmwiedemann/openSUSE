@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 10:54:08 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.4.2
+  * Bugfix: Explicitly quote special characters in URLs
+
+-------------------------------------------------------------------
 Wed Sep 22 10:45:07 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.4.1
