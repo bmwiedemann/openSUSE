@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
 # All modifications and additions to the file contributed by third parties
@@ -67,6 +67,7 @@ License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       cargo%{version_suffix}
 Requires:       rust = %{version}
+Provides:       rust+cargo = %{version}
 %obsolete_rust_versioned cargo
 
 %description -n cargo

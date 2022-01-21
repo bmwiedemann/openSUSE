@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 17 10:56:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide rust+cargo by cargo: all cargo<n> package provide this
+  symbol too. Having the meta package provide it allows OBS to have
+  a generic prefernece on the meta package for all packages 'just'
+  requiring rust+cargo.
+
+-------------------------------------------------------------------
 Fri Jan 14 05:48:07 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update to version 1.58.0
