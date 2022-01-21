@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 17:01:55 CET 2022 - tiwai@suse.de
+
+- Don't install half-baked cmake files (bsc#1194728):
+  the files are incomplete and useless with the build using auto-tools
+
+-------------------------------------------------------------------
 Sun Dec  5 20:52:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.10:

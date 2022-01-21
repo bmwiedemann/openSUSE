@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package fftw3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -679,6 +679,9 @@ EOF
 
 %fdupes -s doc
 
+# cmake files are incomplete and useless when installed via auto-tools (bsc#1194728)
+rm -rf %{buildroot}%{package_libdir}/cmake
+
 %preun devel
 %install_info_delete --info-dir=%{package_infodir} %{package_infodir}/fftw3.info.gz
 
@@ -758,8 +761,6 @@ EOF
 %doc AUTHORS CONVENTIONS COPYRIGHT ChangeLog NEWS README TODO
 %doc doc/*
 %doc %{package_mandir}/man?/*
-%dir %package_libdir/cmake
-%dir %package_libdir/cmake/%{pname}
 %{package_infodir}/*.info*
 %{package_includedir}/fftw3.*
 %{package_includedir}/fftw3q.f03
@@ -768,9 +769,6 @@ EOF
 %{package_libdir}/libfftw3f.so
 %{package_libdir}/libfftw3l.so
 %{package_libdir}/pkgconfig/*.pc
-%dir %package_libdir/cmake
-%dir %package_libdir/cmake/%{pname}
-%{package_libdir}/cmake/%{pname}/FFTW3*.cmake
 %{package_bindir}/*
 
 %if %{without hpc}
