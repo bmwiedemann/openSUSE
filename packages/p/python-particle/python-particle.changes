@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 20 17:31:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.20.0:
+  * Particle class:
+    - Deprecated method find method removed. Use findall or
+      finditer instead.
+    - HTML Greek letters in particle names use hex code rather
+      than entity name.
+  * PDGID class method and related standalone functions:
+    Deprecated function is_composite_quark_or_lepton removed. Use
+    is_excited_quark_or_lepton instead.
+  * Documentation: README updated with info on the new
+    experiment-specific module particle.lhcb.
+  * Miscellaneous:
+    - Support for Python 2 and Python 3.5 dropped.
+    - Full static typing implemented.
+- Update tests.tar.xz tarball to version 0.20.0.
+- New BuildRequires: python-pytest-benchmark.
+
+-------------------------------------------------------------------
 Sat Sep 18 17:26:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.16.1:

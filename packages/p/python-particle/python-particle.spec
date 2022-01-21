@@ -1,7 +1,7 @@
 #
 # spec file for package python-particle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modname particle
 %define skip_python2 1
 Name:           python-particle
-Version:        0.16.1
+Version:        0.20.0
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -41,6 +41,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module hepunits}
 BuildRequires:  %{python_module importlib_resources}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
