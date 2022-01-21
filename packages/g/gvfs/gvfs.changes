@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 20:57:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Modernize and fix our Supplements.
+- Package org.gtk.vfs.file-operations.rules polkit rules file as an
+  example in docs, previously it was just nuked.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:56:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
