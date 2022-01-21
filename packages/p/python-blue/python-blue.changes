@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 12 07:25:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * Upgrade dependency on black to 21.7b0  
+- Add patch support-new-flake8.patch:
+  * Support backwards incompatiable changes with flake8 4.0
+
+-------------------------------------------------------------------
 Wed Mar 17 04:05:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.0:

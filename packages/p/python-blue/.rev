@@ -30,4 +30,15 @@
   * Move coverage switches on pytest to separate sections</comment>
     <requestid>879548</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50bee8f91f5470811c11e63ee1237b7f</srcmd5>
+    <version>0.7.0</version>
+    <time>1642724726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Upgrade dependency on black to 21.7b0  
+- Add patch support-new-flake8.patch:
+  * Support backwards incompatiable changes with flake8 4.0</comment>
+    <requestid>945752</requestid>
+  </revision>
 </revisionlist>

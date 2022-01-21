@@ -1,7 +1,7 @@
 #
 # spec file for package python-blue
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,16 @@
 %define skip_python2 1
 %define modname blue
 Name:           python-blue
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/grantjenks/blue
 Source:         https://github.com/grantjenks/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Patch0:         support-new-flake8.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module black >= 21.7}
 # BuildRequires:  %%{python_module doc8}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pytest-cov}
@@ -45,7 +46,7 @@ Requires:       python-aiohttp >= 3.3.2
 Requires:       python-aiohttp_cors
 Requires:       python-appdirs
 Requires:       python-attrs >= 18.1.0
-Requires:       python-black
+Requires:       python-black >= 21.7
 Requires:       python-click >= 7.1.2
 Requires:       python-flake8
 Requires:       python-mypy_extensions >= 0.4.3
@@ -81,7 +82,7 @@ Provides:       %{python_module foo-doc = %{version}}
 HTML Documentation and examples for %name.
 
 %prep
-%setup -q -n blue-%{version}
+%autosetup -p1 -n blue-%{version}
 
 %build
 %python_build
