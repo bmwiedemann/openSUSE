@@ -41,7 +41,7 @@ look_for_uim_toolbar uim-toolbar-gtk3-systray uim-toolbar-gtk-systray
 if [ -z "$toolbar" ]; then
     # no systray found, let's start a stand-alone toolbar
     case "$WINDOWMANAGER" in
-	*kde*)
+	*plasma*)
 	    look_for_uim_toolbar \
 		uim-toolbar-qt4 uim-toolbar-qt \
 		uim-toolbar-gtk3 uim-toolbar-gtk;;
