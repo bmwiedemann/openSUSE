@@ -190,4 +190,13 @@ Fix build on i586.</comment>
   * https://mednafen.github.io/documentation/ChangeLog.txt</comment>
     <requestid>899958</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>16ea8d0299a56178ae94bfb35e31f2f8</srcmd5>
+    <version>1.29.0</version>
+    <time>1642724729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.29.0
+  * https://mednafen.github.io/documentation/ChangeLog.txt</comment>
+    <requestid>947589</requestid>
+  </revision>
 </revisionlist>

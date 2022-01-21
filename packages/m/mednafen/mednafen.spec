@@ -1,7 +1,7 @@
 #
 # spec file for package mednafen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mednafen
-Version:        1.27.1
+Version:        1.29.0
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
