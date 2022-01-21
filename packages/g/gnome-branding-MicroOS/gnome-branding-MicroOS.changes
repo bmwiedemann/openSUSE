@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 12 14:00:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
+
+- added an extra flatpak to Manage Extensions so a rpm based chromium or firefox browser is no longer necessary "com.mattjakeman.ExtensionManager"
+
+-------------------------------------------------------------------
 Mon Oct 11 13:53:03 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Use "Text Editor" instead of the less-supported "gEdit"

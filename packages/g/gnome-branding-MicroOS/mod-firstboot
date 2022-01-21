@@ -40,6 +40,15 @@ if [ "$?" != 0 ] ; then
 fi
 
 echo "100"
+echo "# Installing Extension Manager"
+/usr/bin/flatpak install --user --noninteractive flathub com.mattjakeman.ExtensionManager
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Extension Manager Failed"
+        exit 1
+fi
+
+echo "120"
 echo "# Cleaning up"
 rm ~/.config/autostart/mod-firstboot.desktop
 ) |
