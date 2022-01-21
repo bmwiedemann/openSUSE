@@ -147,6 +147,7 @@
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="zstd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
   </packagelist>
@@ -1551,7 +1552,6 @@
     <package name="unzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="upower" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="vim-data-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="vim-small" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wallpaper-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

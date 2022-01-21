@@ -661,6 +661,8 @@ unsorted:
   - apache-commons-vfs2-javadoc 
   - apache-ivy 
   - apache-ivy-javadoc 
+  - apache-log4j-extras 
+  - apache-log4j-extras-javadoc 
   - apache-logging-parent 
   - apache-parent 
   - apache-pdfbox 
@@ -1918,7 +1920,6 @@ unsorted:
   - chafa 
   - chafa-devel 
   - chafa-doc 
-  - chainsaw 
   - changelog-generator-data 
   - charliecloud 
   - charliecloud-doc 
@@ -5757,6 +5758,7 @@ unsorted:
   - gmetrics-javadoc 
   - gmic 
   - gmic-bash-completion 
+  - gmic-data 
   - gmime-devel 
   - gmmlib-devel 
   - gmock 
@@ -11397,6 +11399,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhiredis1_0_0 
   - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
@@ -11472,8 +11475,8 @@ unsorted:
   - libigc1: [x86_64] 
   - libigdfcl-devel: [x86_64] 
   - libigdfcl1: [x86_64] 
-  - libigdgmm11 
-  - libigdgmm11-32bit: [x86_64] 
+  - libigdgmm12 
+  - libigdgmm12-32bit: [x86_64] 
   - libigfxcmrt-devel 
   - libigfxcmrt7 
   - libigfxcmrt7-32bit: [x86_64] 
@@ -11996,6 +11999,7 @@ unsorted:
   - libmemcache0 
   - libmemcached 
   - libmemcached-devel 
+  - libmemcached11 
   - libmemcachedprotocol0 
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
@@ -12123,7 +12127,7 @@ unsorted:
   - libmpirxx8 
   - libmplex2-2_2-0-32bit: [x86_64] 
   - libmpris-qt5-1 
-  - libmpv1 
+  - libmpv2 
   - libmpx2-gcc7 
   - libmpx2-gcc7-32bit: [x86_64] 
   - libmpxwrappers2-gcc7 
@@ -12563,7 +12567,7 @@ unsorted:
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
   - liboping0-32bit: [x86_64] 
-  - libopts25: [i586] 
+  - libopts25 
   - libopus-devel 
   - libopus0-32bit: [x86_64] 
   - libopusenc-devel 
@@ -15530,6 +15534,7 @@ unsorted:
   - mailgraph 
   - mailgraph-apache 
   - mailimporter-devel 
+  - mailman3 
   - mailprocessing 
   - mailutils-delivery 
   - mailutils-devel 
@@ -15978,6 +15983,7 @@ unsorted:
   - melody 
   - melody-lang 
   - melt 
+  - memcached 
   - memcached-devel 
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
@@ -21155,6 +21161,7 @@ unsorted:
   - python-doc-pdf 
   - python-efl-doc 
   - python-efl-examples 
+  - python-falcon-doc 
   - python-fastcluster-doc 
   - python-flake8-doc 
   - python-flup-doc 
@@ -21374,6 +21381,8 @@ unsorted:
   - python3-fastjet 
   - python3-fife 
   - python3-fityk 
+  - python3-flufl.bounce 
+  - python3-flufl.i18n 
   - python3-freezerclient 
   - python3-fritzconnection 
   - python3-futurist 
@@ -22295,6 +22304,7 @@ unsorted:
   - python310-before-after 
   - python310-behave 
   - python310-bencode 
+  - python310-beniget 
   - python310-beren 
   - python310-betamax 
   - python310-betamax-matchers 
@@ -22317,6 +22327,7 @@ unsorted:
   - python310-blockdiag 
   - python310-blosc 
   - python310-bloscpack 
+  - python310-blue 
   - python310-blurb 
   - python310-bmap-tools 
   - python310-bobo 
@@ -22685,6 +22696,7 @@ unsorted:
   - python310-dparse 
   - python310-dpcontracts 
   - python310-dpkt 
+  - python310-dqsegdb2 
   - python310-dragonmapper 
   - python310-drms 
   - python310-dropbox 
@@ -22836,6 +22848,7 @@ unsorted:
   - python310-fuzzywuzzy 
   - python310-gTTS 
   - python310-gTTS-token 
+  - python310-gast 
   - python310-gcsfs 
   - python310-gcsfs-fuse 
   - python310-gear 
@@ -23552,6 +23565,7 @@ unsorted:
   - python310-plotly-jupyter 
   - python310-pluggy 
   - python310-pluginbase 
+  - python310-plumbum 
   - python310-ply 
   - python310-plyvel 
   - python310-pmw 
@@ -24685,8 +24699,6 @@ unsorted:
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
-  - python36-beniget 
-  - python36-blue 
   - python36-cfgdiff 
   - python36-chainmap 
   - python36-combi 
@@ -24723,7 +24735,6 @@ unsorted:
   - python36-feedparser 
   - python36-flask-restx 
   - python36-flufl.lock 
-  - python36-gast 
   - python36-github3.py 
   - python36-gmpy2 
   - python36-google-pasta 
@@ -24741,7 +24752,6 @@ unsorted:
   - python36-pep8-naming 
   - python36-pip-licenses 
   - python36-pipdeptree 
-  - python36-plumbum 
   - python36-podman 
   - python36-pony 
   - python36-pysvn 
@@ -24784,6 +24794,7 @@ unsorted:
   - python38-Authlib 
   - python38-BTrees 
   - python38-BTrees-devel 
+  - python38-Beaker 
   - python38-BitVector 
   - python38-CCColUtils 
   - python38-CacheControl 
@@ -24855,6 +24866,7 @@ unsorted:
   - python38-Lektor 
   - python38-Levenshtein 
   - python38-Logbook 
+  - python38-Mako: [i586] 
   - python38-Markdown 
   - python38-MarkupPy 
   - python38-Markups 
@@ -24901,6 +24913,7 @@ unsorted:
   - python38-PyMeta3 
   - python38-PyMsgBox 
   - python38-PyMuPDF 
+  - python38-PyNaCl 
   - python38-PyNamecheap 
   - python38-PyOgg 
   - python38-PyOpenAL 
@@ -25031,6 +25044,7 @@ unsorted:
   - python38-aioredis 
   - python38-aioresponses 
   - python38-aiorpcX 
+  - python38-aiosmtpd 
   - python38-aiosmtplib 
   - python38-aiosqlite 
   - python38-aiounittest 
@@ -25038,6 +25052,7 @@ unsorted:
   - python38-akismet 
   - python38-alabaster 
   - python38-aldjemy 
+  - python38-alembic: [i586] 
   - python38-allpairspy 
   - python38-alsa 
   - python38-altair 
@@ -25069,6 +25084,7 @@ unsorted:
   - python38-arf 
   - python38-argcomplete: [i586] 
   - python38-argh 
+  - python38-argon2-cffi: [i586] 
   - python38-argparse-manpage: [i586] 
   - python38-args 
   - python38-arrow 
@@ -25096,6 +25112,7 @@ unsorted:
   - python38-atlassian-python-api 
   - python38-atom 
   - python38-atomicwrites 
+  - python38-atpublic 
   - python38-attr 
   - python38-aubio 
   - python38-audio-degrader 
@@ -25103,6 +25120,8 @@ unsorted:
   - python38-audiomate 
   - python38-audioread 
   - python38-augeas 
+  - python38-authheaders 
+  - python38-authres 
   - python38-autobahn 
   - python38-autodoc 
   - python38-autodocsumm 
@@ -25523,6 +25542,7 @@ unsorted:
   - python38-cl 
   - python38-cleo 
   - python38-cli-helpers 
+  - python38-click: [i586] 
   - python38-click-aliases 
   - python38-click-completion 
   - python38-click-default-group 
@@ -25789,6 +25809,7 @@ unsorted:
   - python38-djangorestframework-simplejwt 
   - python38-djet 
   - python38-djvulibre 
+  - python38-dkimpy 
   - python38-dns-lexicon 
   - python38-dnslib 
   - python38-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
@@ -25807,6 +25828,7 @@ unsorted:
   - python38-dparse 
   - python38-dpcontracts 
   - python38-dpkt 
+  - python38-dqsegdb2 
   - python38-drms 
   - python38-dropbox 
   - python38-dtaidistance 
@@ -25871,6 +25893,7 @@ unsorted:
   - python38-factory_boy 
   - python38-fake-useragent 
   - python38-fakeredis 
+  - python38-falcon 
   - python38-fanficfare 
   - python38-fann2 
   - python38-fastcluster 
@@ -25924,6 +25947,7 @@ unsorted:
   - python38-flit-core 
   - python38-flower 
   - python38-fluent 
+  - python38-flufl.lock 
   - python38-flufl.testing 
   - python38-fluidity-sm 
   - python38-flup 
@@ -25978,6 +26002,7 @@ unsorted:
   - python38-glean 
   - python38-glfw 
   - python38-glob2 
+  - python38-gmpy2 
   - python38-gns3fy 
   - python38-gobject-devel 
   - python38-goobook 
@@ -26019,6 +26044,7 @@ unsorted:
   - python38-gssapi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - python38-gsw 
   - python38-guessit 
+  - python38-gunicorn 
   - python38-guzzle_sphinx_theme 
   - python38-gvm-tools 
   - python38-gwcs 
@@ -26049,6 +26075,7 @@ unsorted:
   - python38-hetznercloud 
   - python38-hexdump: [i586] 
   - python38-hijri-converter 
+  - python38-hiredis 
   - python38-hkdf 
   - python38-hl7apy 
   - python38-holidays 
@@ -26258,6 +26285,8 @@ unsorted:
   - python38-language-check 
   - python38-lark-parser 
   - python38-latexcodec 
+  - python38-lazr.config 
+  - python38-lazr.delegates 
   - python38-lazr.uri 
   - python38-lazy 
   - python38-lazy-object-proxy 
@@ -26565,6 +26594,7 @@ unsorted:
   - python38-parver 
   - python38-pass_python_keyring 
   - python38-passivetotal 
+  - python38-passlib: [i586] 
   - python38-pastel 
   - python38-pastream 
   - python38-patatt 
@@ -26688,6 +26718,7 @@ unsorted:
   - python38-ptpython-ptipython 
   - python38-ptr 
   - python38-publicsuffix 
+  - python38-publicsuffix2 
   - python38-publicsuffixlist 
   - python38-pudb 
   - python38-pulsectl 
@@ -26802,6 +26833,7 @@ unsorted:
   - python38-pylibacl 
   - python38-pyliblo 
   - python38-pyliblo-doc 
+  - python38-pylibmc 
   - python38-pylineclip 
   - python38-pylint 
   - python38-pylons-sphinx-themes 
@@ -26821,6 +26853,7 @@ unsorted:
   - python38-pymilter 
   - python38-pymisp 
   - python38-pymol 
+  - python38-pymongo 
   - python38-pympv 
   - python38-pymssql 
   - python38-pynamodb 
@@ -27018,6 +27051,7 @@ unsorted:
   - python38-python-lsp-jsonrpc 
   - python38-python-lsp-server 
   - python38-python-magic 
+  - python38-python-memcached 
   - python38-python-mpd2 
   - python38-python-mpv 
   - python38-python-multipart 
@@ -27142,6 +27176,7 @@ unsorted:
   - python38-reconfigure 
   - python38-redbaron 
   - python38-redfish 
+  - python38-redis 
   - python38-regex 
   - python38-relatorio 
   - python38-releases 
@@ -27234,6 +27269,7 @@ unsorted:
   - python38-screeninfo 
   - python38-screenplain 
   - python38-scripttest 
+  - python38-scrypt: [i586] 
   - python38-scspell3k 
   - python38-sdnotify 
   - python38-seaborn 
@@ -27471,6 +27507,7 @@ unsorted:
   - python38-torch: [x86_64] 
   - python38-torch-devel: [x86_64] 
   - python38-torchvision: [x86_64] 
+  - python38-tornado 
   - python38-tornado5 
   - python38-tortilla 
   - python38-towncrier 
@@ -27685,13 +27722,18 @@ unsorted:
   - python38-zipstream 
   - python38-zodbpickle 
   - python38-zope.cachedescriptors 
+  - python38-zope.component 
+  - python38-zope.configuration 
   - python38-zope.copy 
   - python38-zope.deferredimport 
   - python38-zope.deprecation 
   - python38-zope.exceptions 
+  - python38-zope.hookable 
+  - python38-zope.i18nmessageid 
   - python38-zope.location 
   - python38-zope.proxy 
   - python38-zope.proxy-devel 
+  - python38-zope.schema 
   - python38-zope.security 
   - python38-zope.testbrowser 
   - python38-zope.testbrowser-test 
@@ -28798,6 +28840,7 @@ unsorted:
   - python39-dparse 
   - python39-dpcontracts 
   - python39-dpkt 
+  - python39-dqsegdb2 
   - python39-dragonmapper 
   - python39-drms 
   - python39-dropbox 
@@ -31506,6 +31549,7 @@ unsorted:
   - redeclipse-server 
   - redfish-finder 
   - redfishtool 
+  - redis 
   - redis++-devel 
   - redland 
   - redland-storage-postgresql 
