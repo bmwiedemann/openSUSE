@@ -87,6 +87,10 @@ Source98:       zfcp_disk_configure.8
 Source99:       zfcp_host_configure.8
 ###
 
+# IBM patches
+Patch001:       s390-tools-sles15sp4-chreipl-fcp-mpath-don-t-compress-the-manpage-before-.patch
+Patch002:       s390-tools-sles15sp4-chreipl-fcp-mpath-remove-shebang-from-chreipl-fcp-mp.patch
+
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
