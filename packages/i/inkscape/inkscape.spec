@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -234,14 +234,11 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %dir %{_mandir}/hr/
 %dir %{_mandir}/hr/man1/
 %{_mandir}/*/man1/*.1%{?ext_man}
-# exclude extensions that go in other packages:
-%exclude %{_datadir}/inkscape/extensions/fig*
-%exclude %{_datadir}/inkscape/extensions/*gimp*
-%exclude %{_datadir}/inkscape/extensions/*scribus*
-%exclude %{_datadir}/inkscape/extensions/*dxf*
 
 %files extensions-extra -f inkscape-extensions-extra.lst
 %{_datadir}/inkscape/extensions/output_scour.svg
+%{_datadir}/inkscape/extensions/dxf14_*.txt
+%{_datadir}/inkscape/extensions/dxf_input_text_scale_factor.svg
 
 %files extensions-fig
 %{_datadir}/inkscape/extensions/fig*

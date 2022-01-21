@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 17 18:59:38 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Fixed export to DXF14 (boo#1189514).
+  Added missing dxf14_*.txt files.
+- Removed redundant excludes
+
+-------------------------------------------------------------------
 Fri Dec  3 09:25:34 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Enable RPATH in cmake (bsc#1193183, bsc#1193261).
