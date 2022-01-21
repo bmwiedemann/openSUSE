@@ -1,0 +1,43 @@
+From 6f4d9d9688ad65bb46d09ac09f570c6ee4bc3671 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Fri, 14 Jan 2022 08:17:38 +0100
+Subject: [PATCH 1010/1010] sysv: add back support for '$all' virtual facility
+ and '+' facitity name prefix
+
+'$all' was probably a Debian thing and has probably never been supported by RH,
+which explains why systemd upstream never supported it too. At least I couldn't
+find any reference of this facility name in
+http://refspecs.linux-foundation.org/LSB_4.0.0/LSB-Core-generic/LSB-Core-generic.html#FACILNAME. OTOH
+'$all' is described in https://wiki.debian.org/LSBInitScripts
+
+Regarding the '+' prefix, I couldn't find any mention of it
+anywhere. Apparently it was equivalent to '$' in facility names.
+
+[wfink: bsc#858864]
+---
+ src/sysv-generator/sysv-generator.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/sysv-generator/sysv-generator.c b/src/sysv-generator/sysv-generator.c
+index c6e1953839..0aadb397ed 100644
+--- a/src/sysv-generator/sysv-generator.c
++++ b/src/sysv-generator/sysv-generator.c
+@@ -243,6 +243,7 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
+                 "remote_fs",            SPECIAL_REMOTE_FS_TARGET,
+                 "syslog",               NULL,
+                 "time",                 SPECIAL_TIME_SYNC_TARGET,
++                "all",                  SPECIAL_DEFAULT_TARGET,
+         };
+ 
+         const char *filename;
+@@ -257,6 +258,7 @@ static int sysv_translate_facility(SysvStub *s, unsigned line, const char *name,
+ 
+         filename = basename(s->path);
+ 
++        n = *name == '+' ? ++name   : name;
+         n = *name == '$' ? name + 1 : name;
+ 
+         for (i = 0; i < ELEMENTSOF(table); i += 2) {
+-- 
+2.31.1
+

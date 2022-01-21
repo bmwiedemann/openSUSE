@@ -24,7 +24,7 @@ command line option: systemd.log_color=off.
 See also a short discussion which happened on @systemd-maintainers
 whose $subject is "[PATCH] support conmode setting on command line".
 
-[ fbui: fixes bsc#860937 ]
+[fbui: fixes bsc#860937]
 ---
  src/basic/terminal-util.c | 15 ++++++++++++++-
  1 file changed, 14 insertions(+), 1 deletion(-)

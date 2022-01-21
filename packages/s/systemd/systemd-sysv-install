@@ -2,15 +2,15 @@
 
 # This script is called by "systemctl enable/disable" when the given unit is a
 # SysV init.d script. It needs to call the distribution's mechanism for
-# enabling/disabling those, such as chkconfig, update-rc.d, or similar. This
-# can optionally take a --root argument for enabling a SysV init script
-# in a chroot or similar.
+# enabling/disabling those, such as chkconfig, update-rc.d, or similar. This can
+# optionally take a --root argument for enabling a SysV init script in a chroot
+# or similar.
 #
-# chkconfig(8) and insserv(8) are no more available hence let's do the
-# bare minimum and create/remote the symlinks for the well known
-# runlevels and nothing more. Note that we don't take care of
-# enabling/disabling the service dependencies as the sysv-generator
-# will take care of them for us (openSUSE specific).
+# chkconfig(8) and insserv(8) are no more available hence let's do the bare
+# minimum and create/remove the symlinks for the well known runlevels and
+# nothing more. Note that we don't take care of enabling/disabling the service
+# dependencies as the sysv-generator will take care of them for us (openSUSE
+# specific).
 #
 
 set -e

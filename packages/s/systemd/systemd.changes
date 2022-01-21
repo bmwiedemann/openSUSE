@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jan 19 14:25:46 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Move the systemd-network-generator stuff in udev package
+
+  This generator can generate .link files and is mainly used in initrd where
+  udev is mandatory.
+
+-------------------------------------------------------------------
+Tue Jan 18 17:57:43 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Restore /sbin/udevadm and /bin/systemctl (obsolete) paths when split_usr is
+  true (bsc#1194519)
+
+-------------------------------------------------------------------
+Mon Jan 17 09:16:13 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 3743acbce3bd44208af453fc6dc384a1236dc83c (merge of v249.9)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e2ca79dd775d1f7d39861d57f23c43f6cd85a872...3743acbce3bd44208af453fc6dc384a1236dc83c
+
+-------------------------------------------------------------------
+Fri Jan 14 14:55:56 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Extract bits from 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+  which are not specific to the handling of 'Required-Start:' and move them into a
+  new patch 0009-sysv-add-back-support-for-all-virtual-facility-and-f.patch
+
+-------------------------------------------------------------------
+Thu Jan 13 21:54:06 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit e2ca79dd775d1f7d39861d57f23c43f6cd85a872 (merge of v249.8)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/458220239c69b8e5fe7be480929348daeccb70d1...e2ca79dd775d1f7d39861d57f23c43f6cd85a872
+
+-------------------------------------------------------------------
+Thu Jan 13 20:03:51 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 458220239c69b8e5fe7be480929348daeccb70d1
+
+  e95df40b09 shared/rm-rf: loop over nested directories instead of instead of recursing (CVE-2021-3997 bsc#1194178)
+  078e04305d shared/rm_rf: refactor rm_rf() to shorten code a bit
+  6d560d0aca shared/rm_rf: refactor rm_rf_children_inner() to shorten code a bit
+  6666ff056c localectl: don't omit keymaps files that are symlinks (bsc#1191826)
+
+- Drop the following patches as they have been merged into SUSE/v249 branch:
+
+  5000-shared-rm_rf-refactor-rm_rf_children_inner-to-shorte.patch
+  5001-shared-rm_rf-refactor-rm_rf-to-shorten-code-a-bit.patch
+  5002-shared-rm-rf-loop-over-nested-directories-instead-of.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 08:06:11 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Added patches to fix CVE-2021-3997 (bsc#1194178)
@@ -49,7 +102,7 @@ Wed Nov 24 10:40:01 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
 -------------------------------------------------------------------
 Mon Nov 22 08:48:12 UTC 2021 - Franck Bui <fbui@suse.com>
 
-- Import commit 523f32df573d459551760b072cb62906f4a2cf23 (merge of 249.7)
+- Import commit 523f32df573d459551760b072cb62906f4a2cf23 (merge of v249.7)
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/c34c98712600bc206919ec6ed136195f75ac1967...523f32df573d459551760b072cb62906f4a2cf23
@@ -69,7 +122,7 @@ Mon Nov 22 08:43:25 UTC 2021 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Mon Nov 15 09:35:08 UTC 2021 - Franck Bui <fbui@suse.com>
 
-- Import commit 61c79e68381801428c0bc00a56b9e2e9cfa68373 (merge of 249.6)
+- Import commit 61c79e68381801428c0bc00a56b9e2e9cfa68373 (merge of v249.6)
 
   bcdeee7b4c virt: Support detection for ARM64 Hyper-V guests (bsc#1186071)
   [...]

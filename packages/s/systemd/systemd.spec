@@ -32,7 +32,7 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.66.ga54f80116c
+%define suse_version +suse.75.g3743acbce3
 %define _testsuitedir /usr/lib/systemd/tests
 
 %if 0%{?bootstrap}
@@ -69,7 +69,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        249.7
+Version:        249.9
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -198,10 +198,11 @@ Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
 Patch6:         0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
 Patch7:         0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
 Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
-Patch9:         0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+Patch9:         0009-sysv-add-back-support-for-all-virtual-facility-and-f.patch
 Patch10:        0001-conf-parser-introduce-early-drop-ins.patch
 Patch11:        0011-core-disable-session-keyring-per-system-sevice-entir.patch
 Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
+Patch13:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 
 # Patches listed below are put in quarantine. Normally all changes
 # must go to upstream first and then are cherry-picked in the SUSE git
@@ -209,12 +210,6 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
-
-# The following patches address CVE-2021-3997. They will be moved to the git
-# repo once the issue will become public and upstream will release them.
-Patch5000:      5000-shared-rm_rf-refactor-rm_rf_children_inner-to-shorte.patch
-Patch5001:      5001-shared-rm_rf-refactor-rm_rf-to-shorten-code-a-bit.patch
-Patch5002:      5002-shared-rm-rf-loop-over-nested-directories-instead-of.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -746,8 +741,11 @@ for s in %{SOURCE100} %{SOURCE101} %{SOURCE102}; do
 done
 
 %if %{with split_usr}
+mkdir -p %{buildroot}/{bin,sbin}
+# Legacy paths
+ln -s ../usr/bin/udevadm %{buildroot}/sbin/
+ln -s ../usr/bin/systemctl %{buildroot}/bin/
 # Legacy sysvinit tools
-mkdir -p %{buildroot}/sbin
 ln -s ../usr/lib/systemd/systemd %{buildroot}/sbin/init
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/reboot
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/halt
@@ -787,8 +785,8 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/systemd-networkd.rules \
 # /usr/lib/sysctl.d/99-sysctl.conf.
 ln -s ../../../etc/sysctl.conf %{buildroot}%{_sysctldir}/99-sysctl.conf
 
-# The definition of the basic users/groups are defined by system-user
-# on SUSE (bsc#1006978).
+# The definitions of the basic users/groups are given by system-user package on
+# SUSE (bsc#1006978).
 rm -f %{buildroot}%{_sysusersdir}/basic.conf
 
 # Remove README file in init.d as (SUSE) rpm requires executable files
@@ -1281,6 +1279,9 @@ fi
 %{_bindir}/systemd-cgls
 %{_bindir}/systemd-cgtop
 %{_bindir}/systemd-cat
+%if %{with split_usr}
+/bin/systemctl
+%endif
 %dir %{_prefix}/lib/kernel
 %dir %{_prefix}/lib/kernel/install.d
 %{_prefix}/lib/kernel/install.d/00-entry-directory.install
@@ -1290,6 +1291,8 @@ fi
 %dir %{_prefix}/lib/systemd/network
 %dir %{_unitdir}
 %{_userunitdir}
+%exclude %{_prefix}/lib/systemd/systemd-network-generator
+%exclude %{_unitdir}/systemd-network-generator.service
 %if %{with coredump}
 %exclude %{_prefix}/lib/systemd/systemd-coredump
 %exclude %{_unitdir}/systemd-coredump*
@@ -1302,6 +1305,7 @@ fi
 %exclude %{_prefix}/lib/systemd/systemd-journal-gatewayd
 %exclude %{_prefix}/lib/systemd/systemd-journal-remote
 %exclude %{_prefix}/lib/systemd/systemd-journal-upload
+%exclude %{_datadir}/systemd/gatewayd
 %endif
 %exclude %{_prefix}/lib/systemd/systemd-udevd
 %exclude %{_unitdir}/systemd-udev*.*
@@ -1330,10 +1334,8 @@ fi
 %exclude %{_unitdir}/dbus-org.freedesktop.import1.service
 %endif
 %if %{with networkd}
-%exclude %{_prefix}/lib/systemd/systemd-network-generator
 %exclude %{_prefix}/lib/systemd/systemd-networkd
 %exclude %{_prefix}/lib/systemd/systemd-networkd-wait-online
-%exclude %{_unitdir}/systemd-network-generator.service
 %exclude %{_unitdir}/systemd-networkd.service
 %exclude %{_unitdir}/systemd-networkd.socket
 %exclude %{_unitdir}/systemd-networkd-wait-online.service
@@ -1475,10 +1477,6 @@ fi
 %{_datadir}/systemd
 %{_datadir}/factory
 
-%if %{with journal_remote}
-%exclude %{_datadir}/systemd/gatewayd
-%endif
-
 %{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
@@ -1503,12 +1501,13 @@ fi
 %{_mandir}/man7/[bdfks]*
 %{_mandir}/man8/kern*
 %{_mandir}/man8/pam_*
-%{_mandir}/man8//rc-local.*
+%{_mandir}/man8/rc-local.*
 %{_mandir}/man8/systemd-[a-gik-tvx]*
 %{_mandir}/man8/systemd-h[aioy]*
 %{_mandir}/man8/systemd-journald*
 %{_mandir}/man8/systemd-u[ps]*
 %{_mandir}/man8/30-systemd-environment-d-generator.*
+%exclude %{_mandir}/man8/systemd-network-generator.*
 %if %{with coredump}
 %exclude %{_mandir}/man1/coredumpctl*
 %exclude %{_mandir}/man5/coredump.conf*
@@ -1623,6 +1622,9 @@ fi
 %defattr(-,root,root)
 %{_bindir}/udevadm
 %{_bindir}/systemd-hwdb
+%if %{with split_usr}
+/sbin/udevadm
+%endif
 %dir %{_prefix}/lib/udev/
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id
@@ -1636,6 +1638,8 @@ fi
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
+%{_prefix}/lib/systemd/systemd-udevd
+%{_prefix}/lib/systemd/systemd-network-generator
 %dir %{_udevrulesdir}/
 %doc %{_udevrulesdir}/README
 %exclude %{_udevrulesdir}/70-uaccess.rules
@@ -1648,16 +1652,7 @@ fi
 %dir %{_sysconfdir}/udev/rules.d/
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
-%if ! 0%{?bootstrap}
-%{_mandir}/man5/udev*
-%{_mandir}/man7/hwdb*
-%{_mandir}/man7/udev*
-%{_mandir}/man8/systemd-hwdb*
-%{_mandir}/man8/systemd-udev*
-%{_mandir}/man8/udev*
-%endif
 %dir %{_unitdir}
-%{_prefix}/lib/systemd/systemd-udevd
 %{_unitdir}/kmod-static-nodes.service
 %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
 %{_tmpfilesdir}/static-nodes-permissions.conf
@@ -1665,6 +1660,7 @@ fi
 %{_unitdir}/systemd-udevd*.socket
 %{_unitdir}/systemd-hwdb*.*
 %{_unitdir}/initrd-udevadm-cleanup-db.service
+%{_unitdir}/systemd-network-generator.service
 %dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/sysinit.target.wants/systemd-udev*.service
 %dir %{_unitdir}/sockets.target.wants
@@ -1672,6 +1668,15 @@ fi
 %{_unitdir}/*.target.wants/systemd-hwdb*.*
 %{_prefix}/lib/systemd/network/99-default.link
 %{_datadir}/pkgconfig/udev.pc
+%if ! 0%{?bootstrap}
+%{_mandir}/man5/udev*
+%{_mandir}/man7/hwdb*
+%{_mandir}/man7/udev*
+%{_mandir}/man8/systemd-hwdb*
+%{_mandir}/man8/systemd-udev*
+%{_mandir}/man8/udev*
+%{_mandir}/man8/systemd-network-generator.*
+%endif
 
 %files -n libsystemd0%{?mini}
 %defattr(-,root,root)
@@ -1813,10 +1818,8 @@ fi
 %{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
 %{_prefix}/lib/systemd/network/*.network
 %{_prefix}/lib/systemd/network/*.network.example
-%{_prefix}/lib/systemd/systemd-network-generator
 %{_prefix}/lib/systemd/systemd-networkd
 %{_prefix}/lib/systemd/systemd-networkd-wait-online
-%{_unitdir}/systemd-network-generator.service
 %{_unitdir}/systemd-networkd.service
 %{_unitdir}/systemd-networkd.socket
 %{_unitdir}/systemd-networkd-wait-online.service
