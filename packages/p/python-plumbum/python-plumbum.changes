@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jan 19 22:56:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.2
+  * This is the final release for Python 2 and 3.5.
+  * Some DeprecationWarnings changed to FutureWarnings (#567)
+- Version 1.7.1
+  * Paths: glob with local paths no longer expands the existing
+    path too (#552)
+  * Paramiko: support reverse tunnels (#562)
+  * SSHMachine: support forwarding Unix sockets in .tunnel() (#550)
+  * CLI: Support COLOR_GROUP_TITLES (#553)
+  * Fix a deprecated in Python 3.10 warning (#563)
+  * Extended testing and checking on Python 3.10 and various PyPy
+    versions. Nox is supported for easier new-user development.
+- Version 1.7.0
+  * Commands: support .with_cwd() (#513)
+  * Commands: make iter_lines deal with decoding errors during
+    iteration (#525)
+  * Commands: fix handling of env-vars passed to plumbum
+    BoundEnvCommands (#513)
+  * Paths: fix incorrect __getitem__ method in Path (#506)
+  * Paths: Remote path stat had odd OSError (#505)
+  * Paths: Fix RemotePath.copy() (#527)
+  * Paths: missing __fspath__ added (#498)
+  * SSH: better error reporting on SshSession error (#515)
+  * Internal: redesigned CI, major cleanup to setuptools
+    distribution, Black formatting, style checking throughout.
+  * If you install from the auto-generated tarball for Git
+    releases, you should either use
+    SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver} pip install . (where
+    pkgver is the package version, 1.7.0 in this case), or (not
+    recommended) install setuptools_scm before running
+    SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver} python setup.py
+    install. PyPI SDists have the version file already, and git
+    checkouts will get the version from git tags.
+- Drop no-python2.patch merged upstream
+
+-------------------------------------------------------------------
 Mon Apr 27 07:26:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch fixing build with no python2 available:

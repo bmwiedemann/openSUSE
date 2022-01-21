@@ -1,7 +1,7 @@
 #
 # spec file for package python-plumbum
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plumbum
-Version:        1.6.9
+Version:        1.7.2
 Release:        0
 Summary:        Shell combinators library
 License:        MIT
 URL:            https://github.com/tomerfiliba/plumbum
-Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.gz
-Patch0:         no-python2.patch
+Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.gz#/plumbum-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -32,8 +32,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  openssh
 BuildRequires:  sudo
@@ -51,25 +51,27 @@ application toolkit.
 
 %prep
 %setup -q -n plumbum-%{version}
-%patch0 -p1
-# remote tests won't work in OBS
-rm tests/test_remote.py
+sed -i '/addopts/d' setup.cfg
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_build
 
 %install
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF8
-# the skipped tests need running local SSH server or root privs
-%pytest -k 'not (test_iterdir or test_iter_lines_timeout or test_iter_lines_error or test_atomic_file2 or test_pid_file or test_atomic_counter or test_as_user or test_copy_move_delete)'
+# timeouts too fast on obs
+donttest="test_iter_lines_line_timeout"
+%pytest --ignore tests/test_remote.py -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/plumbum
+%{python_sitelib}/plumbum-%{version}*-info
 
 %changelog
