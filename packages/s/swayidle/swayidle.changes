@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 10:26:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch: Fix printf
+  using size_t lineno variable.
+
+-------------------------------------------------------------------
 Mon Jan 17 14:23:14 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:
