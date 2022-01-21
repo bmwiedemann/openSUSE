@@ -5,11 +5,11 @@
 # records are updated here using the dig utility.
 
 chronyc=/usr/bin/chronyc
-helper_dir=/var/run/chrony-helper
+helper_dir=@CHRONY_RUNDIR@/chrony-helper
 added_servers_file=$helper_dir/added_servers
 
 network_sysconfig_file=/etc/sysconfig/network
-dhclient_servers_files=/var/run/netconfig/chrony.servers
+dhclient_servers_files=/run/netconfig/chrony.servers
 dnssrv_servers_files=$helper_dir/dnssrv@*
 dnssrv_timer_prefix=chrony-dnssrv@
 
