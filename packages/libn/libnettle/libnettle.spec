@@ -1,7 +1,7 @@
 #
 # spec file for package libnettle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,9 @@ Source1:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        %{name}-rpmlintrc
+#PATCH-FIX-UPSTREAM Provide s390x CPACF/SHA/AES Support for Crypto Libraries [jsc#SLE-20733]
+Patch0:         libnettle-s390x-CPACF-SHA-AES-support.patch
+BuildRequires:  autoconf
 BuildRequires:  fipscheck
 BuildRequires:  gmp-devel >= 6.1.0
 BuildRequires:  m4
@@ -91,13 +94,20 @@ This package contains a few command-line tools to perform cryptographic
 operations using the nettle library.
 
 %prep
-%setup -q -n nettle-%{version}
+%autosetup -p1 -n nettle-%{version}
 
 %build
+autoreconf -fiv
 %configure \
     --disable-static \
     --enable-shared \
-    --enable-fat
+    --enable-fat \
+%ifarch s390x
+    --enable-s390x-vf \
+    --enable-s390x-msa \
+%endif
+    %{nil}
+
 %make_build
 
 %install

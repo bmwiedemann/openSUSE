@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 11:20:55 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Provide s390x CPACF/SHA/AES Support for Crypto Libraries
+  * Add libnettle-s390x-CPACF-SHA-AES-support.patch [jsc#SLE-20733]
+
+-------------------------------------------------------------------
 Wed Jun  9 10:57:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - GNU Nettle 3.7.3: [CVE-2021-3580, bsc#1187060]
