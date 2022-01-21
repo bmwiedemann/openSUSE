@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 19 08:38:14 UTC 2022 -  Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.34.1+git.20220117T134844.22b0bac28e:
+  * native pipewire AO
+  * Dolby Vision support
+  * player: fix autofit/geometry related segfault
+  * ao_oss: add missing PATH_DEV_MIXER define
+  * egl_helpers: fix context creation if GLES 3 is not available
+  * audio: stop corrupting audio on underreads
+  * wayland: fix a potential segfault on surface enter
+  * vo_gpu: opengl: fix wrong glMemoryBarrier call
+  * vo_gpu: opengl: create context at version 4.4 again
+  * af_lavcac3enc: fix memory leak on no-op
+  * subprocess: unblock/reset signals before running child process
+  * wayland: avoid doing unneccesary window resizes
+
+  * See https://github.com/mpv-player/mpv/compare/9ca9066d05..22b0bac28e
+    or https://git.srsfckn.biz/mpv/log/?qt=range&q=9ca9066d05..22b0bac28e
+    for the complete changelog.
+
+-------------------------------------------------------------------
 Sun Nov 21 09:41:06 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 0.34.0+git.20211101T154439.9ca9066d05:

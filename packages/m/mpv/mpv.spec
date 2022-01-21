@@ -1,7 +1,7 @@
 #
 # spec file for package mpv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Jiri Slaby <jslaby@suse.de>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
@@ -19,15 +19,15 @@
 #
 
 
-%define _waf_ver 2.0.20
-%define lname   libmpv1
+%define _waf_ver 2.0.23
+%define lname   libmpv2
 Name:           mpv
-Version:        0.34.0+git.20211101T154439.9ca9066d05
+Version:        0.34.1+git.20220117T134844.22b0bac28e
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
-URL:            http://mpv.io/
+URL:            http://mpv.io
 Source:         %{name}-%{version}.tar.xz
 Source1:        https://waf.io/waf-%{_waf_ver}
 Source2:        %{name}.changes
@@ -75,6 +75,7 @@ BuildRequires:  pkgconfig(libudf)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva) >= 1.1.0
 BuildRequires:  pkgconfig(libva-x11) >= 1.1.0
+BuildRequires:  pkgconfig(lua5.1)
 # Testing framework: disabled for now as it runs just 1 test
 # BuildRequires:  pkgconfig(cmocka) >= 0.4.1
 BuildRequires:  pkgconfig(python3)
@@ -106,11 +107,6 @@ Obsoletes:      mplayer2 < 20140101
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  pkgconfig(mujs)
 %endif
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(lua5.1)
-%else
-BuildRequires:  pkgconfig(lua)
-%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
 BuildRequires:  pkgconfig(vulkan) >= 1.0.61
@@ -121,15 +117,14 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 %endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+BuildRequires:  pkgconfig(libpipewire-0.3)
+%endif
 # JIT for lua.
-%if 0%{?suse_version} >= 1500
 %ifarch aarch64 %{ix86} x86_64
 BuildRequires:  pkgconfig(luajit)
 %else
 BuildRequires:  pkgconfig(lua5.1)
-%endif
-%else
-BuildRequires:  pkgconfig(lua)
 %endif
 
 %description
@@ -221,6 +216,9 @@ python3 ./waf configure \
   --enable-gl-wayland                \
   --enable-vulkan                    \
 %endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+  --enable-pipewire                  \
+%endif
   --enable-gl-x11                    \
   --enable-egl-x11                   \
   --enable-egl-drm                   \
@@ -236,16 +234,6 @@ install -D -m 0644 etc/input.conf %{buildroot}%{_sysconfdir}/%{name}/input.conf
 install -D -m 0644 etc/mpv.conf %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
 # remove shebang
 sed -i -e '1d' %{buildroot}%{_datadir}/bash-completion/completions/mpv
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
