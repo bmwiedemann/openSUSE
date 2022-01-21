@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 03:06:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.05
+   see /usr/share/doc/packages/perl-JSON/Changes
+
+  4.05 2022-01-14
+      - removed VERSION section in pod (GH#52, abraxxa++)
+
+-------------------------------------------------------------------
 Sat Dec 18 03:07:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.04

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name JSON
 Name:           perl-JSON
-Version:        4.04
+Version:        4.05
 Release:        0
 Summary:        JSON (JavaScript Object Notation) encoder/decoder
 License:        Artistic-1.0 OR GPL-1.0-or-later
