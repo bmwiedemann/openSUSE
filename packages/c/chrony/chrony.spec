@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 %define chrony_helper %{_libexecdir}/chrony/helper
+%define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
 Version:        4.2
 Release:        0
@@ -130,6 +131,7 @@ Provides:       %name-pool-nonempty
 Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
+Supplements:    (chrony and branding-SLE)
 Removepathpostfixes:.suse
 
 %description pool-suse
@@ -158,7 +160,6 @@ Provides:       %name-pool = %version
 Conflicts:      %name-pool
 Requires:       %name = %version
 BuildArch:      noarch
-Supplements:    (chrony and branding-SLE)
 Removepathpostfixes:.empty
 
 %description pool-empty
@@ -201,6 +202,8 @@ export CFLAGS="%{optflags} -Wall -fpic -DPIC $(pkg-config --cflags libseccomp)"
 export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 %configure                                  \
   --docdir="%{_docdir}/%{name}"             \
+  --chronyrundir=%{chrony_rundir}           \
+  --with-pidfile=%{chrony_rundir}/chronyd.pid \
   --enable-scfilter                         \
   --with-user=chrony                        \
   --with-hwclockfile=%{_sysconfdir}/adjtime \
@@ -265,7 +268,10 @@ echo '# Add ntp pools here' > %{buildroot}/etc/chrony.d/pool.conf.empty
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/
 
-find %{buildroot} -type f | xargs sed -i 's-@CHRONY_HELPER@-%{chrony_helper}-g'
+find %{buildroot} -type f | xargs sed -i '
+	s-@CHRONY_HELPER@-%{chrony_helper}-g
+	s-@CHRONY_RUNDIR@-%{chrony_rundir}-g
+'
 
 %if %{with testsuite}
 %ifnarch %ix86

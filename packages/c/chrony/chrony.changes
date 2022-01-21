@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 10 17:26:02 UTC 2022 - Reinhard Max <max@suse.com>
+
+- boo#1194206: Use /run instead of /var/run throughout.
+- bsc#1194229: Fix pool package dependencies, so that SLE actually
+  prefers chrony-pool-suse over chrony-pool-empty. 
+
+-------------------------------------------------------------------
 Thu Dec 16 16:47:08 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Update to 4.2
