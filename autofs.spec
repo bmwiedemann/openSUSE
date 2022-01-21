@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,55 +18,25 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 %if 0%{?suse_version} >= 1230
 %define with_udisks 1
 %else
 %define with_udisks 0
 %endif
-
 %if 0%{?suse_version} >= 1230
 %define with_sssd 1
 %else
 %define with_sssd 0
 %endif
-
 Name:           autofs
-URL:            http://www.kernel.org/pub/linux/daemons/autofs/v5/
-BuildRequires:  autoconf
-BuildRequires:  bison
-BuildRequires:  cyrus-sasl-devel
-BuildRequires:  dbus-1-devel
-BuildRequires:  e2fsprogs
-BuildRequires:  flex
-BuildRequires:  krb5-devel
-BuildRequires:  libnsl-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libtirpc-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  module-init-tools
-BuildRequires:  nfs-client
-BuildRequires:  openldap2-devel
-BuildRequires:  pkg-config
-%if 0%{?suse_version} >= 1330
-BuildRequires:  rpcgen
-%endif
-BuildRequires:  xz
-%if %{with_sssd}
-BuildRequires:  sssd
-%endif
-%if %{with_udisks}
-BuildRequires:  pkgconfig(udisks2)
-%endif
-BuildRequires:  pkgconfig(libsystemd)
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        A Kernel-Based Automounter
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.kernel.org/pub/linux/daemons/autofs/v5/
 Source:         https://www.kernel.org/pub/linux/daemons/autofs/v5/%{name}-%{version}.tar.xz
 Source1:        sysconfig.autofs
 Source3:        autofs.schema
@@ -89,13 +59,37 @@ Patch104:       autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
 Patch105:       autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
 # bsc#1175238 - Use /usr/etc/nsswitch.conf if /etc/nsswitch.conf is not available
 Patch106:       autofs-nsswitch-usr-etc.patch
-Patch107:       autofs-5.1.7-Fix-option-for-master_read_wait.patch
-Patch108:       autofs-5.1.7-use-default-stack-size-for-threads.patch
+BuildRequires:  autoconf
+BuildRequires:  bison
+BuildRequires:  cyrus-sasl-devel
+BuildRequires:  dbus-1-devel
+BuildRequires:  e2fsprogs
+BuildRequires:  flex
+BuildRequires:  krb5-devel
+BuildRequires:  libnsl-devel
+BuildRequires:  libopenssl-devel
+BuildRequires:  libtirpc-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  module-init-tools
+BuildRequires:  nfs-client
+BuildRequires:  openldap2-devel
+BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  xz
+BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  %fillup_prereq
 Requires(pre):  aaa_base
-BuildRequires:  systemd-rpm-macros
-%{?systemd_ordering}
 Recommends:     nfs-client
+%{?systemd_ordering}
+%if 0%{?suse_version} >= 1330
+BuildRequires:  rpcgen
+%endif
+%if %{with_sssd}
+BuildRequires:  sssd
+%endif
+%if %{with_udisks}
+BuildRequires:  pkgconfig(udisks2)
+%endif
 
 %description
 AutoFS is a kernel-based automounter for Linux.  It automatically
@@ -115,8 +109,6 @@ cp %{SOURCE5} .
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
-%patch107 -p1
-%patch108 -p1
 
 %build
 autoreconf -fiv
@@ -124,7 +116,7 @@ autoreconf -fiv
 SUSE_ASNEEDED=0
 %configure %{_target_cpu}-suse-linux \
             --libdir=%{_libdir} --mandir=%{_mandir} \
-            --with-confdir=/etc/sysconfig \
+            --with-confdir=%{_sysconfdir}/sysconfig \
             --disable-mount-locking \
             --enable-forced-shutdown \
             --enable-ignore-busy \
@@ -132,7 +124,7 @@ SUSE_ASNEEDED=0
             --with-libtirpc \
             --with-hesiod=no \
             --with-sasl
-make all DONTSTRIP=1 LOCAL_CFLAGS="%{optflags} %(getconf LFS_CFLAGS)" \
+%make_build all DONTSTRIP=1 LOCAL_CFLAGS="%{optflags} %(getconf LFS_CFLAGS)" \
 	%{?_smp_mflags}
 
 %install
@@ -141,7 +133,7 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/auto.master.d
 install -D -m 644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.autofs
 install -D -m 755 %{SOURCE7} %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/autofs
 ln -s %{_mandir}/man8/autofs.8.gz %{buildroot}/%{_mandir}/man8/rcautofs.8.gz
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcautofs
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcautofs
 %if %{with_udisks}
 install -D -m 644 %{SOURCE42} %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.freedesktop.AutoMount.conf
 %endif
@@ -153,18 +145,17 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/autofs
 
 %post
 %service_add_post %{name}.service
-%{fillup_only}
+%fillup_only
 
 %preun
 %{stop_on_removal autofs}
 %service_del_preun %{name}.service
-%{fillup_only}
+%fillup_only
 
 %postun
 %service_del_postun %{name}.service
 
 %files
-%defattr (-, root, root)
 %license COPYRIGHT
 %{_fillupdir}/sysconfig.autofs
 %config(noreplace) %{_sysconfdir}/autofs.conf

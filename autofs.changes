@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Jan  4 22:03:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.8:
+  * add xdr_exports().
+  * remove mount.x and rpcgen dependencies.
+  * dont use realloc in host exports list processing.
+  * use sprintf() when constructing hosts mapent.
+  * fix mnts_remove_amdmount() uses wrong list.
+  * Fix option for master read wait.
+  * eliminate cache_lookup_offset() usage.
+  * fix is mounted check on non existent path.
+  * simplify cache_get_parent().
+  * set offset parent in update_offset_entry().
+  * remove redundant variables from mount_autofs_offset().
+  * remove unused parameter form do_mount_autofs_offset().
+  * refactor umount_multi_triggers().
+  * eliminate clean_stale_multi_triggers().
+  * simplify mount_subtree() mount check.
+  * fix mnts_get_expire_list() expire list construction.
+  * fix inconsistent locking in umount_subtree_mounts().
+  * fix return from umount_subtree_mounts() on offset list delete.
+  * pass mapent_cache to update_offset_entry().
+  * fix inconsistent locking in parse_mount().
+  * remove unused mount offset list lock functions.
+  * eliminate count_mounts() from expire_proc_indirect().
+  * eliminate some strlen calls in offset handling.
+  * don't add offset mounts to mounted mounts table.
+  * reduce umount EBUSY check delay.
+  * cleanup cache_delete() a little.
+  * rename path to m_offset in update_offset_entry().
+  * don't pass root to do_mount_autofs_offset().
+  * rename tree implementation functions.
+  * add some multi-mount macros.
+  * remove unused functions cache_dump_multi() and cache_dump_cache().
+  * add a len field to struct autofs_point.
+  * make tree implementation data independent.
+  * add mapent tree implementation.
+  * add tree_mapent_add_node().
+  * add tree_mapent_delete_offsets().
+  * add tree_mapent_traverse_subtree().
+  * fix mount_fullpath().
+  * add tree_mapent_cleanup_offsets().
+  * add set_offset_tree_catatonic().
+  * add mount and umount offsets functions.
+  * switch to use tree implementation for offsets.
+  * remove obsolete functions.
+  * remove redundant local var from sun_mount().
+  * use mount_fullpath() in one spot in parse_mount().
+  * pass root length to mount_fullpath().
+  * remove unused function master_submount_list_empty().
+  * move amd mounts removal into lib/mounts.c.
+  * check for offset with no mount location.
+  * remove mounts_mutex.
+  * remove unused variable from get_exports().
+  * add missing free in handle_mounts().
+  * remove redundant if check.
+  * fix possible memory leak in master_parse().
+  * fix possible memory leak in mnts_add_amdmount().
+  * fix double unlock in parse_mount().
+  * add length check in umount_subtree_mounts().
+  * fix flags check in umount_multi().
+  * dont try umount after stat() ENOENT fail.
+  * remove redundant assignment in master_add_amd_mount_section_mounts().
+  * fix dead code in mnts_add_mount().
+  * fix arg not used in error print.
+  * fix missing lock release in mount_subtree().
+  * fix double free in parse_mapent().
+  * refactor lookup_prune_one_cache() a bit.
+  * cater for empty mounts list in mnts_get_expire_list().
+  * add ext_mount_hash_mutex lock helpers.
+  * fix amd section mounts map reload.
+  * fix dandling symlink creation if nis support is not available.
+  * dont use AUTOFS_DEV_IOCTL_CLOSEMOUNT.
+  * fix lookup_prune_one_cache() refactoring change.
+  * fix amd hosts mount expire.
+  * fix offset entries order.
+  * use mapent tree root for tree_mapent_add_node().
+  * eliminate redundant cache lookup in tree_mapent_add_node().
+  * fix hosts map offset order.
+  * fix direct mount deadlock.
+  * add missing description of null map option.
+  * fix nonstrict offset mount fail handling.
+  * fix concat_options() error handling.
+  * eliminate some more alloca usage.
+  * use default stack size for threads.
+  * fix use of possibly NULL var in lookup_program.c:match_key().
+  * fix incorrect print format specifiers in get_pkt().
+  * add mapent path length check in handle_packet_expire_direct().
+  * add copy length check in umount_autofs_indirect().
+  * add some buffer length checks to master map parser.
+  * add buffer length check to rmdir_path().
+  * eliminate buffer usage from handle_mounts_cleanup().
+  * add buffer length checks to autofs mount_mount().
+  * make NFS version check flags consistent.
+  * refactor get_nfs_info().
+- drop autofs-5.1.7-Fix-option-for-master_read_wait.patch,
+  autofs-5.1.7-use-default-stack-size-for-threads.patch: upstream
+
+-------------------------------------------------------------------
 Wed Sep  8 18:15:58 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 -  autofs-5.1.7-use-default-stack-size-for-threads.patch: Use default

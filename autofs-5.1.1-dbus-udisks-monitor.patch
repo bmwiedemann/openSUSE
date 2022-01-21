@@ -12,9 +12,11 @@
  samples/autofs.udisks   |   28 
  11 files changed, 3004 insertions(+), 1 deletion(-)
 
---- a/Makefile.conf.in
-+++ b/Makefile.conf.in
-@@ -46,6 +46,9 @@
+Index: autofs-5.1.8/Makefile.conf.in
+===================================================================
+--- autofs-5.1.8.orig/Makefile.conf.in
++++ autofs-5.1.8/Makefile.conf.in
+@@ -46,6 +46,9 @@ KRB5_FLAGS=@KRB5_FLAGS@
  # NIS+ support: yes (1) no (0)
  NISPLUS = @HAVE_NISPLUS@
  
@@ -24,9 +26,11 @@
  # SMBFS support: yes (1) no (0)
  SMBFS = @HAVE_SMBMOUNT@
  
---- a/daemon/lookup.c
-+++ b/daemon/lookup.c
-@@ -198,6 +198,10 @@
+Index: autofs-5.1.8/daemon/lookup.c
+===================================================================
+--- autofs-5.1.8.orig/daemon/lookup.c
++++ autofs-5.1.8/daemon/lookup.c
+@@ -198,6 +198,10 @@ int lookup_nss_read_master(struct master
  				 (name[3] == ',' || name[3] == ':')) ||
  			    (!strncmp(name, "nisplus", 7) &&
  				 (name[7] == ',' || name[7] == ':')) ||
@@ -37,9 +41,11 @@
  			    (!strncmp(name, "ldap", 4) &&
  				 (name[4] == ',' || name[4] == ':')) ||
  			    (!strncmp(name, "ldaps", 5) &&
---- a/daemon/master_tok.l
-+++ b/daemon/master_tok.l
-@@ -120,7 +120,7 @@
+Index: autofs-5.1.8/daemon/master_tok.l
+===================================================================
+--- autofs-5.1.8.orig/daemon/master_tok.l
++++ autofs-5.1.8/daemon/master_tok.l
+@@ -123,7 +123,7 @@ DNNAMESTR2	([[:alnum:]_.\-]+)
  INTMAP		(-hosts|-null)
  MULTI		((multi)(,(sun|hesiod))?(:{OPTWS}|{WS}))
  MULTISEP	([\-]{2}[[:blank:]]+)
@@ -48,8 +54,10 @@
  
  
  OPTTOUT		(-t{OPTWS}|-t{OPTWS}={OPTWS}|--timeout{OPTWS}|--timeout{OPTWS}={OPTWS})
+Index: autofs-5.1.8/include/lookup_udisks.h
+===================================================================
 --- /dev/null
-+++ b/include/lookup_udisks.h
++++ autofs-5.1.8/include/lookup_udisks.h
 @@ -0,0 +1,381 @@
 +/*
 + * loopup_udisks.h - Header file for lookup_udisks automount module
@@ -432,9 +440,11 @@
 +} cnfxml_t;
 +
 +#endif
---- a/lib/parse_subs.c
-+++ b/lib/parse_subs.c
-@@ -98,6 +98,8 @@
+Index: autofs-5.1.8/lib/parse_subs.c
+===================================================================
+--- autofs-5.1.8.orig/lib/parse_subs.c
++++ autofs-5.1.8/lib/parse_subs.c
+@@ -98,6 +98,8 @@ static struct types map_type[] = {
  	{ "yp", 2 },
  	{ "nis", 3 },
  	{ "nisplus", 7 },
@@ -443,8 +453,10 @@
  	{ "ldap", 4 },
  	{ "ldaps", 5 },
  	{ "hesiod", 6 },
+Index: autofs-5.1.8/man/autofs.udisks.5.in
+===================================================================
 --- /dev/null
-+++ b/man/autofs.udisks.5.in
++++ autofs-5.1.8/man/autofs.udisks.5.in
 @@ -0,0 +1,121 @@
 +.\" t
 +.TH AUTOFS.UDISKS 5 "22 Aug 2012"
@@ -567,9 +579,11 @@
 +.BR udisks\-daemon (8)
 +.SH AUTHOR
 +This manual page was written by Werner Fink <werner@suse.com>.
---- a/modules/Makefile
-+++ b/modules/Makefile
-@@ -62,6 +62,14 @@
+Index: autofs-5.1.8/modules/Makefile
+===================================================================
+--- autofs-5.1.8.orig/modules/Makefile
++++ autofs-5.1.8/modules/Makefile
+@@ -62,6 +62,14 @@ ifeq ($(SSSD), 1)
    MODS += lookup_sss.so
  endif
  
@@ -584,7 +598,7 @@
  CFLAGS += -I../include -I../lib -fPIC -D_GNU_SOURCE
  CFLAGS += -DAUTOFS_LIB_DIR=\"$(autofslibdir)\"
  CFLAGS += -DAUTOFS_MAP_DIR=\"$(autofsmapdir)\"
-@@ -143,6 +151,10 @@
+@@ -145,6 +153,10 @@ lookup_ldap.so: lookup_ldap.c dclist.o b
  		$(LDFLAGS) $(LIBLDAP) $(LIBRESOLV) $(LIBS) $(AUTOFS_LIB_LINK)
  	$(STRIP) lookup_ldap.so
  
@@ -595,9 +609,11 @@
  mount_nfs.so: mount_nfs.c replicated.o
  	$(CC) $(SOLDFLAGS) $(CFLAGS) -o mount_nfs.so \
  		mount_nfs.c replicated.o $(LDFLAGS) $(LIBS) $(AUTOFS_LIB_LINK)
---- a/modules/lookup_multi.c
-+++ b/modules/lookup_multi.c
-@@ -189,6 +189,8 @@
+Index: autofs-5.1.8/modules/lookup_multi.c
+===================================================================
+--- autofs-5.1.8.orig/modules/lookup_multi.c
++++ autofs-5.1.8/modules/lookup_multi.c
+@@ -189,6 +189,8 @@ static struct lookup_mod *nss_open_looku
  	if (!strncmp(argv[0], "file", 4) ||
  	    !strncmp(argv[0], "yp", 2) ||
  	    !strncmp(argv[0], "nisplus", 7) ||
@@ -606,9 +622,11 @@
  	    !strncmp(argv[0], "nis", 3) ||
  	    !strncmp(argv[0], "ldaps", 5) ||
  	    !strncmp(argv[0], "ldap", 4) ||
+Index: autofs-5.1.8/modules/lookup_udisks.c
+===================================================================
 --- /dev/null
-+++ b/modules/lookup_udisks.c
-@@ -0,0 +1,2449 @@
++++ autofs-5.1.8/modules/lookup_udisks.c
+@@ -0,0 +1,2446 @@
 +/*
 + * lookup_udisks.c - Module for Linux automount to access removable devices
 + *                   listed by the dbus based udisks-daemon
@@ -2976,10 +2994,7 @@
 +
 +		cache_readlock(mc);
 +		me = cache_lookup_distinct(mc, key);
-+		if (me && me->multi)
-+			lkp_key = strdup(me->multi->key);
-+		else
-+			lkp_key = strdup(key);
++		lkp_key = strdup(key);
 +		cache_unlock(mc);
 +
 +		if (!lkp_key)
@@ -3058,9 +3073,11 @@
 +out:
 +	return ret;
 +}
---- a/modules/parse_sun.c
-+++ b/modules/parse_sun.c
-@@ -901,6 +901,7 @@
+Index: autofs-5.1.8/modules/parse_sun.c
+===================================================================
+--- autofs-5.1.8.orig/modules/parse_sun.c
++++ autofs-5.1.8/modules/parse_sun.c
+@@ -947,6 +947,7 @@ static int validate_location(unsigned in
  		    ((esc = strchr(ptr, '\\')) && *(esc + 1) == ':') ||
  		    !strncmp(ptr, "file:", 5) || !strncmp(ptr, "yp:", 3) ||
  		    !strncmp(ptr, "nis:", 4) || !strncmp(ptr, "nisplus:", 8) ||
@@ -3068,8 +3085,10 @@
  		    !strncmp(ptr, "ldap:", 5) || !strncmp(ptr, "ldaps:", 6) ||
  		    !strncmp(ptr, "sss:", 4) || !strncmp(ptr, "dir:", 4))
  			return 1;
+Index: autofs-5.1.8/samples/autofs.udisks
+===================================================================
 --- /dev/null
-+++ b/samples/autofs.udisks
++++ autofs-5.1.8/samples/autofs.udisks
 @@ -0,0 +1,28 @@
 +<?xml version="1.0" ?>
 +<!--

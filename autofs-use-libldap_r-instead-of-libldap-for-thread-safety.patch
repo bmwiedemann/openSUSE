@@ -27,9 +27,11 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  configure.in |    2 +-
  2 files changed, 5 insertions(+), 5 deletions(-)
 
---- a/aclocal.m4
-+++ b/aclocal.m4
-@@ -344,11 +344,11 @@ dnl
+Index: autofs-5.1.8/aclocal.m4
+===================================================================
+--- autofs-5.1.8.orig/aclocal.m4
++++ autofs-5.1.8/aclocal.m4
+@@ -328,11 +328,11 @@ dnl
  dnl Check for function ldap_create_page_control
  dnl --------------------------------------------------------------------------
  AC_DEFUN([AF_CHECK_FUNC_LDAP_CREATE_PAGE_CONTROL],
@@ -43,7 +45,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  
  AC_TRY_LINK(
    [ #include <ldap.h> ],
-@@ -377,11 +377,11 @@ dnl
+@@ -361,11 +361,11 @@ dnl
  dnl Check for function ldap_parse_page_control
  dnl --------------------------------------------------------------------------
  AC_DEFUN([AF_CHECK_FUNC_LDAP_PARSE_PAGE_CONTROL],
@@ -57,9 +59,11 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  
  AC_TRY_LINK(
    [ #include <ldap.h> ],
---- a/configure.in
-+++ b/configure.in
-@@ -259,7 +259,7 @@ AC_ARG_WITH(openldap,
+Index: autofs-5.1.8/configure.in
+===================================================================
+--- autofs-5.1.8.orig/configure.in
++++ autofs-5.1.8/configure.in
+@@ -298,7 +298,7 @@ AC_ARG_WITH(openldap,
  if test -z "$HAVE_LDAP" -o "$HAVE_LDAP" != "0"; then
  	HAVE_LDAP=0
  	LDAP_FLAGS="$LDAP_FLAGS -DLDAP_DEPRECATED=1"
@@ -68,4 +72,3 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  		     -llber -lresolv $LIBS)
  	if test "$HAVE_LDAP" = "1"; then
  		AC_DEFINE(WITH_LDAP,1,
-
