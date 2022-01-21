@@ -1,12 +1,19 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/abraunegg/onedrive.git</param>
-    <param name="filename">onedrive</param>
-    <param name="revision">v2.4.14</param>
-    <param name="version">2.4.14</param>
+    <param name="revision">v2.4.15</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@~git.%h</param>
+    <param name="versionrewrite-pattern">v(.*)\+0.git.*</param>
+    <param name="versionrewrite-replacement">\1</param> 
     <param name="changesgenerate">enable</param>
-    <param name="exclude">**/bad-file-name.tar.xz</param>
+    <param name="exclude">**/bad?file?name.tar.xz</param>
+
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
 </services>

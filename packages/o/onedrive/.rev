@@ -143,4 +143,38 @@
     <comment></comment>
     <requestid>936265</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b1807d106c283f7b47eefcae7d732f9</srcmd5>
+    <version>2.4.15</version>
+    <time>1642724725</time>
+    <user>dimstar_suse</user>
+    <comment>- rebuild manually tar file to pass Factory legal reqs... 
+- Update to version 2.4.15:
+  * Release files for 2.4.15 (#1767)
+  * Update fixing edge case with OneDrive Personal Shared Folders and --resync --upload-only (#1762)
+  * Add --operation-timeout argument (#1759)
+  * Updated Dockerfile-alpine to 3.14 (#1722)
+  * Fix unable to upload to OneDrive Business Shared Folders due to API restricting quota information (#1725)
+  * Add SystemD hardening (#1720)
+  * Update INSTALL.md
+  * Update minimum compiler versions to dmd-2.087.0 and ldc-1.17.0 (#1724)
+  * Release 2.4.15 Dev Prep (#1723)
+  * Release files for 2.4.14 (#1719)
+- Update to version 2.4.15
+  * Add SystemD hardening (#1720)
+  * Updated Dockerfile-alpine to use Apline 3.14 (#1722)
+  * Update minimum compiler versions to dmd-2.087.0 and ldc-1.17.0
+    (#1724)
+  * Fix unable to upload to OneDrive Business Shared Folders due to
+  * API restricting quota information (#1725)
+  * Add --operation-timeout argument (#1759)
+  * Update fixing edge case with OneDrive Personal Shared Folders
+    and --resync --upload-only (#1762)
+  * Updated documentation (various)
+- Apply dmd and ldc minimum version requirements to spec
+- Remove harden_onedrive.service.patch and
+  harden_onedrive@.service.patch: applied upstream
+</comment>
+    <requestid>947776</requestid>
+  </revision>
 </revisionlist>

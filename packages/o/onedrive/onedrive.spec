@@ -1,8 +1,8 @@
 #
 # spec file for package onedrive
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2018-2020 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2018-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,20 +28,18 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.14
+Version:        2.4.15
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/abraunegg/onedrive/
-Source0:        %{name}-%{version}.tar
-Patch0:         harden_onedrive.service.patch
-Patch1:         harden_onedrive@.service.patch
+Source0:        %{name}-%{version}.tar.xz
 %if %{with dcompiler_dmd}
-BuildRequires:  dmd
+BuildRequires:  dmd >= 2.087.0
 BuildRequires:  phobos-devel-static
 %else
-BuildRequires:  ldc
+BuildRequires:  ldc >= 1.17.0
 BuildRequires:  ldc-phobos-devel
 %endif
 BuildRequires:  help2man
@@ -89,8 +87,6 @@ OneDrive shell completions for fish.
 %setup -q
 #sed -i /chown/d Makefile
 sed -i 's/^docdir.*/docdir = @docdir@/g' Makefile.in
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure \
