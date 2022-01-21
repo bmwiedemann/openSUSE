@@ -1,7 +1,7 @@
 #
 # spec file for package libjansson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-Name:           libjansson
 %define lname   libjansson4
+Name:           libjansson
+Version:        2.14
+Release:        0
 Summary:        C library for encoding, decoding and manipulating JSON data
 License:        MIT
 Group:          Development/Libraries/C and C++
-Version:        2.13.1
-Release:        0
-URL:            http://digip.org/jansson/
-
+URL:            https://digip.org/jansson/
 #Git-Clone:     git://github.com/akheron/jansson
-Source:         http://www.digip.org/jansson/releases/jansson-%version.tar.bz2
+Source0:        https://github.com/akheron/jansson/releases/download/v%{version}/jansson-%{version}.tar.bz2
 Source1:        baselibs.conf
-Source2:        http://www.digip.org/jansson/releases/jansson-%version.tar.bz2.asc
-Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source2:        https://github.com/akheron/jansson/releases/download/v%{version}/jansson-%{version}.tar.bz2.asc
+Source3:        %{name}.keyring
 BuildRequires:  pkgconfig
 
 %description
@@ -42,11 +40,11 @@ It features:
  * Full Unicode support (UTF-8)
  * Extensive test suite
 
-%package -n %lname
+%package -n %{lname}
 Summary:        C library for encoding, decoding and manipulating JSON data
 Group:          Development/Libraries/C and C++
 
-%description -n %lname
+%description -n %{lname}
 Jansson is a C library for encoding, decoding and manipulating JSON data.
 It features:
  * Simple and intuitive API and data model
@@ -58,7 +56,7 @@ It features:
 %package devel
 Summary:        Development files for libjansson
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description devel
 Jansson is a C library for encoding, decoding and manipulating JSON data.
@@ -74,22 +72,22 @@ It features:
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm -f "%buildroot/%_libdir"/*.la;
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%check
+make check
 
-%postun -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%files -n %lname
-%defattr(-,root,root)
+%files -n %{lname}
 %{_libdir}/libjansson.so.4*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/jansson.h
 %{_includedir}/jansson_config.h
 %{_libdir}/libjansson.so

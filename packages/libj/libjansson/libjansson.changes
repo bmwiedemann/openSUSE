@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 18 21:11:51 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.14:
+  * New Features:
+    + Add `json_object_getn`, `json_object_setn`, `json_object_deln`, and the
+      corresponding `nocheck` functions.
+  * Fixes:
+    + Handle `sprintf` corner cases.
+  * Build:
+    + Symbol versioning for all exported symbols (gh#akheron/jansson#523).
+    + Fix compiler warnings.
+  * Documentation:
+    + Small fixes.
+    + Sphinx 3 compatibility (gh#akheron/jansson#530).
+- Use GitHub as source URLs: Release hasn't been uploaded to digip.org.
+- Cleanup with spec-cleaner.
+- Add check section.
+
+-------------------------------------------------------------------
 Fri May  8 11:48:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.13.1
