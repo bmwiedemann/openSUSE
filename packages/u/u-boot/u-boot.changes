@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 18 14:54:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2022.01
+
+-------------------------------------------------------------------
+Thu Dec 23 11:08:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2022.01-rc4
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2022.01
+* Patches dropped (upstreamed):
+  0016-Revert-video-backlight-fix-pwm-s-du.patch
+  0017-rpi-Add-identifier-for-the-new-RPi-.patch
+
+-------------------------------------------------------------------
 Tue Nov 30 15:53:17 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.10

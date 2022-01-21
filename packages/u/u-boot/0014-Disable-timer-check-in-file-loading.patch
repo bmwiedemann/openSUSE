@@ -1,4 +1,4 @@
-From 52c5c682035d9b61f69f0e25fb4db48272644bdb Mon Sep 17 00:00:00 2001
+From 333627a8c6ac6c75ed02c08fa6ff82d8e633a823 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Tue, 25 May 2021 06:45:01 +0000
 Subject: [PATCH] Disable timer check in file loading
@@ -25,7 +25,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/lib/efi_loader/efi_disk.c b/lib/efi_loader/efi_disk.c
-index 988907ecb9..ea75687508 100644
+index 45127d1768..02ae7e7916 100644
 --- a/lib/efi_loader/efi_disk.c
 +++ b/lib/efi_loader/efi_disk.c
 @@ -15,6 +15,7 @@

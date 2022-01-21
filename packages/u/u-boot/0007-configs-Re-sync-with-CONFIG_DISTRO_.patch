@@ -1,4 +1,4 @@
-From 66bcb6bf6a3b3bffde8281927712154ee7be7aa8 Mon Sep 17 00:00:00 2001
+From d7ff1c814fed2a14096054ac8d20cb0cb88b5f59 Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 09:56:06 +0100
 Subject: [PATCH] configs: Re-sync with CONFIG_DISTRO_DEFAULTS
@@ -18,10 +18,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  5 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
-index f7098b4969..09bf1f8eb3 100644
+index d849989cf6..d58bd2e30b 100644
 --- a/configs/sandbox64_defconfig
 +++ b/configs/sandbox64_defconfig
-@@ -77,7 +77,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -79,7 +79,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
@@ -30,10 +30,10 @@ index f7098b4969..09bf1f8eb3 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
-index ea08a9e5bd..ec19587e82 100644
+index c390afe9de..c08fc476c1 100644
 --- a/configs/sandbox_defconfig
 +++ b/configs/sandbox_defconfig
-@@ -99,7 +99,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -102,7 +102,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
@@ -42,20 +42,20 @@ index ea08a9e5bd..ec19587e82 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/socfpga_arria10_defconfig b/configs/socfpga_arria10_defconfig
-index ef9bbb9c3a..c4ddbcc612 100644
+index d6b7444750..74b6d65915 100644
 --- a/configs/socfpga_arria10_defconfig
 +++ b/configs/socfpga_arria10_defconfig
-@@ -53,3 +53,5 @@ CONFIG_DESIGNWARE_APB_TIMER=y
+@@ -54,3 +54,5 @@ CONFIG_DESIGNWARE_APB_TIMER=y
  CONFIG_USB=y
  CONFIG_USB_DWC2=y
  # CONFIG_SPL_WDT is not set
 +# CONFIG_CMD_BTRFS is not set
 +# CONFIG_FS_BTRFS is not set
 diff --git a/configs/turris_mox_defconfig b/configs/turris_mox_defconfig
-index 9a9102430e..dca076bf4b 100644
+index 3cae32f69b..555919147b 100644
 --- a/configs/turris_mox_defconfig
 +++ b/configs/turris_mox_defconfig
-@@ -44,7 +44,6 @@ CONFIG_CMD_TIME=y
+@@ -47,7 +47,6 @@ CONFIG_CMD_TIME=y
  CONFIG_CMD_MVEBU_BUBT=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_HASH=y
@@ -64,10 +64,10 @@ index 9a9102430e..dca076bf4b 100644
  CONFIG_MAC_PARTITION=y
  CONFIG_ENV_OVERWRITE=y
 diff --git a/configs/turris_omnia_defconfig b/configs/turris_omnia_defconfig
-index a724a1baa1..1695a99f30 100644
+index e6f901ea77..fbded23612 100644
 --- a/configs/turris_omnia_defconfig
 +++ b/configs/turris_omnia_defconfig
-@@ -54,7 +54,6 @@ CONFIG_CMD_CACHE=y
+@@ -55,7 +55,6 @@ CONFIG_CMD_CACHE=y
  CONFIG_CMD_TIME=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_HASH=y

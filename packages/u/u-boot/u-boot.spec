@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -172,7 +172,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2021.10
+%define archive_version 2022.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -208,7 +208,7 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_with uboot_atf
 %endif
-Version:        2021.10
+Version:        2022.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -235,8 +235,6 @@ Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
 Patch0013:      0013-riscv-enable-CMD_BTRFS.patch
 Patch0014:      0014-Disable-timer-check-in-file-loading.patch
 Patch0015:      0015-Enable-EFI-and-ISO-partitions-suppo.patch
-Patch0016:      0016-Revert-video-backlight-fix-pwm-s-du.patch
-Patch0017:      0017-rpi-Add-identifier-for-the-new-RPi-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

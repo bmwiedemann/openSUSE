@@ -1,4 +1,4 @@
-From eb8774e67be4498078722f9ba333d120f88994f9 Mon Sep 17 00:00:00 2001
+From e96a8669cb1fd50542e30550709ea474e81a4f77 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 28 Sep 2020 23:02:02 +0200
 Subject: [PATCH] sunxi: Enable SPI support on Orange Pi Zero
