@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 17 17:12:07 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Reinstate avahi-0.6.31-systemd-order.patch (boo#1194561).
+  This can probably go away if/when gh#lathiat/avahi#118 is fixed.
+- Drop avahi-0.6.32-suppress-resolv-conf-warning.patch: we should
+  no longer need this given the above patch.
+- Add several patches from git:
+  0001-man-fix-reference-to-avahi-autoipd.action-8-in-avahi.patch
+  0005-avahi-dnsconfd.service-Drop-Also-avahi-daemon.socket.patch
+  0006-man-add-missing-bshell.1-symlink.patch
+  0007-Ship-avahi-discover-1-bssh-1-and-bvnc-1-also-for-GTK.patch
+  0009-fix-bytestring-decoding-for-proper-display.patch 0010-avahi_dns_packet_consume_uint32-fix-potential-undefi.patch
+- Build manpages with xmltoman. Currently needed for bssh.
+- Minor spec file clean-up.
+- Require python-rpm-macros for all builds (boo#1194744 boo#1194745).
+
+-------------------------------------------------------------------
 Wed Jan 12 14:33:21 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Move sftp-ssh and ssh services to the doc directory. They allow

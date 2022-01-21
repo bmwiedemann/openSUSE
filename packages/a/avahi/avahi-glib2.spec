@@ -22,7 +22,7 @@
 # For build all at once, set all to 1.
 # If you set build_core to 0, you cannot set more than one other option to 1.
 %define         build_core 0
-# NOTE: build_glib2 also controls build of gobject, gtk2, gtk3 and pygobject code.
+# NOTE: build_glib2 also controls build of gobject, gtk3 and pygobject code.
 %define         build_glib2 1
 %define         build_mono 0
 %define         build_qt5 0
@@ -74,14 +74,24 @@ Patch0:         avahi-gacdir.patch
 Patch1:         avahi-desktop.patch
 # PATCH-FEATURE-OPENSUSE avahi-daemon-check-dns-suse.patch bnc431704 sbrabec@suse.cz -- Port Debian avahi-daemon-check-dns.sh to SUSE, see also http://avahi.org/wiki/AvahiAndUnicastDotLocal
 Patch4:         avahi-daemon-check-dns-suse.patch
-# PATCH-FIX-UPSTREAM avahi-0.6.32-suppress-resolv-conf-warning.patch bsc#982317 mgorse@suse.com -- only warn on missing resolv.conf if it is being used.
-Patch19:        avahi-0.6.32-suppress-resolv-conf-warning.patch
+# PATCH-FIX-OPENSUSE avahi-0.6.31-systemd-order.patch bsc#982317 boo#1194561 mgorse@suse.com -- start after NM/wicked, to ensure resolv.conf present.
+Patch19:        avahi-0.6.31-systemd-order.patch
 # PATCH-FIX-UPSTREAM add-IT_PROG_INTLTOOL.patch alarrosa@suse.com -- add IT_PROG_INTLTOOL so intltool works
 Patch20:        add-IT_PROG_INTLTOOL.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2021-3468.patch boo#1184521 mgorse@suse.com -- avoid infinite loop by handling HUP event in client_work.
 Patch21:        avahi-CVE-2021-3468.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2021-3502.patch boo#1184846 mgorse@suse.com -- fix NULL pointer crashes.
 Patch22:        avahi-CVE-2021-3502.patch
+# PATCH-FIX-UPSTREAM 0001-man-fix-reference-to-avahi-autoipd.action-8-in-avahi.patch mgorse@suse.com -- fix a manpage reference.
+Patch23:        0001-man-fix-reference-to-avahi-autoipd.action-8-in-avahi.patch
+# PATCH-FIX-UPSTREAM 0005-avahi-dnsconfd.service-Drop-Also-avahi-daemon.socket.patch mgorse@suse.com -- disabling avahi-dnsconfd should not also disable avahi-daemon.socket.
+Patch24:        0005-avahi-dnsconfd.service-Drop-Also-avahi-daemon.socket.patch
+# PATCH-FIX-UPSTREAM 0006-man-add-missing-bshell.1-symlink.patch mgorse@suse.com -- add manpage symlink.
+Patch25:        0006-man-add-missing-bshell.1-symlink.patch
+# PATCH-FIX-UPSTREAM 0007-Ship-avahi-discover-1-bssh-1-and-bvnc-1-also-for-GTK.patch mgorse@suse.com -- ship some manpages that were missing when gtk 2 is disabled.
+Patch26:        0007-Ship-avahi-discover-1-bssh-1-and-bvnc-1-also-for-GTK.patch
+# PATCH-FIX-UPSTREAM 0009-fix-bytestring-decoding-for-proper-display.patch mgorse@suse.com -- fix bytestring decoding for proper display.
+Patch27:        0009-fix-bytestring-decoding-for-proper-display.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -91,14 +101,12 @@ BuildRequires:  libexpat-devel
 # libtool is needed to build all variants: bootstrap is unconditional in the build section
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-# FIXME: on upgrade, ensure to verify if -DGTK_DISABLE_DEPRECATED=1 can remain in avahi=ui/Makefile.am (GtkStock deprecated with GTK+ 3.9.10).
+BuildRequires:  xmltoman
 %if !%{build_glib2} && !%{build_mono} && !%{build_qt5}
 # Create split spec files only when building per partes:
 #%(sh %{_sourcedir}/%{_name}_spec-prepare.sh %{_sourcedir} %{name})
 %endif
-%if 0%{?suse_version} >= 1330
 BuildRequires:  strip-nondeterminism
-%endif
 %if %{build_core}
 BuildRequires:  dbus-1-devel
 BuildRequires:  doxygen
@@ -141,10 +149,10 @@ BuildRequires:  libavahi-devel = %{version}
 BuildRequires:  pkgconfig(Qt5Core)
 Requires:       libavahi-client%{avahi_client_sover} >= %{version}
 %endif
+BuildRequires:  python-rpm-macros
 %if %{build_core}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module dbus-python}
-BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} >= 1550
 # TW: generate subpackages for every python3 flavor
 %define python_subpackage_only 1
@@ -527,6 +535,11 @@ cp -a %{SOURCE12} service-type-database/build-db
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
@@ -544,9 +557,6 @@ s:@@SKIP LIBAVAHI GLIB@@:libavahi-glib.la:g
 if ! test -f %{_datadir}/aclocal/glib-gettext.m4 ; then
     cat %{SOURCE4} >>acinclude.m4
 fi
-# FIXME: We do not have xmltoman, use original doc, just fix paths.
-sed -i s:/home/lennart/tmp/avahi:: man/*.[0-9]
-sed -i "s:-DGTK_DISABLE_DEPRECATED=1::" avahi-ui/Makefile.am
 
 %build
 autoreconf -f -i
@@ -556,6 +566,7 @@ export PYTHON=%{_bindir}/$python
 %configure\
 	--disable-static\
         --with-distro=suse\
+        --enable-xmltoman\
 %if %{build_core}
 	--enable-compat-libdns_sd\
 	--enable-compat-howl\
@@ -723,9 +734,7 @@ rmdir %{buildroot}/%{_datadir}/avahi
 %else
 %if %{build_mono}
 %ifnarch ppc64 ppc64le s390x
-%if 0%{?suse_version} >= 1330
 strip-nondeterminism %{buildroot}/%{_prefix}/lib/monodoc/sources/*.zip
-%endif
 %endif
 %endif
 %endif
@@ -965,6 +974,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %files -n python3-avahi-gtk
 %{_bindir}/avahi-discover
 %{_datadir}/applications/avahi-discover.desktop
+%{_mandir}/man1/avahi-discover.1*
 
 %files -n avahi-utils-gtk
 %{_bindir}/bshell
@@ -973,6 +983,9 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_bindir}/avahi-discover-standalone
 %{_datadir}/applications/bssh.desktop
 %{_datadir}/applications/bvnc.desktop
+%{_mandir}/man1/bshell.1*
+%{_mandir}/man1/bssh.1*
+%{_mandir}/man1/bvnc.1*
 
 %files -n libavahi-glib-devel
 %{_includedir}/avahi-glib

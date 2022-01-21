@@ -1,0 +1,27 @@
+From 822ebcca220605beb6a5a2079aa1a387b773841d Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Thu, 23 Jun 2016 10:11:15 -0500
+Subject: [PATCH] avahi-daemon.service.in: start after network-online
+
+We may need resolv.conf to be set up, so ensure that NetworkManager
+or wicked have already started before initializing.
+---
+ avahi-daemon/avahi-daemon.service.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/avahi-daemon/avahi-daemon.service.in b/avahi-daemon/avahi-daemon.service.in
+index 548c834..b6aae9e 100644
+--- a/avahi-daemon/avahi-daemon.service.in
++++ b/avahi-daemon/avahi-daemon.service.in
+@@ -18,6 +18,8 @@
+ [Unit]
+ Description=Avahi mDNS/DNS-SD Stack
+ Requires=avahi-daemon.socket
++After=network-online.target
++Wants=network-online.target
+ 
+ [Service]
+ Type=dbus
+-- 
+2.6.2
+
