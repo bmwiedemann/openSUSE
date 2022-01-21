@@ -1,7 +1,7 @@
 #
 # spec file for package sshguard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Source3:        sshguard.init
 Source4:        sshguard.whitelist
 # PATCH-FIX-UPSTREAM sshguard-gcc5.patch
 Patch0:         sshguard-gcc5.patch
-Patch1:	harden_sshguard.service.patch
+Patch1:         harden_sshguard.service.patch
 Requires:       openssh
 Requires(pre):  %fillup_prereq
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 14:57:19 UTC 2022 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Deleted the iptables entries from sshguard.service as firewalld is used
+- Added BACKEND="/usr/libexec/sshg-fw-firewalld" in stead of
+  BACKEND="/usr/libexec/sshg-fw-iptables" as firewalld is used
+
+-------------------------------------------------------------------
 Tue Nov 23 15:32:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

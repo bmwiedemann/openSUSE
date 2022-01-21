@@ -119,4 +119,12 @@ The whitelist now initially resides in files /etc/sshguard/whitelist (forwarded 
     <comment></comment>
     <requestid>942932</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>17dc5f50cc5129290f12bafd6a76a19e</srcmd5>
+    <version>2.4.2</version>
+    <time>1642724740</time>
+    <user>dimstar_suse</user>
+    <comment>sshguard improvements as firewald is used in stead of iptables (forwarded request 947707 from worldcitizen)</comment>
+    <requestid>947708</requestid>
+  </revision>
 </revisionlist>
