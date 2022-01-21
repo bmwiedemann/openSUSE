@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5903e93afd8a3bcd4b66a72bb6b1d6a3</srcmd5>
+    <version>1.0.1</version>
+    <time>1642724745</time>
+    <user>dimstar_suse</user>
+    <comment>Simplified python interface to the DQSEGDB API (needed for some upcoming gravitational wave studies related packages).</comment>
+    <requestid>947746</requestid>
+  </revision>
+</revisionlist>
