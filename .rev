@@ -870,4 +870,12 @@ Fix version typo:
     <comment></comment>
     <requestid>925618</requestid>
   </revision>
+  <revision rev="108" vrev="5">
+    <srcmd5>ea9a3b17fae6c8ca19c949a7a08c16c3</srcmd5>
+    <version>2.4.0</version>
+    <time>1642724711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947422</requestid>
+  </revision>
 </revisionlist>
