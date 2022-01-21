@@ -216,4 +216,12 @@
   + Revert a breaking change to the screencast and inhibit portal. (forwarded request 924250 from iznogood)</comment>
     <requestid>924742</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c298423fb77bbe99b071a7638d9f583b</srcmd5>
+    <version>1.12.1</version>
+    <time>1642724719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947474</requestid>
+  </revision>
 </revisionlist>
