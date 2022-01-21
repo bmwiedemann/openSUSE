@@ -20,7 +20,8 @@ PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-cloner:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
-           containerized-data-importer-cloner && \
+           containerized-data-importer-cloner \
+           util-linux && \
     zypper clean -a
 
 ENTRYPOINT [ "/usr/bin/cloner_startup.sh" ]
