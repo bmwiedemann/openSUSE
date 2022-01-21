@@ -1,0 +1,5 @@
+<package name="apache-log4j-extras" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="apache-log4j-extras"/>
+</package>
