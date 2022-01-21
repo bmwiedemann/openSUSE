@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1642494095.69489cc2
+Version:        4.6.1642697070.a9af3880
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -171,7 +171,8 @@ sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{v
 # and exclude known flaky tests in OBS check
 # https://progress.opensuse.org/issues/52652
 # 07-commands: https://progress.opensuse.org/issues/60755
-for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
+# 29-backend-driver: https://progress.opensuse.org/issues/105061
+for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 29-backend-driver 99-full-stack; do
     rm t/$i.t
 done
 # Remove test relying on a git working copy
@@ -235,6 +236,7 @@ cd %{__builddir}
 %{_prefix}/lib/os-autoinst/testapi.pm
 %{_prefix}/lib/os-autoinst/mmapi.pm
 %{_prefix}/lib/os-autoinst/lockapi.pm
+%{_prefix}/lib/os-autoinst/log.pm
 %{_prefix}/lib/os-autoinst/cv.pm
 %{_prefix}/lib/os-autoinst/ocr.pm
 %{_prefix}/lib/os-autoinst/needle.pm

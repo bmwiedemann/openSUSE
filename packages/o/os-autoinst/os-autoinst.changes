@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 20 18:18:56 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642697070.a9af3880:
+  * Exclude 29-backend-driver.t from OBS checks
+  * Simplify string concatenation in log.pm
+  * Extract all log functions into new module "log"
+  * Remove unused function consoles::VNC::_bin_int
+  * Add test for defining/starting VM via VMware in svirt backend
+  * Add test for generating XML file with UEFI loader in svirt backend
+  * Fix wrong operator precedence introduced by 54d514df79fa1
+  * Fix wrong condition in SSH virsh console introduced by 54d514df79fa1
+
+-------------------------------------------------------------------
 Tue Jan 18 09:49:55 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642494095.69489cc2:
