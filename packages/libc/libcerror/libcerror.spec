@@ -63,7 +63,7 @@ applications that want to make use of libcerror.
 %autosetup
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 
