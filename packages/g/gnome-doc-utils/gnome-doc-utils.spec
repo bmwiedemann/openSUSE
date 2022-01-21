@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-doc-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch1:         gnome-doc-utils-port-python3.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
 %if %suse_version > 1500
 BuildRequires:  python3-libxml2
 %else

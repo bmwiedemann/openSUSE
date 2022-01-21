@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 17 21:07:51 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add python-rpm-macros to BuildRequires (boo#1194754).
+
+-------------------------------------------------------------------
 Mon Sep 20 19:47:12 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

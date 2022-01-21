@@ -474,4 +474,12 @@
   (jsc#SLE-21105). (forwarded request 920403 from sbrabec)</comment>
     <requestid>920572</requestid>
   </revision>
+  <revision rev="66" vrev="21">
+    <srcmd5>c431d03e43244cee7f4e8c8d1d3ce44f</srcmd5>
+    <version>0.20.10</version>
+    <time>1642724723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947484</requestid>
+  </revision>
 </revisionlist>
