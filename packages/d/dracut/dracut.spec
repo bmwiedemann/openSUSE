@@ -1,7 +1,7 @@
 #
 # spec file for package dracut
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,14 @@
 
 %define dracutlibdir %{_prefix}/lib/dracut
 
+%if 0%{?suse_version} >= 1550
+%define dracut_sbindir %{_sbindir}
+%else
+%define dracut_sbindir /sbin
+%endif
+
 Name:           dracut
-Version:        055+suse.179.g3cf989c2
+Version:        055+suse.194.gdd41932a
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -56,11 +62,12 @@ Requires:       systemd >= 219
 Requires:       systemd-sysvinit
 Requires:       udev > 166
 Requires:       util-linux >= 2.21
+Requires:       util-linux-systemd >= 2.36.2
 Recommends:     xz
 Requires:       zstd
 # We use 'btrfs fi usage' that was not present before
 Conflicts:      btrfsprogs < 3.18
-# suse-module-tools >= 16.0.3 is prepared for the removal of mkinitrd-suse.sh
+# suse-module-tools >= 15.4.7 is prepared for the removal of mkinitrd-suse.sh
 Conflicts:      suse-module-tools < 15.4.7
 %{?systemd_requires}
 
@@ -122,6 +129,7 @@ Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 Requires:       dracut
 Obsoletes:      mkinitrd < 2.8.2
+Provides:       dracut:/sbin/mkinitrd
 Provides:       mkinitrd = 2.8.2
 
 %description mkinitrd-deprecated
@@ -158,11 +166,7 @@ install -m 0644 dracut.conf.d/ima.conf.example %{buildroot}%{_sysconfdir}/dracut
 install -m 0644 suse/s390x_persistent_device.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-s390x_persistent_device.conf
 %endif
 
-%if 0%{?suse_version} < 1550
-    install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/sbin/mkinitrd
-%else
-    install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{_sbindir}/mkinitrd
-%endif
+install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{dracut_sbindir}/mkinitrd
 
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
@@ -254,11 +258,7 @@ fi
 %{dracutlibdir}/modules.d/95znet
 
 %files mkinitrd-deprecated
-%if 0%{?suse_version} < 1550
-    /sbin/mkinitrd
-%else
-    %{_sbindir}/mkinitrd
-%endif
+%{dracut_sbindir}/mkinitrd
 %{_mandir}/man8/mkinitrd.8*
 
 %files

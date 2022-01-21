@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 17 11:20:56 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.194.gdd41932a:
+  * fix(network-legacy): add wicked as an alternative to arping (bsc#1193670)
+  * fix(network): add wicked as an alternative to arping (bsc#1193670)
+
+-------------------------------------------------------------------
+Mon Jan 17 09:45:53 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.191.g67eb4ea8:
+  * fix(dracut-initramfs-restore.sh): add test for SUSE initrd name (bsc#1194570)
+  * fix(dracut.spec): require util-linux-systemd (bsc#1194162)
+  * fix(network-wicked): multiple path corrections
+  * fix(drm): add privacy screen modules to the initrd (bsc#1193590)
+  * fix(dracut.spec): update usrmerged mkinitrd dir
+  * fix(url-lib): improve ca-bundle detection (bsc#1175892)
+
+-------------------------------------------------------------------
 Thu Dec 09 19:35:36 UTC 2021 - ddiss@suse.com
 
 - Update to version 055+suse.179.g3cf989c2:
