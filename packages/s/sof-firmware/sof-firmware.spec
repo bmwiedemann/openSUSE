@@ -1,7 +1,7 @@
 #
 # spec file for package sof-firmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define package_version	1.8
-
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
 %endif
@@ -26,11 +24,11 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.8
+Version:        2.0
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
-Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{package_version}/sof-bin-v%{package_version}.tar.gz
+Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-v%{version}.tar.gz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -77,16 +75,16 @@ Conflicts:      filesystem < 84
 Various firmware data files for SOF drivers.
 
 %prep
-%setup -q -n sof-bin-v%{package_version}
+%setup -q -n sof-bin-v%{version}
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}/intel
-# due to the upgrade problem, we can't sof-v* -> sof symlink
-cp -a sof-v%{package_version} %{buildroot}%{_firmwaredir}/intel/sof
-cp -a sof-tplg-v%{package_version} %{buildroot}%{_firmwaredir}/intel/
-ln -s sof-tplg-v%{package_version} %{buildroot}%{_firmwaredir}/intel/sof-tplg
+# due to the upgrade problem, we can't make sof-v* -> sof symlink
+cp -a sof-v%{version} %{buildroot}%{_firmwaredir}/intel/sof
+cp -a sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/
+ln -s sof-tplg-v%{version} %{buildroot}%{_firmwaredir}/intel/sof-tplg
 %fdupes -s %{buildroot}
 
 %files
