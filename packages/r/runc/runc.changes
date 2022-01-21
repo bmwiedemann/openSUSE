@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 17 07:15:26 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.0. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.1.0.
+
+  - libcontainer will now refuse to build without the nsenter package being
+    correctly compiled (specifically this requires CGO to be enabled). This
+    should avoid folks accidentally creating broken runc binaries (and
+    incorrectly importing our internal libraries into their projects). (#3331)
+
+-------------------------------------------------------------------
 Tue Dec 14 05:04:21 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.0~rc1. Upstream changelog is available from

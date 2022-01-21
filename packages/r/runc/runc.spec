@@ -1,7 +1,7 @@
 #
 # spec file for package runc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 55df1fc4c8b048118cd30a17b50f96a15ab0f3ea
-%define git_short   55df1fc4c8b0
+%define git_version 605c1cb1cc0ce1492d040b5c221b35b606f9a3e0
+%define git_short   605c1cb1cc0c
 
 # Package-wide golang version
 %define go_version 1.17
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.1.0~rc1
-%define _version 1.1.0-rc.1
+Version:        1.1.0
+%define _version 1.1.0
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
