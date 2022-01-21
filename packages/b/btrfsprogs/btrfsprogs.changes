@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 19 09:49:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros (bsc#1194748) 
+
+-------------------------------------------------------------------
+Tue Jan 18 00:00:00 CET 2022 - dsterba@suse.cz
+
+- spec: also provide btrfs-progs as it's common package name in other distros
+- spec: clean up conditionals for < 12 versions
+- spec: let SLE12 build again (conditional dependency of libreiserfscore)
+- Removed patches: sles11-defaults.h (no SLE11 compatibility anymore)
+- Added patches: btrfs-progs-kerncompat-add-local-definition-for-alig.patch
+  (fix build on SLE12/SLE15)
+
+-------------------------------------------------------------------
 Wed Jan 12 00:00:01 CET 2022 - dsterba@suse.cz
 
 - Update to 5.16

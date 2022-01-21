@@ -48,23 +48,26 @@ Source1:        boot-btrfs.sh
 Source2:        module-setup.sh.in
 Source3:        dracut-fsck-help.txt
 Source4:        setup-btrfs.sh
-Source5:        sles11-defaults.h
+# Alias that matches the upstream project name
+Provides:       btrfs-progs = %{version}-%{release}
+Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
+Patch2:         btrfs-progs-kerncompat-add-local-definition-for-alig.patch
 
 %if %build_docs
 BuildRequires:  asciidoc
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if 0%{?suse_version} > 1200
 BuildRequires:  dracut
-%endif
 BuildRequires:  libattr-devel
 BuildRequires:  libblkid-devel
 BuildRequires:  libext2fs-devel
+%if 0%{?suse_version} >= 1500
 BuildRequires:  libreiserfscore-devel >= 3.6.27
 Requires:       libreiserfscore0 >= 3.6.27
+%endif
 BuildRequires:  libuuid-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  libzstd-devel
@@ -79,6 +82,7 @@ BuildRequires:  pkgconfig(udev)
 %if %build_docs
 BuildRequires:  xmlto
 %endif
+BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
 %if 0%{?suse_version} >= 1310
 Requires(post): coreutils
@@ -98,6 +102,8 @@ Utilities needed to create and maintain btrfs file systems under Linux.
 %package -n btrfsprogs-static
 Summary:        Static build of utilities for the Btrfs filesystem
 Group:          System/Filesystems
+Provides:       btrfs-progs-static = %{version}-%{release}
+Provides:       btrfs-progs-static(%_arch) = %{version}-%{release}
 BuildRequires:  glibc-devel-static
 BuildRequires:  libblkid-devel-static
 BuildRequires:  libcom_err-devel-static
@@ -188,13 +194,10 @@ with Btrfs using libbtrfsutil.
 %prep
 %setup -q -n btrfs-progs-v%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./autogen.sh
-%if 0%{?suse_version} == 1110
-cp %{SOURCE5} .
-export CFLAGS="%{optflags} -include sles11-defaults.h"
-%endif
 
 %configure			\
 			--enable-python	\
@@ -263,12 +266,10 @@ rm -f %{buildroot}/%{_libdir}/*.a
 # bash completion
 install -m 0755 -d %{buildroot}/%{_datadir}/bash-completion/completions
 install -m 0644 btrfs-completion %{buildroot}/%{_datadir}/bash-completion/completions/btrfs
-%if 0%{?suse_version} > 1200
 sed -e 's,@@INSTALLDIR@@,%{_datadir}/%{name}/,;' %{SOURCE2} > module-setup.sh
 install -m 0755 -D module-setup.sh %{buildroot}/%{_dracutmodulesdir}/95suse-btrfs/module-setup.sh
 rm -f module-setup.sh
 install -m 0644 -D %{SOURCE3} %{buildroot}/%{_datadir}/%{name}/dracut-fsck-help.txt
-%endif
 
 %if 0%{!?for_debugging:1}
 DEBUG_FILES="/sbin/btrfs-find-root
@@ -302,18 +303,11 @@ done
 
 %files
 %defattr(-, root, root)
-%if 0%{?suse_version} < 1200
-# SLE11 doesn't know about %license
-%doc COPYING
-%else
 %license COPYING
-%endif
-%if 0%{?suse_version} > 1200
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/dracut-fsck-help.txt
 %dir %{_dracutmodulesdir}/95suse-btrfs/
 %{_dracutmodulesdir}/95suse-btrfs/module-setup.sh
-%endif
 %if !0%{?usrmerged}
 /sbin/fsck.btrfs
 # mkinitrd utils

@@ -1114,4 +1114,19 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- Update to 5.16 (forwarded request 946109 from dsterba)</comment>
     <requestid>946110</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>3da8cd9a441cc864ca1149019e52c769</srcmd5>
+    <version>5.16</version>
+    <time>1642724706</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros (bsc#1194748) 
+
+- spec: also provide btrfs-progs as it's common package name in other distros
+- spec: clean up conditionals for &lt; 12 versions
+- spec: let SLE12 build again (conditional dependency of libreiserfscore)
+- Removed patches: sles11-defaults.h (no SLE11 compatibility anymore)
+- Added patches: btrfs-progs-kerncompat-add-local-definition-for-alig.patch
+  (fix build on SLE12/SLE15)</comment>
+    <requestid>947370</requestid>
+  </revision>
 </revisionlist>
