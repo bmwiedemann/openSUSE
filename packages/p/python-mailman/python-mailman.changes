@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 20 11:05:31 UTC 2022 - pgajdos@suse.com
+
+- fix obsoletes
+
+-------------------------------------------------------------------
+Wed Jan 19 20:26:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add patch ARC-message-fail-tests.patch which allows four tests
+  to pass with different format of the output.
+
+-------------------------------------------------------------------
+Tue Jan 18 08:28:16 UTC 2022 - pgajdos@suse.com
+
+- rename python3-mailman package to mailman3 [bsc#1194497]
+
+-------------------------------------------------------------------
 Wed Nov 17 08:15:44 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to 3.3.5, which provides many bug fixes and also these new features:

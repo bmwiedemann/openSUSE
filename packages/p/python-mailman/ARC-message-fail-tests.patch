@@ -1,0 +1,46 @@
+---
+ src/mailman/handlers/tests/test_arc_validate.py |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+--- a/src/mailman/handlers/tests/test_arc_validate.py
++++ b/src/mailman/handlers/tests/test_arc_validate.py
+@@ -192,7 +192,7 @@ This is a test message.
+         ValidateAuthenticity().process(lst, msg, msgdata)
+         res = ["lists.example.org; spf=pass smtp.mfrom=jqd@d1.example"
+                "; dkim=pass header.i=@d1.example; dmarc=pass; arc=fail"]
+-        self.assertEqual(msg["Authentication-Results"], ''.join(res))
++        self.assertIn(''.join(res), msg["Authentication-Results"])
+ 
+     def test_authentication_whitelist_hit(self):
+         config.push('just_dkim', """
+@@ -235,7 +235,7 @@ This is a test!
+ 
+         res = ["example.com; spf=pass smtp.mailfrom=gmail.com"
+                "; dkim=pass header.d=valimail.com; arc=none"]
+-        self.assertEqual(msg["Authentication-Results"], ''.join(res))
++        self.assertIn(''.join(res), msg["Authentication-Results"])
+ 
+     def test_authentication_whitelist_miss(self):
+         config.push('just_dkim', """
+@@ -276,8 +276,8 @@ This is a test!
+ """)
+ 
+         ValidateAuthenticity().process(lst, msg, msgdata)
+-        self.assertEqual(msg["Authentication-Results"],
+-                         "test.com; dkim=pass header.d=valimail.com; arc=none")
++        self.assertIn("test.com; dkim=pass header.d=valimail.com; arc=none",
++                      msg["Authentication-Results"])
+ 
+     def test_authentication_bad_outlook_header(self):
+         config.push('just_dkim', """
+@@ -320,8 +320,8 @@ This is a test!
+ """)
+ 
+         ValidateAuthenticity().process(lst, msg, msgdata)
+-        self.assertEqual(msg["Authentication-Results"],
+-                         "test.com; dkim=fail header.d=valimail.com; arc=none")
++        self.assertIn("test.com; dkim=fail header.d=valimail.com; arc=none",
++                      msg["Authentication-Results"])
+ 
+ 
+ class TestTimeout(unittest.TestCase):

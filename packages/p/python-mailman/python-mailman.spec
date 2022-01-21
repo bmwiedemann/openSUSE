@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 Name:           python-mailman%{psuffix}
 Version:        3.3.5
 Release:        0
-Summary:        A mailing list manager
+Summary:        A Mailing List Manager
 Group:          Productivity/Networking/Email/Mailinglists
 License:        GPL-3.0-only
 URL:            https://www.list.org
@@ -67,6 +67,9 @@ Patch1:         support-sqlalchemy-1-4.patch
 # Suppprt Alembic 1.7.x
 Patch2:         support-alembic-1-7.patch
 #
+# PATCH-FIX-UPSTREAM ARC-message-fail-tests.patch bsc#[0-9]+ mcepl@suse.com
+# this patch makes things totally awesome
+Patch3:         ARC-message-fail-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -129,11 +132,19 @@ BuildRequires:  %{python_module zope.interface >= 5.0}
 %if 0%{python3_version_nodots} == 38
 # help in replacing any previously installed multiflavor package back to the primary python3 package
 Provides:       python38-mailman = %{version}-%{release}
-Obsoletes:      python38-mailman < %{version}-%{release}
+Obsoletes:      python38-mailman <= %{version}-%{release}
 %endif
 %python_subpackages
 
 %description
+Mailman is a mailing list manager from the GNU project.
+
+%package -n mailman3
+Summary:        A mailing list manager
+Provides:       python3-mailman = %{version}
+Obsoletes:      python3-mailman <= %{version}
+
+%description -n mailman3
 Mailman is a mailing list manager from the GNU project.
 
 %prep
@@ -220,7 +231,7 @@ sed -i "s:\(902\):4\1:" src/mailman/testing/testing.cfg
 %endif
 
 %if !%{with test}
-%pre
+%pre -n mailman3
 getent group %{mailman_group} >/dev/null || \
     %{_sbindir}/groupadd -r %{mailman_group}
 getent passwd %{mailman_user} >/dev/null || \
@@ -229,38 +240,33 @@ getent passwd %{mailman_user} >/dev/null || \
 %{_sbindir}/usermod -g %{mailman_group} %{mailman_user} >/dev/null
 %service_add_pre %{mailman_services}
 
-%post
+%post -n mailman3
 %tmpfiles_create %{_tmpfilesdir}/%{mailman_name}.conf
 %service_add_post %{mailman_services}
 
-%preun
+%preun -n mailman3
 %service_del_preun %{mailman_services}
 
-%postun
+%postun -n mailman3
 %service_del_postun %{mailman_services}
 
-%files %{python_files}
+%files -n mailman3
 %doc README.rst README.SUSE.md
 %license COPYING
 %{_sbindir}/rc%{mailman_name}*
-
 %{_bindir}/runner
 %{_bindir}/mailman
 %{_bindir}/master
 %{python_sitelib}/*
-
 %{_unitdir}/%{mailman_name}.service
 %{_unitdir}/%{mailman_name}-digests.service
 %{_unitdir}/%{mailman_name}-digests.timer
 %{_unitdir}/%{mailman_name}-notify.service
 %{_unitdir}/%{mailman_name}-notify.timer
 %{_tmpfilesdir}/%{mailman_name}.conf
-
 %config(noreplace) %attr(640,root,mailman) %{_sysconfdir}/mailman.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{mailman_name}
-
 %dir %attr(750,root,mailman) %{_sysconfdir}/%{mailman_name}.d
-
 %dir %attr(750,mailman,mailman) %{mailman_homedir}
 %dir %attr(750,mailman,mailman) %{mailman_homedir}/data
 %dir %attr(750,mailman,mailman) %{mailman_spooldir}
