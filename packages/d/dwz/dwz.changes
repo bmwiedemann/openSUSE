@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  5 06:20:01 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add dwz-remove-odr-struct-multifile.sh.patch that removes problematic
+  testcase.
+
+-------------------------------------------------------------------
+Thu Dec 23 10:59:49 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Start using -O3 and PGO with tramp3d as training binary.
+
+-------------------------------------------------------------------
 Wed Mar 17 15:54:22 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Backport fixes for odr PR [swo#27578]:

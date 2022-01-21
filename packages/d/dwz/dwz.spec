@@ -1,7 +1,7 @@
 #
-# spec file for package dwz%{name_suffix}
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,12 +58,12 @@ Group:          Development/Tools/Building
 #Git-Web:	https://sourceware.org/git/?p=dwz.git;a=summary
 Source:         dwz-%{version}.tar.xz
 URL:            https://sourceware.org/dwz/
+BuildRequires:  gcc-c++
 BuildRequires:  libelf-devel
 BuildRequires:  xz
 %if %{build_testsuite}
 BuildRequires:  dejagnu
 BuildRequires:  elfutils
-BuildRequires:  gcc-c++
 BuildRequires:  gdb
 %ifnarch riscv64
 BuildRequires:  binutils-gold
@@ -79,11 +79,13 @@ NoSource:       0
 %endif
 
 Source1:        dwz-rpmlintrc
+Source2:        tramp3d-v4.cpp.xz
 
 Patch1:         dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
 Patch2:         dwz-handle-reordered-dup-chains-in-create-import-tree.patch
 Patch3:         dwz-enable-odr-by-default.patch
 Patch4:         dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
+Patch5:         dwz-remove-odr-struct-multifile.sh.patch
 
 %if %{build_main}
 %description
@@ -116,9 +118,22 @@ This package contains the testsuite results from DWZ.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+cp ../../SOURCES/tramp3d-v4.cpp.xz .
+xz -d tramp3d-v4.cpp.xz
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%define flags %{optflags} -O3
+
+# Do PGO with tramp3d as input file
+%make_build CFLAGS="%{flags} -fprofile-generate" LDFLAGS="-fprofile-generate"
+g++ tramp3d-v4.cpp -O2 -g -o t1
+cp t1 t2
+cp t1 t3
+cp t1 t4
+./dwz -m tmp.debug t1 t2 t3 t4
+make clean
+%make_build CFLAGS="%{flags} -fprofile-use" LDFLAGS="-fprofile-use"
 
 %check
 %if %{build_testsuite}
