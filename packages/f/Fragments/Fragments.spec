@@ -1,7 +1,7 @@
 #
 # spec file for package Fragments
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,8 @@ URL:            https://gitlab.gnome.org/World/Fragments
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM Fragments-fix-vala-syntax-error.patch
 Patch1:         Fragments-fix-vala-syntax-error.patch
-
+# PATCH-FIX-UPSTREAM Fragments-no-duplicate-LINGUAS.patch dimstar@opensuse.org -- LINGUAS: Order alphabetically, remove duplicated entry
+Patch2:         Fragments-no-duplicate-LINGUAS.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel

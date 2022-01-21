@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 17:08:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Fragments-no-duplicate-LINGUAS.patch: LINGUAS: Order
+  alphabetically, remove duplicated entry, backported commit
+  a2fdc6f7.
+
+-------------------------------------------------------------------
 Fri Nov 13 19:01:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add Fragments-fix-vala-syntax-error.patch: Fix vala syntax error

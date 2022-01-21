@@ -1,0 +1,21 @@
+diff --git a/po/LINGUAS b/po/LINGUAS
+index bbee5a3..4454679 100644
+--- a/po/LINGUAS
++++ b/po/LINGUAS
+@@ -1,11 +1,10 @@
+ cs
+-nb_NO
+ de
++eo
++es
+ fr
++it
++nb_NO
+ nl
+-tr
+-de
+-es
+ sr
+-eo
+-it
++tr
