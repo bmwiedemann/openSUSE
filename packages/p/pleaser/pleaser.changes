@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 18 00:04:02 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Remove unused BuildRequires from spec file
+
+-------------------------------------------------------------------
 Mon Dec 06 22:14:58 UTC 2021 - ed@s5h.net
 
 - Update to version 0.5.1~git0.ce9627c:

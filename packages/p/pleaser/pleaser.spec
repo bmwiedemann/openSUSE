@@ -1,7 +1,7 @@
 #
 # spec file for package pleaser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,8 @@ Source2:        cargo_config
 Patch0:         please-0.5.1_fix_syslog.patch
 ExclusiveArch:  %{rust_arches}
 
-%if %{__cargo_skip_build}
-BuildArch:      noarch
-%endif
-
 BuildRequires:  cargo
 BuildRequires:  pam-devel
-BuildRequires:  rust
-BuildRequires:  rust-packaging
 
 Requires:       pam
 
