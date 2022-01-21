@@ -484,4 +484,41 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>913592</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b6b47e1d3782759623eead428d587ca2</srcmd5>
+    <version>2022_01_R1</version>
+    <time>1642724730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022-01-R1
+  New features
+  * Significantly reduced RAM requirements
+  * Additional packet tags
+  * Additional eventbus events
+  * New packet deduplication system
+  * More info in the UI
+  * Show more collected information in the UI, like GPScoordinates
+    per SSID.
+  * Better column alignment in the UI
+  * Columns in the main device list are now better formatted and
+    aligned, with right-aligned numeric columns and proper
+    scrolling of the headers.
+  * Able to disable sources in the UI
+  * More log filtering
+  * Direct Wigle logging
+  * Direct logging to Wigle CSV format.
+  * Wardriving mode
+  Changes and Fixes
+  * New memory model for packet contents
+  * New pooled memory for packet contents
+  * New packet data handling
+  * New IPC &amp; remote capture protocol
+  * New pooled memory for tracked components
+  * New dynamic element contents
+  * Optimized Adler32 checksums
+  * Update robinhood hash and transition more pools to it
+  * Reworked kismetdb database writing
+  * Squeeze more memory out of tracked components
+  * Fix Linux monitor mode creation (forwarded request 947569 from mnhauke)</comment>
+    <requestid>947629</requestid>
+  </revision>
 </revisionlist>

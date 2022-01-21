@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jan 19 22:32:11 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2022-01-R1
+  New features
+  * Significantly reduced RAM requirements
+  * Additional packet tags
+  * Additional eventbus events
+  * New packet deduplication system
+  * More info in the UI
+  * Show more collected information in the UI, like GPScoordinates
+    per SSID.
+  * Better column alignment in the UI
+  * Columns in the main device list are now better formatted and
+    aligned, with right-aligned numeric columns and proper
+    scrolling of the headers.
+  * Able to disable sources in the UI
+  * More log filtering
+  * Direct Wigle logging
+  * Direct logging to Wigle CSV format.
+  * Wardriving mode
+  Changes and Fixes
+  * New memory model for packet contents
+  * New pooled memory for packet contents
+  * New packet data handling
+  * New IPC & remote capture protocol
+  * New pooled memory for tracked components
+  * New dynamic element contents
+  * Optimized Adler32 checksums
+  * Update robinhood hash and transition more pools to it
+  * Reworked kismetdb database writing
+  * Squeeze more memory out of tracked components
+  * Fix Linux monitor mode creation
+  * Faster packet deduplication
+  * Better BTLE support
+  * Fixes for some GPS behavior
+  * Better handling of proxied subdirectories
+  * Lots of threading fixes
+  * Latest boost/asio/beast
+  * Fixes to ADSB lookups
+- Add patch to fix the build of the alertsyslog plugin:
+  * 0001-Update-FetchGlobal-usage.patch
+
+-------------------------------------------------------------------
 Sat Aug 21 07:54:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2021-08-R1
