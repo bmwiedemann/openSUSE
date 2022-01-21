@@ -1,7 +1,7 @@
 #
 # spec file for package libblockdev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -358,7 +358,6 @@ Summary:        The partitioning plugin for the LibBlockDev library
 Group:          System/Libraries
 Requires:       gptfdisk
 Requires:       libbd_utils%{somajor} >= %{version}
-Requires:       multipath-tools
 Requires:       util-linux
 Provides:       libblockdev-part = %{version}
 

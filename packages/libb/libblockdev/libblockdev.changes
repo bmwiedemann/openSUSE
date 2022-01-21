@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 13:06:33 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Remove unnecessary dependency of libbd_part2 on multipath-tools
+  (bsc#1194771)
+
+-------------------------------------------------------------------
 Thu Nov 18 23:58:04 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
 
 - Fix lack of dependency on libblockdev-lvm needed by libblockdev
