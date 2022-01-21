@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 20 17:38:01 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 3.12.0
+- Usability, bells and whistles
+* The git config guitool action can now be grouped under user-defined menus.
+  This is done by using slash (``/``) delimiters in the action name.
+  Entries before the final slash are treated like submenus inside the
+  top-level ``Actions`` menu.
+  https://github.com/git-cola/git-cola/issues/1150
+* Toolbars now have a full set of icons. The icons follow the system theme
+  and can be configured to display text, just icons, or text and icons.
+  https://github.com/git-cola/git-cola/pull/1171
+* The startup dialog will now open the selected repository when the "enter"
+  key is pressed.
+  https://github.com/git-cola/git-cola/issues/1162
+* ``S`` is stages selected lines (in addition to ``s``).
+  https://github.com/git-cola/git-cola/issues/1187
+- Fixes
+* The vendored qtpy library was patched to retain Python2 compatibility.
+* The "Unstage" toolbar action was fixed.
+  https://github.com/git-cola/git-cola/issues/1178
+* We now avoid `setWidth(float)` for compatibility with newer Qt versions.
+  https://github.com/git-cola/git-cola/pull/1183
+* Documentation typofixes.
+  https://github.com/git-cola/git-cola/pull/1185
+- Translations
+* Updated Polish translation.
+  https://github.com/git-cola/git-cola/pull/1184
+- Development
+* Git Cola now uses Github Actions for running its continuous integration tests.
+  https://github.com/git-cola/git-cola/pull/1179
+
+-------------------------------------------------------------------
 Wed Oct 20 16:42:07 UTC 2021 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 3.11.0
