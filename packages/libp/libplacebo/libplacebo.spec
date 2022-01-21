@@ -1,7 +1,7 @@
 #
 # spec file for package libplacebo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 157
+%define sover 192
 Name:           libplacebo
-Version:        4.157.0
+Version:        4.192.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{versi
 Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/6e80e2a646f35be4afc157a932f2936392ec8f74/nuklear.h
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-mako
 BuildRequires:  shaderc-devel
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vulkan)
 

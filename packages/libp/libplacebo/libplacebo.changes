@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 19 12:10:24 UTC 2022 - Niklas Haas <obs@haasn.xyz>
+
+- Update libplacebo to version 4.192.0. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v4.192.0
+- Add libunwind dependency
+- Bump meson dependency version to match upstream
+
+-------------------------------------------------------------------
 Tue Sep  7 09:09:22 UTC 2021 - Niklas Haas <obs@haasn.xyz>
 
 - Update libplacebo to version 4.157.0:
