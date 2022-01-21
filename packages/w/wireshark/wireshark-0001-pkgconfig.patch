@@ -1,0 +1,22 @@
+commit ca61ee833ac886345ae5e6f4c239da7eae72f027
+Author: Robert Frohl <rfrohl@suse.com>
+Date:   Tue Jan 18 10:32:42 2022 +0100
+
+    wmem_alloc() moved from libwireshark.so to libwsutil.so with 3.6.x
+    
+    Some external plugins use wmem_alloc() like wireshark-plugin-libvirt.
+    The linker needs to find it it after the move.
+    
+    Fixes wireshark/wireshark#17889
+
+diff --git a/wireshark.pc.in b/wireshark.pc.in
+index 588917812b..e755614bba 100644
+--- a/wireshark.pc.in
++++ b/wireshark.pc.in
+@@ -10,5 +10,5 @@ Description: Network Packet Dissection Library
+ Version: @VERSION@
+ 
+ Requires: glib-2.0, gmodule-2.0, gthread-2.0
+-Libs: -L${libdir} -lwireshark
++Libs: -L${libdir} -lwireshark -lwsutil
+ Cflags: -I${includedir}/wireshark

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 18 09:42:36 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Fix wireshark-plugin-libvirt build after wmem_alloc() moved from
+  libwireshark.so to libwsutil.so (bsc#1194780)
+  * Added wireshark-0001-pkgconfig.patch
+- Renamed wireshark-0001-dumpcap-permission-denied.patch
+  to  wireshark-0010-dumpcap-permission-denied.patch
+
+-------------------------------------------------------------------
 Mon Jan 10 10:30:10 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Fix SLE15 build issue
