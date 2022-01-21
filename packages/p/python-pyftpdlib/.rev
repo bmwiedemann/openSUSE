@@ -145,4 +145,14 @@
   (thanks, Jason!)</comment>
     <requestid>927405</requestid>
   </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>393c77fe5620d3795c27276040ae5e8f</srcmd5>
+    <version>1.5.6</version>
+    <time>1642724711</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off the test suite, it just doesn't work reliably
+  (gh#giampaolo/pyftpdlib#540).
+</comment>
+    <requestid>947432</requestid>
+  </revision>
 </revisionlist>
