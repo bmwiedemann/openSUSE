@@ -63,4 +63,15 @@ is true, which is the case when using GCC5.</comment>
     <comment></comment>
     <requestid>912577</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9cfd46bb795bacb0ea6242a9f3e4e1e9</srcmd5>
+    <version>unknown</version>
+    <time>1642724731</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.11 - no changelog available, bugfixes
+- Drop 0001-spf_compile.c-Correct-size-of-ds_avail.patch
+- Remove comment change from libspf2-1.2.10-libreplace.patch
+</comment>
+    <requestid>947658</requestid>
+  </revision>
 </revisionlist>
