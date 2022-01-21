@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel-appmenu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/rilian-la-te/vala-panel-appmenu
 Source:         %{name}-%{version}.tar.xz
+Patch0:         vala-panel-appmenu-LINGUAS.patch
 BuildRequires:  bamf-daemon
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -204,7 +205,7 @@ This is Global Menu plugin for using with Vala Panel.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"

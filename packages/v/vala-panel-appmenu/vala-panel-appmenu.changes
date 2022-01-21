@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 17:17:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vala-panel-appmenu-LINGUAS.patch: Fix build by not listing
+  languages twice.
+
+-------------------------------------------------------------------
 Tue Mar  2 09:27:00 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - fix build for Tumbleweed
