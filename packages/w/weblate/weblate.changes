@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 15:11:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not attempt to build on i586 workers: the resulting package is
+  noarch, so can be used anyway.
+
+-------------------------------------------------------------------
 Mon Dec  6 23:10:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix BRs python-akismet -> python-python-akismet

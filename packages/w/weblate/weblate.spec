@@ -1,7 +1,7 @@
 #
 # spec file for package weblate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -203,6 +203,7 @@ Recommends:     python3-zeep >= 3.2.0
 Recommends:     tesseract-ocr-traineddata-english
 Recommends:     tesseract-ocr-traineddata-orientation_and_script_detection
 BuildArch:      noarch
+ExcludeArch:    %{ix86}
 
 %description
 Weblate is a free web-based translation tool with tight version control
