@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 15:46:09 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Enabled RSpec verifying doubles (bsc#1194784)
+- 4.4.20
+
+-------------------------------------------------------------------
 Wed Jan 12 11:52:12 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Simplify slide show to support future parallel installations
