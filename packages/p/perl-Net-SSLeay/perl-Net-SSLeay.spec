@@ -18,9 +18,9 @@
 
 %define cpan_name Net-SSLeay
 Name:           perl-Net-SSLeay
-Version:        1.90
+Version:        1.92
 Release:        0
-Summary:        Perl extension for using OpenSSL
+Summary:        Perl bindings for OpenSSL and LibreSSL
 License:        Artistic-2.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHRISN/%{cpan_name}-%{version}.tar.gz
@@ -42,7 +42,7 @@ This module provides Perl bindings for libssl (an SSL/TLS API) and
 libcrypto (a cryptography API).
 
 %prep
-%autosetup -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -58,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes Credits QuickRef README examples CONTRIBUTING.md
+%doc Changes CONTRIBUTING.md Credits examples QuickRef README README.OSX README.VMS README.Win32
 %license LICENSE
 
 %changelog

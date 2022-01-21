@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Fri Jan 14 03:07:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.92
+   see /usr/share/doc/packages/perl-Net-SSLeay/Changes
+
+  1.92 2022-01-12
+  	- New stable release incorporating all changes from developer releases 1.91_01
+  	  to 1.91_03.
+  	- Summary of major changes since version 1.90:
+  	  - Net::SSLeay now supports stable releases of OpenSSL 3.0.
+  	    - OpenSSL 3.0.0 introduces the concept of "providers", which contain
+  	      cryptographic algorithm implementations. Many outdated, deprecated and/or
+  	      insecure algorithms have been moved to the "legacy" provider, which may
+  	      need to be loaded explicitly in order to use them with Net::SSLeay. See
+  	      "Low level API: OSSL_LIB_CTX and OSSL_PROVIDER related functions" in the
+  	      Net::SSLeay module documentation for details.
+  	    - Net::SSLeay's built-in PEM_get_string_PrivateKey() function depends on
+  	      algorithms that have moved to the legacy provider described above; if
+  	      OpenSSL has been compiled without the legacy provider, the tests
+  	      t/local/33_x509_create_cert.t and t/local/63_ec_key_generate_key.t will
+  	      fail when the test suite is run.
+  	    - TLS 1.1 and below may only be used at security level 0 as of OpenSSL
+  	      3.0.0; if a minimum required security level is imposed (e.g. in an
+  	      OpenSSL configuration file managed by the operating system), the tests
+  	      t/local/44_sess.t and t/local/45_exporter.t will fail when the test suite
+  	      is run.
+  	  - Net::SSLeay now supports stable releases of LibreSSL from the 3.2 - 3.4
+  	    series (with the exception of 3.2.2 and 3.2.3 - see "COMPATIBILITY" in the
+  	    Net::SSLeay module documentation for details).
+  	    - The TLS 1.3 implementation in LibreSSL 3.1 - 3.3, parts of which are
+  	      enabled by default, is not fully compatible with the libssl API and may
+  	      not function as expected with Net::SSLeay; see "KNOWN BUGS AND CAVEATS"
+  	      in the Net::SSLeay module documentation for details.
+  	  - A number of new libcrypto/libssl constants and functions are now exposed,
+  	    including SSL_CTX_set_keylog_callback() and SSL_CTX_set_msg_callback(),
+  	    which are helpful when debugging TLS handshakes. See the release notes for
+  	    the 1.91 developer releases below for a full list of newly-exposed
+  	    constants and functions.
+  1.91_03 2022-01-10
+  	- Avoid misclassifying Clang as GCC in Test::Net::SSLeay's can_thread()
+  	  function. This fixes test failures in 61_threads-cb-crash.t and
+  	  62_threads-ctx_new-deadlock.t on OpenBSD and FreeBSD (and possibly other OSes
+  	  too). Fixes GH-350.
+  	- Add the following constants for OpenSSL_version():
+  	  - OPENSSL_CPU_INFO
+  	  - OPENSSL_FULL_VERSION_STRING
+  	  - OPENSSL_MODULES_DIR
+  	  - OPENSSL_VERSION_STRING
+  	  These constants are new in OpenSSL 3.0.0 release.
+  	- Update test 03_use.t to print information returned by the new constants.
+  	- Add more information to 03_use.t print output, including printing
+  	  OPENSSL_VERSION_NUMBER as a 32bit hex number.
+  	- Add the following constants for OPENSSL_info() added in OpenSSL 3.0.0.
+  	  - OPENSSL_INFO_CONFIG_DIR
+  	  - OPENSSL_INFO_CPU_SETTINGS
+  	  - OPENSSL_INFO_DIR_FILENAME_SEPARATOR
+  	  - OPENSSL_INFO_DSO_EXTENSION
+  	  - OPENSSL_INFO_ENGINES_DIR
+  	  - OPENSSL_INFO_LIST_SEPARATOR
+  	  - OPENSSL_INFO_MODULES_DIR
+  	  - OPENSSL_INFO_SEED_SOURCE
+  	- Expose OPENSSL_info(), OPENSSL_version_major(),
+  	  OPENSSL_version_minor(), OPENSSL_version_patch(),
+  	  OPENSSL_version_pre_release() and
+  	  OPENSSL_version_build_metadata() added in OpenSSL
+  	  3.0.0. Update 03_use.t diagnostics and 04_basic.t tests to
+  	  use these functions.
+  	- Clarify documentation of OpenSSL_version_num(), SSLeay(),
+  	  SSLeay_version() and OpenSSL_version().
+  	- Add notes to OpenSSL_version_num() and SSLeay() on how to
+  	  determine if the library is OpenSSL or LibreSSL and how to
+  	  interpret the version number these functions return.
+  	- Add constants OPENSSL_VERSION_MAJOR, OPENSSL_VERSION_MINOR
+  	  and OPENSSL_VERSION_PATCH. Update
+  	  OPENSSL_version_major/minor/patch documentation to describe
+  	  how these library functions relate to Net-SSLeay compile
+  	  time constants. Add tests to verify the constants and
+  	  functions return equal values.
+  1.91_02 2021-12-29
+  	- On OpenVMS, detect vendor SSL111 product based on OpenSSL 1.1.x.
+  	- Cast the return value of OCSP_SINGLERESP_get0_id to fix a
+  	  const/non-const mismatch warning that broke the build on OpenVMS.
+  	- Create SSL_CTXs with Test::Net::SSLeay's new_ctx() function for tests that
+  	  are broken with LibreSSL 3.2. Partially fixes GH-232.
+  	- In 36_verify.t, account for the presence of the X509_V_FLAG_LEGACY_VERIFY
+  	  flag (signalling the use of the legacy X.509 verifier) in LibreSSL 3.2
+  	  versions from 3.2.4 onwards. Fixes the remainder of GH-232.
+  	- Note in the Net::SSLeay documentation that the TLS 1.3 implementation in
+  	  LibreSSL 3.1 - 3.3, parts of which are enabled by default, is not
+  	  libssl-compatible. See the "KNOWN BUGS AND CAVEATS" section of
+  	  lib/Net/SSLeay.pod for details.
+  	- Add constants for, but not limited to,
+  	  SSL_CTX_set_msg_callback and SSL_set_msg_callback functions:
+  	  SSL3_RT_* for record content types, SSL3_MT_* for Handshake
+  	  and ChangeCipherSpec message types, SSL2_VERSION to
+  	  complement the list of existing SSL and TLS version
+  	  constants and SSL2_MT_* for SSLv2 Handshake messages.
+  	- Expose SSL_CTX_set_keylog_callback and
+  	  SSL_CTX_get_keylog_callback available with OpenSSL 1.1.1pre1
+  	  and later.
+  	- Enhance 10_rand.t RAND_file_name tests: tests are no longer
+  	  affected by the runtime environment variables, HOME and
+  	  RANDFILE. These variables are insted controlled by the tests
+  	  with local %ENV. Problems related to RAND_file_name were
+  	  discussed in Github issue GH-152, and there might still be
+  	  cases when, for example, setuid is used because of OpenSSL's
+  	  use of glibc secure_getenv() and related functions. Address
+  	  RAND_file_name differences between OpenSSL versions. Note in
+  	  SSLeay.pod that RAND_file_name() can return undef with
+  	  LibreSSL and recent OpenSSL versions.
+  	- Removed the following exportable symbols from SSLeay.pm:
+  	  - SESSION, clear_error and err have never been defined.
+  	  - add_session, flush_sessions and remove_session were
+  	    removed in Net::SSLeay 1.04
+  	  - Undocumented X509_STORE_CTX_set_flags() was removed in
+  	    Net::SSLeay 1.37 when X509_VERIFY_PARAM_* functions were
+  	    added. These are preferred over directly setting the flags.
+  	- Clarified Changes entry for release 1.75 to state that
+  	  CTX_v2_new is not removed from Net::SSLeay. SSLv2 is
+  	  completely removed in OpenSSL 1.1.0.
+  	- Beginning with OpenSSL 3.0.0-alpha17, SSL_CTX_get_options()
+  	  and related functions return uint64_t instead of long. For
+  	  this reason constant() in constant.c and Net::SSLeay must
+  	  also be able to return 64bit constants. Add uint64_t
+  	  definitions to typemap file and update constant() and
+  	  options functions to use uint64_t with OpenSSL 3.0.0 and
+  	  later when Perl is compiled with 64bit integers. With 32bit
+  	  integers, the functions remain as they are: constant()
+  	  functions return double and options functions return
+  	  long. This partially fixes GH-315, 32bit integer Perls need
+  	  to be handled separately.
+  	- Work around macOS Monterey build failure during 'perl
+  	  Makefile.PL' that causes perl to exit with 'WARNING:
+  	  .../perl is loading libcrypto in an unsafe way' or similar
+  	  message. This fixes GH-329. Thanks to Daniel J. Luke for the
+  	  report and John Napiorkowski for additional help.
+  1.91_01 2021-10-24
+  	- Correct X509_STORE_CTX_init() return value to integer. Previous
+  	  versions of Net::SSLeay return nothing.
+  	- Update tests to call close() to avoid problems seen with
+  	  test 44_sess.t, and possibly other tests, running on older
+  	  Windows Perl versions. Also add some missing calls in tests
+  	  to shutdown and free ssl structures.
+  	- Fix multiple formatting errors in the documentation for Net::SSLeay.
+  	  Thanks to John Jetmore.
+  	- Check for presence of libssl headers in Makefile.PL, and exit with an
+  	  error instead of generating an invalid Makefile if they cannot be found.
+  	  Fixes RT#105189. Thanks to James E Keenan for the report.
+  	- Added support for SSL_CTX_set_msg_callback/SSL_set_msg_callback
+  	  Thanks to Tim Aerts.
+  	- Adjust time in ASN1_TIME_timet based on current offset to GMT to
+  	  address GH-148. Thanks to Steffen Ullrich.
+  	- Multiple updates to tests to match OpenSSL 3.0 behaviour.
+  	  Thanks to Michal Josef Špaček.
+  	- OpenSSL 3.0 related changes in tests include:
+  	  - TLSv1 and TLSv1.1 require security level 0 starting with 3.0 alpha 5.
+  	  - SSL_CTX_set_ciphersuites() and SSL_set_ciphersuites() ignore
+  	    unknown ciphersuites starting with 3.0 alpha 11.
+  	  - Error code and error string packing and formatting changes.
+  	  - PEM_get_string_PrivateKey default algorithm requires legacy provider.
+  	- See OpenSSL manual page migration_guide(7) for more information about
+  	  changes in OpenSSL 3.0.
+  	- Automatically detect OpenSSL installed via Homebrew on ARM-based macOS
+  	  systems. Thanks to Graham Knop for the patch.
+  	- Account for the divergence in TLSv1.3 ciphersuite names between OpenSSL and
+  	  LibreSSL, which was causing failures of some TLSv1.3 tests with LibreSSL.
+  	- In 36_verify.t, account for the presence of the X509_V_FLAG_LEGACY_VERIFY
+  	  flag (signalling the use of the legacy X.509 verifier) in LibreSSL 3.3.2 and
+  	  above.
+  	- In 43_misc_functions.t, account for the fact that LibreSSL 3.2.0 and above
+  	  implement TLSv1.3 without exposing a TLS1_3_VERSION constant.
+  	- Expose OpenSSL 3.0 functions
+  	  OSSL_LIB_CTX_get0_global_default, OSSL_PROVIDER_load,
+  	  OSSL_PROVIDER_try_load, OSSL_PROVIDER_unload,
+  	  OSSL_PROVIDER_available, OSSL_PROVIDER_do_all
+  	  OSSL_PROVIDER_get0_name and OSSL_PROVIDER_self_test.
+  	  Add test files 22_provider.t, 22_provider_try_load.t and
+  	  22_provider_try_load_zero_retain.t.
+  	- With OpenSSL 3.0 and later, the legacy provider is loaded in
+  	  33_x509_create_cert.t to allow PEM_get_string_PrivateKey to
+  	  continue working until its default encryption method is
+  	  updated. Fixes GH-272 and closes GH-273.
+  	- Remove the test suite's optional dependency on the non-core modules
+  	  Test::Exception, Test::NoWarnings and Test::Warn. Tests that verify
+  	  Net::SSLeay's behaviour when errors occur are now executed regardless of the
+  	  availability of these modules.
+  	- Fully automate the process of changing the list of constants exported by
+  	  Net::SSLeay. Fixes GH-313.
+  	- Perform function autoloading tests in the test suite. Fixes GH-311.
+  	- In 36_verify.t, account for the fact that the X509_V_FLAG_LEGACY_VERIFY flag
+  	  (signalling the use of the legacy X.509 verifier) is no longer exposed as of
+  	  LibreSSL 3.4.1. Fixes GH-324.
+
+-------------------------------------------------------------------
 Thu Jan 13 10:00:15 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Fix cpanspec.yml
