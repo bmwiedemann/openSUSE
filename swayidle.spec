@@ -23,7 +23,10 @@ Summary:        Idle management daemon for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swayidle
-Source0:        https://github.com/swaywm/swayidle/archive/%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch -- Fix printf using size_t lineno variable
+Patch0:         %{url}/commit/e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch
+
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -66,7 +69,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland"

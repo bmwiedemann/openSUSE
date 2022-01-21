@@ -99,4 +99,12 @@
   * Allow forked processes to receive signal</comment>
     <requestid>946990</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ee13ba9dfef6e1b1c68b0a4dc45545c2</srcmd5>
+    <version>1.7.1</version>
+    <time>1642724740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947712</requestid>
+  </revision>
 </revisionlist>
