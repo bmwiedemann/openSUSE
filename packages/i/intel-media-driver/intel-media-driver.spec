@@ -1,7 +1,7 @@
 #
 # spec file for package intel-media-driver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        21.3.5
+Version:        22.1.1
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT
@@ -32,10 +32,10 @@ Source3:        baselibs.conf
 Patch1:         Werror-initialize-in-right-order.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gmmlib-devel >= 21.2.1
+BuildRequires:  gmmlib-devel >= 22.0.1
 BuildRequires:  pkgconfig
 #Note this is NOT libva library version!
-BuildRequires:  pkgconfig(libva) >= 1.12.0
+BuildRequires:  pkgconfig(libva) >= 1.13.0
 BuildRequires:  pkgconfig(pciaccess)
 ExclusiveArch:  x86_64 i586
 %include %{S:2}

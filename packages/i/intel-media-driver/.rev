@@ -204,4 +204,28 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>934604</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6301daa00804b662bb286c3b58095dcf</srcmd5>
+    <version>22.1.1</version>
+    <time>1642724728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.1:
+  * New Features and Enhancement:
+    - Enabled Alchemist/ATS-M platform decoding and video
+      processing features
+    - Added ADL-N platform support
+    - Enhanced AV1 decoding robustness for error clips handling
+    - Added vaCopy caps reporting
+    - Enabled GPU copy for small resolution in vaMap/unMap
+    - Optimized GetImage perf for NV12 format
+    - Added HEVC sub-features caps reporting
+    - Improved compatibility by disabling compression when creating
+      surface
+    - Improved debuggability by enabling OCA support
+  * Bugs fixed:
+    - Fixed multiple layer composition corruption issue
+    - Fixed OCA stability issue in multi-thread scenario
+    - Fixed render copy mem leak</comment>
+    <requestid>947573</requestid>
+  </revision>
 </revisionlist>
