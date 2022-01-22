@@ -159,4 +159,12 @@ Replace python 2 with python 3</comment>
     <comment></comment>
     <requestid>902501</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>7601a15757d0c4681c9bdbc7f82c3dde</srcmd5>
+    <version>20140811</version>
+    <time>1642835929</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit specfile to do multipython builds.</comment>
+    <requestid>948041</requestid>
+  </revision>
 </revisionlist>

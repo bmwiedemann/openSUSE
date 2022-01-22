@@ -1,7 +1,7 @@
 #
 # spec file for package libewf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,14 @@ Source3:        Expert_Witness_Compression_Format_EWF.pdf
 Source4:        Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
 Patch2:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(bzip2) >= 1.0
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
@@ -58,9 +60,9 @@ BuildRequires:  pkgconfig(libsmdev) >= 20210418
 BuildRequires:  pkgconfig(libsmraw) >= 20210418
 BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
+%python_subpackages
 
 %description
 libewf is a library for support of the Expert Witness Compression
@@ -108,29 +110,26 @@ by EnCase 1 to 6, linen and FTK Imager.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libewf, an Expert Witness Compression format library
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-
-%description -n python3-%{name}
-Python 3 binding for libewf, which can create and read EnCase forensic
-images.
-
 %prep
 %autosetup -p1 -n libewf-legacy-%version
 cp "%{SOURCE3}" "%{SOURCE4}" .
 
 %build
 #export CFLAGS="%optflags -fno-strict-aliasing"
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
 %configure --disable-static --disable-rpath \
-  --enable-wide-character-type \
-  --enable-python3
+	--enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 install -Dpm0755 "%{SOURCE2}" "%{buildroot}/sbin/mount.ewf"
 ln -s mount.ewf "%{buildroot}/sbin/umount.ewf"
@@ -145,7 +144,7 @@ make check
 %license COPYING*
 %{_libdir}/libewf.so.*
 
-%files tools
+%files -n %name-tools
 %{_bindir}/ewfacquire
 %{_bindir}/ewfacquirestream
 %{_bindir}/ewfexport
@@ -159,7 +158,7 @@ make check
 %{_mandir}/man1/ewf*.1*
 /sbin/*mount.ewf
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc *.pdf
 %{_includedir}/libewf.h
@@ -168,8 +167,8 @@ make check
 %{_libdir}/pkgconfig/libewf.pc
 %{_mandir}/man3/libewf.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/*.so
+%{python_sitearch}/*.so
 
 %changelog

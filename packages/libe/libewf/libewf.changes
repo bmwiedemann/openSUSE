@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 18:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit specfile to do multipython builds.
+  (Reenables python2 on Leap 15)
+
+-------------------------------------------------------------------
 Sat Jun 26 09:57:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop python2 module build.
