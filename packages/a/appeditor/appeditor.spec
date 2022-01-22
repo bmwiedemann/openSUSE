@@ -1,7 +1,7 @@
 #
 # spec file for package appeditor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           appeditor
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Application Entry Editor
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/donadigo/appeditor
 Source:         https://github.com/donadigo/appeditor/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM appeditor-1.1.3-fix-flickering-titlebar.patch -- gh#donadigo/appeditor#103
+Patch:          https://src.fedoraproject.org/rpms/appeditor/raw/rawhide/f/appeditor-1.1.3-fix-flickering-titlebar.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
@@ -44,7 +46,7 @@ and to edit their properties.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
