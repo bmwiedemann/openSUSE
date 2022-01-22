@@ -6,7 +6,7 @@ export QT_IM_SWITCHER=imsw-multi
 export QT_IM_MODULE=fcitx
 
 case "$WINDOWMANAGER" in
-    *gnome*|*kde*|*xfce*|*lxde*)
+    *gnome*|*plasma*|*xfce*|*lxde*)
 	# started via xdg autostart (boo#947576)
 	# explicitly set below, as referred in xdg autostart
 	export INPUT_METHOD=fcitx

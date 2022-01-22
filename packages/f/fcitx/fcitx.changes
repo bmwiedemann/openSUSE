@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 08:06:20 CET 2022 - tiwai@suse.de
+
+- Fix xim.d script for KDE Plasma (boo#1194916);
+  $WINDOWMANAGER check needs to be adjusted
+
+-------------------------------------------------------------------
 Wed Jun 30 12:25:43 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move fcitx.macros from /etc/rpm to %_rpmmacrodir (boo#1185657).
