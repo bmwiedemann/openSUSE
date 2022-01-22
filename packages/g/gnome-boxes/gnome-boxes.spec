@@ -68,6 +68,8 @@ Requires:       libvirt-daemon-qemu
 Requires:       mtools
 # gnome-boxes requires org.freedesktop.Tracker.FTS schema to be available (bnc#785356).
 Requires:       tracker
+# Recommend libvirt-client, needed for gnome-boxes to recognize the kvm module and boxes storage pool
+Recommends:     libvirt-client
 # Eliminate sub-packages with libraries in private space (no provides, nothing was supposed to use the pkgname)
 Obsoletes:      libgovf-0_1 <= 40.2
 Obsoletes:      libgtk-frdp-0_1 <= 40.2

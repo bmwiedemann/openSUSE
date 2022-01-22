@@ -693,4 +693,13 @@
     <comment></comment>
     <requestid>944775</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>9b66db67dd63d7ebd571b1546a9985dc</srcmd5>
+    <version>41.3</version>
+    <time>1642835893</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libvirt-client Recommends: needed for gnome-boxes to
+  recognize the kvm module and boxes storage pool. (forwarded request 947454 from iznogood)</comment>
+    <requestid>947896</requestid>
+  </revision>
 </revisionlist>
