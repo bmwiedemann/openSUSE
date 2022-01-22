@@ -49,7 +49,7 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        97.0.4692.71
+Version:        97.0.4692.99
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -103,8 +103,6 @@ Patch78:        chromium-96-EnumTable-crash.patch
 Patch79:        chromium-97-Point-constexpr.patch
 Patch80:        chromium-97-ScrollView-reference.patch
 Patch81:        chromium-95-libyuv-arm.patch
-Patch82:        fix-tag-dragging-in-Mutter.patch
-Patch83:        fix-tag-dragging-in-KWin.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
