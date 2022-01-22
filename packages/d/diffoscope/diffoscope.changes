@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Jan 14 09:22:48 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 200:
+ - Even if a Sphinx .inv inventory file is labelled "The remainder of this
+   file is compressed using zlib", it might not actually be. In this case,
+   don't traceback, and simply return the original content.
+   (Closes: reproducible-builds/diffoscope#299)
+ - Update "X has been modified after NT_GNU_BUILD_ID has been applied" message
+   to, for instance, not duplicating the full filename in the primary
+   diffoscope's output.
+- update to version 199:
+ - Support both variants of "odt2txt", including the one provided by unoconv.
+   (Closes: reproducible-builds/diffoscope#298)
+ - Add external tool reference on Arch Linux for xb-tool.
+
+-------------------------------------------------------------------
+Fri Jan  7 09:00:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 199:
+ - Support both variants of "odt2txt", including the one provided by unoconv.
+   (Closes: reproducible-builds/diffoscope#298)
+ - Add external tool reference on Arch Linux for xb-tool.
+- update to version 198:
+ - Support showing "Ordering differences only" within .dsc field values.
+   (Closes: #1002002, reproducible-builds/diffoscope#297)
+ - Support OCaml versions 4.11, 4.12 and 4.13. (Closes: #1002678)
+ - Add support for XMLb files. (Closes: reproducible-builds/diffoscope#295)
+ - Also add, for example, /usr/lib/x86_64-linux-gnu to our internal PATH.
+ - Also recognize "GnuCash file" files as XML.
+
+-------------------------------------------------------------------
+Mon Jan  3 11:42:21 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 198:
+ - Support showing "Ordering differences only" within .dsc field values.
+   (Closes: #1002002, reproducible-builds/diffoscope#297)
+ - Support OCaml versions 4.11, 4.12 and 4.13. (Closes: #1002678)
+ - Add support for XMLb files. (Closes: reproducible-builds/diffoscope#295)
+ - Also add, for example, /usr/lib/x86_64-linux-gnu to our internal PATH.
+ - Also recognize "GnuCash file" files as XML.
+- update to version 197:
+ - Drop unnecessary has_same_content_as logging calls.
+ - Ignore the new "binary-with-bad-dynamic-table" Lintian tag.
+ - Support pgpdump 0.34 in the tests. Thanks to Michael Weiss
+   <dev.primeos@gmail.com> for reporting and testing the fix.
+
+-------------------------------------------------------------------
 Fri Dec 17 11:59:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 197:
