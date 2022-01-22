@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %bcond_without  test
-# NEP 29: NumPy dropped Python 3.6
-%define         skip_python36 1
 Name:           python-holoviews
-Version:        1.14.6
+Version:        1.14.7
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -201,6 +199,7 @@ donttest+=" or (TestPointPlot and test_point_size_op)"
 donttest+=" or (TestPointPlot and test_points_padding_datetime_nonsquare)"
 donttest+=" or (TestPointPlot and test_points_padding_datetime_square)"
 donttest+=" or (TestPointPlot and test_points_sizes_scalar_update)"
+donttest+=" or (TestPointPlot and test_scatter3d_colorbar_label)"
 donttest+=" or (TestPointPlot and test_scatter3d_padding_hard_zrange)"
 donttest+=" or (TestPointPlot and test_scatter3d_padding_logz)"
 donttest+=" or (TestPointPlot and test_scatter3d_padding_nonsquare)"
