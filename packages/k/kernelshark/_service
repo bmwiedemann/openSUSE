@@ -4,7 +4,7 @@
     <param name="url">git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git</param>
     <param name="filename">kernelshark</param>
     <param name="revision">kernelshark-v1.0</param>
-    <param name="version">v1.2</param>
+    <param name="version">v1.3</param>
     <param name="match-tag">kernelshark-*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

@@ -1,7 +1,7 @@
 #
 # spec file for package kernelshark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,22 +11,24 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 Name:           kernelshark
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Visualisation tool for trace-cmd data
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Tools/Debuggers
 URL:            https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git
 Source0:        kernelshark-%{version}.tar.xz
-Source1:        kernelshark-rpmlintrc
 Patch1:         makefile-lib64.patch
 Patch2:         makefile-bash.patch
 Patch3:         0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
 Patch4:         kernelshark-make-fontheight.patch
+Patch5:         cmake-link-glut-libraries.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
@@ -34,14 +36,10 @@ BuildRequires:  freeglut-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  python-devel
-BuildRequires:  swig
+BuildRequires:  libtraceevent-devel
+BuildRequires:  libtracefs-devel
 Recommends:     trace-cmd
-%if 0%{?suse_version} > 1200
 BuildRequires:  xsltproc
-%else
-BuildRequires:  libxslt
-%endif
 
 %description
 trace-cmd reporting can be extremely verbose making it difficult to
@@ -49,11 +47,7 @@ analyse. kernelshark visualises the data so that it can be filtered
 or trimmed.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} prefix=%{_prefix} trace-cmd

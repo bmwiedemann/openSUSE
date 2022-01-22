@@ -1,0 +1,21 @@
+From: Dario Faggioli <dfaggioli@suse.com>
+Subject: [PATCH] Fix CMake generated GLUT linker flags
+Upstream: No
+
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff -Nru trace-cmd/kernel-shark/src/CMakeLists.txt trace-cmd_2/kernel-shark/src/CMakeLists.txt
+--- trace-cmd/kernel-shark/src/CMakeLists.txt	2022-01-20 18:30:57.994609819 +0100
++++ trace-cmd_2/kernel-shark/src/CMakeLists.txt	2022-01-20 19:52:09.999265693 +0100
+@@ -24,7 +24,7 @@
+ 
+     target_link_libraries(kshark-plot  kshark
+                                        ${OPENGL_LIBRARIES}
+-                                       ${GLUT_LIBRARY})
++                                       ${GLUT_LIBRARIES})
+ 
+     set_target_properties(kshark-plot PROPERTIES  SUFFIX ".so.${KS_VERSION_STRING}")
+ 

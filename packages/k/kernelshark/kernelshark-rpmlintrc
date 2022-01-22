@@ -1,2 +1,0 @@
-# kernelshark dependencies fail to depend if PIC is used
-addFilter("W: position-independent-executable-suggested")
