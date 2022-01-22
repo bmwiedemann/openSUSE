@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 20 19:38:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.5:
+  * Fixed issues with bowtie2 BAM parser that would cause bowtie2
+    to crash when processing input that was encoded with tools
+    other than samtools e.g. Picard.
+  * Fixed an issue causing bowtie2 to drop certain optional fields
+    when when aligning BAM reads with the --preserve-tags option.
+  * Fixed an issue causing bowtie2 to produce mangled SAM output
+    when specifying --sam-append-comment together with the
+    --passthrough option.
+  * Appended GO:query to SAM @HD entry to indicate that reads are
+    grouped by query name, bump SAM version to 1.5 to indicate
+    support for this change.
+- Update simde to version 0.7.2.
+
+-------------------------------------------------------------------
 Fri Jul  2 23:48:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.4:

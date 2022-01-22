@@ -1,7 +1,7 @@
 #
 # spec file for package bowtie2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%global simde_version 0.7.0
+%global simde_version 0.7.2
 %ifarch aarch64
 %define _lto_cflags %{nil}
 %endif
 Name:           bowtie2
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only
