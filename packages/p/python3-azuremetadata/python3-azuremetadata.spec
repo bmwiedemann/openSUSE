@@ -1,7 +1,7 @@
 #
 # spec file for package python3-azuremetadata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define upstream_name azuremetadata
 Name:           python3-azuremetadata
-Version:        5.1.2
+Version:        5.1.5
 Release:        0
 # Packaged renamed in SLE15
 Provides:       azuremetadata = %{version}
@@ -32,6 +32,7 @@ URL:            https://github.com/SUSE-Enceladus/azuremetadata
 Source0:        %{name}-%{version}.tar.bz2
 Requires:       python3
 Recommends:     util-linux
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch

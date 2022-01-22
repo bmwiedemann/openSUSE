@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 13 21:50:24 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Version 5.1.5 (bsc#1194663)
+  + Handle lsblk output format change. The json data now contains
+    "mountpoints" instead of "mountpoint"
+
+-------------------------------------------------------------------
+Wed Apr 21 17:20:35 UTC 2021 - Jesús Bermúdez Velázquez <jesusbv@suse.com>
+
+- Version 5.1.4 (bsc#1184720, bsc#1172581)
+  + Use versions endpoint to list the available versions
+  + Add bypass proxy
+  + Update way to check classic vms  
+
+-------------------------------------------------------------------
+Fri Aug 21 13:45:31 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix provides directive (bsc#1175609, bsc#1175610)
+  + The provides directive must set a version or update does not work
+    as expected
+
+-------------------------------------------------------------------
 Fri Aug 21 13:45:31 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Fix provides directive (bsc#1175609, bsc#1175610)
