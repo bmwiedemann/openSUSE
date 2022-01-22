@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-editing-services
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,6 @@ Source0:        %{_name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  flex
-BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject-devel
@@ -155,7 +154,7 @@ editing-related applications.
 
 %build
 %meson \
-	-Dgtk_doc=disabled \
+	-Ddoc=disabled \
 	-Dintrospection=enabled \
 	-Dtests=disabled \
 	%{nil}

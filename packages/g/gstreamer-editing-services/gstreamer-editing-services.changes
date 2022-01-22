@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:56:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix parameters passed to meson: gtk_doc should be doc. Meson 0.60
+  became strict and no longer accepts invalid parameters.
+- Drop hotdoc BuildRequires: as we pass -Ddoc=disabled to meson,
+  this dependency is not needed.
+
+-------------------------------------------------------------------
 Wed Sep 15 10:11:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.5:

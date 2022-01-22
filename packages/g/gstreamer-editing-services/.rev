@@ -302,4 +302,16 @@
     <comment></comment>
     <requestid>919133</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>56d3087b00c37065448a85566348f8b4</srcmd5>
+    <version>1.18.5</version>
+    <time>1642835894</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix parameters passed to meson: gtk_doc should be doc. Meson 0.60
+  became strict and no longer accepts invalid parameters.
+- Drop hotdoc BuildRequires: as we pass -Ddoc=disabled to meson,
+  this dependency is not needed.
+</comment>
+    <requestid>947912</requestid>
+  </revision>
 </revisionlist>
