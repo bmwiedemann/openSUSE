@@ -16,11 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
+# flaky for obs, only test locally
+%bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -35,25 +36,27 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module ipykernel >= 5.3.0}
+BuildRequires:  %{python_module ipykernel >= 6.6.1}
 BuildRequires:  %{python_module ipython >= 7.6.0}
-BuildRequires:  %{python_module jupyter_client >= 5.3.4}
+BuildRequires:  %{python_module jupyter_client >= 7.1.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module pyzmq >= 22.1}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
 BuildRequires:  %{python_module xarray}
+%if %{with dasktest}
+BuildRequires:  %{python_module dask-distributed}
+%endif
 # /SECTION
 Requires:       python-cloudpickle
-Requires:       python-ipykernel >= 5.3.0
+Requires:       python-ipykernel >= 6.6.1
 Requires:       python-ipython >= 7.6.0
-Requires:       python-jupyter_client >= 5.3.4
-Requires:       python-pyzmq >= 17
+Requires:       python-jupyter_client >= 7.1.0
+Requires:       python-pyzmq >= 22.1
 Requires:       python-wurlitzer >= 1.0.3
 BuildArch:      noarch
 
@@ -71,6 +74,7 @@ all inside the IDE.
 
 %prep
 %autosetup -p1 -n spyder-kernels-%{version}
+sed -i -e '/ipython/ s/,<8;/;/' setup.py
 
 %build
 %python_build
@@ -80,16 +84,10 @@ all inside the IDE.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# flaky for obs
-donttest="test_dask_multiprocessing"
-# these fail server-side but not when testing with osc build
-donttest+=" or (test_console_kernel and test_cwd_in_sys_path)"
-donttest+=" or (test_console_kernel and test_multiprocessing)"
-donttest+=" or (test_console_kernel and test_runfile)"
-donttest+=" or (test_console_kernel and test_np_threshold)"
-donttest+=" or (test_console_kernel and test_matplotlib_inline)"
-
-%pytest -k "not (${donttest})" -ra
+%if ! %{with dasktest}
+donttest=("-k" "not test_dask_multiprocessing")
+%endif
+%pytest "${donttest[@]}"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
