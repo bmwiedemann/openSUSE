@@ -3718,6 +3718,7 @@ unsorted:
   - flacon-lang 
   - flameshot 
   - flameshot-bash-completion 
+  - flameshot-fish-completion 
   - flameshot-zsh-completion 
   - flann-devel 
   - flannel 
@@ -4150,6 +4151,7 @@ unsorted:
   - geary 
   - geary-lang 
   - gebaar-libinput 
+  - gede 
   - gedit-devel 
   - gedit-latex-lang 
   - gedit-plugin-bookmarks 
@@ -12404,7 +12406,6 @@ unsorted:
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvme-devel 
-  - libnvme1 
   - libnxml-devel 
   - libnxml0 
   - libnxml0-32bit: [x86_64] 
@@ -18690,6 +18691,8 @@ unsorted:
   - patterns-server-printing-32bit 
   - patterns-server-xen_tools: [x86_64] 
   - patterns-sway-sway 
+  - patterns-wsl-base 
+  - patterns-wsl-gui 
   - patterns-yast-devel_yast 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
@@ -21429,27 +21432,17 @@ unsorted:
   - python3-ldns 
   - python3-lensfun 
   - python3-libaccounts 
-  - python3-libbde 
   - python3-libblockdev 
   - python3-libbytesize 
-  - python3-libcaes 
   - python3-libcec 
   - python3-libcomps 
-  - python3-libcreg 
   - python3-libdnf 
-  - python3-libesedb 
-  - python3-libevt 
-  - python3-libevtx 
-  - python3-libewf 
   - python3-libexe 
   - python3-libfdt 
   - python3-libfsapfs 
   - python3-libfsext 
-  - python3-libfshfs 
   - python3-libfsntfs 
-  - python3-libfsxfs 
   - python3-libftdi1 
-  - python3-libfvde 
   - python3-libfwnt 
   - python3-libfwps 
   - python3-libfwsi 
@@ -21464,7 +21457,6 @@ unsorted:
   - python3-libolecf 
   - python3-liborcus 
   - python3-libpamtest 
-  - python3-libpff 
   - python3-libphdi 
   - python3-libprelude 
   - python3-libpreludedb 
@@ -21488,7 +21480,6 @@ unsorted:
   - python3-libvshadow 
   - python3-libvslvm 
   - python3-libvsmbr 
-  - python3-libwrc 
   - python3-lilv 
   - python3-lldb: [x86_64] 
   - python3-lldb10: [x86_64] 
@@ -22405,6 +22396,7 @@ unsorted:
   - python310-certipy 
   - python310-certstream 
   - python310-cffi 
+  - python310-cfgdiff 
   - python310-cfgv 
   - python310-cfn-lint 
   - python310-cfscrape 
@@ -22959,6 +22951,7 @@ unsorted:
   - python310-hkdf 
   - python310-hl7apy 
   - python310-holidays 
+  - python310-holoviews 
   - python310-hotdoc 
   - python310-hpack 
   - python310-hstspreload 
@@ -23041,7 +23034,6 @@ unsorted:
   - python310-ipyscales 
   - python310-ipysheet 
   - python310-ipython 
-  - python310-ipython-iptest 
   - python310-ipython_genutils 
   - python310-ipyvolume 
   - python310-ipywebrtc 
@@ -23195,18 +23187,30 @@ unsorted:
   - python310-lib3to6 
   - python310-libarchive 
   - python310-libarchive-c 
+  - python310-libbde 
+  - python310-libcaes 
+  - python310-libcreg 
   - python310-libcst 
+  - python310-libesedb 
   - python310-libevdev 
+  - python310-libevt 
+  - python310-libevtx 
+  - python310-libewf 
+  - python310-libfshfs 
+  - python310-libfsxfs 
+  - python310-libfvde 
   - python310-libkdumpfile 
   - python310-liblarch 
   - python310-liblarch-gtk 
   - python310-libmsym 
   - python310-libnacl 
+  - python310-libpff 
   - python310-libpfm 
   - python310-librosa 
   - python310-libsass 
   - python310-libusb1 
   - python310-libvirt-python 
+  - python310-libwrc 
   - python310-libxml2 
   - python310-license-expression 
   - python310-ligo-lw 
@@ -23314,6 +23318,7 @@ unsorted:
   - python310-moto-server 
   - python310-mpi4py 
   - python310-mpi4py-devel 
+  - python310-mplcursors 
   - python310-mpld3 
   - python310-mpmath 
   - python310-mrcz 
@@ -23379,6 +23384,7 @@ unsorted:
   - python310-netpbmfile 
   - python310-networkx 
   - python310-nibabel 
+  - python310-nilearn: [i586] 
   - python310-nine 
   - python310-nltk 
   - python310-nocasedict 
@@ -23550,6 +23556,7 @@ unsorted:
   - python310-pip-test 
   - python310-pip-tools 
   - python310-pip-wheel 
+  - python310-pipdeptree 
   - python310-pipreqs 
   - python310-pipx 
   - python310-pivy 
@@ -23963,6 +23970,7 @@ unsorted:
   - python310-python-jenkins 
   - python310-python-jose 
   - python310-python-json-logger 
+  - python310-python-jsonschema-objects 
   - python310-python-louvain 
   - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
@@ -24699,7 +24707,6 @@ unsorted:
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
-  - python36-cfgdiff 
   - python36-chainmap 
   - python36-combi 
   - python36-compileall2 
@@ -24745,20 +24752,17 @@ unsorted:
   - python36-limnoria 
   - python36-lzmaffi 
   - python36-mechanize 
-  - python36-moretools 
   - python36-mrkd 
   - python36-ntfy 
   - python36-oic 
   - python36-pep8-naming 
   - python36-pip-licenses 
-  - python36-pipdeptree 
   - python36-podman 
   - python36-pony 
   - python36-pysvn 
   - python36-pytest-parallel 
   - python36-python-crfsuite 
   - python36-python-datamatrix 
-  - python36-python-jsonschema-objects 
   - python36-python-multipart 
   - python36-python-prctl 
   - python36-python-qdatamatrix 
@@ -24775,7 +24779,6 @@ unsorted:
   - python36-starlette 
   - python36-tasklib 
   - python36-taskw 
-  - python36-test-server 
   - python36-testsuite 
   - python36-tk 
   - python36-tools 
@@ -24785,7 +24788,6 @@ unsorted:
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
-  - python36-zetup 
   - python36-zodbpickle 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
@@ -25039,7 +25041,6 @@ unsorted:
   - python38-aiohttp-jinja2 
   - python38-aiohttp-socks 
   - python38-aiohttp-theme 
-  - python38-aiohttp_cors 
   - python38-aioquic 
   - python38-aioredis 
   - python38-aioresponses 
@@ -25104,7 +25105,6 @@ unsorted:
   - python38-astral 
   - python38-astroid 
   - python38-astropy 
-  - python38-asttokens 
   - python38-astunparse 
   - python38-asv 
   - python38-asyncpg 
@@ -25443,7 +25443,6 @@ unsorted:
   - python38-bitstring 
   - python38-bitstruct 
   - python38-bjoern 
-  - python38-black 
   - python38-bleach 
   - python38-blessed 
   - python38-blessings 
@@ -25542,7 +25541,6 @@ unsorted:
   - python38-cl 
   - python38-cleo 
   - python38-cli-helpers 
-  - python38-click: [i586] 
   - python38-click-aliases 
   - python38-click-completion 
   - python38-click-default-group 
@@ -25880,7 +25878,6 @@ unsorted:
   - python38-evtx: [i586] 
   - python38-exam 
   - python38-execnet 
-  - python38-executing 
   - python38-exiv2 
   - python38-expects 
   - python38-expiringdict 
@@ -26153,7 +26150,6 @@ unsorted:
   - python38-ipyparallel 
   - python38-ipyscales 
   - python38-ipysheet 
-  - python38-ipython-iptest 
   - python38-ipython_genutils 
   - python38-ipyvolume 
   - python38-ipywebrtc 
@@ -26306,18 +26302,30 @@ unsorted:
   - python38-lib3to6 
   - python38-libarchive 
   - python38-libarchive-c 
+  - python38-libbde 
+  - python38-libcaes 
+  - python38-libcreg 
   - python38-libcst 
+  - python38-libesedb 
   - python38-libevdev 
+  - python38-libevt 
+  - python38-libevtx 
+  - python38-libewf 
+  - python38-libfshfs 
+  - python38-libfsxfs 
+  - python38-libfvde 
   - python38-libkdumpfile 
   - python38-liblarch 
   - python38-liblarch-gtk 
   - python38-libmsym 
   - python38-libnacl 
+  - python38-libpff 
   - python38-libpfm 
   - python38-librosa 
   - python38-librouteros 
   - python38-libsass 
   - python38-libusb1 
+  - python38-libwrc 
   - python38-license-expression 
   - python38-ligo-lw 
   - python38-ligo-segments 
@@ -26329,7 +26337,6 @@ unsorted:
   - python38-linstor 
   - python38-linstor-client 
   - python38-lit 
-  - python38-littleutils 
   - python38-livereload 
   - python38-llfuse 
   - python38-llvmlite 
@@ -26414,7 +26421,6 @@ unsorted:
   - python38-monitoring-plugins-http_json 
   - python38-monotonic 
   - python38-moreorless 
-  - python38-moretools 
   - python38-moto 
   - python38-moto-all 
   - python38-moto-server 
@@ -26446,7 +26452,6 @@ unsorted:
   - python38-mutt-ics 
   - python38-mygpoclient 
   - python38-mypy 
-  - python38-mypy_extensions 
   - python38-mysql-connector-python 
   - python38-mysql-to-sqlite3 
   - python38-nagiosplugin 
@@ -26602,7 +26607,6 @@ unsorted:
   - python38-path 
   - python38-pathlib 
   - python38-pathlib2 
-  - python38-pathspec 
   - python38-pathtools 
   - python38-pathvalidate 
   - python38-patiencediff 
@@ -26655,12 +26659,10 @@ unsorted:
   - python38-pkgutil-resolve-name 
   - python38-plaster 
   - python38-plaster-pastedeploy 
-  - python38-platformdirs 
   - python38-platformio 
   - python38-plette 
   - python38-plotly 
   - python38-plotly-jupyter 
-  - python38-pluggy 
   - python38-pluginbase 
   - python38-plumbum 
   - python38-plyvel 
@@ -26722,7 +26724,6 @@ unsorted:
   - python38-publicsuffixlist 
   - python38-pudb 
   - python38-pulsectl 
-  - python38-pure-eval 
   - python38-pure-sasl 
   - python38-purl 
   - python38-py-cpuinfo 
@@ -26915,7 +26916,6 @@ unsorted:
   - python38-pytaglib 
   - python38-pyte 
   - python38-pytesseract 
-  - python38-pytest 
   - python38-pytest-aiohttp 
   - python38-pytest-arraydiff 
   - python38-pytest-astropy 
@@ -27015,7 +27015,6 @@ unsorted:
   - python38-pytest-xdist 
   - python38-pytest-xprocess 
   - python38-pytest-xvfb 
-  - python38-pytest5 
   - python38-python-afl 
   - python38-python-aiml 
   - python38-python-akismet 
@@ -27404,7 +27403,6 @@ unsorted:
   - python38-ssdeep 
   - python38-sshpubkeys 
   - python38-sshtunnel 
-  - python38-stack-data 
   - python38-starlette 
   - python38-statsd 
   - python38-statsmodels 
@@ -27460,7 +27458,6 @@ unsorted:
   - python38-terminaltables 
   - python38-termstyle 
   - python38-tesserocr 
-  - python38-test-server 
   - python38-testfixtures 
   - python38-testflo 
   - python38-testpath 
@@ -27497,7 +27494,6 @@ unsorted:
   - python38-tldextract 
   - python38-tmx 
   - python38-tokenize-rt 
-  - python38-tomli 
   - python38-tomli-w 
   - python38-tomlkit 
   - python38-tools 
@@ -27545,7 +27541,6 @@ unsorted:
   - python38-txtorcon 
   - python38-typed-ast 
   - python38-typedload 
-  - python38-typeguard 
   - python38-typepy 
   - python38-typer 
   - python38-typing-inspect 
@@ -27716,7 +27711,6 @@ unsorted:
   - python38-zdaemon 
   - python38-zeep 
   - python38-zeroconf 
-  - python38-zetup 
   - python38-zict 
   - python38-zignal 
   - python38-zipstream 
@@ -29196,7 +29190,6 @@ unsorted:
   - python39-ipyscales 
   - python39-ipysheet 
   - python39-ipython 
-  - python39-ipython-iptest 
   - python39-ipython_genutils 
   - python39-ipyvolume 
   - python39-ipywebrtc 
@@ -29353,19 +29346,31 @@ unsorted:
   - python39-lib3to6 
   - python39-libarchive 
   - python39-libarchive-c 
+  - python39-libbde 
+  - python39-libcaes 
+  - python39-libcreg 
   - python39-libcst 
+  - python39-libesedb 
   - python39-libevdev 
+  - python39-libevt 
+  - python39-libevtx 
+  - python39-libewf 
+  - python39-libfshfs 
+  - python39-libfsxfs 
+  - python39-libfvde 
   - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
   - python39-libmsym 
   - python39-libnacl 
+  - python39-libpff 
   - python39-libpfm 
   - python39-librosa 
   - python39-librouteros 
   - python39-libsass 
   - python39-libusb1 
   - python39-libvirt-python 
+  - python39-libwrc 
   - python39-libxml2 
   - python39-license-expression 
   - python39-ligo-lw 
@@ -29472,7 +29477,6 @@ unsorted:
   - python39-monotonic 
   - python39-more-itertools 
   - python39-moreorless 
-  - python39-moretools 
   - python39-moto 
   - python39-moto-all 
   - python39-moto-server 
@@ -30600,7 +30604,6 @@ unsorted:
   - python39-terminaltables 
   - python39-termstyle 
   - python39-tesserocr 
-  - python39-test-server 
   - python39-testfixtures 
   - python39-testflo 
   - python39-testpath 
@@ -30874,7 +30877,6 @@ unsorted:
   - python39-zdaemon 
   - python39-zeep 
   - python39-zeroconf 
-  - python39-zetup 
   - python39-zhon 
   - python39-zict 
   - python39-zignal 
