@@ -1,0 +1,31 @@
+From 50a4880a6c71d8bc9a695a14715ad9ae643d1390 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Thu, 20 Jan 2022 22:30:32 +0100
+Subject: [PATCH] replace interpreter call
+
+The python command is not guaranteed to exist. On some systems it refers to old python 2.
+
+See https://www.python.org/dev/peps/pep-0394/
+---
+ nilearn/plotting/html_document.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/nilearn/plotting/html_document.py b/nilearn/plotting/html_document.py
+index f93377cbb2..bfb166af00 100644
+--- a/nilearn/plotting/html_document.py
++++ b/nilearn/plotting/html_document.py
+@@ -1,4 +1,5 @@
+ import os
++import sys
+ import weakref
+ import warnings
+ import tempfile
+@@ -20,7 +21,7 @@ def set_max_img_views_before_warning(new_value):
+ 
+ def _remove_after_n_seconds(file_name, n_seconds):
+     script = os.path.join(os.path.dirname(__file__), 'rm_file.py')
+-    subprocess.Popen(['python', script, file_name, str(n_seconds)])
++    subprocess.Popen([sys.executable, script, file_name, str(n_seconds)])
+ 
+ 
+ class HTMLDocument(object):
