@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 21 20:03:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.01.21
+  * Add option --concat-playlist to concat videos in a playlist
+  * Add extractors for some 20 sites
+  * zdf: add chapter extraction
+
+-------------------------------------------------------------------
 Tue Dec 28 13:33:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Tweak spec, use current syntax for Supplements.
