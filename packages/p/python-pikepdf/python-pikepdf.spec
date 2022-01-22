@@ -1,7 +1,7 @@
 #
 # spec file for package python-pikepdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,16 +38,13 @@ BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module psutil >= 5}
 BuildRequires:  %{python_module pybind11 >= 2.6.0}
 BuildRequires:  %{python_module pybind11-devel >= 2.6.0}
-# Upstream use pytest >= 6.0.0
-BuildRequires:  %{python_module pytest >= 5.0.0}
-# Upstream use pytest-cov >= 2.10.1
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest >= 6.0.0}
+BuildRequires:  %{python_module pytest-cov >= 2.10.1}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-helpers-namespace >= 2019.1.8}
 # Upstream use pytest-timeout >= 1.4.2
 BuildRequires:  %{python_module pytest-timeout}
-# Upstream use pytest-xdist >= 1.28
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest-xdist >= 1.28}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 #BuildRequires:  %%{python_module python-xmp-toolkit >= 2.0.1}
 BuildRequires:  %{python_module setuptools >= 50}
