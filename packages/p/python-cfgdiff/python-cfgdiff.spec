@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfgdiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cfgdiff
-Version:        0.0.0+git.1487961889.dc4e96e
+Version:        0.0.0+git.1641843506.dc1234a
 Release:        0
 Summary:        Cfgdiff -- diff(1) all your configuration files
 License:        MIT
@@ -66,21 +66,19 @@ cfgdiff currently supports the following formats:
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cfgdiff
-%python_clone -a %{buildroot}%{_mandir}/man1/cfgdiff.1
 
 %post
-%python_install_alternative cfgdiff cfgdiff.1
+%python_install_alternative cfgdiff
 
 %postun
-%python_uninstall_alternative cfgdiff cfgdiff.1
+%python_uninstall_alternative cfgdiff
 
 %check
-%python_exec -m unittest discover test/ -v
+%python_exec -m unittest discover tests/ -v
 
 %files %{python_files}
 %license LICENSE README.md
 %{python_sitelib}/*
 %python_alternative %{_bindir}/cfgdiff
-%python_alternative %{_mandir}/man1/cfgdiff.1%{?ext_man}
 
 %changelog

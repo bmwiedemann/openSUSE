@@ -23,4 +23,12 @@
     <comment>- Also clone the cfgdiff.1 manual page as an alternative</comment>
     <requestid>864494</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8387e29c9ee4cbedae3e3104a752aa22</srcmd5>
+    <version>0.0.0+git.1641843506.dc1234a</version>
+    <time>1642835902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947920</requestid>
+  </revision>
 </revisionlist>
