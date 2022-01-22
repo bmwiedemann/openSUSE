@@ -1,7 +1,5 @@
-Index: cifs-utils-6.12/Makefile.am
-===================================================================
---- cifs-utils-6.12.orig/Makefile.am
-+++ cifs-utils-6.12/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -118,7 +118,7 @@ endif
  SUBDIRS = contrib
  

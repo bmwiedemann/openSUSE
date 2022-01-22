@@ -1,7 +1,7 @@
 #
 # spec file for package cifs-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           cifs-utils
-Version:        6.13
+Version:        6.14
 Release:        0
 Summary:        Utilities for doing and managing mounts of the Linux CIFS filesystem
 License:        GPL-3.0-or-later
@@ -37,7 +37,6 @@ Source100:      README.cifstab.migration
 Source1:        cifs.init
 
 Patch1:         fix-sbin-install-error.patch
-Patch2:         0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
 # /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
@@ -49,7 +48,7 @@ Patch2:         0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
 %define cifs_idmap_priority     20
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
@@ -83,14 +82,13 @@ BuildRequires:  libcap-ng-devel
 %else
 BuildRequires:  libcap-devel
 %endif
-#!BuildIgnore:  samba-client
 BuildRequires:  libtalloc-devel
 %if 0%{?suse_version} > 1110
 BuildRequires:  fdupes
 %endif
-BuildRequires:  libwbclient-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(wbclient)
 Requires:       keyutils
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
@@ -134,7 +132,6 @@ for i in $pyscripts; do
 done
 
 %patch1 -p1
-%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"

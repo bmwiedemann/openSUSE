@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 17 09:22:17 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.de>
+
+- Update cifs-utils.spec:
+  * Remove unused
+    !BuildIgnore: samba-client
+    BuildRequires: libwbclient-devel
+
+-------------------------------------------------------------------
+Mon Jan 17 06:22:41 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.de>
+
+- Update to cifs-utils 6.14
+  * smbinfo is enhanced with capability to display alternate data streams
+  * setcifsacl is improved to optionally reorder ACEs in preferred order
+  * cifs.upcall regression in kerberos mount is fixed
+  * remove cifs-utils-6.13.tar.bz2
+  * remove cifs-utils-6.13.tar.bz2.asc
+  * add    cifs-utils-6.14.tar.bz2
+  * add    cifs-utils-6.14.tar.bz2.asc
+- Drop upstream fixed patches:
+  * 0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
+
+-------------------------------------------------------------------
 Fri May 14 11:13:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to cifs-utils 6.13
