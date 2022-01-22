@@ -2310,6 +2310,7 @@
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3102,6 +3103,7 @@
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="nvme-cli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="nvme-cli-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ocfs2-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ofl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="okteta" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3609,28 +3611,32 @@
     <package name="python38-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-XlsxWriter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-aiobotocore" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-aiodns" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-aiohttp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-aiodns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-aiohttp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-aiohttp_cors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-aioitertools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-aiosignal" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-aiosignal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-apipkg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="python38-asttokens" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-async_generator" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python38-async_timeout" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-async_timeout" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-atspi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-attrs" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python38-attrs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-backcall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-beautifulsoup4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-black" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-boto3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-botocore" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-brotlipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-cached-property" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-certifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-chardet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-chardet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-charset-normalizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python38-click" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-cmdln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python38-colorama" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3650,11 +3656,12 @@
     <package name="python38-dragonmapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-et_xmlfile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-executing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-extras" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-fastparquet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-filetype" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="python38-frozenlist" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-frozenlist" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-fsspec" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-future" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3687,6 +3694,7 @@
     <package name="python38-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-linecache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="python38-littleutils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-loguru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-lxml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3698,7 +3706,8 @@
     <package name="python38-more-itertools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-mpmath" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python38-multidict" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-multidict" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-mypy_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python38-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
@@ -3714,23 +3723,27 @@
     <package name="python38-packaging" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-pandas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-parso" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-pathspec" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pbr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pickleshare" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pip" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="python38-platformdirs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-pluggy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ply" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-prettytable" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-prompt_toolkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python38-psycopg2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-pure-eval" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-pycares" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python38-pycares" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3746,6 +3759,8 @@
     <package name="python38-pyserial" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pyspnego" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python38-pytest" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-pytest5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-python-lzo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-python-mimeparse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -3780,6 +3795,7 @@
     <package name="python38-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-sortedcontainers" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-soupsieve" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-stack-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-sympy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-tables" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tabulate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3787,12 +3803,14 @@
     <package name="python38-thrift" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-toml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-tomli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-tqdm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-traceback2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-traitlets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-trio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python38-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python38-typeguard" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-unicodedata2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-urwid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3801,7 +3819,7 @@
     <package name="python38-wrapt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-xarray" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-xlrd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-yarl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-yarl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-zhon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-zipp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -5343,7 +5361,6 @@
     <package name="python38-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-blinker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-cachetools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-click" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-evtx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-fusepy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

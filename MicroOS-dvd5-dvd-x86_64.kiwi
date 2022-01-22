@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220121" schemaversion="4.1">
+<image name="OBS__MicroOS___20220122" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220121</productvar>
+      <productvar name="VERSION">20220122</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220121,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220122,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220121/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220122/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -326,6 +326,8 @@
       <repopackage name="kconf_update5" arch="x86_64"/>
       <repopackage name="kdbusaddons-tools" arch="x86_64"/>
       <repopackage name="kde-cli-tools5" arch="x86_64"/>
+      <repopackage name="kde-gtk-config5" arch="x86_64"/>
+      <repopackage name="kde-gtk-config5-gtk3" arch="x86_64"/>
       <repopackage name="kde-print-manager" arch="x86_64"/>
       <repopackage name="kdeclarative-components" arch="x86_64"/>
       <repopackage name="kded" arch="x86_64"/>
@@ -878,6 +880,7 @@
       <repopackage name="libnsl3" arch="x86_64"/>
       <repopackage name="libnss_usrfiles2"/>
       <repopackage name="libnuma1" arch="x86_64"/>
+      <repopackage name="libnvme1" arch="x86_64"/>
       <repopackage name="liboauth0" arch="x86_64"/>
       <repopackage name="libofa0" arch="x86_64"/>
       <repopackage name="libogg0" arch="x86_64"/>
@@ -1636,6 +1639,7 @@
       <repopackage name="xrdb" arch="x86_64"/>
       <repopackage name="xset" arch="x86_64"/>
       <repopackage name="xsetroot" arch="x86_64"/>
+      <repopackage name="xsettingsd" arch="x86_64"/>
       <repopackage name="xtables-plugins" arch="x86_64"/>
       <repopackage name="xterm-bin" arch="x86_64"/>
       <repopackage name="xterm-resize" arch="x86_64"/>
