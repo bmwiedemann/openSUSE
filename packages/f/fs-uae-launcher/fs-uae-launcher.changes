@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 21 00:15:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.66
+  * Added some docs from master branch
+  * Updated controllers
+- from version 3.1.64
+  * Removed unwanted stuff from PyQt5
+  * Remove libfontconfig and libfreetype
+- Rename Source0 field to Source
+- Update URL in Source field
+
+-------------------------------------------------------------------
 Mon Nov 22 08:53:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.63
