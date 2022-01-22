@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Fri Jan 21 12:48:08 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#282
+- enable display dialog for all architectures
+- switch to tty1 if framebuffer device becomes available after
+  udevd startup (bsc#1193910, jsc#SLE-18632)
+- rework display menu
+- sanitize open file descriptors when starting yast
+- avoid error messages in running system
+- 8.8
+
+--------------------------------------------------------------------
+Thu Jan 20 15:31:35 UTC 2022 - shundhammer@suse.de
+
+- merge gh#openSUSE/linuxrc#283
+- Migration away from kbd-legacy (jsc#SLE-21107)
+- 8.7
+
+--------------------------------------------------------------------
 Thu Nov 25 09:01:16 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#278
