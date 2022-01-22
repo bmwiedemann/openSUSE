@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Jan 18 09:14:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use pkgconfig(krb5) as dependency for the -devel package: allow
+  OBS to pick the right flavor of krb5-devel (full vs mini).
+- Do not require the 'krb5' symbol by samba-client-libs: this
+  package has an automatic dependency due to linkage on
+  libgssapi_krb5.so.2. Automatic deps are always better.
+- Do not require the 'krb5' symbol from samba-libs: samba-libs
+  requires samba-client-libs, which in turn requires krb5
+  libraries. Samba-libs itself has no need for krb5 (but get it
+  indirectly anyway).
+
+-------------------------------------------------------------------
+Thu Jan 13 19:39:42 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Reorganize libs packages. Split samba-libs into samba-client-libs,
+  samba-libs, samba-winbind-libs and samba-ad-dc-libs, merging samba
+  public libraries depending on internal samba libraries into these
+  packages as there were dependency problems everytime one of these
+  public libraries changed its version (bsc#1192684). The devel
+  packages are merged into samba-devel.
+- Rename package samba-core-devel to samba-devel
+- Add python-rpm-macros to build requirements
+- Update the symlink create by samba-dsdb-modules to private samba
+  ldb modules following libldb2 changes from /usr/lib64/ldb/samba to
+  /usr/lib64/ldb2/modules/ldb/samba
+
+-------------------------------------------------------------------
+Fri Dec 10 17:13:28 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.15.3
+  * Recursive directory delete with veto files is broken in 4.15.0;
+    (bso#14878);
+  * A directory containing dangling symlinks cannot be deleted by
+    SMB2 alone when they are the only entry in the directory;
+    (bso#14879);
+  * SIGSEGV in rmdir_internals/synthetic_pathref - dirfsp is used
+    uninitialized in rmdir_internals(); (bso#14892);
+  * MaxQueryDuration not honoured in Samba AD DC LDAP; (bso#14694);
+  * The CVE-2020-25717 username map [script] advice has undesired
+    side effects for the local nt token; (bso#14901); (bsc#1192849);
+  * User with multiple spaces (eg Fred<space><space>Nurk) become
+    un-deletable; (bso#14902);
+  * Avoid storing NTTIME_THAW (-2) as value on disk; (bso#14127);
+  * smbXsrv_client_global record validation leads to crash if existing
+    record points at non-existing process; (bso#14882);
+  * Crash in vfs_fruit asking for fsp_get_io_fd() for an XATTR call;
+    (bso#14890);
+  * Samba process doesn't log to logfile; (bso#14897);
+  * set_ea_dos_attribute() fallback calling get_file_handle_for_metadata()
+    triggers locking.tdb assert; (bso#14907);
+  * Kerberos authentication on standalone server in MIT realm broken;
+    (bso#14922);
+  * Segmentation fault when joining the domain; (bso#14923);
+  * Support for ROLE_IPA_DC is incomplete; (bso#14903);
+  * rpcclient cannot connect to ncacn_ip_tcp services anymore;
+    (bso#14767);
+  * winexe crashes since 4.15.0 after popt parsing; (bso#14893);
+  * net ads status -P broken in a clustered environment; (bso#14908);
+  * Memory leak if ioctl(FSCTL_VALIDATE_NEGOTIATE_INFO) fails before
+    smbd_smb2_ioctl_send; (bso#14788);
+  * winbindd doesn't start when "allow trusted domains" is off;
+    (bso#14899);
+  * smbclient login without password using '-N' fails with
+    NT_STATUS_INVALID_PARAMETER on Samba AD DC; (bso#14883);
+  * A schannel client incorrectly detects a downgrade connecting to
+    an AES only server; (bso#14912);
+  * Possible null pointer dereference in winbind; (bso#14921);
+  * Fix -k legacy option for client tools like smbclient, rpcclient,
+    net, etc.; (bso#14846);
+  * Add Debian 11 CI bootstrap support; (bso#14872);
+  * Crash in recycle_unlink_internal(); (bso#14888);
+
+-------------------------------------------------------------------
+Thu Nov 18 17:18:40 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix dependency problem upgrading from libndr0 to libndr2 and
+  from libsamba-credentials0 to libsamba-credentials1;
+  (bsc#1192684);
+
+-------------------------------------------------------------------
 Wed Nov 10 10:26:01 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix regression introduced by CVE-2020-25717 patches, winbindd

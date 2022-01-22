@@ -1,7 +1,7 @@
 #
 # spec file for package samba
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,24 @@
 #
 
 
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+# If building for 12 SP5 we have to manually define the macros for python3.6,
+# the python-rpm-macros package provides the macros for python3.4
+%define cpython3_soabi   %(python3.6 -c "import sysconfig; print(sysconfig.get_config_var('SOABI'))")
+%define py3_soflags      %{cpython3_soabi}
+%define py3_soflags_dash %(echo %{py3_soflags} | sed "s/_/-/g")
+%define py3_incdir       %(python3.6 -c "import sysconfig as s; print(s.get_path('include'))")
+%define python3_sitearch %{_libdir}/python3.6/site-packages
+%else
 %{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
 %{!?py3_soflags_dash:   %global py3_soflags_dash %(echo %{py3_soflags} | sed "s/_/-/g")}
-
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%{!?_fillupdir:%global _fillupdir /var/adm/fillup-templates}
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
+%{!?_pam_moduledir:%global _pam_moduledir /%{_lib}/security}
+%{!?_pam_confdir:%global _pam_confdir %{_sysconfdir}/pam.d}
+%{!?_pam_secconfdir:%global _pam_secconfdir %{_sysconfdir}/security}
 
 # mscat only builds with libgnutls >= 3.5.6 and libtasn1 >= 3.8 both
 # of which are unavailable prior to SLE15sp1 and Leap15.1. Excluding
@@ -70,9 +79,15 @@
 #  No DC
 #           Heimdal      0         0              0
 #---------------------------------------------------------
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+%define with_mitkrb5 1
+%define with_mit_dc 0
+%define with_dc 0
+%else
 %{!?with_mitkrb5: %define with_mitkrb5 1}
 %{!?with_mit_dc: %define with_mit_dc 1}
 %{!?with_dc: %define with_dc 1}
+%endif
 
 Name:           samba
 BuildRequires:  autoconf
@@ -107,10 +122,16 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  popt-devel
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+BuildRequires:  python36-devel
+BuildRequires:  python36-xml
+%else
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-devel
 BuildRequires:  python3-dnspython
 BuildRequires:  python3-xml
+%endif
 BuildRequires:  readline-devel
 %if 0%{?suse_version} >= 1330
 BuildRequires:  rpcgen
@@ -148,22 +169,25 @@ BuildRequires:  libpcp-devel
 BuildRequires:  libcephfs-devel
 BuildRequires:  librados-devel
 %endif
+BuildRequires:  libgnutls-devel >= 3.4.7
 %if %{with_dc}
 BuildRequires:  gpgme-devel
-BuildRequires:  libgnutls-devel >= 3.4.7
 BuildRequires:  libjansson-devel
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+BuildRequires:  python36-gpgme
+%else
 BuildRequires:  python3-gpgme
+%endif
 %if %{with_mit_dc}
 BuildRequires:  krb5-devel >= 1.15.1
 BuildRequires:  krb5-server >= 1.15.1
 %endif
 %else
 BuildRequires:  krb5-devel
-BuildRequires:  libgnutls-devel >= 3.2.0
 %endif
 %if ! %{with_mitkrb5}
-BuildRequires:  flex
 BuildRequires:  bison
+BuildRequires:  flex
 %endif
 %if %{with_mscat}
 BuildRequires:  libgnutls-devel >= 3.5.6
@@ -176,15 +200,12 @@ BuildRequires:  liburing-devel
 %endif
 %endif
 
-%define libsmbclient_name libsmbclient0
-%define libnetapi_name libnetapi0
-%define libwbclient_name libwbclient0
 %if 0%{?suse_version} > 1140
 %define	build_make_smp_mflags %{?_smp_mflags}
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.15.2+git.193.a4d6307f1fd
+Version:        4.15.3+git.219.40cc1cd8591
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -201,7 +222,9 @@ Requires(pre):  /usr/bin/getent
 Requires(pre):  /usr/sbin/groupadd
 Requires:       /usr/bin/grep
 Requires:       coreutils
+%if 0%{?sle_version} > 120500
 Requires:       system-user-nobody
+%endif
 %if 0%{?suse_version} > 1220
 Requires:       %{fillup_prereq}
 %endif
@@ -268,7 +291,7 @@ Requires:       /sbin/chkconfig
 %endif
 Requires(post): /sbin/ldconfig
 Requires(postun):/sbin/ldconfig
-Recommends:       cifs-utils
+Recommends:     cifs-utils
 Requires:       coreutils
 
 %description client
@@ -287,13 +310,61 @@ Samba as part of SUSE Linux Enterprise or openSUSE products, links to
 binary packages of the most current Samba version, and a bug reporting
 how to.
 
-%package core-devel
+%package devel
 Summary:        Development files shared by Samba subpackages
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Conflicts:      samba-devel
+Requires:       samba-client-libs
+Requires:       samba-libs
+Requires:       samba-winbind-libs
+%if %{with_dc}
+Requires:       samba-ad-dc-libs
+%if %{with_mit_dc}
+Requires:       pkgconfig(krb5)
+%endif
+%endif
+Provides:       samba-core-devel = %{version}
+Obsoletes:      samba-core-devel < %{version}
+Provides:       libwbclient0-devel = %{version}
+Obsoletes:      libwbclient0-devel < %{version}
+Provides:       libdcerpc-samr-devel = %{version}
+Obsoletes:      libdcerpc-samr-devel < %{version}
+Provides:       libdcerpc-devel = %{version}
+Obsoletes:      libdcerpc-devel < %{version}
+Provides:       libndr-krb5pac-devel = %{version}
+Obsoletes:      libndr-krb5pac-devel < %{version}
+Provides:       libndr-nbt-devel = %{version}
+Obsoletes:      libndr-nbt-devel < %{version}
+Provides:       libndr-standard-devel = %{version}
+Obsoletes:      libndr-standard-devel < %{version}
+Provides:       libndr-devel = %{version}
+Obsoletes:      libndr-devel < %{version}
+Provides:       libsamba-credentials-devel = %{version}
+Obsoletes:      libsamba-credentials-devel < %{version}
+Provides:       libsamba-errors-devel = %{version}
+Obsoletes:      libsamba-errors-devel < %{version}
+Provides:       libsamba-hostconfig-devel = %{version}
+Obsoletes:      libsamba-hostconfig-devel < %{version}
+Provides:       libsamba-passdb-devel = %{version}
+Obsoletes:      libsamba-passdb-devel < %{version}
+Provides:       libsamba-util-devel = %{version}
+Obsoletes:      libsamba-util-devel < %{version}
+Provides:       libsamdb-devel = %{version}
+Obsoletes:      libsamdb-devel < %{version}
+Provides:       libsmbconf-devel = %{version}
+Obsoletes:      libsmbconf-devel < %{version}
+Provides:       libsmbldap-devel = %{version}
+Obsoletes:      libsmbldap-devel < %{version}
+Provides:       libtevent-util-devel = %{version}
+Obsoletes:      libtevent-util-devel < %{version}
+Provides:       libsmbclient-devel = %{version}
+Obsoletes:      libsmbclient-devel < %{version}
+Provides:       libnetapi-devel = %{version}
+Obsoletes:      libnetapi-devel < %{version}
+Provides:       libwbclient-devel = %{version}
+Obsoletes:      libwbclient-devel < %{version}
 
-%description core-devel
+%description devel
 This package contains the libraries and header files needed to
 develop programs which make use of Samba.
 
@@ -313,12 +384,63 @@ BuildArch:      noarch
 This package contains all the Samba documentation as it is not part of
 the man pages.
 
+%package client-libs
+Summary:        Samba client libraries
+License:        GPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+Provides:       libsmbclient0 = %{version}
+Obsoletes:      libsmbclient0 < %{version}
+Provides:       libndr2 = %{version}
+Obsoletes:      libndr0 < %{version}
+Obsoletes:      libndr1 < %{version}
+Obsoletes:      libndr2 < %{version}
+Provides:       libsmbldap2 = %{version}
+Obsoletes:      libsmbldap0 < %{version}
+Obsoletes:      libsmbldap2 < %{version}
+Provides:       libsamba-credentials1 = %{version}
+Obsoletes:      libsamba-credentials0 < %{version}
+Obsoletes:      libsamba-credentials1 < %{version}
+Provides:       libdcerpc-binding0 = %{version}
+Obsoletes:      libdcerpc-binding0 < %{version}
+Provides:       libndr-krb5pac0 = %{version}
+Obsoletes:      libndr-krb5pac0 < %{version}
+Provides:       libndr-nbt0 = %{version}
+Obsoletes:      libndr-nbt0 < %{version}
+Provides:       libndr-standard0 = %{version}
+Obsoletes:      libndr-standard0 < %{version}
+Provides:       libsamba-util0 = %{version}
+Obsoletes:      libsamba-util0 < %{version}
+Provides:       libsamba-errors0 = %{version}
+Obsoletes:      libsamba-errors0 < %{version}
+Provides:       libsamba-hostconfig0 = %{version}
+Obsoletes:      libsamba-hostconfig0 < %{version}
+Provides:       libtevent-util0 = %{version}
+Obsoletes:      libtevent-util0 < %{version}
+Provides:       libnetapi0 = %{version}
+Obsoletes:      libnetapi0 < %{version}
+Provides:       libsamba-passdb0 = %{version}
+Obsoletes:      libsamba-passdb0 < %{version}
+Provides:       libsamdb0 = %{version}
+Obsoletes:      libsamdb0 < %{version}
+Provides:       libwbclient0 = %{version}
+Obsoletes:      libwbclient0 < %{version}
+Provides:       libsmbconf0 = %{version}
+Obsoletes:      libsmbconf0 < %{version}
+Provides:       libdcerpc0 = %{version}
+Obsoletes:      libdcerpc0 < %{version}
+
+%description client-libs
+The samba-libs package contains the libraries needed by samba client
+programs.
+
 %package libs
 Summary:        Samba libraries
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       krb5
+Requires:       samba-client-libs = %{version}
 Recommends:     samba-libs-python3 = %{version}
+Provides:       libdcerpc-samr0 = %{version}
+Obsoletes:      libdcerpc-samr0 < %{version}
 
 %description libs
 The samba-libs package contains the libraries needed by programs that
@@ -397,8 +519,7 @@ Requires:       %{?insserv_prereq}
 %endif
 Requires(pre):  /usr/sbin/groupadd
 Requires:       coreutils
-Requires:       libtevent-util0 >= %{version}
-Requires:       samba-client >= %{version}
+Requires:       samba-winbind-libs = %{version}
 Recommends:     samba-gpupdate = %{version}
 
 Requires(post): /sbin/ldconfig
@@ -406,6 +527,18 @@ Requires(postun):/sbin/ldconfig
 
 %description winbind
 This is the winbind-daemon and the wbinfo-tool.
+
+%package winbind-libs
+Summary:        Winbind Daemon libraries
+License:        GPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       samba-client-libs = %{version}
+
+Requires(post): /sbin/ldconfig
+Requires(postun):/sbin/ldconfig
+
+%description winbind-libs
+This package contains the libraries required by the Winbind daemon.
 
 %package -n ctdb
 Summary:        Clustered TDB
@@ -441,229 +574,6 @@ The CTDB Performance Co-Pilot (PCP) monitoring agent allows remote PCP
 clients to view and capture detailed real-time performance metrics for
 one or more cluster nodes.
 
-%package -n libdcerpc-binding0
-Summary:        Some samba library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libdcerpc-binding0
-This subpackage contains utility functions to handle DCE/RPC binding
-strings.
-
-%package -n libdcerpc-samr0
-Summary:        Security Account Manager (SAM) Remote Protocol library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libdcerpc-samr0
-This subpackage contains NDR marshallers for the SAMR protocol.
-
-%package -n libdcerpc-samr-devel
-Summary:        Development files for the SAMR protocol library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libdcerpc-samr0 = %{version}
-
-%description -n libdcerpc-samr-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libdcerpc-samr.
-
-%package -n libdcerpc0
-Summary:        Distributed Computing Environment Remote Procedure Calls library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libdcerpc0
-DCE/RPC, short for "Distributed Computing Environment / Remote
-Procedure Calls", is the remote procedure call system developed for
-the Distributed Computing Environment (DCE). This system allows
-programmers to write distributed software as if it were all working
-on the same computer, without having to worry about the underlying
-network code.
-
-%package -n libdcerpc-devel
-Summary:        Development files for the DCE/RPC library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libdcerpc-binding0 = %{version}
-Requires:       libdcerpc0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libdcerpc-devel
-DCE/RPC, short for "Distributed Computing Environment / Remote
-Procedure Calls", is the remote procedure call system developed for
-the Distributed Computing Environment (DCE). This system allows
-programmers to write distributed software as if it were all working
-on the same computer, without having to worry about the underlying
-network code.
-
-This subpackage contains libraries and header files for developing
-applications that want to make use of libdcerpc.
-
-%package -n libndr-krb5pac0
-Summary:        NDR marshallers for the KRB5 PAC formats
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libndr-krb5pac0
-This subpackage contains NDR marshallers for the Kerberos Privilege
-Attribute Certificate Data Structure (PAC).
-
-%package -n libndr-krb5pac-devel
-Summary:        Development files for the ndr-krb5pac library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libndr-krb5pac0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libndr-krb5pac-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libndr-krb5pac.
-
-%package -n libndr-nbt0
-Summary:        NDR marshallers for NBT formats
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libndr-nbt0
-This subpackage contains NDR marshallers for the NetBIOS protocol.
-
-%package -n libndr-nbt-devel
-Summary:        Development files for the ndr-nbt library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libndr-nbt0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libndr-nbt-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libndr-nbt.
-
-%package -n libndr-standard0
-Summary:        NDR marshallers for the standard set of DCE/RPC interfaces
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libndr-standard0
-This subpackage contains NDR encoders/decoders for the set of standard
-DCE/RPC interfaces found on Windows and Samba servers.
-
-%package -n libndr-standard-devel
-Summary:        Development files for the libndr-standard library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libndr-standard0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libndr-standard-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libndr-standard.
-
-%package -n libndr2
-Summary:        Network Data Representation library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-Provides:       libndr1 = %{version}
-Obsoletes:      libndr1 < %{version}
-
-%description -n libndr2
-Network Data Representation (NDR) is an implementation of the
-presentation layer in the OSI model.
-
-%package -n libndr-devel
-Summary:        Development files for the Network Data Representation library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libndr2 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libndr-devel
-Network Data Representation (NDR) is an implementation of the
-presentation layer in the OSI model.
-
-This subpackage contains libraries and header files for developing
-applications that want to make use of libndr.
-
-%package -n libsamba-credentials1
-Summary:        Samba credential management library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-Obsoletes:      libsamba-credentials0 < %{version}
-
-%description -n libsamba-credentials1
-This subpackage contains libraries for credentials management.
-
-%package -n libsamba-credentials-devel
-Summary:        Development files for the Samba credential management library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamba-credentials1 = %{version}
-
-%description -n libsamba-credentials-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-credentials.
-
-%package -n libsamba-errors0
-Summary:        Samba errors handling library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsamba-errors0
-This subpackage contains libraries to handle and translate NT error codes.
-
-%package -n libsamba-errors-devel
-Summary:        Development files for the Samba errors handling library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamba-errors0 = %{version}
-
-%description -n libsamba-errors-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-errors.
-
-%package -n libsamba-hostconfig0
-Summary:        Host-wide Samba configuration library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsamba-hostconfig0
-This subpackage contains libraries for accessing the samba host-specific
-configuration files.
-
-%package -n libsamba-hostconfig-devel
-Summary:        Development files for the host-wide Samba configuration library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamba-hostconfig0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libsamba-hostconfig-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-hostconfig.
-
-%package -n libsamba-passdb0
-Summary:        Samba3 password database library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-Obsoletes:      libpdb0 < %{version}
-
-%description -n libsamba-passdb0
-This subpackage contains libraries to interface the password database.
-
-%package -n libsamba-passdb-devel
-Summary:        Development files for the Samba3 password database library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Provides:       libpdb-devel = %{version}
-Obsoletes:      libpdb-devel < %{version}
-Requires:       libndr-standard-devel = %{version}
-Requires:       libsamba-passdb0 = %{version}
-Requires:       libtevent-devel
-
-%description -n libsamba-passdb-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-passdb.
-
 %package -n libsamba-policy0-python3
 Summary:        Active Directory Group Policy library
 License:        GPL-3.0-or-later
@@ -692,176 +602,6 @@ Requires:       libsamba-policy0-python3 = %{version}
 This subpackage contains libraries and header files for developing
 applications that want to make use of libsamba-policy.
 
-%package -n libsamba-util0
-Summary:        Samba utility function library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsamba-util0
-This subpackage contains generic data structures and functions used
-within Samba.
-
-%package -n libsamba-util-devel
-Summary:        Development files for the Samba utility function library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamba-util0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libsamba-util-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-util.
-
-%package -n libsamdb0
-Summary:        Samba's SAM database library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsamdb0
-This subpackage contains libraries for accessing the SAM database.
-
-%package -n libsamdb-devel
-Summary:        Development files for Samba's SAM database library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamdb0 = %{version}
-
-%description -n libsamdb-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamdb.
-
-%package -n libsmbconf0
-Summary:        Samba3 configuration library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsmbconf0
-libsmbconf is a library to read or, based on the backend, modify the
-Samba configuration.
-
-%package -n libsmbconf-devel
-Summary:        Development files for the Samba3 configuration library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsmbconf0 = %{version}
-
-%description -n libsmbconf-devel
-libsmbconf is a library to read or, based on the backend, modify the
-Samba configuration.
-
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsmbconf.
-
-%package -n libsmbldap2
-Summary:        Samba LDAP protocol helper function library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsmbldap2
-libsmbldap contains LDAP protocol helper functions for Samba.
-
-%package -n libsmbldap-devel
-Summary:        Development files for the smbldap library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsmbldap2 = %{version}
-Requires:       libtalloc-devel
-Requires:       libtevent-devel
-Requires:       openldap2-devel
-
-%description -n libsmbldap-devel
-libsmbldap contains LDAP protocol helper functions for Samba.
-
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsmbldap.
-
-%package -n libtevent-util0
-Summary:        Samba tevent <-> system status code conversion utility library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libtevent-util0
-The libtevent-util library contains functions to convert tevent error
-codes to platform-specific (errno, NTSTATUS, WERROR) ones.
-
-%package -n libtevent-util-devel
-Summary:        Development files for the Samba tevent utility library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libtevent-devel
-Requires:       libtevent-util0 = %{version}
-Requires:       samba-core-devel = %{version}
-
-%description -n libtevent-util-devel
-The libtevent-util library contains functions to convert tevent error
-codes to platform-specific (errno, NTSTATUS, WERROR) ones.
-
-This subpackage contains libraries and header files for developing
-applications that want to make use of libtevent-util.
-
-%package -n %{libsmbclient_name}
-Obsoletes:      libsmbclient < %{version}
-Summary:        Samba Client Library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n %{libsmbclient_name}
-This package includes the libsmbclient library.
-
-libsmbclient is provided by the libsmbclient0 package.
-
-%package -n libsmbclient-devel
-Summary:        Libraries and Header Files to Develop Programs with smbclient Support
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-BuildRequires:  %{pkgconfig_req}
-Requires:       %{libsmbclient_name} = %{version}
-%if %{with_mit_dc}
-Requires:       krb5-devel
-%endif
-
-%description -n libsmbclient-devel
-This package contains the static libraries and header files needed to
-develop programs which make use of the smbclient programming interface.
-
-%package -n %{libnetapi_name}
-Summary:        Samba netapi Library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n %{libnetapi_name}
-This package includes the netapi library.
-
-%package -n libnetapi-devel
-Summary:        Libraries and Header Files to Develop Programs with netapi Support
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-BuildRequires:  %{pkgconfig_req}
-Requires:       %{libnetapi_name} = %{version}
-
-%description -n libnetapi-devel
-This package contains the static libraries and header files needed to
-develop programs which make use of the netapi programming interface.
-
-%package -n %{libwbclient_name}
-Summary:        Samba libwbclient Library
-License:        LGPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n %{libwbclient_name}
-This package includes the wbclient library.
-
-%package -n libwbclient-devel
-Summary:        Libraries and Header Files to Develop Programs with wbclient Support
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-BuildRequires:  %{pkgconfig_req}
-Requires:       %{libwbclient_name} = %{version}
-
-%description -n libwbclient-devel
-This package contains the static libraries and header files needed to
-develop programs which make use of the wbclient programming interface.
-
 %package ceph
 Summary:        Ceph specific add-ons for Samba
 License:        GPL-3.0-or-later
@@ -873,14 +613,13 @@ The Ceph VFS module for Samba allows shares to be backed by the Ceph
 distributed file system. A Ceph CTDB lock helper binary is included so
 that RADOS locks can be used for CTDB split-brain avoidance.
 
-
 %package -n samba-tool
 Summary:        Main Samba administration tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Samba
 Requires:       samba = %{version}
-Requires:       samba-python3 = %{version}
 Requires:       samba-ldb-ldap = %{version}
+Requires:       samba-python3 = %{version}
 
 %description -n samba-tool
 The package contains samba-tool, the main tool for Samba Administration.
@@ -903,6 +642,17 @@ Obsoletes:      samba-kdc < %{version}
 
 %description ad-dc
 This package contains the Active Directory-compatible Domain Controller
+
+%package ad-dc-libs
+Summary:        Samba Active Directory Domain Controller libraries
+License:        GPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       samba-client-libs = %{version}
+Requires:       samba-libs = %{version}
+
+%description ad-dc-libs
+This package contains the Active Directory-compatible Domain Controller
+libraries.
 
 %package dsdb-modules
 Summary:        Samba LDB modules
@@ -1023,9 +773,14 @@ CONFIGURE_OPTIONS="\
 	--bundled-libraries=NONE,socket_wrapper,cmocka,${bundled_libraries_extra} \
 	--without-fam \
 "
+
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+PYTHON=/usr/bin/python3.6 ./configure ${CONFIGURE_OPTIONS}
+PYTHON=/usr/bin/python3.6 make %{?_smp_mflags}
+%else
 ./configure ${CONFIGURE_OPTIONS}
-make %{build_make_smp_mflags} \
-	all
+make %{?_smp_mflags}
+%endif
 
 pushd docs-xml
 autoconf && ./configure
@@ -1033,7 +788,11 @@ XML_CATALOG_FILES="file:///etc/xml/catalog file://$(pwd)/build/catalog.xml" make
 popd
 
 pushd ctdb
-XML_CATALOG_FILES="file:///etc/xml/catalog file://$(pwd)/build/catalog.xml" make manpages
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+PYTHON=/usr/bin/python3.6 XML_CATALOG_FILES="file:///etc/xml/catalog file://$(pwd)/build/catalog.xml" make %{?_smp_mflags} manpages
+%else
+XML_CATALOG_FILES="file:///etc/xml/catalog file://$(pwd)/build/catalog.xml" make %{?_smp_mflags} manpages
+%endif
 popd
 
 %install
@@ -1073,16 +832,23 @@ install -d -m 0755 -p \
 	%{buildroot}/%{DOCBOOKDIR} \
 	%{buildroot}/%{_datadir}/susehelp/meta/Administration/System
 
-make install \
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+PYTHON=/usr/bin/python3.6 make %{?_smp_mflags} install \
 	DESTDIR=%{buildroot} \
 	CONFIGDIR=%{CONFIGDIR}
+%else
+make %{?_smp_mflags} install \
+	DESTDIR=%{buildroot} \
+	CONFIGDIR=%{CONFIGDIR}
+%endif
 
 # debug symbols are created and installed if the files are excluded only
 %if ! %{with_dc}
 rm \
 	%{buildroot}/%{_mandir}/man8/samba.8* \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8* \
-	%{buildroot}/%{_unitdir}/samba-ad-dc.service
+	%{buildroot}/%{_unitdir}/samba-ad-dc.service \
+	%{buildroot}/%{_libdir}/samba/libdsdb-module-samba4.so
 %endif
 
 # CTDB
@@ -1188,38 +954,39 @@ install -m 0644 config/samba.reg %{buildroot}/%{_sysconfdir}/slp.reg.d/samba.reg
 install -m 0644 config/samba.pamd-common %{buildroot}/%_pam_confdir/samba
 install -m 0644 config/dhcp.conf %{buildroot}/%{_fillupdir}/samba-client-dhcp.conf
 install -m 0644 config/sysconfig.dhcp-samba-client %{buildroot}/%{_fillupdir}/sysconfig.dhcp-samba-client
-for script in samba-winbindd; do
+
+# Network scripts
+%if 0%{?suse_version} <= 1500
+NETWORK_SCRIPTS="samba-winbindd dhcpcd-hook-samba dhcpcd-hook-samba-functions"
+%else
+NETWORK_SCRIPTS="samba-winbindd"
+%endif
+for script in ${NETWORK_SCRIPTS}; do
 	install -m 0755 "tools/${script}" "%{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/${script}"
 done
-%if 0%{?suse_version} < 1221
-	touch %{buildroot}/var/run/%{cifs_init_script}
-%if 0%{?suse_version} < 1121
-	sed -e 's/cifs/smbfs/g' tools/cifs >%{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/%{cifs_init_script}
-	touch --reference=tools/cifs %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/%{cifs_init_script}
-%else
-	install -m 0755 -p tools/cifs %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/%{cifs_init_script}
-%endif
-%endif
+
 # Create ghosts for the symlinks
-for script in 55-samba-winbindd; do
+%if 0%{?suse_version} <= 1500
+NETWORK_LINKS="55-samba-winbindd 21-dhcpcd-hook-samba"
+%else
+NETWORK_LINKS="55-samba-winbindd"
+%endif
+for script in ${NETWORK_LINKS}; do
 	touch %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-{down,up}.d/${script}
 done
-%if 0%{?suse_version} < 1221
-	touch %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-{down,up}.d/21-%{cifs_init_script}
-%endif
-%if 0%{?suse_version} <= 1500
+
 # Install SuSEfirewall2 config files
+%if 0%{?suse_version} <= 1500
 install -m 0644 config/sysconfig.firewall.netbios-server \
 	%{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/netbios-server
 install -m 0644 config/sysconfig.firewall.samba-server \
 	%{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-server
-%if 0%{?suse_version} > 1100
 install -m 0644 config/sysconfig.firewall.samba-client \
 	%{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-client
 %endif
-%endif
+
 # Add logrotate settings for nmbd and smbd only on systems newer than 8.1.
-	LOGROTATE_FILES="samba samba-winbind"
+LOGROTATE_FILES="samba samba-winbind"
 for file in ${LOGROTATE_FILES}; do
 	install -m 0644 logrotate/${file} %{buildroot}/%{_sysconfdir}/logrotate.d/${file}
 	rm -f "%{_builddir}/samba-%{version}/filelist-${file}"
@@ -1445,46 +1212,16 @@ fi
 %{?insserv_cleanup:%{insserv_cleanup}}
 %endif
 
-%post   -n libdcerpc-binding0 -p /sbin/ldconfig
-%postun -n libdcerpc-binding0 -p /sbin/ldconfig
-%post   -n libdcerpc-samr0 -p /sbin/ldconfig
-%postun -n libdcerpc-samr0 -p /sbin/ldconfig
-%post   -n libdcerpc0 -p /sbin/ldconfig
-%postun -n libdcerpc0 -p /sbin/ldconfig
-%post   -n libndr-krb5pac0 -p /sbin/ldconfig
-%postun -n libndr-krb5pac0 -p /sbin/ldconfig
-%post   -n libndr-nbt0 -p /sbin/ldconfig
-%postun -n libndr-nbt0 -p /sbin/ldconfig
-%post   -n libndr-standard0 -p /sbin/ldconfig
-%postun -n libndr-standard0 -p /sbin/ldconfig
-%post   -n libndr2 -p /sbin/ldconfig
-%postun -n libndr2 -p /sbin/ldconfig
-%post -n %{libnetapi_name} -p /sbin/ldconfig
-%postun -n %{libnetapi_name} -p /sbin/ldconfig
-%post   -n libsamba-credentials1 -p /sbin/ldconfig
-%postun -n libsamba-credentials1 -p /sbin/ldconfig
-%post   -n libsamba-errors0 -p /sbin/ldconfig
-%postun -n libsamba-errors0 -p /sbin/ldconfig
-%post   -n libsamba-hostconfig0 -p /sbin/ldconfig
-%postun -n libsamba-hostconfig0 -p /sbin/ldconfig
-%post   -n libsamba-passdb0 -p /sbin/ldconfig
-%postun -n libsamba-passdb0 -p /sbin/ldconfig
 %post   -n libsamba-policy0-python3 -p /sbin/ldconfig
 %postun -n libsamba-policy0-python3 -p /sbin/ldconfig
-%post   -n libsamba-util0 -p /sbin/ldconfig
-%postun -n libsamba-util0 -p /sbin/ldconfig
-%post   -n libsamdb0 -p /sbin/ldconfig
-%postun -n libsamdb0 -p /sbin/ldconfig
-%post   -n libsmbconf0 -p /sbin/ldconfig
-%postun -n libsmbconf0 -p /sbin/ldconfig
-%post   -n libsmbldap2 -p /sbin/ldconfig
-%postun -n libsmbldap2 -p /sbin/ldconfig
-%post   -n libtevent-util0 -p /sbin/ldconfig
-%postun -n libtevent-util0 -p /sbin/ldconfig
-%post -n %{libwbclient_name} -p /sbin/ldconfig
-%postun -n %{libwbclient_name} -p /sbin/ldconfig
+%post client-libs -p /sbin/ldconfig
+%postun client-libs -p /sbin/ldconfig
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
+%post ad-dc-libs -p /sbin/ldconfig
+%postun ad-dc-libs -p /sbin/ldconfig
+%post winbind-libs -p /sbin/ldconfig
+%postun winbind-libs -p /sbin/ldconfig
 %post test -p /sbin/ldconfig
 %postun test -p /sbin/ldconfig
 
@@ -1500,7 +1237,8 @@ fi
 %endif
 
 %post dsdb-modules
-ln -sf %{_libdir}/samba/ldb %{_libdir}/ldb/samba
+rm -f %{_libdir}/ldb/samba
+ln -sf %{_libdir}/samba/ldb %{_libdir}/ldb2/modules/ldb/samba
 /sbin/ldconfig
 
 %postun dsdb-modules -p /sbin/ldconfig
@@ -1611,9 +1349,6 @@ exit 0
 %endif
 exit 0
 
-%post -n %{libsmbclient_name} -p /sbin/ldconfig
-%postun -n %{libsmbclient_name} -p /sbin/ldconfig
-
 %files -f filelist-samba
 %defattr(-,root,root)
 %if 0%{?suse_version} < 1221
@@ -1690,7 +1425,11 @@ exit 0
 %dir %{_sysconfdir}/openldap
 %dir %{_sysconfdir}/openldap/schema
 %attr(0444,root,root) %config %{_sysconfdir}/openldap/schema/samba3.schema
-%if 0%{?suse_version} <= 1500 && 0%{?suse_version} > 1100
+%if 0%{?suse_version} <= 1500
+%ghost %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-down.d/21-dhcpcd-hook-samba
+%ghost %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-up.d/21-dhcpcd-hook-samba
+%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba
+%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/dhcpcd-hook-samba-functions
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/samba-client
 %endif
 %{_bindir}/cifsdd
@@ -1783,15 +1522,27 @@ exit 0
 %{_bindir}/dumpmscat
 %endif
 
-%files core-devel
+%files devel
 %defattr(-,root,root)
 %{_includedir}/samba
 %dir %_includedir/samba-4.0/
 %_includedir/samba-4.0/charset.h
+%_includedir/samba-4.0/rpc_common.h
 %_includedir/samba-4.0/dcesrv_core.h
-%if %{with_dc}
-%_includedir/samba-4.0/dcerpc_server.h
-%endif
+%_includedir/samba-4.0/credentials.h
+%_includedir/samba-4.0/ndr.h
+%_includedir/samba-4.0/smbldap.h
+%_includedir/samba-4.0/smb_ldap.h
+%_includedir/samba-4.0/param.h
+%_includedir/samba-4.0/ldb_wrap.h
+%_includedir/samba-4.0/smbconf.h
+%_includedir/samba-4.0/dcerpc.h
+%_includedir/samba-4.0/wbclient.h
+%_includedir/samba-4.0/lookup_sid.h
+%_includedir/samba-4.0/machine_sid.h
+%_includedir/samba-4.0/passdb.h
+%_includedir/samba-4.0/netapi.h
+%_includedir/samba-4.0/libsmbclient.h
 %dir %_includedir/samba-4.0/core/
 %_includedir/samba-4.0/core/doserr.h
 %_includedir/samba-4.0/core/error.h
@@ -1802,6 +1553,8 @@ exit 0
 %_includedir/samba-4.0/core/werror_gen.h
 %_includedir/samba-4.0/domain_credentials.h
 %dir %_includedir/samba-4.0/gen_ndr/
+%_includedir/samba-4.0/gen_ndr/misc.h
+%_includedir/samba-4.0/gen_ndr/ndr_misc.h
 %_includedir/samba-4.0/gen_ndr/auth.h
 %_includedir/samba-4.0/gen_ndr/dcerpc.h
 %_includedir/samba-4.0/gen_ndr/drsblobs.h
@@ -1812,13 +1565,26 @@ exit 0
 %_includedir/samba-4.0/gen_ndr/ndr_svcctl_c.h
 %_includedir/samba-4.0/gen_ndr/security.h
 %_includedir/samba-4.0/gen_ndr/server_id.h
-%_includedir/samba-4.0/ldb_wrap.h
+%_includedir/samba-4.0/gen_ndr/samr.h
+%_includedir/samba-4.0/gen_ndr/ndr_samr.h
+%_includedir/samba-4.0/gen_ndr/lsa.h
+%_includedir/samba-4.0/gen_ndr/netlogon.h
+%_includedir/samba-4.0/gen_ndr/atsvc.h
+%_includedir/samba-4.0/gen_ndr/ndr_atsvc.h
+%_includedir/samba-4.0/gen_ndr/ndr_svcctl.h
+%_includedir/samba-4.0/gen_ndr/svcctl.h
+%_includedir/samba-4.0/gen_ndr/ndr_samr_c.h
+%_includedir/samba-4.0/gen_ndr/nbt.h
+%_includedir/samba-4.0/gen_ndr/ndr_nbt.h
+%_includedir/samba-4.0/gen_ndr/krb5pac.h
+%_includedir/samba-4.0/gen_ndr/ndr_krb5pac.h
+%_includedir/samba-4.0/ndr/ndr_krb5pac.h
 %dir %_includedir/samba-4.0/ndr/
 %_includedir/samba-4.0/ndr/ndr_dcerpc.h
 %_includedir/samba-4.0/ndr/ndr_drsblobs.h
 %_includedir/samba-4.0/ndr/ndr_drsuapi.h
 %_includedir/samba-4.0/ndr/ndr_svcctl.h
-%_includedir/samba-4.0/rpc_common.h
+%_includedir/samba-4.0/ndr/ndr_nbt.h
 %dir %_includedir/samba-4.0/samba/
 %_includedir/samba-4.0/samba/session.h
 %_includedir/samba-4.0/samba/version.h
@@ -1833,57 +1599,109 @@ exit 0
 %_includedir/samba-4.0/util/idtree_random.h
 %_includedir/samba-4.0/util/tfork.h
 %_includedir/samba-4.0/util_ldb.h
+%_includedir/samba-4.0/util/attr.h
+%_includedir/samba-4.0/util/blocking.h
+%_includedir/samba-4.0/util/data_blob.h
+%_includedir/samba-4.0/util/debug.h
+%_includedir/samba-4.0/util/discard.h
+%_includedir/samba-4.0/util/fault.h
+%_includedir/samba-4.0/util/signal.h
+%_includedir/samba-4.0/util/substitute.h
+%_includedir/samba-4.0/util/time.h
+%_includedir/samba-4.0/util/tevent_ntstatus.h
+%_includedir/samba-4.0/util/tevent_unix.h
+%_includedir/samba-4.0/util/tevent_werror.h
 %{_libdir}/libnss_winbind.so
 %{_libdir}/libnss_wins.so
+%{_libdir}/libsamba-credentials.so
+%{_libdir}/pkgconfig/samba-credentials.pc
+%{_libdir}/libndr.so
+%{_libdir}/pkgconfig/ndr.pc
+%{_libdir}/libsmbldap.so
+%{_libdir}/libsamba-util.so
+%{_libdir}/pkgconfig/samba-util.pc
+%{_libdir}/libsamba-errors.so
+%{_libdir}/libsamba-hostconfig.so
+%{_libdir}/pkgconfig/samba-hostconfig.pc
+%{_libdir}/libtevent-util.so
+%{_libdir}/libndr-standard.so
+%{_libdir}/pkgconfig/ndr_standard.pc
+%{_libdir}/libsmbconf.so
+%{_libdir}/libdcerpc.so
+%{_libdir}/libdcerpc-binding.so
+%{_libdir}/pkgconfig/dcerpc.pc
+%{_libdir}/libdcerpc-server-core.so
+%{_libdir}/libdcerpc-samr.so
+%{_libdir}/pkgconfig/dcerpc_samr.pc
+%{_libdir}/libndr-nbt.so
+%{_libdir}/pkgconfig/ndr_nbt.pc
+%{_libdir}/libsamdb.so
+%{_libdir}/pkgconfig/samdb.pc
+%{_libdir}/libwbclient.so
+%{_libdir}/pkgconfig/wbclient.pc
+%{_libdir}/libndr-krb5pac.so
+%{_libdir}/pkgconfig/ndr_krb5pac.pc
+%{_libdir}/libsamba-passdb.so
+%{_libdir}/libnetapi.so
+%{_libdir}/pkgconfig/netapi.pc
+%{_libdir}/libsmbclient.so
+%{_libdir}/pkgconfig/smbclient.pc
+%{_mandir}/man7/libsmbclient.7.*
+%if %{with_dc}
+%{_includedir}/samba-4.0/dcerpc_server.h
+%{_libdir}/libdcerpc-server.so
+%{_libdir}/pkgconfig/dcerpc_server.pc
+%endif
 
-%files libs
-%defattr(-,root,root)
-%dir %{_libdir}/samba
+%files client-libs
+%{_libdir}/libdcerpc-binding.so.*
+%{_libdir}/libdcerpc-server-core.so.*
+%{_libdir}/libdcerpc.so.*
+%{_libdir}/libndr-krb5pac.so.*
+%{_libdir}/libndr-nbt.so.*
+%{_libdir}/libndr-standard.so.*
+%{_libdir}/libndr.so.*
+%{_libdir}/libnetapi.so.*
+%{_libdir}/libsamba-credentials.so.*
+%{_libdir}/libsamba-errors.so.*
+%{_libdir}/libsamba-hostconfig.so.*
+%{_libdir}/libsamba-passdb.so.*
+%{_libdir}/libsamba-util.so.*
+%{_libdir}/libsamdb.so.*
+%{_libdir}/libsmbclient.so.*
+%{_libdir}/libsmbconf.so.*
+%{_libdir}/libsmbldap.so.*
+%{_libdir}/libwbclient.so.*
 %{_libdir}/samba/libCHARSET3-samba4.so
-%{_libdir}/samba/libLIBWBCLIENT-OLD-samba4.so
 %{_libdir}/samba/libMESSAGING-samba4.so
 %{_libdir}/samba/libMESSAGING-SEND-samba4.so
 %{_libdir}/samba/libaddns-samba4.so
 %{_libdir}/samba/libads-samba4.so
 %{_libdir}/samba/libasn1util-samba4.so
 %{_libdir}/samba/libauth-samba4.so
-%{_libdir}/samba/libauth4-samba4.so
-%{_libdir}/samba/libauth-unix-token-samba4.so
 %{_libdir}/samba/libauthkrb5-samba4.so
-%{_libdir}/samba/libcli-ldap-common-samba4.so
-%{_libdir}/samba/libcli-ldap-samba4.so
-%{_libdir}/samba/libcli-nbt-samba4.so
 %{_libdir}/samba/libcli-cldap-samba4.so
+%{_libdir}/samba/libcli-ldap-samba4.so
+%{_libdir}/samba/libcli-ldap-common-samba4.so
+%{_libdir}/samba/libcli-nbt-samba4.so
 %{_libdir}/samba/libcli-smb-common-samba4.so
 %{_libdir}/samba/libcli-spoolss-samba4.so
 %{_libdir}/samba/libcliauth-samba4.so
-%{_libdir}/samba/libcluster-samba4.so
+%{_libdir}/samba/libclidns-samba4.so
 %{_libdir}/samba/libcmdline-contexts-samba4.so
 %{_libdir}/samba/libcmdline-samba4.so
+%{_libdir}/samba/libcommon-auth-samba4.so
 %{_libdir}/samba/libdbwrap-samba4.so
 %{_libdir}/samba/libdcerpc-pkt-auth-samba4.so
 %{_libdir}/samba/libdcerpc-samba-samba4.so
 %{_libdir}/samba/libdcerpc-samba4.so
-%{_libdir}/libdcerpc-server-core.so.0
-%{_libdir}/libdcerpc-server-core.so.0.0.1
-%if %{with_dc}
-%{_libdir}/samba/libdb-glue-samba4.so
-%{_libdir}/samba/libdfs-server-ad-samba4.so
-%endif
-%{_libdir}/samba/libdnsserver-common-samba4.so
-%{_libdir}/samba/libdsdb-module-samba4.so
-%if %{with_dc}
-%{_libdir}/samba/libdsdb-garbage-collect-tombstones-samba4.so
-%endif
 %{_libdir}/samba/libevents-samba4.so
 %{_libdir}/samba/libflag-mapping-samba4.so
 %{_libdir}/samba/libgenrand-samba4.so
 %{_libdir}/samba/libgensec-samba4.so
-%{_libdir}/samba/libgpext-samba4.so
 %{_libdir}/samba/libgpo-samba4.so
 %{_libdir}/samba/libgse-samba4.so
 %{_libdir}/samba/libhttp-samba4.so
-%{_libdir}/samba/libidmap-samba4.so
 %{_libdir}/samba/libinterfaces-samba4.so
 %{_libdir}/samba/libiov-buf-samba4.so
 %{_libdir}/samba/libkrb5samba-samba4.so
@@ -1891,64 +1709,73 @@ exit 0
 %{_libdir}/samba/liblibcli-lsa3-samba4.so
 %{_libdir}/samba/liblibcli-netlogon3-samba4.so
 %{_libdir}/samba/liblibsmb-samba4.so
+%{_libdir}/libtevent-util.so.*
 %{_libdir}/samba/libmessages-dgm-samba4.so
 %{_libdir}/samba/libmessages-util-samba4.so
 %{_libdir}/samba/libmsghdr-samba4.so
 %{_libdir}/samba/libmsrpc3-samba4.so
-%{_libdir}/samba/libndr-samba-samba4.so
 %{_libdir}/samba/libndr-samba4.so
+%{_libdir}/samba/libndr-samba-samba4.so
 %{_libdir}/samba/libnet-keytab-samba4.so
 %{_libdir}/samba/libnetif-samba4.so
 %{_libdir}/samba/libnpa-tstream-samba4.so
-%{_libdir}/samba/libnss-info-samba4.so
-%{_libdir}/samba/libposix-eadb-samba4.so
-%{_libdir}/samba/libprinter-driver-samba4.so
 %{_libdir}/samba/libprinting-migrate-samba4.so
 %{_libdir}/samba/libregistry-samba4.so
 %{_libdir}/samba/libreplace-samba4.so
 %{_libdir}/samba/libsamba-cluster-support-samba4.so
 %{_libdir}/samba/libsamba-debug-samba4.so
-%{_libdir}/samba/libsamba-modules-samba4.so
 %{_libdir}/samba/libsamba-security-samba4.so
 %{_libdir}/samba/libsamba-sockets-samba4.so
 %{_libdir}/samba/libsamba3-util-samba4.so
+%{_libdir}/samba/libsamba-modules-samba4.so
 %{_libdir}/samba/libsamdb-common-samba4.so
-%{_libdir}/samba/libsecrets3-samba4.so
-%{_libdir}/samba/libserver-id-db-samba4.so
-%{_libdir}/samba/libserver-role-samba4.so
-%{_libdir}/samba/libshares-samba4.so
 %{_libdir}/samba/libsmb-transport-samba4.so
 %{_libdir}/samba/libsmbclient-raw-samba4.so
 %{_libdir}/samba/libsmbd-base-samba4.so
 %{_libdir}/samba/libsmbd-shim-samba4.so
 %{_libdir}/samba/libsmbldaphelper-samba4.so
-%{_libdir}/samba/libsmbpasswdparser-samba4.so
+%{_libdir}/samba/libsecrets3-samba4.so
+%{_libdir}/samba/libserver-id-db-samba4.so
+%{_libdir}/samba/libserver-role-samba4.so
 %{_libdir}/samba/libsocket-blocking-samba4.so
 %{_libdir}/samba/libsys-rw-samba4.so
-%{_libdir}/samba/libtalloc-report-samba4.so
 %{_libdir}/samba/libtalloc-report-printf-samba4.so
 %{_libdir}/samba/libtdb-wrap-samba4.so
 %{_libdir}/samba/libtime-basic-samba4.so
-%{_libdir}/samba/libtorture-samba4.so
 %{_libdir}/samba/libtrusts-util-samba4.so
 %{_libdir}/samba/libutil-reg-samba4.so
 %{_libdir}/samba/libutil-setid-samba4.so
 %{_libdir}/samba/libutil-tdb-samba4.so
 %{_libdir}/samba/libwinbind-client-samba4.so
+%if %{with_mscat}
+%{_libdir}/samba/libmscat-samba4.so
+%endif
+%if %{with_dc}
+%{_libdir}/samba/libdfs-server-ad-samba4.so
+%endif
+
+%files libs
+%defattr(-,root,root)
+%{_libdir}/libdcerpc-samr.so.*
+%dir %{_libdir}/samba
+%{_libdir}/samba/libLIBWBCLIENT-OLD-samba4.so
+%{_libdir}/samba/libauth4-samba4.so
+%{_libdir}/samba/libauth-unix-token-samba4.so
+%{_libdir}/samba/libcluster-samba4.so
+%{_libdir}/samba/libdnsserver-common-samba4.so
+%{_libdir}/samba/libgpext-samba4.so
+%{_libdir}/samba/libposix-eadb-samba4.so
+%{_libdir}/samba/libprinter-driver-samba4.so
+%{_libdir}/samba/libshares-samba4.so
+%{_libdir}/samba/libsmbpasswdparser-samba4.so
+%{_libdir}/samba/libtalloc-report-samba4.so
+%{_libdir}/samba/libtorture-samba4.so
 %{_libdir}/samba/libxattr-tdb-samba4.so
 %{_libdir}/samba/libcmocka-samba4.so
-%{_libdir}/samba/libcommon-auth-samba4.so
-%if %{with_dc}
-%{_libdir}/samba/libscavenge-dns-records-samba4.so
-%endif
 %dir %{_libdir}/samba/pdb
 %{_libdir}/samba/pdb/ldapsam.so
 %{_libdir}/samba/pdb/smbpasswd.so
 %{_libdir}/samba/pdb/tdbsam.so
-%{_libdir}/samba/libclidns-samba4.so
-%if %{with_mscat}
-%{_libdir}/samba/libmscat-samba4.so
-%endif
 %if ! %{with_mitkrb5}
 %{_libdir}/samba/libasn1-samba4.so.*
 %{_libdir}/samba/libcom_err-samba4.so.*
@@ -1996,6 +1823,47 @@ exit 0
 %{_mandir}/man1/vfstest.1.*
 %{_mandir}/man1/mdsearch.1.*
 
+%files winbind-libs
+%defattr(-,root,root)
+%{_pam_moduledir}/pam_winbind.so
+%{_libdir}/libnss_winbind.so.*
+%{_libdir}/samba/libidmap-samba4.so
+%{_libdir}/samba/libnss-info-samba4.so
+%dir %{_libdir}/samba/idmap
+%{_libdir}/samba/idmap/ad.so
+%{_libdir}/samba/idmap/autorid.so
+%{_libdir}/samba/idmap/hash.so
+%{_libdir}/samba/idmap/ldap.so
+%{_libdir}/samba/idmap/rfc2307.so
+%{_libdir}/samba/idmap/rid.so
+%{_libdir}/samba/idmap/script.so
+%{_libdir}/samba/idmap/tdb2.so
+%dir %{_libdir}/samba/nss_info
+%{_libdir}/samba/nss_info/rfc2307.so
+%{_libdir}/samba/nss_info/hash.so
+%{_libdir}/samba/nss_info/sfu.so
+%{_libdir}/samba/nss_info/sfu20.so
+%dir %{_libdir}/samba/krb5
+%{_libdir}/samba/krb5/async_dns_krb5_locator.so
+%{_libdir}/samba/krb5/winbind_krb5_locator.so
+%{_mandir}/man8/idmap_ad.8.*
+%{_mandir}/man8/idmap_autorid.8.*
+%{_mandir}/man8/idmap_hash.8.*
+%{_mandir}/man8/idmap_ldap.8.*
+%{_mandir}/man8/idmap_nss.8.*
+%{_mandir}/man8/idmap_rfc2307.8.*
+%{_mandir}/man8/idmap_rid.8.*
+%{_mandir}/man8/idmap_script.8.*
+%{_mandir}/man8/idmap_tdb.8.*
+%{_mandir}/man8/idmap_tdb2.8.*
+%{_mandir}/man5/pam_winbind.conf.5.*
+%{_mandir}/man8/pam_winbind.8.*
+%{_mandir}/man8/winbind_krb5_locator.8.*
+%if %{with_mitkrb5}
+%{_libdir}/samba/krb5/winbind_krb5_localauth.so
+%{_mandir}/man8/winbind_krb5_localauth.8.*
+%endif
+
 %files winbind -f filelist-samba-winbind
 %defattr(-,root,root)
 %config(noreplace) %_pam_secconfdir/pam_winbind.conf
@@ -2011,32 +1879,8 @@ exit 0
 %{_bindir}/wbinfo
 %{_sbindir}/rcwinbind
 %{_sbindir}/winbindd
-%_pam_moduledir/pam_winbind.so
-%{_libdir}/libnss_winbind.so.*
-%{_libdir}/samba/idmap
-%{_libdir}/samba/nss_info
-%dir %{_libdir}/samba/krb5
-%{_libdir}/samba/krb5/async_dns_krb5_locator.so
-%{_libdir}/samba/krb5/winbind_krb5_locator.so
-%if %{with_mitkrb5}
-%{_libdir}/samba/krb5/winbind_krb5_localauth.so
-%{_mandir}/man8/winbind_krb5_localauth.8.*
-%endif
 %{_mandir}/man1/ntlm_auth.1.*
 %{_mandir}/man1/wbinfo.1.*
-%{_mandir}/man8/winbind_krb5_locator.8.*
-%{_mandir}/man5/pam_winbind.conf.5.*
-%{_mandir}/man8/idmap_ad.8.*
-%{_mandir}/man8/idmap_autorid.8.*
-%{_mandir}/man8/idmap_hash.8.*
-%{_mandir}/man8/idmap_ldap.8.*
-%{_mandir}/man8/idmap_nss.8.*
-%{_mandir}/man8/idmap_rfc2307.8.*
-%{_mandir}/man8/idmap_rid.8.*
-%{_mandir}/man8/idmap_script.8.*
-%{_mandir}/man8/idmap_tdb.8.*
-%{_mandir}/man8/idmap_tdb2.8.*
-%{_mandir}/man8/pam_winbind.8.*
 %{_mandir}/man8/winbindd.8.*
 %if 0%{?suse_version} < 1100
 %dir %{_datadir}/omc
@@ -2153,155 +1997,6 @@ exit 0
 %{_localstatedir}/lib/pcp/pmdas/ctdb/pmns
 %endif
 
-%files -n libdcerpc-binding0
-%defattr(-,root,root)
-%_libdir/libdcerpc-binding.so.0*
-
-%files -n libdcerpc-samr0
-%defattr(-,root,root)
-%_libdir/libdcerpc-samr.so.0*
-
-%files -n libdcerpc-samr-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/gen_ndr/
-%_includedir/samba-4.0/gen_ndr/ndr_samr_c.h
-%_libdir/libdcerpc-samr.so
-%_libdir/pkgconfig/dcerpc_samr.pc
-
-%files -n libdcerpc0
-%defattr(-,root,root)
-%_libdir/libdcerpc.so.0*
-
-%files -n libdcerpc-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/dcerpc.h
-%dir %_includedir/samba-4.0/gen_ndr/
-%_libdir/libdcerpc.so
-%_libdir/libdcerpc-binding.so
-%_libdir/pkgconfig/dcerpc.pc
-%_libdir/libdcerpc-server-core.so
-%if %{with_dc}
-%_libdir/libdcerpc-server.so
-%_libdir/pkgconfig/dcerpc_server.pc
-%endif
-
-%files -n libndr-krb5pac0
-%defattr(-,root,root)
-%_libdir/libndr-krb5pac.so.0*
-
-%files -n libndr-krb5pac-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/gen_ndr/
-%_includedir/samba-4.0/gen_ndr/krb5pac.h
-%_includedir/samba-4.0/gen_ndr/ndr_krb5pac.h
-%_includedir/samba-4.0/ndr/ndr_krb5pac.h
-%_libdir/libndr-krb5pac.so
-%_libdir/pkgconfig/ndr_krb5pac.pc
-
-%files -n libndr-nbt0
-%defattr(-,root,root)
-%_libdir/libndr-nbt.so.0*
-
-%files -n libndr-nbt-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/gen_ndr/
-%_includedir/samba-4.0/gen_ndr/nbt.h
-%_includedir/samba-4.0/gen_ndr/ndr_nbt.h
-%dir %_includedir/samba-4.0/ndr/
-%_includedir/samba-4.0/ndr/ndr_nbt.h
-%_libdir/libndr-nbt.so
-%_libdir/pkgconfig/ndr_nbt.pc
-
-%files -n libndr-standard0
-%defattr(-,root,root)
-%_libdir/libndr-standard.so.0*
-
-%files -n libndr-standard-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/gen_ndr/
-%_includedir/samba-4.0/gen_ndr/samr.h
-%_includedir/samba-4.0/gen_ndr/ndr_samr.h
-%_includedir/samba-4.0/gen_ndr/lsa.h
-%_includedir/samba-4.0/gen_ndr/netlogon.h
-%_includedir/samba-4.0/gen_ndr/atsvc.h
-%_includedir/samba-4.0/gen_ndr/ndr_atsvc.h
-%_includedir/samba-4.0/gen_ndr/ndr_svcctl.h
-%_includedir/samba-4.0/gen_ndr/svcctl.h
-%_libdir/libndr-standard.so
-%_libdir/pkgconfig/ndr_standard.pc
-
-%files -n libndr2
-%defattr(-,root,root)
-%_libdir/libndr.so.2*
-
-%files -n libndr-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/gen_ndr/
-%_includedir/samba-4.0/gen_ndr/misc.h
-%_includedir/samba-4.0/gen_ndr/ndr_misc.h
-%_includedir/samba-4.0/ndr.h
-%_libdir/libndr.so
-%_libdir/pkgconfig/ndr.pc
-
-%files -n %{libnetapi_name}
-%defattr(-,root,root)
-%{_libdir}/libnetapi.so.*
-
-%files -n libnetapi-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%{_includedir}/samba-4.0/netapi.h
-%{_libdir}/libnetapi.so
-%{_libdir}/pkgconfig/netapi.pc
-
-%files -n libsamba-credentials1
-%defattr(-,root,root)
-%_libdir/libsamba-credentials.so.1*
-
-%files -n libsamba-credentials-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/credentials.h
-%_libdir/libsamba-credentials.so
-%_libdir/pkgconfig/samba-credentials.pc
-
-%files -n libsamba-errors0
-%defattr(-,root,root)
-%_libdir/libsamba-errors.so.*
-
-%files -n libsamba-errors-devel
-%defattr(-,root,root)
-%_libdir/libsamba-errors.so
-
-%files -n libsamba-hostconfig0
-%defattr(-,root,root)
-%_libdir/libsamba-hostconfig.so.0*
-
-%files -n libsamba-hostconfig-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/param.h
-%_libdir/libsamba-hostconfig.so
-%_libdir/pkgconfig/samba-hostconfig.pc
-
-%files -n libsamba-passdb0
-%defattr(-,root,root)
-%_libdir/libsamba-passdb.so.0*
-
-%files -n libsamba-passdb-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/lookup_sid.h
-%_includedir/samba-4.0/machine_sid.h
-%_includedir/samba-4.0/passdb.h
-%_libdir/libsamba-passdb.so
-
 %files -n libsamba-policy0-python3
 %defattr(-,root,root)
 %_libdir/libsamba-policy.%{py3_soflags_dash}.so.0*
@@ -2315,92 +2010,6 @@ exit 0
 %defattr(-,root,root)
 %_libdir/libsamba-policy.%{py3_soflags_dash}.so
 %_libdir/pkgconfig/samba-policy.%{py3_soflags}.pc
-
-%files -n libsamba-util0
-%defattr(-,root,root)
-%_libdir/libsamba-util.so.0*
-
-%files -n libsamba-util-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/util/
-%_includedir/samba-4.0/util/attr.h
-%_includedir/samba-4.0/util/blocking.h
-%_includedir/samba-4.0/util/data_blob.h
-%_includedir/samba-4.0/util/debug.h
-%_includedir/samba-4.0/util/discard.h
-%_includedir/samba-4.0/util/fault.h
-%_includedir/samba-4.0/util/signal.h
-%_includedir/samba-4.0/util/substitute.h
-%_includedir/samba-4.0/util/time.h
-%_libdir/libsamba-util.so
-%_libdir/pkgconfig/samba-util.pc
-
-%files -n libsamdb0
-%defattr(-,root,root)
-%_libdir/libsamdb.so.0*
-
-%files -n libsamdb-devel
-%defattr(-,root,root)
-%_libdir/libsamdb.so
-%_libdir/pkgconfig/samdb.pc
-
-%files -n %{libsmbclient_name}
-%defattr(-,root,root)
-%{_libdir}/libsmbclient.so.*
-
-%files -n libsmbclient-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%{_includedir}/samba-4.0/libsmbclient.h
-%{_libdir}/libsmbclient.so
-%{_libdir}/pkgconfig/smbclient.pc
-%{_mandir}/man7/libsmbclient.7.*
-
-%files -n libsmbconf0
-%defattr(-,root,root)
-%_libdir/libsmbconf.so.0*
-
-%files -n libsmbconf-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/smbconf.h
-%_libdir/libsmbconf.so
-
-%files -n libsmbldap2
-%defattr(-,root,root)
-%_libdir/libsmbldap.so.2*
-
-%files -n libsmbldap-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/smbldap.h
-%_includedir/samba-4.0/smb_ldap.h
-%_libdir/libsmbldap.so
-
-%files -n libtevent-util0
-%defattr(-,root,root)
-%_libdir/libtevent-util.so.0*
-
-%files -n libtevent-util-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%dir %_includedir/samba-4.0/util/
-%_includedir/samba-4.0/util/tevent_ntstatus.h
-%_includedir/samba-4.0/util/tevent_unix.h
-%_includedir/samba-4.0/util/tevent_werror.h
-%_libdir/libtevent-util.so
-
-%files -n %{libwbclient_name}
-%defattr(-,root,root)
-%{_libdir}/libwbclient.so.*
-
-%files -n libwbclient-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%{_includedir}/samba-4.0/wbclient.h
-%{_libdir}/libwbclient.so
-%{_libdir}/pkgconfig/wbclient.pc
 
 %if 0%{?build_ceph}
 %files ceph
@@ -2428,55 +2037,8 @@ exit 0
 %{_sbindir}/samba_upgradedns
 %{_sbindir}/samba_downgrade_db
 %{_sbindir}/rcsamba-ad-dc
-%if %{with_mit_dc}
-%{_libdir}/krb5/plugins/kdb/samba.so
-%else
-%{_libdir}/samba/libHDB-SAMBA4-samba4.so
-%endif
-%{_libdir}/libdcerpc-server.so.0
-%{_libdir}/libdcerpc-server.so.0.0.1
-%{_libdir}/samba/bind9
-%{_libdir}/samba/bind9/dlz_bind9_10.so
-%{_libdir}/samba/bind9/dlz_bind9_11.so
-%{_libdir}/samba/bind9/dlz_bind9_12.so
-%{_libdir}/samba/bind9/dlz_bind9_14.so
-%{_libdir}/samba/bind9/dlz_bind9_16.so
-%{_libdir}/samba/gensec
-%{_libdir}/samba/gensec/krb5.so
-%{_libdir}/samba/libdlz-bind9-for-torture-samba4.so
-%{_libdir}/samba/libpac-samba4.so
-%{_libdir}/samba/libprocess-model-samba4.so
-%{_libdir}/samba/libservice-samba4.so
-%{_libdir}/samba/process_model
-%{_libdir}/samba/process_model/standard.so
-%{_libdir}/samba/service
-%{_libdir}/samba/service/cldap.so
-%{_libdir}/samba/service/dcerpc.so
-%{_libdir}/samba/service/dns.so
-%{_libdir}/samba/service/dns_update.so
-%{_libdir}/samba/service/drepl.so
-%{_libdir}/samba/service/kcc.so
-%{_libdir}/samba/service/kdc.so
-%{_libdir}/samba/service/ldap.so
-%{_libdir}/samba/service/nbtd.so
-%{_libdir}/samba/service/ntp_signd.so
-%{_libdir}/samba/service/s3fs.so
-%{_libdir}/samba/service/winbindd.so
-%{_libdir}/samba/service/wrepl.so
-%{_datadir}/samba/setup
-%{_datadir}/samba/setup/ad-schema
-%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_Attributes.txt
-%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_Classes.txt
-%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_R2_Attributes.txt
-%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_R2_Classes.txt
-%{_datadir}/samba/setup/ad-schema/licence.txt
+%dir %{_datadir}/samba/setup
 %{_datadir}/samba/setup/aggregate_schema.ldif
-%{_datadir}/samba/setup/display-specifiers
-%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k0.txt
-%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k3.txt
-%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k3R2.txt
-%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8.txt
-%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8R2.txt
 %{_datadir}/samba/setup/dns_update_list
 %{_datadir}/samba/setup/idmap_init.ldif
 %{_datadir}/samba/setup/krb5.conf
@@ -2526,7 +2088,39 @@ exit 0
 %{_datadir}/samba/setup/share.ldif
 %{_datadir}/samba/setup/spn_update_list
 %{_datadir}/samba/setup/ypServ30.ldif
-%{_datadir}/samba/admx
+%{_datadir}/samba/setup/extended-rights.ldif
+%{_datadir}/samba/setup/provision_self_join_modify_schema.ldif
+%dir %{_datadir}/samba/setup/ad-schema
+%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_Attributes.txt
+%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_Classes.txt
+%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_R2_Attributes.txt
+%{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_R2_Classes.txt
+%{_datadir}/samba/setup/ad-schema/AD_DS_Attributes__Windows_Server_2012_R2.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Attributes__Windows_Server_2016.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Classes__Windows_Server_2012_R2.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Classes__Windows_Server_2016.ldf
+%{_datadir}/samba/setup/ad-schema/Attributes_for_AD_DS__Windows_Server_2008_R2.ldf
+%{_datadir}/samba/setup/ad-schema/Attributes_for_AD_DS__Windows_Server_2012.ldf
+%{_datadir}/samba/setup/ad-schema/Classes_for_AD_DS__Windows_Server_2008_R2.ldf
+%{_datadir}/samba/setup/ad-schema/Classes_for_AD_DS__Windows_Server_2012.ldf
+%{_datadir}/samba/setup/ad-schema/licence.txt
+%dir %{_datadir}/samba/setup/adprep
+%{_datadir}/samba/setup/adprep/fix-forest-rev.ldf
+%dir %{_datadir}/samba/setup/adprep/WindowsServerDocs
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Forest-Wide-Updates.md
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Sch49.ldf.diff
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Sch50.ldf.diff
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Sch51.ldf.diff
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Sch57.ldf.diff
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Sch59.ldf.diff
+%{_datadir}/samba/setup/adprep/WindowsServerDocs/Schema-Updates.md
+%dir %{_datadir}/samba/setup/display-specifiers
+%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k0.txt
+%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k3.txt
+%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k3R2.txt
+%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8.txt
+%{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8R2.txt
+%dir %{_datadir}/samba/admx
 %{_datadir}/samba/admx/samba.admx
 %{_datadir}/samba/admx/en-US
 %{_datadir}/samba/admx/en-US/samba.adml
@@ -2540,6 +2134,48 @@ exit 0
 %{_libdir}/samba/ldb/ldbsamba_extensions.so
 
 %if %{with_dc}
+%files ad-dc-libs
+%defattr(-,root,root)
+%{_libdir}/samba/libdb-glue-samba4.so
+%{_libdir}/samba/libdsdb-module-samba4.so
+%{_libdir}/samba/libdsdb-garbage-collect-tombstones-samba4.so
+%{_libdir}/samba/libscavenge-dns-records-samba4.so
+%{_libdir}/samba/libprocess-model-samba4.so
+%{_libdir}/samba/libservice-samba4.so
+%dir %{_libdir}/samba/process_model
+%{_libdir}/samba/process_model/standard.so
+%{_libdir}/samba/process_model/prefork.so
+%dir %{_libdir}/samba/service
+%{_libdir}/samba/service/cldap.so
+%{_libdir}/samba/service/dcerpc.so
+%{_libdir}/samba/service/dns.so
+%{_libdir}/samba/service/dns_update.so
+%{_libdir}/samba/service/drepl.so
+%{_libdir}/samba/service/kcc.so
+%{_libdir}/samba/service/kdc.so
+%{_libdir}/samba/service/ldap.so
+%{_libdir}/samba/service/nbtd.so
+%{_libdir}/samba/service/ntp_signd.so
+%{_libdir}/samba/service/s3fs.so
+%{_libdir}/samba/service/winbindd.so
+%{_libdir}/samba/service/wrepl.so
+%{_libdir}/libdcerpc-server.so.*
+%if %{with_mit_dc}
+%{_libdir}/krb5/plugins/kdb/samba.so
+%else
+%{_libdir}/samba/libHDB-SAMBA4-samba4.so
+%endif
+%dir %{_libdir}/samba/bind9
+%{_libdir}/samba/bind9/dlz_bind9_10.so
+%{_libdir}/samba/bind9/dlz_bind9_11.so
+%{_libdir}/samba/bind9/dlz_bind9_12.so
+%{_libdir}/samba/bind9/dlz_bind9_14.so
+%{_libdir}/samba/bind9/dlz_bind9_16.so
+%dir %{_libdir}/samba/gensec
+%{_libdir}/samba/gensec/krb5.so
+%{_libdir}/samba/libdlz-bind9-for-torture-samba4.so
+%{_libdir}/samba/libpac-samba4.so
+
 %files dsdb-modules
 %defattr(-,root,root)
 %{_libdir}/samba/ldb/acl.so
