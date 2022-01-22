@@ -600,4 +600,16 @@
   It's a backport of upstream commit 3bc66bfa0136e370a8f7b06c3b69a52f5636ef82.</comment>
     <requestid>931955</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6cb106d659128d6c0e9b1531b0eb0cba</srcmd5>
+    <version>15</version>
+    <time>1642835866</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 15
+
+- %sysusers_create_inline was wrongly marked as deprecated
+- %sysusers_create can be useful in certain cases and won't go away until we'll
+  move to file triggers. So don't mark it as deprecated too</comment>
+    <requestid>947356</requestid>
+  </revision>
 </revisionlist>

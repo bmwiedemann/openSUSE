@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 19 08:28:16 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Bump to version 15
+
+-------------------------------------------------------------------
+Tue Jan 18 07:57:14 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- %sysusers_create_inline was wrongly marked as deprecated
+
+- %sysusers_create can be useful in certain cases and won't go away until we'll
+  move to file triggers. So don't mark it as deprecated too
+
+-------------------------------------------------------------------
 Wed Nov 17 12:28:16 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Bump version to 14

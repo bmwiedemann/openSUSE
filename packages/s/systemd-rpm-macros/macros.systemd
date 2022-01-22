@@ -250,15 +250,25 @@ SYSTEMD_INLINE_EOF\
 %fi \
 %{nil}
 
-# Deprecated. Use %sysusers_create_package instead
+# This should be used by package installation scripts which doesn't require
+# users or groups to be present before the files installed by the package are
+# present on disk and when the sysusers conf files are generated during the
+# build of the package hence not easily available before the build of the
+# package.
+#
+# This macro will go away when this will be moved to file triggers.
+#
+# Example:
+#   %post
+#   %sysusers_create %{name}.conf
+#   %files
+#   %{_sysusersdir}/%{name}.conf
+#
 %sysusers_create() \
-%{warn: %%sysusers_create is deprecated, use %%sysusers_create_package instead} \
 [ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers %{?*} || : \
 %{nil}
 
-# Deprecated. Use %sysusers_create_package instead
 %sysusers_create_inline() \
-%{warn: %%sysusers_create_inline is deprecated, use %%sysusers_create_package instead} \
 [ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers - <<SYSTEMD_INLINE_EOF || : \
 %{?*} \
 SYSTEMD_INLINE_EOF\
