@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 21 13:24:08 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.4
+  * added support for the data provider API
+  * fixed a core dump when a SFTPClient disconnection occurs with 
+    open SSH2Channel objects (issue 3943)
+  * implemented support for serializing connection objects (issue 3696)
+  * implemented support for auto-reconnecting lost connections in the 
+    SftpPoller module (issue 1846)
+- Remove cmake-fix-missing-pthread.patch because it is not required any more
+
+-------------------------------------------------------------------
 Thu Jul 29 07:54:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.3.0 for qore release 0.9.15

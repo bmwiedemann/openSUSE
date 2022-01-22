@@ -1,7 +1,7 @@
 #
 # spec file for package qore-ssh2-module
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,31 @@
 
 
 %define qore_version 0.9.15
-%define src_name module-ssh2-release-%{qore_version}
+%define mod_ver 1.4
+%define src_name module-ssh2-ssh2-release-%{version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
+%define module_dir %{_libdir}/qore-modules
+%define user_module_dir /usr/share/qore-modules
 Name:           qore-ssh2-module
-Version:        1.3.0+qore%{qore_version}
+Version:        1.4
 Release:        0
 Summary:        SSH2 module for Qore
 License:        LGPL-2.1-or-later OR MIT
 Group:          Development/Languages/Misc
 URL:            https://www.qore.org/
-Source:         https://github.com/qorelanguage/module-ssh2/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
-# PATCH-FIX-UPSTREAM cmake-fix-missing-pthread.patch -- https://github.com/qorelanguage/module-ssh2/pull/106
-Patch0:         cmake-fix-missing-pthread.patch
+Source:         https://github.com/qorelanguage/module-ssh2/releases/download/ssh2-release-%{version}/%{name}-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+BuildRequires:  libssh2-devel >= 1.1
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qore
 BuildRequires:  qore-devel >= 0.9.0
-BuildRequires:  pkgconfig(libssh2)
-BuildRequires:  pkgconfig(openssl)
+Requires:       /usr/bin/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
 
@@ -57,28 +60,32 @@ SSH2 module for the Qore Programming Language.
 This RPM provides API documentation, test and example programs
 
 %prep
-%setup -q -n %{src_name}
-%patch0 -p1
+%setup -q
+./configure RPM_OPT_FLAGS="$RPM_OPT_FLAGS" --prefix=/usr --disable-debug
 
 %build
-%cmake
+%{__make}
 %make_build docs
 
 %install
-%cmake_install
+rm -rf $RPM_BUILD_ROOT
+mkdir -p $RPM_BUILD_ROOT/%{module_dir}
+mkdir -p $RPM_BUILD_ROOT/%{user_module_dir}
+mkdir -p $RPM_BUILD_ROOT/usr/share/doc/qore-ssh2-module
+make install DESTDIR=$RPM_BUILD_ROOT
 %fdupes %{buildroot}%{_datadir}
 # Fix docs installed by RPM
 %fdupes -s build/docs
 
-
 %files
-%license COPYING.LGPL COPYING.MIT
+%defattr(-,root,root,-)
+%{module_dir}
+%{user_module_dir}
+%license COPYING.LGPL COPYING.MIT README RELEASE-NOTES AUTHORS
 %{_libdir}/qore-modules/*
-%{_datadir}/qore-modules/SftpPoller.qm
-%{_datadir}/qore-modules/SftpPollerUtil.qm
-%{_datadir}/qore-modules/Ssh2Connections.qm
 
 %files doc
-%doc README build/docs/*
+%defattr(-,root,root,-)
+%doc docs/ssh2/ docs/SftpPoller/ test/
 
 %changelog
