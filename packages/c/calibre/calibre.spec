@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.34.0
+Version:        5.35.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -188,7 +188,7 @@ Requires:       python3-zeroconf >= 0.28.1
 #
 Requires:       sqlite3
 Requires:       xdg-utils >= 1.0.2
-Requires(pretrans): findutils
+Requires(pretrans):findutils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -280,11 +280,6 @@ rm %{buildroot}%{_datadir}/metainfo/calibre-ebook-{edit,viewer}.metainfo.xml
 # Remove unneeded desktop files
 rm %{buildroot}%{_datadir}/applications/calibre-ebook-{edit,viewer}.desktop
 rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
-
-# Fix wrong path for init_calibre.py
-pushd %{buildroot}/usr/lib/
-mv %{py3_ver} python%{py3_ver}
-popd
 
 %fdupes %{buildroot}%{_prefix}
 
