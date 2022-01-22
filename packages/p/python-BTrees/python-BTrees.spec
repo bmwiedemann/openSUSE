@@ -1,7 +1,7 @@
 #
 # spec file for package python-BTrees
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-persistent >= 4.1.0
 Requires:       python-zope.interface
+Provides:       %{name}-doc = %{version}-%{release}
 Obsoletes:      %{name}-doc
 %python_subpackages
 
