@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-schemaregistry-avroserializer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-schemaregistry-avroserializer
-Version:        1.0.0b3
+Version:        1.0.0b4
 Release:        0
 Summary:        Microsoft Azure Schema Registry Avro Serializer Client Library for Python
 License:        MIT
@@ -35,9 +35,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-schemaregistry >= 1.0.0
-Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-avro >= 1.10.0
 Requires:       python-azure-core >= 1.19.0
+Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-azure-schemaregistry >= 1.0.0
 Requires:       python-msrest >= 0.5.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
@@ -70,8 +71,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
-%dir %{python_sitelib}/azure/schemaregistry/serializer
-%{python_sitelib}/azure/schemaregistry/serializer/avroserializer
+%{python_sitelib}/azure/schemaregistry/serializer
 %{python_sitelib}/azure_schemaregistry_avroserializer-*.egg-info
 
 %changelog
