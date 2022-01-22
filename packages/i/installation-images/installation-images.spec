@@ -652,6 +652,7 @@ BuildRequires:  grub2-arm64-efi
 BuildRequires:  raspberrypi-firmware
 BuildRequires:  raspberrypi-firmware-config
 BuildRequires:  raspberrypi-firmware-dt
+BuildRequires:  arm-trusted-firmware-rpi4
 BuildRequires:  u-boot-rpiarm64
 %if %with_shim
 BuildRequires:  shim
@@ -686,7 +687,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.33
+Version:        17.36
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
