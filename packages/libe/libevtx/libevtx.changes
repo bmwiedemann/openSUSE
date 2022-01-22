@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 18:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit specfile to do multipython builds.
+  (Happens to reenable python2 on Leap 15)
+
+-------------------------------------------------------------------
 Thu Nov 25 19:09:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add keyring

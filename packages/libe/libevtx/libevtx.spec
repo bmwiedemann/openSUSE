@@ -1,7 +1,7 @@
 #
 # spec file for package libevtx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ Source2:        https://github.com/libyal/libevtx/releases/download/%version/lib
 Source3:        %name.keyring
 Source10:       Windows_XML_Event_Log_EVTX.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcdirectory) >= 20200702
@@ -55,6 +57,7 @@ BuildRequires:  pkgconfig(libregf) >= 20210419
 BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(libwrc) >= 20210425
 BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library and tools to access the Windows XML Event Log (EVTX) format.
@@ -89,29 +92,25 @@ libevtx is a library to access the Windows XML Event log format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python3-%name
-Summary:        Python bindings for libevtx
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-
-%description -n python3-%name
-Python bindings for libevtx, which can read Windows XML Event files.
-
 %prep
 %autosetup -p1
 cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
-%configure \
-    --disable-static \
-    --enable-wide-character-type \
-    --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find %buildroot -name '*.la' -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -120,11 +119,11 @@ find %buildroot -name '*.la' -delete
 %license COPYING*
 %_libdir/libevtx.so.*
 
-%files tools
+%files -n %name-tools
 %_bindir/evtx*
 %_mandir/man1/evt*.1*
 
-%files devel
+%files -n %name-devel
 %doc Windows_XML_Event_Log*.pdf
 %_includedir/libevtx.h
 %_includedir/libevtx/
@@ -132,8 +131,8 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libevtx.pc
 %_mandir/man3/libevtx.3*
 
-%files -n python3-%name
+%files %python_files
 %license COPYING*
-%python3_sitearch/pyevtx.so
+%python_sitearch/pyevtx.so
 
 %changelog
