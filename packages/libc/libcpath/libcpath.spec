@@ -62,7 +62,7 @@ applications that want to make use of libcpath.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type
 %make_build
 

@@ -94,4 +94,12 @@ summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184909 from greg
     <comment>- Update to release 20220108</comment>
     <requestid>944890</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>68d7dbea37bb15a2bc19875f0e61a8f8</srcmd5>
+    <version>20220108</version>
+    <time>1642835895</time>
+    <user>dimstar_suse</user>
+    <comment>- Force autoreconf run due to patch presence.</comment>
+    <requestid>947903</requestid>
+  </revision>
 </revisionlist>

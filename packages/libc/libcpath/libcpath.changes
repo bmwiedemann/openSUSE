@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 21 09:16:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Force autoreconf run due to patch presence.
+
+-------------------------------------------------------------------
 Sat Jan  8 10:49:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20220108
