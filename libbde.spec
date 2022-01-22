@@ -1,7 +1,7 @@
 #
 # spec file for package libbde
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libbde1
 Name:           libbde
-Version:        20210605
+Version:        20220121
 Release:        0
 Summary:        Library and tools to access Microsoft Bitlocker Disk Encrypted partitions
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -29,29 +29,31 @@ Source2:        https://github.com/libyal/libbde/releases/download/%version/libb
 Source3:        %name.keyring
 Source10:       BitLocker_Drive_Encryption_BDE_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %python_module devel
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcaes) >= 20201012
-BuildRequires:  pkgconfig(libcdata) >= 20210625
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcaes) >= 20210522
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20210526
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(libuna) >= 20220102
+%python_subpackages
 
 %description
 libbde is a library and tools to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
@@ -106,25 +108,23 @@ libbde is a library to access the BitLocker Drive Encryption (BDE) format. The B
 This subpackage contains libraries and header files for developing
 applications that want to make use of libbde.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libbde, a Bitlocker Drive Encryption library
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-Python 3 bindings for libbde, which can access Bitlocker Drive Encrypted volumes
-
 %prep
 %autosetup -p1
 cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 # we have static libs for some reason, trash them
 find %{buildroot} -name "*.a" -print -delete
@@ -136,12 +136,12 @@ find %{buildroot} -name "*.a" -print -delete
 %license COPYING*
 %{_libdir}/libbde.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/bde*
 %{_mandir}/man1/bde*.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc BitLocker_Drive_Encryption_*.pdf
 %{_includedir}/libbde.h
@@ -150,8 +150,8 @@ find %{buildroot} -name "*.a" -print -delete
 %{_libdir}/pkgconfig/libbde.pc
 %{_mandir}/man3/libbde.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pybde.so
+%{python_sitearch}/pybde.so
 
 %changelog

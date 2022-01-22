@@ -103,4 +103,12 @@
     <comment>- Add keyring</comment>
     <requestid>933943</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>717c194ce625a7bb537eecfa0d5ea0c6</srcmd5>
+    <version>20220121</version>
+    <time>1642839221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220121</comment>
+    <requestid>948013</requestid>
+  </revision>
 </revisionlist>
