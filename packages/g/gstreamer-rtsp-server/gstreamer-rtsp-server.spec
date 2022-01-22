@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-rtsp-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,8 +77,8 @@ Development files for the GStreamer library for building an RTSP server.
 %build
 %meson \
 	-Dintrospection=enabled \
-	-Dwith-package-name='openSUSE GStreamer-rtsp-server package' \
-	-Dwith-package-origin='http://download.opensuse.org' \
+	-Dpackage-name='openSUSE GStreamer-rtsp-server package' \
+	-Dpackage-origin='http://download.opensuse.org' \
 	-Dtests=disabled \
 	-Dexamples=disabled \
 	%{nil}
