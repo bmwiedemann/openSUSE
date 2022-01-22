@@ -3514,4 +3514,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Use different Python package for ZStandard</comment>
     <requestid>944735</requestid>
   </revision>
+  <revision rev="379" vrev="1">
+    <srcmd5>afa8316098224109d194f4f969d34f4b</srcmd5>
+    <version>2.2.0+git20220112.bfaf91a</version>
+    <time>1642835867</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220112.bfaf91a:
+  * pam module whitelist: adjust package name for pam_winbind (bsc#1194573)</comment>
+    <requestid>945995</requestid>
+  </revision>
 </revisionlist>

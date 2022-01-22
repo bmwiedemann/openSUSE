@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 13 08:24:48 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220112.bfaf91a:
+  * pam module whitelist: adjust package name for pam_winbind (bsc#1194573)
+
+-------------------------------------------------------------------
 Fri Jan 07 12:51:43 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220106.43867d0:
