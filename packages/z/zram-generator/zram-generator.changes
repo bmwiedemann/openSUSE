@@ -1,8 +1,11 @@
 -------------------------------------------------------------------
 Fri Jan  7 01:26:50 UTC 2022 - William Brown <william.brown@suse.com>
 
-- resolve bsc#1194113 (CVE-2018-25023)
-- resolve bsc#1194119 (CVE-2021-45710)
+Updated vendor.tar.xz to
+- not create uninitialized values in smallvec-crate
+  (bsc#1194113, CVE-2018-25023)
+- fix a possible data race and memory corruption when using a closed
+  `oneshot` channel in tokio-crate (bsc#1194119, CVE-2021-45710)
 
 -------------------------------------------------------------------
 Fri Jan 07 01:25:47 UTC 2022 - bbrunner@suse.com
