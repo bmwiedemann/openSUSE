@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 19 12:27:52 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Remove harden_spotifyd.service.patch (bsc#1194800)
+
+-------------------------------------------------------------------
 Thu Jan 06 06:34:58 UTC 2022 - william.brown@suse.com
 
 - resolve bsc#1194119 (CVE-2021-45710)

@@ -27,7 +27,6 @@ URL:            https://github.com/Spotifyd/spotifyd
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch0:         harden_spotifyd.service.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  rinstall
@@ -45,7 +44,7 @@ protocol, which makes it show up as a device that can be controlled from
 the official clients.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
