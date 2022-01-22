@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 20 15:33:06 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.1.0.0:
+  * Introduce welcome screen for console switching
+    (boo#1184157, jsc#SLE-18306)
+  * Drop redundant functions in jeos-firstboot-functions
+  * Drop call to snapper setup-quota, kiwi does that meanwhile
+
+-------------------------------------------------------------------
 Tue Aug 17 17:09:39 UTC 2021 - Guilherme Moro <gmoro@suse.com>
 
 - Include appropriate Requires

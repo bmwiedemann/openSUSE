@@ -431,4 +431,16 @@
     <comment></comment>
     <requestid>915009</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2dda218c28eb20b7e6ceb202453970e7</srcmd5>
+    <version>1.1.0.0</version>
+    <time>1642835879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0.0:
+  * Introduce welcome screen for console switching
+    (boo#1184157, jsc#SLE-18306)
+  * Drop redundant functions in jeos-firstboot-functions
+  * Drop call to snapper setup-quota, kiwi does that meanwhile</comment>
+    <requestid>947715</requestid>
+  </revision>
 </revisionlist>
