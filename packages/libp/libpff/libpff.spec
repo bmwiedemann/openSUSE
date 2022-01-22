@@ -1,7 +1,7 @@
 #
 # spec file for package libpff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,12 @@ Source15:       MAPI_definitions.pdf
 Source16:       libpff-libfdata.pdf
 Patch1:         system-libs.patch
 Patch2:         pkgconfig.diff
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -55,8 +57,8 @@ BuildRequires:  pkgconfig(libfmapi) >= 20180714
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libfwnt) >= 20210906
 BuildRequires:  pkgconfig(libuna) >= 20210801
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
+%python_subpackages
 
 %description
 libpff is a library to access the Personal Folder File (PFF) and the
@@ -102,17 +104,6 @@ OST (Offline Storage Table).
 This subpackage contains libraries and header files for developing
 applications that want to make use of libpff.
 
-%package -n python3-%name
-Summary:        Python bindings for libpff, a PFF/OFF file format parser
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-#python-%name was previously the name of this submodule.  It was python2 bindings.
-Obsoletes:      python-%name <= 20180714
-
-%description -n python3-%name
-Python bindings for libpff, which can read Personal Folder File (PFF)
-and Offline Folder File (OFF) formats.
-
 %prep
 %autosetup -p1
 cp -av %_sourcedir/*.pdf .
@@ -121,12 +112,19 @@ cp -av %_sourcedir/*.pdf .
 autoreconf -fi
 # Package has a history of not bumping on ABI breaks (e.g. 59bcd7a46e)
 echo "V_%version { global: *; };" >sym.ver
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build LDFLAGS="-Wl,--version-script=$PWD/sym.ver"
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find "%buildroot" -name "*.la" -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -135,12 +133,12 @@ find "%buildroot" -name "*.la" -delete
 %license COPYING*
 %_libdir/libpff.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %_bindir/pff*
 %_mandir/man1/pff*.1*
 
-%files devel
+%files -n %name-devel
 %doc MAPI_definitions.pdf
 %doc PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
 %doc PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
@@ -151,7 +149,7 @@ find "%buildroot" -name "*.la" -delete
 %_libdir/pkgconfig/libpff.pc
 %_mandir/man3/libpff.3*
 
-%files -n python3-%name
-%python3_sitearch/pypff.so
+%files %python_files
+%python_sitearch/pypff.so
 
 %changelog

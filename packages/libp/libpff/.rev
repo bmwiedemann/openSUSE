@@ -76,4 +76,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20211114</comment>
     <requestid>934153</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d074e00692efab279299f7adf4759632</srcmd5>
+    <version>20211114</version>
+    <time>1642835926</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit specfile to do multipython builds.</comment>
+    <requestid>948036</requestid>
+  </revision>
 </revisionlist>
