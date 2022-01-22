@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 07:58:35 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix handling of add-on signature settings, introduced when fixing
+  bsc#1192437 (bsc#1194881).
+- 4.4.26
+
+-------------------------------------------------------------------
 Thu Jan 13 11:58:37 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Properly merge the autoupgrade workflow when using the online
