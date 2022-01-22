@@ -1,7 +1,7 @@
 #
 # spec file for package fs-uae
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           fs-uae
-Version:        3.1.35
+Version:        3.1.66
 Release:        0
 Summary:        Amiga emulator with on-screen GUI and online play support
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
-Source0:        https://fs-uae.net/stable/%{version}/%{name}-%{version}.tar.gz
+Source:         https://fs-uae.net/files/FS-UAE/Stable/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -74,10 +74,10 @@ export CFLAGS="%optflags -fPIC"
 export CXXFLAGS="%optflags -fPIC"
 %endif
 %configure \
-%ifarch %arm aarch64
-  --disable-jit
-%else
+%ifarch %{ix86} x86_64
   --enable-jit
+%else
+  --disable-jit
 %endif
 make %{?_smp_mflags}
 

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jan 21 00:16:26 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.66
+  * Updated bundled SDL version to 2.0.18
+  * Updated controller mappings
+- Rename Source0 field to Source
+
+-------------------------------------------------------------------
+Fri Dec  3 06:49:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Redownload source tarball
+
+-------------------------------------------------------------------
+Fri Dec  3 05:42:14 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.62
+  * macOS: Do not simulate right/middle mouse buttons in full keyboard emulation.
+  * Potential fix for crash if warning is issued from device helper.
+  * Fix mouse grab on startup on macOS.
+- Enable JIT on x86 targets only
+
+-------------------------------------------------------------------
+Mon Nov 22 08:33:39 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.59
+  * Support controller_[event] input mapping for matching all controllers.
+  * Prefer $HOME/FS-UAE if it exists, otherwise use $DOCUMENTS/FS-UAE.
+  * Support joystick_port_[port]_controller_[event] input mapping.
+  * Read [guid].fs-uae-controller controller configs.
+  * Fixed uaenative_library option.
+  * Added lots of game controller configs.
+  * Set SDL_HINT_MAC_BACKGROUND_APP in device helper.
+
+-------------------------------------------------------------------
+Thu Nov 11 07:04:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.47
+  * Allow screensaver with SDL_VIDEO_ALLOW_SCREENSAVER=1.
+- Switch source tarball format to xz
+
+-------------------------------------------------------------------
 Mon Oct 11 14:27:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.35
