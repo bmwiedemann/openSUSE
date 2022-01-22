@@ -1,7 +1,7 @@
 #
 # spec file for package libfvde
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,41 +17,45 @@
 
 
 %define lname	libfvde1
-%define timestamp 20191221
 Name:           libfvde
-Version:        20210425
+Version:        20220121
 Release:        0
 Summary:        Library to access the File Vault Drive Encryption format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfvde/
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfvde/releases/download/%version/libfvde-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfvde/releases/download/%version/libfvde-experimental-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcaes) >= 20201012
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libbfio) >= 20220111
+BuildRequires:  pkgconfig(libcaes) >= 20210522
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfplist) >= 20210404
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfplist) >= 20220116
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20220102
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
+%python_subpackages
 
 %description
 libfvde is a library to access the File Vault Drive Encryption format.
@@ -89,24 +93,22 @@ See libfvde for additional details.
 This package contains libraries and header files for developing
 applications that want to make use of libfvde.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libfvde
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-
-%description -n python3-%{name}
-This packinge provides Python 3 bindings for libfvde
-
 %prep
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
@@ -119,12 +121,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libfvde.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/fvde*
 %{_mandir}/man1/fvde*.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %{_includedir}/libfvde.h
 %{_includedir}/libfvde/
@@ -132,8 +134,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libfvde.pc
 %{_mandir}/man3/libfvde.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyfvde.so
+%{python_sitearch}/pyfvde.so
 
 %changelog
