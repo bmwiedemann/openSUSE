@@ -574,4 +574,12 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>930733</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>2e9d92e19c415a9d2e4fadddc40d4b05</srcmd5>
+    <version>2.4.1</version>
+    <time>1642835868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946250</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 11 10:08:31 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Modify packaging to allow parallel installation with libldb1
+  (bsc#1192684):
+  + Private libraries are installed in %{_libdir}/ldb2/
+  + Modules are installed in %{_libdir}/ldb2/modules
+
+-------------------------------------------------------------------
 Wed Nov 10 10:51:16 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to version 2.4.1

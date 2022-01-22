@@ -1,7 +1,7 @@
 #
 # spec file for package ldb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,8 +75,7 @@ LDB is an LDAP-like embedded database.
 %package -n libldb2
 Summary:        An LDAP-like embedded database
 Group:          System/Libraries
-Provides:       libldb1
-Obsoletes:      libldb1
+Obsoletes:      libldb1 < %{version}
 
 %description -n libldb2
 LDB is an LDAP-like embedded database.
@@ -123,7 +122,7 @@ LDB library.
 
 %prep
 %setup -n ldb-%{version} -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 %if 0%{?suse_version} > 1110
@@ -144,7 +143,8 @@ CONFIGURE_OPTIONS="\
 	--disable-rpath \
 	--disable-rpath-install \
 	--disable-silent-rules \
-	--with-modulesdir=%{_libdir} \
+	--with-modulesdir=%{_libdir}/ldb2/modules \
+	--with-privatelibdir=%{_libdir}/ldb2 \
 	--bundled-libraries=%{bundled_libs} \
 	--builtin-libraries=replace \
 %if !%{with_lmdb}
@@ -183,29 +183,31 @@ sed -i 's;-lpyldb-util.%{py3_soflags_dash};-lpyldb-util.%{py3_soflags};g' %{buil
 
 %files -n libldb2
 %defattr(-,root,root)
-%{_libdir}/libldb.so.*
-%dir %{_libdir}/ldb
-%{_libdir}/ldb/asq.so
-%{_libdir}/ldb/paged_searches.so
-%{_libdir}/ldb/rdn_name.so
-%{_libdir}/ldb/sample.so
-%{_libdir}/ldb/server_sort.so
-%{_libdir}/ldb/skel.so
-%{_libdir}/ldb/tdb.so
+%{_libdir}/libldb.so.2*
+%dir %{_libdir}/ldb2
+%{_libdir}/ldb2/libldb-key-value.so
+%{_libdir}/ldb2/libldb-tdb-err-map.so
+%{_libdir}/ldb2/libldb-tdb-int.so
+%dir %{_libdir}/ldb2/modules
+%dir %{_libdir}/ldb2/modules/ldb
+%{_libdir}/ldb2/modules/ldb/asq.so
+%{_libdir}/ldb2/modules/ldb/paged_searches.so
+%{_libdir}/ldb2/modules/ldb/rdn_name.so
+%{_libdir}/ldb2/modules/ldb/sample.so
+%{_libdir}/ldb2/modules/ldb/server_sort.so
+%{_libdir}/ldb2/modules/ldb/skel.so
+%{_libdir}/ldb2/modules/ldb/tdb.so
+%{_libdir}/ldb2/modules/ldb/ldb.so
 %if 0%{?suse_version} <= 1500
-%{_libdir}/ldb/libcmocka-ldb.so
+%{_libdir}/ldb2/libcmocka-ldb.so
 %endif
 %ifarch ppc
-%{_libdir}/ldb/libcmocka-ldb.so
+%{_libdir}/ldb2/libcmocka-ldb.so
 %endif
-%{_libdir}/ldb/ldb.so
-%{_libdir}/ldb/libldb-key-value.so
 %if %{with_lmdb}
-%{_libdir}/ldb/libldb-mdb-int.so
-%{_libdir}/ldb/mdb.so
+%{_libdir}/ldb2/libldb-mdb-int.so
+%{_libdir}/ldb2/modules/ldb/mdb.so
 %endif
-%{_libdir}/ldb/libldb-tdb-err-map.so
-%{_libdir}/ldb/libldb-tdb-int.so
 
 %files -n libldb-devel
 %defattr(-,root,root)
@@ -215,7 +217,6 @@ sed -i 's;-lpyldb-util.%{py3_soflags_dash};-lpyldb-util.%{py3_soflags};g' %{buil
 %{_includedir}/ldb_module.h
 %{_includedir}/ldb_version.h
 %{_libdir}/libldb.so
-%dir %{_libdir}/ldb
 %{_libdir}/pkgconfig/ldb.pc
 %{_mandir}/man3/ldb*.3.*
 %{_mandir}/man3/ldif*.3.*
@@ -228,7 +229,7 @@ sed -i 's;-lpyldb-util.%{py3_soflags_dash};-lpyldb-util.%{py3_soflags};g' %{buil
 %{_bindir}/ldbmodify
 %{_bindir}/ldbrename
 %{_bindir}/ldbsearch
-%{_libdir}/ldb/libldb-cmdline.so
+%{_libdir}/ldb2/libldb-cmdline.so
 %{_mandir}/man1/ldbadd.1.*
 %{_mandir}/man1/ldbdel.1.*
 %{_mandir}/man1/ldbedit.1.*
