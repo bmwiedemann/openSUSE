@@ -2227,4 +2227,14 @@ NOTE: Without this patch, dovecot is spamming the audit.log with denials. Please
    operation=&quot;file_mmap&quot; violation in SLE15-SP4; (bsc#1192336).</comment>
     <requestid>941697</requestid>
   </revision>
+  <revision rev="162" vrev="8">
+    <srcmd5>6619303a1b29284cb0c9599d48456cb1</srcmd5>
+    <version>3.0.3</version>
+    <time>1642835869</time>
+    <user>dimstar_suse</user>
+    <comment>- add update-samba-abstractions-ldb2.diff: Cater for changes to ldb
+  packaging to allow parallel installation with libldb;
+  (bsc#1192684). (forwarded request 947009 from scabrero)</comment>
+    <requestid>947042</requestid>
+  </revision>
 </revisionlist>

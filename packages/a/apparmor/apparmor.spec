@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011-2021 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -90,6 +90,10 @@ Patch9:         aa-notify-more-arch-mr809.diff
 
 # allow reading /etc/ssl/engdef.d/ and /etc/ssl/engines.d/ in abstractions/openssl (submitted upstream 2021-12-19 - https://gitlab.com/apparmor/apparmor/-/merge_requests/818)
 Patch10:        openssl-engdef-mr818.diff
+
+# add update-samba-abstractions-ldb2.diff to cater for changes to ldb
+# packaging to allow parallel installation with libldb bsc#1192684
+Patch11:        update-samba-abstractions-ldb2.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -357,6 +361,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 %define _lto_cflags %{nil}
