@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  12 10:00:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
+
+- added kde-gtk-config5-gtk3 to the KDE pattern, so that System Settings can also change GTK theming, which is generally used for flatpaks.
+
+-------------------------------------------------------------------
 Tue Nov  2 12:34:02 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Add policycoreutils-python-utils to desktop-common

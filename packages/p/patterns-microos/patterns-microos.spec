@@ -564,6 +564,8 @@ Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
 Requires:       xdg-desktop-portal-kde
+Requires:       kde-gtk-config5
+Requires:       kde-gtk-config5-gtk3
 
 # Doesn't depend on PackageKit, but also works for other backends
 Requires:       discover-notifier
