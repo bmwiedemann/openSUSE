@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jsonschema-objects
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,12 @@
 # python2-Markdown missing
 %define skip_python2 1
 Name:           python-python-jsonschema-objects
-Version:        0.3.12
+Version:        0.4.1
 Release:        0
 Summary:        An object wrapper for JSON Schema definitions
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://python-jsonschema-objects.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/p/python_jsonschema_objects/python_jsonschema_objects-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 18.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 21 02:56:29 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.1:
+  * This release just incorporates the fix for #223
+  * Default values will now always serialize, even if the default value is null. Since this change could cause unexpected changes in serialized output the minor version has been bumped. Fixes #200
+  * Literals now properly support comparisons of all types (#213)
+  * oneOfs inside oneOfs (oneOf-ception?!) no longer fail to serialize (#214)
+  * #203 validatorSchemas passed in are now respected
+  * #208 oneOf roundtrip serializations work better
+  * #207 Another fix for abc deprecation
+  * Fixes import path for collections.abc to be compliant with Python 3.8 [#197] (h/t @adriangay) 
+- Remove duplicate setuptools BuildRequires.
+
+-------------------------------------------------------------------
 Fri Mar 20 11:53:16 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.3.12

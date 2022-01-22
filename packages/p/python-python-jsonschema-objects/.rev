@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>786860</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ca53c570409e96a698890523efc99a9</srcmd5>
+    <version>0.4.1</version>
+    <time>1642835887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * This release just incorporates the fix for #223
+  * Default values will now always serialize, even if the default value is null. Since this change could cause unexpected changes in serialized output the minor version has been bumped. Fixes #200
+  * Literals now properly support comparisons of all types (#213)
+  * oneOfs inside oneOfs (oneOf-ception?!) no longer fail to serialize (#214)
+  * #203 validatorSchemas passed in are now respected
+  * #208 oneOf roundtrip serializations work better
+  * #207 Another fix for abc deprecation
+  * Fixes import path for collections.abc to be compliant with Python 3.8 [#197] (h/t @adriangay) 
+- Remove duplicate setuptools BuildRequires.</comment>
+    <requestid>947811</requestid>
+  </revision>
 </revisionlist>
