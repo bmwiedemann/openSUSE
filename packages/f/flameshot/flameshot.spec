@@ -1,7 +1,7 @@
 #
 # spec file for package flameshot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        0.10.2
+Version:        11.0.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
@@ -37,6 +37,9 @@ BuildRequires:  pkgconfig(Qt5Gui) >= 5
 BuildRequires:  pkgconfig(Qt5Network) >= 5
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5
+Suggests:       %{name}-bash-completion
+Suggests:       %{name}-fish-completion
+Suggests:       %{name}-zsh-completion
 
 %description
 A program to capture screenshots.
@@ -50,7 +53,7 @@ Features:
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          Productivity/Graphics/Other
+Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (flameshot and bash-completion)
@@ -61,24 +64,33 @@ Bash completion script for flameshot's CLI.
 
 %package zsh-completion
 Summary:        ZSH completion for %{name}
-Group:          Productivity/Networking/Security
+Group:          System/Shells
+Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
 zsh shell completions for %{name}.
 
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
 %prep
 %setup -q
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
-install -d %{buildroot}/%{_sysconfdir}/zsh_completion.d
-mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
 %suse_update_desktop_file -r org.flameshot.Flameshot Utility X-SuSE-DesktopUtility
 %fdupes %{buildroot}%{_datadir}/icons/hicolor
 
@@ -97,7 +109,13 @@ mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfd
 %{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%dir %{_sysconfdir}/zsh_completion.d
-%config %{_sysconfdir}/zsh_completion.d/%{name}
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_flameshot
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/flameshot.fish
 
 %changelog

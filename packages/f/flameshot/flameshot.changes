@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan 21 14:04:18 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix requires for zsh-completion
+
+-------------------------------------------------------------------
+Wed Jan 19 07:27:46 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 11.0.0:
+  * A config file checker has been implemented. If your config file
+    contains error it will prompt to on how to fix them.
+  * Some config file semantics changed so when you first run version 11,
+    it is likely you need to resolve the config file errors.
+  * The on-screen help menu has been clarified and dynamically updates
+    the hotkeys based on user defined hotkeys.
+  * DBus is no longer required for CLI options.
+  * Flameshot can now be run in "one off" mode which means that
+    the background systray component is now optional.
+  * The CLI has been completely refactored.
+  * Optimizations to reduce lag on 8k and 4k screens.
+  * KNOWN ISSUE: fractional scaling on linux is still not resolved.
+- Full changelog: https://github.com/flameshot-org/flameshot/releases/tag/v11.0.0
+
+
+-------------------------------------------------------------------
 Mon Nov 15 19:58:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.2
