@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 20 08:12:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.3
+    * Added references to the PIN reset letter in suitable places.
+    * The expiration date is now shown in the self-identification dialog.
+    * Fixed Youtube links.
+    * Removed unneccessary Qt clipboard access on Android.
+    * Fixed some dialogs being shown in the language of the operating system
+      instead of the language set in the app's preferences on macOS.
+    * Fixed crashes and incorrect behavior on Android 11.
+    * More information is displayed on a queried password when using
+      one of the Reiner SCT "komfort" series of card readers.
+    * Add support for macOS 12.
+    * Small fixes and improved accessibility.
+    * Added the "developerMode" parameter to the RUN_AUTH variable.
+    * Fixed a crash when using the --no-logfile and --keep options.
+    * The ShowUI parameter is now displayed on mobile devices.
+    * Update of OpenSSL to version 1.1.1m.
+
+-------------------------------------------------------------------
 Wed Mar 31 18:57:29 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
