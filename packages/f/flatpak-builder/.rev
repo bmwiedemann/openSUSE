@@ -242,4 +242,12 @@
     <comment></comment>
     <requestid>947482</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5b032ee349c1f61eaa0602bffd305d06</srcmd5>
+    <version>1.2.2</version>
+    <time>1642835893</time>
+    <user>dimstar_suse</user>
+    <comment>tweak (forwarded request 947493 from iznogood)</comment>
+    <requestid>947901</requestid>
+  </revision>
 </revisionlist>

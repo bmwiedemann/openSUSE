@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jan 18 20:55:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 1.2.2:
+- Update to version 1.2.2:
   + CVE-2022-21682: flatpak-builder --mirror-screenshots-url
     commands to be allowed to create directories outside the build
     directory boo#1194611
@@ -16,7 +16,7 @@ Tue Jan 18 20:55:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Mon Jan 17 21:43:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to version 1.2.1:
+- Update to version 1.2.1:
   + Fix debuginfo being re-processed multiple times in a manifest
   + Change manifest parsing issues from warnings to fatal errors
   + Add .tar.zst archive support
