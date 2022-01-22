@@ -1,0 +1,21 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/linux-nvme/nvme-cli.git</param>
+    <param name="filename">nvme-cli</param>
+    <!-- <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param> -->
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">v2.0-rc0</param>
+    <param name="match-tag">v[02].[0-9]*</param>
+    <param name="versionrewrite-pattern">v([^+]*)-rc([0-9]+)</param>
+    <param name="versionrewrite-replacement">\1~\2</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

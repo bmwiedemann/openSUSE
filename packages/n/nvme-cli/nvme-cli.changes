@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 19 11:46:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Fix zsh completion package depenedencies.
+
+-------------------------------------------------------------------
+Tue Jan 18 15:42:36 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use osc_scm to manage upstream input source.
+- Fix version string.
+
+-------------------------------------------------------------------
+Mon Jan 17 11:29:55 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update Source URL and introduce a variable for the release canditate
+  version string.
+
+-------------------------------------------------------------------
+Fri Jan 14 17:57:47 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to v2.0-rc0
+ * Depends on libnvme
+ * rename harden_nvmf-connect@.service.patch to 0100-harden_nvmf-connect@.service.patch
+ * drop 0102-nvme-cli-Add-script-to-determine-host-NQN.patch
+
+-------------------------------------------------------------------
 Thu Dec  9 08:00:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.16:

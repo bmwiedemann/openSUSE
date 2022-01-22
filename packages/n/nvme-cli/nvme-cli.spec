@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,29 @@
 
 
 Name:           nvme-cli
-Version:        1.16
+Version:        2.0~0
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
 Group:          Hardware/Other
-URL:            https://github.com/linux-nvme/nvme-cli
-Source:         https://github.com/linux-nvme/nvme-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        nvme-cli-rpmlintrc
-# downstream patches:
-Patch102:       0102-nvme-cli-Add-script-to-determine-host-NQN.patch
-Patch103:       harden_nvmf-connect@.service.patch
+URL:            https://github.com/linux-nvme/nvme-cli/
+Source0:        nvme-cli-%{version}.tar.gz
+Source1:        nvme-cli-rpmlintrc
+# downstream patches
+Patch100:       0100-harden_nvmf-connect@.service.patch
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
+BuildRequires:  libjson-c-devel
+BuildRequires:  libnvme-devel
 BuildRequires:  libuuid-devel
+BuildRequires:  make
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  rubygem(asciidoctor)
-%ifarch x86_64 aarch64 i586
-Requires(post): dmidecode
-%endif
 
 %description
 NVM Express (NVMe) is a direct attached storage interface. The
@@ -63,39 +65,45 @@ Supplements:    (nvme-cli and bash-completion)
 %description bash-completion
 Optional dependency offering bash completion for NVM Express user space tools
 
+%package zsh-completion
+Summary:        NVM Express user space tools zsh completion
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (nvme-cli and zsh)
+
+%description zsh-completion
+Optional dependency offering zsh completion for NVM Express user space tools
+
 %prep
-%setup -q
-%patch102 -p1
-%patch103 -p1
+%autosetup -p1
 
 %build
-echo %{version} > version
-make CFLAGS="%{optflags} -I." PREFIX=%{_prefix} USE_ASCIIDOCTOR=YesPlease %{?_smp_mflags} all
-sed -i '/make.*/d' regress
+%meson \
+    -Dudevrulesdir=%{_udevrulesdir} \
+    -Ddracutrulesdir=%{_sysconfdir}/dracut/dracut.conf.d \
+    -Dsystemddir=%{_unitdir} \
+    -Ddocs=man
+%meson_build
 
 %install
-make PREFIX=%{_prefix} DESTDIR=%{buildroot} UDEVRULESDIR=%{_udevrulesdir} install-bin install-man install-udev install-systemd %{?_smp_mflags}
+%meson_install
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostnqn
-install -m 644 -D completions/bash-nvme-completion.sh %{buildroot}%{_datadir}/bash-completion/completions/nvme
-%ifarch x86_64 aarch64 i586
-install -m 744 -D scripts/det-hostnqn.sh %{buildroot}%{_sbindir}/nvme-gen-hostnqn
-%endif
+install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostid
+install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/discovery.conf
+rm %{buildroot}%{_sysconfdir}/dracut/dracut.conf.d/70-nvmf-autoconnect.conf
+
 # for subpackage nvme-cli-regress-script:
 install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress
 
-%define services nvmefc-boot-connections.service nvmf-connect.target
+%define services nvmefc-boot-connections.service nvmf-connect.target nvmf-autoconnect.service
 
 %pre
 %service_add_pre %services nvmf-connect@.service
 
 %post
-%ifarch x86_64 aarch64 i586
 if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
-	%{_sbindir}/nvme-gen-hostnqn > %{_sysconfdir}/nvme/hostnqn
-fi
-%endif
-if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
-	%{_bindir}/echo "Generating random host NQN."
+	%{_bindir}/echo "Generating host NQN."
 	%{_sbindir}/nvme gen-hostnqn > %{_sysconfdir}/nvme/hostnqn
 fi
 if [ ! -s %{_sysconfdir}/nvme/hostid ]; then
@@ -118,9 +126,6 @@ fi
 %license LICENSE
 %doc README.md
 %{_sbindir}/nvme
-%ifarch x86_64 aarch64 i586
-%{_sbindir}/nvme-gen-hostnqn
-%endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
 %{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules
@@ -131,6 +136,7 @@ fi
 %dir %{_sysconfdir}/nvme/
 %ghost %{_sysconfdir}/nvme/hostnqn
 %ghost %{_sysconfdir}/nvme/hostid
+%ghost %{_sysconfdir}/nvme/discovery.conf
 
 %files -n nvme-cli-regress-script
 %{_sbindir}/nvme-regress
@@ -139,5 +145,10 @@ fi
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/nvme
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_nvme
 
 %changelog
