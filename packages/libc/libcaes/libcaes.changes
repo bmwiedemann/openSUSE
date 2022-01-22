@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 20 23:18:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Transform specfile to emit python multiversion packages.
+
+-------------------------------------------------------------------
 Thu Nov 25 18:45:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add keyring

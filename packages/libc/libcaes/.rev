@@ -94,4 +94,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Add keyring</comment>
     <requestid>933944</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>79ce249a4f5184f80a54bd4aa98f08ad</srcmd5>
+    <version>20210522</version>
+    <time>1642835891</time>
+    <user>dimstar_suse</user>
+    <comment>- Transform specfile to emit python multiversion packages.</comment>
+    <requestid>947867</requestid>
+  </revision>
 </revisionlist>

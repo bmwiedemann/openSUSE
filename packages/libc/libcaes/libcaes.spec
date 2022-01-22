@@ -1,7 +1,7 @@
 #
 # spec file for package libcaes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,15 @@ Source:         https://github.com/libyal/libcaes/releases/download/%version/lib
 Source2:        https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcerror) >= 20201121
 BuildRequires:  pkgconfig(openssl) >= 1.0
-BuildRequires:  pkgconfig(python3)
+%{python_subpackages}
 
 %description
 libcaes is a library for AES encryption.
@@ -57,25 +59,22 @@ libcaes is a library for AES encryption.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libcaes.
 
-%package -n python3-%name
-Summary:        Python 3 bindings for libcaes
-Group:          Development/Languages/Python
-Requires:       %lname = %version
-
-%description -n python3-%name
-Python 3 bindings for libcaes, which provides functionality for
-AES encryption.
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find "%buildroot" -name "*.la" -print -delete
 
 %post   -n %lname -p /sbin/ldconfig
@@ -85,13 +84,13 @@ find "%buildroot" -name "*.la" -print -delete
 %license COPYING*
 %_libdir/libcaes.so.1*
 
-%files devel
+%files -n %name-devel
 %_includedir/libcaes*
 %_libdir/libcaes.so
 %_libdir/pkgconfig/libcaes.pc
 %_mandir/man3/libcaes.3*
 
-%files -n python3-%name
-%python3_sitearch/pycaes.so
+%files %python_files
+%python_sitearch/*
 
 %changelog
