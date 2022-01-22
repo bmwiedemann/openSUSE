@@ -1,7 +1,7 @@
 #
 # spec file for package python-nilearn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,43 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# SciPy 1.6.0 dropped support for Python 3.6
-%define         skip_python36 1
 Name:           python-nilearn
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        Statistical learning tool for neuroimaging
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nilearn/nilearn
 Source:         https://github.com/nilearn/nilearn/archive/%{version}.tar.gz#/nilearn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nilearn-pr3094-py310.patch -- gh#nilearn/nilearn#3094
+Patch0:         nilearn-pr3094-py310.patch
+# PATCH-FIX-UPSTREAM nilearn-pr3136-pythoncall.patch -- gh#nilearn/nilearn#3136
+Patch1:         nilearn-pr3136-pythoncall.patch
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-joblib >= 0.12
 Requires:       python-matplotlib >= 2.0
-Requires:       python-nibabel >= 2.0.2
-Requires:       python-numpy >= 1.11
+Requires:       python-nibabel >= 2.5.0
+Requires:       python-numpy >= 1.16
 Requires:       python-requests
-Requires:       python-scikit-learn >= 0.19
-Requires:       python-scipy >= 0.19
+Requires:       python-scikit-learn >= 0.21
+Requires:       python-scipy >= 1.2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module joblib >= 0.12}
 BuildRequires:  %{python_module matplotlib >= 2.0}
-BuildRequires:  %{python_module nibabel >= 2.0.2}
-BuildRequires:  %{python_module numpy >= 1.11}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module nibabel >= 2.5.0}
+BuildRequires:  %{python_module numpy >= 1.16}
+BuildRequires:  %{python_module pandas >= 0.24}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-learn >= 0.19}
-BuildRequires:  %{python_module scipy >= 0.19}
+BuildRequires:  %{python_module scikit-learn >= 0.21}
+BuildRequires:  %{python_module scipy >= 1.2.0}
 # /SECTION
 %python_subpackages
 
@@ -58,7 +61,10 @@ Nilearn is a Python module for statistical learning on
 NeuroImaging data.
 
 %prep
-%setup -q -n nilearn-%{version}
+%autosetup -p1 -n nilearn-%{version}
+sed -i '/durations/d' setup.cfg
+chmod -x nilearn/datasets/tests/data/localizer_index.json
+sed -i '1{/env python/d}' nilearn/glm/tests/test_utils.py nilearn/plotting/glass_brain_files/plot_align_svg.py
 
 %build
 %python_build
@@ -70,11 +76,18 @@ NeuroImaging data.
 %check
 # Test try to build the doc and run examples...
 rm -rf doc/ examples/
-# Disable tests that require a network connection
-# Disable tests requiring to be executed without xdist (serialization issue): test_tikhonov_regularization_vs_graph_net or test_connectivity_measure_outputs or test_canica_square_img or test_with_globbing_patterns_with_single_subject or test_dict_learning
-# https://github.com/nilearn/nilearn/issues/2608 - test_clean_confounds
-# https://github.com/nilearn/nilearn/issues/2610 - test_reorder_img_mirror
-%pytest -n auto -k 'not (test_fetch_ or test_get_batch or test_scroll_server_results or test_simple_download or test_fill_html_template or test_temp_file_removing or test_view_img_on_surf or test_view_surf or test_resample_img_segmentation_fault or test_tikhonov_regularization_vs_graph_net or test_connectivity_measure_outputs or test_canica_square_img or test_with_globbing_patterns_with_single_subject or test_dict_learning or test_clean_confounds or test_reorder_img_mirror)'
+# sporadic race condition in pytest-xdist
+donttest="test_with_globbing_patterns_with_single_subject"
+# sporadic unknown failure (on all architectures): https://github.com/nilearn/nilearn/issues/2607
+donttest+=" or test_check_niimg_wildcard"
+# https://github.com/nilearn/nilearn/issues/2608
+donttest+=" or test_clean_confounds"
+# https://github.com/nilearn/nilearn/issues/2610
+donttest+=" or test_reorder_img_mirror"
+if [[ $(getconf LONG_BIT) -eq 64 ]]; then
+# this is a noarch rpm package but the pure python code is only intended for 64-bit architectures
+%pytest -n auto -k "not ($donttest)"
+fi
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst

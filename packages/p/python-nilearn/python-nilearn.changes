@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jan 20 21:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.1
+  * New atlas fetcher nilearn.datasets.fetch_atlas_juelich to
+    download Juelich atlas from FSL.
+  * New grey and white-matter template and mask loading functions:
+    nilearn.datasets.load_mni152_gm_template,
+    nilearn.datasets.load_mni152_wm_template,
+    nilearn.datasets.load_mni152_gm_mask, and
+    nilearn.datasets.load_mni152_wm_mask
+  * Nilearn development process has been reworked. It now provides
+    insights on nilearn organization as a project as well as more
+    explicit Contribution Guidelines.
+  * nilearn.image.binarize_img binarizes images into 0 and 1.
+  * nilearn.input_data.NiftiLabelsMasker can now generate HTML
+    reports in the same way as nilearn.input_data.NiftiMasker.
+  * nilearn.signal.clean accepts new parameter sample_mask. shape:
+    (number of scans - number of volumes removed, )
+  * All inherent classes of nilearn.input_data.BaseMasker can use
+    parameter sample_mask for sub-sample masking.
+  * Fetcher nilearn.datasets.fetch_surf_fsaverage now accepts
+    fsaverage3, fsaverage4 and fsaverage6 as values for parameter
+    mesh, so that all resolutions of fsaverage from 3 to 7 are now
+    available.
+  * Fetcher nilearn.datasets.fetch_surf_fsaverage now provides
+    attributes {area, curv, sphere, thick}_{left, right} for all
+    fsaverage resolutions.
+  * nilearn.glm.first_level.run_glm now allows auto regressive
+    noise models of order greater than one. 
+  * Support for Nibabel 2.x is deprecated and will be removed in
+    the 0.9 release.
+- Add nilearn-pr3094-py310.patch -- gh#nilearn/nilearn#3094
+- Add nilearn-pr3136-pythoncall.patch -- gh#nilearn/nilearn#3136
+- Only test on 64-bit platforms
+  -- http://nilearn.github.io/introduction.html#installation
+
+-------------------------------------------------------------------
 Fri Apr  9 11:54:35 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.7.1
