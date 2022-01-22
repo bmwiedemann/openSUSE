@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:07:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220120
+  * Unspecified updates
+
+-------------------------------------------------------------------
+Tue Jan 11 13:00:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220111
+  * Additional name length checks
+
+-------------------------------------------------------------------
 Mon Jul  5 17:51:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable implicit library-side locking during operations;

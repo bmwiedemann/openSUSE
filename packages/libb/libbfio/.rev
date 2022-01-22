@@ -126,4 +126,12 @@ libyal refresh for opensuse 13.1 release (forwarded request 184907 from gregfree
     <comment></comment>
     <requestid>904297</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>46731e71fc0446400f5a8b7cb4bf6d87</srcmd5>
+    <version>20220120</version>
+    <time>1642835895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220120</comment>
+    <requestid>947904</requestid>
+  </revision>
 </revisionlist>
