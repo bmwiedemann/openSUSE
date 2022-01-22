@@ -1,7 +1,7 @@
 #
 # spec file for package libesedb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,11 @@ Source4:        Forensic_analysis_of_the_Windows_Search_database.pdf
 Source5:        Windows_Search.pdf
 Source6:        libesedb-libfdata.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -52,7 +54,7 @@ BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libmapidb) >= 20170304
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format. ESEDB is used in may different applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
@@ -86,19 +88,6 @@ applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libesedb.
 
-%package -n python3-%{name}
-Summary:        Python bindings for libesedb, a EDB file format parser
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-
-%description -n python3-%{name}
-libesedb is a library to access EDB files.  ESEDB is used in many different
-applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
-
-Python3 bindings for libesedb, which can read EDB files.  ESEDB is used in many
-different applications like Windows Search, Windows Mail, Exchange, Active
-Directory, etc.
-
 %prep
 %autosetup -p1
 cp "%{SOURCE2}" .
@@ -108,15 +97,19 @@ cp "%{SOURCE5}" .
 cp "%{SOURCE6}" .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure \
-    --disable-static \
-    --enable-wide-character-type \
-    --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -126,12 +119,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libesedb.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/esedb*
 %{_mandir}/man1/esedb*.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc Exchange.pdf
 %doc Extensible_Storage_Engine_*
@@ -144,8 +137,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libesedb.pc
 %{_mandir}/man3/libesedb.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyesedb.so
+%{python_sitearch}/pyesedb.so
 
 %changelog

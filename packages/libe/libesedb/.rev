@@ -86,4 +86,12 @@
     <comment></comment>
     <requestid>902502</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6b9643fc90a4ad22c31748143f29809b</srcmd5>
+    <version>20210513</version>
+    <time>1642835928</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit specfile to do multipython builds.</comment>
+    <requestid>948040</requestid>
+  </revision>
 </revisionlist>
