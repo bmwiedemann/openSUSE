@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 19 15:39:37 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectHome from spamd.service and spampd.service. Unfortunately
+  spamassing writes there, so ProtectHome=read-only doesn't work. 
+  Whitelisting a specific part has a too high chance of breaking for
+  this package (bsc#1193248)
+
+-------------------------------------------------------------------
 Tue Nov 23 08:23:11 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Set ProtectHome=false for spampd.service, as this breaks loading
