@@ -28,10 +28,12 @@ Source:         https://github.com/libyal/libwrc/releases/download/%version/libw
 Source2:        https://github.com/libyal/libwrc/releases/download/%version/libwrc-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20210625
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -51,6 +53,7 @@ BuildRequires:  pkgconfig(libfwevt) >= 20211219
 BuildRequires:  pkgconfig(libfwnt) >= 20210906
 BuildRequires:  pkgconfig(libuna) >= 20220102
 BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libwrc is a library to support the Windows Resource Compiler format.
@@ -81,24 +84,24 @@ Group:          Productivity/File utilities
 This subpackage provides the utilities from libwrc, which allows for
 reading Windows Resource Compiler files.
 
-%package -n python3-%name
-Summary:        Python 3 bindings for libwrc
-Group:          Development/Languages/Python
-
-%description -n python3-%name
-Python 3 bindings for libwrc
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find "%buildroot/%_libdir" -type f -name "*.la" -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -107,17 +110,17 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %license COPYING*
 %_libdir/libwrc.so.1*
 
-%files devel
+%files -n %name-devel
 %_includedir/libwrc*
 %_libdir/libwrc.so
 %_libdir/pkgconfig/libwrc.pc
 %_mandir/man3/libwrc.3*
 
-%files tools
+%files -n %name-tools
 %_bindir/wrcinfo
 %_mandir/man1/wrcinfo.1*
 
-%files -n python3-%name
-%python3_sitearch/*.so
+%files %python_files
+%python_sitearch/*.so
 
 %changelog
