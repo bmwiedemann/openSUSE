@@ -1,7 +1,7 @@
 #
 # spec file for package python-mplcursors
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-mplcursors
-Version:        0.4
+Version:        0.5.1
 Release:        0
 Summary:        Interactive data selection cursors for Matplotlib
 License:        MIT
@@ -60,6 +59,6 @@ mplcursors provides interactive data selection cursors for Matplotlib.
 %license LICENSE.txt
 %{python_sitelib}/mplcursors
 %{python_sitelib}/mplcursors.pth
-%{python_sitelib}/mplcursors-%{version}-py*.egg-info
+%{python_sitelib}/mplcursors-%{version}*-info
 
 %changelog
