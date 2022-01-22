@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan 17 09:14:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.3 (bsc#1194251, bsc#1194362, bsc#1194474, 
+     bsc#1194476, bsc#1194477, bsc#1194478, bsc#1194479, bsc#1194480):
+  * CVE-2021-45960 -- Fix issues with left shifts by >=29 places
+    resulting in
+       a) realloc acting as free
+       b) realloc allocating too few bytes
+       c) undefined behavior
+    depending on architecture and precise value
+    for XML documents with >=2^27+1 prefixed attributes
+    on a single XML tag a la
+    "<r xmlns:a='[..]' a:a123='[..]' [..] />"
+    where XML_ParserCreateNS is used to create the parser
+    (which needs argument "-n" when running xmlwf).
+    Impact is denial of service, or more.
+  * CVE-2021-46143 (ZDI-CAN-16157) -- Fix integer overflow
+    on variable m_groupSize in function doProlog leading
+    to realloc acting as free.
+    Impact is denial of service or more.
+  * CVE-2022-22822 to CVE-2022-22827 -- Prevent integer overflows
+    near memory allocation at multiple places.  Mitre assigned
+    a dedicated CVE for each involved internal C function:
+    - CVE-2022-22822 for function addBinding
+    - CVE-2022-22823 for function build_model
+    - CVE-2022-22824 for function defineAttribute
+    - CVE-2022-22825 for function lookup
+    - CVE-2022-22826 for function nextScaffoldPart
+    - CVE-2022-22827 for function storeAtts
+    Impact is denial of service or more.
+
+-------------------------------------------------------------------
 Mon Dec 27 16:02:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:
