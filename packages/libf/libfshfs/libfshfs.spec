@@ -1,7 +1,7 @@
 #
 # spec file for package libfshfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libfshfs1
 Name:           libfshfs
-Version:        20210722
+Version:        20220115
 Release:        0
 Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -28,26 +28,29 @@ Source:         https://github.com/libyal/libfshfs/releases/download/%version/li
 Source2:        https://github.com/libyal/libfshfs/releases/download/%version/libfshfs-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(libbfio) >= 20220111
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20210526
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(libuna) >= 20220102
+%python_subpackages
 
 %description
 Read-only supported HFS formats:
@@ -65,16 +68,12 @@ Supported HFS format features:
 
 * ZLIB (DEFLATE) compression
 * LZVN compression
+* extended attributes
 
 Unsupported HFS format features:
 
 * LZFSE compression, compression methods 11 and 12
 * "uncompressed", compression methods 1, 9 and 10
-
-Planned:
-
-* Complete resource fork support
-* Complete named fork (extended attributes) support
 
 %package -n %{lname}
 Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
@@ -97,16 +96,12 @@ Supported HFS format features:
 
 * ZLIB (DEFLATE) compression
 * LZVN compression
+* extended attributes
 
 Unsupported HFS format features:
 
 * LZFSE compression, compression methods 11 and 12
 * "uncompressed", compression methods 1, 9 and 10
-
-Planned:
-
-* Complete resource fork support
-* Complete named fork (extended attributes) support
 
 %package tools
 Summary:        Tools to access the Mac OS Hierarchical File System (HFS)
@@ -115,7 +110,8 @@ Group:          Productivity/File utilities
 Requires:       %{lname} = %{version}
 
 %description tools
-Tools to access the Mac OS Hierarchical File System (HFS).  See libfshfs for additional details.
+Tools to access the Mac OS Hierarchical File System (HFS). See
+libfshfs for additional details.
 
 %package devel
 Summary:        Development files for libfshfs, Mac OS Hierarchical File System (HFS) library
@@ -124,34 +120,28 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-libfshfs is a library to access the Mac OS Hierarchical File System (HFS) format.  see libfshfs for details.
+libfshfs is a library to access the Mac OS Hierarchical File System
+(HFS) format. see libfshfs for details.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfshfs.
-
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libfshfs, a Mac OS Hierarchical FIle System (HFS) parser
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python3
-Provides:       pyfshfs
-
-%description -n python3-%{name}
-libfshfs is a library to access Mac OS Hierarchical File System (HFS) format. See libfshfs for details.
-
-This package contains Python 3 bindings for libfshfs.
 
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -161,12 +151,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libfshfs.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/fshfs*
 %{_mandir}/man1/fshfs*.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %{_includedir}/libfshfs.h
 %{_includedir}/libfshfs/
@@ -174,8 +164,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libfshfs.pc
 %{_mandir}/man3/libfshfs.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyfshfs.so
+%{python_sitearch}/pyfshfs.so
 
 %changelog
