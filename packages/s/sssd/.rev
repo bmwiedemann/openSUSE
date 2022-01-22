@@ -1016,4 +1016,14 @@
     <comment></comment>
     <requestid>945711</requestid>
   </revision>
+  <revision rev="115" vrev="3">
+    <srcmd5>952e9460ad174af48b8c15386e29e0dd</srcmd5>
+    <version>2.6.2</version>
+    <time>1642835869</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade LDB_DIR shell variable to %ldbdir macro.
+
+goes in line with 946250</comment>
+    <requestid>947189</requestid>
+  </revision>
 </revisionlist>

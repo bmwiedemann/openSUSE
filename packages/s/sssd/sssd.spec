@@ -89,6 +89,7 @@ Obsoletes:      libsss_sudo < %version-%release
 %define pipepath	%sssdstatedir/pipes
 %define pubconfpath	%sssdstatedir/pubconf
 %define gpocachepath	%sssdstatedir/gpo_cache
+%define ldbdir %(pkg-config ldb --variable=modulesdir)
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
 # /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
@@ -364,7 +365,6 @@ Security Services Daemon (sssd).
 %autosetup -p1
 
 %build
-export LDB_DIR="$(pkg-config ldb --variable=modulesdir)"
 # help configure find nscd
 export PATH="$PATH:/usr/sbin"
 
@@ -381,7 +381,7 @@ autoreconf -fiv
     --with-pid-path="%_rundir" \
     --enable-nsslibdir="/%_lib" \
     --enable-pammoddir="/%_lib/security" \
-    --with-ldb-lib-dir="$LDB_DIR" \
+    --with-ldb-lib-dir="%ldbdir" \
     --with-selinux=no \
     --with-os=suse \
     --with-semanage=no \
@@ -539,8 +539,7 @@ fi
 %dir %_libdir/%name/modules/
 %_libdir/%name/modules/libsss_autofs.so
 %_libdir/libsss_sudo.so
-%dir %_libdir/ldb/
-%_libdir/ldb/memberof.so
+%ldbdir/
 %dir %_libexecdir/%name/
 %_libexecdir/%name/p11_child
 %_libexecdir/%name/sssd_autofs
