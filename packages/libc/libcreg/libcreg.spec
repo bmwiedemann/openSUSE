@@ -1,7 +1,7 @@
 #
 # spec file for package libcreg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,12 @@ Source:         https://github.com/libyal/libcreg/releases/download/%version/lib
 Source2:        https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %python_module devel
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -46,6 +48,7 @@ BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libcreg is a library to access Windows 9x/Me Registry files of the REGF
@@ -82,30 +85,23 @@ type (a non-text representation).
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python3-%{name}
-Summary:        Python3 bindings for libcreg, a library to read Win9x .reg files
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-libcreg is a library to access Windows 9x/Me Registry files of the REGF
-type (a non-text representation).
-
-This subpackage contains the Python3 bindings for libcreg.
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure \
-    --disable-static \
-    --enable-wide-character-type \
-    --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -name '*.la' -delete
 
 %post   -n %lname -p /sbin/ldconfig
@@ -115,19 +111,19 @@ find %{buildroot} -name '*.la' -delete
 %license COPYING*
 %{_libdir}/libcreg.so.*
 
-%files tools
+%files -n %name-tools
 %{_bindir}/creg*
 %{_mandir}/man1/creg*.1*
 
-%files devel
+%files -n %name-devel
 %{_includedir}/libcreg.h
 %{_includedir}/libcreg/
 %{_libdir}/libcreg.so
 %{_libdir}/pkgconfig/libcreg.pc
 %{_mandir}/man3/libcreg.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pycreg.so
+%{python_sitearch}/pycreg.so
 
 %changelog
