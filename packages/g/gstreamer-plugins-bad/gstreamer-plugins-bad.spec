@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-bad
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 # Use rpmbuild -D 'BUILD_ORIG 1' -D 'BUILD_ORIG_ADDON 1' to build patched build plus original as addon.
 %define _name gst-plugins-bad
 %define gst_branch 1.0
-%bcond_with fdk_aac
 %bcond_with faac
 %bcond_with faad
+
 Name:           gstreamer-plugins-bad
 Version:        1.18.5
 Release:        0
@@ -39,6 +39,8 @@ Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 2564.patch dimstar@opensuse.org -- Allow build against neon 0.32.x
 Patch0:         https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/2564.patch
 
+# Not using pkgconfig(fdk-aac) but explitcitly the modified fdk-aac-free-devel
+BuildRequires:  fdk-aac-free-devel >= 0.1.4
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -166,9 +168,6 @@ BuildRequires:  faac-devel
 %endif
 %if %{with faad}
 BuildRequires:  libfaad-devel
-%endif
-%if %{with fdk_aac}
-BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
 %endif
 %endif
 %if 0%{?BUILD_ORIG}
@@ -586,9 +585,6 @@ export PYTHON=%{_bindir}/python3
 %if %{without faad}
 	-Dfaad=disabled \
 %endif
-%if %{without fdk_aac}
-	-Dfdkaac=disabled \
-%endif
 	-Ddirectfb=disabled \
 	-Ddoc=disabled \
 	-Dexamples=disabled \
@@ -710,6 +706,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdspu.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaceoverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfbdevsink.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfieldanalysis.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfreeverb.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfrei0r.so
@@ -924,9 +921,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
 %endif
 
-%if %{with fdk_aac}
-%{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
-%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstde265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmodplug.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so

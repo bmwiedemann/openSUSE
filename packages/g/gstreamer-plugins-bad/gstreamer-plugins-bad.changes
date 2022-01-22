@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 17 13:26:13 UTC 2022 - zaitor@opensuse.org
+
+- Drop conditionals for fdk_aac, explicitly add fdk-aac-free-devel
+  BuildRequires, and build it for the main package.
+
+-------------------------------------------------------------------
 Tue Dec 14 15:25:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2564.patch: Allow to build against Neon 0.32.x.
