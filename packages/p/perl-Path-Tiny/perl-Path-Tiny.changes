@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 17 03:07:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.122
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.122     2022-01-16 10:05:08-05:00 America/New_York
+      - No changes from 0.121-TRIAL.
+  0.121     2022-01-08 11:05:33-05:00 America/New_York (TRIAL RELEASE)
+      [Additions]
+      - Adds `size` and `size_human` methods.  The latter gives `ls -lh` style
+        output, with options to choose base2 or base10 forms.
+
+-------------------------------------------------------------------
 Mon Oct 25 03:06:31 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.120

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Path-Tiny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Path-Tiny
 Name:           perl-Path-Tiny
-Version:        0.120
+Version:        0.122
 Release:        0
 Summary:        File path utility
 License:        Apache-2.0
