@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipdeptree
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pipdeptree
-Version:        1.0.0
+Version:        2.2.1
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/naiquevin/pipdeptree
 Source:         https://github.com/naiquevin/pipdeptree/archive/%{version}.tar.gz#/pipdeptree-%{version}.tar.gz
-# Generated following tests/virtualenvs/Makefile
-Source1:        test-data.tgz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,10 +34,11 @@ BuildArch:      noarch
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module pip >= 6.0.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module virtualenv}
 BuildRequires:  graphviz-gnome
 # /SECTION
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -48,7 +46,6 @@ Command line utility to show dependency tree of packages.
 
 %prep
 %setup -q -n pipdeptree-%{version}
-tar -xzf %{SOURCE1}
 
 %build
 %python_build
@@ -59,8 +56,7 @@ tar -xzf %{SOURCE1}
 %python_clone -a %{buildroot}%{_bindir}/pipdeptree
 
 %check
-# Two tests fail due to https://github.com/naiquevin/pipdeptree/issues/116
-%pytest --ignore tests/virtualenvs/ -k 'not test_render_tree_exclude and not test_render_tree_exclude_reverse'
+%pytest -k 'not test_custom_interpreter'
 
 %post
 %{python_install_alternative pipdeptree}

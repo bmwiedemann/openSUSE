@@ -16,4 +16,26 @@
     <comment></comment>
     <requestid>828008</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a2021b58c7f269255a1319a94b7fe83e</srcmd5>
+    <version>2.2.1</version>
+    <time>1642835884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * Fix --user-only and --freeze flags which were broken after the last release.
+  * Fix for compatibility with new version of graphviz (&gt;= 0.18.1).
+  * Fix pipdeptree to work with pip version 21.3. The _internal pip api that was being used earlier is now replaced with new functions. (PR #154)
+  * JSON output is sorted alphabetically to make it deterministic
+  * Fix --freeze option due to breaking changes in pip's internal api in version &gt; 21.1.1
+  * Include license file in dist package
+  * Support for running in the context of a virtualenv (without installing pipdeptree inside the virtualenv)
+  * Avoid crash when rendering cyclic dependencies
+  * Fix graphviz (dot file) output
+  * Handle a (rare) case while guessing version of a package
+  * Improve integration tests 
+- Remove the hacked together virtualenv that was 2.7 based, since it is no
+  longer needed.
+- Add virtualenv to BuildRequires.</comment>
+    <requestid>947804</requestid>
+  </revision>
 </revisionlist>

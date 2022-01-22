@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 21 01:22:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.1:
+  * Fix --user-only and --freeze flags which were broken after the last release.
+  * Fix for compatibility with new version of graphviz (>= 0.18.1).
+  * Fix pipdeptree to work with pip version 21.3. The _internal pip api that was being used earlier is now replaced with new functions. (PR #154)
+  * JSON output is sorted alphabetically to make it deterministic
+  * Fix --freeze option due to breaking changes in pip's internal api in version > 21.1.1
+  * Include license file in dist package
+  * Support for running in the context of a virtualenv (without installing pipdeptree inside the virtualenv)
+  * Avoid crash when rendering cyclic dependencies
+  * Fix graphviz (dot file) output
+  * Handle a (rare) case while guessing version of a package
+  * Improve integration tests 
+- Remove the hacked together virtualenv that was 2.7 based, since it is no
+  longer needed.
+- Add virtualenv to BuildRequires.
+
+-------------------------------------------------------------------
 Wed Aug 19 15:07:54 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.0.0
