@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# Python 3.6 was officiallay supported with IPython up to 7.15
-%define         skip_python36 1
-%bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.30.1
+Version:        8.0.1
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -48,22 +46,28 @@ Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtcons
 Patch0:         ipython-pr13282-py310-inspect.patch
 # PATCH-FIX-UPSTREAM ipython-pr13371-py310-oserror.patch -- gh#ipython/ipython#13371
 Patch1:         ipython-pr13371-py310-oserror.patch
-BuildRequires:  %{python_module backcall}
+# PATCH-FIX-OPENSUSE skip-network-test.patch gh#ipython/ipython#13468 mcepl@suse.com
+# skip doctests requiring network connection
+Patch2:         skip-network-test.patch
+BuildRequires:  %pythons
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-Pygments
+# requires the full stdlib including sqlite3
+Requires:       python >= 3.7
 Requires:       python-backcall
-Requires:       python-base >= 3.7
+Requires:       python-black
 Requires:       python-decorator
 Requires:       python-jedi >= 0.16
 Requires:       python-matplotlib-inline
 Requires:       python-pexpect >= 4.3
 Requires:       python-pickleshare
-Requires:       python-prompt_toolkit < 3.1
-Requires:       python-prompt_toolkit >= 2.0
-Requires:       python-traitlets >= 4.2
+Requires:       python-pygments
+Requires:       python-setuptools >= 18.5
+Requires:       python-stack-data
+Requires:       python-traitlets >= 5
+Requires:       (python-prompt_toolkit >= 2.0 with python-prompt_toolkit < 3.1)
 Recommends:     jupyter
 Recommends:     python-ipykernel
 Recommends:     python-ipyparallel
@@ -85,17 +89,25 @@ Provides:       python-jupyter_ipython-doc-pdf = %{version}
 Obsoletes:      python-jupyter_ipython-doc-pdf < %{version}
 BuildArch:      noarch
 %if %{with test}
-# test requirements are specified in the iptest subpackage below
-BuildRequires:  %{python_module ipython-iptest = %{version}}
-BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module curio}
+BuildRequires:  %{python_module ipython = %{version}}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module numpy >= 1.19}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testpath}
+BuildRequires:  %{python_module trio}
 %endif
 %if !%{with test}
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -136,27 +148,6 @@ following main features:
  * Easily embeddable in other Python programs and GUIs.
  * Integrated access to the pdb debugger and the Python profiler.
 
-%package iptest
-Summary:        Tools for testing packages that rely in %{name}
-Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
-Requires:       python-Pygments
-Requires:       python-ipykernel
-Requires:       python-nbformat
-Requires:       python-nose >= 0.10.1
-Requires:       python-numpy >= 1.17
-Requires:       python-requests
-Requires:       python-testpath
-%if %{with libalternatives}
-Requires:       alts
-%endif
-Provides:       python-jupyter_ipython-iptest = %{version}
-Obsoletes:      python-jupyter_ipython-iptest < %{version}
-
-%description iptest
-This package provides the iptest command, which is used for
-testing software that uses %{name}.
-
 %prep
 %autosetup -p1 -n ipython-%{version}
 
@@ -178,13 +169,6 @@ popd
 
 %python_clone -a %{buildroot}%{_bindir}/ipython
 %python_clone -a %{buildroot}%{_bindir}/ipython3
-
-%if %{with iptest}
-%python_clone -a %{buildroot}%{_bindir}/iptest
-%python_clone -a %{buildroot}%{_bindir}/iptest3
-%else
-rm %{buildroot}%{_bindir}/iptest*
-%endif
 
 # must clone after copy
 cp %{buildroot}%{_mandir}/man1/ipython{,3}.1
@@ -227,38 +211,24 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/IP
 
 %if %{with test}
 %check
-export LANG="en_US.UTF-8"
-mkdir tester
-pushd tester
-%python_expand iptest-%{$python_bin_suffix}
-popd
+export PYTHONPATH=$(pwd)
+%pytest
 %endif
 
 %if !%{with test}
-
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative ipython
-
-%pre iptest
-# If libalternatives is used: Removing old update-alternatives entries.
-%python_libalternatives_reset_alternative iptest
 
 %post
 %python_install_alternative ipython ipython3 ipython.1.gz ipython3.1.gz
 %desktop_database_post
 %icon_theme_cache_post
 
-%post iptest
-%python_install_alternative iptest iptest3
-
 %postun
 %python_uninstall_alternative ipython
 %desktop_database_postun
 %icon_theme_cache_postun
-
-%postun iptest
-%python_uninstall_alternative iptest
 %endif
 
 %if !%{with test}
@@ -278,11 +248,6 @@ popd
 %{_datadir}/icons/hicolor/*x*/apps/IPythonNotebook-%{python_bin_suffix}.png
 %endif
 
-%if %{with iptest}
-%files %{python_files iptest}
-%python_alternative %{_bindir}/iptest
-%python_alternative %{_bindir}/iptest3
-%endif
 %endif
 
 %changelog

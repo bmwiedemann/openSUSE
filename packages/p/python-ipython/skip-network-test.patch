@@ -1,0 +1,15 @@
+---
+ IPython/core/display.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/IPython/core/display.py
++++ b/IPython/core/display.py
+@@ -879,7 +879,7 @@ class Image(DisplayObject):
+         a URL, or a filename from which to load image data.
+         The result is always embedding image data for inline images.
+ 
+-        >>> Image('http://www.google.fr/images/srpr/logo3w.png')
++        >>> Image('http://www.google.fr/images/srpr/logo3w.png')  # doctest: +SKIP
+         <IPython.core.display.Image object>
+ 
+         >>> Image('/path/to/image.jpg')
