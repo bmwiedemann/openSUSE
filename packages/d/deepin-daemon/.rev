@@ -45,4 +45,12 @@
     <comment></comment>
     <requestid>918798</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d3b897aa56f1783d0bf1488ac073c534</srcmd5>
+    <version>5.13.36</version>
+    <time>1642835889</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 947872 from hillwood)</comment>
+    <requestid>947873</requestid>
+  </revision>
 </revisionlist>

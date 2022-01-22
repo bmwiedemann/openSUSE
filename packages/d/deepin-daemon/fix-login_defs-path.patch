@@ -1,0 +1,82 @@
+From 1262c03c5e5b4771f04a73ee2c01e1490f4e96af Mon Sep 17 00:00:00 2001
+From: justforlxz <justforlxz@gmail.com>
+Date: Mon, 10 Jan 2022 10:02:37 +0800
+Subject: [PATCH] fix: missing fallback for /usr/etc/login.defs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+https://build.opensuse.org/request/show/944905
+
+In opensuse, file changes have been performed, so fallback needs to be added
+
+Log: 修复 openSUSE 上获取不到用户列表
+Influence: no
+Change-Id: I4ccbb4d03d7eb62fc203118e8d817b61ba6deb99
+---
+ accounts/users/list.go | 31 ++++++++++++++++++++++++++++---
+ 1 file changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/accounts/users/list.go b/accounts/users/list.go
+index 151117c96..f35f13e2f 100644
+--- a/accounts/users/list.go
++++ b/accounts/users/list.go
+@@ -33,7 +33,6 @@ const (
+ 	userFilePasswd    = "/etc/passwd"
+ 	userFileShadow    = "/etc/shadow"
+ 	userFileGroup     = "/etc/group"
+-	userFileLoginDefs = "/etc/login.defs"
+ 	userFileSudoers   = "/etc/sudoers"
+ 
+ 	itemLenPasswd    = 7
+@@ -48,6 +47,32 @@ var (
+ 	}
+ )
+ 
++func userFileLoginDefs() string {
++	userFileLoginDefs := "/etc/login.defs"
++	userFileLoginDefsFallback := "/usr/etc/login.defs"
++
++	exists := func(name string) bool {
++		_, err := os.Stat(name)
++		if err == nil {
++			return true
++		}
++		if errors.Is(err, os.ErrNotExist) {
++			return false
++		}
++		return false
++	}
++
++	if exists(userFileLoginDefs) {
++		return userFileLoginDefs
++	}
++
++	if exists(userFileLoginDefsFallback) {
++		return userFileLoginDefsFallback
++	}
++
++	return ""
++}
++
+ type UserInfo struct {
+ 	Name    string
+ 	Uid     string
+@@ -93,7 +118,7 @@ func GetHumanUserInfos() (UserInfos, error) {
+ 
+ func IsHumanUdcpUserUid(uid uint32) bool {
+ 	userInfo := UserInfo{Uid: strconv.FormatUint(uint64(uid), 10)}
+-	return userInfo.isHumanViaLoginDefs(userFileLoginDefs)
++	return userInfo.isHumanViaLoginDefs(userFileLoginDefs())
+ }
+ 
+ func GetUserInfoByName(name string) (UserInfo, error) {
+@@ -165,7 +190,7 @@ func (infos UserInfos) GetUserNames() []string {
+ func (infos UserInfos) filterUserInfos() UserInfos {
+ 	var tmp UserInfos
+ 	for _, info := range infos {
+-		if !info.isHumanUser(userFileLoginDefs) {
++		if !info.isHumanUser(userFileLoginDefs()) {
+ 			continue
+ 		}
+ 

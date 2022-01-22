@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,11 @@ Patch1:         %{name}-libinput.patch
 # PATCH-FIX-OPENSUSE disable-gobuild-in-makefile.patch hillwood@opensuse.org
 # Use gobuild macro instead of makefile to build go binaries
 Patch2:         disable-gobuild-in-makefile.patch
-Patch3:         harden_deepin-accounts-daemon.service.patch
-Patch4:         harden_hwclock_stop.service.patch
+# PATCH-Fix-UPSTREAM fix-login_defs-path.patch
+# https://github.com/linuxdeepin/dde-daemon/commit/1262c03c5e5b4771f04a73ee2c01e1490f4e96af
+Patch3:         fix-login_defs-path.patch
+Patch4:         harden_deepin-accounts-daemon.service.patch
+Patch5:         harden_hwclock_stop.service.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  golang(API) = 1.15
 %endif
@@ -82,11 +85,12 @@ BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
-BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 Requires:       acpid
 Requires:       gvfs
 Requires:       iw
+Requires:       libqt5-qdbus
 Requires:       rfkill
 Requires:       upower
 Requires:       wallpaper-branding-openSUSE
@@ -185,6 +189,8 @@ sed -i 's|/usr/share/backgrounds/default_background.jpg|/usr/share/wallpapers/op
 sed -i 's|/lib/udev|/usr/lib/udev|g' Makefile
 sed -i 's|/etc/modules-load.d|/usr/lib/modules-load.d|g' Makefile
 
+sed -i 's|qdbus|qdbus-qt5|g' network/examples/set_wired_static_ip.sh misc/etc/acpi/powerbtn.sh
+
 %build
 %goprep %{import_path}
 %gobuild ...
@@ -282,7 +288,7 @@ fi
 # %{_prefix}/lib/modules-load.d/i2c_dev.conf
 %dir %{_sysconfdir}/pulse/daemon.conf.d
 %config %{_sysconfdir}/pulse/daemon.conf.d/10-deepin.conf
-%{_prefix}/lib/systemd/system/hwclock_stop.service
+%{_unitdir}/hwclock_stop.service
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/35_deepin_gfxmode
 %{_prefix}/lib/%{name}/

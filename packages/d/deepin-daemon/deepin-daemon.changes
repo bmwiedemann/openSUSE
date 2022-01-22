@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 21 06:58:27 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use qdbus-qt5 instead of qdbus
+- Fix login.defs path, add fix-login_defs-path.patch
+
+-------------------------------------------------------------------
+Wed Jan 19 11:41:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allowOBS to
+  shortcut through systemd-mini.
+
+-------------------------------------------------------------------
 Fri Sep  3 07:04:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):
