@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 19 15:18:16 UTC 2022 - lnussel@suse.de
+
+- Update to version 0.g93:
+  * locale.attr: Match all files inside LC_MESSAGES (boo#1194865)
+  * remove leap_version as it's obsolete
+
+-------------------------------------------------------------------
 Thu Oct 21 10:33:43 UTC 2021 - lnussel@suse.de
 
 - Update to version 0.g89:

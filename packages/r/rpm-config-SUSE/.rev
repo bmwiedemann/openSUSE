@@ -175,4 +175,14 @@
   * Allow locale directory to be named &quot;locales&quot; too</comment>
     <requestid>926731</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f6f4020d2aaac5adab15882135e4d22b</srcmd5>
+    <version>0.g93</version>
+    <time>1642835867</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.g93:
+  * locale.attr: Match all files inside LC_MESSAGES (boo#1194865)
+  * remove leap_version as it's obsolete</comment>
+    <requestid>947451</requestid>
+  </revision>
 </revisionlist>

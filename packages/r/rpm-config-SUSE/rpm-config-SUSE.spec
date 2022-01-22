@@ -1,7 +1,7 @@
 #
 # spec file for package rpm-config-SUSE
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        0.g89
+Version:        0.g93
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -46,8 +46,6 @@ sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
     -e 's/@ul_version@/%{?ul_version}%{!?ul_version:0}/' \
     -e '/@is_opensuse@%{?is_opensuse:nomatch}/d' \
     -e 's/@is_opensuse@/%{?is_opensuse}%{!?is_opensuse:0}/' \
-    -e '/@leap_version@%{?leap_version:nomatch}/d' \
-    -e 's/@leap_version@/%{?leap_version}%{!?leap_version:0}/' \
 %if 0%{?usrmerged}
     -e 's/@usrmerged@/%{?usrmerged}/' \
 %else
