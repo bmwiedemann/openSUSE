@@ -1,7 +1,7 @@
 #
 # spec file for package spyder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # boo#1190482
 %bcond_with     test
 Name:           spyder
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -73,7 +73,7 @@ Requires:       python3-qtconsole >= 5.2.1
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.2.0
+Requires:       python3-spyder-kernels >= 2.2.1
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -163,7 +163,7 @@ BuildRequires:  python3-qtconsole >= 5.2.1
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 2.2.0
+BuildRequires:  python3-spyder-kernels >= 2.2.1
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
@@ -263,6 +263,7 @@ rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 
 # remove egg package pins read at runtime startup and for the test suite dependency sync checks
 sed -r \
+    -e 's/(ipython.*),<8.0.0/\1/' \
     -e 's/(pyqt[5 ])<5.13/\1/' \
     -e 's/(pyqtwebengine.*)<5.13/\1/' \
     -i setup.py requirements/conda.txt binder/environment.yml

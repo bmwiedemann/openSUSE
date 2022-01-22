@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 21 20:00:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.2.2
+  * Fix several issues regarding the IPython Console kernel
+    restart, shutdown and bening errors handling
+
+-------------------------------------------------------------------
 Sun Dec 19 18:23:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.2.1
