@@ -878,4 +878,16 @@ new request.</comment>
   - jsc#SLE-18260, jsc#SLE-19264</comment>
     <requestid>935261</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>6a9159e67bd0489293d1a69c389e7d4c</srcmd5>
+    <version>8.0.0</version>
+    <time>1642835881</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 8.0.0.
+
+- Update to 8.0.0
+  - Add all new APIs and constants in libvirt 8.0.0
+  - jsc#SLE-11435, jsc#SLE-18354</comment>
+    <requestid>947281</requestid>
+  </revision>
 </revisionlist>

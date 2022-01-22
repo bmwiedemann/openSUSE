@@ -2,10 +2,10 @@ Add migration constraint parameters to libvirt perl bindings
 
 References: fate#316614, bsc#859868
 
-Index: Sys-Virt-7.10.0/lib/Sys/Virt/Domain.pm
+Index: Sys-Virt-8.0.0/lib/Sys/Virt/Domain.pm
 ===================================================================
---- Sys-Virt-7.10.0.orig/lib/Sys/Virt/Domain.pm
-+++ Sys-Virt-7.10.0/lib/Sys/Virt/Domain.pm
+--- Sys-Virt-8.0.0.orig/lib/Sys/Virt/Domain.pm
++++ Sys-Virt-8.0.0/lib/Sys/Virt/Domain.pm
 @@ -1176,6 +1176,18 @@ omitted libvirt will auto-generate suita
  only necessary to specify this URI if the destination host has multiple
  interfaces and a specific interface is required to transmit storage data.
@@ -25,11 +25,11 @@ Index: Sys-Virt-7.10.0/lib/Sys/Virt/Domain.pm
  =back
  
  =item $ddom = $dom->migrate(destcon, flags=0, dname=undef, uri=undef, bandwidth=0)
-Index: Sys-Virt-7.10.0/lib/Sys/Virt.xs
+Index: Sys-Virt-8.0.0/lib/Sys/Virt.xs
 ===================================================================
---- Sys-Virt-7.10.0.orig/lib/Sys/Virt.xs
-+++ Sys-Virt-7.10.0/lib/Sys/Virt.xs
-@@ -5580,7 +5580,7 @@ _migrate(dom, destcon, newparams, flags=
+--- Sys-Virt-8.0.0.orig/lib/Sys/Virt.xs
++++ Sys-Virt-8.0.0/lib/Sys/Virt.xs
+@@ -5613,7 +5613,7 @@ _migrate(dom, destcon, newparams, flags=
       virTypedParameterPtr params;
       int nparams;
      CODE:
@@ -38,7 +38,7 @@ Index: Sys-Virt-7.10.0/lib/Sys/Virt.xs
       Newx(params, nparams, virTypedParameter);
  
       strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5659,6 +5659,18 @@ _migrate(dom, destcon, newparams, flags=
+@@ -5692,6 +5692,18 @@ _migrate(dom, destcon, newparams, flags=
               VIR_TYPED_PARAM_FIELD_LENGTH);
       params[18].type = VIR_TYPED_PARAM_STRING;
  
@@ -57,7 +57,7 @@ Index: Sys-Virt-7.10.0/lib/Sys/Virt.xs
       nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
       vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -5687,7 +5699,7 @@ _migrate_to_uri(dom, desturi, newparams,
+@@ -5720,7 +5732,7 @@ _migrate_to_uri(dom, desturi, newparams,
       virTypedParameterPtr params;
       int nparams;
    PPCODE:
@@ -66,7 +66,7 @@ Index: Sys-Virt-7.10.0/lib/Sys/Virt.xs
       Newx(params, nparams, virTypedParameter);
  
       strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5766,6 +5778,18 @@ _migrate_to_uri(dom, desturi, newparams,
+@@ -5799,6 +5811,18 @@ _migrate_to_uri(dom, desturi, newparams,
               VIR_TYPED_PARAM_FIELD_LENGTH);
       params[18].type = VIR_TYPED_PARAM_STRING;
  
@@ -85,7 +85,7 @@ Index: Sys-Virt-7.10.0/lib/Sys/Virt.xs
       nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
       vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -9644,6 +9668,9 @@ BOOT:
+@@ -9680,6 +9704,9 @@ BOOT:
        REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_DISKS_URI, MIGRATE_PARAM_DISKS_URI);
  
        REGISTER_CONSTANT(VIR_DOMAIN_MIGRATE_MAX_SPEED_POSTCOPY, MIGRATE_MAX_SPEED_POSTCOPY);
