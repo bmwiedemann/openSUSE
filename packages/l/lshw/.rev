@@ -277,4 +277,14 @@ factory)</comment>
   * Add more network speeds</comment>
     <requestid>930871</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d2ce73e586b1a333d67ac1f1ef3d69e8</srcmd5>
+    <version>B.02.19.2+git.20211222</version>
+    <time>1642835907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19.2+git.20211222:
+  * Add Spanish translation
+  * Fix mistakes in Catalan translation</comment>
+    <requestid>947934</requestid>
+  </revision>
 </revisionlist>
