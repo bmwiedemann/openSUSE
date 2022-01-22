@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 19 23:41:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.1:
+  - Add a configuration for license URL.
+  - Exclude the floating navbar from CHM help.
+  - Make sidebar scrollable and sticky (on modern browsers)
+  - Fix monospace again, on buggy Google Chrome
+  - Add the copyright_url variable in the theme
+  - Improve readability
+  - Remove #searchbox on mobile to fix a layout bug
+  - Fix the appearance of version/language selects
+  - Make the theme responsive
+  - Use default pygments theme
+  - Test Github action to validate the theme against docsbuild scripts.
+  - Add the copy button to pycon3 highlighted code blocks.
+  - Updated the readme, to remind user to install the package in a virtual environment.
+  - Updated the package url, using the GitHub repository instead of docs.python.org
+  - Added license information to the footer of the doc
+  - Fixed typo in the footer
+  - Added information on how to use the package
+  - Fixed code formatting
+  - Fixed code bgcolor and codetextcolor for Sphinx 3.1.0+
+
+-------------------------------------------------------------------
 Fri Mar 20 12:50:54 UTC 2020 - pgajdos@suse.com
 
 - version update to 2020.1
