@@ -1,7 +1,7 @@
 #
 # spec file for package psmisc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
 URL:            https://gitlab.com/psmisc/psmisc/
-Version:        23.3
+Version:        23.4
 Release:        0
 Provides:       ps:/usr/bin/killall
 Summary:        Utilities for managing processes on your system
@@ -40,7 +40,6 @@ Patch2:         %{name}-22.21-pstree.patch
 # https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
 Patch3:         0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
 Patch4:         0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
-Patch5:         psmisc-v23.3-selinux.patch
 
 %define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64
 
@@ -59,7 +58,6 @@ processes that are using specified files or filesystems.
 %patch2 -p0 -b .pstree
 %patch3 -p0 -b .mntinf
 %patch4 -p0 -b .statx
-%patch5 -p0 -b .selx
 %patch0 -p0 -b .p0
 
 %build
@@ -72,7 +70,8 @@ autoreconf -fi
 CFLAGS="-D_GNU_SOURCE -D_DEFAULT_SOURCE ${RPM_OPT_FLAGS} -pipe -fPIE"
 CXXFLAGS="$CFLAGS"
 LDFLAGS=-pie
-export CFLAGS CXXFLAGS LDFLAGS
+CC=gcc
+export CFLAGS CXXFLAGS LDFLAGS CC
 %configure	--disable-rpath \
 	--with-gnu-ld		\
 	--enable-selinux	\
