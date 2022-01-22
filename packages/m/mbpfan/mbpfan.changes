@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:27:56 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_mbpfan.service.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 19:52:27 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - More clean spec thanks to spec-cleaner

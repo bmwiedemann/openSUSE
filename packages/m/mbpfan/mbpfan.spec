@@ -23,6 +23,7 @@ Summary:        A simple daemon to control fan speed on all MacBook/MacBook Pros
 License:        GPL-3.0-only
 URL:            https://github.com/linux-on-mac/mbpfan
 Source0:        https://github.com/linux-on-mac/mbpfan/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:	harden_mbpfan.service.patch
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  systemd-rpm-macros
@@ -44,6 +45,7 @@ number of processors and fans (max. 10).
 
 %prep
 %setup -q
+%patch0 -p1
 
 
 %build

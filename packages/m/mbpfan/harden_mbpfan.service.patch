@@ -1,0 +1,22 @@
+Index: mbpfan-2.2.1/mbpfan.service
+===================================================================
+--- mbpfan-2.2.1.orig/mbpfan.service
++++ mbpfan-2.2.1/mbpfan.service
+@@ -4,6 +4,17 @@ After=syslog.target
+ After=sysinit.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ ExecStart=/usr/sbin/mbpfan -f
+ ExecReload=/usr/bin/kill -HUP $MAINPID
