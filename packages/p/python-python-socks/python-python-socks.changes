@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:53:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Added anyio backend
+  * Added new (v2) API for sync and trio backends
+  * The code base has been completely redesigned 
+  * Fixed #14 anyio.BrokenResourceError
+
+-------------------------------------------------------------------
 Wed Apr 21 06:07:29 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - initial package (1.2.4)
