@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jan 22 17:17:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- The work around needs to ignore the testfile from the sitelib
+
+-------------------------------------------------------------------
+Sat Jan 22 12:25:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Work around xdist related conftest import error
+
+-------------------------------------------------------------------
+Fri Jan 21 16:53:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 8.6.0:
+  -  #384 via PR #385, PR #406: Exposed type stubs with
+    annotations for public API
+  - PR #401 (related to the PR #352 effort): Started reusing the
+    the expriration_interval setting in the low-level
+        select.select() invocation,
+    effectively reducing the system load under the Windows OS
+    when idle, that is noticeable on low-end hardware systems
+- Removed upstreamed patches
+  - cheroot-pr370-py310-threaddeprecations.patch
+  - cheroot-pr371-py310-threaddeprecations.patch
+  - cheroot-c0b1b167-py310-threaddeprecations.patch
+- Add no-pypytools.patch removing the dependency on pypytools as
+  we don't have PyPy in openSUSE at all.
+
+-------------------------------------------------------------------
 Sun Dec 19 21:13:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add patches fixing test suite failures due to Python 3.10
