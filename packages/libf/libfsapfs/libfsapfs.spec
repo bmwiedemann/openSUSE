@@ -1,7 +1,7 @@
 #
 # spec file for package libfsapfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ Group:          System/Filesystems
 URL:            https://github.com/libyal/libfsapfs
 Source:         %name-%version.tar.xz
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcaes) >= 20201012
@@ -49,6 +51,7 @@ BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
+%python_subpackages
 
 %description
 libfsapfs is a library to access the Apple File System (APFS).
@@ -75,7 +78,7 @@ Unsupported APFS format features:
 %package devel
 Summary:        Development files for libfsapfs
 Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
+Requires:       libfsapfs1 = %version
 
 %description devel
 Development files for %{name}.
@@ -87,33 +90,29 @@ Group:          System/Libraries
 %description -n libfsapfs1
 libfsapfs1 is a library for access the Apple File System (APFS).
 
-%package -n python3-libfsapfs
-Summary:        Python bindings for %{name}
-Group:          System/Filesystems
-Requires:       libfsapfs1
-
-%description -n python3-libfsapfs
-Python bindings for %{name}, a library for access the Apple File System
-(APFS).
-
 %prep
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %define _lto_cflags -ffat-lto-objects
 export LDFLAGS="-Wl,-z,relro,-z,now"
 export CFLAGS="%{optflags}"
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
 %configure --disable-static \
   --enable-wide-character-type \
   --enable-verbose-output \
   --enable-debug-output \
-  --enable-python3
-
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 rm -fv %{buildroot}%{_libdir}/*.la
 
 %check
@@ -122,13 +121,13 @@ make check || /bin/true
 %post -n libfsapfs1 -p /sbin/ldconfig
 %postun -n libfsapfs1 -p /sbin/ldconfig
 
-%files
+%files -n %name
 %license COPYING*
 %{_bindir}/fsapfsinfo
 %{_bindir}/fsapfsmount
 %{_mandir}/man*/*
 
-%files devel
+%files -n %name-devel
 %{_includedir}/%{name}*
 %{_libdir}/%{name}*.so
 %{_libdir}/pkgconfig/*
@@ -136,7 +135,7 @@ make check || /bin/true
 %files -n libfsapfs1
 %{_libdir}/%{name}*so.*
 
-%files -n python3-libfsapfs
-%{python3_sitearch}/pyfsapfs*
+%files %python_files
+%{python_sitearch}/pyfsapfs*
 
 %changelog
