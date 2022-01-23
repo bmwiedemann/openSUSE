@@ -1,7 +1,7 @@
 #
 # spec file for package liblnk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ URL:            https://github.com/libyal/liblnk
 Source:         %name-%version.tar.xz
 Source2:        Windows_Shortcut_File_LNK_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -46,7 +48,7 @@ BuildRequires:  pkgconfig(libfole) >= 20170502
 BuildRequires:  pkgconfig(libfwps) >= 20191221
 BuildRequires:  pkgconfig(libfwsi) >= 20210419
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 liblnk is a library and tools to access Windows Shortcut File (LNK) format files.
@@ -79,30 +81,24 @@ liblnk is a library to access Windows Shortcut File (LNK) files.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python3-%name
-Summary:        Python bindings for liblnk, a Windows Shortcut Link parser
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Requires:       %lname = %version
-
-%description -n python3-%name
-Python3 binding for liblnk, which can read Windows Shortcut Link files.
-
 %prep
 %autosetup -p1
 cp "%SOURCE2" .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure \
-    --disable-static \
-    --enable-wide-character-type \
-    --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find %buildroot -name '*.la' -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -111,11 +107,11 @@ find %buildroot -name '*.la' -delete
 %license COPYING*
 %_libdir/liblnk.so.*
 
-%files tools
+%files -n %name-tools
 %_bindir/lnk*
 %_mandir/man1/lnkinfo.1*
 
-%files devel
+%files -n %name-devel
 %doc Windows_Shortcut_File_*.pdf
 %_includedir/liblnk.h
 %_includedir/liblnk/
@@ -123,8 +119,8 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/liblnk.pc
 %_mandir/man3/liblnk.3*
 
-%files -n python3-%name
+%files %python_files
 %license COPYING*
-%python3_sitearch/pylnk.so
+%python_sitearch/pylnk.so
 
 %changelog
