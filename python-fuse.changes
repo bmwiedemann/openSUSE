@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:21:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Improve path handling for Python >= 3.6
+  * fix race in xmp.py
+  * fix surrogateescape handling in fsyncdir/readdir/write
+  * unbreak xmp.py for python2
+  * fix object leak in open_func()
+  * fix temporary objects leak
+
+-------------------------------------------------------------------
 Sat Dec  5 08:38:10 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.0.0.
