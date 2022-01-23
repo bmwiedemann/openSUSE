@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 04:02:39 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Fix build with gcc12 (boo#1194815)
+  * Adds fix-avoid-file-static-init.patch
+
+-------------------------------------------------------------------
 Sat Dec 11 10:27:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.22.1:
@@ -8,6 +14,11 @@ Sat Dec 11 10:27:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
     is empty
   * CMakeParseLibraryArchitecture: Fix parsing /lib/<arch> implicit
     object path
+
+-------------------------------------------------------------------
+Tue Dec  7 11:05:24 UTC 2021 - Simon Lees <simonf.lees@suse.com>
+
+- Changing something for a test
 
 -------------------------------------------------------------------
 Wed Dec  1 16:36:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
