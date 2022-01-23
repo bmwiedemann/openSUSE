@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 04:52:06 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1194767 - CVE-2022-21658 - Resolve race condition in std::fs::remove_dir_all
+  - 0002-Fix-CVE-2022-21658-for-UNIX-like.patch
+  - 0003-Fix-CVE-2022-21658-for-WASI.patch
+
+-------------------------------------------------------------------
 Wed Dec 15 08:11:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Relax constraints for armv6/7

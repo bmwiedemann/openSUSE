@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global version_suffix 1.57
 %global version_current 1.57.0
@@ -208,6 +209,9 @@ Patch0:         ignore-Wstring-conversion.patch
 Patch1:         fix_bootstrap_vendor.patch
 # Build fails with unused variable.
 Patch2:         0001-Resolve-error-in-bootstrap-where-id-not-used.patch
+# Fix CVE-2022-21658
+Patch10:        0002-Fix-CVE-2022-21658-for-UNIX-like.patch
+Patch11:        0003-Fix-CVE-2022-21658-for-WASI.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
