@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-xdist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-xdist
-Version:        2.2.0
+Version:        2.5.0
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module psutil >= 3.0.0}
 BuildRequires:  %{python_module pytest >= 4.4.0}
 BuildRequires:  %{python_module pytest-forked}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm >= 6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet >= 1.1

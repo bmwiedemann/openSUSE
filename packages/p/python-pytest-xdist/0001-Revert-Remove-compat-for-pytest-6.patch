@@ -5,16 +5,16 @@ Date: Mon, 31 Aug 2020 15:50:54 +0200
 Subject: [PATCH] Revert "Remove compat for pytest < 6"
 
 This reverts commit d153e0a4c4b764c821da9907ba3d2cac31bc3884.
----
- src/xdist/remote.py        | 39 ++++++++++++++++++++++++++++----------
- src/xdist/workermanage.py  |  6 +++++-
- testing/acceptance_test.py |  2 +-
- 3 files changed, 35 insertions(+), 12 deletions(-)
 
-diff --git a/src/xdist/remote.py b/src/xdist/remote.py
-index 26cf958..b78d744 100644
---- a/src/xdist/remote.py
-+++ b/src/xdist/remote.py
+Updated on 2022-01-15
+---
+ src/xdist/remote.py        |   44 ++++++++++++++++++++++++++++++++------------
+ src/xdist/workermanage.py  |    6 +++++-
+ testing/acceptance_test.py |    2 +-
+ 3 files changed, 38 insertions(+), 14 deletions(-)
+
+--- a/src/xdist/remote.py	2022-01-15 19:11:37.443540560 +0100
++++ b/src/xdist/remote.py	2022-01-15 19:18:58.911532654 +0100
 @@ -11,6 +11,7 @@ import os
  import time
  
@@ -23,24 +23,27 @@ index 26cf958..b78d744 100644
  import pytest
  from execnet.gateway_base import dumps, DumpError
  
-@@ -100,8 +101,11 @@ class WorkerInteractor:
+@@ -147,9 +148,12 @@ class WorkerInteractor:
      def pytest_runtest_logstart(self, nodeid, location):
          self.sendevent("logstart", nodeid=nodeid, location=location)
  
+-    @pytest.hookimpl
 -    def pytest_runtest_logfinish(self, nodeid, location):
 -        self.sendevent("logfinish", nodeid=nodeid, location=location)
 +    # the pytest_runtest_logfinish hook was introduced in pytest 3.4
 +    if hasattr(_pytest.hookspec, "pytest_runtest_logfinish"):
 +
++        @pytest.hookimpl
 +        def pytest_runtest_logfinish(self, nodeid, location):
 +            self.sendevent("logfinish", nodeid=nodeid, location=location)
  
+     @pytest.hookimpl
      def pytest_runtest_logreport(self, report):
-         data = self.config.hook.pytest_report_to_serializable(
-@@ -121,14 +125,29 @@ class WorkerInteractor:
+@@ -171,15 +175,31 @@ class WorkerInteractor:
              )
              self.sendevent("collectreport", data=data)
  
+-    @pytest.hookimpl
 -    def pytest_warning_recorded(self, warning_message, when, nodeid, location):
 -        self.sendevent(
 -            "warning_recorded",
@@ -52,6 +55,7 @@ index 26cf958..b78d744 100644
 +    # the pytest_warning_recorded hook was introduced in pytest 6.0
 +    if hasattr(_pytest.hookspec, "pytest_warning_recorded"):
 +
++        @pytest.hookimpl
 +        def pytest_warning_recorded(self, warning_message, when, nodeid, location):
 +            self.sendevent(
 +                "warning_recorded",
@@ -64,6 +68,7 @@ index 26cf958..b78d744 100644
 +    # the pytest_warning_captured hook was introduced in pytest 3.8
 +    elif hasattr(_pytest.hookspec, "pytest_warning_captured"):
 +
++        @pytest.hookimpl
 +        def pytest_warning_captured(self, warning_message, when, item):
 +            self.sendevent(
 +                "warning_captured",
@@ -75,11 +80,9 @@ index 26cf958..b78d744 100644
  
  
  def serialize_warning_message(warning_message):
-diff --git a/src/xdist/workermanage.py b/src/xdist/workermanage.py
-index 9b00251..141d86a 100644
---- a/src/xdist/workermanage.py
-+++ b/src/xdist/workermanage.py
-@@ -383,7 +383,11 @@ class WorkerController:
+--- a/src/xdist/workermanage.py	2022-01-15 19:11:37.443540560 +0100
++++ b/src/xdist/workermanage.py	2022-01-15 19:11:59.967540157 +0100
+@@ -386,7 +386,11 @@ class WorkerController:
          except:  # noqa
              from _pytest._code import ExceptionInfo
  
@@ -92,11 +95,9 @@ index 9b00251..141d86a 100644
              print("!" * 20, excinfo)
              self.config.notify_exception(excinfo)
              self.shutdown()
-diff --git a/testing/acceptance_test.py b/testing/acceptance_test.py
-index 8cac669..eee794c 100644
---- a/testing/acceptance_test.py
-+++ b/testing/acceptance_test.py
-@@ -1364,7 +1364,7 @@ def parse_tests_and_workers_from_output(lines):
+--- a/testing/acceptance_test.py	2022-01-15 19:11:37.463540560 +0100
++++ b/testing/acceptance_test.py	2022-01-15 19:11:59.967540157 +0100
+@@ -1530,7 +1530,7 @@ def parse_tests_and_workers_from_output(
              r"""
              \[(gw\d)\]  # worker
              \s*
@@ -105,6 +106,3 @@ index 8cac669..eee794c 100644
              \s(.*?)     # status string ("PASSED")
              \s(.*::.*)  # nodeid
          """,
--- 
-2.28.0
-

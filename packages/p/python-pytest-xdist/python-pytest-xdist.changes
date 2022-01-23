@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Jan 15 18:31:01 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.5.0
+  * Features
+    + Full compatibility with pytest 7 - no deprecation warnings or
+      use of legacy features.
+    + New --dist=loadgroup option, which ensures all tests marked
+      with @pytest.mark.xdist_group run in the same session/worker.
+      Other tests run distributed as in --dist=load.
+  * Trivial Changes
+    + Use @pytest.hookspec decorator to declare hook options in
+      newhooks.py to avoid warnings in pytest 7.0.
+    + Use up-to-date setup.cfg/pyproject.toml packaging setup.
+    + Started using type annotations and mypy checking internally.
+      The types are incomplete and not published.
+- Changes from 2.4.0
+  * Features
+    + On Linux, the process title now changes to indicate the current
+      worker state (running/idle). Depends on the setproctitle package,
+      which can be installed with pip install pytest-xdist[setproctitle].
+    + Add support for Python 3.10.
+- Changes from 2.3.0
+  * Deprecations and Removals
+    + Python 3.5 is no longer supported.
+  * Features
+    + Add --numprocesses=logical flag, which automatically uses the
+      number of logical CPUs available, instead of physical CPUs
+      with auto. This is very useful for test suites which are not
+      CPU-bound.
+    + Added new pytest_handlecrashitem hook to allow handling and
+      rescheduling crashed items.
+  * Bug Fixes
+    + Copy the parent process sys.path into local workers, to work
+      around execnet's python -c adding the current directory to sys.path.
+    + Fix issue caused by changing the branch name of the pytest repository.
+  * Trivial Changes
+    + Replace master with controller where ever possible.
+    + Use 'main' to refer to pytest default branch in tox env names.
+- Update patches
+  * reintroduce-slave-terminology.patch
+  * 0001-Revert-Remove-compat-for-pytest-6.patch
+- Require setuptools_scm >= 6.0 for building
+
+-------------------------------------------------------------------
 Tue Feb  2 09:53:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
