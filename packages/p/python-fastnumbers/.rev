@@ -77,4 +77,15 @@
       that is now hidden in 3.9)</comment>
     <requestid>886526</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dfc14ac4ae9320874249819fb42ac58a</srcmd5>
+    <version>3.2.1</version>
+    <time>1642973062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Support for Python 3.10
+  * Full coverage of mypy type-checking
+  * Support for Python 3.5</comment>
+    <requestid>948264</requestid>
+  </revision>
 </revisionlist>
