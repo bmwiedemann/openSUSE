@@ -48,4 +48,13 @@
 - Add workaround patch configure-fix.patch.</comment>
     <requestid>943544</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ccc436b7393d9217d2d764b9fb69f9bd</srcmd5>
+    <version>1.0.2</version>
+    <time>1642941698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2: complete release notes can be found here:
+  https://github.com/rui314/mold/releases/tag/v1.0.2.</comment>
+    <requestid>948209</requestid>
+  </revision>
 </revisionlist>

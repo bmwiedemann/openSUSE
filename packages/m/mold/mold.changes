@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 09:44:13 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.0.2: complete release notes can be found here:
+  https://github.com/rui314/mold/releases/tag/v1.0.2.
+
+-------------------------------------------------------------------
 Mon Jan  3 08:33:39 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Start using %{_libexecdir} as an installation location.

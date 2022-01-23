@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -55,11 +55,7 @@ export BINDIR=%{_bindir}
 %make_build %{build_args}
 
 %install
-export PREFIX=%{_prefix}
-export MANDIR=%{_mandir}
-export LIBDIR=%{_libdir}
-export BINDIR=%{_bindir}
-%make_install %{build_args}
+%make_install PREFIX=%{_prefix} BINDIR=%{_bindir} MANDIR=%{_mandir} LIBDIR=%{_libdir} %{build_args}
 
 %post
 "%_sbindir/update-alternatives" --install \
