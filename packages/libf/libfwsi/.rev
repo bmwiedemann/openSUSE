@@ -79,4 +79,12 @@
     <comment>- Enable multipython builds. (This reenables python2 for Leap 15)</comment>
     <requestid>948165</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>e8b9702a50ca14237d049cf7b9752fef</srcmd5>
+    <version>20210419</version>
+    <time>1642959526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220123</comment>
+    <requestid>948245</requestid>
+  </revision>
 </revisionlist>

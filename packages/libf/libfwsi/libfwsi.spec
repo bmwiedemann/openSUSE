@@ -24,8 +24,10 @@ Summary:        Library to access the Windows Shell Item format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwsi
-Source:         %name-%version.tar.xz
-Source2:        Windows_Shell_Item_format.pdf
+Source:         https://github.com/libyal/libfwsi/releases/download/%version/libfwsi-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfwsi/releases/download/%version/libfwsi-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
+Source9:        Windows_Shell_Item_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
@@ -33,16 +35,16 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfole) >= 20170502
-BuildRequires:  pkgconfig(libfwps) >= 20191221
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfole) >= 20220115
+BuildRequires:  pkgconfig(libfwps) >= 20220122
+BuildRequires:  pkgconfig(libuna) >= 20220102
 %python_subpackages
 
 %description
@@ -72,7 +74,7 @@ applications that want to make use of libfwsi.
 
 %prep
 %autosetup -p1
-cp "%{S:2}" .
+cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
