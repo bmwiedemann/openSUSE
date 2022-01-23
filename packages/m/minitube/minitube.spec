@@ -1,7 +1,7 @@
 #
 # spec file for package minitube
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        minitube.1
 # PATCH-FIX-OPENSUSE minitube-no-update-check.patch -- Disable build of internal updater
 Patch0:         %{name}-no-update-check.patch
+# PATCH-FIX-UPSTREAM minitube-fix-mpv-api-change.patch -- Fix for mpv api change in mpv >= 0.34 -- gh#flaviotordini/minitube/#217
+Patch1:         minitube-fix-mpv-api-change.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -58,6 +60,7 @@ it strives to create a new TV-like experience.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # Remove build time references so build-compare can do its work
 FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
