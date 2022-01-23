@@ -1016,4 +1016,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * kdump-avoid-endless-loop-on-EAI_AGAIN.patch</comment>
     <requestid>943611</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>8194e611fb379af7ab231f4e0aca9ca0</srcmd5>
+    <version>1.0</version>
+    <time>1642936533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947999</requestid>
+  </revision>
 </revisionlist>

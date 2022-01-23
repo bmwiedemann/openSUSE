@@ -21,10 +21,28 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 
+%ifarch aarch64
+%define qemu qemu-arm qemu-uefi-aarch64
+%else
+%ifarch %arm
+%define qemu qemu-arm
+%else
+%ifarch %ix86 x86_64
+%define qemu qemu-x86
+%else
+%ifarch %power64
+%define qemu qemu-ppc
+%else
+%define qemu qemu-%{_target_cpu}
+%endif
+%endif
+%endif
+%endif
+
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        0.9.2
+Version:        1.0
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
@@ -34,17 +52,30 @@ Source:         %{name}-%{version}.tar.bz2
 Source2:        %{name}-rpmlintrc
 Patch1:         %{name}-fillupdir-fixes.patch
 Patch9:         %{name}-use-pbl.patch
-Patch10:        %{name}-0.9.2-mkdumprd-properly-pass-compression-params.patch
+Patch10:        %{name}-calibrate-Ignore-malformed-VMCOREINFO.patch
+BuildRequires:  %qemu
 BuildRequires:  asciidoc
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.7
+BuildRequires:  dhcp-client
+BuildRequires:  dracut
 BuildRequires:  gcc-c++
+BuildRequires:  iputils
+BuildRequires:  kernel-default
 BuildRequires:  libblkid-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libesmtp-devel
 BuildRequires:  libmount-devel
 BuildRequires:  libxslt
+BuildRequires:  makedumpfile
 BuildRequires:  pkgconfig
+BuildRequires:  procps
+BuildRequires:  python3
+BuildRequires:  qemu-ipxe
+BuildRequires:  qemu-vgabios
+BuildRequires:  systemd-sysvinit
+BuildRequires:  util-linux-systemd
+BuildRequires:  wicked
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -110,8 +141,6 @@ export CXXFLAGS="%{optflags} -std=c++11"
 
 %install
 %cmake_install
-# remove executable bit from non-binaries
-chmod -x %{buildroot}/lib/kdump/setup-kdump.functions
 # empty directory
 mkdir -p %{buildroot}%{_localstatedir}/crash
 
@@ -185,11 +214,8 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %dir %{dracutlibdir}
 %dir %{dracutlibdir}/modules.d
 %{dracutlibdir}/modules.d/*
-%dir /lib/kdump
-/lib/kdump/*
 %dir /usr/lib/kdump
-/usr/lib/kdump/70-kdump.rules
-/usr/lib/kdump/kdump-save
+/usr/lib/kdump/*
 %{_unitdir}/kdump.service
 %{_unitdir}/kdump-early.service
 %{_sbindir}/rckdump

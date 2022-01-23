@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 21 15:03:29 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-calibrate-Ignore-malformed-VMCOREINFO.patch: calibrate:
+  Ignore malformed VMCOREINFO lines (address occasional OBS build
+  failures).
+
+-------------------------------------------------------------------
+Fri Jan 21 12:58:48 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 1.0
+  * Estimate kdump memory requirements at build time
+    (jsc#SLE-18441).
+- Remove patches that have been upstreamed:
+  * kdump-0.9.2-mkdumprd-properly-pass-compression-params.patch
+
+-------------------------------------------------------------------
 Mon Jan  3 11:56:47 UTC 2022 - Libor Pecháček <lpechacek@suse.com>
 
 - kdump-0.9.2-mkdumprd-properly-pass-compression-params.patch: Fix
