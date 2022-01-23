@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:54:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * add support for Python 3.10
+  * Include ConnectionError and urllib3 exception as retriable 
+
+-------------------------------------------------------------------
 Thu Sep 30 06:30:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Changing pytest's import-mode=importlib seems to make the test

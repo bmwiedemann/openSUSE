@@ -135,4 +135,14 @@
 </comment>
     <requestid>922323</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2ce10a84e2c80e9bd7259f15705244c5</srcmd5>
+    <version>2.1.0</version>
+    <time>1642959522</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * add support for Python 3.10
+  * Include ConnectionError and urllib3 exception as retriable</comment>
+    <requestid>948235</requestid>
+  </revision>
 </revisionlist>
