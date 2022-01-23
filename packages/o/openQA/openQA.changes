@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 23 01:48:35 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1642834441.8f6def1db:
+  * Dependency cron 2022-01-22
+  * Add signatures to OpenQA::App and OpenQA::BuildResults
+  * templates: Fix wording for the "VNC display number"
+  * Show number of restarts of a job within info box on details page
+  * Use signatures in OpenQA::CLI::api and OpenQA::CLI::archive
+  * Show versions of otherwise ambiguous builds on dashboard pages
+  * Avoid repeated calls to `DateTime->now` when computing build results
+  * Remove unused variable `$buildnr`
+
+-------------------------------------------------------------------
 Thu Jan 20 17:48:23 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642570155.7901b9c11:
