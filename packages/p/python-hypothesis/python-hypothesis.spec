@@ -138,6 +138,8 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 
 %check
 %if %{with test}
+# python3 means Python 3.6 on SLE-15 not a generic exclusion for all Python 3.*
+#
 # theses tests try to write into global python_sitelib
 # https://github.com/HypothesisWorks/hypothesis/issues/2546
 donttest="test_updating_the_file_include_new_shrinkers"
@@ -148,7 +150,7 @@ python36_donttest+=" or (test_cli_python_equivalence and json)"
 python36_donttest+=" or test_mutually_recursive_types_with_typevar"
 python3_donttest+=" or test_mutually_recursive_types_with_typevar"
 # gh#HypothesisWorks/hypothesis#3035
-python3_donttest+=" or test_recursion_error_is_not_flaky"
+python310_donttest+=" or test_recursion_error_is_not_flaky"
 # requires backports.zoneinfo for python < 3.9
 python36_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
 python38_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:04:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Correct exclusion of test_recursion_error_is_not_flaky for 3.10.
+
+-------------------------------------------------------------------
 Mon Jan 10 16:47:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 6.35.0:

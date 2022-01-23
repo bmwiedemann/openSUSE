@@ -532,4 +532,13 @@ This version fixes the license naming issue.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>947060</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>2059f2a7148ccbec7c42bb2177ac2dd1</srcmd5>
+    <version>6.35.0</version>
+    <time>1642936502</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct exclusion of test_recursion_error_is_not_flaky for 3.10.
+</comment>
+    <requestid>947747</requestid>
+  </revision>
 </revisionlist>
