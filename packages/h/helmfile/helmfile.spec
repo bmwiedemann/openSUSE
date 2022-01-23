@@ -1,7 +1,7 @@
 #
 # spec file for package helmfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #               2021 Manfred Hollstein <manfred.h@gmx.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit ca6dd7a60f3d3b5e1c70cd8023ea7f493214dc2d
+%define git_commit 9e9a90f8ef30ec0f0f3e03e2f69fb4703c7e7831
 Name:           helmfile
-Version:        0.142.0
+Version:        0.143.0
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT

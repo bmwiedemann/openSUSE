@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 23 09:04:01 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.143.0:
+  * (HEAD, tag: v0.143.0) Fix panic on normalizing path containing .. (#2042)
+  * add cleanup to write-values & lint to harmonise this flag (#2021)
+  * Correct enabled property in helmfile list (#1921)
+  * Add readDir as a templating function (#1934)
+  * Set postsync and cleanup error (#2009)
+  * Bump sprig library to v3.2.1 (#1880)
+  * Allow users other than root to use helm plugins (#1766)
+  * Added example ArgoCD + helmfile deployment (#1882)
+  * Update README.md
+  * Bump helm-diff to version 3.3.1 (#2041)
+  * feat: Option to pass kubeVersion to helm template (#2002)
+  * support apple silicon builds (#2032)
+  * Bumped go-getter to v1.5.9 (#1982)
+  * Fix capitalization of disableOpenAPIValidation config in README (#2003)
+  * bump to go 1.17.3 with alpine 3.13 (#2024)
+  * upgrade vals allowing for the use of the AzureRM terraform backend (#2029)
+  * Add support for --insecure-skip-tls-verify flag on helm repo add command (#1990)
+  * feat: Add go-getter support to load base helmfiles (#1998)
+  * Do fail on a possible typo in needs entries (#2026)
+  * Fix typo in README (#2006)
+
+-------------------------------------------------------------------
 Tue Nov  9 19:13:29 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.142.0:
