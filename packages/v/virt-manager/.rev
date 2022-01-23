@@ -1806,4 +1806,12 @@
     <comment>Upstream patches added for jsc#SLE-20855 KVM: Enable vfio-ccw and vfio-ap in virt-* tools.</comment>
     <requestid>946226</requestid>
   </revision>
+  <revision rev="229" vrev="15">
+    <srcmd5>7b8f31dc777b625b545b27156d6cce6b</srcmd5>
+    <version>3.2.0</version>
+    <time>1642936534</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1194323 detecting win2k22 ISO media.</comment>
+    <requestid>948012</requestid>
+  </revision>
 </revisionlist>

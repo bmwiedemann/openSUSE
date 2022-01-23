@@ -44,6 +44,7 @@ Patch9:         9363e1e6-virt-xml-add-support-for-mediated-devices.patch
 Patch10:        f87e96d3-hostdev-use-method-get_mdev_uuid.patch
 Patch11:        9d4002ee-tests-verify-MDEV-support.patch
 Patch12:        0e15cd51-virt-manager-enable-MDEV-support.patch
+Patch13:        8bb64ad5-console-Dont-block-console-reconnect-for-non-error.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -79,7 +80,6 @@ Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
 Patch160:       virtman-show-no-firmware-for-xenpv.patch
 Patch161:       virtman-legacy-bios-support.patch
-Patch162:       virtman-init-viewer-on-reboot.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -94,6 +94,7 @@ Patch180:       virtinst-keep-iso-for-xenpv.patch
 Patch181:       virtinst-add-slem-detection-support.patch
 Patch182:       virtinst-add-sle-hpc-support.patch
 Patch183:       virtinst-add-oracle-linux-support.patch
+Patch184:       virtinst-windows-server-detection.patch
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -184,6 +185,7 @@ machine).
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
@@ -219,7 +221,6 @@ machine).
 %patch159 -p1
 %patch160 -p1
 %patch161 -p1
-%patch162 -p1
 %patch170 -p1
 %patch171 -p1
 %patch172 -p1
@@ -234,6 +235,7 @@ machine).
 %patch181 -p1
 %patch182 -p1
 %patch183 -p1
+%patch184 -p1
 
 %build
 %if %{default_hvs}

@@ -1,0 +1,46 @@
+Subject: console: Don't block console reconnect for non-error
+From: Cole Robinson crobinso@redhat.com Thu Jan 20 14:14:54 2022 -0500
+Date: Fri Jan 21 11:03:23 2022 -0500:
+Git: 8bb64ad5afd5eb1bb15c25affc5544a3acefe48f
+
+https://listman.redhat.com/archives/virt-tools-list/2022-January/msg00012.html
+
+On xen, a guest reboot will trigger a non-error viewer-disconnected
+signal, but we treat it like an error, which makes it difficult to
+reconnect to the VM console.
+
+If there's no error message raised, treat the disconnect like a
+non-error cases.
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+--- a/virtManager/details/console.py
++++ b/virtManager/details/console.py
+@@ -824,14 +824,23 @@ class vmmConsolePages(vmmGObjectUI):
+             return
+ 
+         msg = _("Viewer was disconnected.")
++        errmsg = ""
+         if errdetails:
+-            msg += "\n" + errdetails
++            errmsg += "\n" + errdetails
+         if ssherr:
+             log.debug("SSH tunnel error output: %s", ssherr)
+-            msg += "\n\n"
+-            msg += _("SSH tunnel error output: %s") % ssherr
++            errmsg += "\n\n"
++            errmsg += _("SSH tunnel error output: %s") % ssherr
+ 
+-        self._activate_gfx_unavailable_page(msg)
++        if errmsg:
++            self._activate_gfx_unavailable_page(msg + errmsg)
++            return
++
++        # If no error message was reported, this isn't a clear graphics
++        # error that should block reconnecting. So use the top level
++        # 'VM unavailable' page which makes it easier for the user to
++        # reconnect.
++        self._activate_vm_unavailable_page(msg)
+ 
+     def _viewer_disconnected(self, ignore, errdetails, ssherr):
+         self._activate_gfx_unavailable_page(_("Viewer disconnected."))
