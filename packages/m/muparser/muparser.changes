@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 22 21:00:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.3.1
+  * Some issues found by fuzzers were fixed.
+
+-------------------------------------------------------------------
 Wed Jun 17 08:54:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.3.2:

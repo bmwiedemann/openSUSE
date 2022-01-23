@@ -15,15 +15,20 @@ The abidiff(1) report from libabigail:
 
 Work around this messup by using the full version as unique SONAME.
 
-diff -ru a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2020-06-17 10:52:15.574640873 +0200
-+++ b/CMakeLists.txt	2020-06-17 00:09:53.000000000 +0200
-@@ -74,7 +74,7 @@
- endif()
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: muparser-2.3.3/CMakeLists.txt
+===================================================================
+--- muparser-2.3.3.orig/CMakeLists.txt
++++ muparser-2.3.3/CMakeLists.txt
+@@ -75,7 +75,7 @@ endif()
+ 
  set_target_properties(muparser PROPERTIES
      VERSION ${MUPARSER_VERSION}
-+    SOVERSION ${MUPARSER_VERSION}
 -    SOVERSION ${MUPARSER_VERSION_MAJOR}
++    SOVERSION ${MUPARSER_VERSION}
  )
  
- # Install the export set for use with the install-tree
+ if(ENABLE_SAMPLES)

@@ -1,7 +1,7 @@
 #
 # spec file for package muparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           muparser
-%define lname	libmuparser2_3_2
-Version:        2.3.2
+%define lname	libmuparser2_3_3
+Version:        2.3.3.1
 Release:        0
 Summary:        A math parser library
 License:        MIT
 Group:          Productivity/Scientific/Math
 URL:            http://muparser.beltoforion.de/
-Source:         https://github.com/beltoforion/muparser/archive/v%{version}.tar.gz
+Source:         https://github.com/beltoforion/muparser/archive/v2.3.3-1.tar.gz
 Patch0:         muparser-abiversion.diff
 Source1:        baselibs.conf
 BuildRequires:  cmake
@@ -57,7 +57,7 @@ works by transforming a mathematical expression into bytecode and
 precalculating constant parts of the expression.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name-2.3.3-1
 
 %build
 %cmake \
@@ -72,12 +72,13 @@ precalculating constant parts of the expression.
 
 %files -n %lname
 %_libdir/libmuparser.so.2*
-%license License.txt
+%license LICENSE
 
 %files devel
 %_includedir/muParser*.h
 %_libdir/libmuparser.so
+%_libdir/cmake/
 %_libdir/pkgconfig/muparser.pc
-%doc Changes.txt
+%doc CHANGELOG
 
 %changelog
