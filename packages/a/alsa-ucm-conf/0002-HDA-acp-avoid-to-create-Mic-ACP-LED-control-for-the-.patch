@@ -1,0 +1,47 @@
+From 369f8b497e15a993d411df81a39ee5c8c1433363 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Fri, 7 Jan 2022 10:57:48 +0100
+Subject: [PATCH] HDA-acp: avoid to create 'Mic ACP LED' control for the HDMI
+ card
+
+BugLink: https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/1849#note_1210933
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA/HDA.conf | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/ucm2/HDA/HDA.conf b/ucm2/HDA/HDA.conf
+index 003d94199ee2..ab80fa51f8be 100644
+--- a/ucm2/HDA/HDA.conf
++++ b/ucm2/HDA/HDA.conf
+@@ -43,13 +43,21 @@ If.use {
+ 			Comment "Play HiFi quality Music"
+ 		}
+ 
+-		Include.init.File "/HDA/init.conf"
++		If.analog {
++			Condition {
++				Type ControlExists
++				Control "name='Master Playback Switch'"
++			}
++			True {
++				Include.init.File "/HDA/init.conf"
+ 
+-		FixedBootSequence [
+-			cset-new "name='Mic ACP LED Capture Switch' type=bool,count=1 off"
+-			exec "-/sbin/modprobe snd_ctl_led"
+-			sysw "-/class/sound/ctl-led/mic/card${CardNumber}/attach:Mic ACP LED Capture Switch"
+-		]
++				FixedBootSequence [
++					cset-new "name='Mic ACP LED Capture Switch' type=bool,count=1 off"
++					exec "-/sbin/modprobe snd_ctl_led"
++					sysw "-/class/sound/ctl-led/mic/card${CardNumber}/attach:Mic ACP LED Capture Switch"
++				]
++			}
++		}
+ 	}
+ }
+ 
+-- 
+2.31.1
+

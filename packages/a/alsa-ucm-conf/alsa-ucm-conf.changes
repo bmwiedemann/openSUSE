@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 09:42:54 CET 2022 - tiwai@suse.de
+
+- Fix regression for AMD ACP LED control:
+  0002-HDA-acp-avoid-to-create-Mic-ACP-LED-control-for-the-.patch
+
+-------------------------------------------------------------------
 Thu Dec 30 09:17:42 CET 2021 - tiwai@suse.de
 
 - Fix a regression in HDA-DualCodecs:

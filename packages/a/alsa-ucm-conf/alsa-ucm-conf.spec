@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-ucm-conf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 Patch1:         0001-HDA-DualCodecs-fix-typo-in-Speaker-condition.patch
+Patch2:         0002-HDA-acp-avoid-to-create-Mic-ACP-LED-control-for-the-.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1
