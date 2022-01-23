@@ -191,3 +191,5 @@ qcom_q6v5_mss:	qcom
 prestera:	prestera
 lt9611uxc:	platform	lontium-lt9611uxc
 wfx:		platform
+wave5:		platform
+rvu_cptpf:	platform
