@@ -457,4 +457,12 @@
     <comment></comment>
     <requestid>744269</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>50191d97fdaf5c6bc8e1430ea62f0821</srcmd5>
+    <version>0.12.20</version>
+    <time>1642936517</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 947489 from iznogood)</comment>
+    <requestid>947898</requestid>
+  </revision>
 </revisionlist>

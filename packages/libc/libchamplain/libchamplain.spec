@@ -1,7 +1,7 @@
 #
 # spec file for package libchamplain
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libchamplain
 Source0:        https://download.gnome.org/sources/libchamplain/0.12/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 91a9e41fed6269637da52d5f88699782a940b198.patch -- g-i: Annotate champlain_layer_set_view to allow NULL as view
+Patch0:         https://gitlab.gnome.org/GNOME/libchamplain/-/commit/91a9e41fed6269637da52d5f88699782a940b198.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
