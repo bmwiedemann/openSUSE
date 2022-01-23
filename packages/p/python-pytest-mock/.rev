@@ -225,4 +225,12 @@
     Before 3.3.0, the fixture class was named MockFixture, but was</comment>
     <requestid>900347</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>727fd0184a69432ad3ed4a011c228e70</srcmd5>
+    <version>3.6.1</version>
+    <time>1642951541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948117</requestid>
+  </revision>
 </revisionlist>

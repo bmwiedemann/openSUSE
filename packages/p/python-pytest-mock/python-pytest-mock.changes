@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 22 11:58:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pytest-mock-issue272-asyncio.patch
+  * gh#pytest-dev/pytest-mock#272
+
+-------------------------------------------------------------------
 Thu Jun  3 09:35:04 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.6.1:
