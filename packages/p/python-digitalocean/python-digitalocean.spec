@@ -1,7 +1,7 @@
 #
 # spec file for package python-digitalocean
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-digitalocean
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Python module for Digital Ocean droplets
 License:        LGPL-3.0-only
