@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source1:        https://www.alsa-project.org/files/pub/utils/alsa-utils-%{versio
 Source2:        01beep.conf
 Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
+Patch1:         0001-alsamixer-Fix-regression-in-color-setup.patch
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
@@ -73,6 +74,7 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch1 -p1
 %patch100 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1

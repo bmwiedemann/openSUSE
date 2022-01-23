@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 09:43:59 CET 2022 - tiwai@suse.de
+
+- Fix alsamixer color config regression:
+  0001-alsamixer-Fix-regression-in-color-setup.patch
+
+-------------------------------------------------------------------
 Mon Dec  6 15:09:27 CET 2021 - tiwai@suse.de
 
 - Update to alsa-utils 1.2.6:
