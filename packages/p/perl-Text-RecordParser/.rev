@@ -59,4 +59,13 @@
     <comment>Fix build (forwarded request 588047 from bmwiedemann)</comment>
     <requestid>591561</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3c894e436a1ae4ecd4ed66a55cb3c099</srcmd5>
+    <version>1.6.5</version>
+    <time>1642936541</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove graphviz from build environment not to run test cases with
+  bug reports open for 7 years</comment>
+    <requestid>948070</requestid>
+  </revision>
 </revisionlist>
