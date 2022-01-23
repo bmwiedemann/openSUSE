@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 19 22:01:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.2:
+  Bugfix only
+  - bpo#46347 memory leak in PyEval_EvalCodeEx (especially
+    visible with Cython code)
+  - and many others
+
+-------------------------------------------------------------------
 Wed Dec  8 13:07:25 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 3.10.1:

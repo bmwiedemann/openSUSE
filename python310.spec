@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.10.1
+%define         folderversion 3.10.2
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -89,7 +89,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -175,7 +175,7 @@ BuildRequires:  mpdecimal-devel
 %if %{with doc}
 BuildRequires:  python3-Sphinx
 %if 0%{?suse_version} >= 1500
-BuildRequires:  python3-python-docs-theme
+BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
 %endif
 %if %{with general}

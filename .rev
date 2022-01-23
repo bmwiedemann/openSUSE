@@ -132,4 +132,19 @@
 </comment>
     <requestid>936508</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7f87513464ca1f9907a1525f75b7d2e5</srcmd5>
+    <version>3.10.2</version>
+    <time>1642951540</time>
+    <user>dimstar_suse</user>
+    <comment>THIS SHOULD GO TO STAGING:D (TOGETHER WITH SR#947585)
+
+- Update to 3.10.2:
+  Bugfix only
+  - bpo#46347 memory leak in PyEval_EvalCodeEx (especially
+    visible with Cython code)
+  - and many others
+</comment>
+    <requestid>947756</requestid>
+  </revision>
 </revisionlist>
