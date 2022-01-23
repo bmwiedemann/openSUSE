@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>855664</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f46aa12f30fe7c4af3e461f3f4b76c49</srcmd5>
+    <version>1.2.0</version>
+    <time>1642959524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * drop python2 support</comment>
+    <requestid>948244</requestid>
+  </revision>
 </revisionlist>

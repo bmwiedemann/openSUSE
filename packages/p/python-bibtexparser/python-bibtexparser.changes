@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:41:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * drop python2 support
+
+-------------------------------------------------------------------
 Mon Dec 14 00:56:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix condition around BuildRequirement
