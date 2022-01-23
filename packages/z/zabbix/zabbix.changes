@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 22 10:37:11 UTC 2022 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest realease 4.0.37
+- patching CVE-2022-23134 ( bsc#1194681 )
+- New Features and Improvements
+  + ZBXNEXT-6809 Changed behavior of the vmware event log, the 'skip'
+    option of the new item resets the VMware event cache
+- Bug Fixes
+  + ZBX-20382 	Updated jquery version
+  + ZBX-20383 	Updated logback-core, logback-classic and slf4j-api jars to the latest stable versions
+  + ZBX-20384 	Fixed possibility to view setup pages by non-superadmin if config already file exists
+- Bug Fixes
+  + ZBX-19926 	Fixed Zabbix agent crashing when reading event log on Windows Server 2022
+  + ZBX-20032 	Fixed server crash when restarting monitored vmware vc
+  + ZBX-19872 	Removed redundant escaping in XML data of HTTP agent POST request
+- Bug Fixes
+  + ZBX-19428 	Fixed high CPU usage and preprocessing workers exiting with
+    timeout when starting numerous poller, trapper and discoverer processes
+  + ZBX-19510 	Fixed re-reading of old Windows events for various Windows event system synchronization problems
+  + ZBX-19457 	Fixed failed query when updating application names longer than 255 characters  
+
+-------------------------------------------------------------------
 Tue Jan 11 10:35:51 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

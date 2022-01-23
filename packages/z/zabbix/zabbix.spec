@@ -1,7 +1,7 @@
 #
 # spec file for package zabbix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.34
+Version:        4.0.37
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
@@ -109,6 +109,7 @@ Summary:        System files for the Zabbix server
 Group:          System/Monitoring
 Requires:       fping
 Requires:       logrotate
+Requires:       update-alternatives
 Requires:       zabbix_server_binary = %{version}-%{release}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
@@ -122,6 +123,7 @@ Summary:        System files for the Zabbix proxy
 Group:          System/Monitoring
 Requires:       fping
 Requires:       logrotate
+Requires:       update-alternatives
 Requires:       zabbix_proxy_binary = %{version}-%{release}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
@@ -632,9 +634,9 @@ fi
 %{_bindir}/zabbix-java-gateway
 %{_prefix}/lib/zabbix-java-gateway/zabbix-java-gateway-%{version}%{?rclevel}.jar
 %{_prefix}/lib/zabbix-java-gateway/android-json-4.3_r3.1.jar
-%{_prefix}/lib/zabbix-java-gateway/slf4j-api-1.7.30.jar
-%{_prefix}/lib/zabbix-java-gateway/logback-core-1.2.3.jar
-%{_prefix}/lib/zabbix-java-gateway/logback-classic-1.2.3.jar
+%{_prefix}/lib/zabbix-java-gateway/slf4j-api-1.7.32.jar
+%{_prefix}/lib/zabbix-java-gateway/logback-core-1.2.9.jar
+%{_prefix}/lib/zabbix-java-gateway/logback-classic-1.2.9.jar
 %{_sbindir}/rczabbix-java-gateway
 %attr(0770,root,%{server_group}) %dir %{_localstatedir}/log/%{server_user}
 %ghost %attr(0770,root,%{server_group}) %dir %{_rundir}/%{server_user}
