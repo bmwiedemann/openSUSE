@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 22 16:02:40 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix release version 2.1
+  + Ship SSL certificate to download the assets for older Android
+    phones/tablets which do not have it and fail to download data.
+  + Graphics have been updated for Balance box and Erase activities.
+  + Fix a bug in reversecount where after the fish did one turn, it
+    was not possible to win even when inputting the good result.
+  + Fix a freeze in learn_decimals activities when changing levels.
+  + Add bold tag for Keyboard controls line on path encoding activities.
+  + Fix bottom of the activities list not visible when scrolled down
+    to the end.
+  + On Windows, remove the blurriness on HiDPI screens when installing GCompris.
+  + Translations
+    + Beton and Macedonian have been completed.
+    + Czech has returned (partial translation above 80% for now)
+- Packaging
+  + Update copyright year
+  + Use new url for download from kde.org
+  + use cmake() for qtlinguist
+  + removed unused gcompris-qt-rpmlintrc
+
+-------------------------------------------------------------------
 Sat Dec 18 08:37:33 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to major release 2.0

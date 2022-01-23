@@ -1,8 +1,8 @@
 #
 # spec file for package gcompris-qt
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 
 Name:           gcompris-qt
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        AGPL-3.0-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://gcompris.net
-Source0:        https://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz
-Source1:        https://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz.sig
+Source0:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz.sig
 Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{name}.keyring
-Source3:        gcompris-qt-rpmlintrc
+BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qml-box2d
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
 # We don't want the Administrative documentation
 # BuildRequires:  kdoctools-devel
