@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 21 07:44:06 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.3:
+  * Internal changes only
+- Drop no longer needed patches:
+  * moved-freedv_callback_rx_sym-into-internal-header.patch
+  * codec2-no_return_random.patch
+- Disable unit tests as they were not run anyways and require octave
+
+-------------------------------------------------------------------
 Tue Oct  5 12:55:41 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Added a patch moved-freedv_callback_rx_sym-into-internal-header.patch

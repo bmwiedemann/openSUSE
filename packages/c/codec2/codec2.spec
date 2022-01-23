@@ -1,7 +1,7 @@
 #
 # spec file for package codec2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname lib%{name}-1_0
 Name:           codec2
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Low bit rate speech codec
 # octave and asterisk directories contain GPL-2.0 licensed code but its not
@@ -29,8 +29,6 @@ URL:            https://rowetel.com/codec2.html
 Source:         https://github.com/drowe67/codec2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        baselibs.conf
-Patch0:         codec2-no_return_random.patch
-Patch1:         moved-freedv_callback_rx_sym-into-internal-header.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -72,12 +70,12 @@ BuildArch:      noarch
 Example code for Codec 2, including test voices and matlab/octave files.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %cmake \
   -DINSTALL_EXAMPLES=TRUE \
-  -DUNITTEST=TRUE
+  -DUNITTEST=FALSE
 %cmake_build
 
 %install

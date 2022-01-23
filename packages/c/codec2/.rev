@@ -58,4 +58,17 @@
     <comment></comment>
     <requestid>923438</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ba03b6e44894189c196a22155b30e5b5</srcmd5>
+    <version>1.0.3</version>
+    <time>1642936509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3:
+  * Internal changes only
+- Drop no longer needed patches:
+  * moved-freedv_callback_rx_sym-into-internal-header.patch
+  * codec2-no_return_random.patch
+- Disable unit tests as they were not run anyways and require octave</comment>
+    <requestid>947868</requestid>
+  </revision>
 </revisionlist>
