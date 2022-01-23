@@ -446,7 +446,7 @@ grep -q '^dockremap:' /etc/subgid || \
 
 %files
 %defattr(-,root,root)
-%doc README.md README_SUSE.md CHANGELOG.md
+%doc README.md README_SUSE.md
 %license LICENSE
 %{_bindir}/docker
 %{_bindir}/dockerd

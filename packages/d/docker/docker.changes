@@ -3,13 +3,15 @@ Mon Jan 17 07:23:01 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.12-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/#201012>.
+- Remove CHANGELOG.md. It hasn't been maintained since 2017, and all of the
+  changelogs are currently only available online.
 
 -------------------------------------------------------------------
 Thu Nov 18 08:35:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.11-ce. See upstream changelog online at
-  <https://docs.docker.com/engine/release-notes/#201011>.
-  bsc#1192814 CVE-2021-41190
+  <https://docs.docker.com/engine/release-notes/#201011>. bsc#1192814
+  bsc#1193273 CVE-2021-41190
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
