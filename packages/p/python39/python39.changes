@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 21:50:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.9.10:
+  Bugfix-only release
+
+-------------------------------------------------------------------
 Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove shebangs from from python-base libraries in _libdir

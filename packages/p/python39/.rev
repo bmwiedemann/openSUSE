@@ -405,4 +405,16 @@
   Factory, not with SLE.</comment>
     <requestid>934643</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7fafa98fbec5bc5c5d366e18dcf9561d</srcmd5>
+    <version>3.9.10</version>
+    <time>1642951540</time>
+    <user>dimstar_suse</user>
+    <comment>THIS SHOULD GO TO STAGING:D (TOGETHER WITH SR#947585)
+
+- Update to 3.9.10:
+  Bugfix-only release
+</comment>
+    <requestid>947754</requestid>
+  </revision>
 </revisionlist>
