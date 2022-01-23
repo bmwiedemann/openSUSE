@@ -24,4 +24,13 @@
   * Validate TXID in client.py</comment>
     <requestid>946643</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98119af8137553844d5587d772ea44bc</srcmd5>
+    <version>0.9.19</version>
+    <time>1642959525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.19:
+  * Allow custom log function (logf) in  DNSLogger</comment>
+    <requestid>948249</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:53:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.19:
+  * Allow custom log function (logf) in  DNSLogger
+
+-------------------------------------------------------------------
 Sat Jan 15 15:36:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.18:
