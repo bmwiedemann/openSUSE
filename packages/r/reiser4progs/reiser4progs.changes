@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 23 09:26:01 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.0.5:
+  * sometimes a volume's uuid, as shown by debugfs.reiser4, would
+    either be "none" or look corrupted (full of zeros)
+
+-------------------------------------------------------------------
 Mon Nov 23 21:55:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.4

@@ -1,7 +1,7 @@
 #
 # spec file for package reiser4progs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
+%define lsuf	-2_0-5
 Name:           reiser4progs
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
-%define lsuf	-2_0-4
 Summary:        Utilities for Managing the Reiser4 File System
 License:        GPL-2.0-only
 Group:          System/Filesystems
 URL:            https://sf.net/projects/reiser4/
-
 Source:         https://downloads.sf.net/reiser4/%name-%version.tar.gz
 Patch1:         no-static.diff
 BuildRequires:  automake
@@ -85,7 +84,7 @@ system tools.
 autoreconf -fi
 %configure --disable-static --enable-libminimal --disable-fnv1-hash \
 	--disable-rupasov-hash --disable-tea-hash --disable-deg-hash
-make %{?_smp_mflags}
+%make_build
 
 %install
 # parallel install cause missing file
@@ -106,13 +105,14 @@ rm -f "%buildroot/%_libdir"/*.la
 %_sbindir/*reiser4
 
 %files -n libreiser4%lsuf
-%_libdir/libreiser4-2.0.so.4*
+%license COPYING
+%_libdir/libreiser4-2.0.so.5*
 
 %files -n libreiser4-minimal%lsuf
-%_libdir/libreiser4-minimal-2.0.so.4*
+%_libdir/libreiser4-minimal-2.0.so.5*
 
 %files -n librepair%lsuf
-%_libdir/librepair-2.0.so.4*
+%_libdir/librepair-2.0.so.5*
 
 %files devel
 %_includedir/reiser4/
