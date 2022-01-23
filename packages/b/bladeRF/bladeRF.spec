@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -94,6 +94,7 @@ popd
 %build
 cd host
 %cmake \
+  -DVERSION_INFO_EXTRA="" \
   -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
   -DUDEV_RULES_PATH=%{_udevrulesdir} \
   -DBLADERF_GROUP=%{bladerf_group} \
