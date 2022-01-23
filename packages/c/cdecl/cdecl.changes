@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 23 09:02:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.11
+  * Support the use of attributes in conjunction with
+    `using T = ...` declarations.
+  * Types will now be presented as `using T = ...` for
+    C++11 and onwards.
+
+-------------------------------------------------------------------
 Mon Jan  3 16:52:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.10
