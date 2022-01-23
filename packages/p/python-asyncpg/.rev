@@ -44,4 +44,26 @@
     <comment></comment>
     <requestid>926332</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c04e262bcfc810e05a330627e5f07320</srcmd5>
+    <version>0.25.0</version>
+    <time>1642961603</time>
+    <user>dimstar_suse</user>
+    <comment>- update  
+
+- update to 0.25.0:
+  * Improve SSL option compatibility in URIs
+  * Add Pool methods to determine its min, max, current and idle size
+  * Make it possible to specify a statement name in Connection.prepare()
+  * Implement support for multirange types
+  * Make sure timeout callbacks always get cleaned up
+  * Update __all__ statements to a simpler form that is better supported by typecheckers
+  * Fix test_timetz_encoding on Python 3.10
+  * Fix a bunch of ResourceWarnings in the test suite
+  * Fix SSLContext deprecation warnings
+  * Fix the description of the database argument to connect()
+  * Fix parsing of IPv6 addresses in the connection URI
+  * Improve diagnostics of invalid executemany() input</comment>
+    <requestid>948242</requestid>
+  </revision>
 </revisionlist>

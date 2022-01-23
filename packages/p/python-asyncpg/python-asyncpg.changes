@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:35:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update  
+
+-------------------------------------------------------------------
+Sun Jan 23 16:30:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Improve SSL option compatibility in URIs
+  * Add Pool methods to determine its min, max, current and idle size
+  * Make it possible to specify a statement name in Connection.prepare()
+  * Implement support for multirange types
+  * Make sure timeout callbacks always get cleaned up
+  * Update __all__ statements to a simpler form that is better supported by typecheckers
+  * Fix test_timetz_encoding on Python 3.10
+  * Fix a bunch of ResourceWarnings in the test suite
+  * Fix SSLContext deprecation warnings
+  * Fix the description of the database argument to connect()
+  * Fix parsing of IPv6 addresses in the connection URI
+  * Improve diagnostics of invalid executemany() input
+ 
+-------------------------------------------------------------------
 Sun Oct 17 14:19:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.24.0
