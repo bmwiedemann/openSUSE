@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 19:47:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix deprecation-induced ABI mismatch (kde#448680):
+  * 0001-Use-BUILD-deprecation-wrapper-for-virtual-method.patch
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

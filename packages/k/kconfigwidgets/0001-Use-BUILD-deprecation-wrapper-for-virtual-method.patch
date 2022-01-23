@@ -1,0 +1,30 @@
+From 765ab0f3b28b3cb036c050286f474199996a7224 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Thu, 20 Jan 2022 19:13:01 +0100
+Subject: [PATCH] Use BUILD* deprecation wrapper for virtual method
+
+This took me hours to debug, because it caused pretty random behavior.
+
+Distros should ideally backport this, since it will cause issues for consumers that want to disable deprecations.
+
+BUG: 448680
+---
+ src/kcmodule.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kcmodule.h b/src/kcmodule.h
+index a43ee72..33ff232 100644
+--- a/src/kcmodule.h
++++ b/src/kcmodule.h
+@@ -138,7 +138,7 @@ public:
+      */
+     virtual QString quickHelp() const;
+ 
+-#if KCONFIGWIDGETS_ENABLE_DEPRECATED_SINCE(5, 90)
++#if KCONFIGWIDGETS_BUILD_DEPRECATED_SINCE(5, 90)
+     /**
+      * This is generally only called for the KBugReport.
+      * If you override you should  have it return a pointer to a constant.
+-- 
+2.33.1
+
