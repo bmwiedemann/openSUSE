@@ -1,7 +1,7 @@
 #
 # spec file for package wdiff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang
+Requires(preun):%{install_info_prereq}
 
 %description
 wdiff compares two files and finds which words have been deleted or

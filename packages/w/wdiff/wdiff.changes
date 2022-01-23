@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 13 09:36:35 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- Do not recommend lang package. The lang package has automatic
+  locale tags that make it autoinstall on systems with matching
+  language setting.
+
+-------------------------------------------------------------------
 Wed Mar 31 16:53:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - fix license to be GPL-3.0-or-later (see COPYING)

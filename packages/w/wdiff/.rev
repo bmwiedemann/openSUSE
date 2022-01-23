@@ -278,4 +278,14 @@
     <comment></comment>
     <requestid>882804</requestid>
   </revision>
+  <revision rev="32" vrev="8">
+    <srcmd5>6da1e1d6f3d22ba5feeccc63b4d7315e</srcmd5>
+    <version>1.2.2</version>
+    <time>1642936516</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend lang package. The lang package has automatic
+  locale tags that make it autoinstall on systems with matching
+  language setting. (forwarded request 946022 from lnussel)</comment>
+    <requestid>947894</requestid>
+  </revision>
 </revisionlist>
