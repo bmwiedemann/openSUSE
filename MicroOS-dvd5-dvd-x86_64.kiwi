@@ -531,8 +531,6 @@
       <repopackage name="libdbus-glib-1-2" arch="x86_64"/>
       <repopackage name="libdbusmenu-qt5-2" arch="x86_64"/>
       <repopackage name="libdc1394-25" arch="x86_64"/>
-      <repopackage name="libdcerpc-binding0" arch="x86_64"/>
-      <repopackage name="libdcerpc0" arch="x86_64"/>
       <repopackage name="libdconf1" arch="x86_64"/>
       <repopackage name="libdevmapper-event1_03" arch="x86_64"/>
       <repopackage name="libdevmapper1_03"/>
@@ -856,12 +854,7 @@
       <repopackage name="libnautilus-extension1" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libndp0" arch="x86_64"/>
-      <repopackage name="libndr-krb5pac0" arch="x86_64"/>
-      <repopackage name="libndr-nbt0" arch="x86_64"/>
-      <repopackage name="libndr-standard0" arch="x86_64"/>
-      <repopackage name="libndr2" arch="x86_64"/>
       <repopackage name="libneon27" arch="x86_64"/>
-      <repopackage name="libnetapi0" arch="x86_64"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
       <repopackage name="libnettle8" arch="x86_64"/>
       <repopackage name="libnewt0_52" arch="x86_64"/>
@@ -992,12 +985,6 @@
       <repopackage name="librepo0" arch="x86_64"/>
       <repopackage name="librest-0_7-0" arch="x86_64"/>
       <repopackage name="librsvg-2-2" arch="x86_64"/>
-      <repopackage name="libsamba-credentials1" arch="x86_64"/>
-      <repopackage name="libsamba-errors0" arch="x86_64"/>
-      <repopackage name="libsamba-hostconfig0" arch="x86_64"/>
-      <repopackage name="libsamba-passdb0" arch="x86_64"/>
-      <repopackage name="libsamba-util0" arch="x86_64"/>
-      <repopackage name="libsamdb0" arch="x86_64"/>
       <repopackage name="libsasl2-3"/>
       <repopackage name="libsbc1" arch="x86_64"/>
       <repopackage name="libseccomp2"/>
@@ -1016,10 +1003,7 @@
       <repopackage name="libslp1" arch="x86_64"/>
       <repopackage name="libSM6" arch="x86_64"/>
       <repopackage name="libsmartcols1"/>
-      <repopackage name="libsmbclient0" arch="x86_64"/>
-      <repopackage name="libsmbconf0" arch="x86_64"/>
       <repopackage name="libsmbios_c2" arch="x86_64"/>
-      <repopackage name="libsmbldap2" arch="x86_64"/>
       <repopackage name="libsnapper5" arch="x86_64"/>
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1" arch="x86_64"/>
@@ -1056,7 +1040,6 @@
       <repopackage name="libteamdctl0" arch="x86_64"/>
       <repopackage name="libtelepathy-glib0" arch="x86_64"/>
       <repopackage name="libtelepathy-logger3" arch="x86_64"/>
-      <repopackage name="libtevent-util0" arch="x86_64"/>
       <repopackage name="libtevent0" arch="x86_64"/>
       <repopackage name="libtextstyle0" arch="x86_64"/>
       <repopackage name="libthai-data" arch="x86_64"/>
@@ -1114,7 +1097,6 @@
       <repopackage name="libwayland-cursor0" arch="x86_64"/>
       <repopackage name="libwayland-egl1" arch="x86_64"/>
       <repopackage name="libwayland-server0" arch="x86_64"/>
-      <repopackage name="libwbclient0" arch="x86_64"/>
       <repopackage name="libwebkit2gtk-4_0-37" arch="x86_64"/>
       <repopackage name="libwebkit2gtk-4_1-0" arch="x86_64"/>
       <repopackage name="libwebp7" arch="x86_64"/>
@@ -1474,6 +1456,7 @@
       <repopackage name="runc" arch="x86_64"/>
       <repopackage name="samba" arch="x86_64"/>
       <repopackage name="samba-client" arch="x86_64"/>
+      <repopackage name="samba-client-libs" arch="x86_64"/>
       <repopackage name="samba-libs" arch="x86_64"/>
       <repopackage name="sddm" arch="x86_64"/>
       <repopackage name="sddm-branding-openSUSE" arch="x86_64"/>

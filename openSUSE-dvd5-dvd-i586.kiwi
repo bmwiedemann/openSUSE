@@ -1519,8 +1519,6 @@
       <repopackage name="libdbusmenu-gtk3-4"/>
       <repopackage name="libdbusmenu-qt5-2"/>
       <repopackage name="libdc1394-25"/>
-      <repopackage name="libdcerpc-binding0"/>
-      <repopackage name="libdcerpc0"/>
       <repopackage name="libdconf1"/>
       <repopackage name="libdebuginfod1"/>
       <repopackage name="libdeflt1_0"/>
@@ -2192,12 +2190,7 @@
       <repopackage name="libnautilus-extension1"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libndp0"/>
-      <repopackage name="libndr-krb5pac0"/>
-      <repopackage name="libndr-nbt0"/>
-      <repopackage name="libndr-standard0"/>
-      <repopackage name="libndr2"/>
       <repopackage name="libneon27"/>
-      <repopackage name="libnetapi0"/>
       <repopackage name="libnetcontrol0"/>
       <repopackage name="libnetfilter_conntrack3"/>
       <repopackage name="libnetpbm11"/>
@@ -2500,13 +2493,7 @@
       <repopackage name="libruby3_0-3_0"/>
       <repopackage name="librygel-core-2_6-2"/>
       <repopackage name="librygel-server-2_6-2"/>
-      <repopackage name="libsamba-credentials1"/>
-      <repopackage name="libsamba-errors0"/>
-      <repopackage name="libsamba-hostconfig0"/>
-      <repopackage name="libsamba-passdb0"/>
       <repopackage name="libsamba-policy0-python3"/>
-      <repopackage name="libsamba-util0"/>
-      <repopackage name="libsamdb0"/>
       <repopackage name="libsamplerate0"/>
       <repopackage name="libsane1"/>
       <repopackage name="libsasl2-3"/>
@@ -2543,11 +2530,8 @@
       <repopackage name="libslp1"/>
       <repopackage name="libSM6"/>
       <repopackage name="libsmartcols1"/>
-      <repopackage name="libsmbclient0"/>
-      <repopackage name="libsmbconf0"/>
       <repopackage name="libsmbios-lang"/>
       <repopackage name="libsmbios_c2"/>
-      <repopackage name="libsmbldap2"/>
       <repopackage name="libsmi"/>
       <repopackage name="libsmi2"/>
       <repopackage name="libsmputils1-1"/>
@@ -2618,7 +2602,6 @@
       <repopackage name="libteamdctl0"/>
       <repopackage name="libtelepathy-glib0"/>
       <repopackage name="libtelepathy-logger3"/>
-      <repopackage name="libtevent-util0"/>
       <repopackage name="libtevent0"/>
       <repopackage name="libtextstyle0"/>
       <repopackage name="libthai-data"/>
@@ -2729,7 +2712,6 @@
       <repopackage name="libwayland-cursor0"/>
       <repopackage name="libwayland-egl1"/>
       <repopackage name="libwayland-server0"/>
-      <repopackage name="libwbclient0"/>
       <repopackage name="libwebkit2gtk-4_0-37"/>
       <repopackage name="libwebkit2gtk-4_1-0"/>
       <repopackage name="libwebp7"/>
@@ -4337,7 +4319,9 @@
       <repopackage name="salt-minion"/>
       <repopackage name="salt-transactional-update"/>
       <repopackage name="samba"/>
+      <repopackage name="samba-ad-dc-libs"/>
       <repopackage name="samba-client"/>
+      <repopackage name="samba-client-libs"/>
       <repopackage name="samba-doc"/>
       <repopackage name="samba-gpupdate"/>
       <repopackage name="samba-ldb-ldap"/>
@@ -4345,6 +4329,7 @@
       <repopackage name="samba-libs-python3"/>
       <repopackage name="samba-python3"/>
       <repopackage name="samba-winbind"/>
+      <repopackage name="samba-winbind-libs"/>
       <repopackage name="sane-backends"/>
       <repopackage name="sane-backends-autoconfig"/>
       <repopackage name="sasl2-kdexoauth2"/>

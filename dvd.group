@@ -1772,8 +1772,6 @@
     <package name="libdbusmenu-gtk3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdbusmenu-qt5-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdc1394-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdcerpc-binding0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libdcerpc0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdconf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2275,12 +2273,7 @@
     <package name="libnautilus-extension1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libndp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libndr-krb5pac0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libndr-nbt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libndr-standard0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libndr2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libneon27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libnetapi0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnetcontrol0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libnetfilter_conntrack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnetpbm11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2537,13 +2530,7 @@
     <package name="libruby3_0-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libsamba-credentials1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsamba-errors0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsamba-hostconfig0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsamba-passdb0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsamba-policy0-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="libsamba-util0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsamdb0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsamplerate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsane1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsasl2-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2574,11 +2561,8 @@
     <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libslp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsmbclient0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsmbconf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsmbios-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmbios_c2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsmbldap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsmi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsmi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsmputils1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2647,7 +2631,6 @@
     <package name="libteamdctl0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtevent-util0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libthai-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2757,7 +2740,6 @@
     <package name="libwayland-cursor0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwayland-egl1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwayland-server0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libwbclient0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebkit2gtk-4_0-37" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebkit2gtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
     <package name="libwebp7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3576,7 +3558,7 @@
     <package name="python3-cupshelpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3586,7 +3568,7 @@
     <package name="python3-smbios-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="python3-solv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="python38" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4288,14 +4270,17 @@
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
     <package name="salt-transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="samba-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-gpupdate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-ldb-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="samba-winbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
+    <package name="samba-winbind-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="sane-backends" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sane-backends-autoconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sasl2-kdexoauth2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5173,8 +5158,6 @@
     <package name="libcups2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdatrie1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libdbus-1-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libdcerpc-binding0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libdcerpc0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdevmapper1_03-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdrm-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libeconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5225,11 +5208,6 @@
     <package name="libmfx1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmount1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libndctl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libndr-krb5pac0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libndr-nbt0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libndr-standard0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libndr2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libnetapi0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnettle8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnscd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnsl3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5251,16 +5229,8 @@
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libsamba-credentials1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsamba-errors0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsamba-hostconfig0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsamba-passdb0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsamba-util0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsamdb0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsasl2-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libselinux1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsmbconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libsmbldap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libspf2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstdc++6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libstdc++6-pp-gcc11-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5270,7 +5240,6 @@
     <package name="libtalloc2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtasn1-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtdb1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libtevent-util0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtevent0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libthai0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtiff5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5294,7 +5263,6 @@
     <package name="libvirt-sandbox-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisfile3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libwbclient0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libwx_baseu-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu_net-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwx_baseu_xml-suse-nostl5_0_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5388,8 +5356,8 @@
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="samba-client-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="samba-winbind-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="scim-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="shim" supportstatus="unsupported"/> <!-- reason: dvd:shim -->
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

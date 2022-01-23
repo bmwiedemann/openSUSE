@@ -10338,10 +10338,6 @@ unsorted:
   - libdc1394-25-32bit: [x86_64] 
   - libdc1394-devel 
   - libdc1394-tools 
-  - libdcerpc-devel 
-  - libdcerpc-samr-devel 
-  - libdcerpc-samr0 
-  - libdcerpc-samr0-32bit: [x86_64] 
   - libdcmtk3_6 
   - libdconf1-32bit: [x86_64] 
   - libddccontrol0 
@@ -12227,10 +12223,6 @@ unsorted:
   - libndp-devel 
   - libndpi-devel 
   - libndpi4 
-  - libndr-devel 
-  - libndr-krb5pac-devel 
-  - libndr-nbt-devel 
-  - libndr-standard-devel 
   - libneatvnc0 
   - libneko2 
   - libnemo-extension1 
@@ -12240,8 +12232,6 @@ unsorted:
   - libnet-devel 
   - libnet-doc 
   - libnet9 
-  - libnetapi-devel 
-  - libnetapi-devel-32bit: [x86_64] 
   - libnetcdf-cxx4-gnu-hpc 
   - libnetcdf-cxx4-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
@@ -13544,15 +13534,9 @@ unsorted:
   - libs3-tools 
   - libsam4 
   - libsam4-32bit: [x86_64] 
-  - libsamba-credentials-devel 
-  - libsamba-errors-devel 
-  - libsamba-hostconfig-devel 
-  - libsamba-passdb-devel 
   - libsamba-policy-devel 
   - libsamba-policy-python3-devel 
   - libsamba-policy0-python3-32bit: [x86_64] 
-  - libsamba-util-devel 
-  - libsamdb-devel 
   - libsaml-devel 
   - libsaml12 
   - libsamplerate-devel 
@@ -13722,11 +13706,7 @@ unsorted:
   - libsmartcols-devel-32bit: [x86_64] 
   - libsmartcols-devel-static 
   - libsmartcols1-32bit: [x86_64] 
-  - libsmbclient-devel 
-  - libsmbclient0-32bit: [x86_64] 
-  - libsmbconf-devel 
   - libsmbios-devel 
-  - libsmbldap-devel 
   - libsmdev-devel 
   - libsmdev-tools 
   - libsmdev1 
@@ -14056,7 +14036,6 @@ unsorted:
   - libtesseract4 
   - libtestshade1_11: [x86_64] 
   - libtevent-devel 
-  - libtevent-util-devel 
   - libtexlua53-5 
   - libtexluajit2 
   - libtextstyle-devel 
@@ -14482,7 +14461,6 @@ unsorted:
   - libwayland-egl1-32bit: [x86_64] 
   - libwayland-server0-32bit: [x86_64] 
   - libwaylandpp0 
-  - libwbclient-devel 
   - libwbxml2-1 
   - libwbxml2-devel 
   - libwcs7 
@@ -23384,7 +23362,7 @@ unsorted:
   - python310-netpbmfile 
   - python310-networkx 
   - python310-nibabel 
-  - python310-nilearn: [i586] 
+  - python310-nilearn 
   - python310-nine 
   - python310-nltk 
   - python310-nocasedict 
@@ -23478,7 +23456,7 @@ unsorted:
   - python310-pan-python 
   - python310-pandas 
   - python310-pandas-datareader 
-  - python310-pandas-ext: [x86_64] 
+  - python310-pandas-ext 
   - python310-pandocfilters 
   - python310-panel 
   - python310-panflute 
@@ -24173,7 +24151,7 @@ unsorted:
   - python310-ruffus 
   - python310-runthis-sphinxext 
   - python310-rustcfg 
-  - python310-s3fs: [x86_64] 
+  - python310-s3fs 
   - python310-s3transfer 
   - python310-sadisplay 
   - python310-samplerate 
@@ -24773,7 +24751,6 @@ unsorted:
   - python36-requests-gssapi 
   - python36-rollbar 
   - python36-rss2email 
-  - python36-s3fs: [i586] 
   - python36-sgmllib3k 
   - python36-sphinx-argparse 
   - python36-starlette 
@@ -32248,11 +32225,13 @@ unsorted:
   - salt-syndic 
   - salt-zsh-completion 
   - samba-ad-dc 
-  - samba-ad-dc-32bit: [x86_64] 
+  - samba-ad-dc-libs-32bit: [x86_64] 
   - samba-ceph: [x86_64] 
-  - samba-core-devel 
+  - samba-devel 
+  - samba-devel-32bit: [x86_64] 
   - samba-dsdb-modules 
   - samba-krb-printing 
+  - samba-libs-32bit: [x86_64] 
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
   - samba-tool 
