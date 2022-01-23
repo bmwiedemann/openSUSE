@@ -1,0 +1,40 @@
+--- apache-chainsaw-2.1.0.orig/src/main/java/org/apache/log4j/chainsaw/ApplicationPreferenceModelSaver.java	2022-01-19 19:55:07.681030359 +0100
++++ apache-chainsaw-2.1.0/src/main/java/org/apache/log4j/chainsaw/ApplicationPreferenceModelSaver.java	2022-01-19 20:09:50.246197879 +0100
+@@ -51,6 +51,7 @@
+ 
+     public void loadSettings(LoadSettingsEvent event) {
+         XStream stream = new XStream(new DomDriver());
++        stream.allowTypes(new Class[] { ApplicationPreferenceModel.class } );
+         File file = getApplicationPreferenceXMLFile(SettingsManager.getInstance().getSettingsDirectory());
+         try {
+             if (file.exists()) {
+--- apache-chainsaw-2.1.0.orig/src/main/java/org/apache/log4j/chainsaw/ChainsawTabbedPane.java	2022-01-19 19:55:07.681030359 +0100
++++ apache-chainsaw-2.1.0/src/main/java/org/apache/log4j/chainsaw/ChainsawTabbedPane.java	2022-01-19 20:09:50.246197879 +0100
+@@ -167,6 +167,7 @@
+     public void loadSettings(LoadSettingsEvent event) {
+         File file = new File(SettingsManager.getInstance().getSettingsDirectory(), "tab-settings.xml");
+         XStream stream = new XStream(new DomDriver());
++        stream.allowTypes(new Class[] { SavableTabSetting.class } );
+         try {
+             if (file.exists()) {
+                 FileReader reader = new FileReader(file);
+--- apache-chainsaw-2.1.0.orig/src/main/java/org/apache/log4j/chainsaw/LogPanel.java	2022-01-19 19:55:07.681030359 +0100
++++ apache-chainsaw-2.1.0/src/main/java/org/apache/log4j/chainsaw/LogPanel.java	2022-01-19 20:17:14.316974791 +0100
+@@ -2047,6 +2047,7 @@
+ 
+         if (xmlFile.exists()) {
+             XStream stream = buildXStreamForLogPanelPreference();
++            stream.allowTypes(new Class[] { LogPanelPreferenceModel.class, TableColumn.class, Point.class, Dimension.class, Vector.class,  } );
+             ObjectInputStream in = null;
+             try {
+                 FileReader r = new FileReader(xmlFile);
+--- apache-chainsaw-2.1.0.orig/src/main/java/org/apache/log4j/chainsaw/prefs/MRUFileList.java	2022-01-19 19:55:07.685030381 +0100
++++ apache-chainsaw-2.1.0/src/main/java/org/apache/log4j/chainsaw/prefs/MRUFileList.java	2022-01-19 20:09:50.250197906 +0100
+@@ -104,6 +104,7 @@
+ 
+     public static void loadLog4jMRUListFromReader(Reader reader) {
+         XStream xstream = new XStream(new DomDriver());
++        xstream.allowTypes(new Class[] { MRUFileList.class } );
+         log4jList = (MRUFileList) xstream.fromXML(reader);
+         fireChangeEvent();
+ 
