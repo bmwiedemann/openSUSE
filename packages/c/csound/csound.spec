@@ -1,7 +1,7 @@
 #
 # spec file for package csound
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define min 0
 
 Name:           csound
-Version:        6.16.0
+Version:        6.16.2
 Release:        0
 Summary:        Computer Sound Synthesis and Composition Program
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
