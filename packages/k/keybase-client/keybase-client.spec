@@ -1,7 +1,7 @@
 #
 # spec file for package keybase-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           keybase-client
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause

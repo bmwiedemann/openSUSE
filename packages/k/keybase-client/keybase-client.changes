@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 22 12:42:41 UTC 2022 - Matthias Bach <marix@marix.org> - 5.9.1
+
+- Upgrade to version 5.9.1
+  * Fix issue where the KBFS mountpoint would be disconnected after
+    restarting Keybase (Transport endpoint is not connected).
+
+-------------------------------------------------------------------
 Thu Dec 30 12:14:35 UTC 2021 - Matthias Bach <marix@marix.org> - 5.9.0
 
 - Upgrade to version 5.9.0
