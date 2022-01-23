@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 20 09:48:39 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to release 9.16.25
+  This upgrade fixes the following bugs:
+  * Enforce enqueuing TCP resumeread to prevent the next read
+    callback from being executed before the current read callback
+    has finished, and the worker receive buffer has been marked as
+    "freed".
+  * Allow replacing expired zone signatures with signatures created
+    by the KSK.
+  * An assertion could occur if a catalog zone event was scheduled
+    while the task manager was being shut down.
+  * Defer detaching from zone->raw in zone_shutdown() if the zone
+    is in the process of being dumped to disk, to ensure that the
+    unsigned serial number information is always written in the
+    raw-format header of the signed version on an inline-signed
+    zone.
+  * named could leak memory when two dnssec-policy clauses had the
+    same name. named failed to log this error.
+  * Add a missing isc_condition_destroy() for nmsocket condition
+    variable and add missing isc_mutex_destroy() for nmworker lock.
+  [bind-9.16.25.tar.xz, bind-9.16.25.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Wed Jan 19 08:38:11 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Added /var/log to the ReadWritePaths as some log files are
+  written there:
+  * dump-file "/var/log/named_dump.db"
+  * statistics-file "/var/log/named.stats"
+  [bsc#1194721, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
 Wed Dec 15 14:37:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to release 9.16.24
