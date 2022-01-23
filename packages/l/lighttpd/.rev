@@ -475,4 +475,12 @@ bsc#1181400</comment>
     <comment></comment>
     <requestid>941290</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fc1b1d94d941af6f5878c6b135b6c1fa</srcmd5>
+    <version>1.4.64</version>
+    <time>1642936550</time>
+    <user>dimstar_suse</user>
+    <comment>lighttpd 1.4.64 CVE-2022-22707 boo#1194376</comment>
+    <requestid>948114</requestid>
+  </revision>
 </revisionlist>

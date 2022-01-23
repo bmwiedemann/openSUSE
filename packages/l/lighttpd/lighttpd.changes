@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 22 13:40:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.64:
+  * CVE-2022-22707: off-by-one stack overflow in the mod_extforward
+    plugin (boo#1194376)
+  * graceful restart/shutdown timeout changed from 0 (disabled) to
+    8 seconds. configure an alternative with:
+    server.feature-flags += (“server.graceful-shutdown-timeout” => 8)
+  * deprecated modules (previously announced) have been removed:
+    mod_authn_mysql, mod_mysql_vhost, mod_cml, mod_flv_streaming,
+    mod_geoip, mod_trigger_b4_dl
+
+-------------------------------------------------------------------
 Sat Dec  4 18:24:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.63:

@@ -1,7 +1,7 @@
 #
 # spec file for package lighttpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.63
+Version:        1.4.64
 Release:        0
 #
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
@@ -44,13 +44,11 @@ BuildRequires:  FastCGI-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gamin-devel
-BuildRequires:  gdbm-devel
 BuildRequires:  iputils
 BuildRequires:  krb5-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libdbi-devel
-BuildRequires:  libmemcached-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  lua51-devel
@@ -94,28 +92,6 @@ of CPU load. Its advanced feature set (FastCGI, CGI, Auth,
 Output-Compression, URL-Rewriting, and more) makes lighttpd the perfect
 Web server software for every server that is suffering load problems.
 
-%package mod_cml
-Summary:        CML (Cache Meta Language) module for Lighttpd
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-
-%description mod_cml
-CML is a Meta language to describe the dependencies of a page at one
-side and building a page from its fragments on the oth er side using
-LUA.
-
-CML (Cache Meta Language) wants to solves several problems:
-
-* dynamic content needs caching to perform
-
-* checking if the content is dirty inside of the application is
-   usually more expensive than sending out the cached data
-
-* a dynamic page is usually fragmented and the fragments have
-   different livetimes
-
-* the different fragements can be cached independently
-
 %package mod_magnet
 Summary:        A module to control the request handling in lighttpd
 Group:          Productivity/Networking/Web/Servers
@@ -125,15 +101,6 @@ Requires:       %{name} = %{version}
 A module to control the request handling in lighttpd.
 
 It is the successor of mod_cml.
-
-%package mod_mysql_vhost
-Summary:        MySQL based virtual hosts (vhosts) module for Lighttpd
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-
-%description mod_mysql_vhost
-With MySQL based vhosting you can put the information where to look for
-a document-root of a given host into a MySQL database.
 
 %package mod_vhostdb_dbi
 Summary:        DBI based virtual hosts module for Lighttpd
@@ -170,26 +137,6 @@ Requires:       %{name} = %{version}
 %description mod_vhostdb_pgsql
 With PostgreSQL based vhosting you can put the information where to look
 for the document-root of a given host into a PostgreSQL database.
-
-%package mod_trigger_b4_dl
-Summary:        Another anti hot-linking module for Lighttpd
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-
-%description mod_trigger_b4_dl
-Anti Hotlinking:
-
-* if user requests download-url directly the request is denied and
-   he is redirected to ''deny-url'
-
-* if user visits trigger-url before requesting download-url access
-   is granted
-
-* if user visits download-url again after trigger-timeout has run
-   down to the request is denied and he is redirected  to deny-url
-
-The storage for the trigger information is either stored locally in a
-gdbm file or remotly in memcached.
 
 %package mod_rrdtool
 Summary:        Lighttpd module to feed rrdtool databases
@@ -249,14 +196,6 @@ Requires:       %{name} = %{version}
 %description mod_authn_ldap
 A module to provide LDAP authentication in lighttpd.
 
-%package mod_authn_mysql
-Summary:        MySQL authentication in lighttpd
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-
-%description mod_authn_mysql
-A module to provide MySQL authentication in lighttpd.
-
 %package mod_authn_sasl
 Summary:        SASL authentication in lighttpd
 Group:          Productivity/Networking/Web/Servers
@@ -284,7 +223,6 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
     --libdir=%{_libdir}/%{name} \
     --enable-lfs                \
     --enable-ipv6               \
-    --with-pcre2                \
     --with-ldap                 \
     --with-pam                  \
     --with-dbi                  \
@@ -292,9 +230,7 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
     --with-mysql                \
     --with-openssl              \
     --with-krb5                 \
-    --with-gdbm                 \
     --with-lua                  \
-    --with-memcached            \
     --with-bzip2                \
     --with-zstd                 \
     --with-brotli               \
@@ -330,7 +266,6 @@ ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 perl -p -i.orig -e 's|^(server\.tag = ).*$|$1 "%{name} (%{version}/SuSE)"|' doc/config/lighttpd.conf
 diff -ur doc/config/lighttpd.conf{.orig,} ||:
 rm -vf doc/config/lighttpd.conf.orig ||:
-rm -vf doc/config/conf.d/geoip.conf ||:
 cp -rv doc/config/* %{buildroot}%{_sysconfdir}/%{name}/
 find %{buildroot}%{_sysconfdir}/%{name}/ -name Makefile\* -delete
 #
@@ -409,7 +344,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_expire.so
 %{_libdir}/%{name}/mod_extforward.so
 %{_libdir}/%{name}/mod_fastcgi.so
-%{_libdir}/%{name}/mod_flv_streaming.so
 %{_libdir}/%{name}/mod_indexfile.so
 %{_libdir}/%{name}/mod_openssl.so
 %{_libdir}/%{name}/mod_proxy.so
@@ -467,20 +401,10 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %attr(751,%{name},%{name}) %{_var}/cache/%{name}/
 %dir %attr(750,%{name},%{name}) %{_var}/log/%{name}/
 
-%files mod_cml
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/cml.conf
-%{_libdir}/%{name}/mod_cml.so
-%doc doc/outdated/cml.txt
-
 %files mod_magnet
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/magnet.conf
 %{_libdir}/%{name}/mod_magnet.so
 %doc doc/outdated/magnet.txt
-
-%files mod_mysql_vhost
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/mysql_vhost.conf
-%{_libdir}/%{name}/mod_mysql_vhost.so
-%doc doc/outdated/mysqlvhost.txt
 
 %files mod_vhostdb_dbi
 %{_libdir}/%{name}/mod_vhostdb_dbi.so
@@ -493,11 +417,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 
 %files mod_vhostdb_pgsql
 %{_libdir}/%{name}/mod_vhostdb_pgsql.so
-
-%files mod_trigger_b4_dl
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/trigger_b4_dl.conf
-%{_libdir}/%{name}/mod_trigger_b4_dl.so
-%doc doc/outdated/trigger_b4_dl.txt
 
 %files mod_rrdtool
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/rrdtool.conf
@@ -518,9 +437,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 
 %files mod_authn_ldap
 %{_libdir}/%{name}/mod_authn_ldap.so
-
-%files mod_authn_mysql
-%{_libdir}/%{name}/mod_authn_mysql.so
 
 %files mod_authn_sasl
 %{_libdir}/%{name}/mod_authn_sasl.so
