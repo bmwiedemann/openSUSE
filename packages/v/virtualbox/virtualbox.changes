@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 20 17:19:56 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.32 (released January 18 2022 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  Fix for CVE-2022-21394 (boo#1194924)
+
+  VMM: Changed the guest RAM management when using Hyper-V to be more compatible with HVCI (bug #20627 and #20694)
+  VMM: Workaround for OS/2 guest unstability on newer AMD CPUs due to a missing TLB flush in OS/2 (bug #20625)
+  GUI: Fixed keyboard focus loss in rare circumstances when using the mini toolbar in fullscreen mode
+  Audio: Fixed accidental creation of empty debug log file when the OSS audio backend was configured
+  E1000: Fix link status reporting for certain Linux kernels (some Oracle Linux ones, probably more)
+  Unattended installation: Fixed regression introduced in 6.1.28, causing partitioning failure for Windows XP to 10 (bug #20769)
+  Linux host: Fix access to some USB devices, device class was not correctly handled (bug #20721)
+  Guest: Fixed wrong mouse position if guest is in text mode
+  Guest Control: Fixed folders copying from host to guest and from guest to host
+  Guest Control: Fixes for UNICODE handling
+  Shared Clipboard: Improved HTML content exchange between X11 and Windows guests and hosts
+  OS/2 Additions: Fixed some issues with extended attributes in the shared folders (bug #19453)
+
+  File "vboxclient-clipboard.service" was removed while the shared clipboard problem with Wayland is further investigated.
+
+-------------------------------------------------------------------
+Tue Jan  4 16:53:50 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add libnotify-tools to build requirements for virtualbox-guest-x11  (boo#1194128)
+  Add service to start shared clipboard in Wayland sessions (boo#1194126). File "vboxclient-clipboard.service"
+  is added. Thanks to Andrei Borzenkov for providing this file.
+
+-------------------------------------------------------------------
 Thu Dec 30 17:53:07 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Tumbleweed no longer assigns the group "users" to a user, which breaks TW guests under VirtualBox.
