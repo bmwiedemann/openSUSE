@@ -1,7 +1,7 @@
 #
 # spec file for package libfwsi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ URL:            https://github.com/libyal/libfwsi
 Source:         %name-%version.tar.xz
 Source2:        Windows_Shell_Item_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
 BuildRequires:  pkgconfig(libclocale) >= 20200913
@@ -41,7 +43,7 @@ BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfole) >= 20170502
 BuildRequires:  pkgconfig(libfwps) >= 20191221
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library to access the Windows Shell Item format for the libyal family of libraries.
@@ -68,25 +70,24 @@ Library to access the Windows Shell Item format for the libyal family of librari
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfwsi.
 
-%package -n python3-%{name}
-Summary:        Python bindings for libfwsi
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-
-%description -n python3-%name
-Python3 bindings for libfwsi, a library to access Windows Shell Items.
-
 %prep
 %autosetup -p1
 cp "%{S:2}" .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -96,7 +97,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libfwsi.so.*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc Windows_Shell_Item_format.pdf
 %{_includedir}/libfwsi.h
@@ -105,8 +106,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libfwsi.pc
 %{_mandir}/man3/libfwsi.3*
 
-%files -n python3-%name
+%files %python_files
 %license COPYING*
-%python3_sitearch/pyfwsi.so
+%python_sitearch/pyfwsi.so
 
 %changelog
