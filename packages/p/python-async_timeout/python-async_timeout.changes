@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 15 16:39:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Fix annotations on __exit__ and __aexit__
+  * Use stdlib typing.final in Python 3.8+ 
+
+-------------------------------------------------------------------
 Sat Dec 11 18:40:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.1 
