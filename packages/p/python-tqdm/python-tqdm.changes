@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 22 10:58:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Ignore deprecation warnings from pytest-asycio for compatibility
+  with 0.17
+
+-------------------------------------------------------------------
 Sat Nov 27 21:12:17 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.62.3:

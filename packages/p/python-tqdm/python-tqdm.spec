@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,6 +78,8 @@ This package provides the completion file for bash
 
 %prep
 %setup -q -n tqdm-%{version}
+# ignore new asyncio mode warning from pytest-asyncio 0.17
+sed -i 's/-W=error//' setup.cfg
 # remove bash shebang for completion script
 sed -i '1 s/^#!.*/# bash completion for tqdm       -*- shell-script -*-/' tqdm/completion.sh
 chmod a-x tqdm/completion.sh
