@@ -1,0 +1,33 @@
+From: Carlos Maddela <e7appew@gmail.com>
+Date: Thu, 22 Dec 2016 02:20:30 +1100
+Subject: Don't build and install documentation automatically.
+
+Description: Don't build and install documentation automatically.
+ This allows for better control over binary-arch and binary-indep builds.
+Author: Carlos Maddela <e7appew@gmail.com>
+Forwarded: not-needed
+Last-Update: 2017-01-05
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ GNUmakefile.template | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/GNUmakefile.template b/GNUmakefile.template
+index 6fda92b..d9bef11 100644
+--- a/GNUmakefile.template
++++ b/GNUmakefile.template
+@@ -223,12 +223,11 @@ show:
+ .PHONY : install uninstall clean distclean arch
+ .PHONY : srcdist
+ 
+-install: dvdisaster manual
++install: dvdisaster
+ 	@echo "Installing package..."
+ 	install -d $(BUILDROOT)$(BINDIR)
+ 	install dvdisaster $(BUILDROOT)$(BINDIR)
+ 	install -d $(BUILDROOT)$(DOCSUBDIR)
+-	(cd documentation/user-manual; install -m 644 manual.pdf $(BUILDROOT)$(DOCSUBDIR))
+ 	install -d $(BUILDROOT)$(MANDIR)/man1
+ 	install -d $(BUILDROOT)$(MANDIR)/de/man1
+ 	cd documentation; \

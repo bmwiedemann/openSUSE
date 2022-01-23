@@ -1,7 +1,7 @@
 #
 # spec file for package dvdisaster
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,28 +32,41 @@ Source1:        http://deb.debian.org/debian/pool/main/d/%{name}/%{name}_%{versi
 # PATCH-FIX-UPSTREAM davejplater@gmail.com Fix scripts/bash-based-configure to work in Tumbleweed.
 Patch0:         dvdisaster-findmake.patch
 # Patches from Debian
-Patch1:         29-fix-more-typos.patch
-Patch6:         23-add-bdrom-support.patch
-Patch7:         34-gcc8-format-security.patch
-Patch8:         02-encryption.patch
-Patch9:         17-fix-all-but-deprecated-api-warnings.patch
-Patch10:        10-use-non-size-specific-icon-and-add-keywords-to-desktop-file.patch
-Patch12:        25-fix-man-pages.patch
-Patch17:        14-make-builds-reproducible.patch
-Patch18:        11-no-cruft.patch
-Patch19:        18-update-copyright-in-about-dialog.patch
-Patch20:        30-hurd-kfreebsd-ftbfs.patch
-Patch23:        22-fix-hurd-i386-ftbfs.patch
-Patch24:        03-dvdrom.patch
-Patch26:        37-suggest-dvdisaster-doc.patch
-Patch27:        13-fix-missing-language-field-in-po-files.patch
-Patch28:        32-display-compilation-commands.patch
-Patch29:        28-pdftex-reproducibility.patch
-Patch30:        05-help-dialog.patch
-Patch31:        27-allow-opening-in-browser-again.patch
-Patch32:        24-show-gpl3-license.patch
+Patch1:         02-encryption.patch
+Patch2:         03-dvdrom.patch
+Patch3:         05-help-dialog.patch
+#Patch4:         08-fix-gnu-make-detection.patch
+Patch5:         10-use-non-size-specific-icon-and-add-keywords-to-desktop-file.patch
+Patch6:         11-no-cruft.patch
+Patch7:         12-fix-spelling-of-up-to.patch
+Patch8:         13-fix-missing-language-field-in-po-files.patch
+Patch9:         14-make-builds-reproducible.patch
+Patch10:        15-show-new-pkg-tracker.patch
+Patch11:        16-remove-auto-build-of-doco-from-install-rule.patch
+Patch12:        17-fix-all-but-deprecated-api-warnings.patch
+Patch13:        18-update-copyright-in-about-dialog.patch
+Patch14:        19-show-text-files-with-abs-path.patch
+Patch15:        20-display-changelog-credits-and-todo.patch
+Patch16:        22-fix-hurd-i386-ftbfs.patch
+Patch17:        23-add-bdrom-support.patch
+Patch18:        24-show-gpl3-license.patch
+Patch19:        25-fix-man-pages.patch
+Patch20:        26-fix-display-of-manual.pdf.patch
+Patch21:        27-allow-opening-in-browser-again.patch
+Patch22:        28-pdftex-reproducibility.patch
+Patch23:        29-fix-more-typos.patch
+Patch24:        30-hurd-kfreebsd-ftbfs.patch
+Patch25:        31-improve-hurd-and-kfreebsd-support.patch
+Patch26:        32-display-compilation-commands.patch
+Patch27:        33-honour-LDFLAGS.patch
+Patch28:        34-gcc8-format-security.patch
+Patch29:        35-archived-homepage.patch
+Patch30:        36-fix-parallelism.patch
+Patch31:        37-suggest-dvdisaster-doc.patch
+#Patch32:        dvdisaster-0.79.5-dvdrom.patch
 #PATCH-FIX-OPENSUSE  davejplater@gmail.com dvdisaster-no-tex.patch - tries to build pdfs that already exist
 Patch33:        dvdisaster-no-tex.patch
+Patch34:        dvdisaster-g_strdup_printf.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  pkgconfig
@@ -107,6 +120,7 @@ export CFLAGS="%{optflags} -fcommon"
            --localedir=%{_datadir}/locale \
            --buildroot=%{buildroot}
 make --trace
+
 # Parallel make breaks translations sometimes.
 #%%{?_smp_mflags}
 %install
@@ -120,9 +134,8 @@ rm -f %{buildroot}%{_bindir}/dvdisaster-uninstall.sh
 %license COPYING
 %{_mandir}/de/man1/%{name}.1%{ext_man}
 %{_mandir}/man1/%{name}.1%{ext_man}
-%exclude %{_docdir}/%{name}/manual.pdf
 
 %files docs
-%doc %{_docdir}/%{name}/manual.pdf
+%doc documentation/user-manual/manual.pdf
 
 %changelog

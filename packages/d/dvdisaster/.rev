@@ -24,4 +24,24 @@
     <comment>unquote patch28</comment>
     <requestid>812049</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>98ad90bd8b43032067e5ba9fc76dedeb</srcmd5>
+    <version>0.79.6</version>
+    <time>1642947934</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more debian patches:
+  12-fix-spelling-of-up-to.patch Added
+  15-show-new-pkg-tracker.patch Added
+  16-remove-auto-build-of-doco-from-install-rule.patch Added
+  19-show-text-files-with-abs-path.patch Added
+  20-display-changelog-credits-and-todo.patch Added
+  26-fix-display-of-manual.pdf.patch Added
+  31-improve-hurd-and-kfreebsd-support.patch Added
+  33-honour-LDFLAGS.patch Added
+  35-archived-homepage.patch Added
+  36-fix-parallelism.patch Added
+- Fix boo#1195036 with dvdisaster-g_strdup_printf.patch
+</comment>
+    <requestid>948221</requestid>
+  </revision>
 </revisionlist>
