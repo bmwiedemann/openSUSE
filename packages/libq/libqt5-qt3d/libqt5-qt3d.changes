@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:11:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde39:
+  * OpenGL renderer: restore surface on context when shutting down
+  * OpenGL: Fix content not updated when using OnDemand and switching textures
+  * ObjectPicker: markDirty(AllDirty) when we change the enabled property
+  * ComputeCommand: call markDirty(ComputeDirty) when enabled changes
+
+-------------------------------------------------------------------
 Thu Oct 28 07:19:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde33:

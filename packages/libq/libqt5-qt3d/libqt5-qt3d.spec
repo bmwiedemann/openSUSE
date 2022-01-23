@@ -26,7 +26,7 @@
 %define tar_version qt3d-everywhere-src-%{version}
 %global enable_assimp (0%{?suse_version} >= 1550)
 Name:           libqt5-qt3d
-Version:        5.15.2+kde33
+Version:        5.15.2+kde39
 Release:        0
 Summary:        Qt 5 3D Addon
 # Legal: some files are GPL-3.0-only WITH Qt-GPL-exception-1.0
