@@ -1,7 +1,7 @@
 #
 # spec file for package python-uproot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %global modname uproot
 Name:           python-uproot
-Version:        4.0.11
+Version:        4.1.9
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -79,7 +79,7 @@ sed -i '/def test/ i @pytest.mark.network' tests/test_0220-contiguous-byte-range
 %check
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 # pandas tests assume 64bit types
-skiptests32=("-k" "not (test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2)")
+skiptests32=("-k" "not (test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)")
 fi
 %pytest -rfEs -m "not network" "${skiptests32[@]}"
 

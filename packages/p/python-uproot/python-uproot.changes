@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 20 18:11:49 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.9:
+  * [gh#scikit-hep/uproot#523] docs: add pfackeldey as a
+    contributor for code.
+  * [gh#scikit-hep/uproot#522] [pre-commit.ci] pre-commit
+    autoupdate.
+  * [gh#scikit-hep/uproot#506] add uproot.model.TTable.data
+    getter.
+  * [gh#scikit-hep/uproot#521] Dynamic classes can’t be ABC
+    subclasses, such as Sequence.
+  * [gh#scikit-hep/uproot#519] [MemmapSource] Remove
+    unnecessary(?) copies.
+  * [gh#scikit-hep/uproot#517] Be more careful about identifying
+    pd.DataFrame.
+- Update tests.tar.xz to version 4.1.9.
+- Disable an additional test on 32-bit that depends on 64-bit long.
+
+-------------------------------------------------------------------
 Fri Jul 16 16:20:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v4.0.11
