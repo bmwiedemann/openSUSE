@@ -1,2 +1,0 @@
-# false positive as the -latex package only ships latex files and no actual python code
-addFilter("python3.*-Sphinx-latex.noarch: .: no-dependency-on python-base 3.*")

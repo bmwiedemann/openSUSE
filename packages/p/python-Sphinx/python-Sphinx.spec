@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        4.3.2
+Version:        4.4.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -37,9 +36,12 @@ URL:            http://sphinx-doc.org
 Source:         https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz.asc
 # Provide intersphinx inventory offline
-Source2:        https://docs.python.org/3/objects.inv#/python3.inv
-Source3:        https://requests.readthedocs.io/en/master/objects.inv#/requests.inv
-Source99:       python-Sphinx-rpmlintrc
+# https://docs.python.org/3/objects.inv#/python3.inv
+Source2:        python3.inv
+# https://requests.readthedocs.io/en/master/objects.inv#/requests.inv
+Source3:        requests.inv
+# https://docs.readthedocs.io/en/stable/objects.inv#/readthedocs.inv
+Source4:        readthedocs.inv
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -52,6 +54,7 @@ Requires:       python-Pygments >= 2.1
 Requires:       python-alabaster >= 0.7
 Requires:       python-docutils >= 0.12
 Requires:       python-imagesize
+Requires:       python-packaging
 Requires:       python-requests >= 2.5.0
 Requires:       python-setuptools
 Requires:       python-snowballstemmer >= 1.1
@@ -63,6 +66,9 @@ Requires:       python-sphinxcontrib-jsmath
 Requires:       python-sphinxcontrib-qthelp >= 1.0.2
 Requires:       python-sphinxcontrib-serializinghtml >= 1.1.5
 Requires:       python-sphinxcontrib-websupport
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 4.4
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-SQLAlchemy >= 0.9
@@ -77,7 +83,7 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module typed-ast}
+BuildRequires:  (python3-typed-ast if python3-base < 3.8)
 BuildRequires:  ImageMagick
 BuildRequires:  graphviz
 # For PNG format
@@ -236,12 +242,14 @@ mkdir build.doc
 
 cp %{SOURCE2} doc/python3.inv
 cp %{SOURCE3} doc/requests.inv
+cp %{SOURCE4} doc/readthedocs.inv
 %{python_expand # Use one bundled intersphinx inventory for all flavors.
 # The python3.6 inventory fails to build even in its own flavor.
 # Use a more recent default (currently 3.9) from the source tag instead.
 # The same for requests.
 sed -i -e "s/\((.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" doc/conf.py
 sed -i -e "s/\((.https:..requests.readthedocs.io.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
+sed -i -e "s/\((.https:..docs.readthedocs.io.*, \)None\()\)/\1'readthedocs.inv'\2/g" doc/conf.py
 $python setup.py build_sphinx
 rm build/sphinx/html/.buildinfo
 $python setup.py build_sphinx -b man
@@ -276,6 +284,7 @@ grep -F %{$python_sitelib} ${langfile} >> %{$python_prefix}-${langfile} \
 %else
 mkdir -p %{buildroot}%{_docdir}/python-Sphinx/
 mv build.doc/html %{buildroot}%{_docdir}/python-Sphinx/
+rm -rf %{buildroot}%{_docdir}/python-Sphinx/html/_images
 
 mkdir -p %{buildroot}%{_mandir}/man1
 mv build.doc/man/sphinx-all.1 %{buildroot}%{_mandir}/man1/sphinx-all.1
