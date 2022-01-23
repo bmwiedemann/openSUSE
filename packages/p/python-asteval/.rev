@@ -86,4 +86,13 @@
   * treat all __dunder__ attributes of all objects as inherently unsafe.</comment>
     <requestid>946672</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>de76a985d2946afd090bf06633bf1675</srcmd5>
+    <version>0.9.26</version>
+    <time>1642959523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.26:
+  * fix setup.py again</comment>
+    <requestid>948243</requestid>
+  </revision>
 </revisionlist>
