@@ -1,5 +1,0 @@
-<package name="python-pytest-parallel" project="openSUSE:Factory">
-  <title>python-pytest-parallel</title>
-  <description>Pytest plugin for parallel and concurrent testing</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-parallel"/>
-</package>
