@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jan 12 17:50:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add dynare-no-return-in-non-void-function.patch: Return trivial
+  value from a function that is not declared as returning void.

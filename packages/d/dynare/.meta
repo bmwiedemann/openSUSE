@@ -1,0 +1,10 @@
+<package name="dynare" project="openSUSE:Factory">
+  <title>A platform for handling a wide class of economic models</title>
+  <description>Dynare is a software platform for handling a wide class of economic models, in
+particular dynamic stochastic general equilibrium (DSGE) and overlapping
+generations (OLG) models.
+
+</description>
+  <devel project="science" package="dynare"/>
+  <url>https://www.dynare.org/</url>
+</package>
