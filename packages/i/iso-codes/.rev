@@ -756,4 +756,20 @@
   * Translation updates for ISO 15924 (forwarded request 933585 from dirkmueller)</comment>
     <requestid>934068</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>47a0b333d5b62b0102f2827b48ad8fbb</srcmd5>
+    <version>4.9.0</version>
+    <time>1642936519</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.9.0:
+  *  ISO 639-3: New translation for Friulian
+  *  ISO 639-5: New translations for Esperanto, Hindi, Russian
+  *  ISO 4217: New translation for Esperanto
+  *  Translation updates for ISO 3166-1
+  *  Translation updates for ISO 3166-2
+  *  Translation updates for ISO 639-2
+  *  Translation updates for ISO 639-3
+  *  Translation updates for ISO 639-5 (forwarded request 947561 from dirkmueller)</comment>
+    <requestid>947902</requestid>
+  </revision>
 </revisionlist>
