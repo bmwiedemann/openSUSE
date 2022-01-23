@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:39:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.2
+  * Require typing-extensions on Python<3.8 only. #269
+  * Fix a regression in tests collection introduced by 0.17.1, the
+    plugin works fine with non-python tests again. #267
+- Release notes for 0.17.1
+  * Fixes a bug that prevents async Hypothesis tests from working
+    without explicit asyncio marker when --asyncio-mode=auto is
+    set. #258
+  * Fixed a bug that closes the default event loop if the loop
+    doesn't exist #257
+  * Added type annotations. #198
+  * Show asyncio mode in pytest report headers. #266
+  * Relax asyncio_mode type definition; it allows to support pytest
+    6.1+. #262
+- Release notes for 0.17.0
+  * pytest-asyncio no longer alters existing event loop policies.
+    #168, #188
+  * Drop support for Python 3.6
+  * Fixed an issue when pytest-asyncio was used in combination with
+    flaky or inherited asynchronous Hypothesis tests. #178 #231
+  * Added flaky to test dependencies
+  * Added unused_udp_port and unused_udp_port_factory fixtures
+    (similar to unused_tcp_port and unused_tcp_port_factory
+    counterparts. #99
+  * Added the plugin modes: strict, auto, and legacy. See
+    documentation for details. #125
+  * Correctly process KeyboardInterrupt during async fixture setup
+    phase #219
+
+-------------------------------------------------------------------
 Sun Oct 17 13:20:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.16.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-asyncio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,25 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-asyncio
-Version:        0.16.0
+Version:        0.17.2
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
 BuildRequires:  %{python_module async_generator >= 1.3}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flaky >= 3.5.0}
 BuildRequires:  %{python_module hypothesis >= 5.7.1}
-BuildRequires:  %{python_module pytest >= 5.4.0}
+BuildRequires:  %{python_module pytest >= 6.1.0}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 5.4.0
+Requires:       python-pytest >= 6.1.0
+%if 0%{python_version_nodots} < 38
+Requires:       python-typing-extensions >= 4
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,20 +52,21 @@ provides useful fixtures and markers to make testing easier.
 %setup -q -n pytest-asyncio-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_build
 
 %install
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# remove pytest config to not error out on deprecations
-rm setup.cfg
 %pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_asyncio
+%{python_sitelib}/pytest_asyncio-%{version}*-info
 
 %changelog

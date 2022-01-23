@@ -74,4 +74,12 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>926285</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7b4175816f68ae51e9559e78b9a4dc93</srcmd5>
+    <version>0.17.2</version>
+    <time>1642951539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947748</requestid>
+  </revision>
 </revisionlist>
