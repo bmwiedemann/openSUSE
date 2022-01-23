@@ -64,4 +64,18 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
     <comment></comment>
     <requestid>854529</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>43b980548f7c01206b0ebc2ab6fc87a6</srcmd5>
+    <version>1.0.4</version>
+    <time>1642961601</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Improve path handling for Python &gt;= 3.6
+  * fix race in xmp.py
+  * fix surrogateescape handling in fsyncdir/readdir/write
+  * unbreak xmp.py for python2
+  * fix object leak in open_func()
+  * fix temporary objects leak</comment>
+    <requestid>948239</requestid>
+  </revision>
 </revisionlist>
