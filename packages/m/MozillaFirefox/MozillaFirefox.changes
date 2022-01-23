@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 20 23:21:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 96.0.2
+  * Fix an issue that caused tab height to display inconsistently
+    on Linux when audio was played (bmo#1714276)
+  * Fix an issue that caused Lastpass dropdowns to appear blank in
+    Private Browsing mode (bmo#1748158)
+  * Fix a crash encountered when resizing a Facebook app
+    (bmo#1746084)
+
+-------------------------------------------------------------------
 Fri Jan 14 16:56:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 96.0.1
