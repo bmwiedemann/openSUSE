@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,46 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
 %define psuffix %{nil}
-%bcond_with test
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
 %endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+ExclusiveArch:  donotbuild
+%define psuffix -test-py310"
+%define skip_python38 1
+%define skip_python39 1
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+# https://github.com/dask/distributed/issues/5350
+%define skip_python310 1
+%bcond_with test
+BuildArch:      noarch
+%endif
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
+%define         ghversiontag 2022.01.0
 Name:           python-dask%{psuffix}
 # Note: please always update together with python-distributed!
-Version:        2021.9.1
+Version:        2022.1.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
-Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+Source1:        https://github.com/dask/dask/raw/%{ghversiontag}/conftest.py
 # PATCH-FIX-UPSTREAM dask-fix8169-pandas13.patch -- gh#dask/dask#8169
 Patch0:         dask-fix8169-pandas13.patch
 BuildRequires:  %{python_module base >= 3.7}
@@ -42,7 +63,7 @@ BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
+Requires:       python-PyYAML >= 5.3.1
 Requires:       python-cloudpickle >= 1.1.1
 Requires:       python-fsspec >= 0.6.0
 Requires:       python-packaging >= 20.0
@@ -70,7 +91,6 @@ Suggests:       %{name}-all = %{version}
 Suggests:       %{name}-diagnostics = %{version}
 Provides:       %{name}-multiprocessing = %{version}-%{release}
 Obsoletes:      %{name}-multiprocessing < %{version}-%{release}
-BuildArch:      noarch
 %if %{with test}
 # test that we specified all requirements correctly in the core
 # and subpackages by only requiring dask-all and optional extras
@@ -240,7 +260,7 @@ This meta package pulls in the distributed module into the dask namespace.
 Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
 Requires:       python-Jinja2
-Requires:       python-bokeh >= 1.0.0
+Requires:       python-bokeh >= 2.1.1
 
 %description diagnostics
 A flexible library for parallel computing in Python.
@@ -298,6 +318,7 @@ This package contains the graphviz dot rendering interface.
 
 %prep
 %autosetup -p1 -n dask-%{version}
+cp %{SOURCE1} ./
 sed -i  '/addopts/ {s/--durations=10//; s/--color=yes//}' setup.cfg
 chmod a-x dask/dataframe/io/orc/utils.py
 
@@ -331,16 +352,14 @@ sed -E -i '/Please either conda or pip install/,/python -m pip install/ c \
 mv dask dask.moved
 # different seed or mimesis version
 donttest="(test_datasets and test_deterministic)"
-# distributed/pytest-asyncio cancer is spreading
-# https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168
-donttest+="or (test_distributed and test_annotations_blockwise_unpack)"
-donttest+="or (test_distributed and test_persist)"
-donttest+="or (test_distributed and test_local_get_with_distributed_active)"
-donttest+="or (test_distributed and test_serializable_groupby_agg)"
-donttest+="or (test_distributed and test_await)"
-donttest+="or (test_threaded and test_interrupt)"
+# upstreams test if their ci is up to date, irrelevant for obs
+donttest+=" or test_development_guidelines_matches_ci"
 # requires otherwise optional pyarrow (not available on TW)
-donttest+="or (test_parquet and test_chunksize)"
+donttest+=" or (test_parquet and (test_chunksize or test_extra_file))"
+if [[ $(getconf LONG_BIT) -eq 32 ]]; then
+  # https://github.com/dask/dask/issues/8169
+  donttest+=" or (test_categorize_info)"
+fi
 %pytest --pyargs dask -rfEs -m "not network" -k "not ($donttest)" -n auto
 %endif
 

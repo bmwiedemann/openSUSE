@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:23:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.1.0
+  * Add groupby.shift method (GH#8522) kori73
+  * Add DataFrame.nunique (GH#8479) Sarah Charlotte Johnson
+  * Add da.ndim to match np.ndim (GH#8502) Julia Signell
+  * Replace interpolation with method and method with
+    internal_method (GH#8525) Julia Signell
+  * Remove daily stock demo utility (GH#8477) James Bourbeau
+  * Add Series and Index is_monotonic* methods (GH#8304) Daniel
+    Mesejo-León
+  * Deprecate token keyword argument to map_blocks (GH#8464) James
+    Bourbeau
+  * Deprecation warning for default value of boundary kwarg in
+    map_overlap (GH#8397) Genevieve Buckley
+- Skip python310: Not supported by distributed yet
+  -- gh#dask/distributed#5350
+
+-------------------------------------------------------------------
 Wed Sep 22 12:50:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.09.1 
