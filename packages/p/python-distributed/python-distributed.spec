@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,32 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
 %define psuffix %{nil}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+%define psuffix -test-py310"
+%define skip_python38 1
+%define skip_python39 1
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+# https://github.com/dask/distributed/issues/5350
+%define skip_python310 1
 %bcond_with test
 %endif
+
 %ifarch %{ix86} %{arm}
 # cython optimizations not supported on 32-bit: https://github.com/dask/dask/issues/7489
 %bcond_with cythonize
@@ -33,13 +51,13 @@
 %if %{with cythonize}
 %define cythonize --with-cython
 %endif
+
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-%define ghversiontag 2021.09.1
+%define         skip_python2 1
+%define         ghversiontag 2022.01.0
 Name:           python-distributed%{psuffix}
 # Note: please always update together with python-dask
-Version:        2021.9.1
+Version:        2022.1.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -56,6 +74,7 @@ Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
 Requires:       python-dask = %{version}
 Requires:       python-msgpack
+Requires:       python-packaging >= 20.0
 Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
@@ -82,7 +101,7 @@ BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_client}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-asyncio >= 0.17.2}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -121,26 +140,20 @@ sed -i  '/addopts/ {s/--durations=20//; s/--color=yes//}' setup.cfg
 
 %if %{with test}
 %check
-# many tests from multiple files are broken by new pytest-asyncio
-# (see https://github.com/dask/distributed/pull/4212 and https://github.com/pytest-dev/pytest-asyncio/issues/168)
-%if %{pkg_vcmp python3-pytest-asyncio >= 0.14}
-donttest+=" or (test_client and test_get_client_functions_spawn_clusters)"
-donttest+=" or (test_preload and test_web_preload)"
-donttest+=" or (test_semaphore and test_access_semaphore_by_name)"
-donttest+=" or (test_semaphore and test_close_async)"
-donttest+=" or (test_semaphore and test_oversubscribing_leases)"
-donttest+=" or (test_semaphore and test_release_once_too_many_resilience)"
-donttest+=" or (test_semaphore and test_release_simple)"
-donttest+=" or (test_semaphore and test_threadpoolworkers_pick_correct_ioloop)"
-donttest+=" or (test_worker and test_worker_client_closes_if_created_on_worker_last_worker_alive)"
-donttest+=" or (test_worker and test_worker_client_closes_if_created_on_worker_one_worker)"
-%endif
-# randomly fail even with old asyncio -- too slow for obs (?)
+# randomly fail server-side -- too slow for obs (?)
 donttest+=" or (test_asyncprocess and test_exit_callback)"
-donttest+=" or (test_worker and test_fail_write_to_disk)"
-# rebalance fails on the server, but not when building locally
+donttest+=" or (test_nanny and test_throttle_outgoing_connections)"
 donttest+=" or (test_scheduler and test_rebalance)"
 donttest+=" or (test_tls_functional and test_rebalance)"
+donttest+=" or (test_worker and test_close_gracefully)"
+donttest+=" or (test_worker and test_fail_write_to_disk)"
+donttest+=" or (test_worker and test_remove_replicas_while_computing)"
+donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
+if [[ $(getconf LONG_BIT) -eq 32 ]]; then
+  # OverflowError
+  donttest+=" or (test_ensure_spilled_immediately)"
+  donttest+=" or (test_value_raises_during_spilling)"
+fi
 %pytest_arch distributed/tests -r sfER -m "not avoid_ci" -k "not (${donttest:4})" --reruns 3 --reruns-delay 3
 %endif
 

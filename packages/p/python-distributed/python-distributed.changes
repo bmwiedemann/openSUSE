@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:09:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.1.0
+  * full changelog at
+    https://distributed.readthedocs.io/en/latest/changelog.html
+  * New Features:
+    - Task group stacked area chart (GH#5320) Ian Rose
+    - Support configuring TLS min/max version (GH#5594) Jim
+      Crist-Harif
+    - Use asyncio for TCP/TLS comms (GH#5450) Jim Crist-Harif
+- Enhancement release notes for 2021.12.0
+  * Support pytest fixures and parametrize with gen_test (GH#5532)
+    Fábio Rosado
+  * Allow idempotent scheduler plugins to be registered via the RPC
+    (GH#5545) Jacob Tomlinson
+  * AMM logging (GH#5530) crusaderky
+  * Raise error if asyncssh isn’t installed when using SSHCluster
+    (GH#5535) Fábio Rosado
+  * Allow None in UCX configuration schema (GH#5534) Fábio Rosado
+  * Add distributed.comm.ucx.create-cuda-context config (GH#5526)
+    Peter Andreas Entschev
+- Security release note for 2021.10.0:
+  * This release fixed a potential security vulnerability relating
+    to single-machine Dask clusters. Clusters started with
+    dask.distributed.LocalCluster or dask.distributed.Client()
+    (which defaults to using LocalCluster) would mistakenly
+    configure their respective Dask workers to listen on external
+    interfaces (typically with a randomly selected high port)
+    rather than only on localhost. A Dask cluster created using
+    this method AND running on a machine that has these ports
+    exposed could be used by a sophisticated attacker to enable
+    remote code execution. Users running on machines with standard
+    firewalls in place should not be affected. This vulnerability
+    is documented in CVE-2021-42343, and is fixed in this release
+    (GH#5427). Thanks to Jean-Pierre van Riel for discovering and
+    reporting the issue.
+- Skip python310: Not supported yet -- gh#dask/distributed#5350
+
+-------------------------------------------------------------------
 Wed Sep 22 12:55:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.9.1 
