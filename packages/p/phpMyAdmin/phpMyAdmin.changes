@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 22 09:39:12 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.1.2
+  This is a security and bufix release.
+  * Security
+    - Fix boo#1195017 (CVE-2022-23807, PMASA-2022-1, CWE-661) 
+      Two factor authentication bypass
+    - Fix boo#1195018 (CVE-2022-23808, PMASA-2022-2, CWE-661)
+      Multiple XSS and HTML injection attacks in setup script
+  * Bugfixes
+    - Revert a changed to $cfg['CharTextareaRows'] allow values
+      less than 7
+    - Fix encoding of enum and set values on edit value
+    - Fixed possible "Undefined index: clause_is_unique" error
+    - Fixed some situations where a user is logged out when working
+      with more than one server
+    - Fixed a problem with assigning privileges to a user using the
+      multiselect list when the database name has an underscore
+    - Enable cookie parameter "SameSite" when the PHP version
+      is 7.3 or newer
+    - Correctly handle the removal of "innodb_file_format" in
+      MariaDB and MySQL
+
+-------------------------------------------------------------------
 Sat Jun  5 10:33:05 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.1.1
