@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -195,6 +195,9 @@ Patch2:         fix_function-names_test_for_gdb_10_1.patch
 Patch3:         set_the_library_path_in_sysroot-crates-are-unstable.patch
 # PATCH-FIX-UPSTREAM [Tests] fix_alloc-optimisation_is_only_for_rust_llvm.patch
 Patch4:         fix_alloc-optimisation_is_only_for_rust_llvm.patch
+# Fix CVE-2022-21658
+Patch10:        0002-Fix-CVE-2022-21658-for-UNIX-like.patch
+Patch11:        0003-Fix-CVE-2022-21658-for-WASI.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

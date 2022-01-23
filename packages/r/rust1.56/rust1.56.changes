@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 04:52:32 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1194767 - CVE-2022-21658 - Resolve race condition in std::fs::remove_dir_all
+  - 0002-Fix-CVE-2022-21658-for-UNIX-like.patch
+  - 0003-Fix-CVE-2022-21658-for-WASI.patch
+
+-------------------------------------------------------------------
 Wed Dec  8 02:23:03 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Remove un-needed dependency on git
