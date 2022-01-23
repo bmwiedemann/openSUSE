@@ -1,7 +1,7 @@
 #
 # spec file for package libtracefs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.2.0
+Version:        1.2.5
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/
 Source:         https://git.kernel.org/pub/scm/libs/libtrace/%name.git/snapshot/%name-%version.tar.gz
-BuildRequires:  pkgconfig(libtraceevent) >= 1.3
 BuildRequires:  pkg-config
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libtraceevent) >= 1.3
 
 %description
 This library provides C APIs to access the kernel trace file system.
