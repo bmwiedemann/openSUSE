@@ -284,4 +284,14 @@
     <comment></comment>
     <requestid>943941</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>40e80e1bd2370bb1c0c9c7f787c1894d</srcmd5>
+    <version>1.4.0</version>
+    <time>1642936515</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable asm on aarch64
+- Add patch to fix run with BTI enabled on aarch64:
+  * libglvnd-add-bti.patch - boo#1188928</comment>
+    <requestid>947893</requestid>
+  </revision>
 </revisionlist>

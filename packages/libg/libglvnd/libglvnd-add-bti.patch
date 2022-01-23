@@ -1,0 +1,38 @@
+From 5dc67a6310e32e0d36527c4eaa1b92c39beb8c8c Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Fri, 21 Jan 2022 09:26:07 +0100
+Subject: [PATCH] Add BTI landing pads for aarch64
+
+When Branch Target Identifier (BTI) is enabled on aarch64,
+any software which run libglbnd will fail with SIGILL, Illegal instruction.
+This is because some assembler code misses the BTI landing pads.
+See: https://developer.arm.com/documentation/102433/0100/Jump-oriented-programming
+
+"hint #34" is the same thing as "BTI C" landing pad, but keep
+compatibility with systems without BTI enabled.
+---
+ src/GLdispatch/vnd-glapi/entry_aarch64_tsd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/GLdispatch/vnd-glapi/entry_aarch64_tsd.c b/src/GLdispatch/vnd-glapi/entry_aarch64_tsd.c
+index ae80131..00c4132 100644
+--- a/src/GLdispatch/vnd-glapi/entry_aarch64_tsd.c
++++ b/src/GLdispatch/vnd-glapi/entry_aarch64_tsd.c
+@@ -55,7 +55,8 @@
+     ".balign " U_STRINGIFY(ENTRY_STUB_ALIGN) "\n\t" \
+     ".global " func "\n\t"                          \
+     ".type " func ", %function\n\t"                 \
+-    func ":\n\t"
++    func ":\n\t"                                    \
++    "hint #34\n\t"
+ 
+ /*
+  * Looks up the current dispatch table, finds the stub address at the given slot
+@@ -69,6 +70,7 @@
+  * table then does a branch without link to the function address.
+  */
+ #define STUB_ASM_CODE(slot)                           \
++    "hint #34\n\t"                                    \
+     "stp x1, x0, [sp, #-16]!\n\t"                     \
+     "adrp x0, :got:_glapi_Current\n\t"                \
+     "ldr x0, [x0, #:got_lo12:_glapi_Current]\n\t"     \

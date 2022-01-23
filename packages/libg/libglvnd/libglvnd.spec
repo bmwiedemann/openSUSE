@@ -29,6 +29,8 @@ Source:         https://github.com/NVIDIA/libglvnd/archive/v%{version}.tar.gz#/%
 Source1:        baselibs.conf
 Source2:        libglvnd.rpmlintrc
 Patch1:         disable-glx-tests.patch
+# PATCH-FIX-UPSTREAM - https://github.com/NVIDIA/libglvnd/pull/214
+Patch2:         libglvnd-add-bti.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -60,6 +62,7 @@ development.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 # fix env shebang to call py3 directly
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/generate/*.py
 
@@ -68,11 +71,6 @@ sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/generate/*.py
 %configure \
 %if 0%{?suse_version} < 1330
     --libdir=%{_prefix}/X11R6/%{_lib} \
-%endif
-%if 0%{?suse_version} > 1500
-%ifarch aarch64
-    --disable-asm \
-%endif
 %endif
     --disable-static \
     --disable-headers \
