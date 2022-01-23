@@ -90,4 +90,17 @@
     <comment></comment>
     <requestid>946888</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>20b87f973ec11d5f8665fed6fe5c46f2</srcmd5>
+    <version>1.14.0</version>
+    <time>1642973062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.0:
+  * ``Action.continue_task`` now takes ``action_task`` and extra fields to use
+    for the action, so the default ``eliot:remote_task`` can be changed.
+  * Added support for Python 3.10.
+  * Fix infinite recursion when a logging destination raises exceptions
+    forever.</comment>
+    <requestid>948261</requestid>
+  </revision>
 </revisionlist>

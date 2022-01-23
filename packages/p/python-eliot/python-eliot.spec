@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-eliot
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        A logging system that tells the user why something happened
 License:        Apache-2.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 23 20:30:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * ``Action.continue_task`` now takes ``action_task`` and extra fields to use
+    for the action, so the default ``eliot:remote_task`` can be changed.
+  * Added support for Python 3.10.
+  * Fix infinite recursion when a logging destination raises exceptions
+    forever.
+
+-------------------------------------------------------------------
 Sun Jan 16 20:10:13 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove obsolete python36 requirement
