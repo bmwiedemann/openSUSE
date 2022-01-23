@@ -128,6 +128,9 @@ if [ $(getconf LONG_BIT) -ne 64 ]; then
   # fails only in python36 (EOL)
   python36_donttest+=" or testIntOps"
 fi
+# the fake test_module is not in the modulepath without pytest-xdist
+# or with pytest-xdist >= 2.3 -- https://github.com/python/mypy/issues/11019
+donttest+=" or teststubtest"
 %pytest -n auto -k "not (testallexcept ${donttest} ${$python_donttest})"
 %endif
 

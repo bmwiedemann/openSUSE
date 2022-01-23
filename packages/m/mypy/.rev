@@ -279,4 +279,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>946495</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c4adba34e7e7d0044e34c434b0770c9e</srcmd5>
+    <version>0.931</version>
+    <time>1642951542</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip teststubtest because we use a pytest-xdist version which is
+  not allowed by upstream -- gh#python/mypy#11019 (forwarded request 948145 from bnavigator)</comment>
+    <requestid>948161</requestid>
+  </revision>
 </revisionlist>
