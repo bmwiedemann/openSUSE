@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 19 21:40:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.34:
+  + Add possibility of building libnma-gtk4 library with
+    experimental Gtk4 support.
+- Add pkgconfig(gtk4) BuildRequires and pass libnma_gtk4=true to
+  meson, build the experimental Gtk4 support.
+- Following the above, package new sub-packages libnma-gtk4-0 and
+  typelib-1_0-NMA4-1_0 and libnma-gtk4-devel.
+- Use ldconfig_scriptlets for post(un) handling.
+- Split out documentation files in own docs sub-package.
+
+-------------------------------------------------------------------
 Fri Aug 20 16:17:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.32:

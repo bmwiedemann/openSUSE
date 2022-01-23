@@ -1,7 +1,7 @@
 #
 # spec file for package libnma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define base_ver 1.8
 
 Name:           libnma
-Version:        1.8.32
+Version:        1.8.34
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
@@ -35,7 +35,8 @@ BuildRequires:  pkgconfig(gcr-3) >= 3.14
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnm) >= 1.7
 BuildRequires:  pkgconfig(mobile-broadband-provider-info)
@@ -58,10 +59,23 @@ Requires:       mobile-broadband-provider-info
 %description -n %{name}%{sover}
 Shared library for NetworkManager-applet.
 
+%package -n     %{name}-gtk4-%{sover}
+Summary:        Shared library for NetworkManager-applet. Gtk4 version
+Requires:       mobile-broadband-provider-info
+
+%description -n %{name}-gtk4-%{sover}
+Shared library for NetworkManager-applet. Gtk4 version.
+
 %package -n     typelib-1_0-NMA-1_0
 Summary:        Introspection bindings for %{name}
 
 %description -n typelib-1_0-NMA-1_0
+Introspection bindings for %{name}.
+
+%package -n     typelib-1_0-NMA4-1_0
+Summary:        Introspection bindings for %{name}
+
+%description -n typelib-1_0-NMA4-1_0
 Introspection bindings for %{name}.
 
 %package        devel
@@ -72,6 +86,22 @@ Requires:       typelib-1_0-NMA-1_0 = %{version}
 %description    devel
 Development Files for %{name}.
 
+%package        gtk4-devel
+Summary:        Development Files for %{name}-gtk4
+# Depend on main devel package for the shared header files.
+Requires:       %{name}-devel = %{version}
+Requires:       %{name}-gtk4-%{sover} = %{version}
+Requires:       typelib-1_0-NMA4-1_0 = %{version}
+
+%description    gtk4-devel
+Development Files for %{name}-gtk4.
+
+%package        docs
+Summary:        Documentation files for %{name}
+
+%description    docs
+Documentation files for %{name}.
+
 %lang_package
 
 %prep
@@ -79,6 +109,7 @@ Development Files for %{name}.
 
 %build
 %meson \
+	-D libnma_gtk4=true \
 	%{nil}
 %meson_build
 
@@ -86,8 +117,8 @@ Development Files for %{name}.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
+%ldconfig_scriptlets -n %{name}-gtk4-%{sover}
 
 %files -n %{name}%{sover}
 %license COPYING
@@ -95,18 +126,33 @@ Development Files for %{name}.
 %{_libdir}/%{name}.so.*
 %{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
+%files -n %{name}-gtk4-%{sover}
+%{_libdir}/%{name}-gtk4.so.*
+
 %files -n typelib-1_0-NMA-1_0
 %{_libdir}/girepository-1.0/NMA-1.0.typelib
 
+%files -n typelib-1_0-NMA4-1_0
+%{_libdir}/girepository-1.0/NMA4-1.0.typelib
+
 %files devel
-%doc %{_datadir}/gtk-doc/html/%{name}/
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/NMA-1.0.gir
-%{_datadir}/vala/vapi/libnma.deps
-%{_datadir}/vala/vapi/libnma.vapi
+%{_datadir}/vala/vapi/%{name}.deps
+%{_datadir}/vala/vapi/%{name}.vapi
+
+%files gtk4-devel
+%{_libdir}/%{name}-gtk4.so
+%{_libdir}/pkgconfig/%{name}-gtk4.pc
+%{_datadir}/gir-1.0/NMA4-1.0.gir
+%{_datadir}/vala/vapi/%{name}-gtk4.deps
+%{_datadir}/vala/vapi/%{name}-gtk4.vapi
+
+%files docs
+%doc %{_datadir}/gtk-doc/html/%{name}/
 
 %files lang -f %{name}.lang
 
