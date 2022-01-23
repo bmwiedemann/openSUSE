@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 22 14:41:36 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.16.12 implemented --no-config command line option
+  to bypass config read from XML.
+- new environment variables AGS_CONFIG and AGS_TEST_CONFIG to
+  inject arbitrary config file.
+- minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Sun Jan 16 19:07:55 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.16.6 fixed AgsSF2Synth missing program and

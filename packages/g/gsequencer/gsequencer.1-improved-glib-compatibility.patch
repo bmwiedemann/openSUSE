@@ -1,6 +1,6 @@
---- configure.ac.orig	2021-08-31 17:08:10.532800225 +0200
-+++ configure.ac	2021-08-31 17:08:48.189292702 +0200
-@@ -360,11 +360,11 @@
+--- configure.ac.orig	2022-01-22 18:29:04.599696988 +0100
++++ configure.ac	2022-01-22 18:29:58.375496458 +0100
+@@ -399,11 +399,11 @@
  AC_SUBST(FFTW_CFLAGS)
  AC_SUBST(FFTW_LIBS)
  
@@ -14,7 +14,7 @@
  AC_SUBST(GOBJECT_CFLAGS)
  AC_SUBST(GOBJECT_LIBS)
  
-@@ -372,13 +372,13 @@
+@@ -411,14 +411,14 @@
  AC_DEFINE([HAVE_GLIB_2_44], [1], [GLib 2.44 available])
  AC_DEFINE([HAVE_GLIB_2_52], [1], [GLib 2.52 available])
  AC_DEFINE([HAVE_GLIB_2_54], [1], [GLib 2.54 available])
@@ -23,6 +23,7 @@
  AC_DEFINE([HAVE_GLIB_2_62], [0], [GLib 2.62 available])
  AC_DEFINE([HAVE_GLIB_2_68], [0], [GLib 2.68 available])
  
+ AM_CONDITIONAL([HAVE_INTROSPECTION], [test "xno" == xyes])
  GOBJECT_INTROSPECTION_CHECK([1.30.0])
  
 -PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.56.0 glib-2.0 >= 2.56.0 gmodule-2.0 >= 2.56.0 gthread-2.0 >= 2.56.0])
