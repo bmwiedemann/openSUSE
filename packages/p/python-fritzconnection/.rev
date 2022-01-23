@@ -60,4 +60,16 @@
   * bugfix: `FritzStatus.bytes_sent` will return the 32 bit value from older</comment>
     <requestid>946844</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90fb26458a8fd4735cf1fc6bf2d31196</srcmd5>
+    <version>1.9.1</version>
+    <time>1642959523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1:
+  * bugfix: AttributeError in `FritzHomeAutomation.device_information()`
+    removed - bug introduced in 1.9.0
+  * `FritzWLAN.get_wifi_qr_code()` forwards the optional `security` and
+    `hidden` parameters to `segno`</comment>
+    <requestid>948236</requestid>
+  </revision>
 </revisionlist>
