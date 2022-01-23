@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 22 16:02:00 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Drop build against wxGTK2:
+  * Poedit requires wxWebView since version 3.0.
+  * wxWebView is not provided by wxGTK2 (missing GTK2 flavour of WebKitGTK).
+
+-------------------------------------------------------------------
 Fri Dec 10 20:12:58 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
 
 - Update to version 3.0.1: Various bugfixes.
