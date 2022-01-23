@@ -9,4 +9,12 @@
 Required to allow builds to complete.</comment>
     <requestid>899024</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>360da5fdae9c9765b6f51dfddf803f94</srcmd5>
+    <version>20220122</version>
+    <time>1642936567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220122</comment>
+    <requestid>948137</requestid>
+  </revision>
 </revisionlist>
