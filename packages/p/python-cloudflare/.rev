@@ -60,4 +60,41 @@
     <comment></comment>
     <requestid>820642</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65fbb1ca490bca7c15b59b7ef01669d9</srcmd5>
+    <version>2.8.15</version>
+    <time>1642959524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.15:
+  * added cursor example
+  * zones/rulesets added
+  * Removing excess trailing parenthesis
+  * first pass at adding travis CI
+  * zones/waiting_rooms, accounts/diagnostics, and more
+  * configparser added it haste, but not needed - oops!
+  * /zones/:id/access/...
+  * configparser missing - oops!
+  * cleaner and easier way to find missing api calls - this changes --dump/--api for the better
+  * /zones/:id/access/apps/policies - fixed along with a bunch more similar typos
+  * added more profile info
+  * revoke-tokens -&gt; revoke_tokens
+  * updated and included AMP RealURL/Signed Exchange API
+  * now with curl style debug - i.e. matches api information page
+  * now with curl style debug - i.e. matches api information page
+  * now with access_requests as underscore
+  * make sure verbose, etc is always used
+  * dashes vs underscores - finally tamed!
+  * /zones/:id/access/apps/:id/revoke-tokens - added
+  * improve deprecated code - add dates, check expire, improve parse of api webpage
+  * added support for dashes/underscores in commands and python calls - kinda overdue
+  * cleanup of logic around uuid match. added support for dashes/underscores in commands
+  * /zones/:id/access/apps/revoke-tokens - removed as depricated
+  * removed deprecated /organizations and /user/virtual_dns api
+  * Added base_url to config and env variables
+  * accounts/:id/rules/lists/bulk_operations/:operation_id - syntax fixed
+  * Added working GraphQL examples
+  * improved debug for jSON based data/params
+  * rules,access/logs,access/apps,etc added</comment>
+    <requestid>948246</requestid>
+  </revision>
 </revisionlist>

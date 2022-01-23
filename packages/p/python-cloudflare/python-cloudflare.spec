@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudflare
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cloudflare
-Version:        2.8.3
+Version:        2.8.15
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT
@@ -39,7 +39,7 @@ Requires:       python-future
 Requires:       python-jsonlines
 Requires:       python-requests >= 2.4.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

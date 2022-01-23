@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:44:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.15:
+  * added cursor example
+  * zones/rulesets added
+  * Removing excess trailing parenthesis
+  * first pass at adding travis CI
+  * zones/waiting_rooms, accounts/diagnostics, and more
+  * configparser added it haste, but not needed - oops!
+  * /zones/:id/access/...
+  * configparser missing - oops!
+  * cleaner and easier way to find missing api calls - this changes --dump/--api for the better
+  * /zones/:id/access/apps/policies - fixed along with a bunch more similar typos
+  * added more profile info
+  * revoke-tokens -> revoke_tokens
+  * updated and included AMP RealURL/Signed Exchange API
+  * now with curl style debug - i.e. matches api information page
+  * now with curl style debug - i.e. matches api information page
+  * now with access_requests as underscore
+  * make sure verbose, etc is always used
+  * dashes vs underscores - finally tamed!
+  * /zones/:id/access/apps/:id/revoke-tokens - added
+  * improve deprecated code - add dates, check expire, improve parse of api webpage
+  * added support for dashes/underscores in commands and python calls - kinda overdue
+  * cleanup of logic around uuid match. added support for dashes/underscores in commands
+  * /zones/:id/access/apps/revoke-tokens - removed as depricated
+  * removed deprecated /organizations and /user/virtual_dns api
+  * Added base_url to config and env variables
+  * accounts/:id/rules/lists/bulk_operations/:operation_id - syntax fixed
+  * Added working GraphQL examples
+  * improved debug for jSON based data/params
+  * rules,access/logs,access/apps,etc added
+  * api decode and Makefile now consistent - no leading slash
+  * moved network functions - but forgot one call - now fixed
+  * moved network functions into their own file - part of splitting up a large file 
+ 
+-------------------------------------------------------------------
 Mon Jul 13 09:00:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update install requirements
