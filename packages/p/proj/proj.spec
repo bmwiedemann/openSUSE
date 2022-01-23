@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   22
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        8.2.0
+Version:        8.2.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
