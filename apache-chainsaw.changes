@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Wed Jan 19 23:09:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of standalone apache-chainsaw 2.1.0
+- Added patch:
+  * apache-chainsaw-xstream.patch
+    + initialize properly security context of xstream to avoid
+      security-related exceptions with newer versions of xstream
