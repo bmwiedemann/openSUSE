@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 21:07:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.2
+  * series.blinkreconstruct(): use smoothed trace in advanced mode
+  * Implement advanced blink-reconstruction mode
+
+-------------------------------------------------------------------
 Fri Apr 23 05:12:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add json_tricks to the list of optional but unavailable dependencies. 

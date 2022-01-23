@@ -53,4 +53,12 @@
     <comment>- Add json_tricks to the list of optional but unavailable dependencies.</comment>
     <requestid>887917</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8824cdedbf0e6ba3e51a746f0567d04e</srcmd5>
+    <version>0.13.2</version>
+    <time>1642966930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948038</requestid>
+  </revision>
 </revisionlist>
