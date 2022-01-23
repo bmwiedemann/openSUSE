@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 21 10:45:13 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Pick up the full upstream patch for bsc#1194601, so we know from where it comes
+  * No functional change intended
+
+-------------------------------------------------------------------
+Mon Jan 17 07:47:07 UTC 2022 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2022-0175 [bsc#1194601], VUL-0: CVE-2022-0175: virglrenderer: Missing initialization of res->ptr
+  + virglrenderer-CVE-2022-0175.patch
+
+-------------------------------------------------------------------
 Thu Apr 29 07:31:09 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.1:

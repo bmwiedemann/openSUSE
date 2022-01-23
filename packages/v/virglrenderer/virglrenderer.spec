@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://virgil3d.github.io/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
+# CVE-2022-0175 [bsc#1194601], VUL-0: CVE-2022-0175: virglrenderer: Missing initialization of res->ptr
+Patch0:         virglrenderer-CVE-2022-0175.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
@@ -70,6 +72,7 @@ without GL.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch0 -p1
 
 %build
 %meson
