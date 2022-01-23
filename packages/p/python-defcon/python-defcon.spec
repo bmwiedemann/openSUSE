@@ -1,7 +1,7 @@
 #
 # spec file for package python-defcon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-defcon
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A set of UFO based objects for use in font editing applications
 License:        MIT

@@ -67,4 +67,13 @@
     <comment></comment>
     <requestid>941186</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a47f2037838c79873b8ba6776bb11f89</srcmd5>
+    <version>0.10.0</version>
+    <time>1642961600</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * drop python 3.6 support</comment>
+    <requestid>948238</requestid>
+  </revision>
 </revisionlist>
