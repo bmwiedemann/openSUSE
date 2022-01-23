@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 20 04:51:36 UTC 2022 - William Brown <william.brown@suse.com>
+
+- bsc#1194767 - CVE-2022-21658 - Resolve race condition in std::fs::remove_dir_all
+  - 0002-Fix-CVE-2022-21658-for-UNIX-like.patch
+  - 0003-Fix-CVE-2022-21658-for-WASI.patch
+
+-------------------------------------------------------------------
+Tue Jan 18 07:08:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build in shm for %{arm} to fix build
+
+-------------------------------------------------------------------
 Fri Jan 14 05:12:25 UTC 2022 - William Brown <william.brown@suse.com>
 
 Version 1.58.0 (2022-01-13)

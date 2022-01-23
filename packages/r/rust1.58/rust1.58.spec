@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global version_suffix 1.58
 %global version_current 1.58.0
@@ -154,7 +155,7 @@ Obsoletes:      %{1}1.53%{?2:-%{2}}
 %if "%{flavor}" == "test" || %with bundled_llvm
 %bcond_with dev_shm
 %else
-%ifarch x86_64 aarch64 %{arm} %{ix86} s390x
+%ifarch x86_64 aarch64 %{ix86} s390x
 %bcond_without dev_shm
 %else
 %bcond_with dev_shm
@@ -203,6 +204,9 @@ Source209:      %{dl_url}/rust-%{version_current}-riscv64gc-unknown-linux-gnu.ta
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
+# Fix CVE-2022-21658
+Patch10:        0002-Fix-CVE-2022-21658-for-UNIX-like.patch
+Patch11:        0003-Fix-CVE-2022-21658-for-WASI.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
