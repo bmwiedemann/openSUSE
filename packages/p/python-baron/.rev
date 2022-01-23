@@ -33,4 +33,18 @@
   * bug fix by 91e839a kyleatmakrs</comment>
     <requestid>682174</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d00b4cb05c93658647ce2368d7986330</srcmd5>
+    <version>0.10.1</version>
+    <time>1642961603</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.1:
+  * bug fix: in &quot;a._&quot; the &quot;._&quot; part was incorrectly recognized as a float
+  * bug fix: baron is now able to parse &quot;class A(b, c=d): pass&quot;
+  * some project cleaned and integration of tox with good pratices like flake8 and check-manifest
+  * bug fix for missing edge case in inner formatting
+  * complet support for float with underscores in them
+  * bug fix for failure of parsing of &quot;{**a}&quot;</comment>
+    <requestid>948241</requestid>
+  </revision>
 </revisionlist>

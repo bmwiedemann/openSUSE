@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:29:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * bug fix: in "a._" the "._" part was incorrectly recognized as a float
+  * bug fix: baron is now able to parse "class A(b, c=d): pass"
+  * some project cleaned and integration of tox with good pratices like flake8 and check-manifest
+  * bug fix for missing edge case in inner formatting
+  * complet support for float with underscores in them
+  * bug fix for failure of parsing of "{**a}"
+
+-------------------------------------------------------------------
 Wed Mar  6 13:42:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.9:
