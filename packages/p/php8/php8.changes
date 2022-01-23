@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 20 18:15:22 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.15: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.15
+
+-------------------------------------------------------------------
 Sun Jan  9 10:40:43 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - use /tmp to store session information (boo#1194414)

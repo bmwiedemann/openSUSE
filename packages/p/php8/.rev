@@ -178,4 +178,13 @@
   % php-ini.patch (forwarded request 945111 from adkorte)</comment>
     <requestid>945332</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3e8c4e1b146691fa1d4cfef2fbaebbb3</srcmd5>
+    <version>8.0.15</version>
+    <time>1642936535</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0.15: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.15</comment>
+    <requestid>948110</requestid>
+  </revision>
 </revisionlist>
