@@ -65,6 +65,7 @@ make %{?_smp_mflags}
 %install
 %make_install
 install -D -m0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.conf
+sed -i "s|BACKEND=.*$|BACKEND=\"%{_libexecdir}/sshg-fw-firewalld\"|g" %{buildroot}%{_sysconfdir}/%{name}.conf
 %if 0%{?has_systemd}
 ln -sf service %{buildroot}/%{_sbindir}/rc%{name}
 install -D -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/sshguard.service

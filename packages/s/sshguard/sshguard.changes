@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 24 21:22:20 UTC 2022 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Corrected the BACKEND in /etc/sshguard.conf
+
+-------------------------------------------------------------------
 Thu Jan 20 14:57:19 UTC 2022 - Joop Boonen <joop.boonen@opensuse.org>
 
 - Deleted the iptables entries from sshguard.service as firewalld is used
