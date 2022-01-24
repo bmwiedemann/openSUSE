@@ -119,4 +119,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment></comment>
     <requestid>946812</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8fcc133f052d5f2bbae5a6f4706e4a6f</srcmd5>
+    <version>1.21.2</version>
+    <time>1643062192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948343</requestid>
+  </revision>
 </revisionlist>
