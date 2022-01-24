@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 24 10:41:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable multipython builds. (Reenables Python2 for Leap 15.)
+
+-------------------------------------------------------------------
 Sun Nov 14 16:44:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20211114

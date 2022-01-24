@@ -1,7 +1,7 @@
 #
 # spec file for package libvshadow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,10 +31,12 @@ Source11:       Paper_-_Windowless_Shadow_Snapshots.pdf
 Source12:       Slides_-_Windowless_Shadow_Snapshots.pdf
 Source13:       Volume_Shadow_Snapshot_VSS_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -48,16 +50,12 @@ BuildRequires:  pkgconfig(libcthreads) >= 20200508
 BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libuna) >= 20210801
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
-Library and tools to access the Volume Shadow Snapshot (VSS) format. The VSS format is used by Windows, as of Vista, to maintain copies of data on a storage media volume.
-
-The devel package contains:
-
-    OSDFC 2012: Paper - Windowless Shadow Snapshots
-    OSDFC 2012: Slides - Windowless Shadow Snapshots
-    Volume_Shadow_Snapshot_(VSS)_format.pdf
+Library and tools to access the Volume Shadow Snapshot (VSS) format.
+The VSS format is used by Windows, as of Vista, to maintain copies of
+data on a storage media volume.
 
 %package -n %{lname}
 Summary:        Library and tools to access the Volume Shadow Snapshot (VSS) format
@@ -65,7 +63,9 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-Library and tools to access the Volume Shadow Snapshot (VSS) format. The VSS format is used by Windows, as of Vista, to maintain copies of data on a storage media volume.
+Library and tools to access the Volume Shadow Snapshot (VSS) format.
+The VSS format is used by Windows, as of Vista, to maintain copies of
+data on a storage media volume.
 
 The package contains %{_docdir}/%{name}:
 
@@ -78,7 +78,9 @@ License:        LGPL-3.0-or-later
 Group:          System/Filesystems
 
 %description    tools
-Tools to access the Volume Shadow Snapshot (VSS) format. The VSS format is used by Windows, as of Vista, to maintain copies of data on a storage media volume.
+Tools to access the Volume Shadow Snapshot (VSS) format. The VSS
+format is used by Windows, as of Vista, to maintain copies of data on
+a storage media volume.
 
 %package        devel
 Summary:        Development files for %{name}
@@ -90,14 +92,6 @@ Requires:       %{lname} = %{version}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package        -n python3-%{name}
-Summary:        Python 3 binding for libvshadow
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description    -n python3-%{name}
-Python 3 binding for libvshadow.  libvshadow can read windows event files
-
 %prep
 %autosetup -p1
 mkdir doc
@@ -107,12 +101,19 @@ cp -av %_sourcedir/*.pdf .
 autoreconf -fi
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find %{buildroot} -name '*.la' -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -122,11 +123,11 @@ find %{buildroot} -name '*.la' -delete
 %doc doc
 %{_libdir}/*.so.*
 
-%files tools
+%files -n %name-tools
 %{_bindir}/vshadow*
 %{_mandir}/man1/*.gz
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc Paper_-_Windowless_Shadow_Snapshots.pdf
 %doc Slides_-_Windowless_Shadow_Snapshots.pdf
@@ -137,8 +138,8 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/pkgconfig/libvshadow.pc
 %{_mandir}/man3/*.gz
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/*.so
+%python_sitearch/*.so
 
 %changelog

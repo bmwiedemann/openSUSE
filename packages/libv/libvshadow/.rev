@@ -145,4 +145,12 @@ part of summer 20013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20211114</comment>
     <requestid>933916</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ea5f30dde40dc66942607acafad3dd67</srcmd5>
+    <version>20211114</version>
+    <time>1643062224</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds. (Reenables Python2 for Leap 15.)</comment>
+    <requestid>948455</requestid>
+  </revision>
 </revisionlist>
