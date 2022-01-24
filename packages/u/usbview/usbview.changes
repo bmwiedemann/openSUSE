@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jan 24 11:30:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop polkit (Build)Requires: without a polkit pkexec file, we
+  also do not have to rely on polkit.
+- Pass --disable-polkit to configure instead of letting make
+  install copy a file which we later delete again.
+
+-------------------------------------------------------------------
+Mon Jan 24 10:48:34 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- explicitly remove unneeded polkit pkexec file (bsc#1194300).
+
+-------------------------------------------------------------------
+Sat Jan 22 19:49:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0:
+  - remove need for debugfs/usbdevfs/usbfs file entirely, rely only on
+    sysfs now.  This removes the need to run the program as root, which
+    should have never happened.
+  - added SPDX identifiers and .spdx file to make packaging easier for
+   others.
+
+-------------------------------------------------------------------
+Fri Jan 21 14:20:01 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- update to 2.2:
+  - security issue fixed with polkit (CVE-2022-23220 bsc#1194300).
+  - copyright year fixups and updates
+  - tooltip added to explain red devices have no attached drivers
+
+-------------------------------------------------------------------
+Mon Dec 20 23:22:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  - build warnings fixed
+  - increased max number of interfaces allowed, fixing problem with some
+    USB sound devices.
+  - autogen.sh added
+  - LICENSES directory added and license moved to it
+  - SPDX license headers added
+  - policykit support added
+
+-------------------------------------------------------------------
 Sat Jun 29 09:00:30 UTC 2013 - meissner@suse.com
 
 - updated to 2.0

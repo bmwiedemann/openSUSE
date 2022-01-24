@@ -109,4 +109,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>630dd0e586dcfc9ed5f30c9fec453ca8</srcmd5>
+    <version>3.0</version>
+    <time>1643062176</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop polkit (Build)Requires: without a polkit pkexec file, we
+  also do not have to rely on polkit.
+- Pass --disable-polkit to configure instead of letting make
+  install copy a file which we later delete again. (forwarded request 948383 from dimstar)</comment>
+    <requestid>948385</requestid>
+  </revision>
 </revisionlist>
