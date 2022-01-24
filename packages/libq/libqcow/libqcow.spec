@@ -1,7 +1,7 @@
 #
 # spec file for package libqcow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ URL:            https://github.com/libyal/libqcow
 Source:         %{name}-%{version}.tar.xz
 Source2:        QEMU_Copy-On-Write_file_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcaes) >= 20201012
@@ -46,32 +48,13 @@ BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libuna) >= 20201204
 BuildRequires:  pkgconfig(openssl) >= 1.0
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
+%python_subpackages
 
 %description
 Library and tooling to access the QEMU Copy-On-Write (QCOW) image format.
-
-Read supported QCOW formats:
-
-version 1
-version 2
-Supported QCOW format features:
-
-compression
-encryption
-QCOW format features not supported at the moment:
-
-backing file-based snapshots
-in-image snapshots
-Work in progress:
-
-Python bindings
-Dokan library support
-Planned:
-
-version 3 support
-Multi-threading support
+QCOW formats v1 and v2 in compressed or encrypted form are supported.
+Not supported are backing file-based snapshots and in-image snapshots.
 
 %package -n %{lname}
 Summary:        Library to access the QEMU Copy-On-Write (QCOW) image format
@@ -80,19 +63,8 @@ Group:          System/Libraries
 
 %description -n %{lname}
 Library to access the QEMU Copy-On-Write (QCOW) image format.
-
-Read supported QCOW formats:
-
-version 1
-version 2
-Supported QCOW format features:
-
-compression
-encryption
-QCOW format features not supported at the moment:
-
-backing file-based snapshots
-in-image snapshots
+QCOW formats v1 and v2 in compressed or encrypted form are supported.
+Not supported are backing file-based snapshots and in-image snapshots.
 
 %package tools
 Summary:        Tools to access the QEMU Copy-On-Write (QCOW) image format
@@ -101,19 +73,8 @@ Group:          Productivity/File utilities
 
 %description tools
 Tools to access the QEMU Copy-On-Write (QCOW) image format.
-
-Read supported QCOW formats:
-
-version 1
-version 2
-Supported QCOW format features:
-
-compression
-encryption
-QCOW format features not supported at the moment:
-
-backing file-based snapshots
-in-image snapshots
+QCOW formats v1 and v2 in compressed or encrypted form are supported.
+Not supported are backing file-based snapshots and in-image snapshots.
 
 %package devel
 Summary:        Development files for libqcow
@@ -127,25 +88,23 @@ libqcow is a library to access the QEMU Copy-On-Write (QCOW) image format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libqcow.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libqcow
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-Python 3 bindings for libqcow, which can access the QEMU Copy-On-Write (QCOW) image format
-
 %prep
 %autosetup -p1
 cp "%{SOURCE2}" .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -155,12 +114,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libqcow.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/qcow*
 %{_mandir}/man1/qcow*.1*
 
-%files devel
+%files -n %name-devel
 %doc QEMU_Copy-On-Write_file_format.pdf
 %license COPYING*
 %{_includedir}/libqcow.h
@@ -169,8 +128,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libqcow.pc
 %{_mandir}/man3/libqcow.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyqcow.so
+%{python_sitearch}/pyqcow.so
 
 %changelog

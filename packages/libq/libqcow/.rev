@@ -98,4 +98,12 @@
     <comment></comment>
     <requestid>898775</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d927920384fef1e74112f0b8f1dd2dd7</srcmd5>
+    <version>20210419</version>
+    <time>1643062201</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds.</comment>
+    <requestid>948380</requestid>
+  </revision>
 </revisionlist>
