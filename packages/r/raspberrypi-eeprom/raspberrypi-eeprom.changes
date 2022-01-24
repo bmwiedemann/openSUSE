@@ -22,6 +22,7 @@ Wed Jun 30 12:19:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
     the USB-C socket on Pi 4B / Pi 400 and the type A sockets on Compute
     Module 4 IO board.
   * Validate SDRAM in recovery mode.
+- Fixes bsc#1194950.
 
 -------------------------------------------------------------------
 Fri Feb 19 10:07:06 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
