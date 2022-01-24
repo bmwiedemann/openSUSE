@@ -2291,7 +2291,7 @@
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
