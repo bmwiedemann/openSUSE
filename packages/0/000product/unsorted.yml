@@ -588,6 +588,8 @@ unsorted:
   - aop 
   - aopalliance 
   - aopalliance-javadoc 
+  - apache-chainsaw 
+  - apache-chainsaw-javadoc 
   - apache-commons-beanutils 
   - apache-commons-beanutils-javadoc 
   - apache-commons-chain 
@@ -3136,6 +3138,9 @@ unsorted:
   - dxvk-32bit: [x86_64] 
   - dynamic-wallpapers-11x 
   - dynamips 
+  - dynare 
+  - dynare-doc-html 
+  - dynare-doc-pdf 
   - dzen2 
   - e-antic-devel 
   - e16 
@@ -12183,8 +12188,8 @@ unsorted:
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
   - libmunit0suse0 
-  - libmuparser2_3_2 
-  - libmuparser2_3_2-32bit: [x86_64] 
+  - libmuparser2_3_3 
+  - libmuparser2_3_3-32bit: [x86_64] 
   - libmuparserx4_0_11 
   - libmupen64plus-devel 
   - libmupen64plus2 
@@ -12349,6 +12354,9 @@ unsorted:
   - libnlopt0 
   - libnm0-32bit: [x86_64] 
   - libnma-devel 
+  - libnma-docs 
+  - libnma-gtk4-0 
+  - libnma-gtk4-devel 
   - libnng1 
   - libnormaliz3 
   - libnoson2 
@@ -13300,8 +13308,8 @@ unsorted:
   - libregf-tools 
   - libregf1 
   - libregina3 
-  - libreiser4-2_0-4 
-  - libreiser4-minimal-2_0-4 
+  - libreiser4-2_0-5 
+  - libreiser4-minimal-2_0-5 
   - libreiserfscore-devel 
   - librelp-devel 
   - librelp0 
@@ -13423,7 +13431,7 @@ unsorted:
   - librep 
   - librep-devel 
   - librep16 
-  - librepair-2_0-4 
+  - librepair-2_0-5 
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
@@ -14937,15 +14945,11 @@ unsorted:
   - lighttpd 
   - lighttpd-mod_authn_gssapi 
   - lighttpd-mod_authn_ldap 
-  - lighttpd-mod_authn_mysql 
   - lighttpd-mod_authn_pam 
   - lighttpd-mod_authn_sasl 
-  - lighttpd-mod_cml 
   - lighttpd-mod_magnet 
   - lighttpd-mod_maxminddb 
-  - lighttpd-mod_mysql_vhost 
   - lighttpd-mod_rrdtool 
-  - lighttpd-mod_trigger_b4_dl 
   - lighttpd-mod_vhostdb_dbi 
   - lighttpd-mod_vhostdb_ldap 
   - lighttpd-mod_vhostdb_mysql 
@@ -21417,15 +21421,10 @@ unsorted:
   - python3-libdnf 
   - python3-libexe 
   - python3-libfdt 
-  - python3-libfsapfs 
-  - python3-libfsext 
   - python3-libfsntfs 
   - python3-libftdi1 
   - python3-libfwnt 
-  - python3-libfwps 
-  - python3-libfwsi 
   - python3-libixion 
-  - python3-liblnk 
   - python3-libluksde 
   - python3-libmodi 
   - python3-libmodulemd 
@@ -22506,15 +22505,6 @@ unsorted:
   - python310-dash-html-components 
   - python310-dash-renderer 
   - python310-dash-table 
-  - python310-dask 
-  - python310-dask-all 
-  - python310-dask-array 
-  - python310-dask-bag 
-  - python310-dask-dataframe 
-  - python310-dask-delayed 
-  - python310-dask-diagnostics 
-  - python310-dask-distributed 
-  - python310-dask-dot 
   - python310-databases 
   - python310-datadiff 
   - python310-datashader 
@@ -22563,7 +22553,6 @@ unsorted:
   - python310-dist 
   - python310-distlib 
   - python310-distorm3 
-  - python310-distributed 
   - python310-distro 
   - python310-distroinfo 
   - python310-distutils-extra 
@@ -23174,12 +23163,17 @@ unsorted:
   - python310-libevt 
   - python310-libevtx 
   - python310-libewf 
+  - python310-libfsapfs 
+  - python310-libfsext 
   - python310-libfshfs 
   - python310-libfsxfs 
   - python310-libfvde 
+  - python310-libfwps 
+  - python310-libfwsi 
   - python310-libkdumpfile 
   - python310-liblarch 
   - python310-liblarch-gtk 
+  - python310-liblnk 
   - python310-libmsym 
   - python310-libnacl 
   - python310-libpff 
@@ -23932,6 +23926,7 @@ unsorted:
   - python310-python-coveralls 
   - python310-python-crontab 
   - python310-python-daemon 
+  - python310-python-datamatrix 
   - python310-python-dateutil 
   - python310-python-dbusmock 
   - python310-python-docs-theme 
@@ -23965,7 +23960,9 @@ unsorted:
   - python310-python-pam 
   - python310-python-poppler 
   - python310-python-pptx 
+  - python310-python-pseudorandom 
   - python310-python-ptrace 
+  - python310-python-qdatamatrix 
   - python310-python-qpid-proton 
   - python310-python-qprogedit 
   - python310-python-rapidjson 
@@ -24738,12 +24735,9 @@ unsorted:
   - python36-podman 
   - python36-pony 
   - python36-pysvn 
-  - python36-pytest-parallel 
   - python36-python-crfsuite 
-  - python36-python-datamatrix 
   - python36-python-multipart 
   - python36-python-prctl 
-  - python36-python-qdatamatrix 
   - python36-pyuv 
   - python36-rarfile 
   - python36-rarfile-doc 
@@ -26288,12 +26282,17 @@ unsorted:
   - python38-libevt 
   - python38-libevtx 
   - python38-libewf 
+  - python38-libfsapfs 
+  - python38-libfsext 
   - python38-libfshfs 
   - python38-libfsxfs 
   - python38-libfvde 
+  - python38-libfwps 
+  - python38-libfwsi 
   - python38-libkdumpfile 
   - python38-liblarch 
   - python38-liblarch-gtk 
+  - python38-liblnk 
   - python38-libmsym 
   - python38-libnacl 
   - python38-libpff 
@@ -26947,7 +26946,6 @@ unsorted:
   - python38-pytest-mypy 
   - python38-pytest-openfiles 
   - python38-pytest-order 
-  - python38-pytest-parallel 
   - python38-pytest-percent 
   - python38-pytest-plus 
   - python38-pytest-profiling 
@@ -29332,12 +29330,17 @@ unsorted:
   - python39-libevt 
   - python39-libevtx 
   - python39-libewf 
+  - python39-libfsapfs 
+  - python39-libfsext 
   - python39-libfshfs 
   - python39-libfsxfs 
   - python39-libfvde 
+  - python39-libfwps 
+  - python39-libfwsi 
   - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
+  - python39-liblnk 
   - python39-libmsym 
   - python39-libnacl 
   - python39-libpff 
@@ -30057,7 +30060,6 @@ unsorted:
   - python39-pytest-mypy 
   - python39-pytest-openfiles 
   - python39-pytest-order 
-  - python39-pytest-parallel 
   - python39-pytest-percent 
   - python39-pytest-plus 
   - python39-pytest-profiling 
@@ -41966,6 +41968,7 @@ unsorted:
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-MyPaint-1_6 
   - typelib-1_0-MyPaintGegl-1_6 
+  - typelib-1_0-NMA4-1_0 
   - typelib-1_0-Nautilus-3_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
