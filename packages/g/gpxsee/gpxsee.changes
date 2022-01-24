@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 21 00:55:42 CET 2022 - tumic@cbox.cz
+
+- Update to version 10.2
+  * Improved/fixed TwoNav data files parser.
+  * Prefer GPS locations when the positioning plugin provides
+    multiple position sources.
+  * Added a default DEM tiles download source.
+  * Multiple minor fixes and enhancements.
+
+-------------------------------------------------------------------
 Sun Jan  2 15:05:54 CET 2022 - tumic@cbox.cz
 
 - Update to version 10.1

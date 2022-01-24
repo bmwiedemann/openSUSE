@@ -1,3 +1,13 @@
+gpxsee (10.2) stable; urgency=low
+
+  * Improved/fixed TwoNav data files parser.
+  * Prefer GPS locations when the positioning plugin provides
+    multiple position sources.
+  * Added a default DEM tiles download source.
+  * Multiple minor fixes and enhancements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Fri, 21 Jan 2022 01:01:34 +0100
+
 gpxsee (10.1) stable; urgency=low
 
   * Added support for TwoNav data files (TRK, RTE, WPT).
