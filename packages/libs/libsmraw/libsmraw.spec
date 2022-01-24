@@ -1,7 +1,7 @@
 #
 # spec file for package libsmraw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,12 @@ Source:         https://github.com/libyal/libsmraw/releases/download/%version/li
 Source2:        https://github.com/libyal/libsmraw/releases/download/%version/libsmraw-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -48,7 +50,7 @@ BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libhmac) >= 20200104
 BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(openssl) >= 1.0
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libsmraw is a library to access the storage media RAW format.
@@ -81,27 +83,24 @@ Group:          Productivity/File utilities
 This subpackage contains the utility programs from libsmraw to
 acquire, export, query and verify storage media (split) RAW files.
 
-%package -n python3-%name
-Summary:        Python 3 bindings for libsmraw
-Group:          Development/Languages/Python
-Requires:       %lname = %version
-Requires:       python3
-
-%description -n python3-%name
-Python 3 bindings for libsmraw, which provides functionality to work
-with (split) RAW files.
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find "%buildroot" -name "*.la" -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -110,21 +109,21 @@ find "%buildroot" -name "*.la" -delete
 %license COPYING
 %_libdir/libsmraw.so.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING
 %_includedir/libsmraw*
 %_libdir/libsmraw.so
 %_libdir/pkgconfig/libsmraw.pc
 %_mandir/man3/libsmraw.3*
 
-%files tools
+%files -n %name-tools
 %license COPYING
 %_bindir/smrawverify
 %_bindir/smrawmount
 %_mandir/man1/smrawmount.1*
 
-%files -n python3-%name
+%files %python_files
 %license COPYING
-%python3_sitearch/pysmraw.so
+%python_sitearch/pysmraw.so
 
 %changelog
