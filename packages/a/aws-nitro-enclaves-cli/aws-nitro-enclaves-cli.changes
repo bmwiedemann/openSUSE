@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 24 12:34:45 UTC 2022 - olaf@aepfle.de
+
+- Update to version 1.1.0~git32.8f6ed74 to get all the precious cargo
+- init.c is maintained in aws-nitro-enclaves-sdk-bootstrap.git
+
+-------------------------------------------------------------------
 Tue Dec 14 14:14:14 UTC 2021 - olaf@aepfle.de
 
 - Update to version 1.1.0~git16.860cfe4 to get all the precious cargo
+  (bsc#1195053)
 
 -------------------------------------------------------------------
 Mon Nov 22 11:22:33 UTC 2021 - olaf@aepfle.de

@@ -37,7 +37,7 @@
     <param name="exclude">vendor</param>
     <param name="filename">aws-nitro-enclaves-cli</param>
     <param name="match-tag">*</param>
-    <param name="revision">860cfe4491f6afbf5ade10a6f4016ace6a97146c</param>
+    <param name="revision">8f6ed740b05225512d86163f8b02292668c4b056</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>
@@ -45,11 +45,23 @@
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="exclude">Makefile</param>
+    <param name="filename">aws-nitro-enclaves-sdk-bootstrap</param>
+    <param name="subdir">init</param>
+    <param name="revision">746ec5d2713e539b94e651601b5c24ec1247c955</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/aws/aws-nitro-enclaves-sdk-bootstrap.git</param>
+    <param name="versionformat">%H</param>
+  </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="disabled">
+    <param name="basename">aws-nitro-enclaves-cli</param>
+  </service>
 <!--
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">aws-nitro-enclaves-cli</param>

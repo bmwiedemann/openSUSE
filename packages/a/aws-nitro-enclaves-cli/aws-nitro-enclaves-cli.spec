@@ -19,7 +19,7 @@
 
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.1.0~git16.860cfe4
+Version:        1.1.0~git32.8f6ed74
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
@@ -30,6 +30,7 @@ Source0:        %name-%version.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source3:        aws-nitro-enclaves-cli-rpmlintrc
+Source9:        aws-nitro-enclaves-sdk-bootstrap-746ec5d2713e539b94e651601b5c24ec1247c955.tar.xz
 Requires(pre):  system-group-%ne_system_group = %version-%release
 Requires(post): coreutils
 Requires:       aws-nitro-enclaves-binaryblobs
@@ -66,6 +67,7 @@ System group %ne_system_group for Nitro Enclaves.
 %autosetup -p1 -a1
 
 %build
+tar --extract --verbose --strip-components=1 '--file=%SOURCE9'
 ln vsock_proxy/README.md README.vsock_proxy.md
 ln third_party/linuxkit/LICENSE LICENSE.linuxkit
 ln drivers/COPYING COPYING.binary-kernel
