@@ -182,4 +182,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20210809</comment>
     <requestid>933968</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>dac980d599c9ee2d8b0deca7f5de13e2</srcmd5>
+    <version>20210809</version>
+    <time>1643062203</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds. (This reenables python2 on Leap 15.)</comment>
+    <requestid>948387</requestid>
+  </revision>
 </revisionlist>

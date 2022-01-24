@@ -1,7 +1,7 @@
 #
 # spec file for package libregf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ Source2:        https://github.com/libyal/libregf/releases/download/%version/lib
 Source3:        %name.keyring
 Source11:       Windows_NT_Registry_File_REGF_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -50,7 +52,7 @@ BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libfwsi) >= 20210419
 BuildRequires:  pkgconfig(libuna) >= 20210801
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libregf is a library to access Windows Registry files of the REGF
@@ -87,32 +89,24 @@ type (a non-text representation).
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python3-%{name}
-Summary:        Python3 bindings for libregf, a library to access Windows REGF Registry files
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-libregf is a library to access Windows Registry files of the REGF
-type (a non-text representation).
-
-This subpackage contains the Python3 bindings for libregf.
-
 %prep
 %autosetup -p1
 cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
-%configure \
-    --disable-static \
-    --enable-wide-character-type \
-    --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find %{buildroot} -name '*.la' -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -121,11 +115,11 @@ find %{buildroot} -name '*.la' -delete
 %license COPYING*
 %{_libdir}/libregf.so.*
 
-%files tools
+%files -n %name-tools
 %{_bindir}/regf*
 %{_mandir}/man1/regf*.1*
 
-%files devel
+%files -n %name-devel
 %doc Windows_NT_Registry_File*.pdf
 %{_includedir}/libregf.h
 %{_includedir}/libregf/
@@ -133,8 +127,8 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/pkgconfig/libregf.pc
 %{_mandir}/man3/libregf.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyregf.so
+%{python_sitearch}/pyregf.so
 
 %changelog
