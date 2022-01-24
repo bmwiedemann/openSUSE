@@ -1,7 +1,7 @@
 #
 # spec file for package z3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 4_8
 Name:           z3
-Version:        4.8.13
+Version:        4.8.14
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT

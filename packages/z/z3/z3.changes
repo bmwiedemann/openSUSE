@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 21 15:56:05 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 4.8.14:
+ * fixes Antimirov derivatives for intersections and unions required
+   required for solving non-emptiness constraints.
+ * includes x86 dll in nuget package for Windows.
+ * exposes additional user propagator functionality 
+
+-------------------------------------------------------------------
 Sun Nov 28 19:01:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.13:
