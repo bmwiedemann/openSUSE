@@ -1,16 +1,16 @@
-Index: configure
-===================================================================
---- configure.orig	2012-04-10 13:11:53.944741960 +0200
-+++ configure	2012-04-10 13:12:09.310277199 +0200
-@@ -12650,107 +12650,12 @@
- $as_echo "no" >&6; }
+diff -up configure.orig configure
+--- configure.orig	2022-01-19 20:48:45.387511953 +0100
++++ configure	2022-01-19 20:59:28.559523809 +0100
+@@ -15016,108 +15016,13 @@ else
+ printf "%s\n" "no" >&6; }
  fi
  
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking default TCP send buffer size" >&5
--$as_echo_n "checking default TCP send buffer size... " >&6; }
--if test "$cross_compiling" = yes; then :
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking default TCP send buffer size" >&5
+-printf %s "checking default TCP send buffer size... " >&6; }
+-if test "$cross_compiling" = yes
+-then :
 -  CONF_TCP_SO_SNDBUF=65536
--else
+-else $as_nop
 -  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 -/* end confdefs.h.  */
 -
@@ -40,30 +40,30 @@ Index: configure
 -}
 -
 -_ACEOF
--if ac_fn_c_try_run "$LINENO"; then :
+-if ac_fn_c_try_run "$LINENO"
+-then :
 -  CONF_TCP_SO_SNDBUF=`cat conftestval`
--else
+-else $as_nop
 -  CONF_TCP_SO_SNDBUF=65536
 -fi
 -rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
 -  conftest.$ac_objext conftest.beam conftest.$ac_ext
 -fi
 -
--{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $CONF_TCP_SO_SNDBUF" >&5
--$as_echo "$CONF_TCP_SO_SNDBUF" >&6; }
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $CONF_TCP_SO_SNDBUF" >&5
+-printf "%s\n" "$CONF_TCP_SO_SNDBUF" >&6; }
 -
--
- cat >>confdefs.h <<_ACEOF
--#define CONF_TCP_SO_SNDBUF $CONF_TCP_SO_SNDBUF
-+#define CONF_TCP_SO_SNDBUF 65536
- _ACEOF
  
--
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking default TCP receive buffer size" >&5
--$as_echo_n "checking default TCP receive buffer size... " >&6; }
--if test "$cross_compiling" = yes; then :
+-printf "%s\n" "#define CONF_TCP_SO_SNDBUF $CONF_TCP_SO_SNDBUF" >>confdefs.h
++printf "%s\n" "#define CONF_TCP_SO_SNDBUF 65536" >>confdefs.h
+ 
+ 
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking default TCP receive buffer size" >&5
+-printf %s "checking default TCP receive buffer size... " >&6; }
+-if test "$cross_compiling" = yes
+-then :
 -  CONF_TCP_SO_RCVBUF=65536
--else
+-else $as_nop
 -  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 -/* end confdefs.h.  */
 -
@@ -93,22 +93,22 @@ Index: configure
 -}
 -
 -_ACEOF
--if ac_fn_c_try_run "$LINENO"; then :
+-if ac_fn_c_try_run "$LINENO"
+-then :
 -  CONF_TCP_SO_RCVBUF=`cat conftestval`
--else
+-else $as_nop
 -  CONF_TCP_SO_RCVBUF=65536
 -fi
 -rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
 -  conftest.$ac_objext conftest.beam conftest.$ac_ext
 -fi
 -
--{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $CONF_TCP_SO_RCVBUF" >&5
--$as_echo "$CONF_TCP_SO_RCVBUF" >&6; }
--
--
- cat >>confdefs.h <<_ACEOF
--#define CONF_TCP_SO_RCVBUF $CONF_TCP_SO_RCVBUF
-+#define CONF_TCP_SO_RCVBUF 65536
- _ACEOF
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $CONF_TCP_SO_RCVBUF" >&5
+-printf "%s\n" "$CONF_TCP_SO_RCVBUF" >&6; }
+ 
+ 
+-printf "%s\n" "#define CONF_TCP_SO_RCVBUF $CONF_TCP_SO_RCVBUF" >>confdefs.h
++printf "%s\n" "#define CONF_TCP_SO_RCVBUF 65536" >>confdefs.h
+ 
  
  

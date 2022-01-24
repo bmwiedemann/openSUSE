@@ -1,7 +1,7 @@
 #
 # spec file for package pure-ftpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pure-ftpd
-Version:        1.0.49
+Version:        1.0.50
 Release:        0
 Summary:        A Lightweight, Fast, and Secure FTP Server
 License:        BSD-3-Clause
@@ -37,14 +37,15 @@ Patch1:         %{name}-1.0.20_doc.patch
 # PATCH-FEATURE-OPENSUSE %{name}-1.0.20_virtualhosts.patch -- Custom VHOST_PATH on openSUSE.
 Patch2:         %{name}-1.0.20_virtualhosts.patch
 Patch5:         %{name}-1.0.49_ftpwho_path.patch
-# PATCH-FIX-UPSTREAM %{name}-1.0.32-default_tcp_sedrcv_buffer_size.patch
-Patch7:         %{name}-1.0.32-default_tcp_sedrcv_buffer_size.patch
+# PATCH-FIX-UPSTREAM %{name}-1.0.50-default_tcp_sedrcv_buffer_size.patch -- bnc#407363
+Patch7:         %{name}-1.0.50-default_tcp_sedrcv_buffer_size.patch
 # PATCH-FIX-OPENSUSE: bnc#789833
 # won't be upstreamed, can be dropped when systemd will be only one init system and kernel get AUDIT_LOGINUID_IMMUTABLE
 Patch8:         pure-ftpd-1.0.36-cap-audit-control.patch
 Patch9:         pure-ftpd-apparmor.patch
 Patch10:        pure-ftpd-malloc-limit.patch
 BuildRequires:  libcap-devel
+BuildRequires:  libsodium-devel
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
@@ -84,7 +85,6 @@ Apache log files, and more.
 CFLAGS="%{optflags} -I%{_includedir}/mysql"
 %configure \
         --docdir=%{_docdir}/%{name} \
-	--with-rfc2640 \
 	--sysconfdir=%{_sysconfdir}/%{name} \
 	--with-ldap \
 	--with-paranoidmsg \

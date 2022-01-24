@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan 19 19:06:34 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.0.50:
+  * Support for MD5, SHA1 and MySQL PASSWORD() function were removed for
+    password hashing. You should now use scrypt, argon2 or the system crypt(3)
+    function.
+  * Soft fail if a USER command is received without TLS and the server is
+    configured to enforce TLS. Previously, the session was immediately closed,
+    but that was too brutal for some clients.
+  * Allow connections from the class E network range -- apparently
+    required in some cases when using Linux containers.
+  * Large file listings used to require way more stack allocations than
+    necessary, possibly reaching hard-coded limits and causing a forced
+    session close. This has been fixed. (boo#1160111, CVE-2019-20176)
+  * The SPSV command has been removed.
+  * Under some circunstances, the server would not start when configured
+    with directory aliases. This has been fixed.
+  * PostgreSQL: hard-coded global configuration strings were not escaped.
+    This has been fixed.
+  * A warning is now printed when a transfer happens in ASCII mode, as
+    this is rarely intentional.
+  * Compilation with --without-ascii is now possible again.
+  * Configuration options for features that have been disabled at
+    compile-time are not parsed any more.
+  * When virtual quotas were configured, files were removed after an
+    upload if the size quota was exceeded, but not during the upload. This
+    has been fixed. (boo#1190205, CVE-2021-40524)
+  * A configuration file can now include other files with the `Include`
+    directive.
+  * Fix an out-of-bound read (boo#1164805, CVE-2020-9365).
+  * Fix a potential uninitialized pointer vulnerability (boo#1165134,
+    CVE-2020-9274).
+- Build with libsodium-devel to support Argon password scheme.
+- Remove obsolete `---with-rfc2640`: Support for RFC 2640 has been removed in
+  version 1.0.48.
+- Rebase patch for bnc#407363:
+  * Remove pure-ftpd-1.0.32-default_tcp_sedrcv_buffer_size.patch
+  * Add pure-ftpd-1.0.50-default_tcp_sedrcv_buffer_size.patch
+
+-------------------------------------------------------------------
 Wed Oct 20 14:40:45 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
