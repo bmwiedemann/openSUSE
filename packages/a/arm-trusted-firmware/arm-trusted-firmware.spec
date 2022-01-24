@@ -97,7 +97,7 @@ BuildRequires:  libcryptopp-devel
 %endif
 BuildRequires:  libopenssl-devel
 %if %{use_optee}
-%if "%{platform}" == "qemu"
+%if "%{platform}" == "qemu_sbsa"
 BuildRequires:  optee-qemu-armv8a
 %else
 %if "%{platform}" == "a3700"
@@ -360,7 +360,11 @@ done
      BL33=%{_datadir}/qemu/qemu-uefi-aarch64.bin \
      all fip
 %else
+%if "%{platform}" == "qemu_sbsa"
+     all fip
+%else
      all
+%endif
 %endif
 %endif
 %endif
@@ -429,7 +433,7 @@ install -D -m 0644 %{outdir}/bl31/bl31.elf %{buildroot}%{_datadir}/%{name}/bl31.
 install -D -m 0644 %{outdir}/bl31.bin %{buildroot}%{_datadir}/%{name}/bl31.bin
 %endif
 
-%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "qemu" || "%{platform}" == "rpi3"
+%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "qemu" || "%{platform}" == "qemu_sbsa" || "%{platform}" == "rpi3"
 install -D -m 0644 %{outdir}/bl1.bin %{buildroot}%{_datadir}/%{name}/bl1.bin
 install -D -m 0644 %{outdir}/fip.bin %{buildroot}%{_datadir}/%{name}/fip.bin
 %endif

@@ -9,6 +9,7 @@
   <flavor>imx8qx</flavor>
   <flavor>poplar</flavor>
   <flavor>qemu</flavor>
+  <flavor>qemu_sbsa</flavor>
   <flavor>rk3328</flavor>
   <flavor>rk3368</flavor>
   <flavor>rk3399</flavor>
