@@ -329,4 +329,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>946860</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>517cfd44fe0c9aae2f502303ef5ed80f</srcmd5>
+    <version>11.2.7</version>
+    <time>1643062182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.7
+  * Changes of version 11.2.7
+    = Add characters:
+      ~ LIGHT VERTICAL BAR (U+2758) ... HEAVY VERTICAL BAR (U+275A).
+</comment>
+    <requestid>948278</requestid>
+  </revision>
 </revisionlist>
