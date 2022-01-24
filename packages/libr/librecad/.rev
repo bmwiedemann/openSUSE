@@ -226,4 +226,12 @@
     0003-Revert-fix-RS_System-getDirectoryList-use-relative-p.patch (forwarded request 944220 from jirislaby)</comment>
     <requestid>944222</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>8c7aa714796a5ecb7411277640e47783</srcmd5>
+    <version>2.2.0~rc3</version>
+    <time>1643062180</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace &quot;qt4&quot; in description, the build does not use Qt4 anymore.</comment>
+    <requestid>948277</requestid>
+  </revision>
 </revisionlist>

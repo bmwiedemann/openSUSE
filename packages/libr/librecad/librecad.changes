@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 23 22:41:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace "qt4" in description, the build does not use Qt4 anymore.
+
+-------------------------------------------------------------------
 Thu Jan  6 11:44:32 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - replace the revert by an upstream fix

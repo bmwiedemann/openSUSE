@@ -64,7 +64,7 @@ Requires(postun):shared-mime-info
 Recommends:     %name-parts
 
 %description
-LibreCAD is a Qt4 Computer-aided design (CAD) software package for 2D design
+LibreCAD is a Qt Computer-aided design (CAD) software package for 2D design
 and drafting.
 
 %package parts
@@ -74,7 +74,7 @@ Requires:       %name
 BuildArch:      noarch
 
 %description parts
-Collection of parts for LibreCAD, a Qt4 application to design 2D
+Collection of parts for LibreCAD, a Qt application to design 2D
 CAD drawings.
 
 %prep
