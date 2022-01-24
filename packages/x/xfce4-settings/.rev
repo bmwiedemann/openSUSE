@@ -415,4 +415,13 @@
   - Translation Updates (forwarded request 898283 from mauriziogalli)</comment>
     <requestid>898287</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d7d3f2b95d8b4244e4ee2199c2505448</srcmd5>
+    <version>4.16.2</version>
+    <time>1643062202</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix runtime dependencies for xfce4-color-settings and replace Supplements
+  with Recommends from the main package (forwarded request 947865 from mauriziogalli)</comment>
+    <requestid>948386</requestid>
+  </revision>
 </revisionlist>

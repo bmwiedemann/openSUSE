@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-settings
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ URL:            https://docs.xfce.org/xfce/xfce4-settings/start
 Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.16/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(garcon-1)
@@ -54,6 +53,7 @@ BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       %{name}-branding = %{version}
 Recommends:     %{name}-lang = %{version}
+Recommends:     %{name}-color
 Provides:       xfce-mcs-manager = %{version}
 Obsoletes:      xfce-mcs-manager < %{version}
 Provides:       xfce-mcs-plugins = %{version}
@@ -76,6 +76,23 @@ BuildArch:      noarch
 
 %description branding-upstream
 This package provides the upstream look and feel for xfce4-settings.
+
+%package color
+Summary:        Subpackage providing xfce4-color-settings
+BuildRequires:  pkgconfig(colord) >= 0.1.24
+BuildRequires:  pkgconfig(colord-gtk) >= 0.1.24
+BuildRequires:  sane-backends
+BuildRequires:  xiccd
+# Make sure colord and other runtime dependencies are installed boo#1173953
+Requires:       colord
+Requires:       sane-backends
+Requires:       xiccd
+Requires:       %{name} = %{version}-%{release}
+Provides:       xfce4-color-settings
+
+%description color
+The Xfce Color Profile settings tool is a front-end to set up color management
+for printers, scanners, and displays.
 
 %lang_package
 
@@ -134,7 +151,6 @@ sed -i 's+#!/usr/bin/env python3+#!/usr/bin/python3+g' %{buildroot}%{_libexecdir
 %license COPYING
 %{_bindir}/xfce4-accessibility-settings
 %{_bindir}/xfce4-appearance-settings
-%{_bindir}/xfce4-color-settings
 %{_bindir}/xfce4-display-settings
 %{_bindir}/xfce4-find-cursor
 %{_bindir}/xfce4-keyboard-settings
@@ -147,9 +163,38 @@ sed -i 's+#!/usr/bin/env python3+#!/usr/bin/python3+g' %{buildroot}%{_libexecdir
 %dir %{_libexecdir}/xfce4/settings/
 %{_libexecdir}/xfce4/settings/appearance-install-theme
 %{_libexecdir}/xfce4/xfce4-compose-mail
-%{_datadir}/applications/*.desktop
+%dir %{_datadir}/applications/
+%{_datadir}/applications/xfce-display-settings.desktop
+%{_datadir}/applications/xfce-keyboard-settings.desktop
+%{_datadir}/applications/xfce-mouse-settings.desktop
+%{_datadir}/applications/xfce-settings-manager.desktop
+%{_datadir}/applications/xfce-ui-settings.desktop
+%{_datadir}/applications/xfce4-accessibility-settings.desktop
+%{_datadir}/applications/xfce4-file-manager.desktop
+%{_datadir}/applications/xfce4-mail-reader.desktop
+%{_datadir}/applications/xfce4-mime-settings.desktop
+%{_datadir}/applications/xfce4-settings-editor.desktop
+%{_datadir}/applications/xfce4-terminal-emulator.desktop
+%{_datadir}/applications/xfce4-web-browser.desktop
 %{_sysconfdir}/xdg/autostart/xfsettingsd.desktop
-%{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/
+%{_datadir}/icons/hicolor/*/*/org.xfce.filemanager.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.mailreader.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.accessibility.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.appearance.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.default-applications.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.display.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.editor.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.keyboard.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.manager.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.mouse.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.terminalemulator.*
+%{_datadir}/icons/hicolor/*/*/org.xfce.webbrowser.*
+%{_datadir}/icons/hicolor/*/*/xfce-display-extend.*
+%{_datadir}/icons/hicolor/*/*/xfce-display-external.*
+%{_datadir}/icons/hicolor/*/*/xfce-display-internal.*
+%{_datadir}/icons/hicolor/*/*/xfce-display-mirror.*
+%{_datadir}/icons/hicolor/*/*/xfce-display-profile.*
 %dir %{_datadir}/xfce4/helpers
 %{_datadir}/xfce4/helpers/*.desktop
 
@@ -160,5 +205,12 @@ sed -i 's+#!/usr/bin/env python3+#!/usr/bin/python3+g' %{buildroot}%{_libexecdir
 %dir %{_sysconfdir}/xdg/menus
 %{_sysconfdir}/xdg/menus/xfce-settings-manager.menu
 %config %{_sysconfdir}/xdg/xfce4/helpers.rc
+
+%files color
+%{_bindir}/xfce4-color-settings
+%dir %{_datadir}/applications/
+%{_datadir}/applications/xfce4-color-settings.desktop
+%dir %{_datadir}/icons/hicolor/
+%{_datadir}/icons/hicolor/*/*/org.xfce.settings.color.*
 
 %changelog
