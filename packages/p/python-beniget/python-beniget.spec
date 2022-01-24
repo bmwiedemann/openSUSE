@@ -1,7 +1,7 @@
 #
 # spec file for package python-beniget
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-beniget
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        Module to extract semantic information about static Python code
 License:        BSD-3-Clause
@@ -27,10 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/b/beniget/beniget
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-gast >= 0.4.0
+Requires:       python-gast >= 0.5.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module gast >= 0.4.0}
+BuildRequires:  %{python_module gast >= 0.5.0}
 # /SECTION
 %python_subpackages
 
@@ -53,6 +54,7 @@ A module to extract semantic information about static Python code.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/beniget
+%{python_sitelib}/beniget-%{version}*-info
 
 %changelog
