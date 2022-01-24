@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 20 08:47:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.2
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/plain/dist/changes-6.0.2.md
+  * Fixed crash in process launcher
+  * Fixed that `Select All` scrolled to bottom
+  * Fixed copying with block selection
+  * Fixed working directory for `REPL`
+  * Fixed missing options in property editor
+  * Fixed that closing application in `Application Output` pane
+    killed process even if `Keep Running` was selected
+  * Fixed filtering in target setup page
+  * Fixed crash when switching screen configuration
+- Add patch to fix the 32bit builds:
+  * c7deacf.diff
+
+-------------------------------------------------------------------
 Wed Dec 22 09:12:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.0.1
