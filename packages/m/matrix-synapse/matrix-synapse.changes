@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Mon Jan 24 14:41:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.50.2
+
+  Please note that we now only support Python 3.7+ and PostgreSQL
+  10+ (if applicable), because Python 3.6 and PostgreSQL 9.6 have
+  reached end-of-life.
+
+  - Bugfixes
+    - Fix a bug introduced in Synapse 1.40.0 that caused Synapse to
+      fail to process incoming federation traffic after handling a
+      large amount of events in a v1 room. (#11806)
+
+-------------------------------------------------------------------
+Tue Jan 18 17:11:16 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.50.1
+
+  Please note that we now only support Python 3.7+ and PostgreSQL
+  10+ (if applicable), because Python 3.6 and PostgreSQL 9.6 have
+  reached end-of-life.
+
+  - Bugfixes:
+    - Fix a bug introduced in Synapse 1.50.0rc1 that could cause
+      Matrix clients to be unable to connect to Synapse instances
+      with the webclient resource enabled. (#11764)
+
+-------------------------------------------------------------------
+Tue Jan 18 16:24:25 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- you shall not commit your python 3.10 test. Back to 3.8
+
+-------------------------------------------------------------------
+Tue Jan 18 11:57:01 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump minimum python in the BuildRequires to 3.8 
+
+-------------------------------------------------------------------
+Tue Jan 18 11:53:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.50.0
+
+  Please note that we now only support Python 3.7+ and PostgreSQL
+  10+ (if applicable), because Python 3.6 and PostgreSQL 9.6 have
+  reached end-of-life.
+
+  - Features
+    - Allow guests to send state events per MSC3419. (#11378)
+    - Add experimental support for part of MSC3202: allowing
+      application services to masquerade as specific devices.
+      (#11538)
+    - Add admin API to get users' account data. (#11664)
+    - Include the room topic in the stripped state included with
+      invites and knocking. (#11666)
+    - Send and handle cross-signing messages using the stable
+      prefix. (#10520)
+    - Support unprefixed versions of fallback key property names.
+      (#11541)
+  - Bugfixes
+    - Fix a bug introduced in Synapse v1.0.0 whereby some device
+      list updates would not be sent to remote homeservers if there
+      were too many to send at once. (#11729)
+    - Fix a bug introduced in Synapse v1.50.0rc1 whereby outbound
+      federation could fail because too many EDUs were produced for
+      device updates. (#11730)
+    - Fix a long-standing bug where relations from other rooms
+      could be included in the bundled aggregations of an event.
+      (#11516)
+    - Fix a long-standing bug which could cause AssertionErrors to
+      be written to the log when Synapse was restarted after
+      purging events from the database. (#11536, #11642)
+    - Fix a bug introduced in Synapse 1.17.0 where a pusher created
+      for an email with capital letters would fail to be created.
+      (#11547)
+    - Fix a long-standing bug where responses included bundled
+      aggregations when they should not, per MSC2675. (#11592,
+      #11623)
+    - Fix a long-standing bug that some unknown endpoints would
+      return HTML error pages instead of JSON M_UNRECOGNIZED
+      errors. (#11602)
+    - Fix a bug introduced in Synapse 1.19.3 which could sometimes
+      cause AssertionErrors when backfilling rooms over federation.
+      (#11632)
+  - Improved Documentation
+    - Document that now the minimum supported PostgreSQL version is
+      10. (#11725)
+    - Update Synapse install command for FreeBSD as the package is
+      now prefixed with py38. Contributed by @itchychips. (#11267)
+    - Document the usage of refresh tokens. (#11427)
+    - Add details for how to configure a TURN server when behind a
+      NAT. Contibuted by @AndrewFerr. (#11553)
+    - Add references for using Postgres to the Docker
+      documentation. (#11640)
+    - Fix the documentation link in newly-generated configuration
+      files. (#11678)
+    - Correct the documentation for nginx to use a case-sensitive
+      url pattern. Fixes an error introduced in v1.21.0. (#11680)
+    - Clarify SSO mapping provider documentation by writing def or
+      async def before the names of methods, as appropriate.
+      (#11681)
+  - Deprecations and Removals
+    - Replace mock package by its standard library version.
+      (#11588)
+    - Drop support for Python 3.6 and Ubuntu 18.04. (#11633)
+  - Internal Changes
+    - Fix a typechecker problem related to our (ab)use of
+      nacl.signing.SigningKeys. (#11714)
+    - Allow specific, experimental events to be created without
+      prev_events. Used by MSC2716. (#11243)
+    - A test helper (wait_for_background_updates) no longer depends
+      on classes defining a store property. (#11331)
+    - Add type hints to synapse.appservice. (#11360)
+    - Add missing type hints to synapse.config module. (#11480)
+    - Add test to ensure we share the same state_group across the
+      whole historical batch when using the MSC2716 /batch_send
+      endpoint. (#11487)
+    - Refactor tests.util.setup_test_homeserver and
+      tests.server.setup_test_homeserver. (#11503)
+    - Move glob_to_regex and re_word_boundary to
+      matrix-python-common. (#11505, #11687)
+    - Use HTTPStatus constants in place of literals in
+      tests.rest.client.test_auth. (#11520)
+    - Add a receipt types constant for m.read. (#11531)
+    - Clean up synapse.rest.admin. (#11535)
+    - Add missing errcode to parse_string and parse_boolean.
+      (#11542)
+    - Use HTTPStatus constants in place of literals in
+      synapse.http. (#11543)
+    - Add missing type hints to storage classes. (#11546, #11549,
+      #11551, #11555, #11575, #11589, #11594, #11652, #11653,
+      #11654, #11657)
+    - Fix an inaccurate and misleading comment in the /sync code.
+      (#11550)
+    - Add missing type hints to synapse.logging.context. (#11556)
+    - Stop populating unused database column
+      state_events.prev_state. (#11558)
+    - Minor efficiency improvements in event persistence. (#11560)
+    - Add some safety checks that storage functions are used
+      correctly. (#11564, #11580)
+    - Make get_device return None if the device doesn't exist
+      rather than raising an exception. (#11565)
+    - Split the HTML parsing code from the URL preview resource
+      code. (#11566)
+    - Remove redundant COALESCE()s around COUNT()s in database
+      queries. (#11570)
+    - Add missing type hints to synapse.http. (#11571)
+    - Add MSC2716 and MSC3030 to /versions -> unstable_features to
+      detect server support. (#11582)
+    - Add type hints to synapse/tests/rest/admin. (#11590)
+    - Drop end-of-life Python 3.6 and Postgres 9.6 from CI.
+      (#11595)
+    - Update black version and run it on all the files. (#11596)
+    - Add opentracing type stubs and fix associated mypy errors.
+      (#11603, #11622)
+    - Improve OpenTracing support for requests which use a
+      ResponseCache. (#11607)
+    - Improve OpenTracing support for incoming HTTP requests.
+      (#11618)
+    - A number of improvements to opentracing support. (#11619)
+    - Refactor the way that the outlier flag is set on events
+      received over federation. (#11634)
+    - Improve the error messages from get_create_event_for_room.
+      (#11638)
+    - Remove redundant get_current_events_token method. (#11643)
+    - Convert namedtuples to attrs. (#11665, #11574)
+    - Update the /capabilities response to include whether support
+      for MSC3440 is available. (#11690)
+    - Send the Accept header in HTTP requests made using
+      SimpleHttpClient.get_json. (#11677)
+    - Work around Mjolnir compatibility issue by adding an import
+      for glob_to_regex in synapse.util, where it moved from.
+      (#11696)
+
+-------------------------------------------------------------------
+Fri Jan  7 22:44:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- use frozendict >= 2.1.3 as it should fix the issue people saw on
+  debian and that library version fixes other python modules for us
+
+-------------------------------------------------------------------
+Tue Dec 28 03:45:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Add explicit minimum versions for more dependencies. 
+
+-------------------------------------------------------------------
 Tue Dec 21 18:39:09 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.49.2

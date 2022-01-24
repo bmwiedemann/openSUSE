@@ -15,7 +15,7 @@ Index: synapse/synapse/config/key.py
 ===================================================================
 --- synapse.orig/synapse/config/key.py
 +++ synapse/synapse/config/key.py
-@@ -102,7 +102,7 @@ class KeyConfig(Config):
+@@ -104,7 +104,7 @@ class KeyConfig(Config):
              signing_key_path = config.get("signing_key_path")
              if signing_key_path is None:
                  signing_key_path = os.path.join(
@@ -24,7 +24,7 @@ Index: synapse/synapse/config/key.py
                  )
  
              self.signing_key = self.read_signing_keys(signing_key_path, "signing_key")
-@@ -169,7 +169,7 @@ class KeyConfig(Config):
+@@ -171,7 +171,7 @@ class KeyConfig(Config):
      def generate_config_section(
          self, config_dir_path, server_name, generate_secrets=False, **kwargs
      ):
@@ -63,7 +63,7 @@ Index: synapse/synapse/config/tls.py
 ===================================================================
 --- synapse.orig/synapse/config/tls.py
 +++ synapse/synapse/config/tls.py
-@@ -151,7 +151,7 @@ class TlsConfig(Config):
+@@ -152,7 +152,7 @@ class TlsConfig(Config):
          """If the TLS paths are not specified the default will be certs in the
          config directory"""
  

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@
 
 %if 0%{?suse_version} >= 1550
 %define use_python python38
+#define __python3 #{_bindir}/python3
 %else
 %define use_python python3
 %endif
@@ -47,7 +48,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.49.2
+Version:        1.50.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -68,7 +69,7 @@ Patch1:         dont-bump-cryptography-with-system-openssl.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
-BuildRequires:  %{use_python}-base >= 3.5
+BuildRequires:  %{use_python}-base >= 3.8
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -79,7 +80,7 @@ BuildRequires:  unzip
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_eq    %{use_python}-base
-# NOTE: Keep this is in the same order as synapse/python_dependencie.py.
+# NOTE: Keep this is in the same order as synapse/python_dependencies.py.
 BuildRequires:  %{use_python}-Jinja2 >= 2.9
 %requires_eq    %{use_python}-Jinja2
 BuildRequires:  %{use_python}-Pillow >= 4.3.0
@@ -98,9 +99,9 @@ BuildRequires:  %{use_python}-bleach >= 1.4.3
 %requires_eq    %{use_python}-bleach
 BuildRequires:  %{use_python}-canonicaljson >= 1.4.0
 %requires_eq    %{use_python}-canonicaljson
-BuildRequires:  %{use_python}-cryptography
+BuildRequires:  %{use_python}-cryptography >= 3.4.7
 %requires_eq    %{use_python}-cryptography
-BuildRequires:  (%{use_python}-frozendict >= 1 with %{use_python}-frozendict < 2.1.2)
+BuildRequires:  %{use_python}-frozendict >= 2.1.3
 %requires_eq    %{use_python}-frozendict
 BuildRequires:  %{use_python}-idna >= 2.5
 %requires_eq    %{use_python}-idna
@@ -108,6 +109,8 @@ BuildRequires:  %{use_python}-ijson >= 3.1
 %requires_eq    %{use_python}-ijson
 BuildRequires:  %{use_python}-jsonschema >= 3.0.0
 %requires_eq    %{use_python}-jsonschema
+BuildRequires:  %{use_python}-matrix_common >= 1.0.0
+%requires_eq    %{use_python}-matrix_common
 BuildRequires:  %{use_python}-msgpack >= 0.5.2
 %requires_eq    %{use_python}-msgpack
 BuildRequires:  %{use_python}-netaddr >= 0.7.18
@@ -171,12 +174,12 @@ BuildRequires:  %{use_python}-opentracing   >= 2.2.0
 %requires_eq    %{use_python}-opentracing
 %endif
 %if %{with synapse_redis}
-BuildRequires:  %{use_python}-hiredis
+BuildRequires:  %{use_python}-hiredis >= 1.0.1
+%requires_eq    %{use_python}-hiredis
 BuildRequires:  %{use_python}-txredisapi >= 1.4.7
-Requires:       %{use_python}-hiredis
-Requires:       %{use_python}-txredisapi
+%requires_eq    %{use_python}-txredisapi
 %endif
-BuildRequires:  %{use_python}-Pympler
+BuildRequires:  %{use_python}-Pympler >= 0.8
 %requires_eq    %{use_python}-Pympler
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.
