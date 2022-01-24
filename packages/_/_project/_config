@@ -1,9 +1,3 @@
-Prefer: -python36-prometheus_client
-Prefer: -python38-prometheus_client
-Prefer: -python39-prometheus_client
-Prefer: libqca-qt5-2 qca-qt5-plugins
-# Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed
-Ignore: firewall-macros:firewalld
 
 %define gcc_version 11
 
@@ -25,52 +19,50 @@ BuildFlags: vmfstype:ext4
 # nodirindex enabled 2020-12-31 - https://github.com/openSUSE/obs-build/pull/634
 BuildFlags: vmfsoptions:nodirindex
 
-# Help with the switch to the gcc7 provided libs
-#Prefer: -libstdc++6-gcc7 -libtsan0-gcc7 -libgomp1-gcc7 -libgcc_s1-gcc7 -libatomic1-gcc7 -libitm1-gcc7
-#Prefer: -liblsan0-gcc7 -libmpx2-gcc7
-
 # Help with the switch to the gcc9 provided libs:
 Prefer: libasan6 libasan6-32bit libubsan1 libubsan1-32bit libgfortran5
 
 Patterntype: rpm-md ymp
 %if "%_repository" == "images"
-Type: kiwi
-Repotype: none
-Patterntype: none
-Prefer: openSUSE-release-ftp
-Prefer: -postgresql13-devel-mini -postgresql14-devel-mini
-Support: release-compare
-BuildFlags: obsgendiff
+  Type: kiwi
+  Repotype: none
+  Patterntype: none
+  Prefer: openSUSE-release-ftp
+  Prefer: -postgresql14-devel-mini
+  Support: release-compare
+  BuildFlags: obsgendiff
 %endif
+
 %if "%_repository" == "containerfile"
-Type: docker
-BuildEngine: podman
-# KUBEVIRTFROM is passed to container Dockerfiles using the --build-arg option, e.g.
-# docker build --build-arg KUBEVIRTFROM=opensuse/tumbleweed ...
-BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
-%ifarch aarch64
-BuildFlags: dockerarg:TARGETARCH=arm64
+  Type: docker
+  BuildEngine: podman
+  # KUBEVIRTFROM is passed to container Dockerfiles using the --build-arg option, e.g.
+  # docker build --build-arg KUBEVIRTFROM=opensuse/tumbleweed ...
+  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
+  %ifarch aarch64
+    BuildFlags: dockerarg:TARGETARCH=arm64
+  %endif
+  %ifarch x86_64
+    BuildFlags: dockerarg:TARGETARCH=amd64
+  %endif
 %endif
-%ifarch x86_64
-BuildFlags: dockerarg:TARGETARCH=amd64
-%endif
-%endif
+
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:zSystems"
-Repotype: none
+  Repotype: none
 Macros:
 %shim_enforce_ms_signature 1
 :Macros
 %endif
 
 %if "%_repository" == "images" || "%_repository" == "container"
-Prefer: openSUSE-release -dummy-release
-# FTP tree takes forever
-BuildFlags: logidlelimit:15400
+  Prefer: openSUSE-release -dummy-release
+  # FTP tree takes forever
+  BuildFlags: logidlelimit:15400
 %else
-# Stuff that wants to have /etc/os-release available should require distribution-release, which we then offer dummy-release for (openSUSE-release changes daily for TW)
-Prefer: dummy-release
-# abort the build if the log file didn't move in 1.5h (seen in libreoffice builds)
-BuildFlags: logidlelimit:5400
+  # Stuff that wants to have /etc/os-release available should require distribution-release, which we then offer dummy-release for (openSUSE-release changes daily for TW)
+  Prefer: dummy-release
+  # abort the build if the log file didn't move in 1.5h (seen in libreoffice builds)
+  BuildFlags: logidlelimit:5400
 %endif
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Rings" || "%_project" == "openSUSE:Factory:Rings:0-Bootstrap" || "%_project" == "openSUSE:Factory:Rings:1-MinimalX" || "%_project" == "openSUSE:Factory:Rings:2-TestDVD" || "%_project" == "openSUSE:Factory:Containers"
@@ -114,13 +106,13 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql13-devel-mini !postgresql14-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
+Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql14-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
 
 # Podman based image building
-Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !postgresql14-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
+Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql14-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
 
 # To build ISO images
-Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !postgresql14-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
+Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql14-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
@@ -134,23 +126,23 @@ Substitute: netcfg netcfg libnss_usrfiles2
 %ifnarch armv6l
 # Not enabled for armv6l, due to https://bugzilla.opensuse.org/show_bug.cgi?id=1193317
 # Enable ccache for a selection of packages:
-BuildFlags: useccache:NetworkManager
-BuildFlags: useccache:bitcoin
-BuildFlags: useccache:ceph
-BuildFlags: useccache:chromium
-BuildFlags: useccache:glib2
-BuildFlags: useccache:gtk3
-BuildFlags: useccache:gtk3:doc
-BuildFlags: useccache:llvm9
-buildflags: useccache:tensorflow
-buildflags: useccache:tensorflow2:hpc
-buildflags: useccache:tensorflow2:hpc-openmpi2
-buildflags: useccache:tensorflow2:lite
-buildflags: useccache:tensorflow2:standard
-buildflags: useccache:tensorflow:hpc
-buildflags: useccache:tensorflow:hpc-openmpi2
-buildflags: useccache:tensorflow:lite
-buildflags: useccache:tensorflow:standard
+  BuildFlags: useccache:NetworkManager
+  BuildFlags: useccache:bitcoin
+  BuildFlags: useccache:ceph
+  BuildFlags: useccache:chromium
+  BuildFlags: useccache:glib2
+  BuildFlags: useccache:gtk3
+  BuildFlags: useccache:gtk3:doc
+  BuildFlags: useccache:llvm9
+  buildflags: useccache:tensorflow
+  buildflags: useccache:tensorflow2:hpc
+  buildflags: useccache:tensorflow2:hpc-openmpi2
+  buildflags: useccache:tensorflow2:lite
+  buildflags: useccache:tensorflow2:standard
+  buildflags: useccache:tensorflow:hpc
+  buildflags: useccache:tensorflow:hpc-openmpi2
+  buildflags: useccache:tensorflow:lite
+  buildflags: useccache:tensorflow:standard
 # ccache 4.x breaks webkit2gtk3
 #BuildFlags: useccache:webkit2gtk3
 %endif
@@ -166,7 +158,6 @@ Prefer: lua54 lua53 lua51
 Prefer: liblua5_4-5 liblua5_3-5 liblua5_1-5
 Prefer: lua54-devel lua53-devel lua51-devel
 Prefer: libtolua++-5_4-devel libtolua++-5_3-devel libtolua++-5_1-devel
-Prefer: -moonjit-devel
 
 Preinstall: liblua5_4-5
 
@@ -224,7 +215,6 @@ Preinstall: aaa_base attr bash coreutils diffutils
 Preinstall: bash-sh
 Preinstall: filesystem fillup glibc grep
 Preinstall: libbz2-1 libgcc_s1 libncurses6 pam
-Prefer: -pam_unix-nis
 Preinstall: permissions rpm rpm-config-SUSE sed tar libz1 libselinux1
 Preinstall: libgcrypt20 libgpg-error0
 Preinstall: liblzma5 libcap2 libacl1 libattr1
@@ -439,11 +429,10 @@ Prefer: spamassassin:curl
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python36 -python39
 Prefer: -python39-hotdoc
-Prefer: -python36-txt2tags -python39-txt2tags
-Prefer: -python38-ipython715 -python39-ipython715
+Prefer: -python39-txt2tags -python310-txt2tags
 
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
-Prefer: -python39-PyQt6 -python36-PyQt6 -python38-PyQt6 -python3-pyside2
+Prefer: -python39-PyQt6 -python38-PyQt6 -python3-pyside2
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
 
@@ -454,21 +443,19 @@ Prefer: go -go1.13
 Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common
 
 # have choice for html2text
-Prefer: -python36-html2text -python38-html2text -python39-html2text -python310-html2text
+Prefer: -python38-html2text -python39-html2text -python310-html2text
 
 # have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
 Prefer: -budgie-desktop
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: python36-tornado -python36-tornado5 
+Prefer: -python36-tornado5 
 Prefer: python38-tornado -python38-tornado5
 Prefer: python39-tornado -python39-tornado5
-Prefer: python310-tornado -python310-tornado5
-Prefer: -python36-ipykernel5 -python38-ipykernel5 python39-ipykernel5
+Prefer: python310-tornado
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
-Prefer: -PackageKit-command-not-found
 
 # have choice for pkgconfig(libftdi): libftdi-devel libftdi0-devel
 Prefer: libftdi-devel
@@ -477,8 +464,7 @@ Prefer: libftdi-devel
 Prefer: tensorflow2
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: python38-sip-devel python36-sip-devel python39-sip-devel
-Prefer: -python36-sip4 -python36-sip4-devel
+Prefer: python38-sip-devel python39-sip-devel
 Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
 
@@ -486,7 +472,7 @@ Prefer: -python39-sip4 -python39-sip4-devel
 Prefer: -pipewire-libjack-0_3-devel libjack0
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python39-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit python310-prompt_toolkit
+Prefer: python39-prompt_toolkit python38-prompt_toolkit python310-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
@@ -541,19 +527,16 @@ Prefer: -nunit3-devel
 # Pick the regular libz.so.1
 Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
 
-# have choice for system-tuning-common-SUSE needed by patterns-base-enhanced_base: system-tuning-common-SUSE udev-extra-rules; udev-extra-rules provides/obsoletes system-tuning-common-SUSE, thus we prefer the newer one
-Prefer: -system-tuning-common-SUSE
-
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit                          
 Prefer: -FAudio-devel-32bit                           
 Prefer: -ImageMagick-devel-32bit                      
-Prefer: -Mesa-libd3d-devel-32bit                      
-Prefer: -Mesa-libglapi-devel-32bit                    
 Prefer: -Mesa-libEGL-devel-32bit
 Prefer: -Mesa-libGL-devel-32bit
-Prefer: -Mesa-libGLESv2-devel-32bit
 Prefer: -Mesa-libGLESv1_CM-devel-32bit
+Prefer: -Mesa-libGLESv2-devel-32bit
+Prefer: -Mesa-libd3d-devel-32bit                      
+Prefer: -Mesa-libglapi-devel-32bit                    
 Prefer: -NetworkManager-devel-32bit                   
 Prefer: -aalib-devel-32bit                            
 Prefer: -adolc-devel-32bit                            
@@ -565,7 +548,6 @@ Prefer: -at-spi2-core-devel-32bit
 Prefer: -atk-devel-32bit                              
 Prefer: -atkmm-devel-32bit                            
 Prefer: -atkmm1_6-devel-32bit                         
-Prefer: -attica-qt5-devel-32bit                       
 Prefer: -audiofile-devel-32bit                        
 Prefer: -audit-devel-32bit                            
 Prefer: -augeas-devel-32bit                           
@@ -595,7 +577,6 @@ Prefer: -file-devel-32bit
 Prefer: -flac-devel-32bit                             
 Prefer: -fltk-devel-32bit                             
 Prefer: -fontconfig-devel-32bit                       
-Prefer: -frameworkintegration-devel-32bit             
 Prefer: -freeglut-devel-32bit                         
 Prefer: -freetype2-devel-32bit                        
 Prefer: -gd-devel-32bit                               
@@ -621,70 +602,14 @@ Prefer: -hdf5-openmpi4-devel-32bit
 Prefer: -hunspell-devel-32bit                         
 Prefer: -isl-devel-32bit                              
 Prefer: -jbig2dec-devel-32bit                         
-Prefer: -kaccounts-integration-devel-32bit            
-Prefer: -kactivities-stats-devel-32bit                
-Prefer: -kactivities5-devel-32bit                     
-Prefer: -karchive-devel-32bit                         
-Prefer: -kauth-devel-32bit                            
-Prefer: -kbookmarks-devel-32bit                       
-Prefer: -kcmutils-devel-32bit                         
-Prefer: -kcodecs-devel-32bit                          
-Prefer: -kcompletion-devel-32bit                      
-Prefer: -kconfig-devel-32bit                          
-Prefer: -kconfigwidgets-devel-32bit                   
-Prefer: -kcontacts-devel-32bit                        
-Prefer: -kcoreaddons-devel-32bit                      
-Prefer: -kcrash-devel-32bit                           
-Prefer: -kdbusaddons-devel-32bit                      
-Prefer: -kdeclarative-devel-32bit                     
-Prefer: -kdelibs4support-devel-32bit                  
-Prefer: -kdesu-devel-32bit                            
-Prefer: -kdewebkit-devel-32bit                        
-Prefer: -kdnssd-framework-devel-32bit                 
-Prefer: -kdoctools-devel-32bit                        
-Prefer: -kemoticons-devel-32bit                       
 Prefer: -keyutils-devel-32bit                         
-Prefer: -kglobalaccel-devel-32bit                     
-Prefer: -kguiaddons-devel-32bit                       
-Prefer: -khtml-devel-32bit                            
-Prefer: -ki18n-devel-32bit                            
-Prefer: -kiconthemes-devel-32bit                      
-Prefer: -kidletime-devel-32bit                        
-Prefer: -kio-devel-32bit                              
-Prefer: -kitemmodels-devel-32bit                      
-Prefer: -kitemviews-devel-32bit                       
-Prefer: -kjobwidgets-devel-32bit                      
-Prefer: -kjs-devel-32bit                              
-Prefer: -kjsembed-devel-32bit                         
-Prefer: -kmediaplayer-devel-32bit                     
-Prefer: -knewstuff-devel-32bit                        
-Prefer: -knotifications-devel-32bit                   
-Prefer: -knotifyconfig-devel-32bit                    
-Prefer: -kpackage-devel-32bit                         
-Prefer: -kparts-devel-32bit                           
-Prefer: -kpeople5-devel-32bit                         
-Prefer: -kplotting-devel-32bit                        
-Prefer: -kpty-devel-32bit                             
 Prefer: -krb5-devel-32bit                             
-Prefer: -kross-devel-32bit                            
-Prefer: -krunner-devel-32bit                          
-Prefer: -kservice-devel-32bit                         
-Prefer: -ktexteditor-devel-32bit                      
-Prefer: -ktextwidgets-devel-32bit                     
-Prefer: -kunitconversion-devel-32bit                  
-Prefer: -kwallet-devel-32bit                          
-Prefer: -kwayland-devel-32bit                         
-Prefer: -kwidgetsaddons-devel-32bit                   
-Prefer: -kwindowsystem-devel-32bit                    
-Prefer: -kxmlgui-devel-32bit                          
-Prefer: -kxmlrpcclient5-devel-32bit                   
 Prefer: -lapack-devel-32bit                           
 Prefer: -lapacke-devel-32bit                          
 Prefer: -libFS-devel-32bit                            
 Prefer: -libGLw-devel-32bit
 Prefer: -libHX-devel-32bit                            
 Prefer: -libICE-devel-32bit                           
-Prefer: -libKF5NetworkManagerQt-devel-32bit           
 Prefer: -libMagick++-devel-32bit                      
 Prefer: -libOSMesa-devel-32bit                        
 Prefer: -libQt5Concurrent-devel-32bit                 
@@ -697,9 +622,7 @@ Prefer: -libQt5OpenGLExtensions-devel-static-32bit
 Prefer: -libQt5PrintSupport-devel-32bit               
 Prefer: -libQt5Sql-devel-32bit                        
 Prefer: -libQt5Test-devel-32bit                       
-Prefer: -libQt5WebKit5-devel-32bit                    
-Prefer: -libQt5WebKitWidgets-devel-32bit              
-Prefer: -libQt5Widgets-devel-32bit                    
+Prefer: -libQt5Widgets-devel-32bit
 Prefer: -libQt5Xml-devel-32bit                        
 Prefer: -libSDL-devel-32bit                           
 Prefer: -libSDL2-devel-32bit                          
@@ -800,9 +723,7 @@ Prefer: -libjack-devel-32bit
 Prefer: -libjbig-devel-32bit                          
 Prefer: -libjpeg62-devel-32bit                        
 Prefer: -libjpeg8-devel-32bit                         
-Prefer: -libkdecoration2-devel-32bit                  
 Prefer: -libkms-devel-32bit                           
-Prefer: -libkscreen2-devel-32bit                      
 Prefer: -liblbxutil-devel-32bit                       
 Prefer: -liblcms2-devel-32bit                         
 Prefer: -libmount-devel-32bit                         
@@ -822,7 +743,6 @@ Prefer: -libpng12-compat-devel-32bit
 Prefer: -libpng12-devel-32bit                         
 Prefer: -libpng16-compat-devel-32bit                  
 Prefer: -libpng16-devel-32bit                         
-Prefer: -libpolkit-qt5-1-devel-32bit                  
 Prefer: -libpulse-devel-32bit                         
 Prefer: -libqb-devel-32bit                            
 Prefer: -libqt5-qtconnectivity-devel-32bit            
@@ -911,24 +831,16 @@ Prefer: -parpack-openmpi1-devel-32bit
 Prefer: -parpack-openmpi2-devel-32bit                 
 Prefer: -parpack-openmpi3-devel-32bit                 
 Prefer: -pciutils-devel-32bit                         
-Prefer: -phonon4qt5-devel-32bit                       
 Prefer: -pipewire-libjack-0_3-32bit
-Prefer: -plasma-framework-devel-32bit                 
 Prefer: -popt-devel-32bit                             
-Prefer: -prison-qt5-devel-32bit                       
-Prefer: -purpose-devel-32bit                          
 Prefer: -rdma-core-devel-32bit                        
 Prefer: -readline-devel-32bit                         
 Prefer: -readline5-devel-32bit                        
 Prefer: -readline6-devel-32bit                        
 Prefer: -samba-devel-32bit
 Prefer: -sane-backends-devel-32bit                    
-Prefer: -solid-devel-32bit                            
-Prefer: -sonnet-devel-32bit                           
 Prefer: -spirv-tools-devel-32bit                      
-Prefer: -syntax-highlighting-devel-32bit              
 Prefer: -telepathy-qt5-devel-32bit                    
-Prefer: -threadweaver-devel-32bit                     
 Prefer: -tslib-devel-32bit                            
 Prefer: -unixODBC-devel-32bit
 Prefer: -utempter-devel-32bit                         
@@ -949,9 +861,6 @@ Prefer: -zlib-devel-32bit
 Prefer: -zvbi-devel-32bit                             
 Prefer: -zziplib-devel-32bit                          
 
-# have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
-Prefer: -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex
-
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.7-rubygem-fast_gettext ruby3.0-rubygem-fast_gettext
 Prefer: ruby2.7-rubygem-i18n
@@ -966,7 +875,7 @@ Prefer: -ruby2.7-rubygem-puma-4
 Prefer: opencv-devel
 
 # python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python38-pytest python36-pytest python39-pytest python310-pytest
+Prefer: python38-pytest python39-pytest python310-pytest
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
@@ -1028,7 +937,7 @@ Prefer: vala
 Prefer: geronimo-servlet-2_4-api
 Prefer: libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
 Prefer: libvtk1-openmpi2
-Prefer: -vtk-openmpi1-qt -vtk-openmpi2-qt -vtk-openmpi3-qt
+Prefer: -vtk-openmpi2-qt -vtk-openmpi3-qt
 Prefer: -openmpi3-libs
 Prefer: -openmpi3-config -openmpi2-config -openmpi1-config
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
@@ -1038,7 +947,7 @@ Prefer: xmlgraphics-commons:apache-commons-io
 # the -32bit stuff provides things it shouldn't (hopefully temporary)
 Prefer: -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
 Prefer: postgresql postgresql-server postgresql-devel postgresql-server-devel
-Prefer: postgresql14-devel-mini postgresql13-devel-mini
+Prefer: postgresql14-devel-mini
 # only needed to bootstrap 11, but leave it - 12 will come at some point :)
 Prefer: -unzip-rcc
 Prefer: -primus -primus-32bit
@@ -1056,6 +965,7 @@ Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
 Prefer: -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
 Prefer: libopenssl-devel
 
+Prefer: libqca-qt5-2 qca-qt5-plugins
 Prefer: -xaw3dd -amanda
 Prefer: libgcc_s1 libgcc_s1-32bit libgcc_s1-64bit
 Prefer: libffi-devel
@@ -1513,7 +1423,6 @@ Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless 
 Prefer: java-17-openjdk-devel java-17-openjdk java-17-openjdk-headless java-17-openjdk-javadoc
 Prefer: java-16-openjdk-devel java-16-openjdk java-16-openjdk-headless java-16-openjdk-javadoc
 Prefer: java-15-openjdk-devel java-15-openjdk java-15-openjdk-headless java-15-openjdk-javadoc
-Prefer: java-14-openjdk-devel java-14-openjdk java-14-openjdk-headless java-14-openjdk-javadoc
 Prefer: java-1_7_0-bootstrap-devel java-1_7_0-bootstrap java-1_7_0-bootstrap-headless
 
 %ifarch x86_64 ppc64 s390x sparc64
