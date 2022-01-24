@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:37:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 3.7.10:
+  *  In recode program, only use iconv if needed; add --prefer-iconv option to
+     allow its use in all cases.
+  *  Remove support for pre-3.5 request syntax (colon as charset separator).
+  *  PO files have been updated from the Translation Project.
+  *  Build system fixes and improvements.
+  *  Update gnulib to fix a problem building on Android.
+  *  Fix confusingly wrong NEWS entry for 3.7.4.
+
+-------------------------------------------------------------------
 Sat Jul  3 21:21:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.7.9

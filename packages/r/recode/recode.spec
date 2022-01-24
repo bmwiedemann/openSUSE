@@ -1,7 +1,7 @@
 #
 # spec file for package recode
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         libname lib%{name}3
 Name:           recode
-Version:        3.7.9
+Version:        3.7.10
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -29,7 +29,7 @@ BuildRequires:  flex
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 Recode converts files between various character sets.
