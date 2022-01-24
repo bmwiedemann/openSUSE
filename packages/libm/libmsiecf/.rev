@@ -123,4 +123,12 @@ part of summer 2013 libyal refresh for opensuse 2013</comment>
     <comment></comment>
     <requestid>898736</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6bdd1c116e13902b672b195352a71a8f</srcmd5>
+    <version>20210506</version>
+    <time>1643062197</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds.</comment>
+    <requestid>948360</requestid>
+  </revision>
 </revisionlist>
