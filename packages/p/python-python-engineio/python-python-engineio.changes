@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 19 12:31:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.3.1
+ * Fix support for Sanic v21.9.0 and up (commit) (thanks 13g10n!)
+ * Include example code in flake8 pass (commit)
+ * Remove unused version constant #262 (commit 1 commit 2) 
+ * Backward incompatible change: Reject websocket messages larger than max_http_buffer_size #260 (commit)
+ * Enable or disable specific transports #259 (commit) (thanks Maciej Szeptuch!)
+ * Option to disable the SIGINT handler in the client (commit)
+ * Support binary packets with zero length #257 (commit)
+ * Improve documentation on start_background_task() function (commit)
+ * Remove unsanitized client input from error messages #250 (commit) (thanks André Carvalho!)
+ * Use plaintext Content-Type when using polling #248 (commit) (thanks Tobias!)
+ * Return better error messages for client connection errors #243 (commit)
+ * Reuse the aiohttp client session on reconnects #226 (commit) 
+ * Support setting socketio_path to the root URL #242 (commit)
+ * Use the gevent selector to avoid 1024 file handle limitation of select#228 (commit)
+ * Pass reason when closing a WebSocket connection (commit)
+ * Improved project structure (commit)
+ * Remove executable permissions from files that lack shebang lines #240 (commit) (thanks Ben Beasley!)  
+ 
+-------------------------------------------------------------------
 Tue May 25 17:35:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.2.0
