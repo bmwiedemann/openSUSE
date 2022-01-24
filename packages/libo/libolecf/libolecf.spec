@@ -1,7 +1,7 @@
 #
 # spec file for package libolecf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -48,7 +49,7 @@ BuildRequires:  pkgconfig(libfole) >= 20170502
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libfwps) >= 20191221
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library and tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats.
@@ -82,30 +83,24 @@ libolecf is a library to access the OLE 2 Compound File (OLECF) format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python3-%{name}
-Summary:        Python bindings for libolecf
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Requires:       %lname = %version
-
-%description -n python3-%name
-Python bindings for libolecf, which can read MS IE cache files.
-
 %prep
 %autosetup -p1
 cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
-%configure \
-    --disable-static \
-    --enable-wide-character-type \
-    --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find %buildroot -name '*.la' -delete
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -114,11 +109,11 @@ find %buildroot -name '*.la' -delete
 %license COPYING*
 %_libdir/libolecf.so.*
 
-%files tools
+%files -n %name-tools
 %_bindir/olecf*
 %_mandir/man1/olecf*.1*
 
-%files devel
+%files -n %name-devel
 %doc OLE_Compound_File_format.pdf
 %_includedir/libolecf.h
 %_includedir/libolecf/
@@ -126,8 +121,8 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libolecf.pc
 %_mandir/man3/libolecf.3*
 
-%files -n python3-%name
+%files %python_files
 %license COPYING*
-%python3_sitearch/pyolecf.so
+%python_sitearch/pyolecf.so
 
 %changelog
