@@ -1,7 +1,7 @@
 #
 # spec file for package libsigscan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define lname	libsigscan1
 Name:           libsigscan
-Version:        20210419
+Version:        20220124
 Release:        0
 Summary:        Library for binary signature scanning
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libsigscan
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libyal/libsigscan/releases/download/%version/libsigscan-experimental-%version.tar.gz
+Source9:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -40,7 +43,7 @@ BuildRequires:  pkgconfig(libcpath) >= 20200623
 BuildRequires:  pkgconfig(libcsplit) >= 20200703
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libsigscan is a library for binary signature scanning
@@ -73,26 +76,22 @@ libsigscan is a library for binary signature scanning
 This subpackage contains libraries and header files for developing
 applications that want to make use of libpff.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libsigscan
-Group:          Development/Languages/Python
-Provides:       pysigscan = %{version}
-
-%description -n python3-%{name}
-Python 3 bindings for libsigscan.
-
-libsigscan is a library for scanning for binary signatures.
-
 %prep
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -102,13 +101,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libsigscan.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/sigscan
 %{_mandir}/man1/sigscan.1%{?ext_man}
 %config %{_sysconfdir}/sigscan.conf
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %{_includedir}/libsigscan.h
 %{_includedir}/libsigscan/
@@ -116,7 +115,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libsigscan.pc
 %{_mandir}/man3/libsigscan.3%{?ext_man}
 
-%files -n python3-%{name}
-%{python3_sitearch}/pysigscan.so
+%files %python_files
+%{python_sitearch}/pysigscan.so
 
 %changelog
