@@ -1,7 +1,7 @@
 #
 # spec file for package libscca
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,12 @@ Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libscca
 Source:         %{name}-%{version}.tar.xz
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -45,7 +47,7 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library and tools to access the Windows Prefetch File (PF) format.
@@ -84,26 +86,23 @@ Requires:       %{lname} = %{version}
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libscca
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-Python 3 binding for libscca, which can access the Windows Prefetch File (PF) format.
-
 %prep
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
-
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
@@ -111,19 +110,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libscca.so.*
 
-%files tools
+%files -n %name-tools
 %{_bindir}/scca*
 %{_mandir}/man1/sccainfo.1%{?ext_man}
 
-%files devel
+%files -n %name-devel
 %{_includedir}/libscca.h
 %{_includedir}/libscca/
 %{_libdir}/libscca.so
 %{_libdir}/pkgconfig/libscca.pc
 %{_mandir}/man3/libscca.3%{?ext_man}
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyscca.so
+%python_sitearch/pyscca.so
 
 %changelog
