@@ -1,7 +1,7 @@
 #
 # spec file for package libvhdi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ URL:            https://github.com/libyal/libvhdi/wiki
 Source:         %{name}-%{version}.tar.xz
 Source2:        Virtual_Hard_Disk_VHD_image_format.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20201121
@@ -44,8 +46,7 @@ BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python2)
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 Library and tools to access the Virtual Hard Disk (VHD) image format.
@@ -98,30 +99,25 @@ libvhdi is a library to access the Virtual Hard Disk (VHD) image format.  see li
 This subpackage contains libraries and header files for developing
 applications that want to make use of libvhdi.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libvhdi, a VHD image format parser
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Provides:       pyvhdi
-
-%description -n python3-%{name}
-libvhdi is a library to access Virtual Hard Disk (VHD) image format. See libvhdi for details.
-
-This package contains Python 3 bindings for libvhdi.
-
 %prep
 %autosetup -p1
-cp "%{SOURCE2}" .
+cp %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+autoreconf -fi
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
-
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
@@ -129,12 +125,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libvhdi.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/vhdi*
 %{_mandir}/man1/vhdi*.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc Virtual_Hard_Disk_*
 %{_includedir}/libvhdi.h
@@ -143,8 +139,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libvhdi.pc
 %{_mandir}/man3/libvhdi.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyvhdi.so
+%python_sitearch/pyvhdi.so
 
 %changelog

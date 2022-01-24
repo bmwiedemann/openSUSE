@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>898771</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0efc52691b84b1acbb229bb8293f7247</srcmd5>
+    <version>20210425</version>
+    <time>1643062217</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds. (This reenables Python2 on Leap 15.)</comment>
+    <requestid>948423</requestid>
+  </revision>
 </revisionlist>
