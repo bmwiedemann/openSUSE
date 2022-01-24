@@ -1,0 +1,18 @@
+---
+ tests/test_core.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/tests/test_core.py
++++ b/tests/test_core.py
+@@ -4,7 +4,10 @@ import hashlib
+ import textwrap
+ from io import BytesIO
+ 
+-import mock
++try:
++    import mock
++except ImportError:
++    from unittest import mock
+ import pytest
+ 
+ from installer import install
