@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvicorn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-uvicorn
-Version:        0.12.3
+Version:        0.17.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
@@ -44,11 +44,15 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
+BuildRequires:  %{python_module asgiref >= 3.4}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
 BuildRequires:  %{python_module httptools >= 0.1.0}
+BuildRequires:  %{python_module httpx >= 0.18}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module typing_extensions}
