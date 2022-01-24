@@ -34,6 +34,7 @@ BuildRequires:  flex
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -50,7 +51,7 @@ BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libuna) >= 20201204
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libphdi is a library to access the Parallels Hard Disk image format.
@@ -85,24 +86,23 @@ Group:          Productivity/File utilities
 This subpackage contains the utility programs from libphdi to
 read Parallels Hard Disk images.
 
-%package -n python3-%name
-Summary:        Python 3 bindings for libphdi
-Group:          Development/Languages/Python
-
-%description -n python3-%name
-Python 3 bindings for libphdi.
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find "%buildroot" -type f -name "*.la" -delete -print
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -111,17 +111,17 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %license COPYING*
 %_libdir/libphdi.so.*
 
-%files devel
+%files -n %name-devel
 %_includedir/*
 %_libdir/*.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man3/*.3*
 
-%files tools
+%files -n %name-tools
 %_bindir/phdi*
 %_mandir/man1/phdi*
 
-%files -n python3-%name
-%python3_sitearch/*.so
+%files %python_files
+%python_sitearch/*.so
 
 %changelog
