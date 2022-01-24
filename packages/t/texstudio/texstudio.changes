@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 22 10:53:38 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 4.2.0
+  * more cwls
+  * fix key handling for some special keyboard set-ups (#2011)
+  * fix user menu handling
+  * filter available dictionaries in status/language selection
+  * change placeHolder behavior: autoremove when content in placeholder
+    is changed, don't use placeholder for cutBuffer 
+
+-------------------------------------------------------------------
 Wed Dec 29 01:28:47 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to version 4.1.2
