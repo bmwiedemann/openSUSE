@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 23:44:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-310.patch:
+  * Use correct import path for Sequence. 
+
+-------------------------------------------------------------------
 Mon Apr 19 08:29:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build on Python 3.6, due to no NumPy. 

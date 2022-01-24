@@ -1,7 +1,7 @@
 #
 # spec file for package python-distob
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-distob
 Version:        0.3.3
 Release:        0
@@ -26,6 +25,7 @@ Summary:        Distributed computing using remote objects
 License:        GPL-3.0-or-later
 URL:            https://github.com/mattja/distob/
 Source:         https://files.pythonhosted.org/packages/source/d/distob/distob-%{version}.tar.gz
+Patch0:         support-python-310.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -62,7 +62,7 @@ particular axis. Operations on the array can then be automatically
 done in parallel.
 
 %prep
-%setup -q -n distob-%{version}
+%autosetup -p1 -n distob-%{version}
 
 %build
 %python_build
