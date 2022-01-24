@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 24 14:36:20 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.11.7:
+  * Added faster strlcat variant that uses memccpy for writing SDPs (#2835)
+  * Fixed occasional crash when updating WebRTC sessions (#2840)
+  * Changed SDP syntax for AV1 from "AV1X" to "AV1" (#2844)
+  * Fixed signed_tokens property not being saved to permanent rooms in VideoRoom (#2843)
+  * Made record directory changeable via "edit" in both AudioBridge and VideoRoom
+  * Added configurable expected loss to AudioBridge to actually send FEC (#2802)
+  * Fixed SIP plugin not working when using Sofia SIP >= 1.13 (#2683)
+  * Fixed occasional crashes in SIP plugin (#2853)
+  * Take note of video orientation extension when recording video in SIP plugin (#2836)
+  * Allow 180 besides 183 to have SDP as well (#2849)
+  * Fixed post-processor compilation issue with newer versions of FFmpeg (#2833)
+  * Added option to print extended info on MJR file as JSON in postprocessor (#2858)
+  * Allow pcap2mjr to autodetect SSRC
+  * Fixed problems compiling post-processor with older versions of FFmpeg
+  * Other smaller fixes and improvements
+    
+-------------------------------------------------------------------
 Mon Dec 13 12:26:10 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.11.6:
