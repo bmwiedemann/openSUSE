@@ -1,9 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 23 08:34:21 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.5.1
+  * Support multiple Kafka servers (thanks sparkingdark!)
+  * Include example code in flake8 pass 
+  * Option to disable the SIGINT handler in the client #792 
+  * Do not invoke reserved events on a catch-all handler #814 
+  * Use correct binary packet types in the msgpack packet encoder #811 
+  * Add missing call() method to namespace classes #800 
+  * Add missing to argument to namespace emit() and send() methods #810 
+  * Configure Redis pubsub to skip subscription messages 
+  * Migrate async Redis client manager to aioredis 2 #771 (thanks Sam Mosleh!)
+  * Update Python supported versions in docs 
+  * Document how to get the connection state in the client #799 
+  * Improved documentation of start_background_task() function 
+  * Improved documentation of call() method #813 
+  * Fixed intermittent test failures #572 
+
+-------------------------------------------------------------------
 Sat Oct 23 16:21:35 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.4.1  
-  * Catch-all event handlers (commit)
-  * Implement disconnect method for external processes #684 (commit) 
+  * Catch-all event handlers 
+  * Implement disconnect method for external processes #684 
 
 -------------------------------------------------------------------
 Wed Oct  6 10:45:54 UTC 2021 - Axel Braun <axel.braun@gmx.de>
