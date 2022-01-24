@@ -1,7 +1,7 @@
 #
 # spec file for package libmodi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,12 @@ Source:         https://github.com/libyal/libmodi/releases/download/%version/lib
 Source2:        https://github.com/libyal/libmodi/releases/download/%version/libmodi-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libbfio) >= 20201229
@@ -53,7 +55,7 @@ BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libhmac) >= 20200104
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libuna) >= 20210801
-BuildRequires:  pkgconfig(python3)
+%python_subpackages
 
 %description
 libmodi is a library to access the Mac OS disk image formats.
@@ -97,24 +99,23 @@ Group:          Productivity/File utilities
 This subpackage contains the utility programs from libmodi to
 read MacOS disk image formats.
 
-%package -n python3-%name
-Summary:        Python 3 bindings for libmodi
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-Python 3 bindings for libmodi, which can read MacOS disk image formats.
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type --enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
-find "%buildroot" -type f -name "*.la" -delete -print
+mv %_builddir/rt/* %buildroot/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -123,17 +124,17 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %license COPYING*
 %_libdir/libmodi.so.*
 
-%files devel
+%files -n %name-devel
 %_includedir/*
 %_libdir/*.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man3/*.3*
 
-%files tools
+%files -n %name-tools
 %_bindir/modi*
 %_mandir/man1/modi*
 
-%files -n python3-%name
-%python3_sitearch/pymodi.so
+%files %python_files
+%python_sitearch/pymodi.so
 
 %changelog
