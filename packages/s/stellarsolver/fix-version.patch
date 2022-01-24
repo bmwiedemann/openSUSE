@@ -1,0 +1,27 @@
+From c1f878c4f13587181c8b19ac12194bc87baad51c Mon Sep 17 00:00:00 2001
+From: Paolo Stivanin <paolostivanin@users.noreply.github.com>
+Date: Mon, 24 Jan 2022 16:47:58 +0100
+Subject: [PATCH] Update CMakeLists.txt
+
+latest release contains wrong version number, this commit fixes it
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6925330..8687bd3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,9 +6,9 @@ cmake_minimum_required(VERSION 3.0)
+ # Timestamp build
+ string(TIMESTAMP StellarSolver_BUILD_TS UTC)
+ 
+-# StellarSolver Version 1.8
++# StellarSolver Version 1.9
+ set (StellarSolver_VERSION_MAJOR 1)
+-set (StellarSolver_VERSION_MINOR 8)
++set (StellarSolver_VERSION_MINOR 9)
+ 
+ set (StellarSolver_SOVERSION "${StellarSolver_VERSION_MAJOR}")
+ set (StellarSolver_VERSION ${StellarSolver_VERSION_MAJOR}.${StellarSolver_VERSION_MINOR})
+

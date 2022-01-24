@@ -1,7 +1,7 @@
 #
 # spec file for package stellarsolver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %define sover 1
 Name:           stellarsolver
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/rlancaste/stellarsolver
 Source0:        https://github.com/rlancaste/stellarsolver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/rlancaste/stellarsolver/pull/88
+Patch0:         fix-version.patch
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
@@ -58,7 +60,7 @@ Development headers and libraries for %{name}.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR=%{_lib}

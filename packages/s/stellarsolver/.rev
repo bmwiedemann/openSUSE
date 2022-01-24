@@ -29,4 +29,17 @@
 </comment>
     <requestid>914983</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00810d59ec07d4a025315fe1d94d027e</srcmd5>
+    <version>1.9</version>
+    <time>1643062218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9:
+  * use C locale for numbers
+  * fixed some warnings
+  * enclosing the deprecated code corrections in qt version check ifdefs
+- Add fix-version.patch
+</comment>
+    <requestid>948439</requestid>
+  </revision>
 </revisionlist>

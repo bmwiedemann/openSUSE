@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 15:42:57 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9:
+  * use C locale for numbers
+  * fixed some warnings
+  * enclosing the deprecated code corrections in qt version check ifdefs
+- Add fix-version.patch
+
+-------------------------------------------------------------------
 Mon Aug 30 09:27:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8:
