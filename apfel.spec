@@ -1,7 +1,7 @@
 #
 # spec file for package apfel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,25 @@
 #
 
 
-# PYTHON BINDINGS INCOMPATIBLE WITH PYTHON3
-%if 0%{?suse_version} >= 1550
-%bcond_with pywrap
-%else
-%bcond_without pywrap
-%endif
-
-%define skip_python3 1
-
 %define soname libAPFEL0
 Name:           apfel
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        A Probability Distribution Function Evolution Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://apfel.hepforge.org/
 Source:         https://github.com/scarrazza/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM apfel-allow-disabling-pywrap.patch badshah400@gmail.com -- Allow building with python extension disabled, for example due to lack of python2 support in the system
-Patch0:         apfel-allow-disabling-pywrap.patch
+BuildRequires:  %{python_module LHAPDF}
+BuildRequires:  %{python_module devel}
 BuildRequires:  LHAPDF-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
-%if %{with pywrap}
-BuildRequires:  %{python_module LHAPDF}
-BuildRequires:  %{python_module devel}
-%endif
 Requires:       python-LHAPDF
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
@@ -91,14 +79,25 @@ library.
 %autosetup -p1
 
 %build
-autoreconf -fvi
+%{python_expand # Necessary to run configure with all python flavors
+export PYTHON=%{_bindir}/$python
+mkdir ../{$python}_build
+cp -pr ./ ../{$python}_build
+pushd ../{$python}_build
 %configure \
-  --disable-static \
-  %{!?with_pywrap:--disable-pywrap}
-make %{?_smp_mflags}
+  --disable-static
+%make_build
+popd
+}
 
 %install
+%{python_expand #  all python flavors as configured above
+export PYTHON=%{_bindir}/$python
+pushd ../{$python}_build
 %make_install
+%python_clone -a %{buildroot}%{_bindir}/apfel
+popd
+}
 
 # REMOVE libtool ARCHIVES
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -113,6 +112,12 @@ rm -fr %{buildroot}%{_datadir}/apfel/README
 %post   -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
 
+%post
+%python_install_alternative apfel
+
+%postun
+%python_uninstall_alternative apfel
+
 %files -n %{soname}
 %{_libdir}/*.so.*
 
@@ -125,11 +130,13 @@ rm -fr %{buildroot}%{_datadir}/apfel/README
 %{_bindir}/ListFunctions
 %{_libdir}/*.so
 
-%if %{with pywrap}
 %files %{python_files}
-%{_bindir}/apfel
-%{python_sitearch}/*
-%endif
+%python_alternative %{_bindir}/apfel
+%{python_sitearch}/apfel.py
+%{python_sitearch}/*.so
+%pycache_only %{python_sitearch}/__pycache__/*.pyc
+%python2_only %{python_sitearch}/*.pyc
+%{python_sitearch}/APFEL-%{version}-py%{python_version}.egg-info
 
 %files -n %{name}-doc
 %doc doc/pdfs/manual.pdf
