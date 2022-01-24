@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 13:21:31 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update opensm sysconfig defaults to match current launch script
+  Most options have been removed as they should be configured in the opensm.conf file
+
+-------------------------------------------------------------------
 Wed Oct 13 12:09:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
