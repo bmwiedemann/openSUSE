@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jan 16 17:42:44 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.16
+  - Allow to select and remove invalid config file
+  - Migrated all HTTPS requests to use libcurl (Linux, macOS)
+  - Set keyboard focus on config panel after startup
+  - Added computer name to log file trailer
+  - Context menu instead of confirmation dialog for swap sides
+  - Fixed config selection lost after auto-cleaning obsolete rows
+  - Install app files with owner set to root (Linux)
+  - Don't override keyboard shortcut "CTRL + W" (macOS)
+  - Migrated key conversion routines deprecated in OpenSSL 3.0
+  - Boxed app icon to fit OS theme (macOS)
+  - Fixed manual retry after automatic update check error
+  - Fixed missing ampersands in middle grid tooltip
+- Changes from 11.15
+  - Play sound reminder when waiting for user confirmation
+  - Enhanced crash diagnostics with known triggers
+  - Defer reporting third-party incompatibilities until after crashing
+  - Fixed Server 2019 not being detected for log file
+  - Use native representation for modified config (macOS)
+  - Improved WinMerge detection for external app integration
+- Changes from 11.14
+  - Authenticate (S)FTP connections using OpenSSL 3.0
+  - Fixed E_NOINTERFACE error after synchronization
+  - Preempt crashes due to Nahimic Sonic Studio 3
+  - Hide main window when minimizing progress window (macOS)
+  - Avoid second dock icon when minimizing progress window (macOS)
+- Add FreeFileSync-openssl-1.1.1.patch to fix build with openssl 1.1.1
+- Update FreeFileSync-disable-in-app-updates.patch for version 11.16
+- Rename FreeFileSync-Build.patch to FreeFileSync-build.patch
+- Rename FreeFileSync-icon_loader.patch to FreeFileSync-icon-loader.patch
+- Rename FreeFileSync-Resources.patch to FreeFileSync-resources.patch
+-------------------------------------------------------------------
+Sun Jan 16 17:01:17 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Add FreeFileSync-disable-in-app-updates.patch to disable the in app 
+  standalone updater for the packaged version of FreeFileSync.
+
+-------------------------------------------------------------------
 Tue Aug 24 01:51:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions.

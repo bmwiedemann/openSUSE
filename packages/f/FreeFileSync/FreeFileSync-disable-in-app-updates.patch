@@ -1,0 +1,47 @@
+diff -Naur FreeFileSync_11.16_Source_orig/FreeFileSync/Source/ui/gui_generated.cpp FreeFileSync_11.16_Source/FreeFileSync/Source/ui/gui_generated.cpp
+--- FreeFileSync_11.16_Source_orig/FreeFileSync/Source/ui/gui_generated.cpp	2022-01-02 18:32:20.000000000 +0100
++++ FreeFileSync_11.16_Source/FreeFileSync/Source/ui/gui_generated.cpp	2022-01-16 18:08:11.272184873 +0100
+@@ -108,13 +108,14 @@
+ 	m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
+ 	m_menuHelp->Append( m_menuItemHelp );
+ 
+-	m_menuHelp->AppendSeparator();
++    // disable update/auto update actions for packaged version (they are only hidden, to not break any code and keep the patch small)
++	//m_menuHelp->AppendSeparator();
+ 
+ 	m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ) , wxEmptyString, wxITEM_NORMAL );
+-	m_menuHelp->Append( m_menuItemCheckVersionNow );
++	//m_menuHelp->Append( m_menuItemCheckVersionNow );
+ 
+ 	m_menuItemCheckVersionAuto = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("Check &automatically once a week") ) , wxEmptyString, wxITEM_CHECK );
+-	m_menuHelp->Append( m_menuItemCheckVersionAuto );
++	//m_menuHelp->Append( m_menuItemCheckVersionAuto );
+ 	m_menuItemCheckVersionAuto->Check( true );
+ 
+ 	m_menuHelp->AppendSeparator();
+diff -Naur FreeFileSync_11.13_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp FreeFileSync_11.13_Source/FreeFileSync/Source/ui/main_dlg.cpp
+--- FreeFileSync_11.13_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp	2021-08-17 09:48:08.000000000 +0200
++++ FreeFileSync_11.13_Source/FreeFileSync/Source/ui/main_dlg.cpp	2022-01-16 17:27:16.593500053 +0100
+@@ -845,7 +845,7 @@
+     updateGui();
+ 
+     //register regular check for update on next idle event
+-    Bind(wxEVT_IDLE, &MainDialog::onStartupUpdateCheck, this);
++    //Bind(wxEVT_IDLE, &MainDialog::onStartupUpdateCheck, this);
+ 
+     //asynchronous call to wxWindow::Layout(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
+     Bind(wxEVT_IDLE, &MainDialog::onLayoutWindowAsync, this);
+diff -Naur FreeFileSync_11.13_Source_orig/FreeFileSync/Source/ui/version_check.cpp FreeFileSync_11.13_Source/FreeFileSync/Source/ui/version_check.cpp
+--- FreeFileSync_11.13_Source_orig/FreeFileSync/Source/ui/version_check.cpp	2022-01-16 17:31:51.876901517 +0100
++++ FreeFileSync_11.13_Source/FreeFileSync/Source/ui/version_check.cpp	2022-01-16 17:32:03.004877442 +0100
+@@ -77,7 +77,9 @@
+         return false;
+ 
+     const time_t now = std::time(nullptr);
+-    return std::abs(now - lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
++    //return std::abs(now - lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
++    
++    return false;
+ }
+ 
+ 

@@ -65,4 +65,12 @@ It would be nice to have this application available in the default repos. </comm
     <comment></comment>
     <requestid>913915</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7a5675a735bafa4df260133003fd6e66</srcmd5>
+    <version>11.16</version>
+    <time>1643062228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948471</requestid>
+  </revision>
 </revisionlist>

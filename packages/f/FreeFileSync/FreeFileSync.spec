@@ -1,7 +1,7 @@
 #
 # spec file for package FreeFileSync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.13
+Version:        11.16
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -28,9 +28,11 @@ Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        RealTimeSync.desktop
 Source4:        RealTimeSync.png
-Patch0:         FreeFileSync-Build.patch
-Patch1:         FreeFileSync-Resources.patch
-Patch2:         FreeFileSync-icon_loader.patch
+Patch0:         FreeFileSync-build.patch
+Patch1:         FreeFileSync-resources.patch
+Patch2:         FreeFileSync-icon-loader.patch
+Patch3:         FreeFileSync-disable-in-app-updates.patch
+Patch4:         FreeFileSync-openssl-1.1.1.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
@@ -68,8 +70,11 @@ export CXXFLAGS="%{optflags} -fabi-version=2 -fabi-compat-version=2"
 export CC="gcc"
 export CXX="g++"
 
-%make_build -C %{name}/Source exeName=FreeFileSync
-%make_build -C %{name}/Source/RealTimeSync exeName=RealTimeSync
+/usr/bin/make -O -j1 V=1 VERBOSE=1 -C FreeFileSync/Source exeName=FreeFileSync
+/usr/bin/make -O -j1 V=1 VERBOSE=1 -C FreeFileSync/Source/RealTimeSync exeName=RealTimeSync
+
+#%%make_build -C %%{name}/Source exeName=FreeFileSync
+#%%make_build -C %%{name}/Source/RealTimeSync exeName=RealTimeSync
 
 %install
 # FreeFileSync
