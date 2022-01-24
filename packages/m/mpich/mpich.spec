@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  3.4.2
-%define _vers 3_4_2
+%define vers  3.4.3
+%define _vers 3_4_3
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build

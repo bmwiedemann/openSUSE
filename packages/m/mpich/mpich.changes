@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 12 12:30:33 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 3.4.3
+  - Fix nemesis shm bug on systems with weak memory consistency
+  - Fix progress issue in ch4:ucx finalize
+  - Fix nonblocking collective issue during finalize
+  - Fix predefined datatype handle leaks
+  - Fix bug in topology-aware communicator creation
+  - Fix Slurm nodelist parsing
+  - Hydra help message improvements
+
+-------------------------------------------------------------------
 Tue Oct 19 15:19:35 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Move rpm macros to %_rpmmacrodir (bsc#1191385)
