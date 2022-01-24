@@ -72,8 +72,6 @@ fi
 
 install partitionmanager
 
-install cifs-utils
-
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 

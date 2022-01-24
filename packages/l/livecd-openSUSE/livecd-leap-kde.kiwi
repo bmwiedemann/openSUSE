@@ -203,6 +203,10 @@
     <ignore name="lomoco"/>
     <package name="aaa_base" replaces="mksh"/>
     <ignore name="mksh"/>
+    <package name="aaa_base" replaces="cifs-utils"/>
+    <ignore name="cifs-utils"/>
+    <package name="aaa_base" replaces="gvfs-backend-samba"/>
+    <ignore name="gvfs-backend-samba"/>
     <package name="aaa_base" replaces="xorg-x11"/>
     <ignore name="xorg-x11"/>
     <package name="aaa_base" replaces="xorg-x11-essentials"/>
@@ -532,7 +536,6 @@
     <package name="aaa_base" replaces="kipi-plugins"/>
     <ignore name="kipi-plugins"/>
     <package name="partitionmanager"/>
-    <package name="cifs-utils"/>
     <package name="aaa_base" replaces="cyrus-sasl"/>
     <ignore name="cyrus-sasl"/>
     <package name="alsa-firmware"/>

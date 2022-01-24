@@ -51,6 +51,9 @@ done
 echo '# multipath needs to be excluded from dracut as it breaks os-prober' > /etc/dracut.conf.d/no-multipath.conf
 echo 'omit_dracutmodules+=" multipath "' >> /etc/dracut.conf.d/no-multipath.conf
 
+# Stronger compression for the initrd
+echo 'compress="xz -4 --check=crc32 --memlimit-compress=50%"' >> /etc/dracut.conf.d/less-storage.conf
+
 if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 	# Forcibly exclude networking support
 	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/90kiwi-live/module-setup.sh
@@ -58,6 +61,9 @@ if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 
 	# This only needs to be able to boot the live cd
 	echo 'omit_dracutmodules+=" bcache crypt lvm mdraid lunmask "' >> /etc/dracut.conf.d/less-storage.conf
+
+	# Unnecessary modules in the initrd
+	echo 'omit_drivers+=" cifs ocfs2 "' >> /etc/dracut.conf.d/less-storage.conf
 
 	# Work around https://github.com/OSInside/kiwi/issues/1751
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
@@ -100,6 +106,9 @@ rm -rf /usr/share/doc/packages/*
 
 # Save more than 200 MiB by removing this, not very useful for lives
 rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bnx2x,cxgb4}
+
+# The gems are unpackaged already, no need to store them twice
+rm -rf /usr/lib*/ruby/gems/*/cache/
 
 # Not needed, boo#1166406
 rm -f /boot/vmlinux*.[gx]z

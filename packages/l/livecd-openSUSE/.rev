@@ -1392,4 +1392,18 @@
 - list-xfce: add shotwell back (forwarded request 946071 from favogt)</comment>
     <requestid>946072</requestid>
   </revision>
+  <revision rev="173" vrev="173">
+    <srcmd5>e293ed38efd79d1bbd991da9c4a3f06c</srcmd5>
+    <version>unknown</version>
+    <time>1643020155</time>
+    <user>dimstar_suse</user>
+    <comment>More dirty hacks.
+
+- list-common: Avoid samba-libs
+- list-kde, list-gnome: Don't require cifs-utils
+- list-x11: Ignore 7zip
+- config.sh: Compress the initrd more strongly, delete the ruby gem
+  cache and block some more kernel modules in the initrd (forwarded request 948363 from favogt)</comment>
+    <requestid>948365</requestid>
+  </revision>
 </revisionlist>

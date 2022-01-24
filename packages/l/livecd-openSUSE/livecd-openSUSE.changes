@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 09:45:22 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Avoid samba-libs
+- list-kde, list-gnome: Don't require cifs-utils
+- list-x11: Ignore 7zip
+- config.sh: Compress the initrd more strongly, delete the ruby gem
+  cache and block some more kernel modules in the initrd
+
+-------------------------------------------------------------------
 Thu Jan 13 10:28:43 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - config.sh: Disable initrd networking also for Xfce

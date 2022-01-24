@@ -111,7 +111,6 @@ installPattern yast2_install_wf
 install gnome-mines
 install gnome-sudoku
 install quadrapassel
-install cifs-utils
 
 # Pulls in Qt WebEngine, too big
 buildignore opensuse-welcome

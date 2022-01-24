@@ -81,6 +81,10 @@ buildignore irda
 buildignore lomoco
 buildignore mksh
 
+# Ignore samba
+buildignore cifs-utils
+buildignore gvfs-backend-samba
+
 # Legacy packages - not actually used, but pull in quite a lot
 buildignore xorg-x11
 buildignore xorg-x11-essentials
