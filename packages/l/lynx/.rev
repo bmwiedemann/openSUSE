@@ -328,4 +328,17 @@
     part of the server name indicator (Debian #991971) -TD</comment>
     <requestid>911537</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dca7fe7f6665b7ea288c768e64862bfa</srcmd5>
+    <version>2.9.0~dev.10</version>
+    <time>1643062194</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0~dev.10:
+  * several fixes for problems found using asan2 with fuzzer-generated data
+  * re-signed copyright/copying files -TD
+  * update fr.po, id.po, nl.po, sv.po from
+     http://translationproject.org/latest/lynx
+  * update config.sub (2021-08-14) (forwarded request 948099 from dirkmueller)</comment>
+    <requestid>948346</requestid>
+  </revision>
 </revisionlist>

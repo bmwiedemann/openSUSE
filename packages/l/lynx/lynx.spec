@@ -1,7 +1,7 @@
 #
 # spec file for package lynx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define tarbase 2.9.0dev.9
+%define tarbase 2.9.0dev.10
 Name:           lynx
-Version:        2.9.0~dev.9
+Version:        2.9.0~dev.10
 Release:        0
 Summary:        A Text-Based WWW Browser
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Web/Browsers
-URL:            http://lynx.invisible-island.net/
-Source:         http://invisible-mirror.net/archives/%{name}/tarballs/%{name}%{tarbase}.tar.bz2
+URL:            https://lynx.invisible-island.net/
+Source:         https://invisible-mirror.net/archives/%{name}/tarballs/%{name}%{tarbase}.tar.bz2
 # changing default configuration
 Patch0:         lynx-charset.patch
 Patch1:         lynx-enable_xli.patch
@@ -37,7 +37,6 @@ BuildRequires:  postfix
 BuildRequires:  zlib-devel
 Requires:       xli
 Provides:       web_browser
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Lynx is an easy-to-use browser for HTML documents and other Internet
@@ -61,9 +60,9 @@ terminals.
 	--disable-color-style \
 	--with-screen=ncursesw \
 	--enable-ipv6
-make %{?_smp_mflags}
+%make_build
 mv lynx lynx-bw
-make %{?_smp_mflags} distclean
+%make_build distclean
 %configure --enable-debug --with-build-cflags="%{optflags}" \
 	--with-ssl \
 	--with-bzlib \
@@ -71,7 +70,7 @@ make %{?_smp_mflags} distclean
 	--enable-default-colors \
 	--with-screen=ncursesw \
 	--enable-ipv6
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -85,13 +84,13 @@ chmod ogu-x scripts/conf.mingw.sh scripts/config.djgpp.sh
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %{_bindir}/lynx
 %{_bindir}/lynx-color
 %config %{_sysconfdir}/lynx.cfg
 %config %{_sysconfdir}/lynx.lss
-%{_mandir}/man1/lynx.1%{ext_man}
-%doc AUTHORS CHANGES README COPYING README PROBLEMS
+%{_mandir}/man1/lynx.1%{?ext_man}
+%license COPYING
+%doc AUTHORS CHANGES README README PROBLEMS
 %doc lynx_help samples scripts
 
 %changelog
