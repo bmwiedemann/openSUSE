@@ -28,9 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APS
 BuildRequires:  %{python_module SQLAlchemy >= 0.8}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module pytest < 6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools >= 36.2.7}
@@ -40,7 +39,6 @@ BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module tzlocal >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pytest-asyncio
 Requires:       python-pytz
 Requires:       python-six >= 1.4.0
 Requires:       python-tzlocal >= 2.0
@@ -88,6 +86,7 @@ APscheduler provides multiple job stores.
 
 %prep
 %setup -q -n APScheduler-%{version}
+sed -i 's/--cov//' setup.cfg
 
 %build
 %python_build
@@ -103,6 +102,7 @@ APscheduler provides multiple job stores.
 %license LICENSE.txt
 %doc README.rst
 %doc examples/
-%{python_sitelib}/*
+%{python_sitelib}/apscheduler
+%{python_sitelib}/APScheduler-%{version}*-info
 
 %changelog

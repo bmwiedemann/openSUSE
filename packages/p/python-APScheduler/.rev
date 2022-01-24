@@ -190,4 +190,12 @@
   * Allowed the use of tzlocal v4.0+ in addition to v2.*</comment>
     <requestid>928312</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d99c1f212fad8a3d340c9af805af090e</srcmd5>
+    <version>3.8.1</version>
+    <time>1643062210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948406</requestid>
+  </revision>
 </revisionlist>

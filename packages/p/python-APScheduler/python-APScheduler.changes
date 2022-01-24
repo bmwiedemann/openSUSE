@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 22 14:33:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Unpin pytest<6
+
+-------------------------------------------------------------------
 Tue Oct 26 20:13:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.1:
