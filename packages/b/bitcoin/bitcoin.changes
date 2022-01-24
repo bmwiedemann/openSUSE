@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 24 05:07:54 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 24104.patch to fix build with boost-1.78
+
+-------------------------------------------------------------------
 Wed Oct 20 05:01:40 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 0.21.2

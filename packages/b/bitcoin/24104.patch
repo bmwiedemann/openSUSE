@@ -1,0 +1,36 @@
+From dc5d6b0d4793ca978f71f69ef7d6b818794676c2 Mon Sep 17 00:00:00 2001
+From: Andrew Chow <achow101-github@achow101.com>
+Date: Wed, 19 Jan 2022 15:21:25 -0500
+Subject: [PATCH] fs: Make compatible with boost 1.78
+
+---
+ src/wallet/load.cpp                   | 2 +-
+ test/functional/wallet_multiwallet.py | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: bitcoin-0.21.2/test/functional/wallet_multiwallet.py
+===================================================================
+--- bitcoin-0.21.2.orig/test/functional/wallet_multiwallet.py
++++ bitcoin-0.21.2/test/functional/wallet_multiwallet.py
+@@ -138,7 +138,7 @@ class MultiWalletTest(BitcoinTestFramewo
+ 
+         # should raise rpc error if wallet path can't be created
+         err_code = -4 if self.options.descriptors else -1
+-        assert_raises_rpc_error(err_code, "boost::filesystem::create_directory:", self.nodes[0].createwallet, "w8/bad")
++        assert_raises_rpc_error(err_code, "boost::filesystem::create_director", self.nodes[0].createwallet, "w8/bad")
+ 
+         # check that all requested wallets were created
+         self.stop_node(0)
+Index: bitcoin-0.21.2/src/wallet/load.cpp
+===================================================================
+--- bitcoin-0.21.2.orig/src/wallet/load.cpp
++++ bitcoin-0.21.2/src/wallet/load.cpp
+@@ -22,7 +22,7 @@ bool VerifyWallets(interfaces::Chain& ch
+         fs::path wallet_dir = gArgs.GetArg("-walletdir", "");
+         boost::system::error_code error;
+         // The canonical path cleans the path, preventing >1 Berkeley environment instances for the same directory
+-        fs::path canonical_wallet_dir = fs::canonical(wallet_dir, error);
++        fs::path canonical_wallet_dir = fs::canonical(wallet_dir, error).remove_trailing_separator();
+         if (error || !fs::exists(wallet_dir)) {
+             chain.initError(strprintf(_("Specified -walletdir \"%s\" does not exist"), wallet_dir.string()));
+             return false;

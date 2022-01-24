@@ -35,6 +35,8 @@ Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
 Patch0:         harden_bitcoind.service.patch
+# PATCH-FIX-UPSTREAM: https://github.com/bitcoin/bitcoin/pull/24104
+Patch1:         24104.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
