@@ -1,7 +1,7 @@
 #
 # spec file for package libvmdk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,13 @@ Source2:        https://github.com/libyal/libvmdk/releases/download/%version/lib
 Source3:        %name.keyring
 Source11:       VMWare_Virtual_Disk_Format_VMDK.pdf
 Patch1:         system-libs.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libbfio) >= 20201229
 BuildRequires:  pkgconfig(libcdata) >= 20200509
@@ -47,9 +50,7 @@ BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libuna) >= 20210801
-BuildRequires:  pkgconfig(python2)
-BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(zlib)
+%python_subpackages
 
 %description
 The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
@@ -114,27 +115,24 @@ See libvmdk for additional details.
 This package contains libraries and header files for developing
 applications that want to make use of libvmdk.
 
-%package -n python3-%{name}
-Summary:        Python 3 bindings for libvmdk, a VMDK image format parser
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-
-%description -n python3-%{name}
-The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
-
-This package contains the Python 3 bindings for libvmdk.
-
 %prep
 %autosetup -p1
 cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-wide-character-type --enable-python3
+# OOT builds are presently broken, so we have to install
+# within each python iteration now, not in %%install.
+%{python_expand #
+%configure --disable-static --enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
@@ -147,12 +145,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %{_libdir}/libvmdk.so.*
 
-%files tools
+%files -n %name-tools
 %license COPYING*
 %{_bindir}/vmdk*
 %{_mandir}/man1/vmdk*.1*
 
-%files devel
+%files -n %name-devel
 %license COPYING*
 %doc VMWare_Virtual_Disk_Format*
 %{_includedir}/libvmdk.h
@@ -161,8 +159,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libvmdk.pc
 %{_mandir}/man3/libvmdk.3*
 
-%files -n python3-%{name}
+%files %python_files
 %license COPYING*
-%{python3_sitearch}/pyvmdk.so
+%python_sitearch/pyvmdk.so
 
 %changelog
