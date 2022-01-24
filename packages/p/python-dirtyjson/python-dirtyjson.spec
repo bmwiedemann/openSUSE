@@ -1,7 +1,7 @@
 #
 # spec file for package python-dirtyjson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/codecobblers/dirtyjson
 Source:         https://files.pythonhosted.org/packages/source/d/dirtyjson/dirtyjson-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#codecobblers/dirtyjson#6
+Patch0:         support-python-310.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -36,7 +38,7 @@ BuildArch:      noarch
 JSON decoder for Python that can extract data from dirty input.
 
 %prep
-%setup -q -n dirtyjson-%{version}
+%autosetup -p1 -n dirtyjson-%{version}
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 24 00:48:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-310.patch:
+  * Support Python 3.10. 
+
+-------------------------------------------------------------------
 Tue May 18 11:03:44 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro in %check
