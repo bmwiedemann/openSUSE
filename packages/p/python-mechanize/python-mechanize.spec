@@ -1,7 +1,7 @@
 #
 # spec file for package python-mechanize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %define modname mechanize
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mechanize
-Version:        0.4.5
+Version:        0.4.7
 Release:        0
 Summary:        Stateful programmatic web browsing
-License:        (BSD-3-Clause OR ZPL-2.1) AND BSD-3-Clause
-Group:          Development/Languages/Python
+License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)
 URL:            https://github.com/python-mechanize/mechanize
 Source:         https://files.pythonhosted.org/packages/source/m/mechanize/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}

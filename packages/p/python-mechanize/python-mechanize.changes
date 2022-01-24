@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 00:57:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.7:
+  * Fix the ~ character being percent escaped when sending URLs to servers.
+  * Python 3.10 compatibility
+  * Fix a bug in the regex used to parse www-authenticate headers that could
+    lead to Denial-of-Service 
+
+-------------------------------------------------------------------
 Wed Jan 22 15:45:36 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.4.5:

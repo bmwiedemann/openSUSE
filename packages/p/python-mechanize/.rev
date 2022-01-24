@@ -217,4 +217,16 @@
     <comment></comment>
     <requestid>766371</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6f1ce2baaed1dc4a0c385f4774671455</srcmd5>
+    <version>0.4.7</version>
+    <time>1643062188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.7:
+  * Fix the ~ character being percent escaped when sending URLs to servers.
+  * Python 3.10 compatibility
+  * Fix a bug in the regex used to parse www-authenticate headers that could
+    lead to Denial-of-Service</comment>
+    <requestid>948302</requestid>
+  </revision>
 </revisionlist>
