@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>902549</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32591cf411c1c25a816ca63ba06de722</srcmd5>
+    <version>20210626</version>
+    <time>1643062220</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds.</comment>
+    <requestid>948443</requestid>
+  </revision>
 </revisionlist>
