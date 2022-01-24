@@ -1,7 +1,7 @@
 #
 # spec file for package lua-language-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define pkg_name lua-language-server
 
 Name:           lua-language-server
-Version:        2.5.6
+Version:        2.6.1
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT

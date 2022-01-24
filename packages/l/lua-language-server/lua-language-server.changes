@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 12:45:42 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.6.1:
+  * update ngx/openresty annotations
+  * add more skynet function defines
+  * Build for linux-arm64
+  * add skynet sc and mongo desc
+
+-------------------------------------------------------------------
 Tue Dec 28 10:59:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - With help of upstream, I finally found the released upstream
