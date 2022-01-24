@@ -1,7 +1,7 @@
 #
 # spec file for package openafs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.8
+%define upstream_version 1.8.8.1
 
 Name:           openafs
 
-Version:        1.8.8
+Version:        1.8.8.1
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -105,8 +105,6 @@ Source99:       openafs.changes
 Patch3:         dir_layout.patch
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         openafs-1.8.x.ncurses6.patch
-# PATCH-FIX-UPSTREAM make KMP bild on Factory
-Patch5:         linux-kmp.patch
 
 #
 #	GENERAL BuildRequires and Requires
@@ -323,7 +321,6 @@ done
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 ./regen.sh
 

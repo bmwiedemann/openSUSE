@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:48:09 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- Update to new upstream release 1.8.8.1
+  * Support mainline kernels 5.14, 5.15 and 5.16
+- remove local patch linux-kmp.patch:
+  * it supported mainline kernels only up to 5.15
+
+-------------------------------------------------------------------
 Mon Nov 29 15:08:46 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - re-add linux-kmp.patch. Required for 5.15  
