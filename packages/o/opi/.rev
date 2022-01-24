@@ -267,4 +267,14 @@
 </comment>
     <requestid>927292</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d46b306aed4ee7f7bcbdc379c093aa16</srcmd5>
+    <version>2.4.3</version>
+    <time>1643062203</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.3
+- Fix for tumbleweed based MicroOS
+</comment>
+    <requestid>948388</requestid>
+  </revision>
 </revisionlist>
