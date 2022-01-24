@@ -62,4 +62,28 @@
   gh#rollbar/pyrollbar#346.</comment>
     <requestid>824631</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1aa1fd86c56f4ab311e6e5fd1f823041</srcmd5>
+    <version>0.16.2</version>
+    <time>1643062188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.2:
+  * Fix building person data in Django. See #385
+  * Fix circular error logging for non-HTTP events in Starlette. See #390
+  * Fix Python 3.4 builds. See #389
+  * Add support for FastAPI framework. See #373
+  * Add support for Starlette framework. See #373
+  * Add support for ASGI-compliant frameworks. See #373
+  * Add support for HTTPX async handler. See #373
+  * Add new honored values of rollbar.SETTINGS['handler']: default, async
+    and httpx. See #373
+  * Add support for async report_exc_info and report_message. See #373
+  * Collect user IP from X-Forwarded-For, fall back to X-Real-Ip. See #370
+  * Improve examples. See #368
+  * Fix Python 3.3 builds. See #374
+  * Fix Flask 0.x builds. See #376 
+- Add httpx to BuildRequires
+- Refresh python-rollbar-no-unittest2.patch</comment>
+    <requestid>948303</requestid>
+  </revision>
 </revisionlist>

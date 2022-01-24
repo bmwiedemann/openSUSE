@@ -1,6 +1,8 @@
---- a/rollbar/test/__init__.py
-+++ b/rollbar/test/__init__.py
-@@ -1,9 +1,9 @@
+Index: pyrollbar-0.16.2/rollbar/test/__init__.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/__init__.py
++++ pyrollbar-0.16.2/rollbar/test/__init__.py
+@@ -1,13 +1,13 @@
 -import unittest2
 +import unittest
  
@@ -12,8 +14,15 @@
 -class BaseTest(unittest2.TestCase):
 +class BaseTest(unittest.TestCase):
      pass
---- a/rollbar/test/test_lib.py
-+++ b/rollbar/test/test_lib.py
+ 
+ 
+ def discover():
+-    return unittest2.defaultTestLoader.discover(__name__)
++    return unittest.defaultTestLoader.discover(__name__)
+Index: pyrollbar-0.16.2/rollbar/test/test_lib.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/test_lib.py
++++ pyrollbar-0.16.2/rollbar/test/test_lib.py
 @@ -2,6 +2,8 @@ from rollbar.lib import dict_merge
  
  from rollbar.test import BaseTest
@@ -29,17 +38,19 @@
          self.assertIn('y', result['a'])
 -        self.assertRegex(result['a']['y'], r'Uncopyable obj')
 +        six.assertRegex(self, result['a']['y'], r'Uncopyable obj')
---- a/rollbar/test/test_rollbar.py
-+++ b/rollbar/test/test_rollbar.py
-@@ -17,6 +17,7 @@ try:
- except ImportError:
-     from io import StringIO
+Index: pyrollbar-0.16.2/rollbar/test/test_rollbar.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/test_rollbar.py
++++ pyrollbar-0.16.2/rollbar/test/test_rollbar.py
+@@ -17,6 +17,7 @@ except ImportError:
+     import mock
+ 
  import unittest
 +import six
  
  import rollbar
  from rollbar.lib import python_major_version, string_types
-@@ -686,7 +687,7 @@ class RollbarTest(BaseTest):
+@@ -1163,7 +1164,7 @@ class RollbarTest(BaseTest):
          varargs = payload['data']['body']['trace']['frames'][-1]['varargspec']
  
          self.assertEqual(1, len(payload['data']['body']['trace']['frames'][-1]['locals'][varargs]))
@@ -48,7 +59,7 @@
  
      @mock.patch('rollbar.send_payload')
      def test_args_lambda_with_star_args_and_args(self, send_payload):
-@@ -713,8 +714,8 @@ class RollbarTest(BaseTest):
+@@ -1190,8 +1191,8 @@ class RollbarTest(BaseTest):
          self.assertEqual('arg1-value', payload['data']['body']['trace']['frames'][-1]['locals']['arg1'])
  
          self.assertEqual(2, len(payload['data']['body']['trace']['frames'][-1]['locals'][varargs]))
@@ -59,16 +70,7 @@
  
      @mock.patch('rollbar.send_payload')
      def test_args_lambda_with_kwargs(self, send_payload):
-@@ -877,7 +878,7 @@ class RollbarTest(BaseTest):
- 
-         self.assertEqual(2, len(payload['data']['body']['trace']['frames'][-1]['argspec']))
-         self.assertEqual('password', payload['data']['body']['trace']['frames'][-1]['argspec'][0])
--        self.assertRegex(payload['data']['body']['trace']['frames'][-1]['locals']['password'], r'\*+')
-+        six.assertRegex(self, payload['data']['body']['trace']['frames'][-1]['locals']['password'], r'\*+')
-         self.assertEqual('clear', payload['data']['body']['trace']['frames'][-1]['argspec'][1])
-         self.assertEqual('text', payload['data']['body']['trace']['frames'][-1]['locals']['clear'])
- 
-@@ -931,7 +932,7 @@ class RollbarTest(BaseTest):
+@@ -1411,7 +1412,7 @@ class RollbarTest(BaseTest):
  
          self.assertEqual(2, len(payload['data']['body']['trace']['frames'][-1]['locals'][keywords]))
          self.assertIn('password', payload['data']['body']['trace']['frames'][-1]['locals'][keywords])
@@ -77,7 +79,7 @@
          self.assertIn('clear', payload['data']['body']['trace']['frames'][-1]['locals'][keywords])
          self.assertEqual('text', payload['data']['body']['trace']['frames'][-1]['locals'][keywords]['clear'])
  
-@@ -962,8 +963,8 @@ class RollbarTest(BaseTest):
+@@ -1442,8 +1443,8 @@ class RollbarTest(BaseTest):
  
          payload = send_payload.call_args[0][0]
  
@@ -88,7 +90,7 @@
          self.assertIn('_invalid', payload['data']['body']['trace']['frames'][-1]['locals'])
  
          binary_type_name = 'str' if python_major_version() < 3 else 'bytes'
-@@ -1280,19 +1281,19 @@ class RollbarTest(BaseTest):
+@@ -1760,19 +1761,19 @@ class RollbarTest(BaseTest):
          self.assertEqual('I am from NSA', unscrubbed['headers']['Authorization'])
  
          scrubbed = rollbar._transform(unscrubbed)
@@ -114,8 +116,10 @@
  
      def test_filter_ip_no_user_ip(self):
          request_data = {'something': 'but no ip'}
---- a/rollbar/test/test_scruburl_transform.py
-+++ b/rollbar/test/test_scruburl_transform.py
+Index: pyrollbar-0.16.2/rollbar/test/test_scruburl_transform.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/test_scruburl_transform.py
++++ pyrollbar-0.16.2/rollbar/test/test_scruburl_transform.py
 @@ -1,4 +1,5 @@
  import copy
 +import six
@@ -130,8 +134,10 @@
 -        self.assertNotRegex(result['link'][0]['url'], r'^-+$')
 +        six.assertNotRegex(self, result['url'][0]['link'], r'^-+$')
 +        six.assertNotRegex(self, result['link'][0]['url'], r'^-+$')
---- a/rollbar/test/test_serializable_transform.py
-+++ b/rollbar/test/test_serializable_transform.py
+Index: pyrollbar-0.16.2/rollbar/test/test_serializable_transform.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/test_serializable_transform.py
++++ pyrollbar-0.16.2/rollbar/test/test_serializable_transform.py
 @@ -10,6 +10,8 @@ except ImportError:
      # Python 2.7
      from collections import Mapping
@@ -152,7 +158,7 @@
          class CustomRepr(object):
 @@ -248,7 +250,7 @@ class SerializableTransformTest(BaseTest
  
-         serializable = SerializableTransform(whitelist_types=[CustomRepr])
+         serializable = SerializableTransform(safelist_types=[CustomRepr])
          result = transforms.transform(start, serializable)
 -        self.assertRegex(result['custom'], "<class '.*CustomRepr'>")
 +        six.assertRegex(self, result['custom'], "<class '.*CustomRepr'>")
@@ -161,7 +167,7 @@
          class CustomRepr(object):
 @@ -268,7 +270,7 @@ class SerializableTransformTest(BaseTest
          start = {'hello': 'world', 'custom': CustomRepr()}
-         serializable = SerializableTransform(whitelist_types=[CustomRepr])
+         serializable = SerializableTransform(safelist_types=[CustomRepr])
          result = transforms.transform(start, serializable)
 -        self.assertRegex(result['custom'], "<AssertionError.*CustomRepr.*>")
 +        six.assertRegex(self, result['custom'], "<AssertionError.*CustomRepr.*>")
@@ -170,31 +176,35 @@
  
 @@ -284,4 +286,4 @@ class SerializableTransformTest(BaseTest
          start = {'hello': 'world', 'custom': CustomRepr()}
-         serializable = SerializableTransform(whitelist_types=[CustomRepr])
+         serializable = SerializableTransform(safelist_types=[CustomRepr])
          result = transforms.transform(start, serializable)
 -        self.assertRegex(result['custom'], "<UnStringableException.*Exception.*str.*>")
 +        six.assertRegex(self, result['custom'], "<UnStringableException.*Exception.*str.*>")
---- a/setup.py
-+++ b/setup.py
-@@ -20,7 +20,6 @@ with open(INIT_PATH) as fd:
+Index: pyrollbar-0.16.2/setup.py
+===================================================================
+--- pyrollbar-0.16.2.orig/setup.py
++++ pyrollbar-0.16.2/setup.py
+@@ -19,7 +19,6 @@ with open(INIT_PATH) as fd:
  tests_require = [
      'webob',
      'blinker',
--    'unittest2'
- ]
- 
- version = sys.version_info
-@@ -78,7 +77,7 @@ setup(
-         ],
-     install_requires=[
-         'requests>=0.12.1',
+-    'unittest2',
+     'mock<=3.0.5; python_version < "3.3"',
+     'enum34; python_version < "3.4"',
+     'httpx; python_version >= "3.6"',
+@@ -90,7 +89,7 @@ setup(
+         'requests<1.2,>=0.12.1; python_version == "3.2"',
+         'requests<1.2,>=0.12.1; python_version == "3.1"',
+         'requests<1.2,>=0.12.1; python_version == "3.0"',
 -        'six>=1.9.0'
 +        'six>=1.14.0'
      ],
      tests_require=tests_require,
-     )
---- a/shell.nix
-+++ b/shell.nix
+ )
+Index: pyrollbar-0.16.2/shell.nix
+===================================================================
+--- pyrollbar-0.16.2.orig/shell.nix
++++ pyrollbar-0.16.2/shell.nix
 @@ -20,7 +20,7 @@ python = let
    };
  in python36.override { inherit packageOverrides; };
@@ -203,4 +213,388 @@
 +pyenv = python.withPackages(ps: with ps; [ pyrollbar twine mock pyramid ]);
  
  in
+ 
+Index: pyrollbar-0.16.2/rollbar/test/starlette_tests/__init__.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/starlette_tests/__init__.py
++++ pyrollbar-0.16.2/rollbar/test/starlette_tests/__init__.py
+@@ -1,9 +1,9 @@
+ import sys
+-import unittest2
++import unittest
+ 
+ 
+ def _load_tests(loader, tests, pattern):
+-    return unittest2.TestSuite()
++    return unittest.TestSuite()
+ 
+ 
+ if sys.version_info < (3, 6):
+Index: pyrollbar-0.16.2/rollbar/test/starlette_tests/test_middleware.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/starlette_tests/test_middleware.py
++++ pyrollbar-0.16.2/rollbar/test/starlette_tests/test_middleware.py
+@@ -14,7 +14,7 @@ try:
+ except ImportError:
+     STARLETTE_INSTALLED = False
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.lib._async import AsyncMock
+@@ -23,7 +23,7 @@ from rollbar.test import BaseTest
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     STARLETTE_INSTALLED and ALLOWED_PYTHON_VERSION, 'Starlette requires Python3.6+'
+ )
+ class ReporterMiddlewareTest(BaseTest):
+@@ -232,7 +232,7 @@ class ReporterMiddlewareTest(BaseTest):
+             'Failed to report asynchronously. Trying to report synchronously.'
+         )
+ 
+-    @unittest2.skipUnless(
++    @unittest.skipUnless(
+         sys.version_info >= (3, 6), 'Global request access requires Python 3.6+'
+     )
+     @mock.patch('rollbar.contrib.starlette.middleware.store_current_request')
+@@ -276,7 +276,7 @@ class ReporterMiddlewareTest(BaseTest):
+         scope = store_current_request.call_args[0][0]
+         self.assertDictContainsSubset(expected_scope, scope)
+ 
+-    @unittest2.skipUnless(
++    @unittest.skipUnless(
+         sys.version_info >= (3, 6), 'Global request access is supported in Python 3.6+'
+     )
+     def test_should_return_current_request(self):
+Index: pyrollbar-0.16.2/rollbar/test/starlette_tests/test_requests.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/starlette_tests/test_requests.py
++++ pyrollbar-0.16.2/rollbar/test/starlette_tests/test_requests.py
+@@ -7,14 +7,14 @@ try:
+ except ImportError:
+     STARLETTE_INSTALLED = False
+ 
+-import unittest2
++import unittest
+ 
+ from rollbar.test import BaseTest
+ 
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     STARLETTE_INSTALLED and ALLOWED_PYTHON_VERSION,
+     'Global request access requires Python3.6+',
+ )
+Index: pyrollbar-0.16.2/rollbar/test/starlette_tests/test_logger.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/starlette_tests/test_logger.py
++++ pyrollbar-0.16.2/rollbar/test/starlette_tests/test_logger.py
+@@ -13,7 +13,7 @@ try:
+ except ImportError:
+     STARLETTE_INSTALLED = False
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.test import BaseTest
+@@ -21,7 +21,7 @@ from rollbar.test import BaseTest
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     STARLETTE_INSTALLED and ALLOWED_PYTHON_VERSION,
+     'Starlette LoggerMiddleware requires Python3.6+',
+ )
+Index: pyrollbar-0.16.2/rollbar/test/fastapi_tests/__init__.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/fastapi_tests/__init__.py
++++ pyrollbar-0.16.2/rollbar/test/fastapi_tests/__init__.py
+@@ -1,9 +1,9 @@
+ import sys
+-import unittest2
++import unittest
+ 
+ 
+ def _load_tests(loader, tests, pattern):
+-    return unittest2.TestSuite()
++    return unittest.TestSuite()
+ 
+ 
+ if sys.version_info < (3, 6):
+Index: pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_logger.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/fastapi_tests/test_logger.py
++++ pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_logger.py
+@@ -13,7 +13,7 @@ try:
+ except ImportError:
+     FASTAPI_INSTALLED = False
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.test import BaseTest
+@@ -21,7 +21,7 @@ from rollbar.test import BaseTest
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     FASTAPI_INSTALLED and ALLOWED_PYTHON_VERSION,
+     'FastAPI LoggerMiddleware requires Python3.6+',
+ )
+Index: pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_middleware.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/fastapi_tests/test_middleware.py
++++ pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_middleware.py
+@@ -14,7 +14,7 @@ try:
+ except ImportError:
+     FASTAPI_INSTALLED = False
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.lib._async import AsyncMock
+@@ -23,7 +23,7 @@ from rollbar.test import BaseTest
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     FASTAPI_INSTALLED and ALLOWED_PYTHON_VERSION, 'FastAPI requires Python3.6+'
+ )
+ class ReporterMiddlewareTest(BaseTest):
+@@ -258,7 +258,7 @@ class ReporterMiddlewareTest(BaseTest):
+             'Failed to report asynchronously. Trying to report synchronously.'
+         )
+ 
+-    @unittest2.skipUnless(
++    @unittest.skipUnless(
+         sys.version_info >= (3, 6), 'Global request access requires Python 3.6+'
+     )
+     @mock.patch('rollbar.contrib.starlette.middleware.store_current_request')
+@@ -305,7 +305,7 @@ class ReporterMiddlewareTest(BaseTest):
+         scope = store_current_request.call_args[0][0]
+         self.assertDictContainsSubset(expected_scope, scope)
+ 
+-    @unittest2.skipUnless(
++    @unittest.skipUnless(
+         sys.version_info >= (3, 6), 'Global request access is supported in Python 3.6+'
+     )
+     def test_should_return_current_request(self):
+Index: pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_routing.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/fastapi_tests/test_routing.py
++++ pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_routing.py
+@@ -17,7 +17,7 @@ except ImportError:
+     FASTAPI_INSTALLED = False
+     ALLOWED_FASTAPI_VERSION = False
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.lib._async import AsyncMock
+@@ -27,7 +27,7 @@ from rollbar.test import BaseTest
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     FASTAPI_INSTALLED and ALLOWED_PYTHON_VERSION, 'FastAPI requires Python3.6+'
+ )
+ class LoggingRouteUnsupportedFastAPIVersionTest(BaseTest):
+@@ -64,10 +64,10 @@ class LoggingRouteUnsupportedFastAPIVers
+         fastapi.__version__ = fastapi_version
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     FASTAPI_INSTALLED and ALLOWED_PYTHON_VERSION, 'FastAPI requires Python3.6+'
+ )
+-@unittest2.skipUnless(ALLOWED_FASTAPI_VERSION, 'FastAPI v0.41.0+ is required')
++@unittest.skipUnless(ALLOWED_FASTAPI_VERSION, 'FastAPI v0.41.0+ is required')
+ class LoggingRouteTest(BaseTest):
+     default_settings = copy.deepcopy(rollbar.SETTINGS)
+ 
+@@ -686,7 +686,7 @@ class LoggingRouteTest(BaseTest):
+                     ' This can cause in duplicate occurrences.'
+                 )
+ 
+-    @unittest2.skipUnless(
++    @unittest.skipUnless(
+         sys.version_info >= (3, 6), 'Global request access requires Python 3.6+'
+     )
+     @mock.patch('rollbar.contrib.fastapi.routing.store_current_request')
+@@ -733,7 +733,7 @@ class LoggingRouteTest(BaseTest):
+         scope = store_current_request.call_args[0][0]
+         self.assertDictContainsSubset(expected_scope, scope)
+ 
+-    @unittest2.skipUnless(
++    @unittest.skipUnless(
+         sys.version_info >= (3, 6), 'Global request access is supported in Python 3.6+'
+     )
+     def test_should_return_current_request(self):
+Index: pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_utils.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/fastapi_tests/test_utils.py
++++ pyrollbar-0.16.2/rollbar/test/fastapi_tests/test_utils.py
+@@ -7,14 +7,14 @@ try:
+ except ImportError:
+     FASTAPI_INSTALLED = False
+ 
+-import unittest2
++import unittest
+ 
+ from rollbar.test import BaseTest
+ 
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     FASTAPI_INSTALLED and ALLOWED_PYTHON_VERSION, 'FastAPI requires Python3.6+'
+ )
+ class UtilsMiddlewareTest(BaseTest):
+@@ -66,7 +66,7 @@ class UtilsMiddlewareTest(BaseTest):
+         self.assertListEqual(middlewares, [])
+ 
+ 
+-@unittest2.skipUnless(
++@unittest.skipUnless(
+     FASTAPI_INSTALLED and ALLOWED_PYTHON_VERSION, 'FastAPI requires Python3.6+'
+ )
+ class UtilsBareRoutingTest(BaseTest):
+Index: pyrollbar-0.16.2/rollbar/test/asgi_tests/__init__.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/asgi_tests/__init__.py
++++ pyrollbar-0.16.2/rollbar/test/asgi_tests/__init__.py
+@@ -1,9 +1,9 @@
+ import sys
+-import unittest2
++import unittest
+ 
+ 
+ def _load_tests(loader, tests, pattern):
+-    return unittest2.TestSuite()
++    return unittest.TestSuite()
+ 
+ 
+ if sys.version_info < (3, 5):
+Index: pyrollbar-0.16.2/rollbar/test/asgi_tests/test_middleware.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/asgi_tests/test_middleware.py
++++ pyrollbar-0.16.2/rollbar/test/asgi_tests/test_middleware.py
+@@ -7,7 +7,7 @@ try:
+ except ImportError:
+     import mock
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.lib._async import AsyncMock
+@@ -17,7 +17,7 @@ ALLOWED_PYTHON_VERSION = sys.version_inf
+ ASYNC_REPORT_ENABLED = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(ALLOWED_PYTHON_VERSION, 'ASGI implementation requires Python3.5+')
++@unittest.skipUnless(ALLOWED_PYTHON_VERSION, 'ASGI implementation requires Python3.5+')
+ class ReporterMiddlewareTest(BaseTest):
+     default_settings = copy.deepcopy(rollbar.SETTINGS)
+ 
+@@ -62,7 +62,7 @@ class ReporterMiddlewareTest(BaseTest):
+ 
+         self.assertIn('asgi', payload['data']['framework'])
+ 
+-    @unittest2.skipUnless(ASYNC_REPORT_ENABLED, 'Requires Python 3.6+')
++    @unittest.skipUnless(ASYNC_REPORT_ENABLED, 'Requires Python 3.6+')
+     @mock.patch('rollbar.lib._async.report_exc_info', new_callable=AsyncMock)
+     @mock.patch('rollbar.report_exc_info')
+     def test_should_use_async_report_exc_info_if_default_handler(
+@@ -81,7 +81,7 @@ class ReporterMiddlewareTest(BaseTest):
+         self.assertTrue(async_report_exc_info.called)
+         self.assertFalse(sync_report_exc_info.called)
+ 
+-    @unittest2.skipUnless(ASYNC_REPORT_ENABLED, 'Requires Python 3.6+')
++    @unittest.skipUnless(ASYNC_REPORT_ENABLED, 'Requires Python 3.6+')
+     @mock.patch('rollbar.lib._async.report_exc_info', new_callable=AsyncMock)
+     @mock.patch('rollbar.report_exc_info')
+     def test_should_use_async_report_exc_info_if_any_async_handler(
+@@ -100,7 +100,7 @@ class ReporterMiddlewareTest(BaseTest):
+         self.assertTrue(async_report_exc_info.called)
+         self.assertFalse(sync_report_exc_info.called)
+ 
+-    @unittest2.skipUnless(ASYNC_REPORT_ENABLED, 'Requires Python 3.6+')
++    @unittest.skipUnless(ASYNC_REPORT_ENABLED, 'Requires Python 3.6+')
+     @mock.patch('logging.Logger.warning')
+     @mock.patch('rollbar.lib._async.report_exc_info', new_callable=AsyncMock)
+     @mock.patch('rollbar.report_exc_info')
+Index: pyrollbar-0.16.2/rollbar/test/asgi_tests/test_spec.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/asgi_tests/test_spec.py
++++ pyrollbar-0.16.2/rollbar/test/asgi_tests/test_spec.py
+@@ -1,14 +1,14 @@
+ import inspect
+ import sys
+ 
+-import unittest2
++import unittest
+ 
+ from rollbar.test import BaseTest
+ 
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 5)
+ 
+ 
+-@unittest2.skipUnless(ALLOWED_PYTHON_VERSION, 'ASGI implementation requires Python3.5+')
++@unittest.skipUnless(ALLOWED_PYTHON_VERSION, 'ASGI implementation requires Python3.5+')
+ class ASGISpecTest(BaseTest):
+     def test_asgi_v3_middleware_is_single_callable_coroutine(self):
+         from rollbar.contrib.asgi import ReporterMiddleware
+Index: pyrollbar-0.16.2/rollbar/test/async_tests/__init__.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/async_tests/__init__.py
++++ pyrollbar-0.16.2/rollbar/test/async_tests/__init__.py
+@@ -1,9 +1,9 @@
+ import sys
+-import unittest2
++import unittest
+ 
+ 
+ def _load_tests(loader, tests, pattern):
+-    return unittest2.TestSuite()
++    return unittest.TestSuite()
+ 
+ 
+ if sys.version_info < (3, 6):
+Index: pyrollbar-0.16.2/rollbar/test/async_tests/test_async.py
+===================================================================
+--- pyrollbar-0.16.2.orig/rollbar/test/async_tests/test_async.py
++++ pyrollbar-0.16.2/rollbar/test/async_tests/test_async.py
+@@ -6,7 +6,7 @@ try:
+ except ImportError:
+     import mock
+ 
+-import unittest2
++import unittest
+ 
+ import rollbar
+ from rollbar.lib._async import AsyncMock
+@@ -15,7 +15,7 @@ from rollbar.test import BaseTest
+ ALLOWED_PYTHON_VERSION = sys.version_info >= (3, 6)
+ 
+ 
+-@unittest2.skipUnless(ALLOWED_PYTHON_VERSION, 'Async support requires Python3.6+')
++@unittest.skipUnless(ALLOWED_PYTHON_VERSION, 'Async support requires Python3.6+')
+ class AsyncLibTest(BaseTest):
+     default_settings = copy.deepcopy(rollbar.SETTINGS)
  
