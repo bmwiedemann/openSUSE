@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:40:26 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Restore the repo unexpanded URL to get it properly saved in
+  the /etc/zypp/repos.d file (bsc#972046, bsc#1194851).
+- 4.4.7
+
+-------------------------------------------------------------------
+Thu Jan 20 16:11:51 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Enable RSpec verifying doubles in unit tests to ensure that
+  the mocked methods really exist (bsc#1194784)
+- 4.4.6
+
+-------------------------------------------------------------------
 Thu Dec  2 17:06:27 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Drop support for subscription-tools, that package is not present
