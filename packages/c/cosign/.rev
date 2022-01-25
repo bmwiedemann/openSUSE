@@ -7,4 +7,41 @@
     <comment>add to factory</comment>
     <requestid>944678</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f4aa148e40e68e2580b6e1da9cc1183</srcmd5>
+    <version>1.5.0</version>
+    <time>1643128569</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.5.0
+  ## Highlights
+  * enable sbom generation when releasing (https://github.com/sigstore/cosign/pull/1261)
+  * feat: log error to stderr (https://github.com/sigstore/cosign/pull/1260)
+  * feat: support attach attestation (https://github.com/sigstore/cosign/pull/1253)
+  * feat: resolve --cert from URL (https://github.com/sigstore/cosign/pull/1245)
+  * feat: generate/upload sbom for cosign projects (https://github.com/sigstore/cosign/pull/1237)
+  * feat: vuln attest support (https://github.com/sigstore/cosign/pull/1168)
+  * feat: add ambient credential detection with spiffe/spire (https://github.com/sigstore/cosign/pull/1220)
+  * feat: generate/upload sbom for cosign projects (https://github.com/sigstore/cosign/pull/1236)
+  * feat: implement cosign download attestation (https://github.com/sigstore/cosign/pull/1216)
+  ## Enhancements
+  * Don't use k8schain, statically link cloud cred helpers in cosign (https://github.com/sigstore/cosign/pull/1279)
+  * Export function to verify individual signature (https://github.com/sigstore/cosign/pull/1334)
+  * Add suffix with digest to signature file output for recursive signing (https://github.com/sigstore/cosign/pull/1267)
+  * Take OIDC client secret into account (https://github.com/sigstore/cosign/pull/1310)
+  * Add --bundle flag to sign-blob and verify-blob (https://github.com/sigstore/cosign/pull/1306)
+  * Add flag to verify OIDC issuer in certificate (https://github.com/sigstore/cosign/pull/1308)
+  * add OSSF scorecard action (https://github.com/sigstore/cosign/pull/1318)
+  * Add TUF timestamp to attestation bundle (https://github.com/sigstore/cosign/pull/1316)
+  * Provide certificate flags to all verify commands (https://github.com/sigstore/cosign/pull/1305)
+  * Bundle TUF timestamp with signature on signing (https://github.com/sigstore/cosign/pull/1294)
+  * Add support for importing PKCShttps://github.com/sigstore/cosign/pull/8 private keys, and add validation (https://github.com/sigstore/cosign/pull/1300)
+  * add error message (https://github.com/sigstore/cosign/pull/1296)
+  * Move bundle out of `oci` and into `bundle` package (https://github.com/sigstore/cosign/pull/1295)
+  * Reorganize verify-blob code and add a unit test (https://github.com/sigstore/cosign/pull/1286)
+  * One-to-one mapping of invocation to scan result (https://github.com/sigstore/cosign/pull/1268)
+  * refactor common utilities (https://github.com/sigstore/cosign/pull/1266)
+  * Importing RSA and EC keypairs (https://github.com/sigstore/cosign/pull/1050)
+  * Refactor the tuf client code. (https://github.com/sigstore/cosign/pull/1252) (forwarded request 949014 from msmeissn)</comment>
+    <requestid>949015</requestid>
+  </revision>
 </revisionlist>

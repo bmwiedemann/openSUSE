@@ -1,5 +1,7 @@
 #
-# Copyright (c) 2021 SUSE LLC
+# spec file for package cosign
+#
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           cosign
-Version:        1.4.1
-%define revision 934567a4c606cf59e6ab17af889b4db3ee0a3f0b
+Version:        1.5.0
 Release:        0
+%define revision 757252063bf4724f11a52336ef13a724059a39b6
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
-Url:            https://github.com/sigstore/cosign
+URL:            https://github.com/sigstore/cosign
 Source:         https://github.com/sigstore/cosign/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.bz2
-BuildRequires:  golang(API)
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API)
 %{go_nostrip}
 
 %description
@@ -41,8 +44,8 @@ Cosign supports:
 %autosetup -p1 -a1
 
 %build
-DATE_FMT="+%Y-%m-%dT%H:%M:%SZ"
-BUILD_DATE=$(shell date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
 CLI_PKG=github.com/sigstore/cosign/pkg/version
 CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{revision} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
