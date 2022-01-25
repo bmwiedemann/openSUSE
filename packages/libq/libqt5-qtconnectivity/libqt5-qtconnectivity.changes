@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:12:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde5:
+  * Always call setOpenMode before setSocketState
+  * Add server role to BlueZ service registration
+  * Fix error handling in BlueZ connectToServiceHelper
+  * Correct error handling in QLowEnergyControllerPrivateBluezDBUS
+
+-------------------------------------------------------------------
 Tue Jun 22 19:38:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
