@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.4.11
+Version:        4.4.13
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -38,6 +38,8 @@ BuildRequires:  suseconnect-ruby-bindings > 0.0.4
 # ProductSpec API
 BuildRequires:  yast2-packager >= 4.4.13
 BuildRequires:  yast2-update >= 3.1.36
+# yast/rspec/helpers.rb
+BuildRequires:  yast2-ruby-bindings >= 4.4.7
 
 # ProductSpec API
 Requires:       yast2 >= 4.4.21

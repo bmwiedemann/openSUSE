@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 24 15:29:29 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix detection of base products coming from SCC (bsc#1194989).
+- 4.4.13
+
+-------------------------------------------------------------------
+Fri Jan 21 06:29:22 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.12
+
+-------------------------------------------------------------------
 Mon Jan 10 09:51:02 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Removed rubygem-ffi dependency, suse-connect-ng now uses
