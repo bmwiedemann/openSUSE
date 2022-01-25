@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 25 11:17:59 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 3.2.2.
+  * l10n: Update translations
+  * Add missing type cast check (#507)
+- Updates to version 3.2.1.
+  * Update translations
+- Updates to version 3.2.0.
+  * docs: Update reference and small fixes (#470)
+  * Delete xed-prefs-manager-private.h (not used) (#471)
+  * Packaging: remove zenity dependency (#472)
+  * Add Ctrl+Tab and Ctrl+Shift+Tab keybindings to notebook
+  * l10n: Update POT
+  * Add an option to hide the menubar
+  * meson.build: keep temporary files between builds
+- Updates to version 3.0.2.
+  * l10n: Update translations
+- Updates to version 3.0.1.
+  * l10n: Update translations 
+
+-------------------------------------------------------------------
 Thu Jun  3 20:51:33 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 3.0.0.
