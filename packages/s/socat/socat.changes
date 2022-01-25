@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 22 20:54:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4.3:
+  * fixes the TCP_INFO issue that broke building on non-Linux platforms. 
+  * building on AIX works again. 
+  * A few more corrections and improvements have been added 
+
+-------------------------------------------------------------------
 Mon Nov  1 18:46:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.4.2:

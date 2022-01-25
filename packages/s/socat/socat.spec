@@ -1,7 +1,7 @@
 #
 # spec file for package socat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           socat
-Version:        1.7.4.2
+Version:        1.7.4.3
 Release:        0
 Summary:        Multipurpose relay for bidirectional data transfer
 License:        MIT AND SUSE-GPL-2.0-with-openssl-exception

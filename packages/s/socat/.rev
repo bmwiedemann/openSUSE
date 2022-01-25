@@ -345,4 +345,15 @@ See README (forwarded request 157221 from babelworx)</comment>
   * Further bugfixes, see the CHANGES file (forwarded request 928587 from mnhauke)</comment>
     <requestid>928678</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8c3e8c1972e8336fad6bf66b5dfb53d4</srcmd5>
+    <version>1.7.4.3</version>
+    <time>1643128545</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.4.3:
+  * fixes the TCP_INFO issue that broke building on non-Linux platforms. 
+  * building on AIX works again. 
+  * A few more corrections and improvements have been added (forwarded request 948160 from dirkmueller)</comment>
+    <requestid>948225</requestid>
+  </revision>
 </revisionlist>
