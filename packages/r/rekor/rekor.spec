@@ -42,8 +42,8 @@ Rekor fulfils the signature transparency role of sigstore's software signing inf
 %autosetup -p1 -a1
 
 %build
-DATE_FMT="+%Y-%m-%dT%H:%M:%SZ"
-BUILD_DATE=$(shell date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 for app in %{apps} ; do
 CLI_PKG=github.com/sigstore/rekor/cmd/rekor-${app}/app
 CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{revision} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
