@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 24 21:48:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.5:
+  * throw an error for unknown grep types
+  * make grep-type detection more robust
+  * Fix RegEx for grep version type
+  * getGrepType: fix typo
+  * don't print help message twice
+  * CI: use golang:1.17 container
+  * performance: user faster json lib
+  * log parsing errors
+  * --memory-profile
+  * bump dependencies
+  * add dependabot.yml
+  * Fix indentation
+  * Fix fzf example
+  * Modify fzf example; parse error due to typo
+  * write to stdout if it's not a tty
+  * bump golangci-lint v1.36.0
+  * Review feedback
+  * Add fzf wrapper
+  * use switch table for dispatcher 
+
+-------------------------------------------------------------------
 Thu Jan 21 08:02:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.5.1:

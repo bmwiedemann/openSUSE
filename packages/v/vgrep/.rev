@@ -75,4 +75,31 @@
   * Smaller bug fixes</comment>
     <requestid>865246</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14e8acd2e8ff50f105f5562ac56664df</srcmd5>
+    <version>2.5.5</version>
+    <time>1643128558</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.5:
+  * throw an error for unknown grep types
+  * make grep-type detection more robust
+  * Fix RegEx for grep version type
+  * getGrepType: fix typo
+  * don't print help message twice
+  * CI: use golang:1.17 container
+  * performance: user faster json lib
+  * log parsing errors
+  * --memory-profile
+  * bump dependencies
+  * add dependabot.yml
+  * Fix indentation
+  * Fix fzf example
+  * Modify fzf example; parse error due to typo
+  * write to stdout if it's not a tty
+  * bump golangci-lint v1.36.0
+  * Review feedback
+  * Add fzf wrapper
+  * use switch table for dispatcher</comment>
+    <requestid>948491</requestid>
+  </revision>
 </revisionlist>
