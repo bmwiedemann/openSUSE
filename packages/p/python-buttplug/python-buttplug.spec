@@ -1,7 +1,7 @@
 #
 # spec file for package python-buttplug
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module websockets >= 7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  ((python3-dataclasses and python3-base < 3.7) or (python36-dataclasses and python36-base))
 Requires:       python-websockets
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
