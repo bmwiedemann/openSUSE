@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 14 12:03:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch readline81-002 and its signature
+  * There are some characters (e.g., cyrillic) that can't be displayed using
+    certain single-byte encodings (e.g., cp1251) because the negative signed
+    int is interpreted as EOF and not displayed.
+
+-------------------------------------------------------------------
 Wed May  5 15:02:23 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
- - Add official patch readline81-001 and its signature
+- Add official patch readline81-001 and its signature
   * The code to check readline versions in an inputrc file had the sense of the
     comparisons reversed.
 
