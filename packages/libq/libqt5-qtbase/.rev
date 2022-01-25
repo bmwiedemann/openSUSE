@@ -2383,4 +2383,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     (bsc#1176130)</comment>
     <requestid>946070</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>8e2194ccc8a41902c8e618034e0a56a9</srcmd5>
+    <version>5.15.2+kde294</version>
+    <time>1643128537</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948149</requestid>
+  </revision>
 </revisionlist>

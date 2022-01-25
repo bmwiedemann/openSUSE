@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:04:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde294:
+  * QTzTimeZonePrivate::init(): fix handling of empty ID
+  * Restore support for reading /etc/timezone for system zone name
+  * QPathEdge: Fix array initialization
+  * QTzTimeZonePrivate: fix UB (data race on m_icu)
+  * Don't access QObject::objectName during QThread start
+  * Restore C++11 compatibility after e8b9f4c28d3ab5e960dc54f2dc0c4b749b0b50e0
+  * QVarLengthArray: fix size update on failed append()
+  * Call statx() with AT_NO_AUTOMOUNT
+  * QThread: Remove superfluous initialization of threadId on Unix
+  * QThread: Reset the system thread ID when thread exits on Unix
+  * Add missing macOS header file that was indirectly included before
+  * QXcb: don't dereference pointer before checking
+  * xcb: avoid to use invalid pointers
+  * QVarLengthArray: fix insert() type/alias mismatch between decl and impl
+  * Use qint64 to replace int while qt_transform_image_rasterize
+  * QVarLengthArray: assert that the range passed to erase() is valid
+  * Fix pattern type matching
+  * QThread: fix UB (invalid enum value) on Private::Priority
+  * Use block char format to render list item bullets and numbers
+  * QDateTime: Don't require c++17
+  * QVariantAnimation: fix UB (FP 0/0) in interpolated() arg calculation
+  * QDateTime: fix UB (signed overflow) in addDays()
+  * QString: fix UB (pointer arithmetic on nullptr) in qLastIndexOf
+  * tst_QIODevice: fix UB (precondition violation) in SequentialReadBuffer::readData()
+  * QVarLengthArray: fix UB (precondition violation) in range-erase()
+  * Fix segmentation fault in QObject::dumpObjectInfo
+
+-------------------------------------------------------------------
 Fri Dec 24 11:45:16 UTC 2021 - fabian@ritter-vogt.de
 
 - Update to version 5.15.2+kde268:
