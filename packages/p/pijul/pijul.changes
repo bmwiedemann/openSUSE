@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 25 06:13:01 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0~beta:
+  * Add --force to "add" to include ignored files.
+  * Fix conflict identifiers.
+  * Remove the --tag option from "push/pull".
+  * Fix "log" filters.
+
+- Changes from version 1.0.0~alpha.57:
+  * Add support for tags.
+  * Fix path crashes related to the non-null roots.
+  * Prioritise moving a file over undeletion.
+  * Show the correct paths in recursive file deletions.
+  * Add --force to "reset/switch" to ignore name conflicts.
+  * Avoid printing multiple names conflicts more than once.
+  * Better error message when pushing to a non-existent local
+    channel.
+  * Fix log --filters, along with performance improvements.
+
+-------------------------------------------------------------------
 Tue Dec 21 06:41:03 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update to upstream version 1.0.0-alpha.56:

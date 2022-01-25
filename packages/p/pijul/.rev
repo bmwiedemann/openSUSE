@@ -96,4 +96,27 @@
   * Fix a deprecation warning in ed25519-dalek.</comment>
     <requestid>941815</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f4cde6b4335669a757a85b93f70bc937</srcmd5>
+    <version>1.0.0~beta</version>
+    <time>1643128570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0~beta:
+  * Add --force to &quot;add&quot; to include ignored files.
+  * Fix conflict identifiers.
+  * Remove the --tag option from &quot;push/pull&quot;.
+  * Fix &quot;log&quot; filters.
+- Changes from version 1.0.0~alpha.57:
+  * Add support for tags.
+  * Fix path crashes related to the non-null roots.
+  * Prioritise moving a file over undeletion.
+  * Show the correct paths in recursive file deletions.
+  * Add --force to &quot;reset/switch&quot; to ignore name conflicts.
+  * Avoid printing multiple names conflicts more than once.
+  * Better error message when pushing to a non-existent local
+    channel.
+  * Fix log --filters, along with performance improvements.
+</comment>
+    <requestid>948976</requestid>
+  </revision>
 </revisionlist>

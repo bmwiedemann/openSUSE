@@ -1,7 +1,7 @@
 #
 # spec file for package pijul
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           pijul
-Version:        1.0.0~alpha.56
+Version:        1.0.0~beta
 Release:        0
 Summary:        Distributed version control system based on a theory of patches
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://pijul.org/
-# Fetched from https://crates.io/api/v1/crates/pijul/1.0.0-alpha.56/download#/pijul-1.0.0-alpha.56.tar.gz
+# Fetched from https://crates.io/api/v1/crates/pijul/1.0.0-beta/download#/pijul-1.0.0-beta.tar.gz
 # and renamed to get rid of the second dash.
-Source0:        pijul-1.0.0~alpha.56.tar.gz
+Source0:        pijul-1.0.0~beta.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo
 BuildRequires:  clang-devel
-BuildRequires:  libzstd-devel
+BuildRequires:  libzstd-devel-static
 BuildRequires:  pkgconfig
 BuildRequires:  rust
 BuildRequires:  rust-std
