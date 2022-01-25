@@ -8230,7 +8230,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -16457,14 +16456,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_3_4_2-gnu-hpc 
-  - mpich-ofi_3_4_2-gnu-hpc-devel 
-  - mpich-ofi_3_4_2-gnu-hpc-devel-static 
-  - mpich-ofi_3_4_2-gnu-hpc-macros-devel 
-  - mpich_3_4_2-gnu-hpc 
-  - mpich_3_4_2-gnu-hpc-devel 
-  - mpich_3_4_2-gnu-hpc-devel-static 
-  - mpich_3_4_2-gnu-hpc-macros-devel 
+  - mpich-ofi_3_4_3-gnu-hpc 
+  - mpich-ofi_3_4_3-gnu-hpc-devel 
+  - mpich-ofi_3_4_3-gnu-hpc-devel-static 
+  - mpich-ofi_3_4_3-gnu-hpc-macros-devel 
+  - mpich_3_4_3-gnu-hpc 
+  - mpich_3_4_3-gnu-hpc-devel 
+  - mpich_3_4_3-gnu-hpc-devel-static 
+  - mpich_3_4_3-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -18004,14 +18003,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -21426,37 +21422,20 @@ unsorted:
   - python3-libfwnt 
   - python3-libixion 
   - python3-libluksde 
-  - python3-libmodi 
   - python3-libmodulemd 
   - python3-libmount 
-  - python3-libmsiecf 
   - python3-libnvme 
-  - python3-libolecf 
   - python3-liborcus 
   - python3-libpamtest 
-  - python3-libphdi 
   - python3-libprelude 
   - python3-libpreludedb 
   - python3-libproxy 
-  - python3-libqcow 
-  - python3-libregf 
   - python3-librepo 
-  - python3-libscca 
   - python3-libsignon-glib 
-  - python3-libsigscan 
-  - python3-libsmdev 
-  - python3-libsmraw 
   - python3-libsoc 
   - python3-libstoragemgmt 
   - python3-libtorrent-rasterbar 
-  - python3-libvhdi 
-  - python3-libvmdk 
   - python3-libvoikko 
-  - python3-libvsapm 
-  - python3-libvsgpt 
-  - python3-libvshadow 
-  - python3-libvslvm 
-  - python3-libvsmbr 
   - python3-lilv 
   - python3-lldb: [x86_64] 
   - python3-lldb10: [x86_64] 
@@ -21610,6 +21589,7 @@ unsorted:
   - python3-zbar 
   - python310 
   - python310-32bit: [x86_64] 
+  - python310-APScheduler: [i586] 
   - python310-AnyQt 
   - python310-Arpeggio 
   - python310-Authlib 
@@ -21909,6 +21889,7 @@ unsorted:
   - python310-anyjson 
   - python310-anymarkup-core 
   - python310-apache-libcloud 
+  - python310-apfel 
   - python310-apipkg 
   - python310-apiron 
   - python310-apns2 
@@ -22547,11 +22528,13 @@ unsorted:
   - python310-diffimg 
   - python310-digitalocean 
   - python310-dill 
+  - python310-dirtyjson 
   - python310-discid 
   - python310-discogs-client 
   - python310-diskcache 
   - python310-dist 
   - python310-distlib 
+  - python310-distob 
   - python310-distorm3 
   - python310-distro 
   - python310-distroinfo 
@@ -22982,6 +22965,7 @@ unsorted:
   - python310-inifile 
   - python310-iniparse 
   - python310-injector 
+  - python310-installer 
   - python310-interrogate 
   - python310-intervals 
   - python310-intervaltree 
@@ -23146,6 +23130,7 @@ unsorted:
   - python310-ldaptor 
   - python310-ldas-tools-al-swig 
   - python310-leather 
+  - python310-leglight 
   - python310-lesscpy 
   - python310-leveldb 
   - python310-lexicon 
@@ -23174,14 +23159,31 @@ unsorted:
   - python310-liblarch 
   - python310-liblarch-gtk 
   - python310-liblnk 
+  - python310-libmodi 
+  - python310-libmsiecf 
   - python310-libmsym 
   - python310-libnacl 
+  - python310-libolecf 
   - python310-libpff 
   - python310-libpfm 
+  - python310-libphdi 
+  - python310-libqcow 
+  - python310-libregf 
   - python310-librosa 
   - python310-libsass 
+  - python310-libscca 
+  - python310-libsigscan 
+  - python310-libsmdev 
+  - python310-libsmraw 
   - python310-libusb1 
+  - python310-libvhdi 
   - python310-libvirt-python 
+  - python310-libvmdk 
+  - python310-libvsapm 
+  - python310-libvsgpt 
+  - python310-libvshadow 
+  - python310-libvslvm 
+  - python310-libvsmbr 
   - python310-libwrc 
   - python310-libxml2 
   - python310-license-expression 
@@ -23246,6 +23248,7 @@ unsorted:
   - python310-matplotlib-tk 
   - python310-matplotlib-web 
   - python310-matplotlib-wx 
+  - python310-matrix_common 
   - python310-maturin 
   - python310-mautrix 
   - python310-maxminddb 
@@ -23254,6 +23257,7 @@ unsorted:
   - python310-md2workflow 
   - python310-md2workflow-plugins-jira 
   - python310-md2workflow-plugins-redmine 
+  - python310-mechanize 
   - python310-meld3 
   - python310-memory_profiler 
   - python310-mergedeep 
@@ -23493,6 +23497,7 @@ unsorted:
   - python310-pdd 
   - python310-pdfminer.six 
   - python310-pdfrw 
+  - python310-pdm-pep517 
   - python310-pecan 
   - python310-peewee 
   - python310-pefile 
@@ -24125,6 +24130,7 @@ unsorted:
   - python310-robot-detection 
   - python310-robotframework 
   - python310-roifile 
+  - python310-rollbar 
   - python310-roman 
   - python310-rope 
   - python310-rpcq 
@@ -24671,7 +24677,7 @@ unsorted:
   - python310-zypp-plugin 
   - python36 
   - python36-32bit: [x86_64] 
-  - python36-APScheduler 
+  - python36-APScheduler: [x86_64] 
   - python36-Flask-Security-Too 
   - python36-PyCondor 
   - python36-PyRSS2Gen 
@@ -24682,7 +24688,6 @@ unsorted:
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
-  - python36-chainmap 
   - python36-combi 
   - python36-compileall2 
   - python36-coverage-config-reload-plugin 
@@ -24692,7 +24697,6 @@ unsorted:
   - python36-dbm 
   - python36-demjson 
   - python36-devel 
-  - python36-dirtyjson 
   - python36-django-auth-ldap 
   - python36-django-avatar 
   - python36-django-bootstrap4 
@@ -24726,7 +24730,6 @@ unsorted:
   - python36-librouteros 
   - python36-limnoria 
   - python36-lzmaffi 
-  - python36-mechanize 
   - python36-mrkd 
   - python36-ntfy 
   - python36-oic 
@@ -24743,7 +24746,6 @@ unsorted:
   - python36-rarfile-doc 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
-  - python36-rollbar 
   - python36-rss2email 
   - python36-sgmllib3k 
   - python36-sphinx-argparse 
@@ -25045,6 +25047,7 @@ unsorted:
   - python38-anyjson 
   - python38-anymarkup-core 
   - python38-apache-libcloud 
+  - python38-apfel 
   - python38-apiron 
   - python38-apns2 
   - python38-application 
@@ -25499,7 +25502,6 @@ unsorted:
   - python38-cfscrape 
   - python38-cftime 
   - python38-chai 
-  - python38-chainmap 
   - python38-chart-studio 
   - python38-chartify 
   - python38-check-manifest 
@@ -26103,6 +26105,7 @@ unsorted:
   - python38-inifile 
   - python38-iniparse 
   - python38-injector 
+  - python38-installer 
   - python38-intake 
   - python38-interrogate 
   - python38-intervals 
@@ -26265,6 +26268,7 @@ unsorted:
   - python38-ldaptor 
   - python38-ldas-tools-al-swig 
   - python38-leather 
+  - python38-leglight 
   - python38-lesscpy 
   - python38-leveldb 
   - python38-lexicon 
@@ -26293,14 +26297,31 @@ unsorted:
   - python38-liblarch 
   - python38-liblarch-gtk 
   - python38-liblnk 
+  - python38-libmodi 
+  - python38-libmsiecf 
   - python38-libmsym 
   - python38-libnacl 
+  - python38-libolecf 
   - python38-libpff 
   - python38-libpfm 
+  - python38-libphdi 
+  - python38-libqcow 
+  - python38-libregf 
   - python38-librosa 
   - python38-librouteros 
   - python38-libsass 
+  - python38-libscca 
+  - python38-libsigscan 
+  - python38-libsmdev 
+  - python38-libsmraw 
   - python38-libusb1 
+  - python38-libvhdi 
+  - python38-libvmdk 
+  - python38-libvsapm 
+  - python38-libvsgpt 
+  - python38-libvshadow 
+  - python38-libvslvm 
+  - python38-libvsmbr 
   - python38-libwrc 
   - python38-license-expression 
   - python38-ligo-lw 
@@ -26356,6 +26377,7 @@ unsorted:
   - python38-matplotlib-testdata 
   - python38-matplotlib-web 
   - python38-matplotlib-wx 
+  - python38-matrix_common 
   - python38-maturin 
   - python38-mautrix 
   - python38-maxminddb 
@@ -26592,6 +26614,7 @@ unsorted:
   - python38-pdd 
   - python38-pdfminer.six 
   - python38-pdfrw 
+  - python38-pdm-pep517 
   - python38-pecan 
   - python38-peewee 
   - python38-pefile 
@@ -28023,6 +28046,7 @@ unsorted:
   - python39-anyjson 
   - python39-anymarkup-core 
   - python39-apache-libcloud 
+  - python39-apfel 
   - python39-apipkg 
   - python39-apiron 
   - python39-apns2 
@@ -28494,7 +28518,6 @@ unsorted:
   - python39-cfscrape 
   - python39-cftime 
   - python39-chai 
-  - python39-chainmap 
   - python39-chardet 
   - python39-charset-normalizer 
   - python39-chart-studio 
@@ -29145,6 +29168,7 @@ unsorted:
   - python39-inifile 
   - python39-iniparse 
   - python39-injector 
+  - python39-installer 
   - python39-intake 
   - python39-interrogate 
   - python39-intervals 
@@ -29313,6 +29337,7 @@ unsorted:
   - python39-ldaptor 
   - python39-ldas-tools-al-swig 
   - python39-leather 
+  - python39-leglight 
   - python39-lesscpy 
   - python39-leveldb 
   - python39-lexicon 
@@ -29341,15 +29366,32 @@ unsorted:
   - python39-liblarch 
   - python39-liblarch-gtk 
   - python39-liblnk 
+  - python39-libmodi 
+  - python39-libmsiecf 
   - python39-libmsym 
   - python39-libnacl 
+  - python39-libolecf 
   - python39-libpff 
   - python39-libpfm 
+  - python39-libphdi 
+  - python39-libqcow 
+  - python39-libregf 
   - python39-librosa 
   - python39-librouteros 
   - python39-libsass 
+  - python39-libscca 
+  - python39-libsigscan 
+  - python39-libsmdev 
+  - python39-libsmraw 
   - python39-libusb1 
+  - python39-libvhdi 
   - python39-libvirt-python 
+  - python39-libvmdk 
+  - python39-libvsapm 
+  - python39-libvsgpt 
+  - python39-libvshadow 
+  - python39-libvslvm 
+  - python39-libvsmbr 
   - python39-libwrc 
   - python39-libxml2 
   - python39-license-expression 
@@ -29673,6 +29715,7 @@ unsorted:
   - python39-pdd 
   - python39-pdfminer.six 
   - python39-pdfrw 
+  - python39-pdm-pep517 
   - python39-pecan 
   - python39-peewee 
   - python39-pefile 
@@ -41545,6 +41588,8 @@ unsorted:
   - tinyxml-devel 
   - tinyxml-docs 
   - tinyxml2-devel 
+  - tio 
+  - tio-bash-completion 
   - tiobench 
   - tipcutils 
   - tiptop 
@@ -42910,7 +42955,6 @@ unsorted:
   - xgc 
   - xhfsutil 
   - xhtml-dtd 
-  - xiccd 
   - xindy 
   - xindy-doc 
   - xindy-rules 
