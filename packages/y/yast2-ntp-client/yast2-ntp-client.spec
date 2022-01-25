@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ntp-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ntp-client
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        YaST2 - NTP Client Configuration
 License:        GPL-2.0-or-later
@@ -41,6 +41,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 # Y2Network::NtpServer
 BuildRequires:  yast2-network >= 4.2.55
+# yast/rspec/helpers.rb
+BuildRequires:  yast2-ruby-bindings >= 4.4.7
 
 # proper acting TargetFile when scr is switched
 Requires:       augeas-lenses

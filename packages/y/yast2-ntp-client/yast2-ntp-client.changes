@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 11:55:46 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue May  4 10:22:49 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Adapted proposal client returning the dhcp ntp servers as strings
