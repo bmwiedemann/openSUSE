@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-sparse
 Version:        0.13.0
 Release:        0
@@ -30,7 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%
 BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
-BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-array if %python-base < 3.10}
 BuildRequires:  %{python_module numba >= 0.49}
 BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pytest}
@@ -65,7 +64,9 @@ intended for somewhat general use.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# dask is not available for python310 yet
+python310_flags="--ignore sparse/tests/test_dask_interop.py"
+%pytest ${$python_flags}
 
 %files %{python_files}
 %doc README.rst docs/*.rst
