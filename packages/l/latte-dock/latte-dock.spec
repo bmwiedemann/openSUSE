@@ -22,7 +22,7 @@
 %bcond_without released
 %define kf5_version 5.48.0
 Name:           latte-dock
-Version:        0.10.7
+Version:        0.10.8
 Release:        0
 Summary:        Replacement Dock for Plasma Desktops
 License:        GPL-2.0-or-later
