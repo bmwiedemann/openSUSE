@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 24 22:08:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.2:
+  * Improved compatibility with the 2021 Quake re-release
+  * Various bug fixes
+  * Small performance improvements
+  * Improved support for non power of two textures
+  * Updated SDL to 2.0.18 
+- remove 0001-Fix-format-overflow-warning-with-32-bit-gcc.patch: upstream
+
+-------------------------------------------------------------------
 Mon Dec  6 20:01:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:

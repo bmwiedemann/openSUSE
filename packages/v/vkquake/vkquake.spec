@@ -1,7 +1,7 @@
 #
 # spec file for package vkquake
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 Name:           vkquake
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/Novum/vkQuake
 Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.tar.gz#/vkQuake-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/Novum/vkQuake/pull/400
-Patch0:         0001-Fix-format-overflow-warning-with-32-bit-gcc.patch
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
