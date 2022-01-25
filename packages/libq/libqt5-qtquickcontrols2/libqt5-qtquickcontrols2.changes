@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:13:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde10:
+  * QQuickAction: don't grab the same shortcut multiple times
+  * Ensure we don't crash when changing sizes after cleanup
+
+-------------------------------------------------------------------
 Thu Oct 28 07:21:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde8:
