@@ -64,4 +64,12 @@
     <comment></comment>
     <requestid>915781</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f173d1efe5f6fcc3f1b59f9f3c959db0</srcmd5>
+    <version>6.0.1</version>
+    <time>1643128566</time>
+    <user>dimstar_suse</user>
+    <comment>- add test eggs for python 3.10 build</comment>
+    <requestid>948966</requestid>
+  </revision>
 </revisionlist>

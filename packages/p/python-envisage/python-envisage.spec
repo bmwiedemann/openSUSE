@@ -1,7 +1,7 @@
 #
 # spec file for package python-envisage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Summary:        Extensible application framework for Python
 License:        BSD-3-Clause AND Python-2.0 AND LGPL-3.0-only AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0 AND SUSE-Public-Domain
 URL:            https://github.com/enthought/envisage
 Source:         https://files.pythonhosted.org/packages/source/e/envisage/envisage-%{version}.tar.gz
+# FIX-UPSTREAM: taken from https://github.com/enthought/envisage/pull/436
+Source1:        py310-eggs.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  fdupes
@@ -57,7 +59,7 @@ Netbeans frameworks for Java applications.
 Part of the Enthought Tool Suite (ETS).
 
 %prep
-%setup -q -n envisage-%{version}
+%setup -q -n envisage-%{version} -a 1
 
 %build
 %python_build
