@@ -1,0 +1,30 @@
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">16</size>
+    </disk>
+    <physicalmemory>
+      <size unit="G">8</size>
+    </physicalmemory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">24</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">14</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>
