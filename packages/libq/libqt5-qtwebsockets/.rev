@@ -300,4 +300,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902337</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5e92ba29695dc7b901bdf21eab478c20</srcmd5>
+    <version>5.15.2+kde7</version>
+    <time>1643128543</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948157</requestid>
+  </revision>
 </revisionlist>

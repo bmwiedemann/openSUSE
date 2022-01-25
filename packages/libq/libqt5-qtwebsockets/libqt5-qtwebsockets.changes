@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:15:51 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde7:
+  * QWebSocketProtocol: fix potential UB (signed overflow) in masking operation
+  * Pass ignoreSslErrors to unterlying QSslSocket
+  * Clear frame on reconnect
+
+-------------------------------------------------------------------
 Tue Jun 22 19:34:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
