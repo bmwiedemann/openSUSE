@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:14:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde5:
+  * QMetaObjectPublisher: Never send stale queued messages
+  * Handle per-transport client idle status
+  * Handle signals in the registered object's thread
+
+-------------------------------------------------------------------
 Tue Jun 22 19:05:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch

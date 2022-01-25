@@ -223,4 +223,12 @@
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902330</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3d63b8e005174ee38191cb56b659c8c0</srcmd5>
+    <version>5.15.2+kde5</version>
+    <time>1643128543</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948156</requestid>
+  </revision>
 </revisionlist>
