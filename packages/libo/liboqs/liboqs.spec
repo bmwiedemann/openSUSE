@@ -61,7 +61,7 @@ particular limitations on intended use.
 mkdir build
 export RPM_OPT_FLAGS="%optflags -std=gnu11"
 cd build
-cmake -DBUILD_SHARED_LIBS=ON ..
+cmake -DBUILD_SHARED_LIBS=ON -DOQS_DIST_BUILD=ON ..
 %cmake_build 
 
 %install

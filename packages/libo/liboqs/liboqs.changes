@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:48:57 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Stop building with march=native to get reproducible binaries (boo#1100677)
+
+-------------------------------------------------------------------
 Sun Jan  2 18:26:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim redundancies from description. Remove old specfile

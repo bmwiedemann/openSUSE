@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>945148</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>44e5038eed7c666c0717faa329f3a4db</srcmd5>
+    <version>0.7.1</version>
+    <time>1643128565</time>
+    <user>dimstar_suse</user>
+    <comment>Stop building with march=native to get reproducible binaries (boo#1100677) (forwarded request 948948 from bmwiedemann)</comment>
+    <requestid>948952</requestid>
+  </revision>
 </revisionlist>
