@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 23 22:18:33 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.01
+  * Fix the game not starting when nonexistent dirs in the search
+    path.
+  - Sync haptic joystick effects to the sound.
+  - Move several map bug fixes to entity files, add some more map
+    bug fixes. Without entity files the maps are the same as in
+    Vanilla Quake II.
+  - Play the correct demo loop after changing the current mod.
+  - `g_footsteps 2` now only generate footstep sound when the
+    player is on the ground entity and no longer when in water or
+    air.
+  - Add a cvar `g_machinegun_norecoil' which disables the
+    machinegun recoil effect. This is cheat protected.
+  - Scale 8 bit textures when `r_scale8bittextures` is set.
+  - The game is no longer limited to 1000 FPS when running in
+    timedemo mode.
+  - Optimise command line parser and fix several subtle bugs.
+  - Add `r_2D_unfiltered`, when set to `1` 2D elements aren't
+    filtered.
+  - Fix soldiers never chowing their pain skin as long as they're
+    alive.
+  - Fix relative paths in ZIP files not being found.
+  - Add `gamemode` command for changing between singleplayer,
+    deathmach and coop.
+  - Show a download progress bar when `cl_http_show_dw_progress`
+    is set to `1`.
+
+-------------------------------------------------------------------
 Sun Aug 22 12:28:26 UTC 2021 - Imo Hester <vortex@z-ray.de>
 
 - patched systemwide support (systemwide.patch)

@@ -1,7 +1,7 @@
 #
 # spec file for package yamagi-quake2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           yamagi-quake2
-Version:        8.00
+Version:        8.01
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
