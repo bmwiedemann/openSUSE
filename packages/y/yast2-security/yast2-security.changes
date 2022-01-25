@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 24 09:45:55 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Related to jsc#SLE-22069:
+  - Fix import of 'none' and 'apparmor' options from the profile
+    when declared
+- 4.4.8
+
+-------------------------------------------------------------------
 Tue Jan 11 00:06:20 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 Related to jsc#SLE-22069:
