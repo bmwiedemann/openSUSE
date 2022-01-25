@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 25 13:02:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.0
+  * Update copyrights
+  * Fix imported target include directory
+  * Assimp Patch Android LTS NDK 23 Fix
+  * Allow dlclose of so library by avoiding unique symbols.
+  * Move Base64 encode/decode functionality to the common folder
+  * Locale independent meter scale
+  * add Inter-Quake Model (IQM) Importer
+  * Collada: Read all instance_material child nodes
+  * Krishty new file detection
+  * ASE: Fix material parsing
+  * IFC Reading: Fix opening reading.
+  * CMAKE: Respect top-level CMAKE_*_OUTPUT_DIRECTORY variables
+
+-------------------------------------------------------------------
 Mon Jan 10 09:28:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.1.6:
