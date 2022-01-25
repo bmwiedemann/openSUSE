@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 25 09:49:00 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1643061641.d319802b:
+  * Continue further checks in fullstack test after one fails
+  * Add OBS workflow
+  * Simplify base inheritance statement with Mojo::Base everywhere
+  * Exclude 29-backend-driver.t from OBS checks
+  * Simplify string concatenation in log.pm
+  * Extract all log functions into new module "log"
+  * Add test for defining/starting VM via VMware in svirt backend
+  * Add test for generating XML file with UEFI loader in svirt backend
+  * Use tidyall for faster tidying
+  * Fix single, unnecessary UTF8 character in consoles::VNC
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Sun Jan 23 02:24:59 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642780089.7ef72e20:
