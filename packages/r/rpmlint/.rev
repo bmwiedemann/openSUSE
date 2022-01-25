@@ -3523,4 +3523,17 @@ oddjob-gpupdate isn't blocked)</comment>
   * pam module whitelist: adjust package name for pam_winbind (bsc#1194573)</comment>
     <requestid>945995</requestid>
   </revision>
+  <revision rev="380" vrev="1">
+    <srcmd5>053a7e0c198b3b4952d9ba287d11c5b3</srcmd5>
+    <version>2.2.0+git20220121.4f4f673</version>
+    <time>1643128536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220121.4f4f673:
+  * Remove shared-library-not-executable for all shared libs.
+  * Fix stupid mistake with shared-library-not-executable.
+  * Remove duplicite argument for run_elf_checks and use PkgFile.
+  * Set also LANGUAGE env. in ENGLISH_ENVIROMENT.
+  * Fix LGTM warning about RE pattern.</comment>
+    <requestid>948073</requestid>
+  </revision>
 </revisionlist>

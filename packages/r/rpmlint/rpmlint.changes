@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 22 09:15:18 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220121.4f4f673:
+  * Remove shared-library-not-executable for all shared libs.
+  * Fix stupid mistake with shared-library-not-executable.
+  * Remove duplicite argument for run_elf_checks and use PkgFile.
+  * Set also LANGUAGE env. in ENGLISH_ENVIROMENT.
+  * Fix LGTM warning about RE pattern.
+
+-------------------------------------------------------------------
 Thu Jan 13 08:24:48 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220112.bfaf91a:
