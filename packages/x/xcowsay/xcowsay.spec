@@ -1,7 +1,7 @@
 #
 # spec file for package xcowsay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xcowsay
-Version:        1.5.1
+Version:        1.6
 Release:        0
 Summary:        Tool that displays a cow and message on the X11 desktop
 License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
 URL:            https://www.doof.me.uk/xcowsay/
-Source:         https://github.com/nickg/xcowsay/releases/download/r%{version}/xcowsay-%{version}.tar.gz
+Source:         https://github.com/nickg/xcowsay/releases/download/v%{version}/xcowsay-%{version}.tar.gz
 Source1:        xcowsay.desktop
 Source2:        xcowsay.svg
 Source3:        xcowhelp.desktop

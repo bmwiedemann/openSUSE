@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 25 08:29:38 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 1.6:
+  * Fix portability issues with signed vs unsigned chars in the config
+    file parser (thanks to Charlène Wendling).
+
+  * The -t option now allows fractional time values (e.g. -t 0.5 to
+    display for half a second).
+
+  * Set window type hint to notification to avoid shadows and other
+    decorations (thanks to Markus Demleitner).
+
+  * Add support for right-to-left text (thanks to @ilevi-code). 
+
+-------------------------------------------------------------------
 Fri Oct  9 19:35:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.1:
