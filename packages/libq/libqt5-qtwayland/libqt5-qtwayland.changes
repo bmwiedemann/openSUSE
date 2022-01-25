@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 20 16:33:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde44:
+  * Move the wayland socket polling to a separate event thread
+  * Connect flushRequest after forceRoundTrip
+  * Handle registry_global out of constructor
+  * Client: Avoid processing of events when showing windows
+  * Client: Delay deletion of QDrag object until after we're done with it
+  * Client: Implement DataDeviceV3
+  * Set preedit cursor when cursor equals to 0
+- Drop patches, now upstream:
+  * 0001-Client-Avoid-processing-of-events-when-showing-windo.patch
+
+-------------------------------------------------------------------
 Sun Dec 19 14:47:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde37:

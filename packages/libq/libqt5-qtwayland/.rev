@@ -377,4 +377,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
   * 0001-Client-Avoid-processing-of-events-when-showing-windo.patch</comment>
     <requestid>941642</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f23f8e103b8937cac9388bea75606e79</srcmd5>
+    <version>5.15.2+kde44</version>
+    <time>1643128542</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948155</requestid>
+  </revision>
 </revisionlist>

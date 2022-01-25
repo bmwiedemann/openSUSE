@@ -26,7 +26,7 @@
 %define so_version 5.15.2
 %define tar_version qtwayland-everywhere-src-%{version}
 Name:           libqt5-qtwayland
-Version:        5.15.2+kde37
+Version:        5.15.2+kde44
 Release:        0
 Summary:        Qt 5 Wayland Addon
 # The wayland compositor files are GPL-3.0-or-later
@@ -37,8 +37,6 @@ Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Bump-version.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Client-Avoid-processing-of-events-when-showing-windo.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{real_version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}
