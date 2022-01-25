@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.18
+Version:        2.0.20
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -33,7 +33,6 @@ Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 Patch2:         sdl2-khronos.patch
-Patch3:         0001-Fix-build-against-wayland-1.20.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
@@ -108,10 +107,10 @@ library.
 
 %prep
 %autosetup -p1
-perl -i -pe 's{\r\n}{\n}g' *.txt
+perl -i -pe 's{\r\n}{\n}g' *.txt README.md
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
 # In this instance, we do want --with-pic because of libSDL2main.a.
 %configure --with-pic --disable-alsa-shared --disable-video-directfb \
 	--enable-video-kmsdrm --enable-video-wayland \

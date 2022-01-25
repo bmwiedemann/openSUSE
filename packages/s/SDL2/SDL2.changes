@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan 16 12:27:09 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Drop 0001-Fix-build-against-wayland-1.20.patch
+  Fixed upstream: https://github.com/libsdl-org/SDL/pull/5092
+
+-------------------------------------------------------------------
+Tue Jan 11 19:47:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.20
+  * SDL_RenderGeometryRaw() takes a pointer to SDL_Color, not
+    int. You can cast color data in SDL_PIXELFORMAT_RGBA32 format
+    (SDL_PIXELFORMAT_ABGR8888 on little endian systems) for this
+    parameter.
+  * Improved accuracy of horizontal and vertical line drawing
+    when using OpenGL or OpenGLES.
+  * Added the hint SDL_HINT_RENDER_LINE_METHOD to control the
+    method of line drawing used, to select speed, correctness,
+    and compatibility.
+
+-------------------------------------------------------------------
 Fri Dec 17 10:40:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Fix-build-against-wayland-1.20.patch

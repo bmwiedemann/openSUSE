@@ -298,4 +298,12 @@
 - Add 0001-Fix-build-against-wayland-1.20.patch</comment>
     <requestid>941193</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2375e69c1c47b60288fd21de479df20d</srcmd5>
+    <version>2.0.20</version>
+    <time>1643128544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>948217</requestid>
+  </revision>
 </revisionlist>
