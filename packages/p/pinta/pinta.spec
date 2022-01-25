@@ -1,7 +1,7 @@
 #
 # spec file for package pinta
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           pinta
-Version:        1.7
+Version:        1.7.1
 Release:        0
-Summary:        Drawing/editing application on C#
+Summary:        Image editing application
 License:        MIT
 Group:          Productivity/Graphics/Bitmap Editors
-URL:            http://pinta-project.com/
+URL:            https://pinta-project.com/
 Source:         https://github.com/PintaProject/Pinta/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -35,8 +35,6 @@ BuildRequires:  pkgconfig(glib-sharp-2.0)
 BuildRequires:  pkgconfig(gtk-sharp-2.0)
 BuildRequires:  pkgconfig(mono) >= 6.0
 BuildRequires:  pkgconfig(mono-cairo)
-# is this still necessary?
-Recommends:     %{name}-lang = %{version}
 BuildArch:      noarch
 
 %description
@@ -50,32 +48,22 @@ powerful way to draw and manipulate images.
 %autosetup
 
 %build
-autoreconf -fi
-# perhaps this should go into %%_libexecdir/Mono ?
-%configure --libdir=%{_libexecdir}
+%configure --libdir=%{_prefix}/lib/mono/%{name}/
 %make_build
 
 %install
 %make_install
+rm -rf %{buildroot}%{_prefix}/lib/mono/%{name}/pkgconfig/
 %find_lang %{name}
-rm -rf %{buildroot}%{_datadir}/appdata %{buildroot}%{_libexecdir}/pkgconfig
 
 %check
 make check
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license license-mit.txt
 %doc readme.md
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/
+%{_prefix}/lib/mono/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/metainfo/%{name}.appdata.xml
