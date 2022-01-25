@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 25 00:57:36 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.0.13~git1.72eb93ac9:
+  * Issue 5129 - BUG - Incorrect fn signature in add_index (#5130)
+  * Bump version to 2.0.13
+  * Issue 5132 - Update Rust crate lru to fix CVE
+  * Issue 3555 - UI - fix audit issue with npm nanoid
+  * Issue 4299 - UI - Add ACI editing features
+  * Issue 4299 - UI LDAP editor - add "edit" and "rename" functionality
+  * Issue 5127 - run restorecon on /dev/shm at server startup
+  * Issue 5124 - dscontainer fails to create an instance
+  * Issue 4312 - fix compiler warning
+  * Issue 5115 -  AttributeError: type object 'build_manpages' has no attribute 'build_manpages'
+
+-------------------------------------------------------------------
+Mon Jan 24 03:06:27 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add missing dependency on python slugify
+- Change ssl dependency to openssl as libressl does not link correctly
+
+-------------------------------------------------------------------
 Sat Jan 15 02:56:14 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Fix %pre macro in pkg for systemd services

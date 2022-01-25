@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.11~git13.e14935725
+Version:        2.0.13~git1.72eb93ac9
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -87,10 +87,10 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libpcre)
-BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 %if %{use_tcmalloc}
 BuildRequires:  pkgconfig(libtcmalloc)
@@ -175,6 +175,7 @@ Requires:       %{use_python}-ldap >= 3.0
 Requires:       %{use_python}-pyasn1
 Requires:       %{use_python}-pyasn1-modules
 Requires:       %{use_python}-python-dateutil
+Requires:       %{use_python}-python-slugify
 Requires:       %{use_python}-six
 Requires:       iproute2
 Requires:       krb5-client
@@ -309,6 +310,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 %service_add_post dirsrv.target
 %fillup_only -n dirsrv
 %set_permissions %{_sbindir}/ns-slapd
+
 %verifyscript
 %verify_permissions -e %{_sbindir}/ns-slapd
 
@@ -374,6 +376,7 @@ exit 0
 %{_unitdir}/dirsrv.target
 %exclude %{_unitdir}/dirsrv@.service.d/custom.conf
 %{_prefix}/lib/dirsrv/ds_systemd_ask_password_acl
+%{_prefix}/lib/dirsrv/ds_selinux_restorecon.sh
 # This has to be hardcoded to /lib - $libdir changes between lib/lib64, but
 # sysctl.d is always in /lib.
 %{_prefix}/lib/sysctl.d/*
