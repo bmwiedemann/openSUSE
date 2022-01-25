@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pdf-reader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pdf-reader
-Version:        2.5.0
+Version:        2.9.0
 Release:        0
 %define mod_name pdf-reader
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:18:29 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.9.0
+ see installed CHANGELOG
+
+  v2.9.0 (24th January 2022)
+  - Support additional encryption standards (http://github.com/yob/pdf-reader/pull/419)
+  - Return CropBox correctly from Page#rectangles (https://github.com/yob/pdf-reader/pull/420)
+  - For sorbet users, additional type annotations are included in the gem
+  
+  v2.8.0 (28th Decemeber 2021)
+  - Add PDF::Reader::Page#runs for extracting text from a page with positioning metadata (http://github.com/yob/pdf-reader/pull/411)
+  - Add options to PDF::Reader::Page#text to make some behaviour configurable (http://github.com/yob/pdf-reader/pull/411)
+      - including extracting the text for only part of the page
+  - Improve text positioning and extraction for Type3 fonts (http://github.com/yob/pdf-reader/pull/412)
+  - Skip extracting text that is positioned outside the page (http://github.com/yob/pdf-reader/pull/413)
+  - Fix occasional crash when reading some streams (http://github.com/yob/pdf-reader/pull/405)
+  
+  v2.7.0 (13th December 2021)
+  - Include RBI type files in the gem
+    - Downstream users of pdf-reader who also use sorbet *should* find many parts of the API will
+      now be typed checked by sorbet
+  - Fix glyph positioning in some rotation scenarios (http://github.com/yob/pdf-reader/pull/403)
+    - Improved text extraction on some rotated pages, and rotated text on normal pages
+  - Add PDF::Reader::Page#rectangles (http://github.com/yob/pdf-reader/pull/402)
+    - Returns page boxes (MediaBox, etc) with rotation applied, and as PORO rather than arrays of numbers
+  - Add PDF::Reader::Page#origin (http://github.com/yob/pdf-reader/pull/400)
+  - Add PDF::Reader::Page#{height,width} (http://github.com/yob/pdf-reader/pull/399)
+  - Overlap filter should only drop characters that overlap *and* match (http://github.com/yob/pdf-reader/pull/401)
+  
+  v2.6.0 (12th November 2021)
+  - Text extraction improvements
+    - Improved text layout on pages with a variety of font sizes (http://github.com/yob/pdf-reader/pull/355)
+    - Fixed text positioning for some rotated pages (http://github.com/yob/pdf-reader/pull/356)
+    - Improved character width calculation for PDFs using built-in (non-embedded) ZapfDingbats (http://github.com/yob/pdf-reader/pull/373)
+    - Skip zero-width characters (http://github.com/yob/pdf-reader/pull/372)
+  - Performance improvements
+    - Reduced memory pressure when decoding TIFF images (http://github.com/yob/pdf-reader/pull/360)
+    - Optional dependency on ascii81_native gem for faster processing of files using the ascii85 filter (http://github.com/yob/pdf-reader/pull/359)
+  - Successfully parse more files
+    - Gracefully handle some non-spec compliant CR/LF issues (http://github.com/yob/pdf-reader/pull/364)
+    - Fix parsing of some escape sequences in content streams (http://github.com/yob/pdf-reader/pull/368)
+    - Increase the amount of junk bytes we detect and skip at the end of a file (382)
+    - Ignore "/Prev 0" in trailers (http://github.com/yob/pdf-reader/pull/383)
+    - Fix parsing of some inline images (BI ID EI tokens) (http://github.com/yob/pdf-reader/pull/389)
+    - Gracefully handle some xref tables that incorrectly start with 1 (http://github.com/yob/pdf-reader/pull/384)
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:45:41 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.5.0
