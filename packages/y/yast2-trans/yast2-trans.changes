@@ -1,4 +1,463 @@
 -------------------------------------------------------------------
+Mon Jan 24 05:13:21 UTC 2022 - git@opensuse.org
+
+- Update to version 84.87.20220123.256c7f91b3:
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Catalan)
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'tftp-server'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rear'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update-configuration'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'oneclickinstall'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'journal'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'docker'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'configuration_management'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'cio'.
+  * New POT for text domain 'caasp'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'authserver'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'alternatives'.
+  * New POT for text domain 'add-on'.
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Catalan)
+  * New POT for text domain 'country'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'add-on'.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'tftp-server'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rear'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update-configuration'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'oneclickinstall'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'journal'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'docker'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'configuration_management'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'cio'.
+  * New POT for text domain 'caasp'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'authserver'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'alternatives'.
+  * New POT for text domain 'add-on'.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Japanese)
+  * product-check.sh: Proper indentation for bc095e9e0d
+  * product-check.sh: Add new check More projects use the same RPMNAME
+  * product-check.sh: Update sample configuration to SLE15 SP4 and Leap 15.4.
+  * Add sap-installation-wizard to DOMAIN_MAP.
+  * New POT for text domain 'wol'.
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'relocation-server'.
+  * New POT for text domain 'reipl'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rdp'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'multipath'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'iplb'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'geo-cluster'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'add-on'.
+  * Automatic update of wol.
+  * Automatic update of vpn.
+  * Automatic update of users.
+  * Automatic update of update.
+  * Automatic update of tune.
+  * Automatic update of s390.
+  * Automatic update of sysconfig.
+  * Automatic update of support.
+  * Automatic update of sudo.
+  * Automatic update of storage.
+  * Automatic update of squid.
+  * Automatic update of sound.
+  * Automatic update of snapper.
+  * Automatic update of slp-server.
+  * Automatic update of services-manager.
+  * Automatic update of security.
+  * Automatic update of scanner.
+  * Automatic update of sap-installation-wizard.
+  * Automatic update of samba-server.
+  * Automatic update of samba-client.
+  * Automatic update of rmt.
+  * Automatic update of relocation-server.
+  * Automatic update of reipl.
+  * Automatic update of registration.
+  * Automatic update of rdp.
+  * Automatic update of proxy.
+  * Automatic update of printer.
+  * Automatic update of pam.
+  * Automatic update of packager.
+  * Automatic update of online-update.
+  * Automatic update of ntp-client.
+  * Automatic update of nis_server.
+  * Automatic update of nis.
+  * Automatic update of nfs_server.
+  * Automatic update of nfs.
+  * Automatic update of network.
+  * Automatic update of multipath.
+  * Automatic update of migration.
+  * Automatic update of mail.
+  * Automatic update of ldap-client.
+  * Automatic update of ldap.
+  * Automatic update of kdump.
+  * Automatic update of journalctl.
+  * Automatic update of isns.
+  * Automatic update of iscsi-lio-server.
+  * Automatic update of iscsi-client.
+  * Automatic update of iplb.
+  * Automatic update of instserver.
+  * Automatic update of installation.
+  * Automatic update of http-server.
+  * Automatic update of geo-cluster.
+  * Automatic update of ftp-server.
+  * Automatic update of firewall.
+  * Automatic update of fcoe-client.
+  * Automatic update of drbd.
+  * Automatic update of dns-server.
+  * Automatic update of dhcp-server.
+  * Automatic update of crowbar.
+  * Automatic update of country.
+  * Automatic update of control.
+  * Automatic update of cluster.
+  * Automatic update of bootloader.
+  * Automatic update of base.
+  * Automatic update of autoinst.
+  * Automatic update of auth-client.
+  * Automatic update of audit-laf.
+  * Automatic update of apparmor.
+  * Automatic update of add-on.
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Catalan)
+  * Do not translate yast/y2status
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Japanese)
+  * New POT for text domain 'wol'.
+  * New POT for text domain 'vpn'.
+  * New POT for text domain 'users'.
+  * New POT for text domain 'update'.
+  * New POT for text domain 'tune'.
+  * New POT for text domain 'sysconfig'.
+  * New POT for text domain 'support'.
+  * New POT for text domain 'sudo'.
+  * New POT for text domain 'storage'.
+  * New POT for text domain 'squid'.
+  * New POT for text domain 'sound'.
+  * New POT for text domain 'snapper'.
+  * New POT for text domain 'slp-server'.
+  * New POT for text domain 'services-manager'.
+  * New POT for text domain 'security'.
+  * New POT for text domain 'scanner'.
+  * New POT for text domain 'samba-server'.
+  * New POT for text domain 'samba-client'.
+  * New POT for text domain 's390'.
+  * New POT for text domain 'rmt'.
+  * New POT for text domain 'relocation-server'.
+  * New POT for text domain 'reipl'.
+  * New POT for text domain 'registration'.
+  * New POT for text domain 'rdp'.
+  * New POT for text domain 'proxy'.
+  * New POT for text domain 'printer'.
+  * New POT for text domain 'pam'.
+  * New POT for text domain 'packager'.
+  * New POT for text domain 'online-update'.
+  * New POT for text domain 'ntp-client'.
+  * New POT for text domain 'nis_server'.
+  * New POT for text domain 'nis'.
+  * New POT for text domain 'nfs_server'.
+  * New POT for text domain 'nfs'.
+  * New POT for text domain 'network'.
+  * New POT for text domain 'multipath'.
+  * New POT for text domain 'migration'.
+  * New POT for text domain 'mail'.
+  * New POT for text domain 'ldap-client'.
+  * New POT for text domain 'ldap'.
+  * New POT for text domain 'kdump'.
+  * New POT for text domain 'journalctl'.
+  * New POT for text domain 'isns'.
+  * New POT for text domain 'iscsi-lio-server'.
+  * New POT for text domain 'iscsi-client'.
+  * New POT for text domain 'iplb'.
+  * New POT for text domain 'instserver'.
+  * New POT for text domain 'installation'.
+  * New POT for text domain 'http-server'.
+  * New POT for text domain 'geo-cluster'.
+  * New POT for text domain 'ftp-server'.
+  * New POT for text domain 'firewall'.
+  * New POT for text domain 'fcoe-client'.
+  * New POT for text domain 'drbd'.
+  * New POT for text domain 'dns-server'.
+  * New POT for text domain 'dhcp-server'.
+  * New POT for text domain 'crowbar'.
+  * New POT for text domain 'country'.
+  * New POT for text domain 'control'.
+  * New POT for text domain 'cluster'.
+  * New POT for text domain 'bootloader'.
+  * New POT for text domain 'base'.
+  * New POT for text domain 'autoinst'.
+  * New POT for text domain 'auth-client'.
+  * New POT for text domain 'audit-laf'.
+  * New POT for text domain 'apparmor'.
+  * New POT for text domain 'add-on'.
+  * Update DOMAIN_MAP
+  * Automatic update of wol.
+  * Automatic update of vpn.
+  * Automatic update of users.
+  * Automatic update of update.
+  * Automatic update of tune.
+  * Automatic update of s390.
+  * Automatic update of sysconfig.
+  * Automatic update of support.
+  * Automatic update of sudo.
+  * Automatic update of storage.
+  * Automatic update of squid.
+  * Automatic update of sound.
+  * Automatic update of snapper.
+  * Automatic update of slp-server.
+  * Automatic update of services-manager.
+  * Automatic update of security.
+  * Automatic update of scanner.
+  * Automatic update of samba-server.
+  * Automatic update of samba-client.
+  * Automatic update of rmt.
+  * Automatic update of relocation-server.
+  * Automatic update of reipl.
+  * Automatic update of registration.
+  * Automatic update of rdp.
+  * Automatic update of qt-pkg.
+  * Automatic update of qt.
+  * Automatic update of proxy.
+  * Automatic update of printer.
+  * Automatic update of pam.
+  * Automatic update of packager.
+  * Automatic update of online-update.
+  * Automatic update of ntp-client.
+  * Automatic update of nis_server.
+  * Automatic update of nis.
+  * Automatic update of nfs_server.
+  * Automatic update of nfs.
+  * Automatic update of network.
+  * Automatic update of ncurses-pkg.
+  * Automatic update of ncurses.
+  * Automatic update of multipath.
+  * Automatic update of migration.
+  * Automatic update of mail.
+  * Automatic update of ldap-client.
+  * Automatic update of ldap.
+  * Automatic update of kdump.
+  * Automatic update of journalctl.
+  * Automatic update of isns.
+  * Automatic update of iscsi-lio-server.
+  * Automatic update of iscsi-client.
+  * Automatic update of iplb.
+  * Automatic update of instserver.
+  * Automatic update of installation.
+  * Automatic update of http-server.
+  * Automatic update of geo-cluster.
+  * Automatic update of ftp-server.
+  * Automatic update of firstboot.
+  * Automatic update of firewall.
+  * Automatic update of fcoe-client.
+  * Automatic update of drbd.
+  * Automatic update of dns-server.
+  * Automatic update of dhcp-server.
+  * Automatic update of crowbar.
+  * Automatic update of country.
+  * Automatic update of control.
+  * Automatic update of cluster.
+  * Automatic update of bootloader.
+  * Automatic update of base.
+  * Automatic update of autoinst.
+  * Automatic update of auth-client.
+  * Automatic update of audit-laf.
+  * Automatic update of apparmor.
+  * Automatic update of add-on.
+
+-------------------------------------------------------------------
 Mon Jan 17 05:13:15 UTC 2022 - git@opensuse.org
 
 - Update to version 84.87.20220116.6b981cb0d7:
