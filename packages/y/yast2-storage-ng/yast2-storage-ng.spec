@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.4.32
+Version:        4.4.33
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,14 +26,14 @@ URL:            https://github.com/yast/yast-storage-ng
 
 Source:         %{name}-%{version}.tar.bz2
 
-# Storage::Luks.reset_activation_infos
-BuildRequires:  libstorage-ng-ruby >= 4.4.69
+# New Md size calculation
+BuildRequires:  libstorage-ng-ruby >= 4.4.76
 BuildRequires:  update-desktop-files
 # Yast::Kernel.propose_hibernation?
 BuildRequires:  yast2 >= 4.3.41
 BuildRequires:  yast2-devtools >= 4.2.2
-# for AbortException and handle direct abort
-BuildRequires:  yast2-ruby-bindings >= 4.0.6
+# yast/rspec/helpers.rb
+BuildRequires:  yast2-ruby-bindings >= 4.4.7
 # yast2-xml dependency is added by yast2 but ignored in the
 # openSUSE:Factory project config
 BuildRequires:  yast2-xml
@@ -48,8 +48,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 
 # findutils for xargs
 Requires:       findutils
-# Storage::Luks.reset_activation_infos
-Requires:       libstorage-ng-ruby >= 4.4.69
+# New Md size calculation
+Requires:       libstorage-ng-ruby >= 4.4.76
 # Yast::Kernel.propose_hibernation?
 Requires:       yast2 >= 4.3.41
 # Y2Packager::Repository
