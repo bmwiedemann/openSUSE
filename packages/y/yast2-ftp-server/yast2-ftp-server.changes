@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 09:02:31 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Jun  9 07:11:51 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the label of the certificate input field (bsc#1183786).
