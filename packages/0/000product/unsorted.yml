@@ -8532,6 +8532,7 @@ unsorted:
   - ldacBT-devel 
   - ldap-sdk 
   - ldap-sdk-javadoc 
+  - ldap-yp-tools 
   - ldapfuse 
   - ldapvi 
   - ldas-tools-al-devel 
@@ -16253,6 +16254,7 @@ unsorted:
   - molsketch-devel 
   - molsketch-doc 
   - monero-devel 
+  - monero-gui: [x86_64] 
   - monero-utils 
   - monerod 
   - mongolian-fonts 
@@ -22677,6 +22679,7 @@ unsorted:
   - python310-entrypoints 
   - python310-environ-config 
   - python310-environmental-override 
+  - python310-envisage 
   - python310-enzyme 
   - python310-ephem 
   - python310-epubmerge 
@@ -22764,6 +22767,7 @@ unsorted:
   - python310-flufl.testing 
   - python310-fluidity-sm 
   - python310-flup 
+  - python310-flynt 
   - python310-folium 
   - python310-fontMath 
   - python310-fontParts 
@@ -23432,6 +23436,7 @@ unsorted:
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
   - python310-orange-canvas-core 
+  - python310-orange-widget-base 
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
@@ -23787,6 +23792,7 @@ unsorted:
   - python310-pypubsub 
   - python310-pypuppetdb 
   - python310-pyqt-builder 
+  - python310-pyqtgraph 
   - python310-pyquery 
   - python310-pyquil 
   - python310-pyrad 
@@ -24717,7 +24723,6 @@ unsorted:
   - python36-djet 
   - python36-doc 
   - python36-doc-devhelp 
-  - python36-envisage 
   - python36-feedparser 
   - python36-flask-restx 
   - python36-flufl.lock 
@@ -24957,7 +24962,7 @@ unsorted:
   - python38-TxSNI 
   - python38-URLObject 
   - python38-UkPostcodeParser 
-  - python38-Unidecode 
+  - python38-Unidecode: [i586] # suggested by dvd:suggested:patterns-server-directory_server 
   - python38-VyattaConfParser 
   - python38-WSGIProxy2 
   - python38-WSME 
@@ -25921,6 +25926,7 @@ unsorted:
   - python38-flufl.testing 
   - python38-fluidity-sm 
   - python38-flup 
+  - python38-flynt 
   - python38-folium 
   - python38-fontMath 
   - python38-fontParts 
@@ -27070,7 +27076,7 @@ unsorted:
   - python38-python-rpm-spec 
   - python38-python-rtmidi 
   - python38-python-rtmidi-doc 
-  - python38-python-slugify 
+  - python38-python-slugify: [i586] 
   - python38-python-snappy 
   - python38-python-socketio 
   - python38-python-socks 
@@ -27463,7 +27469,7 @@ unsorted:
   - python38-testresources 
   - python38-testscenarios 
   - python38-testsuite 
-  - python38-text-unidecode 
+  - python38-text-unidecode: [i586] 
   - python38-textX 
   - python38-textdistance 
   - python38-textfsm 
@@ -28962,6 +28968,7 @@ unsorted:
   - python39-flufl.testing 
   - python39-fluidity-sm 
   - python39-flup 
+  - python39-flynt 
   - python39-folium 
   - python39-fontMath 
   - python39-fontParts 
