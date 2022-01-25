@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:51:13 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220125.d0150a88:
+  * Dev: ui_node: Use diff and patch instead of replace cib
+
+-------------------------------------------------------------------
+Tue Jan 18 00:56:51 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220118.5d56321b:
+  * Dev: crm report: Add dpkg support
+
+-------------------------------------------------------------------
 Mon Jan 17 03:11:42 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220117.3debc274 (tag:4.4.0-rc1):
