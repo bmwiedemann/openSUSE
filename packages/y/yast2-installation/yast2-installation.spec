@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.4.34
+Version:        4.4.35
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -41,8 +41,8 @@ BuildRequires:  yast2-firewall
 BuildRequires:  yast2-network >= 4.4.12
 # ProductSpec API
 BuildRequires:  yast2-packager >= 4.4.13
-# for AbortException and handle direct abort
-BuildRequires:  yast2-ruby-bindings >= 4.0.6
+# yast/rspec/helpers.rb
+BuildRequires:  yast2-ruby-bindings >= 4.4.7
 # For LSM classes
 BuildRequires:  yast2-security
 # using /usr/bin/udevadm
