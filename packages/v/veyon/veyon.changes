@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 24 15:18:11 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 4.7.1.
+  * Core
+    * Improved CMake code to better support sanitizers.
+    * Added CMake option to disable the generation/update of
+      translations.
+    * The size of messages is now limited to 64 MB to prevent
+      potential out-of-memory situations.
+    * Added initial libfuzzer test set.
+    * Added data integrity checking code to the VariantStream class
+      to prevent out-of-memory situations and potential buffer
+      overflows when reading data from the network.
+    * Added support for displaying an overlay icon on the system
+      tray icon.
+  * Configurator:
+    * AccessControl: Abort group test when canceling username
+      input dialog.
+    * Master: Browsing of the user configuration directory has
+      been fixed.
+  * Plugins
+     * LDAP: Fixed build of 3rdparty component kldap with Qt 6
+     * LDAP: Made the query timeout configurable
+       (in advanced view only)
+     * RemoteAccess: open remote access window for all selected
+       computers – only ask for hostname/IP if no computer is
+       selected
+     * RemoteAccess: The clipboard content is now synchronized
+       whenever it changes locally or remotely.
+     * WebAPI: Use updated 3rdparty components
+       (qthttpserver, http-parser)
+  * Master
+    * The press and hold feature now properly works on Windows
+      (thanks to @SlrG).
+  * Linux
+    * Fixed non-installable DEB packages for Ubuntu 18.04 and
+      Debian Stretch caused by compatibility problems with older
+      versions of CMake/CPack.
+
+-------------------------------------------------------------------
 Wed Jan  5 08:41:33 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

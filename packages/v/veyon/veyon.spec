@@ -1,7 +1,7 @@
 #
 # spec file for package veyon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           veyon
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        Computer monitoring and classroom management
 License:        GPL-2.0-or-later
 URL:            https://veyon.io/
 Source:         https://github.com/veyon/veyon/releases/download/v%{version}/veyon-%{version}-src.tar.bz2
-Patch0:	harden_veyon.service.patch
+Patch0:         harden_veyon.service.patch
 BuildRequires:  cmake
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gcc-c++
