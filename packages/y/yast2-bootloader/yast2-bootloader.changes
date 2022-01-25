@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 06:46:11 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.14
+
+-------------------------------------------------------------------
 Mon Jan 17 13:48:12 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Autoyast: add support for password protection (jsc#SLE-20928)

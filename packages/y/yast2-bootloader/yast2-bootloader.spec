@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.4.13
+Version:        4.4.14
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -27,7 +27,8 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  yast2 >= 4.3.41
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-ruby-bindings >= 1.0.0
+# yast/rspec/helpers.rb
+BuildRequires:  yast2-ruby-bindings >= 4.4.7
 # BlkDevice#preferred_name and Filesystems::BlkFilesystem#preferred_name
 BuildRequires:  yast2-storage-ng >= 4.3.36
 # lenses needed also for tests
