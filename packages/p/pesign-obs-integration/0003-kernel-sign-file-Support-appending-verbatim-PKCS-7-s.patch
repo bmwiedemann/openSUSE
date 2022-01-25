@@ -1,0 +1,116 @@
+From 68baaf0ca940712d4cfbe5d7c55bc8407efc19ce Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 4 Jan 2022 12:29:21 +0100
+Subject: [PATCH 3/4] kernel-sign-file: Support appending verbatim PKCS#7
+ signature.
+
+When existing signature is specified upstream appends it verbatim as
+PKCS#7 but kernel-ding-file assumes it's raw RSA signature and wraps
+PKCS#7 around it beforee appending.
+
+Because the certificate is not required for just dumping the whole
+signature after the data but is required to create the PKCS#7 wrapper we
+can support both. When a certificate is specified create a wrapper, when
+not just copy the signature without touching it.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ kernel-sign-file | 60 +++++++++++++++++++++++++++++-------------------
+ 1 file changed, 37 insertions(+), 23 deletions(-)
+
+diff --git a/kernel-sign-file b/kernel-sign-file
+index 2e5b7aa..9cacefb 100755
+--- a/kernel-sign-file
++++ b/kernel-sign-file
+@@ -42,7 +42,6 @@ if (@ARGV) {
+ 
+ die "Can't read private key\n" if (!$signature_file && !-r $private_key);
+ die "Can't read signature file\n" if ($signature_file && !-r $signature_file);
+-die "Can't read X.509 certificate\n" unless (-r $x509);
+ die "Can't read module\n" unless (-r $module);
+ 
+ #
+@@ -99,7 +98,6 @@ sub openssl_pipe($$) {
+ # we're intending to use to sign the module.
+ #
+ ###############################################################################
+-my $x509_certificate = read_file($x509);
+ 
+ my $UNIV = 0 << 6;
+ my $APPL = 1 << 6;
+@@ -436,35 +434,51 @@ if ($signature_file) {
+ 		     "openssl rsautl -sign -inkey $private_key -keyform PEM");
+ }
+ 
+-my %certdata = parse_certificate($x509_certificate);
++my %certdata;
+ my $signers_name;
+ my $key_identifier;
++my $x509_certificate;
+ if ($id_type == 1) {
++    die "Can't read X.509 certificate\n" unless (-r $x509);
++    $x509_certificate = read_file($x509);
++    %certdata = parse_certificate($x509_certificate);
+     $signature = pack("n", length($signature)) . $signature,
+     $signers_name = $certdata{signers_name};
+     $key_identifier = $certdata{key_identifier};
+ } elsif ($id_type == 2) {
+     # create PKCS7 signature
+-    $signature = asn1_pack($UNIV | $OCTET_STRING, $signature);
+-    my $digest_algo = substr($prologue, 4, 2 + unpack('C', substr($prologue, 5, 1)));
+-    my $digest_algo_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $digest_algo);
+-    my $digest_algo_seq_set = asn1_pack($UNIV | $CONS | $SET, $digest_algo_seq);
+-    my $si_verstion = asn1_pack($UNIV | $INTEGER,  pack('C', $use_keyid ? 3 : 1));
+-    my $si_issuer = asn1_pack($certdata{issuer}->[0], asn1_retrieve($certdata{issuer}->[1]));
+-    my $si_serial = asn1_pack($certdata{serial_number}->[0], asn1_retrieve($certdata{serial_number}->[1]));
+-    my $si_issuer_serial = asn1_pack($UNIV | $CONS | $SEQUENCE, $si_issuer, $si_serial);
+-    my $si_keyid = asn1_pack($CONT | 0, asn1_retrieve($certdata{subject_key_id}->[1]));
+-    my $rsa_encryption = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 1, 1));
+-    my $encryption_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $rsa_encryption, asn1_pack($UNIV | $NULL));
+-    my $signer_identifier = $use_keyid ? $si_keyid : $si_issuer_serial;
+-    my $si = asn1_pack($UNIV | $CONS | $SEQUENCE, $si_verstion, $signer_identifier, $digest_algo_seq, $encryption_seq, $signature);
+-    my $si_set = asn1_pack($UNIV | $CONS | $SET, $si);
+-    my $sid_version = asn1_pack($UNIV | $INTEGER, pack('C', $use_keyid ? 3 : 1));
+-    my $pkcs7_data = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 7, 1));
+-    my $pkcs7_data_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $pkcs7_data);
+-    my $sid = asn1_pack($UNIV | $CONS | $SEQUENCE, $sid_version, $digest_algo_seq_set, $pkcs7_data_seq, $si_set);
+-    my $pkcs7_signed_data = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 7, 2));
+-    $signature = asn1_pack($UNIV | $CONS | $SEQUENCE, $pkcs7_signed_data, asn1_pack($CONT | $CONS | 0, $sid));
++    if ($x509) {
++	die "Can't read X.509 certificate\n" unless (-r $x509);
++	$x509_certificate = read_file($x509);
++    } else {
++	print "No certificate specified, assuming pre-built PKCS#7 signature.\n" if ($verbose);
++	$x509_certificate = '';
++    }
++    if ($x509_certificate) {
++	%certdata = parse_certificate($x509_certificate);
++	$signature = asn1_pack($UNIV | $OCTET_STRING, $signature);
++	my $digest_algo = substr($prologue, 4, 2 + unpack('C', substr($prologue, 5, 1)));
++	my $digest_algo_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $digest_algo);
++	my $digest_algo_seq_set = asn1_pack($UNIV | $CONS | $SET, $digest_algo_seq);
++	my $si_verstion = asn1_pack($UNIV | $INTEGER,  pack('C', $use_keyid ? 3 : 1));
++	my $si_issuer = asn1_pack($certdata{issuer}->[0], asn1_retrieve($certdata{issuer}->[1]));
++	my $si_serial = asn1_pack($certdata{serial_number}->[0], asn1_retrieve($certdata{serial_number}->[1]));
++	my $si_issuer_serial = asn1_pack($UNIV | $CONS | $SEQUENCE, $si_issuer, $si_serial);
++	my $si_keyid = asn1_pack($CONT | 0, asn1_retrieve($certdata{subject_key_id}->[1]));
++	my $rsa_encryption = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 1, 1));
++	my $encryption_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $rsa_encryption, asn1_pack($UNIV | $NULL));
++	my $signer_identifier = $use_keyid ? $si_keyid : $si_issuer_serial;
++	my $si = asn1_pack($UNIV | $CONS | $SEQUENCE, $si_verstion, $signer_identifier, $digest_algo_seq, $encryption_seq, $signature);
++	my $si_set = asn1_pack($UNIV | $CONS | $SET, $si);
++	my $sid_version = asn1_pack($UNIV | $INTEGER, pack('C', $use_keyid ? 3 : 1));
++	my $pkcs7_data = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 7, 1));
++	my $pkcs7_data_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $pkcs7_data);
++	my $sid = asn1_pack($UNIV | $CONS | $SEQUENCE, $sid_version, $digest_algo_seq_set, $pkcs7_data_seq, $si_set);
++	my $pkcs7_signed_data = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 7, 2));
++	$signature = asn1_pack($UNIV | $CONS | $SEQUENCE, $pkcs7_signed_data, asn1_pack($CONT | $CONS | 0, $sid));
++    } else {
++	print "Certificate is empty, assuming pre-built PKCS#7 signature.\n" if ($verbose);
++    }
+     # zero out unneeded entries
+     $signers_name = '';
+     $key_identifier = '';
+-- 
+2.34.1
+

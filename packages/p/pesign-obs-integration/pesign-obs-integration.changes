@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:49:34 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Support signing grub on powerpc (jsc#SLE-18271 bsc#1192764).
+   + 0001-Support-ppc-grub-signing-jsc-SLE-18271-bsc-1192764.patch
+   + 0002-kernel-sign-file-Move-x509-parsing-into-a-function.patch
+   + 0003-kernel-sign-file-Support-appending-verbatim-PKCS-7-s.patch
+   + 0004-Add-padding-to-grub-signature-correctly-jsc-SLE-1827.patch
+
+-------------------------------------------------------------------
 Wed Aug 04 12:35:19 UTC 2021 - lnussel@suse.de
 
 - Update to version 10.2+git20210804.ff18da1:
@@ -16,7 +25,7 @@ Fri Jul 30 11:56:23 UTC 2021 - lnussel@suse.de
 Fri Jul 23 09:11:28 UTC 2021 - dmueller@suse.com
 
 - Update to version git master (10.2):
-  * Add support for GZIP and ZSTD module compression
+  * Add support for GZIP and ZSTD module compression (bsc#1188636)
   * Always pad the EFI image when calculating the hash
   * Version bump to 10.2
   * approach issue#22 false noarch subpackage
@@ -51,7 +60,7 @@ Mon Dec 21 03:50:35 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 Wed Oct 21 12:44:19 UTC 2020 - dmueller@suse.com
 
 - Update to version 10.1+1602850462:
-  * Compress kernel modules in batch and in parallel
+  * Compress kernel modules in batch and in parallel (bsc#1188636)
   * Forward _binary_payload to the repackaged rpm (bsc#1175882)
 - remove 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch,
   parallel-compression.patch (upstream)
@@ -124,7 +133,7 @@ Thu Aug  1 02:41:28 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 Wed May 29 06:01:20 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add 0001-Add-support-for-kernel-module-compression.patch to
-  support kernel module compression (bsc#1135854)
+  support kernel module compression (bsc#1135854, jsc#SLE-16661)
 
 -------------------------------------------------------------------
 Fri May 17 14:00:08 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>

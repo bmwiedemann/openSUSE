@@ -1,0 +1,50 @@
+From 5b255595f4101b136db55538a59ef5b1fc3439e5 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 4 Jan 2022 12:20:36 +0100
+Subject: [PATCH 4/4] Add padding to grub signature correctly (jsc#SLE-18271
+ bsc#1192764).
+
+Upstream sign-file supports including whole PKCS#7 signature verbatim
+while kernel-sign-file supports building PKCS#7 around raw RSA signature
+as provided by OBS. Now kernel-sign-file also supports what upstream
+does so make use of it. First wrap PKCS#7 around the RSA signature, then
+pad, then append.
+
+Fixes: 13efe22 ("Support ppc grub signing (jsc#SLE-18271 bsc#1192764).")
+---
+ pesign-repackage.spec.in | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/pesign-repackage.spec.in b/pesign-repackage.spec.in
+index f473fa1..8c07fc4 100644
+--- a/pesign-repackage.spec.in
++++ b/pesign-repackage.spec.in
+@@ -160,17 +160,18 @@ for sig in "${sigs[@]}"; do
+ 	*grub.elf.sig)
+ 		sig_size="$(wc -c < "$sig")"
+ 		unsigned_grub_size="$(wc -c < "$f")"
+-		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f" "$f".appendtest
+-		signed_grub_size="$(wc -c < "$f".appendtest)"
+-		rm "$f".appendtest
+-		footer_size="$(expr "$signed_grub_size" - "$unsigned_grub_size" - "$sig_size")"
++		/usr/lib/rpm/pesign/kernel-sign-file -vpd -i pkcs7 -s "$sig" sha256 "$cert" "$f"
++		sig_size="$(wc -c < "$f.p7s")"
++		footer_size=40
++		grub_size="$(wc -c < "$f")"
+ 		if ! [ $(expr "$sig_size" + "$footer_size") -le "@PESIGN_GRUB_RESERVATION@" ] ; then
+-			echo "size of '$sig' ($sig_size) cannot fit into reservation @PESIGN_GRUB_RESERVATION@ (-$footer_size)"
++			echo "size of '$f.p7s' ($sig_size) cannot fit into reservation @PESIGN_GRUB_RESERVATION@ (-$footer_size)"
+ 			exit 1
+ 		fi
+ 		sig_size="$(expr "@PESIGN_GRUB_RESERVATION@" - "$footer_size")"
+-		truncate -s $sig_size "$sig"
+-		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f"
++		truncate -s $sig_size "$f.p7s"
++		/usr/lib/rpm/pesign/kernel-sign-file -v -i pkcs7 -s "$f.p7s" sha256 "" "$f"
++		rm "$f.p7s"
+ 		grub_size="$(wc -c < "$f")"
+ 		if ! [ "$(expr "$unsigned_grub_size" + "@PESIGN_GRUB_RESERVATION@")" -eq "$grub_size" ] ; then
+ 			echo "The size of unsigned grub ($unsigned_grub_size) + reservation (@PESIGN_GRUB_RESERVATION@) does not add up to signed grub size ($grub_size)"
+-- 
+2.34.1
+

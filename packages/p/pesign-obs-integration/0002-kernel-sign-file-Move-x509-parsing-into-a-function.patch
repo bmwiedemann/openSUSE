@@ -1,0 +1,260 @@
+From 85f8f72c2f055ca2fa48ec1e7ad7911e8e3744ad Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 4 Jan 2022 12:49:54 +0100
+Subject: [PATCH 2/4] kernel-sign-file: Move x509 parsing into a function.
+
+This should not introduce any functionality change but next patch will
+make the parsing optional.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ kernel-sign-file | 201 +++++++++++++++++++++++++----------------------
+ 1 file changed, 106 insertions(+), 95 deletions(-)
+
+diff --git a/kernel-sign-file b/kernel-sign-file
+index ce76a40..2e5b7aa 100755
+--- a/kernel-sign-file
++++ b/kernel-sign-file
+@@ -226,113 +226,119 @@ sub asn1_pack($@)
+ # Roughly parse the X.509 certificate
+ #
+ ###############################################################################
+-my $cursor = [ 0, length($x509_certificate), \$x509_certificate ];
+-
+-my $cert = asn1_extract($cursor, $UNIV | $CONS | $SEQUENCE);
+-my $tbs = asn1_extract($cert->[1], $UNIV | $CONS | $SEQUENCE);
+-my $version = asn1_extract($tbs->[1], $CONT | $CONS | 0, 1);
+-my $serial_number = asn1_extract($tbs->[1], $UNIV | $INTEGER);
+-my $sig_type = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
+-my $issuer = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
+-my $validity = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
+-my $subject = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
+-my $key = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
+-my $issuer_uid = asn1_extract($tbs->[1], $CONT | $CONS | 1, 1);
+-my $subject_uid = asn1_extract($tbs->[1], $CONT | $CONS | 2, 1);
+-my $extension_list = asn1_extract($tbs->[1], $CONT | $CONS | 3, 1);
+-
+-my $subject_key_id = ();
+-my $authority_key_id = ();
+-
+-#
+-# Parse the extension list
+-#
+-if ($extension_list->[0] != -1) {
+-    my $extensions = asn1_extract($extension_list->[1], $UNIV | $CONS | $SEQUENCE);
+-
+-    while ($extensions->[1]->[1] > 0) {
+-	my $ext = asn1_extract($extensions->[1], $UNIV | $CONS | $SEQUENCE);
+-	my $x_oid = asn1_extract($ext->[1], $UNIV | $OBJ_ID);
+-	my $x_crit = asn1_extract($ext->[1], $UNIV | $BOOLEAN, 1);
+-	my $x_val = asn1_extract($ext->[1], $UNIV | $OCTET_STRING);
++sub parse_certificate($)
++{
++    my ($x509_certificate) = @_;
++    my $cursor = [ 0, length($x509_certificate), \$x509_certificate ];
++    my %result;
++
++    my $cert = asn1_extract($cursor, $UNIV | $CONS | $SEQUENCE);
++    my $tbs = asn1_extract($cert->[1], $UNIV | $CONS | $SEQUENCE);
++    my $version = asn1_extract($tbs->[1], $CONT | $CONS | 0, 1);
++    $result{serial_number} = asn1_extract($tbs->[1], $UNIV | $INTEGER);
++    my $sig_type = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
++    $result{issuer} = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
++    my $validity = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
++    my $subject = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
++    my $key = asn1_extract($tbs->[1], $UNIV | $CONS | $SEQUENCE);
++    my $issuer_uid = asn1_extract($tbs->[1], $CONT | $CONS | 1, 1);
++    my $subject_uid = asn1_extract($tbs->[1], $CONT | $CONS | 2, 1);
++    my $extension_list = asn1_extract($tbs->[1], $CONT | $CONS | 3, 1);
++
++    $result{subject_key_id} = ();
++    my $authority_key_id = ();
++
++    #
++    # Parse the extension list
++    #
++    if ($extension_list->[0] != -1) {
++	my $extensions = asn1_extract($extension_list->[1], $UNIV | $CONS | $SEQUENCE);
++
++	while ($extensions->[1]->[1] > 0) {
++	    my $ext = asn1_extract($extensions->[1], $UNIV | $CONS | $SEQUENCE);
++	    my $x_oid = asn1_extract($ext->[1], $UNIV | $OBJ_ID);
++	    my $x_crit = asn1_extract($ext->[1], $UNIV | $BOOLEAN, 1);
++	    my $x_val = asn1_extract($ext->[1], $UNIV | $OCTET_STRING);
++
++	    my $raw_oid = asn1_retrieve($x_oid->[1]);
++	    next if (!exists($OIDs{$raw_oid}));
++	    my $x_type = $OIDs{$raw_oid};
++
++	    my $raw_value = asn1_retrieve($x_val->[1]);
++
++	    if ($x_type eq "subjectKeyIdentifier") {
++		my $vcursor = [ 0, length($raw_value), \$raw_value ];
++
++		$result{subject_key_id} = asn1_extract($vcursor, $UNIV | $OCTET_STRING);
++	    }
++	}
++    }
+ 
+-	my $raw_oid = asn1_retrieve($x_oid->[1]);
++    ###############################################################################
++    #
++    # Determine what we're going to use as the signer's name.  In order of
++    # preference, take one of: commonName, organizationName or emailAddress.
++    #
++    ###############################################################################
++    my $org = "";
++    my $cn = "";
++    my $email = "";
++
++    while ($subject->[1]->[1] > 0) {
++	my $rdn = asn1_extract($subject->[1], $UNIV | $CONS | $SET);
++	my $attr = asn1_extract($rdn->[1], $UNIV | $CONS | $SEQUENCE);
++	my $n_oid = asn1_extract($attr->[1], $UNIV | $OBJ_ID);
++	my $n_val = asn1_extract($attr->[1], -1);
++
++	my $raw_oid = asn1_retrieve($n_oid->[1]);
+ 	next if (!exists($OIDs{$raw_oid}));
+-	my $x_type = $OIDs{$raw_oid};
+-
+-	my $raw_value = asn1_retrieve($x_val->[1]);
++	my $n_type = $OIDs{$raw_oid};
+ 
+-	if ($x_type eq "subjectKeyIdentifier") {
+-	    my $vcursor = [ 0, length($raw_value), \$raw_value ];
++	my $raw_value = asn1_retrieve($n_val->[1]);
+ 
+-	    $subject_key_id = asn1_extract($vcursor, $UNIV | $OCTET_STRING);
++	if ($n_type eq "organizationName") {
++	    $org = $raw_value;
++	} elsif ($n_type eq "commonName") {
++	    $cn = $raw_value;
++	} elsif ($n_type eq "emailAddress") {
++	    $email = $raw_value;
+ 	}
+     }
+-}
+ 
+-###############################################################################
+-#
+-# Determine what we're going to use as the signer's name.  In order of
+-# preference, take one of: commonName, organizationName or emailAddress.
+-#
+-###############################################################################
+-my $org = "";
+-my $cn = "";
+-my $email = "";
+-
+-while ($subject->[1]->[1] > 0) {
+-    my $rdn = asn1_extract($subject->[1], $UNIV | $CONS | $SET);
+-    my $attr = asn1_extract($rdn->[1], $UNIV | $CONS | $SEQUENCE);
+-    my $n_oid = asn1_extract($attr->[1], $UNIV | $OBJ_ID);
+-    my $n_val = asn1_extract($attr->[1], -1);
+-
+-    my $raw_oid = asn1_retrieve($n_oid->[1]);
+-    next if (!exists($OIDs{$raw_oid}));
+-    my $n_type = $OIDs{$raw_oid};
+-
+-    my $raw_value = asn1_retrieve($n_val->[1]);
+-
+-    if ($n_type eq "organizationName") {
+-	$org = $raw_value;
+-    } elsif ($n_type eq "commonName") {
+-	$cn = $raw_value;
+-    } elsif ($n_type eq "emailAddress") {
+-	$email = $raw_value;
+-    }
+-}
++    $result{signers_name} = $email;
+ 
+-my $signers_name = $email;
++    if ($org && $cn) {
++	# Don't use the organizationName if the commonName repeats it
++	if (length($org) <= length($cn) &&
++	    substr($cn, 0, length($org)) eq $org) {
++	    $result{signers_name} = $cn;
++	    goto got_id_name;
++	}
+ 
+-if ($org && $cn) {
+-    # Don't use the organizationName if the commonName repeats it
+-    if (length($org) <= length($cn) &&
+-	substr($cn, 0, length($org)) eq $org) {
+-	$signers_name = $cn;
+-	goto got_id_name;
+-    }
++	# Or a signifcant chunk of it
++	if (length($org) >= 7 &&
++	    length($cn) >= 7 &&
++	    substr($cn, 0, 7) eq substr($org, 0, 7)) {
++	    $result{signers_name} = $cn;
++	    goto got_id_name;
++	}
+ 
+-    # Or a signifcant chunk of it
+-    if (length($org) >= 7 &&
+-	length($cn) >= 7 &&
+-	substr($cn, 0, 7) eq substr($org, 0, 7)) {
+-	$signers_name = $cn;
+-	goto got_id_name;
++	$result{signers_name} = $org . ": " . $cn;
++    } elsif ($org) {
++	$result{signers_name} = $org;
++    } elsif ($cn) {
++	$result{signers_name} = $cn;
+     }
+ 
+-    $signers_name = $org . ": " . $cn;
+-} elsif ($org) {
+-    $signers_name = $org;
+-} elsif ($cn) {
+-    $signers_name = $cn;
+-}
++    got_id_name:
+ 
+-got_id_name:
++    die $x509, ": ", "X.509: Couldn't find the Subject Key Identifier extension\n"
++    if (!$result{subject_key_id});
+ 
+-die $x509, ": ", "X.509: Couldn't find the Subject Key Identifier extension\n"
+-    if (!$subject_key_id);
+-
+-my $key_identifier = asn1_retrieve($subject_key_id->[1]);
++    $result{key_identifier} = asn1_retrieve($result{subject_key_id}->[1]);
+ 
++    return %result;
++}
+ ###############################################################################
+ #
+ # Create and attach the module signature
+@@ -430,8 +436,13 @@ if ($signature_file) {
+ 		     "openssl rsautl -sign -inkey $private_key -keyform PEM");
+ }
+ 
++my %certdata = parse_certificate($x509_certificate);
++my $signers_name;
++my $key_identifier;
+ if ($id_type == 1) {
+     $signature = pack("n", length($signature)) . $signature,
++    $signers_name = $certdata{signers_name};
++    $key_identifier = $certdata{key_identifier};
+ } elsif ($id_type == 2) {
+     # create PKCS7 signature
+     $signature = asn1_pack($UNIV | $OCTET_STRING, $signature);
+@@ -439,10 +450,10 @@ if ($id_type == 1) {
+     my $digest_algo_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $digest_algo);
+     my $digest_algo_seq_set = asn1_pack($UNIV | $CONS | $SET, $digest_algo_seq);
+     my $si_verstion = asn1_pack($UNIV | $INTEGER,  pack('C', $use_keyid ? 3 : 1));
+-    my $si_issuer = asn1_pack($issuer->[0], asn1_retrieve($issuer->[1]));
+-    my $si_serial = asn1_pack($serial_number->[0], asn1_retrieve($serial_number->[1]));
++    my $si_issuer = asn1_pack($certdata{issuer}->[0], asn1_retrieve($certdata{issuer}->[1]));
++    my $si_serial = asn1_pack($certdata{serial_number}->[0], asn1_retrieve($certdata{serial_number}->[1]));
+     my $si_issuer_serial = asn1_pack($UNIV | $CONS | $SEQUENCE, $si_issuer, $si_serial);
+-    my $si_keyid = asn1_pack($CONT | 0, asn1_retrieve($subject_key_id->[1]));
++    my $si_keyid = asn1_pack($CONT | 0, asn1_retrieve($certdata{subject_key_id}->[1]));
+     my $rsa_encryption = asn1_pack($UNIV | $OBJ_ID, pack("CCCCCCCCC", 42, 134, 72, 134, 247, 13, 1, 1, 1));
+     my $encryption_seq = asn1_pack($UNIV | $CONS | $SEQUENCE, $rsa_encryption, asn1_pack($UNIV | $NULL));
+     my $signer_identifier = $use_keyid ? $si_keyid : $si_issuer_serial;
+-- 
+2.34.1
+
