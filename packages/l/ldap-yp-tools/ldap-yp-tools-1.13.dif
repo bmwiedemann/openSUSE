@@ -1,0 +1,17 @@
+---
+ common/common.h |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- common/common.h
++++ common/common.h	2022-01-25 09:39:42.244333821 +0000
+@@ -61,6 +61,10 @@ typedef struct {
+ int get_ldap_config(LDAPConfig * config);
+ int rebindproc(LDAP * ld, LDAP_CONST char *url, ber_tag_t request,
+ 	       ber_int_t msgid, void *params);
++#ifdef HAVE_LDAP_H
++#undef ldap_connect
++#define ldap_connect mask_ldap_connect
++#endif
+ LDAP *ldap_connect(LDAPConfig * config);
+ void free_ldap_user_entry(USEREntry * user);
+ USEREntry *get_ldap_user_entry(LDAP * ld, LDAPConfig * config, char *uid);

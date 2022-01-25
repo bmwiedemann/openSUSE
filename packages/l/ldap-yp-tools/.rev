@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c340275e897100ecd2697e1470ce4d3</srcmd5>
+    <version>1.13</version>
+    <time>1643128568</time>
+    <user>dimstar_suse</user>
+    <comment>New package with handy tools for ldap/sssd similar to e.g. ypcat</comment>
+    <requestid>948978</requestid>
+  </revision>
+</revisionlist>

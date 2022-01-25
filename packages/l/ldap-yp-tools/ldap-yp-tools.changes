@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue Jan 25 09:42:20 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch ldap-yp-tools-1.13.dif
+  * Mask the own ldap_connect function to avoid conflicts with
+    the version of new OpenLDAP 2.5.4 
+
+-------------------------------------------------------------------
+Mon Jan 24 13:29:24 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Initial package ldap-yp-tools with version 1.13
+  * LDAP equivalents of yp tools ypcat, ypmatch and chsh
+ 
