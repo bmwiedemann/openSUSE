@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:14:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde16:
+  * Unconditionally stop parsing after the svg end tag
+  * SVG Image reading: Reject oversize svgs as corrupt
+  * Do stricter error checking when parsing path nodes
+
+-------------------------------------------------------------------
 Thu Oct 28 07:21:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde13:

@@ -398,4 +398,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt updates from KDE git</comment>
     <requestid>928083</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a9cc0df233d7df414131ac5c1c82cf03</srcmd5>
+    <version>5.15.2+kde16</version>
+    <time>1643128541</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948153</requestid>
+  </revision>
 </revisionlist>

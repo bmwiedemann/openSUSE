@@ -23,7 +23,7 @@
 %define so_version 5.15.2
 %define tar_version qtsvg-everywhere-src-%{version}
 Name:           libqt5-qtsvg
-Version:        5.15.2+kde13
+Version:        5.15.2+kde16
 Release:        0
 Summary:        Qt 5 SVG Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
