@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 25 09:48:25 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1643089984.09669586b:
+  * Test availability of investigation tab on incompletes
+  * Revert "Remove retry from fullstack test as it seems stable again"
+  * Simplify base inheritance statement with Mojo::Base everywhere
+  * Dependency cron 2022-01-22
+  * Add signatures to OpenQA::App and OpenQA::BuildResults
+  * templates: Fix wording for the "VNC display number"
+  * Show number of restarts of a job within info box on details page
+  * Also show "investigation" tabs for incomplete jobs
+
+-------------------------------------------------------------------
 Sun Jan 23 01:48:35 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1642834441.8f6def1db:
