@@ -19,7 +19,7 @@
 %define major 0
 %define libname %{name}%{major}
 Name:           libdeflate
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
@@ -96,5 +96,6 @@ ln -s ./libdeflate-gzip %{buildroot}%{_bindir}/libdeflate-gunzip
 %doc README.md
 %{_includedir}/libdeflate.h
 %{_libdir}/libdeflate.so
+%{_libdir}/pkgconfig/libdeflate.pc
 
 %changelog
