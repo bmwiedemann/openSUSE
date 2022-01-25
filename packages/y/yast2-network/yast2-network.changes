@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 12:35:43 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.33
+
+-------------------------------------------------------------------
 Mon Dec  6 14:37:01 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Prepare code for ruby3 (bsc#1193192)
