@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 24 22:14:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.5:
+  * Exporting "all" images from a WIM file no longer fails if multiple
+    images in that WIM file have the same name.
+  * wimlib now warns rather than aborts if two files have the same SHA-1
+    hash but different sizes.
+  * Fixed build errors with the latest version of Mingw-w64.
+
+-------------------------------------------------------------------
 Mon Jul  5 07:36:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.4:

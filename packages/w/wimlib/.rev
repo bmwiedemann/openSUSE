@@ -45,4 +45,17 @@
     <comment></comment>
     <requestid>904132</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e4afc1bd91914de8012e265b100e722</srcmd5>
+    <version>1.13.5</version>
+    <time>1643128560</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.5:
+  * Exporting &quot;all&quot; images from a WIM file no longer fails if multiple
+    images in that WIM file have the same name.
+  * wimlib now warns rather than aborts if two files have the same SHA-1
+    hash but different sizes.
+  * Fixed build errors with the latest version of Mingw-w64.</comment>
+    <requestid>948499</requestid>
+  </revision>
 </revisionlist>
