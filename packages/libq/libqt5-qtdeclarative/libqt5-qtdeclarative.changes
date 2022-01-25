@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 21 08:13:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde43:
+  * QQmlJs::FixedPoolArray: fix UB (precondition violation) in allocate()
+  * Fix crash during model reset
+  * QQuickWindow: don't leak old screenChanged connections
+  * qqmldelegatemodel: Fix out of bounds cache removal
+  * QQuickItemAnimation: close potential memory leak
+
+-------------------------------------------------------------------
 Thu Oct 28 07:20:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde36:

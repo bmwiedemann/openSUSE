@@ -23,7 +23,7 @@
 %define so_version 5.15.2
 %define tar_version qtdeclarative-everywhere-src-%{version}
 Name:           libqt5-qtdeclarative
-Version:        5.15.2+kde36
+Version:        5.15.2+kde43
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
