@@ -1,7 +1,7 @@
 #
 # spec file for package python-frozenlist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-frozenlist
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python list-like structure which implements MutableSequence
 License:        Apache-2.0
@@ -45,9 +45,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%{python_expand rm %{buildroot}%{$python_sitearch}/frozenlist/_frozenlist.c
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch
