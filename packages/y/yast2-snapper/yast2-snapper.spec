@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-snapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-snapper
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        YaST - file system snapshots review
 License:        GPL-2.0-only

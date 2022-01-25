@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 24 09:44:41 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Do not crash when trying to show found differences
+  between snapshots (bsc#1195021).
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
