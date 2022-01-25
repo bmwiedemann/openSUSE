@@ -1,5 +1,7 @@
---- pam_pkcs11-0.5.3/etc/pam_pkcs11.conf.example.in	2005-09-12 05:12:55.000000000 -0400
-+++ pam_pkcs11-0.5.3/etc/pam_pkcs11.conf.example.in	2007-03-01 10:42:20.000000000 -0500
+Index: pam_pkcs11-pam_pkcs11-0.6.12/etc/pam_pkcs11.conf.example.in
+===================================================================
+--- pam_pkcs11-pam_pkcs11-0.6.12.orig/etc/pam_pkcs11.conf.example.in
++++ pam_pkcs11-pam_pkcs11-0.6.12/etc/pam_pkcs11.conf.example.in
 @@ -9,7 +9,7 @@ pam_pkcs11 {
    nullok = true;
  
@@ -9,8 +11,8 @@
  
    # Do not prompt the user for the passwords but take them from the
    # PAM_ items instead.
-@@ -24,7 +24,12 @@ pam_pkcs11 {
-   use_authtok = false;
+@@ -48,7 +48,12 @@ pam_pkcs11 {
+   screen_savers = xfce4-screensaver, mate-screensaver, gnome-screensaver, kde4-kscreensaver, kscreensaver, xscreensaver;
  
    # Filename of the PKCS #11 module. The default value is "default"
 -  use_pkcs11_module = opensc;
@@ -23,7 +25,7 @@
  
    pkcs11_module opensc {
      module = /usr/lib/opensc-pkcs11.so;
-@@ -112,7 +112,7 @@
+@@ -162,7 +167,7 @@ pam_pkcs11 {
    # If used null mapper should be the last in the list :-)
    # Also you should select at least one mapper, otherwise
    # certificate will not match :-)

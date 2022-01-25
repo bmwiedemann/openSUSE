@@ -1,7 +1,7 @@
 #
 # spec file for package pam_pkcs11
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 # It seems to be an upstream naming bug:
 %define _name pam_pkcs11-pam_pkcs11
 Name:           pam_pkcs11
-Version:        0.6.10
+Version:        0.6.12
 Release:        0
 Summary:        PKCS #11 PAM Module
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
-Url:            https://github.com/OpenSC/pam_pkcs11
+URL:            https://github.com/OpenSC/pam_pkcs11
 Source:         https://github.com/OpenSC/pam_pkcs11/archive/%{name}-%{version}.tar.gz
 Source1:        pam_pkcs11-common-auth-smartcard.pam
 Source2:        baselibs.conf
@@ -101,9 +101,9 @@ sed -i '/^HTML_TIMESTAMP/s/YES/NO/' doc/doxygen.conf.in
 	--docdir=%{_docdir}/%{name}\
 	--with-nss\
 	--with-curl
-make %{?_smp_mflags}
+%make_build
 # Generate documentation: This sounds like an upstream bug while making an upstream source tarball.
-make %{?_smp_mflags} dist
+%make_build dist
 
 %install
 %make_install

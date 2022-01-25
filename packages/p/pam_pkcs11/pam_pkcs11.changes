@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 15 10:26:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.12:
+  * Limit signature length to 65536 bytes
+  * A number of bug fixes and OpenSSL compatibility updates
+  * console output color updates
+  * Add support of ECDSA signature in addition to RSA
+
+-------------------------------------------------------------------
 Tue Jan 29 22:45:28 CET 2019 - sbrabec@suse.com
 
 - Update to version 0.6.10:
