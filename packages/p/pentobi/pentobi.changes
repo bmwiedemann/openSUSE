@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:33:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 20.0
+  * More general workaround to avoid crashes with Qt 5.15 related
+    to storing QDateTime in QSettings.
+  * Workarounds for bugs in Qt 6.2 that sometimes caused wrong
+    positions of unplayed pieces.
+  * Install application and mimetype bitmap icons for multiple
+    sizes.
+  * Show error message if launching web browser failed.
+  * Minimum required CMake version is now 3.18.
+
+-------------------------------------------------------------------
 Mon Dec  6 21:35:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 19.1

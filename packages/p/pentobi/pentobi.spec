@@ -1,7 +1,7 @@
 #
 # spec file for package pentobi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           pentobi
-Version:        19.1
+Version:        20.0
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            http://pentobi.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.18
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
@@ -89,7 +89,7 @@ Pentobi game files.
 %{_datadir}/applications/io.sourceforge.pentobi.desktop
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/mime/packages/*.xml
-%{_datadir}/help/*/%{name}
+%{_datadir}/doc/pentobi/
 %{_mandir}/man6/pentobi.6%{?ext_man}
 %{_mandir}/*/man6/pentobi.6%{?ext_man}
 %{_datadir}/metainfo/io.sourceforge.pentobi.appdata.xml
