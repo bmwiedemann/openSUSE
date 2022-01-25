@@ -20,14 +20,13 @@
 %define so_ver 1
 
 Name:           libdxfrw
-Version:        1.0.1+git.20211110
+Version:        1.0.1+git.20220109
 Release:        0
 Summary:        Library to read and write DXF files
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/LibreCAD/libdxfrw/
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-fix-Vertex-ID-printout.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
