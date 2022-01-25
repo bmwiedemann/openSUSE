@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Tue Jan 25 10:38:14 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#569
+- re-add mount.nfs (bsc#1195035)
+- fix locale handling
+- 17.38
+
+--------------------------------------------------------------------
+Mon Jan 24 08:40:00 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#568
+- etc: update module.config to match 5.17
+- 17.37
+
+--------------------------------------------------------------------
 Fri Jan 21 12:48:41 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#564
