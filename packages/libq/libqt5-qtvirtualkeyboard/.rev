@@ -159,4 +159,12 @@
     <comment>Qt updates from KDE git</comment>
     <requestid>928084</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7302f2926cb5099494f7da9ef1f1d614</srcmd5>
+    <version>5.15.2+kde6</version>
+    <time>1643128542</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948154</requestid>
+  </revision>
 </revisionlist>

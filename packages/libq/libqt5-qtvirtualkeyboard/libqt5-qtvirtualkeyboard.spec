@@ -19,7 +19,7 @@
 %define qt5_snapshot 1
 
 Name:           libqt5-qtvirtualkeyboard
-Version:        5.15.2+kde4
+Version:        5.15.2+kde6
 Release:        0
 Summary:        Qt 5 Virtual Keyboard
 License:        GPL-3.0
