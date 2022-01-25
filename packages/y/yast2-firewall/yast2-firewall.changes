@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 21 07:37:21 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Jun 16 12:33:45 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Use Installation::SecuritySettings (related to jsc#PM-2620).
