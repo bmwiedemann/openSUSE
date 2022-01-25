@@ -16,7 +16,7 @@
 #
 
 Name:           barrel
-Version:        0.0.8
+Version:        0.1.0
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         barrel-%{version}.tar.xz
@@ -32,16 +32,16 @@ BuildRequires:  libjson-c-devel
 BuildRequires:  docbook-xsl-stylesheets
 %endif
 BuildRequires:  fdupes
-BuildRequires:  libstorage-ng-devel >= 4.4.59
+BuildRequires:  libstorage-ng-devel >= 4.4.76
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  readline-devel
 
-Requires:       libstorage-ng1 >= 4.4.59
+Requires:       libstorage-ng1 >= 4.4.76
 Recommends:     %{name}-lang
 
 Summary:        Tool for storage management
-Url:            http://github.com/aschnell/barrel
+Url:            http://github.com/openSUSE/barrel
 License:        GPL-2.0-only
 Group:          System/Packages
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 21 13:43:13 CET 2022 - aschnell@suse.com
+
+- without providing the MD RAID metadata version use the default
+  of mdadm
+- version 0.1.0
+
+-------------------------------------------------------------------
 Thu Dec 02 10:28:02 CET 2021 - aschnell@suse.com
 
 - handle multipath and DM RAID during loading of devicegraph
