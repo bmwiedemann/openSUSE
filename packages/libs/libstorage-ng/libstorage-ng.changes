@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Jan 21 08:43:56 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#857
+- add support for RAID metadata versions 1.1 and 1.2 (for bsc#1168914)
+- improved integration test for RAIDs
+- 4.4.76
+
+--------------------------------------------------------------------
 Mon Jan 17 12:24:42 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#856
