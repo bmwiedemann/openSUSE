@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.4.26
+Version:        4.4.27
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -41,9 +41,8 @@ BuildRequires:  libxml2-tools
 # xsltproc for AutoinstClass
 BuildRequires:  libxslt
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
-# GPG symmetric methods and Password dialog
-# ProductSpec API
-BuildRequires:  yast2 >= 4.4.21
+# PackageProposal API to taboo resolvables
+BuildRequires:  yast2 >= 4.4.37
 # FileSystems.read_default_subvol_from_target
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-transfer
@@ -68,8 +67,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       autoyast2-installation = %{version}
 Requires:       libxslt
-# ProductSpec API
-Requires:       yast2 >= 4.4.21
+# PackageProposal API to taboo resolvables
+Requires:       yast2 >= 4.4.37
 Requires:       yast2-core
 Requires:       yast2-country >= 3.1.13
 # Moving security module to first installation stage
