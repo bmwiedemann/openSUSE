@@ -1,7 +1,7 @@
 #
 # spec file for package pesign-obs-integration
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
 Source:         %{name}-%{version}.tar.gz
+Patch1:         0001-Support-ppc-grub-signing-jsc-SLE-18271-bsc-1192764.patch
+Patch2:         0002-kernel-sign-file-Move-x509-parsing-into-a-function.patch
+Patch3:         0003-kernel-sign-file-Support-appending-verbatim-PKCS-7-s.patch
+Patch4:         0004-Add-padding-to-grub-signature-correctly-jsc-SLE-1827.patch
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools

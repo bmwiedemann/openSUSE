@@ -1,0 +1,86 @@
+From 13efe2232909a600531142959b2e4380af46676f Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 23 Nov 2021 16:40:27 +0100
+Subject: [PATCH 1/4] Support ppc grub signing (jsc#SLE-18271 bsc#1192764).
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ brp-99-pesign            | 14 ++++++++++++++
+ pesign-repackage.spec.in | 22 +++++++++++++++++++++-
+ 2 files changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/brp-99-pesign b/brp-99-pesign
+index 0e415d6..c6e9d54 100644
+--- a/brp-99-pesign
++++ b/brp-99-pesign
+@@ -58,6 +58,19 @@ if ! mkdir -p "$output"; then
+ 	exit 0
+ fi
+ 
++case "$BRP_PESIGN_GRUB_RESERVATION" in
++	'')
++		pesign_grub_reservation="0"
++		;;
++	*[!0-9]*)
++		echo "$0: warning: non-numerc value '$BRP_PESIGN_GRUB_RESERVATION' of BRP_PESIGN_GRUB_RESERVATION" >&2
++		pesign_grub_reservation="0"
++		;;
++	*)
++	pesign_grub_reservation="${BRP_PESIGN_GRUB_RESERVATION}"
++	;;
++esac
++
+ if test "${BRP_PESIGN_COMPRESS_MODULE}" = "xz"; then
+ 	pesign_repackage_compress="--compress xz"
+ elif test "${BRP_PESIGN_COMPRESS_MODULE}" = "gzip"; then
+@@ -77,6 +90,7 @@ else
+ fi
+ sed "
+ 	s:@NAME@:$RPM_PACKAGE_NAME:g
++	s:@PESIGN_GRUB_RESERVATION@:$pesign_grub_reservation:g
+ 	s:@PESIGN_REPACKAGE_COMPRESS@:$pesign_repackage_compress:g
+ 	/@CERT@/ {
+ 		r $cert
+diff --git a/pesign-repackage.spec.in b/pesign-repackage.spec.in
+index eebc609..f473fa1 100644
+--- a/pesign-repackage.spec.in
++++ b/pesign-repackage.spec.in
+@@ -126,7 +126,7 @@ sigs=($(find -type f -name '*.sig' -printf '%%P\n'))
+ for sig in "${sigs[@]}"; do
+ 	f=%buildroot/${sig%.sig}
+ 	case "/$sig" in
+-	*.ko.sig)
++	*.ko.sig|*.mod.sig)
+ 		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f"
+ 		;;
+ 	/boot/* | *.efi.sig | */lib/modules/*/vmlinu[xz].sig | */lib/modules/*/[Ii]mage.sig | */lib/modules/*/z[Ii]mage.sig)
+@@ -157,6 +157,26 @@ for sig in "${sigs[@]}"; do
+ 	*stage3.bin.sig)
+ 		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f"
+ 		;;
++	*grub.elf.sig)
++		sig_size="$(wc -c < "$sig")"
++		unsigned_grub_size="$(wc -c < "$f")"
++		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f" "$f".appendtest
++		signed_grub_size="$(wc -c < "$f".appendtest)"
++		rm "$f".appendtest
++		footer_size="$(expr "$signed_grub_size" - "$unsigned_grub_size" - "$sig_size")"
++		if ! [ $(expr "$sig_size" + "$footer_size") -le "@PESIGN_GRUB_RESERVATION@" ] ; then
++			echo "size of '$sig' ($sig_size) cannot fit into reservation @PESIGN_GRUB_RESERVATION@ (-$footer_size)"
++			exit 1
++		fi
++		sig_size="$(expr "@PESIGN_GRUB_RESERVATION@" - "$footer_size")"
++		truncate -s $sig_size "$sig"
++		/usr/lib/rpm/pesign/kernel-sign-file -i pkcs7 -s "$sig" sha256 "$cert" "$f"
++		grub_size="$(wc -c < "$f")"
++		if ! [ "$(expr "$unsigned_grub_size" + "@PESIGN_GRUB_RESERVATION@")" -eq "$grub_size" ] ; then
++			echo "The size of unsigned grub ($unsigned_grub_size) + reservation (@PESIGN_GRUB_RESERVATION@) does not add up to signed grub size ($grub_size)"
++			exit 1
++		fi
++		;;
+ 	*)
+ 		echo "Warning: unhandled signature: $sig" >&2
+ 	esac
+-- 
+2.34.1
+
