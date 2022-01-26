@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 26 07:44:48 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.16.3:
+  * v6.16.3
+  * Update CHANGELOG.md
+  * KawPow OpenCL: build next period only when it's not in cache
+  * KawPow OpenCL: use separate UV loop for building programs
+  * Update CHANGELOG.md
+  * Add missing DNS options to config example.
+  * Fixed GhostRider benchmark on single-core systems
+  * Fix for short responses from some Raptoreum pools
+  * Add support for client.reconnect method
+  * RandomX: don't restart mining threads when the seed changes
+  * GhostRidere: set correct priority for helper threads
+  * Update README.md
+  * Fixed cn-heavy in 32-bit builds
+  * Updated GhostRider documentation
+  * Fixed "READY threads X/X" display after algo switching
+  * v6.16.3-dev
+  * armv7 compilation fix
+
+-------------------------------------------------------------------
 Fri Dec  3 06:57:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.16.2:

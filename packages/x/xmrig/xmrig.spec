@@ -1,7 +1,7 @@
 #
 # spec file for package xmrig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xmrig
-Version:        6.16.2
+Version:        6.16.3
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
@@ -37,7 +37,6 @@ BuildRequires:  ninja
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Recommends:     libOpenCL1
-ExclusiveArch:  aarch64 %{ix86} x86_64
 %{?systemd_ordering}
 
 %description

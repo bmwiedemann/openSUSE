@@ -386,4 +386,29 @@
   * GhostRider: fixed invalid hashes on ARMv8</comment>
     <requestid>935377</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea24686c0480004cc497e9bf47e5d507</srcmd5>
+    <version>6.16.3</version>
+    <time>1643228822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.3:
+  * v6.16.3
+  * Update CHANGELOG.md
+  * KawPow OpenCL: build next period only when it's not in cache
+  * KawPow OpenCL: use separate UV loop for building programs
+  * Update CHANGELOG.md
+  * Add missing DNS options to config example.
+  * Fixed GhostRider benchmark on single-core systems
+  * Fix for short responses from some Raptoreum pools
+  * Add support for client.reconnect method
+  * RandomX: don't restart mining threads when the seed changes
+  * GhostRidere: set correct priority for helper threads
+  * Update README.md
+  * Fixed cn-heavy in 32-bit builds
+  * Updated GhostRider documentation
+  * Fixed &quot;READY threads X/X&quot; display after algo switching
+  * v6.16.3-dev
+  * armv7 compilation fix</comment>
+    <requestid>949177</requestid>
+  </revision>
 </revisionlist>

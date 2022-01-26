@@ -15,7 +15,4 @@
   <service name="set_version" mode="disabled">
     <param name="file">xmrig.spec</param>
   </service>
-  <service name="format_spec_file" mode="disabled">
-    <param name="specfile">xmrig.spec</param>
-  </service>
 </services>
