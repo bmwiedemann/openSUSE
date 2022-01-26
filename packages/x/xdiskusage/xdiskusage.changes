@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 25 10:54:52 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 1.60
+  * Fixed systems that don't have getdelim (ie non-Linux) 
+  * 'q' menu item to exit (Esc key also works)
+  * Copy menu item sets X clipboard as well as X selection
+  * Linux-only fix for files with newlines in their name
+    (now fixed for non-Linux)
+  * Browser selects directories
+  * Improved disk browser that does not truncate disk names
+  * Fixed the "-" switch that makes it pipe du information from stdin
+  * Build uses fltk-config so it can be compiled on OSX
+  * Added "-o file.ps" to directly print a postscript image without
+    using the gui at all. $DISPLAY does not have to be set for this.  
+
+-------------------------------------------------------------------
 Thu May  6 13:55:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.54
