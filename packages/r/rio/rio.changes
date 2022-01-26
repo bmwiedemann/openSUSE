@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat May 15 13:12:05 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of this package, based on v0.8.0
+- update to v0.8.0:
+  Enhancements and bug fixes
+  - Update installed linkerd version to stable-2.8.1
+  - Update installed gloo version to 1.4.15
+  - Update tekton version to v0.16.3
+  - Letsencrypt controller is running inside Rio instead of cert-manager in order to avoid conflicts
+  - Fixed an issue where rio webhook fails to run in k8s 1.19. #1058
