@@ -1,7 +1,7 @@
 #
 # spec file for package peazip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.3.0
+%define         _helpver 8.4.0
 Name:           peazip
-Version:        8.3.0
+Version:        8.4.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -112,9 +112,9 @@ mkdir -p %{buildroot}%{_peazipinstalldir}
 cp -r res %{buildroot}%{_peazipinstalldir}
 cp %{SOURCE1} %{buildroot}%{_peazipinstalldir}/res
 
-mkdir -p %{buildroot}%{_peazipinstalldir}/res/7z
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/7z
 mkdir -p %{buildroot}%{_peazipinstalldir}/res/upx
-ln -s %{_bindir}/7z  %{buildroot}%{_peazipinstalldir}/res/7z/7z
+ln -s %{_bindir}/7z  %{buildroot}%{_peazipinstalldir}/res/bin/7z/7z
 ln -s %{_bindir}/upx  %{buildroot}%{_peazipinstalldir}/res/upx/upx
 
 mkdir -p %{buildroot}%{_peazipinstalldir}/res/arc

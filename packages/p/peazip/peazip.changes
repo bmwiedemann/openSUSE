@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jan 26 13:05:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.4.0:
+  BACKEND
+    * Pea 1.05
+    * 7z 21.06 (console) used by default on Darwin/macOS, Linux, and Windows
+    * p7zip, and szcnick's p7zip (fork of p7zip) syntax is fully supported
+      and can be used as alternative replacing (peazip)/res/bin/7z/7z binary
+  CODE
+    * Fixed issues when temporary work path is set to user's temp
+    * Fixed smart extraction not able to remove extra level of nesting
+  FILE MANAGER
+    * Added single and multi core performances benchmark, in main menu Tools > System benchmark (pea)
+    * The benchmark performs integer and floating point arithmetic operations
+    * Benchmark result unit is arbitrary and only meant to allow comparison between different platforms
+    * For reference 2020 MacBook Air M1 score is 100 (single core) and 515 (multi core) for aarm64 build
+    * (Darwin/macOS, Linux) File manager columns' menu is available righclicking status bar
+    * Added links to Volumes, Applications, and System/Applications in navigation treeview
+    * Added auto-configured custom apps for "Open with" submenu
+    * Open command prompt here function now working
+    * PeaUtils launching from PeaZip now working
+    * Language can now be changed from dropdown menu from General settings tab (main menu, Options > Settings)
+    * Previous method allowing to manually select the language file is still available
+      from the link before the dropdown menu
+  EXTRACTION and ARCHIVING
+    * New option to not stop sequences of archive test tasks unless an error is encountered
+    * From main menu, Options > Settings, Advanced tab set "Stop to inspect report for error,
+      list" instead of default value "Stop to inspect report for error, list, test"
+    * With this setting, a successful archive test closes on completion unless an error is foud in the archive and test fails,
+      in which case error message (and full report) is shown to user and needs to be dismissed
+      before continuing with following test in sequence
+    * Improved management of temporary work files
+    * 7z/p7zip work files during compression are now inside peazip-tmp subpath,
+      if work directory is set to Custom or User's tem
+
+-------------------------------------------------------------------
+Tue Jan 25 14:52:26 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- 7z is expected to be in ../res/bin/7z
+  * this is mentioned in comment 5 of bsc#1195041 (even if the bug
+    itself is about something else)
+
+-------------------------------------------------------------------
 Wed Nov 17 06:50:05 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.3.0:
