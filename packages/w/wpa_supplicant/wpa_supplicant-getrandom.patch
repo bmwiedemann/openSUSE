@@ -1,7 +1,7 @@
-Index: wpa_supplicant-2.9/src/utils/os_unix.c
+Index: wpa_supplicant-2.10/src/utils/os_unix.c
 ===================================================================
---- wpa_supplicant-2.9.orig/src/utils/os_unix.c
-+++ wpa_supplicant-2.9/src/utils/os_unix.c
+--- wpa_supplicant-2.10.orig/src/utils/os_unix.c
++++ wpa_supplicant-2.10/src/utils/os_unix.c
 @@ -6,11 +6,15 @@
   * See README for more details.
   */
@@ -19,7 +19,7 @@ Index: wpa_supplicant-2.9/src/utils/os_unix.c
  #ifdef ANDROID
  #include <sys/capability.h>
  #include <sys/prctl.h>
-@@ -257,6 +261,10 @@ int os_get_random(unsigned char *buf, si
+@@ -263,6 +267,10 @@ int os_get_random(unsigned char *buf, si
  		buf[i] = i & 0xff;
  	return 0;
  #else /* TEST_FUZZ */
@@ -30,7 +30,7 @@ Index: wpa_supplicant-2.9/src/utils/os_unix.c
  	FILE *f;
  	size_t rc;
  
-@@ -269,10 +277,13 @@ int os_get_random(unsigned char *buf, si
+@@ -275,10 +283,13 @@ int os_get_random(unsigned char *buf, si
  		return -1;
  	}
  

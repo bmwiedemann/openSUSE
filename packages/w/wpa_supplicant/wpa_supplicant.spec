@@ -1,7 +1,7 @@
 #
 # spec file for package wpa_supplicant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wpa_supplicant
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        WPA supplicant implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -40,11 +40,6 @@ Patch3:         wpa_supplicant-alloc_size.patch
 Patch4:         wpa_supplicant-getrandom.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
 Patch6:         restore-old-dbus-interface.patch
-Patch7:         CVE-2019-16275.patch
-Patch8:         wpa_supplicant-p2p_iname_size.diff
-Patch9:         CVE-2021-0326.patch
-Patch10:        CVE-2021-27803.patch
-Patch11:        CVE-2021-30004.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros

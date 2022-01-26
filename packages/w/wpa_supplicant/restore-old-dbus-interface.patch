@@ -10,11 +10,11 @@ Date:   Fri Apr 17 10:34:30 2020 +0200
     wicked still uses the old dbus interface
     and porting it is hard.
 
-diff --git a/wpa_supplicant/Android.mk b/wpa_supplicant/Android.mk
-index b5d982de3..37be1ce35 100644
---- a/wpa_supplicant/Android.mk
-+++ b/wpa_supplicant/Android.mk
-@@ -1448,25 +1448,44 @@ endif
+Index: wpa_supplicant-2.10/wpa_supplicant/Android.mk
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/Android.mk
++++ wpa_supplicant-2.10/wpa_supplicant/Android.mk
+@@ -1471,25 +1471,44 @@ endif
  OBJS += ctrl_iface.c ctrl_iface_$(CONFIG_CTRL_IFACE).c
  endif
  
@@ -69,11 +69,11 @@ index b5d982de3..37be1ce35 100644
  ifdef CONFIG_CTRL_IFACE_BINDER
  WPA_SUPPLICANT_USE_BINDER=y
  L_CFLAGS += -DCONFIG_BINDER -DCONFIG_CTRL_IFACE_BINDER
-diff --git a/wpa_supplicant/Makefile b/wpa_supplicant/Makefile
-index f1384d5fa..9555495e1 100644
---- a/wpa_supplicant/Makefile
-+++ b/wpa_supplicant/Makefile
-@@ -55,6 +55,7 @@ ALL += systemd/wpa_supplicant.service
+Index: wpa_supplicant-2.10/wpa_supplicant/Makefile
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/Makefile
++++ wpa_supplicant-2.10/wpa_supplicant/Makefile
+@@ -9,6 +9,7 @@ ALL += systemd/wpa_supplicant.service
  ALL += systemd/wpa_supplicant@.service
  ALL += systemd/wpa_supplicant-nl80211@.service
  ALL += systemd/wpa_supplicant-wired@.service
@@ -81,7 +81,7 @@ index f1384d5fa..9555495e1 100644
  ALL += dbus/fi.w1.wpa_supplicant1.service
  ifdef CONFIG_BUILD_WPA_CLIENT_SO
  ALL += libwpa_client.so
-@@ -1605,17 +1606,35 @@ endif
+@@ -1606,17 +1607,35 @@ endif
  OBJS += ctrl_iface.o ctrl_iface_$(CONFIG_CTRL_IFACE).o
  endif
  
@@ -124,7 +124,7 @@ index f1384d5fa..9555495e1 100644
  endif
  ifndef DBUS_LIBS
  DBUS_LIBS := $(shell $(PKG_CONFIG) --libs dbus-1)
-@@ -1624,13 +1643,22 @@ ifndef DBUS_INCLUDE
+@@ -1625,13 +1644,22 @@ ifndef DBUS_INCLUDE
  DBUS_INCLUDE := $(shell $(PKG_CONFIG) --cflags dbus-1)
  endif
  ifdef CONFIG_CTRL_IFACE_DBUS_INTRO
@@ -151,8 +151,8 @@ index f1384d5fa..9555495e1 100644
  ifdef CONFIG_READLINE
  OBJS_c += ../src/utils/edit_readline.o
  LIBS_c += -lreadline -lncurses
-@@ -1992,11 +2020,13 @@ else
- endif
+@@ -2015,11 +2043,13 @@ eap_gpsk.so: $(SRC_EAP_GPSK)
+ 	@$(E) "  CC/LD " $@
  
  %.service: %.service.in
 -	$(Q)sed -e 's|\@BINDIR\@|$(BINDIR)|g' $< >$@
@@ -167,11 +167,11 @@ index f1384d5fa..9555495e1 100644
  	@$(E) "  sed" $<
  
  wpa_supplicant.exe: wpa_supplicant
-diff --git a/wpa_supplicant/android.config b/wpa_supplicant/android.config
-index 6536c110a..854f48167 100644
---- a/wpa_supplicant/android.config
-+++ b/wpa_supplicant/android.config
-@@ -327,6 +327,10 @@ CONFIG_IEEE80211W=y
+Index: wpa_supplicant-2.10/wpa_supplicant/android.config
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/android.config
++++ wpa_supplicant-2.10/wpa_supplicant/android.config
+@@ -323,6 +323,10 @@ CONFIG_L2_PACKET=linux
  #CONFIG_NDIS_EVENTS_INTEGRATED=y
  #PLATFORMSDKLIB="/opt/Program Files/Microsoft Platform SDK/Lib"
  
@@ -182,10 +182,10 @@ index 6536c110a..854f48167 100644
  # Add support for new DBus control interface
  # (fi.w1.hostap.wpa_supplicant1)
  #CONFIG_CTRL_IFACE_DBUS_NEW=y
-diff --git a/wpa_supplicant/dbus/Makefile b/wpa_supplicant/dbus/Makefile
-index 4d8700428..f355ebef5 100644
---- a/wpa_supplicant/dbus/Makefile
-+++ b/wpa_supplicant/dbus/Makefile
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/Makefile
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/dbus/Makefile
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/Makefile
 @@ -36,6 +36,7 @@ CFLAGS += -DCONFIG_WPS
  endif
  
@@ -211,10 +211,10 @@ index 4d8700428..f355ebef5 100644
  LIB_OBJS += dbus_new_handlers_wps.o
  endif
  
-diff --git a/wpa_supplicant/dbus/dbus-wpa_supplicant.conf b/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
-index e81b495f4..382dcb343 100644
---- a/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
-+++ b/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
 @@ -3,6 +3,11 @@
   "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
  <busconfig>
@@ -237,10 +237,10 @@ index e81b495f4..382dcb343 100644
                  <deny own="fi.w1.wpa_supplicant1"/>
                  <deny send_destination="fi.w1.wpa_supplicant1"/>
                  <deny receive_sender="fi.w1.wpa_supplicant1" receive_type="signal"/>
-diff --git a/wpa_supplicant/dbus/dbus_common.c b/wpa_supplicant/dbus/dbus_common.c
-index efa6c7b20..7ef6cad62 100644
---- a/wpa_supplicant/dbus/dbus_common.c
-+++ b/wpa_supplicant/dbus/dbus_common.c
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_common.c
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/dbus/dbus_common.c
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_common.c
 @@ -16,6 +16,7 @@
  #include "dbus_common.h"
  #include "dbus_common_i.h"
@@ -249,7 +249,7 @@ index efa6c7b20..7ef6cad62 100644
  #include "../wpa_supplicant_i.h"
  
  
-@@ -350,6 +351,9 @@ struct wpas_dbus_priv * wpas_dbus_init(struct wpa_global *global)
+@@ -351,6 +352,9 @@ struct wpas_dbus_priv * wpas_dbus_init(s
  #ifdef CONFIG_CTRL_IFACE_DBUS_NEW
  	    wpas_dbus_ctrl_iface_init(priv) < 0 ||
  #endif /* CONFIG_CTRL_IFACE_DBUS_NEW */
@@ -259,7 +259,7 @@ index efa6c7b20..7ef6cad62 100644
  	    wpas_dbus_init_common_finish(priv) < 0) {
  		wpas_dbus_deinit(priv);
  		return NULL;
-@@ -368,5 +372,9 @@ void wpas_dbus_deinit(struct wpas_dbus_priv *priv)
+@@ -369,5 +373,9 @@ void wpas_dbus_deinit(struct wpas_dbus_p
  	wpas_dbus_ctrl_iface_deinit(priv);
  #endif /* CONFIG_CTRL_IFACE_DBUS_NEW */
  
@@ -269,11 +269,10 @@ index efa6c7b20..7ef6cad62 100644
 +
  	wpas_dbus_deinit_common(priv);
  }
-diff --git a/wpa_supplicant/dbus/dbus_old.c b/wpa_supplicant/dbus/dbus_old.c
-new file mode 100644
-index 000000000..88227af7c
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old.c
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/dbus/dbus_old.c
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old.c
 @@ -0,0 +1,745 @@
 +/*
 + * WPA Supplicant / dbus-based control interface
@@ -1020,11 +1019,10 @@ index 000000000..88227af7c
 +	}
 +	return NULL;
 +}
-diff --git a/wpa_supplicant/dbus/dbus_old.h b/wpa_supplicant/dbus/dbus_old.h
-new file mode 100644
-index 000000000..451a9f827
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old.h
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/dbus/dbus_old.h
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old.h
 @@ -0,0 +1,142 @@
 +/*
 + * WPA Supplicant / dbus-based control interface
@@ -1168,11 +1166,10 @@ index 000000000..451a9f827
 +#endif /* CONFIG_CTRL_IFACE_DBUS */
 +
 +#endif /* CTRL_IFACE_DBUS_H */
-diff --git a/wpa_supplicant/dbus/dbus_old_handlers.c b/wpa_supplicant/dbus/dbus_old_handlers.c
-new file mode 100644
-index 000000000..e540832f2
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old_handlers.c
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/dbus/dbus_old_handlers.c
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old_handlers.c
 @@ -0,0 +1,1393 @@
 +/*
 + * WPA Supplicant / dbus-based control interface
@@ -2567,11 +2564,10 @@ index 000000000..e540832f2
 +
 +	return wpas_dbus_new_success_reply(message);
 +}
-diff --git a/wpa_supplicant/dbus/dbus_old_handlers.h b/wpa_supplicant/dbus/dbus_old_handlers.h
-new file mode 100644
-index 000000000..e60ad06a0
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old_handlers.h
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/dbus/dbus_old_handlers.h
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old_handlers.h
 @@ -0,0 +1,101 @@
 +/*
 + * WPA Supplicant / dbus-based control interface
@@ -2674,11 +2670,10 @@ index 000000000..e60ad06a0
 +
 +#endif /* CTRL_IFACE_DBUS_HANDLERS_H */
 +
-diff --git a/wpa_supplicant/dbus/dbus_old_handlers_wps.c b/wpa_supplicant/dbus/dbus_old_handlers_wps.c
-new file mode 100644
-index 000000000..6c8405b85
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old_handlers_wps.c
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/dbus/dbus_old_handlers_wps.c
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/dbus_old_handlers_wps.c
 @@ -0,0 +1,156 @@
 +/*
 + * WPA Supplicant / dbus-based control interface (WPS)
@@ -2836,22 +2831,21 @@ index 000000000..6c8405b85
 +
 +	return wpas_dbus_new_success_reply(message);
 +}
-diff --git a/wpa_supplicant/dbus/fi.epitest.hostap.WPASupplicant.service.in b/wpa_supplicant/dbus/fi.epitest.hostap.WPASupplicant.service.in
-new file mode 100644
-index 000000000..a75918f93
+Index: wpa_supplicant-2.10/wpa_supplicant/dbus/fi.epitest.hostap.WPASupplicant.service.in
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/dbus/fi.epitest.hostap.WPASupplicant.service.in
++++ wpa_supplicant-2.10/wpa_supplicant/dbus/fi.epitest.hostap.WPASupplicant.service.in
 @@ -0,0 +1,5 @@
 +[D-BUS Service]
 +Name=fi.epitest.hostap.WPASupplicant
 +Exec=@BINDIR@/wpa_supplicant -u
 +User=root
 +SystemdService=wpa_supplicant.service
-diff --git a/wpa_supplicant/defconfig b/wpa_supplicant/defconfig
-index cdfb1974d..57550d495 100644
---- a/wpa_supplicant/defconfig
-+++ b/wpa_supplicant/defconfig
-@@ -365,6 +365,10 @@ CONFIG_IEEE80211W=y
+Index: wpa_supplicant-2.10/wpa_supplicant/defconfig
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/defconfig
++++ wpa_supplicant-2.10/wpa_supplicant/defconfig
+@@ -361,6 +361,10 @@ CONFIG_BACKEND=file
  #CONFIG_NDIS_EVENTS_INTEGRATED=y
  #PLATFORMSDKLIB="/opt/Program Files/Microsoft Platform SDK/Lib"
  
@@ -2860,13 +2854,13 @@ index cdfb1974d..57550d495 100644
 +#CONFIG_CTRL_IFACE_DBUS=y
 +
  # Add support for new DBus control interface
- # (fi.w1.hostap.wpa_supplicant1)
+ # (fi.w1.wpa_supplicant1)
  CONFIG_CTRL_IFACE_DBUS_NEW=y
-diff --git a/wpa_supplicant/doc/docbook/wpa_supplicant.sgml b/wpa_supplicant/doc/docbook/wpa_supplicant.sgml
-index aaff15002..ebf102edf 100644
---- a/wpa_supplicant/doc/docbook/wpa_supplicant.sgml
-+++ b/wpa_supplicant/doc/docbook/wpa_supplicant.sgml
-@@ -471,7 +471,7 @@
+Index: wpa_supplicant-2.10/wpa_supplicant/doc/docbook/wpa_supplicant.sgml
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/doc/docbook/wpa_supplicant.sgml
++++ wpa_supplicant-2.10/wpa_supplicant/doc/docbook/wpa_supplicant.sgml
+@@ -475,7 +475,7 @@
  	  <para>Enable DBus control interface. If enabled, interface
  	  definitions may be omitted. (This is only available
  	  if <command>wpa_supplicant</command> was built with
@@ -2875,11 +2869,10 @@ index aaff15002..ebf102edf 100644
  	</listitem>
        </varlistentry>
  
-diff --git a/wpa_supplicant/examples/wpas-test.py b/wpa_supplicant/examples/wpas-test.py
-new file mode 100755
-index 000000000..bdd16a8a8
+Index: wpa_supplicant-2.10/wpa_supplicant/examples/wpas-test.py
+===================================================================
 --- /dev/null
-+++ b/wpa_supplicant/examples/wpas-test.py
++++ wpa_supplicant-2.10/wpa_supplicant/examples/wpas-test.py
 @@ -0,0 +1,91 @@
 +#!/usr/bin/python
 +
@@ -2972,10 +2965,10 @@ index 000000000..bdd16a8a8
 +if __name__ == "__main__":
 +	main()
 +
-diff --git a/wpa_supplicant/main.c b/wpa_supplicant/main.c
-index 51a8a0298..e08c2fd26 100644
---- a/wpa_supplicant/main.c
-+++ b/wpa_supplicant/main.c
+Index: wpa_supplicant-2.10/wpa_supplicant/main.c
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/main.c
++++ wpa_supplicant-2.10/wpa_supplicant/main.c
 @@ -28,9 +28,9 @@ static void usage(void)
  	       "s"
  #endif /* CONFIG_DEBUG_SYSLOG */
@@ -3014,10 +3007,10 @@ index 51a8a0298..e08c2fd26 100644
  		case 'v':
  			printf("%s\n", wpa_supplicant_version);
  			exitcode = 0;
-diff --git a/wpa_supplicant/notify.c b/wpa_supplicant/notify.c
-index e41d7c41c..f47f9bb76 100644
---- a/wpa_supplicant/notify.c
-+++ b/wpa_supplicant/notify.c
+Index: wpa_supplicant-2.10/wpa_supplicant/notify.c
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/notify.c
++++ wpa_supplicant-2.10/wpa_supplicant/notify.c
 @@ -15,6 +15,7 @@
  #include "wps_supplicant.h"
  #include "binder/binder.h"
@@ -3026,7 +3019,7 @@ index e41d7c41c..f47f9bb76 100644
  #include "dbus/dbus_new.h"
  #include "rsn_supp/wpa.h"
  #include "fst/fst.h"
-@@ -27,13 +28,13 @@
+@@ -28,13 +29,13 @@
  
  int wpas_notify_supplicant_initialized(struct wpa_global *global)
  {
@@ -3042,7 +3035,7 @@ index e41d7c41c..f47f9bb76 100644
  
  #ifdef CONFIG_BINDER
  	global->binder = wpas_binder_init(global);
-@@ -47,10 +48,10 @@ int wpas_notify_supplicant_initialized(struct wpa_global *global)
+@@ -48,10 +49,10 @@ int wpas_notify_supplicant_initialized(s
  
  void wpas_notify_supplicant_deinitialized(struct wpa_global *global)
  {
@@ -3055,7 +3048,7 @@ index e41d7c41c..f47f9bb76 100644
  
  #ifdef CONFIG_BINDER
  	if (global->binder)
-@@ -64,6 +65,9 @@ int wpas_notify_iface_added(struct wpa_supplicant *wpa_s)
+@@ -65,6 +66,9 @@ int wpas_notify_iface_added(struct wpa_s
  	if (wpa_s->p2p_mgmt)
  		return 0;
  
@@ -3065,7 +3058,7 @@ index e41d7c41c..f47f9bb76 100644
  	if (wpas_dbus_register_interface(wpa_s))
  		return -1;
  
-@@ -76,6 +80,9 @@ void wpas_notify_iface_removed(struct wpa_supplicant *wpa_s)
+@@ -77,6 +81,9 @@ void wpas_notify_iface_removed(struct wp
  	if (wpa_s->p2p_mgmt)
  		return;
  
@@ -3075,7 +3068,7 @@ index e41d7c41c..f47f9bb76 100644
  	/* unregister interface in new DBus ctrl iface */
  	wpas_dbus_unregister_interface(wpa_s);
  }
-@@ -88,6 +95,10 @@ void wpas_notify_state_changed(struct wpa_supplicant *wpa_s,
+@@ -89,6 +96,10 @@ void wpas_notify_state_changed(struct wp
  	if (wpa_s->p2p_mgmt)
  		return;
  
@@ -3086,7 +3079,7 @@ index e41d7c41c..f47f9bb76 100644
  	/* notify the new DBus API */
  	wpas_dbus_signal_prop_changed(wpa_s, WPAS_DBUS_PROP_STATE);
  
-@@ -257,6 +268,9 @@ void wpas_notify_scanning(struct wpa_supplicant *wpa_s)
+@@ -258,6 +269,9 @@ void wpas_notify_scanning(struct wpa_sup
  	if (wpa_s->p2p_mgmt)
  		return;
  
@@ -3096,7 +3089,7 @@ index e41d7c41c..f47f9bb76 100644
  	/* notify the new DBus API */
  	wpas_dbus_signal_prop_changed(wpa_s, WPAS_DBUS_PROP_SCANNING);
  }
-@@ -276,6 +290,9 @@ void wpas_notify_scan_results(struct wpa_supplicant *wpa_s)
+@@ -277,6 +291,9 @@ void wpas_notify_scan_results(struct wpa
  	if (wpa_s->p2p_mgmt)
  		return;
  
@@ -3106,7 +3099,7 @@ index e41d7c41c..f47f9bb76 100644
  	wpas_wps_notify_scan_results(wpa_s);
  }
  
-@@ -287,6 +304,8 @@ void wpas_notify_wps_credential(struct wpa_supplicant *wpa_s,
+@@ -288,6 +305,8 @@ void wpas_notify_wps_credential(struct w
  		return;
  
  #ifdef CONFIG_WPS
@@ -3115,21 +3108,21 @@ index e41d7c41c..f47f9bb76 100644
  	/* notify the new DBus API */
  	wpas_dbus_signal_wps_cred(wpa_s, cred);
  #endif /* CONFIG_WPS */
-@@ -818,6 +837,9 @@ void wpas_notify_certification(struct wpa_supplicant *wpa_s,
+@@ -831,6 +850,9 @@ void wpas_notify_certification(struct wp
  		wpa_msg(wpa_s, MSG_INFO, WPA_EVENT_EAP_PEER_ALT
  			"depth=%d %s", cert->depth, cert->altsubject[i]);
  
 +	/* notify the old DBus API */
-+	wpa_supplicant_dbus_notify_certification(wpa_s, depth, subject,
-+						 cert_hash, cert);
++	wpa_supplicant_dbus_notify_certification(wpa_s, cert->depth, cert->subject,
++						 cert_hash, cert->cert);
  	/* notify the new DBus API */
  	wpas_dbus_signal_certification(wpa_s, cert->depth, cert->subject,
  				       cert->altsubject, cert->num_altsubject,
-diff --git a/wpa_supplicant/systemd/wpa_supplicant.service.in b/wpa_supplicant/systemd/wpa_supplicant.service.in
-index 75a37a8cd..bc5d49af8 100644
---- a/wpa_supplicant/systemd/wpa_supplicant.service.in
-+++ b/wpa_supplicant/systemd/wpa_supplicant.service.in
-@@ -5,9 +5,9 @@ Wants=network.target
+Index: wpa_supplicant-2.10/wpa_supplicant/systemd/wpa_supplicant.service.in
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/systemd/wpa_supplicant.service.in
++++ wpa_supplicant-2.10/wpa_supplicant/systemd/wpa_supplicant.service.in
+@@ -6,9 +6,9 @@ Wants=network.target
  
  [Service]
  Type=dbus
@@ -3141,11 +3134,11 @@ index 75a37a8cd..bc5d49af8 100644
  WantedBy=multi-user.target
 -Alias=dbus-fi.w1.wpa_supplicant1.service
 +Alias=dbus-@DBUS_INTERFACE@.service
-diff --git a/wpa_supplicant/wpa_supplicant_i.h b/wpa_supplicant/wpa_supplicant_i.h
-index 8a4bdf8cb..c7b131cc1 100644
---- a/wpa_supplicant/wpa_supplicant_i.h
-+++ b/wpa_supplicant/wpa_supplicant_i.h
-@@ -504,6 +504,9 @@ struct wpa_supplicant {
+Index: wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant_i.h
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/wpa_supplicant_i.h
++++ wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant_i.h
+@@ -706,6 +706,9 @@ struct wpa_supplicant {
  #ifdef CONFIG_MATCH_IFACE
  	int matched;
  #endif /* CONFIG_MATCH_IFACE */
@@ -3155,26 +3148,3 @@ index 8a4bdf8cb..c7b131cc1 100644
  #ifdef CONFIG_CTRL_IFACE_DBUS_NEW
  	char *dbus_new_path;
  	char *dbus_groupobj_path;
-commit 2df86203526b872c3c17cf135340b9b3c8c35594
-Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
-Date:   Fri Apr 17 10:46:56 2020 +0200
-
-    Fixup ^ for 2019 API changes
-    
-    From bc0634da4a3ef468f3142fb39ebdabb08566f411
-
-diff --git a/wpa_supplicant/notify.c b/wpa_supplicant/notify.c
-index f47f9bb76..2db8bc850 100644
---- a/wpa_supplicant/notify.c
-+++ b/wpa_supplicant/notify.c
-@@ -838,8 +838,8 @@ void wpas_notify_certification(struct wpa_supplicant *wpa_s,
- 			"depth=%d %s", cert->depth, cert->altsubject[i]);
- 
- 	/* notify the old DBus API */
--	wpa_supplicant_dbus_notify_certification(wpa_s, depth, subject,
--						 cert_hash, cert);
-+	wpa_supplicant_dbus_notify_certification(wpa_s, cert->depth, cert->subject,
-+						 cert_hash, cert->cert);
- 	/* notify the new DBus API */
- 	wpas_dbus_signal_certification(wpa_s, cert->depth, cert->subject,
- 				       cert->altsubject, cert->num_altsubject,

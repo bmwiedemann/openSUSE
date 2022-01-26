@@ -1,6 +1,8 @@
---- wpa_supplicant-2.4.orig/src/utils/os.h
-+++ wpa_supplicant-2.4/src/utils/os.h
-@@ -253,7 +253,7 @@ int os_file_exists(const char *fname);
+Index: wpa_supplicant-2.10/src/utils/os.h
+===================================================================
+--- wpa_supplicant-2.10.orig/src/utils/os.h
++++ wpa_supplicant-2.10/src/utils/os.h
+@@ -260,7 +260,7 @@ int os_fdatasync(FILE *stream);
   *
   * Caller is responsible for freeing the returned buffer with os_free().
   */
@@ -9,7 +11,7 @@
  
  /**
   * os_calloc - Allocate and zero memory for an array
-@@ -267,6 +267,8 @@ void * os_zalloc(size_t size);
+@@ -274,6 +274,8 @@ void * os_zalloc(size_t size);
   *
   * Caller is responsible for freeing the returned buffer with os_free().
   */

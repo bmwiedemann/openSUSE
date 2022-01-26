@@ -9,12 +9,12 @@ Subject: [PATCH] dump certificate as PEM in debug mode
  src/utils/wpa_debug.h    |  8 ++++++++
  3 files changed, 26 insertions(+)
 
-Index: wpa_supplicant-2.4/src/crypto/tls_openssl.c
+Index: wpa_supplicant-2.10/src/crypto/tls_openssl.c
 ===================================================================
---- wpa_supplicant-2.4.orig/src/crypto/tls_openssl.c
-+++ wpa_supplicant-2.4/src/crypto/tls_openssl.c
-@@ -1484,6 +1484,19 @@ static int tls_verify_cb(int preverify_o
- 					 SSL_get_ex_data_X509_STORE_CTX_idx());
+--- wpa_supplicant-2.10.orig/src/crypto/tls_openssl.c
++++ wpa_supplicant-2.10/src/crypto/tls_openssl.c
+@@ -2361,6 +2361,19 @@ static int tls_verify_cb(int preverify_o
+ 	debug_print_cert(err_cert, buf);
  	X509_NAME_oneline(X509_get_subject_name(err_cert), buf, sizeof(buf));
  
 +	if (wpa_debug_enabled(MSG_DEBUG)) {
@@ -33,11 +33,11 @@ Index: wpa_supplicant-2.4/src/crypto/tls_openssl.c
  	conn = SSL_get_app_data(ssl);
  	if (conn == NULL)
  		return 0;
-Index: wpa_supplicant-2.4/src/utils/wpa_debug.c
+Index: wpa_supplicant-2.10/src/utils/wpa_debug.c
 ===================================================================
---- wpa_supplicant-2.4.orig/src/utils/wpa_debug.c
-+++ wpa_supplicant-2.4/src/utils/wpa_debug.c
-@@ -62,6 +62,11 @@ static FILE *out_file = NULL;
+--- wpa_supplicant-2.10.orig/src/utils/wpa_debug.c
++++ wpa_supplicant-2.10/src/utils/wpa_debug.c
+@@ -66,6 +66,11 @@ static int wpa_to_android_level(int leve
  #endif /* CONFIG_DEBUG_FILE */
  
  
@@ -49,11 +49,11 @@ Index: wpa_supplicant-2.4/src/utils/wpa_debug.c
  void wpa_debug_print_timestamp(void)
  {
  #ifndef CONFIG_ANDROID_LOG
-Index: wpa_supplicant-2.4/src/utils/wpa_debug.h
+Index: wpa_supplicant-2.10/src/utils/wpa_debug.h
 ===================================================================
---- wpa_supplicant-2.4.orig/src/utils/wpa_debug.h
-+++ wpa_supplicant-2.4/src/utils/wpa_debug.h
-@@ -24,6 +24,7 @@ enum {
+--- wpa_supplicant-2.10.orig/src/utils/wpa_debug.h
++++ wpa_supplicant-2.10/src/utils/wpa_debug.h
+@@ -25,6 +25,7 @@ enum {
  
  #ifdef CONFIG_NO_STDOUT_DEBUG
  
@@ -61,7 +61,7 @@ Index: wpa_supplicant-2.4/src/utils/wpa_debug.h
  #define wpa_debug_print_timestamp() do { } while (0)
  #define wpa_printf(args...) do { } while (0)
  #define wpa_hexdump(l,t,b,le) do { } while (0)
-@@ -50,6 +51,13 @@ void wpa_debug_close_file(void);
+@@ -51,6 +52,13 @@ void wpa_debug_close_file(void);
  void wpa_debug_setup_stdout(void);
  
  /**
