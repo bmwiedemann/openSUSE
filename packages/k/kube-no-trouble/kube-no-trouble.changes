@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Jan 05 13:21:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.5.1:
+  * This release fixes a few issues, most notably broken MacOS ARM binary (#220) and broken additional kind (-a) functionality (#209).
+  * Fixes:
+    - Fix additional filter (209 by stepanstipl)
+    - Fix since output format (225 by stepanstipl)
+    - Fix broken MacOS binary (via 220 by david-doit-intl)
+  * Internal/Other:
+    - Remove upx (220 by david-doit-intl)
+    - dep: Go bump github.com/open-policy-agent/opa from 0.28.0 to 0.31.0 (199 by dependabot)
+    - dep: Go bump github.com/open-policy-agent/opa from 0.31.0 to 0.33.1 (222 by dependabot)
+    - dep: Golang 1.17 (219 by david-doit-intl)
+    - docs: Add logos (203 by stepanstipl)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:15:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.5.0:
+  * The main theme of this release is increased coverage - namely resources that will be removed in Kubernetes versions 1.22 and 1.25 (#156, #159, #160, #163, #165, #166, #168, #169, #170, #171, #172, #173, #174, #175).
+  * We also worked on making the tool more user friendly and useable out of the box:
+    - Detecting K8s version (#139) and display only relevant results (#182)
+    - Support for multiple kubeconfig files (#191) and selecting K8S context (#194)
+    - Building ARM binaries for Linux and Mac (#133)
+  * Fixed a few bugs too, and increased test coverage, sped up build process. And bIg clap to @david-doit-intl for laying out foundations for integration testing (#152).
+
+-------------------------------------------------------------------
+Wed May 26 19:05:10 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package kube-no-trouble
