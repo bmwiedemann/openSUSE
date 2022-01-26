@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwosc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,16 @@
 # Disable python2 until py2 tests are fixed
 %define         skip_python2 1
 Name:           python-gwosc
-Version:        0.5.6
+Version:        0.6.1
 Release:        0
 Summary:        Python interface to the Gravitational-Wave Open Data Center archive
 License:        MIT
 URL:            https://gwosc.readthedocs.io/en/latest/
 # Don't use sources directly from github, see https://github.com/gwpy/gwosc/issues/55
 Source:         https://pypi.io/packages/source/g/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION For tests
