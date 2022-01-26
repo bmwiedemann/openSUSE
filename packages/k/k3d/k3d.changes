@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Dec 19 11:48:18 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 5.2.2:
+  * v5.2.2: changelog
+  * Removing non-existing cluster via configuration
+  * build(deps): bump mkdocs from 1.2.2 to 1.2.3 in /docs
+  * docs: add page about k3d concepts (incl. nodefilters) (#888)
+  * docs/faq: enhance example of enabling ephemeral containers
+  * docs: add serverwentdown as a contributor for code (#883)
+  * docs: add sbaier1 as a contributor for code (#882)
+  * fix(image-loading): mitigate tar load problem (#881)
+
+-------------------------------------------------------------------
+Wed Dec 08 00:54:45 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 5.2.1:
+  * v5.2.1: changelog
+  * fix: available hardcoded K3s version
+  * [Fix] only replace default api host with docker host (#879)
+  * [Enhancement] Improved Podman compatibility (#868)
+  * waitForLogs: enrich error with scanner error if any
+  * Readme: cleanup Release overview
+
+-------------------------------------------------------------------
+Mon Dec 06 11:31:49 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 5.2.0:
+  * v5.2.0: changelog
+  * v5.2.0: docgen
+  * GetDockerHost to return host.docker.internal if DfD and local connection (and it's resolvable)
+  * getHostIP: fix failing on DfD and init new host.k3d.internal injection
+  * [Feature] Add command to list image tags (#870)
+  * [Enhancement] extend usability of nodefilters with suffices internally... (#871)
+  * clusterStart: only run necessary actions
+  * getHostIP: do not emit confusing warning that doesn't affect usability
+  * docs: fix ports in registry usage guide
+  * error on K3D_FIX_DNS=1 with /etc/resolv.conf mounted
+
+-------------------------------------------------------------------
+Fri Dec  3 13:41:18 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init k3d Package.
+
+k3d is a little helper to run Rancher Lab's k3s in Docker.
+
+Current Release: v5.2.0
+Commit Hash: 3c783bf523011f82decd99638a5a97813e59b36d 

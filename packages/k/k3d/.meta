@@ -1,0 +1,6 @@
+<package name="k3d" project="openSUSE:Factory">
+  <title></title>
+  <description>Little helper to run Rancher Lab's k3s in Docker</description>
+  <devel project="devel:kubic" package="k3d"/>
+  <url>https://github.com/rancher/k3d</url>
+</package>
