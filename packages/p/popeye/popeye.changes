@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Jan 05 15:03:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.8:
+  * NOTE: Fix'n brew deprecation warnings
+
+-------------------------------------------------------------------
+Wed Jan 05 15:00:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.7:
+  * Issue #190 Popeye docker image tag 0.9.6 not available on quay.io
+  * Issue #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget - Wrong default API. With Feelings!
+
+-------------------------------------------------------------------
+Wed Jan 05 14:56:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.6:
+  * Issue #188 Can't run Popeye: No resource meta found for networking.k8s.io/v1/ingresses. With Feelings!
+  * Issue #178 Custom handling of client-go/rest warnings. Sending to logger instead
+
+-------------------------------------------------------------------
+Wed Jan 05 14:54:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.5:
+  * Issue #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget - Wrong default API - With Feelings!
+
+-------------------------------------------------------------------
+Wed Jan 05 14:47:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.4:
+  * Issue #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget - Wrong default API
+  * Issue #712 [POP-712] Found only one master node not flag on the right node
+  * Issue #181 [POP-404] Deprecation check failed
+
+-------------------------------------------------------------------
+Wed Jan 05 14:45:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.3:
+  * Issue #170 Can't run popeye when kubernetes has networking.k8s.io/v1/ingresses
+  * PR #1102 Load codes with embed:fs and fix code 1102 format. Big Thanks to GoodWine for this excellent PR!!
+
+-------------------------------------------------------------------
+Wed May 26 18:34:19 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package popeye
