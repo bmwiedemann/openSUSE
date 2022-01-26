@@ -1276,4 +1276,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop gutenprint off the DVD; it's aging</comment>
   </revision>
+  <revision rev="178" vrev="176">
+    <srcmd5>89f66274313b2a266b3ad2d30a0259fa</srcmd5>
+    <version>unknown</version>
+    <time>1643185125</time>
+    <user>dimstar_suse</user>
+    <comment>Try to shrink the DVD a little bit with less games</comment>
+  </revision>
 </revisionlist>
