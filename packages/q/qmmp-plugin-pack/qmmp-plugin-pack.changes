@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:38:24 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.0.1 (changes since 1.5.1):
+  * Switch to Qt6 and qmmp 2.0 API.
+  * Add yt-dlp support.
+  * Update translations.
+- Switch requirements from youtube-dl to yt-dlp.
+
+-------------------------------------------------------------------
 Mon Jul 12 10:34:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.1

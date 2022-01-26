@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp-plugin-pack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Dmitry Misharov <quarckster@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,32 +17,33 @@
 #
 
 
-%define qmmp_ver_min 1.5.0
-%define qmmp_ver_max 1.5.99
-%define mver    1.5
+%define qmmp_ver_min 2.0.0
+%define qmmp_ver_max 2.0.99
+%define mver    2.0
 Name:           qmmp-plugin-pack
-Version:        1.5.1
+Version:        2.0.1
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
+Group:          Productivity/Multimedia/Sound/Players
 URL:            https://qmmp.ylsoftware.com/plugins.php
 Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libqmmp-plugins <= %{qmmp_ver_max}
 BuildRequires:  libqmmp-plugins >= %{qmmp_ver_min}
-BuildRequires:  libqt5-qttools-devel >= 5.4
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
-BuildRequires:  pkgconfig(Qt5Core) >= 5.4
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.4
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4
-BuildRequires:  pkgconfig(libavcodec) >= 57.48.101
-BuildRequires:  pkgconfig(libavformat) >= 57.40.101
-BuildRequires:  pkgconfig(libavutil) >= 55.27.100
-BuildRequires:  pkgconfig(libmpg123) >= 1.13.0
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswresample)
-BuildRequires:  pkgconfig(libswscale) >= 4.1.100
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(qmmp) <= %{qmmp_ver_max}
 BuildRequires:  pkgconfig(qmmp) >= %{qmmp_ver_min}
@@ -59,6 +60,7 @@ This package contains extra plugins for Qmmp.
 
 %package ffap
 Summary:        Enhanced Monkey's Audio (APE) decoder for Qmmp
+Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description ffap
@@ -67,6 +69,7 @@ CUE support).
 
 %package ffvideo
 Summary:        Video Playback Qmmp plugin
+Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description ffvideo
@@ -74,6 +77,7 @@ Qmmp plugin to play videos.
 
 %package goom
 Summary:        Goom visualisation Qmmp plugin
+Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description goom
@@ -81,6 +85,7 @@ Qmmp plugin which provides goom visualisation.
 
 %package samplerate
 Summary:        Qmmp plugin which uses libsamplerate for decoding
+Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description samplerate
@@ -88,21 +93,23 @@ Qmmp plugin which uses libsamplerate resampling library.
 
 %package xmp
 Summary:        Qmmp plugin which uses the libxmp module library
+Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description xmp
 Qmmp plugin which uses libxmp to play module and tracker files.
 
 %package youtube
-Summary:        Qmmp plugin which uses the youtube-dl tool
+Summary:        Qmmp plugin which uses the yt-dlp tool
+Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
-Requires:       youtube-dl
+Requires:       yt-dlp
 
 %description youtube
-Qmmp plugin which uses youtube-dl to stream videos.
+Qmmp plugin which uses yt-dlp to stream videos.
 
 %prep
-%autosetup
+%setup -q
 
 %build
 %cmake \
