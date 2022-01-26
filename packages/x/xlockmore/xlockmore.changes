@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 25 15:38:09 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 5.68:
+  * Updated xscreensaver port for xscreensaver-6.02.
+  * Various NetBsd install issues fixed including config.cygport.
+  * pam vulnerabiliy patch added thanks to Elmar Hoffmann, elho AT elho.net.
+    Card vulnerability may remain, see README.
+  * module fixes for deluxe, eyes, starfish, swirl, text3d2, module use is
+    still experimental.
+  * biof mode removed again (though was not building by default). 
+
+-------------------------------------------------------------------
 Sat Oct 16 12:09:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.67:

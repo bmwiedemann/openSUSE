@@ -1,7 +1,7 @@
 #
 # spec file for package xlockmore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xlockmore
-Version:        5.67
+Version:        5.68
 Release:        0
 Summary:        Screen Saver and Locker for the X Window System
 License:        MIT
