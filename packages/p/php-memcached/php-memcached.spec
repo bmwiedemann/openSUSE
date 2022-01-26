@@ -39,6 +39,8 @@ Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 # PATCH-FIX-UPSTREAM: https://github.com/php-memcached-dev/php-memcached/pull/475
 Patch1:         fixup-unit-tests.patch
 Patch2:         fixup-unit-tests-broken-in-php8.patch
+# PATCH-FIX-UPSTREAM: https://github.com/php-memcached-dev/php-memcached/pull/487
+Patch3:         fix-zend_dtoa-API-change.patch
 BuildRequires:  %{php_name}-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  fastlzlib-devel
@@ -63,6 +65,7 @@ communicating with memcached servers.
 %if "%{php_name}" == "php8"
 %patch2
 %endif
+%patch3 -p1
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"

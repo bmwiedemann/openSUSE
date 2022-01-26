@@ -7,4 +7,12 @@
     <comment>Rename php7-memcached to php-memcached</comment>
     <requestid>873882</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>538e052a9d5e5f2f227435baae209159</srcmd5>
+    <version>3.1.5</version>
+    <time>1643228812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949132</requestid>
+  </revision>
 </revisionlist>

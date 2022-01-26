@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 20:55:13 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix zend_dtoa API change in 8.1.0beta1
+  + fix-zend_dtoa-API-change.patch
+
+-------------------------------------------------------------------
 Fri Jan 29 19:13:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change to 'more complete' multibuild: build all flavors (php7 and
