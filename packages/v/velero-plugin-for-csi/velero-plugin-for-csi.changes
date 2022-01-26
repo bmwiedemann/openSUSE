@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Sep 30 15:43:16 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 0.2.0:
+  * Update the documents for the release 0.2.0
+  * Change the base image to distroless (#92)
+  * Update dependencies (#90)
+  * Update reviewers (#91)
+  * Only remove annotations related to PV binding (#89)
+  * remove ashish-amarnath from maintainers
+  * Update auto assign of reviewers
+  * ✨ ⚠️ DeleteItemAction for volumesnapshots and volumesnapshotcontents
+  * add changelog for PR 82
+  * Add jenting as reviewer (#83)
+  * Only publish the container image from the root repo
+  * Update to latest covenant coc  (#80)
+  * Allow cross-namespace restore of PVC's with CSI volumes
+  * Update README with new issue filing process
+  * Add Dave Smith-Uchida (#79)
+  * Add tilt settings (#78)
+  * Added warning about CSI snapshot durability to README (#76)
+  * Add changelog scripts and make target
+
+-------------------------------------------------------------------
+Thu Apr  8 03:32:57 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version 0.1.2:
+  * Use labels to select volumesnapshotclass for csi provider (#60, @ashish-amarnath)
+  * Skip static linking VSC creation if VS already exists (#64, @ashish-amarnath)
+  * Use new GetPodVolumesUsingRestic API from core Velero (#70, @ashish-amarnath)

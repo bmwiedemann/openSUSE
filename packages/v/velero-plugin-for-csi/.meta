@@ -1,0 +1,6 @@
+<package name="velero-plugin-for-csi" project="openSUSE:Factory">
+  <title></title>
+  <description>Velero plugins for integrating with CSI snapshot API</description>
+  <devel project="devel:kubic" package="velero-plugin-for-csi"/>
+  <url>https://github.com/vmware-tanzu/velero-plugin-for-csi</url>
+</package>
