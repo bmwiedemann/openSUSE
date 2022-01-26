@@ -1,0 +1,1285 @@
+From df7fa4a4fa625acd02aaae11a718307c830b9d7a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Wed, 26 Jan 2022 01:38:54 +0100
+Subject: [PATCH 1/2] Remove assertRaisesEx and assertRaisesMsgSubstring
+
+---
+ css_parser_tests/basetest.py            |   99 ---
+ css_parser_tests/test_csscharsetrule.py |   22 
+ css_parser_tests/test_cssimportrule.py  |   28 -
+ css_parser_tests/test_cssstylesheet.py  |   10 
+ css_parser_tests/test_cssvalue.py       |   10 
+ css_parser_tests/test_medialist.py      |   27 -
+ css_parser_tests/test_prodparser.py     |  832 ++++++++++++++++----------------
+ css_parser_tests/test_profiles.py       |   16 
+ css_parser_tests/test_property.py       |   27 -
+ css_parser_tests/test_selector.py       |    7 
+ 10 files changed, 491 insertions(+), 587 deletions(-)
+
+--- a/css_parser_tests/basetest.py
++++ b/css_parser_tests/basetest.py
+@@ -17,14 +17,6 @@ TEST_HOME = os.path.dirname(os.path.absp
+ PY2x = sys.version_info < (3, 0)
+ 
+ 
+-def msg3x(msg):
+-    """msg might contain unicode repr `u'...'` which in py3 is `u'...`
+-    needed by tests using ``assertRaisesMsg``"""
+-    if not PY2x and msg.find("u'"):
+-        msg = msg.replace("u'", "'")
+-    return msg
+-
+-
+ def get_resource_filename(resource_name):
+     """Get the resource filename.
+     """
+@@ -107,97 +99,6 @@ class BaseTestCase(unittest.TestCase):
+         if hasattr(self, '_ser'):
+             self._restoreSer()
+ 
+-    def assertRaisesEx(self, exception, callable, *args, **kwargs):
+-        """
+-        from
+-        http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/307970
+-        """
+-        if "exc_args" in kwargs:
+-            exc_args = kwargs["exc_args"]
+-            del kwargs["exc_args"]
+-        else:
+-            exc_args = None
+-        if "exc_pattern" in kwargs:
+-            exc_pattern = kwargs["exc_pattern"]
+-            del kwargs["exc_pattern"]
+-        else:
+-            exc_pattern = None
+-
+-        argv = [repr(a) for a in args]\
+-            + ["%s=%r" % (k, v) for k, v in kwargs.items()]
+-        callsig = "%s(%s)" % (callable.__name__, ", ".join(argv))
+-
+-        try:
+-            callable(*args, **kwargs)
+-        except exception as exc:
+-            if exc_args is not None:
+-                self.failIf(exc.args != exc_args,
+-                            "%s raised %s with unexpected args: "
+-                            "expected=%r, actual=%r"
+-                            % (callsig, exc.__class__, exc_args, exc.args))
+-            if exc_pattern is not None:
+-                self.assertTrue(exc_pattern.search(str(exc)),
+-                                "%s raised %s, but the exception "
+-                                "does not match '%s': %r"
+-                                % (callsig, exc.__class__, exc_pattern.pattern,
+-                                   str(exc)))
+-        except Exception:
+-            exc_info = sys.exc_info()
+-            self.fail("%s raised an unexpected exception type: "
+-                      "expected=%s, actual=%s"
+-                      % (callsig, exception, exc_info[0]))
+-        else:
+-            self.fail("%s did not raise %s" % (callsig, exception))
+-
+-    def _assertRaisesMsgSubstring(self, excClass, msg, substring_match, callableObj, *args, **kwargs):
+-        try:
+-            callableObj(*args, **kwargs)
+-        except excClass as exc:
+-            excMsg = str(exc)
+-            if not msg:
+-                # No message provided: any message is fine.
+-                return
+-            elif (msg in excMsg if substring_match else msg == excMsg):
+-                # Message provided, and we got the right message: passes.
+-                return
+-            else:
+-                # Message provided, and it didn't match: fail!
+-                raise self.failureException(
+-                    "Right exception, wrong message: got '%s' instead of '%s'" %
+-                    (excMsg, msg))
+-        else:
+-            if hasattr(excClass, '__name__'):
+-                excName = excClass.__name__
+-            else:
+-                excName = str(excClass)
+-            raise self.failureException(
+-                "Expected to raise %s, didn't get an exception at all" %
+-                excName
+-            )
+-
+-    def assertRaisesMsg(self, excClass, msg, callableObj, *args, **kwargs):
+-        """
+-        Just like unittest.TestCase.assertRaises,
+-        but checks that the message is right too.
+-
+-        Usage::
+-
+-            self.assertRaisesMsg(
+-                MyException, "Exception message",
+-                my_function, arg1, arg2,
+-                kwarg1=val, kwarg2=val)
+-
+-        from
+-        http://www.nedbatchelder.com/blog/200609.html#e20060905T064418
+-        """
+-        return self._assertRaisesMsgSubstring(excClass, msg, False, callableObj, *args, **kwargs)
+-
+-    def assertRaisesMsgSubstring(self, excClass, msg, callableObj, *args, **kwargs):
+-        """
+-        Just like assertRaisesMsg, but looks for substring in the message.
+-        """
+-        return self._assertRaisesMsgSubstring(excClass, msg, True, callableObj, *args, **kwargs)
+-
+     def do_equal_p(self, tests, att='cssText', debug=False, raising=True):
+         """
+         if raising self.p is used for parsing, else self.pf
+--- a/css_parser_tests/test_csscharsetrule.py
++++ b/css_parser_tests/test_csscharsetrule.py
+@@ -42,14 +42,13 @@ class CSSCharsetRuleTestCase(test_cssrul
+                     '@charset "%s";' % enc.lower(), r.cssText)
+ 
+         for enc in (' ascii ', ' ascii', 'ascii '):
+-            self.assertRaisesEx(xml.dom.SyntaxErr,
+-                                css_parser.css.CSSCharsetRule, enc,
+-                                exc_pattern=re.compile("Syntax Error"))
++            with self.assertRaisesRegex(xml.dom.SyntaxErr, r"Syntax Error"):
++                css_parser.css.CSSCharsetRule(enc)
+ 
+         for enc in ('unknown', ):
+-            self.assertRaisesEx(xml.dom.SyntaxErr,
+-                                css_parser.css.CSSCharsetRule, enc,
+-                                exc_pattern=re.compile(r"Unknown \(Python\) encoding"))
++            with self.assertRaisesRegex(xml.dom.SyntaxErr,
++                    r"Unknown \(Python\) encoding"):
++                css_parser.css.CSSCharsetRule(enc)
+ 
+     def test_encoding(self):
+         "CSSCharsetRule.encoding"
+@@ -60,14 +59,13 @@ class CSSCharsetRuleTestCase(test_cssrul
+                 '@charset "%s";' % enc.lower(), self.r.cssText)
+ 
+         for enc in (None, ' ascii ', ' ascii', 'ascii '):
+-            self.assertRaisesEx(xml.dom.SyntaxErr,
+-                                self.r.__setattr__, 'encoding', enc,
+-                                exc_pattern=re.compile("Syntax Error"))
++            with self.assertRaisesRegex(xml.dom.SyntaxErr, r"Syntax Error"):
++                self.r.__setattr__('encoding', enc)
+ 
+         for enc in ('unknown', ):
+-            self.assertRaisesEx(xml.dom.SyntaxErr,
+-                                self.r.__setattr__, 'encoding', enc,
+-                                exc_pattern=re.compile("Unknown \(Python\) encoding"))
++            with self.assertRaisesRegex(xml.dom.SyntaxErr,
++                    r"Unknown \(Python\) encoding"):
++                self.r.__setattr__('encoding', enc)
+ 
+     def test_cssText(self):
+         """CSSCharsetRule.cssText
+--- a/css_parser_tests/test_cssimportrule.py
++++ b/css_parser_tests/test_cssimportrule.py
+@@ -272,17 +272,17 @@ class CSSImportRuleTestCase(test_cssrule
+         self.r.media.appendMedium('tv')
+         self.assertEqual('@import url(x) print, tv;', self.r.cssText)
+ 
++        # for later exception handling
++        exc_msg = r'''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery\(mediaText='tv'\) as already specified "all" \(set ``mediaText`` instead\).'''
++
+         # for generated rule
+         r = css_parser.css.CSSImportRule(href='x')
+-        self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-                             basetest.msg3x(
+-                                 '''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'tv') as already specified "all" (set ``mediaText`` instead).'''),
+-                             r.media.appendMedium, 'tv')
++        with self.assertRaisesRegex(xml.dom.InvalidModificationErr, exc_msg):
++            r.media.appendMedium('tv')
+         self.assertEqual('@import url(x);', r.cssText)
+-        self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-                             basetest.msg3x(
+-                                 '''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'tv') as already specified "all" (set ``mediaText`` instead).'''),
+-                             r.media.appendMedium, 'tv')
++
++        with self.assertRaisesRegex(xml.dom.InvalidModificationErr, exc_msg):
++            r.media.appendMedium('tv')
+         self.assertEqual('@import url(x);', r.cssText)
+         r.media.mediaText = 'tv'
+         self.assertEqual('@import url(x) tv;', r.cssText)
+@@ -293,15 +293,11 @@ class CSSImportRuleTestCase(test_cssrule
+         s = css_parser.parseString('@import url(x);')
+         r = s.cssRules[0]
+ 
+-        self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-                             basetest.msg3x(
+-                                 '''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'tv') as already specified "all" (set ``mediaText`` instead).'''),
+-                             r.media.appendMedium, 'tv')
++        with self.assertRaisesRegex(xml.dom.InvalidModificationErr, exc_msg):
++            r.media.appendMedium('tv')
+         self.assertEqual('@import url(x);', r.cssText)
+-        self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-                             basetest.msg3x(
+-                                 '''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'tv') as already specified "all" (set ``mediaText`` instead).'''),
+-                             r.media.appendMedium, 'tv')
++        with self.assertRaisesRegex(xml.dom.InvalidModificationErr, exc_msg):
++            r.media.appendMedium('tv')
+         self.assertEqual('@import url(x);', r.cssText)
+         r.media.mediaText = 'tv'
+         self.assertEqual('@import url(x) tv;', r.cssText)
+--- a/css_parser_tests/test_cssstylesheet.py
++++ b/css_parser_tests/test_cssstylesheet.py
+@@ -506,8 +506,9 @@ ex2|SEL4, a, ex2|SELSR {
+         del s.namespaces.namespaces['p']
+         self.assertEqual({'p': 'uri'}, s.namespaces.namespaces)
+ 
+-        self.assertRaisesMsg(xml.dom.NamespaceErr, "Prefix undefined not found.",
+-                             s.namespaces.__delitem__, 'undefined')
++        with self.assertRaisesRegex(xml.dom.NamespaceErr,
++                                    "Prefix undefined not found."):
++            s.namespaces.__delitem__('undefined')
+ 
+     def test_namespaces5(self):
+         "CSSStyleSheet.namespaces 5"
+@@ -516,8 +517,9 @@ ex2|SEL4, a, ex2|SELSR {
+         self.assertEqual(s.cssText, ''.encode())
+ 
+         s = css_parser.css.CSSStyleSheet()
+-        self.assertRaisesMsg(xml.dom.NamespaceErr, "Prefix a not found.",
+-                             s._setCssText, 'a|a { color: red }')
++        with self.assertRaisesRegex(xml.dom.NamespaceErr,
++                                    "Prefix a not found."):
++            s._setCssText('a|a { color: red }')
+ 
+     def test_deleteRuleIndex(self):
+         "CSSStyleSheet.deleteRule(index)"
+--- a/css_parser_tests/test_cssvalue.py
++++ b/css_parser_tests/test_cssvalue.py
+@@ -568,11 +568,11 @@
+ #                if type(exp) == types.TypeType or\
+ #                   type(exp) == types.ClassType: # 2.4 compatibility
+ #                    if cssText:
+-#                        self.assertRaisesMsg(
+-#                            exp, cssText, pv.setFloatValue, setType, setValue)
++#                        with self.assertRaisesRegex(exp, cssText):
++#                            pv.setFloatValue(setType, setValue)
+ #                    else:
+-#                        self.assertRaises(
+-#                            exp, pv.setFloatValue, setType, setValue)
++#                        with self.assertRaises(exp):
++#                            pv.setFloatValue(setType, setValue)
+ #                else:
+ #                    pv.setFloatValue(setType, setValue)
+ #                    self.assertEqual(pv._value[0], cssText)
+@@ -818,4 +818,4 @@
+ #    import unittest
+ #    unittest.main()
+ 
+-from __future__ import unicode_literals
+\ No newline at end of file
++from __future__ import unicode_literals
+--- a/css_parser_tests/test_medialist.py
++++ b/css_parser_tests/test_medialist.py
+@@ -15,6 +15,7 @@ class MediaListTestCase(basetest.BaseTes
+     def setUp(self):
+         super(MediaListTestCase, self).setUp()
+         self.r = css_parser.stylesheets.MediaList()
++        self.exc_msg = r'''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery\(mediaText='tv'\) as already specified "all" \(set ``mediaText`` instead\).'''
+ 
+     def test_set(self):
+         "MediaList.mediaText 1"
+@@ -27,9 +28,8 @@ class MediaListTestCase(basetest.BaseTes
+         self.assertEqual(2, ml.length)
+         self.assertEqual('print, screen', ml.mediaText)
+ 
+-        # self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-        #                     basetest.msg3x('''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'tv') as already specified "all" (set ``mediaText`` instead).'''),
+-        #                     ml._setMediaText, u' print , all  , tv ')
++        # with self.assertRaisesRegex(xml.dom.InvalidModificationErr, self.exc_msg):
++        #                     ml._setMediaText(u' print , all  , tv ')
+         #
+         #self.assertEqual(u'all', ml.mediaText)
+         #self.assertEqual(1, ml.length)
+@@ -89,24 +89,20 @@ class MediaListTestCase(basetest.BaseTes
+         self.assertEqual(1, ml.length)
+         self.assertEqual('all', ml.mediaText)
+ 
+-        self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-                             basetest.msg3x(
+-                                 '''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'tv') as already specified "all" (set ``mediaText`` instead).'''),
+-                             ml.appendMedium, 'tv')
++        with self.assertRaisesRegex(xml.dom.InvalidModificationErr, self.exc_msg):
++            ml.appendMedium('tv')
+         self.assertEqual(1, ml.length)
+         self.assertEqual('all', ml.mediaText)
+ 
+-        self.assertRaises(xml.dom.InvalidModificationErr,
+-                          ml.appendMedium, 'test')
++        with self.assertRaises(xml.dom.InvalidModificationErr):
++            ml.appendMedium('test')
+ 
+     def test_append2All(self):
+         "MediaList all"
+         ml = css_parser.stylesheets.MediaList()
+         ml.appendMedium('all')
+-        self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-                             basetest.msg3x(
+-                                 '''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'print') as already specified "all" (set ``mediaText`` instead).'''),
+-                             ml.appendMedium, 'print')
++        with self.assertRaisesRegex(xml.dom.InvalidModificationErr, self.exc_msg.replace('tv', 'print')):
++            ml.appendMedium('print')
+ 
+         sheet = css_parser.parseString('@media all, print { /**/ }')
+         self.assertEqual('@media all {\n    /**/\n    }'.encode(), sheet.cssText)
+@@ -144,9 +140,8 @@ class MediaListTestCase(basetest.BaseTes
+     #    self.assertEqual(2, ml.length)
+     #    self.assertEqual(u'handheld, all', ml.mediaText)
+ 
+-    #    self.assertRaisesMsg(xml.dom.InvalidModificationErr,
+-    #                         basetest.msg3x('''MediaList: Ignoring new medium css_parser.stylesheets.MediaQuery(mediaText=u'handheld') as already specified "all" (set ``mediaText`` instead).'''),
+-    #                         ml._setMediaText, u' handheld , all  , tv ')
++    #    with self.assertRaisesRegex(xml.dom.InvalidModificationErr, self.exc_msg):
++    #        ml._setMediaText(u' handheld , all  , tv ')
+ 
+     def test_mediaText(self):
+         "MediaList.mediaText 2"
+--- a/css_parser_tests/test_prodparser.py
++++ b/css_parser_tests/test_prodparser.py
+@@ -1,410 +1,422 @@
+-"""Testcases for css_parser.css.CSSCharsetRule"""
+-from __future__ import absolute_import, unicode_literals
+-
+-import sys
+-import xml.dom
+-
+-from css_parser.prodparser import (Choice, Exhausted, ParseError, PreDef, Prod,
+-                                 ProdParser, Sequence)
+-
+-from . import basetest
+-
+-__version__ = '$Id: test_csscharsetrule.py 1356 2008-07-13 17:29:09Z cthedot $'
+-
+-
+-if sys.version_info.major > 2:
+-    basestring = str
+-
+-
+-class ProdTestCase(basetest.BaseTestCase):
+-
+-    def test_init(self):
+-        "Prod.__init__(...)"
+-        p = Prod('min', lambda t, v: t == 1 and v == 2)
+-
+-        self.assertEqual(str(p), 'min')
+-        self.assertEqual(p.toStore, None)
+-        self.assertEqual(p.optional, False)
+-
+-        p = Prod('optional', lambda t, v: True,
+-                 optional=True)
+-        self.assertEqual(p.optional, True)
+-
+-    def test_initMatch(self):
+-        "Prod.__init__(...match=...)"
+-        p = Prod('min', lambda t, v: t == 1 and v == 2)
+-        self.assertEqual(p.match(1, 2), True)
+-        self.assertEqual(p.match(2, 2), False)
+-        self.assertEqual(p.match(1, 1), False)
+-
+-    def test_initToSeq(self):
+-        "Prod.__init__(...toSeq=...)"
+-        # simply saves
+-        p = Prod('all', lambda t, tokens: True,
+-                 toSeq=None)
+-        self.assertEqual(p.toSeq([1, 2], None), (1, 2))  # simply saves
+-        self.assertEqual(p.toSeq(['s1', 's2'], None), ('s1', 's2'))  # simply saves
+-
+-        # saves callback(val)
+-        p = Prod('all', lambda t, v: True,
+-                 toSeq=lambda t, tokens: (1 == t[0], 3 == t[1]))
+-        self.assertEqual(p.toSeq([1, 3], None), (True, True))
+-        self.assertEqual(p.toSeq([2, 4], None), (False, False))
+-
+-    def test_initToStore(self):
+-        "Prod.__init__(...toStore=...)"
+-        p = Prod('all', lambda t, v: True,
+-                 toStore='key')
+-
+-        # save as key
+-        s = {}
+-        p.toStore(s, 1)
+-        self.assertEqual(s['key'], 1)
+-
+-        # append to key
+-        s = {'key': []}
+-        p.toStore(s, 1)
+-        p.toStore(s, 2)
+-        self.assertEqual(s['key'], [1, 2])
+-
+-        # callback
+-        def doubleToStore(key):
+-            def toStore(store, item):
+-                store[key] = item * 2
+-            return toStore
+-
+-        p = Prod('all', lambda t, v: True,
+-                 toStore=doubleToStore('key'))
+-        s = {'key': []}
+-        p.toStore(s, 1)
+-        self.assertEqual(s['key'], 2)
+-
+-    def test_matches(self):
+-        "Prod.matches(token)"
+-        p1 = Prod('p1', lambda t, v: t == 1 and v == 2)
+-        p2 = Prod('p2', lambda t, v: t == 1 and v == 2, optional=True)
+-        self.assertEqual(p1.matches([1, 2, 0, 0]), True)
+-        self.assertEqual(p2.matches([1, 2, 0, 0]), True)
+-        self.assertEqual(p1.matches([0, 0, 0, 0]), False)
+-        self.assertEqual(p2.matches([0, 0, 0, 0]), False)
+-
+-
+-class SequenceTestCase(basetest.BaseTestCase):
+-
+-    def test_init(self):
+-        "Sequence.__init__()"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        seq = Sequence(p1, p1)
+-
+-        self.assertEqual(1, seq._min)
+-        self.assertEqual(1, seq._max)
+-
+-    def test_initminmax(self):
+-        "Sequence.__init__(...minmax=...)"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2)
+-
+-        s = Sequence(p1, p2, minmax=lambda: (2, 3))
+-        self.assertEqual(2, s._min)
+-        self.assertEqual(3, s._max)
+-
+-        s = Sequence(p1, p2, minmax=lambda: (0, None))
+-        self.assertEqual(0, s._min)
+-
+-        try:
+-            # py2.6/3
+-            m = sys.maxsize
+-        except AttributeError:
+-            # py<1.6
+-            m = sys.maxsize
+-        self.assertEqual(m, s._max)
+-
+-    def test_optional(self):
+-        "Sequence.optional"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-
+-        s = Sequence(p1, minmax=lambda: (1, 3))
+-        self.assertEqual(False, s.optional)
+-        s = Sequence(p1, minmax=lambda: (0, 3))
+-        self.assertEqual(True, s.optional)
+-        s = Sequence(p1, minmax=lambda: (0, None))
+-        self.assertEqual(True, s.optional)
+-
+-    def test_reset(self):
+-        "Sequence.reset()"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2)
+-        seq = Sequence(p1, p2)
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-        self.assertEqual(p1, seq.nextProd(t1))
+-        self.assertEqual(p2, seq.nextProd(t2))
+-        self.assertRaises(Exhausted, seq.nextProd, t1)
+-        seq.reset()
+-        self.assertEqual(p1, seq.nextProd(t1))
+-
+-    def test_matches(self):
+-        "Sequence.matches()"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2, optional=True)
+-
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-        t3 = (3, 0, 0, 0)
+-
+-        s = Sequence(p1, p2)
+-        self.assertEqual(True, s.matches(t1))
+-        self.assertEqual(False, s.matches(t2))
+-
+-        s = Sequence(p2, p1)
+-        self.assertEqual(True, s.matches(t1))
+-        self.assertEqual(True, s.matches(t2))
+-
+-        s = Sequence(Choice(p1, p2))
+-        self.assertEqual(True, s.matches(t1))
+-        self.assertEqual(True, s.matches(t2))
+-        self.assertEqual(False, s.matches(t3))
+-
+-    def test_nextProd(self):
+-        "Sequence.nextProd()"
+-        p1 = Prod('p1', lambda t, v: t == 1, optional=True)
+-        p2 = Prod('p2', lambda t, v: t == 2)
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-
+-        tests = {
+-            # seq: list of list of (token, prod or error msg)
+-            (p1, ): ([(t1, p1)],
+-                     [(t2, 'Extra token')],  # as p1 optional
+-                     [(t1, p1), (t1, 'Extra token')],
+-                     [(t1, p1), (t2, 'Extra token')]
+-                     ),
+-            (p2, ): ([(t2, p2)],
+-                     [(t2, p2), (t2, 'Extra token')],
+-                     [(t2, p2), (t1, 'Extra token')],
+-                     [(t1, 'Missing token for production p2')]
+-                     ),
+-            (p1, p2): ([(t1, p1), (t2, p2)],
+-                       [(t1, p1), (t1, 'Missing token for production p2')]
+-                       )
+-        }
+-        for seqitems, results in tests.items():
+-            for result in results:
+-                seq = Sequence(*seqitems)
+-                for t, p in result:
+-                    if isinstance(p, basestring):
+-                        self.assertRaisesMsg(ParseError, p, seq.nextProd, t)
+-                    else:
+-                        self.assertEqual(p, seq.nextProd(t))
+-
+-        tests = {
+-            # seq: list of list of (token, prod or error msg)
+-            # as p1 optional!
+-            (p1, p1): ([(t1, p1)],
+-                       [(t1, p1), (t1, p1)],
+-                       [(t1, p1), (t1, p1)],
+-                       [(t1, p1), (t1, p1), (t1, p1)],
+-                       [(t1, p1), (t1, p1), (t1, p1), (t1, p1)],
+-                       [(t1, p1), (t1, p1), (t1, p1), (t1, p1), (t1, 'Extra token')],
+-                       ),
+-            (p1, ): ([(t1, p1)],
+-                     [(t2, 'Extra token')],
+-                     [(t1, p1), (t1, p1)],
+-                     [(t1, p1), (t2, 'Extra token')],
+-                     [(t1, p1), (t1, p1), (t1, 'Extra token')],
+-                     [(t1, p1), (t1, p1), (t2, 'Extra token')]
+-                     ),
+-            # as p2 NOT optional
+-            (p2, ): ([(t2, p2)],
+-                     [(t1, 'Missing token for production p2')],
+-                     [(t2, p2), (t2, p2)],
+-                     [(t2, p2), (t1, 'No match for (1, 0, 0, 0) in Sequence(p2)')],
+-                     [(t2, p2), (t2, p2), (t2, 'Extra token')],
+-                     [(t2, p2), (t2, p2), (t1, 'Extra token')]
+-                     ),
+-            (p1, p2): ([(t1, p1), (t1, 'Missing token for production p2')],
+-                       [(t2, p2), (t2, p2)],
+-                       [(t2, p2), (t1, p1), (t2, p2)],
+-                       [(t1, p1), (t2, p2), (t2, p2)],
+-                       [(t1, p1), (t2, p2), (t1, p1), (t2, p2)],
+-                       [(t2, p2), (t2, p2), (t2, 'Extra token')],
+-                       [(t2, p2), (t1, p1), (t2, p2), (t1, 'Extra token')],
+-                       [(t2, p2), (t1, p1), (t2, p2), (t2, 'Extra token')],
+-                       [(t1, p1), (t2, p2), (t2, p2), (t1, 'Extra token')],
+-                       [(t1, p1), (t2, p2), (t2, p2), (t2, 'Extra token')],
+-                       [(t1, p1), (t2, p2), (t1, p1), (t2, p2), (t1, 'Extra token')],
+-                       [(t1, p1), (t2, p2), (t1, p1), (t2, p2), (t2, 'Extra token')],
+-                       )
+-        }
+-        for seqitems, results in tests.items():
+-            for result in results:
+-                seq = Sequence(minmax=lambda: (1, 2), *seqitems)
+-                for t, p in result:
+-                    if isinstance(p, basestring):
+-                        self.assertRaisesMsg(ParseError, p, seq.nextProd, t)
+-                    else:
+-                        self.assertEqual(p, seq.nextProd(t))
+-
+-
+-class ChoiceTestCase(basetest.BaseTestCase):
+-
+-    def test_init(self):
+-        "Choice.__init__()"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2)
+-        t0 = (0, 0, 0, 0)
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-
+-        ch = Choice(p1, p2)
+-        self.assertRaisesMsg(ParseError, 'No match for (0, 0, 0, 0) in Choice(p1, p2)', ch.nextProd, t0)
+-        self.assertEqual(p1, ch.nextProd(t1))
+-        self.assertRaisesMsg(Exhausted, 'Extra token', ch.nextProd, t1)
+-
+-        ch = Choice(p1, p2)
+-        self.assertEqual(p2, ch.nextProd(t2))
+-        self.assertRaisesMsg(Exhausted, 'Extra token', ch.nextProd, t2)
+-
+-        ch = Choice(p2, p1)
+-        self.assertRaisesMsg(ParseError, 'No match for (0, 0, 0, 0) in Choice(p2, p1)', ch.nextProd, t0)
+-        self.assertEqual(p1, ch.nextProd(t1))
+-        self.assertRaisesMsg(Exhausted, 'Extra token', ch.nextProd, t1)
+-
+-        ch = Choice(p2, p1)
+-        self.assertEqual(p2, ch.nextProd(t2))
+-        self.assertRaisesMsg(Exhausted, 'Extra token', ch.nextProd, t2)
+-
+-    def test_matches(self):
+-        "Choice.matches()"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2, optional=True)
+-
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-        t3 = (3, 0, 0, 0)
+-
+-        c = Choice(p1, p2)
+-        self.assertEqual(True, c.matches(t1))
+-        self.assertEqual(True, c.matches(t2))
+-        self.assertEqual(False, c.matches(t3))
+-
+-        c = Choice(Sequence(p1), Sequence(p2))
+-        self.assertEqual(True, c.matches(t1))
+-        self.assertEqual(True, c.matches(t2))
+-        self.assertEqual(False, c.matches(t3))
+-
+-    def test_nested(self):
+-        "Choice with nested Sequence"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2)
+-        s1 = Sequence(p1, p1)
+-        s2 = Sequence(p2, p2)
+-        t0 = (0, 0, 0, 0)
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-
+-        ch = Choice(s1, s2)
+-        self.assertRaisesMsg(
+-            ParseError, 'No match for (0, 0, 0, 0) in Choice(Sequence(p1, p1), Sequence(p2, p2))', ch.nextProd, t0)
+-        self.assertEqual(s1, ch.nextProd(t1))
+-        self.assertRaisesMsg(Exhausted, 'Extra token', ch.nextProd, t1)
+-
+-        ch = Choice(s1, s2)
+-        self.assertEqual(s2, ch.nextProd(t2))
+-        self.assertRaisesMsg(Exhausted, 'Extra token', ch.nextProd, t1)
+-
+-    def test_reset(self):
+-        "Choice.reset()"
+-        p1 = Prod('p1', lambda t, v: t == 1)
+-        p2 = Prod('p2', lambda t, v: t == 2)
+-        t1 = (1, 0, 0, 0)
+-        t2 = (2, 0, 0, 0)
+-
+-        ch = Choice(p1, p2)
+-        self.assertEqual(p1, ch.nextProd(t1))
+-        self.assertRaises(Exhausted, ch.nextProd, t1)
+-        ch.reset()
+-        self.assertEqual(p2, ch.nextProd(t2))
+-
+-
+-class ProdParserTestCase(basetest.BaseTestCase):
+-
+-    def setUp(self):
+-        pass
+-
+-    def test_parse_keepS(self):
+-        "ProdParser.parse(keepS)"
+-        p = ProdParser()
+-
+-        # text, name, productions, store=None
+-        def prods(): return Sequence(PreDef.char(';', ';'),
+-                                     PreDef.char(':', ':')
+-                                     )
+-
+-        w, seq, store, unused = p.parse('; :', 'test', prods(),
+-                                        keepS=True)
+-        self.assertTrue(w)
+-        self.assertEqual(3, len(seq))
+-
+-        w, seq, store, unused = p.parse('; :', 'test', prods(),
+-                                        keepS=False)
+-        self.assertTrue(w)
+-        self.assertEqual(2, len(seq))
+-
+-    def test_combi(self):
+-        "ProdParser.parse() 2"
+-        p1 = Prod('p1', lambda t, v: v == '1')
+-        p2 = Prod('p2', lambda t, v: v == '2')
+-        p3 = Prod('p3', lambda t, v: v == '3')
+-
+-        tests = {'1 2': True,
+-                 '1 2 1 2': True,
+-                 '3': True,
+-                 # '': 'No match in Choice(Sequence(p1, p2), p3)',
+-                 '1': 'Missing token for production p2',
+-                 '1 2 1': 'Missing token for production p2',
+-                 '1 2 1 2 x': "No match: ('IDENT', 'x', 1, 9)",
+-                 '1 2 1 2 1': "No match: ('NUMBER', '1', 1, 9)",
+-                 '3 x': "No match: ('IDENT', 'x', 1, 3)",
+-                 '3 3': "No match: ('NUMBER', '3', 1, 3)",
+-                 }
+-        for text, exp in tests.items():
+-            if sys.version_info.major == 2 and hasattr(exp, 'replace'):
+-                exp = exp.replace("('", "(u'").replace(" '", " u'")
+-            prods = Choice(Sequence(p1, p2, minmax=lambda: (1, 2)),
+-                           p3)
+-            if exp is True:
+-                wellformed, seq, store, unused = ProdParser().parse(text, 'T', prods)
+-                self.assertEqual(wellformed, exp)
+-            else:
+-                self.assertRaisesMsg(xml.dom.SyntaxErr, 'T: %s' % exp,
+-                                     ProdParser().parse, text, 'T', prods)
+-
+-        tests = {'1 3': True,
+-                 '1 1 3': True,
+-                 '2 3': True,
+-                 '1': 'Missing token for production p3',
+-                 '1 1': 'Missing token for production p3',
+-                 '1 3 3': "No match: ('NUMBER', '3', 1, 5)",
+-                 '1 1 3 3': "No match: ('NUMBER', '3', 1, 7)",
+-                 '2 3 3': "No match: ('NUMBER', '3', 1, 5)",
+-                 '2': 'Missing token for production p3',
+-                 '3': "Missing token for production Choice(Sequence(p1), p2): ('NUMBER', '3', 1, 1)",
+-                 }
+-        for text, exp in tests.items():
+-            if sys.version_info.major == 2 and hasattr(exp, 'replace'):
+-                exp = exp.replace("('", "(u'").replace(" '", " u'")
+-            prods = Sequence(Choice(Sequence(p1, minmax=lambda: (1, 2)),
+-                                    p2),
+-                             p3)
+-            if exp is True:
+-                wellformed, seq, store, unused = ProdParser().parse(text, 'T', prods)
+-                self.assertEqual(wellformed, exp)
+-            else:
+-                self.assertRaisesMsg(xml.dom.SyntaxErr, 'T: %s' % exp,
+-                                     ProdParser().parse, text, 'T', prods)
+-
+-
+-if __name__ == '__main__':
+-    import unittest
+-    unittest.main()
++"""Testcases for css_parser.css.CSSCharsetRule"""
++from __future__ import absolute_import, unicode_literals
++
++import sys
++import xml.dom
++
++from css_parser.prodparser import (Choice, Exhausted, ParseError, PreDef, Prod,
++                                 ProdParser, Sequence)
++
++from . import basetest
++
++__version__ = '$Id: test_csscharsetrule.py 1356 2008-07-13 17:29:09Z cthedot $'
++
++
++if sys.version_info.major > 2:
++    basestring = str
++
++
++class ProdTestCase(basetest.BaseTestCase):
++
++    def test_init(self):
++        "Prod.__init__(...)"
++        p = Prod('min', lambda t, v: t == 1 and v == 2)
++
++        self.assertEqual(str(p), 'min')
++        self.assertEqual(p.toStore, None)
++        self.assertEqual(p.optional, False)
++
++        p = Prod('optional', lambda t, v: True,
++                 optional=True)
++        self.assertEqual(p.optional, True)
++
++    def test_initMatch(self):
++        "Prod.__init__(...match=...)"
++        p = Prod('min', lambda t, v: t == 1 and v == 2)
++        self.assertEqual(p.match(1, 2), True)
++        self.assertEqual(p.match(2, 2), False)
++        self.assertEqual(p.match(1, 1), False)
++
++    def test_initToSeq(self):
++        "Prod.__init__(...toSeq=...)"
++        # simply saves
++        p = Prod('all', lambda t, tokens: True,
++                 toSeq=None)
++        self.assertEqual(p.toSeq([1, 2], None), (1, 2))  # simply saves
++        self.assertEqual(p.toSeq(['s1', 's2'], None), ('s1', 's2'))  # simply saves
++
++        # saves callback(val)
++        p = Prod('all', lambda t, v: True,
++                 toSeq=lambda t, tokens: (1 == t[0], 3 == t[1]))
++        self.assertEqual(p.toSeq([1, 3], None), (True, True))
++        self.assertEqual(p.toSeq([2, 4], None), (False, False))
++
++    def test_initToStore(self):
++        "Prod.__init__(...toStore=...)"
++        p = Prod('all', lambda t, v: True,
++                 toStore='key')
++
++        # save as key
++        s = {}
++        p.toStore(s, 1)
++        self.assertEqual(s['key'], 1)
++
++        # append to key
++        s = {'key': []}
++        p.toStore(s, 1)
++        p.toStore(s, 2)
++        self.assertEqual(s['key'], [1, 2])
++
++        # callback
++        def doubleToStore(key):
++            def toStore(store, item):
++                store[key] = item * 2
++            return toStore
++
++        p = Prod('all', lambda t, v: True,
++                 toStore=doubleToStore('key'))
++        s = {'key': []}
++        p.toStore(s, 1)
++        self.assertEqual(s['key'], 2)
++
++    def test_matches(self):
++        "Prod.matches(token)"
++        p1 = Prod('p1', lambda t, v: t == 1 and v == 2)
++        p2 = Prod('p2', lambda t, v: t == 1 and v == 2, optional=True)
++        self.assertEqual(p1.matches([1, 2, 0, 0]), True)
++        self.assertEqual(p2.matches([1, 2, 0, 0]), True)
++        self.assertEqual(p1.matches([0, 0, 0, 0]), False)
++        self.assertEqual(p2.matches([0, 0, 0, 0]), False)
++
++
++class SequenceTestCase(basetest.BaseTestCase):
++
++    def test_init(self):
++        "Sequence.__init__()"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        seq = Sequence(p1, p1)
++
++        self.assertEqual(1, seq._min)
++        self.assertEqual(1, seq._max)
++
++    def test_initminmax(self):
++        "Sequence.__init__(...minmax=...)"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2)
++
++        s = Sequence(p1, p2, minmax=lambda: (2, 3))
++        self.assertEqual(2, s._min)
++        self.assertEqual(3, s._max)
++
++        s = Sequence(p1, p2, minmax=lambda: (0, None))
++        self.assertEqual(0, s._min)
++
++        try:
++            # py2.6/3
++            m = sys.maxsize
++        except AttributeError:
++            # py<1.6
++            m = sys.maxsize
++        self.assertEqual(m, s._max)
++
++    def test_optional(self):
++        "Sequence.optional"
++        p1 = Prod('p1', lambda t, v: t == 1)
++
++        s = Sequence(p1, minmax=lambda: (1, 3))
++        self.assertEqual(False, s.optional)
++        s = Sequence(p1, minmax=lambda: (0, 3))
++        self.assertEqual(True, s.optional)
++        s = Sequence(p1, minmax=lambda: (0, None))
++        self.assertEqual(True, s.optional)
++
++    def test_reset(self):
++        "Sequence.reset()"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2)
++        seq = Sequence(p1, p2)
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++        self.assertEqual(p1, seq.nextProd(t1))
++        self.assertEqual(p2, seq.nextProd(t2))
++        self.assertRaises(Exhausted, seq.nextProd, t1)
++        seq.reset()
++        self.assertEqual(p1, seq.nextProd(t1))
++
++    def test_matches(self):
++        "Sequence.matches()"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2, optional=True)
++
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++        t3 = (3, 0, 0, 0)
++
++        s = Sequence(p1, p2)
++        self.assertEqual(True, s.matches(t1))
++        self.assertEqual(False, s.matches(t2))
++
++        s = Sequence(p2, p1)
++        self.assertEqual(True, s.matches(t1))
++        self.assertEqual(True, s.matches(t2))
++
++        s = Sequence(Choice(p1, p2))
++        self.assertEqual(True, s.matches(t1))
++        self.assertEqual(True, s.matches(t2))
++        self.assertEqual(False, s.matches(t3))
++
++    def test_nextProd(self):
++        "Sequence.nextProd()"
++        p1 = Prod('p1', lambda t, v: t == 1, optional=True)
++        p2 = Prod('p2', lambda t, v: t == 2)
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++
++        tests = {
++            # seq: list of list of (token, prod or error msg)
++            (p1, ): ([(t1, p1)],
++                     [(t2, 'Extra token')],  # as p1 optional
++                     [(t1, p1), (t1, 'Extra token')],
++                     [(t1, p1), (t2, 'Extra token')]
++                     ),
++            (p2, ): ([(t2, p2)],
++                     [(t2, p2), (t2, 'Extra token')],
++                     [(t2, p2), (t1, 'Extra token')],
++                     [(t1, 'Missing token for production p2')]
++                     ),
++            (p1, p2): ([(t1, p1), (t2, p2)],
++                       [(t1, p1), (t1, 'Missing token for production p2')]
++                       )
++        }
++        for seqitems, results in tests.items():
++            for result in results:
++                seq = Sequence(*seqitems)
++                for t, p in result:
++                    if isinstance(p, basestring):
++                        with self.assertRaisesRegex(ParseError, p):
++                            seq.nextProd(t)
++                    else:
++                        self.assertEqual(p, seq.nextProd(t))
++
++        tests = {
++            # seq: list of list of (token, prod or error msg)
++            # as p1 optional!
++            (p1, p1): ([(t1, p1)],
++                       [(t1, p1), (t1, p1)],
++                       [(t1, p1), (t1, p1)],
++                       [(t1, p1), (t1, p1), (t1, p1)],
++                       [(t1, p1), (t1, p1), (t1, p1), (t1, p1)],
++                       [(t1, p1), (t1, p1), (t1, p1), (t1, p1), (t1, 'Extra token')],
++                       ),
++            (p1, ): ([(t1, p1)],
++                     [(t2, 'Extra token')],
++                     [(t1, p1), (t1, p1)],
++                     [(t1, p1), (t2, 'Extra token')],
++                     [(t1, p1), (t1, p1), (t1, 'Extra token')],
++                     [(t1, p1), (t1, p1), (t2, 'Extra token')]
++                     ),
++            # as p2 NOT optional
++            (p2, ): ([(t2, p2)],
++                     [(t1, 'Missing token for production p2')],
++                     [(t2, p2), (t2, p2)],
++                     [(t2, p2), (t1, r'No match for \(1, 0, 0, 0\) in Sequence\(p2\)')],
++                     [(t2, p2), (t2, p2), (t2, 'Extra token')],
++                     [(t2, p2), (t2, p2), (t1, 'Extra token')]
++                     ),
++            (p1, p2): ([(t1, p1), (t1, 'Missing token for production p2')],
++                       [(t2, p2), (t2, p2)],
++                       [(t2, p2), (t1, p1), (t2, p2)],
++                       [(t1, p1), (t2, p2), (t2, p2)],
++                       [(t1, p1), (t2, p2), (t1, p1), (t2, p2)],
++                       [(t2, p2), (t2, p2), (t2, 'Extra token')],
++                       [(t2, p2), (t1, p1), (t2, p2), (t1, 'Extra token')],
++                       [(t2, p2), (t1, p1), (t2, p2), (t2, 'Extra token')],
++                       [(t1, p1), (t2, p2), (t2, p2), (t1, 'Extra token')],
++                       [(t1, p1), (t2, p2), (t2, p2), (t2, 'Extra token')],
++                       [(t1, p1), (t2, p2), (t1, p1), (t2, p2), (t1, 'Extra token')],
++                       [(t1, p1), (t2, p2), (t1, p1), (t2, p2), (t2, 'Extra token')],
++                       )
++        }
++        for seqitems, results in tests.items():
++            for result in results:
++                seq = Sequence(minmax=lambda: (1, 2), *seqitems)
++                for t, p in result:
++                    if isinstance(p, basestring):
++                        with self.assertRaisesRegex(ParseError, p):
++                            seq.nextProd(t)
++                    else:
++                        self.assertEqual(p, seq.nextProd(t))
++
++
++class ChoiceTestCase(basetest.BaseTestCase):
++
++    def test_init(self):
++        "Choice.__init__()"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2)
++        t0 = (0, 0, 0, 0)
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++
++        ch = Choice(p1, p2)
++        with self.assertRaisesRegex(ParseError,
++                                    'No match for \(0, 0, 0, 0\) in Choice\(p1, p2\)'):
++            ch.nextProd(t0)
++        self.assertEqual(p1, ch.nextProd(t1))
++        with self.assertRaisesRegex(Exhausted, 'Extra token'):
++            ch.nextProd(t1)
++
++        ch = Choice(p1, p2)
++        self.assertEqual(p2, ch.nextProd(t2))
++        with self.assertRaisesRegex(Exhausted, 'Extra token'):
++            ch.nextProd(t2)
++
++        ch = Choice(p2, p1)
++        with self.assertRaisesRegex(ParseError,
++                                    'No match for \(0, 0, 0, 0\) in Choice\(p2, p1\)'):
++            ch.nextProd(t0)
++        self.assertEqual(p1, ch.nextProd(t1))
++        with self.assertRaisesRegex(Exhausted, 'Extra token'):
++            ch.nextProd(t1)
++
++        ch = Choice(p2, p1)
++        self.assertEqual(p2, ch.nextProd(t2))
++        with self.assertRaisesRegex(Exhausted, 'Extra token'):
++            ch.nextProd(t2)
++
++    def test_matches(self):
++        "Choice.matches()"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2, optional=True)
++
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++        t3 = (3, 0, 0, 0)
++
++        c = Choice(p1, p2)
++        self.assertEqual(True, c.matches(t1))
++        self.assertEqual(True, c.matches(t2))
++        self.assertEqual(False, c.matches(t3))
++
++        c = Choice(Sequence(p1), Sequence(p2))
++        self.assertEqual(True, c.matches(t1))
++        self.assertEqual(True, c.matches(t2))
++        self.assertEqual(False, c.matches(t3))
++
++    def test_nested(self):
++        "Choice with nested Sequence"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2)
++        s1 = Sequence(p1, p1)
++        s2 = Sequence(p2, p2)
++        t0 = (0, 0, 0, 0)
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++
++        ch = Choice(s1, s2)
++        with self.assertRaisesRegex(ParseError, r'No match for \(0, 0, 0, 0\) in Choice\(Sequence\(p1, p1\), Sequence\(p2, p2\)\)'):
++            ch.nextProd(t0)
++        self.assertEqual(s1, ch.nextProd(t1))
++        with self.assertRaisesRegex(Exhausted, 'Extra token'):
++            ch.nextProd(t1)
++
++        ch = Choice(s1, s2)
++        self.assertEqual(s2, ch.nextProd(t2))
++        with self.assertRaisesRegex(Exhausted, 'Extra token'):
++            ch.nextProd(t1)
++
++    def test_reset(self):
++        "Choice.reset()"
++        p1 = Prod('p1', lambda t, v: t == 1)
++        p2 = Prod('p2', lambda t, v: t == 2)
++        t1 = (1, 0, 0, 0)
++        t2 = (2, 0, 0, 0)
++
++        ch = Choice(p1, p2)
++        self.assertEqual(p1, ch.nextProd(t1))
++        self.assertRaises(Exhausted, ch.nextProd, t1)
++        ch.reset()
++        self.assertEqual(p2, ch.nextProd(t2))
++
++
++class ProdParserTestCase(basetest.BaseTestCase):
++
++    def setUp(self):
++        pass
++
++    def test_parse_keepS(self):
++        "ProdParser.parse(keepS)"
++        p = ProdParser()
++
++        # text, name, productions, store=None
++        def prods(): return Sequence(PreDef.char(';', ';'),
++                                     PreDef.char(':', ':')
++                                     )
++
++        w, seq, store, unused = p.parse('; :', 'test', prods(),
++                                        keepS=True)
++        self.assertTrue(w)
++        self.assertEqual(3, len(seq))
++
++        w, seq, store, unused = p.parse('; :', 'test', prods(),
++                                        keepS=False)
++        self.assertTrue(w)
++        self.assertEqual(2, len(seq))
++
++    def test_combi(self):
++        "ProdParser.parse() 2"
++        p1 = Prod('p1', lambda t, v: v == '1')
++        p2 = Prod('p2', lambda t, v: v == '2')
++        p3 = Prod('p3', lambda t, v: v == '3')
++
++        tests = {'1 2': True,
++                 '1 2 1 2': True,
++                 '3': True,
++                 # '': 'No match in Choice(Sequence(p1, p2), p3)',
++                 '1': 'Missing token for production p2',
++                 '1 2 1': 'Missing token for production p2',
++                 '1 2 1 2 x': r"No match: \('IDENT', 'x', 1, 9\)",
++                 '1 2 1 2 1': r"No match: \('NUMBER', '1', 1, 9\)",
++                 '3 x': r"No match: \('IDENT', 'x', 1, 3\)",
++                 '3 3': r"No match: \('NUMBER', '3', 1, 3\)",
++                 }
++        for text, exp in tests.items():
++            if sys.version_info.major == 2 and hasattr(exp, 'replace'):
++                exp = exp.replace("('", "(u'").replace(" '", " u'")
++            prods = Choice(Sequence(p1, p2, minmax=lambda: (1, 2)),
++                           p3)
++            if exp is True:
++                wellformed, seq, store, unused = ProdParser().parse(text, 'T', prods)
++                self.assertEqual(wellformed, exp)
++            else:
++                with self.assertRaisesRegex(xml.dom.SyntaxErr, 'T: %s' % exp):
++                    ProdParser().parse(text, 'T', prods)
++
++        tests = {'1 3': True,
++                 '1 1 3': True,
++                 '2 3': True,
++                 '1': 'Missing token for production p3',
++                 '1 1': 'Missing token for production p3',
++                 '1 3 3': r"No match: \('NUMBER', '3', 1, 5\)",
++                 '1 1 3 3': r"No match: \('NUMBER', '3', 1, 7\)",
++                 '2 3 3': r"No match: \('NUMBER', '3', 1, 5\)",
++                 '2': 'Missing token for production p3',
++                 '3': r"Missing token for production Choice\(Sequence\(p1\), p2\): \('NUMBER', '3', 1, 1\)",
++                 }
++        for text, exp in tests.items():
++            if sys.version_info.major == 2 and hasattr(exp, 'replace'):
++                exp = exp.replace("('", "(u'").replace(" '", " u'")
++            prods = Sequence(Choice(Sequence(p1, minmax=lambda: (1, 2)),
++                                    p2),
++                             p3)
++            if exp is True:
++                wellformed, seq, store, unused = ProdParser().parse(text, 'T', prods)
++                self.assertEqual(wellformed, exp)
++            else:
++                with self.assertRaisesRegex(xml.dom.SyntaxErr, 'T: %s' % exp):
++                    ProdParser().parse(text, 'T', prods)
++
++
++if __name__ == '__main__':
++    import unittest
++    unittest.main()
+--- a/css_parser_tests/test_profiles.py
++++ b/css_parser_tests/test_profiles.py
+@@ -121,19 +121,17 @@ class ProfilesTestCase(basetest.BaseTest
+         css_parser.log.raiseExceptions = True
+ 
+         # raises:
+-        expmsg = "invalid literal for int() with base 10: 'x'"
+-        # Python upto 2.4 and Jython have different msg format...
+-        if sys.version_info[0:2] == (2, 4):
+-            expmsg = "invalid literal for int(): x"
+-        elif sys.platform.startswith('java'):
+-            expmsg = "invalid literal for int() with base 10: x"
++        expmsg = r"invalid literal for int\(\) with base 10: 'x'"
++        # Jython have different msg format...
++        if sys.platform.startswith('java'):
++            expmsg = r"invalid literal for int\(\) with base 10: x"
+         # PyPy adds the u prefix, but only in versions lower than Python 3
+         elif (platform.python_implementation() == "PyPy" and
+               sys.version_info < (3, 0)):
+-            expmsg = "invalid literal for int() with base 10: u'x'"
++            expmsg = r"invalid literal for int\(\) with base 10: 'x'"
+ 
+-        self.assertRaisesMsg(Exception, expmsg,
+-                             css_parser.profile.validate, '-test-funcval', 'x')
++        with self.assertRaisesRegex(Exception, expmsg):
++            css_parser.profile.validate('-test-funcval', 'x')
+ 
+     def test_removeProfile(self):
+         "Profiles.removeProfile()"
+--- a/css_parser_tests/test_property.py
++++ b/css_parser_tests/test_property.py
+@@ -93,25 +93,25 @@ class PropertyTestCase(basetest.BaseTest
+ 
+         tests = {
+             '': (xml.dom.SyntaxErr,
+-                  'Property: No property name found: '),
++                 'Property: No property name found: '),
+             ':': (xml.dom.SyntaxErr,
+-                   'Property: No property name found: : [1:1: :]'),
++                  r'Property: No property name found: : \[1:1: :\]'),
+             'a': (xml.dom.SyntaxErr,
+-                   'Property: No ":" after name found: a [1:1: a]'),
++                  r'Property: No ":" after name found: a \[1:1: a\]'),
+             'b !': (xml.dom.SyntaxErr,
+-                     'Property: No ":" after name found: b ! [1:3: !]'),
++                    r'Property: No ":" after name found: b ! \[1:3: !\]'),
+             '/**/x': (xml.dom.SyntaxErr,
+-                       'Property: No ":" after name found: /**/x [1:5: x]'),
++                      r'Property: No ":" after name found: /\*\*/x \[1:5: x\]'),
+             'c:': (xml.dom.SyntaxErr,
+-                    "Property: No property value found: c: [1:2: :]"),
++                   r"Property: No property value found: c: \[1:2: :\]"),
+             'd: ': (xml.dom.SyntaxErr,
+-                     "No content to parse."),
++                    r"No content to parse."),
+             'e:!important': (xml.dom.SyntaxErr,
+-                              "No content to parse."),
++                             r"No content to parse."),
+             'f: 1!': (xml.dom.SyntaxErr,
+-                       'Property: Invalid priority: !'),
++                      r'Property: Invalid priority: !'),
+             'g: 1!importantX': (xml.dom.SyntaxErr,
+-                                 "Property: No CSS priority value: importantx"),
++                                r"Property: No CSS priority value: importantx"),
+ 
+             # TODO?
+             # u'a: 1;': (xml.dom.SyntaxErr,
+@@ -119,7 +119,8 @@ class PropertyTestCase(basetest.BaseTest
+         }
+         for test in tests:
+             ecp, msg = tests[test]
+-            self.assertRaisesMsg(ecp, msg, p._setCssText, test)
++            with self.assertRaisesRegex(ecp, msg):
++                p._setCssText(test)
+ 
+     def test_name(self):
+         "Property.name"
+@@ -162,8 +163,8 @@ class PropertyTestCase(basetest.BaseTest
+         "Property.literalname"
+         p = css_parser.css.property.Property(r'c\olor', 'red')
+         self.assertEqual(r'c\olor', p.literalname)
+-        self.assertRaisesMsgSubstring(AttributeError, "can't set attribute", p.__setattr__,
+-                                      'literalname', 'color')
++        with self.assertRaisesRegex(AttributeError, r"can't set attribute"):
++            p.__setattr__('literalname', 'color')
+ 
+     def test_validate(self):
+         "Property.valid"
+--- a/css_parser_tests/test_selector.py
++++ b/css_parser_tests/test_selector.py
+@@ -36,7 +36,8 @@ class SelectorTestCase(basetest.BaseTest
+         self.assertEqual((0, 0, 0, 1), s.specificity)
+         self.assertEqual(True, s.wellformed)
+ 
+-        self.assertRaisesEx(xml.dom.NamespaceErr, css_parser.css.Selector, 'p|b')
++        with self.assertRaises(xml.dom.NamespaceErr):
++            css_parser.css.Selector('p|b')
+ 
+     def test_element(self):
+         "Selector.element (TODO: RESOLVE)"
+@@ -411,8 +412,8 @@ class SelectorTestCase(basetest.BaseTest
+         selector = css_parser.css.Selector()
+ 
+         # readonly
+-        def _set(): selector.specificity = 1
+-        self.assertRaisesMsgSubstring(AttributeError, "can't set attribute", _set)
++        with self.assertRaisesRegex(AttributeError, r"can't set attribute"):
++            selector.specificity = 1
+ 
+         tests = {
+             '*': (0, 0, 0, 0),

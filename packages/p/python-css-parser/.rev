@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>848970</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f47631797378a542479d3f8cb0d05cd0</srcmd5>
+    <version>1.0.7</version>
+    <time>1643228818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7:
+  - Fix incorrect license information in one file from a
+    copy/paste
+  - Use the badge from GA
+  - test: relax assertRaisesMsg to match longer strings
+  - Add a two level import from above test
+  - Add python 3.10 to the CI matrix
+  - version 1.0.7
+- Add relax_error_msg_check.patch replacing non-standard assert
+  methods with the standard ones (gh#ebook-utils/css-parser#12).
+</comment>
+    <requestid>949148</requestid>
+  </revision>
 </revisionlist>

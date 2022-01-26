@@ -1,7 +1,7 @@
 #
 # spec file for package python-css-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-css-parser
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        CSS related utilities (parsing, serialization, etc) for python
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ebook-utils/css-parser
 Source:         https://github.com/ebook-utils/css-parser/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM relax_error_msg_check.patch gh#ebook-utils/css-parser#12 mcepl@suse.com
+# instead of home-made assert methods with the ones from the standard library
+Patch0:         relax_error_msg_check.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module setuptools}
 Requires:       python-chardet
@@ -36,17 +39,18 @@ BuildArch:      noarch
 %description
 CSS related utilities (parsing, serialization, etc) for python
 
-A fork of the cssutils project based on version 1.0.2. This fork 
-includes general bug fixes and extensions specific to editing and 
+A fork of the cssutils project based on version 1.0.2. This fork
+includes general bug fixes and extensions specific to editing and
 working with ebooks.
 
-The main python source code has been modified so that it will run 
-without further conversion on both Python >= 2.7 and Python 3.X without 
-any further modules required. All required modifications are handled 
+The main python source code has been modified so that it will run
+without further conversion on both Python >= 2.7 and Python 3.X without
+any further modules required. All required modifications are handled
 local to each file
 
 %prep
-%setup -q -n css-parser-%{version}
+%autosetup -p1 -n css-parser-%{version}
+
 sed -i "1d" src/css_parser/{parse,codec,sac,serialize,scripts/csscapture,_codec2,errorhandler,scripts/cssparse,_codec3,scripts/csscombine,tokenize2,version,encutils/__init__,__init__}.py # Fix non-executable scripts
 
 %build

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 25 22:45:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 1.0.7:
+  - Fix incorrect license information in one file from a
+    copy/paste
+  - Use the badge from GA
+  - test: relax assertRaisesMsg to match longer strings
+  - Add a two level import from above test
+  - Add python 3.10 to the CI matrix
+  - version 1.0.7
+- Add relax_error_msg_check.patch replacing non-standard assert
+  methods with the standard ones (gh#ebook-utils/css-parser#12).
+
+-------------------------------------------------------------------
 Sat Nov 14 19:59:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.0.6
