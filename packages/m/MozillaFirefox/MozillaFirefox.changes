@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 24 07:42:03 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Enable -fimplicit-constexpr for GCC 12+.
+
+-------------------------------------------------------------------
 Thu Jan 20 23:21:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 96.0.2

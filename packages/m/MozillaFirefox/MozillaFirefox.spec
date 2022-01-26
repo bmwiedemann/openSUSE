@@ -401,6 +401,9 @@ export CC=gcc-9
 %if 0%{?clang_build} == 0
 export CC=gcc
 export CXX=g++
+%if 0%{?gcc_version:%{gcc_version}} >= 12
+export CFLAGS="$CFLAGS -fimplicit-constexpr"
+%endif
 %endif
 %endif
 %ifarch %arm %ix86
