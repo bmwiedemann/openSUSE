@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 26 07:40:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.9.0:
+  - Remove removed fictionalley site from plugin-example.ini
+  - Update defaults.inis for Chrome's new Cache_Data dir.
+  - Update translations.
+  - Adding plugin feature to Mark anthologies when individual
+    story skipped. See #786
+  - Refactoring of cli.py by hseg.
+  - Tweaks to base_xenforoforum tagsfromtitle default
+    replace_metadata by hseg.
+  - adapter_archiveofourownorg: AO3 notification emails now
+    sending http: instead of https:
+  - Add remove_class_chapter feature, true by default. For
+    Calibre convert with Base eFiction.
+  - adapter_scribblehubcom: Corner case removing spoilers.
+  - adapter_wwwnovelallcom: fixes for story w/o chapters & html desc.
+
+-------------------------------------------------------------------
 Tue Jan 11 17:35:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.8.0:

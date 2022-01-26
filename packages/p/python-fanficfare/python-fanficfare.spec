@@ -21,7 +21,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fanficfare
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
@@ -65,7 +65,7 @@ Main Features of FanFicFare:
 
 rm -rf included_dependencies/
 
-sed -i -e '/^#!\/usr\/bin\/python/d' fanficfare/mobi{,html}.py
+find . -name \*.py -exec sed -i -e '/^#!\/usr\/bin\/python/d' '{}' \;
 dos2unix DESCRIPTION.rst README.md
 
 %build
