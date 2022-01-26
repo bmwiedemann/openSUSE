@@ -1,0 +1,6 @@
+<package name="ktop" project="openSUSE:Factory">
+  <title>ktop</title>
+  <description>A top-like tool for your Kubernetes clusters </description>
+  <devel project="devel:kubic" package="ktop"/>
+  <url>https://github.com/vladimirvivien/ktop</url>
+</package>

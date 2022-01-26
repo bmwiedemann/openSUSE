@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Jan 11 08:21:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go 1.17 or higher
+
+-------------------------------------------------------------------
+Sat Jan 01 14:50:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.0:
+  * Support for kubectl/krew plugin
+  * small fix to support clusters with oidc auth
+  * Documentation update
+  * Refinement of the UI
+  * Another code refactor
+  * Remove controller-runtime to use simple watchers
+  * Refreshing node panel with new columns
+  * Simplify controller-runtime usage to only retrieve obj list
+  * Remodling with controller-runtime
+  * Node and pod overview screen works
+
+-------------------------------------------------------------------
+Sat Jan  1 14:46:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- creating package at version 0.2.0
