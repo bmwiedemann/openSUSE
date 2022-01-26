@@ -42,7 +42,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiPlugin)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(fluidsynth)
 %endif
 BuildRequires:  pkgconfig(libpulse-simple)
