@@ -1,0 +1,6 @@
+<package name="rancher-cli" project="openSUSE:Factory">
+  <title>rancher-cli</title>
+  <description>Rancher CLI</description>
+  <devel project="devel:kubic" package="rancher-cli"/>
+  <url>https://github.com/rancher/cli</url>
+</package>

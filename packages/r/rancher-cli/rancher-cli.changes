@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Jan 04 13:25:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.0:
+  * Bump Rancher dependency and use nodeName when getting machine
+  * Support SSH for v2 provisioned machines
+  * Write only base-names of files in the checksum file on releases
+
+-------------------------------------------------------------------
+Tue Jan  4 13:21:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 2.4.13:
+  * Add c-m- provisioing v2 format to regex for context
+
+-------------------------------------------------------------------
+Tue Jan 04 13:18:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.12:
+  * Add support for --set-string flag
+  * Remove rancher/types dependency and update imports
+  * go mod tidy
+  * Cache kubeconfig used for kubectl commands
+
+-------------------------------------------------------------------
+Tue Jun  1 20:34:05 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package rancher-cli
+  - upstream package name is cli
+  - executable is named rancher-cli
