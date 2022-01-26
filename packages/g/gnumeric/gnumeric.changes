@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 21 15:43:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.51:
+  + Fix error bars when data are in a multi-column array.
+  + Always set the GO_DATA_HAS_VALUE flag when needed.
+  + Fix --with-long-double configuration.
+  + Fix applix import/locale problem.
+  + Make sure CEIL doesn't return -0.
+  + Add ILOG function.
+  + Fix MROUND.
+  + Take evasive action re g_memdup.
+  + Fix inter-gnumeric array formula paste crash.
+  + Avoid re-querying file existance for recent files.
+  + Fix rich-text rendering (based on work of Jean).
+  + Fix crash with conditional styling.
+  + Extend BITOR, BITAND, BITXOR to any numbers of arguments.
+  + Fix ods export leak.
+
+-------------------------------------------------------------------
 Mon Sep 20 19:52:55 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
