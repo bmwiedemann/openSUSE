@@ -17,7 +17,7 @@
 
 
 Name:           obs-service-kiwi_metainfo_helper
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Service for substituting various variables in build recipes
 License:        GPL-2.0-or-later

@@ -111,4 +111,13 @@
 - Bump version to 0.4</comment>
     <requestid>946926</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3d125121e0b0c1c08809cc2654125a01</srcmd5>
+    <version>0.5</version>
+    <time>1643228801</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate OS_VERSION based on os-release VERSION (bsc#1195061).
+- Bump version to 0.5</comment>
+    <requestid>948973</requestid>
+  </revision>
 </revisionlist>

@@ -12,6 +12,7 @@ build-specific metainfo.
 | %SOURCEURL%                          | Source url for container recipe (IBS)          | https://sources.suse.com/SUSE:SLE-15:Update:CR/sles15-image/2951b67133dd6384cacb28203174e030/                           |
 | %RELEASE%                            | The OBS release number (<cicnt\>.<bldcnt\>)    | 4.2                                                                                                                     |
 | %BUILDTIME%                          | $(date --utc +%FT%T.%NZ)                       | 2018-10-30T09:19:02.074934628Z                                                                                          |
+| %OS_VERSION%                         | VERSION in the os-release file                 | 15                                                                                                                      |
 | %OS_VERSION_ID%                      | VERSION_ID in the os-release file              | 15                                                                                                                      |
 | %OS_VERSION_ID_SP%                   | Like VERSION_ID, but with SP (SLE only)        | 15.0                                                                                                                    |
 | %OS_PRETTY_NAME%                     | PRETTY_NAME in the os-release file             | SUSE Linux Enterprise Server 15 SP3 (Snapshot16)                                                                        |

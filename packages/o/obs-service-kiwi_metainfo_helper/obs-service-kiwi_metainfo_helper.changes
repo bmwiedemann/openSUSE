@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 24 09:36:17 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate OS_VERSION based on os-release VERSION (bsc#1195061).
+- Bump version to 0.5
+
+-------------------------------------------------------------------
 Mon Jan 17 09:57:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add test suite (test.sh, sles-release-15.4-150400.32.2.x86_64.rpm)
