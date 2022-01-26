@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jan 21 20:07:04 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.17 to avoid build errors on Leap15 / SLES 15
+
+-------------------------------------------------------------------
+Fri Jan 21 19:39:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.10.1:
+  * go.mod, vendor: update cilium to 1.11.1
+  * Update default Cilium version to v1.11.1
+  * build(deps): bump azure/login from 1.4.2 to 1.4.3
+  * build(deps): bump aws-actions/configure-aws-credentials
+  * install: remove deprecated --native-routing-cidr option
+  * ci: replace deprecated --native-routing-cidr install option
+  * build(deps): bump google.golang.org/grpc from 1.42.0 to 1.43.0
+  * Add golangci-lint check for local imports
+  * Sort imports according to Go conventions
+  * connectivity/check: use insecure.NewCredentials instead of WithInsecure
+  * build(deps): bump 8398a7/action-slack from 3.12.0 to 3.13.0
+  * Makefile: update release target to use alpine 3.15
+  * Update Go to 1.17.6
+  * sysdump: Support fetching DaemonSet with custom name
+  * Make file permission more explict
+  * Add file header with 2022 year
+  * Add retry mechanism while copying files
+  * Compress cilium-bugtool tar file before copy to local system
+  * Added K3s as a supported environment
+  * build(deps): bump actions/setup-go from 2.1.4 to 2.1.5
+  * install: remove deprecated cluster roles
+  * build(deps): bump docker/login-action from 1.10.0 to 1.12.0
+  * images: Use well-known digests where possible
+  * chore: Tidy up subshells in quoted script
+  * build(deps): bump actions/upload-artifact from 2.3.0 to 2.3.1
+  * build(deps): bump github.com/spf13/cobra from 1.2.1 to 1.3.0
+  * build(deps): bump nick-invision/retry from 2.5.1 to 2.6.0
+  * Update Go to 1.17.5
+  * ui: v0.8.5 as default
+  * build(deps): bump azure/login from 1.4.1 to 1.4.2
+
+-------------------------------------------------------------------
 Tue Jan  4 09:04:40 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - first version of package, at version 0.10.0
