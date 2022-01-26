@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 25 18:29:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert distributed-fix-python310.patch addition
+- The patch is gh#dask/distributed#5353
+  * Is not merged upstream
+  * Does not fix the issues
+  * Breaks other flavors
+
+-------------------------------------------------------------------
+Tue Jan 25 09:33:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add distributed-fix-python310.patch to fix build with python 3.10 
+
+-------------------------------------------------------------------
 Thu Jan 20 16:09:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2022.1.0

@@ -31,13 +31,14 @@
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
+# add to _multibuild when enabling python310 (see below)
 %define psuffix -test-py310"
 %define skip_python38 1
 %define skip_python39 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
-# https://github.com/dask/distributed/issues/5350
+# https://github.com/dask/distributed/issues/5350 -- NOT fixed by https://github.com/dask/distributed/pull/5353
 %define skip_python310 1
 %bcond_with test
 %endif
