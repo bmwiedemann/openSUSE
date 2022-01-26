@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 26 10:22:01 UTC 2022 - pgajdos@suse.com
+
+- fix build with newer pythons
+- added patches
+  https://github.com/jrbourbeau/pycondor/commit/b41b17546c898d5cc2368b92fda86473c605e923
+  + python-PyCondor-collections.abc-Iterable.patch
+
+-------------------------------------------------------------------
 Tue Aug  4 14:55:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

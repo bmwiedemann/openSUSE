@@ -1,0 +1,27 @@
+From b41b17546c898d5cc2368b92fda86473c605e923 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <duncanmmacleod@gmail.com>
+Date: Thu, 18 Apr 2019 16:06:08 +0100
+Subject: [PATCH] updated import for python3.8 (#140)
+
+---
+ pycondor/job.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/pycondor/job.py b/pycondor/job.py
+index ef6f1bf..47762b6 100644
+--- a/pycondor/job.py
++++ b/pycondor/job.py
+@@ -1,7 +1,11 @@
+ 
+ import os
+ import subprocess
+-from collections import namedtuple, Iterable
++from collections import namedtuple
++try:
++    from collections.abc import Iterable
++except ImportError:  # python < 3.3
++    from collections import Iterable
+ 
+ from .utils import (checkdir, string_rep, requires_command,
+                     split_command_string, decode_string)
+

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCondor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@ Summary:        Python utility for HTCondor
 License:        MIT
 URL:            https://github.com/jrbourbeau/pycondor
 Source:         https://files.pythonhosted.org/packages/source/P/PyCondor/PyCondor-%{version}.tar.gz
+# https://github.com/jrbourbeau/pycondor/commit/b41b17546c898d5cc2368b92fda86473c605e923
+Patch0:         python-PyCondor-collections.abc-Iterable.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module click >= 7.0}
@@ -42,6 +44,7 @@ PyCondor (Python HTCondor) is a tool to help build and submit workflows to HTCon
 
 %prep
 %setup -q -n PyCondor-%{version}
+%patch0 -p1
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" pycondor/tests/example_script.py
 
 %build
