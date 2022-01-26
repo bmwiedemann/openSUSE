@@ -21,7 +21,7 @@
           <port number='5000'/>
         </expose>
         <volumes>
-          <volume name="/var/lib/registry"/>
+          <volume name="/var/lib/docker-registry"/>
         </volumes>
         <entrypoint execute="/usr/bin/registry"/>
         <subcommand execute="serve">

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 19 23:25:09 UTC 2022 - Noah Kalish <noah@spacemule.net>
+
+- Fixed volume location to match the directory used by registry
+
+-------------------------------------------------------------------
 Mon Aug  2 12:20:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add busybox-findutils
