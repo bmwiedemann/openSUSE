@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 25 10:43:25 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 9c04ed2c1a (2022-01-24):
+  * firmware: platform: Limit max clock-id to CLOCK_VEC for now
+    See: #1688
+
+-------------------------------------------------------------------
+Mon Jan 24 13:28:43 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 827fdd0736 (2022-01-20):
+  * firmware: dtoverlay: Don't mix non-fatal errors and offsets
+    See: #1686
+  * firmware: arm_loader: Load vl805 overlay on CM4
+    See: https://forums.raspberrypi.com/viewtopic.php?t=326088
+  * firmware: gencmdserv: Add mailbox interface to gencmd
+  * firmware: improve firmware camera detection
+  * firmware: arm-loader: Fix kernel8.img selection on 2837 with arm_64bit=1
+    See: #1671
+  * firmware: ldconfig: Discard subsequent chunks from a truncated line
+    See: #1669
+  * firmware: cec: Fail set_passive_mode when running with kms
+  * firmware: Firmware: Remove PWM/audio traits for CM4
+  * firmware: usb: Fix non-BCM2711 MSD support
+    See: raspberrypi/usbboot#102
+
+-------------------------------------------------------------------
 Wed Dec 22 13:07:23 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1a0297bfbf (2021-12-01):
