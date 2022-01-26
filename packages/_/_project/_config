@@ -79,8 +79,8 @@ Substitute: system-packages:docker kmod kernel-default docker createrepo_c conta
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
 %else
 Ignore: container-build-checks-strict
-Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE 
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE 
+Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE
 %endif
 
@@ -211,16 +211,11 @@ FileProvides: /sbin/start_daemon sysvinit-tools
 FileProvides: /sbin/pidof sysvinit-tools
 FileProvides: /sbin/ifup wicked-service
 
-Preinstall: aaa_base attr bash coreutils diffutils
-Preinstall: bash-sh
-Preinstall: filesystem fillup glibc grep
-Preinstall: libbz2-1 libgcc_s1 libncurses6 pam
-Preinstall: permissions rpm rpm-config-SUSE sed tar libz1 libselinux1
-Preinstall: libgcrypt20 libgpg-error0
-Preinstall: liblzma5 libcap2 libacl1 libattr1
-Preinstall: libpopt0 libelf1
-Preinstall: libpcre1 libzstd1 libpcre2-8-0
-Preinstall: libreadline8
+Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
+Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
+Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
+Preinstall: libgcrypt20 libgpg-error0 liblzma5 libcap2 libacl1 libattr1
+Preinstall: libpopt0 libelf1 libpcre1 libzstd1 libpcre2-8-0
 
 #Runscripts: aaa_base
 
@@ -233,7 +228,7 @@ VMInstall: iproute2 libmnl0
 ExportFilter: ^kernel-obs-build.*\.x86_64.rpm$ . i586
 # new: use kernel-obs-build from aarch64 for aarch64 armv6 and armv7
 ExportFilter: ^kernel-obs-build.*\.armv6hl\.rpm$
-ExportFilter: ^kernel-obs-build.*\.armv7hl\.rpm$  
+ExportFilter: ^kernel-obs-build.*\.armv7hl\.rpm$
 ExportFilter: ^kernel-obs-build.*\.aarch64\.rpm$  . armv6l armv7l
 # now make sure the jobs get a 64bit cpu, otherwise can not run the 64bit kernel
 %ifarch armv6l armv7l
@@ -449,7 +444,7 @@ Prefer: -python38-html2text -python39-html2text -python310-html2text
 Prefer: -budgie-desktop
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: -python36-tornado5 
+Prefer: -python36-tornado5
 Prefer: python38-tornado -python38-tornado5
 Prefer: python39-tornado -python39-tornado5
 Prefer: python310-tornado
@@ -528,338 +523,338 @@ Prefer: -nunit3-devel
 Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
 
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
-Prefer: -ColPack-devel-32bit                          
-Prefer: -FAudio-devel-32bit                           
-Prefer: -ImageMagick-devel-32bit                      
+Prefer: -ColPack-devel-32bit
+Prefer: -FAudio-devel-32bit
+Prefer: -ImageMagick-devel-32bit
 Prefer: -Mesa-libEGL-devel-32bit
 Prefer: -Mesa-libGL-devel-32bit
 Prefer: -Mesa-libGLESv1_CM-devel-32bit
 Prefer: -Mesa-libGLESv2-devel-32bit
-Prefer: -Mesa-libd3d-devel-32bit                      
-Prefer: -Mesa-libglapi-devel-32bit                    
-Prefer: -NetworkManager-devel-32bit                   
-Prefer: -aalib-devel-32bit                            
-Prefer: -adolc-devel-32bit                            
-Prefer: -alsa-devel-32bit                             
-Prefer: -alsa-topology-devel-32bit                    
-Prefer: -armadillo-devel-32bit                        
-Prefer: -arpack-ng-devel-32bit                        
-Prefer: -at-spi2-core-devel-32bit                     
-Prefer: -atk-devel-32bit                              
-Prefer: -atkmm-devel-32bit                            
-Prefer: -atkmm1_6-devel-32bit                         
-Prefer: -audiofile-devel-32bit                        
-Prefer: -audit-devel-32bit                            
-Prefer: -augeas-devel-32bit                           
-Prefer: -binutils-devel-32bit                         
-Prefer: -blas-devel-32bit                             
-Prefer: -bluez-devel-32bit                            
-Prefer: -cairo-devel-32bit                            
-Prefer: -cairomm-devel-32bit                          
-Prefer: -cairomm1_0-devel-32bit                       
-Prefer: -cblas-devel-32bit                            
-Prefer: -chmlib-devel-32bit                           
-Prefer: -clang10-devel-32bit                          
-Prefer: -clang7-devel-32bit                           
-Prefer: -clang9-devel-32bit                           
-Prefer: -cppunit-devel-32bit                          
-Prefer: -cracklib-devel-32bit                         
-Prefer: -cups-devel-32bit                             
-Prefer: -cyrus-sasl-devel-32bit                       
-Prefer: -dante-devel-32bit                            
-Prefer: -dapl-devel-32bit                             
-Prefer: -dbus-1-devel-32bit                           
-Prefer: -dbus-1-glib-devel-32bit                      
-Prefer: -device-mapper-devel-32bit                    
-Prefer: -dirac-devel-32bit                            
-Prefer: -ecryptfs-utils-devel-32bit                   
-Prefer: -file-devel-32bit                             
-Prefer: -flac-devel-32bit                             
-Prefer: -fltk-devel-32bit                             
-Prefer: -fontconfig-devel-32bit                       
-Prefer: -freeglut-devel-32bit                         
-Prefer: -freetype2-devel-32bit                        
-Prefer: -gd-devel-32bit                               
-Prefer: -gdbm-devel-32bit                             
-Prefer: -gdk-pixbuf-devel-32bit                       
-Prefer: -giflib-devel-32bit                           
-Prefer: -glib2-devel-32bit                            
-Prefer: -glibc-devel-32bit                            
-Prefer: -glu-devel-32bit                              
-Prefer: -gmp-devel-32bit                              
-Prefer: -grantlee5-devel-32bit                        
-Prefer: -gstreamer-devel-32bit                        
-Prefer: -gstreamer-plugins-base-devel-32bit           
-Prefer: -gtk2-devel-32bit                             
-Prefer: -gtk3-devel-32bit                             
-Prefer: -gtk4-devel-32bit                             
-Prefer: -hdf5-devel-32bit                             
-Prefer: -hdf5-mvapich2-devel-32bit                    
-Prefer: -hdf5-openmpi1-devel-32bit                    
-Prefer: -hdf5-openmpi2-devel-32bit                    
-Prefer: -hdf5-openmpi3-devel-32bit                    
-Prefer: -hdf5-openmpi4-devel-32bit                    
-Prefer: -hunspell-devel-32bit                         
-Prefer: -isl-devel-32bit                              
-Prefer: -jbig2dec-devel-32bit                         
-Prefer: -keyutils-devel-32bit                         
-Prefer: -krb5-devel-32bit                             
-Prefer: -lapack-devel-32bit                           
-Prefer: -lapacke-devel-32bit                          
-Prefer: -libFS-devel-32bit                            
+Prefer: -Mesa-libd3d-devel-32bit
+Prefer: -Mesa-libglapi-devel-32bit
+Prefer: -NetworkManager-devel-32bit
+Prefer: -aalib-devel-32bit
+Prefer: -adolc-devel-32bit
+Prefer: -alsa-devel-32bit
+Prefer: -alsa-topology-devel-32bit
+Prefer: -armadillo-devel-32bit
+Prefer: -arpack-ng-devel-32bit
+Prefer: -at-spi2-core-devel-32bit
+Prefer: -atk-devel-32bit
+Prefer: -atkmm-devel-32bit
+Prefer: -atkmm1_6-devel-32bit
+Prefer: -audiofile-devel-32bit
+Prefer: -audit-devel-32bit
+Prefer: -augeas-devel-32bit
+Prefer: -binutils-devel-32bit
+Prefer: -blas-devel-32bit
+Prefer: -bluez-devel-32bit
+Prefer: -cairo-devel-32bit
+Prefer: -cairomm-devel-32bit
+Prefer: -cairomm1_0-devel-32bit
+Prefer: -cblas-devel-32bit
+Prefer: -chmlib-devel-32bit
+Prefer: -clang10-devel-32bit
+Prefer: -clang7-devel-32bit
+Prefer: -clang9-devel-32bit
+Prefer: -cppunit-devel-32bit
+Prefer: -cracklib-devel-32bit
+Prefer: -cups-devel-32bit
+Prefer: -cyrus-sasl-devel-32bit
+Prefer: -dante-devel-32bit
+Prefer: -dapl-devel-32bit
+Prefer: -dbus-1-devel-32bit
+Prefer: -dbus-1-glib-devel-32bit
+Prefer: -device-mapper-devel-32bit
+Prefer: -dirac-devel-32bit
+Prefer: -ecryptfs-utils-devel-32bit
+Prefer: -file-devel-32bit
+Prefer: -flac-devel-32bit
+Prefer: -fltk-devel-32bit
+Prefer: -fontconfig-devel-32bit
+Prefer: -freeglut-devel-32bit
+Prefer: -freetype2-devel-32bit
+Prefer: -gd-devel-32bit
+Prefer: -gdbm-devel-32bit
+Prefer: -gdk-pixbuf-devel-32bit
+Prefer: -giflib-devel-32bit
+Prefer: -glib2-devel-32bit
+Prefer: -glibc-devel-32bit
+Prefer: -glu-devel-32bit
+Prefer: -gmp-devel-32bit
+Prefer: -grantlee5-devel-32bit
+Prefer: -gstreamer-devel-32bit
+Prefer: -gstreamer-plugins-base-devel-32bit
+Prefer: -gtk2-devel-32bit
+Prefer: -gtk3-devel-32bit
+Prefer: -gtk4-devel-32bit
+Prefer: -hdf5-devel-32bit
+Prefer: -hdf5-mvapich2-devel-32bit
+Prefer: -hdf5-openmpi1-devel-32bit
+Prefer: -hdf5-openmpi2-devel-32bit
+Prefer: -hdf5-openmpi3-devel-32bit
+Prefer: -hdf5-openmpi4-devel-32bit
+Prefer: -hunspell-devel-32bit
+Prefer: -isl-devel-32bit
+Prefer: -jbig2dec-devel-32bit
+Prefer: -keyutils-devel-32bit
+Prefer: -krb5-devel-32bit
+Prefer: -lapack-devel-32bit
+Prefer: -lapacke-devel-32bit
+Prefer: -libFS-devel-32bit
 Prefer: -libGLw-devel-32bit
-Prefer: -libHX-devel-32bit                            
-Prefer: -libICE-devel-32bit                           
-Prefer: -libMagick++-devel-32bit                      
-Prefer: -libOSMesa-devel-32bit                        
-Prefer: -libQt5Concurrent-devel-32bit                 
-Prefer: -libQt5Core-devel-32bit                       
-Prefer: -libQt5DBus-devel-32bit                       
-Prefer: -libQt5Gui-devel-32bit                        
-Prefer: -libQt5Network-devel-32bit                    
-Prefer: -libQt5OpenGL-devel-32bit                     
+Prefer: -libHX-devel-32bit
+Prefer: -libICE-devel-32bit
+Prefer: -libMagick++-devel-32bit
+Prefer: -libOSMesa-devel-32bit
+Prefer: -libQt5Concurrent-devel-32bit
+Prefer: -libQt5Core-devel-32bit
+Prefer: -libQt5DBus-devel-32bit
+Prefer: -libQt5Gui-devel-32bit
+Prefer: -libQt5Network-devel-32bit
+Prefer: -libQt5OpenGL-devel-32bit
 Prefer: -libQt5OpenGLExtensions-devel-static-32bit
-Prefer: -libQt5PrintSupport-devel-32bit               
-Prefer: -libQt5Sql-devel-32bit                        
-Prefer: -libQt5Test-devel-32bit                       
+Prefer: -libQt5PrintSupport-devel-32bit
+Prefer: -libQt5Sql-devel-32bit
+Prefer: -libQt5Test-devel-32bit
 Prefer: -libQt5Widgets-devel-32bit
-Prefer: -libQt5Xml-devel-32bit                        
-Prefer: -libSDL-devel-32bit                           
-Prefer: -libSDL2-devel-32bit                          
-Prefer: -libSDL2_gfx-devel-32bit                      
-Prefer: -libSDL2_image-devel-32bit                    
-Prefer: -libSDL2_mixer-devel-32bit                    
-Prefer: -libSDL2_net-devel-32bit                      
-Prefer: -libSDL2_ttf-devel-32bit                      
-Prefer: -libSDL_Pango-devel-32bit                     
-Prefer: -libSDL_gfx-devel-32bit                       
-Prefer: -libSDL_image-devel-32bit                     
+Prefer: -libQt5Xml-devel-32bit
+Prefer: -libSDL-devel-32bit
+Prefer: -libSDL2-devel-32bit
+Prefer: -libSDL2_gfx-devel-32bit
+Prefer: -libSDL2_image-devel-32bit
+Prefer: -libSDL2_mixer-devel-32bit
+Prefer: -libSDL2_net-devel-32bit
+Prefer: -libSDL2_ttf-devel-32bit
+Prefer: -libSDL_Pango-devel-32bit
+Prefer: -libSDL_gfx-devel-32bit
+Prefer: -libSDL_image-devel-32bit
 Prefer: -libSDL_mixer-devel-32bit -libSDL_mixer-devel-64bit
-Prefer: -libSDL_net-devel-32bit                       
-Prefer: -libSDL_sound-devel-32bit                     
+Prefer: -libSDL_net-devel-32bit
+Prefer: -libSDL_sound-devel-32bit
 Prefer: -libSDL_ttf-devel-32bit   -libSDL_ttf-devel-64bit
-Prefer: -libSDLmm-devel-32bit                         
-Prefer: -libSM-devel-32bit                            
-Prefer: -libX11-devel-32bit                           
-Prefer: -libXau-devel-32bit                           
-Prefer: -libXaw-devel-32bit                           
-Prefer: -libXaw3d-devel-32bit                         
-Prefer: -libXcomposite-devel-32bit                    
-Prefer: -libXcursor-devel-32bit                       
-Prefer: -libXdamage-devel-32bit                       
-Prefer: -libXdmcp-devel-32bit                         
-Prefer: -libXevie-devel-32bit                         
-Prefer: -libXext-devel-32bit                          
-Prefer: -libXfixes-devel-32bit                        
-Prefer: -libXfont-devel-32bit                         
-Prefer: -libXfont2-devel-32bit                        
-Prefer: -libXfontcache-devel-32bit                    
-Prefer: -libXft-devel-32bit                           
-Prefer: -libXi-devel-32bit                            
-Prefer: -libXinerama-devel-32bit                      
-Prefer: -libXmu-devel-32bit                           
-Prefer: -libXp-devel-32bit                            
-Prefer: -libXpm-devel-32bit                           
-Prefer: -libXprintAppUtil-devel-32bit                 
-Prefer: -libXprintUtil-devel-32bit                    
-Prefer: -libXrandr-devel-32bit                        
-Prefer: -libXrender-devel-32bit                       
-Prefer: -libXres-devel-32bit                          
-Prefer: -libXss-devel-32bit                           
-Prefer: -libXt-devel-32bit                            
-Prefer: -libXtst-devel-32bit                          
-Prefer: -libXv-devel-32bit                            
-Prefer: -libXvMC-devel-32bit                          
-Prefer: -libXxf86dga-devel-32bit                      
-Prefer: -libXxf86vm-devel-32bit                       
-Prefer: -libacl-devel-32bit                           
-Prefer: -libadns-devel-32bit                          
-Prefer: -libaio-devel-32bit                           
-Prefer: -libart_lgpl-devel-32bit                      
-Prefer: -libattr-devel-32bit                          
-Prefer: -libavc1394-devel-32bit                       
-Prefer: -libbasicobjects-devel-32bit                  
-Prefer: -libblkid-devel-32bit                         
-Prefer: -libbotan-devel-32bit                         
-Prefer: -libbz2-devel-32bit                           
-Prefer: -libcelt-devel-32bit                          
-Prefer: -libcmocka-devel-32bit                        
-Prefer: -libcollection-devel-32bit                    
-Prefer: -libcom_err-devel-32bit                       
-Prefer: -libcrystalhd-devel-32bit                     
-Prefer: -libcurl-devel-32bit                          
-Prefer: -libdb-4_8-devel-32bit                        
-Prefer: -libdbi-devel-32bit                           
-Prefer: -libdbusmenu-qt5-devel-32bit                  
-Prefer: -libdhash-devel-32bit                         
-Prefer: -libdmx-devel-32bit                           
-Prefer: -libdrm-devel-32bit                           
-Prefer: -libdwarves-devel-32bit                       
-Prefer: -libeditorconfig-devel-32bit                  
-Prefer: -libelf-devel-32bit                           
-Prefer: -libexif-devel-32bit                          
-Prefer: -libexpat-devel-32bit                         
-Prefer: -libext2fs-devel-32bit                        
-Prefer: -libfabric-devel-32bit                        
+Prefer: -libSDLmm-devel-32bit
+Prefer: -libSM-devel-32bit
+Prefer: -libX11-devel-32bit
+Prefer: -libXau-devel-32bit
+Prefer: -libXaw-devel-32bit
+Prefer: -libXaw3d-devel-32bit
+Prefer: -libXcomposite-devel-32bit
+Prefer: -libXcursor-devel-32bit
+Prefer: -libXdamage-devel-32bit
+Prefer: -libXdmcp-devel-32bit
+Prefer: -libXevie-devel-32bit
+Prefer: -libXext-devel-32bit
+Prefer: -libXfixes-devel-32bit
+Prefer: -libXfont-devel-32bit
+Prefer: -libXfont2-devel-32bit
+Prefer: -libXfontcache-devel-32bit
+Prefer: -libXft-devel-32bit
+Prefer: -libXi-devel-32bit
+Prefer: -libXinerama-devel-32bit
+Prefer: -libXmu-devel-32bit
+Prefer: -libXp-devel-32bit
+Prefer: -libXpm-devel-32bit
+Prefer: -libXprintAppUtil-devel-32bit
+Prefer: -libXprintUtil-devel-32bit
+Prefer: -libXrandr-devel-32bit
+Prefer: -libXrender-devel-32bit
+Prefer: -libXres-devel-32bit
+Prefer: -libXss-devel-32bit
+Prefer: -libXt-devel-32bit
+Prefer: -libXtst-devel-32bit
+Prefer: -libXv-devel-32bit
+Prefer: -libXvMC-devel-32bit
+Prefer: -libXxf86dga-devel-32bit
+Prefer: -libXxf86vm-devel-32bit
+Prefer: -libacl-devel-32bit
+Prefer: -libadns-devel-32bit
+Prefer: -libaio-devel-32bit
+Prefer: -libart_lgpl-devel-32bit
+Prefer: -libattr-devel-32bit
+Prefer: -libavc1394-devel-32bit
+Prefer: -libbasicobjects-devel-32bit
+Prefer: -libblkid-devel-32bit
+Prefer: -libbotan-devel-32bit
+Prefer: -libbz2-devel-32bit
+Prefer: -libcelt-devel-32bit
+Prefer: -libcmocka-devel-32bit
+Prefer: -libcollection-devel-32bit
+Prefer: -libcom_err-devel-32bit
+Prefer: -libcrystalhd-devel-32bit
+Prefer: -libcurl-devel-32bit
+Prefer: -libdb-4_8-devel-32bit
+Prefer: -libdbi-devel-32bit
+Prefer: -libdbusmenu-qt5-devel-32bit
+Prefer: -libdhash-devel-32bit
+Prefer: -libdmx-devel-32bit
+Prefer: -libdrm-devel-32bit
+Prefer: -libdwarves-devel-32bit
+Prefer: -libeditorconfig-devel-32bit
+Prefer: -libelf-devel-32bit
+Prefer: -libexif-devel-32bit
+Prefer: -libexpat-devel-32bit
+Prefer: -libext2fs-devel-32bit
+Prefer: -libfabric-devel-32bit
 Prefer: -libfdisk-devel-32bit
-Prefer: -libfdt-devel-32bit                           
-Prefer: -libffi-devel-32bit                           
-Prefer: -libfl-devel-32bit                            
-Prefer: -libfontenc-devel-32bit                       
-Prefer: -libgbm-devel-32bit                           
-Prefer: -libgck-devel-32bit                           
-Prefer: -libgcr-devel-32bit                           
-Prefer: -libgcrypt-devel-32bit                        
-Prefer: -libglue-devel-32bit                          
-Prefer: -libglvnd-devel-32bit                         
-Prefer: -libgnutls-devel-32bit                        
-Prefer: -libgpg-error-devel-32bit                     
-Prefer: -libgphoto2-devel-32bit                       
-Prefer: -libgsm-devel-32bit                           
-Prefer: -libhts-devel-32bit                           
-Prefer: -libicu-devel-32bit                           
-Prefer: -libini_config-devel-32bit                    
-Prefer: -libjack-devel-32bit                          
-Prefer: -libjbig-devel-32bit                          
-Prefer: -libjpeg62-devel-32bit                        
-Prefer: -libjpeg8-devel-32bit                         
-Prefer: -libkms-devel-32bit                           
-Prefer: -liblbxutil-devel-32bit                       
-Prefer: -liblcms2-devel-32bit                         
-Prefer: -libmount-devel-32bit                         
-Prefer: -libnetapi-devel-32bit                        
-Prefer: -libnettle-devel-32bit                        
-Prefer: -libnl3-devel-32bit                           
-Prefer: -libnotify-devel-32bit                        
-Prefer: -liboldX-devel-32bit                          
-Prefer: -libopenssl-1_0_0-devel-32bit                 
-Prefer: -libopenssl-1_1-devel-32bit                   
-Prefer: -liboping-devel-32bit                         
-Prefer: -libotf-devel-32bit                           
-Prefer: -libpackagekit-glib2-devel-32bit              
-Prefer: -libpath_utils-devel-32bit                    
-Prefer: -libpcap-devel-32bit                          
-Prefer: -libpng12-compat-devel-32bit                  
-Prefer: -libpng12-devel-32bit                         
-Prefer: -libpng16-compat-devel-32bit                  
-Prefer: -libpng16-devel-32bit                         
-Prefer: -libpulse-devel-32bit                         
-Prefer: -libqb-devel-32bit                            
-Prefer: -libqt5-qtconnectivity-devel-32bit            
-Prefer: -libqt5-qtdeclarative-devel-32bit             
-Prefer: -libqt5-qtgamepad-devel-32bit                 
-Prefer: -libqt5-qtlocation-devel-32bit                
-Prefer: -libqt5-qtmultimedia-devel-32bit              
-Prefer: -libqt5-qtnetworkauth-devel-32bit             
-Prefer: -libqt5-qtremoteobjects-devel-32bit           
-Prefer: -libqt5-qtscript-devel-32bit                  
-Prefer: -libqt5-qtscxml-devel-32bit                   
-Prefer: -libqt5-qtsensors-devel-32bit                 
-Prefer: -libqt5-qtserialbus-devel-32bit               
-Prefer: -libqt5-qtserialport-devel-32bit              
-Prefer: -libqt5-qtspeech-devel-32bit                  
-Prefer: -libqt5-qtsvg-devel-32bit                     
-Prefer: -libqt5-qttools-devel-32bit                   
-Prefer: -libqt5-qtwayland-devel-32bit                 
-Prefer: -libqt5-qtwebchannel-devel-32bit              
-Prefer: -libqt5-qtwebsockets-devel-32bit              
-Prefer: -libqt5-qtx11extras-devel-32bit               
-Prefer: -libqt5-qtxmlpatterns-devel-32bit             
-Prefer: -libraw1394-devel-32bit                       
-Prefer: -libref_array-devel-32bit                     
-Prefer: -libressl-devel-32bit                         
-Prefer: -libscalapack2-mvapich2-devel-32bit           
-Prefer: -libscalapack2-openmpi1-devel-32bit           
-Prefer: -libscalapack2-openmpi2-devel-32bit           
-Prefer: -libscalapack2-openmpi3-devel-32bit           
-Prefer: -libscalapack2-openmpi4-devel-32bit           
+Prefer: -libfdt-devel-32bit
+Prefer: -libffi-devel-32bit
+Prefer: -libfl-devel-32bit
+Prefer: -libfontenc-devel-32bit
+Prefer: -libgbm-devel-32bit
+Prefer: -libgck-devel-32bit
+Prefer: -libgcr-devel-32bit
+Prefer: -libgcrypt-devel-32bit
+Prefer: -libglue-devel-32bit
+Prefer: -libglvnd-devel-32bit
+Prefer: -libgnutls-devel-32bit
+Prefer: -libgpg-error-devel-32bit
+Prefer: -libgphoto2-devel-32bit
+Prefer: -libgsm-devel-32bit
+Prefer: -libhts-devel-32bit
+Prefer: -libicu-devel-32bit
+Prefer: -libini_config-devel-32bit
+Prefer: -libjack-devel-32bit
+Prefer: -libjbig-devel-32bit
+Prefer: -libjpeg62-devel-32bit
+Prefer: -libjpeg8-devel-32bit
+Prefer: -libkms-devel-32bit
+Prefer: -liblbxutil-devel-32bit
+Prefer: -liblcms2-devel-32bit
+Prefer: -libmount-devel-32bit
+Prefer: -libnetapi-devel-32bit
+Prefer: -libnettle-devel-32bit
+Prefer: -libnl3-devel-32bit
+Prefer: -libnotify-devel-32bit
+Prefer: -liboldX-devel-32bit
+Prefer: -libopenssl-1_0_0-devel-32bit
+Prefer: -libopenssl-1_1-devel-32bit
+Prefer: -liboping-devel-32bit
+Prefer: -libotf-devel-32bit
+Prefer: -libpackagekit-glib2-devel-32bit
+Prefer: -libpath_utils-devel-32bit
+Prefer: -libpcap-devel-32bit
+Prefer: -libpng12-compat-devel-32bit
+Prefer: -libpng12-devel-32bit
+Prefer: -libpng16-compat-devel-32bit
+Prefer: -libpng16-devel-32bit
+Prefer: -libpulse-devel-32bit
+Prefer: -libqb-devel-32bit
+Prefer: -libqt5-qtconnectivity-devel-32bit
+Prefer: -libqt5-qtdeclarative-devel-32bit
+Prefer: -libqt5-qtgamepad-devel-32bit
+Prefer: -libqt5-qtlocation-devel-32bit
+Prefer: -libqt5-qtmultimedia-devel-32bit
+Prefer: -libqt5-qtnetworkauth-devel-32bit
+Prefer: -libqt5-qtremoteobjects-devel-32bit
+Prefer: -libqt5-qtscript-devel-32bit
+Prefer: -libqt5-qtscxml-devel-32bit
+Prefer: -libqt5-qtsensors-devel-32bit
+Prefer: -libqt5-qtserialbus-devel-32bit
+Prefer: -libqt5-qtserialport-devel-32bit
+Prefer: -libqt5-qtspeech-devel-32bit
+Prefer: -libqt5-qtsvg-devel-32bit
+Prefer: -libqt5-qttools-devel-32bit
+Prefer: -libqt5-qtwayland-devel-32bit
+Prefer: -libqt5-qtwebchannel-devel-32bit
+Prefer: -libqt5-qtwebsockets-devel-32bit
+Prefer: -libqt5-qtx11extras-devel-32bit
+Prefer: -libqt5-qtxmlpatterns-devel-32bit
+Prefer: -libraw1394-devel-32bit
+Prefer: -libref_array-devel-32bit
+Prefer: -libressl-devel-32bit
+Prefer: -libscalapack2-mvapich2-devel-32bit
+Prefer: -libscalapack2-openmpi1-devel-32bit
+Prefer: -libscalapack2-openmpi2-devel-32bit
+Prefer: -libscalapack2-openmpi3-devel-32bit
+Prefer: -libscalapack2-openmpi4-devel-32bit
 Prefer: -libsmartcols-devel-32bit
-Prefer: -libsoup-devel-32bit                          
-Prefer: -libsoup2-devel-32bit                          
-Prefer: -libstatgrab-devel-32bit                      
-Prefer: -libstdc++-devel-32bit                        
-Prefer: -libtasn1-devel-32bit                         
-Prefer: -libtiff-devel-32bit                          
-Prefer: -libudev-devel-32bit                          
-Prefer: -libunistring-devel-32bit                     
-Prefer: -libusb-1_0-devel-32bit                       
-Prefer: -libuuid-devel-32bit                          
-Prefer: -libv4l-devel-32bit                           
-Prefer: -libva-devel-32bit                            
-Prefer: -libva-gl-devel-32bit                         
-Prefer: -libvdpau-devel-32bit                         
-Prefer: -libverto-devel-32bit                         
-Prefer: -libvirt-devel-32bit                          
-Prefer: -libvorbis-devel-32bit                        
-Prefer: -libvpd2-devel-32bit                          
-Prefer: -libwebp-devel-32bit                          
-Prefer: -libxcb-devel-32bit                           
-Prefer: -libxcrypt-devel-32bit                        
-Prefer: -libxkbcommon-devel-32bit                     
-Prefer: -libxkbcommon-x11-devel-32bit                 
-Prefer: -libxkbfile-devel-32bit                       
-Prefer: -libxkbui-devel-32bit                         
-Prefer: -libxml2-devel-32bit                          
-Prefer: -libxslt-devel-32bit                          
-Prefer: -libyajl-devel-32bit                          
-Prefer: -libyaz-devel-32bit                           
+Prefer: -libsoup-devel-32bit
+Prefer: -libsoup2-devel-32bit
+Prefer: -libstatgrab-devel-32bit
+Prefer: -libstdc++-devel-32bit
+Prefer: -libtasn1-devel-32bit
+Prefer: -libtiff-devel-32bit
+Prefer: -libudev-devel-32bit
+Prefer: -libunistring-devel-32bit
+Prefer: -libusb-1_0-devel-32bit
+Prefer: -libuuid-devel-32bit
+Prefer: -libv4l-devel-32bit
+Prefer: -libva-devel-32bit
+Prefer: -libva-gl-devel-32bit
+Prefer: -libvdpau-devel-32bit
+Prefer: -libverto-devel-32bit
+Prefer: -libvirt-devel-32bit
+Prefer: -libvorbis-devel-32bit
+Prefer: -libvpd2-devel-32bit
+Prefer: -libwebp-devel-32bit
+Prefer: -libxcb-devel-32bit
+Prefer: -libxcrypt-devel-32bit
+Prefer: -libxkbcommon-devel-32bit
+Prefer: -libxkbcommon-x11-devel-32bit
+Prefer: -libxkbfile-devel-32bit
+Prefer: -libxkbui-devel-32bit
+Prefer: -libxml2-devel-32bit
+Prefer: -libxslt-devel-32bit
+Prefer: -libyajl-devel-32bit
+Prefer: -libyaz-devel-32bit
 Prefer: -libzstd-devel-32bit
-Prefer: -llvm10-LTO-devel-32bit                       
-Prefer: -llvm10-devel-32bit                           
-Prefer: -llvm7-LTO-devel-32bit                        
-Prefer: -llvm7-devel-32bit                            
-Prefer: -llvm9-LTO-devel-32bit                        
-Prefer: -llvm9-devel-32bit                            
-Prefer: -lzo-devel-32bit                              
-Prefer: -motif-devel-32bit                            
-Prefer: -mpc-devel-32bit                              
-Prefer: -mpfr-devel-32bit                             
-Prefer: -mpg123-devel-32bit                           
-Prefer: -munge-devel-32bit                            
-Prefer: -muparser-devel-32bit                         
-Prefer: -ncurses-devel-32bit                          
-Prefer: -ncurses5-devel-32bit                         
-Prefer: -net-snmp-devel-32bit                         
-Prefer: -ocl-icd-devel-32bit                          
-Prefer: -openal-soft-devel-32bit                      
-Prefer: -openldap2-devel-32bit                        
-Prefer: -opensm-devel-32bit                           
-Prefer: -pam-devel-32bit                              
-Prefer: -pango-devel-32bit                            
-Prefer: -papi-devel-32bit                             
-Prefer: -parpack-openmpi1-devel-32bit                 
-Prefer: -parpack-openmpi2-devel-32bit                 
-Prefer: -parpack-openmpi3-devel-32bit                 
-Prefer: -pciutils-devel-32bit                         
+Prefer: -llvm10-LTO-devel-32bit
+Prefer: -llvm10-devel-32bit
+Prefer: -llvm7-LTO-devel-32bit
+Prefer: -llvm7-devel-32bit
+Prefer: -llvm9-LTO-devel-32bit
+Prefer: -llvm9-devel-32bit
+Prefer: -lzo-devel-32bit
+Prefer: -motif-devel-32bit
+Prefer: -mpc-devel-32bit
+Prefer: -mpfr-devel-32bit
+Prefer: -mpg123-devel-32bit
+Prefer: -munge-devel-32bit
+Prefer: -muparser-devel-32bit
+Prefer: -ncurses-devel-32bit
+Prefer: -ncurses5-devel-32bit
+Prefer: -net-snmp-devel-32bit
+Prefer: -ocl-icd-devel-32bit
+Prefer: -openal-soft-devel-32bit
+Prefer: -openldap2-devel-32bit
+Prefer: -opensm-devel-32bit
+Prefer: -pam-devel-32bit
+Prefer: -pango-devel-32bit
+Prefer: -papi-devel-32bit
+Prefer: -parpack-openmpi1-devel-32bit
+Prefer: -parpack-openmpi2-devel-32bit
+Prefer: -parpack-openmpi3-devel-32bit
+Prefer: -pciutils-devel-32bit
 Prefer: -pipewire-libjack-0_3-32bit
-Prefer: -popt-devel-32bit                             
-Prefer: -rdma-core-devel-32bit                        
-Prefer: -readline-devel-32bit                         
-Prefer: -readline5-devel-32bit                        
-Prefer: -readline6-devel-32bit                        
+Prefer: -popt-devel-32bit
+Prefer: -rdma-core-devel-32bit
+Prefer: -readline-devel-32bit
+Prefer: -readline5-devel-32bit
+Prefer: -readline6-devel-32bit
 Prefer: -samba-devel-32bit
-Prefer: -sane-backends-devel-32bit                    
-Prefer: -spirv-tools-devel-32bit                      
-Prefer: -telepathy-qt5-devel-32bit                    
-Prefer: -tslib-devel-32bit                            
+Prefer: -sane-backends-devel-32bit
+Prefer: -spirv-tools-devel-32bit
+Prefer: -telepathy-qt5-devel-32bit
+Prefer: -tslib-devel-32bit
 Prefer: -unixODBC-devel-32bit
-Prefer: -utempter-devel-32bit                         
-Prefer: -vkd3d-devel-32bit                            
-Prefer: -vulkan-devel-32bit                           
-Prefer: -wayland-devel-32bit                          
-Prefer: -wine-devel-32bit                             
-Prefer: -wine-staging-devel-32bit                     
-Prefer: -wxWidgets-3_0-devel-32bit                    
-Prefer: -xcb-util-cursor-devel-32bit                  
-Prefer: -xcb-util-devel-32bit                         
-Prefer: -xcb-util-image-devel-32bit                   
-Prefer: -xcb-util-keysyms-devel-32bit                 
-Prefer: -xcb-util-renderutil-devel-32bit              
-Prefer: -xcb-util-wm-devel-32bit                      
-Prefer: -xz-devel-32bit                               
-Prefer: -zlib-devel-32bit                             
-Prefer: -zvbi-devel-32bit                             
-Prefer: -zziplib-devel-32bit                          
+Prefer: -utempter-devel-32bit
+Prefer: -vkd3d-devel-32bit
+Prefer: -vulkan-devel-32bit
+Prefer: -wayland-devel-32bit
+Prefer: -wine-devel-32bit
+Prefer: -wine-staging-devel-32bit
+Prefer: -wxWidgets-3_0-devel-32bit
+Prefer: -xcb-util-cursor-devel-32bit
+Prefer: -xcb-util-devel-32bit
+Prefer: -xcb-util-image-devel-32bit
+Prefer: -xcb-util-keysyms-devel-32bit
+Prefer: -xcb-util-renderutil-devel-32bit
+Prefer: -xcb-util-wm-devel-32bit
+Prefer: -xz-devel-32bit
+Prefer: -zlib-devel-32bit
+Prefer: -zvbi-devel-32bit
+Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.7-rubygem-fast_gettext ruby3.0-rubygem-fast_gettext
@@ -1210,7 +1205,7 @@ Ignore: phonon:phonon-backend
 Ignore: openwbem-devel
 Ignore: MozillaFirefox:MozillaFirefox-branding
 Ignore: yast2:yast2-branding
-Ignore: plymouth:plymouth-branding 
+Ignore: plymouth:plymouth-branding
 Ignore: plymouth:suspend
 Ignore: yast2-qt:yast2-branding
 Ignore: yast2-theme-SLE:yast2-branding
@@ -1284,7 +1279,7 @@ Macros:
 %rubydevelSTOP() %nil
 %rubydevelxSTOP() %*
 #
- 
+
 #
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
@@ -1399,7 +1394,7 @@ Macros:
 
 # END PYTHON STUFF
 
-# BEGIN RUST STUFF 
+# BEGIN RUST STUFF
 Prefer: cargo1.58 cargo1.57
 
 # Define the architectures in which Rust (and Rust crates) are available
@@ -1499,6 +1494,29 @@ Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tabl
 %define is_opensuse 1
 %define skelcd_compat 0
 
+%ifarch i586 i686 x86_64
+RepoURL: https://download.opensuse.org/tumbleweed/repo/oss
+%endif
+%ifarch aarch64
+RepoURL: https://download.opensuse.org/ports/aarch64/tumbleweed/repo/oss
+%endif
+%ifarch armv6hl
+RepoURL: https://download.opensuse.org/ports/armv6hl/tumbleweed/repo/oss
+%endif
+%ifarch armv7hl
+RepoURL: https://download.opensuse.org/ports/armv7hl/tumbleweed/repo/oss
+%endif
+%ifarch ppc ppc64 ppc64le
+RepoURL: https://download.opensuse.org/ports/ppc/tumbleweed/repo/oss
+%endif
+%ifarch riscv64
+RepoURL: https://download.opensuse.org/ports/riscv/tumbleweed/repo/oss
+%endif
+%ifarch s390 s390x
+RepoURL: https://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss
+%endif
+RegistryURL: https://registry.opensuse.org
+
 Macros:
 %suse_version 1599
 %is_opensuse 1
@@ -1560,11 +1578,6 @@ Macros:
 %ext_info .gz
 %ext_man .gz
 
-# %info_add(:-:) test -x /sbin/install-info -a -f %{?2}%{?!2:%{_infodir}}/%{1}%ext_info && /sbin/install-info --info-dir=%{?2}%{?!2:%{_infodir}} %{?2}%{?!2:%{_infodir}}/%{1}%ext_info \
-# %{nil}
-
-# %info_del(:-:) test -x /sbin/install-info -a ! -f %{?2}%{?!2:%{_infodir}}/%{1}%ext_info && /sbin/install-info --quiet --delete --info-dir=%{?2}%{?!2:%{_infodir}} %{?2}%{?!2:%{_infodir}}/%{1}%ext_info \
-# %{nil}
 :Macros
 
 # UsrMerge - 2021-05-25
