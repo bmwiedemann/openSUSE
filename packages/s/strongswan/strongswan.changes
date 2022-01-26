@@ -12,12 +12,12 @@ Mon Nov 22 16:19:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
     was caused by an integer overflow when processing RSASSA-PSS
     signatures with very large salt lengths. This vulnerability has
     been registered as CVE-2021-41990. Please refer to our blog for
-    details.
+    details. (bsc#1191367)
   * Fixed a denial-of-service vulnerability in the in-memory
     certificate cache if certificates are replaced and a very large
     random value caused an integer overflow. This vulnerability has
     been registered as CVE-2021-41991. Please refer to our blog for
-    details.
+    details. (bsc#1191435)
   * Fixed a related flaw that caused the daemon to accept and cache
     an infinite number of versions of a valid certificate by
     modifying the parameters in the signatureAlgorithm field of the
@@ -46,7 +46,7 @@ Mon Sep 27 19:01:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 - Update to version 5.9.3:
   * Added AES-ECB, SHA-3 and SHAKE-256 support to the wolfssl
     plugin.
-  * Added AES-CCM support to the openssl plugin (#353).
+  * Added AES-CCM support to the openssl plugin (#353 bsc#1185363).
   * The x509 and the openssl plugins now consider the
     authorityKeyIdentifier, if available, before verifying
     signatures, which avoids unnecessary signature verifications
@@ -70,6 +70,9 @@ Mon Sep 27 19:01:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 - Replace libsoup-devel with pkgconfig(libsoup-2.4) BuildRequires,
   as this is what really checks for. Needed as libsoup-3.0 is
   released.
+- 5.9.1
+  - README: added a missing " to pki example command (bsc#1167880)
+  - fixed a libgcrypt call in FIPS mode (bsc#1180801)
 
 -------------------------------------------------------------------
 Mon Sep  7 08:38:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
