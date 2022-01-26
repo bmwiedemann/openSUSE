@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:40:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Support Python 3.11
+  * Support ``NO_COLOR`` environment variable
+  * Update vendored apipkg: 1.5 => 2.0
+
+-------------------------------------------------------------------
 Fri Feb 19 15:21:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.0

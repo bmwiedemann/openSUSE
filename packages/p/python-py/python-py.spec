@@ -1,7 +1,7 @@
 #
-# spec file for package python-py
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-py%{psuffix}
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Library with cross-python path, ini-parsing, io, code, log facilities
 License:        MIT
