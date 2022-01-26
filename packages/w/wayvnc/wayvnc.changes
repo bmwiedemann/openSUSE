@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 24 22:04:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * main: Pin wl_output version to 3
+  * screencopy: Set upper bounds on protocol version
+  * main: Set upper bounds on pointer manager version 
+
+-------------------------------------------------------------------
 Sun Feb 28 20:53:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.0:

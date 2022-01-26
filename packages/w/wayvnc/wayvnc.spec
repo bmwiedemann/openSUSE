@@ -1,7 +1,7 @@
 #
 # spec file for package wayvnc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wayvnc
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        A VNC server for wlroots based Wayland compositors
 License:        ISC
