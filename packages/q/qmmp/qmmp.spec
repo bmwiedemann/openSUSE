@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,41 @@
 #
 
 
-%define sover   1
-%define mver    1.5
+%define sover   2
+%define mver    2.0
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.5.1
+Version:        2.0.3
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
+Group:          Productivity/Multimedia/Sound/Players
 URL:            https://qmmp.ylsoftware.com/
 Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
-Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM qmmp-fix_cdda_version.patch pascal.bleser@opensuse.org -- Fix header detection for cdparanoia cdda.h.
-Patch0:         %{name}-fix_cdda_version.patch
 # PATCH-FEATURE-OPENSUSE qmmp-default_pulse.patch reddwarf@opensuse.org -- Use PulseAudio instead of ALSA by default.
-Patch1:         %{name}-default-pulse.patch
+Patch0:         %{name}-default-pulse.patch
 # PATCH-FIX-OPENSUSE qmmp-fix-openmpt.patch -- Fix OpenMPT compatibility.
-Patch2:         %{name}-fix-openmpt.patch
+Patch1:         %{name}-fix-openmpt.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libmpcdec-devel
-BuildRequires:  libqt5-qttools-devel >= 5.4
+BuildRequires:  musepack-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.4
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.4
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.4
-BuildRequires:  pkgconfig(Qt5Network) >= 5.4
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.4
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.4
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.4
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(enca) >= 1.9
+BuildRequires:  pkgconfig(enca)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -63,18 +62,22 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmms)
 BuildRequires:  pkgconfig(libmodplug)
-BuildRequires:  pkgconfig(libmpg123)
-BuildRequires:  pkgconfig(libprojectM) >= 3.1.0
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libprojectM)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libsidplayfp)
-BuildRequires:  pkgconfig(opus) >= 1.0.2
-BuildRequires:  pkgconfig(opusfile) >= 0.2
+BuildRequires:  pkgconfig(libspa-0.2)
+BuildRequires:  pkgconfig(mad)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(shout)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soxr)
-BuildRequires:  pkgconfig(taglib) >= 1.9
+BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(wavpack)
+BuildRequires:  pkgconfig(wildmidi)
 Requires:       %{name}(%{sover})(Input)
 Requires:       %{name}(%{sover})(Output)
 Requires:       %{name}(%{sover})(Ui)
@@ -88,6 +91,7 @@ This program is an audio-player, written with help of Qt library.
 
 %package -n lib%{name}%{sover}
 Summary:        Qmmp library
+Group:          System/Libraries
 Recommends:     lib%{name}-plugins
 
 %description -n lib%{name}%{sover}
@@ -97,6 +101,7 @@ This package provides the Qmmp library.
 
 %package -n lib%{name}-plugins
 Summary:        Plugins for libqmmp
+Group:          System/Libraries
 # Suggests instead of Recommends since MPlayer is too big of a dependency.
 Suggests:       lib%{name}-plugin-mplayer
 Provides:       %{name}(%{sover})(Input)
@@ -115,6 +120,7 @@ This package provides plugins for libqmmp.
 %if %{with restricted}
 %package -n lib%{name}-plugin-mplayer
 Summary:        MPlayer plugin for libqmmp
+Group:          System/Libraries
 Requires:       MPlayer
 
 %description -n lib%{name}-plugin-mplayer
@@ -125,6 +131,7 @@ This package provides MPlayer plugin for libqmmp.
 
 %package -n lib%{name}-devel
 Summary:        Development files for libqmmp
+Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description -n lib%{name}-devel
@@ -151,7 +158,7 @@ Development files for libqmmp.
 
 %install
 %cmake_install
-# Do not install werdly-sized icons.
+# Do not install weirdly-sized icons.
 rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig

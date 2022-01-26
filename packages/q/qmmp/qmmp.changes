@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:38:24 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.0.3 (changes since 1.5.1):
+  * Switch to Qt6.
+  * Use libiconv for charset conversion.
+  * Fix default settings in the ffmpeg plugin.
+  * Fix transition between http tracks.
+  * Improv qsui plugin:
+    + fix toolbar renaming;
+    + fix Wayland support;
+    + fix tab bar context menu.
+  * Enable QtMultimedia support under Qt 6.2 or higher.
+  * Remove private API usage Qt 6.2 or higher.
+  * Fix transport plugins loading.
+  * Fix volume bar draw in the double size mode.
+  * Fix symlinks support.
+  * Fix some issues in the two-panel file dialogue.
+  * Remove KDE 4 notifications support
+  * Disable unsupported plugins: taskbar, qtmultimedia.
+- Rebase qmmp-fix-openmpt.patch.
+- Drop qmmp-fix_cdda_version.patch: no longer applicable.
+- Add requirements for libarchive, libshout, Musepack, WildMIDI
+  and PipeWire support.
+- Switch from libmpg123 to MAD.
+- Drop baselibs.conf.
+
+-------------------------------------------------------------------
 Mon Jul 12 10:28:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.1
