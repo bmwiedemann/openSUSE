@@ -77,7 +77,6 @@ dvd:
   - patterns-base-enhanced_base: [required,suggested]
   - patterns-server-file_server: [required,suggested]
   - patterns-fonts-fonts: [required,suggested]
-  - patterns-games-games: [required]
   - patterns-server-lamp_server: [required,suggested]
   - patterns-server-mail_server: [required,suggested]
   - patterns-desktop-multimedia: [required,suggested]
