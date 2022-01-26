@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 26 03:07:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.053
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+
+  1.053  2022-01-25
+  - Fix: merge PR #56 from from Philip Kime <Philip@kime.org.uk>:
+    Updating OSX codesign fix util with fix for automatically added ad-hoc signatures on OSX 12+
+  - Fix: merge PR #42 from Andrew-Kulpa/master:
+    Get exe size from file handle instead of path
+  - Fix: prevent TABs in literal makefile fragments from being expanded
+  - Cleanups:
+    - par_findprog(): pass a copy of argument `path´ to strtok()
+    - simplify searching for PAR magic
+    - consolidate die()s
+    - add a test for GitHub #41
+    - add error message when exec'ing the custom perl fails in myldr/boot
+    - untangle %require_list and %ModuleCache
+
+-------------------------------------------------------------------
 Thu Jan 14 03:10:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.052
