@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Wed Jan 26 07:15:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.4:
+  * checking if the deprecation and removal variables are true (#253)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:06:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.3:
+  * Fix replacement versions for some APIs (#252)
+
+-------------------------------------------------------------------
+Sat Jan 15 12:37:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.2:
+  * install tools for docs publishing (#250)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
+Sat Jan 15 12:34:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.1:
+  * Delete .github/ISSUE_TEMPLATE/bug_report.md
+  * Managed by Terraform
+  * Delete .github/ISSUE_TEMPLATE/bug.yaml
+  * Fix flags on cosign. Install vault for publishing docs (#249)
+
+-------------------------------------------------------------------
+Sat Jan 15 12:33:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.0:
+  * Change variable name
+  * Managed by Terraform
+  * Delete .github/ISSUE_TEMPLATE/bug_report.md
+  * Fix docker login command again
+  * Missing $ in docker login (#248)
+  * Fix docker login for releaes (#247)
+  * Use cosign to sign images and push to GCP artifact registry (#246)
+  * Delete .github/stale.yml
+
+-------------------------------------------------------------------
+Tue Jan 11 07:50:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.6:
+  * Add deprecated cert-manager versions (#245)
+
+-------------------------------------------------------------------
+Sun Jan 09 06:33:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.5:
+  * set -e so script exits with proper exit code (#243)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:30:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.4:
+  * updating scripts to run pluto commands (#241)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:26:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.3:
+  * installing pluto command into cimg executor (#240)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:23:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.2:
+  * Fix release request script (#236)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:21:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.1:
+  * Fix orb publish request secret and insights secret (#235)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:16:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.0:
+  * Add missing storage and apiregistration deprecations (#234)
+  * Work on orb publishing (#232)
+  * creating circleci orb for pluto (#228)
+
+-------------------------------------------------------------------
+Wed Jan  5 14:14:11 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.16
+
+-------------------------------------------------------------------
+Wed Jan 05 14:09:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.1.1:
+  * Update goreleaser to v1.1.0 (#230)
+  * Managed by Terraform
+  * added github action (#225)
+  * Only pull in klog's v flag for logging (#223)
+  * Add doc for scoop install on Windows (#222)
+  * Managed by Terraform
+  * make sure proper tag is used on release (#220)
+  * Update goreleaser version (#218)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:07:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.1.0:
+  * Revert yaml dependence due to panic. Remove pkger (#216)
+  * HPA v2beta2 deprecation should be in k8s 1.23 (#213)
+  * Add optional support for custom columns in markdown output (#206)
+  * temporarily disable sonarqube (#209)
+  * Use go 1.17 and update kube/helm modules (#204)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:04:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.0.1:
+  * Windows build support (#203)
+  * Update documentation from template (#201)
+  * Update README.md (#198)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:02:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.0.0:
+  * Update versions.yaml (#195)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:54:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.3.0:
+  * Fix dirty git state on release (#194)
+  * Setup pluto for prerelease. Use bash in relesae (#193)
+  * Fix name in goreleaser (#192)
+  * Multi-arch build. Update goreleaser. Use Docker for goreleaser (#191)
+  * update deps (#170)
+  * Update documentation from template (#187)
+  * Removed unnecessary GO111MODULE=on (#184)
+  * add banner (#179)
+  * Adjust removed-in version for PriorityClass (#183)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:47:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.2.0:
+  * add back FAQ link (#171)
+  * Update dependencies. Add Sonarqube (#169)
+  * Update README.md (#168)
+
+-------------------------------------------------------------------
+Wed May 26 17:31:51 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package pluto
