@@ -279,4 +279,16 @@ Minor tweak fix, also for 13.1.</comment>
     <comment>Removal of -lang recommends (forwarded request 768627 from dimstar)</comment>
     <requestid>768688</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cd62a7ada62527d9fd8e5e4a36445816</srcmd5>
+    <version>1.2</version>
+    <time>1643228809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2:
+  + Compatibility with PulseAudio 16.0 module paths
+  + Crash bug fix
+  + Updated translations.
+</comment>
+    <requestid>949108</requestid>
+  </revision>
 </revisionlist>
