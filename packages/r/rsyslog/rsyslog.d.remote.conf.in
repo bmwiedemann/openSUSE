@@ -35,6 +35,10 @@
 # ######### Receiving Messages from Remote Hosts ########## 
 # TCP Syslog Server:
 # provides TCP syslog reception and GSS-API (if compiled to support it)
+# see https://www.rsyslog.com/receiving-messages-from-a-remote-system
+# module(load="imtcp")
+# input(type="imtcp" port="514" Address="10.10.0.1")
+# alternative syntax
 #$ModLoad imtcp.so         # load module
 #$Address 10.10.0.1        # force to listen on this IP only
 #$Port <port>              # Starts a TCP server on selected port
@@ -43,6 +47,9 @@
 #$InputTCPServerRun <port> # Starts a TCP server on selected port
 
 # UDP Syslog Server:
+# module(load="imudp")
+# input(type="imudp" port="514" Address="10.10.0.1")
+# alternative syntax
 #$ModLoad imudp.so         # provides UDP syslog reception
 #$Adress 10.10.0.1         # force to listen on this IP only
 #$Port 514                 # start a UDP syslog server at standard port 514
