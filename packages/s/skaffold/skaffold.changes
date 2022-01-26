@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Jan 26 08:07:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.35.2:
+  * patch release v1.35.2
+  * fix(labelling): hotfix for issues related to deploy erroring due to nested yaml field overriding in StatefulSet w/ PVC (#7011)
+  * fix: unblock cloud build edge builds (#7014)
+  * ci: fix lts image build (#7000)
+  * release v1.35.1 : patch release v1.35.1
+  * fix(ko): Do not add `-trimpath` when debugging (#6874)
+  * fix: apply cmd should run `kubectl create --dry-run` to get the `ManifestList` (#6875)
+  * release: v1.35.0 (#6868)
+  * chore(deps): update to kompose 1.26 (#6865)
+  * docs: link to Cloud Code in github README (#6864)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:55:24 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package skaffold: Easy and Repeatable Kubernetes Development

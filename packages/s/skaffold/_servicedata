@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/GoogleContainerTools/skaffold</param>
+              <param name="changesrevision">f8ae4e65bafdcfd39e4de67329b185432899c7ad</param></service></servicedata>
