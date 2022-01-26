@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Mon Jan 24 19:27:48 CET 2022 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/5.16.2-005-vfs-fs_context-fix-up-param-length-parsing-in-.patch
+  (bsc#1012628 CVE-2022-0185 bsc#1194517).
+  Add CVE reference.
+- commit 0d710a8
+
+-------------------------------------------------------------------
+Mon Jan 24 11:55:17 CET 2022 - tiwai@suse.de
+
+- s390/mm: fix 2KB pgtable release race (bsc#1188896).
+- commit 6f62d73
+
+-------------------------------------------------------------------
+Fri Jan 21 15:46:35 CET 2022 - tiwai@suse.de
+
+- HID: wacom: Avoid using stale array indicies to read contact
+  count (bsc#1194667).
+- HID: wacom: Ignore the confidence flag when a touch is removed
+  (bsc#1194667).
+- HID: wacom: Reset expected and received contact counts at the
+  same time (bsc#1194667).
+- commit 07a970c
+
+-------------------------------------------------------------------
+Fri Jan 21 07:20:43 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.2 (bsc#1012628).
+- ALSA: hda/realtek: Re-order quirk entries for Lenovo
+  (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for Legion Y9000X 2020
+  (bsc#1012628).
+- ALSA: hda/tegra: Fix Tegra194 HDA reset failure (bsc#1012628).
+- ALSA: hda: ALC287: Add Lenovo IdeaPad Slim 9i 14ITL5 speaker
+  quirk (bsc#1012628).
+- ALSA: hda/realtek - Fix silent output on Gigabyte X570 Aorus
+  Master after reboot from Windows (bsc#1012628).
+- ALSA: hda/realtek: Use ALC285_FIXUP_HP_GPIO_LED on another HP
+  laptop (bsc#1012628).
+- ALSA: hda/realtek: Add speaker fixup for some Yoga 15ITL5
+  devices (bsc#1012628).
+- perf annotate: Avoid TUI crash when navigating in the annotation
+  of recursive functions (bsc#1012628).
+- firmware: qemu_fw_cfg: fix kobject leak in probe error path
+  (bsc#1012628).
+- firmware: qemu_fw_cfg: fix NULL-pointer deref on duplicate
+  entries (bsc#1012628).
+- firmware: qemu_fw_cfg: fix sysfs information leak (bsc#1012628).
+- rtlwifi: rtl8192cu: Fix WARNING when calling local_irq_restore()
+  with interrupts enabled (bsc#1012628).
+- media: uvcvideo: fix division by zero at stream start
+  (bsc#1012628).
+- video: vga16fb: Only probe for EGA and VGA 16 color graphic
+  cards (bsc#1012628).
+- 9p: fix enodata when reading growing file (bsc#1012628).
+- 9p: only copy valid iattrs in 9P2000.L setattr implementation
+  (bsc#1012628).
+- NFSD: Fix zero-length NFSv3 WRITEs (bsc#1012628).
+- remoteproc: qcom: pas: Add missing power-domain "mxc" for CDSP
+  (bsc#1012628).
+- KVM: s390: Clarify SIGP orders versus STOP/RESTART
+  (bsc#1012628).
+- KVM: x86: don't print when fail to read/write pv eoi memory
+  (bsc#1012628).
+- KVM: x86: Register Processor Trace interrupt hook iff PT
+  enabled in guest (bsc#1012628).
+- KVM: x86: Register perf callbacks after calling vendor's
+  hardware_setup() (bsc#1012628).
+- perf: Protect perf_guest_cbs with RCU (bsc#1012628).
+- vfs: fs_context: fix up param length parsing in
+  legacy_parse_param (bsc#1012628).
+- remoteproc: qcom: pil_info: Don't memcpy_toio more than is
+  provided (bsc#1012628).
+- orangefs: Fix the size of a memory allocation in
+  orangefs_bufmap_alloc() (bsc#1012628).
+- drm/amd/display: explicitly set is_dsc_supported to false
+  before use (bsc#1012628).
+- devtmpfs regression fix: reconfigure on each mount
+  (bsc#1012628).
+- commit 6fa29ec
+
+-------------------------------------------------------------------
+Thu Jan 20 13:26:28 CET 2022 - msuchanek@suse.de
+
+- kernel-binary.spec: Do not use the default certificate path (bsc#1194943).
+  Using the the default path is broken since Linux 5.17
+- commit 68b36f0
+
+-------------------------------------------------------------------
+Thu Jan 20 07:34:06 CET 2022 - jslaby@suse.cz
+
+- disable the Bluetooth patch again
+  The kernel is currently tested whether the patch is needed at all. As
+  95655456e7ce in upstream might fix the issue too (but differently).
+- commit c3bbaae
+
+-------------------------------------------------------------------
+Wed Jan 19 14:00:26 CET 2022 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- move mainline patches into sorted section:
+  - patches.suse/mwifiex-Fix-skb_over_panic-in-mwifiex_usb_recv.patch
+  - patches.suse/0001-usb-Add-Xen-pvUSB-protocol-description.patch
+  - patches.suse/0002-usb-Introduce-Xen-pvUSB-frontend-xen-hcd.patch
+- update upstream references and move into sorted section:
+  - patches.suse/ALSA-usb-audio-Add-minimal-mute-notion-in-dB-mapping.patch
+  - patches.suse/ALSA-usb-audio-Fix-dB-level-of-Bose-Revolve-SoundLin.patch
+  - patches.suse/ALSA-usb-audio-Use-int-for-dB-map-values.patch
+  No effect on expanded tree.
+- commit 607f978
+
+-------------------------------------------------------------------
+Wed Jan 19 13:46:39 CET 2022 - mkubecek@suse.cz
+
+- Refresh and reenable
+  patches.suse/Bluetooth-Apply-initial-command-workaround-for-more-.patch.
+- commit a7b7c0d
+
+-------------------------------------------------------------------
+Mon Jan 17 17:00:18 CET 2022 - jeffm@suse.com
+
+- series.conf: Add sorted section header/footer
+  Even though we don't carry many patches in the stable or master
+  branches, having the sorted section header/footer allows the automated
+  tools to work.
+- commit 05f8150
+
+-------------------------------------------------------------------
 Sun Jan 16 12:26:25 CET 2022 - jslaby@suse.cz
 
 - Linux 5.16.1 (bsc#1012628).
@@ -71,6 +200,13 @@ Sun Jan 16 12:26:25 CET 2022 - jslaby@suse.cz
   patches.suse/Bluetooth-Apply-initial-command-workaround-for-more-.patch
   as it conflicts with 95655456e7ce. Asked in bsc#1193124.
 - commit 13f032a
+
+-------------------------------------------------------------------
+Thu Jan 13 11:42:05 CET 2022 - tiwai@suse.de
+
+- Refresh patches.suse/iwlwifi-module-firmware-ucode-fix.patch.
+  Adapt the uapi version for the latest kernel-firmware-20220111.
+- commit 2f088f6
 
 -------------------------------------------------------------------
 Thu Jan 13 09:57:45 CET 2022 - mkubecek@suse.cz

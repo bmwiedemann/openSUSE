@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.16
-%define patchversion 5.16.1
+%define patchversion 5.16.2
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -107,9 +107,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.16.1
+Version:        5.16.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7cbe369
+Release:        <RELEASE>.g0d710a8
 %else
 Release:        0
 %endif
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-7cbe369418ce4fc6ed2822b6987b2838804522c7
-Provides:       kernel-srchash-7cbe369418ce4fc6ed2822b6987b2838804522c7
+Provides:       kernel-%build_flavor-base-srchash-0d710a8d2a5b8208b23d7e03120dfa2837f640a5
+Provides:       kernel-srchash-0d710a8d2a5b8208b23d7e03120dfa2837f640a5
 # END COMMON DEPS
-Provides:       %name-srchash-7cbe369418ce4fc6ed2822b6987b2838804522c7
+Provides:       %name-srchash-0d710a8d2a5b8208b23d7e03120dfa2837f640a5
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -529,7 +529,11 @@ fi
 %endif
 
 if [ %CONFIG_MODULE_SIG = "y" ]; then
-	test -n "%certs" || ../scripts/config --set-str CONFIG_MODULE_SIG_KEY ""
+	if [ -n "%certs" ] ; then
+		../scripts/config --set-str CONFIG_MODULE_SIG_KEY "%_sourcedir/.kernel_signing_key.pem"
+	else
+		../scripts/config --set-str CONFIG_MODULE_SIG_KEY ""
+	fi
 fi
 
 case %cpu_arch in
@@ -603,16 +607,6 @@ source .kernel-binary.spec.buildenv
 # create *.symref files in the tree
 if test -e %my_builddir/kabi/%cpu_arch/symtypes-%build_flavor; then
     %_sourcedir/modversions --unpack . < $_
-fi
-
-# copy module signing certificate(s). We use the default path and trick
-# certs/Makefile to not regenerate the certificate. It is done this way so
-# that the kernel-source package can be rebuilt even without the certificate
-echo Signing certificates "%certs"
-if [ -f %_sourcedir/.kernel_signing_key.pem ] ; then
-    mkdir -p certs
-    touch certs/x509.genkey
-    cp "%_sourcedir/.kernel_signing_key.pem" certs/signing_key.pem
 fi
 
 %if "%CONFIG_KMSG_IDS" == "y"
