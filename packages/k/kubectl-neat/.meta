@@ -1,0 +1,6 @@
+<package name="kubectl-neat" project="openSUSE:Factory">
+  <title>kubectl-neat</title>
+  <description>Clean up Kubernetes yaml and json output to make it readable</description>
+  <devel project="devel:kubic" package="kubectl-neat"/>
+  <url>https://github.com/itaysk/kubectl-neat</url>
+</package>
