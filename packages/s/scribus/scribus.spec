@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +18,17 @@
 
 
 Name:           scribus
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            https://www.scribus.net/
-# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.7/
-Source:         %{name}-%{version}.tar.xz
+# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.8/
+Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-%{version}.tar.xz.asc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Use-new-hb-subset-api-with-harfbuzz-2.9.0-in-order-t.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0002-16635-Replace-hb_subset-removed-in-harfbuzz-3.0-by-h.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-16697-Avoid-modifying-container-while-iterating-it.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
