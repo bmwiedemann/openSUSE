@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 24 16:30:37 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- SciPy and dask are optional
+- Don't test dask with python310: not supported yet
+
+-------------------------------------------------------------------
 Fri Feb 19 06:18:20 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.2.5.
