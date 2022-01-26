@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 25 12:58:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable tarball sig url too, verify tarball via keyring.
+
+-------------------------------------------------------------------
+Mon Jan 24 10:25:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.1
+  * few typos and misc minor fixes  
+  * property added to turn off new high-resolution wheel scrolling
+    API
+
+-------------------------------------------------------------------
 Fri Nov 19 16:00:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - enable build on s390x (JIRA#SLE-18632) 

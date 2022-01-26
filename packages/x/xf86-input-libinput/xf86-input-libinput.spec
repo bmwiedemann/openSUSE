@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-libinput
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           xf86-input-libinput
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Libinput driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-#Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+URL:            https://xorg.freedesktop.org
+Source0:        %{url}/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch0:         n_enable-tapping.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inputproto) >= 2.2
-BuildRequires:  pkgconfig(libinput) >= 1.4.901
+BuildRequires:  pkgconfig(libinput) >= 1.11.0
 BuildRequires:  pkgconfig(xorg-macros) >= 1.13
 BuildRequires:  pkgconfig(xorg-server) >= 1.10
 BuildRequires:  pkgconfig(xproto)
