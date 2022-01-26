@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 19 23:54:06 UTC 2022 - Noah Kalish <noah@spacemule.net>
+
+- Removed quotes from DHCP_INTERFACES in entrypoint to 
+  allow operation with multiple interfaces 
+
+-------------------------------------------------------------------
 Sat Sep 12 12:23:05 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Remove group(nogroup) and change entrypoint to chown to

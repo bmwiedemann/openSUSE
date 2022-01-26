@@ -57,4 +57,12 @@
   dhcpd:dhcpd as required by current dhcp-server binary</comment>
     <requestid>833973</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>4d7d1d84db8caa0baf2fe31dd81d6ca2</srcmd5>
+    <version>1.0.0</version>
+    <time>1643228829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949224</requestid>
+  </revision>
 </revisionlist>
