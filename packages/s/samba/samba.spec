@@ -141,6 +141,8 @@ BuildRequires:  fdupes
 %endif
 %define pkgconfig_req pkg-config
 BuildRequires:  %{pkgconfig_req}
+%if 0%{?sle_version} != 120500 || 0%{?is_opensuse}
+# Build with embedded libraries only in SLE 12 SP5, jsc#SLE-23330
 BuildRequires:  libldb-devel >= %{ldb_version}
 BuildRequires:  libtalloc-devel >= %{talloc_version}
 BuildRequires:  libtdb-devel >= %{tdb_version}
@@ -149,6 +151,7 @@ BuildRequires:  python3-ldb-devel >= %{ldb_version}
 BuildRequires:  python3-talloc-devel
 BuildRequires:  python3-tdb
 BuildRequires:  python3-tevent
+%endif
 # to generate the man pages
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
@@ -205,7 +208,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.15.3+git.219.40cc1cd8591
+Version:        4.15.4+git.224.dea2f6dc836
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -724,6 +727,12 @@ bundled_libraries_extra="libarchive"
 %if ! 0%{?with_mscat}
 bundled_libraries_extra+=",libtasn1"
 %endif
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+# Build with embedded libraries only in SLE 12 SP5, jsc#SLE-23330
+bundled_libraries_extra+=",talloc,pytalloc,tdb,pytdb,tevent,pytevent,ldb,pyldb"
+bundled_libraries_extra+=",pytalloc-util.%{py3_soflags}"
+bundled_libraries_extra+=",pyldb-util.%{py3_soflags}"
+%endif
 CONFIGURE_OPTIONS="\
 	--prefix=%{_prefix} \
 	--localstatedir=%{_localstatedir} \
@@ -840,6 +849,44 @@ PYTHON=/usr/bin/python3.6 make %{?_smp_mflags} install \
 make %{?_smp_mflags} install \
 	DESTDIR=%{buildroot} \
 	CONFIGDIR=%{CONFIGDIR}
+%endif
+
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+# Build with embedded libraries only in SLE 12 SP5, jsc#SLE-23330
+# Move the ldb and tdb tools to libdir to do not interfere with
+# system-wide tools provided by libldb1 and libtdb1 system packages
+
+install -d -m 0755 %{buildroot}/%{_libdir}/samba/bin
+mv %{buildroot}/%{_bindir}/ldbadd \
+   %{buildroot}/%{_bindir}/ldbdel \
+   %{buildroot}/%{_bindir}/ldbedit \
+   %{buildroot}/%{_bindir}/ldbmodify \
+   %{buildroot}/%{_bindir}/ldbrename \
+   %{buildroot}/%{_bindir}/ldbsearch \
+   %{buildroot}/%{_bindir}/tdbbackup \
+   %{buildroot}/%{_bindir}/tdbdump \
+   %{buildroot}/%{_bindir}/tdbrestore \
+   %{buildroot}/%{_bindir}/tdbtool \
+   %{buildroot}/%{_libdir}/samba/bin
+
+install -d -m 0755 %{buildroot}/%{_libdir}/samba/man/man1
+install -d -m 0755 %{buildroot}/%{_libdir}/samba/man/man3
+install -d -m 0755 %{buildroot}/%{_libdir}/samba/man/man8
+mv %{buildroot}/%{_mandir}/man1/ldbadd.1 \
+   %{buildroot}/%{_mandir}/man1/ldbdel.1 \
+   %{buildroot}/%{_mandir}/man1/ldbedit.1 \
+   %{buildroot}/%{_mandir}/man1/ldbmodify.1 \
+   %{buildroot}/%{_mandir}/man1/ldbrename.1 \
+   %{buildroot}/%{_mandir}/man1/ldbsearch.1 \
+   %{buildroot}/%{_libdir}/samba/man/man1/
+mv %{buildroot}/%{_mandir}/man3/ldb.3 \
+   %{buildroot}/%{_mandir}/man3/talloc.3 \
+   %{buildroot}/%{_libdir}/samba/man/man3/
+mv %{buildroot}/%{_mandir}/man8/tdbbackup.8 \
+   %{buildroot}/%{_mandir}/man8/tdbdump.8 \
+   %{buildroot}/%{_mandir}/man8/tdbrestore.8 \
+   %{buildroot}/%{_mandir}/man8/tdbtool.8 \
+   %{buildroot}/%{_libdir}/samba/man/man8/
 %endif
 
 # debug symbols are created and installed if the files are excluded only
@@ -1521,6 +1568,36 @@ exit 0
 %if %{with_mscat}
 %{_bindir}/dumpmscat
 %endif
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+# Build with embedded libraries for SLE 12 SP5, jsc#SLE-23330
+%dir %{_libdir}/samba/bin/
+%{_libdir}/samba/bin/ldbadd
+%{_libdir}/samba/bin/ldbdel
+%{_libdir}/samba/bin/ldbedit
+%{_libdir}/samba/bin/ldbmodify
+%{_libdir}/samba/bin/ldbrename
+%{_libdir}/samba/bin/ldbsearch
+%{_libdir}/samba/bin/tdbbackup
+%{_libdir}/samba/bin/tdbdump
+%{_libdir}/samba/bin/tdbrestore
+%{_libdir}/samba/bin/tdbtool
+%dir %{_libdir}/samba/man
+%dir %{_libdir}/samba/man/man1
+%{_libdir}/samba/man/man1/ldbadd.1*
+%{_libdir}/samba/man/man1/ldbdel.1*
+%{_libdir}/samba/man/man1/ldbedit.1*
+%{_libdir}/samba/man/man1/ldbmodify.1*
+%{_libdir}/samba/man/man1/ldbrename.1*
+%{_libdir}/samba/man/man1/ldbsearch.1*
+%dir %{_libdir}/samba/man/man3
+%{_libdir}/samba/man/man3/ldb.3*
+%{_libdir}/samba/man/man3/talloc.3*
+%dir %{_libdir}/samba/man/man8
+%{_libdir}/samba/man/man8/tdbbackup.8*
+%{_libdir}/samba/man/man8/tdbdump.8*
+%{_libdir}/samba/man/man8/tdbrestore.8*
+%{_libdir}/samba/man/man8/tdbtool.8*
+%endif
 
 %files devel
 %defattr(-,root,root)
@@ -1747,6 +1824,27 @@ exit 0
 %{_libdir}/samba/libutil-setid-samba4.so
 %{_libdir}/samba/libutil-tdb-samba4.so
 %{_libdir}/samba/libwinbind-client-samba4.so
+%if 0%{?sle_version} == 120500 && !0%{?is_opensuse}
+# Build with embedded libraries for SLE 12 SP5, jsc#SLE-23330
+%{_libdir}/samba/libtalloc.so.*
+%{_libdir}/samba/libtdb.so.*
+%{_libdir}/samba/libtevent.so.*
+%{_libdir}/samba/libldb.so.*
+%{_libdir}/samba/libldb-cmdline-samba4.so
+%{_libdir}/samba/libldb-key-value-samba4.so
+%{_libdir}/samba/libldb-tdb-err-map-samba4.so
+%{_libdir}/samba/libldb-tdb-int-samba4.so
+%{_libdir}/samba/ldb/asq.so
+%{_libdir}/samba/ldb/ldb.so
+%{_libdir}/samba/ldb/paged_searches.so
+%{_libdir}/samba/ldb/rdn_name.so
+%{_libdir}/samba/ldb/sample.so
+%{_libdir}/samba/ldb/server_sort.so
+%{_libdir}/samba/ldb/skel.so
+%{_libdir}/samba/ldb/tdb.so
+%{_libdir}/samba/libpyldb-util.%{py3_soflags_dash}.so.*
+%{_libdir}/samba/libpytalloc-util.%{py3_soflags_dash}.so.*
+%endif
 %if %{with_mscat}
 %{_libdir}/samba/libmscat-samba4.so
 %endif
