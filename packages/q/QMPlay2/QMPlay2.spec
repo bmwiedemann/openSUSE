@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/
 Patch1:         0001-add-opensuse-customizations.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-fix-pipewire-build-error.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-fix-ffmpeg-5-compilation.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
@@ -55,10 +57,7 @@ BuildRequires:  pkgconfig(libavutil) >= 56.14.100
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libgme)
-# Enable PipeWire support on openSUSE Leap 15.3+, SLE15SP3+ and openSUSE Tumbleweed
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 BuildRequires:  pkgconfig(libpipewire-0.3)
-%endif
 BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsidplayfp)
@@ -102,6 +101,7 @@ It's a development package for %{name}.
 %if 0%{?sle_version} == 150300
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 # Build options
@@ -119,11 +119,7 @@ It's a development package for %{name}.
   -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
   -DUSE_GLSLC=ON \
   -DUSE_PORTAUDIO=ON \
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
   -DUSE_PIPEWIRE=ON \
-%else
-  -DUSE_PIPEWIRE=OFF \
-%endif
   -DUSE_UPDATES=OFF
 
 %ninja_build

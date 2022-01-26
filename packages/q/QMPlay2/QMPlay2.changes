@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 11:55:36 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-ffmpeg-5-compilation.patch to fix a compilation error with FFmpeg >= 5.0.0
+- Dropped support for openSUSE Leap 15.2 and SLE15SP2 as they are EOL and can't satisfy QMPlay2's future build requirements anymore
+
+-------------------------------------------------------------------
 Thu Dec 23 22:54:14 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-pipewire-build-error.patch to fix a compilation error on openSUSE Leap 15.3
