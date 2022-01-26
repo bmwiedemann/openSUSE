@@ -22,7 +22,7 @@
 %global _with_soxr 1
 %global _with_lame 1
 %else
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 %global _with_ffmpeg 1
 %endif
 %endif
