@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 25 21:25:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.13.0 release
+  * [CHANGE] Drop support for Python versions 2.7, 3.4, and 3.5. #718
+  * [FEATURE] Support adding labels when using .time() #730
+  * [ENHANCEMENT] Begin to add type hints to functions. #705
+  * [ENHANCEMENT] Improved go-to-declaration behavior for editors. #747
+  * [BUGFIX] Remove trailing slashes from pushgateway URLS. #722
+  * [BUGFIX] Catch non-integer bucket/count values. #726
+
+-------------------------------------------------------------------
 Sat Nov 13 22:50:42 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.12.0 release
