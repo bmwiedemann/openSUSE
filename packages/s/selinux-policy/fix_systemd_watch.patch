@@ -1,8 +1,8 @@
-Index: fedora-policy-20211111/policy/modules/system/systemd.te
+Index: fedora-policy-20220124/policy/modules/system/systemd.te
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/system/systemd.te
-+++ fedora-policy-20211111/policy/modules/system/systemd.te
-@@ -1415,6 +1415,12 @@ fstools_rw_swap_files(systemd_sleep_t)
+--- fedora-policy-20220124.orig/policy/modules/system/systemd.te
++++ fedora-policy-20220124/policy/modules/system/systemd.te
+@@ -1421,6 +1421,12 @@ fstools_rw_swap_files(systemd_sleep_t)
  storage_getattr_fixed_disk_dev(systemd_sleep_t)
  storage_getattr_removable_dev(systemd_sleep_t)
  

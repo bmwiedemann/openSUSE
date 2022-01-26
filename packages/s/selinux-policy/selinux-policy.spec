@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20211111
+Version:        20220124
 Release:        0
 Source:         fedora-policy-%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -138,6 +138,7 @@ Patch053:       fix_systemd_watch.patch
 Patch054:       fix_kernel_sysctl.patch
 Patch055:       fix_auditd.patch
 Patch056:       fix_wine.patch
+Patch057:       fix_hypervkvp.patch
 
 Patch100:       sedoctool.patch
 

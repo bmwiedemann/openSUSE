@@ -1,7 +1,7 @@
-Index: fedora-policy-20211111/policy/modules/kernel/files.fc
+Index: fedora-policy-20220124/policy/modules/kernel/files.fc
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/kernel/files.fc
-+++ fedora-policy-20211111/policy/modules/kernel/files.fc
+--- fedora-policy-20220124.orig/policy/modules/kernel/files.fc
++++ fedora-policy-20220124/policy/modules/kernel/files.fc
 @@ -236,6 +236,8 @@ ifdef(`distro_redhat',`
  /usr/lib/ostree-boot(/.*)?                gen_context(system_u:object_r:usr_t,s0)
  /usr/lib/modules(/.*)/vmlinuz         -- 	gen_context(system_u:object_r:usr_t,s0)
@@ -11,11 +11,11 @@ Index: fedora-policy-20211111/policy/modules/kernel/files.fc
  
  /usr/doc(/.*)?/lib(/.*)?	gen_context(system_u:object_r:usr_t,s0)
  
-Index: fedora-policy-20211111/policy/modules/system/systemd.te
+Index: fedora-policy-20220124/policy/modules/system/systemd.te
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/system/systemd.te
-+++ fedora-policy-20211111/policy/modules/system/systemd.te
-@@ -1035,6 +1035,8 @@ init_stream_connect(systemd_sysctl_t)
+--- fedora-policy-20220124.orig/policy/modules/system/systemd.te
++++ fedora-policy-20220124/policy/modules/system/systemd.te
+@@ -1037,6 +1037,8 @@ init_stream_connect(systemd_sysctl_t)
  logging_send_syslog_msg(systemd_sysctl_t)
  
  systemd_read_efivarfs(systemd_sysctl_t)

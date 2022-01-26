@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 24 07:33:34 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20220124. Refreshed:
+  * fix_hadoop.patch
+  * fix_init.patch
+  * fix_kernel_sysctl.patch
+  * fix_systemd.patch
+  * fix_systemd_watch.patch
+- Added fix_hypervkvp.patch to fix issues with hyperv labeling 
+  (bsc#1193987)
+
+-------------------------------------------------------------------
 Fri Jan 14 15:07:00 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Allow colord to use systemd hardenings (bsc#1194631)

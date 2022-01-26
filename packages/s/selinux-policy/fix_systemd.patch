@@ -1,8 +1,8 @@
-Index: fedora-policy-20211111/policy/modules/system/systemd.te
+Index: fedora-policy-20220124/policy/modules/system/systemd.te
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/system/systemd.te
-+++ fedora-policy-20211111/policy/modules/system/systemd.te
-@@ -352,6 +352,10 @@ userdom_manage_user_tmp_chr_files(system
+--- fedora-policy-20220124.orig/policy/modules/system/systemd.te
++++ fedora-policy-20220124/policy/modules/system/systemd.te
+@@ -353,6 +353,10 @@ userdom_manage_user_tmp_chr_files(system
  xserver_dbus_chat(systemd_logind_t)
  
  optional_policy(`
@@ -13,7 +13,7 @@ Index: fedora-policy-20211111/policy/modules/system/systemd.te
  	apache_read_tmp_files(systemd_logind_t)
  ')
  
-@@ -866,6 +870,10 @@ optional_policy(`
+@@ -868,6 +872,10 @@ optional_policy(`
  	udev_read_pid_files(systemd_hostnamed_t)
  ')
  
@@ -24,7 +24,7 @@ Index: fedora-policy-20211111/policy/modules/system/systemd.te
  #######################################
  #
  # rfkill policy
-@@ -1109,6 +1117,8 @@ optional_policy(`
+@@ -1115,6 +1123,8 @@ optional_policy(`
  	udev_read_pid_files(systemd_gpt_generator_t)
  ')
  

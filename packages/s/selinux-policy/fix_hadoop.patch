@@ -1,8 +1,8 @@
-Index: fedora-policy-20211111/policy/modules/roles/sysadm.te
+Index: fedora-policy-20220124/policy/modules/roles/sysadm.te
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/roles/sysadm.te
-+++ fedora-policy-20211111/policy/modules/roles/sysadm.te
-@@ -311,10 +311,6 @@ optional_policy(`
+--- fedora-policy-20220124.orig/policy/modules/roles/sysadm.te
++++ fedora-policy-20220124/policy/modules/roles/sysadm.te
+@@ -315,10 +315,6 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -13,10 +13,10 @@ Index: fedora-policy-20211111/policy/modules/roles/sysadm.te
      iotop_run(sysadm_t, sysadm_r)
  ')
  
-Index: fedora-policy-20211111/policy/modules/roles/unprivuser.te
+Index: fedora-policy-20220124/policy/modules/roles/unprivuser.te
 ===================================================================
---- fedora-policy-20211111.orig/policy/modules/roles/unprivuser.te
-+++ fedora-policy-20211111/policy/modules/roles/unprivuser.te
+--- fedora-policy-20220124.orig/policy/modules/roles/unprivuser.te
++++ fedora-policy-20220124/policy/modules/roles/unprivuser.te
 @@ -205,10 +205,6 @@ ifndef(`distro_redhat',`
  	')
  
