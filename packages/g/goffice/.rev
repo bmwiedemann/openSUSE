@@ -851,4 +851,12 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
   (jsc#SLE-21105). (forwarded request 920417 from sbrabec)</comment>
     <requestid>920550</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>b94595f0fd2e3e759a9128f032d15018</srcmd5>
+    <version>0.10.51</version>
+    <time>1643228808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949106</requestid>
+  </revision>
 </revisionlist>
