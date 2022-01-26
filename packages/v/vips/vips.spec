@@ -1,7 +1,7 @@
 #
 # spec file for package vips
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 %define libname lib%{name}
-%define short_version  8.10
-%define short_version_ 8_10
+%define short_version  8.12
+%define short_version_ 8_12
 %define somajor 42
 Name:           vips
-Version:        8.10.6
+Version:        8.12.1
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
@@ -52,11 +52,13 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(imagequant)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2) >= 2.4
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -78,6 +80,7 @@ research and development.
 %package     -n %{libname}%{somajor}
 Summary:        C/C++ library for processing large images
 Group:          System/Libraries
+Requires:       vips-modules-%{short_version} >= %{version}
 
 %description -n %{libname}%{somajor}
 VIPS is an image processing system. It is good with large images
@@ -103,6 +106,7 @@ Requires:       pkgconfig
 Requires:       pkgconfig(libjpeg)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(zlib)
+Requires:       pkgconfig(gobject-2.0)
 
 %description -n %{libname}-devel
 This package contains the development files for developing applications that
@@ -116,6 +120,14 @@ Requires:       %{libname}%{somajor} = %{version}
 %description    tools
 This package contains command line tools for processing large images using
 the VIPS library.
+
+%package        modules-%{short_version}
+Summary:        Additional modules for libvips
+Group:          Productivity/Graphics/Other
+Requires:       %{libname}%{somajor} = %{version}
+
+%description    modules-%{short_version}
+Additional modules for libvips.
 
 %package        doc
 Summary:        Documentation for VIPS library
@@ -156,12 +168,19 @@ make check || { cat test/test-suite.log; exit 1; }
 %postun -n %{libname}%{somajor} -p /sbin/ldconfig
 
 %files -n %{libname}%{somajor} -f vips%{short_version}.lang
+%license COPYING
 %{_libdir}/*.so.%{somajor}*
 
+%files modules-%{short_version}
+%license COPYING
+%{_libdir}/vips-modules-%{short_version}/
+
 %files -n typelib-1_0-Vips-%{short_version_}
+%license COPYING
 %{_typelibdir}/Vips-%{short_version}.typelib
 
 %files -n %{libname}-devel
+%license COPYING
 %{_libdir}/*.so
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/*
@@ -169,6 +188,7 @@ make check || { cat test/test-suite.log; exit 1; }
 %{_girdir}/Vips-%{short_version}.gir
 
 %files tools
+%license COPYING
 %{_bindir}/*
 %{_mandir}/man1/*
 

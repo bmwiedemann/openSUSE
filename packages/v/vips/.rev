@@ -478,4 +478,25 @@
     <comment></comment>
     <requestid>907496</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bc6f8cd47d648c0cfa488e233ac16017</srcmd5>
+    <version>8.12.1</version>
+    <time>1643228824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.12.1
+  https://github.com/libvips/libvips/releases/tag/v8.12.1
+  https://github.com/libvips/libvips/releases/tag/v8.12.0
+  https://github.com/libvips/libvips/releases/tag/v8.11.4
+  https://github.com/libvips/libvips/releases/tag/v8.11.3
+  https://github.com/libvips/libvips/releases/tag/v8.11.2
+  https://github.com/libvips/libvips/releases/tag/v8.11.1
+  https://github.com/libvips/libvips/releases/tag/v8.11.0
+- this update adds modules in a version specific directory
+  which is packages as vips-modules-%{short_version}
+- adds buildrequires for missing features:
+  pkgconfig(imagequant)
+  pkgconfig(libopenjp2) &gt;= 2.4
+- Fix requires of the devel package to match the pkg-config files (forwarded request 948016 from darix)</comment>
+    <requestid>949189</requestid>
+  </revision>
 </revisionlist>
