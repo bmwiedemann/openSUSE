@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-containerregistry
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-containerregistry
-Version:        1.0.0b7
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-containerregistry/azure-containerregistry-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-containerregistry/azure-containerregistry-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -56,10 +58,10 @@ Use the client library for Azure Container Registry to:
  * Delete images and artifacts, repositories and tags
 
 %prep
-%setup -q -n azure-containerregistry-%{version}
+%setup -q -n azure-containerregistry-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-containerregistry-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-containerregistry-%{realversion}
 %python_build
 
 %install
