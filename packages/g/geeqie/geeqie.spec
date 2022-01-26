@@ -1,7 +1,7 @@
 #
 # spec file for package geeqie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           geeqie
-Version:        1.6
+Version:        1.7.2
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://www.geeqie.org
-Source0:        %{url}/%{name}-%{version}.tar.xz
-Source1:        %{url}/%{name}-%{version}.tar.xz.asc
+Source0:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
-# PATCH-FIX-UPSTREAM 0001-Fix-829-segfault-with-clutter-gtk.patch
-Patch0:         0001-Fix-829-segfault-with-clutter-gtk.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes

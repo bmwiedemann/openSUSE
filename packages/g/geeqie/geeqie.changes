@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 17 17:29:51 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.2
+  + Copy image to clipboard option
+  + Multi-threaded find duplicates
+  + Generate sRGB thumbnails for images with embedded color profile
+  + External image decoder option
+  + Support jpeg xl format
+  + Automated cache maintenance
+  + Support archive (e.g. zip) files
+  + Use system theme background color
+  + Many small improvements
+  + Many bug fixes
+  + Updated language support
+- Remove 0001-Fix-829-segfault-with-clutter-gtk.patch, merged upstream
+- Append new developer GPG key to keyring
+  https://www.freelists.org/post/geeqie/Huge-targz-and-missing-asc,3
+
+-------------------------------------------------------------------
 Sat Jan  9 12:09:05 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add upstream patch to fix crash with clutter-gtk (boo#1180228)
