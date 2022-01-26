@@ -138,7 +138,6 @@
     <package name="arj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="ark" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ark-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="armagetron" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="arphic-ukai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="arphic-uming-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="arptables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -256,7 +255,6 @@
     <package name="canberra-gtk-play" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="canna-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <!-- capi4hylafax not found on i586,x86_64-->
     <package name="catfish" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="catfish-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="cd-discid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4694,8 +4692,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
