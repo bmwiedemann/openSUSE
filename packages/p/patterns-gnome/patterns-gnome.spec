@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,8 +107,6 @@ Recommends:     pattern() = gnome_utilities
 Recommends:     pattern() = imaging
 Recommends:     pattern() = multimedia
 %endif
-# These were not in the tumbleweed pattern
-Requires:       gnome-packagekit
 # #545263
 Requires:       seahorse
 Requires:       totem
@@ -137,7 +135,6 @@ Recommends:     gnome-desktop
 # #554954
 Recommends:     gnome-disk-utility
 Recommends:     gnome-documents
-Recommends:     gnome-menus
 Recommends:     gnome-remote-desktop
 Recommends:     gpgme
 # #399801
@@ -150,7 +147,6 @@ Recommends:     pidgin
 Recommends:     planner
 Recommends:     python3-speechd
 Recommends:     speech-dispatcher
-Recommends:     speech-dispatcher-module-espeak
 # #608156
 Recommends:     tracker
 Recommends:     tracker-miner-files
@@ -310,7 +306,6 @@ Recommends:     polkit-default-privs
 # Pulseaudio is the default sound server
 Recommends:     pulseaudio-module-gsettings
 Recommends:     pulseaudio-module-x11
-Recommends:     samba
 # #509829
 Recommends:     xdg-user-dirs-gtk
 Recommends:     yelp
@@ -416,9 +411,6 @@ Obsoletes:      patterns-openSUSE-gnome_basis_opt < %{version}
 Requires:       pattern() = x11
 # #394406
 Recommends:     dynamic-wallpaper-branding-openSUSE
-# MAYBE later lsb-graphics
-# give net shares
-Recommends:     samba
 
 %description gnome_basis_opt
 Base packages for the GNOME desktop environment.

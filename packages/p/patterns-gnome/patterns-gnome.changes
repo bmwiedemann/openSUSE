@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 24 16:16:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require gnome-packagekit by gnome_x11: we have a specific
+  sw_management_gnome pattern, which supplements the generic
+  sw_management plus the basic gnome pattern, and that's where we
+  also should (and do) recommend gnome-packagekit.
+
+-------------------------------------------------------------------
+Mon Jan 24 09:29:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend speech-dispatcher-module-espeak: we recommend
+  speech-dispatcher, the rest is handled by dependencies from the
+  packages (recommends and supplements).
+- No longer recommend gnome-menus: GNOME 3 is not using menu
+  structures. This package is used by extension-classic, and if
+  that extension is installed, gnome-menus comes in as a dep.
+- Stop recommending samba: samba is the server, which makes no
+  sense to be recommended by the desktop pattern.
+
+-------------------------------------------------------------------
 Sat Dec 11 12:04:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer suggest brasero: the suggests is mainly used to add

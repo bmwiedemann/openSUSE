@@ -257,4 +257,24 @@
   anymore.</comment>
     <requestid>939573</requestid>
   </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>c54a883f6b3768186de6f67ad329f8f1</srcmd5>
+    <version>20201210</version>
+    <time>1643228801</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require gnome-packagekit by gnome_x11: we have a specific
+  sw_management_gnome pattern, which supplements the generic
+  sw_management plus the basic gnome pattern, and that's where we
+  also should (and do) recommend gnome-packagekit.
+
+- Do not recommend speech-dispatcher-module-espeak: we recommend
+  speech-dispatcher, the rest is handled by dependencies from the
+  packages (recommends and supplements).
+- No longer recommend gnome-menus: GNOME 3 is not using menu
+  structures. This package is used by extension-classic, and if
+  that extension is installed, gnome-menus comes in as a dep.
+- Stop recommending samba: samba is the server, which makes no
+  sense to be recommended by the desktop pattern.</comment>
+    <requestid>948449</requestid>
+  </revision>
 </revisionlist>
