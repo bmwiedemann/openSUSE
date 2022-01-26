@@ -165,7 +165,6 @@ dvd:
   - patterns-server-xen_server: [suggested]
   # bnc#431280 (Japanese fonts)
   - arphic-uming-fonts
-  - capi4hylafax
   - cellwriter
   - clicfs
   - createrepo_c
@@ -194,6 +193,7 @@ dvd:
   - myspell-german-old: [locked]
   - apache2-worker: [locked]
   - gnu-free-fonts: [locked]
+  - armagetron: [locked]
   - frozen-bubble: [locked]
   - marble: [locked]
   - digikam: [locked]

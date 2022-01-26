@@ -1289,4 +1289,17 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1643191321</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="180" vrev="178">
+    <srcmd5>e3525cf14bf15730b46999d910c78416</srcmd5>
+    <version>unknown</version>
+    <time>1643199968</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="181" vrev="179">
+    <srcmd5>8cb2f04c03e02229affee1a46984f47a</srcmd5>
+    <version>unknown</version>
+    <time>1643200467</time>
+    <user>dimstar_suse</user>
+    <comment>Drop unknwon capi4hylafax reference</comment>
+  </revision>
 </revisionlist>
