@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-deepdiff
-Version:        5.2.3
+Version:        5.6.0
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
