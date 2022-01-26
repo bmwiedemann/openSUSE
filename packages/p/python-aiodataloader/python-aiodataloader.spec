@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiodataloader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aiodataloader
-Version:        0.2.0+git20201019+0345c66
+Version:        0.2.1
 Release:        0
 Summary:        Asyncio DataLoader implementation for Python
 License:        MIT
 URL:            https://github.com/syrusakbary/aiodataloader
-Source:         https://github.com/syrusakbary/aiodataloader/archive/0345c66f2f15a724a5e241ca73b8823d2ddd0625.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/syrusakbary/aiodataloader/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# pypi tarball has no tests
 #Source:         https://files.pythonhosted.org/packages/source/a/aiodataloader/aiodataloader-%%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module mock}
@@ -42,7 +43,7 @@ various remote data sources such as databases or web services via
 batching and caching.
 
 %prep
-%setup -q -n aiodataloader-0345c66f2f15a724a5e241ca73b8823d2ddd0625
+%setup -q -n aiodataloader-%{version}
 
 %build
 %python_build
