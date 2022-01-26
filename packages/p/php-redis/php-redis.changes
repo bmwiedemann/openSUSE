@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 20:31:14 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to 5.3.6
+  * Fix a segfault in RedisArray::del
+
+-------------------------------------------------------------------
 Sun Dec 19 13:51:41 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 5.3.5

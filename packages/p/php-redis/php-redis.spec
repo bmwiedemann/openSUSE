@@ -1,7 +1,7 @@
 #
 # spec file for package php-redis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %endif
 Name:           %{php_name}-%{pkg_name}
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01
