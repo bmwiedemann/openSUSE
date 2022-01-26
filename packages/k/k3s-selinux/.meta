@@ -1,0 +1,6 @@
+<package name="k3s-selinux" project="openSUSE:Factory">
+  <title>k3s-selinux</title>
+  <description>SELinux policy for k3s </description>
+  <devel project="devel:kubic" package="k3s-selinux"/>
+  <url>https://github.com/k3s-io/k3s-selinux</url>
+</package>

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Jan 26 11:52:45 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Add missing spec license/copyright 
+
+-------------------------------------------------------------------
+Sun Jan  9 15:18:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add k3s.if as source file, as it is empty in v0.5.stable.1
+  - this was cherry-picked from the latest commit:
+    https://github.com/k3s-io/k3s-selinux/commit/7b982cf500e20c0adbad8a83cc27c43a79218aca
+
+-------------------------------------------------------------------
+Sun Jan 09 07:16:00 UTC 2022 - kastl@b1-systems.de
+
+- create new package at version 0.5.stable.1
+- Update to version 0.5.latest.1:
+  * mention rpm signing keys in the readme
+  * fix for over-broad container_runtime_exec_t (#25)
+  * el8: keep on truckin (#24)
+  * drone: publish sle artifacts (#22)
+  * support sles 15 with sle micro packages (#21)
+  * [migrate k3s-io] drone tweaks
+  * Make k3s-selinux conflict with rke2-selinux
+  * Build independent el7 and el8 RPMs for k3s-selinux
+  * Modify build script to put the source RPM where we expect, as well as generate the source RPM
+  * Initial k3s-selinux el7_8 work
+
