@@ -1,0 +1,26 @@
+From 9b3f451e72cfa3bac700517a036faab61f683b3f Mon Sep 17 00:00:00 2001
+From: David King <amigadave@amigadave.com>
+Date: Tue, 2 Nov 2021 11:38:11 +0000
+Subject: [PATCH] libbrasero-media: Fix duplicated if
+
+https://gitlab.gnome.org/GNOME/brasero/-/issues/358
+---
+ libbrasero-media/scsi-read-track-information.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libbrasero-media/scsi-read-track-information.c b/libbrasero-media/scsi-read-track-information.c
+index 6f6274ad..e8d44c63 100644
+--- a/libbrasero-media/scsi-read-track-information.c
++++ b/libbrasero-media/scsi-read-track-information.c
+@@ -132,7 +132,7 @@ brasero_read_track_info (BraseroRdTrackInfoCDB *cdb,
+ 			else
+ 				*size = datasize;
+ 		}
+-		else if (*size < datasize) {
++		else if (datasize < *size) {
+ 			BRASERO_MEDIA_LOG ("Oversized data required (%i) setting to %i", *size, datasize);
+ 			*size = datasize;
+ 		}
+-- 
+GitLab
+

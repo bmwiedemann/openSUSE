@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 12 20:00:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 9b3f451e72cfa3bac700517a036faab61f683b3f.patch:
+  libbrasero-media: Fix duplicated if.
+- Disable nautilus integration for now, does not work with gtk4
+  based nautilus. Disable pkgconfig(libnautilus-extension)
+  BuildRequires and pass disable-nautilus to configure via bcond.
+- Modernize post(un) handling and Supplements, use
+  ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Mon Sep 20 10:16:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.12.3:

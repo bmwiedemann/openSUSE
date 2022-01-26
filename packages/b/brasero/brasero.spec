@@ -1,7 +1,7 @@
 #
 # spec file for package brasero
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%bcond_with nautilus_extension
+
 Name:           brasero
 Version:        3.12.3
 Release:        0
@@ -24,6 +26,9 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            http://gnome.org/projects/brasero
 Source:         https://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 9b3f451e72cfa3bac700517a036faab61f683b3f.patch -- libbrasero-media: Fix duplicated if
+Patch:          https://gitlab.gnome.org/GNOME/brasero/-/commit/9b3f451e72cfa3bac700517a036faab61f683b3f.patch
+
 BuildRequires:  fdupes
 # Needed, as we provide a git snapshot
 BuildRequires:  gnome-common
@@ -49,7 +54,9 @@ BuildRequires:  pkgconfig(libburn-1) >= 0.4.0
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libisofs-1) >= 0.6.4
+%if %{with nautilus_extension}
 BuildRequires:  pkgconfig(libnautilus-extension)
+%endif
 BuildRequires:  pkgconfig(libnotify) >= 0.6.1
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(sm)
@@ -97,6 +104,7 @@ Requires:       typelib-1_0-BraseroMedia-3_2_0 = %{version}
 
 %description devel
 Brasero is an application for the GNOME Desktop to write CD/DVDs.
+This package contains the development files.
 
 %package -n libbrasero-burn3-1
 Summary:        Brasero composition utility function library
@@ -153,18 +161,20 @@ This subpackage contains a library of Brasero with utility functions
 that did not fit in the other two categories (brasero-burn,
 brasero-media).
 
+%if %{with nautilus_extension}
 %package nautilus
 Summary:        Brasero CD/DVD burning extension for Nautilus
 Group:          Productivity/Multimedia/CD/Record
-Supplements:    packageand(brasero:nautilus)
+Supplements:    (brasero and nautilus)
 
 %description nautilus
 This package provides the Brasero extension for Nautilus.
+%endif
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -172,10 +182,14 @@ This package provides the Brasero extension for Nautilus.
         --disable-gtk-doc \
         --enable-search \
         --enable-playlist \
+%if %{with nautilus_extension}
         --enable-nautilus \
+%else
+        --disable-nautilus \
+%endif
         --enable-introspection \
         --enable-libburnia
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -184,37 +198,16 @@ rm %{buildroot}%{_datadir}/locale/en@shaw/LC_MESSAGES/*
 %endif
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file %{name}
+%if %{with nautilus_extension}
 %suse_update_desktop_file brasero-nautilus
+%endif
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
-%post
-/sbin/ldconfig
-%glib2_gsettings_schema_post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%post -n libbrasero-burn3-1 -p /sbin/ldconfig
-%post -n libbrasero-media3-1 -p /sbin/ldconfig
-%post -n libbrasero-utils3-1 -p /sbin/ldconfig
-
-%post nautilus
-%desktop_database_post
-
-%postun
-/sbin/ldconfig
-%glib2_gsettings_schema_postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-
-%postun -n libbrasero-burn3-1 -p /sbin/ldconfig
-%postun -n libbrasero-media3-1 -p /sbin/ldconfig
-%postun -n libbrasero-utils3-1 -p /sbin/ldconfig
-
-%postun nautilus
-%desktop_database_postun
+%ldconfig_scriptlets
+%ldconfig_scriptlets -n libbrasero-burn3-1
+%ldconfig_scriptlets -n libbrasero-media3-1
+%ldconfig_scriptlets -n libbrasero-utils3-1
 
 %files
 %license COPYING
@@ -227,6 +220,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/applications/brasero.desktop
 %{_datadir}/icons/hicolor/*/apps/brasero*.*
 %{_datadir}/mime/packages/brasero.xml
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/brasero.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
 %{_mandir}/man?/*%{ext_man}
@@ -257,9 +252,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gir-1.0/BraseroBurn-*.gir
 %{_datadir}/gir-1.0/BraseroMedia-*.gir
 
+%if %{with nautilus_extension}
 %files nautilus
 %{_libdir}/nautilus/extensions-3.0/*.so
 %{_datadir}/applications/brasero-nautilus.desktop
+%endif
 
 %files lang -f %{name}.lang
 
