@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220107'
   boo#1176553: '20220124'
-  boo#1183454: '20220124'
+  boo#1183454: '20220125'
   boo#1189869: '20211207'
   boo#1190434: '20220124'
   boo#1190670: '20211128'
@@ -129,7 +129,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 280
+jobs_num: 290
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -456,7 +456,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220124'
 publishing: '20220124'
-testing: '20220124'
+testing: '20220125'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
