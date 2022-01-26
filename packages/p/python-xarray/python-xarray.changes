@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 24 16:28:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with dask and distributed in python310: not supported
+  yet
+
+-------------------------------------------------------------------
 Fri Dec 10 08:01:01 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.20.2:

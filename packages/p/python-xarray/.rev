@@ -1111,4 +1111,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>941018</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1e607c730ecfdbada9502be4e47d155a</srcmd5>
+    <version>0.20.2</version>
+    <time>1643228811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949122</requestid>
+  </revision>
 </revisionlist>

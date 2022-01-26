@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# NEP 29: Numpy 1.20 dropped support for Python 3.6, python36-numpy is removed from Tumbleweed. xarray will follow on next release
-%define         skip_python36 1
 Name:           python-xarray
 Version:        0.20.2
 Release:        0
@@ -71,8 +69,8 @@ Suggests:       python-sparse >= 0.11
 Suggests:       python-toolz >= 0.11
 #/SECTION
 # SECTION tests
-BuildRequires:  %{python_module dask-dataframe}
-BuildRequires:  %{python_module dask-diagnostics}
+BuildRequires:  %{python_module dask-dataframe if %python-base < 3.10}
+BuildRequires:  %{python_module dask-diagnostics if %python-base < 3.10}
 BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
