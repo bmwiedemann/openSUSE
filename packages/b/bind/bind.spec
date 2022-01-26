@@ -222,7 +222,7 @@ for d in arm; do
 	make -C doc/${d} SPHINXBUILD=sphinx-build doc
 done
 %if %{with_systemd}
-%sysusers_generate_pre %{SOURCE72} named
+%sysusers_generate_pre %{SOURCE72} named named.conf
 %endif
 
 %install
