@@ -6,7 +6,7 @@ diff -ur fail2ban-0.11.2-orig/files/fail2ban.service.in fail2ban-0.11.2/files/fa
  Documentation=man:fail2ban(1)
  After=network.target iptables.service firewalld.service ip6tables.service ipset.service nftables.service
 -PartOf=iptables.service firewalld.service ip6tables.service ipset.service nftables.service
-+PartOf=firewalld.service ipset.service nftables.service
++PartOf=firewalld.service
  
  [Service]
  Type=simple

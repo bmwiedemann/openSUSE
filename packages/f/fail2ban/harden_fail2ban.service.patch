@@ -3,7 +3,7 @@ Index: fail2ban-0.11.2/files/fail2ban.service.in
 --- fail2ban-0.11.2.orig/files/fail2ban.service.in
 +++ fail2ban-0.11.2/files/fail2ban.service.in
 @@ -5,6 +5,18 @@ After=network.target iptables.service fi
- PartOf=firewalld.service ipset.service nftables.service
+ PartOf=firewalld.service
  
  [Service]
 +# added automatically, for details please see

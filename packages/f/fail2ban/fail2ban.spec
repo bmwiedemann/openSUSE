@@ -1,7 +1,7 @@
 #
 # spec file for package fail2ban
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,7 @@ Patch401:       fail2ban-0.11.2-upstream-patch-python-3.9.patch
 
 BuildRequires:  fdupes
 BuildRequires:  logrotate
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-tools
 # timezone package is required to run the tests
 BuildRequires:  timezone

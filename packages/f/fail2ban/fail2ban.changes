@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 22 11:17:48 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fail2ban can't be PartOf ipset.service and nftables.service that
+  conflict with firewalld.service (as it will prevent restarting the
+  latter and which are not provided anymore)
+  * fail2ban-opensuse-service.patch
+  * harden_fail2ban.service.patch
+
+-------------------------------------------------------------------
+Wed Jan 19 13:05:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros buildrequires (bsc#1194752)
+
+-------------------------------------------------------------------
 Fri Nov 12 10:49:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added fail2ban-0.11.2-upstream-patch-python-3.9.patch to allow 
