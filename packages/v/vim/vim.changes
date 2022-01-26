@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:43:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Updated to version 8.2.4186, fixes the following problems
+  * Vim9: exported function in autoload script not found. (Yegappan Lakshmanan)
+  * Foam files are not detected.
+  * Computation overflow with large count for :yank.
+  * Vim9: imported autoload script loaded again.
+  * Vim9: cannot call imported function with :call. (Drew Vogel)
+  * Vim9: import test fails.
+  * Vim9: import test fails on MS-Windows.
+  * Using uninitialized memory when reading empty file.
+  * Vim9: no detection of return in try/endtry. (Dominique Pellé)
+  * Vim9: compiling function fails when autoload script is not loaded yet.
+  * Coverity warns for using NULL pointer.
+  * Going over the end of NameBuff.
+  * Test failures.
+  * Memory leak in autoload import.
+  * Not all Libsensors files are recognized.
+  * Terminal test for current directory not used on FreeBSD.
+  * MS-Windows: "gvim --version" didn't work when build with VIMDLL.
+  * Not sufficient test coverage for xxd.
+  * CodeQL reports problem in if_cscope causing it to fail.
+  * Check for autoload file name and prefix fails. (Christian J. Robinson)
+  * Vim9: no test for "vim9script autoload' and using script variable in
+  the same script.
+  * Memory leak when looking for autoload prefixed variable.
+  * Vim9: no test for using import in legacy script.
+  * "cctx" argument of find_func_even_dead() is unused.
+  * Cannot test items from an autoload script easily.
+  * Xxd cannot output everything in one line.
+  * Terminal test for current directory fails on FreeBSD.
+  * After restoring a session buffer order can be quite different.
+  * Virtcol is recomputed for statusline unnecessarily.
+  * MacOS CI: unnecessarily doing "Install packages".
+  * Cached breakindent values not initialized properly.
+  * 'virtualedit' is window-local but using buffer-local enum.
+  * Sed script not recognized by the first line.
+  * Linux CI: unnecessarily installing packages
+  * Wrong number in error message on 32 bit system. (John Paul Adrian Glaubitz)
+  * Typing "interrupt" at debug prompt may keep exception around, causing
+  function calls to fail.
+  * Vim9: cannot use Vim9 syntax in mapping.
+  * Early return when getting the 'formatlistpat' value.
+  * Warning for unused argument in tiny version.
+  * Vim9: import cannot be used after method.
+  * Vim9: variable declared in for loop not initialzed.
+  * Vim9: lower casing the autoload prefix causes problems.
+  * Translation related comment in the wrong place.
+  * Going over the end of the w_lines array.
+  * Script context not restored after using <ScriptCmd>.
+  * Going over the end of the w_lines array.
+  * MS-Windows: high dpi support is outdated.
+  * Coverity warns for using NULL pointer.
+  * Potential proglem when map is deleted while executing.
+  * Function not deleted at end of test.
+  * Typo on DOCMD_RANGEOK results in not recognizing command.
+  * Vim9: type checking for a funcref does not work for when it is used in
+  a method.
+  * Cannot use a method with a complex expression.
+  * Vim9: cannot use a method with a complex expression in a :def function.
+  * Vim9: wrong white space error after using imported item.
+  * Using UNUSED for argument that is used.
+  * Build failure when disabling the channel feature.
+  * Block insert goes over the end of the line.
+  * Visual test fails on MS-Windows.
+  * ":command Cmd" does not show custom completion argument.
+  * Complete function cannot be import.Name.
+  * Vim9: method in compiled function may not see script item.
+  * Completion tests fail.
+  * Crash on exit when built with dynamic Tcl and EXITFREE is
+  defined. (Dominique Pellé)
+  * Build failure without the +eval feature.
+  * Crash when method cannot be found. (Christian J. Robinson)
+  * Building with +sound but without +eval fails. (Dominique Pellé)
+  * MS-Windows: MSVC build may have libraries duplicated.
+  * Vim9: calling function in autoload import does not work in a :def function.
+  * Vim9: wrong error message when autoload script can't be found.
+  * output of ":scriptnames" goes into the message history, while this des
+  not happen for other commands, such as ":ls".
+  * MS-Windows: test for import with absolute path fails.
+  * Vim9: ":scriptnames" shows unloaded imported autoload script.
+  * Vim9: the "autoload" argument of ":vim9script" is not useful.
+  * Vim9: calling import with and without method is inconsistent.
+  * Vim9: no error for return with argument when the function does not
+  return anything.
+  * Using freed memory if an expression abbreviation deletes the abbreviation.
+  * maparg() does not indicate the type of script where it was defined.
+  * Vim9 builtin functions test fails.
+  * Build failure with normal features without persistent undo.
+  * MS-Windows: IME support for Win9x is obsolete.
+  * Cannot load libsodium dynamically.
+  * Confusing error when using name of import for a function.
+  * Vim9: shadowed function can be used in compiled function but not at
+  script level.
+  * E464 does not always include the offending command.
+  * Deleting any mapping may cause <ScriptCmd> to not set the script context.
+  * Test override not restored, autocommand left behind.
+  * Coverity warns for using pointer after free.
+  * Reading beyond the end of a line.
+  * Block insert with double wide character fails.
+  * MS-Windows: Global IME is no longer supported.
+  * ml_get error when exchanging windows in Visual mode.
+  * Translating strftime() argument results in check error.
+  * Fileinfo message overwrites echo'ed message.
+  * Terminal test fails because Windows sets the title.
+  * MS-Windows: memory leak in :browse.
+  * MS-Windows: _WndProc() is very long.
+  * Cannot change the register used for Select mode delete.
+  * Vim9: warning for missing white space after imported variable.
+  * Vim9: no error for redefining function with export.
+  * No error for omitting function name after autoload prefix.
+  * Error in legacy code for function shadowing variable.
+  * The nv_g_cmd() function is too long.
+  * Undo synced when switching buffer in another window.
+  * Vim9: error message for old style import.
+  * Disallowing empty function name breaks existing plugins.
+  * MS-Windows: unnessary casts and other minor things.
+  * MS-Windows: still using old message API calls.
+  * Cannot invoke option function using autoload import.
+  * Filetype detection for BASIC is not optimal.
+  * Cannot use an import in 'foldexpr'.
+  * Vim9: can use an autoload name in normal script.
+  * MS-Windows: runtime check for multi-line balloon is obsolete.
+  * Vim9: cannot use imported function with call().
+  * Vim9: autoload script not loaded after "vim9script noclear".
+  * Vim9: invalid error for return type of lambda when debugging.
+  * 'foldtext' is evaluated in the current script context.
+  * 'balloonexpr' is evaluated in the current script context.
+  * Vim9: cannot use an import in 'diffexpr'.
+  * Memory leak when evaluating 'diffexpr'.
+  * Cannot use an import in 'formatexpr'.
+  * Cannot use an import in 'includeexpr'.
+  * Cannot use an import in 'indentexpr'.
+  * Cannot use an import in 'patchexpr'.
+
+-------------------------------------------------------------------
 Thu Jan 13 10:09:19 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - disable-unreliable-tests-arch.patch: refresh
