@@ -29,7 +29,7 @@ RestrictRealtime=true
 # end of automatic additions 
 User=mumble-server
 Group=mumble-server
-ExecStart=/usr/sbin/murmurd -fg -ini /etc/mumble-server.ini
+ExecStart=/usr/bin/mumble-server -fg -ini /etc/mumble-server.ini
 
 [Install]
 WantedBy=multi-user.target

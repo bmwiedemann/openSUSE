@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 25 20:20:28 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+
+- Update to Mumble 1.4.230
+  * qmake build-system removed
+  * New extended plugin framework
+  * Support for stereo playback
+  * Support for local naming (nicknames)
+  * Markdown support for chat
+  * UI indication for access restriction
+  * New non-gaming oriented TalkingUI
+  * Channel listeners
+  * Search dialog for users in a server
+- Cleanup of the specfile
+  * Fixed source urls for changed scheme
+  * Ported specfile to CMake build-system
+  * Use cmake install instead of manual as much as possible
+  * Disabled ICE for now (depends on unavailable lib)
+  * Removed a lot of obsolete logical branches
+  * bonjour is no longer optional
+  * Removed init.d script and enabled systemd
+
+-------------------------------------------------------------------
 Wed Nov 10 00:49:17 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Enable JACK support
