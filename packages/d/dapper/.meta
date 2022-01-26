@@ -1,0 +1,6 @@
+<package name="dapper" project="openSUSE:Factory">
+  <title>dapper</title>
+  <description>Docker build wrapper</description>
+  <devel project="devel:kubic" package="dapper"/>
+  <url>https://github.com/rancher/dapper</url>
+</package>
