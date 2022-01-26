@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 26 08:25:57 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220126.2d5e72db:
+  * factory-package-news.py: Don't rely on changelogtime equality
+
+-------------------------------------------------------------------
 Tue Jan 25 10:57:19 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220125.1bfd0ca2:
