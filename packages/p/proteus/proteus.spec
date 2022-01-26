@@ -1,7 +1,7 @@
 #
 # spec file for package proteus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           proteus
-Version:        %{majorver}.10
+Version:        %{majorver}.11
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later
@@ -30,14 +30,13 @@ Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-pydot
 BuildRequires:  python3-setuptools
 Requires:       python3-dateutil
-##equires:	python3-cdecimal
-##Requires:	python3-simplejson
 Requires:       trytond
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
