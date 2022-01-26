@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-nss
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2006-2021 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.73
+%global nss_softokn_fips_version 3.74
 %define NSPR_min_version 4.32
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.73.1
+Version:        3.74
 Release:        0
-%define underscore_version 3_73_1
+%define underscore_version 3_74
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -252,6 +252,7 @@ DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
+export NSS_ALLOW_SSLKEYLOGFILE=1
 export NSS_ENABLE_WERROR=0
 export NSS_NO_PKCS11_BYPASS=1
 export FREEBL_NO_DEPEND=1

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 24 08:13:53 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.74
+  * bmo#966856 - mozilla::pkix: support SHA-2 hashes in CertIDs in
+                 OCSP responses
+  * bmo#1553612 - Ensure clients offer consistent ciphersuites after HRR
+  * bmo#1721426 - NSS does not properly restrict server keys based on policy
+  * bmo#1733003 - Set nssckbi version number to 2.54
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R4 root certificate
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R3 root certificate
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R2 root certificate
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R1 root certificate
+  * bmo#1735407 - Replace GlobalSign ECC Root CA R4
+  * bmo#1733560 - Remove Expired Root Certificates - DST Root CA X3
+  * bmo#1740807 - Remove Expiring Cybertrust Global Root and GlobalSign root
+                  certificates
+  * bmo#1741930 - Add renewed Autoridad de Certificacion Firmaprofesional
+                  CIF A62634068 root certificate
+  * bmo#1740095 - Add iTrusChina ECC root certificate
+  * bmo#1740095 - Add iTrusChina RSA root certificate
+  * bmo#1738805 - Add ISRG Root X2 root certificate
+  * bmo#1733012 - Add Chunghwa Telecom's HiPKI Root CA - G1 root certificate
+  * bmo#1738028 - Avoid a clang 13 unused variable warning in opt build
+  * bmo#1735028 - Check for missing signedData field
+  * bmo#1737470 - Ensure DER encoded signatures are within size limits
+- enable key logging option (boo#1195040)
+
+-------------------------------------------------------------------
 Wed Dec 29 11:27:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to NSS 3.73.1:

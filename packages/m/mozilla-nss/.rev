@@ -2483,4 +2483,35 @@
     <comment></comment>
     <requestid>943071</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>9cdca9e5bf21b1213163a62f2fab8368</srcmd5>
+    <version>3.74</version>
+    <time>1643228798</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.74
+  * bmo#966856 - mozilla::pkix: support SHA-2 hashes in CertIDs in
+                 OCSP responses
+  * bmo#1553612 - Ensure clients offer consistent ciphersuites after HRR
+  * bmo#1721426 - NSS does not properly restrict server keys based on policy
+  * bmo#1733003 - Set nssckbi version number to 2.54
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R4 root certificate
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R3 root certificate
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R2 root certificate
+  * bmo#1735407 - Replace Google Trust Services LLC (GTS) R1 root certificate
+  * bmo#1735407 - Replace GlobalSign ECC Root CA R4
+  * bmo#1733560 - Remove Expired Root Certificates - DST Root CA X3
+  * bmo#1740807 - Remove Expiring Cybertrust Global Root and GlobalSign root
+                  certificates
+  * bmo#1741930 - Add renewed Autoridad de Certificacion Firmaprofesional
+                  CIF A62634068 root certificate
+  * bmo#1740095 - Add iTrusChina ECC root certificate
+  * bmo#1740095 - Add iTrusChina RSA root certificate
+  * bmo#1738805 - Add ISRG Root X2 root certificate
+  * bmo#1733012 - Add Chunghwa Telecom's HiPKI Root CA - G1 root certificate
+  * bmo#1738028 - Avoid a clang 13 unused variable warning in opt build
+  * bmo#1735028 - Check for missing signedData field
+  * bmo#1737470 - Ensure DER encoded signatures are within size limits
+- enable key logging option (boo#1195040)</comment>
+    <requestid>948399</requestid>
+  </revision>
 </revisionlist>
