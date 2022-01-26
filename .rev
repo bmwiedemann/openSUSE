@@ -847,4 +847,27 @@
 </comment>
     <requestid>945636</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>72d7cb9b348bb2ab36c20aac945f3609</srcmd5>
+    <version>4.9.0</version>
+    <time>1643228825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.9.0:
+  - Remove removed fictionalley site from plugin-example.ini
+  - Update defaults.inis for Chrome's new Cache_Data dir.
+  - Update translations.
+  - Adding plugin feature to Mark anthologies when individual
+    story skipped. See #786
+  - Refactoring of cli.py by hseg.
+  - Tweaks to base_xenforoforum tagsfromtitle default
+    replace_metadata by hseg.
+  - adapter_archiveofourownorg: AO3 notification emails now
+    sending http: instead of https:
+  - Add remove_class_chapter feature, true by default. For
+    Calibre convert with Base eFiction.
+  - adapter_scribblehubcom: Corner case removing spoilers.
+  - adapter_wwwnovelallcom: fixes for story w/o chapters &amp; html desc.
+</comment>
+    <requestid>949193</requestid>
+  </revision>
 </revisionlist>
