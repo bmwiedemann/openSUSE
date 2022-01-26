@@ -1,7 +1,7 @@
 #
 # spec file for package skrooge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2008 - 2012 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without released
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 # Only include WebEngine for platforms that support it
 %bcond_without qtwebengine
@@ -24,13 +25,17 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.26.1
+Version:        2.27.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.skrooge.org/
 Source:         https://download.kde.org/stable/skrooge/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/skrooge/%{name}-%{version}.tar.xz.sig
+Source2:        skrooge.keyring
+%endif
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -79,7 +84,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       hicolor-icon-theme
-Recommends:     %{name}-lang = %{version}
 %if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
@@ -120,7 +124,7 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 
 %files
 %license COPYING
-%doc CHANGELOG README AUTHORS
+%doc CHANGELOG README.md AUTHORS
 %doc %lang(en) %{_kf5_htmldir}/en/skrooge/
 %dir %{_kf5_iconsdir}/breeze
 %dir %{_kf5_iconsdir}/breeze-dark
@@ -135,7 +139,6 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 %dir %{_kf5_sharedir}/config.kcfg
 %{_kf5_appstreamdir}/org.kde.%{name}.appdata.xml
 %{_kf5_bindir}/%{name}*
-%{_kf5_configdir}/skrooge_*.knsrc
 %{_kf5_iconsdir}/breeze*/actions/22/*.svgz
 %{_kf5_iconsdir}/hicolor/*/*/%{name}*.svgz
 %{_kf5_iconsdir}/hicolor/*/*/skg*.svgz
@@ -143,6 +146,7 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 %{_kf5_iconsdir}/hicolor/*/apps/*.png
 %{_kf5_iconsdir}/hicolor/*/mimetypes/*.png
 %{_kf5_iconsdir}/hicolor/*/mimetypes/*.svgz
+%{_kf5_knsrcfilesdir}/skrooge_*.knsrc
 %{_kf5_kxmlguidir}/*
 %{_kf5_libdir}/libskgbankgui.so.%{version}
 %{_kf5_libdir}/libskgbankgui.so.2
@@ -168,6 +172,8 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 %{_kf5_sharedir}/config.kcfg/skg*.kcfg
 %{_kf5_sharedir}/mime/packages/x-skg.xml
 
+%if %{with released}
 %files lang -f %{name}.lang
+%endif
 
 %changelog

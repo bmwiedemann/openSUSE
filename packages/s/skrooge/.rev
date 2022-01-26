@@ -117,4 +117,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment></comment>
     <requestid>913039</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>32e2b67501ea0760ec9dd1ee93e579ec</srcmd5>
+    <version>2.27.0</version>
+    <time>1643228821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949183</requestid>
+  </revision>
 </revisionlist>

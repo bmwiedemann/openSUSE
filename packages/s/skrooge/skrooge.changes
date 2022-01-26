@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 25 11:00:47 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.27.0
+  * Correction: 2.26.1 still installs skrooge_unit.knsrc to
+    depreciated /etc/xdg/ location (kde#440271)
+  * Correction: you can't tab to the number and duration fields in
+    Operations "Show" table filter (kde#446353)
+  * Correction: Import from Woob using Ofx (kde#446915)
+  * Correction: Weeks without operation are missing in reports
+  * Correction: Crash when the dashboard is closed during animation
+  * Feature: New release process for appimage
+  * Feature: Unit values can be negative now
+    (see https://forum.kde.org/viewtopic.php?f=210&t=173318)
+  * Feature: Skrooge uses now the LC_MONETARY environment variable
+    to use the specific locale for currency format
+- Drop redundant recommendation of the -lang package
+- Add signature file and keyring
+
+-------------------------------------------------------------------
 Wed Aug 18 19:33:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the QtWebKit dependency for all archs.
