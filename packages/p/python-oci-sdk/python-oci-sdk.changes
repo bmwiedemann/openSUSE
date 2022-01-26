@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jan 26 12:09:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.55.0
+  * Support for OneSubscription services
+  * Support for specifying if a run or application is streaming
+    or batch in the Data Flow service
+  * Support for updating the Instance Configuration of an Instance
+    Pool within a Cluster Network in the Compute Management service
+  * Updated documentation for Cross Region ADG feature for Autonomous
+    Database in the Database service
+  * Support for retries enabled by default on all operations in the
+    Object Storage service
+- from version 2.54.1
+  * Support for calling Oracle Cloud Infrastructure services in
+    the me-dcc-muscat-1 region
+  * Support for the Visual Builder service
+  * Support for cross-region replication of volume groups in the
+    Block Storage service
+  * Support for boot volume encryption in the Container Engine
+    for Kubernetes service
+  * Support for adding metadata to records when creating and updating
+    records in the Data Labeling service
+  * Support for global export formats in snapshot datasets in the
+    Data Labeling service
+  * Support for adding labeling instructions to datasets in the
+    Data Labeling service
+  * Support for updating autonomous dataguard associations for
+    autonomous container databases in the Database service
+  * Support for setting up automatic failover when creating
+    autonomous container databases in the Database service
+  * Support for setting the RECO storage size when updating
+    a database system in the Database service
+  * Support for reconnecting refreshable clones to source for autonomous
+    databases on shared infrastructure in the Database service
+  * Support for checking if an autonomous database on shared infrastructure
+    can be reconnected to source, in the Database service
+- from version 2.54.0
+  * Support for calling Oracle Cloud Infrastructure services
+    in the af-johannesburg-1 region
+  * Support for multiple protocols on the same listener in
+    the Network Load Balancing service
+  * IPv6 support in the Network Load Balancing service
+  * Support for creating Enterprise Manager-based Solaris and
+    SunOS host targets in the Operations Insights service
+  * Support for choosing Data Guard type (Active Data Guard
+    or regular) on databases in the Database service
+  * Support for allowing control characters in responses as
+    requested in https://github.com/oracle/oci-python-sdk/issues/404.
+    Please see the github issue for more details
+  * The root cause of the issue causing data corruption as mentioned
+    in https://github.com/oracle/oci-python-sdk/issues/410 has been
+    fixed. Please see the github issue for more details
+  * Support for retries enabled by default on all operations
+    in the Java Management service
+
+-------------------------------------------------------------------
 Wed Jan  5 14:12:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.53.0
