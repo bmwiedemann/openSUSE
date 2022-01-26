@@ -70,10 +70,10 @@ development using the PCI utilities.
 %autosetup -p1
 
 %build
-%make_build OPT="%{optflags}" PREFIX=%{_prefix} LIBDIR=%{_libdir} SBINDIR=%{_sbindir} STRIP="" SHARED="yes"
+%make_build OPT="%{optflags}" PREFIX=%{_prefix} LIBDIR=%{_libdir} SBINDIR=%{_bindir} STRIP="" SHARED="yes"
 
 %install
-make install PREFIX=%{buildroot}%{_prefix} SBINDIR=%{buildroot}%{_sbindir} \
+make install PREFIX=%{buildroot}%{_prefix} SBINDIR=%{buildroot}%{_bindir} \
              ROOT=%{buildroot} MANDIR=%{buildroot}%{_mandir} STRIP="" \
 	     SHARED="yes" LIBDIR=%{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}/pci
@@ -84,8 +84,14 @@ ln -sf %{_libdir}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 
 %if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
-ln -s %{_sbindir}/{lspci,setpci} %{buildroot}/sbin
+ln -s %{_bindir}/{lspci,setpci} %{buildroot}/sbin
 %endif
+
+mkdir %{buildroot}%{_sbindir}
+ln -s %{_bindir}/{lspci,setpci} %{buildroot}%{_sbindir}
+
+rm %{buildroot}%{_bindir}/update-pciids
+rm %{buildroot}%{_mandir}/man8/update-pciids.8
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -97,13 +103,13 @@ ln -s %{_sbindir}/{lspci,setpci} %{buildroot}/sbin
 /sbin/lspci
 /sbin/setpci
 %endif
+%{_bindir}/lspci
+%{_bindir}/setpci
 %{_sbindir}/lspci
 %{_sbindir}/setpci
-%exclude %{_sbindir}/update-pciids
 %{_mandir}/man7/pcilib.7%{?ext_man}
 %{_mandir}/man8/lspci.8%{?ext_man}
 %{_mandir}/man8/setpci.8%{?ext_man}
-%exclude %{_mandir}/man8/update-pciids.8%{?ext_man}
 %{_mandir}/man5/pci.ids.5%{?ext_man}
 
 %files -n %{lname}
