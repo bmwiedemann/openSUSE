@@ -244,4 +244,12 @@ License is MIT or Perl Artistic (which itself splits into Artistic-1.0 or GPL-1.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773783</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>550dafc86307c30698b108c7d02eea95</srcmd5>
+    <version>3.4.1</version>
+    <time>1643321783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949088</requestid>
+  </revision>
 </revisionlist>
