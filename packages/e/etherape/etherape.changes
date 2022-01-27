@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 26 17:17:05 UTC 2022 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.9.20:
+  - fix for ticket #100, thanks to Salam for reporting it.
+  - diagram refresh command, thanks to Ronald W. Henderson
+  - patch to remove artifact when resizing, thanks to Ronald W. Henderson
+  - reorder keyboard shortcuts, thanks to Ronald W. Henderson
+  - sort by port on protocol windows, thanks to Ronald W. Henderson
+  - xml output now containes also link and global protocols statistics.
+  - link fades with averaging times
+  - node-link ratio slider removed, ratio always fixed at 1 (links sizes
+    are aligned with nodes)
+  - improve statistics repeatability esp. when setting max-delay=0 (useful
+    for tests or just to calculate quickly statistics of a dump file).
+  - new no-display mode (command line only), disables diagram updates
+    (again, mostly for testing).
+  - merged link protocol and traffic timeouts.
+
+-------------------------------------------------------------------
 Tue Mar  2 12:13:45 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - replaced goocanvas-devel by pkgconfig(goocanvas-2.0) to use the right

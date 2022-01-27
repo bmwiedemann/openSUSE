@@ -269,4 +269,26 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
   goocanvas. (forwarded request 876219 from msmeissn)</comment>
     <requestid>876226</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>de4b4e84c4774d3ca62a679227f27a37</srcmd5>
+    <version>0.9.20</version>
+    <time>1643321816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.20:
+  - fix for ticket #100, thanks to Salam for reporting it.
+  - diagram refresh command, thanks to Ronald W. Henderson
+  - patch to remove artifact when resizing, thanks to Ronald W. Henderson
+  - reorder keyboard shortcuts, thanks to Ronald W. Henderson
+  - sort by port on protocol windows, thanks to Ronald W. Henderson
+  - xml output now containes also link and global protocols statistics.
+  - link fades with averaging times
+  - node-link ratio slider removed, ratio always fixed at 1 (links sizes
+    are aligned with nodes)
+  - improve statistics repeatability esp. when setting max-delay=0 (useful
+    for tests or just to calculate quickly statistics of a dump file).
+  - new no-display mode (command line only), disables diagram updates
+    (again, mostly for testing).
+  - merged link protocol and traffic timeouts. (forwarded request 949317 from wfrisch)</comment>
+    <requestid>949411</requestid>
+  </revision>
 </revisionlist>

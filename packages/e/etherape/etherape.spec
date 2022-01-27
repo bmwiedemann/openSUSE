@@ -1,7 +1,7 @@
 #
 # spec file for package etherape
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           etherape
-Version:        0.9.19
+Version:        0.9.20
 Release:        0
 Summary:        A Graphical Network Monitor
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(popt)
 BuildRequires:  autoconf-archive
 %endif
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 Recommends:     %{name}-lang
 
 %description
