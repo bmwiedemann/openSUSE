@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.4.1.orig/requirements.txt oci-cli-3.4.1/requirements.txt
---- oci-cli-3.4.1.orig/requirements.txt	2021-12-22 00:45:14.000000000 +0100
-+++ oci-cli-3.4.1/requirements.txt	2022-01-05 16:02:52.014353832 +0100
+diff -Nru oci-cli-3.4.4.orig/requirements.txt oci-cli-3.4.4/requirements.txt
+--- oci-cli-3.4.4.orig/requirements.txt	2022-01-25 23:44:54.000000000 +0100
++++ oci-cli-3.4.4/requirements.txt	2022-01-26 23:22:59.554963706 +0100
 @@ -2,40 +2,40 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.4.1.orig/requirements.txt oci-cli-3.4.1/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.53.1
+-oci==2.55.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -37,7 +37,7 @@ diff -Nru oci-cli-3.4.1.orig/requirements.txt oci-cli-3.4.1/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.53.1
++oci>=2.55.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -53,35 +53,35 @@ diff -Nru oci-cli-3.4.1.orig/requirements.txt oci-cli-3.4.1/requirements.txt
 +requests>=2.21.0
  setuptools<45
  six>=1.15.0
--sphinx==2.2.1
+-sphinx==3.3.0
 -sphinx-rtd-theme==0.4.3
 -terminaltables==3.1.0
 -tox==3.23.0
 -vcrpy==1.13.0
--virtualenv==16.7.10
+-virtualenv==20.13.0
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
 -PyYAML>=5.4,<6
 -docutils==0.15.2
-+sphinx>=2.2.1
++sphinx>=3.3.0
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.0
 +tox>=3.23.0
 +vcrpy>=1.13.0
-+virtualenv>=16.7.10
++virtualenv>=20.13.0
 +pytest-xdist>=1.22.2
 +pytest-forked>=1.0.2
 +PyYAML>=5.4
 +docutils>=0.15.2
-diff -Nru oci-cli-3.4.1.orig/setup.py oci-cli-3.4.1/setup.py
---- oci-cli-3.4.1.orig/setup.py	2021-12-22 00:45:14.000000000 +0100
-+++ oci-cli-3.4.1/setup.py	2022-01-05 16:03:21.990628193 +0100
+diff -Nru oci-cli-3.4.4.orig/setup.py oci-cli-3.4.4/setup.py
+--- oci-cli-3.4.4.orig/setup.py	2022-01-25 23:44:54.000000000 +0100
++++ oci-cli-3.4.4/setup.py	2022-01-26 23:22:32.402743241 +0100
 @@ -29,22 +29,22 @@
      readme = f.read()
  
  requires = [
--    'oci==2.53.1',
-+    'oci>=2.53.1',
+-    'oci==2.55.0',
++    'oci>=2.55.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==7.1.2',
