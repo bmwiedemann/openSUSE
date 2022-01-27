@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 08:29:18 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- rsa-pss-revert.patch: dropped, since openssl updated with needed
+  functionality 
+
+-------------------------------------------------------------------
 Tue Jan 11 18:48:04 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to 16.13.2:

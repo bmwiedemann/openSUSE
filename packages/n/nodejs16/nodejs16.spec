@@ -41,8 +41,8 @@ Release:        0
 
 %define node_version_number 16
 
-# TBA: openssl bsc#1192489
-%bcond_with openssl_RSA_get0_pss_params
+# openssl bsc#1192489 - fix released
+%bcond_without openssl_RSA_get0_pss_params
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
