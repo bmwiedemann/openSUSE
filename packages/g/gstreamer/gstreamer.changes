@@ -204,7 +204,7 @@ Tue Oct 27 15:49:59 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.1:
   + Highlighted bugfixes in 1.18.1
-    - important security fixes
+    - important security fixes (bsc#1181255, CVE-2021-3185)
     - bug fixes and memory leak fixes
     - various stability and reliability improvements
   + gstreamer changes:
