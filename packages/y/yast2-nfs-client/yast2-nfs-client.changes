@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 15:10:07 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use Package module instead of PackageSystem (bsc#1194886).
+- 4.4.3
+
+-------------------------------------------------------------------
 Mon Dec 13 18:34:58 UTC 2021 - Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
 
 - Adding /usr/bin/killall as a requirement (bsc#1161687)
