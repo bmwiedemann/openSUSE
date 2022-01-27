@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 26 03:16:03 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix an incompatibility with p7zip which was breaking some downstreams
+  (e.g., GNOME's File-Roller). See bsc#1195041
+  * Add fix-compatib-with-p7zip.patch
+
+-------------------------------------------------------------------
 Wed Jan 12 16:45:41 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Replace p7zip with 7zip

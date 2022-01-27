@@ -29,6 +29,7 @@ URL:            https://www.7-zip.org/
 Source:         https://www.7-zip.org/a/7z%{stripped_version}-src.tar.xz
 Source1:        p7zip
 Source2:        p7zip.1
+Patch0:         fix-compatib-with-p7zip.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -45,6 +46,7 @@ extracting various formats.
 
 %prep
 tar xaf %{SOURCE0}
+%patch0 -p1
 dos2unix DOC/*.txt
 # Remove executable perms from docs
 chmod -x DOC/*.txt
