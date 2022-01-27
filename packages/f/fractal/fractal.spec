@@ -1,7 +1,7 @@
 #
 # spec file for package fractal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://wiki.gnome.org/Apps/Fractal
 Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/%{commitid}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 6fa1a23596d65d94aa889efe725174e6cd2903f0.patch -- Fix build with meson 0.61.0
+Patch0:         https://github.com/GNOME/fractal/commit/6fa1a23596d65d94aa889efe725174e6cd2903f0.patch
+# PATCH-FIX-OPENSUSE fractal-fix-build.patch -- Downgrade dead_code to a warning, hackfix build for now
+Patch1:         fractal-fix-build.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
