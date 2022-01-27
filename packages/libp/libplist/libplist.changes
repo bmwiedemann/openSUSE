@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 17 21:12:33 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add python-rpm-macros to BuildRequires (boo#1194756).
+
+-------------------------------------------------------------------
 Mon Dec  6 12:13:55 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Drop incorrect Provides/Obsoletes of library packages

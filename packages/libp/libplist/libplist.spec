@@ -31,6 +31,7 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 0.17
 BuildRequires:  pkgconfig(python3)
 
