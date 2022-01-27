@@ -17,7 +17,7 @@
 
 
 Name:           yast2-network
-Version:        4.4.33
+Version:        4.4.34
 Release:        0
 Summary:        YaST2 - Network Configuration
 License:        GPL-2.0-only
@@ -33,8 +33,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 #for install task
 BuildRequires:  yast2-storage-ng
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
-# Updated API for Y2Issues
-BuildRequires:  yast2 >= 4.4.14
+# Replace PackageSystem with Package
+BuildRequires:  yast2 >= 4.4.38
 
 BuildRequires:  yast2-packager >= 4.0.18
 # Product control need xml agent
@@ -51,8 +51,8 @@ PreReq:         /bin/rm
 Requires:       sysconfig >= 0.80.0
 Requires:       yast2-proxy
 Requires:       yast2-storage-ng
-# Updated API for Y2Issues
-Requires:       yast2 >= 4.4.14
+# Replace PackageSystem with Package
+Requires:       yast2 >= 4.4.38
 # Packages::vnc_packages
 Requires:       augeas-lenses
 Requires:       yast2-packager >= 4.0.18

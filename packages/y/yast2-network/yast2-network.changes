@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 15:38:09 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use Package module instead of PackageSystem (bsc#1194886).
+- 4.4.34
+
+-------------------------------------------------------------------
 Fri Jan 21 12:35:43 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Unify YaST module mocking in unit tests (related to bsc#1194784)
