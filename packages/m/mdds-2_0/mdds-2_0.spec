@@ -1,7 +1,7 @@
 #
-# spec file for package mdds-2_0
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 # redefined as we put there just devel docs
 %define _docdir %{_defaultdocdir}/%{name}-devel
 %define _apiver 2.0
@@ -28,8 +29,12 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/mdds/mdds
 Source:         http://kohei.us/files/%{_oname}/src/%{_oname}-%{version}.tar.bz2
+Patch0:         no-stdcxx17.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
@@ -59,8 +64,11 @@ header-only library, with no shared library to link against.
 
 %prep
 %setup -q -n %{_oname}-%{version}
+%patch0 -p1
 
 %build
+libtoolize --force --copy
+autoreconf -fi
 %configure \
     --disable-silent-rules \
     --docdir=%{_docdir}

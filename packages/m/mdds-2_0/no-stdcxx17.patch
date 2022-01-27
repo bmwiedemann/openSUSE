@@ -1,0 +1,11 @@
+--- mdds-2.0.0/configure.ac	2021-09-10 01:35:08.000000000 +0200
++++ mdds-2.0.0/configure.ac	2022-01-27 16:12:53.426436644 +0100
+@@ -21,8 +21,6 @@
+ AC_SUBST(MISCDIR)
+ AC_SUBST(QUICKCHECKDIR)
+ 
+-AX_CXX_COMPILE_STDCXX_17([noext], [mandatory])
+-
+ CPPFLAGS="$CPPFLAGS -Wall -Wshadow -g -pedantic-errors"
+ CPPFLAGS="$CPPFLAGS -I/usr/include -I/usr/local/include"
+ 
