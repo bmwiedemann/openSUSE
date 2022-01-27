@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-qt5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1550
+%define build_qt6 1
+%else
+%define build_qt6 0
+%endif
 
 Name:           fcitx-qt5
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Fcitx QT5 Input Context
-License:        GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx-qt5
-Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM: fix compilation with Qt 5.11 (missing include)
-Patch0:         fix-compilation-with-qt-5.11.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx-devel >= 4.2.9.1
@@ -36,6 +39,10 @@ BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libxkbcommon-devel
+%if %build_qt6
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-base-private-devel
+%endif
 # fcitx-qt5 is using private QPA API, which can, and does break BC even in point releases,
 # so we need to hardcode libQt5Gui5 version
 %requires_eq    libQt5Gui5
@@ -43,6 +50,16 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A QT5 input context plugin of Fcitx IM Framework.
+
+%if %build_qt6
+%package -n fcitx-qt6
+Summary:        Qt6 IM module for Fcitx
+Group:          System/I18n/Chinese
+Supplements:    (fcitx and libQt6Core6)
+
+%description -n fcitx-qt6
+Qt6 IM module for Fcitx.
+%endif
 
 %package devel
 Summary:        Development files for %{name}
@@ -53,10 +70,14 @@ Requires:       %{name} = %{version}
 Development header files for Fcitx input method framework (Qt5).
 
 %prep
-%autosetup -p1
+%setup
 
 %build
+%if %build_qt6
+%cmake -DENABLE_QT6=ON
+%else
 %cmake
+%endif
 %make_build
 
 %install
@@ -66,6 +87,13 @@ Development header files for Fcitx input method framework (Qt5).
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%if %build_qt6
+%post -n fcitx-qt6 -p /sbin/ldconfig
+%postun -n fcitx-qt6 -p /sbin/ldconfig
+
+%files -n fcitx-qt6
+%{_libdir}/qt6/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin-qt6.so
+%endif
 
 %files -f fcitx-qt5.lang
 %license COPYING

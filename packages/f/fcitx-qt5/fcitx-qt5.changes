@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 25 13:49:01 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update to version 1.2.7
+  * support Qt6
+- drop fix-compilation-with-qt-5.11.patch, upstreamed
+
+-------------------------------------------------------------------
 Wed May 12 02:13:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.6
