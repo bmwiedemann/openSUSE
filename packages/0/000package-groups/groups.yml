@@ -228,6 +228,7 @@ dvd:
   - dynamic-wallpapers-11x: [locked]
   - python-doc-pdf: [locked]
   - wine-gecko: [locked]
+  - qemu-arm: [locked]
   - qemu-extra: [locked]
   - ktuberling: [locked]
   - kalzium: [locked]

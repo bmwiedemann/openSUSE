@@ -1302,4 +1302,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop unknwon capi4hylafax reference</comment>
   </revision>
+  <revision rev="182" vrev="180">
+    <srcmd5>2dc25380d9a014ce69c737d075b964dd</srcmd5>
+    <version>unknown</version>
+    <time>1643285314</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
