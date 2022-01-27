@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Wed Jan 26 15:10:41 UTC 2022 - shundhammer@suse.de
+
+- merge gh#openSUSE/gfxboot#53
+- Adapted to new YaST keymap codes
+- Adapted default keymap for lang to new YaST keymap codes
+  (jsc#SLE-21107)
+- Migrate to new kbd also in gfxboot
+- 4.5.83
+
+--------------------------------------------------------------------
 Thu Jan 20 17:09:26 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Slovak) (bsc#1149754)
