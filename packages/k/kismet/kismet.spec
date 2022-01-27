@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2022-01-R1
+%define realver 2022-01-R2
 Name:           kismet
-Version:        2022_01_R1
+Version:        2022_01_R2
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ URL:            https://www.kismetwireless.net/
 Source:         https://github.com/kismetwireless/kismet/archive/%{name}-%{realver}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         kismet-fix-build.patch
-Patch1:         0001-Update-FetchGlobal-usage.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -284,7 +283,6 @@ want to make use of kismet.
 %prep
 %setup -q -n kismet-kismet-%{realver}
 %patch0 -p1
-%patch1 -p1
 # HACK: Add python DESTDIR support for python stuff
 find . -type f -name "Makefile*" -exec sed -i 's|setup.py install|setup.py install --root=$(DESTDIR)|g' {} \;
 # Fix wrong-script-end-of-line-encoding
