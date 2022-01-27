@@ -241,7 +241,7 @@ Index: libvirt-8.0.0/src/qemu/qemu_driver.c
  #include "domain_audit.h"
  #include "domain_cgroup.h"
  #include "domain_driver.h"
-@@ -17407,13 +17408,7 @@ qemuDomainGetStatsState(virQEMUDriver *d
+@@ -17412,13 +17413,7 @@ qemuDomainGetStatsState(virQEMUDriver *d
                          virTypedParamList *params,
                          unsigned int privflags G_GNUC_UNUSED)
  {
@@ -256,7 +256,7 @@ Index: libvirt-8.0.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -17705,25 +17700,11 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
+@@ -17710,25 +17705,11 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
                              virTypedParamList *params)
  {
      qemuDomainObjPrivate *priv = dom->privateData;
@@ -283,7 +283,7 @@ Index: libvirt-8.0.0/src/qemu/qemu_driver.c
  }
  
  static int
-@@ -17916,76 +17897,15 @@ qemuDomainGetStatsVcpu(virQEMUDriver *dr
+@@ -17921,76 +17902,15 @@ qemuDomainGetStatsVcpu(virQEMUDriver *dr
      return ret;
  }
  

@@ -4013,4 +4013,18 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>947276</requestid>
   </revision>
+  <revision rev="347" vrev="2">
+    <srcmd5>68ac777b9aade6802a582db615a89abb</srcmd5>
+    <version>8.0.0</version>
+    <time>1643321796</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert commit 938382b60a since it changes semantics on some
+  public APIs
+  105dace2-revert-virProcessGetStatInfo.patch
+
+- libxl: Add lock process indicator to saved VM state
+  31e937fb-libxl-save-lock-indicator.patch
+  bsc#1191668</comment>
+    <requestid>949336</requestid>
+  </revision>
 </revisionlist>

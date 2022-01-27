@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 26 19:13:24 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Revert commit 938382b60a since it changes semantics on some
+  public APIs
+  105dace2-revert-virProcessGetStatInfo.patch
+
+-------------------------------------------------------------------
+Tue Jan 25 16:26:42 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Add lock process indicator to saved VM state
+  31e937fb-libxl-save-lock-indicator.patch
+  bsc#1191668
+
+-------------------------------------------------------------------
 Tue Jan 18 17:11:13 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - sysconfig files have not been distributed for many months. Add

@@ -304,6 +304,8 @@ Source100:      %{name}-rpmlintrc
 Patch0:         3be5ba11-libvirt-guests-install.patch
 Patch1:         16172741-libvirt-guests-manpage.patch
 Patch2:         8eb44616-remove-sysconfig-files.patch
+Patch3:         31e937fb-libxl-save-lock-indicator.patch
+Patch4:         105dace2-revert-virProcessGetStatInfo.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

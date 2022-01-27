@@ -1,0 +1,42 @@
+commit 31e937fb3b7d0aa040a879394eff700bc1108251
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Jan 24 12:03:20 2022 -0700
+
+    libxl: Add lock process indicator to saved VM state
+    
+    Commit fa58f571ee added a lock processes indicator to the
+    libxlDomainObjPrivate struct to note that a lock process was
+    successfully started for the VM. However, the commit neglected to
+    add the indicator to the VM's saved state file. As a result, the
+    indicator is lost on libvirtd restart, along with the knowledge of
+    whether a lock process was started for the VM.
+    
+    This change adds support for the indicator in the domainObjPrivate
+    data parse and format callbacks, ensuring its value survives libvirtd
+    restarts.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-8.0.0/src/libxl/libxl_domain.c
+===================================================================
+--- libvirt-8.0.0.orig/src/libxl/libxl_domain.c
++++ libvirt-8.0.0/src/libxl/libxl_domain.c
+@@ -226,6 +226,7 @@ libxlDomainObjPrivateXMLParse(xmlXPathCo
+     libxlDomainObjPrivate *priv = vm->privateData;
+ 
+     priv->lockState = virXPathString("string(./lockstate)", ctxt);
++    priv->lockProcessRunning = virXPathBoolean("boolean(./lockProcessRunning)", ctxt);
+ 
+     return 0;
+ }
+@@ -239,6 +240,9 @@ libxlDomainObjPrivateXMLFormat(virBuffer
+     if (priv->lockState)
+         virBufferAsprintf(buf, "<lockstate>%s</lockstate>\n", priv->lockState);
+ 
++    if (priv->lockProcessRunning)
++        virBufferAddLit(buf, "<lockProcessRunning/>\n");
++
+     return 0;
+ }
+ 
