@@ -1,0 +1,56 @@
+diff -urp webkitgtk-2.34.3.orig/Source/JavaScriptCore/API/JSRetainPtr.h webkitgtk-2.34.3/Source/JavaScriptCore/API/JSRetainPtr.h
+--- webkitgtk-2.34.3.orig/Source/JavaScriptCore/API/JSRetainPtr.h	2021-09-01 04:16:46.000000000 -0500
++++ webkitgtk-2.34.3/Source/JavaScriptCore/API/JSRetainPtr.h	2022-01-20 13:07:21.713055778 -0600
+@@ -32,6 +32,7 @@
+ #include <JavaScriptCore/JSObjectRef.h>
+ #include <JavaScriptCore/JSStringRef.h>
+ #include <algorithm>
++#include <utility>
+ 
+ inline void JSRetain(JSClassRef context) { JSClassRetain(context); }
+ inline void JSRelease(JSClassRef context) { JSClassRelease(context); }
+diff -urp webkitgtk-2.34.3.orig/Source/WebCore/platform/graphics/x11/XUniqueResource.h webkitgtk-2.34.3/Source/WebCore/platform/graphics/x11/XUniqueResource.h
+--- webkitgtk-2.34.3.orig/Source/WebCore/platform/graphics/x11/XUniqueResource.h	2021-09-01 04:16:50.000000000 -0500
++++ webkitgtk-2.34.3/Source/WebCore/platform/graphics/x11/XUniqueResource.h	2022-01-20 13:07:21.713055778 -0600
+@@ -28,6 +28,8 @@
+ 
+ #if PLATFORM(X11)
+ 
++#include <utility>
++
+ #if USE(GLX)
+ typedef unsigned long GLXPbuffer;
+ typedef unsigned long GLXPixmap;
+diff -urp webkitgtk-2.34.3.orig/Source/WTF/wtf/CompletionHandler.h webkitgtk-2.34.3/Source/WTF/wtf/CompletionHandler.h
+--- webkitgtk-2.34.3.orig/Source/WTF/wtf/CompletionHandler.h	2021-09-01 04:16:49.000000000 -0500
++++ webkitgtk-2.34.3/Source/WTF/wtf/CompletionHandler.h	2022-01-20 13:07:21.713055778 -0600
+@@ -27,6 +27,7 @@
+ 
+ #include <wtf/Function.h>
+ #include <wtf/MainThread.h>
++#include <utility>
+ 
+ namespace WTF {
+ 
+diff -urp webkitgtk-2.34.3.orig/Source/WTF/wtf/MallocPtr.h webkitgtk-2.34.3/Source/WTF/wtf/MallocPtr.h
+--- webkitgtk-2.34.3.orig/Source/WTF/wtf/MallocPtr.h	2021-09-01 04:16:49.000000000 -0500
++++ webkitgtk-2.34.3/Source/WTF/wtf/MallocPtr.h	2022-01-20 13:07:21.713055778 -0600
+@@ -27,6 +27,7 @@
+ 
+ #include <wtf/FastMalloc.h>
+ #include <wtf/Noncopyable.h>
++#include <utility>
+ 
+ // MallocPtr is a smart pointer class that calls fastFree in its destructor.
+ // It is intended to be used for pointers where the C++ lifetime semantics
+diff -urp webkitgtk-2.34.3.orig/Source/WTF/wtf/text/IntegerToStringConversion.h webkitgtk-2.34.3/Source/WTF/wtf/text/IntegerToStringConversion.h
+--- webkitgtk-2.34.3.orig/Source/WTF/wtf/text/IntegerToStringConversion.h	2021-09-01 04:16:49.000000000 -0500
++++ webkitgtk-2.34.3/Source/WTF/wtf/text/IntegerToStringConversion.h	2022-01-20 13:10:13.501962777 -0600
+@@ -22,6 +22,7 @@
+ #pragma once
+ 
+ #include <wtf/text/LChar.h>
++#include <string>
+ 
+ namespace WTF {
+ 

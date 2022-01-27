@@ -1183,4 +1183,12 @@
     <comment></comment>
     <requestid>947965</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>77969a631eba3138ff25a0d911a4a66f</srcmd5>
+    <version>2.34.4</version>
+    <time>1643321788</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with gcc12</comment>
+    <requestid>949126</requestid>
+  </revision>
 </revisionlist>

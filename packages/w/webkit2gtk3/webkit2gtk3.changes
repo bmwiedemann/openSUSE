@@ -1,11 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 24 21:54:31 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-gcc12.patch: fix the build with gcc 12.
+- Require glib2 2.44 to match source.
+
+-------------------------------------------------------------------
 Fri Jan 21 12:58:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.34.4:
+- Update to version 2.34.4 (boo#1195064):
   + Fix several crashes and rendering issues.
   + This release fixes numerous security issues, including an
     especially severe issue that allowed websites to read the names
     of IndexedDB databases created by other websites.
+  + Security fixes: CVE-2021-30934, CVE-2021-30936, CVE-2021-30951,
+    CVE-2021-30952, CVE-2021-30953, CVE-2021-30954, CVE-2021-30984.
 
 -------------------------------------------------------------------
 Wed Jan 19 15:12:02 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
@@ -107,8 +115,8 @@ Wed Sep 22 16:18:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 - Update to version 2.34.0 (boo#1192063):
   + Fix another regression in JavaScriptCore on 32bit systems.
   + Security fixes: CVE-2021-30846, CVE-2021-30851, CVE-2021-30818,
-  CVE-2021-30823, CVE-2021-30884, CVE-2021-30888, CVE-2021-30889,
-  CVE-2021-30897.
+    CVE-2021-30823, CVE-2021-30884, CVE-2021-30888, CVE-2021-30889,
+    CVE-2021-30897, CVE-2021-45481, CVE-2021-45483.
 
 -------------------------------------------------------------------
 Mon Sep 20 02:33:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
@@ -177,7 +185,7 @@ Sun Sep 19 19:00:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
   + Do not append .asc extension to downloaded text/plain files.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2021-30848, CVE-2021-30849, CVE-2021-30858,
-  CVE-2021-30809, CVE-2021-30836.
+    CVE-2021-30809, CVE-2021-30836, CVE-2021-45482.
 - Drop fix-lto.patch: fixed upstream.
 
 -------------------------------------------------------------------
@@ -209,9 +217,9 @@ Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
     always emitted.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2021-21775, CVE-2021-21779, CVE-2021-30663,
-  CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
-  CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
-  CVE-2021-30799.
+    CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
+    CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
+    CVE-2021-30799.
   + Changes in version 2.32.2:
   + Improve calculation of initial WebKitWebView size.
   + Fix kinetic scrolling on touchpad with async scrolling off.
@@ -256,9 +264,9 @@ Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
     always emitted.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2021-21775, CVE-2021-21779, CVE-2021-30663,
-  CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
-  CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
-  CVE-2021-30799.
+    CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
+    CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
+    CVE-2021-30799.
 
 -------------------------------------------------------------------
 Mon Jul 19 18:36:42 UTC 2021 - Michael Gorse <mgorse@suse.com>
@@ -327,7 +335,7 @@ Tue Apr  6 18:25:11 UTC 2021 - Michael Gorse <mgorse@suse.com>
   + Changes in version 2.30.6 (boo#1184262):
   + Update user agent quirks again for Google Docs and Google Drive.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2020-27918, CVE-2020-29623, CVE-2021-1765
+  + Security fixes: CVE-2020-27918, CVE-2020-29623, CVE-2021-1765,
   CVE-2021-1789, CVE-2021-1799, CVE-2021-1801, CVE-2021-1870.
 - Remove webkit-font-scaling.patch: contained in upstream
 - Drop original SLE 15 support from the spec. Drop
@@ -350,7 +358,7 @@ Fri Apr  2 17:34:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
   - Fix the build on RISC-V with GCC 11.
   - Fix several crashes and rendering issues.
   + Security fixes: CVE-2021-1788, CVE-2021-1844, CVE-2021-1871,
-  CVE-2021-30682.
+    CVE-2021-30682.
 - Drop old-wayland-scanner.patch and webkit-process.patch, and also
   drop support for Leap 15.0 and 15.1, since they are no longer
   supported.
@@ -417,8 +425,8 @@ Sun Mar 21 20:33:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
   + Update user agent quirks again for Google Docs and Google Drive.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2020-27918, CVE-2020-29623, CVE-2021-1765
-  CVE-2021-1789, CVE-2021-1799, CVE-2021-1801, CVE-2021-1870,
-  CVE-2021-21806.
+    CVE-2021-1789, CVE-2021-1799, CVE-2021-1801, CVE-2021-1870,
+    CVE-2021-21806.
 
 -------------------------------------------------------------------
 Fri Feb 19 07:45:12 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -534,8 +542,8 @@ Mon Sep 14 23:28:52 UTC 2020 - Michael Gorse <mgorse@suse.com>
   + Don't try to use SHM on wayland with older wpebackend-fdo.
   + Fix the build due to seccomp.h header not found.
   + Security fixes: CVE-2020-9947, CVE-2020-9948, CVE-2020-9951,
-  CVE-2021-1817, CVE-2021-1820, CVE-2021-1825, CVE-2021-1826,
-  CVE-2021-30661.
+    CVE-2021-1817, CVE-2021-1820, CVE-2021-1825, CVE-2021-1826,
+    CVE-2021-30661.
 - Drop seccomp-build-fix.patch and wpe-shm-check.patch: fixed
   upstream.
 
@@ -896,7 +904,7 @@ Mon Sep 23 15:24:34 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix EGL initialization with newer versions of Mesa.
   + Do not enable the sandbox inside docker.
   + Fix several crashes and rendering issues.
- ++ Security fixes: CVE-2019-8783, CVE-2019-8811, CVE-2019-8813,
+  + Security fixes: CVE-2019-8783, CVE-2019-8811, CVE-2019-8813,
     CVE-2019-8816, CVE-2019-8819, CVE-2019-8820, CVE-2019-8823.
 
 -------------------------------------------------------------------
@@ -935,7 +943,7 @@ Mon Sep  9 09:59:58 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Security fixes: CVE-2019-8625, CVE-2019-8720, CVE-2019-8769,
     CVE-2019-8771, CVE-2019-8710, CVE-2019-8743, CVE-2019-8764,
     CVE-2019-8766, CVE-2019-8782, CVE-2019-8808, CVE-2019-8815,
-  CVE-2021-30666, CVE-2021-30761.
+    CVE-2021-30666, CVE-2021-30761.
 
 -------------------------------------------------------------------
 Tue Sep  3 12:11:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>

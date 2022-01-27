@@ -92,6 +92,8 @@ Patch0:         no-forced-sse.patch
 Patch1:         fix-warnings.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-link-fix.patch mgorse@suse.com -- annotate executeJSCJITProbe.
 Patch2:         webkit2gtk3-link-fix.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-gcc12.patch webkit#235445 webkit#235458 mgorse@suse.com -- fix the build with gcc 12.
+Patch3:         webkit2gtk3-gcc12.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -126,7 +128,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.10.2
 BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.5
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 %if %usegcc10
 BuildRequires:  pkgconfig(glproto)
 %endif
