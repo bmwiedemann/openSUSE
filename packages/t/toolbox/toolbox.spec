@@ -24,7 +24,7 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/thkukuk/microos-toolbox
 Source:         microos-toolbox-%{version}.tar.xz
-Requires:       podman
+Requires:       (podman or docker)
 BuildArch:      noarch
 
 %description

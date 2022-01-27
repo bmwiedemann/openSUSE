@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 26 13:48:14 UTC 2022 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Allow docker as an alternative to podman in the package Requires. This was
+  supported since 2.2.
+
+-------------------------------------------------------------------
 Mon Jan 17 09:48:54 UTC 2022 - kukuk@suse.com
 
 - Update to version 2.3+git20220117.bd53c7c:

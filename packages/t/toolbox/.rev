@@ -191,4 +191,12 @@
     the default image before entering an existing container. (#40)</comment>
     <requestid>946923</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4a0a730842c4a09d9a625027d4ae7cf1</srcmd5>
+    <version>2.3+git20220117.bd53c7c</version>
+    <time>1643321792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949282</requestid>
+  </revision>
 </revisionlist>
