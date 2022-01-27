@@ -14691,7 +14691,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -30986,6 +30986,7 @@ unsorted:
   - qdox-javadoc 
   - qelectrotech 
   - qemacs 
+  - qemu-arm 
   - qemu-audio-alsa 
   - qemu-audio-jack 
   - qemu-audio-oss 
@@ -30997,6 +30998,7 @@ unsorted:
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
   - qemu-uefi-aarch32: [x86_64] 
+  - qemu-uefi-aarch64: [x86_64] 
   - qgis 
   - qgis-devel 
   - qgis-plugin-grass 

@@ -4187,7 +4187,6 @@
       <repopackage name="qemu"/>
       <repopackage name="qemu-accel-qtest"/>
       <repopackage name="qemu-accel-tcg-x86"/>
-      <repopackage name="qemu-arm"/>
       <repopackage name="qemu-audio-spice"/>
       <repopackage name="qemu-block-curl"/>
       <repopackage name="qemu-block-dmg"/>
@@ -4218,7 +4217,6 @@
       <repopackage name="qemu-sgabios"/>
       <repopackage name="qemu-skiboot"/>
       <repopackage name="qemu-tools"/>
-      <repopackage name="qemu-uefi-aarch64" arch="x86_64"/>
       <repopackage name="qemu-ui-curses"/>
       <repopackage name="qemu-ui-gtk"/>
       <repopackage name="qemu-ui-opengl"/>
