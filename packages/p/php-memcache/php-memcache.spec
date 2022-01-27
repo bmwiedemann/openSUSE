@@ -45,6 +45,8 @@ Source1:        https://pecl.php.net/get/%{pkg_name}-8.0.tgz
 Source10:       php-memcache-rpmlintrc
 Patch1:         fixup-unit-tests.patch
 Patch2:         fixup-unit-test-040.patch
+# PATCH-FIX-UPSTREAM: https://github.com/websupport-sk/pecl-memcache/pull/88
+Patch3:         fix-deprecated-memcache_connect.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{php_name}-cli
 %endif
@@ -66,6 +68,7 @@ via memcache.
 %prep
 %if "%{flavor}" == "php8"
 %setup -q -n %{pkg_name}-%{version} -T -b 1
+%patch3 -p1
 %else
 %setup -q -n %{pkg_name}-%{version}
 %patch2
