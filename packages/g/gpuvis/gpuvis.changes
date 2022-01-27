@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Jan 27 16:28:02 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version v0.1 (first proper release)
+  * Minor fixes to compile/link on Windows.
+  * Fix includes for GCC 7
+  * typo prevents execution
+  * Fix some unchecked error codes from asprintf (warnings->errors in gcc7)
+  * Don't rely on trace-cmd to mount at /sys/kernel/tracing if tracefs is
+  * Fix some potential null pointer dereferences
+  * gpuvis_trace_utils: Prefer C++11 thread_local vs. __thread
+  * gpuvis_trace_utils: Add 'static' to gpuvis_gettime_u64
+  * Add a parser that can handle ETW files (extension is etl)
+  * Support for ETL gpu events
+  * Fixups for the ETL parser
+  * fix compilation on non-windows
+  * fix sdl2-config argument
+  * Include headers for stub compilation
+  * Update SteamVR provider GUID
+  * Trace block macro c
+  * Add 'ltime=' print param to inject event timestamp
+  * Allow hash of arbitrary ctx/ringno/seqno
+  * Use high-precision vblank timings, if available
+  * Integrate i915-perf data into GPUvis by
+  * Plot generic trace events and option to plot as step function
+  * Add support for importing generic DRM sched timing events.
+  * i915-perf fixes for Makefile by
+  * Hide intel GPU generated event row when we don't have any
+  * I915 perf updates
+  * Run trace-cmd-status.sh script from scripts location
+  * Don't die() when an unknown trace-cmd options is encountered
+  * Allow dtime= on events to tweak their offset.
+  * Don't try to access i915-perf data if no file was given
+  * i915-perf: add GPU frequency plot
+  * add meson build system
+  * trace-read: Fix high-prec vblank timestamps
+  * i915-perf: set a different default colors to GPU timeline events
+  * meson: remove python2
+  * Add loading of Linux perf JSON
+  * Better i915-perf / tracepoint tracking
+  * Improve archive handling
+  * Enable Shortcut for gpuvis Desktop Application
+
+-------------------------------------------------------------------
 Fri Dec 10 10:41:06 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 20211204 (7f47419470687c7ecbdf086b81f5bafdb05d1bef) 
