@@ -678,4 +678,12 @@ From the patch header
     <comment></comment>
     <requestid>920831</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>b237f30cfc79f43bc25a8963017ebaa4</srcmd5>
+    <version>1.18.5</version>
+    <time>1643321794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949330</requestid>
+  </revision>
 </revisionlist>
