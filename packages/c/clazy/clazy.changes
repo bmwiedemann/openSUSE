@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 26 15:02:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.11
+  * New Checks:
+    - use-arrow-operator-instead-of-data
+    - use-static-qregularexpression
+    - unexpected-flag-enumerator-value
+    - Removed inefficient-qlist check (Fixed in Qt6)
+
+-------------------------------------------------------------------
 Fri Jul 23 06:27:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.10

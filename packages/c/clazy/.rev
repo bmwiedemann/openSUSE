@@ -155,4 +155,12 @@
 - Drop 0001-Fix-build-with-Clang-12.patch. Fixed upstream.</comment>
     <requestid>907878</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>02dc231a2a333815dbe4a71a5c24918e</srcmd5>
+    <version>1.11</version>
+    <time>1643321809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949315</requestid>
+  </revision>
 </revisionlist>

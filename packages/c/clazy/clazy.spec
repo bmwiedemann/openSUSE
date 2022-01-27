@@ -17,7 +17,7 @@
 
 
 Name:           clazy
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
