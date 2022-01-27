@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 08:59:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.32.2:
+  * Fix auth handling for request-target of "*"
+
+-------------------------------------------------------------------
 Sat Dec 11 15:11:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.32.1:
