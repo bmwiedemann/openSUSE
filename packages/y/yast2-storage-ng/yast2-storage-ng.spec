@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.4.33
+Version:        4.4.34
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -29,8 +29,8 @@ Source:         %{name}-%{version}.tar.bz2
 # New Md size calculation
 BuildRequires:  libstorage-ng-ruby >= 4.4.76
 BuildRequires:  update-desktop-files
-# Yast::Kernel.propose_hibernation?
-BuildRequires:  yast2 >= 4.3.41
+# Replace PackageSystem with Package
+BuildRequires:  yast2 >= 4.4.38
 BuildRequires:  yast2-devtools >= 4.2.2
 # yast/rspec/helpers.rb
 BuildRequires:  yast2-ruby-bindings >= 4.4.7
@@ -50,8 +50,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 Requires:       findutils
 # New Md size calculation
 Requires:       libstorage-ng-ruby >= 4.4.76
-# Yast::Kernel.propose_hibernation?
-Requires:       yast2 >= 4.3.41
+# Replace PackageSystem with Package
+Requires:       yast2 >= 4.4.38
 # Y2Packager::Repository
 Requires:       yast2-packager >= 3.3.7
 # for AbortException and handle direct abort

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 12:30:14 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use Package module instead of PackageSystem (bsc#1194886).
+- 4.4.34
+
+-------------------------------------------------------------------
 Fri Jan 21 15:33:45 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Fix tests according to new Md size reported by libstorage-ng
