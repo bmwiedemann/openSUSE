@@ -275,7 +275,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{_prefix}/lib/firewalld/services/keylime.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %{_sharedstatedir}/keylime
+%dir %attr(0700,root,root) %{_sharedstatedir}/keylime
 %dir %{_sharedstatedir}/keylime/tpm_cert_store
 %{_sharedstatedir}/keylime/tpm_cert_store/*
 

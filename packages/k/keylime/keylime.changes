@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 25 15:13:04 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Set /var/lib/keylime under the same permissions expected by the code
+
+-------------------------------------------------------------------
 Tue Jan 18 14:28:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add 0001-config-support-merge-multiple-config-files.patch
