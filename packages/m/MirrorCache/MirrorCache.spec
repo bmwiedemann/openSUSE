@@ -22,7 +22,7 @@
 %define main_requires %{assetpack_requires} perl(Carp) perl(DBD::Pg) >= 3.7.4 perl(DBI) >= 1.632 perl(DBIx::Class) >= 0.082801 perl(DBIx::Class::DynamicDefault) perl(DateTime) perl(Encode) perl(Time::Piece) perl(Time::Seconds) perl(Time::ParseDate) perl(DateTime::Format::Pg) perl(Exporter) perl(File::Basename) perl(LWP::UserAgent) perl(Mojo::Base) perl(Mojo::ByteStream) perl(Mojo::IOLoop) perl(Mojo::JSON) perl(Mojo::Pg) perl(Mojo::URL) perl(Mojo::Util) perl(Mojolicious::Commands) perl(Mojolicious::Plugin) perl(Mojolicious::Plugin::RenderFile) perl(Mojolicious::Static) perl(Net::OpenID::Consumer) perl(POSIX) perl(Sort::Versions) perl(URI::Escape) perl(XML::Writer) perl(base) perl(constant) perl(diagnostics) perl(strict) perl(warnings) shadow rubygem(sass) perl(Net::DNS) perl(LWP::Protocol::https) perl(Digest::SHA)
 %define build_requires %{assetpack_requires} rubygem(sass) tidy sysuser-shadow sysuser-tools
 Name:           MirrorCache
-Version:        1.022
+Version:        1.023
 Release:        0
 Summary:        WebApp to redirect and manage mirrors
 License:        GPL-2.0-or-later
@@ -79,7 +79,7 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %service_del_postun_without_restart mirrorcache-hypnotoad.service
 
 %files
-%doc README.asciidoc
+%doc README.md
 %license LICENSE
 %{_sbindir}/rcmirrorcache
 %{_sbindir}/rcmirrorcache-hypnotoad

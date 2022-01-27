@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 20 07:46:09 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.023:
+  * Add execution_time to stat table (#247)
+  * Publish docs with mkdocs and github actions (#243)
+  * Local render when ROOT_NFS (#246)
+  * Add support for zsync hashes (#245)
+  * Do not use app->static for rendering (#244)
+
+-------------------------------------------------------------------
 Thu Dec 16 07:13:04 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.022:
