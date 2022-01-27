@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:11:06 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.2022.0105
+ see installed History.md
+
+  ## 3.2022.0105 / 2022-01-05
+  
+  - Updated the Apache and IANA media registry entries as of release date.
+  
+  - Fixed an incorrect definition of `image/bmp`, which had been marked obsolete
+    and later registered. Fixed [#48], found by William T. Nelson.
+  
+  ## 3.2021.1115 / 2021-11-15
+  
+  - Updated the Apache and IANA media registry entries as of release date.
+  
+  - Added conversion utilities that support the `mini_mime` data format. These
+    have been ported from the [mini_mime] repository. [#47]
+  
+  - Added IANA provisional media registries. Added some notes to Contributing.md
+    about the transient nature of the provisional registration data. This was
+    triggered in part by a pull request by Jon Sneyers. Thanks! [#45], [#43]
+  
+  ## 3.2021.0901 / 2021-09-01
+  
+  - Updated the Apache and IANA media registry entries as of release date.
+  
+  - Added file extension for WebVTT text format. [#46]
+  
+
+-------------------------------------------------------------------
 Mon Jul 26 06:01:06 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.2021.0704
