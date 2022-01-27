@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 27 15:59:49 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.18
+  * Full support for Vulkan 1.3 as well as the Roadmap 2022 profile
+    including the new VK_KHR_global_priority promoted extension.
+  * The primary font used in the UI can now be customised, as well
+    as the secondary monospaced font. 
+
+-------------------------------------------------------------------
 Tue Nov 30 16:04:14 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.17
