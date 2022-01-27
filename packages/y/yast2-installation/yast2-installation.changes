@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 27 07:50:21 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Handle service name collision during upgrade (bsc#1194453),
+  do not delete the new services which have the same name
+  as an old service
+- 4.4.37
+
+-------------------------------------------------------------------
+Wed Jan 26 14:24:43 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Adjusted Linux Security Module configuration wording
+  (related to jsc#SLE-22069).
+- 4.4.36
+
+-------------------------------------------------------------------
 Thu Jan 20 08:52:18 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Enable RSpec verifying doubles in unit tests to ensue that

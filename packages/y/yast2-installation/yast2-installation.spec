@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.4.35
+Version:        4.4.37
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -28,8 +28,8 @@ Source1:        YaST2-Second-Stage.service
 Source2:        YaST2-Firstboot.service
 
 BuildRequires:  update-desktop-files
-# Y2Packager::Resolvable.none? (bsc#1194387)
-BuildRequires:  yast2 >= 4.4.33
+# Y2Packager::NewRepositorySetup
+BuildRequires:  yast2 >= 4.4.42
 # CIOIgnore
 BuildRequires:  yast2-bootloader
 # storage-ng based version
@@ -70,8 +70,8 @@ Requires:       iproute2
 Requires:       pciutils
 # tar-gzip some system files and untar-ungzip them after the installation (FATE #300421, #120103)
 Requires:       tar
-# Y2Packager::Resolvable.none? (bsc#1194387)
-Requires:       yast2 >= 4.4.33
+# Y2Packager::NewRepositorySetup
+Requires:       yast2 >= 4.4.42
 # CIOIgnore
 Requires:       yast2-bootloader
 Requires:       yast2-country >= 3.3.1
