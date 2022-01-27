@@ -4019,4 +4019,12 @@
     <comment>submit new version 4.4.39</comment>
     <requestid>948941</requestid>
   </revision>
+  <revision rev="526" vrev="1">
+    <srcmd5>61e7f49556837993169ebfe338571fb6</srcmd5>
+    <version>4.4.42</version>
+    <time>1643321804</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.42</comment>
+    <requestid>949397</requestid>
+  </revision>
 </revisionlist>
