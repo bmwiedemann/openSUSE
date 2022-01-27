@@ -1,8 +1,8 @@
-Index: electron-13.1.2/base/compiler_specific.h
+Index: electron-15.3.3/base/compiler_specific.h
 ===================================================================
---- electron-13.1.2.orig/base/compiler_specific.h	2021-06-19 12:20:04.812383529 +0200
-+++ electron-13.1.2/base/compiler_specific.h	2021-06-20 16:25:23.249984109 +0200
-@@ -340,7 +340,8 @@ inline constexpr bool AnalyzerAssumeTrue
+--- electron-15.3.3.orig/base/compiler_specific.h	2021-12-15 12:00:50.016321177 +0100
++++ electron-15.3.3/base/compiler_specific.h	2021-12-15 13:09:17.144985381 +0100
+@@ -365,7 +365,8 @@ inline constexpr bool AnalyzerAssumeTrue
  #endif  // defined(__clang_analyzer__)
  
  // Use nomerge attribute to disable optimization of merging multiple same calls.

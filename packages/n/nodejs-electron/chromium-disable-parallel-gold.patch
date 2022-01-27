@@ -1,8 +1,8 @@
-diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 01d97a360..a9a721403 100644
---- a/build/config/compiler/BUILD.gn
-+++ b/build/config/compiler/BUILD.gn
-@@ -415,8 +415,6 @@ config("compiler") {
+Index: electron-16.0.6/build/config/compiler/BUILD.gn
+===================================================================
+--- electron-16.0.6.orig/build/config/compiler/BUILD.gn	2022-01-13 16:02:25.885331379 +0100
++++ electron-16.0.6/build/config/compiler/BUILD.gn	2022-01-13 16:02:32.341363898 +0100
+@@ -473,8 +473,6 @@ config("compiler") {
          # https://groups.google.com/a/chromium.org/group/chromium-dev/browse_thread/thread/281527606915bb36
          # Only apply this to the target linker, since the host
          # linker might not be gold, but isn't used much anyway.

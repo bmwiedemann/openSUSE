@@ -1,0 +1,123 @@
+Index: electron-16.0.7/chrome/browser/process_singleton.h
+===================================================================
+--- electron-16.0.7.orig/chrome/browser/process_singleton.h	2022-01-17 09:05:43.956463209 +0100
++++ electron-16.0.7/chrome/browser/process_singleton.h	2022-01-17 09:05:46.560477493 +0100
+@@ -103,7 +103,7 @@ class ProcessSingleton {
+   using NotificationCallback =
+       base::RepeatingCallback<bool(const base::CommandLine& command_line,
+                                    const base::FilePath& current_directory,
+-                                   const std::vector<const uint8_t> additional_data)>;
++                                   const std::vector<uint8_t> additional_data)>;
+ 
+ #if defined(OS_WIN)
+   ProcessSingleton(const std::string& program_name,
+Index: electron-16.0.7/chrome/browser/process_singleton_posix.cc
+===================================================================
+--- electron-16.0.7.orig/chrome/browser/process_singleton_posix.cc	2022-01-17 09:05:43.956463209 +0100
++++ electron-16.0.7/chrome/browser/process_singleton_posix.cc	2022-01-17 09:05:46.560477493 +0100
+@@ -626,7 +626,7 @@ class ProcessSingleton::LinuxWatcher
+   // |reader| is for sending back ACK message.
+   void HandleMessage(const std::string& current_dir,
+                      const std::vector<std::string>& argv,
+-                     const std::vector<const uint8_t> additional_data,
++                     const std::vector<uint8_t> additional_data,
+                      SocketReader* reader);
+ 
+  private:
+@@ -683,7 +683,7 @@ void ProcessSingleton::LinuxWatcher::Sta
+ void ProcessSingleton::LinuxWatcher::HandleMessage(
+     const std::string& current_dir,
+     const std::vector<std::string>& argv,
+-    const std::vector<const uint8_t> additional_data,
++    const std::vector<uint8_t> additional_data,
+     SocketReader* reader) {
+   DCHECK(ui_task_runner_->BelongsToCurrentThread());
+   DCHECK(reader);
+@@ -773,7 +773,7 @@ void ProcessSingleton::LinuxWatcher::Soc
+   base::StringToSizeT(tokens[0], &num_args);
+   std::vector<std::string> command_line(tokens.begin() + 1, tokens.begin() + 1 + num_args);
+ 
+-  std::vector<const uint8_t> additional_data;
++  std::vector<uint8_t> additional_data;
+   if (tokens.size() >= 3 + num_args) {
+     size_t additional_data_size;
+     base::StringToSizeT(tokens[1 + num_args], &additional_data_size);
+@@ -782,7 +782,7 @@ void ProcessSingleton::LinuxWatcher::Soc
+         std::string(1, kTokenDelimiter));
+     const uint8_t* additional_data_bits =
+         reinterpret_cast<const uint8_t*>(remaining_args.c_str());
+-    additional_data = std::vector<const uint8_t>(
++    additional_data = std::vector<uint8_t>(
+         additional_data_bits, additional_data_bits + additional_data_size);
+   }
+ 
+Index: electron-16.0.7/chrome/browser/process_singleton_win.cc
+===================================================================
+--- electron-16.0.7.orig/chrome/browser/process_singleton_win.cc	2022-01-17 09:05:43.956463209 +0100
++++ electron-16.0.7/chrome/browser/process_singleton_win.cc	2022-01-17 09:05:46.560477493 +0100
+@@ -100,7 +100,7 @@ BOOL CALLBACK BrowserWindowEnumeration(H
+ bool ParseCommandLine(const COPYDATASTRUCT* cds,
+                       base::CommandLine* parsed_command_line,
+                       base::FilePath* current_directory,
+-                      std::vector<const uint8_t>* parsed_additional_data) {
++                      std::vector<uint8_t>* parsed_additional_data) {
+   // We should have enough room for the shortest command (min_message_size)
+   // and also be a multiple of wchar_t bytes. The shortest command
+   // possible is L"START\0\0" (empty command line, current directory,
+@@ -182,7 +182,7 @@ bool ParseCommandLine(const COPYDATASTRU
+         msg.substr(fourth_null + 1, fifth_null - fourth_null);
+     const uint8_t* additional_data_bytes =
+         reinterpret_cast<const uint8_t*>(additional_data.c_str());
+-    *parsed_additional_data = std::vector<const uint8_t>(additional_data_bytes,
++    *parsed_additional_data = std::vector<uint8_t>(additional_data_bytes,
+         additional_data_bytes + additional_data_length);
+ 
+     return true;
+@@ -203,7 +203,7 @@ bool ProcessLaunchNotification(
+   const COPYDATASTRUCT* cds = reinterpret_cast<COPYDATASTRUCT*>(lparam);
+   base::CommandLine parsed_command_line(base::CommandLine::NO_PROGRAM);
+   base::FilePath current_directory;
+-  std::vector<const uint8_t> additional_data;
++  std::vector<uint8_t> additional_data;
+   if (!ParseCommandLine(cds, &parsed_command_line, &current_directory, &additional_data)) {
+     *result = TRUE;
+     return true;
+Index: electron-16.0.7/electron/shell/browser/api/electron_api_app.cc
+===================================================================
+--- electron-16.0.7.orig/electron/shell/browser/api/electron_api_app.cc	2022-01-17 09:05:46.560477493 +0100
++++ electron-16.0.7/electron/shell/browser/api/electron_api_app.cc	2022-01-17 15:27:37.616459355 +0100
+@@ -517,10 +517,10 @@ bool NotificationCallbackWrapper(
+     const base::RepeatingCallback<
+         void(const base::CommandLine& command_line,
+              const base::FilePath& current_directory,
+-             const std::vector<const uint8_t> additional_data)>& callback,
++             const std::vector<uint8_t> additional_data)>& callback,
+     const base::CommandLine& cmd,
+     const base::FilePath& cwd,
+-    const std::vector<const uint8_t> additional_data) {
++    const std::vector<uint8_t> additional_data) {
+   // Make sure the callback is called after app gets ready.
+   if (Browser::Get()->is_ready()) {
+     callback.Run(cmd, cwd, std::move(additional_data));
+@@ -1081,7 +1081,7 @@ std::string App::GetLocaleCountryCode()
+ 
+ void App::OnSecondInstance(const base::CommandLine& cmd,
+                            const base::FilePath& cwd,
+-                           const std::vector<const uint8_t> additional_data) {
++                           const std::vector<uint8_t> additional_data) {
+   v8::Isolate* isolate = JavascriptEnvironment::GetIsolate();
+   v8::Locker locker(isolate);
+   v8::HandleScope handle_scope(isolate);
+Index: electron-16.0.7/electron/shell/browser/api/electron_api_app.h
+===================================================================
+--- electron-16.0.7.orig/electron/shell/browser/api/electron_api_app.h	2022-01-15 15:50:12.473649228 +0100
++++ electron-16.0.7/electron/shell/browser/api/electron_api_app.h	2022-01-17 17:04:38.020359701 +0100
+@@ -190,7 +190,7 @@ class App : public ElectronBrowserClient
+   std::string GetLocaleCountryCode();
+   void OnSecondInstance(const base::CommandLine& cmd,
+                         const base::FilePath& cwd,
+-                        const std::vector<const uint8_t> additional_data);
++                        const std::vector<uint8_t> additional_data);
+   bool HasSingleInstanceLock() const;
+   bool RequestSingleInstanceLock(gin::Arguments* args);
+   void ReleaseSingleInstanceLock();

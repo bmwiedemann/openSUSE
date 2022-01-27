@@ -9,13 +9,8 @@ ELECTRON_PKGDIR="$(pwd)"
 ELECTRON_TMPDIR=$(mktemp --tmpdir -d electron-XXXXXXXX)
 ELECTRON_PATH="${ELECTRON_TMPDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 
-# The chromium version we want to base electron on. Use the same version
-# as in network:chromium/chromium if you update.
-CHROMIUM_VERSION="91.0.4472.164"
-
 echo "NAME:    $ELECTRON_PKGNAME"
 echo "VERSION: $ELECTRON_PKGVERSION"
-echo "CHROMIUM_VERSION: $CHROMIUM_VERSION"
 echo "PATH:    $ELECTRON_PATH"
 
 cleanup_tmpdir() {
@@ -44,10 +39,6 @@ fi
 PATH="$(pwd)/depot_tools:$PATH"
 export PATH
 
-
-echo ">>>>>> Downloading chromium-${CHROMIUM_VERSION}"
-git clone --branch=${CHROMIUM_VERSION} --depth=1 \
-      https://chromium.googlesource.com/chromium/src.git
 
 echo ">>>>>> Create gclient config"
 cat >.gclient <<EOF
@@ -99,6 +90,12 @@ python3 src/tools/download_optimization_profile.py \
     --output_name=src/chrome/android/profiles/afdo.prof \
     --gs_url_base=chromeos-prebuilt/afdo-job/llvm
 
+echo ">>>>>> Download pgo profiles"
+python3 src/tools/update_pgo_profiles.py \
+    --target=linux \
+    update \
+    --gs-url-base=chromium-optimization-profiles/pgo_profiles
+
 # Needed to get typescript compiler
 echo ">>>>>> Get node modules for third_party/node"
 bash src/third_party/node/update_npm_deps
@@ -140,6 +137,7 @@ keeplibs=(
     buildtools/third_party/libc++
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
+    buildtools/third_party/eu-strip
     chrome/third_party/mozilla_security_manager
     courgette/third_party
     net/third_party/mozilla_security_manager
@@ -151,7 +149,6 @@ keeplibs=(
     third_party/angle/src/common/third_party/base
     third_party/angle/src/common/third_party/smhasher
     third_party/angle/src/common/third_party/xxhash
-    third_party/angle/src/third_party/compiler
     third_party/angle/src/third_party/libXNVCtrl
     third_party/angle/src/third_party/trace_event
     third_party/angle/src/third_party/volk
@@ -167,6 +164,7 @@ keeplibs=(
     third_party/catapult/common/py_vulcanize/third_party/rcssmin
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
     third_party/catapult/third_party/beautifulsoup4
+    third_party/catapult/third_party/html5lib-1.1/
     third_party/catapult/third_party/html5lib-python
     third_party/catapult/third_party/polymer
     third_party/catapult/third_party/six
@@ -187,6 +185,8 @@ keeplibs=(
     third_party/cros_system_api
     third_party/dav1d
     third_party/dawn
+    third_party/dawn/third_party
+    third_party/dawn/third_party/tint/src/ast
     third_party/depot_tools
     third_party/depot_tools/third_party/six
     third_party/devscripts
@@ -195,7 +195,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/axe-core
     third_party/devtools-frontend/src/front_end/third_party/chromium
     third_party/devtools-frontend/src/front_end/third_party/codemirror
-    third_party/devtools-frontend/src/front_end/third_party/fabricjs
+    third_party/devtools-frontend/src/front_end/third_party/diff
     third_party/devtools-frontend/src/front_end/third_party/i18n
     third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
@@ -205,6 +205,8 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
+    third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
+    third_party/distributed_point_functions
     third_party/dom_distiller_js
     third_party/eigen3
     third_party/electron_node
@@ -231,7 +233,6 @@ keeplibs=(
     third_party/jstemplate
     third_party/khronos
     third_party/leveldatabase
-    third_party/libXNVCtrl
     third_party/libaddressinput
     third_party/libaom
     third_party/libaom/source/libaom/third_party/fastfeat
@@ -255,12 +256,15 @@ keeplibs=(
     third_party/libx11/src
     third_party/libxcb-keysyms/keysyms
     third_party/libxml/chromium
+    third_party/libXNVCtrl
     third_party/libyuv
     third_party/libzip
     third_party/lottie
     third_party/lss
     third_party/lzma_sdk
     third_party/mako
+    third_party/maldoca
+    third_party/maldoca/src/third_party
     third_party/markupsafe
     third_party/mesa
     third_party/metrics_proto
@@ -321,7 +325,6 @@ keeplibs=(
     third_party/tcmalloc
     third_party/tensorflow-text
     third_party/tflite
-    third_party/tflite-support
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
     third_party/ukey2
@@ -346,10 +349,8 @@ keeplibs=(
     third_party/wuffs
     third_party/x11proto
     third_party/xcbproto
-    third_party/xdg-utils
     third_party/zlib/google
     third_party/zxcvbn-cpp
-    tools/grit/third_party/six
     url/third_party/mozilla
     v8/src/third_party/siphash
     v8/src/third_party/utf8-decoder

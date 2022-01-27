@@ -1,38 +1,28 @@
-From 600d63c2c59a9892dbc5423d7d8bb1565a9f91e7 Mon Sep 17 00:00:00 2001
-From: Michel Salim <michel@fb.com>
-Date: Thu, 04 Nov 2021 14:22:40 -0700
-Subject: [PATCH] Handle long SIGSTKSZ in glibc > 2.33
-
-`SIGSTKSZ` is no longer constant in glibc > 2.33 but a function
-returning a long. Cast before taking `max`.
-
-See https://sourceware.org/git/?p=glibc.git;a=blob;f=NEWS;h=85e84fe53699fe9e392edffa993612ce08b2954a;hb=HEAD
-
-Signed-off-by: Michel Salim <michel@fb.com>
-Change-Id: I197f8ff3053eede80d6aed096be4f0113dd43241
-(relocated to chromium repo, removed static)
-
-[Guillaume: drop 2.33 only part and update context of the patch to apply properly]
----
-diff --git a/sandbox/linux/services/credentials.cc b/sandbox/linux/services/credentials.cc
-index ca6b595..1c1ee42 100644
---- a/sandbox/linux/services/credentials.cc
-+++ b/sandbox/linux/services/credentials.cc
-@@ -11,6 +11,7 @@
- #include <stddef.h>
- #include <stdint.h>
- #include <stdio.h>
-+#include <string.h>
- #include <sys/syscall.h>
- #include <sys/types.h>
- #include <sys/wait.h>
-@@ -100,7 +101,8 @@ bool ChrootToSafeEmptyDir() {
-   // attempt this optimization.
+Index: electron-16.0.6/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
+===================================================================
+--- electron-16.0.6.orig/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc	2022-01-10 16:08:04.821796604 +0100
++++ electron-16.0.6/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc	2022-01-13 16:03:37.805718344 +0100
+@@ -138,7 +138,7 @@ void InstallAlternateStackLocked() {
+   // SIGSTKSZ may be too small to prevent the signal handlers from overrunning
+   // the alternative stack. Ensure that the size of the alternative stack is
+   // large enough.
+-  static const unsigned kSigStackSize = std::max(16384, SIGSTKSZ);
++  static const unsigned kSigStackSize = std::max<size_t>(16384, SIGSTKSZ);
+ 
+   // Only set an alternative stack if there isn't already one, or if the current
+   // one is too small.
+Index: electron-16.0.6/sandbox/linux/services/credentials.cc
+===================================================================
+--- electron-16.0.6.orig/sandbox/linux/services/credentials.cc	2022-01-10 16:06:52.909317255 +0100
++++ electron-16.0.6/sandbox/linux/services/credentials.cc	2022-01-13 16:03:37.805718344 +0100
+@@ -100,7 +100,9 @@ bool ChrootToSafeEmptyDir() {
+   // TODO(crbug.com/1247458) Broken in MSan builds after LLVM f1bb30a4956f.
    clone_flags |= CLONE_VM | CLONE_VFORK | CLONE_SETTLS;
  
 -  char tls_buf[PTHREAD_STACK_MIN] = {0};
-+  char tls_buf[PTHREAD_STACK_MIN];
-+  memset(tls_buf, 0, PTHREAD_STACK_MIN);
++  const std::size_t pthread_stack_min = PTHREAD_STACK_MIN;
++  char tls_buf[pthread_stack_min];
++  memset(tls_buf, 0, pthread_stack_min);
    tls = tls_buf;
  #endif
  

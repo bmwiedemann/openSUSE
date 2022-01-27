@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-electron
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,9 @@
 ExcludeArch:    %{ix86} %{arm}
 %ifarch x86_64
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
-%bcond_without lto
+# DISABLE LTO AS IT IS BROKEN RIGHT NOW
+#%%bcond_without lto
+%bcond_with lto
 # else suse_version
 %else
 %bcond_with lto
@@ -54,7 +56,7 @@ ExcludeArch:    %{ix86} %{arm}
 %bcond_with clang
 %endif
 Name:           nodejs-electron
-Version:        13.6.3
+Version:        16.0.7
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -65,26 +67,26 @@ Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
 Source12:       electron-logo-symbolic.svg
-Patch0:         chromium-91-compiler.patch
+Patch0:         chromium-95-compiler.patch
 %if 0%{?sle_version} < 150300 || 0%{?fedora_version} < 34
 # Fixed with ld.gold >= 2.36
 # https://sourceware.org/bugzilla/show_bug.cgi?id=26200
 Patch1:         chromium-disable-parallel-gold.patch
 %endif
-Patch2:         chromium-glibc-2.33.patch
-Patch3:         chromium-lp152-missing-includes.patch
-Patch4:         chromium-norar.patch
-Patch5:         chromium-system-libusb.patch
-Patch6:         gcc-enable-lto.patch
+Patch2:         chromium-system-libusb.patch
+Patch3:         gcc-enable-lto.patch
+Patch4:         chromium-gcc11.patch
+Patch5:         chromium-norar.patch
+Patch6:         chromium-vaapi.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
-Patch8:         chromium-91-system-icu.patch
-Patch9:         chromium-glibc-2.34.patch
-Patch10:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
-Patch11:        chromium-vaapi.patch
-Patch12:        chromium-86-fix-vaapi-on-intel.patch
-Patch13:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
-Patch14:        chromium-gcc11.patch
-Patch15:        chromium-freetype-2.11.patch
+Patch8:         chromium-glibc-2.34.patch
+Patch9:         chromium-86-fix-vaapi-on-intel.patch
+Patch10:        chromium-93-ffmpeg-4.4.patch
+Patch11:        chromium-94-ffmpeg-roll.patch
+Patch12:        chromium-96-RestrictedCookieManager-tuple.patch
+Patch13:        chromium-96-CouponDB-include.patch
+Patch14:        chromium-96-DrmRenderNodePathFinder-include.patch
+Patch15:        chromium-96-CommandLine-include.patch
 # Fix building sql recover_module
 Patch20:        electron-13-fix-sql-virtualcursor-type.patch
 # Always disable use_thin_lto which is an lld feature
@@ -95,17 +97,10 @@ Patch21:        electron-13-fix-use-thin-lto.patch
 #     'nomerge' attribute cannot be applied to a declaration
 # See https://reviews.llvm.org/D92800
 Patch22:        electron-13-fix-base-check-nomerge.patch
-# Mark [nodiscard] as unsupported
-Patch23:        electron-13-gcc-fix-v8-nodiscard.patch
 # Fix blink nodestructor
-Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
-Patch26:        a9831f1cbf93fb18dd951453635f488037454ce9.patch
-%if 0%{?suse_version} > 1500
-# Fix missing harfbuzz symbols for harfbuzz 3.0.0
-Patch27:        skia_harfbuzz_roll.patch
-Patch28:        skia_harfbuzz_api.patch
-Patch29:        harfbuzz_roll.patch
-%endif
+Patch23:        electron-13-blink-gcc-ambiguous-nodestructor.patch
+# Fix electron patched code
+Patch24:        electron-16-std-vector-non-const.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -133,6 +128,7 @@ BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
 # Required for /usr/bin/clang-format
 BuildRequires:  clang >= 8.0.0
+BuildRequires:  lld >= 8.0.0
 BuildRequires:  ninja >= 1.7.2
 %endif
 %if 0%{?fedora_version}
@@ -141,17 +137,13 @@ BuildRequires:  clang-tools-extra
 BuildRequires:  libatomic
 BuildRequires:  ninja-build >= 1.7.2
 %endif
-BuildRequires:  nodejs >= 8.0
+BuildRequires:  nodejs >= 16.5.0
 BuildRequires:  npm
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-%if 0%{?fedora_version}
-BuildRequires:  python2-devel
-%endif
-%if 0%{?suse_version}
-BuildRequires:  python2
-BuildRequires:  python2-xml
-%endif
+BuildRequires:  python3
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
 BuildRequires:  rsync
 BuildRequires:  snappy-devel
 %if 0%{?suse_version}
@@ -300,6 +292,10 @@ ln -sf %{_bindir}/clang-format buildtools/linux64/clang-format
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -sf %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 
+# Fix eu-strip
+rm buildtools/third_party/eu-strip/bin/eu-strip
+ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
+
 # Fix shim header generation
 sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
       tools/generate_shim_headers/generate_shim_headers.py
@@ -312,10 +308,10 @@ find third_party/icu -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 
-# Make sure python is python2
-install -d -m 0755 python2-path
-ln -sf %{_bindir}/python2 "$(pwd)/python2-path/python"
-export PATH="$(pwd)/python2-path:${PATH}"
+# Make sure python is python3
+install -d -m 0755 python3-path
+ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
+export PATH="$(pwd)/python3-path:${PATH}"
 
 # for wayland
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
@@ -409,7 +405,15 @@ myconf_gn=""
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
+%ifarch x86_64
+myconf_gn+=" host_cpu=\"x64\""
+%endif
+%ifarch aarch64
+myconf_gn+=" host_cpu=\"arm64\""
+%endif
+myconf_gn+=" host_os=\"linux\""
 myconf_gn+=" is_debug=false"
+myconf_gn+=" dcheck_always_on=false"
 myconf_gn+=" enable_nacl=false"
 %if %{with swiftshader}
 myconf_gn+=" use_swiftshader_with_subzero=true"
@@ -417,8 +421,6 @@ myconf_gn+=" use_swiftshader_with_subzero=true"
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
-myconf_gn+=" chrome_pgo_phase=0"
-myconf_gn+=" concurrent_links=1"
 myconf_gn+=" symbol_level=1"
 myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" use_kerberos=true"
@@ -429,10 +431,10 @@ myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" fatal_linker_warnings=false"
-# Current tcmalloc does not support AArch64
-myconf_gn+=" use_allocator=\"tcmalloc\""
-myconf_gn+=" fieldtrial_testing_like_official_build=true"
-myconf_gn+=" use_gold=true"
+myconf_gn+=" use_allocator=\"partition\""
+myconf_gn+=" use_allocator_shim=true"
+myconf_gn+=" use_partition_alloc=true"
+myconf_gn+=" disable_fieldtrial_testing_config=true"
 myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
 myconf_gn+=" use_lld=false"
@@ -444,11 +446,17 @@ myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" icu_use_data_file=false"
 myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
+myconf_gn+=" use_v8_context_snapshot=true"
+myconf_gn+=" v8_use_external_startup_data=true"
+myconf_gn+=" use_system_harfbuzz=true"
+myconf_gn+=" use_system_freetype=true"
 
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
+myconf_gn+=" use_lld=true"
 %else
 myconf_gn+=" is_clang=false"
+myconf_gn+=" use_gold=true"
 %endif
 
 %if %{with lto}
@@ -463,7 +471,6 @@ myconf_gn+=" gcc_lto=true"
 
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
-myconf_gn+=" rtc_pipewire_version=\"0.3\""
 %endif
 
 # The proprietary codecs just force the chromium to say they can use it and

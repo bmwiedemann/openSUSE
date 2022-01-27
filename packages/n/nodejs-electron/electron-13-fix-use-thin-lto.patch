@@ -1,8 +1,8 @@
-Index: electron-13.1.2/build/config/compiler/compiler.gni
+Index: electron-16.0.6/build/config/compiler/compiler.gni
 ===================================================================
---- electron-13.1.2.orig/build/config/compiler/compiler.gni	2021-06-19 12:20:04.936384156 +0200
-+++ electron-13.1.2/build/config/compiler/compiler.gni	2021-06-20 15:30:45.946767664 +0200
-@@ -67,11 +67,11 @@ declare_args() {
+--- electron-16.0.6.orig/build/config/compiler/compiler.gni	2022-01-10 16:06:45.853270221 +0100
++++ electron-16.0.6/build/config/compiler/compiler.gni	2022-01-13 16:04:39.322052806 +0100
+@@ -71,11 +71,11 @@ declare_args() {
    # Use it by default on official-optimized android and Chrome OS builds, but
    # not ARC or linux-chromeos since it's been seen to not play nicely with
    # Chrome's clang. crbug.com/1033839

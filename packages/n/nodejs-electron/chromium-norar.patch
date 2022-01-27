@@ -1,11 +1,11 @@
-Index: chromium-86.0.4240.75/chrome/common/safe_browsing/BUILD.gn
+Index: electron-16.0.6/chrome/common/safe_browsing/BUILD.gn
 ===================================================================
---- chromium-86.0.4240.75.orig/chrome/common/safe_browsing/BUILD.gn
-+++ chromium-86.0.4240.75/chrome/common/safe_browsing/BUILD.gn
-@@ -43,38 +43,6 @@
-     public_deps = [ "//components/safe_browsing/core:csd_proto" ]
+--- electron-16.0.6.orig/chrome/common/safe_browsing/BUILD.gn	2022-01-10 16:06:48.181285739 +0100
++++ electron-16.0.6/chrome/common/safe_browsing/BUILD.gn	2022-01-13 16:03:25.281650253 +0100
+@@ -58,39 +58,6 @@ if (safe_browsing_mode == 1) {
+     public_deps = [ "//components/safe_browsing/core/common/proto:csd_proto" ]
    }
-
+ 
 -  source_set("rar_analyzer") {
 -    sources = [
 -      "rar_analyzer.cc",
@@ -17,8 +17,8 @@ Index: chromium-86.0.4240.75/chrome/common/safe_browsing/BUILD.gn
 -      ":download_type_util",
 -      "//base",
 -      "//base:i18n",
--      "//components/safe_browsing/core:features",
--      "//components/safe_browsing/core:file_type_policies",
+-      "//components/safe_browsing/content/common:file_type_policies",
+-      "//components/safe_browsing/core/common",
 -      "//third_party/unrar:unrar",
 -    ]
 -
@@ -36,34 +36,47 @@ Index: chromium-86.0.4240.75/chrome/common/safe_browsing/BUILD.gn
 -      "UNRAR_NO_EXCEPTIONS",
 -    ]
 -
--    public_deps = [ "//components/safe_browsing/core:csd_proto" ]
+-    public_deps = [ "//components/safe_browsing/core/common/proto:csd_proto" ]
 -  }
-
-   if (is_mac) {
-     source_set("disk_image_type_sniffer_mac") {
-@@ -138,7 +105,6 @@ source_set("safe_browsing") {
+-
+   if (is_linux || is_win) {
+     source_set("document_analyzer") {
+       sources = [
+@@ -189,7 +156,6 @@ source_set("safe_browsing") {
        ":archive_analyzer_results",
        ":binary_feature_extractor",
        ":download_type_util",
 -      ":rar_analyzer",
-       "//components/safe_browsing/core:features",
+       "//components/safe_browsing/core/common",
      ]
  
-Index: chromium-86.0.4240.75/chrome/common/safe_browsing/DEPS
+Index: electron-16.0.6/chrome/common/safe_browsing/DEPS
 ===================================================================
---- chromium-86.0.4240.75.orig/chrome/common/safe_browsing/DEPS
-+++ chromium-86.0.4240.75/chrome/common/safe_browsing/DEPS
-@@ -1,6 +1,5 @@
- include_rules = [
-   "+components/safe_browsing",
+--- electron-16.0.6.orig/chrome/common/safe_browsing/DEPS	2022-01-13 16:02:48.153448394 +0100
++++ electron-16.0.6/chrome/common/safe_browsing/DEPS	2022-01-13 16:02:59.521510198 +0100
+@@ -3,6 +3,5 @@ include_rules = [
+   "+components/safe_browsing/core/common",
+   "+third_party/maldoca",
    "+third_party/protobuf",
 -  "+third_party/unrar",
    "+third_party/zlib",
  ]
-Index: chromium-86.0.4240.75/chrome/services/file_util/safe_archive_analyzer.cc
+Index: electron-16.0.6/chrome/services/file_util/BUILD.gn
 ===================================================================
---- chromium-86.0.4240.75.orig/chrome/services/file_util/safe_archive_analyzer.cc
-+++ chromium-86.0.4240.75/chrome/services/file_util/safe_archive_analyzer.cc
+--- electron-16.0.6.orig/chrome/services/file_util/BUILD.gn	2022-01-13 16:02:48.153448394 +0100
++++ electron-16.0.6/chrome/services/file_util/BUILD.gn	2022-01-13 16:02:59.521510198 +0100
+@@ -60,7 +60,6 @@ source_set("file_util") {
+     deps += [
+       "//chrome/common/safe_browsing",
+       "//chrome/common/safe_browsing:archive_analyzer_results",
+-      "//chrome/common/safe_browsing:rar_analyzer",
+     ]
+ 
+     if (is_linux || is_win) {
+Index: electron-16.0.6/chrome/services/file_util/safe_archive_analyzer.cc
+===================================================================
+--- electron-16.0.6.orig/chrome/services/file_util/safe_archive_analyzer.cc	2022-01-13 16:02:48.153448394 +0100
++++ electron-16.0.6/chrome/services/file_util/safe_archive_analyzer.cc	2022-01-13 16:02:59.521510198 +0100
 @@ -45,10 +45,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
  void SafeArchiveAnalyzer::AnalyzeRarFile(base::File rar_file,
                                           base::File temporary_file,
@@ -79,15 +92,3 @@ Index: chromium-86.0.4240.75/chrome/services/file_util/safe_archive_analyzer.cc
 +  NOTREACHED();
 +#endif
  }
-Index: chromium-86.0.4240.75/chrome/services/file_util/BUILD.gn
-===================================================================
---- chromium-86.0.4240.75.orig/chrome/services/file_util/BUILD.gn
-+++ chromium-86.0.4240.75/chrome/services/file_util/BUILD.gn
-@@ -15,7 +15,6 @@ source_set("file_util") {
-     "//build:chromeos_buildflags",
-     "//chrome/common/safe_browsing",
-     "//chrome/common/safe_browsing:archive_analyzer_results",
--    "//chrome/common/safe_browsing:rar_analyzer",
-     "//components/safe_browsing:buildflags",
-     "//mojo/public/cpp/bindings",
-   ]

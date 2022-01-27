@@ -1,7 +1,7 @@
-Index: electron-13.1.0/build/config/BUILDCONFIG.gn
+Index: electron-16.0.6/build/config/BUILDCONFIG.gn
 ===================================================================
---- electron-13.1.0.orig/build/config/BUILDCONFIG.gn	2021-06-18 15:30:12.381771291 +0200
-+++ electron-13.1.0/build/config/BUILDCONFIG.gn	2021-06-18 15:30:15.529790838 +0200
+--- electron-16.0.6.orig/build/config/BUILDCONFIG.gn	2022-01-10 16:24:02.216280051 +0100
++++ electron-16.0.6/build/config/BUILDCONFIG.gn	2022-01-13 16:02:40.677407750 +0100
 @@ -133,6 +133,8 @@ declare_args() {
    # separate flags.
    is_official_build = false
@@ -11,7 +11,7 @@ Index: electron-13.1.0/build/config/BUILDCONFIG.gn
    # Set to true when compiling with the Clang compiler.
    is_clang = current_os != "linux" ||
               (current_cpu != "s390x" && current_cpu != "s390" &&
-@@ -342,6 +344,12 @@ default_compiler_configs = [
+@@ -343,6 +345,12 @@ default_compiler_configs = [
    "//electron/build/config:mas_build",
  ]
  
@@ -24,11 +24,11 @@ Index: electron-13.1.0/build/config/BUILDCONFIG.gn
  if (is_win) {
    default_compiler_configs += [
      "//build/config/win:default_cfg_compiler",
-Index: electron-13.1.0/build/config/compiler/BUILD.gn
+Index: electron-16.0.6/build/config/compiler/BUILD.gn
 ===================================================================
---- electron-13.1.0.orig/build/config/compiler/BUILD.gn	2021-06-18 15:30:12.381771291 +0200
-+++ electron-13.1.0/build/config/compiler/BUILD.gn	2021-06-18 15:30:15.529790838 +0200
-@@ -2006,6 +2006,10 @@ if (is_win) {
+--- electron-16.0.6.orig/build/config/compiler/BUILD.gn	2022-01-13 16:02:32.341363898 +0100
++++ electron-16.0.6/build/config/compiler/BUILD.gn	2022-01-13 16:02:40.677407750 +0100
+@@ -1860,6 +1860,10 @@ if (is_win) {
    }
  }
  
@@ -39,10 +39,10 @@ Index: electron-13.1.0/build/config/compiler/BUILD.gn
  config("default_stack_frames") {
    if (is_posix || is_fuchsia) {
      if (enable_frame_pointers) {
-Index: electron-13.1.0/sandbox/linux/BUILD.gn
+Index: electron-16.0.6/sandbox/linux/BUILD.gn
 ===================================================================
---- electron-13.1.0.orig/sandbox/linux/BUILD.gn	2021-06-18 15:30:12.381771291 +0200
-+++ electron-13.1.0/sandbox/linux/BUILD.gn	2021-06-18 15:30:15.529790838 +0200
+--- electron-16.0.6.orig/sandbox/linux/BUILD.gn	2022-01-10 16:06:52.905317231 +0100
++++ electron-16.0.6/sandbox/linux/BUILD.gn	2022-01-13 16:02:40.677407750 +0100
 @@ -258,6 +258,9 @@ component("seccomp_bpf") {
      "//build:chromeos_buildflags",
      "//sandbox:sandbox_buildflags",

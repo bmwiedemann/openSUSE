@@ -1,7 +1,7 @@
-Index: chromium-70.0.3538.54/build/linux/unbundle/libusb.gn
+Index: electron-16.0.6/build/linux/unbundle/libusb.gn
 ===================================================================
---- /dev/null
-+++ chromium-70.0.3538.54/build/linux/unbundle/libusb.gn
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ electron-16.0.6/build/linux/unbundle/libusb.gn	2022-01-13 16:02:37.237389046 +0100
 @@ -0,0 +1,24 @@
 +# Copyright 2016 The Chromium Authors. All rights reserved.
 +# Use of this source code is governed by a BSD-style license that can be
@@ -27,11 +27,11 @@ Index: chromium-70.0.3538.54/build/linux/unbundle/libusb.gn
 +  ]
 +  public_configs = [ ":system_libusb" ]
 +}
-Index: chromium-70.0.3538.54/build/linux/unbundle/replace_gn_files.py
+Index: electron-16.0.6/build/linux/unbundle/replace_gn_files.py
 ===================================================================
---- chromium-70.0.3538.54.orig/build/linux/unbundle/replace_gn_files.py
-+++ chromium-70.0.3538.54/build/linux/unbundle/replace_gn_files.py
-@@ -27,6 +27,7 @@ REPLACEMENTS = {
+--- electron-16.0.6.orig/build/linux/unbundle/replace_gn_files.py	2022-01-10 16:06:45.861270275 +0100
++++ electron-16.0.6/build/linux/unbundle/replace_gn_files.py	2022-01-13 16:02:37.237389046 +0100
+@@ -25,6 +25,7 @@ REPLACEMENTS = {
    'libevent': 'base/third_party/libevent/BUILD.gn',
    'libjpeg': 'third_party/libjpeg.gni',
    'libpng': 'third_party/libpng/BUILD.gn',

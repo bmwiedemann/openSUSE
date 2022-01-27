@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jan 19 18:09:33 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Package pgo profiles
+
+-------------------------------------------------------------------
+Tue Jan 18 08:58:39 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 16.0.7
+  * https://github.com/electron/electron/releases/tag/v16.0.7
+- Removed chromium-93-blink.patch
+- Removed harfbuzz_roll.patch
+- Removed skia_harfbuzz_api.patch
+- Removed skia_harfbuzz_roll.patch
+- Added chromium-96-CommandLine-include.patch
+- Added chromium-96-CouponDB-include.patch
+- Added chromium-96-DrmRenderNodePathFinder-include.patch
+- Added chromium-96-RestrictedCookieManager-tuple.patch
+- Added electron-16-std-vector-non-const.patch
+
+-------------------------------------------------------------------
+Fri Dec 17 14:17:26 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 15.3.3
+  * https://github.com/electron/electron/releases/tag/v15.3.3
+- Added chromium-93-blink.patch
+- Added chromium-93-ffmpeg-4.4.patch
+- Added chromium-94-ffmpeg-roll.patch
+- Added chromium-95-compiler.patch
+- Removed a9831f1cbf93fb18dd951453635f488037454ce9.patch
+- Removed chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
+- Removed chromium-91-GCC_fix_vector_types_in_pcscan.patch
+- Removed chromium-91-compiler.patch
+- Removed chromium-91-system-icu.patch
+- Removed chromium-freetype-2.11.patch
+- Removed chromium-glibc-2.33.patch
+- Removed chromium-lp152-missing-includes.patch
+- Removed electron-13-gcc-fix-v8-nodiscard.patch
+
+-------------------------------------------------------------------
 Mon Dec 13 11:06:00 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not build on 32-bit arm
