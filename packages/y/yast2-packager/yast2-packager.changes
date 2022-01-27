@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 13:48:20 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use Package module instead of PackageSystem (bsc#1194886).
+- 4.4.21
+
+-------------------------------------------------------------------
 Tue Jan 18 15:46:09 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Enabled RSpec verifying doubles (bsc#1194784)
