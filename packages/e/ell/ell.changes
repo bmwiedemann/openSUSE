@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 24 22:25:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.48:
+  * Fix issue with memory leaking from ICMPv6 RA.
+  * Fix issue with memory leaking from DHCP leases.
+  * Fix issue with NULL terminating of Base64 encoding. 
+
+-------------------------------------------------------------------
 Mon Nov 22 12:46:42 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
 
 - update to release 0.46
