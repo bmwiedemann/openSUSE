@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ntp-client
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        YaST2 - NTP Client Configuration
 License:        GPL-2.0-or-later
@@ -31,8 +31,8 @@ BuildRequires:  update-desktop-files
 # need as it own /usr/lib/systemd and for systemd macros
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
-# cwm/popup
-BuildRequires:  yast2 >= 4.1.15
+# Replace PackageSystem with Package
+BuildRequires:  yast2 >= 4.4.38
 BuildRequires:  yast2-country
 BuildRequires:  yast2-country-data
 BuildRequires:  yast2-devtools >= 4.2.2
@@ -46,8 +46,8 @@ BuildRequires:  yast2-ruby-bindings >= 4.4.7
 
 # proper acting TargetFile when scr is switched
 Requires:       augeas-lenses
-# cwm/popup
-Requires:       yast2 >= 4.1.15
+# Replace PackageSystem with Package
+Requires:       yast2 >= 4.4.38
 Requires:       yast2-country-data
 # needed for network/config agent
 # Y2Network::NtpServer
