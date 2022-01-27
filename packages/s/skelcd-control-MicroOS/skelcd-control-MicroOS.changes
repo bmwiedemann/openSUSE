@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 25 09:39:34 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove ALPHA tag for the Keylime services
+- Reference the new place for the configuration file
+  (gh#skelcd-control-MicroOS#49).
+- 20220125
+
+-------------------------------------------------------------------
+Mon Jan 24 21:12:31 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Add bootloader pattern for all roles (gh#yast/skelcd-control-MicroOS#47).
+  Sent by Alberto Planas <aplanas@suse.com>.
+- 20220124
+
+-------------------------------------------------------------------
 Tue Dec 28 09:49:16 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Added 'lsm' section for selecting and configuring the desired
