@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  5 09:19:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4 (bsc#1193376, bsc#1192985, CVE-2021-3657, CVE-2021-44143):
+  * fixed CVE-2021-3657: multiple buffer overflows on excessively large
+    IMAP literals
+  * fixed CVE-2021-44143: buffer overflow on header-less messages
+  * fixed crash on certain malformed messages in Maildirs
+  * fixed somewhat spurious notice about conflicting changes on
+    messages marked as deleted 
+
+-------------------------------------------------------------------
 Wed Aug  4 07:31:05 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.4.3

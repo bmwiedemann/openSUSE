@@ -1,7 +1,7 @@
 #
 # spec file for package isync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           isync
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
 License:        GPL-2.0-only
