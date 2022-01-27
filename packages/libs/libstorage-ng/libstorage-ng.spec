@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.4.76
+Version:        4.4.77
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
