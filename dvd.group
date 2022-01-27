@@ -4691,8 +4691,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
