@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 14:42:40 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use Package module instead of PackageSystem (bsc#1194886).
+- 4.4.2
+
+-------------------------------------------------------------------
 Mon Sep  6 09:28:56 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Improve the kdump proposal warning (bsc#1095207)
