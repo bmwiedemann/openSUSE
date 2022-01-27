@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  26 23:00:00 UTC 2022 - Andy Alt <andy400-dev@yahoo.com>
+
+- rmw 0.8.1:
+  * the curses menu library is now much more likely to be found on *BSD
+  systems
+  * bugfix: when attempting to restore a file from a waste folder
+  listed in the config file that has a trailing slash, rmw will no
+  longer report that the file is not in a waste folder.
+  - curses is no longer a requirement (configure -Dwithout-curses=true)
+  - removed '-e' command line option ('--empty' option not affected)
+
+-------------------------------------------------------------------
 Sun Jun  28 01:00:00 UTC 2021 - Andy Alt <andy400-dev@yahoo.com>
 
 - rmw 0.8.0:

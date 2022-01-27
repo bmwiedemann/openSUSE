@@ -1,7 +1,7 @@
 #
 # spec file for package rmw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rmw
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://remove-to-waste.info/
 Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  meson >= 0.54.0
+BuildRequires:  meson >= 0.56.0
 
 %description
 rmw (ReMove to Waste) is a safe-remove utility for the command line. It
