@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloud-sptheme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION docs
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-importlib-metadata >= 4.4
+BuildRequires:  python3-pip
 BuildRequires:  python3-sphinxcontrib-fulltoc
+BuildRequires:  python3-wheel
 # /SECTION
 BuildArch:      noarch
 
@@ -55,7 +58,7 @@ HTML documentation and examples for %name.
 
 %build
 %python_build
-python3 setup.py build_sphinx -E
+PYTHONPATH=. python3 setup.py build_sphinx -E
 rm build/sphinx/html/.buildinfo
 
 %install
