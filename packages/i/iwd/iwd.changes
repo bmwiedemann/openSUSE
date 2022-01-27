@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 24 22:33:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.22:
+  * Fix issue with handling periodic scanning.
+  * Fix issue with handling scanning completion.
+  * Fix issue with handling scanning for OWE auto-connect.
+  * Add support for additional DPP features.
+  * Fix issue with handling disconnect events issued by AP.
+  * Add experimental support for DPP feature. 
+
+-------------------------------------------------------------------
 Fri Nov 26 07:34:37 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
 
 - update to v1.20
