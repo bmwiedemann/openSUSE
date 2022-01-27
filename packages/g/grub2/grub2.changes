@@ -6,6 +6,12 @@ Fri Jan 14 08:39:36 UTC 2022 - Michael Chang <mchang@suse.com>
   * 0001-grub-install-Add-SUSE-signed-image-support-for-power.patch
 
 -------------------------------------------------------------------
+Thu Jan 13 06:36:44 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix wrong default entry when booting snapshot (bsc#1159205)
+  * grub2-btrfs-08-workaround-snapshot-menu-default-entry.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 03:49:15 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Power guest secure boot with static keys: GRUB2 signing portion

@@ -1,8 +1,11 @@
-Index: grub-2.02~beta2/grub-core/normal/menu.c
+
+v2: Add menuentry "Help on bootable snapshot" to be excluded as default entry.  
+
+Index: grub-2.06/grub-core/normal/menu.c
 ===================================================================
---- grub-2.02~beta2.orig/grub-core/normal/menu.c
-+++ grub-2.02~beta2/grub-core/normal/menu.c
-@@ -575,6 +575,44 @@ print_countdown (struct grub_term_coordi
+--- grub-2.06.orig/grub-core/normal/menu.c
++++ grub-2.06/grub-core/normal/menu.c
+@@ -574,6 +574,43 @@ print_countdown (struct grub_term_coordi
    grub_refresh ();
  }
  
@@ -15,10 +18,9 @@ Index: grub-2.02~beta2/grub-core/normal/menu.c
 +workaround_snapshot_menu_default_entry (grub_menu_t menu, const char *name, int *default_entry)
 +{
 +  grub_menu_entry_t entry;
-+
-+  if ((entry = grub_menu_get_entry (menu, 0))
-+      && entry->submenu
-+      && grub_strncmp (entry->title, "Bootable snapshot", sizeof("Bootable snapshot") - 1) == 0)
++  if ((entry = grub_menu_get_entry (menu, 0)) &&
++      ((entry->submenu && grub_strncmp (entry->title, "Bootable snapshot", sizeof("Bootable snapshot") - 1) == 0) ||
++       (!entry->submenu && grub_strncmp (entry->title, "Help on bootable snapshot", sizeof("Help on bootable snapshot") - 1) == 0)))
 +    {
 +      const char *val;
 +
@@ -47,7 +49,7 @@ Index: grub-2.02~beta2/grub-core/normal/menu.c
  #define GRUB_MENU_PAGE_SIZE 10
  
  /* Show the menu and handle menu entry selection.  Returns the menu entry
-@@ -593,6 +631,8 @@ run_menu (grub_menu_t menu, int nested,
+@@ -592,6 +629,8 @@ run_menu (grub_menu_t menu, int nested,
  
    default_entry = get_entry_number (menu, "default");
  
