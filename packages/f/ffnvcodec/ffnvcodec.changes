@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 04:39:04 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 11.1.5.1:
+  * Update forgotten version number in README.
+  * Add a subset of CUDA EGLStreams interop API.
+  * Add CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_TIMELINE_SEMAPHOR.
+  * Add timeline semaphore type.
+
+-------------------------------------------------------------------
 Fri Oct 29 07:50:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.1.5.0:
