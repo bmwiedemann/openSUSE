@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 25 13:31:33 UTC 2022 - pgajdos@suse.com
+
+- temporarily reintroduce rarpd and rdisc tools to get them into
+  15sp4 [jsc#SLE-23521]
+
+-------------------------------------------------------------------
 Wed Dec 15 13:32:02 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 20211215

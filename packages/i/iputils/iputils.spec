@@ -1,7 +1,7 @@
 #
 # spec file for package iputils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,17 @@ Provides:       /sbin/arping
 
 %description
 This package contains some small network tools for IPv4 and IPv6 like
-ping, arping and tracepath.
+rdisc, ping, arping and tracepath.
+
+%package -n rarpd
+Summary:        Reverse Address Resolution Protocol Daemon
+Group:          Productivity/Networking/System
+%systemd_requires
+
+%description -n rarpd
+Rarpd listens on the Ethernet for broadcast packets asking for reverse
+address resolution.  These packets are sent by hosts at boot time to find
+out their IP addresses.
 
 %prep
 %autosetup -p1
@@ -55,7 +65,7 @@ ping, arping and tracepath.
 # Pulled-in by the LINK.o variable.
 export LDFLAGS="-Wl,-z,relro,-z,now"
 
-%meson -DBUILD_NINFOD=false -DBUILD_RARPD=false -DBUILD_RDISC=false -DNO_SETCAP_OR_SUID=true -Db_pie=true -Dc_std=none
+%meson -DBUILD_NINFOD=false -DBUILD_RARPD=true -DNO_SETCAP_OR_SUID=true -Db_pie=true -Dc_std=none
 %meson_build
 
 %install
@@ -68,6 +78,12 @@ ln -sf %{_bindir}/tracepath %{buildroot}/%{_bindir}/tracepath6
 # symlink to man tracepath6(8)
 ln -sf %{_mandir}/man8/tracepath.8%{ext_man} %{buildroot}%{_mandir}/man8/tracepath6.8%{ext_man}
 
+# Install service files and create rc compat symling
+install -Dpm 0644 %_vpath_builddir/rdisc.service %{buildroot}/%{_unitdir}
+install -Dpm 0644 %_vpath_builddir/rarpd@.service %{buildroot}/%{_unitdir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrarpd
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrdisc
+
 %if !0%{?usrmerged}
 # We still have reverse dependencies using /sbin/* or /bin/*
 # so keep these symlinks for now. They are slowly being fixed
@@ -75,6 +91,8 @@ ln -sf %{_mandir}/man8/tracepath.8%{ext_man} %{buildroot}%{_mandir}/man8/tracepa
 mkdir -p %{buildroot}/{bin,sbin}
 ln -sf %{_bindir}/arping       %{buildroot}/bin
 ln -sf %{_bindir}/clockdiff    %{buildroot}/bin
+ln -sf %{_sbindir}/rarpd        %{buildroot}/sbin
+ln -sf %{_sbindir}/rdisc        %{buildroot}/sbin
 ln -sf %{_bindir}/ping          %{buildroot}/bin
 ln -sf %{_bindir}/ping6         %{buildroot}/bin
 ln -sf %{_bindir}/tracepath     %{buildroot}/bin
@@ -83,11 +101,33 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 
 %find_lang %{name}
 
+%pre
+%service_add_pre rdisc.service
+
 %post
+%service_add_post rdisc.service
 %set_permissions %{_bindir}/clockdiff
 
 %verifyscript
 %verify_permissions -e %{_bindir}/clockdiff
+
+%preun
+%service_del_preun rdisc.service
+
+%postun
+%service_del_postun rdisc.service
+
+%pre -n rarpd
+%service_add_pre rarpd@.service
+
+%post -n rarpd
+%service_add_post rarpd@.service
+
+%preun -n rarpd
+%service_del_preun rarpd@.service
+
+%postun -n rarpd
+%service_del_postun rarpd@.service
 
 %files -f %{name}.lang
 %license LICENSE
@@ -95,21 +135,35 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 %verify(not mode caps) %attr(0755,root,root) %{_bindir}/clockdiff
 %verify(not mode caps) %attr(0755,root,root) %{_bindir}/ping
 %{_bindir}/ping6
+%{_sbindir}/rcrdisc
+%{_sbindir}/rdisc
 %{_bindir}/tracepath
 %{_bindir}/tracepath6
+%{_unitdir}/rdisc.service
 
 %if !0%{?usrmerged}
 /bin/arping
 /bin/clockdiff
 /bin/ping
 /bin/ping6
+/sbin/rdisc
 /bin/tracepath
 /bin/tracepath6
 %endif
 %{_mandir}/man8/arping.8%{?ext_man}
 %{_mandir}/man8/clockdiff.8%{?ext_man}
 %{_mandir}/man8/ping.8%{?ext_man}
+%{_mandir}/man8/rdisc.8%{?ext_man}
 %{_mandir}/man8/tracepath.8%{?ext_man}
 %{_mandir}/man8/tracepath6.8%{?ext_man}
+
+%files -n rarpd
+%{_sbindir}/rarpd
+%{_unitdir}/rarpd@.service
+%{_sbindir}/rcrarpd
+%if !0%{?usrmerged}
+/sbin/rarpd
+%endif
+%{_mandir}/man8/rarpd.8%{?ext_man}
 
 %changelog
