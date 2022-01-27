@@ -1,7 +1,7 @@
 #
-# spec file for package patterns-openSUSE
+# spec file for package patterns-games
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_with betatest
 
 Name:           patterns-games
-Version:        20170319
+Version:        20220126
 Release:        0
 Summary:        Patterns for Installation (Games)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
-
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -36,6 +35,8 @@ of the installation source setup.  Installation of this package does
 not make sense.
 
 This particular package contains the Games patterns.
+
+
 
 ################################################################################
 
@@ -53,7 +54,6 @@ Suggests:       frozen-bubble
 Suggests:       armagetron
 Suggests:       circuslinux
 Suggests:       csmash
-Suggests:       solarwolf
 
 %description games
 A collection of games.
