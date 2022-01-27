@@ -1065,4 +1065,20 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 932207 from jsegitz)</comment>
     <requestid>932215</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>0efe678a6ae8b89643dca6f3a703ad46</srcmd5>
+    <version>8.17.1</version>
+    <time>1643321777</time>
+    <user>dimstar_suse</user>
+    <comment>- No snapshots
+
+- Update to final version sendmail 8.17.1
+  * Several potential memory leaks and other similar problems
+    (mostly in error handling code) have been fixed.
+     Problems reported by Tomas Korbar of RedHat.
+- Port patches to new version
+  * sendmail-8.14.7-select.dif
+  * sendmail-8.17.1.dif</comment>
+    <requestid>948986</requestid>
+  </revision>
 </revisionlist>

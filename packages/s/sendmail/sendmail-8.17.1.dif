@@ -1050,7 +1050,7 @@
 +The symbolic link to the statistics file.
  .PD
  .SH SEE ALSO
- mailq(1), 
+ mailq(1),
 --- makemap/makemap.8
 +++ makemap/makemap.8	2021-06-25 09:35:31.651098338 +0000
 @@ -52,12 +52,6 @@ selected using the

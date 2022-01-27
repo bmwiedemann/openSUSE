@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 25 10:10:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- No snapshots
+
+-------------------------------------------------------------------
+Tue Jan 18 09:34:48 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to final version sendmail 8.17.1
+  * Several potential memory leaks and other similar problems
+    (mostly in error handling code) have been fixed.
+     Problems reported by Tomas Korbar of RedHat.
+- Port patches to new version
+  * sendmail-8.14.7-select.dif
+  * sendmail-8.17.1.dif
+
+-------------------------------------------------------------------
 Tue Nov 16 15:35:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
