@@ -63,4 +63,28 @@
     <comment>update (forwarded request 896515 from mschnitzer)</comment>
     <requestid>896524</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f0624aee638f2b02ca0f4a56306fb7cf</srcmd5>
+    <version>2.7.1</version>
+    <time>1643321787</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.7.1
+ see installed CHANGELOG.md
+  ### 2.7.1 / 2021-10-20
+  
+  #### Packaging
+  
+  A test artifact that has been included in the gem was being flagged by some users' security scanners because it wasn't a real tarball. That artifact has been updated to be a real tarball. [#108]
+  
+  
+  ### 2.7.0 / 2021-08-31
+  
+  ### Added
+  
+  The commands used for &quot;make&quot;, &quot;compile&quot;, and &quot;cmake&quot; are configurable via keyword arguments. [#107] (Thanks, @cosmo0920!)
+  
+  
+</comment>
+    <requestid>949112</requestid>
+  </revision>
 </revisionlist>
