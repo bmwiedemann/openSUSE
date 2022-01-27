@@ -1,7 +1,7 @@
 #
 # spec file for package SVT-AV1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %define sover 0
 Name:           SVT-AV1
-Version:        0.8.7
+Version:        0.9.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
-License:        BSD-2-Clause-Patent
+License:        BSD-3-Clause-Clear
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.com/AOMediaCodec/SVT-AV1
 Source:         https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v%{version}/SVT-AV1-v%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5.1
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 5.4.0
 BuildRequires:  help2man
-BuildRequires:  pkg-config
-BuildRequires:  yasm
+BuildRequires:  pkgconfig
+BuildRequires:  yasm >= 1.2.0
 ExclusiveArch:  x86_64
 
 %description
@@ -103,18 +103,18 @@ cp -a Docs README.md "$b/"
 %postun -n libSvtAv1Enc%{sover} -p /sbin/ldconfig
 
 %files -n libSvtAv1Dec%{sover}
-%license LICENSE.md
+%license LICENSE.md PATENTS.md
 %{_libdir}/libSvtAv1Dec.so.%{sover}*
 
 %files -n libSvtAv1Enc%{sover}
-%license LICENSE.md
+%license LICENSE.md PATENTS.md
 %{_libdir}/libSvtAv1Enc.so.%{sover}*
 
 %files
 %{_bindir}/SvtAv1DecApp
 %{_bindir}/SvtAv1EncApp
-%{_mandir}/man1/SvtAv1DecApp.1*
-%{_mandir}/man1/SvtAv1EncApp.1*
+%{_mandir}/man1/SvtAv1DecApp.1%{?ext_man}
+%{_mandir}/man1/SvtAv1EncApp.1%{?ext_man}
 %doc %{_defaultdocdir}/%{name}/
 
 %files devel
