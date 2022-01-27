@@ -703,4 +703,19 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
 - drop CVE-2021-3560.patch  (upstream) (forwarded request 936022 from dirkmueller)</comment>
     <requestid>936198</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>c1e092a48f7d64c8946efb03499ae03c</srcmd5>
+    <version>0.120</version>
+    <time>1643321785</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from mozjs to duktape:
+  * Add duktape-support.patch
+
+Provides the same features as with mozjs, but is *much* smaller both during
+build and runtime. Before, installing polkit needed 62.0 MiB, with this it's
+just 16.3 MiB. (Tested in an opensuse/tumbleweed container).
+
+I didn't encounter any errors while playing around with it in a Live CD. (forwarded request 949263 from favogt)</comment>
+    <requestid>949264</requestid>
+  </revision>
 </revisionlist>

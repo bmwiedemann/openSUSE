@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 26 11:44:35 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Switch from mozjs to duktape:
+  * Add duktape-support.patch
+
+-------------------------------------------------------------------
+Tue Jan 25 18:15:16 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Fixed pkexec Local Privilege Escalation aka pwnkit (CVE-2021-4034 bsc#1194568)
+  CVE-2021-4034-pkexec-fix.patch
+
+-------------------------------------------------------------------
 Mon Dec  6 10:27:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.120:

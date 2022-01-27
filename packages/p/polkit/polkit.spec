@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,10 @@ Patch2:         pkexec.patch
 Patch3:         polkit-keyinit.patch
 # adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
+# PATCH-FIX-UPSTREAM CVE-2021-4034-pkexec-fix.patch meissner@ -- bsc#1194568 VUL-0: CVE-2021-4034: polkit: pkexec Local Privilege Escalation aka pwnkit
+Patch5:         CVE-2021-4034-pkexec-fix.patch
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/polkit/polkit/-/commit/c7fc4e1b61f0fd82fc697c19c604af7e9fb291a2.patch, without .gitlab-ci.yml (not in the tarball)
+Patch6:         duktape-support.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
@@ -48,11 +52,11 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(duktape) >= 2.2.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(mozjs-78)
 BuildRequires:  pkgconfig(systemd)
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
@@ -146,6 +150,7 @@ export SUID_LDFLAGS="-z now -pie"
 	--enable-introspection \
 	--enable-examples \
 	--enable-libsystemd-login \
+	--with-duktape \
 	%{nil}
 %make_build libprivdir=%{_libexecdir}/polkit-1
 %sysusers_generate_pre %{SOURCE3} polkit system-user-polkitd.conf
