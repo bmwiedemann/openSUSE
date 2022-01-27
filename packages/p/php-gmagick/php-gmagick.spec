@@ -1,7 +1,7 @@
 #
 # spec file for package php-gmagick
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ URL:            https://pecl.php.net/package/gmagick
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
 Patch1:         ignore-test-GraphicsMagick-1.3.36.patch
+# PATCH-FIX-UPSTREAM: https://github.com/vitoc/gmagick/pull/54
+Patch2:         fix-param-order-in-test.patch
 BuildRequires:  %{php_name}-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  ghostscript-fonts-std
@@ -57,6 +59,7 @@ the GraphicsMagick API
 %if 0%{?suse_version} > 1500
 %patch1
 %endif
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden %(GraphicsMagick-config --cflags)"

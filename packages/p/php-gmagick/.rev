@@ -7,4 +7,12 @@
     <comment>Rename php7-gmagick to php-gmagick</comment>
     <requestid>873871</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3bfa15cdbb1ea40cf2019fb48c476204</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1643321824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949535</requestid>
+  </revision>
 </revisionlist>

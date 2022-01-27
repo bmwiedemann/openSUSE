@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 27 18:45:17 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix wrong parameter order in test
+  + fix-param-order-in-test.patch
+
+-------------------------------------------------------------------
 Wed Feb 17 10:58:41 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner.
