@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:53:49 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- ser2net 4.3.5:
+  * Yet another quick release. gcc-11 and the new sctp library
+    threw some curve balls, so those needed to be handled.
+    No functional changes, just compile and bug fixes related to
+    the new compiler and library.
+
+-------------------------------------------------------------------
 Sat Dec 11 13:29:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ser2net 4.3.4:
