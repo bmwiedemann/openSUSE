@@ -1,7 +1,7 @@
 #
 # spec file for package QTalarm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define  _name  qtalarm
 Name:           QTalarm
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        A handy alarm clock Program written in QT
 License:        GPL-3.0-only
