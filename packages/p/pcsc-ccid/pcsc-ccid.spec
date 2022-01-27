@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-ccid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           pcsc-ccid
 %define _name ccid
-Version:        1.4.36
+Version:        1.5.0
 Release:        0
 Summary:        PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader
 License:        LGPL-2.1-or-later
