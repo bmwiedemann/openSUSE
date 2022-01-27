@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.6
+Version:        0.4.7
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,8 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-policy-node-schedule-rescan-without-timeout-if-defined-target-is-not-found.patch
-Patch1:         0002-policy-node-find-best-linkable-if-default-one-cannot-be-linked.patch
+Patch0:         0001-default-nodes-handle-nodes-without-Routes.patch
+
 Patch100:       reduce-meson-required-version.patch
 # docs
 BuildRequires:  doxygen

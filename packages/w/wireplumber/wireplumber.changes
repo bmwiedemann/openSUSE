@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 25 15:08:59 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.4.7:
+  * Fixed a regression in 0.4.6 that caused the selection of the
+    default audio sources and sinks to be delayed until some event,
+    which effectively caused losing audio output in many
+    circumstances (glfo#pipewire/wireplumber#148,
+    glfo#pipewire/wireplumber#150, glfo#pipewire/wireplumber#151,
+    glfo#pipewire/wireplumber#153)
+  * Fixed a regression in 0.4.6 that caused the echo-cancellation
+    pipewire module (and possibly others) to not work
+  * A default sink or source is now not selected if there is no
+    available route for it (glfo#pipewire/wireplumber#145)
+  * Fixed an issue where some clients would wait for a bit while
+    seeking (glfo#pipewire/wireplumber#146)
+  * Fixed audio capture in the endpoints-based policy
+  * Fixed an issue that would cause certain lua scripts to error
+    out with older configuration files
+    (glfo#pipewire/wireplumber#158)
+- Drop patches already included upstream:
+  * 0001-policy-node-schedule-rescan-without-timeout-if-defined-target-is-not-found.patch
+  * 0002-policy-node-find-best-linkable-if-default-one-cannot-be-linked.patch
+- Add patch from upstream to fix selection of Pro Audio nodes
+  as default nodes:
+  * 0001-default-nodes-handle-nodes-without-Routes.patch
+
+-------------------------------------------------------------------
 Mon Jan 10 09:50:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Reformat .changes file to limit lines to 67 chars when possible.
