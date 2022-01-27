@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 27 11:27:19 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Replace use of PackageSystem with Package to avoid core dumps;
+  (bsc#1195182).
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
