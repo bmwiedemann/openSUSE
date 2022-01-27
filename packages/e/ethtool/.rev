@@ -594,4 +594,12 @@ sfc.c and stmmac.c have GPL-2.0 licenses (forwarded request 95755 from babelworx
     <comment>update to upstream release 5.15</comment>
     <requestid>930648</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>cd9963d948f7523d8cd887dc6c674c55</srcmd5>
+    <version>5.16</version>
+    <time>1643321788</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>949144</requestid>
+  </revision>
 </revisionlist>

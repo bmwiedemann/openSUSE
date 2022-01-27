@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 18 23:36:15 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 5.16
+  * Feature: use memory maps for module EEPROM parsing (-m)
+  * Feature: show CMIS diagnostic information (-m)
+  * Fix: fix dumping advertised FEC modes (--show-fec)
+  * Fix: ignore cable test notifications from other devices
+    (--cable-test)
+  * Fix: do not show duplicate options in help text (--help)
+
+-------------------------------------------------------------------
 Tue Nov  9 20:24:51 UTC 2021 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 5.15
