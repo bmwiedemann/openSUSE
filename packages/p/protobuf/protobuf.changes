@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 24 13:08:10 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.19.3:
+  C++:
+    * Make proto2::Message::DiscardUnknownFields() non-virtual
+    * Separate RepeatedPtrField into its own header file
+    * For default floating point values of 0, consider all bits significant
+    * Fix shadowing warnings 
+    * Fix for issue #8484, constant initialization doesn't compile in msvc clang-cl environment 
+  Java:
+    * Improve performance characteristics of UnknownFieldSet parsing
+    * For default floating point values of 0, consider all bits significant
+    * Annotate //java/com/google/protobuf/util/... with nullness annotations
+    * Use ArrayList copy constructor 
+  Bazel:
+    * Ensure that release archives contain everything needed for Bazel
+    * Align dependency handling with Bazel best practices
+  Javascript:
+    * Fix ReferenceError: window is not defined when getting the global object 
+  Ruby:
+    * Fix memory leak in MessageClass.encode 
+    * Override Map.clone to use Map's dup method 
+    * Ruby: build extensions for arm64-darwin 
+    * Add class method Timestamp.from_time to ruby well known types 
+    * Adopt pure ruby DSL implementation for JRuby 
+    * Add size to Map class
+    * Fix for descriptor_pb.rb: google/protobuf should be required first 
+  Python:
+    * Proto2 DecodeError now includes message name in error message
+    * Make MessageToDict convert map keys to strings
+    * Add python-requires in setup.py 
+    * Add python 3.10 
+
+-------------------------------------------------------------------
 Wed Jul 28 08:00:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Remove two build requires that are not needed
