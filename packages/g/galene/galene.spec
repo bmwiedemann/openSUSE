@@ -1,7 +1,7 @@
 #
 # spec file for package galene
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT

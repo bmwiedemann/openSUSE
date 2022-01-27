@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 27 18:08:56 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.4.3
+  * Fix a locking issue that could cause a deadlock when massive numbers
+    of clients join at the same time.
+  * Add support for displaying raised hands.
+  * Update the MIME type for AV1 to track recent browsers.
+  * Avoid overflow during rate estimation.
+  * More fixes to the disk writer.
+
+-------------------------------------------------------------------
 Wed Dec 01 23:58:29 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.4.2:
