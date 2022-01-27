@@ -1430,7 +1430,6 @@ unsorted:
   - brasero 
   - brasero-devel 
   - brasero-lang 
-  - brasero-nautilus 
   - breeze5-icons-rcc 
   - breeze5-wallpapers: [i586] 
   - breezy 
@@ -2677,6 +2676,7 @@ unsorted:
   - dapl-devel 
   - dapl-devel-32bit: [x86_64] 
   - dapl-utils 
+  - dapper 
   - daps 
   - darktable: [x86_64] 
   - darktable-tools-basecurve: [x86_64] 
@@ -3005,6 +3005,7 @@ unsorted:
   - docker-kubic-fish-completion: [x86_64] 
   - docker-kubic-kubeadm-criconfig: [x86_64] 
   - docker-kubic-zsh-completion: [x86_64] 
+  - docker-lock 
   - docker-machine-driver-kvm2: [x86_64] 
   - docker-zsh-completion 
   - docker_auth 
@@ -7812,8 +7813,13 @@ unsorted:
   - jzlib-javadoc 
   - k0sctl 
   - k3b-devel 
+  - k3d 
+  - k3d-bash-completion 
+  - k3d-fish-completion 
+  - k3d-zsh-completion 
   - k3s 
   - k3s-install 
+  - k3s-selinux 
   - k3sup 
   - k8s-sidecar 
   - kColorPicker-devel 
@@ -8195,6 +8201,7 @@ unsorted:
   - konqueror-devel 
   - konqueror-lang 
   - konqueror-plugins 
+  - konstraint 
   - kontactinterface-devel 
   - kontrast 
   - kontrast-lang 
@@ -8287,6 +8294,7 @@ unsorted:
   - ktnef-devel 
   - ktoblzcheck 
   - ktoblzcheck-devel 
+  - ktop 
   - ktorrent 
   - ktorrent-lang 
   - ktp-accounts-kcm 
@@ -8315,8 +8323,10 @@ unsorted:
   - ktp-text-ui-lang 
   - ktuberling 
   - ktuberling-lang 
+  - kube-no-trouble 
   - kube-prometheus-k8s-yaml: [i586] 
   - kube-prometheus-sources 
+  - kubectl-neat 
   - kubectx 
   - kubens 
   - kuberlr: [i586] 
@@ -8385,6 +8395,7 @@ unsorted:
   - kubernetes1.23-proxy: [x86_64] 
   - kubernetes1.23-scheduler: [x86_64] 
   - kubetap 
+  - kubeval 
   - kubevirt-container-disk: [x86_64] 
   - kubevirt-manifests: [x86_64] 
   - kubevirt-tests: [x86_64] 
@@ -13038,8 +13049,7 @@ unsorted:
   - libqmi-devel 
   - libqmmp-devel 
   - libqmmp-plugins 
-  - libqmmp1 
-  - libqmmp1-32bit: [x86_64] 
+  - libqmmp2 
   - libqoauth2 
   - libqobs-devel 
   - libqobs2 
@@ -17897,6 +17907,7 @@ unsorted:
   - okteta-devel 
   - okteta-part 
   - okteta-part-lang 
+  - okteto 
   - okular-devel 
   - okular-mobile 
   - olm-devel 
@@ -20555,6 +20566,7 @@ unsorted:
   - pluma 
   - pluma-devel 
   - pluma-lang 
+  - pluto 
   - plymouth-branding-upstream 
   - plymouth-devel 
   - plymouth-plugin-fade-throbber 
@@ -20658,6 +20670,7 @@ unsorted:
   - poezio-doc 
   - poke 
   - poke-devel 
+  - polaris 
   - policycoreutils-devel 
   - policycoreutils-newrole 
   - polkit-devel 
@@ -20667,6 +20680,7 @@ unsorted:
   - polylib-devel 
   - pommed 
   - pongix 
+  - popeye 
   - poppler-data 
   - poppler-data-devel 
   - popt-devel 
@@ -21713,6 +21727,7 @@ unsorted:
   - python310-PyBrowserID 
   - python310-PyChart 
   - python310-PyChromecast 
+  - python310-PyCondor 
   - python310-PyDispatcher 
   - python310-PyFxA 
   - python310-PyGithub 
@@ -21821,6 +21836,7 @@ unsorted:
   - python310-Yapsy 
   - python310-ZConfig 
   - python310-ZConfig-doc 
+  - python310-ZODB 
   - python310-abclient 
   - python310-abimap 
   - python310-abimap-doc 
@@ -22461,6 +22477,7 @@ unsorted:
   - python310-cryptography 
   - python310-cryptography-vectors 
   - python310-css-html-js-minify 
+  - python310-css-parser 
   - python310-csscompressor 
   - python310-cssselect 
   - python310-cssselect2 
@@ -24657,6 +24674,7 @@ unsorted:
   - python310-zignal 
   - python310-zipp 
   - python310-zipstream 
+  - python310-zodbpickle 
   - python310-zope.cachedescriptors 
   - python310-zope.component 
   - python310-zope.configuration 
@@ -24686,10 +24704,8 @@ unsorted:
   - python36-32bit: [x86_64] 
   - python36-APScheduler: [x86_64] 
   - python36-Flask-Security-Too 
-  - python36-PyCondor 
   - python36-PyRSS2Gen 
   - python36-ZEO 
-  - python36-ZODB 
   - python36-acitoolkit 
   - python36-adblock 
   - python36-autoflake 
@@ -24699,7 +24715,6 @@ unsorted:
   - python36-compileall2 
   - python36-coverage-config-reload-plugin 
   - python36-coverage-env-plugin 
-  - python36-css-parser 
   - python36-curses 
   - python36-dbm 
   - python36-demjson 
@@ -24767,7 +24782,6 @@ unsorted:
   - python36-whitenoise 
   - python36-wstools 
   - python36-xdis 
-  - python36-zodbpickle 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -31507,6 +31521,9 @@ unsorted:
   - rainbow-zsh-completion 
   - rakudo 
   - raleway-fonts 
+  - rancher-cli 
+  - rancher-kim 
+  - rancher-selinux 
   - rang-devel 
   - range-v3-devel 
   - ranger 
@@ -31694,6 +31711,7 @@ unsorted:
   - rinetd 
   - rinstall 
   - rinutils-devel 
+  - rio 
   - ripgrep 
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
@@ -31703,6 +31721,7 @@ unsorted:
   - rkdeveloptool 
   - rke 
   - rke2 
+  - rke2-selinux 
   - rkhunter 
   - rkward 
   - rlwrap 
@@ -32653,6 +32672,7 @@ unsorted:
   - sitar 
   - sitecopy 
   - sitecopy-lang 
+  - skaffold 
   - skelcd-control-Kubic 
   - skelcd-control-MicroOS 
   - skelcd-control-openSUSE 
@@ -32976,6 +32996,7 @@ unsorted:
   - staging-build-key 
   - stalonetray 
   - stan 
+  - starboard 
   - stardict 
   - stardict-dic-enru-engcom 
   - stardict-dic-enru-mueller7 
@@ -42048,7 +42069,7 @@ unsorted:
   - typelib-1_0-UMockdev-1_0 
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Urfkill-0_0 
-  - typelib-1_0-Vips-8_10 
+  - typelib-1_0-Vips-8_12 
   - typelib-1_0-Vte-2.91 
   - typelib-1_0-WebKit2-5_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
@@ -42352,6 +42373,7 @@ unsorted:
   - ved 
   - velero 
   - velero-plugin-for-aws 
+  - velero-plugin-for-csi 
   - velero-plugin-for-gcp 
   - velero-plugin-for-microsoft-azure 
   - velocity 
@@ -42439,6 +42461,7 @@ unsorted:
   - vino 
   - vino-lang 
   - vips-doc 
+  - vips-modules-8.12 
   - vips-tools 
   - virglrenderer-devel 
   - virglrenderer-test-server 
