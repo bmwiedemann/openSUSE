@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,22 +24,22 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.12.5
+Version:        1.13.1
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%define rb_build_versions ruby25 ruby26
-%define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+%define rb_build_versions  ruby27     ruby30
+%define rb_build_ruby_abis ruby:2.7.0 ruby:3.0.0
 %endif
-BuildRequires:  %{rubygem mini_portile2:2.6}
+BuildRequires:  %{rubygem mini_portile2 >= 2.7}
 BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.5.0}
+BuildRequires:  %{rubydevel >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
@@ -68,7 +68,20 @@ xerces (Java).
 %install
 # MANUAL
 %gem_unpack
-sed -i -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+perl -p -i.back -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+diff -urN %{mod_full_name}.gemspec{.back,} ||:
+rm -f %{mod_full_name}.gemspec.back
+
+MINI_PORTILE2_VERSION="2.7.0"
+
+if grep -q "~> ${MINI_PORTILE2_VERSION}" ext/nokogiri/extconf.rb ; then
+  perl -p -i.back -e 's/~> ${MINI_PORTILE2_VERSION}/>= ${MINI_PORTILE2_VERSION}/g' ext/nokogiri/extconf.rb
+  diff -urN ext/nokogiri/extconf.rb{.back,} ||:
+  rm -f ext/nokogiri/extconf.rb.back
+else
+  echo "Check which version of mini_portile2 we need to build nokogiri now"
+  exit 1
+fi
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 cd ..

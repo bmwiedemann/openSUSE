@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Tue Jan 25 18:12:51 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.13.1
+  - Fixed
+    - Fix Nokogiri::XSLT.quote_params regression in v1.13.0 that
+      raised an exception when non-string stylesheet parameters
+      were passed. Non-string parameters (e.g., integers and
+      symbols) are now explicitly supported and both keys and
+      values will be stringified with #to_s. [#2418]
+    - Fix CSS selector query regression in v1.13.0 that raised an
+      Nokogiri::XML::XPath::SyntaxError when parsing XPath
+      attributes mixed into the CSS query. Although this mash-up of
+      XPath and CSS syntax previously worked unintentionally, it is
+      now an officially supported feature and is documented as
+      such. [#2419]
+- Changes from 1.13.0
+  - This release ends support for:
+    - Ruby 2.5, for which official support ended 2021-03-31.
+    - JRuby 9.2, which is a Ruby 2.5-compatible release.
+    - Faster, more reliable installation: Native Gem for ARM64 Linux
+
+  - This version of Nokogiri ships experimental native gem support
+    for the aarch64-linux platform, which should support AWS
+    Graviton and other ARM Linux platforms. We don't yet have CI
+    running for this platform, and so we're interested in hearing
+    back from y'all whether this is working, and what problems
+    you're seeing. Please send us feedback here: Feedback: Have you
+    used the aarch64-linux native gem?
+
+  - Publishing
+    - This version of Nokogiri opts-in to the "MFA required to publish"
+      setting on Rubygems.org. This and all future Nokogiri gem files
+      must be published to Rubygems by an account with multi-factor
+      authentication enabled. This should provide some additional
+      protection against supply-chain attacks.
+
+      A related discussion about Trust exists at #2357 in which I
+      invite you to participate if you have feelings or opinions on
+      this topic.
+
+  - Dependencies
+    - [CRuby] Vendored libiconv is updated from 1.15 to 1.16. (Note
+      that libiconv is only redistributed in the native windows and
+      native darwin gems, see LICENSE-DEPENDENCIES.md for more
+      information.) [#2206]
+    - [CRuby] Upgrade mini_portile2 dependency from ~> 2.6.1 to ~>
+      2.7.0. ("ruby" platform gem only.)
+  - Improved
+    - {XML,HTML4}::DocumentFragment constructors all now take an
+      optional parse options parameter or block (similar to
+      Document constructors). [#1692] (Thanks, @JackMc!)
+    - Nokogiri::CSS.xpath_for allows an XPathVisitor to be
+      injected, for finer-grained control over how CSS queries are
+      translated into XPath.
+    - [CRuby] XML::Reader#encoding will return the encoding
+      detected by the parser when it's not passed to the
+      constructor. [#980]
+    - [CRuby] Handle abruptly-closed HTML comments as recommended
+      by WHATWG. (Thanks to tehryanx for reporting!)
+    - [CRuby] Node#line is no longer capped at 65535. libxml v2.9.0
+      and later support a new parse option, exposed as
+      Nokogiri::XML::ParseOptions::PARSE_BIG_LINES, which is turned
+      on by default in ParseOptions::DEFAULT_{XML,XSLT,HTML,SCHEMA}
+      (Note that JRuby already supported large line numbers.)
+      [#1764, #1493, #1617, #1505, #1003, #533]
+    - [CRuby] If a cycle is introduced when reparenting a node
+      (i.e., the node becomes its own ancestor), a RuntimeError is
+      raised. libxml2 does no checking for this, which means cycles
+      would otherwise result in infinite loops on subsequent
+      operations. (Note that JRuby already did this.) [#1912]
+    - [CRuby] Source builds will download zlib and libiconv via
+      HTTPS. ("ruby" platform gem only.) [#2391] (Thanks,
+      @jmartin-r7!)
+    - [JRuby] Node#line behavior has been modified to return the
+      line number of the node in the final DOM structure. This
+      behavior is different from CRuby, which returns the node's
+      position in the input string. Ideally the two implementations
+      would be the same, but at least is now officially documented
+      and tested. The real-world impact of this change is that the
+      value returned in JRuby is greater by 1 to account for the
+      XML prolog in the output. [#2380] (Thanks, @dabdine!)
+  - Fixed
+    - CSS queries on HTML5 documents now correctly match foreign
+      elements (SVG, MathML) when namespaces are not specified in
+      the query. [#2376]
+    - XML::Builder blocks restore context properly when exceptions
+      are raised. [#2372] (Thanks, @ric2b and @rinthedev!)
+    - The Nokogiri::CSS::Parser cache now uses the XPathVisitor
+      configuration as part of the cache key, preventing incorrect
+      cache results from being returned when multiple XPathVisitor
+      options are being used.
+    - Error recovery from in-context parsing (e.g., Node#parse) now
+      always uses the correct DocumentFragment class. Previously
+      Nokogiri::HTML4::DocumentFragment was always used, even for
+      XML documents. [#1158]
+    - DocumentFragment#> now works properly, matching a CSS
+      selector against only the fragment roots. [#1857]
+    - XML::DocumentFragment#errors now correctly contains any
+      parsing errors encountered. Previously this was always empty.
+      (Note that HTML::DocumentFragment#errors already did this.)
+    - [CRuby] Fix memory leak in Document#canonicalize when
+      inclusive namespaces are passed in. [#2345]
+    - [CRuby] Fix memory leak in Document#canonicalize when an
+      argument type error is raised. [#2345]
+    - [CRuby] Fix memory leak in EncodingHandler where iconv
+      handlers were not being cleaned up. [#2345]
+    - [CRuby] Fix memory leak in XPath custom handlers where string
+      arguments were not being cleaned up. [#2345]
+    - [CRuby] Fix memory leak in Reader#base_uri where the string
+      returned by libxml2 was not freed. [#2347]
+    - [JRuby] Deleting a Namespace from a NodeSet no longer
+      modifies the href to be the default namespace URL.
+    - [JRuby] Fix XHTML formatting of closing tags for
+      non-container elements. [#2355]
+  - Deprecated
+    - Passing a Nokogiri::XML::Node as the second parameter to
+      Node.new is deprecated and will generate a warning. This
+      parameter should be a kind of Nokogiri::XML::Document. This
+      will become an error in a future version of Nokogiri. [#975]
+    - Nokogiri::CSS::Parser, Nokogiri::CSS::Tokenizer, and
+      Nokogiri::CSS::Node are now internal-only APIs that are no
+      longer documented, and should not be considered stable. With
+      the introduction of XPathVisitor injection into
+      Nokogiri::CSS.xpath_for there should be no reason to rely on
+      these internal APIs.
+    - CSS-to-XPath utility classes
+      Nokogiri::CSS::XPathVisitorAlwaysUseBuiltins and
+      XPathVisitorOptimallyUseBuiltins are deprecated. Prefer
+      Nokogiri::CSS::XPathVisitor with appropriate constructor
+      arguments. These classes will be removed in a future version
+      of Nokogiri.
+
+-------------------------------------------------------------------
+Tue Jan 25 17:08:25 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it build with newer mini_portile2 versions
+- make sure we also patch the required mini_portile2 version in the
+  build tool
+
+-------------------------------------------------------------------
 Sat Oct  9 09:12:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.12.5

@@ -16,14 +16,14 @@
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
 :preamble: |-
-  %if 0%{?suse_version} && 0%{?suse_version} < 1330
-  %define rb_build_versions ruby25 ruby26
-  %define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
+  %if 0%{?suse_version} && 0%{?suse_version} < 1550
+  %define rb_build_versions  ruby27     ruby30
+  %define rb_build_ruby_abis ruby:2.7.0 ruby:3.0.0
   %endif
+  BuildRequires:  %{rubygem mini_portile2 >= 2.7}
+  BuildRequires:  %{rubygem pkg-config}
   BuildRequires:  libxml2-devel >= 2.6.21
   BuildRequires:  libxslt-devel
-  BuildRequires:  %{rubygem pkg-config}
-  BuildRequires:  %{rubygem mini_portile2:2.6}
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
@@ -37,7 +37,20 @@
 # ## used by gem2rpm
 :pre_install: |-
   %gem_unpack
-  sed -i -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+  perl -p -i.back -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+  diff -urN %{mod_full_name}.gemspec{.back,} ||:
+  rm -f %{mod_full_name}.gemspec.back
+
+  MINI_PORTILE2_VERSION="2.7.0"
+
+  if grep -q "~> ${MINI_PORTILE2_VERSION}" ext/nokogiri/extconf.rb ; then
+    perl -p -i.back -e 's/~> ${MINI_PORTILE2_VERSION}/>= ${MINI_PORTILE2_VERSION}/g' ext/nokogiri/extconf.rb
+    diff -urN ext/nokogiri/extconf.rb{.back,} ||:
+    rm -f ext/nokogiri/extconf.rb.back
+  else
+    echo "Check which version of mini_portile2 we need to build nokogiri now"
+    exit 1
+  fi
   find -type f -print0 | xargs -0 touch -r %{S:0}
   %gem_build
   cd ..
