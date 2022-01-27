@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 13 10:55:58 MST 2022 - carnold@suse.com
+
+- bsc#1194576 - VUL-0: CVE-2022-23033: xen: arm:
+  guest_physmap_remove_page not removing the p2m mappings (XSA-393)
+  xsa393.patch
+- bsc#1194581 - VUL-0: CVE-2022-23034: xen: a PV guest could DoS
+  Xen while unmapping a grant (XSA-394)
+  xsa394.patch
+- bsc#1194588 - VUL-0: CVE-2022-23035: xen: insufficient cleanup of
+  passed-through device IRQs (XSA-395)
+  xsa395.patch
+
+-------------------------------------------------------------------
+Wed Jan 12 14:16:53 MST 2022 - carnold@suse.com
+
+- bsc#1191668 - L3: issue around xl and virsh operation - virsh
+  list not giving any output
+  libxl-dont-try-to-free-a-NULL-list-of-vcpus.patch
+  libxl-dont-touch-nr_vcpus_out-if-listing-vcpus-and-returning-NULL.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 10:47:10 MST 2022 - carnold@suse.com
 
 - bsc#1193307 - pci backend does not exist when attach a vf to a pv

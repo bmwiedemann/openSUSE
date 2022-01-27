@@ -1,0 +1,48 @@
+From 7ff58ab770157a03c92604155a0c745bcab834c2 Mon Sep 17 00:00:00 2001
+From: Julien Grall <jgrall@amazon.com>
+Date: Tue, 14 Dec 2021 09:53:44 +0000
+Subject: [PATCH] xen/arm: p2m: Always clear the P2M entry when the mapping is
+ removed
+
+Commit 2148a125b73b ("xen/arm: Track page accessed between batch of
+Set/Way operations") allowed an entry to be invalid from the CPU PoV
+(lpae_is_valid()) but valid for Xen (p2m_is_valid()). This is useful
+to track which page is accessed and only perform an action on them
+(e.g. clean & invalidate the cache after a set/way instruction).
+
+Unfortunately, __p2m_set_entry() is only zeroing the P2M entry when
+lpae_is_valid() returns true. This means the entry will not be zeroed
+if the entry was valid from Xen PoV but invalid from the CPU PoV for
+tracking purpose.
+
+As a consequence, this will allow a domain to continue to access the
+page after it was removed.
+
+Resolve the issue by always zeroing the entry if it the LPAE bit is
+set or the entry is about to be removed.
+
+This is CVE-2022-23033 / XSA-393.
+
+Fixes: 2148a125b73b ("xen/arm: Track page accessed between batch of Set/Way operations")
+Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+Signed-off-by: Julien Grall <jgrall@amazon.com>
+---
+ xen/arch/arm/p2m.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xen/arch/arm/p2m.c b/xen/arch/arm/p2m.c
+index 8b20b430777e..fb71fa4c1c90 100644
+--- a/xen/arch/arm/p2m.c
++++ b/xen/arch/arm/p2m.c
+@@ -1016,7 +1016,7 @@ static int __p2m_set_entry(struct p2m_domain *p2m,
+      * sequence when updating the translation table (D4.7.1 in ARM DDI
+      * 0487A.j).
+      */
+-    if ( lpae_is_valid(orig_pte) )
++    if ( lpae_is_valid(orig_pte) || removing_mapping )
+         p2m_remove_pte(entry, p2m->clean_pte);
+ 
+     if ( removing_mapping )
+-- 
+2.32.0
+

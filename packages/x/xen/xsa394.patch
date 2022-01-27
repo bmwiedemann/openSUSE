@@ -1,0 +1,63 @@
+From a8bdee7a30d0cd13341d2ca1753569b171daf5b8 Mon Sep 17 00:00:00 2001
+From: Julien Grall <jgrall@amazon.com>
+Date: Fri, 19 Nov 2021 11:27:47 +0000
+Subject: [PATCH] xen/grant-table: Only decrement the refcounter when grant is
+ fully unmapped
+
+The grant unmapping hypercall (GNTTABOP_unmap_grant_ref) is not a
+simple revert of the changes done by the grant mapping hypercall
+(GNTTABOP_map_grant_ref).
+
+Instead, it is possible to partially (or even not) clear some flags.
+This will leave the grant is mapped until a future call where all
+the flags would be cleared.
+
+XSA-380 introduced a refcounting that is meant to only be dropped
+when the grant is fully unmapped. Unfortunately, unmap_common() will
+decrement the refcount for every successful call.
+
+A consequence is a domain would be able to underflow the refcount
+and trigger a BUG().
+
+Looking at the code, it is not clear to me why a domain would
+want to partially clear some flags in the grant-table. But as
+this is part of the ABI, it is better to not change the behavior
+for now.
+
+Fix it by checking if the maptrack handle has been released before
+decrementing the refcounting.
+
+This is CVE-2022-23034 / XSA-394.
+
+Fixes: 9781b51efde2 ("gnttab: replace mapkind()")
+Signed-off-by: Julien Grall <jgrall@amazon.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+---
+ xen/common/grant_table.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/xen/common/grant_table.c b/xen/common/grant_table.c
+index 0262f2c48af8..ed1e2fabcea6 100644
+--- a/xen/common/grant_table.c
++++ b/xen/common/grant_table.c
+@@ -1488,8 +1488,15 @@ unmap_common(
+     if ( put_handle )
+         put_maptrack_handle(lgt, op->handle);
+ 
+-    /* See the respective comment in map_grant_ref(). */
+-    if ( rc == GNTST_okay && ld != rd && gnttab_need_iommu_mapping(ld) )
++    /*
++     * map_grant_ref() will only increment the refcount (and update the
++     * IOMMU) once per mapping. So we only want to decrement it once the
++     * maptrack handle has been put, alongside the further IOMMU update.
++     *
++     * For the second and third check, see the respective comment in
++     * map_grant_ref().
++     */
++    if ( put_handle && ld != rd && gnttab_need_iommu_mapping(ld) )
+     {
+         void **slot;
+         union maptrack_node node;
+-- 
+2.32.0
+

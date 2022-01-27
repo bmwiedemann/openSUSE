@@ -160,6 +160,9 @@ Patch2:         61b88e78-x86-CPUID-TSXLDTRK-definition.patch
 Patch3:         61bc429f-revert-hvmloader-PA-range-should-be-UC.patch
 Patch4:         61d5687a-x86-spec-ctrl-opt_srb_lock-default.patch
 # EMBARGOED security fixes
+Patch11:        xsa393.patch
+Patch12:        xsa394.patch
+Patch13:        xsa395.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
@@ -222,6 +225,8 @@ Patch467:       xenstore-run-in-studomain.patch
 Patch468:       libxl.helper_done-crash.patch
 Patch469:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 Patch470:       libxl-Fix-PV-hotplug-and-stubdom-coldplug.patch
+Patch471:       libxl-dont-try-to-free-a-NULL-list-of-vcpus.patch
+Patch472:       libxl-dont-touch-nr_vcpus_out-if-listing-vcpus-and-returning-NULL.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       migration-python3-conversion.patch

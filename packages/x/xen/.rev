@@ -2662,4 +2662,12 @@
     <comment>A new version of the fix for bsc#1193307 - pci backend does not exist when attach a vf to a pv guest</comment>
     <requestid>945654</requestid>
   </revision>
+  <revision rev="311" vrev="3">
+    <srcmd5>3ae4d56b3a2c436f8f741fc28fe1ccd4</srcmd5>
+    <version>4.16.0_04</version>
+    <time>1643321787</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance update</comment>
+    <requestid>949116</requestid>
+  </revision>
 </revisionlist>

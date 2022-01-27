@@ -1,0 +1,32 @@
+References: bsc#1191668, bsc#1194267
+
+If libxl_vcpu_list() returned NULL, we should not call
+libxl_numainfo_list_free() as:
+1) it'll fail trying to (double) free() *list
+2) there should be nothing to free anyway
+
+Signed-off-by: Dario Faggioli <dfaggioli@xxxxxxxx>
+Tested-by: James Fehlig <jfehlig@xxxxxxxx>
+---
+Cc: Wei Liu <wl@xxxxxxx>
+Cc: Anthony PERARD <anthony.perard@xxxxxxxxxx>
+Cc: Juergen Gross <jgross@xxxxxxxx>
+---
+ tools/libs/light/libxl_numa.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/libs/light/libxl_numa.c b/tools/libs/light/libxl_numa.c
+index a8a75f89e9..3679028c79 100644
+--- a/tools/libs/light/libxl_numa.c
++++ b/tools/libs/light/libxl_numa.c
+@@ -253,9 +253,9 @@ static int nr_vcpus_on_nodes(libxl__gc *gc, libxl_cputopology *tinfo,
+             }
+         }
+ 
++        libxl_vcpuinfo_list_free(vinfo, nr_dom_vcpus);
+  next:
+         libxl_cpupoolinfo_dispose(&cpupool_info);
+-        libxl_vcpuinfo_list_free(vinfo, nr_dom_vcpus);
+     }
+ 
+     libxl_bitmap_dispose(&dom_nodemap);
