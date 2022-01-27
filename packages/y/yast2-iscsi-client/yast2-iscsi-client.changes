@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 27 16:25:30 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- adjust to ruby 3.0 (bsc#1195226)
+- 4.4.3
+
+-------------------------------------------------------------------
 Thu Jul 22 08:30:10 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Add iscsi support for qedi/qede offload cards
