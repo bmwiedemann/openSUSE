@@ -17,7 +17,7 @@
 
 
 Name:           yast2-security
-Version:        4.4.8
+Version:        4.4.10
 Release:        0
 Summary:        YaST2 - Security Configuration
 License:        GPL-2.0-only
@@ -37,8 +37,8 @@ BuildRequires:  yast2-pam >= 4.3.1
 BuildRequires:  yast2-bootloader
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.2.5
-# CFA::SysctlConfig
-BuildRequires:  yast2 >= 4.2.66
+# Replace PackageSystem with Package
+BuildRequires:  yast2 >= 4.4.38
 # CFA::Selinux
 BuildRequires:  augeas-lenses
 # Y2Storage::StorageManager
@@ -52,8 +52,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake-ci)
 
 # new Pam.ycp API
 Requires:       yast2-pam >= 2.14.0
-# CFA::SysctlConfig
-Requires:       yast2 >= 4.2.66
+# Replace PackageSystem with Package
+Requires:       yast2 >= 4.4.38
 Requires:       yast2-ruby-bindings >= 1.0.0
 # Pam.List
 Requires:       yast2-pam >= 4.3.1
