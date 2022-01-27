@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 21 16:17:55 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add some conditionals to build as many plugins as possible
+  in SLE-15-SP4 and move all conditional logic to the beginning
+  of the spec file using bcond_with/without.
+
+-------------------------------------------------------------------
 Mon Jan 17 13:26:13 UTC 2022 - zaitor@opensuse.org
 
 - Drop conditionals for fdk_aac, explicitly add fdk-aac-free-devel
@@ -193,7 +200,7 @@ Tue Oct 27 16:41:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.1:
   + Highlighted bugfixes in 1.18.1
-    - important security fixes
+    - important security fixes (bsc#1181255, CVE-2021-3185)
     - bug fixes and memory leak fixes
     - various stability and reliability improvements
   + gst-plugins-bad changes:

@@ -24,6 +24,36 @@
 %bcond_with faac
 %bcond_with faad
 
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
+%bcond_without avtp
+%bcond_without bs2b
+%bcond_without zbar
+%else
+%bcond_with avtp
+%bcond_with bs2b
+%bcond_with zbar
+%endif
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%bcond_without fdk_aac
+%else
+%bcond_with fdk_aac
+%endif
+
+%if 0%{?is_opensuse}
+%bcond_without fluidsynth
+%bcond_without openjp2
+%else
+%bcond_with fluidsynth
+%bcond_with openjp2
+%endif
+
+%if 0%{?suse_version} >= 1550 || (0%{?is_opensuse} && 0%{?sle_version} >= 150400)
+%bcond_without zxing
+%else
+%bcond_with zxing
+%endif
+
 Name:           gstreamer-plugins-bad
 Version:        1.18.5
 Release:        0
@@ -38,9 +68,10 @@ Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 2564.patch dimstar@opensuse.org -- Allow build against neon 0.32.x
 Patch0:         https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/2564.patch
-
+%if %{with fdk_aac}
 # Not using pkgconfig(fdk-aac) but explitcitly the modified fdk-aac-free-devel
 BuildRequires:  fdk-aac-free-devel >= 0.1.4
+%endif
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
@@ -56,13 +87,17 @@ BuildRequires:  python3-xml
 BuildRequires:  shaderc
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(aom)
+%if %{with avtp}
 BuildRequires:  pkgconfig(avtp)
+%endif
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dirac) >= 0.10
 BuildRequires:  pkgconfig(egl)
+%if %{with fluidsynth}
 BuildRequires:  pkgconfig(fluidsynth)
+%endif
 BuildRequires:  pkgconfig(gio-2.0) >= 2.25.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
@@ -114,7 +149,9 @@ BuildRequires:  pkgconfig(xcb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(zvbi-0.2)
+%if %{with zxing}
 BuildRequires:  pkgconfig(zxing)
+%endif
 Requires(post): glib2-tools
 Requires(postun):glib2-tools
 # FIXME! - this leads to unresolvables currently
@@ -138,16 +175,18 @@ BuildRequires:  pkgconfig(wayland-egl) >= 9.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.4
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
 %endif
-%if 0%{?is_opensuse}
+%if %{with bs2b}
 BuildRequires:  libbs2b-devel
-BuildRequires:  pkgconfig(fluidsynth)
+%endif
+%if %{with openjp2}
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(openal)
+%endif
+%if %{with zbar}
 BuildRequires:  pkgconfig(zbar) >= 0.9
+%endif
 BuildRequires:  pkgconfig(zvbi-0.2)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.4.0
-%endif
 %endif
 %ifarch x86_64
 BuildRequires:  pkgconfig(libmfx)
@@ -195,12 +234,14 @@ Group:          Productivity/Multimedia/Other
 %description chromaprint
 Add chromaprint (Audio Fingerprinting) support to any GStreamer based tool.
 
+%if %{with fluidsynth}
 %package fluidsynth
 Summary:        Fluidsynth plugin for GStreamer
 Group:          Productivity/Multimedia/Other
 
 %description fluidsynth
 Add fluidsynth midi support to any GStreamer based tool.
+%endif
 
 %package -n libgstadaptivedemux-1_0-0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
@@ -396,7 +437,7 @@ Requires:       typelib-1_0-GstWebRTC-1_0 = %{version}
 %if 0%{?suse_version} >= 1500
 Requires:       libgstwayland-1_0-0 = %{version}
 %endif
-%if 0%{?is_opensuse}
+%if %{with fluidsynth}
 Requires:       gstreamer-plugins-bad-fluidsynth
 %endif
 
@@ -579,17 +620,35 @@ export PYTHON=%{_bindir}/python3
 %else
 	-Dopenh264=enabled \
 %endif
+%if %{without avtp}
+	-Davtp=disabled \
+%endif
 %if %{without faac}
 	-Dfaac=disabled \
 %endif
 %if %{without faad}
 	-Dfaad=disabled \
 %endif
+%if %{without fdk_aac}
+	-Dfdkaac=disabled \
+%endif
 	-Ddirectfb=disabled \
 	-Ddoc=disabled \
 	-Dexamples=disabled \
 	-Dfestival=disabled \
 	-Dflite=disabled \
+%if %{without fluidsynth}
+        -Dfluidsynth=disabled \
+%endif
+%if %{without openjp2}
+        -Dopenjpeg=disabled \
+%endif
+%if %{without zxing}
+        -Dzxing=disabled \
+%endif
+%if %{without zbar}
+        -Dzbar=disabled \
+%endif
 	-Dhls-crypto=openssl \
 	-Dintrospection=enabled \
 	-Diqa=disabled \
@@ -686,7 +745,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiomixmatrix.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiovisualizers.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstautoconvert.so
+%if %{with avtp}
 %{_libdir}/gstreamer-%{gst_branch}/libgstavtp.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstbayer.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstbluez.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstbz2.so
@@ -706,7 +767,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdspu.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaceoverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfbdevsink.so
+%if %{with fdk_aac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstfieldanalysis.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfreeverb.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfrei0r.so
@@ -781,25 +844,34 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvulkan.so
 %if 0%{?suse_version} >= 1500
 %{_libdir}/gstreamer-%{gst_branch}/libgstlv2.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstopenal.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenmpt.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwaylandsink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtc.so
 %endif
+%if %{with zxing}
 %{_libdir}/gstreamer-%{gst_branch}/libgstzxing.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtcdsp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsty4mdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstuvch264.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebp.so
 
 # Explicitly list openSUSE only plugins
-%if 0%{?is_opensuse}
+%if %{with bs2b}
 %{_libdir}/gstreamer-%{gst_branch}/libgstbs2b.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstopenal.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstopenjpeg.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstteletext.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstzbar.so
+%endif
 
+%if %{with openjp2}
+%{_libdir}/gstreamer-%{gst_branch}/libgstopenjpeg.so
+%endif
+%{_libdir}/gstreamer-%{gst_branch}/libgstteletext.so
+%if %{with zbar}
+%{_libdir}/gstreamer-%{gst_branch}/libgstzbar.so
+%endif
+
+%if %{with fluidsynth}
 %files fluidsynth
 %{_libdir}/gstreamer-%{gst_branch}/libgstfluidsynthmidi.so
 %endif
