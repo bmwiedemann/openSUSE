@@ -23,7 +23,7 @@
 %global test_hwinfo 0
 
 Name:           suseconnect-ng
-Version:        0.0.5~git0.bbb5544
+Version:        0.0.6~git0.77933db
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -127,11 +127,10 @@ ln -s %_bindir/suseconnect %buildroot/usr/lib/zypper/commands/zypper-search-pack
 install -D -m0755 %_builddir/go/lib/libsuseconnect.so %buildroot/%_libdir/libsuseconnect.so
 install -d -m0755 %buildroot/%_libdir/ruby/vendor_ruby/%rb_ver
 cp -r %_builddir/go/src/%import_path/yast/lib/* %buildroot/%_libdir/ruby/vendor_ruby/%rb_ver
-#TODO man pages not yet available in source, these are the names frome the ruby version
-#/usr/share/man/man5/SUSEConnect.5.gz
-#/usr/share/man/man8/SUSEConnect.8.gz
-#/usr/share/man/man8/zypper-migration.8.gz
-#/usr/share/man/man8/zypper-search-packages.8.gz
+install -D -m 644 %_builddir/go/src/%import_path/man/SUSEConnect.5 %buildroot/%_mandir/man5/SUSEConnect.5
+install -D -m 644 %_builddir/go/src/%import_path/man/SUSEConnect.8 %buildroot/%_mandir/man8/SUSEConnect.8
+install -D -m 644 %_builddir/go/src/%import_path/man/zypper-migration.8 %buildroot/%_mandir/man8/zypper-migration.8
+install -D -m 644 %_builddir/go/src/%import_path/man/zypper-search-packages.8 %buildroot/%_mandir/man8/zypper-search-packages.8
 
 find %_builddir/..
 # we currently do not ship the source for any go module
@@ -149,6 +148,8 @@ make -C %_builddir/go/src/%import_path gofmt
 %_bindir/SUSEConnect
 %_sbindir/SUSEConnect
 /usr/lib/zypper/commands
+%_mandir/man8/*
+%_mandir/man5/*
 
 %files -n libsuseconnect
 %license LICENSE LICENSE.LGPL

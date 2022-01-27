@@ -62,4 +62,18 @@
   * Only run httputil DumpResponse when needed</comment>
     <requestid>944747</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e37a58b773b07009c9c7ff67f3c60c3</srcmd5>
+    <version>0.0.6~git0.77933db</version>
+    <time>1643321789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.6~git0.77933db:
+  * Add man pages
+  * Add note in DIFFERENCES.md about abbreviated flags
+  * Add -l as an alias for --list-extensions
+  * Add --clean as an alias for --cleanup (bsc#1195003)
+  * Suppress expected error log message in TLS test
+  * Add flag to import product repo keys (bsc#1174657)</comment>
+    <requestid>949216</requestid>
+  </revision>
 </revisionlist>

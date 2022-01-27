@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 26 09:09:30 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.6~git0.77933db:
+  * Add man pages
+  * Add note in DIFFERENCES.md about abbreviated flags
+  * Add -l as an alias for --list-extensions
+  * Add --clean as an alias for --cleanup (bsc#1195003)
+  * Suppress expected error log message in TLS test
+  * Add flag to import product repo keys (bsc#1174657)
+
+-------------------------------------------------------------------
 Fri Jan 07 13:45:50 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.5~git0.bbb5544:
