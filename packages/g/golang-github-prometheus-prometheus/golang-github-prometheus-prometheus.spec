@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,15 +27,14 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.27.1
+Version:        2.32.1
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://prometheus.io/
-Source:         prometheus-%{version}.tar.gz
-# generated after applying Patch3 and running `go mod vendor`
 # also includes web assets generated with `make assets`
+Source:         prometheus-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus.service
 Source3:        prometheus.yml
@@ -44,8 +43,6 @@ Source5:        prometheus.firewall.xml
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
-# PATCH-FEATURE-OPENSUSE 0003-Add-Uyuni-service-discovery.patch jcavalheiro@suse.de
-Patch3:         0003-Add-Uyuni-service-discovery.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros

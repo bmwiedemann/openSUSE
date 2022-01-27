@@ -1,4 +1,260 @@
 -------------------------------------------------------------------
+Wed Jan 19 11:36:21 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Updated patches:
+  + Changed:
+    * 0002-Default-settings.patch
+  + Removed:
+    * 0003-Add-Uyuni-service-discovery.patch
+
+- Use obs-service-go_modules
+
+- Upgrade to upstream version 2.32.1 (jsc#SLE-22863)
+  + Bugfixes:
+    * Scrape: Fix reporting metrics when sample limit is reached
+      during the report. #9996
+    * Scrape: Ensure that scrape interval and scrape timeout are
+      always set. #10023
+    * TSDB: Expose and fix bug in iterators' Seek() method. #10030
+
+- Upgrade to upstream version 2.32.0
+  + Change:
+    * remote-write: Change default max retry time from 100ms to
+      5 seconds. #9634
+  + Features:
+    * Agent: New mode of operation optimized for remote-write only
+      scenarios, without local storage.
+    * Promtool: Add promtool check service-discovery command. #8970
+  + Enhancements:
+    * Promtool: Improve test output. #8064
+    * Promtool: Use kahan summation for better numerical stability.
+    * Remote-write: Reuse memory for marshalling. #9412
+    * Scrape: Add scrape_body_size_bytes scrape metric behind the
+      --enable-feature=extra-scrape-metrics flag. #9569
+    * TSDB: Add windows arm64 support. #9703
+    * TSDB: Optimize query by skipping unneeded sorting in TSDB.
+    * Templates: Support int and uint as datatypes for template
+      formatting. #9680
+    * UI: Prefer rate over rad, delta over deg, and count over cos
+      in autocomplete. #9688
+  + Bugfixes:
+    * TSDB: Add more size checks when writing individual sections
+      in the index. #9710
+    * PromQL: Make deriv() return zero values for constant series.
+    * TSDB: Fix panic when checkpoint directory is empty. #9687
+    * TSDB: Fix panic, out of order chunks, and race warning during
+      WAL replay. #9856
+    * UI: Correctly render links for targets with IPv6 addresses
+      that contain a Zone ID. #9853
+    * Promtool: Fix checking of authorization.credentials_file and
+      bearer_token_file fields. #9883
+    * Uyuni SD: Fix null pointer exception during initialization.
+    * TSDB: Fix queries after a failed snapshot replay. #9980
+
+- Upgrade to upstream version 2.31.1
+  + Bugfix:
+    * SD: Fix a panic when the experimental discovery manager
+      receives targets during a reload. #9656
+
+- Upgrade to upstream version 2.31.0
+  + Change:
+    * UI: Remove standard PromQL editor in favour of the
+      codemirror-based editor. #9452
+  + Features:
+    * PromQL: Add trigonometric functions and atan2 binary
+      operator. #9239 #9248 #9515
+    * Remote: Add support for exemplar in the remote write receiver
+      endpoint. #9319 #9414
+    * SD: Add PuppetDB service discovery. #8883
+    * SD: Add Uyuni service discovery. #8190
+    * Web: Add support for security-related HTTP headers. #9546
+  + Enhancements:
+    * Azure SD: Add proxy_url, follow_redirects, tls_config. #9267
+    * Backfill: Add --max-block-duration in promtool
+      create-blocks-from rules. #9511
+    * Config: Print human-readable sizes with unit instead of raw
+      numbers. #9361
+    * HTTP: Re-enable HTTP/2. #9398
+    * Kubernetes SD: Warn user if number of endpoints exceeds
+      limit. #9467
+    * OAuth2: Add TLS configuration to token requests. #9550
+    * PromQL: Several optimizations. #9365 #9360 #9362 #9552
+    * PromQL: Make aggregations deterministic in instant queries.
+    * Rules: Add the ability to limit number of alerts or series.
+    * SD: Experimental discovery manager to avoid restarts upon
+      reload.
+    * UI: Debounce timerange setting changes. #9359
+  + Bugfixes:
+    * Backfill: Apply rule labels after query labels. #9421
+    * Scrape: Resolve conflicts between multiple exported label
+      prefixes. #9479 #9518
+    * Scrape: Restart scrape loops when __scrape_interval__ is
+      changed. #9551
+    * TSDB: Fix memory leak in samples deletion. #9151
+    * UI: Use consistent margin-bottom for all alert kinds. #9318
+
+- Upgrade to upstream version 2.30.3
+  + Bugfixes:
+    * TSDB: Fix panic on failed snapshot replay. #9438
+    * TSDB: Don't fail snapshot replay with exemplar storage
+      disabled when the snapshot contains exemplars. #9438
+
+- Upgrade to upstream version 2.30.2
+  + Bugfix:
+    * TSDB: Don't error on overlapping m-mapped chunks during WAL
+      replay. #9381
+
+- Upgrade to upstream version 2.30.1
+  + Enhancements:
+    * Remote Write: Redact remote write URL when used for metric
+      label. #9383
+    * UI: Redact remote write URL and proxy URL passwords in the
+      /config page. #9408
+  + Bugfixes:
+    * promtool rules backfill: Prevent creation of data before the
+      start time. #9339
+    * promtool rules backfill: Do not query after the end time.
+    * Azure SD: Fix panic when no computername is set. #9387
+
+- Upgrade to upstream version 2.30.0
+  + Features:
+    * experimental TSDB: Snapshot in-memory chunks on shutdown for
+      faster restarts. #7229
+    * experimental Scrape: Configure scrape interval and scrape
+      timeout via relabeling using __scrape_interval__ and
+      __scrape_timeout__ labels respectively. #8911
+    * Scrape: Add scrape_timeout_seconds and scrape_sample_limit
+      metric. #9247 #9295
+  + Enhancements:
+    * Scrape: Add --scrape.timestamp-tolerance flag to adjust
+      scrape timestamp tolerance when enabled via
+      --scrape.adjust-timestamps. #9283
+    * Remote Write: Improve throughput when sending exemplars.
+    * TSDB: Optimise WAL loading by removing extra map and caching
+      min-time #9160
+    * promtool: Speed up checking for duplicate rules. #9262/#9306
+    * Scrape: Reduce allocations when parsing the metrics. #9299
+    * docker_sd: Support host network mode #9125
+  + Bugfixes:
+    * Exemplars: Fix panic when resizing exemplar storage from 0 to
+      a non-zero size. #9286
+    * TSDB: Correctly decrement
+      prometheus_tsdb_head_active_appenders when the append has no
+      samples. #9230
+    * promtool rules backfill: Return 1 if backfill was
+      unsuccessful. #9303
+    * promtool rules backfill: Avoid creation of overlapping
+      blocks. #9324
+    * config: Fix a panic when reloading configuration with a null
+      relabel action. #9224
+
+- Upgrade to upstream version 2.29.2
+  + Bugfixes:
+    * Fix Kubernetes SD failing to discover Ingress in
+      Kubernetes v1.22. #9205
+    * Fix data race in loading write-ahead-log (WAL). #9259
+
+- Upgrade to upstream version 2.29.1
+  + Bugfixes:
+    * TSDB: align atomically accessed int64 to prevent panic in
+      32-bit archs. #9192
+
+- Upgrade to upstream version 2.29.0
+  + Changes:
+    * Promote --storage.tsdb.allow-overlapping-blocks flag to
+      stable. #9117
+    * Promote --storage.tsdb.retention.size flag to stable. #9004
+  + Features:
+    * Add Kuma service discovery. #8844
+    * Add present_over_time PromQL function. #9097
+    * Allow configuring exemplar storage via file and make it
+      reloadable. #8974
+    * UI: Allow selecting time range with mouse drag. #8977
+    * promtool: Add feature flags flag --enable-feature. #8958
+    * promtool: Add file_sd file validation. #8950
+  + Enhancements:
+    * Reduce blocking of outgoing remote write requests from series
+      garbage collection. #9109
+    * Improve write-ahead-log decoding performance. #9106
+    * Improve append performance in TSDB by reducing mutexes usage.
+    * Allow configuring max_samples_per_send for remote write
+      metadata. #8959
+    * Add __meta_gce_interface_ipv4_<name> meta label to GCE
+      discovery. #8978
+    * Add __meta_ec2_availability_zone_id meta label to EC2
+      discovery. #8896
+    * Add __meta_azure_machine_computer_name meta label to Azure
+      discovery. #9112
+    * Add __meta_hetzner_hcloud_labelpresent_<labelname> meta label
+      to Hetzner discovery. #9028
+    * promtool: Add compaction efficiency to promtool tsdb analyze
+      reports. #8940
+    * promtool: Allow configuring max block duration for
+      backfilling via --max-block-duration flag. #8919
+    * UI: Add sorting and filtering to flags page. #8988
+    * UI: Improve alerts page rendering performance. #9005
+  + Bugfixes:
+    * Log when total symbol size exceeds 2^32 bytes, causing
+      compaction to fail, and skip compaction. #9104
+    * Fix incorrect target_limit reloading of zero value. #9120
+    * Fix head GC and pending readers race condition. #9081
+    * Fix timestamp handling in OpenMetrics parser. #9008
+    * Fix potential duplicate metrics in /federate endpoint when
+      specifying multiple matchers. #8885
+    * Fix server configuration and validation for authentication
+      via client cert. #9123
+    * Allow start and end again as label names in PromQL queries.
+      They were disallowed since the introduction of @ timestamp
+      feature. #9119
+
+- Upgrade to upstream version 2.28.1
+  + Bugfixes:
+    * HTTP SD: Allow charset specification in Content-Type header.
+    * HTTP SD: Fix handling of disappeared target groups. #9019
+    * Fix incorrect log-level handling after moving to go-kit/log.
+
+- Upgrade to upstream version 2.28.0
+  + Change:
+    * UI: Make the new experimental PromQL editor the default.
+  + Features:
+    * Linode SD: Add Linode service discovery. #8846
+    * HTTP SD: Add generic HTTP-based service discovery. #8839
+    * Kubernetes SD: Allow configuring API Server access via a
+      kubeconfig file. #8811
+    * UI: Add exemplar display support to the graphing interface.
+    * Consul SD: Add namespace support for Consul Enterprise. #8900
+  + Enhancements:
+    * Promtool: Allow silencing output when importing / backfilling
+      data. #8917
+    * Consul SD: Support reading tokens from file. #8926
+    * Rules: Add a new .ExternalURL alert field templating
+      variable, containing the external URL of the Prometheus
+      server. #8878
+    * Scrape: Add experimental body_size_limit scrape configuration
+      setting to limit the allowed response body size for target
+      scrapes. #8833 #8886
+    * Kubernetes SD: Add ingress class name label for ingress
+      discovery. #8916
+    * UI: Show a startup screen with progress bar when the TSDB is
+      not ready yet. #8662 #8908 #8909 #8946
+    * SD: Add a target creation failure counter
+      prometheus_target_sync_failed_total and improve target
+      creation failure handling. #8786
+    * TSDB: Improve validation of exemplar label set length. #8816
+    * TSDB: Add a prometheus_tsdb_clean_start metric that indicates
+      whether a TSDB lockfile from a previous run still existed
+      upon startup. #8824
+  + Bugfixes:
+    * UI: In the experimental PromQL editor, fix autocompletion and
+      parsing for special float values and improve series metadata
+      fetching. #8856
+    * TSDB: When merging chunks, split resulting chunks if they
+      would contain more than the maximum of 120 samples. #8582
+    * SD: Fix the computation of the
+      prometheus_sd_discovered_targets metric when using multiple
+      service discoveries. #8828
+
+-------------------------------------------------------------------
 Mon Sep 20 14:44:20 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
