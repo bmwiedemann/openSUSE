@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jan 19 12:10:54 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add python-rpm-macros to BuildRequires (boo#1194755).
+
+-------------------------------------------------------------------
+Sat Oct 09 13:50:32 UTC 2021 - sebix+novell.com@sebix.at
+
+- Update to version 1.3.0+git.20210921:
+  * Remove common code in favor of new libimobiledevice-glue
+  * tools: idevicebackup2: Exit on service startup failure and improve error messages
+  * idevice: Reset receive length variable in internal_ssl_read retry loop and fix wrong variable in debug message
+  * lockdown: Get DeviceClass to make sure OS version dependent code is executed correctly
+  * Handle error cases in relevant code when retrieving pair record fails
+  * common: Return proper error codes from userpref_read_pair_record
+  * Add support for MbedTLS
+  * idevice: Make sure to handle timeout condition for network connections too
+  * installation_proxy: Ignore non-status messages instead of terminating loop
+  * mobilesync: Set DeviceLink version to 400 to support iOS 14b4+
+  * tools/idevicecrashreport: Fix illegal filenames on Windows
+  * tools: Fix entering recovery mode on iOS 14.5+ which now requires a pairing
+  * tools: Fix delays in idevicedebugserverproxy when using SSL
+  * debugserver: Return success when a receive timed out but actualy bytes have been read
+  * idevice: Allow partial reads in idevice_connection_receive_timeout() and handle timeouts more adequate
+  * Fixed bytes/strings checks in lockdown.pxi for compatibility with Python2/3
+  * Fixed bytes/strings check in imobiledevice.pyx for compatibility with Python2/3
+  * Fixed debugserver.pxi PyString_AsString compatibility with Python3
+  * Fixed AFC afc.pxi definitions for Python2/3 compatibility. Added missing public method 'remove_path_and_contents'
+  * ideviceprovision: Fix date output by adding MAC_EPOCH
+  * docs: Improve --quiet command line switch description in idevicesyslog man page
+  * idevicescreenshot: Choose a better filename, prevent overwriting existing files
+  * idevicedebug: Add --detach option to start an app and exit idevicedebug without killing the app
+  * idevicebackup2: Handle DLMessagePurgeDiskSpace by sending back error code
+  * idevicebackup2: Update errno to device error mapping
+  * idevice: Handle -EAGAIN in case usbmuxd_send() returns it
+  * idevicebackup2: Don't fail on restore when source backup doesn't have any application info
+
+-------------------------------------------------------------------
 Wed Oct 14 13:00:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use the new library name in baselibs.conf.
