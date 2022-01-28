@@ -1,7 +1,7 @@
 #
 # spec file for package netgen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,25 +24,31 @@
 %bcond_with pytest
 
 Name:           netgen
-Version:        6.2.2101
+Version:        6.2.2105
 Release:        0
 Summary:        Automatic 3D tetrahedral mesh generator
 License:        LGPL-2.1-only
 Group:          Productivity/Graphics/CAD
 URL:            https://ngsolve.org/
-Source0:        netgen-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE
+Source0:        https://github.com/NGSolve/netgen/archive/refs/tags/v%{version}.tar.gz#/netgen-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
 Patch0:         0001-Set-explicit-OBJECT-library-type-for-internal-togl.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Disable-backtrace-generation.patch
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-UPSTREAM
 Patch2:         0001-Throw-in-case-enum-value-is-unhandled.patch
-# PATCH-FIX-OPENSUSE
-Patch3:         0001-Fix-GetTimeCounter-for-Aarch64-variants.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Throw-Exception-when-shape-has-invalid-type.patch
 # PATCH-FIX-OPENSUSE -- Allow to disable download of Catch2
 Patch4:         0001-Optionally-use-system-provided-Catch2.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-Optionally-prefer-system-wide-pybind11.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         0001-Fix-signedness-for-ARM-Neon-mask-type.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(xi)
 %endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -136,7 +142,6 @@ Provides:       %{name}:%{python3_sitearch}/netgen/libngpy.so
 %description  -n python3-%{name}
 Python bindings for NETGEN.
 
-
 %prep
 %autosetup -p1
 
@@ -153,6 +158,7 @@ echo "v%{version}-0-0" > ./version.txt
 # Do not error out on undefined symbols - there is a circular dependency
 # between libvisual and libmesh ...
 %cmake \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SUPERBUILD=OFF \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,--warn-unresolved-symbols -Wl,-z,now" \
     -DNG_INSTALL_DIR_INCLUDE=%{_includedir}/netgen \

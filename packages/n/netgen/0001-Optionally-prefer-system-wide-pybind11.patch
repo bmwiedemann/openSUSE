@@ -1,0 +1,82 @@
+From 3892ddbfa204e61822b87ff2e01ae99035aa09ae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 27 Jan 2022 08:45:02 +0100
+Subject: [PATCH] Optionally prefer system wide pybind11
+
+Linux distributions typically prefer system provided libraries, so
+optionally use it when found.
+
+(This also allows to use the github provided tarball, which omits the
+pybind11 submodule).
+
+Fix the PYBIND_INCLUDE_DIR usage:
+- remove misleading find_path invocation, which may point to the system
+  wide pybind11
+- use pybind11_INCLUDE_DIR	which is provided by both find_package(pybind11)
+  and bundled pybind11/CMakeLists.txt
+- pybind11_INCLUDE_DIR is used by pybind11_add_module, use it also for
+  ngcore (core/register_archive.hpp)
+---
+ CMakeLists.txt | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dcc24afa..3519d831 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,10 +9,12 @@ else(WIN32)
+   cmake_minimum_required(VERSION 3.8)
+ endif(WIN32)
+ 
++include (CMakeDependentOption)
+ option( USE_NATIVE_ARCH  "build for native cpu architecture" ON)
+ 
+ option( USE_GUI     "don't build netgen with GUI" ON )
+ option( USE_PYTHON  "build with python interface" ON )
++cmake_dependent_option( PREFER_SYSTEM_PYBIND11  "Use system wide PyBind11" ON "USE_PYTHON" OFF)
+ option( USE_MPI     "enable mpi parallelization" OFF )
+ option( USE_MPI4PY  "enable mpi4py interface" ON )
+ option( USE_OCC     "(not supported) compile with OpenCascade geometry kernel" OFF)
+@@ -268,23 +270,29 @@ else()
+ endif()
+ 
+ if (USE_PYTHON)
+-    add_subdirectory(external_dependencies/pybind11)
+-    find_path(PYBIND_INCLUDE_DIR pybind11/pybind11.h HINTS ${PYTHON_INCLUDE_DIR})
+-    if( PYBIND_INCLUDE_DIR )
+-        message(STATUS "Found Pybind11: ${PYBIND_INCLUDE_DIR}")
+-    else( PYBIND_INCLUDE_DIR )
++    if (PREFER_SYSTEM_PYBIND11)
++      find_package(pybind11 CONFIG)
++    endif()
++    if (pybind11_FOUND)
++      set(NG_INSTALL_PYBIND OFF)
++    else()
++      add_subdirectory(external_dependencies/pybind11)
++    endif()
++    if (pybind11_INCLUDE_DIR)
++        message(STATUS "Found Pybind11: ${pybind11_INCLUDE_DIR}")
++    else()
+         message(FATAL_ERROR "Could NOT find pybind11!")
+-    endif( PYBIND_INCLUDE_DIR )
++    endif()
+ 
+-    target_include_directories(netgen_python INTERFACE ${PYBIND_INCLUDE_DIR} ${PYTHON_INCLUDE_DIRS})
++    target_include_directories(netgen_python INTERFACE ${pybind11_INCLUDE_DIR} ${PYTHON_INCLUDE_DIRS})
+     if(NOT ${BUILD_FOR_CONDA})
+         # Don't link python libraries in conda environments
+-        target_link_libraries(netgen_python INTERFACE ${PYTHON_LIBRARIES})
++        target_link_libraries(netgen_python INTERFACE ${PYTHON_LIBRARIES})
+     endif()
+ 
+     if(NG_INSTALL_PYBIND)
+-      install(DIRECTORY ${PYBIND_INCLUDE_DIR}/pybind11 DESTINATION ${NG_INSTALL_DIR_INCLUDE} COMPONENT netgen_devel)
+-      install(FILES ${PYBIND_INCLUDE_DIR}/../LICENSE DESTINATION ${NG_INSTALL_DIR_INCLUDE}/pybind11 COMPONENT netgen_devel)
++      install(DIRECTORY ${pybind11_INCLUDE_DIR}/pybind11 DESTINATION ${NG_INSTALL_DIR_INCLUDE} COMPONENT netgen_devel)
++      install(FILES ${pybind11_INCLUDE_DIR}/../LICENSE DESTINATION ${NG_INSTALL_DIR_INCLUDE}/pybind11 COMPONENT netgen_devel)
+     endif(NG_INSTALL_PYBIND)
+ endif (USE_PYTHON)
+ 
+-- 
+2.34.1
+

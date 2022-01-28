@@ -1,0 +1,30 @@
+From 54246e12ad48bc1dbd416b0b415a4a48b337c2f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 27 Jan 2022 10:04:40 +0100
+Subject: [PATCH] Throw Exception when shape has invalid type
+
+Although the switch statement handles all (current) allowed values, from
+a C/C++ view point the enum may have any value of its underlying type.
+In this case the function has no return statement and runs into
+undefined behavior.
+
+Fixes build failures when built with "-Werror=return-type".
+---
+ libsrc/occ/python_occ_shapes.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libsrc/occ/python_occ_shapes.cpp b/libsrc/occ/python_occ_shapes.cpp
+index 91e94c50..cbb35178 100644
+--- a/libsrc/occ/python_occ_shapes.cpp
++++ b/libsrc/occ/python_occ_shapes.cpp
+@@ -194,6 +194,7 @@ py::object CastShape(const TopoDS_Shape & s)
+     case TopAbs_SHAPE:
+       return py::cast(s);
+     }
++    throw Exception("Invalid Shape type");
+ };
+ 
+ 
+-- 
+2.34.1
+

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 27 10:38:09 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2105
+  * no changelog provided
+- Drop upstream 0001-Fix-GetTimeCounter-for-Aarch64-variants.patch
+- Add patches:
+  * 0001-Optionally-prefer-system-wide-pybind11.patch
+  * 0001-Throw-Exception-when-shape-has-invalid-type.patch
+  * 0001-Fix-signedness-for-ARM-Neon-mask-type.patch
+
+-------------------------------------------------------------------
 Mon May 10 15:03:13 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Exclude all 32bit archs, no longer supported upstream (fails to
