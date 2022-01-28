@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 26 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.271
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.271   2022-01-25 21:47:21Z
+  	Summary:
+  	- return correct name for lexical subroutines
+  	- silence uninitialized warning in t/07_token.t
+  	- bump minimum Test::More version to 0.96
+  	- fix some typos in Pod
+  	- moved repository to Perl-Critic GitHub org:
+  		https://github.com/Perl-Critic/PPI
+
+-------------------------------------------------------------------
 Tue Jul 16 09:54:15 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.270
