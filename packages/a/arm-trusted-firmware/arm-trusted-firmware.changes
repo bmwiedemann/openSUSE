@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 28 08:37:26 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable some targets on SLE15-SP4 because of missing deps in SLE:
+  a3700, hikey, hikey960, imx8qm, imx8qx, rk3399
+  Fixes bsc#1193779 and bsc#1195129
+
+-------------------------------------------------------------------
 Fri Jan 14 12:29:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add qemu_sbsa flavor
