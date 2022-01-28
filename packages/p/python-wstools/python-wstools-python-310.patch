@@ -1,0 +1,16 @@
+Index: wstools-0.4.8/wstools/Utility.py
+===================================================================
+--- wstools-0.4.8.orig/wstools/Utility.py	2018-04-04 11:49:16.000000000 +0200
++++ wstools-0.4.8/wstools/Utility.py	2022-01-28 10:53:36.881702924 +0100
+@@ -33,7 +33,10 @@ try:
+     from UserDict import DictMixin  # noqa
+ except ImportError:
+     from collections import UserDict
+-    from collections import MutableMapping as DictMixin  # noqa
++    try:
++        from collections import MutableMapping as DictMixin  # noqa
++    except ImportError:
++        from collections.abc import MutableMapping as DictMixin  # noqa
+ 
+ from .TimeoutSocket import TimeoutSocket, TimeoutError  # noqa
+ 

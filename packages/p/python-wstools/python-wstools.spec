@@ -1,7 +1,7 @@
 #
 # spec file for package python-wstools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        ZPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pycontribs/wstools
 Source:         https://files.pythonhosted.org/packages/8d/d0/0e48ae89e4b2a9aa3a1a088782ae183dc09ca1f3545b29051c46d9efbc0f/wstools-%{version}.tar.gz
+# https://github.com/pycontribs/wstools/issues/37
+Patch0:         python-wstools-python-310.patch
 BuildRequires:  %{python_module pbr >= 1.10}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 17.1}
@@ -40,6 +42,7 @@ Python module for WSDL parsing services package for Web Services.
 
 %prep
 %setup -q -n wstools-%{version}
+%patch0 -p1
 # https://github.com/pycontribs/wstools/issues/35
 sed -i 's:.pytest-runner.::' setup.py
 
