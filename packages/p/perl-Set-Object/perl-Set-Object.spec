@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Set-Object
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Set-Object
 Name:           perl-Set-Object
-Version:        1.41
+Version:        1.42
 Release:        0
 Summary:        Set of objects and strings
 License:        Artistic-2.0
@@ -60,7 +60,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc README
+%doc examples README
 %license LICENSE
 
 %changelog

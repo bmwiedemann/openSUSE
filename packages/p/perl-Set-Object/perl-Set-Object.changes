@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 22 03:08:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.42
+   see /usr/share/doc/packages/perl-Set-Object/Changes.pod
+
+  =head1 1.42, 2022-01-21
+  =over
+  =item *
+  Fix C<%h={}> warning, by Pauwel Coppieters
+  =item *
+  add F<examples/slow-sort.pl>. see RT #90070
+  =back
+
+-------------------------------------------------------------------
 Mon Jan 18 03:09:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.41
