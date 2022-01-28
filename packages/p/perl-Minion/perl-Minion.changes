@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 21 03:07:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.23
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.23  2022-01-20
+    - Improved repair performance in Minion::Backend::Pg. (andrii-suse, ilmari, kraih)
+
+-------------------------------------------------------------------
 Fri Jun 11 03:07:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.22

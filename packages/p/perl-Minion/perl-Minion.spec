@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.22
+Version:        10.23
 Release:        0
 Summary:        Job queue
 License:        Artistic-2.0
