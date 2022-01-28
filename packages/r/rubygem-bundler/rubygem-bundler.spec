@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bundler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,16 @@
 #
 
 Name:           rubygem-bundler
-Version:        2.2.27
+Version:        2.3.6
 Release:        0
 %define mod_name bundler
 %define mod_full_name %{mod_name}-%{version}
+# MANUAL
+%if ! 0%{?suse_version} == 1500
+%define rb_build_versions     ruby27
+%define rb_build_ruby_abis    ruby:2.7.0
+%endif
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
