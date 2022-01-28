@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 28 03:55:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh test_compileall2.py for Python 3.10+ support.
+
+-------------------------------------------------------------------
 Tue Nov 17 08:11:42 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.7.1

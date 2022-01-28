@@ -7,4 +7,12 @@
     <comment>Enhanced Python `compileall` module</comment>
     <requestid>849381</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3875265ce366f77ed69fdb71f4c5fc36</srcmd5>
+    <version>0.7.1</version>
+    <time>1643404345</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh test_compileall2.py for Python 3.10+ support.</comment>
+    <requestid>949546</requestid>
+  </revision>
 </revisionlist>

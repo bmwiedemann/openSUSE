@@ -1,7 +1,7 @@
 #
 # spec file for package python-compileall2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,11 @@ URL:            https://github.com/fedora-python/compileall2
 Source:         https://files.pythonhosted.org/packages/source/c/compileall2/compileall2-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/fedora-python/compileall2/master/LICENSE
 Source2:        https://raw.githubusercontent.com/fedora-python/compileall2/master/test_compileall2.py
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 

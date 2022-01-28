@@ -30,6 +30,19 @@ except ImportError:
     # Python 3.4
     from test import script_helper
 
+try:
+    # Python < 3.10
+    from test.support import skip_unless_symlink
+    from test.support import unlink
+    from test.support import rmtree
+    from test.support import EnvironmentVarGuard
+except ImportError:
+    # Python >= 3.10
+    from test.support.os_helper import skip_unless_symlink
+    from test.support.os_helper import unlink
+    from test.support.os_helper import rmtree
+    from test.support.os_helper import EnvironmentVarGuard
+
 # Backported from subprocess/test.support module for Python <= 3.5
 def _optim_args_from_interpreter_flags():
     """Return a list of command-line arguments reproducing the current
@@ -64,7 +77,7 @@ def without_source_date_epoch(fxn):
     """Runs function with SOURCE_DATE_EPOCH unset."""
     @functools.wraps(fxn)
     def wrapper(*args, **kwargs):
-        with support.EnvironmentVarGuard() as env:
+        with EnvironmentVarGuard() as env:
             env.unset('SOURCE_DATE_EPOCH')
             return fxn(*args, **kwargs)
     return wrapper
@@ -74,7 +87,7 @@ def with_source_date_epoch(fxn):
     """Runs function with SOURCE_DATE_EPOCH set."""
     @functools.wraps(fxn)
     def wrapper(*args, **kwargs):
-        with support.EnvironmentVarGuard() as env:
+        with EnvironmentVarGuard() as env:
             env['SOURCE_DATE_EPOCH'] = '123456789'
             return fxn(*args, **kwargs)
     return wrapper
@@ -415,7 +428,7 @@ class CompileallTestsBase:
                 except Exception:
                     pass
 
-    @support.skip_unless_symlink
+    @skip_unless_symlink
     def test_ignore_symlink_destination(self):
         # Create folders for allowed files, symlinks and prohibited area
         allowed_path = os.path.join(self.directory, "test", "dir", "allowed")
@@ -745,7 +758,7 @@ class CommandLineTestsBase:
                 sys_path_writable = False
                 break
             finally:
-                support.unlink(str(path))
+                unlink(str(path))
                 if directory_created:
                     directory.rmdir()
         else:
@@ -784,7 +797,7 @@ class CommandLineTestsBase:
 
     def setUp(self):
         self.directory = tempfile.mkdtemp()
-        self.addCleanup(support.rmtree, self.directory)
+        self.addCleanup(rmtree, self.directory)
         self.pkgdir = os.path.join(self.directory, 'foo')
         os.mkdir(self.pkgdir)
         self.pkgdir_cachedir = os.path.join(self.pkgdir, '__pycache__')
@@ -953,7 +966,7 @@ class CommandLineTestsBase:
         self.assertCompiled(spamfn)
         self.assertCompiled(eggfn)
 
-    @support.skip_unless_symlink
+    @skip_unless_symlink
     def test_symlink_loop(self):
         # Currently, compileall ignores symlinks to directories.
         # If that limitation is ever lifted, it should protect against
@@ -1155,7 +1168,7 @@ class CommandLineTestsBase:
                 except Exception:
                     pass
 
-    @support.skip_unless_symlink
+    @skip_unless_symlink
     def test_ignore_symlink_destination(self):
         # Create folders for allowed files, symlinks and prohibited area
         allowed_path = os.path.join(self.directory, "test", "dir", "allowed")
