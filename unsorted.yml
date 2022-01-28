@@ -3537,6 +3537,7 @@ unsorted:
   - fcitx-pylogger 
   - fcitx-qt5-32bit: [x86_64] 
   - fcitx-qt5-devel 
+  - fcitx-qt6 
   - fcitx-quwei 
   - fcitx-rime 
   - fcitx-sayura 
@@ -10450,7 +10451,6 @@ unsorted:
   - libdtkgui5 
   - libdtkwidget5 
   - libdtkwm5 
-  - libduktape206 
   - libdumb2 
   - libdv 
   - libdv-devel 
@@ -11501,7 +11501,6 @@ unsorted:
   - libiml0 
   - libimobiledevice-1_0-6-32bit: [x86_64] 
   - libimobiledevice-devel 
-  - libimobiledevice-glue-1_0-0 
   - libimobiledevice-glue-1_0-0-32bit: [x86_64] 
   - libimobiledevice-glue-devel 
   - libinchi0 
@@ -12947,13 +12946,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite28-32bit: [x86_64] 
+  - libprotobuf-lite30-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf28-32bit: [x86_64] 
-  - libprotoc28 
-  - libprotoc28-32bit: [x86_64] 
+  - libprotobuf30-32bit: [x86_64] 
+  - libprotoc30 
+  - libprotoc30-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -42683,6 +42682,7 @@ unsorted:
   - winpr-devel 
   - winrs 
   - wipe 
+  - wire 
   - wireguard-tools 
   - wireplumber-devel 
   - wireshark 

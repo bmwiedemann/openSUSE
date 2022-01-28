@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220126" schemaversion="4.1">
+<image name="OBS__MicroOS___20220127" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220126</productvar>
+      <productvar name="VERSION">20220127</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220126,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220127,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220126/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220127/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -312,6 +312,7 @@
       <repopackage name="libdnf-repo-config-zypp" arch="x86_64"/>
       <repopackage name="libdnf2" arch="x86_64"/>
       <repopackage name="libdrm2" arch="x86_64"/>
+      <repopackage name="libduktape206" arch="x86_64"/>
       <repopackage name="libdw1"/>
       <repopackage name="libebtc0" arch="x86_64"/>
       <repopackage name="libeconf0"/>
@@ -398,7 +399,6 @@
       <repopackage name="libmnl0" arch="x86_64"/>
       <repopackage name="libmodulemd2" arch="x86_64"/>
       <repopackage name="libmount1"/>
-      <repopackage name="libmozjs-78-0" arch="x86_64"/>
       <repopackage name="libmpath0" arch="x86_64"/>
       <repopackage name="libmpdec3" arch="x86_64"/>
       <repopackage name="libmpfr6"/>
@@ -444,7 +444,7 @@
       <repopackage name="libpolkit-gobject-1-0" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libprocps8" arch="x86_64"/>
-      <repopackage name="libprotobuf-lite28" arch="x86_64"/>
+      <repopackage name="libprotobuf-lite30" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5"/>
       <repopackage name="libpwquality-tools" arch="x86_64"/>

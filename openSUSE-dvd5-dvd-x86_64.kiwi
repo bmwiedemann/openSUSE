@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220126" schemaversion="4.1">
+<image name="OBS__openSUSE___20220127" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220126</productvar>
+      <productvar name="VERSION">20220127</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220126,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220127,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220126/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220127/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1638,6 +1638,7 @@
       <repopackage name="libdrm_intel1"/>
       <repopackage name="libdrm_nouveau2"/>
       <repopackage name="libdrm_radeon1"/>
+      <repopackage name="libduktape206"/>
       <repopackage name="libdv4"/>
       <repopackage name="libdvbpsi10"/>
       <repopackage name="libdvdnav4"/>
@@ -1972,6 +1973,7 @@
       <repopackage name="libImath-3_1-29"/>
       <repopackage name="libImlib2-1"/>
       <repopackage name="libimobiledevice-1_0-6"/>
+      <repopackage name="libimobiledevice-glue-1_0-0"/>
       <repopackage name="libini_config5"/>
       <repopackage name="libinih0"/>
       <repopackage name="libinotifytools0"/>
@@ -2482,8 +2484,8 @@
       <repopackage name="libprocps8"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite28"/>
-      <repopackage name="libprotobuf28"/>
+      <repopackage name="libprotobuf-lite30"/>
+      <repopackage name="libprotobuf30"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libproxy1-config-gnome3"/>
       <repopackage name="libproxy1-config-kde"/>
@@ -4234,6 +4236,7 @@
       <repopackage name="quota"/>
       <repopackage name="quota-nfs"/>
       <repopackage name="radvd"/>
+      <repopackage name="rarpd"/>
       <repopackage name="rdesktop"/>
       <repopackage name="rdma-core"/>
       <repopackage name="rdma-ndd"/>
