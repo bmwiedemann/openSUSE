@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.46
+BuildRequires:  pkgconfig(ell) >= 0.48
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
