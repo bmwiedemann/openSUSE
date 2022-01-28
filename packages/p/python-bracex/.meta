@@ -1,0 +1,8 @@
+<package name="python-bracex" project="openSUSE:Factory">
+  <title>Bash style brace expander</title>
+  <description>Bash style brace expander.
+
+</description>
+  <devel project="devel:languages:python" package="python-bracex"/>
+  <url>https://github.com/facelessuser/bracex</url>
+</package>
