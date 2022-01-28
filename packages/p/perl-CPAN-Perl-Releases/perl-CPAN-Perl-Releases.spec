@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Perl-Releases
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20211220
+Version:        5.20220120
 Release:        0
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 License:        Artistic-1.0 OR GPL-1.0-or-later
