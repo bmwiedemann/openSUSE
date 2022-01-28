@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 28 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.7045
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+
+  1.7045  2022-01-26 19:03:44 PST
+     [Security]
+        - [CVE-2020-16154] remove the functionality to verify CHECKSUMS signature
+
+-------------------------------------------------------------------
 Wed Oct 28 15:32:37 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 1.7044

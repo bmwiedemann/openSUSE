@@ -148,4 +148,17 @@
 </comment>
     <requestid>844625</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63fe2935a1a51037f8c063cfac1c16a4</srcmd5>
+    <version>1.7045</version>
+    <time>1643404355</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.7045
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+  1.7045  2022-01-26 19:03:44 PST
+     [Security]
+        - [CVE-2020-16154] remove the functionality to verify CHECKSUMS signature
+</comment>
+    <requestid>949640</requestid>
+  </revision>
 </revisionlist>
