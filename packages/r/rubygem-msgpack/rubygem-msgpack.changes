@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:13:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.4
+ see installed ChangeLog
+
+  2022-01-22 version 1.4.4:
+  
+  * Specify the build option --platform=8 for older Java platforms
+  
+  2022-01-20 version 1.4.3:
+  
+  * Optimize serialization/deserialization of Symbols
+  * Support registering ext types for objects of subclasses of primitive types (like Hash)
+  * Add optimized_symbols_parsing option to Factory#register_type on MRI implementation
+  * Optimize to deduplicate Hash keys on JRuby
+  * Support JRuby 9.3 (and drop 9.1)
+  
+
+-------------------------------------------------------------------
 Sat Feb  6 11:31:06 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.4.2
