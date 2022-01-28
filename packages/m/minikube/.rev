@@ -369,4 +369,31 @@
   * Fix starting on Windows with VMware driver on non C: drive #12819</comment>
     <requestid>943850</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4afa53f4574e073ae20796531dce1629</srcmd5>
+    <version>1.25.1</version>
+    <time>1643404362</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25.1:
+  * New flag &quot;--binary-mirror&quot; to override mirror URL downloading (kubectl, kubelet, &amp; kubeadm)
+  * Add format flag to the image ls command
+  * Add all mount flags to start command
+  * Auto set config to support btrfs storage driver
+  * Support CRI-O runtime with Rootless Docker driver (--driver=docker --container-runtime=cri-o)
+  * Allow custom cert for ingress to be overwritten
+  * Allow ppc64le &amp; armv7 with Docker driver
+  * Support DOCKER_HOST not being numeric IP
+  * Support mounting with the --no-kubernetes flag
+  * Support changing apiserver-ips when restarting minikube
+  * Fix ingress for k8s v1.19
+  * Fix mounting with VMware
+  * Fix Bad file descriptor on mount
+  * Fix docker-env with new PowerShell versions
+  * Upgrade Docker, from v20.10.8 to v20.10.11
+  * Upgrade containerd, from v1.4.9 to v1.4.12
+  * Upgrade cri-o from v1.22.0 to v1.22.1
+  * Update gcp-auth-webhook image to v0.0.8
+  * mount: Remove --mode flag</comment>
+    <requestid>949675</requestid>
+  </revision>
 </revisionlist>
