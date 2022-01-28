@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jan 24 19:31:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9:
+  Fixed
+  * RescanDatabaseOnSave configuration option wasn't being read
+    from the configuration file resulting in the feature always
+    being enabled.
+  * Hourly graph image output using large fonts didn't correctly
+    fade out the x-axis line for hours not having data available.
+  New
+  * Add --alert for producing output and/or specific exit status
+    when configured condition and transfer limit is exceeded, can
+    also be used for "quota remaining" type of queries depending
+    on used parameters.
+  * Add configuration option InterfaceMatchMethod which allows
+    configuring the possibility of specifying an interface for
+    database queries by using its alias instead of system provided
+    interface name, enabled by default to support case insensitive
+    matching of the beginning of interface aliases (vnstat and
+    vnstati).
+  * Image output file extension allows selecting the used image
+    file format as long as the used LibGD supports it, PNG is no
+    longer the only option.
+  * Add configuration option HourlyGraphMode for changing the
+    output mode of the graph, 0 = 24 hour sliding window (default,
+    as in previous releases), 1 = graph begins from midnight.
+  * Add mode parameter for -hg / --hoursgraph options for
+    overriding the.
+  * HourlyGraphMode configuration option setting from the command
+    line.
+  * Add vertical line to image output hourly graph to visualize
+    midnight.
+  * Add -t / --timestamp options to daemon for enabling timestamps
+    to prints when the daemon is running in the foreground
+    attached to a terminal
+  * Accept ; as comment character in configuration file in addition
+    to "#".
+  * Comment out keywords which are using default values with ";"-
+    character in provided configuration file and --showconfig
+    output.
+
+-------------------------------------------------------------------
 Sun Nov 28 18:58:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8:
