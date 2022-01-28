@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 27 18:30:01 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 2.4.2+git.1642005974.525040a32:
+  * fix merge conflict (#5120)
+  * Docs: Fix documentation with correct default values and add missing options (#4792) (#5115)
+  * Backport 5077: improve default config values (#5077) (#5104)
+  * Loki: Implement custom /config handler (#4785) (#5078)
+  * temporary fix for the ruler joining the ingester ring (#4968) (#5037)
+  * Backport to 2.4: always apply replication factor common config (#4875) (#4989)
+  * Docs: fix broken links (#4770) (#4778)
+  * Adding upgrade guide for recording rules (#4751) (#4763)
+  * Docs: inject newlines into knob descriptions to avoid horizontal scroll bar (#4733) (#4758)
+  * Docs: small v2.4.1 release notes edits (#4718) (#4719)
+  * update everything for 2.4.1 (#4701) (#4702)
+
+-------------------------------------------------------------------
 Mon Dec 13 20:15:36 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Change user in promtail.service from loki to root.

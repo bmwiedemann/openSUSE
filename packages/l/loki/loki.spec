@@ -1,7 +1,7 @@
 #
 # spec file for package loki
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           loki
-Version:        2.4.1+git.1636374074.f61a4d261
+Version:        2.4.2+git.1642005974.525040a32
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
