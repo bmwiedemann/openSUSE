@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202112
+Version:        202201
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
@@ -25,6 +25,7 @@ URL:            https://github.com/opcm/pcm
 Source:         https://github.com/opcm/pcm/archive/%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  make
+BuildRequires:  cmake
 ExclusiveArch:  %{ix86} x86_64
 
 %description
@@ -34,24 +35,20 @@ of Intel Core, Xeon, Atom and Xeon Phi processors.
 
 %prep
 %setup -q
-# do not mess with optflags
-sed -i '/-Wall -g -O3/d' Makefile
-sed -e 's:-O0 -g3 -Wall:%{optflags}:g' \
-    -i daemon/client/Debug/subdir.mk \
-    -i daemon/daemon/Debug/subdir.mk
 
 %build
-export CFLAGS="%{optflags} -fPIC"
-export CXXFLAGS="%{optflags} -fPIC"
-%{!?make_build:%define make_build %{__make} -O %{?_smp_mflags}}
-%make_build
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+%cmake -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix}
+%{!?cmake_build:%define cmake_build %{__cmake}}
+%cmake_build
 
 %install
-%make_install prefix=%{buildroot}%{_prefix}
+%cmake_install
 
 %files
 %license LICENSE
-%doc *HOWTO*
+%doc doc/*HOWTO*
 %{_sbindir}/pcm
 %{_sbindir}/pcm-core
 %{_sbindir}/pcm-iio

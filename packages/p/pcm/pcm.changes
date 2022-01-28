@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 28 12:25:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202201 upstream version:
+* use cmake to build the project
+* reduce pcm overhead
+* pcm-raw: add -r option (PMU reset)
+* pcm-raw: add a sample separator option
+* freeze/unfreeze all core PMU counters during the read operation
+* change ulimit recommendations
+* various performance and bug fixes
+
+-------------------------------------------------------------------
 Sun Dec 26 11:25:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to 202112:
