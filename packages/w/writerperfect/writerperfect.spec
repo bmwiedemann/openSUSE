@@ -1,7 +1,7 @@
 #
 # spec file for package writerperfect
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           writerperfect
 Version:        0.9.6
 Release:        0
 Summary:        Tools for converting WordPerfect documents
-License:        LGPL-2.1+ OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 Group:          Productivity/Text/Convertors
-Url:            http://libwpd.sf.net/
+URL:            http://libwpd.sf.net/
 Source:         http://downloads.sourceforge.net/project/libwpd/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
 Patch0:         0001-fix-build-with-libgsf.patch
 Patch1:         0001-Fix-linking-with-newer-tools-by-getting-the-library-.patch

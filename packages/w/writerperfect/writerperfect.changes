@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 28 06:37:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix license header to correspond to SPDX abbreviation
+
+-------------------------------------------------------------------
 Tue Jan  9 07:42:56 UTC 2018 - fstrba@suse.com
 
 - Added patch:
-  * 0001-Fix-linking-with-newer-tools-by-getting-the-library-.patch$
+  * 0001-Fix-linking-with-newer-tools-by-getting-the-library-.patch
     + Get the library order right
     + Fixes linking with newer tools
 
