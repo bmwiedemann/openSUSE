@@ -1,0 +1,13 @@
+<package name="voms" project="openSUSE:Factory">
+  <title>The Virtual Organisation Membership Service</title>
+  <description>The Virtual Organization Membership Service (VOMS) is an attribute authority
+which serves as central repository for VO user authorization information,
+providing support for sorting users into group hierarchies, keeping track of
+their roles and other attributes in order to issue trusted attribute
+certificates and SAML assertions used in the Grid environment for
+authorization purposes.
+
+This version currently does NOT build the server.
+</description>
+  <devel project="devel:libraries:c_c++" package="voms"/>
+</package>
