@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-layer-shell
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Library to create desktop components for Wayland
 License:        MIT AND LGPL-3.0-or-later AND GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gdk-broadway-3.0)
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.31
 BuildRequires:  pkgconfig(gtk+-broadway-3.0)
 BuildRequires:  pkgconfig(gtk+-wayland-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)

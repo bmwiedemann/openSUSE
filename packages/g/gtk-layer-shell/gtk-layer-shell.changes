@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 28 08:39:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Meson: allow disabling building with gobject-introspection
+  * Compat: bump supported GTK to v3.24.31
+
+-------------------------------------------------------------------
 Wed Mar  3 09:18:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
