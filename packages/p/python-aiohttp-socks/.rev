@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>887218</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2549d8cb18db8f4568afb0403d970060</srcmd5>
+    <version>0.7.1</version>
+    <time>1643404348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.1:
+  Pin python-socks dependency to the &gt;=2.0.0
+  Upgrade python-socks to 2.0.0 
+</comment>
+    <requestid>949572</requestid>
+  </revision>
 </revisionlist>
