@@ -1,7 +1,7 @@
 #
 # spec file for package python3-libmount
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,7 +125,7 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.37.2
+Version:        2.37.3
 Release:        0
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-%{version}.tar.xz
