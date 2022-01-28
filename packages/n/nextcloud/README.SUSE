@@ -6,7 +6,7 @@ Put this in this insert in /etc/php7/apache2/php.ini
 
 opcache.enable=On
 opcache.enable_cli=1
-opcache.interned_strings_buffer=8
+opcache.interned_strings_buffer=16
 opcache.max_accelerated_files=10000
 opcache.memory_consumption=128
 opcache.save_comments=1
