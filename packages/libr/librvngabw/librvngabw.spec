@@ -1,7 +1,7 @@
 #
-# spec file for package libstaroffice
+# spec file for package librvngabw
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           librvngabw
 Version:        0.0.1
 Release:        0
 Summary:        An AbiWord document generator library
-License:        LGPL-2.1+ and MPL-2.0+
+License:        LGPL-2.1-or-later AND MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            https://sourceforge.net/projects/librvngabw/
+URL:            https://sourceforge.net/projects/librvngabw/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -37,7 +37,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{name} is a library for generating AbiWord documents. It is directly
 pluggable into import filters based on librevenge.
 
-
 %package -n %{libname}
 Summary:        An AbiWord document generator library
 Group:          System/Libraries
@@ -45,7 +44,6 @@ Group:          System/Libraries
 %description -n %{libname}
 %{name} is a library for generating AbiWord documents. It is directly
 pluggable into import filters based on librevenge.
-
 
 %package devel
 Summary:        An AbiWord document generator library

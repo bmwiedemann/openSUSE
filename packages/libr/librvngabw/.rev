@@ -7,4 +7,12 @@
     <comment>Used by writerperfect now</comment>
     <requestid>379296</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0d1ce8b7736113e71fb4b1da62567e2</srcmd5>
+    <version>0.0.1</version>
+    <time>1643404346</time>
+    <user>dimstar_suse</user>
+    <comment>fix license header to correspond to SPDX abbreviation</comment>
+    <requestid>949568</requestid>
+  </revision>
 </revisionlist>
