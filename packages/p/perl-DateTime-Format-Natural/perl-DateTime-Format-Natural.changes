@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 24 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.13
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.13  2022-01-23  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.12_01  2022-01-20  <schubiger@cpan.org>
+   - Fix demand_future not working for method count_weekday.
+     [github #16 - joernclausen]
+
+-------------------------------------------------------------------
 Sat Mar 20 03:07:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.12

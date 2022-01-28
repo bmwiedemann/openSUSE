@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Natural
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime-Format-Natural
 Name:           perl-DateTime-Format-Natural
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Parse informal natural language date/time strings
 License:        Artistic-1.0 OR GPL-1.0-or-later
