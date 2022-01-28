@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 27 03:07:34 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.48    2022-01-26
+          [CHANGES]
+           * Implement the new AWAIT_ON_CANCEL API shape for Future::AsyncAwait
+
+          [BUGFIXES]
+           * Make sure to set rtime for immediate futures (RT134620)
+
+-------------------------------------------------------------------
 Sat Jan  2 03:06:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.47
