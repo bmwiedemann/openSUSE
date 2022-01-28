@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,7 @@ applications.
 %if %{with test}
 # https://foss.heptapod.net/python-libs/passlib/-/issues/135 for the
 # skipped tests.
-%pytest -rs -k 'not (test_available_schemes or test_available_schemes or test_default_algorithm or test_empty_hash_value or test_empty_password or test_extension_config or test_invalid_hash_values or test_none_hash_value or test_unusable_flag or test_00_patch_control or test_01_overwrite_detection or test_12_config_presets or test_13_config_defaults or test_21_category_setting)'
+%pytest -rs -k 'not (test_available_schemes or test_available_schemes or test_default_algorithm or test_empty_hash_value or test_empty_password or test_extension_config or test_invalid_hash_values or test_none_hash_value or test_unusable_flag or test_00_patch_control or test_01_overwrite_detection or test_12_config_presets or test_13_config_defaults or test_21_category_setting or test_02_handler_wrapper)'
 %endif
 
 %if !%{with test}

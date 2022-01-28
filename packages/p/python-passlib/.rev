@@ -208,4 +208,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912001</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>54afe4104639789e594c12f0f3f7461a</srcmd5>
+    <version>1.7.4</version>
+    <time>1643404376</time>
+    <user>dimstar_suse</user>
+    <comment>- The disaster of falling tests (see previous record in this
+  changelog for URL) just continues with test_02_handler_wrapper.
+</comment>
+    <requestid>949685</requestid>
+  </revision>
 </revisionlist>

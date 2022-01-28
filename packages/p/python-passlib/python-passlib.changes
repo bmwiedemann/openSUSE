@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 28 12:36:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- The disaster of falling tests (see previous record in this
+  changelog for URL) just continues with test_02_handler_wrapper.
+
+-------------------------------------------------------------------
 Fri Aug  6 14:01:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing tests and ask upstream for investigation
