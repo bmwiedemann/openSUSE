@@ -1,8 +1,6 @@
-Index: mbpfan-2.2.1/mbpfan.service
-===================================================================
---- mbpfan-2.2.1.orig/mbpfan.service
-+++ mbpfan-2.2.1/mbpfan.service
-@@ -4,6 +4,17 @@ After=syslog.target
+--- a/mbpfan.service
++++ b/mbpfan.service
+@@ -4,6 +4,16 @@ After=syslog.target
  After=sysinit.target
  
  [Service]
@@ -11,7 +9,6 @@ Index: mbpfan-2.2.1/mbpfan.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true

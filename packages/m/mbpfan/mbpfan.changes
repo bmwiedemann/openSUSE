@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 27 23:56:25 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Remove "ProtectKernelTunables=true" systemd unit option from
+  harden_mbpfan.service.patch since mbpfan relies on having write
+  permission to kernel variables in order to set the fan speed.
+  Without this permission mbpfan daemon will refuse to start
+  (boo#1195253).
+
+-------------------------------------------------------------------
 Fri Oct 15 07:27:56 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
