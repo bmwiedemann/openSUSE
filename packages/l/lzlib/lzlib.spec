@@ -1,7 +1,7 @@
 #
 # spec file for package lzlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define lname liblz1
 Name:           lzlib
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        LZMA Compression and Decompression Library
 License:        BSD-2-Clause AND GPL-2.0-or-later
