@@ -1062,4 +1062,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1192940</comment>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>71819ab75af6e15c0040978df1f84b79</srcmd5>
+    <version>0.9.1</version>
+    <time>1643486248</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.9.1</comment>
+    <requestid>949593</requestid>
+  </revision>
 </revisionlist>

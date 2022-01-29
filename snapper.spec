@@ -1,7 +1,7 @@
 #
 # spec file for package snapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,9 +32,12 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Tool for filesystem snapshot management
+License:        GPL-2.0-only
+Group:          System/Packages
+URL:            http://snapper.io/
 Source:         snapper-%{version}.tar.bz2
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_system-devel
@@ -49,7 +52,7 @@ BuildRequires:  libacl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  ncurses-devel
-%if 0%{?suse_version} > 1230
+%if 0%{?suse_version}
 BuildRequires:  libbtrfs-devel
 %endif
 %if 0%{?suse_version} > 1310
@@ -65,6 +68,8 @@ BuildRequires:  pkg-config
 BuildRequires:  glibc-langpack-de
 BuildRequires:  glibc-langpack-en
 BuildRequires:  glibc-langpack-fr
+%else
+BuildRequires:  glibc-locale
 %endif
 %if ! 0%{?mandriva_version}
 %if 0%{?fedora_version} >= 23
@@ -81,7 +86,7 @@ BuildRequires:  docbook-xsl
 BuildRequires:  libdbus-1-devel
 BuildRequires:  xsltproc
 %endif
-%if (0%{?suse_version} && 0%{?suse_version} >= 1210)
+%if 0%{?suse_version}
 BuildRequires:  libzypp(plugin:commit)
 %endif
 BuildRequires:  pam-devel
@@ -100,16 +105,12 @@ Requires:       systemd
 Recommends:     logrotate snapper-zypp-plugin
 Supplements:    btrfsprogs
 %endif
-Summary:        Tool for filesystem snapshot management
-License:        GPL-2.0-only
-Group:          System/Packages
-URL:            http://snapper.io/
 
 %description
 This package contains snapper, a tool for filesystem snapshot management.
 
 %prep
-%setup
+%setup -q
 
 %build
 %if %{with coverage}
@@ -194,9 +195,9 @@ fi
 %endif
 %dir %{_prefix}/lib/snapper
 %{_prefix}/lib/snapper/*-helper
-%doc %{_mandir}/*/snapper.8*
-%doc %{_mandir}/*/snapperd.8*
-%doc %{_mandir}/*/snapper-configs.5*
+%{_mandir}/*/snapper.8*
+%{_mandir}/*/snapperd.8*
+%{_mandir}/*/snapper-configs.5*
 %if 0%{?suse_version} > 1310
 %doc %{_mandir}/*/mksubvolume.8*
 %endif
@@ -207,6 +208,7 @@ fi
 %endif
 %{_datadir}/dbus-1/system.d/org.opensuse.Snapper.conf
 %{_datadir}/dbus-1/system-services/org.opensuse.Snapper.service
+%{_datadir}/bash-completion/completions/snapper
 
 %package -n libsnapper5
 Summary:        Library for filesystem snapshot management
@@ -222,22 +224,34 @@ Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((5 - 1))`)
 This package contains libsnapper, a library for filesystem snapshot management.
 
 %files -n libsnapper5
-%defattr(-,root,root)
+%license %{_defaultdocdir}/snapper/COPYING
+%doc %dir %{_defaultdocdir}/snapper
+%doc %{_defaultdocdir}/snapper/AUTHORS
 %{_libdir}/libsnapper.so.*
 %dir %{_sysconfdir}/snapper
 %dir %{_sysconfdir}/snapper/configs
-%dir %{_sysconfdir}/snapper/config-templates
-%config(noreplace) %{_sysconfdir}/snapper/config-templates/default
-%dir %{_sysconfdir}/snapper/filters
-%config(noreplace) %{_sysconfdir}/snapper/filters/*.txt
-%doc %dir %{_defaultdocdir}/snapper
-%doc %{_defaultdocdir}/snapper/AUTHORS
-%doc %{_defaultdocdir}/snapper/COPYING
+%dir %{_datadir}/snapper
+%dir %{_datadir}/snapper/config-templates
+%{_datadir}/snapper/config-templates/default
+%dir %{_datadir}/snapper/filters
+%{_datadir}/snapper/filters/*.txt
 %if 0%{?suse_version}
 %{_fillupdir}/sysconfig.snapper
 %else
 %config(noreplace) %{_sysconfdir}/sysconfig/snapper
 %endif
+
+%pre -n libsnapper5
+# Migration from /etc/snapper to /usr/share/snapper
+for i in config-templates/default filters/base.txt filters/lvm.txt filters/x11.txt ; do
+    test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i}.rpmsave.old ||:
+done
+
+%posttrans -n libsnapper5
+# Migration from /etc/snapper to /usr/share/snapper
+for i in config-templates/default filters/base.txt filters/lvm.txt filters/x11.txt ; do
+    test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i} ||:
+done
 
 %post -n libsnapper5
 /sbin/ldconfig
@@ -258,7 +272,7 @@ Requires:       libacl-devel
 Requires:       libsnapper5 = %version
 Requires:       libstdc++-devel
 Requires:       libxml2-devel
-%if 0%{?suse_version} > 1230
+%if 0%{?suse_version}
 Requires:       libbtrfs-devel
 %endif
 %if 0%{?suse_version} > 1310
@@ -272,7 +286,6 @@ This package contains header files and documentation for developing with
 libsnapper.
 
 %files -n libsnapper-devel
-%defattr(-,root,root)
 %{_libdir}/libsnapper.so
 %{_includedir}/snapper
 
@@ -287,16 +300,22 @@ This package contains a plugin for zypp that makes filesystem snapshots with
 snapper during commits.
 
 %files -n snapper-zypp-plugin
-%defattr(-,root,root)
-%config(noreplace) %{_sysconfdir}/snapper/zypp-plugin.conf
-%if 0%{?suse_version} < 1210
-%dir /usr/lib/zypp
-%dir /usr/lib/zypp/plugins
-%dir /usr/lib/zypp/plugins/commit
-%endif
+%{_datadir}/snapper/zypp-plugin.conf
 /usr/lib/zypp/plugins/commit/snapper-zypp-plugin
 %doc %{_mandir}/*/snapper-zypp-plugin.8*
 %doc %{_mandir}/*/snapper-zypp-plugin.conf.5*
+
+%pre -n snapper-zypp-plugin
+# Migration from /etc/snapper to /usr/share/snapper
+for i in zypp-plugin.conf ; do
+    test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i}.rpmsave.old ||:
+done
+
+%posttrans -n snapper-zypp-plugin
+# Migration from /etc/snapper to /usr/share/snapper
+for i in zypp-plugin.conf ; do
+    test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i} ||:
+done
 
 %package -n pam_snapper
 Requires:       pam
@@ -308,7 +327,6 @@ Group:          System/Packages
 A PAM module for calling snapper during user login and logout.
 
 %files -n pam_snapper
-%defattr(-,root,root)
 /%{pam_security_dir}/pam_snapper.so
 %dir /usr/lib/pam_snapper
 /usr/lib/pam_snapper/*.sh
@@ -322,7 +340,6 @@ Group:          System/Packages
 Tests to be run in a scratch machine to test that snapper operates as expected.
 
 %files testsuite
-%defattr(-,root,root)
 %dir %{_libdir}/snapper
 %dir %{_libdir}/snapper/testsuite
 %{_libdir}/snapper/testsuite/*
