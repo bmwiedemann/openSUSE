@@ -2237,4 +2237,13 @@ NOTE: Without this patch, dovecot is spamming the audit.log with denials. Please
   (bsc#1192684). (forwarded request 947009 from scabrero)</comment>
     <requestid>947042</requestid>
   </revision>
+  <revision rev="163" vrev="9">
+    <srcmd5>3f9baacf87e0558df13e03148f9f24da</srcmd5>
+    <version>3.0.3</version>
+    <time>1643486502</time>
+    <user>dimstar_suse</user>
+    <comment>- add ruby-3.1-build-fix.diff: fix build with ruby 3.1 (boo#1194221,
+  MR 827) (forwarded request 949319 from cboltz)</comment>
+    <requestid>949320</requestid>
+  </revision>
 </revisionlist>

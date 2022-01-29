@@ -1,0 +1,110 @@
+https://gitlab.com/apparmor/apparmor/-/merge_requests/827
+
+From fde8acf86ddb82f1c10332478daebd3fad1bee45 Mon Sep 17 00:00:00 2001
+From: John Johansen <john.johansen@canonical.com>
+Date: Wed, 26 Jan 2022 08:04:04 -0800
+Subject: [PATCH] libapparmor: Fix ruby 3.1 build for libapparmor
+
+The Hack used to build the libapparmor swig interface for ruby fails
+with ruby 3.1.  Instead of trying to do black magic in ruby to rename
+the generated Makefile to Makefile.new, just save off the Makefile
+and restore after ruby's setup has been called.
+
+Fixes: https://gitlab.com/apparmor/apparmor/-/issues/206
+Signed-off-by: John Johansen <john.johansen@canonical.com>
+---
+ .gitignore                                  |  2 +-
+ libraries/libapparmor/swig/ruby/Makefile.am |  4 +++-
+ libraries/libapparmor/swig/ruby/extconf.rb  | 14 +++-----------
+ 3 files changed, 7 insertions(+), 13 deletions(-)
+
+
+
+Additionally patch libraries/libapparmor/swig/ruby/Makefile.in which is shipped
+in the tarball and based on Makefile.am.
+
+
+
+
+diff --git a/.gitignore b/.gitignore
+index 4782a351a..bac706f2b 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -177,7 +177,7 @@ libraries/libapparmor/swig/ruby/LibAppArmor_wrap.c
+ libraries/libapparmor/swig/ruby/LibAppArmor_wrap.o
+ libraries/libapparmor/swig/ruby/Makefile
+ libraries/libapparmor/swig/ruby/Makefile.in
+-libraries/libapparmor/swig/ruby/Makefile.new
++libraries/libapparmor/swig/ruby/Makefile.bak
+ libraries/libapparmor/swig/ruby/Makefile.ruby
+ libraries/libapparmor/swig/ruby/mkmf.log
+ libraries/libapparmor/testsuite/.deps
+diff --git a/libraries/libapparmor/swig/ruby/Makefile.am b/libraries/libapparmor/swig/ruby/Makefile.am
+index 03ef02fd6..3f4572816 100644
+--- a/libraries/libapparmor/swig/ruby/Makefile.am
++++ b/libraries/libapparmor/swig/ruby/Makefile.am
+@@ -9,7 +9,9 @@ LibAppArmor_wrap.c : $(srcdir)/../SWIG/libapparmor.i
+ MOSTLYCLEANFILES=LibAppArmor_wrap.c
+ 
+ Makefile.ruby: extconf.rb
++	mv Makefile Makefile.bak
+ 	PREFIX=$(prefix) $(RUBY) $< --with-LibAppArmor-include=$(top_srcdir)/include
++	mv Makefile.bak Makefile
+ 
+ LibAppArmor.so: LibAppArmor_wrap.c Makefile.ruby
+ 	$(MAKE) -fMakefile.ruby
+@@ -22,7 +24,7 @@ install-exec-local: Makefile.ruby
+ 
+ clean-local:
+ 	if test -f Makefile.ruby; then $(MAKE) -fMakefile.ruby clean; fi
+-	rm -f Makefile.ruby Makefile.new
++	rm -f Makefile.ruby Makefile.new Makefile.bak
+ 	rm -f *.o *.so *.log
+ 
+ endif
+diff --git a/libraries/libapparmor/swig/ruby/extconf.rb b/libraries/libapparmor/swig/ruby/extconf.rb
+index 647d2d831..6a2ef7457 100644
+--- a/libraries/libapparmor/swig/ruby/extconf.rb
++++ b/libraries/libapparmor/swig/ruby/extconf.rb
+@@ -2,16 +2,8 @@
+ 
+ require 'mkmf'
+ 
+-# hack 1: ruby black magic to write a Makefile.new instead of a Makefile
+-alias open_orig open
+-def open(path, mode=nil, perm=nil)
+-  path = 'Makefile.new' if path == 'Makefile'
+-  if block_given?
+-    open_orig(path, mode, perm) { |io| yield(io) }
+-  else
+-    open_orig(path, mode, perm)
+-  end
+-end
++# hack 1: Before extconf.rb gets called, Makefile gets backed up, and
++#         restored afterwards (see Makefile.am)
+ 
+ if ENV['PREFIX']
+   prefix = CONFIG['prefix']
+@@ -27,7 +19,7 @@ if find_library('apparmor', 'parse_record', '../../src/.libs') and
+ 
+   # hack 2: strip all rpath references
+   open('Makefile.ruby', 'w') do |out|
+-    IO.foreach('Makefile.new') do |line|
++    IO.foreach('Makefile') do |line|
+       l = line.gsub(/-Wl,-R'[^']*'/, '')
+       # oldincludedir = $(DESTDIR)/usr/include
+       # -> oldincludedir = /usr/include
+Index: apparmor-3.0.3/libraries/libapparmor/swig/ruby/Makefile.in
+===================================================================
+--- apparmor-3.0.3.orig/libraries/libapparmor/swig/ruby/Makefile.in	2022-01-26 13:13:38.958238926 +0100
++++ apparmor-3.0.3/libraries/libapparmor/swig/ruby/Makefile.in	2022-01-26 13:15:08.206094528 +0100
+@@ -469,7 +469,9 @@ uninstall-am:
+ @HAVE_RUBY_TRUE@	$(SWIG) -ruby -module LibAppArmor -I$(top_srcdir)/include -o $@ $(srcdir)/../SWIG/libapparmor.i
+ 
+ @HAVE_RUBY_TRUE@Makefile.ruby: extconf.rb
++@HAVE_RUBY_TRUE@	mv Makefile Makefile.bak
+ @HAVE_RUBY_TRUE@	PREFIX=$(prefix) $(RUBY) $< --with-LibAppArmor-include=$(top_srcdir)/include
++@HAVE_RUBY_TRUE@	mv Makefile.bak Makefile
+ 
+ @HAVE_RUBY_TRUE@LibAppArmor.so: LibAppArmor_wrap.c Makefile.ruby
+ @HAVE_RUBY_TRUE@	$(MAKE) -fMakefile.ruby

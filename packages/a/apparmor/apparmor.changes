@@ -1,9 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 26 17:14:58 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- add ruby-3.1-build-fix.diff: fix build with ruby 3.1 (boo#1194221,
+  MR 827)
+
+-------------------------------------------------------------------
 Mon Jan 17 10:27:38 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - add update-samba-abstractions-ldb2.diff: Cater for changes to ldb
-  packaging to allow parallel installation with libldb;
-  (bsc#1192684).
+  packaging to allow parallel installation with libldb (bsc#1192684).
 
 -------------------------------------------------------------------
 Mon Dec 20 11:01:50 UTC 2021 - Noel Power <nopower@suse.com>

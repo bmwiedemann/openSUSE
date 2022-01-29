@@ -2,7 +2,7 @@
 # spec file for package apparmor
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2011-2021 Christian Boltz
+# Copyright (c) 2011-2022 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,8 +92,11 @@ Patch9:         aa-notify-more-arch-mr809.diff
 Patch10:        openssl-engdef-mr818.diff
 
 # add update-samba-abstractions-ldb2.diff to cater for changes to ldb
-# packaging to allow parallel installation with libldb bsc#1192684
+# packaging to allow parallel installation with libldb bsc#1192684 (submitted upstream 2022-01-17 - https://gitlab.com/apparmor/apparmor/-/merge_requests/821)
 Patch11:        update-samba-abstractions-ldb2.diff
+
+# fix build with ruby 3.1 (boo#1194221, from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/827)
+Patch12:        ruby-3.1-build-fix.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -362,6 +365,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 %define _lto_cflags %{nil}

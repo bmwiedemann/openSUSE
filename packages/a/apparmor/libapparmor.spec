@@ -2,7 +2,7 @@
 # spec file for package libapparmor
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2011-2020 Christian Boltz
+# Copyright (c) 2011-2022 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
