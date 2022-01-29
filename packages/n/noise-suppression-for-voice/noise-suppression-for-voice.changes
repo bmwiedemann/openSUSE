@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Jan 28 17:41:22 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.91+git8.6922453:
+  * Added hint for latency or crackling problems.
+  * Make instruction to copy VST sdk files more explicit
+  * Add link to archive.org for VST2 sdk
+  * Add a how-to for PipeWire
+  * common: do not dereference first element of zero-sized output buffer
+  * typo in readme
+  * Remove lib prefix from lv2 plugin binary.
+  * Also copy .ttl files for lv2 plugin and fix path
+  * Update documentation with adjustment to prevent loopback switching source/sink
+  * Add a link to the guide for EqualizerAPO
+
+-------------------------------------------------------------------
+Mon Jun 29 17:07:56 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
