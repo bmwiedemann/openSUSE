@@ -134,6 +134,7 @@ Substitute: netcfg netcfg libnss_usrfiles2
   BuildFlags: useccache:gtk3
   BuildFlags: useccache:gtk3:doc
   BuildFlags: useccache:llvm9
+  BuildFlags: useccache:nodejs-electron
   buildflags: useccache:tensorflow
   buildflags: useccache:tensorflow2:hpc
   buildflags: useccache:tensorflow2:hpc-openmpi2
