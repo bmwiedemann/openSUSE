@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,8 @@ Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
 URL:            https://sf.net/projects/procps-ng/
-Source:         http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
-#Alternate:     https://gitlab.com/procps-ng/procps/repository/archive.tar.bz2?ref=v%{version}
+Source:         https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
+#Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%{version}/procps-v%{version}.tar.gz
 Source1:        procps-rpmlintrc
 Patch0:         procps-ng-3.3.9-watch.patch
 Patch1:         procps-v3.3.3-ia64.diff

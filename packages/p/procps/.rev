@@ -1250,4 +1250,12 @@ There are also man pages translations but they doesn't get installed automatical
   is unexpected on the command lines of processes</comment>
     <requestid>903722</requestid>
   </revision>
+  <revision rev="124" vrev="6">
+    <srcmd5>b64e97355391b9bee6fd806361193a41</srcmd5>
+    <version>3.3.17</version>
+    <time>1643486470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>949458</requestid>
+  </revision>
 </revisionlist>
