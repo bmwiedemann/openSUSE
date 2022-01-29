@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 %define sover 25
 %define with_bindings 0
-
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
 Name:           openscap
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
+Summary:        A Set of Libraries for Integration with SCAP
+License:        LGPL-2.1-or-later
+Group:          Development/Tools/Other
+URL:            https://www.open-scap.org/
 Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
-# temp snapshot to make it build with new RPM before 1.3.2
-#Source:         openscap-%version.tar.bz2
 Source1:        openscap-rpmlintrc
 Source2:        sysconfig.oscap-scan
 # SUSE specific profile, based on yast2-security checks.
@@ -41,55 +41,55 @@ Source6:        oscap-scan.sh
 Patch1:         openscap-opensuse-cpe.patch
 Patch2:         openscap-suse-cpe.patch
 Patch3:         openscap-docker-add-suse.patch
-URL:            https://www.open-scap.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  asciidoc
-BuildRequires:  doxygen
-# Next few lines are needed for unit tests, they expect /etc/os-release to exist
-%if !0%{?is_opensuse} && 0%{?sle_version} < 130000
-BuildRequires:  sles-release
-%else
-BuildRequires:  distribution-release
+%if 0%{?suse_version} != 1599
+Patch4:         oscap-remediate.service.in.patch
 %endif
-BuildRequires:  libacl-devel
-BuildRequires:  libattr-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libxml2-devel
+BuildRequires:  asciidoc
 # Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
+BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  gconf2-devel
+BuildRequires:  libacl-devel
+BuildRequires:  libattr-devel
 BuildRequires:  libblkid-devel
+BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
+BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
+BuildRequires:  libyaml-devel
 BuildRequires:  lua
 BuildRequires:  openldap2-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  perl-XML-XPath
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  procps-devel
 BuildRequires:  python3-devel
 BuildRequires:  rpm-devel
 BuildRequires:  sendmail
 BuildRequires:  swig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  unixODBC-devel
 BuildRequires:  xmlsec1-devel
 BuildRequires:  xmlsec1-openssl-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-Summary:        A Set of Libraries for Integration with SCAP
-License:        LGPL-2.1-or-later
-Group:          Development/Tools/Other
-BuildRequires:  systemd-rpm-macros
 # remove extra packages from version 1.2.9 and older
 Obsoletes:      openscap-engine-sce < %{version}
 Obsoletes:      openscap-extra-probes < %{version}
+# Next few lines are needed for unit tests, they expect /etc/os-release to exist
+%if !0%{?is_opensuse} && 0%{?sle_version} < 130000
+BuildRequires:  sles-release
+%else
+BuildRequires:  distribution-release
+%endif
 
 %description
 OpenSCAP is a set of open source libraries providing an easier path for
@@ -102,10 +102,10 @@ related information.
 More information about SCAP can be found at nvd.nist.gov.
 
 %package devel
-Requires:       %{name} = %{version}-%{release}
-Requires:       libopenscap%{sover} = %{version}
 Summary:        Development Files for OpenSCAP
 Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}-%{release}
+Requires:       libopenscap%{sover} = %{version}
 
 %description devel
 This package contains the development files (mainly C header files) for the
@@ -120,21 +120,20 @@ This package contains the Docker support for OpenSCAP.
 
 %if 0%{?with_bindings}
 %package -n python-openscap
-%py_requires
-Requires:       %{name} = %{version}-%{release}
-Provides:       openscap-python = %{version}-%{release}
 Summary:        OpenSCAP Python Library
 Group:          Development/Libraries/Python
+Requires:       %{name} = %{version}-%{release}
+Provides:       openscap-python = %{version}-%{release}
 
 %description -n python-openscap
 The OpenSCAP Python Library for easy integration with SCAP.
 
 %package -n perl-openscap
+Summary:        OpenSCAP Perl Library
+Group:          Development/Libraries/Perl
 Requires:       %{name} = %{version}-%{release}
 Requires:       perl = %{perl_version}
 Provides:       openscap-perl = %{version}-%{release}
-Summary:        OpenSCAP Perl Library
-Group:          Development/Libraries/Perl
 
 %description -n perl-openscap
 The OpenSCAP Perl Library for easy integration with SCAP.
@@ -151,6 +150,7 @@ The OpenSCAP C Library for easy integration with SCAP.
 Summary:        Openscap utilities
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
+# FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
 %systemd_requires
 
@@ -172,13 +172,10 @@ Group:          System/Libraries
 %description -n libopenscap_sce%{sover}
 This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 
-%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 %if 0%{?with_bindings}
@@ -186,7 +183,11 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %else
 %cmake -DENABLE_DOCS=TRUE -DENABLE_PYTHON3=FALSE -DENABLE_PERL=FALSE -DCMAKE_SHARED_LINKER_FLAGS=""
 %endif
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} == 1599
+%cmake_build
+%else
 %make_jobs
+%endif
 
 %check
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
@@ -224,6 +225,17 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/* %{buildroot}%{_datadir}/bash-c
 ln -s  %{_datadir}/openscap/scap-yast2sec-oval.xml %{buildroot}/%{_datadir}/openscap/scap-oval.xml
 ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/openscap/scap-xccdf.xml
 
+# oscap-remediate should be in /usr/libexec but this is not well supported in
+# older versions of the distro
+%if 0%{?suse_version} != 1599
+%if 0%{?sle_version} > 150200
+mv %{buildroot}/%{_libexecdir}/oscap-remediate %{buildroot}/%{_bindir}
+%else
+# in older versions _libexecdir expands to /usr/lib, which does not help
+mv %{buildroot}/%{_prefix}/libexec/oscap-remediate %{buildroot}/%{_bindir}
+%endif
+%endif
+
 %post -n libopenscap%{sover} -p /sbin/ldconfig
 %postun -n libopenscap%{sover} -p /sbin/ldconfig
 
@@ -231,19 +243,18 @@ ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/ope
 %postun -n libopenscap_sce%{sover} -p /sbin/ldconfig
 
 %post -n openscap-utils
-%service_add_post oscap-scan.service
+%service_add_post oscap-scan.service oscap-remediate.service
 
 %postun -n openscap-utils
-%service_del_postun oscap-scan.service
+%service_del_postun oscap-scan.service oscap-remediate.service
 
 %pre -n openscap-utils
-%service_add_pre oscap-scan.service
+%service_add_pre oscap-scan.service oscap-remediate.service
 
 %preun -n openscap-utils
-%service_del_preun oscap-scan.service
+%service_del_preun oscap-scan.service oscap-remediate.service
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %doc AUTHORS NEWS
 %dir %{_datadir}/openscap
@@ -255,35 +266,29 @@ ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/ope
 %{_datadir}/openscap/xsl/*
 
 %files -n libopenscap%{sover}
-%defattr(-, root, root)
 %{_libdir}/libopenscap.so.%{sover}*
 
 %files devel
-%defattr(-, root, root)
-%dir /usr/share/doc/openscap
-/usr/share/doc/openscap/*
-%{_includedir}/*
+%dir %{_datadir}/doc/openscap
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_datadir}/doc/openscap/*
+%{_includedir}/*
 
 %files docker
-%defattr(-, root, root)
 %{python3_sitelib}/oscap_docker_python
 %{_bindir}/oscap-docker
 
 %if 0%{?with_bindings}
 %files -n python-openscap
-%defattr(-, root, root)
 %{python_sitearch}/*
 
 %files -n perl-openscap
-%defattr(-, root, root)
 %{perl_vendorlib}/openscap.pm
 %{perl_vendorarch}/openscap_pm.so
 %endif
 
 %files utils
-%defattr(-,root,root,-)
 %{_fillupdir}/sysconfig.oscap-scan
 %doc docs/oscap-scan.cron
 %{_mandir}/man8/*
@@ -299,13 +304,18 @@ ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/ope
 %{_bindir}/oscap-run-sce-script
 %{_sbindir}/rcoscap-scan
 %{_datadir}/bash-completion/completions/*
+%{_bindir}/oscap-remediate-offline
+%{_prefix}/lib/systemd/system/oscap-remediate.service
+%if 0%{?suse_version} != 1599
+%{_bindir}/oscap-remediate
+%else
+%{_libexecdir}/oscap-remediate
+%endif
 
 %files content
-%defattr(-,root,root,-)
 %{_datadir}/openscap/scap*.xml
 
 %files -n libopenscap_sce%{sover}
-%defattr(-,root,root,-)
 %{_libdir}/libopenscap_sce.so.*
 
 %changelog
