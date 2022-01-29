@@ -1,7 +1,7 @@
 #
 # spec file for package google-droid-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define fontname droid-fonts
 
 Name:           google-droid-fonts
-#Provides:       locale(bg;el;ru;bg)
 Version:        20121204
 Release:        0
 Summary:        Fonts With Extensive Style and Language Support Developed for Android
 License:        Apache-2.0
 Group:          System/X11/Fonts
-Url:            http://www.ascendercorp.com/pr/2007-11-12/
+URL:            http://www.ascendercorp.com/pr/2007-11-12/
 Source:         %{fontname}-%{version}.tar.bz2
+Source1:        https://github.com/aosp-mirror/platform_frameworks_base/raw/master/data/fonts/DroidSansFallbackFull.ttf
+Source2:        https://github.com/aosp-mirror/platform_frameworks_base/raw/master/data/fonts/DroidSansMono.ttf
+Source3:        https://github.com/aosp-mirror/platform_frameworks_base/raw/master/data/fonts/DroidSansFallback.ttf
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
 # FIXME: This causes a rpmlint warning; change <= to < once there's a new upstream version
@@ -51,6 +53,11 @@ http://www.ascendercorp.com/pr/2007-11-12/
 %setup -q -n %{fontname}-%{version}
 
 %build
+rm DroidSansFallbackFull.ttf
+rm DroidSansMono.ttf
+cp %{SOURCE1} .
+cp %{SOURCE2} .
+cp %{SOURCE3} .
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}

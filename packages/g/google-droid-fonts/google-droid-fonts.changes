@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 25 17:16:15 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add sources DroidSansFallback.ttf DroidSansFallbackFull.ttf 
+  DroidSansMono.ttf: Merge the latest modification from Android
+  project (bsc#1190886).
+
+-------------------------------------------------------------------
 Tue Jul 16 12:19:10 UTC 2013 - pgajdos@suse.com
 
 - updated from android git
