@@ -53,7 +53,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.43
+Version:        0.3.44
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -61,16 +61,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-Patch0:         0001-audioconvert-avoid-infinite-loop.patch
-Patch1:         0001-bluez5-handle-missing-device-and-adapter-in-quirks.patch
-Patch2:         0001-jack-remember-last-return-from-jack_get_buffer_size.patch
-Patch3:         0001-pulse-server-show-monitor-sources-with-device_class_monitor.patch
-Patch4:         0001-raop-fix-errno-check.patch
-Patch5:         0001-bluez5-dont-create-device-if-adapter-is-missing.patch
-Patch6:         0001-loop-invoke-immediately-when-loop-is-not-running.patch
-Patch7:         0001-merger-also-reconfigure-when-monitor-changes.patch
-Patch8:         0001-pw-metadata-handle-NULL-props-from-metadata-object.patch
-Patch9:         0001-alsa-improve-rate-selection.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -80,7 +70,7 @@ BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  meson >= 0.56.0
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
@@ -117,6 +107,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libfreeaptx)
 %endif
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
@@ -533,6 +524,7 @@ fi
 %{_udevrulesdir}/90-pipewire-alsa.rules
 %{_datadir}/pipewire/client.conf
 %{_datadir}/pipewire/client-rt.conf
+%{_datadir}/pipewire/minimal.conf
 
 %files spa-plugins-%{spa_ver_str}
 %dir %{_libdir}/spa-%{spa_ver}/
