@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jan 13 15:14:28 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update SPEC file:
+      Remove usermerged macro and script: 
+         1, currently, it blocks the building in SLE-15-SP4;
+         2, plymouth already build with "without-system-root-install", 
+         make all binary install to /usr/bin and /usr/sbin; which 
+         fit for /user merge target.
+         3, plymouth is not launched by user. and all system intergration
+         point are called from /usr.
+         4, So no change need to do, everything already works.
+      Remove rm rhgb-client: 
+         plymouth already build with "without-rhgb-compat-link", 
+         rhgb doesn't generated from beginning.
+      Remove "disable-libkms": 
+         SUSE support kms and drm very well now, plymouth works 
+         fine with them.
+- Remove plymouth-correct-runtime-dir.patch: 
+      Use upstream build param "with-runtimedir=/run" to instead.
+- Change plymouth-dracut build arch to noarch: 
+      It only contain a script.
+  Change libply, libply-boot-client, libply-splash-core, 
+  libply-splash-graphics group from Development/Libraries/C and
+  C++ to System/Libraries:
+      They are plymouth and plymouthd runtime library, which install
+      together with plymouth.
+- Resort rpm file list.
+
+-------------------------------------------------------------------
 Tue Aug 31 14:13:20 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-keep-KillMode-none.patch: Keep the plymouth-start.service 

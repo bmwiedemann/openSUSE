@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,18 +35,16 @@ Source1:        boot-duration
 Patch0:         plymouth-dracut-path.patch
 # PATCH-FIX-OPENSUSE plymouth-some-greenish-openSUSE-colors.patch bnc#886148 fcrozat@suse.com -- To use suse colors in tribar.
 Patch1:         plymouth-some-greenish-openSUSE-colors.patch
-# PATCH-FIX-OPENSUSE plymouth-correct-runtime-dir.patch tittiatcoke@gmail.com -- Make sure the runtime directory is /run and not /var/run
-Patch2:         plymouth-correct-runtime-dir.patch
 # PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de  -- Fix man page installation
-Patch3:         plymouth-manpages.patch
+Patch2:         plymouth-manpages.patch
 # PATCH-FIX-SLE plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch qzhao@suse.com  jsc#SLE-11637 -- plymouth will use plymouthd.defaults instead of plymouth.conf to close the leap gap.
-Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
+Patch3:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
-Patch6:         plymouth-disable-fedora-logo.patch
+Patch4:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
-Patch7:         plymouth-only_use_fb_for_cirrus_bochs.patch
+Patch5:         plymouth-only_use_fb_for_cirrus_bochs.patch
 # PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
-Patch8:         plymouth-keep-KillMode-none.patch
+Patch6:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
@@ -98,16 +96,24 @@ messages are instead redirected to a log file for viewing
 after boot.
 %lang_package
 
+%package -n libply%{soversion}
+Summary:        Plymouth core library
+Group:          System/Libraries
+Requires:       libply-boot-client%{soversion} = %{version}
+
+%description -n libply%{soversion}
+This package contains the libply library used by Plymouth.
+
 %package -n libply-boot-client%{soversion}
 Summary:        Plymouth core library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 
 %description -n libply-boot-client%{soversion}
 This package contains the libply-boot-client library used by Plymouth.
 
 %package -n libply-splash-core%{soversion}
 Summary:        Plymouth core library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 
 %description -n libply-splash-core%{soversion}
 This package contains the libply-splash-core library
@@ -115,20 +121,12 @@ used by graphical Plymouth splashes.
 
 %package -n libply-splash-graphics%{soversion}
 Summary:        Plymouth graphics libraries
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 BuildRequires:  libpng-devel
 
 %description -n libply-splash-graphics%{soversion}
 This package contains the libply-splash-graphics library
 used by graphical Plymouth splashes.
-
-%package -n libply%{soversion}
-Summary:        Plymouth core library
-Group:          Development/Libraries/C and C++
-Requires:       libply-boot-client%{soversion} = %{version}
-
-%description -n libply%{soversion}
-This package contains the libply library used by Plymouth.
 
 %package branding-upstream
 Summary:        default configuration file and branding from the Plymouth upstream.
@@ -163,6 +161,7 @@ Summary:        Plymouth related utilities for dracut
 Group:          System/Base
 Requires:       %{name} = %{version}
 Supplements:    packageand(plymouth:dracut)
+BuildArch:      noarch
 
 %description dracut
 This package contains utilities that integrate dracut with Plymouth
@@ -371,7 +370,6 @@ autoreconf -ivf
            --disable-static                                      \
            --disable-upstart-monitoring                          \
            --disable-tests                                       \
-           --disable-libkms                                      \
 %if %{without x11_renderer}
            --disable-gtk                                         \
 %endif
@@ -381,6 +379,7 @@ autoreconf -ivf
            --with-background-start-color-stop=0x1A3D1F           \
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
+           --with-runtimedir=/run                                \
            --without-rhgb-compat-link                            \
            --without-system-root-install
 
@@ -388,20 +387,11 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-rm -f %{buildroot}/%{_bindir}/rhgb-client
-
-%if !0%{?usrmerged}
-#Link the plymouth client binary also to /bin until the move to /usr is completed
-mkdir %{buildroot}/bin
-(cd %{buildroot}/bin; ln -s ..%{_bindir}/plymouth)
-%endif
 
 # Glow isn't quite ready for primetime
-rm -rf %{buildroot}%{_datadir}/plymouth/glow/
 rm -rf %{buildroot}%{_datadir}/plymouth/themes/glow/
-rm -f %{buildroot}%{_libdir}/plymouth/glow.so
 
-find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -delete
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/plymouth
 mkdir -p %{buildroot}/run/plymouth
@@ -570,6 +560,9 @@ fi
 %{_libdir}/pkgconfig/ply-boot-client.pc
 %{_includedir}/plymouth-1
 
+%files -n libply%{soversion}
+%{_libdir}/libply.so.%{soversion}*
+
 %files -n libply-boot-client%{soversion}
 %{_libdir}/libply-boot-client.so.%{soversion}*
 
@@ -579,18 +572,18 @@ fi
 %files -n libply-splash-graphics%{soversion}
 %{_libdir}/libply-splash-graphics.so.%{soversion}*
 
-%files -n libply%{soversion}
-%{_libdir}/libply.so.%{soversion}*
-
 %files scripts
 %dir %{_libexecdir}/plymouth
-%{_sbindir}/plymouth-set-default-theme
 %{_libexecdir}/plymouth/plymouth-update-initrd
+%{_sbindir}/plymouth-set-default-theme
 
 %if %{with x11_renderer}
 %files x11-renderer
 %{_libdir}/plymouth/renderers/x11*
 %endif
+
+%files plugin-fade-throbber
+%{_libdir}/plymouth/fade-throbber.so
 
 %files plugin-label
 %{_libdir}/plymouth/label.so
@@ -598,63 +591,44 @@ fi
 %files plugin-label-ft
 %{_libdir}/plymouth/label-ft.so
 
-%files plugin-fade-throbber
-%{_libdir}/plymouth/fade-throbber.so
-
-%files theme-fade-in
-%dir %{_datadir}/plymouth/themes/fade-in
-%{_datadir}/plymouth/themes/fade-in/bullet.png
-%{_datadir}/plymouth/themes/fade-in/entry.png
-%{_datadir}/plymouth/themes/fade-in/lock.png
-%{_datadir}/plymouth/themes/fade-in/star.png
-%{_datadir}/plymouth/themes/fade-in/fade-in.plymouth
-
-%files theme-spinfinity
-%dir %{_datadir}/plymouth/themes/spinfinity
-%{_datadir}/plymouth/themes/spinfinity/box.png
-%{_datadir}/plymouth/themes/spinfinity/bullet.png
-%{_datadir}/plymouth/themes/spinfinity/entry.png
-%{_datadir}/plymouth/themes/spinfinity/lock.png
-%{_datadir}/plymouth/themes/spinfinity/capslock.png
-%{_datadir}/plymouth/themes/spinfinity/keyboard.png
-%{_datadir}/plymouth/themes/spinfinity/keymap-render.png
-%{_datadir}/plymouth/themes/spinfinity/animation-0001.png
-%{_datadir}/plymouth/themes/spinfinity/throbber-[0-3][0-9].png
-%{_datadir}/plymouth/themes/spinfinity/spinfinity.plymouth
+%files plugin-script
+%{_libdir}/plymouth/script.so
 
 %files plugin-space-flares
 %{_libdir}/plymouth/space-flares.so
 
-%files theme-spinner
-%dir %{_datadir}/plymouth/themes/spinner
-%{_datadir}/plymouth/themes/spinner/*.*
-
-%files theme-solar
-%dir %{_datadir}/plymouth/themes/solar
-%{_datadir}/plymouth/themes/solar/*.png
-%{_datadir}/plymouth/themes/solar/solar.plymouth
-
-%files theme-tribar
-%dir %{_datadir}/plymouth/themes/tribar
-%{_datadir}/plymouth/themes/tribar/*.*
+%files plugin-tribar
+%{_libdir}/plymouth/tribar.so
 
 %files plugin-two-step
 %{_libdir}/plymouth/two-step.so
 
-%files plugin-tribar
-%{_libdir}/plymouth/tribar.so
+%files theme-bgrt
+%dir %{_datadir}/plymouth/themes/bgrt
+%{_datadir}/plymouth/themes/bgrt/*
 
-%files plugin-script
-%{_libdir}/plymouth/script.so
+%files theme-fade-in
+%dir %{_datadir}/plymouth/themes/fade-in
+%{_datadir}/plymouth/themes/fade-in/*
+
+%files theme-spinfinity
+%dir %{_datadir}/plymouth/themes/spinfinity
+%{_datadir}/plymouth/themes/spinfinity/*
 
 %files theme-script
 %dir %{_datadir}/plymouth/themes/script/
-%{_datadir}/plymouth/themes/script/*.png
-%{_datadir}/plymouth/themes/script/script.script
-%{_datadir}/plymouth/themes/script/script.plymouth
+%{_datadir}/plymouth/themes/script/*
 
-%files theme-bgrt
-%dir %{_datadir}/plymouth/themes/bgrt
-%{_datadir}/plymouth/themes/bgrt/*.*
+%files theme-spinner
+%dir %{_datadir}/plymouth/themes/spinner
+%{_datadir}/plymouth/themes/spinner/*
+
+%files theme-solar
+%dir %{_datadir}/plymouth/themes/solar
+%{_datadir}/plymouth/themes/solar/*
+
+%files theme-tribar
+%dir %{_datadir}/plymouth/themes/tribar
+%{_datadir}/plymouth/themes/tribar/*
 
 %changelog
