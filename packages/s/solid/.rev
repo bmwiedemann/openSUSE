@@ -838,4 +838,12 @@
     <comment>KDE Frameworks 5.90.0 (forwarded request 944778 from cgiboudeaux)</comment>
     <requestid>945100</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>260f0081d3d7cb9096251b52ca527167</srcmd5>
+    <version>5.90.0</version>
+    <time>1643486250</time>
+    <user>dimstar_suse</user>
+    <comment>- Also use libplist-2.0 in SLE15-SP4/Leap 15.4 (forwarded request 949622 from alarrosa)</comment>
+    <requestid>949625</requestid>
+  </revision>
 </revisionlist>
