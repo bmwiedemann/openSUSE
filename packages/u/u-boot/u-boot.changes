@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 27 15:56:47 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2022.01
+* Patches added:
+  0016-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
+  0017-rockchip-sdhci-Fix-RK3399-eMMC-PHY-.patch
+
+-------------------------------------------------------------------
 Tue Jan 18 14:54:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2022.01

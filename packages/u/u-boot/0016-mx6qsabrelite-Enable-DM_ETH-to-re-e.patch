@@ -1,0 +1,43 @@
+From 80227814c0c036b8f2762c92ed5112c0b2dfb569 Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Thu, 27 Jan 2022 14:18:44 +0100
+Subject: [PATCH] mx6qsabrelite: Enable DM_ETH to re-enable EFI support
+
+---
+ configs/mx6qsabrelite_defconfig | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configs/mx6qsabrelite_defconfig b/configs/mx6qsabrelite_defconfig
+index 8625189294..6f219a1944 100644
+--- a/configs/mx6qsabrelite_defconfig
++++ b/configs/mx6qsabrelite_defconfig
+@@ -21,7 +21,6 @@ CONFIG_CMD_HDMIDETECT=y
+ CONFIG_AHCI=y
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_BOOTDELAY=3
+-# CONFIG_USE_BOOTCOMMAND is not set
+ CONFIG_USE_PREBOOT=y
+ CONFIG_SYS_CONSOLE_OVERWRITE_ROUTINE=y
+ CONFIG_BOARD_EARLY_INIT_F=y
+@@ -63,6 +62,8 @@ CONFIG_SPI_FLASH_SST=y
+ CONFIG_PHYLIB=y
+ CONFIG_PHY_MICREL=y
+ CONFIG_PHY_MICREL_KSZ90X1=y
++CONFIG_DM_ETH=y
++CONFIG_DM_ETH_PHY=y
+ CONFIG_FEC_MXC=y
+ CONFIG_MII=y
+ CONFIG_PINCTRL=y
+@@ -74,6 +75,7 @@ CONFIG_MXC_SPI=y
+ CONFIG_DM_THERMAL=y
+ CONFIG_USB=y
+ CONFIG_USB_KEYBOARD=y
++# CONFIG_USB_KEYBOARD_FN_KEYS is not set
+ CONFIG_SYS_USB_EVENT_POLL_VIA_CONTROL_EP=y
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_MANUFACTURER="Boundary"
+@@ -91,3 +93,4 @@ CONFIG_SPLASH_SCREEN_ALIGN=y
+ CONFIG_VIDEO_BMP_GZIP=y
+ CONFIG_VIDEO_BMP_RLE8=y
+ CONFIG_BMP_16BPP=y
++# CONFIG_FAT_WRITE is not set

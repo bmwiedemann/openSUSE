@@ -235,6 +235,8 @@ Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
 Patch0013:      0013-riscv-enable-CMD_BTRFS.patch
 Patch0014:      0014-Disable-timer-check-in-file-loading.patch
 Patch0015:      0015-Enable-EFI-and-ISO-partitions-suppo.patch
+Patch0016:      0016-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
+Patch0017:      0017-rockchip-sdhci-Fix-RK3399-eMMC-PHY-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
