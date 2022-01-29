@@ -1,7 +1,7 @@
 #
-# spec file for package python-atomicwrites
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-atomicwrites
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "doc"
+%define psuffix -doc
+%bcond_without doc
+%else
+%define psuffix %{nil}
+%bcond_with doc
+%endif
+Name:           python-atomicwrites%{psuffix}
 Version:        1.4.0
 Release:        0
 Summary:        Atomic file writes for Python
@@ -29,7 +36,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
+%if %{with doc}
+BuildRequires:  %{python_module atomicwrites}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  python3-Sphinx
+Provides:       %{python_module atomicwrites-doc = %{version}}
+%endif
 %python_subpackages
 
 %description
@@ -45,17 +57,59 @@ Features that distinguish it from other similar libraries:
 %setup -q -n atomicwrites-%{version}
 rm -rf atomicwrites.egg-info
 
+%if %{with doc}
+%package -n %{name}-doc
+Summary:        Atomic file writes for Python (documentation)
+Group:          Documentation/HTML
+
+%description -n %{name}-doc
+Atomic file writes for python3.
+Features that distinguish it from other similar libraries:
+
+- Race-free assertion that the target file doesn't yet exist. This can be
+  controlled with the 'overwrite' parameter.
+
+- High-level API that wraps a very flexible class-based API.
+
+This package contains the documentation for both python2 and python3 versions
+of python-atomicwrites
+%endif
+
 %build
+%if %{without doc}
 %python_build
+%else
+pushd docs
+make html
+rm _build/html/.buildinfo
+popd
+%endif
 
 %install
+%if %{without doc}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%check
+%if %{with doc}
+%pytest
+%endif
+
+%if %{without doc}
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/atomicwrites*
+
+%else
+
+%files -n %{name}-doc
+%defattr(-,root,root,-)
+%doc README.rst
+%license LICENSE
+%doc docs/_build/html
+%endif
 
 %changelog

@@ -65,4 +65,48 @@
   * use fspath to ensure path is str or bytes</comment>
     <requestid>802883</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9c32fe80c465c17550b660f1ad260845</srcmd5>
+    <version>1.4.0</version>
+    <time>1643486372</time>
+    <user>dimstar_suse</user>
+    <comment>- Rewrite into proper multibuild style.
+- update to 1.4.0:
+  * Update unsupported python versions
+  * use fspath to ensure path is str or bytes
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+- update to 1.3.0
+ * Restore ability to use tempfile kwargs other than dir
+ * Avoid API breakage under Python 2
+ * Passes kwargs through AtomicWriter to tempfile.NamedTemporaryFile
+- Remove superfluous devel dependency for noarch package
+- Versionify the provides to make old brp-checks happy
+- Drop other-OS mentions from description.
+- Create separate -doc subpackage to build docs.
+- Run tests in -doc subpackage to avoid dependency loop with
+  python-pytest.
+- Use license tag
+- Converted to single-spec
+- update to version 1.1.5:
+  * Fix toxfile (#21)
+  * Make atomic_write work on paths with no directory separator (#20)
+  * Fix formatting
+  * Skip stylecheck under py26
+  * Add contributing.rst
+  * Fix tox.ini
+- specfile:
+  * updated source url to files.pythonhosted.org
+- update to version 1.0.0:
+  * Fix unintentional exception clobbering when rollback fails
+  * Remove unused variable (fixes an unused variable warning)
+  * Update copyright notice
+  * Fix appveyor build
+- update to version 0.1.9:
+  * Fix UnboundLocalError
+- clean the spec file (not only) with spec-cleaner
+- fix %check part
+- let there be python3-atomicwrites
+</comment>
+    <requestid>949779</requestid>
+  </revision>
 </revisionlist>
