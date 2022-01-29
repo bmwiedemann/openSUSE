@@ -1,7 +1,7 @@
 #
 # spec file for package xapian-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xapian-core
-Version:        1.4.18
+Version:        1.4.19
 Release:        0
 Summary:        The Xapian Probabilistic Information Retrieval Library
 License:        GPL-2.0-only
