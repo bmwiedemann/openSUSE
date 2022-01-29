@@ -180,4 +180,13 @@
     <comment></comment>
     <requestid>894385</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>5dda47fb2e30a9752325fc2ef7bf49fa</srcmd5>
+    <version>0.1.8</version>
+    <time>1643486473</time>
+    <user>dimstar_suse</user>
+    <comment>fix license header
+</comment>
+    <requestid>949470</requestid>
+  </revision>
 </revisionlist>
