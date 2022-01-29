@@ -1,7 +1,7 @@
 #
 # spec file for package tre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch0:         %{name}.diff
 Patch1:         %{name}-chicken.patch
 Patch2:         CVE-2016-8859.patch
 BuildRequires:  gettext-devel
+BuildRequires:  glibc-locale
 BuildRequires:  libtool
 
 %description
@@ -88,7 +89,7 @@ approximate patterns as well as block oriented search.
 
 %build
 %configure --disable-static --enable-shared
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -96,7 +97,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} || echo -n >> %{name}.lang
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %files
 %license LICENSE
