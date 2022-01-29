@@ -1,7 +1,7 @@
 #
 # spec file for package graphite2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           graphite2
 Version:        1.3.14
 Release:        0
 Summary:        Font rendering capabilities for complex non-Roman writing systems
-License:        LGPL-2.1-or-later OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 URL:            http://graphite.sil.org/
 Source0:        https://github.com/silnrsi/graphite/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
