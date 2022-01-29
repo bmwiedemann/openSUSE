@@ -1,7 +1,7 @@
 #
 # spec file for package libwpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           libwpd
 Version:        0.10.3
 Release:        0
 Summary:        Library for importing WordPerfect documents
-License:        LGPL-2.1-or-later AND MPL-2.0+
+License:        LGPL-2.1-or-later AND MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            http://libwpd.sourceforge.net
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
