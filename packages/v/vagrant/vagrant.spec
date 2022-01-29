@@ -57,15 +57,16 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
+Patch10:        0010-Add-support-for-Ruby-3.1.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
 #          fix these values in macros.vagrant
 %if 0%{?suse_version} > 1500
-%global rb_build_versions ruby30
-%global rb_build_abi ruby:3.0.0
-%global rb_ruby_suffix ruby3.0
+%global rb_build_versions ruby31
+%global rb_build_abi ruby:3.1.0
+%global rb_ruby_suffix ruby3.1
 %else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
@@ -83,9 +84,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = ">= 2.5", "< 3.1"
+#  s.required_ruby_version     = ">= 2.5", "< 3.2"
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby} < 3.1
+BuildRequires:  %{ruby} < 3.2
 %else
 BuildRequires:  %{ruby} >= 2.5
 %endif
@@ -113,6 +114,9 @@ BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
+# PATCHED
+#  s.add_dependency "net-ftp", "~> 0.1"
+BuildRequires:  %{rubygem net-ftp:0 >= 0.1 }
 #  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
 BuildRequires:  %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
@@ -200,6 +204,9 @@ Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 Requires:       %{rubygem mime-types:3 >= 3.3}
+# PATCHED
+#  s.add_dependency "net-ftp", "~> 0.1"
+BuildRequires:  %{rubygem net-ftp:0 >= 0.1 }
 #  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
 Requires:       %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
