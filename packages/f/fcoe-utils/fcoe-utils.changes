@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 27 19:28:40 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Added upstream commit to fix gcc12 warning/errors:
+  * fcoe-utils-Fix-GCC-12-warning.patch
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:45 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

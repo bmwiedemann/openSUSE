@@ -1,7 +1,7 @@
 #
 # spec file for package fcoe-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,8 @@ Summary:        FCoE userspace management tools
 License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
-Patch0:	harden_fcoe.service.patch
+Patch0:         harden_fcoe.service.patch
+Patch1:         %{name}-Fix-GCC-12-warning.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -49,6 +50,7 @@ connections.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -vi

@@ -1,0 +1,37 @@
+From f6401524e1be537a78b24aef686968e2b9af7493 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Thu, 27 Jan 2022 14:36:01 +0100
+Subject: [PATCH] Fix GCC 12 warning.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes:
+    inlined from ‘show_full_lun_info’ at fcoeadm_display.c:310:2:
+/usr/include/bits/stdio2.h:112:10: error: ‘osname’ may be used uninitialized [-Werror=maybe-uninitialized]
+  112 |   return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+fcoeadm_display.c: In function ‘show_full_lun_info’:
+fcoeadm_display.c:249:15: note: ‘osname’ was declared here
+  249 |         char *osname;
+      |               ^~~~~~
+---
+ fcoeadm_display.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fcoeadm_display.c b/fcoeadm_display.c
+index c2ef33b82cfa..3a18138eefd8 100644
+--- a/fcoeadm_display.c
++++ b/fcoeadm_display.c
+@@ -246,7 +246,7 @@ static void show_full_lun_info(unsigned int hba, unsigned int port,
+ 	char vendor[256];
+ 	char model[256];
+ 	char rev[256];
+-	char *osname;
++	char *osname = NULL;
+ 	char *capstr;
+ 	uint64_t lba = 0;
+ 	uint32_t blksize = 0;
+-- 
+2.26.2
+
