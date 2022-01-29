@@ -21,7 +21,8 @@ Name:           bstone
 Version:        1.2.11
 Release:        0
 Summary:        A source port of Blake Stone
-License:        GPL-2.0-or-later
+# bstone is GPL-2.0+, but statically links GLM (MIT license), STB (public domain or MIT), and xbrz (GPL-3.0+)
+License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://bibendovsky.github.io/bstone/
 Source:         https://github.com/bibendovsky/bstone/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
