@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 27 12:58:16 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed "rake actions:run" to replace the "${{ matrix.<value> }}"
+  variables in the Docker image name (bsc#1195216)
+- 0.2.45
+
+-------------------------------------------------------------------
 Thu Jan  6 15:06:25 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Support multiple Rubocop versions (bsc#1139270)
