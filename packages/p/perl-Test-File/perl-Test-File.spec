@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-File
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-File
 Name:           perl-Test-File
-Version:        1.448
+Version:        1.991
 Release:        0
 Summary:        Test file attributes
 License:        Artistic-2.0
@@ -28,10 +28,10 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::Builder) >= 1.001006
 BuildRequires:  perl(Test::Builder::Tester) >= 1.04
 BuildRequires:  perl(Test::More) >= 1
-BuildRequires:  perl(Test::utf8)
 %{perl_requires}
 
 %description
@@ -45,7 +45,7 @@ permissions.
 Some attributes don't make sense outside of Unix, either, so some tests
 automatically skip if they think they won't work on the platform. If you
 have a way to make these functions work on Windows, for instance, please
-send me a patch. :) IF you want to pretend to be Windows on a non-Windows
+send me a patch. :) If you want to pretend to be Windows on a non-Windows
 machine (for instance, to test 'skip()'), you can set the
 'PRETEND_TO_BE_WINDOWS' environment variable.
 

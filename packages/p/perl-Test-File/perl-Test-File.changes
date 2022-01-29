@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 21 03:09:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.991
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.991 2022-01-21T01:37:36Z
+  	* Enforce text files in some functions, as warned in #18.
+  	* Change up some diag messages: 1) lowercase first letter 2) not ! at
+  	end, and 3) use "file" instead of "filename". If you were matching on
+  	those, you may need to update your patterns.
+
+-------------------------------------------------------------------
 Sat Mar  6 03:08:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.448
