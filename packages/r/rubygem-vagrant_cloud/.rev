@@ -82,4 +82,12 @@ _NOTE_: This release includes breaking changes and is not backwards compatible
     <comment></comment>
     <requestid>910162</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7a43a5f5d375bd270054174b1e76c56c</srcmd5>
+    <version>3.0.5</version>
+    <time>1643486501</time>
+    <user>dimstar_suse</user>
+    <comment>Build gem for all Ruby versions</comment>
+    <requestid>943728</requestid>
+  </revision>
 </revisionlist>

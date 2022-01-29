@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-vagrant_cloud
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,6 @@
 
 %define mod_name vagrant_cloud
 %define mod_full_name %{mod_name}-%{version}
-# MANUAL
-%if 0%{?suse_version} > 1500
-%define rb_build_versions ruby30
-%define rb_build_ruby_abi ruby:3.0.0
-%endif
-# /MANUAL
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
