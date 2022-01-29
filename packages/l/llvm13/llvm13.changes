@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 00:11:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add support for experimental targets and enable the M68k backend
+- Add patch to fix testsuite after enabling the M68k backend
+  + llvm-update-extract-section-script.patch
+
+-------------------------------------------------------------------
 Sat Dec 18 15:05:40 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - BuildRequires: python-rpm-macros to fix Leap 15.3 build.

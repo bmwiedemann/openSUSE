@@ -1,7 +1,7 @@
 #
 # spec file for package llvm13
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,6 +138,7 @@ Patch27:        llvm-exegesis-link-dylib.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 Patch34:        llvm-fix-building-with-GCC-12.patch
+Patch35:        llvm-update-extract-section-script.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -566,6 +567,7 @@ This package contains the development files for Polly.
 %patch27 -p2
 %patch33 -p2
 %patch34 -p2
+%patch35 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1
@@ -656,21 +658,26 @@ CXXFLAGS=$flags
 
 # By default build everything
 TARGETS_TO_BUILD="all"
+EXPERIMENTAL_TARGETS_TO_BUILD="M68k"
 %ifarch s390 s390x
 # No graphics cards on System z
 TARGETS_TO_BUILD="host;BPF"
+EXPERIMENTAL_TARGETS_TO_BUILD=
 %endif
 %ifarch %arm
 # TODO: Document why those.
 TARGETS_TO_BUILD="host;ARM;AMDGPU;BPF;NVPTX"
+EXPERIMENTAL_TARGETS_TO_BUILD=
 %endif
 %ifarch ppc64 ppc64le
 # TODO: Document why those.
 TARGETS_TO_BUILD="host;AMDGPU;BPF;NVPTX"
+EXPERIMENTAL_TARGETS_TO_BUILD=
 %endif
 %ifarch ppc
 # TODO: Graphics cards turned off because of relocation overflows.
 TARGETS_TO_BUILD="host;BPF"
+EXPERIMENTAL_TARGETS_TO_BUILD=
 %endif
 
 mem_per_compile_job=1000000
@@ -808,6 +815,7 @@ export CLANG_TOOLS_EXTRA_DIR=${PWD}/tools/clang/tools/extra
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
     -DLLVM_TARGETS_TO_BUILD=${TARGETS_TO_BUILD} \
+    -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=${EXPERIMENTAL_TARGETS_TO_BUILD} \
 %if %{with libcxx}
     -DLIBCXX_ENABLE_SHARED=YES \
     -DLIBCXX_ENABLE_STATIC=NO \
