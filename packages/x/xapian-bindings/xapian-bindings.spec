@@ -1,7 +1,7 @@
 #
 # spec file for package xapian-bindings
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_with mono
 %define skip_python2 1
 Name:           xapian-bindings
-Version:        1.4.18
+Version:        1.4.19
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only
@@ -69,7 +69,7 @@ BuildRequires:  python3-Sphinx
 %python_subpackages
 %else
 %define python_files() -n python3-%{**}
-%define python_sitearch %python3_sitearch
+%define python_sitearch %{python3_sitearch}
 %endif
 
 %description
@@ -89,6 +89,7 @@ search facilities to applications.
 This package provides the files needed for developing Python 3 scripts
 which use Xapian.
 %else
+
 %package -n python3-xapian
 Summary:        Files needed for developing Python scripts which use Xapian
 Group:          Development/Libraries/Python
