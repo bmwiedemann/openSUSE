@@ -1,7 +1,7 @@
 #
 # spec file for package librevenge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,10 @@ Name:           librevenge
 Version:        0.0.4
 Release:        0
 Summary:        A base library for writing document import filters
-License:        LGPL-2.1-or-later OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/p/libwpd/wiki/librevenge/
-Source:         http://downloads.sourceforge.net/libwpd/%{name}-%{version}.tar.xz
+Source:         https://downloads.sourceforge.net/project/libwpd/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -46,7 +46,7 @@ presentations.
 
 %package -n %{name}-%{pkgextension}
 Summary:        A base library for writing document import filters
-License:        LGPL-2.1-or-later OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 Group:          System/Libraries
 
 %description -n %{name}-%{pkgextension}
@@ -57,7 +57,7 @@ presentations.
 %package -n %{name}-stream-%{pkgextension}
 Summary:        A base library for writing document import filters (stream implementations)
 # src/lib/RVNGOLEStream.{h,cpp} are BSD3c
-License:        (LGPL-2.1-or-later OR MPL-2.0+) AND BSD-3-Clause
+License:        BSD-3-Clause AND (LGPL-2.1-or-later OR MPL-2.0)
 Group:          System/Libraries
 
 %description -n %{name}-stream-%{pkgextension}
@@ -68,7 +68,7 @@ This package contains the different stream implementations.
 
 %package -n %{name}-generators-%{pkgextension}
 Summary:        A base library for writing document import filters
-License:        LGPL-2.1-or-later OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 Group:          System/Libraries
 
 %description -n %{name}-generators-%{pkgextension}
@@ -80,7 +80,7 @@ documents using %{name}s APIs.
 
 %package devel
 Summary:        Development files for %{name}
-License:        LGPL-2.1-or-later OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{pkgextension} = %{version}-%{release}
 Requires:       %{name}-generators-%{pkgextension} = %{version}-%{release}
@@ -92,7 +92,7 @@ developing applications that use %{name}.
 
 %package doc
 Summary:        Documentation of %{name} API
-License:        LGPL-2.1-or-later OR MPL-2.0+
+License:        LGPL-2.1-or-later OR MPL-2.0
 Group:          Documentation/Other
 BuildArch:      noarch
 
