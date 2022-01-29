@@ -1,4 +1,4 @@
-From fec7f65b4debede8cf0eef335182fce2206e200d Mon Sep 17 00:00:00 2001
+From c8f4092f117bd93293e0957422555d3ae7bae999 Mon Sep 17 00:00:00 2001
 From: Maximilian Meister <mmeister@suse.de>
 Date: Thu, 3 May 2018 15:52:23 +0200
 Subject: [PATCH] enable passing a unix_socket for mysql returners
@@ -15,19 +15,14 @@ the refactor is done upstream
 
 Signed-off-by: Maximilian Meister <mmeister@suse.de>
 ---
- salt/returners/mysql.py | 63 ++++++++++++++++++++---------------------
- 1 file changed, 30 insertions(+), 33 deletions(-)
+ salt/returners/mysql.py | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/salt/returners/mysql.py b/salt/returners/mysql.py
-index b7bb05164f..4aa8aeddfa 100644
+index 6fd4fdef2c..7a7e9a3284 100644
 --- a/salt/returners/mysql.py
 +++ b/salt/returners/mysql.py
-@@ -1,4 +1,3 @@
--# -*- coding: utf-8 -*-
- """
- Return data to a mysql server
- 
-@@ -18,6 +17,7 @@ config. These are the defaults:
+@@ -17,6 +17,7 @@ config. These are the defaults:
      mysql.pass: 'salt'
      mysql.db: 'salt'
      mysql.port: 3306
@@ -35,7 +30,7 @@ index b7bb05164f..4aa8aeddfa 100644
  
  SSL is optional. The defaults are set to None. If you do not want to use SSL,
  either exclude these options or set them to None.
-@@ -43,6 +43,7 @@ optional. The following ssl options are simply for illustration purposes:
+@@ -42,6 +43,7 @@ optional. The following ssl options are simply for illustration purposes:
      alternative.mysql.ssl_ca: '/etc/pki/mysql/certs/localhost.pem'
      alternative.mysql.ssl_cert: '/etc/pki/mysql/certs/localhost.crt'
      alternative.mysql.ssl_key: '/etc/pki/mysql/certs/localhost.key'
@@ -43,30 +38,7 @@ index b7bb05164f..4aa8aeddfa 100644
  
  Should you wish the returner data to be cleaned out every so often, set
  `keep_jobs` to the number of hours for the jobs to live in the tables.
-@@ -138,22 +139,15 @@ To override individual configuration items, append --return_kwargs '{"key:": "va
-     salt '*' test.ping --return mysql --return_kwargs '{"db": "another-salt"}'
- 
- """
--from __future__ import absolute_import, print_function, unicode_literals
- 
- import logging
- import sys
--
--# Import python libs
- from contextlib import contextmanager
- 
- import salt.exceptions
--
--# Import salt libs
- import salt.returners
- import salt.utils.jid
- import salt.utils.json
--
--# Import 3rd-party libs
- from salt.ext import six
- 
- # Let's not allow PyLint complain about string substitution
-@@ -205,6 +199,7 @@ def _get_options(ret=None):
+@@ -196,6 +198,7 @@ def _get_options(ret=None):
          "ssl_ca": None,
          "ssl_cert": None,
          "ssl_key": None,
@@ -74,7 +46,7 @@ index b7bb05164f..4aa8aeddfa 100644
      }
  
      attrs = {
-@@ -216,6 +211,7 @@ def _get_options(ret=None):
+@@ -207,6 +210,7 @@ def _get_options(ret=None):
          "ssl_ca": "ssl_ca",
          "ssl_cert": "ssl_cert",
          "ssl_key": "ssl_key",
@@ -82,18 +54,7 @@ index b7bb05164f..4aa8aeddfa 100644
      }
  
      _options = salt.returners.get_returner_options(
-@@ -227,8 +223,8 @@ def _get_options(ret=None):
-         defaults=defaults,
-     )
-     # post processing
--    for k, v in six.iteritems(_options):
--        if isinstance(v, six.string_types) and v.lower() == "none":
-+    for k, v in _options.items():
-+        if isinstance(v, str) and v.lower() == "none":
-             # Ensure 'None' is rendered as None
-             _options[k] = None
-         if k == "port":
-@@ -274,6 +270,7 @@ def _get_serv(ret=None, commit=False):
+@@ -265,6 +269,7 @@ def _get_serv(ret=None, commit=False):
                  db=_options.get("db"),
                  port=_options.get("port"),
                  ssl=ssl_options,
@@ -101,137 +62,7 @@ index b7bb05164f..4aa8aeddfa 100644
              )
  
              try:
-@@ -291,9 +288,9 @@ def _get_serv(ret=None, commit=False):
-         yield cursor
-     except MySQLdb.DatabaseError as err:
-         error = err.args
--        sys.stderr.write(six.text_type(error))
-+        sys.stderr.write(str(error))
-         cursor.execute("ROLLBACK")
--        six.reraise(*sys.exc_info())
-+        raise
-     else:
-         if commit:
-             cursor.execute("COMMIT")
-@@ -515,8 +512,8 @@ def _purge_jobs(timestamp):
-             log.error(
-                 "mysql returner archiver was unable to delete contents of table 'jids'"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
- 
-         try:
-             sql = "delete from `salt_returns` where alter_time < %s"
-@@ -526,8 +523,8 @@ def _purge_jobs(timestamp):
-             log.error(
-                 "mysql returner archiver was unable to delete contents of table 'salt_returns'"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
- 
-         try:
-             sql = "delete from `salt_events` where alter_time < %s"
-@@ -537,8 +534,8 @@ def _purge_jobs(timestamp):
-             log.error(
-                 "mysql returner archiver was unable to delete contents of table 'salt_events'"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
- 
-     return True
- 
-@@ -556,7 +553,7 @@ def _archive_jobs(timestamp):
-         for table_name in source_tables:
-             try:
-                 tmp_table_name = table_name + "_archive"
--                sql = "create table if not exists {0} like {1}".format(
-+                sql = "create table if not exists {} like {}".format(
-                     tmp_table_name, table_name
-                 )
-                 cur.execute(sql)
-@@ -566,11 +563,11 @@ def _archive_jobs(timestamp):
-                 log.error(
-                     "mysql returner archiver was unable to create the archive tables."
-                 )
--                log.error(six.text_type(e))
--                raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+                log.error(str(e))
-+                raise salt.exceptions.SaltRunnerError(str(e))
- 
-         try:
--            sql = "insert into `{0}` select * from `{1}` where jid in (select distinct jid from salt_returns where alter_time < %s)".format(
-+            sql = "insert into `{}` select * from `{}` where jid in (select distinct jid from salt_returns where alter_time < %s)".format(
-                 target_tables["jids"], "jids"
-             )
-             cur.execute(sql, (timestamp,))
-@@ -579,14 +576,14 @@ def _archive_jobs(timestamp):
-             log.error(
-                 "mysql returner archiver was unable to copy contents of table 'jids'"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
-         except Exception as e:  # pylint: disable=broad-except
-             log.error(e)
-             raise
- 
-         try:
--            sql = "insert into `{0}` select * from `{1}` where alter_time < %s".format(
-+            sql = "insert into `{}` select * from `{}` where alter_time < %s".format(
-                 target_tables["salt_returns"], "salt_returns"
-             )
-             cur.execute(sql, (timestamp,))
-@@ -595,11 +592,11 @@ def _archive_jobs(timestamp):
-             log.error(
-                 "mysql returner archiver was unable to copy contents of table 'salt_returns'"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
- 
-         try:
--            sql = "insert into `{0}` select * from `{1}` where alter_time < %s".format(
-+            sql = "insert into `{}` select * from `{}` where alter_time < %s".format(
-                 target_tables["salt_events"], "salt_events"
-             )
-             cur.execute(sql, (timestamp,))
-@@ -608,8 +605,8 @@ def _archive_jobs(timestamp):
-             log.error(
-                 "mysql returner archiver was unable to copy contents of table 'salt_events'"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
- 
-     return _purge_jobs(timestamp)
- 
-@@ -623,7 +620,7 @@ def clean_old_jobs():
-     if __opts__.get("keep_jobs", False) and int(__opts__.get("keep_jobs", 0)) > 0:
-         try:
-             with _get_serv() as cur:
--                sql = "select date_sub(now(), interval {0} hour) as stamp;".format(
-+                sql = "select date_sub(now(), interval {} hour) as stamp;".format(
-                     __opts__["keep_jobs"]
-                 )
-                 cur.execute(sql)
-@@ -638,5 +635,5 @@ def clean_old_jobs():
-             log.error(
-                 "Mysql returner was unable to get timestamp for purge/archive of jobs"
-             )
--            log.error(six.text_type(e))
--            raise salt.exceptions.SaltRunnerError(six.text_type(e))
-+            log.error(str(e))
-+            raise salt.exceptions.SaltRunnerError(str(e))
 -- 
-2.29.2
+2.34.1
 
 

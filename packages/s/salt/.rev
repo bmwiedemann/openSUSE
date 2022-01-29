@@ -1891,4 +1891,41 @@ let build start it or we will get libvirt errors.
   * fix-ip6_interface-grain-to-not-leak-secondary-ipv4-a.patch</comment>
     <requestid>931742</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>4f30854b1647debb872eaae4f050f077</srcmd5>
+    <version>3004</version>
+    <time>1643486475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3004, see release notes: https://docs.saltproject.io/en/master/topics/releases/3004.html
+- Don't check for cached pillar errors on state.apply (bsc#1190781)
+- Added:
+  * state.apply-don-t-check-for-cached-pillar-errors.patch
+- Modified:
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * debian-info_installed-compatibility-50453.patch
+  * info_installed-works-without-status-attr-now.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-rpm_vercmp-python-library-for-version-comparison.patch
+  * 3003.3-do-not-consider-skipped-targets-as-failed-for.patch
+  * support-transactional-systems-microos.patch
+  * do-not-crash-when-unexpected-cmd-output-at-listing-p.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+  * fix-exception-in-yumpkg.remove-for-not-installed-pac.patch
+  * enhance-openscap-module-add-xccdf_eval-call-386.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * 3003.3-postgresql-json-support-in-pillar-423.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+  * early-feature-support-config.patch
+  * implementation-of-held-unheld-functions-for-state-pk.patch
+  * x509-fixes-111.patch
+  * fix-issues-with-salt-ssh-s-extra-filerefs.patch
+  * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch</comment>
+    <requestid>949489</requestid>
+  </revision>
 </revisionlist>

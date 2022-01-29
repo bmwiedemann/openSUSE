@@ -1,22 +1,22 @@
-From f6e5a6bd16fa49cceadde9a9f46fefd12d92316b Mon Sep 17 00:00:00 2001
-From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
-Date: Mon, 5 Jul 2021 18:39:26 +0300
+From 8e5295ef9047a9afdd2323508c633ab0356ef603 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Wed, 19 Jan 2022 15:34:24 +0100
 Subject: [PATCH] Implementation of held/unheld functions for state pkg
  (#387)
 
 * Implementation of held/unheld functions for state pkg
 ---
- salt/modules/zypperpkg.py                    | 117 ++++++-
+ salt/modules/zypperpkg.py                    | 119 ++++++-
  salt/states/pkg.py                           | 310 +++++++++++++++++++
  tests/pytests/unit/modules/test_zypperpkg.py | 133 ++++++++
  tests/pytests/unit/states/test_pkg.py        | 137 ++++++++
- 4 files changed, 684 insertions(+), 13 deletions(-)
+ 4 files changed, 686 insertions(+), 13 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 863be3c894..9c7ffcf5da 100644
+index 4fc045c313..ac6c36a09f 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -2092,6 +2092,76 @@ def purge(
+@@ -2103,6 +2103,76 @@ def purge(
      return _uninstall(inclusion_detection, name=name, pkgs=pkgs, root=root)
  
  
@@ -93,7 +93,7 @@ index 863be3c894..9c7ffcf5da 100644
  def list_locks(root=None):
      """
      List current package locks.
-@@ -2162,7 +2232,7 @@ def clean_locks(root=None):
+@@ -2173,7 +2243,7 @@ def clean_locks(root=None):
      return out
  
  
@@ -102,16 +102,17 @@ index 863be3c894..9c7ffcf5da 100644
      """
      .. versionadded:: 3003
  
-@@ -2176,6 +2246,8 @@ def unhold(name=None, pkgs=None, **kwargs):
+@@ -2187,6 +2257,9 @@ def unhold(name=None, pkgs=None, **kwargs):
          A list of packages to unhold.  The ``name`` parameter will be ignored if
          this option is passed.
  
 +    root
 +        Operate on a different root directory.
- 
++
      CLI Example:
  
-@@ -2191,24 +2263,38 @@ def unhold(name=None, pkgs=None, **kwargs):
+     .. code-block:: bash
+@@ -2201,24 +2274,38 @@ def unhold(name=None, pkgs=None, **kwargs):
  
      targets = []
      if pkgs:
@@ -158,7 +159,7 @@ index 863be3c894..9c7ffcf5da 100644
              ret[target]["comment"] = "Package {} was already unheld.".format(target)
  
      if removed:
-@@ -2261,7 +2347,7 @@ def remove_lock(name, root=None, **kwargs):
+@@ -2271,7 +2358,7 @@ def remove_lock(name, root=None, **kwargs):
      return {"removed": len(removed), "not_found": missing}
  
  
@@ -167,17 +168,18 @@ index 863be3c894..9c7ffcf5da 100644
      """
      .. versionadded:: 3003
  
-@@ -2275,6 +2361,9 @@ def hold(name=None, pkgs=None, **kwargs):
+@@ -2285,6 +2372,10 @@ def hold(name=None, pkgs=None, **kwargs):
          A list of packages to hold.  The ``name`` parameter will be ignored if
          this option is passed.
  
 +    root
 +        Operate on a different root directory.
 +
- 
++
      CLI Example:
  
-@@ -2290,8 +2379,7 @@ def hold(name=None, pkgs=None, **kwargs):
+     .. code-block:: bash
+@@ -2299,8 +2390,7 @@ def hold(name=None, pkgs=None, **kwargs):
  
      targets = []
      if pkgs:
@@ -187,7 +189,7 @@ index 863be3c894..9c7ffcf5da 100644
      else:
          targets.append(name)
  
-@@ -2299,9 +2387,12 @@ def hold(name=None, pkgs=None, **kwargs):
+@@ -2308,9 +2398,12 @@ def hold(name=None, pkgs=None, **kwargs):
      added = []
  
      for target in targets:
@@ -202,10 +204,10 @@ index 863be3c894..9c7ffcf5da 100644
              ret[target]["changes"]["old"] = ""
              ret[target]["comment"] = "Package {} is now being held.".format(target)
 diff --git a/salt/states/pkg.py b/salt/states/pkg.py
-index fd6808a2dc..a8ffe25a77 100644
+index f71f61e720..0d601e1aaf 100644
 --- a/salt/states/pkg.py
 +++ b/salt/states/pkg.py
-@@ -3607,3 +3607,313 @@ def mod_beacon(name, **kwargs):
+@@ -3644,3 +3644,313 @@ def mod_beacon(name, **kwargs):
              ),
              "result": False,
          }
@@ -520,10 +522,10 @@ index fd6808a2dc..a8ffe25a77 100644
 +
 +    return ret
 diff --git a/tests/pytests/unit/modules/test_zypperpkg.py b/tests/pytests/unit/modules/test_zypperpkg.py
-index 37bbef87b7..dbe09976b2 100644
+index eb1e63f6d7..bfc1558c9a 100644
 --- a/tests/pytests/unit/modules/test_zypperpkg.py
 +++ b/tests/pytests/unit/modules/test_zypperpkg.py
-@@ -119,3 +119,136 @@ def test_del_repo_key():
+@@ -121,3 +121,136 @@ def test_del_repo_key():
      with patch.dict(zypper.__salt__, salt_mock):
          assert zypper.del_repo_key(keyid="keyid", root="/mnt")
          salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
@@ -661,13 +663,13 @@ index 37bbef87b7..dbe09976b2 100644
 +        assert len(ret) == 1
 +        assert "bar-2:2.3.4-2.1.*" in ret
 diff --git a/tests/pytests/unit/states/test_pkg.py b/tests/pytests/unit/states/test_pkg.py
-index 8e5ae42ed8..a2e63d5157 100644
+index 7e667d36fd..17b91bcb39 100644
 --- a/tests/pytests/unit/states/test_pkg.py
 +++ b/tests/pytests/unit/states/test_pkg.py
-@@ -352,3 +352,140 @@ def test_mod_beacon():
-                             }
- 
-                             assert ret == expected
+@@ -578,3 +578,140 @@ def test_removed_purged_with_changes_test_true(list_pkgs, action):
+             ret = pkg_actions[action]("pkga", test=True)
+             assert ret["result"] is None
+             assert ret["changes"] == expected
 +
 +
 +@pytest.mark.parametrize(
@@ -806,6 +808,6 @@ index 8e5ae42ed8..a2e63d5157 100644
 +        unhold_mock.assert_any_call(name="held-test", pkgs=["baz"])
 +        unhold_mock.assert_any_call(name="held-test", pkgs=["bar"])
 -- 
-2.33.0
+2.34.1
 
 

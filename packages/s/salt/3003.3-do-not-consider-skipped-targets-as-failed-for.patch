@@ -1,7 +1,6 @@
-From b279ec17a06619c97d9fbec215c7dd1ec3af088e Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
- <psuarezhernandez@suse.com>
-Date: Wed, 6 Oct 2021 09:21:42 +0100
+From c2dbf6ccdf320f1cce3d42f746f3c65f8633ee55 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Wed, 19 Jan 2022 17:28:29 +0100
 Subject: [PATCH] 3003.3: Do not consider skipped targets as failed for
  ansible.playbooks state (bsc#1190446) (#436)
 
@@ -14,16 +13,16 @@ Subject: [PATCH] 3003.3: Do not consider skipped targets as failed for
 * Fix remaining problems in unit tests after backport
 ---
  salt/states/ansiblegate.py                    |   19 +-
+ tests/pytests/unit/states/test_ansiblegate.py |   30 +
  .../success_example_with_skipped.json         | 1320 +++++++++++++++++
- tests/unit/states/test_ansiblegate.py         |   33 +-
- 3 files changed, 1356 insertions(+), 16 deletions(-)
+ 3 files changed, 1354 insertions(+), 15 deletions(-)
  create mode 100644 tests/unit/files/playbooks/success_example_with_skipped.json
 
 diff --git a/salt/states/ansiblegate.py b/salt/states/ansiblegate.py
-index bd00653928..d97a0ebb5b 100644
+index af5cb0f0e5..4de7fb096d 100644
 --- a/salt/states/ansiblegate.py
 +++ b/salt/states/ansiblegate.py
-@@ -188,19 +188,13 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+@@ -189,19 +189,13 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
              ret["result"] = False
              ret["changes"] = {}
          elif all(
@@ -45,7 +44,7 @@ index bd00653928..d97a0ebb5b 100644
              for check in checks["stats"].values()
          ):
              ret["comment"] = "Changes will be made from playbook {}".format(name)
-@@ -221,10 +215,7 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+@@ -222,10 +216,7 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
              ret["result"] = False
              ret["changes"] = {}
          elif all(
@@ -57,7 +56,7 @@ index bd00653928..d97a0ebb5b 100644
              for check in results["stats"].values()
          ):
              ret["comment"] = "No changes to be made from playbook {}".format(name)
-@@ -233,9 +224,7 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+@@ -234,9 +225,7 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
          else:
              ret["changes"] = _changes(results)
              ret["result"] = all(
@@ -68,6 +67,47 @@ index bd00653928..d97a0ebb5b 100644
                  for check in results["stats"].values()
              )
              if ret["result"]:
+diff --git a/tests/pytests/unit/states/test_ansiblegate.py b/tests/pytests/unit/states/test_ansiblegate.py
+index fa1a1cd264..02157d3420 100644
+--- a/tests/pytests/unit/states/test_ansiblegate.py
++++ b/tests/pytests/unit/states/test_ansiblegate.py
+@@ -42,6 +42,36 @@ def test_ansible_playbooks_states_success(playbooks_examples_dir):
+         }
+ 
+ 
++def test_ansible_playbooks_states_success_with_skipped(playbooks_examples_dir):
++    """
++    Test ansible.playbooks states executions success.
++    """
++
++    success_output = json.loads(
++        playbooks_examples_dir.joinpath("success_example_with_skipped.json").read_text()
++    )
++
++    with patch.dict(
++        ansiblegate.__salt__,
++        {"ansible.playbooks": MagicMock(return_value=success_output)},
++    ), patch("salt.utils.path.which", return_value=True), patch.dict(
++        ansiblegate.__opts__, {"test": False}
++    ):
++        ret = ansiblegate.playbooks("foobar")
++        assert ret["result"] is True
++        assert ret["comment"] == "No changes to be made from playbook foobar"
++        assert ret["changes"] == {
++            "all": {
++                "install git CentOS": {"uyuni-stable-min-sles15sp3.tf.local": {}},
++                "install git SUSE": {"uyuni-stable-min-centos7.tf.local": {}},
++                "install git Ubuntu": {
++                    "uyuni-stable-min-centos7.tf.local": {},
++                    "uyuni-stable-min-sles15sp3.tf.local": {},
++                },
++            }
++        }
++
++
+ def test_ansible_playbooks_states_failed(playbooks_examples_dir):
+     """
+     Test ansible.playbooks failed states executions.
 diff --git a/tests/unit/files/playbooks/success_example_with_skipped.json b/tests/unit/files/playbooks/success_example_with_skipped.json
 new file mode 100644
 index 0000000000..21bdb290c1
@@ -1394,58 +1434,7 @@ index 0000000000..21bdb290c1
 +    },
 +    "retcode": 0
 +}
-diff --git a/tests/unit/states/test_ansiblegate.py b/tests/unit/states/test_ansiblegate.py
-index ac677fc5db..6bf4494326 100644
---- a/tests/unit/states/test_ansiblegate.py
-+++ b/tests/unit/states/test_ansiblegate.py
-@@ -12,7 +12,6 @@
- # See the License for the specific language governing permissions and
- # limitations under the License.
- 
--# Import Salt Testing Libs
- 
- import json
- import os
-@@ -73,6 +72,38 @@ class AnsiblegateTestCase(TestCase, LoaderModuleMockMixin):
-                     },
-                 )
- 
-+    @patch("salt.utils.path.which", MagicMock(return_value=True))
-+    def test_ansible_playbooks_states_success_with_skipped(self):
-+        """
-+        Test ansible.playbooks states executions success.
-+        """
-+
-+        with salt.utils.files.fopen(
-+            os.path.join(self.playbooks_examples_dir, "success_example_with_skipped.json")
-+        ) as f:
-+            success_output = json.loads(f.read())
-+
-+        with patch.dict(
-+            ansible.__salt__,
-+            {"ansible.playbooks": MagicMock(return_value=success_output)},
-+        ), patch("salt.utils.path.which", return_value=True), patch.dict(
-+            ansible.__opts__, {"test": False}
-+        ):
-+            ret = ansible.playbooks("foobar")
-+            assert ret["result"] is True
-+            assert ret["comment"] == "No changes to be made from playbook foobar"
-+            assert ret["changes"] == {
-+                "all": {
-+                    "install git CentOS": {"uyuni-stable-min-sles15sp3.tf.local": {}},
-+                    "install git SUSE": {"uyuni-stable-min-centos7.tf.local": {}},
-+                    "install git Ubuntu": {
-+                        "uyuni-stable-min-centos7.tf.local": {},
-+                        "uyuni-stable-min-sles15sp3.tf.local": {},
-+                    },
-+                }
-+            }
-+
-+    @patch("salt.utils.path.which", MagicMock(return_value=True))
-     def test_ansible_playbooks_states_failed(self):
-         """
-         Test ansible.playbooks failed states executions.
 -- 
-2.33.0
+2.34.1
 
 

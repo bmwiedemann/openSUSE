@@ -1,4 +1,4 @@
-From 9413059223107924c6594e6c72e50fcbcc441e60 Mon Sep 17 00:00:00 2001
+From 40d9cde9b90965e60520f36dbe189fb64d15559d Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Thu, 24 Jun 2021 13:17:13 +0300
 Subject: [PATCH] Fix exception in yumpkg.remove for not installed
@@ -10,23 +10,23 @@ Subject: [PATCH] Fix exception in yumpkg.remove for not installed
  2 files changed, 39 insertions(+)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index dd81c6f1e9..273f0fb370 100644
+index 9737508377..9f8f548e5f 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -2087,6 +2087,8 @@ def remove(name=None, pkgs=None, **kwargs):  # pylint: disable=W0613
-     old = list_pkgs()
-     targets = []
+@@ -2123,6 +2123,8 @@ def remove(name=None, pkgs=None, **kwargs):  # pylint: disable=W0613
+     pkg_params.update(pkg_matches)
+ 
      for target in pkg_params:
 +        if target not in old:
 +            continue
          version_to_remove = pkg_params[target]
-         installed_versions = old[target].split(",")
  
+         # Check if package version set to be removed is actually installed:
 diff --git a/tests/pytests/unit/modules/test_yumpkg.py b/tests/pytests/unit/modules/test_yumpkg.py
-index 7e3ed517ea..b5572db123 100644
+index 3b35272550..c3456f7e29 100644
 --- a/tests/pytests/unit/modules/test_yumpkg.py
 +++ b/tests/pytests/unit/modules/test_yumpkg.py
-@@ -1219,6 +1219,43 @@ def test_install_error_reporting():
+@@ -1284,6 +1284,43 @@ def test_install_error_reporting():
          assert exc_info.value.info == expected, exc_info.value.info
  
  
@@ -71,6 +71,6 @@ index 7e3ed517ea..b5572db123 100644
      with patch.object(yumpkg, "list_pkgs", MagicMock(return_value={})), patch(
          "salt.utils.systemd.has_scope", MagicMock(return_value=False)
 -- 
-2.33.0
+2.34.1
 
 

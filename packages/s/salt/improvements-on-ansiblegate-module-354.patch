@@ -1,7 +1,6 @@
-From 90cc5349ed085729db43966bf290c76db5c7f6b9 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
- <psuarezhernandez@suse.com>
-Date: Tue, 20 Apr 2021 11:01:26 +0100
+From b58056da2f5a12e3d614650904039c0655ce1221 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 19:41:03 +0100
 Subject: [PATCH] Improvements on "ansiblegate" module (#354)
 
 * Allow collecting Ansible Inventory from a minion
@@ -36,26 +35,34 @@ Subject: [PATCH] Improvements on "ansiblegate" module (#354)
 
 Fix issue parsing errors in ansiblegate state module
 ---
- salt/modules/ansiblegate.py                   | 166 +++++++++++++++++-
- salt/roster/ansible.py                        |  18 +-
+ salt/modules/ansiblegate.py                   | 167 +++++++++++++++++-
+ salt/roster/ansible.py                        |  17 +-
  salt/states/ansiblegate.py                    |  12 +-
- salt/utils/ansible.py                         |  44 +++++
- .../pytests/unit/modules/test_ansiblegate.py  |  94 +++++++++-
+ salt/utils/ansible.py                         |  41 +++++
+ .../pytests/unit/modules/test_ansiblegate.py  |  99 ++++++++++-
  .../example_playbooks/example-playbook2/hosts |   7 +
  .../example-playbook2/site.yml                |  28 +++
  .../playbooks/example_playbooks/playbook1.yml |   5 +
  tests/unit/roster/test_ansible.py             |   2 +-
- 9 files changed, 364 insertions(+), 12 deletions(-)
+ 9 files changed, 367 insertions(+), 11 deletions(-)
  create mode 100644 salt/utils/ansible.py
  create mode 100644 tests/unit/files/playbooks/example_playbooks/example-playbook2/hosts
  create mode 100644 tests/unit/files/playbooks/example_playbooks/example-playbook2/site.yml
  create mode 100644 tests/unit/files/playbooks/example_playbooks/playbook1.yml
 
 diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
-index 0279a26017..2b4d4b0bdf 100644
+index 328d9b7b0a..f33be6a00e 100644
 --- a/salt/modules/ansiblegate.py
 +++ b/salt/modules/ansiblegate.py
-@@ -425,7 +425,171 @@ def playbooks(
+@@ -17,6 +17,7 @@ any Ansible module to respond.
+ import fnmatch
+ import json
+ import logging
++import os
+ import subprocess
+ import sys
+ from tempfile import NamedTemporaryFile
+@@ -365,7 +366,171 @@ def playbooks(
      }
      ret = __salt__["cmd.run_all"](**cmd_kwargs)
      log.debug("Ansible Playbook Return: %s", ret)
@@ -229,23 +236,15 @@ index 0279a26017..2b4d4b0bdf 100644
 +            raise CommandExecutionError("There was an exception while checking syntax of playbooks: {}".format(exc))
 +    return ret
 diff --git a/salt/roster/ansible.py b/salt/roster/ansible.py
-index f17316bdd7..cc61f6fb7d 100644
+index 7beaaf2075..d3b352de27 100644
 --- a/salt/roster/ansible.py
 +++ b/salt/roster/ansible.py
-@@ -89,7 +89,6 @@ Any of the [groups] or direct hostnames will return.  The 'all' is special, and
- """
- # Import Python libs
- from __future__ import absolute_import, print_function, unicode_literals
--
- import copy
- import fnmatch
- 
-@@ -121,27 +120,32 @@ def targets(tgt, tgt_type="glob", **kwargs):
+@@ -117,27 +117,32 @@ def targets(tgt, tgt_type="glob", **kwargs):
      Return the targets from the ansible inventory_file
      Default: /etc/salt/roster
      """
 -    inventory = __runner__["salt.cmd"](
--        "cmd.run", "ansible-inventory -i {0} --list".format(get_roster_file(__opts__))
+-        "cmd.run", "ansible-inventory -i {} --list".format(get_roster_file(__opts__))
 -    )
 -    __context__["inventory"] = __utils__["json.loads"](
 -        __utils__["stringutils.to_str"](inventory)
@@ -280,10 +279,10 @@ index f17316bdd7..cc61f6fb7d 100644
      return hosts
  
 diff --git a/salt/states/ansiblegate.py b/salt/states/ansiblegate.py
-index 5daba0f37f..bd00653928 100644
+index 4afe6a020d..af5cb0f0e5 100644
 --- a/salt/states/ansiblegate.py
 +++ b/salt/states/ansiblegate.py
-@@ -183,7 +183,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+@@ -184,7 +184,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
          checks = __salt__["ansible.playbooks"](
              name, rundir=rundir, check=True, diff=True, **ansible_kwargs
          )
@@ -296,7 +295,7 @@ index 5daba0f37f..bd00653928 100644
              not check["changed"]
              and not check["failures"]
              and not check["unreachable"]
-@@ -212,7 +216,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+@@ -213,7 +217,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
          results = __salt__["ansible.playbooks"](
              name, rundir=rundir, diff=True, **ansible_kwargs
          )
@@ -311,13 +310,10 @@ index 5daba0f37f..bd00653928 100644
              and not check["unreachable"]
 diff --git a/salt/utils/ansible.py b/salt/utils/ansible.py
 new file mode 100644
-index 0000000000..ee85cb656c
+index 0000000000..1e14037fd3
 --- /dev/null
 +++ b/salt/utils/ansible.py
-@@ -0,0 +1,44 @@
-+# -*- coding: utf-8 -*-
-+# Import Python libs
-+from __future__ import absolute_import, print_function, unicode_literals
+@@ -0,0 +1,41 @@
 +import logging
 +import os
 +
@@ -360,33 +356,37 @@ index 0000000000..ee85cb656c
 +    else:
 +        return salt.utils.json.loads(salt.utils.stringutils.to_str(inv))
 diff --git a/tests/pytests/unit/modules/test_ansiblegate.py b/tests/pytests/unit/modules/test_ansiblegate.py
-index 42c0968a6e..24c7e5e6b3 100644
+index 44c9b12acb..f357133000 100644
 --- a/tests/pytests/unit/modules/test_ansiblegate.py
 +++ b/tests/pytests/unit/modules/test_ansiblegate.py
-@@ -8,8 +8,11 @@ import pytest
- import salt.modules.ansiblegate as ansible
- import salt.utils.path
- import salt.utils.platform
+@@ -1,9 +1,15 @@
+ # Author: Bo Maryniuk <bo@suse.de>
++import os
+ 
+ import pytest
++
 +import salt.config
 +import salt.loader
- from salt.exceptions import LoaderError
- from tests.support.mock import MagicMock, MockTimedProc, patch
+ import salt.modules.ansiblegate as ansiblegate
+ import salt.utils.json
++import salt.utils.path
+ from tests.support.mock import ANY, MagicMock, patch
 +from tests.support.runtests import RUNTIME_VARS
  
- pytestmark = pytest.mark.skipif(
-     salt.utils.platform.is_windows(), reason="Not supported on Windows"
-@@ -18,7 +21,7 @@ pytestmark = pytest.mark.skipif(
+ pytestmark = [
+     pytest.mark.skip_on_windows(reason="Not supported on Windows"),
+@@ -12,7 +18,7 @@ pytestmark = [
  
  @pytest.fixture
  def configure_loader_modules():
--    return {ansible: {}}
-+    return {ansible: {"__utils__": {}}}
+-    return {ansiblegate: {}}
++    return {ansiblegate: {"__utils__": {}}}
  
  
- @pytest.fixture
-@@ -201,3 +204,92 @@ def test_ansible_playbooks_return_retcode(resolver):
+ def test_ansible_module_help():
+@@ -133,3 +139,94 @@ def test_ansible_playbooks_return_retcode():
      ):
-         ret = ansible.playbooks("fake-playbook.yml")
+         ret = ansiblegate.playbooks("fake-playbook.yml")
          assert "retcode" in ret
 +
 +
@@ -425,14 +425,16 @@ index 42c0968a6e..24c7e5e6b3 100644
 +        opts = salt.config.DEFAULT_MINION_OPTS.copy()
 +        utils = salt.loader.utils(opts, whitelist=["ansible"])
 +        with patch("salt.modules.cmdmod.run", ansible_inventory_mock), patch.dict(
-+            ansible.__utils__, utils), patch(
-+            "os.path.isfile", MagicMock(return_value=True)
-+        ):
-+            ret = ansible.targets()
++            ansiblegate.__utils__, utils
++        ), patch("os.path.isfile", MagicMock(return_value=True)):
++            ret = ansiblegate.targets()
 +            assert ansible_inventory_mock.call_args
 +            assert "_meta" in ret
 +            assert "uyuni-stable-ansible-centos7-1.tf.local" in ret["_meta"]["hostvars"]
-+            assert "ansible_ssh_private_key_file" in ret["_meta"]["hostvars"]["uyuni-stable-ansible-centos7-1.tf.local"]
++            assert (
++                "ansible_ssh_private_key_file"
++                in ret["_meta"]["hostvars"]["uyuni-stable-ansible-centos7-1.tf.local"]
++            )
 +            assert "all" in ret
 +            assert len(ret["ungrouped"]["hosts"]) == 2
 +
@@ -441,7 +443,7 @@ index 42c0968a6e..24c7e5e6b3 100644
 +    playbooks_dir = os.path.join(
 +        RUNTIME_VARS.TESTS_DIR, "unit/files/playbooks/example_playbooks/"
 +    )
-+    ret = ansible.discover_playbooks(playbooks_dir)
++    ret = ansiblegate.discover_playbooks(playbooks_dir)
 +    assert playbooks_dir in ret
 +    assert ret[playbooks_dir]["playbook1.yml"] == {
 +        "fullpath": os.path.join(playbooks_dir, "playbook1.yml")
@@ -456,7 +458,7 @@ index 42c0968a6e..24c7e5e6b3 100644
 +    playbooks_dir = os.path.join(
 +        RUNTIME_VARS.TESTS_DIR, "unit/files/playbooks/example_playbooks/"
 +    )
-+    ret = ansible.discover_playbooks(
++    ret = ansiblegate.discover_playbooks(
 +        playbooks_dir, playbook_extension="foobar", hosts_filename="deadbeaf"
 +    )
 +    assert playbooks_dir in ret
@@ -467,7 +469,7 @@ index 42c0968a6e..24c7e5e6b3 100644
 +    playbooks_dir = os.path.join(
 +        RUNTIME_VARS.TESTS_DIR, "unit/files/playbooks/example_playbooks/"
 +    )
-+    ret = ansible.discover_playbooks(locations=[playbooks_dir, "/tmp/foobar"])
++    ret = ansiblegate.discover_playbooks(locations=[playbooks_dir, "/tmp/foobar"])
 +    assert playbooks_dir in ret
 +    assert "/tmp/foobar" in ret
 +    assert ret[playbooks_dir]["playbook1.yml"] == {
@@ -536,10 +538,10 @@ index 0000000000..e258a101e1
 +  tasks:
 +    - ping:
 diff --git a/tests/unit/roster/test_ansible.py b/tests/unit/roster/test_ansible.py
-index a5cdcbbdbc..8bc9c1c6f7 100644
+index 7f1144454b..c4ab8b7639 100644
 --- a/tests/unit/roster/test_ansible.py
 +++ b/tests/unit/roster/test_ansible.py
-@@ -71,7 +71,7 @@ class AnsibleRosterTestCase(TestCase, mixins.LoaderModuleMockMixin):
+@@ -63,7 +63,7 @@ class AnsibleRosterTestCase(TestCase, mixins.LoaderModuleMockMixin):
          opts = salt.config.master_config(
              os.path.join(RUNTIME_VARS.TMP_CONF_DIR, "master")
          )
@@ -549,6 +551,6 @@ index a5cdcbbdbc..8bc9c1c6f7 100644
          return {ansible: {"__utils__": utils, "__opts__": {}, "__runner__": runner}}
  
 -- 
-2.33.0
+2.34.1
 
 

@@ -1,4 +1,4 @@
-From ad5baab333cb80ce47e65605c47c8ca6fc6d4514 Mon Sep 17 00:00:00 2001
+From 27db7d49c4b3348d5dcfe229f0d5823c0e770179 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Mon, 8 Nov 2021 17:42:36 +0300
 Subject: [PATCH] Prevent pkg plugins errors on missing cookie path
@@ -12,11 +12,11 @@ Subject: [PATCH] Prevent pkg plugins errors on missing cookie path
 
 * Fix yumnotify
 ---
- scripts/suse/dpkg/dpkgnotify                  | 18 ++++++++++++++---
+ scripts/suse/dpkg/dpkgnotify                  | 18 +++++++++++++++---
  scripts/suse/yum/plugins/README.md            |  2 +-
- scripts/suse/yum/plugins/yumnotify.py         | 17 ++++++++++++----
- scripts/suse/zypper/plugins/commit/zyppnotify | 20 ++++++++++++-------
- 4 files changed, 42 insertions(+), 15 deletions(-)
+ scripts/suse/yum/plugins/yumnotify.py         | 17 +++++++++++++----
+ scripts/suse/zypper/plugins/commit/zyppnotify | 18 ++++++++++++------
+ 4 files changed, 41 insertions(+), 14 deletions(-)
 
 diff --git a/scripts/suse/dpkg/dpkgnotify b/scripts/suse/dpkg/dpkgnotify
 index d3ad3d2ba9..3d6d038a98 100644
@@ -104,7 +104,7 @@ index 4e137191a0..0d117e8946 100644
 +        except OSError as e:
 +            print("Unable to save the cookie file: %s" % (e), file=sys.stderr)
 diff --git a/scripts/suse/zypper/plugins/commit/zyppnotify b/scripts/suse/zypper/plugins/commit/zyppnotify
-index d6a1bef42b..e3528e87a9 100755
+index bacbc8b97e..e3528e87a9 100755
 --- a/scripts/suse/zypper/plugins/commit/zyppnotify
 +++ b/scripts/suse/zypper/plugins/commit/zyppnotify
 @@ -1,4 +1,4 @@
@@ -113,12 +113,8 @@ index d6a1bef42b..e3528e87a9 100755
  #
  # Copyright (c) 2016 SUSE Linux LLC
  # All Rights Reserved.
-@@ -52,15 +52,21 @@ class DriftDetector(Plugin):
- 
-     def PLUGINEND(self, headers, body):
-         """
--        Hook when plugin closes Zypper's transaction.        
-+        Hook when plugin closes Zypper's transaction.
+@@ -55,12 +55,18 @@ class DriftDetector(Plugin):
+         Hook when plugin closes Zypper's transaction.
          """
          if "SALT_RUNNING" not in os.environ:
 -            with open(self.ck_path, "w") as ck_fh:
@@ -142,6 +138,6 @@ index d6a1bef42b..e3528e87a9 100755
          self.ack()
  
 -- 
-2.33.1
+2.34.1
 
 

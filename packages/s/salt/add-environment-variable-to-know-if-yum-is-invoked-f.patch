@@ -1,18 +1,18 @@
-From 7b2b5fc53d30397b8f7a11e59f5c7a57bcb63058 Mon Sep 17 00:00:00 2001
-From: Marcelo Chiaradia <mchiaradia@suse.com>
-Date: Thu, 7 Jun 2018 10:29:41 +0200
-Subject: [PATCH] Add environment variable to know if yum is invoked
- from Salt(bsc#1057635)
+From 6ba30d3900bc328efd3480c0ff3d9e9b126fc5cb Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 12:57:21 +0100
+Subject: [PATCH] Add environment variable to know if yum is invoked from
+ Salt(bsc#1057635)
 
 ---
  salt/modules/yumpkg.py | 23 +++++++++++++++++------
  1 file changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index b547fe6be7..c58b3e4c70 100644
+index cf684e20f7..8d089c6aa4 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -917,7 +917,9 @@ def list_repo_pkgs(*args, **kwargs):
+@@ -965,7 +965,9 @@ def list_repo_pkgs(*args, **kwargs):
          None
          if _yum() != "yum"
          else _LooseVersion(
@@ -23,7 +23,7 @@ index b547fe6be7..c58b3e4c70 100644
              .splitlines()[0]
              .strip()
          )
-@@ -2347,7 +2349,9 @@ def list_holds(pattern=__HOLD_PATTERN, full=True):
+@@ -2422,7 +2424,9 @@ def list_holds(pattern=__HOLD_PATTERN, full=True):
      """
      _check_versionlock()
  
@@ -34,7 +34,7 @@ index b547fe6be7..c58b3e4c70 100644
      ret = []
      for line in salt.utils.itertools.split(out, "\n"):
          match = _get_hold(line, pattern=pattern, full=full)
-@@ -2415,7 +2419,10 @@ def group_list():
+@@ -2490,7 +2494,10 @@ def group_list():
      }
  
      out = __salt__["cmd.run_stdout"](
@@ -46,7 +46,7 @@ index b547fe6be7..c58b3e4c70 100644
      )
      key = None
      for line in salt.utils.itertools.split(out, "\n"):
-@@ -2486,7 +2493,9 @@ def group_info(name, expand=False, ignore_groups=None):
+@@ -2561,7 +2568,9 @@ def group_info(name, expand=False, ignore_groups=None):
          ret[pkgtype] = set()
  
      cmd = [_yum(), "--quiet", "groupinfo", name]
@@ -57,7 +57,7 @@ index b547fe6be7..c58b3e4c70 100644
  
      g_info = {}
      for line in salt.utils.itertools.split(out, "\n"):
-@@ -3203,7 +3212,9 @@ def download(*packages, **kwargs):
+@@ -3278,7 +3287,9 @@ def download(*packages, **kwargs):
  
      cmd = ["yumdownloader", "-q", "--destdir={}".format(CACHE_DIR)]
      cmd.extend(packages)
@@ -68,16 +68,16 @@ index b547fe6be7..c58b3e4c70 100644
      ret = {}
      for dld_result in os.listdir(CACHE_DIR):
          if not dld_result.endswith(".rpm"):
-@@ -3279,7 +3290,7 @@ def _get_patches(installed_only=False):
+@@ -3354,7 +3365,7 @@ def _get_patches(installed_only=False):
      patches = {}
  
      cmd = [_yum(), "--quiet", "updateinfo", "list", "all"]
 -    ret = __salt__["cmd.run_stdout"](cmd, python_shell=False)
 +    ret = __salt__["cmd.run_stdout"](cmd, python_shell=False, env={"SALT_RUNNING": "1"})
+     parsing_errors = False
+ 
      for line in salt.utils.itertools.split(ret, os.linesep):
-         inst, advisory_id, sev, pkg = re.match(
-             r"([i|\s]) ([^\s]+) +([^\s]+) +([^\s]+)", line
 -- 
-2.29.2
+2.34.1
 
 

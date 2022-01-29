@@ -1,4 +1,4 @@
-From 9071189b7395284f0328b59c999c18919e12ae32 Mon Sep 17 00:00:00 2001
+From 933345d049a0207e730ca518dc5f016b0c05d761 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 7 Jul 2021 15:41:48 +0100
@@ -17,9 +17,9 @@ Co-authored-by: Michael Calmer <mc@suse.de>
 Fix error handling in openscap module (bsc#1188647) (#409)
 ---
  changelog/59756.added               |   1 +
- salt/modules/openscap.py            | 126 +++++++++++++--
+ salt/modules/openscap.py            | 116 +++++++++++++-
  tests/unit/modules/test_openscap.py | 234 ++++++++++++++++++++++++++++
- 3 files changed, 352 insertions(+), 9 deletions(-)
+ 3 files changed, 350 insertions(+), 1 deletion(-)
  create mode 100644 changelog/59756.added
 
 diff --git a/changelog/59756.added b/changelog/59756.added
@@ -30,41 +30,18 @@ index 0000000000..a59fb21eef
 @@ -0,0 +1 @@
 +adding new call for openscap xccdf eval supporting new parameters
 diff --git a/salt/modules/openscap.py b/salt/modules/openscap.py
-index 6f8ff4a76d..216fd89eef 100644
+index 770c8e7c04..216fd89eef 100644
 --- a/salt/modules/openscap.py
 +++ b/salt/modules/openscap.py
-@@ -1,20 +1,15 @@
--# -*- coding: utf-8 -*-
- """
- Module for OpenSCAP Management
- 
+@@ -4,6 +4,7 @@ Module for OpenSCAP Management
  """
  
--# Import Python libs
--from __future__ import absolute_import, print_function, unicode_literals
  
 +import os.path
  import shlex
  import shutil
  import tempfile
- from subprocess import PIPE, Popen
- 
--# Import Salt libs
--from salt.ext import six
--
- ArgumentParser = object
- 
- try:
-@@ -44,7 +39,7 @@ def __virtual__():
- 
- class _ArgumentParser(ArgumentParser):
-     def __init__(self, action=None, *args, **kwargs):
--        super(_ArgumentParser, self).__init__(*args, prog="oscap", **kwargs)
-+        super().__init__(*args, prog="oscap", **kwargs)
-         self.add_argument("action", choices=["eval"])
-         add_arg = None
-         for params, kwparams in _XCCDF_MAP["eval"]["parser_arguments"]:
-@@ -61,6 +56,117 @@ _OSCAP_EXIT_CODES_MAP = {
+@@ -55,6 +56,117 @@ _OSCAP_EXIT_CODES_MAP = {
  }
  
  
@@ -182,15 +159,7 @@ index 6f8ff4a76d..216fd89eef 100644
  def xccdf(params):
      """
      Run ``oscap xccdf`` commands on minions.
-@@ -91,14 +197,16 @@ def xccdf(params):
-         args, argv = _ArgumentParser(action=action).parse_known_args(args=params)
-     except Exception as err:  # pylint: disable=broad-except
-         success = False
--        error = six.text_type(err)
-+        error = str(err)
- 
-     if success:
-         cmd = _XCCDF_MAP[action]["cmd_pattern"].format(args.profile, policy)
+@@ -92,7 +204,9 @@ def xccdf(params):
          tempdir = tempfile.mkdtemp()
          proc = Popen(shlex.split(cmd), stdout=PIPE, stderr=PIPE, cwd=tempdir)
          (stdoutdata, error) = proc.communicate()
@@ -451,6 +420,6 @@ index 045c37f7c9..301c1869ec 100644
 +                },
 +            )
 -- 
-2.33.0
+2.34.1
 
 

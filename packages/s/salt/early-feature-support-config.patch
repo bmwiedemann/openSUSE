@@ -1,6 +1,6 @@
-From a20d99db6de68bd4e7a4d2eda4c1c590aea449e7 Mon Sep 17 00:00:00 2001
-From: Bo Maryniuk <bo@suse.de>
-Date: Tue, 10 Jul 2018 12:06:33 +0200
+From f24c61d3c1ede64c0ef5c11efeb7d2293e714550 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 16:40:45 +0100
 Subject: [PATCH] early feature: support-config
 
 Add support script function
@@ -527,19 +527,19 @@ Check last function by full name
  salt/cli/support/profiles/postgres.yml    |  11 +
  salt/cli/support/profiles/salt.yml        |   9 +
  salt/cli/support/profiles/users.yml       |  22 +
- salt/loader.py                            |   6 +-
+ salt/loader/lazy.py                       |   6 +-
  salt/modules/saltsupport.py               | 405 ++++++++++++++++
  salt/scripts.py                           |  15 +
  salt/state.py                             |  38 +-
  salt/states/saltsupport.py                | 225 +++++++++
  salt/utils/args.py                        |   3 +-
- salt/utils/decorators/__init__.py         |  68 +--
+ salt/utils/decorators/__init__.py         |  24 +
  salt/utils/parsers.py                     | 114 +++++
  scripts/salt-support                      |  11 +
  setup.py                                  |   2 +
  tests/unit/cli/test_support.py            | 553 +++++++++++++++++++++
  tests/unit/modules/test_saltsupport.py    | 496 +++++++++++++++++++
- 28 files changed, 2973 insertions(+), 36 deletions(-)
+ 28 files changed, 2958 insertions(+), 7 deletions(-)
  create mode 100644 salt/cli/support/__init__.py
  create mode 100644 salt/cli/support/collector.py
  create mode 100644 salt/cli/support/console.py
@@ -561,10 +561,10 @@ Check last function by full name
  create mode 100644 tests/unit/modules/test_saltsupport.py
 
 diff --git a/doc/ref/modules/all/index.rst b/doc/ref/modules/all/index.rst
-index d9501ae4d9..3fff7ad636 100644
+index 43dfb700f9..73958181dd 100644
 --- a/doc/ref/modules/all/index.rst
 +++ b/doc/ref/modules/all/index.rst
-@@ -414,6 +414,7 @@ execution modules
+@@ -415,6 +415,7 @@ execution modules
      salt_version
      saltcheck
      saltcloudmod
@@ -1739,12 +1739,12 @@ index 0000000000..391acdb606
 +  - group.getent:
 +      info: List of all available groups
 +      output: table
-diff --git a/salt/loader.py b/salt/loader.py
-index 7a32f4c90d..491768a028 100644
---- a/salt/loader.py
-+++ b/salt/loader.py
-@@ -2019,8 +2019,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
-         }
+diff --git a/salt/loader/lazy.py b/salt/loader/lazy.py
+index 48c70d01c0..220641059c 100644
+--- a/salt/loader/lazy.py
++++ b/salt/loader/lazy.py
+@@ -950,8 +950,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+         mod_names = [module_name] + list(virtual_aliases)
  
          for attr in getattr(mod, "__load__", dir(mod)):
 -            if attr.startswith("_"):
@@ -2168,10 +2168,10 @@ index 0000000000..e800e3bf1f
 +
 +    return __virtualname__
 diff --git a/salt/scripts.py b/salt/scripts.py
-index 8f3cde8477..e5c248f011 100644
+index 93eab0f702..b1fea566a9 100644
 --- a/salt/scripts.py
 +++ b/salt/scripts.py
-@@ -592,3 +592,18 @@ def salt_unity():
+@@ -574,3 +574,18 @@ def salt_unity():
          sys.argv.pop(1)
          s_fun = getattr(sys.modules[__name__], "salt_{}".format(cmd))
      s_fun()
@@ -2191,10 +2191,10 @@ index 8f3cde8477..e5c248f011 100644
 +    _install_signal_handlers(client)
 +    client.run()
 diff --git a/salt/state.py b/salt/state.py
-index f999191e6d..f5ac3199c7 100644
+index 91927d9ec6..fa5a578dc6 100644
 --- a/salt/state.py
 +++ b/salt/state.py
-@@ -1565,7 +1565,9 @@ class State:
+@@ -1577,7 +1577,9 @@ class State:
                  names = []
                  if state.startswith("__"):
                      continue
@@ -2205,7 +2205,7 @@ index f999191e6d..f5ac3199c7 100644
                  if orchestration_jid is not None:
                      chunk["__orchestration_jid__"] = orchestration_jid
                  if "__sls__" in body:
-@@ -2168,9 +2170,16 @@ class State:
+@@ -2176,9 +2178,16 @@ class State:
                          ret = self.call_parallel(cdata, low)
                      else:
                          self.format_slots(cdata)
@@ -2225,7 +2225,7 @@ index f999191e6d..f5ac3199c7 100644
                  self.states.inject_globals = {}
              if (
                  "check_cmd" in low
-@@ -3242,10 +3251,31 @@ class State:
+@@ -3252,10 +3261,31 @@ class State:
          running.update(errors)
          return running
  
@@ -2510,153 +2510,11 @@ index ba50aff126..4e5ca0eedf 100644
      aspec = get_function_argspec(fun, is_class_method=is_class_method)
  
 diff --git a/salt/utils/decorators/__init__.py b/salt/utils/decorators/__init__.py
-index 940d0a90f2..b06cf0abc8 100644
+index 20803771ed..0aba77e194 100644
 --- a/salt/utils/decorators/__init__.py
 +++ b/salt/utils/decorators/__init__.py
-@@ -1,10 +1,7 @@
--# -*- coding: utf-8 -*-
- """
- Helpful decorators for module writing
- """
- 
--# Import python libs
--from __future__ import absolute_import, print_function, unicode_literals
- 
- import errno
- import inspect
-@@ -15,13 +12,10 @@ import time
- from collections import defaultdict
- from functools import wraps
- 
--# Import salt libs
- import salt.utils.args
- import salt.utils.data
- import salt.utils.versions
- from salt.exceptions import CommandExecutionError, SaltConfigurationError
--
--# Import 3rd-party libs
- from salt.ext import six
- from salt.log import LOG_LEVELS
- 
-@@ -32,7 +26,7 @@ if getattr(sys, "getwindowsversion", False):
- log = logging.getLogger(__name__)
- 
- 
--class Depends(object):
-+class Depends:
-     """
-     This decorator will check the module when it is loaded and check that the
-     dependencies passed in are in the globals of the module. If not, it will
-@@ -121,7 +115,7 @@ class Depends(object):
- 
-     @staticmethod
-     def run_command(dependency, mod_name, func_name):
--        full_name = "{0}.{1}".format(mod_name, func_name)
-+        full_name = "{}.{}".format(mod_name, func_name)
-         log.trace("Running '%s' for '%s'", dependency, full_name)
-         if IS_WINDOWS:
-             args = salt.utils.args.shlex_split(dependency, posix=False)
-@@ -145,8 +139,8 @@ class Depends(object):
-         It will modify the "functions" dict and remove/replace modules that
-         are missing dependencies.
-         """
--        for dependency, dependent_dict in six.iteritems(cls.dependency_dict[kind]):
--            for (mod_name, func_name), (frame, params) in six.iteritems(dependent_dict):
-+        for dependency, dependent_dict in cls.dependency_dict[kind].items():
-+            for (mod_name, func_name), (frame, params) in dependent_dict.items():
-                 if mod_name != tgt_mod:
-                     continue
-                 # Imports from local context take presedence over those from the global context.
-@@ -232,7 +226,7 @@ class Depends(object):
-                     except (AttributeError, KeyError):
-                         pass
- 
--                    mod_key = "{0}.{1}".format(mod_name, func_name)
-+                    mod_key = "{}.{}".format(mod_name, func_name)
- 
-                     # if we don't have this module loaded, skip it!
-                     if mod_key not in functions:
-@@ -267,9 +261,7 @@ def timing(function):
-             mod_name = function.__module__[16:]
-         else:
-             mod_name = function.__module__
--        fstr = "Function %s.%s took %.{0}f seconds to execute".format(
--            sys.float_info.dig
--        )
-+        fstr = "Function %s.%s took %.{}f seconds to execute".format(sys.float_info.dig)
-         log.profile(fstr, mod_name, function.__name__, end_time - start_time)
-         return ret
- 
-@@ -291,13 +283,13 @@ def memoize(func):
-     def _memoize(*args, **kwargs):
-         str_args = []
-         for arg in args:
--            if not isinstance(arg, six.string_types):
--                str_args.append(six.text_type(arg))
-+            if not isinstance(arg, str):
-+                str_args.append(str(arg))
-             else:
-                 str_args.append(arg)
- 
-         args_ = ",".join(
--            list(str_args) + ["{0}={1}".format(k, kwargs[k]) for k in sorted(kwargs)]
-+            list(str_args) + ["{}={}".format(k, kwargs[k]) for k in sorted(kwargs)]
-         )
-         if args_ not in cache:
-             cache[args_] = func(*args, **kwargs)
-@@ -306,7 +298,7 @@ def memoize(func):
-     return _memoize
- 
- 
--class _DeprecationDecorator(object):
-+class _DeprecationDecorator:
-     """
-     Base mix-in class for the deprecation decorator.
-     Takes care of a common functionality, used in its derivatives.
-@@ -359,7 +351,7 @@ class _DeprecationDecorator(object):
-             try:
-                 return self._function(*args, **kwargs)
-             except TypeError as error:
--                error = six.text_type(error).replace(
-+                error = str(error).replace(
-                     self._function, self._orig_f_name
-                 )  # Hide hidden functions
-                 log.error(
-@@ -374,7 +366,7 @@ class _DeprecationDecorator(object):
-                     self._function.__name__,
-                     error,
-                 )
--                six.reraise(*sys.exc_info())
-+                raise
-         else:
-             raise CommandExecutionError(
-                 "Function is deprecated, but the successor function was not found."
-@@ -626,11 +618,11 @@ class _WithDeprecated(_DeprecationDecorator):
- 
-         if use_deprecated and use_superseded:
-             raise SaltConfigurationError(
--                "Function '{0}' is mentioned both in deprecated "
-+                "Function '{}' is mentioned both in deprecated "
-                 "and superseded sections. Please remove any of that.".format(full_name)
-             )
-         old_function = self._globals.get(
--            self._with_name or "_{0}".format(function.__name__)
-+            self._with_name or "_{}".format(function.__name__)
-         )
-         if self._policy == self.OPT_IN:
-             self._function = function if use_superseded else old_function
-@@ -782,12 +774,30 @@ def ensure_unicode_args(function):
- 
-     @wraps(function)
-     def wrapped(*args, **kwargs):
--        if six.PY2:
--            return function(
--                *salt.utils.data.decode_list(args),
--                **salt.utils.data.decode_dict(kwargs)
--            )
--        else:
--            return function(*args, **kwargs)
-+        return function(*args, **kwargs)
+@@ -867,3 +867,27 @@ def ensure_unicode_args(function):
+         return function(*args, **kwargs)
  
      return wrapped
 +
@@ -2684,7 +2542,7 @@ index 940d0a90f2..b06cf0abc8 100644
 +
 +    return f
 diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
-index 2a5abb25d5..31a2bf0b64 100644
+index 28660397d4..c0820e5df0 100644
 --- a/salt/utils/parsers.py
 +++ b/salt/utils/parsers.py
 @@ -17,6 +17,7 @@ import optparse
@@ -2703,7 +2561,7 @@ index 2a5abb25d5..31a2bf0b64 100644
  import salt.utils.platform
  import salt.utils.process
  import salt.utils.stringutils
-@@ -2066,6 +2068,118 @@ class SyndicOptionParser(
+@@ -2088,6 +2090,118 @@ class SyndicOptionParser(
          return opts
  
  
@@ -2840,10 +2698,10 @@ index 0000000000..4e0e79f3ea
 +if __name__ == "__main__":
 +    salt_support()
 diff --git a/setup.py b/setup.py
-index 031f2bc492..6f3c1abd76 100755
+index af8e448007..2f6dfd6064 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -1251,6 +1251,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1253,6 +1253,7 @@ class SaltDistribution(distutils.dist.Distribution):
                  "scripts/salt-master",
                  "scripts/salt-minion",
                  "scripts/salt-proxy",
@@ -2851,7 +2709,7 @@ index 031f2bc492..6f3c1abd76 100755
                  "scripts/salt-ssh",
                  "scripts/salt-syndic",
                  "scripts/salt-unity",
-@@ -1297,6 +1298,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1299,6 +1300,7 @@ class SaltDistribution(distutils.dist.Distribution):
                  "salt-key = salt.scripts:salt_key",
                  "salt-master = salt.scripts:salt_master",
                  "salt-minion = salt.scripts:salt_minion",
@@ -3921,6 +3779,6 @@ index 0000000000..f9ce7be29a
 +                "00:00:00.000 - The real TTYs became " "pseudo TTYs and vice versa"
 +            ]
 -- 
-2.33.0
+2.34.1
 
 

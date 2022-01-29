@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Jan 26 17:04:36 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
+
+- Update to version 3004, see release notes: https://docs.saltproject.io/en/master/topics/releases/3004.html
+- Don't check for cached pillar errors on state.apply (bsc#1190781)
+
+- Added:
+  * state.apply-don-t-check-for-cached-pillar-errors.patch
+
+- Modified:
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * debian-info_installed-compatibility-50453.patch
+  * info_installed-works-without-status-attr-now.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-rpm_vercmp-python-library-for-version-comparison.patch
+  * 3003.3-do-not-consider-skipped-targets-as-failed-for.patch
+  * support-transactional-systems-microos.patch
+  * do-not-crash-when-unexpected-cmd-output-at-listing-p.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+  * fix-exception-in-yumpkg.remove-for-not-installed-pac.patch
+  * enhance-openscap-module-add-xccdf_eval-call-386.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * 3003.3-postgresql-json-support-in-pillar-423.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+  * early-feature-support-config.patch
+  * implementation-of-held-unheld-functions-for-state-pk.patch
+  * x509-fixes-111.patch
+  * fix-issues-with-salt-ssh-s-extra-filerefs.patch
+  * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * refactor-and-improvements-for-transactional-updates-.patch
+  * improvements-on-ansiblegate-module-354.patch
+  * revert-fixing-a-use-case-when-multiple-inotify-beaco.patch
+
+- Removed:
+  * add-alibaba-cloud-linux-2-by-backporting-upstream-s-.patch
+  * prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+  * do-not-break-master_tops-for-minion-with-version-low.patch
+  * don-t-call-zypper-with-more-than-one-no-refresh.patch
+  * do-not-monkey-patch-yaml-bsc-1177474.patch
+  * add-missing-aarch64-to-rpm-package-architectures-405.patch
+  * figure-out-python-interpreter-to-use-inside-containe.patch
+  * parsing-epoch-out-of-version-provided-during-pkg-rem.patch
+  * fix-a-test-and-some-variable-names-229.patch
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+  * better-handling-of-bad-public-keys-from-minions-bsc-.patch
+  * templates-move-the-globals-up-to-the-environment-jin.patch
+  * virt-enhancements.patch
+  * fix-aptpkg.normalize_name-when-package-arch-is-all.patch
+  * adding-preliminary-support-for-rocky.-59682-391.patch
+  * fix-save-for-iptables-state-module-bsc-1185131-372.patch
+
+-------------------------------------------------------------------
 Mon Nov 15 15:14:54 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Simplify "transactional_update" module to not use SSH wrapper and allow more flexible execution

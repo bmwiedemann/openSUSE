@@ -1,6 +1,6 @@
-From e16881c36b535c4798d0bfda089efd9323957fec Mon Sep 17 00:00:00 2001
-From: Florian Bergmann <bergmannf@users.noreply.github.com>
-Date: Fri, 14 Sep 2018 10:30:39 +0200
+From da47028898edb69290f989d9f99973969d6a8652 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 16:38:17 +0100
 Subject: [PATCH] X509 fixes (#111)
 
 * Return proper content type for the x509 certificate
@@ -37,59 +37,17 @@ Fix for log checking in x509 test
 
 We are logging in debug and not in trace mode here.
 ---
- salt/modules/publish.py         |  17 +++---
- salt/modules/x509.py            | 100 ++++++++++++++++----------------
- salt/states/x509.py             |  74 +++++++++++++++++++++--
- tests/unit/modules/test_x509.py |   6 +-
- 4 files changed, 131 insertions(+), 66 deletions(-)
+ salt/modules/publish.py         |  2 +
+ salt/modules/x509.py            | 93 ++++++++++++++++-----------------
+ salt/states/x509.py             | 74 ++++++++++++++++++++++++--
+ tests/unit/modules/test_x509.py |  6 +--
+ 4 files changed, 121 insertions(+), 54 deletions(-)
 
 diff --git a/salt/modules/publish.py b/salt/modules/publish.py
-index 0926f3fa13..6d56c4d08e 100644
+index f9b7e8b168..651119906e 100644
 --- a/salt/modules/publish.py
 +++ b/salt/modules/publish.py
-@@ -1,15 +1,10 @@
--# -*- coding: utf-8 -*-
- """
- Publish a command from a minion to a target
- """
--from __future__ import absolute_import, print_function, unicode_literals
- 
- import logging
--
--# Import python libs
- import time
- 
--# Import salt libs
- import salt.crypt
- import salt.payload
- import salt.transport.client
-@@ -93,13 +88,13 @@ def _publish(
-             matching_master_uris = [
-                 master
-                 for master in __opts__["master_uri_list"]
--                if "//{0}:".format(via_master) in master
-+                if "//{}:".format(via_master) in master
-             ]
- 
-             if not matching_master_uris:
-                 raise SaltInvocationError(
--                    "Could not find match for {0} in \
--                list of configured masters {1} when using `via_master` option".format(
-+                    "Could not find match for {} in \
-+                list of configured masters {} when using `via_master` option".format(
-                         via_master, __opts__["master_uri_list"]
-                     )
-                 )
-@@ -143,7 +138,7 @@ def _publish(
-         try:
-             peer_data = channel.send(load)
-         except SaltReqTimeoutError:
--            return "'{0}' publish timed out".format(fun)
-+            return "'{}' publish timed out".format(fun)
-         if not peer_data:
-             return {}
-         # CLI args are passed as strings, re-cast to keep time.sleep happy
-@@ -198,6 +193,8 @@ def _publish(
+@@ -196,6 +196,8 @@ def _publish(
              else:
                  return ret
  
@@ -98,14 +56,8 @@ index 0926f3fa13..6d56c4d08e 100644
  
  def publish(
      tgt, fun, arg=None, tgt_type="glob", returner="", timeout=5, via_master=None
-@@ -347,4 +344,4 @@ def runner(fun, arg=None, timeout=5):
-         try:
-             return channel.send(load)
-         except SaltReqTimeoutError:
--            return "'{0}' runner publish timed out".format(fun)
-+            return "'{}' runner publish timed out".format(fun)
 diff --git a/salt/modules/x509.py b/salt/modules/x509.py
-index 43a134625f..d8e6ae3baa 100644
+index 0909bace48..261b794295 100644
 --- a/salt/modules/x509.py
 +++ b/salt/modules/x509.py
 @@ -30,16 +30,13 @@ from salt.utils.odict import OrderedDict
@@ -186,7 +138,7 @@ index 43a134625f..d8e6ae3baa 100644
      for nid_num, nid_name, val in sorted(ret_list):
          ret[nid_name] = val
      return ret
-@@ -536,8 +535,8 @@ def get_pem_entries(glob_path):
+@@ -537,8 +536,8 @@ def get_pem_entries(glob_path):
          if os.path.isfile(path):
              try:
                  ret[path] = get_pem_entry(text=path)
@@ -197,7 +149,7 @@ index 43a134625f..d8e6ae3baa 100644
  
      return ret
  
-@@ -615,8 +614,8 @@ def read_certificates(glob_path):
+@@ -616,8 +615,8 @@ def read_certificates(glob_path):
          if os.path.isfile(path):
              try:
                  ret[path] = read_certificate(certificate=path)
@@ -208,7 +160,7 @@ index 43a134625f..d8e6ae3baa 100644
  
      return ret
  
-@@ -646,10 +645,9 @@ def read_csr(csr):
+@@ -647,10 +646,9 @@ def read_csr(csr):
          "Subject": _parse_subject(csr.get_subject()),
          "Subject Hash": _dec2hex(csr.get_subject().as_hash()),
          "Public Key Hash": hashlib.sha1(csr.get_pubkey().get_modulus()).hexdigest(),
@@ -220,7 +172,7 @@ index 43a134625f..d8e6ae3baa 100644
      return ret
  
  
-@@ -959,7 +957,7 @@ def create_crl(
+@@ -960,7 +958,7 @@ def create_crl(
      # pyOpenSSL Note due to current limitations in pyOpenSSL it is impossible
      # to specify a digest For signing the CRL. This will hopefully be fixed
      # soon: https://github.com/pyca/pyopenssl/pull/161
@@ -229,18 +181,7 @@ index 43a134625f..d8e6ae3baa 100644
          raise salt.exceptions.SaltInvocationError(
              "Could not load OpenSSL module, OpenSSL unavailable"
          )
-@@ -1033,7 +1031,9 @@ def create_crl(
-         crltext = crl.export(**export_kwargs)
-     except (TypeError, ValueError):
-         log.warning(
--            "Error signing crl with specified digest. Are you using pyopenssl 0.15 or newer? The default md5 digest will be used."
-+            "Error signing crl with specified digest. "
-+            "Are you using pyopenssl 0.15 or newer? "
-+            "The default md5 digest will be used."
-         )
-         export_kwargs.pop("digest", None)
-         crltext = crl.export(**export_kwargs)
-@@ -1109,6 +1109,7 @@ def get_signing_policy(signing_policy_name):
+@@ -1111,6 +1109,7 @@ def get_signing_policy(signing_policy_name):
      signing_policy = _get_signing_policy(signing_policy_name)
      if not signing_policy:
          return "Signing policy {} does not exist.".format(signing_policy_name)
@@ -248,7 +189,7 @@ index 43a134625f..d8e6ae3baa 100644
      if isinstance(signing_policy, list):
          dict_ = {}
          for item in signing_policy:
-@@ -1125,7 +1126,7 @@ def get_signing_policy(signing_policy_name):
+@@ -1127,7 +1126,7 @@ def get_signing_policy(signing_policy_name):
              signing_policy["signing_cert"], "CERTIFICATE"
          )
      except KeyError:
@@ -257,17 +198,7 @@ index 43a134625f..d8e6ae3baa 100644
  
      return signing_policy
  
-@@ -1734,7 +1735,8 @@ def create_csr(path=None, text=False, **kwargs):
-     if "private_key" not in kwargs and "public_key" in kwargs:
-         kwargs["private_key"] = kwargs["public_key"]
-         log.warning(
--            "OpenSSL no longer allows working with non-signed CSRs. A private_key must be specified. Attempting to use public_key as private_key"
-+            "OpenSSL no longer allows working with non-signed CSRs. "
-+            "A private_key must be specified. Attempting to use public_key as private_key"
-         )
- 
-     if "private_key" not in kwargs:
-@@ -1758,7 +1760,8 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1761,7 +1760,8 @@ def create_csr(path=None, text=False, **kwargs):
          )
      )
  
@@ -277,7 +208,7 @@ index 43a134625f..d8e6ae3baa 100644
          if entry in kwargs:
              setattr(subject, entry, kwargs[entry])
  
-@@ -1794,7 +1797,6 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1797,7 +1797,6 @@ def create_csr(path=None, text=False, **kwargs):
          extstack.push(ext)
  
      csr.add_extensions(extstack)
@@ -285,7 +216,7 @@ index 43a134625f..d8e6ae3baa 100644
      csr.sign(
          _get_private_key_obj(
              kwargs["private_key"], passphrase=kwargs["private_key_passphrase"]
-@@ -1802,10 +1804,11 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1805,10 +1804,11 @@ def create_csr(path=None, text=False, **kwargs):
          kwargs["algorithm"],
      )
  
@@ -301,7 +232,7 @@ index 43a134625f..d8e6ae3baa 100644
  
  
  def verify_private_key(private_key, public_key, passphrase=None):
-@@ -1830,7 +1833,7 @@ def verify_private_key(private_key, public_key, passphrase=None):
+@@ -1833,7 +1833,7 @@ def verify_private_key(private_key, public_key, passphrase=None):
          salt '*' x509.verify_private_key private_key=/etc/pki/myca.key \\
                  public_key=/etc/pki/myca.crt
      """
@@ -310,7 +241,7 @@ index 43a134625f..d8e6ae3baa 100644
  
  
  def verify_signature(
-@@ -1886,7 +1889,10 @@ def verify_crl(crl, cert):
+@@ -1889,7 +1889,10 @@ def verify_crl(crl, cert):
          salt '*' x509.verify_crl crl=/etc/pki/myca.crl cert=/etc/pki/myca.crt
      """
      if not salt.utils.path.which("openssl"):
@@ -322,7 +253,7 @@ index 43a134625f..d8e6ae3baa 100644
      crltext = _text_or_file(crl)
      crltext = get_pem_entry(crltext, pem_type="X509 CRL")
      crltempfile = tempfile.NamedTemporaryFile(delete=True)
-@@ -1908,10 +1914,7 @@ def verify_crl(crl, cert):
+@@ -1911,10 +1914,7 @@ def verify_crl(crl, cert):
      crltempfile.close()
      certtempfile.close()
  
@@ -334,7 +265,7 @@ index 43a134625f..d8e6ae3baa 100644
  
  
  def expired(certificate):
-@@ -1949,8 +1952,9 @@ def expired(certificate):
+@@ -1952,8 +1952,9 @@ def expired(certificate):
                  ret["expired"] = True
              else:
                  ret["expired"] = False
@@ -346,7 +277,7 @@ index 43a134625f..d8e6ae3baa 100644
  
      return ret
  
-@@ -1973,6 +1977,7 @@ def will_expire(certificate, days):
+@@ -1976,6 +1977,7 @@ def will_expire(certificate, days):
  
          salt '*' x509.will_expire "/etc/pki/mycert.crt" days=30
      """
@@ -354,7 +285,7 @@ index 43a134625f..d8e6ae3baa 100644
      ret = {}
  
      if os.path.isfile(certificate):
-@@ -1986,14 +1991,11 @@ def will_expire(certificate, days):
+@@ -1989,14 +1991,11 @@ def will_expire(certificate, days):
              _expiration_date = cert.get_not_after().get_datetime()
  
              ret["cn"] = _parse_subject(cert.get_subject())["CN"]
@@ -376,7 +307,7 @@ index 43a134625f..d8e6ae3baa 100644
  
      return ret
 diff --git a/salt/states/x509.py b/salt/states/x509.py
-index 80e1ecdd6d..3a54ad3ba3 100644
+index b3d2f978bd..16811bcfb8 100644
 --- a/salt/states/x509.py
 +++ b/salt/states/x509.py
 @@ -177,11 +177,12 @@ import os
@@ -402,7 +333,7 @@ index 80e1ecdd6d..3a54ad3ba3 100644
  
  
  def _revoked_to_list(revs):
-@@ -683,7 +684,70 @@ def certificate_managed(name, days_remaining=90, append_certs=None, **kwargs):
+@@ -682,7 +683,70 @@ def certificate_managed(name, days_remaining=90, append_certs=None, **kwargs):
              "Old": invalid_reason,
              "New": "Certificate will be valid and up to date",
          }
@@ -474,7 +405,7 @@ index 80e1ecdd6d..3a54ad3ba3 100644
  
      contents = __salt__["x509.create_certificate"](text=True, **kwargs)
      # Check the module actually returned a cert and not an error message as a string
-@@ -879,6 +943,8 @@ def pem_managed(name, text, backup=False, **kwargs):
+@@ -878,6 +942,8 @@ def pem_managed(name, text, backup=False, **kwargs):
          Any arguments supported by :py:func:`file.managed <salt.states.file.managed>` are supported.
      """
      file_args, kwargs = _get_file_args(name, **kwargs)
@@ -485,7 +416,7 @@ index 80e1ecdd6d..3a54ad3ba3 100644
  
      return __states__["file.managed"](**file_args)
 diff --git a/tests/unit/modules/test_x509.py b/tests/unit/modules/test_x509.py
-index 20ca0d679a..8fa799437d 100644
+index 8f4c433b1a..3105290a2c 100644
 --- a/tests/unit/modules/test_x509.py
 +++ b/tests/unit/modules/test_x509.py
 @@ -118,9 +118,9 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
@@ -502,6 +433,6 @@ index 20ca0d679a..8fa799437d 100644
      @skipIf(not HAS_M2CRYPTO, "Skipping, M2Crypto is unavailable")
      def test_get_pem_entry(self):
 -- 
-2.33.0
+2.34.1
 
 

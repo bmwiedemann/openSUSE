@@ -1,6 +1,6 @@
-From 6ffe3270d58527576688011e2b3bd826ec3941ee Mon Sep 17 00:00:00 2001
-From: Cedric Bosdonnat <cedric.bosdonnat@free.fr>
-Date: Fri, 24 Sep 2021 17:01:34 +0200
+From 5c2624552e1ac2dbec3b54ff8c147ae50494969e Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Wed, 19 Jan 2022 17:25:37 +0100
 Subject: [PATCH] 3003.3 - postgresql JSON support in pillar (#423)
 
 * Allow single field returns from SQL pillar
@@ -40,10 +40,10 @@ index 0000000000..3fe39286a8
 @@ -0,0 +1 @@
 +Support querying for JSON data in SQL external pillar
 diff --git a/salt/pillar/sql_base.py b/salt/pillar/sql_base.py
-index 976ca8c0d8..9d9f0c9c9f 100644
+index f7d87105af..8020d5503b 100644
 --- a/salt/pillar/sql_base.py
 +++ b/salt/pillar/sql_base.py
-@@ -137,6 +137,33 @@ These columns define list grouping
+@@ -136,6 +136,33 @@ These columns define list grouping
  The range for with_lists is 1 to number_of_fields, inclusive.
  Numbers outside this range are ignored.
  
@@ -77,15 +77,15 @@ index 976ca8c0d8..9d9f0c9c9f 100644
  Finally, if you pass the queries in via a mapping, the key will be the
  first level name where as passing them in as a list will place them in the
  root.  This isolates the query results into their own subtrees.
-@@ -179,6 +206,7 @@ from salt.ext import six
- from salt.ext.six.moves import range
+@@ -171,6 +198,7 @@ More complete example for MySQL (to also show configuration)
+ import abc  # Added in python2.6 so always available
+ import logging
  
- # Import Salt libs
 +from salt.utils.dictupdate import update
  from salt.utils.odict import OrderedDict
  
  # Please don't strip redundant parentheses from this file.
-@@ -208,6 +236,7 @@ class SqlBaseExtPillar(six.with_metaclass(abc.ABCMeta, object)):
+@@ -200,6 +228,7 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
      num_fields = 0
      depth = 0
      as_list = False
@@ -93,7 +93,7 @@ index 976ca8c0d8..9d9f0c9c9f 100644
      with_lists = None
      ignore_null = False
  
-@@ -267,6 +296,7 @@ class SqlBaseExtPillar(six.with_metaclass(abc.ABCMeta, object)):
+@@ -259,6 +288,7 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
                  "query": "",
                  "depth": 0,
                  "as_list": False,
@@ -101,7 +101,7 @@ index 976ca8c0d8..9d9f0c9c9f 100644
                  "with_lists": None,
                  "ignore_null": False,
              }
-@@ -324,6 +354,13 @@ class SqlBaseExtPillar(six.with_metaclass(abc.ABCMeta, object)):
+@@ -314,6 +344,13 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
          for ret in rows:
              # crd is the Current Return Data level, to make this non-recursive.
              crd = self.focus
@@ -115,7 +115,7 @@ index 976ca8c0d8..9d9f0c9c9f 100644
              # Walk and create dicts above the final layer
              for i in range(0, self.depth - 1):
                  # At the end we'll use listify to find values to make a list of
-@@ -443,6 +480,7 @@ class SqlBaseExtPillar(six.with_metaclass(abc.ABCMeta, object)):
+@@ -433,6 +470,7 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
                  )
                  self.enter_root(root)
                  self.as_list = details["as_list"]
@@ -173,10 +173,10 @@ index 0000000000..0d44c2d608
 +        "f": [{"g": 7, "h": "test"}],
 +    }
 diff --git a/tests/unit/pillar/test_mysql.py b/tests/unit/pillar/test_mysql.py
-index bc81eb4174..9db724329d 100644
+index ddfb67d230..de6212b2c8 100644
 --- a/tests/unit/pillar/test_mysql.py
 +++ b/tests/unit/pillar/test_mysql.py
-@@ -26,6 +26,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -18,6 +18,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -184,7 +184,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -47,6 +48,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -39,6 +40,7 @@ class MysqlPillarTestCase(TestCase):
                  {"query": "SELECT blah7", "as_list": True},
                  {"query": "SELECT blah8", "with_lists": "1"},
                  {"query": "SELECT blah9", "with_lists": "1,2"},
@@ -192,7 +192,7 @@ index bc81eb4174..9db724329d 100644
              ],
              {},
          )
-@@ -59,6 +61,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -51,6 +53,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -200,7 +200,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -69,6 +72,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -61,6 +64,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -208,7 +208,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -79,6 +83,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -71,6 +75,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -216,7 +216,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -89,6 +94,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -81,6 +86,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -224,7 +224,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -99,6 +105,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -91,6 +97,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -232,7 +232,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -109,6 +116,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -101,6 +108,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 2,
                          "as_list": False,
@@ -240,7 +240,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -119,6 +127,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -111,6 +119,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 0,
                          "as_list": True,
@@ -248,7 +248,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -129,6 +138,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -121,6 +130,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah8",
                          "depth": 0,
                          "as_list": False,
@@ -256,7 +256,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": [1],
                          "ignore_null": False,
                      },
-@@ -139,10 +149,22 @@ class MysqlPillarTestCase(TestCase):
+@@ -131,10 +141,22 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah9",
                          "depth": 0,
                          "as_list": False,
@@ -279,7 +279,7 @@ index bc81eb4174..9db724329d 100644
              ],
              qbuffer,
          )
-@@ -159,6 +181,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -151,6 +173,7 @@ class MysqlPillarTestCase(TestCase):
                  "5": {"query": "SELECT blah5"},
                  "6": {"query": "SELECT blah6", "depth": 2},
                  "7": {"query": "SELECT blah7", "as_list": True},
@@ -287,7 +287,7 @@ index bc81eb4174..9db724329d 100644
              },
          )
          qbuffer = return_data.extract_queries(args, kwargs)
-@@ -170,6 +193,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -162,6 +185,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -295,7 +295,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -180,6 +204,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -172,6 +196,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -303,7 +303,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -190,6 +215,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -182,6 +207,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -311,7 +311,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -200,6 +226,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -192,6 +218,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -319,7 +319,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -210,6 +237,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -202,6 +229,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -327,7 +327,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -220,6 +248,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -212,6 +240,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 2,
                          "as_list": False,
@@ -335,7 +335,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -230,6 +259,18 @@ class MysqlPillarTestCase(TestCase):
+@@ -222,6 +251,18 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 0,
                          "as_list": True,
@@ -354,7 +354,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -261,6 +302,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -253,6 +294,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah1",
                          "depth": 0,
                          "as_list": False,
@@ -362,7 +362,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -271,6 +313,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -263,6 +305,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 2,
                          "as_list": False,
@@ -370,7 +370,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -281,6 +324,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -273,6 +316,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": True,
@@ -378,7 +378,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -291,6 +335,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -283,6 +327,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah1",
                          "depth": 0,
                          "as_list": False,
@@ -386,7 +386,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -301,6 +346,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -293,6 +338,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 2,
                          "as_list": False,
@@ -394,7 +394,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -311,6 +357,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -303,6 +349,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": True,
@@ -402,7 +402,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -349,6 +396,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -341,6 +388,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -410,7 +410,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -359,6 +407,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -351,6 +399,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -418,7 +418,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -369,6 +418,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -361,6 +410,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -426,7 +426,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -379,6 +429,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -371,6 +421,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -434,7 +434,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -389,6 +440,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -381,6 +432,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -442,7 +442,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -399,6 +451,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -391,6 +443,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 0,
                          "as_list": False,
@@ -450,7 +450,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -409,6 +462,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -401,6 +454,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 2,
                          "as_list": False,
@@ -458,7 +458,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -419,6 +473,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -411,6 +465,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah8",
                          "depth": 0,
                          "as_list": True,
@@ -466,7 +466,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -440,6 +495,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -432,6 +487,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -474,7 +474,7 @@ index bc81eb4174..9db724329d 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -450,6 +506,7 @@ class MysqlPillarTestCase(TestCase):
+@@ -442,6 +498,7 @@ class MysqlPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -483,10 +483,10 @@ index bc81eb4174..9db724329d 100644
                          "ignore_null": False,
                      },
 diff --git a/tests/unit/pillar/test_sqlcipher.py b/tests/unit/pillar/test_sqlcipher.py
-index d7e9eed6f6..6f7b21fb3f 100644
+index 99edcb094c..1330c3bbfc 100644
 --- a/tests/unit/pillar/test_sqlcipher.py
 +++ b/tests/unit/pillar/test_sqlcipher.py
-@@ -38,6 +38,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -30,6 +30,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -494,7 +494,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -48,6 +49,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -40,6 +41,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -502,7 +502,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -58,6 +60,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -50,6 +52,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -510,7 +510,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -68,6 +71,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -60,6 +63,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -518,7 +518,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -78,6 +82,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -70,6 +74,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -526,7 +526,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -88,6 +93,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -80,6 +85,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 2,
                          "as_list": False,
@@ -534,7 +534,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -98,6 +104,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -90,6 +96,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 0,
                          "as_list": True,
@@ -542,7 +542,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -108,6 +115,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -100,6 +107,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah8",
                          "depth": 0,
                          "as_list": False,
@@ -550,7 +550,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": [1],
                          "ignore_null": False,
                      },
-@@ -118,6 +126,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -110,6 +118,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah9",
                          "depth": 0,
                          "as_list": False,
@@ -558,7 +558,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": [1, 2],
                          "ignore_null": False,
                      },
-@@ -149,6 +158,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -141,6 +150,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -566,7 +566,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -159,6 +169,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -151,6 +161,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -574,7 +574,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -169,6 +180,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -161,6 +172,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -582,7 +582,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -179,6 +191,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -171,6 +183,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -590,7 +590,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -189,6 +202,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -181,6 +194,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -598,7 +598,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -199,6 +213,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -191,6 +205,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 2,
                          "as_list": False,
@@ -606,7 +606,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -209,6 +224,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -201,6 +216,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 0,
                          "as_list": True,
@@ -614,7 +614,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -240,6 +256,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -232,6 +248,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah1",
                          "depth": 0,
                          "as_list": False,
@@ -622,7 +622,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -250,6 +267,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -242,6 +259,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 2,
                          "as_list": False,
@@ -630,7 +630,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -260,6 +278,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -252,6 +270,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": True,
@@ -638,7 +638,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -270,6 +289,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -262,6 +281,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah1",
                          "depth": 0,
                          "as_list": False,
@@ -646,7 +646,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -280,6 +300,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -272,6 +292,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 2,
                          "as_list": False,
@@ -654,7 +654,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -290,6 +311,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -282,6 +303,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": True,
@@ -662,7 +662,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -328,6 +350,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -320,6 +342,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -670,7 +670,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -338,6 +361,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -330,6 +353,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -678,7 +678,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -348,6 +372,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -340,6 +364,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -686,7 +686,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -358,6 +383,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -350,6 +375,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -694,7 +694,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -368,6 +394,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -360,6 +386,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -702,7 +702,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -378,6 +405,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -370,6 +397,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 0,
                          "as_list": False,
@@ -710,7 +710,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -388,6 +416,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -380,6 +408,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 2,
                          "as_list": False,
@@ -718,7 +718,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -398,6 +427,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -390,6 +419,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah8",
                          "depth": 0,
                          "as_list": True,
@@ -726,7 +726,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -419,6 +449,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -411,6 +441,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -734,7 +734,7 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -429,6 +460,7 @@ class SQLCipherPillarTestCase(TestCase):
+@@ -421,6 +452,7 @@ class SQLCipherPillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -743,10 +743,10 @@ index d7e9eed6f6..6f7b21fb3f 100644
                          "ignore_null": False,
                      },
 diff --git a/tests/unit/pillar/test_sqlite3.py b/tests/unit/pillar/test_sqlite3.py
-index da780682e7..69efd0a3e8 100644
+index 1d0b187729..fee651db32 100644
 --- a/tests/unit/pillar/test_sqlite3.py
 +++ b/tests/unit/pillar/test_sqlite3.py
-@@ -38,6 +38,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -30,6 +30,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -754,7 +754,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -48,6 +49,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -40,6 +41,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -762,7 +762,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -58,6 +60,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -50,6 +52,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -770,7 +770,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -68,6 +71,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -60,6 +63,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -778,7 +778,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -78,6 +82,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -70,6 +74,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -786,7 +786,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -88,6 +93,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -80,6 +85,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 2,
                          "as_list": False,
@@ -794,7 +794,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -98,6 +104,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -90,6 +96,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 0,
                          "as_list": True,
@@ -802,7 +802,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -108,6 +115,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -100,6 +107,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah8",
                          "depth": 0,
                          "as_list": False,
@@ -810,7 +810,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": [1],
                          "ignore_null": False,
                      },
-@@ -118,6 +126,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -110,6 +118,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah9",
                          "depth": 0,
                          "as_list": False,
@@ -818,7 +818,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": [1, 2],
                          "ignore_null": False,
                      },
-@@ -149,6 +158,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -141,6 +150,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -826,7 +826,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -159,6 +169,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -151,6 +161,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -834,7 +834,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -169,6 +180,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -161,6 +172,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -842,7 +842,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -179,6 +191,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -171,6 +183,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -850,7 +850,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -189,6 +202,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -181,6 +194,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -858,7 +858,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -199,6 +213,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -191,6 +205,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 2,
                          "as_list": False,
@@ -866,7 +866,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -209,6 +224,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -201,6 +216,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 0,
                          "as_list": True,
@@ -874,7 +874,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -240,6 +256,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -232,6 +248,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah1",
                          "depth": 0,
                          "as_list": False,
@@ -882,7 +882,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -250,6 +267,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -242,6 +259,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 2,
                          "as_list": False,
@@ -890,7 +890,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -260,6 +278,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -252,6 +270,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": True,
@@ -898,7 +898,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -270,6 +289,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -262,6 +281,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah1",
                          "depth": 0,
                          "as_list": False,
@@ -906,7 +906,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -280,6 +300,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -272,6 +292,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 2,
                          "as_list": False,
@@ -914,7 +914,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -290,6 +311,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -282,6 +303,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": True,
@@ -922,7 +922,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -328,6 +350,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -320,6 +342,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -930,7 +930,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -338,6 +361,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -330,6 +353,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -938,7 +938,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -348,6 +372,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -340,6 +364,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah3",
                          "depth": 0,
                          "as_list": False,
@@ -946,7 +946,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -358,6 +383,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -350,6 +375,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah4",
                          "depth": 2,
                          "as_list": False,
@@ -954,7 +954,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -368,6 +394,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -360,6 +386,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah5",
                          "depth": 0,
                          "as_list": False,
@@ -962,7 +962,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -378,6 +405,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -370,6 +397,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah6",
                          "depth": 0,
                          "as_list": False,
@@ -970,7 +970,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -388,6 +416,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -380,6 +408,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah7",
                          "depth": 2,
                          "as_list": False,
@@ -978,7 +978,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -398,6 +427,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -390,6 +419,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah8",
                          "depth": 0,
                          "as_list": True,
@@ -986,7 +986,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -419,6 +449,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -411,6 +441,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah",
                          "depth": 0,
                          "as_list": False,
@@ -994,7 +994,7 @@ index da780682e7..69efd0a3e8 100644
                          "with_lists": None,
                          "ignore_null": False,
                      },
-@@ -429,6 +460,7 @@ class SQLite3PillarTestCase(TestCase):
+@@ -421,6 +452,7 @@ class SQLite3PillarTestCase(TestCase):
                          "query": "SELECT blah2",
                          "depth": 0,
                          "as_list": False,
@@ -1003,6 +1003,6 @@ index da780682e7..69efd0a3e8 100644
                          "ignore_null": False,
                      },
 -- 
-2.33.0
+2.34.1
 
 

@@ -1,6 +1,6 @@
-From 0c0f470f0bc082316cf854c8c4f6f6500f80f3f0 Mon Sep 17 00:00:00 2001
-From: Bo Maryniuk <bo@suse.de>
-Date: Tue, 29 Jan 2019 11:11:38 +0100
+From 834defc8e38c4495ed51bb549d86727dd8b812b3 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 17:10:37 +0100
 Subject: [PATCH] Include aliases in the fqdns grains
 
 Add UT for "is_fqdn"
@@ -24,17 +24,16 @@ Implement network.fqdns module function (bsc#1134860) (#172)
 
 Co-authored-by: Eric Siebigteroth <eric.siebigteroth@suse.de>
 ---
- salt/modules/network.py          |  5 ++-
- salt/utils/network.py            | 16 +++++++++
- tests/unit/grains/test_core.py   | 60 +++++++++++++++++++++-----------
- tests/unit/utils/test_network.py | 37 ++++++++++++++++++++
- 4 files changed, 97 insertions(+), 21 deletions(-)
+ salt/modules/network.py          |  5 ++++-
+ salt/utils/network.py            | 16 ++++++++++++++
+ tests/unit/utils/test_network.py | 37 ++++++++++++++++++++++++++++++++
+ 3 files changed, 57 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/network.py b/salt/modules/network.py
-index 9280a0f854..d8ff251271 100644
+index 08c20b99f9..53ebfe4bc7 100644
 --- a/salt/modules/network.py
 +++ b/salt/modules/network.py
-@@ -2073,7 +2073,10 @@ def fqdns():
+@@ -2089,7 +2089,10 @@ def fqdns():
  
      def _lookup_fqdn(ip):
          try:
@@ -47,10 +46,10 @@ index 9280a0f854..d8ff251271 100644
              if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
                  # No FQDN for this IP address, so we don't need to know this all the time.
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index 144f9dc850..5fc9a34ca4 100644
+index 22075066fd..8867041e0e 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -2286,3 +2286,19 @@ def filter_by_networks(values, networks):
+@@ -2302,3 +2302,19 @@ def filter_by_networks(values, networks):
              raise ValueError("Do not know how to filter a {}".format(type(values)))
      else:
          return values
@@ -70,111 +69,6 @@ index 144f9dc850..5fc9a34ca4 100644
 +        and len(hostname) < 0xFF
 +        and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
 +    )
-diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 914be531ed..7173f04979 100644
---- a/tests/unit/grains/test_core.py
-+++ b/tests/unit/grains/test_core.py
-@@ -18,6 +18,7 @@ import salt.utils.network
- import salt.utils.path
- import salt.utils.platform
- from salt._compat import ipaddress
-+from salt.ext import six
- from tests.support.mixins import LoaderModuleMockMixin
- from tests.support.mock import MagicMock, Mock, mock_open, patch
- from tests.support.unit import TestCase, skipIf
-@@ -1428,7 +1429,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-         with patch.dict("salt.grains.core.__opts__", {"enable_fqdns_grains": False}):
-             assert core.fqdns() == {"fqdns": []}
- 
--    def test_enable_fqdns_true(self):
-+    def test_enablefqdnsTrue(self):
-         """
-         testing that grains uses network.fqdns module
-         """
-@@ -1439,14 +1440,14 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-             with patch.dict("salt.grains.core.__opts__", {"enable_fqdns_grains": True}):
-                 assert core.fqdns() == "my.fake.domain"
- 
--    def test_enable_fqdns_none(self):
-+    def test_enablefqdnsNone(self):
-         """
-         testing default fqdns grains is returned when enable_fqdns_grains is None
-         """
-         with patch.dict("salt.grains.core.__opts__", {"enable_fqdns_grains": None}):
-             assert core.fqdns() == {"fqdns": []}
- 
--    def test_enable_fqdns_without_patching(self):
-+    def test_enablefqdnswithoutpaching(self):
-         """
-         testing fqdns grains is enabled by default
-         """
-@@ -1454,23 +1455,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-             "salt.grains.core.__salt__",
-             {"network.fqdns": MagicMock(return_value="my.fake.domain")},
-         ):
--            # fqdns is disabled by default on Windows
--            if salt.utils.platform.is_windows():
--                assert core.fqdns() == {"fqdns": []}
--            else:
--                assert core.fqdns() == "my.fake.domain"
--
--    def test_enable_fqdns_false_is_proxy(self):
--        """
--        testing fqdns grains is disabled by default for proxy minions
--        """
--        with patch("salt.utils.platform.is_proxy", return_value=True, autospec=True):
--            with patch.dict(
--                "salt.grains.core.__salt__",
--                {"network.fqdns": MagicMock(return_value="my.fake.domain")},
--            ):
--                # fqdns is disabled by default on proxy minions
--                assert core.fqdns() == {"fqdns": []}
-+            assert core.fqdns() == "my.fake.domain"
- 
-     def test_enable_fqdns_false_is_aix(self):
-         """
-@@ -1577,6 +1562,41 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-                     mock_log.debug.assert_called_once()
-                     mock_log.error.assert_called()
- 
-+    @patch.object(salt.utils.platform, "is_windows", MagicMock(return_value=False))
-+    @patch(
-+        "salt.utils.network.ip_addrs", MagicMock(return_value=["1.2.3.4", "5.6.7.8"])
-+    )
-+    @patch(
-+        "salt.utils.network.ip_addrs6",
-+        MagicMock(return_value=["fe80::a8b2:93ff:fe00:0", "fe80::a8b2:93ff:dead:beef"]),
-+    )
-+    @patch(
-+        "salt.utils.network.socket.getfqdn", MagicMock(side_effect=lambda v: v)
-+    )  # Just pass-through
-+    def test_fqdns_aliases(self):
-+        """
-+        FQDNs aliases
-+        """
-+        reverse_resolv_mock = [
-+            ("foo.bar.baz", ["throwmeaway", "this.is.valid.alias"], ["1.2.3.4"]),
-+            ("rinzler.evil-corp.com", ["false-hostname", "badaliass"], ["5.6.7.8"]),
-+            ("foo.bar.baz", [], ["fe80::a8b2:93ff:fe00:0"]),
-+            (
-+                "bluesniff.foo.bar",
-+                ["alias.bluesniff.foo.bar"],
-+                ["fe80::a8b2:93ff:dead:beef"],
-+            ),
-+        ]
-+        with patch.dict(core.__salt__, {"network.fqdns": salt.modules.network.fqdns}):
-+            with patch.object(socket, "gethostbyaddr", side_effect=reverse_resolv_mock):
-+                fqdns = core.fqdns()
-+                assert "fqdns" in fqdns
-+                for alias in ["this.is.valid.alias", "alias.bluesniff.foo.bar"]:
-+                    assert alias in fqdns["fqdns"]
-+
-+                for alias in ["throwmeaway", "false-hostname", "badaliass"]:
-+                    assert alias not in fqdns["fqdns"]
-+
-     def test_core_virtual(self):
-         """
-         test virtual grain with cmd virt-what
 diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
 index 6863ccd0c9..637d5e9811 100644
 --- a/tests/unit/utils/test_network.py
@@ -221,6 +115,6 @@ index 6863ccd0c9..637d5e9811 100644
 +        ]:
 +            assert not network.is_fqdn(fqdn)
 -- 
-2.33.0
+2.34.1
 
 

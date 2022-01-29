@@ -1,7 +1,6 @@
-From 93a38f70953f48d10e21ba8601e1a562a4b739fb Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
- <psuarezhernandez@suse.com>
-Date: Tue, 5 Jan 2021 12:31:26 +0000
+From a82b6316d8a780a7a8cbfbabeb52fa50b3fb1032 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 19:07:34 +0100
 Subject: [PATCH] Revert "Fixing a use case when multiple inotify beacons
  are defined but when notifications are fired the configuration fron the first
  beacon are used." Revert "Adding a util function to remove hidden (options
@@ -12,20 +11,20 @@ Subject: [PATCH] Revert "Fixing a use case when multiple inotify beacons
 This reverts commit 68a891ab2fe53ebf329b9c83b875f3575e87e266.
 This reverts commit 66c58dedf8c364eaeb35c5adce8bcc8fe5c1219a.
 ---
- salt/beacons/__init__.py           |  1 -
- salt/beacons/diskusage.py          |  3 ---
- salt/beacons/inotify.py            | 25 +++++++------------
- salt/beacons/napalm_beacon.py      |  6 ++---
- salt/beacons/status.py             |  4 ---
- tests/unit/beacons/test_inotify.py | 39 ------------------------------
- tests/unit/test_beacons.py         | 25 +++----------------
- 7 files changed, 15 insertions(+), 88 deletions(-)
+ salt/beacons/__init__.py                   |  1 -
+ salt/beacons/diskusage.py                  |  3 ---
+ salt/beacons/inotify.py                    | 24 ++++++++--------------
+ salt/beacons/napalm_beacon.py              |  6 ++----
+ salt/beacons/status.py                     |  4 ----
+ tests/pytests/unit/beacons/test_inotify.py |  5 +----
+ tests/pytests/unit/test_beacons.py         | 16 ---------------
+ 7 files changed, 11 insertions(+), 48 deletions(-)
 
 diff --git a/salt/beacons/__init__.py b/salt/beacons/__init__.py
-index cd00b15275..967f9ff64b 100644
+index 414142c262..13e2ae78db 100644
 --- a/salt/beacons/__init__.py
 +++ b/salt/beacons/__init__.py
-@@ -70,7 +70,6 @@ class Beacon:
+@@ -71,7 +71,6 @@ class Beacon:
                  beacon_name = current_beacon_config["beacon_module"]
              else:
                  beacon_name = mod
@@ -34,7 +33,7 @@ index cd00b15275..967f9ff64b 100644
              validate_str = "{}.validate".format(beacon_name)
              if fun_str in self.beacons:
 diff --git a/salt/beacons/diskusage.py b/salt/beacons/diskusage.py
-index 5624ebaffd..a015eebdc7 100644
+index 1216abf79b..897bc90a6a 100644
 --- a/salt/beacons/diskusage.py
 +++ b/salt/beacons/diskusage.py
 @@ -8,7 +8,6 @@ Beacon to monitor disk usage.
@@ -55,18 +54,10 @@ index 5624ebaffd..a015eebdc7 100644
      ret = []
      for mounts in config:
 diff --git a/salt/beacons/inotify.py b/salt/beacons/inotify.py
-index 4d9ffbeb87..031da181f0 100644
+index b6e7334eee..c44bd49fb0 100644
 --- a/salt/beacons/inotify.py
 +++ b/salt/beacons/inotify.py
-@@ -21,6 +21,7 @@ import os
- import re
- 
- import salt.utils.beacons
-+import salt.ext.six
- 
- try:
-     import pyinotify
-@@ -65,19 +66,17 @@ def _get_notifier(config):
+@@ -65,19 +65,17 @@ def _get_notifier(config):
      """
      Check the context for the notifier and construct it if not present
      """
@@ -90,30 +81,30 @@ index 4d9ffbeb87..031da181f0 100644
  
  
  def validate(config):
-@@ -253,10 +252,6 @@ def beacon(config):
-       affects all paths that are being watched. This is due to this option
+@@ -237,9 +235,6 @@ def beacon(config):
        being at the Notifier level in pyinotify.
      """
--
+ 
 -    whitelist = ["_beacon_name"]
 -    config = salt.utils.beacons.remove_hidden_options(config, whitelist)
 -
-     _config = {}
-     list(map(_config.update, config))
+     config = salt.utils.beacons.list_to_dict(config)
  
-@@ -280,7 +275,7 @@ def beacon(config):
+     ret = []
+@@ -262,7 +257,7 @@ def beacon(config):
                      break
                  path = os.path.dirname(path)
  
--            excludes = _config["files"].get(path, {}).get("exclude", "")
-+            excludes = _config["files"][path].get("exclude", "")
+-            excludes = config["files"].get(path, {}).get("exclude", "")
++            excludes = config["files"][path].get("exclude", "")
  
              if excludes and isinstance(excludes, list):
                  for exclude in excludes:
-@@ -367,8 +362,6 @@ def beacon(config):
+@@ -349,9 +344,6 @@ def beacon(config):
  
  
  def close(config):
+-    config = salt.utils.beacons.list_to_dict(config)
 -    beacon_name = config.get("_beacon_name", "inotify")
 -    notifier = "{}.notifier".format(beacon_name)
 -    if notifier in __context__:
@@ -123,7 +114,7 @@ index 4d9ffbeb87..031da181f0 100644
 +        __context__["inotify.notifier"].stop()
 +        del __context__["inotify.notifier"]
 diff --git a/salt/beacons/napalm_beacon.py b/salt/beacons/napalm_beacon.py
-index 3ca4d10512..d1bddccb8e 100644
+index ec8cf63fca..164b29cdf8 100644
 --- a/salt/beacons/napalm_beacon.py
 +++ b/salt/beacons/napalm_beacon.py
 @@ -168,9 +168,10 @@ with a NTP server at a stratum level greater than 5.
@@ -138,7 +129,7 @@ index 3ca4d10512..d1bddccb8e 100644
  import salt.utils.napalm
  
  log = logging.getLogger(__name__)
-@@ -302,9 +303,6 @@ def beacon(config):
+@@ -301,9 +302,6 @@ def beacon(config):
      """
      Watch napalm function and fire events.
      """
@@ -149,7 +140,7 @@ index 3ca4d10512..d1bddccb8e 100644
      log.debug(config)
      ret = []
 diff --git a/salt/beacons/status.py b/salt/beacons/status.py
-index bd7046aaa1..a30bf5f4e6 100644
+index aa5aa13b47..e2c3177ea8 100644
 --- a/salt/beacons/status.py
 +++ b/salt/beacons/status.py
 @@ -91,7 +91,6 @@ import datetime
@@ -170,101 +161,55 @@ index bd7046aaa1..a30bf5f4e6 100644
      if not config:
          config = [
              {
-diff --git a/tests/unit/beacons/test_inotify.py b/tests/unit/beacons/test_inotify.py
-index 665e334fbc..d91a2daebf 100644
---- a/tests/unit/beacons/test_inotify.py
-+++ b/tests/unit/beacons/test_inotify.py
-@@ -273,42 +273,3 @@ class INotifyBeaconTestCase(TestCase, LoaderModuleMockMixin):
-         self.assertEqual(len(ret), 1)
-         self.assertEqual(ret[0]["path"], fp)
-         self.assertEqual(ret[0]["change"], "IN_DELETE")
--
--    # Check __get_notifier and ensure that the right bits are in __context__
--    # including a beacon_name specific notifier is found.
--    def test__get_notifier(self):
--        config = {
--            "files": {
--                "/tmp/httpd/vhost.d": {
--                    "mask": ["delete", "modify"],
--                    "recurse": True,
--                    "auto_add": True,
--                    "exclude": [
--                        {"/tmp/httpd/vhost.d/.+?\\.sw[px]*$|4913|~$": {"regex": True}}
--                    ],
--                },
--                "/tmp/httpd/conf.d": {
--                    "mask": ["delete", "modify"],
--                    "recurse": True,
--                    "auto_add": True,
--                    "exclude": [
--                        {"/tmp/httpd/vhost.d/.+?\\.sw[px]*$|4913|~$": {"regex": True}}
--                    ],
--                },
--                "/tmp/httpd/conf": {
--                    "mask": ["delete", "modify"],
--                    "recurse": True,
--                    "auto_add": True,
--                    "exclude": [
--                        {"/tmp/httpd/vhost.d/.+?\\.sw[px]*$|4913|~$": {"regex": True}}
--                    ],
--                },
--            },
--            "coalesce": True,
--            "beacon_module": "inotify",
--            "_beacon_name": "httpd.inotify",
--        }
--
--        ret = inotify._get_notifier(config)
--        self.assertIn("inotify.queue", inotify.__context__)
--        self.assertIn("httpd.inotify.notifier", inotify.__context__)
-diff --git a/tests/unit/test_beacons.py b/tests/unit/test_beacons.py
-index b7a5127179..be629f49d4 100644
---- a/tests/unit/test_beacons.py
-+++ b/tests/unit/test_beacons.py
-@@ -7,7 +7,7 @@ import logging
- import salt.beacons as beacons
- import salt.config
- from tests.support.mixins import LoaderModuleMockMixin
--from tests.support.mock import MagicMock, call, patch
-+from tests.support.mock import patch
- from tests.support.unit import TestCase
+diff --git a/tests/pytests/unit/beacons/test_inotify.py b/tests/pytests/unit/beacons/test_inotify.py
+index f5befb2756..dfaf1d499a 100644
+--- a/tests/pytests/unit/beacons/test_inotify.py
++++ b/tests/pytests/unit/beacons/test_inotify.py
+@@ -273,7 +273,6 @@ def test_multi_files_exclude(tmp_path):
  
- log = logging.getLogger(__name__)
-@@ -35,9 +35,9 @@ class BeaconsTestCase(TestCase, LoaderModuleMockMixin):
-             ]
-         }
-         with patch.dict(beacons.__opts__, mock_opts):
--            beacon = salt.beacons.Beacon(mock_opts, [])
--            ret = beacon.process(mock_opts["beacons"], mock_opts["grains"])
--
-+            ret = salt.beacons.Beacon(mock_opts, []).process(
-+                mock_opts["beacons"], mock_opts["grains"]
-+            )
-             _expected = [
-                 {
-                     "tag": "salt/beacon/minion/watch_apache/",
-@@ -46,20 +46,3 @@ class BeaconsTestCase(TestCase, LoaderModuleMockMixin):
-                 }
-             ]
-             self.assertEqual(ret, _expected)
--
--            # Ensure that "beacon_name" is available in the call to the beacon function
--            name = "ps.beacon"
--            mocked = {name: MagicMock(return_value=_expected)}
--            mocked[name].__globals__ = {}
--            calls = [
--                call(
--                    [
--                        {"processes": {"apache2": "stopped"}},
--                        {"beacon_module": "ps"},
--                        {"_beacon_name": "watch_apache"},
--                    ]
--                )
+ 
+ # Check __get_notifier and ensure that the right bits are in __context__
+-# including a beacon_name specific notifier is found.
+ def test__get_notifier():
+     config = {
+         "files": {
+@@ -303,10 +302,8 @@ def test__get_notifier():
+             },
+         },
+         "coalesce": True,
+-        "beacon_module": "inotify",
+-        "_beacon_name": "httpd.inotify",
+     }
+ 
+     ret = inotify._get_notifier(config)
+     assert "inotify.queue" in inotify.__context__
+-    assert "httpd.inotify.notifier" in inotify.__context__
++    assert "inotify.notifier" in inotify.__context__
+diff --git a/tests/pytests/unit/test_beacons.py b/tests/pytests/unit/test_beacons.py
+index 27940c6f65..a347f3f27f 100644
+--- a/tests/pytests/unit/test_beacons.py
++++ b/tests/pytests/unit/test_beacons.py
+@@ -70,19 +70,3 @@ def test_beacon_module():
+     ]
+     assert ret == _expected
+ 
+-    # Ensure that "beacon_name" is available in the call to the beacon function
+-    name = "ps.beacon"
+-    mocked = {name: MagicMock(return_value=_expected)}
+-    mocked[name].__globals__ = {}
+-    calls = [
+-        call(
+-            [
+-                {"processes": {"apache2": "stopped"}},
+-                {"beacon_module": "ps"},
+-                {"_beacon_name": "watch_apache"},
 -            ]
--            with patch.object(beacon, "beacons", mocked) as patched:
--                beacon.process(mock_opts["beacons"], mock_opts["grains"])
--                patched[name].assert_has_calls(calls)
+-        )
+-    ]
+-    with patch.object(beacon, "beacons", mocked) as patched:
+-        beacon.process(mock_opts["beacons"], mock_opts["grains"])
+-        patched[name].assert_has_calls(calls)
 -- 
-2.33.0
+2.34.1
 
 

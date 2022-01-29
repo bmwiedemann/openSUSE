@@ -1,4 +1,4 @@
-From ef433d6f02af87d45363ae07fe438a1d7747df13 Mon Sep 17 00:00:00 2001
+From a268bfee70fabffc6d8fb6c297cd255fb3483ae1 Mon Sep 17 00:00:00 2001
 From: "Daniel A. Wozniak" <dwozniak@saltstack.com>
 Date: Thu, 7 Oct 2021 17:22:37 -0700
 Subject: [PATCH] Fix issues with salt-ssh's extra-filerefs
@@ -7,12 +7,9 @@ Verify salt-ssh can import from map files in states
 
 Add changelog for 60003.fixed
 ---
- changelog/60003.fixed                       |  1 +
- salt/client/ssh/__init__.py                 |  1 +
- tests/pytests/integration/ssh/test_state.py | 94 +++++++++++++++++++++
- 3 files changed, 96 insertions(+)
+ changelog/60003.fixed | 1 +
+ 1 file changed, 1 insertion(+)
  create mode 100644 changelog/60003.fixed
- create mode 100644 tests/pytests/integration/ssh/test_state.py
 
 diff --git a/changelog/60003.fixed b/changelog/60003.fixed
 new file mode 100644
@@ -21,119 +18,7 @@ index 0000000000..6fafbf5108
 +++ b/changelog/60003.fixed
 @@ -0,0 +1 @@
 +Validate we can import map files in states
-diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 409d6e740e..76c57996d9 100644
---- a/salt/client/ssh/__init__.py
-+++ b/salt/client/ssh/__init__.py
-@@ -1161,6 +1161,7 @@ class Single:
-             opts_pkg["_ssh_version"] = self.opts["_ssh_version"]
-             opts_pkg["thin_dir"] = self.opts["thin_dir"]
-             opts_pkg["master_tops"] = self.opts["master_tops"]
-+            opts_pkg["extra_filerefs"] = self.opts.get("extra_filerefs", "")
-             opts_pkg["__master_opts__"] = self.context["master_opts"]
-             if "known_hosts_file" in self.opts:
-                 opts_pkg["known_hosts_file"] = self.opts["known_hosts_file"]
-diff --git a/tests/pytests/integration/ssh/test_state.py b/tests/pytests/integration/ssh/test_state.py
-new file mode 100644
-index 0000000000..58330a5dd8
---- /dev/null
-+++ b/tests/pytests/integration/ssh/test_state.py
-@@ -0,0 +1,94 @@
-+import pytest
-+
-+pytestmark = [
-+    pytest.mark.skip_on_windows(reason="salt-ssh not available on Windows"),
-+]
-+
-+
-+@pytest.fixture(scope="module")
-+def state_tree(base_env_state_tree_root_dir):
-+    top_file = """
-+    base:
-+      'localhost':
-+        - basic
-+      '127.0.0.1':
-+        - basic
-+    """
-+    map_file = """
-+    {%- set abc = "def" %}
-+    """
-+    state_file = """
-+    {%- from "map.jinja" import abc with context %}
-+
-+    Ok with {{ abc }}:
-+      test.succeed_without_changes
-+    """
-+    top_tempfile = pytest.helpers.temp_file(
-+        "top.sls", top_file, base_env_state_tree_root_dir
-+    )
-+    map_tempfile = pytest.helpers.temp_file(
-+        "map.jinja", map_file, base_env_state_tree_root_dir
-+    )
-+    state_tempfile = pytest.helpers.temp_file(
-+        "test.sls", state_file, base_env_state_tree_root_dir
-+    )
-+
-+    with top_tempfile, map_tempfile, state_tempfile:
-+        yield
-+
-+
-+@pytest.mark.slow_test
-+def test_state_with_import(salt_ssh_cli, state_tree):
-+    """
-+    verify salt-ssh can use imported map files in states
-+    """
-+    ret = salt_ssh_cli.run("state.sls", "test")
-+    assert ret.exitcode == 0
-+    assert ret.json
-+
-+
-+@pytest.fixture
-+def nested_state_tree(base_env_state_tree_root_dir, tmpdir):
-+    top_file = """
-+    base:
-+      'localhost':
-+        - basic
-+      '127.0.0.1':
-+        - basic
-+    """
-+    state_file = """
-+    /{}/file.txt:
-+      file.managed:
-+        - source: salt://foo/file.jinja
-+        - template: jinja
-+    """.format(
-+        tmpdir
-+    )
-+    file_jinja = """
-+    {% from 'foo/map.jinja' import comment %}{{ comment }}
-+    """
-+    map_file = """
-+    {% set comment = "blah blah" %}
-+    """
-+    statedir = base_env_state_tree_root_dir / "foo"
-+    top_tempfile = pytest.helpers.temp_file(
-+        "top.sls", top_file, base_env_state_tree_root_dir
-+    )
-+    map_tempfile = pytest.helpers.temp_file("map.jinja", map_file, statedir)
-+    file_tempfile = pytest.helpers.temp_file("file.jinja", file_jinja, statedir)
-+    state_tempfile = pytest.helpers.temp_file("init.sls", state_file, statedir)
-+
-+    with top_tempfile, map_tempfile, state_tempfile, file_tempfile:
-+        yield
-+
-+
-+@pytest.mark.slow_test
-+def test_state_with_import_from_dir(salt_ssh_cli, nested_state_tree):
-+    """
-+    verify salt-ssh can use imported map files in states
-+    """
-+    ret = salt_ssh_cli.run(
-+        "--extra-filerefs=salt://foo/map.jinja", "state.apply", "foo"
-+    )
-+    assert ret.exitcode == 0
-+    assert ret.json
 -- 
-2.33.0
+2.34.1
 
 

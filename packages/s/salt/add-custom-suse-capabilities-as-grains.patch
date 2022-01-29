@@ -1,7 +1,6 @@
-From bdb48ed82c755407bc413fa445e057a6da5f1e87 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
- <psuarezhernandez@suse.com>
-Date: Thu, 21 Jun 2018 11:57:57 +0100
+From 1c20e6e1acf21d301d6e53432afaa7cc42db2380 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 12:59:43 +0100
 Subject: [PATCH] Add custom SUSE capabilities as Grains
 
 Add new custom SUSE capability for saltutil state module
@@ -10,13 +9,13 @@ Add new custom SUSE capability for saltutil state module
  1 file changed, 8 insertions(+)
 
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index 2fdbe6526a..0eec27e628 100644
+index 300052f1ee..f2504dbf19 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
-@@ -66,3 +66,11 @@ def config():
-                 log.warning("Bad syntax in grains file! Skipping.")
-                 return {}
-     return {}
+@@ -96,3 +96,11 @@ def uefi():
+ def transactional():
+     """Determine if the system is transactional."""
+     return {"transactional": bool(salt.utils.path.which("transactional-update"))}
 +
 +
 +def suse_backported_capabilities():
@@ -26,6 +25,6 @@ index 2fdbe6526a..0eec27e628 100644
 +        '__suse_reserved_saltutil_states_support': True
 +    }
 -- 
-2.33.0
+2.34.1
 
 

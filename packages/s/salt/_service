@@ -3,7 +3,7 @@
     <param name="url">https://github.com/openSUSE/salt-packaging.git</param>
     <param name="subdir">salt</param>
     <param name="filename">package</param>
-    <param name="revision">3003.3</param>
+    <param name="revision">3004</param>
     <param name="scm">git</param>
   </service>
   <service name="extract_file" mode="disabled">
@@ -12,8 +12,8 @@
   </service>
   <service name="download_url" mode="disabled">
     <param name="host">codeload.github.com</param>
-    <param name="path">openSUSE/salt/tar.gz/v3003.3-suse</param>
-    <param name="filename">v3003.3.tar.gz</param>
+    <param name="path">openSUSE/salt/tar.gz/v3004-suse</param>
+    <param name="filename">v3004.tar.gz</param>
   </service>
   <service name="update_changelog" mode="disabled"></service>
 </services>
