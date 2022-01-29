@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-suse23
+%define lname libSPIRV-Tools-suse24
 
 Name:           spirv-tools
-Version:        2021.4
+Version:        2022.1
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -31,14 +31,13 @@ Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.ta
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
-Patch3:         spirv-tools-big-endian.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.5.5.g9
+BuildRequires:  spirv-headers >= 1.6.g6
 
 %description
 The package includes an assembler, binary module parser,
@@ -70,7 +69,7 @@ integration into other code bases directly.
 
 %build
 %if 0%{?suse_version} >= 1550
-export CXXFLAGS="%optflags -Wno-error=stringop-truncation"
+#export CXXFLAGS="%optflags -Wno-error=stringop-truncation"
 %endif
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
 	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 26 20:39:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.1
+  * Basic support for SPIR-V 1.6
+  * spirv-opt: add pass to Spread Volatile semantics
+- Drop spirv-tools-big-endian.patch (merged)
+
+-------------------------------------------------------------------
 Thu Dec  9 19:09:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix issues on big endian platforms
