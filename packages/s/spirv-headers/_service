@@ -2,9 +2,9 @@
 	<service name="tar_scm" mode="disabled">
  		<param name="scm">git</param>
 		<param name="url">https://github.com/KhronosGroup/SPIRV-Headers</param>
-		<param name="revision">814e728b30ddd0f4509233099a3ad96fd4318c07</param>
-		<param name="parent-tag">c8213b3c5a2cf3a0f5c4d1e7d7b8fc2ac9f4806d</param>
-		<param name="versionformat">1.5.5.g@TAG_OFFSET@</param>
+		<param name="revision">b42ba6d92faf6b4938e6f22ddd186dbdacc98d78</param>
+		<param name="parent-tag">dcd4752edbc7db6f2ced71b652c45be49fcfa4c5</param>
+		<param name="versionformat">1.6.g@TAG_OFFSET@</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

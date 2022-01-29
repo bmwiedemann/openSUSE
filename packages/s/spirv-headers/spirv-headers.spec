@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-headers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           spirv-headers
-Version:        1.5.5.g9
+Version:        1.6.g6
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 26 20:47:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.g6 (b42ba6d)
+  * Add definitions to implement the SPIR-V 1.6 spec.
+  * Add ShaderWriter as SPIR-V generation tool.
+
+-------------------------------------------------------------------
 Thu Nov 11 19:38:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.5.5.g9 (814e728b)

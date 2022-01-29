@@ -209,4 +209,12 @@
     <comment>- Update to snapshot 1.5.5.g9 (814e728b)</comment>
     <requestid>930982</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1f59b1669840f3706da7048dc33ae15e</srcmd5>
+    <version>1.6.g6</version>
+    <time>1643486467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 1.6.g6 (b42ba6d)</comment>
+    <requestid>949425</requestid>
+  </revision>
 </revisionlist>
