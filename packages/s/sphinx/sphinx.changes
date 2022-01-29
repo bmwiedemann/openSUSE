@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 27 20:00:41 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Added CVE-2020-29050.patch for fixing CVE-2020-29050 boo#1195227
+  Source debian and manticoresearch
+- Packaging:
+  + Renew with spec-cleaner -m
+  + Update copyright year
+  + Cleanup older suse version %if construct
+  + Use libmariadb-devel instead mysql-devel
+  + Use %autopatch
+
+-------------------------------------------------------------------
 Sun Jul 26 14:31:08 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Spec cleaner minimal update date

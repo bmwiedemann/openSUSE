@@ -1,7 +1,7 @@
 #
 # spec file for package sphinx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,6 @@
 %global soname 0_0_1
 # For being able to build for SLE_11
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
-%if 0%{?suse_version} > 1210
-%define has_systemd 1
-BuildRequires:  systemd-rpm-macros
-%{?systemd_ordering}
-%else
-Requires(pre):  %insserv_prereq
-%endif
 Name:           sphinx
 Version:        2.2.11
 Release:        0
@@ -43,11 +36,14 @@ Source2:        %{daemon}.init
 Patch0:         obs.patch
 Patch2:         sphinx-default_listen.patch
 Patch3:         reproducible.patch
+#CVE-2020-29050 https://salsa.debian.org/debian/sphinxsearch/-/blob/4d6fe40644130308604845db43d3588e715ec85d/debian/patches/06-CVE-2020-29050.patch
+Patch4:         CVE-2020-29050.patch
 # for fix-ups
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-BuildRequires:  mysql-devel
+BuildRequires:  libmariadb-devel
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libecpg) >= 9.6
 BuildRequires:  pkgconfig(libecpg_compat) >= 9.6
@@ -57,16 +53,8 @@ Requires:       logrotate
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/useradd
 Provides:       %{daemon}
-%if 0%{?suse_version}
+%{?systemd_ordering}
 Requires(post): %fillup_prereq
-#Requires(pre):  permissions >= 2014.11
-%else
-Requires(post): /sbin/chkconfig
-Requires(postun): /sbin/service
-Requires(preun): /sbin/chkconfig
-Requires(preun): /sbin/service
-%endif
-#
 
 %description
 Sphinx is a standalone search engine providing size-efficient and
@@ -100,15 +88,13 @@ Provides necessary development files for sphinx api and shared libs for sphinx c
 Pure C searchd client API library
 Sphinx search engine, http://sphinxsearch.com/
 
+
 # Comment
 # we don't package api language java,ruby,php,python
 # upstream don't recommend their usage.
-
 %prep
 %setup -q -n "%{name}-%{version}-release"
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 find -type d -name CVS -exec rm -Rf {} +
 
@@ -179,76 +165,34 @@ cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << EOF
 }
 EOF
 
-%if 0%{?has_systemd}
 # Create /usr/tempfiles.d/sphinx
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf << EOF
 d /run/%{name} 755 sphinx root -
 EOF
-%endif
 
 # systemd vs SysVinit
 mkdir -p %{buildroot}%{_sbindir}
-%if 0%{?has_systemd}
-  install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/%{daemon}.service
-  ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{daemon}
-%else
-#SysVinit
-  install -D %{SOURCE2} %{buildroot}%{_sysconfdir}/init.d/%{daemon}
- %if 0%{?suse_version}
-  ln -sf %{_sysconfdir}/init.d/%{daemon} %{buildroot}%{_sbindir}/rc%{daemon}
- %endif
-%endif
+install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/%{daemon}.service
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{daemon}
 
 %pre
 getent group %{sphinx_group} >/dev/null || groupadd -r %{sphinx_group}
 getent passwd %{sphinx_user} >/dev/null || \
 useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 -c "Sphinx Searchd daemon" %{sphinx_user}
-%if 0%{?has_systemd}
 %service_add_pre %{daemon}.service
-%endif
 
 %post
-%if 0%{?has_systemd}
 %service_add_post %{daemon}.service
 %{_bindir}/systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
-%else
- %if 0%{?suse_version}
-%{fillup_and_insserv -n "%{daemon}"}
- %else
-   /sbin/chkconfig --add %{daemon}
- %endif
-%endif
 
 %preun
-%if 0%{?has_systemd}
 %service_del_preun %{daemon}.service
 %{_bindir}/systemd-tmpfiles --remove %{_tmpfilesdir}/%{name}.conf || true
-%else
- %if 0%{?suse_version}
-%stop_on_removal %{daemon}
- %else
-   if [ $1 = 0 ] ; then
-     service %{daemon} stop >/dev/null 2>&1
-     /sbin/chkconfig --del %{daemon}
-   fi
- %endif
-%endif
 
 %postun
-%if 0%{?has_systemd}
 %service_del_postun %{daemon}.service
-%else
- %if 0%{?suse_version}
-%restart_on_update %{daemon}
-%insserv_cleanup
- %else
-  if [ "$1" -ge "1" ] ; then
-    service %{daemon} restart >/dev/null 2>&1
-  fi
- %endif
-%endif
 
 %post -n libsphinxclient-%{soname} -p /sbin/ldconfig
 %postun -n libsphinxclient-%{soname} -p /sbin/ldconfig
@@ -262,13 +206,9 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
 %config %{_sysconfdir}/%{name}/%{name}.conf.dist
 %config %{_sysconfdir}/%{name}/%{name}-min.conf.dist
-%if 0%{?has_systemd}
 %{_unitdir}/%{daemon}.service
 %{_tmpfilesdir}/%{name}.conf
 %ghost /run/%{name}
-%else
-%{_sysconfdir}/init.d/%{daemon}
-%endif
 %{_sbindir}/rc%{daemon}
 %config %{_sysconfdir}/logrotate.d/%{name}
 %attr(755,root,root) %{_bindir}/spelldump
@@ -284,17 +224,11 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 %doc %attr(644, root, man) %{_mandir}/man1/searchd.1*
 %doc %attr(644, root, man) %{_mandir}/man1/spelldump.1*
 %dir %attr(0750, root, %{sphinx_group}) %{_localstatedir}/log/%{name}
-#Doesn't work on SLE_11 :-(
-%if 0%{?suse_version} > 1230
 %ghost %attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/%{daemon}.log
 %ghost %attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/query.log
-%endif
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}/data
 %dir %attr(0755, %{sphinx_user}, %{sphinx_group}) %{_localstatedir}/lib/%{name}/data/index
-%dir %attr(0750, root, root) %{_localstatedir}/log/%{name}
-%attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/%{daemon}.log
-%attr(0640, %{sphinx_user}, root) %{_localstatedir}/log/%{name}/query.log
 
 %files -n libsphinxclient-%{soname}
 %license COPYING
