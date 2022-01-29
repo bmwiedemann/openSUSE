@@ -509,4 +509,12 @@
     <comment>New upstream release</comment>
     <requestid>941967</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>50191734397692ca69b1fcf53fd17643</srcmd5>
+    <version>0.4.34</version>
+    <time>1643486462</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>949350</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Dec 21 19:08:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 0.4.34: 
+- Update to version 0.4.34 (CVE-2021-45463): 
   + Operations:
     - magick-load: use g_spawn_async instead of system to run the
       image magick convert fallback - preventing shell expansion on
