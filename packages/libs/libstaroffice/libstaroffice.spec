@@ -1,7 +1,7 @@
 #
 # spec file for package libstaroffice
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           libstaroffice
 Version:        0.0.7
 Release:        0
 Summary:        A library for import of StarOffice documents
-License:        LGPL-2.1-or-later AND MPL-2.0+
+License:        LGPL-2.1-or-later AND MPL-2.0
 URL:            https://github.com/fosnola/libstaroffice/wiki
 Source:         https://github.com/fosnola/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
