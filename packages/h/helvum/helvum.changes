@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 28 21:03:21 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.3.3
+  - An appstream metadata file was added and is installed to the metainfo directory
+  - gtk4-update-icon-cache instead of the gtk3 variant is used during post-install
+  - The application id was changed to `org.pipewire.Helvum`
+  - Bash build scripts were removed and their work is done directly via meson instead
+  - The upstream URL has changed to https://gitlab.freedesktop.org/pipewire/helvum
+
+-------------------------------------------------------------------
 Mon Dec  6 13:21:03 UTC 2021 - William Franco Abdul Hai <haiwilliam0@gmail.com>
 
 - Fixes:

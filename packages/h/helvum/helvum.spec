@@ -1,7 +1,7 @@
 #
 # spec file for package helvum
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define app_id org.freedesktop.ryuukyu.Helvum
+%define app_id org.pipewire.Helvum
 Name:           helvum
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        A GTK patchbay for pipewire
 License:        (Apache-2.0 OR BSL-1.0) AND GPL-3.0-only AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT
-URL:            https://gitlab.freedesktop.org/ryuukyu/helvum
-Source:         https://gitlab.freedesktop.org/ryuukyu/helvum/uploads/e20c0a2ade61f00e01eaa28d83b644ec/%{name}-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/pipewire/helvum
+Source:         https://gitlab.freedesktop.org/pipewire/helvum/uploads/4c3dd5e0e64a39d7bea2c4a49778b653/%{name}-%{version}.tar.xz
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  gtk4-devel
