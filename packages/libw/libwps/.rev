@@ -394,4 +394,12 @@
     <comment></comment>
     <requestid>894384</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>25ee259d891afd2c5d291710c1e59991</srcmd5>
+    <version>0.4.12</version>
+    <time>1643486247</time>
+    <user>dimstar_suse</user>
+    <comment>fix license header to correspond to SPDX abbreviation</comment>
+    <requestid>949571</requestid>
+  </revision>
 </revisionlist>

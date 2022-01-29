@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 28 06:12:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix license header to correspond to SPDX abbreviation
+
+-------------------------------------------------------------------
 Wed May 19 14:59:17 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define conditionally make_build to fix build on systems that do
