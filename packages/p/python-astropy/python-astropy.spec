@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,16 +30,9 @@
 # backwards compatibility for --without systemlibs
 %bcond_without systemlibs
 
-%if 0%{suse_version} <= 1500 || ! %{with systemlibs}
-# Use the bundled libraries for Leap 15.X, because the versions in the repos are too old
-%bcond_with system_cfitsio
-%bcond_with system_expat
-%bcond_with system_wcslib
-%else
 %bcond_without system_cfitsio
 %bcond_without system_expat
 %bcond_without system_wcslib
-%endif
 
 %if %{with system_cfitsio}
 %define unbundle_cfitsio export ASTROPY_USE_SYSTEM_CFITSIO=1
@@ -56,10 +49,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# upcoming python3 multiflavor: minimum supported python is 3.7
-%define         skip_python36 1
 Name:           python-astropy%{psuffix}
-Version:        5.0
+Version:        5.0.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -173,8 +164,6 @@ rm -rf cextern/wcslib
 rm licenses/WCSLIB_LICENSE.rst
 %endif
 
-# Disable test failure on DeprecationWarnings
-sed -i "/enable_deprecations_as_exceptions(/,/)/ d" astropy/conftest.py
 # increase test deadline for slow obs executions (e.g. on s390x)
 echo "
 import hypothesis
@@ -201,6 +190,11 @@ done
 
 %if %{with test}
 %check
+# these are flaky on obs
+donttest="test_color_print3"
+donttest+=" or test_ignore_sigint"
+donttest+=" or (test_wcs and test_spectra)"
+donttest+=" or (test_standard_profile and test_main)"
 %ifarch aarch64
 # doctest failure because of precision errors
   donttest+=" or bayesian_info_criterion_lsq"
@@ -209,9 +203,7 @@ done
   # gh#astropy/astropy#12017
   donttest+=" or test_stats"
 %endif
-# this one is flaky
-donttest+=" or test_color_print3"
-testselect_expr="${donttest:+-k \"not (${donttest# or })\"}"
+#
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
 %{python_exec -B -c "
@@ -220,7 +212,7 @@ pytestargs = ('-v '
               '-n auto ' # pytest-xdist
               '-p no:cacheprovider '
               '--hypothesis-profile=obs '
-              '$testselect_expr')
+              '-k \"not ($donttest)\"')
 returncode = astropy.test(args=pytestargs)
 sys.exit(returncode)
 "}
