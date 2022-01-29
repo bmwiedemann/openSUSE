@@ -25,4 +25,19 @@
    * Fixed %Y length in strptime</comment>
     <requestid>780798</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09739325e5c65f59769962bf931c36ad</srcmd5>
+    <version>3.8.2</version>
+    <time>1643486245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.2:
+  * Fix older version objects unpickling problem
+  * Fixed pickle problem of jdate and jdatetime objects(#108)
+  * Fixed unicode literal problem in isoformat
+  * Add ZoneInfo support
+  * Add date.min based on cpython implementation
+  * Add date.max based on cpython implementation
+  * Run test and publish package from github action</comment>
+    <requestid>949531</requestid>
+  </revision>
 </revisionlist>

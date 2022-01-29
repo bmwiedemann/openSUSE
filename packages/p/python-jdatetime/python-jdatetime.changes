@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 27 20:11:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.2:
+  * Fix older version objects unpickling problem
+  * Fixed pickle problem of jdate and jdatetime objects(#108)
+  * Fixed unicode literal problem in isoformat
+  * Add ZoneInfo support
+  * Add date.min based on cpython implementation
+  * Add date.max based on cpython implementation
+  * Run test and publish package from github action
+
+-------------------------------------------------------------------
 Mon Mar  2 04:02:53 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 -  Update to version 3.6.2:
