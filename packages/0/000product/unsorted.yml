@@ -14421,6 +14421,7 @@ unsorted:
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
   - libvolk2_5 
+  - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -22312,6 +22313,7 @@ unsorted:
   - python310-bowler 
   - python310-bpython 
   - python310-bqplot 
+  - python310-bracex 
   - python310-branca 
   - python310-breathe 
   - python310-brewer2mpl 
@@ -22431,6 +22433,7 @@ unsorted:
   - python310-colour 
   - python310-commentjson 
   - python310-compat-patcher-core 
+  - python310-compileall2 
   - python310-compizconfig 
   - python310-compressed_rtf 
   - python310-concurrentloghandler 
@@ -24614,6 +24617,7 @@ unsorted:
   - python310-wsaccel 
   - python310-wsgi_intercept 
   - python310-wsproto 
+  - python310-wstools 
   - python310-wurlitzer 
   - python310-wxPython 
   - python310-wxPython-lang 
@@ -24711,7 +24715,6 @@ unsorted:
   - python36-base 
   - python36-base-32bit: [x86_64] 
   - python36-combi 
-  - python36-compileall2 
   - python36-coverage-config-reload-plugin 
   - python36-coverage-env-plugin 
   - python36-curses 
@@ -24779,7 +24782,6 @@ unsorted:
   - python36-ucsmsdk 
   - python36-uncompyle6 
   - python36-whitenoise 
-  - python36-wstools 
   - python36-xdis 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
@@ -25459,6 +25461,7 @@ unsorted:
   - python38-bowler 
   - python38-bpython 
   - python38-bqplot 
+  - python38-bracex 
   - python38-branca 
   - python38-breathe 
   - python38-brewer2mpl 
@@ -28472,6 +28475,7 @@ unsorted:
   - python39-bowler 
   - python39-bpython 
   - python39-bqplot 
+  - python39-bracex 
   - python39-branca 
   - python39-breathe 
   - python39-brewer2mpl 
@@ -42519,6 +42523,9 @@ unsorted:
   - volk-devel 
   - volk_modtool 
   - vollkorn-fonts 
+  - voms-clients 
+  - voms-devel 
+  - voms-doc 
   - vorbisgain 
   - voro++ 
   - voro++-devel 
