@@ -1,7 +1,7 @@
 #
 # spec file for package ioquake3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 Name:           ioquake3
 # don't forget to change the version in the win32 spec file as well!
-Version:        1.36+git.20210720
+Version:        1.36+git.20211208
 Release:        0
 Summary:        Quake III
 License:        GPL-2.0-or-later
@@ -83,7 +83,7 @@ repackaged as loki-setup installer
 
 %prep
 %setup -q
-rm -rf code/SDL12 code/libs code/AL
+rm -rf code/SDL2 code/libs code/AL
 
 %build
 cat > dobuild <<'EOF'
@@ -91,6 +91,9 @@ cat > dobuild <<'EOF'
 %make_build \
 %ifarch armv7l armv7hl
     COMPILE_ARCH=armv7l \
+%endif
+%ifarch aarch64
+    COMPILE_ARCH=aarch64 \
 %endif
 	VERSION=%{version} \
 	RELEASE=%{release} \
