@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 28 23:03:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * tls: clear unused warning on WITHOUT_SERVER
+  * pugins: sshd: handle window-change request 
+  * metrics: ss: skip tagging if no ss streamtypename
+  * logs: log context: async_dns: no empty format string
+  * mqtt: protect printing debug only vars
+  * cmake: wrong miniz include dir + mbed link on windows
+  * uv: handle uv_poll_init failure
+  * context: fix compilation error
+
+-------------------------------------------------------------------
 Tue Oct  5 20:47:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.3.0

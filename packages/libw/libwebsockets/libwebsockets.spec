@@ -1,7 +1,7 @@
 #
 # spec file for package libwebsockets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 19
 Name:           libwebsockets
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
@@ -26,7 +26,7 @@ Summary:        A WebSockets library written in C
 # Test suite is licensed as Public domain (CC-zero)
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://libwebsockets.org
+URL:            https://libwebsockets.org
 Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
