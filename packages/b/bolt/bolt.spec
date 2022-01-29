@@ -1,7 +1,7 @@
 #
 # spec file for package bolt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _hardened_build 1
 Name:           bolt
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Thunderbolt 3 device manager
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gitlab.freedesktop.org/bolt/bolt
 Source0:        https://gitlab.freedesktop.org/bolt/bolt/-/archive/%{version}/bolt-%{version}.tar.bz2
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel >= 2.27
-BuildRequires:  meson
+BuildRequires:  meson >= 0.46
 BuildRequires:  ninja
 BuildRequires:  polkit-devel
 BuildRequires:  pkgconfig(libudev)
