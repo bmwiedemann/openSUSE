@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 22 03:07:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.22
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.22      2022-01-21 20:41:21Z
+      - Format method bullet points as code in docs (GH#77) (Paul Cochrane)
+      - Ignore automatically generated directories (GH#76) (Paul Cochrane)
+      - Use copyright start year rather than range (issue raised by Paul
+        Cochrane)
+
+-------------------------------------------------------------------
 Fri Mar 19 03:08:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.21
