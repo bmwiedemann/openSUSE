@@ -1,7 +1,7 @@
 #
 # spec file for package python-terminado
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 # Disable tests until random testing race condition fixed, see: https://github.com/jupyter/terminado/issues/21
 %bcond_with     tests
 Name:           python-terminado
-Version:        0.12.1
+Version:        0.13.1
 Release:        0
 Summary:        Terminals served to termjs using Tornado websockets
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/terminado
 Source:         https://files.pythonhosted.org/packages/source/t/terminado/terminado-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4}

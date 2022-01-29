@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 29 18:00:55 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * require python >= 3.7
+
+- update to version 0.13.1:
+  * Maintenance and upkeep improvements
+    + python_requires is an option in setup.cfg #140 (@minrk)
+
+- changes from version 0.13.0:
+  * Enhancements made
+    + Add pre_pty_read_hook in pty_read #136 (@Wh1isper)
+  * Maintenance and upkeep improvements
+    + Officially drop support for python 3.6 #137 (@blink1073)
+    + Fix even more setup.cfg formatting #134 (@blink1073)
+    + Fix more setup.cfg formatting #133 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Oct 10 19:56:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to version 0.12.1
