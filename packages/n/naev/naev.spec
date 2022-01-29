@@ -1,7 +1,7 @@
 #
 # spec file for package naev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,33 @@
 
 
 Name:           naev
-Version:        0.8.2
+Version:        0.9.2
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Other
 URL:            http://naev.org/
-Source:         %{name}-%{version}-source.tar.gz
+Source:         %{name}-%{version}-source.tar.xz
 BuildRequires:  SDL2-devel
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
+BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  libSDL2_image-devel
 BuildRequires:  libSDL2_mixer-devel
+BuildRequires:  libphysfs-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libunibreak-devel
 BuildRequires:  libvorbis-devel
+BuildRequires:  libwebp-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  lua51-devel
+BuildRequires:  luajit-devel
+BuildRequires:  meson
 BuildRequires:  openal-soft-devel
+BuildRequires:  python3-pyaml
 BuildRequires:  readline-devel
+BuildRequires:  suitesparse-devel
 BuildRequires:  update-desktop-files
 
 %description
@@ -46,45 +54,34 @@ a large variety of equipment and a large galaxy to explore. The game is
 open-ended, letting you proceed at your own pace.
 
 %prep
-%autosetup
+%setup -q -n naev-%{version}
 
 %build
-# Remove 'docs' directory - fails in configure script, not needed for gameplay
-rm -r docs
-
-%configure --enable-lua=shared --enable-debug=no
-%make_build
+meson setup -Dprefix=%{_prefix} build .
+cd build
+meson compile
 
 %install
-%make_install
-
-install -D -m 0644 extras/logos/logo16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/naev.png
-install -D -m 0644 extras/logos/logo32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/naev.png
-install -D -m 0644 extras/logos/logo64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/naev.png
-install -D -m 0644 extras/logos/logo128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/naev.png
-
-# Don't know how to handle locale files yet...
-rm -rf %{buildroot}%{_datadir}/locale/
+cd build
+DESTDIR="%{buildroot}" meson install
 
 # Already handle doc files
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
-rm -f %{buildroot}%{_datadir}/%{name}/dat/AUTHORS
-rm -f %{buildroot}%{_datadir}/%{name}/dat/LICENSE
 
 # Clean up some scripts
 find %{buildroot}%{_datadir}/%{name} -name '*.sh' -exec rm {} \;
 
-%suse_update_desktop_file org.naev.naev
+%suse_update_desktop_file org.naev.Naev
 
 %fdupes %{buildroot}%{_datadir}/%{name}
 
 %files
-%doc LICENSE README TODO dat/AUTHORS
+%doc LICENSE Readme.md CHANGELOG dat/AUTHORS
 %doc %{_mandir}/man6/*
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/metainfo/*.xml
-%{_datadir}/icons/hicolor/*x*/apps/naev.png
+%{_datadir}/icons/hicolor/*x*/apps/*.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 %lang(de) %{_datadir}/%{name}/dat/gettext/de/LC_MESSAGES/naev.mo
