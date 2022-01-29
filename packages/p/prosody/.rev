@@ -459,4 +459,14 @@
     instructions (CVE-2022-0217)</comment>
     <requestid>946206</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>34ea67c333784810034d0fab747dabda</srcmd5>
+    <version>0.11.13</version>
+    <time>1643486366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.13:
+  * util.xml: Break reference to help the GC (fixes #1711)
+  * util.xml: Deduplicate handlers for restricted XML</comment>
+    <requestid>949722</requestid>
+  </revision>
 </revisionlist>
