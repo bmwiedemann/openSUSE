@@ -1,7 +1,7 @@
 #
 # spec file for package fontconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
 Group:          System/Libraries
-Url:            http://fontconfig.org/
+URL:            http://fontconfig.org/
 Source0:        http://fontconfig.org/release/%{name}-%{version}.tar.bz2
 Source4:        baselibs.conf
 Source5:        local.conf

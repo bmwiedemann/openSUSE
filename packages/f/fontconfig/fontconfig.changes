@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 27 16:14:14 UTC 2022 - pgajdos@suse.com
+
+- adding bug reference to this changelog [bsc#1172301]
+
+-------------------------------------------------------------------
 Sat Feb  9 23:34:45 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add fontconfig-do-not-remove-UUID-file.patch: Removing .uuid

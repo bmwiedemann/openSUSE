@@ -796,4 +796,12 @@ As we probably don't want a prerelease in 13.1, please checkin there also (forwa
     <comment></comment>
     <requestid>673056</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>085e547fa9bd7e4889665d07c698bfc7</srcmd5>
+    <version>2.13.1</version>
+    <time>1643486249</time>
+    <user>dimstar_suse</user>
+    <comment>- adding bug reference to this changelog [bsc#1172301]</comment>
+    <requestid>949611</requestid>
+  </revision>
 </revisionlist>
