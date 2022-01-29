@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 28 04:01:25 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build portable binaries without -march=native (boo#1100677)
+
+-------------------------------------------------------------------
 Tue Jan 25 07:23:51 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.3.1:

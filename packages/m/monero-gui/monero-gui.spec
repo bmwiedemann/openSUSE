@@ -72,6 +72,7 @@ The official Qt-based GUI wallet app for the privacy-focused Monero cryptocurren
 %define _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} -Wno-sign-compare"
 %cmake \
+  -DARCH=default \
   -DBUILD_SHARED_LIBS=OFF \
   -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags}" \
   -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags}" \
