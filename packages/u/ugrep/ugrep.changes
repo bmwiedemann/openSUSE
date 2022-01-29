@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 28 05:13:03 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 3.7.1:
+  * add newline when showing usage and also fix segfault when arg == NULL
+- update to 3.7.0:
+  * README.md: add FreeBSD installation instructions
+  * resolve LGTM alerts & minor improvements
+  * Support "cpp" as a file type
+  * msvc - Add matcher_avx2, matcher_avx512bw
+- update to 3.6.0:
+  * new option --replace & faster searching 
+
+-------------------------------------------------------------------
 Thu Jan  6 15:20:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.5.0:
