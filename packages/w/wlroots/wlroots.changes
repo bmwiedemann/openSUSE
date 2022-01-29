@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 25 03:51:29 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.15.0:
+  Release highlights:
+  * A new experimental Vulkan renderer has been merged (manually enabled with
+    WLR_RENDERER=vulkan).
+  * A new scene-graph API has been introduced to enable more code-sharing
+    between compositors.
+  * Large parts of the backend and renderer APIs have been refactored and
+    reworked.
+  * The drm-lease-v1 protocol has been implemented.
+  * Feedback support has been added to the linux-dmabuf-unstable-v1
+    implementation, unlocking many zero-copy and multi-GPU optimizations and
+    features.
+  * The wlr_output rendering API now supports 10bpc and 16bpc formats.
+  * The DRM backend now supports hotplugging secondary GPUs at runtime.
+  * wlr_region and wlr_box are now stable APIs.
+
+-------------------------------------------------------------------
 Tue Jan 18 15:45:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Remove libcap build option. It's not used since 0.11.0:

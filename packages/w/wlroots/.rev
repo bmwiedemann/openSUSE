@@ -323,4 +323,12 @@
 - Fix x11 backend option: x11_backend is actually x11-backend</comment>
     <requestid>947258</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>79a73319f7b91609e7df178907dc44a5</srcmd5>
+    <version>0.15.0</version>
+    <time>1643486364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949720</requestid>
+  </revision>
 </revisionlist>

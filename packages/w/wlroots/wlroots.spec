@@ -16,20 +16,23 @@
 #
 
 
-%define libname libwlroots9
+%define libname libwlroots10
+%bcond_without  drm_backend
+%bcond_without  libinput_backend
 %bcond_without  x11_backend
 %bcond_without  xwayland
 %bcond_without  xcb_errors
 
 Name:           wlroots
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
 Group:          System/GUI/Other
-URL:            https://github.com/swaywm/wlroots
-Source0:        https://github.com/swaywm/wlroots/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.56.0
+URL:            https://gitlab.freedesktop.org/wlroots/wlroots
+Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  glslang-devel
+BuildRequires:  meson >= 0.58.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freerdp2)
@@ -38,16 +41,19 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.95
-BuildRequires:  pkgconfig(libinput) >= 1.9.0
+BuildRequires:  pkgconfig(libdrm) >= 2.4.109
+%if %{with libinput_backend}
+BuildRequires:  pkgconfig(libinput) >= 1.14.0
+%endif
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.16
-BuildRequires:  pkgconfig(wayland-server) >= 1.16
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
+BuildRequires:  pkgconfig(wayland-server) >= 1.20
 BuildRequires:  pkgconfig(xkbcommon)
 %if %{with x11_backend} || %{with xwayland}
 BuildRequires:  xorg-x11-server-wayland
@@ -89,7 +95,11 @@ Pluggable, composable modules for building a Wayland compositor.
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %meson \
-  %{?with_x11_backend:-Dx11-backend=enabled} \
+  "-Dbackends=[
+    %{?with_drm_backend:'drm',}
+    %{?with_libinput_backend:'libinput',}
+    %{?with_x11_backend:'x11',}
+  ]" \
   %{?with_xwayland:-Dxwayland=enabled} \
   %{?with_xcb_errors:-Dxcb-errors=enabled}
 %meson_build
