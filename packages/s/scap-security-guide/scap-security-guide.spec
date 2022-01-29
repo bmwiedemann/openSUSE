@@ -1,7 +1,7 @@
 #
 # spec file for package scap-security-guide
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.59
+Version:        0.1.60
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -194,6 +194,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_UBUNTU1804=ON \
 	 -DSSG_PRODUCT_UBUNTU2004=ON \
          -DSSG_PRODUCT_VSEL=OFF \
+         -DSSG_PRODUCT_EKS=OFF \
          -DSSG_PRODUCT_WRLINUX8=OFF \
          -DSSG_PRODUCT_WRLINUX1019=OFF \
          ../
@@ -234,10 +235,11 @@ make install DESTDIR=%buildroot
 %license LICENSE
 %endif
 %dir %{_datadir}/doc/scap-security-guide/guides/
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-centos*
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs9*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-fedora*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-ol*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-rh*
-%doc %{_datadir}/doc/scap-security-guide/guides/ssg-centos*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-sl7*
 %dir %{_datadir}/doc/scap-security-guide/tables/
 %doc %{_datadir}/doc/scap-security-guide/tables/table-ol*
@@ -248,18 +250,20 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/scap-security-guide/tailoring/
 %dir %{_datadir}/scap-security-guide/bash/
 %dir %{_datadir}/scap-security-guide/kickstart/
+%{_datadir}/scap-security-guide/*/*centos*
+%{_datadir}/scap-security-guide/*/*cs9*
 %{_datadir}/scap-security-guide/*/*fedora*
 %{_datadir}/scap-security-guide/*/*ol*
 %{_datadir}/scap-security-guide/*/*rh*
 %{_datadir}/scap-security-guide/*/*sl7*
-%{_datadir}/scap-security-guide/*/*centos*
 %dir %{_datadir}/xml/scap/
 %dir %{_datadir}/xml/scap/ssg/
 %dir %{_datadir}/xml/scap/ssg/content/
+%{_datadir}/xml/scap/ssg/content/*-centos*
+%{_datadir}/xml/scap/ssg/content/*-cs9*
 %{_datadir}/xml/scap/ssg/content/*-fedora*
 %{_datadir}/xml/scap/ssg/content/*-ol*
 %{_datadir}/xml/scap/ssg/content/*-rh*
-%{_datadir}/xml/scap/ssg/content/*-centos*
 %{_datadir}/xml/scap/ssg/content/*-sl7*
 
 %files debian

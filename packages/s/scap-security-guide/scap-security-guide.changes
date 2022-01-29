@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 27 13:43:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.60 (jsc#ECO-3319)
+  - New draft stig profile v1r1 for OL8
+  - New product Amazon EKS platform and initial CIS profiles
+  - New product CentOS Stream 9, as a derivative from RHEL9 product
+
+-------------------------------------------------------------------
 Sat Nov 27 15:39:12 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.59 release (jsc#ECO-3319)
