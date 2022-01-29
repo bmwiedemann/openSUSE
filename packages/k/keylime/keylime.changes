@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Jan 27 16:16:19 UTC 2022 - aplanas@suse.com
+
+- Drop patches beacuse merged upstream:
+  * 0001-Drop-dataclasses-module-usage.patch
+  * 0001-config-support-merge-multiple-config-files.patch
+  * 0001-ca-support-back-old-cyptography-API.patch
+- Update to version v6.3.0:
+  * Coordinated update to fix:
+    + bsc#1193997 (CVE-2022-23948)
+    + bsc#1193998 (CVE-2021-43310)
+    + bsc#1194000 (CVE-2022-23949)
+    + bsc#1194002 (CVE-2022-23950)
+    + bsc#1194004 (CVE-2022-23951)
+    + bsc#1194005 (CVE-2022-23952)
+  * secure_mount: add umount function
+  * secure_mount: use /proc/self/mountinfo
+  * Validate user ID in all public interfaces
+  * validators: add uuid and agent_id validators
+  * validators: create validators module
+  * revocation_notifier: move zmq socket to /var/run/keylime
+  * Update API version from 1.0 to 2.0
+  * tpm: do not compress quote with zlib by default
+  * verifier: persist AK and mTLS certificate to DB
+  * verifier: use "supported_version" for agent connections
+  * tenant: add support for "supported_version" option for the verifier
+  * api_version: add the option for basic validation
+  * verifier: add supported_version field to DB and API
+  * agent: add /version to REST API
+  * verifier, tenant: allow agents to not use mTLS
+  * tenant, verifier: allow manual configuration of agent mTLS
+  * tests: migrate to mTLS
+  * tenant: connect to the agent via mTLS
+  * verifier: connect to the agent via mTLS
+  * tornado_requests: handle SSLError
+  * web_util: add mTLS context generation for agent
+  * agent: Enable mTLS for agent REST API
+  * crypto: add helper function for creating self signed certs
+  * registrar: Allow the agent to registrar with a mTLS certificate
+  * request_client: add workaround for handling certificates
+  * request_client: add the option to ignore hostname validation
+  * Better docs and errors about IMA hash mismatches
+  * tests: use JSON instead Python string for IMA tests
+  * verifier: use json.loads(..) instead of ast.literal_eval(..)
+  * Adding Nuvoton certificate for a post 2020 TPM device. The EK cert
+    of the device directs to the following download site:
+    'https://www.nuvoton.com/security/NTC-TPM-EK-Cert/Nuvoton TPM Root
+    CA 1111.cer' (yes, including the spaces)
+  * Improve revocation notifier IP description in keylime.conf
+  * tornado_requests: set Content-Type header correctly for JSON
+  * tenant: post U key to agent with correct Content-Type header
+  * Explicitly set permissions on new keylime.conf files installed
+  * tpm_main: close file descriptor for aik handle
+  * verifier: do not call finish() twice
+  * agent: fix payload execution
+  * tests: add initial tests for web_util module
+  * config, web_util: move get_restful_params(..) to web_util
+  * verifier: Also retry on HTTP 500 status code
+  * agent: improve startup and shutdown
+  * registrar: cleanup start function
+  * web_util: move echo_json_response(..) out of config.py
+  * verifier: fix failure generation for V key
+  * tornado_requests: cleanup TornadoResponse class
+  * web_util, verifier: move mTLS SSLContext generation into separate module
+  * ca: support back old cyptography API
+  * Fix test branch reference in packit.yaml
+  * ci: disable DeprecationWarning from pylint in tox
+  * Enable new test in Packit CI
+  * tenant: fix reactivate command
+  * config: support merge multiple config files
+  * ci: use only fedora-stable for packit
+  * elchecking: harden example policy against event type manipulation
+  * elchecking: add new tests
+  * tests: fix stdout formatting for agent and verifier
+  * Drop dataclasses module usage
+  * revocation notifier: handle shutdown of process gracefully
+  * verifier: handle SIGINT and SIGTERM correctly
+  * ima_emulator: fix IMA hash validation and add more options
+  * ima_ast: fix handling ToMToU errors
+  * Remove leftovers of TPM 1.2 support
+  * agent: improved validation for post function
+  * agent: better validation for mask and nonce
+  * config: add function to validate hex strings
+  * agent: keys/verify check if challenge was provided
+  * tpm_main: do not append /usr/local/{bin,lib} to default env
+  * db: only set length on Text type if supported
+  * json: do not make sqlalchemy a hard requirement
+  * Enable functional testing with Packit CI
+  * ima_emulator: specify sys.argv as the named parameter argv in main()
+  * elchecking example policy: make it work with Fedora 34
+  * elchecking example policy: initrd* might be also called initramfs*
+  * scripts: add mb_refstate generator for example policy
+  * config: change tpm_hash_alg to SHA1 by default
+  * parse_mb_bootlog: specify the used hash algorithm used for PCRs
+  * agent: add warning that on kernels <5.10 IMA only works with SHA1
+  * tpm: explicitly pass hash alg to sim_extend(..)
+  * ima emulator: use IMA AST and support multiple hash algorithms
+  * tests: update IMA allowlist version number
+  * ima: add option 'log_hash_alg' to IMA allowlist
+  * ima: remove hard requirement for SHA1 PCR 10
+  * algorithms: extend Hash class to simplify computing hash values
+  * config, tpm_main: explicitly handle YAML load errors
+  * config: private_key must be set to -private.pem not -public.pem
+  * agent: add UUID option environment
+  * agent: drop openstack uuid option
+
+-------------------------------------------------------------------
 Tue Jan 25 15:13:04 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Set /var/lib/keylime under the same permissions expected by the code

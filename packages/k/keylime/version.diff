@@ -1,7 +1,7 @@
-Index: keylime-v6.2.1/setup.py
+Index: keylime-v6.3.0/setup.py
 ===================================================================
---- keylime-v6.2.1.orig/setup.py
-+++ keylime-v6.2.1/setup.py
+--- keylime-v6.3.0.orig/setup.py
++++ keylime-v6.3.0/setup.py
 @@ -13,6 +13,7 @@ setuptools.setup(
      description=(
          'TPM-based key bootstrapping and system '
