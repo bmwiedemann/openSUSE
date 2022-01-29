@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 26 15:30:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.70.3:
+  + Several important fixes to FD handling in gspawn.
+  + Several important fixes to GDBus message and GVariant parsing
+    of invalid data.
+  + Fix potential data loss due to missing fsync when saving files
+    on btrfs.
+  + Bugs fixed: glgo#GNOME/GLib#2503, glgo#GNOME/GLib#2506,
+    glgo#GNOME/GLib#2557, glgo#GNOME/GLib#2572,
+    glgo#GNOME/GLib#2580, glgo#GNOME/GLib!2394,
+    glgo#GNOME/GLib!2415, glgo#GNOME/GLib!2437,
+    glgo#GNOME/GLib!2444, glgo#GNOME/GLib!2455.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  3 18:48:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.70.2:
