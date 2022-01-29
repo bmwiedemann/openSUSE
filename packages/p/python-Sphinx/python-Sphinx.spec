@@ -66,15 +66,15 @@ Requires:       python-sphinxcontrib-jsmath
 Requires:       python-sphinxcontrib-qthelp >= 1.0.2
 Requires:       python-sphinxcontrib-serializinghtml >= 1.1.5
 Requires:       python-sphinxcontrib-websupport
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 4.4
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-SQLAlchemy >= 0.9
 Recommends:     python-Sphinx-doc-man
 Recommends:     python-Whoosh >= 2.0
 BuildArch:      noarch
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 4.4
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}
@@ -83,9 +83,9 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  (python3-typed-ast if python3-base < 3.8)
 BuildRequires:  ImageMagick
 BuildRequires:  graphviz
+BuildRequires:  (python3-typed-ast if python3-base < 3.8)
 # For PNG format
 BuildRequires:  graphviz-gd
 # For PDF format (!?)

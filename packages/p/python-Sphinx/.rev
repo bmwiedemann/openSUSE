@@ -924,4 +924,13 @@
 </comment>
     <requestid>947727</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>9a6bd562f043cc85d365f7fe69eaeb10</srcmd5>
+    <version>4.4.0</version>
+    <time>1643486253</time>
+    <user>dimstar_suse</user>
+    <comment>- SPEC cleanup
+</comment>
+    <requestid>949672</requestid>
+  </revision>
 </revisionlist>
