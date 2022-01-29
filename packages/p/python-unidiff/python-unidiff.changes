@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 28 02:23:11 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.7.2
+  * Fixed issue when parsing git diff header generated with --no-prefix.
+- Update to version 0.7.1
+  * Improved git added/deleted file detection.
+  * Added newline optional param when parsing from_filename.
+
+-------------------------------------------------------------------
 Sun Aug 15 19:15:09 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.7.0
