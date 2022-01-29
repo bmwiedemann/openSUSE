@@ -1,0 +1,8 @@
+<package name="python-wcmatch" project="openSUSE:Factory">
+  <title>Wildcard/glob file name matcher</title>
+  <description>Wildcard/glob file name matcher.
+
+</description>
+  <devel project="devel:languages:python" package="python-wcmatch"/>
+  <url>https://github.com/facelessuser/wcmatch</url>
+</package>
