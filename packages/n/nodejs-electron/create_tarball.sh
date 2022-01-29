@@ -216,12 +216,14 @@ keeplibs=(
     third_party/ffmpeg
     third_party/fft2d
     third_party/flatbuffers
+    third_party/freetype
     third_party/fusejs/dist
     third_party/gemmlowp
     third_party/google_input_tools
     third_party/google_input_tools/third_party/closure_library
     third_party/google_input_tools/third_party/closure_library/third_party/closure
     third_party/googletest
+    third_party/harfbuzz-ng
     third_party/harfbuzz-ng/utils
     third_party/highway
     third_party/hunspell

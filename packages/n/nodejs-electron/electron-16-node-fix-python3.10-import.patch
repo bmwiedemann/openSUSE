@@ -1,0 +1,13 @@
+Index: electron-16.0.7/third_party/electron_node/tools/inspector_protocol/jinja2/tests.py
+===================================================================
+--- electron-16.0.7.orig/third_party/electron_node/tools/inspector_protocol/jinja2/tests.py	2022-01-19 09:58:52.946185049 +0100
++++ electron-16.0.7/third_party/electron_node/tools/inspector_protocol/jinja2/tests.py	2022-01-27 13:05:22.634208381 +0100
+@@ -10,7 +10,7 @@
+ """
+ import operator
+ import re
+-from collections import Mapping
++from collections.abc import Mapping
+ from jinja2.runtime import Undefined
+ from jinja2._compat import text_type, string_types, integer_types
+ import decimal

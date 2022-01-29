@@ -2,6 +2,7 @@
 # spec file for package nodejs-electron
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021-2022 Andreas Schneider <asn@cryptomilk.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define mod_name electron
 ExcludeArch:    %{ix86} %{arm}
 %ifarch x86_64
-%if 0%{?suse_version} > 1500 || 0%{?fedora_version}
+%if 0%{?suse_version} > 1500 || 0%{?fedora}
 # DISABLE LTO AS IT IS BROKEN RIGHT NOW
 #%%bcond_without lto
 %bcond_with lto
@@ -33,7 +34,7 @@ ExcludeArch:    %{ix86} %{arm}
 %bcond_with lto
 # endif arch x86_64
 %endif
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 || 0%{?fedora_version}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 || 0%{?fedora}
 %bcond_without pipewire
 %else
 %bcond_with pipewire
@@ -43,7 +44,7 @@ ExcludeArch:    %{ix86} %{arm}
 %else
 %bcond_without swiftshader
 %endif
-%if 0%{?suse_version} >= 1550 || 0%{?fedora_version} > 34
+%if 0%{?suse_version} >= 1550 || 0%{?fedora} > 34
 %bcond_without systemicu
 %else
 %bcond_with systemicu
@@ -54,6 +55,18 @@ ExcludeArch:    %{ix86} %{arm}
 %bcond_without clang
 %else
 %bcond_with clang
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?fedora} > 35
+%bcond_without system_harfbuzz
+%bcond_without system_freetype
+%else
+%bcond_with system_harfbuzz
+%bcond_with system_freetype
+%endif
+%if 0%{?suse_version}
+%bcond_without system_ffmpeg
+%else
+%bcond_with system_ffmpeg
 %endif
 Name:           nodejs-electron
 Version:        16.0.7
@@ -68,7 +81,7 @@ Source10:       electron-launcher.sh
 Source11:       electron.desktop
 Source12:       electron-logo-symbolic.svg
 Patch0:         chromium-95-compiler.patch
-%if 0%{?sle_version} < 150300 || 0%{?fedora_version} < 34
+%if 0%{?sle_version} < 150300 || 0%{?fedora} < 34
 # Fixed with ld.gold >= 2.36
 # https://sourceware.org/bugzilla/show_bug.cgi?id=26200
 Patch1:         chromium-disable-parallel-gold.patch
@@ -81,8 +94,10 @@ Patch6:         chromium-vaapi.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
 Patch8:         chromium-glibc-2.34.patch
 Patch9:         chromium-86-fix-vaapi-on-intel.patch
+%if %{with system_ffmpeg}
 Patch10:        chromium-93-ffmpeg-4.4.patch
 Patch11:        chromium-94-ffmpeg-roll.patch
+%endif
 Patch12:        chromium-96-RestrictedCookieManager-tuple.patch
 Patch13:        chromium-96-CouponDB-include.patch
 Patch14:        chromium-96-DrmRenderNodePathFinder-include.patch
@@ -101,6 +116,12 @@ Patch22:        electron-13-fix-base-check-nomerge.patch
 Patch23:        electron-13-blink-gcc-ambiguous-nodestructor.patch
 # Fix electron patched code
 Patch24:        electron-16-std-vector-non-const.patch
+# Fix common.gypi to include /usr/include/electron
+Patch25:        electron-16-system-node-headers.patch
+%if 0%{?fedora} >= 35
+# Fix collections import with python 3.10
+Patch26:        electron-16-node-fix-python3.10-import.patch
+%endif
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -131,7 +152,7 @@ BuildRequires:  clang >= 8.0.0
 BuildRequires:  lld >= 8.0.0
 BuildRequires:  ninja >= 1.7.2
 %endif
-%if 0%{?fedora_version}
+%if 0%{?fedora}
 # Required for /usr/bin/clang-format
 BuildRequires:  clang-tools-extra
 BuildRequires:  libatomic
@@ -159,13 +180,17 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
+%if %{with system_freetype}
 BuildRequires:  pkgconfig(freetype2)
+%endif
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+%if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
+%endif
 BuildRequires:  pkgconfig(hunspell)
 %if %{with systemicu}
 BuildRequires:  pkgconfig(icu-i18n) >= 68.0
@@ -202,7 +227,7 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
-%if 0%{?fedora_version}
+%if 0%{?fedora}
 BuildRequires:  minizip-compat-devel
 %else
 BuildRequires:  pkgconfig(minizip)
@@ -255,7 +280,7 @@ BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{without clang}
-%if 0%{?suse_version} >= 1550 || 0%{?fedora_version}
+%if 0%{?suse_version} >= 1550 || 0%{?fedora}
 BuildRequires:  gcc >= 10
 BuildRequires:  gcc-c++ >= 10
 %else
@@ -277,6 +302,14 @@ Provides:       nodejs-electron-prebuilt = %{version}
 
 %description
 Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and CSS
+
+%package devel
+Summary:        Electron development headers
+Group:          Development/Libraries/C and C++
+Requires:       nodejs-electron = %{version}
+
+%description devel
+Development headers for Electron projects.
 
 %if 0%{?fedora}
 %global debug_package %{nil}
@@ -327,7 +360,7 @@ export CXX=clang++
 
 # REDUCE DEBUG as it gets TOO large
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
-%if 0%{?fedora_version}
+%if 0%{?fedora}
 # Fix base/allocator/allocator_shim.cc:408:2: error: #error This code cannot be
 # used when exceptions are turned on.
 ARCH_FLAGS="`echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g'`"
@@ -348,7 +381,7 @@ export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-ali
 export CFLAGS="${CXXFLAGS}"
 export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
 
-%if 0%{?suse_version} >= 1550 || 0%{?fedora_version}
+%if 0%{?suse_version} >= 1550 || 0%{?fedora}
 export CC=gcc
 export CXX=g++
 %else
@@ -370,8 +403,6 @@ export RANLIB=ranlib
 gn_system_libraries=(
     flac
     fontconfig
-    freetype
-    harfbuzz-ng
     libdrm
     libevent
     libjpeg
@@ -386,11 +417,19 @@ gn_system_libraries=(
     zlib
 )
 
+%if %{with system_harfbuzz}
+gn_system_libraries+=( harfbuzz-ng )
+%endif
+
+%if %{with system_freetype}
+gn_system_libraries+=( freetype )
+%endif
+
 %if %{with systemicu}
 gn_system_libraries+=( icu )
 %endif
 
-%if 0%{?suse_version}
+%if %{with system_ffmpeg}
 gn_system_libraries+=( ffmpeg )
 %endif
 
@@ -448,8 +487,12 @@ myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
+%if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
+%endif
+%if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
+%endif
 
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
@@ -483,12 +526,14 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
 gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
 ninja -v %{?_smp_mflags} -C out/Release electron
+ninja -v %{?_smp_mflags} -C out/Release copy_headers
 
 # strip the debugging and symbol information
 electron/script/strip-binaries.py -d out/Release
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
+install -d -m 0755 %{buildroot}%{_includedir}/electron
 install -d -m 0755 %{buildroot}%{_libdir}/electron
 install -d -m 0755 %{buildroot}%{_libdir}/electron/swiftshader
 install -d -m 0755 %{buildroot}%{_datadir}/applications
@@ -504,7 +549,7 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{SOURCE11}
 pushd out/Release
 rsync -av *.bin *.pak *.so resources %{buildroot}%{_libdir}/electron/
 
-%if 0%{?fedora_version}
+%if %{without system_ffmpeg}
 rm -f %{buildroot}%{_libdir}/electron/libffmpeg*
 %endif
 
@@ -529,6 +574,8 @@ echo -n "%{version}" > %{buildroot}%{_libdir}/electron/version
 # Install folders required for webapps
 mkdir -p "%{buildroot}%{_sysconfdir}/webapps"
 mkdir -p "%{buildroot}%{_datadir}/webapps"
+
+rsync -av out/Release/gen/node_headers/include/node/* %{buildroot}%{_includedir}/electron
 
 %files
 %license electron/LICENSE
@@ -568,5 +615,8 @@ mkdir -p "%{buildroot}%{_datadir}/webapps"
 %{_libdir}/electron/version
 %dir %{_sysconfdir}/webapps
 %dir %{_datadir}/webapps
+
+%files devel
+%{_includedir}/electron
 
 %changelog

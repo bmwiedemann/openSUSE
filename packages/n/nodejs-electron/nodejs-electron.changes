@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 28 13:15:25 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix build on Fedora
+  * Added electron-16-node-fix-python3.10-import.patch
+
+-------------------------------------------------------------------
+Thu Jan 27 08:07:59 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add devel package with node headers (e.g. for node-gyp)
+  * Added electron-16-system-node-headers.patch
+- Fix building on Fedora and openSUSE Leap
+
+-------------------------------------------------------------------
 Wed Jan 19 18:09:33 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Package pgo profiles
