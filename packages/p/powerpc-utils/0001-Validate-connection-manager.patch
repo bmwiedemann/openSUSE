@@ -1,0 +1,83 @@
+From 8474223e844ecf13606fe9ebab2198838b877947 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 13 Jan 2022 06:18:53 -0800
+Subject: [PATCH 01/15] Validate connection manager
+
+Check and validate what OS is on the system and what type
+ of connection manager is used: Wicked or NetworkManager
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+---
+ scripts/hcnmgr | 42 +++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 37 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 870f544..f9940bb 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -39,6 +39,8 @@ MODE=""
+ PHYSLOC=""
+ DEVPATH=""
+ VIO_TYPE=""
++DISTRO=""
++SERVICES=""
+ 
+ # Usage statements
+ usage() {
+@@ -627,6 +629,41 @@ scanhcn() {
+ 
+ 	hcnlog DEBUG "scanhcn: scan for hybrid virtual network finished"
+ }
++#function check_network_service
++#	Check what connection manager is used
++#	network manager or wicked (on SuSE)
++#
++
++
++check_network_service() {
++
++	DISTRO="Unknown"
++	if test -f /etc/os-release; then
++		DISTRO=$(grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"')
++	fi
++
++
++	SERVICES=$(systemctl show -p Id network.service | cut -d '=' -f 2)
++	hcnlog INFO " LPAR is running OS $DISTEO with network service $SERVICES"
++
++	case "$SERVICES" in
++		*wicked.service)
++				#validate wicked, wicked dd services
++				#validate yast package
++				hcnlog INFO "HNV is not supported with Wicked"
++				;;
++		*network.service)
++				#Validate NMCLI packages is install to manage networking
++				if ! nmcli --version >/dev/null 2>&1; then
++					err $E_ENETUNREACH
++				fi
++				;;
++		default)
++				hcnlog INFO "HNV is only supported on NetworkManager"
++				err $E_ENETUNREACH
++				;;
++	esac
++}
+ 
+ #
+ # Main
+@@ -650,11 +687,6 @@ if [ "$platform" != "$PLATFORM_PSERIES_LPAR" ]; then
+ 	exit 0
+ fi
+ 
+-#Validate NMCLI packages is install to manage networking
+-if ! nmcli --version >/dev/null 2>&1; then
+-	err $E_ENETUNREACH
+-fi
+-
+ #Validate bonding module is loaded
+ if ! lsmod | grep -q bonding; then
+ 	hcnlog DEBUG "HCNMGR: Bonding module not loaded, load module ..."
+-- 
+2.34.1
+

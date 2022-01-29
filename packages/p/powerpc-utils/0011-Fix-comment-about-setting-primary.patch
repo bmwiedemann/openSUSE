@@ -1,0 +1,35 @@
+From 5428ce5a46cf51d17bfb85db03569b251fd5b0a1 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 26 Jan 2022 18:34:13 +0100
+Subject: [PATCH 11/15] Fix comment about setting primary
+
+The suse_ifcfg_bond_set_primary adjusts it in the config only
+(the bond may not exist yet), the following wicked ifreload
+call is applying the config to wicked adjusting the kernel.
+---
+ scripts/hcnmgr | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 475092e..565c3ff 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -387,13 +387,13 @@ do_config_vdevice_wicked() {
+ 		return $E_ENODEV
+ 	fi
+ 
+-	# if the device is primary, and link is up, force it as primary
++	# if the device is primary, adjust it in the config
+ 	if [[ $MODE == "primary" ]]; then
+ 		hcnlog INFO "Change bonding primary slave to $DEVNAME"
+-#		echo "$DEVNAME" >"$BOND_PATH"/active_slave
+ 		suse_ifcfg_bond_set_primary "$BONDNAME" "$DEVNAME"
+ 	fi
+ 
++	# Apply the config changes to wicked
+ 	hcnlog DEBUG "Bring up the $BONDNAME interface"
+ 	wicked ifreload "$BONDNAME"
+ 
+-- 
+2.34.1
+

@@ -1,0 +1,64 @@
+From c6eb3f4b817d641ce84172566cb9ab308cadbb51 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 26 Jan 2022 18:26:40 +0100
+Subject: [PATCH 09/15] Fix to call wicked ifreload directly
+
+The wicked_reload() wrapper function were not working as it
+were using a function from a not included library.
+---
+ scripts/functions.suse | 9 ---------
+ scripts/hcnmgr         | 7 +++----
+ 2 files changed, 3 insertions(+), 13 deletions(-)
+
+diff --git a/scripts/functions.suse b/scripts/functions.suse
+index 4001bb8..c70323a 100644
+--- a/scripts/functions.suse
++++ b/scripts/functions.suse
+@@ -389,12 +389,3 @@ suse_ifcfg_bond_modify()
+ 	return 1
+ }
+ 
+-wicked_reload()
+-{
+-	if [ $# -eq 0 ] ; then
+-		rcnetwork reload
+-	elif systemctl_is_active wicked.service ; then
+-		wicked ifreload -- "$@"
+-	fi
+-}
+-
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 03b65c5..9b94be9 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -395,7 +395,7 @@ do_config_vdevice_wicked() {
+ 	fi
+ 
+ 	hcnlog DEBUG "Bring up the $BONDNAME interface"
+-	wicked_reload "$BONDNAME"
++	wicked ifreload "$BONDNAME"
+ 
+ 	hcnlog DEBUG "do_config_vdevice: exit"
+ 	return $E_SUCCESS
+@@ -455,7 +455,7 @@ rmhcn_nm() {
+ rmhcn_wicked() {
+ 	hcnlog INFO "Delete bonding $BONDNAME"
+ 	suse_ifcfg_bond_delete "$BONDNAME"
+-	wicked_reload "$BONDNAME"
++	wicked ifreload "$BONDNAME"
+ }
+ 
+ #
+@@ -607,8 +607,7 @@ rmdev_nm() {
+ rmdev_wicked() {
+ 	hcnlog DEBUG "rmdev_wicked: enter"
+ 	suse_ifcfg_bond_del_slave "$BONDNAME" "$DEVNAME"
+-    wicked ifup "$BONDNAME"
+-    wicked_reload "$BONDNAME"
++	wicked ifreload "$BONDNAME"
+ 	hcnlog DEBUG "rmdev_wicked: exit"
+ 	return $E_SUCCESS
+ }
+-- 
+2.34.1
+

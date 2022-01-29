@@ -1,0 +1,49 @@
+From 79a030172b31b07753aee4c9ec38700733dff37f Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 24 Jan 2022 20:24:12 +0100
+Subject: [PATCH 07/15] Remove wicked ifup calls that just run into timeouts
+
+Setting up a bonding without any slave will never reach
+an link-up state as the bond can't detect carrier and
+it requires one slave.
+---
+ scripts/hcnmgr | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index c3cbf7b..ffcd4d6 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -375,7 +375,6 @@ do_config_vdevice_wicked() {
+ 	if ! suse_ifcfg_is_bond_master "$BONDNAME"; then
+ 		hcnlog INFO "create bonding for $BONDNAME with bond.options $BONDOPTIONS "
+ 		suse_ifcfg_bond_create "$BONDNAME" "$BONDING_MODULE_OPTS"
+-        wicked ifup "$BONDNAME"
+ 	fi
+ 
+ 	# Add device to the bond
+@@ -384,17 +383,17 @@ do_config_vdevice_wicked() {
+ 		hcnlog DEBUG "enslave $DEVNAME failed"
+ 		return $E_ENODEV
+ 	fi
+-	hcnlog DEBUG "Bring up the $DEVNAME interface"
+-
+ 
+-	# if the device is primary, and link is up, force it as primary se
++	# if the device is primary, and link is up, force it as primary
+ 	if [[ $MODE == "primary" ]]; then
+ 		hcnlog INFO "Change bonding primary slave to $DEVNAME"
+ #		echo "$DEVNAME" >"$BOND_PATH"/active_slave
+ 		suse_ifcfg_bond_set_primary "$BONDNAME" "$DEVNAME"
+-        wicked ifup "$BONDNAME"
+ 	fi
++
++	hcnlog DEBUG "Bring up the $BONDNAME interface"
+ 	wicked_reload "$BONDNAME"
++
+ 	hcnlog DEBUG "do_config_vdevice: exit"
+ 	return $E_SUCCESS
+ }
+-- 
+2.34.1
+

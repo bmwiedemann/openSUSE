@@ -1,0 +1,71 @@
+From 2822ad29d29f9b6e24f0a386c1fd7d99931e249a Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 26 Jan 2022 18:54:35 +0100
+Subject: [PATCH 14/15] Enable the network service checks
+
+---
+ scripts/hcnmgr | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 8c01c86..f8e0c6a 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -393,9 +393,14 @@ do_config_vdevice_wicked() {
+ 		suse_ifcfg_bond_set_primary "$BONDNAME" "$DEVNAME"
+ 	fi
+ 
+-	# Apply the config changes to wicked
+-	hcnlog DEBUG "Bring up the $BONDNAME interface"
+-	wicked ifreload "$BONDNAME"
++	# Prepare configuration while hcn-init.service run, but do not try
++	# to apply when the wicked.service aka network.service is active.
++	# The network.service start at boot (or next one) will apply it.
++	if systemctl is-active -q wicked.service ; then
++		# Apply the config changes to wicked
++		hcnlog DEBUG "Bring up the $BONDNAME interface"
++		wicked ifreload "$BONDNAME"
++	fi
+ 
+ 	hcnlog DEBUG "do_config_vdevice: exit"
+ 	return $E_SUCCESS
+@@ -787,11 +792,16 @@ check_network_service() {
+ 					if ! wicked --version >/dev/null 2>&1; then
+ 						err $E_ENETUNREACH "wicked management command not installed"
+ 					fi
++					# hcn-init.service starts before wicked
+ 					;;
+ 				NetworkManager.service)
+ 					if ! nmcli --version >/dev/null 2>&1; then
+ 						err $E_ENETUNREACH "nmcli management command not installed"
+ 					fi
++					# hcn-init.service starts after network manager
++					if ! systemctl is-active -q "$SERVICE" ; then
++						err $E_ENETUNREACH "NetworkManager.service not active"
++					fi
+ 					;;
+ 				*)
+ 					err $E_ENETUNREACH "HNV is only supported on wicked and NetworkManager"
+@@ -805,6 +815,9 @@ check_network_service() {
+ 
+ 			# Assume it's NetworkManager.service -- at least the cli is available
+ 			SERVICE=NetworkManager.service
++			if ! systemctl is-active -q "$SERVICE" ; then
++				err $E_ENETUNREACH "NetworkManager.service not active"
++			fi
+ 			;;
+ 	esac
+ 
+@@ -833,6 +846,9 @@ if [ "$platform" != "$PLATFORM_PSERIES_LPAR" ]; then
+ 	exit 0
+ fi
+ 
++#Init the distribution and the network service
++check_network_service
++
+ #Validate bonding module is loaded
+ if ! lsmod | grep -q bonding; then
+ 	hcnlog DEBUG "HCNMGR: Bonding module not loaded, load module ..."
+-- 
+2.34.1
+

@@ -1,0 +1,34 @@
+From 7f4602d7df66aa42c5b269a9cdc5e6c8e1cb30e2 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 24 Jan 2022 17:50:05 +0100
+Subject: [PATCH 05/15] Set modprobe bonding max_bonds=0 option
+
+Avoid bond0 interface creation while module init in the kernel.
+---
+ scripts/hcnmgr | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 0aa6ee8..6c56508 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -24,6 +24,7 @@
+ FEATURES="vnic"
+ PATH=$PATH:/bin:/usr/bin:/sbin:/usr/sbin
+ BOND_BASEPATH="/sys/class/net"
++BOND_MODPROBE_OPTS="max_bonds=0"
+ BONDOPTIONS="mode=1,miimon=100,fail_over_mac=2"
+ IFCONFIG_PATH="/etc/sysconfig/network-scripts"
+ PSERIES_PLATFORM=$(dirname "$0")/pseries_platform
+@@ -801,7 +802,7 @@ fi
+ #Validate bonding module is loaded
+ if ! lsmod | grep -q bonding; then
+ 	hcnlog DEBUG "HCNMGR: Bonding module not loaded, load module ..."
+-	if ! modprobe bonding; then
++	if ! modprobe bonding $BOND_MODPROBE_OPTS; then
+ 		err $E_NOMODULE
+ 	fi
+ fi
+-- 
+2.34.1
+

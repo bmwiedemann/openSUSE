@@ -1,0 +1,424 @@
+From aeaf71efb4a761892f566f996d70d60e4233958e Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 13 Jan 2022 06:22:46 -0800
+Subject: [PATCH 03/15] Add new wicked functions from suse to manage bonding 
+ interfaces
+
+suse specific hcnmgr utilities to manipulate suse ifcfg files
+as supported by yast2 network.
+
+Signed-off-by:   Marius Tomaschewski <mt@suse.com>
+---
+ scripts/functions.suse | 400 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 400 insertions(+)
+ create mode 100644 scripts/functions.suse
+
+diff --git a/scripts/functions.suse b/scripts/functions.suse
+new file mode 100644
+index 0000000..4001bb8
+--- /dev/null
++++ b/scripts/functions.suse
+@@ -0,0 +1,400 @@
++#! /bin/bash
++#  ^^^^^^^^^
++#
++# Copyright (c) 2021 SUSE LLC
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License
++# as published by the Free Software Foundation; either version 2
++# of the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program. If not, see <https://www.gnu.org/licenses/>.
++#
++# Authors:
++#	Marius Tomaschewski <mt@suse.com>
++#
++# suse specific hcnmgr utilities to manipulate suse ifcfg files
++# as supported by yast2 network.
++#
++
++suse_ifcfg_config_dir="/etc/sysconfig/network"
++
++suse_wlist_find()
++{
++        local item want="$1" ; shift
++        for item in $* ; do
++                [ X"$want" = X"$item" ] && return 0
++        done
++        return 1
++}
++suse_wlist_uniq()
++{
++	local item list=()
++        for item in $* ; do
++                suse_wlist_find "$item" "$list" && continue
++		list+=("$item")
++        done
++        echo "${list[*]}"
++}
++suse_ifcfg_unquote()
++{
++	# Ifcfg variables contain sh compatible/sourceable key=values,
++	# but without the full quote and (variable) expansion magic
++	# and the values aren't/don't need to be evaluated by a shell.
++	# Values can contain a space-separated world list, like e.g.:
++	#   "arp_interval arp_ip_target=1.2.3.4,1.2.3.5"
++	# They need quotes, but no nested "foo \"bar baz\"" or escapes
++	# are considered. A value like ' \o/ ' (e.g. a wireless essid)
++	# needs single quotes...
++	local val="$1"
++	case $val in
++	"'"*)  val="${val#"'"}" ; val="${val%"'"*}" ; echo "$val" ;;
++	"\""*) val="${val#\"}"  ; val="${val%\"*}"  ; echo "$val" ;;
++	[[:alpha:]]*) echo "${val%%[[:space:]#]*}" ;;
++	esac
++}
++
++suse_ifcfg_file_name()
++{
++	[ X"$1" != X ] && echo "${suse_ifcfg_config_dir}/ifcfg-${1}"
++}
++suse_ifcfg_file_exists()
++{
++	local file=$(suse_ifcfg_file_name "$1")
++	[ X"$file" != X -a -f "$file" ] && echo "$file"
++}
++suse_ifcfg_file_delete()
++{
++	local file=$(suse_ifcfg_file_name "$1")
++	[ X"$file" != X ] && rm -f -- "$file"
++}
++suse_ifcfg_file_mktemp()
++{
++	local temp="${suse_ifcfg_config_dir}/.ifcfg-${1}.XXXXXX"
++	[ X"$1" != X -a X"$temp" != X ] && mktemp -q -- "$temp" 2>/dev/null
++}
++suse_ifcfg_grep()
++{
++	LANG=C LC_ALL=C grep --no-filename -E "$@"
++}
++
++suse_ifcfg_is_bond_master()
++{
++	local bond="$1"
++	local file=$(suse_ifcfg_file_name "$bond")
++	local line key val=""
++	local BONDING_MASTER="no"
++
++	[ X"$file" != X ] || return 1
++	while read line ; do
++		key="${line%%=*}"
++		val=$(suse_ifcfg_unquote "${line#${key}=}")
++		case $val in
++			yes|YES) BONDING_MASTER="yes" ;;
++			*)       BONDING_MASTER="no"  ;;
++		esac
++	done < <(suse_ifcfg_grep -e '^[ \t]*BONDING_MASTER=' -- \
++			"$file" 2>/dev/null)
++
++	[ X"$BONDING_MASTER" = X"yes" ]
++}
++
++suse_ifcfg_bond_master_template()
++{
++	local slaves=($(suse_wlist_uniq $1))
++	local options=($2)
++	local num=0
++
++	if [ X"${options[*]}" = X ] ; then
++		# default options as used by the hcnmgr
++		options=(mode=active-backup miimon=100 fail_over_mac=follow)
++		# set 1st slave as primary to inherit the mac from (by default)
++		if [ X"${slaves[0]}" != X ] ; then
++			options+=("primary=${slaves[0]}")
++		fi
++	fi
++
++	echo "STARTMODE='auto'"
++	echo "BOOTPROTO='none'"
++
++	echo "BONDING_MASTER='yes'"
++	echo "BONDING_MODULE_OPTS='${options[*]}'"
++	for slave in "${slaves[@]}" ; do
++		((num++))
++		echo "BONDING_SLAVE_${num}='$slave'"
++	done
++}
++
++suse_ifcfg_bond_get_options()
++{
++	local bond="$1"
++	local file=$(suse_ifcfg_file_exists "$bond")
++	local line key val=""
++
++	[ X"$file" != X ] || return 1
++	while read line ; do
++		key="${line%%=*}"
++		if [ X"$key" != X ] ; then
++			val=$(suse_ifcfg_unquote "${line#${key}=}")
++		fi
++	done < <(suse_ifcfg_grep -e '^[ \t]*BONDING_MODULE_OPTS=' -- \
++			"$file" 2>/dev/null)
++	echo "$val"
++}
++
++suse_ifcfg_bond_set_options()
++{
++	local bond="$1"
++	local options="$2"
++	local file=$(suse_ifcfg_file_exists "$bond")
++	[ X"$file" != X -a X"$options" != X ] || return 1
++
++	local temp=$(suse_ifcfg_file_mktemp "$bond")
++	[ X"$temp" != X ] || return 1
++
++	if suse_ifcfg_grep -v -e '^[ \t]*BONDING_MODULE_OPTS=' -- \
++		"$file" >> "$temp" 2>/dev/null ; then
++
++		echo "BONDING_MODULE_OPTS='$options'" >>"$temp"
++
++		mv -f -- "$temp" "$file" && return 0
++	fi
++	rm -f -- "$temp"
++	return 1
++}
++
++suse_ifcfg_bond_get_primary()
++{
++	local bond="$1"
++	local file=$(suse_ifcfg_file_exists "$bond")
++	[ X"$file" != X ] || return 1
++
++	local options=($(suse_ifcfg_bond_get_options "$bond"))
++	local opt primary=""
++	for opt in "${options[@]}" ; do
++		case $opt in
++			primary=*)
++				primary="${opt#*=}"
++			;;
++		esac
++	done
++	[ X"$primary" != X ] && echo "$primary"
++}
++
++suse_ifcfg_bond_set_primary()
++{
++	local bond="$1"
++	local primary="$2"
++
++	local file=$(suse_ifcfg_file_name "$bond")
++	[ X"$file" != X ] || return 1
++
++	local options=($(suse_ifcfg_bond_get_options "$bond"))
++	local opt opts=()
++	for opt in "${options[@]}" ; do
++		case $opt in
++			primary=*) ;;
++			*) opts+=("$opt") ;;
++		esac
++	done
++	if [ X"$primary" != X ] ; then
++		opts+=("primary=$primary")
++	fi
++	suse_ifcfg_bond_set_options "$bond" "${opts[*]}"
++}
++
++suse_ifcfg_bond_get_slaves()
++{
++	local bond="$1"
++	local file=$(suse_ifcfg_file_name "$bond")
++	local line var key val="" ${!BONDING_SLAVE*}
++
++	[ X"$file" != X ] || return 1
++	unset ${!BONDING_SLAVE*}
++	while read -r line ; do
++		key="${line%%=*}"
++		val=$(suse_ifcfg_unquote "${line#${key}=}")
++		eval local "${key}='${val}'"
++	done < <(suse_ifcfg_grep -e '^[ \t]*BONDING_SLAVE[[:alnum:]_]*=' -- \
++			"$file" 2>/dev/null)
++	for var in ${!BONDING_SLAVE*} ; do
++		[ X"${!var}" != X ] && echo "${!var}"
++	done
++}
++
++suse_ifcfg_bond_add_slave()
++{
++	local bond="$1"
++	local nslave="$2"
++	local file=$(suse_ifcfg_file_name "$bond")
++	[ X"$nslave" != X -a X"$file" != X ] || return 1
++
++	local oslaves=($(suse_ifcfg_bond_get_slaves "$bond"))
++	suse_wlist_find "$nslave" "${oslaves[@]}"  && return 0
++	local nslaves=("${oslaves[@]}" "$nslave")
++	local slave num=0
++
++	local temp=$(suse_ifcfg_file_mktemp "$bond")
++	[ X"$temp" != X ] || return 1
++
++	if suse_ifcfg_grep -v -e '^[ \t]*BONDING_SLAVE[[:alnum:]_]*=' -- \
++		"$file" >> "$temp" 2>/dev/null ; then
++
++		for slave in "${nslaves[@]}" ; do
++			((num++))
++			echo "BONDING_SLAVE_${num}='$slave'"
++		done >> "$temp" 2>/dev/null
++
++		mv -f -- "$temp" "$file" && return 0
++	fi
++	rm -f -- "$temp"
++	return 1
++}
++
++suse_ifcfg_bond_del_slave()
++{
++	local bond="$1"
++	local oslave="$2"
++	local file=$(suse_ifcfg_file_exists "$bond")
++	[ X"$oslave" != X -a X"$file" != X ] || return 1
++
++	local oslaves=($(suse_ifcfg_bond_get_slaves "$bond"))
++	local slave num=0 nslaves=()
++	for slave in "${oslaves[@]}" ; do
++		if [ X"$slave" != X"$oslave" ] ; then
++			nslaves+=("${slave}")
++		else
++			suse_ifcfg_file_delete "$slave"
++		fi
++	done
++
++	local primary=$(suse_ifcfg_bond_get_primary "$bond")
++	if [ X"$primary" = X"$oslave" ] ; then
++		suse_ifcfg_bond_set_primary "$bond" ""
++	fi
++
++	local temp=$(suse_ifcfg_file_mktemp "$bond")
++	[ X"$temp" != X ] || return 1
++
++	if suse_ifcfg_grep -v -e '^[ \t]*BONDING_SLAVE[[:alnum:]_]*=' -- \
++		"$file" >> "$temp" 2>/dev/null ; then
++
++		for slave in "${nslaves[@]}" ; do
++			((num++))
++			echo "BONDING_SLAVE_${num}='$slave'"
++		done >> "$temp" 2>/dev/null
++
++		mv -f -- "$temp" "$file" && return 0
++	fi
++	rm -f -- "$temp"
++	return 1
++}
++
++suse_ifcfg_bond_create()
++{
++	local bond="$1" ; shift
++	local file=$(suse_ifcfg_file_name "$bond")
++	local temp=$(suse_ifcfg_file_mktemp "$bond")
++
++	[ X"$temp" != X ] || return 1
++	if suse_ifcfg_bond_master_template "$@" >> "$temp" ; then
++		mv -f -- "$temp" "$file" && return 0
++	fi
++	rm -f -- "$temp"
++	return 1
++}
++
++suse_ifcfg_bond_delete()
++{
++	local bond="$1"
++	local file=$(suse_ifcfg_file_name "$bond")
++	local slaves=($(suse_ifcfg_bond_get_slaves "$bond"))
++	local slave
++
++	# delete explicit slave configs if any
++	for slave in "${slaves[@]}" ; do
++		suse_ifcfg_file_delete "$slave"
++	done
++
++	# delete the bond master config file
++	[ X"$file" != X ] && rm -f -- "$file"
++
++	# TODO: cleanup interfaces on top of the bond
++	# 		_if_ the hnv setup permit to use them
++	# e.g.: brX { bondX }, brN { bondX.N }
++}
++
++suse_ifcfg_bond_modify()
++{
++	local bond="$1"
++	local nslaves=($(suse_wlist_uniq $2))
++	local noptions=($3)
++
++	if ! suse_ifcfg_is_bond_master "$bond" ; then
++		suse_ifcfg_bond_create "$bond" "${nslaves[*]}" "${noptions[*]}"
++		return $?
++	fi
++
++	local temp=$(suse_ifcfg_file_mktemp "$bond")
++	[ X"$temp" != X ] || return 1
++
++	local options=($(suse_ifcfg_bond_get_options "$bond"))
++	local slaves=($(suse_ifcfg_bond_get_slaves "$bond"))
++	local file=$(suse_ifcfg_file_name "$bond")
++	local slave num=0
++	for slave in "${slaves[@]}" ; do
++		suse_wlist_find "$slave" "${nslaves[*]}" || \
++			suse_ifcfg_file_delete "$slave"
++	done
++
++	if [ X"${noptions[*]}" = X ] ; then
++		local opt primary="" noptions=""
++		for opt in "${options[@]}" ; do
++			case $opt in
++				primary=*) primary="${opt#*=}" ;;
++				*)         noptions+=("$opt")  ;;
++			esac
++		done
++		if [ X"${noptions[*]}" = X ] ; then
++			noptions=(mode=active-backup miimon=100 fail_over_mac=follow)
++		fi
++		if [ X"$primary" != X ] ; then
++			if suse_wlist_find "$primary" "${nslaves[*]}" ; then
++				noptions+=("primary=$primary")
++			elif [ X"${nslaves[0]}" != X ] ; then
++				noptions+=("primary=${nslaves[0]}")
++			fi
++		fi
++	fi
++
++	if suse_ifcfg_grep -v -e '^[ \t]*BONDING_[[:alnum:]_]+=' -- \
++		"$file" >> "$temp" 2>/dev/null ; then
++
++		echo "BONDING_MASTER='yes'"                 >> "$temp"
++		echo "BONDING_MODULE_OPTS='${noptions[*]}'" >> "$temp"
++		for slave in "${nslaves[@]}" ; do
++			((num++))
++			echo "BONDING_SLAVE_${num}='$slave'"
++		done >> "$temp" 2>/dev/null
++
++		mv -f -- "$temp" "$file" && return 0
++	fi
++	rm -f -- "$temp"
++	return 1
++}
++
++wicked_reload()
++{
++	if [ $# -eq 0 ] ; then
++		rcnetwork reload
++	elif systemctl_is_active wicked.service ; then
++		wicked ifreload -- "$@"
++	fi
++}
++
+-- 
+2.34.1
+

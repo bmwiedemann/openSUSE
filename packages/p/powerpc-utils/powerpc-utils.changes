@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 27 09:07:05 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Add HNV wicked support (bsc#1193543 jsc#SLE-18127).
+   + 0001-Validate-connection-manager.patch
+   + 0002-factor-out-NetworkManager-nmcli-code.patch
+   + 0003-Add-new-wicked-functions-from-suse-to-manage-bonding.patch
+   + 0004-Support-wicked-HNV-using-new-wicked-interfaces-for.patch
+   + 0005-Set-modprobe-bonding-max_bonds-0-option.patch
+   + 0006-cleanup-hcnmgr-distro-and-service-detection.patch
+   + 0007-Remove-wicked-ifup-calls-that-just-run-into-timeouts.patch
+   + 0008-add-note-about-comma-in-hcnmgr-BONDOPTIONS.patch
+   + 0009-Fix-to-call-wicked-ifreload-directly.patch
+   + 0010-Fix-incorrect-parameters-to-suse_ifcfg_bond_create.patch
+   + 0011-Fix-comment-about-setting-primary.patch
+   + 0012-Description-and-indenting-corrections.patch
+   + 0013-adjust-sourcing-path-of-the-functions.suse-library.patch
+   + 0014-Enable-the-network-service-checks.patch
+   + 0015-add-hcn-init.service.suse-service-covering-wicked.patch
+- Install SUSE-specific scripts
+
+-------------------------------------------------------------------
 Wed Jan 12 12:37:04 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - errinjct: sanitize devspec output of a newline if one is present (bsc#1194579 ltc#195746).

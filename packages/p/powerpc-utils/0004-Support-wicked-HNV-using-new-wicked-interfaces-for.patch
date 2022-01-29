@@ -1,0 +1,177 @@
+From ee5dc5c4aa9da2c1c1d975c2d03e6ea8e73cdbd3 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 13 Jan 2022 06:24:48 -0800
+Subject: [PATCH 04/15] Support wicked HNV using new wicked interfaces for 
+ bonding
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+---
+ scripts/hcnmgr | 88 +++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 83 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 14f6e43..0aa6ee8 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -42,6 +42,8 @@ VIO_TYPE=""
+ DISTRO=""
+ SERVICES=""
+ 
++source /usr/sbins/functions.suse
++
+ # Usage statements
+ usage() {
+ 	echo "$HCNMGR contains a set of commands to support migratable SR_IOV logical port."
+@@ -354,10 +356,53 @@ do_config_vdevice_nm() {
+ 	return $E_SUCCESS
+ }
+ 
++# function do_config_vdevice_wicked
++#	configure or create HCN (active-backup bonding)
++#	add device as bonding slave
++#
++#	On enter, the vdevice name, mode, hcnid and drcindex are set
++#
++do_config_vdevice_wicked() {
++	hcnlog DEBUG "do_config_vdevice: enter"
++
++	BONDNAME=bond$HCNID
++	BOND_PATH=$BOND_BASEPATH/$BONDNAME/bonding
++
++	hcnlog DEBUG "Check if there is bond $BONDNAME with hcn id $HCNID"
++
++	if ! suse_ifcfg_is_bond_master "$BONDNAME"; then
++		hcnlog INFO "create bonding for $BONDNAME with bond.options $BONDOPTIONS "
++		suse_ifcfg_bond_create "$BONDNAME" "$BONDING_MODULE_OPTS"
++        wicked ifup "$BONDNAME"
++	fi
++
++	# Add device to the bond
++	hcnlog INFO "suse_ifcfg_bond_add_slave $BONDNAME $DEVNAME"
++	if ! suse_ifcfg_bond_add_slave "$BONDNAME" "$DEVNAME"; then
++		hcnlog DEBUG "enslave $DEVNAME failed"
++		return $E_ENODEV
++	fi
++	hcnlog DEBUG "Bring up the $DEVNAME interface"
++
++
++	# if the device is primary, and link is up, force it as primary se
++	if [[ $MODE == "primary" ]]; then
++		hcnlog INFO "Change bonding primary slave to $DEVNAME"
++#		echo "$DEVNAME" >"$BOND_PATH"/active_slave
++		suse_ifcfg_bond_set_primary "$BONDNAME" "$DEVNAME"
++        wicked ifup "$BONDNAME"
++	fi
++	wicked_reload "$BONDNAME"
++	hcnlog DEBUG "do_config_vdevice: exit"
++	return $E_SUCCESS
++}
++s
+ do_config_vdevice() {
+ 	if [[ $SERVICES == "networt.service" ]]; then
+ 		do_config_vdevice_nm
+-	fi
++	else
++        do_config_vdevice_wicked
++    fi
+ }
+ #
+ # function cfghcn
+@@ -399,6 +444,12 @@ rmhcn_nm() {
+ 		nmcli con delete "$connection"
+ 	done
+ }
++
++rmhcn_wicked() {
++	hcnlog INFO "Delete bonding $BONDNAME"
++	suse_ifcfg_bond_delete "$BONDNAME"
++	wicked_reload "$BONDNAME"
++}
+ #
+ # function rmhcn
+ #	Given HCNID, remove HCN
+@@ -419,6 +470,8 @@ rmhcn() {
+ 	hcnlog INFO "rmhcn: delete bond $BONDNAME and slaves "
+ 	if [[ $SERVICES == "networt.service" ]]; then
+ 		rmhcn_nm
++	else
++		rmhcn_wicked
+ 	fi
+ 	hcnlog DEBUG "rmhcn: exit"
+ 	return $E_SUCCESS
+@@ -433,7 +486,15 @@ qrydev_nm() {
+ 		return $E_SUCCESS
+ 	fi
+ }
+-
++qrydev_wicked() {
++	if ! wicked ifstatus $DEVNAME |grep link |grep up; then
++		hcnlog DEBUG "network connection $BONDNAME-$DEVNAME is inactive or nonexist"
++		hcnlog DEBUG "HCNID $HCNID devname $DEVNAME mode $MODE physloc $PHYSLOC DEVPATH $DEVPATH"
++		hcnlog DEBUG "qryhcn: exit"
++		# In this case, tell HMC to do rmdev and okay to migrate
++		return $E_SUCCESS
++	fi
++}
+ #
+ #function qrydev
+ #	Called by HMC right before migration, to see if it is safe to
+@@ -463,6 +524,8 @@ qrydev() {
+ 	hcnlog DEBUG "check if the network interface for this SR_IOV is not up, return success"
+ 	if [[ $SERVICES == "networt.service" ]]; then
+ 		qrydev_nm
++	else
++		qrydev_wicked
+ 	fi
+ 
+ 	hcnlog DEBUG "check if there is bond for this $HCNID"
+@@ -499,7 +562,9 @@ show_hcnstatus() {
+ 	if [[ $SERVICES == "networt.service" ]]; then
+ 		nmcli connection show >>$LOG_FILE
+ 		nmcli device status >>$LOG_FILE
+-	fi
++	else
++        wicked ifstatus all >>$LOG_FILE
++    fi
+ 	ip addr show >>$LOG_FILE
+ }
+ 
+@@ -512,12 +577,23 @@ check_eth() {
+ 	nmcli -f DEVICE con show | grep -q "$1"
+ }
+ 
+-rmdev_nm {
++rmdev_nm() {
++	hcnlog DEBUG "rmdev_nm: enter"
+ 	if check_eth "$DEVNAME"; then
+ 		hcnlog INFO "rmdev: delete $BONDNAME-$DEVNAME connection"
+ 		nmcli con delete "$BONDNAME-$DEVNAME"
+ 	fi
+ }
++
++rmdev_wicked() {
++	hcnlog DEBUG "rmdev_wicked: enter"
++	suse_ifcfg_bond_del_slave "$BONDNAME" "$DEVNAME"
++    wicked ifup "$BONDNAME"
++    wicked_reload "$BONDNAME"
++	hcnlog DEBUG "rmdev_wicked: exit"
++	return $E_SUCCESS
++}
++
+ #
+ #function rmdev
+ #	this is called at pre-migration time, remove sr-iov from HCN
+@@ -538,7 +614,9 @@ rmdev() {
+ 
+ 	if [[ $SERVICES == "networt.service" ]]; then
+ 		rmdev_nm
+-	fi
++	else
++        rmdev_wicked
++    fi
+ 
+ 	hcnlog DEBUG "rmdev: exit"
+ 	return $E_SUCCESS
+-- 
+2.34.1
+

@@ -1,0 +1,284 @@
+From 6106b6bbedbe1a90054f8749abc036ce6d299e8e Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 24 Jan 2022 20:20:35 +0100
+Subject: [PATCH 06/15] cleanup hcnmgr distro and service detection
+
+---
+ scripts/hcnmgr | 153 ++++++++++++++++++++++++++++++-------------------
+ 1 file changed, 93 insertions(+), 60 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 6c56508..c3cbf7b 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -41,7 +41,7 @@ PHYSLOC=""
+ DEVPATH=""
+ VIO_TYPE=""
+ DISTRO=""
+-SERVICES=""
++SERVICE=""
+ 
+ source /usr/sbins/functions.suse
+ 
+@@ -88,7 +88,7 @@ E_BUSY=16         # Device busy
+ E_ENODEV=19       # Failed get device name
+ E_NOMODULE=5      # Failed to load bonding module
+ E_INVAL_DEV=6     # Vdevice not supported
+-E_ENETUNREACH=101 # No network management command nmcli
++E_ENETUNREACH=101 # No supported network service enabled or management command not found
+ 
+ #
+ # err
+@@ -98,6 +98,7 @@ E_ENETUNREACH=101 # No network management command nmcli
+ err() {
+ 	local e_mesg
+ 	local eno=$1
++	local msg=$2
+ 
+ 	case $eno in
+ 	"$E_INVAL")
+@@ -119,7 +120,7 @@ err() {
+ 		e_mesg="$HCNCMD:error code $eno, Failed to load bonding module"
+ 		;;
+ 	"$E_ENETUNREACH")
+-		e_mesg="$HCNCMD:error code $eno, nmcli command not installed"
++		e_mesg="$HCNCMD:error code $eno, ${msg:-No supported network service enabled or management command not found}"
+ 		;;
+ 	*)
+ 		e_mesg="$HCNCMD:error code $eno"
+@@ -397,13 +398,16 @@ do_config_vdevice_wicked() {
+ 	hcnlog DEBUG "do_config_vdevice: exit"
+ 	return $E_SUCCESS
+ }
+-s
++
+ do_config_vdevice() {
+-	if [[ $SERVICES == "networt.service" ]]; then
+-		do_config_vdevice_nm
+-	else
+-        do_config_vdevice_wicked
+-    fi
++	case $SERVICE in
++		NetworkManager.service)
++			do_config_vdevice_nm
++			;;
++		wicked.service)
++			do_config_vdevice_wicked
++			;;
++	esac
+ }
+ #
+ # function cfghcn
+@@ -451,6 +455,7 @@ rmhcn_wicked() {
+ 	suse_ifcfg_bond_delete "$BONDNAME"
+ 	wicked_reload "$BONDNAME"
+ }
++
+ #
+ # function rmhcn
+ #	Given HCNID, remove HCN
+@@ -469,11 +474,14 @@ rmhcn() {
+ 	fi
+ 
+ 	hcnlog INFO "rmhcn: delete bond $BONDNAME and slaves "
+-	if [[ $SERVICES == "networt.service" ]]; then
+-		rmhcn_nm
+-	else
+-		rmhcn_wicked
+-	fi
++	case $SERVICE in
++		NetworkManager.service)
++			rmhcn_nm
++			;;
++		wicked.service)
++			rmhcn_wicked
++			;;
++	esac
+ 	hcnlog DEBUG "rmhcn: exit"
+ 	return $E_SUCCESS
+ }
+@@ -523,11 +531,14 @@ qrydev() {
+ 	BOND_PATH=$BOND_BASEPATH/$BONDNAME/bonding
+ 
+ 	hcnlog DEBUG "check if the network interface for this SR_IOV is not up, return success"
+-	if [[ $SERVICES == "networt.service" ]]; then
+-		qrydev_nm
+-	else
+-		qrydev_wicked
+-	fi
++	case $SERVICE in
++		NetworkManager.service)
++			qrydev_nm
++			;;
++		wicked.service)
++			qrydev_wicked
++			;;
++	esac
+ 
+ 	hcnlog DEBUG "check if there is bond for this $HCNID"
+ 	if [ ! -d "$BOND_PATH" ]; then
+@@ -560,12 +571,17 @@ qrydev() {
+ #
+ show_hcnstatus() {
+ 	hcnlog DEBUG "log connection and device status to $LOG_FILE"
+-	if [[ $SERVICES == "networt.service" ]]; then
+-		nmcli connection show >>$LOG_FILE
+-		nmcli device status >>$LOG_FILE
+-	else
+-        wicked ifstatus all >>$LOG_FILE
+-    fi
++
++	case $SERVICE in
++		NetworkManager.service)
++			nmcli connection show >>$LOG_FILE
++			nmcli device status >>$LOG_FILE
++			;;
++		wicked.service)
++			wicked ifstatus all >>$LOG_FILE
++			;;
++	esac
++
+ 	ip addr show >>$LOG_FILE
+ }
+ 
+@@ -613,11 +629,14 @@ rmdev() {
+ 		hcnlog WARN "rmdev: mismatch drc index $1 HCNID $2"
+ 	fi
+ 
+-	if [[ $SERVICES == "networt.service" ]]; then
+-		rmdev_nm
+-	else
+-        rmdev_wicked
+-    fi
++	case $SERVICE in
++		NetworkManager.service)
++			rmdev_nm
++			;;
++		wicked.service)
++			rmdev_wicked
++			;;
++	esac
+ 
+ 	hcnlog DEBUG "rmdev: exit"
+ 	return $E_SUCCESS
+@@ -663,7 +682,7 @@ scanhcn_cleanup_old_hnv_nm() {
+ #	For each matching primary and backup virtual device with same ibm property
+ #	ibm,hcn-id, if the hybrid network has not been created, create HCN
+ #	(active-backup bonding) for them.
+-#s
++#
+ scanhcn() {
+ 	local HcnIds=()
+ 
+@@ -679,9 +698,11 @@ scanhcn() {
+ 			[ -d "$dev" ] || continue
+ 			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+ 				hcnlog DEBUG "scanhcn found sr-iov device with hcnid "
+-				if [[ $SERVICES == "networt.service" ]]; then
+-					scanhcn_cleanup_old_hnv_nm
+-				fi
++				case $SERVICE in
++					NetworkManager.service)
++						scanhcn_cleanup_old_hnv_nm
++						;;
++				esac
+ 				hcnlog INFO "scanhcn configure HCN and sr-iov device"
+ 				do_config_vdevice
+ 				# Save found HCN ids in array HcnIds
+@@ -726,10 +747,11 @@ scanhcn() {
+ 
+ 	# list of all HCN ids
+ 	ids="${HcnIds[*]}"
+-	if [[ $SERVICES == "networt.service" ]]; then
++	case $SERVICE in
++		NetworkManager.service)
+ 		# After inactive migration, LPAR may have old bonding connections
+ 		# with network device on original LPAR
+- 	   # clean up dead bonding connections
++		# clean up dead bonding connections
+ 		for connection in $(nmcli -f NAME con show | grep "${ids// /\\|}"); do
+ 			dev=$(echo "$connection" | cut -d '-' -f 2)
+ 			if [[ $dev != "NAME" && ! -e /sys/class/net/"$dev" ]]; then
+@@ -737,16 +759,17 @@ scanhcn() {
+ 				nmcli con delete "$connection"
+ 			fi
+ 		done
+-	fi
++		;;
++	esac
+ 
+ 	hcnlog DEBUG "scanhcn: scan for hybrid virtual network finished"
+ }
+-#function check_network_service
++
++# function check_network_service
+ #	Check what connection manager is used
+-#	network manager or wicked (on SuSE)
++#	On SUSE, it's wicked.sevice (SLES) or NetworkManager.service (SLED)
++#	with the network.service alias pointing to the enabled service.
+ #
+-
+-
+ check_network_service() {
+ 
+ 	DISTRO="Unknown"
+@@ -754,27 +777,37 @@ check_network_service() {
+ 		DISTRO=$(grep -oP '(?<=^ID=).+' /etc/os-release | tr -d '"')
+ 	fi
+ 
++	#Validate distro service CLI packages is installed to manage networking
++	case $DISTRO in
++		sles)
++			SERVICE=$(systemctl show -P Id network.service 2>/dev/null)
++			case $SERVICE in
++				wicked.service)
++					if ! wicked --version >/dev/null 2>&1; then
++						err $E_ENETUNREACH "wicked management command not installed"
++					fi
++					;;
++				NetworkManager.service)
++					if ! nmcli --version >/dev/null 2>&1; then
++						err $E_ENETUNREACH "nmcli management command not installed"
++					fi
++					;;
++				*)
++					err $E_ENETUNREACH "HNV is only supported on wicked and NetworkManager"
++					;;
++			esac
++			;;
++		*)
++			if ! nmcli --version >/dev/null 2>&1; then
++				err $E_ENETUNREACH "HNV is only supported on NetworkManager"
++			fi
+ 
+-	SERVICES=$(systemctl show -p Id network.service | cut -d '=' -f 2)
+-	hcnlog INFO " LPAR is running OS $DISTEO with network service $SERVICES"
+-
+-	case "$SERVICES" in
+-		*wicked.service)
+-				#validate wicked, wicked dd services
+-				#validate yast package
+-				hcnlog INFO "HNV is not supported with Wicked"
+-				;;
+-		*network.service)
+-				#Validate NMCLI packages is install to manage networking
+-				if ! nmcli --version >/dev/null 2>&1; then
+-					err $E_ENETUNREACH
+-				fi
+-				;;
+-		default)
+-				hcnlog INFO "HNV is only supported on NetworkManager"
+-				err $E_ENETUNREACH
+-				;;
++			# Assume it's NetworkManager.service -- at least the cli is available
++			SERVICE=NetworkManager.service
++			;;
+ 	esac
++
++	hcnlog INFO " LPAR is running OS $DISTRO with network service ${SERVICE%.service}"
+ }
+ 
+ #
+-- 
+2.34.1
+

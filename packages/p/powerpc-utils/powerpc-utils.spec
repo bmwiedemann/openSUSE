@@ -37,6 +37,21 @@ Patch10:        0004-ofpathname-Add-support-for-NVMf-devices.patch
 Patch11:        lparstat-Fix-reported-online-memory-in-legacy-format.patch
 Patch12:        errinjct-sanitize-devspec-output-of-a-newline-if-one.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
+Patch15:        0001-Validate-connection-manager.patch
+Patch16:        0002-factor-out-NetworkManager-nmcli-code.patch
+Patch17:        0003-Add-new-wicked-functions-from-suse-to-manage-bonding.patch
+Patch18:        0004-Support-wicked-HNV-using-new-wicked-interfaces-for.patch
+Patch19:        0005-Set-modprobe-bonding-max_bonds-0-option.patch
+Patch20:        0006-cleanup-hcnmgr-distro-and-service-detection.patch
+Patch21:        0007-Remove-wicked-ifup-calls-that-just-run-into-timeouts.patch
+Patch22:        0008-add-note-about-comma-in-hcnmgr-BONDOPTIONS.patch
+Patch23:        0009-Fix-to-call-wicked-ifreload-directly.patch
+Patch24:        0010-Fix-incorrect-parameters-to-suse_ifcfg_bond_create.patch
+Patch25:        0011-Fix-comment-about-setting-primary.patch
+Patch26:        0012-Description-and-indenting-corrections.patch
+Patch27:        0013-adjust-sourcing-path-of-the-functions.suse-library.patch
+Patch28:        0014-Enable-the-network-service-checks.patch
+Patch29:        0015-add-hcn-init.service.suse-service-covering-wicked.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
@@ -93,6 +108,10 @@ ln -sf drmgr %{buildroot}%{_sbindir}/drmig_chrp_pmig
 
 ln -s service %{buildroot}%{_sbindir}/rcsmt_off
 
+install -m 644 systemd/hcn-init.service.suse %{buildroot}%{_unitdir}/hcn-init.service
+mkdir -p %{buildroot}/usr/lib/powerpc-utils
+install -m 644 scripts/functions.suse  %{buildroot}/usr/lib/powerpc-utils/functions.suse
+
 # remove docu installed by make_install as we hand-install them in %%files
 rm -rf %{buildroot}%{_docdir}/%{name}/*
 
@@ -119,6 +138,8 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*
 %endif
 %dir %{_localstatedir}/lib/powerpc-utils
 %ghost %{_localstatedir}/lib/powerpc-utils/smt.state
+%dir /usr/lib/powerpc-utils
+/usr/lib/powerpc-utils/functions.suse
 %{_unitdir}/hcn-init.service
 %{_unitdir}/smt_off.service
 %{_unitdir}/smtstate.service

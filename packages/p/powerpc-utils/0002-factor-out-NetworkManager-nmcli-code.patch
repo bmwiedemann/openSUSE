@@ -1,0 +1,231 @@
+From 2a46892673bc081da3a8de57a8ff0466d6ec2c25 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 13 Jan 2022 06:20:28 -0800
+Subject: [PATCH 02/15] factor out NetworkManager nmcli code
+
+Signed-off-by:	Mingming Cao <mmc@linux.vnet.ibm.com>
+---
+ scripts/hcnmgr | 131 +++++++++++++++++++++++++++++++------------------
+ 1 file changed, 82 insertions(+), 49 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index f9940bb..14f6e43 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -277,13 +277,13 @@ get_dev_hcn() {
+ }
+ 
+ #
+-# function do_config_vdevice
++# function do_config_vdevice_nm
+ #	configure or create HCN (active-backup bonding)
+ #	add device as bonding slave
+ #
+ #	On enter, the vdevice name, mode, hcnid and drcindex are set
+-#
+-do_config_vdevice() {
++#	Based on Network Manager nmcli
++do_config_vdevice_nm() {
+ 	hcnlog DEBUG "do_config_vdevice: enter"
+ 
+ 	BONDNAME=bond$HCNID
+@@ -354,6 +354,11 @@ do_config_vdevice() {
+ 	return $E_SUCCESS
+ }
+ 
++do_config_vdevice() {
++	if [[ $SERVICES == "networt.service" ]]; then
++		do_config_vdevice_nm
++	fi
++}
+ #
+ # function cfghcn
+ #	Given device DRC_INDEX, configure or create HCN (active-backup bonding)
+@@ -387,6 +392,13 @@ cfghcn() {
+ 
+ 	return $E_SUCCESS
+ }
++
++rmhcn_nm() {
++	for connection in $(nmcli -f NAME con show | grep "$BONDNAME"); do
++		hcnlog INFO "Delete bonding connection $connection"
++		nmcli con delete "$connection"
++	done
++}
+ #
+ # function rmhcn
+ #	Given HCNID, remove HCN
+@@ -405,14 +417,23 @@ rmhcn() {
+ 	fi
+ 
+ 	hcnlog INFO "rmhcn: delete bond $BONDNAME and slaves "
+-	for connection in $(nmcli -f NAME con show | grep "$BONDNAME"); do
+-		hcnlog INFO "Delete bonding connection $connection"
+-		nmcli con delete "$connection"
+-	done
++	if [[ $SERVICES == "networt.service" ]]; then
++		rmhcn_nm
++	fi
+ 	hcnlog DEBUG "rmhcn: exit"
+ 	return $E_SUCCESS
+ }
+ 
++qrydev_nm() {
++	if ! nmcli -f DEVICE con show --active | grep -q "$DEVNAME"; then
++		hcnlog DEBUG "network connection $BONDNAME-$DEVNAME is inactive or nonexist"
++		hcnlog DEBUG "HCNID $HCNID devname $DEVNAME mode $MODE physloc $PHYSLOC DEVPATH $DEVPATH"
++		hcnlog DEBUG "qryhcn: exit"
++		# In this case, tell HMC to do rmdev and okay to migrate
++		return $E_SUCCESS
++	fi
++}
++
+ #
+ #function qrydev
+ #	Called by HMC right before migration, to see if it is safe to
+@@ -440,12 +461,8 @@ qrydev() {
+ 	BOND_PATH=$BOND_BASEPATH/$BONDNAME/bonding
+ 
+ 	hcnlog DEBUG "check if the network interface for this SR_IOV is not up, return success"
+-	if ! nmcli -f DEVICE con show --active | grep -q "$DEVNAME"; then
+-		hcnlog DEBUG "network connection $BONDNAME-$DEVNAME is inactive or nonexist"
+-		hcnlog DEBUG "HCNID $HCNID devname $DEVNAME mode $MODE physloc $PHYSLOC DEVPATH $DEVPATH"
+-		hcnlog DEBUG "qryhcn: exit"
+-		# In this case, tell HMC to do rmdev and okay to migrate
+-		return $E_SUCCESS
++	if [[ $SERVICES == "networt.service" ]]; then
++		qrydev_nm
+ 	fi
+ 
+ 	hcnlog DEBUG "check if there is bond for this $HCNID"
+@@ -479,8 +496,10 @@ qrydev() {
+ #
+ show_hcnstatus() {
+ 	hcnlog DEBUG "log connection and device status to $LOG_FILE"
+-	nmcli connection show >>$LOG_FILE
+-	nmcli device status >>$LOG_FILE
++	if [[ $SERVICES == "networt.service" ]]; then
++		nmcli connection show >>$LOG_FILE
++		nmcli device status >>$LOG_FILE
++	fi
+ 	ip addr show >>$LOG_FILE
+ }
+ 
+@@ -493,6 +512,12 @@ check_eth() {
+ 	nmcli -f DEVICE con show | grep -q "$1"
+ }
+ 
++rmdev_nm {
++	if check_eth "$DEVNAME"; then
++		hcnlog INFO "rmdev: delete $BONDNAME-$DEVNAME connection"
++		nmcli con delete "$BONDNAME-$DEVNAME"
++	fi
++}
+ #
+ #function rmdev
+ #	this is called at pre-migration time, remove sr-iov from HCN
+@@ -510,14 +535,38 @@ rmdev() {
+ 	if [[ $HCNID != "$2" ]]; then
+ 		hcnlog WARN "rmdev: mismatch drc index $1 HCNID $2"
+ 	fi
+-	if check_eth "$DEVNAME"; then
+-		hcnlog INFO "rmdev: delete $BONDNAME-$DEVNAME connection"
+-		nmcli con delete "$BONDNAME-$DEVNAME"
++
++	if [[ $SERVICES == "networt.service" ]]; then
++		rmdev_nm
+ 	fi
++
+ 	hcnlog DEBUG "rmdev: exit"
+ 	return $E_SUCCESS
+ }
+ 
++scanhcn_cleanup_old_hnv_nm() {
++	# After online from inactive migration, destination
++	# LPAR may have same mvf devname but associated with different
++	# bonding than from source LPAR
++	# clean up expired bonding SR_IOV connections
++
++
++	for cfg in $(ls $IFCONFIG_PATH | grep "$DEVNAME" | grep "bond"); do
++		hid=$(echo "$cfg" | sed -e 's/ifcfg-//' | cut -d '-' -f 1 | sed -e 's/bond//')
++		if [ -e "$IFCONFIG_PATH/ifcfg-$DEVNAME" ]; then
++			rm "$IFCONFIG_PATH/ifcfg-$DEVNAME"
++		fi
++		if [[ $hid != "" && $hid != "$HCNID" ]] ; then
++			hcnlog INFO "Delete dead bonding slave ifcfg file $IFCONFIG_PATH/$cfg"
++			rm $IFCONFIG_PATH/"$cfg"
++
++			if nmcli -f NAME con show | grep -q "bond$hid-$DEVNAME\s"; then
++				hcnlog INFO "Delete dead bonding connection $connection"
++				nmcli con delete "bond$hid-$DEVNAME"
++			fi
++		fi
++	done
++}
+ #
+ # function scanhcn
+ #	HMC supports adding migratable sr-iov when LPAR is inactive. This allows LPAR
+@@ -551,27 +600,9 @@ scanhcn() {
+ 			[ -d "$dev" ] || continue
+ 			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+ 				hcnlog DEBUG "scanhcn found sr-iov device with hcnid "
+-
+-				# After online from inactive migration, destination
+-				# LPAR may have same mvf devname but associated with different
+-				# bonding than from source LPAR
+-				# clean up expired bonding SR_IOV connections
+-
+-				for cfg in $(ls $IFCONFIG_PATH | grep "$DEVNAME" | grep "bond"); do
+-					hid=$(echo "$cfg" | sed -e 's/ifcfg-//' | cut -d '-' -f 1 | sed -e 's/bond//')
+-					if [ -e "$IFCONFIG_PATH/ifcfg-$DEVNAME" ]; then
+-						rm "$IFCONFIG_PATH/ifcfg-$DEVNAME"
+-					fi
+-					if [[ $hid != "" && $hid != "$HCNID" ]] ; then
+-						hcnlog INFO "Delete dead bonding slave ifcfg file $IFCONFIG_PATH/$cfg"
+-						rm $IFCONFIG_PATH/"$cfg"
+-						if nmcli -f NAME con show | grep -q "bond$hid-$DEVNAME\s"; then
+-							hcnlog INFO "Delete dead bonding connection $connection"
+-							nmcli con delete "bond$hid-$DEVNAME"
+-						fi
+-					fi
+-				done
+-
++				if [[ $SERVICES == "networt.service" ]]; then
++					scanhcn_cleanup_old_hnv_nm
++				fi
+ 				hcnlog INFO "scanhcn configure HCN and sr-iov device"
+ 				do_config_vdevice
+ 				# Save found HCN ids in array HcnIds
+@@ -616,16 +647,18 @@ scanhcn() {
+ 
+ 	# list of all HCN ids
+ 	ids="${HcnIds[*]}"
+-	# After inactive migration, LPAR may have old bonding connections
+-	# with network device on original LPAR
+-    # clean up dead bonding connections
+-	for connection in $(nmcli -f NAME con show | grep "${ids// /\\|}"); do
+-		dev=$(echo "$connection" | cut -d '-' -f 2)
+-		if [[ $dev != "NAME" && ! -e /sys/class/net/"$dev" ]]; then
+-			hcnlog INFO "Delete dead bonding connection $connection"
+-			nmcli con delete "$connection"
+-		fi
+-	done
++	if [[ $SERVICES == "networt.service" ]]; then
++		# After inactive migration, LPAR may have old bonding connections
++		# with network device on original LPAR
++ 	   # clean up dead bonding connections
++		for connection in $(nmcli -f NAME con show | grep "${ids// /\\|}"); do
++			dev=$(echo "$connection" | cut -d '-' -f 2)
++			if [[ $dev != "NAME" && ! -e /sys/class/net/"$dev" ]]; then
++				hcnlog INFO "Delete dead bonding connection $connection"
++				nmcli con delete "$connection"
++			fi
++		done
++	fi
+ 
+ 	hcnlog DEBUG "scanhcn: scan for hybrid virtual network finished"
+ }
+-- 
+2.34.1
+

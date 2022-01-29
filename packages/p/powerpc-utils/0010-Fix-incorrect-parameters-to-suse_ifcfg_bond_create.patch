@@ -1,0 +1,25 @@
+From 59b9469dc1496f376dcf659c93db10d38e3fcff9 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 26 Jan 2022 18:30:12 +0100
+Subject: [PATCH 10/15] Fix incorrect parameters to suse_ifcfg_bond_create
+
+---
+ scripts/hcnmgr | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 9b94be9..475092e 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -377,7 +377,7 @@ do_config_vdevice_wicked() {
+ 		# Note: wicked needs spaces in BONDING_MODULE_OPTS as comma is
+ 		#       used/reserved to separate multiple arp_ip_targets, thus
+ 		#	this could result in invalid options...:
+-		suse_ifcfg_bond_create "$BONDNAME" "${BONDOPTIONS//,/ }"
++		suse_ifcfg_bond_create "$BONDNAME" "" "${BONDOPTIONS//,/ }"
+ 	fi
+ 
+ 	# Add device to the bond
+-- 
+2.34.1
+

@@ -1,0 +1,75 @@
+From a533e59f09b05c1cb1876b82a6f0498941562864 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 26 Jan 2022 18:40:08 +0100
+Subject: [PATCH 12/15] Description and indenting corrections
+
+---
+ scripts/functions.suse | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/scripts/functions.suse b/scripts/functions.suse
+index c70323a..57a95db 100644
+--- a/scripts/functions.suse
++++ b/scripts/functions.suse
+@@ -1,7 +1,7 @@
+ #! /bin/bash
+ #  ^^^^^^^^^
+ #
+-# Copyright (c) 2021 SUSE LLC
++# Copyright (c) 2022 SUSE LLC
+ #
+ # This program is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License
+@@ -19,28 +19,29 @@
+ # Authors:
+ #	Marius Tomaschewski <mt@suse.com>
+ #
+-# suse specific hcnmgr utilities to manipulate suse ifcfg files
+-# as supported by yast2 network.
++# Bash function library for hcnmgr providing utilities to manipulate
++# suse ifcfg config files as supported by yast2 network and wicked.
+ #
++###
+ 
+ suse_ifcfg_config_dir="/etc/sysconfig/network"
+ 
+ suse_wlist_find()
+ {
+-        local item want="$1" ; shift
+-        for item in $* ; do
+-                [ X"$want" = X"$item" ] && return 0
+-        done
+-        return 1
++	local item want="$1" ; shift
++	for item in $* ; do
++		[ X"$want" = X"$item" ] && return 0
++	done
++	return 1
+ }
+ suse_wlist_uniq()
+ {
+ 	local item list=()
+-        for item in $* ; do
+-                suse_wlist_find "$item" "$list" && continue
++	for item in $* ; do
++		suse_wlist_find "$item" "$list" && continue
+ 		list+=("$item")
+-        done
+-        echo "${list[*]}"
++	done
++	echo "${list[*]}"
+ }
+ suse_ifcfg_unquote()
+ {
+@@ -326,7 +327,7 @@ suse_ifcfg_bond_delete()
+ 	[ X"$file" != X ] && rm -f -- "$file"
+ 
+ 	# TODO: cleanup interfaces on top of the bond
+-	# 		_if_ the hnv setup permit to use them
++	#       _if_ the hnv setup permit to use them
+ 	# e.g.: brX { bondX }, brN { bondX.N }
+ }
+ 
+-- 
+2.34.1
+

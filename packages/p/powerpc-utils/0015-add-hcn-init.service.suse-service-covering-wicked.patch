@@ -1,0 +1,51 @@
+From a831053d868f806a61ee06b88a3ee917a42586b4 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Wed, 26 Jan 2022 22:10:36 +0100
+Subject: [PATCH 15/15] add hcn-init.service.suse service covering wicked
+
+While hcnmgr -s needs to communicate with NetworkManager and
+thus the hcn-init.service has to start after it, in wicked
+case, we can prepare the actually needed configuration and
+let wicked.service starting after apply it.
+This avoids to try to setup a potentially obsolete bonding
+first (and maybe even run into timeouts) and then modify it
+to the current hcn state in device-tree.
+---
+ configure.ac                     |  2 +-
+ systemd/hcn-init.service.suse.in | 13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+ create mode 100644 systemd/hcn-init.service.suse.in
+
+diff --git a/configure.ac b/configure.ac
+index 79d6cf7..fd275be 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -117,5 +117,5 @@ LOCAL_CHECK_FLAGS
+ 
+ AC_CONFIG_FILES([Makefile powerpc-utils.spec systemd/smt_off.service])
+ AC_CONFIG_FILES([systemd/smtstate.service scripts/smtstate])
+-AC_CONFIG_FILES([systemd/hcn-init.service])
++AC_CONFIG_FILES([systemd/hcn-init.service systemd/hcn-init.service.suse])
+ AC_OUTPUT
+diff --git a/systemd/hcn-init.service.suse.in b/systemd/hcn-init.service.suse.in
+new file mode 100644
+index 0000000..f841755
+--- /dev/null
++++ b/systemd/hcn-init.service.suse.in
+@@ -0,0 +1,13 @@
++[Unit]
++Description=hybrid virtual network scan and config
++After=network-pre.target NetworkManager.service
++Before=wicked.service
++Requisite=network.service
++PartOf=network.service
++
++[Service]
++Type=oneshot
++ExecStart=@sbindir@/hcnmgr -s
++
++[Install]
++WantedBy=multi-user.target network.target
+-- 
+2.34.1
+

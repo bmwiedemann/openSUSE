@@ -1,0 +1,28 @@
+From ea4f6a210d8ef27dbfa02e7706f404e638e20e46 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 24 Jan 2022 20:43:42 +0100
+Subject: [PATCH 08/15] add note about comma in hcnmgr BONDOPTIONS
+
+---
+ scripts/hcnmgr | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index ffcd4d6..03b65c5 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -374,7 +374,10 @@ do_config_vdevice_wicked() {
+ 
+ 	if ! suse_ifcfg_is_bond_master "$BONDNAME"; then
+ 		hcnlog INFO "create bonding for $BONDNAME with bond.options $BONDOPTIONS "
+-		suse_ifcfg_bond_create "$BONDNAME" "$BONDING_MODULE_OPTS"
++		# Note: wicked needs spaces in BONDING_MODULE_OPTS as comma is
++		#       used/reserved to separate multiple arp_ip_targets, thus
++		#	this could result in invalid options...:
++		suse_ifcfg_bond_create "$BONDNAME" "${BONDOPTIONS//,/ }"
+ 	fi
+ 
+ 	# Add device to the bond
+-- 
+2.34.1
+
