@@ -1,7 +1,7 @@
 #
 # spec file for package pdns
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 Name:           pdns
-Version:        4.5.2
+Version:        4.6.0
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
@@ -312,7 +312,6 @@ This package holds the LMDB backend for pdns.
   lua2     \
 %endif
   pipe     \
-  random   \
   remote   \
 %if %{with pdns_tinydns}
   tinydns  \
@@ -415,7 +414,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libpipebackend.so*
 %{_libdir}/%{name}/libbindbackend.so*
-%{_libdir}/%{name}/librandombackend.so*
 %if %{with pdns_ixfrdist}
 %config(noreplace) %attr(640,root,pdns) %{_sysconfdir}/%{name}/ixfrdist.yml
 %{_unitdir}/ixfrdist.service

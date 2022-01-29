@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan 25 12:01:18 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Removed random from --with-dynmodules= because randombackend was removed
+- Update to 4.6.0
+  * New Features
+    - support for incoming PROXY headers
+    - support for EDNS cookies
+    - autoprimary management via pdnsutil and the API
+  * Improvements
+    - add zone removal to the zone cache (Kees Monshouwer)
+    - docker images: Remove capability requirements
+  * Bug Fixes
+    - pdnsutil edit-zone: fix n and e behaviour on increase-serial prompt
+    - lmdb: check if the lookup name is part of the zone (Kees Monshouwer)
+    - lmdb: fix records removal in deleteDomain(); improve tcp exception handling
+
+-------------------------------------------------------------------
+Fri Jan 21 12:32:10 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.5.3
+  * Improvements
+    - 2136: improve some log messages
+  * Bug Fixes
+    - lmdb, check if the lookup name is part of the zone
+    - pdnsutil edit-zone: fix n and e behaviour on increase-serial prompt
+    - improve tcp exception handling
+    - lmdb: fix records removal in deleteDomain()
+    - 2136: apply new TTL to whole RRset, not only to the added record
+
+-------------------------------------------------------------------
 Wed Nov 10 10:04:17 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.5.2 with bug fixes:
