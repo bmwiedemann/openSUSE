@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          91
-%define mainver        %major.5.0
-%define orig_version   91.5.0
+%define mainver        %major.5.1
+%define orig_version   91.5.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -357,6 +357,9 @@ export CC=gcc-9
 %if 0%{?clang_build} == 0
 export CC=gcc
 export CXX=g++
+%if 0%{?gcc_version:%{gcc_version}} >= 12
+export CFLAGS="$CFLAGS -fimplicit-constexpr"
+%endif
 %endif
 %endif
 %ifarch %arm %ix86

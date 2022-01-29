@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 22 09:57:59 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Mozilla Thunderbird 91.5.1
+  * JS LDAP implementation did not support self-signed SSL certificates
+  * After saving a draft and subsequently sending a FileLink email,
+    the original file was removed from disk
+  * Chat OTR encryption did not work
+  * OTR verification bar was not removed after completing verification
+  * Various theme improvements
+
+-------------------------------------------------------------------
+Thu Jan 20 13:10:00 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Enable -fimplicit-constexpr for GCC 12+.
+
+-------------------------------------------------------------------
 Fri Jan  7 16:13:57 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.5.0

@@ -4014,4 +4014,20 @@ I cannot test locally unfortunately.
   * CVE-2022-22739 (bmo#1744158)</comment>
     <requestid>945701</requestid>
   </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>2af08f2dad48ff71ffda3b41793496ff</srcmd5>
+    <version>91.5.1</version>
+    <time>1643486461</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.5.1
+  * JS LDAP implementation did not support self-signed SSL certificates
+  * After saving a draft and subsequently sending a FileLink email,
+    the original file was removed from disk
+  * Chat OTR encryption did not work
+  * OTR verification bar was not removed after completing verification
+  * Various theme improvements
+
+- Enable -fimplicit-constexpr for GCC 12+.</comment>
+    <requestid>949349</requestid>
+  </revision>
 </revisionlist>
