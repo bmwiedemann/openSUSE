@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth
-Version:        2.0.1
+Version:        2.5.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -33,16 +33,17 @@ BuildRequires:  %{python_module rsa >= 3.1.4}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module six >= 1.9.0}
 # START TESTING SECTION
+BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauth2client-gce}
 BuildRequires:  %{python_module oauth2client}
-BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pyOpenSSL >= 20.0.0}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyu2f}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module pyu2f >= 0.1.5}
+BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module urllib3}
 # END TESTING SECTION
@@ -53,6 +54,10 @@ Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-rsa >= 3.1.4
 Requires:       python-setuptools >= 40.3.0
 Requires:       python-six >= 1.9.0
+Recommends:     python-aiohttp >= 3.6.2
+Recommends:     python-pyOpenSSL >= 20.0.0
+Recommends:     python-pyu2f >= 0.1.5
+Recommends:     python-requests >= 2.20.0
 BuildArch:      noarch
 %python_subpackages
 

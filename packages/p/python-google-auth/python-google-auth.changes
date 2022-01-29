@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jan 27 06:49:59 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.5.0
+  * ADC can load an impersonated service account credentials. (#965)
+- from version 2.4.1
+  * fix urrlib3 import (gh#googleapis/google-auth-library-python#953)
+- from version 2.4.0
+  * add 'py.typed' declaration (#919)
+  * add api key support (#826)
+  * deps: allow cachetools 5.0 for python 3.7+
+    (gh#googleapis/google-auth-library-python#937)
+  * fix the message format for metadata server exception
+    (gh#googleapis/google-auth-library-python#916)
+- from version 2.3.3
+  * add fetch_id_token_credentials (gh#googleapis/google-auth-library-python#866)
+  * fix error in sign_bytes (gh#googleapis/google-auth-library-python#905)
+  * use 'int.to_bytes' and 'int.from_bytes' for py3
+    (gh#googleapis/google-auth-library-python#904)
+- from version 2.3.2
+  * add clock_skew_in_seconds to verify_token functions
+    (gh#googleapis/google-auth-library-python#894)
+- from version 2.3.1
+  * add back python 2.7 for gcloud usage only
+    (gh#googleapis/google-auth-library-python#892)
+- from version 2.3.0
+  * add support for Python 3.10 (#882)
+  * ADC with impersonated workforce pools
+    (gh#googleapis/google-auth-library-python#877)
+- from version 2.2.1
+  * disable self signed jwt for domain wide delegation
+    (gh#googleapis/google-auth-library-python#873)
+- from version 2.2.0
+  * add support for workforce pool credentials (#868)
+- from version 2.1.0
+  * Improve handling of clock skew (#858)
+  * add SAML challenge to reauth
+    (gh#googleapis/google-auth-library-python#819)
+  * disable warning if quota project id provided to auth.default()
+    (gh#googleapis/google-auth-library-python#856)
+  * rename CLOCK_SKEW and separate client/server user case
+    (gh#googleapis/google-auth-library-python#863)
+- from version 2.0.2
+  * use 'int.to_bytes' rather than deprecated crypto wrapper
+    (gh#googleapis/google-auth-library-python#848)
+  * use int.from_bytes (gh#googleapis/google-auth-library-python#846)
+
+-------------------------------------------------------------------
 Fri Aug 20 09:17:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.0.1
