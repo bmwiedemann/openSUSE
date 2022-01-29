@@ -232,4 +232,15 @@
     <comment></comment>
     <requestid>923472</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>625adcc3d1d2230cbf2b7d4e7e779d27</srcmd5>
+    <version>0.36.2</version>
+    <time>1643486254</time>
+    <user>dimstar_suse</user>
+    <comment>- When we limit setuptools in Requires, we should certainly do it
+  in BuildRequires as well.
+
+- Codify version requirement on setuptools for building.</comment>
+    <requestid>949686</requestid>
+  </revision>
 </revisionlist>

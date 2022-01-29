@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 28 12:55:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- When we limit setuptools in Requires, we should certainly do it
+  in BuildRequires as well.
+
+-------------------------------------------------------------------
+Mon Jan 24 18:08:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Codify version requirement on setuptools for building.
+
+-------------------------------------------------------------------
 Tue Oct  5 16:06:03 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts
