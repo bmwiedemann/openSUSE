@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-web
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Microsoft Azure Web Apps Management Client Library
 License:        MIT
