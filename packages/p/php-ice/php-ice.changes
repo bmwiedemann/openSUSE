@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 28 11:13:17 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update BuildRequires (php8-ice requires php8 < 8.1)
+
+-------------------------------------------------------------------
 Fri Mar 26 08:12:08 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Ice 1.8.0 (php8 only)
