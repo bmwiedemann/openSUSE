@@ -393,12 +393,6 @@ LDFLAGS=
 %ifarch ia64
  CFLAGS=$(echo "${CFLAGS}"|sed -r 's/-O[0-9]?/-O1/g')
 %endif
-  SMALL="-DSYSTEM_PURESIZE_EXTRA=25000 \
-	 -DSITELOAD_PURESIZE_EXTRA=10000 \
-"
-  LARGE="-DSYSTEM_PURESIZE_EXTRA=55000 \
-	 -DSITELOAD_PURESIZE_EXTRA=10000 \
-"
    LANG=POSIX; LC_CTYPE=en_US.UTF-8
 export CC CFLAGS LANG LC_CTYPE LDFLAGS
  PREFIX="--prefix=%{_prefix} \
@@ -488,7 +482,7 @@ fi
 ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
-CFLAGS="$CFLAGS $SMALL -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
 %make_build bootstrap
 make -C lisp/ updates compile V=1
 for i in $(find site-lisp/ -name '*.el'); do
@@ -498,13 +492,13 @@ cp src/emacs emacs-nox
 cp src/emacs.pdmp emacs-nox.pdmp
 make distclean
 #
-CFLAGS="$CFLAGS $LARGE -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
 %make_build
 cp src/emacs emacs-gtk
 cp src/emacs.pdmp emacs-gtk.pdmp
 make distclean
 #
-CFLAGS="$CFLAGS $LARGE -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
 %make_build
 cp src/emacs emacs-x11
 cp src/emacs.pdmp emacs-x11.pdmp
