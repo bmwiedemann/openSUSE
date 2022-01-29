@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 21 21:03:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.13:
+  * icalcomponent_get_dtend() return icaltime_null_time(), unless called on
+    VEVENT, VAVAILABILITY or VFREEBUSY
+  * icalcomponent_get_duration() for VTODO calculate with DUE instead of DTEND
+  * Replace CMake FindBDB with FindBerleyDB
+  * Fix finding ICU and BerkeleyDB on Mac
+
+-------------------------------------------------------------------
 Sat Dec 11 09:22:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.12:
