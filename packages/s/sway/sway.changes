@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan 25 04:10:31 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.7:
+  New features:
+  * Add `output render_bit_depth` command to enable high-bit depth composition.
+  * Tabs can now be dragged with the mouse.
+  * Zero-copy direct scanout for fullscreen windows should work more reliably
+    thanks to linux-dmabuf surface feedback.
+  * Add support for virtual reality headsets via DRM leasing.
+  * Wayland-native urgency has been implemented via
+    the xdg-activation-v1 extension.
+  * Add `output dpms toggle` command to easily toggle screen blanking
+    from scripts.
+  * Add `gaps <type> <scope> toggle <px>`, `smart_gaps inverse_outer` and
+    `split none` commands.
+  * Add `output modeline` command to set a full custom DRM mode when
+    custom modes don't work out-of-the-box.
+  * Add `client.focused_tab_title` color option.
+  Changes:
+  * `--my-next-gpu-wont-be-nvidia` has been removed, use `--unsupported-gpu`
+    instead. The Nvidia proprietary driver remains unsupported.
+  * The terminal emulator in the default config file has been changed to `foot`.
+  * `swaybar` and `swaynag` are now provided by separate, optional packages.
+    Make sure to install them explicitly if you use them.
+  * Titlebars now have a fixed height, they no longer resize depending on
+    characters used in the title.
+  Patches:
+  * Remove sway-1.0-include.patch since it is no longer necessary.
+
+-------------------------------------------------------------------
 Wed Dec  8 14:55:18 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add missing runtime requires for grimshot and the python tools in
