@@ -30989,7 +30989,6 @@ unsorted:
   - qdox-javadoc 
   - qelectrotech 
   - qemacs 
-  - qemu-arm 
   - qemu-audio-alsa 
   - qemu-audio-jack 
   - qemu-audio-oss 
@@ -31001,7 +31000,6 @@ unsorted:
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
   - qemu-uefi-aarch32: [x86_64] 
-  - qemu-uefi-aarch64: [x86_64] 
   - qgis 
   - qgis-devel 
   - qgis-plugin-grass 
