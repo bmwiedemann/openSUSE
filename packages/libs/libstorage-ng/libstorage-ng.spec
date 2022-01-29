@@ -18,12 +18,12 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.4.77
+Version:        4.4.78
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
 Group:          System/Libraries
-Url:            http://github.com/openSUSE/libstorage-ng
+Url:            https://github.com/openSUSE/libstorage-ng
 Source:         %{name}-%{version}.tar.xz
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_headers-devel
@@ -38,8 +38,10 @@ BuildRequires:  graphviz
 BuildRequires:  grep
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  ruby
 BuildRequires:  ruby-devel
+BuildRequires:  pkgconfig(python3)
 %if 0%{?suse_version} == 1315
 # Using rubygem(test-unit) does not work since ruby2.1-stdlib claims to
 # provide rubygem(test-unit). But that is plain wrong. The version in
@@ -57,11 +59,9 @@ BuildRequires:  glibc-langpack-en
 BuildRequires:  glibc-langpack-fr
 BuildRequires:  json-c-devel
 %else
+BuildRequires:  glibc-locale
 BuildRequires:  libjson-c-devel
 %endif
-BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(python3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains libstorage-ng, a library for storage management.
@@ -183,14 +183,11 @@ touch %{buildroot}/run/libstorage-ng/lock
 %find_lang libstorage-ng
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{name}-lang -f libstorage-ng.lang
-%defattr(-,root,root)
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/AUTHORS
 %license %{_docdir}/%{name}/LICENSE
@@ -198,14 +195,12 @@ touch %{buildroot}/run/libstorage-ng/lock
 %ghost /run/libstorage-ng
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libstorage-ng.so
 %{_includedir}/storage
 %dir %{_docdir}/%{name}/autodocs
 %doc %{_docdir}/%{name}/autodocs/*
 
 %files python3
-%defattr(-,root,root)
 %{python3_sitelib}/storage.py*
 %attr(755,root,root) %{python3_sitearch}/_storage.so
 # Fedora has brp-python-bytecompile so apparently they want those packaged
@@ -214,7 +209,6 @@ touch %{buildroot}/run/libstorage-ng/lock
 %endif
 
 %files ruby
-%defattr(-,root,root)
 %if 0%{?fedora}
 %{ruby_vendorarchdir}/storage.so
 %else
@@ -222,12 +216,10 @@ touch %{buildroot}/run/libstorage-ng/lock
 %endif
 
 %files utils
-%defattr(-,root,root)
 %dir %{_prefix}/lib/libstorage-ng
 %{_prefix}/lib/libstorage-ng/utils
 
 %files integration-tests
-%defattr(-,root,root)
 %{python3_sitelib}/storageitu.py*
 %dir %{_prefix}/lib/libstorage-ng
 %{_prefix}/lib/libstorage-ng/integration-tests

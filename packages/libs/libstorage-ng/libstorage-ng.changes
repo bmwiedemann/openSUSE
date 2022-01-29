@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Jan 28 07:56:57 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#858
+- Add glibc-locale buildrequires for testsuite on SUSE distros
+- 4.4.78
+
+--------------------------------------------------------------------
 Wed Jan 26 12:35:49 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
