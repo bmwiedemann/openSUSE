@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gem2rpm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@
 %bcond_with     ruby26
 %bcond_with     ruby27
 %bcond_with     ruby30
+%bcond_with     ruby31
 %bcond_with     rubinius25
 
 Name:           rubygem-gem2rpm
@@ -91,7 +92,7 @@ Summary:        Generate rpm specfiles from gems
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -149,7 +150,7 @@ done
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.1-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -163,7 +164,6 @@ Requires:       ruby2.1-rubygem-gem2rpm = %{version}
 %description -n ruby2.1-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.1-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -208,7 +208,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby1.8-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -222,7 +222,6 @@ Requires:       ruby1.8-rubygem-gem2rpm = %{version}
 %description -n ruby1.8-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby1.8-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -267,7 +266,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby1.9-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -281,7 +280,6 @@ Requires:       ruby1.9-rubygem-gem2rpm = %{version}
 %description -n ruby1.9-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby1.9-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -326,7 +324,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.0-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -340,7 +338,6 @@ Requires:       ruby2.0-rubygem-gem2rpm = %{version}
 %description -n ruby2.0-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.0-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -385,7 +382,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.2-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -399,7 +396,6 @@ Requires:       ruby2.2-rubygem-gem2rpm = %{version}
 %description -n ruby2.2-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.2-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -444,7 +440,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.3-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -458,7 +454,6 @@ Requires:       ruby2.3-rubygem-gem2rpm = %{version}
 %description -n ruby2.3-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.3-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -503,7 +498,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.4-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -517,7 +512,6 @@ Requires:       ruby2.4-rubygem-gem2rpm = %{version}
 %description -n ruby2.4-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.4-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -562,7 +556,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.5-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -576,7 +570,6 @@ Requires:       ruby2.5-rubygem-gem2rpm = %{version}
 %description -n ruby2.5-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.5-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -621,7 +614,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.6-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -635,7 +628,6 @@ Requires:       ruby2.6-rubygem-gem2rpm = %{version}
 %description -n ruby2.6-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.6-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -680,7 +672,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby2.7-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -694,7 +686,6 @@ Requires:       ruby2.7-rubygem-gem2rpm = %{version}
 %description -n ruby2.7-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby2.7-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -739,7 +730,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n ruby3.0-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -753,7 +744,6 @@ Requires:       ruby3.0-rubygem-gem2rpm = %{version}
 %description -n ruby3.0-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n ruby3.0-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
@@ -793,6 +783,64 @@ fi
 %endif
 %endif
 
+%if %{with ruby31}
+%package -n ruby3.1-rubygem-gem2rpm
+Summary:        Generate rpm specfiles from gems
+Group:          Development/Languages/Ruby
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
+
+%description -n ruby3.1-rubygem-gem2rpm
+Generate source rpms and rpm spec files from a Ruby Gem.
+The spec file tries to follow the gem as closely as possible
+
+%package -n ruby3.1-rubygem-gem2rpm-doc
+Summary:        RDoc documentation for %{mod_name}
+Group:          Development/Languages/Ruby
+Requires:       ruby3.1-rubygem-gem2rpm = %{version}
+
+%description -n ruby3.1-rubygem-gem2rpm-doc
+Documentation generated at gem installation time.
+Usually in RDoc and RI formats.
+
+%post -n ruby3.1-rubygem-gem2rpm
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.1-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm-%{version}   gem2rpm-%{version}   %{_bindir}/gem2rpm.ruby3.1-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm.ruby3.1 gem2rpm.ruby3.1 %{_bindir}/gem2rpm.ruby3.1-%{version} %{mod_weight}
+
+%preun -n ruby3.1-rubygem-gem2rpm
+if [ "$1" = 0 ] ; then
+    /usr/sbin/update-alternatives --remove gem2rpm          %{_bindir}/gem2rpm.ruby3.1-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.1-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm.ruby3.1  %{_bindir}/gem2rpm.ruby3.1-%{version}
+fi
+
+%files -n ruby3.1-rubygem-gem2rpm
+%defattr(-,root,root,-)
+%{_docdir}/ruby3.1-rubygem-gem2rpm
+#{_bindir}/gem2rpm-opensuse
+%{_bindir}/gem2rpm.ruby3.1-%{version}
+%ghost %{_bindir}/gem2rpm.ruby3.1
+%ghost %{_bindir}/gem2rpm-%{version}
+%ghost %{_bindir}/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.1
+%ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+# cache file
+%{_libdir}/ruby/gems/3.1.0/cache/gem2rpm-%{version}.gem
+%{_libdir}/ruby/gems/3.1.0/gems/gem2rpm-%{version}
+%{_libdir}/ruby/gems/3.1.0/specifications/gem2rpm-%{version}.gemspec
+
+%if %{with docs}
+%files -n ruby3.1-rubygem-gem2rpm-doc
+%defattr(-,root,root,-)
+%doc %{_libdir}/ruby/gems/3.1.0/doc/gem2rpm-%{version}
+%endif
+%endif
+
 %if %{with rubinius25}
 %package -n rbx2.5-rubygem-gem2rpm
 # MANUAL
@@ -800,7 +848,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 
 %description -n rbx2.5-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -814,7 +862,6 @@ Requires:       rbx2.5-rubygem-gem2rpm = %{version}
 %description -n rbx2.5-rubygem-gem2rpm-doc
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
-
 
 %post -n rbx2.5-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \

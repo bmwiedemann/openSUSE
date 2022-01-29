@@ -309,4 +309,12 @@ D    enhances.patch
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>839453</requestid>
   </revision>
+  <revision rev="29" vrev="18">
+    <srcmd5>010e4d2737514b0d448a8d22ae642a5d</srcmd5>
+    <version>0.10.1</version>
+    <time>1643486499</time>
+    <user>dimstar_suse</user>
+    <comment>- added support for 3.1.0</comment>
+    <requestid>943166</requestid>
+  </revision>
 </revisionlist>
