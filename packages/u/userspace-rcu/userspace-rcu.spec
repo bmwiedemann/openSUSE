@@ -2,7 +2,7 @@
 #
 # spec file for package userspace-rcu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 
 %define soname  8
 Name:           userspace-rcu
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Userspace Read-Copy-Update Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND GPL-3.0-or-later
@@ -118,6 +118,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/liburcu-bp.pc
 %{_libdir}/pkgconfig/liburcu-cds.pc
 %{_libdir}/pkgconfig/liburcu-mb.pc
+%{_libdir}/pkgconfig/liburcu-memb.pc
 %{_libdir}/pkgconfig/liburcu-qsbr.pc
 %{_libdir}/pkgconfig/liburcu-signal.pc
 

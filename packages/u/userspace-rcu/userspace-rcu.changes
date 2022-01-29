@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 23 10:46:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * fix: properly detect 'cmpxchg' on x86-32
+  * fix: use urcu-tls compat with c++ compiler
+  * fix: remove autoconf features default value in help message
+  * fix: add missing pkgconfig file for memb flavour lib
+  * Make temporary variable in _rcu_dereference non-const
+  * Fix: x86 and s390: uatomic __hp() macro C++ support
+  * Fix: x86 and s390: uatomic __hp() macro clang support
+  * Fix: x86 and s390 uatomic: __hp() macro warning with gcc 11
+  
+-------------------------------------------------------------------
 Wed Dec 15 21:11:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:
