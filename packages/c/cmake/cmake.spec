@@ -37,7 +37,7 @@
 %endif
 %define shortversion 3.22
 Name:           cmake%{?psuffix}
-Version:        3.22.1
+Version:        3.22.2
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

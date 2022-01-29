@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 26 21:13:02 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- update to version 3.22.2
+  * FortranCInterface: Fix compatibility with GCC gfortran 12 LTO
+  * FindBoost: Add support for Boost 1.78
+  * file: Restore error capture in undocumented READ_ELF mode
+  * FindPython: Add support for Python 3.11
+
+-------------------------------------------------------------------
 Fri Jan 21 04:02:39 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Fix build with gcc12 (boo#1194815)
