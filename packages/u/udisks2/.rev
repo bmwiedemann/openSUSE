@@ -408,4 +408,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>936226</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>c752f7a55e97ed82377c8c02478bbba5</srcmd5>
+    <version>2.9.4</version>
+    <time>1643486472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949467</requestid>
+  </revision>
 </revisionlist>

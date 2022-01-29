@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,8 @@
 %define somajor 0
 %define libudisks lib%{name}-%{somajor}
 %define libblockdev_version 2.19
+# valid options are 'luks1' or 'luks2' - Note, remove this and the sed call, as upstream moves to luks2 as default
+%define default_luks_encryption luks2
 
 Name:           udisks2
 Version:        2.9.4
@@ -43,7 +45,6 @@ BuildRequires:  libblockdev-lvm-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-mdraid-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-part-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-swap-devel >= %{libblockdev_version}
-BuildRequires:  libblockdev-vdo-devel >= %{libblockdev_version}
 BuildRequires:  lvm2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
@@ -92,6 +93,8 @@ Requires:       util-linux
 # For mkfs.xfs, xfs_admin
 Requires:       xfsprogs
 Recommends:     %{libudisks}_btrfs
+# Add Obsoletes to ease removal of deprecated standalone vdo module
+Obsoletes:      libudisks2-0_vdo <= 2.9.4
 %{?systemd_requires}
 # Upstream First - Policy:
 # Never add any patches to this package without the upstream commit id
@@ -132,6 +135,13 @@ Requires:       %{libudisks} >= %{version}
 %description -n %{libudisks}-devel
 This package contains the development files for the library libUDisks2, a
 dynamic library, which provides access to the UDisksd daemon.
+
+%package docs
+Summary:        Developer documentation for %{name}
+BuildArch:      noarch
+
+%description docs
+This package contains developer documentation for %{name}.
 
 %package -n %{libudisks}_bcache
 Summary:        UDisks module for Bcache
@@ -174,19 +184,6 @@ Requires:       lvm2
 %description -n %{libudisks}_lvm2
 This package contains the UDisks module for LVM2 support.
 
-%package -n %{libudisks}_vdo
-Summary:        UDisks module for VDO
-License:        GPL-2.0-or-later
-Group:          System/Libraries
-Requires:       %{libudisks} >= %{version}
-Requires:       libblockdev-vdo >= %{libblockdev_version}
-
-%description -n %{libudisks}_vdo
-This package contains the UDisks module for VDO support.
-
-Virtual Data Optimizer (VDO) is a block virtualization technology that allows
-creating compressed and deduplicated pools of block storage.
-
 %package -n %{libudisks}_zram
 Summary:        UDisks module for Zram
 License:        GPL-2.0-or-later
@@ -202,6 +199,8 @@ This package contains the UDisks module for zram support.
 
 %prep
 %autosetup -p1 -n udisks-%{version}
+# Move to luks2 as default
+sed -i udisks/udisks2.conf.in -e "s/encryption=luks1/encryption=%{default_luks_encryption}/"
 
 %build
 %configure \
@@ -214,7 +213,7 @@ This package contains the UDisks module for zram support.
 	--enable-lvm2 \
 	--enable-lvmcache \
 	--enable-zram \
-	--enable-vdo \
+	--disable-vdo \
 	%{nil}
 %make_build
 
@@ -226,12 +225,13 @@ chrpath --delete %{buildroot}/%{_bindir}/udisksctl
 chrpath --delete %{buildroot}/%{_libexecdir}/udisks2/udisksd
 %find_lang udisks2
 
-# Loading storaged modules is not wanted.
-rm -r %{buildroot}%{_sysconfdir}/udisks2
-
 # Create udisks2 rclink
 mkdir -p %{buildroot}/%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
+
+# Move example config file to docs
+mkdir -p %{buildroot}%{_docdir}/%{name}
+mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example %{buildroot}%{_docdir}/%{name}/mount_options.conf.example
 
 %post -n %{libudisks} -p /sbin/ldconfig
 %postun -n %{libudisks} -p /sbin/ldconfig
@@ -265,8 +265,13 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 %files
 %doc AUTHORS NEWS
 %{_bindir}/udisksctl
-%config %{_datadir}/dbus-1/system.d/org.freedesktop.UDisks2.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.UDisks2.conf
+%dir %{_sysconfdir}/udisks2
+%dir %{_sysconfdir}/udisks2/modules.conf.d
+%config %{_sysconfdir}/udisks2/udisks2.conf
+%doc %{_docdir}/%{name}/mount_options.conf.example
 %{_tmpfilesdir}/udisks2.conf
+%ghost %{_rundir}/media
 %{_datadir}/bash-completion/completions/udisksctl
 %{_unitdir}/udisks2.service
 %dir %{_udevrulesdir}
@@ -296,7 +301,6 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 
 %files -n %{libudisks}-devel
 %doc HACKING README.md
-%doc %{_datadir}/gtk-doc/html/udisks2/
 %{_libdir}/libudisks2.so
 %dir %{_includedir}/udisks2
 %dir %{_includedir}/udisks2/udisks
@@ -306,9 +310,11 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 %{_libdir}/pkgconfig/udisks2-btrfs.pc
 %{_libdir}/pkgconfig/udisks2-lsm.pc
 %{_libdir}/pkgconfig/udisks2-lvm2.pc
-%{_libdir}/pkgconfig/udisks2-vdo.pc
 %{_libdir}/pkgconfig/udisks2-zram.pc
 %{_datadir}/gir-1.0/UDisks-2.0.gir
+
+%files docs
+%doc %{_datadir}/gtk-doc/html/udisks2/
 
 %files -n %{libudisks}_bcache
 %dir %{_libdir}/udisks2
@@ -323,6 +329,8 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.btrfs.policy
 
 %files -n %{libudisks}_lsm
+%dir %{_sysconfdir}/udisks2/modules.conf.d
+%attr(0600,root,root) %config %{_sysconfdir}/udisks2/modules.conf.d/udisks2_lsm.conf
 %dir %{_libdir}/udisks2
 %dir %{_libdir}/udisks2/modules
 %{_libdir}/udisks2/modules/libudisks2_lsm.so
@@ -334,12 +342,6 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 %dir %{_libdir}/udisks2/modules
 %{_libdir}/udisks2/modules/libudisks2_lvm2.so
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.lvm2.policy
-
-%files -n %{libudisks}_vdo
-%dir %{_libdir}/udisks2
-%dir %{_libdir}/udisks2/modules
-%{_libdir}/udisks2/modules/libudisks2_vdo.so
-%{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.vdo.policy
 
 %files -n %{libudisks}_zram
 %dir %{_libdir}/udisks2

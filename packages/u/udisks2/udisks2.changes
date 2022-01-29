@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 27 08:00:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop packaging libudisks_vdo standalone module, it is deprecated.
+  Do this via passing explicit disable-vdo to configure and
+  dropping libblockdev-vdo-devel BuildRequires. Add a
+  libudisks2_0_vdo Obsoletes to ease updates.
+- No longer remove upstream config files, we want to be able to
+  load modules on demand. Note that we move an example file to docs
+  to keep sysconfdir clean of non-conf files.
+- Add a default_luks_encryption define, and set it to luks2, sed
+  this macro into source, future versions of udisks will not need
+  this, as upstream moves to luks2 by default.
+- Ghost a dir/file created by us.
+- Split out API docs into separate docs sub-package.
+
+-------------------------------------------------------------------
 Wed Nov 17 18:30:14 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
 
 - Update to version 2.9.4:
