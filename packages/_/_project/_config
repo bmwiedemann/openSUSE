@@ -858,7 +858,7 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby2.7-rubygem-fast_gettext ruby3.0-rubygem-fast_gettext
+Prefer: ruby2.7-rubygem-fast_gettext ruby3.1-rubygem-fast_gettext
 Prefer: ruby2.7-rubygem-i18n
 Prefer: ruby2.7-rubygem-rack
 Prefer: ruby2.7-rubygem-sass-rails
