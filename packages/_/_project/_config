@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20220107
+ExpandFlags: macroserial:20220129
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1325,30 +1325,26 @@ Macros:
 
 ### Things to define default ruby stuff for the distro
 
-%rb_default_ruby        ruby30
-%rb_default_ruby_suffix ruby3.0
-%rb_default_ruby_abi    ruby:3.0.0
+%rb_default_ruby        ruby31
+%rb_default_ruby_suffix ruby3.1
+%rb_default_ruby_abi    ruby:3.1.0
 
-%rb_build_ruby_abis     ruby:2.7.0 ruby:3.0.0
-%rb_build_versions      ruby27 ruby30
+%rb_build_ruby_abis     ruby:3.1.0
+%rb_build_versions      ruby31
 :Macros
 
-%if "%{_project}" != "openSUSE:Factory:Staging:L"
 Macros:
-%_with_ruby27               1
-%_with_ruby30               1
+%_with_ruby31               1
 :Macros
 
-%define _with_ruby27         1
-%define _with_ruby30         1
-%endif
+%define _with_ruby31         1
 
-%define rb_default_ruby        ruby30
-%define rb_default_ruby_suffix ruby3.0
-%define rb_default_ruby_abi    ruby:3.0.0
+%define rb_default_ruby        ruby31
+%define rb_default_ruby_suffix ruby3.1
+%define rb_default_ruby_abi    ruby:3.1.0
 
-%define rb_build_ruby_abis     ruby:2.7.0 ruby:3.0.0
-%define rb_build_versions      ruby27 ruby30
+%define rb_build_ruby_abis     ruby:3.1.0
+%define rb_build_versions      ruby31
 
 Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
 Prefer: %{rb_default_ruby_suffix}-rubygem-bundler
