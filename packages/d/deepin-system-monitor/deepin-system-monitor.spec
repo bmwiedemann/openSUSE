@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-system-monitor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-system-monitor
-Version:        5.8.15
+Version:        5.8.20
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
@@ -88,21 +88,12 @@ Recommends:     %{name}-lang
 deepin-system-monitor is a simple process and system monitor for the Deepin
 Desktop.
 
-%package -n deepin-dock-plugin-system-monitor
-Summary:        The system monitor plugin of deepin dock
-Group:          System/GUI/Other
-Requires:       %{name} = %{version}
-Requires:       deepin-dock
-
-%description -n deepin-dock-plugin-system-monitor
-The package provide system monitor plugin for deepin dock
-
 %lang_package
 
 %prep
 %autosetup -p1
 sed -i 's/Exec=deepin-music/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-system-monitor/g' \
-deepin-system-monitor-main/translations/desktop/%{name}.desktop
+translations/desktop/%{name}.desktop
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
@@ -119,24 +110,14 @@ install -Dm644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{
 %files
 %license LICENSE COPYING
 %doc README.md CHANGELOG.md
-%config %{_sysconfdir}/xdg/autostart/%{name}-*.desktop
 %{_bindir}/%{name}
-%{_bindir}/%{name}-*
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
 %{_datadir}/deepin-manual/manual-assets/application/%{name}
-%{_datadir}/glib-2.0/schemas/com.deepin.*
-%{_datadir}/dbus-1/services/com.deepin.SystemMonitor.Daemon.service
-%{_datadir}/dbus-1/services/com.deepin.SystemMonitorPluginPopup.service
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-
-%files -n deepin-dock-plugin-system-monitor
-%dir %{_prefix}/lib/dde-dock
-%dir %{_prefix}/lib/dde-dock/plugins
-%{_prefix}/lib/dde-dock/plugins/libdeepin-system-monitor-plugin.so
 
 %files lang -f %{name}.lang
 # RPM currently can not handle Asturian
