@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define sover 3
 Name:           libArcus
-%define sversion        4.9
-Version:        4.9.0
+%define sversion        4.13
+Version:        4.13.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
@@ -28,8 +28,8 @@ URL:            https://github.com/Ultimaker/%name
 Source:         https://github.com/Ultimaker/libArcus/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - use Qt5 sip import name, taken from Fedora
 Patch0:         libArcus-3.5.1-PyQt5.sip.patch
-# PATCH-FIX-UPSTREAM - https://github.com/Ultimaker/libArcus/pull/113
-Patch1:         0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0

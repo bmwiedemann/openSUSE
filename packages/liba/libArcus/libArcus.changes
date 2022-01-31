@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 30 08:43:54 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with protobuf >= 3.18, add
+  0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
+
+-------------------------------------------------------------------
+Fri Jan 14 13:59:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 4.13.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.0
+- Delete 0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.patch
+- Refresh libArcus-3.5.1-PyQt5.sip.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 19:31:52 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.9.0

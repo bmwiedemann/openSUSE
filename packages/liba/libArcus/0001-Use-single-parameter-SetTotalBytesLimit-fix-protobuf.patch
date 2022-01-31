@@ -1,0 +1,56 @@
+From f7b29dae1d0969d2104da684ac8fdf25ed9cb8a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 30 Jan 2022 09:29:25 +0100
+Subject: [PATCH] Use single-parameter SetTotalBytesLimit, fix protobuf 3.18
+ build
+
+Since protobuf 3.6.0 the warning parameter has been ineffective and
+the corresponding method signature been deprecated. It was removed for
+protobuf 3.18.
+
+For details, see
+https://github.com/protocolbuffers/protobuf/blob/v3.6.0/src/google/protobuf/io/coded_stream.h#L387
+---
+ CMakeLists.txt | 2 +-
+ src/Socket_p.h | 5 +----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a699a72..69bf39c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@ endif()
+ # However, if ProtobufConfig is used instead, there is a CMake option that controls
+ # this, which defaults to OFF. We need to force this option to ON instead.
+ set(protobuf_MODULE_COMPATIBLE ON CACHE INTERNAL "" FORCE)
+-find_package(Protobuf 3.0.0 REQUIRED)
++find_package(Protobuf 3.6.0 REQUIRED)
+ 
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON) #Required if a patch to libArcus needs to be made via templates.
+ 
+diff --git a/src/Socket_p.h b/src/Socket_p.h
+index 9c3c084..dea32f5 100644
+--- a/src/Socket_p.h
++++ b/src/Socket_p.h
+@@ -128,9 +128,6 @@ namespace Arcus
+ 
+         static const int keep_alive_rate = 500; //Number of milliseconds between sending keepalive packets
+ 
+-        // This value determines when protobuf should warn about very large messages.
+-        static const int message_size_warning = 400 * 1048576;
+-
+         // This value determines when protobuf should error out because the message is too large.
+         // Due to the way Protobuf is implemented, messages large than 512MiB will cause issues.
+         static const int message_size_maximum = 500 * 1048576;
+@@ -548,7 +545,7 @@ namespace Arcus
+ 
+         google::protobuf::io::ArrayInputStream array(wire_message->data, wire_message->size);
+         google::protobuf::io::CodedInputStream stream(&array);
+-        stream.SetTotalBytesLimit(message_size_maximum, message_size_warning);
++        stream.SetTotalBytesLimit(message_size_maximum);
+         if(!message->ParseFromCodedStream(&stream))
+         {
+             error(ErrorCode::ParseFailedError, "Failed to parse message:" + std::string(wire_message->data));
+-- 
+2.34.1
+
