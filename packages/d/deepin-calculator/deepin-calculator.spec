@@ -16,7 +16,7 @@
 #
 
 Name:           deepin-calculator
-Version:        5.7.0.19
+Version:        5.7.12
 Release:        0
 Summary:        The Deepin Calculator Application
 License:        GPL-3.0-or-later

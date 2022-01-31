@@ -24,4 +24,16 @@
   * Optimize features about deein-turbo (forwarded request 910920 from hillwood)</comment>
     <requestid>910921</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1c9dbf8114814161f77a9a87d4bbc10</srcmd5>
+    <version>5.7.12</version>
+    <time>1643666204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.7.12
+  * Fix bugs
+  * Update manual documents
+  * Update translation
+  * See details at https://github.com/linuxdeepin/deepin-calculator/compare/5.7.0.19...5.7.12</comment>
+    <requestid>950158</requestid>
+  </revision>
 </revisionlist>
