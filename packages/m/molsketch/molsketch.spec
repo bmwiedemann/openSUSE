@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define srcname Molsketch
 %define sover 1
-%define soname -qt5-%{sover}
-%define binname %{name}-qt5
+%define soname %{sover}
 Name:           molsketch
-Version:        0.7.0
+Version:        0.7.2
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
-# PATCH-FIX-UPSTREAM https://sourceforge.net/p/molsketch/bugs/40/
-Patch0:         fix-compilation.patch
+# PATCH-FIX-UPSTREAM molsketch-cmake-qt5-add-translation.patch badshah400@gmail.com -- Use qt5_add_translation instead of qt_add_translation with cmake
+Patch0:         molsketch-cmake-qt5-add-translation.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -41,6 +40,7 @@ BuildRequires:  rsvg-convert
 BuildRequires:  rsvg-view
 %endif
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -93,10 +93,6 @@ dos2unix -k -c ascii doc/cs/%{name}.adp
 %install
 %cmake_install
 
-# Fix program not finding its shared libraries.
-mv %{buildroot}%{_libdir}/%{name}/libmolsketch-qt5.so %{buildroot}%{_libdir}/libmolsketch-qt5.so
-mv %{buildroot}%{_libdir}/%{name}/libobabeliface-qt5.so %{buildroot}%{_libdir}/libobabeliface-qt5.so
-
 for sz in 24 32 48 64 128 256 512
 do
   rsvg-convert -o %{name}-${sz}.png -w ${sz} molsketch/images/molsketch.svg
@@ -104,20 +100,19 @@ do
   install -m0644 %{name}-${sz}.png %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps/%{name}.png
 done
 
-%suse_update_desktop_file -c %{name} %{name} "2D molecular structures editor" %{binname} %{name} Education Chemistry
+%suse_update_desktop_file -c %{name} %{name} "2D molecular structures editor" %{name} Education Chemistry
 
 %fdupes -s %{buildroot}%{_datadir}
 
 %files
 %license COPYING
 %doc CHANGELOG
-%{_bindir}/%{binname}
-%{_libdir}/*.so
+%{_bindir}/%{name}
+%{_libdir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/molsketch.*
 %{_datadir}/pixmaps/molsketch.xpm
 %{_datadir}/icons/hicolor/scalable/mimetypes/*.svg
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/net.sourceforge.molsketch.appdata.xml
 %{_datadir}/mime/packages/molsketch.xml
 

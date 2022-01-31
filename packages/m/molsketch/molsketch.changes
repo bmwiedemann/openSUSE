@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 29 23:05:28 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add molsketch-cmake-qt5-add-translation.patch: Use
+  qt5_add_translation instead of qt_add_translation with cmake.
+
+-------------------------------------------------------------------
+Wed Jun  9 00:50:21 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.2:
+  * Update location of OpenBabel adapter when updating Molsketch.
+  * Minor fixes in translations build (cmake).
+- Changes from version 0.7.1:
+  * Copy and cut actions also copy SVG image.
+  * Fixed compilation with Qt 5 versions before Qt 5.14.
+  * Fixed inclusion of translations for library part for qmake
+    build.
+  * Fixed inclusion of all translations for cmake build.
+  * Fixed crashes/errors during copy/cut/paste and when opening
+    files.
+  * Removed support for Qt 4; filenames changed.
+- Drop fix-compilation.patch: fixed upstream.
+- New BuildRequires: cmake(Qt5LinguistTools).
+- Adapt to upstream file name changes.
+
+-------------------------------------------------------------------
 Sat Jan 23 19:47:39 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Put essential libraries in the main package
