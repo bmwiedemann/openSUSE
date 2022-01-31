@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 30 12:08:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-7.8
+- Improved pre-sieving, up to 10% speedup
+- Improved primesieve::iterator, up to 15% speedup
+- C++ refactoring: get rid of using namespace std
+
+-------------------------------------------------------------------
 Tue Dec  7 15:57:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
 
 - Fix issues with big.LITTLE CPUs e.g. Intel Alder Lake

@@ -39,4 +39,12 @@ primesieve is a new package, it's a command-line program and C/C++ library that 
 </comment>
     <requestid>936293</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d36366547fd6fd41b859b949185dcca6</srcmd5>
+    <version>7.8</version>
+    <time>1643666223</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primesieve-7.8</comment>
+    <requestid>949982</requestid>
+  </revision>
 </revisionlist>
