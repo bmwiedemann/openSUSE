@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-music-player
-Version:        6.1.7
+Version:        6.2.1
 Release:        0
 Summary:        Deepin Music Player
 License:        GPL-3.0-or-later

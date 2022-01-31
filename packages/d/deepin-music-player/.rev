@@ -256,4 +256,16 @@
     <comment> (forwarded request 910953 from hillwood)</comment>
     <requestid>910954</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c37cadf49e0f5213ed93465af6aa48be</srcmd5>
+    <version>6.2.1</version>
+    <time>1643666208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 6.2.1
+  * Support wayland
+  * Update translations
+  * Update manual document
+  * Fix bugs</comment>
+    <requestid>950168</requestid>
+  </revision>
 </revisionlist>
