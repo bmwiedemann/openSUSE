@@ -36,10 +36,12 @@ Skaffold is a command line tool that facilitates continuous development for Kube
 %setup -q -T -D -a 1
 
 %build
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.version=%{version} -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=$(date --iso-8601)" \
+   -ldflags="-X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.version=%{version} -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=$BUILD_DATE" \
    -o bin/skaffold ./cmd/skaffold
 
 %install
