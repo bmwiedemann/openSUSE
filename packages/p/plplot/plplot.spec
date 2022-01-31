@@ -1,7 +1,7 @@
 #
 # spec file for package plplot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -1045,6 +1045,7 @@ Xvfb -noreset %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 5
 %cmake \
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
         -DENABLE_compiler_diagnostics=ON \
         -DPL_FREETYPE_FONT_PATH:PATH="%{_datadir}/fonts/truetype" \
         -DUSE_RPATH:BOOL=OFF \

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 30 16:33:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enforce CMAKE_INSTALL_LIBDIR=%{_libdir} to ensure pkgconfig
+  file substitutions for libdir are correct; this became an issue
+  after we switched to using the cmake macro for configuring
+  (boo#1195074).
+
+-------------------------------------------------------------------
 Tue Jul  6 05:52:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Change shebangs for Python examples to be Python 3.
