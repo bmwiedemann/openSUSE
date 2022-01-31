@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81b432a567a71279cdd398e1c7cbf47b</srcmd5>
+    <version>5.0</version>
+    <time>1643666237</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for ocaml-camlp5</comment>
+    <requestid>950129</requestid>
+  </revision>
+</revisionlist>
