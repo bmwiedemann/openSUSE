@@ -13,48 +13,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
 
 %define _name dde-session-ui
 
 Name:           deepin-session-ui
-Version:        5.4.7
+Version:        5.4.53
 Release:        0
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-session-ui
-Source0:        %{url}/archive/%{version}/%{_name}-%{version}.tar.gz
+Source0:        https://github.com/linuxdeepin/dde-session-ui/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        logo.svg
 Group:          System/GUI/Other
+BuildRequires:  gtest
+BuildRequires:  update-desktop-files
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore
-BuildRequires:  gtest
-BuildRequires:  libqt5-linguist
-BuildRequires:  pam-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(dde-dock)
-BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
-BuildRequires:  pkgconfig(gio-qt)
+BuildRequires:  pkgconfig(dframeworkdbus)
+BuildRequires:  pkgconfig(dde-dock)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(liblightdm-qt5-3)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(gio-qt)
 BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pam-devel
+BuildRequires:  libqt5-linguist
 Requires:       deepin-wallpapers
 Recommends:     %{name}-lang = %{version}-%{release}
 
@@ -109,5 +108,12 @@ cp %{SOURCE1} lightdm-deepin-greeter/img/
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.dock.module.notifications.gschema.xml
 
 %files lang -f %{_name}.lang
+%if 0%{?suse_version} <= 1500
+%dir %{_datadir}/%{_name}
+%dir %{_datadir}/%{_name}/translations
+%{_datadir}/%{_name}/translations/%{_name}_ast.qm
+%{_datadir}/%{_name}/translations/%{_name}_fil.qm
+%{_datadir}/%{_name}/translations/%{_name}_pam.qm
+%endif
 
 %changelog

@@ -39,4 +39,34 @@
     <comment>- Fix build: do not package translations in main and -lang package. (forwarded request 930163 from dimstar)</comment>
     <requestid>930183</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>473afd257873cb68d8decec0e6321f4e</srcmd5>
+    <version>5.4.53</version>
+    <time>1643666205</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix filelist for Leap 15 
+
+- Update version to 5.4.53
+  * Fix bug
+  * Add the icon for Flght mode
+  * Optimize mute OSD
+
+- Fix filelist 
+
+- Update version to 5.4.31
+  * Add AccessibleName 
+  * Fix bugs 
+
+- Update version to 5.4.29
+  * Disable AccessibleName check by default
+  * Optimize test modules
+  * Add AccessibleName for widgets
+  * Fix bugs
+
+- Update version to 5.4.20
+  * Optimize HiDPI features
+  * Fix bugs
+  * Add show and hide interfaces</comment>
+    <requestid>950161</requestid>
+  </revision>
 </revisionlist>

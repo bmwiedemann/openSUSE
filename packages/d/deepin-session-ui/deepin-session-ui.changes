@@ -1,7 +1,49 @@
 -------------------------------------------------------------------
+Mon Jan 31 03:31:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix filelist for Leap 15 
+
+-------------------------------------------------------------------
+Thu Dec 16 08:06:51 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.53
+  * Fix bug
+  * Add the icon for Flght mode
+  * Optimize mute OSD
+
+-------------------------------------------------------------------
 Mon Nov  8 12:04:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build: do not package translations in main and -lang package.
+
+-------------------------------------------------------------------
+Wed Oct 27 06:09:10 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix filelist 
+
+-------------------------------------------------------------------
+Sun Oct 24 12:52:33 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.31
+  * Add AccessibleName 
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sun Sep 19 12:42:32 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.29
+  * Disable AccessibleName check by default
+  * Optimize test modules
+  * Add AccessibleName for widgets
+  * Fix bugs
+
+-------------------------------------------------------------------
+Mon Jul 26 13:27:59 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.20
+  * Optimize HiDPI features
+  * Fix bugs
+  * Add show and hide interfaces
 
 -------------------------------------------------------------------
 Tue Jun  8 06:05:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
