@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 31 03:56:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on keyring. 
+
+-------------------------------------------------------------------
 Fri Dec 10 19:12:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Explain, we don't have test suite running.

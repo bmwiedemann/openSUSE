@@ -1,7 +1,7 @@
 #
 # spec file for package python-jira
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
+Requires:       python-keyring
 Requires:       python-oauthlib
 Requires:       python-pbr >= 3.0.0
 Requires:       python-requests >= 2.10.0
