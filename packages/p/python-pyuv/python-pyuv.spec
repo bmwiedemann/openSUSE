@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python310 1
 Name:           python-pyuv
 Version:        1.4.0
 Release:        0

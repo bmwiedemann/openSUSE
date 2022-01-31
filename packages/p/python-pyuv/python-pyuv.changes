@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 29 20:41:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip python310 build (no support)
+
+-------------------------------------------------------------------
 Mon Jan 25 10:01:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip test test_sendfile_offset, failing on Python 3.6
