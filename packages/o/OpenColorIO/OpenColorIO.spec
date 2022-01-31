@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,17 +32,13 @@ Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.0.2
+Version:        2.1.1
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
-# https://aur.archlinux.org/cgit/aur.git/tree/opencolorio-openexr3.patch?h=opencolorio-qfix
-Patch0:         OpenColorIO-openexr3.patch
-# PATCH-FIX-UPSTREAM - https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1465
-Patch1:         fix-armv7.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -118,8 +114,6 @@ This package contains python bindings for OpenColorIO.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%patch0 -p1
-%patch1 -p1
 
 # Fix library install location
 sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt

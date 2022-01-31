@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan 28 22:48:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Adds Metal Shading Language generation support to the GPU renderer 
+  * Adds OpenGL ES generation support to the GPU renderer 
+  * After Effects plug-in updates
+  * Adds Metal support to ociodisplay and enables running GPU tests with Metal backend 
+  * Fix issue resulting in NaNs when inverting ACES Output Transforms 
+  * Implement locale-agnostic number parsing 
+  * Fix issue causing configs to fail validation with certain LUT search paths 
+  * Python 3.10 macOS wheels
+  * Remove extra commas when writing a CDL in CLF file format 
+  * Fixes Unicode paths on Windows 
+  * Fix issues with OSL generation and improve the OSL unit test framework 
+  * Add Python GPU renderer implementation example 
+  * Improvement to color space metadata in ocioconvert exports 
+  * Better manage Imath dependency 
+  * Add ACES 1.3 Gamut Compression implementation
+  * Add OpenFX OCIO plug-in framework and examples
+  * Add Python wheel generation and support for PyPI 
+  * Add preliminary support for emitting Open Shading Language 
+  * Add Imath 3 support for Half dependency and update CI workflow
+  * Increment version number for the config file and CTF formats to 2.1
+  * Allow apps to use getColorSpaceFromFilePath even for v1 configs and
+    deprecate parseColorSpaceFromString
+  * Add getDefaultView(display, colorspaceName) method
+  * Fix problem rendering to integer pixel layouts when there is a no-op
+  * Update CLF test files, add Python scripts for CLF implemenation guide
+* drop fix-armv7.patch, OpenColorIO-openexr3.patch: upstream
+
+-------------------------------------------------------------------
 Wed Dec  8 16:42:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on armv6/7:
