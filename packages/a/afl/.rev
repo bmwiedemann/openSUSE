@@ -1020,4 +1020,41 @@
 - build with 32bit plugins on x86_64 (forwarded request 921492 from msmeissn)</comment>
     <requestid>921493</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b428afb04cacf3ab5f164499866f1347</srcmd5>
+    <version>4.00c</version>
+    <time>1643666243</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.00c
+  - complete documentation restructuring, made possible by Google Season
+    of Docs :) thank you Jana!
+  - we renamed several UI and fuzzer_stat entries to be more precise,
+    e.g. &quot;unique crashes&quot; -&gt; &quot;saved crashes&quot;, &quot;total paths&quot; -&gt;
+    &quot;corpus count&quot;, &quot;current path&quot; -&gt; &quot;current item&quot;.
+    This might need changing custom scripting!
+  - Nyx mode (full system emulation with snapshot capability) has been
+    added - thanks to @schumilo and @eqv!
+  - unicorn_mode:
+    -   Moved to unicorn2! by Ziqiao Kong (@lazymio)
+    -   Faster, more accurate emulation (newer QEMU base), risc-v support
+    -   removed indirections in rust callbacks
+  - new binary-only fuzzing mode: coresight_mode for aarch64 CPUs :)
+    thanks to RICSecLab submitting!
+  - if instrumented libaries are dlopen()'ed after the forkserver you
+    will now see a crash. Before you would have colliding coverage.
+    We changed this to force fixing a broken setup rather then allowing
+    ineffective fuzzing.
+  - See docs/best_practices.md how to fix such setups.
+  - afl-fuzz:
+    -   cmplog binaries will need to be recompiled for this version
+        (it is better!)
+    -   fix a regression introduced in 3.10 that resulted in less
+        coverage being detected. thanks to Collin May for reporting!
+    -   ensure all spawned targets are killed on exit
+    -   added AFL_IGNORE_PROBLEMS, plus checks to identify and abort on
+        incorrect LTO usage setups and enhanced the READMEs for better
+        information on how to deal with instrumenting libraries
+    -   fix -n dumb mode (nobody should use this mode though) (forwarded request 950196 from msmeissn)</comment>
+    <requestid>950197</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package afl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 Name:           afl
-Version:        3.14c
+Version:        4.00c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
+#URL:            https://lcamtuf.coredump.cx/afl/
 License:        Apache-2.0
-URL:            http://lcamtuf.coredump.cx/afl/
+URL:            https://github.com/AFLplusplus/AFLplusplus
 Source:         https://github.com/AFLplusplus/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
