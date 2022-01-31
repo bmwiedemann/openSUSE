@@ -1,7 +1,7 @@
 #
 # spec file for package liblscp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,14 @@
 
 %define sover  6
 Name:           liblscp
-Version:        0.9.3
+Version:        0.9.5
 Release:        0
 Summary:        LinuxSampler control protocol library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://linuxsampler.org
 Source:         https://download.linuxsampler.org/packages/liblscp-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 
 %description
@@ -53,19 +54,18 @@ proposed as a C language API.
 %setup -q
 
 %build
-%configure --disable-static
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
 
 %post   -n liblscp%{sover} -p /sbin/ldconfig
 %postun -n liblscp%{sover} -p /sbin/ldconfig
 
 %files -n liblscp%{sover}
-%doc AUTHORS ChangeLog NEWS README TODO
-%license COPYING
+%license LICENSE
+%doc ChangeLog
 %{_libdir}/liblscp.so.%{sover}
 %{_libdir}/liblscp.so.%{sover}.*
 
