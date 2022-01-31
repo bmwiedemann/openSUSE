@@ -18,7 +18,7 @@ PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/samba:%%PKG
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN zypper --non-interactive install --no-recommends catatonit timezone system-user-mail shadow samba && zypper clean && chmod 755 /entrypoint.sh
+RUN zypper --non-interactive install --no-recommends catatonit timezone system-user-mail system-user-nobody shadow samba && zypper clean && chmod 755 /entrypoint.sh
 
 EXPOSE 137/udp 138/udp 139 445
 

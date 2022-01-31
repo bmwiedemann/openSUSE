@@ -16,4 +16,14 @@
   * Remove -S option, got dropped from smbd [bsc#1191678]</comment>
     <requestid>925384</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0d84c6a52309cfd4729255bc65f786bc</srcmd5>
+    <version>unknown</version>
+    <time>1643666238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1643623975.f3d4e21:
+  * Use --debug-stdout for removed -S
+  * Add system user nobody (used as guest account) (forwarded request 950134 from kukuk)</comment>
+    <requestid>950135</requestid>
+  </revision>
 </revisionlist>

@@ -199,4 +199,4 @@ if [ -n "${SHARE_FILE}" ]; then
     done <<< "$SHARE_FILE"
 fi
 
-exec catatonit -- smbd -F --no-process-group --configfile="$CONFIG_FILE" < /dev/null
+exec catatonit -- smbd -F --debug-stdout --no-process-group --configfile="$CONFIG_FILE" < /dev/null

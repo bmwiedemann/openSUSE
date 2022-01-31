@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 31 10:13:33 UTC 2022 - kukuk@suse.com
+
+- Update to version 1643623975.f3d4e21:
+  * Use --debug-stdout for removed -S
+  * Add system user nobody (used as guest account)
+
+-------------------------------------------------------------------
 Fri Oct 15 08:14:26 UTC 2021 - kukuk@suse.com
 
 - Update to version 1634285613.c2d87b9:
