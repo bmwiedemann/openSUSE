@@ -467,4 +467,12 @@
   doesn't get skipped by kiwi's regular kexec after OEM imaging</comment>
     <requestid>946400</requestid>
   </revision>
+  <revision rev="48" vrev="48">
+    <srcmd5>05c98dbedd9ed464c9fad4486f49d5d2</srcmd5>
+    <version>16.0.0</version>
+    <time>1643666244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950233</requestid>
+  </revision>
 </revisionlist>

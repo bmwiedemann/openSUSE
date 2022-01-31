@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:29:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add arm-trusted-firmware-rpi4 (bsc#1173489)
+
+-------------------------------------------------------------------
 Fri Jan 14 11:29:54 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Correct SelfInstall ignition_platform to 'metal'
