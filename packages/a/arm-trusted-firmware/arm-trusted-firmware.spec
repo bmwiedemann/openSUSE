@@ -134,18 +134,19 @@ BuildRequires:  u-boot-poplar
 BuildRequires:  u-boot-rpi3
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if "%{platform}" != ""
+BuildArch:      noarch
+ExclusiveArch:  aarch64
+%endif
+
 # Disable some targets on SLE15-SP4 because of missing deps
 %if 0%{suse_version} < 1550
 %if "%{platform}" == "a3700" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "imx8qm" || "%{platform}" == "imx8qx" || "%{platform}" == "rk3399" 
 ExclusiveArch: do_not_build
 %endif
-%else
-# Tumbleweed
-%if "%{platform}" != ""
-BuildArch:      noarch
-ExclusiveArch:  aarch64
 %endif
-%endif
+
 %if "%{platform}" == "rpi4"
 Supplements:    modalias(of:N*T*Cbrcm%2Cbcm2711*C*)
 %endif

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:24:30 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- Fixing the if statement to disable some targets on SLE 15 SP4, as
+  the prior change resulted in the packages being built on other
+  architectures than aarch64 on SLE 15 SP4
+  (related to bsc#1193779 and bsc#1195129)
+
+-------------------------------------------------------------------
 Fri Jan 28 08:37:26 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable some targets on SLE15-SP4 because of missing deps in SLE:
