@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 16 04:22:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.9.44
+  * Update GetReminderInfo
+  * Fix Mock
+
+-------------------------------------------------------------------
+Wed Oct 27 13:32:41 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Leap 15.4+ 
+ 
+-------------------------------------------------------------------
+Sun Oct 24 03:10:41 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.9.23
+  * Fix broken Mock 
+
+-------------------------------------------------------------------
+Sun Sep 19 13:45:24 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.9.22
+  * Add dbus api for ipwatchd 
+
+-------------------------------------------------------------------
 Fri Jul 23 13:40:40 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.9.17

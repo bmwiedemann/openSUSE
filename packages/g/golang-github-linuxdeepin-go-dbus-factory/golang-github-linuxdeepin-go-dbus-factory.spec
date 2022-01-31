@@ -22,7 +22,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           golang-%{provider}-%{project}-%{repo}
-Version:        1.9.17
+Version:        1.9.44
 Release:        0
 Summary:        Golang DBus factory
 License:        GPL-3.0+
@@ -30,7 +30,7 @@ URL:            https://github.com/linuxdeepin/go-dbus-factory
 Source0:        https://github.com/linuxdeepin/go-dbus-factory/archive/%{version}/%{repo}-%{version}.tar.gz
 Group:          Development/Languages/Golang
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRequires:  golang-packaging
