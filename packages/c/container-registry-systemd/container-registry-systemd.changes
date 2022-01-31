@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:17:40 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220131.00931d2:
+  * Use type notify instead of forking
+
+-------------------------------------------------------------------
+Mon Jan 31 13:53:08 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220131.f427d35:
+  * Adjust timing for start limits in case of errors
+
+-------------------------------------------------------------------
 Mon Apr 12 14:01:32 UTC 2021 - kukuk@suse.com
 
 - Update to version 0.0+git20210412.85b4fd5:

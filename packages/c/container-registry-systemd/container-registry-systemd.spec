@@ -1,7 +1,7 @@
 #
 # spec file for package container-registry-systemd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           container-registry-systemd
-Version:        0.0+git20210412.85b4fd5
+Version:        0.0+git20220131.00931d2
 Release:        0
 Summary:        Systemd service files and config files for container-registry
 License:        GPL-3.0-or-later

@@ -88,4 +88,16 @@
 - Use etc/default instead of sysconfig for configuration file</comment>
     <requestid>884689</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9fe65542712ae4e7a1b69ef6b1c5819c</srcmd5>
+    <version>0.0+git20220131.00931d2</version>
+    <time>1643666244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220131.00931d2:
+  * Use type notify instead of forking
+
+- Update to version 0.0+git20220131.f427d35:
+  * Adjust timing for start limits in case of errors</comment>
+    <requestid>950222</requestid>
+  </revision>
 </revisionlist>
