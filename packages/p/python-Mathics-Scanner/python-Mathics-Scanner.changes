@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Jul 11 09:27:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.4
+  * Start adding AMSLateX names.
+  * Add ``ApplyTo``, and ``Factorial2``.
+  * Adjust ``Tilde``, and ``Factorial``.
+  * Regularize unicode equivalents.
+- Add 9346764dfd22f011ec7bba9248497383f4b98a3a.patch
+
+-------------------------------------------------------------------
+Sat Jul 10 14:29:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Initial package at version 1.2.3 for Mathics3
+
