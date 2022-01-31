@@ -349,6 +349,10 @@ Sun Jul  5 07:55:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
   * New feature release
   * For more details please see:
   * https://kde.org/announcements/kde-frameworks-5.72.0
+- Includes patch to fix running files with spaces in the path
+  (boo#1174141, kde#423412, kde#423645)
+- Includes patch to fix copying to protocols which don't always
+  report available space (boo#1174169)
 - Too many changes to list here.
 
 -------------------------------------------------------------------
