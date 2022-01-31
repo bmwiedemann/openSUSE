@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Dec 16 08:41:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.112
+  * Add AccessibleName
+  * Update translations
+  * Fix bugs
+- Add fix-crash-bug.patch
+- Drop fix-return-type.patch, merged by upstream
+
+-------------------------------------------------------------------
+Sun Oct 24 14:14:39 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.88
+  * Add AccessibleName
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sat Sep 18 12:53:53 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.58
+  * Fix bugs
+  * Update translations 
+
+-------------------------------------------------------------------
+Mon Jul 26 13:40:23 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.42
+  * WIP: add unit tests
+  * Update translations
+  * Use dbus-send intead of qdbus
+
+-------------------------------------------------------------------
 Thu May  6 04:45:31 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update verion to 5.4.9

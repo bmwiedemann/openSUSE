@@ -18,4 +18,12 @@
   * Fix bugs</comment>
     <requestid>891665</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd033d3135e730f13f3b021b1514c466</srcmd5>
+    <version>5.4.112</version>
+    <time>1643666214</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop fix-return-type.patch, merged by upstream (forwarded request 950199 from hillwood)</comment>
+    <requestid>950200</requestid>
+  </revision>
 </revisionlist>

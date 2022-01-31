@@ -19,14 +19,16 @@
 %define _name dde-session-shell
 
 Name:           deepin-session-shell
-Version:        5.4.9
+Version:        5.4.112
 Release:        0
 Summary:        Deepin desktop-environment - Session UI Shell
 License:        GPL-3.0+
 URL:            https://github.com/linuxdeepin/dde-session-shell
 Source0:        https://github.com/linuxdeepin/dde-session-shell/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        https://github.com/linuxdeepin/startdde/raw/master/misc/lightdm.conf
-Patch0:         fix-return-type.patch
+# PATCH-FIX-UPSTREAM fix-crash-bug.patch hillwood@opensuse.org
+# https://github.com/linuxdeepin/dde-session-shell/pull/38
+Patch0:         fix-crash-bug.patch
 Group:          System/GUI/Other
 BuildRequires:  gtest
 BuildRequires:  update-desktop-files
@@ -34,8 +36,8 @@ BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore
 BuildRequires:  libqt5-linguist
 BuildRequires:  pam-devel
-BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
-BuildRequires:  pkgconfig(dframeworkdbus)
+BuildRequires:  pkgconfig(dtkwidget5.5) >= 5.5.0
+BuildRequires:  libdframeworkdbus-devel >= 5.4.20
 BuildRequires:  pkgconfig(dde-dock)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -55,6 +57,7 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  plasma5-theme-openSUSE
 Requires:       deepin-wallpapers
 Recommends:     %{name}-lang = %{version}-%{release}
@@ -93,8 +96,6 @@ sed -i 's|backgrounds/default_background.jpg|wallpapers/openSUSEdefault/contents
 src/widgets/fullscreenbackground.cpp
 sed -i 's|backgrounds/deepin/desktop.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
 src/dde-shutdown/view/contentwidget.cpp
-sed -i 's|qdbus|qdbus-qt5|g' files/com.deepin.dde.lockFront.service files/com.deepin.dde.shutdownFront.service
-sed -i 's|DtkWidget5.5|DtkWidget|g' CMakeLists.txt tests/dde-lock/CMakeLists.txt tests/lightdm-deepin-greeter/CMakeLists.txt
 cp %{_datadir}/icons/hicolor/scalable/apps/openSUSE-distributor-logo.svg src/widgets/img/logo.svg
 
 %build
@@ -104,12 +105,11 @@ cp %{_datadir}/icons/hicolor/scalable/apps/openSUSE-distributor-logo.svg src/wid
 %install
 %cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/60-deepin.conf
-chmod 755 %{buildroot}%{_bindir}/*
+chmod +x %{buildroot}%{_bindir}/*
 
 %files
-%defattr(-,root,root,-)
 # %doc README.md CONTRIBUTING.md CHANGELOG.md
-# %license LICENSE
+%license LICENSE
 %{_bindir}/dde-*
 %{_bindir}/deepin-greeter
 %dir %{_sysconfdir}/deepin
@@ -118,11 +118,15 @@ chmod 755 %{buildroot}%{_bindir}/*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.session-shell.gschema.xml
+%dir %{_datadir}/deepin-authentication/
+%dir %{_datadir}/deepin-authentication/privileges
+%{_datadir}/deepin-authentication/privileges/lightdm-deepin-greeter.conf
 
 %files -n lightdm-deepin-greeter
-%defattr(-,root,root,-)
+%license LICENSE
 %{_bindir}/lightdm-deepin-greeter
 %{_sysconfdir}/deepin/greeters.d/lightdm-deepin-greeter
+%{_sysconfdir}/deepin/greeters.d/10-cursor-theme
 %dir %{_datadir}/lightdm
 %dir %{_datadir}/lightdm/lightdm.conf.d
 %{_datadir}/lightdm/lightdm.conf.d/60-deepin.conf
@@ -130,7 +134,6 @@ chmod 755 %{buildroot}%{_bindir}/*
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
 
 %files lang
-%defattr(-,root,root,-)
 %{_datadir}/%{_name}
 
 %changelog

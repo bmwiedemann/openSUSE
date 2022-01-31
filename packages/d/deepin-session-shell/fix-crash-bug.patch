@@ -1,0 +1,39 @@
+From 31a1c23956230e19ba5a37810381989710ab98f1 Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Fri, 27 Aug 2021 20:45:57 +0300
+Subject: [PATCH] fix: crash when trying to free uninitialized pointers
+
+In 73f55b6963dfa27a9f426c8cd34d82be89d79685, m_RSA, m_BIO, and
+m_encryptionHandle were added to DestoryAuthController()
+unconditionally, but they could be uninitialized when the dbus service
+com.deepin.daemon.Authenticate is not present.
+
+In CreateAuthController(), initEncryptionService() was skipped when
+m_publicKey is empty, which was a result of
+authControllerInter->EncryptKey failed, when the service is not present.
+All these three pointers were initialized in initEncryptionService().
+
+Log: fix a crash when trying to free uninitialized pointers.
+---
+ src/libdde-auth/deepinauthframework.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/libdde-auth/deepinauthframework.cpp b/src/libdde-auth/deepinauthframework.cpp
+index cec8820..2793a3b 100644
+--- a/src/libdde-auth/deepinauthframework.cpp
++++ b/src/libdde-auth/deepinauthframework.cpp
+@@ -404,9 +404,11 @@ void DeepinAuthFramework::DestoryAuthController(const QString &account)
+     m_authenticateControllers->remove(account);
+     delete authControllerInter;
+ 
+-    m_F_RSA_free(m_RSA);
+-    m_F_BIO_free(m_BIO);
+-    dlclose(m_encryptionHandle);
++    if (!m_publicKey.isEmpty()) {
++        m_F_RSA_free(m_RSA);
++        m_F_BIO_free(m_BIO);
++        dlclose(m_encryptionHandle);
++    }
+ }
+ 
+ /**
