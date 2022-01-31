@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 26 20:46:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.3.6:
+  * Enhancements
+    - Introduced new Kubernetes images v1.22.5-rancher2, and v1.21.8-rancher2 to use new hyperkube base with updated iptables > 1.8.5 rancher/rancher#35709
+  * Fixes
+    - Added logic to delete hostname-override in kubelet for aws cloud provider #2803
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.21.8-rancher2-1
+        - v1.20.14-rancher2-1
+        - v1.19.16-rancher1-3
+        - v1.18.20-rancher1-3
+      - Experimental Kubernetes version
+        - v1.22.5-rancher2-1
+  * New Images in v1.22.5-rancher1 and v1.21.8-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.22.5-rancher2
+      - rancher/hyperkube:v1.21.8-rancher2
+
+-------------------------------------------------------------------
 Wed Jan 26 07:42:18 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.3.5:
