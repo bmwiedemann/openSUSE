@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-desktop-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _version 2021.06.16
+%define _version 2021.11.08
 
 Name:           deepin-desktop-base
-Version:        20.2.2
+Version:        20.3
 Release:        0
 Summary:        Base component for Deepin
 License:        GPL-3.0-or-later

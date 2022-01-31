@@ -49,4 +49,12 @@
     <comment>- Update version to 2021.06.16, Deepin version is 20.2.2 (forwarded request 910678 from hillwood)</comment>
     <requestid>910892</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a9638a3c96d6e440f4287666bdb762c</srcmd5>
+    <version>20.3</version>
+    <time>1643666215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2021.11.08, Deepin version is 20.3 (forwarded request 950239 from hillwood)</comment>
+    <requestid>950240</requestid>
+  </revision>
 </revisionlist>
