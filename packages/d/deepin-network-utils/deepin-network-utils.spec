@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           deepin-network-utils
-Version:        5.4.9
+Version:        5.4.13
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Network Utils
@@ -77,8 +77,11 @@ sed -i 's|$$PREFIX/lib|$$LIBDIR|g' dde-network-utils/dde-network-utils.pro
 %qmake5_install
 %find_lang %{_name} --with-qt
 
-%post -n lib%{_name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{_name}%{sover} -p /sbin/ldconfig
+%post -n lib%{_name}%{sover}
+/sbin/ldconfig
+
+%postun -n lib%{_name}%{sover}
+/sbin/ldconfig
 
 # Please do not drop main package, the language package forcedly depends the main package
 %files
