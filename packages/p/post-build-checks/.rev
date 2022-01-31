@@ -867,4 +867,20 @@
   * final name is glibc-usrmerge-bootstrap-helper</comment>
     <requestid>876708</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>df771df7eea69a7a073ad0d46a6fa552</srcmd5>
+    <version>84.87+git20220128.77a97b9</version>
+    <time>1643666200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20220128.77a97b9:
+  * change cross build detection logic to be more robust
+  * kill useless use of cat awards
+
+- Update to version 84.87+git20220128.2a04ecb:
+  * keep package that provides /usr/bin/sh
+
+- Update to version 84.87+git20210517.d960568:
+  * support cross builds</comment>
+    <requestid>949707</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 28 15:00:55 UTC 2022 - ro@suse.de
+
+- Update to version 84.87+git20220128.77a97b9:
+  * change cross build detection logic to be more robust
+  * kill useless use of cat awards
+
+-------------------------------------------------------------------
+Fri Jan 28 12:47:49 UTC 2022 - ro@suse.de
+
+- Update to version 84.87+git20220128.2a04ecb:
+  * keep package that provides /usr/bin/sh
+
+-------------------------------------------------------------------
+Mon May 17 09:24:00 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20210517.d960568:
+  * support cross builds
+
+-------------------------------------------------------------------
 Thu Mar 04 10:26:35 UTC 2021 - lnussel@suse.de
 
 - Update to version 84.87+git20210304.df696a0:

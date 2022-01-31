@@ -1,7 +1,7 @@
 #
 # spec file for package post-build-checks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define version_unconverted 84.87+git20210304.df696a0
+%define version_unconverted 84.87+git20220128.77a97b9
 
 Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20210304.df696a0
+Version:        84.87+git20220128.77a97b9
 Release:        0
-PreReq:         aaa_base permissions sed
+PreReq:         aaa_base
+PreReq:         permissions
+PreReq:         sed
 Requires:       aaa_base-malloccheck
 Requires:       gawk
 URL:            https://github.com/openSUSE/post-build-checks
@@ -47,8 +49,6 @@ This package will also set/change the following sysconfig variables, so
 it may not be a good idea to install this to a running system:
 /etc/sysconfig/security:PERMISSION_SECURITY="secure"
 /etc/sysconfig/clock:TIMEZONE="UTC"
-
-
 
 %prep
 %setup -q
