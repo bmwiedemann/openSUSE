@@ -1,6 +1,6 @@
-diff -Nur deepin-compressor-5.10.0.15/3rdparty/ChardetDetector/CMakeLists.txt deepin-compressor-5.10.0.15-new/3rdparty/ChardetDetector/CMakeLists.txt
---- deepin-compressor-5.10.0.15/3rdparty/ChardetDetector/CMakeLists.txt	2021-03-12 17:30:53.000000000 +0800
-+++ deepin-compressor-5.10.0.15-new/3rdparty/ChardetDetector/CMakeLists.txt	2021-04-20 22:01:40.004057199 +0800
+diff -Nur deepin-compressor-5.11.7/3rdparty/ChardetDetector/CMakeLists.txt deepin-compressor-5.11.7-new/3rdparty/ChardetDetector/CMakeLists.txt
+--- deepin-compressor-5.11.7/3rdparty/ChardetDetector/CMakeLists.txt	2022-01-13 19:43:19.000000000 +0800
++++ deepin-compressor-5.11.7-new/3rdparty/ChardetDetector/CMakeLists.txt	2022-01-31 11:08:00.119047077 +0800
 @@ -16,6 +16,8 @@
  #指定头文件路径
  include_directories(${PROJECT_SOURCE_DIR})
@@ -10,10 +10,10 @@ diff -Nur deepin-compressor-5.10.0.15/3rdparty/ChardetDetector/CMakeLists.txt de
  #导出头文件
  set(output_h_files
      ${PROJECT_SOURCE_DIR}/chardet.h
-diff -Nur deepin-compressor-5.10.0.15/CMakeLists.txt deepin-compressor-5.10.0.15-new/CMakeLists.txt
---- deepin-compressor-5.10.0.15/CMakeLists.txt	2021-03-12 17:30:53.000000000 +0800
-+++ deepin-compressor-5.10.0.15-new/CMakeLists.txt	2021-04-20 22:04:33.519982184 +0800
-@@ -15,9 +15,9 @@
+diff -Nur deepin-compressor-5.11.7/CMakeLists.txt deepin-compressor-5.11.7-new/CMakeLists.txt
+--- deepin-compressor-5.11.7/CMakeLists.txt	2022-01-13 19:43:19.000000000 +0800
++++ deepin-compressor-5.11.7-new/CMakeLists.txt	2022-01-31 11:10:48.373980325 +0800
+@@ -19,9 +19,9 @@
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--as-needed -fPIE -fPIC") #-Wl,--as-needed 减少无效的库链接，用不到的库需要清理
  
  if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
@@ -24,14 +24,15 @@ diff -Nur deepin-compressor-5.10.0.15/CMakeLists.txt deepin-compressor-5.10.0.15
 +    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wl,-O1,-rpath=${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins")
  endif()
  
- add_definitions("-DQT_MESSAGELOGCONTEXT")
-@@ -82,14 +82,13 @@
+ #安全编译参数
+@@ -87,15 +87,15 @@
  
  set(CMAKE_INSTALL_PREFIX /usr)
  
 -install(TARGETS cli7zplugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS clirarplugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS libzipplugin DESTINATION lib/deepin-compressor/plugins/)
+-install(TARGETS libpigzplugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS minizipplugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS readwritelibarchiveplugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS readonlylibarchiveplugin DESTINATION lib/deepin-compressor/plugins/)
@@ -39,8 +40,10 @@ diff -Nur deepin-compressor-5.10.0.15/CMakeLists.txt deepin-compressor-5.10.0.15
 -install(TARGETS bz2plugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS gzplugin DESTINATION lib/deepin-compressor/plugins/)
 -install(TARGETS xzplugin DESTINATION lib/deepin-compressor/plugins/)
++install(TARGETS cli7zplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
 +install(TARGETS clirarplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
 +install(TARGETS libzipplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
++install(TARGETS libpigzplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
 +install(TARGETS minizipplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
 +install(TARGETS readwritelibarchiveplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
 +install(TARGETS readonlylibarchiveplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)

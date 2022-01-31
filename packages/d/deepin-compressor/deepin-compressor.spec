@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.10.5
+Version:        5.11.7
 Release:        0
 License:        GPL-3.0+
 Summary:        Archive Manager for Deepin Desktop
@@ -39,6 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  libqt5-linguist
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Test)

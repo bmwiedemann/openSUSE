@@ -19,4 +19,14 @@
   * Update translation (forwarded request 910673 from hillwood)</comment>
     <requestid>910887</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e082d767b47b9bcaf15cb28ee59911f</srcmd5>
+    <version>5.11.7</version>
+    <time>1643666202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.11.7
+  * Update manual documents
+  * Fix bugs</comment>
+    <requestid>950154</requestid>
+  </revision>
 </revisionlist>

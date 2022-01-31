@@ -1,11 +1,11 @@
-diff -Nur deepin-compressor-5.10.0.15/CMakeLists.txt deepin-compressor-5.10.0.15-new/CMakeLists.txt
---- deepin-compressor-5.10.0.15/CMakeLists.txt	2021-04-20 22:45:38.622284666 +0800
-+++ deepin-compressor-5.10.0.15-new/CMakeLists.txt	2021-04-20 22:46:27.194231026 +0800
-@@ -82,6 +82,7 @@
+diff -Nur deepin-compressor-5.11.7/CMakeLists.txt deepin-compressor-5.11.7-new/CMakeLists.txt
+--- deepin-compressor-5.11.7/CMakeLists.txt	2022-01-31 11:12:43.045264000 +0800
++++ deepin-compressor-5.11.7-new/CMakeLists.txt	2022-01-31 11:13:12.181082651 +0800
+@@ -87,6 +87,7 @@
  
  set(CMAKE_INSTALL_PREFIX /usr)
  
 +install(TARGETS compressor-ChardetDetector DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
+ install(TARGETS cli7zplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
  install(TARGETS clirarplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
  install(TARGETS libzipplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
- install(TARGETS minizipplugin DESTINATION ${CMAKE_INSTALL_LIBDIR}/deepin-compressor/plugins/)
