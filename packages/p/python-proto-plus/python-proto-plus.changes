@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 31 15:13:44 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 0.19.9
+  * add pickling support to proto messages
+    (gh#googleapis/proto-plus-python#280)
+- from 0.19.8
+  * fix typos
+- from 0.19.7
+  * restore allowing None as value for stringy ints
+    (gh#googleapis/proto-plus-python#272)
+- from 0.19.6
+  * setting 64bit fields from strings supported
+    (gh#googleapis/proto-plus-python#267)
+- from 0.19.5
+  * Clarify semantics of multiple oneof variants passed to msg ctor
+- from 0.19.4
+  * clarify that proto plus messages are not pickleable
+- from 0.19.3
+  * setting bytes field from python string base64 decodes before
+    assignment (gh#googleapis/proto-plus-python#265)
+- from 0.19.2
+  * ensure enums are hashable (gh#googleapis/proto-plus-python#252)
+- from 0.19.1
+  * ensure enums are incomparable w other enum types
+    (gh#googleapis/proto-plus-python#248)
+
+-------------------------------------------------------------------
 Thu Nov 11 08:25:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add multibuild to defeat a build loop. 
