@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:16:48 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- enhance documentation (bsc#1194911)
+- 4.4.2
+
+-------------------------------------------------------------------
 Fri Apr 23 07:58:36 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Removed check for "python3-targetcli-fb" package at runtime
