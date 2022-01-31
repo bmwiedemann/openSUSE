@@ -1,7 +1,7 @@
-diff -Nur startdde-5.8.7/Makefile startdde-5.8.7-new/Makefile
---- startdde-5.8.7/Makefile	2021-03-18 18:01:16.000000000 +0800
-+++ startdde-5.8.7-new/Makefile	2021-04-09 20:15:35.339442511 +0800
-@@ -22,13 +22,13 @@
+diff -Nur startdde-5.8.55/Makefile startdde-5.8.55-new/Makefile
+--- startdde-5.8.55/Makefile	2021-10-15 16:02:17.000000000 +0800
++++ startdde-5.8.55-new/Makefile	2021-12-16 20:08:59.186695438 +0800
+@@ -24,13 +24,13 @@
  	jq . misc/config/auto_launch.json >/dev/null
  
  startdde:
@@ -16,9 +16,9 @@ diff -Nur startdde-5.8.7/Makefile startdde-5.8.7-new/Makefile
 -	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o greeter-display-daemon ${GOPKG_PREFIX}/cmd/greeter-display-daemon
 +#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o greeter-display-daemon ${GOPKG_PREFIX}/cmd/greeter-display-daemon
  
- build: prepare startdde auto_launch_json fix-xauthority-perm greeter-display-daemon
- 
-@@ -42,18 +42,18 @@
+ out/locale/%/LC_MESSAGES/startdde.mo: misc/po/%.po
+ 	mkdir -p $(@D)
+@@ -53,18 +53,18 @@
  	GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}"
  
  install:
@@ -42,7 +42,7 @@ diff -Nur startdde-5.8.7/Makefile startdde-5.8.7-new/Makefile
  	mkdir -p ${DESTDIR}/etc/profile.d/
  	install -v -m0644 misc/profile.d/* ${DESTDIR}/etc/profile.d/
  	mkdir -p $(DESTDIR)$(PREFIX)/share/glib-2.0/schemas
-@@ -70,4 +70,4 @@
+@@ -85,4 +85,4 @@
  check_code_quality: prepare
  	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" go vet ./...
  

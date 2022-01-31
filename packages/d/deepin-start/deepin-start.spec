@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-start
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,11 @@
 %define import_path pkg.deepin.io/dde/startdde
 
 Name:           deepin-start
-Version:        5.8.22
+Version:        5.8.55
 Release:        0
 Summary:        Starter of deepin desktop
 License:        GPL-3.0-only
+Group:          System/Daemons
 URL:            https://github.com/linuxdeepin/startdde
 Source0:        https://github.com/linuxdeepin/startdde/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -31,9 +32,8 @@ Source99:       deepin-start-rpmlintrc
 # PATCH-FIX-OPENSUSE deepin-start-disable-gobuild-in-makefile.patch hillwood@opensuse.org
 # Use gobuild macro instead of makefile to build go binaries
 Patch0:         deepin-start-disable-gobuild-in-makefile.patch
-Group:          System/Daemons
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRequires:  golang-github-linuxdeepin-dde-api
@@ -74,6 +74,15 @@ AutoReq:        Off
 This package contains library source intended forbuilding other packages which
 use import path with pkg.deepin.io/dde/startdde prefix.
 
+%package lang
+Summary:        Translations for package %{name}
+Group:          System/Localization
+Requires:       %{name} = %{version}
+AutoReqProv:    Off
+
+%description lang
+Provides translations for the "%{name}" package.
+
 %prep
 %autosetup -p1 -a1 -n %{_name}-%{version}
 mkdir -p $HOME/rpmbuild/BUILD/go/src/
@@ -106,6 +115,7 @@ mv %{buildroot}%{_bindir}/greeter-display-daemon %{buildroot}%{_prefix}/lib/deep
 rm -rf %{buildroot}%{_datadir}/lightdm/
 
 %fdupes %{buildroot}%{_datadir}
+%find_lang startdde
 
 %files
 %doc README.md CHANGELOG.md
@@ -126,5 +136,7 @@ rm -rf %{buildroot}%{_datadir}/lightdm/
 %config %{_sysconfdir}/X11/xinit/xinitrc.d/00deepin-dde-env
 
 %files -n golang-github-linuxdeepin-startdde -f file.lst
+
+%files lang -f startdde.lang
 
 %changelog
