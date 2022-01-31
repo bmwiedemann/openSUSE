@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-hpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,15 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 aarch64
 
 %description
-This is an internal package that is used to create the patterns as part of 
+This is an internal package that is used to create the patterns as part of
 the installation source setup.  Installation of this package does not make
 sense.
 This particular package contains all the HPC related patterns.
 
-################################################################################
 
+
+
+################################################################################
 %package compute_node
 %pattern_serverfunctions
 Summary:        HPC Basic Compute Node
@@ -52,25 +54,25 @@ Requires:       sudo
 # Ping is useful on compute nodes (bsc#1169484)
 Requires:       iputils
 
-Recommends:     vim
-Recommends:     salt-minion
-Recommends:     slurm-node
-Recommends:     ypbind
-Recommends:     rsync
-Recommends:     wget
-Recommends:     ntp
 Recommends:     less
-Recommends:     pdsh
 Recommends:     mrsh
 Recommends:     mrsh-server
 Recommends:     nss_ldap
+Recommends:     ntp
+Recommends:     pdsh
+Recommends:     rsync
+Recommends:     salt-minion
+Recommends:     slurm-node
+Recommends:     vim
+Recommends:     wget
+Recommends:     ypbind
 # python 2.7 deps
 Recommends:     ganglia-gmond
 Recommends:     genders
 Recommends:     perl-genders
 
 %description compute_node
-A compute node comprises of a minimal software image and mainly runs simulation programs. Services on this node should be reduced to a bare minimum and the node *must* be installed in a automatic manner.  
+A compute node comprises of a minimal software image and mainly runs simulation programs. Services on this node should be reduced to a bare minimum and the node *must* be installed in a automatic manner.
 The pattern 'HPC Modularized libraries' should also be installed.
 
 %files compute_node
@@ -111,11 +113,11 @@ Provides:       pattern-order() = 2040
 Provides:       pattern-visible()
 Requires:       pattern() = hpc_compute_node
 Requires:       pattern() = hpc_libraries
+Recommends:     python3-devel
 Recommends:     pattern() = devel_C_C++
 Recommends:     pattern() = devel_basis
 Recommends:     pattern() = devel_perl
 Recommends:     pattern() = devel_python3
-Recommends:     python3-devel
 Requires:       gnu-compilers-hpc-devel
 Requires:       lua-lmod
 # Ping is useful on compute nodes (bsc#1169484)
@@ -152,7 +154,7 @@ Requires:       iputils
 Suggests:       mariadb
 
 %description workload_server
-This package provides all the relevant packages for running the central server 
+This package provides all the relevant packages for running the central server
 component of the slurm workload manager.
 
 %files workload_server

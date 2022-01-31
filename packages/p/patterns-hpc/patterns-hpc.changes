@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 25 14:50:56 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- removed missing packages (bsc#1194956) 
+
+-------------------------------------------------------------------
 Thu Apr 16 15:02:21 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - added iputils to relevant patterns (bsc#1169484) 
