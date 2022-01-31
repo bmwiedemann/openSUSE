@@ -1,0 +1,22 @@
+From 8b01170753fcadc86770dd650c3d38a76e88963d Mon Sep 17 00:00:00 2001
+From: easymodo <easymodofrf@gmail.com>
+Date: Sat, 18 Dec 2021 10:32:05 +0200
+Subject: [PATCH] fix mpv_opengl_init_params
+
+---
+ plugins/player_mpv/src/mpvwidget.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/player_mpv/src/mpvwidget.cpp b/plugins/player_mpv/src/mpvwidget.cpp
+index 16c4b168..2f8a39a5 100644
+--- a/plugins/player_mpv/src/mpvwidget.cpp
++++ b/plugins/player_mpv/src/mpvwidget.cpp
+@@ -69,7 +69,7 @@ void MpvWidget::setOption(const QString& name, const QVariant& value) {
+ }
+ 
+ void MpvWidget::initializeGL() {
+-    mpv_opengl_init_params gl_init_params{get_proc_address, nullptr, nullptr};
++    mpv_opengl_init_params gl_init_params{get_proc_address, nullptr};
+     mpv_render_param params[]{
+         {MPV_RENDER_PARAM_API_TYPE, const_cast<char *>(MPV_RENDER_API_TYPE_OPENGL)},
+         {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},

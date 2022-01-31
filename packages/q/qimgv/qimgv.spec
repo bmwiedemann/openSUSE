@@ -1,7 +1,7 @@
 #
 # spec file for package qimgv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Patch1:         qimgv-PIE.patch
 Patch2:         qimgv-includepath.patch
 # PATCH-FIX-OPENSUSE qimgv-no_return_in_nonvoid.patch # aloisio@gmx.com pacify rpmlint
 Patch6:         qimgv-no_return_in_nonvoid.patch
+# PATCH-FIX-UPSTREAM qimgv-mpv_v2_fix.patch
+Patch7:         qimgv-mpv_v2_fix.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
