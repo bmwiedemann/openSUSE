@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 28 15:09:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.9.21
+  * New build option: USE_SPARSE_LEVMAR, requires the Suitesparse
+    library. This significantly improves geometric optimisation speed
+  * General clean-up of the build system, removal of the autotools
+    build system, CMake is now the default
+  * The test suite is now functional again
+  * A lot of fixes for potential crashes and safer handling of data
+  * Fix for bigendian architectures
+  * Link with libm if necessary
+  * Various installation location and content fixes
+- Follow upstream default and disable java features
+
+-------------------------------------------------------------------
 Wed Apr 14 13:12:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.9.20

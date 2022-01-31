@@ -1,7 +1,7 @@
 #
 # spec file for package libpano
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,24 @@
 #
 
 
+%bcond_with java
+
 Name:           libpano
-Version:        2.9.20
+Version:        2.9.21
 Release:        0
 Summary:        Panorama Tools Back-End Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://panotools.sourceforge.net/
 Source:         https://sourceforge.net/projects/panotools/files/libpano13/libpano13-%{version}/libpano13-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+%if %{with java}
 BuildRequires:  java-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libtool
-BuildRequires:  zlib-devel
+%endif
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
 
 %description
 Library and utilities for working with panoramas.
@@ -62,16 +66,17 @@ Development files for library for working with panoramas.
 %setup -q -n libpano13-%{version}
 
 %build
-autoreconf -fi
-%configure \
-  --with-java=%{java_home}
-%make_build
+%cmake \
+  %{?with_java:-DSUPPORT_JAVA_PROGRAMS:Bool=ON} \
+  %{nil}
+%cmake_build
 
 %install
-%make_install
-#Axe Libs.private from .pc files, which do not behave as expected
-sed -i -e '/^Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libpano13.pc
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
+# No way to disable static library build, delete it
+rm %{buildroot}/%{_libdir}/libpano*.a
+# Install documentation manually
+rm -Rf %{buildroot}/%{_prefix}/share/pano13/doc
 
 %post -n libpano13-3 -p /sbin/ldconfig
 %postun -n libpano13-3 -p /sbin/ldconfig
@@ -81,12 +86,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libpano13.so.*
 
 %files utils
-%doc doc/{Optimize,stitch}.txt tools/README.PTmender
+%doc doc/{Optimize,stitch}.txt doc/PT*.readme
 %{_bindir}/*
 %{_mandir}/man?/*.*
 
 %files devel
-%doc README AUTHORS ChangeLog
+%doc README AUTHORS
 %{_includedir}/pano13
 %{_libdir}/libpano13.so
 %{_libdir}/pkgconfig/libpano13.pc
