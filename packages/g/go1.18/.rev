@@ -11,4 +11,14 @@
   Refs boo#1193742 go1.18 release tracking</comment>
     <requestid>940590</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df25aaa12c6f91c62afa07080fdb2621</srcmd5>
+    <version>1.18beta2</version>
+    <time>1643666253</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18beta2 (released 2022-01-31) is a beta version of go1.18 cut
+  from the master branch at the revision tagged go1.18beta1.
+  Refs boo#1193742 go1.18 release tracking (forwarded request 950293 from jfkw)</comment>
+    <requestid>950295</requestid>
+  </revision>
 </revisionlist>
