@@ -20,10 +20,10 @@
 %define _name dde-dock
 
 Name:           deepin-dock
-Version:        5.4.28
+Version:        5.4.69
 Release:        0
 Summary:        Deepin dock
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-dock
 Source0:        https://github.com/linuxdeepin/dde-dock/archive/%{version}/%{_name}-%{version}.tar.gz
@@ -106,10 +106,10 @@ rm -rf %{buildroot}%{_datadir}/polkit-1
 %{_bindir}/%{_name}
 %{_libdir}/%{_name}
 %{_datadir}/%{_name}
-# %dir %{_datadir}/polkit-1
-# %dir %{_datadir}/polkit-1/actions
-# %{_datadir}/polkit-1/actions/com.deepin.dde.dock.overlay.policy
 %{_datadir}/glib-2.0/schemas/com.deepin.dde.dock.module.gschema.xml
+%dir %{_sysconfdir}/dde-dock
+%dir %{_sysconfdir}/dde-dock/indicator
+%config %{_sysconfdir}/dde-dock/indicator/keybord_layout.json
 
 %files devel
 %defattr(-,root,root)

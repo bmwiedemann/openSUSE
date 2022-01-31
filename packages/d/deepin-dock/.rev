@@ -37,4 +37,22 @@
   * Fix bugs (forwarded request 910688 from hillwood)</comment>
     <requestid>910904</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c0767536b6d7b5c0adfd76d38536e97a</srcmd5>
+    <version>5.4.69</version>
+    <time>1643666211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.69
+  * Change copyright to LGPLv3
+  * Fix bugs 
+
+- Update version to 5.4.52
+  * Fix bugs 
+
+- Update version to 5.4.39
+  * Add api for configuring keybord layout
+  * Update translations
+  * Fix bugs</comment>
+    <requestid>950175</requestid>
+  </revision>
 </revisionlist>
