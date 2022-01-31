@@ -27,7 +27,7 @@ Url:            https://github.com/linuxdeepin/go-gir-generator
 Source:         https://github.com/linuxdeepin/%{_name}/archive/%{version}/%{_name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM support-glib2_36-and-higher.patch hillwood@opensuse.org -- Fix compatibility with glib 2.63+
 Patch0:         support-glib2_36-and-higher.patch
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRequires:  golang-packaging

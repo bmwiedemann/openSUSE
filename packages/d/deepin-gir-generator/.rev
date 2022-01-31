@@ -15,4 +15,12 @@
     <comment>- Keep golang version on 1.15 on Tumbleweed, the project does not support (forwarded request 894961 from hillwood)</comment>
     <requestid>894962</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3bf6ee260ad5b69b61f40872e74dbbb0</srcmd5>
+    <version>2.0.2</version>
+    <time>1643666206</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep golang version on 1.15 on Leap15.4+</comment>
+    <requestid>950163</requestid>
+  </revision>
 </revisionlist>
