@@ -109,4 +109,18 @@
   * Add an interface for sound system (forwarded request 910684 from hillwood)</comment>
     <requestid>910900</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>84507039e38f2339ef417f255718f1aa</srcmd5>
+    <version>5.4.20</version>
+    <time>1643666207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.20
+  * Add org.freedeskop.DBus.xml
+  * Add gravity sensor
+
+- Update version to 5.4.17
+  * Add org.freedeskop.DBus.xml config
+  * Fix bugs</comment>
+    <requestid>950165</requestid>
+  </revision>
 </revisionlist>

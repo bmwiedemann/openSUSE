@@ -20,7 +20,7 @@
 %define _name  dde-qt-dbus-factory
 
 Name:           deepin-qt-dbus-factory
-Version:        5.4.10
+Version:        5.4.20
 Release:        0
 Summary:        A repository storing auto-generated Qt5 D-Bus code
 License:        GPL-3.0-or-later

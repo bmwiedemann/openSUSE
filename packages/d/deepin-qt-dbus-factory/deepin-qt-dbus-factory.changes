@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 24 13:54:43 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.20
+  * Add org.freedeskop.DBus.xml
+  * Add gravity sensor
+
+-------------------------------------------------------------------
+Sun Sep 19 15:08:07 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.17
+  * Add org.freedeskop.DBus.xml config
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Mon Jul 26 14:05:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.10
