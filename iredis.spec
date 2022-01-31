@@ -87,8 +87,8 @@ sed -i 's/timeout=10/timeout=20/' tests/cli_tests/test_*.py
 # the tests are extremely flaky on i586 (hitting timeouts)long as x86_64 succeeds, we don't care as this is noarch
 %ifnarch %ix86
 %{_sbindir}/redis-server --port 6379 &
-# skip test_abort_reading_connection as it fails frequently (timeout) on OBS for no apparent reason
-REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not test_abort_reading_connection'
+# skip test_abort_reading_connection as it fails frequently (timeout) on OBS for no apparent reason, others are bugs upstream: https://github.com/laixintao/iredis/issues/417
+REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion)'
 killall redis-server
 %endif
 
