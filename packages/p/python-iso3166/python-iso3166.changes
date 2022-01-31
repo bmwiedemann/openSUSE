@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 16:29:11 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.0.2
+  * Add the ``py.typed`` marker file in accordance with PEP 561
+  * Add ``python_requires`` to ``setup.py``
+  * Add type hints throughout codebase
+  * Drop support for Python versions prior to 3.6
+
+-------------------------------------------------------------------
 Thu Aug 27 02:12:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Convert to single spec

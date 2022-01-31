@@ -1,7 +1,7 @@
 #
 # spec file for package python-iso3166
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-iso3166
-Version:        1.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Python ISO 3166-1 country definitions
 License:        MIT
