@@ -1,7 +1,7 @@
 #
 # spec file for package python-chest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 Name:           python-chest
 Version:        0.2.3
 Release:        0
@@ -25,6 +24,7 @@ Summary:        Spill-to-disk dictionary for Python
 License:        BSD-3-Clause
 URL:            https://github.com/ContinuumIO/chest
 Source:         https://files.pythonhosted.org/packages/source/c/chest/chest-%{version}.tar.gz
+Patch0:         support-python-310.patch
 BuildRequires:  %{python_module HeapDict}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -43,7 +43,7 @@ This is useful in the following two occasions:
 2. Chest persists and so can be saved and loaded for later use
 
 %prep
-%setup -q -n chest-%{version}
+%autosetup -p1 -n chest-%{version}
 
 %build
 %python_build

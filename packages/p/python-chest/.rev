@@ -23,4 +23,13 @@
     <comment> - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887122</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c9d176b4111b74bc0cbda8eef42423bd</srcmd5>
+    <version>0.2.3</version>
+    <time>1643666231</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-310.patch:
+  * Support Python 3.10.</comment>
+    <requestid>950067</requestid>
+  </revision>
 </revisionlist>
