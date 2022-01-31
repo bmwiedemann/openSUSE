@@ -1,7 +1,7 @@
 #
 # spec file for package libtraceevent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sonum   1
 %define dname   traceevent
 %define soname  %{name}%{sonum}
 %define sodname %{dname}%{sonum}
 
 Name:           libtraceevent
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        Linux kernel trace event library
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -29,9 +30,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/
 Source:         https://git.kernel.org/pub/scm/libs/libtrace/%{name}.git/snapshot/%{name}-%{version}.tar.gz
 Source9:        %name-rpmlintrc
+BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
-BuildRequires:  asciidoc
 BuildRequires:  xmlto
 
 %description
@@ -55,7 +56,7 @@ Requires:       %{soname} = %{version}
 This package provides plugins for the libtraceevent library.
 
 %package devel
-Summary:	Header files for %{name}
+Summary:        Header files for %{name}
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
