@@ -20,7 +20,7 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        5.2.0
+Version:        5.2.2
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
@@ -65,6 +65,7 @@ Requires:       shared-mime-info >= 0.50
 Recommends:     %{name}-lang
 Recommends:     gdk-pixbuf-loader-rsvg
 Recommends:     gvfs-backends
+Recommends:     python3dist(xlrd)
 Suggests:       xdg-user-dirs
 Suggests:       xplayer
 Suggests:       xreader
@@ -156,7 +157,6 @@ mkdir -p %{buildroot}%{_libdir}/nemo/extensions-3.0/
 %endif
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files

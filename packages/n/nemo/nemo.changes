@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 28 12:23:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- nemo 5.2.2:
+  * Fix mistake in shortcuts window
+- includes changes from 5.2.1:
+  * search: use the python xlrd module to read .xls files
+
+-------------------------------------------------------------------
 Thu Nov 18 20:27:44 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.2.0.
