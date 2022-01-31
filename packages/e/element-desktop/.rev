@@ -93,4 +93,15 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment></comment>
     <requestid>944746</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b8b3a0ba8af0e921da3ae1acc9f6077</srcmd5>
+    <version>1.9.9</version>
+    <time>1643666248</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/950243
+- Version 1.9.9
+  * Hardening for CVE-2022-23597
+</comment>
+    <requestid>950244</requestid>
+  </revision>
 </revisionlist>
