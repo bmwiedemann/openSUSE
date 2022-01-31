@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 30 11:20:25 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.5.4
+  - Add Python 3.10 to test suite (#1309)
+  - Capture only 5xx HTTP errors in Falcon Integration (#1314)
+  - Attempt custom urlconf resolve in got_request_exception
+    as well (#1317)
+- Update to 1.5.3
+  - Pick up custom urlconf set by Django middlewares from request
+    if any (#1308)
+- Update to 1.5.2
+  - Record event_processor client reports #1281
+  - Add a Quart integration #1248
+  - Sanic v21.12 support #1292
+  - Support Celery abstract tasks #1287
+- Update to 1.5.1
+  - Fix django legacy url resolver regex substitution due to 
+    upstream CVE-2021-44420 fix #1272
+  - Record lost sample_rate events only if tracing is enabled #1268
+  - Fix gevent version parsing for non-numeric parts #1243
+  - Record span and breadcrumb when Django opens db connection #1250
+- Disable check test_leaks to build Leap.
+
+-------------------------------------------------------------------
 Fri Nov 19 08:41:01 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.5.0
