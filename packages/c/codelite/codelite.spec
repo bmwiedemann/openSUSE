@@ -1,7 +1,7 @@
 #
 # spec file for package codelite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,8 @@ Patch0:         fix_compilation_JSON_wxWidgets.patch
 Patch1:         fix_node_env-script-interpreter.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-compilation-with-recent-glibc-where-SIGSTKSZ-is-.patch
+# PATCH-FIX-UPSTREAM codelite-SpellChecker-unnest-classes.patch deb#997219 badshah400@gmail.com -- Un-nest 2 nested classes: this fixes compilation with g++ 11.2.0; patchtaken from upstream commit and re-based for current version
+Patch3:         codelite-SpellChecker-unnest-classes.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

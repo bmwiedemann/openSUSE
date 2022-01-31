@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 30 18:22:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add codelite-SpellChecker-unnest-classes.patch -- Un-nest 2
+  nested classes: this fixes compilation with g++ 11.2.0;
+  patch taken from upstream commit and re-based for current
+  version (deb#997219).
+
+-------------------------------------------------------------------
 Thu Sep 30 10:45:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Backport change from cppcheck:

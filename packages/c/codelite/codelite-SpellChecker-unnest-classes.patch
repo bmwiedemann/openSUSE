@@ -1,0 +1,101 @@
+From 1d57763c8a19b3f5e3ae0b0ca382024a8ac978c2 Mon Sep 17 00:00:00 2001
+From: dghart <dghart david@4Pane.co.uk>
+Date: Sun, 16 Jan 2022 16:31:20 +0000
+Subject: [PATCH] Hunspell: Un-nest 2 nested classes: this fixes compilation
+ with g++ 11.2.0
+
+See debian bug-report https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=997219
+---
+ SpellChecker/IHunSpell.h | 69 ++++++++++++++++++++--------------------
+ 1 file changed, 35 insertions(+), 34 deletions(-)
+
+Index: codelite-15.0/SpellChecker/IHunSpell.h
+===================================================================
+--- codelite-15.0.orig/SpellChecker/IHunSpell.h
++++ codelite-15.0/SpellChecker/IHunSpell.h
+@@ -52,50 +52,50 @@ class CorrectSpellingDlg;
+ class SpellCheck;
+ class IEditor;
+ // ------------------------------------------------------------
+-class IHunSpell
++class StringHashOptionalCase
+ {
+-    class StringHashOptionalCase
++public:
++    StringHashOptionalCase(const bool isCaseSensitive = true) :
++        m_isCaseSensitive(isCaseSensitive)
+     {
+-    public:
+-        StringHashOptionalCase(const bool isCaseSensitive = true) :
+-            m_isCaseSensitive(isCaseSensitive)
+-        {
+-        }
++    }
+ 
+-        size_t operator()(const wxString &str) const
+-        {
+-            if (m_isCaseSensitive) {
+-                return std::hash<wxString>()(str);
+-            }
+-            else {
+-                return std::hash<wxString>()(str.Upper());
+-            }
++    size_t operator()(const wxString &str) const
++    {
++        if (m_isCaseSensitive) {
++            return std::hash<wxString>()(str);
+         }
++        else {
++            return std::hash<wxString>()(str.Upper());
++        }
++    }
+ 
+-    private:
+-        bool m_isCaseSensitive;
+-    };
++private:
++    bool m_isCaseSensitive;
++};
+ 
+-    class StringCompareOptionalCase
++class StringCompareOptionalCase
++{
++public:
++    StringCompareOptionalCase(const bool isCaseSensitive = true) :
++        m_isCaseSensitive(isCaseSensitive)
+     {
+-    public:
+-        StringCompareOptionalCase(const bool isCaseSensitive = true) :
+-            m_isCaseSensitive(isCaseSensitive)
+-        {
+-        }
+-
+-        bool operator()(const wxString &lhs, const wxString &rhs) const
+-        {
+-            if (m_isCaseSensitive)
+-                return (0 == lhs.Cmp(rhs));
+-            else
+-                return (0 == lhs.CmpNoCase(rhs));
+-        }
++    }
+ 
+-    private:
+-        bool m_isCaseSensitive;
+-    };
++    bool operator()(const wxString &lhs, const wxString &rhs) const
++    {
++        if (m_isCaseSensitive)
++            return (0 == lhs.Cmp(rhs));
++        else
++            return (0 == lhs.CmpNoCase(rhs));
++    }
++
++private:
++    bool m_isCaseSensitive;
++};
+ 
++class IHunSpell
++{
+ public:
+     IHunSpell();
+     virtual ~IHunSpell();
