@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 16 04:14:30 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.35
+  * Fix bugs
+
+-------------------------------------------------------------------
+Wed Oct 27 13:31:26 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Leap 15.4+ 
+
+-------------------------------------------------------------------
+Sun Oct 24 03:05:29 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.15
+  * Add SyncWriteFile
+  * Add BindTextdomainCodeset
+  * Fix Mock
+
+-------------------------------------------------------------------
 Fri Jul 23 13:43:54 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.7.10

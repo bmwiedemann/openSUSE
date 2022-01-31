@@ -28,4 +28,20 @@
   * Update test modules (forwarded request 910694 from hillwood)</comment>
     <requestid>910911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e2cab82610861fa6d7518cb1b3dac91</srcmd5>
+    <version>5.7.35</version>
+    <time>1643666211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.7.35
+  * Fix bugs
+
+- Fix build on Leap 15.4+ 
+
+- Update version to 5.7.15
+  * Add SyncWriteFile
+  * Add BindTextdomainCodeset
+  * Fix Mock</comment>
+    <requestid>950177</requestid>
+  </revision>
 </revisionlist>
