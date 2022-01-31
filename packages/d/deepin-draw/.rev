@@ -27,4 +27,15 @@
   * Fix bugs (forwarded request 910685 from hillwood)</comment>
     <requestid>910901</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03372eee9994b65ef64964b8af9f328f</srcmd5>
+    <version>5.10.3</version>
+    <time>1643666203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.10.3
+  * Update translations
+  * Update manual documents
+  * Fix bug</comment>
+    <requestid>950156</requestid>
+  </revision>
 </revisionlist>

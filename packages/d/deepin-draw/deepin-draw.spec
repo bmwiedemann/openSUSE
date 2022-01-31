@@ -22,7 +22,7 @@
 %endif
 
 Name:           deepin-draw
-Version:        5.9.7
+Version:        5.10.3
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
@@ -66,7 +66,7 @@ images developed by Deepin Technology.
 %setup -q -n %{name}-%{version}
 # sed -i 's/Exec=dde-calendar/Exec=env QT_QPA_PLATFORMTHEME=deepin dde-calendar/g' \
 # calendar-client/assets/dde-calendar.desktop
-sed -i '/MimeTypeDir/s|application|mime/application|' CMakeLists.txt
+sed -i '/MimeTypeDir/s|application|mime/application|' src/CMakeLists.txt
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
