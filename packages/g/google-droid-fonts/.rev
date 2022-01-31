@@ -67,4 +67,11 @@
     <comment></comment>
     <requestid>949629</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>30ed7b64872243a665c5b874784bd6f3</srcmd5>
+    <version>20121204</version>
+    <time>1643624571</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1195328</comment>
+  </revision>
 </revisionlist>
