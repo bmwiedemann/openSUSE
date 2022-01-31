@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 14 16:00:57 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to 2.16.0
+  * add support for IRCv3 SETNAME, invite-notify, account-tag, standard replies, and UTF8ONLY
+  * add support for strikethrough formatting
+  * update network list (including Libera.Chat as the default)
+  * fix text clipping issues by respecting font line height
+  * fix URLs not being escaped when opened
+  * fix misc IRC message parsing issues
+  * remove libnotify dependency on Linux, fixing hangs when notifications are shown
+  * remove libproxy dependency on Linux
+  * print ChanServ notices in the front tab by default
+  * fishlim: add support for CBC mode
+  * python: rewrite plugin in python with CFFI 
+    This lowers memory usage and fixed conflicts with many C Python modules including pygobject
+- Package changes:
+ - Update meson configuraion options
+ - Add python3-cffi as BuildRequires and Requires for python3 plugin package
+ - Drop 2559.patch and feature-add-libera-chat.patch (merged upstream)
+ - Drop libnotify and libproxy BuildRequires, as per upstream changes
+ - Drop hexchat.keyring, upstream no longer provides detached tarball signatures
+    (gh#hexchat/hexchat#2635)
+
+-------------------------------------------------------------------
 Fri May 21 12:59:57 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Add Libera.Chat to the channel list

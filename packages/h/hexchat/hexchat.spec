@@ -1,7 +1,7 @@
 #
 # spec file for package hexchat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hexchat
-Version:        2.14.3
+Version:        2.16.0
 Release:        0
 Summary:        A graphical IRC (chat) client
 License:        GPL-2.0-or-later
@@ -25,20 +25,15 @@ Group:          Productivity/Networking/IRC
 URL:            https://hexchat.github.io/
 Source0:        https://dl.%{name}.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        hexchat-migrate-sh
-Source2:        https://dl.%{name}.net/%{name}/%{name}-%{version}.tar.xz.asc
-Source3:        hexchat.keyring
 # PATCH-FEATURE-SLE migrate-configuration-from-xchat.patch tyang@suse.com fate#318480 -- replace xchat with hexchat
 Patch1:         migrate-configuration-from-xchat.patch
-# PATCH-FIX-UPSTREAM 2559.patch dimstar@opensuse.org -- fix segfault on lua_pop with Lua 5.4.3
-Patch2:         https://patch-diff.githubusercontent.com/raw/hexchat/hexchat/pull/2559.patch
-# https://github.com/hexchat/hexchat/commit/a25f2381689d2c2279a0e43b33f6c0ec8305a096.patch
-Patch3:         feature-add-libera-chat.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  lua-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-cffi
+BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::Embed)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.34.0
@@ -46,9 +41,7 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libcanberra) >= 0.22
-BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpci)
-BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(openssl) >= 0.9.8
 BuildRequires:  pkgconfig(x11)
 Recommends:     %{name}-lang
@@ -93,6 +86,7 @@ The HexChat plugin providing the LUA scripting interface.
 %package plugins-python3
 Summary:        Plugin for HexChat adds support for Python3 scripts
 Group:          System/Libraries
+Requires:       python3-cffi
 Provides:       plugins-python = %{version}
 Obsoletes:      plugins-python < %{version}
 
@@ -106,18 +100,20 @@ The HexChat plugin providing the Python 3 scripting interface.
 
 %build
 %meson \
-    -Dwith-gtk=true \
-    -Dwith-ssl=true \
-    -Dwith-dbus=true \
-    -Dwith-libproxy=true \
-    -Dwith-libnotify=true \
-    -Dwith-libcanberra=true \
-    -Dwith-plugin=true \
+    -Dgtk-frontend=true \
+    -Dtls=enabled \
+    -Ddbus=enabled \
+    -Dlibcanberra=enabled \
+    -Dplugin=true \
     -Dwith-checksum=true \
     -Dwith-fishlim=true \
     -Dwith-lua=lua \
     -Dwith-perl=perl \
+%if 0%{?suse_version} >= 1599
     -Dwith-python=python3-embed \
+%else
+    -Dwith-python=python3 \
+%endif
     -Dwith-sysinfo=true
 %meson_build
 
@@ -132,6 +128,7 @@ install -Dm 0755 %{SOURCE1} %{buildroot}%{_libdir}/hexchat/$(basename %{SOURCE1}
 %{_bindir}/%{name}
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
+%dir %{_libdir}/%{name}/python
 %{_libdir}/hexchat/hexchat-migrate-sh
 %{_libdir}/%{name}/plugins/checksum.so
 %{_libdir}/%{name}/plugins/fishlim.so
@@ -142,7 +139,7 @@ install -Dm 0755 %{SOURCE1} %{buildroot}%{_libdir}/hexchat/$(basename %{SOURCE1}
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/io.github.Hexchat.appdata.xml
 %{_datadir}/dbus-1/services/org.%{name}.service.service
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files devel
 %{_includedir}/%{name}-plugin.h
@@ -156,6 +153,7 @@ install -Dm 0755 %{SOURCE1} %{buildroot}%{_libdir}/hexchat/$(basename %{SOURCE1}
 
 %files plugins-python3
 %{_libdir}/%{name}/plugins/python.so
+%{_libdir}/%{name}/python/*.py
 
 %files lang -f %{name}.lang
 
