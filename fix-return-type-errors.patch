@@ -1,6 +1,6 @@
-diff -Nur deepin-system-monitor-5.8.15/deepin-system-monitor-main/3rdparty/strutils.c deepin-system-monitor-5.8.15-new/deepin-system-monitor-main/3rdparty/strutils.c
---- deepin-system-monitor-5.8.15/deepin-system-monitor-main/3rdparty/strutils.c	2021-09-26 08:59:21.000000000 +0800
-+++ deepin-system-monitor-5.8.15-new/deepin-system-monitor-main/3rdparty/strutils.c	2021-11-01 16:46:43.414686745 +0800
+diff -Nur deepin-system-monitor-5.8.20/3rdparty/strutils.c deepin-system-monitor-5.8.20-new/3rdparty/strutils.c
+--- deepin-system-monitor-5.8.20/3rdparty/strutils.c	2021-11-25 14:39:13.000000000 +0800
++++ deepin-system-monitor-5.8.20-new/3rdparty/strutils.c	2022-01-29 10:27:25.316549598 +0800
 @@ -275,6 +275,7 @@
  	va_end(ap);
  

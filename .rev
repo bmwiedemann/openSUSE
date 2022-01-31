@@ -92,4 +92,14 @@
     <comment>- Add fix-return-type-errors.patch. (forwarded request 928897 from hillwood)</comment>
     <requestid>928898</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>827ccdd52e5b8dee3011155bcc8e64cb</srcmd5>
+    <version>5.8.20</version>
+    <time>1643666207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.20
+  * Fix bugs
+  * Drop pannel icon</comment>
+    <requestid>950164</requestid>
+  </revision>
 </revisionlist>
