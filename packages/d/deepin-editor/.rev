@@ -36,4 +36,12 @@
   system default (forwarded request 869742 from hillwood)</comment>
     <requestid>869748</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3208d07bfeb17707c1e2154650bc80a</srcmd5>
+    <version>5.10.16</version>
+    <time>1643666213</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 950193 from hillwood)</comment>
+    <requestid>950195</requestid>
+  </revision>
 </revisionlist>

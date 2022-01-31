@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-editor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,20 @@
 
 
 Name:           deepin-editor
-Version:        5.9.0.32
+Version:        5.10.16
 Release:        0
 Summary:        A text editor for the Deepin environment
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://github.com/linuxdeepin/deepin-editor
 Source0:        https://github.com/linuxdeepin/deepin-editor/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Use-librares-system-default.patch hillwood@opensuse.org - Use these librares in system default
-Patch0:         Use-librares-system-default.patch
+# PATCH-FIX-UPSTREAM Fix-return-type.patch hillwood@opensuse.org - Fix a return type error
+Patch0:         Fix-return-type.patch
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gmock
 BuildRequires:  gtest
@@ -35,7 +40,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  recode-devel
 BuildRequires:  cmake(DFrameworkdbus)
 BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5SyntaxHighlighting) 
+BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -45,6 +50,7 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(chardet)
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkgui)
 BuildRequires:  pkgconfig(dtkwidget)
@@ -81,6 +87,7 @@ deepin-editor.desktop
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
 
 %files lang
 %defattr(-,root,root)

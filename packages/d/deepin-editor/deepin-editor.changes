@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 31 07:55:18 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.16
+  * Add manual documents
+  * Drop libenca0
+  * Add libchardet1
+  * Add ut code
+  * Fix bug
+- Drop Use-librares-system-default.patch
+- Add Fix-return-type.patch, fix a return type error 
+
+-------------------------------------------------------------------
 Wed Feb  3 14:53:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.9.0.32
