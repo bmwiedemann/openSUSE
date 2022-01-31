@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 30 02:08:46 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1643469400.853734877:
+  * Dependency cron 2022-01-29
+  * Add more perl signatures
+  * Add more perl signatures
+  * Simplify code for assigning job settings in `create_from_settings`
+  * Use constant for referring to a job's main settings
+  * Allow changing job settings via restart API
+  * Check whether clones created by the restart API take over the group
+  * Use tidyall instead of custom implementation
+
+-------------------------------------------------------------------
 Thu Jan 27 17:48:26 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1643299616.01abba344:
