@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>924870</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>44d317838a9c3e866f4c1b22f3b0d57a</srcmd5>
+    <version>0.9.0</version>
+    <time>1643666251</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * raqm_t objects can now be reused by calling raqm_clear_contents()
+    before re-use, to potentially reduce the number memory allocations.
+  * don't hardcode python3 in tests.
+  * new API:
+    * raqm_set_freetype_load_flags_range()
+    * raqm_clear_contents()
+- Remove 0001-Pass_version_to_meson_library.patch as it was upstreamed (forwarded request 950205 from polslinux)</comment>
+    <requestid>950279</requestid>
+  </revision>
 </revisionlist>
