@@ -27,7 +27,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           deepin-pw-check
-Version:        5.0.17
+Version:        5.1.2
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Password Check tool
@@ -37,7 +37,7 @@ Source0:        https://github.com/linuxdeepin/deepin-pw-check/archive/%{version
 Source1:        vendor.tar.gz
 Patch0:         disable-gobuild-in-makefile.patch
 BuildRequires:  gcc
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 %if 0%{?suse_version} <= 1500
