@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-screen-recorder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           deepin-screen-recorder
-Version:        5.9.10
+Version:        5.10.9
 Release:        0
 Summary:        Deepin Screen Recorder
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/linuxdeepin/deepin-screen-recorder
 Source0:        https://github.com/linuxdeepin/deepin-screen-recorder/archive/%{version}/%{name}-%{version}.tar.gz
+# fdupes macro works
+Source1:        %{name}-rpmlintrc
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
@@ -54,6 +56,11 @@ BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
 BuildRequires:  pkgconfig(libprocps)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(opencv4)
+%else
+BuildRequires:  pkgconfig(opencv)
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
@@ -82,9 +89,15 @@ The deepin screen recorder plugin of deepin dock
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
+sed -i '/#include<opencv2/i #include <opencv2/imgproc/types_c.h>' src/utils/pixmergethread.h
+%if 0%{?suse_version} > 1500
+sed -i 's/dframeworkdbus/dframeworkdbus opencv4/' src/src.pro
+%else
+sed -i 's/dframeworkdbus/dframeworkdbus opencv/' src/src.pro
+%endif
 sed -i '/include <X11.extensions.XTest.h>/a #undef min' src/event_monitor.cpp
 sed -i '/#include <iostream>/d;1i #include <iostream>' src/screen_shot_event.cpp
-sed -i '/include <X11.extensions.shape.h>/a #undef None' src/utils.cpp
+# sed -i '/include <X11.extensions.shape.h>/a #undef None' src/utils.cpp
 sed -i 's|/usr/lib|$$LIB_INSTALL_DIR|g' src/dde-dock-plugins/recordtime/recordtime.pro
 
 %build
