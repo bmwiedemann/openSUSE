@@ -1,7 +1,7 @@
 #
 # spec file for package libSavitar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define sover 0
 Name:           libSavitar
-%define sversion        4.9
-Version:        4.9.0
+%define sversion        4.13.0
+Version:        4.13.0
 Release:        0
 Summary:        C++ implementation of 3mf loading with SIP python bindings
 License:        LGPL-3.0-only
@@ -28,8 +28,6 @@ URL:            https://github.com/Ultimaker/libSavitar
 Source:         https://github.com/Ultimaker/libSavitar/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- Use system libraries instead of embedded ones.
 Patch0:         use-system-libs.patch
-# PATCH-FIX-OPENSUSE - use Qt5 sip import name, taken from Fedora
-Patch1:         libSavitar-3.5.1-PyQt5.sip.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gmock
 BuildRequires:  gtest

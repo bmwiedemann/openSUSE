@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 27 13:43:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to 4.13.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.0
+- Drop upstreamed patch: 
+  * libSavitar-3.5.1-PyQt5.sip.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 20:04:31 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.9.0
