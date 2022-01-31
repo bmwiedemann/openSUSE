@@ -1,0 +1,11 @@
+diff -Nur deepin-editor-5.10.16/src/widgets/window.cpp deepin-editor-5.10.16-new/src/widgets/window.cpp
+--- deepin-editor-5.10.16/src/widgets/window.cpp	2022-01-27 10:59:34.000000000 +0800
++++ deepin-editor-5.10.16-new/src/widgets/window.cpp	2022-01-31 15:50:43.295725992 +0800
+@@ -2728,6 +2728,7 @@
+             return false;
+         }
+     }
++    return false;
+ }
+ 
+ QString Window::getKeywordForSearchAll()
