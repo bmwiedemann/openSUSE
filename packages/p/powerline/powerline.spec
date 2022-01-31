@@ -36,7 +36,6 @@ BuildRequires:  python3-netifaces
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pyuv
 BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tmux
