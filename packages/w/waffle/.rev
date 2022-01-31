@@ -100,4 +100,12 @@
   * apple: Build fixes</comment>
     <requestid>877573</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f782904330494f02de4d464194e76152</srcmd5>
+    <version>1.7.0</version>
+    <time>1643666243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950213</requestid>
+  </revision>
 </revisionlist>

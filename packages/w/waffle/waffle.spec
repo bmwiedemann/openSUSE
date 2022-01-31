@@ -1,7 +1,7 @@
 #
 # spec file for package waffle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            https://people.freedesktop.org/~chadversary/waffle/index.html
 Source0:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
 Source1:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         https://gitlab.freedesktop.org/mesa/waffle/-/merge_requests/106.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -75,7 +76,7 @@ Devel files for the waffle C library. Libraries, includes and more to
 develop Waffle applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
