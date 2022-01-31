@@ -3422,4 +3422,41 @@ Other
 </comment>
     <requestid>942157</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e47587f0cdca8ca7feb38e5fe7f2c02d</srcmd5>
+    <version>1.33.0</version>
+    <time>1643666232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.33.0 (go.d.plugin 0.31.2)
+Collectors
+* Improvements
+  + Prefer python3 if available (python.d)
+    (gh#netdata/netdata#12001)
+  + Add bar1 memory usage chart (python.d/nvidia_smi)
+    (gh#netdata/netdata#11956)
+  + Add a note that Netfilter's &quot;new&quot; and &quot;ignore&quot; counters are
+    removed in the latest kernel
+    (gh#netdata/netdata#11950)
+  + Consider mat. views as tables in table size/count chart
+    (python.d/postgres)
+    (gh#netdata/netdata#11816)
+  + Use block_size instead of 8*1024 (python.d/postgres)
+    (gh#netdata/netdata#11815)
+* Bug fixes
+  + Fix handling of port_rcv_data and port_xmit_data counters
+    (proc/infiniband)
+    (gh#netdata/netdata#11994)
+  + Fix handling of decoding errors in ExecutableService (python.d)
+    (gh#netdata/netdata#11979)
+  + Fix lack of sufficient system capabilities (perf.plugin)
+    (gh#netdata/netdata#11958)
+  + Fix Netfilter accounting charts priority (nfacct.plugin)
+    (gh#netdata/netdata#11952)
+  + Fix lack of sufficient system capabilities (nfacct.plugin)
+    (gh#netdata/netdata#11951)
+  + Fix collecting user statistics for LDAP users
+    (python.d/nvidia_smi)
+    (gh#netdata/netdata#11858)</comment>
+    <requestid>950091</requestid>
+  </revision>
 </revisionlist>

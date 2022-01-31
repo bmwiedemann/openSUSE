@@ -1,7 +1,7 @@
 #
 # spec file for package netdata
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.31.0
+%define godplugin_version 0.31.2
 Name:           netdata
-Version:        1.32.1
+Version:        1.33.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND MIT AND BSD-3-Clause AND LGPL-2.1-or-later AND OFL-1.1 AND CC-BY-4.0 AND WTFPL
 Group:          System/Monitoring
 URL:            http://my-netdata.io/
-Source0:        https://github.com/netdata/%{name}/releases/download/%{version}/%{name}-v%{version}.tar.gz
+Source0:        https://github.com/netdata/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
 Source1:        https://github.com/netdata/go.d.plugin/archive/v%{godplugin_version}.tar.gz#/go.d.plugin-v%{godplugin_version}.tar.gz
 Source2:        vendor.tar.gz
 Source3:        netdata-rpmlintrc

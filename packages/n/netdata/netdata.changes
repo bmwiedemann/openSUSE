@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Jan 31 06:25:27 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.33.0 (go.d.plugin 0.31.2)
+Collectors
+* Improvements
+  + Prefer python3 if available (python.d)
+    (gh#netdata/netdata#12001)
+  + Add bar1 memory usage chart (python.d/nvidia_smi)
+    (gh#netdata/netdata#11956)
+  + Add a note that Netfilter's "new" and "ignore" counters are
+    removed in the latest kernel
+    (gh#netdata/netdata#11950)
+  + Consider mat. views as tables in table size/count chart
+    (python.d/postgres)
+    (gh#netdata/netdata#11816)
+  + Use block_size instead of 8*1024 (python.d/postgres)
+    (gh#netdata/netdata#11815)
+
+* Bug fixes
+  + Fix handling of port_rcv_data and port_xmit_data counters
+    (proc/infiniband)
+    (gh#netdata/netdata#11994)
+  + Fix handling of decoding errors in ExecutableService (python.d)
+    (gh#netdata/netdata#11979)
+  + Fix lack of sufficient system capabilities (perf.plugin)
+    (gh#netdata/netdata#11958)
+  + Fix Netfilter accounting charts priority (nfacct.plugin)
+    (gh#netdata/netdata#11952)
+  + Fix lack of sufficient system capabilities (nfacct.plugin)
+    (gh#netdata/netdata#11951)
+  + Fix collecting user statistics for LDAP users
+    (python.d/nvidia_smi)
+    (gh#netdata/netdata#11858)
+  + Fix tps decode, and add memory usage chart (python.d/spigotmc)
+    (gh#netdata/netdata#11797)
+  + Fix collecting replica set stats (go.d/mongodb)
+    (gh#netdata/netdata#639)
+
+eBPF
+* Improvements
+  + Add ebpf.plugin informational charts and various optimizations
+    (gh#netdata/netdata#11992)
+  + Update libbpf library to v0.6.1
+    (gh#netdata/netdata#11865)
+
+* Bug fixes
+  + Fix disabling specific ebpf collectors
+    (gh#netdata/netdata#12014)
+  + Fix cachestat on kernel 5.15.x
+    (gh#netdata/netdata#11833)
+
+Health
+* Add sending notifications to channels support to PushBullet
+    (gh#netdata/netdata#11850)
+
+Streaming
+* Add LZ4 streaming data compression
+    (gh#netdata/netdata#11821)
+
+Other
+* Improvements
+  + Add install type info to -W buildinfo output.
+    (gh#netdata/netdata#12010)
+  + Add support for NVME disks with blkext driver
+    (gh#netdata/netdata#12007)
+  + Perform a host metadata update on child reconnection
+    (gh#netdata/netdata#11965)
+  + Send ML feature information with UpdateNodeInfo
+    (gh#netdata/netdata#11913)
+  + Use absolute features when doing training/prediction.
+    (gh#netdata/netdata#11876)
+  + Send the cloud protocol used to posthog
+    (gh#netdata/netdata#11842)
+  + Remove ACLK Legacy
+    (gh#netdata/netdata#11841)
+
+* Bug fixes
+  + Fix access to freed memory in ACLK
+    (gh#netdata/netdata#12015)
+  + Fix a typo in the dashboard_info.js spigot part
+    (gh#netdata/netdata#12008)
+  + Fix queue removed alerts
+    (gh#netdata/netdata#11996)
+  + Fix coverity 374746
+    (gh#netdata/netdata#11973)
+  + Fix ACLK chart description
+    (gh#netdata/netdata#11970)
+  + Fix a broken link in dashboard_info.js
+    (gh#netdata/netdata#11948)
+  + Fix an error in configure.ac
+    (gh#netdata/netdata#11937)
+  + Fix handling of the "-url" parameter in the claiming script
+    (gh#netdata/netdata#11919)
+  + Fix time_t format
+    (gh#netdata/netdata#11897)
+  + Fix compiling with AWS Kinesis support
+    (gh#netdata/netdata#11867)
+  + Fix cmake build
+    (gh#netdata/netdata#11862)
+  + Fix compilation warnings
+    (gh#netdata/netdata#11846)
+
+Deprecation notice
+The following items will be removed in the next release:
+
+* backends subsystem. Has been replaced by the exporting engine.
+* node.d/fronius collector.
+  Will be moved to the netdata/community repository.
+* node.d/sma_webbox collector.
+  Will be moved to the netdata/community repository.
+* node.d/stiebeleltron collector.
+  Will be moved to the netdata/community repository.
+* node.d/named collector. Has been replaced by go.d/bind.
+  Will be moved to the netdata/community repository.
+
+Deprecated in this release
+Legacy ACLK support is officially removed in this release.
+
+
+-------------------------------------------------------------------
 Thu Dec 23 01:28:12 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.32.1 (go.d.plugin 0.31.0)
