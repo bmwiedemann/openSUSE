@@ -1,7 +1,7 @@
 #
 # spec file for package Bear
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           Bear
-Version:        3.0.15
+Version:        3.0.18
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
@@ -43,8 +43,8 @@ BuildRequires:  pkgconfig(gtest_main) >= 1.10
 BuildRequires:  util-linux
 # additional binaries for specific tests
 BuildRequires:  gcc-fortran
-BuildRequires:  valgrind
 BuildRequires:  fakeroot
+BuildRequires:  valgrind
 # the fakeroot test requires xargs
 BuildRequires:  findutils
 %endif

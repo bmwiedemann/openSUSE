@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 19 09:17:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 3.0.18
+  * Fix compile errors with g++ 11.02 (#434, @shrkamat)
+  * Added CMAKE_EXE_LINKER_FLAGS to external projects. (#437, @XaverKlemenschits)
+  * Fixed Libtool test failure. (#435, @gyakovlev)
+
+-------------------------------------------------------------------
 Tue Sep 21 07:11:56 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 3.0.15

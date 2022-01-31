@@ -60,4 +60,15 @@
     <comment></comment>
     <requestid>920612</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>966cc03e81d65301b1207208351e8a43</srcmd5>
+    <version>3.0.18</version>
+    <time>1643666246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.18
+  * Fix compile errors with g++ 11.02 (#434, @shrkamat)
+  * Added CMAKE_EXE_LINKER_FLAGS to external projects. (#437, @XaverKlemenschits)
+  * Fixed Libtool test failure. (#435, @gyakovlev)</comment>
+    <requestid>950230</requestid>
+  </revision>
 </revisionlist>
