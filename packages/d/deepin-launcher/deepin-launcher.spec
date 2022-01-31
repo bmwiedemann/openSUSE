@@ -19,7 +19,7 @@
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.4.24
+Version:        5.4.60
 Release:        0
 Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
