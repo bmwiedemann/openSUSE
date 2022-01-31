@@ -35,7 +35,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server%{psuffix}
-Version:        1.13.3
+Version:        1.13.4
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -54,7 +54,9 @@ BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  %{python_module jupyter-server-test = %{version}}
 # https://github.com/jupyter-server/jupyter_server/issues/666
 BuildRequires:  %{python_module jupyter-client >= 7.1.1}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
 %endif
 Requires:       python >= 3.7
 Requires:       python-Jinja2
@@ -146,7 +148,8 @@ if [ -e ~/.local/share/jupyter ]; then
     echo "WARNING: Not a clean test environment."
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
-%pytest jupyter_server --timeout 60 -p no:threadexception -p no:unraisableexception
+# pytest-xdist for process control so that the worker does not indefinitely hang after success, no parallel tests
+%pytest jupyter_server --timeout 60 --force-flaky --max-runs=3 --no-flaky-report -n 1
 %endif
 
 %if ! %{with test}

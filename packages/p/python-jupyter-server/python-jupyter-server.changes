@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 29 19:35:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.4
+  * Fix nbconvert handler run_sync() #667 (@davidbrochart)
+- Use pytest-timeout and flaky to rerun flaky failing tests
+- Use pytest-xdist for process control so that the worker does not
+  randomly hang at the end of the pytest run.
+
+-------------------------------------------------------------------
 Sat Jan 15 19:52:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.13.3
