@@ -1,7 +1,7 @@
 #
 # spec file for package atheme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           atheme
 %define lname	libathemecore1
-Version:        7.2.11
+Version:        7.2.12
 Release:        0
 Summary:        Extensible IRC services
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(libqrencode)
 %define atheme_home /var/lib/atheme
 %define atheme_log  /var/log/atheme
 %define atheme_run  /run/atheme
-Requires(pre): shadow
+Requires(pre):  shadow
 
 %description
 Atheme is a set of modular IRC services (NickServ, ChanServ, etc.)
