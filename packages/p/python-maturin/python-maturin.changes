@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 31 06:58:49 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.12.6
+* Add support for repairing cross compiled linux wheels
+  gh#PyO3/maturin#754
+* Add support for `manylinux_2_28` and `manylinux_2_31`
+  gh#PyO3/maturin#755
+* Remove existing so file first in `maturin develop` command to
+  avoid triggering SIGSEV in running process
+  gh#PyO3/maturin#760
+
+-------------------------------------------------------------------
 Thu Dec 23 06:19:18 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.12.5

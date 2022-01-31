@@ -243,4 +243,19 @@
 </comment>
     <requestid>942187</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e8364be6a6ac105c8df3815b8303272d</srcmd5>
+    <version>0.12.6</version>
+    <time>1643666233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.6
+* Add support for repairing cross compiled linux wheels
+  gh#PyO3/maturin#754
+* Add support for `manylinux_2_28` and `manylinux_2_31`
+  gh#PyO3/maturin#755
+* Remove existing so file first in `maturin develop` command to
+  avoid triggering SIGSEV in running process
+  gh#PyO3/maturin#760</comment>
+    <requestid>950093</requestid>
+  </revision>
 </revisionlist>
