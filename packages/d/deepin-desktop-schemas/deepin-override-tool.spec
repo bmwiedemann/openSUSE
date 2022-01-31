@@ -23,14 +23,14 @@
 %define   repo            deepin-desktop-schemas
 
 Name:           deepin-override-tool
-Version:        5.9.16
+Version:        5.9.41
 Release:        0
 Summary:        Deepin override tool
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-desktop-schemas
 Source0:        https://github.com/linuxdeepin/deepin-desktop-schemas/archive/%{version}/%{repo}-%{version}.tar.gz
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRequires:  golang-packaging

@@ -30,4 +30,23 @@
 - Update version to 5.9.16, nothing change in tool package. (forwarded request 910676 from hillwood)</comment>
     <requestid>910890</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05ce6ceae6de06cbe0807525da706e83</srcmd5>
+    <version>5.9.41</version>
+    <time>1643666209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.9.41
+  * Add shortcut key setting for globle search
+  * Change network check url 
+
+- Update version to 5.9.18
+  * Add light-sensor-enable
+ 
+
+- Update version to 5.9.41. Nothing change in tool package 
+
+- Update version to 5.9.18. Nothing change in tool package
+- Fix build on Leap 15.4+</comment>
+    <requestid>950170</requestid>
+  </revision>
 </revisionlist>
