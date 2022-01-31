@@ -1,7 +1,7 @@
 #
 # spec file for package python-suds-community
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@
 Name:           python-suds-community
 Version:        1.0.0
 Release:        0
-Summary:        Lightweight SOAP client (Jurko's fork)
+Summary:        Lightweight SOAP client (community fork)
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            http://bitbucket.org/community/suds
+URL:            https://github.com/suds-community/suds
 Source:         https://files.pythonhosted.org/packages/source/s/suds-community/suds-community-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 # Test requirements
@@ -40,10 +40,14 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This is hopefully just a temporary fork of the original suds Python
-library project created because the original project development seems
-to have stalled. Should be reintegrated back into the original project
-if it ever gets revived again.
+Suds is a lightweight SOAP-based web service client for Python.
+
+Although the original suds package stopped releasing versions after
+0.4, many (but not all) other open source projects moved to a
+maintained fork known as "suds-jurko". This is a community fork of
+that fork that is releasing packages under the main suds package name
+(and suds-community for consistency until version 2.x of this
+package).
 
 %prep
 %setup -q -n suds-community-%{version}
