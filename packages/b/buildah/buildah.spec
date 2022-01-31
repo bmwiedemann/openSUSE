@@ -1,7 +1,7 @@
 #
 # spec file for package buildah
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %define with_libostree 1
 %endif
 Name:           buildah
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/containers/buildah
+URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  bash-completion
