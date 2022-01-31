@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-image-viewer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-image-viewer
-Version:        5.7.11
+Version:        5.8.2
 Release:        0
 Summary:        Deepin Image Viewer
 License:        GPL-3.0-or-later
@@ -82,7 +82,7 @@ sed -i "s/(lrelease/(lrelease-qt5/g" src/src.pro
 #         viewer/module/view/contents/ttbcontent.cpp
 # sed -i '/#include <QtDebug>/a #include <QPainterPath>' \
 #         viewer/module/view/contents/imageinfowidget.cpp
-sed -i '/FIF_FAXG3/d' src/src/utils/unionimage.cpp
+# sed -i '/FIF_FAXG3/d' src/src/utils/unionimage.cpp
 sed -i 's/Exec=deepin-image-viewer/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-image-viewer/g' \
 src/%{name}.desktop
 

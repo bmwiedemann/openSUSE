@@ -38,4 +38,14 @@
   * Fix bugs (forwarded request 910687 from hillwood)</comment>
     <requestid>910903</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e3b42c150e4d76cb3f542a99cc47bb6</srcmd5>
+    <version>5.8.2</version>
+    <time>1643666203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.2
+  * Add ocr feature
+  * fix bugs</comment>
+    <requestid>950155</requestid>
+  </revision>
 </revisionlist>
