@@ -1,7 +1,8 @@
-diff -Nur olm-3.2.4/CMakeLists.txt new/CMakeLists.txt
---- olm-3.2.4/CMakeLists.txt	2021-06-01 19:44:45.000000000 +0200
-+++ new/CMakeLists.txt	2021-06-03 17:25:22.292469155 +0200
-@@ -127,5 +127,6 @@
+Index: olm-3.2.10/CMakeLists.txt
+===================================================================
+--- olm-3.2.10.orig/CMakeLists.txt
++++ olm-3.2.10/CMakeLists.txt
+@@ -138,5 +138,6 @@ export(EXPORT olm-targets
  export(PACKAGE Olm)
  
  if (OLM_TESTS)
@@ -9,12 +10,13 @@ diff -Nur olm-3.2.4/CMakeLists.txt new/CMakeLists.txt
 +    enable_testing()
 +    add_subdirectory(tests)
  endif()
-diff -Nur olm-3.2.4/tests/CMakeLists.txt new/tests/CMakeLists.txt
---- olm-3.2.4/tests/CMakeLists.txt	2021-06-01 19:44:45.000000000 +0200
-+++ new/tests/CMakeLists.txt	2021-06-03 17:24:57.372285038 +0200
+Index: olm-3.2.10/tests/CMakeLists.txt
+===================================================================
+--- olm-3.2.10.orig/tests/CMakeLists.txt
++++ olm-3.2.10/tests/CMakeLists.txt
 @@ -1,5 +1,3 @@
 -enable_testing()
 -
  set(TEST_LIST
-     test_base64
-     test_crypto
+     base64
+     crypto

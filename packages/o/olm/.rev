@@ -49,4 +49,12 @@ without javascript bindings our package is not affected
 but better to push out soon</comment>
     <requestid>940318</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a338880f0dfd339240b9215659a2419</srcmd5>
+    <version>3.2.10</version>
+    <time>1643666251</time>
+    <user>dimstar_suse</user>
+    <comment>Updateto 3.2.10</comment>
+    <requestid>950268</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 30 10:32:17 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Updateto 3.2.10
+  - This release includes no change since 3.2.9, but is created to
+    be able to publish again the Android library on MavenCentral.
+- Changes from 3.2.9
+  - Switch C++ tests to use doctest.
+  - Switch JavaScript tests to use jasmine instead of deprecated
+    jasmine-node.
+  - Add session describe function to Python binding.
+- Rebase cmake-enable-testing-builddir.patch.
+- Skip Python2.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Mon Dec 13 17:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.2.8
