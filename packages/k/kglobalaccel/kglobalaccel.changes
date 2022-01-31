@@ -126,6 +126,7 @@ Mon Apr  5 07:12:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 - Changes since 5.80.0:
   * Only use unistd/getuid when available
   * Don't let kglobalaccel run if KDE_SESSION_UID mismatches
+    (boo#1178488)
   * Update KGlobalAccel definition file
 
 -------------------------------------------------------------------
