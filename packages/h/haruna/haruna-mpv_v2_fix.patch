@@ -1,0 +1,28 @@
+From 6437e9eacf6e47c1f73e7521458e5b03460d2dad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?George=20Florea=20B=C4=83nu=C8=99?= <georgefb899@gmail.com>
+Date: Thu, 27 Jan 2022 18:51:41 +0200
+Subject: [PATCH] fix: compile with MPV_CLIENT_API_VERSION 1 and 2
+
+---
+ src/mpvobject.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/mpvobject.cpp b/src/mpvobject.cpp
+index cee6ee7..3469a58 100644
+--- a/src/mpvobject.cpp
++++ b/src/mpvobject.cpp
+@@ -79,7 +79,11 @@ QOpenGLFramebufferObject * MpvRenderer::createFramebufferObject(const QSize &siz
+     // init mpv_gl:
+     if (!obj->mpv_gl)
+     {
++#if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2, 0)
+         mpv_opengl_init_params gl_init_params{get_proc_address_mpv, nullptr, nullptr};
++#else
++        mpv_opengl_init_params gl_init_params{get_proc_address_mpv, nullptr};
++#endif
+         mpv_render_param params[]{
+             {MPV_RENDER_PARAM_API_TYPE, const_cast<char *>(MPV_RENDER_API_TYPE_OPENGL)},
+             {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
+-- 
+GitLab
+

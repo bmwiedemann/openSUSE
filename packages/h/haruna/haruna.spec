@@ -1,7 +1,7 @@
 #
 # spec file for package haruna
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
 URL:            https://invent.kde.org/multimedia/haruna
 Source0:        https://invent.kde.org/multimedia/haruna/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM haruna-mpv_v2_fix.patch
+Patch0:         haruna-mpv_v2_fix.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  hicolor-icon-theme
@@ -58,6 +60,7 @@ Recommends:     youtube-dl
 
 %prep
 %setup -q -n %{name}-v%{version}
+%patch0 -p1
 
 %build
 %cmake
