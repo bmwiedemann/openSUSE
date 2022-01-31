@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 16 13:10:46 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.1
+  * Fix bugs
+  * Update translations
+  * Add new feature for document content: support markdown
+
+-------------------------------------------------------------------
 Fri Sep  3 07:13:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

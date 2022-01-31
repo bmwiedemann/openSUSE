@@ -26,7 +26,7 @@
 %endif
 
 Name:           deepin-file-manager
-Version:        5.2.24
+Version:        5.5.1
 Release:        0
 Summary:        Deepin File Manager
 License:        GPL-3.0-or-later AND MIT
@@ -268,6 +268,8 @@ popd
 
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdde-filemanager-daemon
+
+chmod -x %{buildroot}%{_datadir}/dbus-1/services/*.service
 %suse_update_desktop_file -r %{_name} System FileManager
 %suse_update_desktop_file -r dde-computer System FileManager
 %suse_update_desktop_file -r dde-trash System FileManager
@@ -312,8 +314,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdde-filemanager-daemon
 %{_datadir}/deepin/dde-file-manager
 %{_datadir}/dbus-1/interfaces/com.deepin.filemanager.filedialog.xml
 %{_datadir}/dbus-1/interfaces/com.deepin.filemanager.filedialogmanager.xml
-%{_datadir}/dbus-1/services/com.deepin.filemanager.filedialog.service
-%{_datadir}/dbus-1/services/org.freedesktop.FileManager.service
+%{_datadir}/dbus-1/services/*.service
 # %{_datadir}/dbus-1/system-services/com.deepin.filemanager.daemon.service
 # %{_datadir}/polkit-1/actions/com.deepin.pkexec.dde-file-manager.policy
 # %{_datadir}/polkit-1/actions/com.deepin.filemanager.daemon.policy
