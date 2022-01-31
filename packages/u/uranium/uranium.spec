@@ -1,7 +1,7 @@
 #
 # spec file for package uranium
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %define UM_1_minor 6
 
 Name:           uranium
-%define sversion        4.9
-Version:        4.9.0
+%define sversion        4.13.0
+Version:        4.13.0
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only
