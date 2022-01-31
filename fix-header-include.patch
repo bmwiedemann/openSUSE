@@ -1,12 +1,11 @@
-diff -Nur dde-file-manager-5.2.18/src/dde-file-manager-lib/dde-file-manager-lib.pro dde-file-manager-5.2.18-new/src/dde-file-manager-lib/dde-file-manager-lib.pro
---- dde-file-manager-5.2.18/src/dde-file-manager-lib/dde-file-manager-lib.pro	2021-04-27 16:51:31.000000000 +0800
-+++ dde-file-manager-5.2.18-new/src/dde-file-manager-lib/dde-file-manager-lib.pro	2021-06-07 16:42:26.611157101 +0800
-@@ -91,10 +91,7 @@
- include(interfaces/vfs/vfs.pri)
+diff -Nur dde-file-manager-5.5.1/src/dde-file-manager-lib/dde-file-manager-lib.pro dde-file-manager-5.5.1-new/src/dde-file-manager-lib/dde-file-manager-lib.pro
+--- dde-file-manager-5.5.1/src/dde-file-manager-lib/dde-file-manager-lib.pro	2021-11-12 14:53:16.000000000 +0800
++++ dde-file-manager-5.5.1-new/src/dde-file-manager-lib/dde-file-manager-lib.pro	2021-12-16 20:49:03.774588565 +0800
+@@ -93,9 +93,7 @@
  include(interfaces/customization/customization.pri)
  include(src.pri)
--
--isEqual(ARCH, sw_64) | isEqual(ARCH, mips64) | isEqual(ARCH, mips32) | isEqual(ARCH, aarch64){
+ 
+-isEqual(ARCH, sw_64) | isEqual(ARCH, mips64) | isEqual(ARCH, mips32) | isEqual(ARCH, aarch64) | isEqual(ARCH, loongarch64) {
 -    include(search/dfsearch.pri)
 -}
 +include(search/dfsearch.pri)
