@@ -16,4 +16,12 @@
   golang 1.16+ (forwarded request 894950 from hillwood)</comment>
     <requestid>894965</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>740f4ef755522fc4ed5eb197192e21d7</srcmd5>
+    <version>0.6.3</version>
+    <time>1643666206</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Leap 15.4+</comment>
+    <requestid>950162</requestid>
+  </revision>
 </revisionlist>

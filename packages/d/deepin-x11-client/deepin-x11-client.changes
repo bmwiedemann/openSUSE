@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 27 13:28:44 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Leap 15.4+ 
+
+-------------------------------------------------------------------
 Fri May 21 14:34:55 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Keep golang verion on 1.15 on Tumbleweed, the project does not support 

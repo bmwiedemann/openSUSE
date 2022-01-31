@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pam-devel
 BuildRequires:  fdupes
 BuildRequires:  mobile-broadband-provider-info
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRequires:  golang-packaging
