@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 28 20:36:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18:
+  * Remove stale email address
+  * Remove some unused variables
+  * Fix clang compile issue with static function
+  * Change Freeverb to handle sample rates better
+  * Fix URL in documentation
+  * Fix so delay can handle a delay of zero
+
+-------------------------------------------------------------------
 Mon May 17 12:51:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.17
