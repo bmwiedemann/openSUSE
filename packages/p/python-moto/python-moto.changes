@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 31 07:13:04 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.2:
+  * Miscellaneous:
+      * Improved configuration options for Docker-instances started by
+        AWSLambda and Batch
+  * New Methods:
+      * EC2:
+          * create_snapshots()
+      * Logs:
+          * create_export_task()
+      * Organizations:
+          * remove_account_from_organization()
+  * Miscellaneous:
+      * DynamoDB: transact_write_items() now throws a
+        MultipleTransactionsException when appropriate
+      * DynamoDB: Now throws the appropriate InvalidConditionExpression when
+        a ConditionExpression contains reserved keywords
+      * Organizations: delete_organization() now validates whether all
+        accounts are deleted
+      * SecretsManager: The attributes CreatedDate and LastChangedDate are
+        now returned for secrets
+      * SNS: Simplistic email validation is now in place before sending emails
+  * Removed:
+      - All deprecated decorators have been removed
+  * Changes:
+      - The behaviour of the class-decorator has been reworked - the state
+        is now reset before every test-method.
+      - ECS ARN's are now using the long format.
+  * Rebranded:
+      - The new mock_s3control-decorator has been introduced. The existing
+        S3control methods (get/put/delete_public_access_block) are no longer
+        available via mock_s3, only via mock_s3control.
+  * General:
+      - Python 3.5 support has been removed
+      - Python 3.10 is now supported 
+- Add graphql-core to {Build,}Requires
+- Remove importlib-metadata from {Build,}Requires
+
+-------------------------------------------------------------------
 Thu Jan  6 19:35:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.0

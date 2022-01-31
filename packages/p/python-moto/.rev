@@ -106,4 +106,41 @@
     <comment></comment>
     <requestid>944760</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b6dd91fef4bbd5e16d471bb93ec8abc7</srcmd5>
+    <version>3.0.2</version>
+    <time>1643666234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Miscellaneous:
+      * Improved configuration options for Docker-instances started by
+        AWSLambda and Batch
+  * New Methods:
+      * EC2:
+          * create_snapshots()
+      * Logs:
+          * create_export_task()
+      * Organizations:
+          * remove_account_from_organization()
+  * Miscellaneous:
+      * DynamoDB: transact_write_items() now throws a
+        MultipleTransactionsException when appropriate
+      * DynamoDB: Now throws the appropriate InvalidConditionExpression when
+        a ConditionExpression contains reserved keywords
+      * Organizations: delete_organization() now validates whether all
+        accounts are deleted
+      * SecretsManager: The attributes CreatedDate and LastChangedDate are
+        now returned for secrets
+      * SNS: Simplistic email validation is now in place before sending emails
+  * Removed:
+      - All deprecated decorators have been removed
+  * Changes:
+      - The behaviour of the class-decorator has been reworked - the state
+        is now reset before every test-method.
+      - ECS ARN's are now using the long format.
+  * Rebranded:
+      - The new mock_s3control-decorator has been introduced. The existing
+        S3control methods (get/put/delete_public_access_block) are no longer</comment>
+    <requestid>950105</requestid>
+  </revision>
 </revisionlist>

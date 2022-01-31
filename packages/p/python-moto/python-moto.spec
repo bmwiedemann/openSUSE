@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-moto
-Version:        2.3.0
+Version:        3.0.2
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
@@ -39,9 +39,6 @@ Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.9.0
 Requires:       python-xmltodict
 Requires:       python-zipp
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib_metadata
-%endif
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-moto-all
@@ -56,14 +53,12 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.12.201}
-# old boto is still imported in test files, but not a runtime requirement anymore.
-BuildRequires:  %{python_module boto}
+BuildRequires:  %{python_module cfn-lint >= 0.4.0}
 BuildRequires:  %{python_module cryptography >= 3.3.1}
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module docker >= 2.5.1}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module graphql-core}
 BuildRequires:  %{python_module idna >= 2.5}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module parameterized}
@@ -78,7 +73,6 @@ BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  %{python_module zipp}
-BuildRequires:  %{python_module cfn-lint >= 0.4.0 if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
@@ -90,10 +84,9 @@ library.
 Summary:        Library to mock out the boto library -- all extras
 Requires:       python-PyYAML >= 5.1
 Requires:       python-aws-xray-sdk >= 0.93
-%if "%python_flavor" != "python36"
 Requires:       python-cfn-lint >= 0.4.0
-%endif
 Requires:       python-docker >= 2.5.1
+Requires:       python-graphql-core
 Requires:       python-idna >= 2.5
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
@@ -115,8 +108,7 @@ A library that allows your python tests to mock out the boto
 library. Meta package to install server extras (moto[server])
 
 %prep
-%setup -q -n moto-%{version}
-%autopatch -p1
+%autosetup -p1 -n moto-%{version}
 # avoid zero-length modules
 for f in athena/utils.py ec2/regions.py glue/utils.py medialive/exceptions.py redshift/utils.py support/exceptions.py; do
   echo '# empty module' > moto/$f
@@ -151,8 +143,6 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_describe_certificate"
   donttest+=" or (test_budgets and test_create_and_describe)"
 fi
-# no cfn-lint for python36
-python36_donttest+=" or (test_cloudformation and (validate or invalid_missing))"
 # see Makefile
 deselect_for_parallel=" or test_kinesisvideoarchivedmedia or test_awslambda or test_batch or test_ec2 or test_sqs"
 parallel_tests="./tests/test_awslambda ./tests/test_batch ./tests/test_ec2 ./tests/test_sqs"
