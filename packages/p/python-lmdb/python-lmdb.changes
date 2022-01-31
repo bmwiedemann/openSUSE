@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 31 06:49:57 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.3.0
+* Add Python 3.10 support.
+* Fix crash relating to caching of transactions.
+  The 'max_spare_txns' parameter to Environment/open is currently
+  ignored.
+
+-------------------------------------------------------------------
 Tue Apr 20 02:10:56 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to v1.2.1 (no changes)
