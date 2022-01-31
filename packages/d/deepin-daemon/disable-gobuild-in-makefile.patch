@@ -1,6 +1,6 @@
-diff -Nur dde-daemon-5.12.52/Makefile dde-daemon-5.12.52-new/Makefile
---- dde-daemon-5.12.52/Makefile	2021-01-06 14:30:57.000000000 +0800
-+++ dde-daemon-5.12.52-new/Makefile	2021-02-21 18:58:53.303974197 +0800
+diff -Nur dde-daemon-5.13.49/Makefile dde-daemon-5.13.49-new/Makefile
+--- dde-daemon-5.13.49/Makefile	2021-07-28 13:24:41.000000000 +0800
++++ dde-daemon-5.13.49-new/Makefile	2021-09-19 21:34:31.739930665 +0800
 @@ -4,8 +4,8 @@
  GOBUILD = go build $(GO_BUILD_FLAGS)
  
@@ -34,8 +34,8 @@ diff -Nur dde-daemon-5.12.52/Makefile dde-daemon-5.12.52-new/Makefile
  	deepin-policy-ts-convert ts2policy misc/polkit-action/com.deepin.daemon.$$i.policy.in misc/ts/com.deepin.daemon.$$i.policy misc/polkit-action/com.deepin.daemon.$$i.policy; \
  	done
  
--build: prepare out/bin/default-terminal out/bin/default-file-manager out/bin/desktop-toggle $(addprefix out/bin/, ${BINARIES}) ts_to_policy
-+build: prepare out/bin/default-file-manager out/bin/desktop-toggle $(addprefix out/bin/, ${BINARIES}) ts_to_policy
+-build: prepare out/bin/default-terminal out/bin/default-file-manager out/bin/desktop-toggle $(addprefix out/bin/, ${BINARIES}) ts_to_policy icons translate
++build: prepare out/bin/default-file-manager out/bin/desktop-toggle $(addprefix out/bin/, ${BINARIES}) ts_to_policy icons translate
  
  test: prepare
  	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" go test -v ./...

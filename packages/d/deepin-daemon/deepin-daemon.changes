@@ -11,6 +11,36 @@ Wed Jan 19 11:41:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   shortcut through systemd-mini.
 
 -------------------------------------------------------------------
+Thu Dec 16 05:56:56 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.13.97
+  * Update translations
+  * Add login reminder port
+  * Fix bugs
+  * New feature: global shortcut for search
+- Drop harden_hwclock_stop.service.patch
+
+-------------------------------------------------------------------
+Wed Oct 27 13:35:49 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Leap 15.4+
+
+-------------------------------------------------------------------
+Sun Oct 24 03:20:56 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.13.78
+  * new dependence libnss-myhostname 
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sun Sep 19 14:15:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.13.49
+  * Add xsettings config
+  * Drop hwclock_stop.service
+  * Fix bugs
+  
+-------------------------------------------------------------------
 Fri Sep  3 07:04:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

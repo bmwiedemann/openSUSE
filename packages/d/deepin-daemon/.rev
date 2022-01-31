@@ -53,4 +53,28 @@
     <comment> (forwarded request 947872 from hillwood)</comment>
     <requestid>947873</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>34de2193a10aa34ec7f9fc6a681f361f</srcmd5>
+    <version>5.13.97</version>
+    <time>1643666208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.13.97
+  * Update translations
+  * Add login reminder port
+  * Fix bugs
+  * New feature: global shortcut for search
+- Drop harden_hwclock_stop.service.patch
+
+- Fix build on Leap 15.4+
+
+- Update version to 5.13.78
+  * new dependence libnss-myhostname 
+  * Fix bugs 
+
+- Update version to 5.13.49
+  * Add xsettings config
+  * Drop hwclock_stop.service
+  * Fix bugs</comment>
+    <requestid>950166</requestid>
+  </revision>
 </revisionlist>
