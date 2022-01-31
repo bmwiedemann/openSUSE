@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 31 13:22:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.9.0:
+  * raqm_t objects can now be reused by calling raqm_clear_contents()
+    before re-use, to potentially reduce the number memory allocations.
+  * don't hardcode python3 in tests.
+  * new API:
+    * raqm_set_freetype_load_flags_range()
+    * raqm_clear_contents()
+- Remove 0001-Pass_version_to_meson_library.patch as it was upstreamed
+
+-------------------------------------------------------------------
+Mon Dec 20 22:17:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Support using SheenBiDi instead of FriBiDi for Unicode BiDi support.
+  * Fix running tests with Python <= 3.6.
+  * New API:
+    * raqm_get_par_resolved_direction
+    * raqm_get_direction_at_index
+
+-------------------------------------------------------------------
 Thu Sep 30 08:10:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.7.2

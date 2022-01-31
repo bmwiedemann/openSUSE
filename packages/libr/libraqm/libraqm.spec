@@ -1,7 +1,7 @@
 #
 # spec file for package libraqm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define sover 0
 Name:           libraqm
-Version:        0.7.2
+Version:        0.9.0
 Release:        0
 Summary:        Complex Textlayout Library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/HOST-Oman/libraqm
 Source:         https://github.com/HOST-Oman/libraqm/releases/download/v%{version}/raqm-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Pass_version_to_meson_library.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc
@@ -87,7 +85,7 @@ export LC_ALL=C.utf8
 
 %files -n %{name}%{sover}
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_libdir}/libraqm.so.*
 
 %files devel
