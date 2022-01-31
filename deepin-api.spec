@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-api
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-#
 %define   provider        github
 %define   provider_tld    com
 %define   project         linuxdeepin
@@ -25,11 +24,10 @@
 %define   import_path     pkg.deepin.io/dde/api
 
 Name:           deepin-api
-Version:        5.4.9
+Version:        5.4.32
 Release:        0
 Summary:        Go-lang bingding for dde-daemon
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-api
 Source0:        https://github.com/linuxdeepin/dde-api/archive/%{version}/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -41,14 +39,16 @@ Patch0:         default-grub2-theme.patch
 Patch1:         disable-gosrc-install-in-makefile.patch
 Patch2:         harden_deepin-login-sound.service.patch
 Patch3:         harden_deepin-shutdown-sound.service.patch
+Group:          System/GUI/Other
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
 BuildRequires:  deepin-gir-generator
 BuildRequires:  deepin-sound-theme
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
+BuildRequires:  golang-github-linuxdeepin-go-gir-generator
 BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-github-linuxdeepin-go-x11-client
 BuildRequires:  golang-packaging

@@ -1,1 +1,4 @@
 addFilter("devel-file-in-non-devel-package .*/usr/share/go/*")
+
+# Set badness for leap. These dbus profiles have been whilelisted on Tumbleweed.
+# setBadness("suse-dbus-unauthorized-service", 10)
