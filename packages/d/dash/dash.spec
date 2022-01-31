@@ -1,7 +1,7 @@
 #
 # spec file for package dash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,16 @@ BuildRequires:  libedit-devel
 DASH is a POSIX-compliant implementation of /bin/sh that aims to be as small as
 possible without sacrificing speed where possible.
 
+%package sh
+Summary:        Handle behaviour of /bin/sh
+Group:          System/Shells
+Requires:       dash = %{version}
+Conflicts:      alternative(sh)
+Provides:       alternative(sh)
+
+%description sh
+Use dash as /bin/sh implementation.
+
 %prep
 %setup -q
 %autopatch -p1
@@ -52,6 +62,7 @@ possible without sacrificing speed where possible.
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/dash %{buildroot}/bin/dash
 %endif
+ln -sf %{_bindir}/dash %{buildroot}%{_bindir}/sh
 
 %files
 %license COPYING
@@ -61,5 +72,8 @@ ln -s %{_bindir}/dash %{buildroot}/bin/dash
 /bin/dash
 %endif
 %{_mandir}/man1/dash.1%{?ext_man}
+
+%files sh
+%{_bindir}/sh
 
 %changelog
