@@ -52,6 +52,8 @@
     <package name="mandoc"/>
     <package name="wget"/>
     <package name="timezone"/>
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
     <package name="-busybox-wget"/>
     <package name="-busybox-man"/>
   </packages>

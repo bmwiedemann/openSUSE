@@ -34,4 +34,13 @@
     <comment></comment>
     <requestid>891015</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2c09f27f3bf121e4eb034d2e7ca5f0bd</srcmd5>
+    <version>1.0.0</version>
+    <time>1643666235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1643618388.892d81f:
+  * Add certificates for sa-update/wget (forwarded request 950117 from kukuk)</comment>
+    <requestid>950118</requestid>
+  </revision>
 </revisionlist>

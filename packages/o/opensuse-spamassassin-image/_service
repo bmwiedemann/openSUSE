@@ -20,9 +20,9 @@
         <param name="version">_none_</param>
         <param name="subdir">spamassassin</param>
         <param name="filename">root</param>
-        <param name="include">root/entrypoint.sh</param>
-        <param name="include">root/update-sa-rules.sh</param>
-        <param name="include">root/start-spamd.sh</param>
+        <param name="include">entrypoint.sh</param>
+        <param name="include">update-sa-rules.sh</param>
+        <param name="include">start-spamd.sh</param>
     </service>
     <service mode="buildtime" name="kiwi_metainfo_helper"/>
     <service mode="buildtime" name="kiwi_label_helper"/>
