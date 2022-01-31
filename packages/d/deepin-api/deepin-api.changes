@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 16 04:00:43 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.32
+  * Fix bugs
+
+-------------------------------------------------------------------
+Wed Oct 27 02:06:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Set badness for leap. These dbus profiles have been whilelisted on 
+  Tumbleweed. 
+- Fix build on Leap 15.4+
+
+-------------------------------------------------------------------
+Thu Sep 30 06:53:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build for Tumbleweed x86_32 
+
+-------------------------------------------------------------------
+Mon Sep 20 12:25:36 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.11
+  * Fix ImagBlur security issue
+
+-------------------------------------------------------------------
 Fri Sep  3 07:18:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Allow access to sound device. Updated
