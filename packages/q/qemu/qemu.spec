@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package qemu
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -179,6 +179,7 @@ Patch00043:     qemu-binfmt-conf.sh-should-use-F-as-shor.patch
 Patch00044:     modules-quick-fix-a-fundamental-error-in.patch
 Patch00045:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
 Patch00046:     scsi-generic-replace-logical-block-count.patch
+Patch00047:     meson-build-all-modules-by-default.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1125,6 +1126,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00044 -p1
 %patch00045 -p1
 %patch00046 -p1
+%patch00047 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1274,10 +1276,6 @@ cd %blddir
 %endif
 %if "%flavor" != "testsuite"
 	--disable-qom-cast-debug \
-	--enable-modules \
-	--disable-module-upgrades \
-%else
-	--disable-modules \
 %endif
 	--with-git-submodules=ignore \
 %if "%{name}" != "qemu-linux-user"
@@ -1285,6 +1283,8 @@ cd %blddir
 	--with-default-devices \
 	--enable-system --disable-linux-user \
 	--enable-tools --enable-guest-agent \
+	--enable-modules \
+	--disable-module-upgrades \
 	--enable-slirp=system \
 	--enable-pie \
 	--enable-docs \

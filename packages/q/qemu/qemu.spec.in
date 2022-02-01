@@ -1141,10 +1141,6 @@ cd %blddir
 %endif
 %if "%flavor" != "testsuite"
 	--disable-qom-cast-debug \
-	--enable-modules \
-	--disable-module-upgrades \
-%else
-	--disable-modules \
 %endif
 	--with-git-submodules=ignore \
 %if "%{name}" != "qemu-linux-user"
@@ -1152,6 +1148,8 @@ cd %blddir
 	--with-default-devices \
 	--enable-system --disable-linux-user \
 	--enable-tools --enable-guest-agent \
+	--enable-modules \
+	--disable-module-upgrades \
 	--enable-slirp=system \
 	--enable-pie \
 	--enable-docs \

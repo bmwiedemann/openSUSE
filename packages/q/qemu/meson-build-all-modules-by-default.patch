@@ -1,0 +1,54 @@
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Fri, 7 Jan 2022 13:00:44 +0100
+Subject: meson: build all modules by default
+
+Git-commit: fb72176ba64057ce0ee5c1a0a443d9f72e270636
+
+With more recent versions of Meson, the build.ninja file is more selective
+as to what is built by default, and not building the modules results in test
+failures.
+
+Mark the modules as built-by-default and, to make the dependencies more
+precise, also require them to be up-to-date before running tests.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/801
+Tested-by: Li Zhang <lizhang@suse.de>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ meson.build             | 4 +++-
+ tests/qtest/meson.build | 3 +--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 612da7167f5c4aafcf77a0e1ce55..4997739df656a10fa1822116102a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2818,8 +2818,10 @@ common_ss.add(hwcore)
+ # Targets #
+ ###########
+ 
++emulator_modules = []
+ foreach m : block_mods + softmmu_mods
+-  shared_module(m.name(),
++  emulator_modules += shared_module(m.name(),
++                build_by_default: true,
+                 name_prefix: '',
+                 link_whole: m,
+                 install: true,
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c9d8458062ff6b88d1c28cb21e8f..6aff75bafa5761da141f27e6b1ee 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -299,10 +299,9 @@ foreach dir : target_dirs
+         test: executable(test, src, dependencies: deps)
+       }
+     endif
+-    # FIXME: missing dependency on the emulator binary and qemu-img
+     test('qtest-@0@/@1@'.format(target_base, test),
+          qtest_executables[test],
+-         depends: [test_deps, qtest_emulator],
++         depends: [test_deps, qtest_emulator, emulator_modules],
+          env: qtest_env,
+          args: ['--tap', '-k'],
+          protocol: 'tap',

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 23 15:13:19 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- Enable modules for testsuite 
+
+-------------------------------------------------------------------
+Mon Jan 17 09:37:30 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+* Patches added:
+  meson-build-all-modules-by-default.patch
+
+-------------------------------------------------------------------
 Wed Jan 12 13:57:31 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - It's time to really start requiring -F when using -b in
