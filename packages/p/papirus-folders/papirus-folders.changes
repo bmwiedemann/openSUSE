@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 31 23:22:54 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 1.11.0.
+  * Added DISABLE_UPDATE_ICON_CACHE environment variable to disable
+    updating the icon caches
+  * Updated papirus-folders -l|--list command to make it parsable
+    when executing in pipe and subshell
+  * Replaced static list of colors to dynamic list in shell
+    completions
+- Update to version 1.10.0
+  * Added darkcyan folder color that suitable to Pop!_OS GTK theme
+
+-------------------------------------------------------------------
 Thu Aug 26 21:09:51 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.9.0.
