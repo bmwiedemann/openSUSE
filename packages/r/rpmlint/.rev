@@ -3536,4 +3536,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * Fix LGTM warning about RE pattern.</comment>
     <requestid>948073</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>dae6c28bb9674669579ddd3708ed9d9b</srcmd5>
+    <version>2.2.0+git20220127.05573d9</version>
+    <time>1643720569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220127.05573d9:
+  * dbus-services: whitelist NetworkManager nm-priv-helper (bsc#1194799).
+
+- Update to version 2.2.0+git20220125.7caec47:
+  * Add new option --ignore-unused-rpmlintrc.</comment>
+    <requestid>949508</requestid>
+  </revision>
 </revisionlist>
