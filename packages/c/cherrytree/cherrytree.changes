@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 01 12:41:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.99.45+10:
+  * added language Arabic
+  * fixed time created/modified filter on searches for node name and tags 
+  * just ninja build debug print
+  * added strip trailing spaces action to rich text right click menu
+  * minor improvement to previous commit 
+  * fixed copy fromm codebox and pasting to rich text unwanted additional characters 
+
+-------------------------------------------------------------------
 Fri Oct 22 10:06:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.99.42:
