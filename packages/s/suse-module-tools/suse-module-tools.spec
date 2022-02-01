@@ -45,7 +45,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.18
+Version:        16.0.19
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -108,6 +108,20 @@ sed -i 's/@FS_BLACKLIST@.*/%{fs_blacklist}/' README.md
 %install
 install -d -m 755 "%{buildroot}%{modprobe_dir}"
 install -d -m 755 "%{buildroot}%{_sysconfdir}/modprobe.d"
+# keep /etc clean on Tumbleweed
+%if 0%{?suse_version} < 1550
+cat > "%{buildroot}%{_sysconfdir}/modprobe.d/README" <<EOF
+Local configuration for modprobe(8)
+===================================
+
+The distribution-provided modprobe configuration files have moved to %{modprobe_dir}.
+To modify the configuration, copy files from %{modprobe_dir} to this directory
+(%{_sysconfdir}/modprobe.d) and edit them here.
+
+See also %{modprobe_dir}/README, %{_defaultdocdir}/%{name}/README.md, and the
+man page modprobe.d(5).
+EOF
+%endif
 install -pm644 -t "%{buildroot}%{modprobe_dir}" modprobe.conf/common/*.conf
 if [ -d modprobe.conf/%{_arch} ]; then
     install -pm644 -t "%{buildroot}%{modprobe_dir}" modprobe.conf/%{_arch}/*.conf
@@ -246,6 +260,7 @@ exit 0
 %{depmod_dir}
 %dir %{_sysconfdir}/depmod.d
 %if 0%{?suse_version} < 1550
+%{_sysconfdir}/modprobe.d/README
 %{_rpmmacrodir}/macros.initrd
 %endif
 %{_bindir}/kmp-install

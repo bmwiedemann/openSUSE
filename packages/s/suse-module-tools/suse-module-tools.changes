@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 28 21:00:00 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.19:
+  * Add /etc/modprobe.d/README on SLE/Leap (bsc#1195051)
+  * rpm-script: force-copy kernel to /boot (boo#1194501)
+
+-------------------------------------------------------------------
 Tue Jan  4 13:32:10 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.18:
