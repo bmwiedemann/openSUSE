@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 26 08:59:57 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- jsc#SLE-22015
+  - make the code conform to inclusive naming, most masters and
+    slaves are gone. Kept only where makes sense - interface to
+    sysconfig
+  - "slave" was replaced by "port" as this naming is already used
+    by kernel code. "Master" was replaced by directly mentioning
+    "bond" (device) or "parent" in areas where the code is somehow
+    shared with e.g., bridge. Devices are not "enslaved" anymore,
+    but mostly "included".
+- 4.4.35
+
+-------------------------------------------------------------------
 Tue Jan 25 15:38:09 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).
