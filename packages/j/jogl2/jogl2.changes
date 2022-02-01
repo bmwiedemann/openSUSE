@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 28 08:30:12 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build non-parallel to generate .java files reproducibly (boo#1102408)
+
+-------------------------------------------------------------------
 Thu Nov 28 08:29:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

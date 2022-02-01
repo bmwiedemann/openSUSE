@@ -102,6 +102,7 @@ cd make
 export CLASSPATH=""
 # force cross compilation support to use native root (noop on anything but ARM)
 export TARGET_PLATFORM_ROOT=/
+taskset 1 \
 ant	-Dcommon.gluegen.build.done=true \
 	-Djavacdebug=true \
     -Djavacdebuglevel=lines,vars,source \

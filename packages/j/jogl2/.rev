@@ -98,4 +98,12 @@ Depends on SR#545523 to fully fix ARM compilation.</comment>
     <comment>fix build on s390</comment>
     <requestid>751503</requestid>
   </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>8566a31949781bb0c93b45eb4f23dbdc</srcmd5>
+    <version>2.3.2</version>
+    <time>1643720574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950362</requestid>
+  </revision>
 </revisionlist>
