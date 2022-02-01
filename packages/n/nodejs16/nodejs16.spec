@@ -260,7 +260,7 @@ BuildRequires:  user(nobody)
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
 # require patched openssl library on SLES for nodejs16
-%if %node_version_number >= 16 && 0%{?suse_version} <= 1500 && 0%{?suse_version} && 0%{with openssl_RSA_get0_pss_params}
+%if %node_version_number >= 16 && 0%{?suse_version} <= 1500 && 0%{?suse_version} && %{pkg_vcmp openssl-1_1 < '1.1.1e' } && 0%{with openssl_RSA_get0_pss_params}
 BuildRequires:  openssl-has-RSA_get0_pss_params
 Requires:       openssl-has-RSA_get0_pss_params
 %endif

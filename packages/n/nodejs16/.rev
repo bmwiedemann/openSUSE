@@ -225,4 +225,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>948957</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>20bdb2430ad955505bc50494c0eec7d8</srcmd5>
+    <version>16.13.2</version>
+    <time>1643720555</time>
+    <user>dimstar_suse</user>
+    <comment>- Add buildtime version check to determine if we need patched
+  openssl Requires: or already in upstream. (bsc#1192489)</comment>
+    <requestid>949749</requestid>
+  </revision>
 </revisionlist>
