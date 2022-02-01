@@ -319,4 +319,26 @@
   * [Theme] fix dmenu theme ( #1396).</comment>
     <requestid>935969</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a0b41b6745ef4a70d708f6c6a68e9512</srcmd5>
+    <version>1.7.3</version>
+    <time>1643731188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.3:
+  * [Help] Print out the parsed config/theme files in -help output.
+  * [Keybindings] Fix keybindings being modified by -theme-str
+  * [Doc] Add rofi-dmenu manpage.
+  * [XCB] Cache lookup of monitor.
+  * Add -replace option (#568)
+  * Fix memory leak.
+  * [1566] Add extra debug for resolving monitors.
+  * [Theme] Add round,floor,ceil function in @calc (#1569)
+  * [Doc] Explain icon lookup.
+  * [Combi] Add -combi-display-format (#1570)
+  * [Theme] Expand list type ([]) for more data types.
+  * [Theme] Add support for tab-stops on textbox. (#1571)
+  * [Theme] Testing direct access to widgets via cmdline
+    option (-theme+widget+property value)</comment>
+    <requestid>950436</requestid>
+  </revision>
 </revisionlist>

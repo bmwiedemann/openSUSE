@@ -1,7 +1,7 @@
 #
 # spec file for package rofi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -83,6 +83,8 @@ sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %{_mandir}/man1/rofi-theme-selector.1%{?ext_man}
 %{_mandir}/man5/rofi-theme.5%{?ext_man}
 %{_mandir}/man5/rofi-script.5%{?ext_man}
+%{_mandir}/man5/rofi-dmenu.5%{?ext_man}
+%{_mandir}/man5/rofi-keys.5%{?ext_man}
 
 %files devel
 %{_includedir}/rofi/
