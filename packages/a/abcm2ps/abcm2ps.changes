@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:32:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.13:
+  * fix: don't start/stop slurs above/below decorations
+  * fix: crash when too many notes in a grace note sequence (#102)
+  * fix: crash when too big value in M: (#103)
+  * fix: loop or crash when too big width of y (space) (#104)
+  * fix: bad font definition with SVG output when spaces in font name
+  * fix: bad check of note length again (#106)
+  * fix: handle %%staffscale at the global level (#108)
+  * fix: bad vertical offset of lyrics when mysic line starts with
+    empty staves
+
+-------------------------------------------------------------------
 Thu Jul 15 06:20:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.14.12:

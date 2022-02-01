@@ -1,7 +1,7 @@
 #
 # spec file for package abcm2ps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2007 by Edgar Aichinger
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           abcm2ps
-Version:        8.14.12
+Version:        8.14.13
 Release:        0
 Summary:        A program to typeset abc tunes into Postscript
 License:        LGPL-3.0-or-later
