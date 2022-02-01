@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-client
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        YaST2 - Samba Client Configuration
 License:        GPL-2.0-only
