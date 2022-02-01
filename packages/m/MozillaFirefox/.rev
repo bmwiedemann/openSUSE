@@ -5394,4 +5394,14 @@
     <comment></comment>
     <requestid>948332</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>b4d5910cbeb396b38dacf6ac1740e90d</srcmd5>
+    <version>96.0.3</version>
+    <time>1643720552</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 96.0.3 (bsc#1195230)
+  * Fixed an issue that allowed unexpected data to be submitted in
+    some of our search telemetry (bmo#1752317)</comment>
+    <requestid>949716</requestid>
+  </revision>
 </revisionlist>

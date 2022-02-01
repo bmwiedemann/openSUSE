@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 28 15:26:45 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 96.0.3 (bsc#1195230)
+  * Fixed an issue that allowed unexpected data to be submitted in
+    some of our search telemetry (bmo#1752317)
+
+-------------------------------------------------------------------
 Mon Jan 24 07:42:03 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Enable -fimplicit-constexpr for GCC 12+.
