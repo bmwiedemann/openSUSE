@@ -16,21 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 # the test suite moved to a docker simulator which we cannot run inside an obs environment
 %bcond_with fulltest
 %define         skip_python2 1
-%define         skip_python36 1
-%define         ghversiontag 2021.11.1
+%define         ghversiontag 2022.01.0
 Name:           python-gcsfs
-Version:        2021.11.1
+Version:        2022.1.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
-Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{ghversiontag}.tar.gz#/gcsfs-%{version}-gh.tar.gz
+Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{ghversiontag}.tar.gz#/gcsfs-%{ghversiontag}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -96,7 +95,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcsfs/tests/fake-secret.json
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/gcsfs-%{version}-*-info
+%{python_sitelib}/gcsfs-%{version}*-info
 %{python_sitelib}/gcsfs/
 %exclude %{python_sitelib}/gcsfs/cli/
 
