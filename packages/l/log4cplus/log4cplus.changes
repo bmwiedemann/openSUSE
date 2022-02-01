@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 31 20:24:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.7:
+  * Fix compilation with C++20 compiler, use std::invoke_result.
+  * TimeBasedRollingFileAppender: Clear files before `MaxHistory` when
+    `CleanHistoryOnStart=false`.
+  * Update embedded Catch2 to version v2.13.7 to compilation with current
+    Glibc. GitHub issue #519.
+
+-------------------------------------------------------------------
 Sat May  8 18:39:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.6:
