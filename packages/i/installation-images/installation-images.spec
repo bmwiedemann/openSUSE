@@ -546,7 +546,11 @@ BuildRequires:  xset
 BuildRequires:  xterm
 BuildRequires:  xz
 BuildRequires:  yast2-devtools
-BuildRequires:  yast2-schema
+%if "%flavor" == "SMO" || "%flavor" == "LeapMicro" || "%flavor" == "MicroOS"
+BuildRequires:  yast2-schema-micro
+%else
+BuildRequires:  yast2-schema-default
+%endif
 BuildRequires:  yast2-trans-allpacks
 BuildRequires:  yast2-widget-demo
 %if 0%{?with_storage_ng}
@@ -687,7 +691,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.38
+Version:        17.39
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

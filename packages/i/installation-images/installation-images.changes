@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jan 26 10:21:07 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#571
+- use for build proper schema flavor (jsc#SLE-18820)
+- 17.39
+
+--------------------------------------------------------------------
 Tue Jan 25 10:38:14 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#569
