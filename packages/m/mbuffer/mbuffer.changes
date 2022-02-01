@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jan 31 20:28:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20211018:
+  * fixes related to TCP timeout handling
+  * enhancement: support setting config file via env var MBUFFERRC
+  * documentation update
+  * make TCPTimeout=0 disable the TCP timeout
+  * changed default TCP timeout from 10s to 100s
+  * TCP timeout now can be give with suffixes ms,s,min,h
+  * documented option for TCP timeout
+  * enhancement: accept IPv6 addresses in square bracket format
+  * enhancement: more detailed warning message for connect failures
+  * work around Solaris default old mercurial and incompatible sed
+  * removed cancel after join for reader thread
+  * updated install-sh
+  * mbuffer.1 has outdated version tag
+  * fix: hash algos should not suppress stdout
+  * enhancement: added option --no-direct to disable use of O_DIRECT
+  * defaults: raised default TCP timeout to 10ms for WAN connections
+  * fix: leave TCP buffer size untouched if not set
+  * enhancement: add option to set TCP timeout
+  * performance optimization: use recv with MSG_WAITALL instead of read
+  * configure fix: look for objdump also with target prefix
+  * testing: make sure to use gtar for testing to avoid unexpected failures
+  * portability: NetBSD compatibility fix
+  * build enhancement: added dependency calculation for make
+  * build enhancement: automatic version string generation
+  * configure fix for some powerpc toolchains
+  * update config.sub and config.guess
+  * added option to perform direct I/Os on temporary file
+  * autoadjust dependent parameters
+  * human readable buffer size information instead of kiB
+  * hashing infrastructure should also be enabled with libdl available
+  * report input file name in message for open failure
+  * fix: don't try to open network output as file after failure
+  * fix: potential issue related to inet6 hosts handling
+  * added complementary cmake based building and testing
+  * some cleanup work
+  * fix: erronous empty file generation on network connection failure
+  * enhanced default settings for better performance
+  * use O_DIRECT on input and output if possible
+  * option --direct is now deprecated and has no effect
+  * Output Size must be adjusted to Blocksize during initialization
+  * man-page corrections
+  * fixed some messages (typos and formatting)
+  * fix for network initialization for systems without getaddrinfo
+  * support suppressing messages with Verbose=silent and Verbose=none
+  * fix detection of invalid arguments to option -v
+  * Copyright update to 2019
+  * consistently use CLOCK_MONOTONIC if available
+  * handle time standing still or running backward
+  * updated INSTALL file to reflect available options
+  * added explanation for lack of MacOS support
+  * linking of available hash libraries during runtime
+
+-------------------------------------------------------------------
 Tue Jun 12 13:04:46 UTC 2018 - mvetter@suse.com
 
 - Update to version 20180505 (important changes since 20151002):

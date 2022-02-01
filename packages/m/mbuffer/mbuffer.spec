@@ -1,7 +1,7 @@
 #
 # spec file for package mbuffer
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,21 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mbuffer
-Version:        20180505
+Version:        20211018
 Release:        0
 Summary:        Replacement for "buffer" with many more Features
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            http://www.maier-komor.de/mbuffer.html
-Source:         http://www.maier-komor.de/software/mbuffer/mbuffer-%{version}.tgz
+URL:            https://www.maier-komor.de/mbuffer.html
+Source:         https://www.maier-komor.de/software/mbuffer/mbuffer-%{version}.tgz
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 mbuffer is a raplacement for buffer with additional functionality:
@@ -47,16 +46,16 @@ mbuffer is a raplacement for buffer with additional functionality:
     --enable-md5 \
     --disable-debug
 
-make %{?_smp_mflags} SHELL=/bin/sh
+%make_build SHELL=/bin/sh
 
 %install
 install -D -m 0755 mbuffer "%{buildroot}%{_bindir}/mbuffer"
 install -D -m 0644 mbuffer.1 "%{buildroot}%{_mandir}/man1/mbuffer.1"
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog LICENSE NEWS README
+%license LICENSE
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/mbuffer
-%{_mandir}/man1/mbuffer.1*
+%{_mandir}/man1/mbuffer.1%{?ext_man}
 
 %changelog
