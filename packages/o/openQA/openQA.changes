@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 01 09:48:28 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1643627567.18c7f1a3c:
+  * Dependency cron 2022-01-29
+  * Show creation time of scheduled jobs in info panel on job details page
+  * Add `clone` parameter to restart API
+  * Avoid Perl warning when making build-row-key if `MACHINE` is `undef
+  * Add more perl signatures
+  * Prevent error when restarting jobs with `skip_parents=1`
+  * Use tidyall instead of custom implementation
+
+-------------------------------------------------------------------
 Sun Jan 30 02:08:46 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1643469400.853734877:
