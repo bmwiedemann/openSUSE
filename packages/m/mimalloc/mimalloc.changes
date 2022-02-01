@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Feb  1 09:52:20 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Fix libname.
+
+-------------------------------------------------------------------
+Mon Jan 31 16:41:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Make performane claims more concrete; drop
+  project history from description.
+
+-------------------------------------------------------------------
+Mon Jan 31 10:19:32 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Initial package version 2.0.3.
