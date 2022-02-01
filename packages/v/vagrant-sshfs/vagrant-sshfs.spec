@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant-sshfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} > 1500
-%global rb_build_versions ruby30
-%global rb_build_abi ruby:3.0.0
-%global rb_ruby_suffix ruby3.0
-%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
 %global rb_ruby_suffix %rb_default_ruby_suffix
-%endif
 
 %global vagrant_plugin_name vagrant-sshfs
 %define mod_name %{vagrant_plugin_name}
@@ -42,11 +36,7 @@ Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 Source3:        testsuite.sh
 # FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
 Patch0:         0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby} < 3.1
-%else
-BuildRequires:  %{ruby} >= 2.5
-%endif
+BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
 Requires:       sshfs
