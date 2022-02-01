@@ -31,6 +31,7 @@ Source2:        01beep.conf
 Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
 Patch1:         0001-alsamixer-Fix-regression-in-color-setup.patch
+Patch2:         0002-alsamixer-Revert-has_mouse-check.patch
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
@@ -75,6 +76,7 @@ and test audio before and after PM state changes.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 %patch100 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1

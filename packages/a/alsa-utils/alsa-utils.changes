@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 28 17:53:00 CET 2022 - tiwai@suse.de
+
+- Fix the broken mouse support on alsamixer:
+  0002-alsamixer-Revert-has_mouse-check.patch
+
+-------------------------------------------------------------------
 Fri Jan 21 09:43:59 CET 2022 - tiwai@suse.de
 
 - Fix alsamixer color config regression:
