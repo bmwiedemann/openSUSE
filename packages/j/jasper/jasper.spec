@@ -1,7 +1,7 @@
 #
 # spec file for package jasper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,13 @@ Name:           jasper
 Version:        2.0.33
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
-License:        SUSE-Public-Domain
+License:        JasPer-2.0
 Group:          Productivity/Graphics/Convertors
 URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
-Source2:        baselibs.conf
+Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM jasper-freeglut.patch -- fix building with freeglut
+Patch0:         jasper-freeglut.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -76,15 +78,17 @@ image compression standard Part 1.
 
 %prep
 %setup -q -n %{name}-version-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
 %cmake -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
 mv doc/README doc/README.doc
+
 %fdupes -s %{buildroot}/%{_docdir}/%{name}
 
 %post -n libjasper4 -p /sbin/ldconfig
@@ -92,8 +96,10 @@ mv doc/README doc/README.doc
 
 %files
 %license LICENSE
-%doc COPYRIGHT README doc/*
-%doc %{_docdir}/jasper
+%doc COPYRIGHT NEWS README doc/README.doc
+%doc %{_docdir}/jasper/*.pdf
+%dir %{_docdir}/jasper/html
+%doc %{_docdir}/jasper/html/*
 %{_bindir}/imgcmp
 %{_bindir}/imginfo
 %{_bindir}/jasper

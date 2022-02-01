@@ -144,4 +144,12 @@
   * Fix a build issue impacting some platforms (#296)</comment>
     <requestid>912351</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>eeeac507e7a51d8e252f80673ece46ee</srcmd5>
+    <version>2.0.33</version>
+    <time>1643720579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950416</requestid>
+  </revision>
 </revisionlist>

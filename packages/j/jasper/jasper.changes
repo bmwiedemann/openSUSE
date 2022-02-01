@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 30 13:42:36 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add jasper-freeglut.patch, fixes freeglut detection and linking
+- Run spec-cleaner
+- Change license from SUSE-Public-Domain to JasPer-2.0
+- Cleanup docdir, only package the html and pdf docs and not
+  the sources
+
+-------------------------------------------------------------------
 Mon Aug 16 07:04:10 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.33:
