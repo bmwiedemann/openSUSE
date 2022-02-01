@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
-%define ghversion 2021.11.1
+%define ghversion 2022.01.0
 Name:           python-fsspec%{psuffix}
-Version:        2021.11.1
+Version:        2022.1.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
@@ -61,8 +61,12 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module distributed if %python-base < 3.10}
 BuildRequires:  %{python_module fusepy}
+BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pytest}
@@ -71,10 +75,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module s3fs}
 BuildRequires:  %{python_module smbprotocol}
 BuildRequires:  %{python_module zstandard}
-BuildRequires:  %{python_module distributed if (%python-base without python36-base)}
-BuildRequires:  %{python_module gcsfs if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module panel if (%python-base without python36-base)}
 # cannot test git and http in the same installation (?)
 # BuildRequires:  %%{python_module pygit2}
 # BuildRequires:  git-core
@@ -86,8 +86,6 @@ A specification for pythonic filesystems.
 
 %prep
 %autosetup -p1 -n filesystem_spec-%{ghversion}
-# don't test nonexistent python36-numpy
-sed -i -e '/^import numpy as np/ d' -e '/^import pytest/ a np = pytest.importorskip("numpy")' fsspec/tests/test_spec.py
 
 %build
 %python_build

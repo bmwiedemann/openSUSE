@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 24 17:08:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.1.0
+  * Fix blocks cache metadata (#746)
+  * Fix default SMB port (#853)
+  * Fix caching fixes (#856, 855)
+  * Fix explicit close for http files (#866)
+  * Fix put_file to continue when no bytes (#869, 870)
+  * temporary files location (#851, 871)
+  * async abstract methods (#858, 859, 860)
+  * md5 for FIPS (#872)
+  * remove deprecated pyarrow/distutils (#880, 881)
+- Update flavored requirements: python36 no longer exists,
+  python-distributed does not support python310 yet.
+
+-------------------------------------------------------------------
 Fri Dec 24 23:06:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Release 2021.11.1

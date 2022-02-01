@@ -148,4 +148,24 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>942710</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f2c33eaf59a3f5ea33bb0162ec3998c</srcmd5>
+    <version>2022.1.0</version>
+    <time>1643720569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.1.0
+  * Fix blocks cache metadata (#746)
+  * Fix default SMB port (#853)
+  * Fix caching fixes (#856, 855)
+  * Fix explicit close for http files (#866)
+  * Fix put_file to continue when no bytes (#869, 870)
+  * temporary files location (#851, 871)
+  * async abstract methods (#858, 859, 860)
+  * md5 for FIPS (#872)
+  * remove deprecated pyarrow/distutils (#880, 881)
+- Update flavored requirements: python36 no longer exists,
+  python-distributed does not support python310 yet.
+</comment>
+    <requestid>949718</requestid>
+  </revision>
 </revisionlist>
