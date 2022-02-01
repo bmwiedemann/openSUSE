@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:24:16 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.5:
+  * Added mechanism to automatically parse additional bots.
+  * Changed area chart interpolation to 'monotone'. This should avoid the issue
+  * the interpolated curve has a bend into the negative space.
+  * Changed build to use debugging symbols even for release builds.
+  * Changed order on which we verify bots to be the first thing we check. This
+  * a slight improvement on parsing time.
+  * Ensure we initialize DNS resolver conditions and mutexes before they're used.
+  * Fixed possible buffer over-read for cases where a '\0' could be reached
+  * when parsing a log line.
+  * Fixed possible data race on UI spinner thread.
+  * Fixed regression where a lot of robots where not detected by GoAccess.
+
+-------------------------------------------------------------------
 Tue Jan  4 15:52:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.4:
