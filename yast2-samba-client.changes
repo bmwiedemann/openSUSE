@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 28 09:30:17 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Switch from file based krb5 ccache to kernel keyring;
+  (bsc#1109830);
+- 4.4.3
+
+-------------------------------------------------------------------
 Wed Dec  8 14:46:40 UTC 2021 - Noel Power <nopower@suse.com>
 
 - With latest versions of samba (>=4.15.0) calling 'net ads lookup'
