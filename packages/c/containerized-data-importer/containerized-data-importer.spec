@@ -17,7 +17,7 @@
 
 
 Name:           containerized-data-importer
-Version:        1.43.0
+Version:        1.44.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -114,9 +114,6 @@ the CDI container images.
 # to be 'physically' placed into the proper location.
 %setup -n go/src/kubevirt.io/%{name} -c -T
 tar --strip-components=1 -xf %{S:0}
-
-# Fix aarch64 - https://github.com/kubevirt/containerized-data-importer/issues/2048
-sed -i "s#GOARCH=amd64 ##" hack/build/build-go.sh
 
 %build
 # Hackery to determine which registry path to use in cdi-operator.yaml
