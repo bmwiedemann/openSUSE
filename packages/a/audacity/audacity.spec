@@ -1,7 +1,7 @@
 #
 # spec file for package audacity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,6 +167,17 @@ rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_html-suse-nostl.so.*
 rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.*
 rm -f %{buildroot}%{_prefix}/%{name}
 %find_lang %{name}
+
+%if 0%{?suse_version} == 1500
+%post
+ldconfig %{_libdir}/%{name}
+%end
+
+%postun
+ldconfig %{_libdir}/%{name}
+%end
+
+%endif
 
 %files
 %defattr(-,root,root)

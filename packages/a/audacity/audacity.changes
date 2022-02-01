@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 31 08:17:38 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Added conditional %post and %postun for Leap, to fix boo#1194977
+
+-------------------------------------------------------------------
 Tue Nov 30 06:17:14 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Remove pipewire-libjack-0_3 conflict. pipewire-libjack-0_3's 
