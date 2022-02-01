@@ -1,4 +1,4 @@
-
+Prefer: yast2-schema-default
 %define gcc_version 11
 
 # testing new cycle algorithm
