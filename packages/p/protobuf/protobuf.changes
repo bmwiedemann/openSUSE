@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 28 20:38:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.4:
+  Python:
+    * Make libprotobuf symbols local on OSX to fix issue #9395 (#9435)
+  Ruby:
+    * Fixed a data loss bug that could occur when the number of optional fields
+      in a message is an exact multiple of 32
+  PHP:
+    * Fixed a data loss bug that could occur when the number of optional fields
+      in a message is an exact multiple of 32.
+
+-------------------------------------------------------------------
 Mon Jan 24 13:08:10 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.19.3:
