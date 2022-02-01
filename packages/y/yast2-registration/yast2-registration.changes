@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 31 11:36:53 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not read registration codes from a USB stick when using
+  AutoYaST to upgrade a system with the online installation medium
+  (related to bsc#1194440).
+- 4.4.15
+
+-------------------------------------------------------------------
+Fri Jan 28 14:04:30 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Handle service name collision during upgrade (bsc#1194453),
+  do not delete the new services which have the same name
+  as an old service
+- 4.4.14
+
+-------------------------------------------------------------------
 Mon Jan 24 15:29:29 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix detection of base products coming from SCC (bsc#1194989).

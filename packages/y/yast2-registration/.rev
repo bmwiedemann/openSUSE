@@ -1968,4 +1968,12 @@
     <comment>submit new version 4.4.13</comment>
     <requestid>948460</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f5f16b798c3a5227350b92385c45bfd0</srcmd5>
+    <version>4.4.15</version>
+    <time>1643720563</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.15</comment>
+    <requestid>950201</requestid>
+  </revision>
 </revisionlist>
