@@ -18,7 +18,7 @@
 
 %bcond_with clang
 
-%if 0%{?fedora_version} >= 33 || 0%{?suse_version} >= 1590
+%if 0%{?fedora} || 0%{?suse_version} >= 1590
 %bcond_with    use_intree_lua
 %else
 %bcond_without use_intree_lua
@@ -30,19 +30,19 @@
 %define _dont_use_intree_lua ON
 %endif
 
-%if 0%{?suse_version} || 0%{?fedora_version} >= 33
+%if 0%{?suse_version} || 0%{?fedora}
 %bcond_without cmake_macros
 %else
 %bcond_with    cmake_macros
 %endif
 
-%if 0%{?suse_version} || 0%{?fedora_version} >= 33
+%if 0%{?suse_version} || 0%{?fedora}
 %bcond_without cmake_macros
 %else
 %bcond_with    cmake_macros
 %endif
 
-%if 0%{?is_opensuse} || 0%{?fedora_version} >= 26
+%if 0%{?is_opensuse} || 0%{?fedora}
 %bcond_without osmgpsmap
 %bcond_without flickcurl
 %bcond_without translated_manpages
@@ -52,7 +52,7 @@
 %bcond_with    translated_manpages
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?fedora_version} >= 33
+%if 0%{?suse_version} >= 1550 || 0%{?fedora}
 %bcond_without avif
 %else
 %bcond_with    avif
@@ -125,7 +125,7 @@ BuildRequires:  clang
 BuildRequires:  cmake >= 3.4
 BuildRequires:  fdupes
 BuildRequires:  llvm-devel
-%if 0%{?fedora_version}
+%if 0%{?fedora}
 BuildRequires:  llvm-static
 %endif
 %if %{without clang}
@@ -156,11 +156,7 @@ BuildRequires:  pkgconfig(lua5.4)
 %else
 BuildRequires:  pkgconfig(lua)
 %endif
-%if 0%{?fedora_version} == 31
-BuildRequires:  pugixml-devel
-%else
 BuildRequires:  pkgconfig(pugixml)
-%endif
 #
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(GraphicsMagick)
@@ -214,7 +210,7 @@ Requires:       iso-codes
 #
 # Some CSS themes suggest to use the the Roboto font family
 # https://github.com/darktable-org/darktable/releases/tag/release-3.0.0
-%if 0%{?fedora_version}
+%if 0%{?fedora}
 Recommends:     roboto-fontface-fonts
 %else
 Recommends:     google-roboto-fonts

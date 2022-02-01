@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 25 08:46:58 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Switch from %fedora_version to %fedora
+  %fedora_version is not defined on Fedora systems, the correct macro to use is
+  %fedora
+- drop version checks for EOL'd Fedora versions (oldest supported Fedora is 34)
+
+-------------------------------------------------------------------
 Sat Jan  8 15:46:14 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix the previous change:
