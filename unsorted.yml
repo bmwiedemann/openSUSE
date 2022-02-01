@@ -2781,6 +2781,7 @@ unsorted:
   - deepin-daemon 
   - deepin-daemon-dbus 
   - deepin-daemon-lang 
+  - deepin-daemon-lightdm 
   - deepin-daemon-polkit 
   - deepin-desktop 
   - deepin-desktop-base 
@@ -2790,7 +2791,6 @@ unsorted:
   - deepin-dock 
   - deepin-dock-devel 
   - deepin-dock-plugin-screen-recorder 
-  - deepin-dock-plugin-system-monitor 
   - deepin-draw 
   - deepin-draw-lang 
   - deepin-editor 
@@ -2841,6 +2841,7 @@ unsorted:
   - deepin-shortcut-viewer 
   - deepin-sound-theme 
   - deepin-start 
+  - deepin-start-lang 
   - deepin-system-monitor 
   - deepin-system-monitor-lang 
   - deepin-terminal 
@@ -7196,7 +7197,7 @@ unsorted:
   - ipvsadm 
   - ipxe-bootimgs 
   - ipxrip 
-  - iredis: [x86_64] 
+  - iredis 
   - irman-common 
   - irman-utils 
   - irqstat 
@@ -8827,7 +8828,6 @@ unsorted:
   - libKF5ConfigCore5-lang 
   - libKF5DBusAddons5-lang 
   - libKF5DNSSD5-lang 
-  - libKF5GlobalAccel5-lang 
   - libKF5Holidays5-lang 
   - libKF5ItemViews5-lang 
   - libKF5JobWidgets5-lang 
@@ -17602,6 +17602,8 @@ unsorted:
   - ocaml-cairo-devel 
   - ocaml-calendar 
   - ocaml-calendar-devel 
+  - ocaml-camlp-streams 
+  - ocaml-camlp-streams-devel 
   - ocaml-camlp5 
   - ocaml-camlp5-devel 
   - ocaml-camomile 
@@ -21699,6 +21701,7 @@ unsorted:
   - python310-MarkupSafe 
   - python310-Markups 
   - python310-Mathics 
+  - python310-Mathics-Scanner 
   - python310-MechanicalSoup 
   - python310-Ming 
   - python310-MiniMock 
@@ -22389,6 +22392,7 @@ unsorted:
   - python310-check-manifest 
   - python310-checkdmarc 
   - python310-cheroot 
+  - python310-chest 
   - python310-circuitbreaker 
   - python310-ciscoconfparse 
   - python310-cl 
@@ -24768,7 +24772,6 @@ unsorted:
   - python36-python-crfsuite 
   - python36-python-multipart 
   - python36-python-prctl 
-  - python36-pyuv 
   - python36-rarfile 
   - python36-rarfile-doc 
   - python36-raven-aiohttp 
@@ -24871,6 +24874,7 @@ unsorted:
   - python38-MarkupPy 
   - python38-Markups 
   - python38-Mathics 
+  - python38-Mathics-Scanner 
   - python38-MechanicalSoup 
   - python38-Ming 
   - python38-MiniMock 
@@ -27858,6 +27862,7 @@ unsorted:
   - python39-MarkupSafe 
   - python39-Markups 
   - python39-Mathics 
+  - python39-Mathics-Scanner 
   - python39-MechanicalSoup 
   - python39-Ming 
   - python39-MiniMock 
@@ -42017,10 +42022,13 @@ unsorted:
   - vde2-slirp 
   - ved 
   - velero 
+  - velero-bash-completion 
+  - velero-fish-completion 
   - velero-plugin-for-aws 
   - velero-plugin-for-csi 
   - velero-plugin-for-gcp 
   - velero-plugin-for-microsoft-azure 
+  - velero-zsh-completion 
   - velocity 
   - velocity-custom-parser-example 
   - velocity-demo 

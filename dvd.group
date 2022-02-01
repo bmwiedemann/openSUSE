@@ -1381,6 +1381,7 @@
     <package name="libKF5Emoticons5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libKF5EventViews5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5GlobalAccel5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GrantleeTheme5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Gravatar5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
