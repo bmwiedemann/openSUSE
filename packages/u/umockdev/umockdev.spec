@@ -1,7 +1,7 @@
 #
 # spec file for package umockdev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shlib libumockdev0
 %define shlibpre libumockdev-preload0
 Name:           umockdev
-Version:        0.17.1
+Version:        0.17.5
 Release:        0
 Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
@@ -38,6 +38,8 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 # BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  pkgconfig(libudev)
+# For tests
+BuildRequires:  pkgconfig(udev)
 
 %description
 umockdev mocks Linux devices for creating integration tests for hardware
@@ -96,6 +98,9 @@ umockdev.
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig

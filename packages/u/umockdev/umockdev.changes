@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 29 09:31:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(udev) instead of udev: this allows OBS to
+  properly shotcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Wed Jan 19 23:28:55 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.5:
+  * Relax overzealous stat nlink unit test.
+- Changes from versions 0.17.2 through to 0.17.4:
+  * Include udev properties in emulated netlink messages, to work
+    with recent libudev (gh#martinpitt/umockdev#165).
+  * tests: Work around broken HIDIOCGRDESCSIZE ioctl on big-endian
+    architectures.
+  * preload: Wrap statx() and fstatat(), to fix ls and other tools
+    on recent glibc versions (gh#martinpitt/umockdev#160).
+- Enable tests in a %check section; add BuildRequires: udev,
+  required for tests.
+
+-------------------------------------------------------------------
 Fri Dec 24 20:39:50 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.17.1:
