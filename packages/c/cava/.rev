@@ -144,4 +144,20 @@
   * suppress error about vla parameter introduced in gcc11 or 10?</comment>
     <requestid>894224</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>236180bf8ec9ad4841639d0a2d34ead7</srcmd5>
+    <version>0.7.5</version>
+    <time>1643731189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.5:
+  improvements:
+  * added sdl output support
+  * better smoothing on higher resolutions, better scaling
+  bugfixes:
+  * fixed buffer overflow in shmem input
+  * fixed bug where freebsd was not detected as supported os during autoconf
+  other:
+  * removed bundled iniparser</comment>
+    <requestid>950438</requestid>
+  </revision>
 </revisionlist>

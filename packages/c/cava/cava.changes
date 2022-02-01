@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:18:53 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.5:
+  improvements:
+  * added sdl output support
+  * better smoothing on higher resolutions, better scaling
+  bugfixes:
+  * fixed buffer overflow in shmem input
+  * fixed bug where freebsd was not detected as supported os during autoconf
+  other:
+  * removed bundled iniparser
+
+-------------------------------------------------------------------
 Wed May 19 06:52:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.4:
