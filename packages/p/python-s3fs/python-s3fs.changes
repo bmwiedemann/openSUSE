@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 24 17:27:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.01.1
+  * aiobotocore dep to 2.1.0 (#564)
+  * docs for non-aws (#567)
+  * ContentType in info (#570)
+  * small-file ACL (#574)
+
+-------------------------------------------------------------------
 Fri Dec 24 23:03:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.11.1 

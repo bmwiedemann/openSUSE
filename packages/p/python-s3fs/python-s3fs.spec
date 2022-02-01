@@ -1,7 +1,7 @@
 #
 # spec file for package python-s3fs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        2021.11.1
+Version:        2022.1.0
 Release:        0
 Summary:        Python filesystem interface for S3
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/s3fs/
 Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module aiobotocore >= 2.0.1}
+BuildRequires:  %{python_module aiobotocore >= 2.1.0}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module fsspec = %{version}}
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 %if %{with python2}
 BuildRequires:  python-mock
 %endif
-Requires:       python-aiobotocore >= 2.0.1
+Requires:       python-aiobotocore >= 2.1.0
 Requires:       python-aiohttp
 Requires:       python-fsspec = %{version}
 Recommends:     aws-cli
