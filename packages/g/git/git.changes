@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sat Jan 29 08:19:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.35.1:
+  * fix "rebase" and "stash" in a secondary worktree
+
+-------------------------------------------------------------------
+Fri Jan 28 20:44:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.35.0:
+ * "_" is now treated as any other URL-valid characters in an URL when
+   matching the per-URL configuration variable names.
+ * The color palette used by "git grep" has been updated to match that
+   of GNU grep.
+ * "git status --porcelain=v2" now show the number of stash entries
+   with --show-stash like the normal output does.
+ * "git stash" learned the "--staged" option to stash away what has
+   been added to the index (and nothing else).
+ * "git var GIT_DEFAULT_BRANCH" is a way to see what name is used for
+   the newly created branch if "git init" is run.
+ * Various operating modes of "git reset" have been made to work
+   better with the sparse index.
+ * "git submodule deinit" for a submodule whose .git metadata
+   directory is embedded in its working tree refused to work, until
+   the submodule gets converted to use the "absorbed" form where the
+   metadata directory is stored in superproject, and a gitfile at the
+   top-level of the working tree of the submodule points at it.  The
+   command is taught to convert such submodules to the absorbed form
+   as needed.
+ * The completion script (in contrib/) learns that the "--date"
+   option of commands from the "git log" family takes "human" and
+   "auto" as valid values.
+ * "Zealous diff3" style of merge conflict presentation has been added.
+ * The "git log --format=%(describe)" placeholder has been extended to
+   allow passing selected command-line options to the underlying "git
+   describe" command.
+ * "default" and "reset" have been added to our color palette.
+ * The cryptographic signing using ssh keys can specify literal keys
+   for keytypes whose name do not begin with the "ssh-" prefix by
+   using the "key::" prefix mechanism (e.g. "key::ecdsa-sha2-nistp256").
+ * "git fetch" without the "--update-head-ok" option ought to protect
+   a checked out branch from getting updated, to prevent the working
+   tree that checks it out to go out of sync.  The code was written
+   before the use of "git worktree" got widespread, and only checked
+   the branch that was checked out in the current worktree, which has
+   been updated.
+ * "git name-rev" has been tweaked to give output that is shorter and
+   easier to understand.
+ * "git apply" has been taught to ignore a message without a patch
+   with the "--allow-empty" option.  It also learned to honor the
+   "--quiet" option given from the command line.
+ * The "init" and "set" subcommands in "git sparse-checkout" have been
+   unified for a better user experience and performance.
+ * Many git commands that deal with working tree files try to remove a
+   directory that becomes empty (i.e. "git switch" from a branch that
+   has the directory to another branch that does not would attempt
+   remove all files in the directory and the directory itself).  This
+   drops users into an unfamiliar situation if the command was run in
+   a subdirectory that becomes subject to removal due to the command.
+   The commands have been taught to keep an empty directory if it is
+   the directory they were started in to avoid surprising users.
+ * "git am" learns "--empty=(stop|drop|keep)" option to tweak what is
+   done to a piece of e-mail without a patch in it.
+ * The default merge message prepared by "git merge" records the name
+   of the current branch; the name can be overridden with a new option
+   to allow users to pretend a merge is made on a different branch.
+ * The way "git p4" shows file sizes in its output has been updated to
+   use human-readable units.
+ * "git -c branch.autosetupmerge=inherit branch new old" makes "new"
+   to have the same upstream as the "old" branch, instead of marking
+   "old" itself as its upstream. 
+
+-------------------------------------------------------------------
 Fri Nov 26 21:20:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.34.1 (bsc#1193722):
