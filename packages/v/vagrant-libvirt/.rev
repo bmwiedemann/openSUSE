@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>936031</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>53bdac4d86b4266836a9f712e5d76c61</srcmd5>
+    <version>0.7.0</version>
+    <time>1643731186</time>
+    <user>dimstar_suse</user>
+    <comment>Switch to default ruby for Tumbleweed</comment>
+    <requestid>950422</requestid>
+  </revision>
 </revisionlist>
