@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 01 12:57:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to 1.41: (bsc#1194177, bsc#1194176, bsc#1194175)
+  * Fix issue with RTNL netlink message alignment.
+  * Fix issue with dnsproxy and timeout for TCP feature. (CVE-2022-23097, CVE-2022-23096)
+  * Fix issue with dnsproxy and busy loop in TCP server. (CVE-2022-23098)
+  * Fix issue with WiFi connection with no passphrase.
+  * Add support for wpa_supplicant and WPA3-SAE functionality.
+  * Add support for D-Bus ObjectManager interface.
+- Renamed downstream patches to separate them from upstream patches
+  * Rename 0001-connman-1.35-service.patch to 0100-connman-1.35-service.patch
+  * Rename harden_connman-vpn.service.patch to 0101-harden_connman-vpn.service.patch
+  * Rename harden_connman-wait-online.service.patch to 0102-harden_connman-wait-online.service.patch
+
+-------------------------------------------------------------------
 Fri Nov 26 14:14:41 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - connman-nmcompat manages D-Bus permissions for NetworkManager service.
