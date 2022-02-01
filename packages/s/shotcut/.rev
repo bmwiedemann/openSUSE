@@ -473,4 +473,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>920032</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a3e89d08196810fc01d0ec076227345d</srcmd5>
+    <version>22.01.30</version>
+    <time>1643731953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950467</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Feb  1 14:58:44 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 22.01.30
+- Upstream changes:
+  *Added an Equalizer: 15-band (graphic) audio filter.
+  *Added an Equalizer: 3-Band (Bass & Treble) audio filter.
+  *(Removed the old Bass & Treble audio filter.)
+  *Added an Equalizer: Parametric audio filter.
+  *Added Segments parameter to the following video filters:
+    Audio Level Visualization
+    Audio Spectrum Visualization
+    Audio Waveform Visualization
+  *Reduced audio distortion in Properties > Reverse for the best/MKV option.
+  *Removed Use Higher Performance Waveforms (default is on but still
+   in configuration).
+  *Added a warning dialog when trying to use simple keyframes when
+   advanced keyframes are being used.
+  *Changed to remove full keyframes when switching to simple keyframes.
+  *Added a warning dialog when trying to use advanced keyframes when
+   simple keyframes are being used.
+  *Changed to convert simple keyframes to advanced keyframes.
+  *Changed tooltips on the Timeline and Keyframes toolbar to simplify
+   and remove shortcuts from translated strings.
+  *Improved compatibility of VA-API hardware encoding on Linux,
+   particularly on Wayland.
+  *Updated AV1, VP8, and VP9 encoders to latest releases.
+  *Updated Rubberband (audio pitch library) to latest release.
+  *Fixed filters when Export > From is Source or Each Playlist Item
+   (broke in v21.05).
+  *Fixed File > Export > Markers as Chapters if project contains
+   transitions.
+  *Fixed a possible crash moving clip inside blank on same track.
+  *Fixed a crash when dropping a .mlt MLX XML file from a file manager
+   to Playlist and then Timeline.
+  *Fixed a crash on undo insert/overwrite after undo add transition.
+  *Fixed Hold undo in Noise Gate audio filter.
+  *Fixed audio mutes after setting an in or out point when playing
+   not 1x forward in Source.
+  *Fixed the Segment Gap goes to zero when reloading an 
+   Audio Spectrum Visualization filter.
+  *Fixed Mask: Simple Shape > Rotate not working in presets.
+  *Fixed page up/down incorrect when Current position (timecode)
+   spin box has focus.
+  *Fixed extra blanks being removed when drag moving a clip right
+   with Ripple turned on.
+  *Fixed tiny clips created when trimming on the Timeline with
+   Ripple All Tracks turned on.
+  *Fixed removing simple keyframes.
+  *Fixed the Text: Rich video filter shows the editor when playhead
+   is not over selected clip.
+  *Fixed a possible crash in Glitch video filter.
+  *Fixed a crash changing Properties > Video > Rotation when the
+   clip has a transition.
+  *Fixed the Mask: From File video filter's Reverse option not
+   working as intended.
+  *Fixed broadcast standard non-integer frame rates (e.g. 30000/1001)
+   for Matrosk and WebM files.
+  *Fixed a bad job percentage complete when making a proxy or
+   running a convert job on a GoPro video file.
+
+-------------------------------------------------------------------
 Fri Sep 17 12:32:10 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.09.13:
