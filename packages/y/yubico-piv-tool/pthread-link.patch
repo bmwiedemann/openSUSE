@@ -1,7 +1,7 @@
-Index: yubico-piv-tool-2.2.0/ykcs11/CMakeLists.txt
+Index: yubico-piv-tool-2.2.1/ykcs11/CMakeLists.txt
 ===================================================================
---- yubico-piv-tool-2.2.0.orig/ykcs11/CMakeLists.txt
-+++ yubico-piv-tool-2.2.0/ykcs11/CMakeLists.txt
+--- yubico-piv-tool-2.2.1.orig/ykcs11/CMakeLists.txt
++++ yubico-piv-tool-2.2.1/ykcs11/CMakeLists.txt
 @@ -60,6 +60,9 @@ if(${ENABLE_HARDWARE_TESTS})
      set(HW_TESTS 1)
  endif(${ENABLE_HARDWARE_TESTS})
@@ -19,5 +19,5 @@ Index: yubico-piv-tool-2.2.0/ykcs11/CMakeLists.txt
 -target_link_libraries(ykcs11_shared ${LIBCRYPTO_LDFLAGS} ykpiv_shared)
 +target_link_libraries(ykcs11_shared ${LIBCRYPTO_LDFLAGS} ykpiv_shared Threads::Threads)
  set_target_properties(ykcs11_shared PROPERTIES SOVERSION ${SO_VERSION} VERSION ${VERSION})
- set_target_properties(ykcs11_shared PROPERTIES INSTALL_RPATH "${YKPIV_INSTALL_LIB_DIR}")
- if(WIN32)
+ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+     set_target_properties(ykcs11_shared PROPERTIES INSTALL_RPATH "${YKPIV_INSTALL_LIB_DIR}")

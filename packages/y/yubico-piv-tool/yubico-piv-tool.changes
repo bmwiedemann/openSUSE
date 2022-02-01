@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 31 20:31:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * ykpiv: Minor bug fixes
+  * ykcs11: Improved handling of object attributes
+  * ykcs11: Update flags for EC related mechanisms
+  * ykcs11: Minor bug fixes
+  * test: Improved testing
+  * doc: Improved documentation
+
+-------------------------------------------------------------------
 Sun Feb 28 18:33:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
