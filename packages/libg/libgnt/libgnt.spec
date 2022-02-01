@@ -1,7 +1,7 @@
 #
 # spec file for package libgnt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           libgnt
-Version:        2.14.0
+Version:        2.14.3
 Release:        0
 Summary:        TUI toolkit based on GLib and ncurses
 License:        GPL-2.0-or-later
@@ -63,7 +63,7 @@ applications which will use GNT.
 %autosetup -p1
 
 %build
-%meson
+%meson -D python2=false
 %meson_build
 
 %install

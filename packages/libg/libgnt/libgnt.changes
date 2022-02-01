@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 28 22:53:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.3:
+  * Added an option to disable python2 support.
+  * Add an option to disable building the docs.
+  * Fix a SEGFAULT in gnt_combo_box_get_dropdown.
+  * Fix an invalid read/write when hiding widgets
+  * Look for python-2.7.pc as well as python2.pc
+  * Bump the minimum meson version from 0.37.0 to 0.41.0
+  * Fix a buffer size in gntwm.c
+
+-------------------------------------------------------------------
 Tue Jun 23 08:13:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim conjecture from descriptions.
