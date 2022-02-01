@@ -12051,6 +12051,7 @@ unsorted:
   - libmikmod-devel 
   - libmikmod3-32bit: [x86_64] 
   - libmilter-doc 
+  - libmimalloc2_0 
   - libmimetic-devel 
   - libmimetic0 
   - libminisat2 
@@ -16067,6 +16068,7 @@ unsorted:
   - micropython: [x86_64] 
   - miller 
   - miltertest 
+  - mimalloc-devel 
   - mimic 
   - mimic-devel 
   - minder 
@@ -24722,7 +24724,6 @@ unsorted:
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
-  - python36-combi 
   - python36-coverage-config-reload-plugin 
   - python36-coverage-env-plugin 
   - python36-curses 
@@ -25580,7 +25581,6 @@ unsorted:
   - python38-colormap 
   - python38-colorspacious 
   - python38-colour 
-  - python38-combi 
   - python38-commentjson 
   - python38-compat-patcher-core 
   - python38-compileall2 
@@ -28606,7 +28606,6 @@ unsorted:
   - python39-colormap 
   - python39-colorspacious 
   - python39-colour 
-  - python39-combi 
   - python39-commentjson 
   - python39-compat-patcher-core 
   - python39-compileall2 
@@ -42958,7 +42957,9 @@ unsorted:
   - yast2-registration: [x86_64] 
   - yast2-rmt 
   - yast2-samba-provision 
+  - yast2-schema 
   - yast2-schema-collection 
+  - yast2-schema-micro 
   - yast2-slide-show 
   - yast2-support 
   - yast2-testsuite 
