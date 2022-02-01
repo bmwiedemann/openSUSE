@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 28 14:54:44 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 251.3
+  * https://cockpit-project.org/blog/cockpit-251.html
+  with additional fixes
+  * Fix "Administrative Access" prompt for "Duo" MFA
+
+-------------------------------------------------------------------
 Thu Aug 19 14:54:46 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - add --legacy-peer-deps to fix build

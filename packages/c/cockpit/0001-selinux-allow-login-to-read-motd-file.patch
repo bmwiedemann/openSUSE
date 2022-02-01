@@ -1,17 +1,14 @@
-From 7884908e248a5954380cdfdb97f168e9f988fa54 Mon Sep 17 00:00:00 2001
-From: Ludwig Nussel <ludwig.nussel@suse.de>
-Date: Fri, 6 Aug 2021 15:11:23 +0200
-Subject: [PATCH] selinux: allow login to read motd file
+commit fc0e3304732a9aaff1487833342d5fc8ea26ce04
+Author: Ludwig Nussel <ludwig.nussel@suse.de>
+Date:   Fri Aug 6 15:11:23 2021 +0200
 
----
- selinux/cockpit.te | 8 ++++++++
- 1 file changed, 8 insertions(+)
+    selinux: allow login to read motd file
 
 diff --git a/selinux/cockpit.te b/selinux/cockpit.te
-index b9910165c..52fc5fe63 100644
+index 73242aaa1..72db3c1dc 100644
 --- a/selinux/cockpit.te
 +++ b/selinux/cockpit.te
-@@ -180,3 +180,11 @@ optional_policy(`
+@@ -181,3 +181,11 @@ optional_policy(`
  optional_policy(`
  	unconfined_domtrans(cockpit_session_t)
  ')
@@ -23,6 +20,3 @@ index b9910165c..52fc5fe63 100644
 +    ')
 +    cockpit_read_pid_files(local_login_t)
 +')
--- 
-2.26.2
-

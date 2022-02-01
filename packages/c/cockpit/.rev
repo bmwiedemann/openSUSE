@@ -150,4 +150,15 @@
     <comment>- add --legacy-peer-deps to fix build</comment>
     <requestid>913174</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3f6a59695e4147af847e1e6681bf932e</srcmd5>
+    <version>251.3</version>
+    <time>1643720547</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 251.3
+  * https://cockpit-project.org/blog/cockpit-251.html
+  with additional fixes
+  * Fix &quot;Administrative Access&quot; prompt for &quot;Duo&quot; MFA</comment>
+    <requestid>949706</requestid>
+  </revision>
 </revisionlist>
