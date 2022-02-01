@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-moneyed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-py-moneyed
-Version:        0.8.0
+Version:        2.0
 Release:        0
 Summary:        Python currency and money classes
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/limist/py-moneyed
-Source:         https://files.pythonhosted.org/packages/source/p/py-moneyed/py-moneyed-%{version}.tar.gz
+Source:         https://github.com/py-moneyed/py-moneyed/archive/refs/tags/v%{version}.tar.gz#/py-moneyed-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Babel >= 2.8.0
+Requires:       python-typing-extensions >= 3.7
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.3.0}
+BuildRequires:  %{python_module Babel >= 2.8.0}
+BuildRequires:  %{python_module typing-extensions >= 3.7}
 # /SECTION
 %python_subpackages
 
@@ -45,9 +48,7 @@ Provides Currency and Money classes for use in your Python code.
 
 %install
 %python_install
-%{python_expand rm -rf %{buildroot}%{$python_sitelib}/moneyed/test_moneyed_classes.py* %{buildroot}%{$python_sitelib}/moneyed/__pycache__/test_moneyed_classes.*
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
