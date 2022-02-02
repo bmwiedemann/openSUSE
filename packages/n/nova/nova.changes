@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Jan 26 20:01:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add Conflicts for python3-novaclient
+
+-------------------------------------------------------------------
+Wed Jan 26 07:17:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.0:
+  * Update build and release process (#65)
+  * Delete .github/ISSUE_TEMPLATE/bug_report.md
+  * Delete .github/ISSUE_TEMPLATE/bug.yaml
+  * Delete .github/ISSUE_TEMPLATE/bug_report.md
+  * Delete .github/stale.yml
+  * Managed by Terraform
+
+-------------------------------------------------------------------
+Wed Jan 05 13:41:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.4:
+  * Deprecate helm 2 support (#60)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
+Wed Jan 05 13:38:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.3:
+  * [goreleaser] Support m1 mac (#59)
+  * Update documentation from template (#56)
+  * Update README.md (#51)
+  * Update documentation from template (#46)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:37:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.2:
+  * add banner (#44)
+  * Update README.md (#43)
+  * remove codecov (#41)
+  * Managed by Terraform
+  * Update documentation from template (#40)
+
+-------------------------------------------------------------------
+Wed May 26 18:56:41 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package nova

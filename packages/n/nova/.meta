@@ -1,0 +1,6 @@
+<package name="nova" project="openSUSE:Factory">
+  <title>nova</title>
+  <description>Find outdated or deprecated Helm charts running in your cluster.</description>
+  <devel project="devel:kubic" package="nova"/>
+  <url>https://github.com/FairwindsOps/nova</url>
+</package>
