@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 26 14:06:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.2:
+  * Fix init overwrite shorthand (#2198)
+  * refactor: Update copyright to 2022 (#2194)
+  * Updgrading buildkit to 0.9.2-okteto2 (#2192)
+
+-------------------------------------------------------------------
 Tue Jan 25 16:31:40 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.15.1:
