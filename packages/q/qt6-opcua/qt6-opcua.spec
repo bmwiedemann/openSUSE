@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.2
+%define real_version 6.2.3
 %define short_version 6.2
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
