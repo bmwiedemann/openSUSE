@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.2
+%define real_version 6.2.3
 %define short_version 6.2
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -114,6 +114,9 @@ The Qt 6 3DAnimation library.
 %package -n qt6-3danimation-devel
 Summary:        Development files for the Qt 6 3DAnimation library
 Requires:       libQt63DAnimation6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui)
 
 %description -n qt6-3danimation-devel
 Development files for the Qt 6 3DAnimation library.
