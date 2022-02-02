@@ -73,4 +73,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>934342</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>534a9e52c54a7a217e1e51bba39932b8</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * Fix linphone_core_enable_mic() not working for a local conference
+  * Fix stream direction in remote params
+  * fix start srtp dtls immediately
+  * Fix non-working tunnel for incoming calls made without ICE
+  * Keep ringing audio focus for incoming early media call as soundcard will use RING modei
+  * Avoid notify ringing of in IncomingEarlyMedia state in order to not send 180 after 183
+  * Write down call decline reasons into test
+  * Added config setting to disable audio focus requests
+  * Fix issue when soundcard may not be used after early media when handling multiple calls
+  * Do not connect audio to conference during early media
+  * fix crash get address when participants list is empty
+  * enable mic by default
+- fix license tag
+</comment>
+    <requestid>950590</requestid>
+  </revision>
 </revisionlist>

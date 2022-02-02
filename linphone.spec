@@ -1,7 +1,7 @@
 #
 # spec file for package linphone
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%define ldaplibdir %buildroot%_libexecdir/%name
-
+%define ldaplibdir %{buildroot}%{_libexecdir}/%{name}
 %define sover   10
 Name:           linphone
-Version:        5.0.53
+Version:        5.0.67
 Release:        0
 Summary:        Web Phone
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
@@ -204,7 +203,7 @@ LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
   --enable-lmpasswd  \
   --with-yielding-select \
   --prefix=$PWD/..   \
-  --libdir=%ldaplibdir
+  --libdir=%{ldaplibdir}
 make depend
 make %{?_smp_mflags}
 # do a preliminary install, because libldap is needed to build liblinphone
@@ -212,13 +211,13 @@ make install
 cd ../..
 #END build belledonne's libldap
 #find and use belledonne's libldap
-sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s@\${CMAKE_INSTALL_PREFIX}@%ldaplibdir@;s@include/openldap@include@" cmake/FindOpenLDAP.cmake
+sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s@\${CMAKE_INSTALL_PREFIX}@%{ldaplibdir}@;s@include/openldap@include@" cmake/FindOpenLDAP.cmake
 %cmake \
   -DPYTHON_EXECUTABLE="%{_bindir}/python3" \
   -DENABLE_CXX_WRAPPER=ON      \
   -DOPENLDAP_INCLUDE_DIRS=$PWD/../aux/include \
-  -DLDAP_LIB=%ldaplibdir/libldap.so \
-  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-rpath,%ldaplibdir" \
+  -DLDAP_LIB=%{ldaplibdir}/libldap.so \
+  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-rpath,%{ldaplibdir}" \
   -DENABLE_DOC=ON              \
   -DCMAKE_BUILD_TYPE=Release   \
   -DENABLE_ROOTCA_DOWNLOAD=OFF \
@@ -240,11 +239,11 @@ cp aux/openldap-bc/LICENSE LICENSE.openldap
 #END reinstall belledonne's libldap
 %cmake_install
 #remove unnecessary files
-rm %ldaplibdir/*.{la,so}
+rm %{ldaplibdir}/*.{la,so}
 #fix rpath in openldap libs and make them executable
-find %ldaplibdir -type f -exec chrpath -r %_libexecdir/%name {} \; -exec chmod a+x {} \;
+find %{ldaplibdir} -type f -exec chrpath -r %{_libexecdir}/%{name} {} \; -exec chmod a+x {} \;
 #fix rpath in liblinphone
-find %buildroot%_libdir -type f -name "liblinphone*" -exec chrpath -r %_libexecdir/%name {} \;
+find %{buildroot}%{_libdir} -type f -name "liblinphone*" -exec chrpath -r %{_libexecdir}/%{name} {} \;
 
 # Install the manual.
 mkdir -p %{buildroot}%{_datadir}/gnome/help/
@@ -255,11 +254,8 @@ cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 export NO_BRP_CHECK_RPATH=true
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}++%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}++%{sover} -p /sbin/ldconfig
 
 %files cli
@@ -268,8 +264,8 @@ export NO_BRP_CHECK_RPATH=true
 
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}.so.%{sover}*
-%dir %_libexecdir/%name
-%_libexecdir/%name/
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/
 
 %files -n lib%{name}-lang -f %{name}.lang
 %dir %{_datadir}/gnome/
