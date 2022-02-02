@@ -234,4 +234,15 @@
 </comment>
     <requestid>947166</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b5bbfc842d4b9c711eb27c0115dd91f5</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950587</requestid>
+  </revision>
 </revisionlist>

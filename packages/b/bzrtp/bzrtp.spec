@@ -18,10 +18,10 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.0.66
+Version:        5.0.67
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}/%{name}-%{version}.tar.bz2
@@ -68,7 +68,6 @@ application which will use libbzrtp.
 %cmake_install
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
