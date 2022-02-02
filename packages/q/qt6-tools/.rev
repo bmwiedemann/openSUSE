@@ -103,4 +103,12 @@
     <comment>- Use clang11 in SLE15 SP4 and newer too, not just in SLE15 SP3</comment>
     <requestid>942331</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b819727cdcefc8426358b28018274c39</srcmd5>
+    <version>6.2.3</version>
+    <time>1643838031</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.3 (forwarded request 950484 from cgiboudeaux)</comment>
+    <requestid>950509</requestid>
+  </revision>
 </revisionlist>

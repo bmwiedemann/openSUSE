@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.2
+%define real_version 6.2.3
 %define short_version 6.2
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
