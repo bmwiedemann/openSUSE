@@ -1,7 +1,7 @@
 #
 # spec file for package redis++
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,68 +16,71 @@
 #
 
 
+%define sover 1
 Name:           redis++
-Version:        1.2.0
+Version:        1.3.3
 Release:        0
 Summary:        C++ client for Redis
 License:        Apache-2.0
 URL:            https://github.com/sewenew/redis-plus-plus
 Source0:        https://github.com/sewenew/redis-plus-plus/archive/%{version}.tar.gz
-Patch0:         disable_static_lib.patch
-Patch1:         use_shared_lib_for_test.patch
-Patch2:         custom_install_locations.patch
 BuildRequires:  c++_compiler
-BuildRequires:  coreutils
-BuildRequires:  hiredis-devel
-BuildRequires:  libopenssl-devel
 BuildRequires:  cmake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(hiredis)
+BuildRequires:  pkgconfig(hiredis_ssl)
+BuildRequires:  pkgconfig(libuv)
 
 %description
 Redis-plus-plus, a C++ client for Redis based on hiredis and written in C++11/C++17.
 
-%package -n lib%{name}
+%package -n lib%{name}%{sover}
 Summary:        C++ client for Redis
 
-%description -n lib%{name}
+%description -n lib%{name}%{sover}
 Redis-plus-plus, a C++ client for Redis based on hiredis and written in C++11/C++17.
 
 %package devel
 Summary:        Header files and libraries for %{name}
-Requires:       lib%{name} = %{version}
-Requires:       hiredis-devel
+Requires:       lib%{name}%{sover} = %{version}
+# With version 1.3, proper so-versioning was added, which made the .so a pure devel symlink
+# For this reason though we conflict with older, unversioned libraries
+Conflicts:      lib%{name} < 1.3
 
 %description devel
 The %{name}-devel package contains the header files and
 libraries for redis-plus-plus.
 
 %prep
-%setup -q -n redis-plus-plus-%{version}
-%patch0 -p1
-%patch1
-%patch2
+%autosetup -n redis-plus-plus-%{version}
 
 %build
+sed -i -e '/DESTINATION.*/s/lib/%{_lib}/' CMakeLists.txt
 %cmake \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  -DREDIS_PLUS_PLUS_USE_TLS=ON \
+  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags}" \
   -DREDIS_PLUS_PLUS_BUILD_STATIC=OFF \
-  -DREDIS_LIBDIR=%{_lib} \
-  -DREDIS_INCDIR=redis++ \
-  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags}"
+  -DREDIS_PLUS_PLUS_USE_TLS=ON \
+  -DREDIS_PLUS_PLUS_BUILD_TEST=OFF \
+  -DREDIS_PLUS_PLUS_BUILD_ASYNC="libuv"
 %cmake_build
 
 %install
 %cmake_install
 
-%post -n lib%{name} -p /sbin/ldconfig
-%postun -n lib%{name} -p /sbin/ldconfig
+%post -n lib%{name}%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
-%files -n lib%{name}
+%files -n lib%{name}%{sover}
 %license LICENSE
 %doc README.md
-%{_libdir}/libredis++.so
+%{_libdir}/libredis++.so.%{sover}{,.*}
 
 %files devel
-%{_includedir}/redis++
+%license LICENSE
+%{_libdir}/pkgconfig/*.pc
+%{_libdir}/libredis++.so
+%{_datadir}/cmake/redis++
+%{_includedir}/sw
 
 %changelog

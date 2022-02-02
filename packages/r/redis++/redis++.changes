@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb  2 11:22:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have the -devel package conflict with libredis++ < 1.3: newly,
+  the library is versioned, which results in the old, unversioned
+  library conflicting with the new .so symlink.
+
+-------------------------------------------------------------------
+Tue Jan 25 09:35:06 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Mon Dec 27 17:54:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.3.3:
+  * Support async interface
+  * Support max connection idle time
+- drop patches:
+  * custom_install_locations.patch
+  * disable_static_lib.patch
+  * use_shared_lib_for_test.patch
+
+-------------------------------------------------------------------
 Fri Oct  9 07:54:17 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup spec file
