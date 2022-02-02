@@ -1,0 +1,63 @@
+From 4fb73877a34616ad9849b050275ad6a62354a9e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Yaroslav=20de=20la=20Pe=C3=B1a=20Smirnov?=
+ <yps@yaroslavps.com>
+Date: Sun, 5 Sep 2021 00:51:26 +0300
+Subject: [PATCH] Prevent segfault on keyboard connection
+
+Check if keymap is a valid (non-null) pointer in
+ipc_json_describe_input.
+---
+ sway/ipc-json.c | 39 +++++++++++++++++++++------------------
+ 1 file changed, 21 insertions(+), 18 deletions(-)
+
+diff --git a/sway/ipc-json.c b/sway/ipc-json.c
+index 1b64f86e1f..1d47f12c2a 100644
+--- a/sway/ipc-json.c
++++ b/sway/ipc-json.c
+@@ -979,25 +979,28 @@ json_object *ipc_json_describe_input(struct sway_input_device *device) {
+ 	if (device->wlr_device->type == WLR_INPUT_DEVICE_KEYBOARD) {
+ 		struct wlr_keyboard *keyboard = device->wlr_device->keyboard;
+ 		struct xkb_keymap *keymap = keyboard->keymap;
+-		struct xkb_state *state = keyboard->xkb_state;
+-
+-		json_object *layouts_arr = json_object_new_array();
+-		json_object_object_add(object, "xkb_layout_names", layouts_arr);
+-
+-		xkb_layout_index_t num_layouts = xkb_keymap_num_layouts(keymap);
+-		xkb_layout_index_t layout_idx;
+-		for (layout_idx = 0; layout_idx < num_layouts; layout_idx++) {
+-			const char *layout = xkb_keymap_layout_get_name(keymap, layout_idx);
+-			json_object_array_add(layouts_arr,
+-				layout ? json_object_new_string(layout) : NULL);
+-
+-			bool is_active = xkb_state_layout_index_is_active(state,
+-				layout_idx, XKB_STATE_LAYOUT_EFFECTIVE);
+-			if (is_active) {
+-				json_object_object_add(object, "xkb_active_layout_index",
+-					json_object_new_int(layout_idx));
+-				json_object_object_add(object, "xkb_active_layout_name",
++
++		if (keymap != NULL) {
++			struct xkb_state *state = keyboard->xkb_state;
++
++			json_object *layouts_arr = json_object_new_array();
++			json_object_object_add(object, "xkb_layout_names", layouts_arr);
++
++			xkb_layout_index_t num_layouts = xkb_keymap_num_layouts(keymap);
++			xkb_layout_index_t layout_idx;
++			for (layout_idx = 0; layout_idx < num_layouts; layout_idx++) {
++				const char *layout = xkb_keymap_layout_get_name(keymap, layout_idx);
++				json_object_array_add(layouts_arr,
+ 					layout ? json_object_new_string(layout) : NULL);
++
++				bool is_active = xkb_state_layout_index_is_active(state,
++					layout_idx, XKB_STATE_LAYOUT_EFFECTIVE);
++				if (is_active) {
++					json_object_object_add(object, "xkb_active_layout_index",
++						json_object_new_int(layout_idx));
++					json_object_object_add(object, "xkb_active_layout_name",
++						layout ? json_object_new_string(layout) : NULL);
++				}
+ 			}
+ 		}
+ 	}

@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        sway.keyring
+Patch0:         https://github.com/swaywm/sway/pull/6484.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel

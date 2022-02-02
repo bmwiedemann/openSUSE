@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 28 11:36:17 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Prevent segfault on keyboard connection
+  using upstream pull request https://github.com/swaywm/sway/pull/6484
+  Patches:
+  * Add 6484.patch
+
+-------------------------------------------------------------------
 Tue Jan 25 04:10:31 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.7:
