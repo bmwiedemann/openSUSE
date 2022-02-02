@@ -1,7 +1,7 @@
 #
 # spec file for package belcard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        5.0.53
+Version:        5.0.67
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          Development/Languages/C and C++
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/belcard/-/archive/%{version}/%{name}-%{version}.tar.bz2
@@ -82,7 +82,6 @@ to develop applications using the belcard library.
 %cmake_install
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}
