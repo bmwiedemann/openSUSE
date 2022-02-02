@@ -55,10 +55,10 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         ghversiontag 2022.01.0
+%define         ghversiontag 2022.01.1
 Name:           python-distributed%{psuffix}
 # Note: please always update together with python-dask
-Version:        2022.1.0
+Version:        2022.1.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -146,8 +146,8 @@ donttest+=" or (test_asyncprocess and test_exit_callback)"
 donttest+=" or (test_nanny and test_throttle_outgoing_connections)"
 donttest+=" or (test_scheduler and test_rebalance)"
 donttest+=" or (test_tls_functional and test_rebalance)"
-donttest+=" or (test_worker and test_close_gracefully)"
 donttest+=" or (test_worker and test_fail_write_to_disk)"
+donttest+=" or (test_worker and test_multiple_transfers)"
 donttest+=" or (test_worker and test_remove_replicas_while_computing)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then

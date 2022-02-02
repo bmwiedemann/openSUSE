@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Jan 29 17:34:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.1.1
+  * P2P shuffle skeleton
+  * Fix <Task pending name='...' coro=<Client._handle_report()>
+  * Add distributed.client.security-loader config
+  * Avoid Client._handle_report cancelling itself on Client._close
+  * Paused workers shouldn't steal tasks
+  * Add option for timestamps from output of Node.get_logs
+  * Don't use time.time() or IOLoop.time()
+  * Raise plugin exceptions on Worker.start()
+  * Fixing docstrings
+  * Fix typo in Client.run docstring
+  * Update client.py docstrings
+  * Skip shuffle tests if pandas / dask.dataframe not installed
+  * Improve test coverage
+  * Test report improvements
+  * P2P shuffle: ignore row order in tests
+  * Fix flaky test_no_reconnect[--no-nanny]
+  * Pin coverage to 6.2
+  * Check for new name of timeouts artifact and be more fault
+    tolerant
+  * Revisit rebalance unit tests
+  * Update comment in rearrange_by_column_p2p
+  * Update gpuCI RAPIDS_VER to 22.04
+  * Fix groupby test after meta requirements got stricter in Dask
+    PR#8563
+  * Fix flaky test_close_gracefully and test_lifetime
+  * Fix flaky test_workspace_concurrency
+  * Fix flaky test_shuffle_extension.py::test_get_partition
+  * Fix flaky test_dump_cluster_unresponsive_remote_worker
+  * Dump cluster state on all test failures
+  * Update license format
+  * Fix flaky test_drop_with_paused_workers_with_running_tasks_3_4
+  * Do not raise an exception if the GitHub token cannot be found
+
+-------------------------------------------------------------------
 Tue Jan 25 18:29:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Revert distributed-fix-python310.patch addition
