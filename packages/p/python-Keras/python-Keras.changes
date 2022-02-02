@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 22 20:48:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.0
+  * This is for sync with the tensorflow 2.7.0 release
+  * No release notes besides the reference to TF:
+    https://github.com/tensorflow/tensorflow/releases/tag/v2.7.0
+
+-------------------------------------------------------------------
 Fri Sep 24 09:13:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.6.0

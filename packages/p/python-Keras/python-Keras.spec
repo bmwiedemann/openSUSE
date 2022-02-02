@@ -1,7 +1,7 @@
 #
-# spec file for package python-Keras
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,11 @@
 %endif
 # sync with tensorflow2
 %define pythons python3
+%if 0%{?suse_version} < 1599
+ExclusiveArch: donotbuild
+%endif
 Name:           python-Keras%{psuffix}
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Deep Learning library
 License:        Apache-2.0
@@ -37,26 +40,19 @@ Source0:        https://files.pythonhosted.org/packages/py2.py3/k/keras/keras-%{
 # For Tests
 Source1:        https://github.com/keras-team/keras/archive/refs/tags/v%{version}.tar.gz#/keras-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  unzip
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 BuildArch:      noarch
 ExcludeArch:    %{ix86}
 %if %{with test}
-# SECTION this should be specified by tf
-BuildRequires:  %{python_module tensorflow-estimator = %{version}}
-BuildRequires:  %{python_module keras = %{version}}
-BuildRequires:  %{python_module tensorboard = %{version}}
-# /SECTION
-BuildRequires:  tensorflow2
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module scipy >= 1.5.2}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module numpy >= 1.19}
-BuildRequires:  %{python_module h5py}
+BuildRequires:  tensorflow2
 %endif
 Provides:       python-keras = %{version}-%{release}
 Obsoletes:      python-keras < %{version}-%{release}
@@ -72,14 +68,10 @@ Being able to go from idea to result as fast as possible is key to doing good re
 %setup -q -n keras-%{version} -b1
 
 %build
-%if ! %{with test}
-# deprecated usage of wheel in cwd for pyproject_install due to old python-rpm-macros on Leap 15.X
-cp %{SOURCE0} .
-%endif
 
 %if ! %{with test}
 %install
-%pyproject_install
+%pyproject_install %{SOURCE0}
 cp %{buildroot}%{python3_sitelib}/keras-%{version}.dist-info/LICENSE .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -92,7 +84,7 @@ for f in keras/tests/*_test.py; do
   [ "$f" = "keras/tests/automatic_outside_compilation_test.py" ] && continue || :
   # import error: test file not installed into sitelib
   [ "$f" = "keras/tests/get_config_test.py" ] && continue || :
-  # no tensorflow.compiler.tests
+  # no tensorflow.compiler.tests in installed tensorflow2 package
   [ "$f" = "keras/tests/tracking_util_xla_test.py" ] && continue || :
   # Note: These might be genuine errors, but in order to get it checked in, we rather ignore them now.
   #       It is still better than not running any tests at all.

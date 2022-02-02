@@ -7,4 +7,12 @@
     <comment>- This is required by tensorflow2 again boo#1190856</comment>
     <requestid>921350</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5e413920d6d804505e084f685f94496</srcmd5>
+    <version>2.7.0</version>
+    <time>1643838009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950476</requestid>
+  </revision>
 </revisionlist>
