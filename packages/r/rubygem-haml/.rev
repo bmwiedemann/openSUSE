@@ -272,4 +272,12 @@ Package is MIT licensed (see MIT license and README.md). However, the sass compo
 </comment>
     <requestid>865194</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7e12636cdee1fafa48fe92db48f14cb7</srcmd5>
+    <version>5.2.2</version>
+    <time>1643838084</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950629</requestid>
+  </revision>
 </revisionlist>
