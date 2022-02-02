@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.55.0
+Version:        0.55.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -36,8 +36,6 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
 Patch0:         fix-max-name-size.patch
-# PATCH-FIX-UPSTREAM numba-pr7748-random32bitwidth.patch -- gh#numba/numba#7748
-Patch1:         numba-pr7748-random32bitwidth.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
 BuildRequires:  %{python_module devel >= 3.7}
@@ -70,6 +68,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.0}
 BuildRequires:  %{python_module tbb}
 %endif
+# Tests fail on ppc64 big endian, not resolvable on s390x
+# Supported Platforms: https://numba.pydata.org/numba-doc/dev/user/installing.html#compatibility
+ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %python_subpackages
 
 %description

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 29 13:23:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.55.1
+  * This is a bugfix release that closes all the remaining issues
+    from the accelerated release of 0.55.0 and also any release
+    critical regressions discovered since then.
+  * CUDA target deprecation notices:
+    - Support for CUDA toolkits < 10.2 is deprecated and will be
+      removed in Numba 0.56.
+    - Support for devices with Compute Capability < 5.3 is
+      deprecated and will be removed in Numba 0.56.
+- Drop numba-pr7748-random32bitwidth.patch
+- Explicitly declare supported platforms (avoid failing tests on
+  ppc64)
+
+-------------------------------------------------------------------
 Fri Jan 14 16:55:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.55.0
