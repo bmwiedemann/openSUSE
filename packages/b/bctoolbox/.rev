@@ -265,4 +265,15 @@
 </comment>
     <requestid>947165</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5ebf3db6d56bad880af25852af77b0fe</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950582</requestid>
+  </revision>
 </revisionlist>

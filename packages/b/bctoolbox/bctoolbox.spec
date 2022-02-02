@@ -18,10 +18,10 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.0.66
+Version:        5.0.67
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
-License:        GPL-2.0-or-later
+License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/%{version}/%{name}-%{version}.tar.bz2
@@ -88,11 +88,8 @@ This package the contains shared library for testing component.
 %cmake_install
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}-tester%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}-tester%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
