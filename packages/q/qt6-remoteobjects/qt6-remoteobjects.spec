@@ -16,13 +16,13 @@
 #
 
 
-%define real_version 6.2.2
+%define real_version 6.2.3
 %define short_version 6.2
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-remoteobjects
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -35,6 +35,7 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickTest)
+BuildRequires:  cmake(Qt6Widgets)
 
 %description
 Qt Remote Objects (QtRO) is an inter-process communication (IPC)
