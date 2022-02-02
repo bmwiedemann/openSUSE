@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 31 13:31:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: no apparent reason detected why we need
+  -32bit libaries and devel packages. The previously existing
+  package already was not installable, so defacto no loss.
+
+-------------------------------------------------------------------
+Fri Jan 21 16:48:31 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 5.31.1
+  * Fixed #61: yaz-url redirect segfault in case of redirect host failure.
+  * Update yaz_encode_uri_component for RFC3986. Previous implementation
+    based on RFC2396.
+
+-------------------------------------------------------------------
 Mon Jun  7 11:37:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)
