@@ -43,6 +43,7 @@ in that scoring scheme.
 %patch0 -p1
 
 %build
+export MAN_PAGE_DATE=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} -I)
 %configure
 %make_build
 
