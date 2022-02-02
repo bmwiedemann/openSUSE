@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:35:37 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.5
+ see installed Changelog
+
+  2022-01-13 version 2.2.5:
+  
+  * Fix DLL load error on Ruby 3.1 on Windows
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:59:17 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.4
