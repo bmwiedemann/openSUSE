@@ -360,4 +360,17 @@
 </comment>
     <requestid>924827</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b7da0b4088c5183a019c425445904757</srcmd5>
+    <version>12.39</version>
+    <time>1643838041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 12.39 - not CPAN released
+  For changes in version 12.31 to 12.39 see Changes file
+- fixes CVE-2022-23935 security issue
+
+See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
+</comment>
+    <requestid>950556</requestid>
+  </revision>
 </revisionlist>

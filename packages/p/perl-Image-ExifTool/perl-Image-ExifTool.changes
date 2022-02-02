@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  1 21:05:57 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to version 12.39 - not CPAN released
+  For changes in version 12.31 to 12.39 see Changes file
+
+- fixes CVE-2022-23935 security issue
+
+-------------------------------------------------------------------
 Fri Sep 17 07:16:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - require File::RandomAccess otherwise exiftool(1) won't start 

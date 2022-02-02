@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-ExifTool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Image-ExifTool
 Name:           perl-Image-ExifTool
-Version:        12.30
+Version:        12.39
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Read and write meta information
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXIFTOOL/%{cpan_name}-%{version}.tar.gz
+# use non-release build because of CVE-2022-23935
+#Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXIFTOOL/%%{cpan_name}-%%{version}.tar.gz
+Source0:        https://exiftool.org/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
