@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 31 06:13:13 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 2.4.4 (bsc#1195217, bsc#1195054):
+  * Security fixes:
+    - CVE-2022-23852 -- Fix signed integer overflow
+      (undefined behavior) in function XML_GetBuffer
+      that is also called by function XML_Parse internally)
+      for when XML_CONTEXT_BYTES is defined to >0 (which is both
+      common and default).
+      Impact is denial of service or more.
+    - CVE-2022-23990 -- Fix unsigned integer overflow in function
+      doProlog triggered by large content in element type
+      declarations when there is an element declaration handler
+      present (from a prior call to XML_SetElementDeclHandler).
+      Impact is denial of service or more.
+  * Bug fixes:
+    - xmlwf: Fix a memory leak on output file opening error
+  * Other changes:
+    - Version info bumped from 9:3:8 to 9:4:8;
+      see https://verbump.de/ for what these numbers do
+  * Drop unused file valid-xhtml10.png
+
+-------------------------------------------------------------------
 Mon Jan 17 09:14:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.3 (bsc#1194251, bsc#1194362, bsc#1194474, 
