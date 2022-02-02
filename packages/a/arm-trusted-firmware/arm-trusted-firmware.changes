@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  2 07:09:52 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- ExclusiveArch got overwritten, using else branches instead as
+  SLE 15 SP4 continued to build excluded flavours
+  (related to bsc#1193779 and bsc#1195129)
+
+-------------------------------------------------------------------
 Mon Jan 31 14:24:30 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
 
 - Fixing the if statement to disable some targets on SLE 15 SP4, as
