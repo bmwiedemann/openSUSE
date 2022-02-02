@@ -28,6 +28,8 @@ URL:            https://github.com/mnooner256/pyqrcode
 # This is unofficial fork with some additional fixes, the canonical
 # upstream repository is dead.
 Source:         https://github.com/pyqrcode/pyqrcodeNG/archive/refs/tags/%{version}.tar.gz#/pyqrcodeNG-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pyqrcode/pyqrcodeNG/pull/18
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pypng}
 BuildRequires:  %{python_module pytest}

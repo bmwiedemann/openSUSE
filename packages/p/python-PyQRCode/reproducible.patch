@@ -1,0 +1,34 @@
+https://github.com/pyqrcode/pyqrcodeNG/pull/18
+
+commit 09b19acd42cdf5884ac760ea817c509360bea6da
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Tue Dec 21 21:18:25 2021 +0100
+
+    Use a constant copyright date
+    
+    because a) copyright only expires 70 years after the death of the author
+    
+    and b) users might look at this string to see how current this software is
+    but this will be misleading when it is rebuilt later.
+    
+    and c) for reproducible builds we want to be able to rebuild packages later
+    and still get bit-identical output. In this case, it produced diffs in
+    /usr/share/doc/packages/python36-PyQRCode/html/_modules/pyqrcodeng.html
+    -    <p>&#169; Copyright 2013-2021, Michael Nooner, 2018 - 2021 Lars Heuer.</p>
+    +    <p>&#169; Copyright 2013-2021, Michael Nooner, 2018 - 2037 Lars Heuer.</p>
+    
+    This patch was done while working on reproducible builds for openSUSE.
+
+diff --git a/docs/conf.py b/docs/conf.py
+index 623fcbc..c24b064 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -49,7 +49,7 @@ master_doc = 'index'
+ 
+ # General information about the project.
+ project = 'pyqrcodeng'
+-copyright = '2013-2016, Michael Nooner, 2018 - {0} Lars Heuer'.format(datetime.datetime.now().year)
++copyright = '2013-2016, Michael Nooner, 2018-2021 Lars Heuer'
+ author = 'Michael Nooner, Lars Heuer'
+ 
+ # The version info for the project you're documenting, acts as replacement for
