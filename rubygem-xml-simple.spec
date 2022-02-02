@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-xml-simple
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-xml-simple
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 %define mod_name xml-simple
 %define mod_full_name %{mod_name}-%{version}
