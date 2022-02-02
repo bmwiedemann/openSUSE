@@ -31,25 +31,23 @@
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
-ExclusiveArch:  donotbuild
 %define psuffix -test-py310"
 %define skip_python38 1
 %define skip_python39 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
-# https://github.com/dask/distributed/issues/5350
+# https://github.com/dask/distributed/issues/5350, https://github.com/dask/distributed/issues/5460
 %define skip_python310 1
 %bcond_with test
-BuildArch:      noarch
 %endif
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         ghversiontag 2022.01.0
+%define         ghversiontag 2022.01.1
 Name:           python-dask%{psuffix}
 # Note: please always update together with python-distributed!
-Version:        2022.1.0
+Version:        2022.1.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -75,9 +73,7 @@ Recommends:     %{name}-dataframe = %{version}
 Recommends:     %{name}-delayed = %{version}
 Recommends:     %{name}-distributed = %{version}
 Recommends:     %{name}-dot = %{version}
-# sqlalchemy 1.4.0 causes deprecation warnings to be raised from pandas
-# along with other issues https://github.com/pandas-dev/pandas/issues/40467
-Recommends:     python-SQLAlchemy < 1.4.0
+Recommends:     python-SQLAlchemy >= 1.4.0
 Recommends:     python-cityhash
 Recommends:     python-distributed >= %{version}
 Recommends:     python-fastparquet
@@ -91,6 +87,7 @@ Suggests:       %{name}-all = %{version}
 Suggests:       %{name}-diagnostics = %{version}
 Provides:       %{name}-multiprocessing = %{version}-%{release}
 Obsoletes:      %{name}-multiprocessing < %{version}-%{release}
+BuildArch:      noarch
 %if %{with test}
 # test that we specified all requirements correctly in the core
 # and subpackages by only requiring dask-all and optional extras
@@ -99,9 +96,9 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # SECTION additional optionally tested (importorskip) packages
-#BuildRequires:  %%{python_module SQLAlchemy}
+BuildRequires:  %{python_module SQLAlchemy >= 1.4.0}
 BuildRequires:  %{python_module cachey}
-BuildRequires:  %{python_module fastparquet}
+BuildRequires:  %{python_module fastparquet >= 0.8.0}
 # optional zarr increases fsspec miminum to 0.8.4 if present
 BuildRequires:  %{python_module fsspec >= 0.8.4}
 BuildRequires:  %{python_module h5py}
@@ -358,8 +355,13 @@ donttest+=" or test_development_guidelines_matches_ci"
 donttest+=" or (test_parquet and (test_chunksize or test_extra_file))"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/dask/issues/8169
-  donttest+=" or (test_categorize_info)"
+  donttest+=" or test_categorize_info"
+  donttest+=" or test_query_with_meta"
 fi
+# https://github.com/dask/dask/issues/8639
+donttest+=" or test__get_paths"
+# (rarely) flaky on obs
+donttest+=" or test_local_scheduler"
 %pytest --pyargs dask -rfEs -m "not network" -k "not ($donttest)" -n auto
 %endif
 

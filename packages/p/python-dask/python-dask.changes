@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Jan 29 17:35:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.1.1
+  * Add dask.dataframe.series.view()
+  * Update tz for fastparquet + pandas 1.4.0
+  * Cleaning up misc tests for pandas compat
+  * Moving to SQLAlchemy >= 1.4
+  * Pandas compat: Filter sparse warnings
+  * Fail if meta is not a pandas object
+  * Use fsspec.parquet module for better remote-storage
+    read_parquet performance
+  * Move DataFrame ACA aggregations to HLG
+  * Add optional information about originating function call in
+    DataFrameIOLayer
+  * Blockwise array creation redux
+  * Refactor config default search path retrieval
+  * Add optimize_graph flag to Bag.to_dataframe function
+  * Make sure that delayed output operations still return lists of
+    paths
+  * Pandas compat: Fix to_frame name to not pass None
+  * Pandas compat: Fix axis=None warning
+  * Expand Dask YAML config search directories
+  * Fix groupby.cumsum with series grouped by index
+  * Fix derived_from for pandas methods
+  * Enforce boolean ascending for sort_values
+  * Fix parsing of __setitem__ indices
+  * Avoid divide by zero in slicing
+  * Downgrade meta error in
+  * Pandas compat: Deprecate append when pandas >= 1.4.0
+  * Replace outdated columns argument with meta in DataFrame
+    constructor
+  * Refactor deploying docs
+  * Pin coverage in CI
+  * Move cached_cumsum imports to be from dask.utils
+  * Update gpuCI RAPIDS_VER to 22.04
+  * Update cocstring for from_delayed function
+  * Handle plot_width / plot_height deprecations
+  * Remove unnecessary pyyaml importorskip
+  * Specify scheduler in DataFrame assert_eq
+
+-------------------------------------------------------------------
+Tue Jan 25 22:07:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert python310 enablement -- gh#dask/distributed#5460
+
+-------------------------------------------------------------------
+Tue Jan 25 09:35:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- reenable python 3.10 build as distributed is also reenabled 
+
+-------------------------------------------------------------------
 Thu Jan 20 16:23:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.1.0
