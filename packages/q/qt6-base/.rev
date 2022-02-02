@@ -112,4 +112,12 @@
     <comment>- Increase the memory constraint to fix a oom failure</comment>
     <requestid>942346</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5e5c4c4796f0f8c0550772c3d81f365b</srcmd5>
+    <version>6.2.3</version>
+    <time>1643838012</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.3 (forwarded request 950484 from cgiboudeaux)</comment>
+    <requestid>950487</requestid>
+  </revision>
 </revisionlist>

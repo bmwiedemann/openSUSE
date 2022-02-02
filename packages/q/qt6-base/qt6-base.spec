@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.2
+%define real_version 6.2.3
 %define short_version 6.2
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
