@@ -111,4 +111,12 @@
     <comment>- Reenable build on big endian platforms.</comment>
     <requestid>939451</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b6c030e6d8ef3cf5f0edcd980e191e20</srcmd5>
+    <version>6.2.3</version>
+    <time>1643838015</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.3 (forwarded request 950484 from cgiboudeaux)</comment>
+    <requestid>950492</requestid>
+  </revision>
 </revisionlist>

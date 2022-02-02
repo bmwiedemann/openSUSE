@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 31 08:54:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.3:
+  * https://www.qt.io/blog/qt-6.2.3-released
+
+-------------------------------------------------------------------
 Fri Dec 10 19:54:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Reenable build on big endian platforms.
