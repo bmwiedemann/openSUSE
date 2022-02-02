@@ -1,8 +1,8 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2021 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,9 +139,11 @@ BuildRequires:  pkgconfig(glw)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
@@ -344,6 +346,7 @@ cmake ../ \
       -DWITH_BULLET:BOOL=ON \
       -DWITH_CODEC_AVI:BOOL=ON \
       -DWITH_CODEC_FFMPEG:BOOL=ON \
+      -DFFMPEG_ROOT_DIR:PATH=%{_includedir}/ffmpeg \
       -DWITH_CODEC_SNDFILE:BOOL=ON \
       -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
       -DWITH_COMPOSITOR:BOOL=ON \

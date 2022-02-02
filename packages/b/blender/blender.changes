@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 25 14:33:46 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix ffmpeg detection
+
+-------------------------------------------------------------------
 Wed Dec 22 09:08:52 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable ix86 builds (resulting in build errors)
