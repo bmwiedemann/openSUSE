@@ -1,0 +1,30 @@
+Name the command `file-rename` so as not to conflict with the command provided by `util-linux`.
+
+This is not only the upstream's choice of an alternative name, but also makes us compatible with Debian
+(see https://salsa.debian.org/perl-team/modules/packages/rename/-/blob/master/debian/rules )
+
+--- a/Build.PL	2021-03-23 00:23:07.000000000 +0100
++++ b/Build.PL	2022-01-07 12:51:51.209121400 +0100
+@@ -1,9 +1,7 @@
+ use strict;
+ use Module::Build;
+ use File::Spec;
+-my $script = File::Spec->catfile( 'script',
+-		Module::Build->os_type eq 'Windows'  
+-			? 'file-rename' : 'rename' );
++my $script = File::Spec->catfile( 'script', 'file-rename' );
+ 
+ Module::Build -> new (
+ 	license		=> 'perl',	
+
+--- a/t/testlib.pl	2021-08-02 18:14:10.000000000 +0200
++++ b/t/testlib.pl	2022-01-07 14:20:21.696859600 +0100
+@@ -130,7 +130,7 @@
+ } 
+ 
+ sub script_name {
+-    return +(is_windows() ? 'file-rename' : 'rename');
++    return +('file-rename');
+ }
+ 
+ 1;

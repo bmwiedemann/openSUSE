@@ -1,0 +1,6 @@
+<package name="perl-File-Rename" project="openSUSE:Factory">
+  <title></title>
+  <description>This package provides a perl interface for batch renaming files (File::Rename) and a command line tool `file-rename` (renamed from `rename` so as not to conflict with an unrelated tool provided by `util-linux`).</description>
+  <devel project="devel:languages:perl" package="perl-File-Rename"/>
+  <url>https://metacpan.org/dist/File-Rename</url>
+</package>
