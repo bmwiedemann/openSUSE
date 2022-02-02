@@ -1,0 +1,13 @@
+Index: openssl-3.0.0-alpha1/Configurations/unix-Makefile.tmpl
+===================================================================
+--- openssl-3.0.0-alpha1.orig/Configurations/unix-Makefile.tmpl	2020-04-23 22:56:27.365853133 +0200
++++ openssl-3.0.0-alpha1/Configurations/unix-Makefile.tmpl	2020-04-23 22:56:52.474004636 +0200
+@@ -544,7 +544,7 @@ install_sw: install_dev install_engines
+ 
+ uninstall_sw: uninstall_runtime uninstall_modules uninstall_engines uninstall_dev
+ 
+-install_docs: install_man_docs install_html_docs
++install_docs: install_man_docs
+ 
+ uninstall_docs: uninstall_man_docs uninstall_html_docs
+ 	$(RM) -r $(DESTDIR)$(DOCDIR)

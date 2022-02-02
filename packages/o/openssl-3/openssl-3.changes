@@ -1,0 +1,640 @@
+-------------------------------------------------------------------
+Tue Feb  1 13:55:24 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix conflict with openssl and libressl
+
+-------------------------------------------------------------------
+Fri Jan 28 08:32:43 UTC 2022 - Simon Lees <simonf.lees@suse.com>
+
+- Remove /etc/pki/CA from the [jsc#SLE-17856, jsc#SLE-19044]
+  openssl-Override-default-paths-for-the-CA-directory-tree.patch
+- Remove unused patches
+
+-------------------------------------------------------------------
+Fri Jan 21 08:18:28 UTC 2022 - Simon Lees <simonf.lees@suse.com>
+
+- Ship openssl-3 as binary names [jsc#SLE-17856, jsc#SLE-19044]
+- Use openssl3.cnf
+  * openssl-use-versioned-config.patch
+  * fix-config-in-tests.patch
+- Support crypto policies
+  * openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
+  * openssl-Override-default-paths-for-the-CA-directory-tree.patch
+- Remove obsolets, not ready to force an upgrade yet
+
+-------------------------------------------------------------------
+Thu Jan 13 10:49:26 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.1: [bsc#1193740, CVE-2021-4044]
+  * RNDR and RNDRRS support in provider functions to provide
+    random number generation for Arm CPUs (aarch64).
+  * s_client and s_server apps now explicitly say when the TLS
+    version does not include the renegotiation mechanism. This
+    avoids confusion between that scenario versus when the TLS
+    version includes secure renegotiation but the peer lacks
+    support for it.
+  * The default SSL/TLS security level has been changed from 1 to 2.
+    RSA, DSA and DH keys of 1024 bits and above and less than 2048
+    bits and ECC keys of 160 bits and above and less than 224 bits
+    were previously accepted by default but are now no longer
+    allowed. By default TLS compression was already disabled in
+    previous OpenSSL versions. At security level 2 it cannot be
+    enabled.
+  * The SSL_CTX_set_cipher_list family functions now accept
+    ciphers using their IANA standard names.
+  * The PVK key derivation function has been moved from
+    b2i_PVK_bio_ex() into the legacy crypto provider as an
+    EVP_KDF. Applications requiring this KDF will need to load
+    the legacy crypto provider.
+  * The various OBJ_* functions have been made thread safe.
+  * CCM8 cipher suites in TLS have been downgraded to security
+    level zero because they use a short authentication tag which
+    lowers their strength.
+  * Subject or issuer names in X.509 objects are now displayed
+    as UTF-8 strings by default.
+  * Parallel dual-prime 1536/2048-bit modular exponentiation
+    for AVX512_IFMA capable processors.
+
+-------------------------------------------------------------------
+Tue Sep  7 14:58:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0
+  * The full list of changes since version 1.1.1 can be found in:
+    https://github.com/openssl/openssl/blob/master/CHANGES.md#openssl-30
+  * OpenSSL 3.0 wiki: https://wiki.openssl.org/index.php/OpenSSL_3.0
+  * The Migration guide:
+    https://github.com/openssl/openssl/blob/master/doc/man7/migration_guide.pod
+
+-------------------------------------------------------------------
+Thu Jul 29 16:46:14 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Beta 2
+  * The ERR_GET_FUNC() function was removed. With the loss of
+    meaningful function codes, this function can only cause problems
+    for calling applications.
+  * While a callback function set via 'SSL_CTX_set_cert_verify_callback()'
+    is not allowed to return a value > 1, this is no more taken as
+    failure.
+  * Deprecated the obsolete X9.31 RSA key generation related
+    functions BN_X931_generate_Xpq(), BN_X931_derive_prime_ex(),
+    and BN_X931_generate_prime_ex().
+- Remove openssl-ppc64-fix-build.patch fixed upstream
+
+-------------------------------------------------------------------
+Mon Jul  5 14:29:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Beta 1
+  * Add a configurable flag to output date formats as ISO 8601.
+    Does not change the default date format.
+  * Version of MSVC earlier than 1300 could get link warnings, which
+    could be suppressed if the undocumented -DI_CAN_LIVE_WITH_LNK4049
+    was set. Support for this flag has been removed.
+  * Rework and make DEBUG macros consistent. Remove unused
+    -DCONF_DEBUG, -DBN_CTX_DEBUG, and REF_PRINT. Add a new tracing
+    category and use it for printing reference counts. Rename
+    -DDEBUG_UNUSED to -DUNUSED_RESULT_DEBUG. Fix BN_DEBUG_RAND so it
+    compiles and, when set, force DEBUG_RAND to be set also. Rename
+    engine_debug_ref to be ENGINE_REF_PRINT also for consistency.
+  * The public definitions of conf_method_st and conf_st have been
+    deprecated. They will be made opaque in a future release.
+  * Many functions in the EVP_ namespace that are getters of values
+    from implementations or contexts were renamed to include get or
+    get0 in their names. Old names are provided as macro aliases for
+    compatibility and are not deprecated.
+  * PKCS#5 PBKDF1 key derivation has been moved from PKCS5_PBE_keyivgen()
+    into the legacy crypto provider as an EVP_KDF. Applications requiring
+    this KDF will need to load the legacy crypto provider. This includes
+    these PBE algorithms which use this KDF:
+     - NID_pbeWithMD2AndDES_CBC     - NID_pbeWithMD5AndDES_CBC
+     - NID_pbeWithSHA1AndRC2_CBC    - NID_pbeWithMD2AndRC2_CBC
+     - NID_pbeWithMD5AndRC2_CBC     - NID_pbeWithSHA1AndDES_CBC
+  * Deprecated obsolete BIO_set_callback(), BIO_get_callback(), and
+    BIO_debug_callback() functions.
+- Fix build on ppc and ppc64
+  * Add openssl-ppc64-fix-build.patch
+  * See https://github.com/openssl/openssl/issues/15923
+
+-------------------------------------------------------------------
+Fri Jun 11 13:17:54 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 17
+  * Added migration guide to man7
+  * Implemented support for fully "pluggable" TLSv1.3 groups
+  * Added convenience functions for generating asymmetric key pairs.
+  * Added a proper HTTP client supporting GET with optional redirection,
+    POST, arbitrary request and response content types, TLS, persistent
+    connections, connections via HTTP(s) proxies, connections and
+    exchange via user-defined BIOs (allowing implicit connections), and
+    timeout checks.
+
+-------------------------------------------------------------------
+Mon May 10 02:13:06 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Update to 3.0.0. Alpha 16
+  * Mark pop/clear error stack in der2key_decode_p8
+
+-------------------------------------------------------------------
+Sat May  1 19:58:48 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Update to 3.0.0 Alpha 15
+  * The default manual page suffix ($MANSUFFIX) has been changed to "ossl"
+  * Added support for Kernel TLS (KTLS). In order to use KTLS, support for it
+    must be compiled in using the "enable-ktls" compile time option. It must
+    also be enabled at run time using the SSL_OP_ENABLE_KTLS option.
+  * The error return values from some control calls (ctrl) have changed.
+    One significant change is that controls which used to return -2 for
+    invalid inputs, now return -1 indicating a generic error condition instead.
+  * Removed EVP_PKEY_set_alias_type().
+  * All of these low level RSA functions have been deprecated without
+    replacement:
+    RSA_blinding_off, RSA_blinding_on, RSA_clear_flags, RSA_get_version,
+    RSAPrivateKey_dup, RSAPublicKey_dup, RSA_set_flags, RSA_setup_blinding and
+    RSA_test_flags.
+  * All of these RSA flags have been deprecated without replacement:
+    RSA_FLAG_BLINDING, RSA_FLAG_CACHE_PRIVATE, RSA_FLAG_CACHE_PUBLIC,
+    RSA_FLAG_EXT_PKEY, RSA_FLAG_NO_BLINDING, RSA_FLAG_THREAD_SAFE and
+    RSA_METHOD_FLAG_NO_CHECK.
+  * These low level DH functions have been deprecated without replacement:
+    DH_clear_flags, DH_get_1024_160, DH_get_2048_224, DH_get_2048_256,
+    DH_set_flags and DH_test_flags.
+    The DH_FLAG_CACHE_MONT_P flag has been deprecated without replacement.
+    The DH_FLAG_TYPE_DH and DH_FLAG_TYPE_DHX have been deprecated.  Use
+    EVP_PKEY_is_a() to determine the type of a key.  There is no replacement for
+    setting these flags.
+  * These low level DSA functions have been deprecated without replacement:
+    DSA_clear_flags, DSA_dup_DH, DSAparams_dup, DSA_set_flags and
+    DSA_test_flags.
+  * The DSA_FLAG_CACHE_MONT_P flag has been deprecated without replacement.
+  * Reworked the treatment of EC EVP_PKEYs with the SM2 curve to
+    automatically become EVP_PKEY_SM2 rather than EVP_PKEY_EC. This is a breaking
+    change from previous OpenSSL versions.
+    Unlike in previous OpenSSL versions, this means that applications must not
+    call `EVP_PKEY_set_alias_type(pkey, EVP_PKEY_SM2)` to get SM2 computations.
+    The `EVP_PKEY_set_alias_type` function has now been removed.
+  * Parameter and key generation is also reworked to make it possible
+    to generate EVP_PKEY_SM2 parameters and keys. Applications must now generate
+    SM2 keys directly and must not create an EVP_PKEY_EC key first.
+
+-------------------------------------------------------------------
+Mon Apr 19 12:35:57 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 14
+  * A public key check is now performed during EVP_PKEY_derive_set_peer().
+    Previously DH was internally doing this during EVP_PKEY_derive().
+  * The EVP_PKEY_CTRL_PKCS7_ENCRYPT, EVP_PKEY_CTRL_PKCS7_DECRYPT,
+    EVP_PKEY_CTRL_PKCS7_SIGN, EVP_PKEY_CTRL_CMS_ENCRYPT,
+    EVP_PKEY_CTRL_CMS_DECRYPT, and EVP_PKEY_CTRL_CMS_SIGN control operations
+    are deprecated. They are not invoked by the OpenSSL library anymore and
+    are replaced by direct checks of the key operation against the key type
+    when the operation is initialized.
+  * The EVP_PKEY_public_check() and EVP_PKEY_param_check() functions now work for
+    more key types including RSA, DSA, ED25519, X25519, ED448 and X448.
+    Previously (in 1.1.1) they would return -2. For key types that do not have
+    parameters then EVP_PKEY_param_check() will always return 1.
+  * The output from numerous "printing" functions such as X509_signature_print(),
+    X509_print_ex(), X509_CRL_print_ex(), and other similar functions has been
+    amended such that there may be cosmetic differences between the output
+    observed in 1.1.1 and 3.0. This also applies to the "-text" output from the
+    x509 and crl applications.
+  * Improved adherence to Enhanced Security Services (ESS, RFC 2634 and RFC 5035)
+    for the TSP and CMS Advanced Electronic Signatures (CAdES) implementations.
+    As required by RFC 5035 check both ESSCertID and ESSCertIDv2 if both present.
+    Correct the semantics of checking the validation chain in case ESSCertID{,v2}
+    contains more than one certificate identifier: This means that all
+    certificates referenced there MUST be part of the validation chain.
+  * Parallel dual-prime 1024-bit modular exponentiation for AVX512_IFMA
+    capable processors.
+  * Added the AuthEnvelopedData content type structure (RFC 5083) with AES-GCM
+    parameter (RFC 5084) for the Cryptographic Message Syntax (CMS). Its purpose
+    is to support encryption and decryption of a digital envelope that is both
+    authenticated and encrypted using AES GCM mode.
+
+-------------------------------------------------------------------
+Wed Apr 14 17:55:21 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 13
+  * A public key check is now performed during EVP_PKEY_derive_set_peer().
+    Previously DH was internally doing this during EVP_PKEY_derive().
+    To disable this check use EVP_PKEY_derive_set_peer_ex(dh, peer, 0). This
+    may mean that an error can occur in EVP_PKEY_derive_set_peer() rather than
+    during EVP_PKEY_derive().
+  * The EVP_PKEY_CTRL_PKCS7_ENCRYPT, EVP_PKEY_CTRL_PKCS7_DECRYPT,
+    EVP_PKEY_CTRL_PKCS7_SIGN, EVP_PKEY_CTRL_CMS_ENCRYPT,
+    EVP_PKEY_CTRL_CMS_DECRYPT, and EVP_PKEY_CTRL_CMS_SIGN control operations
+    are deprecated. They are not invoked by the OpenSSL library anymore and
+    are replaced by direct checks of the key operation against the key type
+    when the operation is initialized.
+  * The EVP_PKEY_public_check() and EVP_PKEY_param_check() functions now work for
+    more key types including RSA, DSA, ED25519, X25519, ED448 and X448.
+    Previously (in 1.1.1) they would return -2. For key types that do not have
+    parameters then EVP_PKEY_param_check() will always return 1.
+  * The output from numerous "printing" functions such as X509_signature_print(),
+    X509_print_ex(), X509_CRL_print_ex(), and other similar functions has been
+    amended such that there may be cosmetic differences between the output
+    observed in 1.1.1 and 3.0. This also applies to the "-text" output from the
+    x509 and crl applications.
+  * Improved adherence to Enhanced Security Services (ESS, RFC 2634 and RFC 5035)
+    for the TSP and CMS Advanced Electronic Signatures (CAdES) implementations.
+    As required by RFC 5035 check both ESSCertID and ESSCertIDv2 if both present.
+    Correct the semantics of checking the validation chain in case ESSCertID{,v2}
+    contains more than one certificate identifier: This means that all
+    certificates referenced there MUST be part of the validation chain.
+  * Parallel dual-prime 1024-bit modular exponentiation for AVX512_IFMA
+    capable processors.
+  * Added the AuthEnvelopedData content type structure (RFC 5083) with AES-GCM
+    parameter (RFC 5084) for the Cryptographic Message Syntax (CMS). Its purpose
+    is to support encryption and decryption of a digital envelope that is both
+    authenticated and encrypted using AES GCM mode.
+
+-------------------------------------------------------------------
+Fri Feb 19 08:58:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 12
+  * The SRP APIs have been deprecated. The old APIs do not work via
+    providers, and there is no EVP interface to them. Unfortunately
+    there is no replacement for these APIs at this time.
+  * Add a compile time option to prevent the caching of provider
+    fetched algorithms. This is enabled by including the
+    no-cached-fetch option at configuration time.
+  * Combining the Configure options no-ec and no-dh no longer
+    disables TLSv1.3. Typically if OpenSSL has no EC or DH algorithms
+    then it cannot support connections with TLSv1.3. However OpenSSL
+    now supports "pluggable" groups through providers.
+  * The undocumented function X509_certificate_type() has been
+    deprecated; applications can use X509_get0_pubkey() and
+    X509_get0_signature() to get the same information.
+  * Deprecated the obsolete BN_pseudo_rand() and BN_pseudo_rand_range()
+    functions. They are identical to BN_rand() and BN_rand_range()
+    respectively.
+  * The default key generation method for the regular 2-prime RSA keys
+    was changed to the FIPS 186-4 B.3.6 method (Generation of Probable
+    Primes with Conditions Based on Auxiliary Probable Primes). This
+    method is slower than the original method.
+  * Deprecated the BN_is_prime_ex() and BN_is_prime_fasttest_ex()
+    functions. They are replaced with the BN_check_prime() function
+    that avoids possible misuse and always uses at least 64 rounds of
+    the Miller-Rabin primality test.
+  * Deprecated EVP_MD_CTX_set_update_fn() and EVP_MD_CTX_update_fn()
+    as they are not useful with non-deprecated functions.
+
+-------------------------------------------------------------------
+Fri Feb 12 11:47:35 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 11
+  * Deprecated the obsolete X9.31 RSA key generation related
+    functions BN_X931_generate_Xpq(), BN_X931_derive_prime_ex(),
+    and BN_X931_generate_prime_ex().
+  * Deprecated the type OCSP_REQ_CTX and the functions OCSP_REQ_CTX_*().
+    These were used to collect all necessary data to form a HTTP
+    request, and to perform the HTTP transfer with that request.
+    With OpenSSL 3.0, the type is OSSL_HTTP_REQ_CTX, and the
+    deprecated functions are replaced with OSSL_HTTP_REQ_CTX_*().
+  * Validation of SM2 keys has been separated from the validation of
+    regular EC keys, allowing to improve the SM2 validation process
+    to reject loaded private keys that are not conforming to the SM2
+    ISO standard. In particular, a private scalar 'k' outside the
+    range '1 <= k < n-1' is now correctly rejected.
+  * Behavior of the 'pkey' app is changed, when using the '-check'
+    or '-pubcheck' switches: a validation failure triggers an early
+    exit, returning a failure exit status to the parent process.
+  * Changed behavior of SSL_CTX_set_ciphersuites() and
+    SSL_set_ciphersuites() to ignore unknown ciphers.
+  * All of the low level EC_KEY functions have been deprecated.
+  * Functions that read and write EC_KEY objects and that assign or
+    obtain EC_KEY objects from an EVP_PKEY are also deprecated.
+  * Added the '-copy_extensions' option to the 'x509' command for use
+    with '-req' and '-x509toreq'. When given with the 'copy' or
+    'copyall' argument, all extensions in the request are copied to
+    the certificate or vice versa.
+  * Added the '-copy_extensions' option to the 'req' command for use
+    with '-x509'. When given with the 'copy' or 'copyall' argument,
+    all extensions in the certification request are copied to the
+    certificate.
+  * The 'x509', 'req', and 'ca' commands now make sure that X.509v3
+    certificates they generate are by default RFC 5280 compliant in
+    the following sense: There is a subjectKeyIdentifier extension
+    with a hash value of the public key and for not self-signed certs
+    there is an authorityKeyIdentifier extension with a keyIdentifier
+    field or issuer information identifying the signing key. This is
+    done unless some configuration overrides the new default behavior,
+    such as 'subjectKeyIdentifier = none' and 'authorityKeyIdentifier
+    = none'.
+
+-------------------------------------------------------------------
+Sat Jan  9 10:05:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 10 (CVE-2020-1971)
+  * See full changelog: www.openssl.org/news/changelog.html
+  * Fixed NULL pointer deref in the GENERAL_NAME_cmp function
+    This function could crash if both GENERAL_NAMEs contain an
+    EDIPARTYNAME. If an attacker can control both items being
+    compared then this could lead to a possible denial of service
+    attack. OpenSSL itself uses the GENERAL_NAME_cmp function for
+    two purposes:
+    1) Comparing CRL distribution point names between an available
+       CRL and a CRL distribution point embedded in an X509 certificate
+    2) When verifying that a timestamp response token signer matches
+       the timestamp authority name (exposed via the API functions
+       TS_RESP_verify_response and TS_RESP_verify_token)
+  * The -cipher-commands and -digest-commands options of the
+    command line utility list has been deprecated. Instead use
+    the -cipher-algorithms and -digest-algorithms options.
+  * Additionally functions that read and write DH objects such as
+    d2i_DHparams, i2d_DHparams, PEM_read_DHparam, PEM_write_DHparams
+    and other similar functions have also been deprecated.
+    Applications should instead use the OSSL_DECODER and OSSL_ENCODER
+    APIs to read and write DH files.
+
+-------------------------------------------------------------------
+Thu Dec 17 09:26:56 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 9
+  * See also https://www.openssl.org/news/changelog.html
+  * Deprecated all the libcrypto and libssl error string loading
+    functions. Calling these functions is not necessary since
+    OpenSSL 1.1.0, as OpenSSL now loads error strings automatically.
+  * The functions SSL_CTX_set_tmp_dh_callback and SSL_set_tmp_dh_callback, as
+    well as the macros SSL_CTX_set_tmp_dh() and SSL_set_tmp_dh() have been
+    deprecated. These are used to set the Diffie-Hellman (DH) parameters that
+    are to be used by servers requiring ephemeral DH keys. Instead applications
+    should consider using the built-in DH parameters that are available by
+    calling SSL_CTX_set_dh_auto() or SSL_set_dh_auto().
+  * The -crypt option to the passwd command line tool has been removed.
+  * The -C option to the x509, dhparam, dsaparam, and ecparam commands
+    has been removed.
+  * Added several checks to X509_verify_cert() according to requirements in
+    RFC 5280 in case 'X509_V_FLAG_X509_STRICT' is set (which may be done by
+    using the CLI option '-x509_strict'):
+    - The basicConstraints of CA certificates must be marked critical.
+    - CA certificates must explicitly include the keyUsage extension.
+    - If a pathlenConstraint is given the key usage keyCertSign must be allowed.
+    - The issuer name of any certificate must not be empty.
+    - The subject name of CA certs, certs with keyUsage crlSign,
+      and certs without subjectAlternativeName must not be empty.
+    - If a subjectAlternativeName extension is given it must not be empty.
+    - The signatureAlgorithm field and the cert signature must be consistent.
+    - Any given authorityKeyIdentifier and any given subjectKeyIdentifier
+      must not be marked critical.
+    - The authorityKeyIdentifier must be given for X.509v3 certs
+      unless they are self-signed.
+    - The subjectKeyIdentifier must be given for all X.509v3 CA certs.
+  * Certificate verification using X509_verify_cert() meanwhile rejects EC keys
+    with explicit curve parameters (specifiedCurve) as required by RFC 5480.
+
+-------------------------------------------------------------------
+Thu Nov  5 18:36:23 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 8
+  * Add support for AES Key Wrap inverse ciphers to the EVP layer.
+    The algorithms are: "AES-128-WRAP-INV", "AES-192-WRAP-INV",
+    "AES-256-WRAP-INV", "AES-128-WRAP-PAD-INV", "AES-192-WRAP-PAD-INV"
+    and "AES-256-WRAP-PAD-INV". The inverse ciphers use AES decryption
+    for wrapping, and AES encryption for unwrapping.
+  * Deprecated EVP_PKEY_set1_tls_encodedpoint() and
+    EVP_PKEY_get1_tls_encodedpoint(). These functions were previously
+    used by libssl to set or get an encoded public key in/from an
+    EVP_PKEY object. With OpenSSL 3.0 these are replaced by the more
+    generic functions EVP_PKEY_set1_encoded_public_key() and
+    EVP_PKEY_get1_encoded_public_key(). The old versions have been
+    converted to deprecated macros that just call the new functions.
+  * The security callback, which can be customised by application
+    code, supports the security operation SSL_SECOP_TMP_DH. This is
+    defined to take an EVP_PKEY in the "other" parameter. In most
+    places this is what is passed. All these places occur server side.
+    However there was one client side call of this security operation
+    and it passed a DH object instead. This is incorrect according to
+    the definition of SSL_SECOP_TMP_DH, and is inconsistent with all
+    of the other locations. Therefore this client side call has been
+    changed to pass an EVP_PKEY instead.
+  * Added new option for 'openssl list', '-providers', which will
+    display the list of loaded providers, their names, version and
+    status. It optionally displays their gettable parameters.
+  * Deprecated pthread fork support methods. These were unused so no
+    replacement is required. OPENSSL_fork_prepare(),
+    OPENSSL_fork_parent() and OPENSSL_fork_child().
+- Remove openssl-AES_XTS.patch fixed upstream
+
+-------------------------------------------------------------------
+Fri Oct 16 10:58:53 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build on ppc* architectures
+  * Fix tests failing: 30-test_acvp.t and 30-test_evp.t
+  * https://github.com/openssl/openssl/pull/13133
+- Add openssl-AES_XTS.patch for ppc64, ppc64le and aarch64
+
+-------------------------------------------------------------------
+Fri Oct 16 08:43:10 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Re-enable test 81-test_cmp_cli.t fixed upstream
+
+-------------------------------------------------------------------
+Thu Oct 15 16:44:44 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.0.0 Alpha 7
+  * Add PKCS7_get_octet_string() and PKCS7_type_is_other() to the public
+    interface. Their functionality remains unchanged.
+  * Deprecated EVP_PKEY_set_alias_type(). This function was previously
+    needed as a workaround to recognise SM2 keys. With OpenSSL 3.0, this key
+    type is internally recognised so the workaround is no longer needed.
+  * Deprecated EVP_PKEY_CTX_set_rsa_keygen_pubexp() & introduced
+    EVP_PKEY_CTX_set1_rsa_keygen_pubexp(), which is now preferred.
+  * Changed all "STACK" functions to be macros instead of inline functions.
+    Macro parameters are still checked for type safety at compile time via
+    helper inline functions.
+  * Remove the RAND_DRBG API:
+    The RAND_DRBG API did not fit well into the new provider concept as
+    implemented by EVP_RAND and EVP_RAND_CTX. The main reason is that the
+    RAND_DRBG API is a mixture of 'front end' and 'back end' API calls
+    and some of its API calls are rather low-level. This holds in particular
+    for the callback mechanism (RAND_DRBG_set_callbacks()).
+    Adding a compatibility layer to continue supporting the RAND_DRBG API as
+    a legacy API for a regular deprecation period turned out to come at the
+    price of complicating the new provider API unnecessarily. Since the
+    RAND_DRBG API exists only since version 1.1.1, it was decided by the OMC
+    to drop it entirely.
+  * Added the options '-crl_lastupdate' and '-crl_nextupdate' to 'openssl ca',
+    allowing the 'lastUpdate' and 'nextUpdate' fields in the generated CRL to
+    be set explicitly.
+  * 'PKCS12_parse' now maintains the order of the parsed certificates
+    when outputting them via '*ca' (rather than reversing it).
+- Update openssl-DEFAULT_SUSE_cipher.patch
+
+-------------------------------------------------------------------
+Fri Aug  7 14:42:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed 0001-Fix-typo-for-SSL_get_peer_certificate.patch:
+  contained in upstream.
+- Update to 3.0.0 Alpha 6
+  * Added util/check-format.pl for checking adherence to the coding guidelines.
+  * Allow SSL_set1_host() and SSL_add1_host() to take IP literal addresses
+   as well as actual hostnames.
+  * The 'MinProtocol' and 'MaxProtocol' configuration commands now silently
+   ignore TLS protocol version bounds when configuring DTLS-based contexts, and
+   conversely, silently ignore DTLS protocol version bounds when configuring
+   TLS-based contexts.  The commands can be repeated to set bounds of both
+   types.  The same applies with the corresponding "min_protocol" and
+   "max_protocol" command-line switches, in case some application uses both TLS
+   and DTLS. SSL_CTX instances that are created for a fixed protocol version (e.g.
+   TLSv1_server_method()) also silently ignore version bounds.  Previously
+   attempts to apply bounds to these protocol versions would result in an
+   error.  Now only the "version-flexible" SSL_CTX instances are subject to
+   limits in configuration files in command-line options.
+
+-------------------------------------------------------------------
+Mon Jul 20 08:40:26 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Fix linking when the deprecated SSL_get_per_certificate() is in use
+  * https://github.com/openssl/openssl/pull/12468
+  * add 0001-Fix-typo-for-SSL_get_peer_certificate.patch
+
+-------------------------------------------------------------------
+Fri Jul 17 08:34:45 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 3.0.0 Alpha 5
+  * Deprecated the 'ENGINE' API. Engines should be replaced with
+    providers going forward.
+  * Reworked the recorded ERR codes to make better space for system errors.
+    To distinguish them, the macro 'ERR_SYSTEM_ERROR()' indicates
+    if the given code is a system error (true) or an OpenSSL error (false).
+  * Reworked the test perl framework to better allow parallel testing.
+  * Added ciphertext stealing algorithms AES-128-CBC-CTS, AES-192-CBC-CTS and
+    AES-256-CBC-CTS to the providers. CS1, CS2 and CS3 variants are supported.
+  * 'Configure' has been changed to figure out the configuration target if
+    none is given on the command line. Consequently, the 'config' script is
+    now only a mere wrapper. All documentation is changed to only mention
+    'Configure'.
+  * Added a library context that applications as well as other libraries can use
+    to form a separate context within which libcrypto operations are performed.
+    - There are two ways this can be used:
+      1) Directly, by passing a library context to functions that take
+         such an argument, such as 'EVP_CIPHER_fetch' and similar algorithm
+         fetching functions.
+      2) Indirectly, by creating a new library context and then assigning
+         it as the new default, with 'OPENSSL_CTX_set0_default'.
+    - All public OpenSSL functions that take an 'OPENSSL_CTX' pointer,
+      apart from the functions directly related to 'OPENSSL_CTX', accept
+      NULL to indicate that the default library context should be used.
+    - Library code that changes the default library context using
+      'OPENSSL_CTX_set0_default' should take care to restore it with a
+      second call before returning to the caller.
+  * The security strength of SHA1 and MD5 based signatures in TLS has been
+    reduced. This results in SSL 3, TLS 1.0, TLS 1.1 and DTLS 1.0 no longer
+    working at the default security level of 1 and instead requires security
+    level 0. The security level can be changed either using the cipher string
+    with @SECLEVEL, or calling SSL_CTX_set_security_level().
+  * The SSL option SSL_OP_CLEANSE_PLAINTEXT is introduced. If that option is
+    set, openssl cleanses (zeroize) plaintext bytes from internal buffers
+    after delivering them to the application. Note, the application is still
+    responsible for cleansing other copies (e.g.: data received by SSL_read(3)).
+- Update openssl-ppc64-config.patch
+
+-------------------------------------------------------------------
+Fri Jun 26 07:20:40 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 4
+  * general improvements to the built-in providers, the providers API and the internal plumbing and the provider-aware mechanisms for libssl
+  * general improvements and fixes in the CLI apps
+  * support for Automated Cryptographic Validation Protocol (ACVP) tests
+  * fully pluggable TLS key exchange capability from providers
+  * finalization of the Certificate Management Protocol (CMP) contribution, adding an impressive amount of tests for the new features
+  * default to the newer SP800-56B compliant algorithm for RSA keygen
+  * provider-rand: PRNG functionality backed by providers
+  * refactored naming scheme for dispatched functions (#12222)
+  * fixes for various issues
+  * extended and improved test coverage
+  * additions and improvements to the documentations
+- Fix license: Apache-2.0
+- temporarily disable broken 81-test_cmp_cli.t test
+  * https://github.com/openssl/openssl/issues/12324
+
+-------------------------------------------------------------------
+Thu Jun  4 20:24:04 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 3
+  * general improvements to the built-in providers, the providers API and the internal plumbing and the provider-aware mechanisms for libssl;
+  * general improvements and fixes in the CLI apps;
+  * cleanup of the EC API:
+    EC_METHOD became an internal-only concept, and functions using or returning EC_METHOD arguments have been deprecated;
+    EC_POINT_make_affine() and EC_POINTs_make_affine() have been deprecated in favor of automatic internal handling of conversions when needed;
+    EC_GROUP_precompute_mult(), EC_GROUP_have_precompute_mult(), and EC_KEY_precompute_mult() have been deprecated, as such precomputation data is now rarely used;
+    EC_POINTs_mul() has been deprecated, as for cryptographic applications EC_POINT_mul() is enough.
+  * the CMS API got support for CAdES-BES signature verification;
+  * introduction of a new SSL_OP_IGNORE_UNEXPECTED_EOF option;
+  * improvements to the RSA OAEP support;
+  * FFDH support in the speed app;
+  * CI: added external testing through the GOST engine;
+  * fixes for various issues;
+  * extended and improved test coverage;
+  * additions and improvements to the documentations.
+
+-------------------------------------------------------------------
+Sat May 23 14:06:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use find -exec +. Replace `pwd` by simply $PWD.
+- Drop Obsoletes on libopenssl1*. libopenssl3 has a new SONAME and
+  does not conflict with anything previously.
+
+-------------------------------------------------------------------
+Wed May 20 12:46:24 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Obsolete openssl 1.1
+- Update baselibs.conf
+- Set man page permissions to 644
+
+-------------------------------------------------------------------
+Fri May 15 15:29:05 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.0.0 Alpha 2
+  * general improvements to the built-in providers, the providers API and the internal plumbing;
+  * the removal of legacy API functions related to FIPS mode, replaced by new provider-based mechanisms;
+  * the addition of a new cmp app for RFC 4210;
+  * extended and improved test coverage;
+  * improvements to the documentations;
+  * fixes for various issues.
+- drop obsolete version.patch
+
+-------------------------------------------------------------------
+Thu Apr 23 19:49:05 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Initial packaging 3.0.0 Alpha 1
+  * Major Release
+    OpenSSL 3.0 is a major release and consequently any application
+    that currently uses an older version of OpenSSL will at the
+    very least need to be recompiled in order to work with the new version.
+    It is the intention that the large majority of applications will
+    work unchanged with OpenSSL 3.0 if those applications previously
+    worked with OpenSSL 1.1.1. However this is not guaranteed and
+    some changes may be required in some cases.
+  * Providers and FIPS support
+    Providers collect together and make available algorithm implementations.
+    With OpenSSL 3.0 it is possible to specify, either programmatically
+    or via a config file, which providers you want to use for any given application
+  * Low Level APIs
+    Use of the low level APIs have been deprecated.
+  * Legacy Algorithms
+    Some cryptographic algorithms that were available via the EVP APIs
+    are now considered legacy and their use is strongly discouraged.
+    These legacy EVP algorithms are still available in OpenSSL 3.0 but not by default.
+    If you want to use them then you must load the legacy provider.
+  * Engines and "METHOD" APIs
+    The ENGINE API and any function that creates or modifies custom "METHODS"
+    are being deprecated in OpenSSL 3.0
+    Authors and maintainers of external engines are strongly encouraged to
+    refactor their code transforming engines into providers using
+    the new Provider API and avoiding deprecated methods.
+  * Versioning Scheme
+    The OpenSSL versioning scheme has changed with the 3.0 release.
+    The new versioning scheme has this format: MAJOR.MINOR.PATCH
+    The patch level is indicated by the third number instead of a letter
+    at the end of the release version number.
+    A change in the second (MINOR) number indicates that new features may have been added.
+    OpenSSL versions with the same major number are API and ABI compatible.
+    If the major number changes then API and ABI compatibility is not guaranteed.
+  * Other major new features
+    Implementation of the Certificate Management Protocol (CMP, RFC 4210)
+    also covering CRMF (RFC 4211) and HTTP transfer (RFC 6712).
+    A proper HTTP(S) client in libcrypto supporting GET and POST,
+    redirection, plain and ASN.1-encoded contents, proxies, and timeouts
+    EVP_KDF APIs have been introduced for working with Key Derivation Functions
+    EVP_MAC APIs have been introduced for working with MACs
+    Support for Linux Kernel TLS
