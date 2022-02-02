@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           linphoneqt
 Version:        4.3.2
 Release:        0
 Summary:        Qt interface for Linphone
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/linphone
 Source:         https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive/%{version}/%{_name}-desktop-%{version}.tar.bz2

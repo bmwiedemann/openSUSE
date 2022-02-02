@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>933176</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f2f15102b318e83304e385fe0c73441e</srcmd5>
+    <version>4.3.2</version>
+    <time>1643838068</time>
+    <user>dimstar_suse</user>
+    <comment>- fix license tag
+</comment>
+    <requestid>950591</requestid>
+  </revision>
 </revisionlist>
