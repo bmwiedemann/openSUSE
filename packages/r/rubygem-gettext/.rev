@@ -328,4 +328,12 @@ Note: the spec file has been regenerated with new gem2rpm. (forwarded request 12
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912497</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>906cb8dcc953fe5fed119464d1be656e</srcmd5>
+    <version>3.4.2</version>
+    <time>1643838082</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950626</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gettext
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gettext
-Version:        3.3.8
+Version:        3.4.2
 Release:        0
 %define mod_name gettext
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ URL:            https://ruby-gettext.github.io/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Gettext is a pure Ruby libary and tools to localize messages
-License:        LGPL-3.0-or-later OR Ruby
+License:        LGPL-3.0-or-later AND Ruby
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 

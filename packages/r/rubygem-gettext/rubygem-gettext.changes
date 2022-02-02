@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jan 25 06:57:30 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.4.2
+ see installed news.md
+
+  ## 3.4.2: 2022-01-11 {#version-3-4-2}
+  
+  ### Improvements
+  
+    * Added support for fallback for specific locale.
+      e.g.: `fr_BE_Foo` -> `fr_BE` -> `fr`
+      [GitHub#90][Patch by Michaël Hoste]
+  
+    * Added support for Ruby 3.1.
+      [GitHub#92][Reported by ahiru]
+  
+  ### Thanks
+  
+    * Michaël Hoste
+  
+    * ahiru
+  
+  ## 3.4.1: 2021-09-08 {#version-3-4-1}
+  
+  ### Improvements
+  
+    * Listed licenses separately in gemspec.
+      [GitHub#88][Patch by Josh Cooper]
+  
+  ### Thanks
+  
+    * Josh Cooper
+  
+  ## 3.4.0: 2021-08-26 {#version-3-4-0}
+  
+  ### Improvements
+  
+    * test: Added missing Red Datasets availability check.
+      [GitHub#87][Reported by Mamoru TASAKA]
+  
+  ### Thanks
+  
+    * Mamoru TASAKA
+  
+  ## 3.3.9: 2021-08-26 {#version-3-3-9}
+  
+  ### Improvements
+  
+    * msginit: Made Red Datasets dependency optional.
+      [GitHub:red-datatools/red-datasets#105][Suggested by Mamoru TASAKA]
+  
+  ### Thanks
+  
+    * Mamoru TASAKA
+  
+
+-------------------------------------------------------------------
 Mon Jul 26 05:55:50 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.3.8
