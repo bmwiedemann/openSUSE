@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 10:24:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build in big endian archs:
+  * 0001-use-fully-qualified-namespace-in-byteswap-macros.patch
+
+-------------------------------------------------------------------
 Tue Jan 25 13:02:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.2.0

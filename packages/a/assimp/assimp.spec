@@ -27,6 +27,8 @@ URL:            https://www.assimp.org/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-with-zlib.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-use-fully-qualified-namespace-in-byteswap-macros.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
