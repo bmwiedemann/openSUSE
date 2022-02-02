@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-em-websocket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-em-websocket
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 %define mod_name em-websocket
 %define mod_full_name %{mod_name}-%{version}
