@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 26 12:46:31 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version nightly1748:
+  * gl_format_reinterpreter.cpp: fallback to PBO path on obsolete intel drivers (#5928)
+  * fx bgr write back on gles (#5924)
+
+-------------------------------------------------------------------
+Sun Jan 23 15:34:13 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version nightly1743:
+  * cryptopp: enable SIMD flags on i386
+
+-------------------------------------------------------------------
 Sun Jan 09 13:56:20 UTC 2022 - pousaduarte@gmail.com
 
 - Update to version nightly1741:
