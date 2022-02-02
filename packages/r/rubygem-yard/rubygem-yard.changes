@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:43:53 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.9.27
+ see installed CHANGELOG.md
+
+  # 0.9.27 - November 29th, 2021
+  
+  [0.9.27]: https://github.com/lsegal/yard/compare/v0.9.26...v0.9.27
+  
+  - Add support for Ruby 3.0 endless method definitions. (#1376, #1381)
+  - Add existence check for README file (#1367)
+  - Support module_function decorator (#1365)
+  - Add CommonMarker markup support (`-m commonmarker`) (#1157, #1388)
+  - Fix nested array parsing (#1389)
+  - Add WEBrick as a runtime dependency for Ruby 3.0 support (#1400)
+  - Support `fail_on_warning` option in `yard stats` command (#1392)
+  - Better integration with Sorbet (#1401)
+  - Handle include mixins on complex paths (#1386)
+  - Fix `@!scope` maintaining state in lone comment blocks (#1411)
+  - Remove support for Travis CI
+  
+
+-------------------------------------------------------------------
 Fri Jun 25 07:31:34 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.9.26

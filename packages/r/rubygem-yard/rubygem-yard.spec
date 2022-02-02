@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-yard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,33 @@
 #
 
 
-%define mod_name yard
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-yard
-Version:        0.9.26
+Version:        0.9.27
 Release:        0
-Summary:        Documentation tool for consistent and usable documentation in Ruby
-License:        MIT
-Group:          Development/Languages/Ruby
-URL:            http://yardoc.org
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name yard
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         update-alternatives
+URL:            http://yardoc.org
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 # MANUAL
 Patch0:         yard-do-not-record-timestamps.diff
 # /MANUAL
+Summary:        Documentation tool for consistent and usable documentation in Ruby
+License:        MIT
+Group:          Development/Languages/Ruby
+PreReq:         update-alternatives
 
 %description
 YARD is a documentation generation tool for the Ruby programming language.
@@ -52,8 +53,8 @@ custom Ruby constructs such as custom class level definitions.
 %prep
 %gem_unpack
 %patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{SOURCE0}
-%{gem_build}
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
