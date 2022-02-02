@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jan 31 18:19:00 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.2.0
+  * Add support for Screen Capture (Qt 5.13.2+)
+  * Option for internal PDFium-based viewer (Qt 5.13+)
+  * CookieManager: Add support for selecting more than one cookie
+    at once
+  * Correct the sorting for cookies white- and black- lists
+  * Speeddial: decode initialScript data as Utf8
+  * Set current tab as parent for duplicated tab
+  * add support for detaching tabs via context menu (kde#443947)
+  * BookmarksManager: Don't allow to create bookmark without parent
+  * Remove the padding of the bookmark bar
+  * Added context menu item to bookmarks toolbar for creating
+    folder
+  * Preferences: Add links to KDE store for installing
+    themes/extensions
+  * OcsSupport: Add initial support for downloading
+    themes/extensions
+  * Add filter to preferences extensions page
+  * SideBarManager: Clear active sidebar upon close
+  * Added focus for searchbar in history sidebar & bookmark sidebar
+  * SearchToolBar: Remove warning message that no results were
+    found
+  * SearchBar - Show number of matches found on page search
+  * added pause/resume for downloads
+  * Prompt user when KWallet is disabled
+  * KDEFrameworksIntegration: Create Purpose menu in init
+  * GreaseMonkey: Fix detecting *.user.js urls
+  * Added QLoggingCategory to Falkon
+  * Handle web push notifications with Falkon notification system
+  * Fix name and set desktop entry for notifications
+  * NetworkManager: Fix QtWebEngine warning about registering
+    schemes
+  * Don't use subfolders for QML/Python extensions
+  * ThemeManager: Implement removing locally installed themes
+  * Plugins: Implement removing locally installed plugins
+  * Plugins: Use embedded JSON metadata for shared library plugins
+  * RunAction plugin: set alternatingRowColors for listWidget
+  * VerticalTabs: Accept click event on tree collapse
+  * VerticalTabs: Draw unloaded tabs with "Disabled" color palette
+  * VerticalTabs: Add child tab with middle click on "New Tab"
+    button
+  * VerticalTabs: Correctly recognize tree collapse / expand button
+  * VerticalTabs: Also override Ctrl+PgUp/PgDown shortcuts
+- Drop patches merged upstream:
+  * Add-missing-include-in-last-qt5.14.patch
+  * Fix-crash-when-KWallet-is-not-available.patch
+  * 0001-Fix-build-with-Qt-5.15.patch
+- Remove obsolete commands in %post/%postun
+- Drop redundant recommendation of the -lang package
+- Cleanup .spec file
+- Add Source URL
+- Add signature file and keyring
+
+-------------------------------------------------------------------
 Wed Jan 20 10:12:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - switch to openssl build here - can't see how an inprocess mix
