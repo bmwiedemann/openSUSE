@@ -1,0 +1,42 @@
+From a880cb84511d18af26dcd136fac62932e775f475 Mon Sep 17 00:00:00 2001
+From: Kotori Itsuka <cmdrkotori2@gmail.com>
+Date: Tue, 28 Dec 2021 10:12:08 +1000
+Subject: [PATCH] thumbnailerwindow: mpv api change
+
+Missed in b0037a28e998414f355c395e8d6a5c6d7b1ec8e7.
+
+Fixes #17.
+---
+
+Index: mpc-qt-origin-20.10/thumbnailerwindow.cpp
+===================================================================
+--- mpc-qt-origin-20.10.orig/thumbnailerwindow.cpp
++++ mpc-qt-origin-20.10/thumbnailerwindow.cpp
+@@ -435,7 +435,11 @@ void MpvThumbnailDrawer::setDrawLogo(boo
+ 
+ void MpvThumbnailDrawer::initializeGL()
+ {
++#if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2,0)
+     mpv_opengl_init_params glInit { &MpvGlWidget::get_proc_address, this, nullptr };
++#else
++    mpv_opengl_init_params glInit { &MpvGlWidget::get_proc_address, this };
++#endif
+     mpv_render_param params[] {
+         { MPV_RENDER_PARAM_API_TYPE, const_cast<char*>(MPV_RENDER_API_TYPE_OPENGL) },
+         { MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &glInit },
+Index: mpc-qt-origin-20.10/mpvwidget.cpp
+===================================================================
+--- mpc-qt-origin-20.10.orig/mpvwidget.cpp
++++ mpc-qt-origin-20.10/mpvwidget.cpp
+@@ -854,7 +854,11 @@ void MpvGlWidget::initializeGL()
+     if (!logo)
+         logo = new LogoDrawer(this);
+ 
++#if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2,0)
+     mpv_opengl_init_params glInit { &get_proc_address, this, nullptr };
++#else
++    mpv_opengl_init_params glInit { &get_proc_address, this };
++#endif
+     mpv_render_param params[] {
+         { MPV_RENDER_PARAM_API_TYPE, const_cast<char*>(MPV_RENDER_API_TYPE_OPENGL) },
+         { MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &glInit },

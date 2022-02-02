@@ -1,7 +1,7 @@
 #
 # spec file for package mpc-qt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 URL:            https://github.com/cmdrkotori/mpc-qt
 Source0:        https://github.com/cmdrkotori/mpc-qt-origin/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
+# PATCH-FIX-UPSTREAM mpc-qt-mpv_v2_fix.patch
+Patch0:         mpc-qt-mpv_v2_fix.patch
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Core)
