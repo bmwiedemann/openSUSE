@@ -20,10 +20,10 @@
 %define soname  libbellesip
 %define sover   1
 Name:           belle-sip
-Version:        5.0.66
+Version:        5.0.67
 Release:        0
 Summary:        C object-oriented SIP Stack
-License:        GPL-2.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Telephony/SIP/Utilities
 URL:            https://linphone.org/technical-corner/belle-sip/
 Source:         https://gitlab.linphone.org/BC/public/belle-sip/-/archive/%{version}/%{name}-%{version}.tar.bz2
@@ -87,7 +87,6 @@ to develop applications using the belle-sip library.
 %cmake_install
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}
