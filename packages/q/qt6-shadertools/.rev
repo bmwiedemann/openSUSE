@@ -90,4 +90,12 @@
   * 0003-Use-intermOut.cpp-s-IsNan-and-IsInfinity-for-parse-t.patch</comment>
     <requestid>939450</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a8c0c65613122cb2a3275952d7b10aa</srcmd5>
+    <version>6.2.3</version>
+    <time>1643838027</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.3 (forwarded request 950484 from cgiboudeaux)</comment>
+    <requestid>950507</requestid>
+  </revision>
 </revisionlist>
