@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jan 25 18:18:20 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 3.3 Patch 12 - 2022-01-24
+
+- UPDATE: rem2html: Use JSON::MaybeXS instead of JSON::Any, since JSON::Any
+  is deprecated.  NOTE INCOMPATIBILITY: If you don't have JSON::MaybeXS
+  installed, you'll need to install it before trying to install or update
+  rem2html
+
+- NEW FEATURE: Add a DO command.  This is just like INCLUDE, but relative
+  paths are interpreted relative to the directory containing the current
+  file.  That is:
+
+      DO somefile.rem
+
+  is equivalent to:
+
+      INCLUDE [filedir()]/somefile.rem
+
+- NEW FEATURE: Add the $DefaultTDelta system variable and associated
+  -tt[N] command-line option to set a default time delta for timed
+  reminder without an explicit +N delta.
+
+- IMPROVEMENT: TkRemind: Store .tkremindrc in $XDG_CONFIG_HOME/tkremindrc
+  or $HOME/.config/tkremindrc as per the XDG Base Directory Specification.
+
+- BUG FIX: remind: Make the shell() built-in function respect
+  $MaxStringLen
+
+- BUG FIX: Use size_t to track the size of dynamic buffers rather than int.
+  This permits Remind to read in files with lines longer than 1GB and to
+  consume more than 1GB of output from the shell() command, both of which
+  will surely be massively useful.  (The old limit was 1GB rather than 2GB
+  because of details of the dynamic buffer resizing algorithm.)
+
+-------------------------------------------------------------------
 Thu Dec 30 15:20:00 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 3.3 Patch 11 - 2021-12-30

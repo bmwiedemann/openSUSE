@@ -1,7 +1,7 @@
 #
 # spec file for package remind
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        3.3.11
+Version:        3.3.12
 Release:        0
-%define tar_version 03.03.11
+%define tar_version 03.03.12
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -29,7 +29,7 @@ Source100:      %{name}-rpmlintrc
 Patch0:         remind-nostrip.patch
 BuildRequires:  perl
 BuildRequires:  perl-Getopt-Long-Descriptive
-BuildRequires:  perl-JSON-Any
+BuildRequires:  perl-JSON-MaybeXS
 Requires:       perl
 Requires:       perl-Getopt-Long-Descriptive
 Requires:       perl-JSON-Any
