@@ -1,7 +1,7 @@
 #
 # spec file for package words
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,22 +20,21 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
-
 Name:           words
 Version:        2015.02.15
 Release:        0
 Summary:        An English words dictionary
 License:        SUSE-Public-Domain
 Group:          Productivity/Office/Dictionary
-Url:            http://wordlist.sourceforge.net/
+URL:            http://wordlist.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/wordlist/scowl-2015.02.15.tar.gz
 Source1:        sysconfig.words
 Source2:        SuSEconfig.words
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  glibc-locale
+BuildRequires:  sysvinit-tools
 PreReq:         %fillup_prereq
 Provides:       scowl = %{version}-%{release}
 BuildArch:      noarch
-BuildRequires:  sysvinit-tools
 
 %description
 This package contains an English words dictionary which will be installed as
@@ -133,7 +132,6 @@ fi
 test -L usr/share/dict/words && rm usr/share/dict/words || true
 
 %files
-%defattr(-,root,root,-)
 %doc Copyright README
 %dir %{_libexecdir}/words
 %attr(755,root,root) %{_libexecdir}/words/update
@@ -144,11 +142,9 @@ test -L usr/share/dict/words && rm usr/share/dict/words || true
 %verify(not link mtime) %{_localstatedir}/lib/dict/words
 
 %files -n words-british
-%defattr(-,root,root,-)
 %{_datadir}/dict/british
 
 %files -n words-canadian
-%defattr(-,root,root,-)
 %{_datadir}/dict/canadian
 
 %changelog

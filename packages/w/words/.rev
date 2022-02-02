@@ -211,4 +211,12 @@
     <comment></comment>
     <requestid>545102</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>cc8dae6774a8556c023d93d30c1c43aa</srcmd5>
+    <version>2015.02.15</version>
+    <time>1643838114</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequire glibc-locale to always have en_GB.* locale available (forwarded request 949888 from dirkmueller)</comment>
+    <requestid>950750</requestid>
+  </revision>
 </revisionlist>
