@@ -79,4 +79,12 @@
     <comment>Qt 6.2.2 (forwarded request 936299 from cgiboudeaux)</comment>
     <requestid>936307</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a318a04531da4bcd500c28181f374087</srcmd5>
+    <version>6.2.3</version>
+    <time>1643838016</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.3 (forwarded request 950484 from cgiboudeaux)</comment>
+    <requestid>950493</requestid>
+  </revision>
 </revisionlist>
