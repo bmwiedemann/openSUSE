@@ -1,7 +1,7 @@
 #
 # spec file for package yaz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.31.0
+Version:        5.31.1
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://www.indexdata.dk/yaz/
 Source:         http://ftp.indexdata.dk/pub/yaz/yaz-%{version}.tar.gz
-Source2:        baselibs.conf
 BuildRequires:  gnutls-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpcap-devel
