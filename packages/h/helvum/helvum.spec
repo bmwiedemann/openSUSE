@@ -19,12 +19,12 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define app_id org.pipewire.Helvum
 Name:           helvum
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        A GTK patchbay for pipewire
 License:        (Apache-2.0 OR BSL-1.0) AND GPL-3.0-only AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT
 URL:            https://gitlab.freedesktop.org/pipewire/helvum
-Source:         https://gitlab.freedesktop.org/pipewire/helvum/uploads/4c3dd5e0e64a39d7bea2c4a49778b653/%{name}-%{version}.tar.xz
+Source:         https://gitlab.freedesktop.org/pipewire/helvum/uploads/ab71dd1738aa59dd9139faa951c13ee8/%{name}-%{version}.tar.xz
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  gtk4-devel
