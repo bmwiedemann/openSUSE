@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 02 11:13:43 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220202.75645389:
+  * Check whether the FTP trees contain OSRT:ProductVersion before releasing
+
+-------------------------------------------------------------------
 Wed Jan 26 08:25:57 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220126.2d5e72db:
