@@ -1,0 +1,24 @@
+Index: tensorflow-2.7.0/tensorflow/workspace0.bzl
+===================================================================
+--- tensorflow-2.7.0.orig/tensorflow/workspace0.bzl
++++ tensorflow-2.7.0/tensorflow/workspace0.bzl
+@@ -4,6 +4,7 @@ load("//third_party/googleapis:repositor
+ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+ load("@bazel_toolchains//repositories:repositories.bzl", bazel_toolchains_repositories = "repositories")
+ load("@build_bazel_rules_swift//swift:repositories.bzl", "swift_rules_dependencies")
++load("@io_bazel_rules_go//go:deps.bzl", "go_host_sdk")
+ load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+ load("@rules_cc//cc:repositories.bzl", "rules_cc_toolchains")
+ 
+@@ -84,6 +85,11 @@ def workspace():
+         ],
+     )
+ 
++    # declare the system go as go_sdk so that we don't have to download binaries
++    go_host_sdk(
++        name = "go_sdk",
++    )
++
+     rules_cc_toolchains()
+ 
+     bazel_toolchains_repositories()

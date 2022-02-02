@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Feb  1 17:44:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove URLs from github zip archives for xnnpack transitive
+  dependencies: The GitHub archiver produces unreliable files
+
+-------------------------------------------------------------------
+Sat Jan 22 20:52:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.0
+  * Big changelog: at
+    https://github.com/tensorflow/tensorflow/releases/tag/v2.7.0
+- Security references:
+  * Fixes a code injection issue in saved_model_cli
+    (CVE-2021-41228)
+  * Fixes a vulnerability due to use of uninitialized value in
+    Tensorflow (CVE-2021-41225)
+  * Fixes a heap OOB in FusedBatchNorm kernels (CVE-2021-41223)
+  * Fixes an arbitrary memory read in ImmutableConst
+    (CVE-2021-41227)
+  * Fixes a heap OOB in SparseBinCount (CVE-2021-41226)
+  * Fixes a heap OOB in SparseFillEmptyRows (CVE-2021-41224)
+  * Fixes a segfault due to negative splits in SplitV
+    (CVE-2021-41222)
+  * Fixes segfaults and vulnerabilities caused by accesses to
+    invalid memory during shape inference in Cudnn* ops
+    (CVE-2021-41221)
+  * Fixes a null pointer exception when Exit node is not preceded
+    by Enter op (CVE-2021-41217)
+  * Fixes an integer division by 0 in tf.raw_ops.AllToAll
+    (CVE-2021-41218)
+  * Fixes a use after free and a memory leak in CollectiveReduceV2
+    (CVE-2021-41220)
+  * Fixes an undefined behavior via nullptr reference binding in
+    sparse matrix multiplication (CVE-2021-41219)
+  * Fixes a heap buffer overflow in Transpose (CVE-2021-41216)
+  * Prevents deadlocks arising from mutually recursive tf.function
+    objects (CVE-2021-41213)
+  * Fixes a null pointer exception in DeserializeSparse
+    (CVE-2021-41215)
+  * Fixes an undefined behavior arising from reference binding to
+    nullptr in tf.ragged.cross (CVE-2021-41214)
+  * Fixes a heap OOB read in tf.ragged.cross (CVE-2021-41212)
+  * Fixes a heap OOB in shape inference for QuantizeV2
+    (CVE-2021-41211)
+  * Fixes a heap OOB read in all tf.raw_ops.QuantizeAndDequantizeV*
+    ops (CVE-2021-41205)
+  * Fixes an FPE in ParallelConcat (CVE-2021-41207)
+  * Fixes FPE issues in convolutions with zero size filters
+    (CVE-2021-41209)
+  * Fixes a heap OOB read in tf.raw_ops.SparseCountSparseOutput
+    (CVE-2021-41210)
+  * Fixes vulnerabilities caused by incomplete validation in
+    boosted trees code (CVE-2021-41208)
+  * Fixes vulnerabilities caused by incomplete validation of shapes
+    in multiple TF ops (CVE-2021-41206)
+  * Fixes a segfault produced while copying constant resource
+    tensor (CVE-2021-41204)
+  * Fixes a vulnerability caused by unitialized access in
+    EinsumHelper::ParseEquation (CVE-2021-41201)
+  * Fixes several vulnerabilities and segfaults caused by missing
+    validation during checkpoint loading (CVE-2021-41203)
+  * Fixes an overflow producing a crash in tf.range
+    (CVE-2021-41202)
+  * Fixes an overflow producing a crash in tf.image.resize when
+    size is large (CVE-2021-41199)
+  * Fixes an overflow producing a crash in tf.tile when tiling
+    tensor is large (CVE-2021-41198)
+  * Fixes a vulnerability produced due to incomplete validation in
+    tf.summary.create_file_writer (CVE-2021-41200)
+  * Fixes multiple crashes due to overflow and CHECK-fail in ops
+    with large tensor shapes (CVE-2021-41197)
+  * Fixes a crash in max_pool3d when size argument is 0 or negative
+    (CVE-2021-41196)
+  * Fixes a crash in tf.math.segment_* operations (CVE-2021-41195)
+  * Updates curl to 7.78.0 to handle CVE-2021-22922,
+    CVE-2021-22923, CVE-2021-22924, CVE-2021-22925, and
+    CVE-2021-22926.
+- This drops support for Python 3.6 and thus for SLE/Leap 15
+  See also https://code.opensuse.org/leap/features/issue/35
+- Closes boo#1195295
+  * Note that tensorflow2 (non-lite) will be removed from
+    Tumbleweed soon if there are no volunteers, see leap feature
+    issue above.
+- Have to migrate tensorflow-lite build to CMake as old Makefile
+  was dropped
+- Drop patches no longer necessary or applicable
+  * tensorflow-2.6.0-remove-weakref.patch
+  * tensorflow-2.6.0-fix-lite.patch
+  * tensorflow-2.6.0-tf-keras-hdf5-3.patch
+  * tensorflow-2.6.0-removed-clog-build-as-included-in-cpuinfo.patch
+  * tensorflow-2.6.0-numpy-tensor-small.patch
+- fix double nested unpacking and refresh patches, migrate to -p1
+  * tensorflow-2.6.0-removed-external-toolchains.patch
+  * tensorflow-2.6.0-compile-with-protobuf-3.16.patch
+- Add #tensorflow-2.7.0-fix-lite.patch
+  * https://github.com/tensorflow/tensorflow/commit/fb1dcbd9
+  * gh#tensorflow/tensorflow#54216
+- Have to use grpc and upb from bazelcache, pulls in go
+  * Add tensorflow-2.7.0-go_host_sdk.patch -- use system SDK
+    instead of downloading a binary blob
+
+-------------------------------------------------------------------
+Tue Jan 11 09:41:07 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove more python dependencies for tensorflow2-lite
+
+-------------------------------------------------------------------
 Mon Jan 10 14:03:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - tensorflow2-lite version does not need all the python dependencies

@@ -274,4 +274,41 @@
     <comment></comment>
     <requestid>945336</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bf468a0e7efd96f1544e2046a7def54b</srcmd5>
+    <version>2.7.0</version>
+    <time>1643838011</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove URLs from github zip archives for xnnpack transitive
+  dependencies: The GitHub archiver produces unreliable files
+
+- Update to 2.7.0
+  * Big changelog: at
+    https://github.com/tensorflow/tensorflow/releases/tag/v2.7.0
+- Security references:
+  * Fixes a code injection issue in saved_model_cli
+    (CVE-2021-41228)
+  * Fixes a vulnerability due to use of uninitialized value in
+    Tensorflow (CVE-2021-41225)
+  * Fixes a heap OOB in FusedBatchNorm kernels (CVE-2021-41223)
+  * Fixes an arbitrary memory read in ImmutableConst
+    (CVE-2021-41227)
+  * Fixes a heap OOB in SparseBinCount (CVE-2021-41226)
+  * Fixes a heap OOB in SparseFillEmptyRows (CVE-2021-41224)
+  * Fixes a segfault due to negative splits in SplitV
+    (CVE-2021-41222)
+  * Fixes segfaults and vulnerabilities caused by accesses to
+    invalid memory during shape inference in Cudnn* ops
+    (CVE-2021-41221)
+  * Fixes a null pointer exception when Exit node is not preceded
+    by Enter op (CVE-2021-41217)
+  * Fixes an integer division by 0 in tf.raw_ops.AllToAll
+    (CVE-2021-41218)
+  * Fixes a use after free and a memory leak in CollectiveReduceV2
+    (CVE-2021-41220)
+  * Fixes an undefined behavior via nullptr reference binding in
+    sparse matrix multiplication (CVE-2021-41219)
+  * Fixes a heap buffer overflow in Transpose (CVE-2021-41216)</comment>
+    <requestid>950525</requestid>
+  </revision>
 </revisionlist>
