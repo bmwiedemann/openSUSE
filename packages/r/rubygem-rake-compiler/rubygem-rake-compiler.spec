@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rake-compiler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rake-compiler
-Version:        1.1.1
+Version:        1.1.9
 Release:        0
 %define mod_name rake-compiler
 %define mod_full_name %{mod_name}-%{version}
@@ -53,7 +53,7 @@ Ruby extensions (C, Java) using Rake as glue.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="History.txt LICENSE.txt README.md" \
+  --doc-files="History.md LICENSE.txt README.md" \
   -f
 
 %gem_packages
