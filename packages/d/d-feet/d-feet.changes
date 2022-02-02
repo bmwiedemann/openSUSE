@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 16:05:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 32.patch: Fix build with meson 0.60.0 and newer.
+
+-------------------------------------------------------------------
 Fri May 14 13:51:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.3.16:

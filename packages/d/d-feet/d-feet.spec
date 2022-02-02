@@ -1,7 +1,7 @@
 #
 # spec file for package d-feet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://live.gnome.org/DFeet/
 Source0:        https://download.gnome.org/sources/d-feet/0.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 32.patch -- Fix build with meson 0.60.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/d-feet/-/merge_requests/32.patch
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -45,7 +47,7 @@ programs and invoke methods on those objects.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export PYTHON=%{_bindir}/python3
