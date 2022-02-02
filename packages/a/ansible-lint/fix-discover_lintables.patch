@@ -1,0 +1,48 @@
+From f881ebfdb0ada1b00b06f9e6ff6b95f35996eff6 Mon Sep 17 00:00:00 2001
+From: Sebastian Wagner <sebix@sebix.at>
+Date: Fri, 28 Jan 2022 19:23:44 +0100
+Subject: [PATCH] fix discover_lintables: strip ./ from WcMatch return value
+
+calling WcMatch('.', ...) causes the resulting file names to be prefixed
+with `./`.
+If the tests are run in a git-repository, this is not an issue, as git
+is preferred of WcMatch in the code.
+
+Therefore remove the `./` prefix from the WcMatch return value to get
+the identical expected output.
+
+fixes ansible-community/ansible-lint#1836
+---
+ src/ansiblelint/file_utils.py | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/ansiblelint/file_utils.py b/src/ansiblelint/file_utils.py
+index dad094b8d..f0c3d1857 100644
+--- a/src/ansiblelint/file_utils.py
++++ b/src/ansiblelint/file_utils.py
+@@ -261,15 +261,22 @@ def discover_lintables(options: Namespace) -> Dict[str, Any]:
+     if out is None:
+         exclude_pattern = "|".join(str(x) for x in options.exclude_paths)
+         _logger.info("Looking up for files, excluding %s ...", exclude_pattern)
+-        out = set(
+-            WcMatch(
++        # remove './' prefix from output of WcMatch
++        out = {
++            strip_dotslash_prefix(fname)
++            for fname in WcMatch(
+                 '.', exclude_pattern=exclude_pattern, flags=RECURSIVE, limit=256
+             ).match()
+-        )
++        }
+ 
+     return OrderedDict.fromkeys(sorted(out))
+ 
+ 
++def strip_dotslash_prefix(fname: str) -> str:
++    """Remove ./ leading from filenames."""
++    return fname[2:] if fname.startswith('./') else fname
++
++
+ def guess_project_dir(config_file: Optional[str]) -> str:
+     """Return detected project dir or current working directory."""
+     path = None

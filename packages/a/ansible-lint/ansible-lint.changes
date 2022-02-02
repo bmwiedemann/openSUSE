@@ -1,0 +1,202 @@
+-------------------------------------------------------------------
+Sat Jan 29 08:57:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add fix-discover_lintables.patch to fix a test fail.
+- refactor specfile, remove multipython, this is an application only.
+- Update to version 5.3.2:
+ - Too many changes to list here, see https://github.com/ansible-community/ansible-lint/releases
+
+-------------------------------------------------------------------
+Fri Nov 23 13:58:39 UTC 2018 - Jon Brightwell <jon.brightwell@zpg.co.uk>
+
+- added python-pyyaml and python-six dependencies as listed in setup.py (L22)
+- made the post-build test conditional as requires python2
+
+- update to 3.5.1
+  + Use yaml.safe_load for loading the configuration fil
+  - 3.5.0
+  + New ids and tags, add doc generator. Old tag names remain backwardly compatible (awcrosby)
+  + Add more package formats to PackageIsNotLatestRule (simon04)
+  + Improve handling of meta/main.yml dependencies (MatrixCrawler)
+  + Correctly handle role argument trailing slash (zoredache)
+  + Handle include_task and import_task (zeot)
+  + Add a new rule to detect jinja in when clauses (greg-hellings)
+  + Suggest replace as another alternative to sed (inponomarev)
+  + YAML syntax highlighting for false positives (gundalow)
+
+
+-------------------------------------------------------------------
+Tue Sep 11 09:44:47 UTC 2018 - lars@linux-schulserver.de
+
+- update to 3.4.23
+  + Fix bug with using comma-separated skip_list arguments
+  + Allow include_role and import_role (willthames)
+  + Support arbitrary number of exclude flags (KellerFuchs)
+  + Fix task has name check for empty name fields (ekeih)
+  + Allow vault encrypted variables in YAML files (mozz)
+  + Octal permission check improvements - readability, test 
+    coverage and bug fixes (willthames)
+  + Fix very weird bug with line numbers in some test environments (kouk)
+  + Python 3 fixes for octal literals in tests (willthames)
+
+-------------------------------------------------------------------
+Mon May  7 11:05:23 UTC 2018 - lars@linux-schulserver.de
+
+- update to 3.4.21:
+  + Update test that allows directories to have execute but not 
+    read bit set
+  + new playbook_import statement is now also recognized
+  + Allow directories to have execute but not read bit set
+  + Update test coverage
+  + Fix typos in rules description
+  + Fix normal sentence seen as title
+  + ansible-lint accepts multiple playbooks in cmdlne
+
+-------------------------------------------------------------------
+Mon Jan 22 14:47:45 UTC 2018 - boris@steki.net
+
+- updated to latest release 3.4.20
+  + fixed rpm check build to use only python2 for now
+  + Fix for Python 2.6
+  + added stdin to expected vars for command module
+  + added testcase
+  + made test >2.4 specific
+  + fixed wrong test-playbook
+  + Adding feature for issue #283, adding the ability to use a .ansible-lint
+    yaml configuration file in the working directory instead of command line
+    arguments.
+  + Adding CLI flag for specifying configuration file.  Also adding guard
+    test to confirm that configuration file properties can be overriden by
+    command line.
+  + Adding 'merge' behavior to config file and CLI options.  The 'True'
+    value will be preferred in the case of simple flags, while lists will be
+    merged.
+  + Fixing 3.4 issue with errs not able to be concatenated with a string
+  + Clarifying that -F is a path to file in the documentation.  Also
+    expanding unnecessarily contracted line
+  + Updating config file to use -c to make it clear it is a configuration
+    file being specified.
+  + added include_tasks and import_tasks to utils
+  + updated example rule
+  + Add supervisorctl and systemd module support
+  + Add template/lineinfile module support
+  + Although how bin/ansible-lint works has changed significantly,
+    it should still exist so docs are accurate and for testing.
+  + Handle the 'cmd' argument in command/shell
+
+-------------------------------------------------------------------
+Wed Sep  6 08:18:15 UTC 2017 - boris@steki.net
+
+- update to 3.4.15 
+
+-------------------------------------------------------------------
+Mon Mar 20 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.12-1
+
+- Update to 3.4.12 version
+
+
+-------------------------------------------------------------------
+Mon Feb 13 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.11-1
+
+- Update to 3.4.11
+
+
+-------------------------------------------------------------------
+Mon Jan 16 00:00:00 UTC 2017 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.10-1
+
+- Update to 3.4.10
+
+
+-------------------------------------------------------------------
+Thu Dec 22 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.9-1
+
+- Update to 3.4.9
+
+
+-------------------------------------------------------------------
+Fri Dec 16 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.8-1
+
+- Update to 3.4.8
+
+
+-------------------------------------------------------------------
+Mon Dec  5 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.7-1
+
+- Update to 3.4.7
+
+
+-------------------------------------------------------------------
+Tue Nov 15 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.4-1
+
+- Update to 3.4.4
+
+
+-------------------------------------------------------------------
+Tue Nov  8 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.3-1
+
+- Update to 3.4.3
+
+
+-------------------------------------------------------------------
+Fri Oct 28 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.4.1-1
+
+- Update to 3.4.1
+
+
+-------------------------------------------------------------------
+Fri Sep 30 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.3.3-1
+
+- Update to 3.3.3
+
+
+-------------------------------------------------------------------
+Fri Jul 15 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.1.3-1
+
+- Upstream release 3.1.3
+
+
+-------------------------------------------------------------------
+Fri Jun 24 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.0.1-1
+
+- Update to 3.0.1 release
+
+
+-------------------------------------------------------------------
+Thu Jun 23 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 3.0.0-1
+
+- Update to 3.0.0 release
+
+
+-------------------------------------------------------------------
+Sat May 21 00:00:00 UTC 2016 - Parag Nemade <pnemade AT redhat DOT com> - 2.6.2-1
+
+- Update to 2.6.2
+- use %license macro
+- disable tests
+
+
+-------------------------------------------------------------------
+Fri Dec  5 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 2.0.1-1
+
+- Update to 2.0.1
+
+
+-------------------------------------------------------------------
+Mon Oct 27 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 1.0.4-1
+
+- rename to ansible-lint
+- new upstream 1.0.4 release which added LICENSE file.
+
+
+-------------------------------------------------------------------
+Sat Oct 25 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 1.0.2-2
+
+- Better add upstream LICENSE file, not present in tarball
+
+
+-------------------------------------------------------------------
+Wed Sep 24 00:00:00 UTC 2014 - Parag Nemade <pnemade AT redhat DOT com> - 1.0.2-1
+
+- Initial packaging
+
+
