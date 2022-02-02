@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:24:42 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.20.0
+ see installed NEWS
+
+  === raindrops 0.20.0 / 2021-12-06 23:41 UTC
+  
+    Raindrops may now use file-backed mmap() rather than anonymous
+    memory.  Thanks to KJ Tsanaktsidis for the patch:
+  
+    https://yhbt.net/raindrops-public/20211125065618.3432-1-ktsanaktsidis@zendesk.com/T/
+  
+    The documentation is also updated to note our mail archives are now
+    available via IMAP(S).
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:51:42 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.19.2
