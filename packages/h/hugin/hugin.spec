@@ -1,7 +1,7 @@
 #
 # spec file for package hugin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define mversion 2020.0
+%define mversion 2021.0
 %bcond_with hsi
 %bcond_without system_flann
 %bcond_without lapack
 # Cannot use EGL unless glew bug https://github.com/nigels-com/glew/issues/315 is fixed
 %bcond_with egl
 Name:           hugin
-Version:        2020.0.0
+Version:        2021.0.0
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
@@ -31,10 +31,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
-# https://src.fedoraproject.org/rpms/hugin/blob/rawhide/f/hugin-openexr3.patch
-Patch1:         hugin-openexr3.patch
-# PATCH-FIX-UPSTREAM hugin-EGL-link-against-X11.patch badshah400@gmail.com -- Link against X11 even when building with EGL support
-Patch2:         hugin-EGL-link-against-X11.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0
@@ -69,7 +65,7 @@ BuildRequires:  flann-devel
 BuildRequires:  lapack-devel
 %endif
 %if %{with hsi}
-BuildRequires:  python-wxWidgets >= 3
+BuildRequires:  python3-wxPython
 BuildRequires:  swig
 %endif
 %if %{with egl}
@@ -86,10 +82,7 @@ chromatic abberation, create HDR images, provide automatic feature
 detection and extraction of key points.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 
@@ -119,11 +112,6 @@ rm CMakeModules/FindZLIB.cmake
 %suse_update_desktop_file calibrate_lens_gui 2DGraphics
 # locales
 %find_lang %{name}
-
-# Use better place for MIME icon.
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes
-mv -f %{buildroot}%{_datadir}/icons/{gnome,hicolor}/48x48/mimetypes/application-x-ptoptimizer-script.png
-rmdir -p --ignore-fail-on-non-empty %{buildroot}%{_datadir}/icons/gnome/48x48/mimetypes
 
 # Install manually so it can be dedup'ed with the one in the program resources
 install -m644 -D -t %{buildroot}%{_licensedir}/hugin/ COPYING.txt

@@ -554,4 +554,21 @@
 * Minor cleanup with spec-cleaner. (forwarded request 914704 from badshah400)</comment>
     <requestid>914957</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>7e3f70bab10dc68915e922885585b11d</srcmd5>
+    <version>2021.0.0</version>
+    <time>1643838113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020.0.0:
+  * Fast preview window can be panned in zoomed state with middle
+    mouse button.
+  * New overview mode: inside panorama sphere (similar to a
+    interactive panorama viewer)
+  * Updated build system for OpenEXR3.
+  * Several bug fixes.
+- Drop upstream patches:
+  * hugin-EGL-link-against-X11.patch
+  * hugin-openexr3.patch (forwarded request 949737 from StefanBruens)</comment>
+    <requestid>950737</requestid>
+  </revision>
 </revisionlist>

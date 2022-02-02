@@ -1,7 +1,7 @@
 Index: platforms/linux/appdata/PTBatcherGUI.appdata.xml
 ===================================================================
---- platforms/linux/appdata/PTBatcherGUI.appdata.xml.orig
-+++ platforms/linux/appdata/PTBatcherGUI.appdata.xml
+--- a/platforms/linux/appdata/PTBatcherGUI.appdata.xml
++++ b/platforms/linux/appdata/PTBatcherGUI.appdata.xml
 @@ -13,7 +13,7 @@
   <metadata_license>GFDL</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
@@ -13,8 +13,8 @@ Index: platforms/linux/appdata/PTBatcherGUI.appdata.xml
    <p>
 Index: platforms/linux/appdata/calibrate_lens_gui.appdata.xml
 ===================================================================
---- platforms/linux/appdata/calibrate_lens_gui.appdata.xml.orig
-+++ platforms/linux/appdata/calibrate_lens_gui.appdata.xml
+--- a/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
++++ b/platforms/linux/appdata/calibrate_lens_gui.appdata.xml
 @@ -13,7 +13,7 @@
   <metadata_license>GFDL</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
@@ -26,8 +26,8 @@ Index: platforms/linux/appdata/calibrate_lens_gui.appdata.xml
    <p>
 Index: platforms/linux/appdata/hugin.appdata.xml
 ===================================================================
---- platforms/linux/appdata/hugin.appdata.xml.orig
-+++ platforms/linux/appdata/hugin.appdata.xml
+--- a/platforms/linux/appdata/hugin.appdata.xml
++++ b/platforms/linux/appdata/hugin.appdata.xml
 @@ -13,7 +13,7 @@
   <metadata_license>GFDL</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>

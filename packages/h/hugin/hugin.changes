@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 28 14:27:10 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2020.0.0:
+  * Fast preview window can be panned in zoomed state with middle
+    mouse button.
+  * New overview mode: inside panorama sphere (similar to a
+    interactive panorama viewer)
+  * Updated build system for OpenEXR3.
+  * Several bug fixes.
+- Drop upstream patches:
+  * hugin-EGL-link-against-X11.patch
+  * hugin-openexr3.patch
+
+-------------------------------------------------------------------
 Thu Aug 12 01:47:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add hugin-EGL-link-against-X11.patch: Link against X11 even when
