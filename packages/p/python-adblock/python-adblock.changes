@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:29:35 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.1
+  * Fix test suite for Python 3.10
+
+-------------------------------------------------------------------
 Fri Nov  5 03:03:01 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues

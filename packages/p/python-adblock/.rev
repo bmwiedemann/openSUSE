@@ -33,4 +33,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>931002</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f61a699b2583e2a371674495f583e44d</srcmd5>
+    <version>0.5.1</version>
+    <time>1643838105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1
+  * Fix test suite for Python 3.10</comment>
+    <requestid>950693</requestid>
+  </revision>
 </revisionlist>
