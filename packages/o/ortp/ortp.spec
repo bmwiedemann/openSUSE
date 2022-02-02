@@ -20,10 +20,10 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        5.0.66
+Version:        5.0.67
 Release:        0
 Summary:        Real-time Transport Protocol Stack
-License:        GPL-2.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/ortp/
 Source:         https://gitlab.linphone.org/BC/public/ortp/-/archive/%{version}/%{name}-%{version}.tar.bz2
