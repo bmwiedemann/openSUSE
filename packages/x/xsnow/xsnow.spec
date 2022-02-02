@@ -28,6 +28,8 @@ Source:         https://www.ratrabbit.nl/downloads/xsnow/%{name}-%{version}.tar.
 Patch0:         xsnow-desktop_file.patch
 # PATCH-FIX-OPENSUSE xsnow-bindir.patch -- Install in /usr/bin instead /usr/games
 Patch1:         xsnow-bindir.patch
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/xsnow/tickets/10/
+Patch2:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-devel
@@ -48,7 +50,7 @@ Xsnow is derived from Rick Jansen's xsnow-1.42.
 %autopatch -p1
 
 %build
-%configure
+%configure --disable-selfrep
 %make_build
 
 %install

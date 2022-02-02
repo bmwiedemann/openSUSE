@@ -1,0 +1,47 @@
+https://sourceforge.net/p/xsnow/tickets/10/
+https://github.com/gitmirrors2/xsnow/commits/openSUSE
+
+commit f955b511e3a707cb3251fd5e7053b997ce7526b1
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed Feb 2 07:47:20 2022 +0100
+
+    Allow to override build date with SOURCE_DATE_EPOCH
+    
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+    This date call is designed to work with various date implementations.
+    
+    Also use UTC to be independent of timezone.
+
+diff --git a/xsnow/configure b/xsnow/configure
+index c969108..1f507b9 100755
+--- a/configure
++++ b/configure
+@@ -3551,7 +3551,9 @@ fi
+ 
+ 
+ 
+-DATE=`date +"%Y-%m-%d"`
++DATE_FMT="+%Y-%m-%d"
++SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-`date +%s`}"
++DATE=`date -u -d "@$SOURCE_DATE_EPOCH" "$DATE_FMT" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" "$DATE_FMT" 2>/dev/null || date -u "$DATE_FMT"`
+ 
+ 
+ # Checks for programs.
+diff --git a/xsnow/configure.ac b/xsnow/configure.ac
+index d08be38..b2d6c23 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,7 +35,9 @@ AC_ARG_ENABLE(selfrep, [AS_HELP_STRING([--enable-selfrep],[Build with self repli
+ AM_CONDITIONAL([MAKESELFREP],[test "x$enable_selfrep" = "xyes"])
+ 
+ AC_SUBST([PACKAGE_VERSION])
+-DATE=`date +"%Y-%m-%d"`
++DATE_FMT="+%Y-%m-%d"
++SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-`date +%s`}"
++DATE=`date -u -d "@$SOURCE_DATE_EPOCH" "$DATE_FMT" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" "$DATE_FMT" 2>/dev/null || date -u "$DATE_FMT"`
+ AC_SUBST([DATE])
+ 
+ # Checks for programs.
