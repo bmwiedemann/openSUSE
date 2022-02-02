@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 01 21:10:01 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.4.4:
+  * Update dependencies.  Pion WebRTC v3.1.19 fixes a bug that could cause
+    audio tracks to be discarded under some circumstances.
+  * Fix a bug that could cause user statuses (raisehand) to be discarded.
+  * Fix incorrect maxRate value in statistics display.
+
+-------------------------------------------------------------------
 Thu Jan 27 18:08:56 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.4.3
