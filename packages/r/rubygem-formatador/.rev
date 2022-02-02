@@ -15,4 +15,12 @@
     <comment>update (forwarded request 901968 from coolo)</comment>
     <requestid>902273</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>51d6278994743188e238f0892036907d</srcmd5>
+    <version>1.1.0</version>
+    <time>1643838079</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950625</requestid>
+  </revision>
 </revisionlist>
