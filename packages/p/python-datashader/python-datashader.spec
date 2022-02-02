@@ -1,7 +1,7 @@
 #
-# spec file for package python-datashader-test
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,21 +28,22 @@ ExclusiveArch:  x86_64
 BuildArch:      noarch
 %endif
 %define         skip_python2 1
-%define         skip_python36 1
+# dask is not compatible with Python 3.10 yet
+%define         skip_python310 1
 Name:           python-datashader%{psuffix}
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
 URL:            https://datashader.org
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
+Patch0:         datashader-pr1022-RaggedTests.patch
+Patch1:         datashader-pr1025-testfixes.patch
 Source100:      python-datashader-rpmlintrc
-# PATCH-FIX-UPSTREAM datashader-pr996-numpy-ragged.patch -- gh#holoviz/datashader#996
-Patch0:         https://github.com/holoviz/datashader/pull/996.patch#/datashader-pr996-numpy-ragged.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module param >= 1.6.0}
-BuildRequires:  %{python_module pyct}
+BuildRequires:  %{python_module param >= 1.6.1}
+BuildRequires:  %{python_module pyct >= 0.4.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,17 +52,14 @@ Requires:       python-Pillow >= 3.1.1
 Requires:       python-PyYAML
 Requires:       python-bokeh
 Requires:       python-colorcet >= 0.9.0
-Requires:       python-dask >= 0.18.0
-Requires:       python-dask-bag
-Requires:       python-dask-dataframe
-Requires:       python-numba >= 0.37.0
+Requires:       python-dask-all >= 0.18.0
+Requires:       python-numba >= 0.51
 Requires:       python-numpy >= 1.7
 Requires:       python-pandas >= 0.24.1
-Requires:       python-param >= 1.6.0
-Requires:       python-pyct
+Requires:       python-param >= 1.6.1
+Requires:       python-pyct >= 0.4.5
 Requires:       python-scikit-image
 Requires:       python-scipy
-Requires:       python-toolz >= 0.7.4
 Requires:       python-xarray >= 0.9.6
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -71,21 +69,18 @@ BuildRequires:  %{python_module Pillow >= 3.1.1}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module colorcet >= 0.9.0}
-BuildRequires:  %{python_module dask >= 0.18.0}
-BuildRequires:  %{python_module dask-bag}
-BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask-all >= 0.18.0}
 BuildRequires:  %{python_module fastparquet >= 0.1.6}
 BuildRequires:  %{python_module holoviews >= 1.10.0}
-BuildRequires:  %{python_module nbsmoke >= 0.4.0}
+BuildRequires:  %{python_module nbsmoke >= 0.5.0}
 BuildRequires:  %{python_module netCDF4}
-BuildRequires:  %{python_module numba >= 0.37.0}
+BuildRequires:  %{python_module numba >= 0.51}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas >= 0.24.1}
 BuildRequires:  %{python_module pytest >= 3.9.3}
 BuildRequires:  %{python_module pytest-benchmark >= 3.0.0}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module toolz >= 0.7.4}
 BuildRequires:  %{python_module xarray >= 0.9.6}
 %endif
 %python_subpackages
@@ -131,7 +126,11 @@ chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
 %if %{with test}
 %check
 export PYTHONPATH=examples
-%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors
+# https://github.com/holoviz/datashader/issues/1043
+donttest="(TestRaggedGetitem and test_getitem_invalid)"
+donttest+=" or (TestRaggedInterface and test_tolist)"
+donttest+=" or (TestRaggedMethods and test_where_series)"
+%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors -k "not ($donttest)"
 %endif
 
 %if ! %{with test}

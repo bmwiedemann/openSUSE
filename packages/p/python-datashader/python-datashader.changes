@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 31 21:47:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.0
+  * Defined new dynspread metric based on counting the fraction of
+    non-empty pixels that have non-empty pixels within a given
+    radius. The resulting dynspread behavior is much more intuitive
+    than the old behavior, which counted already-spread pixels as
+    if they were neighbors (#1001)
+  * Added ds.count() as the default reduction for ds.by (#1004)
+  * Fixed array-bounds reading error in dynspread (#1001)
+  * Fix color_key argument for dsshow (#986)
+  * Added Matplotlib output to the 3_Interactivity getting started
+    page. (#1009)
+  * Misc docs fixes (#1007)
+  * Fix nan assignment to integer array in RaggedArray (#1008)
+  * Any usage of dynspread with datatypes other than points should
+    be replaced with spread(), which will do what was probably
+    intended by the original dynspread call, i.e. to make isolated
+    lines and shapes visible. Strictly speaking, dynspread could
+    still be useful for other glyph types if that glyph is
+    contained entirely in a pixel, e.g. if a polygon or line
+    segment is located within the pixel bounds, but that seems
+    unlikely.
+  * Dynspread may need to have the threshold or max_px arguments
+    updated to achieve the same spreading as in previous releases,
+    though the new behavior is normally going to be more useful
+    than the old. 
+- Drop datashader-pr996-numpy-ragged.patch
+- Add datashader-pr1022-RaggedTests.patch
+- Add datashader-pr1025-testfixes.patch
+- Skip remaining failing ragged tests gh#holoviz/datashader#1043
+
+-------------------------------------------------------------------
 Thu Apr  1 12:57:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add datashader-pr996-numpy-ragged.patch in order to fix
