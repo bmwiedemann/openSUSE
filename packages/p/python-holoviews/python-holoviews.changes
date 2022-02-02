@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 31 20:26:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14.8a1
+  * nominally a prerelease, but essentially 1.14.7 plus
+    gh#holoviz/holoviews#516 : Fix for xarray coordinate validation
+- Required to fix hvplot
+- Datashader also requires dask, so don't test on Python 3.10
+  either
+
+-------------------------------------------------------------------
+Sat Jan 29 20:52:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with dask for Python 3.10: not supported yet.
+
+-------------------------------------------------------------------
 Wed Jan 19 23:42:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.14.7

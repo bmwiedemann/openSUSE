@@ -18,14 +18,16 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %bcond_without  test
+# https://github.com/holoviz/holoviews/pull/5174
+%define pversion 1.14.8a1
 Name:           python-holoviews
-Version:        1.14.7
+Version:        1.14.8~a1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
-Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{pversion}.tar.gz
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module pandas >= 0.20}
@@ -71,8 +73,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module bokeh >= 2.2}
 BuildRequires:  %{python_module dash >= 1.16}
-BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module datashader >= 0.11.1}
+BuildRequires:  %{python_module dask if %python-base < 3.10}
+BuildRequires:  %{python_module datashader >= 0.11.1 if %python-base < 3.10}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module ffmpeg-python}
 BuildRequires:  %{python_module ipython >= 5.4.0}
@@ -108,7 +110,7 @@ rendered automatically by one of the supported plotting libraries
 (such as Bokeh or Matplotlib).
 
 %prep
-%setup -q -n holoviews-%{version}
+%setup -q -n holoviews-%{pversion}
 %autopatch -p1
 sed -i '/"nose"/ d' setup.py
 
@@ -267,7 +269,7 @@ fi
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/holoviews
-%{python_sitelib}/holoviews-%{version}*-info
+%{python_sitelib}/holoviews-%{pversion}*-info
 %{python_sitelib}/holoviews/
 
 %changelog
