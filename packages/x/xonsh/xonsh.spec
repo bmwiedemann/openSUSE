@@ -65,10 +65,11 @@ sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py
 python3 setup.py build
 # Temporarily disabled building docs because of error https://github.com/xonsh/xonsh/issues/4551
 pushd docs
-LANG=C.UTF-8 PYTHONPATH=.. make html
+LANG=C.UTF-8 PYTHONPATH=.. setarch -R make html
 # work around a rpmlint error file-contains-buildroot
 sed -i 's#/home/abuild/rpmbuild/BUILD#_WORKDIR_#g' _build/html/api/platform.html
 rm _build/html/.buildinfo
+rm -r _build/doctrees
 popd
 
 %install
