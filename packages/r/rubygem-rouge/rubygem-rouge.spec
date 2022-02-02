@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rouge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rouge
-Version:        3.26.0
+Version:        3.27.0
 Release:        0
 %define mod_name rouge
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ URL:            http://rouge.jneen.net/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A pure-ruby colorizer based on pygments
-License:        MIT OR BSD-2-Clause
+License:        BSD-2-Clause OR MIT
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
