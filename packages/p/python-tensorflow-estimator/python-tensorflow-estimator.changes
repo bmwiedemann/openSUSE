@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 22 20:42:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Release 2.7.0 for sync with tensorflow2
+  * Update README.md by @amahendrakar in #63
+  * Enable tracing in estimator training by @burgerkingeater in #68
+  * Fix distribute link error in train_and_evaluate function by
+    @daugraph in #71
+  * Disabling PY-test on the master. by @pranve in #77
+- Disable Leap/Backports build: no non-lite tensorflow2
+
+-------------------------------------------------------------------
 Wed Jan  5 15:06:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix deps for %check on Leap/Backports

@@ -1,7 +1,7 @@
 #
-# spec file for package python-tensorflow-estimator
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,11 @@
 %bcond_with alltests
 # sync with tensorflow2
 %define pythons python3
+%if 0%{?suse_version} < 1599
+ExclusiveArch: donotbuild
+%endif
 Name:           python-tensorflow-estimator%{psuffix}
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        TensorFlow Estimator API
 License:        Apache-2.0
@@ -47,16 +50,8 @@ Obsoletes:      python-tensorflow_estimator < %{version}-%{release}
 BuildArch:      noarch
 ExcludeArch:    %{ix86}
 %if %{with test}
-# this should be specified by tf
-BuildRequires:  %{python_module keras = %{version}}
 BuildRequires:  %{python_module tensorflow-estimator = %{version}}
-BuildRequires:  %{python_module tensorboard = %{version}}
-%if 0%{?suse_version} < 1599
-# Leap 15.x / SLE15-SPx still use python 3.6
-BuildRequires:  %{python_module typing_extensions}
-%endif
 BuildRequires:  %{python_module scikit-learn}
-#2.6+ allows "from tensorflow.python.profiler import trace"
 BuildRequires:  tensorflow2 >= 2.6
 %endif
 %python_subpackages
@@ -72,14 +67,11 @@ and exporting for your model.
 cp %{SOURCE99} .
 
 %build
-%if ! %{with test}
-# deprecated usage of wheel in cwd for pyproject_install due to old python-rpm-macros on Leap 15.X
-cp %{SOURCE0} .
-%endif
+:
 
 %if ! %{with test}
 %install
-%pyproject_install
+%pyproject_install %{SOURCE0}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
