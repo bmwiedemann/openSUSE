@@ -19,10 +19,10 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.0.66
+Version:        5.0.67
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://linphone.org/technical-corner/lime/
 Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/%{name}-%{version}.tar.bz2
@@ -98,7 +98,6 @@ which will use lime.
 chmod -x %{buildroot}%{_datadir}/%{name}_tester/data/*.pem
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files -n %{soname}%{sover}
