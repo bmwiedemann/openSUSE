@@ -19,10 +19,10 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.0.66
+Version:        5.0.67
 Release:        0
 Summary:        Audio/Video real-time streaming
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
@@ -30,6 +30,7 @@ Source99:       baselibs.conf
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 BuildRequires:  bcmatroska2-devel >= 0.23.1
+BuildRequires:  broadvoice16-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gawk
@@ -64,7 +65,6 @@ BuildRequires:  pkgconfig(xv)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libjpeg-devel >= 8.2.0
 %endif
-BuildRequires:  broadvoice16-devel
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
@@ -131,7 +131,6 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-5.0.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
-
 %postun -n %{sobase}%{sover} -p /sbin/ldconfig
 
 %files
