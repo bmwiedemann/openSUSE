@@ -1,7 +1,7 @@
 #
 # spec file for package python-bpython
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %bcond_with     test
 Name:           python-bpython
-Version:        0.21
+Version:        0.22.1
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
@@ -114,12 +114,12 @@ install -d %{buildroot}%{_mandir}/man5/
 
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-cp %{buildroot}%{_datadir}/appinfo/org.bpython-interpreter.bpython.appdata.xml %{buildroot}%{_datadir}/appinfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.appdata.xml
+cp %{buildroot}%{_datadir}/metainfo/org.bpython-interpreter.bpython.metainfo.xml %{buildroot}%{_datadir}/metainfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.metainfo.xml
 cp %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython-%{$python_bin_suffix}.desktop
 
-sed -i 's|bpython.desktop|bpython-%{$python_bin_suffix}.desktop|' %{buildroot}%{_datadir}/appinfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.appdata.xml
-sed -i 's|bpython interpreter|bpython %{$python_prefix} interpreter|' %{buildroot}%{_datadir}/appinfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.appdata.xml
-sed -i 's|Python interpreter|A %{$python_prefix} interpreter|' %{buildroot}%{_datadir}/appinfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.appdata.xml
+sed -i 's|bpython.desktop|bpython-%{$python_bin_suffix}.desktop|' %{buildroot}%{_datadir}/metainfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.metainfo.xml
+sed -i 's|bpython interpreter|bpython %{$python_prefix} interpreter|' %{buildroot}%{_datadir}/metainfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.metainfo.xml
+sed -i 's|Python interpreter|A %{$python_prefix} interpreter|' %{buildroot}%{_datadir}/metainfo/org.bpython-interpreter.bpython-%{$python_bin_suffix}.metainfo.xml
 desktop-file-edit --set-name=bpython-%{$python_bin_suffix} \
                   --copy-name-to-generic-name \
                   --remove-key=Categories \
@@ -129,7 +129,7 @@ desktop-file-edit --set-name=bpython-%{$python_bin_suffix} \
                   %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython-%{$python_bin_suffix}.desktop
 }
 
-rm %{buildroot}%{_datadir}/appinfo/org.bpython-interpreter.bpython.appdata.xml
+rm %{buildroot}%{_datadir}/metainfo/org.bpython-interpreter.bpython.metainfo.xml
 rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 
 %if %{with test}
@@ -158,8 +158,9 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %python_alternative %{_bindir}/bpdb
 %python_alternative %{_mandir}/man1/bpython.1%{ext_man}
 %python_alternative %{_mandir}/man5/bpython-config.5%{ext_man}
-%dir %{_datadir}/appinfo/
-%{_datadir}/appinfo/org.bpython-interpreter.bpython-%{python_bin_suffix}.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/org.bpython-interpreter.bpython-%{python_bin_suffix}.metainfo.xml
+%dir %{_datadir}/applications/
 %{_datadir}/applications/org.bpython-interpreter.bpython-%{python_bin_suffix}.desktop
 
 %files -n %{name}-common
