@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 06:24:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.3:
+  * Support for Taskwarrior 2.6
+  * Support for tzlocal>=3.0
+  * Official support for Python 3.9 in the test matrix 
+- Rewrite disable-windows-test.patch to be suitable for upstream
+
+-------------------------------------------------------------------
 Fri Apr  9 06:26:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.0:

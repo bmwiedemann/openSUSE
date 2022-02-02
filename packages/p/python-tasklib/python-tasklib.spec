@@ -1,7 +1,7 @@
 #
 # spec file for package python-tasklib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tasklib
-Version:        2.3.0
+Version:        2.4.3
 Release:        0
 Summary:        Python Task Warrior library
 License:        BSD-3-Clause
@@ -32,11 +32,11 @@ BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  %{python_module tzlocal}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  taskwarrior >= 2.1.0
+BuildRequires:  taskwarrior >= 2.4.0
 Requires:       python-pytz
 Requires:       python-six >= 1.4
 Requires:       python-tzlocal
-Requires:       taskwarrior >= 2.1.0
+Requires:       taskwarrior >= 2.4.0
 BuildArch:      noarch
 %python_subpackages
 

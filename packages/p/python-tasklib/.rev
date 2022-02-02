@@ -24,4 +24,16 @@
   * No upstream changelog</comment>
     <requestid>883971</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f210ef5a66261d0af53c27ebb754a39</srcmd5>
+    <version>2.4.3</version>
+    <time>1643838102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.3:
+  * Support for Taskwarrior 2.6
+  * Support for tzlocal&gt;=3.0
+  * Official support for Python 3.9 in the test matrix 
+- Rewrite disable-windows-test.patch to be suitable for upstream</comment>
+    <requestid>950640</requestid>
+  </revision>
 </revisionlist>
