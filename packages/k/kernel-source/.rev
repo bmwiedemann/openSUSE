@@ -5786,4 +5786,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.16.2 &amp; FS CVE</comment>
     <requestid>948468</requestid>
   </revision>
+  <revision rev="629" vrev="1">
+    <srcmd5>1544f207d5e2182a761b371c27ec760f</srcmd5>
+    <version>5.16.4</version>
+    <time>1643843577</time>
+    <user>dimstar_suse</user>
+    <comment>5.16.4 &amp; 5.16.3 &amp; drm CVE &amp; other fixes</comment>
+    <requestid>950335</requestid>
+  </revision>
 </revisionlist>
