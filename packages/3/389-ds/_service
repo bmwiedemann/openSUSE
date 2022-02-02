@@ -27,8 +27,9 @@
     <param name="url">https://github.com/SUSE/supportutils-plugin-dirsrv.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">v0.1.0</param>
-    <param name="match-tag">v0.1.0</param>
+    <param name="revision">main</param>
+    <param name="versionrewrite-pattern">(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">disable</param>
     <param name="without-version">true</param>
   </service>

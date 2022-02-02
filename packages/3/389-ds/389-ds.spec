@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.13~git1.72eb93ac9
+Version:        2.0.14~git3.c9226ad90
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -43,7 +43,7 @@ Source:         389-ds-base-%{version}.tar.xz
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
 Source3:        vendor.tar.xz
-Source4:        supportutils-plugin-dirsrv-v0.1.0~git0.37cb939.tar.xz
+Source4:        supportutils-plugin-dirsrv-v0.1.0~git2.4c54cf4.tar.xz
 Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf

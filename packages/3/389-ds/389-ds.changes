@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Feb 02 02:33:42 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.0.14~git3.c9226ad90:
+  * Issue 4299 - UI - fix minor issues with ldap editor (table view)
+  * Issue 4299 - UI - fix minor issues with ldap editor
+  * Issue 5103 - UI - Add support for TPR to web console (#5111)
+- Add improvements for suppor config to show certificate usage
+
+-------------------------------------------------------------------
+Tue Feb 01 00:32:18 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.0.14~git0.eccfa2af9:
+  * Bump version to 2.0.14
+  * Issue 5127 - ds_selinux_restorecon.sh: always exit 0
+  * Issue 5037 - in OpenQA changelog trimming can crashes (#5070)
+  * Issue 4992 - BUG - slapd.socket container fix (#4993)
+  * Issue 5079 - BUG - multiple ways to specific primary (#5087)
+  * Issue 5080 - BUG - multiple index types not handled in openldap migration (#5094)
+  * Issue 5135 - UI - Disk monitoring threshold does update properly
+
+-------------------------------------------------------------------
+Tue Jan 25 03:13:29 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update support config to latest version
+
+-------------------------------------------------------------------
+Tue Jan 25 03:03:03 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.0.13~git1.72eb93ac9:
+  * Issue 5129 - BUG - Incorrect fn signature in add_index (#5130)
+  * Bump version to 2.0.13
+  * Issue 5132 - Update Rust crate lru to fix CVE
+  * Issue 3555 - UI - fix audit issue with npm nanoid
+  * Issue 4299 - UI - Add ACI editing features
+  * Issue 4299 - UI LDAP editor - add "edit" and "rename" functionality
+  * Issue 5127 - run restorecon on /dev/shm at server startup
+  * Issue 5124 - dscontainer fails to create an instance
+  * Issue 4312 - fix compiler warning
+  * Issue 5115 -  AttributeError: type object 'build_manpages' has no attribute 'build_manpages'
+
+-------------------------------------------------------------------
 Tue Jan 25 00:57:36 UTC 2022 - william.brown@suse.com
 
 - Update to version 2.0.13~git1.72eb93ac9:
