@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -30,9 +30,10 @@ BuildRequires:  tbb-devel
 BuildRequires:  tbb-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
+BuildRequires:  mimalloc-devel
 PreReq:         update-alternatives
 
-%define build_args SYSTEM_TBB=1 SYSTEM_XXHASH=1
+%define build_args SYSTEM_TBB=1 SYSTEM_XXHASH=1 SYSTEM_MIMALLOC=1
 
 %description
 mold is a faster drop-in replacement for existing Unix linkers.

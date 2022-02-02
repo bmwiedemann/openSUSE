@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 31 10:24:17 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Start using system library mimalloc.
+
+-------------------------------------------------------------------
+Sun Jan 30 15:53:00 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.0.3:
+  https://github.com/rui314/mold/releases/tag/v1.0.3.
+
+-------------------------------------------------------------------
 Sun Jan 23 09:44:13 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.0.2: complete release notes can be found here:
