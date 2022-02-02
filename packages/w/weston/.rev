@@ -214,4 +214,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
   obsoleted (and only now did meson start being strict).</comment>
     <requestid>947429</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>26366d1a53c55b0f51219f667383c9ae</srcmd5>
+    <version>10</version>
+    <time>1643838049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 10</comment>
+    <requestid>950572</requestid>
+  </revision>
 </revisionlist>

@@ -18,9 +18,9 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   9
-%define realver	9.0.0
-Version:        9
+%define major   10
+%define realver	10.0.0
+Version:        10
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
@@ -30,7 +30,9 @@ URL:            https://wayland.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/wayland/weston
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
 Source:         https://wayland.freedesktop.org/releases/weston-%realver.tar.xz
+Source2:        https://wayland.freedesktop.org/releases/weston-%realver.tar.xz.sig
 Source3:        %name.keyring
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake >= 1.11
 BuildRequires:  gcc-c++
@@ -53,7 +55,7 @@ BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.68
+BuildRequires:  pkgconfig(libdrm) >= 2.4.95
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libinput) >= 0.8.0
 BuildRequires:  pkgconfig(libsystemd) >= 209
@@ -61,11 +63,11 @@ BuildRequires:  pkgconfig(libudev) >= 136
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1) >= 0.25.2
-BuildRequires:  pkgconfig(wayland-client) >= 1.12.0
+BuildRequires:  pkgconfig(wayland-client) >= 1.18.0
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.13
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wayland-server) >= 1.12.0
+BuildRequires:  pkgconfig(wayland-server) >= 1.18.0
 BuildRequires:  pkgconfig(xcb) >= 1.8
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-shm)

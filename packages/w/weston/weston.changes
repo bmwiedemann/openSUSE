@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  1 22:35:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * Add building blocks for color management: color
+    transformations, gamma correct blending, color profiles.
+    These are only internal changes invisible to users for now.
+  * Add feedback to linux-dmabuf-unstable-v1, enabling zero-copy
+    scanout in more situations.
+  * libseat support has been added. It will supersede all
+    launchers in a future release.
+  * All example clients have been converted to xdg-shell.
+  * Weston can now automatically launch a client after startup.
+  * The wl_shell interface, the fbdev backend, and weston-launch
+    are deprecated.
+
+-------------------------------------------------------------------
 Wed Jan 19 13:25:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --simple-dmabuf-drm configure option since it has been long
