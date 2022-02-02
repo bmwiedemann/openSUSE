@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 29 21:36:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * our own cythonic thrift implementation (drop thrift dependency)
+  * more in-place dataset editing ad reordering
+  * python 3.10 support
+  * fixes for multi-index and pandas types
+- Clean test skips
+
+-------------------------------------------------------------------
 Sun Jan 16 13:34:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile from unused python36 conditionals

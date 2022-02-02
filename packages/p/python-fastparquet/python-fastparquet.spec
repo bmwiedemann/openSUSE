@@ -16,11 +16,10 @@
 #
 
 
-%define _buildshell /bin/bash
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
@@ -35,23 +34,12 @@ BuildRequires:  %{python_module pandas >= 1.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
 BuildRequires:  %{python_module setuptools}
-%if 0%{suse_version} >= 1550
-# https://github.com/dask/fastparquet/issues/514
-BuildRequires:  %{python_module thrift >= 0.15.0}
-%else
-BuildRequires:  %{python_module thrift >= 0.11.0}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam >= 2.3.0
 Requires:       python-fsspec
 Requires:       python-numpy >= 1.18
 Requires:       python-pandas >= 1.1.0
-%if 0%{python_version_nodots} >= 310
-Requires:       python-thrift >= 0.15.0
-%else
-Requires:       python-thrift >= 0.11.0
-%endif
 Recommends:     python-python-lzo
 %python_subpackages
 
@@ -78,13 +66,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# newer packaging package creates false DeprecationWarning gh#dask/fastparquet#558
-donttest+=" or test_import_without_warning"
-# Test test_time_millis has the wrong reference type for 32-bit
-%if 0%{?__isa_bits} != 64
-donttest+=" or test_time_millis"
-%endif
-%pytest_arch --pyargs fastparquet --import-mode append -k "not (${donttest:4})"
+%pytest_arch --pyargs fastparquet --import-mode append
 
 %files %{python_files}
 %doc README.rst
