@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.2
+%define real_version 6.2.3
 %define short_version 6.2
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -340,8 +340,7 @@ Requires:       cmake(Qt6WebEngineWidgets) = %{real_version}
 This package provides private headers of libQt6WebEngineWidgets that do not have any
 ABI or API guarantees.
 
-# Examples cause build failure (6.2.0-beta4)
-# %%{qt6_examples_package}
+%{qt6_examples_package}
 
 %endif
 
@@ -361,7 +360,6 @@ export NINJAFLAGS="%{?_smp_mflags}"
 
 %cmake_qt6 \
   -DCMAKE_TOOLCHAIN_FILE:STRING="%{_qt6_cmakedir}/Qt6/qt.toolchain.cmake" \
-  -DFEATURE_printer:BOOL=ON \
   -DFEATURE_qtpdf_build:BOOL=ON \
   -DFEATURE_webengine_developer_build:BOOL=OFF \
   -DFEATURE_webengine_embedded_build:BOOL=OFF \
@@ -376,7 +374,7 @@ export NINJAFLAGS="%{?_smp_mflags}"
   -DFEATURE_webengine_system_ffmpeg:BOOL=ON \
   -DFEATURE_webengine_proprietary_codecs:BOOL=ON \
 %endif
-  -DQT_BUILD_EXAMPLES:BOOL=OFF
+  -DQT_BUILD_EXAMPLES:BOOL=ON
 
 %{qt6_build}
 
