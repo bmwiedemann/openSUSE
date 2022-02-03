@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb  2 18:24:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Break build dependency cycle through :test multibuild
+- PEP517 style: poetry-core is enough to build the package
+- Clean up old python36 requirements: no longer in Tumbleweed 
+
+-------------------------------------------------------------------
+Wed Jan 19 12:28:45 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update dependencies to cover all optional features and dependencies in a more structured way and describe it in the package description.
+
+-------------------------------------------------------------------
+Tue Jan 18 14:29:53 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.2.0:
+ - SVCB and HTTPS records have been updated to track the evolving draft standard.
+ - The ZONEMD type has been added.
+ - The resolver now returns a LifetimeTimeout exception which includes an error trace like the NoNameservers exception. This class is a subclass of dns.exception.Timeout for backwards compatibility.
+ - DNS-over-HTTPS will try to use HTTP/2 if the httpx and h2 packages are installed.
+ - DNS-over-HTTPS is now supported for asynchronous queries and resolutions.
+ - dns.zonefile.read_rrsets() has been added, which allows rrsets in zonefile format, or a restrition of it, to be read. This function is useful for applications that want to read DNS data in text format, but do not want to use a Zone.
+ - On Windows systems, if the WMI module is available, the resolver will retrieve the nameserver from WMI instead of trying to figure it out by reading the registry. This may lead to more accurate results in some cases.
+ - The CERT rdatatype now supports certificate types IPKIX, ISPKI, IPGP, ACPKIX, and IACPKIX.
+ - The CDS rdatatype now allows digest type 0.
+ - Dnspython zones now enforces that a node is either a CNAME node or an “other data” node. A CNAME node contains only CNAME, RRSIG(CNAME), NSEC, RRSIG(NSEC), NSEC3, or RRSIG(NSEC3) rdatasets. An “other data” node contains any rdataset other than a CNAME or RRSIG(CNAME) rdataset. The enforcement is “last update wins”. For example, if you have a node which contains a CNAME rdataset, and then add an MX rdataset to it, then the CNAME rdataset will be deleted. Likewise if you have a node containing an MX rdataset and add a CNAME rdataset, the MX rdataset will be deleted.
+ - Extended DNS Errors, as specified in RFC 8914, are now supported.
+
+-------------------------------------------------------------------
 Fri Jan  8 20:01:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.1.0:

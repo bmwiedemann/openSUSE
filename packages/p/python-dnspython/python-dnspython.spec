@@ -1,7 +1,7 @@
 #
-# spec file for package python-dnspython
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,45 +16,71 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-Name:           python-dnspython
-Version:        2.1.0
+Name:           python-dnspython%{psuffix}
+Version:        2.2.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/rthalley/dnspython
-Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module setuptools}
-# SECTION tests
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module ecdsa}
-BuildRequires:  %{python_module idna}
-BuildRequires:  %{python_module pycryptodome}
-BuildRequires:  %{python_module requests-toolbelt}
-BuildRequires:  %{python_module trio >= 0.14.0}
-BuildRequires:  %{python_module typing}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# /SECTION tests
+%if %{with test}
+BuildRequires:  %{python_module typing}
+# doh:
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module h2}
+BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module requests}
+# idna
+BuildRequires:  %{python_module idna}
+# dnssec
+BuildRequires:  %{python_module cryptography}
+# trio
+BuildRequires:  %{python_module trio >= 0.14.0}
+# curio
+BuildRequires:  %{python_module sniffio >= 1.1}
+BuildRequires:  %{python_module curio >= 1.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  netcfg
-BuildRequires:  unzip
 BuildRequires:  (python3-contextvars if python3-base < 3.7)
-BuildRequires:  (python36-contextvars if python36-base)
-Requires:       python-ecdsa
-Requires:       python-pycryptodome
-Requires:       python-requests-toolbelt
-%if %{python_version_nodots} < 37
+%endif
+%if 0%{?python_version_nodots} < 37
 Requires:       python-contextvars
 %endif
+# Requires despite optional: see description
+# doh
+Requires:       python-requests
+Requires:       python-h2
+Requires:       python-httpx
+Requires:       python-requests-toolbelt
+# idna
+Requires:       python-idna >= 2.1
+# dnssec
+Requires:       python-cryptography
+# trio
+Suggests:       python-trio >= 0.14.0
+# curio
+Suggests:       python-sniffio >= 1.1
+Suggests:       python-curio >= 1.2
 BuildArch:      noarch
-Recommends:     python-cryptography
-Recommends:     python-idna >= 2.1
-Recommends:     python-trio >= 0.14.0
-Recommends:     python-sniffio >= 1.1
+
+%python_subpackages
 
 %description
 dnspython is a DNS toolkit for Python. It supports almost all
@@ -66,27 +92,42 @@ level classes perform queries for data of a given name, type, and
 class, and return an answer set. The low level classes allow direct
 manipulation of DNS zones, messages, names, and records.
 
-%python_subpackages
+The package requires dependencies necessary for these optional features:
+- DNS over HTTPS (doh)
+- IDNA
+- DNSSEC
+and suggest dependencies necessary for these optional features:
+- trio
+- curio
+This optional feature is not available due to missing dependencies:
+- wmi
 
 %prep
 %setup -q -n dnspython-%{version}
 chmod -x examples/*
+# https://github.com/rthalley/dnspython/pull/755
+chmod -x dns/win32util.py
 
 %build
-%python_build
+%pyproject_wheel
 
+%if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
+%endif
 
+%if %{with test}
 %check
-# exclude the testcase which requires an unpackaged pickle file in the tests. see https://github.com/rthalley/dnspython/issues/622
-%pytest -k 'not test_unpickle'
+%pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md examples/
 %{python_sitelib}/dns/
-%{python_sitelib}/dnspython-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/dnspython-%{version}.dist-info/
+%endif
 
 %changelog
