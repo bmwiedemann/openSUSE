@@ -543,4 +543,12 @@
  * Raise SubmoduleEncountered in ``tree_lookup_path``.</comment>
     <requestid>945421</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6118f2c1f971ef9893b881ca46e6a504</srcmd5>
+    <version>0.20.31</version>
+    <time>1643926579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950021</requestid>
+  </revision>
 </revisionlist>

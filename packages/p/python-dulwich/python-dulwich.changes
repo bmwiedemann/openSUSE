@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 23 16:46:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.31:
+   * Add GitClient.clone()
+
+-------------------------------------------------------------------
 Mon Jan 10 22:22:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.30:
