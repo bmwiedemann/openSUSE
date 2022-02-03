@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-learn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# SciPy 1.6.0 and NumPy 1.20 dropped Python 3.6 support.
-%define         skip_python36 1
 %bcond_with extratest
 Name:           python-scikit-learn
-Version:        0.24.2
+Version:        1.0.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
@@ -31,8 +29,8 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/sc
 BuildRequires:  %{python_module Cython >= 0.28.5}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module joblib >= 0.11}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
-BuildRequires:  %{python_module scipy >= 0.19.1}
+BuildRequires:  %{python_module numpy-devel >= 1.14.6}
+BuildRequires:  %{python_module scipy >= 1.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
 BuildRequires:  %{python_module xml}
@@ -42,8 +40,8 @@ BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-joblib >= 0.11
-Requires:       python-numpy >= 1.13.3
-Requires:       python-scipy >= 0.19.1
+Requires:       python-numpy >= 1.14.6
+Requires:       python-scipy >= 1.0.0
 Requires:       python-threadpoolctl >= 2.0.0
 Requires:       python-xml
 Provides:       python-sklearn

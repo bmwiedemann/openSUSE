@@ -490,4 +490,38 @@
 - drop scikit-learn-pr19101-npfloat.patch: upstream</comment>
     <requestid>897859</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2909e0edcf0f78c35c9512c38fbab93a</srcmd5>
+    <version>1.0.2</version>
+    <time>1643926573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2: 
+  * Fixed an infinite loop in cluster.SpectralClustering by moving an iteration counter from try to except. #21271 by Tyler Martin.
+  * datasets.fetch_openml is now thread safe. Data is first downloaded to a temporary subfolder and then renamed. #21833 by Siavash Rezazadeh.
+  * Fixed the constraint on the objective function of decomposition.DictionaryLearning, decomposition.MiniBatchDictionaryLearning, decomposition.SparsePCA and decomposition.MiniBatchSparsePCA to be convex and match the referenced article. #19210 by Jérémie du Boisberranger.
+  * ensemble.RandomForestClassifier, ensemble.RandomForestRegressor, ensemble.ExtraTreesClassifier, ensemble.ExtraTreesRegressor, and ensemble.RandomTreesEmbedding now raise a ValueError when bootstrap=False and max_samples is not None. #21295 Haoyin Xu.
+  * Solve a bug in ensemble.GradientBoostingClassifier where the exponential loss was computing the positive gradient instead of the negative one. #22050 by Guillaume Lemaitre.
+  * Fixed feature_selection.SelectFromModel by improving support for base estimators that do not set feature_names_in_. #21991 by Thomas Fan.
+  * Fix a bug in linear_model.RidgeClassifierCV where the method predict was performing an argmax on the scores obtained from decision_function instead of returning the multilabel indicator matrix. #19869 by Guillaume Lemaitre.
+  * linear_model.LassoLarsIC now correctly computes AIC and BIC. An error is now raised when n_features &gt; n_samples and when the noise variance is not provided. #21481 by Guillaume Lemaitre and Andrés Babino.
+  * Fixed an unnecessary error when fitting manifold.Isomap with a precomputed dense distance matrix where the neighbors graph has multiple disconnected components. #21915 by Tom Dupre la Tour.
+  * All sklearn.metrics.DistanceMetric subclasses now correctly support read-only buffer attributes. This fixes a regression introduced in 1.0.0 with respect to 0.24.2. #21694 by Julien Jerphanion.
+  * neighbors.KDTree and neighbors.BallTree correctly supports read-only buffer attributes. #21845 by Thomas Fan.
+  * Fixes compatibility bug with NumPy 1.22 in preprocessing.OneHotEncoder. #21517 by Thomas Fan.
+  * Prevents tree.plot_tree from drawing out of the boundary of the figure. #21917 by Thomas Fan.
+  * Support loading pickles of decision tree models when the pickle has been generated on a platform with a different bitness. A typical example is to train and pickle the model on 64 bit machine and load the model on a 32 bit machine for prediction. #21552 by Loïc Estève.
+  * Non-fit methods in the following classes do not raise a UserWarning when fitted on DataFrames with valid feature names: covariance.EllipticEnvelope, ensemble.IsolationForest, ensemble.AdaBoostClassifier, neighbors.KNeighborsClassifier, neighbors.KNeighborsRegressor, neighbors.RadiusNeighborsClassifier, neighbors.RadiusNeighborsRegressor. #21199 by Thomas Fan.
+  * Fixed calibration.CalibratedClassifierCV to take into account sample_weight when computing the base estimator prediction when ensemble=False. #20638 by Julien Bohné.
+  * Fixed a bug in calibration.CalibratedClassifierCV with method=&quot;sigmoid&quot; that was ignoring the sample_weight when computing the the Bayesian priors. #21179 by Guillaume Lemaitre.
+  * Compute y_std properly with multi-target in sklearn.gaussian_process.GaussianProcessRegressor allowing proper normalization in multi-target scene. #20761 by Patrick de C. T. R. Ferreira.
+  * Fixed a bug in feature_extraction.CountVectorizer and feature_extraction.TfidfVectorizer by raising an error when ‘min_idf’ or ‘max_idf’ are floating-point numbers greater than 1. #20752 by Alek Lefebvre.
+  * linear_model.LogisticRegression now raises a better error message when the solver does not support sparse matrices with int64 indices. #21093 by Tom Dupre la Tour.
+  * neighbors.KNeighborsClassifier, neighbors.KNeighborsRegressor, neighbors.RadiusNeighborsClassifier, neighbors.RadiusNeighborsRegressor with metric=&quot;precomputed&quot; raises an error for bsr and dok sparse matrices in methods: fit, kneighbors and radius_neighbors, due to handling of explicit zeros in bsr and dok sparse graph formats. #21199 by Thomas Fan.
+  * pipeline.Pipeline.get_feature_names_out correctly passes feature names out from one step of a pipeline to the next. #21351 by Thomas Fan.
+  * svm.SVC and svm.SVR check for an inconsistency in its internal representation and raise an error instead of segfaulting. This fix also resolves CVE-2020-28975. #21336 by Thomas Fan.
+  * manifold.TSNE now avoids numerical underflow issues during affinity matrix computation.
+  * manifold.Isomap now connects disconnected components of the neighbors graph along some minimum distance pairs, instead of changing every infinite distances to zero.
+  * Many others, see full changelog at https://scikit-learn.org/dev/whats_new/v1.0.html</comment>
+    <requestid>950579</requestid>
+  </revision>
 </revisionlist>
