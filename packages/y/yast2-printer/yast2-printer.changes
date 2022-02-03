@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 08:21:10 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Fix broken help text (by @TarasPanchenko Github user, bsc#1195370)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
