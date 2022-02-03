@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  2 17:30:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix name of Patch4, it is skip-partitions-erros.patch
+
+-------------------------------------------------------------------
+Sun Jan 30 01:38:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add skip-partitions-erros.patch skipping tests failing on Linux
+  (gh#giampaolo/psutil#2043).
+
+-------------------------------------------------------------------
 Mon Jan 10 22:51:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9.0:

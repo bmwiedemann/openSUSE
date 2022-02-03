@@ -1,7 +1,9 @@
-Index: psutil-5.8.0/psutil/tests/test_process.py
-===================================================================
---- psutil-5.8.0.orig/psutil/tests/test_process.py
-+++ psutil-5.8.0/psutil/tests/test_process.py
+---
+ psutil/tests/test_process.py |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+--- a/psutil/tests/test_process.py
++++ b/psutil/tests/test_process.py
 @@ -416,6 +416,7 @@ class TestProcess(PsutilTestCase):
              p.ionice(init)
  
@@ -42,7 +44,7 @@ Index: psutil-5.8.0/psutil/tests/test_process.py
      def test_rlimit_infinity_value(self):
          # RLIMIT_FSIZE should be RLIM_INFINITY, which will be a really
          # big number on a platform with large file support.  On these
-@@ -1270,6 +1275,7 @@ class TestProcess(PsutilTestCase):
+@@ -1276,6 +1281,7 @@ class TestProcess(PsutilTestCase):
              self.assertEqual(normcase(p.exe()), normcase(PYTHON_EXE))
  
      @unittest.skipIf(not POSIX, 'POSIX only')

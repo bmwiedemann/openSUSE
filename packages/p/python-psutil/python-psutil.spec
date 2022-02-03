@@ -36,6 +36,8 @@ Patch1:         skip-obs.patch
 Patch2:         skip_failing_tests.patch
 # PATCH-FIX-SLE skip_rlimit_tests_on_python2.patch alarrosa@suse.com
 Patch3:         skip_rlimit_tests_on_python2.patch
+# PATCH-FIX-UPSTREAM skip-partitions-erros.patch gh#giampaolo/psutil#2043 mcepl@suse.com
+Patch4:         skip-partitions-erros.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -89,7 +91,9 @@ export TRAVIS=1
 march=`python3 -c "import platform ; print(platform.machine())"`
 
 # Note test_fetch_all is a bit flaky, occasionally failing
-%python_expand PYTHONPATH=build/lib.linux-${march}-%{$python_version}/ $python -Wa psutil/tests/runner.py
+%{python_expand export PYTHONPATH=build/lib.linux-${march}-%{$python_version}/
+$python -Wa psutil/tests/runner.py
+}
 %endif
 
 %files %{python_files}

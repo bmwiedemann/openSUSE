@@ -1,8 +1,10 @@
-Index: psutil-5.7.3/psutil/tests/test_linux.py
-===================================================================
---- psutil-5.7.3.orig/psutil/tests/test_linux.py
-+++ psutil-5.7.3/psutil/tests/test_linux.py
-@@ -1564,6 +1564,8 @@ class TestSensorsBattery(PsutilTestCase)
+---
+ psutil/tests/test_linux.py |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/psutil/tests/test_linux.py
++++ b/psutil/tests/test_linux.py
+@@ -1614,6 +1614,8 @@ class TestSensorsBattery(PsutilTestCase)
              self.assertIsNone(psutil.sensors_battery().power_plugged)
              assert m.called
  
@@ -11,7 +13,7 @@ Index: psutil-5.7.3/psutil/tests/test_linux.py
      def test_emulate_energy_full_0(self):
          # Emulate a case where energy_full files returns 0.
          with mock_open_content(
-@@ -1571,6 +1573,8 @@ class TestSensorsBattery(PsutilTestCase)
+@@ -1621,6 +1623,8 @@ class TestSensorsBattery(PsutilTestCase)
              self.assertEqual(psutil.sensors_battery().percent, 0)
              assert m.called
  

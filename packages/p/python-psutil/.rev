@@ -626,4 +626,15 @@ It does not make sense to double the whole HISTORY of upstream source in .change
   9 CPUs.</comment>
     <requestid>945437</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>993f5b6741bd4c9f8a68820bf098ada8</srcmd5>
+    <version>5.9.0</version>
+    <time>1643926556</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix name of Patch4, it is skip-partitions-erros.patch
+- Add skip-partitions-erros.patch skipping tests failing on Linux
+  (gh#giampaolo/psutil#2043).
+</comment>
+    <requestid>950795</requestid>
+  </revision>
 </revisionlist>
