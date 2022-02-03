@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ffi
-Version:        1.15.4
+Version:        1.15.5
 Release:        0
 %define mod_name ffi
 %define mod_full_name %{mod_name}-%{version}

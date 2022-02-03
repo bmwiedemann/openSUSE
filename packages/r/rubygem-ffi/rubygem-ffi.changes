@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 25 06:55:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.15.5
+ see installed CHANGELOG.md
+
+  1.15.5 / 2022-01-10
+  -------------------
+  
+  Fixed:
+  * Fix long double argument or return values on 32bit i686. #849
+  * FFI::ConstGenerator: avoid usage of the same binary file simultaneously. #929
+  
+  Added:
+  * Add Windows fat binary gem for Ruby-3.1
+  
+  Removed:
+  * Remove Windows fat binary gem for Ruby < 2.4
+  
+  
+
+-------------------------------------------------------------------
 Sat Oct  9 09:10:18 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.15.4
