@@ -1,7 +1,7 @@
 #
 # spec file for package ruby3.1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,7 @@ Source4:        %{name}-default.macros
 Source98:       series
 Source99:       %{name}-rpmlintrc
 Patch:          use-pie.patch
+Patch1:         https://github.com/ruby/ipaddr/commit/77fe1fca0abb56f7f07725c0a3803d53a315c853.patch
 #
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
@@ -101,10 +102,10 @@ BuildRequires:  jemalloc-devel
 BuildRequires:  autoconf
 %if %{with bootstrap}
 BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  ruby
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  libtool
+BuildRequires:  ruby
 %endif
 BuildRequires:  libffi-devel
 BuildRequires:  libyaml-devel
@@ -410,8 +411,7 @@ find %{buildroot} \
 # remove more strict in the docu
 find %{buildroot}/doc \( -name Makefile.ri -o -name ext -o -name page\*.ri \) -print0 | xargs -r0 rm -rv || :
 find %{buildroot} -type d -name '.gem.*' -print0 | xargs -r0 rm -rv || :
-find %{buildroot} -type f -name \*.pem -delete 
-
+find %{buildroot} -type f -name \*.pem -delete
 
 %post
 for bin in %{ua_binaries}; do

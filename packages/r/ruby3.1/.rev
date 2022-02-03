@@ -7,4 +7,13 @@
     <comment>start ruby 3.1 branch</comment>
     <requestid>943165</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4aaebd8b485a755e675a766384ed5e46</srcmd5>
+    <version>3.1.0</version>
+    <time>1643926554</time>
+    <user>dimstar_suse</user>
+    <comment>- Added https://github.com/ruby/ipaddr/commit/77fe1fca0abb56f7f07725c0a3803d53a315c853.patch
+  Fix vagrant with ruby 3.1</comment>
+    <requestid>950774</requestid>
+  </revision>
 </revisionlist>

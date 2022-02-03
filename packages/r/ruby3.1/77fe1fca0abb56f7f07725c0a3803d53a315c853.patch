@@ -1,0 +1,64 @@
+From 77fe1fca0abb56f7f07725c0a3803d53a315c853 Mon Sep 17 00:00:00 2001
+From: Espartaco Palma <git@esparta.co>
+Date: Mon, 13 Dec 2021 01:12:07 -0800
+Subject: [PATCH] Fix exception calling `to_range' after `freeze'
+
+---
+ lib/ipaddr.rb       |  3 ++-
+ test/test_ipaddr.rb | 22 ++++++++++++++++++++++
+ 2 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/lib/ipaddr.rb b/lib/ipaddr.rb
+index 51ad081..c33302c 100644
+--- a/lib/ipaddr.rb
++++ b/lib/ipaddr.rb
+@@ -411,7 +411,7 @@ def to_range
+       raise AddressFamilyError, "unsupported address family"
+     end
+ 
+-    return clone.set(begin_addr, @family)..clone.set(end_addr, @family)
++    self.class.new(begin_addr, @family)..self.class.new(end_addr, @family)
+   end
+ 
+   # Returns the prefix length in bits for the ipaddr.
+@@ -583,6 +583,7 @@ def mask!(mask)
+   # those, such as &, |, include? and ==, accept a string, or a packed
+   # in_addr value instead of an IPAddr object.
+   def initialize(addr = '::', family = Socket::AF_UNSPEC)
++    @mask_addr = nil
+     if !addr.kind_of?(String)
+       case family
+       when Socket::AF_INET, Socket::AF_INET6
+diff --git a/test/test_ipaddr.rb b/test/test_ipaddr.rb
+index bd16328..c07ee2a 100644
+--- a/test/test_ipaddr.rb
++++ b/test/test_ipaddr.rb
+@@ -255,6 +255,28 @@ def test_zone_id
+     assert_equal("1:2:3:4:5:6:7:8%ab0", a.to_s)
+     assert_raise(IPAddr::InvalidAddressError) { a.zone_id = '%' }
+   end
++
++  def test_to_range
++    a1 = IPAddr.new("127.0.0.1")
++    range = a1..a1
++    assert_equal(range, a1.to_range)
++    assert_equal(range, a1.freeze.to_range)
++
++    a2 = IPAddr.new("192.168.0.1/16")
++    range = IPAddr.new("192.168.0.0")..IPAddr.new("192.168.255.255")
++    assert_equal(range, a2.to_range)
++    assert_equal(range, a2.freeze.to_range)
++
++    a3 = IPAddr.new("3ffe:505:2::1")
++    range = a3..a3
++    assert_equal(range, a3.to_range)
++    assert_equal(range, a3.freeze.to_range)
++
++    a4 = IPAddr.new("::ffff/127")
++    range = IPAddr.new("::fffe")..IPAddr.new("::ffff")
++    assert_equal(range, a4.to_range)
++    assert_equal(range, a4.freeze.to_range)
++  end
+ end
+ 
+ class TC_Operator < Test::Unit::TestCase

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 15:45:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added https://github.com/ruby/ipaddr/commit/77fe1fca0abb56f7f07725c0a3803d53a315c853.patch
+  Fix vagrant with ruby 3.1
+
+-------------------------------------------------------------------
 Sun Dec 26 19:48:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - renable LTO
