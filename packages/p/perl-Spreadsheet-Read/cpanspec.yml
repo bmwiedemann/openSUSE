@@ -4,17 +4,16 @@ description: |-
   Spreadsheet::Read tries to transparently read *any* spreadsheet and return
   its content in a universal manner independent of the parsing module that
   does the actual spreadsheet scanning.
-  
+
   For OpenOffice this module uses Spreadsheet::ReadSXC
-  
+
   For Microsoft Excel this module uses Spreadsheet::ParseExcel or
   Spreadsheet::XLSX
-  
+
   For CSV this module uses Text::CSV_XS (0.29 or up required, 0.73 or up
   preferred) or Text::CSV_PP (1.05 or up required).
-  
-  For SquirrelCalc there is a very simplistic built-in parser
 
+  For SquirrelCalc there is a very simplistic built-in parser
 #summary: override summary from CPAN
 #no_testing: broken upstream
 #sources:
@@ -24,14 +23,38 @@ patches:
   # Patch to fix non-standard perl path in source
   nonstdperlpath.patch: -p1
 preamble: |-
-  BuildRequires:  perl(Text::CSV_XS) >= 0.71
   BuildRequires:  perl(Spreadsheet::ParseExcel) >= 0.34
   BuildRequires:  perl(Spreadsheet::ParseExcel::FmtDefault)
   BuildRequires:  perl(Spreadsheet::ParseXLSX) >= 0.24
+  BuildRequires:  perl(Text::CSV_XS) >= 0.71
   Recommends:     perl(Spreadsheet::ReadSXC) >= 0.20
-custom_build: |-
-  # disable installation of examples to {_bindir}
-  export AUTOMATED_TESTING=1
-  perl Makefile.PL INSTALLDIRS=vendor
-  make %{?_smp_mflags}
+  Suggests:       perl-Spreadsheet-Read-scripts = %{version}
+post_install: |-
+  # Remove xls2csv and xls2csv.1 (conflict with libxls-tools and xls2csv packages)
+  rm -f %{buildroot}%{_bindir}/xls2csv
+  rm -f %{buildroot}%{_mandir}/man1/xls2csv.1
+misc: |-
+  %exclude %{_bindir}/*
+  %exclude %{_mandir}/*
 
+  %package scripts
+  Summary:        Scripts to Work with Spreadsheets
+  Requires:       perl(HTML::Entities)
+  Requires:       perl(Spreadsheet::Read) = %{version}
+  Requires:       perl(Term::ReadKey)
+  Requires:       perl(Text::CSV_XS)
+  Requires:       perl(Tk)
+  Requires:       perl(Tk::TableMatrix::Spreadsheet)
+  # Conflict with ssdiff
+  Conflicts:      gnumeric
+
+  %description scripts
+  This package includes some scripts to work with spreadsheets.
+
+  %files scripts
+  %{_bindir}/ss2tk
+  %{_bindir}/ssdiff
+  %{_bindir}/xlscat
+  %{_bindir}/xlsgrep
+  %{_bindir}/xlsx2csv
+  %{_mandir}/man1/xlsx2csv.1%{?ext_man}

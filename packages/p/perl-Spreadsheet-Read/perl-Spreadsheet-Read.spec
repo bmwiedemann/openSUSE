@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-Read
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 Name:           perl-Spreadsheet-Read
 Version:        0.84
 Release:        0
-Summary:        Read the data from a spreadsheet
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Read the data from a spreadsheet
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
@@ -42,7 +42,6 @@ Requires:       perl(Test::NoWarnings)
 Recommends:     perl(Data::Peek) >= 0.50
 Recommends:     perl(File::Temp) >= 0.2311
 Recommends:     perl(IO::Scalar)
-Recommends:     perl(Test::More) >= 1.302183
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl(Spreadsheet::ParseExcel) >= 0.34
@@ -50,6 +49,7 @@ BuildRequires:  perl(Spreadsheet::ParseExcel::FmtDefault)
 BuildRequires:  perl(Spreadsheet::ParseXLSX) >= 0.24
 BuildRequires:  perl(Text::CSV_XS) >= 0.71
 Recommends:     perl(Spreadsheet::ReadSXC) >= 0.20
+Suggests:       perl-Spreadsheet-Read-scripts = %{version}
 # MANUAL END
 
 %description
@@ -72,10 +72,8 @@ For SquirrelCalc there is a very simplistic built-in parser
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-# disable installation of examples to {_bindir}
-export AUTOMATED_TESTING=1
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -83,9 +81,38 @@ make test
 %install
 %perl_make_install
 %perl_process_packlist
+# MANUAL BEGIN
+# Remove xls2csv and xls2csv.1 (conflict with libxls-tools and xls2csv packages)
+rm -f %{buildroot}%{_bindir}/xls2csv
+rm -f %{buildroot}%{_mandir}/man1/xls2csv.1
+# MANUAL END
 %perl_gen_filelist
 
 %files -f %{name}.files
 %doc Changes CONTRIBUTING.md examples README
+%exclude %{_bindir}/*
+%exclude %{_mandir}/*
+
+%package scripts
+Summary:        Scripts to Work with Spreadsheets
+Requires:       perl(HTML::Entities)
+Requires:       perl(Spreadsheet::Read) = %{version}
+Requires:       perl(Term::ReadKey)
+Requires:       perl(Text::CSV_XS)
+Requires:       perl(Tk)
+Requires:       perl(Tk::TableMatrix::Spreadsheet)
+# Conflict with ssdiff
+Conflicts:      gnumeric
+
+%description scripts
+This package includes some scripts to work with spreadsheets.
+
+%files scripts
+%{_bindir}/ss2tk
+%{_bindir}/ssdiff
+%{_bindir}/xlscat
+%{_bindir}/xlsgrep
+%{_bindir}/xlsx2csv
+%{_mandir}/man1/xlsx2csv.1%{?ext_man}
 
 %changelog

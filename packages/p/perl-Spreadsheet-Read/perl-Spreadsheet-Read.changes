@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 29 21:20:51 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Do not install xls2csv and xls2csv.1 (conflict with libxls-tools
+  and xls2csv packages).
+
+-------------------------------------------------------------------
+Mon Dec 27 23:18:57 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Enabled installation of package examples and added them in a
+  subpackage "scripts". Had to add also necessary Conflict entries
+  with the following packages:
+   gnumeric (Conflicts with ssdiff)
+   xls2csv (Conflicts with xls2csv and xls2csv.1)
+- Suggest new "scripts" subpackage in the main package.
+
+-------------------------------------------------------------------
 Tue Mar  2 11:30:42 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Update nonstdperlpath.patch
