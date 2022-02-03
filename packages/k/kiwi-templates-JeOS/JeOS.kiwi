@@ -334,6 +334,7 @@
         <package name="raspberrypi-firmware" arch="aarch64"/>
         <package name="raspberrypi-firmware-config" arch="aarch64"/>
         <package name="raspberrypi-firmware-dt" arch="aarch64"/>
+	<package name="arm-trusted-firmware-rpi4" arch="aarch64"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="kernel-default"/>
         <!-- For WiFi: -->

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 28 15:27:59 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Add Trusted Firmware-A (TF-A) package in RaspberryPi images
+  which mitigate few CVE issues found in RPi4 Cortex A72 CPU.
+  See bsc#1173489.
+
+-------------------------------------------------------------------
 Tue Jan 18 15:23:14 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Delete /etc/machine-id, necessary for ConditionFirstBoot

@@ -238,4 +238,12 @@
 - Install AppArmor pattern and audit (jsc#SLE-22705)</comment>
     <requestid>947256</requestid>
   </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>775a2ab852f3664877d79ec8b39c390e</srcmd5>
+    <version>84.87</version>
+    <time>1643926587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950224</requestid>
+  </revision>
 </revisionlist>
