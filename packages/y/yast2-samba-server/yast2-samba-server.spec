@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-server
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 URL:            https://github.com/yast/yast-samba-server
 Summary:        YaST2 - Samba Server Configuration
@@ -27,10 +27,10 @@ Group:          System/YaST
 Source0:        %{name}-%{version}.tar.bz2
 
 # Service.Active
-BuildRequires:  libsmbclient-devel
 BuildRequires:  perl-Crypt-SmbHash
 BuildRequires:  perl-X500-DN
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(smbclient)
 # Yast2::ServiceWidget
 BuildRequires:  yast2 >= 4.1.0
 BuildRequires:  yast2-devtools >= 4.2.2
