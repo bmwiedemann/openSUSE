@@ -7,4 +7,17 @@
     <comment>Request to add the package iotop-c to Factory</comment>
     <requestid>944135</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e3d9bad72a41ee2ecca1b842d43580a</srcmd5>
+    <version>1.21</version>
+    <time>1643926601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21:
+    * Better support for disabled task_delayacct sysctl
+    * Add history and graph for all data
+    * Restore simple inline help
+- Fix debuginfo generation
+</comment>
+    <requestid>950831</requestid>
+  </revision>
 </revisionlist>

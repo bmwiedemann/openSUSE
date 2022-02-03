@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 02 23:28:14 UTC 2022 - jonathan@jontech.app
+
+- Update to version 1.21:
+    * Better support for disabled task_delayacct sysctl
+    * Add history and graph for all data
+    * Restore simple inline help
+- Fix debuginfo generation
+
+-------------------------------------------------------------------
 Mon Dec 13 23:09:03 UTC 2021 - Jonathan Papineau <jonathan@jontech.app>
 
 - Initial packaging of iotop-c 1.20
