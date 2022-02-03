@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 31 15:24:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Web: Fix bug causing widgets descending from off-screen label
+    elements to be skipped over.
+  + General:
+    - Fix bug causing accessing preferences to fail for Esperanto.
+    - Add more event-flood detection and handling for improved
+      performance.
+
+-------------------------------------------------------------------
 Mon Jan 10 07:29:17 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add python-rpm-macros BuildRequires in case some build
