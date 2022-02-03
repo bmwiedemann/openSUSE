@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 28 11:56:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use versionrewrite to properly set spec file version
+- use https for downloading sources 
+
+-------------------------------------------------------------------
 Sat Mar 13 14:19:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize specfile (move license to licensedir) 

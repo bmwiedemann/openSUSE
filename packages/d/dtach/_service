@@ -1,10 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">dtach</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.%h</param>
-    <param name="url">git://github.com/crigler/dtach.git</param>
+    <param name="url">https://github.com/crigler/dtach.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">okurz@suse.com</param>
   </service>

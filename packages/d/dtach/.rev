@@ -15,4 +15,12 @@
     <comment>- modernize specfile (move license to licensedir)</comment>
     <requestid>878764</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7086a1d7ca330497660e7fc5c11166ba</srcmd5>
+    <version>0.9+2.748020b</version>
+    <time>1643926609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950910</requestid>
+  </revision>
 </revisionlist>

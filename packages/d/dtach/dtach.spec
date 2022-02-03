@@ -1,7 +1,7 @@
 #
 # spec file for package dtach
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dtach
-Version:        v0.9+2.748020b
+Version:        0.9+2.748020b
 Release:        0
 Summary:        Background processes and reattach to them
 License:        GPL-2.0-or-later
