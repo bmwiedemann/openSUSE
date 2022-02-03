@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 25 06:54:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.0
+ see installed CHANGELOG
+
+  2.1.0 -- Remove taint checking https://github.com/grosser/fast_gettext/pull/133
+
+-------------------------------------------------------------------
 Fri Sep 25 13:56:14 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.3
