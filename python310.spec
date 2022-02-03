@@ -185,8 +185,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext
 BuildRequires:  readline-devel
-#The provider for python(abi) is in rpm-build-python
-BuildRequires:  rpm-build-python
 BuildRequires:  sqlite-devel
 BuildRequires:  timezone
 BuildRequires:  update-desktop-files

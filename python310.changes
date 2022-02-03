@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 25 16:09:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove second superfluous BR rpm-build-python
+
+-------------------------------------------------------------------
 Wed Jan 19 22:01:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.2:
