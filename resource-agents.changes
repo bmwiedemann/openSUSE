@@ -1,10 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 19 16:52:54 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- nfs ganehsa failover takes 5 minutes for the client to regain
+  access to nfs share (bsc#1184382)
+  - add adapted proposed patches
+    portblock.patch nfsnotify.patch
+- Update to version 4.10.0+git40.0f4de473:
+  * openstack-common: get_config(): expand tilde and exit for errors
+  * openstack-*: hardcode clouds.yaml paths as openstack cli doesnt support overriding it
+  * openstack-*: add support for multiple setup options
+  * LVM-activate: replace error log messages with calls to ocf_exit_reason (#1730)
+  * configure: fix typo (#1732)
+  * build: workaround gcc 12 warning
+  * openstack-info: align op timeout with other openstack agents
+  * openstack-*: allow agents to perform insecure connections to openstackcli
+  * Route: return OCF_NOT_RUNNING for probe action when interface or route doesnt exist
+  * podman: remove anonymous volumes
+
+-------------------------------------------------------------------
 Tue Dec 07 10:18:38 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.10.0+git22.a614b31c:
   * asterisk: Sipsak check fix (#1716)
-  * [rpm] fix Requires to allow install on opensuse (#1721) (jsc#SLE-21043)
-  * Filesystem: unmount bind mounts before unmount file system
+  * [rpm] fix Requires to allow install on opensuse (#1721)
+  * Filesystem: unmount bind mounts before unmount file system (jsc#SLE-21043)
   * db2: use -l forever instead of -t nodes -l reboot, as they conflict with eachother
   * nginx: replace error log messages with calls to ocf_exit_reason
 

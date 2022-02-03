@@ -6,7 +6,7 @@
     <param name="filename">resource-agents</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">master</param>
+    <param name="revision">v4.10.0</param>
     <param name="changesgenerate">enable</param>
   </service>
 
