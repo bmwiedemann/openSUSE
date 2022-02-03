@@ -1,0 +1,42 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: 2022-0119 13:40:00 +0100
+Subject: fix floating point comparison in test
+Upstream: no
+
+The returned floating point values are slightly different from
+the reference values. Upstreams mentions this and already uses adopted
+reference values, but different python versions still return slightly
+different values. This patch uses math.isclose instead of comparison
+operator.
+
+---
+ test_commands.py |   11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+--- a/tests/test_commands.py	2021-12-27 21:28:05.000000000 +0100
++++ b/tests/test_commands.py	2022-01-19 13:32:59.075905731 +0100
+@@ -5,6 +5,7 @@ import time
+ from string import ascii_letters
+ 
+ import pytest
++import math
+ 
+ import aioredis
+ from aioredis import exceptions
+@@ -2170,10 +2171,12 @@ class TestRedisCommands:
+ 
+         await r.geoadd("barcelona", *values)
+         # redis uses 52 bits precision, hereby small errors may be introduced.
+-        assert await r.geopos("barcelona", "place1", "place2") == [
+-            (2.19093829393386841, 41.43379028184083523),
+-            (2.18737632036209106, 41.40634178640635099),
+-        ]
++        positions = await r.geopos("barcelona", "place1", "place2")
++
++        assert math.isclose(positions[0][0], 2.19093829393386841, rel_tol=1e-5)
++        assert math.isclose(positions[0][1], 41.43379028184083523, rel_tol=1e-5)
++        assert math.isclose(positions[1][0], 2.18737632036209106, rel_tol=1e-5)
++        assert math.isclose(positions[1][1], 41.40634178640635099, rel_tol=1e-5)
+ 
+     @skip_if_server_version_lt("4.0.0")
+     async def test_geopos_no_value(self, r: aioredis.Redis):

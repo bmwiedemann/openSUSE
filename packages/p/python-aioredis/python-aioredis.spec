@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioredis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,28 +20,38 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioredis
-Version:        1.3.1
+Version:        2.0.1
 Release:        0
-Summary:        Python asyncio Redis support
+Summary:        AsyncIO Python Redis Support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aioredis
 Source0:        https://files.pythonhosted.org/packages/source/a/aioredis/aioredis-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM aioredis-1.3.1-fix-tests-on-python38.patch -- https://github.com/aio-libs/aioredis/pull/724
-Patch0:         aioredis-1.3.1-fix-tests-on-python38.patch
-# PATCH-FIX-UPSTREAM aioredis-1.3.1-fix-tests-on-python38-part2.patch -- https://github.com/aio-libs/aioredis/pull/727
-Patch1:         aioredis-1.3.1-fix-tests-on-python38-part2.patch
+# PATCH-FIX-OPENSUSE 0001-fix-geopos-test.patch buschmann23@opensuse.org -- Fix floating point comparison in geopos test
+Patch0:         0001-fix-geopos-test.patch
+# PATCH-FIX-UPSTREAM 0002-skip-acl-tests-on-old-servers.patch buschmann23@opensuse.org -- Skip ACL tests on old server versions
+Patch1:         0002-skip-acl-tests-on-old-servers.patch
+BuildRequires:  %{python_module async_timeout >= 4.0.2}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-async_timeout
-Recommends:     redis
-BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module async_timeout}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module coverage >= 6.2}
+BuildRequires:  %{python_module flake8 >= 4.0.1}
+BuildRequires:  %{python_module hiredis >= 2.0.0}
+BuildRequires:  %{python_module mock >= 4.0.3}
+BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pytest-asyncio >= 0.16.0}
+BuildRequires:  %{python_module pytest-cov >= 3.0.0}
+BuildRequires:  %{python_module pytest-sugar >= 0.9.4}
+BuildRequires:  %{python_module pytest-xdist >= 2.4.0}
 BuildRequires:  redis
 # /SECTION
+Requires:       python-async_timeout
+Requires:       python-typing_extensions
+Recommends:     redis
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -49,13 +59,8 @@ The library is intended to provide simple and clear interface to Redis based on 
 
 %prep
 %setup -q -n aioredis-%{version}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %patch0 -p1
 %patch1 -p1
-%endif
-rm setup.cfg
-# Remove dependency on hiredis, which is a redis server embedded in a Python package
-sed -Ei '/(platform.python_implementation|hiredis)/d' setup.py
 
 %build
 %python_build
@@ -65,19 +70,17 @@ sed -Ei '/(platform.python_implementation|hiredis)/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PATH=$PATH:%{_sbindir}
+# start the redis server
+%{_sbindir}/redis-server &
 
-fail_pattern='(connection_commands_test and test_auth) or test_master__auth or test_failover_command or test_command_info or test_client_list'
-# test_hincrbyfloat fail on armv7l with float rounding error
-fail_pattern+=' or test_hincrbyfloat or test_auto_failover'
+%pytest
 
-%pytest -k "not ($fail_pattern)"
-# Show known errors
-%pytest -k "$fail_pattern" ||:
+# kill the redis server
+kill %%1
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.txt
+%doc CHANGELOG.md
 %{python_sitelib}/aioredis-%{version}-*.egg-info/
 %{python_sitelib}/aioredis/
 

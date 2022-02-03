@@ -7,4 +7,33 @@
     <comment>just a nice-to-have</comment>
     <requestid>851908</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f78cf891415acae496b8cb03dfc6ba5</srcmd5>
+    <version>2.0.1</version>
+    <time>1643926568</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in Requires (closing curly bracket in
+  Requires: python-typing_extensions}).
+
+- Add 0002-skip-acl-tests-on-old-servers.patch to skip some tests
+  that fail on servers prior to Redis 6.2.0
+
+- Update to version 2.0.1
+  * Features
+    + Synchronized reading the responses from a connection (see #1106)
+  * Fixes
+    + Remove del from Redis (Fixes #1115) (see #1227)
+    + Fix socket.error raises (see #1129)
+    + Fix buffer is closed error when using PythonParser class (see #1213)
+- Changes from version 2.0.0
+  * Features
+    + Port redis-py's client implementation to aioredis. (see #891)
+    + Make hiredis an optional dependency. (see #917)
+- Remove obsolete patches
+  * aioredis-1.3.1-fix-tests-on-python38.patch
+  * aioredis-1.3.1-fix-tests-on-python38-part2.patch
+- Add 0001-fix-geopos-test.patch to fix floatin point comparison
+  in geopos test</comment>
+    <requestid>950057</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan 27 07:43:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo in Requires (closing curly bracket in
+  Requires: python-typing_extensions}).
+
+-------------------------------------------------------------------
+Tue Jan 25 18:49:02 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Add 0002-skip-acl-tests-on-old-servers.patch to skip some tests
+  that fail on servers prior to Redis 6.2.0
+
+-------------------------------------------------------------------
+Wed Jan 19 12:43:28 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 2.0.1
+  * Features
+    + Synchronized reading the responses from a connection (see #1106)
+  * Fixes
+    + Remove del from Redis (Fixes #1115) (see #1227)
+    + Fix socket.error raises (see #1129)
+    + Fix buffer is closed error when using PythonParser class (see #1213)
+- Changes from version 2.0.0
+  * Features
+    + Port redis-py's client implementation to aioredis. (see #891)
+    + Make hiredis an optional dependency. (see #917)
+- Remove obsolete patches
+  * aioredis-1.3.1-fix-tests-on-python38.patch
+  * aioredis-1.3.1-fix-tests-on-python38-part2.patch
+- Add 0001-fix-geopos-test.patch to fix floatin point comparison
+  in geopos test
+
+-------------------------------------------------------------------
 Sat Nov 28 05:21:09 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove dependency on hires
