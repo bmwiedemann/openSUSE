@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
+%bcond_with test
 Name:           python-Cython
-Version:        0.29.26
+Version:        0.29.27
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
@@ -78,6 +79,13 @@ $python -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/Cyt
 $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/Cython/Build/
 %fdupes %{buildroot}%{$python_sitearch}
 }
+
+%check
+%if %{with test}
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
+$python runtests.py -v
+}
+%endif
 
 %post
 %python_install_alternative cython cythonize cygdb

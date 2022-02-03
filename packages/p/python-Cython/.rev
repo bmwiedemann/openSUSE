@@ -697,4 +697,23 @@
     initialisation was resolved.</comment>
     <requestid>943796</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ec0d55bdeacdc858881aedfc177c4c2a</srcmd5>
+    <version>0.29.27</version>
+    <time>1643926575</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the running the test suite conditional (default
+  off). Seven hours of running it is just too much.
+- Enable running of the test suite.
+- update to 0.29.27:
+  * The ``cythonize`` command has a new option ``-M`` to generate ``.dep`` dependency
+    files for the compilation unit.  This can be used by external build tools to track
+    these dependencies.
+  * Calls to ``range()`` with more than three arguments did not fail.
+  * Some C compiler warnings about missing type struct initialisers in Py3.10 were resolved.
+  * Cython no longer warns about using OpenMP 3.0 features since they are now
+    considered generally available.
+</comment>
+    <requestid>950793</requestid>
+  </revision>
 </revisionlist>
