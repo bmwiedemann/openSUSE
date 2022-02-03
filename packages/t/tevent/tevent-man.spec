@@ -1,7 +1,7 @@
 #
 # spec file for package tevent-man
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,12 @@
 %define talloc_version 2.3.3
 %define build_man 1
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+%define bundle_cmocka 0
+%else
+%define bundle_cmocka 1
+%endif
+
 %if %{build_man}
 Name:           tevent-man
 BuildRequires:  doxygen
@@ -39,7 +45,9 @@ BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  python3-talloc >= %{talloc_version}
 BuildRequires:  python3-talloc-devel >= %{talloc_version}
+%if ! %{bundle_cmocka}
 BuildRequires:  pkgconfig(cmocka) >= 1.1.3
+%endif
 %endif # build_man
 %if 0%{?suse_version} == 0 || 0%{?suse_version} > 1140
 %define	build_make_smp_mflags %{?_smp_mflags}
@@ -134,6 +142,9 @@ This package contains the python bindings for the Tevent library.
 	# use the default optimization
 	unset OPTIMIZATION
 %endif
+%if %{bundle_cmocka}
+	BUNDLED_LIBS="cmocka"
+%endif
 export CFLAGS="${RPM_OPT_FLAGS} -D_GNU_SOURCE ${OPTIMIZATION} -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPORT_TRUSTED_DOMAINS"
 CONFIGURE_OPTIONS="\
 	--prefix=%{_prefix} \
@@ -141,7 +152,7 @@ CONFIGURE_OPTIONS="\
 	--disable-rpath \
 	--disable-rpath-install \
 	--disable-silent-rules \
-	--bundled-libraries=NONE \
+	--bundled-libraries=NONE,${BUNDLED_LIBS} \
 	--builtin-libraries=replace \
 "
 ./configure ${CONFIGURE_OPTIONS}
@@ -187,6 +198,10 @@ rm $RPM_BUILD_ROOT/%{_mandir}/man3/todo.3
 %files -n libtevent0
 %defattr(-,root,root)
 %{_libdir}/libtevent.so.*
+%if %{bundle_cmocka}
+%dir %{_libdir}/tevent
+%{_libdir}/tevent/libcmocka-tevent.so
+%endif
 
 %files -n libtevent-devel
 %defattr(-,root,root)

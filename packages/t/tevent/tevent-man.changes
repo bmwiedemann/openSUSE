@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 02 13:56:12 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- Fix build on 15.3 (for the heimdal addc build), by bundling cmocka.
+
+-------------------------------------------------------------------
 Fri Sep 17 08:49:47 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to version 0.11.0
