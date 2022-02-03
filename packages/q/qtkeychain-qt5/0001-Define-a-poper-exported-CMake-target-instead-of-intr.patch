@@ -1,0 +1,35 @@
+From e5eeb1763e295f6b05a3f008ee7ae192fd74ed0c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Sch=C3=BCrmann?= <daschuer@mixxx.org>
+Date: Tue, 25 Jan 2022 21:13:43 +0100
+Subject: [PATCH] Define a poper exported CMake target instead of introducing
+ an alias.
+
+This fixes building with cmake < version 18 a regression form
+70a567abc59d11d2b1c87fcb8b7763365b3a5365 issue #209
+---
+ QtKeychainConfig.cmake.in | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/QtKeychainConfig.cmake.in b/QtKeychainConfig.cmake.in
+index d849ded..41abb0e 100644
+--- a/QtKeychainConfig.cmake.in
++++ b/QtKeychainConfig.cmake.in
+@@ -18,7 +18,13 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
+     find_dependency(Qt@QTKEYCHAIN_VERSION_INFIX@DBus)
+ endif()
+ 
+-set(QTKEYCHAIN_LIBRARIES "@QTKEYCHAIN_TARGET_NAME@")
++get_target_property(QTKEYCHAIN_LIBRARIES "@QTKEYCHAIN_TARGET_NAME@" LOCATION)
+ get_target_property(QTKEYCHAIN_INCLUDE_DIRS "@QTKEYCHAIN_TARGET_NAME@" INTERFACE_INCLUDE_DIRECTORIES)
+ 
+-add_library(Qt@QTKEYCHAIN_VERSION_INFIX@Keychain::Qt@QTKEYCHAIN_VERSION_INFIX@Keychain ALIAS qt@QTKEYCHAIN_VERSION_INFIX@keychain)
++if(NOT TARGET Qt@QTKEYCHAIN_VERSION_INFIX@Keychain::Qt@QTKEYCHAIN_VERSION_INFIX@Keychain)
++    add_library(Qt@QTKEYCHAIN_VERSION_INFIX@Keychain::Qt@QTKEYCHAIN_VERSION_INFIX@Keychain UNKNOWN IMPORTED)
++    set_target_properties(Qt@QTKEYCHAIN_VERSION_INFIX@Keychain::Qt@QTKEYCHAIN_VERSION_INFIX@Keychain PROPERTIES
++        IMPORTED_LOCATION "${QTKEYCHAIN_LIBRARIES}"
++        INTERFACE_INCLUDE_DIRECTORIES "${QTKEYCHAIN_INCLUDE_DIRS}"
++    )
++endif()
+-- 
+2.34.1
+

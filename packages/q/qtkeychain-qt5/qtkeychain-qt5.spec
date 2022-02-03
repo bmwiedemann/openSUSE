@@ -1,7 +1,7 @@
 #
 # spec file for package qtkeychain-qt5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/frankosterfeld/qtkeychain
 Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Define-a-poper-exported-CMake-target-instead-of-intr.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
@@ -60,7 +62,7 @@ This package contains development files for libqtkeychain.
 
 %build
 %cmake -DBUILD_TEST_APPLICATION=OFF ..
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
