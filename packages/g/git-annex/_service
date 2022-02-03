@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://git.joeyh.name/git/git-annex.git</param>
+    <param name="scm">git</param>
+    <param name="revision">8.20211231</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jan 19 12:40:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to git-annex version 8.20211231
+  * Improved support for using git-annex in a read-only repository,
+    git-annex branch information from remotes that cannot be merged
+    into the git-annex branch will now not crash it, but will be
+    merged in memory.
+  * addurl, youtube-dl: When --check-raw prevents downloading an
+    url, still continue with any downloads that come after it,
+    rather than erroring out.
+  * Fix locking problems when annex.pidlock is set and concurrency
+    is enabled eg with -J.
+  * Improve error message display when autoinit fails due to eg, a
+    permissions problem.
+  * export: Avoid unncessarily re-exporting non-annexed files that
+    were already exported.
+  * Improve git command queue flushing so that eg, addurl of
+    several large files that take time to download will update the
+    index for each file, rather than deferring the index updates to
+    the end.
+  * sync: Better error message when unable to export to a remote
+    because remote.name.annex-tracking-branch is configured to a
+    ref that does not exist.
+  * Fix build with ghc 9.0.1
+  * Fix build with old versions of feed library.
+- git-annex 8.20211123 was released with these changes:
+  * Bugfix: When -J was enabled, getting files could leak an
+    ever-growing number of git cat-file processes.
+  * Support git's new "ort" resolver, which became the default in
+    git 2.34.0, and broke the test suite and automatic merge
+    resolution of a conflict between an annexed file and a
+    non-annexed file.
+  * importfeed: Display url before starting youtube-dl download.
+- Move to _service checking out the upstream source directly
+- Avoid compiling and linking the binary a second time in the
+  install phase and a third time in the check phase
+
+-------------------------------------------------------------------
+Sat Nov 20 17:31:42 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20211117.
+  git-annex (8.20211117) upstream; urgency=medium
+
+    * filter-process: New command that can make git add/checkout faster when
+      there are a lot of unlocked annexed files or non-annexed files, but that
+      also makes git add of large annexed files slower. Use it by running:
+      git config filter.annex.process 'git-annex filter-process'
+    * Fix a typo in the name of youtube-dl
+      (reversion introduced in version 8.20210903)
+    * git-lfs: Fix interoperability with gitlab's implementation of the
+      git-lfs protocol, which requests Content-Encoding chunked.
+    * importfeed: Fix a crash when used in a non-unicode locale.
+    * migrate: New --remove-size option.
+    * uninit: Avoid error message when no commits have been made to the
+      repository yet.
+    * uninit: Avoid error message when there is no git-annex branch.
+    * metadata --batch: Avoid crashing when a non-annexed file is input,
+      instead output a blank line like other batch commands do.
+    * metadata --batch --json: Reject input whose "fields" does not consist
+      of arrays of strings. Such invalid input used to be silently ignored.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 17 Nov 2021 12:18:49 -0400
+
+-------------------------------------------------------------------
 Mon Nov  1 08:26:45 UTC 2021 - psimons@suse.com
 
 - Update git-annex to version 8.20211028.
