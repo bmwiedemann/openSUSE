@@ -1,7 +1,7 @@
 #
 # spec file for package sane-backends
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
 License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Version:        1.0.32
+Version:        1.1.1
 Release:        0
 URL:            http://www.sane-project.org/
 # On https://gitlab.com/sane-project/backends/-/releases
@@ -62,7 +62,7 @@ URL:            http://www.sane-project.org/
 # and autoconf fails as it requires a complete git clone, see https://gitlab.com/sane-project/backends/issues/248
 # We use the second one "sane-backends-1.0.32.tar.gz" that is a dist tarball with a prebuilt configure script via
 # wget https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz
-Source0:        sane-backends-1.0.32.tar.gz
+Source0:        https://gitlab.com/sane-project/backends/uploads/7d30fab4e115029d91027b6a58d64b43/sane-backends-1.1.1.tar.gz
 # Source100... is SUSE specific stuff:
 # Source102 is the OpenSLP registration file for the saned:
 Source102:      sane.reg
@@ -380,10 +380,8 @@ sed -i -e 's/GROUP="scanner"/GROUP="lp"/' tools/udev/libsane.rules
 # the "Epson Perfection 1670" is "unsupported" by the "epkowa" backend
 # but works "good" with the "snapscan" backend
 # see https://bugzilla.novell.com/show_bug.cgi?id=439193#c6
-cat /dev/null >unsupportedUSBIDs
-for USBID in $( grep '||[^|]*|0x[0-9A-Fa-f][0-9A-Fa-f]*:0x[0-9A-Fa-f][0-9A-Fa-f]*|unsupported|' scanner.database | cut -s -d '|' -f 7 | sort -f -u )
-do grep -o "|$USBID|.*|" scanner.database | grep -E -q 'complete|good|basic|minimal|untested' || echo $USBID >>unsupportedUSBIDs
-done
+sed -n -e '\@|0x.*:0x.*|@ { s/.*|\(0x[0-9A-Fa-f:x]*\)|\([a-z]*\)|.*/\1 S:\2/ ; s/S:unsupported/1_uns/ ; s/S:.*/0_sup/ ; p } ; d' < scanner.database \
+  | sort -u | uniq -w 13 | sed '/0_sup/ d ; s/\(.*\) 1_uns/\1/' > unsupportedUSBIDs
 # Ignore case when using sed to avoid possible problems
 # with upper case letters in the USB IDs:
 for m in $( sed -e 's/0x/./ig' -e 's/:/.,.ATTR.idProduct.==/' unsupportedUSBIDs )

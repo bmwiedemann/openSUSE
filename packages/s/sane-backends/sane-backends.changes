@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri Jan 28 16:59:19 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Upgraded to sane-backends version 1.1.1
+  * Backends
+    + epson2: Fixed support for many scanners that don't support
+      focus command.
+    + epson2: Improve reliability of long scans.
+    + epsonds: Implemented support for the following Epson scanners:
+      - DS-1610, DS-1630, DS-1660W, DS-310, DS-320, DS-360W, DS-410,
+        DS-530, DS-530II, DS-531, DS-535, DS-535H, DS-535II, DS-570W,
+        DS-570WII, DS-571W, DS-575W, DS-575WII, DS-70, DS-80W
+      - ES-200, ES-300W, ES-300WR, ES-400, ES-400II, ES-50, ES-500W,
+        ES-500WII, ES-500WR, ES-55R, ES-580W, ES-60W, ES-60WB,
+        ES-60WW, ES-65WR,
+      - ET-2700 Series, ET-2710 Series, ET-2810 Series,
+        ET-M2140 Series, ET-M3140 Series,
+      - EW-052A Series,
+      - FF-680W,
+      - L3150 Series, L3200 Series, L3210 Series, L3250 Series,
+        L4150 Series,
+      - M2140 Series, M3140 Series,
+      - RR-60, RR-600W, RR-70W,
+      - XP-2100 Series, XP-2150 Series
+    + epson2: Marked XP-452 455 series as supported in
+      documentation
+    + escl: Fixed scanning problems on certain scanners due to
+      incorrect URL being used (#479)
+    + escl: Fixed support for different resolutions when using
+      JPEG format
+    + escl: Fixed handling of ipp-usb redirects to localhost
+      which previously caused certain scanners to be always
+      reported as busy
+    + escl: Added support for Brother DCP-J772DW and Epson
+      ET-2750 scanners
+    + escl: Marked the following scanners as supported in
+      documentation:
+      - Canon PIXMA G4511
+      - Canon PIXMA TR4550 Series
+      - Canon PIXMA TR4551 Series
+      - Epson ET-6100
+    + escl: Implemented support for disabling PDF output on
+      scanners where it's broken (#510)
+    + escl: Implemented support for Canon PIXME TR4520 and
+      TR7500 scanners
+    + genesys: Improved scan quality on Canon LiDE 35/40/50/60
+      by using brighter LED illumination
+    + genesys: Fixed control of contrast and brigthness on certain
+      scanners (#271)
+    + genesys: Fixed crashes when handling slightly unexpected
+      conditions (#464)
+    + genesys: Fixed support for Plustek Opticfilm 7200 v2 scanner
+    + genesys: Fixed button support on HP ScanJet G4010
+    + genesys: Fixed compilation on gcc-4.8
+    + genesys: Fixed incorrect LED exposure calculation leading to
+      wrong color balance on certain resolutions on gl841 scanners
+    + genesys: Improved gray scan quality on Canon LiDE 110, 120,
+      210, 220 (#106, #52)
+    + genesys: Fixed issue of motor becoming stuck at certain
+      resolutions on Canon LiDE 50 and possibly other gl841
+      scanners (#357)
+    + genesys: Fixed periodic black lines in gray scans on Canon
+      LiDE 80
+    + genesys: Removed support for broken 75 and 100 dpi hardware
+      resolutions to fix preview scans (#383). These resolutions
+      did not have any benefit compared to next smallest 150 dpi
+      resolution
+    + genesys: Add support for running in embedded environments
+      that don't support threads
+    + genesys: Fixed gray scans to use white color for illumination
+      instead of red on Canon LiDE 35/40/50/60 and potentially
+      other gl841 scanners. Old behavior can be restored via the
+      color filter setting to select specific color component for
+      the gray scan
+    + genesys: The genesys backend is now distributed under GPL v2
+      or later license. Previously there existed an exception that
+      allowed additional uses of the backend
+    + gt68xx: Fixed several memory issues that can potentially lead
+      to crashes or increased memory use
+    + hp4200: Fixed crash when using HP ScanJet 4200C (#454)
+    + microtek: Fixed support for embedded platforms using uclibc
+    + pieusb: Implemented support for Reflecta RPS 10M scanner
+    + pieusb: Fixed support for automatically advancing slides on
+      DigitDia 4000
+    + pixma: Fixed compliation with NDEBUG macro defined
+    + pixma: Marked Canon PIXMA G4511 as supported in documentation
+    + scangearmp2: Mark GX6000, GX7000, TS5400 and MX455 series
+      as supported
+  * Frontends
+    + Improved documentation of scanimage concerning options
+      provided by backends
+    + scanimage: Improved help to specify which options are
+      advanced
+    + scanimage: Implemented support for PDF output format
+- Cleanup create_hpaio.desc_from_models.dat:
+  * Remove scanners unsupported by hplip (scan-type < 0)
+  * Simplify and significantly speed it up
+
+-------------------------------------------------------------------
 Mon Feb 15 13:57:16 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove udev rules mangling for USB devices (ATTR vs ATTRS) (!510)
