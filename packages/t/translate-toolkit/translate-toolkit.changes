@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  1 20:38:55 UTC 2022 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- update to 3.5.3:
+
+  * Fixed updating files with DOS end of lines in PO format
+  * Improved error reporting for parse errors in PO format
+  * Fixed adding strings to empty Ruby YAML file
+  * Better handling of multiline stringtable translations in po2rc
+  * Update CLDR data to 37.0.0
+  
+-------------------------------------------------------------------
 Thu Dec  2 13:45:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip fluent from testing, we don't depend on it anyway (it is optional) 
