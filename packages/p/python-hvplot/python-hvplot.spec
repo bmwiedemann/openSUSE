@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvplot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# NEP 29: python36-numpy is no longer available on Tumbleweed
-%define         skip_python36 1
 Name:           python-hvplot
 Version:        0.7.3
 Release:        0
@@ -68,8 +66,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module bokeh >= 1.0.0}
 BuildRequires:  %{python_module colorcet >= 2}
-BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module datashader >= 0.6.5}
+BuildRequires:  %{python_module dask if %python-base < 3.10}
+BuildRequires:  %{python_module datashader >= 0.6.5 if %python-base < 3.10}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.7}
