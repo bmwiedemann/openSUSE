@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.28.8
+Version:        17.29.3
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -426,6 +426,10 @@ fi
 %{_datadir}/cmake/Modules/*
 %{_includedir}/zypp
 %{_includedir}/zypp-core
+%{_includedir}/zypp-media
+%{_includedir}/zypp-curl
+%{_libdir}/pkgconfig/libzypp.pc
+%{_libdir}/pkgconfig/libzypp.pc
 %{_libdir}/pkgconfig/libzypp.pc
 
 %files devel-doc
