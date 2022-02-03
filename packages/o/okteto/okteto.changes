@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 03 07:20:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.3:
+  * Fix waiting for the display to finish before running other commands (#2218) (#2221)
+  * Add okteto-compose as a valid stack path (#2220) (#2222)
+
+-------------------------------------------------------------------
 Wed Jan 26 14:06:36 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.15.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package okteto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           okteto
-Version:        1.15.2
+Version:        1.15.3
 Release:        0
 Summary:        Develop your applications directly in your Kubernetes Cluster
 License:        Apache-2.0
