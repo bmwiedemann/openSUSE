@@ -1,7 +1,7 @@
 #
 # spec file for package golang-packaging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           golang-packaging
-Version:        15.0.15
+Version:        15.0.16
 Release:        0
 Summary:        A toolchain to help packaging golang
 License:        GPL-3.0-only
@@ -56,17 +56,13 @@ install -m0644 golang.attr %{buildroot}%{_prefix}/lib/rpm/fileattrs/
 %files
 %defattr(-,root,root)
 %doc README.md CHANGELOG
-%if 0%{?suse_version} < 1500
-%doc COPYING
-%else
 %license COPYING
-%endif%
 %{_prefix}/lib/rpm/golang.prov
 %{_prefix}/lib/rpm/golang.req
 %{_prefix}/lib/rpm/golang.sh
 %config %{_sysconfdir}/rpm/macros.go
 
-%if %{?suse_version} >= 1320
+%if 0%{?suse_version} >= 1320
 %{_prefix}/lib/rpm/fileattrs/golang.attr
 %endif
 

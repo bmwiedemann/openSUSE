@@ -246,4 +246,20 @@
   * filelelist can try to access source_dir independently (forwarded request 848368 from jfkw)</comment>
     <requestid>848370</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>47d050e65673d91a6bba81fcbd201b6f</srcmd5>
+    <version>15.0.16</version>
+    <time>1643931942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.16:
+  * Update CHANGELOG file
+  * Don't throw an error on prep if  does not exist.
+  * Enable -buildmode=pie on riscv64
+
+- Replace %doc COPYING conditional for 0%{?suse_version} &lt; 1500.
+  Use only %license COPYING as per rpmlint, with no conditional.
+
+- Fixed if statement in spec file. (forwarded request 950343 from jfkw)</comment>
+    <requestid>950344</requestid>
+  </revision>
 </revisionlist>

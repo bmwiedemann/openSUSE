@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 01 05:39:58 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 15.0.16:
+  * Update CHANGELOG file
+  * Don't throw an error on prep if  does not exist.
+  * Enable -buildmode=pie on riscv64
+
+-------------------------------------------------------------------
+Tue Feb  1 05:21:14 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Replace %doc COPYING conditional for 0%{?suse_version} < 1500.
+  Use only %license COPYING as per rpmlint, with no conditional.
+
+-------------------------------------------------------------------
+Wed Jan 19 20:50:40 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Fixed if statement in spec file.
+
+-------------------------------------------------------------------
 Fri Nov 13 15:17:44 UTC 2020 - jkowalczyk@suse.com
 
 - Update to version 15.0.15:
