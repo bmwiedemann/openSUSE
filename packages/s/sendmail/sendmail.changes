@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 14:31:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Allow mail delivery below /home again, that is disable
+  "ProtectHome=read-only" for now
+
+-------------------------------------------------------------------
 Tue Jan 25 10:10:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - No snapshots

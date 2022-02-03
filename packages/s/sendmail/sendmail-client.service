@@ -22,7 +22,7 @@ ConditionDirectoryNotEmpty=|/var/spool/clientmqueue
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
-ProtectHome=read-only
+#ProtectHome=read-only
 PrivateDevices=true
 ProtectHostname=true
 ProtectClock=true

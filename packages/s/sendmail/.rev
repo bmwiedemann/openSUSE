@@ -1081,4 +1081,13 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   * sendmail-8.17.1.dif</comment>
     <requestid>948986</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>9f6b82df5218200dbc9e8973bdfd8682</srcmd5>
+    <version>8.17.1</version>
+    <time>1643931950</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow mail delivery below /home again, that is disable
+  &quot;ProtectHome=read-only&quot; for now</comment>
+    <requestid>950458</requestid>
+  </revision>
 </revisionlist>
