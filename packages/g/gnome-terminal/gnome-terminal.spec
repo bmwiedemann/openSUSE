@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-terminal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,15 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
 Source0:        https://download.gnome.org/sources/gnome-terminal/3.42/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 9a168cc23962ce9fa106dc8a40407d381a3db403.patch -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-terminal/-/commit/9a168cc23962ce9fa106dc8a40407d381a3db403.patch
 
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 # Needed for search provider. It should not be needed in my opinion,
 # we have to take this up with upstream, or just provide search
 # provider interface definition file as source.
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  gcc-c++
 BuildRequires:  gnome-shell
 BuildRequires:  meson
 BuildRequires:  pkgconfig
