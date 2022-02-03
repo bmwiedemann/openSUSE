@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 07:39:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use bash for invoking bash scripts 
+
+-------------------------------------------------------------------
 Mon Jan 17 08:06:01 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix random doubling of font sizes (bsc#1194698):
