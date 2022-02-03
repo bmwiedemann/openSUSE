@@ -3788,7 +3788,6 @@
     <package name="python38-tables" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tabulate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-testtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="python38-thrift" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-toml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tomli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3980,6 +3979,7 @@
     <package name="ruby3.1-rubygem-dry-logic" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-dry-types" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-ed25519" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-em-websocket" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-equalizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-erubi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-erubis" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3997,10 +3997,6 @@
     <package name="ruby3.1-rubygem-ffi-compiler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-flog" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-fluentd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-fog-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-fog-json" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-fog-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-fog-xml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-font-awesome-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-formatador" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-forwardable-extended" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4695,8 +4691,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
