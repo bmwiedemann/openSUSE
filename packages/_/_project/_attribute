@@ -145,8 +145,6 @@ products:
   container:
   - butane-image:
     - x86_64
-#  - ceph-csi-image:
-#    - x86_64
   - ceph-grafana-image:
     - x86_64
   - ceph-image:
@@ -261,8 +259,8 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-#  - opensuse-tensorflow2-image:
-#    - x86_64
+  - opensuse-tensorflow2-image:
+    - x86_64
   - opensuse-toolbox-image:
     - x86_64
   - opensuse-tumbleweed-image:docker:
@@ -280,8 +278,6 @@ products:
     - x86_64
   - prometheus-webhook-snmp-image:
     - x86_64
-#  - rook-ceph-image:
-#    - x86_64
   - tumbleweed-busybox-image:
     - i586
     - x86_64
@@ -463,7 +459,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220201'
 publishing: '20220201'
-testing: '20220201'
+testing: '20220202'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
