@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 29 18:11:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 5.0.0:
+  * Removed deprecated divide_* functions and Parser class.
+  * Require Python 3.7 or later.
+  * #19: Fixed error reporting in parse_timedelta.
+
+- changes from version 4.1.2:
+  * #18: Docs now build without warnings.
+
+-------------------------------------------------------------------
 Tue Oct  5 13:30:13 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts

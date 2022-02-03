@@ -1,7 +1,7 @@
 #
 # spec file for package python-tempora
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-tempora
-Version:        4.1.1
+Version:        5.0.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -43,14 +42,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
