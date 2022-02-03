@@ -38,4 +38,12 @@
     <comment>- avoid spec-cleaner messing it up</comment>
     <requestid>946789</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>52a97500b8b97dd549feab05acc07dfc</srcmd5>
+    <version>1.18</version>
+    <time>1643926601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950824</requestid>
+  </revision>
 </revisionlist>
