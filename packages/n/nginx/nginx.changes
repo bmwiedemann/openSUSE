@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  1 14:50:56 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 1.21.6
+  * https://nginx.org/en/CHANGES
+  * Fixed when using EPOLLEXCLUSIVE on Linux client connections were
+    unevenly distributed among worker processes.
+  * Fixed nginx returned the "Connection: keep-alive" header line in
+    responses during graceful shutdown of old worker processes.
+  * Fixed in the "ssl_session_ticket_key" when using TLSv1.3.
+
+-------------------------------------------------------------------
 Wed Dec 29 11:03:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Updated to 1.21.5

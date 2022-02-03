@@ -862,4 +862,18 @@
     with the &quot;sendfile&quot; and &quot;aio&quot; directives.</comment>
     <requestid>943052</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>dc654d5c2f6d29cc0f1f8f4f453870c7</srcmd5>
+    <version>1.21.6</version>
+    <time>1643931951</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.21.6
+  * https://nginx.org/en/CHANGES
+  * Fixed when using EPOLLEXCLUSIVE on Linux client connections were
+    unevenly distributed among worker processes.
+  * Fixed nginx returned the &quot;Connection: keep-alive&quot; header line in
+    responses during graceful shutdown of old worker processes.
+  * Fixed in the &quot;ssl_session_ticket_key&quot; when using TLSv1.3.</comment>
+    <requestid>950462</requestid>
+  </revision>
 </revisionlist>
