@@ -1,0 +1,49 @@
+diff -Nura plymouth-0.9.5~git20210406.e554475/src/plugins/splash/two-step/plugin.c plymouth-0.9.5~git20210406.e554475_new/src/plugins/splash/two-step/plugin.c
+--- plymouth-0.9.5~git20210406.e554475/src/plugins/splash/two-step/plugin.c	2021-04-06 19:53:40.000000000 +0800
++++ plymouth-0.9.5~git20210406.e554475_new/src/plugins/splash/two-step/plugin.c	2021-09-19 17:04:54.441225214 +0800
+@@ -1053,7 +1053,6 @@
+         plugin = calloc (1, sizeof(ply_boot_splash_plugin_t));
+ 
+         image_dir = ply_key_file_get_value (key_file, "two-step", "ImageDir");
+-
+         ply_trace ("Using '%s' as working directory", image_dir);
+ 
+         asprintf (&image_path, "%s/lock.png", image_dir);
+@@ -1076,9 +1075,23 @@
+         plugin->background_tile_image = ply_image_new (image_path);
+         free (image_path);
+ 
+-        asprintf (&image_path, "%s/watermark.png", image_dir);
+-        plugin->watermark_image = ply_image_new (image_path);
+-        free (image_path);
++	char *release_watermark_path, *theme_watermark_path;
++        release_watermark_path = ply_key_file_get_value (key_file, "two-step", "WatermarkPath");
++	asprintf (&theme_watermark_path, "%s/watermark.png", image_dir);
++	if (release_watermark_path != NULL && access(release_watermark_path, R_OK) == 0 )
++	{
++                ply_trace ("openSUSE's Watermark path: '%s'", release_watermark_path);
++                plugin->watermark_image = ply_image_new (release_watermark_path);
++                free (release_watermark_path);
++        }
++	else if( access(theme_watermark_path, R_OK) == 0)
++	{
++                ply_trace ("Theme's Watermark path: '%s'", theme_watermark_path);
++                plugin->watermark_image = ply_image_new (theme_watermark_path);
++                free (theme_watermark_path);
++        }
++	else
++		plugin->watermark_image = NULL;
+ 
+         plugin->animation_dir = image_dir;
+ 
+diff -Nura plymouth-0.9.5~git20210406.e554475/themes/bgrt/bgrt.plymouth.desktop plymouth-0.9.5~git20210406.e554475_new/themes/bgrt/bgrt.plymouth.desktop
+--- plymouth-0.9.5~git20210406.e554475/themes/bgrt/bgrt.plymouth.desktop	2021-04-06 19:53:40.000000000 +0800
++++ plymouth-0.9.5~git20210406.e554475_new/themes/bgrt/bgrt.plymouth.desktop	2021-09-19 17:14:04.299069740 +0800
+@@ -7,6 +7,7 @@
+ Font=Cantarell 12
+ TitleFont=Cantarell Light 30
+ ImageDir=@PLYMOUTH_THEME_PATH@/spinner
++WatermarkPath=/usr/share/pixmaps/distribution-logos/light-inline.png
+ DialogHorizontalAlignment=.5
+ DialogVerticalAlignment=.382
+ TitleHorizontalAlignment=.5

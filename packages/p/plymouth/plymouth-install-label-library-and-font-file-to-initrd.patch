@@ -1,0 +1,23 @@
+diff -Nura plymouth-0.9.5+git20201026+53c83cc/scripts/plymouth-populate-initrd.in plymouth-0.9.5+git20201026+53c83cc_new/scripts/plymouth-populate-initrd.in
+--- plymouth-0.9.5+git20201026+53c83cc/scripts/plymouth-populate-initrd.in	2021-06-14 01:04:23.842500337 +0800
++++ plymouth-0.9.5+git20201026+53c83cc_new/scripts/plymouth-populate-initrd.in	2021-06-14 01:06:52.766783152 +0800
+@@ -420,6 +420,7 @@
+ inst ${PLYMOUTH_PLUGIN_PATH}/text.so $INITRDDIR
+ inst ${PLYMOUTH_DATADIR}/plymouth/themes/details/details.plymouth $INITRDDIR
+ inst ${PLYMOUTH_PLUGIN_PATH}/details.so $INITRDDIR
++inst ${PLYMOUTH_PLUGIN_PATH}/label.so $INITRDDIR
+ inst ${PLYMOUTH_LOGO_FILE} $INITRDDIR
+ inst @RELEASE_FILE@ $INITRDDIR
+ inst ${PLYMOUTH_POLICYDIR}/plymouthd.defaults $INITRDDIR
+@@ -442,6 +443,11 @@
+ PLYMOUTH_MODULE_NAME=$(grep "ModuleName *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/${PLYMOUTH_THEME_NAME}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')
+ PLYMOUTH_THEME_DIR="${PLYMOUTH_DATADIR}/plymouth/themes/${PLYMOUTH_THEME_NAME}"
+ PLYMOUTH_IMAGE_DIR=$(grep "ImageDir *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ImageDir *= *//')
++PLYMOUTH_Font_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^Font *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^Font *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'})
++PLYMOUTH_TitleFont_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^TitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^TitleFont *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'})
++
++[ -f ${PLYMOUTH_Font_PATH} ] && inst ${PLYMOUTH_Font_PATH} $INITRDDIR
++[ -f ${PLYMOUTH_TitleFont_PATH} ] && inst ${PLYMOUTH_TitleFont_PATH} $INITRDDIR
+ 
+ if [ ! -f ${PLYMOUTH_SYSROOT}${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so ]; then
+     echo "The default plymouth plugin (${PLYMOUTH_MODULE_NAME}) doesn't exist" >&2

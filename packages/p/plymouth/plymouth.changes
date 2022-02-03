@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 30 05:12:13 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-watermark-config.patch:
+  Add two-step theme watermark configuration support, make the 
+  tumbleweed watermark could show in the boot splash (bsc#1189613).
+
+-------------------------------------------------------------------
+Sun Jan 30 05:06:23 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-quiet-dracut-build-info.patch: Avoid the dracut
+  building info which is useless for plymouth(bsc#1189613).
+
+-------------------------------------------------------------------
+Sun Jan 30 05:01:45 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-install-label-library-and-font-file-to-initrd.patch:
+  Compress label.so and current theme's font into initrd to avoid
+  prompt disappear when the folder in which has been encrypt
+  (boo#1183425).
+
+-------------------------------------------------------------------
 Thu Jan 13 15:14:28 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update SPEC file:

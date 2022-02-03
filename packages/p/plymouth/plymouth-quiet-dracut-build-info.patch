@@ -1,0 +1,8 @@
+diff -Nura plymouth-0.9.5~git20210406.e554475/scripts/plymouth-update-initrd plymouth-0.9.5~git20210406.e554475_new/scripts/plymouth-update-initrd
+--- plymouth-0.9.5~git20210406.e554475/scripts/plymouth-update-initrd	2021-04-06 19:53:40.000000000 +0800
++++ plymouth-0.9.5~git20210406.e554475_new/scripts/plymouth-update-initrd	2022-01-28 00:44:13.745537970 +0800
+@@ -1,2 +1,3 @@
+ #!/bin/bash
+-dracut -f
++echo -e "Regenerating initrd image ..."
++dracut -qf && echo -e "\e[1;32m[ OK ]"
