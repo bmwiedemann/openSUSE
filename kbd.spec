@@ -364,7 +364,7 @@ gzip -n9 %{buildroot}%{kbd}/keymaps/xkb/cz.map
 
 # Generate entries for systemd's /usr/share/systemd/kbd-model-map
 mkdir -p  %{buildroot}%{_datadir}/systemd
-sh ./genmap4systemd.sh %{buildroot}%{kbd}/keymaps/xkb \
+bash ./genmap4systemd.sh %{buildroot}%{kbd}/keymaps/xkb \
   > %{buildroot}%{_datadir}/systemd/kbd-model-map.xkb-generated
 
 install -m0755 kbdsettings %{buildroot}%{_sbindir}/
