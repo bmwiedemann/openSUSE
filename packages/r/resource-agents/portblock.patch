@@ -1,0 +1,12 @@
+--- heartbeat/portblock.orig	2022-01-19 15:27:39.056294933 +0100
++++ heartbeat/portblock	2022-01-19 17:43:18.986060453 +0100
+@@ -299,7 +299,8 @@
+ tickle_remote()
+ {
+ 	[ -z "$OCF_RESKEY_tickle_dir" ] && return
+-	echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle
++	[ -f "/proc/sys/net/ipv4/tcp_tw_recycle" ] && echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle
++	[ -f "/proc/sys/net/ipv4/tcp_tw_reuse" ] && echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
+ 	f=$OCF_RESKEY_tickle_dir/$OCF_RESKEY_ip
+ 	[ -r $f ] || return
+ 	$TICKLETCP -n 3 < $f

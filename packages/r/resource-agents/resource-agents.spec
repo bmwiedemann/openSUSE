@@ -1,7 +1,7 @@
 #
 # spec file for package resource-agents
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.10.0+git22.a614b31c
+Version:        4.10.0+git40.0f4de473
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -39,6 +39,9 @@ Patch4:         0004-Revert-Low-build-Move-binaries-in-usr-lib-heartbeat-.patch
 Patch6:         0006-Revert-ocf_log-use-same-log-format-as-pacemaker.patch
 # PATCH-FIX-OPENSUSE:
 Patch7:         0007-Request-to-add-gcp-vpc-move-route.patch
+
+Patch8:         nfsnotify.patch
+Patch9:         portblock.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -113,6 +116,8 @@ pages of individual nagios plugins.
 %patch4 -p1
 %patch6 -p1
 %patch7 -p0
+%patch8 -p0
+%patch9 -p0
 
 %build
 autoreconf -fvi
