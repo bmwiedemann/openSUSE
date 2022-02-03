@@ -116,7 +116,7 @@ Index: dovecot-2.3.17.1/doc/example-config/conf.d/10-ssl.conf
  # root. Included doc/mkcert.sh can be used to easily generate self-signed
  # certificate, just make sure to update the domains in dovecot-openssl.cnf
 -ssl_cert = </etc/ssl/certs/dovecot.pem
-+ssl_cert = </etc/ssl/private/dovecot.pem
++ssl_cert = </etc/ssl/private/dovecot.crt
  ssl_key = </etc/ssl/private/dovecot.pem
  
  # If key file is password protected, give the password here. Alternatively

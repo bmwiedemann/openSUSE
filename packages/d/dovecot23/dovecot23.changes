@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 12:28:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dovecot-2.3.0-dont_use_etc_ssl_certs.patch: Align the
+  certificate path/filenames to /etc/ssl/private/*.crt, which
+  happens to match what the patch also does for mkcert.sh
+  (boo#1193909).
+- Rebase dovecot-2.3.0-better_ssl_defaults.patch
+
+-------------------------------------------------------------------
 Thu Dec 16 08:14:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Update dovecot-2.3.0-dont_use_etc_ssl_certs.patch to also adjust
