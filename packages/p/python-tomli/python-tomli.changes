@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 20 20:10:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 2.0.0:
+  - Removed Python 3.6 support
+  - Support for text file objects as load input. Use binary file
+    objects instead.
+  - First argument of load and loads can no longer be passed by
+    keyword.
+  - Allow lower case "t" and "z" in datetimes
+  - Raise an error when dotted keys define values outside the
+    "current table". Technically speaking TOML v1.0.0 does allow
+    such assignments but that isn't intended by specification
+    writers, and will change in a future specification version
+    (see the pull request).
+  - Illegal characters in error messages were surrounded by two
+    pairs of quotation marks
+  - TOMLDecodeError.__module__ is now the public import path
+    (tomli) instead of private import path (tomli._parser)
+  - Eliminated an import cycle when typing.TYPE_CHECKING is
+    True. This allows sphinx-autodoc-typehints to resolve type
+    annotations.
+
+-------------------------------------------------------------------
 Fri Oct 15 19:03:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Yet another dependency cycle to break: tomli - flit_core - tomli

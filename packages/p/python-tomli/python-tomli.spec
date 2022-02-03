@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-tomli%{psuffix}
-Version:        1.2.1
+Version:        2.0.0
 Release:        0
 Summary:        A lil' TOML parser
 License:        MIT
 URL:            https://github.com/hukkin/tomli
 # prefer github archive over pypi sdist for pacakged tests
-Source:         https://github.com/hukkin/tomli/archive/refs/tags/%{version}.tar.gz#/tomli-%{version}-gh.tar.gz
+Source:         https://github.com/hukkin/tomli/archive/refs/tags/%{version}.tar.gz#/tomli-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 # Avoid build cycles
@@ -58,7 +58,7 @@ BuildArch:      noarch
 Tomli is a Python library for parsing TOML
 
 %prep
-%setup -q -n tomli-%{version}
+%autosetup -p1 -n tomli-%{version}
 
 %build
 export PYTHONPATH=$PWD
