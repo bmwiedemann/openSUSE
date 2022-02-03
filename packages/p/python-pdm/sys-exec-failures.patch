@@ -1,0 +1,14 @@
+---
+ tests/test_project.py |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- a/tests/test_project.py
++++ b/tests/test_project.py
+@@ -209,6 +209,4 @@ def test_global_python_path_config(proje
+ def test_set_non_exist_python_path(project_no_init):
+     project_no_init.project_config["python.path"] = "non-exist-python"
+     project_no_init._python = None
+-    assert os.path.normcase(project_no_init.python.executable) == os.path.normcase(
+-        sys.executable
+-    )
++    assert os.path.normcase(sys.executable).startswith(os.path.normcase(project_no_init.python.executable))

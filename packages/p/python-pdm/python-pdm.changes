@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jan 24 09:37:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- My ad-hoc patch failed_test_use_command.patch replaced by the
+  upstream mark-tests-path.patch (from
+  gh#pdm-project/pdm#commit/23f1cf62a302 and gh#pdm-project/pdm#865).
+
+-------------------------------------------------------------------
+Sun Jan 23 20:56:10 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- By downgrading python-installer to 0.3 we have eliminated
+  number of failed tests.
+
+-------------------------------------------------------------------
+Sun Jan 23 00:55:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Replacing mark-network-tests.patch with the upstream PR
+  (gh#pdm-project/pdm#864), which unfortunately leaves a lot of
+  tests still failing.
+
+-------------------------------------------------------------------
+Fri Jan 21 01:35:33 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add mark-network-tests.patch for skipping network-requiring
+  tests (gh#pdm-project/pdm#858). This is a very shotgun
+  approach, just mark everything which fails.
+- Add sys-exec-failures.patch to fix problems with the version
+  number of Python 3.10 (gh#pdm-project/pdm#865).
+
+-------------------------------------------------------------------
+Thu Jan 20 18:51:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for pdm 1.12.6

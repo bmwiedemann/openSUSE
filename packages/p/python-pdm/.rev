@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b4abd0ec55892210093acd21a81c5aac</srcmd5>
+    <version>1.12.6</version>
+    <time>1643926596</time>
+    <user>dimstar_suse</user>
+    <comment>- My ad-hoc patch failed_test_use_command.patch replaced by the
+  upstream mark-tests-path.patch (from
+  gh#pdm-project/pdm#commit/23f1cf62a302 and gh#pdm-project/pdm#865).
+- By downgrading python-installer to 0.3 we have eliminated
+  number of failed tests.
+- Replacing mark-network-tests.patch with the upstream PR
+  (gh#pdm-project/pdm#864), which unfortunately leaves a lot of
+  tests still failing.
+- Add mark-network-tests.patch for skipping network-requiring
+  tests (gh#pdm-project/pdm#858). This is a very shotgun
+  approach, just mark everything which fails.
+- Add sys-exec-failures.patch to fix problems with the version
+  number of Python 3.10 (gh#pdm-project/pdm#865).
+- Initial packaging effort for pdm 1.12.6</comment>
+    <requestid>948488</requestid>
+  </revision>
+</revisionlist>

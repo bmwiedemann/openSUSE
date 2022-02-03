@@ -1,0 +1,670 @@
+From 01192dca2cc4aa3b6770c7672d1887e872772702 Mon Sep 17 00:00:00 2001
+From: Frost Ming <mianghong@gmail.com>
+Date: Fri, 21 Jan 2022 19:13:20 +0800
+Subject: [PATCH 1/3] Reduce the number of tests that require network
+
+---
+ news/858.misc.md                                                       |    1 
+ pdm/installers/synchronizers.py                                        |    9 -
+ pdm/utils.py                                                           |   10 -
+ pyproject.toml                                                         |    5 
+ tests/cli/test_build.py                                                |   29 +----
+ tests/cli/test_install.py                                              |    6 -
+ tests/cli/test_others.py                                               |   10 +
+ tests/cli/test_run.py                                                  |   25 +---
+ tests/cli/test_update.py                                               |    1 
+ tests/conftest.py                                                      |   48 +++++---
+ tests/fixtures/projects/demo-failure/setup.py                          |    2 
+ tests/fixtures/pypi.json                                               |    1 
+ tests/models/test_candidates.py                                        |   20 ++-
+ tests/test_installer.py                                                |    2 
+ tests/test_integration.py                                              |   13 +-
+ tests/test_project.py                                                  |   58 ++++------
+ 27 files changed, 154 insertions(+), 119 deletions(-)
+
+--- /dev/null
++++ b/news/858.misc.md
+@@ -0,0 +1 @@
++Reduce the number of tests that require network, and mark the rest with `network` marker.
+--- a/pdm/installers/synchronizers.py
++++ b/pdm/installers/synchronizers.py
+@@ -61,13 +61,8 @@ class DummyExecutor:
+ 
+ def editables_candidate(environment: Environment) -> Candidate | None:
+     """Return a candidate for `editables` package"""
+-    with environment.get_finder() as finder:
+-        best_match = finder.find_best_candidate("editables")
+-        if best_match.best_candidate is None:
+-            return None
+-        return Candidate.from_installation_candidate(
+-            best_match.best_candidate, parse_requirement("editables"), environment
+-        )
++    repository = environment.project.get_repository()
++    return next(iter(repository.find_candidates(parse_requirement("editables"))), None)
+ 
+ 
+ class Synchronizer:
+--- a/pdm/utils.py
++++ b/pdm/utils.py
+@@ -332,16 +332,6 @@ def cd(path: str | Path) -> Iterator:
+ 
+ 
+ @contextmanager
+-def temp_environ() -> Iterator:
+-    environ = os.environ.copy()
+-    try:
+-        yield
+-    finally:
+-        os.environ.clear()
+-        os.environ.update(environ)
+-
+-
+-@contextmanager
+ def open_file(url: str, session: Session | None = None) -> Iterator[BinaryIO]:
+     if url.startswith("file://"):
+         local_path = url_to_path(url)
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -126,7 +126,10 @@ colorama = []
+ 
+ [tool.pytest.ini_options]
+ filterwarnings = [ "ignore::DeprecationWarning",]
+-markers = [ "pypi: Tests that connect to the real PyPI", "integration: Run with all Python versions",]
++markers = [
++    "network: Tests that require network",
++    "integration: Run with all Python versions",
++]
+ addopts = "-ra"
+ 
+ [tool.pdm.scripts.doc]
+--- a/tests/cli/test_build.py
++++ b/tests/cli/test_build.py
+@@ -1,13 +1,12 @@
+ import os
+-import subprocess
+-import sys
+ import tarfile
+ import zipfile
+ 
+ import pytest
+ 
+ from pdm.cli import actions
+-from pdm.utils import temp_environ
++
++pytestmark = pytest.mark.usefixtures("local_finder")
+ 
+ 
+ def get_tarball_names(path):
+@@ -170,22 +169,9 @@ def test_cli_build_with_config_settings(
+ @pytest.mark.parametrize("isolated", (True, False))
+ def test_build_with_no_isolation(fixture_project, invoke, isolated):
+     project = fixture_project("demo-failure")
+-    lib_path = project.environment.get_paths()["purelib"]
+-    subprocess.run(
+-        [
+-            sys.executable,
+-            "-m",
+-            "pip",
+-            "install",
+-            "-I",
+-            "--force-reinstall",
+-            "idna",
+-            "--target",
+-            str(lib_path),
+-        ],
+-        check=True,
+-    )
+-    invoke(["add", "idna"], obj=project)
++    project.pyproject = {"project": {"name": "demo", "version": "0.1.0"}}
++    project.write_pyproject()
++    invoke(["add", "first"], obj=project)
+     args = ["build"]
+     if not isolated:
+         args.append("--no-isolation")
+@@ -195,6 +181,5 @@ def test_build_with_no_isolation(fixture
+ 
+ def test_build_ignoring_pip_environment(fixture_project):
+     project = fixture_project("demo-module")
+-    with temp_environ():
+-        os.environ["PIP_REQUIRE_VIRTUALENV"] = "1"
+-        actions.do_build(project)
++    os.environ["PIP_REQUIRE_VIRTUALENV"] = "1"
++    actions.do_build(project)
+--- a/tests/cli/test_install.py
++++ b/tests/cli/test_install.py
+@@ -128,8 +128,8 @@ def test_sync_with_index_change(project,
+     <html>
+     <body>
+         <h1>future-fstrings</h1>
+-        <a href="http://fixtures.test/artifacts/future_fstrings-1.2.0.tar.gz\
+-#sha256=6cf41cbe97c398ab5a81168ce0dbb8ad95862d3caf23c21e4430627b90844089">
++        <a href="http://fixtures.test/artifacts/future_fstrings-1.2.0-py2.py3-none-any\
++.whl#sha256=90e49598b553d8746c4dc7d9442e0359d038c3039d802c91c0a55505da318c63">
+         future_fstrings-1.2.0.tar.gz
+         </a>
+     </body>
+@@ -138,7 +138,7 @@ def test_sync_with_index_change(project,
+     actions.do_lock(project)
+     file_hashes = project.lockfile["metadata"]["files"]["future-fstrings 1.2.0"]
+     assert [e["hash"] for e in file_hashes] == [
+-        "sha256:6cf41cbe97c398ab5a81168ce0dbb8ad95862d3caf23c21e4430627b90844089"
++        "sha256:90e49598b553d8746c4dc7d9442e0359d038c3039d802c91c0a55505da318c63"
+     ]
+     # Mimic the CDN inconsistences of PyPI simple index. See issues/596.
+     del index["future-fstrings"]
+--- a/tests/cli/test_others.py
++++ b/tests/cli/test_others.py
+@@ -19,6 +19,7 @@ def test_lock_dependencies(project):
+         assert package in locked
+ 
+ 
++@pytest.mark.usefixtures("project_no_init", "local_finder")
+ def test_build_distributions(tmp_path, core):
+     project = core.create_project()
+     actions.do_build(project, dest=tmp_path.as_posix())
+@@ -251,14 +252,14 @@ def test_import_requirement_no_overwrite
+     assert list(project.get_dependencies("web")) == ["flask", "flask-login"]
+ 
+ 
+-@pytest.mark.pypi
+-def test_search_package(project, invoke):
+-    result = invoke(["search", "requests"], obj=project)
++@pytest.mark.network
++def test_search_package(invoke):
++    result = invoke(["search", "requests"])
+     assert result.exit_code == 0
+     assert len(result.output.splitlines()) > 0
+ 
+ 
+-@pytest.mark.pypi
++@pytest.mark.network
+ def test_show_package_on_pypi(invoke):
+     result = invoke(["show", "ipython"])
+     assert result.exit_code == 0
+@@ -344,6 +345,7 @@ def test_lock_refresh(invoke, project, r
+     assert project.is_lockfile_hash_match()
+ 
+ 
++@pytest.mark.network
+ def test_show_update_hint(invoke, project):
+     prev_version = project.core.version
+     try:
+--- a/tests/cli/test_run.py
++++ b/tests/cli/test_run.py
+@@ -5,20 +5,15 @@ import textwrap
+ from pathlib import Path
+ from tempfile import TemporaryDirectory
+ 
+-import pytest
+-
+ from pdm.cli.actions import PEP582_PATH
+-from pdm.utils import cd, temp_environ
++from pdm.utils import cd
+ 
+ 
+-@pytest.mark.pypi
+-def test_pep582_launcher_for_python_interpreter(project, invoke):
+-    project.meta["requires-python"] = ">=3.6"
+-    project.write_pyproject()
++def test_pep582_launcher_for_python_interpreter(project, local_finder, invoke):
+     project.root.joinpath("main.py").write_text(
+-        "import requests\nprint(requests.__version__)\n"
++        "import first;print(first.first([0, False, 1, 2]))\n"
+     )
+-    result = invoke(["add", "requests==2.24.0"], obj=project)
++    result = invoke(["add", "first"], obj=project)
+     assert result.exit_code == 0, result.stderr
+     env = os.environ.copy()
+     env.update({"PYTHONPATH": PEP582_PATH})
+@@ -26,7 +21,7 @@ def test_pep582_launcher_for_python_inte
+         [project.python.executable, str(project.root.joinpath("main.py"))],
+         env=env,
+     )
+-    assert output.decode().strip() == "2.24.0"
++    assert output.decode().strip() == "1"
+ 
+ 
+ def test_auto_isolate_site_packages(project, invoke):
+@@ -167,7 +162,7 @@ def test_run_expand_env_vars(project, in
+     }
+     project.write_pyproject()
+     capfd.readouterr()
+-    with cd(project.root), temp_environ():
++    with cd(project.root):
+         os.environ["FOO"] = "bar"
+         invoke(["run", "test_cmd"], obj=project)
+         assert capfd.readouterr()[0].strip() == "1"
+@@ -243,20 +238,20 @@ def test_run_show_list_of_scripts(projec
+     assert result_lines[2].strip() == "test_shell  shell echo $FOO        shell command"
+ 
+ 
+-def test_run_with_another_project_root(project, invoke, capfd):
++def test_run_with_another_project_root(project, local_finder, invoke, capfd):
+     project.meta["requires-python"] = ">=3.6"
+     project.write_pyproject()
+-    invoke(["add", "requests==2.24.0"], obj=project)
++    invoke(["add", "first"], obj=project)
+     with TemporaryDirectory(prefix="pytest-run-") as tmp_dir:
+         Path(tmp_dir).joinpath("main.py").write_text(
+-            "import requests\nprint(requests.__version__)\n"
++            "import first;print(first.first([0, False, 1, 2]))\n"
+         )
+         capfd.readouterr()
+         with cd(tmp_dir):
+             ret = invoke(["run", "-p", str(project.root), "python", "main.py"])
+             assert ret.exit_code == 0
+             out, _ = capfd.readouterr()
+-            assert out.strip() == "2.24.0"
++            assert out.strip() == "1"
+ 
+ 
+ def test_import_another_sitecustomize(project, invoke, capfd):
+--- a/tests/cli/test_update.py
++++ b/tests/cli/test_update.py
+@@ -164,6 +164,7 @@ def test_update_with_package_and_groups_
+         actions.do_update(project, default=False, packages=("requests",))
+ 
+ 
++@pytest.mark.usefixtures("repository", "working_set")
+ def test_update_with_prerelease_without_package_argument(project):
+     actions.do_add(project, packages=["requests"])
+     with pytest.raises(
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -4,6 +4,7 @@ import os
+ import re
+ import shutil
+ import sys
++from contextlib import contextmanager
+ from io import BytesIO
+ from pathlib import Path
+ from typing import Callable, Dict, Iterable, List, Optional, Tuple
+@@ -28,11 +29,20 @@ from pdm.models.requirements import (
+ )
+ from pdm.project import Project
+ from pdm.project.config import Config
+-from pdm.utils import get_finder, normalize_name, temp_environ
++from pdm.utils import get_finder, normalize_name
+ from tests import FIXTURES
+ 
+ os.environ["CI"] = "1"
+-main = Core()
++
++
++@contextmanager
++def temp_environ():
++    environ = os.environ.copy()
++    try:
++        yield
++    finally:
++        os.environ.clear()
++        os.environ.update(environ)
+ 
+ 
+ class LocalFileAdapter(requests.adapters.BaseAdapter):
+@@ -148,9 +158,6 @@ class TestProject(Project):
+         super().__init__(core, root_path, is_global)
+ 
+ 
+-main.project_class = TestProject
+-
+-
+ class Distribution:
+     def __init__(self, key, version, editable=False):
+         self.version = version
+@@ -243,12 +250,19 @@ def remove_pep582_path_from_pythonpath(p
+     return os.pathsep.join(paths)
+ 
+ 
++@pytest.fixture(scope="session")
++def core():
++    main = Core()
++    main.project_class = TestProject
++    return main
++
++
+ @pytest.fixture()
+-def project_no_init(tmp_path, mocker):
+-    p = main.create_project(tmp_path)
++def project_no_init(tmp_path, mocker, core):
++    p = core.create_project(tmp_path)
++    mocker.patch("pdm.project.core.Config.HOME_CONFIG", tmp_path)
+     mocker.patch("pdm.utils.get_finder", get_local_finder)
+     mocker.patch("pdm.models.environment.get_finder", get_local_finder)
+-    mocker.patch("pdm.project.core.Config.HOME_CONFIG", tmp_path)
+     old_config_map = Config._config_map.copy()
+     tmp_path.joinpath("caches").mkdir(parents=True)
+     p.global_config["cache_dir"] = tmp_path.joinpath("caches").as_posix()
+@@ -268,6 +282,13 @@ def project_no_init(tmp_path, mocker):
+ 
+ 
+ @pytest.fixture()
++def local_finder(project_no_init, mocker):
++    return_value = ["--no-index", "--find-links", str(FIXTURES / "artifacts")]
++    mocker.patch("pdm.utils.prepare_pip_source_args", return_value=return_value)
++    mocker.patch("pdm.builders.base.prepare_pip_source_args", return_value=return_value)
++
++
++@pytest.fixture()
+ def project(project_no_init):
+     do_init(project_no_init, "test_project", "0.0.0")
+     # Clean the cached property
+@@ -299,7 +320,7 @@ def fixture_project(project_no_init):
+ 
+ 
+ @pytest.fixture()
+-def repository(project, mocker):
++def repository(project, mocker, local_finder):
+     rv = TestRepository([], project.environment)
+     mocker.patch.object(project, "get_repository", return_value=rv)
+     return rv
+@@ -329,12 +350,12 @@ def is_dev(request):
+ 
+ 
+ @pytest.fixture()
+-def invoke():
++def invoke(core):
+     runner = CliRunner(mix_stderr=False)
+ 
+     def caller(args, strict=False, **kwargs):
+         result = runner.invoke(
+-            main, args, catch_exceptions=not strict, prog_name="pdm", **kwargs
++            core, args, catch_exceptions=not strict, prog_name="pdm", **kwargs
+         )
+         if strict and result.exit_code != 0:
+             raise RuntimeError(
+@@ -346,11 +367,6 @@ def invoke():
+ 
+ 
+ @pytest.fixture()
+-def core():
+-    return main
+-
+-
+-@pytest.fixture()
+ def index():
+     from pip._internal.index.collector import HTMLPage, LinkCollector
+ 
+--- a/tests/fixtures/projects/demo-failure/setup.py
++++ b/tests/fixtures/projects/demo-failure/setup.py
+@@ -1,6 +1,6 @@
+ from setuptools import setup
+ 
+-import idna
++import first
+ 
+ setup(
+     name="demo",
+--- a/tests/fixtures/pypi.json
++++ b/tests/fixtures/pypi.json
+@@ -22,6 +22,7 @@
+     }
+   },
+   "urllib3": { "1.22": {}, "1.23b0": {} },
++  "editables": { "0.2": {} },
+   "chardet": { "3.0.4": {} },
+   "certifi": { "2018.11.17": {} },
+   "idna": { "2.7": {} },
+--- a/tests/models/test_candidates.py
++++ b/tests/models/test_candidates.py
+@@ -10,6 +10,7 @@ from pdm.models.requirements import pars
+ from tests import FIXTURES
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_local_directory_metadata(project, is_editable):
+     requirement_line = f"{(FIXTURES / 'projects/demo').as_posix()}"
+     req = parse_requirement(requirement_line, is_editable)
+@@ -22,7 +23,7 @@ def test_parse_local_directory_metadata(
+     assert candidate.version == "0.0.1"
+ 
+ 
+-@pytest.mark.usefixtures("vcs")
++@pytest.mark.usefixtures("vcs", "local_finder")
+ def test_parse_vcs_metadata(project, is_editable):
+     requirement_line = "git+https://github.com/test-root/demo.git@master#egg=demo"
+     req = parse_requirement(requirement_line, is_editable)
+@@ -41,6 +42,7 @@ def test_parse_vcs_metadata(project, is_
+         assert lockfile["revision"] == "1234567890abcdef"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ @pytest.mark.parametrize(
+     "requirement_line",
+     [
+@@ -59,6 +61,7 @@ def test_parse_artifact_metadata(require
+     assert candidate.version == "0.0.1"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_metadata_with_extras(project):
+     req = parse_requirement(
+         f"demo[tests,security] @ file://"
+@@ -74,6 +77,7 @@ def test_parse_metadata_with_extras(proj
+     ]
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_remote_link_metadata(project):
+     req = parse_requirement(
+         "http://fixtures.test/artifacts/demo-0.0.1-py2.py3-none-any.whl"
+@@ -88,6 +92,7 @@ def test_parse_remote_link_metadata(proj
+     assert candidate.version == "0.0.1"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_extras_warning(project, recwarn):
+     req = parse_requirement(
+         "demo[foo] @ http://fixtures.test/artifacts/demo-0.0.1-py2.py3-none-any.whl"
+@@ -104,6 +109,7 @@ def test_extras_warning(project, recwarn
+     assert candidate.version == "0.0.1"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_abnormal_specifiers(project):
+     req = parse_requirement(
+         "http://fixtures.test/artifacts/celery-4.4.2-py2.py3-none-any.whl"
+@@ -112,6 +118,7 @@ def test_parse_abnormal_specifiers(proje
+     assert candidate.get_dependencies_from_metadata()
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ @pytest.mark.parametrize(
+     "req_str",
+     [
+@@ -140,6 +147,7 @@ def test_expand_project_root_in_url(req_
+         assert "${PROJECT_ROOT}" in lockfile_entry["url"]
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_project_file_on_build_error(project):
+     req = parse_requirement(f"{(FIXTURES / 'projects/demo-failure').as_posix()}")
+     candidate = Candidate(req, project.environment)
+@@ -151,6 +159,7 @@ def test_parse_project_file_on_build_err
+     assert candidate.version == "0.0.1"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_project_file_on_build_error_with_extras(project):
+     req = parse_requirement(f"{(FIXTURES / 'projects/demo-failure').as_posix()}")
+     req.extras = ("security", "tests")
+@@ -162,6 +171,7 @@ def test_parse_project_file_on_build_err
+     assert candidate.version == "0.0.1"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_project_file_on_build_error_no_dep(project):
+     req = parse_requirement(f"{(FIXTURES / 'projects/demo-failure-no-dep').as_posix()}")
+     candidate = Candidate(req, project.environment)
+@@ -170,6 +180,7 @@ def test_parse_project_file_on_build_err
+     assert candidate.version == "0.0.1"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_poetry_project_metadata(project, is_editable):
+     req = parse_requirement(
+         f"{(FIXTURES / 'projects/poetry-demo').as_posix()}", is_editable
+@@ -181,6 +192,7 @@ def test_parse_poetry_project_metadata(p
+     assert candidate.version == "0.1.0"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_parse_flit_project_metadata(project, is_editable):
+     req = parse_requirement(
+         f"{(FIXTURES / 'projects/flit-demo').as_posix()}", is_editable
+@@ -194,7 +206,7 @@ def test_parse_flit_project_metadata(pro
+     assert candidate.version == "0.1.0"
+ 
+ 
+-@pytest.mark.usefixtures("vcs")
++@pytest.mark.usefixtures("vcs", "local_finder")
+ def test_vcs_candidate_in_subdirectory(project, is_editable):
+     line = (
+         "git+https://github.com/test-root/demo-parent-package.git"
+@@ -218,6 +230,7 @@ def test_vcs_candidate_in_subdirectory(p
+     assert candidate.version == "0.1.0"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_sdist_candidate_with_wheel_cache(project, mocker):
+     file_link = Link(path_to_url((FIXTURES / "artifacts/demo-0.0.1.tar.gz").as_posix()))
+     built_path = (FIXTURES / "artifacts/demo-0.0.1-py2.py3-none-any.whl").as_posix()
+@@ -240,7 +253,7 @@ def test_sdist_candidate_with_wheel_cach
+     assert Path(candidate.wheel) == Path(cache_path) / Path(built_path).name
+ 
+ 
+-@pytest.mark.usefixtures("vcs")
++@pytest.mark.usefixtures("vcs", "local_finder")
+ def test_cache_vcs_immutable_revision(project):
+     req = parse_requirement("git+https://github.com/test-root/demo.git@master#egg=demo")
+     candidate = Candidate(req, project.environment)
+@@ -264,6 +277,7 @@ def test_cache_vcs_immutable_revision(pr
+     assert candidate.revision == "1234567890abcdef"
+ 
+ 
++@pytest.mark.usefixtures("local_finder")
+ def test_cache_egg_info_sdist(project):
+     req = parse_requirement("demo @ http://fixtures.test/artifacts/demo-0.0.1.tar.gz")
+     candidate = Candidate(req, project.environment)
+--- a/tests/test_installer.py
++++ b/tests/test_installer.py
+@@ -10,6 +10,8 @@ from pdm.models.requirements import pars
+ from pdm.utils import fs_supports_symlink
+ from tests import FIXTURES
+ 
++pytestmark = pytest.mark.usefixtures("local_finder")
++
+ 
+ def test_install_wheel_with_inconsistent_dist_info(project):
+     req = parse_requirement("pyfunctional")
+--- a/tests/test_integration.py
++++ b/tests/test_integration.py
+@@ -4,10 +4,11 @@ from pdm.utils import cd
+ 
+ 
+ @pytest.mark.integration
++@pytest.mark.network
+ @pytest.mark.parametrize("python_version", ["2.7", "3.6", "3.7", "3.8", "3.9"])
+-def test_basic_integration(python_version, project_no_init, invoke):
++def test_basic_integration(python_version, core, tmp_path, invoke):
+     """An e2e test case to ensure PDM works on all supported Python versions"""
+-    project = project_no_init
++    project = core.create_project(tmp_path)
+     project.root.joinpath("foo.py").write_text("import django\n")
+     additional_args = ["--no-self"] if python_version == "2.7" else []
+     invoke(["init"], input="\ny\n\n\n\n\n\n>=2.7\n", obj=project, strict=True)
+@@ -25,9 +26,7 @@ def test_basic_integration(python_versio
+     )
+ 
+ 
+-@pytest.mark.integration
+-def test_actual_list_freeze(project, invoke):
+-    project.meta["requires-python"] = ">=3.6"
+-    invoke(["add", "click==7.1.2"], obj=project, strict=True)
++def test_actual_list_freeze(project, local_finder, invoke):
++    invoke(["add", "first"], obj=project, strict=True)
+     r = invoke(["list", "--freeze"], obj=project)
+-    assert "click==7.1.2" in r.output
++    assert "first==2.0.2" in r.output
+--- a/tests/test_project.py
++++ b/tests/test_project.py
+@@ -5,37 +5,36 @@ from pathlib import Path
+ 
+ import pytest
+ 
+-from pdm.utils import cd, temp_environ
++from pdm.utils import cd
+ 
+ 
+ def test_project_python_with_pyenv_support(project, mocker):
+ 
+     del project.project_config["python.path"]
+     project._python = None
+-    with temp_environ():
+-        os.environ["PDM_IGNORE_SAVED_PYTHON"] = "1"
+-        mocker.patch("pdm.project.core.PYENV_INSTALLED", True)
+-        mocker.patch("pdm.project.core.PYENV_ROOT", str(project.root))
+-        pyenv_python = project.root / "shims/python"
+-        if os.name == "nt":
+-            pyenv_python = pyenv_python.with_suffix(".bat")
+-        pyenv_python.parent.mkdir()
+-        pyenv_python.touch()
+-        mocker.patch(
+-            "pythonfinder.models.python.get_python_version",
+-            return_value="3.8.0",
+-        )
+-        mocker.patch(
+-            "pdm.models.python.get_underlying_executable", return_value=sys.executable
+-        )
+-        assert Path(project.python.path) == pyenv_python
+-        assert project.python.executable == Path(sys.executable).as_posix()
++    os.environ["PDM_IGNORE_SAVED_PYTHON"] = "1"
++    mocker.patch("pdm.project.core.PYENV_INSTALLED", True)
++    mocker.patch("pdm.project.core.PYENV_ROOT", str(project.root))
++    pyenv_python = project.root / "shims/python"
++    if os.name == "nt":
++        pyenv_python = pyenv_python.with_suffix(".bat")
++    pyenv_python.parent.mkdir()
++    pyenv_python.touch()
++    mocker.patch(
++        "pythonfinder.models.python.get_python_version",
++        return_value="3.8.0",
++    )
++    mocker.patch(
++        "pdm.models.python.get_underlying_executable", return_value=sys.executable
++    )
++    assert Path(project.python.path) == pyenv_python
++    assert project.python.executable == Path(sys.executable).as_posix()
+ 
+-        # Clean cache
+-        project._python = None
++    # Clean cache
++    project._python = None
+ 
+-        project.project_config["python.use_pyenv"] = False
+-        assert Path(project.python.path) != pyenv_python
++    project.project_config["python.use_pyenv"] = False
++    assert Path(project.python.path) != pyenv_python
+ 
+ 
+ def test_project_config_items(project):
+@@ -167,13 +166,12 @@ def test_ignore_saved_python(project):
+     scripts = "Scripts" if os.name == "nt" else "bin"
+     suffix = ".exe" if os.name == "nt" else ""
+     venv.create(project.root / "venv")
+-    with temp_environ():
+-        os.environ["PDM_IGNORE_SAVED_PYTHON"] = "1"
+-        assert Path(project.python.executable) != project.project_config["python.path"]
+-        assert (
+-            Path(project.python.executable)
+-            == project.root / "venv" / scripts / f"python{suffix}"
+-        )
++    os.environ["PDM_IGNORE_SAVED_PYTHON"] = "1"
++    assert Path(project.python.executable) != project.project_config["python.path"]
++    assert (
++        Path(project.python.executable)
++        == project.root / "venv" / scripts / f"python{suffix}"
++    )
+ 
+ 
+ def test_select_dependencies(project):

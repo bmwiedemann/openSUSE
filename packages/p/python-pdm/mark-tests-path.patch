@@ -1,0 +1,56 @@
+From 23f1cf62a302633524496b0ba43239aae1e90c8e Mon Sep 17 00:00:00 2001
+From: Frost Ming <mianghong@gmail.com>
+Date: Mon, 24 Jan 2022 11:17:46 +0800
+Subject: [PATCH] Mark tests that compare paths as unstable Related to #865
+
+---
+ pyproject.toml        |    1 +
+ tests/cli/test_use.py |    5 +++--
+ tests/test_project.py |    1 +
+ tests/test_utils.py   |    1 +
+ 4 files changed, 6 insertions(+), 2 deletions(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -129,6 +129,7 @@ filterwarnings = [ "ignore::DeprecationW
+ markers = [
+     "network: Tests that require network",
+     "integration: Run with all Python versions",
++    "path: Tests that compare with the system paths",
+ ]
+ addopts = "-ra"
+ 
+--- a/tests/cli/test_use.py
++++ b/tests/cli/test_use.py
+@@ -11,8 +11,9 @@ from pdm.models.caches import JSONFileCa
+ 
+ 
+ def test_use_command(project, invoke):
+-    python_path = Path(shutil.which("python")).as_posix()
+-    result = invoke(["use", "-f", "python"], obj=project)
++    python = "python" if os.name == "nt" else "python3"
++    python_path = Path(shutil.which(python)).as_posix()
++    result = invoke(["use", "-f", python], obj=project)
+     assert result.exit_code == 0
+     config_content = project.root.joinpath(".pdm.toml").read_text()
+     assert python_path in config_content
+--- a/tests/test_project.py
++++ b/tests/test_project.py
+@@ -206,6 +206,7 @@ def test_global_python_path_config(proje
+     assert "python.path" not in p.project_config
+ 
+ 
++@pytest.mark.path
+ def test_set_non_exist_python_path(project_no_init):
+     project_no_init.project_config["python.path"] = "non-exist-python"
+     project_no_init._python = None
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -50,6 +50,7 @@ def test_expend_env_vars_in_auth(given,
+     assert utils.expand_env_vars_in_auth(given) == expected
+ 
+ 
++@pytest.mark.path
+ def test_find_python_in_path(tmp_path):
+ 
+     assert (
