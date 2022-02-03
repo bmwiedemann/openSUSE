@@ -1,7 +1,7 @@
 #
 # spec file for package python-pretend
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ cp %{SOURCE1} .
 %files %{python_files}
 %license LICENSE.rst
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pretend*
+%{python_sitelib}/__pycache__/*
 
 %changelog

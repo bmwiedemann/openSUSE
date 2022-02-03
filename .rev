@@ -38,4 +38,13 @@
     <comment></comment>
     <requestid>674896</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6da9cc8152ced899082a7f874f794d0b</srcmd5>
+    <version>1.0.9</version>
+    <time>1643926581</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix files list
+</comment>
+    <requestid>950058</requestid>
+  </revision>
 </revisionlist>
