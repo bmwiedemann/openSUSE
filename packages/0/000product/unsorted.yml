@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2684,6 +2684,7 @@ unsorted:
   - darktable-tools-noise: [x86_64] 
   - darts 
   - dash 
+  - dash-sh 
   - dasher 
   - dasher-data-extras 
   - dasher-data-recommended 
@@ -14701,7 +14702,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
