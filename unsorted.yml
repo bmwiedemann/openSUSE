@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -526,6 +526,7 @@ unsorted:
   - ansible 
   - ansible-cmdb 
   - ansible-doc 
+  - ansible-lint 
   - ansible-runner 
   - ansible-test 
   - ansifilter 
@@ -3671,6 +3672,7 @@ unsorted:
   - file-devel 
   - file-devel-32bit: [x86_64] 
   - file-unpack 
+  - fileb0x 
   - filebench 
   - filelight 
   - filelight-lang 
@@ -10374,6 +10376,9 @@ unsorted:
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
+  - libdecor 
+  - libdecor-0-0 
+  - libdecor-devel 
   - libdecoration0 
   - libdecoration0-32bit: [x86_64] 
   - libdeepin-pdfium1 
@@ -12560,6 +12565,8 @@ unsorted:
   - libopenssl-1_0_0-devel-32bit: [x86_64] 
   - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit: [x86_64] 
+  - libopenssl-3-devel 
+  - libopenssl-3-devel-32bit: [x86_64] 
   - libopenssl-devel 
   - libopenssl10 
   - libopenssl1_0_0 
@@ -12569,6 +12576,8 @@ unsorted:
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
   - libopenssl1_1-hmac-32bit: [x86_64] 
+  - libopenssl3 
+  - libopenssl3-32bit: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
   - libopenvas_wincmd1 
@@ -13309,7 +13318,7 @@ unsorted:
   - librecad 
   - librecad-parts 
   - librecode3 
-  - libredis++ 
+  - libredis++1 
   - libredland-devel 
   - libredwg-devel 
   - libredwg-tools 
@@ -14502,9 +14511,9 @@ unsorted:
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
   - libwebsockets19 
-  - libweston-9 
-  - libweston-9-0 
-  - libweston-desktop-9-0 
+  - libweston-10 
+  - libweston-10-0 
+  - libweston-desktop-10-0 
   - libwget-devel 
   - libwget1 
   - libwhich 
@@ -14692,7 +14701,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -14853,9 +14862,7 @@ unsorted:
   - libyara8 
   - libyate6_4_0 
   - libyaz-devel 
-  - libyaz-devel-32bit: [x86_64] 
   - libyaz5 
-  - libyaz5-32bit: [x86_64] 
   - libyder1_4 
   - libykclient-devel 
   - libykclient3 
@@ -15525,6 +15532,7 @@ unsorted:
   - madplay 
   - madplay-lang 
   - maelstrom 
+  - mage 
   - mailcommon-devel 
   - maildir-utils 
   - mailgraph 
@@ -17461,6 +17469,7 @@ unsorted:
   - noto-serif-tc-semibold-fonts 
   - noto-serif-telugu-fonts 
   - noto-serif-thai-fonts 
+  - nova 
   - novdoc 
   - novnc 
   - novprog 
@@ -18241,6 +18250,8 @@ unsorted:
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
   - openssl-1_1-doc 
+  - openssl-3 
+  - openssl-3-doc 
   - openssl-engine-libp11 
   - openssl-ibmpkcs11 
   - openssl_tpm2_engine 
@@ -19265,6 +19276,7 @@ unsorted:
   - perl-File-Path-Tiny 
   - perl-File-ReadBackwards 
   - perl-File-Remove 
+  - perl-File-Rename 
   - perl-File-Rsync 
   - perl-File-Share 
   - perl-File-ShareDir: [i586] 
@@ -21854,6 +21866,7 @@ unsorted:
   - python310-actdiag 
   - python310-adal 
   - python310-adapt-parser 
+  - python310-adblock 
   - python310-addict 
   - python310-aeidon 
   - python310-aenum 
@@ -22518,7 +22531,6 @@ unsorted:
   - python310-dash-table 
   - python310-databases 
   - python310-datadiff 
-  - python310-datashader 
   - python310-dateparser 
   - python310-dateutils 
   - python310-datrie 
@@ -23061,6 +23073,7 @@ unsorted:
   - python310-jinja2-pluralize 
   - python310-jinja2-time 
   - python310-jira 
+  - python310-jirafs 
   - python310-jmespath 
   - python310-joblib 
   - python310-josepy 
@@ -24399,6 +24412,7 @@ unsorted:
   - python310-tabulate 
   - python310-tap.py 
   - python310-targetcli-fb 
+  - python310-tasklib 
   - python310-tbb 
   - python310-tblib 
   - python310-tcolorpy 
@@ -24720,7 +24734,6 @@ unsorted:
   - python36-PyRSS2Gen 
   - python36-ZEO 
   - python36-acitoolkit 
-  - python36-adblock 
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
@@ -24757,7 +24770,6 @@ unsorted:
   - python36-gmpy2 
   - python36-google-pasta 
   - python36-idle 
-  - python36-jirafs 
   - python36-labelImg 
   - python36-librouteros 
   - python36-limnoria 
@@ -24781,7 +24793,6 @@ unsorted:
   - python36-sgmllib3k 
   - python36-sphinx-argparse 
   - python36-starlette 
-  - python36-tasklib 
   - python36-taskw 
   - python36-testsuite 
   - python36-tk 
@@ -27508,6 +27519,7 @@ unsorted:
   - python38-threadpoolctl 
   - python38-three-merge 
   - python38-threevis 
+  - python38-thrift 
   - python38-thriftpy2 
   - python38-tifffile 
   - python38-time-machine 
@@ -31430,6 +31442,7 @@ unsorted:
   - qt6-webengine 
   - qt6-webengine-docs-html 
   - qt6-webengine-docs-qch 
+  - qt6-webengine-examples 
   - qt6-webengine-imports 
   - qt6-webenginecore-devel 
   - qt6-webenginecore-private-devel 
@@ -31879,7 +31892,10 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
-  - ruby3.1-rubygem-em-websocket 
+  - ruby3.1-rubygem-fog-core 
+  - ruby3.1-rubygem-fog-json 
+  - ruby3.1-rubygem-fog-libvirt 
+  - ruby3.1-rubygem-fog-xml 
   - ruby3.1-rubygem-gettext-setup 
   - ruby3.1-rubygem-jekyll 
   - ruby3.1-rubygem-rspec-rails-3.9 
@@ -33015,12 +33031,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_6_2-gnu-hpc: [x86_64] 
-  - tensorflow2_2_6_2-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_6_2-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_6_2-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_6_2-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_6_2-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow2_2_7_0-gnu-hpc: [x86_64] 
+  - tensorflow2_2_7_0-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_7_0-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_7_0-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_7_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_7_0-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-6-lang 
   - tepl-devel 
   - termcap 
