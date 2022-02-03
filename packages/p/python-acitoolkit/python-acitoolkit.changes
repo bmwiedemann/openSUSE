@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  3 14:07:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix install dependencies of -doc-applications and -doc-samples:
+  make them rely on the primary python interpreter version.
+
+-------------------------------------------------------------------
+Tue Feb  1 07:10:38 UTC 2022 - pgajdos@suse.com
+
+- use spec cleaner, remove redundant Provides
+
+-------------------------------------------------------------------
+Fri Jan 28 10:10:09 UTC 2022 - pgajdos@suse.com
+
+- fix for python 3.10
+- added patches
+  fix https://github.com/datacenter/acitoolkit/commit/629b84887dd0f0183b81efc8adb16817f985541a
+  + python-acitoolkit-python-310.patch
+
+-------------------------------------------------------------------
 Thu Mar 28 10:10:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not require python-deepdiff, such package does not exist

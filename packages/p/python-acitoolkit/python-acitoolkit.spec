@@ -1,7 +1,7 @@
 #
 # spec file for package python-acitoolkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,11 @@ Release:        0
 Summary:        Python library for programming ACI
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/datacenter/acitoolkit
+URL:            https://github.com/datacenter/acitoolkit
 Source:         https://github.com/datacenter/acitoolkit/archive/v%{version}.tar.gz
 Patch0:         remove-app-dependency.patch
+# https://github.com/datacenter/acitoolkit/commit/629b84887dd0f0183b81efc8adb16817f985541a
+Patch1:         python-acitoolkit-python-310.patch
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module mock}
@@ -52,25 +54,23 @@ Infrastructure Controller.
 %package -n %{name}-doc
 Summary:        Documentation for the Python acitoolkit library
 Group:          Documentation/Other
-Provides:       %{python_module acitoolkit-doc = %{version}}
 
 %description -n %{name}-doc
-Documentation for %name.
+Documentation for %{name}.
 
 %package -n %{name}-doc-applications
 Summary:        Applications for the Python acitoolkit library
 Group:          Development/Languages/Python
-Provides:       %{python_module acitoolkit-doc-applications = %{version}}
-Requires:       %{name}-doc
-Requires:       python-Flask
-Requires:       python-Flask-Admin
-Requires:       python-Flask-Bootstrap
-Requires:       python-Flask-Cors
-Requires:       python-Flask-HTTPAuth
-Requires:       python-Flask-SQLAlchemy
-Requires:       python-Flask-WTF
-Requires:       python-GitPython
-Requires:       python-py-radix
+Requires:       python-acitoolkit-doc
+Requires:       python3-Flask
+Requires:       python3-Flask-Admin
+Requires:       python3-Flask-Bootstrap
+Requires:       python3-Flask-Cors
+Requires:       python3-Flask-HTTPAuth
+Requires:       python3-Flask-SQLAlchemy
+Requires:       python3-Flask-WTF
+Requires:       python3-GitPython
+Requires:       python3-py-radix
 
 %description -n %{name}-doc-applications
 Python applications using acitoolkit for programming ACI.
@@ -78,9 +78,8 @@ Python applications using acitoolkit for programming ACI.
 %package -n %{name}-doc-samples
 Summary:        Sample code for the Python acitoolkit library
 Group:          Development/Languages/Python
-Provides:       %{python_module acitoolkit-doc-samples = %{version}}
 Requires:       %{name}-doc
-Requires:       python-PyMySQL
+Requires:       python3-PyMySQL
 
 %description -n %{name}-doc-samples
 Python samples for using acitoolkit for programming ACI.
@@ -89,10 +88,11 @@ Python samples for using acitoolkit for programming ACI.
 %setup -q -n acitoolkit-%{version}
 # Remove dependencies of applications/ and samples/ from the library
 %patch0 -p1
+%patch1 -p1
 
 chmod -x LICENSE NOTICE
 
-sed -i '1{/^#!.*env python/d}' acitoolkit/*.py samples/*.py samples/switch-commands/*.py 
+sed -i '1{/^#!.*env python/d}' acitoolkit/*.py samples/*.py samples/switch-commands/*.py
 
 rm applications/cableplan/.coverage applications/eventfeeds/.gitignore
 
@@ -111,27 +111,27 @@ dos2unix \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Install docs, samples and applications into a common doc area
-install -d %{buildroot}%_defaultdocdir/%{name}
-cp -rp docs/source/*.rst docs/source/*.png docs/source/stats/ samples/ applications/ %{buildroot}%_defaultdocdir/%{name}/
-find %{buildroot}%_defaultdocdir/%{name}/ -type f -exec chmod a-x \{\} \;
+install -d %{buildroot}%{_defaultdocdir}/%{name}
+cp -rp docs/source/*.rst docs/source/*.png docs/source/stats/ samples/ applications/ %{buildroot}%{_defaultdocdir}/%{name}/
+find %{buildroot}%{_defaultdocdir}/%{name}/ -type f -exec chmod a-x \{\} \;
 
-%fdupes %{buildroot}%_defaultdocdir/%{name}/
+%fdupes %{buildroot}%{_defaultdocdir}/%{name}/
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/acitoolkit_test.py offline
 
 %files -n %{name}-doc
 %license LICENSE NOTICE
-%dir %_defaultdocdir/%{name}
-%_defaultdocdir/%{name}/*.rst
-%_defaultdocdir/%{name}/*.png
-%_defaultdocdir/%{name}/stats/
+%dir %{_defaultdocdir}/%{name}
+%{_defaultdocdir}/%{name}/*.rst
+%{_defaultdocdir}/%{name}/*.png
+%{_defaultdocdir}/%{name}/stats/
 
 %files -n %{name}-doc-samples
-%_defaultdocdir/%{name}/samples/
+%{_defaultdocdir}/%{name}/samples/
 
 %files -n %{name}-doc-applications
-%_defaultdocdir/%{name}/applications/
+%{_defaultdocdir}/%{name}/applications/
 
 %files %{python_files}
 %doc README.md
