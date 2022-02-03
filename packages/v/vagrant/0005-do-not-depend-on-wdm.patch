@@ -1,7 +1,7 @@
 From 4a7f3ff284ac2a3dd1e6261221f787ac4e7075d7 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Mon, 4 Jun 2018 09:18:23 +0200
-Subject: [PATCH 05/10] do not depend on wdm
+Subject: [PATCH 05/11] do not depend on wdm
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -21,5 +21,5 @@ index 992b48f2f..2bef1036a 100644
    s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
    s.add_dependency "winrm-fs", ">= 1.3.4", "< 2.0"
 -- 
-2.33.1
+2.34.1
 

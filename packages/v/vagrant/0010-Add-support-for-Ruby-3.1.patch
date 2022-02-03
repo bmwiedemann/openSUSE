@@ -1,7 +1,7 @@
 From 214e118384d0456db19faa0fa63bff571d0229c3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 3 Jan 2022 12:08:09 +0100
-Subject: [PATCH 10/10] Add support for Ruby 3.1
+Subject: [PATCH 10/11] Add support for Ruby 3.1
 
 The biggest change comming with Ruby 3.1 is that net/ftp is no longer bundled
 with Ruby but distributed as a separate gem.
@@ -33,5 +33,5 @@ index 2bef1036a..ccf76011a 100644
    s.add_dependency "net-sftp", "~> 3.0"
    s.add_dependency "net-scp", "~> 3.0.0"
 -- 
-2.33.1
+2.34.1
 

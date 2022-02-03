@@ -1,7 +1,7 @@
 From 99447e851f41f413d1e525ef51e946b003e1a080 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Fri, 16 Nov 2018 21:14:46 +0100
-Subject: [PATCH 06/10] do not abuse relative paths in docker plugin to make
+Subject: [PATCH 06/11] do not abuse relative paths in docker plugin to make
  docker work, added by tmkn@tmkn.uk on Thu Oct 26 19:42:46 UTC 2017
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
@@ -22,5 +22,5 @@ index 07c4e5333..e8142df8b 100644
  module VagrantPlugins
    module DockerProvider
 -- 
-2.33.1
+2.34.1
 

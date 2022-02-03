@@ -1,7 +1,7 @@
 #
 # spec file for package vagrant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Laurent Bigonville <bigon@debian.org>, License GPL-2.0+
 #
@@ -58,20 +58,15 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Add-support-for-Ruby-3.1.patch
+Patch11:        0011-Bump-version-of-ed25519-to-1.3.0.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
 #          fix these values in macros.vagrant
-%if 0%{?suse_version} > 1500
-%global rb_build_versions ruby31
-%global rb_build_abi ruby:3.1.0
-%global rb_ruby_suffix ruby3.1
-%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
 %global rb_ruby_suffix %rb_default_ruby_suffix
-%endif
 
 # we use the rpm macros in this spec
 # need to load them *after* defining the rb_* macros
@@ -98,8 +93,9 @@ BuildRequires:  %{rubygem bundler}
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #  s.add_dependency "childprocess", "~> 4.1.0"
 BuildRequires:  %{rubygem childprocess:4.1 }
-#  s.add_dependency "ed25519", "~> 1.2.4"
-BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
+# PATCHED
+#  s.add_dependency "ed25519", "~> 1.3.0"
+BuildRequires:  %{rubygem ed25519:1.3 >= 1.3.0 }
 #  s.add_dependency "erubi"
 BuildRequires:  %{rubygem erubi }
 #  s.add_dependency "i18n", "~> 1.8"
@@ -188,8 +184,9 @@ BuildRequires:  fdupes
 Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #    s.add_dependency "childprocess", "~> 4.1.0"
 Requires:       %{rubygem childprocess:4.1}
-#   s.add_dependency "ed25519", "~> 1.2.4"
-Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
+# PATCHED
+#   s.add_dependency "ed25519", "~> 1.3.0"
+Requires:       %{rubygem ed25519:1.3 >= 1.3.0}
 #  s.add_dependency "erubi"
 Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
