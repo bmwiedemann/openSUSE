@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 31 10:28:10 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
+
+- Fix exception in batch_async caused by a bad function call
+
+- Added:
+  * drop-serial-from-event.unpack-in-cli.batch_async.patch
+
+-------------------------------------------------------------------
+Fri Jan 28 16:17:16 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Fix inspector module export function (bsc#1097531)
+- Wipe NOTIFY_SOCKET from env in cmdmod (bsc#1193357)
+
+- Added:
+  * fix-inspector-module-export-function-bsc-1097531-481.patch
+  * wipe-notify_socket-from-env-in-cmdmod-bsc-1193357-30.patch
+
+-------------------------------------------------------------------
 Wed Jan 26 17:04:36 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
 
 - Update to version 3004, see release notes: https://docs.saltproject.io/en/master/topics/releases/3004.html

@@ -1,0 +1,34 @@
+From f6ad8b59662333327b04aa8f6465f6f3bceaa152 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Mon, 31 Jan 2022 10:24:26 +0100
+Subject: [PATCH] Drop serial from event.unpack in cli.batch_async
+
+---
+ salt/cli/batch_async.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
+index 09aa85258b..1012ce37cc 100644
+--- a/salt/cli/batch_async.py
++++ b/salt/cli/batch_async.py
+@@ -9,7 +9,6 @@ import logging
+ 
+ import salt.client
+ import salt.ext.tornado
+-import tornado
+ from salt.cli.batch import batch_get_eauth, batch_get_opts, get_bnum
+ 
+ log = logging.getLogger(__name__)
+@@ -109,7 +108,7 @@ class BatchAsync:
+         if not self.event:
+             return
+         try:
+-            mtag, data = self.event.unpack(raw, self.event.serial)
++            mtag, data = self.event.unpack(raw)
+             for (pattern, op) in self.patterns:
+                 if mtag.startswith(pattern[:-1]):
+                     minion = data["id"]
+-- 
+2.34.1
+
+

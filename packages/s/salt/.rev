@@ -1928,4 +1928,20 @@ let build start it or we will get libvirt errors.
   * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch</comment>
     <requestid>949489</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>36d1624fa20d3f7834b8a357c73ce62c</srcmd5>
+    <version>3004</version>
+    <time>1643931944</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix exception in batch_async caused by a bad function call
+- Added:
+  * drop-serial-from-event.unpack-in-cli.batch_async.patch
+
+- Fix inspector module export function (bsc#1097531)
+- Wipe NOTIFY_SOCKET from env in cmdmod (bsc#1193357)
+- Added:
+  * fix-inspector-module-export-function-bsc-1097531-481.patch
+  * wipe-notify_socket-from-env-in-cmdmod-bsc-1193357-30.patch</comment>
+    <requestid>950374</requestid>
+  </revision>
 </revisionlist>

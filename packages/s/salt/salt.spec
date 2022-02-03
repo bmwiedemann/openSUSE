@@ -269,6 +269,12 @@ Patch64:        fix-the-regression-for-yumnotify-plugin-456.patch
 Patch65:        refactor-and-improvements-for-transactional-updates-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61189
 Patch66:        state.apply-don-t-check-for-cached-pillar-errors.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61393
+Patch67:        wipe-notify_socket-from-env-in-cmdmod-bsc-1193357-30.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61530
+Patch68:        fix-inspector-module-export-function-bsc-1097531-481.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/482
+Patch69:        drop-serial-from-event.unpack-in-cli.batch_async.patch
 
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
