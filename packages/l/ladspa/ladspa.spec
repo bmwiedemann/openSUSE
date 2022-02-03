@@ -1,7 +1,7 @@
 #
 # spec file for package ladspa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ladspa
-Version:        1.15
+Version:        1.17
 Release:        0
 Summary:        The Linux Audio Developer's Simple Plug-In API
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.ladspa.org/
+URL:            https://www.ladspa.org/
 Source:         http://www.ladspa.org/download/%{name}_sdk_%{version}.tgz
 Source1:        baselibs.conf
 BuildRequires:  gcc-c++
+BuildRequires:  libsndfile-devel
 AutoReq:        on
 Autoprov:       off
 
