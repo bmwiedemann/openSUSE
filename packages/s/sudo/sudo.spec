@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.8p2
+Version:        1.9.9
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -88,8 +88,7 @@ Requires:       %{name} = %{version}
 Tests for fate#313276
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %ifarch s390 s390x %{sparc}
@@ -140,7 +139,6 @@ install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/sudo-i
 rm -f %{buildroot}%{_bindir}/sudoedit
 ln -sf %{_bindir}/sudo %{buildroot}%{_bindir}/sudoedit
 install -d -m 755 %{buildroot}%{_sysconfdir}/openldap/schema
-install -m 644 doc/schema.OpenLDAP %{buildroot}%{_sysconfdir}/openldap/schema/sudo.schema
 install -m 644 %{SOURCE5} %{buildroot}%{_docdir}/%{name}/
 rm -f %{buildroot}%{_docdir}/%{name}/sample.pam
 rm -f %{buildroot}%{_docdir}/%{name}/sample.syslog.conf
@@ -154,9 +152,10 @@ cat sudoers.lang >> %{name}.lang
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/tests/sudo
 install -m 755 %{SOURCE6} %{buildroot}%{_localstatedir}/lib/tests/sudo
 install -m 755 %{SOURCE7} %{buildroot}%{_localstatedir}/lib/tests/sudo
-install -d %{buildroot}%{_docdir}/%{name}-test
-install -m 644 %{buildroot}%{_docdir}/%{name}/LICENSE %{buildroot}%{_docdir}/%{name}-test/LICENSE
-rm -fv %{buildroot}%{_docdir}/%{name}/LICENSE
+
+install -d %{buildroot}%{_licensedir}/%{name}
+install -m 644 %{buildroot}%{_docdir}/%{name}/LICENSE.md %{buildroot}%{_licensedir}/%{name}/LICENSE.md
+rm -fv %{buildroot}%{_docdir}/%{name}/LICENSE.md
 
 %if %{defined use_usretc}
 %pre
@@ -185,7 +184,7 @@ chmod 0440 %{_sysconfdir}/sudoers
 %verify_permissions -e %{_bindir}/sudo
 
 %files -f %{name}.lang
-%license doc/LICENSE
+%license doc/LICENSE.md
 %doc %{_docdir}/%{name}
 %{_mandir}/man1/cvtsudoers.1%{?ext_man}
 %{_mandir}/man5/sudoers.5%{?ext_man}
@@ -213,9 +212,6 @@ chmod 0440 %{_sysconfdir}/sudoers
 %config(noreplace) %{_sysconfdir}/pam.d/sudo-i
 %endif
 %attr(4755,root,root) %{_bindir}/sudo
-%dir %{_sysconfdir}/openldap
-%dir %{_sysconfdir}/openldap/schema
-%attr(0444,root,root) %config %{_sysconfdir}/openldap/schema/sudo.schema
 %{_bindir}/sudoedit
 %{_bindir}/sudoreplay
 %{_bindir}/cvtsudoers
@@ -252,6 +248,5 @@ chmod 0440 %{_sysconfdir}/sudoers
 
 %files test
 %{_localstatedir}/lib/tests
-%{_docdir}/%{name}-test/
 
 %changelog

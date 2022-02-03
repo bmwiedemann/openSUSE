@@ -1,7 +1,7 @@
-Index: sudo-1.8.31/plugins/sudoers/sudoers.in
+Index: sudo-1.9.9/plugins/sudoers/sudoers.in
 ===================================================================
---- sudo-1.8.31.orig/plugins/sudoers/sudoers.in
-+++ sudo-1.8.31/plugins/sudoers/sudoers.in
+--- sudo-1.9.9.orig/plugins/sudoers/sudoers.in
++++ sudo-1.9.9/plugins/sudoers/sudoers.in
 @@ -32,30 +32,23 @@
  ##
  ## Defaults specification
@@ -67,48 +67,17 @@ Index: sudo-1.8.31/plugins/sudoers/sudoers.in
  ##
  ## Runas alias specification
  ##
-@@ -84,13 +84,5 @@
+@@ -84,13 +83,5 @@ root ALL=(ALL:ALL) ALL
  ## Same thing without a password
- # %wheel ALL=(ALL) NOPASSWD: ALL
+ # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
  
 -## Uncomment to allow members of group sudo to execute any command
--# %sudo	ALL=(ALL) ALL
+-# %sudo	ALL=(ALL:ALL) ALL
 -
 -## Uncomment to allow any user to run sudo if they know the password
 -## of the user they are running the command as (root by default).
 -# Defaults targetpw  # Ask for the password of the target user
--# ALL ALL=(ALL) ALL  # WARNING: only use this together with 'Defaults targetpw'
+-# ALL ALL=(ALL:ALL) ALL  # WARNING: only use this together with 'Defaults targetpw'
 -
  ## Read drop-in files from @sysconfdir@/sudoers.d
  @includedir @sysconfdir@/sudoers.d
-Index: sudo-1.8.31/doc/sudoers.mdoc.in
-===================================================================
---- sudo-1.8.31.orig/doc/sudoers.mdoc.in
-+++ sudo-1.8.31/doc/sudoers.mdoc.in
-@@ -1985,7 +1985,7 @@ is present in the
- .Em env_keep
- list, both of which are strongly discouraged.
- This flag is
--.Em off
-+.Em on
- by default.
- .It authenticate
- If set, users must authenticate themselves via a password (or other
-@@ -2376,7 +2376,7 @@ If set,
- .Nm sudo
- will insult users when they enter an incorrect password.
- This flag is
--.Em @insults@
-+.Em off
- by default.
- .It log_allowed
- If set,
-@@ -3009,7 +3009,7 @@ database as an argument to the
- .Fl u
- option.
- This flag is
--.Em off
-+.Em on
- by default.
- .It tty_tickets
- If set, users must authenticate on a per-tty basis.
