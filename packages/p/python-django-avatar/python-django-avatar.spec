@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-avatar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Django-avatar package
 License:        BSD-3-Clause
 URL:            https://github.com/grantmcconnaughey/django-avatar/
 Source:         https://files.pythonhosted.org/packages/source/d/django-avatar/django-avatar-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#grantmcconnaughey/django-avatar#201
+Patch0:         support-django-40.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Pillow >= 2.0}
 BuildRequires:  %{python_module django-appconf >= 0.6}
@@ -42,7 +44,7 @@ Django-avatar automatically generates thumbnails and stores them to your default
 file storage backend for retrieval later.
 
 %prep
-%setup -q -n django-avatar-%{version}
+%autosetup -p1 -n django-avatar-%{version}
 
 %build
 %python_build
@@ -52,7 +54,7 @@ file storage backend for retrieval later.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=tests.settings --pythonpath=`pwd`
+%python_expand %{_bindir}/django-admin-%{$python_bin_suffix} test --settings=tests.settings --pythonpath=`pwd`
 
 %files %{python_files}
 %license LICENSE.txt

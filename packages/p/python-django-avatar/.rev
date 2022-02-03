@@ -75,4 +75,13 @@
   * Fixed bug where avatars couldn't be deleted if file was already deleted.</comment>
     <requestid>761499</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>eafc3ee429c96de84b1527624138c262</srcmd5>
+    <version>5.0.0</version>
+    <time>1643926604</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-django-40.patch:
+  * Support Django 4.0.</comment>
+    <requestid>950837</requestid>
+  </revision>
 </revisionlist>

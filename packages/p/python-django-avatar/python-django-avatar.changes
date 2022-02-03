@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 02:04:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-django-40.patch:
+  * Support Django 4.0.
+
+-------------------------------------------------------------------
 Tue Jan  7 09:53:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.0.0:
