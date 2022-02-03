@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 06:41:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 16.0.8
+  * https://github.com/electron/electron/releases/tag/v16.0.8
+
+-------------------------------------------------------------------
 Fri Jan 28 13:15:25 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix build on Fedora
