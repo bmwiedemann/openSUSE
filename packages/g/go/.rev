@@ -941,4 +941,12 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
   Refs boo#1190649 go1.17 release tracking (forwarded request 920683 from jfkw)</comment>
     <requestid>920689</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>0bc006788eb1410a5c428ac30387b02f</srcmd5>
+    <version>1.17</version>
+    <time>1643926535</time>
+    <user>dimstar_suse</user>
+    <comment>- Add golang Provides for RH/Fedora compatibility (forwarded request 833025 from Pharaoh_Atem)</comment>
+    <requestid>950568</requestid>
+  </revision>
 </revisionlist>

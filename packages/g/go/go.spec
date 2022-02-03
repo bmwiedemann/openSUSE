@@ -41,6 +41,8 @@ ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
 # We provide golang(API) so that projects can Prefer: go. Any project using Go
 # code with golang(API) BuildRequires should add Prefer: go.
 Provides:       golang(API) = %{api_version}
+# We provide this for RH/Fedora compatibility
+Provides:       golang = %{version}
 # Make this both Requires and BuildRequires go1.x so that we get build errors
 # if it is missing.
 BuildRequires:  go%{api_version}
@@ -57,6 +59,8 @@ safety of a static language.
 Summary:        Go documentation
 License:        BSD-3-Clause
 Group:          Documentation/Other
+# We provide this for RH/Fedora compatibility
+Provides:       golang-docs = %{version}
 Requires:       go = %{version}
 Supplements:    go = %{version}
 Requires:       go%{api_version}-doc
@@ -74,6 +78,8 @@ Url:            https://compiler-rt.llvm.org/
 Requires:       go = %{version}
 Supplements:    go = %{version}
 ExclusiveArch:  %{tsan_arch}
+# We provide this for RH/Fedora compatibility
+Provides:       golang-race = %{version}
 # Make this both Requires and BuildRequires go1.x-race so that we get build
 # errors if it is missing.
 BuildRequires:  go%{api_version}-race

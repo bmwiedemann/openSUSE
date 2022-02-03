@@ -17,6 +17,11 @@ Wed Feb 16 22:41:18 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
   Refs boo#1175132 go1.15 release tracking
 
 -------------------------------------------------------------------
+Fri Aug 28 17:14:07 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add golang Provides for RH/Fedora compatibility
+
+-------------------------------------------------------------------
 Tue Jun 30 17:15:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Enable for riscv64
