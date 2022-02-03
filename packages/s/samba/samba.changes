@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:23:44 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to 4.15.5
+  * CVE-2021-44141: UNIX extensions in SMB1 disclose whether the
+    outside target of a symlink exists; (bso#14911);
+    (bsc#1193690).
+  * CVE-2021-44142: Out-of-Bound Read/Write on Samba vfs_fruit
+    module; (bso#14914); (bsc#1194859).
+  * CVE-2022-0336:  Re-adding an SPN skips subsequent SPN
+    conflict checks; bso#14950); (bsc#1195048).
+
+-------------------------------------------------------------------
+Wed Jan 26 12:00:35 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- CVE-2021-44141: Information leak via symlinks of existance of
+  files or directories outside of the exported share; (bso#14911);
+  (bsc#1193690);
+- CVE-2021-44142: Out-of-bounds heap read/write vulnerability
+  in VFS module vfs_fruit allows code execution; (bso#14914);
+  (bsc#1194859);
+- CVE-2022-0336: Samba AD users with permission to write to an
+  account can impersonate arbitrary services; (bso#14950);
+  (bsc#1195048);
+
+-------------------------------------------------------------------
 Fri Jan 21 12:37:42 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.15.4
