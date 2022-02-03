@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(lua5.3)
+BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(systemd)
 Requires:       pipewire >= %{pipewire_minimum_version}
 %if 0%{?suse_version} <= 1500
