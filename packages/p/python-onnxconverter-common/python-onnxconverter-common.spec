@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnxconverter-common
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
-%define skip_python36 1
+# onnx is not yet ready for python 3.10
+%define skip_python310 1
 Name:           python-onnxconverter-common
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        ONNX Converter and Optimization Tools
 License:        MIT
 URL:            https://github.com/microsoft/onnxconverter-common
-Source:         https://github.com/microsoft/onnxconverter-common/archive/%{version}.tar.gz#/onnxconverter_common-%{version}.tar.gz
+Source:         https://github.com/microsoft/onnxconverter-common/archive/v%{version}.tar.gz#/onnxconverter_common-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module onnx}
 BuildRequires:  %{python_module protobuf}
@@ -60,12 +60,16 @@ dos2unix README.md
 
 %check
 # no onnxruntime in Factory
-ignorefiles="--ignore tests/test_float16.py --ignore tests/test_onnx2py.py --ignore tests/test_onnxfx.py"
+ignorefiles="--ignore tests/test_float16.py"
+ignorefiles+=" --ignore tests/test_onnx2py.py"
+ignorefiles+=" --ignore tests/test_onnxfx.py"
+ignorefiles+=" --ignore tests/test_auto_mixed_precision.py"
 %pytest $ignorefiles
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/onnxconverter_common*
+%{python_sitelib}/onnxconverter_common
+%{python_sitelib}/onnxconverter_common-%{version}*-info
 
 %changelog

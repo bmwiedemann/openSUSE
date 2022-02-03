@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  3 10:34:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.0
+  * Upgrade to opset 14(#183)
+  * Fix RNN version in opset 14 change(#186)
+  * Update max supported opset to 15.(#198)
+  * Temporarily disable fp16 test(#185)
+  * Add op_block_list arg to float16 converter(#190)
+  * Add node_block_list to fp16 conversion script(#191)
+  * Added script for automatic conversion to float16, excluding
+    the minim…(#193)
+  * Fix onnx2py for new onnx package(#177)
+  * Fix onnx2py to avoid making long paths(#192)
+  * Fix onnx2py for seq types(#194)
+  * Replace 'output' with 'input' in RuntimeError(#182)
+  * Add InstanceNormalization op to DEFAULT_OP_BLOCK_LIST(#197)
+- Skip python310: not supported yet by onnx
+
+-------------------------------------------------------------------
 Wed Apr  7 09:12:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.8.0 
