@@ -1,0 +1,30 @@
+From: mvyskocil@suse.com
+Subject: enable /dev/log related socket call
+
+Linux-PAM try to open /dev/log, but as socket is not enabled in seccomp
+sandbox, daemon is killed by SIGSYS. Because the attempt is made by process
+with RLIMIT_NOFILE, the correct fix would be to test if we can open a new fd in
+pam. Anyway I would say the risc is small, and other socket syscalls are disabled.
+
+Fixes: https://bugzilla.novell.com/show_bug.cgi?id=786024
+
+Index: vsftpd-3.0.5/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.5.orig/seccompsandbox.c	2022-02-02 11:03:38.133860169 +0100
++++ vsftpd-3.0.5/seccompsandbox.c	2022-02-02 11:03:38.177859528 +0100
+@@ -366,6 +366,15 @@ seccomp_sandbox_init()
+   {
+     bug("bad state in seccomp_sandbox_init");
+   }
++
++  //this is very probably an attempt to open /dev/log
++  //it fails because process cannot open any file, so it might be safe
++  //socket(PF_FILE, SOCK_DGRAM|SOCK_CLOEXEC, 0) = -1 EMFILE (Too many open files)
++  allow_nr_3_arg_match(__NR_socket,
++                       1, PF_FILE,
++                       2, SOCK_DGRAM | SOCK_CLOEXEC,
++                       3, 0);
++
+ }
+ 
+ void

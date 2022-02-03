@@ -1,0 +1,14 @@
+Broker has to wait for its child.
+
+Index: vsftpd-3.0.2/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.2.orig/seccompsandbox.c
++++ vsftpd-3.0.2/seccompsandbox.c
+@@ -540,6 +540,7 @@ seccomp_sandbox_setup_postlogin_broker()
+   seccomp_sandbox_setup_base();
+   seccomp_sandbox_setup_data_connections();
+   allow_nr_1_arg_match(__NR_sendmsg, 3, 0);
++  allow_nr(__NR_wait4);
+   if (tunable_chown_uploads)
+   {
+     allow_nr(__NR_fstat);

@@ -1,7 +1,7 @@
 #
 # spec file for package vsftpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,14 @@ Patch33:        vsftpd-avoid-bogus-ssl-write.patch
 Patch35:        0001-When-handling-FEAT-command-check-ssl_tlsv1_1-and-ssl.patch
 # PATCH-FIX-UPSTREAM https://bugzilla.suse.com/show_bug.cgi?id=1179553
 Patch36:        seccomp-fixes.patch
+Patch37:        vsftpd-openlog-force.patch
+Patch38:        vsftpd-seccomp-getrandom.patch
+Patch39:        vsftpd-seccomp-ssl.patch
+Patch40:        vsftpd-seccomp-wait4.patch
+Patch41:        revert-undocumented-config-file-format-changes.patch
+Patch42:        use-system-wide-tls-cipher-policy.patch
+Patch43:        vsftpd-allow-dev-log-socket.patch
+Patch44:        vsftpd-enable-sendto-for-prelogin-syslog.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  pam-devel
@@ -121,40 +129,7 @@ vsftpd was always faster, supporting over twice as many users in some
 tests.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch3 -p1
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10 -p1
-%patch11 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch35 -p1
-%patch36 -p1
+%autosetup -p1
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP

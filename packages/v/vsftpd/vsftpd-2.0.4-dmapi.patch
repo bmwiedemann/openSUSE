@@ -1,8 +1,8 @@
-Index: postlogin.c
+Index: vsftpd-3.0.5/postlogin.c
 ===================================================================
---- postlogin.c.orig	2012-04-10 16:09:50.440384915 +0200
-+++ postlogin.c	2012-04-10 16:10:01.193753389 +0200
-@@ -1053,6 +1053,11 @@
+--- vsftpd-3.0.5.orig/postlogin.c	2015-07-22 21:03:22.000000000 +0200
++++ vsftpd-3.0.5/postlogin.c	2022-02-01 20:12:02.710908421 +0100
+@@ -1061,6 +1061,11 @@ handle_upload_common(struct vsf_session*
      {
        do_truncate = 1;
      }

@@ -1,5 +1,7 @@
---- builddefs.h.orig
-+++ builddefs.h
+Index: vsftpd-3.0.5/builddefs.h
+===================================================================
+--- vsftpd-3.0.5.orig/builddefs.h	2021-08-02 09:01:43.000000000 +0200
++++ vsftpd-3.0.5/builddefs.h	2022-02-01 20:12:01.538925293 +0100
 @@ -3,7 +3,7 @@
  
  #undef VSF_BUILD_TCPWRAPPERS

@@ -1,0 +1,18 @@
+Force openlog() to open log immediately iff force!=0.
+Otherwise is log opened on first syslog() call which may be
+after the privileges are dropped and new file descriptors
+cannot be created.
+
+Index: vsftpd-3.0.5/sysutil.c
+===================================================================
+--- vsftpd-3.0.5.orig/sysutil.c	2022-02-01 19:38:36.487789134 +0100
++++ vsftpd-3.0.5/sysutil.c	2022-02-01 19:44:08.787005494 +0100
+@@ -2700,7 +2700,7 @@ vsf_sysutil_openlog(int force)
+ {
+   int facility = LOG_DAEMON;
+   int option = LOG_PID;
+-  if (!force)
++  if (force)
+   {
+     option |= LOG_NDELAY;
+   }

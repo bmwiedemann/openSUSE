@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Feb  1 18:42:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Add "seccomp-fixes.patch" to fix the syscall architecture offset
+  from 4 to 5, this change was documented in
+  <https://lore.kernel.org/patchwork/patch/554803/>.
+
+- Add "vsftpd-openlog-force.patch" to a logic error in the way the
+  force option for syslog's openlog() call was handled.
+
+- Add "vsftpd-seccomp-getrandom.patch" to fix a seccomp failure in
+  FIPS mode when SSL was enabled. [bsc#1052900]
+
+- Add "vsftpd-seccomp-ssl.patch" to allow stat() to be called,
+  which is required during SSL initialization by RAND_load_file().
+
+- Add "vsftpd-seccomp-wait4.patch" to allow wait4() to be called so
+  that the broker can wait for its child processes. [bsc#1021387]
+
+- Refresh patches to -p1 style so that we can use %autosetup:
+  * vsftpd-2.0.4-dmapi.patch
+  * vsftpd-2.0.4-enable-ssl.patch
+  * vsftpd-2.0.5-enable-debuginfo.patch
+  * vsftpd-2.0.5-utf8-log-names.patch
+  * vsftpd-2.0.5-vuser.patch
+  * vsftpd-2.3.5-conf.patch
+
+- Apply "revert-undocumented-config-file-format-changes.patch" to
+  revert the "ssl_tlsv1_X"-style config file options back to their
+  original spelling. The changes that dropped the underscore from
+  the version numbers in release 3.0.4 breaks existing
+  configurations and it was never documented anywhere -- not in the
+  package's changelog and not in the packages's own man page.
+
+- Apply "use-system-wide-tls-cipher-policy.patch" so that vsftpd
+  follows the system-wide TLS cipher policy "DEFAULT_SUSE" by
+  default. Run the command "openssl ciphers -v DEFAULT_SUSE" to see
+  which ciphers this includes.
+
+- Apply "add vsftpd-allow-dev-log-socket.patch" to allow sendto()
+  syscall when /dev/log support is enabled. [bnc#786024]
+
+- Apply "vsftpd-enable-sendto-for-prelogin-syslog.patch" to allow
+  sendto() to be called from check_limits(), which is necessary for
+  vsftpd to write to the system log.
+
+-------------------------------------------------------------------
 Wed Jan  5 10:21:02 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
@@ -22,10 +68,32 @@ Tue Jun 15 07:49:13 AM UTC 2021 - Peter Simons <psimons@suse.com>
   * Close the control connection after 10 unknown commands pre-login.
   * Reject any TLS ALPN advertisement that's not 'ftp'.
   * Add ssl_sni_hostname option to require a match on incoming SNI hostname.
+  * The options "ssl_tlsv1_1", "ssl_tlsv1_2", and "ssl_tlsv1_3"
+    have been renamed to "ssl_tlsv11", "ssl_tlsv12", and
+    "ssl_tlsv13" respectively. Note that the man page has not been
+    updated accordingly.
 
 - Upstream has a new GPG key (7B89011BCAE1CFEA).
 
 - "0001-Introduce-TLSv1.1-and-TLSv1.2-options.patch" is now obsolete.
+
+- "0001-Introduce-TLSv1.3-option.patch" is now obsolete.
+
+- "vsftpd-seccomp-syslog.patch" is now obsolete.
+
+-------------------------------------------------------------------
+Mon Jun 14 14:26:05 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- OpenSSL was updated to version 1.1.1 in SLE-15-SP2, adding
+  support for the TLSv1.3 protocol. As a consequence, some SLE-15
+  applications that link OpenSSL for TLS support -- like vsftpd --,
+  gained the ability to use the newer TLS protocol, which created
+  interoperability problems with FTP clients in some cases. To
+  remedy the situation, "0001-Introduce-TLSv1.3-option.patch" was
+  applied in a forked SLE-15-SP2 version of vsftpd. The patch adds
+  the configuration option "ssl_tlsv1_3" that system administrators
+  can use to disable TLSv1.3 support on their servers.
+  [bsc#1187188]
 
 -------------------------------------------------------------------
 Thu Dec  3 11:20:20 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
@@ -105,7 +173,8 @@ Wed Apr 25 06:32:25 UTC 2018 - psimons@suse.com
 
 - vsftpd-enable-syscalls-needed-by-sle15.patch: Enable wait4(),
   sysinfo(), and shutdown() syscalls in seccomp sandbox. These are
-  required for the daemon to work properly on SLE-15. [bsc#1089088]
+  required for the daemon to work properly on SLE-15. [bsc#1089088,
+  bsc#1180314]
 
 -------------------------------------------------------------------
 Tue Apr  3 11:48:08 UTC 2018 - vcizek@suse.com
@@ -205,6 +274,12 @@ Fri Aug  5 11:27:39 UTC 2016 - tchvatal@suse.com
 Wed Mar 23 10:07:55 UTC 2016 - tchvatal@suse.com
 
 - Require shadow and do not output the error out of useradd
+
+-------------------------------------------------------------------
+Tue Mar 22 14:56:05 UTC 2016 - tchvatal@suse.com
+
+- Fix hang when using seccomp and syslog bnc#971784:
+  * vsftpd-seccomp-syslog.patch
 
 -------------------------------------------------------------------
 Tue Mar 22 14:27:27 UTC 2016 - tchvatal@suse.com

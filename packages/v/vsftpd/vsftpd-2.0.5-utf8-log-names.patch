@@ -1,8 +1,8 @@
-Index: str.c
+Index: vsftpd-3.0.5/str.c
 ===================================================================
---- str.c.orig	2012-03-28 17:25:40.000000000 +0200
-+++ str.c	2012-04-10 16:10:59.965767345 +0200
-@@ -27,6 +27,24 @@
+--- vsftpd-3.0.5.orig/str.c	2012-09-16 09:09:06.000000000 +0200
++++ vsftpd-3.0.5/str.c	2022-02-01 20:12:05.458868861 +0100
+@@ -27,6 +27,24 @@ static int str_equal_internal(const char
                                const char* p_buf2, unsigned int buf2_len);
  
  /* Private functions */
@@ -27,7 +27,7 @@ Index: str.c
  static void
  s_setbuf(struct mystr* p_str, char* p_newbuf)
  {
-@@ -181,6 +199,45 @@
+@@ -181,6 +199,45 @@ str_reserve(struct mystr* p_str, unsigne
    p_str->p_buf[res_len - 1] = '\0';
  }
  
@@ -73,29 +73,26 @@ Index: str.c
  int
  str_isempty(const struct mystr* p_str)
  {
-@@ -702,11 +759,13 @@
+@@ -702,6 +759,7 @@ void
  str_replace_unprintable(struct mystr* p_str, char new_char)
  {
    unsigned int i;
--  for (i=0; i < p_str->len; i++)
--  {
--    if (!vsf_sysutil_isprint(p_str->p_buf[i]))
 +  if( !str_is_utf8( p_str ) ) {
-+    for (i=0; i < p_str->len; i++)
-     {
--      p_str->p_buf[i] = new_char;
-+      if (!vsf_sysutil_isprint(p_str->p_buf[i]))
-+      {
-+        p_str->p_buf[i] = new_char;
-+      }
+   for (i=0; i < p_str->len; i++)
+   {
+     if (!vsf_sysutil_isprint(p_str->p_buf[i]))
+@@ -709,5 +767,6 @@ str_replace_unprintable(struct mystr* p_
+       p_str->p_buf[i] = new_char;
      }
    }
++  }
  }
-Index: str.h
+ 
+Index: vsftpd-3.0.5/str.h
 ===================================================================
---- str.h.orig	2008-12-17 06:53:23.000000000 +0100
-+++ str.h	2012-04-10 16:10:59.965767345 +0200
-@@ -36,6 +36,7 @@
+--- vsftpd-3.0.5.orig/str.h	2012-09-16 09:01:52.000000000 +0200
++++ vsftpd-3.0.5/str.h	2022-02-01 20:12:05.458868861 +0100
+@@ -36,6 +36,7 @@ void str_free(struct mystr* p_str);
  void str_trunc(struct mystr* p_str, unsigned int trunc_len);
  void str_reserve(struct mystr* p_str, unsigned int res_len);
  

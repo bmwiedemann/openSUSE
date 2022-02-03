@@ -1,7 +1,7 @@
-Index: vsftpd.conf
+Index: vsftpd-3.0.5/vsftpd.conf
 ===================================================================
---- vsftpd.conf.orig
-+++ vsftpd.conf
+--- vsftpd-3.0.5.orig/vsftpd.conf	2011-12-17 19:24:40.000000000 +0100
++++ vsftpd-3.0.5/vsftpd.conf	2022-02-01 20:12:06.546853199 +0100
 @@ -4,23 +4,89 @@
  # loosens things up a bit, to make the ftp daemon more usable.
  # Please see vsftpd.conf.5 for all compiled in defaults.

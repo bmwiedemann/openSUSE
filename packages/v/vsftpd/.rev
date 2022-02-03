@@ -858,4 +858,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment></comment>
     <requestid>948334</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>362c9c0b22a4199fb50437f7ed2e1274</srcmd5>
+    <version>3.0.5</version>
+    <time>1643926547</time>
+    <user>dimstar_suse</user>
+    <comment>Import patches from SLE-12-SP4, SLE-15-SP2, and revert undocumented config file format changes.</comment>
+    <requestid>950708</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,15 @@
+Index: vsftpd-3.0.5/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.5.orig/seccompsandbox.c	2022-02-01 19:47:13.916340458 +0100
++++ vsftpd-3.0.5/seccompsandbox.c	2022-02-01 19:51:24.196737535 +0100
+@@ -406,6 +406,10 @@ seccomp_sandbox_setup_prelogin(const str
+   {
+     allow_nr_1_arg_match(__NR_recvmsg, 3, 0);
+     allow_nr_2_arg_match(__NR_setsockopt, 2, IPPROTO_TCP, 3, TCP_NODELAY);
++    // called from openssl's RAND_poll which is invoked in FIPS mode when the DRBG is seeded
++    allow_nr(__NR_getrandom);
++    allow_nr_1_arg_mask(__NR_open, 2, O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC);
++    allow_nr(__NR_getuid);
+   }
+   if (tunable_syslog_enable)
+   {

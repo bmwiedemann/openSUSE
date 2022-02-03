@@ -1,0 +1,26 @@
+Index: vsftpd-3.0.5/tunables.c
+===================================================================
+--- vsftpd-3.0.5.orig/tunables.c	2022-02-02 10:58:56.589962539 +0100
++++ vsftpd-3.0.5/tunables.c	2022-02-02 11:00:17.600782133 +0100
+@@ -295,7 +295,7 @@ tunables_load_defaults()
+   install_str_setting("/usr/share/ssl/certs/vsftpd.pem",
+                       &tunable_rsa_cert_file);
+   install_str_setting(0, &tunable_dsa_cert_file);
+-  install_str_setting("ECDHE-RSA-AES256-GCM-SHA384", &tunable_ssl_ciphers);
++  install_str_setting("DEFAULT_SUSE", &tunable_ssl_ciphers);
+   install_str_setting(0, &tunable_rsa_private_key_file);
+   install_str_setting(0, &tunable_dsa_private_key_file);
+   install_str_setting(0, &tunable_ca_certs_file);
+Index: vsftpd-3.0.5/vsftpd.conf.5
+===================================================================
+--- vsftpd-3.0.5.orig/vsftpd.conf.5	2022-02-02 10:58:56.589962539 +0100
++++ vsftpd-3.0.5/vsftpd.conf.5	2022-02-02 11:01:58.855306755 +0100
+@@ -1025,7 +1025,7 @@ man page for further details. Note that
+ security precaution as it prevents malicious remote parties forcing a cipher
+ which they have found problems with.
+ 
+-Default: DES-CBC3-SHA
++Default: DEFAULT_SUSE
+ .TP
+ .B ssl_sni_hostname
+ If set, SSL connections will be rejected unless the SNI hostname in the

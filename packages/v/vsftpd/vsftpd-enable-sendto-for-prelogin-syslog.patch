@@ -1,0 +1,21 @@
+Enable sendto for syslog logging to /dev/log in prelogin
+
+We write to log from check_limits() and therefore we have to allow
+sendto() for syslog otherwise sandbox will kill the child.
+
+Index: vsftpd-3.0.2/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.2.orig/seccompsandbox.c
++++ vsftpd-3.0.2/seccompsandbox.c
+@@ -388,6 +388,11 @@ seccomp_sandbox_setup_prelogin(const str
+                        1, PF_FILE,
+                        2, SOCK_DGRAM | SOCK_CLOEXEC,
+                        3, 0);
++  // allow syslog logs from check_limits()
++  if (tunable_syslog_enable)
++  {
++    allow_nr_1_arg_match(__NR_sendto, 6, 0);
++  }
+ 
+ }
+ 
