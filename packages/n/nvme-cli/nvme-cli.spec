@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.0~0
+Version:        2.0~2
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -31,7 +31,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libnvme-devel
+BuildRequires:  libnvme-devel >= 1.0~2
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  meson >= 0.47.0
@@ -92,6 +92,8 @@ install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostnqn
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostid
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/discovery.conf
 rm %{buildroot}%{_sysconfdir}/dracut/dracut.conf.d/70-nvmf-autoconnect.conf
+
+sed -i 's;/bin/systemctl;/usr/bin/systemctl;g' %{buildroot}%{_udevrulesdir}/70-nvmf-autoconnect.rules
 
 # for subpackage nvme-cli-regress-script:
 install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress

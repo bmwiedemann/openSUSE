@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 01 11:39:02 UTC 2022 - daniel.wagner@suse.com
+
+- Update to version 2.0~2:
+  * Adapt to logging API changes in libnvme
+  * Adapt to scan API changes in libnvme
+  * Reworked error message handling
+  * Fix 'list-ns' (bsc#1195151)
+  * Add 'gen-tls-key' and 'check-tls-key'
+  * Add Media Unit Status log page support
+  * Cleanups and build fixes
+- Fix path to systemctl (bsc#1193699)
+
+-------------------------------------------------------------------
 Wed Jan 19 11:46:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Fix zsh completion package depenedencies.
