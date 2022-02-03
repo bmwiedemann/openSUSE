@@ -3557,4 +3557,12 @@ qeth attributes used to be lost once qeth device was configured)
     <comment>submit new version 4.4.35</comment>
     <requestid>949714</requestid>
   </revision>
+  <revision rev="471" vrev="1">
+    <srcmd5>90153d0bb033720d6c9d76f9f77b2dbb</srcmd5>
+    <version>4.4.36</version>
+    <time>1643926544</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.36</comment>
+    <requestid>950684</requestid>
+  </revision>
 </revisionlist>
