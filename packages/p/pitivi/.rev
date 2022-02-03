@@ -345,4 +345,12 @@
     <comment>- Remove unneeded BuildRequires on python3-nose. (forwarded request 930765 from StevenK)</comment>
     <requestid>930822</requestid>
   </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>3820e4e53cd19d6d8997e3dca5f22997</srcmd5>
+    <version>2021.05</version>
+    <time>1643926605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950839</requestid>
+  </revision>
 </revisionlist>

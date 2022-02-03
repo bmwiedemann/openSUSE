@@ -1,7 +1,7 @@
 #
 # spec file for package pitivi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.pitivi.org/
 Source0:        https://download.gnome.org/sources/pitivi/2021/%{name}-%{version}.tar.xz
-Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM ddf2369d1fc6fddd63f676cc905a8b8e96291a4c.patch -- Fix build with meson 0.60 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/pitivi/-/commit/ddf2369d1fc6fddd63f676cc905a8b8e96291a4c.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gnome-doc-utils-devel >= 0.18.0
 BuildRequires:  gobject-introspection >= 1.31.1

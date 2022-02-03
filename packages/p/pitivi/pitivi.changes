@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  2 19:48:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ddf2369d1fc6fddd63f676cc905a8b8e96291a4c.patch: Fix build
+  with meson 0.60 and newer.
+- Drop pitivi-rpmlintrc, no longer needed.
+
+-------------------------------------------------------------------
 Thu Nov 11 00:06:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python3-nose. 
