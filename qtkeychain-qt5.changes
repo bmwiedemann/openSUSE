@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  2 08:14:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to restore compatibility with CMake 3.16:
+  * 0001-Define-a-poper-exported-CMake-target-instead-of-intr.patch
+
+-------------------------------------------------------------------
+Tue Dec 14 16:35:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix qtkeychain users on Leap.
+
+-------------------------------------------------------------------
 Fri Dec 10 16:55:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.13.2

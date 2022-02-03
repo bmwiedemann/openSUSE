@@ -1,7 +1,7 @@
 #
 # spec file for package qtkeychain-qt6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Platform-independent Qt API for storing passwords securely
 License:        BSD-2-Clause
 URL:            https://github.com/frankosterfeld/qtkeychain
 Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/qtkeychain-qt5-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Define-a-poper-exported-CMake-target-instead-of-intr.patch
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
