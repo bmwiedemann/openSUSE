@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 12:29:59 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- jsc#SLE-22015
+  - Master/Slave servers and zones renamed to conform to inclusive
+    naming. According to RFC8499 primary/secondary names are used
+    now.
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)

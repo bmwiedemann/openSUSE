@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-dns-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-dns-server
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 URL:            https://github.com/yast/yast-dns-server
 Summary:        YaST2 - DNS Server Configuration
