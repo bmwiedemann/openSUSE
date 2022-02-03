@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.i18n
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pythons python3
 Name:           python-flufl.i18n
-Version:        3.2
+Version:        4.0
 Release:        0
 Summary:        High level API for internationalizing Python libraries and applications
 License:        Apache-2.0
-URL:            https://flufli18n.readthedocs.io
+URL:            https://gitlab.com/warsaw/flufl.i18n
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.i18n/flufl.i18n-%{version}.tar.gz
-Patch0:         python-flufl.i18n-fix-setup.patch
+BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sybil}
@@ -48,10 +51,10 @@ High level API for internationalizing Python libraries and applications.
 %autosetup -n flufl.i18n-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +63,9 @@ High level API for internationalizing Python libraries and applications.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/flufl
+%{python_sitelib}/flufl/i18n*
+%{python_sitelib}/flufl.i18n*
+%{python_sitelib}/flufl.i18n-%{version}*info
 
 %changelog

@@ -27,4 +27,22 @@
 </comment>
     <requestid>932382</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b62efce74a8c4f345f0392a97e64d06f</srcmd5>
+    <version>4.0</version>
+    <time>1643926595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0:
+  - Use modern package management by adopting pdm and
+    pyproject.toml, and dropping setup.py and setup.cfg.
+  - Build the docs with Python 3.8.
+  - Update to version 3.0 of Sybil.
+  - Adopt the Furo documentation theme.
+  - Use importlib.metadata.version() as a better way to get the
+    package version number for the documentation.
+  - Drop Python 3.6 support.
+  - Update copyright years.
+- Remove obsolete python-flufl.i18n-fix-setup.patch</comment>
+    <requestid>948294</requestid>
+  </revision>
 </revisionlist>
