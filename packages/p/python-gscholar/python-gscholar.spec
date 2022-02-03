@@ -1,7 +1,7 @@
 #
 # spec file for package python-gscholar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-gscholar
-Version:        1.6.1
+Version:        2.0.0
 Release:        0
 Summary:        Python library to query Google Scholar
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/venthur/gscholar
 Source0:        https://files.pythonhosted.org/packages/source/g/gscholar/gscholar-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,7 +61,7 @@ sed -i -e '/^#!\//, 1d' gscholar/gscholar.py
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGELOG.md
-%{python_sitelib}/*
+%{python_sitelib}/gscholar*
 %python_alternative %{_bindir}/gscholar
 
 %changelog

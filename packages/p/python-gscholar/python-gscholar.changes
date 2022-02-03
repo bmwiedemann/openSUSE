@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:18:19 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python2
+
+- update to version 2.0.0:
+  * removed Python2 support
+  * migrated to pytest
+  * allow tests to fail that are effected by google's rate limiter
+  * added github action for tests and dependency updates
+  * fixed various linter errors
+
+-------------------------------------------------------------------
 Tue May 26 06:34:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
