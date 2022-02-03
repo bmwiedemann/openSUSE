@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 05:38:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on python-asgiref. 
+
+-------------------------------------------------------------------
 Mon Jan 24 09:51:06 UTC 2022 - kkaempf@suse.com
 
 - Update to version 0.17.0:

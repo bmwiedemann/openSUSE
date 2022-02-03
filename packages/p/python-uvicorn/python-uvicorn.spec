@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-uvicorn
 Version:        0.17.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-asgiref >= 3.4
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
 Requires:       python-httptools >= 0.1.0
