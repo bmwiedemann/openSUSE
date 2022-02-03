@@ -1,0 +1,292 @@
+Index: pipewire-0.3.44/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/meson.build
++++ pipewire-0.3.44/meson.build
+@@ -1,7 +1,7 @@
+ project('pipewire', ['c' ],
+   version : '0.3.45',
+   license : [ 'MIT', 'LGPL-2.1-or-later', 'GPL-2.0-only' ],
+-  meson_version : '>= 0.59.0',
++  meson_version : '>= 0.54.0',
+   default_options : [ 'warning_level=3',
+                       'c_std=gnu99',
+                       'cpp_std=c++17',
+@@ -304,8 +304,8 @@ includes_inc = include_directories('incl
+ pipewire_inc = include_directories('src')
+ 
+ makedata = configuration_data()
+-makedata.set('BUILD_ROOT', meson.project_build_root())
+-makedata.set('SOURCE_ROOT', meson.project_source_root())
++makedata.set('BUILD_ROOT', meson.build_root())
++makedata.set('SOURCE_ROOT', meson.source_root())
+ makedata.set('VERSION', pipewire_version)
+ if version_arr.length() == 4
+   makedata.set('TAG', 'HEAD')
+@@ -509,20 +509,20 @@ endif
+ setenv = find_program('pw-uninstalled.sh')
+ run_target('pw-uninstalled',
+   command : [setenv,
+-             '-b@0@'.format(meson.project_build_root()),
++             '-b@0@'.format(meson.build_root()),
+              '-v@0@'.format(pipewire_version)]
+ )
+ 
+ devenv = environment()
+ 
+-builddir = meson.project_build_root()
+-srcdir = meson.project_source_root()
++builddir = meson.build_root()
++srcdir = meson.source_root()
+ 
+-devenv.set('PIPEWIRE_CONFIG_DIR', pipewire_dep.get_variable('confdatadir'))
+-devenv.set('PIPEWIRE_MODULE_DIR', pipewire_dep.get_variable('moduledir'))
++devenv.set('PIPEWIRE_CONFIG_DIR', pipewire_dep.get_variable(internal: 'confdatadir'))
++devenv.set('PIPEWIRE_MODULE_DIR', pipewire_dep.get_variable(internal: 'moduledir'))
+ 
+-devenv.set('SPA_PLUGIN_DIR', spa_dep.get_variable('plugindir'))
+-devenv.set('SPA_DATA_DIR', spa_dep.get_variable('datadir'))
++devenv.set('SPA_PLUGIN_DIR', spa_dep.get_variable(internal: 'plugindir'))
++devenv.set('SPA_DATA_DIR', spa_dep.get_variable(internal: 'datadir'))
+ 
+ devenv.set('GST_PLUGIN_PATH', builddir / 'src'/ 'gst')
+ 
+@@ -534,4 +534,6 @@ devenv.set('LD_LIBRARY_PATH', builddir /
+ 
+ devenv.set('PW_UNINSTALLED', '1')
+ 
+-meson.add_devenv(devenv)
++if meson.version().version_compare('>=0.58.0')
++  meson.add_devenv(devenv)
++endif
+Index: pipewire-0.3.44/spa/plugins/audioconvert/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/spa/plugins/audioconvert/meson.build
++++ pipewire-0.3.44/spa/plugins/audioconvert/meson.build
+@@ -140,7 +140,7 @@ foreach a : test_apps
+       install : installed_tests_enabled,
+       install_dir : installed_tests_execdir / 'audioconvert'),
+       env : [
+-        'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
++        'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable(internal: 'plugindir')),
+         ])
+ 
+     if installed_tests_enabled
+@@ -170,7 +170,7 @@ foreach a : benchmark_apps
+       install : installed_tests_enabled,
+       install_dir : installed_tests_execdir / 'audioconvert'),
+       env : [
+-        'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
++        'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable(internal: 'plugindir')),
+         ])
+ 
+     if installed_tests_enabled
+Index: pipewire-0.3.44/spa/tests/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/spa/tests/meson.build
++++ pipewire-0.3.44/spa/tests/meson.build
+@@ -5,7 +5,7 @@ find = find_program('find', required: fa
+ summary({'find (for header testing)': find.found()}, bool_yn: true, section: 'Optional programs')
+ if find.found()
+   spa_headers = run_command(find,
+-                            meson.project_source_root() / 'spa' / 'include',
++                            meson.source_root() / 'spa' / 'include',
+                             '-name', '*.h',
+                             '-not', '-name', 'type-info.h',
+                             '-type', 'f',
+@@ -41,7 +41,7 @@ foreach a : benchmark_apps
+       install_dir : installed_tests_execdir,
+     ),
+     env : [
+-      'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
++      'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable(internal: 'plugindir')),
+     ]
+   )
+ 
+Index: pipewire-0.3.44/src/daemon/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/src/daemon/meson.build
++++ pipewire-0.3.44/src/daemon/meson.build
+@@ -18,9 +18,9 @@ conf_config.set('pulse_comment', '#')
+ 
+ conf_config_uninstalled = conf_config
+ conf_config_uninstalled.set('pipewire_path',
+-  meson.project_build_root() / 'src' / 'daemon' / 'pipewire')
++  meson.build_root() / 'src' / 'daemon' / 'pipewire')
+ conf_config_uninstalled.set('pipewire_pulse_path',
+-  meson.project_build_root() / 'src' / 'daemon' / 'pipewire-pulse')
++  meson.build_root() / 'src' / 'daemon' / 'pipewire-pulse')
+ conf_config_uninstalled.set('pulse_comment', '')
+ 
+ build_ms = 'media-session' in get_option('session-managers')
+@@ -106,7 +106,7 @@ custom_target('pipewire-uninstalled',
+   install: false,
+   input: pipewire_exec,
+   output: 'pipewire-uninstalled',
+-  command: [ln, '-fs', meson.project_build_root() + '/@INPUT@', '@OUTPUT@'],
++  command: [ln, '-fs', meson.build_root() + '/@INPUT@', '@OUTPUT@'],
+ )
+ 
+ #desktop_file = i18n.merge_file(
+Index: pipewire-0.3.44/src/daemon/systemd/user/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/src/daemon/systemd/user/meson.build
++++ pipewire-0.3.44/src/daemon/systemd/user/meson.build
+@@ -1,4 +1,4 @@
+-systemd_user_services_dir = systemd.get_variable('systemduserunitdir', pkgconfig_define : [ 'prefix', prefix])
++#systemd_user_services_dir = systemd.get_variable('systemduserunitdir', pkgconfig_define : [ 'prefix', prefix])
+ if get_option('systemd-user-unit-dir') != ''
+   systemd_user_services_dir = get_option('systemd-user-unit-dir')
+ endif
+Index: pipewire-0.3.44/src/modules/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/src/modules/meson.build
++++ pipewire-0.3.44/src/modules/meson.build
+@@ -368,9 +368,9 @@ test('pw-test-protocol-native',
+     install_dir : installed_tests_execdir,
+   ),
+   env : [
+-    'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
+-    'PIPEWIRE_CONFIG_DIR=@0@'.format(pipewire_dep.get_variable('confdatadir')),
+-    'PIPEWIRE_MODULE_DIR=@0@'.format(pipewire_dep.get_variable('moduledir')),
++    'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable(internal: 'plugindir')),
++    'PIPEWIRE_CONFIG_DIR=@0@'.format(pipewire_dep.get_variable(internal: 'confdatadir')),
++    'PIPEWIRE_MODULE_DIR=@0@'.format(pipewire_dep.get_variable(internal: 'moduledir')),
+   ]
+ )
+ 
+Index: pipewire-0.3.44/src/tests/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/src/tests/meson.build
++++ pipewire-0.3.44/src/tests/meson.build
+@@ -13,9 +13,9 @@ foreach a : test_apps
+       install : installed_tests_enabled,
+       install_dir : installed_tests_execdir),
+     env : [
+-      'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
+-      'PIPEWIRE_CONFIG_DIR=@0@'.format(pipewire_dep.get_variable('confdatadir')),
+-      'PIPEWIRE_MODULE_DIR=@0@'.format(pipewire_dep.get_variable('moduledir')),
++      'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable(internal: 'plugindir')),
++      'PIPEWIRE_CONFIG_DIR=@0@'.format(pipewire_dep.get_variable(internal: 'confdatadir')),
++      'PIPEWIRE_MODULE_DIR=@0@'.format(pipewire_dep.get_variable(internal: 'moduledir')),
+       ])
+ 
+   if installed_tests_enabled
+Index: pipewire-0.3.44/test/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/test/meson.build
++++ pipewire-0.3.44/test/meson.build
+@@ -14,8 +14,8 @@ pwtest_deps = [
+ ]
+ 
+ pwtest_c_args = [
+-  '-DBUILD_ROOT="@0@"'.format(meson.project_build_root()),
+-  '-DSOURCE_ROOT="@0@"'.format(meson.project_source_root()),
++  '-DBUILD_ROOT="@0@"'.format(meson.build_root()),
++  '-DSOURCE_ROOT="@0@"'.format(meson.source_root()),
+ ]
+ 
+ pwtest_inc = [
+Index: pipewire-0.3.44/doc/meson.build
+===================================================================
+--- pipewire-0.3.44.orig/doc/meson.build
++++ pipewire-0.3.44/doc/meson.build
+@@ -1,8 +1,8 @@
+ doxyfile_conf = configuration_data()
+ doxyfile_conf.set('PACKAGE_NAME', meson.project_name())
+ doxyfile_conf.set('PACKAGE_VERSION', meson.project_version())
+-doxyfile_conf.set('top_srcdir', meson.project_source_root())
+-doxyfile_conf.set('top_builddir', meson.project_build_root())
++doxyfile_conf.set('top_srcdir', meson.source_root())
++doxyfile_conf.set('top_builddir', meson.build_root())
+ 
+ dot_found = find_program('dot', required: false).found()
+ summary({'dot (used with doxygen)': dot_found}, bool_yn: true, section: 'Optional programs')
+@@ -48,35 +48,35 @@ extra_docs = [
+ 
+ inputs = []
+ foreach extra : extra_docs
+-  inputs += meson.project_source_root() / 'doc' / extra
++  inputs += meson.source_root() / 'doc' / extra
+ endforeach
+ foreach h : pipewire_headers
+-  inputs += meson.project_source_root() / 'src' / 'pipewire' / h
++  inputs += meson.source_root() / 'src' / 'pipewire' / h
+ endforeach
+ foreach h : pipewire_ext_headers
+-  inputs += meson.project_source_root() / 'src' / 'pipewire' / 'extensions' / h
++  inputs += meson.source_root() / 'src' / 'pipewire' / 'extensions' / h
+ endforeach
+ foreach h : pipewire_ext_sm_headers
+-  inputs += meson.project_source_root() / 'src' / 'pipewire' / 'extensions' / h
++  inputs += meson.source_root() / 'src' / 'pipewire' / 'extensions' / h
+ endforeach
+ foreach h : pipewire_sources
+-  inputs += meson.project_source_root() / 'src' / 'pipewire' / h
++  inputs += meson.source_root() / 'src' / 'pipewire' / h
+ endforeach
+ foreach h : module_sources
+-  inputs += meson.project_source_root() / 'src' / 'modules' / h
++  inputs += meson.source_root() / 'src' / 'modules' / h
+ endforeach
+-inputs += meson.project_source_root() / 'test' / 'pwtest.h'
+-input_dirs = [ meson.project_source_root() / 'spa' / 'include' / 'spa' ]
++inputs += meson.source_root() / 'test' / 'pwtest.h'
++input_dirs = [ meson.source_root() / 'spa' / 'include' / 'spa' ]
+ 
+ path_prefixes = [
+-  meson.project_source_root() / 'src',
+-  meson.project_source_root() / 'spa' / 'include',
+-  meson.project_source_root(),
++  meson.source_root() / 'src',
++  meson.source_root() / 'spa' / 'include',
++  meson.source_root(),
+ ]
+ 
+ cssfiles = [
+-  meson.project_source_root() / 'doc' / 'doxygen-awesome.css',
+-  meson.project_source_root() / 'doc' / 'custom.css'
++  meson.source_root() / 'doc' / 'doxygen-awesome.css',
++  meson.source_root() / 'doc' / 'custom.css'
+ ]
+ 
+ # Example files (in order from simple to esoteric)
+@@ -116,13 +116,25 @@ input_dirs += [ 'doc/examples.dox' ]
+ 
+ man_doxygen = []
+ man_subpages = []
++manpages = [
++  'pipewire.1.rst.in',
++  'pipewire-pulse.1.rst.in',
++  'pipewire.conf.5.rst.in',
++  'pw-cat.1.rst.in',
++  'pw-cli.1.rst.in',
++  'pw-dot.1.rst.in',
++  'pw-metadata.1.rst.in',
++  'pw-mididump.1.rst.in',
++  'pw-mon.1.rst.in',
++  'pw-profiler.1.rst.in',
++]
+ foreach m : manpages
+   manconf = configuration_data()
+-  pagename = 'page_man_' + m.split('.rst.in').get(0).replace('.', '_').replace('-', '_')
++  pagename = 'page_man_' + m.split('.rst.in').get(0).underscorify()
+   filename = m.split('.rst.in').get(0) + '.dox'
+   manconf.set('pagename', pagename)
+-  manconf.set('title', m.split('.rst.in').get(0).replace('.1','').replace('.5',''))
+-  manconf.set('filename', meson.project_source_root() / 'man' / m)
++  manconf.set('title', m.split('.rst.in').get(0).strip('.15'))
++  manconf.set('filename', meson.source_root() / 'man' / m)
+   manfile = configure_file(input: 'manpage.dox.in',
+                            output: filename,
+                            configuration: manconf)
+@@ -141,8 +153,8 @@ input_dirs += [ 'doc/pipewire-tools.dox'
+ doxyfile_conf.set('inputs', ' '.join(inputs + input_dirs))
+ doxyfile_conf.set('cssfiles', ' '.join(cssfiles))
+ doxyfile_conf.set('path_prefixes', ' '.join(path_prefixes))
+-doxyfile_conf.set('c_input_filter', meson.project_source_root() / 'doc' / 'input-filter.sh')
+-doxyfile_conf.set('h_input_filter', meson.project_source_root() / 'doc' / 'input-filter-h.sh')
++doxyfile_conf.set('c_input_filter', meson.source_root() / 'doc' / 'input-filter.sh')
++doxyfile_conf.set('h_input_filter', meson.source_root() / 'doc' / 'input-filter-h.sh')
+ 
+ doxyfile = configure_file(input: 'Doxyfile.in',
+                           output: 'Doxyfile',

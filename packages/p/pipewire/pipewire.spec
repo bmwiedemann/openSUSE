@@ -53,7 +53,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.44
+Version:        0.3.45
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -61,6 +61,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch0:         reduce-meson-dependency.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -70,7 +71,11 @@ BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+%if 0%{?sle_version} == 150300
+BuildRequires:  meson >= 0.54.0
+%else
 BuildRequires:  meson >= 0.59.0
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
@@ -300,8 +305,8 @@ This package contains an ALSA plugin for the PipeWire media server.
 %package pulseaudio
 Summary:        PipeWire PulseAudio implementation
 Group:          Development/Libraries/C and C++
-Recommends:     %{name} >= %{version}-%{release}
 Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
 Conflicts:      pulseaudio
 %if 0%{suse_version} >= 1550
 Requires(post): pulseaudio-setup
@@ -320,7 +325,10 @@ This package provides a PulseAudio implementation based on PipeWire
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if 0%{?sle_version} == 150300
+%patch0 -p1
+%endif
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -333,6 +341,7 @@ export CXX=g++-9
     -Dgstreamer=enabled \
     -Dffmpeg=enabled \
     -Dsystemd=enabled \
+    -Dsystemd-user-unit-dir=%{_userunitdir} \
     -Dgstreamer-device-provider=disabled \
     -Droc=disabled \
 %if %{with_vulkan}
