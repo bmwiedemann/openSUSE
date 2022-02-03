@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.lock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flufl.lock
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        NFS-safe file locking with timeouts for POSIX and Windows
 License:        Apache-2.0
-URL:            https://flufllock.readthedocs.io
+URL:            https://gitlab.com/warsaw/flufl.lock
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.lock/flufl.lock-%{version}.tar.gz
-Patch:          python-flufl.lock-fix-setup.patch
+BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
@@ -33,15 +33,16 @@ BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
 Requires:       python-psutil
 Requires:       python-typing_extensions
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sybil}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,10 +52,10 @@ NFS-safe file locking with timeouts for POSIX and Windows.
 %autosetup -p1 -n flufl.lock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +64,8 @@ NFS-safe file locking with timeouts for POSIX and Windows.
 %files %{python_files}
 %doc README.rst docs/NEWS.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/flufl
+%{python_sitelib}/flufl/lock*
+%{python_sitelib}/flufl.lock-%{version}*info
 
 %changelog
