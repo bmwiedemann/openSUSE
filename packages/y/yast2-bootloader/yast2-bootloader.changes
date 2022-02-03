@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 28 22:37:00 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow product/system role to select boot timeout (jsc#SLE-22667)
+- 4.4.16
+
+-------------------------------------------------------------------
 Tue Jan 25 13:11:58 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).

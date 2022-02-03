@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.4.15
+Version:        4.4.16
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -25,8 +25,8 @@ Group:          System/YaST
 URL:            https://github.com/yast/yast-bootloader
 Source0:        %{name}-%{version}.tar.bz2
 
-# Replace PackageSystem with Package
-BuildRequires:  yast2 >= 4.4.38
+# yast2 with default boot_timeout
+BuildRequires:  yast2 >= 4.4.43
 BuildRequires:  yast2-devtools >= 4.2.2
 # yast/rspec/helpers.rb
 BuildRequires:  yast2-ruby-bindings >= 4.4.7
@@ -43,7 +43,7 @@ PreReq:         /bin/sed %fillup_prereq
 # Base classes for inst clients
 Requires:       parted
 # Replace PackageSystem with Package
-Requires:       yast2 >= 4.4.38
+Requires:       yast2 >= 4.4.43
 Requires:       yast2-core >= 2.18.7
 Requires:       yast2-packager >= 2.17.24
 Requires:       yast2-pkg-bindings >= 2.17.25
