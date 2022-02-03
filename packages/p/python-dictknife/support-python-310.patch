@@ -1,0 +1,33 @@
+Index: dictknife-0.13.0/dictknife/tests/cliutils/test_extraarguments.py
+===================================================================
+--- dictknife-0.13.0.orig/dictknife/tests/cliutils/test_extraarguments.py
++++ dictknife-0.13.0/dictknife/tests/cliutils/test_extraarguments.py
+@@ -1,3 +1,4 @@
++import sys
+ import textwrap
+ import unittest
+ 
+@@ -22,18 +23,21 @@ class Tests(unittest.TestCase):
+         return target
+ 
+     def test_help_message(self):
++        ending = "al arguments"
++        if sys.version_info >= (3, 10):
++            ending ="s"
+         target = self._makeOne()
+         expected = textwrap.dedent(
+             """
+         usage: cmd [-h]
+ 
+-        optional arguments:
++        option%s:
+           -h, --help  show this help message and exit
+ 
+         extra arguments: (with --extra<option>)
+           for --format=json:
+             --sort-keys  sort keys
+-        """
++        """ % (ending,)
+         ).strip()
+ 
+         actual = target.parser.format_help().strip()

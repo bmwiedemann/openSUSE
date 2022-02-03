@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictknife
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-dictknife
 Version:        0.13.0
 Release:        0
@@ -26,6 +25,7 @@ Summary:        Army knife of handling data
 License:        MIT
 URL:            https://github.com/podhmo/dictknife
 Source:         https://github.com/podhmo/dictknife/archive/%{version}.tar.gz#/dictknife-%{version}.tar.gz
+Patch0:         support-python-310.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module jsonpatch}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-PyYAML
 Suggests:       python-google-api-python-client
 Suggests:       python-jsonpatch
@@ -57,7 +57,7 @@ Includes jsonknife for splitting files and dereferencing JSON using
 JSON pointer syntax.
 
 %prep
-%setup -q -n dictknife-%{version}
+%autosetup -p1 -n dictknife-%{version}
 
 %build
 %python_build

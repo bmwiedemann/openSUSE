@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>940347</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>be504d73a6289fbee250ef10b9b37c5a</srcmd5>
+    <version>0.13.0</version>
+    <time>1643926603</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-310.patch:
+  * Support Python 3.10.</comment>
+    <requestid>950835</requestid>
+  </revision>
 </revisionlist>

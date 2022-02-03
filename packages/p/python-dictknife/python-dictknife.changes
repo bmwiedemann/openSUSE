@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 01:38:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-310.patch:
+  * Support Python 3.10. 
+
+-------------------------------------------------------------------
 Mon Dec 13 13:55:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop python 3.6 support since python-google-api-python-client
