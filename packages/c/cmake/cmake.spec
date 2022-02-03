@@ -17,18 +17,27 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+# Flavor gui
 %if "%{flavor}" == "gui"
 %define psuffix -ui
 %bcond_without gui
 %else
 %bcond_with gui
 %endif
+# Where available, the gui-flavor also enables qhelp docs
+%if "%{flavor}" == "gui" && 0%{?suse_version} > 1500
+%bcond_without qhelp
+%else
+%bcond_with qhelp
+%endif
+# Flavor mini
 %if "%{flavor}" == "mini"
 %define psuffix -mini
 %bcond_without mini
 %else
 %bcond_with mini
 %endif
+# Flavor full
 %if "%{flavor}" == "full"
 %define psuffix -full
 %bcond_without full
@@ -92,6 +101,9 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
+%if %{with qhelp}
+BuildRequires:  libqt5-qttools-qhelpgenerator
+%endif
 
 %description
 CMake is a cross-platform build system.
@@ -110,6 +122,12 @@ Requires:       cmake
 %description -n cmake-gui
 This is a Graphical User Interface for CMake, a cross-platform
 build system.
+
+%package -n cmake-doc-qhelp
+Summary:        CMake documentation for offline reading - qhelp version
+
+%description -n cmake-doc-qhelp
+CMake documentation for offline reading - qhelp version.
 
 %prep
 # The publisher doesn't sign the source tarball, but a signatures file containing multiple hashes.
@@ -138,6 +156,9 @@ export CXXFLAGS="%{optflags}"
 %endif
     --parallel=0%{jobs} \
     --verbose \
+%if %{with qhelp}
+    --sphinx-qthelp \
+%endif
 %if %{with gui}
     --qt-gui \
     --sphinx-man \
@@ -152,6 +173,7 @@ export CXXFLAGS="%{optflags}"
 %if "%{flavor}" != ""
 %make_install
 mkdir -p %{buildroot}%{_libdir}/cmake
+
 %if %{with gui}
 %suse_update_desktop_file  -r cmake-gui CMake Development IDE Tools Qt
 
@@ -159,10 +181,12 @@ mkdir -p %{buildroot}%{_libdir}/cmake
 rm -rf %{buildroot}%{_bindir}/{cpack,cmake,ctest,ccmake}
 rm -rf %{buildroot}%{_datadir}/cmake
 rm -rf %{buildroot}%{_datadir}/aclocal/cmake.m4
-rm -rf %{buildroot}%{_docdir}/cmake
 rm -rf %{buildroot}%{_datadir}/bash-completion/completions/{cmake,cpack,ctest}
 rm -rf %{buildroot}%{_datadir}/emacs/site-lisp/cmake-mode.el
 rm -rf %{buildroot}%{_datadir}/vim/
+# delete docdir but preserve qhelp if applicable
+find %{buildroot}%{_docdir}/cmake -mindepth 1 -not -name "CMake.qch" -delete
+rmdir %{buildroot}%{_docdir}/cmake || true
 %else
 
 find %{buildroot}%{_datadir}/cmake -type f -print0 | xargs -0 chmod 644
@@ -191,6 +215,12 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
     -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM)"
 %endif
 
+%if %{with qhelp}
+%files -n cmake-doc-qhelp
+%license Copyright.txt
+%{_docdir}/cmake/CMake.qch
+%endif
+
 %if %{with gui}
 %files -n cmake-gui
 %license Copyright.txt
@@ -207,6 +237,7 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %license Copyright.txt
 %{_mandir}/man7/*
 %{_mandir}/man1/*
+
 %else
 
 %files
