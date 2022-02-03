@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 26 12:25:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.5
+  * Fixed a vulnerability in the EAP client implementation
+    (CVE-2021-45079 bsc#1194471).
+  * libtpmtss may now establish a secure session via RSA OAEP
+    public key encryption or an ephemeral ECDH key exchange,
+    respectively.
+  * When rekeying CHILD_SAs, the old outbound SA is now
+    uninstalled earlier on the initiator/winner.
+  * The openssl plugin now only announces the ECDH groups
+    actually supported by OpenSSL (determined via
+    EC_get_builtin_curves()).
+  * Added support for AES-CFB.
+
+-------------------------------------------------------------------
 Wed Nov 24 08:25:29 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
@@ -195,7 +211,7 @@ Sun Jan 26 08:54:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Mon Jan  6 22:06:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 5.8.2:
+- Update to version 5.8.2 (jsc#SLE-11370):
   * The systemd service units have changed their name.
     "strongswan" is now "strongswan-starter", and
     "strongswan-swanctl" is now "strongswan".
