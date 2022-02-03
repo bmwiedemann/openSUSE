@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 31 20:22:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * webpmux: add "-set bgcolor A,R,G,B"
+  * add ARM64 NEON support for MSVC builds (#539)
+  * doc updates and bug fixes (#538, #544, #548, #550)
+
+-------------------------------------------------------------------
 Wed Oct 13 17:59:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - update to 1.2.1:

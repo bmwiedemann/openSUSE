@@ -274,4 +274,12 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
     <comment>- update to 1.2.1:</comment>
     <requestid>925186</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5b59efee03d654d42c742b0669a5371d</srcmd5>
+    <version>1.2.2</version>
+    <time>1643931941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950317</requestid>
+  </revision>
 </revisionlist>
