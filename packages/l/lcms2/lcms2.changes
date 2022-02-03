@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 31 12:56:29 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.13:
+  * Added support for premultiplied alpha
+  * tifficc can now handle alpha channels, both unassociated and premultiplied
+  * CGATS parser can now deal with very long strings
+  * Added Projects for Visual Studio 2020
+  * Added ARM64 target to visual studio 2019 (thanks to gaborkertesz-linaro)
+  * Added thread safe code to get time
+  * Added automatic linear space detection
+  * Added cmsGetStageContextID function
+  * Added cmsDetectRGBProfileGamma function
+  * configure now accepts --without-fastfloat to turn plugin off
+  * Checked to work on STM32 Cortex-A, Cortex-M families
+  * Bug & typos fixing (thanks to many reporters and contributors)
+- Rebase lcms2-visibility.patch
+
+-------------------------------------------------------------------
 Sat Apr 24 09:28:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12:
