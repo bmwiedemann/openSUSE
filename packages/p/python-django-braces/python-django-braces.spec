@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-braces
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-braces
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Reusable, generic mixins for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/brack3t/django-braces/
 Source:         https://files.pythonhosted.org/packages/source/d/django-braces/django-braces-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/brack3t/django-braces/pull/265 feat: remove support for python 2.7 and add support for Django 3.1
-Patch0:         remove-py2-add-django3.patch
+# PATCH-FIX-UPSTREAM gh#brack3t/django-braces#277
+Patch0:         modernize-braces.patch
 Patch1:         testhack.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +47,6 @@ Reusable, generic mixins for Django.
 %setup -q -n django-braces-%{version}
 %autopatch -p1
 # do not mess with the test setup and rely on pytest defaults
-rm tox.ini
 rm conftest.py
 
 %build

@@ -28,4 +28,20 @@
     <comment></comment>
     <requestid>880063</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae9d1e73ef52d8edd0b6f0975ba89e70</srcmd5>
+    <version>1.15.0</version>
+    <time>1643926606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.0:
+  * Updates and fixes from #265
+  * Typo fixes from #269 and #262
+  * Dropped explicit support for Python versions before 3.7 and non-LTS
+    versions of Django
+- Dropped patch remove-py2-add-django3.patch:
+  * Included
+- Added patch modernize-braces.patch:
+  * Add support for modern versions of Django</comment>
+    <requestid>950843</requestid>
+  </revision>
 </revisionlist>

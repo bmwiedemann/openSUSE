@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  3 04:14:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.15.0:
+  * Updates and fixes from #265
+  * Typo fixes from #269 and #262
+  * Dropped explicit support for Python versions before 3.7 and non-LTS
+    versions of Django
+- Dropped patch remove-py2-add-django3.patch:
+  * Included
+- Added patch modernize-braces.patch:
+  * Add support for modern versions of Django
+
+-------------------------------------------------------------------
 Fri Mar 19 09:30:32 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream remove-py2-add-django3.patch to make the package
