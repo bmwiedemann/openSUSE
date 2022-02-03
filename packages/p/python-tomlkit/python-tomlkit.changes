@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 20 22:45:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.8.0:
+  - Drop support for Python<3.6.
+  - Comply with TOML v1.0.0.
+  - And many bug fixes
+
+-------------------------------------------------------------------
 Mon Oct  5 12:57:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.7.0

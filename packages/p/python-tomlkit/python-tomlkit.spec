@@ -1,7 +1,7 @@
 #
 # spec file for package python-tomlkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-tomlkit
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT
@@ -32,17 +32,6 @@ BuildRequires:  %{python_module typing >= 3.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python-functools32
-%endif
-%ifpython2
-Requires:       python-enum34
-Requires:       python-functools32
-%endif
-%if %{python_version_nodots} < 35
-Requires:       python-typing >= 3.6
-%endif
 %python_subpackages
 
 %description
@@ -56,7 +45,6 @@ Style preserving TOML library
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
