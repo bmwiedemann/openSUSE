@@ -1570,4 +1570,22 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
 see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comment>
     <requestid>944828</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>55c40d2c50ad900fe3bf2744dbb53a89</srcmd5>
+    <version>0.8.8+45+suse.628d603e</version>
+    <time>1643926547</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.8+45+suse.628d603e
+  * fix handling of historical-service-time path selector (bsc#1195425)
+  * fix marking multipath devices as failed prematurely on startup
+    (bsc#1195426)
+  * multipathd.service: remove LimitCORE=infinity directive
+    This should only be enabled for debugging.
+  * multipathd.service: don't load scsi_dh modules (bsc#1195397)
+    This is done via modules-load.d functionality on (open)SUSE
+- Upstream fixes:
+  * Fix claiming of paths with &quot;find_multipaths strict&quot;
+  * Avoid unnecessary read-only reloads</comment>
+    <requestid>950721</requestid>
+  </revision>
 </revisionlist>

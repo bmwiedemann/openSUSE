@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:56:59 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Version 0.8.8+45+suse.628d603e
+  * fix handling of historical-service-time path selector (bsc#1195425)
+  * fix marking multipath devices as failed prematurely on startup
+    (bsc#1195426)
+  * multipathd.service: remove LimitCORE=infinity directive
+    This should only be enabled for debugging.
+  * multipathd.service: don't load scsi_dh modules (bsc#1195397)
+    This is done via modules-load.d functionality on (open)SUSE
+- Upstream fixes:
+  * Fix claiming of paths with "find_multipaths strict"
+  * Avoid unnecessary read-only reloads
+
+-------------------------------------------------------------------
 Fri Jan  7 19:51:14 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Version 0.8.8+13+suse.79c3556f
@@ -11,7 +26,7 @@ Mon Dec 06 15:53:53 UTC 2021 - mwilck@suse.com
 - Update to 0.8.8+38+suse.2bdd3a14.obscpio
   * upstream version bump. Code-wise identical to 0.8.7+138+suse.7c9afe31
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Fri Dec  3 11:00:32 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Drop versioned dependency on libmpath0 again (bsc#1190622)
