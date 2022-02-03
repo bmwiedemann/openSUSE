@@ -1,0 +1,26 @@
+From db122581108fe81794acb57b9673ee703b131891 Mon Sep 17 00:00:00 2001
+From: Jelle Zijlstra <jelle.zijlstra@gmail.com>
+Date: Tue, 21 Dec 2021 08:27:50 -0800
+Subject: [PATCH] Drop upper version bounds on dependencies
+
+They mostly cause unnecessary trouble.
+---
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index d314bb283..8ff498e4f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -99,9 +99,9 @@ def find_python_files(base: Path) -> List[Path]:
+     install_requires=[
+         "click>=7.1.2",
+         "platformdirs>=2",
+-        "tomli>=0.2.6,<2.0.0",
++        "tomli>=1.1.0",
+         "typed-ast>=1.4.2; python_version < '3.8' and implementation_name == 'cpython'",
+-        "pathspec>=0.9.0, <1",
++        "pathspec>=0.9.0",
+         "dataclasses>=0.6; python_version < '3.7'",
+         "typing_extensions>=3.10.0.0",
+         # 3.10.0.1 is broken on at least Python 3.10,

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 27 12:04:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Unpin tomli and pathspec
+  * black-pr2718-unpin.patch -- gh#psf/black#2718
+  * gh#psf/black#2703
+- Remove obsolete python36 flavor expression
+- Update requirements for Python 3.6 distros
+
+-------------------------------------------------------------------
 Wed Jan 12 03:39:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 21.12.0b1:
