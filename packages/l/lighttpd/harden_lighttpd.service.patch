@@ -1,7 +1,7 @@
-Index: lighttpd-1.4.59/doc/systemd/lighttpd.service
+Index: lighttpd-1.4.64/doc/systemd/lighttpd.service
 ===================================================================
---- lighttpd-1.4.59.orig/doc/systemd/lighttpd.service
-+++ lighttpd-1.4.59/doc/systemd/lighttpd.service
+--- lighttpd-1.4.64.orig/doc/systemd/lighttpd.service
++++ lighttpd-1.4.64/doc/systemd/lighttpd.service
 @@ -3,6 +3,19 @@ Description=Lighttpd Daemon
  After=network-online.target
  
@@ -9,7 +9,7 @@ Index: lighttpd-1.4.59/doc/systemd/lighttpd.service
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
-+ProtectHome=true
++ProtectHome=read-only
 +PrivateDevices=true
 +ProtectHostname=true
 +ProtectClock=true

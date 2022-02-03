@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 08:21:55 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Set ProtectHome to read-only, otherwise access to the users public_html can
+  break (bsc#1195465)
+
+-------------------------------------------------------------------
 Sat Jan 22 13:40:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.64:
