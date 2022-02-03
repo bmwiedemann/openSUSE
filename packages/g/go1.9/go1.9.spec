@@ -1,7 +1,7 @@
 #
 # spec file for package go1.9
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@ BuildRequires:  fdupes
 BuildRequires:  rpm >= 4.11.1
 Requires:       gcc
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-doc = %{version}
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}
@@ -352,7 +352,7 @@ cp -r doc/* %{buildroot}%{_docdir}/go/%{go_api}
 update-alternatives \
   --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go 30 \
   --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_api}/bin/gofmt \
-  --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_api}/bin/gdbinit.d/go.gdb \
+  --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_api}/bin/gdbinit.d/go.gdb
 
 %postun
 if [ $1 -eq 0 ] ; then

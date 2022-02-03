@@ -139,4 +139,12 @@
     <comment>- Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE. (forwarded request 905777 from rguenther)</comment>
     <requestid>908533</requestid>
   </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>43e78ac04fb980398cdb0e86c377aed2</srcmd5>
+    <version>1.9.7</version>
+    <time>1643926542</time>
+    <user>dimstar_suse</user>
+    <comment>- remove trailing EOF escape that confuses posix shell (bsc#1195391) (forwarded request 950666 from dirkmueller)</comment>
+    <requestid>950667</requestid>
+  </revision>
 </revisionlist>
