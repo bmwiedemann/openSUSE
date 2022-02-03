@@ -124,4 +124,255 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>723051</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>11453d868b31a03e38335dd4e8eba9e4</srcmd5>
+    <version>1.8.1</version>
+    <time>1643926554</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 1.8.1
+  + 1.8.1 2021-12-03
+    * bugfix #146: ldns-1.7.1 had soname 3.0, so ldns-1.8.x soname
+      needs to larger.
+    * Undo PR#123 fix ldns.pc installation when building out-of-source
+  + 1.8.0 2021-11-26
+    * bugfix #38: Print &quot;line&quot; before line number when printing
+      zone parse errors. Thanks Petr Špaček.
+    * bugfix: Revert unused variables in ldns-config removal patch.
+    * bugfix #50: heap Out-of-bound Read vulnerability in
+      rr_frm_str_internal reported by pokerfacett.
+      (bsc#1195057, CVE-2020-19860)
+    * bugfix #51: Heap Out-of-bound Read vulnerability in
+      ldns_nsec3_salt_data reported by pokerfacett.
+      (bsc#1195058, CVE-2020-19861)
+    * Fix memory leak in examples/ldns-testns handle_tcp routine.
+    * Detect fixed time memory compare for openssl 0.9.8.
+    * Fix compile warning by variable initialisation for older gcc.
+    * Fix #92: ldns-testns.c:429:15: error: 'fork' is unavailable: not
+      available on tvOS.
+    * Fix for #93: fix packaging/libldns.pc Makefile rule.
+    * ZONEMD support in ldns-signzone and ldns-verify-zone
+    * ldns-testns can answer several queries over one tcp connection,
+      if they arrive within 100msec of each other.
+    * Fix so that ldns-testns does not leak sockets if the read fails.
+    * SVCB and HTTPS draft rrtypes.
+      Enable with --enable-rrtype-svcb-https.
+    * bugfix #117: Assertion failure with DNSSEC validating of 
+      non existence of RR types at the root.  Thanks ZjYwMj
+    * Set NSEC(3) ttls to the minimum of the MINIMUM field of the SOA
+      record and the TTL of the SOA itself. draft-ietf-dnsop-nsec-ttl
+    * bugfix #119: Let example tools read longer RR's than
+      LDNS_MAX_LINELEN
+    * Add SVCPARAMS to python ldns_rdf_type2str function.
+    * PR #134 Miscellaneous spelling fixes. Thanks jsoref!
+    * Fix that ldns-read-zone and ldns_zone_new_frm_fp_l properly return
+      the $INCLUDE not implemented error.
+    * Fix that ldns-read-zone and ldns_zone_new_frm_fp_l count the line
+      number for an empty line after a comment.
+    * Fix #135: Fix compile with OpenSSL-3.0.0-beta2.
+    * PR #107: Added ldns_pkt2buffer_wire_compress() to make dname 
+      compression optional when converting packets to wire format.
+      Thanks Eli Lindsey
+    * Option to ldns-keygen to create symlinks with known names 
+      (i.e. without the key id) to the created files.
+      Thanks Andreas Schulze
+    * Fix #121: Correct handling of centimetres by LOC parser.
+      Thanks Felipe Gasper
+    * PR #126: Link with libldns.la in Makefile.in.
+      Thanks orbea
+    * PR #127: Addes option -Q to drill to give short answer.
+      Thanks niknah
+    * PR #133: Update m4 files for python modules.
+      Thanks Petr Menšík
+    * Bufix CAA value fields may be empty: Thanks Robert Mortimer
+    * PR #108: Fix for ldns-compare-zones net detecting when first zone
+      has a RRset that shrinks from two to one RRs, or grows from one
+      to two RRs. Thanks Emilio Caballero
+    * Fix #131: Drill sig chasing breaks with gcc-11 and
+      strict-aliasing. Thanks Stanislav Levin
+    * Fix #130: Unless $TLL is defined, ttl defaults to the last
+      explicitly stated value. Thanks Benno
+    * Fix #48: Missing UNSIGNED legend with drill. Thanks reedjc
+    * Fix #143: EVP_PKEY_base_id became a macro with OpenSSL &gt; 3.0
+      Thanks Daniel J. Luke
+    * Let ldns-signzone warn for high NSEC3 iteration counts.
+      Thanks Andreas Schulze
+
+old: openSUSE:Factory/ldns
+new: server:dns/ldns rev None
+Index: ldns.changes
+===================================================================
+--- ldns.changes (revision 16)
++++ ldns.changes (revision 44)
+@@ -1,4 +1,75 @@
+ -------------------------------------------------------------------
++Fri Dec  3 18:15:35 UTC 2021 - Michael Ströder &lt;michael@stroeder.com&gt;
++
++- new version 1.8.1
++  + 1.8.1 2021-12-03
++    * bugfix #146: ldns-1.7.1 had soname 3.0, so ldns-1.8.x soname
++      needs to larger.
++    * Undo PR#123 fix ldns.pc installation when building out-of-source
++  + 1.8.0 2021-11-26
++    * bugfix #38: Print &quot;line&quot; before line number when printing
++      zone parse errors. Thanks Petr Špaček.
++    * bugfix: Revert unused variables in ldns-config removal patch.
++    * bugfix #50: heap Out-of-bound Read vulnerability in
++      rr_frm_str_internal reported by pokerfacett.
++      (bsc#1195057, CVE-2020-19860)
++    * bugfix #51: Heap Out-of-bound Read vulnerability in
++      ldns_nsec3_salt_data reported by pokerfacett.
++      (bsc#1195058, CVE-2020-19861)
++    * Fix memory leak in examples/ldns-testns handle_tcp routine.
++    * Detect fixed time memory compare for openssl 0.9.8.
++    * Fix compile warning by variable initialisation for older gcc.
++    * Fix #92: ldns-testns.c:429:15: error: 'fork' is unavailable: not
++      available on tvOS.
++    * Fix for #93: fix packaging/libldns.pc Makefile rule.
++    * ZONEMD support in ldns-signzone and ldns-verify-zone
++    * ldns-testns can answer several queries over one tcp connection,
++      if they arrive within 100msec of each other.
++    * Fix so that ldns-testns does not leak sockets if the read fails.
++    * SVCB and HTTPS draft rrtypes.
++      Enable with --enable-rrtype-svcb-https.
++    * bugfix #117: Assertion failure with DNSSEC validating of 
++      non existence of RR types at the root.  Thanks ZjYwMj
++    * Set NSEC(3) ttls to the minimum of the MINIMUM field of the SOA
++      record and the TTL of the SOA itself. draft-ietf-dnsop-nsec-ttl
++    * bugfix #119: Let example tools read longer RR's than
++      LDNS_MAX_LINELEN
++    * Add SVCPARAMS to python ldns_rdf_type2str function.
++    * PR #134 Miscellaneous spelling fixes. Thanks jsoref!
++    * Fix that ldns-read-zone and ldns_zone_new_frm_fp_l properly return
++      the $INCLUDE not implemented error.
++    * Fix that ldns-read-zone and ldns_zone_new_frm_fp_l count the line
++      number for an empty line after a comment.
++    * Fix #135: Fix compile with OpenSSL-3.0.0-beta2.
++    * PR #107: Added ldns_pkt2buffer_wire_compress() to make dname 
++      compression optional when converting packets to wire format.
++      Thanks Eli Lindsey
++    * Option to ldns-keygen to create symlinks with known names 
++      (i.e. without the key id) to the created files.
++      Thanks Andreas Schulze
++    * Fix #121: Correct handling of centimetres by LOC parser.
++      Thanks Felipe Gasper
++    * PR #126: Link with libldns.la in Makefile.in.
++      Thanks orbea
++    * PR #127: Addes option -Q to drill to give short answer.
++      Thanks niknah
++    * PR #133: Update m4 files for python modules.
++      Thanks Petr Menšík
++    * Bufix CAA value fields may be empty: Thanks Robert Mortimer
++    * PR #108: Fix for ldns-compare-zones net detecting when first zone
++      has a RRset that shrinks from two to one RRs, or grows from one
++      to two RRs. Thanks Emilio Caballero
++    * Fix #131: Drill sig chasing breaks with gcc-11 and
++      strict-aliasing. Thanks Stanislav Levin
++    * Fix #130: Unless $TLL is defined, ttl defaults to the last
++      explicitly stated value. Thanks Benno
++    * Fix #48: Missing UNSIGNED legend with drill. Thanks reedjc
++    * Fix #143: EVP_PKEY_base_id became a macro with OpenSSL &gt; 3.0
++      Thanks Daniel J. Luke
++    * Let ldns-signzone warn for high NSEC3 iteration counts.
++      Thanks Andreas Schulze
++
++-------------------------------------------------------------------
+ Tue Aug  6 10:24:54 UTC 2019 - Ludwig Nussel &lt;lnussel@suse.de&gt;
+ 
+ - new version 1.7.1
+Index: ldns.spec
+===================================================================
+--- ldns.spec (revision 16)
++++ ldns.spec (revision 44)
+@@ -1,7 +1,7 @@
+ #
+ # spec file for package ldns
+ #
+-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
++# Copyright (c) 2022 SUSE LLC
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+@@ -18,7 +18,7 @@
+ 
+ %define libname libldns3
+ Name:           ldns
+-Version:        1.7.1
++Version:        1.8.1
+ Release:        0
+ Summary:        A library for developing the Domain Name System
+ License:        BSD-3-Clause
+@@ -79,6 +79,7 @@
+ Summary:        Perl bindings for ldns
+ Group:          Development/Languages/Perl
+ Requires:       %{libname} &gt;= %{version}
++%libperl_requires
+ 
+ %description -n perl-DNS-LDNS
+ Perl bindings for the ldns library.
+@@ -167,6 +168,7 @@
+ %{_mandir}/man1/ldns*.1%{?ext_man}
+ 
+ %files -n %{libname}
++%license LICENSE
+ %{_libdir}/libldns.so.*
+ 
+ %files devel
+@@ -175,7 +177,6 @@
+ %{_libdir}/libldns.so
+ %{_libdir}/pkgconfig/ldns.pc
+ %{_mandir}/man3/ldns*.3%{?ext_man}
+-%license LICENSE
+ %doc libdns.vim README*
+ 
+ %files -n perl-DNS-LDNS
+Index: ldns-1.8.1.tar.gz
+===================================================================
+Binary file ldns-1.8.1.tar.gz (revision 44) added
+Index: ldns-1.8.1.tar.gz.asc
+===================================================================
+--- ldns-1.8.1.tar.gz.asc (added)
++++ ldns-1.8.1.tar.gz.asc (revision 44)
+@@ -0,0 +1,16 @@
++-----BEGIN PGP SIGNATURE-----
++
++iQIzBAABCgAdFiEE3DTuXbJBe8wVHlEA5fj4IS93pJgFAmGpy0EACgkQ5fj4IS93
++pJiTCQ//ehWgkLaurOloIad7r3D5UZI2KFlo23tJia5VDGDChG6YPzT7SR68kVB/
++Y1w7JEv+5wknKsbZxgVyW6F2JiG1q0HzOXhlnAshK9Xar1XU86ujcFSSOrMmXCvX
++xKwt+ZILuiwyEOtOMczXm8uyk7d6zgFgF0AkJ0yP+vuU5zMvLCIkNzyqxCxPYKER
++BfYOC9MI/vHptxtE4U26olo3odfzjmjhUSvKPsOBWvZWTSCXAVjH+q33+RA2aVrB
++UdFgCy4yOdoUsK8HGunoSyNzzqtJIj67x9wG4f6tRIWsiAWHtdM2Di0pM8UeS0hP
++HyByQv9QhShLJX7A8FC45uIOYaqq0P8uPPVrYePhF60g0CoWp20XmNdT9PZ6lTiw
++gI8THBX4qoo/RjQXRnP8k2OkaP/ScHaDmeH+IuGMG1SIeV4kYpLLIRiQ9kBftrW/
++rrPXtYY6wWZcHd412ii5V976I4txQnbE726/fA9Uyuehh9S2mmwz/iqy3RH9bcl/
++lPoodXUg+q5cH7Z1bHsE8kRp3gPUhX3FCiqWeHkW1aoRtjtDJYNuIFf4WENbkivw
++cGDFNXNTetUEhriHbpJ/yA/HNbVL9BhD/KXPGaNj6TE1qbluInFI8gG1FPfO9Nkk
++j00l7gzhTwc8h2NlWpjRe7mbkKptnqaD8kH79/RCiccRS+9kCVQ=
++=EwyF
++-----END PGP SIGNATURE-----
+Index: ldns-1.7.1.tar.gz
+===================================================================
+Binary file ldns-1.7.1.tar.gz (revision 16) deleted
+Index: ldns-1.7.1.tar.gz.asc
+===================================================================
+--- ldns-1.7.1.tar.gz.asc (revision 16)
++++ ldns-1.7.1.tar.gz.asc (deleted)
+@@ -1,16 +0,0 @@
+------BEGIN PGP SIGNATURE-----
+-
+-iQIzBAABCgAdFiEE3DTuXbJBe8wVHlEA5fj4IS93pJgFAl07F1AACgkQ5fj4IS93
+-pJg+LxAAh0Z8DcUO/GVLIoNqpJcSW7/kuKrOH4a58WtXVsmRYYQQEVrf5TwA8wsS
+-7sYdVGbpAbM3FLs9cKe8scTr/3aM+P5VFR6e+n+Zad1k321ro7fjZT7uzPrH4rFH
+-Sj19hexW1nkTqCZL1lL3zvPc4zX20U2ucVQL1sXkPJZek5DES4MD4J1Y/b/zfvPG
+-llhlaRrsfvJKflDgqia4FvrproUjujItbAIQu1V0ItczqVOAoTnH6PuWz7jAJfPK
+-CN2OB2R+yfS27C1+tkUt5ld8TakevvjQ16rtF39akL4/Jhl7EA9B+Hp2x3MnxwYB
+-wkenY0wzkmqh5JmAG8IdF0c2PCLqv+EZcFf0Q5s+RYB3F7I4lxS5DjNlpPOyLoa9
+-ISYLFHQ+Et2gAv5SoWm/vixtkqaM1SaX1eR/gIIF01DThB1jew639wZzv7v5wCus
+-LsaBWEW55AjWVzFNVucp9D3l+fX8IBYVzJTv0+VZT6tmoaIvoC1A/I2pFmkwVy/n
+-z5yiUyIoh9D0YSAg8u4JEjC9cHhsAzz6J5JtI74wmRUCsTyLv2CV0fV6bXm9nQdY
+-vIXbVarv5YiOaV6QoCC/2YlFnZov0qUO+96io96e8jIpAyCBrfIn/F0U/WySIjr+
+-yifbaVuvj4HXa7tsu/hG+QgmxYfHFWIIq7CiWN4N1YsNuVq/ElM=
+-=IvBt
+------END PGP SIGNATURE-----</comment>
+    <requestid>950786</requestid>
+  </revision>
 </revisionlist>

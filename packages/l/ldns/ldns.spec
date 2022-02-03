@@ -1,7 +1,7 @@
 #
 # spec file for package ldns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libldns3
 Name:           ldns
-Version:        1.7.1
+Version:        1.8.1
 Release:        0
 Summary:        A library for developing the Domain Name System
 License:        BSD-3-Clause
@@ -79,6 +79,7 @@ Python bindings for the ldns library
 Summary:        Perl bindings for ldns
 Group:          Development/Languages/Perl
 Requires:       %{libname} >= %{version}
+%libperl_requires
 
 %description -n perl-DNS-LDNS
 Perl bindings for the ldns library.
@@ -167,6 +168,7 @@ rm -v %{buildroot}%{_libdir}/libldns.*a
 %{_mandir}/man1/ldns*.1%{?ext_man}
 
 %files -n %{libname}
+%license LICENSE
 %{_libdir}/libldns.so.*
 
 %files devel
@@ -175,7 +177,6 @@ rm -v %{buildroot}%{_libdir}/libldns.*a
 %{_libdir}/libldns.so
 %{_libdir}/pkgconfig/ldns.pc
 %{_mandir}/man3/ldns*.3%{?ext_man}
-%license LICENSE
 %doc libdns.vim README*
 
 %files -n perl-DNS-LDNS
