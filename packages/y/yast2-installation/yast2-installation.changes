@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  2 11:46:42 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed crash in Ruby 3.1 after pressing the hamburger menu icon
+  in the welcome screen (bsc#1195422)
+- 4.4.39
+
+-------------------------------------------------------------------
+Tue Feb  1 07:52:48 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Redirect the STDERR output in the memsample script to not
+  break the YaST UI (bsc#1195116)
+- 4.4.38
+
+-------------------------------------------------------------------
 Thu Jan 27 07:50:21 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Handle service name collision during upgrade (bsc#1194453),
