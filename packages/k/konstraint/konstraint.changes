@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 03 07:21:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.0:
+  * Update OPA version to 0.37.1 (#234)
+  * Ignore the future.keywords import (#230)
+
+-------------------------------------------------------------------
 Wed Jan 26 07:07:00 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.17.0:
