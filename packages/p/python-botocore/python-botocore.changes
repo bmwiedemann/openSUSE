@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Feb  1 10:27:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version to update to 1.23.46
+  * api-change:``appconfigdata``: Documentation updates for AWS AppConfig Data.
+  * api-change:``athena``: This release adds a field, AthenaError, to the GetQueryExecution response
+    object when a query fails.
+  * api-change:``appconfig``: Documentation updates for AWS AppConfig
+  * api-change:``cognito-idp``: Doc updates for Cognito user pools API Reference.
+  * api-change:``secretsmanager``: Feature are ready to release on Jan 28th
+  * api-change:``sagemaker``: This release added a new NNA accelerator compilation support for
+    Sagemaker Neo.
+- from version 1.23.45
+  * api-change:``ec2``: X2ezn instances are powered by Intel Cascade Lake CPUs that deliver turbo all
+    core frequency of up to 4.5 GHz and up to 100 Gbps of networking bandwidth
+  * api-change:``kafka``: Amazon MSK has updated the CreateCluster and UpdateBrokerStorage API that
+    allows you to specify volume throughput during cluster creation and broker volume updates.
+  * api-change:``connect``: This release adds support for configuring a custom chat duration when
+    starting a new chat session via the StartChatContact API. The default value for chat duration is 25
+    hours, minimum configurable value is 1 hour (60 minutes) and maximum configurable value is 7 days
+    (10,080 minutes).
+  * api-change:``amplify``: Doc only update to the description of basicauthcredentials to describe
+    the required encoding and format.
+  * api-change:``opensearch``: Allows customers to get progress updates for blue/green deployments
+- from version 1.23.44
+  * api-change:``frauddetector``: Added new APIs for viewing past predictions and obtaining
+    prediction metadata including prediction explanations: ListEventPredictions and
+    GetEventPredictionMetadata
+  * api-change:``ebs``: Documentation updates for Amazon EBS Direct APIs.
+  * api-change:``codeguru-reviewer``: Added failure state and adjusted timeout in waiter
+  * api-change:``securityhub``: Adding top level Sample boolean field
+  * api-change:``sagemaker``: API changes relating to Fail steps in model building pipeline and add
+    PipelineExecutionFailureReason in PipelineExecutionSummary.
+- from version 1.23.43
+  * api-change:``fsx``: This release adds support for growing SSD storage capacity and
+    growing/shrinking SSD IOPS for FSx for ONTAP file systems.
+  * api-change:``efs``: Update efs client to latest version
+  * api-change:``connect``: This release adds support for custom vocabularies to be used with Contact
+    Lens. Custom vocabularies improve transcription accuracy for one or more specific words.
+  * api-change:``guardduty``: Amazon GuardDuty expands threat detection coverage to protect Amazon
+    Elastic Kubernetes Service (EKS) workloads.
+- from version 1.23.42
+  * api-change:``route53-recovery-readiness``: Updated documentation for Route53 Recovery Readiness
+    APIs.
+- from version 1.23.41
+  * enhancement:Exceptions: ProxyConnectionError previously provided the full proxy URL. User info
+    will now be appropriately masked if needed.
+  * api-change:``mediaconvert``: AWS Elemental MediaConvert SDK has added support for 4K AV1 output
+    resolutions & 10-bit AV1 color, the ability to ingest sidecar Dolby Vision XML metadata files, and
+    the ability to flag WebVTT and IMSC tracks for accessibility in HLS.
+  * api-change:``transcribe``: Add support for granular PIIEntityTypes when using Batch
+    ContentRedaction.
+
+-------------------------------------------------------------------
 Fri Jan 21 13:16:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.23.40
