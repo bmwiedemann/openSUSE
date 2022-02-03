@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncssh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-asyncssh
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module gssapi >= 1.2.0}
 BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module uvloop >= 0.9.1}
 BuildRequires:  openssh
 BuildRequires:  openssl
@@ -59,8 +60,7 @@ AsyncSSH is a Python package which provides an asynchronous client and
 server implementation of the SSHv2 protocol on top of the Python asyncio framework.
 
 %prep
-%setup -q -n asyncssh-%{version}
-%patch0 -p1
+%autosetup -p1 -n asyncssh-%{version}
 
 %build
 %python_build
@@ -70,7 +70,7 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_connect_timeout_exceeded'
+%pytest -k 'not (test_connect_timeout_exceeded or test_forward_remote or test_enroll)'
 
 %files %{python_files}
 %license LICENSE COPYRIGHT
