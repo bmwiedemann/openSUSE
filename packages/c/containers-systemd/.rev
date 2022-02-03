@@ -286,4 +286,17 @@
   * Add roundcube files</comment>
     <requestid>934610</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3aab2a82a88e54bf3ff833b1f94098ca</srcmd5>
+    <version>0.0+git20220131.79f09c7</version>
+    <time>1643926586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220131.79f09c7:
+  * Adjust timing for start limits in case of errors
+  * Fix typo
+
+- Update to version 0.0+git20211130.31bd054:
+  * Use Type=notify instead of forking (following podman upstream)</comment>
+    <requestid>950221</requestid>
+  </revision>
 </revisionlist>

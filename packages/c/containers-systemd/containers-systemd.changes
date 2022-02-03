@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:00:04 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220131.79f09c7:
+  * Adjust timing for start limits in case of errors
+  * Fix typo
+
+-------------------------------------------------------------------
+Tue Nov 30 12:45:23 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20211130.31bd054:
+  * Use Type=notify instead of forking (following podman upstream)
+
+-------------------------------------------------------------------
 Mon Nov 29 16:52:01 UTC 2021 - kukuk@suse.com
 
 - Update to version 0.0+git20211129.1b144ae:
