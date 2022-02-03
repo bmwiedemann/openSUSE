@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>891601</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>122286b3720d00782cb4886c5e2dbd63</srcmd5>
+    <version>1.1.1</version>
+    <time>1643926533</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed license tag
+</comment>
+    <requestid>950483</requestid>
+  </revision>
 </revisionlist>
