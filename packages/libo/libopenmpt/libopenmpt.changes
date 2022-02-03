@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Mon Jan 31 07:22:22 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.6.1:
+  * [Bug] Possible hang with malformed DMF, DSM, MED, MUS, OKT and
+    SymMOD files containing 65536 or more patterns when destroying
+    the module.
+  * [Bug] Avoid NaNs and infinite values with custom tunings and in
+    the I3DL2Reverb plugin.
+  * MIDI macros are now evaluated when seeking.
+  * The letter “z” is now evaluated in fixed MIDI macros (Z80…ZFF)
+    the same way as in Impulse Tracker.
+  * MOD: Loosened VBlank timing heuristics so that “frame of mind”
+    by Dascon plays correctly.
+  * MOD: Validate the contents of “hidden” patterns beyond the end
+    of the order list when the file size matches the expected size
+    when only taken “official” patterns into account. This fixes
+    Shofixti Ditty.mod from Star Control 2 while keeping other
+    (partly broken) modules working.
+  * MED: Command 20 (reverse sample) is now only applied when it’s
+    next to a note.
+  * S3M: Introducing the “Send OPL key-off when triggering notes”
+    compatibility setting broke retrigger for OPL notes again
+    (they retriggered rather than not retriggering).
+  * S3M: Retriggering a note no longer resets its pitch after a
+    portamento.
+  * S3M: Partially implement retrigger behaviour for stopped notes
+    in SoundBlaster mode: Like in IT, it is not possible to
+    retrigger a sample that has already stopped playing.
+  * DIGI: Improve compatibility with E3x reverse sample command.
+  * DSym: Tempos < 32 were treated as tempo slides.
+  * SymMOD: Key-off command was not implemented properly.
+- Changes in 0.6.0:
+  * [New] MUS files from Psycho Pinball and Micro Machines 2 are
+    now supported.
+  * [New] SymMOD files created with Symphonie / Symphonie Pro are
+    now supported.
+  * [New] FMT files created with Davey W Taylor’s FM Tracker are
+    now supported.
+  * [New] DSYM files created with Digital Symphony are now
+    supported.
+  * [New] STX files (transitional format between Scream Tracker 2
+    and 3) are now supported.
+  * [New] TakeTracker MODs with TDZ1 to TDZ3 magic bytes are now
+    supported.
+  * [New] libopenmpt_ext: New interface interactive2 adding
+    openmpt::ext::interactive2::note_off(),
+    openmpt::ext::interactive2::note_fade(),
+    openmpt::ext::interactive2::set_channel_panning(),
+    openmpt::ext::interactive2::get_channel_panning(),
+    openmpt::ext::interactive2::set_note_finetune(),
+    and openmpt::ext::interactive2::get_note_finetune() (C++)
+    and openmpt_module_ext_interface_interactive2.note_off(),
+    openmpt_module_ext_interface_interactive2.note_fade(),
+    openmpt_module_ext_interface_interactive2.set_channel_panning(),
+    openmpt_module_ext_interface_interactive2.get_channel_panning(),
+    openmpt_module_ext_interface_interactive2.set_note_finetune(),
+    and openmpt_module_ext_interface_interactive2.get_note_finetune() (C).
+  * [Change] libopenmpt no longer generates internal interpolation
+    tables on library load time, but instead only on first module
+    load time.
+  * libopenmpt can now detect infinite pattern loops and treats
+    them as the song end. This means that setting a repeat count
+    other than -1 now always guarantees that playback will
+    eventually end. The song loop counter is decremented each time
+    it ends up at the start of the infinite loop, so the song does
+    not restart from the beginning even if the repeat count is not
+    0.
+  * openmpt::module::set_position_seconds() accuracy has been
+    improved for modules with pattern loops.
+  * Samples played at the wrong volume when rendering modules in
+    mono.
+  * IT: Portamentos in files with Linear Slides disabled are now
+    more accurate.
+  * IT: Pitch/Pan Separation was affected by note-off commands,
+    and wasn’t reset by panning commands like in Impulse Tracker.
+  * IT: Even after libopenmpt 0.5.14 the filter reset logic was
+    still not 100% identical to Impulse Tracker: A note triggered
+    on tick 0 of a row with a Pattern Delay effect still caused the
+    filter to be reset on repetitions of that row even though the
+    note wasn’t retriggered.
+  * IT: Added read-only support for BeRoTracker commands 1 and 2
+    (equivalent to XM commands K and L).
+  * XM: BeRoTracker saves smooth MIDI macros in a different way
+    from OpenMPT. This command is now imported correctly.
+  * XM: Emulate FT2 Tone Portamento quirk that inverts portamento
+    direction after the target was reached (if target note was
+    higher than previous note).
+  * S3M files saved with Impulse Tracker and latest Schism Tracker
+    now also compute sample playback speed in Hertz.
+  * Depending on whether an S3M file was last saved in Scream
+    Tracker with the Sound Blaster or Gravis Ultrasound drivers
+    loaded, different compatibility flags are now applied. For
+    files saved with the GUS, the sample volume factor is now also
+    ignored (fixes volume levels in S3Ms made on the GUS,
+    in particular if they use both samples and OPL instruments).
+  * S3M: Enforce the lower frequency bound.
+  * MOD: Loosened VBlank timing heuristics so that the original
+    copy of Guitar Slinger from Dizzy Tunes II plays correctly.
+  * FAR: Correct portamento depth is now used.
+  * DMF / IMF: Improved accuracy of finetune commands.
+  * MDL: Implemented finetune command.
+  * OKT: Various accuracy improvements such as: Sharing volume
+    between mixed channels, volume commands on mixed channels are
+    permanent (not reset with new notes), mixed channels do not
+    support default sample volume, 7-bit samples are actually
+    supposed to be played as-is (not amplified to full 8-bit
+    range), reject speed command parameters >= 20.
+
+-------------------------------------------------------------------
 Thu Dec 23 06:48:17 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.5.14:
