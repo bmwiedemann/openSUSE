@@ -1,0 +1,136 @@
+diff --git a/galera/src/CMakeLists.txt b/galera/src/CMakeLists.txt
+index cc7775d7..5c8189d3 100644
+--- a/galera/src/CMakeLists.txt
++++ b/galera/src/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Copyright (C) 2020 Codership Oy <info@codership.com>
+ #
+ 
+-add_library(galera
++add_library(galera STATIC
+   mapped_buffer.cpp
+   write_set.cpp
+   data_set.cpp
+@@ -46,7 +46,7 @@ else()
+   target_link_libraries(galera gcs)
+ endif()
+ 
+-add_library(galera_smm_static
++add_library(galera_smm_static STATIC
+   wsrep_provider.cpp
+   )
+ 
+@@ -71,8 +71,7 @@ target_compile_options(galera_smm_static
+ 
+ target_link_libraries(galera_smm_static galera)
+ 
+-add_library(galera_smm
+-  MODULE
++add_library(galera_smm  MODULE
+   wsrep_provider.cpp
+   )
+ 
+diff --git a/galerautils/src/CMakeLists.txt b/galerautils/src/CMakeLists.txt
+index cbdb0ab2..0fd80119 100644
+--- a/galerautils/src/CMakeLists.txt
++++ b/galerautils/src/CMakeLists.txt
+@@ -2,6 +2,14 @@
+ # Copyright (C) 2020 Codership Oy <info@codership.com>
+ #
+ 
++# Logging facility is extracted into separate library to break
++# circular dependency between crc32c HW and galerautils libraries.
++add_library(galerautils_log STATIC
++  gu_log.c)
++target_compile_options(galerautils_log
++  PRIVATE
++  -Wno-unused-parameter)
++
+ #
+ # Compile hardware optimized CRC32C code into separate library
+ # to keep the optimized code isolated.
+@@ -14,19 +22,20 @@ endif()
+ 
+ if (GALERAUTILS_HW_CRC32C_SOURCES)
+   set(GALERAUTILS_HW_CRC32C_LIB galerautils_hw_crc32c)
+-  add_library(${GALERAUTILS_HW_CRC32C_LIB} ${GALERAUTILS_HW_CRC32C_SOURCES})
++  add_library(${GALERAUTILS_HW_CRC32C_LIB} STATIC
++    ${GALERAUTILS_HW_CRC32C_SOURCES})
+   target_compile_options(${GALERAUTILS_HW_CRC32C_LIB}
+     PRIVATE
+     ${GALERA_CRC32C_COMPILER_FLAG})
++  target_link_libraries(${GALERAUTILS_HW_CRC32C_LIB} galerautils_log)
+ endif()
+ 
+-add_library(galerautils
++add_library(galerautils STATIC
+   gu_abort.c
+   gu_crc32c.c
+   gu_dbug.c
+   gu_fifo.c
+   gu_lock_step.c
+-  gu_log.c
+   gu_mem.c
+   gu_mmh3.c
+   gu_spooky.c
+@@ -53,10 +62,11 @@ target_compile_options(galerautils
+   -Wno-unused-parameter)
+ 
+ target_link_libraries(galerautils
++  galerautils_log
+   ${GALERAUTILS_HW_CRC32C_LIB}
+   ${GALERA_SYSTEM_LIBS})
+ 
+-add_library(galerautilsxx
++add_library(galerautilsxx STATIC
+   gu_vlq.cpp
+   gu_datetime.cpp
+   gu_gtid.cpp
+diff --git a/gcache/src/CMakeLists.txt b/gcache/src/CMakeLists.txt
+index 57a21b29..409ed3fe 100644
+--- a/gcache/src/CMakeLists.txt
++++ b/gcache/src/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ # GCache library
+ #
+ 
+-add_library(gcache
++add_library(gcache STATIC
+   GCache_seqno.cpp
+   gcache_params.cpp
+   gcache_page.cpp
+diff --git a/gcomm/src/CMakeLists.txt b/gcomm/src/CMakeLists.txt
+index a7bb10c1..7f001586 100644
+--- a/gcomm/src/CMakeLists.txt
++++ b/gcomm/src/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Copyright (C) 2020 Codership Oy <info@codership.com>
+ #
+ 
+-add_library(gcomm
++add_library(gcomm STATIC
+   asio_protonet.cpp
+   asio_tcp.cpp
+   asio_udp.cpp
+diff --git a/gcs/src/CMakeLists.txt b/gcs/src/CMakeLists.txt
+index b81d7c82..bd14cb39 100644
+--- a/gcs/src/CMakeLists.txt
++++ b/gcs/src/CMakeLists.txt
+@@ -28,7 +28,7 @@ set(GCS_SOURCES
+ # Gcs library.
+ #
+ 
+-add_library(gcs ${GCS_SOURCES})
++add_library(gcs STATIC ${GCS_SOURCES})
+ 
+ target_compile_definitions(gcs
+   PRIVATE
+@@ -54,7 +54,7 @@ target_link_libraries(gcs gcomm gcache)
+ # Gcs library for Garb daemon.
+ #
+ 
+-add_library(gcs4garb ${GCS_SOURCES})
++add_library(gcs4garb STATIC ${GCS_SOURCES})
+ 
+ target_compile_definitions(gcs4garb
+   PRIVATE

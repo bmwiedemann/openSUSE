@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 26 15:30:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use cmake by default to fix build with GCC 12, fixes bsc#1194790
+  * Add fix-cmake-install.patch
+- Add fix-cmake-build.patch to fix cmake build, fixes bsc#1194827
+
+-------------------------------------------------------------------
 Thu Dec 30 14:23:20 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Migrate to sysusers for creating garb user

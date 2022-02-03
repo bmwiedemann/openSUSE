@@ -1,0 +1,86 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3e65edbc..53e68817 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,6 +12,7 @@ include(CheckIncludeFile)
+ include(CheckIncludeFileCXX)
+ include(CheckCXXCompilerFlag)
+ include(CheckLibraryExists)
++include(GNUInstallDirs)
+ 
+ include_directories(
+   ${CMAKE_SOURCE_DIR}
+@@ -42,6 +43,9 @@ option(GALERA_GCS_SM_DEBUG
+ option(GALERA_GU_DEBUG_MUTEX "Enable mutex debug instrumentation" OFF)
+ option(GALERA_GU_DBUG_ON "Enable sync point macros (ON for Debug builds)" OFF)
+ 
++option(GALERA_SYSTEMD_UNITDIR "The directory where the systemd units will be installed"
++       ${CMAKE_INSTALL_LIBDIR}/systemd/system)
++
+ #
+ # Set cmake policies before doing any checks.
+ #
+@@ -111,9 +115,9 @@ if (NOT ${CMAKE_SYSTEM_NAME} MATCHES ".*BSD")
+     ${CMAKE_SOURCE_DIR}/AUTHORS
+     ${CMAKE_SOURCE_DIR}/COPYING
+     ${CMAKE_SOURCE_DIR}/README
+-    DESTINATION doc)
++    DESTINATION ${CMAKE_INSTALL_DOCDIR})
+   install(FILES ${CMAKE_SOURCE_DIR}/asio/LICENSE_1_0.txt
+-    DESTINATION doc
++    DESTINATION ${CMAKE_INSTALL_DOCDIR}
+     RENAME LICENSE.asio)
+ endif()
+ 
+diff --git a/galera/src/CMakeLists.txt b/galera/src/CMakeLists.txt
+index cc7775d7..c3c573a0 100644
+--- a/galera/src/CMakeLists.txt
++++ b/galera/src/CMakeLists.txt
+@@ -112,7 +112,7 @@ endif()
+ 
+ target_link_libraries(galera_smm galera ${GALERA_LINK_OPTIONS})
+ 
+-install(TARGETS galera_smm DESTINATION lib)
++install(TARGETS galera_smm DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # The following checks are guaranteed to work only
+ # Linux platform, we skip them on others.
+diff --git a/garb/CMakeLists.txt b/garb/CMakeLists.txt
+index 156b984b..57cf1b2c 100644
+--- a/garb/CMakeLists.txt
++++ b/garb/CMakeLists.txt
+@@ -31,14 +31,18 @@ target_compile_options(garbd
+ target_link_libraries(garbd gcs4garb gcomm gcache
+   ${Boost_PROGRAM_OPTIONS_LIBRARIES})
+ 
+-install(TARGETS garbd DESTINATION bin)
++install(TARGETS garbd DESTINATION ${CMAKE_INSTALL_BINDIR})
+ if (NOT ${CMAKE_SYSTEM_NAME} MATCHES ".*BSD")
+   install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb.cnf
++    DESTINATION ${CMAKE_INSTALL_SYSCONFDIR})
++  install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb.service
++    DESTINATION ${GALERA_SYSTEMD_UNITDIR})
++  install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/files/garb-systemd
+-    DESTINATION share)
++    DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+   install(FILES
+     ${CMAKE_SOURCE_DIR}/man/garbd.8
+-    DESTINATION man/man8)
++    DESTINATION ${CMAKE_INSTALL_MANDIR}/man8)
+ endif()
+diff --git a/garb/files/garb.service b/garb/files/garb.service
+index 926cf578..b862654f 100644
+--- a/garb/files/garb.service
++++ b/garb/files/garb.service
+@@ -12,7 +12,7 @@ Alias=garbd.service
+ [Service]
+ User=garb
+ Group=garb
+-ExecStart=/usr/bin/garb-systemd start
++ExecStart=/usr/libexec/garb-systemd start
+ 
+ # Use SIGINT because with the default SIGTERM
+ # garbd fails to reliably transition to 'destroyed' state

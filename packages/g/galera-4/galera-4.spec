@@ -1,7 +1,7 @@
 #
 # spec file for package galera-4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define copyright Copyright 2007-2015 Codership Oy. All rights reserved. Use is subject to license terms under GPLv2 license.
-%define libs %{_libdir}/%{name}
 %define docs %{_docdir}/%{name}
 %define homedir   %{_localstatedir}/lib/garb
 %define galeradir %{_localstatedir}/lib/galera
@@ -25,7 +24,6 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%bcond_with cmake
 Name:           galera-4
 Version:        26.4.10
 Release:        0
@@ -37,6 +35,10 @@ Source:         http://releases.galeracluster.com/galera-4/source/%{name}-%{vers
 Source1:        http://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz.asc
 Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com
+# https://github.com/codership/galera/issues/611
+Patch1:         fix-cmake-build.patch
+Patch2:         fix-cmake-install.patch
 BuildRequires:  boost-devel
 BuildRequires:  check-devel
 BuildRequires:  gcc-c++
@@ -44,17 +46,15 @@ BuildRequires:  glibc-devel
 # for fileownership of galeradir
 BuildRequires:  mariadb >= %{mariadb_version}
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-wsrep-provider
 Conflicts:      galera-3
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %endif
-%if %{with cmake}
 BuildRequires:  cmake
-%endif
 # for fileownership of galeradir
 %if %{with split_package}
 BuildRequires:  mysql-server
@@ -66,9 +66,6 @@ BuildRequires:  openssl-devel
 %endif
 %if %{defined fedora}
 BuildRequires:  python
-%endif
-%if %{without cmake}
-BuildRequires:  scons
 %endif
 
 %description
@@ -112,32 +109,19 @@ export CXXFLAGS="%{optflags}"
 export CFLAGS="$CFLAGS -Wno-implicit-fallthrough"
 export CXXFLAGS="$CXXFLAGS -Wno-implicit-fallthrough"
 %endif
-%if %{with cmake}
-%cmake
+%cmake -DGALERA_SYSTEMD_UNITDIR:PATH=%{_unitdir} \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_datarootdir}/doc/packages/%{name}
 %cmake_build
-%else
-scons %{?_smp_mflags} deterministic_tests=1 version=%{version} ssl=1 system_asio=1 boost_pool=1
-%endif
 %sysusers_generate_pre %{SOURCE2} garb garb-user.conf
 
 %install
-install -D -m 644 garb/files/garb.service %{buildroot}%{_unitdir}/garb.service
-install -D -m 755 garb/files/garb-systemd %{buildroot}%{_bindir}/garb-systemd
+%cmake_install
 mkdir -p %{buildroot}%{_sysusersdir}
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
-install -D -m 644 garb/files/garb.cnf        %{buildroot}%{_fillupdir}/sysconfig.garb
+mkdir -p %{buildroot}%{_fillupdir}
+mv %{buildroot}%{_prefix}/etc/garb.cnf %{buildroot}%{_fillupdir}/sysconfig.garb
 
-install -D -m 755 garb/garbd                 %{buildroot}%{_bindir}/garbd
-install -D -m 755 libgalera_smm.so           %{buildroot}%{libs}/libgalera_smm.so
-
-install -d %{buildroot}%{docs}
-install -m 644 COPYING                       %{buildroot}%{docs}/COPYING
-install -m 644 asio/LICENSE_1_0.txt          %{buildroot}%{docs}/LICENSE.asio
-install -m 644 scripts/packages/README       %{buildroot}%{docs}/README
-install -m 644 scripts/packages/README-MySQL %{buildroot}%{docs}/README-MySQL
-
-install -D -m 644 man/garbd.8                %{buildroot}%{_mandir}/man8/garbd.8
 install -D -d -m 0750 %{buildroot}%{homedir} %{buildroot}%{galeradir}
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/my.cnf.d/
 cat > %{buildroot}%{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf <<EOF
@@ -145,7 +129,7 @@ cat > %{buildroot}%{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf <<EOF
 # For configuring galera please use 50-galera.cnf or another file
 # This file is only here to set the proper path to the wsrep_provider library
 [mysqld]
-wsrep_provider=%{libs}/libgalera_smm.so
+wsrep_provider=%{_libdir}/libgalera_smm.so
 EOF
 
 %files
@@ -154,7 +138,7 @@ EOF
 # /common
 # garb
 %{_unitdir}/garb.service
-%{_bindir}/garb-systemd
+%{_libexecdir}/garb-systemd
 %config(noreplace,missingok) %{_fillupdir}/sysconfig.garb
 %{_bindir}/garbd
 #
@@ -170,12 +154,10 @@ EOF
 # plugin
 
 %files wsrep-provider
-%dir %{libs}
-%{libs}/libgalera_smm.so
+%{_libdir}/libgalera_smm.so
 %config %{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf
 
-%pre -f garb.pre
-
+%pre
 %service_add_pre garb.service
 
 %preun
