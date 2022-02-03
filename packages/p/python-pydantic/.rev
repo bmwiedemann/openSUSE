@@ -81,4 +81,13 @@
     <comment></comment>
     <requestid>944133</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6ae9d5aa25d6f0369f613b152125b720</srcmd5>
+    <version>1.9.0</version>
+    <time>1643926574</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip some truculent tests. 
+- Clean up non-required Python 3.6 {Build,}Requires.</comment>
+    <requestid>950593</requestid>
+  </revision>
 </revisionlist>

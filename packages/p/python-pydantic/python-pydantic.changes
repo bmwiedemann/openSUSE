@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 04:12:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip some truculent tests. 
+- Clean up non-required Python 3.6 {Build,}Requires.
+
+-------------------------------------------------------------------
 Wed Jan  5 16:08:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.9.0

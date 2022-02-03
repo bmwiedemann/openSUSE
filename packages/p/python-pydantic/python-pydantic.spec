@@ -24,21 +24,16 @@ Version:        1.9.0
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/samuelcolvin/pydantic
 Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
 BuildRequires:  %{python_module email_validator >= 1.0.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} == 36
-Requires:       python-dataclasses
-%endif
 Requires:       python-typing_extensions >= 3.7.4.3
 Suggests:       python-email_validator >= 1.0.3
 Suggests:       python-python-dotenv >= 0.10.4
@@ -49,7 +44,7 @@ BuildArch:      noarch
 Data validation and settings management using Python type hinting.
 
 %prep
-%setup -q -n pydantic-%{version}
+%autosetup -p1 -n pydantic-%{version}
 
 %build
 %python_build
@@ -59,7 +54,7 @@ Data validation and settings management using Python type hinting.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_is_none_type and not test_none'
 
 %files %{python_files}
 %license LICENSE
