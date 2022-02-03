@@ -15,4 +15,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>907330</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3d9623222db3810a0f9dcfac4c703b7</srcmd5>
+    <version>0.14.5</version>
+    <time>1643926573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.5:
+  * SOCKS proxy support. (#478)
+  * Add proxy_auth argument to HTTPProxy (#481)
+  * Improve error message on 'RemoteProtocolError' exception when server
+    disconnects without sending a response (#479)
+  * Support HTTP/2 on HTTPS tunnelling proxies. (#468)
+  * Fix proxy headers missing on HTTP forwarding. (#456)
+  * Only instantiate SSL context if required. (#457)
+  * More robust HTTP/2 handling. (#253, #439, #440, #441)
+  * Fix race condition when removing closed connections from the pool (#437)
+  * Failed connections no longer remain in the pool. (Pull #433)
+  * max_connections becomes optional. (Pull #429)
+  * certifi is now included in the install dependancies. (Pull #428)
+  * h2 is now strictly optional. (Pull #428)
+  * Log the point at which the connection is established, and the IP/port
+    on which it is made.
+  * Determine if the outgoing request should log as HTTP/1.1 or HTTP/2,
+    rather than having to assume it's HTTP/2 if the --http2 flag was passed.
+  * Log SSL version info / certificate info.
+  * Fix broken error messaging when URL scheme is missing, or a non HTTP(S)
+    scheme is used. (Pull #403) 
+- Inject multibuild to stop a build loop</comment>
+    <requestid>950355</requestid>
+  </revision>
 </revisionlist>

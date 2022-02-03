@@ -1,7 +1,7 @@
 #
-# spec file for package python-httpcore
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
-%define skip_python36 1
-Name:           python-httpcore
-Version:        0.13.6
+Name:           python-httpcore%{psuffix}
+Version:        0.14.5
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/encode/httpcore
 Source:         https://github.com/encode/httpcore/archive/%{version}.tar.gz#/httpcore-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +46,7 @@ Requires:       python-rfc3986 >= 1.0
 Requires:       python-sniffio >= 1.0
 BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module anyio >= 3.1.0}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module chardet >= 3.0}
@@ -51,12 +58,14 @@ BuildRequires:  %{python_module pproxy >= 2.7.8}
 BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module pytest-asyncio >= 0.15.1}
 BuildRequires:  %{python_module pytest-curio}
+BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest-trio >= 0.7.0}
 BuildRequires:  %{python_module pytest-twisted}
 BuildRequires:  %{python_module rfc3986 >= 1.0}
 BuildRequires:  %{python_module trustme >= 0.7.0}
 BuildRequires:  %{python_module uvicorn >= 0.12.1}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -71,18 +80,25 @@ Python minimal low-level HTTP client.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
 # ulimit -n 50000
 # test_no_retries and test_retries are very slow and fails
 # tests/async_tests + tests/sync_tests causes open file limit
-%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic)'
+# socks5 -- we don't ship socksio
+%if %{with test}
+%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic or socks5)'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/*
+%endif
 
 %changelog
