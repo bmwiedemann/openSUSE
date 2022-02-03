@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 29 17:46:24 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.1.4:
+  * Update canonical_url to properly respect builder
+
+- changes from version 2.1.3:
+  * Use circleci
+
+- changes from version 2.1.2:
+  * Canonical URL: don't set it if is empty
+
+-------------------------------------------------------------------
 Sat Jul 25 15:14:03 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.1.1:
