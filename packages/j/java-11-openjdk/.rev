@@ -399,4 +399,12 @@
     <comment>October 2021 CPU</comment>
     <requestid>929872</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>43f9e61e61eefdf76e55faaee123547f</srcmd5>
+    <version>11.0.14.0</version>
+    <time>1643926587</time>
+    <user>dimstar_suse</user>
+    <comment>January 2022 CPU</comment>
+    <requestid>950245</requestid>
+  </revision>
 </revisionlist>

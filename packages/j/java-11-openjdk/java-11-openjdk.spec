@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       13
+%global updatever       14
 %global patchver        0
-%global datever         2021-10-19
-%global buildver        8
+%global datever         2022-01-18
+%global buildver        9
 %global openjdk_repo    jdk11u
-%global openjdk_tag     jdk-11.0.13+8
-%global openjdk_dir     jdk11u-jdk-11.0.13-8
+%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}+%{buildver}
+%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}-%{buildver}
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
@@ -238,8 +238,7 @@ Patch402:       jaw-nogtk.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
-#
-Patch600:       riscv64-zero.patch
+
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -529,6 +528,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+
 %patch19 -p1
 
 %patch20 -p1
@@ -557,8 +557,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch500
 %patch501
-
-%patch600 -p1
 
 # Extract systemtap tapsets
 
@@ -1314,7 +1312,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/libjvm.so
 %{_jvmdir}/%{sdkdir}/lib/*/Xusage.txt
 
-%config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blacklisted.certs
+%config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
 %config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
 %config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
