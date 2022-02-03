@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-arrow%{?psuffix}
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0

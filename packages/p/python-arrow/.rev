@@ -262,4 +262,12 @@
   * Minor bug fixes to Catalan, Cantonese, Greek and Nepali locales.</comment>
     <requestid>929904</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0a7b046e0374dc4e9b10c69d3708fe4a</srcmd5>
+    <version>1.2.2</version>
+    <time>1643926581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950059</requestid>
+  </revision>
 </revisionlist>

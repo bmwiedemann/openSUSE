@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 29 17:37:07 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.2.2:
+  * [NEW] Added Kazakh locale.
+  * [FIX] The Belarusian, Bulgarian, Czech, Macedonian, Polish,
+    Russian, Slovak and Ukrainian locales now support dehumanize.
+  * [FIX] Minor bug fixes and improvements to ChineseCN, Indonesian,
+    Norwegian, and Russian locales.
+  * [FIX] Expanded testing for multiple locales.
+  * [INTERNAL] Started using xelatex for pdf generation in
+    documentation.
+  * [INTERNAL] Split requirements file into requirements.txt,
+    requirements-docs.txt and requirements-tests.txt.
+  * [INTERNAL] Added flake8-annotations package for type linting in
+    pre-commit.
+
+-------------------------------------------------------------------
 Sat Nov  6 17:33:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
