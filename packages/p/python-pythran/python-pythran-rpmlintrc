@@ -1,0 +1,3 @@
+# SECTION This is a package that compiles code, the runtime requires devel packages
+addFilter('devel-file-in-non-devel-package .*/site-packages/pythran/.*')
+addFilter('devel-dependency .*')

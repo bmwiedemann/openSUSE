@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e9b3a2aa028182495e4867172619f0f</srcmd5>
+    <version>0.11.0</version>
+    <time>1643926567</time>
+    <user>dimstar_suse</user>
+    <comment>build requirement of scipy 1.7
+
+now with fixed empty debuginfo extraction</comment>
+    <requestid>949968</requestid>
+  </revision>
+</revisionlist>

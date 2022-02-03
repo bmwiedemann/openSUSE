@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Jan 28 18:47:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix errors uncovered by staging:
+  * Mention python-pythran-rpmlintrc
+  * also make :test-py* noarch so that no debuginfo package fails
+
+-------------------------------------------------------------------
+Sun Jan 23 15:10:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for 0.11
+  * debundling inspired by Fedora package:
+    https://src.fedoraproject.org/rpms/pythran/blob/rawhide/f/pythran.spec
+- Required by scipy 1.7
