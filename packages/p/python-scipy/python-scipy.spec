@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_6_0
+%define _ver 1_7_3
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 %if "%{flavor}" == "standard"
  %bcond_with hpc
  %ifarch armv6l s390 s390x m68k
@@ -38,6 +38,14 @@
     %endif
   %endif
 %endif
+
+%if "%{flavor}" == "test"
+%bcond_with hpc
+%bcond_without test
+%else
+%bcond_with test
+%endif
+
 %if "%{flavor}" == "gnu-hpc"
  %define compiler_family gnu
  %bcond_without hpc
@@ -48,9 +56,7 @@
  %define c_f_ver 7
  %bcond_without hpc
 %endif
-%define         skip_python2 1
-# https://numpy.org/neps/nep-0029-deprecation_policy.html
-%define         skip_python36 1
+
 %{?with_hpc:%{hpc_requires}}
 %bcond_with ringdisabled
 %if %{without hpc}
@@ -75,11 +81,17 @@ ExclusiveArch:  do_not_build
  %endif
 %{hpc_modules_init openblas}
 %endif
+
+# TODO explore debundling Boost for standard and hpc
+
+%{?!python_module:%define python_module() python3-%{**}}
+%define         skip_python2 1
+
 Name:           %{package_name}
-Version:        1.6.3
+Version:        1.7.3
 Release:        0
 Summary:        Scientific Tools for Python
-License:        BSD-3-Clause AND LGPL-2.0-or-later
+License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
 Group:          Development/Libraries/Python
 URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
@@ -88,12 +100,17 @@ BuildRequires:  %{python_module Cython >= 0.29.18}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pybind11 >= 2.4.3}
 BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
+BuildRequires:  %{python_module pythran}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
+%endif
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy = %{version}}
 %endif
 %if %{without hpc}
 BuildRequires:  %{python_module numpy-devel >= 1.16.5}
@@ -128,9 +145,11 @@ for numerical integration and optimization.
 %{?with_hpc:%{hpc_python_master_package -L -a }}
 
 %prep
-%setup -q -n scipy-%{version}
+%autosetup -p1 -n scipy-%{version}
 find . -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
+echo '    ignore:.*The distutils.* is deprecated.*:DeprecationWarning' >> pytest.ini
 
+%if !%{with test}
 %build
 %{python_expand #
 %if %{with hpc}
@@ -196,7 +215,31 @@ family %{shortname}
 EOF
 }
 %endif
+%endif
 
+%if %{with test}
+%check
+# (occasional) precision errors
+donttest="(TestLinprogIPSpecific and test_solver_select)"
+donttest+=" or test_gh12922"
+donttest+=" or (TestPeriodogram and test_nd_axis_m1)"
+donttest+=" or (TestPeriodogram and test_nd_axis_0)"
+donttest+=" or (TestPdist and test_pdist_jensenshannon_iris)"
+donttest+=" or (test_rotation and test_align_vectors_single_vector)"
+donttest+=" or (test_lobpcg and test_tolerance_float32)"
+donttest+=" or (test_iterative and test_maxiter_worsening)"
+# fails on big endian
+donttest+=" or (TestNoData and test_nodata)"
+# oom
+donttest+=" or (TestBSR and test_scalar_idx_dtype)"
+# error while getting entropy
+donttest+=" or (test_cont_basic and 500-200-ncf-arg74)"
+%python_exec runtests.py -vv --no-build -m fast -- -k "not ($donttest)"
+# prevent failing debuginfo extraction because we did not create anything for testing
+touch debugsourcefiles.list
+%endif
+
+%if !%{with test}
 %if %{with hpc}
 %post
 %{hpc_module_delete_if_default}
@@ -213,6 +256,7 @@ EOF
 %{hpc_dirs}
 %dir %{hpc_libdir}/python%{hpc_python_version}
 %dir %{p_python_sitearch}
+%endif
 %endif
 
 %changelog

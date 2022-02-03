@@ -1,4 +1,5 @@
 <multibuild>
   <package>standard</package>
+  <package>test</package>
   <package>gnu-hpc</package>
 </multibuild>

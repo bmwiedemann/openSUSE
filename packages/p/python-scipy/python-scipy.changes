@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan 29 20:44:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Provide empty debuginfo extraction for :test flavor
+
+-------------------------------------------------------------------
+Sun Jan 23 17:52:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.7.3
+  * 3rd bugfix release since 1.7.0
+- Highlights from the 1.7.0 release
+  * A new submodule for quasi-Monte Carlo, scipy.stats.qmc, was
+    added
+  * The documentation design was updated to use the same
+    PyData-Sphinx theme as NumPy and other ecosystem libraries.
+  * We now vendor and leverage the Boost C++ library to enable
+    numerous improvements for long-standing weaknesses in
+    scipy.stats
+  * scipy.stats has six new distributions, eight new (or
+    overhauled) hypothesis tests, a new function for bootstrapping,
+    a class that enables fast random variate sampling and
+    percentile point function evaluation, and many other
+    enhancements.
+  * cdist and pdist distance calculations are faster for several
+    metrics, especially weighted cases, thanks to a rewrite to a
+    new C++ backend framework
+  * A new class for radial basis function interpolation,
+    RBFInterpolator, was added to address issues with the Rbf
+    class.
+- Enable fast part of the test suite
+
+-------------------------------------------------------------------
 Mon Jul 26 14:37:33 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Enable openblas on riscv64
