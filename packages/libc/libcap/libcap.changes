@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 31 20:08:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.63:
+  * restore errno to zero by the time main() is executed
+  * Consistent psx handling (a panic) for syscalls that return thread dependent
+    status Inconsistend behavior noticed by Lorenz Bauer
+  * Add a test case for a deadlock under investigation in golang
+  * Trim some of the #include file use to make the tree compile more
+    efficiently 
+
+-------------------------------------------------------------------
 Thu Dec 30 09:52:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.62:

@@ -1,7 +1,7 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libcap
-Version:        2.62
+Version:        2.63
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause AND GPL-2.0-only

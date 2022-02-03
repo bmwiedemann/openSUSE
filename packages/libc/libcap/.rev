@@ -423,4 +423,18 @@
   * Recognize default securebits as a libcap mode: HYBRID</comment>
     <requestid>943181</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>90eaaecd9630f4dfb77211eca3fde06e</srcmd5>
+    <version>2.63</version>
+    <time>1643926576</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.63:
+  * restore errno to zero by the time main() is executed
+  * Consistent psx handling (a panic) for syscalls that return thread dependent
+    status Inconsistend behavior noticed by Lorenz Bauer
+  * Add a test case for a deadlock under investigation in golang
+  * Trim some of the #include file use to make the tree compile more
+    efficiently</comment>
+    <requestid>950291</requestid>
+  </revision>
 </revisionlist>
