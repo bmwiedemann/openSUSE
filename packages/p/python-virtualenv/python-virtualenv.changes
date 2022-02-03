@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Jan 29 17:39:55 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 20.13.0:
+  * Features
+    + Add downloaded wheel information in the relevant JSON embed file
+      to prevent additional downloads of the same wheel. - by
+      @mayeut. (#2268)
+  * Bugfixes
+    + Fix AttributeError: 'bool' object has no attribute 'error' when
+      creating a Python 2.x virtualenv on macOS - by moreati. (#2269)
+    + Fix PermissionError: [Errno 1] Operation not permitted when
+      creating a Python 2.x virtualenv on macOS/arm64 - by
+      moreati. (#2271)
+
+- changes from version 20.12.1:
+  * Bugfixes
+    + Try using previous updates of pip, setuptools & wheel when
+      inside an update grace period rather than always falling back to
+      embedded wheels - by @mayeut. (#2265)
+    + New patch versions of pip, setuptools & wheel are now returned
+      in the expected timeframe. - by @mayeut. (#2266)
+    + Manual upgrades of pip, setuptools & wheel are not discarded by
+      a periodic update - by @mayeut. (#2267)
+
+- changes from version 20.12.0:
+  * Features
+    + Sign the python2 exe on Darwin arm64 - by @tmspicer. (#2233)
+  * Bugfixes
+    + Fix --download option - by @mayeut. (#2120)
+    + Ugrade embedded setuptools to 60.2.0 from 60.1.1 - by
+      @gaborbernat. (#2263)
+
+- changes from version 20.11.2:
+  * Bugfixes
+    + Fix installation of pinned versions of pip, setuptools & wheel -
+      by @mayeut. (#2203)
+
+- changes from version 20.11.1:
+  * Bugfixes
+    + Bump embed setuptools to 60.1.1 from 60.1.0 - by
+      @gaborbernat. (#2258)
+
+- changes from version 20.11.0:
+  * Features
+    + Avoid deprecation warning from py-filelock argument - by
+      @ofek. (#2237)
+    + Upgrade embedded setuptools to 61.1.0 from 58.3.0 - by
+      @gaborbernat. (#2240)
+    + Drop the runtime dependency of backports.entry-points-selectable
+      - by @hroncok. (#2246)
+    + Fish: PATH variables should not be quoted when being set - by
+      @hroncok. (#2248)
+
+-------------------------------------------------------------------
 Mon Dec  6 09:58:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.10.0:

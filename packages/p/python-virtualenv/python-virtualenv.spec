@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-virtualenv%{psuffix}
-Version:        20.10.0
+Version:        20.13.0
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -49,15 +49,15 @@ Requires:       python-filelock >= 3.0.0
 Requires:       python-platformdirs >= 2
 Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata >= 0.12
 %endif
 %if 0%{python_version_nodots} < 37
 Requires:       python-importlib_resources >= 1.0
 %endif
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-BuildArch:      noarch
 %ifpython2
 Requires:       python-contextlib2 >= 0.6.0
 Requires:       python-pathlib2 >= 2.3.3
@@ -75,7 +75,6 @@ BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
 BuildRequires:  ca-certificates
 %endif
-
 %python_subpackages
 
 %description
@@ -115,7 +114,7 @@ rm -r tests/unit/activation
 %check
 %if %{with test}
 export LANG="en_US.UTF8"
-export PIP_CERT="/etc/ssl/ca-bundle.pem"
+export PIP_CERT="%{_sysconfdir}/ssl/ca-bundle.pem"
 export PYTHONPATH=$PWD/src
 # online tests downloads from pypi
 donttest="test_seed_link_via_app_data"
