@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 22:26:15 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
+
+- Restore brandig package versioning due to dependency for OpenSUSEway
+  * https://github.com/openSUSE/openSUSEway/issues/54
+
+-------------------------------------------------------------------
 Fri Jan 28 11:36:17 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Prevent segfault on keyboard connection

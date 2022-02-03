@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
 BuildRequires:  pkgconfig(wlroots) >= 0.15.0
 BuildRequires:  pkgconfig(xkbcommon)
-Requires:       %{name}-branding = %{version}
+Requires:       %{name}-branding
 %if 0%{?suse_version}
 # I definitely recommend Xwayland
 Recommends:     xorg-x11-server-wayland
@@ -68,7 +68,7 @@ Summary:        Upstream branding of %{name}
 Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
-Conflicts:      %{name}-branding = %{version}
+Conflicts:      otherproviders(%{name}-branding)
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: /etc/sway/config contains upstream config and brand
