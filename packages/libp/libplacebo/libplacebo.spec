@@ -18,20 +18,20 @@
 
 %define sover 192
 Name:           libplacebo
-Version:        4.192.0
+Version:        4.192.1
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://code.videolan.org/videolan/libplacebo
 Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{version}/libplacebo-v%{version}.tar.bz2
-Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/6e80e2a646f35be4afc157a932f2936392ec8f74/nuklear.h
+Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/3e91905e82c3cad01435d4a8a660a30e7f73c94a/nuklear.h
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-mako
-BuildRequires:  shaderc-devel
+BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(lcms2)
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vulkan)
 
 %description
@@ -67,6 +68,7 @@ primitives, as well as a standalone vulkan-based image/video
 renderer. It is based on the core rendering algorithms and ideas
 of mpv.
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
 %package     -n plplay
 Summary:        Example video player based on %{name}
 Group:          Productivity/Multimedia/Video/Players
@@ -75,13 +77,20 @@ Group:          Productivity/Multimedia/Video/Players
 A small example video player based on %{name} and FFmpeg. This provides little
 more than the ability to display video files, and rather serves as a tool to
 help understand and demonstrate the various options provided by %{name}.
+%endif
 
 %prep
 %setup -q -n %{name}-v%{version}
 cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
-%meson -Dglslang=disabled -Dd3d11=disabled -Dtests=true -Ddemos=true
+%meson -Dglslang=disabled -Dd3d11=disabled -Dtests=true \
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
+       -Ddemos=true \
+%else
+       -Ddemos=false \
+%endif
+
 %meson_build
 
 %install
@@ -105,7 +114,9 @@ cp %{SOURCE1} ./demos/3rdparty/nuklear/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
 %files -n plplay
 %{_bindir}/plplay
+%endif
 
 %changelog

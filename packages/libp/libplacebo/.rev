@@ -968,4 +968,12 @@ Fixes:
     <comment>Update to v4.192.0</comment>
     <requestid>947404</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3ef426499552da64f3b65f3802054298</srcmd5>
+    <version>4.192.1</version>
+    <time>1643926593</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v4.192.1</comment>
+    <requestid>951344</requestid>
+  </revision>
 </revisionlist>

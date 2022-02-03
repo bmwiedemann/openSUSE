@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  3 15:59:08 UTC 2022 - Niklas Haas <obs@haasn.xyz>
+
+- Update libplacebo to version 4.192.1. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v4.192.1
+
+-------------------------------------------------------------------
+Sun Jan 30 17:08:01 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update nuklear.h to 4.9.5
+- Add dav1d dependency
+
+-------------------------------------------------------------------
 Wed Jan 19 12:10:24 UTC 2022 - Niklas Haas <obs@haasn.xyz>
 
 - Update libplacebo to version 4.192.0. See details in:
