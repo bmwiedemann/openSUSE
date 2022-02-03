@@ -7,4 +7,12 @@
     <comment>needed as dependency for vagrant &gt;= 2.2.1</comment>
     <requestid>666045</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>819f5385d7b6a749b521b062e38b39a2</srcmd5>
+    <version>1.3.0</version>
+    <time>1643931940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950094</requestid>
+  </revision>
 </revisionlist>

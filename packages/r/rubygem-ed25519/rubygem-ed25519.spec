@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ed25519
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-ed25519
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 %define mod_name ed25519
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{rubydevel >= 2.0.0}
+BuildRequires:  %{rubydevel >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/crypto-rb/ed25519
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/RubyCrypto/ed25519
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-ed25519-rpmlintrc
 Source2:        gem2rpm.yml
