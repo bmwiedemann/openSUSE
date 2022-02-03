@@ -1,7 +1,7 @@
 #
 # spec file for package glslang
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,16 @@
 
 
 %define lname libglslang11
-
 Name:           glslang
-Version:        11.7.1
+Version:        11.8.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
-
 Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Patch0:         0001-build-set-SOVERSION-on-all-libraries.patch
-Patch1:         glslang-big-endian_1.patch
-Patch2:         glslang-big-endian_2.patch
-Patch3:         glslang-big-endian_3.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes

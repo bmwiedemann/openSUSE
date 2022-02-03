@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 30 13:08:43 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to release 11.8.0
+  * Add support for SPIR-V 1.6
+  * Add support for Vulkan 1.3
+  * Add --hlsl-dx-position-w option
+- Delete glslang-big-endian_1.patch, glslang-big-endian_2.patch,
+  glslang-big-endian_3.patch (merged)
+
+-------------------------------------------------------------------
 Thu Dec  9 19:18:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to fix issues on big endian platforms
