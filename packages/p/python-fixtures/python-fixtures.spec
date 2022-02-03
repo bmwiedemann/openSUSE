@@ -1,7 +1,7 @@
 #
 # spec file for package python-fixtures
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,14 @@ URL:            https://github.com/testing-cabal
 Source:         https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fixtures-pr36-py39.patch -- gh#testing-cabal/fixtures#46
 Patch0:         fixtures-pr36-py39.patch
-BuildRequires:  %{python_module extras}
-# explicitly wants to test the backport mock
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr >= 0.11}
+BuildRequires:  %{python_module setuptools}
+# explicitly wants to test the backport mock
+#TESTS
+BuildRequires:  %{python_module extras}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module testtools >= 0.9.22}
+#/TESTS
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-extras

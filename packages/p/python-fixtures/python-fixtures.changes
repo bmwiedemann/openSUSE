@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 26 18:55:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing BuildRequire on python-setuptools
+  (this was implicitly pulled in only).
+
+-------------------------------------------------------------------
 Fri Mar 19 21:29:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add fixtures-pr36-py39.patch -- gh#testing-cabal/fixtures#46
