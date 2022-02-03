@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 03 18:21:18 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1643736149.ab6013d7:
+  * Fix sporadic failures in openQA's fullstack test
+  * Adapt configure_repositories step in OBS workflow
+  * Add unit test for requesting full screen updates when checking screen
+  * Speed up `t/23-baseclass.t` using `Time::Mock::Time`
+  * Avoid division by zero when computing stopwatch data
+  * Force full screen update in intervals similar to full screen search
+  * Force full screen update shortly before check screen would fail
+  * Simplify initialization of variables in `check_asserted_screen`
+  * Fix include of extension-less perl files in tidy config
+  * Tidy tools/check_coverage according to new os-autoinst rules
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Tue Feb 01 10:04:38 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1643647733.c2de822c:
