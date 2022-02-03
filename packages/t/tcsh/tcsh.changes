@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  3 07:56:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-6.24.00-which.dif from upstream mailing list
+  to fix bug in which builtin, that is return error if a command
+  is not found 
+
+-------------------------------------------------------------------
+Wed Feb  2 13:46:57 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.00
+  11. Update config.guess and config.sub so arm64 is recognized
+
+-------------------------------------------------------------------
 Tue Jan 11 15:13:55 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.23.02

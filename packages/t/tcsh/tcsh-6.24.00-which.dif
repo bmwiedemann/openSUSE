@@ -1,0 +1,26 @@
+From: Jamie Landeg-Jones <jamie@catflap.org>
+Message-Id: <202202021648.212GmqTP022048@donotpassgo.dyslexicfish.net>
+
+Basically, I noticed my aliases were out of wack. I discovered that "which"
+is no longer returning error 1 if a command is not found.
+
+It seems that when "setcopy" was changed in some cases to "setstatus", a mistake
+was made.
+
+This is the fix:
+
+---
+ tc.func.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- tc.func.c
++++ tc.func.c	2022-02-03 07:53:14.442853165 +0000
+@@ -503,7 +503,7 @@ dowhich(Char **v, struct command *c)
+ 	rv &= cmd_expand(*v, NULL);
+ 
+     if (!rv)
+-	setstatus(0);
++	setstatus(1);
+ }
+ 
+ static int

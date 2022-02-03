@@ -17,7 +17,7 @@
 
 
 Name:           tcsh
-Version:        6.23.02
+Version:        6.24.00
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
@@ -31,6 +31,7 @@ Source4:        tcsh.keyring
 Patch0:         tcsh-6.21.00.dif
 Patch1:         tcsh-6.15.00-pipe.dif
 Patch2:         tcsh-6.16.00-norm-cmd.dif
+Patch3:         tcsh-6.24.00-which.dif
 Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
@@ -57,6 +58,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %setup -q
 %patch1      -b .pipe
 %patch2      -b .normcmd
+%patch3      -b .whichbug
 %patch4      -b .colorls
 %patch5      -b .dspmbyte
 %patch6      -b .catalogs

@@ -874,4 +874,17 @@
   * tcsh-6.21.00.dif</comment>
     <requestid>945613</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e24f9f7b4f69f164ed66842405c0a2a7</srcmd5>
+    <version>6.24.00</version>
+    <time>1643926556</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch tcsh-6.24.00-which.dif from upstream mailing list
+  to fix bug in which builtin, that is return error if a command
+  is not found 
+
+- Update to tcsh 6.24.00
+  11. Update config.guess and config.sub so arm64 is recognized</comment>
+    <requestid>950890</requestid>
+  </revision>
 </revisionlist>
