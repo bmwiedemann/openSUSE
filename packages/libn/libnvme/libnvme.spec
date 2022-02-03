@@ -15,23 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 1
 
 Name:           libnvme
-Version:        1.0~0
+Version:        1.0~2
 Release:        0
 Summary:        Linux-native nvme device management library
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
-BuildRequires:  meson >= 0.47.0
-BuildRequires:  gcc gcc-c++ make
-BuildRequires:  libuuid-devel
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  libjson-c-devel
+BuildRequires:  libuuid-devel
+BuildRequires:  make
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  openssl-devel
-BuildRequires:  swig
-BuildRequires:  python3-devel
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  swig
 
 %description
 Provides library functions for accessing and managing NVMe devices on a Linux

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 01 11:26:39 UTC 2022 - daniel.wagner@suse.com
+
+- Update to version 1.0~2:
+  * Add fabrics config option 'tls'
+  * Logging infrastructure reworked (API break)
+  * Changed argument structs layout (API break)
+  * Changed scan API (API break)
+  * Fixed ctrl_loss_tmo handling concerning values of '-1'
+  * Various build fixes
+
+-------------------------------------------------------------------
 Wed Jan 19 11:13:42 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Remove Provide for python package.
