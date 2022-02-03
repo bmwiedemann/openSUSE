@@ -2018,4 +2018,16 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment></comment>
     <requestid>946161</requestid>
   </revision>
+  <revision rev="192" vrev="4">
+    <srcmd5>8306c0869de010a0891d1ad986ca824f</srcmd5>
+    <version>2.4.52</version>
+    <time>1643926583</time>
+    <user>dimstar_suse</user>
+    <comment>- ssl-global.conf: set SSLCipherSuite to PROFILE=SYSTEM instead of
+  DEFAULT_SUSE [jsc#SLE-22561]
+- set also SSLProxyCipherSuite to PROFILE=SYSTEM
+- modified sources
+  % apache2-ssl-global.conf (forwarded request 949462 from pgajdos)</comment>
+    <requestid>950138</requestid>
+  </revision>
 </revisionlist>

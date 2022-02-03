@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 27 13:57:47 UTC 2022 - pgajdos@suse.com
+
+- ssl-global.conf: set SSLCipherSuite to PROFILE=SYSTEM instead of
+  DEFAULT_SUSE [jsc#SLE-22561]
+- set also SSLProxyCipherSuite to PROFILE=SYSTEM
+- modified sources
+  % apache2-ssl-global.conf
+
+-------------------------------------------------------------------
 Tue Jan 11 12:05:55 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Align some defaults in apache2-server-tuning.conf to upstream 
