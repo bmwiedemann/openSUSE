@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 25 22:22:13 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix self-conflict of devel package
+- Remove redundant .changes files for other flavors again (added
+  without changelog entry)
+- Correct baselibs entry, add glib flavor again (removed to "fix"
+  an erroneous factory-auto reject)
+
+-------------------------------------------------------------------
 Mon Nov 25 07:34:29 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Remove conflict between current libdbus-c++-devel and

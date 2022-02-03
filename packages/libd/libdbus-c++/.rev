@@ -108,4 +108,12 @@
  libdbus-c++-glib-devel.</comment>
     <requestid>750676</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>35cf57230d90fa8bf8b22e2e8df8e613</srcmd5>
+    <version>0.9.1+git20170322</version>
+    <time>1643926577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949964</requestid>
+  </revision>
 </revisionlist>
