@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  1 08:40:19 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Improve visual perception in help text (by @TarasPanchenko
+  Github user, bsc#1195372)
+- 4.4.3
+
+-------------------------------------------------------------------
 Tue Jan 25 14:42:40 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).
