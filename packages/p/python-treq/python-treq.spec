@@ -1,7 +1,7 @@
 #
 # spec file for package python-treq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-treq
-Version:        21.1.0
+Version:        22.1.0
 Release:        0
 Summary:        HTTP library inspired by python-requests
 License:        MIT
@@ -30,11 +31,11 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
 BuildRequires:  %{python_module incremental}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.13.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted >= 18.7.0
@@ -42,7 +43,6 @@ Requires:       python-attrs
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-incremental
 Requires:       python-requests >= 2.1.0
-Requires:       python-six >= 1.13.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,10 +55,10 @@ It provides a simple, higher level API for making HTTP requests when using Twist
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/treq
 
 %check
@@ -69,6 +69,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/treq
-%{python_sitelib}/treq-%{version}-py*.egg-info/
+%{python_sitelib}/treq-%{version}*-info/
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  3 10:05:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 22.1.0
+  - Cookies specified as a dict were sent to every domain, not
+    just the domain of the request, potentially exposing them on
+    redirect. See GHSA-fhpf-pp6p-55qc, CVE-2022-23607, bsc#1195432
+  - PEP 517/518 build-system metadata is now provided in
+    pyproject.toml.
+  - treq.testing.StubTreq now persists twisted.web.server.Session
+    instances between requests.
+  - The dependency on Sphinx required to build the documentation
+    has been moved from the dev extra to the new docs
+    extra.
+  - Support for Python 2.7 and 3.5 has been dropped. treq no
+    longer depends on six or mock.
+- Switch to pyproject* tool chain.
+
+-------------------------------------------------------------------
 Thu Mar 18 03:47:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to 21.1.0. bsc#1183679
