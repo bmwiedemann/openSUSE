@@ -1,0 +1,42 @@
+---
+#description_paragraphs: 3
+description: |-
+ Tk::TableMatrix is a table/matrix widget extension to perl/tk
+ for displaying data in a table (or spreadsheet) format.
+#  override description from CPAN
+summary: Table/Matrix Widget Extension to perl/tk
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  perl-Tk-devel
+ BuildRequires:  xorg-x11-devel
+post_prep: |-
+ if test "%{_lib}" = "lib64" ; then
+   sed -i -e "s,/lib>,/lib64>," -e "s,/lib\",/lib64\"," myConfig
+ fi
+ # Fix rpmlint warning "wrong-file-end-of-line-encoding"
+ sed -i 's/\r$//' ChangeLog Changes README demos/*
+
+ # Copy license
+ cp -a pTk/license.terms license.terms.pTk
+ cp -a pTk/mTk/license.terms license.terms.mTk
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+license: (Artistic-1.0 OR GPL-1.0-or-later) AND TCL
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+skip_doc: debug.* myConfig
+add_doc: demos license.terms.pTk license.terms.mTk
+misc: |-
+ %exclude %{perl_vendorarch}/auto/Tk/pTk

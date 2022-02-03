@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Thu Feb  3 12:49:21 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- removed useless conflicting file
+
+-------------------------------------------------------------------
+Thu Jan 20 23:16:40 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Updated License to "(Artistic-1.0 OR GPL-1.0-or-later) AND TCL".
+- Added perl(ExtUtils::MakeMaker) build requirement.
+- Removed dos2unix, xorg-x11, xorg-x11-Xnest, xorg-x11-Xvfb,
+  xorg-x11-fonts-100dpi, xorg-x11-fonts-75dpi and
+  xorg-x11-fonts-scalable build requirements (not needed anymore).
+- Run spec cleaner.
+
+-------------------------------------------------------------------
+Thu Oct 29 11:03:12 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Tk-TableMatrix/ChangeLog
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:24 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 18:01:00 UTC 2010 - coolo@novell.com
+
+- called spec2changelog
+
+-------------------------------------------------------------------
+Tue Jun 20 00:00:00 UTC 2006 - jfunk@funktronics.ca
+
+- Update
+
+-------------------------------------------------------------------
+Fri Nov 11 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Build for SL10
+
+-------------------------------------------------------------------
+Thu May 12 00:00:00 UTC 2005 - jfunk@funktronics.ca
+
+- Update
+- Build for SL93
+
+-------------------------------------------------------------------
+Fri Nov 19 00:00:00 UTC 2004 - jfunk@funktronics.ca
+
+- Build for SL92
+
+-------------------------------------------------------------------
+Tue May 11 00:00:00 UTC 2004 - jfunk@funktronics.ca
+
+- Update
+- Build for SL91
+
+-------------------------------------------------------------------
+Mon Nov  3 00:00:00 UTC 2003 - jfunk@funktronics.ca
+
+- Build for SUSE 9.0
+
+-------------------------------------------------------------------
+Fri May 30 00:00:00 UTC 2003 - jfunk@funktronics.ca
+
+- Build for SuSE 8.2
+
+-------------------------------------------------------------------
+Wed Dec 11 00:00:00 UTC 2002 - jfunk@funktronics.ca
+
+- Update to 1.01
+- Build for SuSE 8.1
+
+-------------------------------------------------------------------
+Thu Jun 13 00:00:00 UTC 2002 - jfunk@funktronics.ca
+
+- Initial build
