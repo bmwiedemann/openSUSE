@@ -1,7 +1,7 @@
 #
 # spec file for package zypper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  libxml2-devel
-BuildRequires:  libzypp-devel >= 17.28.3
+BuildRequires:  libzypp-devel >= 17.29.0
 BuildRequires:  readline-devel >= 5.1
 Requires:       procps
 %if 0%{?suse_version}
@@ -46,7 +46,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.50
+Version:        1.14.51
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
