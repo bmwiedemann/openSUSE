@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-s390
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-s390
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        YaST2 - S/390 Specific Features Configuration
 License:        GPL-2.0-only
@@ -63,6 +63,7 @@ S/390-specific features.
 %files
 %{yast_yncludedir}
 %{yast_clientdir}
+%{yast_libdir}
 %{yast_moduledir}
 %{yast_scrconfdir}
 %{yast_desktopdir}

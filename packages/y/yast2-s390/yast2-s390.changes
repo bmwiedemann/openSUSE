@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  1 19:15:35 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Related to jsc#SLE-20225
+  - Do not limit the number of disks formatted in parallel
+  - New format dialog introduced
+- 4.4.3
+
+-------------------------------------------------------------------
 Fri Oct 22 10:57:05 UTC 2021 - Martin Vidner <mvidner@suse.com>
 
 - Fix device filtering to follow major.minor semantic (jsc#SLE-17782)
