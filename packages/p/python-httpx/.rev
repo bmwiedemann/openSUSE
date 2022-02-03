@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>905775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac11b44a2c7736d38552aba7be419760</srcmd5>
+    <version>0.22.0</version>
+    <time>1643926572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.22.0:
+  * Add support for `Client(allow_redirects=&lt;bool&gt;)`. (Pull #1790)
+  * Add automatic character set detection, when no `charset` is included in the response `Content-Type` header. (Pull #1791)
+  * Added the `httpx` command-line client.
+  * Response instances now include `.is_informational`, `.is_success`, `.is_redirect`, `.is_client_error`, and `.is_server_error`
+    properties for checking 1xx, 2xx, 3xx, 4xx, and 5xx response types. Note that the behaviour of `.is_redirect` is slightly different in that it now returns True for all 3xx responses, in order to allow for a consistent set of properties onto the different HTTP status code types. The `response.has_redirect_location` location may be used to determine responses with properly formed URL redirects.
+  * Support for [the SOCKS5 proxy protocol](https://www.python-httpx.org/advanced/#socks) via [the `socksio` package](https://github.com/sethmlarson/socksio). (#2034)
+  * Support for custom headers in multipart/form-data requests (#1936)
+  * Event hooks are now also called for any additional redirect or auth requests/responses. (Pull #1806)
+  * Strictly enforce that upload files must be opened in binary mode. (Pull #1736)
+  * Strictly enforce that client instances can only be opened and closed once, and cannot be re-opened. (Pull #1800)
+  * Drop `mode` argument from `httpx.Proxy(..., mode=...)`. (Pull #1795)
+  * The `allow_redirects` flag is now `follow_redirects` and defaults to `False`.
+  * The `raise_for_status()` method will now raise an exception for any responses
+    except those with 2xx status codes. Previously only 4xx and 5xx status codes
+    would result in an exception.
+  * The low-level transport API changes to the much simpler `response = transport.handle_request(request)`.
+  * The `client.send()` method no longer accepts a `timeout=...` argument, but the
+    `client.build_request()` does. This required by the signature change of the
+    Transport API. The request timeout configuration is now stored on the request
+    instance, as `request.extensions['timeout']`.
+  * `response.iter_bytes()` no longer raises a ValueError when called on a response with no content. (Pull #1827)
+  * The `'wsgi.error'` configuration now defaults to `sys.stderr`, and is corrected to be a `TextIO` interface, not a `BytesIO` interface. Additionally, the WSGITransport now accepts a `wsgi_error` configuration. (Pull #1828)
+  * Follow the WSGI spec by properly closing the iterable returned by the application. (Pull #1830)
+  * Don't perform unreliable close/warning on `__del__` with unclosed clients. (#2026)
+  * Fix `Headers.update(...)` to correctly handle repeated headers (#2038)
+  * Fix streaming uploads using `SyncByteStream` or `AsyncByteStream`. Regression in 0.21.2. (#2016)
+  * HTTP/2 support for tunnelled proxy cases. (#2009)
+  * Improved the speed of large file uploads. (#1948)
+  * The `response.url` property is now correctly annotated as `URL`, instead of `Optional[URL]`. (#1940)</comment>
+    <requestid>950349</requestid>
+  </revision>
 </revisionlist>
