@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  1 10:15:38 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.0.2 (CVE-2022-22818, bsc#1195086) (CVE-2022-23833, bsc#1195088)
+  + CVE-2022-22818: Possible XSS via {% debug %} template tag
+  + CVE-2022-23833: Denial-of-service possibility in file uploads
+  + Fixed a bug in Django 4.0 where
+    TestCase.captureOnCommitCallbacks() could execute callbacks
+    multiple times
+  + Fixed a regression in Django 4.0 where help_text was HTML-escaped
+    in automatically-generated forms
+  + Fixed a regression in Django 4.0 that caused displaying an
+    incorrect name for class-based views on the technical 404 debug
+    page
+  + Fixed a regression in Django 4.0 that caused an incorrect repr of
+    ResolverMatch for class-based views
+  + Fixed a regression in Django 4.0 that caused a crash of
+    makemigrations on models without Meta.order_with_respect_to but
+    with a field named _order
+  + Fixed a regression in Django 4.0 that caused incorrect
+    ModelAdmin.radio_fields layout in the admin
+  + Fixed a duplicate operation regression in Django 4.0 that caused a
+    migration crash when altering a primary key type for a concrete
+    parent model referenced by a foreign key
+  + Fixed a bug in Django 4.0 that caused a crash of
+    QuerySet.aggregate() after annotate() on an aggregate function
+    with a default
+  + Fixed a regression in Django 4.0 that caused a crash of
+    makemigrations when renaming a field of a renamed model
+
+-------------------------------------------------------------------
 Wed Jan 12 14:16:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_test_custom_fields_SQLite.patch fixing issues with
