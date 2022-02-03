@@ -1,7 +1,7 @@
 #
 # spec file for package python-passivetotal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-passivetotal
-Version:        2.5.7
+Version:        2.5.8
 Release:        0
 Summary:        Client for the PassiveTotal REST API
 License:        GPL-2.0-only
