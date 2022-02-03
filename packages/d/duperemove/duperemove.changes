@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  3 16:48:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.3:
+  * Increase open file limit. (#269)
+  * Create hash database file with 600 permission for improved
+    security. (#262)
+  * Read more data per pread, for v2 hashfile format this reduces
+    the overall number of syscalls made which in turns results
+    in better performance.
+  * Fix truncated file handling, eliminating a an infinite
+    loop case. (#255)
+
+-------------------------------------------------------------------
 Thu Nov  5 07:38:15 UTC 2020 - Nikolay Borisov <nborisov@suse.com>
 
 - Update to v0.11.2
