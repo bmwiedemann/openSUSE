@@ -33,4 +33,12 @@ rubygem-vagrant submission was announced to opensuse-factory at http://lists.ope
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>903534</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b88a7de54e6a422a6585a3950fb83ac</srcmd5>
+    <version>0.2.7</version>
+    <time>1643926539</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950646</requestid>
+  </revision>
 </revisionlist>
