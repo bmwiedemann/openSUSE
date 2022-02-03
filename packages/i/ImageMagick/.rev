@@ -3241,4 +3241,27 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Improved adjustment of page offset when resizing an image. (forwarded request 943180 from dirkmueller)</comment>
     <requestid>943529</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>1b7a5a48bfa85b617b782f2e78625e1e</srcmd5>
+    <version>7.1.0.22</version>
+    <time>1643926550</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.22
+  * limit colorname length to avoid possible DoS
+  * restore MPRI URI in SVG
+  * PDF now shows the correct Unicode title (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4771).
+  * optimize Fx image statistics (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/4533).
+  * Support seamless blending of a foreground and background image.
+  * Support saliency blending of a foreground and background image.
+  * Support QOI image format.
+  * Perist frame delay when converting APNG to Webp (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4704).
+  * -fx performance increase by one or two orders of magnitude (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/4533).
+  * Add support for formatted text (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/4515).</comment>
+    <requestid>950743</requestid>
+  </revision>
 </revisionlist>
