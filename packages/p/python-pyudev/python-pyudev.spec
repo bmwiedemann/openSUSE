@@ -66,6 +66,7 @@ in modern linux systems.
 
 # Disable intersphinx and issuetracker, we don't want to access the web during doc build:
 sed -i -e "s|'sphinx.ext.intersphinx',\\?||" -e "s|'sphinxcontrib.issuetracker',\\?||" doc/conf.py
+sed -i -e 's/tag_date = true/tag_date = false/' setup.cfg
 
 %build
 %python_build
