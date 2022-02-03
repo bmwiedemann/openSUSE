@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package openblas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -399,6 +399,12 @@ ln -s lib%{libname}.so.0 %{buildroot}/%{p_libdir}/lib%{pname}.so.0
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libblas.so.3
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libcblas.so.3
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/liblapack.so.3
+%if 0%{?suse_version} <= 1500 
+ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/lib%{pname}.so.0
+ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/libblas.so.3
+ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/libcblas.so.3
+ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/liblapack.so.3
+%endif
 
 # Fix symlinks
 pushd %{buildroot}%{p_libdir}

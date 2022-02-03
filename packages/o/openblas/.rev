@@ -505,4 +505,17 @@
     <comment></comment>
     <requestid>908422</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>bf005fd901af3d78c224d9321be3eb5c</srcmd5>
+    <version>0.3.17</version>
+    <time>1643926583</time>
+    <user>dimstar_suse</user>
+    <comment>- Partly revert:
+    Thu Jul  8 12:35:35 UTC 2021 - Dominique Leuenberger &amp;lt;dimstar@opensuse.org&amp;gt;
+    - Do not create dummy symlinks on $self in /etc/alternatives: those
+      files are packages as %ghost and any real file existance only
+      confuses brp-checks, as it detects circular symlinks.
+  for all suse_versions &amp;lt; current Factory in an attempt to fix bsc#1195232. (forwarded request 950115 from eeich)</comment>
+    <requestid>950116</requestid>
+  </revision>
 </revisionlist>
