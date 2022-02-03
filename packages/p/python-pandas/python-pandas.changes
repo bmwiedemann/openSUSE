@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jan 25 19:26:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip more tests on non-intel architectures
+  boo#1167730
+
+-------------------------------------------------------------------
+Sun Jan 23 11:52:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.4.0
+  * https://pandas.pydata.org/docs/whatsnew/v1.4.0.html
+  * Enhancements
+   - Improved warning messages
+   - Index can hold arbitrary ExtensionArrays
+   - Enhancements in Styler
+   - Multi-threaded CSV reading with a new CSV Engine based on
+     pyarrow
+   - Rank function for rolling and expanding windows
+   - Groupby positional indexing
+   - DataFrame.from_dict and DataFrame.to_dict have new 'tight'
+     option
+  * Notable bug fixes
+    - Inconsistent date string parsing
+    - Ignoring dtypes in concat with empty or all-NA columns
+    - Null-values are no longer coerced to NaN-value in
+      value_counts and mode
+    - mangle_dupe_cols in read_csv no longer renames unique columns
+      conflicting with target names
+    - unstack and pivot_table no longer raises ValueError for
+      result that would exceed int32 limit
+    - groupby.apply consistent transform detection
+  * API changes
+    - Index.get_indexer_for() no longer accepts keyword arguments
+      (other than target); in the past these would be silently
+      ignored if the index was not unique (GH42310)
+    - Change in the position of the min_rows argument in
+      DataFrame.to_string() due to change in the docstring
+      (GH44304)
+    - Reduction operations for DataFrame or Series now raising a
+      ValueError when None is passed for skipna (GH44178)
+    - read_csv() and read_html() no longer raising an error when
+      one of the header rows consists only of Unnamed: columns
+      (GH13054)
+    - Changed the name attribute of several holidays in
+      USFederalHolidayCalendar to match official federal holiday
+      names.
+  * Deprecations
+    - Deprecated Int64Index, UInt64Index & Float64Index
+    - Deprecated Frame.append and Series.append
+- Split out test runs into separate flavors, optimize memory usage
+  in pytest-xdist runs
+
+-------------------------------------------------------------------
 Tue Jan  4 21:56:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.3.5

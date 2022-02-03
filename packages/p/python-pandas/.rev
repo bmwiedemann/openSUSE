@@ -422,4 +422,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>943930</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ed4869461e4c08ee3fa458b2bcd2c01b</srcmd5>
+    <version>1.4.0</version>
+    <time>1643926566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949618</requestid>
+  </revision>
 </revisionlist>

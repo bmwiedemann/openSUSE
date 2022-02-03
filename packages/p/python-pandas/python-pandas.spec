@@ -16,19 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
 %bcond_without test
-%else
+%endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+%define psuffix -test-py310
+%define skip_python38 1
+%define skip_python39 1
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?!python_module:%define python_module() python3-%{**}}
+%define         skip_python2 1
 Name:           python-pandas%{psuffix}
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -38,65 +53,66 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%
 BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel >= 3.7.1}
-BuildRequires:  %{python_module numpy >= 1.17.3}
-BuildRequires:  %{python_module numpy-devel >= 1.16.5}
-BuildRequires:  %{python_module python-dateutil >= 2.7.3}
-BuildRequires:  %{python_module pytz >= 2017.3}
+BuildRequires:  %{python_module numpy-devel >= 1.18.5}
+BuildRequires:  %{python_module python-dateutil >= 2.8.1}
+BuildRequires:  %{python_module pytz >= 2020.1}
 BuildRequires:  %{python_module setuptools >= 51.0.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.17.3
-Requires:       python-python-dateutil >= 2.7.3
-Requires:       python-pytz >= 2017.3
-Recommends:     python-Bottleneck >= 1.2.1
-Recommends:     python-numexpr >= 2.6.8
+Requires:       python-numpy >= 1.18.5
+Requires:       python-python-dateutil >= 2.8.1
+Requires:       python-pytz >= 2020.1
+Recommends:     python-Bottleneck >= 1.3.1
+Recommends:     python-numexpr >= 2.7.1
 Suggests:       python-Jinja2 >= 2.10
-Suggests:       python-PyMySQL >= 0.8.1
-Suggests:       python-SQLAlchemy >= 1.3.0
-Suggests:       python-XlsxWriter >= 1.0.2
-Suggests:       python-beautifulsoup4 >= 4.6.0
+Suggests:       python-PyMySQL >= 0.10.1
+Suggests:       python-SQLAlchemy >= 1.4.0
+Suggests:       python-XlsxWriter >= 1.2.2
+Suggests:       python-beautifulsoup4 >= 4.8.2
 Suggests:       python-blosc >= 1.17.0
 Suggests:       python-fastparquet >= 0.4.0
 Suggests:       python-fsspec >= 0.7.4
 Suggests:       python-gcsfs >= 0.6.0
 Suggests:       python-html5lib >= 1.0.1
-Suggests:       python-lxml >= 4.3.0
-Suggests:       python-matplotlib >= 2.2.3
-Suggests:       python-openpyxl >= 3.0.0
-Suggests:       python-pandas-gbq >= 0.12.0
+Suggests:       python-lxml >= 4.5.0
+Suggests:       python-matplotlib >= 3.3.2
+Suggests:       python-numba >= 0.50.1
+Suggests:       python-openpyxl >= 3.0.3
+Suggests:       python-pandas-gbq >= 0.14.0
 Suggests:       python-psycopg2 >= 2.7
-Suggests:       python-pyarrow >= 0.17.0
+Suggests:       python-pyarrow >= 1.0.1
 Suggests:       python-pyreadstat
 Suggests:       python-qt5
 Suggests:       python-s3fs >= 0.4.0
-Suggests:       python-scipy >= 1.12.0
-Suggests:       python-tables >= 3.5.1
+Suggests:       python-scipy >= 1.4.1
+Suggests:       python-tables >= 3.6.1
 Suggests:       python-tabulate >= 0.8.7
-Suggests:       python-xarray >= 0.12.0
+Suggests:       python-xarray >= 0.15.1
 Suggests:       python-xlrd >= 1.2.0
-Suggests:       python-xlsb >= 1.0.6
+Suggests:       python-xlwt >= 1.3.0
 Suggests:       python-zlib
 Suggests:       xclip
 Suggests:       xsel
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
 %if %{with test}
-BuildRequires:  %{python_module Bottleneck >= 1.2.1}
-BuildRequires:  %{python_module SQLAlchemy >= 1.3.0}
-BuildRequires:  %{python_module XlsxWriter >= 1.0.2}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
+BuildRequires:  %{python_module Bottleneck >= 1.3.1}
+BuildRequires:  %{python_module SQLAlchemy >= 1.4.0}
+BuildRequires:  %{python_module XlsxWriter >= 1.2.2}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.8.2}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module lxml >= 4.3.0}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numexpr >= 2.7.0}
-BuildRequires:  %{python_module openpyxl >= 3.0.0}
+BuildRequires:  %{python_module lxml >= 4.5.0}
+BuildRequires:  %{python_module matplotlib >= 3.3.2}
+BuildRequires:  %{python_module numexpr >= 2.7.1}
+BuildRequires:  %{python_module openpyxl >= 3.0.3}
 BuildRequires:  %{python_module pandas = %{version}}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module xlrd >= 1.2.0}
+BuildRequires:  %{python_module scipy >= 1.4.1}
+BuildRequires:  %{python_module xlrd >= 2.0.1}
+BuildRequires:  memory-constraints
 BuildRequires:  xclip
 BuildRequires:  xvfb-run
 %endif
@@ -153,33 +169,52 @@ SKIP_TESTS+=" or test_oo_optimizable"
 # https://github.com/pandas-dev/pandas/issues/39096
 # https://github.com/pandas-dev/pandas/issues/36579
 SKIP_TESTS+=" or (test_misc and test_memory_usage and series and empty and index)"
-# no network -- https://github.com/pandas-dev/pandas/pull/42354
-SKIP_TESTS+=" or test_wrong_url"
-%ifarch %{ix86}
-# overflows on i586
-SKIP_TESTS+=" or test_encode_non_c_locale"
-# fails on i586 (was gcc10-skip-one-test.patch)
-SKIP_TESTS+=" or test_merge_on_ints_floats_warning"
-%endif
+# pytest-xdist worker crash
+SKIP_TESTS+=" or test_pivot_number_of_levels_larger_than_int32"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 # https://github.com/pandas-dev/pandas/issues/31856
 SKIP_TESTS+=" or test_maybe_promote_int_with_int"
 # rounding error
 SKIP_TESTS+=" or (test_rolling_quantile_interpolation_options and data1 and linear and 0.1)"
 fi
+%ifarch %{ix86}
+# overflows on i586
+SKIP_TESTS+=" or test_encode_non_c_locale"
+# fails on i586 (was gcc10-skip-one-test.patch)
+SKIP_TESTS+=" or test_merge_on_ints_floats_warning"
+%endif
+%ifarch ppc64 s390x
+# big endian type issues
+SKIP_TESTS+=" or test_astype"
+SKIP_TESTS+=" or test_to_numpy_string"
+SKIP_TESTS+=" or (test_construction and test_to_numpy)"
+SKIP_TESTS+=" or test_to_records_index_name"
+SKIP_TESTS+=" or test_to_records_dtype"
+SKIP_TESTS+=" or test_to_records_dict_like"
+SKIP_TESTS+=" or (test_c_parser_only and test_unsupported_dtype)"
+SKIP_TESTS+=" or test_td_mul_td64_ndarray_invalid"
+%endif
 %ifnarch x86_64
+# type and numeric precision issues, partially reported for arm and marked xfail upstream but not for e.g. ppc
+SKIP_TESTS+=" or (test_astype and test_subtype_integer_errors)"
+SKIP_TESTS+=" or (test_to_numeric and test_downcast_nullable_numeric and data12-UInt64-signed-UInt64)"
+SKIP_TESTS+=" or (test_rolling and test_rolling_var_numerical_issues)"
+SKIP_TESTS+=" or (test_groupby  and test_groupby_numerical_stability_sum_mean)"
+SKIP_TESTS+=" or (test_groupby  and test_groupby_numerical_stability_cumsum)"
+SKIP_TESTS+=" or (test_c_parser_only and test_float_precision_options)"
 # run the slow tests only on x86_64
 %define test_fast --skip-slow --skip-db
 %endif
+# The test collection consumes a lot of memory per worker. This sets %%jobs.
+%limit_build -m 2048
 %{python_expand $python -c 'import pandas; print(pandas.__path__); print(pandas.show_versions())'
-# -n 4: The test collection consumes a lot of memory per worker. Sync with constraints file
 # -c pyproject.toml: get the marker declarations
 # cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
 # --skip-* arguments: Upstreams custom way to skip marked tests. These do not use pytest.mark.
 # clipboard marker: not set up properly in build service
 # need to specify test path directly instead of --pyargs pandas in order
 # to find all conftest.py files https://github.com/pytest-dev/pytest/issues/1596
-xvfb-run pytest-%{$python_bin_suffix} -v -n 4 \
+xvfb-run pytest-%{$python_bin_suffix} -v -n %jobs \
                                       -c pyproject.toml \
                                       -o cache_dir=$PWD/.pytest_cache --cache-clear \
                                       --skip-network %{?test_fast} \

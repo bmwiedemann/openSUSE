@@ -1,3 +1,5 @@
 <multibuild>
-  <package>test</package>
+  <package>test-py38</package>
+  <package>test-py39</package>
+  <package>test-py310</package>
 </multibuild>
