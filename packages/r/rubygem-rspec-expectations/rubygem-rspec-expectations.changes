@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:30:29 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.10.2
+ see installed Changelog.md
+
+  ### Development
+  [Full Changelog](http://github.com/rspec/rspec-expectations/compare/v3.10.2...3-10-maintenance)
+  
+  ### 3.10.2 / 2022-01-14
+  [Full Changelog](http://github.com/rspec/rspec-expectations/compare/v3.10.1...v3.10.2)
+  
+  Bug Fixes:
+  
+  * Fix support for dynamic matchers for expectation target checks (Phil Pirozhkov, #1294)
+  * Fix `expect(array).to include(hash).times`, previously this would fail due to
+    matching the entire array as a single hash, rather than a member of the hash.
+    (Slava Kardakov, #1322)
+  * Ensure `raise_error` matches works with the `error_highlight` option from Ruby 3.1.
+    (Peter Goldstein, #1339)
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 07:51:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.10.1
