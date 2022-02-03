@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb  3 05:55:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.0:
+  * #969 Add batching of expired token deletions in cleartokens management command and models.clear_expired() to improve performance for removal of large numers of expired tokens.
+  * #1070 Add a Celery task for clearing expired tokens, e.g. to be scheduled as a periodic task.
+  * #1062 Add Brazilian Portuguese (pt-BR) translations.
+  * #1069 OIDC: Add an alternate form of get_additional_claims()
+  * #1012 Return 200 status code with {"active": false} when introspecting a nonexistent token per RFC 7662. It had been incorrectly returning 401.
+  * #1085 Fix for #1083 admin UI search for idtoken results in django.core.exceptions.FieldError: Cannot resolve keyword 'token' into field.
+  * #1085 Add admin UI search fields for additional models.
+  * #1056 Add missing migration triggered by Django 4.0 changes to the migrations autodetector.
+  * #1068 Revert #967 which incorrectly changed an API. See #1066.
+  * #949 Provide django.contrib.auth.authenticate() with a request for compatibiity with more backends (like django-axes).
+  * #968, #1039 Add support for Django 3.2 and 4.0.
+  * #953 Allow loopback redirect URIs using random ports as described in RFC8252 section 7.3.
+  * #972 Add Farsi/fa language support.
+  * #978 OIDC: Add support for rotating multiple RSA private keys.
+  * #978 OIDC: Add new OIDC_JWKS_MAX_AGE_SECONDS to improve jwks_uri caching.
+  * #967 OIDC: Add additional claims beyond sub to the id_token.
+  * #1041 Add a search field to the Admin UI (e.g. for search for tokens by email address).
+  * #981 Require redirect_uri if multiple URIs are registered per RFC6749 section 3.1.2.3
+  * #991 Update documentation of REFRESH_TOKEN_EXPIRE_SECONDS to indicate it may be int or datetime.timedelta.
+  * #977 Update Tutorial to show required include.
+  * #968 Remove support for Django 3.0 & 3.1 and Python 3.6
+  * #1035 Removes default_app_config for Django Deprecation Warning
+  * #1023 six should be dropped
+  * #963 Fix handling invalid hex values in client query strings with a 400 error rather than 500.
+  * #973 Tutorial updated to use django-cors-headers.
+  * #956 OIDC: Update documentation of get_userinfo_claims to add the missing argument.
+  * Adding support for OPENID 
+- Add patch stop-using-pk-to-reference-tokens.patch:
+  * Use direct object references to fix a truculent test.
+
+-------------------------------------------------------------------
 Fri Apr  3 10:35:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.3.2:
