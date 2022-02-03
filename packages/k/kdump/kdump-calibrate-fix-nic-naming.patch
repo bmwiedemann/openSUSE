@@ -1,0 +1,36 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue Feb 1 22:25:59 2022 +0100
+Subject: calibrate: Fix network interface naming
+Upstream: merged
+Git-commit: 75a44901b54ba853497d63c01bef77b251436e0a
+
+The init scripts may rename the network interface unless it is
+given an explicit name by MAC address. If that happens, network
+initialization fails, because the "eth0" interface is missing.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ calibrate/run-qemu.py |   11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+--- a/calibrate/run-qemu.py
++++ b/calibrate/run-qemu.py
+@@ -217,8 +217,15 @@ def run_qemu(bindir, params, initrd, elf
+             model = 'virtio'
+         else:
+             model = 'e1000e'
+-        extra_qemu_args.extend(('-nic', 'user,model={}'.format(model)))
+-        extra_kernel_args.extend(('bootdev=eth0', 'ip=eth0:dhcp'))
++        mac = '12:34:56:78:9A:BC'
++        extra_qemu_args.extend((
++            '-nic', 'user,mac={},model={}'.format(mac, model)
++        ))
++        extra_kernel_args.extend((
++            'ifname=kdump0:{}'.format(mac),
++            'bootdev=kdump0',
++            'ip=kdump0:dhcp'
++        ))
+ 
+     # Other arch-specific arguments
+     if arch == 'aarch64':

@@ -1024,4 +1024,24 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment></comment>
     <requestid>947999</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>cd9895129c9f2af5a35eecf19b29d9d9</srcmd5>
+    <version>1.0.2</version>
+    <time>1643926546</time>
+    <user>dimstar_suse</user>
+    <comment>- kdump-calibrate.conf-depends-on-kdumptool.patch: calibrate.conf:
+  Add dependency on kdumptool.
+- kdump-calibrate-fix-nic-naming.patch: calibrate: Fix network
+  interface naming.
+- kdump-calibrate-include-af_packet.patch: calibrate: Explicitly
+  include af_packet in the test initrd.
+
+- Update to 1.0.2
+  * Adjust crash kernel reservation at boot time (jsc#SLE-18441).
+- All remaining patches have been upstreamed:
+  * kdump-fillupdir-fixes.patch
+  * kdump-use-pbl.patch
+  * kdump-calibrate-Ignore-malformed-VMCOREINFO.patch</comment>
+    <requestid>950701</requestid>
+  </revision>
 </revisionlist>

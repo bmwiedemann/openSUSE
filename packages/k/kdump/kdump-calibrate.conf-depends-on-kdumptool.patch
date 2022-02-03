@@ -1,0 +1,23 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue Feb 1 23:14:01 2022 +0100
+Subject: calibrate.conf: Add dependency on kdumptool
+Upstream: merged
+Git-commit: 4641d2bc0468fe733c18b6f9c81f1bb6402c520e
+
+The run-qemu.py script invokes kdumptool to find a suitable kernel,
+so kdumptool must be built before this script runs.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+diff --git a/calibrate/CMakeLists.txt b/calibrate/CMakeLists.txt
+index 7d8b4fc..57344ae 100644
+--- a/calibrate/CMakeLists.txt
++++ b/calibrate/CMakeLists.txt
+@@ -38,6 +38,7 @@ ADD_CUSTOM_COMMAND(
+     VERBATIM
+     DEPENDS
+         ${dracut_targets}
++        kdumptool
+         dummy.conf
+         dummy-net.conf
+         trackrss

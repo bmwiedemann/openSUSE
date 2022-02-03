@@ -1,0 +1,37 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue Feb 1 18:47:25 2022 +0100
+Subject: calibrate: Explicitly include af_packet in the test initrd
+Upstream: merged
+Git-commit: 00edd1457aa19eebe78c8c36ef013f72af262584
+
+DHCP clients need protocol family PF_PACKET. If it is built as a
+module, then the dependency is not automatically added by dracut's
+kernel-network-modules unless af_packet is loaded in the host.
+
+This breaks OBS build, because that is done inside a VM with no
+network.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+
+---
+ calibrate/run-qemu.py |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+--- a/calibrate/run-qemu.py
++++ b/calibrate/run-qemu.py
+@@ -82,11 +82,12 @@ class build_initrd(object):
+             '/usr/bin'))
+ 
+         if params['NET']:
++            netdrivers = [ 'af_packet' ]
+             if params['ARCH'].startswith('s390'):
+-                net_driver = 'virtio-net'
++                netdrivers.append('virtio-net')
+             else:
+-                net_driver = 'e1000e'
+-            extra_args = ('--add-drivers', net_driver)
++                netdrivers.append('e1000e')
++            extra_args = ('--add-drivers', ' '.join(netdrivers))
+         else:
+             extra_args = ()
+         args = (

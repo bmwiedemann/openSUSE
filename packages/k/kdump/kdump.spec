@@ -16,9 +16,16 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%bcond_with calibrate
+
+%if 0%{?is_opensuse}
+%if 0%{suse_version} > 1500
+%define distro_suffix tumbleweed.%{_arch}
+%else
+%define distro_suffix leap%{sle_version}.%{_arch}
+%endif
+%else
+%define distro_suffix sle%{sle_version}.%{_arch}
 %endif
 
 %ifarch aarch64
@@ -42,37 +49,28 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0
+Version:        1.0.2
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 URL:            https://github.com/openSUSE/kdump
 Source:         %{name}-%{version}.tar.bz2
+Source1:        %{name}-calibrate.tar.bz2
 Source2:        %{name}-rpmlintrc
-Patch1:         %{name}-fillupdir-fixes.patch
-Patch9:         %{name}-use-pbl.patch
-Patch10:        %{name}-calibrate-Ignore-malformed-VMCOREINFO.patch
-BuildRequires:  %qemu
+Patch1:         %{name}-calibrate-include-af_packet.patch
+Patch2:         %{name}-calibrate-fix-nic-naming.patch
+Patch3:         %{name}-calibrate.conf-depends-on-kdumptool.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7
-BuildRequires:  dhcp-client
-BuildRequires:  dracut
 BuildRequires:  gcc-c++
-BuildRequires:  iputils
-BuildRequires:  kernel-default
 BuildRequires:  libblkid-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libesmtp-devel
 BuildRequires:  libmount-devel
 BuildRequires:  libxslt
-BuildRequires:  makedumpfile
 BuildRequires:  pkgconfig
-BuildRequires:  procps
-BuildRequires:  python3
-BuildRequires:  qemu-ipxe
-BuildRequires:  qemu-vgabios
 BuildRequires:  systemd-sysvinit
 BuildRequires:  util-linux-systemd
 BuildRequires:  wicked
@@ -80,9 +78,24 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
+%if %{with calibrate}
+BuildRequires:  %qemu
+BuildRequires:  dhcp-client
+BuildRequires:  dracut >= 047
+BuildRequires:  iputils
+BuildRequires:  kernel-default
+BuildRequires:  makedumpfile
+BuildRequires:  procps
+BuildRequires:  python3
+BuildRequires:  qemu-ipxe
+BuildRequires:  qemu-vgabios
+BuildRequires:  systemd-sysvinit
+BuildRequires:  util-linux-systemd
+BuildRequires:  wicked
+%endif
 Requires:       /usr/bin/sed
 Requires:       curl
-Requires:       dracut
+Requires:       dracut >= 047
 Requires:       kexec-tools
 Requires:       makedumpfile
 Requires:       openssh
@@ -117,21 +130,18 @@ after a crash dump has occured.
 
 %prep
 %setup -q
-%if 0%{?suse_version} >= 1330
 %patch1 -p1
-%endif
-%patch9 -p1
-%patch10 -p1
+%patch2 -p1
+%patch3 -p1
+%setup -q -D -T -a 1
 
 %build
 export CXXFLAGS="%{optflags} -std=c++11"
-%cmake
-
-# for SLE_15
-%if %{undefined cmake_build}
-%define cmake_build make %{?_smp_mflags}
-%define ctest cd build; ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags}
-%define cmake_install DESTDIR=%{buildroot} make -C build %{?_smp_mflags} install
+%cmake \
+%if %{with calibrate}
+	-DCALIBRATE=ON
+%else
+	-DCALIBRATE=OFF
 %endif
 
 %cmake_build
@@ -143,6 +153,11 @@ export CXXFLAGS="%{optflags} -std=c++11"
 %cmake_install
 # empty directory
 mkdir -p %{buildroot}%{_localstatedir}/crash
+
+# Install pre-built calibrate.conf
+%if !%{with calibrate}
+cp calibrate/calibrate.conf.%{distro_suffix} %{buildroot}/usr/lib/kdump/calibrate.conf
+%endif
 
 # symlink for init script
 rm %{buildroot}%{_initddir}/boot.kdump

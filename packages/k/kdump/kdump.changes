@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb  1 22:16:36 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-calibrate.conf-depends-on-kdumptool.patch: calibrate.conf:
+  Add dependency on kdumptool.
+- kdump-calibrate-fix-nic-naming.patch: calibrate: Fix network
+  interface naming.
+- kdump-calibrate-include-af_packet.patch: calibrate: Explicitly
+  include af_packet in the test initrd.
+
+-------------------------------------------------------------------
+Tue Feb  1 12:52:56 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 1.0.2
+  * Adjust crash kernel reservation at boot time (jsc#SLE-18441).
+- All remaining patches have been upstreamed:
+  * kdump-fillupdir-fixes.patch
+  * kdump-use-pbl.patch
+  * kdump-calibrate-Ignore-malformed-VMCOREINFO.patch
+
+-------------------------------------------------------------------
 Fri Jan 21 15:03:29 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - kdump-calibrate-Ignore-malformed-VMCOREINFO.patch: calibrate:
