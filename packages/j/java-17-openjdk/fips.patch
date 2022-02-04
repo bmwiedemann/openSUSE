@@ -694,9 +694,9 @@
          java.rmi,
 +        jdk.crypto.cryptoki,
 +        jdk.crypto.ec,
+         jdk.charsets,
          jdk.jartool,
          jdk.jlink,
-         jdk.net,
 --- a/src/java.base/share/classes/sun/security/provider/SunEntries.java
 +++ b/src/java.base/share/classes/sun/security/provider/SunEntries.java
 @@ -30,6 +30,7 @@ import java.net.*;

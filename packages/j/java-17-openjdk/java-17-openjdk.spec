@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       1
+%global updatever       2
 %global patchver        0
-%global datever         2021-10-19
-%global buildver        12
+%global datever         2022-01-18
+%global buildver        8
 %global openjdk_repo    jdk17u
-%global openjdk_tag     jdk-17.0.1+12
-%global openjdk_dir     jdk17u-jdk-17.0.1-12
+%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}+%{buildver}
+%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}-%{buildver}
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
@@ -1194,7 +1194,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libsctp.so
 %{_jvmdir}/%{sdkdir}/lib/libsystemconf.so
 %ifarch x86_64
-%{_jvmdir}/%{sdkdir}/lib/libsvml.so
+%{_jvmdir}/%{sdkdir}/lib/libjsvml.so
 %endif
 %{_jvmdir}/%{sdkdir}/lib/libsyslookup.so
 %{_jvmdir}/%{sdkdir}/lib/libverify.so

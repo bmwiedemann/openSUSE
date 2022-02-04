@@ -47,4 +47,12 @@
     <comment>Rediff patches + fix in FIPS mode</comment>
     <requestid>929873</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5f2851b026fcace7e572e7600766c08</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1644007762</time>
+    <user>dimstar_suse</user>
+    <comment>January 2022 CPU</comment>
+    <requestid>951534</requestid>
+  </revision>
 </revisionlist>
