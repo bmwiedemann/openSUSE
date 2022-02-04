@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 02:11:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- demjson is no longer required, remove it from BuildRequires. 
+
+-------------------------------------------------------------------
 Sun May  2 18:01:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to wallaby template (url fixup) 

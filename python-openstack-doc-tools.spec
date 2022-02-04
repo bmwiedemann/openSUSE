@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstack-doc-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-demjson
 BuildRequires:  python3-lxml >= 4.5.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackdocstheme
