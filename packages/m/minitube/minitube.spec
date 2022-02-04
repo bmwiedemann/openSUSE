@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.9.2
+Version:        3.9.3
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -34,12 +34,13 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtdeclarative-devel
+# Have 32bit choice when build with pkgconfig - https://github.com/openSUSE/obs-build/issues/724 - instead pkgconfig(Qt5Script) use libqt5-qtscript-devel 
+BuildRequires:  libqt5-qtscript-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
