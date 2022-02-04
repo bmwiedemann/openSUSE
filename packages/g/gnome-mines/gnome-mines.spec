@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-mines
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,11 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Mines
 Source0:        https://download.gnome.org/sources/gnome-mines/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0a10c3a8ae4395c8059875bcea74be5c17ef9a21.patch -- Fix build with meson 0.60 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-mines/-/commit/0a10c3a8ae4395c8059875bcea74be5c17ef9a21.patch
+
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.37.1
@@ -53,6 +58,9 @@ mines while receiving clues for the location of the mines.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license COPYING

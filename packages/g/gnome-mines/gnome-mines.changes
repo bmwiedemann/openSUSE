@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 16:49:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0a10c3a8ae4395c8059875bcea74be5c17ef9a21.patch: Fix build
+  with meson 0.60 and newer.
+- Add appstream-glib and desktop-file-utils BuildRequires and add a
+  check section and meson_test macro, validate desktop filea and
+  metainfo during build.
+
+-------------------------------------------------------------------
 Sat Mar 20 09:25:29 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 40.0:
