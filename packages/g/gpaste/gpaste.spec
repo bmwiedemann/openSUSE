@@ -1,7 +1,7 @@
 #
 # spec file for package gpaste
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Simone Tolotti, <simone.tolotti@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,9 @@ License:        BSD-2-Clause
 Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 Source0:        http://www.imagination-land.org/files/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 1ec2699daa600e34d73b8d200dd7bb22f4eace27.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://github.com/Keruspe/GPaste/commit/1ec2699daa600e34d73b8d200dd7bb22f4eace27.patch
+
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
@@ -132,8 +135,7 @@ This package provides zsh tab-completion for %{name}.
 desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=Applet --add-only-show-in=GNOME %{buildroot}%{_datadir}/applications/org.gnome.GPaste.Ui.desktop
 %find_lang GPaste %{?no_lang_C}
 
-%post -n libgpaste13 -p /sbin/ldconfig
-%postun -n libgpaste13 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgpaste13
 
 %files
 %license COPYING

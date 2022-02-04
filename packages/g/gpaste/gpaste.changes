@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  2 20:11:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 1ec2699daa600e34d73b8d200dd7bb22f4eace27.patch: Fix build
+  with meson 0.61 and newer.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Nov 24 20:40:49 UTC 2021 - Andrey Gankov <gav@qsolution.ru>
 
 - Update to version 3.42.2:
