@@ -1,7 +1,7 @@
 #
 # spec file for package python-xdis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xdis
-Version:        5.0.6
+Version:        6.0.3
 Release:        0
 Summary:        Python cross-version byte-code disassembler and marshal routines
 License:        GPL-2.0-only
 URL:            https://github.com/rocky/python-xdis/
 Source:         https://github.com/rocky/python-xdis/archive/%{version}.tar.gz
-Patch0:         python-xdis.patch
+Patch0:         ignore-patchlevel-in-python-version.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(python3) < 3.10
+BuildRequires:  pkgconfig(python3)
+Requires:       python-click
 Requires:       python-setuptools
+Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.10.0}
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb  4 00:25:56 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0.3:
+  * xasm format fixes
+  * more Python version tuple compare conversions
+  * add version_str_to_tuple() to convert the other way. This is useful in xasm, for example.
+  * Reduce PYTHON_VERSION usage in xdis.
+  * Allow optional delimiter and start length in version_tuple_to_str()
+  * fix logic bug in setting MAGIC
+  * Add a little Python 3.8.5 Graal (Java VM) knowledge.
+  * Add PyPy 3.8 opcodes and disassembly
+  * Accept Python 3.8.12
+  * Fix some small lingering bugs introduced converting Python version number floats to tuples
+  * Reworked for Python 3.10.
+  * Add 3.10 opcodes.
+  * Add 3.9 and 3.10 testing.
+  * Some tolerance for running from 3.11
+  * Update magic numbers
+  * Expanding testing to include pyston and PyPy 3.7
+  * Added knowledge of Python versions 3.6.15 and 3.7.12.
+  * Restrict wheel packaging for Python 3 only.
+  * Use the wheel for only the 3.x and newer version of Python.
+  * Add Python version 3.9.7
+  * Document unmarshal better
+  * Correct stack information for IMPORT_NAME
+  * Fix bug in code type handling where bytes were showing up as strings
+  * More type annotations in master branch. Create more older variations without annotations
+  * Add Python versions 3.9.6, 3.7.11, 3.8.11, and 3.6.14
+  * Note Python versions 3.8.10 and 3.9.5
+  * Incorrect variable name in marshal dump (used in writting .pyc files). PR #77
+  * Improve 3.9 IS_OP and CONTAINS_OP operand formatting
+  * Correct disassembly of 3.9 bytecode from other bytecode
+  * Accept 3.9.3 and 3.9.4 as a valid 3.9 version
+  * Accept 3.8.9 as a valid 3.8 version 
+- Rename python-xdis.patch to be slightly more descriptive:
+  ignore-patchlevel-in-python-version.patch, and rebase it.
+
+-------------------------------------------------------------------
 Fri Jan 22 05:41:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to python_alternative for pydisasm script 
