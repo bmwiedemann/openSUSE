@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 12 12:49:34 UTC 2022 - pdostal@suse.com
+
+- Update to version -1.3.2+20211210:
+  * Don't sometimes hang just after launching ssh
+  * Only use CLOCK_MONOTONIC_RAW with __APPLE__ systems.
+  * Add tmux and alacritty to title_term_types
+  * .gitignore: fix path
+  * .gitignore: add compile_commands.json
+  * fixed the irc channel link in README
+  * Use CLOCK_MONOTONIC_RAW when available
+
+-------------------------------------------------------------------
 Sat Jan 09 16:48:34 UTC 2021 - idonmez@suse.com
 
 - Update to version 1.3.2+20200518:

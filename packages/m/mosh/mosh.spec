@@ -1,7 +1,7 @@
 #
 # spec file for package mosh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Flavio Castelli.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mosh
-Version:        1.3.2+20200518
+Version:        1.3.2+20211210
 Release:        0
 Summary:        The mobile shell
 License:        GPL-3.0-or-later
