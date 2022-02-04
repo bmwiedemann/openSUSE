@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Revert "Prefer mime type from content over file name when loading" (kde#441698)
+  * Guard against null QScreen (kde#442424)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
