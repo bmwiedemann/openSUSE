@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * BUG 449158 Akregator crashes while removing feeds folder. (kde#449158)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:24:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
