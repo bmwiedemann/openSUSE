@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-sudoku
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://wiki.gnome.org/Apps/Sudoku
 Source0:        https://download.gnome.org/sources/gnome-sudoku/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 7c9935a02b48f332f67bad3e4ee020b75591084a.patch -- Fix build with meson 0.60.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-sudoku/-/commit/7c9935a02b48f332f67bad3e4ee020b75591084a.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

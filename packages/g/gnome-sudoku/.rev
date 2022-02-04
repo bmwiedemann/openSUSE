@@ -330,4 +330,12 @@
     <comment>New stable release (forwarded request 908090 from iznogood)</comment>
     <requestid>908367</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>d39c3f61dbda880864441a110f0a0322</srcmd5>
+    <version>40.2</version>
+    <time>1644007750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951429</requestid>
+  </revision>
 </revisionlist>
