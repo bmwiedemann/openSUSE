@@ -3999,6 +3999,10 @@
     <package name="ruby3.1-rubygem-ffi-compiler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-flog" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-fluentd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-fog-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-fog-json" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-fog-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-fog-xml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-font-awesome-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-formatador" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-forwardable-extended" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
