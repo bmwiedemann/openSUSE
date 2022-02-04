@@ -1,7 +1,7 @@
 #
 # spec file for package devhelp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,10 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Devhelp
 Source0:        https://download.gnome.org/sources/devhelp/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 281bade14c1925cf9e7329fa8e9cf2d82512c66f.patch -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/devhelp/-/commit/281bade14c1925cf9e7329fa8e9cf2d82512c66f.patch
+# PATCH-FIX-UPSTREAM 03b9b6b55ab1e1376b314ac7f99693512e42d80b.patch -- Fix build with meson 0.61.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/devhelp/-/commit/03b9b6b55ab1e1376b314ac7f99693512e42d80b.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.30.0
@@ -103,7 +107,7 @@ This package contains the Devhelp plugin for Vim.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \
