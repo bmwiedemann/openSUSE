@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,6 +97,10 @@ This is a Qt port from the original Scintilla class for %{_qt}
 Summary:        C++ Editor Class Library
 Provides:       qscintilla2_%{_qt} = %{version}-%{release}
 Obsoletes:      qscintilla2_%{_qt} < %{version}-%{release}
+%if "%{_qt}" == "qt5"
+# Translations were in the library package in the past
+Conflicts:      libqscintilla2_qt5-13
+%endif
 
 %description %{_qt}
 QScintilla is a Qt port of Neil Hodgson's Scintilla C++ editor class.

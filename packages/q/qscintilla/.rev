@@ -19,4 +19,12 @@
   * Bug fixes. (forwarded request 927201 from bnavigator)</comment>
     <requestid>927202</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>81b3e722c6851e35a60744e86f49ad73</srcmd5>
+    <version>2.13.1</version>
+    <time>1644007772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951649</requestid>
+  </revision>
 </revisionlist>

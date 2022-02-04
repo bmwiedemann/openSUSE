@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  4 19:11:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Conflict libqscintilla2_qt5-13 to avoid file conflict
+
+-------------------------------------------------------------------
 Sun Oct 24 16:16:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.13.1
