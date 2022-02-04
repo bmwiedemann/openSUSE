@@ -1,16 +1,16 @@
 --- jdk13/make/autoconf/lib-bundled.m4	2019-03-27 22:25:03.000000000 +0100
 +++ jdk13/make/autoconf/lib-bundled.m4	2019-04-04 08:18:52.952572757 +0200
-@@ -37,6 +37,7 @@
-   LIB_SETUP_LIBPNG
+@@ -41,6 +41,7 @@
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
+   LIB_SETUP_HARFBUZZ
 +  LIB_SETUP_PCSCLITE
  ])
  
  ################################################################################
-@@ -260,3 +261,41 @@
-   AC_SUBST(LCMS_CFLAGS)
-   AC_SUBST(LCMS_LIBS)
+@@ -304,3 +305,41 @@
+   AC_SUBST(HARFBUZZ_CFLAGS)
+   AC_SUBST(HARFBUZZ_LIBS)
  ])
 +
 +################################################################################
@@ -52,7 +52,7 @@
 +])
 --- jdk13/make/autoconf/spec.gmk.in	2019-03-27 22:25:03.000000000 +0100
 +++ jdk13/make/autoconf/spec.gmk.in	2019-04-04 08:18:52.952572757 +0200
-@@ -767,6 +767,7 @@
+@@ -784,6 +784,7 @@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@

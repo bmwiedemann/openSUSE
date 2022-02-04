@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Fri Feb  4 06:30:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-13.0.10+5 (January 2022 CPU)
+  * Security fixes:
+    + JDK-8268494: Better inlining of inlined interfaces
+    + JDK-8270386, CVE-2022-21291, bsc#1194925: Better verification
+      of scan methods
+    + JDK-8269151: Better construction of EncryptedPrivateKeyInfo
+    + JDK-8273968: JCK javax_xml tests fail in CI
+    + JDK-8270416, CVE-2022-21294, bsc#1194934: Enhance construction
+      of Identity maps
+    + JDK-8270392, CVE-2022-21293, bsc#1194935: Improve String
+      constructions
+    + JDK-8268801: Improve PKCS attribute handling
+    + JDK-8270498, CVE-2022-21296, bsc#1194932: Improve SAX Parser
+      configuration management
+    + JDK-8268488: More valuable DerValues
+    + JDK-8274096, CVE-2022-21366, bsc#1194927: Improve decoding of
+      image files
+    + JDK-8272272: Enhance jcmd communication
+    + JDK-8272462: Enhance image handling
+    + JDK-8273308: PatternMatchTest.java fails on CI
+    + JDK-8268813, CVE-2022-21283, bnc#1194937: Better String
+      matching
+    + JDK-8272014, CVE-2022-21305, bsc#1194939: Better array
+      indexing
+    + JDK-8273838, CVE-2022-21365, bsc#1194928: Enhanced BMP
+      processing
+    + JDK-8270952, CVE-2022-21277, bsc#1194930: Improve TIFF file
+      handling
+    + JDK-8271962: Better TrueType font loading
+    + JDK-8273756, CVE-2022-21360, bsc#1194929: Enhance BMP image
+      support
+    + JDK-8271968: Better canonical naming
+    + JDK-8271987: Manifest improved manifest entries
+    + JDK-8270646, CVE-2022-21299, bsc#1194931: Improved scanning of
+      XML entities
+    + JDK-8269944: Better HTTP transport redux
+    + JDK-8268512: More content for ContentInfo
+    + JDK-8273290: Enhance sound handling
+    + JDK-8272236, CVE-2022-21341, bsc#1194941: Improve serial forms
+      for transport
+    + JDK-8264934, CVE-2022-21248, bnc#1194926: Enhance cross VM
+      serialization
+    + JDK-8272026, CVE-2022-21340, bsc#1194940: Verify Jar
+      Verification
+    + JDK-8270492, CVE-2022-21282, bsc#1194933: Better resolution of
+      URIs
+  * Other changes:
+    + JDK-8266545: 8261169 broke Harfbuzz build with gcc 7 and 8
+    + JDK-8261169: Upgrade HarfBuzz to the latest 2.8.0
+    + JDK-8247872: Upgrade HarfBuzz to the latest 2.7.2
+    + JDK-8255790: GTKL&F: Java 16 crashes on initialising GTKL&F
+      on Manjaro Linux
+    + JDK-8272332: --with-harfbuzz=system doesn't add -lharfbuzz
+      after JDK-8255790
+    + JDK-8250894: Provide a configure option to build and run
+      against the platform libharfbuzz
+    + JDK-8278416: Crash during execution of ClassInitBarrier test
+    + JDK-8250605: Linux x86_32 builds fail after JDK-8249821
+    + JDK-8249821: Separate libharfbuzz from libfontmanager
+    + JDK-8241087: Build failure with VS 2019 (16.5.0) due to C2039
+      and C2873
+    + JDK-8254270: linux 32 bit build doesn't compile
+      libjdwp/log_messages.c
+    + JDK-8251329: (zipfs) Files.walkFileTree walks infinitely if
+      zip has dir named "." inside
+    + JDK-8238448: RSASSA-PSS signature verification fail when
+      using certain odd key sizes
+    + JDK-8266761: AssertionError in
+      sun.net.httpserver.ServerImpl.responseCompleted
+    + JDK-8268620: InfiniteLoopException test may fail on x86
+      platforms
+    + JDK-8274293: Build failure on macOS with Xcode 13.0 as vfork
+      is deprecated
+    + JDK-8276536: Update TimeZoneNames files to follow the changes
+      made by JDK-8275766
+    + JDK-8273026: Slow LoginContext.login() on multi threading
+      application
+    + JDK-8270533: AArch64: size_fits_all_mem_uses should return
+      false if its output is a CAS
+    + JDK-8275766: (tz) Update Timezone Data to 2021e
+    + JDK-8275849: TestZoneInfo310.java fails with tzdata2021e
+    + JDK-8266949: Check possibility to disable OperationTimedOut
+       on Unix
+    + JDK-8196100: javax/swing/text/JTextComponent/5074573/
+      /bug5074573.java fails
+    + JDK-8273790: Potential cyclic dependencies between Gregorian
+      and CalendarSystem
+    + JDK-8270893: IndexOutOfBoundsException while reading large
+      TIFF file
+    + JDK-8274779: HttpURLConnection: HttpClient and HttpsClient
+      incorrectly check request method when set to POST
+    + JDK-8190753: (zipfs): Accessing a large entry (> 2^31 bytes)
+      leads to a negative initial size for ByteArrayOutputStream
+    + JDK-8274407: (tz) Update Timezone Data to 2021c
+    + JDK-8274467: TestZoneInfo310.java fails with tzdata2021b
+    + JDK-8274468: TimeZoneTest.java fails with tzdata2021b
+    + JDK-8223173: Implement fast class initialization checks on
+      AARCH64
+    + JDK-8230307: ZGC: Make zGlobals and zArguments OS agnostic
+    + JDK-8269850: Most JDK releases report macOS version 12 as
+      10.16 instead of 12.0
+    + JDK-8253702: BigSur version number reported as 10.16, should
+      be 11.nn
+    + JDK-8225083: Remove Google certificate that is expiring in
+      December 2021
+    + JDK-8225082: Remove IdenTrust certificate that is expiring in
+      September 2021
+    + JDK-8274840: Update OS detection code to recognize Windows 11
+    + JDK-8273229: Update OS detection code to recognize Windows
+      Server 2022
+    + JDK-8239334: Tab Size does not work correctly in JTextArea
+      with setLineWrap on
+    + JDK-8238932: Invalid tier1_gc_1 test group definition
+    + JDK-8273575: memory leak in appendBootClassPath(), paths must
+      be deallocated
+    + JDK-8274381: missing CAccessibility definitions in JNI code
+    + JDK-8185005: Improve performance of
+      ThreadMXBean.getThreadInfo(long ids[], int maxDepth)
+    + JDK-8273358: macOS Monterey does not have the font Times
+      needed by Serif
+    + JDK-8274056: JavaAccessibilityUtilities leaks JNI objects
+- Modified patch:
+  * system-pcsclite.patch
+    + Rediff to changed context
+
+-------------------------------------------------------------------
 Thu Oct 21 11:42:27 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-13.0.9+3 (October 2021 CPU)

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
 %global debug 0
-%global add_back_javaee_modules 1
+%global add_back_javaee_modules 0
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      13
 %global interimver      0
-%global updatever       9
+%global updatever       10
 %global patchver        0
-%global datever         2021-10-19
-%global buildver        3
+%global datever         2022-01-18
+%global buildver        5
 %global openjdk_repo    jdk13u
-%global openjdk_tag     jdk-13.0.9+3
-%global openjdk_dir     jdk13u-jdk-13.0.9-3
+%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}+%{buildver}
+%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}-%{buildver}
 %global java_atk_wrapper_version 0.33.2
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
