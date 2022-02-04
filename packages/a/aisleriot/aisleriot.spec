@@ -23,6 +23,9 @@ Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Aisleriot
 Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM 4bf6fcf5c8043adfcadd948e678cc68f150cc998.patch -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/aisleriot/-/commit/4bf6fcf5c8043adfcadd948e678cc68f150cc998.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Needed to get lsb data
