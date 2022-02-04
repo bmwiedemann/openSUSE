@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtconsole
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
+%define         skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-qtconsole
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -42,6 +41,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+# QtPy does note require or depend on one of the frameworks itself
+Requires:       (python-qt5 or python-pyside2)
 Requires:       jupyter-qtconsole = %{version}
 Requires:       python-Pygments
 Requires:       python-QtPy
@@ -50,18 +51,16 @@ Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-traitlets
-# QtPy does note require or depend on one of the frameworks itself
-Requires:       (python-qt5 or python-pyside2)
+Provides:       python-jupyter_qtconsole = %{version}
+Obsoletes:      python-jupyter_qtconsole < %{version}
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-Provides:       python-jupyter_qtconsole = %{version}
-Obsoletes:      python-jupyter_qtconsole < %{version}
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module QtPy}

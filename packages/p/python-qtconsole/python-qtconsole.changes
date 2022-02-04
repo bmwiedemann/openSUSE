@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:28:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 5.2.2:
+  * Fix implicit int to float conversion for Python 3.10
+    compatibility.
+  * Fix building documentation in ReadTheDocs.
+
+-------------------------------------------------------------------
 Fri Nov 26 18:34:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.2.1
