@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:03:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix Passing a PGP message via KToolInvocation::invokeMailer() it will not show up in the composer (kde#332368)
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Fix  Spam false-positive, because KMail mis-parses some links (kde#448029)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
