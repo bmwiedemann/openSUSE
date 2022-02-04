@@ -1,0 +1,25 @@
+--- Fragments/data/meson.build	2022-02-01 20:37:46.468805791 +0100
++++ patched-Fragments/data/meson.build	2022-02-01 20:46:34.823206849 +0100
+@@ -10,7 +10,6 @@
+ 
+ # Desktop file
+ desktop_file = i18n.merge_file(
+-  'de.haeckerfelix.Fragments.desktop',
+   type: 'desktop',
+   input: 'de.haeckerfelix.Fragments.desktop.in',
+   output: 'de.haeckerfelix.Fragments.desktop',
+@@ -32,7 +31,6 @@
+ 
+ # Appdata
+ appdata_file = i18n.merge_file(
+-  'de.haeckerfelix.Fragments.appdata.xml',
+   input: 'de.haeckerfelix.Fragments.appdata.xml.in',
+   output: 'de.haeckerfelix.Fragments.appdata.xml',
+   po_dir: po_dir,
+@@ -51,4 +49,4 @@
+ endif
+ 
+ # Icons
+-install_subdir('icons/hicolor/', install_dir: join_paths (get_option('datadir'), 'icons'))
+\ Intet linjeskift i slutten av fila
++install_subdir('icons/hicolor/', install_dir: join_paths (get_option('datadir'), 'icons'))

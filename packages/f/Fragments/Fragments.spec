@@ -28,15 +28,20 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         Fragments-fix-vala-syntax-error.patch
 # PATCH-FIX-UPSTREAM Fragments-no-duplicate-LINGUAS.patch dimstar@opensuse.org -- LINGUAS: Order alphabetically, remove duplicated entry
 Patch2:         Fragments-no-duplicate-LINGUAS.patch
+# PATCH-FIX-UPSTREAM Fragments-fix-meson-0610.patch bjorn.lie@gmail.com -- Fix build with meson 0.61.0 and newer
+Patch3:         Fragments-fix-meson-0610.patch
+
+BuildRequires:  appstream-glib
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  desktop-file-utils
 BuildRequires:  libcurl-devel
 BuildRequires:  libevent-devel >= 2.0.0
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  meson
 BuildRequires:  openssl-devel >= 0.9.7
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -62,7 +67,9 @@ GNOME HIG and includes well thought-out features.
 %install
 %meson_install
 %find_lang fragments %{?no_lang_C}
-%suse_update_desktop_file -r de.haeckerfelix.Fragments Network FileTransfer P2P GTK
+
+%check
+%meson_test
 
 %files
 %license COPYING

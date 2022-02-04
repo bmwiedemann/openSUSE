@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  1 19:54:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Fragments-fix-meson-0610.patch: Fix build with meson 0.61.0
+  and newer.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+- Add appstream-glib and desktop-file-utils BuildRequires and add
+  check section and run meson_test macro, validate appadata and
+  desktop file.
+- Replace gcc-c++ with generic c++_compiler and c_compiler
+  BuildRequires.
+
+-------------------------------------------------------------------
 Thu Jan 20 17:08:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add Fragments-no-duplicate-LINGUAS.patch: LINGUAS: Order
