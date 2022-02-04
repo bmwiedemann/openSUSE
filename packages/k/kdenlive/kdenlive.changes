@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix sometimes cannot move grouped clip right when only 1 empty frame
+  * when saving effect, show it under its name, not id in effect list
+  * Fix fade effects not correctly saved or pasted.
+  * Fix clip monitor allowing seek past clip length with transparency background enabled
+  * Fix green tint on first image extract.
+  * minor cleanup of add marker ui
+  * Ensure thumbnail preview profile is not changed by clip resolution
+  * Fix alpha render and add utvideo (kde#448010)
+  * Fix freeze trying to drag a clip that was just added to Bin.
+  * Uptade frei0r.scale0tilt.xml with Scale X and Y parameters now animated
+  * Fix cherry-pick typo
+  * Fix timeline ruler not working after effect drop in some circumstances.
+  * Fix various bugs in timeremap (keyframes random move, crashes)
+  * Time Remap: don't allow keyframe after last frame of source clip
+  * Protect timeline preview list with mutex
+  * Fix slideshow duration not updated on profile change
+  * Fix detection of missing timeline preview chunks on opening
+  * Don't attempt to create audio thumbs if thumbs are disabled. (kde#448304)
+  * Speedup loading of projects with timeline preview.
+  * Add some default LUT files
+  * [Wizzard] Update link to troubleshooting docs
+  * Try to find mediainfo on windows automatically too
+  * [Setup Wizard] Show codes if there are only info messages, fix doc link
+  * Disable "Change Speed" and "Time Remap" actions if the other one is active (kde#443613)
+  * Check for mediainfo in setup wizard
+  * Fix extract frame on Windows (also used for Titler and scopes)
+  * Improve monitor zoom (kde#434404)
+  * Use a SPDX standard license identifier in Appstream data (kde#448134)
+  * Rename forgotten rgb24 and rgb24a after MLT 7 port
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
