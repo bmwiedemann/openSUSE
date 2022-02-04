@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * fix regressions from cf8391e01f05f3d913a37a6c7865e5d82344d893
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
