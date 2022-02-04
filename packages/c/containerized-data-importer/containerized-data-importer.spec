@@ -208,8 +208,10 @@ install -p -m 0755 _out/cmd/cdi-uploadproxy/cdi-uploadproxy %{buildroot}%{_bindi
 
 install -p -m 0755 _out/cmd/cdi-uploadserver/cdi-uploadserver %{buildroot}%{_bindir}/virt-cdi-uploadserver
 
-mkdir -p %{buildroot}%{_datadir}/cdi
-cp -r _out/manifests %{buildroot}%{_datadir}/cdi/
+# Install release manifests
+mkdir -p %{buildroot}%{_datadir}/cdi/manifests/release
+install -m 0644 _out/manifests/release/cdi-operator.yaml %{buildroot}%{_datadir}/cdi/manifests/release/
+install -m 0644 _out/manifests/release/cdi-cr.yaml %{buildroot}%{_datadir}/cdi/manifests/release/
 
 # Install cdi_containers_meta build service
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service

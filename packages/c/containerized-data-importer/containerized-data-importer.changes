@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  4 11:48:29 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Pack only cdi-{cr,operator}.yaml into the manifests RPM
+
+-------------------------------------------------------------------
 Tue Feb  1 06:04:40 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.44.0
