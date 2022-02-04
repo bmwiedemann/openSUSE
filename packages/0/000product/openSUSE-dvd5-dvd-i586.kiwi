@@ -379,7 +379,6 @@
       <repopackage name="dmidecode"/>
       <repopackage name="dmraid"/>
       <repopackage name="dnsmasq"/>
-      <repopackage name="docbook-tdg"/>
       <repopackage name="docbook-xsl-stylesheets"/>
       <repopackage name="docbook_4"/>
       <repopackage name="dolphin"/>
@@ -1060,7 +1059,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-docs"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
@@ -1639,11 +1637,8 @@
       <repopackage name="libgeocode-glib0"/>
       <repopackage name="libgepub-0_6-0"/>
       <repopackage name="libgexiv2-2"/>
-      <repopackage name="libgfapi0"/>
       <repopackage name="libgfbgraph-0_2-0"/>
       <repopackage name="libgfortran5"/>
-      <repopackage name="libgfrpc0"/>
-      <repopackage name="libgfxdr0"/>
       <repopackage name="libgif7"/>
       <repopackage name="libgimp-2_0-0"/>
       <repopackage name="libgimpui-2_0-0"/>
@@ -1658,7 +1653,6 @@
       <repopackage name="libglibmm-2_4-1"/>
       <repopackage name="libglslang11"/>
       <repopackage name="libGLU1"/>
-      <repopackage name="libglusterfs0"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libglyr1"/>
       <repopackage name="libgme0"/>
@@ -2858,7 +2852,6 @@
       <repopackage name="lv"/>
       <repopackage name="lvm2"/>
       <repopackage name="lynx"/>
-      <repopackage name="lzfse"/>
       <repopackage name="lzip"/>
       <repopackage name="lzop"/>
       <repopackage name="m17n-db"/>
@@ -3518,15 +3511,12 @@
       <repopackage name="polkit-kde-agent-5-lang"/>
       <repopackage name="poppler-tools"/>
       <repopackage name="postfix"/>
-      <repopackage name="postfix-doc"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-docs"/>
       <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql14"/>
       <repopackage name="postgresql14-contrib"/>
-      <repopackage name="postgresql14-docs"/>
       <repopackage name="postgresql14-llvmjit"/>
       <repopackage name="postgresql14-server"/>
       <repopackage name="pothana2000-fonts"/>
@@ -3708,7 +3698,6 @@
       <repopackage name="python38-netaddr"/>
       <repopackage name="python38-netifaces"/>
       <repopackage name="python38-networkx"/>
-      <repopackage name="python38-nose"/>
       <repopackage name="python38-notify2"/>
       <repopackage name="python38-numexpr"/>
       <repopackage name="python38-numpy"/>
@@ -3778,8 +3767,6 @@
       <repopackage name="python38-roman"/>
       <repopackage name="python38-rpm"/>
       <repopackage name="python38-rsa"/>
-      <repopackage name="python38-ruamel.yaml"/>
-      <repopackage name="python38-ruamel.yaml.clib"/>
       <repopackage name="python38-s3fs"/>
       <repopackage name="python38-s3transfer"/>
       <repopackage name="python38-scipy"/>
@@ -3832,17 +3819,9 @@
       <repopackage name="qca-qt5"/>
       <repopackage name="qca-qt5-plugins"/>
       <repopackage name="qemu"/>
-      <repopackage name="qemu-accel-qtest"/>
       <repopackage name="qemu-accel-tcg-x86"/>
-      <repopackage name="qemu-arm"/>
       <repopackage name="qemu-audio-spice"/>
       <repopackage name="qemu-block-curl"/>
-      <repopackage name="qemu-block-dmg"/>
-      <repopackage name="qemu-block-gluster"/>
-      <repopackage name="qemu-block-iscsi"/>
-      <repopackage name="qemu-block-nfs"/>
-      <repopackage name="qemu-block-ssh"/>
-      <repopackage name="qemu-chardev-baum"/>
       <repopackage name="qemu-chardev-spice"/>
       <repopackage name="qemu-guest-agent"/>
       <repopackage name="qemu-hw-display-qxl"/>
@@ -3857,11 +3836,8 @@
       <repopackage name="qemu-kvm"/>
       <repopackage name="qemu-lang"/>
       <repopackage name="qemu-microvm"/>
-      <repopackage name="qemu-ppc"/>
-      <repopackage name="qemu-s390x"/>
       <repopackage name="qemu-seabios"/>
       <repopackage name="qemu-sgabios"/>
-      <repopackage name="qemu-skiboot"/>
       <repopackage name="qemu-tools"/>
       <repopackage name="qemu-ui-curses"/>
       <repopackage name="qemu-ui-gtk"/>
@@ -3869,7 +3845,6 @@
       <repopackage name="qemu-ui-spice-app"/>
       <repopackage name="qemu-ui-spice-core"/>
       <repopackage name="qemu-vgabios"/>
-      <repopackage name="qemu-vhost-user-gpu"/>
       <repopackage name="qemu-x86"/>
       <repopackage name="QGnomePlatform"/>
       <repopackage name="qqc2-desktop-style"/>
@@ -4294,7 +4269,6 @@
       <repopackage name="samba-ad-dc-libs"/>
       <repopackage name="samba-client"/>
       <repopackage name="samba-client-libs"/>
-      <repopackage name="samba-doc"/>
       <repopackage name="samba-gpupdate"/>
       <repopackage name="samba-ldb-ldap"/>
       <repopackage name="samba-libs"/>
@@ -4400,7 +4374,6 @@
       <repopackage name="strace"/>
       <repopackage name="subversion"/>
       <repopackage name="subversion-bash-completion"/>
-      <repopackage name="subversion-doc"/>
       <repopackage name="subversion-perl"/>
       <repopackage name="subversion-server"/>
       <repopackage name="subversion-tools"/>
@@ -4846,7 +4819,6 @@
       <repopackage name="xml-commons-apis"/>
       <repopackage name="xmlcharent"/>
       <repopackage name="xmodmap"/>
-      <repopackage name="xorg-docs"/>
       <repopackage name="xorg-x11-driver-video"/>
       <repopackage name="xorg-x11-essentials"/>
       <repopackage name="xorg-x11-fonts"/>
