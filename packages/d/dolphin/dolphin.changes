@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Revert "[DetailsView] Improve zooming" (kde#447215)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
