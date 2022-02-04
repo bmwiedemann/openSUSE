@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knotes
-Version:        21.12.1
+Version:        21.12.2
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
