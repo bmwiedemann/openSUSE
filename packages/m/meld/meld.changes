@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  2 18:52:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add cc7746c141d976a4779cf868774fae1fe7627a6d.patch: Fix build
+  with meson 0.61 and newer.
+- Add appstream-glib and desktop-file-utils BuildRequires and add a
+  check section, manually verifiy metainfo and desktop file during
+  build, upstream does not yet provide a automated meson_test for
+  this.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+- Drop obsolete conditional shared-mime-info BuildRequires and
+  glib2_gsettings_schema_requires macro, only needed for long out
+  of support versions of openSUSE.
+
+-------------------------------------------------------------------
 Fri Jan  7 15:06:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.21.1:

@@ -24,13 +24,16 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            http://meldmerge.org/
 Source0:        https://download.gnome.org/sources/meld/3.21/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM cc7746c141d976a4779cf868774fae1fe7627a6d.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/meld/-/commit/cc7746c141d976a4779cf868774fae1fe7627a6d.patch
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.49.0
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
@@ -57,11 +60,6 @@ Suggests:       subversion
 Suggests:       tla
 #
 BuildArch:      noarch
-%if 0%{?suse_version} < 1330
-# Needed for shared-mime-info macros
-BuildRequires:  shared-mime-info
-%glib2_gsettings_schema_requires
-%endif
 
 %description
 Meld is a visual diff and merge tool. Two or three files can be
@@ -83,15 +81,17 @@ sed -i "s|/usr/bin/env python3|%{_bindir}/python3|g" bin/meld
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.Meld IDE
 %fdupes %{buildroot}%{_datadir}
+
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Meld.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Meld.desktop
 
 %files
 %license COPYING
 %doc NEWS
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.gnome.Meld.appdata.xml
 %{_datadir}/applications/org.gnome.Meld.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.meld.gschema.xml
