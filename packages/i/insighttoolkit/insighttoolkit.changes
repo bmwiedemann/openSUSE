@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 09:32:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not use system eigen on aarch64 until fixed upstream:
+  https://github.com/InsightSoftwareConsortium/ITK/issues/2903
+
+-------------------------------------------------------------------
 Mon Aug 16 15:10:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.2.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package insighttoolkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,6 +20,14 @@
 %global __builder ninja
 %define tarname ITK
 %define libname lib%{name}5
+
+# Do not use system eigen on aarch64 until fixed upstream:
+# https://github.com/InsightSoftwareConsortium/ITK/issues/2903
+%ifarch aarch64
+%bcond_with system_eigen
+%else
+%bcond_without system_eigen
+%endif
 
 Name:           insighttoolkit
 Version:        5.2.1
@@ -47,7 +55,9 @@ BuildRequires:  vtk-devel
 BuildRequires:  vtk-qt
 BuildRequires:  xz
 BuildRequires:  cmake(double-conversion)
+%if %{with system_eigen}
 BuildRequires:  pkgconfig(eigen3)
+%endif
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libjpeg)
@@ -126,6 +136,9 @@ This package provides the modules for ITK's python bindings.
   -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
   -DITK_USE_SYSTEM_CASTXML:BOOL=ON \
   -DITK_USE_SYSTEM_GDCM:BOOL=ON \
+%if %{without system_eigen}
+  -DITK_USE_SYSTEM_EIGEN:BOOL=OFF \
+%endif
   -DITK_USE_SYSTEM_SWIG:BOOL=ON \
   -DITK_USE_SYSTEM_VXL:BOOL=OFF \
   -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
