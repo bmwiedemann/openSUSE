@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:03:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix opening epub files with non ascii names on Windows (kde#448274)
+  * Make sure helper apps we start are in path
+  * XPS: fix multipiece image loading
+  * Fix saving to okular archive on Windows (kde#431717)
+  * Fix previewing embedded files on Windows (kde#448735)
+  * Fix two Signature issues on multipage/multisignature documents
+
+-------------------------------------------------------------------
 Tue Jan  4 10:26:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
