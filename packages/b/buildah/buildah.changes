@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 04 07:31:54 UTC 2022 - dcermak@suse.com
+
+- Update to version 1.24.1:
+* overlay: always honor mountProgram by @giuseppe in https://github.com/containers/buildah/pull/3750
+* build(deps): bump github.com/onsi/gomega from 1.18.0 to 1.18.1 by @dependabot in https://github.com/containers/buildah/pull/3754
+* imagebuildah.BuildDockerfiles(): create the jobs semaphore by @nalind in https://github.com/containers/buildah/pull/3753
+* build(deps): bump github.com/containers/storage from 1.38.1 to 1.38.2 by @dependabot in https://github.com/containers/buildah/pull/3760
+* System tests: fix accidental vandalism of source dir by @edsantiago in https://github.com/containers/buildah/pull/3761
+* Update vendor of containers/storage and containers/common by @rhatdan in https://github.com/containers/buildah/pull/3759
+* Bump version of containers/image and containers/common by @rhatdan in https://github.com/containers/buildah/pull/3764
+* Update vendor of openshift/imagebuilder by @rhatdan in https://github.com/containers/buildah/pull/3765
+* caps: fix buildah run --cap-add=all by @rhatdan in https://github.com/containers/buildah/pull/3766
+* stage_executor: Add support for inline `FROM --platform=` within Containerfile/Dockerfile by @flouthoc in https://github.com/containers/buildah/pull/3757
+
+**Full Changelog**: https://github.com/containers/buildah/compare/v1.24.0...v1.24.1
+
+-------------------------------------------------------------------
 Thu Jan 27 07:30:30 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.24.0:
