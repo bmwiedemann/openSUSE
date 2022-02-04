@@ -1,7 +1,7 @@
 #
 # spec file for package elektra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,6 @@ BuildRequires:  systemd-logger
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(botan-2)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
