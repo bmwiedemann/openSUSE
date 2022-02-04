@@ -1,7 +1,7 @@
 #
 # spec file for package findutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           findutils
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        The GNU versions of find utilities (find and xargs)
 License:        GPL-3.0-or-later
@@ -42,9 +42,6 @@ Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=%{nam
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
 Patch0:         findutils-xautofs.patch
 
-# Upstream gnulib patch to avoid i586 build failure with glibc-2.34; remove with findutils>4.8.0.
-# Requires installed automake and running 'autoreconf -fi' below.
-Patch100:       gnulib-port-year2038-to-glibc-2.34.patch
 BuildRequires:  automake
 
 # BuildRequire dejagnu for 'runtest' to execute all tests.
@@ -70,12 +67,8 @@ useful for finding things on your system.
 %prep
 %setup -q
 %patch0
-%patch100
 
 %build
-# Patch100 requires to refresh 'configure'; remove with findutils>4.8.0.
-AUTOPOINT=true autoreconf -fi
-
 %if 0%{?qemu_user_space_build}
 # this is a workaround for a qemu-user bug, we hit. A qemu patch is being discussed, but for now ...
 export DEFAULT_ARG_SIZE="(31u * 1024u)"

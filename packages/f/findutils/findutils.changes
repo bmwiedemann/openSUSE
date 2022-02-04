@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 01:07:20 UTC 2022 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 4.9.0.
+  Announcement: https://savannah.gnu.org/forum/forum.php?forum_id=10108
+- gnulib-port-year2038-to-glibc-2.34.patch: Remove now-upstream patch.
+- findutils.spec: Update version and remove above patch.
+- findutils-xautofs.patch: Refresh.
+
+-------------------------------------------------------------------
 Mon Oct  4 23:23:36 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - gnulib-port-year2038-to-glibc-2.34.patch: Add patch to avoid
