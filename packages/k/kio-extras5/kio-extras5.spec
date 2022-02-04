@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-extras5
-Version:        21.12.1
+Version:        21.12.2
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-sftp-Allow-compression-if-necessary.patch
 # openEXR causes build issues for Leap 15.2 & 15.3
 %if 0%{?suse_version} > 1500
 BuildRequires:  OpenEXR-devel

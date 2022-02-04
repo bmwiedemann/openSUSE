@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:03:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * sftp: Don't compare size_t against -1
+  * sftp: Allow compression if necessary
+- Drop upstream patch:
+  * 0001-sftp-Allow-compression-if-necessary.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 13:50:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix sftp connection if the server requires compression
