@@ -1314,4 +1314,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1643469363</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="184" vrev="182">
+    <srcmd5>ae6b5e9ef40b90ac4d6273a517921147</srcmd5>
+    <version>unknown</version>
+    <time>1643991385</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gnome suggested packages; the TW DVD is a one-time use mostly, the repo is mandatory anyway</comment>
+  </revision>
 </revisionlist>
