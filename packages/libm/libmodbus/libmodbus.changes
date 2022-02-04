@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  3 22:27:20 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 3.1.7:
+  * Many minor fixes, typo fixes and documentation enhancements.
+  * For more see NEWS.
+- Properly build debug package.
+
+-------------------------------------------------------------------
 Wed Aug  7 18:42:16 CEST 2019 - sbrabec@suse.com
 
 - Update to version 3.1.6:

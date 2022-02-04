@@ -1,7 +1,7 @@
 #
 # spec file for package libmodbus
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libmodbus
-Url:            https://www.libmodbus.org/
+URL:            https://www.libmodbus.org/
 Summary:        Modbus Library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 # WARNING: tarballs from GitHub are different!
 Source:         http://libmodbus.org/releases/%{name}-%{version}.tar.gz
@@ -68,16 +68,17 @@ Protocol Reference Guide which can be obtained from Schneider.
 %setup -q
 
 %build
+export CFLAGS="%{optflags}"
 %configure\
 	--docdir=%{_docdir}/%{name}\
 	--disable-static
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %install
 %make_install
 rm %{buildroot}%{_libdir}/*.la
 # Installed by %%doc
-rm %{buildroot}%{_docdir}/%{name}/{MIGRATION,README.md}
+rm %{buildroot}%{_docdir}/%{name}/{AUTHORS,MIGRATION,NEWS,README.md}
 
 %post -n libmodbus5 -p /sbin/ldconfig
 
