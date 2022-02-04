@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -1339,6 +1339,8 @@ unsorted:
   - bnd-maven-plugin 
   - bnd-maven-plugin-javadoc 
   - bodr 
+  - bogofilter-common: [i586] 
+  - bogofilter-db: [i586] 
   - bogofilter-doc 
   - bogofilter-kyotocabinet 
   - bogofilter-sqlite3 
@@ -3354,7 +3356,9 @@ unsorted:
   - eog-plugin-pythonconsole 
   - eog-plugin-send-by-mail 
   - eog-plugin-slideshowshuffle 
+  - eog-plugins: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - eog-plugins-data 
+  - eog-plugins-lang: [i586] 
   - eolie 
   - eolie-lang 
   - eom 
@@ -3364,7 +3368,10 @@ unsorted:
   - eperiodique 
   - ephoto 
   - ephoto-lang 
+  - epiphany: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - epiphany-branding-openSUSE: [i586] 
   - epiphany-branding-upstream 
+  - epiphany-lang: [i586] 
   - epour 
   - epour-lang 
   - epplet-base 
@@ -3439,6 +3446,11 @@ unsorted:
   - evmctl: [i586] 
   - evolution-data-server-devel 
   - evolution-devel 
+  - evolution-plugin-bogofilter: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - evolution-plugin-pst-import: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - evolution-plugin-rss: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - evolution-plugin-rss-lang: [i586] 
+  - evolution-plugin-text-highlight: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - evtest 
   - exa: [x86_64] 
   - exa-bash-completion: [x86_64] 
@@ -3619,6 +3631,7 @@ unsorted:
   - fence-agents-amt_ws 
   - fence-agents-devel 
   - fence-sanlock 
+  - festival: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - festival-devel 
   - fetchmsttfonts 
   - ffado 
@@ -4188,6 +4201,9 @@ unsorted:
   - gedit-plugin-textsize 
   - gedit-plugin-translate 
   - gedit-plugin-wordcompletion 
+  - gedit-plugins: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - gedit-plugins-data: [i586] 
+  - gedit-plugins-lang: [i586] 
   - gedit-theme-adapta 
   - gedit-theme-plata 
   - geekodoc 
@@ -5881,6 +5897,7 @@ unsorted:
   - gnome-shell-extension-user-theme 
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
+  - gnome-shell-search-provider-epiphany: [i586] 
   - gnome-shell-search-provider-gnome-calendar 
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnote 
@@ -6232,6 +6249,7 @@ unsorted:
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi 
+  - gromit-mpx: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - groovy 
   - groovy-ant 
   - groovy-bootstrap 
@@ -6333,6 +6351,7 @@ unsorted:
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
+  - gstreamer-transcoder: [i586] 
   - gstreamer-transcoder-devel 
   - gstreamermm-devel 
   - gstreamermm-doc 
@@ -6340,7 +6359,9 @@ unsorted:
   - gtest 
   - gtg 
   - gtg-lang 
+  - gthumb: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - gthumb-devel 
+  - gthumb-lang: [i586] 
   - gti 
   - gtick 
   - gtick-lang 
@@ -6754,6 +6775,7 @@ unsorted:
   - hiawatha-letsencrypt 
   - hibiscus 
   - hidviz 
+  - highlight: [i586] 
   - highlight-gui 
   - highlight-gui-lang 
   - himeno 
@@ -9927,6 +9949,9 @@ unsorted:
   - libbraille-devel 
   - libbraille-fake0-14 
   - libbraille0-14 
+  - libbrasero-burn3-1: [i586] 
+  - libbrasero-media3-1: [i586] 
+  - libbrasero-utils3-1: [i586] 
   - libbrial3 
   - libbrotli-devel: [i586] # devel package of dvd:libbrotlicommon1 
   - libbrotlienc1-32bit: [x86_64] 
@@ -10935,6 +10960,7 @@ unsorted:
   - libgeotiff5 
   - libgepub-devel 
   - libgerbv1 
+  - libges-1_0-0: [i586] 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
@@ -11147,7 +11173,9 @@ unsorted:
   - libgstsctp-1_0-0-32bit: [x86_64] 
   - libgstsdp-1_0-0-32bit: [x86_64] 
   - libgsttag-1_0-0-32bit: [x86_64] 
+  - libgsttranscoder-1_0-0: [i586] 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
+  - libgstvalidate-1_0-0: [i586] 
   - libgstvideo-1_0-0-32bit: [x86_64] 
   - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
@@ -12989,6 +13017,7 @@ unsorted:
   - libpspell15-32bit: [x86_64] 
   - libpst 
   - libpst-devel 
+  - libpst4: [i586] 
   - libpsx2 
   - libpsx2-32bit: [x86_64] 
   - libpt-devel 
@@ -14704,7 +14733,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -20450,6 +20479,8 @@ unsorted:
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
+  - pitivi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - pitivi-lang: [i586] 
   - pix 
   - pix-devel 
   - pix-lang 
@@ -26065,6 +26096,7 @@ unsorted:
   - python38-gsm0338 
   - python38-gspread 
   - python38-gssapi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-gst: [i586] 
   - python38-gsw 
   - python38-guessit 
   - python38-gunicorn 
@@ -26420,6 +26452,9 @@ unsorted:
   - python38-marshmallow 
   - python38-marshmallow-enum 
   - python38-mathgl 
+  - python38-matplotlib-cairo: [i586] 
+  - python38-matplotlib-gtk-common: [i586] 
+  - python38-matplotlib-gtk3: [i586] 
   - python38-matplotlib-gtk4 
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
@@ -27168,6 +27203,7 @@ unsorted:
   - python38-pywebpush 
   - python38-pywinrm 
   - python38-pyxattr 
+  - python38-pyxdg: [i586] 
   - python38-pyyaml_env_tag 
   - python38-pyzmq-devel 
   - python38-pyzo 
@@ -32569,6 +32605,7 @@ unsorted:
   - spectator 
   - spectcl 
   - spectre-meltdown-checker 
+  - speech-dispatcher-configure: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - speedtest-cli 
   - speex 
   - speex-devel 
@@ -41614,12 +41651,14 @@ unsorted:
   - typelib-1_0-FolksTelepathy-0_7 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
+  - typelib-1_0-GES-1_0: [i586] 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-1_0 
   - typelib-1_0-GSSDP-1_0 
+  - typelib-1_0-GSound-1_0: [i586] 
   - typelib-1_0-GTop-2_0 
   - typelib-1_0-GUPnP-1_0 
   - typelib-1_0-GUPnPAV-1_0 
@@ -41672,6 +41711,8 @@ unsorted:
   - typelib-1_0-GstRtsp-1_0 
   - typelib-1_0-GstRtspServer-1_0 
   - typelib-1_0-GstSdp-1_0 
+  - typelib-1_0-GstTranscoder-1_0: [i586] 
+  - typelib-1_0-GstValidate-1_0: [i586] 
   - typelib-1_0-GstVulkan-1_0 
   - typelib-1_0-GstVulkanWayland-1_0 
   - typelib-1_0-GstVulkanXCB-1_0 

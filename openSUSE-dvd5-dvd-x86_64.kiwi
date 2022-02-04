@@ -224,8 +224,8 @@
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bluez-qt-udev"/>
       <repopackage name="bluez-tools"/>
-      <repopackage name="bogofilter-common"/>
-      <repopackage name="bogofilter-db"/>
+      <repopackage name="bogofilter-common" arch="x86_64"/>
+      <repopackage name="bogofilter-db" arch="x86_64"/>
       <repopackage name="bolt"/>
       <repopackage name="boost-license1_78_0"/>
       <repopackage name="bovo"/>
@@ -443,11 +443,11 @@
       <repopackage name="enchant-data"/>
       <repopackage name="eog"/>
       <repopackage name="eog-lang"/>
-      <repopackage name="eog-plugins"/>
-      <repopackage name="eog-plugins-lang"/>
-      <repopackage name="epiphany"/>
-      <repopackage name="epiphany-branding-openSUSE"/>
-      <repopackage name="epiphany-lang"/>
+      <repopackage name="eog-plugins" arch="x86_64"/>
+      <repopackage name="eog-plugins-lang" arch="x86_64"/>
+      <repopackage name="epiphany" arch="x86_64"/>
+      <repopackage name="epiphany-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="epiphany-lang" arch="x86_64"/>
       <repopackage name="epson-inkjet-printer-escpr"/>
       <repopackage name="erofs-utils"/>
       <repopackage name="espeak"/>
@@ -469,12 +469,12 @@
       <repopackage name="evolution-ews"/>
       <repopackage name="evolution-ews-lang"/>
       <repopackage name="evolution-lang"/>
-      <repopackage name="evolution-plugin-bogofilter"/>
-      <repopackage name="evolution-plugin-pst-import"/>
-      <repopackage name="evolution-plugin-rss"/>
-      <repopackage name="evolution-plugin-rss-lang"/>
+      <repopackage name="evolution-plugin-bogofilter" arch="x86_64"/>
+      <repopackage name="evolution-plugin-pst-import" arch="x86_64"/>
+      <repopackage name="evolution-plugin-rss" arch="x86_64"/>
+      <repopackage name="evolution-plugin-rss-lang" arch="x86_64"/>
       <repopackage name="evolution-plugin-spamassassin"/>
-      <repopackage name="evolution-plugin-text-highlight"/>
+      <repopackage name="evolution-plugin-text-highlight" arch="x86_64"/>
       <repopackage name="exiftool"/>
       <repopackage name="exim" arch="x86_64"/>
       <repopackage name="exo-data"/>
@@ -512,7 +512,7 @@
       <repopackage name="fcitx-zhuyin"/>
       <repopackage name="fd0ssh"/>
       <repopackage name="fdupes"/>
-      <repopackage name="festival"/>
+      <repopackage name="festival" arch="x86_64"/>
       <repopackage name="fetchmail"/>
       <repopackage name="fetchmailconf"/>
       <repopackage name="ffmpeg-4" arch="x86_64"/>
@@ -593,9 +593,9 @@
       <repopackage name="gdmflexiserver"/>
       <repopackage name="gedit"/>
       <repopackage name="gedit-lang"/>
-      <repopackage name="gedit-plugins"/>
-      <repopackage name="gedit-plugins-data"/>
-      <repopackage name="gedit-plugins-lang"/>
+      <repopackage name="gedit-plugins" arch="x86_64"/>
+      <repopackage name="gedit-plugins-data" arch="x86_64"/>
+      <repopackage name="gedit-plugins-lang" arch="x86_64"/>
       <repopackage name="gegl-0_4"/>
       <repopackage name="gegl-0_4-lang"/>
       <repopackage name="geoclue2"/>
@@ -713,7 +713,7 @@
       <repopackage name="gnome-shell-search-provider-bijiben"/>
       <repopackage name="gnome-shell-search-provider-contacts"/>
       <repopackage name="gnome-shell-search-provider-documents"/>
-      <repopackage name="gnome-shell-search-provider-epiphany"/>
+      <repopackage name="gnome-shell-search-provider-epiphany" arch="x86_64"/>
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
       <repopackage name="gnome-shell-search-provider-gnome-characters"/>
       <repopackage name="gnome-shell-search-provider-gnome-clocks"/>
@@ -776,7 +776,7 @@
       <repopackage name="grilo-plugins-lang"/>
       <repopackage name="groff"/>
       <repopackage name="groff-full"/>
-      <repopackage name="gromit-mpx"/>
+      <repopackage name="gromit-mpx" arch="x86_64"/>
       <repopackage name="grub2"/>
       <repopackage name="grub2-branding-openSUSE"/>
       <repopackage name="grub2-i386-pc"/>
@@ -809,10 +809,10 @@
       <repopackage name="gstreamer-plugins-rs"/>
       <repopackage name="gstreamer-plugins-ugly"/>
       <repopackage name="gstreamer-plugins-ugly-lang"/>
-      <repopackage name="gstreamer-transcoder"/>
+      <repopackage name="gstreamer-transcoder" arch="x86_64"/>
       <repopackage name="gstreamer-utils"/>
-      <repopackage name="gthumb"/>
-      <repopackage name="gthumb-lang"/>
+      <repopackage name="gthumb" arch="x86_64"/>
+      <repopackage name="gthumb-lang" arch="x86_64"/>
       <repopackage name="gtk-vnc-lang"/>
       <repopackage name="gtk2-branding-openSUSE"/>
       <repopackage name="gtk2-data"/>
@@ -908,7 +908,7 @@
       <repopackage name="hfsutils"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
-      <repopackage name="highlight"/>
+      <repopackage name="highlight" arch="x86_64"/>
       <repopackage name="hostname"/>
       <repopackage name="hp2xx"/>
       <repopackage name="hplip"/>
@@ -1479,9 +1479,9 @@
       <repopackage name="libboost_python-py3-1_78_0"/>
       <repopackage name="libboost_thread1_78_0"/>
       <repopackage name="libbox2d2"/>
-      <repopackage name="libbrasero-burn3-1"/>
-      <repopackage name="libbrasero-media3-1"/>
-      <repopackage name="libbrasero-utils3-1"/>
+      <repopackage name="libbrasero-burn3-1" arch="x86_64"/>
+      <repopackage name="libbrasero-media3-1" arch="x86_64"/>
+      <repopackage name="libbrasero-utils3-1" arch="x86_64"/>
       <repopackage name="libbreezecommon5-5"/>
       <repopackage name="libbrlapi0_8"/>
       <repopackage name="libbrotli-devel" arch="x86_64"/>
@@ -1773,7 +1773,7 @@
       <repopackage name="libgegl-0_4-0"/>
       <repopackage name="libgeocode-glib0"/>
       <repopackage name="libgepub-0_6-0"/>
-      <repopackage name="libges-1_0-0"/>
+      <repopackage name="libges-1_0-0" arch="x86_64"/>
       <repopackage name="libgexiv2-2"/>
       <repopackage name="libgfapi0"/>
       <repopackage name="libgfbgraph-0_2-0"/>
@@ -1890,9 +1890,9 @@
       <repopackage name="libgstsctp-1_0-0"/>
       <repopackage name="libgstsdp-1_0-0"/>
       <repopackage name="libgsttag-1_0-0"/>
-      <repopackage name="libgsttranscoder-1_0-0"/>
+      <repopackage name="libgsttranscoder-1_0-0" arch="x86_64"/>
       <repopackage name="libgsturidownloader-1_0-0"/>
-      <repopackage name="libgstvalidate-1_0-0"/>
+      <repopackage name="libgstvalidate-1_0-0" arch="x86_64"/>
       <repopackage name="libgstvideo-1_0-0"/>
       <repopackage name="libgstvulkan-1_0-0"/>
       <repopackage name="libgstwayland-1_0-0"/>
@@ -2495,7 +2495,7 @@
       <repopackage name="libproxy1-pacrunner-webkit"/>
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
-      <repopackage name="libpst4"/>
+      <repopackage name="libpst4" arch="x86_64"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
       <repopackage name="libpurple"/>
@@ -3767,8 +3767,8 @@
       <repopackage name="pipewire-spa-plugins-0_2"/>
       <repopackage name="pipewire-spa-tools"/>
       <repopackage name="pipewire-tools"/>
-      <repopackage name="pitivi"/>
-      <repopackage name="pitivi-lang"/>
+      <repopackage name="pitivi" arch="x86_64"/>
+      <repopackage name="pitivi-lang" arch="x86_64"/>
       <repopackage name="pkcs11-helper"/>
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
@@ -4006,7 +4006,7 @@
       <repopackage name="python38-greenlet"/>
       <repopackage name="python38-grpcio" arch="x86_64"/>
       <repopackage name="python38-gssapi" arch="x86_64"/>
-      <repopackage name="python38-gst"/>
+      <repopackage name="python38-gst" arch="x86_64"/>
       <repopackage name="python38-h11"/>
       <repopackage name="python38-h2"/>
       <repopackage name="python38-hanzidentifier"/>
@@ -4042,9 +4042,9 @@
       <repopackage name="python38-M2Crypto"/>
       <repopackage name="python38-MarkupSafe"/>
       <repopackage name="python38-matplotlib"/>
-      <repopackage name="python38-matplotlib-cairo"/>
-      <repopackage name="python38-matplotlib-gtk-common"/>
-      <repopackage name="python38-matplotlib-gtk3"/>
+      <repopackage name="python38-matplotlib-cairo" arch="x86_64"/>
+      <repopackage name="python38-matplotlib-gtk-common" arch="x86_64"/>
+      <repopackage name="python38-matplotlib-gtk3" arch="x86_64"/>
       <repopackage name="python38-matplotlib-inline"/>
       <repopackage name="python38-matplotlib-tk"/>
       <repopackage name="python38-more-itertools"/>
@@ -4120,7 +4120,7 @@
       <repopackage name="python38-pytz"/>
       <repopackage name="python38-pyu2f" arch="x86_64"/>
       <repopackage name="python38-pyudev"/>
-      <repopackage name="python38-pyxdg"/>
+      <repopackage name="python38-pyxdg" arch="x86_64"/>
       <repopackage name="python38-PyYAML"/>
       <repopackage name="python38-pyzmq"/>
       <repopackage name="python38-qt5"/>
@@ -4751,7 +4751,7 @@
       <repopackage name="spectacle"/>
       <repopackage name="spectacle-lang"/>
       <repopackage name="speech-dispatcher"/>
-      <repopackage name="speech-dispatcher-configure"/>
+      <repopackage name="speech-dispatcher-configure" arch="x86_64"/>
       <repopackage name="speech-dispatcher-module-espeak"/>
       <repopackage name="speedcrunch"/>
       <repopackage name="splix"/>
@@ -4956,7 +4956,7 @@
       <repopackage name="typelib-1_0-Gdm-1_0"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
       <repopackage name="typelib-1_0-GeocodeGlib-1_0"/>
-      <repopackage name="typelib-1_0-GES-1_0"/>
+      <repopackage name="typelib-1_0-GES-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GjsPrivate-1_0"/>
       <repopackage name="typelib-1_0-GMenu-3_0"/>
       <repopackage name="typelib-1_0-GnomeBluetooth-1_0"/>
@@ -4964,14 +4964,14 @@
       <repopackage name="typelib-1_0-Goa-1_0"/>
       <repopackage name="typelib-1_0-Graphene-1_0"/>
       <repopackage name="typelib-1_0-Grl-0_3"/>
-      <repopackage name="typelib-1_0-GSound-1_0"/>
+      <repopackage name="typelib-1_0-GSound-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Gspell-1"/>
       <repopackage name="typelib-1_0-Gst-1_0"/>
       <repopackage name="typelib-1_0-GstAudio-1_0"/>
       <repopackage name="typelib-1_0-GstPbutils-1_0"/>
       <repopackage name="typelib-1_0-GstTag-1_0"/>
-      <repopackage name="typelib-1_0-GstTranscoder-1_0"/>
-      <repopackage name="typelib-1_0-GstValidate-1_0"/>
+      <repopackage name="typelib-1_0-GstTranscoder-1_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-GstValidate-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GstVideo-1_0"/>
       <repopackage name="typelib-1_0-Gtk-3_0"/>
       <repopackage name="typelib-1_0-Gtk-4_0"/>
