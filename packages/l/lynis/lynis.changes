@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 10:08:03 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- cover /usr/etc/security/limits.conf too (boo#1194446)
+  added additional_paths_security-limits.patch
+
+-------------------------------------------------------------------
 Tue Jan 18 13:29:42 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.0.7: 
