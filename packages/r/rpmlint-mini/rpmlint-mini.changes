@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  2 10:26:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- include typing.py into the installed stdlib because
+  python-zstandard is typed now.
+
+-------------------------------------------------------------------
+Tue Feb  1 13:08:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Support updated python-zstandard package.
+
+-------------------------------------------------------------------
 Mon Jan 10 19:47:37 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Fix spec file: install zstdandard package properly.

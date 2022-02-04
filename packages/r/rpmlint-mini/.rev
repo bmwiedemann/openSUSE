@@ -923,4 +923,12 @@ undo bootstrap workaround</comment>
 - Add rpmlintrc filter for pycparser Python package.</comment>
     <requestid>945540</requestid>
   </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>025460727d97fa847064f82a6ff25105</srcmd5>
+    <version>MACRO</version>
+    <time>1644007587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950707</requestid>
+  </revision>
 </revisionlist>
