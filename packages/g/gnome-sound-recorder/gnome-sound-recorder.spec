@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-sound-recorder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,12 +25,13 @@ License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Design/Apps/SoundRecorder
 Source0:        https://download.gnome.org/sources/gnome-sound-recorder/40/%{name}-%{version}.tar.xz
-Source99:       gnome-sound-recorder-rpmlintrc
+# PATCH-FIX-UPSTREAM 1335b1b1aff61167f8648f7cb3c569764031960d.patch -- Fix build with meson 0.60 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-sound-recorder/-/commit/1335b1b1aff61167f8648f7cb3c569764031960d.patch
 
 BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.54.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
@@ -60,8 +61,10 @@ A simple, modern sound recorder.
 
 %install
 %meson_install
-%suse_update_desktop_file -G "Sound Recorder" -r org.gnome.SoundRecorder GNOME AudioVideo Recorder
 %find_lang org.gnome.SoundRecorder
+
+%check
+%meson_test
 
 %files
 %license COPYING

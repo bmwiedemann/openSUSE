@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  2 16:00:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 1335b1b1aff61167f8648f7cb3c569764031960d.patch: Fix build
+  with meson 0.60 and newer.
+- Drop gnome-sound-recorder-rpmlintrc, no longer needed.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+- Add desktop-file-utils, and add a check section and run
+  meson_test macro, validate desktop file and metadata during build
+  via upstream provided tests.
+
+-------------------------------------------------------------------
 Wed Mar 24 07:55:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
