@@ -1339,8 +1339,8 @@ unsorted:
   - bnd-maven-plugin 
   - bnd-maven-plugin-javadoc 
   - bodr 
-  - bogofilter-common: [i586] 
-  - bogofilter-db: [i586] 
+  - bogofilter-common 
+  - bogofilter-db 
   - bogofilter-doc 
   - bogofilter-kyotocabinet 
   - bogofilter-sqlite3 
@@ -2896,7 +2896,7 @@ unsorted:
   - dhall-json: [x86_64] 
   - dhall-yaml: [x86_64] 
   - dhcp-devel 
-  - dhcp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - dhcp-doc 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -2987,6 +2987,7 @@ unsorted:
   - docbook-css-stylesheets 
   - docbook-dsssl-stylesheets 
   - docbook-simple 
+  - docbook-tdg 
   - docbook-toys 
   - docbook-utils 
   - docbook-utils-minimal 
@@ -3356,9 +3357,9 @@ unsorted:
   - eog-plugin-pythonconsole 
   - eog-plugin-send-by-mail 
   - eog-plugin-slideshowshuffle 
-  - eog-plugins: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - eog-plugins 
   - eog-plugins-data 
-  - eog-plugins-lang: [i586] 
+  - eog-plugins-lang 
   - eolie 
   - eolie-lang 
   - eom 
@@ -3368,10 +3369,10 @@ unsorted:
   - eperiodique 
   - ephoto 
   - ephoto-lang 
-  - epiphany: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - epiphany-branding-openSUSE: [i586] 
+  - epiphany 
+  - epiphany-branding-openSUSE 
   - epiphany-branding-upstream 
-  - epiphany-lang: [i586] 
+  - epiphany-lang 
   - epour 
   - epour-lang 
   - epplet-base 
@@ -3446,11 +3447,11 @@ unsorted:
   - evmctl: [i586] 
   - evolution-data-server-devel 
   - evolution-devel 
-  - evolution-plugin-bogofilter: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - evolution-plugin-pst-import: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - evolution-plugin-rss: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - evolution-plugin-rss-lang: [i586] 
-  - evolution-plugin-text-highlight: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - evolution-plugin-bogofilter 
+  - evolution-plugin-pst-import 
+  - evolution-plugin-rss 
+  - evolution-plugin-rss-lang 
+  - evolution-plugin-text-highlight 
   - evtest 
   - exa: [x86_64] 
   - exa-bash-completion: [x86_64] 
@@ -3466,7 +3467,7 @@ unsorted:
   - exfatprogs 
   - exif 
   - exiftran 
-  - exim: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - exim: [i586] 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -3631,7 +3632,7 @@ unsorted:
   - fence-agents-amt_ws 
   - fence-agents-devel 
   - fence-sanlock 
-  - festival: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - festival 
   - festival-devel 
   - fetchmsttfonts 
   - ffado 
@@ -4042,7 +4043,7 @@ unsorted:
   - gcc-fortran-32bit: [x86_64] 
   - gcc-go 
   - gcc-go-32bit: [x86_64] 
-  - gcc-info: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - gcc-info 
   - gcc-locale 
   - gcc-obj-c++ 
   - gcc-objc 
@@ -4201,9 +4202,9 @@ unsorted:
   - gedit-plugin-textsize 
   - gedit-plugin-translate 
   - gedit-plugin-wordcompletion 
-  - gedit-plugins: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - gedit-plugins-data: [i586] 
-  - gedit-plugins-lang: [i586] 
+  - gedit-plugins 
+  - gedit-plugins-data 
+  - gedit-plugins-lang 
   - gedit-theme-adapta 
   - gedit-theme-plata 
   - geekodoc 
@@ -5617,7 +5618,7 @@ unsorted:
   - git-credential-gnome-keyring 
   - git-credential-libsecret 
   - git-crypt 
-  - git-daemon: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - git-daemon 
   - git-delta 
   - git-deps 
   - git-deps-html 
@@ -5897,7 +5898,7 @@ unsorted:
   - gnome-shell-extension-user-theme 
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
-  - gnome-shell-search-provider-epiphany: [i586] 
+  - gnome-shell-search-provider-epiphany 
   - gnome-shell-search-provider-gnome-calendar 
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnote 
@@ -5996,7 +5997,7 @@ unsorted:
   - gnustep-base 
   - gnustep-base-devel 
   - gnustep-make 
-  - gnutls: [i586] 
+  - gnutls 
   - gnutls-guile 
   - go 
   - go-doc 
@@ -6249,7 +6250,7 @@ unsorted:
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi 
-  - gromit-mpx: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - gromit-mpx 
   - groovy 
   - groovy-ant 
   - groovy-bootstrap 
@@ -6351,7 +6352,7 @@ unsorted:
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
-  - gstreamer-transcoder: [i586] 
+  - gstreamer-transcoder 
   - gstreamer-transcoder-devel 
   - gstreamermm-devel 
   - gstreamermm-doc 
@@ -6359,9 +6360,9 @@ unsorted:
   - gtest 
   - gtg 
   - gtg-lang 
-  - gthumb: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - gthumb 
   - gthumb-devel 
-  - gthumb-lang: [i586] 
+  - gthumb-lang 
   - gti 
   - gtick 
   - gtick-lang 
@@ -6534,6 +6535,9 @@ unsorted:
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
+  - guestfs-data: [x86_64] 
+  - guestfs-tools: [x86_64] 
+  - guestfs-winsupport: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
   - guice-bom 
@@ -6775,7 +6779,7 @@ unsorted:
   - hiawatha-letsencrypt 
   - hibiscus 
   - hidviz 
-  - highlight: [i586] 
+  - highlight 
   - highlight-gui 
   - highlight-gui-lang 
   - himeno 
@@ -7217,7 +7221,7 @@ unsorted:
   - iproute2-bash-completion 
   - ipset-devel 
   - iptables-backend-nft 
-  - iptraf-ng: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - iptraf-ng 
   - ipv6gen 
   - ipv6toolkit 
   - ipvsadm 
@@ -7993,6 +7997,7 @@ unsorted:
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
+  - kernel-docs 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-install-tools 
@@ -8117,7 +8122,7 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
-  - kimageformats-eps: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
@@ -8276,14 +8281,14 @@ unsorted:
   - krb5-plugin-preauth-pkinit 
   - krb5-plugin-preauth-spake 
   - krb5-server 
-  - krdc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - krdc 
   - krdc-devel 
-  - krdc-lang: [i586] 
+  - krdc-lang 
   - kreport 
   - kreport-devel 
   - kreport-lang 
-  - krfb: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - krfb-lang: [i586] 
+  - krfb 
+  - krfb-lang 
   - kristall 
   - krita 
   - krita-devel 
@@ -8591,7 +8596,7 @@ unsorted:
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
-  - ldmtool: [i586] 
+  - ldmtool 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -9949,9 +9954,9 @@ unsorted:
   - libbraille-devel 
   - libbraille-fake0-14 
   - libbraille0-14 
-  - libbrasero-burn3-1: [i586] 
-  - libbrasero-media3-1: [i586] 
-  - libbrasero-utils3-1: [i586] 
+  - libbrasero-burn3-1 
+  - libbrasero-media3-1 
+  - libbrasero-utils3-1 
   - libbrial3 
   - libbrotli-devel: [i586] # devel package of dvd:libbrotlicommon1 
   - libbrotlienc1-32bit: [x86_64] 
@@ -10258,7 +10263,7 @@ unsorted:
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
-  - libcrc32c1: [i586] 
+  - libcrc32c1 
   - libcreaterepo_c-devel 
   - libcreg-devel 
   - libcreg-tools 
@@ -10960,10 +10965,11 @@ unsorted:
   - libgeotiff5 
   - libgepub-devel 
   - libgerbv1 
-  - libges-1_0-0: [i586] 
+  - libges-1_0-0 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
+  - libgfapi0 
   - libgfchangelog0 
   - libgflags2 
   - libgfortran4 
@@ -10971,6 +10977,8 @@ unsorted:
   - libgfortran5-32bit: [x86_64] 
   - libgfortran5-gcc10 
   - libgfortran5-gcc10-32bit: [x86_64] 
+  - libgfrpc0 
+  - libgfxdr0 
   - libgiac0 
   - libgiblib1 
   - libgif7-32bit: [x86_64] 
@@ -11022,6 +11030,7 @@ unsorted:
   - libglue2 
   - libglue2-32bit: [x86_64] 
   - libglusterd0 
+  - libglusterfs0 
   - libglut3 
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
@@ -11056,7 +11065,7 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_8_0 
   - libgnutls-dane-devel 
-  - libgnutls-dane0: [i586] 
+  - libgnutls-dane0 
   - libgnutls-devel 
   - libgnutls-devel-32bit: [x86_64] 
   - libgnutlsxx-devel 
@@ -11173,9 +11182,9 @@ unsorted:
   - libgstsctp-1_0-0-32bit: [x86_64] 
   - libgstsdp-1_0-0-32bit: [x86_64] 
   - libgsttag-1_0-0-32bit: [x86_64] 
-  - libgsttranscoder-1_0-0: [i586] 
+  - libgsttranscoder-1_0-0 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
-  - libgstvalidate-1_0-0: [i586] 
+  - libgstvalidate-1_0-0 
   - libgstvideo-1_0-0-32bit: [x86_64] 
   - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
@@ -11224,6 +11233,7 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
+  - libguestfs0: [x86_64] 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
   - libguile-srfi-srfi-13-14-v-3-3 
@@ -11453,7 +11463,7 @@ unsorted:
   - libhinawa-devel 
   - libhinawa2 
   - libhiredis1_0_0 
-  - libhivex0: [i586] 
+  - libhivex0 
   - libhmac-devel 
   - libhmac-tools 
   - libhmac1 
@@ -11828,7 +11838,7 @@ unsorted:
   - libldc-jit96 
   - libldl-doc 
   - libldl2 
-  - libldm-1_0-0: [i586] 
+  - libldm-1_0-0 
   - libldm-1_0-0-devel 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
@@ -13017,7 +13027,7 @@ unsorted:
   - libpspell15-32bit: [x86_64] 
   - libpst 
   - libpst-devel 
-  - libpst4: [i586] 
+  - libpst4 
   - libpsx2 
   - libpsx2-32bit: [x86_64] 
   - libpt-devel 
@@ -14416,13 +14426,13 @@ unsorted:
   - libvips42 
   - libvirt 
   - libvirt-cim 
-  - libvirt-client: [i586] 
+  - libvirt-client 
   - libvirt-daemon-config-network 
   - libvirt-daemon-config-nwfilter 
-  - libvirt-daemon-driver-lxc: [i586] 
+  - libvirt-daemon-driver-lxc 
   - libvirt-daemon-driver-storage-gluster 
   - libvirt-daemon-hooks 
-  - libvirt-daemon-lxc: [i586] 
+  - libvirt-daemon-lxc 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-devel-32bit: [x86_64] 
@@ -14430,7 +14440,7 @@ unsorted:
   - libvirt-glib-devel 
   - libvirt-lock-sanlock 
   - libvirt-nss 
-  - libvirt-sandbox-1_0-5: [i586] 
+  - libvirt-sandbox-1_0-5 
   - libvirt-sandbox-devel 
   - libvisio-devel 
   - libvisio-devel-doc 
@@ -15544,6 +15554,7 @@ unsorted:
   - lyx 
   - lyx-fonts 
   - lz4 
+  - lzfse 
   - lzfse-devel 
   - lzham_codec-devel 
   - lzham_codec-libs 
@@ -16322,7 +16333,7 @@ unsorted:
   - monitoring-plugins-clamav 
   - monitoring-plugins-contentage 
   - monitoring-plugins-count_file 
-  - monitoring-plugins-cups: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - monitoring-plugins-cups 
   - monitoring-plugins-dbi 
   - monitoring-plugins-dbi-mysql 
   - monitoring-plugins-dbi-pgsql 
@@ -16342,7 +16353,7 @@ unsorted:
   - monitoring-plugins-metadata 
   - monitoring-plugins-mysql 
   - monitoring-plugins-mysql_health 
-  - monitoring-plugins-nagios: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - monitoring-plugins-nagios 
   - monitoring-plugins-nis 
   - monitoring-plugins-nrpe 
   - monitoring-plugins-nwc_health 
@@ -17534,7 +17545,7 @@ unsorted:
   - ntl-doc 
   - ntp 
   - ntp-dcf77-tools 
-  - ntp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - ntp-doc 
   - ntpsec 
   - ntpsec-devel 
   - ntpsec-doc 
@@ -17547,7 +17558,7 @@ unsorted:
   - nulloy-taglib 
   - nulloy-vlc 
   - numactl: [i586] 
-  - numad: [i586] # suggested by dvd:suggested:patterns-server-xen_server 
+  - numad 
   - numatop: [x86_64] 
   - nunit 
   - nunit-devel 
@@ -18327,7 +18338,8 @@ unsorted:
   - openxcom 
   - opera-uget-integrator 
   - opi 
-  - opie: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - opie 
+  - opie-32bit: [x86_64] 
   - oping 
   - opmsg 
   - oprofile 
@@ -18582,8 +18594,8 @@ unsorted:
   - papi_6_0_0_1-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
-  - paprefs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - paprefs-lang: [i586] 
+  - paprefs 
+  - paprefs-lang 
   - paps 
   - par2cmdline 
   - par_text 
@@ -19061,7 +19073,7 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector: [i586] 
+  - perl-Class-Inspector 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -19312,7 +19324,7 @@ unsorted:
   - perl-File-Rename 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir: [i586] 
+  - perl-File-ShareDir 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -19886,7 +19898,7 @@ unsorted:
   - perl-String-Format 
   - perl-String-Formatter 
   - perl-String-RewritePrefix 
-  - perl-String-ShellQuote: [i586] 
+  - perl-String-ShellQuote 
   - perl-String-ToIdentifier-EN 
   - perl-String-Trim 
   - perl-String-Truncate 
@@ -19911,6 +19923,7 @@ unsorted:
   - perl-Syntax-Keyword-Junction 
   - perl-Syntax-Keyword-Try 
   - perl-Sys-CPU 
+  - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
@@ -20133,7 +20146,7 @@ unsorted:
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
   - perl-Web-Scraper 
-  - perl-Win-Hivex: [i586] 
+  - perl-Win-Hivex 
   - perl-Wx 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
@@ -20200,7 +20213,7 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
-  - perl-libintl-perl: [i586] 
+  - perl-libintl-perl 
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
@@ -20479,8 +20492,8 @@ unsorted:
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
-  - pitivi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - pitivi-lang: [i586] 
+  - pitivi 
+  - pitivi-lang 
   - pix 
   - pix-devel 
   - pix-lang 
@@ -20752,12 +20765,14 @@ unsorted:
   - postfix-bdb 
   - postfix-bdb-lmdb 
   - postfix-devel 
+  - postfix-doc 
   - postfix-ldap 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
   - postfixadmin-apache 
   - postgresql-devel 
+  - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
   - postgresql-llvmjit-devel 
@@ -20848,6 +20863,7 @@ unsorted:
   - postgresql13-test 
   - postgresql14-devel 
   - postgresql14-devel-mini 
+  - postgresql14-docs 
   - postgresql14-llvmjit-devel 
   - postgresql14-pg_cron: [x86_64] 
   - postgresql14-plperl 
@@ -20883,8 +20899,8 @@ unsorted:
   - powermock-testng 
   - powerstat 
   - powerstat-bash-completion 
-  - powertop: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - powertop-lang: [i586] 
+  - powertop 
+  - powertop-lang 
   - poxml-lang 
   - ppl 
   - ppl-devel 
@@ -20900,7 +20916,7 @@ unsorted:
   - ppsspp-common 
   - ppsspp-headless 
   - ppsspp-qt 
-  - pptpd: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - pptpd 
   - pqiv 
   - pqiv-ffmpeg 
   - pqiv-gdkpixbuf 
@@ -20935,7 +20951,7 @@ unsorted:
   - printer-driver-brlaser 
   - printproto-devel: [i586] 
   - prison-qt5-devel 
-  - privoxy: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - privoxy 
   - privoxy-doc 
   - procdump 
   - procenv 
@@ -21492,6 +21508,7 @@ unsorted:
   - python3-libfsntfs 
   - python3-libftdi1 
   - python3-libfwnt 
+  - python3-libguestfs: [x86_64] 
   - python3-libixion 
   - python3-libluksde 
   - python3-libmodulemd 
@@ -21645,6 +21662,7 @@ unsorted:
   - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
+  - python3-virt-bootstrap: [x86_64] 
   - python3-virt-tuner 
   - python3-virtualbox: [x86_64] 
   - python3-virtualenvwrapper 
@@ -25039,7 +25057,7 @@ unsorted:
   - python38-TxSNI 
   - python38-URLObject 
   - python38-UkPostcodeParser 
-  - python38-Unidecode: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-Unidecode 
   - python38-VyattaConfParser 
   - python38-WSGIProxy2 
   - python38-WSME 
@@ -25140,7 +25158,7 @@ unsorted:
   - python38-arf 
   - python38-argcomplete: [i586] 
   - python38-argh 
-  - python38-argon2-cffi: [i586] 
+  - python38-argon2-cffi 
   - python38-argparse-manpage: [i586] 
   - python38-args 
   - python38-arrow 
@@ -25536,7 +25554,7 @@ unsorted:
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
-  - python38-cachetools: [i586] 
+  - python38-cachetools 
   - python38-cachey 
   - python38-cachy 
   - python38-cairocffi 
@@ -25864,7 +25882,7 @@ unsorted:
   - python38-dkimpy 
   - python38-dns-lexicon 
   - python38-dnslib 
-  - python38-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-doc 
   - python38-doc-devhelp 
   - python38-docformatter 
   - python38-docker 
@@ -25931,7 +25949,7 @@ unsorted:
   - python38-evdev 
   - python38-eventlet 
   - python38-evilunit 
-  - python38-evtx: [i586] 
+  - python38-evtx 
   - python38-exam 
   - python38-execnet 
   - python38-exiv2 
@@ -26023,13 +26041,13 @@ unsorted:
   - python38-funcy 
   - python38-furl 
   - python38-fuse 
-  - python38-fusepy: [i586] 
+  - python38-fusepy 
   - python38-fuzzywuzzy 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
-  - python38-gcsfs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - python38-gcsfs-fuse: [i586] 
+  - python38-gcsfs 
+  - python38-gcsfs-fuse 
   - python38-gear 
   - python38-ged4py 
   - python38-genfire 
@@ -26060,20 +26078,20 @@ unsorted:
   - python38-gns3fy 
   - python38-gobject-devel 
   - python38-goobook 
-  - python38-google-api-core: [i586] 
+  - python38-google-api-core 
   - python38-google-api-python-client 
-  - python38-google-auth: [i586] 
+  - python38-google-auth 
   - python38-google-auth-httplib2 
-  - python38-google-auth-oauthlib: [i586] 
-  - python38-google-cloud-core: [i586] 
+  - python38-google-auth-oauthlib 
+  - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
-  - python38-google-cloud-storage: [i586] 
+  - python38-google-cloud-storage 
   - python38-google-cloud-translate 
-  - python38-google-crc32c: [i586] 
+  - python38-google-crc32c 
   - python38-google-pasta 
-  - python38-google-resumable-media: [i586] 
-  - python38-googleapis-common-protos: [i586] 
+  - python38-google-resumable-media 
+  - python38-googleapis-common-protos 
   - python38-googlemaps 
   - python38-gpg 
   - python38-gpgme 
@@ -26089,14 +26107,14 @@ unsorted:
   - python38-graphviz 
   - python38-greenlet-devel 
   - python38-grpc-google-iam-v1 
-  - python38-grpcio: [i586] 
+  - python38-grpcio 
   - python38-grpcio-gcp 
   - python38-grpcio-tools 
   - python38-gscholar 
   - python38-gsm0338 
   - python38-gspread 
-  - python38-gssapi: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - python38-gst: [i586] 
+  - python38-gssapi 
+  - python38-gst 
   - python38-gsw 
   - python38-guessit 
   - python38-gunicorn 
@@ -26127,7 +26145,7 @@ unsorted:
   - python38-hepunits 
   - python38-hetzner 
   - python38-hetznercloud 
-  - python38-hexdump: [i586] 
+  - python38-hexdump 
   - python38-hijri-converter 
   - python38-hiredis 
   - python38-hkdf 
@@ -26452,9 +26470,9 @@ unsorted:
   - python38-marshmallow 
   - python38-marshmallow-enum 
   - python38-mathgl 
-  - python38-matplotlib-cairo: [i586] 
-  - python38-matplotlib-gtk-common: [i586] 
-  - python38-matplotlib-gtk3: [i586] 
+  - python38-matplotlib-cairo 
+  - python38-matplotlib-gtk-common 
+  - python38-matplotlib-gtk3 
   - python38-matplotlib-gtk4 
   - python38-matplotlib-latex 
   - python38-matplotlib-qt5 
@@ -26576,6 +26594,7 @@ unsorted:
   - python38-node-semver 
   - python38-nodeenv 
   - python38-nornir 
+  - python38-nose 
   - python38-nose2 
   - python38-notebook 
   - python38-notebook-lang 
@@ -26682,7 +26701,7 @@ unsorted:
   - python38-parver 
   - python38-pass_python_keyring 
   - python38-passivetotal 
-  - python38-passlib: [i586] 
+  - python38-passlib 
   - python38-pastel 
   - python38-pastream 
   - python38-patatt 
@@ -26793,7 +26812,7 @@ unsorted:
   - python38-prompt_toolkit1 
   - python38-proselint 
   - python38-proto-plus 
-  - python38-protobuf: [i586] 
+  - python38-protobuf 
   - python38-proton-client 
   - python38-protonvpn-nm-lib 
   - python38-proxy.py 
@@ -27187,7 +27206,7 @@ unsorted:
   - python38-pytools 
   - python38-pytricia 
   - python38-pytzdata 
-  - python38-pyu2f: [i586] 
+  - python38-pyu2f 
   - python38-pyuca 
   - python38-pyupgrade 
   - python38-pyusb 
@@ -27203,7 +27222,7 @@ unsorted:
   - python38-pywebpush 
   - python38-pywinrm 
   - python38-pyxattr 
-  - python38-pyxdg: [i586] 
+  - python38-pyxdg 
   - python38-pyyaml_env_tag 
   - python38-pyzmq-devel 
   - python38-pyzo 
@@ -27281,7 +27300,7 @@ unsorted:
   - python38-requests-gssapi 
   - python38-requests-hawk 
   - python38-requests-mock 
-  - python38-requests-oauthlib: [i586] 
+  - python38-requests-oauthlib 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
@@ -27323,6 +27342,8 @@ unsorted:
   - python38-rtslib-fb 
   - python38-ruamel.base 
   - python38-ruamel.std.pathlib 
+  - python38-ruamel.yaml 
+  - python38-ruamel.yaml.clib 
   - python38-ruamel.yaml.convert 
   - python38-ruffus 
   - python38-runthis-sphinxext 
@@ -27354,7 +27375,7 @@ unsorted:
   - python38-screeninfo 
   - python38-screenplain 
   - python38-scripttest 
-  - python38-scrypt: [i586] 
+  - python38-scrypt 
   - python38-scspell3k 
   - python38-sdnotify 
   - python38-seaborn 
@@ -31061,17 +31082,30 @@ unsorted:
   - qdox-javadoc 
   - qelectrotech 
   - qemacs 
+  - qemu-accel-qtest 
+  - qemu-arm 
   - qemu-audio-alsa 
   - qemu-audio-jack 
   - qemu-audio-oss 
   - qemu-audio-pa 
+  - qemu-block-dmg 
+  - qemu-block-gluster 
+  - qemu-block-iscsi 
+  - qemu-block-nfs 
+  - qemu-block-ssh 
+  - qemu-chardev-baum 
   - qemu-extra 
   - qemu-hw-s390x-virtio-gpu-ccw 
   - qemu-ivshmem-tools 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
+  - qemu-ppc 
+  - qemu-s390x 
+  - qemu-skiboot 
   - qemu-testsuite 
   - qemu-uefi-aarch32: [x86_64] 
+  - qemu-uefi-aarch64: [x86_64] 
+  - qemu-vhost-user-gpu 
   - qgis 
   - qgis-devel 
   - qgis-plugin-grass 
@@ -32006,6 +32040,7 @@ unsorted:
   - samba-ceph: [x86_64] 
   - samba-devel 
   - samba-devel-32bit: [x86_64] 
+  - samba-doc 
   - samba-dsdb-modules 
   - samba-krb-printing 
   - samba-libs-32bit: [x86_64] 
@@ -32397,7 +32432,7 @@ unsorted:
   - skinlf-demo 
   - skinlf-javadoc 
   - skkdic-extra 
-  - skopeo: [i586] 
+  - skopeo 
   - skopeo-bash-completion 
   - skrooge 
   - skrooge-lang 
@@ -32605,7 +32640,7 @@ unsorted:
   - spectator 
   - spectcl 
   - spectre-meltdown-checker 
-  - speech-dispatcher-configure: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - speech-dispatcher-configure 
   - speedtest-cli 
   - speex 
   - speex-devel 
@@ -32779,6 +32814,7 @@ unsorted:
   - subunit-filters 
   - subunit-shell 
   - subversion-devel 
+  - subversion-doc 
   - subversion-python 
   - subversion-ruby 
   - suck 
@@ -32818,6 +32854,7 @@ unsorted:
   - superlu_5_3_0-gnu-hpc-devel 
   - superlu_5_3_0-gnu-hpc-doc 
   - superlu_5_3_0-gnu-hpc-examples 
+  - supermin: [x86_64] 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -41651,14 +41688,14 @@ unsorted:
   - typelib-1_0-FolksTelepathy-0_7 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
-  - typelib-1_0-GES-1_0: [i586] 
+  - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-1_0 
   - typelib-1_0-GSSDP-1_0 
-  - typelib-1_0-GSound-1_0: [i586] 
+  - typelib-1_0-GSound-1_0 
   - typelib-1_0-GTop-2_0 
   - typelib-1_0-GUPnP-1_0 
   - typelib-1_0-GUPnPAV-1_0 
@@ -41711,8 +41748,8 @@ unsorted:
   - typelib-1_0-GstRtsp-1_0 
   - typelib-1_0-GstRtspServer-1_0 
   - typelib-1_0-GstSdp-1_0 
-  - typelib-1_0-GstTranscoder-1_0: [i586] 
-  - typelib-1_0-GstValidate-1_0: [i586] 
+  - typelib-1_0-GstTranscoder-1_0 
+  - typelib-1_0-GstValidate-1_0 
   - typelib-1_0-GstVulkan-1_0 
   - typelib-1_0-GstVulkanWayland-1_0 
   - typelib-1_0-GstVulkanXCB-1_0 
@@ -42184,7 +42221,7 @@ unsorted:
   - virglrenderer-test-server 
   - virt-manager 
   - virt-p2v: [x86_64] 
-  - virt-sandbox: [i586] 
+  - virt-sandbox 
   - virt-top 
   - virt-v2v: [x86_64] 
   - virt-v2v-bash-completion: [x86_64] 
@@ -42788,7 +42825,7 @@ unsorted:
   - xmlsec1-gnutls-devel 
   - xmlsec1-nss-devel 
   - xmlsec1-openssl-devel 
-  - xmlstarlet: [i586] 
+  - xmlstarlet 
   - xmlstreambuffer 
   - xmlstreambuffer-javadoc 
   - xmlto 
@@ -42833,6 +42870,7 @@ unsorted:
   - xonsh 
   - xonsh-doc 
   - xorg-cf-files 
+  - xorg-docs 
   - xorg-scripts 
   - xorg-sgml-doctools 
   - xorg-x11 
@@ -43129,7 +43167,7 @@ unsorted:
   - zdbsp 
   - zeal 
   - zerobranestudio 
-  - zerofree: [i586] 
+  - zerofree 
   - zeromq-devel 
   - zfp-devel: [x86_64] 
   - zhu3d 
