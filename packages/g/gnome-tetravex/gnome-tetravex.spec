@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tetravex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Tetravex
 Source0:        https://download.gnome.org/sources/gnome-tetravex/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 991ed9c9592047704efa436a34b84d392c9562d4.patch -- Reference of [GtkChild] fields is handled by GtkBuilder, type must be unowned
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-tetravex/-/commit/991ed9c9592047704efa436a34b84d392c9562d4.patch
+# PATCH-FIX-UPSTREAM 20.patch -- Fix build with meson 0.60.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-tetravex/-/merge_requests/20.patch
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -34,9 +38,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.23
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24
-# gnome-tetravex used to be called 'gnotravex' and was part of gnome-games until 3.7.x
-Obsoletes:      gnotravex < %{version}
-Obsoletes:      gnotravex-lang < %{version}
 
 %description
 Tetravex is a simple puzzle game in which pieces have numbers on each
@@ -62,8 +63,8 @@ stored in a system-wide scoreboard.
 %files
 %license COPYING
 %doc NEWS
-%doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
+%{_datadir}/help/C/%{name}/
 %{_datadir}/metainfo/org.gnome.Tetravex.appdata.xml
 %{_datadir}/applications/org.gnome.Tetravex.desktop
 %{_datadir}/dbus-1/services/org.gnome.Tetravex.service

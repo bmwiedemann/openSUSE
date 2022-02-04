@@ -229,4 +229,12 @@
     <comment>Update to 3.38.2 (forwarded request 850189 from dimstar)</comment>
     <requestid>851040</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>73d016c7e654c1baa6d0d959efa43032</srcmd5>
+    <version>3.38.2</version>
+    <time>1644007749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951428</requestid>
+  </revision>
 </revisionlist>
