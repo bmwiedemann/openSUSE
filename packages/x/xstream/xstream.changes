@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  4 10:43:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.19
+  * Security fixes
+    + This maintenance release addresses the security vulnerability
+      CVE-2021-43859, bsc#1195458, when unmarshalling highly
+      recursive collections or maps causing a Denial of Service.
+  * API changes
+    + Added c.t.x.XStream.COLLECTION_UPDATE_LIMIT and
+      c.t.x.XStream.COLLECTION_UPDATE_SECONDS.
+    + Added c.t.x.XStream.setCollectionUpdateLimit(int).
+    + Added c.t.x.core.SecurityUtils.
+    + Added c.t.x.security.AbstractSecurityException and
+      c.t.x.security.InputManipulationException.
+    + c.t.x.security.InputManipulationException derives now from
+      c.t.x.security.AbstractSecurityException.
+
+-------------------------------------------------------------------
 Tue Sep 28 05:49:16 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.4.18

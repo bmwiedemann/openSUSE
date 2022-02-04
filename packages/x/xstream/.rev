@@ -55,4 +55,12 @@
     <comment>Misc security fixes</comment>
     <requestid>921981</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c673c869558627fdc995228092c6dc46</srcmd5>
+    <version>1.4.19</version>
+    <time>1644007764</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2021-43859, bsc#1195458</comment>
+    <requestid>951552</requestid>
+  </revision>
 </revisionlist>
