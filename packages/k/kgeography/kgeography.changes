@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix color of some United States Minor Outlying Islands (kde#449048)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
