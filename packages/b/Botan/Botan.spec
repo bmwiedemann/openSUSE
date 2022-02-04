@@ -1,7 +1,7 @@
 #
 # spec file for package Botan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
-%define version_suffix 2-18
+%define version_suffix 2-19
 %define short_version 2
 Name:           Botan
-Version:        2.18.2
+Version:        2.19.1
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause

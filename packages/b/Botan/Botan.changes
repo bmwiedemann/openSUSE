@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 23 08:11:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.19.1:
+  * Add a forward error correction code compatible with the zfec
+    library
+    
+-------------------------------------------------------------------
 Wed Nov 24 20:02:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.2:
