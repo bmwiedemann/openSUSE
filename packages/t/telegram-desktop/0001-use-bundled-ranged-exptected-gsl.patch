@@ -31,13 +31,6 @@
      if (DESKTOP_APP_USE_PACKAGED_LAZY)
          find_package(range-v3 QUIET)
      else()
-@@ -32,4 +32,4 @@ if (NOT range-v3_FOUND)
-             /wd5105 # needed for `/Zc:preprocessor`, suppressing C5105 "macro expansion producing 'defined' has undefined behavior"
-         )
-     endif()
--endif()
-\ No newline at end of file
-+endif()
 --- a/cmake/external/webrtc/CMakeLists.txt
 +++ b/cmake/external/webrtc/CMakeLists.txt
 @@ -7,7 +7,7 @@
@@ -48,15 +41,4 @@
 +if (NOT DESKTOP_APP_USE_PACKAGED)
      find_package(tg_owt REQUIRED)
      target_link_libraries(external_webrtc INTERFACE tg_owt::tg_owt)
- else()
---- a/cmake/external/rlottie/CMakeLists.txt
-+++ b/cmake/external/rlottie/CMakeLists.txt
-@@ -7,7 +7,7 @@
- add_library(external_rlottie INTERFACE IMPORTED GLOBAL)
- add_library(desktop-app::external_rlottie ALIAS external_rlottie)
- 
--if (DESKTOP_APP_USE_PACKAGED)
-+if (NOT DESKTOP_APP_USE_PACKAGED)
-     find_package(rlottie QUIET)
- 
-     if (rlottie_FOUND)
+     return()

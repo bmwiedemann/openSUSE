@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb  4 02:57:59 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Add 0003-add-qt5-widgets-include.patch
+  * Fix Qt5Widgets private header include issue.
+
+-------------------------------------------------------------------
+Thu Feb  3 03:40:16 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.5.0
+  * Use a new type of detailed stickers with smooth animations.
+  * Create new sets by sending .webm videos to @stickers.
+  * Bring your custom animated stickers from other apps.
+  * See smaller, compact animations when reacting to messages.
+  * See real-time animations in chat when a user reacts to your message.
+  * React with additional emoji expressing love, appreciation,
+    anger or surprise.
+  * Tap the new button in chats to jump to your messages that have
+    unseen reactions.
+  * Watch the animations for unseen reactions play when you
+    hit the button.
+  * The app will warn you before closing if you are uploading
+    photos or files to a chat.
+  * Enjoy better screencast quality in video chats.
+- Update tg_owt
+- Rebase patches
+-------------------------------------------------------------------
 Tue Jan  4 15:45:39 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.4.3

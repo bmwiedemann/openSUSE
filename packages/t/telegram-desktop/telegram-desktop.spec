@@ -21,20 +21,13 @@
 %define _lto_cflags %{nil}
 %endif
 
-# We need current gcc to build
-%if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
-%bcond_without  fixed_gcc
-%else
-%bcond_with     fixed_gcc
-%endif
-
 %define __builder ninja
 
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -50,6 +43,8 @@ Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
 # PATCH-FIX-OPENSUSE
+Patch3:         0003-add-qt5-widgets-include.patch
+# PATCH-FIX-OPENSUSE
 Patch4:         0004-use-dynamic-x-libraries.patch
 # PATCH-FIX-OPENSUSE
 Patch5:         0005-add-wayland-include-path.patch
@@ -60,16 +55,12 @@ Patch5:         0005-add-wayland-include-path.patch
 ExcludeArch:    %ix86 aarch64_ilp32 ppc riscv32
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
+BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
-%if %{with fixed_gcc}
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  glibc-devel
 BuildRequires:  libQt5Core-private-headers-devel >= 5.15
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.15
@@ -99,6 +90,7 @@ BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -138,6 +130,7 @@ BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
@@ -169,6 +162,7 @@ The service also provides APIs to independent developers.
 %prep
 %setup -q -n tdesktop-%{version}-full
 %patch1 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 
@@ -179,10 +173,6 @@ mv tg_owt-master Libraries/tg_owt
 %patch2 -p2 -d Libraries/tg_owt
 
 %build
-%if %{with fixed_gcc}
-export CC="/usr/bin/gcc-10"
-export CXX="/usr/bin/g++-10"
-%endif
 
 # Fix build failures due to not finding installed headers for xkbcommon and wayland-client
 export CXXFLAGS+="`pkg-config --cflags xkbcommon wayland-client`"
@@ -197,6 +187,7 @@ cmake -G Ninja \
        -DTG_OWT_OPENSSL_INCLUDE_PATH=/usr/include/openssl \
        -DTG_OWT_OPUS_INCLUDE_PATH=/usr/include/opus \
        -DTG_OWT_FFMPEG_INCLUDE_PATH=/usr/include/ffmpeg \
+       -DTG_OWT_LIBVPX_INCLUDE_PATH=/usr/include/vpx \
        ../..
 sed -i 's,gnu++2a,gnu++17,g' build.ninja
 ninja

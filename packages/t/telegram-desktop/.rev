@@ -778,4 +778,31 @@
   * Bug fixes and other minor improvements. (forwarded request 943803 from tux93)</comment>
     <requestid>944477</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>5821d715372fa73f8f205fc8fcedb2ed</srcmd5>
+    <version>3.5.0</version>
+    <time>1644007766</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0003-add-qt5-widgets-include.patch
+  * Fix Qt5Widgets private header include issue.
+- Update to 3.5.0
+  * Use a new type of detailed stickers with smooth animations.
+  * Create new sets by sending .webm videos to @stickers.
+  * Bring your custom animated stickers from other apps.
+  * See smaller, compact animations when reacting to messages.
+  * See real-time animations in chat when a user reacts to your message.
+  * React with additional emoji expressing love, appreciation,
+    anger or surprise.
+  * Tap the new button in chats to jump to your messages that have
+    unseen reactions.
+  * Watch the animations for unseen reactions play when you
+    hit the button.
+  * The app will warn you before closing if you are uploading
+    photos or files to a chat.
+  * Enjoy better screencast quality in video chats.
+- Update tg_owt
+- Rebase patches
+</comment>
+    <requestid>951584</requestid>
+  </revision>
 </revisionlist>
