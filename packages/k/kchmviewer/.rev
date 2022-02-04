@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ae8e424148326f46cfe7d9b6be06f76</srcmd5>
+    <version>8.0</version>
+    <time>1644007743</time>
+    <user>dimstar_suse</user>
+    <comment>Add kchmviewer back now that the qtwebkit dependency is gone.</comment>
+    <requestid>951406</requestid>
+  </revision>
+</revisionlist>
