@@ -18,7 +18,7 @@
 
 %bcond_with cocoa
 Name:           giac
-%define tarver  1.7.0-13
+%define tarver  1.7.0-43
 Version:        %( echo %{tarver} | sed 's/-/./' )
 %define mainver %( echo %{tarver} | sed 's/-.*//' )
 %define soname  0
