@@ -159,10 +159,10 @@ dvd:
   - yast2-trans-zh_CN
   - yast2-trans-zh_TW
   - yast2-trans-zu
-  - patterns-server-kvm_server: [required,suggested]
+  - patterns-server-kvm_server
   - patterns-base-minimal_base: [required,suggested]
   - patterns-yast-x11_yast: [required,suggested]
-  - patterns-server-xen_server: [suggested]
+  - patterns-server-xen_server
   # bnc#431280 (Japanese fonts)
   - arphic-uming-fonts
   - cellwriter
@@ -177,7 +177,7 @@ dvd:
   - quota-nfs
   - nvme-cli
 
-  - patterns-media-rest_dvd: [suggested]
+  - patterns-media-rest_dvd
   # all loggers
   - rsyslog
   - syslog-service
