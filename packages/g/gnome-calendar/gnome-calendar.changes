@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 20:51:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add e35dbc1acd03dd1751b755b6c8e1932a692ad4e1.patch: Fix build
+  with meson 0.61.0 and newer.
+
+-------------------------------------------------------------------
 Fri Dec 10 21:29:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:
