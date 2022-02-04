@@ -1,0 +1,18 @@
+--- orig-libgda-6.0.0/tools/browser/meson.build	2021-02-01 01:29:25.281818400 +0100
++++ libgda-6.0.0/tools/browser/meson.build	2022-02-02 15:59:28.721883015 +0100
+@@ -84,7 +84,7 @@
+ 
+ subdir('data')
+ 
+-i18n.merge_file('browser_desktop',
++i18n.merge_file(
+ 	po_dir: join_paths(meson.source_root(),'po'),
+ 	type: 'desktop',
+ 	input: 'org.gnome.gda.Browser.desktop.in',
+@@ -105,4 +105,4 @@
+ 		install_dir: join_paths(get_option('datadir'),'metainfo')
+ 		)
+ 
+-browser_deps += inc_browserdirh_dep
+\ Intet linjeskift i slutten av fila
++browser_deps += inc_browserdirh_dep

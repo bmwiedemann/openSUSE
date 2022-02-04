@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 14:09:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add bebdffb4de586fb43fd07ac549121f4b22f6812d.patch: Fix
+  CVE-2021-39359 by forcing TLS certificate validation
+  (boo#1189849).
+- Add libgda-fix-meson-060.patch: Fix build with meson 0.61.0 and
+  newer.
+
+-------------------------------------------------------------------
 Fri Nov 12 21:15:52 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add missing library requires to devel package

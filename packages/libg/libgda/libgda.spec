@@ -1,7 +1,7 @@
 #
 # spec file for package libgda
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,11 @@ Patch1:         libgda-javadetection-biarch.patch
 Patch2:         overflow-undefined-behavior.patch
 # PATCH-FIX-UPSTREAM libgda-no-gtkdoc-markers.patch glgo#GNOME/libgda#254 dimstar@opensuse.org -- Fix build with GNOME 41 stack
 Patch3:         libgda-no-gtkdoc-markers.patch
+# PATCH-FIX-UPSTREAM bebdffb4de586fb43fd07ac549121f4b22f6812d.patch boo#1189849 CVE-2021-39359 -- Fix CVE-2021-39359 by forcing TLS certificate validation
+Patch4:         https://gitlab.gnome.org/GNOME/libgda/-/commit/bebdffb4de586fb43fd07ac549121f4b22f6812d.patch
+# PATCH-FIX-UPSTREAM libgda-fix-meson-060.patch bjorn.lie@gmail.com -- Fix build with meson 0.61.0 and newer
+Patch5:         libgda-fix-meson-060.patch
+
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -223,8 +228,8 @@ everything needed to access data.
 Summary:        GNU Data Access (GDA) Library -- Development Files
 Group:          Development/Libraries/C and C++
 Requires:       %{_name}-6_0-6_0_0 = %{version}
-Requires:       %{_name}-ui-6_0-6_0_0 = %{version}
 Requires:       %{_name}-report-6_0-6_0_0 = %{version}
+Requires:       %{_name}-ui-6_0-6_0_0 = %{version}
 Requires:       %{_name}-xslt-6_0-6_0_0 = %{version}
 Requires:       typelib-1_0-Gda-6_0 = %{version}
 Requires:       typelib-1_0-Gdaui-6_0 = %{version}

@@ -738,4 +738,12 @@ file is not available on the system.
 - Move unversioned report binaries to seperate package (forwarded request 931257 from gmbr3)</comment>
     <requestid>931781</requestid>
   </revision>
+  <revision rev="94" vrev="5">
+    <srcmd5>e04366414979a135c426d3e939d467e7</srcmd5>
+    <version>6.0.0</version>
+    <time>1644007751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951430</requestid>
+  </revision>
 </revisionlist>
