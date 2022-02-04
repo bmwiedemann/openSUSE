@@ -1,7 +1,7 @@
 #
 # spec file for package gtranslator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,15 @@ Source0:        https://download.gnome.org/sources/gtranslator/40/%{name}-%{vers
 Source99:       gtranslator-rpmlintrc
 # PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
 Patch0:         libgda-6.patch
+# PATCH-FIX-UPSTREAM 7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch -- Fix build with meson 0.61 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/gtranslator/-/commit/7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
@@ -46,9 +48,9 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
-BuildRequires:  pkgconfig(libhandy-1)
 Requires:       gsettings-desktop-schemas
 Requires:       iso-codes
 Requires:       libgda-sqlite >= 6.0.0
@@ -79,9 +81,8 @@ This package contains documentation for %{name}.
 %install
 %meson_install
 find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
-%suse_update_desktop_file -r org.gnome.Gtranslator GNOME GTK Development Translation
 %find_lang %{name}
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license COPYING

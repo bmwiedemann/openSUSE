@@ -342,4 +342,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 894769 from dimstar)</comment>
     <requestid>894776</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>05b4e7933c9864709cc2dd4d3ada437f</srcmd5>
+    <version>40.0</version>
+    <time>1644007742</time>
+    <user>dimstar_suse</user>
+    <comment>Mesonfix and tiny tweak (forwarded request 950790 from iznogood)</comment>
+    <requestid>951403</requestid>
+  </revision>
 </revisionlist>

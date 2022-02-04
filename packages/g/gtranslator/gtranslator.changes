@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  2 17:08:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch: Fix build
+  with meson 0.61 and newer.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+
+-------------------------------------------------------------------
 Mon Apr  5 11:50:38 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 40.0:
