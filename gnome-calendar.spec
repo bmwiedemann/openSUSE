@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calendar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
 Source0:        https://download.gnome.org/sources/gnome-calendar/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM e35dbc1acd03dd1751b755b6c8e1932a692ad4e1.patch -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-calendar/-/commit/e35dbc1acd03dd1751b755b6c8e1932a692ad4e1.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
