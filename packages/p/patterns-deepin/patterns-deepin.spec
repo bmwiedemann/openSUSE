@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-deepin
-Version:        15.3.20210916
+Version:        15.4.20220204
 Release:        0
 Summary:        Patterns for Installation (Deepin)
 License:        MIT
@@ -97,6 +97,8 @@ Recommends:     gnome-packagekit
 Recommends:     deepin-system-monitor
 Recommends:     deepin-clone
 Recommends:     remmina
+# workaround wireless networks issue for deepin-control-center
+Recommends:     NetworkManager-applet
 
 %description deepin_admin
 Administration Tools e.g. for desktop lockdown.
