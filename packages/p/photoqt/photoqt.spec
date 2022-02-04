@@ -1,7 +1,7 @@
 #
 # spec file for package photoqt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           photoqt
-Version:        1.7.1
+Version:        2.5
 Release:        0
 Summary:        A Qt-based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            http://photoqt.org/
-Source0:        http://photoqt.org/pkgs/%{name}-%{version}.tar.gz
-Patch0:         photoqt-1.7-link.patch
-Patch1:         0001-Switch-to-FindLibExiv2-from-ECM-5.53.0.patch
-Patch2:         0002-Fix-build-with-exiv2-0.27.patch
+URL:            https://photoqt.org/
+Source0:        https://photoqt.org/pkgs/%{name}-%{version}.tar.gz
+# Patch0:         photoqt-1.7-link.patch
+# Patch1:         0001-Switch-to-FindLibExiv2-from-ECM-5.53.0.patch
+# Patch2:         0002-Fix-build-with-exiv2-0.27.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freeimage-devel
@@ -36,6 +36,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(IL)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.4.0
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -45,6 +47,7 @@ BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:  pkgconfig(pugixml)
 
 %description
 PhotoQt is a configurable image viewer.
@@ -53,7 +56,7 @@ PhotoQt is a configurable image viewer.
 %autosetup -p1
 
 %build
-%cmake -DCRYPTKEY:STRING=4242
+%cmake -DCRYPTKEY:STRING=4242 -DCHROMECAST=OFF
 make %{?_smp_mflags}
 
 %install
@@ -71,8 +74,8 @@ make %{?_smp_mflags}
 %license COPYING
 %doc CHANGELOG
 %{_bindir}/%{name}
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/appdata/org.photoqt.PhotoQt.appdata.xml
+%{_datadir}/applications/org.photoqt.PhotoQt*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 
 %changelog

@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Mon Jan 24 21:53:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * add: chromecast support (using pychromecast)
+  * add: new startup checks
+  * add: new dialog informing user of new install/update
+  * add: convert settings, shortcuts, and contextmenu from file based to database based
+  * add: command line option to check and attempt to fix configuration
+  * add: command line option to reset settings/shortcuts to defaults
+  * add: dialog to show debug/log messages
+  * add: second desktop file for standalone mode
+  * improve: better handling of threading for loading images
+  * improve: scrolling by mouse no longer flicks view resulting in better handling
+  * improve: handling of imageformats
+  * improve: use image providers for setting background image
+  * improve: reorder mainmenu entries
+  * improve: copying of image to clipboard
+  * improve: default startup message, don't show file dialog automatically
+  * improve: context menu now standalone window and thus not confined to PhotoQt window
+  * improve: graceful fail when ffmpegthumbnailer not available for video files
+  * improve: filename inside archives shown on labels in mainview
+  * improve: enable build with Exiv 0.25
+  * improve: 'Escape' by default calls __open
+  * fix/improve: export/import of old and new backup files
+  * fix: settingsmanager, handling of modal windows
+  * fix: picking color did not handle the absence of transparency well
+  * fix: external shortcuts close PhotoQt when 'close' option set
+  * fix: zoom-to-position failed in multi-monitor setup when last-left monitor is not used
+  * fix: executing external app by shortcut failed handling placeholders
+  * fix: slideshow with many images in many subfolders
+  * fix: escape html tags in filenames shown on tooltips/labels
+  * add: zoom/pinch to position
+  * add: click on left/right half of empty area around image can load prev/next image
+  * add: option to exclude directories from caching/preloading
+  * add: custom filetype icons
+  * improve: switch default shortcuts for __copy and __clipboard
+  * improve: script to generate data (filetype icons, windows installer script, etc.)
+  * fix: loading of metadata
+  * fix: replacing placeholders in external shortcuts
+  * fix: handling of --thumbs/--no-thumbs at startup
+  * fix: reacting to changes to current folder/image
+  * fix: change wheel up/down to proper directions
+  * windows: make videos playback work on Windows
+  * windows: add to software section in settings
+  * windows: fix loading userplaces
+  * windows: new installer
+  * add: context menu (subset of mainmenu options), assign right button to it (if not already in use)
+  * add: new shortcuts manager
+  * add: command line option to enable/disable system tray
+  * add: new internal shortcuts: __viewerMode, __showThumbnails, __showMainMenu,
+       __showMetaData, __quickNavigation, __showFaceTags, __keepMetaData, __contextMenu
+  * add: restore default configuration, accessible via 'advanced' button in settings manager
+  * add: support of JPEG XL format (if qt plugin installed)
+  * improve: calling PhotoQt without command line arguments when hidden assumes '--show'
+  * improve: use arrows to indicate direction in mouse gestures
+  * improve: closing 'x' hidden unless fullscreen or window decoration disabled
+  * improve: new format for saving shortcuts
+  * improve: handling of command line options
+  * improve: keeping track of mouse position
+  * fix: load translations for command line help message
+  * fix: artifacts in rendered text for scale<1
+  * fix: loading rar archives with unrar with non-Latin characters in filenames
+  * fix: wrong datatype used for PixmapCache property (was bool but should be int)
+  * fix: mirror property of scaled down versions follows main image
+  * add: viewer mode for documents/archives, activated through button near top left corner of screen
+  * add: quick navigation buttons (added with touchscreens in mind)
+  * add: show filename in window title
+  * add: show rotation angle in quick info labels
+  * add: new button to enter/exit fullscreen mode near top right corner of screen
+  * add: show 'unsupported' feedback when trying to tag faces in unsupported file type
+  * add: show 'nothing found' message when filter returns nothing
+  * add: new PQButton element
+  * add/improve: various touch ups and improvements in file dialog, new 'go up a level' button
+  * add/improve: Windows build shows 'unsupported' message instead of doing nothing
+  * improve: reworked file/folder model, faster and more consistent than before
+  * improve: window decoration always visible by default
+  * improve: checkbox uses tickmark instead of 'x' for showing checked state
+  * improve: limit number of subfolder in slideshows (if enabled) to 100 to avoid getting stuck
+  * improve: Windows build no longer depends on QtWinExtras
+  * fix: handling of command line options
+  * fix: some caching locations pointed to wrong directory
+  * fix: handling of single quotation marks in filenames
+  * fix: Windows build properly handles drive letters
+  * fix: Windows build properly cleans path
+  * various smaller bug fixes and improvements all over the place
+  * fix: revert default from ImageMagick back to GraphicsMagick (as it was before 2.1)
+  * fix: sort images in folder when path passed on to PhotoQt via command line
+  * fix: under certain circumstances the directory itself would be added as final 'image'
+  * fix: first entry in history of file dialog was always set to home directory
+  * fix: crypt key (used e.g. for handling Imgur authentication) now based off hostname
+  * fix: back button for history in file dialog barely clickable
+  * improve: image format handling (sqlite based)
+  * improve: loading of image files
+  * improve: startup speed when PhotoQt has not been either updated or freshly installed
+  * improve: handling of popout states
+  * improve: shortcut handling when popout window activated
+  * improve: make it easier to hit 'close' button top right of main interface without triggering menu
+  * improve: files in a folder are filtered more efficiently
+  * improve: detection of previously chosen languages
+  * improve: reorganizing of handling methods
+  * add: welcome screen
+  * add: ImageMagick support (choice between GraphicsMagick and ImageMagick possible)
+  * add: small buttons to quickly toggle popout status of elements
+  * add: proper window titles for popout windows
+  * add: slideshow can include images in subfolders
+  * add: element to convert images into different format
+  * fix: memory leak when loading images with Qt
+  * fix: caching images
+  * fix: sometimes thumbnail would be loaded instead of full image
+  * fix: image are loaded asynchronously, without blocking main interface
+  * Complete re-write, minimum Qt version now 5.9
+  * add: more image transitions
+  * add: pop out elements
+  * add: hide cursor when not moved
+  * add: video support
+  * add: support for AVIF file format
+  * add: sort images by timestamp stored in exif meta data
+  * add: better threading of thumbnail creation
+  * improve: rewritten image engine
+  * improve: raw thumbnails are loaded from metadata (where available)
+  * improve: new element to open files
+  * improve: new settings manager with cleaner interface
+  * improve: new 'loading' indicator
+  * improve: fewer/no workarounds necessary due to re-write
+- drop 0001-Switch-to-FindLibExiv2-from-ECM-5.53.0.patch
+   0002-Fix-build-with-exiv2-0.27.patch
+   photoqt-1.7-link.patch: obsolete
+
+-------------------------------------------------------------------
 Mon Apr  8 20:16:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to fix build with Exiv2 0.27:
