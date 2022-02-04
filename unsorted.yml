@@ -2083,6 +2083,7 @@ unsorted:
   - cm 
   - cm-devel 
   - cmake 
+  - cmake-doc-qhelp 
   - cmake-fedora 
   - cmake-fedora-modules 
   - cmake-full 
@@ -10343,6 +10344,7 @@ unsorted:
   - libdbus-c++-api-docs 
   - libdbus-c++-devel 
   - libdbus-c++-glib-1-1 
+  - libdbus-c++-glib-1-1-32bit: [x86_64] 
   - libdbus-c++-glib-devel 
   - libdbus-glib-1-2-32bit: [x86_64] 
   - libdbusextended-qt5-1 
@@ -16070,6 +16072,7 @@ unsorted:
   - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
+  - micro-editor 
   - microcom 
   - microdnf: [i586] 
   - microos-devel-tools 
@@ -19838,6 +19841,7 @@ unsorted:
   - perl-Spreadsheet-ParseExcel 
   - perl-Spreadsheet-ParseXLSX 
   - perl-Spreadsheet-Read 
+  - perl-Spreadsheet-Read-scripts 
   - perl-Spreadsheet-ReadSXC 
   - perl-Spreadsheet-XLSX 
   - perl-Starman 
@@ -20058,6 +20062,7 @@ unsorted:
   - perl-Time-modules 
   - perl-Tk 
   - perl-Tk-Clock 
+  - perl-Tk-TableMatrix 
   - perl-Tk-devel 
   - perl-Tree-DAG_Node 
   - perl-TryCatch 
@@ -21862,6 +21867,7 @@ unsorted:
   - python310-abimap-doc 
   - python310-abseil 
   - python310-acefile 
+  - python310-acitoolkit 
   - python310-acme 
   - python310-acoular 
   - python310-actdiag 
@@ -22565,6 +22571,7 @@ unsorted:
   - python310-dfwinreg 
   - python310-dialite 
   - python310-dictdiffer 
+  - python310-dictknife 
   - python310-dictpath 
   - python310-dicttoxml 
   - python310-diff-match-patch 
@@ -22587,8 +22594,10 @@ unsorted:
   - python310-django-appconf 
   - python310-django-assets 
   - python310-django-attachments 
+  - python310-django-avatar 
   - python310-django-axes 
   - python310-django-bootstrap3 
+  - python310-django-braces 
   - python310-django-cacheops 
   - python310-django-ckeditor 
   - python310-django-classy-tags 
@@ -22627,6 +22636,7 @@ unsorted:
   - python310-django-minio-storage 
   - python310-django-model-utils 
   - python310-django-nine 
+  - python310-django-oauth-toolkit 
   - python310-django-pandas 
   - python310-django-parler 
   - python310-django-perf-rec 
@@ -22806,6 +22816,7 @@ unsorted:
   - python310-flit-core 
   - python310-flower 
   - python310-fluent 
+  - python310-flufl.lock 
   - python310-flufl.testing 
   - python310-fluidity-sm 
   - python310-flup 
@@ -22973,6 +22984,7 @@ unsorted:
   - python310-hupper 
   - python310-husl 
   - python310-hvac 
+  - python310-hvplot 
   - python310-hyper 
   - python310-hyperframe 
   - python310-hyperlink 
@@ -23545,6 +23557,7 @@ unsorted:
   - python310-pdd 
   - python310-pdfminer.six 
   - python310-pdfrw 
+  - python310-pdm 
   - python310-pdm-pep517 
   - python310-pecan 
   - python310-peewee 
@@ -24045,6 +24058,7 @@ unsorted:
   - python310-pythondialog 
   - python310-pythonfinder 
   - python310-pythonwhois 
+  - python310-pythran 
   - python310-pythreejs 
   - python310-pytidylib 
   - python310-pytils 
@@ -24227,7 +24241,7 @@ unsorted:
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
-  - python310-scipy_1_6_0-gnu-hpc: [x86_64] 
+  - python310-scipy_1_7_3-gnu-hpc: [x86_64] 
   - python310-scour 
   - python310-scp 
   - python310-screeninfo 
@@ -24734,7 +24748,6 @@ unsorted:
   - python36-Flask-Security-Too 
   - python36-PyRSS2Gen 
   - python36-ZEO 
-  - python36-acitoolkit 
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
@@ -24745,13 +24758,10 @@ unsorted:
   - python36-demjson 
   - python36-devel 
   - python36-django-auth-ldap 
-  - python36-django-avatar 
   - python36-django-bootstrap4 
-  - python36-django-braces 
   - python36-django-invitations 
   - python36-django-money 
   - python36-django-multiselectfield 
-  - python36-django-oauth-toolkit 
   - python36-django-oidc-provider 
   - python36-django-oscar 
   - python36-django-pipeline 
@@ -24766,7 +24776,6 @@ unsorted:
   - python36-doc-devhelp 
   - python36-feedparser 
   - python36-flask-restx 
-  - python36-flufl.lock 
   - python36-github3.py 
   - python36-gmpy2 
   - python36-google-pasta 
@@ -25085,7 +25094,6 @@ unsorted:
   - python38-ansicolors 
   - python38-ansiwrap 
   - python38-antlr4-python3-runtime 
-  - python38-anyio 
   - python38-anyjson 
   - python38-anymarkup-core 
   - python38-apache-libcloud 
@@ -25123,6 +25131,7 @@ unsorted:
   - python38-astropy 
   - python38-astunparse 
   - python38-asv 
+  - python38-async_generator 
   - python38-asyncpg 
   - python38-asyncssh 
   - python38-atlassian-python-api 
@@ -25486,7 +25495,6 @@ unsorted:
   - python38-branca 
   - python38-breathe 
   - python38-brewer2mpl 
-  - python38-brotlicffi 
   - python38-bsddb3 
   - python38-bsddb3-devel 
   - python38-bson 
@@ -25857,6 +25865,7 @@ unsorted:
   - python38-easypysmb 
   - python38-easywatch 
   - python38-ebcdic 
+  - python38-ecdsa 
   - python38-ed25519 
   - python38-edgegrid-python 
   - python38-editdistance 
@@ -26066,7 +26075,6 @@ unsorted:
   - python38-gwosc 
   - python38-gwyfile 
   - python38-gyp 
-  - python38-h11 
   - python38-h5netcdf 
   - python38-h5py 
   - python38-h5py-openmpi1 
@@ -26095,7 +26103,6 @@ unsorted:
   - python38-holidays 
   - python38-holoviews 
   - python38-hotdoc 
-  - python38-hstspreload 
   - python38-html2text 
   - python38-html5-parser 
   - python38-htmlmin 
@@ -26103,12 +26110,10 @@ unsorted:
   - python38-http-ece 
   - python38-http-parser 
   - python38-httpbin 
-  - python38-httpcore 
   - python38-httplib2 
   - python38-httpretty 
   - python38-httpsig_cffi 
   - python38-httptools 
-  - python38-httpx 
   - python38-hug 
   - python38-humanfriendly 
   - python38-humanhash3 
@@ -26607,6 +26612,7 @@ unsorted:
   - python38-osmviz 
   - python38-ospd 
   - python38-ospd-openvas 
+  - python38-outcome 
   - python38-ovirt-engine-sdk 
   - python38-pa-ringbuffer 
   - python38-padaos 
@@ -26658,6 +26664,7 @@ unsorted:
   - python38-pdd 
   - python38-pdfminer.six 
   - python38-pdfrw 
+  - python38-pdm 
   - python38-pdm-pep517 
   - python38-pecan 
   - python38-peewee 
@@ -26814,6 +26821,7 @@ unsorted:
   - python38-pycocotools 
   - python38-pycodestyle 
   - python38-pycountry 
+  - python38-pycryptodome 
   - python38-pycryptodomex 
   - python38-pycsw 
   - python38-pyct 
@@ -27134,6 +27142,7 @@ unsorted:
   - python38-pythondialog 
   - python38-pythonfinder 
   - python38-pythonwhois 
+  - python38-pythran 
   - python38-pythreejs 
   - python38-pytidylib 
   - python38-pytils 
@@ -27254,7 +27263,6 @@ unsorted:
   - python38-retry_decorator 
   - python38-retrying 
   - python38-retryrequests 
-  - python38-rfc3986 
   - python38-rfc3987 
   - python38-rfc6555 
   - python38-rich 
@@ -27305,7 +27313,7 @@ unsorted:
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy-gnu-hpc: [x86_64] 
-  - python38-scipy_1_6_0-gnu-hpc: [x86_64] 
+  - python38-scipy_1_7_3-gnu-hpc: [x86_64] 
   - python38-scp 
   - python38-screeninfo 
   - python38-screenplain 
@@ -27382,6 +27390,7 @@ unsorted:
   - python38-softlayer 
   - python38-sorl-thumbnail 
   - python38-sortedcollections 
+  - python38-sortedcontainers 
   - python38-sortinghat 
   - python38-sounddevice 
   - python38-sox 
@@ -27567,6 +27576,7 @@ unsorted:
   - python38-treq 
   - python38-tri.declarative 
   - python38-tri.struct 
+  - python38-trio 
   - python38-trustme 
   - python38-tsk 
   - python38-tvm: [x86_64] 
@@ -27718,7 +27728,6 @@ unsorted:
   - python38-xhtml2pdf 
   - python38-xkbgroup 
   - python38-xkcdpass 
-  - python38-xlwt 
   - python38-xmldiff 
   - python38-xmlschema 
   - python38-xmlsec 
@@ -29764,6 +29773,7 @@ unsorted:
   - python39-pdd 
   - python39-pdfminer.six 
   - python39-pdfrw 
+  - python39-pdm 
   - python39-pdm-pep517 
   - python39-pecan 
   - python39-peewee 
@@ -30276,6 +30286,7 @@ unsorted:
   - python39-pythondialog 
   - python39-pythonfinder 
   - python39-pythonwhois 
+  - python39-pythran 
   - python39-pythreejs 
   - python39-pytidylib 
   - python39-pytils 
@@ -30465,7 +30476,7 @@ unsorted:
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
-  - python39-scipy_1_6_0-gnu-hpc: [x86_64] 
+  - python39-scipy_1_7_3-gnu-hpc: [x86_64] 
   - python39-scour 
   - python39-scp 
   - python39-screeninfo 
