@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-applet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source0:        https://download.gnome.org/sources/network-manager-applet/1.24/%
 Patch0:         nm-applet-private-connection.patch
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch
+# PATCH-FIX-UPSTREAM 107.patch -- Fix build with meson 0.61.0 and newer
+Patch2:         https://gitlab.gnome.org/GNOME/network-manager-applet/-/merge_requests/107.patch
 
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
@@ -88,6 +90,7 @@ connection settings.
 # Needs rebase.
 # %%patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %meson \
