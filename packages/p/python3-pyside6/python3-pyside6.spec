@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -40,6 +40,9 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM -- big endian fixes
+Patch2:         0001-Prospective-fix-for-broken-QByteArray-__msetitem__-o.patch
+Patch3:         0002-Refactor-code-snippets-for-QByteArray-__msetitem__-_.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes

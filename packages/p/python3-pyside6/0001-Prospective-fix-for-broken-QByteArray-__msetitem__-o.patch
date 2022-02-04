@@ -1,0 +1,37 @@
+From 157e35b4a71f054ec1709f1651c7a6c53fc21815 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Wed, 2 Feb 2022 18:07:07 +0100
+Subject: [PATCH 1/2] Prospective fix for broken QByteArray::__msetitem__() on
+ big endian architectures
+
+Remove a dubious cast from long to const char * which depends
+on byte order.
+
+Pick-to: 6.2 5.15
+Fixes: PYSIDE-1804
+Change-Id: Iee2d809d4e9362b89439b9c56a5fb18e1f91d6fd
+---
+ sources/pyside6/PySide6/glue/qtcore.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/sources/pyside6/PySide6/glue/qtcore.cpp b/sources/pyside6/PySide6/glue/qtcore.cpp
+index 5452e9f7f..05b4e7d2d 100644
+--- a/sources/pyside6/PySide6/glue/qtcore.cpp
++++ b/sources/pyside6/PySide6/glue/qtcore.cpp
+@@ -643,9 +643,10 @@ if (PyIndex_Check(_key)) {
+             QByteArray temp;
+             if (PyLong_Check(item)) {
+                 int overflow;
+-                long ival = PyLong_AsLongAndOverflow(item, &overflow);
+-                // Not suppose to bigger than 255 because only bytes, bytearray, QByteArray were accept
+-                temp = QByteArray(reinterpret_cast<const char *>(&ival));
++                const long ival = PyLong_AsLongAndOverflow(item, &overflow);
++                // Not supposed to be bigger than 255 because only bytes,
++                // bytearray, QByteArray were accepted
++                temp.append(char(ival));
+             } else {
+                 temp = %CONVERTTOCPP[QByteArray](item);
+             }
+-- 
+2.35.1
+
