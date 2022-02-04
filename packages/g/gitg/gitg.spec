@@ -1,7 +1,7 @@
 #
 # spec file for package gitg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,12 @@ Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gitg-typelib-dependencies.patch dimstar@opensuse.org -- Change the way we add library dependencies to .typelibs. openSUSE requires a full library name, incl. version
 Patch0:         gitg-typelib-dependencies.patch
+# PATCH-FIX-UPSTREAM 1978973b12848741b08695ec2020bac98584d636.patch -- Fix build with meson 0.61.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/gitg/-/commit/1978973b12848741b08695ec2020bac98584d636.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.2
@@ -103,7 +104,7 @@ Summary:        Git repository viewer -- Catalog for Glade
 Group:          Development/Tools/GUI Builders
 Requires:       glade
 Requires:       libgitg-1_0-0 = %{version}
-Supplements:    packageand(glade:%{name}-devel)
+Supplements:    (glade and %{name}-devel)
 
 %description -n glade-catalog-gitg
 gitg is a GitX clone for GNOME/gtk+. It aims at being a small, fast and
@@ -152,7 +153,6 @@ graphical presentation.
 
 %install
 %meson_install
-%suse_update_desktop_file -G "Git repository viewer" org.gnome.gitg RevisionControl
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
