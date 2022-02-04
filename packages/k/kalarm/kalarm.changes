@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:02:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * For command alarms, always use path to find executables
+  * Fix deleted calendar resources reappearing when KAlarm restarts
+  * Fix crash after Defer is selected in alarm notification message (kde#448212)
+  * Make auto-close work for message windows
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
