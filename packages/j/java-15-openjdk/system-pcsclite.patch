@@ -1,16 +1,16 @@
 --- jdk15/make/autoconf/lib-bundled.m4	2020-05-07 13:35:09.825368428 +0200
 +++ jdk15/make/autoconf/lib-bundled.m4	2020-05-07 13:37:41.358280752 +0200
-@@ -40,6 +40,7 @@
-   LIB_SETUP_LIBPNG
+@@ -41,6 +41,7 @@
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
+   LIB_SETUP_HARFBUZZ
 +  LIB_SETUP_PCSCLITE
  ])
  
  ################################################################################
-@@ -263,3 +264,41 @@
-   AC_SUBST(LCMS_CFLAGS)
-   AC_SUBST(LCMS_LIBS)
+@@ -304,3 +305,41 @@
+   AC_SUBST(HARFBUZZ_CFLAGS)
+   AC_SUBST(HARFBUZZ_LIBS)
  ])
 +
 +################################################################################
@@ -52,7 +52,7 @@
 +])
 --- jdk15/make/autoconf/spec.gmk.in	2020-05-07 13:35:09.825368428 +0200
 +++ jdk15/make/autoconf/spec.gmk.in	2020-05-07 13:37:41.358280752 +0200
-@@ -769,6 +769,7 @@
+@@ -761,6 +761,7 @@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@

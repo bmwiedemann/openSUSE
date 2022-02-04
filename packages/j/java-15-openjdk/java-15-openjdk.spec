@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      15
 %global interimver      0
-%global updatever       5
+%global updatever       6
 %global patchver        0
-%global datever         2021-10-19
-%global buildver        3
+%global datever         2022-01-18
+%global buildver        5
 %global openjdk_repo    jdk15u
-%global openjdk_tag     jdk-15.0.5+3
-%global openjdk_dir     jdk15u-jdk-15.0.5-3
+%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}+%{buildver}
+%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}-%{buildver}
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
