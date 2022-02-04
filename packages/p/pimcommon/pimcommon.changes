@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:04:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:26:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
