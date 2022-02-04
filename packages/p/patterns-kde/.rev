@@ -251,4 +251,13 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>892097</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5d2a7f315afd6e9aa856407751a22ca2</srcmd5>
+    <version>20220203</version>
+    <time>1644007593</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a Qt 6 development pattern
+- Add missing frameworks (forwarded request 950929 from cgiboudeaux)</comment>
+    <requestid>950935</requestid>
+  </revision>
 </revisionlist>
