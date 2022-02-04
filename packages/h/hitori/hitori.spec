@@ -1,7 +1,7 @@
 #
 # spec file for package hitori
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,15 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://gitlab.gnome.org/GNOME/hitori
 Source0:        https://download.gnome.org/sources/hitori/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM d25728e122f1d7b985029a5ba96810c3e57c27f7.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/hitori/-/commit/d25728e122f1d7b985029a5ba96810c3e57c27f7.patch
 
+BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.4
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -58,8 +60,10 @@ and vertically.
 %install
 %meson_install
 %find_lang %{name}
-%suse_update_desktop_file org.gnome.Hitori
 %fdupes %{buildroot}%{_prefix}
+
+%check
+%meson_test
 
 %files
 %license COPYING
