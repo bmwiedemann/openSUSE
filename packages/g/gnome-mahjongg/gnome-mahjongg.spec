@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-mahjongg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/GnomeMahongg
 Source0:        https://download.gnome.org/sources/gnome-mahjongg/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 26.patch -- Fix build with meson 0.60 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/26.patch
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -63,12 +65,12 @@ corresponding tiles and taking them out of play.
 %files
 %license COPYING
 %doc NEWS
-%doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/metainfo/org.gnome.Mahjongg.appdata.xml
 %{_datadir}/applications/org.gnome.Mahjongg.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Mahjongg.gschema.xml
+%{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Mahjongg*
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
