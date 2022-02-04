@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 13:21:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix features detection:
+  * 0001-CMake-Fix-qtwayland-feature-detection.patch
+
+-------------------------------------------------------------------
 Mon Jan 31 08:55:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.3:
