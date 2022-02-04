@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:03:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Disambiguate station name used in the Navitia name-based query tests
+  * Fix Navitia location queries for rental bike stations and any type
+
+-------------------------------------------------------------------
 Tue Jan  4 10:26:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
