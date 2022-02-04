@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:03:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Round up when converting vector bounding box to integers
+  * Include the pen width in computing vector bounding boxes
+  * Only consider rectangular strokes for the PDF vector barcode detection
+  * Fix build against KF5.91+
+  * Add extractor script for Skymark booking emails
+  * Normalize flight numbers during post-processing
+  * Make the same city detection consider more information
+
+-------------------------------------------------------------------
 Tue Jan  4 10:25:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.1
