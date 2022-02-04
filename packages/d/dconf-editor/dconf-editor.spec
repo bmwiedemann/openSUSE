@@ -1,7 +1,7 @@
 #
 # spec file for package dconf-editor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,13 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DconfEditor
 Source0:        https://download.gnome.org/sources/dconf-editor/3.38/%{name}-%{version}.tar.xz
-BuildRequires:  appstream-glib-devel
+# PATCH-FIX-UPSTREAM 21.patch -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/dconf-editor/-/merge_requests/21.patch
+
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.40.0
 BuildRequires:  pkgconfig(dconf) >= 0.25.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.55.1
@@ -53,9 +56,14 @@ This package provides a graphical editor for the dconf database.
 
 %install
 %meson_install
-
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/ca.desrt.dconf-editor.desktop SystemSetup X-GNOME-PersonalSettings
 %find_lang %{name}
+
+%check
+%meson_test
+appstream-util validate-relax --nonet \
+	%{buildroot}%{_datadir}/metainfo/ca.desrt.dconf-editor.appdata.xml
+desktop-file-validate \
+	%{buildroot}%{_datadir}/applications/ca.desrt.dconf-editor.desktop
 
 %files
 %license COPYING
