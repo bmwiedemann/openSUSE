@@ -1,7 +1,7 @@
 #
 # spec file for package qt-creator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/imageviewer/imageview.cpp, src/plugins/vcsbase/wizard/vcsconfigurationpage.cpp -> BSD-3-Clause
 # src/plugins/emacskeys/* -> GPL-3.0-only
 # many files are dual licensed 'LGPL-3.0-only or (GPL-2.0-or-later OR GPL-3.0-or-later + KDE Free Qt Foundation option)', we'll use LGPL-3.0-only for these files
-License:        GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-only OR LGPL-3.0-only) AND GPL-3.0-only AND LGPL-3.0-only AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-3.0-only AND GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-only OR LGPL-3.0-only) AND LGPL-3.0-only
 URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
@@ -124,6 +124,8 @@ Requires:       libqt5-qtquicktimeline
 %requires_eq    libQt5DesignerComponents5
 # Explicitly require libQt5Script5 (needed by plugins). Qt Creator crashes with old versions on project load.
 %requires_eq    libQt5Script5
+# Explicitly require libQt5Sql5-sqlite (needed by help system).
+Requires:       libQt5Sql5-sqlite
 Recommends:     libqt5-qtbase-common-devel
 Recommends:     libqt5-qtbase-devel
 Recommends:     libqt5-qtdeclarative-devel
@@ -164,6 +166,8 @@ BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Tools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt_min_version}
+# Explicitly require qt6-sql-sqlite (needed by help system).
+Requires:       qt6-sql-sqlite
 Recommends:     qt6-base-devel
 Recommends:     qt6-base-docs-qch
 Recommends:     qt6-declarative-devel
