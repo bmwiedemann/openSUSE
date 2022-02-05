@@ -1,7 +1,7 @@
 #
 # spec file for package SimGear
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2020_3_11
+%define libname libSimGearCore-2020_3_12
 %define main_version 2020.3
 Name:           SimGear
-Version:        %{main_version}.11
+Version:        %{main_version}.12
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
