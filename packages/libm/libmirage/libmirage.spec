@@ -1,7 +1,7 @@
 #
 # spec file for package libmirage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           libmirage
 Summary:        A CD-ROM image access library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 URL:            https://cdemu.sourceforge.io/about/libmirage/
 #Git-Clone:     https://github.com/cdemu/cdemu.git
@@ -64,8 +64,8 @@ Provides translations for the "%name" package.
 
 %package -n %lname
 Summary:        A CD-ROM image access library
-# Technically Suggests:, but pretty useless without
 Group:          System/Libraries
+# Technically Suggests:, but pretty useless without
 Requires:       libmirage-%pname >= %version
 
 %description -n %lname

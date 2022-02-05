@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  5 12:46:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.6
+  * Improve error messages during plugin loading
+  * Remove two-character patterns from apple disk image MIME
+
+-------------------------------------------------------------------
 Tue Apr 20 03:24:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.2.5
