@@ -1,9 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 29 16:58:24 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 8.3.2:
+  * Add temporary version of logo
+  * Bump version to v8.3.2
+  * Add clippy run in CI/CD
+  * Add tavianator sponsoring link
+  * Bump MSRV to 1.54
+  * Upgrade to clap 3.0
+  * Add CHANGELOG entry
+  * Change test_opposing to be less flaky.
+  * Update normpath to 0.3.2 to fix issue #931
+
+-------------------------------------------------------------------
 Fri Jan  7 16:09:29 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
 
 - remove service files
 
 -------------------------------------------------------------------
+>>>>>>> ./fd.changes.new
 Thu Jan 06 14:33:13 UTC 2022 - sebix+novell.com@sebix.at
 
 - Update to version 8.3.1:

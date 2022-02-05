@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        8.3.1
+Version:        8.3.2
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
