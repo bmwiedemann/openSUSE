@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,6 +117,7 @@ Patch131:       posttrans.diff
 Patch132:       verbosearg.diff
 Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
+Patch135:       ocaml-cmxs.diff
 Patch200:       finddebuginfo.diff
 Patch201:       finddebuginfo-absolute-links.diff
 Patch202:       debugsubpkg.diff
@@ -183,7 +184,7 @@ Requires:       gcc
 #Requires:       gcc-PIE
 Requires:       gettext-tools
 Requires:       glibc-devel
-Requires:       glibc-locale
+Requires:       glibc-locale-base
 Requires:       grep
 Requires:       gzip
 Requires:       make
@@ -237,7 +238,7 @@ rm -rf sqlite
 %patch                         -P 24 -P 25 -P 26             -P 29
 %patch -P 30       -P 32 -P 33 -P 34       -P 36       -P 38
 %patch                   -P 43       -P 45 -P 46 -P 47
-%patch       -P 51                             
+%patch       -P 51
 %patch -P 60 -P 61                         -P 66 -P 67       -P 69
 %patch -P 70 -P 71       -P 73       -P 75       -P 77 -P 78
 %patch                               -P 85
@@ -245,6 +246,7 @@ rm -rf sqlite
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123               -P 131 -P 132 -P 133 -P 134
+%patch -P 135
 
 # debugedit patches
 pushd debugedit-5.0
@@ -376,7 +378,7 @@ install -m 755 build-aux/config.sub %{buildroot}/usr/lib/rpm
 rm -rf %{buildroot}/%{_libdir}/python%{py_ver}
 rm -f %{buildroot}%{_libdir}/*.la
 rm -f %{buildroot}%{_libdir}/rpm-plugins/*.la
-sh %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
+bash %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
 # On arm the kernel architecture is ignored. Not the best idea, but lets stay compatible with other distros
 %ifarch armv7hl armv6hl
 # rpm is using the host_cpu as default for the platform, but armv6/7hl is not known by the kernel.

@@ -2296,4 +2296,18 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>Switch to threaded zstd compression with a pool of 8 threads</comment>
     <requestid>928134</requestid>
   </revision>
+  <revision rev="293" vrev="3">
+    <srcmd5>463a56d0693cbfa916d1ac43c4068ece</srcmd5>
+    <version>4.17.0</version>
+    <time>1644099772</time>
+    <user>dimstar_suse</user>
+    <comment>- invoke find-lang.sh with bash, it is a bash script (bsc#1195391) 
+
+- switch to glibc-locale-base to reduce system installation size
+  by ~220MB (bsc#1195390)
+
+- Update OCaml requires/provides generators to ignore cmxs
+  new patch: ocaml-cmxs.diff</comment>
+    <requestid>950425</requestid>
+  </revision>
 </revisionlist>
