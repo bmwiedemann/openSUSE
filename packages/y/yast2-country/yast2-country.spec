@@ -17,7 +17,7 @@
 
 
 Name:           yast2-country
-Version:        4.4.8
+Version:        4.4.11
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
@@ -30,12 +30,13 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-perl-bindings
 # For tests
+BuildRequires:  glibc-locale
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 # Fix to bnc#891053 (proper reading of ".target.yast2" on chroots)
 BuildRequires:  yast2-core >= 3.1.12
-# RSpec extensions for YaST
-BuildRequires:  yast2-ruby-bindings >= 3.1.26
+# yast/rspec/helpers.rb
+BuildRequires:  yast2-ruby-bindings >= 4.4.7
 # Yast2::CommandLine readonly parameter
 BuildRequires:  yast2 >= 4.2.57
 # systemd-mini does not add the xkb generated map which is needed by 

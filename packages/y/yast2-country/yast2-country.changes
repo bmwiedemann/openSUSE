@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 31 14:49:03 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed passing multiple arguments to "localectl set-locale"
+  (bsc#1177863)
+- 4.4.11
+
+-------------------------------------------------------------------
+Mon Jan 31 13:48:31 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify YaST module mocking in unit tests (related to bsc#1194784)
+- 4.4.10
+
+-------------------------------------------------------------------
+Fri Jan 28 07:23:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add glibc-locale dependency for testsuite (bsc#1195390)
+- 4.4.9
+
+-------------------------------------------------------------------
 Wed Jan 19 09:27:28 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Switch console keyboard layouts to match the X11 ones
