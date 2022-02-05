@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-fulltoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,10 +49,10 @@ sed -i 's/version = subprocess.*/version = "%{version}"/' docs/source/conf.py
 
 %build
 %python_build
-pushd docs
-LANG=C.UTF-8 READTHEDOCS=True PYTHONPATH=.. make html
-rm build/html/.buildinfo
-popd
+#pushd docs
+#LANG=C.UTF-8 READTHEDOCS=True PYTHONPATH=.. make html
+#rm build/html/.buildinfo
+#popd
 
 %install
 %python_install
@@ -61,6 +61,7 @@ popd
 %files %{python_files}
 %{python_sitelib}/*
 %license LICENSE
-%doc ChangeLog README.rst docs/build/html
+%doc ChangeLog README.rst
+#docs/build/html
 
 %changelog
