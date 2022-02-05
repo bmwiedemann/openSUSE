@@ -4,7 +4,7 @@ Subject: build system
 
 --- a/Makefile
 +++ b/Makefile
-@@ -10,19 +12,20 @@
+@@ -10,19 +12,19 @@
  # so take care if INSTALL_TOP is not an absolute path. See the local target.
  # You may want to make INSTALL_LMOD and INSTALL_CMOD consistent with
  # LUA_ROOT, LUA_LDIR, and LUA_CDIR in luaconf.h.
@@ -27,7 +27,6 @@ Subject: build system
 -INSTALL_EXEC= $(INSTALL) -m 0755
 +INSTALL_EXEC= $(LIBTOOL) --mode=install install -m 0755
  INSTALL_DATA= $(INSTALL) -m 0644
-+INSTALL_LIBTOOL= $(LIBTOOL) --mode=install install -m 0644
  #
  # If you don't have "install" you can use "cp" instead.
  # INSTALL= cp -p
@@ -54,7 +53,7 @@ Subject: build system
 
  install: dummy
  	cd src && $(MKDIR) $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD)
-+	cd src && $(INSTALL_LIBTOOL) $(TO_LIB) $(INSTALL_LIB)
++	cd src && $(INSTALL_EXEC) $(TO_LIB) $(INSTALL_LIB)
  	cd src && $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
  	cd src && $(INSTALL_DATA) $(TO_INC) $(INSTALL_INC)
 -	cd src && $(INSTALL_DATA) $(TO_LIB) $(INSTALL_LIB)

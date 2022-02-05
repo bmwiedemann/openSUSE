@@ -26,7 +26,7 @@
 %define libname liblua5_4-5
 %define lua_docdir %{_datadir}/doc/lua%{major_version}
 Name:           lua54%{name_ext}
-Version:        5.4.3
+Version:        5.4.4
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        GPL-3.0-or-later
@@ -42,9 +42,6 @@ Patch0:         lua-build-system.patch
 Patch1:         attrib_test.patch
 Patch2:         files_test.patch
 Patch3:         main_test.patch
-# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.3
-Patch4:         upstream-bugs.patch
-Patch5:         upstream-bugs-test.patch
 Patch6:         shared_link.patch
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
@@ -145,11 +142,9 @@ of C functions, written in ANSI C.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch5 -p1
 %else
 %setup -q -n lua-%{version}
 %patch0 -p1
-%patch4 -p1
 %patch6 -p1
 %endif
 

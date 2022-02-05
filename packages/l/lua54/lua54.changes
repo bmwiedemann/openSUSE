@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 26 19:15:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Ensure shared library is installed with executable bit set
+
+-------------------------------------------------------------------
+Wed Jan 26 18:35:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to Lua 5.4.4:
+  * fixes all bugs found in Lua 5.4.3
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+- Removed upstream-bugs-test.patch: new release (no bugs found yet)
+
+-------------------------------------------------------------------
 Thu Dec 30 18:34:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Re-enable readline support in Lua, the way to do this changed

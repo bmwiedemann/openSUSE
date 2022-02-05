@@ -146,4 +146,17 @@
 </comment>
     <requestid>943308</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>de5e1e047848390f3d56ee502d258062</srcmd5>
+    <version>5.4.4</version>
+    <time>1644099778</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure shared library is installed with executable bit set
+- Update to Lua 5.4.4:
+  * fixes all bugs found in Lua 5.4.3
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+- Removed upstream-bugs-test.patch: new release (no bugs found yet)
+</comment>
+    <requestid>949765</requestid>
+  </revision>
 </revisionlist>
