@@ -17,10 +17,10 @@
 
 
 Name:           obfs4
-Version:        0.0.12
-Release:        1%{?dist}
+Version:        0.0.13
+Release:        0%{?dist}
 Summary:        Pluggable transport proxy for Tor
-License:        GPL-3.0 and BSD-2-Clause
+License:        BSD-2-Clause AND GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://gitlab.com/yawning/obfs4
 Source0:        %{name}-%{version}.tar.xz
