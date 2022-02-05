@@ -185,4 +185,30 @@
     <comment></comment>
     <requestid>892547</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a2ad9889894d771eef4c9189a931cb79</srcmd5>
+    <version>2.10</version>
+    <time>1644099784</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10:
+  * Upgrade icons (use SVG)
+  * Add &quot;Commit&quot; column to history view to show the short commit hash.
+  * build: sync qmake config to latest changes for cmake config
+  * Bump minimum Qt version to 5.14
+  * Support --help, --help-all and --version in command line
+  * Fix build on MacOS
+  * Add option to open external diff tool on double click
+  * Add branch name to window title
+  * Fix loading of invalid cache file
+  * Settings: Option to display short hash instead of full length hash
+  * Save and restore the list view column sizes
+  * Make drag &amp; drop functionality optional
+  * Make Settings dialog accessible on macOS
+  * Improve logic to detect failed external commands under Unix-like OSes
+  * Don't rely on STDERR for determining whether command failed
+  * Compilation cleanup
+  * Support for fractional device pixel ratio
+  * Update project URLs to GitHub repo</comment>
+    <requestid>951679</requestid>
+  </revision>
 </revisionlist>

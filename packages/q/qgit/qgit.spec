@@ -1,7 +1,7 @@
 #
 # spec file for package qgit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qgit
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Graphical Git Repository Viewer
 License:        GPL-2.0-or-later
@@ -26,8 +26,8 @@ URL:            https://github.com/tibirna/qgit
 Source:         https://github.com/tibirna/qgit/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 Requires:       git-core >= 1.5.5
 
 %description
@@ -70,6 +70,7 @@ picking single modified files.
 %doc README.adoc
 %{_bindir}/qgit
 %{_datadir}/applications/qgit.desktop
+%{_datadir}/icons/hicolor/scalable/apps/qgit.svg
 %{_datadir}/icons/hicolor/48x48/apps/qgit.png
 %{_datadir}/metainfo/qgit.appdata.xml
 
