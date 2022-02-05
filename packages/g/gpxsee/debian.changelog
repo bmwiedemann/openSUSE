@@ -1,3 +1,10 @@
+gpxsee (10.3) stable; urgency=low
+
+  * Improved/fixed GPI parser.
+  * Significantly improved areas loading performance.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 02 Feb 2022 21:17:18 +0100
+
 gpxsee (10.2) stable; urgency=low
 
   * Improved/fixed TwoNav data files parser.
