@@ -18,12 +18,12 @@
 
 #
 %define pname tensorflow2
-%define vers 2.7.0
+%define vers 2.7.1
 #%%define cand -rc4
-%define _vers 2_7_0
+%define _vers 2_7_1
 %define libmaj 2
 %define libmin 7
-%define libref 0
+%define libref 1
 %ifarch aarch64
 %define mklconfig mkl_aarch64
 %else
@@ -621,7 +621,7 @@ popd
 
 %else
 # --- Build regular tensorflow (standard and hpc) ---
-%limit_build -m 3000
+%limit_build -m 6000
 
 %if %{with hpc}
 %hpc_setup
