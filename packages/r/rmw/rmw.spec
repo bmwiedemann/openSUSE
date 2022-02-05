@@ -24,9 +24,9 @@ License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://remove-to-waste.info/
 Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  meson >= 0.56.0
 
 %description
 rmw (ReMove to Waste) is a safe-remove utility for the command line. It
@@ -56,7 +56,9 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %find_lang %{name}
 
 %check
+%ifnarch i586 armv7l
 %meson_test
+%endif
 
 %files
 %license COPYING

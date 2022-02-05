@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  5 10:45:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- disable tests on 32 bit
+
+-------------------------------------------------------------------
 Wed Jan  26 23:00:00 UTC 2022 - Andy Alt <andy400-dev@yahoo.com>
 
 - rmw 0.8.1:
