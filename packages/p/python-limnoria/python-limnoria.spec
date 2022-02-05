@@ -1,7 +1,7 @@
 #
 # spec file for package python-limnoria
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,48 @@
 
 
 %define skip_python2 1
+# no feedparser for python 3.10
+%define skip_python310 1
 %define appname limnoria
-%define srcver 2021-05-27
+%define srcver 2022-02-03
 Name:           python-limnoria
-Version:        2021.05.27
+Version:        2022.02.03
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ProgVal/Limnoria
 Source:         https://github.com/ProgVal/Limnoria/archive/master-%{srcver}.tar.gz#/%{appname}-%{version}.tar.gz
+# full python for sqlite3 module
+BuildRequires:  %pythons
 BuildRequires:  %{python_module PySocks}
-BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
-BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module pytz if %python-base < 3.9}
+# pyxmpp2-scram not available, the code actually covers the non-availability
+#BuildRequires:  %%{python_module pyxmpp2-scram}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  procps
 BuildRequires:  python-rpm-macros
+Requires:       procps
+Requires:       python
 Requires:       python-PySocks
-Requires:       python-SQLAlchemy
 Requires:       python-chardet
+Requires:       python-cryptography
 Requires:       python-ecdsa
 Requires:       python-feedparser
 Requires:       python-python-dateutil
 Requires:       python-python-gnupg
+#Requires:       python-pyxmpp2-scram
+%if 0%{?python_version_nodots} < 39
 Requires:       python-pytz
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       Supybot = %{version}
@@ -63,6 +75,7 @@ granularity. Numerous plugins are included.
 %setup -q -n Limnoria-master-%{srcver}
 sed -i "1,4{/\/usr\/bin\/python/d}" plugins/Debug/plugin.py
 sed -i "1,4{/\/usr\/bin\/env/d}" plugins/SedRegex/constants.py
+chmod -x supybot/plugins/*/locales/fi.po
 
 %build
 %python_build
@@ -89,7 +102,8 @@ sed -i "1,4{/\/usr\/bin\/env/d}" plugins/SedRegex/constants.py
 %check
 %{python_expand export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}%{$python_sitelib}/
-%python_exec test/test.py
+# Status plugin cannot read cpuinfo in obs environment
+%{buildroot}%{_bindir}/supybot-test-%{$python_bin_suffix} -c -v --plugins-dir=%{buildroot}%{$python_sitelib}/supybot/plugins/ --no-network
 }
 
 %post

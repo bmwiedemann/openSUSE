@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Feb  5 17:20:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022-02-03
+  * wizard: Fix mixup of sasl username and password
+  * Format: allow empty substrings in 'replace'.  This allows for
+    easy substring removal without having to use regex.
+  * setup.py + CI: Remove support for Python 3.4 and 3.5
+  * Time: Fix error handling in @tztime.
+  * LogToIrc: Synchronize README with config.py. Better document
+    the format of the 'target' config var
+  * Expose standardSubstitute's var dictionary. So it can be reused
+    by plugins if they want to use a different templating engine.
+  * Services: Update to the latest version of the
+    draft/account-registration spec.
+- Skip python310: no feedparser due to missing sgmllib3k for
+  Python 3.10
+- Enable the test suite
+
+-------------------------------------------------------------------
 Wed Jun 16 12:15:10 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update to version 2021-05-27:
