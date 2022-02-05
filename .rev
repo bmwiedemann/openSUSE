@@ -312,4 +312,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>945269</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fb07a7644d714338e8ab3afb3d367d7a</srcmd5>
+    <version>0.38.3</version>
+    <time>1644099785</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.38.3:
+  * Make decode errors more helpful in finding the source of the bad data</comment>
+    <requestid>951682</requestid>
+  </revision>
 </revisionlist>
