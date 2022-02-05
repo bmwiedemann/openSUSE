@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  5 10:25:50 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 22.02
+  * Add mpc-hc compatible web server
+  * Process wheel events over entire window
+  * Force use of XCB instead of wayland
+  * Possibly other improvements not listed here
+- Drop mpc-qt-mpv_v2_fix.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sun Jan 30 15:33:13 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add mpc-qt-mpv_v2_fix.patch (fix Factory build)
