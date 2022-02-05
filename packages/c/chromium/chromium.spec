@@ -49,7 +49,7 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        97.0.4692.99
+Version:        98.0.4758.80
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -83,7 +83,7 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-97-compiler.patch
+Patch15:        chromium-98-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch21:        chromium-gcc11.patch
@@ -100,9 +100,10 @@ Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
 Patch72:        chromium-95-quiche-include.patch
 Patch78:        chromium-96-EnumTable-crash.patch
-Patch79:        chromium-97-Point-constexpr.patch
 Patch80:        chromium-97-ScrollView-reference.patch
 Patch81:        chromium-95-libyuv-arm.patch
+Patch82:        chromium-98-MiraclePtr-gcc-ice.patch
+Patch83:        chromium-98-WaylandFrameManager-check.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch

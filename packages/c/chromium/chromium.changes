@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb  3 19:35:46 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 98.0.4758.80 (boo#1195420)
+  * CVE-2022-0452: Use after free in Safe Browsing
+  * CVE-2022-0453: Use after free in Reader Mode
+  * CVE-2022-0454: Heap buffer overflow in ANGLE
+  * CVE-2022-0455: Inappropriate implementation in Full Screen Mode
+  * CVE-2022-0456: Use after free in Web Search
+  * CVE-2022-0457: Type Confusion in V8
+  * CVE-2022-0459: Use after free in Screen Capture
+  * CVE-2022-0460: Use after free in Window Dialog
+  * CVE-2022-0461: Policy bypass in COOP
+  * CVE-2022-0462: Inappropriate implementation in Scroll
+  * CVE-2022-0463: Use after free in Accessibility
+  * CVE-2022-0464: Use after free in Accessibility
+  * CVE-2022-0465: Use after free in Extensions
+  * CVE-2022-0466: Inappropriate implementation in Extensions Platform
+  * CVE-2022-0467: Inappropriate implementation in Pointer Lock
+  * CVE-2022-0468: Use after free in Payments
+  * CVE-2022-0469: Use after free in Cast
+  * CVE-2022-0470: Out of bounds memory access in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+- drop upstreamed patches:
+  * chromium-97-Point-constexpr.patch
+- add patches:
+  * chromium-98-MiraclePtr-gcc-ice.patch
+  * chromium-98-WaylandFrameManager-check.patch
+- change chromium-97-compiler.patch to chromium-98-compiler.patch
+
+-------------------------------------------------------------------
 Fri Jan 21 06:43:25 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 97.0.4692.99 (boo#1194919):

@@ -7,13 +7,13 @@ Subject: [PATCH] GCC: fix undefined reference to ScrollView::SetContents()
  ui/views/controls/scroll_view.h | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/ui/views/controls/scroll_view.h b/ui/views/controls/scroll_view.h
-index 3bd5a8bf..f850728c 100644
---- a/ui/views/controls/scroll_view.h
-+++ b/ui/views/controls/scroll_view.h
-@@ -386,6 +386,9 @@
-   ScrollViewCallbackList on_contents_scroll_ended_;
- };
+Index: chromium-98.0.4758.80/ui/views/controls/scroll_view.h
+===================================================================
+--- chromium-98.0.4758.80.orig/ui/views/controls/scroll_view.h
++++ chromium-98.0.4758.80/ui/views/controls/scroll_view.h
+@@ -389,6 +389,9 @@ class VIEWS_EXPORT ScrollView : public V
+ // ScrollView::SetContents<View> template is available with which to link.
+ template View* ScrollView::SetContents<View>(std::unique_ptr<View> a_view);
  
 +// Required for WebAppUrlHandlerIntentPickerView
 +template View* ScrollView::SetContents<View>(std::unique_ptr<View> a_view);
