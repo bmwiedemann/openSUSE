@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan 28 15:40:35 UTC 2022 - Jan Kara <jack@suse.cz>
+
+- Update to 1.46.5:
+  * better handling for resizing to fs sizes which would exceed inode limits
+  * fix crash in e2fsck fastcommit handling 
+  * fix possibly lost quota limits when e2fsck corrects quota files
+  * fix tune2fs to properly transfer quota limits when convertion quota files
+  * add support for handling of version 0 quota files in tune2fs
+  * teach libss to use libreadline.so.8
+  * optimize resize2fs cpu usage for large filesystems
+  * teach libuuid to use getrandom() or getentropy() if available
+- libss-add-newer-libreadline.so.8-to-dlopen-path.patch: Remove, merged upstream
+- quota-Add-support-to-version-0-quota-format.patch: Remove, merged upstream
+- quota-Fold-quota_read_all_dquots-into-quota_update_l.patch: Remove, merged upstream
+- quota-Rename-quota_update_limits-to-quota_read_all_d.patch: Remove, merged upstream
+- tune2fs-Fix-conversion-of-quota-files.patch: Remove, merged upstream
+- e2fsck-Do-not-trash-user-limits-when-processing-orph.patch: Remove, merged upstream
+- debugfs-Fix-headers-for-quota-commands.patch: Remove, merged upstream
+- quota-Drop-dead-code.patch: Remove, merged upstream
+
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
