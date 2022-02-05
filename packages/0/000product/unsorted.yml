@@ -5996,7 +5996,6 @@ unsorted:
   - gnustep-base 
   - gnustep-base-devel 
   - gnustep-make 
-  - gnutls 
   - gnutls-guile 
   - go 
   - go-doc 
@@ -6502,7 +6501,6 @@ unsorted:
   - gtkpod-devel 
   - gtkpod-lang 
   - gtksourceview-devel 
-  - gtksourceview-lang 
   - gtksourceview2-devel 
   - gtksourceview2-lang 
   - gtksourceview4-devel 
@@ -6534,9 +6532,6 @@ unsorted:
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
-  - guestfs-data: [x86_64] 
-  - guestfs-tools: [x86_64] 
-  - guestfs-winsupport: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
   - guice-bom 
@@ -8595,7 +8590,7 @@ unsorted:
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
-  - ldmtool 
+  - ldmtool: [i586] 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -11064,7 +11059,6 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_8_0 
   - libgnutls-dane-devel 
-  - libgnutls-dane0 
   - libgnutls-devel 
   - libgnutls-devel-32bit: [x86_64] 
   - libgnutlsxx-devel 
@@ -11089,8 +11083,6 @@ unsorted:
   - libgoocanvasmm-devel 
   - libgooglepinyin-devel 
   - libgovirt-devel 
-  - libgovirt-lang 
-  - libgovirt2 
   - libgpaste13 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit: [x86_64] 
@@ -11212,7 +11204,6 @@ unsorted:
   - libgtkmm-4_0-0-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
-  - libgtksourceview-3_0-1 
   - libgtksourceviewmm-3_0-0 
   - libgtksourceviewmm-4_0-0 
   - libgtkspell3-3-0 
@@ -11232,7 +11223,6 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
-  - libguestfs0: [x86_64] 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
   - libguile-srfi-srfi-13-14-v-3-3 
@@ -11462,7 +11452,7 @@ unsorted:
   - libhinawa-devel 
   - libhinawa2 
   - libhiredis1_0_0 
-  - libhivex0 
+  - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
   - libhmac1 
@@ -11837,7 +11827,7 @@ unsorted:
   - libldc-jit96 
   - libldl-doc 
   - libldl2 
-  - libldm-1_0-0 
+  - libldm-1_0-0: [i586] 
   - libldm-1_0-0-devel 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
@@ -14425,8 +14415,6 @@ unsorted:
   - libvips42 
   - libvirt 
   - libvirt-cim 
-  - libvirt-client 
-  - libvirt-daemon-config-network 
   - libvirt-daemon-config-nwfilter 
   - libvirt-daemon-driver-lxc 
   - libvirt-daemon-driver-storage-gluster 
@@ -16979,21 +16967,20 @@ unsorted:
   - nauty 
   - nauty-devel 
   - nbdfuse 
-  - nbdkit 
+  - nbdkit: [i586] 
   - nbdkit-bash-completion 
-  - nbdkit-basic-filters 
-  - nbdkit-basic-plugins 
-  - nbdkit-curl-plugin 
+  - nbdkit-basic-filters: [i586] 
+  - nbdkit-basic-plugins: [i586] 
+  - nbdkit-curl-plugin: [i586] 
   - nbdkit-devel 
   - nbdkit-example-plugins 
   - nbdkit-gzip-filter 
   - nbdkit-nbd-plugin 
-  - nbdkit-python-plugin 
-  - nbdkit-server 
-  - nbdkit-ssh-plugin 
+  - nbdkit-python-plugin: [i586] 
+  - nbdkit-server: [i586] 
+  - nbdkit-ssh-plugin: [i586] 
   - nbdkit-tar-filter 
   - nbdkit-tmpdisk-plugin 
-  - nbdkit-vddk-plugin: [x86_64] 
   - nbdkit-xz-filter 
   - ncat 
   - ncdu 
@@ -18740,7 +18727,6 @@ unsorted:
   - patterns-server-directory_server-32bit 
   - patterns-server-file_server-32bit 
   - patterns-server-gateway_server-32bit 
-  - patterns-server-kvm_tools 
   - patterns-server-lamp_server-32bit 
   - patterns-server-mail_server-32bit 
   - patterns-server-printing-32bit 
@@ -19074,7 +19060,7 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector 
+  - perl-Class-Inspector: [i586] 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -19325,7 +19311,7 @@ unsorted:
   - perl-File-Rename 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir 
+  - perl-File-ShareDir: [i586] 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -19899,7 +19885,7 @@ unsorted:
   - perl-String-Format 
   - perl-String-Formatter 
   - perl-String-RewritePrefix 
-  - perl-String-ShellQuote 
+  - perl-String-ShellQuote: [i586] 
   - perl-String-ToIdentifier-EN 
   - perl-String-Trim 
   - perl-String-Truncate 
@@ -19924,7 +19910,6 @@ unsorted:
   - perl-Syntax-Keyword-Junction 
   - perl-Syntax-Keyword-Try 
   - perl-Sys-CPU 
-  - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
@@ -20147,7 +20132,7 @@ unsorted:
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
   - perl-Web-Scraper 
-  - perl-Win-Hivex 
+  - perl-Win-Hivex: [i586] 
   - perl-Wx 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
@@ -20214,7 +20199,7 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
-  - perl-libintl-perl 
+  - perl-libintl-perl: [i586] 
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
@@ -25950,7 +25935,7 @@ unsorted:
   - python38-evdev 
   - python38-eventlet 
   - python38-evilunit 
-  - python38-evtx 
+  - python38-evtx: [i586] 
   - python38-exam 
   - python38-execnet 
   - python38-exiv2 
@@ -26146,7 +26131,7 @@ unsorted:
   - python38-hepunits 
   - python38-hetzner 
   - python38-hetznercloud 
-  - python38-hexdump 
+  - python38-hexdump: [i586] 
   - python38-hijri-converter 
   - python38-hiredis 
   - python38-hkdf 
@@ -32855,7 +32840,6 @@ unsorted:
   - superlu_5_3_0-gnu-hpc-devel 
   - superlu_5_3_0-gnu-hpc-doc 
   - superlu_5_3_0-gnu-hpc-examples 
-  - supermin: [x86_64] 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -41705,7 +41689,6 @@ unsorted:
   - typelib-1_0-GUPnPIgd-1_0 
   - typelib-1_0-GUdev-1_0 
   - typelib-1_0-GUsb-1_0 
-  - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
   - typelib-1_0-GcrUi-3 
@@ -41757,9 +41740,7 @@ unsorted:
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkLayerShell-0_1 
-  - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSpell-3_0 
-  - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
   - typelib-1_0-Handy-0_0 
   - typelib-1_0-Hinawa-2_0 
@@ -41809,8 +41790,6 @@ unsorted:
   - typelib-1_0-RygelServer-2_6 
   - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
-  - typelib-1_0-SpiceClientGlib-2_0 
-  - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-Template-1_0 
   - typelib-1_0-Tepl-6 
@@ -41821,7 +41800,6 @@ unsorted:
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_12 
-  - typelib-1_0-Vte-2.91 
   - typelib-1_0-WebKit2-5_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
@@ -42220,15 +42198,11 @@ unsorted:
   - vips-tools 
   - virglrenderer-devel 
   - virglrenderer-test-server 
-  - virt-manager 
   - virt-p2v: [x86_64] 
   - virt-sandbox 
   - virt-top 
-  - virt-v2v: [x86_64] 
-  - virt-v2v-bash-completion: [x86_64] 
   - virt-v2v-man-pages-ja: [x86_64] 
   - virt-v2v-man-pages-uk: [x86_64] 
-  - virt-viewer 
   - virtme 
   - virtualbox: [x86_64] 
   - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
@@ -42826,7 +42800,7 @@ unsorted:
   - xmlsec1-gnutls-devel 
   - xmlsec1-nss-devel 
   - xmlsec1-openssl-devel 
-  - xmlstarlet 
+  - xmlstarlet: [i586] 
   - xmlstreambuffer 
   - xmlstreambuffer-javadoc 
   - xmlto 
@@ -43168,7 +43142,7 @@ unsorted:
   - zdbsp 
   - zeal 
   - zerobranestudio 
-  - zerofree 
+  - zerofree: [i586] 
   - zeromq-devel 
   - zfp-devel: [x86_64] 
   - zhu3d 
