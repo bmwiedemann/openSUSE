@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Thu Feb  3 12:18:46 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fixes boo#1195509 CVE-2022-0443
+- Updated to version 8.2.4286, fixes the following problems
+  * Compiler warning for uninitialized variable.
+  * Unused entry in keymap enum.
+  * CI log output is long.
+  * Coverity warns for using a NULL pointer.
+  * Generating nv_cmdidxs.h requires building Vim twice.
+  * Vim9 expr test fails without the channel feature. (Dominique Pellé)
+  * The EBCDIC support is outdated.
+  * Basic and form filetype detection is incomplete.
+  * Cannot use an autoload function from a package under start.
+  * Separate test function for the GUI scrollbar.
+  * Vim9: an import does not shadow a command modifier.
+  * Build with Athena GUI fails. (Elimar Riesebieter)
+  * Vim9: cannot change item type with map() after range().
+  * list-dict test crashes.
+  * Using freed memory with :lopen and :bwipe.
+  * Restricted mode requires the -Z command line option.
+  * Using a variable for the return value is not needed.
+  * Old mac resources files are no longer used.
+  * Vim9: type of item in for loop not checked properly.
+  * Vim9: strict type checking after copy() and deepcopy().
+
+-------------------------------------------------------------------
+Mon Jan 31 11:21:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fixes boo#1195499 CVE-2022-0417
+- fixes boo#1195336 CVE-2022-0393
+- Updated to version 8.2.4266, fixes the following problems
+  * Cannot use an import in 'patchexpr'.
+  * Gnuplot file not recognized.
+  * Not all gitconfig files are recognized.
+  * All conceal tests are skipped without the screendumps feature.
+  * json5 files are not recognized.
+  * Cannot use an import in 'printexpr'.
+  * Cannot use an import in 'charconvert'.
+  * Resizing terminal may cause to behave like CTRL-Z.
+  * Various file types not recognized.
+  * Cannot use an import in the "expr" part of 'spellsuggest'.
+  * Vim9: the switch for executing instructions is too long.
+  * Some tests do not clean up properly.
+  * When using the GUI CTRL-Z does not stop gvim.
+  * Vim9: cannot export function that exists globally.
+  * Entering a character with CTRL-V may include modifiers.
+  * screenpos() has non-zero row for invisible text.
+  * The normal_cmd() function is too long.
+  * Condition with many "(" causes a crash.
+  * Recursion test fails with MSVC.
+  * Using setbufvar() may change the window title.
+  * partial in 'opfunc' cannot use an imported function.
+  * Window title test fails in some configurations.
+  * Too much code for supporting old MSVC versions.
+  * Illegal memory access with large 'tabstop' in Ex mode.
+  * Illegal memory access when copying lines in Visual mode.
+  * Vim9: cannot use a function from an autoload import directly.
+  * Illegal memory access when undo makes Visual area invalid.
+  * Illegal memory access with bracketed paste in Ex mode.
+  * Reading before the start of the line.
+  * Some functions in normal.c are very long.
+  * Long/int compiler warnings; function arguments swapped.
+  * Vim9: no error when using a number for map() second argument
+  * Vim9: depth argument of :lockvar not parsed in :def function.
+  * Filter-map test fails.
+  * Vim9: using "lockvar!" in :def function does not work.
+  * No tests for clicking in the GUI tabline.
+  * Possible crash when invoking timer callback fails.
+  * MS-Windows: set_guifontwide() is included but won't work.
+  * Vim9: map() gives type error when type was not declared.
+  * Some compilers don't like a goto label without statement.
+  * Crash when recording and using Select mode.
+  * test_garbagecollect_now() does not check v:testing as documented.
+  * Invalid check for NULL pointer.
+  * Accessing freed memory.
+  * Record buffer wrong if character in Select mode was not typed.
+  * *.tf file could be fileytpe "tf" or "terraform".
+  * Build fails with unusual configuration.
+  * Error for using flatten() in Vim9 script is unclear.
+  * Some type casts are redundant.
+  * Put in Visual mode cannot be repeated.
+  * Lua tests fail with Lua 5.4.4.
+  * ":retab 0" may cause illegal memory access.
+  * One error message not in errors.h. (Antonio Colombo)
+  * Stack corruption when looking for spell suggestions.
+  * No proper test for moving the window separator.
+  * The timeout limit for spell suggestions is always 5000 milli seconds.
+  * Channel out callback test is flaky on Mac.
+  * Vala files are not recognized.
+  * Generating the normal command table at runtime is inefficient.
+  * Using freed memory when substitute uses a recursive function call.
+  * Using short instead of int.
+  * Theoretical computation overflow.
+  * Vim9: finding global function without g: prefix but not finding global
+  variable is inconsistent.
+  * Coverity warns for array overrun.
+  * Number of test functions for GUI events is growing.
+  * Vim9: can still use a global function without g: at the script level.
+  * Accessing invalid memory when a regular expression checks the Visual
+  area while matching in a string.
+  * Some search tests fail.
+  * No test for the GUI find/replace dialog.
+  * Vim9: can use old style autoload function name.
+  * Autoload tests fails.
+  * Compiler warning for uninitialized variable.
+
+-------------------------------------------------------------------
 Sun Jan 23 15:43:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Updated to version 8.2.4186, fixes the following problems

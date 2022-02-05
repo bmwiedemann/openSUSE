@@ -5564,4 +5564,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>948350</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>dc812892e8bb900adbc651d1f235e01d</srcmd5>
+    <version>8.2.4286</version>
+    <time>1644099779</time>
+    <user>dimstar_suse</user>
+    <comment>- fixes boo#1195509 CVE-2022-0443
+- Updated to version 8.2.4286, fixes the following problems
+  * Compiler warning for uninitialized variable.
+  * Unused entry in keymap enum.
+  * CI log output is long.
+  * Coverity warns for using a NULL pointer.
+  * Generating nv_cmdidxs.h requires building Vim twice.
+  * Vim9 expr test fails without the channel feature. (Dominique Pellé)
+  * The EBCDIC support is outdated.
+  * Basic and form filetype detection is incomplete.
+  * Cannot use an autoload function from a package under start.
+  * Separate test function for the GUI scrollbar.
+  * Vim9: an import does not shadow a command modifier.
+  * Build with Athena GUI fails. (Elimar Riesebieter)
+  * Vim9: cannot change item type with map() after range().
+  * list-dict test crashes.
+  * Using freed memory with :lopen and :bwipe.
+  * Restricted mode requires the -Z command line option.
+  * Using a variable for the return value is not needed.
+  * Old mac resources files are no longer used.
+  * Vim9: type of item in for loop not checked properly.
+  * Vim9: strict type checking after copy() and deepcopy().
+
+- fixes boo#1195499 CVE-2022-0417
+- fixes boo#1195336 CVE-2022-0393
+- Updated to version 8.2.4266, fixes the following problems
+  * Cannot use an import in 'patchexpr'.
+  * Gnuplot file not recognized.
+  * Not all gitconfig files are recognized.
+  * All conceal tests are skipped without the screendumps feature.</comment>
+    <requestid>951182</requestid>
+  </revision>
 </revisionlist>
