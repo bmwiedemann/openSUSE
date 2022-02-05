@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,7 +112,14 @@ Patch54:        openssl-1_1-use-seclevel2-in-tests.patch
 Patch55:        openssl-1_1-disable-test_srp-sslapi.patch
 Patch56:        openssl-add_rfc3526_rfc7919.patch
 Patch57:        openssl-1_1-use-include-directive.patch
+#PATCH-FIX-UPSTREAM jsc#SLE-18136 POWER10 performance enhancements for cryptography
+Patch69:        openssl-1_1-Optimize-ppc64.patch
+#PATCH-FIX-UPSTREAM jsc#SLE-19742 Backport Arm improvements from OpenSSL 3
+Patch70:        openssl-1_1-Optimize-RSA-armv8.patch
+Patch71:        openssl-1_1-Optimize-AES-XTS-aarch64.patch
+Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 Requires:       crypto-policies
 %endif
@@ -154,6 +161,7 @@ Summary:        Development files for OpenSSL
 License:        OpenSSL
 Group:          Development/Libraries/C and C++
 Requires:       libopenssl1_1 = %{version}
+Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
 # we need to have around only the exact version we are able to operate with
 Conflicts:      libopenssl-devel < %{version}
@@ -214,6 +222,7 @@ export MACHINE=armv6l
     enable-ec_nistp_64_gcc_128 \
 %endif
     enable-camellia \
+    zlib \
     no-ec2m \
     --prefix=%{_prefix} \
     --libdir=%{_lib} \
@@ -245,6 +254,7 @@ make all %{?_smp_mflags}
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
 #export HARNESS_VERBOSE=1
+#export OPENSSL_FORCE_FIPS_MODE=1
 LD_LIBRARY_PATH=`pwd` make test -j1
 
 # show ciphers
@@ -330,7 +340,7 @@ cp %{SOURCE5} .
 # invalidates a HMAC that may have been created earlier.
 # solution: create the hashes _after_ the macro runs.
 #
-# this shows up earlier because otherwise the %%expand of
+# this shows up earlier because otherwise the expand of
 # the macro is too late.
 # remark: This is the same as running
 #   openssl dgst -sha256 -hmac 'ppaksykemnsecgtsttplmamstKMEs'

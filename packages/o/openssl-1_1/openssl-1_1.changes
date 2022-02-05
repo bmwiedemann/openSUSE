@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb  3 15:58:29 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable zlib compression support [bsc#1195149]
+
+-------------------------------------------------------------------
+Fri Jan 28 17:33:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Backport cryptographic improvements from OpenSSL 3 [jsc#SLE-19742]
+  * Optimize RSA on armv8: openssl-1_1-Optimize-RSA-armv8.patch
+  * Optimize AES-XTS mode for aarch64:
+    openssl-1_1-Optimize-AES-XTS-aarch64.patch
+  * Optimize AES-GCM for uarchs with unroll and new instructions:
+    openssl-1_1-Optimize-AES-GCM-uarchs.patch
+
+-------------------------------------------------------------------
+Fri Jan 28 17:33:23 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- POWER10 performance enhancements for cryptography [jsc#SLE-18136]
+  * openssl-1_1-Optimize-ppc64.patch
+
+-------------------------------------------------------------------
 Tue Dec 28 12:34:04 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.1.1m:
