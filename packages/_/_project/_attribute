@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220107'
   boo#1176553: '20220202'
-  boo#1183454: '20220202'
+  boo#1183454: '20220203'
   boo#1189869: '20211207'
   boo#1190434: '20220202'
   boo#1190670: '20211128'
@@ -17,7 +17,7 @@
   boo#1192420: '20211106'
   boo#1192667: '20211128'
   boo#1192701: '20211123'
-  boo#1192812: '20220202'
+  boo#1192812: '20220203'
   boo#1192921: '20211122'
   boo#1192940: '20211121'
   boo#1192959: '20211121'
@@ -37,7 +37,7 @@
   boo#1194544: '20220120'
   boo#1194699: '20220113'
   boo#1194722: '20220124'
-  boo#1195151: '20220202'
+  boo#1195151: '20220203'
   boo#1195174: '20220126'
   boo#1195295: '20220201'
   boo#1195318: '20220202'
@@ -63,7 +63,7 @@
   poo#104163: '20220108'
   poo#104325: '20211227'
   poo#104505: '20211229'
-  poo#104541: '20220202'
+  poo#104541: '20220203'
   poo#104542: '20220103'
   poo#104559: '20220102'
   poo#104794: '20220120'
@@ -71,7 +71,7 @@
   poo#104854: '20220111'
   poo#104859: '20220111'
   poo#104926: '20220128'
-  poo#105256: '20220202'
+  poo#105256: '20220203'
   poo#105271: '20220201'
   poo#105286: '20220123'
   poo#105289: '20220125'
@@ -110,7 +110,7 @@ nocleanup-packages = 000product 000release-packages bootstrap-copy
 pkglistgen-scopes = target rings
 
 # subpackages of ring packages with unacceptable requires (don't abuse)
-repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils
+repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
 
 repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,cracklib,crypto-policies,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc10,gcc11,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,lua54,m4,make,makedepend,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,pcre2,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python38:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcpd,tcl,tclap,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,
 
@@ -132,7 +132,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220203</value>
+    <value>20220204</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -459,7 +459,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220202'
 publishing: '20220202'
-testing: '20220202'
+testing: '20220203'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
