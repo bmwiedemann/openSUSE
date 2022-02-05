@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 while test "${1::2}" = "--" ; do
     case "$1" in

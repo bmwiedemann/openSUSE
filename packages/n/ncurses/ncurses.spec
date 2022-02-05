@@ -481,8 +481,8 @@ mv tack-* tack
     export TMPDIR
     #
     # getttynam(3) as well as /etc/ttys are not used under Linux
-    #
-    sed -ri '/^getttynam\s*\\$/d' configure
+    # (obsolate with patch 6.3 20211204)
+    #   sed -ri '/^getttynam\s*\\$/d' configure
     #
     # No --enable-term-driver as this had crashed last time
     # in ncurses/tinfo/lib_setup.c due to the fact that
@@ -633,7 +633,7 @@ mv tack-* tack
 	. ${PWD}/../.build_tic
 	$BUILD_TIC -I -r -e $FALLBK ../misc/terminfo.src > terminfo.src
 	$BUILD_TIC -o $TERMINFO -s terminfo.src
-	sh -e ./tinfo/MKfallback.sh $PWD/tmp_info ../misc/terminfo.src $BUILD_TIC $BUILD_INFOCMP ${FALLBK//,/ } > fallback.c
+	bash -e ./tinfo/MKfallback.sh $PWD/tmp_info ../misc/terminfo.src $BUILD_TIC $BUILD_INFOCMP ${FALLBK//,/ } > fallback.c
 	rm -rf $TERMINFO
 	unset  TERMINFO
 	cp -p fallback.c ../fallback.c.build
@@ -672,7 +672,7 @@ mv tack-* tack
     rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
     mv -vf %{root}%{_libdir}/pkgconfig/*.pc pc/
     sed -ri 's@^(Requires.private:).*@\1@'  pc/*.pc
-    sh %{S:6} --cflags "$(pkg-config --cflags ncursesw)" --libs "$(pkg-config --libs ncursesw)" \
+    bash %{S:6} --cflags "$(pkg-config --cflags ncursesw)" --libs "$(pkg-config --libs ncursesw)" \
 	%{root}%{_bindir}/ncursesw6-config
 
     #
@@ -762,7 +762,7 @@ cp Makefile Makefile.back
     make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5 includesubdir=/ncurses libdir=%{_libdir}/ncurses5
     ln -sf %{_incdir}/ncurses5/ncurses/{curses,ncurses,term}.h %{root}%{_incdir}/ncurses5/
     pushd man
-	sh ../edit_man.sh normal installing %{root}%{_mandir} . ncurses5-config.1
+	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses5-config.1
     popd
     for pc in %{root}%{_libdir}/pkgconfig/*.pc
     do
@@ -778,7 +778,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
 	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
     done
-    sh %{S:6} --cflags "$(pkg-config --cflags ncurses5)" --libs "$(pkg-config --libs ncurses5)" \
+    bash %{S:6} --cflags "$(pkg-config --cflags ncurses5)" --libs "$(pkg-config --libs ncurses5)" \
 	%{root}%{_bindir}/ncurses5-config
 
     #
@@ -826,11 +826,11 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     cp -p libtinfow.so.%{basevers}.back %{root}%{_libdir}/libtinfow.so.%{basevers}
 %endif
     pushd man
-	sh ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
+	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
     popd
     mv -f %{root}%{_libdir}/pkgconfig/*.pc pc/
     sed -ri 's@^(Requires.private:).*@\1@' pc/*.pc
-    sh %{S:6} --cflags "$(pkg-config --cflags ncurses)" --libs "$(pkg-config --libs ncurses)" \
+    bash %{S:6} --cflags "$(pkg-config --cflags ncurses)" --libs "$(pkg-config --libs ncurses)" \
 	%{root}%{_bindir}/ncurses6-config
     #
     # Some tests
@@ -912,7 +912,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	-Wl,--version-script,package/ncursesw.map -o %{root}%{_libdir}/libtinfow.so.5.9
 %endif
     pushd man
-	sh ../edit_man.sh normal installing %{root}%{_mandir} . ncursesw5-config.1
+	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncursesw5-config.1
     popd
     rm -vf %{root}%{_libdir}/pkgconfig/tic.pc
     rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
@@ -930,7 +930,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
 	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
     done
-    sh %{S:6} --cflags "$(pkg-config --cflags ncursesw5)" --libs "$(pkg-config --libs ncursesw5)" \
+    bash %{S:6} --cflags "$(pkg-config --cflags ncursesw5)" --libs "$(pkg-config --libs ncursesw5)" \
 	%{root}%{_bindir}/ncursesw5-config
 
 %install

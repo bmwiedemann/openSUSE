@@ -3502,4 +3502,33 @@
   + use newer version 1.36 of gnathtml for generating Ada html files.</comment>
     <requestid>947194</requestid>
   </revision>
+  <revision rev="205" vrev="9">
+    <srcmd5>b3ce0f5ba3aed36a7ac2c2964c9012da</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1644099776</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not remove detection of getttynam() to avoid fallback
+  as with patch 6.3 20211204 this is obsolete
+
+- Add ncurses patch 20220129
+  + minor updates for test-packages
+  + improve handling of --with-pkg-config-libdir option, allowing for the
+    case where either $PKG_CONFIG_LIBDIR or the option value has a
+    colon-separated list of directories (report by Rudi Heitbaum,
+    cf: 20211113).
+  + update kitty -TD
+- Add ncurses patch 20220122
+  + add ABI 7 defaults to configure script.
+  + add warning in configure script if file specified for &quot;--with-caps&quot;
+    does not exist.
+  + use fix for CF_FIX_WARNINGS from cdk-perl, ignoring error-exit on
+    format-warnings.
+  + improve readability of long parameterized expressions with the
+    infocmp &quot;-f&quot; option by allowing split before a &quot;%p&quot; marker.
+- Correct offsets of patch ncurses-6.3.dif
+
+- use bash everywhere, the scripts are not posix shell compatible
+  (bsc#1195391)</comment>
+    <requestid>950686</requestid>
+  </revision>
 </revisionlist>

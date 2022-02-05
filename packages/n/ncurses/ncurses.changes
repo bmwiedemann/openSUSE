@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb  2 08:58:23 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not remove detection of getttynam() to avoid fallback
+  as with patch 6.3 20211204 this is obsolete
+
+-------------------------------------------------------------------
+Wed Feb  2 07:16:23 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220129
+  + minor updates for test-packages
+  + improve handling of --with-pkg-config-libdir option, allowing for the
+    case where either $PKG_CONFIG_LIBDIR or the option value has a
+    colon-separated list of directories (report by Rudi Heitbaum,
+    cf: 20211113).
+  + update kitty -TD
+- Add ncurses patch 20220122
+  + add ABI 7 defaults to configure script.
+  + add warning in configure script if file specified for "--with-caps"
+    does not exist.
+  + use fix for CF_FIX_WARNINGS from cdk-perl, ignoring error-exit on
+    format-warnings.
+  + improve readability of long parameterized expressions with the
+    infocmp "-f" option by allowing split before a "%p" marker.
+- Correct offsets of patch ncurses-6.3.dif
+
+-------------------------------------------------------------------
+Tue Feb  1 15:10:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use bash everywhere, the scripts are not posix shell compatible
+  (bsc#1195391)
+
+-------------------------------------------------------------------
 Tue Jan 18 08:59:41 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Fix boo#1194805 by skipping linker optimizations from final
