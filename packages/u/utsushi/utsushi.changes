@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  4 17:43:50 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- Update to version 1638580181.839d06a:
+  * Trim trailing junk from the SANE version instead
+  * Trim trailing junk from the SANE revision
+  * CI: Switch from Devuan's beowulf to chimaera
+- add 0004-change-sane-version-check.patch as a workaround for #108
+
+-------------------------------------------------------------------
 Thu Jun 24 10:20:56 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - Update to version 1623553580.85d9379:

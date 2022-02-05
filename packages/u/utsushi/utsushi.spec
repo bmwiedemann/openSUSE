@@ -1,7 +1,7 @@
 #
 # spec file for package utsushi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           utsushi
-Version:        1623553580.85d9379
+Version:        1638580181.839d06a
 Release:        0
 Summary:        Next Generation Image Acquisition Utilities
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ Source1:        %{name}-rpmlintrc
 Patch0:         0001-drivers-avoid-library-version-for-dynamically-loadab.patch
 Patch1:         0002-avoid-version-for-dynamic-libs.patch
 Patch2:         0003-fix-uint-deprecation.patch
+Patch3:         0004-change-sane-version-check.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -73,6 +74,7 @@ This is the community maintained fork, based on imagescan upstream.
 %patch0 -p1
 %patch1
 %patch2
+%patch3
 ./bootstrap
 
 %build

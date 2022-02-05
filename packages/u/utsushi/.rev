@@ -37,4 +37,17 @@
 </comment>
     <requestid>901711</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9527e048caa4eb6119854fc5a01b565d</srcmd5>
+    <version>1638580181.839d06a</version>
+    <time>1644099804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1638580181.839d06a:
+  * Trim trailing junk from the SANE version instead
+  * Trim trailing junk from the SANE revision
+  * CI: Switch from Devuan's beowulf to chimaera
+- add 0004-change-sane-version-check.patch as a workaround for #108
+</comment>
+    <requestid>951788</requestid>
+  </revision>
 </revisionlist>
