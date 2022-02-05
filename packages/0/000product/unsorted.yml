@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -513,7 +513,6 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
-  - analitza-lang 
   - android-tools 
   - android-tools-bash-completion 
   - android-tools-python3 
@@ -9938,8 +9937,8 @@ unsorted:
   - libboost_wave1_78_0-32bit: [x86_64] 
   - libboost_wave1_78_0-devel 
   - libboringssl1 
-  - libbotan-2-18 
-  - libbotan-2-18-32bit: [x86_64] 
+  - libbotan-2-19 
+  - libbotan-2-19-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
   - libbox2d-devel 
@@ -14743,7 +14742,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -16041,6 +16040,7 @@ unsorted:
   - menu-cache 
   - menu-cache-devel 
   - mercurial 
+  - mercurial-extension-hg-git 
   - mercurial-lang 
   - mercurial-tests 
   - meslo-lg-fonts 
@@ -18709,6 +18709,7 @@ unsorted:
   - patterns-hpc-workload_server: [x86_64] 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_qt5 
+  - patterns-kde-devel_qt6 
   - patterns-kde-kde_telepathy 
   - patterns-leechcraft-leechcraft 
   - patterns-leechcraft-leechcraft_browser 
@@ -24070,6 +24071,7 @@ unsorted:
   - python310-python-mimeparse 
   - python310-python-mpd2 
   - python310-python-mpv 
+  - python310-python-multipart 
   - python310-python-nmap 
   - python310-python-openid-cla 
   - python310-python-openid-teams 
@@ -24716,6 +24718,7 @@ unsorted:
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
+  - python310-xdis 
   - python310-xdoctest 
   - python310-xerox 
   - python310-xhtml2pdf 
@@ -24842,7 +24845,6 @@ unsorted:
   - python36-pony 
   - python36-pysvn 
   - python36-python-crfsuite 
-  - python36-python-multipart 
   - python36-python-prctl 
   - python36-rarfile 
   - python36-rarfile-doc 
@@ -24860,7 +24862,6 @@ unsorted:
   - python36-ucsmsdk 
   - python36-uncompyle6 
   - python36-whitenoise 
-  - python36-xdis 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
