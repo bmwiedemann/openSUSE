@@ -690,6 +690,7 @@
       <repopackage name="gnome-weather"/>
       <repopackage name="gnome-weather-lang"/>
       <repopackage name="gnomekbd-tools"/>
+      <repopackage name="gnutls"/>
       <repopackage name="google-arimo-fonts"/>
       <repopackage name="google-carlito-fonts"/>
       <repopackage name="google-cousine-fonts"/>
@@ -807,6 +808,7 @@
       <repopackage name="gtk4-lang"/>
       <repopackage name="gtk4-schema"/>
       <repopackage name="gtkiterm"/>
+      <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
       <repopackage name="gtksourceview5-lang"/>
       <repopackage name="gtkspell-lang"/>
@@ -1677,6 +1679,7 @@
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
       <repopackage name="libgnustep-base1_27"/>
+      <repopackage name="libgnutls-dane0"/>
       <repopackage name="libgnutls30"/>
       <repopackage name="libgnutls30-hmac"/>
       <repopackage name="libgoa-1_0-0"/>
@@ -1685,6 +1688,8 @@
       <repopackage name="libgom-1_0-0"/>
       <repopackage name="libgomp1"/>
       <repopackage name="libgooglepinyin0"/>
+      <repopackage name="libgovirt-lang"/>
+      <repopackage name="libgovirt2"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11"/>
       <repopackage name="libgpgmepp6"/>
@@ -1752,6 +1757,7 @@
       <repopackage name="libgtk-vnc-2_0-0"/>
       <repopackage name="libgtkimageview0"/>
       <repopackage name="libgtkmm-3_0-1"/>
+      <repopackage name="libgtksourceview-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
       <repopackage name="libgtksourceview-5-0"/>
       <repopackage name="libgtkspell0"/>
@@ -2642,7 +2648,9 @@
       <repopackage name="libverto1"/>
       <repopackage name="libvidstab1_1"/>
       <repopackage name="libvirglrenderer1"/>
+      <repopackage name="libvirt-client"/>
       <repopackage name="libvirt-daemon"/>
+      <repopackage name="libvirt-daemon-config-network"/>
       <repopackage name="libvirt-daemon-driver-interface"/>
       <repopackage name="libvirt-daemon-driver-network"/>
       <repopackage name="libvirt-daemon-driver-nodedev"/>
@@ -3227,6 +3235,7 @@
       <repopackage name="patterns-server-file_server"/>
       <repopackage name="patterns-server-gateway_server"/>
       <repopackage name="patterns-server-kvm_server"/>
+      <repopackage name="patterns-server-kvm_tools"/>
       <repopackage name="patterns-server-lamp_server"/>
       <repopackage name="patterns-server-mail_server"/>
       <repopackage name="patterns-server-printing"/>
@@ -4573,8 +4582,11 @@
       <repopackage name="typelib-1_0-Gtk-3_0"/>
       <repopackage name="typelib-1_0-Gtk-4_0"/>
       <repopackage name="typelib-1_0-GtkClutter-1_0"/>
+      <repopackage name="typelib-1_0-GtkSource-3_0"/>
       <repopackage name="typelib-1_0-GtkSource-4"/>
       <repopackage name="typelib-1_0-GtkSource-5"/>
+      <repopackage name="typelib-1_0-GtkVnc-2_0"/>
+      <repopackage name="typelib-1_0-GVnc-1_0"/>
       <repopackage name="typelib-1_0-GWeather-3_0"/>
       <repopackage name="typelib-1_0-Handy-1_0"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
@@ -4602,11 +4614,14 @@
       <repopackage name="typelib-1_0-Secret-1"/>
       <repopackage name="typelib-1_0-Soup-2_4"/>
       <repopackage name="typelib-1_0-Soup-3_0"/>
+      <repopackage name="typelib-1_0-SpiceClientGlib-2_0"/>
+      <repopackage name="typelib-1_0-SpiceClientGtk-3_0"/>
       <repopackage name="typelib-1_0-TelepathyGlib-0_12"/>
       <repopackage name="typelib-1_0-TelepathyLogger-0_2"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
       <repopackage name="typelib-1_0-Tracker-3_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
+      <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
       <repopackage name="typelib-1_0-WebKit2-4_1"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
@@ -4654,7 +4669,9 @@
       <repopackage name="vinagre"/>
       <repopackage name="vinagre-lang"/>
       <repopackage name="virt-install"/>
+      <repopackage name="virt-manager"/>
       <repopackage name="virt-manager-common"/>
+      <repopackage name="virt-viewer"/>
       <repopackage name="virt-what"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
