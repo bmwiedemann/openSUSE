@@ -1,7 +1,7 @@
 #
 # spec file for package libgcrypt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://directory.fsf.org/wiki/Libgcrypt
+URL:            https://gnupg.org/software/libgcrypt
 Source:         https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2
 Source1:        https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
@@ -77,12 +77,30 @@ Patch28:        libgcrypt-PCT-ECC.patch
 Patch29:        libgcrypt-fips_selftest_trigger_file.patch
 #PATCH-FIX-SUSE bsc#1189745 The t-lock test is not build with phtread in gcc7, works in gcc11
 Patch30:        libgcrypt-pthread-in-t-lock-test.patch
+#PATCH-FIX-UPSTREAM bsc#1187110 FIPS: Enable hardware support also in FIPS mode
+Patch31:        libgcrypt-FIPS-hw-optimizations.patch
+#PATCH-FIX-UPSTREAM bsc#1190706 FIPS: Provide module name/identifier and version
+Patch32:        libgcrypt-FIPS-module-version.patch
+#PATCH-FIX-SUSE bsc#1185138 FIPS: Disable 3DES/Triple-DES in FIPS mode
+Patch33:        libgcrypt-FIPS-disable-3DES.patch
+#PATCH-FIX-UPSTREAM bsc#1192131 FIPS: Fix regression tests in FIPS mode
+Patch34:        libgcrypt-FIPS-fix-regression-tests.patch
+#PATCH-FIX-UPSTREAM bsc#1192240 FIPS: RSA KeyGen/SigGen fail with 4096 bit key sizes
+Patch35:        libgcrypt-FIPS-RSA-keylen.patch
+Patch36:        libgcrypt-FIPS-RSA-keylen-tests.patch
 #PATCH-FIX-UPSTREAM bsc#1193480 FIPS: gcry_mpi_sub_ui: fix subtracting from negative value
-Patch31:        libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
+Patch37:        libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
+#PATCH-FIX-UPSTREAM bsc#1190700 FIPS: Provide a service-level indicator
+Patch38:        libgcrypt-FIPS-verify-unsupported-KDF-test.patch
+Patch39:        libgcrypt-FIPS-HMAC-short-keylen.patch
+Patch40:        libgcrypt-FIPS-service-indicators.patch
+#PATCH-FIX-UPSTREAM bsc#1195385 FIPS: Disable DSA in FIPS mode
+Patch41:        libgcrypt-FIPS-disable-DSA.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  libtool
+BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 
 %description
@@ -165,6 +183,7 @@ date=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
 sed -e "s,BUILD_TIMESTAMP=.*,BUILD_TIMESTAMP=$date," -i configure
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %configure \
+           --with-fips-module-version="Libgcrypt version %{version}-%{release}" \
            --enable-noexecstack \
            --disable-static \
            --enable-m-guard \
@@ -173,6 +192,7 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %endif
            --enable-hmac-binary-check \
            --enable-random=linux
+
 %make_build
 
 %if 0%{?build_hmac256}

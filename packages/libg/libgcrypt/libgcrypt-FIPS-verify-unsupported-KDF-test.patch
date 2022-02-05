@@ -1,0 +1,35 @@
+From 0ab4e8063729147fb9abd463055785aac831bf5c Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Tue, 13 Jul 2021 16:58:54 +0200
+Subject: [PATCH 348/500] tests: Verify unsupported KDF tests fail in FIPS mode
+
+* tests/t-kdf.c (check_pbkdf2): Verify tests based on algorithms
+  unsupported in FIPS mode fail.
+--
+
+Signed-off-by: Jakub Jelen <jjelen@redhat.com>
+---
+ tests/t-kdf.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tests/t-kdf.c b/tests/t-kdf.c
+index 7a48e98a..48309b9a 100644
+--- a/tests/t-kdf.c
++++ b/tests/t-kdf.c
+@@ -1104,6 +1104,13 @@ check_pbkdf2 (void)
+                              GCRY_KDF_PBKDF2, tv[tvidx].hashalgo,
+                              tv[tvidx].salt, tv[tvidx].saltlen,
+                              tv[tvidx].c, tv[tvidx].dklen, outbuf);
++      if (gcry_fips_mode_active() && tvidx > 6)
++        {
++          if (!err)
++            fail ("pbkdf2 test %d unexpectedly passed in FIPS mode: %s\n",
++                  tvidx, gpg_strerror (err));
++          continue;
++        }
+       if (err)
+         fail ("pbkdf2 test %d failed: %s\n", tvidx, gpg_strerror (err));
+       else if (memcmp (outbuf, tv[tvidx].dk, tv[tvidx].dklen))
+-- 
+2.34.1
+

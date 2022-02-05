@@ -1,9 +1,83 @@
 -------------------------------------------------------------------
+Tue Feb  1 11:28:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Disable DSA in FIPS mode [bsc#1195385]
+  * Upstream task: https://dev.gnupg.org/T5710
+  * Add libgcrypt-FIPS-disable-DSA.patch
+
+-------------------------------------------------------------------
+Wed Jan 19 08:36:58 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Service level indicator [bsc#1190700]
+  * Provide an indicator to check wether the service utilizes an
+    approved cryptographic algorithm or not.
+  * Add patches:
+    - libgcrypt-FIPS-service-indicators.patch
+    - libgcrypt-FIPS-verify-unsupported-KDF-test.patch
+    - libgcrypt-FIPS-HMAC-short-keylen.patch
+
+-------------------------------------------------------------------
 Tue Dec  7 09:41:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Fix gcry_mpi_sub_ui subtraction [bsc#1193480]
   * gcry_mpi_sub_ui: fix subtracting from negative value
   * Add libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
+
+-------------------------------------------------------------------
+Tue Nov 30 09:42:23 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Define an entropy source SP800-90B compliant [bsc#1185140]
+  * Disable jitter entropy by default in random.conf
+  * Disable only-urandom option by default in random.conf
+
+-------------------------------------------------------------------
+Fri Nov 26 13:10:29 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: RSA KeyGen/SigGen fail with 4096 bit key sizes [bsc#1192240]
+  * rsa: Check RSA keylen constraints for key operations.
+  * rsa: Fix regression in not returning an error for prime generation.
+  * tests: Add 2k RSA key working in FIPS mode.
+  * tests: pubkey: Replace RSA key to one of 2k.
+  * tests: pkcs1v2: Skip tests with small keys in FIPS.
+  * Add patches:
+    - libgcrypt-FIPS-RSA-keylen.patch
+    - libgcrypt-FIPS-RSA-keylen-tests.patch
+
+-------------------------------------------------------------------
+Mon Nov  8 10:21:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Disable 3DES/Triple-DES in FIPS mode [bsc#1185138]
+  * Add libgcrypt-FIPS-disable-3DES.patch
+
+-------------------------------------------------------------------
+Tue Nov  2 11:31:19 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: PBKDF requirements [bsc#1185137]
+  * The PBKDF2 selftests were introduced in libgcrypt version
+    1.9.1 in the function selftest_pbkdf2()
+  * Upstream task: https://dev.gnupg.org/T5182
+
+-------------------------------------------------------------------
+Thu Oct 28 19:48:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Fix regression tests in FIPS mode [bsc#1192131]
+  * Add libgcrypt-FIPS-fix-regression-tests.patch
+  * Upstream task: https://dev.gnupg.org/T5520
+
+-------------------------------------------------------------------
+Thu Sep 21 11:25:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Provide a module name/identifier and version that can be
+  mapped to the validation records. [bsc#1190706]
+  * Add libgcrypt-FIPS-module-version.patch
+  * Upstream task: https://dev.gnupg.org/T5600
+
+-------------------------------------------------------------------
+Thu Sep 21 10:23:44 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Enable hardware support also in FIPS mode [bsc#1187110]
+  * Add libgcrypt-FIPS-hw-optimizations.patch
+  * Upstream task: https://dev.gnupg.org/T5508
 
 -------------------------------------------------------------------
 Mon Aug 23 12:08:24 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
