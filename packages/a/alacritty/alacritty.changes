@@ -1,8 +1,53 @@
 -------------------------------------------------------------------
+Thu Feb  3 21:41:13 UTC 2022 - JL K <me@jlk.one>
+
+- Pin rustflags via specfile
+- Update to version 0.10.0
+  * feat: Option colors.transparent_background_colors to allow
+    applying opacity to all background colors
+  * feat: Support for running multiple windows from a single
+    Alacritty instance (see docs/features.md)
+  * feat: Urgency support on Wayland via xdg_activation_v1
+  * refactor: ExpandSelection is now a configurable mouse binding
+    action
+  * refactor: Config option background_opacity, you should use
+    window.opacity instead
+  * refactor: Reload configuration files when their symbolic link
+    is replaced
+  * refactor: Strip trailing whitespaces when yanking from a block
+    selection
+  * refactor: Display area keeps history position when viewport is
+    cleared
+  * refactor: Commands spawn from the current directory of the
+    foreground shell in Unix-like systems
+  * refactor: Remove trailing newline from strings taken from hints
+    or simple/semantic selections
+  * refactor: Builtin font is now used for box drawing characters
+    from U+2500 to U+259f
+  * refactor: Logs now print the time since startup instead of the
+    local time
+  * fix: Line indicator obstructing vi mode cursor when scrolled
+    into history
+  * fix: Vi mode search starting in the line below the vi cursor
+  * fix: Invisible cursor with matching foreground/background
+    colors
+  * fix: Crash when hovering over a match emptied by
+    post-processing
+  * fix: Crash when the vi cursor is on the scrollback and viewport
+    clear is invoked
+  * fix: Freeze when the vi cursor is on the scrollback and
+    scrollback clear is invoked
+  * fix: Vi cursor on topmost of the display moving downward when
+    scrolled into history with active output
+  * fix: Input lag on Wayland with Nvidia binary driver
+  * fix: Crash when hovering the mouse over fullwidth characters
+  * fix: Do not create logfile if the file already exists
+
+-------------------------------------------------------------------
 Wed Dec 15 09:07:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Restore the removing of the checksum of config.guess and
-  config.sub for architectures that modify them. 
+  config.sub for architectures that modify them.
   It was wrongly dropped with previous commit.
 
 -------------------------------------------------------------------

@@ -6,8 +6,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/alacritty/alacritty.git</param>
-    <param name="revision">fed349aa2c567cbba900d56f72a830be45e0dfc8</param>
-    <param name="version">0.9.0</param>
+    <param name="revision">998250f3c3168855ede9ee14be9a52f884f12055</param>
+    <param name="version">0.10.0</param>
 
     <param name="exclude">.builds</param>
     <param name="exclude">.github</param>
