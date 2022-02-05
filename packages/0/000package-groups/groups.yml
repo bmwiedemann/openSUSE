@@ -160,6 +160,7 @@ dvd:
   - yast2-trans-zh_TW
   - yast2-trans-zu
   - patterns-server-kvm_server
+  - patterns-server-kvm_tools
   - patterns-base-minimal_base: [required,suggested]
   - patterns-yast-x11_yast: [required,suggested]
   - patterns-server-xen_server
