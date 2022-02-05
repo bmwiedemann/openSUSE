@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 00:38:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add fix_tautological_compare_321.patch
+- Apply memory constraints also on ppc64/ppc64le
+
+-------------------------------------------------------------------
 Wed Nov 24 08:48:52 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable pyarpack on armv6/7 to fix build

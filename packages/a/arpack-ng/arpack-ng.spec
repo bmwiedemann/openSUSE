@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,6 +117,8 @@ Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.g
 Patch0:         arpack-ng-python-module-installdir.patch
 # PATCH-FIX-UPSTREAM -- Fix mixup of relative and absolute libdir in pkgconfig files
 Patch1:         Use-CMAKE_INSTALL_FULL_-dir.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         fix_tautological_compare_321.patch
 %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif
