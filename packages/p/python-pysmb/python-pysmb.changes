@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  4 00:24:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix testing on older Leap versions.
+
+-------------------------------------------------------------------
+Wed Feb  2 05:55:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.7:
+  * Fix compatibility issues on file retrievals with Likewise servers (#177)
+  * Improve SMBConnection's connect() method to remove the need to provide
+    sock_family parameter for IPv6 addresses in Python 3.x (#180) 
+- Add patch fix-smbconnection-tests.patch:
+  * Use correct nose 2 decorators
+
+-------------------------------------------------------------------
 Sat Jan 16 16:43:33 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix test suite call 
