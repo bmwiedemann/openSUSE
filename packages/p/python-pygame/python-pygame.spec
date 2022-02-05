@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygame
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-pygame
-Version:        2.0.1
+Version:        2.1.2
 Release:        0
 Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://github.com/pygame/pygame
 Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM support-SDL2-2.0.16.patch gh#pygame/pygame#2721 mcepl@suse.com
-# patch from gh#pygame/pygame#2670
-Patch0:         support-SDL2-2.0.16.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -105,6 +101,7 @@ chmod a-x docs/licenses/LICENSE.sdl_gfx.txt
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+export PORTMIDI_INC_PORTTIME=1
 %python_build
 
 %install

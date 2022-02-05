@@ -230,4 +230,27 @@
   systems for incompatibility with SDL2 2.0.16.</comment>
     <requestid>919721</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fefc96548c3c977f4b7e65b9adb9243e</srcmd5>
+    <version>2.1.2</version>
+    <time>1644099787</time>
+    <user>dimstar_suse</user>
+    <comment>- fix portmidi configuration detection 
+
+- Update to 2.1.2:
+  * Fix segfault in display.update by @ankith26 in #2954
+  * Quick fix to get 'python -m pygame.docs' working by @ankith26 in #2955
+  * Working gamma test on windows by @MyreMylar in #2906
+  * Freetype: Fix intermittent crash with test_font_file_not_found by
+    @illume in #2944
+  * Officially drop python2 (and 3.5) and SDL1 support by @Starbuck5 in #2817
+  * Remove most PY2/PY3 C compatibility code by @Starbuck5 in #2819
+  * Simple fix to swap numpy.float type out in favour of float by
+    @MyreMylar in #2815
+  * Remove most SDL1/SDL2 compatibility c code by @Starbuck5 in #2823
+  * Ubuntu 18/20 SDL2 sdist CI, mac CI pp36 drop by @ankith26 in #2821
+  * SDL1 buildconfig removal by @robertpfeiffer and @illume in #2824 
+- Drop support-SDL2-2.0.16.patch.</comment>
+    <requestid>951684</requestid>
+  </revision>
 </revisionlist>
