@@ -1,7 +1,7 @@
 #
 # spec file for package libgudev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libgudev
 Source0:        https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
+# For testsuite, uses fr_FR.UTF-8
+BuildRequires:  glibc-locale
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)

@@ -73,4 +73,12 @@
     <comment></comment>
     <requestid>912403</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>93177d453b869c72b5749ec76ded7273</srcmd5>
+    <version>237</version>
+    <time>1644099776</time>
+    <user>dimstar_suse</user>
+    <comment>- add explicit glibc-locale buildrequires for passing the testsuite (bsc#1195390)</comment>
+    <requestid>950660</requestid>
+  </revision>
 </revisionlist>
