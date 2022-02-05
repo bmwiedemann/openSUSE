@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           cdemu-daemon
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        Device daemon for cdemu, a virtual CD-ROM device emulator
 License:        GPL-2.0-or-later
@@ -85,7 +85,7 @@ install -pm0644 "service-example/net.sf.cdemu.CDEmuDaemon.service" "$b/%_datadir
 %fillup_only
 
 %files -f %name.lang
-%doc AUTHORS README
+%doc README
 %license COPYING
 %_bindir/cdemu-daemon
 %_mandir/man8/cdemu-daemon.8*

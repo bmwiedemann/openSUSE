@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  5 12:47:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.6
+  * No user visible changes, just packaging-related.
+
+-------------------------------------------------------------------
 Sun Aug 29 18:28:48 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
 
 - Add systemd and D-Bus .service files
