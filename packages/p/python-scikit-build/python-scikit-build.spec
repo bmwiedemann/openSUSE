@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-build
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-scikit-build
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
@@ -37,6 +37,7 @@ Requires:       python-setuptools >= 28.0.0
 Requires:       python-wheel >= 0.29.0
 # SECTION test requirements
 BuildRequires:  %{python_module Cython >= 0.25.1}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module flake8 >= 3.0.4}
 BuildRequires:  %{python_module path.py >= 11.5.0}
@@ -81,10 +82,9 @@ sed -i '/addopts/ d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand  export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=/tmp/fakepythonroot%{$python_sitelib}:%{buildroot}%{$python_sitelib}
-pytest-%{$python_bin_suffix} -v
-}
+export PYTHONPATH=/tmp/fakepythonroot%{$python_sitelib}
+# test_pep518 needs a wheelhouse with downloaded wheels including platform dependent cmake
+%pytest -k "not test_pep518"
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CONTRIBUTING.rst HISTORY.rst docs/

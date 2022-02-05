@@ -54,4 +54,12 @@
   * Avoid an IndexError if prefix was empty.</comment>
     <requestid>924535</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e39ae1f470d740a1d4301e806933ccea</srcmd5>
+    <version>0.13.0</version>
+    <time>1644099803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951780</requestid>
+  </revision>
 </revisionlist>

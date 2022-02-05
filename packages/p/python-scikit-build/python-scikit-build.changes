@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Feb  5 17:40:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.0
+  * If you are using scikit-build via pyproject.toml, please
+    remember to include setuptools and wheel. A future version of
+    scikit-build may remove the setuptools install-time hard
+    requirement.
+  * CMake module /cmake-modules/Cython now uses Cython default
+    arguments. This no longer adds --no-docstrings in Release and
+    MinSizeRel builds, so Cython docstrings are now retained by
+    default. Additionally, --embed-positions is no longer added to
+    Debug and RelWithDebInfo builds. Users can enable these and
+    other Cython arguments via the option CYTHON_FLAGS. See #518
+    and #519, thanks to @bdice for the improvement.
+  * Experimental support for ARM64 on Windows. Thanks to
+    @gaborkertesz-linaro in #612.
+  * Support for MSVC 2022. Thanks to @tttapa for the contribution
+    in #627.
+  * Support the modern form of target_link_libraries, via
+    SKBUILD_LINK_LIBRARIES_KEYWORD (somewhat experimental). Thanks
+    to @maxbachmann in #611.
+  * Update the Ninja path if using the ninja package. This fixes
+    repeated isolated builds. Further path inspection and updates
+    for isolated builds may be considered in the future. #631,
+    thanks to @RUrlus and @segevfiner for help in tracking this
+    down.
+  * Allow OpenBSD to pass the platform check (untested). See #586.
+  * Avoid forcing the min macOS version. Behaviour is now inline
+    with setuptools. Users should set MACOSX_DEPLOYMENT_TARGET when
+    building (automatic with cibuildwheel), otherwise you will get
+    the same value Python was compiled with. Note: This may seem
+    like a regression for PyPy until the next release (7.3.8),
+    since it was compiled with 10.7, which is too old to build with
+    on modern macOS - manually set MACOSX_DEPLOYMENT_TARGET
+    (including setting it if unset in your setup.py) for PyPy until
+    7.3.8. #607
+  * Fix logging issue when using Setuptools 60.2+. #623
+  * MacOS cross compiling support fix (for conda-forge) for
+    built-in modules. Thanks to @isuruf for the contribution in
+    #622.
+  * Better detection of the library path, fixes some issues with
+    PyPy. Thanks to @rkaminsk for the contribution in #620 and
+    #630. PyPy is now part of our testing matrix as of #624. Also
+    @robtaylor in #632.
+  * Fixed issue when cross-compiling on conda-forge (probably
+    upstream bug, but easy to avoid). #646.
+
+-------------------------------------------------------------------
 Sun Oct 10 10:24:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.12.0
