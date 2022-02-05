@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with werror
 
 Name:           yast2-core
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 URL:            https://github.com/yast/yast-core
 
@@ -51,6 +51,7 @@ BuildRequires:  automake >= 1.12
 BuildRequires:  yast2-devtools >= 3.1.10
 # testsuite
 BuildRequires:  dejagnu
+BuildRequires:  glibc-locale
 
 Summary:        YaST2 - Core Libraries
 License:        GPL-2.0-or-later
