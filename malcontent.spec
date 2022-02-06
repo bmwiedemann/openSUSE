@@ -1,7 +1,7 @@
 #
 # spec file for package malcontent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,15 @@
 
 
 Name:           malcontent
-Version:        0.10.1
+Version:        0.10.3
 Release:        0
 Summary:        Parental control system
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://gitlab.freedesktop.org/pwithnall/malcontent
 Source:         https://tecnocode.co.uk/downloads/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/pwithnall/malcontent/-/commit/f433aaf8c8f82f0aeaedee664f08bc6fcad47b0d.patch -- Fix build with meson 0.61.0
+Patch:          https://gitlab.freedesktop.org/pwithnall/malcontent/-/commit/f433aaf8c8f82f0aeaedee664f08bc6fcad47b0d.patch
+
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pam-devel
@@ -97,12 +100,13 @@ Requires:       malcontent >= %{version}
 Parental Control management application for Malcontent
 
 %prep
-%autosetup
+%autosetup -p1
 sed -i 's|env python3|python3|' malcontent-client/malcontent-client.py
 
 %build
 %meson \
-        -Dpamlibdir=%{_pam_moduledir}
+	-Dpamlibdir=%{_pam_moduledir}
+	%{nil}
 %meson_build
 
 %install
