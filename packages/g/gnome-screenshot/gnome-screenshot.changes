@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  2 16:19:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add b60dad3c2536c17bd201f74ad8e40eb74385ed9f.patch: Fix build
+  with meson 0.60 and newer.
+- Replace pkgconfig(appstream-glib) with appstream-glib and
+  desktop-file-utils BuildRequires, and add a check section and run
+  meson_test macro, validate metainfo and desktop file during build
+  via upstream provided automated tests.
+
+-------------------------------------------------------------------
 Sun Nov 14 12:49:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:

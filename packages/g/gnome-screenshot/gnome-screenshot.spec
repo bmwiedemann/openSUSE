@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-screenshot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,13 @@ URL:            https://www.gnome.org
 Source:         https://download.gnome.org/sources/gnome-screenshot/41/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gnome-screenshot-onlyshowin.patch dimstar@opensuse.org -- OnlyShowIn=GNOME: fix brp build check, allowing to use the icon from the gnome theme.
 Patch0:         gnome-screenshot-onlyshowin.patch
+# PATCH-FIX-UPSTREAM b60dad3c2536c17bd201f74ad8e40eb74385ed9f.patch -- Fix build with meson 0.60 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-screenshot/-/commit/b60dad3c2536c17bd201f74ad8e40eb74385ed9f.patch
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcanberra-gtk3)
@@ -54,6 +57,9 @@ area and save the snapshot image to a file.
 %install
 %meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %files
 %license COPYING
