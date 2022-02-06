@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  1 21:43:03 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.25
+  * Fix regression with some particular devices
+  * Fix regression with libusb_handle_events_timeout_completed()
+  * Fix regression with cpu usage in libusb_bulk_transfer
+  * New NO_DEVICE_DISCOVERY option replaces WEAK_AUTHORITY option
+  * Various other bug fixes and improvements
+- Drop not longer needed patch:
+  * 0001-fix-descriptor-parsing.patch
+
+-------------------------------------------------------------------
 Sun Jan 17 11:38:45 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add 0001-fix-descriptor-parsing.patch to fix detection of some devices.
