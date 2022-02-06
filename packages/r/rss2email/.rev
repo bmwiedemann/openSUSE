@@ -70,4 +70,12 @@
     <comment>Resubmit - at least in devel prj it builds, deps seem satisfied; let's see</comment>
     <requestid>891262</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0ace96896f8945bcf7fd74553aabc40a</srcmd5>
+    <version>3.13.1</version>
+    <time>1644188057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951925</requestid>
+  </revision>
 </revisionlist>
