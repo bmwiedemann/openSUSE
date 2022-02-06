@@ -436,4 +436,12 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
   - Multiple improvements to the Russian literary braille thanks to (forwarded request 873553 from dirkmueller)</comment>
     <requestid>874390</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>23c6998518ab345040f9473a420fe85d</srcmd5>
+    <version>3.20.0</version>
+    <time>1644188037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951441</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package liblouis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 20
 Name:           liblouis
-Version:        3.16.1
+Version:        3.20.0
 Release:        0
 Summary:        Two-way braille translator
 License:        LGPL-3.0-or-later
