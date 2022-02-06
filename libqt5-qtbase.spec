@@ -65,6 +65,8 @@ Patch24:        fix-fixqt4headers.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
+# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/393113
+Patch2002:      0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
 BuildRequires:  gcc-c++
