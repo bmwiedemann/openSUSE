@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  1 15:38:55 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added UI.AskForWidgetStyle() (jsc#SLE-20564)
+- Added HasWidgetStyleSupport capability to UI.GetDisplayInfo()
+- Adapted to libyui SO bump 15 -> 16
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
