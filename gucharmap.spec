@@ -1,7 +1,7 @@
 #
 # spec file for package gucharmap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Gucharmap
 Source0:        %{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM a8ee037f8cf151b8b65354bc93c56953e41f5a22.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gucharmap/-/commit/a8ee037f8cf151b8b65354bc93c56953e41f5a22.patch
+
 BuildRequires:  appdata-tools
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -83,7 +86,7 @@ to develop applications that require these.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export LIBS="-ldl"
