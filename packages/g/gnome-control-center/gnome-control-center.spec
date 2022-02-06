@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-control-center
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,11 @@ Source0:        https://download.gnome.org/sources/gnome-control-center/41/%{nam
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-fix-autologin-shortcut.patch glgo#GNOME/gnome-control-center!1084 bsc#1191887 qkzhu@suse.com -- Make autologin_switch a activatable_widget
 Patch1:         gnome-control-center-fix-autologin-shortcut.patch
+# PATCH-FIX-UPSTREAM 4f64deb5f1bc7b83fcc4381b7dbbaf71ad4a77c8.patch -- Fix build with meson 0.61.0 and newer
+Patch2:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/4f64deb5f1bc7b83fcc4381b7dbbaf71ad4a77c8.patch
+# PATCH-FIX-UPSTREAM 496c719d7b1492b54c34ace648feb3802f34f774.patch -- Remove duplicate line from .desktop file
+Patch3:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/496c719d7b1492b54c34ace648feb3802f34f774.patch
+
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -120,18 +125,6 @@ Recommends:     dbus(com.intel.dleyna-server)
 Recommends:     system-config-printer-dbus-service
 # For the power panel
 Recommends:     power-profiles-daemon
-Provides:       acme
-Provides:       fontilus
-Provides:       themus
-Obsoletes:      acme
-Obsoletes:      fontilus
-Obsoletes:      themus
-Provides:       control-center2 = 2.22.1
-Obsoletes:      control-center2 < 2.22.1
-# gnome-control-center-branding was obsoleted with g-c-c 3.8.0 (after openSUSE 12.3)
-Obsoletes:      gnome-control-center-branding <= 12.3
-Obsoletes:      gnome-control-center-branding-openSUSE <= 12.3
-Obsoletes:      gnome-control-center-branding-upstream <= 12.3
 %if %{with wacom}
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.11.3
 BuildRequires:  pkgconfig(libwacom) >= 0.7
@@ -155,8 +148,6 @@ This package provides user avatars to be used by display managers
 Summary:        Header files for the GNOME Control Center
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-Provides:       control-center2-devel = 2.22.1
-Obsoletes:      control-center2-devel < 2.22.1
 
 %description devel
 The control center is GNOME's main interface for configuration of
@@ -182,7 +173,7 @@ Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 # The online accounts panel interacts with binaries and icons from gnome-online-accounts
 Requires:       gnome-online-accounts
-Supplements:    packageand(%{name}:gnome-online-accounts)
+Supplements:    (%{name} and gnome-online-accounts)
 
 %description goa
 This package provides the online accounts onfiguration panel for
@@ -195,6 +186,8 @@ GNOME control center.
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
