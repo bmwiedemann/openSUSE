@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb  5 16:31:13 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Version update to 1.13
+  * New formula for the ‘Shield’ power. Instead of Mental Damage, 
+    it is now based off a combination of player level, Mental stat, 
+    and Defense stat. This should increase its usefulness on mixed 
+    builds.
+  * Added ‘Super’ and ‘Ultra’ variants of Health and Mana 
+    potions. 
+    They can be obtained through the Alchemy system.
+  * New icons for Health and Mana potions variants.
+  * Fixed Alchemist’s Skirt so that it works with all potions.
+  * Prevent the player from damaging Mez before being trapped.
+  * Made Lezaith immune to slow/stun effects.
+  * Goblin Thief can now steal all available kinds of potions. 
+    Its drop table has also been expanded to make it easier to 
+    replenish lost potions.
+  * Improved contrast for “highlight” state of red square buttons 
+    (“close” and “plus”).
+  * The minimap is now gradually revealed as the player explores.
+  * Added icon artwork to the equipment slots on the Inventory 
+    menu.
+  Translation updates
+  * Basque (eu) update (aitzkora)
+  * Scottish Gaelic (gd) update (GunChleoc)
+  * Norwegian Bokmal (nb) update (Elias Nykrem)
+  * Polish (pl) update (Pawonashi)
+  * Russian (ru) update (Igor Polyakov)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sun Sep  5 04:48:14 UTC 2021 - saku nix <ssakuragi2@hotmail.com>
 
 - Version update to 1.12

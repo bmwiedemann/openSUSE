@@ -1,7 +1,7 @@
 #
 # spec file for package flare-game
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flare-game
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Free Libre Action Roleplaying Engine — Game
 License:        CC-BY-SA-3.0+
@@ -54,7 +54,7 @@ are preferred (png, ogg). The game code is C++.
     -DBINDIR="bin" \
     -DDATADIR="share/flare" \
     -DCMAKE_BUILD_TYPE="Release" \
-    -DCMAKE_INSTALL_PREFIX="/usr"
+    -DCMAKE_INSTALL_PREFIX="%{_prefix}"
 
 %install
 %cmake_install
