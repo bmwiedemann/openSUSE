@@ -1,7 +1,7 @@
 #
 # spec file for package python-openTSNE
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# No python36-scipy in Tumbleweed
-%define skip_python36 1
+# not compatile with Python 3.10 API: https://github.com/pavlin-policar/openTSNE/issues/205
+%define skip_python310 1
 Name:           python-openTSNE
-Version:        0.5.1
+Version:        0.6.1
 Release:        0
 Summary:        Extensible, parallel implementations of t-SNE
 License:        BSD-3-Clause
@@ -29,13 +29,14 @@ URL:            https://github.com/pavlin-policar/openTSNE
 # tests are not packaged in the PyPI sdist, use GitHub instead
 Source:         %{url}/archive/v%{version}.tar.gz#/openTSNE-%{version}-gh.tar.gz
 Patch0:         python-openTSNE-disable-CPU-autodetection.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}
 BuildRequires:  %{python_module scikit-learn >= 0.20}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
+BuildRequires:  fftw3-devel
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb  4 16:10:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Remove affinites from TSNE construction, allow custom
+    affinities and initialization in .fit method. This improves the
+    API when dealing with non-tabular data. This is not backwards
+    compatible.
+  * Add metric="precomputed". This includes the addition of
+    openTSNE.nearest_neighbors.PrecomputedDistanceMatrix and
+    openTSNE.nearest_neighbors.PrecomputedNeighbors.
+  * Add knn_index parameter to openTSNE.affinity classes.
+  * Add (less-than-ideal) workaround for pickling Annoy objects.
+  * Extend the range of recommended FFTW boxes up to 1000.
+  * Remove deprecated openTSNE.nearest_neighbors.BallTree.
+  * Remove deprecated openTSNE.callbacks.ErrorLogger.
+  * Remove deprecated TSNE.neighbors_method property.
+  * Add and set as default negative_gradient_method="auto".
+- Skip building on python310: gh#pavlin-policar/openTSNE#205
+
+-------------------------------------------------------------------
 Thu Apr  1 07:36:31 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add python-openTSNE-disable-CPU-autodetection.patch (boo#1100677)
