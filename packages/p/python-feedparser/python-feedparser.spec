@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# no sgmllib3k for python 3.10
+%define skip_python310 1
 Name:           python-feedparser
 Version:        6.0.8
 Release:        0

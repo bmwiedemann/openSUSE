@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  5 16:51:47 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python310 because there is no sgmllib3k and upstream is not
+  willing to move away from it gh#kurtmckee/feedparser#279
+
+-------------------------------------------------------------------
 Wed Jun 23 18:24:35 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 6.0.8:
