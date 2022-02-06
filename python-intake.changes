@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:59:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.5
+  * no changelog
+- Drop intake-pr601-dask-array.patch merged upstream
+- Move to github archive because more tests were removed in the
+  sdist
+- Avoid tests with optional intake-parquet driver: New package
+  would require significant effort including pyarrow
+
+-------------------------------------------------------------------
 Mon Jul 19 12:31:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.2
