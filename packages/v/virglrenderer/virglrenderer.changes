@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:33:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update
+  * Fix OOB in read_transfer_data() (CVE-2022-0135 bsc#1195389)
+    Add virglrenderer-CVE-2022-0135.patch
+
+-------------------------------------------------------------------
 Fri Jan 21 10:45:13 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Pick up the full upstream patch for bsc#1194601, so we know from where it comes

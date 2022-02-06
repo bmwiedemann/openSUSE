@@ -27,6 +27,8 @@ URL:            https://virgil3d.github.io/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
 # CVE-2022-0175 [bsc#1194601], VUL-0: CVE-2022-0175: virglrenderer: Missing initialization of res->ptr
 Patch0:         virglrenderer-CVE-2022-0175.patch
+# CVE-2022-0135 [bsc#1195389], VUL-0: CVE-2022-0135: virglrenderer: out-of-bounds write in read_transfer_data()
+Patch1:         virglrenderer-CVE-2022-0135.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
@@ -73,6 +75,7 @@ without GL.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %meson
