@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 13 01:48:38 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1644599247.9ecfb500a:
+  * Make parameters for carry-over configurable
+  * t: Fix querying stale reference in fullstack and developer mode test
+  * t: Avoid noisy debug output when testing test helper of fullstack test
+  * t: Cover testhelper for checking fullstack test setup
+  * t: Workaround Selenium error when using `send_keys` in fullstack tests
+  * t: Cover helpers of fullstack test itself
+  * t: Improve logging errors in case the cache service test fails
+  * Write restarting test shorter by using `@empty_deps` in more places
+
+-------------------------------------------------------------------
 Thu Feb 10 07:29:56 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1644418414.99e1921c4:
