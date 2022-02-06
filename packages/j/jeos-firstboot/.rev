@@ -443,4 +443,15 @@
   * Drop call to snapper setup-quota, kiwi does that meanwhile</comment>
     <requestid>947715</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0842ea870686331fa5aa22f6c49d07b8</srcmd5>
+    <version>1.1.0.3</version>
+    <time>1644188009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0.3:
+  * Don't make a snapshot if /etc is not part of it
+  * Use mountpoint with -q
+  * Don't attach jeos-firstboot-snapshot.service to the TTY</comment>
+    <requestid>951339</requestid>
+  </revision>
 </revisionlist>
