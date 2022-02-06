@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 09:19:19 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fixed Export unit test (related to jsc#SLE-22069).
+- 4.4.11
+
+-------------------------------------------------------------------
 Wed Jan 26 14:01:57 UTC 2022 - Knut Alejandro Anderssen González <kanderssen@suse.com>
 
 Related to jsc#SLE-22069:
