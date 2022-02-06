@@ -205,7 +205,7 @@ rm -r $RPM_BUILD_ROOT%{_libdir}/libsasl2.so.3*
 find "%buildroot" -type f -name "*.la" -print -delete
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %dir %{_libdir}/sasl2
 %{_libdir}/sasl2/libanonymous.so*
 %{_libdir}/sasl2/liblogin.so*
@@ -215,51 +215,42 @@ find "%buildroot" -type f -name "*.la" -print -delete
 /usr/bin/*
 %doc %{_mandir}/man3/sasl.*.gz
 %doc %{_mandir}/man8/*.gz
-%doc COPYING
 
 %files gssapi
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libgssapiv2.so*
 
 %files crammd5
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libcrammd5.so*
 
 %files digestmd5
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libdigestmd5.so*
 
 %files otp
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libotp.so*
 
 %files plain
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libplain.so*
 
 %files ntlm
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libntlm.so*
 
 %files gs2
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libgs2.so*
 
 %files scram
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libscram.so*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README doc
+%license COPYING
+%doc AUTHORS ChangeLog README doc
 %_includedir/sasl/
 %doc %{_mandir}/man3/sasl_*.gz
 %{_libdir}/libsasl2.so

@@ -155,22 +155,20 @@ install -m 644 %{SOURCE4} $RPM_BUILD_ROOT/%{_unitdir}
 %service_add_post saslauthd.service
 
 %files
-%defattr(-,root,root)
+%license saslauthd/COPYING
 %{_fillupdir}/sysconfig.saslauthd
 %{_unitdir}/saslauthd.service
-%dir %attr(0755, root, root) %ghost /run/sasl2   
+%dir %attr(0755, root, root) %ghost /run/sasl2
 /usr/sbin/*
 /usr/bin/*
 %doc %{_mandir}/man8/*.gz
-%doc saslauthd/COPYING saslauthd/ChangeLog saslauthd/LDAP_SASLAUTHD
+%doc saslauthd/ChangeLog saslauthd/LDAP_SASLAUTHD
 
 %files -n cyrus-sasl-sqlauxprop
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libsql.so*
 
 %files -n cyrus-sasl-ldap-auxprop
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libldapdb.so*
 

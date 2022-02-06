@@ -1,9 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan 31 10:03:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- cyrus-sasl: prevent fail of %pre when berkely db utils are
+  not installed (seems like we want to use this only for upgrade
+  so no Prereq added) 
+- move license to licensedir
+- remove use of RPM_BUILD_ROOT
+- minimal spec cleanups
+- avoid bashisms
+
+-------------------------------------------------------------------
+Thu Jan 13 14:58:15 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- postfix: sasl authentication with password fails (bsc#1194265)
+  Add config parameter --with-dblib=gdbm
+- Avoid converting of /etc/sasldb2 by every update. Convert
+  /etc/sasldb2 only if it is a Berkeley DB
+
+-------------------------------------------------------------------
 Thu Feb 25 18:03:26 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - Fix build: Do not build libsasl2-3 in the bdb package. This will
   not be linked to berkely db. libsasl2-3 is now defined as
   %BuildRequires and %Requires
+
+-------------------------------------------------------------------
+Fri Jan  8 11:32:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- CVE-2020-8032: cyrus-sasl: Local privilege escalation to root
+  due to insecure tmp file usage. (bsc#1180669)
+  Use /var/adm/update-scripts/ instead of /tmp. Clean up temporary
+  files.
 
 -------------------------------------------------------------------
 Tue Dec  8 13:33:33 UTC 2020 - Peter Varkoly <varkoly@suse.com>

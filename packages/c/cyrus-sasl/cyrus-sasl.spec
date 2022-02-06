@@ -16,38 +16,36 @@
 #
 
 
-Name:           cyrus-sasl
 %define lname	libsasl2-3
+Name:           cyrus-sasl
 Version:        2.1.27
 Release:        0
-URL:            http://asg.web.cmu.edu/sasl/
 Summary:        Implementation of Cyrus SASL API
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Other
-
+URL:            http://asg.web.cmu.edu/sasl/
 Source:         %{name}-%{version}.tar.gz
 Source1:        cyrus-sasl-rc.tar.bz2
 Source2:        README.Source
 Source3:        baselibs.conf
-Patch:          cyrus-sasl.dif
+Patch0:         cyrus-sasl.dif
 # see https://github.com/cyrusimap/cyrus-sasl/issues/587
 Patch1:         cyrus-sasl-bug587.patch
 Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  opie
 BuildRequires:  pam-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+Conflicts:      cyrus-sasl-bdb
 %ifarch ppc64
 # bug437293
 Obsoletes:      cyrus-sasl-64bit
 %endif
-Conflicts:      cyrus-sasl-bdb
 
 %package      gssapi
 Summary:        Plugin for the GSSAPI SASL mechanism
@@ -98,16 +96,15 @@ Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-scram
 
 %package      devel
-# bug437293
-%ifarch ppc64
-Obsoletes:      cyrus-sasl-devel-64bit
-%endif
-#
 Summary:        Cyrus SASL API Implementation, Libraries and Header Files
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       glibc-devel
 Conflicts:      cyrus-sasl-devel-bdb
+# bug437293
+%ifarch ppc64
+Obsoletes:      cyrus-sasl-devel-64bit
+%endif
 
 %package -n libsasl2-3
 Summary:        Simple Authentication and Security Layer (SASL) library
@@ -175,7 +172,7 @@ then
     echo "dlcompat contains potential legal risks."
     rm -rf %{_builddir}/%{name}-%{version}/dlcompat-*
 fi
-%patch
+%patch0
 %patch1 -p1
 %patch5 -p1
 %patch6 -p1
@@ -187,7 +184,7 @@ autoreconf -f
 export CFLAGS="%optflags -fno-strict-aliasing"
 %configure --with-pic \
             --with-plugindir=%{_libdir}/sasl2 \
-            --with-configdir=/etc/sasl2/:%{_libdir}/sasl2 \
+            --with-configdir=%{_sysconfdir}/sasl2/:%{_libdir}/sasl2 \
 	    --with-saslauthd=/run/sasl2/ \
 	    --with-dblib=gdbm \
 	    --enable-pam \
@@ -198,27 +195,28 @@ export CFLAGS="%optflags -fno-strict-aliasing"
 	    --enable-krb4=no \
             --enable-sql=no \
 	    --with-devrandom=/dev/urandom
-%{__make} %{?_smp_mflags} sasldir=%{_libdir}/sasl2
+%make_build sasldir=%{_libdir}/sasl2
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT sasldir=%{_libdir}/sasl2 install
-mkdir -p $RPM_BUILD_ROOT/usr/bin
-mkdir -p $RPM_BUILD_ROOT/etc/sasl2
-install -m 755 sample/.libs/client $RPM_BUILD_ROOT/usr/bin/cyrus_sasl_sample_client
-install -m 755 sample/.libs/server $RPM_BUILD_ROOT/usr/bin/cyrus_sasl_sample_server
+make DESTDIR=%{buildroot} sasldir=%{_libdir}/sasl2 install
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sysconfdir}/sasl2
+install -m 755 sample/.libs/client %{buildroot}%{_bindir}/cyrus_sasl_sample_client
+install -m 755 sample/.libs/server %{buildroot}%{_bindir}/cyrus_sasl_sample_server
 chmod 0644 doc/*
 rm -f doc/Makefile*
-rm -f $RPM_BUILD_ROOT/%{_mandir}/cat?/*
-rm -f $RPM_BUILD_ROOT/%{_mandir}/man8/saslauthd*
-rm -f $RPM_BUILD_ROOT/usr/sbin/saslauthd
-rm -f $RPM_BUILD_ROOT/usr/sbin/testsaslauthd
-find "%buildroot" -type f -name "*.la" -print -delete
+rm -f %{buildroot}/%{_mandir}/cat?/*
+rm -f %{buildroot}/%{_mandir}/man8/saslauthd*
+rm -f %{buildroot}%{_sbindir}/saslauthd
+rm -f %{buildroot}%{_sbindir}/testsaslauthd
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %pre
 #Convert password file from berkely into gdbm
 #In %pre the existing file will be dumped out
-if  /usr/bin/db_verify /etc/sasldb2 &> /dev/null ; then
-cat <<EOF > /var/adm/update-scripts/saslpw.awk
+
+if test -x %{_bindir}/db_verify && %{_bindir}/db_verify %{_sysconfdir}/sasldb2 >/dev/null 2>&1 ; then
+cat > %{_localstatedir}/adm/update-scripts/saslpw.awk <<EOF
 {
         split(\$0,b,/\\\00/)
         if( b[3] == "userPassword" ) {
@@ -233,83 +231,73 @@ cat <<EOF > /var/adm/update-scripts/saslpw.awk
         }
 }
 EOF
-db_dump -p /etc/sasldb2 | gawk -f /var/adm/update-scripts/saslpw.awk > /var/adm/update-scripts/saslpwd
-rm -f /var/adm/update-scripts/saslpw.awk
-mv /etc/sasldb2 /etc/sasldb2-back
+db_dump -p %{_sysconfdir}/sasldb2 | gawk -f %{_localstatedir}/adm/update-scripts/saslpw.awk > %{_localstatedir}/adm/update-scripts/saslpwd
+rm -f %{_localstatedir}/adm/update-scripts/saslpw.awk
+mv %{_sysconfdir}/sasldb2 %{_sysconfdir}/sasldb2-back
 fi
 
 %post
-if [ -e /var/adm/update-scripts/saslpwd ]; then
-        chmod 755 /var/adm/update-scripts/saslpwd
-        /var/adm/update-scripts/saslpwd
-	rm -f /var/adm/update-scripts/saslpwd
+if [ -e %{_localstatedir}/adm/update-scripts/saslpwd ]; then
+        chmod 755 %{_localstatedir}/adm/update-scripts/saslpwd
+        %{_localstatedir}/adm/update-scripts/saslpwd
+	rm -f %{_localstatedir}/adm/update-scripts/saslpwd
 fi
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %{_libdir}/libsasl2.so.3*
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %dir %{_libdir}/sasl2
 %{_libdir}/sasl2/libanonymous.so*
 %{_libdir}/sasl2/liblogin.so*
 %{_libdir}/sasl2/libsasldb.so*
-%dir /etc/sasl2/
-/usr/sbin/*
-/usr/bin/*
-%doc %{_mandir}/man3/sasl.*.gz
-%doc %{_mandir}/man8/*.gz
-%doc COPYING
+%dir %{_sysconfdir}/sasl2/
+%{_sbindir}/*
+%{_bindir}/*
+%{_mandir}/man3/sasl.*.gz
+%{_mandir}/man8/*.gz
 
 %files gssapi
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libgssapiv2.so*
 
 %files crammd5
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libcrammd5.so*
 
 %files digestmd5
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libdigestmd5.so*
 
 %files otp
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libotp.so*
 
 %files plain
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libplain.so*
 
 %files ntlm
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libntlm.so*
 
 %files gs2
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libgs2.so*
 
 %files scram
-%defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libscram.so*
 
 %files devel
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README doc
+%license COPYING
+%doc AUTHORS ChangeLog README doc
 %_includedir/sasl/
-%doc %{_mandir}/man3/sasl_*.gz
+%{_mandir}/man3/sasl_*.gz
 %{_libdir}/libsasl2.so
 %{_libdir}/pkgconfig/*
 
