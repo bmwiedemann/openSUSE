@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        055+suse.194.gdd41932a
+Version:        055+suse.226.g44139dde
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -171,8 +171,8 @@ install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{dracut_sbindir}/mkinitrd
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
 %if 0%{?suse_version}
-#rm -f %%{buildroot}/%%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
-#ln -s %%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %%{buildroot}/%%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
+rm -f %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
+ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
 %else
 mv %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh
 ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh

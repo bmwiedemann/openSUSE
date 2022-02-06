@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 28 07:34:14 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.226.g44139dde:
+  * fix(zfcp_rules): remove collect based udev rule creators
+  * fix(dasd_rules): remove collect based udev rule creators
+  * fix(kernel-modules-extra): handle zstd module extension
+  * fix(ifcfg): add SUSE specific write-ifcfg file (bsc#1193518)
+  * fix(dracut-functions): skip iSCSI sessions without initiatorname (bsc#1195011)
+  * fix(dracut-functions.sh): ip route parsing (bsc#1195011)
+  * fix(fips): missing sourcing of dracut-lib
+  * fix(fips): wrong error message
+  * fix(network-legacy): install only existing SUSE specific files (bsc#1194879)
+  * fix(network-legacy): set dhclient as optional (bsc#1194879)
+  * fix(40network): consistent use of "$gw" for gateway (bsc#1192685)
+  * fix(multipathd-configure.service): drop unneeded dependencies
+  * fix(multipath): check if mpathconf is available
+  * fix(multipathd.service): drop dependencies on iscsi and iscsid
+  * fix(multipathd.service): adapt to upstream multipath-tools unit file
+  * fix(multipathd.service): remove dependency on systemd-udev-settle
+  * fix(fips): avoid shellcheck warnings
+  * fix(fips): get _vmname value only if it is needed
+  * fix(fips.sh): respect rd.fips.skipkernel
+  * fix(fips): alignment with the upstream format
+
+-------------------------------------------------------------------
 Mon Jan 17 11:20:56 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 055+suse.194.gdd41932a:
