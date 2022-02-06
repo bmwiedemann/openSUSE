@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQt6-sip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyQt6-sip
-Version:        13.2.0
+Version:        13.2.1
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP

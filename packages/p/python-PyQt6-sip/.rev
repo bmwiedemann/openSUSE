@@ -17,4 +17,14 @@
 </comment>
     <requestid>935718</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8077ed80e0b7ae2dec5ed281143f38b</srcmd5>
+    <version>13.2.1</version>
+    <time>1644188061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ABI version 13.2.1
+  * fix in objmap
+</comment>
+    <requestid>951797</requestid>
+  </revision>
 </revisionlist>
