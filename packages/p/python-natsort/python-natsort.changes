@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:01:25 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 8.1.0:
+  * Changed
+    + When using ns.PATH, only split off a maximum of two suffixes
+      from a file name (issues #145, #146).
+
+-------------------------------------------------------------------
 Sun Dec 26 08:55:47 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 8.0.2
