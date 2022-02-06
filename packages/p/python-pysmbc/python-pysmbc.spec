@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmbc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pysmbc/pysmbc-%
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  libsmbclient-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(smbclient)
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 %endif
