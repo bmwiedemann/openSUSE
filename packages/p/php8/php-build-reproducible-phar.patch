@@ -20,7 +20,7 @@ Index: php-8.0.0/ext/phar/phar.c
 ===================================================================
 --- php-8.0.0.orig/ext/phar/phar.c	2020-11-24 18:04:03.000000000 +0100
 +++ php-8.0.0/ext/phar/phar.c	2021-01-07 10:56:10.978719743 +0100
-@@ -3002,7 +3002,7 @@ int phar_flush(phar_archive_data *phar,
+@@ -2995,7 +2995,7 @@ int phar_flush(phar_archive_data *phar,
  			4: metadata-len
  			+: metadata
  		*/
@@ -33,7 +33,7 @@ Index: php-8.0.0/ext/phar/phar_internal.h
 ===================================================================
 --- php-8.0.0.orig/ext/phar/phar_internal.h	2020-11-24 18:04:03.000000000 +0100
 +++ php-8.0.0/ext/phar/phar_internal.h	2021-01-07 10:56:10.978719743 +0100
-@@ -425,6 +425,21 @@ static inline enum phar_fp_type phar_get
+@@ -427,6 +427,21 @@ static inline enum phar_fp_type phar_get
  	return PHAR_G(cached_fp)[entry->phar->phar_pos].manifest[entry->manifest_pos].fp_type;
  }
  
@@ -72,7 +72,7 @@ Index: php-8.0.0/ext/phar/tar.c
 ===================================================================
 --- php-8.0.0.orig/ext/phar/tar.c	2020-11-24 18:04:03.000000000 +0100
 +++ php-8.0.0/ext/phar/tar.c	2021-01-07 10:56:10.978719743 +0100
-@@ -962,7 +962,7 @@ int phar_tar_flush(phar_archive_data *ph
+@@ -971,7 +971,7 @@ int phar_tar_flush(phar_archive_data *ph
  	char halt_stub[] = "__HALT_COMPILER();";
  
  	entry.flags = PHAR_ENT_PERM_DEF_FILE;
@@ -98,7 +98,7 @@ Index: php-8.0.0/ext/phar/zip.c
 ===================================================================
 --- php-8.0.0.orig/ext/phar/zip.c	2020-11-24 18:04:03.000000000 +0100
 +++ php-8.0.0/ext/phar/zip.c	2021-01-07 10:56:10.982719768 +0100
-@@ -1180,7 +1180,7 @@ int phar_zip_flush(phar_archive_data *ph
+@@ -1214,7 +1214,7 @@ int phar_zip_flush(phar_archive_data *ph
  
  	pass.error = &temperr;
  	entry.flags = PHAR_ENT_PERM_DEF_FILE;

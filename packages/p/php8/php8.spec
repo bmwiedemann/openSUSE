@@ -42,8 +42,8 @@
 
 %define debug_build       0
 %define asan_build        0
-%global apiver            20200930
-%global zendver           20200930
+%global apiver            20210902
+%global zendver           20210902
 %define extension_dir     %{_libdir}/%{php_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{php_name}
 %define build_firebird 0
@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.0.15
+Version:        8.1.2
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -64,6 +64,7 @@ Source1:        mod_%{php_name}.conf
 Source5:        README.macros
 Source6:        macros.php
 Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
+#Source9:       https://www.php.net/distributions/php-keyring.gpg#/%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
 Source12:       php-fpm.tmpfiles.d
@@ -78,7 +79,7 @@ Patch2:         php-php-config.patch
 # SUSE specific ini defaults
 Patch3:         php-ini.patch
 # use of the system timezone database
-Patch4:         php-systzdata-v20.patch
+Patch4:         php-systzdata-v21.patch
 # adjust upstream systemd unit to SUSE needs
 Patch5:         php-systemd-unit.patch
 # PATCH-FEATURE-OPENSUSE use ordered input files for reproducible /usr/bin/phar.phar
@@ -94,8 +95,6 @@ Patch20:        php-crypt-tests.patch
 Patch22:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
 Patch19:        php-build-reproducible-phar.patch
-# https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
-Patch23:        php8-gd-removed-unused-constants.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -122,7 +121,7 @@ BuildRequires:  tcpd-devel
 BuildRequires:  update-alternatives
 BuildRequires:  xz
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150200
-BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(enchant) >= 1.4.2
 %else
 BuildRequires:  pkgconfig(enchant-2)
 %endif
@@ -134,6 +133,7 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libffi) >= 3.0.11
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.30
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
@@ -141,8 +141,8 @@ BuildRequires:  pkgconfig(libxslt) >= 1.1.0
 BuildRequires:  pkgconfig(libzip) >= 0.11
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(oniguruma)
-BuildRequires:  pkgconfig(openssl) >= 1.0.1
-BuildRequires:  pkgconfig(sqlite3) >= 3.7.4
+BuildRequires:  pkgconfig(openssl) >= 1.0.2
+BuildRequires:  pkgconfig(sqlite3) >= 3.7.7
 BuildRequires:  pkgconfig(zlib) >= 1.2.0.4
 %if %{build_firebird}
 # firebird-devel was merged into libfbclient2-devel for firebird 3
@@ -240,7 +240,7 @@ Additional documentation is available in package php-doc.
 
 %package devel
 # this is required by the installed  development headers
-Summary:        PHP8 development files for C/C++ extensions
+Summary:        PHP development files for C/C++ extensions
 Group:          Development/Libraries/PHP
 Requires:       %{php_name}-pear
 Requires:       %{php_name}-pecl
@@ -267,7 +267,7 @@ Run php upstream testsuite.
 %endif
 
 %if "%{flavor}" == "apache2"
-Summary:        PHP8 module for the Apache 2.x webserver
+Summary:        PHP module for the Apache 2.x webserver
 Group:          Development/Libraries/PHP
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2-devel
@@ -293,7 +293,7 @@ information on how to load the module into the Apache webserver.
 %endif
 
 %if "%{flavor}" == "fastcgi"
-Summary:        FastCGI PHP8 Module
+Summary:        FastCGI PHP Module
 Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 Requires:       php = %{version}
@@ -311,7 +311,7 @@ resources available in the links section.
 %endif
 
 %if "%{flavor}" == "fpm"
-Summary:        FastCGI Process Manager PHP8 Module
+Summary:        FastCGI Process Manager PHP Module
 Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 BuildRequires:  pkgconfig(libsystemd) >= 209
@@ -359,7 +359,7 @@ Binary Calculator which supports numbers of any size and precision,
 represented as strings.
 
 %package bz2
-Summary:        bzip2 codec support for PHP
+Summary:        PHP bzip2 codec support
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-bz2 = %{version}
@@ -369,7 +369,7 @@ Obsoletes:      php-bz2 < %{version}
 PHP functions to read and write bzip2 (.bz2) compressed files.
 
 %package calendar
-Summary:        PHP8 Extension Module
+Summary:        PHP Extension Module
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-calendar = %{version}
@@ -390,7 +390,7 @@ PHP functions for checking whether a character or string falls into a
 certain character class according to the current locale.
 
 %package curl
-Summary:        libcurl integration for PHP
+Summary:        PHP libcurl integration
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-curl = %{version}
@@ -453,6 +453,18 @@ Obsoletes:      php-exif < %{version}
 PHP functions for extracting EXIF (Exchangable Image File Format;
 metadata from images) information stored in headers of JPEG and TIFF
 images.
+
+%package ffi
+Summary:        Main interface to C code and data
+Group:          Development/Libraries/PHP
+Requires:       php = %{version}
+Provides:       php-ffi = %{version}
+
+%description ffi
+This extension allows the loading of shared libraries (.DLL or .so),
+calling of C functions and accessing of C data structures in pure PHP,
+without having to have deep knowledge of the Zend extension API, and
+without having to learn a third "intermediate" language.
 
 %package fileinfo
 Summary:        File identification extension for PHP
@@ -705,7 +717,7 @@ IEEE 1003.1 (POSIX.1) standards document which are not accessible
 through other means.
 
 %package readline
-Summary:        PHP8 readline extension
+Summary:        PHP readline extension
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-readline = %{version}
@@ -834,7 +846,7 @@ Obsoletes:      php-sysvshm < %{version}
 PHP interface for System V shared memory.
 
 %package tidy
-Summary:        PHP8 binding for the Tidy HTML cleaner
+Summary:        PHP binding for the Tidy HTML cleaner
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Provides:       php-tidy = %{version}
@@ -860,7 +872,7 @@ own PHP source analyzing or modification tools without having to deal
 with the language specification at the lexical level.
 
 %package xsl
-Summary:        PHP8 Extension Module
+Summary:        PHP Extension Module
 Group:          Development/Libraries/PHP
 Requires:       php = %{version}
 Requires:       php-dom = %{version}
@@ -1098,6 +1110,8 @@ Build cli \
     --with-curl=shared \
     --enable-gd=shared \
     --with-external-gd \
+    --with-avif \
+    --with-ffi=shared \
     --with-gettext=shared \
     --with-gmp=shared \
     --with-iconv=shared \
@@ -1259,6 +1273,10 @@ install -d %{buildroot}%{_includedir}/%{php_name}/sapi/embed
 install -m 644 sapi/embed/php_embed.h %{buildroot}%{_includedir}/%{php_name}/sapi/embed/php_embed.h
 # mysqlnd must be loaded before mysqli (undefined symbol: mysqlnd_global_stats)
 mv %{buildroot}%{php_sysconf}/conf.d/{,_}mysqlnd.ini
+# fix file contains a shebang
+for f in %{buildroot}%{_datadir}/%{php_name}/build/{gen_stub.php,run-tests.php}; do
+    sed -i '1{s|env ||}' $f
+done
 %endif
 
 %if "%{flavor}" == "apache2"
@@ -1344,6 +1362,7 @@ fi
 %{_bindir}/phpize
 %{_bindir}/php-config
 %{_datadir}/%{php_name}/build
+%attr(0755, root, root) %{_datadir}/%{php_name}/build/{gen_stub.php,run-tests.php}
 %{_includedir}/%{php_name}
 %{_mandir}/man1/phpize.1%{?ext_man}
 %{_mandir}/man1/php-config.1%{?ext_man}
@@ -1438,6 +1457,11 @@ fi
 %defattr(-, root, root)
 %{extension_dir}/exif.so
 %config(noreplace) %{php_sysconf}/conf.d/exif.ini
+
+%files ffi
+%defattr(-, root, root)
+%{extension_dir}/ffi.so
+%config(noreplace) %{php_sysconf}/conf.d/ffi.ini
 
 %files fileinfo
 %defattr(-, root, root)

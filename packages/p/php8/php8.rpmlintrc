@@ -4,7 +4,8 @@
 addFilter("php.-embed.* shlib-policy-name-error")
 # PHP7 is (almost) obsolete, replaced by PHP8
 addFilter("obsolete-not-provided php7-*")
-# Forgot to add category?
-addFilter("non-standard-group Development/Libraries/PHP")
-# Warning for all flavors not equal to "" in multibuild
-addFilter("invalid-spec-name")
+# Silence expected error in configuration script
+addFilter("rpath-in-buildconfig /usr/bin/php-config")
+# False positives for scripts which check used shell
+addFilter("potential-bashisms /usr/share/php8/build/config.guess")
+addFilter("potential-bashisms /usr/share/php8/build/shtool")

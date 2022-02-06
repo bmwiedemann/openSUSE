@@ -2,7 +2,7 @@ Index: php-8.0.0/php.ini-production
 ===================================================================
 --- php-8.0.0.orig/php.ini-production	2020-11-24 18:04:03.000000000 +0100
 +++ php-8.0.0/php.ini-production	2021-01-07 10:13:37.934622775 +0100
-@@ -742,7 +742,7 @@ default_charset = "UTF-8"
+@@ -737,7 +737,7 @@ default_charset = "UTF-8"
  ;;;;;;;;;;;;;;;;;;;;;;;;;
  
  ; UNIX: "/path1:/path2"
@@ -11,21 +11,21 @@ Index: php-8.0.0/php.ini-production
  ;
  ; Windows: "\path1;\path2"
  ;include_path = ".;c:\php\includes"
-@@ -969,7 +969,7 @@ cli_server.color = On
+@@ -965,7 +965,7 @@ cli_server.color = On
  [Date]
  ; Defines the default timezone used by the date functions
- ; http://php.net/date.timezone
+ ; https://php.net/date.timezone
 -;date.timezone =
 +date.timezone = 'UTC'
  
- ; http://php.net/date.default-latitude
+ ; https://php.net/date.default-latitude
  ;date.default_latitude = 31.7667
 @@ -1154,7 +1154,7 @@ mysqli.max_persistent = -1
  
  ; Allow or prevent persistent links.
- ; http://php.net/mysqli.allow-persistent
+ ; https://php.net/mysqli.allow-persistent
 -mysqli.allow_persistent = On
 +mysqli.allow_persistent = Off
  
  ; Maximum number of links.  -1 means no limit.
- ; http://php.net/mysqli.max-links
+ ; https://php.net/mysqli.max-links
