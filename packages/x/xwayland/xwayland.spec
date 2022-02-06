@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,16 @@
 %endif
 
 Name:           xwayland
-Version:        21.1.4
+Version:        22.0.99.902
 Release:        0
 URL:            http://xorg.freedesktop.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        X
-# Source URL: https://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-%{version}.tar.xz.sig
+Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
+Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
+Source2:        xwayland.keyring
+
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -44,23 +44,18 @@ BuildRequires:  pkgconfig(damageproto)
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dri3proto)
 BuildRequires:  pkgconfig(epoxy)
-BuildRequires:  pkgconfig(libtirpc)
-
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols)
-%if 0%{?have_wayland_eglstream} == 1
-BuildRequires:  pkgconfig(wayland-eglstream-protocols)
-%endif
 BuildRequires:  pkgconfig(fixesproto)
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(fontutil)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glproto)
-BuildRequires:  pkgconfig(inputproto)
+BuildRequires:  pkgconfig(inputproto) >= 2.3.99.1
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libtirpc)
+BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(presentproto)
@@ -70,6 +65,11 @@ BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
 BuildRequires:  pkgconfig(videoproto)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
+%if 0%{?have_wayland_eglstream} == 1
+BuildRequires:  pkgconfig(wayland-eglstream-protocols)
+%endif
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-damage)
@@ -130,11 +130,9 @@ Requires:       pkgconfig(xv)
 This package contains the Xwayland Server development files.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
-
 %{meson} \
    -Dglamor=true \
 %if 0%{?have_wayland_eglstream} == 1
@@ -189,11 +187,10 @@ rm -f %{buildroot}%{_libdir}/xorg/protocol.txt
 
 %files
 %{_bindir}/Xwayland
+%{_mandir}/man1/Xwayland.1%{ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/pkgconfig/*.pc
 %dir %{_libdir}/xorg
-%{_mandir}/man1/Xwayland.1.gz
 
 %changelog

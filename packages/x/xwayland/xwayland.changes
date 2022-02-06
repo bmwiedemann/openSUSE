@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  3 04:48:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.0.99.902
+  * render: Fix build with gcc 12
+
+-------------------------------------------------------------------
+Thu Jan 20 17:59:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.0.99.901
+  * DRM lease support
+  * Enables sRGB fbconfigs in GLX
+  * Requires libxcvt
+  * Refactoring of the present code in Xwayland
+  * Implements support for touchpad gestures
+  * Support for xfixes's ClientDisconnectMode and optional
+    terminate delay
+- Add pkgconfig(libxcvt) BuildRequires: New dependency.
+- Add xwayland.keyring, use url for sources, validate sig.
+- Move man pages from devel to main binary package.
+- Enable LTO, no longer disable LTO via macro.
+
+-------------------------------------------------------------------
 Tue Dec 14 15:44:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.4
