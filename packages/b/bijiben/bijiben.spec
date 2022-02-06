@@ -1,7 +1,7 @@
 #
 # spec file for package bijiben
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,13 @@ License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Bijiben
 Source0:        https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 158.patch -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-notes/-/merge_requests/158.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
@@ -55,7 +56,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-%{name}
 Bijiben is a note editor designed to remain simple to use.
@@ -76,7 +77,6 @@ search results from documents.
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.Notes DesktopUtility
 %fdupes -s %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 

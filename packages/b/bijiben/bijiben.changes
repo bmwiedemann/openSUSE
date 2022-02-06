@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:29:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 158.patch: Fix build with meson 0.61.0 and newer.
+- Update our Supplements to current standard.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+
+-------------------------------------------------------------------
 Thu Nov  4 14:45:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing option static=false to meson, no longer used nor

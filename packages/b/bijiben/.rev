@@ -449,4 +449,16 @@
     <comment> (forwarded request 929196 from iznogood)</comment>
     <requestid>929604</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>974456392f47592ce88d46dd6204ea01</srcmd5>
+    <version>40.1</version>
+    <time>1644188039</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 158.patch: Fix build with meson 0.61.0 and newer.
+- Update our Supplements to current standard.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+</comment>
+    <requestid>951443</requestid>
+  </revision>
 </revisionlist>
