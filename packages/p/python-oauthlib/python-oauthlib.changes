@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:02:09 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.2.0:
+  * OAuth2.0 Client: * #795: Add Device Authorization Flow for Web
+    Application * #786: Add PKCE support for Client * #783: Fallback
+    to none in case of wrong expires_at format.
+  * OAuth2.0 Provider: * #790: Add support for CORS to metadata
+    endpoint. * #791: Add support for CORS to token endpoint. * #787:
+    Remove comma after Bearer in WWW-Authenticate
+  * OAuth2.0 Provider - OIDC:
+    + #755: Call save_token in Hybrid code flow
+    + #751: OIDC add support of refreshing ID Tokens with
+       refresh_id_token
+    + #751: The RefreshTokenGrant modifiers now take the same
+       arguments as the AuthorizationCodeGrant modifiers (token,
+       token_handler, request).
+  * General:
+    + Added Python 3.9, 3.10, 3.11
+    + Improve Travis & Coverage
+
+-------------------------------------------------------------------
 Sun Jun  6 12:48:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.1:
