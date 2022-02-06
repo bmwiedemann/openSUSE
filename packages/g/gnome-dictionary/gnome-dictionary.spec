@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-dictionary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,17 @@ Summary:        Utility to look up words in dictionary sources
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Dictionary
-#Source0:       https://download.gnome.org/sources/gnome-dictionary/3.26/%%{name}-%%{version}.tar.xz
 Source:         https://download.gnome.org/sources/gnome-dictionary/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-dictionary-fix-meson-061.patch -- Fix build with meson 0.61 and newer
+Patch:          gnome-dictionary-fix-meson-061.patch
+
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
@@ -47,7 +50,7 @@ dictionary source.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \
@@ -60,6 +63,9 @@ dictionary source.
 %meson_install
 %fdupes %{buildroot}%{_datadir}/help
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %files
 %license COPYING

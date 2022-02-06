@@ -1,0 +1,32 @@
+diff -Nur orig-gnome-dictionary-40.0/data/appdata/meson.build gnome-dictionary-40.0/data/appdata/meson.build
+--- orig-gnome-dictionary-40.0/data/appdata/meson.build	2022-02-03 06:26:43.081034952 +0100
++++ gnome-dictionary-40.0/data/appdata/meson.build	2022-02-03 06:27:37.573590616 +0100
+@@ -1,6 +1,6 @@
+ appdata_conf = configuration_data()
+ appdata_conf.set('application_id', application_id)
+-i18n.merge_file('appdata',
++i18n.merge_file(
+   input: configure_file(
+     input: 'org.gnome.Dictionary.appdata.xml.in.in',
+     output: 'org.gnome.Dictionary.appdata.xml.in',
+diff -Nur orig-gnome-dictionary-40.0/data/meson.build gnome-dictionary-40.0/data/meson.build
+--- orig-gnome-dictionary-40.0/data/meson.build	2022-02-03 06:26:43.081034952 +0100
++++ gnome-dictionary-40.0/data/meson.build	2022-02-03 06:30:59.971785597 +0100
+@@ -3,7 +3,7 @@
+ desktop_conf = configuration_data()
+ desktop_conf.set('icon', application_id)
+ desktop_conf.set('application_id', application_id)
+-i18n.merge_file('desktop',
++i18n.merge_file(
+   input: configure_file(
+     input: 'org.gnome.Dictionary.desktop.in.in',
+     output: 'org.gnome.Dictionary.desktop.in',
+@@ -45,7 +45,7 @@
+ ]
+ 
+ foreach s: sources
+-  i18n.merge_file('sources',
++  i18n.merge_file(
+     input: '@0@.in'.format(s),
+     output: s,
+     install: true,

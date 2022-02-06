@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb  3 05:37:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-dictionary-fix-meson-061.patch: Fix build with meson
+  0.61 and newer.
+- Replace update-desktop-files with desktop-file-utils
+  BuildRequires, also add appstream-glib BuildRequires and check
+  section and run meson_test macro during build. Validate appdata
+  and desktop file.
+- Remove unused lingering service files.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:36:17 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
