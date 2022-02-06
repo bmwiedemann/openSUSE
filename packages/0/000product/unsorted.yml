@@ -9312,7 +9312,7 @@ unsorted:
   - libSavitar-devel 
   - libSavitar0 
   - libSciTokens0 
-  - libSimGearCore-2020_3_11 
+  - libSimGearCore-2020_3_12 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoapySDR0_8 
@@ -21323,7 +21323,6 @@ unsorted:
   - python-sip-doc 
   - python-sip4-common 
   - python-sip4-doc 
-  - python-sip5-doc 
   - python-sip6-doc 
   - python-six-doc 
   - python-sqlalchemy-migrate-doc 
@@ -21825,6 +21824,7 @@ unsorted:
   - python310-PyQt6-doc 
   - python310-PyQt6-sip 
   - python310-PyRIC 
+  - python310-PyRect 
   - python310-PySDL2 
   - python310-PyScreeze 
   - python310-PySocks 
@@ -23803,6 +23803,8 @@ unsorted:
   - python310-pyfuse3 
   - python310-pygal 
   - python310-pygaljs 
+  - python310-pygame 
+  - python310-pygame-devel 
   - python310-pygerrit2 
   - python310-pygit2 
   - python310-pyglet 
@@ -24273,6 +24275,7 @@ unsorted:
   - python310-scikit-hep-testdata 
   - python310-scikit-image 
   - python310-scikit-learn 
+  - python310-scikit-sound 
   - python310-scikit-sparse: [x86_64] 
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
@@ -24336,7 +24339,6 @@ unsorted:
   - python310-sip-devel 
   - python310-sip4 
   - python310-sip4-devel 
-  - python310-sip5-devel 
   - python310-sip6-devel 
   - python310-siphashc 
   - python310-six 
@@ -24819,7 +24821,6 @@ unsorted:
   - python36-idle 
   - python36-labelImg 
   - python36-librouteros 
-  - python36-limnoria 
   - python36-lzmaffi 
   - python36-mrkd 
   - python36-ntfy 
@@ -27411,7 +27412,6 @@ unsorted:
   - python38-sip-devel 
   - python38-sip4 
   - python38-sip4-devel 
-  - python38-sip5-devel 
   - python38-sip6-devel 
   - python38-siphashc 
   - python38-sklearn-pandas 
@@ -30580,7 +30580,6 @@ unsorted:
   - python39-sip-devel 
   - python39-sip4 
   - python39-sip4-devel 
-  - python39-sip5-devel 
   - python39-sip6-devel 
   - python39-siphashc 
   - python39-six 
@@ -31953,7 +31952,6 @@ unsorted:
   - ruby-yui 
   - ruby2.7-rubygem-cri 
   - ruby2.7-rubygem-debase 
-  - ruby2.7-rubygem-listen-3.2 
   - ruby3.0-rubygem-debase 
   - ruby3.0-rubygem-xdg 
   - ruby3.1-devel 
@@ -33098,12 +33096,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_7_0-gnu-hpc: [x86_64] 
-  - tensorflow2_2_7_0-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_7_0-gnu-hpc-doc: [x86_64] 
   - tensorflow2_2_7_0-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2_2_7_0-gnu-openmpi2-hpc-devel: [x86_64] 
   - tensorflow2_2_7_0-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow2_2_7_1-gnu-hpc: [x86_64] 
+  - tensorflow2_2_7_1-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_7_1-gnu-hpc-doc: [x86_64] 
   - tepl-6-lang 
   - tepl-devel 
   - termcap 
