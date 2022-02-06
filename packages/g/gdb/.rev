@@ -2247,4 +2247,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>936257</requestid>
   </revision>
+  <revision rev="159" vrev="5">
+    <srcmd5>596ced6ae83da77f50f10264971b5f48</srcmd5>
+    <version>11.1</version>
+    <time>1644188008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951330</requestid>
+  </revision>
 </revisionlist>

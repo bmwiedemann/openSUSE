@@ -1,0 +1,547 @@
+From c0154a4a21a3aed01ef53877af05cf0109a0b124 Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Mon, 16 Aug 2021 16:17:25 -0700
+Subject: [PATCH] gdb: Don't assume r_ldsomap when r_version > 1 on Linux
+
+The r_ldsomap field is specific to Solaris (part of librtld_db), and
+should never be accessed for Linux.  glibc is planning to add a field
+to support multiple namespaces.  But there will be no r_ldsomap when
+r_version is bumped to 2.  Add linux_[ilp32|lp64]_fetch_link_map_offsets
+to set r_ldsomap_offset to -1 and use them for Linux targets.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28236
+---
+ gdb/aarch64-linux-tdep.c    |  2 +-
+ gdb/alpha-linux-tdep.c      |  2 +-
+ gdb/amd64-linux-tdep.c      |  4 +--
+ gdb/arc-linux-tdep.c        |  2 +-
+ gdb/arm-linux-tdep.c        |  2 +-
+ gdb/cris-linux-tdep.c       |  2 +-
+ gdb/csky-linux-tdep.c       |  2 +-
+ gdb/hppa-linux-tdep.c       |  2 +-
+ gdb/i386-linux-tdep.c       |  2 +-
+ gdb/ia64-linux-tdep.c       |  2 +-
+ gdb/linux-tdep.c            | 60 +++++++++++++++++++++++++++++++++++++
+ gdb/linux-tdep.h            |  5 ++++
+ gdb/m32r-linux-tdep.c       |  2 +-
+ gdb/m68k-linux-tdep.c       |  2 +-
+ gdb/microblaze-linux-tdep.c |  2 +-
+ gdb/mips-linux-tdep.c       |  6 ++--
+ gdb/mn10300-linux-tdep.c    |  2 +-
+ gdb/nios2-linux-tdep.c      |  2 +-
+ gdb/or1k-linux-tdep.c       |  2 +-
+ gdb/ppc-linux-tdep.c        |  4 +--
+ gdb/riscv-linux-tdep.c      |  4 +--
+ gdb/s390-linux-tdep.c       |  4 +--
+ gdb/sh-linux-tdep.c         |  2 +-
+ gdb/sparc-linux-tdep.c      |  2 +-
+ gdb/sparc64-linux-tdep.c    |  2 +-
+ gdb/tilegx-linux-tdep.c     |  4 +--
+ gdb/xtensa-linux-tdep.c     |  2 +-
+ 27 files changed, 97 insertions(+), 32 deletions(-)
+
+diff --git a/gdb/aarch64-linux-tdep.c b/gdb/aarch64-linux-tdep.c
+index 63c200b47f7..b1225438d9d 100644
+--- a/gdb/aarch64-linux-tdep.c
++++ b/gdb/aarch64-linux-tdep.c
+@@ -1795,7 +1795,7 @@ aarch64_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   linux_init_abi (info, gdbarch, 1);
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_lp64_fetch_link_map_offsets);
++					 linux_lp64_fetch_link_map_offsets);
+ 
+   /* Enable TLS support.  */
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+diff --git a/gdb/alpha-linux-tdep.c b/gdb/alpha-linux-tdep.c
+index c2cffc13c20..0a00fc1f310 100644
+--- a/gdb/alpha-linux-tdep.c
++++ b/gdb/alpha-linux-tdep.c
+@@ -374,7 +374,7 @@ alpha_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+ 
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_lp64_fetch_link_map_offsets);
++    (gdbarch, linux_lp64_fetch_link_map_offsets);
+ 
+   /* Enable TLS support.  */
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+diff --git a/gdb/amd64-linux-tdep.c b/gdb/amd64-linux-tdep.c
+index ac6843c1fdd..715add8a7b0 100644
+--- a/gdb/amd64-linux-tdep.c
++++ b/gdb/amd64-linux-tdep.c
+@@ -2042,7 +2042,7 @@ amd64_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+ 
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_lp64_fetch_link_map_offsets);
++    (gdbarch, linux_lp64_fetch_link_map_offsets);
+ 
+   /* Register DTrace handlers.  */
+   set_gdbarch_dtrace_parse_probe_argument (gdbarch, amd64_dtrace_parse_probe_argument);
+@@ -2256,7 +2256,7 @@ amd64_x32_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+ 
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ }
+ 
+ void _initialize_amd64_linux_tdep ();
+diff --git a/gdb/arc-linux-tdep.c b/gdb/arc-linux-tdep.c
+index cf18b8d6b03..448fa370a36 100644
+--- a/gdb/arc-linux-tdep.c
++++ b/gdb/arc-linux-tdep.c
+@@ -732,7 +732,7 @@ arc_linux_init_osabi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux uses SVR4-style shared libraries, with 32-bit ints, longs
+      and pointers (ILP32).  */
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+ }
+ 
+ /* Suppress warning from -Wmissing-prototypes.  */
+diff --git a/gdb/arm-linux-tdep.c b/gdb/arm-linux-tdep.c
+index 773a93384f7..c0dfc5fcf3e 100644
+--- a/gdb/arm-linux-tdep.c
++++ b/gdb/arm-linux-tdep.c
+@@ -1763,7 +1763,7 @@ arm_linux_init_abi (struct gdbarch_info info,
+   tdep->jb_elt_size = ARM_LINUX_JB_ELEMENT_SIZE;
+ 
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   /* Single stepping.  */
+   set_gdbarch_software_single_step (gdbarch, arm_linux_software_single_step);
+diff --git a/gdb/cris-linux-tdep.c b/gdb/cris-linux-tdep.c
+index 4c1a4529986..68a12dbe0e9 100644
+--- a/gdb/cris-linux-tdep.c
++++ b/gdb/cris-linux-tdep.c
+@@ -43,7 +43,7 @@ cris_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+ 					       svr4_fetch_objfile_link_map);
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+ 
+ }
+ 
+diff --git a/gdb/csky-linux-tdep.c b/gdb/csky-linux-tdep.c
+index e38ec652561..3a52a87b647 100644
+--- a/gdb/csky-linux-tdep.c
++++ b/gdb/csky-linux-tdep.c
+@@ -239,7 +239,7 @@ csky_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+   set_gdbarch_skip_solib_resolver (gdbarch, glibc_skip_solib_resolver);
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+ 
+   /* Enable TLS support.  */
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+diff --git a/gdb/hppa-linux-tdep.c b/gdb/hppa-linux-tdep.c
+index 4bdaa1dfaee..52c642f0c7f 100644
+--- a/gdb/hppa-linux-tdep.c
++++ b/gdb/hppa-linux-tdep.c
+@@ -501,7 +501,7 @@ hppa_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+ 
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   tdep->in_solib_call_trampoline = hppa_in_solib_call_trampoline;
+   set_gdbarch_skip_trampoline_code (gdbarch, hppa_skip_trampoline_code);
+diff --git a/gdb/i386-linux-tdep.c b/gdb/i386-linux-tdep.c
+index c0df916ce6d..1c065eecb4d 100644
+--- a/gdb/i386-linux-tdep.c
++++ b/gdb/i386-linux-tdep.c
+@@ -1044,7 +1044,7 @@ i386_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   /* GNU/Linux uses the dynamic linker included in the GNU C Library.  */
+   set_gdbarch_skip_solib_resolver (gdbarch, glibc_skip_solib_resolver);
+diff --git a/gdb/ia64-linux-tdep.c b/gdb/ia64-linux-tdep.c
+index a17ec590002..71767ddf83e 100644
+--- a/gdb/ia64-linux-tdep.c
++++ b/gdb/ia64-linux-tdep.c
+@@ -237,7 +237,7 @@ ia64_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+ 
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_lp64_fetch_link_map_offsets);
++    (gdbarch, linux_lp64_fetch_link_map_offsets);
+ 
+   /* Enable TLS support.  */
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+diff --git a/gdb/linux-tdep.c b/gdb/linux-tdep.c
+index 637d3d36a0b..ae2f7c14f6d 100644
+--- a/gdb/linux-tdep.c
++++ b/gdb/linux-tdep.c
+@@ -41,6 +41,7 @@
+ #include "gdbsupport/gdb_optional.h"
+ #include "gcore.h"
+ #include "gcore-elf.h"
++#include "solib-svr4.h"
+ 
+ #include <ctype.h>
+ 
+@@ -2724,3 +2725,62 @@ more information about this file, refer to the manpage of proc(5) and core(5).")
+ 			   NULL, show_dump_excluded_mappings,
+ 			   &setlist, &showlist);
+ }
++
++/* Fetch (and possibly build) an appropriate `link_map_offsets' for
++   ILP32/LP64 Linux systems which don't have the r_ldsomap field.  */
++
++link_map_offsets *
++linux_ilp32_fetch_link_map_offsets ()
++{
++  static link_map_offsets lmo;
++  static link_map_offsets *lmp = nullptr;
++
++  if (lmp == nullptr)
++    {
++      lmp = &lmo;
++
++      lmo.r_version_offset = 0;
++      lmo.r_version_size = 4;
++      lmo.r_map_offset = 4;
++      lmo.r_brk_offset = 8;
++      lmo.r_ldsomap_offset = -1;
++
++      /* Everything we need is in the first 20 bytes.  */
++      lmo.link_map_size = 20;
++      lmo.l_addr_offset = 0;
++      lmo.l_name_offset = 4;
++      lmo.l_ld_offset = 8;
++      lmo.l_next_offset = 12;
++      lmo.l_prev_offset = 16;
++    }
++
++  return lmp;
++}
++
++link_map_offsets *
++linux_lp64_fetch_link_map_offsets ()
++{
++  static link_map_offsets lmo;
++  static link_map_offsets *lmp = nullptr;
++
++  if (lmp == nullptr)
++    {
++      lmp = &lmo;
++
++      lmo.r_version_offset = 0;
++      lmo.r_version_size = 4;
++      lmo.r_map_offset = 8;
++      lmo.r_brk_offset = 16;
++      lmo.r_ldsomap_offset = -1;
++
++      /* Everything we need is in the first 40 bytes.  */
++      lmo.link_map_size = 40;
++      lmo.l_addr_offset = 0;
++      lmo.l_name_offset = 8;
++      lmo.l_ld_offset = 16;
++      lmo.l_next_offset = 24;
++      lmo.l_prev_offset = 32;
++    }
++
++  return lmp;
++}
+diff --git a/gdb/linux-tdep.h b/gdb/linux-tdep.h
+index 28b60e46579..b5c1184bb09 100644
+--- a/gdb/linux-tdep.h
++++ b/gdb/linux-tdep.h
+@@ -98,4 +98,9 @@ extern CORE_ADDR linux_get_hwcap (struct target_ops *target);
+    error, 0 is returned.  */
+ extern CORE_ADDR linux_get_hwcap2 (struct target_ops *target);
+ 
++/* Fetch (and possibly build) an appropriate `struct link_map_offsets'
++   for ILP32 and LP64 Linux systems.  */
++extern struct link_map_offsets *linux_ilp32_fetch_link_map_offsets ();
++extern struct link_map_offsets *linux_lp64_fetch_link_map_offsets ();
++
+ #endif /* linux-tdep.h */
+diff --git a/gdb/m32r-linux-tdep.c b/gdb/m32r-linux-tdep.c
+index 24807de0b2b..af0b5c01d04 100644
+--- a/gdb/m32r-linux-tdep.c
++++ b/gdb/m32r-linux-tdep.c
+@@ -461,7 +461,7 @@ m32r_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   /* Core file support.  */
+   set_gdbarch_iterate_over_regset_sections
+diff --git a/gdb/m68k-linux-tdep.c b/gdb/m68k-linux-tdep.c
+index 7543a35e611..ad4d75adb4d 100644
+--- a/gdb/m68k-linux-tdep.c
++++ b/gdb/m68k-linux-tdep.c
+@@ -408,7 +408,7 @@ m68k_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+ 
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+ 
+   /* GNU/Linux uses the dynamic linker included in the GNU C Library.  */
+   set_gdbarch_skip_solib_resolver (gdbarch, glibc_skip_solib_resolver);
+diff --git a/gdb/microblaze-linux-tdep.c b/gdb/microblaze-linux-tdep.c
+index 17cdc2516d4..e9ce7cd7fe0 100644
+--- a/gdb/microblaze-linux-tdep.c
++++ b/gdb/microblaze-linux-tdep.c
+@@ -124,7 +124,7 @@ microblaze_linux_init_abi (struct gdbarch_info info,
+ 
+   /* Shared library handling.  */
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+ 
+   /* Trampolines.  */
+   tramp_frame_prepend_unwinder (gdbarch,
+diff --git a/gdb/mips-linux-tdep.c b/gdb/mips-linux-tdep.c
+index 1ceed5250fe..ce287f6a354 100644
+--- a/gdb/mips-linux-tdep.c
++++ b/gdb/mips-linux-tdep.c
+@@ -1542,7 +1542,7 @@ mips_linux_init_abi (struct gdbarch_info info,
+ 	set_gdbarch_get_longjmp_target (gdbarch,
+ 					mips_linux_get_longjmp_target);
+ 	set_solib_svr4_fetch_link_map_offsets
+-	  (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++	  (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 	tramp_frame_prepend_unwinder (gdbarch, &micromips_linux_o32_sigframe);
+ 	tramp_frame_prepend_unwinder (gdbarch,
+ 				      &micromips_linux_o32_rt_sigframe);
+@@ -1554,7 +1554,7 @@ mips_linux_init_abi (struct gdbarch_info info,
+ 	set_gdbarch_get_longjmp_target (gdbarch,
+ 					mips_linux_get_longjmp_target);
+ 	set_solib_svr4_fetch_link_map_offsets
+-	  (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++	  (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 	set_gdbarch_long_double_bit (gdbarch, 128);
+ 	/* These floatformats should probably be renamed.  MIPS uses
+ 	   the same 128-bit IEEE floating point format that IA-64 uses,
+@@ -1570,7 +1570,7 @@ mips_linux_init_abi (struct gdbarch_info info,
+ 	set_gdbarch_get_longjmp_target (gdbarch,
+ 					mips64_linux_get_longjmp_target);
+ 	set_solib_svr4_fetch_link_map_offsets
+-	  (gdbarch, svr4_lp64_fetch_link_map_offsets);
++	  (gdbarch, linux_lp64_fetch_link_map_offsets);
+ 	set_gdbarch_long_double_bit (gdbarch, 128);
+ 	/* These floatformats should probably be renamed.  MIPS uses
+ 	   the same 128-bit IEEE floating point format that IA-64 uses,
+diff --git a/gdb/mn10300-linux-tdep.c b/gdb/mn10300-linux-tdep.c
+index 1a2e0493118..7c68d1116c5 100644
+--- a/gdb/mn10300-linux-tdep.c
++++ b/gdb/mn10300-linux-tdep.c
+@@ -709,7 +709,7 @@ am33_linux_init_osabi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   set_gdbarch_iterate_over_regset_sections
+     (gdbarch, am33_iterate_over_regset_sections);
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   tramp_frame_prepend_unwinder (gdbarch, &am33_linux_sigframe);
+   tramp_frame_prepend_unwinder (gdbarch, &am33_linux_rt_sigframe);
+diff --git a/gdb/nios2-linux-tdep.c b/gdb/nios2-linux-tdep.c
+index 661c8b38f72..bd86146c878 100644
+--- a/gdb/nios2-linux-tdep.c
++++ b/gdb/nios2-linux-tdep.c
+@@ -226,7 +226,7 @@ nios2_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   set_gdbarch_skip_solib_resolver (gdbarch, glibc_skip_solib_resolver);
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+   /* Enable TLS support.  */
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+ 					     svr4_fetch_objfile_link_map);
+diff --git a/gdb/or1k-linux-tdep.c b/gdb/or1k-linux-tdep.c
+index 1c3f8db7492..2ad55f0d9ec 100644
+--- a/gdb/or1k-linux-tdep.c
++++ b/gdb/or1k-linux-tdep.c
+@@ -143,7 +143,7 @@ or1k_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   linux_init_abi (info, gdbarch, 0);
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+ 
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+diff --git a/gdb/ppc-linux-tdep.c b/gdb/ppc-linux-tdep.c
+index 1e94922f25a..e62f45a35d8 100644
+--- a/gdb/ppc-linux-tdep.c
++++ b/gdb/ppc-linux-tdep.c
+@@ -2035,7 +2035,7 @@ ppc_linux_init_abi (struct gdbarch_info info,
+       /* Shared library handling.  */
+       set_gdbarch_skip_trampoline_code (gdbarch, ppc_skip_trampoline_code);
+       set_solib_svr4_fetch_link_map_offsets
+-	(gdbarch, svr4_ilp32_fetch_link_map_offsets);
++	(gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+       /* Setting the correct XML syscall filename.  */
+       set_xml_syscall_file_name (gdbarch, XML_SYSCALL_FILENAME_PPC);
+@@ -2087,7 +2087,7 @@ ppc_linux_init_abi (struct gdbarch_info info,
+       /* Shared library handling.  */
+       set_gdbarch_skip_trampoline_code (gdbarch, ppc64_skip_trampoline_code);
+       set_solib_svr4_fetch_link_map_offsets
+-	(gdbarch, svr4_lp64_fetch_link_map_offsets);
++	(gdbarch, linux_lp64_fetch_link_map_offsets);
+ 
+       /* Setting the correct XML syscall filename.  */
+       set_xml_syscall_file_name (gdbarch, XML_SYSCALL_FILENAME_PPC64);
+diff --git a/gdb/riscv-linux-tdep.c b/gdb/riscv-linux-tdep.c
+index 49dc75bb618..7351e1901d6 100644
+--- a/gdb/riscv-linux-tdep.c
++++ b/gdb/riscv-linux-tdep.c
+@@ -187,8 +187,8 @@ riscv_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+ 					 (riscv_isa_xlen (gdbarch) == 4
+-					  ? svr4_ilp32_fetch_link_map_offsets
+-					  : svr4_lp64_fetch_link_map_offsets));
++					  ? linux_ilp32_fetch_link_map_offsets
++					  : linux_lp64_fetch_link_map_offsets));
+ 
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+diff --git a/gdb/s390-linux-tdep.c b/gdb/s390-linux-tdep.c
+index 1f40e10e3d3..04e3fc640d2 100644
+--- a/gdb/s390-linux-tdep.c
++++ b/gdb/s390-linux-tdep.c
+@@ -1158,7 +1158,7 @@ s390_linux_init_abi_31 (struct gdbarch_info info, struct gdbarch *gdbarch)
+   s390_linux_init_abi_any (info, gdbarch);
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_ilp32_fetch_link_map_offsets);
++					 linux_ilp32_fetch_link_map_offsets);
+   set_xml_syscall_file_name (gdbarch, XML_SYSCALL_FILENAME_S390);
+ }
+ 
+@@ -1174,7 +1174,7 @@ s390_linux_init_abi_64 (struct gdbarch_info info, struct gdbarch *gdbarch)
+   s390_linux_init_abi_any (info, gdbarch);
+ 
+   set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					 svr4_lp64_fetch_link_map_offsets);
++					 linux_lp64_fetch_link_map_offsets);
+   set_xml_syscall_file_name (gdbarch, XML_SYSCALL_FILENAME_S390X);
+ }
+ 
+diff --git a/gdb/sh-linux-tdep.c b/gdb/sh-linux-tdep.c
+index 700df35bc3b..8315d46fddf 100644
+--- a/gdb/sh-linux-tdep.c
++++ b/gdb/sh-linux-tdep.c
+@@ -189,7 +189,7 @@ sh_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+   set_gdbarch_skip_solib_resolver (gdbarch, glibc_skip_solib_resolver);
+ 
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+diff --git a/gdb/sparc-linux-tdep.c b/gdb/sparc-linux-tdep.c
+index 8d8efb49911..4ad77e24d82 100644
+--- a/gdb/sparc-linux-tdep.c
++++ b/gdb/sparc-linux-tdep.c
+@@ -436,7 +436,7 @@ sparc32_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux has SVR4-style shared libraries...  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   /* ...which means that we need some special handling when doing
+      prologue analysis.  */
+diff --git a/gdb/sparc64-linux-tdep.c b/gdb/sparc64-linux-tdep.c
+index ea692ac00ef..e63fa87c69b 100644
+--- a/gdb/sparc64-linux-tdep.c
++++ b/gdb/sparc64-linux-tdep.c
+@@ -383,7 +383,7 @@ sparc64_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux has SVR4-style shared libraries...  */
+   set_gdbarch_skip_trampoline_code (gdbarch, find_solib_trampoline_target);
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_lp64_fetch_link_map_offsets);
++    (gdbarch, linux_lp64_fetch_link_map_offsets);
+ 
+   /* ...which means that we need some special handling when doing
+      prologue analysis.  */
+diff --git a/gdb/tilegx-linux-tdep.c b/gdb/tilegx-linux-tdep.c
+index 382e7f6d908..353497a3434 100644
+--- a/gdb/tilegx-linux-tdep.c
++++ b/gdb/tilegx-linux-tdep.c
+@@ -121,10 +121,10 @@ tilegx_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   /* GNU/Linux uses SVR4-style shared libraries.  */
+   if (arch_size == 32)
+     set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					   svr4_ilp32_fetch_link_map_offsets);
++					   linux_ilp32_fetch_link_map_offsets);
+   else
+     set_solib_svr4_fetch_link_map_offsets (gdbarch,
+-					   svr4_lp64_fetch_link_map_offsets);
++					   linux_lp64_fetch_link_map_offsets);
+ 
+   /* Enable TLS support.  */
+   set_gdbarch_fetch_tls_load_module_address (gdbarch,
+diff --git a/gdb/xtensa-linux-tdep.c b/gdb/xtensa-linux-tdep.c
+index 2eba9aaa21d..c9e2519b1e7 100644
+--- a/gdb/xtensa-linux-tdep.c
++++ b/gdb/xtensa-linux-tdep.c
+@@ -113,7 +113,7 @@ xtensa_linux_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+   linux_init_abi (info, gdbarch, 0);
+ 
+   set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
++    (gdbarch, linux_ilp32_fetch_link_map_offsets);
+ 
+   set_gdbarch_gdb_signal_from_target (gdbarch,
+ 				      xtensa_linux_gdb_signal_from_target);
+-- 
+2.34.1
+
+From 4eb629d50d449a079d3f5e22f26f45855939164f Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Mon, 16 Aug 2021 08:18:18 -0700
+Subject: [PATCH] gdbserver: Check r_version < 1 for Linux debugger interface
+
+Update gdbserver to check r_version < 1 instead of r_version != 1 so
+that r_version can be bumped for a new field in the glibc debugger
+interface to support multiple namespaces.  Since so far, the gdbserver
+only reads fields defined for r_version == 1, it is compatible with
+r_version >= 1.
+
+All future glibc debugger interface changes will be backward compatible.
+If there is ever the need for backward incompatible change to the glibc
+debugger interface, a new DT_XXX element will be provided to access the
+new incompatible interface.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=11839
+---
+ gdbserver/linux-low.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdbserver/linux-low.cc b/gdbserver/linux-low.cc
+index 5c6191d941c..fc7a995351d 100644
+--- a/gdbserver/linux-low.cc
++++ b/gdbserver/linux-low.cc
+@@ -6845,7 +6845,7 @@ linux_process_target::qxfer_libraries_svr4 (const char *annex,
+ 	  if (linux_read_memory (priv->r_debug + lmo->r_version_offset,
+ 				 (unsigned char *) &r_version,
+ 				 sizeof (r_version)) != 0
+-	      || r_version != 1)
++	      || r_version < 1)
+ 	    {
+ 	      warning ("unexpected r_debug version %d", r_version);
+ 	    }
+-- 
+2.34.1
+

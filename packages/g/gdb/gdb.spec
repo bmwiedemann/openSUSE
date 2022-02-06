@@ -1,7 +1,7 @@
 #
-# spec file for package gdb
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -344,6 +344,7 @@ Patch2031:      gdb-exp-improve-error-reading-variable-message.patch
 Patch2032:      fix-gdb.base-sigstep.exp-test-for-ppc.patch
 Patch2033:      gdb-testsuite-fix-regexp-in-gdb.base-foll-vfork.exp.patch
 Patch2034:      gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.exp.patch
+Patch2035:      gdb-r_version-check.patch
 
 # Backports from master, not yet available in next release.
 
@@ -797,6 +798,7 @@ find -name "*.info*"|xargs rm -f
 %patch2032 -p1
 %patch2033 -p1
 %patch2034 -p1
+%patch2035 -p1
 
 %patch2100 -p1
 %patch2101 -p1
