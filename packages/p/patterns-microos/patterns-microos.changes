@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  3 10:50:05 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Disable pulseaudio obsoletes. Most (if not all) systems already
+  upgraded to pipewire, so this avoids the issues this causes on TW
+  (boo#1194264)
+
+-------------------------------------------------------------------
+Tue Feb  1 14:29:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Remove redundant pipewire dependencies as they are all brough
+  in by `pipewire`, which should be brought in by `pipewire-pulseaudio`
+
+-------------------------------------------------------------------
 Tue Jan  12 10:00:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
 
 - added kde-gtk-config5-gtk3 to the KDE pattern, so that System Settings can also change GTK theming, which is generally used for flatpaks.

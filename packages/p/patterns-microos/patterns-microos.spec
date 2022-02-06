@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -353,17 +353,14 @@ Requires:       pattern() = x11
 # PipeWire is the default sound server
 Requires:       gstreamer-plugin-pipewire
 Requires:       pipewire-alsa
-Requires:       pipewire-modules
 Requires:       pipewire-pulseaudio
-Requires:       pipewire-spa-plugins-0_2
-Requires:       pipewire-spa-tools
-Requires:       pipewire-tools
-Obsoletes:      alsa-plugins-pulse < 1.3
-Obsoletes:      pulseaudio < 14.3
-Obsoletes:      pulseaudio-module-bluetooth < 14.3
-Obsoletes:      pulseaudio-module-gsettings < 14.3
-Obsoletes:      pulseaudio-module-x11 < 14.3
-Obsoletes:      pulseaudio-module-zeroconf < 14.3
+# This approach unfortunately breaks Tumbleweed (boo#1194264)
+#Obsoletes:      alsa-plugins-pulse < 1.3
+#Obsoletes:      pulseaudio < 14.3
+#Obsoletes:      pulseaudio-module-bluetooth < 14.3
+#Obsoletes:      pulseaudio-module-gsettings < 14.3
+#Obsoletes:      pulseaudio-module-x11 < 14.3
+#Obsoletes:      pulseaudio-module-zeroconf < 14.3
 
 # Allow users to print (and add some common printer drivers)
 Requires:       OpenPrintingPPDs
@@ -558,14 +555,14 @@ Requires:       pinentry-qt5
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
 Requires:       discover-backend-packagekit
+Requires:       kde-gtk-config5
+Requires:       kde-gtk-config5-gtk3
 Requires:       plasma-browser-integration
 Requires:       plasma5-defaults-openSUSE
 Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
 Requires:       xdg-desktop-portal-kde
-Requires:       kde-gtk-config5
-Requires:       kde-gtk-config5-gtk3
 
 # Doesn't depend on PackageKit, but also works for other backends
 Requires:       discover-notifier
