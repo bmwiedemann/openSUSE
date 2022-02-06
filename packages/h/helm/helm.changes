@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 2 09:47:00 UTC 2022 - Michal Hlavac <miso@hlavki.eu>
+
+- Update to version 3.8.0:
+  * OCI registry support for charts is now generally available. It has graduated out of being an experiment. Some changes over Helm 3.7 include:
+    * When setting a chart in the dependencies as OCI the version can be set to a range, like other dependencies
+    * SemVer tags that include build information can be pushed and used. OCI registries don't support + as a tag character. Helm translates the + to _ when stored as a tag
+    * helm registry login now follows the same structure as the Docker CLI for storing credentials. The same location for registry configuration can be passed to both Helm and the Docker CLI
+  * A --list-repo-url flag has been added to helm search hub to quickly show the repositories URL.
+  * Release names are validated during installation
+  * Added support for installing Helm on Windows via Cygwin
+  * Added support for Kubernetes 1.23
+
+-------------------------------------------------------------------
 Mon Oct 18 12:37:13 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - use 'v' prefix for the version to match upstream builds
