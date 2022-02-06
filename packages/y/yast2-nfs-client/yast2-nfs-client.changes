@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 17:06:10 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Adapt code for a better integration with the storage Expert
+  Partitioner (related to fate#318196).
+- Provide a new NfsForm to be used from the Expert Partitioner and
+  move code to yast-storage-ng.
+- 4.4.4
+
+-------------------------------------------------------------------
 Tue Jan 25 15:10:07 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).
