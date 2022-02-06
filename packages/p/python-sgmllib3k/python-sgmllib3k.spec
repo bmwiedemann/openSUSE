@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%define skip_python310 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sgmllib3k
 Version:        1.0.0
