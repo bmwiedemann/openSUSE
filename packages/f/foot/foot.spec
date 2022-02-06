@@ -1,7 +1,7 @@
 #
 # spec file for package foot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 Name:           foot
-Version:        1.10.3
+Version:        1.11.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         foot-tests-missing-deps.patch
 Requires:       terminfo
 BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  scdoc
-BuildRequires:  pkgconfig(fcft) < 3.0.0
-BuildRequires:  pkgconfig(fcft) >= 2.5.0
+BuildRequires:  pkgconfig(fcft) < 4.0.0
+BuildRequires:  pkgconfig(fcft) >= 3.0.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
@@ -54,7 +56,7 @@ Set term=foot-extra or term=foot-extra-direct in foot.ini to
 take advantage of the files in this package.
 
 %prep
-%autosetup -n %{name}
+%autosetup -n %{name} -p1
 
 %build
 %meson -Db_lto=true

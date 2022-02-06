@@ -179,4 +179,44 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.10.3 for more details.</comment>
     <requestid>937364</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cb8e4a3c78d85ca55c94dcda0e26b534</srcmd5>
+    <version>1.11.0</version>
+    <time>1644188068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:
+  * foot.ini options:
+    * Added mouse-bindings.selection-override-modifiers option to specify
+      which modifiers should be held to force selection and prevent
+      client applications from grabbing the mouse.
+    * scrollback.multiplier is now also applied in alternate-scroll mode.
+      The client receives multiple arrow key presses equal to
+      the multiplier instead of just one.
+    * key-bindings.clipboard-{copy,paste} now support
+      the XF86{Copy,Paste} keycodes.
+  * irc:// and ircs:// URLs are now auto-detected as URLs.
+  * Added support for reporting mouse coordinates in SGR-Pixels (1016) format.
+  * Added XTGETTCAP support for reporting the current terminfo to clients
+    that support it instead of needing the terminfo file installed,
+    say when ssh'ing to remote hosts.
+  * Added partial DECRQSS support so that clients can request
+    top and bottom margins (DECSTBM), graphic rendition (SGR) and
+    cursor style (DECSCUSR).
+  * Searching the scrollback now defaults to searching for
+    the previously-searched string.
+  * PaperColorDark and PaperColorLight themes have been renamed to
+    paper-color-dark and paper-color-light for consistency with other themes.
+  * foot will now try to change the locale to either C.UTF-8 or en_US.UTF-8
+    on startup if it has been started with a non-UTF-8 locale. If it fails to
+    change the locale for any reason, it will show an error and not start
+    the shell / program it was supposed to.
+  * Pasting or dropping files on the alternate screen no longer quotes
+    the filename.
+  * Copying a line-based selection now includes a trailing newline.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.11.0 for more details.
+- Patches:
+  * Add foot-tests-missing-deps.patch to add missing wayland-client dependency
+    to tests subdirectory, as discussed with upstream.</comment>
+    <requestid>951810</requestid>
+  </revision>
 </revisionlist>
