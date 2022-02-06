@@ -1,0 +1,10 @@
+--- orig-gnome-user-share-3.34.0/data/meson.build	2019-09-06 11:39:10.000000000 +0200
++++ gnome-user-share-3.34.0/data/meson.build	2022-02-01 22:27:25.258136738 +0100
+@@ -7,7 +7,6 @@
+ )
+ 
+ i18n.merge_file(
+-  desktop,
+   type: 'desktop',
+   input: desktop_in,
+   output: '@BASENAME@',

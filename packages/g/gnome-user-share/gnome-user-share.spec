@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-share
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,21 @@
 
 
 Name:           gnome-user-share
-Version:        3.34.0
+Version:        3.34.0+25
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            http://www.gnome.org/
-Source0:        https://download.gnome.org/sources/gnome-user-share/3.34/%{name}-%{version}.tar.xz
+# Disable Source URL, use git checkout via service
+# Source0:        https://download.gnome.org/sources/gnome-user-share/3.34/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-user-share-fix-meson-0_61_0.patch bjorn.lie@gmail.com -- Fix build with meson 0.61.0 and newer
+Patch0:         gnome-user-share-fix-meson-0_61_0.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -68,10 +71,11 @@ up in the Network location in GNOME.
 %install
 %meson_install
 
-find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file gnome-user-share-webdav Network FileTransfer
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
+
+%check
+%meson_test
 
 %files
 %license COPYING
