@@ -759,4 +759,12 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
   (jsc#SLE-21105). (forwarded request 920426 from sbrabec)</comment>
     <requestid>920587</requestid>
   </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>2e4bf7689641f5ec389ba08101200344</srcmd5>
+    <version>13.0.0</version>
+    <time>1644188035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951438</requestid>
+  </revision>
 </revisionlist>
