@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 06:00:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 755fd758f866d3a3f7ca482942beee749f13a91e.patch Fix build with
+  meson 0.61 and newer.
+
+-------------------------------------------------------------------
 Sat Nov  6 11:15:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing explicit libgnome-bluetooth13 Requires to devel sub

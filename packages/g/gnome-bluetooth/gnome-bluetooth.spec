@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-bluetooth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeBluetooth
 Source0:        https://download.gnome.org/sources/gnome-bluetooth/3.34/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 755fd758f866d3a3f7ca482942beee749f13a91e.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-bluetooth/-/commit/755fd758f866d3a3f7ca482942beee749f13a91e.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel

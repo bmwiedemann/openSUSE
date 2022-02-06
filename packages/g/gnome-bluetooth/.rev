@@ -788,4 +788,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment> (forwarded request 929864 from iznogood)</comment>
     <requestid>930084</requestid>
   </revision>
+  <revision rev="102" vrev="4">
+    <srcmd5>ffc0e8d0ea81a1d199a7d72e27fab122</srcmd5>
+    <version>3.34.5</version>
+    <time>1644188033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951437</requestid>
+  </revision>
 </revisionlist>
