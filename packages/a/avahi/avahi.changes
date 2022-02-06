@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 21 13:05:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to systemd-sysusers
+
+-------------------------------------------------------------------
 Mon Jan 17 17:12:07 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Reinstate avahi-0.6.31-systemd-order.patch (boo#1194561).

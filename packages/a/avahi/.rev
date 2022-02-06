@@ -1122,4 +1122,12 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
     <comment></comment>
     <requestid>947483</requestid>
   </revision>
+  <revision rev="147" vrev="13">
+    <srcmd5>f6d3e5f7e39bbeba48e8b5f9b93cc3fd</srcmd5>
+    <version>0.8</version>
+    <time>1644188035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951439</requestid>
+  </revision>
 </revisionlist>

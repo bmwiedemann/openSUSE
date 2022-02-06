@@ -62,6 +62,8 @@ Source8:        %{_name}_spec-prepare.sh
 Source9:        avahi-autoipd.README.SUSE
 Source10:       avahi-autoipd.if-up
 Source11:       avahi-autoipd.if-down
+Source13:       avahi.sysusers
+Source14:       avahi-autoipd.sysusers
 # File missing from 0.8 tarball
 Source12:       https://raw.githubusercontent.com/lathiat/avahi/master/service-type-database/build-db
 Source100:      attributes
@@ -98,6 +100,7 @@ BuildRequires:  gdbm-devel
 BuildRequires:  intltool
 BuildRequires:  libdaemon-devel
 BuildRequires:  libexpat-devel
+BuildRequires:  sysuser-tools
 # libtool is needed to build all variants: bootstrap is unconditional in the build section
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -116,7 +119,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       nss-mdns
 Requires:       sudo
-Requires(pre):  shadow
+%sysusers_requires
 #
 # mDNSResponder was used for <= 10.2:
 Provides:       mDNSResponder = 107.5
@@ -300,8 +303,7 @@ Summary:        IPv4LL Service for Zeroconf and Bonjour
 # coreutils contains /usr/bin/chown
 Group:          Productivity/Networking/Other
 Requires(post): coreutils
-# shadow contains useradd and groupadd
-Requires(pre):  shadow
+%sysusers_requires
 Provides:       avahi:%{_sbindir}/avahi-autoipd
 
 %description autoipd
@@ -422,8 +424,12 @@ DNS specifications for Zeroconf Computing.
 
 
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+
+
+
+
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -559,6 +565,8 @@ if ! test -f %{_datadir}/aclocal/glib-gettext.m4 ; then
 fi
 
 %build
+%sysusers_generate_pre %{SOURCE13} avahi avahi.conf
+%sysusers_generate_pre %{SOURCE14} autoipd avahi-autoipd.conf
 autoreconf -f -i
 intltoolize -f
 %{python_expand # configure for every python flavor
@@ -695,6 +703,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcavahi-dnsconfd
 install -d %{buildroot}/%{_datadir}/pixmaps
 install -d %{buildroot}%{_fillupdir}
 install -m 644 sysconfig.avahi* %{buildroot}%{_fillupdir}/
+install -Dm0644 %{SOURCE13} %{buildroot}%{_sysusersdir}/avahi.conf
+install -Dm0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/avahi-autoipd.conf
 %if ! %{build_glib2}
 # Note: This file is intentionally installed here. It is needed for avahi-utils-gtk and python3-avahi-gtk:
 install -d %{buildroot}/%{_datadir}/avahi/interfaces
@@ -746,9 +756,7 @@ strip-nondeterminism %{buildroot}/%{_prefix}/lib/monodoc/sources/*.zip
 %endif
 %fdupes %{buildroot}/%{_libdir}
 
-%pre
-getent group avahi >/dev/null || %{_sbindir}/groupadd -r avahi
-getent passwd avahi >/dev/null || %{_sbindir}/useradd -r -s /bin/false -c "User for Avahi" -d /run/avahi-daemon -g avahi avahi
+%pre -f avahi.pre
 %service_add_pre avahi-dnsconfd.service avahi-daemon.service
 # bnc#853845,bnc#851953: do not start by default under
 # sysconfig as this breaks vlan,bridge,bonding setups
@@ -773,12 +781,7 @@ fi
 %postun
 %service_del_postun avahi-dnsconfd.service avahi-daemon.service
 
-%pre autoipd
-getent group avahi-autoipd >/dev/null || %{_sbindir}/groupadd -r avahi-autoipd
-getent passwd avahi-autoipd >/dev/null || \
-	%{_sbindir}/useradd -r -s /bin/false -c "User for Avahi IPv4LL" \
-	-d %{_localstatedir}/lib/avahi-autoipd -g avahi-autoipd \
-	avahi-autoipd
+%pre autoipd -f autoipd.pre
 
 %post autoipd
 %{fillup_only -ns avahi autoipd}
@@ -866,6 +869,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_unitdir}/avahi-daemon.service
 %{_unitdir}/avahi-daemon.socket
 %{_unitdir}/avahi-dnsconfd.service
+%{_sysusersdir}/avahi.conf
 # Common file for avahi-utils-gtk and python3-avahi-gtk:
 %dir %{_datadir}/avahi/
 %{_datadir}/avahi/interfaces
@@ -907,6 +911,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_sysconfdir}/avahi/avahi-autoipd.action
 %{_sysconfdir}/sysconfig/network/*/avahi-autoipd
 %{_fillupdir}/sysconfig.avahi-autoipd
+%{_sysusersdir}/avahi-autoipd.conf
 
 %files utils
 %{_bindir}/avahi-browse*
