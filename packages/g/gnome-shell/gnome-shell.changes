@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 27 02:58:53 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Disable gs-fate318433-prevent-same-account-multi-logins.patch:
+  temporarily disable it to workaround a regression of remote
+  connection (bsc#1195141).
+
+-------------------------------------------------------------------
 Tue Jan 11 17:49:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.3:

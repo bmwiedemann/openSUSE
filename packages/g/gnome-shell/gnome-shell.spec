@@ -193,7 +193,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
-%patch1007 -p1
+# %patch1007 -p1
 %endif
 
 cp %{SOURCE2} data/theme/
