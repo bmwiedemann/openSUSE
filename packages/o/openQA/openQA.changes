@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 06 01:48:34 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1644047097.6bd5ec7f8:
+  * Add new OBS checks to mergify config
+  * Add perl signatures in lib::OpenQA::JobSettings
+  * Add perl signatures in lib::OpenQA::JobDependencies::Constants
+  * Fix typo in t::16-utils-runcmd
+  * Add perl signatures to lib::OpenQA::Git
+  * ci: Conditionally install kvm in container
+  * Capture log messages
+  * Add perform_minion_jobs to 25-cache-service.t
+  * Add perl signatures to lib::OpenQA::Files
+  * Add retry to rsync in cacheservice
+  * Show "failed modules" with a coloring resembling an failed state
+
+-------------------------------------------------------------------
 Thu Feb 03 17:48:29 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1643905340.5024147ca:
