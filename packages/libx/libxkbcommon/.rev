@@ -301,4 +301,12 @@
     <comment>- Update to release 1.3.1</comment>
     <requestid>918022</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>386a1874d99737ed452190103fa7ad67</srcmd5>
+    <version>1.4.0</version>
+    <time>1644188053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.0</comment>
+    <requestid>951564</requestid>
+  </revision>
 </revisionlist>
