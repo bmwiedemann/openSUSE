@@ -4705,4 +4705,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   build (boo#1194739)</comment>
     <requestid>946939</requestid>
   </revision>
+  <revision rev="428" vrev="300">
+    <srcmd5>b21464e361ca1dcc5104956fdcb91a23</srcmd5>
+    <version>unknown</version>
+    <time>1644188055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.5
+  * bugfix release: mostly Zink fixes</comment>
+    <requestid>951586</requestid>
+  </revision>
 </revisionlist>
