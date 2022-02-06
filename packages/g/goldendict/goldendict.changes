@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  6 17:03:53 UTC 2022 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Switch to github.com/xiaoyifang/goldendict.git specific branch 
+  "feature/qwebengine-port"
+- Update to version 1.5.0~rc2+git.20220204T091209:
+  - Fixed print preview.
+
+-------------------------------------------------------------------
 Wed Jan  5 19:54:38 UTC 2022 - <opensuse.lietuviu.kalba@gmail.com>
 
 - Update to version 1.5.0~rc2+git.20220104T210116:
