@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:13:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 8.12.0:
+  * Bug fixes
+    + Some documentation issues were fixed (thanks to Masynchin,
+      spookylukey, astrojuanlu, and stephengmatthews)
+    + Python 3.5 support was temporarily restored (thanks to
+      mattbonnell)
+
+- changes from version 8.11.0:
+  * New functions
+    + The before_and_after, sliding_window, and triplewise recipes
+      from the Python 3.10 docs were added
+    + duplicates_everseen and duplicates_justseen (thanks to OrBin and
+      DavidPratt512)
+    + minmax (thanks to Ricocotam, MSeifert04, and ruancomelli)
+    + strictly_n (thanks to hwalinga and NotWearingPants)
+    + unique_in_window
+  * Changes to existing functions
+    + groupby_transform had its type stub improved (thanks to mjk4 and
+      ruancomelli)
+    + is_sorted now accepts a strict parameter (thanks to Dutcho and
+      ruancomelli)
+    + zip_broadcast was updated to fix a bug (thanks to kalekundert)
+
+-------------------------------------------------------------------
 Sat Oct 16 19:09:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.10.0:

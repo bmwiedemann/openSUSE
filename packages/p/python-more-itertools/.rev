@@ -313,4 +313,12 @@
       * Building Sphinx docs locally was improved (thanks to MarcinKonowalczyk)</comment>
     <requestid>925732</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a5a2cd37025671a97968fc5dfffcc90</srcmd5>
+    <version>8.12.0</version>
+    <time>1644188019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951389</requestid>
+  </revision>
 </revisionlist>
