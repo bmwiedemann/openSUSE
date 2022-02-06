@@ -955,4 +955,12 @@
     <comment>submit new version 4.4.34</comment>
     <requestid>949166</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>e6adb88e86fa1f81e33afd2b2b48f61b</srcmd5>
+    <version>4.4.35</version>
+    <time>1644188040</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.35</comment>
+    <requestid>951585</requestid>
+  </revision>
 </revisionlist>
