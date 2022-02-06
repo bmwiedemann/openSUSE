@@ -26,6 +26,9 @@ URL:            https://gitlab.gnome.org/GNOME/simple-scan
 Source0:        https://download.gnome.org/sources/simple-scan/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 200.patch dimstar@opensuse.org -- Fix accessibility conflict of constant and its value
 Patch0:         https://gitlab.gnome.org/GNOME/simple-scan/-/merge_requests/200.patch
+# PATCH-FIX-UPSTREAM da6626debe00be1a0660f30cf2bf7629186c01d5.patch -- Fix build with meson 0.61.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/simple-scan/-/commit/da6626debe00be1a0660f30cf2bf7629186c01d5.patch
+
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig

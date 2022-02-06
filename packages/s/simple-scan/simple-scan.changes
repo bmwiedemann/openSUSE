@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 17:41:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add da6626debe00be1a0660f30cf2bf7629186c01d5.patch: Fix build
+  with meson 0.61.0 and newer.
+
+-------------------------------------------------------------------
 Mon Jan 17 16:39:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 200.patch: Fix accessibility conflict of constant and its
