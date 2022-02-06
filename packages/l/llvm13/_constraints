@@ -34,11 +34,8 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <disk>
-        <size unit="G">52</size>
-      </disk>
       <memory>
-        <size unit="M">10000</size>
+        <size unit="M">14000</size>
       </memory>
     </hardware>
   </overwrite>

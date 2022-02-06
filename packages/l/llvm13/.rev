@@ -68,4 +68,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>949357</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>786d1d198020c33c7408179608d10ade</srcmd5>
+    <version>13.0.1</version>
+    <time>1644188044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.0.1.
+  * This release contains bug-fixes for the LLVM 13.0.0 release.
+    This release is API and ABI compatible with 13.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete patches:
+  * llvm-fix-building-with-GCC-12.patch
+- Drop RUNPATH from packaged binaries, instead set LD_LIBRARY_PATH
+  for building and testing to simulate behavior of actual package.
+- Update constraints for riscv64</comment>
+    <requestid>951461</requestid>
+  </revision>
 </revisionlist>

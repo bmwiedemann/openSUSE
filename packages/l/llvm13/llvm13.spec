@@ -16,13 +16,13 @@
 #
 
 
-%define _relver 13.0.0
+%define _relver 13.0.1
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  13.0
 %define _sonum  13
 # Integer version used by update-alternatives
-%define _uaver  1300
+%define _uaver  1301
 %define _socxx  1
 
 %ifarch x86_64 aarch64 %arm
@@ -137,7 +137,6 @@ Patch26:        lld-default-sha1.patch
 Patch27:        llvm-exegesis-link-dylib.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
-Patch34:        llvm-fix-building-with-GCC-12.patch
 Patch35:        llvm-update-extract-section-script.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -566,7 +565,6 @@ This package contains the development files for Polly.
 %patch24 -p1
 %patch27 -p2
 %patch33 -p2
-%patch34 -p2
 %patch35 -p2
 
 pushd clang-%{_version}.src
@@ -725,7 +723,6 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DCOMPILER_RT_BUILD_SANITIZERS:BOOL=OFF \
     -DCOMPILER_RT_BUILD_XRAY:BOOL=OFF \
     -DLLDB_DISABLE_PYTHON=ON \
-    -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory"
@@ -781,6 +778,9 @@ export LLVM_TABLEGEN=${PWD}/stage1/bin/llvm-tblgen
 export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
 # Build is using absolute paths assuming the monorepo layout, so we need this.
 export CLANG_TOOLS_EXTRA_DIR=${PWD}/tools/clang/tools/extra
+# The build occasionally uses tools linking against previously built
+# libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
+export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
 # -z,now is breaking now, it needs to be fixed
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
@@ -835,7 +835,7 @@ export CLANG_TOOLS_EXTRA_DIR=${PWD}/tools/clang/tools/extra
 %if %{without lldb_python}
     -DLLDB_DISABLE_PYTHON=ON \
 %endif
-    -DCMAKE_SKIP_RPATH:BOOL=OFF \
+    -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
@@ -860,6 +860,8 @@ MALLOC_CHECK_=$MALLOC_CHECK_BACK
 cd ..
 
 %install
+# Installation seems to build some files not contained in "all".
+export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
 %cmake_install
 
 # Install FileCheck needed for testing Rust boo#1192629
@@ -1107,6 +1109,9 @@ rm %{buildroot}%{_mandir}/man1/scan-build.1
 %fdupes %{_includedir}/%{name}/Host/
 
 %check
+# We don't want to set RUNPATHs, and running tests against installed libraries
+# should be more representative of the actual behavior of the installed packages.
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 # LLVM test suite is written in python and has troubles with encoding if
 # python 3 is used because it is written with assumption that python will
 # default to UTF-8 encoding. However, it only does if the current locale is
