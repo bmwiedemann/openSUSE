@@ -1,7 +1,7 @@
 #
 # spec file for package python-mizani
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-mizani
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Scales for Python
 License:        BSD-3-Clause
@@ -33,6 +32,7 @@ Requires:       python-matplotlib >= 3.1.1
 Requires:       python-numpy
 Requires:       python-palettable
 Requires:       python-pandas >= 1.1.0
+Requires:       python-scipy >= 1.5.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 3.1.1}
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pandas >= 1.1.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.5.0}
 # /SECTION
 %python_subpackages
 
@@ -60,11 +60,13 @@ sed -i 's/unit=//' mizani/tests/test_*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_breaks needs https://github.com/matplotlib/matplotlib/issues/22305 fixed in next mpl
+%pytest --ignore mizani/tests/test_breaks.py
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mizani
+%{python_sitelib}/mizani-%{version}*-info
 
 %changelog
