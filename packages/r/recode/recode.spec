@@ -18,7 +18,7 @@
 
 %define         libname lib%{name}3
 Name:           recode
-Version:        3.7.10
+Version:        3.7.11
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
