@@ -341,4 +341,22 @@
 </comment>
     <requestid>948278</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>53c09cb3c496086060f9db2efcb0f2ec</srcmd5>
+    <version>11.3.0</version>
+    <time>1644188069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.3.0
+  * Changes of version 11.3.0
+    = Add Characters
+      ~ REVERSED SEMICOLON (U+204F);
+      ~ REVERSED QUESTION MARK (U+2E2E);
+      ~ REVERSED COMMA (U+2E41);
+      ~ DOUBLE LOW-REVERSED-9 QUOTATION MARK (U+2E42);
+    = Add fourfold-solid-inner variants for @ (#1285).
+    = Change the layout of control picture subglyphs from horizontal
+      to diagonal (#1286).
+</comment>
+    <requestid>951841</requestid>
+  </revision>
 </revisionlist>

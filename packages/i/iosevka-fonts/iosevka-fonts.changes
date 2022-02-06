@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  6 05:13:01 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v11.3.0
+  * Changes of version 11.3.0
+    = Add Characters
+      ~ REVERSED SEMICOLON (U+204F);
+      ~ REVERSED QUESTION MARK (U+2E2E);
+      ~ REVERSED COMMA (U+2E41);
+      ~ DOUBLE LOW-REVERSED-9 QUOTATION MARK (U+2E42);
+    = Add fourfold-solid-inner variants for @ (#1285).
+    = Change the layout of control picture subglyphs from horizontal
+      to diagonal (#1286).
+
+-------------------------------------------------------------------
 Sun Jan 23 22:14:37 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.2.7
