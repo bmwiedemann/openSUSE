@@ -1993,4 +1993,40 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:python-kiwi revision:89, using expand</comment>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>191b3c737615d31a5a2254acd368d4d2</srcmd5>
+    <version>9.24.21</version>
+    <time>1644188042</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.20 → 9.24.21
+
+- Fixed UUID used in grub early boot script
+  In case the system is luks encrypted the UUID of the root
+  partition was used in the grub early boot script. However,
+  this condition is only correct if in addition to the luks
+  encryption the boot area is on crypto too. If boot is not
+  on crypto the UUID must be the boot partition and not root.
+  Only if root AND boot is on crypto the kiwi created early
+  boot script includes the grub cryptomount calls.
+
+- Bump version: 9.24.19 → 9.24.20
+
+- Followup fix for force deleting debian packages
+  The force uninstall deletes pre scripts prior removal
+  because if they fail the package will not be removed.
+  For a force uninstall we consider this ok. However,
+  the deletion of the scripts did not happen in the
+  image root. This patch fixes it
+
+- Followup fix for force deleting debian packages
+  Pass --force-depends to allow uninstall even if the
+  dependency checker complains
+
+- Fix use of xattrs for container sync
+  when syncing data for containers only a subset of xattr
+  attributes can be applied. This Fixes #2009
+
+- Bump version: 9.24.18 → 9.24.19</comment>
+    <requestid>951342</requestid>
+  </revision>
 </revisionlist>
