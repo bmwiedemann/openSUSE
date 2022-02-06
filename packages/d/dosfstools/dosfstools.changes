@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  3 12:54:11 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop vim BuildRequires: the test suite passes without it present.
+
+-------------------------------------------------------------------
 Tue Feb  2 00:55:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2:

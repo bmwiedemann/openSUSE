@@ -1,7 +1,7 @@
 #
 # spec file for package dosfstools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,6 @@ Source:         https://github.com/dosfstools/dosfstools/releases/download/v%{ve
 # Source2:        https://github.com/dosfstools/dosfstools/releases/download/v%%{version}/dosfstools-%%{version}.tar.gz.sig
 # Source3:        %%{name}.keyring
 BuildRequires:  pkgconfig
-# xxd from vim is required for testsuite
-BuildRequires:  vim
 BuildRequires:  pkgconfig(libudev)
 Supplements:    filesystem(vfat)
 Provides:       dosfsck
