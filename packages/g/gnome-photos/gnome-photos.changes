@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 20:16:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch: Fix build
+  with meson 0.61.0 and newer.
+
+-------------------------------------------------------------------
 Sat Jan 15 16:38:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gnome-photos-fix-vert-align.patch: Fix vertical alignment.

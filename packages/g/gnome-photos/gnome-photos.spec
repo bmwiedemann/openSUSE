@@ -32,6 +32,8 @@ Patch1:         gnome-photos-fix-vert-align.patch
 Patch2:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch
 # PATCH-FIX-UPSTREAM 1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch -- indexing-notification: Handle TrackerMiner proxy being NULL on start-up
 Patch3:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch
+# PATCH-FIX-UPSTREAM a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch -- Fix build with meson 0.61.0 and newer
+Patch4:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
