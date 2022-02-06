@@ -4316,4 +4316,12 @@
   - New WoW64 architecture.</comment>
     <requestid>947373</requestid>
   </revision>
+  <revision rev="368" vrev="1">
+    <srcmd5>ac24c6084866bc62496fa43ce5b6ffed</srcmd5>
+    <version>7.1</version>
+    <time>1644188072</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>951859</requestid>
+  </revision>
 </revisionlist>
