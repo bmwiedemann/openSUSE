@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  3 16:12:52 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: use 'defaults' for empty mount options in the
+  details popup of a NFS (related to fate#318196).
+
+-------------------------------------------------------------------
+Wed Feb  2 20:53:34 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: improve integration with yast2-nfs-client to offer
+  a consistent user experience (related to fate#318196 and
+  bsc#1156446).
+- 4.4.35
+
+-------------------------------------------------------------------
 Tue Jan 25 12:30:14 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).
