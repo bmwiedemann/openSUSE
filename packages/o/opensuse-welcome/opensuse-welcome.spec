@@ -1,7 +1,7 @@
 #
 # spec file for package opensuse-welcome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define __builder ninja
+%define _name openSUSE-welcome
 
 Name:           opensuse-welcome
-Version:        0.1.7.1
+Version:        0.1.8+git.40.95061c3
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/openSUSE-welcome
-Source0:        https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  meson
+Source0:        %{_name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hicolor-icon-theme-branding-openSUSE
 BuildRequires:  libqt5-linguist
+BuildRequires:  meson
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WebChannel)
@@ -41,7 +43,7 @@ Recommends:     %{name}-lang = %{version}
 A welcome utility built to welcome new users to openSUSE.
 
 %prep
-%setup -q
+%setup -q -n %{_name}-%{version}
 
 %build
 %meson

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  3 17:28:52 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.1.8+git.40.95061c3
+  * Translation updates
+- Add _service to get latest source + translations from git,
+  fixes boo#1185893
+
+-------------------------------------------------------------------
+Sat May 30 06:42:17 UTC 2020 - Carson Black <uhhadd@gmail.com>
+
+- Update to 0.1.8
+
+-------------------------------------------------------------------
 Tue Oct  1 01:10:22 UTC 2019 - Carson Black <uhhadd@gmail.com>
 
 - Update to 0.1.7.1
