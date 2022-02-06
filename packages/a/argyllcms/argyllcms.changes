@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 26 13:23:17 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.3.0:
+* Fixed spotread -YL (i1Pro1/2 lamp remediation) to function even
+  if calibration is impossible due to the white reference being out of tolerance.
+* Fix SpyderX faulty initial black calibration 
+* Added icomuf_reset_before_close flag for SpyderX, as some versions
+  of the instrument have been reported to lock up after use.
+* Modified the ArgyllCMS CIECAM02 implementation to include a blue
+  hue linearization tweak, to improve the "blue goes purple" effect
+  when gamut mapping or clipping highly saturated blues to smaller gamuts.
+* Added spotread -Y y option that forces the listing of instrument
+  specific display calibrations in the usage, even for serial instruments.
+* Removed native i1d3 C6 instrument support as a favor to X-Rite.
+* Improved cxf2ti3 so that it should cope with XML that uses "Colour"
+  spelling rather than "Color".
+* Added I1D3_ESCAPE environment variable to allow a user to potentialy
+  use any current or future OEM coded i1d3 instrument.
+
+-------------------------------------------------------------------
 Tue Sep  7 19:33:45 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.2.0:
