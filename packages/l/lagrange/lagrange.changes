@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  5 16:44:32 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.4
+  - Added missing ANSI background color codes 100-107 (high-intensity VGA).
+  - Fixed how the ANSI FG color is adjusted to keep text legible on dark or
+    bright backgrounds when BG color is unset.
+  - Fixed possible crash when there are ANSI escapes in the alt text of a
+    preformatted block.
+  - Fixed tab/window titles containing ANSI escapes (escapes are removed).
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Sun Jan 30 15:57:04 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.10.3
