@@ -1,7 +1,7 @@
 #
 # spec file for package evince
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch5:         0003-reversed-synctex-Silence-error-when-no-synctex-file-is-pres
 Patch6:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
 Patch7:         0005-reversed-synctex-Fix-compilation.patch
 Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
+# PATCH-FIX-UPSTREAM 1060b24d051607f14220f148d2f7723b29897a54.patch -- Fix build with meson 0.60.0 and newer
+Patch9:         https://gitlab.gnome.org/GNOME/evince/-/commit/1060b24d051607f14220f148d2f7723b29897a54.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
@@ -75,8 +77,8 @@ BuildRequires:  pkgconfig(synctex) >= 1.18
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 # Disable the browser plugin and package, and make main package provide-obsolete plugin package for upgrade; see bgo#738270
-Provides:       evince-browser-plugin
-Obsoletes:      evince-browser-plugin
+Provides:       evince-browser-plugin = %{version}
+Obsoletes:      evince-browser-plugin < 41.2
 
 %description
 Evince is a document viewer capable of displaying single-page and multi-page
@@ -223,6 +225,7 @@ A plugin for Evince to read XPS documents.
 %patch7 -p1
 %patch8 -p1
 %endif
+%patch9 -p1
 
 %build
 %meson \
