@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 27 11:02:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Go back to using pkgconfig(fdk-aac) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Jan 21 16:17:55 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add some conditionals to build as many plugins as possible

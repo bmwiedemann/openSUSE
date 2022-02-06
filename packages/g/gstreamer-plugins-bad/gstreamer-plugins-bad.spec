@@ -69,8 +69,7 @@ Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 2564.patch dimstar@opensuse.org -- Allow build against neon 0.32.x
 Patch0:         https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/2564.patch
 %if %{with fdk_aac}
-# Not using pkgconfig(fdk-aac) but explitcitly the modified fdk-aac-free-devel
-BuildRequires:  fdk-aac-free-devel >= 0.1.4
+BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
 %endif
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
