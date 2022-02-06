@@ -1,7 +1,7 @@
 #
 # spec file for package python-intake
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,42 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# NEP 29: packages in the dependency tree which droped Python 3.6 support in TW
-%define         skip_python36 1
+# dask does not support Python 3.10 yet
+%define         skip_python310 1
 Name:           python-intake
-Version:        0.6.2
+Version:        0.6.5
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
 URL:            https://github.com/intake/intake
-Source0:        https://files.pythonhosted.org/packages/source/i/intake/intake-%{version}.tar.gz
-# Test data
-Source1:        https://raw.githubusercontent.com/intake/intake/%{version}/intake/source/tests/data.zarr/.zarray#/tests-data.zarr.zarray
-Source2:        https://raw.githubusercontent.com/intake/intake/%{version}/intake/source/tests/data.zarr/0#/tests-data.zarr.0
-Source3:        https://raw.githubusercontent.com/intake/intake/%{version}/intake/source/tests/calvert_uk_filter.tar.gz
-# PATCH-FIX-UPSTREAM intake-pr601-dask-array.patch -- gh#intake/intake#601
-Patch1:         https://github.com/intake/intake/pull/601/commits/1ff83ef1f6e0df329328619517292c69df846920.patch#/intake-pr601-dask-array.patch
+Source:         https://github.com/intake/intake/archive/refs/tags/%{version}.tar.gz#/intake-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-appdirs
 Requires:       python-dask
 Requires:       python-dask-bag
 Requires:       python-entrypoints
-Requires:       python-fsspec >= 0.7.4
-Requires:       python-python-snappy
-Requires:       python-tornado
+Requires:       python-fsspec >= 2021.7.0
 Recommends:     python-bokeh
 Recommends:     python-dask-dataframe
 Recommends:     python-hvplot
 Recommends:     python-msgpack-numpy
-Recommends:     python-panel >= 0.7.0
+Recommends:     python-panel >= 0.8.0
 Recommends:     python-pyarrow
+Recommends:     python-python-snappy
+Recommends:     python-requests
+Recommends:     python-tornado
+Suggests:       python-intake-parquet
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module appdirs}
@@ -62,11 +60,13 @@ BuildRequires:  %{python_module dask-bag}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module entrypoints}
-BuildRequires:  %{python_module fsspec >= 0.7.4}
+BuildRequires:  %{python_module fsspec >= 2021.7.0}
 BuildRequires:  %{python_module hvplot >= 0.5.2}
+# strictly a test req, but not a runtime requirement, not available in openSUSE
+#BuildRequires:  %%{python_module intake-parquet}
 BuildRequires:  %{python_module msgpack-numpy}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module panel >= 0.8.9}
+BuildRequires:  %{python_module panel >= 0.8.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
@@ -80,14 +80,8 @@ A plugin system for loading your data and making data catalogs.
 
 %prep
 %autosetup -p1 -n intake-%{version}
-sed -i -e '/^#!\//, 1d' intake/catalog/tests/test_persist.py
-sed -i -e '/^#!\//, 1d' intake/container/tests/__init__.py
-sed -i -e '/^#!\//, 1d' intake/container/tests/test_generics.py
 sed -i -e "/import os/ a import sys" -e "s/cmd = \['python'/cmd = \[sys.executable/" intake/conftest.py
-mkdir -p intake/source/tests/data.zarr
-cp %{SOURCE1} intake/source/tests/data.zarr/.zarray
-cp %{SOURCE2} intake/source/tests/data.zarr/0
-cp %{SOURCE3} intake/source/tests/calvert_uk_filter.tar.gz
+find intake -path '*/tests/*.py' -exec sed -i '1{/env python/d}' {} ';'
 
 %build
 %python_build
@@ -115,6 +109,15 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   # the test looks for the wrong dtype on 32-bit (int64 vs int)
   donttest+=" or test_zarr_minimal"
 fi
+# skip tests expecting the unavailable intake-parquet driver (configured in intake/tests/catalog_inherit_params.yml)
+donttest+=" or test_inherit_params"
+donttest+=" or test_runtime_overwrite_params"
+donttest+=" or test_local_param_overwrites"
+donttest+=" or test_local_and_global_params"
+donttest+=" or test_search_inherit_params"
+donttest+=" or test_multiple_cats_params"
+# wrong exception class
+donttest+=" or test_mlist_parameter"
 %pytest -ra -k "not (${donttest:4})"
 
 %post
