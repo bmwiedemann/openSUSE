@@ -547,4 +547,12 @@
   + 0002-gnome-music-revert-from-future-import-annotations.patch (forwarded request 932630 from yfjiang)</comment>
     <requestid>933068</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>96722a4b05ba2f319c9943a53a099bd4</srcmd5>
+    <version>41.0</version>
+    <time>1644188027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951419</requestid>
+  </revision>
 </revisionlist>

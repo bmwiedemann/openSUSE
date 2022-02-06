@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 20:08:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch: Fix build
+  with meson 0.61.0 and newer.
+
+-------------------------------------------------------------------
 Sat Nov 20 10:03:25 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop the following patches which removes useful code and brings

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-music
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source99:       %{name}-rpmlintrc
 Patch0:         0001-gnome-music-use-python36.patch
 #PATCH-FIX-SLE  0002-gnome-music-revert-from-future-import-annotations.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
 Patch1:         0002-gnome-music-revert-from-future-import-annotations.patch
+# PATCH-FIX-UPSTREAM d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch -- Fix build with meson 0.61.0 and newer
+Patch2:         https://gitlab.gnome.org/GNOME/gnome-music/-/commit/d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -85,6 +87,7 @@ Music player and management application for GNOME.
 %patch0 -p1
 %patch1 -p1
 %endif
+%patch2 -p1
 # Fix shebangs:
 sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 
