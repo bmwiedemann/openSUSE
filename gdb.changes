@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 12:22:35 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- gdb-r_version-check.patch: gdb: Don't assume r_ldsomap when r_version >
+  1 on Linux
+
+-------------------------------------------------------------------
 Mon Dec  6 17:19:44 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Patches added (swo#28323):
