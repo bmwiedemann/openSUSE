@@ -482,4 +482,20 @@ last submission had wrong tar ball for unknown reason</comment>
   * 20-files-present-and-references: do not complain about debian.*.triggers</comment>
     <requestid>945827</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>30dbfc677cf163455d5a9e0e4067a838</srcmd5>
+    <version>0.22</version>
+    <time>1644188013</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.22:
+  * display diff if previous file is present in 20-files-present-and-referenced
+  * 45-stale-changes: Use xmllint for listing multibuild flavors
+  * 45-stale-changes: Don't break if there is no *.spec
+  * 45-stale-changes allow for multibuild specfiles with empty default flavour
+  * No need to compress buildtime generated tarballs
+  * Fix running the checks on a directory with whitespace in its path
+  * spec_query: print line numbers on %if/%else/%endif error
+  * 20-files-present-and-references: do not complain about debian.*.triggers</comment>
+    <requestid>951352</requestid>
+  </revision>
 </revisionlist>
