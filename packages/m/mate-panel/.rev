@@ -342,4 +342,19 @@
     <comment>- Update to version 1.26.1.</comment>
     <requestid>933286</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>58870fa601c2be1163196f4e52b0c286</srcmd5>
+    <version>1.26.2</version>
+    <time>1644188071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.26.2
+  * update translations
+  * clock: fix memory leak
+  * panel-test-applets: fix memory leak
+  * wncklet: The values stored in the wrapper hash table are incorrect
+  * Upscale in panel_xutils_set_strut
+  * panel-toplevel: fix the computed dimension for (non) auto hidden panels
+  * struts: add support for _GNOME_WM_STRUT_AREA (forwarded request 951842 from hillwood)</comment>
+    <requestid>951848</requestid>
+  </revision>
 </revisionlist>

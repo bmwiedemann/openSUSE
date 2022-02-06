@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  6 07:03:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.2
+  * update translations
+  * clock: fix memory leak
+  * panel-test-applets: fix memory leak
+  * wncklet: The values stored in the wrapper hash table are incorrect
+  * Upscale in panel_xutils_set_strut
+  * panel-toplevel: fix the computed dimension for (non) auto hidden panels
+  * struts: add support for _GNOME_WM_STRUT_AREA 
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
