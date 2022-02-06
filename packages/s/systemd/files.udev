@@ -1,0 +1,126 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%config(noreplace) %{_sysconfdir}/udev/udev.conf
+%dir %{_prefix}/lib/udev
+%dir %{_sysconfdir}/udev
+%dir %{_sysconfdir}/udev/rules.d
+%dir %{_systemd_util_dir}/network
+%dir %{_udevhwdbdir}
+%dir %{_udevrulesdir}
+%doc %{_udevhwdbdir}/README
+%doc %{_udevrulesdir}/README
+%ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
+%ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
+%{_bindir}/systemd-hwdb
+%{_bindir}/udevadm
+%if ! 0%{?bootstrap}
+%{_datadir}/bash-completion/completions/udevadm
+%endif
+%{_datadir}/pkgconfig/udev.pc
+%if ! 0%{?bootstrap}
+%{_datadir}/zsh/site-functions/_udevadm
+%endif
+%if ! 0%{?bootstrap}
+%{_mandir}/man5/udev.conf.5.gz
+%{_mandir}/man7/hwdb.7.gz
+%{_mandir}/man7/udev.7.gz
+%{_mandir}/man8/systemd-hwdb.8.gz
+%{_mandir}/man8/systemd-network-generator.8.gz
+%{_mandir}/man8/systemd-network-generator.service.8.gz
+%{_mandir}/man8/systemd-udev-settle.service.8.gz
+%{_mandir}/man8/systemd-udevd-control.socket.8.gz
+%{_mandir}/man8/systemd-udevd-kernel.socket.8.gz
+%{_mandir}/man8/systemd-udevd.8.gz
+%{_mandir}/man8/systemd-udevd.service.8.gz
+%{_mandir}/man8/udevadm.8.gz
+%endif
+%{_prefix}/lib/udev/ata_id
+%{_prefix}/lib/udev/cdrom_id
+# dmi_memory_id is only relevant on arches with DMI
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
+%{_prefix}/lib/udev/dmi_memory_id
+%endif
+%{_prefix}/lib/udev/fido_id
+%{_prefix}/lib/udev/mtd_probe
+%{_prefix}/lib/udev/path_id_compat
+%{_prefix}/lib/udev/scsi_id
+%{_prefix}/lib/udev/v4l_id
+%{_systemd_util_dir}/network/99-default.link
+%{_systemd_util_dir}/systemd-network-generator
+%{_systemd_util_dir}/systemd-udevd
+%{_tmpfilesdir}/static-nodes-permissions.conf
+%{_udevhwdbdir}/20-OUI.hwdb
+%{_udevhwdbdir}/20-acpi-vendor.hwdb
+%{_udevhwdbdir}/20-bluetooth-vendor-product.hwdb
+%{_udevhwdbdir}/20-dmi-id.hwdb
+%{_udevhwdbdir}/20-net-ifname.hwdb
+%{_udevhwdbdir}/20-pci-classes.hwdb
+%{_udevhwdbdir}/20-pci-vendor-model.hwdb
+%{_udevhwdbdir}/20-sdio-classes.hwdb
+%{_udevhwdbdir}/20-sdio-vendor-model.hwdb
+%{_udevhwdbdir}/20-usb-classes.hwdb
+%{_udevhwdbdir}/20-usb-vendor-model.hwdb
+%{_udevhwdbdir}/20-vmbus-class.hwdb
+%{_udevhwdbdir}/60-autosuspend-chromiumos.hwdb
+%{_udevhwdbdir}/60-autosuspend-fingerprint-reader.hwdb
+%{_udevhwdbdir}/60-autosuspend.hwdb
+%{_udevhwdbdir}/60-evdev.hwdb
+%{_udevhwdbdir}/60-input-id.hwdb
+%{_udevhwdbdir}/60-keyboard.hwdb
+%{_udevhwdbdir}/60-seat.hwdb
+%{_udevhwdbdir}/60-sensor.hwdb
+%{_udevhwdbdir}/70-joystick.hwdb
+%{_udevhwdbdir}/70-mouse.hwdb
+%{_udevhwdbdir}/70-pointingstick.hwdb
+%{_udevhwdbdir}/70-touchpad.hwdb
+%{_udevhwdbdir}/80-ieee1394-unit-function.hwdb
+%{_udevrulesdir}/50-udev-default.rules
+%{_udevrulesdir}/60-autosuspend.rules
+%{_udevrulesdir}/60-block.rules
+%{_udevrulesdir}/60-cdrom_id.rules
+%{_udevrulesdir}/60-drm.rules
+%{_udevrulesdir}/60-evdev.rules
+%{_udevrulesdir}/60-fido-id.rules
+%{_udevrulesdir}/60-input-id.rules
+%{_udevrulesdir}/60-persistent-alsa.rules
+%{_udevrulesdir}/60-persistent-input.rules
+%{_udevrulesdir}/60-persistent-storage-tape.rules
+%{_udevrulesdir}/60-persistent-storage.rules
+%{_udevrulesdir}/60-persistent-v4l.rules
+%{_udevrulesdir}/60-sensor.rules
+%{_udevrulesdir}/60-serial.rules
+%{_udevrulesdir}/61-persistent-storage-compat.rules
+%{_udevrulesdir}/64-btrfs.rules
+%{_udevrulesdir}/70-joystick.rules
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
+%{_udevrulesdir}/70-memory.rules
+%endif
+%{_udevrulesdir}/70-mouse.rules
+%{_udevrulesdir}/70-power-switch.rules
+%{_udevrulesdir}/70-touchpad.rules
+%{_udevrulesdir}/75-net-description.rules
+%{_udevrulesdir}/75-probe_mtd.rules
+%{_udevrulesdir}/78-sound-card.rules
+%{_udevrulesdir}/80-drivers.rules
+%{_udevrulesdir}/80-net-setup-link.rules
+%{_udevrulesdir}/81-net-dhcp.rules
+%{_udevrulesdir}/90-vconsole.rules
+%{_unitdir}/initrd-udevadm-cleanup-db.service
+%{_unitdir}/kmod-static-nodes.service
+%{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
+%{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
+%{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
+%{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
+%{_unitdir}/sysinit.target.wants/systemd-udev-trigger.service
+%{_unitdir}/sysinit.target.wants/systemd-udevd.service
+%{_unitdir}/systemd-hwdb-update.service
+%{_unitdir}/systemd-network-generator.service
+%{_unitdir}/systemd-udev-settle.service
+%{_unitdir}/systemd-udev-trigger.service
+%{_unitdir}/systemd-udevd-control.socket
+%{_unitdir}/systemd-udevd-kernel.socket
+%{_unitdir}/systemd-udevd.service
+%if %{with split_usr}
+/sbin/udevadm
+%endif

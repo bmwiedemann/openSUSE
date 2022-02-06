@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Fri Feb  4 15:22:43 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Always create systemd-network system user, even if systemd-networkd is not
+  installed (bsc#1195559)
+
+-------------------------------------------------------------------
+Wed Feb  2 09:33:14 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Make more use of %{_unitdir} in files.{systemd,container}
+
+-------------------------------------------------------------------
+Tue Feb  1 09:18:25 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Installation of libnss_mymachines.so depended on %{bootstrap} but it is
+  actually installed when %{with machined} is true.
+
+- Call ldconfig when container subpackage is installed since it ships
+  nss-mymachines NSS plug-in module.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:52:44 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 117bd7f14aa7834d85a4306cd380d292bec04108
+
+  1395c74be7 udevadm: cleanup-db: don't delete information for kept db entries (bsc#1194912)
+  bbafc8092a udevadm: cleanup_dir: use dot_or_dot_dot()
+
+-------------------------------------------------------------------
+Mon Jan 31 14:54:07 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Drop 0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
+       0009-sysv-add-back-support-for-all-virtual-facility-and-f.patch
+
+  Given the fact that Factory no more ship SysV init scripts since several
+  months, only scripts coming from 3rd party applications should remain which
+  are unlikely to rely on the SUSE specifities implemented by these
+  patches. This change was announced on the Factory mailing list:
+
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3ERUP5ZZJ6PPA36L3HVN46BH6U6JL74O/
+
+-------------------------------------------------------------------
+Mon Jan 31 11:37:23 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 885e0b9126bd2cf1e3f6b147c45ec58a5550c75c
+
+  41334be59e meson: minor cleanup
+  3db0c28462 sysusers: split up systemd.conf
+
+- Drop 0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch (bsc#1195153)
+
+  Since v241, the patch isn't useful anymore because resolved is no more able to
+  create /etc/resolv.conf symlink by itself,it runs as 'systemd-resolve'
+  user. The symlink is now handled by a tmpfiles config file which is only
+  installed when systemd-resolved is. The tmpfiles config file has currently a
+  lower priority than the one shipped by netconfig.
+
+-------------------------------------------------------------------
+Mon Jan 31 10:19:23 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Make use of %ldconfig_scriptlets
+
+-------------------------------------------------------------------
+Fri Jan 28 16:04:36 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Merge nss-resolved and nss-mymachines NSS plug-in modules into systemd-network
+  and systemd-container respectively.
+
+  These modules are plug-in modules hence the shared library packaging policy
+  doesn't apply for them. Moreover they're pretty useless alone without their
+  respective systemd services, Hence let's reduce the number of sub-packages as
+  the list keeps increasing.
+
+-------------------------------------------------------------------
+Thu Jan 27 10:50:50 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Merge libudev-devel into systemd-devel
+
+-------------------------------------------------------------------
+Thu Jan 27 07:50:07 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Make sure that libopenssl-devel is installed when building resolved. Openssl
+  was implictly pulled in by systemd-experimental subpackage but could be
+  missing if the build of this subpackage was disabled.
+
+-------------------------------------------------------------------
+Wed Jan 26 17:34:28 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- resolved: disable fallback DNS servers and fail when no DNS server info could
+  be obtained from the links. It's better to let the sysadmin know that
+  something is likely misconfigured rather than silently handing over the DNS
+  queries to Google or Cloudflare.
+
+-------------------------------------------------------------------
+Wed Jan 26 15:20:57 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- resolved: disable DNSSEC until the following issue is solved:
+  https://github.com/systemd/systemd/issues/10579
+
+- Replace '%setup+%autopatch' with '%autosetup'
+
+-------------------------------------------------------------------
+Mon Jan 24 15:51:07 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: explicitely list all files for each main (sub) packages
+
+  Using glob patterns in %files section to reduce the number of listed files was
+  error-prone as some introduced files could silently be placed in the wrong
+  subpackage. The sections were also hard to read and many files needed to be
+  excluded from the main package making the point of glob pattern usage moot.
+
+  systemd, udev, systemd-container and systemd-network packages have now their
+  list of files described in a dedicated file. The lists are kept sorted to make
+  them easy to parse. The size of the files, especially the one for the main
+  package, is still reasonable and much easier to read now.
+
+  During this rework, a couple of cleanups happened: more use of
+  %{_systemd_util_dir}, some files was incorrectly owned by the main package and
+  have been moved to the correct sub-package, etc...
+
+  Note: the rest of the subpackages might be addressed later but let's find how
+  it goes for now.
+
+-------------------------------------------------------------------
+Wed Jan 19 15:34:05 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Move the whole content of /usr/share/doc/packages/systemd in doc subpackage
+
+-------------------------------------------------------------------
 Wed Jan 19 14:25:46 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Move the systemd-network-generator stuff in udev package
@@ -613,6 +741,9 @@ Tue May 18 08:19:57 UTC 2021 - Franck Bui <fbui@suse.com>
 Mon May 10 13:12:56 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 6f5c11b28f5739b901390f22c2bf4c003cadedaa (merge of v248.2)
+
+  2c8ec0095e udev/net_id: don't generate slot based names if multiple devices might claim the same slot (bsc#1192637)
+  [...]
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/e5f93c9d2e9e26dd0dff430c4c072a547357ae7d...6f5c11b28f5739b901390f22c2bf4c003cadedaa

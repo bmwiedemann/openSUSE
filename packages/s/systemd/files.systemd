@@ -1,0 +1,852 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%config(noreplace) %{_sysconfdir}/systemd/journald.conf
+%config(noreplace) %{_sysconfdir}/systemd/logind.conf
+%config(noreplace) %{_sysconfdir}/systemd/sleep.conf
+%config(noreplace) %{_sysconfdir}/systemd/system.conf
+%config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
+%config(noreplace) %{_sysconfdir}/systemd/user.conf
+%dir %{_binfmtdir}
+%if ! 0%{?bootstrap}
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%endif
+%dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/services
+%dir %{_datadir}/dbus-1/system-services
+%dir %{_datadir}/dbus-1/system.d
+%dir %{_datadir}/factory
+%dir %{_datadir}/polkit-1
+%dir %{_datadir}/polkit-1/actions
+%dir %{_datadir}/systemd
+%if ! 0%{?bootstrap}
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%endif
+%dir %{_distconfdir}/X11/xinit
+%dir %{_distconfdir}/X11/xinit/xinitrc.d
+%dir %{_environmentdir}
+%dir %{_journalcatalogdir}
+%dir %{_localstatedir}/lib/systemd
+%dir %{_localstatedir}/lib/systemd/catalog
+%if %{with sysvcompat}
+%dir %{_localstatedir}/lib/systemd/migrated
+%dir %{_localstatedir}/lib/systemd/sysv-convert
+%endif
+%dir %{_modprobedir}
+%dir %{_modulesloaddir}
+%dir %{_prefix}/lib/kernel
+%dir %{_prefix}/lib/kernel/install.d
+%dir %{_sysconfdir}/X11/xorg.conf.d
+%dir %{_sysconfdir}/binfmt.d
+%dir %{_sysconfdir}/modules-load.d
+%dir %{_sysconfdir}/sysctl.d
+%dir %{_sysconfdir}/systemd
+%dir %{_sysconfdir}/systemd/system
+%dir %{_sysconfdir}/systemd/user
+%dir %{_sysconfdir}/tmpfiles.d
+%dir %{_sysconfdir}/xdg/systemd
+%dir %{_sysctldir}
+%dir %{_systemd_system_env_generator_dir}
+%dir %{_systemd_user_env_generator_dir}
+%dir %{_systemd_util_dir}
+%if %{with sd_boot}
+%dir %{_systemd_util_dir}/boot
+%dir %{_systemd_util_dir}/boot/efi
+%endif
+%dir %{_systemd_util_dir}/ntp-units.d
+%dir %{_systemd_util_dir}/scripts
+%dir %{_systemd_util_dir}/system-preset
+%dir %{_systemd_util_dir}/system-shutdown
+%dir %{_systemd_util_dir}/system-sleep
+%dir %{_systemd_util_dir}/user
+%dir %{_systemd_util_dir}/user-generators
+%dir %{_systemd_util_dir}/user-preset
+%dir %{_systemdgeneratordir}
+%dir %{_systemdusergeneratordir}
+%dir %{_sysusersdir}
+%dir %{_tmpfilesdir}
+%dir %{_unitdir}
+%dir %{_unitdir}/basic.target.wants
+%dir %{_unitdir}/dbus.target.wants
+%dir %{_unitdir}/default.target.wants
+%dir %{_unitdir}/graphical.target.wants
+%dir %{_unitdir}/halt.target.wants
+%dir %{_unitdir}/initrd-root-device.target.wants
+%dir %{_unitdir}/initrd-root-fs.target.wants
+%dir %{_unitdir}/kexec.target.wants
+%dir %{_unitdir}/local-fs.target.wants
+%dir %{_unitdir}/multi-user.target.wants
+%dir %{_unitdir}/poweroff.target.wants
+%dir %{_unitdir}/reboot.target.wants
+%dir %{_unitdir}/remote-fs.target.wants
+%dir %{_unitdir}/rescue.target.wants
+%if %{with sysvcompat}
+%dir %{_unitdir}/runlevel1.target.wants
+%dir %{_unitdir}/runlevel2.target.wants
+%dir %{_unitdir}/runlevel3.target.wants
+%dir %{_unitdir}/runlevel4.target.wants
+%dir %{_unitdir}/runlevel5.target.wants
+%endif
+%dir %{_unitdir}/shutdown.target.wants
+%dir %{_unitdir}/sockets.target.wants
+%dir %{_unitdir}/sysinit.target.wants
+%dir %{_unitdir}/timers.target.wants
+%doc %{_modprobedir}/README
+%doc %{_sysctldir}/README
+%doc %{_sysusersdir}/README
+%doc %{_tmpfilesdir}/README
+%ghost %attr(0444,root,root) %config(noreplace) %{_sysconfdir}/machine-id
+%ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
+%ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
+%ghost %config(noreplace) %{_sysconfdir}/locale.conf
+%ghost %config(noreplace) %{_sysconfdir}/machine-info
+%ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
+%ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal
+%ghost %{_localstatedir}/lib/systemd/backlight
+%ghost %{_localstatedir}/lib/systemd/catalog/database
+%ghost %{_localstatedir}/lib/systemd/i18n-migrated
+%license LICENSE.GPL2
+%license LICENSE.LGPL2.1
+%if %{with sd_boot}
+%{_bindir}/bootctl
+%endif
+%{_bindir}/busctl
+%{_bindir}/hostnamectl
+%{_bindir}/journalctl
+%{_bindir}/kernel-install
+%{_bindir}/localectl
+%{_bindir}/loginctl
+%{_bindir}/systemctl
+%{_bindir}/systemd-analyze
+%{_bindir}/systemd-ask-password
+%{_bindir}/systemd-cat
+%{_bindir}/systemd-cgls
+%{_bindir}/systemd-cgtop
+%if ! 0%{?bootstrap}
+%{_bindir}/systemd-cryptenroll
+%endif
+%{_bindir}/systemd-delta
+%{_bindir}/systemd-detect-virt
+%{_bindir}/systemd-dissect
+%{_bindir}/systemd-escape
+%{_bindir}/systemd-firstboot
+%{_bindir}/systemd-id128
+%{_bindir}/systemd-inhibit
+%{_bindir}/systemd-machine-id-setup
+%{_bindir}/systemd-mount
+%{_bindir}/systemd-notify
+%{_bindir}/systemd-path
+%{_bindir}/systemd-run
+%{_bindir}/systemd-socket-activate
+%{_bindir}/systemd-stdio-bridge
+%{_bindir}/systemd-sysext
+%{_bindir}/systemd-sysusers
+%{_bindir}/systemd-tmpfiles
+%{_bindir}/systemd-tty-ask-password-agent
+%{_bindir}/systemd-umount
+%{_bindir}/timedatectl
+%if ! 0%{?bootstrap}
+%if %{with sd_boot}
+%{_datadir}/bash-completion/completions/bootctl
+%endif
+%{_datadir}/bash-completion/completions/busctl
+%{_datadir}/bash-completion/completions/coredumpctl
+%{_datadir}/bash-completion/completions/hostnamectl
+%{_datadir}/bash-completion/completions/journalctl
+%{_datadir}/bash-completion/completions/kernel-install
+%{_datadir}/bash-completion/completions/localectl
+%{_datadir}/bash-completion/completions/loginctl
+%{_datadir}/bash-completion/completions/portablectl
+%{_datadir}/bash-completion/completions/systemctl
+%{_datadir}/bash-completion/completions/systemd-analyze
+%{_datadir}/bash-completion/completions/systemd-cat
+%{_datadir}/bash-completion/completions/systemd-cgls
+%{_datadir}/bash-completion/completions/systemd-cgtop
+%{_datadir}/bash-completion/completions/systemd-delta
+%{_datadir}/bash-completion/completions/systemd-detect-virt
+%{_datadir}/bash-completion/completions/systemd-id128
+%{_datadir}/bash-completion/completions/systemd-path
+%{_datadir}/bash-completion/completions/systemd-run
+%{_datadir}/bash-completion/completions/timedatectl
+%endif
+%{_datadir}/dbus-1/services/org.freedesktop.systemd1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.timedate1.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.hostname1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.locale1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.login1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.systemd1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
+%{_datadir}/pkgconfig/systemd.pc
+%{_datadir}/polkit-1/actions/org.freedesktop.hostname1.policy
+%{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
+%{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
+%{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
+%{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
+%{_datadir}/systemd/kbd-model-map
+%{_datadir}/systemd/language-fallback-map
+%if ! 0%{?bootstrap}
+%if %{with sd_boot}
+%{_datadir}/zsh/site-functions/_bootctl
+%endif
+%{_datadir}/zsh/site-functions/_busctl
+%{_datadir}/zsh/site-functions/_coredumpctl
+%{_datadir}/zsh/site-functions/_hostnamectl
+%{_datadir}/zsh/site-functions/_journalctl
+%{_datadir}/zsh/site-functions/_kernel-install
+%{_datadir}/zsh/site-functions/_localectl
+%{_datadir}/zsh/site-functions/_loginctl
+%{_datadir}/zsh/site-functions/_sd_hosts_or_user_at_host
+%{_datadir}/zsh/site-functions/_sd_outputmodes
+%{_datadir}/zsh/site-functions/_sd_unit_files
+%{_datadir}/zsh/site-functions/_systemctl
+%{_datadir}/zsh/site-functions/_systemd
+%{_datadir}/zsh/site-functions/_systemd-analyze
+%{_datadir}/zsh/site-functions/_systemd-delta
+%{_datadir}/zsh/site-functions/_systemd-inhibit
+%{_datadir}/zsh/site-functions/_systemd-path
+%{_datadir}/zsh/site-functions/_systemd-run
+%{_datadir}/zsh/site-functions/_systemd-tmpfiles
+%{_datadir}/zsh/site-functions/_timedatectl
+%endif
+%{_distconfdir}/X11/xinit/xinitrc.d/50-systemd-user.sh
+%{_environmentdir}/99-environment.conf
+%{_journalcatalogdir}/systemd.be.catalog
+%{_journalcatalogdir}/systemd.be@latin.catalog
+%{_journalcatalogdir}/systemd.bg.catalog
+%{_journalcatalogdir}/systemd.catalog
+%{_journalcatalogdir}/systemd.de.catalog
+%{_journalcatalogdir}/systemd.fr.catalog
+%{_journalcatalogdir}/systemd.it.catalog
+%{_journalcatalogdir}/systemd.pl.catalog
+%{_journalcatalogdir}/systemd.pt_BR.catalog
+%{_journalcatalogdir}/systemd.ru.catalog
+%{_journalcatalogdir}/systemd.zh_CN.catalog
+%{_journalcatalogdir}/systemd.zh_TW.catalog
+%if ! 0%{bootstrap}
+%if %{with sd_boot}
+%{_mandir}/man1/bootctl.1.gz
+%endif
+%{_mandir}/man1/busctl.1.gz
+%{_mandir}/man1/hostnamectl.1.gz
+%{_mandir}/man1/journalctl.1.gz
+%{_mandir}/man1/localectl.1.gz
+%{_mandir}/man1/loginctl.1.gz
+%{_mandir}/man1/systemctl.1.gz
+%{_mandir}/man1/systemd-analyze.1.gz
+%{_mandir}/man1/systemd-ask-password.1.gz
+%{_mandir}/man1/systemd-cat.1.gz
+%{_mandir}/man1/systemd-cgls.1.gz
+%{_mandir}/man1/systemd-cgtop.1.gz
+%{_mandir}/man1/systemd-cryptenroll.1.gz
+%{_mandir}/man1/systemd-delta.1.gz
+%{_mandir}/man1/systemd-detect-virt.1.gz
+%{_mandir}/man1/systemd-dissect.1.gz
+%{_mandir}/man1/systemd-escape.1.gz
+%{_mandir}/man1/systemd-firstboot.1.gz
+%{_mandir}/man1/systemd-firstboot.service.1.gz
+%{_mandir}/man1/systemd-id128.1.gz
+%{_mandir}/man1/systemd-inhibit.1.gz
+%{_mandir}/man1/systemd-machine-id-setup.1.gz
+%{_mandir}/man1/systemd-mount.1.gz
+%{_mandir}/man1/systemd-notify.1.gz
+%{_mandir}/man1/systemd-path.1.gz
+%{_mandir}/man1/systemd-run.1.gz
+%{_mandir}/man1/systemd-socket-activate.1.gz
+%{_mandir}/man1/systemd-tty-ask-password-agent.1.gz
+%{_mandir}/man1/systemd-umount.1.gz
+%{_mandir}/man1/systemd.1.gz
+%{_mandir}/man1/timedatectl.1.gz
+%{_mandir}/man5/binfmt.d.5.gz
+%{_mandir}/man5/crypttab.5.gz
+%{_mandir}/man5/dnssec-trust-anchors.d.5.gz
+%{_mandir}/man5/environment.d.5.gz
+%{_mandir}/man5/hostname.5.gz
+%{_mandir}/man5/initrd-release.5.gz
+%{_mandir}/man5/journald.conf.5.gz
+%{_mandir}/man5/journald.conf.d.5.gz
+%{_mandir}/man5/journald@.conf.5.gz
+%if %{with sd_boot}
+%{_mandir}/man5/loader.conf.5.gz
+%endif
+%{_mandir}/man5/locale.conf.5.gz
+%{_mandir}/man5/localtime.5.gz
+%{_mandir}/man5/logind.conf.5.gz
+%{_mandir}/man5/logind.conf.d.5.gz
+%{_mandir}/man5/machine-id.5.gz
+%{_mandir}/man5/machine-info.5.gz
+%{_mandir}/man5/modules-load.d.5.gz
+%{_mandir}/man5/org.freedesktop.LogControl1.5.gz
+%{_mandir}/man5/org.freedesktop.hostname1.5.gz
+%{_mandir}/man5/org.freedesktop.locale1.5.gz
+%{_mandir}/man5/org.freedesktop.login1.5.gz
+%{_mandir}/man5/org.freedesktop.portable1.5.gz
+%{_mandir}/man5/org.freedesktop.systemd1.5.gz
+%{_mandir}/man5/org.freedesktop.timedate1.5.gz
+%{_mandir}/man5/os-release.5.gz
+%{_mandir}/man5/sleep.conf.d.5.gz
+%{_mandir}/man5/sysctl.d.5.gz
+%{_mandir}/man5/system.conf.d.5.gz
+%{_mandir}/man5/systemd-sleep.conf.5.gz
+%{_mandir}/man5/systemd-system.conf.5.gz
+%{_mandir}/man5/systemd-user-runtime-dir.5.gz
+%{_mandir}/man5/systemd-user.conf.5.gz
+%{_mandir}/man5/systemd.automount.5.gz
+%{_mandir}/man5/systemd.device.5.gz
+%{_mandir}/man5/systemd.dnssd.5.gz
+%{_mandir}/man5/systemd.exec.5.gz
+%{_mandir}/man5/systemd.kill.5.gz
+%{_mandir}/man5/systemd.link.5.gz
+%{_mandir}/man5/systemd.mount.5.gz
+%{_mandir}/man5/systemd.negative.5.gz
+%{_mandir}/man5/systemd.netdev.5.gz
+%{_mandir}/man5/systemd.path.5.gz
+%{_mandir}/man5/systemd.positive.5.gz
+%{_mandir}/man5/systemd.preset.5.gz
+%{_mandir}/man5/systemd.resource-control.5.gz
+%{_mandir}/man5/systemd.scope.5.gz
+%{_mandir}/man5/systemd.service.5.gz
+%{_mandir}/man5/systemd.slice.5.gz
+%{_mandir}/man5/systemd.socket.5.gz
+%{_mandir}/man5/systemd.swap.5.gz
+%{_mandir}/man5/systemd.target.5.gz
+%{_mandir}/man5/systemd.timer.5.gz
+%{_mandir}/man5/systemd.unit.5.gz
+%{_mandir}/man5/sysusers.d.5.gz
+%{_mandir}/man5/timesyncd.conf.5.gz
+%{_mandir}/man5/timesyncd.conf.d.5.gz
+%{_mandir}/man5/tmpfiles.d.5.gz
+%{_mandir}/man5/user-runtime-dir@.service.5.gz
+%{_mandir}/man5/user.conf.d.5.gz
+%{_mandir}/man5/user@.service.5.gz
+%{_mandir}/man5/vconsole.conf.5.gz
+%{_mandir}/man5/veritytab.5.gz
+%{_mandir}/man7/bootup.7.gz
+%{_mandir}/man7/daemon.7.gz
+%{_mandir}/man7/file-hierarchy.7.gz
+%{_mandir}/man7/kernel-command-line.7.gz
+%if %{with sd_boot}
+%{_mandir}/man7/sd-boot.7.gz
+%{_mandir}/man7/systemd-boot.7.gz
+%endif
+%{_mandir}/man7/systemd.directives.7.gz
+%{_mandir}/man7/systemd.environment-generator.7.gz
+%{_mandir}/man7/systemd.generator.7.gz
+%{_mandir}/man7/systemd.index.7.gz
+%{_mandir}/man7/systemd.journal-fields.7.gz
+%{_mandir}/man7/systemd.net-naming-scheme.7.gz
+%{_mandir}/man7/systemd.offline-updates.7.gz
+%{_mandir}/man7/systemd.special.7.gz
+%{_mandir}/man7/systemd.syntax.7.gz
+%{_mandir}/man7/systemd.time.7.gz
+%{_mandir}/man8/30-systemd-environment-d-generator.8.gz
+%{_mandir}/man8/kernel-install.8.gz
+%{_mandir}/man8/pam_systemd.8.gz
+%{_mandir}/man8/rc-local.service.8.gz
+%{_mandir}/man8/systemd-ask-password-console.path.8.gz
+%{_mandir}/man8/systemd-ask-password-console.service.8.gz
+%{_mandir}/man8/systemd-ask-password-wall.path.8.gz
+%{_mandir}/man8/systemd-ask-password-wall.service.8.gz
+%{_mandir}/man8/systemd-backlight.8.gz
+%{_mandir}/man8/systemd-backlight@.service.8.gz
+%{_mandir}/man8/systemd-binfmt.8.gz
+%{_mandir}/man8/systemd-binfmt.service.8.gz
+%if %{with sd_boot}
+%{_mandir}/man8/systemd-bless-boot-generator.8.gz
+%{_mandir}/man8/systemd-bless-boot.8.gz
+%{_mandir}/man8/systemd-bless-boot.service.8.gz
+%endif
+%{_mandir}/man8/systemd-boot-check-no-failures.8.gz
+%{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
+%if %{with sd_boot}
+%{_mandir}/man8/systemd-boot-system-token.service.8.gz
+%endif
+%{_mandir}/man8/systemd-cryptsetup-generator.8.gz
+%{_mandir}/man8/systemd-cryptsetup.8.gz
+%{_mandir}/man8/systemd-cryptsetup@.service.8.gz
+%{_mandir}/man8/systemd-debug-generator.8.gz
+%{_mandir}/man8/systemd-environment-d-generator.8.gz
+%{_mandir}/man8/systemd-fsck-root.service.8.gz
+%{_mandir}/man8/systemd-fsck.8.gz
+%{_mandir}/man8/systemd-fsck@.service.8.gz
+%{_mandir}/man8/systemd-fstab-generator.8.gz
+%{_mandir}/man8/systemd-getty-generator.8.gz
+%{_mandir}/man8/systemd-gpt-auto-generator.8.gz
+%{_mandir}/man8/systemd-growfs.8.gz
+%{_mandir}/man8/systemd-growfs@.service.8.gz
+%{_mandir}/man8/systemd-halt.service.8.gz
+%{_mandir}/man8/systemd-hibernate-resume-generator.8.gz
+%{_mandir}/man8/systemd-hibernate-resume.8.gz
+%{_mandir}/man8/systemd-hibernate-resume@.service.8.gz
+%{_mandir}/man8/systemd-hibernate.service.8.gz
+%{_mandir}/man8/systemd-hostnamed.8.gz
+%{_mandir}/man8/systemd-hostnamed.service.8.gz
+%{_mandir}/man8/systemd-hybrid-sleep.service.8.gz
+%{_mandir}/man8/systemd-initctl.8.gz
+%{_mandir}/man8/systemd-initctl.service.8.gz
+%{_mandir}/man8/systemd-initctl.socket.8.gz
+%{_mandir}/man8/systemd-journald-audit.socket.8.gz
+%{_mandir}/man8/systemd-journald-dev-log.socket.8.gz
+%{_mandir}/man8/systemd-journald-varlink@.socket.8.gz
+%{_mandir}/man8/systemd-journald.8.gz
+%{_mandir}/man8/systemd-journald.service.8.gz
+%{_mandir}/man8/systemd-journald.socket.8.gz
+%{_mandir}/man8/systemd-journald@.service.8.gz
+%{_mandir}/man8/systemd-journald@.socket.8.gz
+%{_mandir}/man8/systemd-kexec.service.8.gz
+%{_mandir}/man8/systemd-localed.8.gz
+%{_mandir}/man8/systemd-localed.service.8.gz
+%{_mandir}/man8/systemd-logind.8.gz
+%{_mandir}/man8/systemd-logind.service.8.gz
+%{_mandir}/man8/systemd-machine-id-commit.service.8.gz
+%{_mandir}/man8/systemd-makefs.8.gz
+%{_mandir}/man8/systemd-makefs@.service.8.gz
+%{_mandir}/man8/systemd-mkswap@.service.8.gz
+%{_mandir}/man8/systemd-modules-load.8.gz
+%{_mandir}/man8/systemd-modules-load.service.8.gz
+%{_mandir}/man8/systemd-poweroff.service.8.gz
+%{_mandir}/man8/systemd-quotacheck.8.gz
+%{_mandir}/man8/systemd-quotacheck.service.8.gz
+%{_mandir}/man8/systemd-random-seed.8.gz
+%{_mandir}/man8/systemd-random-seed.service.8.gz
+%{_mandir}/man8/systemd-rc-local-generator.8.gz
+%{_mandir}/man8/systemd-reboot.service.8.gz
+%{_mandir}/man8/systemd-remount-fs.8.gz
+%{_mandir}/man8/systemd-remount-fs.service.8.gz
+%{_mandir}/man8/systemd-rfkill.8.gz
+%{_mandir}/man8/systemd-rfkill.service.8.gz
+%{_mandir}/man8/systemd-rfkill.socket.8.gz
+%{_mandir}/man8/systemd-run-generator.8.gz
+%{_mandir}/man8/systemd-shutdown.8.gz
+%{_mandir}/man8/systemd-sleep.8.gz
+%{_mandir}/man8/systemd-socket-proxyd.8.gz
+%{_mandir}/man8/systemd-suspend-then-hibernate.service.8.gz
+%{_mandir}/man8/systemd-suspend.service.8.gz
+%{_mandir}/man8/systemd-sysctl.8.gz
+%{_mandir}/man8/systemd-sysctl.service.8.gz
+%{_mandir}/man8/systemd-sysext.8.gz
+%{_mandir}/man8/systemd-sysext.service.8.gz
+%{_mandir}/man8/systemd-system-update-generator.8.gz
+%{_mandir}/man8/systemd-sysusers.8.gz
+%{_mandir}/man8/systemd-sysusers.service.8.gz
+%{_mandir}/man8/systemd-sysv-generator.8.gz
+%{_mandir}/man8/systemd-time-wait-sync.8.gz
+%{_mandir}/man8/systemd-time-wait-sync.service.8.gz
+%{_mandir}/man8/systemd-timedated.8.gz
+%{_mandir}/man8/systemd-timedated.service.8.gz
+%{_mandir}/man8/systemd-timesyncd.8.gz
+%{_mandir}/man8/systemd-timesyncd.service.8.gz
+%{_mandir}/man8/systemd-tmpfiles-clean.service.8.gz
+%{_mandir}/man8/systemd-tmpfiles-clean.timer.8.gz
+%{_mandir}/man8/systemd-tmpfiles-setup-dev.service.8.gz
+%{_mandir}/man8/systemd-tmpfiles-setup.service.8.gz
+%{_mandir}/man8/systemd-tmpfiles.8.gz
+%{_mandir}/man8/systemd-update-done.8.gz
+%{_mandir}/man8/systemd-update-done.service.8.gz
+%{_mandir}/man8/systemd-update-utmp-runlevel.service.8.gz
+%{_mandir}/man8/systemd-update-utmp.8.gz
+%{_mandir}/man8/systemd-update-utmp.service.8.gz
+%{_mandir}/man8/systemd-user-sessions.8.gz
+%{_mandir}/man8/systemd-user-sessions.service.8.gz
+%{_mandir}/man8/systemd-vconsole-setup.8.gz
+%{_mandir}/man8/systemd-vconsole-setup.service.8.gz
+%{_mandir}/man8/systemd-veritysetup-generator.8.gz
+%{_mandir}/man8/systemd-veritysetup.8.gz
+%{_mandir}/man8/systemd-veritysetup@.service.8.gz
+%{_mandir}/man8/systemd-volatile-root.8.gz
+%{_mandir}/man8/systemd-volatile-root.service.8.gz
+%{_mandir}/man8/systemd-xdg-autostart-generator.8.gz
+%endif
+%{_modprobedir}/systemd.conf
+%{_pam_moduledir}/pam_systemd.so
+%{_pam_vendordir}/systemd-user
+%{_prefix}/lib/kernel/install.d/00-entry-directory.install
+%{_prefix}/lib/kernel/install.d/50-depmod.install
+%{_prefix}/lib/kernel/install.d/90-loaderentry.install
+%{_sysconfdir}/xdg/systemd/user
+%{_sysctldir}/99-sysctl.conf
+%{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
+%if %{with sd_boot}
+# These are part of the very few exceptions where glob pattern is allowd.
+%{_systemd_util_dir}/boot/efi/linux*.efi.stub
+%{_systemd_util_dir}/boot/efi/linux*.elf.stub
+%{_systemd_util_dir}/boot/efi/systemd-boot*.efi
+%endif
+%{_systemd_util_dir}/libsystemd-shared-249.so
+%{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
+%{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
+%{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
+%{_systemd_util_dir}/system-preset/99-default.preset
+%{_systemd_util_dir}/systemd
+%{_systemd_util_dir}/systemd-ac-power
+%{_systemd_util_dir}/systemd-backlight
+%{_systemd_util_dir}/systemd-binfmt
+%if %{with sd_boot}
+%{_systemd_util_dir}/systemd-bless-boot
+%endif
+%{_systemd_util_dir}/systemd-boot-check-no-failures
+%{_systemd_util_dir}/systemd-cgroups-agent
+%if ! 0%{?bootstrap}
+%{_systemd_util_dir}/systemd-cryptsetup
+%endif
+%{_systemd_util_dir}/systemd-fsck
+%{_systemd_util_dir}/systemd-growfs
+%{_systemd_util_dir}/systemd-hibernate-resume
+%{_systemd_util_dir}/systemd-hostnamed
+%if %{with sysvcompat}
+%{_systemd_util_dir}/systemd-initctl
+%endif
+%{_systemd_util_dir}/systemd-journald
+%{_systemd_util_dir}/systemd-localed
+%{_systemd_util_dir}/systemd-logind
+%{_systemd_util_dir}/systemd-makefs
+%{_systemd_util_dir}/systemd-modules-load
+%{_systemd_util_dir}/systemd-quotacheck
+%{_systemd_util_dir}/systemd-random-seed
+%{_systemd_util_dir}/systemd-remount-fs
+%{_systemd_util_dir}/systemd-reply-password
+%{_systemd_util_dir}/systemd-rfkill
+%{_systemd_util_dir}/systemd-shutdown
+%{_systemd_util_dir}/systemd-sleep
+%{_systemd_util_dir}/systemd-socket-proxyd
+%{_systemd_util_dir}/systemd-sulogin-shell
+%{_systemd_util_dir}/systemd-sysctl
+%if %{with sysvcompat}
+%{_systemd_util_dir}/systemd-sysv-convert
+%{_systemd_util_dir}/systemd-sysv-install
+%endif
+%{_systemd_util_dir}/systemd-time-wait-sync
+%{_systemd_util_dir}/systemd-timedated
+%{_systemd_util_dir}/systemd-timesyncd
+%{_systemd_util_dir}/systemd-update-done
+%{_systemd_util_dir}/systemd-update-utmp
+%{_systemd_util_dir}/systemd-user-runtime-dir
+%{_systemd_util_dir}/systemd-user-sessions
+%{_systemd_util_dir}/systemd-vconsole-setup
+%if ! 0%{?bootstrap}
+%{_systemd_util_dir}/systemd-veritysetup
+%endif
+%{_systemd_util_dir}/systemd-volatile-root
+%{_systemd_util_dir}/systemd-xdg-autostart-condition
+%{_systemd_util_dir}/user-generators/systemd-xdg-autostart-generator
+%{_systemd_util_dir}/user-preset/90-systemd.preset
+%{_systemd_util_dir}/user-preset/99-default.preset
+%{_systemd_util_dir}/user/app.slice
+%{_systemd_util_dir}/user/background.slice
+%{_systemd_util_dir}/user/basic.target
+%{_systemd_util_dir}/user/bluetooth.target
+%{_systemd_util_dir}/user/default.target
+%{_systemd_util_dir}/user/exit.target
+%{_systemd_util_dir}/user/graphical-session-pre.target
+%{_systemd_util_dir}/user/graphical-session.target
+%{_systemd_util_dir}/user/paths.target
+%{_systemd_util_dir}/user/printer.target
+%{_systemd_util_dir}/user/session.slice
+%{_systemd_util_dir}/user/shutdown.target
+%{_systemd_util_dir}/user/smartcard.target
+%{_systemd_util_dir}/user/sockets.target
+%{_systemd_util_dir}/user/sound.target
+%{_systemd_util_dir}/user/systemd-exit.service
+%{_systemd_util_dir}/user/systemd-tmpfiles-clean.service
+%{_systemd_util_dir}/user/systemd-tmpfiles-clean.timer
+%{_systemd_util_dir}/user/systemd-tmpfiles-setup.service
+%{_systemd_util_dir}/user/timers.target
+%{_systemd_util_dir}/user/xdg-desktop-autostart.target
+%if %{with sd_boot}
+%{_systemdgeneratordir}/systemd-bless-boot-generator
+%endif
+%if ! 0%{?bootstrap}
+%{_systemdgeneratordir}/systemd-cryptsetup-generator
+%endif
+%{_systemdgeneratordir}/systemd-debug-generator
+%{_systemdgeneratordir}/systemd-fstab-generator
+%{_systemdgeneratordir}/systemd-getty-generator
+%{_systemdgeneratordir}/systemd-gpt-auto-generator
+%{_systemdgeneratordir}/systemd-hibernate-resume-generator
+%if %{with sysvcompat}
+%{_systemdgeneratordir}/systemd-rc-local-generator
+%endif
+%{_systemdgeneratordir}/systemd-run-generator
+%{_systemdgeneratordir}/systemd-system-update-generator
+%if %{with sysvcompat}
+%{_systemdgeneratordir}/systemd-sysv-generator
+%endif
+%if ! 0%{?bootstrap}
+%{_systemdgeneratordir}/systemd-veritysetup-generator
+%endif
+%{_sysusersdir}/systemd-journal.conf
+%if %{with networkd}
+# Yes, systemd-network.conf really belongs here, see
+# https://github.com/systemd/systemd/pull/22416#issuecomment-1029828592
+%{_sysusersdir}/systemd-network.conf
+%endif
+%{_sysusersdir}/systemd-timesync.conf
+%{_tmpfilesdir}/journal-nocow.conf
+%{_tmpfilesdir}/suse.conf
+%{_tmpfilesdir}/systemd-nologin.conf
+%{_tmpfilesdir}/systemd-tmp.conf
+%{_tmpfilesdir}/systemd.conf
+%{_tmpfilesdir}/x11.conf
+%{_udevrulesdir}/70-uaccess.rules
+%{_udevrulesdir}/71-seat.rules
+%{_udevrulesdir}/73-seat-late.rules
+%{_udevrulesdir}/99-systemd.rules
+%{_unitdir}/after-local.service
+%{_unitdir}/autovt@.service
+%{_unitdir}/basic.target
+%{_unitdir}/blockdev@.target
+%{_unitdir}/bluetooth.target
+%{_unitdir}/boot-complete.target
+%{_unitdir}/console-getty.service
+%{_unitdir}/container-getty@.service
+%if ! 0%{?bootstrap}
+%{_unitdir}/cryptsetup-pre.target
+%{_unitdir}/cryptsetup.target
+%endif
+%{_unitdir}/ctrl-alt-del.target
+%{_unitdir}/dbus-org.freedesktop.hostname1.service
+%{_unitdir}/dbus-org.freedesktop.locale1.service
+%{_unitdir}/dbus-org.freedesktop.login1.service
+%{_unitdir}/dbus-org.freedesktop.timedate1.service
+%{_unitdir}/debug-shell.service
+%{_unitdir}/default.target
+%{_unitdir}/dev-hugepages.mount
+%{_unitdir}/dev-mqueue.mount
+%{_unitdir}/emergency.service
+%{_unitdir}/emergency.target
+%{_unitdir}/exit.target
+%{_unitdir}/final.target
+%{_unitdir}/first-boot-complete.target
+%{_unitdir}/getty-pre.target
+%{_unitdir}/getty.target
+%{_unitdir}/getty@.service
+%{_unitdir}/graphical.target
+%if %{with sysvcompat}
+%{_unitdir}/graphical.target.wants/systemd-update-utmp-runlevel.service
+%endif
+%{_unitdir}/halt.target
+%{_unitdir}/hibernate.target
+%{_unitdir}/hybrid-sleep.target
+%{_unitdir}/initrd-cleanup.service
+%{_unitdir}/initrd-fs.target
+%{_unitdir}/initrd-parse-etc.service
+%{_unitdir}/initrd-root-device.target
+%if ! 0%{?bootstrap}
+%{_unitdir}/initrd-root-device.target.wants/remote-cryptsetup.target
+%{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
+%endif
+%{_unitdir}/initrd-root-fs.target
+%{_unitdir}/initrd-switch-root.service
+%{_unitdir}/initrd-switch-root.target
+%{_unitdir}/initrd-usr-fs.target
+%{_unitdir}/initrd.target
+%{_unitdir}/kexec.target
+%{_unitdir}/local-fs-pre.target
+%{_unitdir}/local-fs.target
+%{_unitdir}/local-fs.target.wants/tmp.mount
+%if %{with sysvcompat}
+%{_unitdir}/local-fs.target.wants/var-lock.mount
+%{_unitdir}/local-fs.target.wants/var-run.mount
+%endif
+%{_unitdir}/modprobe@.service
+%{_unitdir}/multi-user.target
+%{_unitdir}/multi-user.target.wants/after-local.service
+%{_unitdir}/multi-user.target.wants/getty.target
+%{_unitdir}/multi-user.target.wants/systemd-logind.service
+%if %{with sysvcompat}
+%{_unitdir}/multi-user.target.wants/systemd-update-utmp-runlevel.service
+%endif
+%{_unitdir}/multi-user.target.wants/systemd-user-sessions.service
+%{_unitdir}/network-online.target
+%{_unitdir}/network-pre.target
+%{_unitdir}/network.target
+%{_unitdir}/nss-lookup.target
+%{_unitdir}/nss-user-lookup.target
+%{_unitdir}/paths.target
+%{_unitdir}/poweroff.target
+%{_unitdir}/printer.target
+%{_unitdir}/proc-sys-fs-binfmt_misc.automount
+%{_unitdir}/proc-sys-fs-binfmt_misc.mount
+%{_unitdir}/quotaon.service
+%if %{with sysvcompat}
+%{_unitdir}/rc-local.service
+%endif
+%{_unitdir}/reboot.target
+%if ! 0%{?bootstrap}
+%{_unitdir}/remote-cryptsetup.target
+%endif
+%{_unitdir}/remote-fs-pre.target
+%{_unitdir}/remote-fs.target
+%if ! 0%{?bootstrap}
+%{_unitdir}/remote-veritysetup.target
+%endif
+%{_unitdir}/rescue.service
+%{_unitdir}/rescue.target
+%if %{with sysvcompat}
+%{_unitdir}/rescue.target.wants/systemd-update-utmp-runlevel.service
+%endif
+%{_unitdir}/rpcbind.target
+%if %{with sysvcompat}
+%{_unitdir}/runlevel0.target
+%{_unitdir}/runlevel1.target
+%{_unitdir}/runlevel2.target
+%{_unitdir}/runlevel3.target
+%{_unitdir}/runlevel4.target
+%{_unitdir}/runlevel5.target
+%{_unitdir}/runlevel6.target
+%endif
+%{_unitdir}/serial-getty@.service
+%{_unitdir}/shutdown.target
+%{_unitdir}/sigpwr.target
+%{_unitdir}/sleep.target
+%{_unitdir}/slices.target
+%{_unitdir}/smartcard.target
+%{_unitdir}/sockets.target
+%if %{with sysvcompat}
+%{_unitdir}/sockets.target.wants/systemd-initctl.socket
+%endif
+%{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
+%{_unitdir}/sockets.target.wants/systemd-journald.socket
+%{_unitdir}/sound.target
+%{_unitdir}/suspend-then-hibernate.target
+%{_unitdir}/suspend.target
+%{_unitdir}/swap.target
+%{_unitdir}/sys-fs-fuse-connections.mount
+%{_unitdir}/sys-kernel-config.mount
+%{_unitdir}/sys-kernel-debug.mount
+%{_unitdir}/sys-kernel-tracing.mount
+%{_unitdir}/sysinit.target
+%if ! 0%{?bootstrap}
+%{_unitdir}/sysinit.target.wants/cryptsetup.target
+%endif
+%{_unitdir}/sysinit.target.wants/dev-hugepages.mount
+%{_unitdir}/sysinit.target.wants/dev-mqueue.mount
+%{_unitdir}/sysinit.target.wants/proc-sys-fs-binfmt_misc.automount
+%{_unitdir}/sysinit.target.wants/sys-fs-fuse-connections.mount
+%{_unitdir}/sysinit.target.wants/sys-kernel-config.mount
+%{_unitdir}/sysinit.target.wants/sys-kernel-debug.mount
+%{_unitdir}/sysinit.target.wants/sys-kernel-tracing.mount
+%{_unitdir}/sysinit.target.wants/systemd-ask-password-console.path
+%{_unitdir}/sysinit.target.wants/systemd-binfmt.service
+%if %{with sd_boot}
+%{_unitdir}/sysinit.target.wants/systemd-boot-system-token.service
+%endif
+%{_unitdir}/sysinit.target.wants/systemd-firstboot.service
+%{_unitdir}/sysinit.target.wants/systemd-journal-catalog-update.service
+%{_unitdir}/sysinit.target.wants/systemd-journal-flush.service
+%{_unitdir}/sysinit.target.wants/systemd-journald.service
+%{_unitdir}/sysinit.target.wants/systemd-machine-id-commit.service
+%{_unitdir}/sysinit.target.wants/systemd-modules-load.service
+%{_unitdir}/sysinit.target.wants/systemd-random-seed.service
+%{_unitdir}/sysinit.target.wants/systemd-sysctl.service
+%{_unitdir}/sysinit.target.wants/systemd-sysusers.service
+%{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup-dev.service
+%{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
+%{_unitdir}/sysinit.target.wants/systemd-update-done.service
+%{_unitdir}/sysinit.target.wants/systemd-update-utmp.service
+%if ! 0%{?bootstrap}
+%{_unitdir}/sysinit.target.wants/veritysetup.target
+%endif
+%{_unitdir}/syslog.socket
+%if ! 0%{?bootstrap}
+%{_unitdir}/system-systemd\x2dcryptsetup.slice
+%endif
+%{_unitdir}/system-update-cleanup.service
+%{_unitdir}/system-update-pre.target
+%{_unitdir}/system-update.target
+%{_unitdir}/systemd-ask-password-console.path
+%{_unitdir}/systemd-ask-password-console.service
+%{_unitdir}/systemd-ask-password-wall.path
+%{_unitdir}/systemd-ask-password-wall.service
+%{_unitdir}/systemd-backlight@.service
+%{_unitdir}/systemd-binfmt.service
+%if %{with sd_boot}
+%{_unitdir}/systemd-bless-boot.service
+%endif
+%{_unitdir}/systemd-boot-check-no-failures.service
+%if %{with sd_boot}
+%{_unitdir}/systemd-boot-system-token.service
+%endif
+%{_unitdir}/systemd-exit.service
+%{_unitdir}/systemd-firstboot.service
+%{_unitdir}/systemd-fsck-root.service
+%{_unitdir}/systemd-fsck@.service
+%{_unitdir}/systemd-halt.service
+%{_unitdir}/systemd-hibernate-resume@.service
+%{_unitdir}/systemd-hibernate.service
+%{_unitdir}/systemd-hostnamed.service
+%{_unitdir}/systemd-hybrid-sleep.service
+%if %{with sysvcompat}
+%{_unitdir}/systemd-initctl.service
+%{_unitdir}/systemd-initctl.socket
+%endif
+%{_unitdir}/systemd-journal-catalog-update.service
+%{_unitdir}/systemd-journal-flush.service
+%{_unitdir}/systemd-journald-dev-log.socket
+%{_unitdir}/systemd-journald-varlink@.socket
+%{_unitdir}/systemd-journald.service
+%{_unitdir}/systemd-journald.socket
+%{_unitdir}/systemd-journald@.service
+%{_unitdir}/systemd-journald@.socket
+%{_unitdir}/systemd-kexec.service
+%{_unitdir}/systemd-localed.service
+%{_unitdir}/systemd-logind.service
+%{_unitdir}/systemd-machine-id-commit.service
+%{_unitdir}/systemd-modules-load.service
+%{_unitdir}/systemd-poweroff.service
+%{_unitdir}/systemd-quotacheck.service
+%{_unitdir}/systemd-random-seed.service
+%{_unitdir}/systemd-reboot.service
+%{_unitdir}/systemd-remount-fs.service
+%{_unitdir}/systemd-rfkill.service
+%{_unitdir}/systemd-rfkill.socket
+%{_unitdir}/systemd-suspend-then-hibernate.service
+%{_unitdir}/systemd-suspend.service
+%{_unitdir}/systemd-sysctl.service
+%{_unitdir}/systemd-sysext.service
+%{_unitdir}/systemd-sysusers.service
+%{_unitdir}/systemd-time-wait-sync.service
+%{_unitdir}/systemd-timedated.service
+%{_unitdir}/systemd-timesyncd.service
+%{_unitdir}/systemd-tmpfiles-clean.service
+%{_unitdir}/systemd-tmpfiles-clean.timer
+%{_unitdir}/systemd-tmpfiles-setup-dev.service
+%{_unitdir}/systemd-tmpfiles-setup.service
+%{_unitdir}/systemd-update-done.service
+%if %{with sysvcompat}
+%{_unitdir}/systemd-update-utmp-runlevel.service
+%endif
+%{_unitdir}/systemd-update-utmp.service
+%{_unitdir}/systemd-user-sessions.service
+%{_unitdir}/systemd-vconsole-setup.service
+%{_unitdir}/systemd-volatile-root.service
+%{_unitdir}/time-set.target
+%{_unitdir}/time-sync.target
+%{_unitdir}/timers.target
+%{_unitdir}/timers.target.wants/systemd-tmpfiles-clean.timer
+%{_unitdir}/tmp.mount
+%{_unitdir}/umount.target
+%{_unitdir}/usb-gadget.target
+%{_unitdir}/user-.slice.d
+%{_unitdir}/user-.slice.d/10-defaults.conf
+%{_unitdir}/user-runtime-dir@.service
+%{_unitdir}/user.slice
+%{_unitdir}/user@.service
+%if %{with sysvcompat}
+%{_unitdir}/var-lock.mount
+%{_unitdir}/var-run.mount
+%endif
+%if ! 0%{?bootstrap}
+%{_unitdir}/veritysetup-pre.target
+%{_unitdir}/veritysetup.target
+%endif
+%if %{with split_usr}
+/bin/systemctl
+%endif

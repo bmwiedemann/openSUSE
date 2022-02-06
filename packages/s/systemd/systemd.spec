@@ -1,5 +1,5 @@
 #
-# spec file for package systemd
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -32,7 +32,7 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.75.g3743acbce3
+%define suse_version +suse.82.g117bd7f14a
 %define _testsuitedir /usr/lib/systemd/tests
 
 %if 0%{?bootstrap}
@@ -159,12 +159,12 @@ Requires(post): pam-config >= 0.79-5
 %endif
 
 %if 0%{?bootstrap}
-Conflicts:      systemd
 Conflicts:      kiwi
+Conflicts:      systemd
 %endif
-Conflicts:      sysvinit
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
+Conflicts:      sysvinit
 Provides:       systemd-logger = %{version}-%{release}
 Obsoletes:      systemd-logger < %{version}-%{release}
 Provides:       systemd-analyze = %{version}-%{release}
@@ -187,22 +187,25 @@ Source100:      scripts-systemd-fix-machines-btrfs-subvol.sh
 Source101:      scripts-systemd-upgrade-from-pre-210.sh
 Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 
-# Patches listed below are SUSE specific and should be kept at its
-# minimum. We try hard to push our changes to upstream but sometimes
-# they are only relevant for SUSE distros. Special rewards for those
-# who will manage to get rid of one of them !
+Source200:      files.systemd
+Source201:      files.udev
+Source202:      files.container
+Source203:      files.network
+Source204:      files.devel
+
+# Patches listed below are openSUSE specific and should be kept at its
+# minimum. We try hard to push our changes to upstream but sometimes they are
+# only relevant for SUSE distros. Special rewards for those who will manage to
+# get rid of one of them !
 Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
 Patch2:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch3:         0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
 Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
-Patch6:         0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
 Patch7:         0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
 Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
-Patch9:         0009-sysv-add-back-support-for-all-virtual-facility-and-f.patch
 Patch10:        0001-conf-parser-introduce-early-drop-ins.patch
 Patch11:        0011-core-disable-session-keyring-per-system-sevice-entir.patch
-Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
-Patch13:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 
 # Patches listed below are put in quarantine. Normally all changes
 # must go to upstream first and then are cherry-picked in the SUSE git
@@ -221,29 +224,36 @@ maintains mount and automount points and implements an elaborate
 transactional dependency-based service control logic. It can work as a
 drop-in replacement for sysvinit.
 
-%if !0%{?bootstrap}
 %package doc
 Summary:        HTML documentation for systemd
 License:        LGPL-2.1-or-later
 Supplements:    (systemd and patterns-base-documentation)
+%if 0%{?bootstrap}
+Provides:       systemd-doc = %{version}-%{release}
+Conflicts:      systemd-doc
+%endif
 
 %description doc
 The HTML documentation for systemd.
 
-# /bootstrap
-%endif
-
 %package devel
-Summary:        Development headers for systemd
+Summary:        Development files for libsystemd and libudev
 License:        LGPL-2.1-or-later
 Requires:       libsystemd0%{?mini} = %{version}-%{release}
+Requires:       libudev%{?mini}1 = %{version}-%{release}
 Requires:       systemd-rpm-macros
+Provides:       libudev%{?mini}-devel = %{version}-%{release}
+Obsoletes:      libudev%{?mini}-devel < %{version}-%{release}
 %if 0%{?bootstrap}
+Provides:       systemd-devel = %{version}-%{release}
 Conflicts:      systemd-devel
+Provides:       libudev-devel = %{version}-%{release}
+Conflicts:      libudev-devel
 %endif
 
 %description devel
-Development headers and auxiliary files for developing applications for systemd.
+Development headers and files for libsystemd and libudev libraries for
+developing and building applications linking to these libraries.
 
 %package sysvinit
 Summary:        System V init tools
@@ -292,22 +302,21 @@ License:        GPL-2.0-only
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
+Requires:       filesystem
 Requires:       kmod
 Requires:       system-group-hardware
 Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 
+Conflicts:      ConsoleKit < 0.4.1
+Conflicts:      dracut < 044.1
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
-Conflicts:      dracut < 044.1
 Conflicts:      util-linux < 2.16
-Conflicts:      ConsoleKit < 0.4.1
-Requires:       filesystem
 %if 0%{?bootstrap}
 Provides:       udev = %{version}-%{release}
-Conflicts:      libudev1
 Conflicts:      udev
 # avoid kiwi picking it for bootstrap
 Requires:       this-is-only-for-build-envs
@@ -324,8 +333,8 @@ call tools to initialize a device, or load needed kernel modules.
 Summary:        Dynamic library to access udev device information
 License:        LGPL-2.1-or-later
 %if 0%{?bootstrap}
-Conflicts:      libudev1
 Conflicts:      kiwi
+Conflicts:      libudev1
 # avoid kiwi picking it for bootstrap
 Requires:       this-is-only-for-build-envs
 %endif
@@ -333,20 +342,6 @@ Requires:       this-is-only-for-build-envs
 %description -n libudev%{?mini}1
 This package contains the dynamic library libudev, which provides
 access to udev device information
-
-%package -n libudev%{?mini}-devel
-Summary:        Development files for libudev
-License:        LGPL-2.1-or-later
-Requires:       libudev%{?mini}1 = %{version}-%{release}
-%if 0%{?bootstrap}
-Provides:       libudev-devel = %{version}-%{version}
-Conflicts:      libudev1 = %{version}
-Conflicts:      libudev-devel
-%endif
-
-%description -n libudev%{?mini}-devel
-This package contains the development files for the library libudev, a
-dynamic library, which provides access to udev device information.
 
 %if %{with coredump}
 %package coredump
@@ -367,33 +362,61 @@ Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
+Obsoletes:      nss-mymachines < %{version}-%{release}
+Provides:       nss-mymachines = %{version}-%{release}
+Provides:       systemd-container = %{version}-%{release}
 Provides:       systemd:%{_bindir}/systemd-nspawn
 %if 0%{?bootstrap}
 Conflicts:      systemd-container
+Provides:       systemd-container = %{version}-%{release}
 %endif
 
 %description container
 Systemd tools to spawn and manage containers and virtual machines.
 
-This package contains systemd-nspawn, machinectl, systemd-machined,
-and systemd-importd.
+In addition, it also contains a plugin for the Name Service Switch (NSS),
+providing host name resolution for all local containers and virtual machines
+using network namespacing and registered with systemd-machined. It also maps
+UID/GIDs ranges used by containers to useful names.
+
+To activate this NSS module, you will need to include it in /etc/nsswitch.conf,
+see nss-mymachines(8) manpage for more details.
 
 %if %{with networkd} || %{with resolved}
 %package network
-Summary:        Systemd tools for networkd and resolved
+Summary:        systemd network and Network Name Resolution managers
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 # This Recommends because some symbols of libidn2 are dlopen()ed by resolved
 Recommends:     pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libidn2)
+BuildRequires:  pkgconfig(openssl)
+Obsoletes:      nss-resolve < %{version}-%{release}
+Provides:       nss-resolve = %{version}-%{release}
 Provides:       systemd:/usr/lib/systemd/systemd-networkd
 Provides:       systemd:/usr/lib/systemd/systemd-resolved
 
 %description network
-Systemd tools to manage network settings using networkd and
-resolver tools for resolved
+systemd-networkd is a system service that manages networks. It detects and
+configures network devices as they appear, as well as manages network addresses
+and routes for any link for which it finds a .network file, see
+systemd.network(5). It can also create virtual network devices based on their
+description given by systemd.netdev(5) files. It may be controlle by
+networkctl(1).
 
+systemd-resolved is a system service that provides network name resolution to
+local applications. It implements a caching and validating DNS/DNSSEC stub
+resolver, as well as an LLMNR and MulticastDNS resolver and responder. It may be
+controlled by resolvectl(1).
+
+Addtionally, this package also contains a plug-in module for the Name Service
+Switch (NSS), which enables hostname resolutions by contacting
+systemd-resolved(8). It replaces the nss-dns plug-in module that traditionally
+resolves hostnames via DNS.
+
+To activate this NSS module, you will need to include it in /etc/nsswitch.conf,
+see nss-resolve(8) manpage for more details.
 %endif
 
 %if %{with portabled}
@@ -442,38 +465,6 @@ To activate this NSS module, you will need to include it in
 /etc/nsswitch.conf, see nss-hostname(8) manpage for more details.
 %endif
 
-%if %{with resolved}
-%package -n nss-resolve
-Summary:        Plugin for local hostname resolution via systemd-resolved
-License:        LGPL-2.1-or-later
-Requires:       %{name}-network = %{version}-%{release}
-
-%description -n nss-resolve
-This package contains a plug-in module for the Name Service Switch
-(NSS), which enables host name resolutions via the systemd-resolved(8)
-local network name resolution service. It replaces the nss-dns plug-in
-module that traditionally resolves hostnames via DNS.
-
-To activate this NSS module, you will need to include it in
-/etc/nsswitch.conf, see nss-resolve(8) manpage for more details.
-%endif
-
-%if %{with machined}
-%package -n nss-mymachines
-Summary:        Plugin for local virtual host name resolution
-License:        LGPL-2.1-or-later
-
-%description -n nss-mymachines
-This package contains a plugin for the Name Service Switch (NSS),
-providing host name resolution for all local containers and virtual
-machines registered with systemd-machined to their respective IP
-addresses. It also maps UID/GIDs ranges used by containers to useful
-names.
-
-To activate this NSS module, you will need to include it in
-/etc/nsswitch.conf, see nss-mymachines(8) manpage for more details.
-%endif
-
 %if %{with journal_remote}
 %package journal-remote
 Summary:        Gateway for serving journal events over the network using HTTP
@@ -505,11 +496,14 @@ Recommends:     dosfstools
 # host and install them in the image, see install_missing_libraries()
 # for details.
 %if %{with resolved}
-Requires:       libidn2 pkgconfig(libidn2)
+Requires:       libidn2
+Requires:       pkgconfig(libidn2)
 %endif
 %if %{with experimental}
-Requires:       libpwquality1 pkgconfig(pwquality)
-Requires:       libqrencode4  pkgconfig(libqrencode)
+Requires:       libpwquality1
+Requires:       libqrencode4
+Requires:       pkgconfig(libqrencode)
+Requires:       pkgconfig(pwquality)
 %endif
 Requires:       %{name} = %{version}-%{release}
 Requires:       attr
@@ -518,6 +512,10 @@ Requires:       busybox-static
 Requires:       cryptsetup
 Requires:       dosfstools
 Requires:       libcap-progs
+Requires:       libfido2
+Requires:       libtss2-esys0
+Requires:       libtss2-mu0
+Requires:       libtss2-rc0
 Requires:       lz4
 Requires:       make
 Requires:       netcat
@@ -526,10 +524,10 @@ Requires:       quota
 Requires:       socat
 Requires:       squashfs
 Requires:       systemd-container
-Requires:       libfido2      pkgconfig(libfido2)
-Requires:       libtss2-esys0 pkgconfig(tss2-esys)
-Requires:       libtss2-mu0   pkgconfig(tss2-mu)
-Requires:       libtss2-rc0   pkgconfig(tss2-rc)
+Requires:       pkgconfig(libfido2)
+Requires:       pkgconfig(tss2-esys)
+Requires:       pkgconfig(tss2-mu)
+Requires:       pkgconfig(tss2-rc)
 %if %{with coredump}
 Requires:       systemd-coredump
 %endif
@@ -611,11 +609,9 @@ Have fun with these services at your own risk.
 %endif
 
 %prep
-%setup -q -n systemd-v%{version}%{suse_version}
-%autopatch -p1
+%autosetup -p1 -n systemd-v%{version}%{suse_version}
 
 %build
-# keep split-usr until all packages have moved their systemd rules to /usr
 %meson \
         -Dmode=release \
         -Dversion-tag=%{version}%{suse_version} \
@@ -657,6 +653,8 @@ Have fun with these services at your own risk.
         -Duserdb=false \
 %endif
 %if 0%{?bootstrap}
+        -Dbashcompletiondir=no \
+        -Dzshcompletiondir=no \
         -Dtranslations=false \
         -Dnss-myhostname=false \
         -Dnss-systemd=false \
@@ -692,6 +690,10 @@ Have fun with these services at your own risk.
 %endif
 %if %{without resolved}
         -Dresolve=false \
+%else
+        -Ddns-servers='' \
+        -Ddefault-dnssec=no \
+        -Ddns-over-tls=openssl \
 %endif
 %if %{without sysvcompat}
         -Dsysvinit-path= \
@@ -726,8 +728,8 @@ rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/sysv-convert
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/migrated
 
-install -m0755 -D %{SOURCE3}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-convert
-install -m0755 -D %{SOURCE4}  %{buildroot}/%{_prefix}/lib/systemd/systemd-sysv-install
+install -m0755 -D %{SOURCE3}  %{buildroot}/%{_systemd_util_dir}/systemd-sysv-convert
+install -m0755 -D %{SOURCE4}  %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
 
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
@@ -735,10 +737,12 @@ mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
 
 # Package the scripts used to fix all packaging issues. Also drop the
 # "scripts-{systemd/udev}" prefix which is used because osc doesn't
-# allow directory structure...
-for s in %{SOURCE100} %{SOURCE101} %{SOURCE102}; do
-	install -m0755 -D $s %{buildroot}%{_prefix}/lib/systemd/scripts/${s#*/scripts-systemd-}
-done
+# allow directories in the workspace...
+%if %{with machined}
+install -m0755 -D %{SOURCE100} %{buildroot}%{_systemd_util_dir}/scripts/fix-machines-btrfs-subvol.sh
+%endif
+install -m0755 -D %{SOURCE101} %{buildroot}%{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
+install -m0755 -D %{SOURCE102} %{buildroot}%{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
 
 %if %{with split_usr}
 mkdir -p %{buildroot}/{bin,sbin}
@@ -813,10 +817,15 @@ mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-sleep/
 mkdir -p %{buildroot}%{_unitdir}/basic.target.wants
 mkdir -p %{buildroot}%{_unitdir}/default.target.wants
 mkdir -p %{buildroot}%{_unitdir}/dbus.target.wants
+mkdir -p %{buildroot}%{_unitdir}/graphical.target.wants
 mkdir -p %{buildroot}%{_unitdir}/halt.target.wants
+mkdir -p %{buildroot}%{_unitdir}/initrd-root-device.target.wants
+mkdir -p %{buildroot}%{_unitdir}/initrd-root-fs.target.wants
 mkdir -p %{buildroot}%{_unitdir}/kexec.target.wants
 mkdir -p %{buildroot}%{_unitdir}/poweroff.target.wants
 mkdir -p %{buildroot}%{_unitdir}/reboot.target.wants
+mkdir -p %{buildroot}%{_unitdir}/remote-fs.target.wants
+mkdir -p %{buildroot}%{_unitdir}/rescue.target.wants
 mkdir -p %{buildroot}%{_unitdir}/shutdown.target.wants
 
 # Make sure the generator directories are created and properly owned.
@@ -1100,6 +1109,7 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %post container
 %tmpfiles_create systemd-nspawn.conf
 %if %{with machined}
+%ldconfig
 if [ $1 -gt 1 ]; then
         # Convert /var/lib/machines subvolume to make it suitable for
         # rollbacks, if needed. See bsc#992573. The installer has been fixed
@@ -1118,24 +1128,14 @@ if [ $1 -gt 1 ]; then
         # shouldn't be any issues.
         %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh || :
 fi
+
+%postun container
+%ldconfig
 %endif
 
 %if ! 0%{?bootstrap}
-%post   -n nss-myhostname -p /sbin/ldconfig
-%postun -n nss-myhostname -p /sbin/ldconfig
-
-%post   -n nss-systemd -p /sbin/ldconfig
-%postun -n nss-systemd -p /sbin/ldconfig
-%endif
-
-%if %{with resolved}
-%post   -n nss-resolve -p /sbin/ldconfig
-%postun -n nss-resolve -p /sbin/ldconfig
-%endif
-
-%if %{with machined}
-%post   -n nss-mymachines -p /sbin/ldconfig
-%postun -n nss-mymachines -p /sbin/ldconfig
+%ldconfig_scriptlets -n nss-myhostname
+%ldconfig_scriptlets -n nss-systemd
 %endif
 
 %if %{with journal_remote}
@@ -1178,6 +1178,7 @@ fi
 %service_add_post systemd-networkd-wait-online.service
 %endif
 %if %{with resolved}
+%ldconfig
 %service_add_post systemd-resolved.service
 %endif
 
@@ -1196,6 +1197,7 @@ fi
 %service_del_postun systemd-networkd-wait-online.service
 %endif
 %if %{with resolved}
+%ldconfig
 %service_del_postun systemd-resolved.service
 %endif
 %endif
@@ -1240,460 +1242,74 @@ fi
 
 %files
 %defattr(-,root,root)
-%license LICENSE*
-%if %{with sd_boot}
-%{_bindir}/bootctl
-%endif
-%{_bindir}/busctl
-%{_bindir}/hostnamectl
-%{_bindir}/kernel-install
-%{_bindir}/localectl
-%{_bindir}/systemctl
-%{_bindir}/systemd-analyze
-%if ! 0%{?bootstrap}
-%{_bindir}/systemd-cryptenroll
-%endif
-%{_bindir}/systemd-delta
-%{_bindir}/systemd-dissect
-%{_bindir}/systemd-escape
-%{_bindir}/systemd-firstboot
-%{_bindir}/systemd-id128
-%{_bindir}/systemd-path
-%{_bindir}/systemd-sysusers
-%{_bindir}/systemd-mount
-%{_bindir}/systemd-umount
-%{_bindir}/systemd-notify
-%{_bindir}/systemd-run
-%{_bindir}/systemd-sysext
-%{_bindir}/journalctl
-%{_bindir}/systemd-ask-password
-%{_bindir}/loginctl
-%{_bindir}/systemd-inhibit
-%{_bindir}/systemd-tty-ask-password-agent
-%{_bindir}/systemd-tmpfiles
-%{_bindir}/systemd-machine-id-setup
-%{_bindir}/systemd-socket-activate
-%{_bindir}/systemd-stdio-bridge
-%{_bindir}/systemd-detect-virt
-%{_bindir}/timedatectl
-%{_bindir}/systemd-cgls
-%{_bindir}/systemd-cgtop
-%{_bindir}/systemd-cat
-%if %{with split_usr}
-/bin/systemctl
-%endif
-%dir %{_prefix}/lib/kernel
-%dir %{_prefix}/lib/kernel/install.d
-%{_prefix}/lib/kernel/install.d/00-entry-directory.install
-%{_prefix}/lib/kernel/install.d/50-depmod.install
-%{_prefix}/lib/kernel/install.d/90-loaderentry.install
-%dir %{_prefix}/lib/systemd
-%dir %{_prefix}/lib/systemd/network
-%dir %{_unitdir}
-%{_userunitdir}
-%exclude %{_prefix}/lib/systemd/systemd-network-generator
-%exclude %{_unitdir}/systemd-network-generator.service
-%if %{with coredump}
-%exclude %{_prefix}/lib/systemd/systemd-coredump
-%exclude %{_unitdir}/systemd-coredump*
-%exclude %{_unitdir}/sockets.target.wants/systemd-coredump.socket
-%endif
-%if %{with journal_remote}
-%exclude %{_unitdir}/systemd-journal-gatewayd.*
-%exclude %{_unitdir}/systemd-journal-remote.*
-%exclude %{_unitdir}/systemd-journal-upload.*
-%exclude %{_prefix}/lib/systemd/systemd-journal-gatewayd
-%exclude %{_prefix}/lib/systemd/systemd-journal-remote
-%exclude %{_prefix}/lib/systemd/systemd-journal-upload
-%exclude %{_datadir}/systemd/gatewayd
-%endif
-%exclude %{_prefix}/lib/systemd/systemd-udevd
-%exclude %{_unitdir}/systemd-udev*.*
-%exclude %{_unitdir}/systemd-hwdb*.*
-%exclude %{_unitdir}/*.target.wants/systemd-udev*.*
-%exclude %{_unitdir}/*.target.wants/systemd-hwdb*.*
-%exclude %{_unitdir}/initrd-udevadm-cleanup-db.service
-%exclude %{_unitdir}/kmod-static-nodes.service
-%exclude %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
-%exclude %{_tmpfilesdir}/static-nodes-permissions.conf
-%exclude %{_unitdir}/systemd-nspawn@.service
-%if %{with machined}
-%exclude %{_prefix}/lib/systemd/systemd-machined
-%exclude %{_unitdir}/systemd-machined.service
-%exclude %{_unitdir}/dbus-org.freedesktop.machine1.service
-%exclude %{_unitdir}/var-lib-machines.mount
-%exclude %{_unitdir}/machine.slice
-%exclude %{_unitdir}/machines.target.wants
-%exclude %{_unitdir}/*.target.wants/var-lib-machines.mount
-%endif
-%if %{with importd}
-%exclude %{_prefix}/lib/systemd/systemd-import*
-%exclude %{_prefix}/lib/systemd/systemd-pull
-%exclude %{_prefix}/lib/systemd/import-pubring.gpg
-%exclude %{_unitdir}/systemd-importd.service
-%exclude %{_unitdir}/dbus-org.freedesktop.import1.service
-%endif
-%if %{with networkd}
-%exclude %{_prefix}/lib/systemd/systemd-networkd
-%exclude %{_prefix}/lib/systemd/systemd-networkd-wait-online
-%exclude %{_unitdir}/systemd-networkd.service
-%exclude %{_unitdir}/systemd-networkd.socket
-%exclude %{_unitdir}/systemd-networkd-wait-online.service
-%exclude %{_prefix}/lib/systemd/systemd-resolved
-%exclude %{_unitdir}/systemd-resolved.service
-%endif
-%if %{with portabled}
-%exclude %{_prefix}/lib/systemd/systemd-portabled
-%exclude %{_prefix}/lib/systemd/portable
-%exclude %{_unitdir}/systemd-portabled.service
-%exclude %{_unitdir}/dbus-org.freedesktop.portable1.service
-%exclude %{_tmpfilesdir}/portables.conf
-%endif
-%if %{with experimental}
-%exclude %{_prefix}/lib/systemd/systemd-pstore
-%exclude %{_unitdir}/systemd-pstore.service
-%exclude %{_tmpfilesdir}/systemd-pstore.conf
-%exclude %{_unitdir}/systemd-repart.service
-%exclude %{_unitdir}/initrd-root-fs.target.wants/systemd-repart.service
-%exclude %{_unitdir}/sysinit.target.wants/systemd-repart.service
-%exclude %{_prefix}/lib/systemd/systemd-userwork
-%exclude %{_prefix}/lib/systemd/systemd-userdbd
-%exclude %{_unitdir}/systemd-userdbd.service
-%exclude %{_unitdir}/systemd-userdbd.socket
-%exclude %{_prefix}/lib/systemd/systemd-homed
-%exclude %{_prefix}/lib/systemd/systemd-homework
-%exclude %{_unitdir}/systemd-homed-activate.service
-%exclude %{_unitdir}/systemd-homed.service
+%include %{SOURCE200}
+
+%files -n udev%{?mini}
+%defattr(-,root,root)
+%include %{SOURCE201}
+
+%files container
+%defattr(-,root,root)
+%include %{SOURCE202}
+
+%if %{with networkd} || %{with resolved}
+%files network
+%defattr(-,root,root)
+%include %{SOURCE203}
 %endif
 
-%{_unitdir}/*.automount
-%{_unitdir}/*.service
-%{_unitdir}/*.slice
-%{_unitdir}/*.target
-%{_unitdir}/*.mount
-%{_unitdir}/*.timer
-%{_unitdir}/*.socket
-%{_unitdir}/*.wants
-%{_unitdir}/*.path
-
-%{_unitdir}/user-.slice.d/
-
-%{_prefix}/lib/systemd/systemd-*
-%{_prefix}/lib/systemd/systemd
-%{_prefix}/lib/systemd/libsystemd-shared-*.so
-%{_prefix}/lib/systemd/scripts
-%exclude %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh
-%dir %{_journalcatalogdir}
-%{_journalcatalogdir}/systemd.catalog
-%{_journalcatalogdir}/systemd.*.catalog
-%{_presetdir}
-%{_userpresetdir}
-%{_systemdgeneratordir}
-%{_systemdusergeneratordir}
-%{_systemd_system_env_generator_dir}
-%{_systemd_user_env_generator_dir}
-%dir %{_ntpunitsdir}
-%{_ntpunitsdir}/80-systemd-timesync.list
-%dir %{_prefix}/lib/systemd/system-shutdown/
-%dir %{_prefix}/lib/systemd/system-sleep/
-
-%{_pam_moduledir}/pam_systemd.so
-
-%if %{with sd_boot}
-%dir %{_prefix}/lib/systemd/boot
-%dir %{_prefix}/lib/systemd/boot/efi
-%{_prefix}/lib/systemd/boot/efi/*.efi
-%{_prefix}/lib/systemd/boot/efi/*.stub
-%endif
-
-%dir %{_sysconfdir}/modules-load.d
-%{_modulesloaddir}
-
-%dir %{_sysusersdir}
-%doc %{_sysusersdir}/README
-%{_sysusersdir}/systemd.conf
-
-%dir %{_sysconfdir}/tmpfiles.d
-%{_tmpfilesdir}/
-%exclude %{_tmpfilesdir}/systemd-nspawn.conf
-
-%{_environmentdir}/
-
-%dir %{_binfmtdir}
-%dir %{_sysconfdir}/binfmt.d
-
-%dir %{_sysctldir}
-%dir %{_sysconfdir}/sysctl.d
-%doc %{_sysctldir}/README
-%{_sysctldir}/99-sysctl.conf
-
-%dir %{_sysconfdir}/X11/xorg.conf.d
-%dir %{_sysconfdir}/systemd
-%dir %{_sysconfdir}/systemd/network
-%dir %{_sysconfdir}/systemd/system
-%dir %{_sysconfdir}/systemd/user
-%dir %{_sysconfdir}/xdg/systemd
-%{_sysconfdir}/xdg/systemd/user
-
-%dir %{_distconfdir}/X11/xinit
-%dir %{_distconfdir}/X11/xinit/xinitrc.d
-%{_distconfdir}/X11/xinit/xinitrc.d/50-systemd-user.sh
-
-%{_pam_vendordir}/systemd-user
-
-%config(noreplace) %{_sysconfdir}/systemd/journald.conf
-%config(noreplace) %{_sysconfdir}/systemd/logind.conf
-%config(noreplace) %{_sysconfdir}/systemd/sleep.conf
-%config(noreplace) %{_sysconfdir}/systemd/system.conf
-%config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
-%config(noreplace) %{_sysconfdir}/systemd/user.conf
-
-%dir %{_datadir}/dbus-1
-%dir %{_datadir}/dbus-1/services
-%dir %{_datadir}/dbus-1/system.d
-%dir %{_datadir}/dbus-1/system-services
-
-%{_datadir}/dbus-1/services/org.freedesktop.systemd1.service
-%{_datadir}/dbus-1/system.d/org.freedesktop.locale1.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.login1.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.systemd1.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.hostname1.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
-
-# FIXME: why do we have to own this dir ?
-%dir %{_modprobedir}
-%doc %{_modprobedir}/README
-%{_modprobedir}/systemd.conf
-
-# Some files created at runtime.
-%ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal/
-%ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
-%ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
-%ghost %config(noreplace) %{_sysconfdir}/locale.conf
-%ghost %config(noreplace) %{_sysconfdir}/machine-info
-%ghost %attr(0444,root,root) %config(noreplace) %{_sysconfdir}/machine-id
-
-%{_datadir}/systemd
-%{_datadir}/factory
-
-%{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.timedate1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
-
-%dir %{_datadir}/polkit-1
-%dir %{_datadir}/polkit-1/actions
-%{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
-%{_datadir}/polkit-1/actions/org.freedesktop.hostname1.policy
-%{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
-%{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
-%{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
-
-%if ! 0%{?bootstrap}
-%{_mandir}/man1/[a-rt-z]*ctl.1*
-%{_mandir}/man1/systemc*.1*
-%{_mandir}/man1/systemd*.1*
-%{_mandir}/man5/[a-tv-z]*
-%{_mandir}/man5/user*
-%{_mandir}/man7/[bdfks]*
-%{_mandir}/man8/kern*
-%{_mandir}/man8/pam_*
-%{_mandir}/man8/rc-local.*
-%{_mandir}/man8/systemd-[a-gik-tvx]*
-%{_mandir}/man8/systemd-h[aioy]*
-%{_mandir}/man8/systemd-journald*
-%{_mandir}/man8/systemd-u[ps]*
-%{_mandir}/man8/30-systemd-environment-d-generator.*
-%exclude %{_mandir}/man8/systemd-network-generator.*
-%if %{with coredump}
-%exclude %{_mandir}/man1/coredumpctl*
-%exclude %{_mandir}/man5/coredump.conf*
-%exclude %{_mandir}/man8/systemd-coredump*
-%endif
-%exclude %{_mandir}/man*/*nspawn*
-%if %{with machined}
-%exclude %{_mandir}/man*/machinectl*
-%exclude %{_mandir}/man*/systemd-machined*
-%endif
-%if %{with importd}
-%exclude %{_mandir}/man*/systemd-importd*
-%endif
-%if %{with journal_remote}
-%exclude %{_mandir}/man5/journal-remote.conf*
-%exclude %{_mandir}/man5/journal-upload.conf*
-%endif
-%if %{with portabled}
-%exclude %{_mandir}/man*/portablectl*
-%exclude %{_mandir}/man*/systemd-portabled*
-%endif
-%if %{with experimental}
-%exclude %{_mandir}/man*/*pstore*
-%exclude %{_mandir}/man*/*repart*
-%exclude %{_mandir}/man*/userdbctl*
-%exclude %{_mandir}/man*/systemd-userdbd*
-%exclude %{_mandir}/man*/*homectl*
-%exclude %{_mandir}/man*/*homed*
-%exclude %{_mandir}/man*/org.freedesktop.home1*
-%exclude %{_mandir}/man*/pam_systemd_home*
-%exclude %{_datadir}/bash-completion/completions/homectl
-%endif
-%endif
-
-%{_docdir}/systemd
-%exclude %{_docdir}/systemd/html
-
-%{_udevrulesdir}/70-uaccess.rules
-%{_udevrulesdir}/71-seat.rules
-%{_udevrulesdir}/73-seat-late.rules
-%{_udevrulesdir}/99-systemd.rules
-%dir %{_localstatedir}/lib/systemd
-%dir %{_localstatedir}/lib/systemd/catalog
-%if %{with sysvcompat}
-%dir %{_localstatedir}/lib/systemd/sysv-convert
-%dir %{_localstatedir}/lib/systemd/migrated
-%endif
-%ghost %{_localstatedir}/lib/systemd/catalog/database
-%ghost %{_localstatedir}/lib/systemd/backlight
-%ghost %{_localstatedir}/lib/systemd/i18n-migrated
-%ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
-
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/*
-
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/*
-%{_datadir}/pkgconfig/systemd.pc
-
-%if ! 0%{?bootstrap}
 %files doc
 %defattr(-,root,root,-)
-%dir %{_docdir}/systemd
-%{_docdir}/systemd/html
-%endif
+%{_docdir}/systemd/
 
 %files devel
 %defattr(-,root,root,-)
-%{_libdir}/libsystemd.so
-%{_libdir}/pkgconfig/libsystemd.pc
-%{_includedir}/systemd/
-%if ! 0%{?bootstrap}
-%{_mandir}/man3/SD*.3*
-%{_mandir}/man3/sd*.3*
-%endif
+%license LICENSE.LGPL2.1
+%include %{SOURCE204}
 
 %files sysvinit
 %defattr(-,root,root,-)
 %if %{with split_usr}
-/sbin/init
-/sbin/reboot
 /sbin/halt
-/sbin/shutdown
+/sbin/init
 /sbin/poweroff
+/sbin/reboot
+/sbin/shutdown
 %if %{with sysvcompat}
 /sbin/telinit
 /sbin/runlevel
 %endif
 %endif
-%{_sbindir}/init
-%{_sbindir}/reboot
 %{_sbindir}/halt
-%{_sbindir}/shutdown
+%{_sbindir}/init
 %{_sbindir}/poweroff
+%{_sbindir}/reboot
+%{_sbindir}/shutdown
 %if %{with sysvcompat}
-%{_sbindir}/telinit
 %{_sbindir}/runlevel
+%{_sbindir}/telinit
 %endif
 %if ! 0%{?bootstrap}
-%{_mandir}/man1/init.1*
-%{_mandir}/man8/halt.8*
-%{_mandir}/man8/reboot.8*
-%{_mandir}/man8/shutdown.8*
-%{_mandir}/man8/poweroff.8*
-%{_mandir}/man8/telinit.8*
-%{_mandir}/man8/runlevel.8*
-%endif
-
-%files -n udev%{?mini}
-%defattr(-,root,root)
-%{_bindir}/udevadm
-%{_bindir}/systemd-hwdb
-%if %{with split_usr}
-/sbin/udevadm
-%endif
-%dir %{_prefix}/lib/udev/
-%{_prefix}/lib/udev/ata_id
-%{_prefix}/lib/udev/cdrom_id
-# dmi_memory_id is only relevant on arches with DMI
-%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
-%{_prefix}/lib/udev/dmi_memory_id
-%endif
-%{_prefix}/lib/udev/fido_id
-%{_prefix}/lib/udev/mtd_probe
-%{_prefix}/lib/udev/path_id_compat
-%{_prefix}/lib/udev/scsi_id
-%{_prefix}/lib/udev/v4l_id
-%ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
-%{_prefix}/lib/systemd/systemd-udevd
-%{_prefix}/lib/systemd/systemd-network-generator
-%dir %{_udevrulesdir}/
-%doc %{_udevrulesdir}/README
-%exclude %{_udevrulesdir}/70-uaccess.rules
-%exclude %{_udevrulesdir}/71-seat.rules
-%exclude %{_udevrulesdir}/73-seat-late.rules
-%exclude %{_udevrulesdir}/99-systemd.rules
-%{_udevrulesdir}/*.rules
-%{_udevhwdbdir}/
-%dir %{_sysconfdir}/udev/
-%dir %{_sysconfdir}/udev/rules.d/
-%ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
-%config(noreplace) %{_sysconfdir}/udev/udev.conf
-%dir %{_unitdir}
-%{_unitdir}/kmod-static-nodes.service
-%{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
-%{_tmpfilesdir}/static-nodes-permissions.conf
-%{_unitdir}/systemd-udev*.service
-%{_unitdir}/systemd-udevd*.socket
-%{_unitdir}/systemd-hwdb*.*
-%{_unitdir}/initrd-udevadm-cleanup-db.service
-%{_unitdir}/systemd-network-generator.service
-%dir %{_unitdir}/sysinit.target.wants
-%{_unitdir}/sysinit.target.wants/systemd-udev*.service
-%dir %{_unitdir}/sockets.target.wants
-%{_unitdir}/sockets.target.wants/systemd-udev*.socket
-%{_unitdir}/*.target.wants/systemd-hwdb*.*
-%{_prefix}/lib/systemd/network/99-default.link
-%{_datadir}/pkgconfig/udev.pc
-%if ! 0%{?bootstrap}
-%{_mandir}/man5/udev*
-%{_mandir}/man7/hwdb*
-%{_mandir}/man7/udev*
-%{_mandir}/man8/systemd-hwdb*
-%{_mandir}/man8/systemd-udev*
-%{_mandir}/man8/udev*
-%{_mandir}/man8/systemd-network-generator.*
+%{_mandir}/man1/init.1.gz
+%{_mandir}/man8/halt.8.gz
+%{_mandir}/man8/poweroff.8.gz
+%{_mandir}/man8/reboot.8.gz
+%{_mandir}/man8/runlevel.8.gz
+%{_mandir}/man8/shutdown.8.gz
+%{_mandir}/man8/telinit.8.gz
 %endif
 
 %files -n libsystemd0%{?mini}
 %defattr(-,root,root)
-%{_libdir}/libsystemd.so.*
+%license LICENSE.LGPL2.1
+%{_libdir}/libsystemd.so.0
+%{_libdir}/libsystemd.so.0.32.0
 
 %files -n libudev%{?mini}1
 %defattr(-,root,root)
-%{_libdir}/libudev.so.*
-
-%files -n libudev%{?mini}-devel
-%defattr(-,root,root)
-%{_includedir}/libudev.h
-%{_libdir}/libudev.so
-%{_libdir}/pkgconfig/libudev.pc
-%if ! 0%{?bootstrap}
-%{_mandir}/man3/*udev*.3*
-%endif
+%license LICENSE.LGPL2.1
+%{_libdir}/libudev.so.1
+%{_libdir}/libudev.so.1.7.2
 
 %if %{with coredump}
 %files coredump
@@ -1703,53 +1319,13 @@ fi
 %{_unitdir}/systemd-coredump*
 %{_unitdir}/sockets.target.wants/systemd-coredump.socket
 %{_sysctldir}/50-coredump.conf
+%{_sysusersdir}/systemd-coredump.conf
 %config(noreplace) %{_sysconfdir}/systemd/coredump.conf
 %dir %{_localstatedir}/lib/systemd/coredump
 %if ! 0%{?bootstrap}
 %{_mandir}/man1/coredumpctl*
 %{_mandir}/man5/coredump.conf*
 %{_mandir}/man8/systemd-coredump*
-%endif
-%endif
-
-%files container
-%defattr(-,root,root)
-%dir %{_sysconfdir}/systemd/nspawn
-%{_bindir}/systemd-nspawn
-%{_unitdir}/systemd-nspawn@.service
-%if %{with machined}
-%{_bindir}/machinectl
-%{_prefix}/lib/systemd/systemd-machined
-%{_unitdir}/systemd-machined.service
-%{_unitdir}/dbus-org.freedesktop.machine1.service
-%{_unitdir}/var-lib-machines.mount
-%{_unitdir}/machine.slice
-%{_unitdir}/machines.target.wants
-%{_unitdir}/*.target.wants/var-lib-machines.mount
-%{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh
-%{_datadir}/dbus-1/system.d/org.freedesktop.machine1.conf
-%{_datadir}/dbus-1/system-services/org.freedesktop.machine1.service
-%{_datadir}/polkit-1/actions/org.freedesktop.machine1.policy
-%{_tmpfilesdir}/systemd-nspawn.conf
-%endif
-%if %{with importd}
-%{_prefix}/lib/systemd/systemd-import*
-%{_prefix}/lib/systemd/systemd-pull
-%{_prefix}/lib/systemd/import-pubring.gpg
-%{_unitdir}/systemd-importd.service
-%{_unitdir}/dbus-org.freedesktop.import1.service
-%{_datadir}/dbus-1/system.d/org.freedesktop.import1.conf
-%{_datadir}/dbus-1/system-services/org.freedesktop.import1.service
-%{_datadir}/polkit-1/actions/org.freedesktop.import1.policy
-%endif
-%if ! 0%{?bootstrap}
-%{_mandir}/man*/*nspawn*
-%if %{with machined}
-%{_mandir}/man*/machinectl*
-%{_mandir}/man*/systemd-machined*
-%endif
-%if %{with importd}
-%{_mandir}/man*/systemd-importd*
 %endif
 %endif
 
@@ -1767,22 +1343,6 @@ fi
 %{_libdir}/libnss_systemd.so*
 %{_mandir}/man8/libnss_systemd.so.*
 %{_mandir}/man8/nss-systemd.*
-%endif
-
-%if %{with resolved}
-%files -n nss-resolve
-%defattr(-, root, root)
-%{_libdir}/libnss_resolve.so.2
-%{_mandir}/man8/libnss_resolve.*
-%{_mandir}/man8/nss-resolve.*
-%endif
-
-%if %{with machined}
-%files -n nss-mymachines
-%defattr(-,root,root)
-%{_libdir}/libnss_mymachines.so*
-%{_mandir}/man8/libnss_mymachines.*
-%{_mandir}/man8/nss-mymachines.*
 %endif
 
 %if %{with journal_remote}
@@ -1806,37 +1366,6 @@ fi
 %ghost %dir %{_localstatedir}/log/journal/remote
 %endif
 
-%if %{with networkd} || %{with resolved}
-%files network
-%defattr(-,root,root)
-%if %{with networkd}
-%config(noreplace) %{_sysconfdir}/systemd/networkd.conf
-%{_bindir}/networkctl
-%{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf
-%{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
-%{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
-%{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
-%{_prefix}/lib/systemd/network/*.network
-%{_prefix}/lib/systemd/network/*.network.example
-%{_prefix}/lib/systemd/systemd-networkd
-%{_prefix}/lib/systemd/systemd-networkd-wait-online
-%{_unitdir}/systemd-networkd.service
-%{_unitdir}/systemd-networkd.socket
-%{_unitdir}/systemd-networkd-wait-online.service
-%endif
-%if %{with resolved}
-%{_bindir}/resolvectl
-%{_bindir}/systemd-resolve
-%config(noreplace) %{_sysconfdir}/systemd/resolved.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.resolve1.conf
-%{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
-%{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
-%{_prefix}/lib/systemd/resolv.conf
-%{_prefix}/lib/systemd/systemd-resolved
-%{_unitdir}/systemd-resolved.service
-%endif
-%endif
-
 %if %{with portabled}
 %files portable
 %defattr(-,root,root)
@@ -1856,8 +1385,8 @@ fi
 %if %{with testsuite}
 %files testsuite
 %defattr(-,root,root)
-%{_testsuitedir}
 %doc %{_testsuitedir}/test/README.testsuite
+%{_testsuitedir}
 %endif
 
 %if %{with experimental}
@@ -1874,6 +1403,8 @@ fi
 %{_bindir}/userdbctl
 %{_prefix}/lib/systemd/systemd-userwork
 %{_prefix}/lib/systemd/systemd-userdbd
+%{_systemd_util_dir}/system/initrd-root-fs.target.wants/systemd-repart.service
+%{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
 %{_unitdir}/systemd-userdbd.service
 %{_unitdir}/systemd-userdbd.socket
 %{_mandir}/man*/userdbctl*

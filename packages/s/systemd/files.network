@@ -1,0 +1,61 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%if %{with networkd}
+%config(noreplace) %{_sysconfdir}/systemd/networkd.conf
+%dir %{_sysconfdir}/systemd/network
+%dir %{_systemd_util_dir}/network
+%{_bindir}/networkctl
+%{_datadir}/bash-completion/completions/networkctl
+%{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
+%{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
+%{_datadir}/zsh/site-functions/_networkctl
+%{_mandir}/man1/networkctl.1.gz
+%{_mandir}/man5/networkd.conf.5.gz
+%{_mandir}/man5/networkd.conf.d.5.gz
+%{_mandir}/man5/systemd.network.5.gz
+%{_mandir}/man8/systemd-networkd-wait-online.8.gz
+%{_mandir}/man8/systemd-networkd-wait-online.service.8.gz
+%{_mandir}/man8/systemd-networkd.8.gz
+%{_mandir}/man8/systemd-networkd.service.8.gz
+%{_systemd_util_dir}/network/80-container-host0.network
+%{_systemd_util_dir}/network/80-container-ve.network
+%{_systemd_util_dir}/network/80-container-vz.network
+%{_systemd_util_dir}/network/80-vm-vt.network
+%{_systemd_util_dir}/network/80-wifi-adhoc.network
+%{_systemd_util_dir}/network/80-wifi-ap.network.example
+%{_systemd_util_dir}/network/80-wifi-station.network.example
+%{_systemd_util_dir}/systemd-networkd
+%{_systemd_util_dir}/systemd-networkd-wait-online
+%{_unitdir}/systemd-networkd-wait-online.service
+%{_unitdir}/systemd-networkd.service
+%{_unitdir}/systemd-networkd.socket
+%endif
+
+%if %{with resolved}
+%config(noreplace) %{_sysconfdir}/systemd/resolved.conf
+%{_bindir}/resolvectl
+%{_bindir}/systemd-resolve
+%{_datadir}/bash-completion/completions/resolvectl
+%{_datadir}/bash-completion/completions/systemd-resolve
+%{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.resolve1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
+%{_datadir}/zsh/site-functions/_resolvectl
+%{_libdir}/libnss_resolve.so.2
+%{_mandir}/man1/resolvectl.1.gz
+%{_mandir}/man5/org.freedesktop.resolve1.5.gz
+%{_mandir}/man5/resolved.conf.5.gz
+%{_mandir}/man5/resolved.conf.d.5.gz
+%{_mandir}/man8/libnss_resolve.so.2.8.gz
+%{_mandir}/man8/nss-resolve.8.gz
+%{_mandir}/man8/systemd-resolved.8.gz
+%{_mandir}/man8/systemd-resolved.service.8.gz
+%{_systemd_util_dir}/resolv.conf
+%{_systemd_util_dir}/systemd-resolved
+%{_sysusersdir}/systemd-resolve.conf
+%{_tmpfilesdir}/systemd-resolve.conf
+%{_unitdir}/systemd-resolved.service
+%endif

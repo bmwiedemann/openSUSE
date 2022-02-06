@@ -5738,4 +5738,41 @@ handle manual pages that consist only of a .so directive such as
 - Import commit 523f32df573d459551760b072cb62906f4a2cf23 (merge of v249.7)</comment>
     <requestid>947453</requestid>
   </revision>
+  <revision rev="345" vrev="2">
+    <srcmd5>37c04631878f7a6c540c9739dea8ffa2</srcmd5>
+    <version>249.9</version>
+    <time>1644188041</time>
+    <user>dimstar_suse</user>
+    <comment>- Always create systemd-network system user, even if systemd-networkd is not
+  installed (bsc#1195559)
+
+- Make more use of %{_unitdir} in files.{systemd,container}
+
+- Installation of libnss_mymachines.so depended on %{bootstrap} but it is
+  actually installed when %{with machined} is true.
+- Call ldconfig when container subpackage is installed since it ships
+  nss-mymachines NSS plug-in module.
+
+- Import commit 117bd7f14aa7834d85a4306cd380d292bec04108
+  1395c74be7 udevadm: cleanup-db: don't delete information for kept db entries (bsc#1194912)
+  bbafc8092a udevadm: cleanup_dir: use dot_or_dot_dot()
+
+- Drop 0006-sysv-generator-add-back-support-for-SysV-scripts-for.patch
+       0009-sysv-add-back-support-for-all-virtual-facility-and-f.patch
+  Given the fact that Factory no more ship SysV init scripts since several
+  months, only scripts coming from 3rd party applications should remain which
+  are unlikely to rely on the SUSE specifities implemented by these
+  patches. This change was announced on the Factory mailing list:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3ERUP5ZZJ6PPA36L3HVN46BH6U6JL74O/
+
+- Import commit 885e0b9126bd2cf1e3f6b147c45ec58a5550c75c
+  41334be59e meson: minor cleanup
+  3db0c28462 sysusers: split up systemd.conf
+- Drop 0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch (bsc#1195153)
+  Since v241, the patch isn't useful anymore because resolved is no more able to
+  create /etc/resolv.conf symlink by itself,it runs as 'systemd-resolve'
+  user. The symlink is now handled by a tmpfiles config file which is only
+  installed when systemd-resolved is. The tmpfiles config file has currently a</comment>
+    <requestid>951595</requestid>
+  </revision>
 </revisionlist>

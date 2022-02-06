@@ -1,0 +1,57 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%dir %{_sysconfdir}/systemd/nspawn
+%{_bindir}/systemd-nspawn
+%if ! 0%{?bootstrap}
+%{_datadir}/bash-completion/completions/systemd-nspawn
+%{_datadir}/zsh/site-functions/_systemd-nspawn
+%{_mandir}/man1/systemd-nspawn.1.gz
+%{_mandir}/man5/systemd.nspawn.5.gz
+%{_mandir}/man8/libnss_mymachines.so.2.8.gz
+%{_mandir}/man8/nss-mymachines.8.gz
+%endif
+%{_unitdir}/systemd-nspawn@.service
+
+%if %{with machined}
+%dir %{_unitdir}/machines.target.wants
+%{_bindir}/machinectl
+%{_datadir}/bash-completion/completions/machinectl
+%{_datadir}/dbus-1/system-services/org.freedesktop.machine1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.machine1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.machine1.policy
+%{_datadir}/zsh/site-functions/_machinectl
+%{_datadir}/zsh/site-functions/_sd_machines
+%{_libdir}/libnss_mymachines.so.2
+%{_mandir}/man1/machinectl.1.gz
+%{_mandir}/man5/org.freedesktop.machine1.5.gz
+%{_mandir}/man8/systemd-machined.8.gz
+%{_mandir}/man8/systemd-machined.service.8.gz
+%{_systemd_util_dir}/scripts/fix-machines-btrfs-subvol.sh
+%{_systemd_util_dir}/systemd-machined
+%{_tmpfilesdir}/systemd-nspawn.conf
+%{_unitdir}/dbus-org.freedesktop.machine1.service
+%{_unitdir}/machine.slice
+%{_unitdir}/machines.target
+%{_unitdir}/machines.target.wants/var-lib-machines.mount
+%{_unitdir}/remote-fs.target.wants/var-lib-machines.mount
+%{_unitdir}/systemd-machined.service
+%{_unitdir}/var-lib-machines.mount
+%endif
+
+%if %{with importd}
+%{_datadir}/dbus-1/system-services/org.freedesktop.import1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.import1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.import1.policy
+%{_mandir}/man5/org.freedesktop.import1.5.gz
+%{_mandir}/man8/systemd-importd.8.gz
+%{_mandir}/man8/systemd-importd.service.8.gz
+%{_systemd_util_dir}/import-pubring.gpg
+%{_systemd_util_dir}/systemd-export
+%{_systemd_util_dir}/systemd-import
+%{_systemd_util_dir}/systemd-import-fs
+%{_systemd_util_dir}/systemd-importd
+%{_systemd_util_dir}/systemd-pull
+%{_unitdir}/dbus-org.freedesktop.import1.service
+%{_unitdir}/systemd-importd.service
+%endif
