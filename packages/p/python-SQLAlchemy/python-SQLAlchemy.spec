@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.4.29
+Version:        1.4.31
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
