@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pillow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-Pillow
-Version:        8.4.0
+Version:        9.0.1
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools}
@@ -51,14 +51,6 @@ Provides:       python-imaging = %{version}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
-%ifpython2
-# Pillow is a friendly PIL fork which we used to package as 'imaging'
-# Without providing python-imaging, all packages requiring it will break
-Obsoletes:      %{oldpython}-imaging < %{version}
-Provides:       %{oldpython}-imaging = %{version}
-Obsoletes:      %{oldpython}-imaging-sane < %{version}
-Provides:       %{oldpython}-imaging-sane = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -69,15 +61,6 @@ Python Imaging Library by Fredrik Lundh and Contributors.
 Summary:        Python Imaging Library (Fork) - Tcl/Tk Module
 Requires:       %{name} = %{version}
 Requires:       python-tk
-%ifpython2
-# NOTE: We don't need to conflict with python-imaging here,
-# because this package depends on python-Pillow, which already conflicts with python-imaging,
-# so this cannot be installed alongside python-imaging
-# And we cannot conflict with python-imaging directly, since python-Pillow provides python-imaging
-# Just in case, conflict with python-imaging-tk in case it is ever implemented.
-Obsoletes:      %{oldpython}-imaging-tk < %{version}
-Provides:       %{oldpython}-imaging-tk = %{version}
-%endif
 
 %description tk
 Pillow is the "friendly" PIL fork by Alex Clark and Contributors. PIL is the

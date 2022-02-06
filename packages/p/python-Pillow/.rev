@@ -516,4 +516,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   - Prefer command line tools SDK on macOS #5624</comment>
     <requestid>928313</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>64644b39f7711320264fc0aa184252d2</srcmd5>
+    <version>9.0.1</version>
+    <time>1644188020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951391</requestid>
+  </revision>
 </revisionlist>

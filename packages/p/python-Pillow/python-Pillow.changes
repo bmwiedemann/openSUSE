@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:00:39 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 9.0.1:
+  * In show_file, use os.remove to remove temporary
+    images. CVE-2022-24303 #6010 [radarhere, hugovk]
+  * Restrict builtins within lambdas for
+    ImageMath.eval. CVE-2022-22817 #6009 [radarhere]
+
+-------------------------------------------------------------------
+Tue Jan  4 21:06:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't try to build on unsupported Python 3.6
+- Remove python2 statements from specfile
+
+-------------------------------------------------------------------
+Mon Jan  3 08:31:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 9.0.0
+  * Dropped support for Python 3.6
+  * PILLOW_VERSION has been removed. Use __version__ instead.
+  * Support for FreeType 2.7 has been removed; FreeType 2.8 is the minimum supported.
+  * Image.show command parameter has been removed. Use a subclass of PIL.ImageShow.Viewer instead.
+  * Image._showxv has been removed. Use show() instead.
+  * ImageFile.raise_ioerror: IOError was merged into OSError in Python 3.3.
+  * So, ImageFile.raise_ioerror has been removed. Use ImageFile.raise_oserror instead.
+  * An optional line width parameter has been added to ImageDraw.Draw.polygon.
+  * API Addition: If xdg-open is present on Linux, this new PIL.ImageShow.Viewer subclass
+    will be registered. It displays images using the application selected by the system.
+  * Added support for “title” argument to DisplayViewer
+
+-------------------------------------------------------------------
 Sat Oct 30 20:25:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.4.0:
