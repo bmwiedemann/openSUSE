@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  3 19:43:19 UTC 2022 - Bruno Leon <bruno.leon@suse.com>
+
+- Update storage to 1.38.2
+- Update image to 5.19.1
+- Update Podman to 3.4.4
+- Update common to 0.47.3
+
+-------------------------------------------------------------------
 Tue Jan 11 12:56:24 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Switch registries.conf to v2 format
@@ -450,7 +458,7 @@ Preliminary release notes follow:
     chunked: estargz support
     chunked: fix linkat for rootless
     chunked: restrict dedup with hard links
-    
+
 
 1.35.0:
 
@@ -496,7 +504,7 @@ Preliminary release notes follow:
     Cirrus: Use fresh VM & Container images
     build(deps): bump github.com/opencontainers/selinux from 1.8.2 to 1.8.3
     build(deps): bump github.com/klauspost/compress from 1.13.1 to 1.13.3
-    
+
 
 1.33.1:
 
@@ -1505,7 +1513,7 @@ Thu Apr 29 09:06:07 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 Mon Apr 19 12:21:56 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Force overlay as default storage driver if system is not btrfs
-  (gh#containers/buildah#3153) 
+  (gh#containers/buildah#3153)
 
 -------------------------------------------------------------------
 Mon Apr 19 11:03:30 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
@@ -1927,12 +1935,12 @@ Bump github.com/containers/image/v5 from 5.10.3 to 5.10.4
 -------------------------------------------------------------------
 Tue Mar 23 09:39:45 UTC 2021 - Richard Brown <rbrown@suse.com>
 
-- Reintroduce SLE specific mounts config, to avoid errors on non-SLE systems 
+- Reintroduce SLE specific mounts config, to avoid errors on non-SLE systems
 
 -------------------------------------------------------------------
 Thu Mar  4 18:14:43 UTC 2021 - Richard Brown <rbrown@suse.com>
 
-- Require util-linux-systemd for %post scripts (findmnt) (boo#1182998) 
+- Require util-linux-systemd for %post scripts (findmnt) (boo#1182998)
 
 -------------------------------------------------------------------
 Thu Feb 25 16:15:46 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
@@ -3748,7 +3756,7 @@ Fri Jun 19 09:57:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
   ship the some mounts.conf default configuration on both platforms.
   As the sources for the mount point do not exist on openSUSE by
   default this config will basically have no effect on openSUSE.
-  (jsc#SLE-12122, bsc#1175821) 
+  (jsc#SLE-12122, bsc#1175821)
 
 -------------------------------------------------------------------
 Wed Jun  3 14:37:20 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
@@ -3775,7 +3783,7 @@ Wed Jun  3 14:37:20 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 -------------------------------------------------------------------
 Wed May 13 12:45:58 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Add registry.opensuse.org as default registry [bsc#1171578] 
+- Add registry.opensuse.org as default registry [bsc#1171578]
 
 -------------------------------------------------------------------
 Fri Apr 24 08:35:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
@@ -3786,7 +3794,7 @@ Fri Apr 24 08:35:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
   verify the server certificates of the RMT servers hosted
   in the public cloud.
   (https://github.com/SUSE/container-suseconnect/issues/41)
-  
+
 -------------------------------------------------------------------
 Fri Mar  6 11:14:24 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
@@ -3818,7 +3826,7 @@ Wed Dec 11 16:13:32 UTC 2019 - Richard Brown <rbrown@suse.com>
   - Initial support for the CNI DNS plugin, which allows containers to resolve the IPs of other containers via DNS name, has been added
   - Podman now supports anonymous named volumes, created by specifying only a destination to the -v flag to the podman create and podman run commands
   - Named volumes now support uid and gid options in --opt o=... to set UID and GID of the created volume
-- Update to storage 1.15.3 
+- Update to storage 1.15.3
   - overlay: allow storing images with more than 127 layers
   - Lazy initialize the layer store
   - tarlogger: drop state mutex
