@@ -160,4 +160,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>929462</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1e42815d2fbb1f8165c2624c0cd0eaca</srcmd5>
+    <version>1.10.0</version>
+    <time>1644188046</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1194714: Remove pptp-command (the former SysV init scirpt).
+  It has been broken for a long time (seeking deprecated ifconfig
+  in the wrong location) without any complaints, so it seems safe
+  to assume it is not being used anymore.</comment>
+    <requestid>951521</requestid>
+  </revision>
 </revisionlist>

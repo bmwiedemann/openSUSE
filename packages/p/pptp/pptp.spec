@@ -1,7 +1,7 @@
 #
 # spec file for package pptp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            http://pptpclient.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/pptpclient/pptp/pptp-%{version}/%{name}-%{version}.tar.gz
-Source1:        pptp-command
 Source2:        options.pptp
 Source3:        pptp_fe.pl
 Source4:        xpptp_fe.pl
@@ -50,7 +49,6 @@ make install DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{_sysconfdir}/ppp
 mkdir -p %{buildroot}%{_sysconfdir}/pptp.d
 
-cp %{SOURCE1} %{buildroot}%{_sbindir}/pptp-command
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/ppp
 
 find Documentation	-name CVS | xargs rm -rf
@@ -64,7 +62,6 @@ find Reference		-name CVS | xargs rm -rf
 %attr(0755,root,root) %{_sbindir}/pptpsetup
 %attr(0444,root,root) %{_mandir}/man8/pptp.8.gz
 %attr(0444,root,root) %{_mandir}/man8/pptpsetup.8.gz
-%attr(0755,root,root) %{_sbindir}/pptp-command
 %attr(750, root, root) %dir %{_sysconfdir}/ppp
 %config %attr(0600,root,root) %{_sysconfdir}/ppp/options.pptp
 %attr(0755,root,root) %{_sysconfdir}/pptp.d
