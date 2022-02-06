@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tweaks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Luis Medinas, Lisbon, Portugal.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,9 @@ License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
 Source0:        https://download.gnome.org/sources/gnome-tweaks/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 86.patch -- Fix build with meson 0.60.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-tweaks/-/merge_requests/86.patch
+
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
 BuildRequires:  gobject-introspection
