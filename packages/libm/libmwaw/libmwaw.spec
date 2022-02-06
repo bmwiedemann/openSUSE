@@ -25,6 +25,7 @@ Summary:        Pre Mac OSX text file formats parser library
 License:        GPL-2.0-or-later AND (LGPL-2.1-or-later OR MPL-2.0)
 URL:            https://sourceforge.net/p/libmwaw/wiki/Home/
 Source:         https://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
+Patch0:         fix-build.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -71,6 +72,7 @@ Command line tools to work with publications in pre MAC OSX text file-formats.
 
 %prep
 %setup -q
+%patch0 -p1
 # doxygen needles rebuild
 sed -i \
 	-e 's:on $datetime::g' \

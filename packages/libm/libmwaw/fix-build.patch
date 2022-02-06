@@ -1,0 +1,11 @@
+--- libmwaw-0.3.21/src/lib/ScriptWriterParser.cxx	2022-01-27 16:39:14.696053941 +0100
++++ libmwaw-0.3.21/src/lib/ScriptWriterParser.cxx	2021-11-27 15:56:59.000000000 +0100
+@@ -1380,7 +1380,7 @@
+     else
+       posToType[frame.m_position[0][1]].push_back(int(f));
+ 
+-    posToType.insert(std::make_pair(frame.m_position[0][1],int(f)));
++    posToType.insert(std::make_pair(frame.m_position[0][1],std::vector<int>({int(f)})));
+   }
+   for (auto const &it : posToType) {
+     auto const &list=it.second;
