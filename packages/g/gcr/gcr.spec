@@ -1,7 +1,7 @@
 #
 # spec file for package gcr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ Source0:        https://download.gnome.org/sources/gcr/3.41/%{name}-%{version}.t
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
+# PATCH-FIX-UPSTREAM b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch -- Fix build with meson 060.0 and newer
+Patch2:         https://gitlab.gnome.org/GNOME/gcr/-/commit/b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch
+
 # For directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  gettext >= 0.19.8
@@ -189,6 +192,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %if 0%{?sle_version}
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %meson \
