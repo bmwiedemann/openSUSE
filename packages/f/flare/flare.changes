@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Feb  5 15:56:05 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Version update to 1.13
+  Engine features
+  * Added additional requirement properties (requires_status, 
+    requires_item, etc) to enemy and NPC map objects. The properties 
+    now match what is available for map events.
+  * When ‘mouse aim’ is disabled, the Shift key can now be used with 
+    the direction keys to change the player’s orientation without 
+    moving.
+  * Added optional ‘fog-of-war’ feature
+  * Added support for multiple sets/loadouts of equipped items
+  * Added random_status attribute to Events for setting/unsetting a 
+    random status from a list.
+  * Reworked gamepad handling using the SDL_GameController API.
+  * Several new key bindings, many of which will benefit gamepad 
+    users.
+  * Added an “action picker” for interacting with items/powers when 
+    using a gamepad or a touchscreen.
+  * Added misc.selection_rect_corner_size to 
+    engine/widget_settings.txt. This allows for a nicer “targeting 
+    reticle” appearance when selecting widgets without a mouse.
+  * Added ‘background’ property for all menus. Menus will fall back to 
+    the existing hard-coded filenames if this property is omitted.
+  * Added ‘close’, ‘label_title’, and ‘action_list’ properties to 
+    MenuConfirm configuration.
+  * Added ‘render_layers’ section to StatBlock definitions. It has the 
+    same syntax and functionality as engine/hero_layers.txt, so that 
+    file is now considered deprecated.
+  * Added ‘animation_slots’ section to StatBlock definitions. This 
+    allows for multiple animation layers on non-player entities that 
+    don’t have an inventory like the player.
+  * Added a ‘direction’ property to map NPCs, indentical to the 
+    property of the same name for map enemies.
+  * Added ‘vendor_ratio_buy’, ‘vendor_ratio_sell’, and 
+   ‘vendor_ratio_sell_old’ properties to engine/loot.txt. These 
+   deprecate ‘vendor_ratio’ and ‘vendor_ratio_buyback’.
+  * Added ‘vendor_ratio_buy’, ‘vendor_ratio_sell’, and 
+    ‘vendor_ratio_sell_old’ properties to NPCs. These can be used to 
+    override the global settings in engine/loot.txt.
+  * Added ‘tooltip_visible_max’ to engine/tootlips.txt to control the 
+    maximum number of visible floating tooltips.
+    
+  Engine fixes
+  * Fix enemies not being able to target NPC followers
+  * Fix loot and sound effects being cleared in StatBlock files with 
+    multiple sections
+  * Fix potential crash when removing summons that would be 
+    out-of-bounds on the next map.
+  * Fix bug where a damage type with no name could be removed if 
+    another damage type was defined after it.
+  * Don’t show hidden stats under ‘Related Stats’ section of tooltips 
+    of Character menu.
+  * Fix bug where negative regen wouldn’t work if the resource was 
+    100% full.
+  * Fix bug where negative regen would overflow after reaching zero.
+  * Fix bug that caused built-in effect types to be ignored by Power 
+    post_effect.
+  * Fix disappearing sprites due to render priority overflow.
+  * Fading of corpses is now correctly disabled when corpse_timeout=0 
+    is used in engine/misc.txt.
+  * Fix cast animation not playing when using an inventory item that 
+    is not instant.
+  * Fixed a bug on Android where loading the default settings would 
+    exit fullscreen mode.
+  * Fixed crash in NPC dialog when using gamepad.
+  * Fixed several small bugs with navigating UI elements with a 
+    gamepad.
+  * Fixed incorrect handling of gamepad stick/trigger deadzone.
+  * Fixed fullscreen setting being turned off when loading 
+    configuration defaults on Android.
+  * Fixed input hint for item tooltips when using a touchscreen.
+  * Improved file access handling on Android versions 10 and up. This 
+    fixes the infinite cutscene loop when starting a new game.
+  * Fixed memory leak when loading NPCs.
+  * Entity animations will now fall back to the ‘die’ animation when 
+   ‘critdie’ isn’t defined.
+  * Improved text rendering by blending text with a copy of itself.
+  * Fix infinite loop that could occur when setting unlocked powers.
+  * Elemental resistances can now be used with ‘stat’, 
+   ‘stat_per_level’, and ‘stat_per_primary’ in StatBlock definitions.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sun Sep  5 04:25:46 UTC 2021 - saku nix <ssakuragi2@hotmail.com>
 - Version update to 1.12
   Engine features
