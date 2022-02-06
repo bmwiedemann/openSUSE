@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-patch-translation
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ patches and merging them to one translation compendium.
 cp -a %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 
 %build
-sh gnome-patch-translation-merge
+bash gnome-patch-translation-merge
 
 %install
 mkdir -p %{buildroot}%{_bindir}

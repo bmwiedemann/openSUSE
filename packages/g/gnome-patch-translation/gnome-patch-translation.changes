@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:00:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- invoke bash for bash scripts (bsc#1195391)
+
+-------------------------------------------------------------------
 Tue Mar  6 20:08:11 CET 2018 - sbrabec@suse.cz
 
 - Updated ko, lt, nn, pl, sk, sv, uk, zh_TW (bsc#1085376).
