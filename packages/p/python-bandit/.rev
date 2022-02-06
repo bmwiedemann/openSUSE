@@ -105,4 +105,41 @@
     <comment></comment>
     <requestid>929843</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2d416c5fb88d0f5fbcd9fb6349879d8</srcmd5>
+    <version>1.7.2</version>
+    <time>1644188086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.2:
+  * Correctly define extras in \`setup.cfg\` (#755)
+  * Remove leftover openstack code (#778)
+  * Added snmp\_security check plugin for various SNMP checks (#403)
+  * Fix README.rst (#365)
+  * Fixup typo (#769)
+  * Drop end-of-life Python 3.6 (#777)
+  * Drop end-of-life Python 3.5 (#746)
+  * Start using auto-formatters (#754)
+  * Create FUNDING.yml (#774)
+  * test\_help\_arg: remove assert on 'optional arguments' (#752)
+  * Fix broken reported URL link for B107 (#751)
+
+- update to 1.7.1:
+  * fix reading initial values from .bandit
+  * Always use a Loader in yaml.load
+  * PEP-518 support: configure bandit via pyproject.toml
+  * document that random.choices() isn't secure either
+  * Fix syntax errors in bug report
+  * Update bug\_report.yaml
+  * Fix syntax error in bug report
+  * Use new issue template format
+  * Update README.rst
+  * Mock part of python 3.x
+  * Add license to package installation metadata
+  * #694 Bandit fails when using importlib with named arguments
+  * Add string options for severity and confidence
+  * Add support for Python 3.9
+  * Create config.yml
+  * Add default labels to issues</comment>
+    <requestid>951974</requestid>
+  </revision>
 </revisionlist>

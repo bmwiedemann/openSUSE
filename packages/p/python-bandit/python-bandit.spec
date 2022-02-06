@@ -1,7 +1,7 @@
 #
 # spec file for package python-bandit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,9 @@
 %endif
 # CLI tool, no module
 %define pythons python3
-# Tests require python-hacking, which isn't compatible with pycodestyle
 %bcond_without  builddocs
 Name:           python-bandit
-Version:        1.7.0
+Version:        1.7.2
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0
@@ -44,6 +43,7 @@ Requires:       python-PyYAML >= 5.3.1
 Requires:       python-six >= 1.10.0
 Requires:       python-stestr >= 1.0.0
 Requires:       python-stevedore >= 1.20.0
+Requires:       python-toml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
