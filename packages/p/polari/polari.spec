@@ -1,7 +1,7 @@
 #
 # spec file for package polari
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ Source0:        https://download.gnome.org/sources/polari/41/%{name}-%{version}.
 Source99:       polari-rpmlintrc
 # PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
 Patch0:         polari-fix-nb-translation.patch
+# PATCH-FIX-UPSTREAM 0f0a4b54142d8b424969f0b6ace6fc8b53b1d05d.patch -- Fix build with meson 0.61.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/polari/-/commit/0f0a4b54142d8b424969f0b6ace6fc8b53b1d05d.patch
 
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.53.0
