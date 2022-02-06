@@ -79,4 +79,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>950803</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b8ac3b48e2a6cff8e103bf51792fca40</srcmd5>
+    <version>0.22.1</version>
+    <time>1644188058</time>
+    <user>dimstar_suse</user>
+    <comment>- This version actually installs manpages on its own.
+- Fix failing tests:
+  - typing_extensions.patch (post Python 3.8 we don't need
+    typing_extensions package at all)
+  - syntaxerror_failing_test.patch (from
+    https://github.com/bpython/bpython/compare/fdd4ad9..4d33cc6).
+</comment>
+    <requestid>951802</requestid>
+  </revision>
 </revisionlist>

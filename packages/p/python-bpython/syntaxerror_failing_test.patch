@@ -1,0 +1,65 @@
+From b46afa3bb1ab783c96dc80c5184090a171ab70d4 Mon Sep 17 00:00:00 2001
+From: Sebastian Ramacher <sebastian@ramacher.at>
+Date: Fri, 31 Dec 2021 14:00:46 +0100
+Subject: [PATCH 1/3] Apply black
+
+---
+ bpython/autocomplete.py               |    1 -
+ bpython/curtsiesfrontend/filewatch.py |    1 -
+ bpython/test/test_interpreter.py      |   14 +++++++++++++-
+ bpython/urwid.py                      |    1 -
+ 4 files changed, 13 insertions(+), 4 deletions(-)
+
+--- a/bpython/autocomplete.py
++++ b/bpython/autocomplete.py
+@@ -626,7 +626,6 @@ except ImportError:
+         def locate(self, cursor_offset: int, line: str) -> Optional[LinePart]:
+             return None
+ 
+-
+ else:
+ 
+     class JediCompletion(BaseCompletionType):
+--- a/bpython/curtsiesfrontend/filewatch.py
++++ b/bpython/curtsiesfrontend/filewatch.py
+@@ -11,7 +11,6 @@ except ImportError:
+     def ModuleChangedEventHandler(*args):
+         return None
+ 
+-
+ else:
+ 
+     class ModuleChangedEventHandler(FileSystemEventHandler):  # type: ignore [no-redef]
+--- a/bpython/test/test_interpreter.py
++++ b/bpython/test/test_interpreter.py
+@@ -35,7 +35,19 @@ class TestInterpreter(unittest.TestCase)
+ 
+         i.runsource("1.1.1.1")
+ 
+-        if sys.version_info[:2] >= (3, 10):
++        if (3, 10, 1) <= sys.version_info[:3]:
++            expected = (
++                "  File "
++                + green('"<bpython-input-148>"')
++                + ", line "
++                + bold(magenta("1"))
++                + "\n    1.1.1.1\n       ^^\n"
++                + bold(red("SyntaxError"))
++                + ": "
++                + cyan("invalid syntax")
++                + "\n"
++            )
++        elif (3, 10) <= sys.version_info[:2]:
+             expected = (
+                 "  File "
+                 + green('"<bpython-input-148>"')
+--- a/bpython/urwid.py
++++ b/bpython/urwid.py
+@@ -128,7 +128,6 @@ if urwid.VERSION < (1, 0, 0) and hasattr
+ 
+             return wrapper
+ 
+-
+ else:
+     TwistedEventLoop = getattr(urwid, "TwistedEventLoop", None)
+ 

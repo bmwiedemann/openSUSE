@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%bcond_with     test
+%bcond_without     test
 Name:           python-bpython
 Version:        0.22.1
 Release:        0
@@ -26,9 +26,18 @@ Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
 URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM typing_extensions.patch gh#bpython/bpython#940 mcepl@suse.com
+# We actually don't need typing_extensions (all objects are in 3.8+)
+Patch0:         typing_extensions.patch
+# PATCH-FIX-UPSTREAM syntaxerror_failing_test.patch gh#bpython/bpython#952 mcepl@suse.com
+# This is actually fixed in the post-0.22.1 development, but waiting on it.
+# https://github.com/bpython/bpython/compare/fdd4ad9..4d33cc6.patch
+Patch1:         syntaxerror_failing_test.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -54,10 +63,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module curtsies >= 0.3.5}
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six >= 1.5}
 BuildRequires:  %{python_module wcwidth}
-BuildRequires:  python-mock
 %endif
 %ifpython2
 Provides:       bpython = %{version}
@@ -90,17 +99,14 @@ Provides:       %{python_module bpython-doc = %{version}}
 Documentation and help files for %{name}.
 
 %prep
-%setup -q -n bpython-%{version}
+%autosetup -p1 -n bpython-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 %python_exec setup.py build_sphinx && rm build/sphinx/html/.buildinfo # HTML documentation
 
 %install
-%python_install
-
-install -m 644 build/man/bpython.1 %{buildroot}%{_mandir}/man1/bpython.1
-install -m 644 build/man/bpython-config.5 %{buildroot}%{_mandir}/man5/bpython-config.5
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/bpython
 %python_clone -a %{buildroot}%{_bindir}/bpython-curses
@@ -108,9 +114,6 @@ install -m 644 build/man/bpython-config.5 %{buildroot}%{_mandir}/man5/bpython-co
 %python_clone -a %{buildroot}%{_bindir}/bpdb
 %python_clone -a %{buildroot}%{_mandir}/man1/bpython.1
 %python_clone -a %{buildroot}%{_mandir}/man5/bpython-config.5
-
-install -d %{buildroot}%{_mandir}/man1/
-install -d %{buildroot}%{_mandir}/man5/
 
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -134,7 +137,7 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 
 %if %{with test}
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 %endif
 
 %post
@@ -150,8 +153,8 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %{python_sitelib}/bpython/*
 %dir %{python_sitelib}/bpdb
 %{python_sitelib}/bpdb/*
-%dir %{python_sitelib}/bpython-%{version}-py*.egg-info
-%{python_sitelib}/bpython-%{version}-py*.egg-info/*
+%dir %{python_sitelib}/bpython-%{version}*-info
+%{python_sitelib}/bpython-%{version}*-info/*
 %python_alternative %{_bindir}/bpython
 %python_alternative %{_bindir}/bpython-curses
 %python_alternative %{_bindir}/bpython-urwid

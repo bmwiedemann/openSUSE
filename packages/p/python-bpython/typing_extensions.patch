@@ -1,0 +1,131 @@
+From 51ebc86070c7a49abe78ba87a0e8268a09f141a6 Mon Sep 17 00:00:00 2001
+From: Sebastian Ramacher <sebastian@ramacher.at>
+Date: Wed, 8 Dec 2021 18:18:17 +0100
+Subject: [PATCH] Add a typing compat module to avoid a dependency on
+ typing-extensions for Py >= 3.8
+
+---
+ bpython/_typing_compat.py             |   33 +++++++++++++++++++++++++++++++++
+ bpython/curtsies.py                   |    2 +-
+ bpython/curtsiesfrontend/_internal.py |    2 +-
+ bpython/curtsiesfrontend/repl.py      |    2 +-
+ bpython/filelock.py                   |    2 +-
+ bpython/inspection.py                 |    2 +-
+ bpython/repl.py                       |    2 +-
+ setup.cfg                             |    2 +-
+ 8 files changed, 40 insertions(+), 7 deletions(-)
+ create mode 100644 bpython/_typing_compat.py
+
+--- /dev/null
++++ b/bpython/_typing_compat.py
+@@ -0,0 +1,33 @@
++# The MIT License
++#
++# Copyright (c) 2021 Sebastian Ramacher
++#
++# Permission is hereby granted, free of charge, to any person obtaining a copy
++# of this software and associated documentation files (the "Software"), to deal
++# in the Software without restriction, including without limitation the rights
++# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++# copies of the Software, and to permit persons to whom the Software is
++# furnished to do so, subject to the following conditions:
++#
++# The above copyright notice and this permission notice shall be included in
++# all copies or substantial portions of the Software.
++#
++# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++# THE SOFTWARE.
++
++try:
++    # introduced in Python 3.8
++    from typing import Literal
++except ImportError:
++    from typing_extensions import Literal  # type: ignore
++
++try:
++    # introduced in Python 3.8
++    from typing import Protocol
++except ImportError:
++    from typing_extensions import Protocol  # type: ignore
+--- a/bpython/curtsies.py
++++ b/bpython/curtsies.py
+@@ -33,7 +33,7 @@ from typing import (
+     Optional,
+     Generator,
+ )
+-from typing_extensions import Literal, Protocol
++from ._typing_compat import Protocol
+ 
+ logger = logging.getLogger(__name__)
+ 
+--- a/bpython/curtsiesfrontend/_internal.py
++++ b/bpython/curtsiesfrontend/_internal.py
+@@ -23,7 +23,7 @@
+ import pydoc
+ from types import TracebackType
+ from typing import Optional, Type
+-from typing_extensions import Literal
++from .._typing_compat import Literal
+ 
+ from .. import _internal
+ 
+--- a/bpython/curtsiesfrontend/repl.py
++++ b/bpython/curtsiesfrontend/repl.py
+@@ -14,7 +14,7 @@ import unicodedata
+ from enum import Enum
+ from types import TracebackType
+ from typing import Dict, Any, List, Optional, Tuple, Union, cast, Type
+-from typing_extensions import Literal
++from .._typing_compat import Literal
+ 
+ import blessings
+ import greenlet
+--- a/bpython/filelock.py
++++ b/bpython/filelock.py
+@@ -21,7 +21,7 @@
+ # THE SOFTWARE.
+ 
+ from typing import Optional, Type, IO
+-from typing_extensions import Literal
++from ._typing_compat import Literal
+ from types import TracebackType
+ 
+ has_fcntl = True
+--- a/bpython/inspection.py
++++ b/bpython/inspection.py
+@@ -28,7 +28,7 @@ import re
+ from collections import namedtuple
+ from typing import Any, Optional, Type
+ from types import MemberDescriptorType, TracebackType
+-from typing_extensions import Literal
++from ._typing_compat import Literal
+ 
+ from pygments.token import Token
+ from pygments.lexers import Python3Lexer
+--- a/bpython/repl.py
++++ b/bpython/repl.py
+@@ -38,7 +38,7 @@ from itertools import takewhile
+ from pathlib import Path
+ from types import ModuleType, TracebackType
+ from typing import cast, Tuple, Any, Optional, Type
+-from typing_extensions import Literal
++from ._typing_compat import Literal
+ 
+ from pygments.lexers import Python3Lexer
+ from pygments.token import Token
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -28,7 +28,7 @@ install_requires =
+ 	pygments
+ 	pyxdg
+ 	requests
+-	typing-extensions
++    typing-extensions; python_version < "3.8"
+ 
+ [options.extras_require]
+ clipboard = pyperclip
