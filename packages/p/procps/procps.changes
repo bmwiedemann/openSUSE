@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 09:21:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bsc1195468-23da4f40.patch to fix bsc#1195468 that is
+  ignore SIGURG
+
+-------------------------------------------------------------------
 Thu Jan 20 13:17:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Correct used URLs 

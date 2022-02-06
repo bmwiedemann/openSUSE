@@ -31,7 +31,7 @@ index 8678123..b433655 100644
 | .\"
 | .\" To render this page:
 | .\"    groff -t -b -man -X -P-resolution -P100 -Tps ps.1 &
-@@ -1521,7 +1521,7 @@ priority of the process.  Higher number means lower priority.
+@@ -1518,7 +1518,7 @@ priority of the process.  Higher number means lower priority.
  T}
  
  psr	PSR	T{
