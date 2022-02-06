@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  3 16:51:41 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix applications not updating after some time (kde#449163):
+  * 0001-Client-Remove-mWaitingForUpdateDelivery.patch
+  * 0002-Guard-mResizeDirty-by-the-correctMutex.patch
+  * 0003-Fix-up-mutexes-for-frame-callbacks.patch
+- Add patch to fix several feature detection tests:
+  * 0001-Use-proper-dependencies-in-compile-tests.patch
+
+-------------------------------------------------------------------
 Thu Jan 20 16:33:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde44:

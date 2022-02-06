@@ -385,4 +385,17 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>New snapshots</comment>
     <requestid>948155</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>66ac9a6f9b14a9d484e6d95ea299bc8f</srcmd5>
+    <version>5.15.2+kde44</version>
+    <time>1644188051</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix applications not updating after some time (kde#449163):
+  * 0001-Client-Remove-mWaitingForUpdateDelivery.patch
+  * 0002-Guard-mResizeDirty-by-the-correctMutex.patch
+  * 0003-Fix-up-mutexes-for-frame-callbacks.patch
+- Add patch to fix several feature detection tests:
+  * 0001-Use-proper-dependencies-in-compile-tests.patch</comment>
+    <requestid>951557</requestid>
+  </revision>
 </revisionlist>
