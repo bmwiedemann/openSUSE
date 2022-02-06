@@ -2008,4 +2008,14 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 - Make sure we actually generate clang-doc and llvm-doc.</comment>
     <requestid>923003</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>fac24ae8e92bf447c196ec74ec07d074</srcmd5>
+    <version>13.0.1</version>
+    <time>1644188045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.0.1.
+  * This release contains bug-fixes for the LLVM 13.0.0 release.
+    This release is API and ABI compatible with 13.0.0.</comment>
+    <requestid>951462</requestid>
+  </revision>
 </revisionlist>
