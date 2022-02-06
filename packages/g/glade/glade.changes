@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  2 11:35:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 117.patch: Fix build with meson 0.61.0 and newer.
+
+-------------------------------------------------------------------
 Fri Dec 10 20:18:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(gjs-1.0) BuildRequires: Build gjs widgets support,

@@ -1,7 +1,7 @@
 #
 # spec file for package glade
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            https://glade.gnome.org/
 Source0:        https://download.gnome.org/sources/glade/3.38/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch -- GladeProject: Segfault in gnome-builder when widget doesn't have a name
 Patch0:         https://gitlab.gnome.org/GNOME/glade/-/commit/9db1fba1fa93905c9169c1e29049e4b2f6337c39.patch
+# PATCH-FIX-UPSTREAM  117.patch -- Fix build with meson 0.61.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/glade/-/merge_requests/117.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
