@@ -4324,4 +4324,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>951859</requestid>
   </revision>
+  <revision rev="369" vrev="1">
+    <srcmd5>e3250a8be916c7fa277ae965e56fda0a</srcmd5>
+    <version>7.2</version>
+    <time>1644778259</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.2 development release
+  - Large scale cleanup to support 'long' type with MSVCRT.                                                                                   
+  - Mono engine updated to version 7.1.1.                                                                                                     
+  - More theming fixes in common controls.                                                                                                    
+  - Beginnings of a WMA decoder.                                                                                                              
+  - Support for 64-bit time_t.                                                                                                                
+  - Various bug fixes.                                                                                                                        
+- update staging to 7.2 release</comment>
+    <requestid>954062</requestid>
+  </revision>
 </revisionlist>
