@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  5 20:32:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.3
+  * All Qt.GestureType callable arguments will also accept an int.
+    All callables that return a Qt::GestureType in C++ will return
+    an int (which can be compared with a Qt.GestureType member).
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Fri Dec  3 14:36:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.2.2

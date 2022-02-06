@@ -22,7 +22,7 @@
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -62,7 +62,7 @@ BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
-# SECTION not packaged for 6.2 yet https://github.com/assimp/assimp/issues/3948
+# SECTION not packaged for 6.2 yet
 # BuildRequires:  cmake(Qt6Quick3D)
 # BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
 # /SECTION
