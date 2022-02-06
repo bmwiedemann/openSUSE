@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  4 11:54:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 2022-02-01:
+  * Address a `-Wunused-but-set-variable' warning from Clang 13.x
+  * Don't specify the -std flag in Makefile or re2.pc
+  * Remove a redundant map access
+
+-------------------------------------------------------------------
 Sun Dec  5 15:08:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use newer libs and GCC on Leap 15.3 & 15.4
