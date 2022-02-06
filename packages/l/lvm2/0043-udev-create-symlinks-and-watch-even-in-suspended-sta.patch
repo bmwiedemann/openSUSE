@@ -1,0 +1,43 @@
+From e10f67e91728f1e576803df884049ecbd92874d0 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 28 Jan 2022 14:42:29 +0100
+Subject: [PATCH] udev: create symlinks and watch even in suspended state
+
+If a dm device is suspended, we can't run blkid on it. But earlier
+rules (e.g. 11-dm-parts.rules) might have imported previously scanned
+properties from the udev db, in particular if the device had been correctly
+set up beforehand (DM_UDEV_PRIMARY_SOURCE_FLAG==1). Symlinks for existing
+ID_FS_xyz properties must be preserved in this case. Otherwise lower-priority
+devices (such as multipath components) might take over the symlink
+temporarily.
+
+Likewise, we should't stop watching a temporarily suspended, but previously
+correctly configured dm device.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ udev/13-dm-disk.rules.in | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/udev/13-dm-disk.rules.in b/udev/13-dm-disk.rules.in
+index 535581070..5cc08121e 100644
+--- a/udev/13-dm-disk.rules.in
++++ b/udev/13-dm-disk.rules.in
+@@ -17,10 +17,14 @@ ENV{DM_UDEV_DISABLE_DISK_RULES_FLAG}=="1", GOTO="dm_end"
+ SYMLINK+="disk/by-id/dm-name-$env{DM_NAME}"
+ ENV{DM_UUID}=="?*", SYMLINK+="disk/by-id/dm-uuid-$env{DM_UUID}"
+ 
++ENV{DM_SUSPENDED}=="1", ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", GOTO="dm_link"
++ENV{DM_NOSCAN}=="1", ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", GOTO="dm_link"
+ ENV{DM_SUSPENDED}=="1", GOTO="dm_end"
+ ENV{DM_NOSCAN}=="1", GOTO="dm_watch"
+ 
+ (BLKID_RULE)
++
++LABEL="dm_link"
+ ENV{DM_UDEV_LOW_PRIORITY_FLAG}=="1", OPTIONS="link_priority=-100"
+ ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{ID_FS_UUID_ENC}=="?*", SYMLINK+="disk/by-uuid/$env{ID_FS_UUID_ENC}"
+ ENV{ID_FS_USAGE}=="filesystem|other", ENV{ID_FS_LABEL_ENC}=="?*", SYMLINK+="disk/by-label/$env{ID_FS_LABEL_ENC}"
+-- 
+2.34.1
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 13:10:31 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- udev: create symlinks and watch even in suspended state (bsc#1195231)
+   + (add) 0043-udev-create-symlinks-and-watch-even-in-suspended-sta.patch 
+
+-------------------------------------------------------------------
 Wed Aug 11 08:51:25 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add lvm2-rpmlintrc where we skip all rpmlint issue for lvm2-testsuite package

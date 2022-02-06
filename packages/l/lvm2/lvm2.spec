@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,6 +105,7 @@ Patch0039:      0039-archive-avoid-abuse-of-internal-flag.patch
 Patch0040:      0040-pvck-add-lock_global-before-clean_hint_file.patch
 Patch0041:      0041-lvmdevices-add-deviceidtype-option.patch
 Patch0042:      bug-1188141_toolcontext-fix-double-free-core-dumped-issue.patch
+Patch0043:      0043-udev-create-symlinks-and-watch-even-in-suspended-sta.patch
 
 # SUSE patches: 1000+ for LVM
 # Never upstream
@@ -208,6 +209,7 @@ Volume Manager.
 %patch0040 -p1
 %patch0041 -p1
 %patch0042 -p1
+%patch0043 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
