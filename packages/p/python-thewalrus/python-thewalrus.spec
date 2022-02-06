@@ -1,7 +1,7 @@
 #
 # spec file for package python-thewalrus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,37 +18,34 @@
 
 %define packagename thewalrus
 %define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# no dask for python 3.10 yet
+%define skip_python310 1
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-thewalrus
-Version:        0.16.2
+Version:        0.18.0
 Release:        0
 Summary:        An open-source software architecture for photonic quantum computing
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/XanaduAI/thewalrus
 Source:         https://github.com/XanaduAI/thewalrus/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module dask-all}
+BuildRequires:  %{python_module dask-delayed}
+BuildRequires:  %{python_module flaky >= 3.7.0}
 BuildRequires:  %{python_module numba >= 0.49.1}
-BuildRequires:  %{python_module numpy >= 1.15.0}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module numpy >= 1.19.2}
 BuildRequires:  %{python_module pytest >= 5.4.1}
-BuildRequires:  %{python_module repoze.lru >= 0.7}
 BuildRequires:  %{python_module scipy >= 1.2.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sympy >= 1.5.1}
-BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-dask-all
+Requires:       python-dask-delayed
 Requires:       python-numba >= 0.49.1
-Requires:       python-numpy >= 1.15.0
-Requires:       python-repoze.lru >= 0.7
+Requires:       python-numpy >= 1.19.2
 Requires:       python-scipy >= 1.2.1
 Requires:       python-sympy >= 1.5.1
-# Test failed for i586, no clue why.
+BuildArch:      noarch
+# Tests fail on 32-bit: 64bit-types expected
 ExcludeArch:    i586
 %python_subpackages
 
@@ -59,22 +56,19 @@ A library for the calculation of hafnians, Hermite polynomials and Gaussian boso
 %setup -q -n %{packagename}-%{version}
 
 %build
-# We need to add -fopenmp manually, because otherwise
-# setup.py build breaks CFLAGS gh#XanaduAI/thewalrus#198
-export CFLAGS="%{optflags} -fopenmp"
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest_arch
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*egg-info
-%{python_sitearch}/%{packagename}
+%{python_sitelib}/%{packagename}-%{version}*-info
+%{python_sitelib}/%{packagename}
 
 %changelog
