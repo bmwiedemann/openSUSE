@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>940495</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3abe44560bfba3da6d72867af0eaf71</srcmd5>
+    <version>1643874076.3d0e13c</version>
+    <time>1644188001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1643874076.3d0e13c:
+  * Avoid crash on local builds</comment>
+    <requestid>950888</requestid>
+  </revision>
 </revisionlist>
