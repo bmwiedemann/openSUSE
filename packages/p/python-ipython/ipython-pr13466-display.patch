@@ -1,0 +1,44 @@
+From ad08da6f192d30fd1494b4d5fafbd480872e97e0 Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sat, 15 Jan 2022 11:02:13 +0000
+Subject: [PATCH] Fix display import in .core.display
+
+---
+ IPython/core/display.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/IPython/core/display.py b/IPython/core/display.py
+index f3934c2d9d7..9db75035762 100644
+--- a/IPython/core/display.py
++++ b/IPython/core/display.py
+@@ -83,7 +83,7 @@ def _display_mimetype(mimetype, objs, raw=False, metadata=None):
+     if raw:
+         # turn list of pngdata into list of { 'image/png': pngdata }
+         objs = [ {mimetype: obj} for obj in objs ]
+-    display(*objs, raw=raw, metadata=metadata, include=[mimetype])
++    display_functions.display(*objs, raw=raw, metadata=metadata, include=[mimetype])
+ 
+ #-----------------------------------------------------------------------------
+ # Main functions
+@@ -517,10 +517,10 @@ def _repr_html_(self):
+             self.html_width, self.total, self.progress)
+ 
+     def display(self):
+-        display(self, display_id=self._display_id)
++        display_functions.display(self, display_id=self._display_id)
+ 
+     def update(self):
+-        display(self, display_id=self._display_id, update=True)
++        display_functions.display(self, display_id=self._display_id, update=True)
+ 
+     @property
+     def progress(self):
+@@ -694,7 +694,7 @@ def _ipython_display_(self):
+         metadata = {
+             'application/geo+json': self.metadata
+         }
+-        display(bundle, metadata=metadata, raw=True)
++        display_functions.display(bundle, metadata=metadata, raw=True)
+ 
+ class Javascript(TextDisplayObject):
+ 

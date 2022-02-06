@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  3 20:32:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add ipython-pr13466-display.patch -- gh#ipython/ipython#13466
+  * fixes plotly test failures
+
+-------------------------------------------------------------------
 Thu Jan 20 10:19:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.0.1

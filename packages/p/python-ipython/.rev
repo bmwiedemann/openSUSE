@@ -1093,4 +1093,13 @@
 </comment>
     <requestid>947675</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c24bb2e072488542f4d13b55b349d7d7</srcmd5>
+    <version>8.0.1</version>
+    <time>1644188016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ipython-pr13466-display.patch -- gh#ipython/ipython#13466
+  * fixes plotly test failures</comment>
+    <requestid>951380</requestid>
+  </revision>
 </revisionlist>

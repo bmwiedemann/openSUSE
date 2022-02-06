@@ -46,9 +46,11 @@ Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtcons
 Patch0:         ipython-pr13282-py310-inspect.patch
 # PATCH-FIX-UPSTREAM ipython-pr13371-py310-oserror.patch -- gh#ipython/ipython#13371
 Patch1:         ipython-pr13371-py310-oserror.patch
+# PATCH-FIX-UPSTREAM ipython-pr13466-display.patch -- gh#ipython/ipython#13466
+Patch2:         https://github.com/ipython/ipython/pull/13466.patch#/ipython-pr13466-display.patch
 # PATCH-FIX-OPENSUSE skip-network-test.patch gh#ipython/ipython#13468 mcepl@suse.com
 # skip doctests requiring network connection
-Patch2:         skip-network-test.patch
+Patch3:         skip-network-test.patch
 BuildRequires:  %pythons
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
