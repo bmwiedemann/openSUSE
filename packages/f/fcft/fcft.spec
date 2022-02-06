@@ -1,7 +1,7 @@
 #
 # spec file for package fcft
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libfcft3
+%define libname libfcft4
 Name:           fcft
-Version:        2.5.1
+Version:        3.0.1
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT

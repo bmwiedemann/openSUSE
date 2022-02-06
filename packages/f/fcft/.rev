@@ -107,4 +107,27 @@
     very small sizes.</comment>
     <requestid>937363</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ea7ac4debbeee833c8c51d7e90e1ae2</srcmd5>
+    <version>3.0.1</version>
+    <time>1644188067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Added fcft_font.name member for the name of the primary font.
+  * Added fcft_glyph.font_name member for the name of the font that the glyph
+    was loaded from.
+  * Added fcft_init and fcft_fini to initialize and deinitialize the library,
+    which must now be called explicitly. Also, fcft_log_init has been removed,
+    and logging is now initialized by fcft_init.
+  * All wchar_t usage has been replaced with uint32_t. Also,
+    fcft_{glyph,grapheme,text_run}_rasterize have been renamed to
+    fcft_rasterize_{char,grapheme,text_run}_utf32 to emphasize this.
+  * fcft_rasterize_grapheme_utf32 no longer accepts layout tags, unlike
+    its predecessor fcft_grapheme_rasterize. They should be
+    set using fontfeature when calling fcft_from_name.
+  * Removed fcft_size_adjust.
+  * Removed fcft_font.space_advance member.
+  * Fixed bug in fcft_rasterize_text_run_utf32 due to uninitialized variable.</comment>
+    <requestid>951809</requestid>
+  </revision>
 </revisionlist>
