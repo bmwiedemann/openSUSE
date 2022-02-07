@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Feb  5 17:08:57 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Include test file missed from being included in source tarball
+  and enable tests using pytest; additional BuildRequires for
+  tests: python-pytest, python-mock.
+
+-------------------------------------------------------------------
+Sun Jan 30 00:42:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.3.10:
+  * Make compatible with Python version 2.4..3.8 now.
+  * Use TideLift security and make compliant.
+- Add drop-nose-requirement.patch -- Drop requirement on outdated
+  nose; we do not run tests anyway.
+- Update License to MIT in keeping with upstream.
+- More fine-grained file list.
+
+-------------------------------------------------------------------
+Sun Jan 12 06:05:54 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.3.9
