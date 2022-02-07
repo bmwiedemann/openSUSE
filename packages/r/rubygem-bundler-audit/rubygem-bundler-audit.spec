@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bundler-audit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bundler-audit
-Version:        0.8.0
+Version:        0.9.0.1
 Release:        0
 %define mod_name bundler-audit
 %define mod_full_name %{mod_name}-%{version}
