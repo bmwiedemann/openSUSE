@@ -18,17 +18,17 @@
 
 %define kf5_version 5.62.0
 %define qt5_version 5.12.0
-%bcond_without lang
+%bcond_without released
 Name:           plasma5-pa
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        The Plasma5 Volume Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-pa-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-pa-%{version}.tar.xz.sig
+Source:         plasma-pa-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-pa-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.14
@@ -80,7 +80,7 @@ A volume manager plasmoid superseding kmix.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
 %kf5_find_lang
 %kf5_find_htmldocs
 %endif
@@ -103,7 +103,7 @@ A volume manager plasmoid superseding kmix.
 %dir %{_kf5_htmldir}
 %doc %{_kf5_htmldir}/en/*/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
