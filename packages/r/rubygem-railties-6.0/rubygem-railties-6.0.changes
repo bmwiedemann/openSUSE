@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:23:41 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.4.4
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.4.4 (December 15, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.4.3 (December 14, 2021) ##
+  
+  *   Allow localhost with a port by default in development
+  
+      [Fixes: #43864]
+  
+  ## Rails 6.0.4.2 (December 14, 2021) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.4.1 (August 19, 2021) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:51:30 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.4
