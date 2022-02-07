@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb  7 15:45:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.0:
+  * Introducing some API changes please refer to the "News" section
+    of the JasPer manuel: https://jasper-software.github.io/jasper-manual
+  * Greatly improve documentation.
+  * Add support for multithreading.
+  * Add some customization points in the library, such as the
+    memory allocator and error logging function.
+  * Add improved memory usage tracking and limiting.
+  * Add experimental partial encoding/decoding support for the
+    HEIC format.
+  * Fix some longstanding issues in the JasPer I/O streams API.
+  * Fix many bugs (e.g., #305, #307, #308, #309, #312, #314, and
+    many others not associated with any issue numbers).
+- Remove jasper-freeglut.patch: not needed anymore
+- Add jasper-cmake-warnings.patch: fix cmake warnings
+- Remove legacy provides/obsoletes related to sle11 and bsc#437293
+
+-------------------------------------------------------------------
 Sun Jan 30 13:42:36 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add jasper-freeglut.patch, fixes freeglut detection and linking

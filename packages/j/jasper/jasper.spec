@@ -16,8 +16,11 @@
 #
 
 
+# the tarball has a `build` directory of its own
+%global __builddir obs_build
+
 Name:           jasper
-Version:        2.0.33
+Version:        3.0.0
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        JasPer-2.0
@@ -25,8 +28,8 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM jasper-freeglut.patch -- fix building with freeglut
-Patch0:         jasper-freeglut.patch
+# PATCH-FIX-UPSTREAM mvetter@suse.de -- Fix cmake warning. Upstream commits fd08e177 and df22a3c8c
+Patch0:         jasper-cmake-warnings.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -45,32 +48,17 @@ This package contains an implementation of the image compression
 standard, JPEG-2000, Part 1. It consists of tools for conversion to and
 from the JP2 and JPC formats.
 
-%package -n libjasper4
+%package -n libjasper6
 Summary:        JPEG-2000 library
-# bug437293
-# used in <= 11.3
 Group:          Productivity/Graphics/Convertors
-Obsoletes:      libjasper < %{version}-%{release}
-Provides:       libjasper = %{version}-%{release}
-%ifarch ppc64
-Obsoletes:      libjasper-64bit
-%endif
-#
 
-%description -n libjasper4
+%description -n libjasper6
 This package contains libjasper, a library implementing the JPEG-2000
 image compression standard Part 1.
 
 %package -n libjasper-devel
 Summary:        Development files for libjasper, a JPEG-2000 library
-# bug437293
-#
-Group:          Development/Libraries/C and C++
-Requires:       libjasper4 = %{version}
-Requires:       libjpeg-devel
-%ifarch ppc64
-Obsoletes:      libjasper-devel-64bit
-%endif
+Group:          Productivity/Graphics/Convertors
 
 %description -n libjasper-devel
 This package contains libjasper, a library implementing the JPEG-2000
@@ -87,16 +75,15 @@ export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
 
 %install
 %cmake_install
-mv doc/README doc/README.doc
 
 %fdupes -s %{buildroot}/%{_docdir}/%{name}
 
-%post -n libjasper4 -p /sbin/ldconfig
-%postun -n libjasper4 -p /sbin/ldconfig
+%post -n libjasper6 -p /sbin/ldconfig
+%postun -n libjasper6 -p /sbin/ldconfig
 
 %files
-%license LICENSE
-%doc COPYRIGHT NEWS README doc/README.doc
+%license LICENSE.txt
+%doc COPYRIGHT.txt NEWS.txt README.md
 %doc %{_docdir}/jasper/*.pdf
 %dir %{_docdir}/jasper/html
 %doc %{_docdir}/jasper/html/*
@@ -106,7 +93,7 @@ mv doc/README doc/README.doc
 %{_bindir}/jiv
 %{_mandir}/man*/*
 
-%files -n libjasper4
+%files -n libjasper6
 %{_libdir}/libjasper*.so.*
 
 %files -n libjasper-devel
