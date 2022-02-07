@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Purge all references to download.kde.org, replacing them with the correct endpoint of autoconfig.kde.org.
+  * dataengines/potd: Fix image URL parsing in NOAAProvider (kde#443424)
+  * wallpapers/potd: Don't access providerModel when currentIndex is -1
+  * spellchecker runner: Do not define plugin id with a space (kde#448156)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Show timezone keyword as part of runner syntax
+  * Add Simon Stalenhag POTD Provider
+  * [windowswitchers] QML replacement for flipswitch and coverswitch (kde#443757,kde#184874,kde#404802,kde#321324)
+  * Use ellipsis character instead of three dots
+  * Use std::as_const
+  * [applets/weather] Remove associatedApplicationUrls (kde#445946)
+  * Add GitLab CI
+  * [applets/weather] Don't read providers from config + refactor
+  * applets/weather: Enable all weather providers by default
+  * applets/weather: Make cursor a pointing hand when hovering over source link
+  * [mediaframe] Make files added from paths into URLs. (kde#445071)
+  * Align indentation
+  * Remove unneeded CMAKE_MODULE_PATH change
+  * Remove Windows conditions
+  * Remove cmake comment cruft
+  * Clean up cmake code for runners:
+  * Define X-KDE-ConfigModule for runner KCMs
+  * [applets/notes] Fix Binding::restoreMode deprecation warning
+  * [colorpicker] Add ability to cancel color picking via Escape key
+  * Make colors in color picker respond properly to right click and Menu key
+  * Add .kde-ci.yml
+  * applets/weather: Improve first-run (needs config) experience
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
