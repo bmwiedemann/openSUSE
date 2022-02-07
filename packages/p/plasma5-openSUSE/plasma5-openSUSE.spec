@@ -18,7 +18,7 @@
 
 %define plasma_version 5.21.90
 Name:           plasma5-openSUSE
-Version:        84.87~git20190606T185118~3d37a0c
+Version:        84.87~git20220116T220745~fffd234
 Release:        0
 Summary:        openSUSE KDE Extension
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
@@ -133,8 +133,6 @@ rsync -av --ignore-existing %{_kf5_plasmadir}/look-and-feel/org.kde.breeze.deskt
 pushd %{buildroot}%{_kf5_plasmadir}/look-and-feel/org.openSUSE.desktop/
 patch -p2 -i %{SOURCE2}
 popd
-# We use a .json file, breeze has its .desktop file, only keep ours
-rm %{buildroot}%{_kf5_plasmadir}/look-and-feel/org.openSUSE.desktop/metadata.desktop
 
 # Same for the SDDM theme
 rsync -av --ignore-existing %{_datadir}/sddm/themes/breeze/ %{buildroot}%{_datadir}/sddm/themes/breeze-openSUSE/

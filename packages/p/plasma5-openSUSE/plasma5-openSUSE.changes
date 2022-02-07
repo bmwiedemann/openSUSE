@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+
+-------------------------------------------------------------------
+Sun Jan 16 21:08:10 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 84.87~git20220116T220745~fffd234:
+  * Update LNF previews
+  * Revert to BreezeClassic as default color scheme
+  * Revert switching the openSUSE desktoptheme to dark colors
+  * Remove kickoff.svgz in desktop themes
+  * Remove dangling symlinks
+  * Link start-here-branding into breeze-dark as well (boo#1173437)
+  * Tumbleweed icons&colors changes (#12)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+- Rebase sddmtheme.diff
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
