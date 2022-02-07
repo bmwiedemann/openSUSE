@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Applet: Check if we have Kirigami.InputMethod for search field focus
+  * Applet: Correct willShowOnActive check for search field
+  * Only focus search field by default if that doesn't show a virtual keyboard
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5

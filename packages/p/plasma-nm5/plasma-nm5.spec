@@ -16,18 +16,18 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source:         plasma-nm-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
@@ -259,7 +259,7 @@ wireless connectivity on Plasma Mobile.
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %kf5_find_lang
 %endif
 
@@ -280,6 +280,7 @@ wireless connectivity on Plasma Mobile.
 %dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
 %{_kf5_plugindir}/kcm_networkmanagement.so
+%{_kf5_debugdir}/plasma-nm.categories
 %{_datadir}/kcm_networkmanagement/
 %{_kf5_servicesdir}/kcm_networkmanagement.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.networkmanagement.desktop
@@ -343,7 +344,7 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_servicesdir}/hotspotsettings.desktop
 %{_kf5_servicesdir}/wifisettings.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
