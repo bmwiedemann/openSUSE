@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  7 11:49:33 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.8.3
+  * Distinguish different errors in case borg check failed.
+    By @real-yfprojects (#1163)
+  * Close SVG files after reading. By @hroncok (#1135)
+  * Shows folder sizes in diff view. By @skrap (#1156)
+  * Ignore encoding errors in Wifi names (darwin) (#1158)
+  * Upgrade llfuse for Flatpak (#1179)
+  * Bump macOS updater to Sparkle 2.0 (#1186)
+  * Minor test fixes (#1150, #1147, #1146)
+- Rebase patch:
+  * fix-dependencies.patch
+
+-------------------------------------------------------------------
 Wed Dec 29 16:26:51 UTC 2021 - Marcus Hann <marcus@hhra.uk>
 
 - Update to 0.8.2

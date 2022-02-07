@@ -1,13 +1,11 @@
 diff -Naur vorta-0.8.2.orig/setup.cfg vorta-0.8.2/setup.cfg
 --- vorta-0.8.2.orig/setup.cfg	2021-11-27 16:41:45.000000000 +0000
 +++ vorta-0.8.2/setup.cfg	2021-12-29 16:35:04.497205554 +0000
-@@ -33,13 +33,10 @@
- [options]
+@@ -37,11 +37,9 @@
+ include_package_data = true
  python_requires = >=3.7
  setup_requires =
 -  pip >= 10
--  pytest-runner
-   setuptools_git
  install_requires =
    appdirs
    paramiko
