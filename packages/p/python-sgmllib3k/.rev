@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>951924</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3587656e6894ebf5cea31c33ea3d49e1</srcmd5>
+    <version>1.0.0</version>
+    <time>1644273506</time>
+    <user>dimstar_suse</user>
+    <comment>- Add test_sgmllib.py and sgml_input.html as vendored sources.
+- Add adjust_test_sgmllib.patch to fix the original Python 2.7
+  files to make test suite work (Python 3.10 included).
+</comment>
+    <requestid>952243</requestid>
+  </revision>
 </revisionlist>

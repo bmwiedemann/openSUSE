@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  7 20:35:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add test_sgmllib.py and sgml_input.html as vendored sources.
+- Add adjust_test_sgmllib.patch to fix the original Python 2.7
+  files to make test suite work (Python 3.10 included).
+
+-------------------------------------------------------------------
 Sat Feb  5 16:46:33 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip Python 3.10 build: Failing due to uncompatibilities
