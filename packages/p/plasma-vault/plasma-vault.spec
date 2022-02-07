@@ -17,17 +17,17 @@
 
 
 %define kf5_version 5.58.0
-%bcond_without lang
+%bcond_without released
 Name:           plasma-vault
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Plasma applet and services for creating encrypted vaults
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-vault-%{version}.tar.xz.sig
+Source:         plasma-vault-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-vault-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -88,7 +88,7 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 
 %install
 %make_install -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
 %endif
 
@@ -104,7 +104,7 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 %{_kf5_appstreamdir}/
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.vault.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %license LICENSES/*
 %endif
