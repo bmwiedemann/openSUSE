@@ -1,7 +1,7 @@
 #
 # spec file for package goldendict
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright 2013 Tvangeste <i.4m.l33t@yandex.ru>
 # Copyright 2011-2022 <opensuse.lietuviu.kalba@gmail.com>
 # Copyright 2021 <coder53@gmail.com>
@@ -15,34 +15,34 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
-# 
+#
+
 
 Name:           goldendict
 Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Dictionary
-Url:            http://goldendict.org/
+URL:            http://goldendict.org/
 Version:        1.5.0~rc2+git.20220204T091209
 Release:        0
 Source0:        goldendict-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-BuildRequires:  libbz2-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  hunspell-devel >= 1.2.4
+BuildRequires:  libbz2-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  pkgconfig(libzip)
 BuildRequires:  lzo-devel
-BuildRequires:  pkgconfig(vorbis)
-BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(zlib)
 # Qt 5
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -69,8 +69,6 @@ BuildRequires:  eb-devel
 # Zstd compression required for optional ZIM format support. It can be enabled by "CONFIG+=zim_support"
 BuildRequires:  pkgconfig(libzstd)
 
-
-
 %description
 Feature-rich dictionary lookup program.
     * Support of multiple dictionary file formats:
@@ -83,17 +81,12 @@ Feature-rich dictionary lookup program.
     * Scan popup functionality. A small window pops up with translation of a
       word chosen from antoher application.
     * Full-text search.
-    * And much more...
-
-Author:
--------
-    Konstantin Isakov
 
 %lang_package
 
 %prep
-%setup -n goldendict-%{version} -q 
-git init 
+%autosetup
+git init
 %if 0%{?suse_version} < 1550
   # For Qt5.12 compatibility in openSUSE Leap 15.3
   find -name '*.cc' -exec sed -i 's/Qt::SkipEmptyParts/QString::SkipEmptyParts/g' {} +
@@ -113,15 +106,9 @@ git init
 %qmake5_install
 %suse_update_desktop_file -r org.goldendict.GoldenDict Office Dictionary
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
-%defattr(644,root,root,755)
 %license LICENSE.txt
-%defattr(755,root,root,755)
 %{_bindir}/%{name}
-%defattr(644,root,root,755)
 %{_datadir}/%{name}
 %{_datadir}/applications/org.goldendict.GoldenDict.desktop
 %{_datadir}/metainfo/org.goldendict.GoldenDict.metainfo.xml
