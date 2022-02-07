@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby_parser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ruby_parser
-Version:        3.16.0
+Version:        3.18.1
 Release:        0
 %define mod_name ruby_parser
 %define mod_full_name %{mod_name}-%{version}
@@ -63,7 +63,8 @@ s(:return, s(:lit, 0)))
 Tested against 801,039 files from the latest of all rubygems (as of 2013-05):
 * 1.8 parser is at 99.9739% accuracy, 3.651 sigma
 * 1.9 parser is at 99.9940% accuracy, 4.013 sigma
-* 2.0 parser is at 99.9939% accuracy, 4.008 sigma.
+* 2.0 parser is at 99.9939% accuracy, 4.008 sigma
+* 2.6 parser is at 99.9972% accuracy, 4.191 sigma.
 
 %prep
 
