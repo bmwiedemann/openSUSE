@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-chef-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-chef-utils
-Version:        17.3.48
+Version:        17.9.26
 Release:        0
 %define mod_name chef-utils
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/chef/chef/tree/master/chef-utils
+URL:            https://github.com/chef/chef/tree/main/chef-utils
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Basic utility functions for Core Chef Infra development
