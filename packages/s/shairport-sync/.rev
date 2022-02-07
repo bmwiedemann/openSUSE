@@ -146,4 +146,15 @@
     <comment></comment>
     <requestid>932747</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>39998776f8b9d0e78c6bde6364b63739</srcmd5>
+    <version>3.3.9</version>
+    <time>1644273502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.3.9
+  * Fix a build failure with convolution raised since automake 1.16.5
+    and https://git.savannah.gnu.org/cgit/automake.git/commit/?id=f4a3a70f69e1dbccb6578f39ef47835098a04624
+  * Fix tinysvcmdns: rr_data_len goes beyond packet buffer (forwarded request 952134 from hillwood)</comment>
+    <requestid>952135</requestid>
+  </revision>
 </revisionlist>

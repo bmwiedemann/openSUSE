@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  7 13:50:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.3.9
+  * Fix a build failure with convolution raised since automake 1.16.5
+    and https://git.savannah.gnu.org/cgit/automake.git/commit/?id=f4a3a70f69e1dbccb6578f39ef47835098a04624
+  * Fix tinysvcmdns: rr_data_len goes beyond packet buffer 
+
+-------------------------------------------------------------------
 Wed Nov 17 08:08:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

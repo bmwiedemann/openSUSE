@@ -1,7 +1,7 @@
 #
 # spec file for package shairport-sync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           shairport-sync
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ Source2:        README.SUSE
 # PATCH-FIX-OPENSUSE drop-user-config.patch hillwood@opensuse.org -- Move configuring user account to rpm spec.
 # Move configuring user account to rpm spec.
 Patch0:         drop-user-config.patch
-Patch1:	harden_shairport-sync.service.patch
+Patch1:         harden_shairport-sync.service.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
