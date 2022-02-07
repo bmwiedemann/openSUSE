@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  7 04:03:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.1:
+  * Fix potential stack exhaustion in the N818 check.
+  * flake8 3.9.1 or later is now required.
+  * N818 checks exception class names for an "Error" suffix
+  * asyncSetUp and asyncTearDown are now exempted by default. 
+- Remove pep8-naming-pr157-exception-names.patch, merged.
+- Add patch add-missing-option-for-testsuite.patch:
+  * Merged commit from upstream to make tests pass.
+
+-------------------------------------------------------------------
 Fri Jun 18 08:02:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add pep8-naming-pr157-exception-names.patch for compatibility

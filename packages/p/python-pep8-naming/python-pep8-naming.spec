@@ -1,7 +1,7 @@
 #
 # spec file for package python-pep8-naming
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep8-naming
-Version:        0.11.1
+Version:        0.12.1
 Release:        0
 Summary:        Flake8 plugin for checking PEP-8 naming conventions
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/pep8-naming
 Source:         https://files.pythonhosted.org/packages/source/p/pep8-naming/pep8-naming-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pep8-naming-pr157-exception-names.patch -- gh#PyCQA/pep8-naming#157 for compatibility with flake8 >= 3.9.1
-Patch1:         pep8-naming-pr157-exception-names.patch
+Patch0:         add-missing-option-for-testsuite.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -78,4 +78,19 @@
     <comment></comment>
     <requestid>900726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>651aded441848bda288ffc2f1eb21b9d</srcmd5>
+    <version>0.12.1</version>
+    <time>1644273482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1:
+  * Fix potential stack exhaustion in the N818 check.
+  * flake8 3.9.1 or later is now required.
+  * N818 checks exception class names for an &quot;Error&quot; suffix
+  * asyncSetUp and asyncTearDown are now exempted by default. 
+- Remove pep8-naming-pr157-exception-names.patch, merged.
+- Add patch add-missing-option-for-testsuite.patch:
+  * Merged commit from upstream to make tests pass.</comment>
+    <requestid>952002</requestid>
+  </revision>
 </revisionlist>
