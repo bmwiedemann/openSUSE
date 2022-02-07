@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  6 16:14:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- eclipse-riscv64.patch: Add support for riscv64
+
+-------------------------------------------------------------------
 Thu Oct 21 04:51:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with objectweb-asm 9.x

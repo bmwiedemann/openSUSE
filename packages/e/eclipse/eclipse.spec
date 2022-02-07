@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-bootstrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %ifarch ppc64 ppc64p7
     %global eclipse_arch ppc64
 %endif
-%ifarch s390x x86_64 aarch64 ppc64le
+%ifarch s390x x86_64 aarch64 ppc64le riscv64
     %global eclipse_arch %{_arch}
 %endif
 # Desktop file information
@@ -74,6 +74,8 @@ Patch3:         explicit-hamcrest.patch
 # Add support for all arches supported by Fedora
 Patch4:         eclipse-secondary-arches.patch
 Patch5:         eclipse-debug-symbols.patch
+# Add support for riscv64
+Patch6:         eclipse-riscv64.patch
 # https://bugs.eclipse.org/bugs/show_bug.cgi?id=408138
 Patch12:        eclipse-fix-dropins.patch
 # Feature plugin definitions lock onto version of plugin at build-time.
@@ -500,6 +502,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch3
 %patch4 -p1
 %patch5
+%patch6 -p1
 %patch12
 %patch13 -p1
 %patch14
@@ -631,7 +634,7 @@ done
 rm -rf eclipse.platform.swt.binaries/bundles/org.eclipse.swt.gtk.linux.{aarch64,s390x,ppc64}
 rm -rf rt.equinox.framework/bundles/org.eclipse.equinox.launcher.gtk.linux.{aarch64,s390x,ppc64}
 for dir in rt.equinox.binaries rt.equinox.framework/bundles eclipse.platform.swt.binaries/bundles ; do
-  utils/ensure_arch.sh "$dir" x86_64 aarch64 s390x ppc64
+  utils/ensure_arch.sh "$dir" x86_64 aarch64 s390x ppc64 riscv64
 done
 
 # Remove platform-specific stuff that we don't care about to reduce build time
@@ -685,7 +688,7 @@ for f in eclipse.jdt/org.eclipse.jdt-feature/feature.xml \
   %pom_xpath_remove -f "plugin[@os='macosx']" $f
   %pom_xpath_remove -f "plugin[@os='win32']" $f
   %pom_xpath_remove -f "plugin[@ws='win32']" $f
-  for arch in x86_64 aarch64 ppc64le s390x ppc64; do
+  for arch in x86_64 aarch64 ppc64le s390x ppc64 riscv64; do
     if [ "$arch" != "%{eclipse_arch}" ] ; then
       %pom_xpath_remove -f "plugin[@arch='$arch']" $f
     fi
