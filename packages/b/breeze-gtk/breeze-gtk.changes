@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:54 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- No code changes since 5.23.90
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Fix warnings from libsass 3.6.2
+  * gtk3: custom GTK properties are case sensitive
+  * gtk3, gtk4: Make menu/separator consistent with Breeze
+  * gtk3, gtk4: make vertical linked buttons look linked
+  * gtk3, gtk4: make linked buttons look linked (kde#446206)
+  * gtk3, gtk4: don't treat buttons with icons as toolbuttons
+  * gtk3, gtk4: refactor buttons heavily, make look near-identical to breeze qstyle (kde#426557,kde#438185)
+  * gtk3, gtk4: format with prettier
+  * gtk3, gtk4: improve build times
+  * Fixed toolbar buttons style, removing unneeded outline (kde#443626)
+  * Generate light theme with Breeze Light color scheme file
+  * gtk3, gtk4: update button style
+  * Use Breeze Light as the default color scheme
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5

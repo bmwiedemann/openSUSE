@@ -902,4 +902,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment> (forwarded request 943820 from Vogtinator)</comment>
     <requestid>943962</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>e6ed6b2f3eec4e55d734e9e5205afc4b</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273412</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
+    <requestid>951864</requestid>
+  </revision>
 </revisionlist>
