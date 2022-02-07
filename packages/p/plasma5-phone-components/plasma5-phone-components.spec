@@ -22,9 +22,9 @@
 
 %define kf5_version 5.82.0
 
-%bcond_without lang
+%bcond_without released
 Name:           plasma5-phone-components
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,13 +34,14 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz.sig
+Source:         plasma-mobile-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-mobile-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5ModemManagerQt) >= %{kf5_version}
@@ -81,7 +82,7 @@ Plasma shell and components targeted for phones.
 %lang_package
 
 %prep
-%autosetup -p1 -n plasma-phone-components-%{version}
+%autosetup -p1 -n plasma-mobile-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
@@ -89,7 +90,7 @@ Plasma shell and components targeted for phones.
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %kf5_find_lang
 %endif
 
@@ -105,8 +106,10 @@ Plasma shell and components targeted for phones.
 %dir %{_kf5_qmldir}/org/kde/plasma/
 %{_kf5_qmldir}/org/kde/plasma/mm/
 %dir %{_kf5_qmldir}/org/kde/plasma/private/
+%dir %{_kf5_qmldir}/org/kde/plasma/quicksetting/
 %{_kf5_qmldir}/org/kde/plasma/private/mobilehomescreencomponents/
 %{_kf5_qmldir}/org/kde/plasma/private/mobileshell/
+%{_kf5_qmldir}/org/kde/plasma/quicksetting/nightcolor/
 %{_kf5_bindir}/kwinwrapper
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasma-mobile.desktop
@@ -143,7 +146,7 @@ Plasma shell and components targeted for phones.
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phoneshell.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
