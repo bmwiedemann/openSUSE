@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  4 17:05:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add sherpa-pr1318-py310tests.patch -- gh#sherpa/sherpa#1318
+- Skip two tests failing on non x86_64 due to floating point
+  precision
+- Disable 32-bit ARM build
+- Add sherpa-pr1319-distutils-hack.patch -- another attempt for
+  python310 compatibility (gh#sherpa/sherpa#1319)
+
+-------------------------------------------------------------------
 Fri Dec  3 13:21:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 4.14.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sherpa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-sherpa
 Version:        4.14.0
 Release:        0
@@ -27,8 +26,12 @@ License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Patch1:         reproducible.patch
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
+# PATCH-FIX-UPSTREAM sherpa-pr1318-py310tests.patch -- gh#sherpa/sherpa#1319
+Patch2:         https://github.com/sherpa/sherpa/pull/1318.patch#/sherpa-pr1318-py310tests.patch
+# PATCH-FIX-UPSTREAM sherpa-pr1319-distutils-hack.patch -- gh#sherpa/sherpa#1319
+Patch3:         sherpa-pr1319-distutils-hack.patch
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -37,11 +40,10 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-# 4.14.0 requires numpy minimum 1.19 (numpy 1.18 minimum for python 3.7/8)
-Requires:       python-numpy >= 1.18
+Requires:       python-numpy >= 1.19
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %{arm}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 3.3}
 BuildRequires:  %{python_module pytest-xvfb}
@@ -59,6 +61,7 @@ data, using a variety of statistics and optimization methods.
 %prep
 %setup -q -n sherpa-%{version}
 %autopatch -p1
+# uncomment system libs
 sed -i "s|#fftw=local|fftw=local|" setup.cfg
 sed -i "s|#fftw-include[-_]dirs.*$|fftw-include-dirs=%{_includedir}|" setup.cfg
 sed -i "s|#fftw-lib-dirs.*$|fftw-lib-dirs=%{_libdir}|" setup.cfg
@@ -92,6 +95,11 @@ sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/
 mv sherpa sherpa_temp
 # astropy 4.2 fits header warning
 donttest+="test_load_case_3"
+# precision issues
+%ifnarch x86_64
+donttest+=" or (test_regproj and sherpa.plot.dummy_backend)"
+donttest+=" or (test_fit_single and Chi2XspecVar)"
+%endif
 %pytest_arch --pyargs sherpa -k "not ($donttest)"
 
 %post
