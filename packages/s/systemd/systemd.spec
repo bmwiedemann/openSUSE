@@ -227,10 +227,11 @@ drop-in replacement for sysvinit.
 %package doc
 Summary:        HTML documentation for systemd
 License:        LGPL-2.1-or-later
-Supplements:    (systemd and patterns-base-documentation)
 %if 0%{?bootstrap}
 Provides:       systemd-doc = %{version}-%{release}
 Conflicts:      systemd-doc
+%else
+Supplements:    (systemd and patterns-base-documentation)
 %endif
 
 %description doc
