@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  4 09:31:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.02.04
+  * twitcasting: Enforce UTF-8 for POST payload
+
+-------------------------------------------------------------------
+Thu Feb  3 18:14:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.02.03
+  * Add option --print-to-file
+  * youtube:api: Do not use seek when reading HTTPError response
+
+-------------------------------------------------------------------
 Fri Jan 21 20:03:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.01.21
