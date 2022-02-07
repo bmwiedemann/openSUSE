@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 06 08:42:06 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220204.4166915:
+  * tests: add test case for FileDigestGroup with multiple package names
+  * FileDigestCheck: support additional `packages = ["pkg1", "pkg2"]` syntax
+  * FileDigestCheck: refactor digest group parsing and normalization
+  * FileMetadataCheck: support additional `packages = ["pkg1", "pkg2"]` syntax
+
+-------------------------------------------------------------------
 Wed Feb 02 14:25:09 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220202.cf37318:

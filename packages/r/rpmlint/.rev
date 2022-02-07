@@ -3557,4 +3557,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * pam-modules: remove now outdated entry for modules that moved into pam_unix</comment>
     <requestid>950753</requestid>
   </revision>
+  <revision rev="383" vrev="1">
+    <srcmd5>807cbf20212fa3ce211046524f0cd84e</srcmd5>
+    <version>2.2.0+git20220204.4166915</version>
+    <time>1644707716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220204.4166915:
+  * tests: add test case for FileDigestGroup with multiple package names
+  * FileDigestCheck: support additional `packages = [&quot;pkg1&quot;, &quot;pkg2&quot;]` syntax
+  * FileDigestCheck: refactor digest group parsing and normalization
+  * FileMetadataCheck: support additional `packages = [&quot;pkg1&quot;, &quot;pkg2&quot;]` syntax</comment>
+    <requestid>952892</requestid>
+  </revision>
 </revisionlist>
