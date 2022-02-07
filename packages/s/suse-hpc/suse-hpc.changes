@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  6 15:55:41 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add %hpc_python_sitelib and %hpc_python_sitelib_no_singlespec
+  to get arch independent module directories for modules.
+
+-------------------------------------------------------------------
 Wed Jan  5 16:00:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.5.20211210.07cc46c

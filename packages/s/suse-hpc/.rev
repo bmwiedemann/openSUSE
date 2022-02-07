@@ -223,4 +223,13 @@
     <comment></comment>
     <requestid>944103</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0613ba98cce4c9b201ee94b17493959b</srcmd5>
+    <version>0.5.20220206.0c6b168</version>
+    <time>1644273501</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %hpc_python_sitelib and %hpc_python_sitelib_no_singlespec
+  to get arch independent module directories for modules. (forwarded request 952120 from eeich)</comment>
+    <requestid>952121</requestid>
+  </revision>
 </revisionlist>

@@ -493,10 +493,14 @@ When this package gets updated it installs the latest version of %name. \
 
 # get the python version specific directory for arch specific files in the HPC
 # directory structure (singlepsec).
+# python_sitearch equivalent - for arch specific python modules
 %hpc_python_sitearch %{_hpc_python_sysconfig_path %{expand:%__%{python_flavor}} platlib %{?hpc_prefix}}
+# python_sitelib equivalent - for arch independent python modules
+%hpc_python_sitelib %{_hpc_python_sysconfig_path %{expand:%__%{python_flavor}} purelib %{?hpc_prefix}}
 
 # same for non-singlespec (using internal %%_hpc_python3)
 %hpc_python_sitearch_no_singlespec %{_hpc_python_sysconfig_path %{?_hpc_python3:/usr/bin/python3}%{!?_hpc_python3:%{expand:%__%{python_flavor}}} platlib %{?hpc_prefix}}
+%hpc_python_sitelib_no_singlespec %{_hpc_python_sysconfig_path %{?_hpc_python3:/usr/bin/python3}%{!?_hpc_python3:%{expand:%__%{python_flavor}}} purelib %{?hpc_prefix}}
 
 %_hpc_python_ver() %(%1 -c "import sysconfig as s; print(s.get_config_var('py_version_short'));")
 
@@ -615,12 +619,12 @@ end \
      *python3) newline='#! /usr/bin/python3' ;; \
      %{!?_hpc_python3: \
      *python2) newline='#! /usr/bin/python2' ;; \
-     *python1*) %{hpc_verify_python3 $file} && \
+     *python1*) { %{hpc_verify_python3 $file}; } && \
                   newline='#! /usr/bin/python3' || : ;; \
      *python) newline='#! /usr/bin/python' ;; } \
      %{?_hpc_python3: \
      *python2|*python1*|*python) \
-        %{hpc_verify_python3 $file} && \
+        { %{hpc_verify_python3 $file}; } && \
            newline='#! /usr/bin/python3' || : ;; }\
      *perl) newline='#! /usr/bin/perl' ;; \
      *bash) newline='#! /bin/bash' ;; \
