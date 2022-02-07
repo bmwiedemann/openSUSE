@@ -20,18 +20,18 @@
 %global __requires_exclude qmlimport\\(SMART.*
 
 %define kf5_version 5.74.0
-%bcond_without lang
+%bcond_without released
 
 Name:           plasma5-disks
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz.sig
+Source:         plasma-disks-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-disks-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -72,14 +72,16 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 
 %install
 %make_install -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
 %endif
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/smart.so
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/kinfocenter/
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/smart.so
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kded/
 %{_kf5_plugindir}/kf5/kded/smart.so
@@ -87,14 +89,13 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %dir %{_datadir}/kpackage/
 %dir %{_datadir}/kpackage/kcms/
 %{_datadir}/kpackage/kcms/plasma_disks/
-%{_kf5_servicesdir}/smart.desktop
 %{_kf5_appstreamdir}/org.kde.plasma.disks.metainfo.xml
 %{_datadir}/dbus-1/system-services/org.kde.kded.smart.service
 %{_kf5_dbuspolicydir}/org.kde.kded.smart.conf
 %{_datadir}/polkit-1/actions/org.kde.kded.smart.policy
 %{_kf5_libdir}/libexec/kauth/kded-smart-helper
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
