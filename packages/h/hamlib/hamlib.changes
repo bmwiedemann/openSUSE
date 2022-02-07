@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  7 07:24:30 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Be less strict with required interpreters for tcl and perl
+  subpackages (bsc#1195260)
+- Drop python2 subpackage as its not relevant to any supported
+  openSUSE release
+
+-------------------------------------------------------------------
 Wed Dec  8 17:08:24 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Fixed source URL and duplicate license files

@@ -1,7 +1,7 @@
 #
 # spec file for package hamlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,18 +33,15 @@ BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
-BuildRequires:  pkgconfig(tcl)
-%if 0%{?suse_version} <= 1500
-BuildRequires:  pkgconfig(python2)
-%else
 BuildRequires:  pkgconfig(python3)
-%endif
+BuildRequires:  pkgconfig(tcl)
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -89,15 +86,6 @@ Group:          Development/Libraries/Other
 Hamlib provide a programming interface for controlling radios and
 other shack hardware.
 
-%if 0%{?suse_version} <= 1500
-%package -n python-Hamlib
-Summary:        Python bindings for Hamlib
-Group:          Development/Libraries/Python
-
-%description -n python-Hamlib
-Hamlib provide a programming interface for controlling radios and
-other shack hardware.
-%else
 %package -n python3-Hamlib
 Summary:        Python 3 bindings for Hamlib
 Group:          Development/Libraries/Python
@@ -105,12 +93,11 @@ Group:          Development/Libraries/Python
 %description -n python3-Hamlib
 Hamlib provide a programming interface for controlling radios and
 other shack hardware.
-%endif
 
 %package -n tcl-Hamlib
 Summary:        Tcl bindings for Hamlib
 Group:          Development/Languages/Tcl
-%requires_eq    tcl
+%requires_ge    tcl
 
 %description -n tcl-Hamlib
 Hamlib provide a programming interface for controlling radios and
@@ -119,15 +106,14 @@ other shack hardware.
 %package -n perl-Hamlib
 Summary:        Perl bindings for Hamlib
 Group:          Development/Languages/Perl
-%requires_eq    perl-base
+%requires_ge    perl-base
 
 %description -n perl-Hamlib
 Hamlib provide a programming interface for controlling radios and
 other shack hardware.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -135,11 +121,7 @@ autoreconf -fiv
   --with-perl-binding \
   --with-tcl-binding \
   --with-lua-binding \
-%if 0%{?suse_version} <= 1500
-  --with-python-binding \
-%else
-  --with-python-binding PYTHON_VERSION='3.8' \
-%endif
+  --with-python-binding PYTHON_VERSION=%py3_ver \
   --with-xml-support
 %make_build
 
@@ -218,16 +200,10 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %files -n lua-Hamliblua
 %{_libdir}/lua
 
-%if 0%{?suse_version} <= 1500
-%files -n python-Hamlib
-%{python_sitearch}/Hamlib.*
-%{python_sitearch}/_Hamlib.*
-%else
 %files -n python3-Hamlib
 %{python3_sitearch}/Hamlib.*
 %{python3_sitearch}/_Hamlib.*
 %{python3_sitearch}/__pycache__/Hamlib.cpython*.pyc
-%endif
 
 %files -n tcl-Hamlib
 %dir %{_libdir}/tcl*/

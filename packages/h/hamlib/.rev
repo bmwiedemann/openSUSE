@@ -97,4 +97,15 @@
     <comment></comment>
     <requestid>937315</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>015c0fa99397965fd749ce3cea3e6d87</srcmd5>
+    <version>4.4</version>
+    <time>1644273484</time>
+    <user>dimstar_suse</user>
+    <comment>- Be less strict with required interpreters for tcl and perl
+  subpackages (bsc#1195260)
+- Drop python2 subpackage as its not relevant to any supported
+  openSUSE release</comment>
+    <requestid>952037</requestid>
+  </revision>
 </revisionlist>
