@@ -16,23 +16,23 @@
 #
 
 
-%define kf5_version 5.54.0
-%bcond_without lang
+%define kf5_version 5.86.0
+%bcond_without released
 Name:           kde-cli-tools5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz.sig
+Source:         kde-cli-tools-%{version}.tar.xz
+%if %{with released}
+Source1:        kde-cli-tools-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE kdesu-add-some-i18n-love.patch -- boo#852256
 Patch0:         kdesu-add-some-i18n-love.patch
-BuildRequires:  extra-cmake-modules >= 1.3.0
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
@@ -49,20 +49,15 @@ BuildRequires:  cmake(KF5Su) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 # Needs KWorkSpace::detectPlatform
 BuildRequires:  cmake(LibKWorkspace) >= 5.12.4
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Svg) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 # for kquitapp5
 Requires:       kdbusaddons-tools
-%if %{with lang}
-Recommends:     %{name}-lang
-%endif
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 
 %description
 Additional CLI tools for KDE applications and workspaces.
@@ -70,8 +65,7 @@ Additional CLI tools for KDE applications and workspaces.
 %lang_package
 
 %prep
-%setup -q -n kde-cli-tools-%{version}
-%autopatch -p1
+%autosetup -p1 -n kde-cli-tools-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -79,66 +73,48 @@ Additional CLI tools for KDE applications and workspaces.
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} --with-man --all-name
   %kf5_find_htmldocs
 %endif
+  ln -s %{_kf5_libexecdir}/kdesu %{buildroot}%{_kf5_bindir}/kdesu
 
-  # create a dummy target for /etc/alternatives/kdesu
-  install -d -m 755 %{buildroot}%{_sysconfdir}/alternatives/
-  touch %{buildroot}%{_sysconfdir}/alternatives/kdesu
-  chmod +x %{buildroot}%{_sysconfdir}/alternatives/kdesu
-  ln -s -f %{_sysconfdir}/alternatives/kdesu %{buildroot}%{_kf5_bindir}/kdesu
-  touch %{buildroot}%{_sysconfdir}/alternatives/kdesu.1%{?ext_man}
-  mv %{buildroot}%{_kf5_mandir}/man1/kdesu.1 %{buildroot}%{_kf5_mandir}/man1/kdesu-5.1
-  ln -s -f %{_sysconfdir}/alternatives/kdesu.1%{?ext_man} %{buildroot}%{_kf5_mandir}/man1/kdesu.1%{?ext_man}
-
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} > 1320 || 0%{?is_opensuse}
-%{_sbindir}/update-alternatives \
-    --install %{_kf5_bindir}/kdesu kdesu %{_kf5_libexecdir}/kdesu 25 \
-    --slave %{_kf5_mandir}/man1/kdesu.1.gz kdesu.1%{?ext_man} %{_kf5_mandir}/man1/kdesu-5.1%{?ext_man}
-%else
-%{_sbindir}/update-alternatives \
-    --install %{_kf5_bindir}/kdesu kdesu %{_kf5_libexecdir}/kdesu 15 \
-    --slave %{_kf5_mandir}/man1/kdesu.1.gz kdesu.1%{?ext_man} %{_kf5_mandir}/man1/kdesu-5.1%{?ext_man}
-%endif
-
-%postun
-/sbin/ldconfig
-if [ $1 -eq 0 ]; then
-    %{_sbindir}/update-alternatives --remove kdesu \
-        %{_kf5_libexecdir}/kdesu
+%pre
+# Remove old update-alternatives entry
+if [ -x "%{_sbindir}/update-alternatives" ]; then
+    %{_sbindir}/update-alternatives --remove kdesu %{_kf5_libexecdir}/kdesu
 fi
 
 %files
 %license LICENSES/*
 %{_kf5_bindir}/kdesu
 %{_kf5_bindir}/kcmshell5
-%{_kf5_bindir}/kdecp5
+%{_kf5_bindir}/kdecp{5,}
 %{_kf5_bindir}/kde-inhibit
-%{_kf5_bindir}/kdemv5
-%{_kf5_bindir}/kde-open5
-%{_kf5_bindir}/keditfiletype5
-%{_kf5_bindir}/kioclient5
-%{_kf5_bindir}/kmimetypefinder5
-%{_kf5_bindir}/ksvgtopng5
-%{_kf5_bindir}/kstart5
+%{_kf5_bindir}/kdemv{5,}
+%{_kf5_bindir}/kde-open{5,}
+%{_kf5_bindir}/keditfiletype{5,}
+%{_kf5_bindir}/kioclient{5,}
+%{_kf5_bindir}/kmimetypefinder{5,}
+%{_kf5_bindir}/ksvgtopng{5,}
+%{_kf5_bindir}/kstart{5,}
 %{_kf5_bindir}/ktraderclient5
 %{_kf5_bindir}/kbroadcastnotification
 %{_kf5_bindir}/plasma-open-settings
-%{_kf5_servicesdir}/
-%{_kf5_libexecdir}/
+%{_kf5_libexecdir}/kdeeject
+%{_kf5_libexecdir}/kdesu
 %{_kf5_applicationsdir}/org.kde.keditfiletype.desktop
 %{_kf5_applicationsdir}/org.kde.plasma.settings.open.desktop
-%ghost %{_sysconfdir}/alternatives/kdesu
-%{_kf5_plugindir}/
-%ghost %{_sysconfdir}/alternatives/kdesu.1%{?ext_man}
+%dir %{_kf5_plugindir}/
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_filetypes.so
+%{_kf5_applicationsdir}/kcm_filetypes.desktop
 %doc %{_kf5_htmldir}/en
-%{_kf5_mandir}/man1/kdesu*.*
+%{_kf5_mandir}/man1/kdesu*
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

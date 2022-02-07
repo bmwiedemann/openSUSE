@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:55 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Convert KCM desktop file to JSON
+  * kcmshell: List KCMs that are queried without KServiceTypeTrader (kde#448396)
+
+-------------------------------------------------------------------
+Wed Jan 19 17:07:13 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove update-alternatives handling, package is not meant to be
+  coinstallable (anymore)
+- Drop unnecessary ldconfig calls
+- Make %files more explicit
+- Refresh BuildReq versions
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Fix printing "Could not find module" if we have found the KCM in the new plasma namespaces
+  * Install executables unversioned & provide compat symlinks
+  * Remove dead CMake code
+  * [kcmshell] Fix setting desktop entry
+  * Search for KCMs in systemsettings/kinfocenter KCM namespaces
+  * Add GitLab CI
+  * kcm_filetypes: Embed json metadata and install it in new namespace
+  * Remove gitlab CI
+  * Add .kde-ci.yml
+  * Add CI linux
+  * Utilize compat code from kcmutils
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
