@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  4 17:05:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rework files section: do not add config(noreplace) marker on the
+  directory /etc/xrdp, but only on the content of the directory.
+  + the config(noreplace) marker on the dircreates a rpm metadata
+    marker, which can be identified as conflicting with other
+    packages also owning /etc/xrdp, without the marker
+  + The re-org of the files section happens to also fix warnings
+    about files listed twice.
+
+-------------------------------------------------------------------
 Wed Aug 11 13:46:09 UTC 2021 - Daike Yu <yu.daike@suse.com>
 
 - Fix crash in xrdp-fate318398-change-expired-password.patch (bsc#1187258)

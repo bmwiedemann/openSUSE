@@ -1,7 +1,7 @@
 #
 # spec file for package xrdp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -179,11 +179,7 @@ exit 0
 
 %dir %{_datadir}/xrdp
 %dir %{_libdir}/xrdp
-%dir %{_sysconfdir}/xrdp
-%dir %{_sysconfdir}/xrdp/pulse
 %config(noreplace) %{_sysconfdir}/pam.d/xrdp-sesman
-%config(noreplace) %{_sysconfdir}/xrdp/sesman.ini
-%config(noreplace) %{_sysconfdir}/xrdp/xrdp.ini
 %license COPYING
 %doc *.txt
 %{_bindir}/xrdp*
@@ -195,15 +191,21 @@ exit 0
 %{_libexecdir}/initscripts/legacy-actions/xrdp
 %{_sbindir}/rc*
 %{_sbindir}/xrdp*
-%{_sysconfdir}/xrdp/km*.ini
-%{_sysconfdir}/xrdp/pulse/default.pa
-%{_sysconfdir}/xrdp/xrdp_keyboard.ini
+%dir %{_sysconfdir}/xrdp
+%config(noreplace) %{_sysconfdir}/xrdp/km*.ini
+%dir %{_sysconfdir}/xrdp/pulse
+%config(noreplace) %{_sysconfdir}/xrdp/pulse/default.pa
+%config(noreplace) %{_sysconfdir}/xrdp/reconnectwm.sh
+%ghost %config(noreplace) %{_sysconfdir}/xrdp/rsakeys.ini
+%config(noreplace) %{_sysconfdir}/xrdp/startwm.sh
+%config(noreplace) %{_sysconfdir}/xrdp/xrdp_keyboard.ini
+%config(noreplace) %{_sysconfdir}/xrdp/sesman.ini
+%config(noreplace) %{_sysconfdir}/xrdp/xrdp.ini
+
 %{_unitdir}/xrdp*
 
 %ghost %{_localstatedir}/log/xrdp-sesman.log
 
-%config(noreplace) %{_sysconfdir}/xrdp/
-%ghost %config(noreplace) %{_sysconfdir}/xrdp/rsakeys.ini
 %config %{_fillupdir}/sysconfig.xrdp
 
 %files devel
