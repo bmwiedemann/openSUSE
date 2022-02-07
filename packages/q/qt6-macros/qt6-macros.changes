@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  7 13:47:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Ensure PIE flags are passed to the linker on Leap to work around
+  an issue caused by GCC packaging (boo#1195628)
+
+-------------------------------------------------------------------
 Thu Sep 16 14:07:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.0-rc
