@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-sddm-theme-Change-wallpaper-extension-so-that-it-poi.patch
+  * 0001-systemdialogs-Remove-leftover-and-broken-components.patch
+  * 0001-Make-SessionManagementScreen-a-FocusScope.patch
+  * 0001-Fix-initial-focus-in-LockScreenUi.patch
+
+-------------------------------------------------------------------
+Sat Jan 22 13:09:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix initial focus in SDDM (kde#447817):
+  * 0001-Make-SessionManagementScreen-a-FocusScope.patch
+- Add patch to fix initial focus in the lockscreen:
+  * 0001-Fix-initial-focus-in-LockScreenUi.patch
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:34 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+- Rebase 0001-Use-qdbus-qt5.patch
+- Replace xprop-kde-full-session.desktop with autostart file:
+  * 0001-Revert-Drop-setupX11-from-startplasma-waylandsession.patch
+  * 0002-Revert-Drop-X11-root-properties-for-KDE-full-session.patch
+- Add patch to fix the upstream sddm theme background:
+  * 0001-sddm-theme-Change-wallpaper-extension-so-that-it-poi.patch
+- Add patch to fix screen sharing dialog (kde#448423):
+  * 0001-systemdialogs-Remove-leftover-and-broken-components.patch
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5

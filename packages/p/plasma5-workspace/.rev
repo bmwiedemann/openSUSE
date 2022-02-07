@@ -1820,4 +1820,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment> (forwarded request 943820 from Vogtinator)</comment>
     <requestid>944004</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>04fe63a7220056aa732b744afab96641</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273435</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24 respun tars (again) for URL changes (not built yet) (forwarded request 952125 from Vogtinator)</comment>
+    <requestid>952127</requestid>
+  </revision>
 </revisionlist>
