@@ -1,7 +1,7 @@
 #
 # spec file for package openscad
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Productivity/Graphics/CAD
 URL:            https://www.openscad.org/
 Source:         https://files.openscad.org/%{name}-%{version}.src.tar.gz
 Patch1:         fix_build_with_cgal-5.3.patch
+Patch2:         CVE-2022-0496.patch
+Patch3:         CVE-2022-0497.patch
 BuildRequires:  bison
 BuildRequires:  double-conversion-devel
 BuildRequires:  eigen3-devel
@@ -65,6 +67,8 @@ aspects, e.g. modelling of machine parts.
 %setup -q
 
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %qmake5 PREFIX=%{_prefix} CONFIG+=qopenglwidget CONFIG+=c++14

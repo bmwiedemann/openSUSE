@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  6 19:02:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix out-of-bounds memory access in DXF loader
+  + CVE-2022-0496.patch (boo#1195568, CVE-2022-0496)
+- Add patch to fix out-of-bounds memory access in comment parser
+  + CVE-2022-0497.patch (boo#1195567, CVE-2022-0497)
+
+-------------------------------------------------------------------
 Fri Aug 27 07:43:42 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Added patch fix_build_with_cgal-5.3.patch.
