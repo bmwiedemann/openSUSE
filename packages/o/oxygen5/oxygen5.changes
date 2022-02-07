@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- No code changes since 5.23.90
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Add GitLab CI
+  * Add missing dependency
+  * We depend against qt5.15 + kf5.86
+  * fix paint for standalone buttons with dynamic size
+  * Port foreach to range-for
+  * Require C++17
+  * Add .kde-ci.yml
+  * Register Breeze::Button plugin without keyword
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5

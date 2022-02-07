@@ -1073,4 +1073,12 @@ found conflict of filesystem-15.5-261.1.x86_64 with oxygen5-sounds-5.21.5-2.1.no
     <comment> (forwarded request 943820 from Vogtinator)</comment>
     <requestid>943987</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>20ec69b88cb99171e9815ff5be93e77d</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273426</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
+    <requestid>951889</requestid>
+  </revision>
 </revisionlist>
