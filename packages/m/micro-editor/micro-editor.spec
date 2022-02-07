@@ -56,7 +56,7 @@ export EXTRAFLAGS="-mod=vendor"
     export EXTRAFLAGS="${EXTRAFLAGS} -buildmode=pie"
 %endif
 
-export DATE="$(date --iso-8601)"
+export DATE="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} --iso-8601)"
 export HASH="%shortcommit"
 export VERSION="%version"
 
