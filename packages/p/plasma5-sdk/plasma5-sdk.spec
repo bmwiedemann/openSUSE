@@ -16,17 +16,17 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           plasma5-sdk
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://cgit.kde.org/plasma-sdk.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
+Source:         plasma-sdk-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-icons
@@ -101,18 +101,17 @@ test Plasma data engines without writing a Plasma applet.
   # The package contains two appdata files with the same Name, which libzypp can't handle (boo#1038368)
   rm %{buildroot}%{_kf5_appstreamdir}/org.kde.plasma.cuttlefish.appdata.xml
 
-%if %{with lang}
+%if %{with released}
 %find_lang cuttlefish %{name}.lang
 %find_lang plasma_shell_org.kde.plasmoidviewershell %{name}.lang
 %find_lang org.kde.plasma.themeexplorer %{name}.lang
 %find_lang org.kde.plasma.lookandfeelexplorer %{name}.lang
 %find_lang plasmoidviewer %{name}.lang
-%find_lang plasmawallpaperviewer %{name}.lang
 %find_lang plasmaengineexplorer %{name}.lang
 %find_lang cuttlefish_editorplugin %{name}.lang
 %endif
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
