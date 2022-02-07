@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Jan 21 07:49:30 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+* Update to version 2.9.6:
+
+- Add db.Exec and db.Prepare to the sql rule (#763)
+- chore(deps): update golang.org/x/crypto commit hash to 5e0467b (#764)
+- Add os.Create to the readfile rule (#761)
+- Fix false negative for SQL injection when using DB.QueryRow.Scan() (#759)
+- chore(deps): update dependency highlight.js to v11.4.0 (#758)
+- Fix false negatives for SQL injection in multi-line queries
+- Find G303 with filepath.Join'd temp dirs (#754)
+- Find more tempdirs
+- build(fmt): use [ instead of [[ (#751)
+- Update to ginkgo v2 (#753)
+- Fix #743 (#748)
+- Handle nil when looking up a file by position into a package (#747)
+- Add in the config file settings for exclude and include options
+- chore(deps): update golang.org/x/crypto commit hash to e495a2d (#745)
+- Track both #nosec and #nosec rulelist for one violation (#741)
+- Add the sponsors section in the README file (#740)
+- Remove space between // and #nosec in examples and internal use
+
+-------------------------------------------------------------------
+Fri Jan 14 09:33:28 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add position-independent executable to compiler flags
+
+-------------------------------------------------------------------
+Fri Jan 14 09:15:56 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add version 2.9.5
