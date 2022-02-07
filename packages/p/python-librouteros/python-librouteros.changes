@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 03:38:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove BuildRequires on chainmap, it's a builtin now. 
+
+-------------------------------------------------------------------
 Thu Nov 18 20:54:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.0

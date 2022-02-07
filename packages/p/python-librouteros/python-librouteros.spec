@@ -1,7 +1,7 @@
 #
 # spec file for package python-librouteros
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module chainmap}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
