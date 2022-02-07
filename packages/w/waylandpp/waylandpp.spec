@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           waylandpp
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
 Summary:        Wayland C++ bindings
 License:        BSD-2-Clause AND GPL-3.0-or-later
@@ -81,11 +81,9 @@ Wayland C++ bindings
 %files devel
 %{_includedir}/*
 %{_datadir}/*
-%{_libdir}/pkgconfig/wayland-client++.pc
-%{_libdir}/pkgconfig/wayland-client-extra++.pc
-%{_libdir}/pkgconfig/wayland-cursor++.pc
-%{_libdir}/pkgconfig/wayland-egl++.pc
+%{_libdir}/pkgconfig/*.pc
 %{_libdir}/lib*.so
 %{_libdir}/cmake
+%exclude %{_libdir}/pkgconfig/wayland-scanner++.pc
 
 %changelog
