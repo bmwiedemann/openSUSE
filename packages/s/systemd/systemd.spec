@@ -335,6 +335,7 @@ License:        LGPL-2.1-or-later
 %if 0%{?bootstrap}
 Conflicts:      kiwi
 Conflicts:      libudev1
+Provides:       libudev1
 # avoid kiwi picking it for bootstrap
 Requires:       this-is-only-for-build-envs
 %endif

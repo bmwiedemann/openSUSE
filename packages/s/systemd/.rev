@@ -5775,4 +5775,10 @@ handle manual pages that consist only of a .so directive such as
   installed when systemd-resolved is. The tmpfiles config file has currently a</comment>
     <requestid>951595</requestid>
   </revision>
+  <revision rev="346" vrev="3">
+    <srcmd5>c961fa23c32efa3cd4cfd0ef2b64caf9</srcmd5>
+    <version>249.9</version>
+    <time>1644222438</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
