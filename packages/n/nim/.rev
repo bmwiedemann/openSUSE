@@ -155,4 +155,12 @@
     + (bsc#1185085, CVE-2021-21374) (forwarded request 887387 from glaubitz)</comment>
     <requestid>887450</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b874643c5257a0bcd9098fc49e610137</srcmd5>
+    <version>1.2.16</version>
+    <time>1644273490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952051</requestid>
+  </revision>
 </revisionlist>
