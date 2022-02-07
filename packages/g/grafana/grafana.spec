@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,10 @@
 %endif
 
 Name:           grafana
-Version:        7.5.12
+Version:        8.3.4
 Release:        0
 Summary:        The open-source platform for monitoring and observability
-License:        Apache-2.0
+License:        AGPL-3.0-only
 Group:          System/Monitoring
 URL:            http://grafana.org/
 Source:         %{name}-%{version}.tar.gz
@@ -39,14 +39,12 @@ Source5:        0001-Add-source-code-reference.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.15
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  wire
+BuildRequires:  golang(API) >= 1.17
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)
 %systemd_ordering
-
-%go_nostrip
 
 # Exclude s390 on SLE12, since golang 1.14 itself is not built for this arch on SLE12
 # See https://build.suse.de/package/view_file/SUSE:SLE-12:Update/go1.14/go1.14.spec?expand=1
@@ -76,12 +74,11 @@ export IMPORTPATH="github.com/grafana/grafana"
 export BUILDFLAGS="-v -p 4 -x -buildmode=pie -mod=vendor"
 export GOPATH=%{_builddir}/go:%{_builddir}/contrib
 export GOBIN=%{_builddir}/go/bin
+wire gen -tags 'oss' ./pkg/server ./pkg/cmd/grafana-cli/runner
 go install $BUILDFLAGS -ldflags '-X main.version=%{version}' $IMPORTPATH/pkg/cmd/...
 
 %install
 %goinstall
-
-# we're missing %%gosrc and %%gofilelist... (although that *might* be ok...)
 
 install -Dm644 {packaging/rpm/systemd/,%{buildroot}%{_unitdir}/}%{name}-server.service
 install -dm755 %{buildroot}%{_sbindir}

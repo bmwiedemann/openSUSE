@@ -25,7 +25,7 @@ tar:
 	# Patches for the JS frontend go after here \
 	patch -p1 -i ../../0001-Add-source-code-reference.patch && \
 	# End patches section \
-	yarn install --pure-lockfile && \
+	yarn install --immutable && \
 	yarn run build && \
 	cd .. && \
 	echo "Updating $$basename/public in tarball..." && \
