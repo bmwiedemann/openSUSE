@@ -1494,4 +1494,12 @@
   * 0001-Apply-branding-to-default-favorites.patch (forwarded request 945530 from Vogtinator)</comment>
     <requestid>945531</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>e84063c0f99c65adbb95a7dd026716ca</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273428</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
+    <requestid>951895</requestid>
+  </revision>
 </revisionlist>

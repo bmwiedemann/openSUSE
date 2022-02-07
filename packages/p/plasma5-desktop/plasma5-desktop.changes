@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-kcms-keyboard-Fix-setting-more-than-one-option.patch
+  * 0002-kcms-keyboard-Port-XkbHelper-away-from-KProcess-with.patch
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+- Rebase 0001-Apply-branding-to-default-favorites.patch
+- Add patches to fix setting keyboard options (kde#448377):
+  * 0001-kcms-keyboard-Fix-setting-more-than-one-option.patch
+  * 0002-kcms-keyboard-Port-XkbHelper-away-from-KProcess-with.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 08:16:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Apply openSUSE branding of favorites as patch:
