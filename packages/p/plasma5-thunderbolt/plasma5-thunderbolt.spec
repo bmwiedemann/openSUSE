@@ -21,17 +21,17 @@
 
 %define kf5_version 5.40.0
 %define qt5_version 5.10.0
-%bcond_without lang
+%bcond_without released
 Name:           plasma5-thunderbolt
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-thunderbolt-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-thunderbolt-%{version}.tar.xz.sig
+Source:         plasma-thunderbolt-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-thunderbolt-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -71,7 +71,7 @@ dbus-run-session make %{?_smp_mflags} -C build VERBOSE=1 test
 
 %install
 %make_install -C build
-%if %{with lang}
+%if %{with released}
   %find_lang kcm_bolt %{name}.lang
   %find_lang kded_bolt %{name}.lang
 %endif
@@ -79,17 +79,19 @@ dbus-run-session make %{?_smp_mflags} -C build VERBOSE=1 test
 %files
 %license LICENSES/*
 %{_libdir}/libkbolt.so
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/kcm_bolt.so
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_bolt.so
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/kded_bolt.so
 %{_kf5_notifydir}/kded_bolt.notifyrc
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_bolt
-%{_kf5_servicesdir}/kcm_bolt.desktop
+%{_kf5_applicationsdir}/kcm_bolt.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
