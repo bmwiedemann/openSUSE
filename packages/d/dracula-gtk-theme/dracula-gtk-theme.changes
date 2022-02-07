@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Feb 04 18:13:26 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.0+git9.18bb561:
+  * Gnome-shell: Fix switch button appearance
+  * Gnome-shell: Improve text entry appearance
+  * KDE: Kvantum - Fix appearance of sliders in active state
+  * Gnome: Fix cut text in header bar buttons, fixes #169
+  * Gnome-shell v40+: Increase font size to avoid blurry icons, fix #150
+  * KDE: LAF - Improve logout screen appearance
+  * Gnome-shell v40+: Fix misaligned 'Do no disturb' button
+  * KDE: LAF - Update splashscreen preview
+  * Remove extra space
+  * KDE: LAF - Update splash screen appearance
+  * KDE: LAF - Add cursors theme as dependencie
+  * KDE: Add cursors theme
+  * Gtk-4.0: Fix extra padding inside maximized windows
+  * Gtk-4.0: Fix extra gap in search bars, fixes #160
+  * KDE: Plasma - Improve highlight color to be easy on the eyes
+  * Gnome: Fix theme parsing errors, Fix #157
+  * Gtk-4.0: Fix overshoot indicator color
+  * Gtk-4: Fix popovers style
+  * Gtk-4: Fix theme parsing erros and warnings
+  * Gtk-4: Fix missing separator in lists rows
+  * Gtk-4: Fix no visual separation between windows
+  * Gtk-4: Fix border-color of focused entries
+  * Gtk-4: Fix menubar item style
+  * Gtk-4: Fix error buttons style
+  * Gtk-4: Fix window control buttons appearance
+  * Gtk-4: Fix outlined style in all elements
+  * Gtk-4.0: Add initial support to gtk v4
+  * Cinnamon: Fix panel icons squished and background issue with transparent panels
+  * KDE: Plasma - Update scrollbars appearance
+  * Gnome-shell: Improve levelbar color in osd
+  * KDE: Plasma - Enable adaptive transparency
+  * Elementary: Fix appearance of colors in file-menager context menu, Fixes #61
+  * KDE: Plasma -  Update checkbox style
+  * Gnome-shell: Improve hover color in icon grid
+  * KDE: Update lockscreen input to match plasma theme
+
+-------------------------------------------------------------------
 Tue Nov 02 07:36:19 UTC 2021 - maurizio.galli@gmail.com
 
 - Update to version 2.0+git59.cf9d6aa:

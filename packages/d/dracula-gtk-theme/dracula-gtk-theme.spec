@@ -1,7 +1,7 @@
 #
 # spec file for package dracula-gtk-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dracula-gtk-theme
-Version:        2.0+git59.cf9d6aa
+Version:        3.0+git9.18bb561
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only
@@ -39,10 +39,13 @@ rm -rf \
     ./.github                           \
     ./kde/aurorae/Dracula/.shade.svg    \
     ./kde/sddm/Dracula/faces/.face.icon \
+    ./kde/cursors/build.sh		\
     ./Art                               \
     ./gtk-2.0/render-assets.sh          \
     ./gtk-3.20/assets/render-gtk3-assets-hidpi.py    \
     ./gtk-3.20/assets/render-gtk3-assets.py          \
+    ./gtk-4.0/assets/render-gtk3-assets.py 	     \
+    ./gtk-4.0/assets/render-gtk3-assets-hidpi.py     \
     ./src                               \
     ./.gitignore
 
