@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Allow specifying initial value for SysctlSensor
+  * BarChart: Make spacing proportional to total width and number of bars (kde#444585)
+  * Set an initial value of 0 for SensorsFeatureSensor
+  * Allow providing an initial value for AggregateSensor and SysFsSensor
+  * Check initial value is valid before resetting in SensorProperty::unsubscribe
+  * Support changing sensor label names for the Grid face (kde#448980)
+  * Only rate-limit sensors if we already have a valid value (kde#446372)
+  * faces/facegrid: Filter out some display styles from the config (kde#447847)
+  * Fix compilation on Plasma/5.24 branch
+  * faces/textonly: Set grouped header to fill width so it elides properly (kde#440592)
+  * Port SensorFaceController to support JSON plugin metadata
+  * Fix build with GCC 12, missing include
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * ConfigAppearance: Set Layout.preferredWidth in updateRateLimitSpinBox
+  * Add support for bits per second (kde#418968)
+  * Fix compile error against qt6
+  * Use Q_EMIT here
+  * Fix typos in l10n string comments
+  * Port some Q_FOREACH
+  * Handle process parent changes in ProcessDataModel (kde#446534)
+  * piechart: Fix punctuation of labels in config
+  * ProcessCore: Check the actual previous values when updating IO rates (kde#444127)
+  * ProcessCore: Ignore elapsedTime < 0 when updating process usage
+  * Fix various typos
+  * Don't update SensorsFeatureSensor if it is not subscribed
+  * Fix accounting of children in Processes
+  * New and improved tests
+  * Correct behavior of ProcessSensor::cgroupData
+  * Remove Accumulator::stop and Capture::stop
+  * Fix ksgrd_network_helper crash on exit afer a failure (kde#444921)
+  * Fix ksgrd_network_helper crash on readlinkat failure
+  * Update SensorUnitModel.cpp to compile with clang+libcxx
+  * Fix incorrect string termination in ConnectionMapping
+  * We depend against kf5.86
+  * Add FreeBSD CI
+  * Add Linux CI
+  * Add .kde-ci.yml
+  * Add Plasma System Monitor to "Tools" menu
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:17 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
