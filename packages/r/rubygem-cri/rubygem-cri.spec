@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-cri
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,6 @@ Version:        2.15.11
 Release:        0
 %define mod_name cri
 %define mod_full_name %{mod_name}-%{version}
-# MANUAL
-%if 0%{?suse_version} >= 1550
-%define rb_build_versions     ruby27
-%define rb_build_ruby_abis    ruby:2.7.0
-%endif
-# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}

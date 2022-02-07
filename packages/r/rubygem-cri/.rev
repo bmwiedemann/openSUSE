@@ -194,4 +194,13 @@
     <comment></comment>
     <requestid>933756</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d0a1dac08f6d5dee405732841c150032</srcmd5>
+    <version>2.15.11</version>
+    <time>1644273474</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pin to Ruby 2.7 on Tumbleweed: ruby 2.7 no longer exists,
+  and Ruby 3 support has been added in versoin 2.15.11.</comment>
+    <requestid>951857</requestid>
+  </revision>
 </revisionlist>

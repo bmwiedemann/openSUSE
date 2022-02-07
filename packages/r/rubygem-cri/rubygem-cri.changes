@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  5 12:47:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not pin to Ruby 2.7 on Tumbleweed: ruby 2.7 no longer exists,
+  and Ruby 3 support has been added in versoin 2.15.11.
+
+-------------------------------------------------------------------
 Thu Nov 25 12:54:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - TW is not hard set on version 1550 - comparision to 1550 should
