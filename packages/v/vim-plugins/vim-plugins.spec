@@ -1,7 +1,7 @@
 #
 # spec file for package vim-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,25 +25,25 @@
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
 %define diffchanges_tag		346dae2
-%define diffchanges_version	0.6~346dae2
+%define diffchanges_version	0.6+g346dae2
 %define editorconfig_version	0.3.3
 %define file_line_version	1.0+20161020
 %define fugitive_version	3.4
 %define gitdiff_version		2
 %define gnupg_version		2.7.1
-%define latex_version		1.10.0+20210323
+%define latex_version		1.10.0+20210818
 %define locateopen_version	1.3
-%define markdown_version	2.0.0+20200714
+%define markdown_version	2.0.0+20220129
 %define matrix_version		1.10
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
-%define neomutt_version		20180104
-%define NERDcommenter_version	2.5.2
+%define neomutt_version		20210218
+%define NERDcommenter_version	2.6.0
 %define NERDtree_version	6.10.16
 %define project_version		1.4.1
 %define quilt_version		0.9.7
-%define rails_version		4.4
-%define salt_version		0.0.1
+%define rails_version		5.2
+%define salt_version		20170630
 %define searchcomplete_version	1.1
 %define showmarks_version	2.3
 %define snipmate_version	0.83
@@ -55,8 +55,7 @@
 %define tselectfiles_version	0.11
 %define utl_version		2.0
 %define vimwiki_version		2.1
-%define zoomwin_tag		24@1
-%define zoomwin_version		24.1
+%define zoomwin_version		24
 
 Name:           vim-plugins
 Version:        7.3.0
@@ -82,29 +81,29 @@ Source14:       https://github.com/vim-scripts/project.tar.gz/archive/refs/tags/
 Source15:       https://github.com/vim-scripts/SearchComplete/archive/refs/tags/%{searchcomplete_version}.tar.gz#/vimplugin-searchcomplete-%{searchcomplete_version}.tar.gz
 Source16:       https://github.com/vim-scripts/ShowMarks7/archive/refs/tags/%{showmarks_version}.tar.gz#/vimplugin-showmarks-%{showmarks_version}.tar.gz
 Source17:       https://github.com/vim-scripts/SuperTab--Van-Dewoestine/archive/refs/tags/%{supertab_version}.tar.gz#/vimplugin-supertab-%{supertab_version}.tar.gz
-Source18:       vimplugin-taglist-%{taglist_version}.tar.bz2
+Source18:       https://github.com/yegappan/taglist/archive/refs/tags/v%{taglist_version}.tar.gz#/vimplugin-taglist-%{taglist_version}.tar.gz
 Source19:       https://github.com/tomtom/tlib_vim/archive/refs/tags/%{tlib_version}.tar.gz#/vimplugin-tlib-%{tlib_version}.tar.gz
 Source20:       https://github.com/vim-scripts/tregisters/archive/refs/tags/%{tregisters_version}.tar.gz#/vimplugin-tregisters-%{tregisters_version}.tar.gz
 Source21:       https://github.com/vim-scripts/tselectbuffer/archive/refs/tags/%{tselectbuffer_version}.tar.gz#/vimplugin-tselectbuffer-%{tselectbuffer_version}.tar.gz
 Source22:       https://github.com/vim-scripts/tselectfiles/archive/refs/tags/%{tselectfiles_version}.tar.gz#/vimplugin-tselectfiles-%{tselectfiles_version}.tar.gz
 Source23:       https://github.com/vim-scripts/utl.vim/archive/refs/tags/%{utl_version}.tar.gz#/vimplugin-utl-%{utl_version}.tar.gz
-Source24:       https://github.com/vim-scripts/ZoomWin/archive/refs/tags/%{zoomwin_tag}.tar.gz#/vimplugin-zoomwin-%{zoomwin_version}.tar.gz
-Source26:       vimplugin-quilt-%{quilt_version}.tar.bz2
-Source27:       vimplugin-vimwiki-%{vimwiki_version}.tar.bz2
+Source24:       https://github.com/vim-scripts/ZoomWin/archive/refs/tags/%{zoomwin_version}.tar.gz#/vimplugin-zoomwin-%{zoomwin_version}.tar.gz
+Source26:       https://github.com/vim-scripts/quilt/archive/refs/tags/%{quilt_version}.tar.gz#/vimplugin-quilt-%{quilt_version}.tar.gz
+Source27:       https://github.com/vim-scripts/vimwiki/archive/refs/tags/%{vimwiki_version}.tar.gz#/vimplugin-vimwiki-%{vimwiki_version}.tar.gz
 Source28:       https://github.com/jamessan/vim-gnupg/releases/download/v%{gnupg_version}/vim-gnupg-v%{gnupg_version}.tar.gz#/vimplugin-gnupg-%{gnupg_version}.tar.gz
 Source29:       https://github.com/jamessan/vim-gnupg/releases/download/v%{gnupg_version}/vim-gnupg-v%{gnupg_version}.tar.gz.asc#/vimplugin-gnupg-%{gnupg_version}.tar.gz.asc
 Source30:       https://github.com/vim-scripts/gitdiff.vim/archive/refs/tags/%{gitdiff_version}.tar.gz#/vimplugin-gitdiff-%{gitdiff_version}.tar.gz
-Source31:       vimplugin-snipmate-%{snipmate_version}.tar.bz2
-Source32:       vimplugin-rails-%{rails_version}.tar.bz2
+Source31:       https://github.com/vim-scripts/snipMate/archive/refs/tags/%{snipmate_version}.tar.gz#/vimplugin-snipmate-%{snipmate_version}.tar.gz
+Source32:       https://github.com/vim-scripts/rails.vim/archive/refs/tags/%{rails_version}.tar.gz#/vimplugin-rails-%{rails_version}.tar.gz
 Source33:       https://github.com/mileszs/ack.vim/archive/%{ack_version}.tar.gz#/vimplugin-ack-%{ack_version}.tar.gz
 Source34:       https://github.com/editorconfig/editorconfig-vim/archive/v%{editorconfig_version}.tar.gz#/vimplugin-editorconfig-%{editorconfig_version}.tar.gz
 Source35:       https://github.com/tpope/vim-fugitive/archive/v%{fugitive_version}.tar.gz#/vimplugin-fugitive-%{fugitive_version}.tar.gz
-Source36:       vimplugin-neomutt-%{neomutt_version}.tar.bz2
-Source37:       vimplugin-salt-%{salt_version}.tar.bz2
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
-Source101:      vim-latex-%{latex_version}.tar.xz
-Source102:      vim-markdown-%{markdown_version}.tar.xz
+Source101:      vim-markdown-%{markdown_version}.tar.xz
+Source102:      neomutt.vim-%{neomutt_version}.tar.xz
+Source103:      salt-vim-%{salt_version}.tar.xz
+Source104:      vim-latex-%{latex_version}.tar.xz
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
@@ -647,7 +646,7 @@ Usage:
      Press <c-w>o again: the previous set of windows is restored
 
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a100 -a101 -a102
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a100 -a101 -a102 -a103 -a104
 # ------- patch locateopen ------
 pushd LocateOpen-%locateopen_version
 %patch1
@@ -660,7 +659,7 @@ pushd file-line-%file_line_version
 popd
 
 find tlib_vim-%{tlib_version} -type f \( -name '*.vim' -o -name '*.txt' \) -exec chmod -v 644 {} +
-chmod -v 644 vimplugin-taglist-%{taglist_version}/doc/taglist.txt
+chmod -v 644 taglist-%{taglist_version}/doc/taglist.txt
 
 %build
 
@@ -670,12 +669,12 @@ rm -rf plugin/editorconfig-core-py/ tests/
 rm mkzip.sh
 popd
 
-pushd nerdcommenter-%{NERDcommenter_version}
-rm -f Rakefile
-popd
-
 pushd nerdtree-%{NERDtree_version}
 rm -f _config.yml screenshot.png
+popd
+
+pushd salt-vim-%{salt_version}
+rm -f salt-vim.spec
 popd
 
 pushd tlib_vim-%{tlib_version}
@@ -684,20 +683,19 @@ popd
 
 install -d %buildroot/%vimplugin_dir
 for i in vimplugin-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
-	bufexplorer-* colorsel.vim-* diffchanges.vim-* \
-	editorconfig-vim-* file-line-* \
-	gitdiff.vim-* LocateOpen-* matrix.vim--Yang-* minibufexpl.vim-* \
-	MultipleSearch-* nerdcommenter-* nerdtree-* project.tar.gz-* \
-	SearchComplete-* ShowMarks7-* SuperTab--Van-Dewoestine-* \
-	tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* utl.vim-* \
-	vim-fugitive-* \
-	vim-gnupg-* ZoomWin-*; do
+	colorsel.vim-* bufexplorer-* diffchanges.vim-* editorconfig-vim-* \
+	file-line-* gitdiff.vim-* LocateOpen-* matrix.vim--Yang-* \
+	minibufexpl.vim-* MultipleSearch-* neomutt.vim-* nerdcommenter-* \
+	nerdtree-* project.tar.gz-* quilt-* rails.vim-* salt-vim-* \
+	SearchComplete-* ShowMarks7-* snipMate-* SuperTab--Van-Dewoestine-* \
+	taglist-* tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* \
+	utl.vim-* vim-fugitive-* vim-gnupg-* vimwiki-* ZoomWin-*; do
     pushd $i
     cp -av * %buildroot/%vimplugin_dir/
     popd
 done
 
-mkdir -p %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
+install -d %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
 mv %{buildroot}/%vimplugin_dir/nerdtree_plugin %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
 
 # vim-plugin-latex
@@ -712,6 +710,7 @@ chmod 644 indent/markdown.vim
 %{makeinstall} 'ADDONS=${VIMDIR}/site'
 popd
 
+install -d %{buildroot}/%vimplugin_dir/snippets/
 install -m 644 %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
 
 # delete unneeded files
@@ -744,6 +743,7 @@ fi \
 %vim_doc_post -n vim-plugin-fugitive
 %vim_doc_post -n vim-plugin-gnupg
 %vim_doc_post -n vim-plugin-latex
+%vim_doc_post -n vim-plugin-markdown
 %vim_doc_post -n vim-plugin-multiplesearch
 %vim_doc_post -n vim-plugin-neomutt
 %vim_doc_post -n vim-plugin-NERDcommenter
@@ -903,16 +903,19 @@ fi \
 %files -n vim-plugin-neomutt
 %defattr(-,root,root,0755)
 %vimplugin_dir/doc/neomutt.txt
+%vimplugin_dir/ftdetect/logfile.vim
 %vimplugin_dir/ftdetect/mail.vim
 %vimplugin_dir/ftdetect/neomuttrc.vim
 %vimplugin_dir/ftplugin/neomuttrc.vim
+%vimplugin_dir/syntax/neomuttlog.vim
 %vimplugin_dir/syntax/neomuttrc.vim
 
 %files -n vim-plugin-NERDcommenter
 %defattr(-,root,root,0755)
 %doc nerdcommenter-%{NERDcommenter_version}/README.md
-%vimplugin_dir/doc/NERD_commenter.txt
-%vimplugin_dir/plugin/NERD_commenter.vim
+%vimplugin_dir/autoload/nerdcommenter.vim
+%vimplugin_dir/doc/nerdcommenter.txt
+%vimplugin_dir/plugin/nerdcommenter.vim
 
 %files -n vim-plugin-NERDtree
 %defattr(-,root,root,0755)
@@ -940,6 +943,7 @@ fi \
 
 %files -n vim-plugin-rails
 %defattr(-,root,root,0755)
+%vimplugin_dir/compiler/rails.vim
 %vimplugin_dir/plugin/rails.vim
 %vimplugin_dir/autoload/rails.vim
 %vimplugin_dir/doc/rails.txt
