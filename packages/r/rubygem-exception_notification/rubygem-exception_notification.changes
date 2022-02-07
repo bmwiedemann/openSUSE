@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 25 06:52:13 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.5.0
+ see installed CHANGELOG.rdoc
+
+  == 4.5.0
+  
+  * enhancements
+    * Added Rails 7 compatibility (by @fwininger)
+    * Added support for the optional `data` attribute to the SNS notifier (@TomK32)
+    * Addressed a deprecation warning for `module_parent_name` which was thrown for users
+      using Rails > 6.x (@quorak)
+    * Restored the hash separator for `controller#action` in the email notifier (@garethrees)
+  
+  * removals
+    * Dropped support for Tinder (gem is no longer maintained) (by @fwininger)
+    * Dropped support for Ruby on Rails versions below 5.2
+  
+
+-------------------------------------------------------------------
 Mon Jul 13 17:26:21 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.4.3
