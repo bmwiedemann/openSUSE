@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Use poll() when reading screenshot data
+  * Fix fullscreen and monitor screenshots
+  * Pre-select the only item in the list lists with single items
+  * Install systemd service file for portal
+  * ScreenCast portal: report correct version
+  * Show user-facing app name instead of app id in background notification
+  * Use QFileDialog for selecting directories (kde#437505)
+  * Show only local files
+  * Set desktop file name
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Add KAboutData (kde#448113)
+  * It compiles fine without deprecated methods
+  * Adopt SystemDialog for better mobile integration
+  * Close screencast session when we stop streaming
+  * Use QStringLiteral here
+  * AccessDialog: Fix errors
+  * Port ScreenshotDialog to QtQuick
+  * Port RemoteDesktopDialog to Plasma Dialogs
+  * Have SchreenChooserDialog use acceptable
+  * Split code out of ScreenChooser so it can be reused
+  * Port the AppChooserDialog to a Plasma Workspace Dialog
+  * Port AccessDialog to QML
+  * Port UserInfoDialog to QtQuick
+  * Split dialog handling code into a QuickDialog class
+  * Port the ScreenChooserDialog to QtQuick
+  * No need to change a string to compare it to "KDE"
+  * Save/restore file dialog window size (kde#443251)
+  * Actually determine light/dark from colorscheme
+  * Implement freedesktop colorscheme preference
+  * Add Linux CI
+  * Add .kde-ci.yml
+  * Print portal: cleanup and fix logic for setting QPageSize
+  * Email portal: add support for CC, BCC and more addresses
+  * Update dbus-advertised screencast source types
+  * Inhibit portal: send reply to the Close() request to release inhibition
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
