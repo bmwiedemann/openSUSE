@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 02 14:25:09 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220202.cf37318:
+  * pam-modules: remove now outdated entry for modules that moved into pam_unix
+
+-------------------------------------------------------------------
 Thu Jan 27 17:27:05 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 2.2.0+git20220127.05573d9:
