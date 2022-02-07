@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Feb  7 00:25:32 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220204
+* Added icons
+
+  *Annotator #2942
+  *Aqua Data Studio #2944
+  *BlueMail (app & tray) #2938
+  *Chirurgien #2946
+  *Cinnamon Virtual Keyboard #2931
+  *Deltarune #2936
+  *Fcitx Mozc tray icons #2970
+  *Freezer (tray icon)
+  *gentoo File Manager #2952
+  *GNOME Console (symbolic)
+  *Iaito #2951
+  *Jupyter Notebook (symbolic) #2950
+  *KDiskMark #2948
+  *L3afpad #2963
+  *LibreOffice 7.3 (symbolic)
+  *LiteIDE #2961
+  *Loop #2947
+  *LosslessCut #2967
+  *Notesnook
+  *OpenVPN
+  *Plex Media Player (symbolic) #2960
+  *Pronterface #2959
+  *QOpenVPN (symbolic)
+  *Sandbox game
+  *Servo #2933
+  *sfxr-qt #2954
+  *Shutter Encoder #2943
+  *Space Launch #2945
+  *Trackiton Download Manager #2929
+  *vibrantLinux (Flathub) #2932
+  *welle.io #2975
+  *Wiiware (mimetypes) #2965
+  *Worker #2956
+
+* Updated icons
+
+  *Applications Office #2962
+  *KiCad #2969
+  *PDF Slicer #2964
+  *Preferences Plugin & symlink Extension Manager #2949
+  *Rambox (app & tray)
+  *Webfont Kit Generator #2966
+
+-------------------------------------------------------------------
+Tue Jan  4 00:39:54 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220101
+* Added icons
+
+  * AAAAXY #2007
+  * Arduino (mimetypes) #2497
+  * Banking
+  * blueberry-tray-active-symbolic
+  * Conduktor
+  * Dot Matrix #2900
+  * Elixir (app and mimetypes icons) #2914 #2919
+  * Emulsion #2902
+  * Eolie
+  * Epiphany Canary
+  * Free Heroes 2 #2742
+  * Gamma
+  * Godot Mono #2895
+  * Headlines #2898
+  * Headlines #2898
+  * ImageRoll
+  * Journable
+  * Junction
+  * kdenlive-slip, kdenlive-slide (actions) #2915
+  * Midterm #2007
+  * Minecraft: Pi Edition: Reborn (Flathub) #2007
+  * Mr.Boom #2557
+  * Obliviate
+  * OpenRGB (Flathub) #2007
+  * Overwatch #2906
+  * Plano
+  * qtscrcpy
+  * Random
+  * Safe (categories)
+  * Scenarist
+  * Sticky #2910
+  * Stream
+  * suanPan #2893
+  * Tellico (Flathub) #2007
+  * Text Pieces #2903
+  * Tidal (PWA) #2917
+  * Valdo GTK
+  * Vaults
+  * VMWare folder icons #2911
+  * Weasis (Flathub) #2007
+  * WezTerm #2923
+  * Whalebird (Flathub) #2007
+  * Windscribe #2924
+  * Wordbook
+  * Xfce lock #2926
+
+* Updated icons
+
+  * Diffuse #2925
+  * document-open/save/save-as/save-all (actions) #2912
+  * Emblem #2899
+  * GNOME Calls
+  * GNOME Password Safe
+  * GNvim
+  * Kotlin (mimetypes) #2894
+  * Neovim
+  * Spotify #2922
+  * Spotify Qt #2922
+  * Spyder IDE #2928
+  * Transmission (symbolic) #2874
+
+* Changes and fixes
+
+  * Added missing 22px Commit icon #2818 
+
+-------------------------------------------------------------------
 Sun Dec 12 00:57:20 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20211201
