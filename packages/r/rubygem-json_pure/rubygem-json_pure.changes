@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:07:30 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.6.1
+ see installed CHANGES.md
+
+  ### 2021-10-24 (2.6.1)
+  
+  * Restore version.rb with 2.6.1
+  
+  ### 2021-10-14 (2.6.0)
+  
+  * Use `rb_enc_interned_str` if available to reduce allocations in `freeze: true` mode. #451.
+  * Bump required_ruby_version to 2.3.
+  * Fix compatibility with `GC.compact`.
+  * Fix some compilation warnings. #469
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:51:43 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.5.1
