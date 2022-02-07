@@ -20,17 +20,17 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\(org\\.kde\\.bluedevil\\.kcm.*
 
-%bcond_without lang
+%bcond_without released
 Name:           bluedevil5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz.sig
+Source:         bluedevil-%{version}.tar.xz
+%if %{with released}
+Source1:        bluedevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -78,7 +78,7 @@ Bluetooth daemon for KDE Plasma, handling connections.
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
 %kf5_find_lang
 %endif
 
@@ -94,6 +94,8 @@ Bluetooth daemon for KDE Plasma, handling connections.
 %dir %{_kf5_appstreamdir}/
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_applicationsdir}/kcm_bluetooth.desktop
+%{_kf5_debugdir}/bluedevil.categories
 %{_kf5_sharedir}/kpackage/kcms/kcm_bluetooth/
 %{_kf5_sharedir}/mime/packages/bluedevil-mime.xml
 %{_kf5_applicationsdir}/org.kde.bluedevil*.desktop
@@ -107,7 +109,7 @@ Bluetooth daemon for KDE Plasma, handling connections.
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/*.xml
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
