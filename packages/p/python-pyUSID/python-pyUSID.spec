@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyUSID
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %define packagename pyUSID
-%{?!python_module:%define python_module() python-%{**} python-%{**}}
-%define         skip_python36 1
+%{?!python_module:%define python_module() python-%{**}}
+%define         skip_python2 1
+# no dask for python 3.10 yet
+%define         skip_python310 1
 Name:           python-pyUSID
 Version:        0.0.10
 Release:        0
@@ -81,7 +83,7 @@ sed -i 's:pytest-runner:pytest:' setup.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*egg-info
+%{python_sitelib}/%{packagename}-%{version}*-info
 %{python_sitelib}/%{packagename}
 
 %changelog
