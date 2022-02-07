@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Feb  7 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Force PIE when building with gcc-10 (boo#1195628)
+
+-------------------------------------------------------------------
+Sat Feb  5 19:50:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-backends-drm-only-accept-xrgb-with-legacy.patch
+  * 0002-backends-drm-don-t-assume-we-shouldn-t-use-modifiers.patch
+
+-------------------------------------------------------------------
+Fri Jan 28 15:26:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix KMS without AMS with certain devices:
+  * 0001-backends-drm-only-accept-xrgb-with-legacy.patch
+- Add patch to fix the hardware cursor with AMS on certain devices:
+  * 0002-backends-drm-don-t-assume-we-shouldn-t-use-modifiers.patch
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+- Replace patch with sed:
+  * 0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
+- Drop patch, should be adjusted everywhere meanwhile that the downstream
+  diff isn't worth it:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+- Rebase 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+- Add _constraints to fix build on PowerPC
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:17 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
@@ -514,7 +555,8 @@ Tue Oct 20 14:30:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 -------------------------------------------------------------------
 Mon Oct 19 14:14:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
-- Add patch to fix software rendering detection with Mesa 20.2+:
+- Add patch to fix software rendering detection with Mesa 20.2+
+  (boo#1179845):
   * 0001-Detect-softpipe-and-llvmpipe-on-Mesa-20.2.patch
 
 -------------------------------------------------------------------

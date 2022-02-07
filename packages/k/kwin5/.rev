@@ -1332,4 +1332,12 @@
     <comment> (forwarded request 943820 from Vogtinator)</comment>
     <requestid>943980</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>11756863052d38ba83c2b9a35fde2e0a</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273434</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24 respun tars (again) for URL changes (not built yet) (forwarded request 952125 from Vogtinator)</comment>
+    <requestid>952126</requestid>
+  </revision>
 </revisionlist>

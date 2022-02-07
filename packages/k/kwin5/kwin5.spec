@@ -22,9 +22,9 @@
 %global kf5_version 5.54.0
 %global qt5_version 5.11.0
 %global wayland (0%{?suse_version} >= 1330)
-%bcond_without lang
+%bcond_without released
 Name:           kwin5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,17 +34,13 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source:         kwin-%{version}.tar.xz
+%if %{with released}
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
-# PATCH-FIX-OPENSUSE
-Patch102:       0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
-# PATCH-FIX-OPENSUSE
-Patch103:       0001-Bypass-wayland-interface-blacklisting.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550
@@ -68,6 +64,7 @@ BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Crash) >= %{kf5_version}
+BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
@@ -185,8 +182,13 @@ This package provides development files.
 %build
 %if 0%{?suse_version} < 1550
   export CXX=g++-10
-%endif
+  # gcc-PIE only sets the default for gcc-7, get cmake to do it for us (boo#1195628)
+  # Set CMAKE_CXX_LINK_PIE_SUPPORTED to work without "check_pie_supported()"...
+  %{cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} \
+      -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CXX_LINK_PIE_SUPPORTED=ON}
+%else
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%endif
 
   %cmake_build
 
@@ -195,7 +197,8 @@ This package provides development files.
 %if !%{wayland}
   rm -f %{buildroot}%{_kf5_bindir}/kwin_wayland
 %endif
-%if %{with lang}
+  sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_kf5_sharedir}/kconf_update/*.py
+%if %{with released}
   %kf5_find_lang
   %kf5_find_htmldocs
 %endif
@@ -203,18 +206,18 @@ This package provides development files.
   %fdupes %{buildroot}%{_datadir}
 
 %preun
-%systemd_user_preun plasma-kwin_x11.service
+%{systemd_user_preun plasma-kwin_x11.service plasma-kwin_wayland.service}
 
 %post
 /sbin/ldconfig
 %if %{wayland}
 %set_permissions %{_kf5_bindir}/kwin_wayland
 %endif
-%systemd_user_post plasma-kwin_x11.service
+%{systemd_user_post plasma-kwin_x11.service plasma-kwin_wayland.service}
 
 %postun
 /sbin/ldconfig
-%systemd_user_postun plasma-kwin_x11.service
+%{systemd_user_postun plasma-kwin_x11.service plasma-kwin_wayland.service}
 
 %if %{wayland}
 %verifyscript
@@ -227,13 +230,13 @@ This package provides development files.
 %verify(not caps) %{_kf5_bindir}/kwin_wayland
 %{_kf5_bindir}/kwin_wayland_wrapper
 %endif
+%{_kf5_applicationsdir}/org.kde.kwin_rules_dialog.desktop
 %{_kf5_bindir}/kwin_x11
 %{_kf5_debugdir}/org_kde_kwin.categories
 %{_kf5_knsrcfilesdir}/*.knsrc
 %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkwin.so.*
-%{_kf5_libdir}/libkwin4_effect_builtins.so.*
 %{_kf5_libdir}/libkwineffects.so.*
 %{_kf5_libdir}/libkwingl*utils.so.*
 %{_kf5_libdir}/libkwinxrenderutils.so.*
@@ -279,13 +282,11 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/effects/configs/kwin_mouseclick_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_mousemark_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_presentwindows_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_resize_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_showfps_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_showpaint_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_slide_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_thumbnailaside_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_trackmouse_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_windowgeometry_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_wobblywindows_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_zoom_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_overview_config.so
@@ -294,9 +295,6 @@ This package provides development files.
 %{_kf5_plugindir}/org.kde.kdecoration2/kwin5_aurorae.so
 %dir %{_kf5_plugindir}/org.kde.kwin.platforms/
 %{_kf5_plugindir}/org.kde.kwin.platforms/KWinX11Platform.so
-%dir %{_kf5_plugindir}/org.kde.kwin.scenes/
-%{_kf5_plugindir}/org.kde.kwin.scenes/KWinSceneOpenGL.so
-%{_kf5_plugindir}/org.kde.kwin.scenes/KWinSceneQPainter.so
 %dir %{_kf5_plugindir}/org.kde.kwin.waylandbackends/
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandDrmBackend.so
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandFbdevBackend.so
@@ -328,11 +326,11 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
 %{_kf5_sharedir}/kpackage/kcms/kcm_virtualkeyboard
 %{_userunitdir}/plasma-kwin_x11.service
+%{_userunitdir}/plasma-kwin_wayland.service
 
 %files devel
 %license LICENSES/*
 %{_kf5_prefix}/include/*.h
-%{_kf5_libdir}/libkwin4_effect_builtins.so
 %{_kf5_libdir}/libkwineffects.so
 %{_kf5_libdir}/libkwingl*utils.so
 %{_kf5_libdir}/libkwinxrenderutils.so
@@ -340,7 +338,7 @@ This package provides development files.
 %{_kf5_sharedir}/dbus-1/interfaces/
 %{_kf5_cmakedir}/KWinEffects/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %license LICENSES/*
 %endif
