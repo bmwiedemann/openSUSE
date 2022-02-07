@@ -19,17 +19,17 @@
 # Internal QML imports
 %global __requires_exclude qmlimport\\(org\\.kcm\\.firewall
 
-%bcond_without lang
+%bcond_without released
 Name:           plasma5-firewall
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/%{version}/plasma-firewall-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-firewall-%{version}.tar.xz.sig
+Source0:        plasma-firewall-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-firewall-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -71,7 +71,7 @@ Config Module for the System Firewall
 %cmake_install
 %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
   %find_lang kcm_firewall %{name}.lang
 %endif
 
@@ -79,9 +79,11 @@ Config Module for the System Firewall
 %license LICENSES/*
 %doc README.md
 %{_kf5_appstreamdir}/org.kde.plasma.firewall.metainfo.xml
-%{_kf5_servicesdir}/kcm_firewall.desktop
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/kcm_firewall.so
+%{_kf5_applicationsdir}/kcm_firewall.desktop
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_firewall.so
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/plasma_firewall/
 %{_kf5_plugindir}/kf5/plasma_firewall/firewalldbackend.so
@@ -90,7 +92,7 @@ Config Module for the System Firewall
 %{_kf5_sharedir}/kpackage/kcms/kcm_firewall/
 %{_kf5_libdir}/libkcm_firewall_core.so
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
