@@ -18,9 +18,9 @@
 
 %global __requires_exclude (org.kde.private.(kcm.)?kscreen)|(org.kde.KScreen)
 
-%bcond_without lang
+%bcond_without released
 Name:           kscreen5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreen-%{version}.tar.xz.sig
+Source:         kscreen-%{version}.tar.xz
+%if %{with released}
+Source1:        kscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -89,7 +89,7 @@ This package provides a Plasma widget to control common screen configuration opt
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %kf5_find_lang
 %endif
 
@@ -113,7 +113,7 @@ This package provides a Plasma widget to control common screen configuration opt
 %dir %{_kf5_plasmadir}/plasmoids/org.kde.kscreen
 %{_kf5_plasmadir}/plasmoids/org.kde.kscreen/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
