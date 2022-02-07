@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 27 22:21:52 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- Resolve "Credential cache directory /run/user/0/krb5cc does not
+  exist while opening default credentials cache" by using a kernel
+  keyring instead of a dir cache; (bsc#1109830);
+
+-------------------------------------------------------------------
+Thu Sep 30 14:14:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd services; (bsc#1181400);
+
+-------------------------------------------------------------------
 Mon Aug 30 12:45:25 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix KDC null pointer dereference via a FAST inner body that
