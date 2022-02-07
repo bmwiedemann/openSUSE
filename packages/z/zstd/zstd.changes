@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 30 22:59:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- enable zlib/gzip compatible backend, as zlib is significantly
+  (50%-100%) faster than gzip
+- add zstd-gzip compatibility subpackage which can be used
+  as a drop in compatible replacement for gzip
+- small spec file cleanups
+
+-------------------------------------------------------------------
+Fri Jan 21 04:53:08 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 1.5.2:
+  * correct a performance regression
+  * smaller improvements and fixes
+  * See https://github.com/facebook/zstd/releases/tag/v1.5.2
+- Refresh pzstd.1.patch
+- Drop upstream noexecstack.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 13:12:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add noexecstack.patch (bsc#1194337) 

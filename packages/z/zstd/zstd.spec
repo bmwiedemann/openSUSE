@@ -16,10 +16,9 @@
 #
 
 
-%define major 1
-%define libname lib%{name}%{major}
+%define libname libzstd1
 Name:           zstd
-Version:        %{major}.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -30,12 +29,12 @@ Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%
 Source2:        zstd.keyring
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
-# Cherry-pick from https://github.com/facebook/zstd/pull/2964
-Patch2:         https://github.com/facebook/zstd/commit/9a9d1ec6f4536ffeb745f360ef010cefd125bfd0.patch#/noexecstack.patch
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+# for .gz support
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Zstd, short for Zstandard, is a lossless compression algorithm. Speed
@@ -86,15 +85,32 @@ targeting faster compression than zlib at comparable ratios.
 
 Needed for compiling programs that link with the library.
 
+%package gzip
+Summary:        zstd and zlib based gzip drop-in
+Group:          Productivity/Archiving/Compression
+Conflicts:      alternative(gzip)
+Conflicts:      gzip
+Conflicts:      busybox-gzip
+Provides:       gzip
+Provides:       alternative(gzip)
+Requires:       %{name} >= %{version}
+
+%description gzip
+Zstd, short for Zstandard, is a lossless compression algorithm,
+targeting faster compression than zlib at comparable ratios.
+
+This subpackage provides a compatible alternative to gzip(1) using
+an optimized deflate/zlib handling.
+
 %prep
 %autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
-export CXXFLAGS="$CFLAGS -std=c++11"
+export CXXFLAGS="%{optflags} -std=c++11"
 # lib-mt is alias for multi-threaded library support
-%make_build prefix=%{_prefix} libdir=%{_libdir} -C lib lib-mt
+%make_build HAVE_ZLIB=1 prefix=%{_prefix} libdir=%{_libdir} -C lib lib-mt
 for dir in programs contrib/pzstd; do
   %make_build -C "$dir"
 done
@@ -103,22 +119,33 @@ done
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
 %make_build -C tests test-zstd
-#make %{?_smp_mflags} -C contrib/pzstd test-pzstd
+#make_build -C contrib/pzstd test-pzstd
 
 %install
 %make_install V=1 VERBOSE=1 prefix=%{_prefix} libdir=%{_libdir}
 install -D -m755 contrib/pzstd/pzstd %{buildroot}%{_bindir}/pzstd
 install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
+ln -s zstd %{buildroot}/%{_bindir}/gzip
+ln -s zstd %{buildroot}/%{_bindir}/gunzip
+
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files
 %license COPYING LICENSE
 %doc README.md CHANGELOG
-%{_bindir}/*
+%{_bindir}/pzstd
+%{_bindir}/unzstd
+%{_bindir}/zstd
+%{_bindir}/zstdcat
+%{_bindir}/zstdgrep
+%{_bindir}/zstdless
+%{_bindir}/zstdmt
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files -n %{libname}
 %license COPYING LICENSE
-%{_libdir}/libzstd.so.*
+%{_libdir}/libzstd.so.1*
 
 %files -n lib%{name}-devel
 %license COPYING LICENSE
@@ -127,10 +154,10 @@ install -D -m644 programs/zstd.1 %{buildroot}%{_mandir}/man1/pzstd.1
 %{_libdir}/libzstd.so
 
 %files -n lib%{name}-devel-static
-%license COPYING LICENSE
 %{_libdir}/libzstd.a
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%files gzip
+%{_bindir}/gzip
+%{_bindir}/gunzip
 
 %changelog
