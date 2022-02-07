@@ -25,6 +25,7 @@ Group:          Development/Libraries/Other
 URL:            https://getcomposer.org/
 Source0:        https://getcomposer.org/download/%{version}/composer.phar
 Source1:        https://github.com/composer/composer/raw/%{version}/LICENSE
+Requires:       php >= 7.2.5
 Requires:       php-curl
 Requires:       php-json
 Requires:       php-mbstring
@@ -36,17 +37,9 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       composer = %{version}
 Provides:       php-composer = %{version}
-Provides:       php5-composer = %{version}
 Provides:       php7-composer = %{version}
 Obsoletes:      php-composer < %{version}
 BuildArch:      noarch
-%if 0%{?sles_version} >= 10
-BuildRequires:  php53 >= 5.3.2
-Requires:       php53 >= 5.3.2
-%else
-BuildRequires:  php >= 5.3.2
-Requires:       php >= 5.3.2
-%endif
 
 %description
 Composer is a dependency manager tracking local dependencies of your projects
@@ -80,6 +73,6 @@ fi
 %defattr(-,root,root,0755)
 %{_bindir}/composer
 %{_bindir}/composer2
-%ghost %_sysconfdir/alternatives/composer
+%ghost %{_sysconfdir}/alternatives/composer
 
 %changelog

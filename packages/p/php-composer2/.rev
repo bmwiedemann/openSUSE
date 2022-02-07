@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>946091</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3afac4447aa7c2979e058c7d5cc169a4</srcmd5>
+    <version>2.2.3</version>
+    <time>1644273500</time>
+    <user>dimstar_suse</user>
+    <comment>- PHP Composer 2 requires PHP 7.2.5 at least (forwarded request 952220 from weberho)</comment>
+    <requestid>952222</requestid>
+  </revision>
 </revisionlist>

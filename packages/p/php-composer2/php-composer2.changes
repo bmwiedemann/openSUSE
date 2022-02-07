@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  7 12:30:44 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- PHP Composer 2 requires PHP 7.2.5 at least
+
+-------------------------------------------------------------------
+Thu Feb  3 13:17:29 UTC 2022 - pgajdos@suse.com
+
+- php is not required for build
+
+-------------------------------------------------------------------
 Thu Jan  6 16:52:22 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.2.3
