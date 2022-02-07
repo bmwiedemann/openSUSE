@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  6 08:11:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.0.8
+  * Support of thumbnails for icon view of directory
+  * updated for new version of ipyfilechooser
+  * better support of dask functions (thanks Mani).
+  * nested dictionaries are now written and read from hdf5 files
+  * support of 4D image sets in plotting.
+  * Minor bug fixes
+
+-------------------------------------------------------------------
+Sat Feb  5 12:58:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip build for python 3.10: python-dask is not (yet) compatible.
+
+-------------------------------------------------------------------
 Tue Dec 14 08:21:42 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build

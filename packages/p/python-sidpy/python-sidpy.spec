@@ -1,7 +1,7 @@
 #
 # spec file for package python-sidpy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 %define packagename sidpy
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python310 1
 Name:           python-sidpy
-Version:        0.0.5
+Version:        0.0.8
 Release:        0
 Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT
-URL:            https://pycroscopy.github.io/sidpy/about.html
+URL:            https://pycroscopy.github.io/sidpy/
 Source:         https://github.com/pycroscopy/sidpy/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
 BuildRequires:  %{python_module dask-array >= 0.10}
+BuildRequires:  %{python_module distributed >= 2}
 BuildRequires:  %{python_module h5py >= 2.6.0}
+BuildRequires:  %{python_module ipyfilechooser >= 0.0.6}
 BuildRequires:  %{python_module ipywidgets >= 5.2.2}
 BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
@@ -47,7 +49,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cytoolz
 Requires:       python-dask >= 0.10
 Requires:       python-dask-array >= 0.10
+Requires:       python-distributed >= 2
 Requires:       python-h5py >= 2.6.0
+Requires:       python-ipyfilechooser >= 0.0.6
 Requires:       python-ipywidgets >= 5.2.2
 Requires:       python-joblib >= 0.11.0
 Requires:       python-matplotlib >= 2.0.0
@@ -81,7 +85,7 @@ sed -i 's:pytest-runner:pytest:' setup.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*egg-info
+%{python_sitelib}/%{packagename}-%{version}*-info
 %{python_sitelib}/%{packagename}
 
 %changelog
