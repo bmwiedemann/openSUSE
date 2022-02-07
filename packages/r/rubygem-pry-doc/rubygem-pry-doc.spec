@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pry-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pry-doc
-Version:        1.1.0
+Version:        1.3.0
 Release:        0
 %define mod_name pry-doc
 %define mod_full_name %{mod_name}-%{version}
@@ -46,7 +46,8 @@ Group:          Development/Languages/Ruby
 Pry Doc is a Pry REPL plugin. It provides extended documentation support for
 the REPL by means of improving the `show-doc` and `show-source` commands. With help
 of the plugin the commands are be able to display the source code and the docs
-of Ruby methods and classes implemented in C. 
+of Ruby methods and classes implemented in C.
+
 %prep
 
 %build
