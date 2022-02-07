@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>749771</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46b9e5f8ea322941f90687130881aaba</srcmd5>
+    <version>4.5.0</version>
+    <time>1644273483</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest to run the testsuite, not nose.</comment>
+    <requestid>952035</requestid>
+  </revision>
 </revisionlist>

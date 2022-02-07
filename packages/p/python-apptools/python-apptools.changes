@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 07:20:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest to run the testsuite, not nose. 
+
+-------------------------------------------------------------------
 Tue Nov 19 21:17:41 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.5.0

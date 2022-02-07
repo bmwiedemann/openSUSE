@@ -1,7 +1,7 @@
 #
 # spec file for package python-apptools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,8 @@ Recommends:     python-tables
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tables}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
@@ -83,8 +83,7 @@ sleep 10
 
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -B -m nose.core -v apptools
+%pytest
 popd
 }
 %endif
