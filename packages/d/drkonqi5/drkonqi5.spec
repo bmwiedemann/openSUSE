@@ -17,21 +17,21 @@
 
 
 %define kf5_version 5.58.0
-%bcond_without lang
+%bcond_without released
 Name:           drkonqi5
 # Full Plasma 5 version (e.g. 5.9.1)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/drkonqi-%{version}.tar.xz.sig
+Source:         drkonqi-%{version}.tar.xz
+%if %{with released}
+Source1:        drkonqi-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCHES 100-199 are from upstream 5.16 branch
@@ -79,7 +79,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %install
   %kf5_makeinstall -C build
 
-  %if %{with lang}
+  %if %{with released}
     %{kf5_find_lang}
   %endif
 
@@ -95,7 +95,7 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %{_kf5_applicationsdir}/org.kde.drkonqi.desktop
 %{_kf5_debugdir}/drkonqi.categories
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
