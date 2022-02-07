@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Set SingleMainWindow=true
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Fix XDG compliance when reading/writing desktop files
+  * Not neccessary to use I18N_NOOP here
+  * Add FreeBSD CI
+  * Add CI linux
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
