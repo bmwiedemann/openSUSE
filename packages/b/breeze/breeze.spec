@@ -20,17 +20,17 @@
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           breeze
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source:         breeze-%{version}.tar.xz
+%if %{with released}
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -124,7 +124,7 @@ Library containing support code for the Breeze Qt5 style.
 # The migration overrides the look and feel, don't migrate for now
 rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
 
-%if %{with lang}
+%if %{with released}
   %{kf5_find_lang}
 %endif
 %fdupes %{buildroot}/%{_prefix}
@@ -132,7 +132,7 @@ rm %{buildroot}%{_kf5_sharedir}/kconf_update/breezetobreezelight.upd
 %post   -p /sbin/ldconfig -n libbreezecommon5-5
 %postun -p /sbin/ldconfig -n libbreezecommon5-5
 
-%if %{with lang}
+%if %{with released}
 %files -n breeze5-style-lang -f %{name}.lang
 %license LICENSES/*
 %endif
