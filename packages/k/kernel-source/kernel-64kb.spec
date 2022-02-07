@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.16
-%define patchversion 5.16.4
+%define patchversion 5.16.5
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -107,9 +107,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.16.4
+Version:        5.16.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb146677
+Release:        <RELEASE>.g1af4009
 %else
 Release:        0
 %endif
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b1466772bff446593573594227eca436e3a5cbcf
-Provides:       kernel-srchash-b1466772bff446593573594227eca436e3a5cbcf
+Provides:       kernel-%build_flavor-base-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
+Provides:       kernel-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
 # END COMMON DEPS
-Provides:       %name-srchash-b1466772bff446593573594227eca436e3a5cbcf
+Provides:       %name-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1112,8 +1112,16 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     # kernel versions, otherwise file conflicts might arise with
     # multiversion(kernel).
 
-    mkdir -p %buildroot/etc/modprobe.d
-    cat >%buildroot/etc/modprobe.d/20-kernel-%{build_flavor}-extra.conf <<EOF
+    modprobe_d_dir=/etc/modprobe.d
+    %if 0%{?sle_version} > 150300
+    modprobe_d_dir=/lib/modprobe.d
+    %endif
+    %if 0%{?usrmerged}
+    modprobe_d_dir=/usr/lib/modprobe.d
+    %endif
+
+    mkdir -p %buildroot$modprobe_d_dir
+    cat >%buildroot$modprobe_d_dir/20-kernel-%{build_flavor}-extra.conf <<EOF
 # This file overrides the default from 10-unsupported-modules.conf.
 # This is necessary to load kernel modules from the
 # kernel-%{build_flavor}-extra package.
@@ -1122,8 +1130,8 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 # Please read the comments in 10-unsupported-modules.conf.
 allow_unsupported_modules 1
 EOF
-    echo "%%dir /etc/modprobe.d" >> %my_builddir/kernel-extra.files
-    echo '%%config(noreplace) /etc/modprobe.d/20-kernel-%{build_flavor}-extra.conf' >> %my_builddir/kernel-extra.files
+    echo "%%dir $modprobe_d_dir" >> %my_builddir/kernel-extra.files
+    echo "%%config(noreplace) $modprobe_d_dir/20-kernel-%{build_flavor}-extra.conf" >> %my_builddir/kernel-extra.files
 %endif
 %endif
 for f in %my_builddir/*-kmp-modules; do

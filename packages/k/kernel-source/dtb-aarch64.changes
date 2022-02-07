@@ -1,4 +1,363 @@
 -------------------------------------------------------------------
+Wed Feb  2 07:45:56 CET 2022 - jslaby@suse.cz
+
+- cifs: fix workstation_name for multiuser mounts (bsc#1195360).
+- commit 6d27379
+
+-------------------------------------------------------------------
+Wed Feb  2 06:30:38 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.5 (bsc#1012628).
+- mtd: rawnand: mpc5121: Remove unused variable in
+  ads5121_select_chip() (bsc#1012628).
+- block: Fix wrong offset in bio_truncate() (bsc#1012628).
+- KVM: nVMX: Allow VMREAD when Enlightened VMCS is in use
+  (bsc#1012628).
+- KVM: nVMX: Implement evmcs_field_offset() suitable for
+  handle_vmread() (bsc#1012628).
+- KVM: nVMX: Rename vmcs_to_field_offset{,_table} (bsc#1012628).
+- tools/testing/scatterlist: add missing defines (bsc#1012628).
+- usr/include/Makefile: add linux/nfc.h to the compile-test
+  coverage (bsc#1012628).
+- usb: dwc3: xilinx: fix uninitialized return value (bsc#1012628).
+- psi: fix "defined but not used" warnings when CONFIG_PROC_FS=n
+  (bsc#1012628).
+- psi: fix "no previous prototype" warnings when CONFIG_CGROUPS=n
+  (bsc#1012628).
+- perf/core: Fix cgroup event list management (bsc#1012628).
+- PCI: mt7621: Remove unused function pcie_rmw() (bsc#1012628).
+- dt-bindings: can: tcan4x5x: fix mram-cfg RX FIFO config
+  (bsc#1012628).
+- irqchip/realtek-rtl: Fix off-by-one in routing (bsc#1012628).
+- irqchip/realtek-rtl: Map control data to virq (bsc#1012628).
+- net: bridge: vlan: fix memory leak in __allowed_ingress
+  (bsc#1012628).
+- ipv4: remove sparse error in ip_neigh_gw4() (bsc#1012628).
+- ipv4: tcp: send zero IPID in SYNACK messages (bsc#1012628).
+- ipv4: raw: lock the socket in raw_bind() (bsc#1012628).
+- net: bridge: vlan: fix single net device option dumping
+  (bsc#1012628).
+- Revert "ipv6: Honor all IPv6 PIO Valid Lifetime values"
+  (bsc#1012628).
+- gve: Fix GFP flags when allocing pages (bsc#1012628).
+- ceph: put the requests/sessions when it fails to alloc memory
+  (bsc#1012628).
+- KVM: selftests: Don't skip L2's VMCALL in SMM test for SVM guest
+  (bsc#1012628).
+- Revert "drm/ast: Support 1600x900 with 108MHz PCLK"
+  (bsc#1012628).
+- sch_htb: Fail on unsupported parameters when offload is
+  requested (bsc#1012628).
+- KVM: selftests: Re-enable access_tracking_perf_test
+  (bsc#1012628).
+- net: hns3: handle empty unknown interrupt for VF (bsc#1012628).
+- net: cpsw: Properly initialise struct page_pool_params
+  (bsc#1012628).
+- yam: fix a memory leak in yam_siocdevprivate() (bsc#1012628).
+- drm/msm/a6xx: Add missing suspend_count increment (bsc#1012628).
+- drm/msm/dpu: invalid parameter check in dpu_setup_dspp_pcc
+  (bsc#1012628).
+- drm/msm/hdmi: Fix missing put_device() call in msm_hdmi_get_phy
+  (bsc#1012628).
+- hwmon: (nct6775) Fix crash in clear_caseopen (bsc#1012628).
+- can: tcan4x5x: regmap: fix max register value (bsc#1012628).
+- video: hyperv_fb: Fix validation of screen resolution
+  (bsc#1012628).
+- net/smc: Transitional solution for clcsock race issue
+  (bsc#1012628).
+- ibmvnic: don't spin in tasklet (bsc#1012628).
+- ibmvnic: init ->running_cap_crqs early (bsc#1012628).
+- ibmvnic: Allow extra failures before disabling (bsc#1012628).
+- ipv4: fix ip option filtering for locally generated fragments
+  (bsc#1012628).
+- powerpc/perf: Fix power_pmu_disable to call
+  clear_pmi_irq_pending only if PMI is pending (bsc#1012628).
+- hwmon: (adt7470) Prevent divide by zero in adt7470_fan_write()
+  (bsc#1012628).
+- hwmon: (lm90) Fix sysfs and udev notifications (bsc#1012628).
+- hwmon: (lm90) Mark alert as broken for MAX6654 (bsc#1012628).
+- hwmon: (lm90) Re-enable interrupts after alert clears
+  (bsc#1012628).
+- Drivers: hv: balloon: account for vmbus packet header in
+  max_pkt_size (bsc#1012628).
+- block: fix memory leak in
+  disk_register_independent_access_ranges (bsc#1012628).
+- io_uring: fix bug in slow unregistering of nodes (bsc#1012628).
+- efi/libstub: arm64: Fix image check alignment at entry
+  (bsc#1012628).
+- rxrpc: Adjust retransmission backoff (bsc#1012628).
+- octeontx2-af: Add KPU changes to parse NGIO as separate layer
+  (bsc#1012628).
+- octeontx2-pf: Forward error codes to VF (bsc#1012628).
+- octeontx2-af: cn10k: Do not enable RPM loopback for LPC
+  interfaces (bsc#1012628).
+- octeontx2-af: Increase link credit restore polling timeout
+  (bsc#1012628).
+- octeontx2-pf: cn10k: Ensure valid pointers are freed to aura
+  (bsc#1012628).
+- octeontx2-af: cn10k: Use appropriate register for LMAC enable
+  (bsc#1012628).
+- octeontx2-af: Retry until RVU block reset complete
+  (bsc#1012628).
+- octeontx2-af: Fix LBK backpressure id count (bsc#1012628).
+- octeontx2-af: Do not fixup all VF action entries (bsc#1012628).
+- phylib: fix potential use-after-free (bsc#1012628).
+- net: stmmac: dwmac-visconti: Fix clock configuration for RMII
+  mode (bsc#1012628).
+- net: stmmac: dwmac-visconti: Fix bit definitions for
+  ETHER_CLK_SEL (bsc#1012628).
+- ethtool: Fix link extended state for big endian (bsc#1012628).
+- net: phy: broadcom: hook up soft_reset for BCM54616S
+  (bsc#1012628).
+- sched/pelt: Relax the sync of util_sum with util_avg
+  (bsc#1012628).
+- perf: Fix perf_event_read_local() time (bsc#1012628).
+- powerpc/64s: Mask SRR0 before checking against the masked NIP
+  (bsc#1012628).
+- remoteproc: qcom: q6v5: fix service routines build errors
+  (bsc#1012628).
+- netfilter: conntrack: don't increment invalid counter on
+  NF_REPEAT (bsc#1012628).
+- powerpc64/bpf: Limit 'ldbrx' to processors compliant with ISA
+  v2.06 (bsc#1012628).
+- SUNRPC: Don't dereference xprt->snd_task if it's a cookie
+  (bsc#1012628).
+- KVM: arm64: pkvm: Use the mm_ops indirection for cache
+  maintenance (bsc#1012628).
+- NFS: Ensure the server has an up to date ctime before renaming
+  (bsc#1012628).
+- NFS: Ensure the server has an up to date ctime before
+  hardlinking (bsc#1012628).
+- ipv6: annotate accesses to fn->fn_sernum (bsc#1012628).
+- drm/msm/dsi: invalid parameter check in msm_dsi_phy_enable
+  (bsc#1012628).
+- drm/msm/dsi: Fix missing put_device() call in dsi_get_phy
+  (bsc#1012628).
+- drm/msm: Fix wrong size calculation (bsc#1012628).
+- net-procfs: show net devices bound packet types (bsc#1012628).
+- NFSv4: nfs_atomic_open() can race when looking up a non-regular
+  file (bsc#1012628).
+- NFSv4: Handle case where the lookup of a directory fails
+  (bsc#1012628).
+- hwmon: (lm90) Reduce maximum conversion rate for G781
+  (bsc#1012628).
+- ipv4: avoid using shared IP generator for connected sockets
+  (bsc#1012628).
+- ping: fix the sk_bound_dev_if match in ping_lookup
+  (bsc#1012628).
+- hwmon: (lm90) Mark alert as broken for MAX6680 (bsc#1012628).
+- hwmon: (lm90) Mark alert as broken for MAX6646/6647/6649
+  (bsc#1012628).
+- net: fix information leakage in /proc/net/ptype (bsc#1012628).
+- ARM: 9170/1: fix panic when kasan and kprobe are enabled
+  (bsc#1012628).
+- ipv6_tunnel: Rate limit warning messages (bsc#1012628).
+- scsi: bnx2fc: Flush destroy_work queue before calling
+  bnx2fc_interface_put() (bsc#1012628).
+- scsi: elx: efct: Don't use GFP_KERNEL under spin lock
+  (bsc#1012628).
+- rpmsg: char: Fix race between the release of rpmsg_eptdev and
+  cdev (bsc#1012628).
+- rpmsg: char: Fix race between the release of rpmsg_ctrldev
+  and cdev (bsc#1012628).
+- usb: roles: fix include/linux/usb/role.h compile issue
+  (bsc#1012628).
+- i40e: fix unsigned stat widths (bsc#1012628).
+- i40e: Fix for failed to init adminq while VF reset
+  (bsc#1012628).
+- i40e: Fix queues reservation for XDP (bsc#1012628).
+- i40e: Fix issue when maximum queues is exceeded (bsc#1012628).
+- i40e: Increase delay to 1 s after global EMP reset
+  (bsc#1012628).
+- powerpc/32: Fix boot failure with GCC latent entropy plugin
+  (bsc#1012628).
+- powerpc/32s: Fix kasan_init_region() for KASAN (bsc#1012628).
+- powerpc/32s: Allocate one 256k IBAT instead of two consecutives
+  128k IBATs (bsc#1012628).
+- x86/cpu: Add Xeon Icelake-D to list of CPUs that support PPIN
+  (bsc#1012628).
+- x86/MCE/AMD: Allow thresholding interface updates after init
+  (bsc#1012628).
+- PCI/sysfs: Find shadow ROM before static attribute
+  initialization (bsc#1012628).
+- sched/membarrier: Fix membarrier-rseq fence command missing
+  from query bitmask (bsc#1012628).
+- ocfs2: fix a deadlock when commit trans (bsc#1012628).
+- jbd2: export jbd2_journal_[grab|put]_journal_head (bsc#1012628).
+- mm, kasan: use compare-exchange operation to set KASAN page tag
+  (bsc#1012628).
+- mt76: connac: introduce MCU_CE_CMD macro (bsc#1012628).
+- ucsi_ccg: Check DEV_INT bit only when starting CCG4
+  (bsc#1012628).
+- usb: typec: tcpm: Do not disconnect when receiving VSAFE0V
+  (bsc#1012628).
+- usb: typec: tcpm: Do not disconnect while receiving VBUS off
+  (bsc#1012628).
+- usb: typec: tcpci: don't touch CC line if it's Vconn source
+  (bsc#1012628).
+- USB: core: Fix hang in usb_kill_urb by adding memory barriers
+  (bsc#1012628).
+- usb: dwc3: xilinx: Fix error handling when getting USB3 PHY
+  (bsc#1012628).
+- usb: dwc3: xilinx: Skip resets and USB3 register settings for
+  USB2.0 mode (bsc#1012628).
+- usb: cdnsp: Fix segmentation fault in cdns_lost_power function
+  (bsc#1012628).
+- usb: gadget: f_sourcesink: Fix isoc transfer for
+  USB_SPEED_SUPER_PLUS (bsc#1012628).
+- usb: common: ulpi: Fix crash in ulpi_match() (bsc#1012628).
+- usb: xhci-plat: fix crash when suspend if remote wake enable
+  (bsc#1012628).
+- usb-storage: Add unusual-devs entry for VL817 USB-SATA bridge
+  (bsc#1012628).
+- kbuild: remove include/linux/cyclades.h from header file check
+  (bsc#1012628).
+- tty: Add support for Brainboxes UC cards (bsc#1012628).
+- tty: Partially revert the removal of the Cyclades public API
+  (bsc#1012628).
+- tty: n_gsm: fix SW flow control encoding/handling (bsc#1012628).
+- tty: rpmsg: Fix race condition releasing tty port (bsc#1012628).
+- serial: stm32: fix software flow control transfer (bsc#1012628).
+- serial: 8250: of: Fix mapped region size when using reg-offset
+  property (bsc#1012628).
+- serial: pl011: Fix incorrect rs485 RTS polarity on set_mctrl
+  (bsc#1012628).
+- dm: properly fix redundant bio-based IO accounting
+  (bsc#1012628).
+- block: add bio_start_io_acct_time() to control start_time
+  (bsc#1012628).
+- dm: revert partial fix for redundant bio-based IO accounting
+  (bsc#1012628).
+- arm64: extable: fix load_unaligned_zeropad() reg indices
+  (bsc#1012628).
+- security, lsm: dentry_init_security() Handle multi LSM
+  registration (bsc#1012628).
+- KVM: PPC: Book3S HV Nested: Fix nested HFSCR being clobbered
+  with multiple vCPUs (bsc#1012628).
+- KVM: x86: Sync the states size with the XCR0/IA32_XSS at,
+  any time (bsc#1012628).
+- KVM: x86: Update vCPU's runtime CPUID on write to MSR_IA32_XSS
+  (bsc#1012628).
+- KVM: x86: Keep MSR_IA32_XSS unchanged for INIT (bsc#1012628).
+- KVM: x86: Check .flags in kvm_cpuid_check_equal() too
+  (bsc#1012628).
+- KVM: x86: Forcibly leave nested virt when SMM state is toggled
+  (bsc#1012628).
+- KVM: x86: Free kvm_cpuid_entry2 array on post-KVM_RUN
+  KVM_SET_CPUID{,2} (bsc#1012628).
+- KVM: x86: Move CPUID.(EAX=0x12,ECX=1) mangling to
+  __kvm_update_cpuid_runtime() (bsc#1012628).
+- KVM: x86: nSVM: skip eax alignment check for non-SVM
+  instructions (bsc#1012628).
+- KVM: SVM: Don't intercept #GP for SEV guests (bsc#1012628).
+- KVM: SVM: Never reject emulation due to SMAP errata for !SEV
+  guests (bsc#1012628).
+- KVM: LAPIC: Also cancel preemption timer during SET_LAPIC
+  (bsc#1012628).
+- drm/amd/display: Wrap dcn301_calculate_wm_and_dlg for FPU
+  (bsc#1012628).
+- drm/amd/display: Fix FP start/end for dcn30_internal_validate_bw
+  (bsc#1012628).
+- drm/amdgpu/display: Remove t_srx_delay_us (bsc#1012628).
+- drm/amdgpu: filter out radeon secondary ids as well
+  (bsc#1012628).
+- drm/atomic: Add the crtc to affected crtc only if uapi.enable =
+  true (bsc#1012628).
+- drm/etnaviv: relax submit size limits (bsc#1012628).
+- perf/x86/intel: Add a quirk for the calculation of the number
+  of counters on Alder Lake (bsc#1012628).
+- perf/x86/intel/uncore: Fix CAS_COUNT_WRITE issue for ICX
+  (bsc#1012628).
+- powerpc/audit: Fix syscall_get_arch() (bsc#1012628).
+- psi: Fix uaf issue when psi trigger is destroyed while being
+  polled (bsc#1012628).
+- Revert "KVM: SVM: avoid infinite loop on NPF from bad address"
+  (bsc#1012628).
+- fsnotify: fix fsnotify hooks in pseudo filesystems
+  (bsc#1012628).
+- fsnotify: invalidate dcache before IN_DELETE event
+  (bsc#1012628).
+- ceph: set pool_ns in new inode layout for async creates
+  (bsc#1012628).
+- ceph: properly put ceph_string reference after async create
+  attempt (bsc#1012628).
+- tracing: Don't inc err_log entry count if entry allocation fails
+  (bsc#1012628).
+- tracing: Propagate is_signed to expression (bsc#1012628).
+- tracing/histogram: Fix a potential memory leak for kstrdup()
+  (bsc#1012628).
+- PM: wakeup: simplify the output logic of pm_show_wakelocks()
+  (bsc#1012628).
+- efi: runtime: avoid EFIv2 runtime services on Apple x86 machines
+  (bsc#1012628).
+- udf: Fix NULL ptr deref when converting from inline format
+  (bsc#1012628).
+- udf: Restore i_lenAlloc when inode expansion fails
+  (bsc#1012628).
+- scsi: zfcp: Fix failed recovery on gone remote port with
+  non-NPIV FCP devices (bsc#1012628).
+- ucount: Make get_ucount a safe get_user replacement
+  (bsc#1012628).
+- powerpc/bpf: Update ldimm64 instructions during extra pass
+  (bsc#1012628).
+- powerpc32/bpf: Fix codegen for bpf-to-bpf calls (bsc#1012628).
+- bpf: Guard against accessing NULL pt_regs in
+  bpf_get_task_stack() (bsc#1012628).
+- s390/nmi: handle vector validity failures for KVM guests
+  (bsc#1012628).
+- s390/nmi: handle guarded storage validity failures for KVM
+  guests (bsc#1012628).
+- s390/hypfs: include z/VM guests with access control group set
+  (bsc#1012628).
+- s390/module: fix loading modules with a lot of relocations
+  (bsc#1012628).
+- KVM: arm64: vgic-v3: Restrict SEIS workaround to known broken
+  systems (bsc#1012628).
+- KVM: arm64: Use shadow SPSR_EL1 when injecting exceptions on
+  !VHE (bsc#1012628).
+- ARM: 9180/1: Thumb2: align ALT_UP() sections in modules
+  sufficiently (bsc#1012628).
+- ARM: 9179/1: uaccess: avoid alignment faults in
+  copy_[from|to]_kernel_nofault (bsc#1012628).
+- net: stmmac: skip only stmmac_ptp_register when resume from
+  suspend (bsc#1012628).
+- net: stmmac: configure PTP clock source prior to PTP
+  initialization (bsc#1012628).
+- net: sfp: ignore disabled SFP node (bsc#1012628).
+- can: m_can: m_can_fifo_{read,write}: don't read or write
+  from/to FIFO if length is 0 (bsc#1012628).
+- btrfs: update writeback index when starting defrag
+  (bsc#1012628).
+- btrfs: add back missing dirty page rate limiting to defrag
+  (bsc#1012628).
+- btrfs: fix deadlock when reserving space during defrag
+  (bsc#1012628).
+- btrfs: defrag: properly update range->start for autodefrag
+  (bsc#1012628).
+- btrfs: defrag: fix wrong number of defragged sectors
+  (bsc#1012628).
+- btrfs: allow defrag to be interruptible (bsc#1012628).
+- btrfs: fix too long loop when defragging a 1 byte file
+  (bsc#1012628).
+- Bluetooth: refactor malicious adv data check (bsc#1012628).
+- commit 5681efc
+
+-------------------------------------------------------------------
+Tue Feb  1 15:23:26 CET 2022 - tiwai@suse.de
+
+- Input: synaptics: retry query upon error (bsc#1194086).
+- commit 5277fb2
+
+-------------------------------------------------------------------
+Mon Jan 31 15:20:36 CET 2022 - ludwig.nussel@suse.de
+
+- kernel-obs-build: include 9p (boo#1195353)
+  To be able to share files between host and the qemu vm of the build
+  script, the 9p and 9p_virtio kernel modules need to be included in
+  the initrd of kernel-obs-build.
+- commit 0cfe67a
+
+-------------------------------------------------------------------
 Sat Jan 29 13:57:02 CET 2022 - jslaby@suse.cz
 
 - Linux 5.16.4 (bsc#1012628).
@@ -1796,6 +2155,13 @@ Mon Jan 24 19:27:48 CET 2022 - jslaby@suse.cz
   (bsc#1012628 CVE-2022-0185 bsc#1194517).
   Add CVE reference.
 - commit 0d710a8
+
+-------------------------------------------------------------------
+Mon Jan 24 16:58:21 CET 2022 - msuchanek@suse.de
+
+- kernel-binary.spec.in: Move 20-kernel-default-extra.conf to the correctr
+  directory (bsc#1195051).
+- commit c80b5de
 
 -------------------------------------------------------------------
 Mon Jan 24 11:55:17 CET 2022 - tiwai@suse.de
