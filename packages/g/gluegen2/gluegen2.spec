@@ -1,7 +1,7 @@
 #
 # spec file for package gluegen2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Tool for automatic generation the Java and JNI code
 License:        BSD-2-Clause
 Group:          Development/Libraries/Java
-Url:            http://jogamp.org/gluegen/www/
+URL:            http://jogamp.org/gluegen/www/
 Source0:        http://jogamp.org/deployment/v%{version}/archive/Sources/%{src_name}.tar.xz
 Source1:        http://jogamp.org/deployment/v%{version}/archive/Sources/%{jcppsrc_name}.tar.xz
 Patch0:         gluegen2-jar-paths.patch
@@ -42,6 +42,7 @@ Patch7:         gluegen2-no-static-libstdc++.patch
 Patch8:         gluegen2-0001-Remove-version-overrides-for-memcpy.patch
 Patch9:         gluegen2-jdk9.patch
 Patch10:        gluegen2-jdk10.patch
+Patch11:        gluegen2-riscv64.patch
 BuildRequires:  ant >= 1.9.8
 BuildRequires:  ant-antlr
 BuildRequires:  ant-contrib
@@ -93,6 +94,7 @@ rm -rf src/java/net/highteq/nativetaglet/
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 # Fix wrong-script-end-of-line-encoding
 rm make/scripts/*.bat

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  6 20:59:05 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Added patch:
+  * gluegen2-riscv64.patch
+    + Add support for riscv64
+
+-------------------------------------------------------------------
 Thu May 17 08:03:01 UTC 2018 - fstrba@suse.com
 
 - Build with source and target 8 to prepare for a possible removal
