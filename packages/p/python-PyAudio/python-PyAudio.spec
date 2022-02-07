@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyAudio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with     test
+%bcond_without  test
 Name:           python-PyAudio
 Version:        0.2.11
 Release:        0
@@ -25,13 +25,15 @@ Summary:        Python Bindings for PortAudio v19
 License:        MIT
 URL:            https://people.csail.mit.edu/hubert/pyaudio/
 Source:         https://files.pythonhosted.org/packages/source/P/PyAudio/PyAudio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM loopback_required.patch mcepl@suse.com
+# Mark tests requiring specific hardware as such
+Patch0:         loopback_required.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  portaudio-devel
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  alsa
 %endif
@@ -44,6 +46,7 @@ of platforms (e.g., GNU/Linux, Microsoft Windows, and Mac OS X).
 
 %prep
 %setup -q -n PyAudio-%{version}
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -55,11 +58,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %if %{with test}
 %check
-pushd tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B -m nose ./*.py
-}
-popd
+# report send to hubert@mit.edu
+export HW_REQUIRED=1
+%pyunittest_arch discover -p '*.py' -v -s tests
 %endif
 
 %files %{python_files}

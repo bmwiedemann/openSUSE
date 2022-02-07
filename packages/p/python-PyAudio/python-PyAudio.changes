@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  7 14:14:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add loopback_required.patch which allows skipping over tests
+  requiring special hardware without pytest. The issue reported
+  upstream by email.
+
+-------------------------------------------------------------------
 Thu Nov  7 15:06:44 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner

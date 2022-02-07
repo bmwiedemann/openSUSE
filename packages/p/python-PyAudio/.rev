@@ -37,4 +37,15 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746314</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4bb5ad7ec8fbd76e607d5afa42651887</srcmd5>
+    <version>0.2.11</version>
+    <time>1644273503</time>
+    <user>dimstar_suse</user>
+    <comment>- Add loopback_required.patch which allows skipping over tests
+  requiring special hardware without pytest. The issue reported
+  upstream by email.
+</comment>
+    <requestid>952141</requestid>
+  </revision>
 </revisionlist>
