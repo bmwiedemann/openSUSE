@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-communication-networktraversal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-networktraversal
-Version:        1.0.0b2
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Communication Network Traversal Service Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-networktraversal/azure-communication-networktraversal-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-networktraversal/azure-communication-networktraversal-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -49,10 +51,10 @@ Azure Communication Network Traversal is managing TURN credentials for Azure Com
 It will provide TURN credentials to a user.
 
 %prep
-%setup -q -n azure-communication-networktraversal-%{version}
+%setup -q -n azure-communication-networktraversal-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-networktraversal-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-communication-networktraversal-%{realversion}
 %python_build
 
 %install
