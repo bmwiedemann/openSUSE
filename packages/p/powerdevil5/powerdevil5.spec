@@ -16,9 +16,9 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           powerdevil5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
+Source:         powerdevil-%{version}.tar.xz
+%if %{with released}
+Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -47,6 +47,7 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Screen) >= %{_plasma5_version}
@@ -68,6 +69,8 @@ Recommends:     %{name}-lang
 Conflicts:      kdebase4-workspace < 5.3.0
 # Needed for battery / brightness detection
 Recommends:     upower
+# For switching power profiles
+Recommends:     power-profiles-daemon
 
 %description
 KDE Power Management module. Provides kded daemon,
@@ -84,7 +87,7 @@ DBus helper and KCM for configuring Power settings.
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %kf5_find_lang
   %kf5_find_htmldocs
 %endif
@@ -142,7 +145,7 @@ DBus helper and KCM for configuring Power settings.
 
 %{_kf5_configdir}/autostart/powerdevil.desktop
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- No code changes since 5.23.90
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * powerprofileconfig: Use m_profileCombo as the watcher's parent
+  * Restore connect to powerOffButtonTriggered
+  * backlighthelper: fix brightness handling for embedded devices
+  * Fix some clazy warning
+  * Support new charge_control_*_threshold
+  * Check if backlight device is enabled (kde#399646)
+  * Add GitLab CI
+  * powerdevilcore: Add some context to debug output
+  * Bluez and NM are Linux only dependencies
+  * Port deprecated KCModule constructor
+  * Use KWin's tablet mode to decide on the mobility UX
+  * Always dismiss critical battery notification (kde#445171)
+  * We depend against qt5.15
+  * A few code cleanups
+  * UPowerBackend: remove dead code
+  * dpms: don't lock until dimmed
+  * Add .kde-ci.yml
+  * Clear alwaysActionBox before filling (kde#443114)
+  * On FreeBSD do not try to execute powerdevil.backlighthelper.syspath action.
+  * Remove inappropriate low maximum width for spinboxes (kde#442556)
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
