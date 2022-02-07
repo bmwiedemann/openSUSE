@@ -19,17 +19,17 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\(org\\.kde\\.private\\.kcms\\.sddm
 
-%bcond_without lang
+%bcond_without released
 Name:           kcm_sddm
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
+Source:         sddm-kcm-%{version}.tar.xz
+%if %{with released}
+Source1:        sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -73,28 +73,30 @@ sddm.
 %install
   %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
   %find_lang %{name} %{name}.lang
 %endif
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
 %files
 %doc README.md
 %license COPYING
-%{_kf5_servicesdir}/kcm_sddm.desktop
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmsddm.conf
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
 %{_kf5_libdir}/libexec/kauth/kcmsddm_authhelper
 %{_bindir}/sddmthemeinstaller
 %{_kf5_knsrcfilesdir}/sddmtheme.knsrc
+%{_kf5_applicationsdir}/kcm_sddm.desktop
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_sddm/
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/kcm_sddm.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_sddm.so
 
 %changelog
