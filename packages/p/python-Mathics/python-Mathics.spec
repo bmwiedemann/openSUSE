@@ -1,7 +1,7 @@
 #
-# spec file for package python-Mathics
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,31 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Upstream no longer supports python2
 %define skip_python2 1
-%define skip_python36 1
 %define pyname Mathics3
-Name:           python-Mathics
-Version:        1.1.1
+Name:           python-Mathics%{psuffix}
+Version:        4.0.0
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source:         https://github.com/mathics/Mathics/archive/%{version}/%{pyname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Revert version jump to dev branch
+Patch0:         https://github.com/Mathics3/mathics-core/commit/41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devel}
@@ -38,23 +50,33 @@ BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10}
-BuildRequires:  %{python_module sympy >= 1.6}
+BuildRequires:  %{python_module sympy >= 1.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.8
+Requires:       python-Mathics-Scanner
+Requires:       python-Pint
+Requires:       python-llvmlite
 Requires:       python-mpmath >= 0.19
+Requires:       python-palettable
 Requires:       python-python-dateutil
 Requires:       python-six >= 1.10
-Requires:       python-sympy >= 1.7.1
+Requires:       python-sympy >= 1.8
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%if %{with test}
 # SECTION For tests
+BuildRequires:  %{python_module Mathics}
+BuildRequires:  %{python_module Mathics-Scanner}
 BuildRequires:  %{python_module Pint}
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module llvmlite}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module scipy}
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -62,11 +84,9 @@ Mathics is a general-purpose computer algebra system (CAS). It is meant to be a 
 
 %prep
 %setup -q -n Mathics-%{version}
-%autopatch -p1
+%patch0 -p1 -R
 
 # FIX SPURIOUS EXEC PERMISSIONS
-find ./mathics/web/media/js -name "*.js" -exec chmod -x '{}' \;
-find ./mathics/web/media/js -name "*.svg" -exec chmod -x '{}' \;
 chmod -x ./mathics/data/ExampleData/{numberdata.csv,InventionNo1.xml}
 
 # WRONG END-OF-FILE ENCODING
@@ -81,40 +101,39 @@ done
 popd
 
 %build
+%if %{without test}
 %python_build
+%endif
 
 %install
+%if %{without test}
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/dmathicsserver
-%python_clone -a %{buildroot}%{_bindir}/dmathicsscript
 %python_clone -a %{buildroot}%{_bindir}/mathics
-%python_clone -a %{buildroot}%{_bindir}/mathicsserver
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if %{with test}
 %check
+# Tests need to be run from the test dir, otherwise some tests in test_files.py fail
+pushd test
 # Home page tests require django server up and running
-%pytest -k 'not test_home_page'
+%pytest_arch -k 'not test_home_page'
+popd
+%endif
 
+%if %{without test}
 %post
-%python_install_alternative dmathicsserver
-%python_install_alternative dmathicsscript
 %python_install_alternative mathics
-%python_install_alternative mathicsserver
 
 %postun
-%python_install_alternative dmathicsserver
-%python_install_alternative dmathicsscript
-%python_install_alternative mathics
-%python_install_alternative mathicsserver
+%python_uninstall_alternative mathics
 
 %files %{python_files}
 %license COPYING.txt
 %doc README.rst AUTHORS.txt
-%{python_sitelib}/mathics/
-%{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
-%python_alternative %{_bindir}/dmathicsscript
-%python_alternative %{_bindir}/dmathicsserver
 %python_alternative %{_bindir}/mathics
-%python_alternative %{_bindir}/mathicsserver
+%{python_sitearch}/mathics/
+%{python_sitearch}/%{pyname}-%{version}-py%{python_version}.egg-info/
+%endif
 
 %changelog

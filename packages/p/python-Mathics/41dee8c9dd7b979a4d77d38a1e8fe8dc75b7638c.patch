@@ -1,0 +1,19 @@
+From 41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c Mon Sep 17 00:00:00 2001
+From: rocky <rb@dustyfeet.com>
+Date: Sat, 31 Jul 2021 20:59:15 -0400
+Subject: [PATCH] Bump to dev version
+
+---
+ mathics/version.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mathics/version.py b/mathics/version.py
+index 7f01dd50..d24d22d6 100644
+--- a/mathics/version.py
++++ b/mathics/version.py
+@@ -5,4 +5,4 @@
+ # well as importing into Python. That's why there is no
+ # space around "=" below.
+ # fmt: off
+-__version__="4.0.0"  # noqa
++__version__="4.0.1.dev0"  # noqa

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jan 29 19:13:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.0:
+  * Enhancements
+    - Introduce a Graphics3D protocol.
+    - mathics.setting have been gone over to simplify.
+    - A rudimentary and crude SVG Density Plot was added.
+  * Bug fixes:
+    - A small SVGTransform bug was fixed.
+    - Elliptic arcs are now supported in Asymptote.
+    - A bug in image decoding introduced in 3.1.0 or so was fixed.
+    - A bug SVG LineBoxes was fixed.
+    - SVG and Asymptote drawing now includes inline comments
+      indicating which Box Structures are being implemented in
+      code.
+  * Documentation updates.
+- New BuildRequires: python-Cython (to use cython-ised builds),
+  python-Mathics-Scanner (also Requires), python-scipy (for some
+  tests).
+- Add more Requires according to setup.py.
+- Add 41dee8c9dd7b979a4d77d38a1e8fe8dc75b7638c.patch: git commit
+  from upstream that made version incorrect before tagged release;
+  apply with -R to revert.
+- Drop binaries no longer installed by upstream.
+- Enable multibuild: Split out tests into its own flavour, since
+  some tests require the binary installed with update-alternative
+  magic.
+
+-------------------------------------------------------------------
 Tue Apr 20 04:19:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't build for Python 3.6, due to no NumPy. 
