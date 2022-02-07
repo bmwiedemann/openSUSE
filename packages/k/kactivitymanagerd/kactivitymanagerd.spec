@@ -18,17 +18,17 @@
 %global kf5_version 5.58.0
 %global qt5_version 5.12.0
 
-%bcond_without lang
+%bcond_without released
 Name:           kactivitymanagerd
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kactivitymanagerd
-Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
+Source:         kactivitymanagerd-%{version}.tar.xz
+%if %{with released}
+Source1:        kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 %if 0%{?suse_version} > 1325
@@ -94,7 +94,7 @@ Provides translations to the package %{name}.
   %kf5_makeinstall -C build
   %fdupes %{buildroot}
 
-%if %{with lang}
+%if %{with released}
 %find_lang kactivities5
 %endif
 
@@ -109,7 +109,7 @@ Provides translations to the package %{name}.
 /sbin/ldconfig
 %{systemd_user_postun plasma-kactivitymanagerd.service}
 
-%if %{with lang}
+%if %{with released}
 %files -n %name-lang -f kactivities5.lang
 %endif
 
