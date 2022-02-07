@@ -1,7 +1,7 @@
 #
 # spec file for package libmlt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -185,7 +185,8 @@ This package contains python bindings.
 %endif
    -DGPL=ON \
    -DGPL3=ON \
-   -DSWIG_PYTHON=ON
+   -DSWIG_PYTHON=ON \
+   -DCMAKE_SKIP_RPATH=1
 %cmake_build
 
 %install

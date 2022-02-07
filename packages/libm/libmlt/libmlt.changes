@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  7 08:12:10 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Installed files included a rpath to a build directory. Do not
+  use rpath at all.
+
+-------------------------------------------------------------------
 Mon Dec 20 09:43:23 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.4.0
