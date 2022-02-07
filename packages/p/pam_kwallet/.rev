@@ -796,4 +796,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment> (forwarded request 943820 from Vogtinator)</comment>
     <requestid>943988</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>d79aedbff5fa47f84c2bbfc84b9ce966</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273440</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
+    <requestid>951890</requestid>
+  </revision>
 </revisionlist>
