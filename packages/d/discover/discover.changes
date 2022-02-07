@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:55 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * flatpak: ensure we don't unref transactions twice (kde#440877)
+  * fix integer overflow in backends
+  * Mark Discover compulsory_for_desktop with KDE (kde#449260)
+  * Cancel DialogButtonBox's built-in margins in a better way
+  * Make app delegate icon less enormous
+  * NavigationTabBar: Avoid loop on actions in tab group (kde#448460)
+  * pk: Fix dependencies view (kde#414822)
+  * Reset the ApplicationAddionsModel when the state of an application changes (kde#426027)
+  * kns: Fix resource download sizes (kde#432846)
+  * flatpak: Don't treat the lack of metadata as fatal (kde#443745)
+  * flatpak: Add the repositories added by a transaction (kde#447772)
+  * PackageKitUpdater: Do not emit error when user cancels an update
+  * Use loader for NavigationTabBar
+  * Do not register a unique application when we call with --feedback (kde#448502)
+  * Mark the window as invisible when calling with --feedback (kde#423493)
+  * Only check for configuration changes when the ones we care about change (kde#447939)
+  * Clear the screenshot model as we change resources (kde#448620)
+  * pk: Mark to update as soon as the offline update is triggered
+  * pk: Only offer to launch apps (kde#429060)
+  * Rename PAGE_SIZE to ENGINE_PAGE_SIZE to avoid a clash (kde#448378)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5

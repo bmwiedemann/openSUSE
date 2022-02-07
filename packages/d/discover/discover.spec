@@ -16,20 +16,20 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 # Version in Leap 15.2 is too old
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source:         discover-%{version}.tar.xz
+%if %{with released}
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -151,7 +151,7 @@ user to install them using Discover.
   # Even without the snap backend, this is installed...
   rm %{buildroot}%{_kf5_applicationsdir}/org.kde.discover.snap.desktop
 
-%if %{with lang}
+%if %{with released}
   %find_lang libdiscover %{name}.lang
   %find_lang plasma-discover %{name}.lang
 
@@ -182,7 +182,7 @@ user to install them using Discover.
 %dir %{_kf5_libexecdir}/discover
 %{_kf5_libexecdir}/discover/runservice
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
@@ -216,11 +216,12 @@ user to install them using Discover.
 %{_kf5_configdir}/autostart/org.kde.discover.notifier.desktop
 %{_libdir}/libexec/DiscoverNotifier
 %{_kf5_applicationsdir}/org.kde.discover.notifier.desktop
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/kcm_updates.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_updates.so
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_updates/
-%{_kf5_servicesdir}/kcm_updates.desktop
 
 %changelog
