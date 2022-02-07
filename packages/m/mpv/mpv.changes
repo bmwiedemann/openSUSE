@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 05 20:24:08 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.34.1+git.20220203T182214.5d31c7310c:
+  * libplacebo: switch to new target format API
+  * libplacebo: switch to new GPU limits APIs
+  * libplacebo: switch to v4 naming convention
+  * libplacebo: update log helpers
+  * vo_gpu_next: create shader cache dir if missing
+  * wayland: always start rendering after a resize
+  * filter kernels: add cosine window
+  * vo_gpu_next/context: common'ize things that would be common for non-vulkan
+  * auto_profiles.lua: don't warn if profile-restore=default
+
+-------------------------------------------------------------------
+Sun Jan 30 09:01:08 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.34.1+git.20220129T121245.4d3ebb9d83:
+  * meson: add version check to wayland-protocols
+  * wayland: always resize when scale changes on surface enter
+  * wayland: support extra mouse buttons
+  * wayland: handle 0x0 resizes correctly
+  * x11: sanitize window title to UTF-8 for EWMH
+  * wayland: sanitize toplevel title to UTF-8
+  * ao_sndio: audio output added
+  * options: only apply sub-visibility to primary subs
+  * Revert "options: add --sub-visibility=<primary-only|secondary-only>"
+  * options: add --sub-visibility=<primary-only|secondary-only>
+  * player: add thd (TrueHD) to whitelist of audio extensions
+  * player: fix parentheses warning with &&
+
+-------------------------------------------------------------------
 Wed Jan 19 08:38:14 UTC 2022 -  Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 0.34.1+git.20220117T134844.22b0bac28e:

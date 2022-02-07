@@ -22,13 +22,13 @@
 %define _waf_ver 2.0.23
 %define lname   libmpv2
 Name:           mpv
-Version:        0.34.1+git.20220117T134844.22b0bac28e
+Version:        0.34.1+git.20220203T182214.5d31c7310c
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://mpv.io
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar
 Source1:        https://waf.io/waf-%{_waf_ver}
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(libass) >= 0.12.2
-BuildRequires:  pkgconfig(libavcodec) >= 58.16.100
+BuildRequires:  pkgconfig(libavcodec) >= 58.12.100
 BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
 BuildRequires:  pkgconfig(libavfilter) >= 7.14.100
 BuildRequires:  pkgconfig(libavformat) >= 58.9.100
@@ -67,7 +67,6 @@ BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.75
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libkms)
-BuildRequires:  pkgconfig(libplacebo) >= 3.104.0
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libswresample) >= 3.0.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
@@ -105,6 +104,9 @@ Conflicts:      mpv-plugin-mpris < 0.4
 Provides:       mplayer2 = 20140101
 Obsoletes:      mplayer2 < 20140101
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
+BuildRequires:  pkgconfig(libplacebo) >= 4.157
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
 BuildRequires:  pkgconfig(mujs)
 %endif
 %if 0%{?suse_version} > 1500
@@ -113,7 +115,7 @@ BuildRequires:  pkgconfig(vulkan) >= 1.0.61
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.15
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 %endif
