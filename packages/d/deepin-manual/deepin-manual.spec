@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-manual
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %endif
 
 Name:           deepin-manual
-Version:        5.7.0.75
+Version:        5.8.4
 Release:        0
-License:        GPL-3.0-or-later
 Summary:        Deepin Manual
-URL:            https://github.com/linuxdeepin/deepin-manual
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
+URL:            https://github.com/linuxdeepin/deepin-manual
 Source:         https://github.com/linuxdeepin/deepin-manual/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gtest
@@ -72,7 +72,6 @@ install -d %{buildroot}%{_datadir}/deepin-manual/manual-assets/application
 find %{buildroot}%{_datadir}/deepin-manual -type f -name "*~" -delete -print
 find %{buildroot}%{_datadir}/deepin-manual -type f -name "._*.svg" -delete -print
 find %{buildroot}%{_datadir}/deepin-manual -type f -name ".DS_Store" -delete -print
-rm %{buildroot}%{_datadir}/deepin-manual/manual-assets/community/dde/.~修订记录.xls
 
 %fdupes %{buildroot}%{_datadir}
 %suse_update_desktop_file %{name} Utility Documentation Accessibility

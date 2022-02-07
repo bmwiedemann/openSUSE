@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb  7 02:11:52 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Tumbleweed. 
+
+-------------------------------------------------------------------
+Sat Jan 29 01:58:18 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.4
+  * Update documents
+  * Fix bugs
+
+-------------------------------------------------------------------
+Fri Nov 12 02:47:00 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.1
+  * Update documents
+  * Fix bugs
+  * Opitimize wayland support
+ 
+-------------------------------------------------------------------
 Sat Jul 31 11:16:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.7.0.75
