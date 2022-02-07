@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Systemsettings runner: Increase relevance if we have an exact match in the keywords
+  * Do not show Help button if there's no help path defined
+  * ModuleView: Correctly update button box visibility
+  * Systemsettings Runner: Skip KCM that are not launchable
+  * IconView: Fix header padding (kde#449040)
+  * ModuleView: Improve code for header updates (kde#432093)
+  * Use a more familiar icon for the "Input Devices" category (kde#449056)
+  * Sidebar: Keep headers minimum height on two columns (kde#448889)
+  * FooterToolbar: Match also padding to the modules' buttons
+  * Completely hide the button box when there are no buttons
+  * Hide page name for ExternalAppModule
+  * Fix setting of headings for external modules (kde#448672)
+  * Do not focus the searchfield on startup if a virtual keyboard is enabled
+  * Fix trash KCM not showing up in KRunner (kde#448449)
+  * systemsettings runner: Consider KCM keywords for querying (kde#445304)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:45 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
