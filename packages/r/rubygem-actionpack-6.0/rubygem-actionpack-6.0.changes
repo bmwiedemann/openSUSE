@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 25 06:19:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.4.4
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.4.4 (December 15, 2021) ##
+  
+  *   Fix issue with host protection not allowing host with port in development.
+  
+  
+  ## Rails 6.0.4.3 (December 14, 2021) ##
+  
+  *   Fix issue with host protection not allowing localhost in development.
+  
+  
+  ## Rails 6.0.4.2 (December 14, 2021) ##
+  
+  *   Fix X_FORWARDED_HOST protection.  [CVE-2021-44528]
+  
+  ## Rails 6.1.4.1 (August 19, 2021) ##
+  
+  *   [CVE-2021-22942] Fix possible open redirect in Host Authorization middleware.
+  
+      Specially crafted "X-Forwarded-Host" headers in combination with certain
+      "allowed host" formats can cause the Host Authorization middleware in Action
+      Pack to redirect users to a malicious website.
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 16:48:15 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.4
