@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 13:14:06 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /bin/bash as shell for root to sysusers.d config
+- Add trusted group to sysusers.d config, too.
+
+-------------------------------------------------------------------
 Mon May 13 12:38:32 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Bump to version 20190513:

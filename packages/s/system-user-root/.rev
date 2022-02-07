@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>703407</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a536f4fe4d0b0300f992d61fbd6a7f47</srcmd5>
+    <version>20190513</version>
+    <time>1644273439</time>
+    <user>dimstar_suse</user>
+    <comment>- Add /bin/bash as shell for root to sysusers.d config
+- Add trusted group to sysusers.d config, too.</comment>
+    <requestid>951573</requestid>
+  </revision>
 </revisionlist>
