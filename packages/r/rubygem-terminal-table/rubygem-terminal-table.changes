@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 25 07:38:25 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.0.2
+ see installed History.rdoc
+
+  3.0.2 / 2021-09-19
+  ==================
+  
+  - fix align_column for nil values and colspan
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 18:03:11 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.0.1
