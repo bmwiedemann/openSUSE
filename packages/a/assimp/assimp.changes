@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  7 09:51:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.1
+  * ASE: Fix warning unreachable code
+  * HMP: Fix override during copying position data
+  * use fully qualified namespace in byteswap macros
+  * fix compilation with clangcl on windows
+  * Delete .travis.sh by @kimkulling
+  * Update ccpp.yml by @kimkulling
+  * LWO: validate enum value before parsing it
+- Drop 0001-use-fully-qualified-namespace-in-byteswap-macros.patch
+  Merged upstream
+
+-------------------------------------------------------------------
 Wed Feb  2 10:24:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build in big endian archs:

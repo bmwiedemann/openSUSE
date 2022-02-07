@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
@@ -27,8 +27,6 @@ URL:            https://www.assimp.org/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-with-zlib.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-use-fully-qualified-namespace-in-byteswap-macros.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
