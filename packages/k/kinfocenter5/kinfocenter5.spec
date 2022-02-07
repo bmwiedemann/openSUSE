@@ -21,9 +21,9 @@
 
 %global kf5_version 5.58.0
 
-%bcond_without lang
+%bcond_without released
 Name:           kinfocenter5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,55 +33,50 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source:         kinfocenter-%{version}.tar.xz
+%if %{with released}
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.2.0
-BuildRequires:  kf5-filesystem
-BuildRequires:  libraw1394-devel
-BuildRequires:  pciutils-devel
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  systemsettings5
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
-BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
-BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
-BuildRequires:  cmake(KF5Wayland) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(libusb-1.0)
-%ifarch %arm aarch64
-BuildRequires:  pkgconfig(glesv2)
-%else
-BuildRequires:  pkgconfig(gl)
-%endif
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(x11)
 Conflicts:      kdebase4-workspace < 5.3.0
 Recommends:     %{name}-lang
 # needed for the fileindexermonitor
 Requires:       baloo5-imports
 # The executable is now a link to systemsettings5
 Requires:       systemsettings5
+# lspci is called by the PCI KCM
+Requires:       pciutils
+# GLX is always present
+Requires:       /usr/bin/glxinfo
+# Vulkan might not be needed
+Requires:       (/usr/bin/vulkaninfo if libvulkan1)
+# Plasma Wayland and X11 sessions are always installed
+Requires:       /usr/bin/wayland-info
+Requires:       /usr/bin/xdpyinfo
+# Not packaged yet?
+Recommends:     /usr/bin/eglinfo
 
 %description
 KDE Utility that provides information about a computer system.
@@ -97,7 +92,7 @@ KDE Utility that provides information about a computer system.
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %kf5_find_lang
   %kf5_find_htmldocs
 %endif
@@ -105,23 +100,25 @@ KDE Utility that provides information about a computer system.
 %files
 %license LICENSES/*.txt
 %{_kf5_bindir}/kinfocenter
+%{_kf5_libdir}/libKInfoCenterInternal.so
 %dir %{_kf5_plugindir}/
-%{_kf5_plugindir}/kcm_devinfo.so
-%{_kf5_plugindir}/kcm_info.so
-%{_kf5_plugindir}/kcm_memory.so
-%{_kf5_plugindir}/kcm_opengl.so
-%{_kf5_plugindir}/kcm_pci.so
-%{_kf5_plugindir}/kcm_usb.so
-%{_kf5_plugindir}/kcm_view1394.so
-%dir %{_kf5_plugindir}/kcms/
-%{_kf5_plugindir}/kcms/kcm_about-distro.so
-%{_kf5_plugindir}/kcms/kcm_energyinfo.so
-%{_kf5_plugindir}/kcms/kcm_nic.so
-%{_kf5_plugindir}/kcms/kcm_samba.so
-%{_kf5_plugindir}/kcms/kcm_vulkan.so
-%{_kf5_plugindir}/kcms/kcm_cpu.so
-%{_kf5_plugindir}/kcms/kcm_interrupts.so
-%{_kf5_plugindir}/kcms/kcm_wayland.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%{_kf5_plugindir}/plasma/kcms/kcm_about-distro.so
+%{_kf5_plugindir}/plasma/kcms/kcm_energyinfo.so
+%dir %{_kf5_plugindir}/plasma/kcms/kinfocenter/
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_cpu.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_devinfo.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_egl.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_glx.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_interrupts.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_nic.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_pci.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_samba.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_usb.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_vulkan.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_wayland.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_xserver.so
 %{_kf5_applicationsdir}/org.kde.kinfocenter.desktop
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en/
@@ -129,7 +126,6 @@ KDE Utility that provides information about a computer system.
 %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kinfocenter/
 %{_kf5_sharedir}/kinfocenter/categories/
-%{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_configdir}/menus/kinfocenter.menu
 %{_kf5_sharedir}/desktop-directories/
@@ -138,7 +134,7 @@ KDE Utility that provides information about a computer system.
 %dir %{_kf5_qmldir}/org/kde/
 %{_kf5_qmldir}/org/kde/kinfocenter/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
