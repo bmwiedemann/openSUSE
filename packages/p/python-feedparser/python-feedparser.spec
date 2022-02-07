@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedparser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-# no sgmllib3k for python 3.10
-%define skip_python310 1
 Name:           python-feedparser
 Version:        6.0.8
 Release:        0
@@ -46,6 +44,12 @@ A universal feed parser module for Python that handles RSS 0.9x, RSS 1.0, RSS
 
 %prep
 %autosetup -p1 -n feedparser-%{version}
+
+# Remove Python 3.10 non-compatible tests
+rm -v tests/wellformed/sanitize/xml_declaration_unexpected_character.xml
+
+# Make tests more verbose
+sed -i -e 's/verbosity=1/verbosity=2/' tests/runtests.py
 
 %build
 %python_build

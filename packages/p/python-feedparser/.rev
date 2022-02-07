@@ -311,4 +311,15 @@
     <comment></comment>
     <requestid>951923</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>7206b4c84bf989c95e06c649d14021bd</srcmd5>
+    <version>6.0.8</version>
+    <time>1644273510</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert previous skip, because we have now working sgmllib3k.
+- Remove test tests/wellformed/sanitize/xml_declaration_unexpected_character.xml
+  (gh#kurtmckee/feedparser#304)
+</comment>
+    <requestid>952249</requestid>
+  </revision>
 </revisionlist>

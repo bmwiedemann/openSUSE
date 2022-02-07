@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  7 21:02:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Revert previous skip, because we have now working sgmllib3k.
+- Remove test tests/wellformed/sanitize/xml_declaration_unexpected_character.xml
+  (gh#kurtmckee/feedparser#304)
+
+-------------------------------------------------------------------
 Sat Feb  5 16:51:47 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python310 because there is no sgmllib3k and upstream is not
