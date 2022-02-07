@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWavelets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # no python36-numpy in Tumbleweed (NEP 29)
 %define         skip_python36 1
 Name:           python-PyWavelets
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
@@ -35,12 +35,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 Requires:       python-numpy >= 1.13.3
 Provides:       python-PyWavelets-doc = %{version}
 Obsoletes:      python-PyWavelets-doc < %{version}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -77,7 +77,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_install
 # Fix wrong-script-interpreter
 %python_expand sed -i "s|#!%{_bindir}/env python.*$|#!%{_bindir}$python|" %{buildroot}%{$python_sitearch}/pywt/tests/*.py
-%python_compileall
+%{python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
