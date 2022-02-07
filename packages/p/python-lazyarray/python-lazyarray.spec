@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazyarray
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%global skip_python36 1
 Name:           python-lazyarray
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        Lazily-evaluated numerical array class, compatible with NumPy arrays
 License:        BSD-3-Clause
 URL:            http://github.com/NeuralEnsemble/lazyarray/
 Source:         https://files.pythonhosted.org/packages/source/l/lazyarray/lazyarray-%{version}.tar.gz
-# gh#NeuralEnsemble/lazyarray/pulls/15
-Patch0:         use-pytest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.5}
+BuildRequires:  %{python_module numpy >= 1.13}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 0.19}
 # /SECTION
-Requires:       python-numpy >= 1.5
+Requires:       python-numpy >= 1.13
+Recommends:     python-scipy >= 0.19
 BuildArch:      noarch
 
 %python_subpackages
@@ -75,6 +73,8 @@ and memory in cases where:
 %files %{python_files}
 %doc README.rst changelog.txt
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/lazyarray.py*
+%pycache_only %{python_sitelib}/__pycache__/lazyarray*.pyc
+%{python_sitelib}/lazyarray-%{version}*-info
 
 %changelog

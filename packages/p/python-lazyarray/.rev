@@ -38,4 +38,18 @@
   * Drop use of nose, use pytest methods.</comment>
     <requestid>930576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>839bb3eb0e84679f2e24cc6f5a854369</srcmd5>
+    <version>0.5.2</version>
+    <time>1644273487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * Fix problem where SciPy was required, not optional
+  * Add support for Python 3.10, remove testing for Python 3.4 and
+    NumPy 1.12
+  * Switch from nose to pytest for running tests
+- Drop use-pytest.patch
+</comment>
+    <requestid>952049</requestid>
+  </revision>
 </revisionlist>
