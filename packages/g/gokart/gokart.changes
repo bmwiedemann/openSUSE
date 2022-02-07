@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 04 13:29:03 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 0.4.0:
+  * Update removal of bad packages from package list
+  * Add version command to gokart
+  * Fix incorrect use of closures
+  * Emit JSON output only once
+  * Improve error reporting
+  * Added syscall CMDi sinks
+
+-------------------------------------------------------------------
 Fri Oct 08 14:05:36 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.3.0:
