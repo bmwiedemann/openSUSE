@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb  1 09:04:08 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.5.4:
+  * New IOBanks APis and commands replacing skyline and making io faster (2-10x)
+  * Faster analysis, type matching, binary parsing (2-4x) 
+  * [] and =[] esil operations has been removed (size is mandatory)
+  * Lots of important bugs fixed in bin parsers and disassemblers
+  * Add support for the latest iOS15 dyld4 Atlas-style cache formats
+  * Autorename signature matching collisions and faster search
+  * Add assembler for riscv and disassemblers for PDP11, Alpha64 and armv7.v35 
+  * Improved integration with r2frida remote filesystems 
+  * Cleaning debugger for windows (32 and 64) and macOS makes it more reliable and stable 
+  * Add seven segment printing (?ea for ascii-art text titles)
+  * Improved xrefs visualization with new axfm and axtm commands
+  * Add avg command to manage global variables
+  * The sixref plugin is now easier to use to find xrefs on arm64 code
+  * Improved multibin (select all bins or one) and multidex support in apk://
+  * Better build scripts for Windows (add asan and w32 profiles) 
+  * Added armv7.v35 and improves esil emulation with the arm64.v35
+  * Add more help messages and set scr.prompt.tabhelp true by default
+  * AES key wrap algorithm support in rahash2 
+  * Fix var serialization issues in debugger reloading (ood) and projects saving (Ps)
+  * Add Amiga and MSX rom/bin parser plugin and test @romerojoseant @trufae
+  * Visual slides (r2s) allow interactive content to be used within r2
+  * Print and convert ternary values back and forth 
+  * Add the vector35 arm64 for analysis, esil and disasm and r2 can be built without capstone
+  * Improved integration to use r2ghidra analysis and disassemble mainly tested for avr, v850 and arm64
+  * Fix emulation of several x86 and arm64 instructions, including an scripted way
+    to import official arm64 instruction descriptions
+  * Bring back the cmd.pin to instrument the esil emulation when a specific address is hit
+  * Small steps towards Projects with improved management for version control
+  * Improved visual and panels with better interactions and fixed glitches
+- Remove CVE-2021-3673.patch
+
+-------------------------------------------------------------------
 Tue Aug  3 22:29:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add CVE-2021-3673.patch, fixing CVE-2021-3673 (boo#1189009):

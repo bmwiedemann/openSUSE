@@ -1,7 +1,7 @@
 #
 # spec file for package radare2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           radare2
-Version:        5.3.1
+Version:        5.5.4
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://www.radare.org
 Source:         https://github.com/radareorg/radare2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          https://github.com/radareorg/radare2/commit/d7ea20fb2e1433ebece9f004d87ad8f2377af23d.patch#/CVE-2021-3673.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  git-core
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(libewf)
@@ -56,27 +56,35 @@ Requires:       pkgconfig(zlib)
 %description devel
 Development files for radare2
 
+%package zsh-completion
+Summary:        ZSH completion for %{name}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+zsh shell completions for %{name}.
+
 %prep
-%setup -q -n %{name}-%{version}
-%patch -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-%configure \
-  --docdir=%{_docdir}/%{name} \
-  --with-syscapstone \
-  --with-sysmagic \
-  --with-syszip \
-  --with-sysxxhash \
-  --with-openssl
-%make_build
+%meson \
+  -Duse_sys_capstone=true \
+  -Duse_sys_magic=true \
+  -Duse_sys_zip=true \
+  -Duse_sys_zlib=true \
+  -Duse_sys_lz4=true \
+  -Duse_sys_xxhash=true \
+  -Duse_sys_openssl=true \
+  -Duse_webui=true \
+  %{nil}
+%meson_build
 
 %install
-%make_install
-# rename r2p as r2pipe, r2p conflicts with polylib
-# name must match strstr("r2p"), as it's a multicall binary
-mv %{buildroot}/%{_bindir}/{r2p,r2pipe}
+%meson_install
 %fdupes -s %{buildroot}
+mkdir -p %{buildroot}/%{_docdir}/radare2
+mv %{buildroot}/%{_datadir}/doc/radare2/* %{buildroot}%{_docdir}/radare2/
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -85,16 +93,41 @@ mv %{buildroot}/%{_bindir}/{r2p,r2pipe}
 %{_libdir}/libr_*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/libr
+%dir %{_datadir}/radare2/%{version}/charsets
+%dir %{_datadir}/radare2/%{version}/fcnsign
+%dir %{_datadir}/radare2/%{version}/format
+%dir %{_datadir}/radare2/%{version}/opcodes
+%dir %{_datadir}/radare2/%{version}/syscall
+%{_datadir}/radare2/%{version}/charsets/*
+%{_datadir}/radare2/%{version}/fcnsign/*
+%{_datadir}/radare2/%{version}/format/*
+%{_datadir}/radare2/%{version}/opcodes/*
+%{_datadir}/radare2/%{version}/syscall/*
 
 %files
 %doc COMMUNITY.md CONTRIBUTING.md DEVELOPERS.md README.md
 %license COPYING COPYING.LESSER
-%doc %{_docdir}/%{name}/*
+%{_docdir}/radare2/*
 %{_bindir}/*
-%{_libdir}/%{name}
 %{_libdir}/libr_*.so.*
-%{_datadir}/%{name}
+%dir %{_datadir}/radare2
+%dir %{_datadir}/radare2/%{version}
+%dir %{_datadir}/radare2/%{version}/cons
+%dir %{_datadir}/radare2/%{version}/flag
+%dir %{_datadir}/radare2/%{version}/hud
+%dir %{_datadir}/radare2/%{version}/magic
+%dir %{_datadir}/radare2/%{version}/www
+%{_datadir}/radare2/%{version}/cons/*
+%{_datadir}/radare2/%{version}/flag/*
+%{_datadir}/radare2/%{version}/hud/*
+%{_datadir}/radare2/%{version}/magic/*
+%{_datadir}/radare2/%{version}/www/*
+
 %{_mandir}/man1/*
 %{_mandir}/man7/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/*
 
 %changelog
