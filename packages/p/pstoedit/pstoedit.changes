@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  3 23:05:55 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 3.78:
+  * Compatibility support improvement: Support for mawk in creation
+    of pstoedit.ph header file.
+
+-------------------------------------------------------------------
 Tue Sep  7 12:36:01 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 3.77:
