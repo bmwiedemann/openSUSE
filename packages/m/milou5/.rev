@@ -1057,4 +1057,12 @@
     <comment> (forwarded request 943820 from Vogtinator)</comment>
     <requestid>943986</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>6898ef0b5e05a645c8c0c9aa04e7bc30</srcmd5>
+    <version>5.24.0</version>
+    <time>1644273426</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
+    <requestid>951888</requestid>
+  </revision>
 </revisionlist>

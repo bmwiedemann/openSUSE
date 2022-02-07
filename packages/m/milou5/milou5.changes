@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:50:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- No code changes since 5.23.90
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Conform to the Icon Naming Specification
+  * Allow runners to provide styled text in multiline mode
+  * Port mostly to PC3
+  * Use plasma components tooltip
+  * Add FreeBSD CI
+  * Add Linux CI
+  * Add .kde-ci.yml
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
