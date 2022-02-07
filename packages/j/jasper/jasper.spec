@@ -20,7 +20,7 @@
 %global __builddir obs_build
 
 Name:           jasper
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        JasPer-2.0
@@ -28,8 +28,6 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM mvetter@suse.de -- Fix cmake warning. Upstream commits fd08e177 and df22a3c8c
-Patch0:         jasper-cmake-warnings.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -66,7 +64,6 @@ image compression standard Part 1.
 
 %prep
 %setup -q -n %{name}-version-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"

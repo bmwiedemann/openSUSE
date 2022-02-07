@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 12 21:16:30 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.1:
+  * Fix some build/portability issues (e.g., #317, #318).
+- Drop jasper-cmake-warnings.patch: contained in upstream release
+
+-------------------------------------------------------------------
 Mon Feb  7 15:45:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.0:

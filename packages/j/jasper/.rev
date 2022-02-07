@@ -160,4 +160,14 @@
     <comment></comment>
     <requestid>952210</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>93a3f711718001e37ca65f5a20e4f256</srcmd5>
+    <version>3.0.1</version>
+    <time>1644707736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Fix some build/portability issues (e.g., #317, #318).
+- Drop jasper-cmake-warnings.patch: contained in upstream release</comment>
+    <requestid>953963</requestid>
+  </revision>
 </revisionlist>
