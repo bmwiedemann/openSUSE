@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Feb  5 19:51:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Do not use Control as container for config UI elements
+  * Set "noMargins" to true for Applications and Processes pages (kde#447146)
+  * Mark as single window app
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Fix clazy warnings
+  * Fix some clazy warnings
+  * Fix some cppcheck warnings
+  * Remove unused variable
+  * Strip punctuation of labels in config
+  * Add comma separated filtering to ApplicationsTableView
+  * ApplicationsTable: Remove unneeded ProcessSortFilterModel (kde#445544)
+  * Add GitLab CI
+  * Don't make right click popup modal
+  * Fix main.qml URL from not being a URL
+  * Port away from Kirigami.Units.devicePixelRatio
+  * Move spinbox below label in Sensor settings to avoid getting cut off
+  * Allow changing row heights to one of three different modes (kde#441489)
+  * Clarify that the KSysGuard package is libksysguard
+  * Find KSystemStats
+  * Install external kinfocenter module in ${KDE_INSTALL_DATADIR}/plasma/kinfocenter/externalmodules
+  * Add .kde-ci.yml
+  * add external infocenter module
+  * Avoid basing a preferredWidth on a currentWidth
+  * No need to build a custom string for the application window title
+
+-------------------------------------------------------------------
 Tue Jan  4 14:58:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.5
