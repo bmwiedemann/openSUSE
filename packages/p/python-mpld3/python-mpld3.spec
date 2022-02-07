@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpld3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,21 @@
 %define skip_python36 1
 %define modname mpld3
 # Tests are not designed to be non-interactively run, see README.md
-%bcond_with     test
+%bcond_without  test
 Name:           python-mpld3
-Version:        0.5.2
+Version:        0.5.7
 Release:        0
 Summary:        D3 Viewer for Matplotlib
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://mpld3.github.com
-Source:         https://files.pythonhosted.org/packages/source/m/mpld3/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mpld3/%{modname}-%{version}.tar.gz
+# Originally from https://raw.githubusercontent.com/mpld3/mpld3/master/visualize_tests.py
+Source1:        visualize_tests.py
+# PATCH-FIX-UPSTREAM remove-nose.patch gh#mpld3/mpld3#505 mcepl@suse.com
+# there are just few SkipTests which need to be imported from stdlib
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module matplotlib >= 2.2}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module setuptools}
@@ -43,8 +47,8 @@ Recommends:     jupyter-notebook
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module diffimg}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -67,7 +71,11 @@ Provides:       %{python_module %{name} = %{version}}
 Documentation and examples for %{name}
 
 %prep
-%setup -q -n mpld3-%{version}
+%autosetup -p1 -n mpld3-%{version}
+
+cp %{SOURCE1} .
+
+chmod -x examples/*.py
 
 # Fix a bunch of inappropriate exec perms
 chmod a-x notebooks/*.ipynb \
@@ -86,7 +94,8 @@ chmod a-x notebooks/*.ipynb \
 %if %{with test}
 %check
 export HIDE_PLOTS=True
-%python_expand nosetests-%{$python_bin_suffix} mpld3/tests/*.py
+# exclusions gh#mpld3/mpld3#505
+%pytest -k 'not (test_show or test_snapshots)' mpld3/tests/*.py
 %endif
 
 %files %{python_files}
