@@ -16,9 +16,9 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           plasma5-integration
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Plugins responsible for better integration of Qt applications in
 License:        GPL-2.0+
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-integration-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-integration-%{version}.tar.xz.sig
+Source:         plasma-integration-%{version}.tar.xz
+%if %{with released}
+Source1:        plasma-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.17.0
@@ -98,7 +98,7 @@ Plasma components.
 %install
 %kf5_makeinstall -C build
 
-%if %{with lang}
+%if %{with released}
 %find_lang plasmaintegration5
 %endif
 
@@ -113,7 +113,7 @@ Plasma components.
 %{_includedir}/PlasmaKeyData/plasmakeydata.h
 %{_kf5_libdir}/pkgconfig/plasma-key-data.pc
 
-%if %{with lang}
+%if %{with released}
 %files -n plasma5-integration-plugin-lang -f plasmaintegration5.lang
 %endif
 
