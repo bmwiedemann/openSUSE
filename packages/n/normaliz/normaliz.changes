@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  7 15:02:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9.2
+  * It is now possible to construct a cone in libnormaliz or
+    PyNormaliz from an input file, and input files now allow the
+    definition of sparse vectors with ranges of indices.
+
+-------------------------------------------------------------------
 Wed Sep  1 14:58:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.9.1
