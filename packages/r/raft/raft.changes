@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  1 11:17:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.11.3:
+  * initial support for tracing
+  * protocol bug fixes
+
+-------------------------------------------------------------------
 Sun Aug  8 13:10:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.11.2:

@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>910710</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35e879922f29bc88a2b4688ca72f461b</srcmd5>
+    <version>0.11.3</version>
+    <time>1644273488</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.11.3</comment>
+    <requestid>952048</requestid>
+  </revision>
 </revisionlist>
