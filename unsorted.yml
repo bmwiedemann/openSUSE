@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -10659,7 +10659,7 @@ unsorted:
   - libfastlz1 
   - libfcache-devel 
   - libfcache1 
-  - libfcft3 
+  - libfcft4 
   - libfcgi0 
   - libfcitx-4_2_9-32bit: [x86_64] 
   - libfcrypto-devel 
@@ -14248,9 +14248,6 @@ unsorted:
   - libucs0: [x86_64] 
   - libuct-devel: [x86_64] 
   - libuct0: [x86_64] 
-  - libudev-devel: [i586] # devel package of dvd:systemd-lang 
-  - libudev-devel-32bit: [x86_64] 
-  - libudev-mini-devel 
   - libudev-mini1 
   - libudf0 
   - libudf0-32bit: [x86_64] 
@@ -14730,7 +14727,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -14908,15 +14905,15 @@ unsorted:
   - libyui-ncurses-devel 
   - libyui-ncurses-pkg-devel 
   - libyui-ncurses-rest-api-devel 
-  - libyui-ncurses-rest-api15 
+  - libyui-ncurses-rest-api16 
   - libyui-ncurses-tools 
   - libyui-qt-devel 
   - libyui-qt-graph-devel 
   - libyui-qt-pkg-devel 
   - libyui-qt-rest-api-devel 
-  - libyui-qt-rest-api15 
+  - libyui-qt-rest-api16 
   - libyui-rest-api-devel 
-  - libyui-rest-api15 
+  - libyui-rest-api16 
   - libz-ng2 
   - libzapojit-devel 
   - libzbar-devel 
@@ -17518,11 +17515,8 @@ unsorted:
   - nsnake 
   - nss-myhostname 
   - nss-myhostname-32bit: [x86_64] 
-  - nss-mymachines 
-  - nss-mymachines-32bit: [x86_64] 
   - nss-pam-ldapd 
   - nss-pam-ldapd-32bit: [x86_64] 
-  - nss-resolve 
   - nss-shared-helper-devel 
   - nss-systemd 
   - nss_synth: [x86_64] 
@@ -20364,6 +20358,7 @@ unsorted:
   - php8-enchant 
   - php8-exif 
   - php8-fastcgi 
+  - php8-ffi 
   - php8-fileinfo 
   - php8-fpm 
   - php8-ftp 
@@ -23071,6 +23066,7 @@ unsorted:
   - python310-ipy 
   - python310-ipydatawidgets 
   - python310-ipyevents 
+  - python310-ipyfilechooser 
   - python310-ipykernel 
   - python310-ipyleaflet 
   - python310-ipympl 
@@ -23366,6 +23362,7 @@ unsorted:
   - python310-misaka 
   - python310-mistune 
   - python310-mitmproxy 
+  - python310-mizani 
   - python310-mkdocs 
   - python310-mkdocs-bootstrap 
   - python310-moban 
@@ -24497,7 +24494,6 @@ unsorted:
   - python310-textwrap3 
   - python310-thLib 
   - python310-thespian 
-  - python310-thewalrus: [x86_64] 
   - python310-threadpoolctl 
   - python310-three-merge 
   - python310-threevis 
@@ -24813,7 +24809,6 @@ unsorted:
   - python36-djet 
   - python36-doc 
   - python36-doc-devhelp 
-  - python36-feedparser 
   - python36-flask-restx 
   - python36-github3.py 
   - python36-gmpy2 
@@ -24836,8 +24831,6 @@ unsorted:
   - python36-rarfile-doc 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
-  - python36-rss2email 
-  - python36-sgmllib3k 
   - python36-sphinx-argparse 
   - python36-starlette 
   - python36-taskw 
@@ -26204,6 +26197,7 @@ unsorted:
   - python38-ipy 
   - python38-ipydatawidgets 
   - python38-ipyevents 
+  - python38-ipyfilechooser 
   - python38-ipykernel 
   - python38-ipyleaflet 
   - python38-ipympl 
@@ -29283,6 +29277,7 @@ unsorted:
   - python39-ipy 
   - python39-ipydatawidgets 
   - python39-ipyevents 
+  - python39-ipyfilechooser 
   - python39-ipykernel 
   - python39-ipyleaflet 
   - python39-ipympl 
@@ -32961,13 +32956,14 @@ unsorted:
   - systemd-coredump 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
-  - systemd-devel 
+  - systemd-devel: [i586] # devel package of dvd:systemd-lang 
   - systemd-doc 
   - systemd-experimental 
   - systemd-journal-remote 
   - systemd-mini 
   - systemd-mini-container 
   - systemd-mini-devel 
+  - systemd-mini-doc 
   - systemd-mini-sysvinit 
   - systemd-network 
   - systemd-portable 
