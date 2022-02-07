@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-puma-4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma-4
-Version:        4.3.8
+Version:        4.3.10
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
