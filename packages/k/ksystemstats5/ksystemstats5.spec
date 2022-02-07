@@ -17,9 +17,9 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           ksystemstats5
-Version:        5.23.5
+Version:        5.24.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Plugin based system monitoring daemon
 License:        BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz.sig
+Source:         ksystemstats-%{version}.tar.xz
+%if %{with released}
+Source1:        ksystemstats-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -71,7 +71,7 @@ KSystemStats is a daemon that collects statistics about the running system.
 
 %install
   %kf5_makeinstall -C build
-%if %{with lang}
+%if %{with released}
   %find_lang ksystemstats_plugins %{name}.lang
 %endif
 
@@ -97,7 +97,7 @@ dbus-run-session make %{?_smp_mflags} -C build VERBOSE=1 test
 %{_kf5_sharedir}/dbus-1/services/org.kde.ksystemstats.service
 %{_userunitdir}/plasma-ksystemstats.service
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 
