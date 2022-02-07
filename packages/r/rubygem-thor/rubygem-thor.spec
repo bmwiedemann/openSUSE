@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-thor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-thor
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 %define mod_name thor
 %define mod_full_name %{mod_name}-%{version}
@@ -51,7 +51,7 @@ Thor is a toolkit for building powerful command-line interfaces.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="CHANGELOG.md LICENSE.md README.md" \
+  --doc-files="LICENSE.md README.md" \
   -f
 
 %gem_packages

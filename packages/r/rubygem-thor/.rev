@@ -206,4 +206,12 @@
     <comment>update (forwarded request 869945 from mschnitzer)</comment>
     <requestid>869954</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2762d9b39337f94b0632f2041ea7961b</srcmd5>
+    <version>1.2.1</version>
+    <time>1644273460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949074</requestid>
+  </revision>
 </revisionlist>
