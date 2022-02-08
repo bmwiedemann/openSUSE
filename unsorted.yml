@@ -196,6 +196,7 @@ unsorted:
   - Printrun 
   - Printrun-common 
   - PrusaSlicer 
+  - PyCBC-utils: [x86_64] 
   - PythonQt-devel 
   - QCSXCAD-devel 
   - QGnomePlatform-32bit: [x86_64] 
@@ -6129,6 +6130,7 @@ unsorted:
   - googler 
   - gops 
   - gos-wallpapers 
+  - gosec 
   - goss 
   - gource 
   - goverlay 
@@ -11633,8 +11635,8 @@ unsorted:
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
   - libjasper-devel 
-  - libjasper4 
-  - libjasper4-32bit: [x86_64] 
+  - libjasper6 
+  - libjasper6-32bit: [x86_64] 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
@@ -13122,8 +13124,6 @@ unsorted:
   - libqt5-qtbase-examples-32bit: [x86_64] 
   - libqt5-qtbase-platformtheme-xdgdesktopportal 
   - libqt5-qtbase-private-headers-devel 
-  - libqt5-qtcanvas3d 
-  - libqt5-qtcanvas3d-examples 
   - libqt5-qtcharts-examples 
   - libqt5-qtcharts-imports 
   - libqt5-qtconnectivity-devel 
@@ -21348,7 +21348,6 @@ unsorted:
   - python3-MapProxy 
   - python3-OpenColorIO 
   - python3-OpenImageIO 
-  - python3-PyCBC: [x86_64] 
   - python3-Rivet 
   - python3-SHERPA-MC 
   - python3-SoapySDR 
@@ -21659,7 +21658,7 @@ unsorted:
   - python3-zbar 
   - python310 
   - python310-32bit: [x86_64] 
-  - python310-APScheduler: [i586] 
+  - python310-APScheduler 
   - python310-AnyQt 
   - python310-Arpeggio 
   - python310-Authlib 
@@ -21779,6 +21778,7 @@ unsorted:
   - python310-PyAutoGUI 
   - python310-PyBindGen 
   - python310-PyBrowserID 
+  - python310-PyCBC: [x86_64] 
   - python310-PyChart 
   - python310-PyChromecast 
   - python310-PyCondor 
@@ -21819,6 +21819,7 @@ unsorted:
   - python310-PyQt6-doc 
   - python310-PyQt6-sip 
   - python310-PyRIC 
+  - python310-PyRSS2Gen 
   - python310-PyRect 
   - python310-PySDL2 
   - python310-PyScreeze 
@@ -21999,6 +22000,7 @@ unsorted:
   - python310-astral 
   - python310-astroid 
   - python310-astropy 
+  - python310-astropy-healpix 
   - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
@@ -22363,7 +22365,6 @@ unsorted:
   - python310-boolean.py 
   - python310-booleanOperations 
   - python310-boost-histogram 
-  - python310-boto 
   - python310-boto3 
   - python310-botocore 
   - python310-bottle 
@@ -22409,6 +22410,7 @@ unsorted:
   - python310-cbor 
   - python310-cbor2 
   - python310-cchardet 
+  - python310-cdflib 
   - python310-celery 
   - python310-celery-batches 
   - python310-celerymon 
@@ -22489,6 +22491,7 @@ unsorted:
   - python310-colormap 
   - python310-colorspacious 
   - python310-colour 
+  - python310-columnize 
   - python310-commentjson 
   - python310-compat-patcher-core 
   - python310-compileall2 
@@ -22804,6 +22807,7 @@ unsorted:
   - python310-fedora-messaging 
   - python310-feedgen 
   - python310-feedgenerator 
+  - python310-feedparser 
   - python310-ffmpeg-python 
   - python310-fido2 
   - python310-fields 
@@ -23213,6 +23217,7 @@ unsorted:
   - python310-lazr.uri 
   - python310-lazy 
   - python310-lazy-object-proxy 
+  - python310-lazyarray 
   - python310-ldap 
   - python310-ldap3 
   - python310-ldapdomaindump 
@@ -23260,6 +23265,7 @@ unsorted:
   - python310-libqcow 
   - python310-libregf 
   - python310-librosa 
+  - python310-librouteros 
   - python310-libsass 
   - python310-libscca 
   - python310-libsigscan 
@@ -23598,6 +23604,7 @@ unsorted:
   - python310-pem 
   - python310-pendulum 
   - python310-pep517 
+  - python310-pep8-naming 
   - python310-peppercorn 
   - python310-percy 
   - python310-perfume-bench 
@@ -24189,6 +24196,7 @@ unsorted:
   - python310-repoze.lru 
   - python310-repoze.sphinx.autointerface 
   - python310-repoze.who 
+  - python310-reproject 
   - python310-requestbuilder 
   - python310-requests 
   - python310-requests-aws 
@@ -24278,6 +24286,7 @@ unsorted:
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
   - python310-scipy_1_7_3-gnu-hpc: [x86_64] 
+  - python310-scitokens 
   - python310-scour 
   - python310-scp 
   - python310-screeninfo 
@@ -24311,16 +24320,17 @@ unsorted:
   - python310-setuptools_scm_git_archive 
   - python310-sfs 
   - python310-sge-pygame 
+  - python310-sgmllib3k 
   - python310-sgp4 
   - python310-sh 
   - python310-shaptools 
   - python310-shellingham 
+  - python310-sherpa: [x86_64] 
   - python310-shijian 
   - python310-shinyutils 
   - python310-shodan 
   - python310-shortuuid 
   - python310-sidecar 
-  - python310-sidpy 
   - python310-sievelib 
   - python310-sigal 
   - python310-signedjson 
@@ -24779,9 +24789,7 @@ unsorted:
   - python310-zypp-plugin 
   - python36 
   - python36-32bit: [x86_64] 
-  - python36-APScheduler: [x86_64] 
   - python36-Flask-Security-Too 
-  - python36-PyRSS2Gen 
   - python36-ZEO 
   - python36-autoflake 
   - python36-base 
@@ -24790,7 +24798,6 @@ unsorted:
   - python36-coverage-env-plugin 
   - python36-curses 
   - python36-dbm 
-  - python36-demjson 
   - python36-devel 
   - python36-django-auth-ldap 
   - python36-django-bootstrap4 
@@ -24815,12 +24822,10 @@ unsorted:
   - python36-google-pasta 
   - python36-idle 
   - python36-labelImg 
-  - python36-librouteros 
   - python36-lzmaffi 
   - python36-mrkd 
   - python36-ntfy 
   - python36-oic 
-  - python36-pep8-naming 
   - python36-pip-licenses 
   - python36-podman 
   - python36-pony 
@@ -24952,6 +24957,7 @@ unsorted:
   - python38-PyAutoGUI 
   - python38-PyBindGen 
   - python38-PyBrowserID 
+  - python38-PyCBC: [x86_64] 
   - python38-PyChart 
   - python38-PyChromecast 
   - python38-PyCondor 
@@ -25158,6 +25164,7 @@ unsorted:
   - python38-astral 
   - python38-astroid 
   - python38-astropy 
+  - python38-astropy-healpix 
   - python38-astunparse 
   - python38-asv 
   - python38-async_generator 
@@ -25515,7 +25522,6 @@ unsorted:
   - python38-boolean.py 
   - python38-booleanOperations 
   - python38-boost-histogram 
-  - python38-boto 
   - python38-bottle 
   - python38-bowler 
   - python38-bpython 
@@ -25556,6 +25562,7 @@ unsorted:
   - python38-cbor 
   - python38-cbor2 
   - python38-cchardet 
+  - python38-cdflib 
   - python38-celery 
   - python38-celery-batches 
   - python38-celerymon 
@@ -25630,6 +25637,7 @@ unsorted:
   - python38-colormap 
   - python38-colorspacious 
   - python38-colour 
+  - python38-columnize 
   - python38-commentjson 
   - python38-compat-patcher-core 
   - python38-compileall2 
@@ -25733,7 +25741,6 @@ unsorted:
   - python38-defusedxml 
   - python38-delegator 
   - python38-delegator.py 
-  - python38-demjson 
   - python38-dennis 
   - python38-derpconf 
   - python38-devel 
@@ -27271,6 +27278,7 @@ unsorted:
   - python38-repoze.lru 
   - python38-repoze.sphinx.autointerface 
   - python38-repoze.who 
+  - python38-reproject 
   - python38-requestbuilder 
   - python38-requests-aws 
   - python38-requests-cache 
@@ -27352,6 +27360,7 @@ unsorted:
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy-gnu-hpc: [x86_64] 
   - python38-scipy_1_7_3-gnu-hpc: [x86_64] 
+  - python38-scitokens 
   - python38-scp 
   - python38-screeninfo 
   - python38-screenplain 
@@ -27950,6 +27959,7 @@ unsorted:
   - python39-PyAutoGUI 
   - python39-PyBindGen 
   - python39-PyBrowserID 
+  - python39-PyCBC: [x86_64] 
   - python39-PyChart 
   - python39-PyChromecast 
   - python39-PyCondor 
@@ -28173,6 +28183,7 @@ unsorted:
   - python39-astral 
   - python39-astroid 
   - python39-astropy 
+  - python39-astropy-healpix 
   - python39-asttokens 
   - python39-astunparse 
   - python39-asv 
@@ -28538,7 +28549,6 @@ unsorted:
   - python39-boolean.py 
   - python39-booleanOperations 
   - python39-boost-histogram 
-  - python39-boto 
   - python39-boto3 
   - python39-botocore 
   - python39-bottle 
@@ -28584,6 +28594,7 @@ unsorted:
   - python39-cbor 
   - python39-cbor2 
   - python39-cchardet 
+  - python39-cdflib 
   - python39-celery 
   - python39-celery-batches 
   - python39-celerymon 
@@ -28665,6 +28676,7 @@ unsorted:
   - python39-colormap 
   - python39-colorspacious 
   - python39-colour 
+  - python39-columnize 
   - python39-commentjson 
   - python39-compat-patcher-core 
   - python39-compileall2 
@@ -28778,7 +28790,6 @@ unsorted:
   - python39-defusedxml 
   - python39-delegator 
   - python39-delegator.py 
-  - python39-demjson 
   - python39-dennis 
   - python39-deprecation 
   - python39-derpconf 
@@ -30424,6 +30435,7 @@ unsorted:
   - python39-repoze.lru 
   - python39-repoze.sphinx.autointerface 
   - python39-repoze.who 
+  - python39-reproject 
   - python39-requestbuilder 
   - python39-requests 
   - python39-requests-aws 
@@ -30515,6 +30527,7 @@ unsorted:
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
   - python39-scipy_1_7_3-gnu-hpc: [x86_64] 
+  - python39-scitokens 
   - python39-scour 
   - python39-scp 
   - python39-screeninfo 
@@ -31596,6 +31609,7 @@ unsorted:
   - radare2-devel 
   - radare2-iaito 
   - radare2-iaito-devel 
+  - radare2-zsh-completion 
   - radcli 
   - radcli-compat-devel 
   - radcli-devel 
@@ -31945,7 +31959,6 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby2.7-rubygem-cri 
   - ruby2.7-rubygem-debase 
   - ruby3.0-rubygem-debase 
   - ruby3.0-rubygem-xdg 
@@ -33092,12 +33105,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_7_0-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_7_0-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_7_0-gnu-openmpi2-hpc-doc: [x86_64] 
   - tensorflow2_2_7_1-gnu-hpc: [x86_64] 
   - tensorflow2_2_7_1-gnu-hpc-devel: [x86_64] 
   - tensorflow2_2_7_1-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_7_1-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_7_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_7_1-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-6-lang 
   - tepl-devel 
   - termcap 
@@ -42278,7 +42291,6 @@ unsorted:
   - vulkan-devel 
   - vulkan-devel-32bit: [x86_64] 
   - vulkan-headers 
-  - vulkan-tools 
   - vulkan-validationlayers 
   - vulkan-validationlayers-devel 
   - w3c-markup-validator 
@@ -42320,7 +42332,6 @@ unsorted:
   - wayland-devel 
   - wayland-devel-32bit: [x86_64] 
   - wayland-protocols-devel 
-  - wayland-utils 
   - waylandpp 
   - waylandpp-devel 
   - wayvnc 
@@ -43090,6 +43101,10 @@ unsorted:
   - youtube-dl-fish-completion 
   - youtube-dl-zsh-completion 
   - ypserv 
+  - yq 
+  - yq-bash-completion 
+  - yq-fish-completion 
+  - yq-zsh-completion 
   - yt-dlp 
   - yt-dlp-bash-completion 
   - yt-dlp-fish-completion 
@@ -43176,6 +43191,7 @@ unsorted:
   - zpaq 
   - zram-generator 
   - zsh-htmldoc 
+  - zstd-gzip 
   - zsync 
   - zutils 
   - zvbi 
