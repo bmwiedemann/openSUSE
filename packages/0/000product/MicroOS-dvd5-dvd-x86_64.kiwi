@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220206" schemaversion="4.1">
+<image name="OBS__MicroOS___20220207" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220206</productvar>
+      <productvar name="VERSION">20220207</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220206,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220207,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220206/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220207/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -536,6 +536,7 @@
       <repopackage name="libdevmapper1_03"/>
       <repopackage name="libdhash1" arch="x86_64"/>
       <repopackage name="libdmtx0" arch="x86_64"/>
+      <repopackage name="libdmx1" arch="x86_64"/>
       <repopackage name="libdnf-plugin-txnupd" arch="x86_64"/>
       <repopackage name="libdnf-repo-config-zypp" arch="x86_64"/>
       <repopackage name="libdnf2" arch="x86_64"/>
@@ -614,7 +615,6 @@
       <repopackage name="libgjs0" arch="x86_64"/>
       <repopackage name="libglib-2_0-0" arch="x86_64"/>
       <repopackage name="libglibmm-2_4-1" arch="x86_64"/>
-      <repopackage name="libGLU1" arch="x86_64"/>
       <repopackage name="libglvnd" arch="x86_64"/>
       <repopackage name="libgme0" arch="x86_64"/>
       <repopackage name="libgmodule-2_0-0" arch="x86_64"/>
@@ -1177,6 +1177,7 @@
       <repopackage name="libxtables12" arch="x86_64"/>
       <repopackage name="libXtst6" arch="x86_64"/>
       <repopackage name="libXv1" arch="x86_64"/>
+      <repopackage name="libXxf86dga1" arch="x86_64"/>
       <repopackage name="libXxf86vm1" arch="x86_64"/>
       <repopackage name="libxxhash0" arch="x86_64"/>
       <repopackage name="libyajl2" arch="x86_64"/>
@@ -1203,6 +1204,7 @@
       <repopackage name="malcontent" arch="x86_64"/>
       <repopackage name="mdadm" arch="x86_64"/>
       <repopackage name="Mesa" arch="x86_64"/>
+      <repopackage name="Mesa-demo-x" arch="x86_64"/>
       <repopackage name="Mesa-dri" arch="x86_64"/>
       <repopackage name="Mesa-gallium" arch="x86_64"/>
       <repopackage name="Mesa-libEGL1" arch="x86_64"/>
@@ -1287,6 +1289,7 @@
       <repopackage name="patterns-microos-ra_verifier" arch="x86_64"/>
       <repopackage name="patterns-microos-selinux" arch="x86_64"/>
       <repopackage name="patterns-microos-sssd_ldap" arch="x86_64"/>
+      <repopackage name="pciutils" arch="x86_64"/>
       <repopackage name="perl" arch="x86_64"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
@@ -1583,7 +1586,9 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="vim-data-common" arch="x86_64"/>
       <repopackage name="vim-small" arch="x86_64"/>
+      <repopackage name="vulkan-tools" arch="x86_64"/>
       <repopackage name="wallpaper-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="wayland-utils" arch="x86_64"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles" arch="x86_64"/>
       <repopackage name="webkit2gtk-4_1-injected-bundles" arch="x86_64"/>
       <repopackage name="wget" arch="x86_64"/>
@@ -1606,6 +1611,7 @@
       <repopackage name="xdg-user-dirs-gtk" arch="x86_64"/>
       <repopackage name="xdg-utils" arch="x86_64"/>
       <repopackage name="xdm" arch="x86_64"/>
+      <repopackage name="xdpyinfo" arch="x86_64"/>
       <repopackage name="xembedsniproxy" arch="x86_64"/>
       <repopackage name="xen-libs" arch="x86_64"/>
       <repopackage name="xf86-input-libinput" arch="x86_64"/>
