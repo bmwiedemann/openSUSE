@@ -474,4 +474,12 @@ self, run_tests_report, expected_parse_results=None, msg=None)
     <comment></comment>
     <requestid>933807</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f4b9624d8cfabeb3e4f25438e6886990</srcmd5>
+    <version>3.0.7</version>
+    <time>1644435488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951715</requestid>
+  </revision>
 </revisionlist>

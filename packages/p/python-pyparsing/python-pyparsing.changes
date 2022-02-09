@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Feb  3 21:16:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.0.7:
+  * Fixed bug #345, in which delimitedList changed expressions in
+    place using expr.streamline(). Reported by Kim Gräsman, thanks!
+  * Fixed bug #346, when a string of word characters was passed to
+    WordStart or WordEnd instead of just taking the default
+    value. Originally posted as a question by Parag on StackOverflow,
+    good catch!
+  * Fixed bug #350, in which White expressions could fail to match due
+    to unintended whitespace-skipping. Reported by Fu Hanxi, thank
+    you!
+  * Fixed bug #355, when a QuotedString is defined with characters in
+    its quoteChar string containing regex-significant characters such
+    as ., *, ?, [, ], etc.
+  * Fixed bug in ParserElement.run_tests where comments would be
+    displayed using with_line_numbers.
+  * Added optional "min" and "max" arguments to `delimited_list`. PR
+    submitted by Marius, thanks!
+  * Added new API change note in `whats_new_in_pyparsing_3_0_0`,
+    regarding a bug fix in the `bool()` behavior of `ParseResults`.
+  * Prior to pyparsing 3.0.x, the `ParseResults` class implementation
+    of `__bool__` would return `False` if the `ParseResults` item list
+    was empty, even if it contained named results. In 3.0.0 and later,
+    `ParseResults` will return `True` if either the item list is not
+    empty *or* if the named results dict is not empty.
+  * Minor enhancement to Word generation of internal regular
+    expression, to emit consecutive characters in range, such as "ab",
+    as "ab", not "a-b".
+  * Fixed character ranges for search terms using non-Western
+    characters in booleansearchparser, PR submitted by tc-yu, nice
+    work!
+  * Additional type annotations on public methods.
+
+-------------------------------------------------------------------
 Wed Nov 24 15:23:15 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - requires jinja2 for testing
