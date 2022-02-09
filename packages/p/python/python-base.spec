@@ -1,7 +1,7 @@
 #
 # spec file for package python-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,6 +122,9 @@ Patch66:        CVE-2019-20907_tarfile-inf-loop.patch
 # Fixes httplib to disallow control characters in method to avoid header
 # injection
 Patch67:        CVE-2020-26116-httplib-header-injection.patch
+# PATCH-FIX-UPSTREAM CVE-2021-4189-ftplib-trust-PASV-resp.patch bsc#1194146 mcepl@suse.com
+# Make ftplib not trust the PASV response. (gh#python/cpython#24838)
+Patch68:        CVE-2021-4189-ftplib-trust-PASV-resp.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
@@ -256,6 +259,7 @@ other applications.
 %patch65 -p1
 %patch66 -p1
 %patch67 -p1
+%patch68 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
