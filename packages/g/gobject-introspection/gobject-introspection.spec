@@ -1,7 +1,7 @@
 #
 # spec file for package gobject-introspection
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,10 @@ Source2:        gobjectintrospection.attr
 Source3:        gobject-introspection-typelib.template
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM -- Fix build with meson 0.61.0 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/827494d6415b696a98fa195cbd883b50cc893bfc.patch
+Patch1:         https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/effb1e09dee263cdac4ec593e8caf316e6f01fe2.patch
+Patch2:         https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/7c1178069f1c58a05ec56a94ca6ba124215a947b.patch
 
 BuildRequires:  bison
 BuildRequires:  fdupes
