@@ -2217,4 +2217,13 @@
     <comment></comment>
     <requestid>940311</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>6b19b528fff0620501ebccca57664b41</srcmd5>
+    <version>41.1</version>
+    <time>1644435484</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cdaa837d48894737ca0b4e7d2dfb365119e53759.patch: Fix build
+  with meson 0.61 and newer. Backported to apply on stable version. (forwarded request 952782 from iznogood)</comment>
+    <requestid>952882</requestid>
+  </revision>
 </revisionlist>

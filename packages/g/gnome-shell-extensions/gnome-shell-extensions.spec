@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,8 @@ Source2:        sle-classic.desktop
 Source5:        sle-classic.json
 Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
+# PATCH-FIX-UPSTREAM cdaa837d48894737ca0b4e7d2dfb365119e53759.patch -- Fix build with meson 0.61 and newer
+Patch0:         cdaa837d48894737ca0b4e7d2dfb365119e53759.patch
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
 Patch1:         gnome-shell-add-app-to-desktop.patch
 
@@ -100,6 +102,7 @@ to pick system installed themes or even themes installed in the user's home.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch1 -p1
 
 %patch1000 -p1

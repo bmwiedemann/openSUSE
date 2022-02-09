@@ -1,0 +1,10 @@
+diff -Nur orig-gnome-shell-extensions-41.1/data/meson.build gnome-shell-extensions-41.1/data/meson.build
+--- orig-gnome-shell-extensions-41.1/data/meson.build	2022-02-08 19:00:20.879140911 +0100
++++ gnome-shell-extensions-41.1/data/meson.build	2022-02-08 19:01:41.716276754 +0100
+@@ -1,5 +1,5 @@
+ session_desktop = 'gnome-classic.desktop'
+-i18n.merge_file('',
++i18n.merge_file(
+   input:  session_desktop + '.in',
+   output: session_desktop,
+   po_dir: '../po',
