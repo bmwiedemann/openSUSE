@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
@@ -24,7 +25,7 @@
 %endif
 
 Name:           fcitx5
-Version:        5.0.13
+Version:        5.0.14
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -201,6 +202,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/rpm/macros.d/macros.fcitx
 %systemd_user_preun fcitx5.service
 %systemd_user_postun fcitx5.service
 %else
+
 %pre
 if [ -x /usr/bin/systemctl ]; then
   if [ ! -e "/usr/lib/systemd/user/%{name}.service" ]; then
@@ -208,6 +210,7 @@ if [ -x /usr/bin/systemctl ]; then
     touch "/run/systemd/rpm/needs-user-preset/%{name}.service"
   fi
 fi
+
 %post
 if [ -x /usr/bin/systemctl ]; then
   if [ -e "/run/systemd/rpm/needs-user-preset/%{name}.service" ]; then
@@ -215,6 +218,7 @@ if [ -x /usr/bin/systemctl ]; then
     rm "/run/systemd/rpm/needs-user-preset/%{name}.service" || :
   fi
 fi
+
 %preun
 if [ %{name}.service -eq 0 -a -x /usr/bin/systemctl ]; then
   /usr/bin/systemctl --global disable fcitx5.service || :
@@ -240,6 +244,7 @@ fi
 %{_bindir}/fcitx5-remote
 %{_bindir}/fcitx5-diagnose
 %{_libdir}/fcitx5
+%{_libexecdir}/fcitx5-wayland-launcher
 %{_systemd_user_env_generator_dir}/99-fcitx5.py3
 %{_environmentdir}/99-fcitx5.conf
 %{_userunitdir}/fcitx5.service

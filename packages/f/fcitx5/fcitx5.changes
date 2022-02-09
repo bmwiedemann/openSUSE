@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 12 02:13:30 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.14
+  * support populate keyboard layout configuration to KDE5
+    under wayland.
+  * A fcitx5-wayland-launcher tool to use the same fcitx
+    instance with multiple wayland compositors.
+  * Fix a crash when building with libevent.
+  * Generates coredump on crash.
+  * Refactor wl_shm code to use modern shared memory API
+    on linux/BSD
+  * Fix wayland input method protocol under weston
+  * Fix paging button not clickable under vertical layout
+
+-------------------------------------------------------------------
 Tue Feb  8 13:59:25 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - drop baselibs.conf, no consumer yet
