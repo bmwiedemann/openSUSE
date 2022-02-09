@@ -40,7 +40,7 @@ Index: datovka-4.13.0/datovka.pro
 -	-g -O0 -std=c++11 \
 -	-Wall -Wextra -pedantic \
 -	-Wdate-time -Wformat -Werror=format-security
-+	-g -std=c++11 $$(CXXFLAGS) \
++	-g $$(CXXFLAGS) \
 +	-Wall -Wextra -pedantic
  
  #INCLUDEPATH +=

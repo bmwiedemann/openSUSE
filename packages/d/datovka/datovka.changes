@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb  1 06:50:56 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.19.0
+ * Stored message envelope is updated when the type of a commercial message
+   changes (e.g. when consuming the prepaid answer).
+ * The application is downloading information about the state of the long term
+   storage. This build requires libdatovka-0.2.1.
+ * Messages which are going to be deleted from ISDS can be displayed using a
+   user-specified colour.
+ * Fixed a memory leak occurring while initialising the application.
+ * Fixed compilation when using GCC 11.
+ * Modified sources to compile with Qt-6.1 and Qt-6.2. Qt-6.0 still causes
+   compilation issues. (Qt-6.0 should be fixed instead.)
+ * Fixed a bug in a conversion function causing struct tm to Epoch time
+   conversion errors when converted value fits within an interval limited by
+   midnight and the time zone difference.
+ * Suppressed notification dialogues when uploading into records management
+   service as too many of them were generated occasionally.
+- switch to Qt6 on Tumbleweed
+
+-------------------------------------------------------------------
 Mon Aug 30 06:35:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.18.0
