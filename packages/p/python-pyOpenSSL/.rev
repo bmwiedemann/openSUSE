@@ -424,4 +424,18 @@
     <comment>- Inject multibuild to avoid a build loop.</comment>
     <requestid>937395</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>181fdda6cec1557b8f2bffea0355269a</srcmd5>
+    <version>22.0.0</version>
+    <time>1644435488</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.0.0:
+  - Drop support for Python 2.7.
+  - The minimum ``cryptography`` version is now 35.0.
+  - Expose wrappers for some `DTLS
+    &lt;https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security&gt;`_
+    primitives.
+- drop check_inv_ALPN_lists.patch: upstream</comment>
+    <requestid>951686</requestid>
+  </revision>
 </revisionlist>

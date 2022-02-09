@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%global skip_python2 1
 Name:           python-pyOpenSSL%{psuffix}
-Version:        21.0.0
+Version:        22.0.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -36,32 +36,23 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpe
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
 # Mark tests requiring network access
 Patch0:         skip-networked-test.patch
-# PATCH-FIX-UPSTREAM check_inv_ALPN_lists.patch gh#pyca/pyopenssl#1056 mcepl@suse.com
-#  Check for invalid ALPN lists before calling OpenSSL
-Patch1:         check_inv_ALPN_lists.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module cryptography >= 3.3}
+BuildRequires:  %{python_module cryptography >= 35}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pretend}
-BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pyOpenSSL >= %version}
 BuildRequires:  %{python_module pytest >= 3.0.1}
-BuildRequires:  %{python_module six}
 BuildRequires:  ca-certificates-mozilla
 %endif
 Requires:       python-cffi
-Requires:       python-cryptography >= 3.3
-Requires:       python-six >= 1.5.2
+Requires:       python-cryptography >= 35
 Provides:       pyOpenSSL = %{version}
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-openssl < %{version}
-Provides:       %{oldpython}-openssl = %{version}
-%endif
 %python_subpackages
 
 %description

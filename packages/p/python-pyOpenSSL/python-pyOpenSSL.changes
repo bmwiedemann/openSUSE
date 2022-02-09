@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  4 23:21:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.0.0:
+  - Drop support for Python 2.7.
+  - The minimum ``cryptography`` version is now 35.0.
+  - Expose wrappers for some `DTLS
+    <https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security>`_
+    primitives.
+- drop check_inv_ALPN_lists.patch: upstream
+
+-------------------------------------------------------------------
 Thu Dec  9 05:55:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to avoid a build loop. 
