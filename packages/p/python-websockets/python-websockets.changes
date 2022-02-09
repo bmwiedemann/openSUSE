@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb  4 22:08:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1:
+  * Made the second parameter of connection handlers optional. It will be
+    deprecated in the next major release. The request path is available in
+    the :attr:`~legacy.protocol.WebSocketCommonProtocol.path` attribute of
+    the first argument.
+    If you implemented the connection handler of a server as::
+        async def handler(request, path):
+            ...
+  
+    You should replace it by::
+  
+        async def handler(request):
+            path = request.path  # if handler() uses the path argument
+            ...
+  * Added ``python -m websockets --version``.
+  * Reverted optimization of default compression settings for clients, mainly to
+    avoid triggering bugs in poorly implemented servers like `AWS API Gateway`_.
+  * Mirrored the entire :class:`~asyncio.Server` API
+    in :class:`~server.WebSocketServer`.
+  * Improved performance for large messages on ARM processors.
+  * Documented how to auto-reload on code changes in development.
+  * Avoided half-closing TCP connections that are already closed.
+
+-------------------------------------------------------------------
 Sat Oct 30 22:51:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Reactivate python39 build, only disable testing. No need to break

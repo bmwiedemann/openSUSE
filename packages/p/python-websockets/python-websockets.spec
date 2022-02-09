@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-websockets
-Version:        10.0
+Version:        10.1
 Release:        0
 Summary:        An implementation of the WebSocket Protocol (RFC 6455)
 License:        BSD-3-Clause
