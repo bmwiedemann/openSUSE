@@ -138,4 +138,16 @@
   * DB: add Tiger Lake</comment>
     <requestid>914539</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8de687773e7eb4b6b707c8134764829b</srcmd5>
+    <version>0.5.1+git.1644144775</version>
+    <time>1644435586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1+git.1644144775:
+  * Tests: add more Zen2 tests from InstLatx64
+  * DB: add Lucienne
+  * Report memory allocation failures without segfaulting. (#160)
+  * Don't link with msrdriver.c on non-Windows platform. (#159)</comment>
+    <requestid>952939</requestid>
+  </revision>
 </revisionlist>
