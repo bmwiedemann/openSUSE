@@ -50,7 +50,10 @@ USE_UPNP=0
 
 USE_FREETYPE=1
 
-USE_ZSTD=0
+USE_ZSTD=1
+
+# using FluidSynth for MIDI playback (SDL2 backend needed for Linux/MacOS, SDL2 or GDI for MinGW)
+#USE_FLUIDSYNTH_MIDI := 1
 
 # Use static libraries instead
 # STATIC = 1
@@ -84,7 +87,7 @@ USE_ZSTD=0
 # In order to use the flags, add a line like this: (-Dxxx)
 # FLAGS = -DUSE_C
 
-FLAGS += -DREVISION="10317"
+FLAGS += -DREVISION="10421"
 
 # Output directories:
 #
