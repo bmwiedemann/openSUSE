@@ -1,7 +1,7 @@
 #
 # spec file for package cura
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 %global __requires_exclude qmlimport\\((Cura|DigitalFactory)\\..*
 
 Name:           cura
-%define sversion        4.9
-Version:        4.9.0
+%define sversion        4.13.1
+Version:        4.13.1
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
