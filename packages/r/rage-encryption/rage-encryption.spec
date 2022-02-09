@@ -14,10 +14,12 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+%define _buildshell /bin/bash
+%define vlic_dir  vendored
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
-Version:        0.7.0~git0.c93b914
+Version:        0.7.1
 Release:        0
 Summary:        Simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.
@@ -27,10 +29,22 @@ License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND 
 #               https://en.opensuse.org/openSUSE:Package_group_guidelines
 Group:          Productivity/Security
 Url:            https://github.com/str4d/rage
-Source0:        rage-%{version}.tar.xz
+Source0:        rage-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+# Licenses of dependency packages.
+Source3:        vendored_licenses_packager.sh
+%if %{suse_version} > 1500
 BuildRequires:  cargo-packaging
+%else
+BuildRequires:  rust+cargo >= 1.51
+%endif
+# for build scripts
+BuildRequires:  bash
+# for feature mount
+BuildRequires:  fuse-devel
+Recommends:     pinentry
+Recommends:     %{name}-bash-completion
 Conflicts:      rage
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -38,23 +52,66 @@ ExclusiveArch:  %{rust_tier1_arches}
 Rage is a simple, modern, and secure file encryption tool, using the age format. It features small
 explicit keys, no config options, and UNIX-style composability.
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Group:          Productivity/Security
+BuildArch:      noarch
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+Conflicts:      rage
+
+%description bash-completion
+Bash command line completion support for %{name}
+
 %prep
 %setup -q -a 0 -n rage-%{version}
 %setup -q -n rage-%{version} -a 1 -D -T
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
+cd vendor
+# Find licenses of dependency packages and prepare for installation
+bash %{SOURCE3} finder %{vlic_dir}
+
 %build
-%{cargo_build}
+%define build_args --manifest-path rage/Cargo.toml --features "mount" --release %{?_smp_mflags}
+
+%if %{suse_version} > 1500
+%{cargo_build} --features "mount"
+%else
+cargo build %{build_args}
+%endif
+
+cargo run --example generate-completions %{build_args}
+cargo run --example generate-docs %{build_args}
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/rage-%{version}/target/release/rage %{buildroot}%{_bindir}/rage
 install -m 0755 %{_builddir}/rage-%{version}/target/release/rage-keygen %{buildroot}%{_bindir}/rage-keygen
+install -m 0755 %{_builddir}/rage-%{version}/target/release/rage-keygen %{buildroot}%{_bindir}/rage-mount
+
+for i in "" -keygen -mount; do
+  install -D -p -m 644 target/manpages/rage$i.1.gz %{buildroot}/%{_mandir}/man1/rage$i.1%{?ext_man}
+  install -D -p -m 644 target/completions/rage$i.bash %{buildroot}%{_datadir}/bash-completion/completions/rage$i
+done
+
+# Dependency Licenses
+install -d -m 0755 %{buildroot}%{_licensedir}/%{name}/%{vlic_dir}
+bash %{SOURCE3} installer vendor/%{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir} verbose
 
 %files
 %{_bindir}/rage
 %{_bindir}/rage-keygen
+%{_bindir}/rage-mount
+%doc README.md rage/CHANGELOG.md
+# accept duplicates here
+%license LICENSE-APACHE LICENSE-MIT
+%{_licensedir}/%{name}/%{vlic_dir}/
+%{_mandir}/man1/rage*.1%{?ext_man}
+
+%files bash-completion
+%license LICENSE-APACHE LICENSE-MIT
+%{_datadir}/bash-completion/completions/rage*
 
 %changelog
-

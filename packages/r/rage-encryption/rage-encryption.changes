@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 31 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to version 0.7.1
+  * Fixed a bug where non-canonical recipient stanza bodies in an age
+    file header would cause rage to crash instead of being rejected
+  * vendor.tar.xz updated from source code Cargo.lock file
+
+- Added:
+  * binary rage-mount
+  * bash-completion for rage, rage-keygen and rage-mount
+  * manual pages for rage, rage-keygen and rage-mount
+  * Licenses files
+  * Licenses files of vendored crates extracted
+    with script "vendored_licenses_packager.sh"
+  * README and CHANGELOG files
+  * possibility to build without cargo-packaging for "older" distros
+
+-------------------------------------------------------------------
 Fri Nov 19 01:08:01 UTC 2021 - william.brown@suse.com
 
 - Update to version 0.7.0~git0.c93b914:
