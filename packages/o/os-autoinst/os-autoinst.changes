@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 13 02:07:49 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1644598050.d3b51b29:
+  * Fix default VNC connect timeout
+  * Allow network cable to be unplugged
+  * Make open_pipe tests more portable
+  * Test set_pipe_sz consistently with every run
+  * Avoid non-incremental screen updates in `localXvnc` console
+  * Adjust mergify config for new OBS checks
+  * Use proper perl "signatures" in consoles::VNC
+
+-------------------------------------------------------------------
 Thu Feb 10 17:49:00 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1644498177.fa8ce0fe:
