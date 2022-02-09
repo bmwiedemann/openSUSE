@@ -369,4 +369,41 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
     <comment></comment>
     <requestid>841137</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ee337cf8d79a0854ac2d03e82910717c</srcmd5>
+    <version>4.10.0</version>
+    <time>1644435497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.10.0:
+  * This is the first release of Beautiful Soup to only support Python 3.
+  * The behavior of methods like .get_text() and .strings now differs
+    depending on the type of tag.
+  * NavigableString and its subclasses now implement the get_text()
+    method, as well as the properties .strings and
+    .stripped_strings.
+  * The 'html5' formatter now treats attributes whose values are the
+    empty string as HTML boolean attributes.
+  * The 'replace_with()' method now takes a variable number of arguments,
+    and can be used to replace a single element with a sequence of elements.
+  * Corrected output when the namespace prefix associated with a
+    namespaced attribute is the empty string, as opposed to
+    None.
+  * Performance improvement when processing tags that speeds up overall
+    tree construction by 2%. Patch by Morotti. [bug=1899358]
+  * Corrected the use of special string container classes in cases when a
+    single tag may contain strings with different containers; such as
+    the &lt;template&gt; tag, which may contain both TemplateString objects
+    and Comment objects.
+  * The html.parser tree builder can now handle named entities
+    found in the HTML5 spec in much the same way that the html5lib
+    tree builder does.
+  * Added a second way to pass specify encodings to UnicodeDammit and
+    EncodingDetector, based on the order of precedence defined in the
+    HTML5 spec.
+  * Improve the warning issued when a directory name (as opposed to
+    the name of a regular file) is passed as markup into the BeautifulSoup
+    constructor.
+- Do not pass the directory to pytest.</comment>
+    <requestid>952905</requestid>
+  </revision>
 </revisionlist>
