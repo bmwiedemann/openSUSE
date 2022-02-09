@@ -889,4 +889,12 @@ Feature Improvements
     <comment>Adding bug reference only to changelog. No changes.</comment>
     <requestid>924673</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>b87f04896c3affd931fa94208f484070</srcmd5>
+    <version>3.0.25</version>
+    <time>1644435548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952634</requestid>
+  </revision>
 </revisionlist>
