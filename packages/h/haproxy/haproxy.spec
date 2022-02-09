@@ -186,7 +186,7 @@ make %{?_smp_mflags} \
 %if %{with systemd}
 make -C admin/systemd  PREFIX="%{_prefix}"
 %if %{with sysusers}
-%sysusers_generate_pre %{SOURCE5} haproxy
+%sysusers_generate_pre %{SOURCE5} haproxy haproxy-user.conf
 %endif
 %endif
 make admin/halog/halog DEBUG_CFLAGS="%{optflags}" V=1

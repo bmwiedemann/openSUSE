@@ -1138,4 +1138,12 @@
     <comment>- Update to version 2.5.1+git0.86b093a51:</comment>
     <requestid>945628</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>6ef90af6068b17068ac9040e0476a0fb</srcmd5>
+    <version>2.5.1+git0.86b093a51</version>
+    <time>1644435511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952090</requestid>
+  </revision>
 </revisionlist>
