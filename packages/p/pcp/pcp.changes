@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  7 16:25:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/zsh and %{_datadir}/zsh/site-functions: we have
+  no guaranteed owner of these directories in the buildroot.
+
+-------------------------------------------------------------------
 Mon Dec 13 13:48:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove sysconfig dependencies, this is not the equivalent of
@@ -9,7 +15,7 @@ Mon Dec 13 13:48:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 Tue May 11 17:12:16 CEST 2021 - ro@suse.de
 
 - also buildrequire pkgconfig(systemd) to make sure configure
-  detects systemd 
+  detects systemd
 
 -------------------------------------------------------------------
 Sat Mar 13 12:41:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>

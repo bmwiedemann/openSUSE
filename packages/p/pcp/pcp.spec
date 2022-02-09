@@ -3032,6 +3032,8 @@ PCP_LOG_DIR=%{_logsdir}
 %{_localstatedir}/lib/pcp/config/pmlogrewrite
 %dir %attr(0775,pcp,pcp) %{_localstatedir}/lib/pcp/config/pmda
 
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_pcp
 %if !%{disable_sdt}
 %{_tapsetdir}/pmcd.stp
