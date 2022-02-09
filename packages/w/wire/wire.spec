@@ -1,7 +1,7 @@
 #
 # spec file for package wire
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           wire
 Version:        0.5.0
 Release:        0
-Summary:	Compile-time Dependency Injection for Go
+Summary:        Compile-time Dependency Injection for Go
 License:        Apache-2.0
 Group:          Development/Languages/Go
-Url:            https://github.com/google/wire
+URL:            https://github.com/google/wire
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
@@ -53,4 +53,3 @@ written to be used with Wire is useful even for hand-written initialization.
 %{_bindir}/%{name}
 
 %changelog
-
