@@ -670,4 +670,14 @@
   - Drop pam_systemd_home again [bsc#1191528]</comment>
     <requestid>924639</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>09e573a1e173af4bccecadec93dd91a4</srcmd5>
+    <version>1.6</version>
+    <time>1644435514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.6
+  - Create /etc/pam.d if not there
+  - Support file option of pam_pwhistory</comment>
+    <requestid>952147</requestid>
+  </revision>
 </revisionlist>

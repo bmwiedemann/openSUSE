@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  7 14:55:55 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.6
+  - Create /etc/pam.d if not there
+  - Support file option of pam_pwhistory
+
+-------------------------------------------------------------------
 Mon Oct 11 09:12:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.5
