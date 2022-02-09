@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Mon Feb 7 10:05:08 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#572
+- debuginfodeps: blacklist usr/bin/syslinux-mtools
+- 17.41
+
+--------------------------------------------------------------------
+Tue Feb 1 14:29:20 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#554
+- Support for new oscrc location
+- 17.40
+
+--------------------------------------------------------------------
 Wed Jan 26 10:21:07 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#571
