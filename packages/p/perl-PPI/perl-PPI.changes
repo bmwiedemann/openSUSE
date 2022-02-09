@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  3 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.272
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.272   2022-02-02 16:10:50Z
+  	Summary:
+  	- Drop prerequisite for IO::String on perl 5.8+
+
+-------------------------------------------------------------------
 Wed Jan 26 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.271
