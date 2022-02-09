@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 04 13:37:58 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.6.0:
+  * Updated Kubernetes Gateway API provider
+  * Consul Enterprise support
+  * Consul Connect support
+  * Inflight request middleware for TCP routers
+  * HTTP/3 support (experimental)
+  * Added support for loading plugins directly from the filesystem (Local Plugins)
+  * Added ability to create Provider Plugins
+  * Added TCP Middleware
+  * Kubernetes 1.22 API changes
+   * Dropped support for Ingress API versions extensions/v1beta1
+   * Updated Traefik Proxy CRDs to use API apiextensions.k8s.io/v1
+
+-------------------------------------------------------------------
 Wed Jul 28 15:46:39 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 2.4.12:
@@ -25,7 +41,6 @@ Wed Jul 28 15:46:39 UTC 2021 - alexandre.vicenzi@suse.com
   * Fix: use defaultEntryPoints when no entryPoint is defined in a TCPRouter
   * Use a dynamic buffer to handle client Hello SNI detection
   * Error span on 5xx only
-
 
 -------------------------------------------------------------------
 Wed May 19 09:06:54 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>

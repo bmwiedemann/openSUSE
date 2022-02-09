@@ -1,7 +1,7 @@
 #
 # spec file for package traefik
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project github.com/traefik/traefik
 
 Name:           traefik
-Version:        2.4.12
+Version:        2.6.0
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        traefik.service
 Source3:        traefik.toml
+Source4:        %{name}-%{version}.webui.tar.gz
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
@@ -56,6 +57,9 @@ build_date=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +"%%Y%%m%%d")
 
 # tarball causes "inconsistent vendoring"
 tar -xf %{SOURCE1}
+
+# unpack webui
+tar -xf %{SOURCE4}
 
 CGO_ENABLED=0
 
