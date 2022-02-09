@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:49:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 124.patch: Fix build with meson 0.61.0 and newer.
+
+-------------------------------------------------------------------
 Fri Nov  5 07:51:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing introspection=true, vapi=true and plugins=true to

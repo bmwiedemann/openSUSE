@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Patch0:         gedit-desktop.patch
 Patch1:         gedit-plugins-python-env.patch
 # PATCH-FIX-UPSTREAM gedit-fix-open-crash.patch -- open-selector: Fix crash introduced in GDateTime port
 Patch2:         gedit-fix-open-crash.patch
+# PATCH-FIX-UPSTREAM 124.patch -- Fix build with meson 0.61.0 and newer
+Patch3:         https://gitlab.gnome.org/GNOME/gedit/-/merge_requests/124.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 0.9.3
