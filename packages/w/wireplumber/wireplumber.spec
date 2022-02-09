@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,7 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-default-nodes-handle-nodes-without-Routes.patch
 
 Patch100:       reduce-meson-required-version.patch
 # docs
@@ -188,7 +187,6 @@ export XDG_RUNTIME_DIR=/tmp
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-mixer-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-portal-permissionstore.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-reserve-device.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-route-settings-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-adapter.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-endpoint.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-node.so
