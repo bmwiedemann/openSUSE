@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Tue Feb  8 13:59:25 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- drop baselibs.conf, no consumer yet
+
+-------------------------------------------------------------------
+Sun Jan 23 05:01:56 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.13
+  * bug fix release
+- change in 5.0.12
+  * A lot of fixes in zwp_input_method_v1 to make it ready to be used
+    with future Plasma 5.24 native wayland input method support. With
+    the next Plasma release (not out yet as of today), you should be
+    able to directly select fcitx in the "Virtual keyboard KCM" (it was
+    designed for on screen keyboard so the naming is a little bit
+    confusing at this point) and use it with native wayland input
+    method protocols. This allows some non-gtk/qt text-input-v{2,3}
+    applications to be used with the input method under kwin. 
+- add fcitx5-5.0.13-memfd.patch
+
+-------------------------------------------------------------------
+Thu Jan 20 08:06:20 CET 2022 - tiwai@suse.de
+
+- Fix xim.d script for KDE Plasma (boo#1194916);
+  $WINDOWMANAGER check needs to be adjusted
+
+-------------------------------------------------------------------
+Sat Jan 15 05:05:58 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- can start via systemd user service on wayland
+- fix typo and requirements
+
+-------------------------------------------------------------------
+Wed Dec  8 01:49:47 UTC 2021 - Tranter Madi <trmdi@yandex.com>
+
+- update to version 5.0.11
+
+-------------------------------------------------------------------
+Sat Nov  6 19:07:10 UTC 2021 - J <hj@powersnail.com>
+
+- update to version 5.0.9
+  * Wayland repeat key fix under native wayland input method protocol
+  * Improved fcitx5-diagnose to include more information
+  * Screen DPI detection fixing, now you can change DPI on the fly without the need to restart fcitx.
+    This also fixed another issue about when fcitx does not pick up DPI change upon login.
+  * Fix XWindow based tray menu
+  * Fix multi-screen detection with xrandr. Under certain cases, screen change may not be automatically picked up.
+
+
+-------------------------------------------------------------------
+Thu Oct 28 16:09:32 CEST 2021 - tiwai@suse.de
+
+- Fix build with Leap 15.3 and 15.4 due to rsvg pkg conflicts
+
+-------------------------------------------------------------------
+Wed May  5 06:57:39 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.8
+  * Fix key repeating with wayland input method protocol
+  * Workaround SNI gnome extension for "empty icon" or
+    duplicate icon with kimpanel issue.
+  * The Unicode addon trigger key is now configurable.
+  * Fix some BSD build issue
+  * Fix key grab when the input method group is added or removed.
+
+-------------------------------------------------------------------
+Thu Apr 22 06:41:09 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.7
+  * Fix reforwarding event value 
+
+-------------------------------------------------------------------
+Thu Apr 22 06:39:14 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.6
+  * Improve the build ability on android/ios, more options can be disabled.
+  * xim uses sync mode
+  * Reload new addon at runtime with version check.
+  * Bug fix on rotated screen.
+  * Use fixed line height for classicui.
+  * Fix "Default" value for classicui
+  * Add sub mode label to input method
+
+-------------------------------------------------------------------
+Tue Mar 16 01:18:32 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.5
+  * Add a new client side ui api to have extensive support for the
+    client side input panel
+  * Fix a bunch of issue in classic ui theme and add an option for
+    customize border if image is not used.
+  * fix ibus frontend content type
+  * reduce the memory usage by making unicode data load on demand.
+
+-------------------------------------------------------------------
+Sat Jan 30 09:39:06 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * Supporting resolving the session dbus address exported to X11
+  * Add long press support for special symbol, this is disabled by default and also customizable.
+  * Avoid trigger dbus activation for "fcitx5-remote -e"
+  * In order to support "old" fcitx im module bundled, added a new fcitx4 frontend (mainly to support wps-office out of box).
+
+-------------------------------------------------------------------
+Fri Dec 11 06:49:22 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- add fcitx5-gcc7.patch: fix build on openSUSE Leap 15.1 with gcc7
+
+-------------------------------------------------------------------
+Sun Dec  6 05:08:33 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+
+-------------------------------------------------------------------
+Sat Nov 28 05:12:34 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- Move the startup snippet to /usr/etc/X11/xim.d for TW
+
+-------------------------------------------------------------------
+Sun Nov  8 03:48:55 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Fri Oct 30 22:58:18 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update the spec file to obselete fcitx < 4.99.0
+
+-------------------------------------------------------------------
+Mon Oct 19 14:58:40 UTC 2020 - xia lei <emricg2@gmail.com>
+
+- Update to version 4.99+git20201015.dd9dc94:
+  * Preload default input method configured in the group.
+  * Add logger type for multimap/set.
+  * Batch multiple commit string together
+  * Make candidate list key based label support more key
+  * add fcitx5-diagnose
+  * add support for modifying default configuration at runtime
+
+-------------------------------------------------------------------
+Thu Sep  3 05:46:46 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update to 4.99.0+git20200902.a87f7b0
+
+-------------------------------------------------------------------
+Wed Sep  2 04:48:40 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- FTBFS for Tumbleweed
+  * add fcitx5-std-runtime_error.patch, std::runtime_error is in
+    stdexcept.h
+
+-------------------------------------------------------------------
+Tue Mar  3 21:17:37 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update to version 4.99.0+git20200212.9436416
+  * Add log functionality for surrounding text
+  * Add fsync before rename
+  * Add shorthand append for candidate list
+  * Make cldr emoji annotation as required
+  * Add emoji module and emoji typing in keyboard module
+- add build-requires cldr-emoji-annotation-devel
+- fix build errors on openSUSE_Leap_15.2
+
+-------------------------------------------------------------------
+Sat Nov  9 03:45:28 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+
+-------------------------------------------------------------------
+Sat May 25 04:20:05 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- update version 4.99.0+git20181128.984f3f2
+
+-------------------------------------------------------------------
+Sat Aug 25 05:48:59 UTC 2018 - i@marguerite.su
+
+- initial package

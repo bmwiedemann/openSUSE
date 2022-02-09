@@ -1,0 +1,7 @@
+# RPM macros for fcitx5
+%_fcitx5_libdir %{_libdir}/fcitx5
+%_fcitx5_libexecdir %{_fcitx5_libdir}/libexec
+%_fcitx5_datadir %{_datadir}/fcitx5
+%_fcitx5_addondir %{_fcitx5_datadir}/addon
+%_fcitx5_imconfdir %{_fcitx5_datadir}/inputmethod
+%_fcitx5_qt5dir %{_fcitx5_libdir}/qt5

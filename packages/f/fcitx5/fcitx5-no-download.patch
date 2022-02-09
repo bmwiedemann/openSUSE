@@ -1,0 +1,17 @@
+Index: fcitx5-4.99.0+git20180620.9e15086/src/modules/spell/dict/CMakeLists.txt
+===================================================================
+--- fcitx5-4.99.0+git20180620.9e15086.orig/src/modules/spell/dict/CMakeLists.txt
++++ fcitx5-4.99.0+git20180620.9e15086/src/modules/spell/dict/CMakeLists.txt
+@@ -15,9 +15,9 @@ set(SPELL_EN_DICT_TAR "en_dict-${SPELL_E
+ set(SPELL_EN_DICT_URL
+   "https://download.fcitx-im.org/data/en_dict-${SPELL_EN_DICT_VER}.tar.gz")
+ 
+-fcitx5_download(spell-en-download ${SPELL_EN_DICT_URL} ${SPELL_EN_DICT_TAR}
+-                c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb)
+-fcitx5_extract(spell-en-extract "${SPELL_EN_DICT_TAR}" DEPENDS spell-en-download
++#fcitx5_download(spell-en-download ${SPELL_EN_DICT_URL} ${SPELL_EN_DICT_TAR}
++#                c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb)
++fcitx5_extract(spell-en-extract "${SPELL_EN_DICT_TAR}"
+   OUTPUT ${SPELL_EN_DICT_SRC})
+ 
+ add_custom_command(
