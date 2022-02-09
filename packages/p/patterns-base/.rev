@@ -731,4 +731,18 @@
     <comment></comment>
     <requestid>946381</requestid>
   </revision>
+  <revision rev="85" vrev="31">
+    <srcmd5>9bc0d68039a424f4b2431d1cbcd7d628</srcmd5>
+    <version>20200505</version>
+    <time>1644435512</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer recommend apparmor pattern by enhanced_base:
+  installations using YaST have the LSM selected during
+  installation. Other setups might just as well pick SELinux.
+
+- base: favour psmisc over busybox-psmisc or other equivalents
+- x11 pattern: Require xf86-input-libinput also on s390x
+- Move shadow from required to recommended, it not needed for a</comment>
+    <requestid>952124</requestid>
+  </revision>
 </revisionlist>

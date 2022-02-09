@@ -321,7 +321,6 @@ Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 1060
 Provides:       pattern-visible()
 Requires:       pattern() = base
-Recommends:     pattern() = apparmor
 %if 0%{?is_opensuse}
 Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  7 13:14:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend apparmor pattern by enhanced_base:
+  installations using YaST have the LSM selected during
+  installation. Other setups might just as well pick SELinux.
+
+-------------------------------------------------------------------
 Fri Jan 14 09:41:11 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install PAM manual pages instead of the PDFs
@@ -25,7 +32,7 @@ Fri Dec 17 15:24:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 -------------------------------------------------------------------
 Fri Dec 17 15:18:17 UTC 2021 - Richard Brown <rbrown@suse.com>
 
-- base: favour psmisc over busybox-psmisc or other equivalents 
+- base: favour psmisc over busybox-psmisc or other equivalents
 
 -------------------------------------------------------------------
 Sat Nov 20 22:18:18 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
@@ -37,7 +44,7 @@ Sat Nov 20 22:18:18 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 -------------------------------------------------------------------
 Fri Nov 19 16:41:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- x11 pattern: Require xf86-input-libinput also on s390x 
+- x11 pattern: Require xf86-input-libinput also on s390x
   (JIRA#SLE-18632)
 
 -------------------------------------------------------------------
@@ -164,7 +171,7 @@ Wed Mar  3 08:50:02 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Recommend hostname, else you don't get it installed without
   installed YaST
-- Move shadow from required to recommended, it not needed for a 
+- Move shadow from required to recommended, it not needed for a
   functional base system and there are alternate solutions, so
   allow users to install them.
 
