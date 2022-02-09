@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        57.4.0
+Version:        58.3.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        MIT

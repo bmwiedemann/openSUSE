@@ -6,10 +6,10 @@ setuptools buildrequires more_itertools just for one simple function
 in order to remove the cycle, the unique_everseen function is copied
 here so that it can be used without buildrequiring the external package.
 
-Index: setuptools-57.0.0/setuptools/extern/__init__.py
+Index: setuptools-58.3.0/setuptools/extern/__init__.py
 ===================================================================
---- setuptools-57.0.0.orig/setuptools/extern/__init__.py
-+++ setuptools-57.0.0/setuptools/extern/__init__.py
+--- setuptools-58.3.0.orig/setuptools/extern/__init__.py
++++ setuptools-58.3.0/setuptools/extern/__init__.py
 @@ -69,5 +69,5 @@ class VendorImporter:
              sys.meta_path.append(self)
  
@@ -17,10 +17,10 @@ Index: setuptools-57.0.0/setuptools/extern/__init__.py
 -names = 'packaging', 'pyparsing', 'ordered_set', 'more_itertools',
 +names = 'packaging', 'pyparsing', 'ordered_set'
  VendorImporter(__name__, names, 'setuptools._vendor').install()
-Index: setuptools-57.0.0/setuptools/dist.py
+Index: setuptools-58.3.0/setuptools/dist.py
 ===================================================================
---- setuptools-57.0.0.orig/setuptools/dist.py
-+++ setuptools-57.0.0/setuptools/dist.py
+--- setuptools-58.3.0.orig/setuptools/dist.py
++++ setuptools-58.3.0/setuptools/dist.py
 @@ -29,7 +29,7 @@ from distutils.version import StrictVers
  
  from setuptools.extern import packaging
@@ -30,10 +30,10 @@ Index: setuptools-57.0.0/setuptools/dist.py
  
  from . import SetuptoolsDeprecationWarning
  
-Index: setuptools-57.0.0/setuptools/more_itertools.py
+Index: setuptools-58.3.0/setuptools/more_itertools.py
 ===================================================================
 --- /dev/null
-+++ setuptools-57.0.0/setuptools/more_itertools.py
++++ setuptools-58.3.0/setuptools/more_itertools.py
 @@ -0,0 +1,19 @@
 +def unique_everseen(iterable, key=None):
 +    """Yield unique elements, preserving order."""
@@ -54,10 +54,10 @@ Index: setuptools-57.0.0/setuptools/more_itertools.py
 +            if k not in seenlist:
 +                seenlist_add(k)
 +                yield element
-Index: setuptools-57.0.0/setuptools/command/build_py.py
+Index: setuptools-58.3.0/setuptools/command/build_py.py
 ===================================================================
---- setuptools-57.0.0.orig/setuptools/command/build_py.py
-+++ setuptools-57.0.0/setuptools/command/build_py.py
+--- setuptools-58.3.0.orig/setuptools/command/build_py.py
++++ setuptools-58.3.0/setuptools/command/build_py.py
 @@ -8,7 +8,7 @@ import io
  import distutils.errors
  import itertools
@@ -65,12 +65,12 @@ Index: setuptools-57.0.0/setuptools/command/build_py.py
 -from setuptools.extern.more_itertools import unique_everseen
 +from setuptools.more_itertools import unique_everseen
  
- try:
-     from setuptools.lib2to3_ex import Mixin2to3
-Index: setuptools-57.0.0/setuptools/msvc.py
+ 
+ def make_writable(target):
+Index: setuptools-58.3.0/setuptools/msvc.py
 ===================================================================
---- setuptools-57.0.0.orig/setuptools/msvc.py
-+++ setuptools-57.0.0/setuptools/msvc.py
+--- setuptools-58.3.0.orig/setuptools/msvc.py
++++ setuptools-58.3.0/setuptools/msvc.py
 @@ -30,7 +30,7 @@ import itertools
  import subprocess
  import distutils.errors
@@ -80,11 +80,11 @@ Index: setuptools-57.0.0/setuptools/msvc.py
  
  from .monkey import get_unpatched
  
-Index: setuptools-57.0.0/setuptools/package_index.py
+Index: setuptools-58.3.0/setuptools/package_index.py
 ===================================================================
---- setuptools-57.0.0.orig/setuptools/package_index.py
-+++ setuptools-57.0.0/setuptools/package_index.py
-@@ -28,7 +28,7 @@ from distutils import log
+--- setuptools-58.3.0.orig/setuptools/package_index.py
++++ setuptools-58.3.0/setuptools/package_index.py
+@@ -27,7 +27,7 @@ from distutils import log
  from distutils.errors import DistutilsError
  from fnmatch import translate
  from setuptools.wheel import Wheel
@@ -93,13 +93,13 @@ Index: setuptools-57.0.0/setuptools/package_index.py
  
  
  EGG_FRAGMENT = re.compile(r'^egg=([-A-Za-z0-9_.+!]+)$')
-Index: setuptools-57.0.0/setuptools/command/test.py
+Index: setuptools-58.3.0/setuptools/command/test.py
 ===================================================================
---- setuptools-57.0.0.orig/setuptools/command/test.py
-+++ setuptools-57.0.0/setuptools/command/test.py
-@@ -12,7 +12,7 @@ from pkg_resources import (resource_list
-                            working_set, _namespace_packages, evaluate_marker,
-                            add_activation_listener, require, EntryPoint)
+--- setuptools-58.3.0.orig/setuptools/command/test.py
++++ setuptools-58.3.0/setuptools/command/test.py
+@@ -19,7 +19,7 @@ from pkg_resources import (
+     EntryPoint,
+ )
  from setuptools import Command
 -from setuptools.extern.more_itertools import unique_everseen
 +from setuptools.more_itertools import unique_everseen
