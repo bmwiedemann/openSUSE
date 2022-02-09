@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://codedocs.xyz/libnet/libnet/
 Source0:        https://github.com/libnet/libnet/releases/download/v%{version}/libnet-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -70,8 +71,7 @@ Libnet is an API to help with the construction and handling of network
 packets. This package contains documentation.
 
 %prep
-%setup -q
-###%patch1 -p1
+%autosetup -p1
 
 rm -rf sample/win32
 # HACK: to have samples/ dir untouched and ready for installation
