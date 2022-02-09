@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  8 09:55:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.4:
+  * Bug 5190: Preserve configured order of intermediate CA certificate chain
+  * Bug 5188: Fix reconfiguration leaking tls-cert=... memory
+  * Bug 5187: Properly track (and mark) truncated store entries
+  * Bug 5134: assertion failed: Transients.cc:221: "old == e"
+  * Bug 5132: Close the tunnel if to-server conn closes after client
+
+-------------------------------------------------------------------
 Wed Dec 22 14:03:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Adjust harden_squid.service.patch to resolve boo#1193938
