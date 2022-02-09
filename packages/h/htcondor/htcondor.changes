@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Jan 18 10:28:07 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- initial commit of htcondor stbale condor release V9_0_8 with 
+  the patch added-suse-as-SYSTEM_NAME.patch so that suse can be 
+  used as system for the build. The additional sources condor_config\
+  and osg-env.conf are the rpm specific configurations
