@@ -133,4 +133,12 @@
     (this improves copying in some terminals).</comment>
     <requestid>857115</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>43943ded332825670dd4e98f6044c848</srcmd5>
+    <version>3.0.26</version>
+    <time>1644435490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951926</requestid>
+  </revision>
 </revisionlist>
