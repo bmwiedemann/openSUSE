@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-gtk
-Version:        5.0.11
+Version:        5.0.12
 Release:        0
 Summary:        Gtk im module for fcitx5 and glib based dbus client library
 License:        LGPL-2.1-or-later
@@ -82,8 +82,8 @@ This package provides GTK+ 3.0 im module for fcitx5.
 %package -n fcitx5-gtk4
 Summary:        GTK+ 4.0 im module for fcitx5
 Group:          System/I18n/Chinese
-Requires(post):    glib2-tools
-Requires(postun):  glib2-tools
+Requires(post): glib2-tools
+Requires(postun):glib2-tools
 Supplements:    (fcitx5 and libgtk-4-1)
 
 %description -n fcitx5-gtk4
@@ -114,6 +114,7 @@ This package provides the GObject Introspection bindings for fcitx5.
 %cmake_install
 
 %post -n libFcitx5GClient2 -p /sbin/ldconfig
+
 %post -n fcitx5-gtk2
 %{gtk2_immodule_post}
 
@@ -121,6 +122,7 @@ This package provides the GObject Introspection bindings for fcitx5.
 %{gtk3_immodule_post}
 
 %postun -n libFcitx5GClient2 -p /sbin/ldconfig
+
 %postun -n fcitx5-gtk2
 %{gtk2_immodule_postun}
 
