@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  9 18:02:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove nose BR, we really needn't it.
+
+-------------------------------------------------------------------
 Tue Oct 26 11:38:48 UTC 2021 - pgajdos@suse.com
 
 - %check: drop usage of nose, use %pytest macro for testing
