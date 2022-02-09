@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Tue Feb  8 14:15:43 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- drop baselibs.conf, no consumer yet
+
+-------------------------------------------------------------------
+Sat Jan 29 14:16:26 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jan 25 13:38:24 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.11
+  * Allow positioning input windows more freely
+
+-------------------------------------------------------------------
+Sat Jan 15 05:09:36 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix requirements
+
+-------------------------------------------------------------------
+Wed Dec 15 11:40:00 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.10
+  * Try to workaround wayland window blinking as much as possible
+
+-------------------------------------------------------------------
+Sat Nov  6 18:45:24 UTC 2021 - J <hj@powersnail.com>
+
+- update to version 5.0.9
+  * Pickup font DPI change from Gtk at runtime
+  * Prefer sync mode under Gtk4
+  * Fix Gtk4 preedit color. 
+
+-------------------------------------------------------------------
+Wed Oct 27 05:39:04 UTC 2021 - J <hj@powersnail.com>
+
+- update version 5.0.8
+
+-------------------------------------------------------------------
+Wed May  5 07:05:30 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.7
+  * Fix client side ui positioning for gtk3
+- changes in version 5.0.6
+  * Fix key handling for re-forwarding and a memory leak
+- changes in version 5.0.5
+  * Implement fixed line height in client side ui
+  * add support for client side input window on wayland 
+    to get the correct positioning. Due to some limitation
+    on wayland, you may want to disable the popup fading
+    effect under kwin. 
+
+-------------------------------------------------------------------
+Tue Mar 16 01:34:12 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * add support for client side input window on wayland
+    to get the correct positioning. Due to some limitation
+    on wayland, you may want to disable the popup fading
+    effect under kwin
+
+-------------------------------------------------------------------
+Sat Jan 30 15:14:51 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * Add support for Gtk4
+
+-------------------------------------------------------------------
+Sun Dec  6 05:22:44 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Sun Nov  8 03:56:14 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+
+-------------------------------------------------------------------
+Thu Sep  3 07:51:35 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.99.0+git20200820.d26dd52
+
+-------------------------------------------------------------------
+Tue Mar  3 21:32:32 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update version 4.99.0+git20191111.6f9ef64
+  * Replace clang-format.sh with git hook
+  * Clean up the code
+  * Update dbus path for gtk im
+
+-------------------------------------------------------------------
+Wed Aug 21 05:14:37 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- update version 4.99.0+git20180920.b17b2de
+  * Use base as counter part for text color
+  * Check the drawable is a X11 thing before using it
+
+-------------------------------------------------------------------
+Sun Aug 26 07:11:24 UTC 2018 - i@marguerite.su
+
+- initial package
