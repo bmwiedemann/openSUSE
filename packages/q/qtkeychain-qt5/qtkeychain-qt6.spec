@@ -62,14 +62,14 @@ Provides translations for the "qtkeychain-qt6" package.
 %autosetup -p1 -n qtkeychain-%{version}
 
 %build
-%cmake \
+%cmake_qt6 \
   -DBUILD_WITH_QT6=ON \
   -DQMAKE_EXECUTABLE=%{_qt6_bindir}/qmake
 
-%cmake_build
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %find_lang qtkeychain --with-qt
 
