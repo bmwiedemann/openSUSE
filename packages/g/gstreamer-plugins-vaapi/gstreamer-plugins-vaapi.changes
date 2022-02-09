@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb  4 19:47:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.6:
+  + libs: video-format: Check if formats map is not NULL
+  + vaapidecode: Autogenerate caps template
+  + vaapipostproc: copy over metadata also when using system
+    allocated buffer
+
+-------------------------------------------------------------------
 Sun Dec 19 17:45:15 UTC 2021 - Josua Mayer <josua.m@t-online.de>
 
 - Add aarch64 to ExclusiveArch: VAAPI is currently usable with the
