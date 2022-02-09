@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  7 14:19:37 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the profile update when using an <ask/> element
+  (boo#1195630).
+- Run the network client when listed in the semi-automatic section.
+- 4.4.29
+
+-------------------------------------------------------------------
 Tue Jan 25 16:11:43 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).
