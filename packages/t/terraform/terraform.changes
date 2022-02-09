@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  3 11:58:58 UTC 2022 - Marcus Hann <marcus@hhra.uk>
+
+- Update to 1.1.5
+  ENHANCEMENTS:
+  * backend/s3: Update AWS SDK to allow the use of the ap-southeast-3 region (#30363)
+  BUG FIXES:
+  * cli: Fix crash when using autocomplete with long commands, such as terraform workspace select (#30193) 
+
+-------------------------------------------------------------------
 Fri Jan 21 09:11:46 UTC 2022 - Marcus Hann <marcus@hhra.uk>
 
 - Update to 1.1.4
