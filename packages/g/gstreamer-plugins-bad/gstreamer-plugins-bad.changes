@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb  4 19:40:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.6:
+  + interlace: Fix a double-unref on shutdown
+  + webrtcbin: Chain up to parent constructed method
+  + webrtc: fix log error message in function
+    gst_webrtc_bin_set_local_description
+  + mxfdemux: don't error out if VANC track only contains packets
+    we don't handle
+  + av1parser: Fix data type of film grain param
+  + assrender: Support RFC8081 mime types
+  + pitch: Specify layout as required for negotiation
+  + magicleap: update lumin_rt libraries names to the latest
+    official version
+  + codecs: h265decoder: Fix per-slice leak
+  + mpeg4videoparse: fix criticals trying to insert configs that
+    don't exist yet
+  + webrtcbin: Always set SINK/SRC flags
+  + mpegtspacketizer: memcmp potentially seen_before data
+  + zxing: update to support version 1.1.1
+- Drop service, use source url, upstream changes in git.
+
+-------------------------------------------------------------------
 Thu Jan 27 11:02:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Go back to using pkgconfig(fdk-aac) BuildRequires.
