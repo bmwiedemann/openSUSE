@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  6 12:52:36 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.2.5
+  * Fix a build failure with CMake < 3.12
+  * OSS and MidiShare drivers are now deprecated
+  * Prevent samples accidentally having their loops disabled
+  * Fix framework installation on MacOS
+
+-------------------------------------------------------------------
 Mon Nov 22 09:58:54 CET 2021 - tiwai@suse.de
 
 - Update to 2.2.4:

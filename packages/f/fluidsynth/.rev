@@ -510,4 +510,12 @@
   * Fix MinGW related static linking issues</comment>
     <requestid>932926</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c0124b38f0221578fea31063e4b271e7</srcmd5>
+    <version>2.2.5</version>
+    <time>1644435503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952040</requestid>
+  </revision>
 </revisionlist>
