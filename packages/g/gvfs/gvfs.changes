@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  8 17:40:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Fix build
+  with meson 0.61 and newer. Backported to apply on stable version.
+
+-------------------------------------------------------------------
 Sat Jan 15 20:57:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Modernize and fix our Supplements.

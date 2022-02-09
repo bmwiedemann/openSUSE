@@ -27,6 +27,9 @@ URL:            https://wiki.gnome.org/Projects/gvfs
 Source0:        https://download.gnome.org/sources/gvfs/1.48/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+# PATCH-FIX-UPSTREAM 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch -- Fix build with meson 0.61 and newer
+Patch0:         17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch
+
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus
 Patch1000:      gvfs-nds.patch
@@ -158,7 +161,7 @@ gvfs plugins.
 
 %prep
 %setup -q
-
+%patch0 -p1
 %if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
