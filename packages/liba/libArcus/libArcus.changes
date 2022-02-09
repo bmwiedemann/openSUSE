@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  6 21:15:44 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.13.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.1
+
+-------------------------------------------------------------------
 Sun Jan 30 08:43:54 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with protobuf >= 3.18, add

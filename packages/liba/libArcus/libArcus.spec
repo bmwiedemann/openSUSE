@@ -19,7 +19,7 @@
 %define sover 3
 Name:           libArcus
 %define sversion        4.13
-Version:        4.13.0
+Version:        4.13.1
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
