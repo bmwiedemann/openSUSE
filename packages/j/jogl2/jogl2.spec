@@ -1,7 +1,7 @@
 #
 # spec file for package jogl2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch3:         jogl2-ppc64.patch
 Patch4:         jogl2-getPeer.patch
 Patch5:         jogl2-nojavah.patch
 Patch6:         jogl2-s390x.patch
+Patch7:         jogl2-riscv64.patch
 BuildRequires:  ant >= 1.9.8
 BuildRequires:  ant-contrib
 BuildRequires:  eclipse-swt
@@ -75,6 +76,7 @@ rm -fr src/newt/classes/com/jogamp/newt/util/applet/VersionApplet3.java
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # Fix wrong-script-end-of-line-encoding
 rm make/scripts/*.bat

@@ -106,4 +106,12 @@ Depends on SR#545523 to fully fix ARM compilation.</comment>
     <comment></comment>
     <requestid>950362</requestid>
   </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>eed0d4ba83a8741567802688a90469bb</srcmd5>
+    <version>2.3.2</version>
+    <time>1644435547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952328</requestid>
+  </revision>
 </revisionlist>
