@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-devtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,17 @@
 %define _name   gst-devtools
 
 Name:           gstreamer-devtools
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source:         %{name}-%{version}.tar.xz
+Source:         %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gst-devtools-fix-hicolor-dir.patch -- Install icon file in correct folder
+Patch:          gst-devtools-fix-hicolor-dir.patch
 
-BuildRequires:  cmake
-BuildRequires:  hotdoc
+BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
@@ -38,6 +39,9 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
+%if 0%{?suse_version} >= 1599
+BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{version}
+%endif
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 Obsoletes:      gstreamer-validate < 1.18.1
@@ -94,20 +98,21 @@ inside a GstPipeline. In the end, fixing issues found by the tool will
 ensure that all elements behave all together in the expected way.
 
 %prep
-%autosetup -p1
+%autosetup -n %{_name}-%{version} -p1
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gst-validate-launcher.in
+sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' debug-viewer/gst-debug-viewer
 
 %build
 %meson \
-  -Ddebug_viewer=enabled \
-  %{nil}
+	-Ddebug_viewer=enabled \
+	-Ddoc=disabled \
+	%{nil}
 %meson_build
 
 %install
 %meson_install
-
-%post -n libgstvalidate-1_0-0 -p /sbin/ldconfig
-%postun -n libgstvalidate-1_0-0 -p /sbin/ldconfig
+%fdupes -s %{buildroot}/%{_prefix}
+%ldconfig_scriptlets -n libgstvalidate-1_0-0
 
 %files
 %license validate/COPYING
@@ -117,6 +122,9 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gs
 %{_bindir}/gst-validate-launcher
 %{_bindir}/gst-validate-media-check-1.0
 %{_bindir}/gst-validate-transcoding-1.0
+%if 0%{?suse_version} >= 1599
+%{_bindir}/gst-validate-rtsp-server-1.0
+%endif
 %{_libdir}/gst-validate-launcher/
 %dir %{_datadir}/gstreamer-1.0/
 %{_datadir}/gstreamer-1.0/validate/
@@ -127,14 +135,13 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gs
 %{python_sitelib}/GstDebugViewer/
 %{_datadir}/applications/org.freedesktop.GstDebugViewer.desktop
 %{_datadir}/gst-debug-viewer/
-%{_datadir}/icons/hicolor/48x48/apps/gst-debug-viewer.png
+%{_datadir}/icons/hicolor/*/apps/gst-debug-viewer.png
 %{_datadir}/icons/hicolor/scalable/apps/gst-debug-viewer.svg
 %{_datadir}/metainfo/org.freedesktop.GstDebugViewer.appdata.xml
 
 %files -n libgstvalidate-1_0-0
 %{_libdir}/libgstvalidate-1.0.so.*
 %{_libdir}/libgstvalidate-default-overrides-1.0.so.*
-#%%{_libdir}/libgstvalidatevideo-1.0.so.*
 
 %files -n typelib-1_0-GstValidate-1_0
 %{_libdir}/girepository-1.0/GstValidate-1.0.typelib
@@ -150,6 +157,5 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gs
 %{_libdir}/pkgconfig/gst-validate-1.0.pc
 %{_libdir}/libgstvalidate-1.0.so
 %{_libdir}/libgstvalidate-default-overrides-1.0.so
-#%%{_libdir}/libgstvalidatevideo-1.0.so
 
 %changelog

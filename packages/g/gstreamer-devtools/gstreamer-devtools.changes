@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb  4 19:52:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.6:
+  + No changes, version bump only.
+
+-------------------------------------------------------------------
+Tue Jan 25 00:27:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused hotdoc BuildRequires, and pass doc=disabled to meson,
+  we were not building docs in any case, and we have a new seperate
+  gstreamer-docs package that have all the documentation.
+- Drop cmake BuildRequires, neither used, nor needed.
+- Add conditional pkgconfig(gstreamer-rtsp-server-1.0)
+  BuildRequires, build optional validate-rtsp support for
+  Tumbleweed and newer.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Add gst-devtools-fix-hicolor-dir.patch, install icon file in
+  correct folder.
+- Drop _service, use upstream url for tarball.
+- Use yet a sed call to fix a shebang.
+
+-------------------------------------------------------------------
 Sun Oct 17 17:21:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Pass debug_viewer=enabled to meson, build the optional
