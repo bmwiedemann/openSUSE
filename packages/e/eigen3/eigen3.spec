@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,8 @@ URL:            http://eigen.tuxfamily.org/
 Source0:        https://gitlab.com/libeigen/eigen/-/archive/%{version}/%{srcname}-%{version}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
-# PATCH-FIX-OPENSUSE 01_install_FindEigen3.patch asterios.dramis@gmail.com -- Install FindEigen3.cmake
-Patch3:         01_install_FindEigen3.patch
-# PATCH-FIX-OPENSUSE eigen3-3.3.1-fixcmake.patch -- Fix double {prefix} as we use INCLUDE_INSTALL_DIR with {_includedir}
-Patch4:         eigen3-3.3.1-fixcmake.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.com/libeigen/eigen/-/merge_requests/680.patch
+Patch2:         fix_ppc64le_always_inline_680.patch
 %if %{with tests}
 # SECTION Patches to fix tests
 # PATCH-FIX-UPSTREAM eigen3-googlehash-detection.patch badshah400@gmail.com -- GoogleHash needs C++11 std to compile test code and be succesfully detected
@@ -123,9 +121,9 @@ echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
  -DEIGEN_TEST_OPENMP:Bool=%{?with_tests:ON}%{!?with_tests:OFF}
 
 %if "%{flavor}" == ""
-make %{?_smp_mflags} all %{?with_tests:buildtests}
+%cmake_build all %{?with_tests:buildtests}
 %else
-make %{?_smp_mflags} doc
+%cmake_build doc
 %endif
 
 rm -f doc/html/*.tgz
@@ -160,7 +158,6 @@ export EIGEN_REPEAT=1
 %{_includedir}/eigen3/
 %{_datadir}/eigen3/
 %{_datadir}/pkgconfig/eigen3.pc
-%{_datadir}/cmake/Modules/FindEigen3.cmake
 
 %endif
 
