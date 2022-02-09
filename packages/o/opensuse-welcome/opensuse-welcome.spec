@@ -20,7 +20,7 @@
 %define _name openSUSE-welcome
 
 Name:           opensuse-welcome
-Version:        0.1.8+git.40.95061c3
+Version:        0.1.8+git.44.7923e16
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT

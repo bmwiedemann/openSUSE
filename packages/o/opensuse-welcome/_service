@@ -3,9 +3,11 @@
   <service name="obs_scm" mode="localonly">
     <param name="scm">git</param>
     <param name="url">https://github.com/openSUSE/openSUSE-welcome.git</param>
+    <!-- If you need to force version manually or if you have problems with GIT Tags:
+    <param name="parent-tag">0.1.8</param>
+     -->
     <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
-    <param name="changesgenerate">disable</param>
-    <param name="changesauthor">tux93@opensuse.org</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="localonly"/>
   <service name="tar" mode="localonly"/>
