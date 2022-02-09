@@ -6,8 +6,9 @@
 FROM opensuse/tumbleweed
 # labelprefix=org.opensuse.memcached
 PREFIXEDLABEL org.opencontainers.image.title="memcached"
-PREFIXEDLABEL org.opencontainers.image.description="A high-performance, distributed memory object caching system version %PKG_VERSION%"
-PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/memcached:%PKG_VERSION%.%RELEASE%"
+PREFIXEDLABEL org.opencontainers.image.description="A high-performance, distributed memory object caching system version %%PKG_VERSION%%"
+PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/memcached:%%PKG_VERSION%%-%RELEASE%"
+PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%-%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 # Fill the image with content and clean the cache(s)
