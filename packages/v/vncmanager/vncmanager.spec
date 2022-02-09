@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  libgnutls-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(zlib)
 Requires(post): xorg-x11-Xvnc
 Requires:       vncmanager-greeter
 Requires:       xorg-x11-Xvnc
@@ -57,6 +59,7 @@ Patch7:         u_Fix_tight_decoder_on_888_encodings.patch
 Patch8:         u_Fix-PixelFormat-ntoh-and-PixelFormat-hton.patch
 Patch9:         u_Fix-TightCompressionControl-definition-for-big-endian.patch
 Patch10:        n_UsrEtc.patch
+Patch11:        u_Fix-Tight-Encoding-not-processing-pixel-format-prope.patch
 
 %description
 Session manager for VNC. It listens on VNC port and spawns Xvnc processes for incoming clients.
@@ -86,6 +89,7 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON

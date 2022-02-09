@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  9 13:57:51 UTC 2022 - Joan Torres <joan.torres@suse.com>
+
+-  u_Fix-Tight-Encoding-not-processing-pixel-format-prope.patch
+  * Consider different pixel format depths on Tight Encoding.
+    TightPixel was considering only pixels defined with 3 bytes.
+    (bsc#1189247)
+
+-------------------------------------------------------------------
+Mon Jan  4 15:45:43 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added pkgconfig BuildRequires for zlib and bzip2 in order to fix
+  build against Tumbleweed/factory
+
+-------------------------------------------------------------------
 Wed Sep  2 11:58:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update n_use_with_vnc_key_wrapper.patch: use libexecdir as the
