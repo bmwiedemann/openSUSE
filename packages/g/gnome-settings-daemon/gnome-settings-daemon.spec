@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,14 +42,16 @@ Patch1:         gnome-settings-daemon-initial-keyboard.patch
 Patch2:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
 Patch3:         gnome-settings-daemon-bgo793253.patch
-# PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
-Patch4:         gnome-settings-daemon-notify-idle-resumed.patch
-# PATCH-FIX-OPENSUSE gnome-settings-daemon-bnc873545-hide-warnings.patch bnc#873545 fezhang@suse.com -- hide the warnings when g-s-d cannot find colord running, which is expected on SLES
-Patch5:         gnome-settings-daemon-bnc873545-hide-warnings.patch
-# PATCH-FIX-OPENSUSE gnome-settings-daemon-more-power-button-actions.patch bsc#996342 fezhang@suse.com -- Bring back the "shutdown" and "interactive" power button actions.
-Patch7:         gnome-settings-daemon-more-power-button-actions.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/merge_requests/283.patch -- Fix build with meson 0.60.0 and newer
+Patch8:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/merge_requests/283.patch
 
-## SLE-only patches start at 1000
+## SLE/LEAP-only patches start at 1000
+# PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
+Patch1000:      gnome-settings-daemon-notify-idle-resumed.patch
+# PATCH-FIX-OPENSUSE gnome-settings-daemon-bnc873545-hide-warnings.patch bnc#873545 fezhang@suse.com -- hide the warnings when g-s-d cannot find colord running, which is expected on SLES
+Patch1001:      gnome-settings-daemon-bnc873545-hide-warnings.patch
+# PATCH-FIX-OPENSUSE gnome-settings-daemon-more-power-button-actions.patch bsc#996342 fezhang@suse.com -- Bring back the "shutdown" and "interactive" power button actions.
+Patch1002:      gnome-settings-daemon-more-power-button-actions.patch
 
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -143,11 +145,13 @@ contact the settings daemon via its DBus interface.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch8 -p1
+
 # Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
 %if 0%{?sle_version} >= 150000
-%patch4 -p1
-%patch5 -p1
-%patch7 -p1
+%patch1000 -p1
+%patch1001 -p1
+%patch1002 -p1
 %endif
 
 %build

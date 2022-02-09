@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  1 12:46:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 283.patch: Fix build with meson 0.60.0 and newer.
+- Renumber SLE/LEAP only patches to 1000+ range, make the
+  separation of appliance more clear.
+
+-------------------------------------------------------------------
 Tue Dec 21 01:48:48 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Rebase patches:
