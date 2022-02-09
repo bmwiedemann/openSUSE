@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb  5 13:45:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.61.1:
+  * add a man page backend to refman
+  * extract_objects() supports generated sources
+  * Python 3.6 support is deprecated
+  * Warning if check kwarg of run_command is missing
+  * meson rewrite can modify extra_files
+  * meson rewrite target <target> info output target's extra_files
+  * Support for CMake <3.15 is now deprecated for CMake subprojects
+  * Add support for sccache
+  * Add install_symlink function
+
+-------------------------------------------------------------------
 Tue Dec 28 08:46:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.60.3:

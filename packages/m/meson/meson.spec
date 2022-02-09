@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,12 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.60.3
+Version:        0.61.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
 Group:          Development/Tools/Building
-URL:            http://mesonbuild.com/
+URL:            https://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
 Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
 Source2:        meson.keyring
@@ -41,7 +41,6 @@ Source2:        meson.keyring
 Patch1:         meson-test-installed-bin.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch2:         meson-distutils.patch
-
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -62,6 +61,7 @@ Obsoletes:      meson-gui < %{version}
 BuildRequires:  bison
 BuildRequires:  clang
 BuildRequires:  cups-devel
+BuildRequires:  distribution-release
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -82,13 +82,6 @@ BuildRequires:  llvm-devel
 BuildRequires:  meson = %{version}
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} <= 1500
-BuildRequires:  python2-PyYAML
-%endif
-%if 0%{?suse_version} < 1550
-BuildRequires:  python2-devel
-%endif
-BuildRequires:  distribution-release
 BuildRequires:  python3-gobject
 BuildRequires:  python3-pytest-xdist
 BuildRequires:  zlib-devel-static
@@ -106,10 +99,13 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1500
-%if 0%{?suse_version} < 1550
-BuildRequires:  libboost_python-devel
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python2-PyYAML
 %endif
+%if 0%{?suse_version} < 1550
+BuildRequires:  python2-devel
+%endif
+%if 0%{?suse_version} >= 1500
 BuildRequires:  java-headless
 BuildRequires:  libboost_log-devel
 BuildRequires:  libboost_python3-devel
@@ -118,6 +114,9 @@ BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  rust
 BuildRequires:  wxWidgets-any-devel
+%if 0%{?suse_version} < 1550
+BuildRequires:  libboost_python-devel
+%endif
 # csharp is not on s390 machines
 %ifnarch s390x
 BuildRequires:  mono(csharp)
