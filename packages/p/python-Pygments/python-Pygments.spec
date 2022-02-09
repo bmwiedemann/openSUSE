@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,20 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
-# DO NOT UPGRADE UNTIL PELICAN IS COMPATIBLE!
-Version:        2.9.0
+Version:        2.11.2
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- backported from dbd7931f9d60
+Patch1:         elpi_fix_catastrophic_backtracking.patch
 BuildRequires:  %{python_module base >= 3.5}
 # We need pytest just because of its test runner, it seems even
 # python3 stdlib unittest runner doesn't work
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -67,10 +69,7 @@ source code. Highlights are:
  * highlights Brainfuck
 
 %prep
-%setup -q -n Pygments-%{version}
-
-# Remove unnecessary shebang
-# sed -i '1 { /^#!/ d }' pygments/lexers/_usd_builtins.py
+%autosetup -n Pygments-%{version} -p1
 
 %build
 %python_build
@@ -97,6 +96,8 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %python_uninstall_alternative pygmentize
 
 %check
+# skip test that requires wcag-contrast-ratio Python package
+rm ./tests/contrast/test_contrasts.py
 %pytest
 
 %files %{python_files}

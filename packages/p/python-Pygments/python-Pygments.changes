@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Feb  6 21:20:22 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- backport elpi_fix_catastrophic_backtracking.patch:
+  fix build getting stuck when running the tests
+- switch prep stage to autosetup
+- remove commented-out shebang removal
+
+-------------------------------------------------------------------
+Wed Jan 12 19:53:14 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 2.11.2:
+  * Updated lexers:
+    + C-family: Fix incorrect handling of labels (#2022, #1996,
+      #1182)
+    + Java: Fixed an issue with record keywords result in Error
+      tokens in some cases (#2018)
+  * Fix links to line numbers not working correctly (#2014)
+  * Remove underline from Whitespace style in the Tango theme
+    (#2020)
+  * Fix IRC and Terminal256 formatters not backtracking correctly
+    for custom token types, resulting in some unstyled tokens
+    (#1986)
+
+-------------------------------------------------------------------
+Mon Jan  3 11:09:21 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 2.11.1:
+  https://github.com/pygments/pygments/blob/master/CHANGES
+- Remove one test as it requires wcag-contrast-ratio Python package.
+
+-------------------------------------------------------------------
 Thu Sep  9 08:48:02 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives. 
