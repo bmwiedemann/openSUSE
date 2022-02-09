@@ -1,7 +1,7 @@
 #
 # spec file for package libguestfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -381,7 +381,6 @@ BuildRequires:  strace
 BuildRequires:  syslinux
 %endif
 BuildRequires:  ldmtool
-BuildRequires:  systemd-sysvinit
 BuildRequires:  tar
 BuildRequires:  terminfo-base
 BuildRequires:  tunctl

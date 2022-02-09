@@ -918,4 +918,12 @@
     <comment>Fix broken build in Factory likely due to new ocaml</comment>
     <requestid>927625</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>495caef997e062c7a197fc8d74f54e93</srcmd5>
+    <version>1.44.2</version>
+    <time>1644435532</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1195415 - libguestfs: consider dropping build requirement on systemd-sysvinit</comment>
+    <requestid>952274</requestid>
+  </revision>
 </revisionlist>

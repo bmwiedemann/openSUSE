@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  7 15:23:07 MST 2022 - carnold@suse.com
+
+- bsc#1195415 - libguestfs: consider dropping build requirement on
+  systemd-sysvinit 
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Tue Oct 26 20:44:52 MDT 2021 - carnold@suse.com
 
 - Fix build errors in Factory
