@@ -20,15 +20,13 @@
 %define _name gst-rtsp-server
 
 Name:           gstreamer-rtsp-server
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-# Disable tarball source url, use _service
-#Source0:        %%{url}/src/gst-rtsp-server/%%{_name}-%%{version}.tar.xz
-Source0:        %{_name}-%{version}.tar.xz
+Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
 
 BuildRequires:  hotdoc
