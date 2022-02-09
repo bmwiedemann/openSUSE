@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Tue Jan 25 13:42:44 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update to version 5.0.10
+  * show a warning kbd-layout-viewer on wayland
+
+-------------------------------------------------------------------
+Sat Jan 15 05:08:32 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix requirements
+
+-------------------------------------------------------------------
+Wed Dec  8 01:53:55 UTC 2021 - Tranter Madi <trmdi@yandex.com>
+
+- update to version 5.0.9
+
+-------------------------------------------------------------------
+Sat Nov  6 18:28:38 UTC 2021 - J <hj@powersnail.com>
+
+- update to version 5.0.8
+  * Fix font option for certain values.
+  * Able to show long font name in font button 
+
+-------------------------------------------------------------------
+Wed May  5 07:47:14 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.5
+  * Update the cancel button text to be more concrete
+- changes in version 5.0.4
+  * Add GUI option to reload newly installed addons
+- drop fcitx5-configtool-ecm-5.80.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Mar 16 09:49:34 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * fix kcm's color option
+  * fix font option
+
+-------------------------------------------------------------------
+Sun Jan 31 04:47:18 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+  * Make configtool not crash under wayland when open keyboard layout
+  * Make it buildable with Qt 5.12, so it should be buildable on Ubuntu 20.04.
+  * Add support for launch a sub config page
+
+-------------------------------------------------------------------
+Sun Dec  6 05:30:01 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Tue Nov 10 04:06:53 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+
+-------------------------------------------------------------------
+Sun Oct 18 17:41:31 UTC 2020 - xia lei <emricg2@gmail.com>
+
+- update to 0.5.99+git20200903.583e3b2
+  * add migration tool fcitx5-migrator
+
+-------------------------------------------------------------------
+Fri Sep  4 04:26:06 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package
