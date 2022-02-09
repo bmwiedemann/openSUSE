@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb  4 19:10:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.6:
+  + gstplugin: Fix for UWP build
+  + gst-ptp-helper: Do not disable multicast loopback
+  + concat: fix qos event handling
+  + pluginfeature: Fix object leak
+  + baseparse: fix invalid avg_bitrate after reset
+  + multiqueue: Fix query unref race on flush
+  + gst: Initialize optional event/message fields when parsing
+  + bitwriter: Fix the trailing bits lost when getting its data
+  + multiqueue: never consider a queue that is not waiting
+  + input-selector: Use proper segments when cleaning cached
+    buffers
+
+-------------------------------------------------------------------
 Thu Sep 16 08:53:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop building doc sub-package, we will in the future use
