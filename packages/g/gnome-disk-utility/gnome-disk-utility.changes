@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  8 17:11:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 60.patch: Fix build with meson 0.61 and newer.
+
+-------------------------------------------------------------------
 Thu Nov  4 13:42:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace option libsystemd=true with new logind=libsystemd,

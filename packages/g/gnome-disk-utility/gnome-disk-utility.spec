@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-disk-utility
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
 Source0:        https://download.gnome.org/sources/gnome-disk-utility/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 60.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-disk-utility/-/merge_requests/60.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.50.0
