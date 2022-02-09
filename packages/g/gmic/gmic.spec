@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -51,15 +51,12 @@ URL:            https://gmic.eu
 # Git URL:      https://github.com/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Source1:        gmic_qt.png
-Source99:       series
-# PATCH-FIX-UPSTREAM gmic-make-build-without-gmic-cpp.patch - all those changes are already merged
-Patch0:         gmic-make-build-without-gmic-cpp.patch
 # PATCH-FIX-UPSTREAM gmic-qt-make-it-work-without-gmic-cpp.patch - https://github.com/c-koi/gmic-qt/pull/134
-Patch1:         gmic-qt-make-it-work-without-gmic-cpp.patch
+Patch0:         gmic-qt-make-it-work-without-gmic-cpp.patch
 # PATCH-FIX-UPSTREAM krita.patch - Will be sent upstream soon. For now https://github.com/darix/gmic-qt/tree/krita5
-Patch2:         krita5.patch
-# PATCH-FIX-UPSTREAM 56f7340ecb1fbbe6fce87d0a5c8d35dd13359577.patch - Already upstream
-Patch3:         https://github.com/dtschump/gmic/commit/56f7340ecb1fbbe6fce87d0a5c8d35dd13359577.patch
+Patch1:         krita5.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Remove-unneeded-CImg-include.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fftw3-threads-devel
 #
@@ -178,13 +175,7 @@ BuildArch:      noarch
 This package contains shared data files for the various gmic frontends.
 
 %prep
-%setup -q
-%patch0 -p1
-pushd gmic-qt
-%patch1 -p1
-%patch2 -p1
-popd
-%patch3 -p1
+%autosetup -p1
 
 %build
 # Build gmic
