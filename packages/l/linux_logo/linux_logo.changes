@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  9 11:55:33 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort the file list (boo#1041090)
+
+-------------------------------------------------------------------
 Wed May 13 19:17:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - linux_logo 6.0

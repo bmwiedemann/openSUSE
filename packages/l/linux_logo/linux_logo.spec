@@ -23,13 +23,14 @@ Summary:        Prints the linux logo on the text console
 License:        GPL-2.0-only
 URL:            http://deater.net/weave/vmwprod/linux_logo/
 Source:         http://deater.net/weave/vmwprod/linux_logo/%{name}-%{version}.tar.gz
+Patch0:         reproducible.patch
 
 %description
 The Linux logo on the text console, with colors and system information.
 Contains a number of built-in logos.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
