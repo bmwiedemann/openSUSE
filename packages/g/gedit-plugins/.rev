@@ -476,4 +476,13 @@
   (jsc#SLE-21105). (forwarded request 920396 from sbrabec)</comment>
     <requestid>920568</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>18619565fe7f751e20651873db62eaf3</srcmd5>
+    <version>40.1</version>
+    <time>1644435481</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 27.patch: Fix build with meson 0.61.0 and newer.
+- Use sed to fix the shebang in some of the plugins. (forwarded request 952776 from iznogood)</comment>
+    <requestid>952878</requestid>
+  </revision>
 </revisionlist>

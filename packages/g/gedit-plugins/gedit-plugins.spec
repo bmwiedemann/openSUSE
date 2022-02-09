@@ -1,7 +1,7 @@
 #
 # spec file for package gedit-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ Source0:        https://download.gnome.org/sources/gedit-plugins/40/%{name}-%{ve
 Source1:        gedit-plugins.SUSE
 # PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
 Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
+# PATCH-FIX-UPSTREAM 27.patch -- Fix build with meson 0.61.0 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/gedit-plugins/-/merge_requests/27.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -272,7 +274,8 @@ The gedit wordcompletion plugin
 
 %prep
 %autosetup -p1
-
+sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' plugins/synctex/synctex/evince_dbus.py*
+sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' plugins/colorschemer/schemer/*.py
 install -m644 %{SOURCE1} .
 
 %build
