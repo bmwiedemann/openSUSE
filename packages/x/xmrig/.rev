@@ -411,4 +411,19 @@
   * armv7 compilation fix</comment>
     <requestid>949177</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>819a71424364503f1be16386a3cb05b3</srcmd5>
+    <version>6.16.4</version>
+    <time>1644435562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.4:
+  * v6.16.4
+  * Update CHANGELOG.md
+  * #2910 Fixed donation for GhostRider/RTM.
+  * Add MSVC/2022 to version.h
+  * Fixed unaligned memory accesses
+  * v6.16.4-dev
+  * Fixed armv7 compilation</comment>
+    <requestid>952718</requestid>
+  </revision>
 </revisionlist>
