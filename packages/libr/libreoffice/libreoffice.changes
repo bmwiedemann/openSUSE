@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  5 15:29:22 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add 0001-Missing-includes-for-libstdc-12.patch: fix the build
+  with gcc 12.
+
+-------------------------------------------------------------------
 Fri Jan 14 13:09:06 UTC 2022 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1183308: LO-L3: Simple, seven page slide deck of 3.7MB takes

@@ -111,6 +111,7 @@ Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
 # LO-L3: bsc#1183308 Simple, seven page slide deck of 3.7MB takes looong to open, start presentation mode, or move back to slide 1
 Patch11:        bsc1183308.patch
+Patch12:        0001-Missing-includes-for-libstdc-12.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1016,6 +1017,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch11 -p1
+%endif
+%patch12 -p1
+%if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif
 %patch990 -p1
