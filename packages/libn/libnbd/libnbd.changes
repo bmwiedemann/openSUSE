@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 08 16:46:29 UTC 2022 - jfehlig@suse.com
+
+- Update to version 1.10.4:
+  * Version 1.10.4.
+  * copy: CVE-2022-0485: Fail nbdcopy if NBD read or write fails (bsc#1195636)
+  * copy: Pass in dummy variable rather than &errno to callback
+  * docs: Clarify how callbacks should handle errors
+  * ocaml: tests: Fix error handling
+  * python: tests: Fix error handling
+  * ocaml/helpers.c: Rearrange Assert_failure check
+  * golang: tests: Fix error handling
+  * docs: Fix typo in callback docs
+  * ocaml: Update comment
+
+-------------------------------------------------------------------
 Wed Aug 25 23:00:54 UTC 2021 - jfehlig@suse.com
 
 - Update to version 1.9.3:
