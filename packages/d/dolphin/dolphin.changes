@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  6 21:01:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2.1
+  * Fix opening FTP files in their preferred app
+  * Use the CDN based endpoint rather than the legacy endpoint
+
+-------------------------------------------------------------------
 Tue Feb  1 13:02:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
