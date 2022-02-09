@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Sat Jan 29 15:08:16 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- resolve file conflicts with fcitx
+
+-------------------------------------------------------------------
+Tue Jan 25 13:39:15 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.10
+  * Partial shuangpin support. It's a new option
+
+-------------------------------------------------------------------
+Sat Jan 15 05:07:54 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix requirements
+
+-------------------------------------------------------------------
+Wed Dec 15 11:44:52 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * Adjust some default options
+
+-------------------------------------------------------------------
+Sat Nov  6 18:39:32 UTC 2021 - J <hj@powersnail.com>
+
+- update to version 5.0.8
+  * Support show a marker for auto phrase
+  * Fix keypad and table engine
+  * Fix key event leaking for certain cases
+  * Show shuangpin profile name in the information 
+
+-------------------------------------------------------------------
+Wed May  5 07:49:22 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.6
+  * Fix missing dependencies in cmake
+  * Relax the possible corruption file checkin
+- changes in version 5.0.5
+  * Add gui support for punctuation customization
+  * Fix 2nd 3rd selection key detection
+
+-------------------------------------------------------------------
+Tue Mar 16 05:45:47 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * reduce the memory by make pinyin helper
+    data load on-demand
+  * change the default punctuation mapping
+    for * from multiple sign to *.
+
+-------------------------------------------------------------------
+Sun Jan 31 04:03:27 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * Add fcitx4's AutoEng like functionality to pinyin, e.g. type "www."
+will enter quickphrase mode.
+  * Add support for regular expression to trigger auto select in table.
+Right now this is used by Erbi for code started with u/v.
+  * Add support for switching to quickphrase mode in the table engine
+for certain texts, e.g. uppercase will make Wubi enter quickphrase
+mode now.
+  * Add support for deleting any word in the table engine, including
+the one in main dict.
+  * Add support for proxy to cloudpinyin
+  * In Pinyin, ng will now also look up for "n g", e.g. 那个
+  * Fix libime_tabledict conversion for user dictionary.
+
+-------------------------------------------------------------------
+Sun Dec  6 05:24:37 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Tue Nov 10 04:00:17 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Fri Sep  4 03:30:38 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.99.0+git20200903.9ef492e
+
+-------------------------------------------------------------------
+Wed Mar  4 03:05:30 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update to version git20200212.3dae7a2
+  * Use new candidate list api
+  * Update license header
+  * Use standard library string_view
+  * Don't toggle punctuation in irrelevant im
+
+-------------------------------------------------------------------
+Sun Sep 16 06:56:30 UTC 2018 - i@marguerite.su
+
+- initial package
+- add fcitx5-chinese-addons-no-download.patch, OBS VM has no network
+ 
