@@ -1,48 +1,76 @@
 -------------------------------------------------------------------
+Sun Feb  6 14:02:23 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.5
+  * Fixed #1518. A limited “fix”: in some cases, rectangles and
+    quadrupels were not correctly encoded to support re-drawing by
+    Shape.
+  * Fixed #1521. This had the same ultimate reason behind issue
+    #1510.
+  * Fixed #1513. Some Optional Content functions did not support
+    non-ASCII characters.
+  * Fixed #1510. Support more soft-mask image subtypes.
+  * Fixed #1507. Immunize against items in the outlines chain,
+    that are "null" objects.
+  * Fixed re-opened #1417. (“too many open files”). This was due
+    to insufficient calls to MuPDF’s fz_drop_document(). This also
+    fixes #1550.
+  * Fixed several undocumented issues in relation to incorrectly
+    setting the text span origin point_like.
+  * Fixed undocumented error computing the character bbox in
+    method Page.get_texttrace() when text is flipped (as opposed to
+    just rotated).
+  * Added items to the dictionary returned by image_properties():
+    orientation and transform report the natural image orientation
+    (EXIF data).
+  * Added method Document.xref_copy(). It will make a given target
+    PDF object an exact copy of a source object.
+
+-------------------------------------------------------------------
 Mon Jan 10 12:52:19 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Update to v1.19.4
   * Fixed #1505. Immunize against circular outline items.
   * Fixed #1484. Correct CropBox coordinates are now returned in
-all situations.
+    all situations.
   * Fixed #1479.
   * Fixed #1474. TextPage objects are now properly deleted again.
   * Added Page methods and attributes for PDF /ArtBox, /BleedBox,
-/TrimBox.
+    /TrimBox.
   * Added global attribute TESSDATA_PREFIX for easy checking of OCR
-support.
+    support.
   * Changed Document.xref_set_key() such that dictionary keys will
-physically be removed if set to value "null".
+    physically be removed if set to value "null".
   * Changed Document.extract_font() to optionally return a
-dictionary (instead of a tuple).
+    dictionary (instead of a tuple).
 
 -------------------------------------------------------------------
 Fri Dec 17 13:03:20 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Update to v1.19.3
   * Fixed #1351. Reverted code that introduced the memory growth
-  in v1.18.15.
+    in v1.18.15.
   * Fixed #1417. Developped circumvention for growth of open file
-  handles using Document.insert_pdf().
+    handles using Document.insert_pdf().
   * Fixed #1418. Developped circumvention for memory growth using
-  Document.insert_pdf().
+    Document.insert_pdf().
   * Fixed #1430. Developped circumvention for mass pixmap
-  generations of document pages.
+    generations of document pages.
   * Fixed #1433. Solves a bbox error for some Type 3 font in
-  PyMuPDF text processing.
+    PyMuPDF text processing.
   * Added Pixmap.color_topusage() to determine the share of the
-  most frequently used color. Solves #1397.
+    most frequently used color. Solves #1397.
   * Added Pixmap.warp() which makes a new pixmap from a given
-  arbitrary convex quad inside the pixmap.
+    arbitrary convex quad inside the pixmap.
   * Added Annot.irt_xref and Annot.set_irt_xref() to inquire or
-  set the /IRT (“In Responde To”) property of an annotation.
-  Implements #1450.
+    set the /IRT (“In Responde To”) property of an annotation.
+    Implements #1450.
   * Added Rect.torect() and IRect.torect() which compute a matrix
-  that transforms to a given other rectangle.
+    that transforms to a given other rectangle.
   * Changed Pixmap.color_count() to also return the count of each
-  color.
+    color.
   * Changed Page.get_texttrace() to also return correct span and
-  character bboxes if span["dir"] != (1, 0).
+    character bboxes if span["dir"] != (1, 0).
 
 -------------------------------------------------------------------
 Mon Nov 22 10:33:01 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
@@ -95,7 +123,9 @@ Mon Nov 22 10:33:01 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
   * Changed terminology and meaning of important geometry concepts:
     Rectangles are now characterized as finite, valid or empty, while
     the definitions of these terms have also changed. Rectangles
-    specifically are now thought of being “open”: not all corners and sides are considered part of the retangle. Please do read the Rect section for details.
+    specifically are now thought of being “open”: not all corners
+    and sides are considered part of the retangle. Please do read
+    the Rect section for details.
   * Added new parameter “no_new_id” to `Document.save()` /
     `Document.tobytes()` methods. Use it to suppress updating the
     second item of the document /ID which in PDF indicates that the
