@@ -1,7 +1,7 @@
 #
 # spec file for package totem
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,11 @@ URL:            https://wiki.gnome.org/Apps/Videos
 Source0:        https://download.gnome.org/sources/totem/3.38/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE totem-enable-vaapi.patch -- Enable vaapi support again.
 Patch0:         totem-enable-vaapi.patch
+# PATCH-FIX-UPSTREAM totem-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
+Patch1:         totem-fix-meson-061.patch
 
 BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-plugins-good >= 0.11.93
@@ -39,7 +42,6 @@ BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pylint
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.14.1
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
@@ -148,10 +150,13 @@ This package contains developer documentation.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
+
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Totem.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.desktop
 
 %files
 %license COPYING

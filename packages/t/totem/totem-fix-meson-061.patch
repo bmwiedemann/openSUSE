@@ -1,0 +1,22 @@
+diff -Nur orig-totem-3.38.2/data/appdata/meson.build totem-3.38.2/data/appdata/meson.build
+--- orig-totem-3.38.2/data/appdata/meson.build	2021-10-12 16:12:34.227624400 +0200
++++ totem-3.38.2/data/appdata/meson.build	2022-02-02 19:26:07.332467439 +0100
+@@ -1,7 +1,6 @@
+ appdata = 'org.gnome.Totem.appdata.xml'
+ 
+ appdata_file = i18n.merge_file (
+-    'appdata',
+     input: appdata + '.in',
+     output: appdata,
+     install: true,
+diff -Nur orig-totem-3.38.2/data/meson.build totem-3.38.2/data/meson.build
+--- orig-totem-3.38.2/data/meson.build	2021-10-12 16:12:34.235624600 +0200
++++ totem-3.38.2/data/meson.build	2022-02-02 19:32:07.004250578 +0100
+@@ -69,7 +69,6 @@
+ )
+ 
+ desktop_file = i18n.merge_file (
+-    desktop,
+     type: 'desktop',
+     input: desktop_in,
+     output: desktop,

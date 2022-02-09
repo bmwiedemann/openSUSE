@@ -1143,4 +1143,19 @@
   enable-introspection=yes and enable-vala=yes to meson. (forwarded request 929178 from dimstar)</comment>
     <requestid>929701</requestid>
   </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>339e329487586d16f8d84765d3e94d92</srcmd5>
+    <version>3.38.2</version>
+    <time>1644435481</time>
+    <user>dimstar_suse</user>
+    <comment>- Add totem-fix-meson-061.patch: Fix build with meson 0.61 and
+  newer.
+- Add desktop-file-utils BuildRequires and add a check section,
+  manually check metainfo and desktop file, we can not run the full
+  meson_test suite during build as it requires a working desktop,
+  and not a headless build enviroment.
+- Drop unused update-desktop-files BuildRequires.
+- Use ldconfig_scriptlets macro for post(un) handling. (forwarded request 952777 from iznogood)</comment>
+    <requestid>952879</requestid>
+  </revision>
 </revisionlist>
