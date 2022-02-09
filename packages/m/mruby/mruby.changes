@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  9 15:51:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added CVE-2022-0481.patch from upstream
+  fixed NULL Pointer Dereference boo#1195632 / CVE-2022-0481
+- Fixed file attributes (executable bit for shared library)
+
+-------------------------------------------------------------------
 Tue Jan 18 08:58:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added CVE-2022-0080.patch from upstream,

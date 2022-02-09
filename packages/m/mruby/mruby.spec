@@ -34,6 +34,8 @@ Patch0:         CVE-2021-4110.patch
 Patch1:         CVE-2022-0240.patch
 # PATCH-FIX-UPSTREAM CVE-2022-0080.patch -- https://github.com/mruby/mruby/commit/28ccc664e5dcd3f9d55173e9afde77c4705a9ab6
 Patch2:         CVE-2022-0080.patch
+# PATCH-FIX-UPSTREAM CVE-2022-0481.patch -- https://github.com/mruby/mruby/commit/ae3c99767a27f5c6c584162e2adc6a5d0eb2c54e
+Patch3:         CVE-2022-0481.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -95,7 +97,7 @@ done
 
 # Install libraries
 for l in libmruby.so; do
-    install -D -m 0644 "build/host/lib/${l}" "%{buildroot}%{_libdir}/${l}.%{version}"
+    install -D -m 0755 "build/host/lib/${l}" "%{buildroot}%{_libdir}/${l}.%{version}"
     ln -s ${l}.%{version} "%{buildroot}%{_libdir}/${l}"
 done
 
