@@ -1,7 +1,7 @@
 #
 # spec file for package augeas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch1:         gcc9-disable-broken-test.patch
 Patch2:         augeas-new_options_for_chrony.patch
 Patch3:         augeas-allow_printable_ASCII.patch
 Patch4:         remove-unportable-tests.patch
+BuildRequires:  glibc-locale
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libxml-2.0)
