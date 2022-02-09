@@ -15,4 +15,12 @@
     <comment>Fix copyright and update Jira ticket reference. (forwarded request 952731 from witekbedyk)</comment>
     <requestid>952819</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ab2122b4fb144f9f0422e993285d9cc4</srcmd5>
+    <version>0.5.0</version>
+    <time>1644707723</time>
+    <user>dimstar_suse</user>
+    <comment>- Added alternative golang name to build on RHEL. (forwarded request 953372 from sbluhm)</comment>
+    <requestid>953840</requestid>
+  </revision>
 </revisionlist>

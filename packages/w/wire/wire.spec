@@ -26,7 +26,7 @@ URL:            https://github.com/google/wire
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  (golang(API) >= 1.12 or golang >= 1.12)
 %{?systemd_ordering}
 
 %description
