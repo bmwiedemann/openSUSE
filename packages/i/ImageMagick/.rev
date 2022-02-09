@@ -3264,4 +3264,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://github.com/ImageMagick/ImageMagick/discussions/4515).</comment>
     <requestid>950743</requestid>
   </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>dcd308a300d859d12f164ea5cb47420b</srcmd5>
+    <version>7.1.0.23</version>
+    <time>1644435510</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.23
+  * limit recursion when reading the VID image format.
+  * improperly resizing memory due to errant check (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4807).
+  * https://github.com/ImageMagick/ImageMagick/issues/4790 [bsc#1195321]</comment>
+    <requestid>952085</requestid>
+  </revision>
 </revisionlist>

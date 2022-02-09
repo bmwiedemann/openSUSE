@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  7 10:11:16 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.1.0.23
+  * limit recursion when reading the VID image format.
+  * improperly resizing memory due to errant check (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4807).
+  * https://github.com/ImageMagick/ImageMagick/issues/4790 [bsc#1195321]
+
+-------------------------------------------------------------------
 Wed Feb  2 13:08:44 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.1.0.22
