@@ -1,7 +1,7 @@
 #
 # spec file for package python-numexpr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 %global skip_python36 1
 Name:           python-numexpr
-Version:        2.7.3
+Version:        2.8.1
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT

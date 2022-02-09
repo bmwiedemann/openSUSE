@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  7 03:27:38 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip build for python2
+
+- update to version 2.8.1:
+  * Fixed dependency list.
+  * Added "pyproject.toml" and modernize the "setup.py" script. Thanks
+    to Antonio Valentino for the PR.
+
+- changes from version 2.8.0:
+  * Wheels for Python 3.10 are now provided.
+  * Support for Python 2.7 and 3.5 has been discontinued.
+  * All residual support for Python 2.X syntax has been removed, and
+    therefore the setup build no longer makes calls to the `2to3`
+    script. The `setup.py` has been refactored to be more modern.
+  * The examples on how to link into Intel VML/MKL/oneAPI now use the
+    dynamic library.
+
+-------------------------------------------------------------------
 Fri Mar 12 20:28:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python3.6 build (no numpy) 
