@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb  8 12:50:23 UTC 2022  - hsk17@mail.de
+
+- for release info see also https://sourceforge.net/p/tkdiff/news/
+- Update to 5.3
+  * Now treats a VPATH environment variable similarly to an SCM allowing
+    comparison between adjacent topmost versions.
+  * Repaired a syntax crash of Directory-based filename generation
+  * Silenced a new recurrence of "TCL-sensitive" characters contained
+    within input filenames being mis-interpretted
+  * Filelist dialog now responds fully to threshold modifications it
+    previously had waited until the next interaction occurred.
+  * Added missing Wheel scrolling to the filelist dialog
+  * Ensure XWindow "Class" of secondary window(s) REMAIN constant, some
+    window managers were changing from "Tkdiff" to "Toplevel"
+  * Usage of the Perforce SCM had been inadvertently disabled (a no
+    longer internal reference had escaped being renamed)
+
+-------------------------------------------------------------------
 Wed Oct 17 14:42:23 UTC 2021  - hsk17@mail.de
 
 - for release info see also https://sourceforge.net/p/tkdiff/news/
