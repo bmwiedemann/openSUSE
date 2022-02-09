@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 30 17:07:00 UTC 2022 - Mykola Golub <mgolub@suse.com>
+
+- Update parameters description in rbd-support.patch
+- Add rbd-support-disable_emulate_legacy_capacity.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 19:14:14 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.

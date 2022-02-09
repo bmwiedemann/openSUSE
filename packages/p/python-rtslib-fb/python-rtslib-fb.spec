@@ -1,7 +1,7 @@
 #
 # spec file for package python-rtslib-fb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source:         python-rtslib-fb-v%{version}.tar.xz
 Patch1:         rbd-support.patch
 Patch2:         rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
 Patch3:         rtslib-target-service-for-suse.patch
+Patch4:         rbd-support-disable_emulate_legacy_capacity.patch
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -81,6 +82,7 @@ python2-rtslib-fb and python3-rtslib-fb.
 %if 0%{?sle_version} >= 150000
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch1 -p1
+%patch4 -p1
 %endif
 %patch2 -p1
 %patch3 -p1

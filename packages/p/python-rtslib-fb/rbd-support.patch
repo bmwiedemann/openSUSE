@@ -24,7 +24,7 @@ Reviewed-by: David Disseldorp <ddiss@suse.de>
  from .alua import ALUATargetPortGroup
 --- a/rtslib/tcm.py
 +++ b/rtslib/tcm.py
-@@ -801,6 +801,107 @@ class BlockStorageObject(StorageObject):
+@@ -801,6 +801,111 @@ class BlockStorageObject(StorageObject):
          d['dev'] = self.udev_path
          return d
  
@@ -58,6 +58,10 @@ Reviewed-by: David Disseldorp <ddiss@suse.de>
 +        @type dev: string
 +        @param wwn: T10 WWN Unit Serial, will generate if None
 +        @type wwn: string
++        @param readonly: Use to read only.
++        @type readonly: boolean
++        @param write_back: Enable write back cache.
++        @type write_back: boolean
 +        @return: A RBDIOStorageObject object.
 +        '''
 +
