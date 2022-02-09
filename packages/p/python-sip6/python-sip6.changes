@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  5 20:26:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.5.1
+  * Added the --no-compile command line option to sip-build.
+  * Added the --no-version-info command line option to sip-build.
+  * The latest version of ABI v13 is v13.2.1.
+  * The latest version of ABI v12 is v12.9.1.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Fri Dec  3 14:30:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.5.0
