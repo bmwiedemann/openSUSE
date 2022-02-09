@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  6 21:52:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.13.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.1
+
+-------------------------------------------------------------------
+Thu Jan 27 12:47:12 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 4.13.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.0
+- Refresh patch:
+  * fix-build.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 19:40:33 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.9.0
