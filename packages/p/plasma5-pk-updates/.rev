@@ -256,4 +256,12 @@
     <comment>- Fix package build with plasma-framework 5.89.0.</comment>
     <requestid>939460</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>891bc39504af806e2edf59589bbef166</srcmd5>
+    <version>0.3.2+git67</version>
+    <time>1644435500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951779</requestid>
+  </revision>
 </revisionlist>

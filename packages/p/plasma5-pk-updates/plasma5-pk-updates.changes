@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Feb 05 16:13:52 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use git master directly
+- Use a complete plasma5-pk-updates-lang.tar.xz
+- Update to version 0.3.2+git67:
+  * Port config dialog to QtQuick Controls 2
+  * Lower required QtQuick.Layouts version to 1.12
+  * Fix expansion handling of PackageDelegate items
+  * Consistent spacing in PackageDelegate
+  * Port completely to PC3 by using PlasmaExtras.ListItem
+  * Don't show "no updates" message when checking failed
+  * Refactor tracking of overall package selection state
+  * Fix state of "Select all packages" checkbox
+  * Port to Layouts and PlaceholderMessage as well to fix layout issues
+  * [applet] Port mostly to PlasmaComponents3
+  * Also treat ErrorNotAuthorized as temporary
+  * Limit to one automatic check each 10 minutes
+  * Don't refresh the cache forcibly
+  * Accumulate restart requests to show the notification at transaction end
+    (boo#1103679, boo#1174239)
+  * Don't default to showing that the check for updates failed
+  * Don't show an error for a failed automatic refresh
+  * Make action buttons translatable
+  * Add support for license prompts
+  * Port away from KDELibs4Support, use Solid::Power interface
+  * Remove explicit initialization of default constructed members
+  * Fix warning, remove unsigned int < 0 check
+  * Fix minor typos
+  * Make the notifications less obtrusive
+  * Use own eventIds and ComponentName instead of generic plasma workspace ones
+  * Fix usage of 0 for null pointer constants
+  * Replace KIconLoader + pixmaps with standard icon names
+  * Don't force a check for updates when the applet runs
+  * Several fixes related to the network state and applet messages/notifications.
+- Drop all patches, now upstream:
+  * desktop.patch
+  * 0001-Hide-updates-and-checkbox-when-system-is-offline.patch
+  * 0002-Add-its-own-messageChanged-NOTIFY-signal-to-message.patch
+  * 0003-Delay-PkUpdates-checkUpdates-calls-if-the-network-is-offline.patch
+  * 0001-Replace-KIconLoader-pixmaps-with-standard-icon-names.patch
+  * 0002-Fix-usage-of-0-for-null-pointer-constants.patch
+  * 0003-Use-own-eventIds-and-ComponentName-instead-of-generi.patch
+  * 0004-Make-the-notifications-less-obtrusive.patch
+  * 0006-Remove-explicit-initialization-of-default-constructe.patch
+  * 0007-Port-away-from-KDELibs4Support-use-Solid-Power-inter.patch
+  * 0001-Add-support-for-license-prompts.patch
+  * 0001-Don-t-show-an-error-for-a-failed-automatic-refresh.patch
+  * 0001-Limit-to-one-automatic-check-each-10-minutes.patch
+  * 0001-Also-treat-ErrorNotAuthorized-as-temporary.patch
+
+-------------------------------------------------------------------
 Fri Dec 10 18:11:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix package build with plasma-framework 5.89.0.

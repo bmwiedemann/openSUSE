@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-pk-updates
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,15 @@
 
 
 Name:           plasma5-pk-updates
-Version:        0.3.2
+Version:        0.3.2+git67
 Release:        0
 Summary:        Software Update Manager for Plasma
 License:        GPL-3.0-or-later
 Group:          System/Packages
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma-pk-updates/%{version}/plasma-pk-updates-%{version}.tar.xz
+Source:         plasma-pk-updates-%{version}.tar.xz
 # Updated translations
 Source1:        plasma5-pk-updates-lang.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         desktop.patch
-# PATCH-FIX-UPSTREAM boo#1103678
-Patch1:         0001-Hide-updates-and-checkbox-when-system-is-offline.patch
-Patch2:         0002-Add-its-own-messageChanged-NOTIFY-signal-to-message.patch
-Patch3:         0003-Delay-PkUpdates-checkUpdates-calls-if-the-network-is-offline.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Replace-KIconLoader-pixmaps-with-standard-icon-names.patch
-Patch5:         0002-Fix-usage-of-0-for-null-pointer-constants.patch
-Patch6:         0003-Use-own-eventIds-and-ComponentName-instead-of-generi.patch
-Patch7:         0004-Make-the-notifications-less-obtrusive.patch
-Patch8:         0006-Remove-explicit-initialization-of-default-constructe.patch
-Patch9:         0007-Port-away-from-KDELibs4Support-use-Solid-Power-inter.patch
-# PATCH-FEATURE-UPSTREAM
-Patch10:        0001-Add-support-for-license-prompts.patch
-Patch11:        0001-Don-t-show-an-error-for-a-failed-automatic-refresh.patch
-# To be sent upstream if confirmed to work as expected
-Patch12:        0001-Limit-to-one-automatic-check-each-10-minutes.patch
-Patch13:        0001-Also-treat-ErrorNotAuthorized-as-temporary.patch
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= 1.3.0
@@ -72,6 +53,7 @@ Plasma applet for software updates using PackageKit.
 
 %prep
 %autosetup -p1 -n plasma-pk-updates-%{version} -a 1
+echo -e 'find_package(KF5I18n CONFIG REQUIRED)\nki18n_install(po)' >> CMakeLists.txt
 
 %build
   %cmake_kf5 -d build
