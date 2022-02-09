@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-maps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
 Source0:        https://download.gnome.org/sources/gnome-maps/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM def20cbb26e59e5023fe157e691de48d7afe7210.patch -- Fix build with meson 0.61 and newer
+Patch0:         def20cbb26e59e5023fe157e691de48d7afe7210.patch
 
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection
