@@ -20,17 +20,16 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-# Disable tarball source url, use _service
-#Source0:        %%{url}/src/gst-plugins-base/%%{_name}-%%{version}.tar.xz
-Source0:        %{_name}-%{version}.tar.xz
+Source0:        %{url}/src/gst-plugins-base/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
+
 # PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
 Patch3:         gstreamer-plugins-base-gl-deps.patch
 Patch4:         add_wayland_dep_to_tests.patch
