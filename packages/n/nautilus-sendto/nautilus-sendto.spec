@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-sendto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Summary:        Integrate Nautilus and E-Mail clients
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://www.es.gnome.org/~telemaco/
-Source:         http://download.gnome.org/sources/nautilus-sendto/3.8/%{name}-%{version}.tar.xz
-BuildRequires:  appstream-glib-devel
+Source:         https://download.gnome.org/sources/nautilus-sendto/3.8/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM nautilus-sendto-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
+Patch:          nautilus-sendto-fix-meson-061.patch
+
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -43,7 +45,7 @@ send files over e-mail via Evolution, Thunderbird, Sylpheed or Balsa.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

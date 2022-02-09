@@ -445,4 +445,12 @@
   (jsc#SLE-21105). (forwarded request 920431 from sbrabec)</comment>
     <requestid>920590</requestid>
   </revision>
+  <revision rev="62" vrev="6">
+    <srcmd5>06a256b266f9b2b0ca55ffb0eb7015a1</srcmd5>
+    <version>3.8.6</version>
+    <time>1644435478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952681</requestid>
+  </revision>
 </revisionlist>
