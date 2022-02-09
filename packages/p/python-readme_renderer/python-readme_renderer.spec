@@ -27,7 +27,7 @@ URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments >= 2.5.1}
 BuildRequires:  %{python_module bleach >= 2.1.0}
-BuildRequires:  %{python_module cmarkgfm >= 0.5.0}
+BuildRequires:  %{python_module cmarkgfm >= 0.7.0}
 BuildRequires:  %{python_module docutils >= 0.13.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pygments >= 2.5.1
 Requires:       python-bleach >= 2.1.0
 Requires:       python-docutils >= 0.13.1
-Recommends:     python-cmarkgfm >= 0.5.0
+Recommends:     python-cmarkgfm >= 0.7.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,7 +57,8 @@ long_description for packages.
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# gh#pypa/readme_renderer#221 for exclusion
+%pytest -v -k 'not test_md_fixtures'
 
 %files %{python_files}
 %license LICENSE

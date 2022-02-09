@@ -52,4 +52,14 @@
 - drop remove-mock.patch, remove-six.patch: upstream</comment>
     <requestid>946779</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a9ce61e1544e45f50865b0e8debeae39</srcmd5>
+    <version>32.0</version>
+    <time>1644435498</time>
+    <user>dimstar_suse</user>
+    <comment>- We require cmarkgfm == 0.7.0 (gh#pypa/readme_renderer#221) and
+  still we have to stkip test_md_fixtures.
+</comment>
+    <requestid>952930</requestid>
+  </revision>
 </revisionlist>

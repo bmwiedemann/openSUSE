@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  9 10:39:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- We require cmarkgfm == 0.7.0 (gh#pypa/readme_renderer#221) and
+  still we have to stkip test_md_fixtures.
+
+-------------------------------------------------------------------
 Sun Jan 16 12:48:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 32.0:
