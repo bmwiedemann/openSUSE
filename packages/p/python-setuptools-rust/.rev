@@ -16,4 +16,24 @@
   longer compatible with it</comment>
     <requestid>945301</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cfaa98426c2e0ee5b8f44b4056aa0ae</srcmd5>
+    <version>1.1.2</version>
+    <time>1644435486</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2:
+  * Removed dependency on `tomli` to simplify installation
+  * Improve error messages on invalid inputs to `rust_extensions` keyword
+  * Fix regression from `setuptools-rust` 1.1.0 which broke builds for the
+    `x86_64-unknown-linux-musl` targeta
+  * Fix `--target` command line option being unable to take a value
+  * Fix regression from `setuptools-rust` 1.1.0 which incorrectly converted
+    library extension suffixes to the &quot;abi3&quot; suffix when `py_limited_api` was
+    unspecified Add support for cross-compiling using
+  * [`cross`](https://github.com/rust-embedded/cross)
+  * Fix incompatibility with Python 3.6.0 using default values for NamedTuple classes
+  * Stop forcing the `msvc` Rust toolchain for Windows environments using the
+    `gnu` toolchain</comment>
+    <requestid>951677</requestid>
+  </revision>
 </revisionlist>

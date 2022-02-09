@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-setuptools-rust
-Version:        1.0.0
+Version:        1.1.2
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module typing_extensions >= 3.7.4.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-semantic_version >= 2.8.2
-Requires:       python-tomli
 Requires:       python-typing_extensions >= 3.7.4.3
 BuildArch:      noarch
 %python_subpackages
