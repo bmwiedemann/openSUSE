@@ -1,7 +1,7 @@
 #
 # spec file for package accountsservice
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch3:         accountsservice-wtmp-io-improvements.patch
 Patch4:         accountsservice-fix-gdm-crash.patch
 # PATCH-FIX-OPENSUSE harden_accounts-daemon.service.patch jsegitz@suse.com -- For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 Patch5:         harden_accounts-daemon.service.patch
+# PATCH-FIX-UPSTREAM ac9b14f1c1bbca413987d0bbfeaad05804107e9a.patch -- Fix build with meson 0.61.0
+Patch6:         https://gitlab.freedesktop.org/accountsservice/accountsservice/-/commit/ac9b14f1c1bbca413987d0bbfeaad05804107e9a.patch
 
 ## SLE and Leap only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
@@ -106,6 +108,7 @@ querying and manipulating user account information.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}
