@@ -1,7 +1,7 @@
 #
 # spec file for package acpica
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  glibc-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  patch
 Provides:       iasl
-ExclusiveArch:  %{ix86} ia64 x86_64 aarch64 %{arm}
 
 %description
 The included tools share the same code as it is used in the ACPI

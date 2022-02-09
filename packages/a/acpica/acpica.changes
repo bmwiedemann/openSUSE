@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  5 14:39:59 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- The package build fine on arches different than x86 and ARM. Drop
+  the ExclusiveArch.
+
+-------------------------------------------------------------------
 Tue Oct 19 14:34:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20210930
