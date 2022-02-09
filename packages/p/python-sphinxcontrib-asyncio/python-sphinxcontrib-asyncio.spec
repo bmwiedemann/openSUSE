@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-asyncio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,10 +46,10 @@ Sphinx extension for adding asyncio-specific markups
 
 %build
 %python_build
-pushd docs
-PYTHONPATH=.. make html
-rm _build/html/.buildinfo
-popd
+#pushd docs
+#PYTHONPATH=.. make html
+#rm _build/html/.buildinfo
+#popd
 
 %install
 %python_install
@@ -60,7 +60,8 @@ popd
 %python_expand rm -f %{buildroot}%{$python_sitelib}/sphinxcontrib/__pycache__/__init__*.py*
 
 %files %{python_files}
-%doc CHANGES.rst README.rst docs/_build/html
+%doc CHANGES.rst README.rst
+#docs/_build/html
 %{python_sitelib}/sphinxcontrib/asyncio.py*
 %pycache_only %dir %{python_sitelib}/sphinxcontrib/__pycache__/
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__/asyncio*.py*
