@@ -17,13 +17,13 @@
 
 
 Name:           FreeCAD-test
-Version:        0.19.0
+Version:        0.19.3
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            http://www.freecadweb.org/
-BuildRequires:  FreeCAD
+BuildRequires:  FreeCAD = %{version}
 %if 0%{?suse_version} > 1500
 BuildRequires:  gmsh
 %endif
@@ -36,10 +36,29 @@ This is just executing the test suite at build time.
 
 %build
 export LC_ALL="C.utf-8"
-file=`mktemp`
-if ! FreeCAD --console --write-log --log-file="$file" --run-test 0; then
-  cat "$file"
-  exit 1
-fi
+export PYTHONPATH=%{_libdir}/FreeCAD/lib
+python3 -c "\
+import FreeCAD
+import unittest
+print(FreeCAD.__unit_test__)
+results = {}
+for name in FreeCAD.__unit_test__:
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.defaultTestLoader.loadTestsFromName(name))
+    print(\"Running: {}\".format(name), file=sys.stderr)
+    r = unittest.TextTestRunner()
+    res = r.run(suite)
+    results[name] = res
+
+totalerrors = 0
+totalfailures = 0
+for [name,res] in results.items():
+    print(name)
+    print(res)
+    totalerrors += len(res.errors)
+    totalfailures += len(res.failures)
+
+exit((totalerrors + totalfailures) > 0)
+"
 
 %changelog

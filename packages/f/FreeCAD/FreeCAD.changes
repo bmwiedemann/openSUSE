@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  6 17:31:23 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Pre-generate parsetab.py for ply.yacc in OpenSCAD and FEM Mods:
+  https://tracker.freecadweb.org/view.php?id=4840
+
+-------------------------------------------------------------------
 Fri Jan 14 17:27:24 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.19.3:

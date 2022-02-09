@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  6 17:33:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Run unittests manually, to make test failures visible between
+  noisy output
+- Bump version
+
+-------------------------------------------------------------------
 Wed May  6 07:02:41 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Only enable gmsh BuildRequires on Tumbleweed, it's not available
