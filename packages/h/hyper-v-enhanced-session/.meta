@@ -1,0 +1,11 @@
+<package name="hyper-v-enhanced-session" project="openSUSE:Factory">
+  <title></title>
+  <description>NOTE: The package is for SUSE VM guest installs in MS Hyper-V, generally when the &quot;hyper-v&quot;[https://build.opensuse.org/package/show/Virtualization/hyper-v] package is present.
+
+* Completes pre-requisite setup for an openSUSE VM on Hyper-V to be able to use &quot;Enhanced session&quot;.
+* Works with lightdm, NOT sddm. gdm isn't an issue and is difficult to remove from a Gnome install.
+* In PowerShell, run 'Set-VM -VMName &amp;lt;name of vm&amp;gt; -EnhancedSessionTransportType HvSocket' to enable.
+* Provides /etc/xrdp/startwm.sh.userwindowmanager-sample to use in '$HOME'.</description>
+  <devel project="Virtualization" package="hyper-v-enhanced-session"/>
+  <url>https://github.com/sbradnick/hyper-v-enhanced-session</url>
+</package>
