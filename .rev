@@ -1341,4 +1341,12 @@ Also wanted for 13.1</comment>
     <comment></comment>
     <requestid>947472</requestid>
   </revision>
+  <revision rev="175" vrev="4">
+    <srcmd5>ddeee2836035bc5c1a13114e3436f302</srcmd5>
+    <version>1.48.1</version>
+    <time>1644435482</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with meson 0.61 (forwarded request 952779 from iznogood)</comment>
+    <requestid>952880</requestid>
+  </revision>
 </revisionlist>
