@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         fix_flat.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
