@@ -537,4 +537,12 @@
     <comment></comment>
     <requestid>936217</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>f1c7839206501522f065882af460ef11</srcmd5>
+    <version>41.2</version>
+    <time>1644435483</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with meson 0.61 (forwarded request 952781 from iznogood)</comment>
+    <requestid>952881</requestid>
+  </revision>
 </revisionlist>
