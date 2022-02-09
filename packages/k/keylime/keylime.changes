@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  7 16:28:22 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Change back agent_uuid to hostname
+- Set tpm_hash_alg to sha256 by default
+- Update version.diff patch to point to the correct version number
+- Fix issue with Tornado, when multiple workers are started
+  * Add cloud_verifier_tornado-use-fork_processes.patch (bsc#1195605)
+
+-------------------------------------------------------------------
 Thu Jan 27 16:16:19 UTC 2022 - aplanas@suse.com
 
 - Drop patches beacuse merged upstream:

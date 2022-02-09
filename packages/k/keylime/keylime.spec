@@ -38,6 +38,8 @@ Patch1:         version.diff
 Patch2:         keylime.conf.diff
 # PATCH-FIX-OPENSUSE config-libefivars.diff
 Patch3:         config-libefivars.diff
+# PATCH-FIX-UPSTREAM cloud_verifier_tornado-use-fork_processes.patch (gh#keylime/keylime!880)
+Patch4:         cloud_verifier_tornado-use-fork_processes.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros

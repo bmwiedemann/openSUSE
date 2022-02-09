@@ -6,7 +6,7 @@ Index: keylime-v6.3.0/setup.py
      description=(
          'TPM-based key bootstrapping and system '
          'integrity measurement system for cloud'),
-+    version='6.2.1',
++    version='6.3.0',
      long_description=long_description,
      long_description_content_type='text/markdown',
      author='Keylime Community',
