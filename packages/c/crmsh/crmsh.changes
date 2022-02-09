@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 08 09:01:07 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220208.5e6dca1d:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: sbd: not overwrite SYSCONFIG_SBD and sbd-disk-metadata if input 'n'(bsc#1194870)
+
+-------------------------------------------------------------------
+Tue Feb 08 07:50:39 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220208.84dd4fdd:
+  * Dev: bootstrap: the joining node retries an active cluster
+  * Dev: behave: Change docker cgroup driver as systemd
+  * doc: Website: Add 4.3.1 release note
+  * doc: Website: Upload crmsh 4.3.x doc
+
+-------------------------------------------------------------------
 Tue Jan 25 07:51:13 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220125.d0150a88:
