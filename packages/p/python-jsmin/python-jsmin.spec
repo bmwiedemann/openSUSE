@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsmin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%global skip_python2 1
 Name:           python-jsmin
-Version:        2.2.2
+Version:        3.0.1
 Release:        0
-License:        MIT
 Summary:        JavaScript minifier
-URL:            https://github.com/tikitu/jsmin/
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/tikitu/jsmin/
 Source:         https://files.pythonhosted.org/packages/source/j/jsmin/jsmin-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
