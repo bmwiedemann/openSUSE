@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Mon Feb 7 08:57:48 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#860
+- added integration test
+- use in-class member initialization
+- 4.4.81
+
+--------------------------------------------------------------------
+Mon Feb 7 07:36:45 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#859
+- Modify mount point if mount_type changes
+- Mount/unmount if needed when mount type changes
+- 4.4.80
+
+--------------------------------------------------------------------
 Thu Feb 3 09:48:02 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Finnish) (bsc#1149754)
