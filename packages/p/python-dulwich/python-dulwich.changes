@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 22:04:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.32:
+  * Properly close result repository during test.
+
+-------------------------------------------------------------------
 Sun Jan 23 16:46:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.31:

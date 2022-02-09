@@ -551,4 +551,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>950021</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3e58e721b8c3aa4ded8d3a671fa06f77</srcmd5>
+    <version>0.20.32</version>
+    <time>1644435485</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.32:
+  * Properly close result repository during test.</comment>
+    <requestid>951676</requestid>
+  </revision>
 </revisionlist>
