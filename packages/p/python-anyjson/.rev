@@ -158,4 +158,27 @@
     <comment>- Shorten the Summary to silence rpmlint.</comment>
     <requestid>938984</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>89db8aa21c232cf30ae489ecec00ee67</srcmd5>
+    <version>0.3.3+git.1298315003.7bb1d18</version>
+    <time>1644435495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.3+git.1298315003.7bb1d18:
+  * GitHub-like readmes
+  * Added tag 0.3 for changeset b5d33ab23b8f
+  * Bumped version number
+  * Added python3 support (Thanks asksol)
+  * Added tag 0.2.5 for changeset 40150de124d6
+  * Bumped version, updated changelog
+  * Added dumps/loads as aliases for serializ/deserialize so it's
+    in line with the stdlib json module
+  * Removed a newline in desc that caused problems when building
+    RPMs (thanks csears)
+  * Added tag 0.2.4 for changeset 6a0a193e51e4
+  * Bumped version and updated changelog
+- Add port_to_py3k.patch (gh#kennethreitz-archive/anyjson#2)
+  which ports whole package to py3k and removes dependency on nose.
+</comment>
+    <requestid>952682</requestid>
+  </revision>
 </revisionlist>

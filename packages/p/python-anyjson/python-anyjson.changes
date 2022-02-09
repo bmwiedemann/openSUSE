@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 08 11:14:08 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.3.3+git.1298315003.7bb1d18:
+  * GitHub-like readmes
+  * Added tag 0.3 for changeset b5d33ab23b8f
+  * Bumped version number
+  * Added python3 support (Thanks asksol)
+  * Added tag 0.2.5 for changeset 40150de124d6
+  * Bumped version, updated changelog
+  * Added dumps/loads as aliases for serializ/deserialize so it's
+    in line with the stdlib json module
+  * Removed a newline in desc that caused problems when building
+    RPMs (thanks csears)
+  * Added tag 0.2.4 for changeset 6a0a193e51e4
+  * Bumped version and updated changelog
+- Add port_to_py3k.patch (gh#kennethreitz-archive/anyjson#2)
+  which ports whole package to py3k and removes dependency on nose.
+
+-------------------------------------------------------------------
 Fri Dec 10 05:51:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Shorten the Summary to silence rpmlint. 
