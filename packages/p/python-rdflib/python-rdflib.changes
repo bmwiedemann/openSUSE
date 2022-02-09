@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  7 23:38:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.1.1:
+  * add support for Python 3.10
+  * updates the test suite to pytest (from nose)
+  * tidies up a lot of continuous integration
+  * gets more tests tested, not skipped
+  * implements lots of mypy tests
+  * updates several parsers and serializers
+  * supports the new HexTuples format!
+  * drop support for Python 2 and Python 3 < 3.7.
+  * improved testing with mock SPARQL stores
+- Drop unneeded BuildRequires on python3-2to3
+
+-------------------------------------------------------------------
 Mon Jan 11 13:05:57 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - removed unneeded 'Requires' dependencies

@@ -1,7 +1,7 @@
 #
 # spec file for package python-rdflib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 # Tests don't work and cause a dependency loop with python-SPARQLWrapper
 %bcond_with tests
 Name:           python-rdflib
-Version:        5.0.0
+Version:        6.1.1
 Release:        0
 Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
@@ -33,19 +33,18 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-apidoc
 Requires:       python-html5lib
 Requires:       python-isodate
 Requires:       python-pyparsing
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  %{python_module SPARQLWrapper}
 BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -92,7 +91,7 @@ popd
 
 %if %{with tests}
 %check
-%python_exec setup.py -q test
+%pytest
 %endif
 
 %post

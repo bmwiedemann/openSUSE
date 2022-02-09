@@ -245,4 +245,22 @@
     <comment></comment>
     <requestid>862380</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cb619f414b9aa13b49abc5fc51406467</srcmd5>
+    <version>6.1.1</version>
+    <time>1644435494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.1:
+  * add support for Python 3.10
+  * updates the test suite to pytest (from nose)
+  * tidies up a lot of continuous integration
+  * gets more tests tested, not skipped
+  * implements lots of mypy tests
+  * updates several parsers and serializers
+  * supports the new HexTuples format!
+  * drop support for Python 2 and Python 3 &lt; 3.7.
+  * improved testing with mock SPARQL stores
+- Drop unneeded BuildRequires on python3-2to3</comment>
+    <requestid>952276</requestid>
+  </revision>
 </revisionlist>
