@@ -1,58 +1,13 @@
-Index: gnome-shell-41.2/js/gdm/authPrompt.js
+Index: gnome-shell-41.3/js/gdm/loginDialog.js
 ===================================================================
---- gnome-shell-41.2.orig/js/gdm/authPrompt.js
-+++ gnome-shell-41.2/js/gdm/authPrompt.js
-@@ -31,6 +31,8 @@ var AuthPromptStatus = {
-     VERIFICATION_SUCCEEDED: 3,
-     VERIFICATION_CANCELLED: 4,
-     VERIFICATION_IN_PROGRESS: 5,
-+    // NOTE fate#318433 extra state to track multi-login situation
-+    VERIFIED_BUT_FORBIDDEN: 6,
- };
- 
- var BeginRequestType = {
-@@ -338,7 +340,13 @@ var AuthPrompt = GObject.registerClass({
-     }
- 
-     _onVerificationComplete() {
-+        // NOTE update the spinning icon
-         this.setActorInDefaultButtonWell(null);
-+
-+        if (this.verificationStatus === AuthPromptStatus.VERIFIED_BUT_FORBIDDEN) {
-+            this.cancelButton.reactive = true;
-+            return;
-+        }
-         this.verificationStatus = AuthPromptStatus.VERIFICATION_SUCCEEDED;
-         this.cancelButton.reactive = false;
-         this.cancelButton.can_focus = false;
-Index: gnome-shell-41.2/js/gdm/loginDialog.js
-===================================================================
---- gnome-shell-41.2.orig/js/gdm/loginDialog.js
-+++ gnome-shell-41.2/js/gdm/loginDialog.js
-@@ -952,6 +952,8 @@ var LoginDialog = GObject.registerClass(
-                 this._authPrompt.updateSensitivity(false);
-                 let answer = this._authPrompt.getAnswer();
-                 this._user = this._userManager.get_user(answer);
-+                this._userLoginForbidden =
-+                    this._user.is_x_logged_in_remotely();
-                 this._authPrompt.clear();
-                 this._authPrompt.begin({ userName: answer });
-                 this._updateCancelButton();
-@@ -1017,6 +1019,8 @@ var LoginDialog = GObject.registerClass(
-                                                         let answer = this._authPrompt.getAnswer();
-                             let domain_answer = this._domainMenuButton.getDomainUser(answer);
-                                                         this._user = this._userManager.get_user(domain_answer);
-+                                                        this._userLoginForbidden =
-+                                                            this._user.is_x_logged_in_remotely();
-                                                         this._authPrompt.clear();
-                                                         this._authPrompt.startSpinning();
-                                                         this._authPrompt.begin({ userName: domain_answer});
-@@ -1043,6 +1047,28 @@ var LoginDialog = GObject.registerClass(
+--- gnome-shell-41.3.orig/js/gdm/loginDialog.js
++++ gnome-shell-41.3/js/gdm/loginDialog.js
+@@ -1043,6 +1043,29 @@ var LoginDialog = GObject.registerClass(
      }
  
      _onSessionOpened(client, serviceName) {
-+        if (this._user.is_x_logged_in_remotely()) {
-+            this._authPrompt.setMessage(
++        if (this._user.get_num_sessions_anywhere() > 1) {
++            this._authPrompt.setMessage(null,
 +                _('Sorry, you have to log out a previous session first. Multiple logins are not supported.'),
 +                GdmUtil.MessageType.ERROR);
 +            // TODO: The following logic relies on the unverified fact that
@@ -60,6 +15,7 @@ Index: gnome-shell-41.2/js/gdm/loginDialog.js
 +            // current handler. This might root from the interaction between
 +            // greeter and verifier, both are external programs.
 +            this._authPrompt.verificationStatus = AuthPrompt.AuthPromptStatus.VERIFIED_BUT_FORBIDDEN;
++            this._authPrompt.cancelButton.reactive = true;
 +
 +            // NOTE: Failed Attempts as references
 +            //
@@ -75,12 +31,4 @@ Index: gnome-shell-41.2/js/gdm/loginDialog.js
 +
          this._authPrompt.finish(() => this._startSession(serviceName));
      }
- 
-@@ -1238,6 +1264,7 @@ var LoginDialog = GObject.registerClass(
- 
-     _onUserListActivated(activatedItem) {
-         this._user = activatedItem.user;
-+        this._userLoginForbidden = this._user.is_x_logged_in_remotely();
- 
-         this._updateCancelButton();
  

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  9 06:23:06 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gs-fate318433-prevent-same-account-multi-logins.patch:
+  Fix the JS ERR: Error: Wrong type number; string expected
+  (bsc#1195179 bsc#1195141).
+
+-------------------------------------------------------------------
+Tue Feb  8 17:04:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 2078.patch: Fix build with meson 0.61 and newer.
+
+-------------------------------------------------------------------
 Thu Jan 27 02:58:53 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Disable gs-fate318433-prevent-same-account-multi-logins.patch:

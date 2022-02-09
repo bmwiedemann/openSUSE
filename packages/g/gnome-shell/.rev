@@ -1920,4 +1920,14 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>951440</requestid>
   </revision>
+  <revision rev="217" vrev="3">
+    <srcmd5>d95f9d06f11d7a1edd038e8c4a84a598</srcmd5>
+    <version>41.3</version>
+    <time>1644435484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gs-fate318433-prevent-same-account-multi-logins.patch:
+  Fix the JS ERR: Error: Wrong type number; string expected
+  (bsc#1195179 bsc#1195141). (forwarded request 952873 from xiaoguang_wang)</comment>
+    <requestid>952883</requestid>
+  </revision>
 </revisionlist>
