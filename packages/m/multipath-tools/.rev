@@ -1588,4 +1588,17 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * Avoid unnecessary read-only reloads</comment>
     <requestid>950721</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>1c4e63af641d517ae5e35a6e5a3b1f17</srcmd5>
+    <version>0.8.8+57+suse.dfb672fe</version>
+    <time>1644531097</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.8+57+suse.dfb672fe
+  * kpartx.rules: skip MD devices (bsc#1195644)
+  * libmultipath: hwtable: use ALUA for all LIO targets (bsc#1195649)
+  * multipathd.service: drop ExecStartPre for loading dm-multipath
+    (bsc#1195397)
+</comment>
+    <requestid>952914</requestid>
+  </revision>
 </revisionlist>

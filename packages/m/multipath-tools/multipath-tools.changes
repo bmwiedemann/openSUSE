@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  9 10:01:45 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Version 0.8.8+57+suse.dfb672fe
+  * kpartx.rules: skip MD devices (bsc#1195644)
+  * libmultipath: hwtable: use ALUA for all LIO targets (bsc#1195649)
+  * multipathd.service: drop ExecStartPre for loading dm-multipath
+    (bsc#1195397)
+
+-------------------------------------------------------------------
 Wed Feb  2 09:56:59 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Version 0.8.8+45+suse.628d603e
