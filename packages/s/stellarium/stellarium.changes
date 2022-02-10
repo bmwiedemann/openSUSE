@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  8 16:13:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Don't create a duplicated stellarium.desktop file -- there's already
+  org.stellarium.Stellarium.desktop that's being installed.
+
+-------------------------------------------------------------------
 Sat Dec 25 11:06:11 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.21.3:
