@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 10 08:40:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 2.6.4:
+  * fix(semantic-tokens): limit comments range
+  * fix(semantic-tokens): data field can't be nil
+  * Fix regular expression to find root directory in
+    make/bootstrap.lua
+  * feat(postfix): add templates
+
+-------------------------------------------------------------------
 Mon Jan 24 12:45:42 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.6.1:

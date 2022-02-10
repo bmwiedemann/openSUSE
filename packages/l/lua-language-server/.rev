@@ -52,4 +52,18 @@
     <comment></comment>
     <requestid>948411</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f11baec9cb0d08388582eed46a9f7f0</srcmd5>
+    <version>2.6.4</version>
+    <time>1644531140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.4:
+  * fix(semantic-tokens): limit comments range
+  * fix(semantic-tokens): data field can't be nil
+  * Fix regular expression to find root directory in
+    make/bootstrap.lua
+  * feat(postfix): add templates
+</comment>
+    <requestid>953111</requestid>
+  </revision>
 </revisionlist>
