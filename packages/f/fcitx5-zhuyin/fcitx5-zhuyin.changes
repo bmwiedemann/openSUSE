@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Wed Dec 15 12:50:53 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.7
+  * Remove unused fcitx4 files
+
+-------------------------------------------------------------------
+Wed May  5 08:20:04 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.5
+  * update translation
+- changes in version 5.0.4
+  * Fix dict not included in the tarball
+
+-------------------------------------------------------------------
+Tue Mar 16 07:46:32 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+
+-------------------------------------------------------------------
+Sun Jan 31 04:29:01 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Sun Dec  6 05:52:34 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+- drop fcitx5-zhuyin-5.0.0-database-format.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Nov 10 07:28:46 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+- add fcitx5-zhuyin-5.0.0-table.conf.patch
+  * libpinyin 2.4.94 introduced a new "database format"
+    in table.conf, which can either be BerkeleyDB or
+    KyotoCabinet
+- use model19.text.tar.gz
+
+-------------------------------------------------------------------
+Fri Sep  4 05:25:09 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package
