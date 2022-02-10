@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  8 09:50:41 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix a wrong reference to PackageSystem#EnsureSourceInit
+  (bsc#1195519, related to bsc#1194886).
+- 4.4.22
+
+-------------------------------------------------------------------
 Tue Jan 25 13:48:20 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use Package module instead of PackageSystem (bsc#1194886).
