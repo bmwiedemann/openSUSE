@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Feb  5 09:28:52 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply Revert-DBus-Add-sae-to-interface-key_mgmt-capabilities.patch
+  to fix connect with AVM FB, if WPA3 transition mode is activated,
+  e.g. Wifi -> Security: is WPA2 + WPA3, alt. switch to WPA2 (CCMP)
+  (bsc#1195312)
+
+-------------------------------------------------------------------
+Tue Feb  1 19:41:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop restore-old-dbus-interface.patch, wicked has been
+  switching to the new dbus interface in version 0.6.66.
+- drop wpa_supplicant-getrandom.patch : glibc has been updated
+  so the getrandom() wrapper is now there
+- config:
+  * enable QCA vendor extensions to nl80211
+  * enable EAP-EKE
+  * Support HT overrides
+  * WPA3-Enterprise 
+  * TLS v1.1 and TLS v1.2
+  * Fast Session Transfer (FST)
+  * Automatic Channel Selection
+  * Multi Band Operation
+  * Fast Initial Link Setup
+  * Mesh Networking (IEEE 802.11s)
+
+-------------------------------------------------------------------
+Mon Jan 31 19:42:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- config: 
+  * Reenable Fast BSS Transition (likely fixing bsc#1195312)
+  * Enable OCV, security feature that prevents MITM
+    multi-channel attacks
+  * Enable OWE for better hotspot support
+
+-------------------------------------------------------------------
 Sun Jan 23 15:33:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.0:
