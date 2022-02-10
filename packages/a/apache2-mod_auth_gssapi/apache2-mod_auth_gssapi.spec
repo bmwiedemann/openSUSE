@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_auth_gssapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2004, 2005 NOVELL (All rights reserved)
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,11 @@
 #
 
 
+%if 0%{suse_version} >= 1599
+%define test 1
+%else
+%define test 0
+%endif
 Name:           apache2-mod_auth_gssapi
 Version:        1.6.3
 Release:        0
@@ -36,6 +41,7 @@ Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
 Requires:       apache2
 # SECTION test requirements
+%if %{test} == 1
 BuildRequires:  krb5-client
 BuildRequires:  krb5-plugin-preauth-pkinit
 BuildRequires:  krb5-server
@@ -44,6 +50,7 @@ BuildRequires:  python3-gssapi
 BuildRequires:  python3-requests-gssapi
 BuildRequires:  python3-requests-kerberos
 BuildRequires:  socket_wrapper
+%endif
 # /SECTION
 
 %description
@@ -65,9 +72,11 @@ export APACHE="%{_sbindir}/httpd"
 rm %{buildroot}%{apache_libexecdir}/*.la
 
 %check
+%if %{test} == 1
 sed -i 's/env python/python3/' tests/*.py
 export PATH="$PATH:%{_sbindir}"
 make check
+%endif
 
 %files
 %license COPYING
