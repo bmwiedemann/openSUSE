@@ -19,9 +19,9 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           skaffold
-Version:        1.35.2
+Version:        1.36.0
 Release:        0
-Summary:        Easy and Repeatable Kubernetes Development 
+Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
 URL:            https://github.com/GoogleContainerTools/skaffold
 Source:         skaffold-%{version}.tar.gz
