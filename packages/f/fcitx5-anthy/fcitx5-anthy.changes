@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 12 15:12:13 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * Small fix in the paging logic. Now it's possible to always
+    go to the next page regardless of current cursor position.
+
+-------------------------------------------------------------------
 Wed Dec 15 11:46:29 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.8
