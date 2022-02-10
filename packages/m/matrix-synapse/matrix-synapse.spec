@@ -16,6 +16,8 @@
 #
 
 
+%define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
 # missing deps
 %if 0%{?suse_version} >= 1550
@@ -37,18 +39,18 @@
 #   https://github.com/matrix-org/synapse/releases or synapse/CHANGES.md
 # * Commit+submit
 
-%if 0%{?suse_version} >= 1550
-%define use_python python38
+#if 0%{?suse_version} >= 1550
+#define use_python python3
 #define __python3 #{_bindir}/python3
-%else
+#else
 %define use_python python3
-%endif
+#endif
 
 %define         modname synapse
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.50.2
+Version:        1.51.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -79,108 +81,108 @@ BuildRequires:  sysuser-tools
 BuildRequires:  unzip
 %{?systemd_ordering}
 %{sysusers_requires}
-%requires_eq    %{use_python}-base
+%requires_peq   %{use_python}-base
 # NOTE: Keep this is in the same order as synapse/python_dependencies.py.
 BuildRequires:  %{use_python}-Jinja2 >= 2.9
-%requires_eq    %{use_python}-Jinja2
+%requires_peq   %{use_python}-Jinja2
 BuildRequires:  %{use_python}-Pillow >= 4.3.0
-%requires_eq    %{use_python}-Pillow
+%requires_peq   %{use_python}-Pillow
 BuildRequires:  %{use_python}-PyNaCl >= 1.2.1
-%requires_eq    %{use_python}-PyNaCl
+%requires_peq   %{use_python}-PyNaCl
 BuildRequires:  %{use_python}-PyYAML >= 3.11
-%requires_eq    %{use_python}-PyYAML
+%requires_peq   %{use_python}-PyYAML
 BuildRequires:  %{use_python}-Twisted >= 20.3.0
-%requires_eq    %{use_python}-Twisted
+%requires_peq   %{use_python}-Twisted
 BuildRequires:  ((%{use_python}-attrs >= 19.2.0 with %{use_python}-attrs < 21.1.0) or %{use_python}-attrs > 21.1.0)
-%requires_eq    %{use_python}-attrs
+%requires_peq   %{use_python}-attrs
 BuildRequires:  %{use_python}-bcrypt >= 3.2.0
-%requires_eq    %{use_python}-bcrypt
+%requires_peq   %{use_python}-bcrypt
 BuildRequires:  %{use_python}-bleach >= 1.4.3
-%requires_eq    %{use_python}-bleach
+%requires_peq   %{use_python}-bleach
 BuildRequires:  %{use_python}-canonicaljson >= 1.4.0
-%requires_eq    %{use_python}-canonicaljson
+%requires_peq   %{use_python}-canonicaljson
 BuildRequires:  %{use_python}-cryptography >= 3.4.7
-%requires_eq    %{use_python}-cryptography
+%requires_peq   %{use_python}-cryptography
 BuildRequires:  %{use_python}-frozendict >= 2.1.3
-%requires_eq    %{use_python}-frozendict
+%requires_peq   %{use_python}-frozendict
 BuildRequires:  %{use_python}-idna >= 2.5
-%requires_eq    %{use_python}-idna
+%requires_peq   %{use_python}-idna
 BuildRequires:  %{use_python}-ijson >= 3.1
-%requires_eq    %{use_python}-ijson
+%requires_peq   %{use_python}-ijson
 BuildRequires:  %{use_python}-jsonschema >= 3.0.0
-%requires_eq    %{use_python}-jsonschema
+%requires_peq   %{use_python}-jsonschema
 BuildRequires:  %{use_python}-matrix_common >= 1.0.0
-%requires_eq    %{use_python}-matrix_common
+%requires_peq   %{use_python}-matrix_common
 BuildRequires:  %{use_python}-msgpack >= 0.5.2
-%requires_eq    %{use_python}-msgpack
+%requires_peq   %{use_python}-msgpack
 BuildRequires:  %{use_python}-netaddr >= 0.7.18
-%requires_eq    %{use_python}-netaddr
+%requires_peq   %{use_python}-netaddr
 BuildRequires:  %{use_python}-phonenumbers >= 8.2.0
-%requires_eq    %{use_python}-phonenumbers
+%requires_peq   %{use_python}-phonenumbers
 BuildRequires:  %{use_python}-prometheus_client >= 0.4.0
-%requires_eq    %{use_python}-prometheus_client
+%requires_peq   %{use_python}-prometheus_client
 BuildRequires:  %{use_python}-psutil >= 2.0.0
-%requires_eq    %{use_python}-psutil
+%requires_peq   %{use_python}-psutil
 BuildRequires:  %{use_python}-pyOpenSSL >= 16.0.0
-%requires_eq    %{use_python}-pyOpenSSL
+%requires_peq   %{use_python}-pyOpenSSL
 BuildRequires:  %{use_python}-pyasn1 >= 0.1.9
-%requires_eq    %{use_python}-pyasn1
+%requires_peq   %{use_python}-pyasn1
 BuildRequires:  %{use_python}-pyasn1-modules >= 0.0.7
-%requires_eq    %{use_python}-pyasn1-modules
+%requires_peq   %{use_python}-pyasn1-modules
 BuildRequires:  %{use_python}-pymacaroons >= 0.13.0
-%requires_eq    %{use_python}-pymacaroons
+%requires_peq   %{use_python}-pymacaroons
 BuildRequires:  %{use_python}-service_identity >= 18.1.0
-%requires_eq    %{use_python}-service_identity
+%requires_peq   %{use_python}-service_identity
 BuildRequires:  %{use_python}-signedjson >= 1.1.0
-%requires_eq    %{use_python}-signedjson
+%requires_peq   %{use_python}-signedjson
 BuildRequires:  %{use_python}-six >= 1.10
-%requires_eq    %{use_python}-six
+%requires_peq   %{use_python}-six
 BuildRequires:  %{use_python}-sortedcontainers >= 1.4.4
-%requires_eq    %{use_python}-sortedcontainers
+%requires_peq   %{use_python}-sortedcontainers
 BuildRequires:  %{use_python}-systemd  >= 231
-%requires_eq    %{use_python}-systemd
+%requires_peq   %{use_python}-systemd
 BuildRequires:  %{use_python}-typing_extensions >= 3.7.4
-%requires_eq    %{use_python}-typing_extensions
+%requires_peq   %{use_python}-typing_extensions
 BuildRequires:  %{use_python}-treq >= 15.1
-%requires_eq    %{use_python}-treq
+%requires_peq   %{use_python}-treq
 BuildRequires:  %{use_python}-unpaddedbase64 >= 1.1.0
-%requires_eq    %{use_python}-unpaddedbase64
+%requires_peq   %{use_python}-unpaddedbase64
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
 %if %{with synapse_ldap}
 BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= 0.1
-%requires_eq    %{use_python}-matrix-synapse-ldap3
+%requires_peq   %{use_python}-matrix-synapse-ldap3
 %endif
 BuildRequires:  %{use_python}-psycopg2 >= 2.8
-%requires_eq    %{use_python}-psycopg2
+%requires_peq   %{use_python}-psycopg2
 BuildRequires:  %{use_python}-pysaml2 >= 4.5.0
-%requires_eq    %{use_python}-pysaml2
+%requires_peq   %{use_python}-pysaml2
 %if %{with synapse_oidc}
 BuildRequires:  %{use_python}-Authlib >= 0.15.1
-%requires_eq    %{use_python}-Authlib
+%requires_peq   %{use_python}-Authlib
 %endif
 BuildRequires:  %{use_python}-lxml >= 3.5.0
-%requires_eq    %{use_python}-lxml
+%requires_peq   %{use_python}-lxml
 %if %{with synapse_sentry}
 BuildRequires:  %{use_python}-sentry-sdk >= 0.7.2
-%requires_eq    %{use_python}-sentry-sdk
+%requires_peq   %{use_python}-sentry-sdk
 %endif
 BuildRequires:  %{use_python}-PyJWT >= 1.6.4
-%requires_eq    %{use_python}-PyJWT
+%requires_peq   %{use_python}-PyJWT
 %if %{with synapse_opentracing}
 BuildRequires:  %{use_python}-jaeger-client >= 4.0.0
-%requires_eq    %{use_python}-jaeger-client
+%requires_peq   %{use_python}-jaeger-client
 BuildRequires:  %{use_python}-opentracing   >= 2.2.0
-%requires_eq    %{use_python}-opentracing
+%requires_peq   %{use_python}-opentracing
 %endif
 %if %{with synapse_redis}
 BuildRequires:  %{use_python}-hiredis >= 1.0.1
-%requires_eq    %{use_python}-hiredis
+%requires_peq   %{use_python}-hiredis
 BuildRequires:  %{use_python}-txredisapi >= 1.4.7
-%requires_eq    %{use_python}-txredisapi
+%requires_peq   %{use_python}-txredisapi
 %endif
 BuildRequires:  %{use_python}-Pympler >= 0.8
-%requires_eq    %{use_python}-Pympler
+%requires_peq   %{use_python}-Pympler
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.
 Obsoletes:      python2-matrix-synapse < %{version}-%{release}
