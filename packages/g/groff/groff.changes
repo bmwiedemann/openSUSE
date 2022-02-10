@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 20:17:31 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Do not fail with rpm --excludedocs (bsc#1192195).
+
+-------------------------------------------------------------------
 Tue Nov 30 22:32:55 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove /usr/share/groff/current from groff-full. It creates file
