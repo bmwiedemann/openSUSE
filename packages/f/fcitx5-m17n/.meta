@@ -1,0 +1,5 @@
+<package name="fcitx5-m17n" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N" package="fcitx5-m17n"/>
+</package>
