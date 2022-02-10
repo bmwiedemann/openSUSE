@@ -28,8 +28,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
 Type=forking
-ExecStartPre=/usr/bin/mkdir -p /run/bitlbee
-ExecStartPre=/usr/bin/chown bitlbee.bitlbee /run/bitlbee
+RuntimeDirectory=bitlbee
 ExecStart=/usr/sbin/bitlbee -F -u bitlbee
 PIDFile=/run/bitlbee/bitlbee.pid
 ExecReload=/bin/kill -HUP $MAINPID

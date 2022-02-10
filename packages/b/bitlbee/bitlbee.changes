@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 10 09:16:15 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix bitlbee runtime directory (bsc#1193230)
+  * create service runtime directory with correct SELinux context
+  Modified:
+  * bitlbee.service-suse.in
+
+-------------------------------------------------------------------
 Wed Aug 25 08:20:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):
