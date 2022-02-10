@@ -1,7 +1,7 @@
 #
-# spec file for package obs-service-recompress
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define service recompress
-
 Name:           obs-service-%{service}
 Version:        0.5.1
 Release:        0
@@ -26,22 +25,19 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  perl(Test::More)
-
 BuildRequires:  bzip2
 BuildRequires:  gzip
 BuildRequires:  xz
+BuildRequires:  perl(Test::More)
+Requires:       %{_bindir}/gzip
 Requires:       bzip2
-Requires:       gzip
 Requires:       xz
+BuildArch:      noarch
 # Enable zstd on all supported distributions
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150000 || 0%{?fedora_version} > 25 || 0%{?rhel} >= 6
 BuildRequires:  zstd
 Requires:       zstd
 %endif
-
-BuildArch:      noarch
 
 %description
 This is a source service for openSUSE Build Service.
@@ -54,20 +50,18 @@ It supports to compress, uncompress or recompress files from or to
  xz   : XZ Compression
  zstd : Zstd Compression
 
-
 %prep
 %setup -q
 
 %build
 
 %install
-make DESTDIR=%buildroot install
+%make_install
 
 %check
-make test
+%make_build test
 
 %files
-%defattr(-,root,root)
 %dir %{_prefix}/lib/obs
 %{_prefix}/lib/obs/service
 
