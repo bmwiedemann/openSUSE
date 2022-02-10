@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Feb  9 19:07:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 22.02:
+  * Implement sharing with Purpose (export)
+  * Implement adding labels for account
+  * Give settings window a title
+  * Reduce minimum height of the window
+  * Fix build with qcoro 0.4
+  * Fix issues with saveFileAs
+  * Changed “Settings” to “Configure NeoChat” in menu
+  * Improve toolbar on mobile
+  * Improve emoji pane
+  * Check if password can be changed
+  * Fix image tooltip
+  * Adapt list setting pages to new style
+  * Allow using ESC to go back to room list
+  * Port away from QNetworkConfigurationManager
+  * Remove lag when starting user autocompletion
+  * Set single window hint in desktop file
+  * Make room address selectable
+  * Display monochrome icon in tray
+  * Fix QuickSwitcher activation
+  * Fix Windows/mac build
+  * Fix notifications on Android
+  * Support raising when we receive a notification
+  * Don’t render html in RoomDrawer heading
+  * Add support for minimizing to system tray on startup
+  * Use non blocking passord reading
+  * Add a mobile oriented context menu for the room list
+  * Fix loading room settings on mobile
+  * Use icon from qrc for system tray icon
+  * Adapt to libQuotient API change
+
+-------------------------------------------------------------------
+Mon Feb  7 16:09:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 21.12:
+  * Solved various problems related to login, logout and account switching
+  * Fixed a few problems in the timeline layout
+  * Added Spell checking while writing a message
+  * Improved Settings pages
+  * Many improvements to the android and general mobile support
+  * Show blurhashes while images load
+  * Support showing custom emojis
+  * Added a global menu
+  * Added support for spoilers
+  * Added a quick switcher to switch between rooms
+  * Added support for an optional fancy blur background effect
+  * Resizable left and right drawers
+  * Added Syntax highlighting in raw json messages
+  * Better wayland support
+  * Improved file reception and download
+- Part of Plasma Mobile Gear now, adjust URL and neochat.keyring
+
+-------------------------------------------------------------------
 Sat Jun 26 09:38:16 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Fix build error.
