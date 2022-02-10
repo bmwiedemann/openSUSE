@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  7 13:25:10 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Set "x509ignoreCN=0" GODEBUG environment variable option to
+  enable CN (Common Name) matching in SSL certificates in Go programs
+  (e.g. suseconnect-ng). Without it the CN would be ignored and
+  only the SAN (Subject Alternative Name) certificate fields would
+  be used. But the self-signed certificates usually only contain
+  the CN field without SAN so YaST could not connect to SMT/RMT
+  registration servers. (bsc#1195220)
+- 4.4.8
+
+-------------------------------------------------------------------
 Mon Jan 17 14:03:14 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added yast/rspec/helpers.rb (related to bsc#1194784)
