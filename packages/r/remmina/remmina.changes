@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 10 12:32:46 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.24
+  * Contribution section added to issue template 
+  * Language of VNC encoding cleaned up 
+  * Remmina Hardening and Compliance 
+  * Remmina_preferences language reworked 
+  * Thanks 2021 
+  * Resolve "Follow-up from "Remmina_preferences language reworked"" 
+  * Encryption level language reworked 
+  * Issue 2122 : Confirm on close of window 
+  * Adding flush and cairo clean up 
+
+-------------------------------------------------------------------
 Mon Dec 20 13:15:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.23
