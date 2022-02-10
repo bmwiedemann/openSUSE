@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 16:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in client-common postinstall script (bsc#1195391)
+
+-------------------------------------------------------------------
 Thu Jan 13 12:26:35 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Increase _constraints to 13GB 
