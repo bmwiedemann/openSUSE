@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  8 22:25:03 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- qemu: fix inactive snapshot revert
+  76deb656-qemu-fix-snapshot-revert.patch
+  boo#1195690
+
+-------------------------------------------------------------------
+Mon Feb  7 21:32:20 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Mark auto-allocated graphics ports to used on reconnect
+  e0241f33-libxl-mark-allocated-graphics-ports.patch
+- libxl: Release all auto-allocated graphics ports
+  18ec405a-libxl-release-graphics-ports.patch
+  bsc#1191668
+
+-------------------------------------------------------------------
 Wed Jan 26 19:13:24 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Revert commit 938382b60a since it changes semantics on some

@@ -4027,4 +4027,22 @@ StandardGroups in rpmlint package.
   bsc#1191668</comment>
     <requestid>949336</requestid>
   </revision>
+  <revision rev="348" vrev="3">
+    <srcmd5>e2cdda39ab6d5685a0f9ffbb048c9738</srcmd5>
+    <version>8.0.0</version>
+    <time>1644531095</time>
+    <user>dimstar_suse</user>
+    <comment>More bug fixes for the Factory libvirt package.
+
+- qemu: fix inactive snapshot revert
+  76deb656-qemu-fix-snapshot-revert.patch
+  boo#1195690
+
+- libxl: Mark auto-allocated graphics ports to used on reconnect
+  e0241f33-libxl-mark-allocated-graphics-ports.patch
+- libxl: Release all auto-allocated graphics ports
+  18ec405a-libxl-release-graphics-ports.patch
+  bsc#1191668</comment>
+    <requestid>952832</requestid>
+  </revision>
 </revisionlist>
