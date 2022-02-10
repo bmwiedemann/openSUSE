@@ -1,7 +1,7 @@
 #
 # spec file for package pugixml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _libname libpugixml1
 Name:           pugixml
-Version:        1.11.4
+Version:        1.12
 Release:        0
 Summary:        Light-weight C++ XML Processing Library
 License:        MIT

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  9 20:55:17 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.12:
+  * Fix a bug in xml_document move construction when the source of
+    the move is empty.
+  * Fix const-correctness issues with iterator objects to support
+    C++20 ranges.
+  * Improved detection of overly complex queries that may result in
+    stack overflow during parsing.
+
+-------------------------------------------------------------------
 Mon Jan 11 22:08:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.4:
