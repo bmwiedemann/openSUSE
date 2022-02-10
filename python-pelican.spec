@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
@@ -103,8 +103,6 @@ Pelican currently supports:
 
 # remove useless shebang
 sed -i '1d' \
-    pelican/tools/templates/publishconf.py.jinja2 \
-    pelican/tools/templates/pelicanconf.py.jinja2 \
     pelican/tools/pelican_import.py \
     pelican/tools/pelican_themes.py \
     pelican/tools/pelican_quickstart.py
