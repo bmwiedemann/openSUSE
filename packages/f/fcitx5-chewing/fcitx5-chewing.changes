@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Dec 15 11:49:34 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.8
+  * don't use underline in popup window
+  * Allow chewing to define its own page size/layout instead of
+    using global one
+- changes in 5.0.7
+  * Add an IM specific option to set candidate size instead of using global ones
+
+-------------------------------------------------------------------
+Wed May  5 07:54:50 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.5
+  * Add version to addon.conf
+
+-------------------------------------------------------------------
+Tue Mar 16 05:57:25 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+
+-------------------------------------------------------------------
+Sun Jan 31 03:59:47 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * Add support for keypad selection key.
+  * Fix certain key being typed directly when composing
+
+-------------------------------------------------------------------
+Sun Dec  6 05:37:16 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Tue Nov 10 05:32:27 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Fri Sep  4 04:46:20 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package
+
