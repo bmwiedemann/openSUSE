@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 10 00:17:55 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove pointless libgraphviz6 subpackage only containing broken
+  and unnecessary ld.so.conf.d dropin.
+- Add required Provides and Obsoletes for library package split.
+- Remove unversioned symlinks for plugins, breaking shared library
+  policy.
+- Remove duplicate python3 bindings in wrong directory (again).
+- Add missing post scriptlet for webp plugin.
+- Fix postun scriptlets for all plugins (be silent when graphviz
+  gets removed completely, report errors otherwise).
+- Cleanup spec file.
+- Disable Java bindings, as unused/untested, and packaging
+  is quite broken.
+
+-------------------------------------------------------------------
 Wed Nov 24 21:32:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.49.3:
