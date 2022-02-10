@@ -67,7 +67,7 @@
 %define rockchip_spl 1
 %define rkimages $()
 %endif
-%if "%target" == "evb-rk3399" || "%target" == "firefly-rk3399" || "%target" == "rock-pi-4-rk3399"
+%if "%target" == "evb-rk3399" || "%target" == "firefly-rk3399" || "%target" == "rock-pi-4-rk3399" || "%target" == "nanopc-t4-rk3399" || "%target" == "nanopi-m4b-rk3399"
 %define is_rk3399 1
 %define is_armv8 1
 %define rockchip_idb 1
