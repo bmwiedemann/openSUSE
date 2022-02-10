@@ -113,4 +113,18 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
     <comment></comment>
     <requestid>831454</requestid>
   </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>a70e22c4c56048c6ef31ec7ca05b59b5</srcmd5>
+    <version>1.0.2</version>
+    <time>1644440653</time>
+    <user>dimstar_suse</user>
+    <comment>- u_Fix-Tight-Encoding-not-processing-pixel-format-prope.patch
+  * Consider different pixel format depths on Tight Encoding.
+    TightPixel was considering only pixels defined with 3 bytes.
+    (bsc#1189247)
+
+- added pkgconfig BuildRequires for zlib and bzip2 in order to fix
+  build against Tumbleweed/factory</comment>
+    <requestid>953006</requestid>
+  </revision>
 </revisionlist>

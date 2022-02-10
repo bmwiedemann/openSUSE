@@ -214,4 +214,15 @@
     CHANGELOG.md file provided with this package (forwarded request 947653 from glaubitz)</comment>
     <requestid>947684</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>996e3cab6d5ca93669263acb855b7a4b</srcmd5>
+    <version>25.0.0</version>
+    <time>1644435554</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 25.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 952649 from glaubitz)</comment>
+    <requestid>952675</requestid>
+  </revision>
 </revisionlist>

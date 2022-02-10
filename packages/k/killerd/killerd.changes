@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  8 11:59:54 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- update download URL
+
+-------------------------------------------------------------------
+Mon Sep 27 13:21:18 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * killerd.service
+
+-------------------------------------------------------------------
 Fri Mar 13 12:24:33 UTC 2015 - tchvatal@suse.com
 
 - Cleanup with spec-cleaner

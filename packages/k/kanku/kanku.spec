@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -193,7 +193,7 @@ common config and lib files used in kanku
 %tmpfiles_create %_tmpfilesdir/kanku.conf
 
 %files common
-%doc README.md RELEASE-NOTES-0.11.0.md
+%doc README.md RELEASE-NOTES-0.11.0.md RELEASE-NOTES-0.12.0.md
 
 %dir /usr/lib/kanku
 %dir /usr/lib/kanku/lib

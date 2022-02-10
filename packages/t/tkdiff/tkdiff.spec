@@ -16,7 +16,7 @@
 #
 
 
-%global longver 5-2-1
+%global longver 5-3
 %global shortver %(echo %{longver}|sed 's|-|.|g')
 Name:           tkdiff
 Version:        %{shortver}

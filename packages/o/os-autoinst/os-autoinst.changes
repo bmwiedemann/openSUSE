@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 07 18:10:18 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1644251702.a663af4a:
+  * Avoid non-incremental screen updates in `localXvnc` console
+  * Adjust mergify config for new OBS checks
+  * Fix sporadic failures in openQA's fullstack test
+  * Adapt configure_repositories step in OBS workflow
+  * Add unit test for requesting full screen updates when checking screen
+  * Speed up `t/23-baseclass.t` using `Time::Mock::Time`
+  * Avoid division by zero when computing stopwatch data
+  * Fix include of extension-less perl files in tidy config
+  * Tidy tools/check_coverage according to new os-autoinst rules
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Thu Feb 03 18:21:18 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1643736149.ab6013d7:

@@ -139,4 +139,12 @@
   * Removes logging of non-string pointers when compiling with trace level logging</comment>
     <requestid>940228</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>356230c2f2c6c304720d0170fe3ff840</srcmd5>
+    <version>4.5.0</version>
+    <time>1644435579</time>
+    <user>dimstar_suse</user>
+    <comment>- More relaxed dependencies on tcl (boo#1195711)</comment>
+    <requestid>952885</requestid>
+  </revision>
 </revisionlist>

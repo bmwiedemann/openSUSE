@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 26 18:40:04 UTC 2022 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 1.3.3:
+  * seccomp: allow getrandom() call (glibc-2.34+)
+  * seccomp-bpf: fix warnings by not using nexted open comments
+  * seccomp: fix build failure on mips (use _MIP_SIM tests)
+  * lddtree: respect (destination) root with --argv0 interp probing
+  * security: restore syscalls accidentally dropped
+  * security: pregen seccomp bpf programs
+  * paxldso: fix pointer style
+- Changes since 1.2.8:
+  * dumpelf: constify elfobj in APIs
+  * dumpelf: add libFuzzer support
+  * fuzz: add basic framework for using libFuzzer
+  * paxldso: add support for "new" glibc cache format
+  * lddtree: add --cwd option
+  * lddtree: handle relative ldpaths
+  * lddtree: handle ${ORIGIN} like $ORIGIN
+  * lddtree: use ldso's --argv0 when available
+  * lddtree: apply functools cache to some repeated filesystem calls
+  * lddtree: don't crash when interp is missing
+  * lddtree: require Python 3.6+
+  * lddtree: re-enable long line checks
+  * pylintrc: adjust python code to 4 space indent
+  * glob is used in paxldso.c for NetBSD too, but glob.h is not included in porting.h for NetBSD.
+
+-------------------------------------------------------------------
 Mon Feb  1 14:24:19 UTC 2021 - Gianluca Gabrielli <gianluca.gabrielli@suse.com>
 
 - Update to 1.2.8.

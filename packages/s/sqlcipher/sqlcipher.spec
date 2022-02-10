@@ -1,7 +1,7 @@
 #
 # spec file for package sqlcipher
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ This package contains shared library.
 %package -n tcl-%{name}
 Summary:        Tcl extension for sqlcipher
 Group:          Development/Languages/Tcl
-%requires_eq    tcl
+%requires_ge    tcl
 Provides:       %{name}-tcl = %{version}-%{release}
 Obsoletes:      %{name}-tcl < %{version}-%{release}
 

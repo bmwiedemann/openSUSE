@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  8 14:30:05 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.16.4:
+  * v6.16.4
+  * Update CHANGELOG.md
+  * #2910 Fixed donation for GhostRider/RTM.
+  * Add MSVC/2022 to version.h
+  * Fixed unaligned memory accesses
+  * v6.16.4-dev
+  * Fixed armv7 compilation
+
+-------------------------------------------------------------------
 Wed Jan 26 07:44:48 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.16.3:

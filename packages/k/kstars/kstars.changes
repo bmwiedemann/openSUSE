@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  9 14:47:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix_flat.patch: when duration is set in the filename, Kstars
+  will not increase the counter and always replace the same image over and over.
+  This patch fixes this issue (invent.kde.org/education/kstars/-/issues/156)
+
+-------------------------------------------------------------------
 Tue Jan 18 07:08:33 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.7:

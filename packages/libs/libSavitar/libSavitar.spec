@@ -19,7 +19,7 @@
 %define sover 0
 Name:           libSavitar
 %define sversion        4.13.0
-Version:        4.13.0
+Version:        4.13.1
 Release:        0
 Summary:        C++ implementation of 3mf loading with SIP python bindings
 License:        LGPL-3.0-only

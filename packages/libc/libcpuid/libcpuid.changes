@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  9 12:40:00 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.1+git.1644144775:
+  * Tests: add more Zen2 tests from InstLatx64
+  * DB: add Lucienne
+  * Report memory allocation failures without segfaulting. (#160)
+  * Don't link with msrdriver.c on non-Windows platform. (#159)
+
+-------------------------------------------------------------------
 Fri Aug 27 08:35:35 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.1+git.1626502835:

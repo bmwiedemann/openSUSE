@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 11:59:44 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Remove libwbclient-devel BuildRequires in favor of
+  pkgconfig(wbclient); (jsc#SLE-20577);
+
+-------------------------------------------------------------------
 Thu Oct  7 21:34:06 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 3.0.25:

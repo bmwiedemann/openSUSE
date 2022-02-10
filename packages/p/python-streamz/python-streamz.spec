@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-streamz
-Version:        0.6.0
+Version:        0.6.3
 Release:        0
 Summary:        Tool to build continuous data pipelines
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-streamz/streamz/
 Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM streamz-pr434-asyncdask.patch -- gh#python-streamz/streamz#434, gh#python-streamz/streamz#439
+Patch1:         streamz-pr434-asyncdask.patch
+# PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
+Patch2:         streamz-opensuse-python-exec.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,13 +49,16 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module confluent-kafka}
-BuildRequires:  %{python_module dask-dataframe}
-BuildRequires:  %{python_module dask-distributed}
-BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module distributed}
+BuildRequires:  %{python_module dask if %python-base < 3.10}
+BuildRequires:  %{python_module dask-dataframe if %python-base < 3.10}
+BuildRequires:  %{python_module dask-distributed if %python-base < 3.10}
+BuildRequires:  %{python_module distributed  if %python-base < 3.10}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module graphviz}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
@@ -68,7 +74,7 @@ BuildRequires:  graphviz-gnome
 Streamz helps you build pipelines to manage continuous streams of data.
 
 %prep
-%setup -q -n streamz-%{version}
+%autosetup -p1 -n streamz-%{version}
 
 %build
 %python_build
@@ -78,17 +84,23 @@ Streamz helps you build pipelines to manage continuous streams of data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm -rf build _build.*
-# Tests assume 64bit numbers
-%ifarch x86_64
-rm -rf build _build.*
-%pytest
-%endif
+# infinite loop because the automatic skip does not work here; the kafka tests need a docker container with STREAMZ_LAUNCH_KAFKA=true
+donttest="test_from_kafka or test_to_kafka"
+# no dask on python310 yet: this disables a majority of the test suite, but dask and kafka are nominally optional
+python310_flags="--ignore streamz/dataframe/tests/test_dataframes.py"
+python310_flags+=" --ignore streamz/tests/test_core.py"
+python310_flags+=" --ignore streamz/tests/test_kafka.py"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  # don't test on 32-bit: 64-bit datatypes expected
+  donttest+=" or test_dataframes"
+fi
+# flaky: some tests are very fragile when run server-side
+%pytest -m "not network" --asyncio-mode=auto --force-flaky --max-runs=10 --no-success-flaky-report -rsfE ${$python_flags} -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/streamz
-%{python_sitelib}/streamz-%{version}-py*.egg-info
+%{python_sitelib}/streamz-%{version}*-info
 
 %changelog

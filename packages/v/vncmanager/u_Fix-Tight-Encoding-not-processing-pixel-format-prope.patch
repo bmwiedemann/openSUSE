@@ -1,0 +1,40 @@
+From ea26a243314b3325f7789c520741af0cc7fe2497 Mon Sep 17 00:00:00 2001
+From: Joan Torres <joan.torres@suse.com>
+Date: Wed, 9 Feb 2022 13:54:59 +0100
+Subject: [PATCH] Fix Tight Encoding not processing pixel format properly
+References: bsc#1189247
+Upstream: merged
+
+Tight Encoding uses TightPixel structs which only considers
+pixel formats that are encoded using 3 bytes.
+Now it considers pixel formats defined with any depth.
+
+---
+ VncTunnel.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/VncTunnel.cpp b/VncTunnel.cpp
+index 66b92ff..718c339 100644
+--- a/VncTunnel.cpp
++++ b/VncTunnel.cpp
+@@ -596,7 +596,7 @@ void VncTunnel::processFramebufferUpdate()
+             cFmt().send(c);
+ 
+             if (c.isFillCompression()) {
+-                sFmt().forward_directly(cStream(), sizeof(TightPixel));
++                sFmt().forward_directly(cStream(), m_pixelFormat.depth / 8);
+             }
+ 
+             else if (c.isJpegCompression()) {
+@@ -616,7 +616,7 @@ void VncTunnel::processFramebufferUpdate()
+                     sFmt().forward(cStream(), paletteLength);
+                     int actualPaletteLength = paletteLength + 1;
+ 
+-                    sFmt().forward_directly(cStream(), sizeof(TightPixel) * actualPaletteLength);
++                    sFmt().forward_directly(cStream(), m_pixelFormat.depth / 8 * actualPaletteLength);
+ 
+                     if (actualPaletteLength <= 2) {
+                         bpp = 1;
+-- 
+2.34.1
+

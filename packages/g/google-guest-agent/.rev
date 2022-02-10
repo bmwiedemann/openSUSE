@@ -117,4 +117,20 @@
   * Integration test: test create and remove google user (#128) (forwarded request 934858 from glaubitz)</comment>
     <requestid>934874</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ad0f9541458fdc82a50a8a18fe2d5486</srcmd5>
+    <version>20220204.00</version>
+    <time>1644435569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220204.00 (bsc#1195437, bsc#1195438)
+  * remove han from owners (#154)
+  * Remove extra slash from metadata URL. (#151)
+- from version 20220104.00
+  * List IPv6 routes (#150)
+- from version 20211228.00
+  * add add or remove route integration test, utils (#147)
+- from version 20211214.00
+  * add malformed ssh key unit test  (#142) (forwarded request 952733 from glaubitz)</comment>
+    <requestid>952790</requestid>
+  </revision>
 </revisionlist>

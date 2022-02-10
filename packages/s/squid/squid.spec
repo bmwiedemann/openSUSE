@@ -1,7 +1,7 @@
 #
 # spec file for package squid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -235,6 +235,7 @@ make check %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
 %else
+
 %pre
 # we need this group for /usr/sbin/pinger
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}

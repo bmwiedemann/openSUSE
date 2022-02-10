@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  8 19:01:06 UTC 2022 - Loren Burkholder <computersemiexpert@outlook.com>
+
+- Upate to 4.6.1. (4.6.0 was skipped by openSUSE packagers)
+  * A potential null pointer dereference would crash the Wt site or widget gallery every few days.
+
+-------------------------------------------------------------------
 Mon Oct 11 06:36:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Upate to 4.5.1. Check the installed ReleaseNotes.html file

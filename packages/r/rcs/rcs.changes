@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb  7 21:23:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rcs 5.10.1:
+  * handle unexpected byte in edit script (rlog)
+  * portability fix: use ‘SIGSTKSZ’ more gingerly
+  * misc portability tweaks via gnulib
+- remove obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
 Mon Sep 27 09:35:44 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - rcs-glibc-2.34.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package killerd
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           killerd
 Version:        1.1
 Release:        0
 Summary:        Daemon for automatic killing of login shells
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Daemons
-Url:            http://mj.ucw.cz/linux.shtml
-Source:         ftp://atrey.karlin.mff.cuni.cz/pub/local/mj/linux/%{name}-%{version}.tar.gz
+URL:            http://mj.ucw.cz/linux.shtml
+Source:         http://mj.ucw.cz/download/linux/%{name}-%{version}.tar.gz
 Source1:        killerd.service
 Patch0:         %{name}-%{version}-makefile.diff
 BuildRequires:  systemd-rpm-macros

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb  5 17:25:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.0:
+  + Selectable default action when drag-n-drop files with the mouse
+  + Optional usage of the trash can instead of permanent file
+    deletion
+  + Removed internal file search dialog, instead use external
+    command for file search
+  + Name of connected remote server is shown in the directory
+    indicator
+  + New menu entry for (un)selecting only files
+  + Bugs fixed: glgo#GNOME/gnome-commander#3,
+    glgo#GNOME/gnome-commander#5, glgo#GNOME/gnome-commander#13,
+    glgo#GNOME/gnome-commander#16, glgo#GNOME/gnome-commander#19,
+    glgo#GNOME/gnome-commander#28, glgo#GNOME/gnome-commander#33,
+    glgo#GNOME/gnome-commander#39, glgo#GNOME/gnome-commander#41,
+    glgo#GNOME/gnome-commander#45, glgo#GNOME/gnome-commander#46,
+    glgo#GNOME/gnome-commander#47, glgo#GNOME/gnome-commander#51,
+    glgo#GNOME/gnome-commander#52, glgo#GNOME/gnome-commander#57,
+    glgo#GNOME/gnome-commander#59, glgo#GNOME/gnome-commander#74,
+    glgo#GNOME/gnome-commander#75, glgo#GNOME/gnome-commander#76,
+    glgo#GNOME/gnome-commander#107, glgo#GNOME/gnome-commander#115.
+  + Updated translations.
+- Add flex BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Sun Nov 21 17:15:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.3.1:

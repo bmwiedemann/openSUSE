@@ -135,12 +135,12 @@ Provides translations for the "%{name}" package.
 %cmake_install
 
 %if 0%{?suse_version} < 1550
-%suse_update_desktop_file -r bitmap2component "Education;Engineering"
-%suse_update_desktop_file -r eeschema "Education;Engineering"
-%suse_update_desktop_file -r gerbview "Education;Engineering"
-%suse_update_desktop_file -r kicad "Education;Engineering"
-%suse_update_desktop_file -r pcbcalculator "Education;Engineering"
-%suse_update_desktop_file -r pcbnew "Education;Engineering"
+%suse_update_desktop_file -r org.kicad.bitmap2component "Education;Engineering"
+%suse_update_desktop_file -r org.kicad.eeschema "Education;Engineering"
+%suse_update_desktop_file -r org.kicad.gerbview "Education;Engineering"
+%suse_update_desktop_file -r org.kicad.kicad "Education;Engineering"
+%suse_update_desktop_file -r org.kicad.pcbcalculator "Education;Engineering"
+%suse_update_desktop_file -r org.kicad.pcbnew "Education;Engineering"
 %endif
 
 # Link to library libkicad_3dsg.so.2.0.0 has no use

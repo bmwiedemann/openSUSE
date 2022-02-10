@@ -824,4 +824,23 @@
 </comment>
     <requestid>947363</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>12949e15614d69122d5ef51196eef3ca</srcmd5>
+    <version>22.01.00</version>
+    <time>1644435561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.01.00:
+  * fwts-test: sync up the adding option for get next high monotonic count
+  * uefirtmisc: add option to specify iterations get next high monitonic count
+  * uefirtmisc: add checking the resources for testing
+  * lib: fwts_version.h - update to V22.01.00
+  * debian: update changelog
+  * fwts_acpica: skip unneccessary null check
+  * s3: use system suspend default if --s3-sleep-type is not used
+  * tpmevlogdump: add supporting several new types for event log dumping
+  * auto-packager: mkpackage.sh: remove hirsute
+  * tpmevlog: add supporting several new types for event log checking
+  * lib: fwts_tpm.h: add new type definition</comment>
+    <requestid>952709</requestid>
+  </revision>
 </revisionlist>

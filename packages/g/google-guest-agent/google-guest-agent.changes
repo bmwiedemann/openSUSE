@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  8 15:46:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220204.00 (bsc#1195437, bsc#1195438)
+  * remove han from owners (#154)
+  * Remove extra slash from metadata URL. (#151)
+- from version 20220104.00
+  * List IPv6 routes (#150)
+- from version 20211228.00
+  * add add or remove route integration test, utils (#147)
+- from version 20211214.00
+  * add malformed ssh key unit test  (#142)
+
+-------------------------------------------------------------------
 Thu Nov 18 13:33:12 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20211116.00 (bsc#1193257, bsc#1193258)

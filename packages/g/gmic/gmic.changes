@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  7 10:11:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.0.2. No changelog.
+- Drop upstream changes:
+  * gmic-make-build-without-gmic-cpp.patch
+  * 56f7340ecb1fbbe6fce87d0a5c8d35dd13359577.patch
+- Rebase patches:
+  * gmic-qt-make-it-work-without-gmic-cpp.patch
+  * krita5.patch
+- Add patch:
+  * 0001-Remove-unneeded-CImg-include.patch
+
+-------------------------------------------------------------------
 Tue Jan 18 10:11:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Spec cleanup.

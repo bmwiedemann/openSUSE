@@ -1,7 +1,7 @@
 #
 # spec file for package python-pprintpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/wolever/pprintpp
 Source:         https://files.pythonhosted.org/packages/source/p/pprintpp/pprintpp-%{version}.tar.gz
-Patch0:         https://github.com/wolever/pprintpp/commit/3a35e815.patch
-# https://github.com/wolever/pprintpp/pull/28
+# https://github.com/wolever/pprintpp/commit/3a35e815.patch
+Patch0:         3a35e815.patch
+# gh#wolever/pprintpp#28
 Patch1:         python-pprintpp-remove-nose.patch
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

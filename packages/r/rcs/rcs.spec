@@ -1,7 +1,7 @@
 #
 # spec file for package rcs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           rcs
-Version:        5.10.0
+Version:        5.10.1
 Release:        0
 Summary:        Revision Control System
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://www.gnu.org/software/rcs/
-Source:         http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.xz
-Source2:        http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.xz.sig
+Source:         http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz
+Source2:        http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz.sig
 Source3:        rcs.keyring
 Patch0:         rcs-glibc-2.34.patch
 BuildRequires:  ed
+BuildRequires:  lzip
 Requires:       diffutils
-Requires(pre):  %{install_info_prereq}
 
 %description
 RCS, the Revision Control System, manages multiple revisions of files.
@@ -49,18 +49,11 @@ ac_cv_path_SENDMAIL=%{_sbindir}/sendmail \
 %make_build
 
 %check
-# t632 fails during ocs/OBS build without a TTY
-%make_build check XFAIL_TESTS=t632
+%make_build check
 
 %install
 %make_install
 mkdir -p %{buildroot}%{_defaultdocdir}/rcs
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
 %{_defaultdocdir}/rcs

@@ -163,8 +163,10 @@ echo "v%{version}-0-0" > ./version.txt
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,--warn-unresolved-symbols -Wl,-z,now" \
     -DNG_INSTALL_DIR_INCLUDE=%{_includedir}/netgen \
     -DNG_INSTALL_DIR_LIB=%{_libdir}/netgen \
+    -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_BUILD_RPATH=ON \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=ON \
 %if %{with need_clang}
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \

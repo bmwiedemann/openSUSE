@@ -24,12 +24,15 @@ Summary:        Qt and QML MPRIS interface and adaptor
 Version:        1.0.6
 Release:        0
 License:        LGPL-2.1+
-URL:            https://git.merproject.org/mer-core/qtmpris
-Source:         https://git.merproject.org/mer-core/qtmpris/-/archive/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/sailfishos/qtmpris
+Source:         https://github.com/sailfishos/qtmpris/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(dbusextended-qt5)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  qtdbusextended-devel < 3.1.2
+%endif
 
 %description
 MPRIS v.2 specification implementation for Qt and QML plugin.
@@ -43,6 +46,7 @@ This package contains the libraries for qtmpris
 
 %package devel
 Summary:        Development package for %{name}
+Group:          Development/Libraries/Other
 Requires:       libmpris-qt5-%{sover} = %{version}-%{release}
 
 %description devel

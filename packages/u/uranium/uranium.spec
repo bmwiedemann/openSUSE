@@ -19,8 +19,8 @@
 %define UM_1_minor 6
 
 Name:           uranium
-%define sversion        4.13.0
-Version:        4.13.0
+%define sversion        4.13.1
+Version:        4.13.1
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only

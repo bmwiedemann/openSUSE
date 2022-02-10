@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_5_1
+%define so_version 4_6_1
 Name:           wt
-Version:        4.5.1
+Version:        4.6.1
 Release:        0
 Summary:        Web Toolkit
 License:        GPL-2.0-only

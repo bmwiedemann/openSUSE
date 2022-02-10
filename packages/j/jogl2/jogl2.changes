@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  6 20:34:29 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- jogl2-riscv64.patch: Add support for riscv64
+
+-------------------------------------------------------------------
 Fri Jan 28 08:30:12 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Build non-parallel to generate .java files reproducibly (boo#1102408)

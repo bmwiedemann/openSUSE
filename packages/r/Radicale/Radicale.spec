@@ -22,11 +22,11 @@
 %define pkg_config     %{_sysconfdir}/%{pkg_name}
 %define pkg_home       %{_localstatedir}/lib/%{pkg_name}
 %define pkg_user_group %{pkg_name}
-%define py_min_ver 3.6.0
+%define py_min_ver 3.6
 %define vo_min_ver 0.9.6
 %define du_min_ver 2.7.3
 Name:           Radicale
-Version:        3.1.0
+Version:        3.1.4
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -111,7 +111,7 @@ test -e %{pkg_config}/users  || touch %{pkg_config}/users
 
 %files
 %license COPYING
-%doc NEWS.md README.md DOCUMENTATION.md
+%doc CHANGELOG.md DOCUMENTATION.md README.md
 %{_bindir}/%{pkg_name}
 %{python3_sitelib}/%{name}-%{version}-py*.egg-info
 %{python3_sitelib}/%{pkg_name}/

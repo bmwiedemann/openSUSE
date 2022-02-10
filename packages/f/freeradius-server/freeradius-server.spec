@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,8 +97,7 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
 #bsc#1055679 - freeradius-server does not provide winbind/AD auth
-BuildRequires:  libwbclient-devel
-BuildRequires:  samba-core-devel
+BuildRequires:  pkgconfig(wbclient)
 
 %description
 Remote Authentication Dial-In User Service (RADIUS) is a networking

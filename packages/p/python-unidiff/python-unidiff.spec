@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unidiff
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Unified diff parsing/metadata extraction library
 License:        MIT

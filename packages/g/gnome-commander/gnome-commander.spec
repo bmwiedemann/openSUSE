@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-commander
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 Name:           gnome-commander
-Version:        1.12.3.1
+Version:        1.14.0
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
-Source:         http://download.gnome.org/sources/gnome-commander/1.12/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/gnome-commander/1.14/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  chmlib-devel
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exiv2) >= 0.14
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gnome-keyring-1) >= 2.22
 BuildRequires:  pkgconfig(gnome-vfs-2.0) >= 2.0.0
@@ -85,15 +86,15 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %files
 %license COPYING
 %doc NEWS README
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.gnome.%{name}.appdata.xml
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-commander.enums.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-commander.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.%{name}.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
 %{_datadir}/pixmaps/*.svg
-%{_datadir}/pixmaps/gnome-commander
-%{_libdir}/gnome-commander
-%{_mandir}/man1/gnome-commander.1%{ext_man}
+%{_datadir}/pixmaps/%{name}
+%{_libdir}/%{name}
+%{_mandir}/man1/%{name}.1%{ext_man}
 
 %files doc
 %doc AUTHORS ChangeLog TODO

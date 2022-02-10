@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb  8 22:32:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.43.2:
+  * Fix google-c2p-experimental issue (gh#grpc/grpc#28692).
+- Changes from version 1.43.0:
+  * Core:
+    - Remove redundant work serializer usage in c-ares windows
+      code (gh#grpc/grpc#28016).
+    - Support RDS updates on the server (gh#grpc/grpc#27851).
+    - Use WorkSerializer in XdsClient to propagate updates in a
+      synchronized manner (gh#grpc/grpc#27975).
+    - Support Custom Post-handshake Verification in TlsCredentials
+      (gh#grpc/grpc#25631).
+    - Reintroduce the EventEngine default factory
+      (gh#grpc/grpc#27920).
+    - Assert Android API >= v21 (gh#grpc/grpc#27943).
+    - Add support for abstract unix domain sockets
+      (gh#grpc/grpc#27906).
+  * C++:
+    - OpenCensus: Move metadata storage to arena
+      (gh#grpc/grpc#27948).
+  * [C#] Add nullable type attributes to Grpc.Core.Api
+    (gh#grpc/grpc#27887).
+- Update package name libgrpc++1 to libgrpc++1_43 in keeping with
+  updated so number.
+- Add Requires: libupb%lver = %version on grpc-devel.
+- Update %{name}-rpmlintrc file to use 'filelist-forbidden-fhs23'
+  as a filter instead of the now superseded
+  'suse-filelist-forbidden-fhs23'.
+
+-------------------------------------------------------------------
 Mon Nov 15 20:27:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.41.1

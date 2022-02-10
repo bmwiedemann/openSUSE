@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  9 09:34:10 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.7.3
+  * Fixed RE_BINARY_DIFF regex to make it a raw string.
+
+-------------------------------------------------------------------
 Fri Jan 28 02:23:11 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.7.2

@@ -80,6 +80,7 @@ BuildRequires:  sqlite3-devel
 # Qt5 & python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
+BuildRequires:  python3-ply
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  python3-pycxx-devel
 BuildRequires:  python3-pyside2-devel
@@ -203,6 +204,26 @@ rm src/3rdparty/Pivy-0.5 -fr
 
 %install
 %cmake_install
+
+# create parsetab.py for yacc.ply (FEM)
+# https://tracker.freecadweb.org/view.php?id=4840
+pushd %{buildroot}/%{_libdir}/FreeCAD/Mod/Fem
+python3 -B femtools/tokrules.py
+rm femtools/parser.out
+# create parsetab.py for yacc.ply (OpenSCAD)
+export PYTHONPATH=%{buildroot}/%{_libdir}/FreeCAD/lib
+export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}/FreeCAD/lib
+cd ../OpenSCAD
+python3 -B -c "\
+import ply.lex as lex
+import ply.yacc as yacc
+import importCSG
+import tokrules
+from tokrules import tokens
+lex.lex(module=tokrules)
+yacc.yacc(module=importCSG,outputdir=\"./\")
+"
+rm parser.out
 
 %suse_update_desktop_file -r org.freecadweb.FreeCAD Education Engineering
 

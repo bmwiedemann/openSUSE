@@ -620,4 +620,12 @@
     <comment>- Add sle-kernels.patch [boo#1183753]</comment>
     <requestid>880081</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e400264da67b9fe1ab6dcf2d0bcb9cf3</srcmd5>
+    <version>3.19</version>
+    <time>1644435570</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>952791</requestid>
+  </revision>
 </revisionlist>

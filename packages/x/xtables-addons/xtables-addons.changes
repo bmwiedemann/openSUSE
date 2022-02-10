@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  1 17:28:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.19
+  * xt_ipp2p: add IPv6 support
+
+-------------------------------------------------------------------
 Fri Mar 19 09:37:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add sle-kernels.patch [boo#1183753]

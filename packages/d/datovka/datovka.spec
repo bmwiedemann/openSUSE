@@ -1,7 +1,7 @@
 #
 # spec file for package datovka
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,18 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define qt_version 6
+%define qt_version_full 6.2.0
+%define lrelease lrelease6
+%else
+%define qt_version 5
+%define qt_version_full 5.4.1
+%define lrelease lrelease-qt5
+%endif
+
 Name:           datovka
-Version:        4.18.0
+Version:        4.19.0
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -27,26 +37,34 @@ Source0:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%
 Source1:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%{version}.tar.xz.sha256
 # PATCH-FIX-UPSTREAM: remove some issues with current .pro file
 Patch0:         datovka-fix-pro.patch
+%if 0%{qt_version} == 6
+BuildRequires:  qt6-tools-linguist
+%else
 BuildRequires:  libqt5-linguist
+%endif
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt%{qt_version}Core) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}Gui) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}Network) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}PrintSupport) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}Sql) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}Svg) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}Widgets) >= %{qt_version_full}
 BuildRequires:  pkgconfig(libdatovka) >= 0.1.2
-Requires:       libqt5_sql_backend
+%if 0%{qt_version} == 6
+Requires:       qt6-sql-sqlite
+%else
+Requires:       libqt5-sql-sqlite
+%endif
 Recommends:     %{name}-lang
 # Included inside with different approach
 Obsoletes:      python-dslib
 %if 0%{?suse_version} < 1330
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 %endif
 
 %description
@@ -59,18 +77,33 @@ Data Box Information System) SOAP services as defined in Czech ISDS Act
 %prep
 %autosetup -p1
 sed -i \
-    -e 's:lrelease:lrelease-qt5:g' \
+    -e 's:lrelease:%{lrelease}:g' \
     %{name}.pro
 
 %build
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
-lrelease-qt5 datovka.pro
+%if 0%{qt_version} == 6
+export CXXFLAGS="-std=c++17 %{optflags}"
+%else
+export CXXFLAGS="-std=c++11 %{optflags}"
+%endif
+%{lrelease} datovka.pro
+%if 0%{qt_version} == 6
+# QMAKE_LIBS_LIBATOMIC= is only temporary to fix:
+# "Library 'libatomic' is not defined."
+%qmake6 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1 QMAKE_LIBS_LIBATOMIC=
+%qmake6_build
+%else
 %qmake5 PREFIX=%{_prefix} DISABLE_VERSION_CHECK_BY_DEFAULT=1
 %make_jobs
+%endif
 
 %install
+%if 0%{qt_version} == 6
+%qmake6_install
+%else
 %qmake5_install
+%endif
 
 # fix desktop file
 sed -i \
@@ -99,6 +132,7 @@ rm -rf %{buildroot}%{_datadir}/datovka/doc
 %dir %{_datadir}/datovka/localisations/
 %{_datadir}/datovka/localisations/datovka_cs.qm
 %{_datadir}/datovka/localisations/datovka_en.qm
+%dir %{_datadir}/icons/hicolor/
 %{_datadir}/icons/hicolor/*
 
 %changelog

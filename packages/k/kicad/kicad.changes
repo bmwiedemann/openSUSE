@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  5 16:11:00 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix suse_update_desktop_file invocation on Leap (missing new
+  "org.kicad." prefix for desktop file names). 
+
+-------------------------------------------------------------------
 Tue Jan 25 05:17:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 6.0.1
