@@ -1,7 +1,7 @@
 #
 # spec file for package snallygaster
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           snallygaster
-Version:        0.0.11
+Version:        0.0.12
 Release:        0
 Summary:        Tool to scan for hidden files on HTTP servers
 License:        CC0-1.0
@@ -34,7 +34,6 @@ BuildRequires:  python3-flake8
 BuildRequires:  python3-pycodestyle
 BuildRequires:  python3-pyflakes
 BuildRequires:  python3-pylint
-BuildRequires:  python3-pyupgrade
 BuildRequires:  python3-urllib3
 # /SECTION
 BuildRequires:  fdupes
@@ -66,7 +65,8 @@ echo '[core]' > snallygaster-testdata-master/.git/config
 fdupes %{buildroot}%{python_sitelib}
 
 %check
-rm tests/test_codingstyle.py
+# remove tests irrelevant for us
+rm tests/test_codingstyle.py tests/test_docs.py
 TESTDATA_REPOSITORY=$(pwd)/snallygaster-testdata-master/ RUN_ONLINETESTS=1 python3 setup.py test
 
 %files
