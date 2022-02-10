@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2022 SUSE LLC
-#               2006-2021 Wolfgang Rosenauer <wr@rosenauer.org>
+#               2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          96
-%define mainver        %major.0.3
-%define orig_version   96.0.3
+%define major          97
+%define mainver        %major.0
+%define orig_version   97.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -42,13 +42,10 @@
 # upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build    0
 
-# PIE, full relro
-%define build_hardened 1
-
 %bcond_with only_print_mozconfig
 
 # define if ccache should be used or not
-%define useccache     1
+%define useccache     0
 
 # SLE-12 doesn't have this macro
 %{!?_rpmmacrodir: %global _rpmmacrodir %{_rpmconfigdir}/macros.d}
@@ -100,13 +97,13 @@ BuildRequires:  gcc9-c++
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.53
-BuildRequires:  rust >= 1.53
+BuildRequires:  cargo >= 1.57
+BuildRequires:  rust >= 1.57
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
-BuildRequires:  rust+cargo >= 1.53
+BuildRequires:  rust+cargo >= 1.57
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -117,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.33
-BuildRequires:  mozilla-nss-devel >= 3.73.1
+BuildRequires:  mozilla-nss-devel >= 3.74
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -326,32 +323,7 @@ fi
 %setup -q -n %{srcname}-%{orig_version}
 %endif
 cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-# Firefox
-%patch101 -p1
-%patch102 -p1
+%autopatch -p1
 %endif
 
 %build
@@ -409,10 +381,10 @@ export CFLAGS="$CFLAGS -fimplicit-constexpr"
 %ifarch %arm %ix86
 # Limit RAM usage during link
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+# A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
+export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
-%if 0%{?build_hardened}
 export LDFLAGS="${LDFLAGS} -fPIC -Wl,-z,relro,-z,now"
-%endif
 %ifarch ppc64 ppc64le
 %if 0%{?clang_build} == 0
 export CFLAGS="$CFLAGS -mminimal-toc"
@@ -438,9 +410,7 @@ echo "export MOZ_TELEMETRY_REPORTING=1"
 echo ""
 cat << EOF
 %else
-%ifarch aarch64 %arm ppc64 ppc64le
-%limit_build -m 2000
-%endif
+%limit_build -m 2560
 cat << EOF > $MOZCONFIG
 %endif
 mk_add_options MOZILLA_OFFICIAL=1
@@ -462,8 +432,9 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 %ifarch %ix86 %arm
 ac_add_options --disable-debug-symbols
 %else
-ac_add_options --enable-debug-symbols
+ac_add_options --enable-debug-symbols=-g1
 %endif
+ac_add_options --disable-install-strip
 # building with elf-hack started to fail everywhere with FF73
 #%if 0%{?suse_version} > 1549
 %ifnarch aarch64 ppc64 ppc64le s390x
@@ -485,7 +456,6 @@ ac_add_options --disable-updater
 ac_add_options --disable-tests
 ac_add_options --enable-alsa
 ac_add_options --disable-debug
-#ac_add_options --enable-chrome-format=jar
 ac_add_options --enable-update-channel=%{update_channel}
 ac_add_options --with-mozilla-api-keyfile=%{SOURCE18}
 # Google-service currently not available for free anymore
@@ -495,6 +465,9 @@ ac_add_options --with-unsigned-addon-scopes=app
 ac_add_options --allow-addon-sideload
 # at least temporary until the "wasi-sysroot" issue is solved
 ac_add_options --without-wasm-sandboxed-libraries
+%ifarch x86_64 aarch64
+ac_add_options --enable-rust-simd
+%endif
 %if %branding
 ac_add_options --enable-official-branding
 %endif
