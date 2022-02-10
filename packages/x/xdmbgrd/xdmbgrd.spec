@@ -1,7 +1,7 @@
 #
 # spec file for package xdmbgrd
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xdmbgrd
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        SUSE Linux background
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Displaymanagers
-Source:         xdmbgrd-0.6.tar.bz2
-Patch0:         xdmbgrd-0.6.dif
-Patch1:         xdmbgrd-piggyback.dif
+Source:         xdmbgrd-0.7.tar.bz2
 BuildRequires:  pkgconfig
 BuildRequires:  xdm
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
 
 %description
 The SUSE Linux background for your XDM workstation.
 
 %prep
 %setup -q
-%patch0
-%patch1
 
 %build
 PATH=$PATH:.
-make XLIBD=%{_libdir} openSUSE=SuSE_Linux_6 SLES=SuSE_Linux_7
+make XLIBD=%{_libdir} openSUSE=SuSE_Linux_6 SLES=SuSE_Linux_8
 
 %install
 if test -x %{_bindir}/chooser ; then
