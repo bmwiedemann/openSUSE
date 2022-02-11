@@ -1,7 +1,7 @@
 #
 # spec file for package kuserfeedback
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,19 @@
 
 
 %define soversion 1
-%bcond_without lang
+%bcond_without released
 Name:           kuserfeedback
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Framework for collecting feedback from application users
 License:        MIT
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        kuserfeedback.keyring
+%endif
 BuildRequires:  bison
 # For icons
 BuildRequires:  breeze5-icons
@@ -50,10 +54,6 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        kuserfeedback.keyring
-%endif
 
 %description
 KUserFeedback is a framework which allows applications to collect user
@@ -132,7 +132,7 @@ application users via telemetry and targeted surveys.
 %build
   # Docs use a hardcoded path in the application code
   # Disable until fixed upstream
-  %cmake_kf5 -d build -- -DENABLE_DOCS=OFF -DBUILD_TESTING=ON
+  %cmake_kf5 -d build -- -DENABLE_DOCS=OFF -DBUILD_TESTING=ON -DQT_MAJOR_VERSION=5
   %cmake_build
 
 %install
@@ -142,12 +142,12 @@ application users via telemetry and targeted surveys.
   # CMakeLists.txt is not needed there and will trigger a rpmlint warning
   rm -f %{buildroot}%{_kf5_sharedir}/php/%{name}/CMakeLists.txt
 
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --with-qt --all-name
   %endif
 
   install -Dm0644  %{_kf5_iconsdir}/breeze/actions/16/search.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/actions/search.svg
-  %suse_update_desktop_file -r %{buildroot}%{_kf5_applicationsdir}/UserFeedbackConsole.desktop Qt KDE Network RemoteAccess
+  %suse_update_desktop_file -r %{buildroot}%{_kf5_applicationsdir}/org.kde.kuserfeedback-console.desktop Qt KDE Network RemoteAccess
 
   %fdupes %{buildroot}
 
@@ -184,7 +184,8 @@ xvfb-run -s '-noreset +render' -a %cmake_build -C build test
 %license COPYING.LIB
 %{_kf5_bindir}/UserFeedbackConsole
 %{_kf5_bindir}/userfeedbackctl
-%{_kf5_applicationsdir}/UserFeedbackConsole.desktop
+%{_kf5_applicationsdir}/org.kde.kuserfeedback-console.desktop
+%{_kf5_appstreamdir}/org.kde.kuserfeedback-console.appdata.xml
 %{_kf5_iconsdir}/hicolor/scalable/actions/search.svg
 
 %files server
@@ -204,7 +205,7 @@ xvfb-run -s '-noreset +render' -a %cmake_build -C build test
 %{_kf5_mkspecsdir}/qt_KUserFeedbackCore.pri
 %{_kf5_mkspecsdir}/qt_KUserFeedbackWidgets.pri
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %license COPYING.LIB
 %endif
