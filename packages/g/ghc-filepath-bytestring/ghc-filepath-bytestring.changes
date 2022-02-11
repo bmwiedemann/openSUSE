@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  3 15:52:06 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update filepath-bytestring to version 1.4.2.1.9.
+  filepath-bytestring (1.4.2.1.9) unstable; urgency=medium
+
+    * Relax bounds to allow base 4.16 (ghc 9.2).
+
+   -- Joey Hess <id@joeyh.name>  Fri, 03 Dec 2021 11:49:58 -0400
+
+-------------------------------------------------------------------
 Thu Aug 12 08:09:40 UTC 2021 - psimons@suse.com
 
 - Update filepath-bytestring to version 1.4.2.1.8.
