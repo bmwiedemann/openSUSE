@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 10 17:53:01 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update git-lfs to version 1.2.0.
+  haskell-git-lfs (1.2.0) unstable; urgency=medium
+
+    * Avoid blindly copying over Content-Encoding and Transfer-Encoding
+      headers provided by the git-lfs server. This fixes interoperation
+      with gitlab's implementation of the git-lfs protocol, which sends
+      Transfer-Encoding chunked.
+    * uploadOperationRequests changed to provide a ServerSupportsChunks
+      value when constructing the RequestBody. This allows using
+      Transfer-Encoding chunked when the server supports it.
+      (API change)
+
+   -- Joey Hess <id@joeyh.name>  Wed, 10 Nov 2021 13:52:11 -0400
+
+-------------------------------------------------------------------
 Tue Oct 19 07:21:47 UTC 2021 - psimons@suse.com
 
 - Update git-lfs to version 1.1.2.
