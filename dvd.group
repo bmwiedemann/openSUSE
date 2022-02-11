@@ -708,10 +708,10 @@
     <package name="grantlee5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grantleetheme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grantleetheme-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="graphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="graphviz-gd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="graphviz-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="graphviz-plugins-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="graphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="graphviz-gd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="graphviz-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="graphviz-plugins-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="grep-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="grepmail" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1954,7 +1954,6 @@
     <package name="libgps29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgraphite2-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libgraphviz6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgravatar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgravatar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgrilo-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2011,7 +2010,7 @@
     <package name="libgtkspell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtop-2_0-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtop-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgts-0_7-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgts-0_7-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="libgucharmap_2_90-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgudev-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libguile-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2023,7 +2022,7 @@
     <package name="libgusb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgvc6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgvnc-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgvpr2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgvpr2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="libgweather-3-16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgweather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgxps2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2146,7 +2145,7 @@
     <package name="libktorrent-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libkwalletbackend5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkyotocabinet16" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="liblab_gamut1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblab_gamut1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
