@@ -2,7 +2,7 @@ cabal-version:      >= 1.18
 build-type:         Simple
 name:               hlint
 version:            3.2.7
-x-revision: 1
+x-revision: 2
 license:            BSD3
 license-file:       LICENSE
 category:           Development
@@ -60,6 +60,8 @@ flag hsyaml
   description: Use HsYAML instead of yaml
 
 library
+    build-depends: aeson <1.6
+
     default-language:   Haskell2010
     build-depends:
         base == 4.*, process, filepath, directory, containers,
