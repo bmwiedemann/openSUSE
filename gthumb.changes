@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:57:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add daef485dffd67319c114cf1bda453bf6157e11ff.patch: Remove
+  duplicate lang entry.
+
+-------------------------------------------------------------------
 Fri Nov  5 07:56:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing tracing=false and documentation=true to meson, no
