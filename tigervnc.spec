@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,8 @@ Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patc
 Patch23:        n_utilize-system-crypto-policies.patch
 Patch24:        tigervnc-FIPS-use-RFC7919.patch
 Patch25:        u_tigervnc-211.patch
-Patch26:        xserver211.patch
+Patch26:        u_Fix-non-functional-MaxDisconnectionTime.patch
+Patch27:        xserver211.patch
 Provides:       tightvnc = 1.3.9
 Obsoletes:      tightvnc < 1.3.9
 Provides:       vnc
@@ -274,11 +275,12 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %endif
 %patch24 -p1
 %patch25 -p0
+%patch26 -p1
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
 #patch -p1 < ../xserver120.patch
-%patch26 -p1
+%patch27 -p1
 popd
 
 %build

@@ -1,0 +1,45 @@
+From 38726ce083db1a9227325bf87989513499bfa698 Mon Sep 17 00:00:00 2001
+From: Pierre Ossman <ossman@cendio.se>
+Date: Thu, 18 Jun 2020 09:20:17 +0200
+Subject: [PATCH] Fix non-functional MaxDisconnectionTime
+References: bsc#1195661
+Upstream: Merged
+
+Since 8e09912 this wasn't triggered properly as we checked if all
+clients were gone before we actually removed the last client from our
+list.
+---
+ common/rfb/VNCServerST.cxx | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/common/rfb/VNCServerST.cxx b/common/rfb/VNCServerST.cxx
+index 8329bb23..35f65a2e 100644
+--- a/common/rfb/VNCServerST.cxx
++++ b/common/rfb/VNCServerST.cxx
+@@ -172,11 +172,6 @@ void VNCServerST::removeSocket(network::Socket* sock) {
+         clipboardClient = NULL;
+       clipboardRequestors.remove(*ci);
+ 
+-      // Adjust the exit timers
+-      connectTimer.stop();
+-      if (rfb::Server::maxDisconnectionTime && clients.empty())
+-        disconnectTimer.start(secsToMillis(rfb::Server::maxDisconnectionTime));
+-
+       // - Delete the per-Socket resources
+       delete *ci;
+ 
+@@ -193,6 +188,11 @@ void VNCServerST::removeSocket(network::Socket* sock) {
+       if (comparer)
+         comparer->logStats();
+ 
++      // Adjust the exit timers
++      connectTimer.stop();
++      if (rfb::Server::maxDisconnectionTime && clients.empty())
++        disconnectTimer.start(secsToMillis(rfb::Server::maxDisconnectionTime));
++
+       return;
+     }
+   }
+-- 
+2.34.1
+

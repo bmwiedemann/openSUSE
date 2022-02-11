@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 10 12:17:07 UTC 2022 - Joan Torres <joan.torres@suse.com>
+
+- u_Fix-non-functional-MaxDisconnectionTime.patch
+  * Backport patch that fixes issue with MaxDisconnetionTime
+    (bsc#1195661). 
+
+-------------------------------------------------------------------
 Mon Nov 15 17:22:13 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Use a template xvnc@.service.in to dynamically adjust xvnc@.service
