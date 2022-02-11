@@ -18,7 +18,7 @@
 
 %global pkg_name git-lfs
 Name:           ghc-%{pkg_name}
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Git-lfs protocol
 License:        AGPL-3.0-or-later
