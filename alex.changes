@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 23 23:20:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.1.
+  ## Change in 3.2.7.1
+
+   * Fix bug with repeated numeral characters *outside* of `r{n,m}`
+     repetitions. This was a regression introduced in 3.2.7.
+
+  ## Changes in 3.2.7
+
+   * Allow arbitrary repetitions in regexps.
+     Previously, the `r{n,m}` and related forms were restricted to single
+     digit numbers `n` and `m`.
+
+   * DFA minimization used to crash on tokens of the form `c*` which
+     produce automata with only accepting states.  Considering the empty
+     set of non-accepting states as an equivalence class caused
+     minimization to crash with exception.
+
+   * The `small_base` flag is removed.  Extremely old GHCs will no longer
+     build.
+
+   * A number of bug fixes and clearer diagnostics.
+
+-------------------------------------------------------------------
 Tue Sep  7 18:43:27 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - make rpmlint happy 

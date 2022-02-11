@@ -1,7 +1,7 @@
 #
 # spec file for package alex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_without tests
 %endif
 Name:           alex
-Version:        3.2.6
+Version:        3.2.7.1
 Release:        0
 Summary:        Alex is a tool for generating lexical analysers in Haskell
 License:        BSD-3-Clause
@@ -76,22 +76,9 @@ export PATH="%{buildroot}%{_bindir}:$PATH"
 %doc CHANGELOG.md README.md TODO doc examples
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
-%{_datadir}/%{name}-%{version}/AlexTemplate
-%{_datadir}/%{name}-%{version}/AlexTemplate-debug
-%{_datadir}/%{name}-%{version}/AlexTemplate-ghc
-%{_datadir}/%{name}-%{version}/AlexTemplate-ghc-debug
-%{_datadir}/%{name}-%{version}/AlexTemplate-ghc-nopred
+%{_datadir}/%{name}-%{version}/AlexTemplate.hs
+%{_datadir}/%{name}-%{version}/AlexWrappers.hs
 %{_datadir}/%{name}-%{version}
 %{_mandir}/man1/*
-%{_datadir}/%{name}-%{version}/AlexWrapper-basic
-%{_datadir}/%{name}-%{version}/AlexWrapper-basic-bytestring
-%{_datadir}/%{name}-%{version}/AlexWrapper-gscan
-%{_datadir}/%{name}-%{version}/AlexWrapper-monad
-%{_datadir}/%{name}-%{version}/AlexWrapper-monad-bytestring
-%{_datadir}/%{name}-%{version}/AlexWrapper-monadUserState
-%{_datadir}/%{name}-%{version}/AlexWrapper-monadUserState-bytestring
-%{_datadir}/%{name}-%{version}/AlexWrapper-posn
-%{_datadir}/%{name}-%{version}/AlexWrapper-posn-bytestring
-%{_datadir}/%{name}-%{version}/AlexWrapper-strict-bytestring
 
 %changelog
