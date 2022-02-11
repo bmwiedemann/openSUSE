@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 11 22:05:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unix-compat to version 0.5.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon Nov 15 06:58:12 UTC 2021 - psimons@suse.com
 
 - Update unix-compat to version 0.5.3 revision 1.
