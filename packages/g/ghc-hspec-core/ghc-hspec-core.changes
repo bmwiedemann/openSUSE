@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:22:08 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hspec-core to version 2.9.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Sat Nov 20 17:30:57 UTC 2021 - psimons@suse.com
 
 - Update hspec-core to version 2.9.1 revision 1.
