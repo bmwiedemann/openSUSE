@@ -52,6 +52,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+sed -i 's/\r//' LICENSE
 
 %build
 %ghc_lib_build
