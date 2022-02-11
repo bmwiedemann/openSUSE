@@ -94,15 +94,15 @@
     <package name="akregator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akregator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="alpine" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="alsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="alsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="alsa-oss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="alsa-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="alsa-oss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="alsa-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-plugins-pulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="alsa-plugins-speexrate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="alsa-plugins-speexrate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -233,7 +233,7 @@
     <package name="bubblewrap-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
+    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -241,7 +241,7 @@
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
+    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -361,8 +361,8 @@
     <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dhcp-relay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
-    <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="dialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
+    <package name="dialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="diffutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ding" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1594,7 +1594,7 @@
     <package name="libatkmm-1_6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libatomic1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libatopology2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libatopology2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="libatspi0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1756,7 +1756,7 @@
     <package name="libdevmapper-event1_03" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdhash1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libdialog15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libdialog15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="libdiscid0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdjvulibre21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdleyna-core-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4650,8 +4650,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4883,7 +4883,7 @@
     <package name="yast2-slp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-slp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="yast2-sound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-sound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="yast2-squid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2-storage-ng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-sudo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
