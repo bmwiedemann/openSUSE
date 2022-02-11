@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-double-conversion
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %global pkg_name double-conversion
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.2.0
+Version:        2.0.4.1
 Release:        0
-Summary:        Fast conversion between double precision floating point and text
+Summary:        Fast conversion between single and double precision floating point and text
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
@@ -41,12 +41,15 @@ BuildRequires:  ghc-test-framework-quickcheck2-devel
 %endif
 
 %description
-A library that performs fast, accurate conversion between double precision
-floating point and text.
+A library that performs fast, accurate conversion between floating point and
+text.
 
 This library is implemented as bindings to the C++ 'double-conversion' library
 written by Florian Loitsch at Google:
 <https://github.com/floitsch/double-conversion>.
+
+Now it can convert single precision numbers, and also it can create Builder,
+instead of bytestring or text.
 
 The 'Text' versions of these functions are about 30 times faster than the
 default 'show' implementation for the 'Double' type.
@@ -54,6 +57,9 @@ default 'show' implementation for the 'Double' type.
 The 'ByteString' versions are /slower/ than the 'Text' versions; roughly half
 the speed. (This seems to be due to the cost of allocating 'ByteString' values
 via 'malloc'.)
+
+Builder versions are slower on single value, but they are much faster on large
+number of values (up to 50x faster on list with 20000 doubles).
 
 As a final note, be aware that the 'bytestring-show' package is about 50%
 slower than simply using 'show'.
@@ -64,14 +70,14 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires:       libstdc++-devel
 Requires(post): ghc-compiler = %{ghc_version}
-Requires(postun):ghc-compiler = %{ghc_version}
+Requires(postun): ghc-compiler = %{ghc_version}
 
 %description devel
 This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%autosetup -n %{pkg_name}-%{version} -p1
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

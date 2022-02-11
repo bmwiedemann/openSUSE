@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 29 22:47:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update double-conversion to version 2.0.4.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Tue Apr  6 20:35:18 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - riscv.patch: Add support for RISC-V
