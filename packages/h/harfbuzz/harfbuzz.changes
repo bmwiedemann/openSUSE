@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb  7 06:06:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.3.2:
+  + Revert splitting of pair positioning values introduced in 3.3.0
+    as it proved problematic
+- includes changes from 3.3.1:
+  + Fix heap-use-after-free in harfbuzz-subset introduced in
+    previous release
+- includes changes from 3.3.0:
+  + Improved documentation, code cleanup 
+  + The low 16-bits of face index will be used by hb_face_create()
+    to select a face inside a font collection file format, while the
+    high 16-bits will be used by hb_font_create() to load the named
+    instance
+  + Glyph positions and other font metrics now apply synthetic slant
+    set by hb_font_set_synthetic_slant(), for improved positioning
+    for synthetically slanted fonts
+  + Fixed unintentional locale dependency in hb_variation_to_string()
+    for decimal point representation
+  + When applying pair positioning (kerning) the positioning value
+    is split between the two sides of the pair for improved cursor
+    positioning between such pairs
+  + Introduced new HB_GLYPH_FLAG_UNSAFE_TO_CONCAT, to be used in
+    conjunction with HB_GLYPH_FLAG_UNSAFE_TO_BREAK for optimizing
+    re-shaping during line breaking. Check the documentation for
+    further details
+  + Improved handling of macrolanguages when mapping BCP 47 codes
+    to OpenType tags
+
+-------------------------------------------------------------------
 Fri Dec 17 18:39:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.2.0:

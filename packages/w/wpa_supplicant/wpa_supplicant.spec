@@ -37,9 +37,8 @@ Patch1:         wpa_supplicant-flush-debug-output.patch
 # is not portable
 Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
-Patch4:         wpa_supplicant-getrandom.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
-Patch6:         restore-old-dbus-interface.patch
+Patch7:         Revert-DBus-Add-sae-to-interface-key_mgmt-capabilities.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  8 09:07:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.70.1:
+  + Build and crash fixes backported from the development branch.
+  + Closed bugs and merge requests:
+    - Handle optional out parameters in callbacks
+    - Link fails on Debian armel|mipsel|powerpc: needs more
+      -latomic
+    - gjs/jsapi-util.cpp: fix build on gcc-12
+- Drop patches fixed upstream:
+  + b9e122044a7ccc1e2a3374c680b6ea82066bfa59.patch
+  + 62025d4a2738a36ea5f1a7cebef08b22b5eef613.patch
+
+-------------------------------------------------------------------
 Mon Oct  4 17:12:28 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream crash fixer patches from stable branch:

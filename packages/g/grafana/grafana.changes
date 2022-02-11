@@ -1,11 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 09 16:10:40 UTC 2022 - witold.bedyk@suse.com
+
+- Update to version 8.3.5 (jsc#SLE-23439, jsc#SLE-23422)
+  + Security:
+    * Fixes XSS vulnerability in handling data sources
+      (bsc#1195726, CVE-2022-21702)
+    * Fixes cross-origin request forgery vulnerability
+      (bsc#1195727, CVE-2022-21703)
+    * Fixes Insecure Direct Object Reference vulnerability in Teams
+      API (bsc#1195728, CVE-2022-21713)
+
+-------------------------------------------------------------------
 Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
 
 - Update to Go 1.17.
 - Add build-time dependency on `wire`.
 - Update license to GNU Affero General Public License v3.0.
 
-- Update to version 8.3.4 (jsc#PM-3191)
+- Update to version 8.3.4
   + Security:
     * GetUserInfo: return an error if no user was found
       (bsc#1194873, CVE-2022-21673)

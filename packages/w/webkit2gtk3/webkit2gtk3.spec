@@ -75,7 +75,7 @@ ExclusiveArch:  do-not-build
 %define _gold_linker 0
 %endif
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.34.4
+Version:        2.34.5
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -92,8 +92,6 @@ Patch0:         no-forced-sse.patch
 Patch1:         fix-warnings.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-link-fix.patch mgorse@suse.com -- annotate executeJSCJITProbe.
 Patch2:         webkit2gtk3-link-fix.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-gcc12.patch webkit#235445 webkit#235458 mgorse@suse.com -- fix the build with gcc 12.
-Patch3:         webkit2gtk3-gcc12.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

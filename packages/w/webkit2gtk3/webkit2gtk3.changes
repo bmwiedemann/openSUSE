@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Feb  9 18:14:24 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.34.5 (boo#1195735):
+  + Improve VP8 codec selection when using GStreamer 1.20.
+  + Fix connecting to the accessiblity bus when using the
+    Bubblewrap sandbox.
+  + Fix links being incorrectly activated when starting a pinch
+    zoom gesture.
+  + Fix touch-based scrolling.
+  + Fix the build with recent toolchains based on GCC 12 and on
+    older ones as included e.g. in Ubuntu 18.04.
+  + Fix the build with ICU 60, version 61 is no longer required.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2022-22589, CVE-2022-22590, CVE-2022-22592,.
+  + Drop webkit2gtk3-gcc12.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 31 22:42:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update constraints for disk space even more, now at 20 gig.
+
+-------------------------------------------------------------------
 Mon Jan 24 21:54:31 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-gcc12.patch: fix the build with gcc 12.
@@ -13,7 +35,8 @@ Fri Jan 21 12:58:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     especially severe issue that allowed websites to read the names
     of IndexedDB databases created by other websites.
   + Security fixes: CVE-2021-30934, CVE-2021-30936, CVE-2021-30951,
-    CVE-2021-30952, CVE-2021-30953, CVE-2021-30954, CVE-2021-30984.
+    CVE-2021-30952, CVE-2021-30953, CVE-2021-30954, CVE-2021-30984,
+    CVE-2022-22594.
 
 -------------------------------------------------------------------
 Wed Jan 19 15:12:02 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
@@ -220,53 +243,9 @@ Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
     CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
     CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
     CVE-2021-30799.
-  + Changes in version 2.32.2:
-  + Improve calculation of initial WebKitWebView size.
-  + Fix kinetic scrolling on touchpad with async scrolling off.
-  + Fix a crash on empty drag operation in X11.
-  + Fix rendering on HiDPI /4k screen and scaling.
-  + Handle null native surface for for surfaceless rendering.
-  + Fix JavaScriptCore crash on 32-bit big endian systems.
-  + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2021-30758.
-  + Changes in version 2.32.1:
-  + Support building against the Musl C library.
-  + Support building against ICU version 69 or newer.
-  + Improve handling of Media Capture devices.
-  + Improve WebAudio playback.
-  + Improve video orientation handling.
-  + Improve seeking support for MSE playback.
-  + Improve flush support in EME decryptors.
-  + Fix HTTP status codes for requests done through a custom URI
-    handler.
-  + Fix the Bubblewrap sandbox in certain 32-bit systems.
-  + Fix inconsistencies between the WebKitWebView.is-muted property
-    state and values returned by
-    webkit_web_view_is_playing_audio().
-  + Fix the build with ENABLE_VIDEO=OFF.
-  + Fix wrong timestamps for long-lived cookies.
-  + Fix UI process crash when failing to load favicons.
-  + Fix several crashes and rendering issues.
-  + Updated translations.
 - Fix webkit2gtk3-restore-npapi.patch to install the plugin
     process.
 - Disable WPE renderer: our FDO backend is now too old.
-
--------------------------------------------------------------------
-Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
-
-- Update to version 2.32.3 (boo#1188697):
-  + Properly set the cookies settings after a network process
-    crash.
-  + Fix accessibility tree after a cross site navigation with PSON
-    enabled.
-  + Ensure WebKitScriptWorld::window-object-cleared signal is
-    always emitted.
-  + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2021-21775, CVE-2021-21779, CVE-2021-30663,
-    CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
-    CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
-    CVE-2021-30799.
 
 -------------------------------------------------------------------
 Mon Jul 19 18:36:42 UTC 2021 - Michael Gorse <mgorse@suse.com>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  9 21:15:59 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.7.2:
+  * Fix incorrect parsing of parameters specified via
+    -e / --extra-settings option flags (#2938)
+  * Add categories.html template to default theme (#2973)
+  * Document how to use plugins to inject content (#2922)
+- do not remove the shebang from jinja templates: fixed upstream
+
+-------------------------------------------------------------------
 Sun Oct 24 18:30:43 UTC 2021 - Sebastien CHAVAUX <seb95.scou@gmail.com>
 
 - Update to version 4.7.1:

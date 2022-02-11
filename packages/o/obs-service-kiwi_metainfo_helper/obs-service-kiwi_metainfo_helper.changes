@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  8 16:10:01 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Improve examples in README.
+
+-------------------------------------------------------------------
 Mon Jan 24 09:36:17 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Generate OS_VERSION based on os-release VERSION (bsc#1195061).

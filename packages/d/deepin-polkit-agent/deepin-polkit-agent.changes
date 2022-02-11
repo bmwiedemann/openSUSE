@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  9 12:08:49 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-sudo-issue.patch, fix a sudo issue. 
+
+-------------------------------------------------------------------
 Tue Dec 28 03:03:12 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.14

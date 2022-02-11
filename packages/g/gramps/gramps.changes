@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb  9 20:13:52 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 5.1.5
+  + Fix badges in README file.
+  + Update copyright date.
+  + Strange behavior for the scrollbar in the bottombar.
+  + Fix place object element order in DTD and RNG schemas. Element
+    placeobj content does not follow the DTD and RNG, expecting
+    (ptitle? , pname+).
+  + Solve InterpolationSyntaxError if “%” in a string. The
+    grampletpane module saves data in a config file for all the
+    gramplets added in the dashboard. The python configparser
+    module doesn’t like if we have a “%” character in a string.
+  + ‘<‘ not supported between 2 instances of IndexMark.
+  + Remove debug statements in unit tests.
+  + Fix negative Span when dates are not Gregorian.
+  + Incorrect grouping if no ma/patronymic surname.
+  + Group As override is ignored for ma/patronymic surnames. See:
+    https://gramps.discourse.group/t/patronymic-and-matronymic-name/1684/5
+  + Add comments for the lat-lon field of editplace.
+  + Place editor, lat and long text are swapped.
+  + Fix Statusbar progress being shown before use.
+  + Fix exception when removing a group name in Sqlite db when
+    group name is already missing.
+  + Fix error when trying to close name editor during long name
+    group mapping view rebuild.
+  + OsmGpsMap-CRITICAL: Map source setup called twice.
+  + Fix probably alive function unit test.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 22 15:30:09 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.1.4:

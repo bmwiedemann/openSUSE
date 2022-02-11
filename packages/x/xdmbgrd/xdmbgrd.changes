@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  8 14:34:02 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Move forward to version 0.7
+  * Remove patches xdmbgrd-0.6.dif and xdmbgrd-piggyback.dif
+    as now part of the code
+  * Add and use SUSE Logo (bsc#1195675)
+
+-------------------------------------------------------------------
+Tue Feb  8 10:31:13 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch xdmbgrd-0.6.dif
+  * Fix bsc#1195664, that is use /etc/os-release to detect openSUSE
+
+-------------------------------------------------------------------
 Thu Jul 27 05:07:21 UTC 2017 - bwiedemann@suse.com
 
 - Update xdmbgrd-piggyback.dif to not include PID in piggyback

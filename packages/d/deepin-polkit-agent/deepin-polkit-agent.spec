@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-polkit-agent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-polkit-agent
 Source0:        https://github.com/linuxdeepin/dde-polkit-agent/archive/%{version}/%{_name}-%{version}.tar.gz
+Patch0:         fix-sudo-issue.patch
 BuildRequires:  dtkcore
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -54,7 +55,7 @@ to develop applications that require these.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 sed -i 's|lrelease|lrelease-qt5|' translate_generation.sh
 sed -i 's/bool is_deepin = true/bool is_deepin = false/' policykitlistener.cpp
 sed -i '/setCancel/d' policykitlistener.cpp

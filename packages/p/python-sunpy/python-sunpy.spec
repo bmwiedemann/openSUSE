@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,33 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# Astropy, SciPy, NumPy require python >= 3.7
-%define         skip_python36 1
 Name:           python-sunpy
-Version:        3.0.1
+Version:        3.1.3
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
+# PATCH-FIX-UPSTREAM sunpy-pr5830-pandas140.patch -- gh#sunpy/sunpy#5830
+Patch0:         https://github.com/sunpy/sunpy/pull/5830.patch#/sunpy-pr5830-pandas140.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module asdf >= 2.6}
-BuildRequires:  %{python_module astropy >= 4.1}
+BuildRequires:  %{python_module astropy >= 4.2}
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel > 1.16.0}
+BuildRequires:  %{python_module numpy-devel > 1.17.0}
+BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module parfive >= 1.2.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aioftp >= 0.17.1
-Requires:       python-astropy >= 4.1
-Requires:       python-numpy > 1.16.0
+Requires:       python-astropy >= 4.2
+Requires:       python-numpy > 1.17.0
+Requires:       python-packaging >= 19
 Requires:       python-parfive >= 1.2.0
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib_metadata
@@ -54,20 +56,18 @@ Suggests:       python-dask-array >= 2.0
 # SECTION extras_require:database
 Recommends:     python-SQLAlchemy >= 1.3.4
 # /SECTION
-# SECTION extras_require:instr
-Recommends:     python-matplotlib >= 3.1.0
-Recommends:     python-pandas >= 0.24.0
-Recommends:     python-scipy > 1.3.0
-# /SECTION
 # SECTION extras_require:image
 Recommends:     python-scikit-image
-#               scipy
+Recommends:     python-scipy > 1.3.0
 # /SECTION
 # SECTION extras_require:jpeg2000
 Recommends:     python-Glymur >= 0.8.18
 # /SECTION
 # SECTION extras_require:map
-#               matlotlib, scipy
+Recommends:     python-matplotlib >= 3.1.0
+Recommends:     python-mpl-animators >= 1.0.0
+Recommends:     python-reproject
+# scipy
 # /SECTION
 # SECTION extras_require:net
 Recommends:     python-beautifulsoup4 >= 4.0.0
@@ -77,22 +77,29 @@ Recommends:     python-tqdm >= 4.32.1
 Recommends:     python-zeep >= 3.4.0
 # /SECTION
 # SECTION extras_require:timeseries
+Recommends:     python-cdflib >= 0.3.19
 Recommends:     python-h5netcdf
-#               matlotlib, pandas
+Recommends:     python-h5py
+Recommends:     python-pandas >= 1
+#               matlotlib
 # /SECTION
 # SECTION test requirements (and extras)
 # even although we do not use tox and doctestplus, there are tests in the suite checking their existence.
 BuildRequires:  %{python_module Glymur >= 0.8.18}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.4}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.0.0}
-BuildRequires:  %{python_module dask-array >= 2.0}
+BuildRequires:  %{python_module cdflib >= 0.3.19}
+# dask does not support Python 3.10 yet
+BuildRequires:  %{python_module dask-array >= 2.0 if %python-base < 3.10}
 BuildRequires:  %{python_module drms >= 0.6.1}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module h5netcdf}
+BuildRequires:  %{python_module h5py >= 3.1.0}
 BuildRequires:  %{python_module hypothesis >= 6.0.0}
 BuildRequires:  %{python_module importlib_metadata}
 BuildRequires:  %{python_module jplephem}
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
+BuildRequires:  %{python_module mpl-animators >= 1.0.0}
 BuildRequires:  %{python_module pandas >= 0.24.0}
 BuildRequires:  %{python_module pytest-astropy >= 0.8}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.5}
@@ -100,6 +107,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-mpl >= 0.12}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module reproject}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image >= 0.16.0}
 BuildRequires:  %{python_module scipy >= 1.3.0}
@@ -109,11 +117,13 @@ BuildRequires:  %{python_module zeep >= 3.4.0}
 %python_subpackages
 
 %description
-SunPy is a Python library for solar physics data analysis.
+SunPy is a Python library for solar physics data analysis and visualization.
 
 %prep
 %autosetup -p1 -n sunpy-%{version}
 sed -i -e '/^#!\//, 1d' sunpy/extern/appdirs.py
+# Ignore Python 3.10 deprecation warning about distutils
+sed -i '/ignore:Distutils/ a \    ignore:The distutils.sysconfig module:DeprecationWarning' setup.cfg
 chmod -x sunpy/data/test/cor1_20090615_000500_s4c1A.fts
 
 %build
@@ -123,7 +133,7 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %{python_expand #
-find  %{buildroot}%{$python_sitearch} -name '*.h' -delete -print
+find %{buildroot}%{$python_sitearch} -name '*.h' -delete -print
 rm -r %{buildroot}%{$python_sitearch}/benchmarks
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -138,6 +148,6 @@ popd
 %doc README.rst CHANGELOG.rst
 %license LICENSE.rst licenses/*
 %{python_sitearch}/sunpy
-%{python_sitearch}/sunpy-%{version}-py*.egg-info
+%{python_sitearch}/sunpy-%{version}*-info
 
 %changelog

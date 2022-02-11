@@ -306,6 +306,9 @@ Patch1:         16172741-libvirt-guests-manpage.patch
 Patch2:         8eb44616-remove-sysconfig-files.patch
 Patch3:         31e937fb-libxl-save-lock-indicator.patch
 Patch4:         105dace2-revert-virProcessGetStatInfo.patch
+Patch5:         e0241f33-libxl-mark-allocated-graphics-ports.patch
+Patch6:         18ec405a-libxl-release-graphics-ports.patch
+Patch7:         76deb656-qemu-fix-snapshot-revert.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

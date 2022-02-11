@@ -1,7 +1,7 @@
 #
 # spec file for package python-netCDF4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-netCDF4
-Version:        1.5.6
+Version:        1.5.8
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
@@ -42,7 +42,7 @@ Requires:       netcdf >= 4.2
 Requires:       python-cftime
 Requires:       python-numpy >= 1.10.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # SECTION tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  netcdf

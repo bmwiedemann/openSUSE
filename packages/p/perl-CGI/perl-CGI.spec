@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.53
+Version:        4.54
 Release:        0
 Summary:        Handle Common Gateway Interface requests and responses
 License:        Artistic-2.0

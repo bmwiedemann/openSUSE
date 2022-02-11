@@ -16,4 +16,12 @@
 </comment>
     <requestid>521807</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cf50ef6c53c05c9ce5640d87d974579f</srcmd5>
+    <version>1.17</version>
+    <time>1644531085</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest for the testsuite.</comment>
+    <requestid>952273</requestid>
+  </revision>
 </revisionlist>

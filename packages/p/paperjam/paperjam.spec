@@ -23,6 +23,7 @@ Summary:        A tool for transforming PDF documents
 License:        GPL-2.0-or-later
 URL:            https://mj.ucw.cz/sw/paperjam/
 Source:         http://mj.ucw.cz/download/linux/paperjam-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  libpaper-devel
@@ -34,7 +35,7 @@ scaling and rotating them, placing multiple pages on one sheet of paper,
 adding cropmarks, and many other tricks.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build

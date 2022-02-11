@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Dec 15 12:46:32 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * the surrounding text should be text() instead of selectedText()
+
+-------------------------------------------------------------------
+Wed May  5 08:03:25 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.6
+  * update translation
+- changes in version 5.0.5
+  * Implement sub mode label
+
+-------------------------------------------------------------------
+Tue Mar 16 06:27:46 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * show mode information if the input mode is changed.
+
+-------------------------------------------------------------------
+Sun Jan 31 04:23:00 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * Make label in UI more meaningful
+
+-------------------------------------------------------------------
+Sun Dec  6 05:44:00 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Tue Nov 10 06:19:24 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+
+-------------------------------------------------------------------
+Fri Sep  4 05:03:26 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package

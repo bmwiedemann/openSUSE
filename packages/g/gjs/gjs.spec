@@ -1,7 +1,7 @@
 #
 # spec file for package gjs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           gjs
-Version:        1.70.0
+Version:        1.70.1
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
 Source0:        https://download.gnome.org/sources/gjs/1.70/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM b9e122044a7ccc1e2a3374c680b6ea82066bfa59.patch -- arg: Replace gsize with size_t
-Patch0:         b9e122044a7ccc1e2a3374c680b6ea82066bfa59.patch
-# PATCH-FIX-UPSTREAM 62025d4a2738a36ea5f1a7cebef08b22b5eef613.patch -- Handle optional out parameters in callbacks
-Patch1:         62025d4a2738a36ea5f1a7cebef08b22b5eef613.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  git

@@ -139,4 +139,18 @@
   temp filenames to generate reproducible output (forwarded request 512730 from bmwiedemann)</comment>
     <requestid>512735</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1cf791ffa52bbff575038108efff8569</srcmd5>
+    <version>0.7</version>
+    <time>1644531094</time>
+    <user>dimstar_suse</user>
+    <comment>- Move forward to version 0.7
+  * Remove patches xdmbgrd-0.6.dif and xdmbgrd-piggyback.dif
+    as now part of the code
+  * Add and use SUSE Logo (bsc#1195675)
+
+- Modify patch xdmbgrd-0.6.dif
+  * Fix bsc#1195664, that is use /etc/os-release to detect openSUSE</comment>
+    <requestid>952717</requestid>
+  </revision>
 </revisionlist>

@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -522,7 +522,6 @@ unsorted:
   - anjuta 
   - anjuta-devel 
   - anjuta-lang 
-  - anki 
   - ansible 
   - ansible-cmdb 
   - ansible-doc 
@@ -3602,6 +3601,33 @@ unsorted:
   - fcitx-table-vi-qr 
   - fcitx-ui-light 
   - fcitx-unikey 
+  - fcitx5 
+  - fcitx5-anthy 
+  - fcitx5-chewing 
+  - fcitx5-chinese-addons 
+  - fcitx5-chinese-addons-devel 
+  - fcitx5-configtool 
+  - fcitx5-devel 
+  - fcitx5-gtk2 
+  - fcitx5-gtk3 
+  - fcitx5-gtk4 
+  - fcitx5-hangul 
+  - fcitx5-kkc 
+  - fcitx5-libthai 
+  - fcitx5-lua 
+  - fcitx5-lua-devel 
+  - fcitx5-lua-migration-reminder 
+  - fcitx5-m17n 
+  - fcitx5-qt-devel 
+  - fcitx5-qt5 
+  - fcitx5-qt6 
+  - fcitx5-rime 
+  - fcitx5-sayura 
+  - fcitx5-skk 
+  - fcitx5-table-extra 
+  - fcitx5-table-other 
+  - fcitx5-unikey 
+  - fcitx5-zhuyin 
   - fcoe-utils: [i586] 
   - fcwnn 
   - fcwnn-devel 
@@ -5847,8 +5873,6 @@ unsorted:
   - gnome-genius 
   - gnome-getting-started-docs 
   - gnome-getting-started-docs-lang 
-  - gnome-gmail-notifier 
-  - gnome-gmail-notifier-lang 
   - gnome-initial-setup 
   - gnome-initial-setup-lang 
   - gnome-internet-radio-locator 
@@ -6220,7 +6244,6 @@ unsorted:
   - graphviz-doc 
   - graphviz-guile 
   - graphviz-gvedit 
-  - graphviz-java 
   - graphviz-lua 
   - graphviz-perl 
   - graphviz-php 
@@ -6825,6 +6848,17 @@ unsorted:
   - hsqldb-javadoc 
   - hsqldb-manual 
   - ht 
+  - htcondor: [x86_64] 
+  - htcondor-bosco: [x86_64] 
+  - htcondor-classads: [x86_64] 
+  - htcondor-classads-devel: [x86_64] 
+  - htcondor-credmon-oauth: [x86_64] 
+  - htcondor-credmon-vault: [x86_64] 
+  - htcondor-devel: [x86_64] 
+  - htcondor-doc: [x86_64] 
+  - htcondor-kbdd: [x86_64] 
+  - htcondor-procd: [x86_64] 
+  - htcondor-vm-gahp: [x86_64] 
   - htdig 
   - htdig-devel 
   - htdig-doc 
@@ -6876,6 +6910,7 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
+  - hyper-v-enhanced-session 
   - hyperfine 
   - hyperfine-bash-completion 
   - hyperfine-fish-completion 
@@ -8790,6 +8825,14 @@ unsorted:
   - libFS-devel-32bit: [x86_64] 
   - libFS6 
   - libFS6-32bit: [x86_64] 
+  - libFcitx5Config6 
+  - libFcitx5Core7 
+  - libFcitx5GClient-devel 
+  - libFcitx5GClient2 
+  - libFcitx5Qt5DBusAddons1 
+  - libFcitx5Qt5WidgetsAddons2 
+  - libFcitx5Qt6DBusAddons1 
+  - libFcitx5Utils2 
   - libGIMPACTUtils3_17 
   - libGLC-devel 
   - libGLC0 
@@ -8842,6 +8885,9 @@ unsorted:
   - libIDL-2-0 
   - libIDL-2-0-32bit: [x86_64] 
   - libIL1 
+  - libIMECore0 
+  - libIMEPinyin0 
+  - libIMETable0 
   - libIccXML-devel 
   - libIccXML2 
   - libIex-3_1-30-32bit: [x86_64] 
@@ -11127,9 +11173,9 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
-  - libgrpc++1 
-  - libgrpc19 
-  - libgrpc_plugin_support1_41 
+  - libgrpc++1_43 
+  - libgrpc21 
+  - libgrpc_plugin_support1_43 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -11537,6 +11583,9 @@ unsorted:
   - libilbc0 
   - libimaevm3: [i586] 
   - libimagequant-devel 
+  - libime-devel 
+  - libime-dicts 
+  - libime-tools 
   - libiml0 
   - libimobiledevice-1_0-6-32bit: [x86_64] 
   - libimobiledevice-devel 
@@ -14288,7 +14337,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb19 
+  - libupb21 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14589,9 +14638,9 @@ unsorted:
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
-  - libwtdbo4_5_1 
-  - libwtdbomysql4_5_1 
-  - libwtdbopostgres4_5_1 
+  - libwtdbo4_6_1 
+  - libwtdbomysql4_6_1 
+  - libwtdbopostgres4_6_1 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_base-suse-devel 
@@ -14727,7 +14776,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -14740,6 +14789,7 @@ unsorted:
   - libxcb-glx0-32bit: [x86_64] 
   - libxcb-icccm4-32bit: [x86_64] 
   - libxcb-image0-32bit: [x86_64] 
+  - libxcb-imdkit1 
   - libxcb-keysyms1-32bit: [x86_64] 
   - libxcb-present0-32bit: [x86_64] 
   - libxcb-randr0-32bit: [x86_64] 
@@ -16222,6 +16272,7 @@ unsorted:
   - mingw64-zlib-devel 
   - mingw64-zlib1 
   - mingzat-fonts 
+  - minicondor: [x86_64] 
   - minidlna 
   - minigalaxy 
   - minikube 
@@ -19514,6 +19565,7 @@ unsorted:
   - perl-Mail-SPF_XS 
   - perl-Mail-Sender 
   - perl-Mail-Sendmail 
+  - perl-Mail-SpamAssassin-Plugin-dqs 
   - perl-Mail-SpamAssassin-Plugin-iXhash2 
   - perl-Mail-Transport 
   - perl-Mason 
@@ -21255,7 +21307,6 @@ unsorted:
   - python-ncclient-doc 
   - python-networkx-doc 
   - python-neutronclient-doc 
-  - python-nlopt 
   - python-notmuch-doc 
   - python-novaclient-doc 
   - python-nss-doc 
@@ -21398,6 +21449,7 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
+  - python3-condor: [x86_64] 
   - python3-csound 
   - python3-ctypeslib2 
   - python3-dbus-presage 
@@ -21456,7 +21508,6 @@ unsorted:
   - python3-gv 
   - python3-hawkey 
   - python3-heatclient 
-  - python3-hg-git 
   - python3-hivex 
   - python3-imobiledevice 
   - python3-inspektor 
@@ -21530,6 +21581,7 @@ unsorted:
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
+  - python3-nlopt 
   - python3-notcurses 
   - python3-notmuch 
   - python3-novaclient 
@@ -23332,6 +23384,7 @@ unsorted:
   - python310-markdown2 
   - python310-marshmallow 
   - python310-marshmallow-enum 
+  - python310-mathics-pygments 
   - python310-matplotlib 
   - python310-matplotlib-cairo 
   - python310-matplotlib-gtk-common 
@@ -23391,6 +23444,7 @@ unsorted:
   - python310-moto-server 
   - python310-mpi4py 
   - python310-mpi4py-devel 
+  - python310-mpl-animators 
   - python310-mplcursors 
   - python310-mpld3 
   - python310-mpmath 
@@ -24452,6 +24506,7 @@ unsorted:
   - python310-subscene-api 
   - python310-subst 
   - python310-suds-community 
+  - python310-sunpy 
   - python310-suntime 
   - python310-sure 
   - python310-svglib 
@@ -24459,7 +24514,6 @@ unsorted:
   - python310-svgwrite 
   - python310-svneverever 
   - python310-swapper 
-  - python310-swifter 
   - python310-sybil 
   - python310-sympy 
   - python310-system_hotkey 
@@ -24482,6 +24536,7 @@ unsorted:
   - python310-template-remover 
   - python310-tempora 
   - python310-tenacity 
+  - python310-term-background 
   - python310-termcolor 
   - python310-terminado 
   - python310-terminaltables 
@@ -26458,6 +26513,7 @@ unsorted:
   - python38-marshmallow 
   - python38-marshmallow-enum 
   - python38-mathgl 
+  - python38-mathics-pygments 
   - python38-matplotlib-cairo 
   - python38-matplotlib-gtk-common 
   - python38-matplotlib-gtk3 
@@ -26514,6 +26570,7 @@ unsorted:
   - python38-moto-server 
   - python38-mpi4py 
   - python38-mpi4py-devel 
+  - python38-mpl-animators 
   - python38-mplcursors 
   - python38-mpld3 
   - python38-mrcz 
@@ -27550,6 +27607,7 @@ unsorted:
   - python38-tempora 
   - python38-tenacity 
   - python38-tensorpac 
+  - python38-term-background 
   - python38-termcolor 
   - python38-terminado 
   - python38-terminaltables 
@@ -29553,6 +29611,7 @@ unsorted:
   - python39-markdown2 
   - python39-marshmallow 
   - python39-marshmallow-enum 
+  - python39-mathics-pygments 
   - python39-matplotlib 
   - python39-matplotlib-cairo 
   - python39-matplotlib-gtk-common 
@@ -29611,6 +29670,7 @@ unsorted:
   - python39-moto-server 
   - python39-mpi4py 
   - python39-mpi4py-devel 
+  - python39-mpl-animators 
   - python39-mplcursors 
   - python39-mpld3 
   - python39-mpmath 
@@ -30731,6 +30791,7 @@ unsorted:
   - python39-tempora 
   - python39-tenacity 
   - python39-tensorpac 
+  - python39-term-background 
   - python39-termcolor 
   - python39-terminado 
   - python39-terminaltables 
@@ -31619,6 +31680,7 @@ unsorted:
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
+  - rage-encryption-bash-completion: [x86_64] 
   - ragel 
   - rainbow 
   - rainbow-bash-completion 
@@ -41674,6 +41736,7 @@ unsorted:
   - typelib-1_0-FPrint-2_0 
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-Fcitx-1_0 
+  - typelib-1_0-FcitxG-1_0 
   - typelib-1_0-Flatpak-1_0 
   - typelib-1_0-Folks-0_7 
   - typelib-1_0-FolksEds-0_7 
@@ -42552,6 +42615,7 @@ unsorted:
   - xcape 
   - xcas 
   - xcb 
+  - xcb-imdkit-devel 
   - xcb-proto-devel 
   - xcb-util-cursor-devel 
   - xcb-util-cursor-devel-32bit: [x86_64] 
@@ -42871,7 +42935,6 @@ unsorted:
   - xosd 
   - xosd-devel 
   - xosview 
-  - xournal 
   - xournalpp 
   - xournalpp-lang 
   - xpenguins 

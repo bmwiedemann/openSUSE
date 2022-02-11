@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 23:14:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest for the testsuite. 
+
+-------------------------------------------------------------------
 Wed Sep  6 22:30:00 UTC 2017 - toddrme2178@gmail.com
 
 - Add missing dependency

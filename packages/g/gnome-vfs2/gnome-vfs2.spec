@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-vfs2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,9 +69,9 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libselinux-devel
-BuildRequires:  libsmbclient-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  samba
+BuildRequires:  pkgconfig(smbclient)
 Requires:       desktop-file-utils
 #
 Obsoletes:      gnome-vfs-extras

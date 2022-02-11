@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  4 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.54
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.54 2022-02-03
+
+      [ FIX ]
+      - fix use of cache when calling ->cookie (GH #252)
+      - thanks to Sergey Panteleev for the PR
+
+-------------------------------------------------------------------
 Fri Jun  4 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.53

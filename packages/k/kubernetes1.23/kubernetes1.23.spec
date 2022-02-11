@@ -71,6 +71,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -304,9 +305,8 @@ ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
 %fdupes -s %{buildroot}
 
 %post client-common
-export baseversion="%{baseversion}"
 %{_sbindir}/update-alternatives \
-  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} ${baseversion/./}
+  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} %(echo %{baseversion} | tr -d .)
 
 %postun client-common
 if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then

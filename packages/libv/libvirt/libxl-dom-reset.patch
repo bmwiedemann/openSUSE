@@ -12,7 +12,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_driver.c
 ===================================================================
 --- libvirt-8.0.0.orig/src/libxl/libxl_driver.c
 +++ libvirt-8.0.0/src/libxl/libxl_driver.c
-@@ -1338,6 +1338,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
+@@ -1361,6 +1361,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
  }
  
  static int
@@ -76,7 +76,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_driver.c
  libxlDomainDestroyFlags(virDomainPtr dom,
                          unsigned int flags)
  {
-@@ -6432,6 +6489,7 @@ static virHypervisorDriver libxlHypervis
+@@ -6455,6 +6512,7 @@ static virHypervisorDriver libxlHypervis
      .domainShutdown = libxlDomainShutdown, /* 0.9.0 */
      .domainShutdownFlags = libxlDomainShutdownFlags, /* 0.9.10 */
      .domainReboot = libxlDomainReboot, /* 0.9.0 */

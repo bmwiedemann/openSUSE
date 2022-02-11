@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 10 04:21:12 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.5.8:
+  * Fix Enum bug (issue #1128): the enum_dict member of an EnumType
+    read from a file contains invalid values when the enum is large
+    enough (more than 127 or 255 members).
+  * Binary wheels for aarch64 and python 3.10.
+
+- changes from version 1.5.7:
+  * don't try to mask vlens with default _FillValue, since vlens don't
+    have a default _FillValue.  This gets rid of numpy
+    DeprecationWarning (issue #1099).
+  * update docs to reflect the fact that a variable must be in
+    collective mode before writing compressed data to it in
+    parallel. Added a test for this
+    (examples/mpi_example_compressed.py).  Issue #1108.
+  * Fix OverflowError when dimension sizes become greater than 2**32-1
+    elements on Windows (Issue #1112).
+  * Don't return masked arrays for vlens (only for primitive and enum
+    types - issue #1115).
+
+-------------------------------------------------------------------
 Sun Feb 21 21:06:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.6

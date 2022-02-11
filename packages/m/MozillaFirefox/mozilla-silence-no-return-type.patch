@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  9b29b6b7548b93a599167774e747f6e0661cfbe1
+# Parent  216843712d6d6cd9d5bd519f6ef564d00406b43f
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2078,18 +2078,16 @@ name = "glsl-to-cxx"
+@@ -2165,18 +2165,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,24 +26,21 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -78,16 +78,17 @@ opt-level = 2
- opt-level = 2
- 
- [patch.crates-io]
- chardetng = { git = "https://github.com/hsivonen/chardetng", rev="302c995f91f44cf26e77dc4758ad56c3ff0153ad" }
+@@ -102,13 +102,13 @@ moz_asserts = { path = "mozglue/static/r
+ # Other overrides
+ chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
  chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
+ coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
  libudev-sys = { path = "dom/webauthn/libudev-sys" }
  packed_simd = { git = "https://github.com/hsivonen/packed_simd", rev="8b4bd7d8229660a749dbe419a57ea01df9de5453" }
+ midir = { git = "https://github.com/mozilla/midir.git", rev = "4c11f0ffb5d6a10de4aff40a7b81218b33b94e6f" }
  minidump_writer_linux = { git = "https://github.com/msirringhaus/minidump_writer_linux.git", rev = "029ac0d54b237f27dc7d8d4e51bc0fb076e5e852" }
+-
 +glslopt = { path = "third_party/rust/glslopt/" }
- # The following overrides point to dummy projects, as a temporary measure until this is resolved:
- # https://github.com/rust-lang/cargo/issues/6179
- js-sys = { git = "https://github.com/kvark/dummy-web" }
- slotmap = { git = "https://github.com/kvark/dummy-web" }
- wasm-bindgen = { git = "https://github.com/kvark/dummy-web" }
- web-sys = { git = "https://github.com/kvark/dummy-web" }
- 
- [patch.crates-io.cranelift-codegen]
+ # Patch mio 0.6 to use winapi 0.3 and miow 0.3, getting rid of winapi 0.2.
+ # There is not going to be new version of mio 0.6, mio now being >= 0.7.11.
+ [patch.crates-io.mio]
+ path = "third_party/rust/mio-0.6.23"
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h

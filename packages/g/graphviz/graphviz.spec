@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,12 @@
 #fixes build failure caused by new .debug files, not sure how to fix correctly
 
 %define mname graphviz
-%define libname libgraphviz6
 # name of the plugin config file that dot creates
 %define config_file config6
 # Java and ocaml are not in ring1, thus this gets overriden in staging
-%bcond_without java
+# Also, both install into generic locations instead of a language
+# specific prefix, disable both
+%bcond_with    java
 %bcond_with    ocaml
 %if "%{flavor}" == "addons"
 # PHP7 requires swig >= 3.0.11, not available on Leap 42.x
@@ -42,16 +43,25 @@
 %endif
 %define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
 %define phpext_dir  %(%{__php_config} --extension-dir)
-%endif
 
 %define ruby_version $(pkg-config --variable=RUBY_API_VERSION %{_libdir}/pkgconfig/ruby-*.pc)
+%endif
 
 # No pkgconfig(gts) in sle12 GA or SPx, but in sle15
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
-%define sle12 1
+%bcond_with    gts
 %else
-%define sle12 0
+%bcond_without gts
 %endif
+
+%define cdt_soversion 5
+%define cgraph_soversion 6
+%define gvc_soversion 6
+%define gvpr_soversion 2
+%define lab_gamut_soversion 1
+%define pathplan_soversion 4
+%define xdot_soversion 4
+
 Name:           graphviz%{psuffix}
 Version:        2.49.3
 Release:        0
@@ -84,7 +94,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
-%if 0%{sle12} != 1
+%if %{with gts}
 BuildRequires:  pkgconfig(gts)
 %endif
 BuildRequires:  pkgconfig(zlib)
@@ -98,7 +108,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  perl
-%if 0%{?suse_version} >= 1500
+%if %{php_version} == 7
 BuildRequires:  php7-devel
 BuildRequires:  swig >= 3.0.11
 %else
@@ -148,9 +158,7 @@ Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz
 
 %description -n graphviz-gvedit
-The Qt5 graph editor included with graphviz, packaged
-separately to avoid cycles in the build of the graphviz
-package.
+The Qt5 graph editor included with graphviz.
 
 %package -n graphviz-smyrna
 Summary:        Large graph viewer
@@ -163,7 +171,6 @@ Experimental large graph viewer using graphviz
 %package -n graphviz-gnome
 Summary:        Graphviz plugins that use gtk/GNOME
 Group:          Productivity/Graphics/Visualization/Graph
-Recommends:     plugin-core = %{version}
 Requires(post): graphviz = %{version}
 Supplements:    packageand(graphviz:xorg-x11-fonts-core)
 
@@ -205,8 +212,7 @@ Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz
 
 %description -n graphviz-x11
-The lefty/dotty/lneato X11 graph editors included with graphviz,
-packaged separately to reduce build dependencies.
+The lefty/dotty/lneato X11 graph editors included with graphviz.
 
 %package -n graphviz-lua
 Summary:        Lua extension for graphviz
@@ -254,8 +260,6 @@ tools.
 Summary:        Python 3 Extension for Graphviz
 Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz = %{version}
-Provides:       graphviz-python
-Obsoletes:      graphviz-python
 
 %description -n python3-gv
 The package contains the Python extension for the
@@ -286,8 +290,9 @@ for the graphviz tools.
 Summary:        WebP support for graphviz
 Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz = %{version}
+# depends on cairo in libgvplugin_pango
 Requires:       graphviz-gnome = %{version}
-Requires:       libwebp7
+Requires(post): graphviz >= %{version}
 
 %description -n graphviz-webp
 The graphviz-webp package contains files needed for the support of WebP images
@@ -299,83 +304,77 @@ Group:          Documentation/Howto
 %description -n graphviz-doc
 Provides some additional PDF and HTML documentation for graphviz.
 
-%package -n %{libname}
-Summary:        Library for the manipulation of layout of graphs
-Group:          System/Libraries
-Recommends:     graphviz-plugins-core
-Requires:       libcdt5
-
-%description -n %{libname}
-Library for the manipulation of layout of graphs (as in nodes and edges,
-not as in bar charts). This is a meta package.
-
-%package -n libcdt5
+%package -n libcdt%{cdt_soversion}
 Summary:        Container data types for Graphviz
 Group:          System/Libraries
 
-%description -n libcdt5
-Library providing container data types for Graphviz. This is part of the %{libname} meta package
+%description -n libcdt%{cdt_soversion}
+Library providing container data types for Graphviz.
 
-%package -n libcgraph6
+%package -n libcgraph%{cgraph_soversion}
 Summary:        Library for graph programming
 Group:          System/Libraries
-Requires:       %{libname}
 
-%description -n libcgraph6
-Libcgraph  supports  graph  programming  by  maintaining  graphs in memory and reading and
-writing graph files.  Graphs are composed of nodes, edges, and  nested  subgraphs.   These
-graph  objects  may  be  attributed  with  string  name-value pairs and programmer-defined
-records. This package is part of the %{libname} meta package.
+%description -n libcgraph%{cgraph_soversion}
+Libcgraph supports graph programming by maintaining graphs in memory and
+reading and writing graph files. Graphs are composed of nodes, edges, and
+nested subgraphs. These graph objects may be attributed with string
+name-value pairs and programmer-defined records.
 
-%package -n libgvc6
+%package -n libgvc%{gvc_soversion}
 Summary:        Graphviz context library
 Group:          System/Libraries
-Requires:       %{libname} = %{version}
+Provides:       libgraphviz6:%{_libdir}/libgvc.so.6
+Obsoletes:      libgraphviz6 < %{version}-%{release}
 
-%description -n libgvc6
-libgvc  provides  a  context for applications wishing to manipulate and render graphs.  It
-provides a command line parsing,  common  rendering  code,  and  a  plugin  mechanism  for
-renderers. This package is part of the %{libname} meta package.
+%description -n libgvc%{gvc_soversion}
+libgvc provides a context for applications wishing to manipulate and render
+graphs. It provides a command line parsing, common rendering code, and a
+plugin mechanism for renderers.
 
-%package -n libgvpr2
+%package -n libgvpr%{gvpr_soversion}
 Summary:        Library for graph filtering
 Group:          System/Libraries
-Requires:       %{libname} = %{version}
+Provides:       libgraphviz6:%{_libdir}/libgvpr.so.2
+Obsoletes:      libgraphviz6 < %{version}-%{release}
 
-%description -n libgvpr2
+%description -n libgvpr%{gvpr_soversion}
 The gvpr library allows an application to perform general-purpose graph
 manipulation and filtering based on an awk-like language
 
-%package -n libpathplan4
+%package -n libpathplan%{pathplan_soversion}
 Summary:        Library for finding smooth shortest paths
 Group:          System/Libraries
-Requires:       %{libname} = %{version}
+Provides:       libgraphviz6:%{_libdir}/libpathplan.so.4
+Obsoletes:      libgraphviz6 < %{version}-%{release}
 
-%description -n libpathplan4
-The pathplan library contains functions for finding shortest paths in polygons in fitting bezier
-curves to those paths. This package is part of the %{libname} meta package.
+%description -n libpathplan%{pathplan_soversion}
+The pathplan library contains functions for finding shortest paths in polygons
+in fitting bezier curves to those paths.
 
-%package -n libxdot4
+%package -n libxdot%{xdot_soversion}
 Summary:        Library for parsing and deparsing of xdot operations
 Group:          System/Libraries
-Requires:       %{libname} = %{version}
+Provides:       libgraphviz6:%{_libdir}/libxdot.so.4
+Obsoletes:      libgraphviz6 < %{version}-%{release}
 
-%description -n libxdot4
-The libxdot library provides support for parsing and deparsing graphical operations specificed by the xdot language.
-This package is part of the %{libname} meta package.
+%description -n libxdot%{xdot_soversion}
+The libxdot library provides support for parsing and deparsing graphical
+operations specified by the xdot language.
 
-%package -n liblab_gamut1
+%package -n liblab_gamut%{lab_gamut_soversion}
 Summary:        Library containing a rich set of graph drawing tools
 Group:          System/Libraries
-Requires:       %{libname} = %{version}
+Provides:       libgraphviz6:%{_libdir}/liblab_gamut.so.1
+Obsoletes:      libgraphviz6 < %{version}-%{release}
 
-%description -n liblab_gamut1
-The lab_gamut library contains a rich set of graph drawing tools. This package is part of the %{libname} meta package.
+%description -n liblab_gamut%{lab_gamut_soversion}
+The lab_gamut library contains a rich set of graph drawing tools.
 
 %package plugins-core
 Summary:        Core plugins for graphviz
-# Needed for dot binary
 Group:          Productivity/Graphics/Visualization/Graph
+# Needed for dot binary
 Requires(post): %{mname}
 
 %description plugins-core
@@ -387,15 +386,21 @@ Core plugins for graphviz:
 %package devel
 Summary:        Graphviz development package
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
 Requires:       %{mname} = %{version}
+Requires:       libcdt%{cdt_soversion} = %{version}
+Requires:       libcgraph%{cgraph_soversion} = %{version}
+Requires:       libgvc%{gvc_soversion} = %{version}
+Requires:       libgvpr%{gvpr_soversion} = %{version}
+Requires:       liblab_gamut%{lab_gamut_soversion} = %{version}
+Requires:       libpathplan%{pathplan_soversion} = %{version}
+Requires:       libxdot%{xdot_soversion} = %{version}
 
 %description devel
 The graphviz-devel package contains all that's necessary for developing
 programs that use the graphviz libraries including man3 pages.
 
-#autosetup breaks graphviz-addons
 %prep
+#autosetup breaks graphviz-addons
 %setup -q -n %{mname}-%{version}
 %patch0
 %patch1
@@ -420,7 +425,7 @@ sed -i \
     configure.ac
 
 %build
-./autogen.sh RUBY_VER=%{ruby_version}
+./autogen.sh RUBY_VER=%{?ruby_version}
 CFLAGS="%{optflags} -ffast-math -fno-strict-aliasing -fno-strict-overflow -fPIC"
 
 %if "%{flavor}" == "addons"
@@ -463,6 +468,10 @@ make install \
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
+# Unversioned symlinks for plugins are pointless, and
+# break shared library packaging policy
+find %{buildroot}/%{_libdir}/graphviz/ -name "libgvplugin_*.so" -print -delete
+
 mkdir -p %{buildroot}/%{_docdir}
 mkdir -p %{buildroot}%{_datadir}/%{nmame}
 
@@ -471,21 +480,6 @@ chmod -x %{buildroot}%{_datadir}/%{mname}/lefty/*
 
 mkdir -p %{buildroot}%{_libdir}/graphviz
 touch %{buildroot}%{_libdir}/graphviz/%{config_file}
-
-mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
-cat <<EOF >%{buildroot}%{_sysconfdir}/ld.so.conf.d/%{mname}.conf
-%{_libdir}/%{mname}
-%{_libdir}/%{mname}/sharp
-%{_libdir}/%{mname}/java
-%{_libdir}/%{mname}/perl
-%{_libdir}/%{mname}/php
-%{_libdir}/%{mname}/ocaml
-%{_libdir}/%{mname}/python
-%{_libdir}/%{mname}/lua
-%{_libdir}/%{mname}/tcl
-%{_libdir}/%{mname}/guile
-%{_libdir}/%{mname}/ruby
-EOF
 
 #Correct the path to the shared library
 for manfile in $(find %{buildroot} -name \*.man); do
@@ -506,7 +500,9 @@ EOF
 
 # Fix doc location
 cp -a %{buildroot}%{_datadir}/%{mname}/doc %{buildroot}%{_defaultdocdir}/%{mname}-doc
-%fdupes -s %{buildroot}%{_defaultdocdir}/%{mname}-doc
+%fdupes %{buildroot}%{_defaultdocdir}/%{mname}-doc
+%fdupes %{buildroot}%{_datadir}/graphviz/demo
+
 # Prune all the content of the base graphviz package
 rm -rf %{buildroot}%{_libdir}/pkgconfig
 rm -rf %{buildroot}%{_includedir}
@@ -542,7 +538,7 @@ mv %{buildroot}%{_libdir}/%{mname}/tcl/pkgIndex.tcl %{buildroot}%{_datadir}/tcl/
 rm -rf %{buildroot}%{_libdir}/graphviz/lua
 rm -rf %{buildroot}%{_libdir}/graphviz/perl
 rm -rf %{buildroot}%{_libdir}/graphviz/php
-rm -rf %{buildroot}%{_libdir}/graphviz/python
+rm -rf %{buildroot}%{_libdir}/graphviz/python*
 rm -rf %{buildroot}%{_libdir}/graphviz/ruby
 %else
 # These are part of gnome subpkg
@@ -558,41 +554,36 @@ rm -rf %{buildroot}%{_datadir}/%{mname}/doc
 
 %post plugins-core
 # run "dot -c" to generate plugin config %%{_libdir}/graphviz/config
-dot -c
+%{_bindir}/dot -c
 test -s %{_libdir}/graphviz/%{config_file} || echo "%{_libdir}/graphviz/%{config_file} doesn't exist! Check installation."
 
-%postun plugins-core
-if ! test -x %{_bindir}/dot; then
-    rm -f %{_libdir}/%{mname}/%{config_file}
-fi
+%post -n libcdt%{cdt_soversion} -p /sbin/ldconfig
 
-%post -n libcdt5 -p /sbin/ldconfig
+%postun -n libcdt%{cdt_soversion} -p /sbin/ldconfig
 
-%postun -n libcdt5 -p /sbin/ldconfig
+%post -n libcgraph%{cgraph_soversion} -p /sbin/ldconfig
 
-%post -n libcgraph6 -p /sbin/ldconfig
+%postun -n libcgraph%{cgraph_soversion} -p /sbin/ldconfig
 
-%postun -n libcgraph6 -p /sbin/ldconfig
+%post -n libgvc%{gvc_soversion} -p /sbin/ldconfig
 
-%post -n libgvc6 -p /sbin/ldconfig
+%postun -n libgvc%{gvc_soversion} -p /sbin/ldconfig
 
-%postun -n libgvc6 -p /sbin/ldconfig
+%post -n libgvpr%{gvpr_soversion} -p /sbin/ldconfig
 
-%post -n libgvpr2 -p /sbin/ldconfig
+%postun -n libgvpr%{gvpr_soversion} -p /sbin/ldconfig
 
-%postun -n libgvpr2 -p /sbin/ldconfig
+%post -n libpathplan%{pathplan_soversion} -p /sbin/ldconfig
 
-%post -n libpathplan4 -p /sbin/ldconfig
+%postun -n libpathplan%{pathplan_soversion} -p /sbin/ldconfig
 
-%postun -n libpathplan4 -p /sbin/ldconfig
+%post -n libxdot%{xdot_soversion} -p /sbin/ldconfig
 
-%post -n libxdot4 -p /sbin/ldconfig
+%postun -n libxdot%{xdot_soversion} -p /sbin/ldconfig
 
-%postun -n libxdot4 -p /sbin/ldconfig
+%post -n liblab_gamut%{lab_gamut_soversion} -p /sbin/ldconfig
 
-%post -n liblab_gamut1 -p /sbin/ldconfig
-
-%postun -n liblab_gamut1 -p /sbin/ldconfig
+%postun -n liblab_gamut%{lab_gamut_soversion} -p /sbin/ldconfig
 
 %if "%{flavor}" == "addons"
 %files -n graphviz-gvedit
@@ -617,13 +608,7 @@ fi
 %{_bindir}/dot -c
 
 %postun -n graphviz-gd
-%{_bindir}/dot -c 2>/dev/null
-
-%post -n graphviz-gnome
-%{_bindir}/dot -c
-
-%postun -n graphviz-gnome
-%{_bindir}/dot -c 2>/dev/null
+if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bindir}/dot -c ; fi
 
 %files -n graphviz-gnome
 %{_libdir}/graphviz/libgvplugin_gs*
@@ -633,14 +618,11 @@ fi
 %{_libdir}/graphviz/libgvplugin_xlib*
 %{_libdir}/graphviz/libgvplugin_gdk*
 
-%post -n graphviz-tcl -p /sbin/ldconfig
-%postun -n graphviz-tcl -p /sbin/ldconfig
-
-%post -n graphviz-webp
+%post -n graphviz-gnome
 %{_bindir}/dot -c
 
-%postun -n graphviz-webp
-%{_bindir}/dot -c 2>/dev/null
+%postun -n graphviz-gnome
+if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bindir}/dot -c ; fi
 
 %files -n graphviz-guile
 %{_libdir}/graphviz/guile
@@ -684,12 +666,8 @@ fi
 %config(noreplace) %{phpconf_dir}/gv.ini
 
 %files -n python3-gv
-%dir %{_libdir}/graphviz/python3
 %{python3_sitearch}/_gv.so
 %{python3_sitearch}/gv.py
-%{_libdir}/graphviz/python3/_gv.so
-%{_libdir}/graphviz/python3/gv.py
-%{_libdir}/graphviz/python3/libgv_python3.so
 %{_mandir}/man3/gv.3python%{ext_man}
 
 %files -n graphviz-ruby
@@ -706,8 +684,17 @@ fi
 %{_datadir}/tcl/%{mname}/pkgIndex.tcl
 %{_mandir}/man3/*.3tcl*
 
+%post -n graphviz-tcl -p /sbin/ldconfig
+%postun -n graphviz-tcl -p /sbin/ldconfig
+
 %files -n graphviz-webp
 %{_libdir}/graphviz/libgvplugin_webp.so*
+
+%post -n graphviz-webp
+%{_bindir}/dot -c
+
+%postun -n graphviz-webp
+if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 
 %files -n graphviz-doc
 %docdir %{_defaultdocdir}/%{mname}-doc
@@ -798,29 +785,26 @@ fi
 %{_mandir}/man7/*.7%{ext_man}
 %exclude %{_mandir}/man1/smyrna.1%{ext_man}
 
-%files -n %{libname}
-%config %{_sysconfdir}/ld.so.conf.d/graphviz.conf
+%files -n libcdt%{cdt_soversion}
+%{_libdir}/libcdt.so.%{cdt_soversion}*
 
-%files -n libcdt5
-%{_libdir}/libcdt.so.5*
+%files -n libcgraph%{cgraph_soversion}
+%{_libdir}/libcgraph.so.%{cgraph_soversion}*
 
-%files -n libcgraph6
-%{_libdir}/libcgraph.so.6*
+%files -n libgvc%{gvc_soversion}
+%{_libdir}/libgvc.so.%{gvc_soversion}*
 
-%files -n libgvc6
-%{_libdir}/libgvc.so.6*
+%files -n libgvpr%{gvpr_soversion}
+%{_libdir}/libgvpr.so.%{gvpr_soversion}*
 
-%files -n libgvpr2
-%{_libdir}/libgvpr.so.2*
+%files -n libpathplan%{pathplan_soversion}
+%{_libdir}/libpathplan.so.%{pathplan_soversion}*
 
-%files -n libpathplan4
-%{_libdir}/libpathplan.so.4*
+%files -n libxdot%{xdot_soversion}
+%{_libdir}/libxdot.so.%{xdot_soversion}*
 
-%files -n libxdot4
-%{_libdir}/libxdot.so.4*
-
-%files -n liblab_gamut1
-%{_libdir}/liblab_gamut.so.1*
+%files -n liblab_gamut%{lab_gamut_soversion}
+%{_libdir}/liblab_gamut.so.%{lab_gamut_soversion}*
 
 %files plugins-core
 %dir %{_libdir}/%{name}
@@ -829,7 +813,13 @@ fi
 
 %files devel
 %{_includedir}/graphviz
-%{_libdir}/*.so
+%{_libdir}/libcdt.so
+%{_libdir}/libcgraph.so
+%{_libdir}/libgvc.so
+%{_libdir}/libgvpr.so
+%{_libdir}/liblab_gamut.so
+%{_libdir}/libpathplan.so
+%{_libdir}/libxdot.so
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/*.3%{ext_man}
 %endif

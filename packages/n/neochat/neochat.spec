@@ -1,7 +1,7 @@
 #
 # spec file for package neochat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,40 @@
 #
 
 
-%define _kf5_version 5.77.0
+%define _kf5_version 5.88.0
 %bcond_without  lang
 Name:           neochat
-Version:        1.2.0
+Version:        22.02
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/neochat/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.1
+Source0:        https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
+%endif
+BuildRequires:  cmake >= 3.16
 BuildRequires:  cmark
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
-BuildRequires:  cmake(KF5Declarative) >= %{_kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{_kf5_version}
 BuildRequires:  cmake(KF5QQC2DesktopStyle) >= %{_kf5_version}
+BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
 BuildRequires:  cmake(KQuickImageEditor) >= 0.1
+BuildRequires:  cmake(QCoro)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Keychain)
@@ -59,10 +67,7 @@ Requires:       libQt5Multimedia5
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
-%if %{with lang}
-Source1:        https://download.kde.org/stable/neochat/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
-%endif
+Requires:       syntax-highlighting-imports
 
 %description
 Neochat is a client for Matrix, the decentralized communication protocol for instant

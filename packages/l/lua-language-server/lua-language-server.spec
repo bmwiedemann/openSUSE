@@ -20,7 +20,7 @@
 %define pkg_name lua-language-server
 
 Name:           lua-language-server
-Version:        2.6.1
+Version:        2.6.4
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  unzip
+ExcludeArch:    s390x ppc64le ppc64
 
 %description
 This package provides a Language Server Protocol (LSP) implementation for Lua.

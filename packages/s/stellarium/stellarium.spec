@@ -1,7 +1,7 @@
 #
 # spec file for package stellarium
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,6 @@ export QT_HASH_SEED=0
 %install
 %cmake_install
 
-%suse_update_desktop_file -c stellarium Stellarium "Planetarium in your computer" stellarium stellarium Science Astronomy
 mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
 %fdupes %{buildroot}%{_datadir}
 # remove all zero size files

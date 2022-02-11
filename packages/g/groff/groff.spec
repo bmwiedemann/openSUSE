@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -251,9 +251,11 @@ install -m 644 %{SOURCE3} %{SOURCE4} %{buildroot}/%{_sysconfdir}/profile.d/
 %if %{with full_build}
 %post -n groff-full
 %install_info --info-dir=%{_infodir} %{_infodir}/groff.info.gz
-update-alternatives --install \
-   %{_mandir}/man7/roff.7%{?ext_man} roff.7%{?ext_man} \
-       %{_mandir}/man7/roff-gf.7%{?ext_man} 500
+if test -f %{_mandir}/man7/roff-gf.7%{?ext_man} ; then
+   update-alternatives --install \
+      %{_mandir}/man7/roff.7%{?ext_man} roff.7%{?ext_man} \
+          %{_mandir}/man7/roff-gf.7%{?ext_man} 500
+fi
 
 %preun -n groff-full
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/groff.info.gz

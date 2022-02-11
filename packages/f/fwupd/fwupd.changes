@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Feb  8 16:49:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.5:
+  * This release adds the following features:
+    + Add a flag to indicate the firmware is not provided by the
+      vendor
+    + Add support for showing dependency versions in JSON format
+    + Allow fwupd to operate in socket mode without a D-Bus daemon
+    + Allow marking a device as End-of-Life by the OEM vendor
+    + Allow specifying the machine Best Known Configuration locally
+    + Fall back to the ARM Device Tree 'compatible' data when
+      required
+  * This release fixes the following bugs:
+    + Be more robust by retrying IPMI transactions on servers
+    + Change the expired Redfish password when required
+    + Fix a ModemManager segfault on startup for some MBIM-QDU
+      devices
+    + Fix a possible dell-dock segfault at startup
+    + Fix compiling with new versions of efivar
+    + Fix the Nordic bootloader type detection
+    + Fix USB4 retimer enumeration
+    + Get the SMBIOS table and host machine ID when running on
+      Windows
+    + Show results when calling get-details if failing requirements
+    + Uninhibit the modem using ModemManager after upgrade
+ * This release adds support for the following hardware:
+   + Future Analogix devices
+   + NovaCustom NV4x
+- Changes from version 1.7.4:
+  * This release adds the following features:
+    + Add firmware branch support for ModemManager devices
+    + Allow firmware engineers to patch files at known offsets
+    + Show why more devices are not marked as updatable
+  * This release fixes the following bugs:
+    + Allow fwupdtool to be run as the non-root user in more cases
+    + Assign the Logitech bulkcontroller update interface correctly
+    + Do not allow UEFI updates when the laptop lid is closed
+    + Do not autoload ipmi-si to avoid warning on non-server
+      hardware
+    + Do not show a critical warning for a weird TPM event log
+    + Fix waiting for USB devices when using Windows
+    + Ignore non-PCI NVMe devices
+  * This release adds support for the following hardware:
+    + HP USB-C G2 Dock
+    + Many UF2 devices, experimentally
+    + More PixArt devices
+    + Nordic HID devices using MCUBoot
+    + Quectel EG25-G LTE Modem
+    + ThinkPad Thunderbolt 4 Dock
+
+-------------------------------------------------------------------
 Tue Dec 21 11:56:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.7.3:

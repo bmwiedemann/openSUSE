@@ -524,4 +524,38 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment></comment>
     <requestid>927506</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>81481d0ced6b882053fed22f1798fe0b</srcmd5>
+    <version>5.1.5</version>
+    <time>1644531127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.5
+  + Fix badges in README file.
+  + Update copyright date.
+  + Strange behavior for the scrollbar in the bottombar.
+  + Fix place object element order in DTD and RNG schemas. Element
+    placeobj content does not follow the DTD and RNG, expecting
+    (ptitle? , pname+).
+  + Solve InterpolationSyntaxError if “%” in a string. The
+    grampletpane module saves data in a config file for all the
+    gramplets added in the dashboard. The python configparser
+    module doesn’t like if we have a “%” character in a string.
+  + ‘&lt;‘ not supported between 2 instances of IndexMark.
+  + Remove debug statements in unit tests.
+  + Fix negative Span when dates are not Gregorian.
+  + Incorrect grouping if no ma/patronymic surname.
+  + Group As override is ignored for ma/patronymic surnames. See:
+    https://gramps.discourse.group/t/patronymic-and-matronymic-name/1684/5
+  + Add comments for the lat-lon field of editplace.
+  + Place editor, lat and long text are swapped.
+  + Fix Statusbar progress being shown before use.
+  + Fix exception when removing a group name in Sqlite db when
+    group name is already missing.
+  + Fix error when trying to close name editor during long name
+    group mapping view rebuild.
+  + OsmGpsMap-CRITICAL: Map source setup called twice.
+  + Fix probably alive function unit test.
+  + Updated translations.</comment>
+    <requestid>953051</requestid>
+  </revision>
 </revisionlist>
