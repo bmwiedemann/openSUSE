@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 22 22:53:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update generic-lens to version 2.2.1.0.
+  ## generic-lens-2.2.1.0 (2022-01-22)
+  - GHC 9.2 compatibility
+
+-------------------------------------------------------------------
 Thu Jul 15 16:15:11 UTC 2021 - psimons@suse.com
 
 - Update generic-lens to version 2.2.0.0.

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-weather
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,14 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://live.gnome.org/Design/Apps/Weather
 Source0:        https://download.gnome.org/sources/gnome-weather/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 4be71525f07189e97720688472172604879d49a5.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-weather/-/commit/4be71525f07189e97720688472172604879d49a5.patch
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.26
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -73,7 +76,6 @@ search results from GNOME Weather.
 
 %install
 %meson_install
-%suse_update_desktop_file %{_name} Utility DesktopUtility
 %find_lang %{_name} %{?no_lang_C} %{name}.lang
 
 %check

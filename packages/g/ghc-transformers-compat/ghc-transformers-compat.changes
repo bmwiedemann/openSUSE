@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 10 23:16:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update transformers-compat to version 0.7.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:32 UTC 2021 - psimons@suse.com
 
 - Update transformers-compat to version 0.7.1.

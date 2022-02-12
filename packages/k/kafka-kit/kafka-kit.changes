@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 20 05:59:11 UTC 2022 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Remove JDBCAppender, JMSSink, chainsaw from log4j jars during build to
+  prevent bsc#1194842, CVE-2022-23302, bsc#1194843, CVE-2022-23305,
+  bsc#1194844, CVE-2022-23307
+
+-------------------------------------------------------------------
 Thu Dec 16 18:47:53 UTC 2021 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Remove JMSAppender from log4j jars during build to

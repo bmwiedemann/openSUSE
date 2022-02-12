@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 10 11:49:32 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.9.15
+  * Fixed a potential heap overflow bug with GIF images (Issue #461)
+  * Fixed a potential double-free bug with PNG images (Issue #462)
+  * Fixed a potential stack overflow bug with GIF images (Issue #463)
+  * Fixed a potential heap underflow bug with empty attributes (Issue #464)
+  * Fixed a potential stack overflow bug with BMP images (Issue #466)
+  * Fixed a potential heap overflow bug with the table-of-contents (Issue #467)
+  * Fixed a potential heap overflow bug with headings (Issue #468)
+  * Fixed a potential stack overflow bug with GIF images (Issue #470)
+
+-------------------------------------------------------------------
 Wed Jan 12 09:35:58 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 1.9.14:

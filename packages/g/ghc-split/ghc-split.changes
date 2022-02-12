@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:44:10 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Make sure installed text files have no +x flag.
+
+-------------------------------------------------------------------
 Wed Sep 22 08:52:45 UTC 2021 - psimons@suse.com
 
 - Update split to version 0.2.3.4 revision 2.

@@ -2,7 +2,7 @@ Cabal-Version: >= 1.10
 
 Name:        Glob
 Version:     0.10.2
-x-revision: 1
+x-revision:  3
 Homepage:    http://iki.fi/matti.niemenmaa/glob/
 Synopsis:    Globbing library
 Category:    System
@@ -26,19 +26,19 @@ Source-Repository head
   Location: https://github.com/Deewiant/glob
 
 Library
-   Build-Depends: base         >= 4 && < 5
-                , containers   <  0.7
-                , directory    <  1.4
-                , dlist        >= 0.4 && < 1.1
-                , filepath     >= 1.1 && < 1.5
-                , transformers >= 0.2 && < 0.6
-                , transformers-compat >= 0.3 && < 0.8
+   Build-Depends: base                >= 4 && < 5
+                , containers
+                , directory
+                , dlist               >= 0.4
+                , filepath            >= 1.1
+                , transformers        >= 0.2
+                , transformers-compat >= 0.3
 
    if impl(ghc < 8.0)
-      Build-Depends: semigroups >= 0.18 && < 0.21
+      Build-Depends: semigroups >= 0.18
 
    if os(windows)
-      Build-Depends: Win32 == 2.*
+      Build-Depends: Win32 >= 2.5
 
    Default-Language: Haskell98
 
@@ -59,23 +59,23 @@ Test-Suite glob-tests
    main-is: Main.hs
 
    Build-Depends: base                       >= 4 && < 5
-                , containers                 <  0.7
-                , directory                  <  1.4
-                , dlist                      >= 0.4 && < 1.1
-                , filepath                   >= 1.1 && < 1.5
-                , transformers               >= 0.2 && < 0.6
-                , transformers-compat        >= 0.3 && < 0.8
-                , HUnit                      >= 1.2 && < 1.7
-                , QuickCheck                 >= 2 && < 3
-                , test-framework             >= 0.2 && < 1
-                , test-framework-hunit       >= 0.2 && < 1
-                , test-framework-quickcheck2 >= 0.3 && < 1
+                , containers
+                , directory
+                , dlist                      >= 0.4
+                , filepath                   >= 1.1
+                , transformers               >= 0.2
+                , transformers-compat        >= 0.3
+                , HUnit                      >= 1.2
+                , QuickCheck                 >= 2
+                , test-framework             >= 0.2
+                , test-framework-hunit       >= 0.2
+                , test-framework-quickcheck2 >= 0.3
 
    if impl(ghc < 8.0)
-      Build-Depends: semigroups >= 0.18 && < 0.20
+      Build-Depends: semigroups >= 0.18
 
    if os(windows)
-      Build-Depends: Win32 == 2.*
+      Build-Depends: Win32 >= 2
 
    Default-Language: Haskell98
 

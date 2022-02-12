@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:43:52 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Make sure installed text files have no +x flag.
+
+-------------------------------------------------------------------
+Fri Feb 11 08:43:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update jailbreak for transformers-compat.
+
+-------------------------------------------------------------------
 Tue Aug 17 15:24:25 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax constraints on transformers-compat 

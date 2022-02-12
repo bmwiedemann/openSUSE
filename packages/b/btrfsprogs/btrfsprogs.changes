@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb  9 00:00:00 CET 2022 - dsterba@suse.cz
+
+- Update to 5.16.1
+ * mkfs: support DUP on metadata on zoned devices
+ * subvol delete: drop warning for root when search ioctl fails
+ * check:
+   * fix --init-csum-tree to not create checksums for extents that are not
+     supposed to have them
+   * add check for metadata item levels
+ * add udev rule for zoned devices as they require mq-deadline
+ * build: fix redefinition of ALIGN on mixed old/new kernel/userspace (5.11)
+ * other:
+   * typo fixes
+   * new tests
+   * CI targets updated
+ * Removed patches: btrfs-progs-kerncompat-add-local-definition-for-alig.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jan 19 09:49:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros (bsc#1194748) 

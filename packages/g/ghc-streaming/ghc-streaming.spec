@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-streaming
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %global pkg_name streaming
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.3.0
+Version:        0.2.3.1
 Release:        0
 Summary:        An elementary streaming prelude and general stream type
 License:        BSD-3-Clause
@@ -32,6 +33,10 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-hspec-devel
+%endif
 
 %description
 This package contains two modules,
@@ -204,13 +209,15 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver mmorph '<1.2' '<1.3'
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

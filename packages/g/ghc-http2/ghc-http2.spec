@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name http2
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-containers-devel
@@ -43,7 +44,6 @@ ExcludeArch:    %{ix86}
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
-BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-cryptonite-devel
 BuildRequires:  ghc-directory-devel

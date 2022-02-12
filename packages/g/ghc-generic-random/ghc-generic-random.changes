@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 23 00:37:29 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update generic-random to version 1.5.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/generic-random-1.5.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Nov 15 06:59:51 UTC 2021 - psimons@suse.com
 
 - Update generic-random to version 1.5.0.0 revision 1.

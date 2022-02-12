@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-characters
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
 Source0:        https://download.gnome.org/sources/gnome-characters/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM mesonfix-061.patch -- Fix build with meson 0.61 and newer
+Patch0:         mesonfix-061.patch
 
 BuildRequires:  gobject-introspection-devel >= 1.35.9
 BuildRequires:  intltool >= 0.50.1
@@ -50,7 +52,7 @@ A simple utility application to find and insert unusual characters.
 Summary:        GNOME Characters -- Search Provider for GNOME Shell
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (gnome-shell and %{name})
 
 %description -n gnome-shell-search-provider-gnome-characters
 This package contains a search provider to enable GNOME Shell to get
@@ -59,7 +61,7 @@ search results from GNOME Characters.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

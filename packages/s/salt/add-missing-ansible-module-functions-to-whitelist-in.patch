@@ -1,0 +1,40 @@
+From aec7965f19f55d3d33893833fd259606d3a7e641 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 8 Feb 2022 11:53:47 +0000
+Subject: [PATCH] Add missing "ansible" module functions to whitelist in
+ Salt 3004 (bsc#1195625) (#485)
+
+* Add missing functions to ansible __load__
+
+* Properly get separated copies from list
+---
+ salt/modules/ansiblegate.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
+index f33be6a00e..7c3a17861a 100644
+--- a/salt/modules/ansiblegate.py
++++ b/salt/modules/ansiblegate.py
+@@ -45,7 +45,16 @@ hosts:
+ """
+ DEFAULT_TIMEOUT = 1200  # seconds (20 minutes)
+ 
+-__load__ = __non_ansible_functions__ = ["help", "list_", "call", "playbooks"][:]
++__non_ansible_functions__ = []
++
++__load__ = __non_ansible_functions__[:] = [
++    "help",
++    "list_",
++    "call",
++    "playbooks",
++    "discover_playbooks",
++    "targets",
++]
+ 
+ 
+ def _set_callables(modules):
+-- 
+2.35.1
+
+

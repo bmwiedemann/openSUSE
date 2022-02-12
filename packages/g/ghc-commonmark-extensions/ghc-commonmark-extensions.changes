@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 12 17:57:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.
+  ## 0.2.3
+
+  - Allow bare word attribute in fenced_divs (#84).  This follows a similar
+    change in pandoc (jgm/pandoc#7242).
+
+-------------------------------------------------------------------
 Mon Nov  1 08:43:02 UTC 2021 - psimons@suse.com
 
 - Add commonmark-extensions at version 0.2.2.1.

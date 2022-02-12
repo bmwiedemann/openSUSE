@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 16:14:02 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update blaze-builder to version 0.4.2.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Oct 19 07:23:01 UTC 2021 - psimons@suse.com
 
 - Update blaze-builder to version 0.4.2.2.

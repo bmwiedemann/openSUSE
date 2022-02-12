@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:36:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit itstool BuildRequires: meson checks for it.
+
+-------------------------------------------------------------------
 Fri Jan  7 23:36:48 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add fix upstream 0001-GTG-0.5-fix-meson-build-failure.patch based

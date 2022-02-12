@@ -34,7 +34,10 @@ if test ! -x "$POSTGRES"; then
     exit 1
 fi
 BINDIR=$(dirname $POSTGRES)
-VERSION=$($POSTGRES --version|awk '{print $NF}')
+# Avoiding the use of awk to get the last word
+# in the line, which is the version number
+VERSION=$($POSTGRES --version)
+VERSION=${VERSION##* }
 pg_ctl () {
 	$BINDIR/pg_ctl -s -D $DATADIR ${POSTGRES_TIMEOUT:+-t $POSTGRES_TIMEOUT} "$@"
 }
@@ -44,7 +47,6 @@ case "$1" in
     start)
 	if [ ! -f $DATADIR/PG_VERSION ]; then
 	    test -n "$POSTGRES_LANG" && export LC_ALL="$POSTGRES_LANG"
-            V=$(printf "%02d%02d" $(echo $VERSION|awk -F. '{print $1, $2}'))
 	    install -d -m 700 ${DATADIR} &&
 	    echo "Initializing PostgreSQL $VERSION at location ${DATADIR}"
 	    /usr/bin/initdb --auth=ident $DATADIR &> initlog || {

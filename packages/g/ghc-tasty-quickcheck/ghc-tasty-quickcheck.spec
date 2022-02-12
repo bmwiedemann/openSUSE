@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tasty-quickcheck
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name tasty-quickcheck
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.1.2
+Version:        0.10.2
 Release:        0
 Summary:        QuickCheck support for the Tasty test framework
 License:        MIT

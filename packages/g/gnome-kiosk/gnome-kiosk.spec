@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-kiosk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,10 @@ Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
 Source:         https://download.gnome.org/sources/gnome-kiosk/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-kiosk-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
+Patch:          gnome-kiosk-fix-meson-061.patch
+
+BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  mutter-devel
 BuildRequires:  pkgconfig
@@ -38,8 +42,17 @@ Requires:       gnome-session
 Kiosk provides a desktop enviroment suitable for fixed purpose, or single
 application deployments like wall displays and point-of-sale systems.
 
+%package sample-app
+Summary:        Search appliance sample app
+Requires:       %{name} = %{version}
+Requires:       MozillaFirefox
+
+%description sample-app
+Search appliance sample app that demonstate how the kiosk
+compositor is used.
+
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
@@ -47,6 +60,7 @@ application deployments like wall displays and point-of-sale systems.
 
 %install
 %meson_install
+%fdupes -s %{buildroot}%{_datadir}
 
 %files
 %license COPYING
@@ -59,16 +73,18 @@ application deployments like wall displays and point-of-sale systems.
 %{_userunitdir}/org.gnome.Kiosk@wayland.service
 %{_userunitdir}/org.gnome.Kiosk@x11.service
 %{_datadir}/applications/org.gnome.Kiosk.Script.desktop
-%{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop
 %{_datadir}/applications/org.gnome.Kiosk.desktop
 %dir %{_datadir}/gnome-session
 %dir %{_datadir}/gnome-session/sessions
 %{_datadir}/gnome-session/sessions/gnome-kiosk-script.session
-%{_datadir}/gnome-session/sessions/org.gnome.Kiosk.SearchApp.session
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/gnome-kiosk-script-wayland.desktop
-%{_datadir}/wayland-sessions/org.gnome.Kiosk.SearchApp.Session.desktop
 %{_datadir}/xsessions/gnome-kiosk-script-xorg.desktop
+
+%files sample-app
+%{_datadir}/applications/org.gnome.Kiosk.SearchApp.desktop
+%{_datadir}/gnome-session/sessions/org.gnome.Kiosk.SearchApp.session
+%{_datadir}/wayland-sessions/org.gnome.Kiosk.SearchApp.Session.desktop
 %{_datadir}/xsessions/org.gnome.Kiosk.SearchApp.Session.desktop
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package epiphany
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        https://download.gnome.org/sources/epiphany/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM bfbb5f7bab38301d8a4a444173acdae8d9692146.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/epiphany/-/commit/bfbb5f7bab38301d8a4a444173acdae8d9692146.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0

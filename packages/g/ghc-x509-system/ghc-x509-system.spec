@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-x509-system
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name x509-system
 Name:           ghc-%{pkg_name}
-Version:        1.6.6
+Version:        1.6.7
 Release:        0
 Summary:        Handle per-operating-system X.509 accessors and storage
 License:        BSD-3-Clause
@@ -38,7 +38,8 @@ BuildRequires:  ghc-x509-store-devel
 ExcludeArch:    %{ix86}
 
 %description
-System X.509 handling.
+System X.509 handling for accessing operating system dependents store and other
+storage methods.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

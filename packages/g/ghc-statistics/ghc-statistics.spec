@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-statistics
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name statistics
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.15.2.0
+Version:        0.16.0.1
 Release:        0
 Summary:        A library of statistical types, data, and functions
 License:        BSD-2-Clause
@@ -28,7 +28,6 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-deepseq-devel
@@ -37,6 +36,7 @@ BuildRequires:  ghc-math-functions-devel
 BuildRequires:  ghc-monad-par-devel
 BuildRequires:  ghc-mwc-random-devel
 BuildRequires:  ghc-primitive-devel
+BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-vector-algorithms-devel
 BuildRequires:  ghc-vector-binary-instances-devel
@@ -84,11 +84,10 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+find . -type f -exec chmod -x {} +
 
 %build
 %ghc_lib_build
-chmod a-x README.markdown changelog.md
-chmod a-x examples/kde/*
 
 %install
 %ghc_lib_install

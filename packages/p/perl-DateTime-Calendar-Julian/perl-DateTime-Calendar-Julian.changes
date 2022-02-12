@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 31 03:06:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.107
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.107		2022-01-30	T. R. Wyant
+      Add method calendar_name(), which returns 'Julian'.
+      Require DateTime 1.48 for is_last_day_of_quarter().  This is a
+      significant bump, since the previous was 0.08.
+      Update Perl requirement in metadata to 5.008004.  It was always this
+      in fact, since DateTime requires this, as does Makefile.PL.
+      Add support for quarters.
+
+-------------------------------------------------------------------
 Sun Sep 26 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.106

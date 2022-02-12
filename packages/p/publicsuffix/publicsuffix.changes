@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  8 14:26:10 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220202:
+  * util: gTLD data autopull updates for 2022-02-02T15:12:37 UTC (#1513)
+  * Add: GDS Managed Domains (#1512)
+  * Add CDDO's `api.gov.uk` domain (#1505)
+  * Remove: `gov.ky` (#1503)
+  * Add `site.tb-hosting.com` for team.blue (#1481)
+  * Add codeberg.page to PSL (#1482)
+
+-------------------------------------------------------------------
 Tue Jan  4 10:09:06 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211230:

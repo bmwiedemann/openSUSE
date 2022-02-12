@@ -1,7 +1,7 @@
 #
 # spec file for package python-control
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 URL:            http://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM - https://github.com/python-control/python-control/pull/688
+Patch1:         688.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

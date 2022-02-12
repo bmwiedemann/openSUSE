@@ -174,4 +174,14 @@
   * Instruction for installing dependencies #214</comment>
     <requestid>935980</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0e1ce4affc0add232c2d53b01e953848</srcmd5>
+    <version>0.6.5</version>
+    <time>1644617264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.5:
+  * Add relative width option in #220
+  * mouse and touch support on wayland in #200</comment>
+    <requestid>953374</requestid>
+  </revision>
 </revisionlist>

@@ -56,7 +56,6 @@
 %define sysname unknown
 %endif
 Name:           ghc-bootstrap
-Release:        0
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
@@ -83,8 +82,10 @@ ExclusiveArch:  ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
 AutoReq:        off
 %ifnarch s390 s390x
 Version:        8.10.1
+Release:        0
 %else
 Version:        8.10.2
+Release:        0
 %endif
 %ifnarch %{arm} s390x
 BuildRequires:  libnuma-devel

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 11 04:07:44 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.3.2
+  Features:
+  * Add French translation
+  Bug fixes:
+  * Silence assertion failure on /part command
+  * Silence "Unknown capability" warning on trailing whitespace
+  Changes:
+  * Add tooltips to buttons with no text
+
+-------------------------------------------------------------------
 Sat Dec 18 10:20:18 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.3.1

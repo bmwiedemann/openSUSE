@@ -1,7 +1,7 @@
 cabal-version:   2.0
 name:            base64
 version:         0.4.2.3
-x-revision: 1
+x-revision: 2
 synopsis:        A modern RFC 4648-compliant Base64 library
 description:
   RFC 4648-compliant Base64 with an eye towards performance and modernity (additional support for RFC 7049 standards)
@@ -52,7 +52,7 @@ library
     Data.ByteString.Base64.Internal.W64.Loop
 
   build-depends:
-      base           >=4.10     && <5
+      base           >=4.10     && <4.16
     , bytestring     >=0.10     && <0.12
     , deepseq        >=1.4.3.0  && <1.4.6.0
     , ghc-byteorder  ^>=4.11.0.0
@@ -70,7 +70,7 @@ test-suite tasty
   other-modules:    Internal
   main-is:          Main.hs
   build-depends:
-      base               >=4.10 && <5
+      base               >=4.10 && <4.16
     , base64
     , base64-bytestring
     , bytestring
@@ -90,7 +90,7 @@ benchmark bench
   hs-source-dirs:   benchmarks
   main-is:          Base64Bench.hs
   build-depends:
-      base               >=4.10 && <5
+      base               >=4.10 && <4.16
     , base64
     , base64-bytestring
     , bytestring

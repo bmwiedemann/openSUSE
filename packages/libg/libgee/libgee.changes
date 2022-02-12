@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 10 09:20:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.20.5:
+  + Fixes for newer valac.
+  + Use Makefile.introspection instead of custom rule.
+- Drop conditional Requires for long obsolete versions of openSUSE.
+- Modernize spec, use ldconfig_scriptlets macro for post(un)
+  handling and other current macros.
+
+-------------------------------------------------------------------
 Thu Mar 18 16:54:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.20.4:

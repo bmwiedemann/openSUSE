@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:13:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Added support for Python 3.10; dropped explicit support for
+    Python 3.6.
+  * Header file e-antic.h is now called local.h. There is still a
+    header file e-antic.h that includes all of e-antic's C
+    interface, so in particular local.h.
+  * Header file renfxx_fwd.hpp is now called forward.hpp. The old
+    header file renfxx_fwd.hpp can still be used.
+  * Header file renfxx.h is now called e-antic.hpp. The old
+    header file renfxx.h can still be used.
+
+-------------------------------------------------------------------
 Sun Aug 15 11:20:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.3

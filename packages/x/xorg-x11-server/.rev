@@ -3713,4 +3713,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     + os: Try to discover the current seat with the XDG_SEAT var first</comment>
     <requestid>943815</requestid>
   </revision>
+  <revision rev="402" vrev="2">
+    <srcmd5>a714fa1f67dd46d14f1199653a8b105e</srcmd5>
+    <version>21.1.3</version>
+    <time>1644617200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953300</requestid>
+  </revision>
 </revisionlist>

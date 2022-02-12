@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb  8 13:53:36 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update generated documentation to 3004
+
+-------------------------------------------------------------------
+Tue Feb  8 12:02:04 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Expose missing "ansible" module functions in Salt 3004 (bsc#1195625)
+
+- Added:
+  * add-missing-ansible-module-functions-to-whitelist-in.patch
+
+-------------------------------------------------------------------
+Mon Feb  7 10:33:28 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
+
+- Fix salt-call event.send with pillar or grains
+
+- Added:
+  * fix-salt-call-event.send-call-with-grains-and-pillar.patch
+
+-------------------------------------------------------------------
 Mon Jan 31 10:28:10 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
 
 - Fix exception in batch_async caused by a bad function call

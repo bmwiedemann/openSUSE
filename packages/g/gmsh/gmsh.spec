@@ -20,7 +20,7 @@
 %bcond_with static_lib
 %bcond_with pdf_doc
 Name:           gmsh
-Version:        4.9.3
+Version:        4.9.4
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
 Patch2:         gmsh-3.0.5-add-shebang-to-onelab.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-mpeg_encode-Do-not-free-stack-allocated-frame.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel >= 3.4.0
 BuildRequires:  cmake >= 2.8

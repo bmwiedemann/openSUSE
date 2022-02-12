@@ -1944,4 +1944,20 @@ let build start it or we will get libvirt errors.
   * wipe-notify_socket-from-env-in-cmdmod-bsc-1193357-30.patch</comment>
     <requestid>950374</requestid>
   </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>e5577b496b7af7dba55956e1734a32db</srcmd5>
+    <version>3004</version>
+    <time>1644617210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update generated documentation to 3004
+
+- Expose missing &quot;ansible&quot; module functions in Salt 3004 (bsc#1195625)
+- Added:
+  * add-missing-ansible-module-functions-to-whitelist-in.patch
+
+- Fix salt-call event.send with pillar or grains
+- Added:
+  * fix-salt-call-event.send-call-with-grains-and-pillar.patch</comment>
+    <requestid>952700</requestid>
+  </revision>
 </revisionlist>

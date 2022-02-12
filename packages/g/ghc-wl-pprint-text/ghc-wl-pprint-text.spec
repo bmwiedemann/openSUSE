@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-wl-pprint-text
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name wl-pprint-text
 Name:           ghc-%{pkg_name}
-Version:        1.2.0.1
+Version:        1.2.0.2
 Release:        0
 Summary:        A Wadler/Leijen Pretty Printer for Text values
 License:        BSD-3-Clause
@@ -45,7 +45,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver 'base-compat' '< 0.12' '< 0.13'
 
 %build
 %ghc_lib_build

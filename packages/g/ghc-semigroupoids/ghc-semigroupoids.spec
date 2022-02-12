@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-semigroupoids
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %global pkg_name semigroupoids
 Name:           ghc-%{pkg_name}
-Version:        5.3.6
+Version:        5.3.7
 Release:        0
 Summary:        Semigroupoids: Category sans id
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-bifunctors-devel
@@ -67,7 +66,7 @@ thin-bordered ones correspond to type classes from elsewhere. Solid edges
 indicate a subclass relationship that actually exists; dashed edges indicate a
 subclass relationship that /should/ exist, but currently doesn't.
 
-<<https://raw.githubusercontent.com/ekmett/semigroupoids/b9151e725856265717fe462c7abe4e59417ec593/img/classes.svg
+<<https://raw.githubusercontent.com/ekmett/semigroupoids/master/img/classes.svg
 Relationships among type classes from this package and others>>
 
 Apply, Bind, and Extend (not shown) give rise the Static, Kleisli and Cokleisli
@@ -93,7 +92,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

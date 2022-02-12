@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Calendar-Julian
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime-Calendar-Julian
 Name:           perl-DateTime-Calendar-Julian
-Version:        0.106
+Version:        0.107
 Release:        0
 Summary:        Dates in the Julian calendar
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,9 +28,9 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DateTime) >= 0.08
+BuildRequires:  perl(DateTime) >= 1.48
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(DateTime) >= 0.08
+Requires:       perl(DateTime) >= 1.48
 %{perl_requires}
 
 %description

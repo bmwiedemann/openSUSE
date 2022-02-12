@@ -19,7 +19,7 @@
 %global pkg_name path
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        Support for well-typed paths
 License:        BSD-3-Clause

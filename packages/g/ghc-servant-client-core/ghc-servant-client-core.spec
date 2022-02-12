@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-servant-client-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name servant-client-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.3
+Version:        0.19
 Release:        0
 Summary:        Core functionality and class for client function generation for servant APIs
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-constraints-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-exceptions-devel
@@ -67,7 +68,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver 'base-compat' '< 0.12' '< 0.13'
+cabal-tweak-dep-ver base-compat '< 0.12' '< 1'
 
 %build
 %ghc_lib_build

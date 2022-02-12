@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  3 06:46:11 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Added patch u_kscreen-rotation-fix.patch (boo#1193145).
+
+-------------------------------------------------------------------
 Thu Oct 28 14:31:23 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_ati-cleanup-terminology-to-use-primary-secondary.patch
@@ -682,4 +687,3 @@ Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
 
 - Split xf86-video-ati from xorg-x11-driver-video.
   Initial version: 6.14.3.
-

@@ -64,10 +64,10 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
+find . -type f -exec chmod -x {} +
 
 %build
 %ghc_lib_build
-chmod a-x README CHANGES
 
 %install
 %ghc_lib_install

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  6 15:21:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.9.4:
+  * Improved BSpline filling; new options Mesh.MinimumLineNodes,
+    Mesh.RecombineNodeRepositioning, Mesh.RecombineMinimumQuality
+    and Mesh.StlLinearDeflectionRelative
+  * updated bundled Eigen
+  * small bug fixes
+  * New API functions:
+    gmsh/isInitialized, occ/convertToNURBS, occ/getCurveLoops,
+    occ/getSurfaceLoops, mesh/importStl, parser/getNames,
+    parser/setNumber, parser/setString, parser/getNumber,
+    parser/getString, parser/clear, parser/parse,
+    onelab/getChanged, onelab/setChanged.
+- Drop 0001-mpeg_encode-Do-not-free-stack-allocated-frame.patch
+
+-------------------------------------------------------------------
 Sat Jan  8 18:33:04 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.9.3:

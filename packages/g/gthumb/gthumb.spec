@@ -1,7 +1,7 @@
 #
 # spec file for package gthumb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
 Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM daef485dffd67319c114cf1bda453bf6157e11ff.patch -- Remove duplicate lang entry
+Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/daef485dffd67319c114cf1bda453bf6157e11ff.patch
 
 BuildRequires:  bison
 BuildRequires:  fdupes

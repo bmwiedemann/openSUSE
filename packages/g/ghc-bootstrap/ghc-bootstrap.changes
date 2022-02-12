@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:40:15 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Keep the release attribute next to the version.
+
+-------------------------------------------------------------------
 Tue Aug 24 14:06:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own /opt, only content thereof.

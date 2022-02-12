@@ -40,7 +40,7 @@ BuildRequires:  gcc
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  golang(API) = 1.15
 %endif
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 BuildRequires:  golang(github.com/stretchr/testify/mock)
 %endif
 BuildRequires:  golang-packaging
@@ -93,7 +93,7 @@ docs for deepin-pw-check.
 
 %prep
 %autosetup -a1 -n %{name}-%{version}
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 rm -rf vendor/github.com/stretchr/testify/
 %endif
 mkdir -p $HOME/rpmbuild/BUILD/go/src/

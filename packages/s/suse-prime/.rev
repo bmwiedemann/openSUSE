@@ -595,4 +595,14 @@ Latest changes:
   * Fixed AMD's &quot;offload&quot; mode (issue#73)</comment>
     <requestid>932591</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>235baaeea7ae23482abd8677a0132fb8</srcmd5>
+    <version>0.8.6</version>
+    <time>1644617415</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.6
+  * Improved output in intel, offlad and nvidia mode for get-current
+    option (github #76)</comment>
+    <requestid>953747</requestid>
+  </revision>
 </revisionlist>

@@ -2,15 +2,17 @@
  src/twisted/test/test_failure.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
---- a/src/twisted/test/test_failure.py
-+++ b/src/twisted/test/test_failure.py
-@@ -22,7 +22,8 @@ from twisted.python import failure
- from twisted.trial.unittest import SynchronousTestCase
- 
+Index: Twisted-22.1.0/src/twisted/test/test_failure.py
+===================================================================
+--- Twisted-22.1.0.orig/src/twisted/test/test_failure.py
++++ Twisted-22.1.0/src/twisted/test/test_failure.py
+@@ -15,7 +15,8 @@ from io import StringIO
+ from traceback import FrameSummary
+ from unittest import skipIf
  
 -from cython_test_exception_raiser import raiser  # type: ignore[import]
 +# from cython_test_exception_raiser import raiser  # type: ignore[import]
 +raiser = None
  
- 
- def getDivisionFailure(*args, **kwargs):
+ from twisted.python import failure, reflect
+ from twisted.trial.unittest import SynchronousTestCase

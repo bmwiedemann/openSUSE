@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 31 12:14:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update constraints to version 0.13.3.
+  0.13.3 [2022.01.31]
+  -------------------
+  * Allow building with `transformers-0.6.*` and `mtl-2.3.*`.
+
+-------------------------------------------------------------------
 Tue Nov 16 19:51:32 UTC 2021 - psimons@suse.com
 
 - Update constraints to version 0.13.2 revision 1.

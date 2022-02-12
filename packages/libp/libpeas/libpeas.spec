@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %bcond_with lua51
-%bcond_with python2
 %bcond_without python3
 Name:           libpeas
 Version:        1.30.0
@@ -27,6 +26,12 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
 Source0:        https://download.gnome.org/sources/libpeas/1.30/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM a9d2ba590641d832dcf6b97184687b6eb424c00f.patch -- icons: Update icon licenses
+Patch0:         https://gitlab.gnome.org/GNOME/libpeas/-/commit/a9d2ba590641d832dcf6b97184687b6eb424c00f.patch
+# PATCH-FIX-UPSTREAM dfc763c16c0ce66a180ccb13205f1ca9666278a8.patch -- icons: Correct icon licenses again
+Patch1:         https://gitlab.gnome.org/GNOME/libpeas/-/commit/dfc763c16c0ce66a180ccb13205f1ca9666278a8.patch
+# PATCH-FIX-UPSTREAM 2a976339f444d70f10949901a6ee2b1f8ccb24b6.patch -- Build: add embedded-resources.h to libembedded_dep
+Patch2:         https://gitlab.gnome.org/GNOME/libpeas/-/commit/2a976339f444d70f10949901a6ee2b1f8ccb24b6.patch
 
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
@@ -38,9 +43,6 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-%if %{with python2}
-BuildRequires:  pkgconfig(python2) >= 2.5.2
-%endif
 %if %{with python3}
 BuildRequires:  pkgconfig(python3) >= 3.2.0
 %endif
@@ -62,6 +64,8 @@ Provides:       %{name} = %{version}
 # The gjs loader is officially no longer supported upstream (removed from git).
 # With gjs moving to mozjs-24, it also fails building; so we follow upstream.
 Obsoletes:      %{name}-loader-gjs <= %{version}
+# Stop packaging the demo sub-package
+Obsoletes:      %{name}-demo <= %{version}
 
 %description -n libpeas-1_0-0
 libpeas is a gobject-based plugin engine, and is targetted at giving
@@ -97,21 +101,10 @@ every application the chance to assume its own extensibility.
 This package provides the GObject Introspection bindings for the
 libpeas-gtk library.
 
-%package loader-python
-Summary:        Python2 runtime loader for libpeas
-Group:          System/Libraries
-Supplements:    packageand(libpeas-1_0-0:python)
-
-%description loader-python
-libpeas is a gobject-based plugin engine, and is targetted at giving
-every application the chance to assume its own extensibility.
-
-This package contains the python loader.
-
 %package loader-python3
 Summary:        Python3 runtime loader for libpeas
 Group:          System/Libraries
-Supplements:    packageand(libpeas-1_0-0:python3)
+Supplements:    (libpeas-1_0-0 and python3)
 
 %description loader-python3
 libpeas is a gobject-based plugin engine, and is targetted at giving
@@ -132,20 +125,12 @@ every application the chance to assume its own extensibility.
 This package contains the LUA 5.1 loader.
 %endif
 
-%package demo
-Summary:        Demo applications from the libpeas package
-Group:          Development/Tools/Other
-
-%description demo
-libpeas is a gobject-based plugin engine, and is targetted at giving
-every application the chance to assume its own extensibility.
-
 %package -n glade-catalog-libpeas
 Summary:        Glade catalog for libpeas, a GObject-based plugin engine
 Group:          Development/Tools/GUI Builders
 Requires:       glade
 Requires:       libpeas-gtk-1_0-0 = %{version}
-Supplements:    packageand(glade:%{name}-devel)
+Supplements:    (glade and %{name}-devel)
 
 %description -n glade-catalog-libpeas
 libpeas is a gobject-based plugin engine, and is targetted at giving
@@ -174,6 +159,7 @@ every application the chance to assume its own extensibility.
 %build
 %meson \
 	-Dgtk_doc=true \
+	-Ddemos=false \
 %if !%{with lua51}
 	-Dlua51=false \
 %endif
@@ -185,13 +171,10 @@ every application the chance to assume its own extensibility.
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-1.0 %{?no_lang_C}
 
-%post -n libpeas-1_0-0 -p /sbin/ldconfig
-%postun -n libpeas-1_0-0 -p /sbin/ldconfig
-%post -n libpeas-gtk-1_0-0 -p /sbin/ldconfig
-%postun -n libpeas-gtk-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpeas-1_0-0
+%ldconfig_scriptlets -n libpeas-gtk-1_0-0
 
 %files -n libpeas-1_0-0
 %license COPYING
@@ -211,11 +194,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n typelib-1_0-PeasGtk-1_0
 %{_libdir}/girepository-1.0/PeasGtk-1.0.typelib
 
-%if %{with python2}
-%files loader-python
-%{_libdir}/libpeas-1.0/loaders/libpythonloader.so
-%endif
-
 %if %{with python3}
 %files loader-python3
 %{_libdir}/libpeas-1.0/loaders/libpython3loader.so
@@ -225,10 +203,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files loader-lua51
 %{_libdir}/libpeas-1.0/loaders/liblua51loader.so
 %endif
-
-%files demo
-%{_bindir}/peas-demo
-%{_libdir}/peas-demo/
 
 %files -n glade-catalog-libpeas
 %{_datadir}/glade/catalogs/libpeas-gtk.xml

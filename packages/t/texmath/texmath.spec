@@ -1,7 +1,7 @@
 #
 # spec file for package texmath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %global pkg_name texmath
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.3.2
+Version:        0.12.4
 Release:        0
-Summary:        Conversion between formats used to represent mathematics
+Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -59,13 +59,11 @@ for a live demo of bidirectional conversion between LaTeX and MathML.)
 
 The package also includes several utility modules which may be useful for
 anyone looking to manipulate either TeX math or MathML. For example, a copy of
-the MathML operator dictionary is included.
-
-Use the 'executable' flag to install a standalone executable, 'texmath', that
-by default reads a LaTeX formula from 'stdin' and writes MathML to 'stdout'.
-With flags all the functionality exposed by 'Text.TeXMath' can be accessed
-through this executable. (Use the '--help' flag for a description of all
-functionality)
+the MathML operator dictionary is included. . Use the 'executable' flag to
+install a standalone executable, 'texmath', that by default reads a LaTeX
+formula from 'stdin' and writes MathML to 'stdout'. With flags all the
+functionality exposed by 'Text.TeXMath' can be accessed through this
+executable. (Use the '--help' flag for a description of all functionality)
 
 The 'texmath' executable can also be used as a CGI script, when renamed as
 'texmath-cgi'. It will expect query parameters for 'from', 'to', 'input', and

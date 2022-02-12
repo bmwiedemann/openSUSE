@@ -1,7 +1,7 @@
 #
 # spec file for package cabal-install
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 Patch01:        ghc-8.10-support-for-3.2.patch
 Patch02:        base16-bytestring.patch
 BuildRequires:  ghc-Cabal-devel
@@ -67,7 +68,10 @@ installation of Haskell libraries and programs.
 
 %prep
 %autosetup -p2
+cp -p %{SOURCE1} %{name}.cabal
 cabal-tweak-dep-ver random '< 1.2' '< 1.3'
+cabal-tweak-dep-ver base '< 4.14' '< 5'
+cabal-tweak-dep-ver base16-bytestring '< 0.2' '< 2'
 
 %build
 %ghc_bin_build

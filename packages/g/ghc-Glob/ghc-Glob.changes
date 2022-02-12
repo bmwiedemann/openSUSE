@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 15 11:08:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update Glob to version 0.10.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Nov 20 17:31:36 UTC 2021 - psimons@suse.com
 
 - Update Glob to version 0.10.2 revision 1.

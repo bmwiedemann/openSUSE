@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-font-viewer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
 Source0:        https://download.gnome.org/sources/gnome-font-viewer/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 218166246e29a39e2eac8d3f06976038571b0603.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/commit/218166246e29a39e2eac8d3f06976038571b0603.patch
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig

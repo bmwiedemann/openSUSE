@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 20 10:10:32 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Symlink nsswitch.conf and nft rules to proper locations
+
+-------------------------------------------------------------------
+Wed Jan 19 12:38:18 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install nftables to manage network rules
+- Install tar to allow kubectl cp ...
+
+-------------------------------------------------------------------
 Wed Dec  8 15:08:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build only on aarch64 and x86_64

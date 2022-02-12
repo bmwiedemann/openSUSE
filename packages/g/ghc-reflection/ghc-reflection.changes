@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:57:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Make sure installed text files have no +x flag.
+
+-------------------------------------------------------------------
 Tue Nov 16 19:51:23 UTC 2021 - psimons@suse.com
 
 - Update reflection to version 2.1.6 revision 1.

@@ -24,8 +24,7 @@
 %else
 %bcond_without pugixml
 %endif
-# Need unrelased version > 1.4.0 with e.g. gl2psTextOptColorBL
-%bcond_with    gl2ps
+%bcond_without gl2ps
 # Need patched version with HPDF_SHADING
 %bcond_with    haru
 
@@ -54,7 +53,6 @@ BuildRequires:  cmake >= 3.13
 BuildRequires:  desktop-file-utils
 BuildRequires:  double-conversion-devel
 BuildRequires:  doxygen
-BuildRequires:  exodusii-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -64,7 +62,7 @@ BuildRequires:  hdf5-devel
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_headers-devel
 %if %{with gl2ps}
-BuildRequires:  gl2ps-devel
+BuildRequires:  gl2ps-devel >= 1.4.1
 %endif
 %if %{with haru}
 BuildRequires:  libharu-devel > 2.3.0
@@ -104,7 +102,7 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf) >= 2.6.0
 %if %{with pugixml}
-BuildRequires:  pkgconfig(pugixml)
+BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(xt)

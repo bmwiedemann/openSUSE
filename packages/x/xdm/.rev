@@ -940,4 +940,12 @@
   by checking for existence of /dev/dri [JIRA#SLE-18632]</comment>
     <requestid>932566</requestid>
   </revision>
+  <revision rev="92" vrev="18">
+    <srcmd5>059bea97cd83ba747cdb84331cdbc51d</srcmd5>
+    <version>1.1.12</version>
+    <time>1644617228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953117</requestid>
+  </revision>
 </revisionlist>

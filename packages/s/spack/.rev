@@ -219,4 +219,13 @@
     <comment></comment>
     <requestid>945894</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>26ba6077a35226b42aaa46301fba64fd</srcmd5>
+    <version>0.17.1</version>
+    <time>1644617241</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openssl-devel, xz-devel and libzip-devel as recommends
+  bsc#1195789. (forwarded request 953232 from eeich)</comment>
+    <requestid>953233</requestid>
+  </revision>
 </revisionlist>

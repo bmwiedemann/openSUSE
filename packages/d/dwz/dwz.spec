@@ -127,7 +127,7 @@ xz -d tramp3d-v4.cpp.xz
 
 # Do PGO with tramp3d as input file
 %make_build CFLAGS="%{flags} -fprofile-generate" LDFLAGS="-fprofile-generate"
-g++ tramp3d-v4.cpp -O2 -g -o t1
+g++ tramp3d-v4.cpp -O2 -g -w -o t1
 cp t1 t2
 cp t1 t3
 cp t1 t4

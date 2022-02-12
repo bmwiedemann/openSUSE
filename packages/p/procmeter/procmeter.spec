@@ -1,7 +1,7 @@
 #
 # spec file for package procmeter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           procmeter
-Version:        3.6+svn409
+Version:        3.6+svn415
 Release:        0
 Summary:        Utility to display current system parameters
 License:        GPL-2.0-or-later

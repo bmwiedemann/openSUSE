@@ -2,18 +2,20 @@
  src/twisted/test/test_udp.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
---- a/src/twisted/test/test_udp.py
-+++ b/src/twisted/test/test_udp.py
-@@ -9,7 +9,7 @@ Tests for implementations of L{IReactorU
+Index: Twisted-22.1.0/src/twisted/test/test_udp.py
+===================================================================
+--- Twisted-22.1.0.orig/src/twisted/test/test_udp.py
++++ Twisted-22.1.0/src/twisted/test/test_udp.py
+@@ -8,7 +8,7 @@ Tests for implementations of L{IReactorU
+ 
  
  import os
- 
 -from unittest import skipIf
 +from unittest import skipIf, SkipTest
- from twisted.trial.unittest import TestCase
  
+ from twisted.internet import defer, error, interfaces, protocol, reactor, udp
  from twisted.internet.defer import Deferred, gatherResults, maybeDeferred
-@@ -522,6 +522,7 @@ class MulticastTests(TestCase):
+@@ -521,6 +521,7 @@ class MulticastTests(TestCase):
          skip = "This reactor does not support multicast"
  
      def setUp(self):

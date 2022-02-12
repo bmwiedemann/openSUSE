@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 11 10:41:43 UTC 2022 - pgajdos@suse.com
+
+- 2to3 module is not required for build
+
+-------------------------------------------------------------------
 Wed Dec  8 21:53:30 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.38.2:

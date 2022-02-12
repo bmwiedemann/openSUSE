@@ -4714,4 +4714,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * bugfix release: mostly Zink fixes</comment>
     <requestid>951586</requestid>
   </revision>
+  <revision rev="429" vrev="301">
+    <srcmd5>fe184e4e9045fdf20f92e6e51253252e</srcmd5>
+    <version>unknown</version>
+    <time>1644617237</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.6
+  * sixth bugfix release</comment>
+    <requestid>953224</requestid>
+  </revision>
 </revisionlist>

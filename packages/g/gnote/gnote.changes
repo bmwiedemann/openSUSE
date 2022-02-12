@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  2 21:13:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 21.patch: Fix build with meson 0.61 and newer.
+- Stop adding category TextEditor to the desktop file, it's a notes
+  application, not a text editor as such.
+- Add appstream-glib BuildRequires and a check section and
+  meson_test macro, validate appdata, desktop file and gschemas
+  during build using upstreams included tests.
+- Add explicit generic c_compiler BuildRequires.
+
+-------------------------------------------------------------------
 Mon Jan 10 20:04:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  9 09:53:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-transforms to version 0.4.0 revision 1.
+  ## 0.4.0 (November 2021)
+
+  * Bump `unicode-data` to `0.2`
+  * Allow `text 2.0`
+  * Update to Unicode version 14.0.0
+  * Drop support for GHC 7.10
+
+-------------------------------------------------------------------
 Sun Nov 21 20:08:38 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax overspecified constraints on unicode-data 

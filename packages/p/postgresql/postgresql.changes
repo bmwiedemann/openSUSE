@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:35:57 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Fix the pg_server_requires macro on older rpm versions (SLE-12).
+
+-------------------------------------------------------------------
+Fri Jan 28 15:26:21 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Avoid a dependency on awk in postgresql-script.
+
+-------------------------------------------------------------------
 Thu Dec  2 14:08:12 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Move the dependency of llvmjit-devel on clang and llvm to the
@@ -25,7 +35,8 @@ Mon Nov 15 12:09:10 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Oct  5 14:03:55 UTC 2021 - Reinhard Max <max@suse.com>
 
-- Bump version and default to 14.
+- Bump version to 14.
+- Bump default to 14 on Factory and future SPs.
 
 -------------------------------------------------------------------
 Tue May 18 13:43:45 UTC 2021 - Reinhard Max <max@suse.com>

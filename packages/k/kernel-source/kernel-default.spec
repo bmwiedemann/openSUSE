@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.16
-%define patchversion 5.16.5
+%define patchversion 5.16.8
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -44,7 +44,7 @@
 	%define klp_symbols 1
 %endif
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
 
 %global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
 %define cpu_arch_flavor %cpu_arch/%build_flavor
@@ -107,9 +107,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.16.5
+Version:        5.16.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g1af4009
+Release:        <RELEASE>.g5d1f5d2
 %else
 Release:        0
 %endif
@@ -207,7 +207,7 @@ BuildRequires:  u-boot-tools
 Conflicts:      filesystem < 16
 %endif
 
-Obsoletes:      microcode_ctl
+Obsoletes:      microcode_ctl < 1.18
 
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
-Provides:       kernel-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
+Provides:       kernel-%build_flavor-base-srchash-5d1f5d2e7552fcd3d37c11eb714944859e92e7b4
+Provides:       kernel-srchash-5d1f5d2e7552fcd3d37c11eb714944859e92e7b4
 # END COMMON DEPS
-Provides:       %name-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
+Provides:       %name-srchash-5d1f5d2e7552fcd3d37c11eb714944859e92e7b4
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -340,6 +340,7 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
+Source86:       fdupes_relink
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -421,6 +422,7 @@ NoSource:       82
 NoSource:       83
 NoSource:       84
 NoSource:       85
+NoSource:       86
 NoSource:       100
 NoSource:       101
 NoSource:       102

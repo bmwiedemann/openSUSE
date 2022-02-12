@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 10 06:45:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 6.1:
+  * The behavior of ^K at a prompt has been enhanced: when there
+    is text after the cursor, just this text is erased
+  * At a prompt, M-6 copies the current answer into the cutbuffer
+  * Large external pastes into nano are handled more quickly
+
+-------------------------------------------------------------------
 Thu Dec 16 09:26:40 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 6.0:

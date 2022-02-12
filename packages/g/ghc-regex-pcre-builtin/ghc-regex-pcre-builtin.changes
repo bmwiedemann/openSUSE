@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 23:45:05 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update regex-pcre-builtin to version 0.95.2.3.8.44 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Sep 13 08:26:18 UTC 2021 - psimons@suse.com
 
 - Update regex-pcre-builtin to version 0.95.2.3.8.44.

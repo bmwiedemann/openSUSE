@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 18 04:06:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update x509-store to version 1.6.9.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

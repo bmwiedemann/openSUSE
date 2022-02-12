@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 16 22:07:38 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update dbus to version 1.2.22.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Sun Nov 21 20:06:30 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - remove opverspecified constraints on lens 

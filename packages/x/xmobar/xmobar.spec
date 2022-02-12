@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.40
+Version:        0.41
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause

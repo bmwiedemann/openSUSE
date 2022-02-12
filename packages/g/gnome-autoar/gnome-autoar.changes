@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 09:18:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.3:
+  + Prevent NULL dereference when extracting to root.
+  + Do not include basename in error messages.
+  + Do not request password when encryption is unsupported.
+  + Propagate libarchive errors when extraction failed.
+
+-------------------------------------------------------------------
 Fri Jan  7 15:01:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.4.2:

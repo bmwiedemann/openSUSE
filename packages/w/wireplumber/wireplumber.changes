@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:09:05 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix va_list APIs for ppc64le and
+  aarch64, where va_list is not a pointer (boo#1195818):
+  * 0001-spa-json-fix-va_list-APIs-for-different-architectures.patch
+- Add patch from upstream to fix a crash if config.properties is
+  nil:
+  * 0001-restore-stream-do-not-crash-if-config_properties-is-nil.patch
+
+-------------------------------------------------------------------
 Mon Feb  7 17:31:11 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.4.8:

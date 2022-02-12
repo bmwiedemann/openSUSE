@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 10 22:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update plymouth-install-label-library-and-font-file-to-initrd.patch: 
+  avoid aborting on multiple font path match, pick the first one 
+
+-------------------------------------------------------------------
 Sun Jan 30 05:12:13 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-watermark-config.patch:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  9 23:20:57 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to upstream 0.13.1 release
+  * [BUGFIX] Relax some type constraints that were too strict.
+    #754, #755, #756, #758
+  * [BUGFIX] Explicitly export functions with __all__. #757
+
+-------------------------------------------------------------------
 Tue Jan 25 21:25:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.13.0 release

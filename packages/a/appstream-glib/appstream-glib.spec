@@ -1,7 +1,7 @@
 #
 # spec file for package appstream-glib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           appstream-glib
-Version:        0.7.18
+Version:        0.7.18+28
 Release:        0
 Summary:        AppStream Abstraction Library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://people.freedesktop.org/~hughsient/appstream-glib/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE-appstream-process
+
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcab >= 0.6
 BuildRequires:  gobject-introspection-devel
@@ -85,7 +86,7 @@ nodes and convert to and from the standardized XML representation.
 
 %package devel
 Summary:        Development files for the AppStream abstraction library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       %{name} = %{version}
 Requires:       libappstream-glib8 = %{version}
 Requires:       typelib-1_0-AppStreamGlib-1_0 = %{version}
@@ -110,7 +111,7 @@ This library allows to:
 
 %package -n openSUSE-appstream-process
 Summary:        Appstream processor employed by kiwi
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       appstream-glib >= %{version}
 Requires:       openSUSE-appdata-extra
 

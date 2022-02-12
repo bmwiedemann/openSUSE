@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  4 14:40:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update criterion to version 1.5.13.0 revision 1.
+  1.5.13.0
+
+  * Allow building with `optparse-applicative-0.17.*`.
+
+  1.5.12.0
+
+  * Fix a bug introduced in version 1.5.9.0 in which benchmark names that include
+    double quotes would produce broken HTML reports.
+
+-------------------------------------------------------------------
 Sun Oct 10 14:17:07 UTC 2021 - psimons@suse.com
 
 - Update criterion to version 1.5.11.0.

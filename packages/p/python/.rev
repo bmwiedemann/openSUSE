@@ -1555,4 +1555,14 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     <comment>Keep existing SR, ready for checkin</comment>
     <requestid>953032</requestid>
   </revision>
+  <revision rev="165" vrev="16">
+    <srcmd5>6aa3786a58503f99c59be2fcc2ffca93</srcmd5>
+    <version>2.7.18</version>
+    <time>1644617202</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-0391-urllib_parse-newline-parsing.patch
+  (bsc#1195396, CVE-2022-0391, bpo#43882) sanitizing URLs
+  containing ASCII newline and tabs in urlparse.</comment>
+    <requestid>953310</requestid>
+  </revision>
 </revisionlist>

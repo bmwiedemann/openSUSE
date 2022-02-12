@@ -782,4 +782,12 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
   * Remove rpm groups (forwarded request 834161 from elimat)</comment>
     <requestid>836030</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5923ff048300e327b6f048106d9cc3c3</srcmd5>
+    <version>0.7.18+28</version>
+    <time>1644617218</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 952770 from iznogood)</comment>
+    <requestid>952877</requestid>
+  </revision>
 </revisionlist>

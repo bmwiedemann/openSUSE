@@ -1,7 +1,7 @@
 #
 # spec file for package go1.4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ Patch12:        cmd-go-reject-update-of-VCS-inside-VCS.patch
 # PATCH-FIX-UPSTREAM (compiler-rt): Fix sanitizer build against latest glibc
 Patch100:       fix-sanitizer-build-against-latest-glibc.patch
 Patch101:       gcc9-rsp-clobber.patch
+# PATCH-FIX-OPENSUSE Disable LDFLAGS -no-pie flag for use when gcc <= 6
 Patch102:       compiler-rt-fix-tsan-build.patch
 BuildRequires:  rpm
 # for go1.4.gdbinit, directory ownership
@@ -87,7 +88,7 @@ Requires:       gcc
 BuildRequires:  gcc-c++
 %endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}
 Provides:       go-devel-static = go%{version}
@@ -127,7 +128,7 @@ Go examples and documentation.
 # boo#1052528
 %package race
 Summary:        Go runtime race detector
-License:        NCSA OR MIT
+License:        MIT OR NCSA
 Group:          Development/Languages/Other
 URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
@@ -145,7 +146,11 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %setup -q -T -b 100 -n compiler-rt-r%{tsan_commit}
 %patch100 -p1
 %patch101 -p1
+%if 0%{?suse_version} >= 1500
+# Disable LDFLAGS -no-pie flag for use when gcc <= 6
+# Used for SLE-12 gcc-4.8
 %patch102 -p1
+%endif
 %endif
 # go
 %setup -q -n go

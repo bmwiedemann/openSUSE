@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 22 17:15:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.0.
+  0.6.2.0
+  -------
+
+  * Safely prepare for when cabal factors out Cabal-syntax
+
+  0.6.1.0
+  -------
+
+  * Support basic auth in package-indices (#252)
+  * Fix tests due to new aeson handling of unescaped control sequences (#256)
+  * Bump a lot of bounds on packages we depend on
+
+-------------------------------------------------------------------
 Tue Aug  3 06:39:00 UTC 2021 - psimons@suse.com
 
 - Update hackage-security to version 0.6.0.1 revision 8.

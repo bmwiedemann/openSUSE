@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-ati
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-
 Source2:        %{name}.keyring
 Patch0:         u_fno-common.patch
 Patch1:         U_ati-cleanup-terminology-to-use-primary-secondary.patch
+Patch2:         u_kscreen-rotation-fix.patch
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -67,9 +68,7 @@ or earlier class of chipset, and loads the radeon, r128, or mach64
 driver as appropriate.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv

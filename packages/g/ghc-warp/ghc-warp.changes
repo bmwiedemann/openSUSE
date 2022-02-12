@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 04:02:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.19.
+  ## 3.3.19
+
+  * Allowing the eMFILE exception in acceptNewConnection.
+    [#831](https://github.com/yesodweb/wai/pull/831)
+
+-------------------------------------------------------------------
 Sat Nov 20 17:29:16 UTC 2021 - psimons@suse.com
 
 - Update warp to version 3.3.18.

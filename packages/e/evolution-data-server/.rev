@@ -2006,4 +2006,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment></comment>
     <requestid>944803</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>5fe66798fb1a6cb94f08d5c48d6e0b00</srcmd5>
+    <version>3.42.4</version>
+    <time>1644617205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953721</requestid>
+  </revision>
 </revisionlist>

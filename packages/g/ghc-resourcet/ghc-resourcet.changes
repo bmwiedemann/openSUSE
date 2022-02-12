@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  4 12:15:08 UTC 2022 - psimons@suse.com
+
+- Update resourcet to version 1.2.4.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Aug  5 15:04:55 UTC 2021 - psimons@suse.com
 
 - Update resourcet to version 1.2.4.3.

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 19 23:13:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.12.2.
+  ## 0.12.2
+
+    * Parser: handle context shift to external context, e.g.,
+      `BashOneLine##Bash`.  Closes #139 (issue with Dockerfile).
+
+    * Update xml files from upstream:
+      bash, cmake, markdown, objectivecpp, php, sql-postgresql, sql, stan, zshr
+
+    * Fix formatting in `Color` doc-comment (Janek Spaderna).
+
+    * Add stan.xml (Brian Ward).
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:41 UTC 2021 - psimons@suse.com
 
 - Update skylighting-core to version 0.12.1.

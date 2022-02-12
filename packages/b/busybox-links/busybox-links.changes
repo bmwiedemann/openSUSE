@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 10 15:10:02 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop update-alternatives support 
+
+-------------------------------------------------------------------
 Fri Oct 22 15:57:07 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Removed libalternatives machanism. Using direct link from

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:20:10 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Silent warnings for tramp3d compilation.
+
+-------------------------------------------------------------------
 Wed Jan  5 06:20:01 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add dwz-remove-odr-struct-multifile.sh.patch that removes problematic

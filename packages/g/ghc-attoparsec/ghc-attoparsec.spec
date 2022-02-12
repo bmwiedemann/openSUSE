@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-attoparsec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %global pkg_name attoparsec
+%global has_internal_sub_libraries 1
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.14.2
+Version:        0.14.4
 Release:        0
 Summary:        Fast combinator parsing for bytestrings and text
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-bytestring-devel
@@ -63,7 +64,7 @@ This package provides the Haskell %{pkg_name} library development files.
 cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
-%ghc_lib_build
+%ghc_lib_build_without_haddock
 
 %install
 %ghc_lib_install

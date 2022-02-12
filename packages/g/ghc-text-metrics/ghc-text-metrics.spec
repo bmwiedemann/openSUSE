@@ -19,7 +19,7 @@
 %global pkg_name text-metrics
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Calculate various string metrics efficiently
 License:        BSD-3-Clause

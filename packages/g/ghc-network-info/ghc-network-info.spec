@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network-info
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %global pkg_name network-info
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.10
+Version:        0.2.1
 Release:        0
 Summary:        Access the local computer's basic network configuration
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
@@ -34,9 +33,8 @@ This library provides simple read-only access to the local computer's
 networking configuration. It is currently capable of getting a list of all the
 network interfaces and their respective IPv4, IPv6 and MAC addresses.
 
-network-info has been tested and is known to work on Ubuntu 10.10, FreeBSD 9.0,
-Mac OS X 10.6.4 and Windows XP/7. It probably works on other flavours of Linux,
-OS X, FreeBSD and Windows as well.
+network-info has been tested and is known to work on Ubuntu, FreeBSD, NetBSD,
+Mac OS and Windows.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -50,7 +48,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

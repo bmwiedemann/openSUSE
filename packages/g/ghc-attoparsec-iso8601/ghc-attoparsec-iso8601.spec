@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-attoparsec-iso8601
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %global pkg_name attoparsec-iso8601
 Name:           ghc-%{pkg_name}
-Version:        1.0.2.0
+Version:        1.0.2.1
 Release:        0
 Summary:        Parsing of ISO 8601 dates, originally from aeson
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-base-compat-batteries-devel
@@ -50,7 +49,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

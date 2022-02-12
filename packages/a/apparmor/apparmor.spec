@@ -45,7 +45,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -77,26 +77,6 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
-
-# update abstractions/python and profiles for python 3.10 (submitted upstream 2021-08-11 https://gitlab.com/apparmor/apparmor/-/merge_requests/783)
-Patch7:         profiles-python-3.10-mr783.diff
-
-# add samba-bgqd profile (accepted upstream 2021-10-15 https://gitlab.com/apparmor/apparmor/-/merge_requests/807)
-# updated for boo#1192336 (merged upstream 2021-12-20 https://gitlab.com/apparmor/apparmor/-/merge_requests/819 in 3.0 and master)
-Patch8:         add-samba-bgqd.diff
-
-# aa-notify: Add support for reading s390x and aarch64 wtmp file (boo#1181155) (merged upstream 2021-11-08 in master and 3.0 branch - https://gitlab.com/apparmor/apparmor/-/merge_requests/809)
-Patch9:         aa-notify-more-arch-mr809.diff
-
-# allow reading /etc/ssl/engdef.d/ and /etc/ssl/engines.d/ in abstractions/openssl (submitted upstream 2021-12-19 - https://gitlab.com/apparmor/apparmor/-/merge_requests/818)
-Patch10:        openssl-engdef-mr818.diff
-
-# add update-samba-abstractions-ldb2.diff to cater for changes to ldb
-# packaging to allow parallel installation with libldb bsc#1192684 (submitted upstream 2022-01-17 - https://gitlab.com/apparmor/apparmor/-/merge_requests/821)
-Patch11:        update-samba-abstractions-ldb2.diff
-
-# fix build with ruby 3.1 (boo#1194221, from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/827)
-Patch12:        ruby-3.1-build-fix.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -360,12 +340,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch3 -p1
 %patch4
 %patch5
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
 
 %build
 %define _lto_cflags %{nil}

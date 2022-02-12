@@ -116,4 +116,15 @@
   * Add option to completely disable history #63</comment>
     <requestid>848801</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ae6ff0d4779c00fbe89545b2db29e75b</srcmd5>
+    <version>2.1.0</version>
+    <time>1644617263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Correctly handle ≈ signs emitted by qalc #78
+  * Add -calc-command-history to add result to history when using -calc-command #79
+  * Correctly handle multiple equals signs emitted by qalc #80</comment>
+    <requestid>953375</requestid>
+  </revision>
 </revisionlist>

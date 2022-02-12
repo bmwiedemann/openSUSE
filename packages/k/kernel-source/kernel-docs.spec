@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.16
-%define patchversion 5.16.5
+%define patchversion 5.16.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,15 +25,15 @@
 %define build_html 1
 %define build_pdf 0
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
 
 Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        5.16.5
+Version:        5.16.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g1af4009
+Release:        <RELEASE>.g5d1f5d2
 %else
 Release:        0
 %endif
@@ -64,7 +64,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-1af400994313af6f8e7783f70a6b0777b0087dc1
+Provides:       %name-srchash-5d1f5d2e7552fcd3d37c11eb714944859e92e7b4
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -119,6 +119,7 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
+Source86:       fdupes_relink
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -186,6 +187,7 @@ NoSource:       82
 NoSource:       83
 NoSource:       84
 NoSource:       85
+NoSource:       86
 NoSource:       100
 NoSource:       101
 NoSource:       102

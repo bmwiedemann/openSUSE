@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  1 20:12:17 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hjsmin to version 0.2.0.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

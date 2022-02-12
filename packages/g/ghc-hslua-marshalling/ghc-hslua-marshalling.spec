@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-marshalling
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hslua-marshalling
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Marshalling of values between Haskell and Lua
 License:        MIT

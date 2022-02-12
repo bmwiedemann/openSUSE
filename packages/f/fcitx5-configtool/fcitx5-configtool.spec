@@ -46,21 +46,31 @@ BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbfile-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-Supplements:    fcitx5
-Provides:       kcm5-fcitx = %{version}
-Provides:       fcitx-config-gtk3 = %{version}
-Provides:       kf5-kcm-fcitx = %{version}
-Provides:       kf5-kcm-fcitx-icons = %{version}
-Obsoletes:      kcm5-fcitx <= 0.5.6
-Obsoletes:      fcitx-config-gtk3 <= 0.4.10
-Obsoletes:      kf5-kcm-fcitx <= 0.5.6
-Obsoletes:      kf5-kcm-fcitx-icons <= 0.5.6
 %if 0%{?sle_version} == 150100
 BuildRequires:  kitemmodels-devel
 %endif
+Supplements:    fcitx5
+Provides:       fcitx-config-gtk3 = %{version}
+Obsoletes:      fcitx-config-gtk3 <= 0.4.10
 
 %description
 Configuration tool for fcitx5
+
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
+%package -n kcm_fcitx5
+Summary:  Configuration module for fcitx5
+Group:  System/I18n/Chinese
+Supplements: (fcitx5 and plasma5-workspace)
+Provides:       kcm5-fcitx = %{version}
+Provides:       kf5-kcm-fcitx = %{version}
+Provides:       kf5-kcm-fcitx-icons = %{version}
+Obsoletes:      kcm5-fcitx <= 0.5.6
+Obsoletes:      kf5-kcm-fcitx <= 0.5.6
+Obsoletes:      kf5-kcm-fcitx-icons <= 0.5.6
+
+%description -n kcm_fcitx5
+Configuration module for fcitx5
+%endif
 
 %prep
 %setup -q
@@ -80,19 +90,24 @@ Configuration tool for fcitx5
 %find_lang %{name}
 %suse_update_desktop_file kbd-layout-viewer5 Qt KDE Utility DesktopUtility
 %suse_update_desktop_file org.fcitx.fcitx5-migrator Qt KDE Utility DesktopUtility
-cat *.lang > fcitx5.lang
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%post -n kcm_fcitx5 -p /sbin/ldconfig
+%postun -n kcm_fcitx5 -p /sbin/ldconfig
 
-%files -f fcitx5.lang
+%files -f %{name}.lang
 %license LICENSES
-%doc README
 %{_bindir}/fcitx5-config-qt
 %{_bindir}/fcitx5-migrator
 %{_bindir}/kbd-layout-viewer5
+%{_datadir}/applications/org.fcitx.fcitx5-config-qt.desktop
+%{_datadir}/applications/org.fcitx.fcitx5-migrator.desktop
 %{_libdir}/libFcitx5Migrator.so*
+%{_datadir}/applications/kbd-layout-viewer5.desktop
+
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
+%files -n kcm_fcitx5 -f org.fcitx.fcitx5.kcm.lang
 %dir %{_libdir}/qt5/plugins/kcms
 %dir %{_datadir}/kpackage
 %dir %{_datadir}/kpackage/kcms
@@ -101,8 +116,5 @@ cat *.lang > fcitx5.lang
 %{_datadir}/kservices5/kcm_fcitx5.desktop
 %{_datadir}/metainfo/org.fcitx.fcitx5.kcm.appdata.xml
 %endif
-%{_datadir}/applications/kbd-layout-viewer5.desktop
-%{_datadir}/applications/org.fcitx.fcitx5-config-qt.desktop
-%{_datadir}/applications/org.fcitx.fcitx5-migrator.desktop
 
 %changelog

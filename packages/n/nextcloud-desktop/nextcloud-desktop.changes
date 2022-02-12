@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb 11 13:24:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.2
+  - desktop#4140 [stable-3.4] Bugfix/force re-login on SSL Handshake error
+  - desktop#4150 [stable-3.4] Do not display 'Conflict when uploading some files to a folder
+  - desktop#4151 [stable-3.4] Windows. MSI. Unregister Nextcloud folders in SyncRootManager on uninstall.
+  - desktop#4156 [stable-3.4] Unbreak loading translations
+  - desktop#4169 [stable-3.4] Hide share button for deleted files and ignored files in tray activity
+  - desktop#4170 [stable-3.4] Display error message when creating a link share with compromised password.
+  - desktop#4174 [stable-3.4] Bugfix. Re-init sharing manager to enable link sharing UI when receivng sharing permissions.
+  - desktop#4179 [stable-3.4] Show only filenames in tray activity items, with full path in tooltip
+  - desktop#4197 [stable-3.4] use proper API to dehydrate a placeholder file
+  - desktop#4203 [stable-3.4] Add macOS *.textClipping files to ignore list
+
+-------------------------------------------------------------------
+Tue Dec 21 07:59:36 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Updatete to 3.4.1
+  - desktop#4013 [stable-3.4] fix random error when updating CfApi metadata
+  - desktop#4046 [stable-3.4] do not forget the path when renaming files with invalid names
+  - desktop#4049 [stable-3.4] Bugfix/assert invalid modtime
+  - desktop#4050 [stable-3.4] Feature/folder logo variations
+  - desktop#4051 [stable-3.4] Always prefill username from Windows login name based on server version
+  - desktop#4057 [stable-3.4] Bugfix/3.4.1 rc1
+  - desktop#4066 [stable-3.4] Bugfix/sync stuck on error
+  - desktop#4075 [stable-3.4] Bugfix/force download local invalid files
+  - desktop#4078 [stable-3.4] Enforce VFS. Disable 'Make always available locally'.
+  - desktop#4080 [stable-3.4] Bugfix/avoid sync getting stuck
+  - desktop#4081 [stable-3.4] Fix CMake error in ECMAddAppIcon for mac
+  - desktop#4083 [stable-3.4] Do not crash on findAndCancelDeletedJob
+  - desktop#4094 [stable-3.4] ensure any errors after calling FileSystem::getModTime are handled
+  - desktop#4097 Bump version
+- Skiped version 3.4.0 because of modtime bug:
+  See: https://github.com/nextcloud/desktop/pull/4049
+  Please read the following wiki page How to fix files invalid modification date:
+  https://github.com/nextcloud/desktop/wiki/Fix-bug-invalid-modification-date
+
+-------------------------------------------------------------------
 Thu Oct 28 14:58:44 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.3.6

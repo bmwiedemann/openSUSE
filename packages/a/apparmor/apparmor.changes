@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 10 16:55:38 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.4
+  - various fixes in profiles, abstractions, apparmor_parser and utils
+    (some of them were already included as patches)
+  - add support for mctp address family
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.4
+    for the full upstream changelog
+- remove upstream(ed) patches:
+  - aa-notify-more-arch-mr809.diff
+  - ruby-3.1-build-fix.diff
+  - add-samba-bgqd.diff
+  - openssl-engdef-mr818.diff
+  - profiles-python-3.10-mr783.diff
+  - update-samba-abstractions-ldb2.diff
+- refresh patches:
+  - apparmor-samba-include-permissions-for-shares.diff
+  - ruby-2_0-mkmf-destdir.patch
+
+-------------------------------------------------------------------
 Wed Jan 26 17:14:58 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - add ruby-3.1-build-fix.diff: fix build with ruby 3.1 (boo#1194221,

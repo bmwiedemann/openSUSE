@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 11 13:53:47 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.6
+  * Improved output in intel, offlad and nvidia mode for get-current
+    option (github #76) 
+
+-------------------------------------------------------------------
 Fri Nov 19 21:12:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.5

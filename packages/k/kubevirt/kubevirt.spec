@@ -17,24 +17,23 @@
 
 
 Name:           kubevirt
-Version:        0.49.0
+Version:        0.50.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
 Group:          System/Packages
 URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
-Source1:        kubevirt-psp-caasp.yaml
-Source2:        kubevirt_containers_meta
-Source3:        kubevirt_containers_meta.service
-Source4:        https://github.com/kubevirt/kubevirt/releases/download/v%{version}/disks-images-provider.yaml
+Source1:        kubevirt_containers_meta
+Source2:        kubevirt_containers_meta.service
+Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.17
 BuildRequires:  pkgconfig(libvirt)
 ExclusiveArch:  x86_64 aarch64
 
@@ -170,7 +169,7 @@ sed -i"" \
     -e "s#_REGISTRY_#${registry}#g" \
     -e "s#_PKG_VERSION_#%{version}#g" \
     -e "s#_PKG_RELEASE_#%{release}#g" \
-    %{S:2}
+    %{S:1}
 
 mkdir -p go/src/kubevirt.io go/pkg
 ln -s ../../../ go/src/kubevirt.io/kubevirt
@@ -186,16 +185,16 @@ KUBEVIRT_GIT_VERSION='v%{version}' \
 KUBEVIRT_GIT_TREE_STATE="clean" \
 build_tests="true" \
 ./hack/build-go.sh install \
-	cmd/virtctl \
-	cmd/virt-api \
-	cmd/virt-controller \
-	cmd/virt-chroot \
-	cmd/virt-handler \
-	cmd/virt-launcher \
-	cmd/virt-operator \
-	%{nil}
+    cmd/virtctl \
+    cmd/virt-api \
+    cmd/virt-controller \
+    cmd/virt-chroot \
+    cmd/virt-handler \
+    cmd/virt-launcher \
+    cmd/virt-operator \
+    %{nil}
 
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} KUBEVIRT_NO_BAZEL=true GO_BUILD=true ./hack/build-manifests.sh
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} KUBEVIRT_NO_BAZEL=true ./hack/build-manifests.sh
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -214,28 +213,29 @@ install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}
 # virt-launcher SELinux policy needs to land in virt-handler container
 install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}/
 
+# Install network stuff
+mkdir -p %{buildroot}%{_datadir}/kube-virt/virt-handler
+install -p -m 0644 cmd/virt-handler/nsswitch.conf %{buildroot}%{_datadir}/kube-virt/virt-handler/
+install -p -m 0644 cmd/virt-handler/ipv4-nat.nft %{buildroot}%{_datadir}/kube-virt/virt-handler/
+install -p -m 0644 cmd/virt-handler/ipv6-nat.nft %{buildroot}%{_datadir}/kube-virt/virt-handler/
+
 # Install release manifests
 mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/release
 install -m 0644 _out/manifests/release/kubevirt-operator.yaml %{buildroot}%{_datadir}/kube-virt/manifests/release/
 install -m 0644 _out/manifests/release/kubevirt-cr.yaml %{buildroot}%{_datadir}/kube-virt/manifests/release/
-# TODO:
-# Create a proper Pod Security Policy (PSP) for KubeVirt. For now, add one
-# that uses the CaaSP privileged PSP. It can be used with CaaSP-based
-# Kubernetes clusters.
-install -m 644 %{S:1} %{buildroot}/%{_datadir}/kube-virt/manifests/release/
 
 # Install manifests for testing
 mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/testing
 install -m 0644 _out/manifests/testing/* %{buildroot}%{_datadir}/kube-virt/manifests/testing/
 # The generated disks-images-provider.yaml refers to nonexistent container
 # images. Overwrite it with the upstream version for testing.
-install -m 0644 %{S:4} %{buildroot}/%{_datadir}/kube-virt/manifests/testing/
+install -m 0644 %{S:3} %{buildroot}/%{_datadir}/kube-virt/manifests/testing/
 install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt/manifests/testing/
 
 # Install kubevirt_containers_meta build service
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service
-install -m 0755 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
-install -m 0644 %{S:3} %{buildroot}%{_prefix}/lib/obs/service
+install -m 0755 %{S:1} %{buildroot}%{_prefix}/lib/obs/service
+install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 
 %files virtctl
 %license LICENSE
@@ -260,8 +260,11 @@ install -m 0644 %{S:3} %{buildroot}%{_prefix}/lib/obs/service
 %files virt-handler
 %license LICENSE
 %doc README.md
+%dir %{_datadir}/kube-virt
+%dir %{_datadir}/kube-virt/virt-handler
 %{_bindir}/virt-handler
 %{_bindir}/virt-chroot
+%{_datadir}/kube-virt/virt-handler
 /virt_launcher.cil
 
 %files virt-launcher

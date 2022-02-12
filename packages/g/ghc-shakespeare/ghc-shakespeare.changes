@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 23 07:55:11 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update shakespeare to version 2.0.25.1.
+  ### 2.0.25.1
+
+  * Support for GHC 9.2 and aeson 2 [#260](https://github.com/yesodweb/shakespeare/pull/260)
+
+-------------------------------------------------------------------
 Tue Oct 12 11:34:19 UTC 2021 - psimons@suse.com
 
 - Update shakespeare to version 2.0.25 revision 1.

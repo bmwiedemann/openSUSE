@@ -107,4 +107,17 @@
     <comment>- Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE. (forwarded request 905776 from rguenther)</comment>
     <requestid>908530</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>0db3329ec9ef74513e3ecbc011038966</srcmd5>
+    <version>1.4.3</version>
+    <time>1644617258</time>
+    <user>dimstar_suse</user>
+    <comment>- Add version check to only use compiler-rt-fix-tsan-build.patch
+  for suse_version &gt;= 1500 where gcc &gt;= 6
+  * compiler-rt-fix-tsan-build.patch adds LDFLAGS -no-pie to gobuild.sh
+  * gcc-6 introduced flag -no-pie with --enable-default-pie
+  * SLE-12 has default gcc-4.8
+  * Disable LDFLAGS -no-pie flag for SUSE releases having gcc &lt;= 6 (forwarded request 953331 from jfkw)</comment>
+    <requestid>953332</requestid>
+  </revision>
 </revisionlist>

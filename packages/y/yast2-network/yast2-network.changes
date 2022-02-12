@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 10 18:01:05 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Related to (bsc#1194911)
+  - During installation skip the network configuration dialog when
+    network is configured with iBFT.
+4.4.39
+
+-------------------------------------------------------------------
+Wed Feb  9 12:14:50 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- During installation, do not configure DHCP if there is some
+  active interface configured by iBFT (bsc#1194911)
+- 4.4.38
+
+-------------------------------------------------------------------
 Fri Feb  4 15:14:10 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixed interfaces overview help (bsc#1195155)

@@ -18,7 +18,7 @@
 
 %global pkg_name managed
 Name:           ghc-%{pkg_name}
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        A monad for managed values
 License:        BSD-3-Clause

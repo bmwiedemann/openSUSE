@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb  9 15:25:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-client-restricted to version 0.0.5.
+  http-client-restricted (0.0.5) unstable; urgency=medium
+
+    * Deal with raw IPv6 addresses correctly, stripping square
+      brackets before passing on to name resolution.
+      (The same fix was made in http-client 0.7.11, which this depends on.)
+      Thanks, Robert Vollmert.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 09 Feb 2022 11:24:29 -0400
+
+-------------------------------------------------------------------
 Wed Jan 13 15:28:49 UTC 2021 - psimons@suse.com
 
 - Update http-client-restricted to version 0.0.4.

@@ -123,7 +123,7 @@ a uniform, machine readable format.
 install -D %{SOURCE1} %{buildroot}%{_rpmconfigdir}/gi-find-deps.sh
 install -D %{SOURCE2} -m 0644 %{buildroot}%{_rpmconfigdir}/fileattrs/gobjectintrospection.attr
 # comparing, if we provide all the symbols expected.
-ls %{buildroot}%{_libdir}/girepository-1.0/*.typelib | sh %{SOURCE1} -P > gobject-introspection-typelib.installed
+ls %{buildroot}%{_libdir}/girepository-1.0/*.typelib | bash %{SOURCE1} -P > gobject-introspection-typelib.installed
 diff -s %{SOURCE3} gobject-introspection-typelib.installed
 %fdupes %{buildroot}
 # fixup shebangs in files installed to /usr/bin

@@ -1,7 +1,7 @@
 #
 # spec file for package meep
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define somajor 14
+%define somajor 27
 Name:           meep
-Version:        1.9.0
+Version:        1.22.0
 Release:        0
 Summary:        FDTD finite-difference time-domain solver
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            http://ab-initio.mit.edu/wiki/index.php/Meep
+URL:            https://meep.readthedocs.io/en/latest/
 Source0:        https://github.com/stevengj/meep/releases/download/v%{version}/meep-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE disable_test_tumbleweed.patch boo#1130438 -- Disable
-# failing test on Tumbleweed
-Patch0:         disable_test_tumbleweed.patch
+BuildRequires:  autoconf
 BuildRequires:  binutils
 BuildRequires:  blas-devel
 BuildRequires:  fftw3-devel
@@ -39,8 +37,8 @@ BuildRequires:  guile-devel
 BuildRequires:  harminv-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
-BuildRequires:  latex2html
 BuildRequires:  libctl-devel >= 4.2.0
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 
@@ -49,8 +47,6 @@ Requires:       guile
 
 # providing /usr/share/libctl/base/include.scm
 Requires:       libctl-devel >= 4.2.0
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Meep (or MEEP) is a free finite-difference time-domain (FDTD)
@@ -61,7 +57,6 @@ systems.
 Summary:        FDTD finite-difference time-domain solver library
 # Avoid unresolvable errors from multiple providers
 Group:          System/Libraries
-Requires:       libhdf5
 
 %description -n lib%{name}%{somajor}
 Meep (or MEEP) is a free finite-difference time-domain (FDTD)
@@ -83,40 +78,58 @@ applications that use meep.
 
 %prep
 %setup -q
-%if 0%{?suse_version} >= 1550
-%patch0 -p1
-%endif
+# Checking for CPU architecture is totally broken, get rid of it
+sed -i -e 's/AX_CXX_MAXOPT//' configure.ac
 
 %build
-export CFLAGS="%{optflags} -fPIC"
-export CXXFLAGS="%{optflags} -fPIC"
-export FFLAGS="%{optflags} -fPIC"
-%configure --enable-shared --disable-static --enable-portable-binary
-make %{?_smp_mflags}
+# Missing version.sh from tarball, required for autoreconf
+echo "echo -n '%{version}'" > ./version.sh ; chmod +x ./version.sh
+autoreconf
+# On i586, we need SSE (implicit on x86_64). Yes, we need a Pentium3 at least ...
+%ifarch %{ix86}
+%global optflags %{optflags} -msse -Wno-error=return-type
+%else
+%global optflags %{optflags} -Wno-error=return-type
+%endif
+# Specify fortran libraries manually, autoconf (fortran.m4) mechanism is
+# totally broken and messes up pkgconfig file later
+%configure \
+  FLIBS="-lgfortran" \
+  --enable-shared \
+  --disable-static \
+  --with-openmp \
+  --enable-portable-binary
+%make_build
+# Build tests without running any
+%make_build check TESTS=
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make check
+%ifarch x86_64
+grep -E "flags|model name"  /proc/cpuinfo | head -n2
+# https://github.com/NanoComp/meep/issues/727
+make check TESTS=2D_convergence || export xfail=2D_convergence
+%endif
+make %{_smp_mflags} check XFAIL_TESTS=${xfail}
+cat tests/test-suite.log
 
 %post -n lib%{name}%{somajor} -p /sbin/ldconfig
 
 %postun -n lib%{name}%{somajor} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYRIGHT NEWS.md
+%doc AUTHORS NEWS.md
+%license COPYRIGHT
 %{_bindir}/*
 %{_datadir}/meep/
 
 %files -n lib%{name}%{somajor}
-%defattr(-,root,root)
 %{_libdir}/libmeep.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libmeep.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*

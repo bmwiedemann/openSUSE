@@ -1,0 +1,25 @@
+From 2a976339f444d70f10949901a6ee2b1f8ccb24b6 Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Tue, 18 Jan 2022 14:43:29 -0800
+Subject: [PATCH] build: add embedded-resources.h to libembedded_dep
+
+Fixes #42
+---
+ tests/libpeas/plugins/embedded/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/libpeas/plugins/embedded/meson.build b/tests/libpeas/plugins/embedded/meson.build
+index 00232bf9..675eccd3 100644
+--- a/tests/libpeas/plugins/embedded/meson.build
++++ b/tests/libpeas/plugins/embedded/meson.build
+@@ -45,6 +45,7 @@ libembedded_lib = shared_library(
+ )
+ 
+ libembedded_dep = declare_dependency(
++  sources: libembedded_res[1],
+   link_with: libembedded_lib,
+   include_directories: include_directories('.'),
+   dependencies: libembedded_deps,
+-- 
+GitLab
+

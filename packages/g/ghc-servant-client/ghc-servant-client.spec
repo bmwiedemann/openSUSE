@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-servant-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name servant-client
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.3
+Version:        0.19
 Release:        0
 Summary:        Automatic derivation of querying functions for servant
 License:        BSD-3-Clause
@@ -87,8 +87,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver transformers-compat '< 0.7' '< 0.8'
-cabal-tweak-dep-ver base-compat '< 0.12' '< 0.13'
+cabal-tweak-dep-ver base-compat '< 0.12' '< 1'
 
 %build
 %ghc_lib_build

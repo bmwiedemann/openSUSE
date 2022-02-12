@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb  3 10:22:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.34.0+37:
+  + Fix invalid markup in Serbian help translation
+  + Updated translations.
+- This is the final version of gnome-documents, it is now archived.
+- Add gnome-documents-fix-meson.patch: Fix build with meson 0.61.0
+  and newer.
+- Add appstream-glib BuildRequires, add a check section and
+  meson_test macro, run tests during build.
+- Update our Supplements to current standard.
+
+-------------------------------------------------------------------
 Wed Nov 10 07:11:16 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Update 35.patch to be precisely the same as upstream, this is

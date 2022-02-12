@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://gitlab.gnome.org/GNOME/gnome-documents.git</param>
+    <param name="url">https://gitlab.gnome.org/Archive/gnome-documents.git</param>
     <param name="scm">git</param>
-    <param name="revision"></param>
+    <param name="revision">06c522a6</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
   </service>
   <service mode="buildtime" name="tar" />

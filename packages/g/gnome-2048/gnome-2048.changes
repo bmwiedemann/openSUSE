@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  3 05:16:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 21.patch: Fix build with meson 0.61 and newer.
+- Add desktop-file-utils and replace erronus appstream-glib-devel
+  with appstream-glib BuildRequires, and add a check section and
+  meson_test macro, run tests during build.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+
+-------------------------------------------------------------------
 Mon Nov 23 12:46:31 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.2:

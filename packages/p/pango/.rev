@@ -1097,4 +1097,12 @@
   + Fix line height with emulated Small Caps. (forwarded request 942237 from iznogood)</comment>
     <requestid>942319</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>cce8f9b9b80241f10ff176d5f5a0e73b</srcmd5>
+    <version>1.50.4</version>
+    <time>1644617234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953146</requestid>
+  </revision>
 </revisionlist>

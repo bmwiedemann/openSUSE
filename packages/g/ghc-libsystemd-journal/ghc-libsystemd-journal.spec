@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-libsystemd-journal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver 'semigroups' '< 0.2' '< 1'
+cabal-tweak-dep-ver semigroups '< 0.20' '< 1'
 
 %build
 %ghc_lib_build

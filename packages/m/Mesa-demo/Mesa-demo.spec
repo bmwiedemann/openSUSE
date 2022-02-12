@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-demo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
-Obsoletes:      %name-egl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -78,6 +77,19 @@ Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengles2/es2tri
 %description es
 This package contains some common GLES-based demos.
 
+%package egl
+Summary:        EGL-based demos
+Group:          Development/Tools/Other
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/eglgears_x11
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/eglinfo
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/egltri_x11
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/peglgears
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/xeglgears
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengl/xeglthreads
+
+%description egl
+This package contains some common EGL-based demos.
+
 %prep
 %setup -q -n mesa-demos-%{version} -b0
 
@@ -102,6 +114,12 @@ ln -s %{_libdir}/mesa-demos/xdemos/pbinfo %{buildroot}/%{_bindir}/pbinfo
 ln -s %{_libdir}/mesa-demos/egl/opengles2/es2_info %{buildroot}/%{_bindir}/es2_info
 ln -s %{_libdir}/mesa-demos/egl/opengles2/es2gears_x11 %{buildroot}/%{_bindir}/es2gears_x11
 ln -s %{_libdir}/mesa-demos/egl/opengles2/es2tri %{buildroot}/%{_bindir}/es2tri
+ln -s %{_libdir}/mesa-demos/egl/opengl/eglgears_x11 %{buildroot}/%{_bindir}/eglgears_x11
+ln -s %{_libdir}/mesa-demos/egl/opengl/eglinfo %{buildroot}/%{_bindir}/eglinfo
+ln -s %{_libdir}/mesa-demos/egl/opengl/egltri_x11 %{buildroot}/%{_bindir}/egltri_x11
+ln -s %{_libdir}/mesa-demos/egl/opengl/peglgears %{buildroot}/%{_bindir}/peglgears
+ln -s %{_libdir}/mesa-demos/egl/opengl/xeglgears %{buildroot}/%{_bindir}/xeglgears
+ln -s %{_libdir}/mesa-demos/egl/opengl/xeglthreads %{buildroot}/%{_bindir}/xeglthreads
 
 %files
 %defattr(-,root,root)
@@ -112,6 +130,12 @@ ln -s %{_libdir}/mesa-demos/egl/opengles2/es2tri %{buildroot}/%{_bindir}/es2tri
 %exclude %{_libdir}/mesa-demos/egl/opengles2/es2_info
 %exclude %{_libdir}/mesa-demos/egl/opengles2/es2gears_x11
 %exclude %{_libdir}/mesa-demos/egl/opengles2/es2tri
+%exclude %{_libdir}/mesa-demos/egl/opengl/eglgears_x11
+%exclude %{_libdir}/mesa-demos/egl/opengl/eglinfo
+%exclude %{_libdir}/mesa-demos/egl/opengl/egltri_x11
+%exclude %{_libdir}/mesa-demos/egl/opengl/peglgears
+%exclude %{_libdir}/mesa-demos/egl/opengl/xeglgears
+%exclude %{_libdir}/mesa-demos/egl/opengl/xeglthreads
 
 %files x
 %defattr(-,root,root)
@@ -132,5 +156,21 @@ ln -s %{_libdir}/mesa-demos/egl/opengles2/es2tri %{buildroot}/%{_bindir}/es2tri
 %{_bindir}/es2_info
 %{_bindir}/es2gears_x11
 %{_bindir}/es2tri
+
+%files egl
+%defattr(-,root,root)
+%dir %{_libdir}/mesa-demos/egl/opengl/
+%{_libdir}/mesa-demos/egl/opengl/eglgears_x11
+%{_libdir}/mesa-demos/egl/opengl/eglinfo
+%{_libdir}/mesa-demos/egl/opengl/egltri_x11
+%{_libdir}/mesa-demos/egl/opengl/peglgears
+%{_libdir}/mesa-demos/egl/opengl/xeglgears
+%{_libdir}/mesa-demos/egl/opengl/xeglthreads
+%{_bindir}/eglgears_x11
+%{_bindir}/eglinfo
+%{_bindir}/egltri_x11
+%{_bindir}/peglgears
+%{_bindir}/xeglgears
+%{_bindir}/xeglthreads
 
 %changelog

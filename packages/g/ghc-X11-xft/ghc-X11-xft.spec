@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-X11-xft
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %global pkg_name X11-xft
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.3.4
 Release:        0
-Summary:        Bindings to the Xft, X Free Type interface library, and some Xrender parts
-License:        LGPL-2.1-or-later
+Summary:        Bindings to the Xft and some Xrender parts
+License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
@@ -34,7 +34,10 @@ BuildRequires:  pkgconfig(xft)
 ExcludeArch:    %{ix86}
 
 %description
-Bindings to the Xft, X Free Type interface library, and some Xrender parts.
+A Haskell bindings to the X Font library. With it, Haskell X11 applications can
+access high quality font renderings and provide fonts with anti-aliasing and
+subpixel rendering. The bindings also provide minimal bindings to Xrender
+parts.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -67,5 +70,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGES.md README.md
 
 %changelog

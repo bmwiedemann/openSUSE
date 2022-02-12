@@ -40,4 +40,12 @@
   Upstream has revised the Cabal build instructions on Hackage.</comment>
     <requestid>917928</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36619445a5ed03c56c0caf4887e7b8da</srcmd5>
+    <version>1.1.1</version>
+    <time>1644617341</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953468</requestid>
+  </revision>
 </revisionlist>

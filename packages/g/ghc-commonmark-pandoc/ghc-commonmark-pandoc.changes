@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 14 17:56:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-pandoc to version 0.2.1.2.
+  ## 0.2.1.2
+
+  - Fix addition of sourcepos attributes to blocks (jgm/pandoc#7769).
+    We were always adding an enclosing Div, even when the block
+    admits attributes. Now the attributes are added to the block
+    itself, unless it can't accept attributes (as with inlines).
+
+-------------------------------------------------------------------
 Thu Jul  1 12:50:31 UTC 2021 - psimons@suse.com
 
 - Update commonmark-pandoc to version 0.2.1.1.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 30 08:00:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-text to version 1.0.1 revision 1.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:44:59 UTC 2021 - psimons@suse.com
 
 - Update hslua-module-text to version 1.0.0.

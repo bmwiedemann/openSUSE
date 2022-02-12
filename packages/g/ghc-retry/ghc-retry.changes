@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 25 23:27:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update retry to version 0.9.1.0.
+  0.9.1.0
+  * Add resumable retry/recover variants:
+    * `resumeRetrying`
+    * `resumeRetryingDynamic`
+    * `resumeRecovering`
+    * `resumeRecoveringDynamic`
+    * `resumeRecoverAll`
+
+-------------------------------------------------------------------
 Sat Jul 10 13:41:07 UTC 2021 - psimons@suse.com
 
 - Update retry to version 0.9.0.0.

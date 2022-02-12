@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-text-icu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name text-icu
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.1.0
+Version:        0.8.0.1
 Release:        0
 Summary:        Bindings to the ICU library
 License:        BSD-3-Clause
@@ -30,7 +30,12 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-time-devel
 BuildRequires:  libicu-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-io)
+BuildRequires:  pkgconfig(icu-uc)
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
@@ -72,11 +77,20 @@ representation.)
 
 * Security checks for visually confusable (spoofable) strings.
 
+* Bidirectional Unicode algorithm
+
+* Calendar objects holding dates and times.
+
+* Number and calendar formatting.
+
 %package devel
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires:       libicu-devel
+Requires:       pkgconfig
+Requires:       pkgconfig(icu-i18n)
+Requires:       pkgconfig(icu-io)
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 

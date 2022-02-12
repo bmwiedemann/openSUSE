@@ -512,4 +512,17 @@
     to remove repitition from the spec files</comment>
     <requestid>935203</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>e89ce163d8a9ee5d5fd45c900645bc87</srcmd5>
+    <version>14</version>
+    <time>1644617206</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the pg_server_requires macro on older rpm versions (SLE-12).
+
+- Avoid a dependency on awk in postgresql-script.
+
+- Bump version to 14.
+- Bump default to 14 on Factory and future SPs.</comment>
+    <requestid>953724</requestid>
+  </revision>
 </revisionlist>

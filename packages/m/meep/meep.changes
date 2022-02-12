@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  9 16:02:25 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.22.0:
+  * Too many changes, see included NEWS.md or
+    https://github.com/NanoComp/meep/blob/v1.22.0/NEWS.md
+- Build with openMP.
+- Fix meep.pc pkgconfig file.
+- Drop disable_test_tumbleweed.patch, use XFAIL_TESTS instead.
+  Reenable on all archs but x86_64, disable also on 15.x
+- Remove latex2html BuildRequires, doc uses Markdown now.
+
+-------------------------------------------------------------------
 Mon May 27 07:51:38 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 1.9.0:

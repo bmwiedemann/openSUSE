@@ -1,7 +1,7 @@
 #
 # spec file for package pandoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.16.1
+Version:        2.17.1.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -57,6 +57,7 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-haddock-library-devel
+BuildRequires:  ghc-hslua-aeson-devel
 BuildRequires:  ghc-hslua-devel
 BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-module-path-devel
@@ -68,9 +69,11 @@ BuildRequires:  ghc-http-client-tls-devel
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-ipynb-devel
 BuildRequires:  ghc-jira-wiki-markup-devel
+BuildRequires:  ghc-lpeg-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-uri-devel
+BuildRequires:  ghc-pandoc-lua-marshal-devel
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-pretty-devel
@@ -101,7 +104,6 @@ BuildRequires:  ghc-zlib-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Diff-devel
-BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
 BuildRequires:  ghc-tasty-hunit-devel
@@ -111,24 +113,25 @@ BuildRequires:  ghc-tasty-quickcheck-devel
 
 %description
 Pandoc is a Haskell library for converting from one markup format to another,
-and a command-line tool that uses this library. It can read several dialects of
-Markdown and (subsets of) HTML, reStructuredText, LaTeX, DocBook, JATS,
-MediaWiki markup, DokuWiki markup, TWiki markup, TikiWiki markup, Jira markup,
-Creole 1.0, Haddock markup, OPML, Emacs Org-Mode, Emacs Muse, txt2tags, ipynb
-(Jupyter notebooks), Vimwiki, Word Docx, ODT, EPUB, FictionBook2, roff man,
-Textile, BibTeX, BibLaTeX, CSL JSON, , and CSV, and it can write Markdown,
-reStructuredText, XHTML, HTML 5, LaTeX, ConTeXt, DocBook, JATS, OPML, TEI,
-OpenDocument, ODT, Word docx, PowerPoint pptx, RTF, MediaWiki, DokuWiki, XWiki,
-ZimWiki, Textile, Jira, roff man, roff ms, plain text, Emacs Org-Mode,
-AsciiDoc, Haddock markup, EPUB (v2 and v3), ipynb, FictionBook2, InDesign ICML,
-Muse, CSL JSON, LaTeX beamer slides, and several kinds of HTML/JavaScript slide
-shows (S5, Slidy, Slideous, DZSlides, reveal.js).
+and a command-line tool that uses this library. The formats it can handle
+include
 
-In contrast to most existing tools for converting Markdown to HTML, pandoc has
-a modular design: it consists of a set of readers, which parse text in a given
-format and produce a native representation of the document, and a set of
-writers, which convert this native representation into a target format.
-Thus, adding an input or output format requires only adding a reader or writer.
+- light markup formats (many variants of Markdown, reStructuredText, AsciiDoc,
+Org-mode, Muse, Textile, txt2tags) - HTML formats (HTML 4 and 5) - Ebook
+formats (EPUB v2 and v3, FB2) - Documentation formats (GNU TexInfo, Haddock) -
+Roff formats (man, ms) - TeX formats (LaTeX, ConTeXt) - XML formats (DocBook 4
+and 5, JATS, TEI Simple, OpenDocument) - Outline formats (OPML) - Bibliography
+formats (BibTeX, BibLaTeX, CSL JSON, CSL YAML) - Word processor formats (Docx,
+RTF, ODT) - Interactive notebook formats (Jupyter notebook ipynb) - Page layout
+formats (InDesign ICML) - Wiki markup formats (MediaWiki, DokuWiki, TikiWiki,
+TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki, Creole) - Slide show formats (LaTeX
+Beamer, PowerPoint, Slidy, reveal.js, Slideous, S5, DZSlides) - Data formats
+(CSV tables) - PDF (via external programs such as pdflatex or wkhtmltopdf)
+
+Pandoc can convert mathematical content in documents between TeX, MathML, Word
+equations, roff eqn, and plain text. It includes a powerful system for
+automatic citations and bibliographies, and it can be customized extensively
+using templates, filters, and custom readers and writers written in Lua.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
@@ -157,7 +160,6 @@ This package provides the Haskell %{name} library development files.
 %ghc_fix_rpath %{pkg_name}-%{version}
 # Link duplicate template files
 %fdupes %{buildroot}%{_datadir}/%{pkg_name}-%{version}/data/templates/
-install -D -m 644 man/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %check
 %cabal_test
@@ -171,7 +173,6 @@ install -D -m 644 man/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 %files
 %license COPYING.md
 %doc AUTHORS.md README.md changelog.md
-%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %dir %{_datadir}/%{name}-%{version}/citeproc
@@ -212,6 +213,7 @@ install -D -m 644 man/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 %{_datadir}/%{name}-%{version}/citeproc/biblatex-localization/*.lbx.strings
 %{_datadir}/%{name}-%{version}/data/abbreviations
 %{_datadir}/%{name}-%{version}/data/bash_completion.tpl
+%{_datadir}/%{name}-%{version}/data/creole.lua
 %{_datadir}/%{name}-%{version}/data/default.csl
 %{_datadir}/%{name}-%{version}/data/docx/?Content_Types?.xml
 %{_datadir}/%{name}-%{version}/data/docx/_rels/.rels
@@ -241,8 +243,6 @@ install -D -m 644 man/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 %{_datadir}/%{name}-%{version}/data/odt/mimetype
 %{_datadir}/%{name}-%{version}/data/odt/settings.xml
 %{_datadir}/%{name}-%{version}/data/odt/styles.xml
-%{_datadir}/%{name}-%{version}/data/pandoc.List.lua
-%{_datadir}/%{name}-%{version}/data/pandoc.lua
 %{_datadir}/%{name}-%{version}/data/pptx/?Content_Types?.xml
 %{_datadir}/%{name}-%{version}/data/pptx/_rels/.rels
 %{_datadir}/%{name}-%{version}/data/pptx/docProps/app.xml
@@ -318,6 +318,7 @@ install -D -m 644 man/%{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 %{_datadir}/%{name}-%{version}/data/templates/default.latex
 %{_datadir}/%{name}-%{version}/data/templates/default.man
 %{_datadir}/%{name}-%{version}/data/templates/default.markdown
+%{_datadir}/%{name}-%{version}/data/templates/default.markua
 %{_datadir}/%{name}-%{version}/data/templates/default.mediawiki
 %{_datadir}/%{name}-%{version}/data/templates/default.ms
 %{_datadir}/%{name}-%{version}/data/templates/default.muse

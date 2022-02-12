@@ -120,4 +120,17 @@ python3 seems to work for 12.3 and Factory, but I can't figure out the problem f
     <comment>- Fix the test call macro expansion</comment>
     <requestid>687603</requestid>
   </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>e161a54d2eff8ac361ca5c346115153c</srcmd5>
+    <version>0.5.3</version>
+    <time>1644617416</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 37-python39.patch (gh#benoitc/socketpool#37) to make code
+  Python 3.9 compatible.
+- Add port_to_py3k.patch (gh#benoitc/socketpool#38) porting tests
+  to py3k.
+- 2to3 module is not required for build
+</comment>
+    <requestid>953746</requestid>
+  </revision>
 </revisionlist>

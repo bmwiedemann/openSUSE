@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 11 10:51:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.4:
+  + Use gtk_widget_is_visible() instead of gtk_widget_get_visible()
+    on some places
+  + Composer:
+    - Backup from toplevel BLOCKQUOTE on split for Undo/Redo
+    - Special-case requote of BLOCKQUOTE nodes in Plain Text mode
+    - Various changes for Plain Text re-quote
+  + ECompEditor: Timezone can be reset on component save
+  + Bugs fixed: glgo#GNOME/evolution#1763,
+    glgo#GNOME/evolution#1783.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan  7 16:35:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.3:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  2 17:17:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 4be71525f07189e97720688472172604879d49a5.patch: Fix build
+  with meson 0.61 and newer.
+- Drop update-desktop-files BuildRequires and macro, no longer
+  needed.
+- Add appstream-glib and desktop-file-utils BuildRequires, verify
+  desktop file and metainfo during meson_test macro run.
+
+-------------------------------------------------------------------
 Tue Sep 21 14:04:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:

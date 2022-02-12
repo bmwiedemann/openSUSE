@@ -1,0 +1,19 @@
+diff -Nur orig-gnome-characters-41.0/data/meson.build gnome-characters-41.0/data/meson.build
+--- orig-gnome-characters-41.0/data/meson.build	2022-02-10 19:47:24.088622562 +0100
++++ gnome-characters-41.0/data/meson.build	2022-02-10 19:48:17.464754725 +0100
+@@ -47,7 +47,6 @@
+ desktop_conf.set('bindir', characters_bindir)
+ 
+ i18n.merge_file(
+-  'desktop-file',
+   type: 'desktop',
+   input: configure_file (
+     input: characters_name + '.desktop.in',
+@@ -61,7 +60,6 @@
+ )
+ 
+ appdata_file = i18n.merge_file(
+-  'appdata-file',
+   input: characters_name + '.appdata.xml.in',
+   output: characters_application_id + '.appdata.xml',
+   po_dir: po_dir,

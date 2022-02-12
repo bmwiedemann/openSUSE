@@ -69,6 +69,7 @@ Requires:       ca-certificates-mozilla
 Requires:       coreutils
 Requires:       glibc
 Suggests:       busybox-hostname
+Requires:       NetworkManager
 Requires:       iproute2
 Requires:       libnss_usrfiles2
 Requires:       openSUSE-build-key
@@ -80,7 +81,6 @@ Requires:       rpm
 Requires:       shadow
 Requires:       systemd
 Requires:       util-linux
-Requires:       wicked
 Requires:       group(nobody)
 Requires:       user(nobody)
 ####

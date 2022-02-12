@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-shelly
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name shelly
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Shell-like (systems) programming in Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-bytestring-devel
@@ -45,7 +44,6 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-compat-devel
-BuildRequires:  ghc-unix-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
@@ -58,13 +56,11 @@ Shelly provides convenient systems programming in Haskell, similar in spirit to
 POSIX shells. Shelly:
 
 * is aimed at convenience and getting things done rather than being a
-demonstration of elegance.
+demonstration of elegance,
 
-* has detailed and useful error messages
+* has detailed and useful error messages,
 
 * maintains its own environment, making it thread-safe.
-
-* is modern, using Text filepath/directory
 
 Shelly is originally forked from the Shellish package.
 
@@ -85,7 +81,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

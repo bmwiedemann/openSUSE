@@ -1,7 +1,7 @@
 #
 # spec file for package libgee
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libgee
-Version:        0.20.4
+Version:        0.20.5
 Release:        0
 Summary:        GObject-based library providing commonly used data structures
 License:        LGPL-2.1-or-later
@@ -38,9 +38,6 @@ classes for commonly used data structures.
 %package -n libgee-0_8-2
 Summary:        GObject-based library providing commonly used data structures
 Group:          System/Libraries
-%if 0%{?suse_version} <= 1210
-Requires:       typelib-1_0-Gee-0_8
-%endif
 
 %description -n libgee-0_8-2
 Libgee is a collection library providing GObject-based interfaces and
@@ -71,18 +68,17 @@ classes for commonly used data structures.
 This package provides all the files needed for development using Libgee.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libgee-0_8-2 -p /sbin/ldconfig
-%postun -n libgee-0_8-2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgee-0_8-2
 
 %files -n libgee-0_8-2
 %license COPYING

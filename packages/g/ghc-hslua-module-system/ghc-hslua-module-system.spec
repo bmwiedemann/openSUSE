@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-module-system
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %global pkg_name hslua-module-system
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Lua module wrapper around Haskell's System module
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-exceptions-devel
@@ -61,6 +62,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

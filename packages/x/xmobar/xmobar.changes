@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  1 19:59:06 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.41.
+  ## Version 0.41 (January, 2022)
+
+  _New features_
+
+    - Disk monitors for FreeBSD (Michal Zielonka).
+    - Improvements to signal handling when using xmobar as a library (John Soo).
+
+-------------------------------------------------------------------
 Sat Nov  6 20:35:25 UTC 2021 - psimons@suse.com
 
 - Update xmobar to version 0.40.

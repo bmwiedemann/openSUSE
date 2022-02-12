@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 29 15:35:03 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- add subpackage kcm_fcitx5 and not auto install it for no KDE desktop
+
+-------------------------------------------------------------------
 Tue Jan 25 13:42:44 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update to version 5.0.10

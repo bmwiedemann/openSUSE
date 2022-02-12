@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 20 17:35:49 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update cborg to version 0.2.6.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:22:00 UTC 2021 - psimons@suse.com
 
 - Update cborg to version 0.2.6.0.

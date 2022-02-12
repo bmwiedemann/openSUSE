@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-protolude
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver transformers-compat '<0.7' '<0.8'
+cabal-tweak-dep-ver transformers-compat '<0.7' '< 1'
 
 %build
 %ghc_lib_build

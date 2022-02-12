@@ -297,8 +297,13 @@ cmake \
    -DLIB_INSTALL_DIR:PATH=/usr/lib64 \
    -DLIB_SUFFIX=64 \
    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+%ifarch x86_64
    -DCMAKE_C_FLAGS="${CFLAGS:--O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables} -DNDEBUG" \
         -DCMAKE_CXX_FLAGS="${CXXFLAGS:--O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables} -DNDEBUG" \
+%else
+   -DCMAKE_C_FLAGS="${CFLAGS:--O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables} -DNDEBUG" \
+        -DCMAKE_CXX_FLAGS="${CXXFLAGS:--O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables} -DNDEBUG" \
+%endif
    -DCMAKE_EXE_LINKER_FLAGS=" -Wl,--as-needed -Wl,-z,now" \
    -DCMAKE_MODULE_LINKER_FLAGS=" -Wl,--as-needed" \
    -DCMAKE_SHARED_LINKER_FLAGS=" -Wl,--as-needed -Wl,-z,now" \
@@ -343,10 +348,12 @@ mv %{buildroot}/usr/libexec %{buildroot}/usr/libexec_condor/
 mkdir -p %{buildroot}/usr/libexec
 mv %{buildroot}/usr/libexec_condor %{buildroot}/usr/libexec/condor
 mv %{buildroot}/usr%{_sysconfdir}/ %{buildroot}%{_sysconfdir}
+%ifnarch %{ix86} %arm
 # mv libraries to /usr/lib64
 mv %{buildroot}/usr/lib/lib* %{buildroot}%{_libdir}
+%endif
 # remove static stuff
-rm %{buildroot}%{_libdir}/*a
+rm -f %{buildroot}%{_libdir}/*a
 
 # more stuff to move
 mkdir -p %{buildroot}/usr/share/condor

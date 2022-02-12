@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 08 20:41:27 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.47+3.adb7276:
+  * rescan-scsi-bus.sh: fix garbled output (bsc#1195621) 
+
+-------------------------------------------------------------------
 Tue Jan 04 11:47:02 UTC 2022 - mwilck@suse.com
 
 - Update to version 1.47+2.388b767:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 11 07:41:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.5:
+  * Add relative width option in #220
+  * mouse and touch support on wayland in #200
+
+-------------------------------------------------------------------
 Mon Dec  6 10:49:27 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.4:

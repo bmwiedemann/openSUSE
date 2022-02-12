@@ -1380,4 +1380,12 @@
   * Do not call a deprecated method which causes reactor startup to abort.</comment>
     <requestid>944143</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1aa027172999d8b4f8fdfb458c280674</srcmd5>
+    <version>22.1.0</version>
+    <time>1644617195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953273</requestid>
+  </revision>
 </revisionlist>

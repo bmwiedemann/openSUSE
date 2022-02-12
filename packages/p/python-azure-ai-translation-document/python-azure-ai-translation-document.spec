@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-translation-document
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-translation-document
-Version:        1.0.0b5
+Version:        1.0.0b6
 Release:        0
 Summary:        Microsoft Azure Document Translation Client Library for Python
 License:        MIT
@@ -29,18 +29,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-translation-document/azure-ai-translation-document-%{version}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module azure-ai-translation-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
+BuildRequires:  %{python_module azure-ai-translation-nspkg >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-ai-translation-nspkg >= 1.0.0
 Requires:       python-azure-ai-nspkg >= 1.0.0
+Requires:       python-azure-ai-translation-nspkg >= 1.0.0
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.14.0
 Requires:       python-msrest >= 0.6.21
-Requires:       python-six >= 1.11.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages

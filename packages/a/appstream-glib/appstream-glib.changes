@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Feb 08 15:58:58 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.7.18+28:
+  * as-app: Also unwrap description in metainfo files
+  * Fix validation of translated captions when LANG is not C
+  * Revert "Don't emit legacy component type values"
+  * Don't emit legacy component type values
+  * its: Sync with appstream
+  * Consider AppStream version as a string
+  * meson: Check --version-script linker option before using.
+  * Update current newest version in AsStore
+  * Support em/code tags Some appstream-data packages add <em> and
+    </em> or <code> and </code> to the files. Not all package
+    manager can handle that. An example would be pamac from Manjaro
+  * Update asb-self-test to match current behavior
+  * Add validation for duplicate license xml elements
+  * builder: make directories as 0755 && umask
+  * Do not show a critical warning on <suggests><id/></suggests>
+  * libappstream-builder: Fix paths for cached icons
+  * as-util: Fix Markdown underlining in appdata-to-news
+  * Replace links http://standards.freedesktop.org/... by https in
+    README.md
+  * Replace a link http://www.freedesktop.org/wiki/... by https in
+    README.md
+  * as-app: Parse launchables from DEP-11
+  * as-app: Parse custom tags from DEP-11
+  * as-content-rating: Align the OARS/CSM mappings of sex-*
+  * Updated translations.
+- Switch to current git head, upstream is not making releases.
+- Drop 0001-as-app-Also-unwrap-description-in-metainfo-files.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Feb  8 15:25:24 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix descriptions in .metainfo.xml files
+  (boo#1192243, gh#hughsie/appstream-glib#381):
+  * 0001-as-app-Also-unwrap-description-in-metainfo-files.patch
+
+-------------------------------------------------------------------
 Sun Sep 13 19:12:51 UTC 2020 - elimat@opensuse.org
 
 - Update to version 0.7.18:

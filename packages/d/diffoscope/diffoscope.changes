@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Feb  4 16:51:28 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 203:
+ - Improve documentation for --timeout due to a few misconceptions.
+   Add an allowed-to-fail test regarding a regression in directory handling.
+ - Tidy control flow in Difference._reverse_self a little.
+ - Fix diffing CBFS names that contain spaces.
+- update to version 202:
+ - Don't fail if comparing a nonexistent file with a .pyc file (and add test).
+   (Closes: #1004312)
+ - Drop a reference in the manual page which claims the ability to compare
+   non-existent files on the command-line. This has not been possible since
+   version 32 which was released in September 2015. (Closes: #1004182)
+ - Add experimental support for incremental output support with a timeout.
+   Passing, for example, --timeout=60 will mean that diffoscope will not
+   recurse into any sub-archives after 60 seconds total execution time has
+   elapsed and mark the diff as being incomplete. (Note that this is not a
+   fixed/strict timeout due to implementation issues.)
+   (Closes: reproducible-builds/diffoscope#301)
+ - Don't return with an exit code of 0 if we encounter device file such as
+   /dev/stdin with human-readable metadata that matches literal, non-device,
+   file contents. (Closes: #1004198)
+ - Correct a "recompile" typo.
+ - Fix/update whitespace for Black 21.12.
+
+-------------------------------------------------------------------
+Fri Jan 28 16:24:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 202:
+ - Don't fail if comparing a nonexistent file with a .pyc file (and add test).
+   (Closes: #1004312)
+ - Drop a reference in the manual page which claims the ability to compare
+   non-existent files on the command-line. This has not been possible since
+   version 32 which was released in September 2015. (Closes: #1004182)
+ - Add experimental support for incremental output support with a timeout.
+   Passing, for example, --timeout=60 will mean that diffoscope will not
+   recurse into any sub-archives after 60 seconds total execution time has
+   elapsed and mark the diff as being incomplete. (Note that this is not a
+   fixed/strict timeout due to implementation issues.)
+   (Closes: reproducible-builds/diffoscope#301)
+ - Don't return with an exit code of 0 if we encounter device file such as
+   /dev/stdin with human-readable metadata that matches literal, non-device,
+   file contents. (Closes: #1004198)
+ - Correct a "recompile" typo.
+ - Fix/update whitespace for Black 21.12.
+- update to version 201:
+ - If the debian.deb822 module raises any exception on import, re-raise it as
+   an ImportError instead. This should fix diffoscope on some Fedora systems.
+   Thanks to Mattia Rizzolo for suggesting this particular solution.
+   (Closes: reproducible-builds/diffoscope#300)
+ - Fix json detection with file-5.41-3.fc36.x86_64.
+
+-------------------------------------------------------------------
+Fri Jan 21 16:48:00 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 201:
+ - If the debian.deb822 module raises any exception on import, re-raise it as
+   an ImportError instead. This should fix diffoscope on some Fedora systems.
+   Thanks to Mattia Rizzolo for suggesting this particular solution.
+   (Closes: reproducible-builds/diffoscope#300)
+ - Fix json detection with file-5.41-3.fc36.x86_64.
+- update to version 200:
+ - Even if a Sphinx .inv inventory file is labelled "The remainder of this
+   file is compressed using zlib", it might not actually be. In this case,
+   don't traceback, and simply return the original content.
+   (Closes: reproducible-builds/diffoscope#299)
+ - Update "X has been modified after NT_GNU_BUILD_ID has been applied" message
+   to, for instance, not duplicating the full filename in the primary
+   diffoscope's output.
+
+-------------------------------------------------------------------
 Fri Jan 14 09:22:48 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 200:

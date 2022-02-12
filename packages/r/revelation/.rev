@@ -27,4 +27,12 @@
 - Drop desktop.patch (included upstream)</comment>
     <requestid>921249</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f49734b230fb6ed4fefb231501f9205d</srcmd5>
+    <version>0.5.4</version>
+    <time>1644617242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953244</requestid>
+  </revision>
 </revisionlist>

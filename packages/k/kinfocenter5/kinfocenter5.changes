@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb  9 16:09:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Change patch to also search in /sbin:
+  * Add 0001-Search-in-usr-local-sbin-usr-sbin-sbin-as-fallback.patch
+  * Drop 0001-Search-in-usr-local-sbin-usr-sbin-as-fallback.patch
+  * Rebase 0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
+
+-------------------------------------------------------------------
+Tue Feb  8 18:09:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to actually find lscpi (kde#449792, boo#1195696):
+  * 0001-Search-in-usr-local-sbin-usr-sbin-as-fallback.patch
+- ... and eglinfo (boo1195695):
+  * 0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
+- Suggest Mesa-demo for eglinfo
+
+-------------------------------------------------------------------
 Sat Feb  5 19:50:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.0

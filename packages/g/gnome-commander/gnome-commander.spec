@@ -26,17 +26,16 @@ URL:            http://gcmd.github.io/
 Source:         http://download.gnome.org/sources/gnome-commander/1.14/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
-BuildRequires:  chmlib-devel
+BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exiv2) >= 0.14
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
-BuildRequires:  pkgconfig(gnome-keyring-1) >= 2.22
-BuildRequires:  pkgconfig(gnome-vfs-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.12.0

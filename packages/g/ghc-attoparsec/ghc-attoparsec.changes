@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 16 18:41:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update attoparsec to version 0.14.4 revision 1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/attoparsec-0.14.4/src/changelog.md
+
+-------------------------------------------------------------------
 Sat Nov 20 17:29:22 UTC 2021 - psimons@suse.com
 
 - Update attoparsec to version 0.14.2 revision 2.

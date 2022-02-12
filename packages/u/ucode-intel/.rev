@@ -754,4 +754,30 @@
 | TGL            | B1       | 06-8c-01/80 |          | 00000088 | Core Gen11 Mobile</comment>
     <requestid>898792</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b8c40c0ef8abeb20f3370cad06d34a81</srcmd5>
+    <version>20220207</version>
+    <time>1644617207</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20220207 release.
+  - CVE-2021-0146: Fixed a potential security vulnerability in some Intel Processors may allow escalation of privilege (bsc#1192615)
+  - CVE-2021-0127: Intel Processor Breakpoint Control Flow (bsc#1195779)
+  - CVE-2021-0145: Fast store forward predictor - Cross Domain Training (bsc#1195780)
+  - CVE-2021-33120: Out of bounds read for some Intel Atom processors (bsc#1195781)
+  - Security updates for [INTEL-SA-00528](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00528.html)
+  - Security updates for [INTEL-SA-00532](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00532.html)
+  - Update for functional issues. Refer to [Third Generation Intel® Xeon® Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/637780) for details.
+  - Update for functional issues. Refer to [Second Generation Intel® Xeon® Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® Processor Scalable Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/scalable/xeon-scalable-spec-update.html?wapkw=processor+specification+update) for details.
+  - Update for functional issues. Refer to [11th Generation Intel® Core&quot; Processor Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/631123) for details.
+  - Update for functional issues. Refer to [11th Generation Intel® Core&quot; Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/634808) for details.
+  - Update for functional issues. Refer to [10th Gen Intel® Core&quot; Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/341079) for details.
+  - Update for functional issues. Refer to [10th Generation Intel® Core&quot; Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/615213) for details.
+  - Update for functional issues. Refer to [8th Generation Intel® Core&quot; Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338025) for details.
+  - Update for functional issues. Refer to [8th Gen Intel® Core&quot; Processor Family Spec Update](https://www.intel.com/content/www/us/en/products/docs/processors/core/8th-gen-core-family-spec-update.html?wapkw=processor+specification+update) for details.
+  - Update for functional issues. Refer to [7th and 8th Generation Intel® Core&quot; Processor Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/334663) for details.
+  - Update for functional issues. Refer to [6th Generation Intel® Processor Family Specification Update](https://www.intel.com/content/www/us/en/processors/core/desktop-6th-gen-core-family-spec-update.html) for details.
+  - Update for functional issues. Refer to [Intel® Pentium® Silver and Intel® Celeron® Processors](https://www.intel.com/content/www/us/en/products/docs/processors/pentium/silver-celeron-spec-update.html?wapkw=processor+specification+update) for details.</comment>
+    <requestid>953726</requestid>
+  </revision>
 </revisionlist>

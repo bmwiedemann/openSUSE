@@ -17,9 +17,9 @@
 
 
 Name:           libadwaita
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
-Summary:        Adwaita library for mobile device UIs using GTK/GNOME
+Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libadwaita
 Source:         %{name}-%{version}.tar.xz
@@ -37,22 +37,24 @@ BuildRequires:  pkgconfig(gtk4) >= 4.5.0
 %lang_package
 
 %description
-The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
+Building blocks for modern GNOME applications.
 
 %package -n libadwaita-1-0
-Summary:        Adwaita library for mobile device UIs using GTK/GNOME
+Summary:        Building blocks for modern GNOME applications
 # Make the -lang package installable
 Provides:       %{name} = %{version}
 
 %description -n libadwaita-1-0
-The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
+Building blocks for modern GNOME applications.
+This package provides the shared library for libadwaita.
 
 %package docs
 Summary:        Developer documentation for libadwaita
 BuildArch:      noarch
 
 %description docs
-This package contains developer documentation for the Adwaita library.
+Building blocks for modern GNOME applications.
+This package provides the documentation for libadwaita.
 
 %package devel
 Summary:        Development files for the Adwaita library
@@ -60,16 +62,16 @@ Requires:       libadwaita-1-0 = %{version}
 Requires:       typelib-1_0-Adw-1 = %{version}
 
 %description devel
-The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
+Building blocks for modern GNOME applications.
+This package provides the development files for libadwaita.
 
 %package -n typelib-1_0-Adw-1
 Summary:        Introspection bindings for Adwaita
 Group:          System/Libraries
 
 %description -n typelib-1_0-Adw-1
-The aim of the Adwaita library is to help with developing UI for mobile devices using GTK/GNOME.
-
-This package provides the GObject Introspection bindings for Adwaita.
+Building blocks for modern GNOME applications.
+This package provides the GObject Introspection bindings for libadwaita.
 
 %prep
 %autosetup -p1

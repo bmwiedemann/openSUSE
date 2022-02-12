@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  fdupes
 # Needed to have typelib() Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with test}
 BuildRequires:  at-spi2-atk-gtk2

@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        0.g93
+Version:        0.g96
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later

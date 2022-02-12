@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 27 17:31:10 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update typed-process to version 0.2.8.0.
+  ## 0.2.8.0
+
+  * Re-export `ExitCode`, `ExitSuccess` and `ExitFailure`.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:27:04 UTC 2021 - psimons@suse.com
 
 - Update typed-process to version 0.2.7.0.

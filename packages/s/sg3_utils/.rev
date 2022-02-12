@@ -574,4 +574,14 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   * spec file: suppress commit ID in library version</comment>
     <requestid>943754</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a3cd14ab03a139b4353d3e76ea7e5664</srcmd5>
+    <version>1.47+3.adb7276</version>
+    <time>1644617217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.47+3.adb7276:
+  * rescan-scsi-bus.sh: fix garbled output (bsc#1195621) 
+</comment>
+    <requestid>952820</requestid>
+  </revision>
 </revisionlist>

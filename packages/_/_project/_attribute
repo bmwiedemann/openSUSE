@@ -8,11 +8,11 @@
   boo#1176553: '20220210'
   boo#1183454: '20220210'
   boo#1189869: '20211207'
-  boo#1190434: '20220209'
+  boo#1190434: '20220210'
   boo#1190670: '20211128'
   boo#1190823: '20220202'
   boo#1191225: '20211210'
-  boo#1191603: '20220209'
+  boo#1191603: '20220210'
   boo#1192118: '20211117'
   boo#1192420: '20211106'
   boo#1192667: '20211128'
@@ -23,7 +23,7 @@
   boo#1192959: '20211121'
   boo#1193016: '20211127'
   boo#1193038: '20211124'
-  boo#1193133: '20220209'
+  boo#1193133: '20220210'
   boo#1193134: '20220101'
   boo#1193344: '20211202'
   boo#1193345: '20211211'
@@ -40,7 +40,7 @@
   boo#1195151: '20220205'
   boo#1195174: '20220126'
   boo#1195295: '20220210'
-  boo#1195318: '20220209'
+  boo#1195318: '20220210'
   boo#1195319: '20220202'
   boo#1195637: '20220210'
   bsc#1161276: '20220210'
@@ -78,12 +78,13 @@
   poo#105286: '20220123'
   poo#105289: '20220125'
   poo#105292: '20220126'
-  poo#105295: '20220209'
+  poo#105295: '20220210'
   poo#105298: '20220126'
   poo#105443: '20220124'
   poo#105762: '20220130'
   poo#105768: '20220131'
   poo#105981: '20220204'
+  poo#106676: '20220210'
   poo#80628: '20220210'
   poo#91383: '20220111'
   poo#96611: '20211109'
@@ -135,7 +136,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220210</value>
+    <value>20220211</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -462,9 +463,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220210'
+    <value>failed: ''
 published: '20220207'
-publishing: '20220207'
+publishing: '20220210'
 testing: '20220210'
 </value>
   </attribute>

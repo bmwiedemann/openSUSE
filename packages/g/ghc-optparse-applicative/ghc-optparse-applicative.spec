@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-optparse-applicative
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name optparse-applicative
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.16.1.0
+Version:        0.17.0.0
 Release:        0
 Summary:        Utilities and combinators for parsing command line options
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-wl-pprint-devel
 BuildRequires:  ghc-process-devel
@@ -62,7 +61,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

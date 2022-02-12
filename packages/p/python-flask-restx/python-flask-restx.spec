@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,10 @@ BuildRequires:  %{python_module aniso8601}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tzlocal}
@@ -72,7 +72,8 @@ its documentation properly using Swagger.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not URLTest and not EmailTest and not test_handle_non_api_error'
+# gh#python-restx/flask-restx#411 for LoggingTest.test_override_app_level
+%pytest -k 'not (URLTest or EmailTest or test_handle_non_api_error or test_override_app_level)'
 
 %files %{python_files}
 %doc README.rst CONTRIBUTING.rst

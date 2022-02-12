@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 29 00:08:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.13.3.0.
+  ## 2.13.3.0
+
+  * [#1341](https://github.com/yesodweb/persistent/pull/1341)
+      * Add `SqlBackendHooks` to allow for instrumentation of queries.
+  * [#1327](https://github.com/yesodweb/persistent/pull/1327)
+      * Update `SqlBackend` to use new `StatementCache` interface
+        instead of `IORef (Map Text Statement)`
+
+  ## 2.13.2.2
+
+  * [#1351](https://github.com/yesodweb/persistent/pull/1351/)
+      * `aeson-2.0` support
+
+-------------------------------------------------------------------
 Tue Oct 19 07:23:41 UTC 2021 - psimons@suse.com
 
 - Update persistent to version 2.13.2.1 revision 1.

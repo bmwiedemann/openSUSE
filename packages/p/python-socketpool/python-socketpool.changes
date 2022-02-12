@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 11 13:46:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 37-python39.patch (gh#benoitc/socketpool#37) to make code
+  Python 3.9 compatible.
+- Add port_to_py3k.patch (gh#benoitc/socketpool#38) porting tests
+  to py3k.
+
+-------------------------------------------------------------------
+Fri Feb 11 10:53:23 UTC 2022 - pgajdos@suse.com
+
+- 2to3 module is not required for build
+
+-------------------------------------------------------------------
 Thu Mar  7 11:17:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the test call macro expansion

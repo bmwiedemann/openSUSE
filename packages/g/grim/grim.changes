@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 11 07:32:39 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.0:
+  * Read XDG_PICTURES_DIR from user-dirs.dirs file
+  * add bash completion
+  * render: use pixman to compose output buffers
+  * render: use convolution filter when downscaling
+  * Allow setting compression level for PNG output
+  * write_png: fix out of bounds read
+  * render: add support for ≤ 24bpp pixel formats
+  * Use alternate Wayland to Pixman format conversion on big-endian
+  * Rename cairo_{jpg,ppm} to write_{jpg,ppm}
+  * Use stream-type functions to save images
+  * Remove cairo dependency
+  * man: fix wrong section headers
+  * Add example for taking screenshot of active window
+  * Make get_output_dir return value const
+  * Replace sprintf with snprintf
+  * Make output_filename const
+  * Stop using PATH_MAX
+
+-------------------------------------------------------------------
 Mon Apr 19 12:07:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.2:

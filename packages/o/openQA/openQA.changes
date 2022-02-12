@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 10 07:29:56 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1644418414.99e1921c4:
+  * Write restarting test shorter by using `@empty_deps` in more places
+  * Restart failed chained parents "up the chain"
+  * Fix includes of script/ in tidyall config
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Add new OBS checks to mergify config
+  * Add perl signatures in lib::OpenQA::JobSettings
+  * Add perl signatures in lib::OpenQA::JobDependencies::Constants
+  * Capture log messages
+  * Add perform_minion_jobs to 25-cache-service.t
+  * Add retry to rsync in cacheservice
+  * Show "failed modules" with a coloring resembling an failed state
+
+-------------------------------------------------------------------
 Sun Feb 06 01:48:34 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1644047097.6bd5ec7f8:

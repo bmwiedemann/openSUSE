@@ -139,6 +139,7 @@ Patch054:       fix_kernel_sysctl.patch
 Patch055:       fix_auditd.patch
 Patch056:       fix_wine.patch
 Patch057:       fix_hypervkvp.patch
+Patch058:       fix_bitlbee.patch
 
 Patch100:       sedoctool.patch
 

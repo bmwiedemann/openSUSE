@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb  9 12:26:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- As we now have gstreamer dependencies in place, pass
+  gstreamer=enabled to meson, enable the features.
+
+-------------------------------------------------------------------
+Wed Feb  9 11:40:37 UTC 2022 - ailin.nemui@gmail.com
+
+- Enable GStreamer support in Pulseaudio. This allows to use
+  Bluetooth Headsets with LDAC or OpenAptX codec when available.
+  Add pkgconfig(gstreamer-1.0), pkgconfig(gstreamer-app-1.0) and
+  pkgconfig(gstreamer-rtp-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  3 10:33:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unneeded nor used pkgconfig(gconf-2.0) BuildRequires: gconf
+  support was dropped upstream in version 15.
+
+-------------------------------------------------------------------
 Fri Jan 14 15:06:37 CET 2022 - tiwai@suse.de
 
 - Workaround for spurious errors in dump-modules command

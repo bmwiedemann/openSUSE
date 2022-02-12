@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Jan  9 09:48:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-data to version 0.3.0 revision 1.
+  ## 0.3.0 (December 2021)
+
+  - Support for big-endian architectures.
+  - Added `unicodeVersion`.
+  - Added `GeneralCategory` data type and corresponding `generalCategoryAbbr`,
+    `generalCategory` functions.
+  - Added the following functions to `Unicode.Char.General`:
+    `isAlphabetic`, `isAlphaNum`,
+    `isControl`, `isMark`, `isPrint`, `isPunctuation`, `isSeparator`,
+    `isSymbol` and `isWhiteSpace`.
+  - Added the module `Unicode.Char.Numeric`.
+  - Add compatibility modules:
+
+    - `Unicode.Char.General.Compat`
+    - `Unicode.Char.Case.Compat`
+
+    These modules are compatible with `base:Data.Char`.
+  - Re-export some functions from `Data.Char` in order to make `Unicode.Char`
+    a drop-in replacement in a _future_ version of this package.
+  - Drop support for GHC 7.10.3
+
+  ### Deprecations
+
+  - In `Unicode.Char.Case`:
+
+    - `isUpper`: use `isUpperCase` instead.
+    - `isLower`: use `isLowerCase` instead.
+
+  - In `Unicode.Char.General`:
+
+    - `isLetter`: use `isAlphabetic` instead.
+    - `isSpace`: use `isWhiteSpace` instead.
+
+  - In `Unicode.Char`: same as hereinabove. These functions will be replaced in a
+    _future_ release with the functions with the same names from
+    `Unicode.Char.Case.Compat` and `Unicode.Char.General.Compat`.
+
+-------------------------------------------------------------------
 Sat Nov 20 17:30:48 UTC 2021 - psimons@suse.com
 
 - Update unicode-data to version 0.2.0.

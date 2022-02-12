@@ -120,4 +120,14 @@ Resub it :-)</comment>
     <comment></comment>
     <requestid>936221</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8599040bfa667300cd26498f4bdb8ac8</srcmd5>
+    <version>41.4</version>
+    <time>1644617257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.4:
+  + Fix build failure with recent Meson releases.
+  + Updated translations.</comment>
+    <requestid>953330</requestid>
+  </revision>
 </revisionlist>

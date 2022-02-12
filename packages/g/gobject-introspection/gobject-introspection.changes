@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 10 20:54:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use bash for bash scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Tue Feb  1 09:30:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream patches to fix build with meson 0.61.0 and newer:

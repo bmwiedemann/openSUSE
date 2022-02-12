@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 30 19:32:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update mustache to version 2.4.0.
+  ## v2.4.0
+
+  - Support for aeson 2
+
+  ## v2.3.2
+
+  - Added support for GHC 9.0.1
+
+-------------------------------------------------------------------
 Tue Oct 12 10:51:15 UTC 2021 - psimons@suse.com
 
 - Update mustache to version 2.3.1 revision 1.

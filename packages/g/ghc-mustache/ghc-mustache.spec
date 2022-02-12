@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-mustache
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name mustache
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        A mustache template parser library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
@@ -33,7 +32,6 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-either-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-parsec-devel
@@ -77,7 +75,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

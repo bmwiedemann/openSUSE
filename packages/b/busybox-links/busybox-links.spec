@@ -1,7 +1,7 @@
 #
 # spec file for package busybox-links
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?suse_version} > 1500
-%bcond_with alternatives
-%else
-%bcond_without alternatives
-%endif
 
 Name:           busybox-links
 Version:        %(rpm -q busybox --qf '%%{VERSION}')
@@ -165,14 +159,8 @@ Summary:        Busybox sh, ash and hush
 Requires:       busybox = %{version}
 Requires(post): busybox
 Requires(preun):busybox
-%if %{with alternatives}
-BuildRequires:  update-alternatives
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
-%else
 Provides:       alternative(sh)
 Conflicts:      alternative(sh)
-%endif
 Obsoletes:      busybox-ash < %{version}
 
 %description -n busybox-sh
@@ -646,13 +634,7 @@ cat filelist-*.txt | sort -u > filelist.txt
 mkdir -p %{buildroot}%{_bindir}
 bash ./busybox.install %{buildroot} --symlinks
 rm %{buildroot}%{_bindir}/busybox
-%if %{with alternatives}
-# sh needs to be handled by update-alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/sh %{buildroot}%{_bindir}/sh
-%else
 ln -sf %{_bindir}/busybox %{buildroot}%{_bindir}/sh
-%endif
 %if !0%{?usrmerged}
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 %endif
@@ -660,17 +642,6 @@ cp -av %{_bindir}/zgrep %{buildroot}%{_bindir}
 cp -av %{_bindir}/zmore %{buildroot}%{_bindir}
 sed -e 's|PAGER-more|PAGER-less|g' %{buildroot}%{_bindir}/zmore > %{buildroot}%{_bindir}/zless
 chmod 755 %{buildroot}%{_bindir}/zless
-
-%if %{with alternatives}
-%post -n busybox-sh -p /usr/bin/ash
-%{_sbindir}/update-alternatives --quiet --force \
-        --install %{_bindir}/sh sh %{_bindir}/busybox 10000
-
-%preun -n busybox-sh -p /usr/bin/ash
-if test "$1" = 0; then
-        %{_sbindir}/update-alternatives --quiet --remove sh %{_bindir}/busybox
-fi
-%endif
 
 %files
 
@@ -776,13 +747,5 @@ fi
 %files -n busybox-xz -f filelist-xz.txt
 
 %files -n busybox-sh -f filelist-sh.txt
-%if %{with alternatives}
-%ghost %config %{_sysconfdir}/alternatives/sh
-%else
-%if !0%{?usrmerged}
-/bin/sh
-%endif
-%{_bindir}/sh
-%endif
 
 %changelog

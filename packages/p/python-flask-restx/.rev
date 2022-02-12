@@ -40,4 +40,15 @@
   + Optimize email regex (bsc#1190744)</comment>
     <requestid>920814</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0f61db55e1b3fdf8dbb32cf6066718e7</srcmd5>
+    <version>0.5.1</version>
+    <time>1644617249</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow Pytest 6 (not sure why it was forbidden).
+- Skip LoggingTest.test_override_app_level failing test
+  (gh#python-restx/flask-restx#411).
+</comment>
+    <requestid>953295</requestid>
+  </revision>
 </revisionlist>

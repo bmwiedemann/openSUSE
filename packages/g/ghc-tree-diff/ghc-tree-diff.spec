@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tree-diff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name tree-diff
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.2.1.1
 Release:        0
 Summary:        Diffing of (expression) trees
 License:        GPL-2.0-or-later

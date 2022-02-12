@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           happy
-Version:        1.21.0
+Version:        1.20.0
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
@@ -68,12 +68,22 @@ install -D --mode=444 doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %license LICENSE
-%doc ChangeLog.md README.md doc examples
+%doc CHANGES README.md TODO doc examples
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %{_mandir}/man1/*
-%{_datadir}/%{name}-%{version}/GLR_Base.hs
-%{_datadir}/%{name}-%{version}/GLR_Lib.hs
-%{_datadir}/%{name}-%{version}/HappyTemplate.hs
+%{_datadir}/%{name}-%{version}/GLR_Base
+%{_datadir}/%{name}-%{version}/GLR_Lib
+%{_datadir}/%{name}-%{version}/GLR_Lib-ghc
+%{_datadir}/%{name}-%{version}/GLR_Lib-ghc-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc
+%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc-debug
+%{_datadir}/%{name}-%{version}/HappyTemplate-coerce
+%{_datadir}/%{name}-%{version}/HappyTemplate-ghc
 
 %changelog

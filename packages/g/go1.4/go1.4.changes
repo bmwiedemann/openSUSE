@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 10 13:38:57 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Add version check to only use compiler-rt-fix-tsan-build.patch
+  for suse_version >= 1500 where gcc >= 6
+  * compiler-rt-fix-tsan-build.patch adds LDFLAGS -no-pie to gobuild.sh
+  * gcc-6 introduced flag -no-pie with --enable-default-pie
+  * SLE-12 has default gcc-4.8
+  * Disable LDFLAGS -no-pie flag for SUSE releases having gcc <= 6
+
+-------------------------------------------------------------------
 Mon Jul 12 07:28:37 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE.

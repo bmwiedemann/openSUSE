@@ -79,9 +79,11 @@ BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1) >= 1.4.12
-BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-app-1.0)
+BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libsystemd)
@@ -353,6 +355,7 @@ System user for PulseAudio
       --auto-features=auto \
       -Dhal-compat=false   \
       -Dgsettings=enabled  \
+      -Dgstreamer=enabled  \
       -Ddoxygen=false      \
       -Dsystem_user=pulse  \
       -Dsystem_group=pulse \
@@ -639,6 +642,8 @@ exit 0
 %dir %{_libdir}/pulse-%{drvver}/modules
 %{_libdir}/pulse-%{drvver}/modules/module-gsettings.so
 %{_libexecdir}/pulse/gsettings-helper
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/pulseaudio.convert
 
 %files module-lirc

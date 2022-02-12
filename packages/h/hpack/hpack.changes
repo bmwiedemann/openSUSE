@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 26 20:01:46 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hpack to version 0.34.6.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hpack-0.34.6/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Oct 14 08:00:01 UTC 2021 - psimons@suse.com
 
 - Update hpack to version 0.34.5.

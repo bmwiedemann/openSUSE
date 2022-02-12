@@ -17,7 +17,7 @@
 
 
 Name:           htmldoc
-Version:        1.9.14
+Version:        1.9.15
 Release:        0
 Summary:        HTML Processor that Generates HTML, PostScript, and PDF Files
 License:        LGPL-2.1-or-later

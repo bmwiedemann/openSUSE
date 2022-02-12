@@ -1,17 +1,19 @@
---- build.xmlorig	2017-10-16 02:17:50.000000000 +0100
-+++ build.xml	2017-12-06 20:05:59.056142612 +0000
-@@ -303,36 +303,21 @@
+Index: freemarker-2.3.31/build.xml
+===================================================================
+--- freemarker-2.3.31.orig/build.xml
++++ freemarker-2.3.31/build.xml
+@@ -273,20 +273,19 @@
        verify="yes" stubversion="1.2"
      />
  
 -    <ivy:cachepath conf="build.jsp2.0" pathid="ivy.dep.jsp2.0" />
 +    <ivy:cachepath conf="build.jsp2.1" pathid="ivy.dep.jsp2.1" />
      <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
-       debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
+       debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
        includeantruntime="false"
 -      classpathref="ivy.dep.jsp2.0"
 +      classpathref="ivy.dep.jsp2.1"
-       bootclasspath="${boot.classpath.j2se1.5}"
+       bootclasspath="${boot.classpath.j2se1.7}"
        includes="
          freemarker/ext/jsp/**,
          freemarker/ext/servlet/**,
@@ -24,25 +26,11 @@
 +        freemarker/ext/jsp/FreeMarkerJspFactory2.java"
      />
      
--    <!-- There's no build.jsp2.0, as those classes are part of the common build subset. -->
--    
--    <ivy:cachepath conf="build.jsp2.1" pathid="ivy.dep.jsp2.1" />
--    <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
--      debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
--      includeantruntime="false"
--      classpathref="ivy.dep.jsp2.1"
--      bootclasspath="${boot.classpath.j2se1.5}"
--      includes="
--        freemarker/ext/jsp/_FreeMarkerPageContext21.java,
--        freemarker/ext/jsp/FreeMarkerJspFactory21.java,
--        freemarker/ext/jsp/FreeMarkerJspApplicationContext.java"
--    />
--
-     <ivy:cachepath conf="build.jython2.0" pathid="ivy.dep.jython2.0" />
-     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
-       debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
---- ivy.xml.orig	2018-03-30 22:03:42.000000000 +0100
-+++ ivy.xml	2018-08-22 08:53:03.369873853 +0100
+     <!-- There's no build.jsp2.0, as those classes are part of the common build subset. -->
+Index: freemarker-2.3.31/ivy.xml
+===================================================================
+--- freemarker-2.3.31.orig/ivy.xml
++++ freemarker-2.3.31/ivy.xml
 @@ -45,9 +45,6 @@
          description="for building FreeMarker without dependencies that optinal dependencies"
      />

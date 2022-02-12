@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  3 02:56:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tdigest to version 0.2.1.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:32:35 UTC 2021 - psimons@suse.com
 
 - Update tdigest to version 0.2.1.1 revision 1.

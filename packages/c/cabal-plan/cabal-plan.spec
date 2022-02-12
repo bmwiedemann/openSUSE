@@ -1,7 +1,7 @@
 #
 # spec file for package cabal-plan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        Library and utility for processing cabal's plan.json file
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
@@ -99,6 +100,8 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
+cabal-tweak-dep-ver optparse-applicative '^>= 0.16.0.0' '< 1'
 
 %build
 %define cabal_configure_options -fexe

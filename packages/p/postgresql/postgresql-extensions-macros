@@ -40,12 +40,12 @@ Provides:       %{pg_name}-%{ext_name}-llvmjit = %{version}-%{release} \
 Obsoletes:      %{pg_name}-%{ext_name}-llvmjit < %{version}-%{release} \
 %nil
 
-%pg_server_requires                \
-%requires_eq    %{pg_name}-server  \
-%if %{postgresql_has_llvm}       \
-Recommends:     %{pg_name}-llvmjit \
-%pg_obsolete_llvm_subpackage       \
-%endif                             \
+%pg_server_requires                  \
+%{requires_eq    %{pg_name}-server}  \
+%if %{postgresql_has_llvm}           \
+Recommends:     %{pg_name}-llvmjit   \
+%pg_obsolete_llvm_subpackage         \
+%endif                               \
 %nil
 
 %pg_version_from_name %define pg_version %( echo %{?pg_name} | sed -e 's|^postgresql||g' )%{nil}

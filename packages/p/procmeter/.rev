@@ -164,4 +164,12 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 832756 from gmbr3)</comment>
     <requestid>832810</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>80ba06af68039d5b0cd585d13120b448</srcmd5>
+    <version>3.6+svn415</version>
+    <time>1644617418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953776</requestid>
+  </revision>
 </revisionlist>

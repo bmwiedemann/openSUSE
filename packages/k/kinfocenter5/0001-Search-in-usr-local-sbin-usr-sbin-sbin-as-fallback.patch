@@ -1,0 +1,48 @@
+From da706d27bb4663e584725926ed144b6089bc6c3e Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 8 Feb 2022 18:55:49 +0100
+Subject: [PATCH 1/2] Search in /usr/local/sbin:/usr/sbin:/sbin as fallback
+
+Utilities such as lspci default to /usr/(local/)sbin/ as install location,
+but that's not in $PATH for regular user sessions. It still works without
+supeuser privileges, so just look there as well as a fallback.
+
+BUG: 449792
+---
+ src/CommandOutputContext.cpp | 6 ++++++
+ src/CommandOutputContext.h   | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/CommandOutputContext.cpp b/src/CommandOutputContext.cpp
+index 4808b45..ec3cd3d 100644
+--- a/src/CommandOutputContext.cpp
++++ b/src/CommandOutputContext.cpp
+@@ -19,6 +19,12 @@ CommandOutputContext::CommandOutputContext(const QString &executable, const QStr
+     , m_executablePath(QStandardPaths::findExecutable(m_executableName))
+     , m_arguments(arguments)
+ {
++    // Various utilities are installed in sbin, but work without elevated privileges
++    if (m_executablePath.isEmpty()) {
++        m_executablePath =
++            QStandardPaths::findExecutable(m_executableName, {QStringLiteral("/usr/local/sbin"), QStringLiteral("/usr/sbin"), QStringLiteral("/sbin")});
++    }
++
+     metaObject()->invokeMethod(this, &CommandOutputContext::load);
+ }
+ 
+diff --git a/src/CommandOutputContext.h b/src/CommandOutputContext.h
+index 13fc528..c818b42 100644
+--- a/src/CommandOutputContext.h
++++ b/src/CommandOutputContext.h
+@@ -44,7 +44,7 @@ private:
+     void setReady();
+ 
+     const QString m_executableName;
+-    const QString m_executablePath;
++    QString m_executablePath;
+     const QStringList m_arguments;
+ 
+     QStringList m_originalLines;
+-- 
+2.33.1
+

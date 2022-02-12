@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-servant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name servant
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.3
+Version:        0.19
 Release:        0
 Summary:        A family of combinators for defining webservices APIs
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bifunctors-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
+BuildRequires:  ghc-constraints-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-http-api-data-devel
 BuildRequires:  ghc-http-media-devel
@@ -75,8 +76,8 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver mmorph '< 1.2' '< 1.3'
-cabal-tweak-dep-ver base-compat '< 0.12' '< 0.13'
+cabal-tweak-dep-ver base-compat '< 0.12' '< 1'
+cabal-tweak-dep-ver mmorph '< 1.2' '< 2'
 
 %build
 %ghc_lib_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 12 07:51:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.6.0.1.
+  ## 0.6.0.1
+
+    * Ensure that position evaluates false inside bibliography (#99).
+
+-------------------------------------------------------------------
 Mon Nov  1 08:31:08 UTC 2021 - psimons@suse.com
 
 - Update citeproc to version 0.6.

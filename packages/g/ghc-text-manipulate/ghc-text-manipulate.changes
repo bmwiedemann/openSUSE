@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  3 18:30:57 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update text-manipulate to version 0.3.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

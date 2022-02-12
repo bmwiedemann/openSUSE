@@ -1,7 +1,7 @@
 #
 # spec file for package kafka-kit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ thus it should never be installed on end users' systems.
 # avoid log4j security bugs by removing classes
 #zip error: Nothing to do! (./kit/apache-ant-1.9.7/lib/ant-apache-log4j.jar)
 #zip error: Nothing to do! (./kit/gradle-5.1/lib/log4j-over-slf4j-1.7.25.jar)
-zip -q -d gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar org/apache/logging/log4j/core/lookup/JndiLookup.class org/apache/log4j/net/JMSAppender.class
+zip -q -d gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar org/apache/logging/log4j/core/lookup/JndiLookup.class org/apache/log4j/net/JMSAppender.class org/apache/log4j/jdbc/JDBCAppender.class org/apache/log4j/net/JMSSink.class org/apache/log4j/chainsaw"*"
 #zip error: Nothing to do! (./kit/gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.7.25/110cefe2df103412849d72ef7a67e4e91e4266b4/slf4j-log4j12-1.7.25.jar)
 
 %install

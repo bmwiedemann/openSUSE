@@ -7,3 +7,6 @@ addFilter("devel-file-in-non-devel-package .*/usr/include/.*")
 
 addFilter("devel-file-in-non-devel-package .*/lib.*/*.a")
 addFilter("devel-file-in-non-devel-package .*/lib.*/*.so")
+
+# We're deliberately conflicting with SLE. (https://code.opensuse.org/leap/features/issue/55)
+addFilter("SUSE_Backports_policy-SLE_conflict")

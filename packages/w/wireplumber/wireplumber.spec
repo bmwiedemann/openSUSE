@@ -30,7 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-
+Patch0:         0001-spa-json-fix-va_list-APIs-for-different-architectures.patch
+Patch1:         0001-restore-stream-do-not-crash-if-config_properties-is-nil.patch
 Patch100:       reduce-meson-required-version.patch
 # docs
 BuildRequires:  doxygen

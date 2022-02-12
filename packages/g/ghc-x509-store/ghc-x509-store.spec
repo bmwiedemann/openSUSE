@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-x509-store
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name x509-store
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.7
+Version:        1.6.9
 Release:        0
 Summary:        X.509 collection accessing and storing methods
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-asn1-encoding-devel
 BuildRequires:  ghc-asn1-types-devel
@@ -60,7 +59,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

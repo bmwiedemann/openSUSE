@@ -324,4 +324,12 @@
     <comment>Update to 0.20.4 (forwarded request 879948 from dimstar)</comment>
     <requestid>880101</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f634a01e2dc6a1548187a25b673ebf56</srcmd5>
+    <version>0.20.5</version>
+    <time>1644617194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953249</requestid>
+  </revision>
 </revisionlist>

@@ -492,4 +492,13 @@
   + Updated pci, usb and vendor ids.</comment>
     <requestid>944014</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>1aba8ce4953b76ebcc2b654396fc5cae</srcmd5>
+    <version>0.356</version>
+    <time>1644617210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.356:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>952711</requestid>
+  </revision>
 </revisionlist>

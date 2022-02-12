@@ -233,4 +233,15 @@
     CHANGELOG.md file provided with this package (forwarded request 951525 from glaubitz)</comment>
     <requestid>951549</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5d6df6e10d94a0bba233cd86b4d82cf0</srcmd5>
+    <version>1.22.1</version>
+    <time>1644617408</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.22.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 953383 from glaubitz)</comment>
+    <requestid>953576</requestid>
+  </revision>
 </revisionlist>

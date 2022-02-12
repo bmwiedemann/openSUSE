@@ -15,4 +15,12 @@
     <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
     <requestid>767558</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad3ab09fe631bb989d241fb5a6e33e9a</srcmd5>
+    <version>2.3.31</version>
+    <time>1644617246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953270</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 10 07:38:04 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v2.3.31
+- Update patches:
+  * enable-jdom.patch
+  * javacc-7.patch
+  * jsp-api.patch
+  * jython-compatibility.patch
+  * no-javarebel.patch
+- Remove unneeded patch:
+  * fix-javadoc-encoding.patch
+- Package the manual. Add build dependency on
+  docbook5-xsl-stylesheets
+
+-------------------------------------------------------------------
 Mon Jan 27 06:35:02 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - On supported platforms, avoid building with OpenJ9, in order to

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:45:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add revelation-mesonfix-061.patch: Fix build with meson 0.61 and
+  newer.
+
+-------------------------------------------------------------------
 Tue Jun 22 17:31:59 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 0.5.4:

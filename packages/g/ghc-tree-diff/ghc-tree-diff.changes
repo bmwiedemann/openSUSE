@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  1 17:36:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tree-diff to version 0.2.1.1.
+  ## 0.2.1.1
+
+  - Support `base-4.16` (GHC-9.2)
+
+-------------------------------------------------------------------
 Sun Oct 10 14:51:23 UTC 2021 - psimons@suse.com
 
 - Update tree-diff to version 0.2.1.

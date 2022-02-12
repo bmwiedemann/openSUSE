@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 21:51:47 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update intern to version 0.9.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Nov 10 10:03:30 UTC 2021 - psimons@suse.com
 
 - Update intern to version 0.9.4 revision 1.

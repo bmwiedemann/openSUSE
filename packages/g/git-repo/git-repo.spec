@@ -17,14 +17,12 @@
 
 
 Name:           git-repo
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        The Multiple Git Repository Tool
 License:        Apache-2.0
 URL:            https://gerrit.googlesource.com/git-repo
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-python-readlink.patch -- Path.readlink is only available on Python >= 3.9, use os.readlink instead
-Patch0:         fix-python-readlink.patch
 # SECTION tests
 BuildRequires:  git
 BuildRequires:  gpg2
@@ -42,7 +40,6 @@ replace Git, only to make it easier to work with Git.
 
 %prep
 %setup -q
-%patch0 -p1
 # fix shebang
 sed -i -E "s|#!/usr/bin/env python.*|#!/usr/bin/python3|" repo run_tests
 # remove unnecessary document

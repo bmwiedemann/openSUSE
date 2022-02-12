@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-text-short
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global pkg_name text-short
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        Memory-efficient representation of Unicode text strings
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-bytestring-devel
@@ -36,7 +35,6 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
@@ -65,7 +63,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

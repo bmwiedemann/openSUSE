@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 01:36:57 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update timezone-olson to version 0.2.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

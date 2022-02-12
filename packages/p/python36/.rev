@@ -3949,4 +3949,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
   CRLF_injection_via_host_part.patch.</comment>
     <requestid>940937</requestid>
   </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>52aec911b33d282dbf50c62965843845</srcmd5>
+    <version>3.6.15</version>
+    <time>1644617420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>953799</requestid>
+  </revision>
 </revisionlist>

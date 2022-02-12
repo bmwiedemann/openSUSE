@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        5.16
+Version:        5.16.1
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -53,7 +53,6 @@ Provides:       btrfs-progs = %{version}-%{release}
 Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
-Patch2:         btrfs-progs-kerncompat-add-local-definition-for-alig.patch
 
 %if %build_docs
 BuildRequires:  asciidoc
@@ -194,7 +193,6 @@ with Btrfs using libbtrfsutil.
 %prep
 %setup -q -n btrfs-progs-v%{version}
 %patch1 -p1
-%patch2 -p1
 
 %build
 ./autogen.sh
@@ -409,6 +407,7 @@ done
 %defattr(-, root, root)
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/64-btrfs-dm.rules
+%{_udevrulesdir}/64-btrfs-zoned.rules
 %endif
 
 %files -n python-btrfsutil

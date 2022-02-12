@@ -19,7 +19,7 @@
 %global pkg_name dbus
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.21
+Version:        1.2.22
 Release:        0
 Summary:        A client library for the D-Bus IPC system
 License:        Apache-2.0
@@ -103,7 +103,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver 'lens' '<5.1' '<6'
 
 %build
 %ghc_lib_build

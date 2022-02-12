@@ -17,7 +17,7 @@
 
 
 Name:           gnome-autoar
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later
@@ -92,9 +92,9 @@ This package brings files required to develop against gnome-autoar
 
 %build
 %meson \
-	-Dvapi=true \
-	-Dgtk_doc=true \
-	-Dtests=true \
+	-D vapi=true \
+	-D gtk_doc=true \
+	-D tests=true \
 	%{nil}
 %meson_build
 

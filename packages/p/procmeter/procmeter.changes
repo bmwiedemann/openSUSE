@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 11 00:01:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to latest svn version 3.6+svn415:
+  + Allow displaying devices that are mounted from tmpfs (refactor
+    code to simplify).
+  + Update version numbers, delete CVS headers from files that have
+    been changed in the last couple of years.
+  + Fix bug with reading ACPI version number string and grammatical
+    error in associated warning message.
+  + Change variable type to avoid crash (something to do with
+    32-bit / 64-bit incompatibility?).
+  + Change acceptable versions of libsensors library to either v4
+    or v5.
+  + Change parameter type since the original typename no longer
+    seems valid.
+
+-------------------------------------------------------------------
 Mon Sep  7 10:40:55 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

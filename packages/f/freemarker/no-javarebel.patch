@@ -1,16 +1,20 @@
---- build.xml.orig	2017-12-06 18:32:24.827024991 +0000
-+++ build.xml	2017-12-06 18:32:55.974897827 +0000
-@@ -264,6 +264,7 @@
+Index: freemarker-2.3.31/build.xml
+===================================================================
+--- freemarker-2.3.31.orig/build.xml
++++ freemarker-2.3.31/build.xml
+@@ -243,6 +243,7 @@
        classpathref="ivy.dep"
-       bootclasspath="${boot.classpath.j2se1.5}"
+       bootclasspath="${boot.classpath.j2se1.7}"
        excludes="
 +        freemarker/ext/beans/JRebelClassChangeNotifier.java
          freemarker/core/_Java?*Impl.java,
          freemarker/ext/jsp/**,
          freemarker/ext/servlet/**,
---- ivy.xml.orig	2017-12-06 18:24:27.374972063 +0000
-+++ ivy.xml	2017-12-06 18:24:41.745913477 +0000
-@@ -122,8 +122,6 @@
+Index: freemarker-2.3.31/ivy.xml
+===================================================================
+--- freemarker-2.3.31.orig/ivy.xml
++++ freemarker-2.3.31/ivy.xml
+@@ -117,8 +117,6 @@
      <dependency org="org.slf4j" name="jcl-over-slf4j" rev="&slf4j.version;" conf="build.base->default" />
      <dependency org="commons-logging" name="commons-logging" rev="1.1.1" conf="build.base->default" />
      

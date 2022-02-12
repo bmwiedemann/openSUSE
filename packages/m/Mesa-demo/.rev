@@ -193,4 +193,14 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     <comment></comment>
     <requestid>922204</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>7aa01af3468262cf4b5b0478f59b867c</srcmd5>
+    <version>8.4.0</version>
+    <time>1644617222</time>
+    <user>dimstar_suse</user>
+    <comment>- added &quot;-egl&quot; subpackage for common EGL-based demos include
+  eglinfo, eglgears, egltri, peglgears, xeglgears, xeglthreads
+  (boo#1195695)</comment>
+    <requestid>952997</requestid>
+  </revision>
 </revisionlist>

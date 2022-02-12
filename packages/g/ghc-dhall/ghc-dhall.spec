@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-dhall
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global pkg_name dhall
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.40.1
+Version:        1.40.2
 Release:        0
 Summary:        A configuration language guaranteed to terminate
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/5.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
@@ -33,13 +33,14 @@ BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-atomic-write-devel
+BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-cborg-devel
 BuildRequires:  ghc-cborg-json-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-contravariant-devel
-BuildRequires:  ghc-cryptonite-devel
+BuildRequires:  ghc-cryptohash-sha256-devel
 BuildRequires:  ghc-data-fix-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
@@ -55,7 +56,6 @@ BuildRequires:  ghc-http-client-tls-devel
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-lens-family-core-devel
 BuildRequires:  ghc-megaparsec-devel
-BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-mmorph-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-uri-devel
@@ -89,6 +89,7 @@ BuildRequires:  ghc-mockery-devel
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-special-values-devel
 BuildRequires:  ghc-spoon-devel
+BuildRequires:  ghc-system-filepath-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-expected-failure-devel
 BuildRequires:  ghc-tasty-hunit-devel

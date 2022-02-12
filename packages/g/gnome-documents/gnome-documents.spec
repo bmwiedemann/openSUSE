@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-documents
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,19 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 %endif
 Name:           gnome-documents
-Version:        3.34.0+26
+Version:        3.34.0+37
 Release:        0
 Summary:        Document Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Documents
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-documents/-/merge_requests/35.patch
+# PATCH-FIX-UPSTREAM 35.patch -- Port to tracker 3
+Patch0:         https://gitlab.gnome.org/Archive/gnome-documents/-/merge_requests/35.patch
+# PATCH-FIX-UPSTREAM gnome-documents-fix-meson.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
+Patch1:         gnome-documents-fix-meson.patch
 
+BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gnome-shell
@@ -65,7 +69,7 @@ Summary:        Document Manager for GNOME -- Search Provider for GNOME Shell
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-documents
 Documents is a document manager application for GNOME.
@@ -89,6 +93,9 @@ search results from documents.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license COPYING

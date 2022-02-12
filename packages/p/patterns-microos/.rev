@@ -405,4 +405,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>950926</requestid>
   </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>eb4f72ccad4ab0ae2cace7314543cfd5</srcmd5>
+    <version>5.0</version>
+    <time>1644617209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>953737</requestid>
+  </revision>
 </revisionlist>

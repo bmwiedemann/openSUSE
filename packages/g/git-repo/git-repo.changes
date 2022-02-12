@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 04 11:15:47 UTC 2022 - sebix+novell.com@sebix.at
+
+- remove obsolete patch fix-python-readlink.patch
+- Update to version 2.21:
+  * project: mark gc.log as safe to discard when migrating .git/
+  * init: add an option --enable-git-lfs-filter
+  * init: make bad --repo-rev settings more clear
+  * project: Ignore failure to remove the sample hooks
+  * branches: Fix "not in" handling
+  * project: store objects in project-objects directly
+  * project: move --reference handling to project-objects
+  * test_project: use os.readlink instead of Path.readlink
+
+-------------------------------------------------------------------
 Tue Jan 11 10:42:42 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add fix-python-readlink.patch, fixing the project for python < 3.9.

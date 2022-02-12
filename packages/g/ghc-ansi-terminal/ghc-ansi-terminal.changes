@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 23 21:11:35 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.1.
+  Version 0.11.1
+  --------------
+
+  * On Windows, fix compatability with the Windows I/O Manager (WinIO) introduced
+    in GHC 9.0.1, by incorporating changes made in package `Win32-2.13.2.0` in
+    that regard.
+  * Improvements to Haddock documentation.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  4 14:24:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-client-tls to version 0.3.6.
+  # Changelog for http-client-tls
+
+  ## 0.3.6
+
+  * Allow making requests to raw IPv6 hosts [#477](https://github.com/snoyberg/http-client/pull/477)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

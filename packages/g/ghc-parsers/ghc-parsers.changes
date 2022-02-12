@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 21:53:29 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update parsers to version 0.12.10 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Mar 23 10:28:21 UTC 2021 - psimons@suse.com
 
 - Update parsers to version 0.12.10 revision 1.

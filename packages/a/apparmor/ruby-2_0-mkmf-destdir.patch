@@ -1,10 +1,11 @@
-diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs -x Makefile -x Makefile ../orig-apparmor-2.8.1/libraries/libapparmor/swig/ruby/extconf.rb ./libraries/libapparmor/swig/ruby/extconf.rb
---- ../orig-apparmor-2.8.1/libraries/libapparmor/swig/ruby/extconf.rb	2009-05-12 23:56:56.000000000 +0200
-+++ ./libraries/libapparmor/swig/ruby/extconf.rb	2013-06-04 14:52:01.677579537 +0200
-@@ -28,7 +28,14 @@
+Index: libraries/libapparmor/swig/ruby/extconf.rb
+===================================================================
+--- a/libraries/libapparmor/swig/ruby/extconf.rb.orig	2022-02-10 17:54:05.008544807 +0100
++++ b/libraries/libapparmor/swig/ruby/extconf.rb	2022-02-10 17:54:21.792506325 +0100
+@@ -20,7 +20,14 @@ if find_library('apparmor', 'parse_recor
    # hack 2: strip all rpath references
    open('Makefile.ruby', 'w') do |out|
-     IO.foreach('Makefile.new') do |line|
+     IO.foreach('Makefile') do |line|
 -      out.puts line.gsub(/-Wl,-R'[^']*'/, '')
 +      l = line.gsub(/-Wl,-R'[^']*'/, '')
 +      # oldincludedir = $(DESTDIR)/usr/include

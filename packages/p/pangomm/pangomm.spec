@@ -1,7 +1,7 @@
 #
 # spec file for package pangomm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 %define base_ver 2.48
-# Update baselibs.conf when changing the version here
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.48.2
+Version:        2.50.0
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
@@ -30,7 +29,6 @@ URL:            https://www.gtkmm.org
 # Source0 disabled, we are using source service
 #Source0:        https://download.gnome.org/sources/%%{name}/%%{base_ver}/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM pangomm-docs-without-timestamp.patch -- Do not add timestamp to generated doc files.
 Patch0:         pangomm-docs-without-timestamp.patch
 

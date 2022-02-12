@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb  1 10:27:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update optparse-applicative to version 0.17.0.0.
+  ## Version 0.17.0.0 (1 Feb 2022)
+
+  - Make tabulation width configurable in usage texts.
+
+  - Separate program name and description in ParserHelp type.
+
+  - Add `helperWith` function, which can be easily used to
+    localize the help flag.
+
+  - Improve usage texts when command names are long.
+
+  - Improve Documentation.
+
+-------------------------------------------------------------------
 Sat Nov 20 17:29:48 UTC 2021 - psimons@suse.com
 
 - Update optparse-applicative to version 0.16.1.0 revision 2.

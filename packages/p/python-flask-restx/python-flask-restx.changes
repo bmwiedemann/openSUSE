@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 10 18:15:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Allow Pytest 6 (not sure why it was forbidden).
+- Skip LoggingTest.test_override_app_level failing test
+  (gh#python-restx/flask-restx#411).
+
+-------------------------------------------------------------------
 Tue Sep 21 19:00:02 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v0.5.1

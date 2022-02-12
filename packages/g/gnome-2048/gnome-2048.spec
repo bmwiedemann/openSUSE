@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-2048
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/2048
 Source0:        https://download.gnome.org/sources/gnome-2048/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 21.patch -- Fix build with meson 0.61 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-2048/-/merge_requests/21.patch
 
-BuildRequires:  appstream-glib-devel
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.24.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.6.0
@@ -53,8 +55,10 @@ reach higher numbers.
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.TwentyFortyEight Games Amusement
 %find_lang %{name}
+
+%check
+%meson_test
 
 %files
 %license COPYING

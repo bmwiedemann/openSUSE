@@ -31,4 +31,12 @@
     <comment>Automatic update of haskell stack in oSUSE:Factory</comment>
     <requestid>864459</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>69747383a23b879a9dd67ac6a344ba07</srcmd5>
+    <version>0.0.5</version>
+    <time>1644617351</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953485</requestid>
+  </revision>
 </revisionlist>

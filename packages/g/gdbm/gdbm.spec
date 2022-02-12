@@ -1,7 +1,7 @@
 #
 # spec file for package gdbm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lname	libgdbm6
 %define lcompat libgdbm_compat4
 Name:           gdbm
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        GNU dbm key/data database
 License:        GPL-3.0-or-later
@@ -95,10 +95,6 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lcompat} = %{version}
 Requires:       %{lname} = %{version}
-%if "%{install_info_prereq}" != ""
-Requires(pre):  %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
-%endif
 
 %description devel
 This package contains all necessary include files and libraries needed
@@ -116,10 +112,10 @@ to develop applications that require these.
   --enable-libgdbm-compat \
   --enable-nls \
   --with-readline
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
@@ -130,12 +126,6 @@ GROUP ( %{_libdir}/libgdbm.so %{_libdir}/libgdbm_compat.so )" > %{buildroot}/%{_
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
-
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

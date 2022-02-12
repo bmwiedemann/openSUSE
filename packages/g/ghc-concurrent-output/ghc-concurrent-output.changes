@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb  4 19:33:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.15.
+  concurrent-output (1.10.15) unstable; urgency=medium
+
+    * Allow text-2.0
+
+   -- Joey Hess <id@joeyh.name>  Fri, 04 Feb 2022 15:32:58 -0400
+
+  concurrent-output (1.10.14) unstable; urgency=medium
+
+    * Allow ansi-terminal-0.11.1.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 24 Nov 2021 09:18:20 -0400
+
+  concurrent-output (1.10.13) unstable; urgency=medium
+
+    * outputConcurrent and errorConcurrent are now safe to call from a thread
+      that receives async exceptions.
+    * Fix compilation with GHC head.
+      (Thanks, Ellie Hermaszewska)
+
+   -- Joey Hess <id@joeyh.name>  Mon, 22 Nov 2021 11:19:21 -0400
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

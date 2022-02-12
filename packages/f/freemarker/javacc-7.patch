@@ -8,11 +8,11 @@ Subject: [PATCH] Fix compatibility with javacc 7
  src/main/java/freemarker/core/TokenMgrError.java |  5 +++++
  2 files changed, 20 insertions(+), 1 deletion(-)
 
-diff --git a/build.xml b/build.xml
-index 6542da9..20d1d56 100644
---- a/build.xml
-+++ b/build.xml
-@@ -160,13 +160,26 @@
+Index: freemarker-2.3.31/build.xml
+===================================================================
+--- freemarker-2.3.31.orig/build.xml
++++ freemarker-2.3.31/build.xml
+@@ -146,13 +146,26 @@
  
      <mkdir dir="${_javaccOutputDir}" />
      <ivy:retrieve conf="parser" pattern="build/javacc-home.tmp/[artifact].[ext]" />
@@ -41,6 +41,3 @@ index 6542da9..20d1d56 100644
      <replace
        file="${_javaccOutputDir}/FMParser.java"
        token="private final LookaheadSuccess"
--- 
-2.9.3
-

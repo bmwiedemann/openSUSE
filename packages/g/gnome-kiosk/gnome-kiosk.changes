@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  2 21:26:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-kiosk-fix-meson-061.patch: Fix build with meson 0.61
+  and newer.
+- Add fdupes BuildRequires and macro, remove duplicates.
+- Split out gnome-kiosk-sample-app and add a hard Requires on
+  MozillaFirefox, needed for the sample app.
+
+-------------------------------------------------------------------
 Thu Sep 23 16:03:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package, version 41.0.

@@ -392,4 +392,12 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
   % gdbm-no-build-date.patch (refreshed)</comment>
     <requestid>940172</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>20287862bd05b8c126a9538d2fefc1fd</srcmd5>
+    <version>1.23</version>
+    <time>1644617193</time>
+    <user>dimstar_suse</user>
+    <comment>gdbm 1.23 (forwarded request 951944 from AndreasStieger)</comment>
+    <requestid>952034</requestid>
+  </revision>
 </revisionlist>

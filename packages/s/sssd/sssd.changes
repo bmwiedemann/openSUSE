@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb  9 13:17:30 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Remove caches only when performing a package downgrade. The sssd
+  daemon takes care of upgrading the database format when necessary
+  (bsc#1195552)
+
+-------------------------------------------------------------------
+Tue Jan 25 11:32:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.3
+  * A regression introduced in sssd-2.6.2 in the IPA provider
+    that prevented users from login was fixed. Access control
+    always denied access because the selinux_child returned an
+    unexpected reply.
+  * A critical regression that prevented authentication of users
+    via AD and IPA providers was fixed. LDAP port was reused for
+    Kerberos communication and this provider would send
+    incomprehensible information to this port.
+  * When authenticating AD users, backtrace was triggered even
+    though everything was working correctly. This was caused by a
+    search in the global catalog. Servers from the global catalog
+    are filtered out of the list before writing the KDC info
+    file. With this fix, SSSD does not attempt to write to the
+    KDC info file when performing a GC lookup.
+
+-------------------------------------------------------------------
 Mon Jan 17 17:27:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Upgrade LDB_DIR shell variable to %ldbdir macro.

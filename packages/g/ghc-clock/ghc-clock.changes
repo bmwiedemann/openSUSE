@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  9 03:52:14 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update clock to version 0.8.3.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Sun Jan 24 16:08:21 UTC 2021 - psimons@suse.com
 
 - Update clock to version 0.8.2.

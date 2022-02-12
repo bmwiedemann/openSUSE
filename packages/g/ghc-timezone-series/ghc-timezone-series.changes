@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 00:31:09 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update timezone-series to version 0.1.13 revision 1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

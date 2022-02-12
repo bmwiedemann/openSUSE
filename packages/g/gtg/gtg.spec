@@ -31,6 +31,7 @@ Source0:        https://github.com/getting-things-gnome/gtg/archive/refs/tags/v%
 Patch0:         0001-GTG-0.5-fix-meson-build-failure.patch
 
 BuildRequires:  fdupes
+BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files

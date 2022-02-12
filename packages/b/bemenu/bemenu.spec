@@ -1,7 +1,7 @@
 #
 # spec file for package bemenu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define bcond_with curses
 Name:           bemenu
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Dynamic menu library and client program inspired by dmenu
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
+BuildRequires:  scdoc
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wayland-client)

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipykernel
-Version:        6.7.0
+Version:        6.9.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -86,7 +86,7 @@ rm ipykernel/tests/test_pickleutil.py
 %if 0%{?suse_version} >= 1550
 # use the symlink for the default python3 flavor, which was installed during the install but used python3.X name
 # from the primary flavor.
-sed -i "s|$(readlink -f %{__python3})|%{__python3}|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
+sed -i "s|$(readlink -f python3)|python3|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
 %{python_expand # install kernelspecs for each flavor
 PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -m ipykernel install \

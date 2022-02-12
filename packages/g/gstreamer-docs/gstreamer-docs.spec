@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-docs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define         gst_branch      1.0
 
 Name:           gstreamer-docs
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        GStreamer documentation
-License:        (LGPL-2.1-or-later OR MIT OR BSD-2-Clause) AND OPL-1.0 AND CC-BY-SA-4.0
+License:        (BSD-2-Clause OR LGPL-2.1-or-later OR MIT) AND OPL-1.0 AND CC-BY-SA-4.0
 
 #  Tutorial source code:
 #  All tutorial code is licensed under any of the following licenses (your choice):
@@ -40,18 +40,18 @@ Source:         %{url}/src/%{name}/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 Obsoletes:      gstreamer-doc < %{version}
+Obsoletes:      gstreamer-plugins-bad-doc < %{version}
 Obsoletes:      gstreamer-plugins-base-doc < %{version}
 Obsoletes:      gstreamer-plugins-good-doc < %{version}
-Obsoletes:      gstreamer-plugins-bad-doc < %{version}
-Obsoletes:      gstreamer-plugins-ugly-doc < %{version}
 Obsoletes:      gstreamer-plugins-libav-doc < %{version}
+Obsoletes:      gstreamer-plugins-ugly-doc < %{version}
 Obsoletes:      gstreamer-plugins-vaapi-doc < %{version}
 Provides:       gstreamer-doc = %{version}
+Provides:       gstreamer-plugins-bad-doc = %{version}
 Provides:       gstreamer-plugins-base-doc = %{version}
 Provides:       gstreamer-plugins-good-doc = %{version}
-Provides:       gstreamer-plugins-bad-doc = %{version}
-Provides:       gstreamer-plugins-ugly-doc = %{version}
 Provides:       gstreamer-plugins-libav-doc = %{version}
+Provides:       gstreamer-plugins-ugly-doc = %{version}
 Provides:       gstreamer-plugins-vaapi-doc = %{version}
 BuildArch:      noarch
 

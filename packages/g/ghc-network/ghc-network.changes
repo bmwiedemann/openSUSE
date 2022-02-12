@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 20 13:31:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.2.7.
+  ## Version 3.1.2.7
+
+  * No change from 3.1.2.6 but to take a right procedure to upload "network"
+    to Hackage for Windows.
+
+  ## Version 3.1.2.6
+
+  * Making IPv4PktInfo on Win the same as that on Posix
+    [#522](https://github.com/haskell/network/issues/522)
+  * Add support for nix/ghcjs
+    [#517](https://github.com/haskell/network/issues/517)
+
+-------------------------------------------------------------------
 Sun Oct 10 14:51:22 UTC 2021 - psimons@suse.com
 
 - Update network to version 3.1.2.5.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  1 01:31:39 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update quickcheck-instances to version 0.3.27 revision 1.
+  0.3.27
+
+  * Add instances for `Backwards`, `Reverse` and `Lift` from `transformers`
+
+-------------------------------------------------------------------
 Tue Nov 16 19:52:43 UTC 2021 - psimons@suse.com
 
 - Update quickcheck-instances to version 0.3.26.1 revision 1.

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -183,8 +183,8 @@ Patch37:        riscv64-ctypes.patch
 Patch39:        ignore_pip_deprec_warn.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch40:        sphinx-update-removed-function.patch
-# PATCH-FIX-UPSTREAM https://github.com/python/cpython/pull/22198 - adopted for 3.6 dmueller@suse.com
-Patch41:        22198.patch
+# PATCH-FIX-UPSTREAM remove-sphinx40-warning.patch gh#python/cpython#22198 dmueller@suse.com
+Patch41:        remove-sphinx40-warning.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel

@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:18:23 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: 'Add NFS' instead of 'Add Nfs' in the menu (related
+  to fate#318196).
+- 4.4.36
+
+-------------------------------------------------------------------
 Thu Feb  3 16:12:52 UTC 2022 - José Iván López González <jlopez@suse.com>
 
-- Partitioner: use 'defaults' for empty mount options in the
-  details popup of a NFS (related to fate#318196).
+- Partitioner: the details popup for an NFS displays 'defaults'
+  instead of an empty string if no mount options are specified for
+  that NFS (related to fate#318196).
 
 -------------------------------------------------------------------
 Wed Feb  2 20:53:34 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>

@@ -20,7 +20,7 @@ Signed-off-by: Christian Boltz <apparmor@cboltz.de>
 === modified file 'profiles/apparmor.d/usr.sbin.smbd'
 --- profiles/apparmor.d/usr.sbin.smbd	2011-08-27 18:50:42 +0000
 +++ profiles/apparmor.d/usr.sbin.smbd	2011-10-19 09:37:04 +0000
-@@ -56,6 +56,10 @@
+@@ -59,6 +59,10 @@
    @{HOMEDIRS}/** lrwk,
    /var/lib/samba/usershares/{,**} lrwk,
  

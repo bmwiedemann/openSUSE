@@ -29,9 +29,11 @@ License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/41/%{name}-%{version}.tar.xz
-
 # PATCH-FEATURE-UPSTREAM -- Ensure Tumbleweed is listed as recommended distribution
 Patch0:         gnome-boxes-opensuse.patch
+# PATCH-FIX-UPSTREAM fd0acfbe79444687c73dea182c2d1a5fa1c77324.patch -- Fix build with meson 0.60 and newer
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-boxes/-/commit/fd0acfbe79444687c73dea182c2d1a5fa1c77324.patch
+
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig

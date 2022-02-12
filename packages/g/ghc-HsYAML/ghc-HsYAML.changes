@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 26 17:52:12 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update HsYAML to version 0.2.1.0 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  8 16:30:36 UTC 2021 - psimons@suse.com
 
 - Update HsYAML to version 0.2.1.0 revision 3.

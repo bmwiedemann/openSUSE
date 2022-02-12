@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  4 00:30:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-api-data to version 0.4.3 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov 15 06:57:49 UTC 2021 - psimons@suse.com
 
 - Update http-api-data to version 0.4.3 revision 4.

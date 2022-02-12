@@ -1,7 +1,44 @@
 -------------------------------------------------------------------
+Thu Jan 27 18:55:05 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20220127.
+  git-annex (10.20220127) upstream; urgency=medium
+
+    * New v10 repository version (with v9 as a stepping-stone to it).
+      v8 remains the default version for now.
+    * In v10, object files are locked using separate lock files. This allows
+      the object files to be kept non-writable even in repositories where
+      core.sharedRepository is set.
+    * The v10 upgrade will happen automatically, one year after the v9
+      upgrade, in order to allow time for any old git-annex processes that
+      are not aware of the locking change to finish. Or git-annex upgrade
+      can be used to upgrade to v10 immediately.
+    * In v9 upgrade, set filter.annex.process. This makes git add/checkout faster
+      when there are a lot of unlocked annexed files or non-annexed files, but can
+      also make git add of large files to the annex somewhat slower.
+      If this tradeoff does not work for your use case, you can still unset
+      filter.annex.process.
+    * export: When a non-annexed symlink is in the tree to be exported, skip it.
+    * import: When the previously exported tree contained a non-annexed symlink,
+      preserve it in the imported tree so it does not get deleted.
+    * enableremote, renameremote: Better handling of the unusual case where
+      multiple special remotes have been initialized with the same name.
+    * Recover from corrupted content being received from a git remote,
+      by deleting the temporary file when it fails to verify. This prevents
+      a retry from failing again.
+      (reversion introduced in version 8.20210903)
+    * adb: Added ignorefinderror configuration parameter.
+    * Avoid crashing when run in a bare git repo that somehow contains an
+      index file.
+    * Reject combinations of --batch (or --batch-keys) with options like
+      --all or --key or with filenames.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 27 Jan 2022 13:25:19 -0400
+
+-------------------------------------------------------------------
 Wed Jan 19 12:40:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to git-annex version 8.20211231
+- Update git-annex to version 8.20211231.
   * Improved support for using git-annex in a read-only repository,
     git-annex branch information from remotes that cannot be merged
     into the git-annex branch will now not crash it, but will be

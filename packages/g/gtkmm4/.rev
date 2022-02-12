@@ -23,4 +23,12 @@
     <comment>New stable rel (forwarded request 922065 from iznogood)</comment>
     <requestid>922108</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa196ff552887b575d423fd460f9befc</srcmd5>
+    <version>4.6.0</version>
+    <time>1644617239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953712</requestid>
+  </revision>
 </revisionlist>

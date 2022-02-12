@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb  8 21:42:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patches:
+  + a9d2ba590641d832dcf6b97184687b6eb424c00f.patch: icons: Update
+    icon licenses
+  + dfc763c16c0ce66a180ccb13205f1ca9666278a8.patch: icons: Correct
+    icon licenses again
+  + 2a976339f444d70f10949901a6ee2b1f8ccb24b6.patch: Build: add
+    embedded-resources.h to libembedded_dep
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Update our Supplements to current standard.
+- Stop removing no longer exisiting la files, not present after the
+  switch to meson build system.
+- Stop packaging the demo files/sub-package, pass demos=false to
+  meson, and add libpeas-demo Obsolets to main lib.
+- Remove all traces of already disabled via bcond
+  libpeas-loader-python sub-package, there is no chance we will
+  package that again.
+
+-------------------------------------------------------------------
 Thu Sep 16 02:01:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

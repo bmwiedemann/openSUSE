@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-unliftio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name unliftio
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.20
+Version:        0.2.21.0
 Release:        0
 Summary:        The MonadUnliftIO typeclass for unlifting monads to IO (batteries included)
 License:        MIT

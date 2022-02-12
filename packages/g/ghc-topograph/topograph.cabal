@@ -1,7 +1,7 @@
 cabal-version:   2.2
 name:            topograph
 version:         1.0.0.1
-x-revision:      2
+x-revision:      3
 synopsis:        Directed acyclic graphs.
 category:        Data, Graph
 description:
@@ -39,6 +39,7 @@ tested-with:
    || ==8.8.4
    || ==8.10.4
    || ==9.0.1
+   || ==9.2.1
 
 source-repository head
   type:     git
@@ -47,7 +48,7 @@ source-repository head
 library
   exposed-modules:  Topograph
   build-depends:
-    , base          >=4.6     && <4.16
+    , base          >=4.6     && <4.17
     , base-compat   ^>=0.10.5 || ^>=0.11.0 || ^>=0.12.0
     , base-orphans  ^>=0.8
     , containers    ^>=0.5.0.0 || ^>=0.6.0.1

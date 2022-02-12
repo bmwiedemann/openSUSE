@@ -1,7 +1,7 @@
 #
 # spec file for package freemarker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with jp_minimal
 Name:           freemarker
-Version:        2.3.28
+Version:        2.3.31
 Release:        0
 Summary:        The Apache FreeMarker Template Engine
 License:        Apache-2.0
@@ -29,18 +29,17 @@ Source0:        https://github.com/apache/incubator-freemarker/archive/v%{versio
 Patch1:         jsp-api.patch
 # Compile only the classes compatible with the version of jython that we have
 Patch2:         jython-compatibility.patch
-# illegal character in the javadoc comment
-Patch3:         fix-javadoc-encoding.patch
 # Disable JRebel integration, it is not free software and not available in openSUSE
-Patch5:         no-javarebel.patch
-# enable jdom extension
-Patch6:         enable-jdom.patch
+Patch3:         no-javarebel.patch
+# Enable jdom extension
+Patch4:         enable-jdom.patch
 # Fix compatibility with javacc 7
-Patch7:         javacc-7.patch
+Patch5:         javacc-7.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-parent
 BuildRequires:  aqute-bnd
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  glassfish-jsp-api
 BuildRequires:  glassfish-servlet-api
@@ -86,12 +85,11 @@ This package contains the API documentation for %{name}.
 find -type f -name "*.jar" -delete
 find -type f -name "*.class" -delete
 
-%patch1
+%patch1 -p1
 %patch2 -p1
-%patch3
-%patch5
-%patch6
-%patch7 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 # Use system ivy settings
 rm ivysettings.xml
@@ -117,16 +115,31 @@ rm src/main/java/freemarker/ext/xml/_Dom4jNavigator.java
 %{mvn_file} org.%{name}:%{name} %{name}
 
 %build
-ant -Divy.mode=local -Ddeps.available=true javacc jar javadoc maven-pom
+JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 \
+	ant -Divy.mode=local -Ddeps.available=true javacc jar javadoc maven-pom
+
+mkdir build/manual
+for lang in en_US zh_CN; do
+	java -cp %{_javadir}/xalan-j2.jar:%{_javadir}/xalan-j2-serializer.jar \
+		org.apache.xalan.xslt.Process \
+		-OUT build/manual/manual-${lang}.xhtml \
+		-XSL %{_datadir}/xml/docbook/stylesheet/nwalsh5/current/xhtml5/docbook.xsl \
+		-IN src/manual/${lang}/book.xml
+done
+cp -rf src/manual/en_US/{figures,*.png} build/manual
 
 %install
 %{mvn_artifact} build/pom.xml build/%{name}.jar
 %mvn_install -J build/api
 %fdupes -s %{buildroot}%{_javadocdir}
 
+install -dm0755 %{buildroot}%{_defaultdocdir}/%{name}/html
+cp -rf build/manual/* %{buildroot}%{_defaultdocdir}/%{name}/html
+
 %files -f .mfiles
 %doc README.md RELEASE-NOTES
 %license LICENSE NOTICE
+%{_defaultdocdir}/%{name}/html
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE

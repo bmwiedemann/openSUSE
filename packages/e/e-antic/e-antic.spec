@@ -1,7 +1,7 @@
 #
 # spec file for package e-antic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%define skip_python2 1
 %define lname	libeantic1
 Name:           e-antic
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -26,6 +27,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/e-antic
 
 Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  antic-devel
 BuildRequires:  arb-devel
 BuildRequires:  automake
@@ -37,9 +39,11 @@ BuildRequires:  gmp-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 BuildRequires:  unique-factory-devel
 BuildRequires:  pkgconfig(catch2)
+Obsoletes:      python-pyeantic < %version-%release
+Provides:       python-pyeantic = %version-%release
+%python_subpackages
 
 %description
 E-ANTIC is a C/C++ library to deal with real embedded number fields
@@ -68,25 +72,27 @@ built on top of ANTIC.
 This subpackage contains the include files and library links for
 developing against the ANTIC library.
 
-%package -n python3-pyeantic
-Summary:        Python interface for e-antic
-Group:          Development/Languages/Python
-
-%description -n python3-pyeantic
-pyeantic is a Python interface on top of E-ANTIC, itself a
-a C/C++ library for real embedded number fields atop ANTIC.
-
 %prep
 %autosetup -p1
 
 %build
 autoreconf -fi
+%define _configure ../configure
+%{python_expand #
+mkdir p%{$python_bin_suffix}/
+pushd p%{$python_bin_suffix}/
 %configure --disable-static --without-benchmark --without-byexample \
-	--without-pytest --without-doc
+	--without-pytest --without-doc PYTHON="python%{$python_bin_suffix}"
 %make_build
+popd
+}
 
 %install
+%{python_expand #
+pushd p%{$python_bin_suffix}/
 %make_install
+popd
+}
 rm -f "%buildroot/%_libdir"/*.la
 find "%buildroot" -name install_files.txt -delete
 %fdupes %buildroot/%_prefix
@@ -98,12 +104,12 @@ find "%buildroot" -name install_files.txt -delete
 %license COPY*
 %_libdir/libeantic*.so.1*
 
-%files -n python3-pyeantic
-%python3_sitelib/pyeantic*/
-
-%files devel
+%files -n %name-devel
 %_includedir/e-antic/
 %_includedir/libeantic/
 %_libdir/libeantic*.so
+
+%files %python_files
+%python_sitelib/pyeantic*/
 
 %changelog

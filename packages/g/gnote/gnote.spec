@@ -27,8 +27,12 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
 Source0:        https://download.gnome.org/sources/gnote/41/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
+# PATCH-FIX-UPSTREAM 21.patch -- Fix build with meson 0.60 and newer
+Patch0:         https://gitlab.gnome.org/GNOME/gnote/-/merge_requests/21.patch
 
+BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  libboost_test-devel >= 1.5.1
@@ -74,7 +78,6 @@ search results from documents.
 
 %install
 %meson_install
-desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications/org.gnome.Gnote.desktop
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
@@ -84,6 +87,9 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 %endif
+
+%check
+%meson_test
 
 %files
 %license COPYING

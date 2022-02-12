@@ -84,4 +84,15 @@
 - Update constraints for riscv64</comment>
     <requestid>951461</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d7401d24c596866b3915d84940f27d4c</srcmd5>
+    <version>13.0.1</version>
+    <time>1644617221</time>
+    <user>dimstar_suse</user>
+    <comment>- Add SUSE_Backports_policy-SLE_conflict to rpmlintrc, we're
+  deliberately conflicting with SLE here to offer a newer version
+  than what SUSE wants to support.
+  (https://code.opensuse.org/leap/features/issue/55)</comment>
+    <requestid>952965</requestid>
+  </revision>
 </revisionlist>

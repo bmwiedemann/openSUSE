@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  2 15:12:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fd0acfbe79444687c73dea182c2d1a5fa1c77324.patch: Fix build
+  with meson 0.60 and newer.
+
+-------------------------------------------------------------------
 Wed Jan 19 15:35:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libvirt-client Recommends: needed for gnome-boxes to

@@ -38,6 +38,10 @@ Source:         kinfocenter-%{version}.tar.xz
 Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Search-in-usr-local-sbin-usr-sbin-sbin-as-fallback.patch
+# PATCH-FIX-OPENSUSE
+Patch100:       0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  systemsettings5
 BuildRequires:  update-desktop-files
@@ -75,8 +79,11 @@ Requires:       (/usr/bin/vulkaninfo if libvulkan1)
 # Plasma Wayland and X11 sessions are always installed
 Requires:       /usr/bin/wayland-info
 Requires:       /usr/bin/xdpyinfo
-# Not packaged yet?
+# Note: Not available as /usr/bin/eglinfo yet (boo#1195695)
 Recommends:     /usr/bin/eglinfo
+# Mesa-demos includes it, but as a whole it's too fat,
+# so don't pull it in by default.
+Suggests:       Mesa-demo
 
 %description
 KDE Utility that provides information about a computer system.

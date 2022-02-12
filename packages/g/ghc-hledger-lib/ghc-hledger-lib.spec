@@ -19,13 +19,12 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.23
+Version:        1.24.99
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
 BuildRequires:  ghc-Glob-devel
@@ -33,7 +32,6 @@ BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-base-compat-batteries-devel
 BuildRequires:  ghc-blaze-markup-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-call-stack-devel
@@ -43,6 +41,7 @@ BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-doclayout-devel
 BuildRequires:  ghc-extra-devel
 BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
@@ -95,8 +94,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver 'base-compat-batteries' '<0.12' '<0.13'
 
 %build
 %ghc_lib_build

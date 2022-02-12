@@ -173,4 +173,12 @@
     <comment>- make package arch again (boo#1110020)</comment>
     <requestid>638844</requestid>
   </revision>
+  <revision rev="25" vrev="22">
+    <srcmd5>7fb40c4cb03af450e8f150744a9ec58d</srcmd5>
+    <version>7.6</version>
+    <time>1644617201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953308</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,6 +81,8 @@ Patch39:        initramfs-Add-network-handling-support-for-SUSE.patch
 Patch40:        initramfs-Handle-NTP-client-configuration-for-SUSE.patch
 Patch41:        Add-lib-modules-opt_kversion-sysctl.conf-to-initfs-if-present.patch
 Patch42:        vnfs-Do-not-pull-in-recommended-packages-on-SUSE.patch
+Patch43:        Add-suse-to-overlay-template.patch
+Patch44:        vnfs-On-SUSE-don-t-copy-repository-information-into-chroot.patch
 
 %if "%{?flavor}" != "common"
 BuildRequires:  bsdtar
@@ -408,6 +410,8 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch31 -p1
 %patch41 -p1
 %patch42 -p1
+%patch43 -p1
+%patch44 -p1
 # cluster
 %patch2 -p1
 %patch3 -p1

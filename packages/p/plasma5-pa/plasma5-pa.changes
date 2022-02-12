@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  9 21:34:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop conditionals for no longer supported versions of openSUSE.
+  Following this; drop pkgconfig(gconf-2.0) BuildRequires and
+  (pulseaudio-module-gconf if pulseaudio) Recommends, and
+  conditional cmake_kf5 call. Pulseaudio dropped support for gconf
+  in version 15.
+
+-------------------------------------------------------------------
 Sat Feb  5 19:51:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.0

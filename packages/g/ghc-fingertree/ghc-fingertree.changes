@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 29 16:53:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update fingertree to version 0.1.5.0.
+  0.1.5.0 Ross Paterson <R.Paterson@city.ac.uk> Jan 2022
+  	* Added foldlWithPos, foldrWithPos, foldlWithContext, foldrWithContext (James Cranch)
+  	* Fixed bug in traverseWithContext
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

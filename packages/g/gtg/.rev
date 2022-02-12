@@ -15,4 +15,12 @@
     <comment>Add upstream patch to fix meson. (forwarded request 945174 from luc14n0)</comment>
     <requestid>945295</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0cd2b8c39f2ab60d240da22a600f1d19</srcmd5>
+    <version>0.5</version>
+    <time>1644617243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953246</requestid>
+  </revision>
 </revisionlist>

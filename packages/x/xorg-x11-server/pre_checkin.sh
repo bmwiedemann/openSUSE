@@ -12,11 +12,11 @@ extract_abi() {
   grep ^.define.*${1}_VERSION ${xorg_src}/hw/xfree86/common/xf86Module.h | tr '(),' '  .' | awk '{ print $4$5 }'
 }
 
-if [ "$1" == "--tar" ]; then
+if [ "$1" = "--tar" ]; then
 	tmpdir=$(mktemp -d)
 	tar xf "$2" -C ${tmpdir}
 	xorg_src=${tmpdir}/*
-elif [ "$1" == "--verify" ]; then
+elif [ "$1" = "--verify" ]; then
 	xorg_src="$2"
 	prv_ext=".build"
 else
@@ -39,15 +39,18 @@ abi_videodrv=`extract_abi VIDEODRV`
 abi_xinput=`extract_abi XINPUT`
 abi_extension=`extract_abi EXTENSION`
 
-A="Provides:       X11_ABI_XINPUT = ${abi_xinput}\nProvides:       X11_ABI_VIDEODRV = ${abi_videodrv}\nProvides:       X11_ABI_ANSIC = ${abi_ansic}\nProvides:       X11_ABI_EXTENSION = ${abi_extension}"
+cat > xorg-server-provides${prv_ext} <<EOF
+Provides:       X11_ABI_XINPUT = ${abi_xinput}
+Provides:       X11_ABI_VIDEODRV = ${abi_videodrv}
+Provides:       X11_ABI_ANSIC = ${abi_ansic}
+Provides:       X11_ABI_EXTENSION = ${abi_extension}
+EOF
 
-echo -e $A > xorg-server-provides${prv_ext}
-
-if [ "$1" == "--tar" ]; then
+if [ "$1" = "--tar" ]; then
 	if [ -d ${tmpdir} ]; then
 		rm -rf ${tmpdir}
 	fi
-elif [ "$1" == "--verify" ]; then
+elif [ "$1" = "--verify" ]; then
 	diff "$3" xorg-server-provides${prv_ext}
         if [ $? -gt 0 ]; then
 		echo "The ABI verification failed... please run $0 before checking in"

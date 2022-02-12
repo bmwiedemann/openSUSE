@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 10 08:11:43 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86_64 architectures
+
+-------------------------------------------------------------------
 Tue Jan 18 10:28:07 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - initial commit of htcondor stbale condor release V9_0_8 with 

@@ -1,4 +1,371 @@
 -------------------------------------------------------------------
+Thu Feb 10 12:13:18 CET 2022 - jslaby@suse.cz
+
+- Revert "build initrd without systemd" (bsc#1195775)
+  This reverts commit ef4c569b998635a9369390d4e9cfe3a922815c76. systemd is
+  needed to at least mount /sys/kernel/security/ during apparmor build.
+- commit 5d1f5d2
+
+-------------------------------------------------------------------
+Wed Feb  9 10:46:19 CET 2022 - jslaby@suse.cz
+
+- rpm/fdupes_relink: dups linking implementation in perl (bsc#1195709)
+- rpm/kernel-source.spec.in: use the above
+  This is orders of magnitude faster.
+- commit 359854d
+
+-------------------------------------------------------------------
+Wed Feb  9 07:00:19 CET 2022 - jslaby@suse.cz
+
+- Update config files.
+  Set CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION=y on i386. the
+  rest to =n. Copied from master branch.
+- commit 224cad2
+
+-------------------------------------------------------------------
+Wed Feb  9 06:13:43 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.8 (bsc#1012628).
+- drm/i915: Disable DSB usage for now (bsc#1012628).
+- selinux: fix double free of cond_list on error paths
+  (bsc#1012628).
+- audit: improve audit queue handling when "audit=1" on cmdline
+  (bsc#1012628).
+- ipc/sem: do not sleep with a spin lock held (bsc#1012628).
+- spi: stm32-qspi: Update spi registering (bsc#1012628).
+- ASoC: hdmi-codec: Fix OOB memory accesses (bsc#1012628).
+- ASoC: ops: Reject out of bounds values in snd_soc_put_volsw()
+  (bsc#1012628).
+- ASoC: ops: Reject out of bounds values in snd_soc_put_volsw_sx()
+  (bsc#1012628).
+- ASoC: ops: Reject out of bounds values in snd_soc_put_xr_sx()
+  (bsc#1012628).
+- ALSA: usb-audio: Correct quirk for VF0770 (bsc#1012628).
+- ALSA: hda: Fix UAF of leds class devs at unbinding
+  (bsc#1012628).
+- ALSA: hda: realtek: Fix race at concurrent COEF updates
+  (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for ASUS GU603 (bsc#1012628).
+- ALSA: hda/realtek: Add missing fixup-model entry for Gigabyte
+  X570 ALC1220 quirks (bsc#1012628).
+- ALSA: hda/realtek: Fix silent output on Gigabyte X570S Aorus
+  Master (newer chipset) (bsc#1012628).
+- ALSA: hda/realtek: Fix silent output on Gigabyte X570 Aorus
+  Xtreme after reboot from Windows (bsc#1012628).
+- ata: libata-core: Introduce ATA_HORKAGE_NO_LOG_DIR horkage
+  (bsc#1012628).
+- btrfs: don't start transaction for scrub if the fs is mounted
+  read-only (bsc#1012628).
+- btrfs: fix deadlock between quota disable and qgroup rescan
+  worker (bsc#1012628).
+- btrfs: fix use-after-free after failure to create a snapshot
+  (bsc#1012628).
+- Revert "fs/9p: search open fids first" (bsc#1012628).
+- drm/nouveau: fix off by one in BIOS boundary checking
+  (bsc#1012628).
+- drm/i915/adlp: Fix TypeC PHY-ready status readout (bsc#1012628).
+- drm/amdgpu: fix a potential GPU hang on cyan skillfish
+  (bsc#1012628).
+- drm/amd/pm: correct the MGpuFanBoost support for Beige Goby
+  (bsc#1012628).
+- drm/amd/display: Update watermark values for DCN301
+  (bsc#1012628).
+- drm/amd/display: watermark latencies is not enough on DCN31
+  (bsc#1012628).
+- drm/amd/display: Force link_rate as LINK_RATE_RBR2 for 2018 15"
+  Apple Retina panels (bsc#1012628).
+- nvme-fabrics: fix state check in nvmf_ctlr_matches_baseopts()
+  (bsc#1012628).
+- mm/debug_vm_pgtable: remove pte entry from the page table
+  (bsc#1012628).
+- mm/pgtable: define pte_index so that preprocessor could
+  recognize it (bsc#1012628).
+- mm/kmemleak: avoid scanning potential huge holes (bsc#1012628).
+- block: bio-integrity: Advance seed correctly for larger interval
+  sizes (bsc#1012628).
+- dma-buf: heaps: Fix potential spectre v1 gadget (bsc#1012628).
+- IB/hfi1: Fix panic with larger ipoib send_queue_size
+  (bsc#1012628).
+- IB/hfi1: Fix alloc failure with larger txqueuelen (bsc#1012628).
+- IB/hfi1: Fix AIP early init panic (bsc#1012628).
+- Revert "fbdev: Garbage collect fbdev scrolling acceleration,
+  part 1 (from TODO list)" (bsc#1012628).
+- Revert "fbcon: Disable accelerated scrolling" (bsc#1012628).
+- fbcon: Add option to enable legacy hardware acceleration
+  (bsc#1012628).
+- mptcp: fix msk traversal in mptcp_nl_cmd_set_flags()
+  (bsc#1012628).
+- Revert "ASoC: mediatek: Check for error clk pointer"
+  (bsc#1012628).
+- RISC-V: KVM: make CY, TM, and IR counters accessible in VU mode
+  (bsc#1012628).
+- KVM: arm64: Avoid consuming a stale esr value when SError occur
+  (bsc#1012628).
+- KVM: arm64: Stop handle_exit() from handling HVC twice when
+  an SError occurs (bsc#1012628).
+- arm64: Add Cortex-A510 CPU part definition (bsc#1012628).
+- RDMA/cma: Use correct address when leaving multicast group
+  (bsc#1012628).
+- RDMA/ucma: Protect mc during concurrent multicast leaves
+  (bsc#1012628).
+- RDMA/siw: Fix refcounting leak in siw_create_qp() (bsc#1012628).
+- IB/rdmavt: Validate remote_addr during loopback atomic tests
+  (bsc#1012628).
+- RDMA/siw: Fix broken RDMA Read Fence/Resume logic (bsc#1012628).
+- RDMA/mlx4: Don't continue event handler after memory allocation
+  failure (bsc#1012628).
+- ALSA: usb-audio: initialize variables that could ignore errors
+  (bsc#1012628).
+- ALSA: hda: Fix signedness of sscanf() arguments (bsc#1012628).
+- ALSA: hda: Skip codec shutdown in case the codec is not
+  registered (bsc#1012628).
+- iommu/vt-d: Fix potential memory leak in
+  intel_setup_irq_remapping() (bsc#1012628).
+- iommu/amd: Fix loop timeout issue in iommu_ga_log_enable()
+  (bsc#1012628).
+- spi: bcm-qspi: check for valid cs before applying chip select
+  (bsc#1012628).
+- spi: mediatek: Avoid NULL pointer crash in interrupt
+  (bsc#1012628).
+- spi: meson-spicc: add IRQ check in meson_spicc_probe
+  (bsc#1012628).
+- spi: uniphier: fix reference count leak in uniphier_spi_probe()
+  (bsc#1012628).
+- IB/hfi1: Fix tstats alloc and dealloc (bsc#1012628).
+- IB/cm: Release previously acquired reference counter in the
+  cm_id_priv (bsc#1012628).
+- net: ieee802154: hwsim: Ensure proper channel selection at
+  probe time (bsc#1012628).
+- net: ieee802154: mcr20a: Fix lifs/sifs periods (bsc#1012628).
+- net: ieee802154: ca8210: Stop leaking skb's (bsc#1012628).
+- netfilter: nft_reject_bridge: Fix for missing reply from
+  prerouting (bsc#1012628).
+- net: ieee802154: Return meaningful error codes from the netlink
+  helpers (bsc#1012628).
+- net/smc: Forward wakeup to smc socket waitqueue after fallback
+  (bsc#1012628).
+- net: stmmac: dwmac-visconti: No change to ETHER_CLOCK_SEL for
+  unexpected speed request (bsc#1012628).
+- net: stmmac: properly handle with runtime pm in
+  stmmac_dvr_remove() (bsc#1012628).
+- net: macsec: Fix offload support for NETDEV_UNREGISTER event
+  (bsc#1012628).
+- net: macsec: Verify that send_sci is on when setting Tx sci
+  explicitly (bsc#1012628).
+- net: stmmac: dump gmac4 DMA registers correctly (bsc#1012628).
+- net, neigh: Do not trigger immediate probes on NUD_FAILED from
+  neigh_managed_work (bsc#1012628).
+- net: stmmac: ensure PTP time register reads are consistent
+  (bsc#1012628).
+- drm: mxsfb: Fix NULL pointer dereference (bsc#1012628).
+- drm/kmb: Fix for build errors with Warray-bounds (bsc#1012628).
+- drm/i915/overlay: Prevent divide by zero bugs in scaling
+  (bsc#1012628).
+- drm/i915: Lock timeline mutex directly in error path of
+  eb_pin_timeline (bsc#1012628).
+- drm/amd: avoid suspend on dGPUs w/ s2idle support when runtime
+  PM enabled (bsc#1012628).
+- ASoC: rt5682: Fix deadlock on resume (bsc#1012628).
+- ASoC: fsl: Add missing error handling in pcm030_fabric_probe
+  (bsc#1012628).
+- ASoC: xilinx: xlnx_formatter_pcm: Make buffer bytes multiple
+  of period bytes (bsc#1012628).
+- ASoC: simple-card: fix probe failure on platform component
+  (bsc#1012628).
+- ASoC: cpcap: Check for NULL pointer after calling
+  of_get_child_by_name (bsc#1012628).
+- ASoC: max9759: fix underflow in speaker_gain_control_put()
+  (bsc#1012628).
+- ASoC: codecs: wcd938x: fix incorrect used of portid
+  (bsc#1012628).
+- ASoC: codecs: lpass-rx-macro: fix sidetone register offsets
+  (bsc#1012628).
+- ASoC: codecs: wcd938x: fix return value of mixer put function
+  (bsc#1012628).
+- ASoC: qdsp6: q6apm-dai: only stop graphs that are started
+  (bsc#1012628).
+- pinctrl: sunxi: Fix H616 I2S3 pin data (bsc#1012628).
+- pinctrl: intel: Fix a glitch when updating IRQ flags on a
+  preconfigured line (bsc#1012628).
+- pinctrl: intel: fix unexpected interrupt (bsc#1012628).
+- pinctrl: bcm2835: Fix a few error paths (bsc#1012628).
+- btrfs: fix use of uninitialized variable at rm device ioctl
+  (bsc#1012628).
+- scsi: bnx2fc: Make bnx2fc_recv_frame() mp safe (bsc#1012628).
+- nfsd: nfsd4_setclientid_confirm mistakenly expires confirmed
+  client (bsc#1012628).
+- gve: fix the wrong AdminQ buffer queue index check
+  (bsc#1012628).
+- bpf: Use VM_MAP instead of VM_ALLOC for ringbuf (bsc#1012628).
+- selftests/exec: Remove pipe from TEST_GEN_FILES (bsc#1012628).
+- selftests: futex: Use variable MAKE instead of make
+  (bsc#1012628).
+- tools/resolve_btfids: Do not print any commands when building
+  silently (bsc#1012628).
+- e1000e: Separate ADP board type from TGP (bsc#1012628).
+- rtc: cmos: Evaluate century appropriate (bsc#1012628).
+- objtool: Fix truncated string warning (bsc#1012628).
+- kvm: add guest_state_{enter,exit}_irqoff() (bsc#1012628).
+- kvm/arm64: rework guest entry logic (bsc#1012628).
+- perf: Copy perf_event_attr::sig_data on modification
+  (bsc#1012628).
+- perf stat: Fix display of grouped aliased events (bsc#1012628).
+- perf/x86/intel/pt: Fix crash with stop filters in single-range
+  mode (bsc#1012628).
+- x86/perf: Default set FREEZE_ON_SMI for all (bsc#1012628).
+- EDAC/altera: Fix deferred probing (bsc#1012628).
+- EDAC/xgene: Fix deferred probing (bsc#1012628).
+- ext4: prevent used blocks from being allocated during fast
+  commit replay (bsc#1012628).
+- ext4: modify the logic of ext4_mb_new_blocks_simple
+  (bsc#1012628).
+- ext4: fix error handling in ext4_restore_inline_data()
+  (bsc#1012628).
+- ext4: fix error handling in ext4_fc_record_modified_inode()
+  (bsc#1012628).
+- ext4: fix incorrect type issue during replay_del_range
+  (bsc#1012628).
+- net: dsa: mt7530: make NET_DSA_MT7530 select MEDIATEK_GE_PHY
+  (bsc#1012628).
+- cgroup/cpuset: Fix "suspicious RCU usage" lockdep warning
+  (bsc#1012628).
+- tools include UAPI: Sync sound/asound.h copy with the kernel
+  sources (bsc#1012628).
+- gpio: idt3243x: Fix an ignored error return from
+  platform_get_irq() (bsc#1012628).
+- gpio: mpc8xxx: Fix an ignored error return from
+  platform_get_irq() (bsc#1012628).
+- selftests: nft_concat_range: add test for reload with no
+  element add/del (bsc#1012628).
+- selftests: netfilter: check stateless nat udp checksum fixup
+  (bsc#1012628).
+- Update config files.
+- commit 1b44d21
+
+-------------------------------------------------------------------
+Tue Feb  8 08:25:55 CET 2022 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/0001-lib-raid6-Use-strict-priority-ranking-for-pq-gen-ben.patch.
+- Refresh
+  patches.suse/0001-lib-raid6-skip-benchmark-of-non-chosen-xor_syndrome-.patch.
+- Refresh
+  patches.suse/cifs-fix-workstation_name-for-multiuser-mounts.patch.
+  Update upstream status and move to sorted section.
+- commit 9ebef3e
+
+-------------------------------------------------------------------
+Mon Feb  7 12:46:18 CET 2022 - tiwai@suse.de
+
+- drm/i915: Workaround broken BIOS DBUF configuration on TGL/RKL
+  (bsc#1193640).
+- drm/i915: Populate pipe dbuf slices more accurately during
+  readout (bsc#1193640).
+- drm/i915: Allow !join_mbus cases for adlp+ dbuf configuration
+  (bsc#1193640).
+- commit 0503f69
+
+-------------------------------------------------------------------
+Sun Feb  6 08:46:19 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.7 (bsc#1012628).
+- Revert "drm/vc4: hdmi: Make sure the device is powered with CEC"
+  again (bsc#1012628).
+- Revert "drm/vc4: hdmi: Make sure the device is powered with CEC"
+  (bsc#1012628).
+- commit 37d59fa
+
+-------------------------------------------------------------------
+Sat Feb  5 13:38:09 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.6 (bsc#1012628).
+- ovl: fix NULL pointer dereference in copy up warning
+  (bsc#1012628).
+- tcp: add missing tcp_skb_can_collapse() test in
+  tcp_shift_skb_data() (bsc#1012628).
+- tcp: fix mem under-charging with zerocopy sendmsg()
+  (bsc#1012628).
+- af_packet: fix data-race in packet_setsockopt /
+  packet_setsockopt (bsc#1012628).
+- e1000e: Handshake with CSME starts from ADL platforms
+  (bsc#1012628).
+- cpuset: Fix the bug that subpart_cpus updated wrongly in
+  update_cpumask() (bsc#1012628).
+- bpf: Fix possible race in inc_misses_counter (bsc#1012628).
+- net: ipa: request IPA register values be retained (bsc#1012628).
+- rtnetlink: make sure to refresh master_dev/m_ops in
+  __rtnl_newlink() (bsc#1012628).
+- net: sched: fix use-after-free in tc_new_tfilter()
+  (bsc#1012628).
+- fanotify: Fix stale file descriptor in copy_event_to_user()
+  (bsc#1012628).
+- net: amd-xgbe: Fix skb data length underflow (bsc#1012628).
+- net: amd-xgbe: ensure to reset the tx_timer_active flag
+  (bsc#1012628).
+- i40e: Fix reset path while removing the driver (bsc#1012628).
+- i40e: Fix reset bw limit when DCB enabled with 1 TC
+  (bsc#1012628).
+- ipheth: fix EOVERFLOW in ipheth_rcvbulk_callback (bsc#1012628).
+- net/mlx5e: Avoid implicit modify hdr for decap drop rule
+  (bsc#1012628).
+- net/mlx5: E-Switch, Fix uninitialized variable modact
+  (bsc#1012628).
+- net/mlx5e: Fix broken SKB allocation in HW-GRO (bsc#1012628).
+- net/mlx5e: Fix wrong calculation of header index in HW_GRO
+  (bsc#1012628).
+- net/mlx5e: Avoid field-overflowing memcpy() (bsc#1012628).
+- net/mlx5: Bridge, Fix devlink deadlock on net namespace deletion
+  (bsc#1012628).
+- net/mlx5e: Don't treat small ceil values as unlimited in HTB
+  offload (bsc#1012628).
+- net/mlx5: Fix offloading with ESWITCH_IPV4_TTL_MODIFY_ENABLE
+  (bsc#1012628).
+- net/mlx5e: TC, Reject rules with forward and drop actions
+  (bsc#1012628).
+- net/mlx5e: Fix module EEPROM query (bsc#1012628).
+- net/mlx5: Use del_timer_sync in fw reset flow of halting poll
+  (bsc#1012628).
+- net/mlx5e: Fix handling of wrong devices during bond netevent
+  (bsc#1012628).
+- net/mlx5: Bridge, ensure dev_name is null-terminated
+  (bsc#1012628).
+- net/mlx5: Bridge, take rtnl lock in init error handler
+  (bsc#1012628).
+- net/mlx5e: TC, Reject rules with drop and modify hdr action
+  (bsc#1012628).
+- net/mlx5e: IPsec: Fix tunnel mode crypto offload for non
+  TCP/UDP traffic (bsc#1012628).
+- net/mlx5e: IPsec: Fix crypto offload for non TCP/UDP
+  encapsulated traffic (bsc#1012628).
+- lockd: fix failure to cleanup client locks (bsc#1012628).
+- lockd: fix server crash on reboot of client holding lock
+  (bsc#1012628).
+- ovl: don't fail copy up if no fileattr support on upper
+  (bsc#1012628).
+- net: phy: Fix qca8081 with speeds lower than 2.5Gb/s
+  (bsc#1012628).
+- Revert "mm/gup: small refactoring: simplify try_grab_page()"
+  (bsc#1012628).
+- cgroup-v1: Require capabilities to set release_agent
+  (bsc#1012628).
+- drm/vc4: hdmi: Make sure the device is powered with CEC
+  (bsc#1012628).
+- net: ipa: prevent concurrent replenish (bsc#1012628).
+- net: ipa: use a bitmap for endpoint replenish_enabled
+  (bsc#1012628).
+- selftests: mptcp: fix ipv6 routing setup (bsc#1012628).
+- PCI: pciehp: Fix infinite loop in IRQ handler upon power fault
+  (bsc#1012628).
+- commit 1e2a324
+
+-------------------------------------------------------------------
+Sat Feb  5 09:12:16 CET 2022 - tiwai@suse.de
+
+- Refresh patches.suse/Input-elan_i2c-Add-deny-list-for-Lenovo-Yoga-Slim-7.patch
+  Fix section mistmatch warning
+- commit 1f97ae0
+
+-------------------------------------------------------------------
 Wed Feb  2 07:45:56 CET 2022 - jslaby@suse.cz
 
 - cifs: fix workstation_name for multiuser mounts (bsc#1195360).
@@ -349,6 +716,13 @@ Tue Feb  1 15:23:26 CET 2022 - tiwai@suse.de
 - commit 5277fb2
 
 -------------------------------------------------------------------
+Tue Feb  1 14:42:29 CET 2022 - tiwai@suse.de
+
+- Input: elan_i2c: Add deny list for Lenovo Yoga Slim 7
+  (bsc#1193064).
+- commit ea5f4b8
+
+-------------------------------------------------------------------
 Mon Jan 31 15:20:36 CET 2022 - ludwig.nussel@suse.de
 
 - kernel-obs-build: include 9p (boo#1195353)
@@ -356,6 +730,15 @@ Mon Jan 31 15:20:36 CET 2022 - ludwig.nussel@suse.de
   script, the 9p and 9p_virtio kernel modules need to be included in
   the initrd of kernel-obs-build.
 - commit 0cfe67a
+
+-------------------------------------------------------------------
+Mon Jan 31 09:54:23 CET 2022 - tzimmermann@suse.de
+
+- config: x86-64: Enable DRM stack for early-boot graphics (boo#1193472)
+  Replace fbdev's generic drivers with DRM-based simpledrm. Enables the
+  DRM graphics stack for early-boot graphics, recovery and unsupported
+  chipsets.
+- commit 8e500f5
 
 -------------------------------------------------------------------
 Sat Jan 29 13:57:02 CET 2022 - jslaby@suse.cz
@@ -2616,6 +2999,14 @@ Thu Dec 30 17:51:40 CET 2021 - tiwai@suse.de
 - commit a77f415
 
 -------------------------------------------------------------------
+Thu Dec 30 10:28:48 CET 2021 - dmueller@suse.com
+
+- fix rpm build warning
+  tumbleweed rpm is adding these warnings to the log:
+  It's not recommended to have unversioned Obsoletes: Obsoletes:      microcode_ctl
+- commit 3ba8941
+
+-------------------------------------------------------------------
 Wed Dec 29 15:50:16 CET 2021 - jslaby@suse.cz
 
 - Update config files.
@@ -2848,6 +3239,15 @@ Thu Dec 23 07:47:43 CET 2021 - jslaby@suse.cz
 - Disable patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch (bsc#1194007)
   Better to disable it completely.
 - commit 730a488
+
+-------------------------------------------------------------------
+Wed Dec 22 20:48:20 CET 2021 - dmueller@suse.com
+
+- build initrd without systemd
+  This reduces the size of the initrd by over 25%, which
+  improves startup time of the virtual machine by 0.5-0.6s on
+  very fast machines, more on slower ones.
+- commit ef4c569
 
 -------------------------------------------------------------------
 Wed Dec 22 20:47:38 CET 2021 - dmueller@suse.com

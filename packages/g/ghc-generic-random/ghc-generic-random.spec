@@ -19,13 +19,12 @@
 %global pkg_name generic-random
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.0.0
+Version:        1.5.0.1
 Release:        0
 Summary:        Generic random generators for QuickCheck
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-rpm-macros
@@ -58,7 +57,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

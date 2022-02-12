@@ -124,6 +124,10 @@ Patch67:        CVE-2020-26116-httplib-header-injection.patch
 # PATCH-FIX-UPSTREAM CVE-2021-4189-ftplib-trust-PASV-resp.patch bsc#1194146 mcepl@suse.com
 # Make ftplib not trust the PASV response. (gh#python/cpython#24838)
 Patch68:        CVE-2021-4189-ftplib-trust-PASV-resp.patch
+# PATCH-FIX-UPSTREAM CVE-2022-0391-urllib_parse-newline-parsing.patch bsc#1195396 mcepl@suse.com
+# whole long discussion is on bpo#43882
+# fix for santization URLs containing ASCII newline and tabs in urllib.parse
+Patch69:        CVE-2022-0391-urllib_parse-newline-parsing.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -313,6 +317,7 @@ that rely on earlier non-verification behavior.
 %patch66 -p1
 %patch67 -p1
 %patch68 -p1
+%patch69 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

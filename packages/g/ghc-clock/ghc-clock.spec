@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-clock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name clock
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        High-resolution clock functions: monotonic, realtime, cputime
 License:        BSD-3-Clause
@@ -113,5 +113,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md
 
 %changelog

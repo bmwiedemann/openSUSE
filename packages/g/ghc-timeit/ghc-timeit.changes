@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  2 13:37:23 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update timeit to version 2.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

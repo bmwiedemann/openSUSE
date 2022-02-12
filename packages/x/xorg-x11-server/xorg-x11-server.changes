@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 10 20:26:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix bashisms in pre_checkins.sh (bsc#1195391) 
+
+-------------------------------------------------------------------
 Mon Jan  3 21:03:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_xfree86-activate-GPU-screens-on-autobind.patch 

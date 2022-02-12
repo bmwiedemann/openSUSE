@@ -1,0 +1,19 @@
+diff -Nur gnome-documents/data/meson.build patched-gnome-documents/data/meson.build
+--- gnome-documents/data/meson.build	2022-02-03 11:20:04.013083211 +0100
++++ patched-gnome-documents/data/meson.build	2022-02-03 11:21:10.465759831 +0100
+@@ -56,7 +56,6 @@
+   appdata = app + '.appdata.xml'
+ 
+   appdata_file = i18n.merge_file(
+-    appdata,
+     input: appdata + '.in',
+     output: appdata,
+     po_dir: po_dir,
+@@ -76,7 +75,6 @@
+   desktop = app + '.desktop'
+ 
+   desktop_file = i18n.merge_file(
+-    desktop,
+     type: 'desktop',
+     input: desktop + '.in',
+     output: desktop,

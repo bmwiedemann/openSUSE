@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 10 11:31:35 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Improve creating chroot on SLE: use repositories from host
+  OS. This avoids registrations to get out of sync (bsc#1195796).
+  * vnfs-On-SUSE-don-t-copy-repository-information-into-chroot.patch
+- Include SUSE into overlay template:
+  * Add-suse-to-overlay-template.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 16:16:13 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Include ipxe-bootimgs for %%full_build architectures only:

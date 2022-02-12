@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:47:20 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Pkg.SourceGeneralData() - return the file name from which the
+  repository was loaded (related to bsc#1194546)
+- 4.4.4
+
+-------------------------------------------------------------------
 Tue Oct 19 12:24:39 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Use the C++17 standard, required by the latest libzypp

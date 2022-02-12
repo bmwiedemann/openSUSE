@@ -2246,4 +2246,31 @@ NOTE: Without this patch, dovecot is spamming the audit.log with denials. Please
   MR 827) (forwarded request 949319 from cboltz)</comment>
     <requestid>949320</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>d8eeac873231712d04a3514beff34ea4</srcmd5>
+    <version>3.0.4</version>
+    <time>1644617197</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.0.4
+  - various fixes in profiles, abstractions, apparmor_parser and utils
+    (some of them were already included as patches)
+  - add support for mctp address family
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.4
+    for the full upstream changelog
+- remove upstream(ed) patches:
+  - aa-notify-more-arch-mr809.diff
+  - ruby-3.1-build-fix.diff
+  - add-samba-bgqd.diff
+  - openssl-engdef-mr818.diff
+  - profiles-python-3.10-mr783.diff
+  - update-samba-abstractions-ldb2.diff
+- refresh patches:
+  - apparmor-samba-include-permissions-for-shares.diff
+  - ruby-2_0-mkmf-destdir.patch
+
+AppArmor 3.0.4 also includes a fix for the issue with 'mctp' found via
+https://build.opensuse.org/request/show/951354
+so you might want to pick this SR into Staging:O (forwarded request 953283 from cboltz)</comment>
+    <requestid>953284</requestid>
+  </revision>
 </revisionlist>

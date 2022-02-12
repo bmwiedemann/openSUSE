@@ -1,7 +1,7 @@
 #
 # spec file for package libctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libctl
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
-%define somajor 5
+%define somajor 7
 Summary:        A guile Library for Scientific Simulations
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
-URL:            http://ab-initio.mit.edu/wiki/index.php/Libctl
+URL:            https://libctl.readthedocs.io/en/latest/
 Source0:        https://github.com/NanoComp/libctl/releases/download/v%{version}/libctl-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -32,7 +32,6 @@ BuildRequires:  guile-devel
 BuildRequires:  libtool
 BuildRequires:  nlopt-devel
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libctl is a free Guile-based library implementing flexible control files
@@ -42,6 +41,8 @@ and Meep software, but has proven useful in other programs too.
 %package -n     %{name}%{somajor}
 Summary:        A guile Library for Scientific Simulations
 Group:          System/Libraries
+# Missed SOVERSION bump
+Conflicts:      libctl5 <= 4.5.0
 
 %description -n %{name}%{somajor}
 libctl is a free Guile-based library implementing flexible control files
@@ -86,7 +87,7 @@ make
 find %{buildroot} -type f -name "*.la" -delete -print
 
 install -d %{buildroot}%{_docdir}/%{name}/
-install -m 644 {AUTHORS,COPYING,NEWS.md,README.md} %{buildroot}%{_docdir}/%{name}/
+install -m 644 {AUTHORS,NEWS.md,README.md} %{buildroot}%{_docdir}/%{name}/
 cp -r doc/ %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{name}%{somajor} -p /sbin/ldconfig
@@ -94,11 +95,10 @@ cp -r doc/ %{buildroot}%{_docdir}/%{name}/
 %postun -n %{name}%{somajor} -p /sbin/ldconfig
 
 %files -n %{name}%{somajor}
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/libctl*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/gen-ctl-io
 %{_libdir}/libctl*.so
 %{_datadir}/libctl/
@@ -106,7 +106,6 @@ cp -r doc/ %{buildroot}%{_docdir}/%{name}/
 %{_mandir}/man1/gen-ctl-io.1*
 
 %files doc
-%defattr(-,root,root)
 %{_docdir}/%{name}/
 
 %changelog

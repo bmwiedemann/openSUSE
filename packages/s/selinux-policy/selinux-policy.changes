@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 10 09:04:08 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated fix_cron.patch. Adjust labeling for at (bsc#1195683)
+
+-------------------------------------------------------------------
+Wed Feb  9 16:04:09 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix bitlbee runtime directory (bsc#1193230)
+  * add fix_bitlbee.patch
+
+-------------------------------------------------------------------
 Mon Jan 24 07:33:34 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20220124. Refreshed:

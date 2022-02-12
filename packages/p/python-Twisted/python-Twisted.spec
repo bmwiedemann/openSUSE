@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-Twisted
-Version:        21.7.0
+Version:        22.1.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -39,8 +39,6 @@ Patch4:         no-cython_test_exception_raiser.patch
 Patch5:         no-pygtkcompat.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-OPENSUSE do not throw DeprecatationWarning, upstream's fix is an API break
-Patch7:         currentThread-deprecated.patch
 BuildRequires:  %{python_module Automat >= 0.8.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}

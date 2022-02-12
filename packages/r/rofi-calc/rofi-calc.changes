@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 11 07:46:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * Correctly handle ≈ signs emitted by qalc #78
+  * Add -calc-command-history to add result to history when using -calc-command #79
+  * Correctly handle multiple equals signs emitted by qalc #80
+
+-------------------------------------------------------------------
 Mon Nov 16 07:22:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.0:

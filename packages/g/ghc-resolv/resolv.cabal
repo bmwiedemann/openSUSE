@@ -2,7 +2,7 @@ cabal-version:       2.2
 
 name:                resolv
 version:             0.1.2.0
-x-revision: 3
+x-revision: 4
 
 synopsis:            Domain Name Service (DNS) lookup via the libresolv standard library routines
 description: {
@@ -93,7 +93,7 @@ library
                      Compat
 
   -- we need binary-0.7.3 for isolate
-  build-depends:     base               >= 4.5 && <4.16
+  build-depends:     base               >= 4.5 && <4.17
                    , base16-bytestring ^>= 0.1 || ^>=1.0.0.0
                    , binary            ^>=0.7.3 || ^>= 0.8
                    , bytestring        ^>=0.9.2 || ^>= 0.10 || ^>= 0.11

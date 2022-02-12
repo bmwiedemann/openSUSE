@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 08 22:39:16 UTC 2022 - Behzad A <behzad.a_ir@hotmail.com>
+
+- added "-egl" subpackage for common EGL-based demos include
+  eglinfo, eglgears, egltri, peglgears, xeglgears, xeglthreads
+  (boo#1195695)
+-------------------------------------------------------------------
 Tue Sep 28 20:38:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Introduce new subpackage -es for GLES based demos

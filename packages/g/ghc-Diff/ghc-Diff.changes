@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 30 01:13:34 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update Diff to version 0.4.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

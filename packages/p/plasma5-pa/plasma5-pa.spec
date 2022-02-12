@@ -47,16 +47,11 @@ BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libpulse)
 Supplements:    (plasma5-desktop and (pulseaudio or pipewire-pulseaudio))
 # boo#1092871
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 Recommends:     (pulseaudio-module-gsettings if pulseaudio)
-%else
-Recommends:     (pulseaudio-module-gconf if pulseaudio)
-%endif
 Requires:       kirigami2 >= %{kf5_version}
 Requires:       (pulseaudio-module-x11 or pipewire-pulseaudio)
 Suggests:       pulseaudio-module-x11
@@ -71,11 +66,7 @@ A volume manager plasmoid superseding kmix.
 %autosetup -p1 -n plasma-pa-%{version}
 
 %build
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DUSE_GSETTINGS=TRUE
-%else
-%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DUSE_GCONF=TRUE
-%endif
 %cmake_build
 
 %install

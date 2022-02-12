@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:44:28 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220210.5effbf8b:
+  * ToolBase: use --osc-debug for osc's config value, not the tools own debug parameter
+
+-------------------------------------------------------------------
 Wed Feb 09 11:24:00 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220209.e936910b:

@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.3.6
+Version:        3.4.2
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -47,7 +47,7 @@ BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5KIO) >= 5.16
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.12
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)

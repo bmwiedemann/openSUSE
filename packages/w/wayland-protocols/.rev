@@ -223,4 +223,21 @@
 </comment>
     <requestid>933409</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>403c25bac251a5689a21fc248f18828f</srcmd5>
+    <version>1.25</version>
+    <time>1644617232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.25
+  * This release also adds a new staging protocol for session
+    locking, as well as a 'bounds' event to the xdg_toplevel
+    interface.
+  * ext-session-lock-v1: new protocol
+  * xdg-shell: add invalid_resize_edge error value
+  * xdg-shell: Add toplevel &quot;bounds&quot; configure event
+  * build: Bump version to 1.25
+  * xdg-shell: clarify conditions for remapping unmapped surfaces
+  * linux-dmabuf: fix typo in dev_t example code</comment>
+    <requestid>953142</requestid>
+  </revision>
 </revisionlist>

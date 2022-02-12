@@ -23,4 +23,12 @@
     <comment>update haskell stack in openSUSE</comment>
     <requestid>857705</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>883711c448aec0e0c7a3facd0b140e8d</srcmd5>
+    <version>0.3.0.0</version>
+    <time>1644617385</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953541</requestid>
+  </revision>
 </revisionlist>

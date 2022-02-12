@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 10 10:27:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix build on aarch64:
+  * 688.patch
+
+-------------------------------------------------------------------
 Fri Dec 31 19:31:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Require Python >= 3.7: Disable Leap backport build. It keeps

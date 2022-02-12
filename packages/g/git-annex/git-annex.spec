@@ -17,13 +17,12 @@
 
 
 Name:           git-annex
-Version:        8.20211231
+Version:        10.20220127
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
-URL:            https://git-annex.branchable.com/
-# Update the revision element in the _service file and run `osc service runall` for updates
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://hackage.haskell.org/package/%{name}
+Source0:        https://github.com/opensuse-haskell/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -130,8 +129,8 @@ BuildRequires:  lsof
 BuildRequires:  rsync
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
-Requires(postun):desktop-file-utils
-Requires(postun):hicolor-icon-theme
+Requires(postun): desktop-file-utils
+Requires(postun): hicolor-icon-theme
 Recommends:     curl
 Recommends:     gpg2
 Recommends:     lsof
@@ -169,25 +168,19 @@ Optional dependency offering bash completion for git-annex
 
 %prep
 %autosetup
-# don't build again when installing manuals, completions, and desktop files
-sed -i '/^install-.*:/ s/build//' Makefile
 
 %build
 %define cabal_configure_options -ftestsuite
 %ghc_bin_build
 
+%check
+%make_build DESTDIR=%{buildroot} BUILDER=./Setup test
+
 %install
 %ghc_bin_install
-# The make install-completions target expects the binary in the local directory
-ln -s %{buildroot}%{_bindir}/git-annex ./git-annex
 make DESTDIR=%{buildroot} BUILDER=./Setup install-mans install-completions install-desktop
 rm %{buildroot}%{_datadir}/fish/vendor_completions.d/git-annex.fish
 rm %{buildroot}%{_datadir}/zsh/site-functions/_git-annex
-
-%check
-export PATH=%{buildroot}%{_bindir}:$PATH
-# this is `make test` but without the repeated build of the binaries and with immediate display of the results
-%{buildroot}%{_bindir}/git-annex test
 
 %files
 %license COPYRIGHT
@@ -200,7 +193,7 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 %dir %{_datadir}/icons/hicolor/16x16/apps
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
-%config %{_sysconfdir}/xdg/autostart/git-annex.desktop
+%{_sysconfdir}/xdg/autostart/git-annex.desktop
 %{_mandir}/man1/git-annex*.1%{?ext_man}
 %{_mandir}/man1/git-remote-tor-annex.1%{?ext_man}
 %{_datadir}/applications/git-annex.desktop

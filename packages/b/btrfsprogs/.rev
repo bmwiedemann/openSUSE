@@ -1129,4 +1129,12 @@ This set of changes is not suitable for direct copy to currently released produc
   (fix build on SLE12/SLE15)</comment>
     <requestid>947370</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>6184b402a9f1d0ca8480a70b2751a078</srcmd5>
+    <version>5.16.1</version>
+    <time>1644617223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.16.1 (forwarded request 953027 from dsterba)</comment>
+    <requestid>953028</requestid>
+  </revision>
 </revisionlist>

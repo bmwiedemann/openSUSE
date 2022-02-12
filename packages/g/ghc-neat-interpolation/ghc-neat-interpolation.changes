@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  3 13:53:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update neat-interpolation to version 0.5.1.3.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

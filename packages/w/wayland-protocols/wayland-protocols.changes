@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 10 07:52:18 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 1.25
+  * This release also adds a new staging protocol for session
+    locking, as well as a 'bounds' event to the xdg_toplevel
+    interface.
+  * ext-session-lock-v1: new protocol
+  * xdg-shell: add invalid_resize_edge error value
+  * xdg-shell: Add toplevel "bounds" configure event
+  * build: Bump version to 1.25
+  * xdg-shell: clarify conditions for remapping unmapped surfaces
+  * linux-dmabuf: fix typo in dev_t example code
+
+-------------------------------------------------------------------
 Wed Nov 24 08:29:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.24

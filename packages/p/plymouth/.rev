@@ -900,4 +900,13 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>950758</requestid>
   </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>c440142f6537e09546e1304089605813</srcmd5>
+    <version>0.9.5~git20210406.e554475</version>
+    <time>1644617202</time>
+    <user>dimstar_suse</user>
+    <comment>- update plymouth-install-label-library-and-font-file-to-initrd.patch: 
+  avoid aborting on multiple font path match, pick the first one</comment>
+    <requestid>953317</requestid>
+  </revision>
 </revisionlist>

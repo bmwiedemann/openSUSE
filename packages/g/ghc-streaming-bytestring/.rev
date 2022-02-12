@@ -31,4 +31,12 @@
     <comment>- relax constraints on mmorph</comment>
     <requestid>912787</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0a9a4fa471c8d00344ddc91b8e1ae16a</srcmd5>
+    <version>0.2.1</version>
+    <time>1644617281</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953402</requestid>
+  </revision>
 </revisionlist>

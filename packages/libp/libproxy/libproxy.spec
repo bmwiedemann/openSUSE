@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,6 @@ BuildRequires:  zlib-devel
 %if ! 0%{?windows}
 BuildRequires:  NetworkManager-devel
 BuildRequires:  dbus-1-devel
-BuildRequires:  gconf2-devel
 # For directory ownership, but also because we want to rebuild the modules if
 # the library changed
 BuildRequires:  libproxy1 = %{version}
@@ -136,7 +135,7 @@ Provides:       libproxy-gnome = %{version}
 Obsoletes:      libproxy-gnome < %{version}
 %if 0%{?suse_version}
 Recommends:     libproxy1-pacrunner = %{version}
-Supplements:    packageand(libproxy1:gnome-session-core)
+Supplements:    (libproxy1 and gnome-session-core)
 %else
 Requires:       libproxy1-pacrunner = %{version}
 %endif
@@ -164,8 +163,8 @@ Requires:       libqt5-qttools
 %endif
 %if 0%{?suse_version}
 Recommends:     libproxy1-pacrunner = %{version}
-Supplements:    packageand(libproxy1:libkde4)
-Supplements:    packageand(libproxy1:plasma5-session)
+Supplements:    (libproxy1 and libkde4)
+Supplements:    (libproxy1 and plasma5-session)
 %else
 Requires:       libproxy1-pacrunner = %{version}
 %endif
@@ -191,7 +190,7 @@ Requires:       libproxy1 = %{version}
 # A virtual symbol to identify that this is a pacrunner.
 Provides:       libproxy1-pacrunner = %{version}
 %if 0%{?suse_version}
-Supplements:    packageand(libproxy1:libmozjs185-1_0)
+Supplements:    (libproxy1 and libmozjs185-1_0)
 %endif
 
 %description -n libproxy1-pacrunner-mozjs
@@ -205,7 +204,7 @@ Requires:       libproxy1 = %{version}
 # A virtual symbol to identify that this is a pacrunner.
 Provides:       libproxy1-pacrunner = %{version}
 %if 0%{?suse_version}
-Supplements:    packageand(libproxy1:libjavascriptcoregtk-3_0-0)
+Supplements:    (libproxy1 and libjavascriptcoregtk-3_0-0)
 %endif
 
 %description -n libproxy1-pacrunner-webkit
@@ -217,7 +216,7 @@ Summary:        Libproxy module for NetworkManager configuration
 Group:          System/Libraries
 Requires:       libproxy1 = %{version}
 %if 0%{?suse_version}
-Supplements:    packageand(libproxy1:NetworkManager)
+Supplements:    (libproxy1 and NetworkManager)
 %endif
 
 %description -n libproxy1-networkmanager

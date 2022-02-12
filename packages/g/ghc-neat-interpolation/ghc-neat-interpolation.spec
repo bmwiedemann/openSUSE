@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-neat-interpolation
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name neat-interpolation
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.1.2
+Version:        0.5.1.3
 Release:        0
 Summary:        A quasiquoter for neat and simple multiline text interpolation
 License:        MIT

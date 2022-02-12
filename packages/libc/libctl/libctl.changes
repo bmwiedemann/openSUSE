@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  8 20:07:55 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.1:
+  * Ignore duplicate consecutive prism vertices (#60).
+  * Memory bug fixes (#58, #59).
+- Fix library SOVERSION in package name.
+- Also update homepage URL.
+
+-------------------------------------------------------------------
 Mon Aug 17 12:36:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update Source URL, moved to https://github.com/NanoComp/libctl.

@@ -804,4 +804,14 @@
   fixes wrong path for with-vnc-key.sh on sle15-sp4 (bsc#1192713)</comment>
     <requestid>931607</requestid>
   </revision>
+  <revision rev="86" vrev="21">
+    <srcmd5>b3c2ca5430c68e948b47dec602de6ffd</srcmd5>
+    <version>1.10.1</version>
+    <time>1644617235</time>
+    <user>dimstar_suse</user>
+    <comment>- u_Fix-non-functional-MaxDisconnectionTime.patch
+  * Backport patch that fixes issue with MaxDisconnetionTime
+    (bsc#1195661).</comment>
+    <requestid>953175</requestid>
+  </revision>
 </revisionlist>

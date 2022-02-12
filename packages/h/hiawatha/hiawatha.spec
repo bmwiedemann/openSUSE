@@ -32,6 +32,7 @@ Source1:        %{name}.logrotate
 Source2:        %{name}.service
 Source102:      %{name}.firewalld
 Source103:      %{name}-ssl.firewalld
+Patch0:	harden_hiawatha.service.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
@@ -74,6 +75,7 @@ ACME protocol to communicate with the Let's Encrypt server.
 %setup -q
 # Remove bundled source for mbedtls, we use system version
 rm -rv mbedtls
+%patch0 -p1
 
 # mbedtls 2.7.0 and its backward comaptybility...
 %if "%{mbedtls_version}" >= "2.7.0"

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  6 17:08:36 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.23:
+  * Bucket cache switched from balanced tree to hash table
+  * Speed up flushing the changed buckets on disk
+  * New option codes for gdbm_setopt
+  * Enable or disable automatic cache adjustment
+- remove obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
 Mon Dec 13 09:32:07 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.22

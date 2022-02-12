@@ -1,7 +1,7 @@
 #
 # spec file for package xdm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,7 @@ Requires:       xset
 Requires:       xsetroot
 Requires:       xterm-bin
 Recommends:     dbus-1-x11
+Recommends:     xdmbgrd
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
 %{?systemd_requires}
@@ -178,7 +179,7 @@ touch %{buildroot}%{_prefix}/lib/X11/displaymanagers/console
 %post
 # enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050) on installation (but not upgrade)
 if [ $1 -eq 1 ] ; then
-  if [ "$(arch)" == "s390x" ]; then
+  if [ "$(arch)" = "s390x" ]; then
     if [ -d /dev/dri ]; then
       sed -i -e "s+DISPLAYMANAGER_REMOTE_ACCESS=.*+DISPLAYMANAGER_REMOTE_ACCESS=\"no\"+g" \
              -e "s+DISPLAYMANAGER_STARTS_XSERVER=.*+DISPLAYMANAGER_STARTS_XSERVER=\"yes\"+g" \

@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
@@ -437,9 +437,6 @@ update-alternatives --install %cifs_idmap_plugin %cifs_idmap_name %cifs_idmap_li
 if [ "$1" = "0" -a -x "%_sbindir/pam-config" ]; then
 	"%_sbindir/pam-config" -d --sss || :
 fi
-# Clear caches, which may have an incompatible format afterwards
-# (especially, downgrades)
-rm -f /var/lib/sss/db/*.ldb
 # del_postun includes a try-restart
 %service_del_postun %services
 
@@ -457,6 +454,15 @@ fi
 %postun -n libsss_nss_idmap0 -p /sbin/ldconfig
 %post   -n libsss_simpleifp0 -p /sbin/ldconfig
 %postun -n libsss_simpleifp0 -p /sbin/ldconfig
+
+%triggerun -- %{name} < %{version}-%{release}
+# sssd takes care of upgrading the database but it doesn't handle downgrades.
+# Clear caches when downgrading the package, which may have an
+# incompatible format afterwards preventing the daemon from startup.
+if [ "$1" = "1" ] && [ "$2" = "2" ]; then
+	echo "Package downgrade detected, removing cache files which may have an incompatible format."
+	rm -f /var/lib/sss/db/*.ldb
+fi
 
 %pre dbus
 %service_add_pre sssd-ifp.service

@@ -56,6 +56,7 @@ BuildRequires:  cmake(Qt5Sensors) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.4.0
 Requires:       kded
 Requires:       libkscreen2-plugin >= %{_plasma5_version}
+Requires:       xrdb
 Recommends:     %{name}-lang
 Recommends:     %{name}-plasmoid
 Supplements:    packageand(libkscreen2-plugin:plasma5-workspace)
