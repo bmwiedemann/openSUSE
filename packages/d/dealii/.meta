@@ -1,0 +1,6 @@
+<package name="dealii" project="openSUSE:Factory">
+  <title>A Finite Element Differential Equations Analysis Library</title>
+  <description>deal.II is a C++ program library targeted at the computational solution of partial differential equations using adaptive finite elements. It uses state-of-the-art programming techniques to offer you a modern interface to the complex data structures and algorithms required.</description>
+  <devel project="science" package="dealii"/>
+  <url>https://www.dealii.org/</url>
+</package>
