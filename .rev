@@ -235,4 +235,12 @@
   its sub-packages. (forwarded request 880859 from eeich)</comment>
     <requestid>880865</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ff6248134bc3201ff4e69291f2e2893</srcmd5>
+    <version>13.2.0</version>
+    <time>1644707720</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies with other Factory packages (forwarded request 953800 from eeich)</comment>
+    <requestid>953801</requestid>
+  </revision>
 </revisionlist>
