@@ -1,7 +1,7 @@
 #
 # spec file for package python-proselint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without python2
 %define modname proselint
 Name:           python-proselint
-Version:        0.11.3
+Version:        0.13.0
 Release:        0
 Summary:        A linter for prose
 License:        BSD-3-Clause
@@ -65,18 +65,13 @@ existing tools.
 
 sed -i -e '/^#!\//, 1d' proselint/*.py
 
-# We don't like hidden configuration files in /usr/lib
-cp proselint/.proselintrc proselintrc
-
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/proselint
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
-rm -v %{buildroot}%{$python_sitelib}/proselint/.proselintrc
-}
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %post
 %python_install_alternative proselint
@@ -88,7 +83,7 @@ rm -v %{buildroot}%{$python_sitelib}/proselint/.proselintrc
 %pytest
 
 %files %{python_files}
-%doc CHANGELOG.md README.md proselintrc
+%doc CHANGELOG.md README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/proselint
 %{python_sitelib}/proselint/
