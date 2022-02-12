@@ -81,7 +81,6 @@ unsorted:
   - LibVNCServer-devel 
   - Mesa-32bit: [x86_64] 
   - Mesa-KHR-devel 
-  - Mesa-demo 
   - Mesa-demo-es 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
@@ -3473,7 +3472,6 @@ unsorted:
   - exiv2-lang 
   - exmh 
   - exo-devel 
-  - exodusii-devel 
   - expect-devel 
   - ext3grep 
   - ext4magic 
@@ -3618,6 +3616,7 @@ unsorted:
   - fcitx5-lua-devel 
   - fcitx5-lua-migration-reminder 
   - fcitx5-m17n 
+  - fcitx5-mozc 
   - fcitx5-qt-devel 
   - fcitx5-qt5 
   - fcitx5-qt6 
@@ -4337,6 +4336,8 @@ unsorted:
   - ghc: [x86_64] 
   - ghc-Cabal: [x86_64] 
   - ghc-Cabal-devel: [x86_64] 
+  - ghc-Cabal-syntax: [x86_64] 
+  - ghc-Cabal-syntax-devel: [x86_64] 
   - ghc-DAV: [x86_64] 
   - ghc-DAV-devel: [x86_64] 
   - ghc-Decimal: [x86_64] 
@@ -4449,6 +4450,8 @@ unsorted:
   - ghc-auto-update-devel: [x86_64] 
   - ghc-aws: [x86_64] 
   - ghc-aws-devel: [x86_64] 
+  - ghc-barbies: [x86_64] 
+  - ghc-barbies-devel: [x86_64] 
   - ghc-base: [x86_64] 
   - ghc-base-compat: [x86_64] 
   - ghc-base-compat-batteries: [x86_64] 
@@ -4853,6 +4856,8 @@ unsorted:
   - ghc-hslogger: [x86_64] 
   - ghc-hslogger-devel: [x86_64] 
   - ghc-hslua: [x86_64] 
+  - ghc-hslua-aeson: [x86_64] 
+  - ghc-hslua-aeson-devel: [x86_64] 
   - ghc-hslua-classes: [x86_64] 
   - ghc-hslua-classes-devel: [x86_64] 
   - ghc-hslua-core: [x86_64] 
@@ -4983,6 +4988,8 @@ unsorted:
   - ghc-lifted-base-devel: [x86_64] 
   - ghc-logict: [x86_64] 
   - ghc-logict-devel: [x86_64] 
+  - ghc-lpeg: [x86_64] 
+  - ghc-lpeg-devel: [x86_64] 
   - ghc-lua: [x86_64] 
   - ghc-lua-devel: [x86_64] 
   - ghc-lucid: [x86_64] 
@@ -5087,6 +5094,8 @@ unsorted:
   - ghc-optparse-simple-devel: [x86_64] 
   - ghc-pandoc: [x86_64] 
   - ghc-pandoc-devel: [x86_64] 
+  - ghc-pandoc-lua-marshal: [x86_64] 
+  - ghc-pandoc-lua-marshal-devel: [x86_64] 
   - ghc-pandoc-types: [x86_64] 
   - ghc-pandoc-types-devel: [x86_64] 
   - ghc-parallel: [x86_64] 
@@ -5881,6 +5890,7 @@ unsorted:
   - gnome-keyring-sharp-devel 
   - gnome-keysign 
   - gnome-kiosk 
+  - gnome-kiosk-sample-app 
   - gnome-klotski 
   - gnome-klotski-lang 
   - gnome-latex 
@@ -6848,17 +6858,17 @@ unsorted:
   - hsqldb-javadoc 
   - hsqldb-manual 
   - ht 
-  - htcondor: [x86_64] 
-  - htcondor-bosco: [x86_64] 
-  - htcondor-classads: [x86_64] 
-  - htcondor-classads-devel: [x86_64] 
-  - htcondor-credmon-oauth: [x86_64] 
-  - htcondor-credmon-vault: [x86_64] 
-  - htcondor-devel: [x86_64] 
-  - htcondor-doc: [x86_64] 
-  - htcondor-kbdd: [x86_64] 
-  - htcondor-procd: [x86_64] 
-  - htcondor-vm-gahp: [x86_64] 
+  - htcondor 
+  - htcondor-bosco 
+  - htcondor-classads 
+  - htcondor-classads-devel 
+  - htcondor-credmon-oauth 
+  - htcondor-credmon-vault 
+  - htcondor-devel 
+  - htcondor-doc 
+  - htcondor-kbdd 
+  - htcondor-procd 
+  - htcondor-vm-gahp 
   - htdig 
   - htdig-devel 
   - htdig-doc 
@@ -7954,6 +7964,7 @@ unsorted:
   - kbuild 
   - kcalendarcore-devel 
   - kcalutils-devel 
+  - kcm_fcitx5 
   - kcmutils-devel 
   - kcodecs-devel 
   - kcompletion-devel 
@@ -8836,7 +8847,6 @@ unsorted:
   - libGIMPACTUtils3_17 
   - libGLC-devel 
   - libGLC0 
-  - libGLEW2_2 
   - libGLEW2_2-32bit: [x86_64] 
   - libGLU1-32bit: [x86_64] 
   - libGLw-devel 
@@ -8895,15 +8905,11 @@ unsorted:
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
-  - libKF5Bookmarks5-lang 
   - libKF5Codecs5-lang 
-  - libKF5Completion5-lang 
   - libKF5ConfigCore5-lang 
   - libKF5DBusAddons5-lang 
   - libKF5DNSSD5-lang 
   - libKF5Holidays5-lang 
-  - libKF5ItemViews5-lang 
-  - libKF5JobWidgets5-lang 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDGantt2-5 
@@ -8911,11 +8917,7 @@ unsorted:
   - libKF5ModemManagerQt-devel 
   - libKF5NetworkManagerQt-devel 
   - libKF5NewStuffWidgets5 
-  - libKF5Notifications5-lang 
   - libKF5SonnetCore5-lang 
-  - libKF5SyntaxHighlighting5-lang 
-  - libKF5WidgetsAddons5-lang 
-  - libKF5WindowSystem5-lang 
   - libKF5XmlRpcClient5 
   - libKF5XmlRpcClient5-lang 
   - libKOSM1 
@@ -9447,7 +9449,7 @@ unsorted:
   - libXiterm1 
   - libXm4 
   - libXm4-32bit: [x86_64] 
-  - libXmu-devel: [i586] # devel package of dvd:libXmu6 
+  - libXmu-devel: [i586] # devel package of dvd:libXmuu1 
   - libXmu-devel-32bit: [x86_64] 
   - libXmu6-32bit: [x86_64] 
   - libXmuu1-32bit: [x86_64] 
@@ -10354,7 +10356,7 @@ unsorted:
   - libcthreads1 
   - libctl-devel 
   - libctl-doc 
-  - libctl5 
+  - libctl7 
   - libcudd-3_0_0-0 
   - libcue-devel 
   - libcuefile-devel 
@@ -10444,10 +10446,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_3_2: [x86_64] 
-  - libdeal_II9_3_2-openmpi2: [x86_64] 
-  - libdeal_II9_3_2-openmpi3: [x86_64] 
-  - libdeal_II9_3_2-openmpi4: [x86_64] 
+  - libdeal_II9_3_3: [x86_64] 
+  - libdeal_II9_3_3-openmpi2: [x86_64] 
+  - libdeal_II9_3_3-openmpi3: [x86_64] 
+  - libdeal_II9_3_3-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -10674,8 +10676,6 @@ unsorted:
   - libexiv2-27-32bit: [x86_64] 
   - libexiv2-devel 
   - libexiv2-xmp-static 
-  - libexoIIv2for-5_14_0 
-  - libexodus-5_14_0 
   - libexpat-devel: [i586] # devel package of dvd:libexpat1 
   - libexpat-devel-32bit: [x86_64] 
   - libext2fs-devel 
@@ -11073,7 +11073,6 @@ unsorted:
   - libglue2-32bit: [x86_64] 
   - libglusterd0 
   - libglusterfs0 
-  - libglut3 
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
@@ -11091,17 +11090,13 @@ unsorted:
   - libgnome-keyring-devel 
   - libgnome-keyring0-32bit: [x86_64] 
   - libgnome-menu-3-0-32bit: [x86_64] 
-  - libgnomecanvas-2-0 
-  - libgnomecanvas-2-0-32bit: [x86_64] 
-  - libgnomecanvas-devel 
-  - libgnomecanvas-lang 
   - libgnomekbd-devel 
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro14 
-  - libgnuradio-3_8_5 
+  - libgnuradio-3_9_5 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
@@ -11249,7 +11244,6 @@ unsorted:
   - libgtkmm-2_4-1-32bit: [x86_64] 
   - libgtkmm-3_0-1-32bit: [x86_64] 
   - libgtkmm-4_0-0 
-  - libgtkmm-4_0-0-32bit: [x86_64] 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-3_0-0 
@@ -11489,7 +11483,7 @@ unsorted:
   - libheif1-32bit: [x86_64] 
   - libheimdal 
   - libheimdal-devel 
-  - libhfst54 
+  - libhfst55 
   - libhfstospell11 
   - libhfstospell11-32bit: [x86_64] 
   - libhibr-devel 
@@ -12096,7 +12090,7 @@ unsorted:
   - libmediastreamer11-32bit: [x86_64] 
   - libmediawiki-devel 
   - libmedimport0: [x86_64] 
-  - libmeep14 
+  - libmeep27 
   - libmemcache-devel 
   - libmemcache0 
   - libmemcached 
@@ -12691,7 +12685,7 @@ unsorted:
   - libortp15-32bit: [x86_64] 
   - libosdCPU3_4_4 
   - libosinfo-devel 
-  - libosip2-12 
+  - libosip2-15 
   - libosip2-devel 
   - liboslcomp1_11: [x86_64] 
   - liboslexec1_11: [x86_64] 
@@ -12806,7 +12800,6 @@ unsorted:
   - libpamtest0 
   - libpangomm-1_4-1-32bit: [x86_64] 
   - libpangomm-2_48-1 
-  - libpangomm-2_48-1-32bit: [x86_64] 
   - libpano-devel 
   - libpano-utils 
   - libpano13-3 
@@ -12868,7 +12861,6 @@ unsorted:
   - libpcsclite1-32bit: [x86_64] 
   - libpcscspy0 
   - libpcscspy0-32bit: [x86_64] 
-  - libpeas-demo 
   - libpeas-devel 
   - libpeasd-3-0 
   - libperseus-sdr-devel 
@@ -13598,6 +13590,7 @@ unsorted:
   - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
+  - librime-lua 
   - librime-private-devel 
   - librime1 
   - librk0 
@@ -14233,11 +14226,12 @@ unsorted:
   - libtrilinos-gnu-openmpi4-hpc: [x86_64] 
   - libtrilinos13: [x86_64] 
   - libtrilinos13-openmpi2: [x86_64] 
-  - libtrilinos_13_0_1-gnu-mpich-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-mvapich2-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-openmpi2-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-openmpi3-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-openmpi4-hpc: [x86_64] 
+  - libtrilinos13-openmpi4: [x86_64] 
+  - libtrilinos_13_2_0-gnu-mpich-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-mvapich2-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-openmpi3-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-openmpi4-hpc: [x86_64] 
   - libtrng4-24 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
@@ -15800,6 +15794,7 @@ unsorted:
   - mathjax-winchrome-fonts 
   - mathjax-winie6-fonts 
   - mathml-dtd 
+  - mathmod 
   - mathomatic 
   - mathomatic-devel 
   - matio-tools 
@@ -16272,7 +16267,7 @@ unsorted:
   - mingw64-zlib-devel 
   - mingw64-zlib1 
   - mingzat-fonts 
-  - minicondor: [x86_64] 
+  - minicondor 
   - minidlna 
   - minigalaxy 
   - minikube 
@@ -21449,7 +21444,7 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
-  - python3-condor: [x86_64] 
+  - python3-condor 
   - python3-csound 
   - python3-ctypeslib2 
   - python3-dbus-presage 
@@ -21639,7 +21634,6 @@ unsorted:
   - python3-presagemate 
   - python3-pwquality 
   - python3-pycadf 
-  - python3-pyeantic 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
@@ -22555,6 +22549,7 @@ unsorted:
   - python310-confluent-kafka 
   - python310-confpy 
   - python310-confusable-homoglyphs 
+  - python310-confuse 
   - python310-constantly 
   - python310-construct 
   - python310-contexter 
@@ -22787,6 +22782,7 @@ unsorted:
   - python310-dukpy-kovidgoyal 
   - python310-dulwich 
   - python310-dynaconf 
+  - python310-e-antic 
   - python310-easy-thumbnails 
   - python310-easydev 
   - python310-easygui 
@@ -22891,6 +22887,7 @@ unsorted:
   - python310-flask-jwt-extended 
   - python310-flask-oidc 
   - python310-flask-restplus 
+  - python310-flask-restx 
   - python310-flatbuffers 
   - python310-flatdict 
   - python310-fleming 
@@ -23407,6 +23404,7 @@ unsorted:
   - python310-md2workflow-plugins-jira 
   - python310-md2workflow-plugins-redmine 
   - python310-mechanize 
+  - python310-mediafile 
   - python310-meld3 
   - python310-memory_profiler 
   - python310-mergedeep 
@@ -24862,7 +24860,6 @@ unsorted:
   - python36-django-oidc-provider 
   - python36-django-oscar 
   - python36-django-pipeline 
-  - python36-django-pyscss 
   - python36-django-request 
   - python36-django-rest-invitations 
   - python36-django-rest-knox 
@@ -24871,7 +24868,6 @@ unsorted:
   - python36-djet 
   - python36-doc 
   - python36-doc-devhelp 
-  - python36-flask-restx 
   - python36-github3.py 
   - python36-gmpy2 
   - python36-google-pasta 
@@ -25703,6 +25699,7 @@ unsorted:
   - python38-confluent-kafka 
   - python38-confpy 
   - python38-confusable-homoglyphs 
+  - python38-confuse 
   - python38-construct 
   - python38-contexter 
   - python38-contextlib2 
@@ -25950,6 +25947,7 @@ unsorted:
   - python38-dukpy-kovidgoyal 
   - python38-dulwich 
   - python38-dynaconf 
+  - python38-e-antic 
   - python38-easy-thumbnails 
   - python38-easydev 
   - python38-easygui 
@@ -26533,6 +26531,7 @@ unsorted:
   - python38-md2workflow-plugins-jira 
   - python38-md2workflow-plugins-redmine 
   - python38-mechanize 
+  - python38-mediafile 
   - python38-meld3 
   - python38-memory_profiler 
   - python38-mergedeep 
@@ -28746,6 +28745,7 @@ unsorted:
   - python39-confluent-kafka 
   - python39-confpy 
   - python39-confusable-homoglyphs 
+  - python39-confuse 
   - python39-constantly 
   - python39-construct 
   - python39-contexter 
@@ -29005,6 +29005,7 @@ unsorted:
   - python39-dukpy-kovidgoyal 
   - python39-dulwich 
   - python39-dynaconf 
+  - python39-e-antic 
   - python39-easy-thumbnails 
   - python39-easydev 
   - python39-easygui 
@@ -29633,6 +29634,7 @@ unsorted:
   - python39-md2workflow-plugins-jira 
   - python39-md2workflow-plugins-redmine 
   - python39-mechanize 
+  - python39-mediafile 
   - python39-meld3 
   - python39-memory_profiler 
   - python39-mergedeep 
@@ -41574,12 +41576,13 @@ unsorted:
   - trilinos-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-openmpi3-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-openmpi4-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-hpc-doc: [x86_64] 
+  - trilinos-openmpi4-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-mpich-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-mvapich2-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-openmpi3-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-openmpi4-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
   - trivy 

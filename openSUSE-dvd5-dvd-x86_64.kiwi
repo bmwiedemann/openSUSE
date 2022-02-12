@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220210" schemaversion="4.1">
+<image name="OBS__openSUSE___20220213" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220210</productvar>
+      <productvar name="VERSION">20220213</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220210,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220213,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220210/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220213/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1752,11 +1752,13 @@
       <repopackage name="libgjs0"/>
       <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgle3"/>
+      <repopackage name="libGLEW2_2"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglib-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libglibmm-2_4-1"/>
       <repopackage name="libglslang11"/>
       <repopackage name="libGLU1"/>
+      <repopackage name="libglut3"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libglvnd-32bit" arch="x86_64"/>
       <repopackage name="libglyr1"/>
@@ -2027,6 +2029,7 @@
       <repopackage name="libKF5BalooEngine5-lang"/>
       <repopackage name="libKF5BluezQt6"/>
       <repopackage name="libKF5Bookmarks5"/>
+      <repopackage name="libKF5Bookmarks5-lang"/>
       <repopackage name="libKF5CalendarCore5"/>
       <repopackage name="libKF5CalendarEvents5"/>
       <repopackage name="libKF5CalendarSupport5"/>
@@ -2035,6 +2038,7 @@
       <repopackage name="libKF5Codecs5"/>
       <repopackage name="libKF5CompactDisc5"/>
       <repopackage name="libKF5Completion5"/>
+      <repopackage name="libKF5Completion5-lang"/>
       <repopackage name="libKF5ConfigCore5"/>
       <repopackage name="libKF5ConfigGui5"/>
       <repopackage name="libKF5ConfigWidgets5"/>
@@ -2068,7 +2072,9 @@
       <repopackage name="libKF5IncidenceEditor5"/>
       <repopackage name="libKF5ItemModels5"/>
       <repopackage name="libKF5ItemViews5"/>
+      <repopackage name="libKF5ItemViews5-lang"/>
       <repopackage name="libKF5JobWidgets5"/>
+      <repopackage name="libKF5JobWidgets5-lang"/>
       <repopackage name="libKF5JS5"/>
       <repopackage name="libKF5JSApi5"/>
       <repopackage name="libKF5KCMUtils5"/>
@@ -2100,6 +2106,7 @@
       <repopackage name="libKF5NewStuff5-lang"/>
       <repopackage name="libKF5NewStuffCore5"/>
       <repopackage name="libKF5Notifications5"/>
+      <repopackage name="libKF5Notifications5-lang"/>
       <repopackage name="libKF5NotifyConfig5"/>
       <repopackage name="libKF5NotifyConfig5-lang"/>
       <repopackage name="libKF5Parts5"/>
@@ -2128,6 +2135,7 @@
       <repopackage name="libKF5Su5-lang"/>
       <repopackage name="libKF5Syndication5"/>
       <repopackage name="libKF5SyntaxHighlighting5"/>
+      <repopackage name="libKF5SyntaxHighlighting5-lang"/>
       <repopackage name="libKF5TextWidgets5"/>
       <repopackage name="libKF5TextWidgets5-lang"/>
       <repopackage name="libKF5ThreadWeaver5"/>
@@ -2137,7 +2145,9 @@
       <repopackage name="libKF5UnitConversion5-lang"/>
       <repopackage name="libKF5Wallet5"/>
       <repopackage name="libKF5WidgetsAddons5"/>
+      <repopackage name="libKF5WidgetsAddons5-lang"/>
       <repopackage name="libKF5WindowSystem5"/>
+      <repopackage name="libKF5WindowSystem5-lang"/>
       <repopackage name="libKF5XmlGui5"/>
       <repopackage name="libKF5XmlGui5-lang"/>
       <repopackage name="libkgantt-lang"/>
@@ -3143,6 +3153,8 @@
       <repopackage name="memtest86+"/>
       <repopackage name="menulibre"/>
       <repopackage name="Mesa"/>
+      <repopackage name="Mesa-demo"/>
+      <repopackage name="Mesa-demo-egl"/>
       <repopackage name="Mesa-demo-x"/>
       <repopackage name="Mesa-dri"/>
       <repopackage name="Mesa-dri-devel" arch="x86_64"/>

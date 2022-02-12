@@ -8,6 +8,8 @@
     <package name="ImageMagick-config-7-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ImageMagick-extra" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="Mesa-demo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="Mesa-demo-egl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="Mesa-demo-x" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa-dri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa-gallium" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -233,7 +235,7 @@
     <package name="bubblewrap-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -241,7 +243,7 @@
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1300,6 +1302,7 @@
     <package name="libBasicUsageEnvironment1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libFLAC++6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libFLAC8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libGLEW2_2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libGLU1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libGraphicsMagick++-Q16-12" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libGraphicsMagick-Q16-3" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -1336,6 +1339,7 @@
     <package name="libKF5BalooEngine5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5BluezQt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Bookmarks5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5Bookmarks5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CalendarCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CalendarEvents5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CalendarSupport5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1344,6 +1348,7 @@
     <package name="libKF5Codecs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CompactDisc5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Completion5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5Completion5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ConfigCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ConfigGui5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ConfigWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1377,9 +1382,11 @@
     <package name="libKF5IncidenceEditor5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ItemModels5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ItemViews5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5ItemViews5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5JS5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5JSApi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5JobWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5JobWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KCMUtils5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5KDEGames7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1409,6 +1416,7 @@
     <package name="libKF5NewStuff5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5NewStuffCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Notifications5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5Notifications5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5NotifyConfig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5NotifyConfig5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Parts5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1437,6 +1445,7 @@
     <package name="libKF5Su5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Syndication5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5SyntaxHighlighting5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5SyntaxHighlighting5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5TextWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5TextWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5ThreadWeaver5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1446,7 +1455,9 @@
     <package name="libKF5UnitConversion5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Wallet5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5WidgetsAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5WidgetsAddons5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5WindowSystem5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5WindowSystem5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5XmlGui5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5XmlGui5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKGantt2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1908,6 +1919,7 @@
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglslang11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libglut3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libglyr1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgme0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
