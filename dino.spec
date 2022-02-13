@@ -1,7 +1,7 @@
 #
 # spec file for package dino
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %bcond_with    separated_plugins
 %bcond_with    separated_libs
 %if 0%{?suse_version}
@@ -23,40 +25,40 @@
 %endif
 
 Name:           dino
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Modern Jabber/XMPP Client using GTK+/Vala
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://github.com/dino/dino
+URL:            https://github.com/dino/dino
 Source:         https://github.com/dino/dino/releases/download/v%{version}/dino-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
 BuildRequires:  libgpgmepp-devel
 %else
-BuildRequires:   gpgme-devel
+BuildRequires:  gpgme-devel
 %endif
-BuildRequires:  libnotify-devel
 BuildRequires:  libgcrypt-devel
+BuildRequires:  libnotify-devel
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.30
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
-BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(nice) >= 0.1.15
+BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libsrtp2)
+BuildRequires:  pkgconfig(nice) >= 0.1.15
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webrtc-audio-processing)
 %if %{with shared_libsignal}
 BuildRequires:  pkgconfig(libsignal-protocol-c) >= 2.3.2
@@ -108,24 +110,28 @@ features.
 
 %package -n     %{libdino}
 Summary:        Library libdino of %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description -n %{libdino}
 The package contains libraries used and provided by %{name}.
 
 %package -n     %{libqlite}
 Summary:        Library libqlite of %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description -n %{libqlite}
 The package contains libraries used and provided by %{name}.
 
 %package -n     %{libcryptovala}
 Summary:        Library libcrypto-vala of %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description -n %{libcryptovala}
 The package contains libraries used and provided by %{name}.
 
 %package -n     %{libxmppvala}
 Summary:        Library libxmpp-vala of %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description -n %{libxmppvala}
 The package contains libraries used and provided by %{name}.
@@ -135,9 +141,9 @@ Summary:        Development files for %{name}
 Group:          Development/Languages/Other
 
 %if %{with separated_libs}
+Requires:       %{libcryptovala} = %{version}
 Requires:       %{libdino}       = %{version}
 Requires:       %{libqlite}      = %{version}
-Requires:       %{libcryptovala} = %{version}
 Requires:       %{libxmppvala}   = %{version}
 %else
 Requires:       %{name}          = %{version}
@@ -149,18 +155,21 @@ Contains libraries and header files for developing plugins for %{name}.
 %if %{with separated_plugins}
 %package        plugin-openpgp
 Summary:        OpenPGP plugin for %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description    plugin-openpgp
 Contains the OpenPGP plugin for %{name}.
 
 %package        plugin-omemo
 Summary:        OMEMO plugin for %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description    plugin-omemo
 Contains the OMEMO plugin for %{name}.
 
 %package        plugin-http-upload
 Summary:        HTTP Upload plugin for %{name}
+Group:          Productivity/Networking/Instant Messenger
 
 %description    plugin-http-upload
 Contains the HTTP Upload plugin for %{name}.
@@ -265,7 +274,7 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %if ! %{with separated_libs}
 %{_libdir}/libdino.so.*
 %{_libdir}/libqlite.so.*
-#{_libdir}/libcrypto-vala.so.*
+%{_libdir}/libcrypto-vala.so.*
 %{_libdir}/libxmpp-vala.so.*
 %endif
 
@@ -294,7 +303,7 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %{_includedir}/*.h
 %{_libdir}/libdino.so
 %{_libdir}/libqlite.so
-#%{_libdir}/libcrypto-vala.so
+%{_libdir}/libcrypto-vala.so
 %{_libdir}/libxmpp-vala.so
 %{_datadir}/vala/vapi/*.{vapi,deps}
 
