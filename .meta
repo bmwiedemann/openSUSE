@@ -9,5 +9,5 @@ a plug-in API, so that developers can easily add new optional
 features.
 
 </description>
-  <devel project="network" package="dino"/>
+  <devel project="network:messaging:xmpp" package="dino"/>
 </package>
