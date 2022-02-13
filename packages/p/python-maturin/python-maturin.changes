@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb 12 01:48:01 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.12.9
+  * Don't require `pyproject.toml` when cargo manifest is not
+    specified
+    gh#PyO3/maturin#806
+- Changes in 0.12.8
+  * Add missing `--version` flag from clap 3.0 upgrade
+- Changes in 0.12.7
+  * Add support for using `zig cc` as linker for easier cross
+    compiling and manylinux compliance
+    gh#PyO3/maturin#756
+  * Switch from reqwest to ureq to reduce dependencies
+    gh#PyO3/maturin#767
+  * Fix missing Python submodule in wheel
+    gh#PyO3/maturin#772
+  * Add support for specifying cargo manifest path in
+    pyproject.toml
+    gh#PyO3/maturin#781
+  * Add support for passing arguments to pep517 command via
+    `MATURIN_PEP517_ARGS` env var
+    gh#PyO3/maturin#786
+  * Fix auditwheel `No such file or directory` error when
+    `LD_LIBRARY_PATH` contains non-existent paths
+    gh#PyO3/maturin#794
+
+-------------------------------------------------------------------
 Mon Jan 31 06:58:49 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.12.6

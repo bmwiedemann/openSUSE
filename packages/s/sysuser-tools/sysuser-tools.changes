@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 12:58:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- invoke bash for bash scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Wed Sep  8 09:12:05 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add support for new shell field [bsc#1189518]

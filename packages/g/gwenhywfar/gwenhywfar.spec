@@ -1,7 +1,7 @@
 #
 # spec file for package gwenhywfar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.7
+%define devrelease 5.8
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 396
+%define releasenumber 411
+%define checksumreleasenumber 410
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.7.4
+Version:        5.8.2
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
 Source:         https://www.aquamaniac.de/rdm/attachments/download/%{releasenumber}/%{_name}-%{_version}.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/%{checksumreleasenumber}/%{_name}-%{_version}.tar.gz.asc
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # For doc graphs
@@ -45,10 +47,10 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)

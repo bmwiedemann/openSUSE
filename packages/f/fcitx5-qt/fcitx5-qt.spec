@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-qt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150200
 %define build_qt4 1
@@ -28,30 +29,30 @@
 %endif
 
 Name:           fcitx5-qt
-Version:        5.0.9
+Version:        5.0.10
 Release:        0
 Summary:        Qt library and IM module for fcitx5
-License:        BSD-3-Clause AND LGPL-2.1-or-later 
-Group:          System/I18n/Chinese 
-Url:            https://github.com/fcitx/fcitx5-qt
+License:        BSD-3-Clause AND LGPL-2.1-or-later
+Group:          System/I18n/Chinese
+URL:            https://github.com/fcitx/fcitx5-qt
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
 Patch:          %{name}-5.9.patch
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  extra-cmake-modules
+BuildRequires:  gcc-c++
 %if %build_qt4
 BuildRequires:  libqt4-devel
 %endif
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
+BuildRequires:  libqt5-qtx11extras-devel
 %if %build_qt6
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-base-private-devel
 %endif
+BuildRequires:  fcitx5-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
-BuildRequires:  fcitx5-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -118,18 +119,18 @@ Group:          System/Libraries
 This package provides Qt5 Widgets Addons library for Fcitx5.
 
 %package devel
-Summary:      Development files for fcitx5-qt
-Group:        Development/Libraries/C and C++
+Summary:        Development files for fcitx5-qt
+Group:          Development/Libraries/C and C++
 %if %build_qt4
-Requires:     fcitx5-qt4 = %{version}
-Requires:     libFcitx5Qt4DBusAddons1 = %{version}
+Requires:       fcitx5-qt4 = %{version}
+Requires:       libFcitx5Qt4DBusAddons1 = %{version}
 %endif
-Requires:     fcitx5-qt5 = %{version}
-Requires:     libFcitx5Qt5DBusAddons1 = %{version}
-Requires:     libFcitx5Qt5WidgetsAddons2 = %{version}
+Requires:       fcitx5-qt5 = %{version}
+Requires:       libFcitx5Qt5DBusAddons1 = %{version}
+Requires:       libFcitx5Qt5WidgetsAddons2 = %{version}
 %if %build_qt6
-Requires:     fcitx5-qt6 = %{version}
-Requires:     libFcitx5Qt6DBusAddons1 = %{version}
+Requires:       fcitx5-qt6 = %{version}
+Requires:       libFcitx5Qt6DBusAddons1 = %{version}
 %endif
 
 %description devel
@@ -226,4 +227,3 @@ make %{?_smp_mflags}
 %endif
 
 %changelog
-

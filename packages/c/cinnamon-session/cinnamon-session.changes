@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  9 22:58:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gconf-2.0) BuildRequires: We are already passing
+  gconf=false to meson, so this BuildRequires is unused and
+  unneeded.
+- Drop conditional post(un) handling for no longer supported
+  versions of openSUSE.
+
+-------------------------------------------------------------------
 Mon Jan 17 04:39:15 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 5.2.0.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 12 15:11:14 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.12
+  * Fix language tag in client side ui
+  * Enable build without X11 if gtk doesn't build with X11
+  * Fix paging button not clickable under vertical layout
+
+-------------------------------------------------------------------
 Tue Feb  8 14:15:43 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - drop baselibs.conf, no consumer yet

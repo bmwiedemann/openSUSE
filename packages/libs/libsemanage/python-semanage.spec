@@ -1,7 +1,7 @@
 #
 # spec file for package python-semanage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,6 @@ BuildRequires:  flex
 BuildRequires:  libbz2-devel
 BuildRequires:  libselinux-devel >= %{libselinux_ver}
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
-BuildRequires:  libustr-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 # Ensure same version

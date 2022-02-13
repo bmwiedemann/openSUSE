@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        35
+Version:        36
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause

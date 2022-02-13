@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 12 16:43:41 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.11.1:
+  * Add missing version
+
+-------------------------------------------------------------------
+Sat Feb 12 11:50:06 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Uupdate to 0.11.0: 
+  * support Plasma 5.24 way of discovering themes from theme engines
+  * hide when preserveemptyspace is selected
+
+-------------------------------------------------------------------
 Wed Jan  5 13:48:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix installation (again) when using plasma-framework 5.89.

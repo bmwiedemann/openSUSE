@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 12 12:41:25 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v13.3.1
+  * Changes of version 13.3.1
+    = Fix geometry of reversed comma under heavy italic (#1292).
+    = Fix alignment of motion serif in v when squished (#1293).
+    = Fix geometry of "Ӊ", "ӊ", "Ӎ" , and "ӎ" (#1295).
+
+-------------------------------------------------------------------
 Sun Feb  6 05:13:01 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v11.3.0

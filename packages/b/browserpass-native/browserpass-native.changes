@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  8 16:04:50 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.0.8
+  * Added make target for librewolf
+- Exclude ppc64, build fails due to pie not being supported
+
+-------------------------------------------------------------------
 Sat Aug 29 11:45:29 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Fix %{_libexecdir} misuse

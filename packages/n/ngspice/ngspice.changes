@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 11 03:44:05 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 36:
+  * New features:
+    + .probe command to measure currents or differential potentials
+    + x/y contour plots for 2d Cider simulation
+    + new function integ (integration)
+    + command 'wrnodev' to print matrix RHS as .ic = V(node_xx)
+    + Transient operating point
+    + more SOA (safe operating area) parameters on more devices
+    + For a list of all new features please have a look at the
+      included NEWS file.
+  * Patches:
+    + Many developer and user provided patches and bug fixes have
+      been applied. Other bugs and some memory leaks have been
+      removed as well.
+
+-------------------------------------------------------------------
 Thu Sep 23 18:13:04 UTC 2021 - Matthew Trescott <matthewtrescott@gmail.com>
 
 - Packaging changes:

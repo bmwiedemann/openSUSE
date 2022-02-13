@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>830683</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4c2a516f01cb2f986e82eff8af2ce71</srcmd5>
+    <version>3.0.8</version>
+    <time>1644707729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.8
+  * Added make target for librewolf
+- Exclude ppc64, build fails due to pie not being supported (forwarded request 952753 from tux93)</comment>
+    <requestid>953914</requestid>
+  </revision>
 </revisionlist>

@@ -359,4 +359,17 @@
 </comment>
     <requestid>951841</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>720a5240983ac72aa452092e3670f95a</srcmd5>
+    <version>13.3.1</version>
+    <time>1644707728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v13.3.1
+  * Changes of version 13.3.1
+    = Fix geometry of reversed comma under heavy italic (#1292).
+    = Fix alignment of motion serif in v when squished (#1293).
+    = Fix geometry of &quot;Ӊ&quot;, &quot;ӊ&quot;, &quot;Ӎ&quot; , and &quot;ӎ&quot; (#1295).
+</comment>
+    <requestid>953910</requestid>
+  </revision>
 </revisionlist>

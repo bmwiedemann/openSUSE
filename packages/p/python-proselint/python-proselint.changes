@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 11 19:17:53 UTC 2022 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 0.13.0
+  - made memoize safe for both arguments and keyword arguments
+  - now exports decorators that wrap meta-checks
+- Update to 0.12.0
+  - make am_pm checks case-sensitive
+  - added --dump-config and --dump-default-config CLI arguments
+  - now exports proselint.config.default
+  - proselint.tools.lint now takes a config object instead of
+    using load_options
+
+- Proselint no longer uses a proselintrc config file.
+  Remove no longer needed commands from the spec.
+
+-------------------------------------------------------------------
 Mon Jul 12 13:16:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.11.3:

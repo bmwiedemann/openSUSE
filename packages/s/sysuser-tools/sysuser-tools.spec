@@ -1,7 +1,7 @@
 #
 # spec file for package sysuser-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,7 @@ EOF
 EOFF
 
 # copy pasta from macros.sysusers because the script sysusers-generate-pre is not in /usr/lib/rpm yet
-sh %{SOURCE2} $(pwd)/subdir/me.conf me.conf > account.pre
+bash %{SOURCE2} $(pwd)/subdir/me.conf me.conf > account.pre
 
 diff account.pre expected-account-pre
 

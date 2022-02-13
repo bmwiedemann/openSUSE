@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 11 16:08:56 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.2.9
+  - Use CMAKE_C_STANDARD instead of hardcoding compiler flags.
+  - Add missing <stdint.h> include.
+
+-------------------------------------------------------------------
 Sun Oct 25 18:30:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.8
