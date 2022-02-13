@@ -257,6 +257,7 @@ Patch502:       fixup-2-gdb-6.6-buildid-locate.patch
 Patch503:       fixup-gdb-rhbz1325795-framefilters-test.patch
 Patch504:       fixup-gdb-rhbz1553104-s390x-arch12-test.patch
 Patch505:       fixup-gdb-glibc-strstr-workaround.patch
+Patch506:       fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
 
 # openSUSE specific
 
@@ -345,6 +346,8 @@ Patch2032:      fix-gdb.base-sigstep.exp-test-for-ppc.patch
 Patch2033:      gdb-testsuite-fix-regexp-in-gdb.base-foll-vfork.exp.patch
 Patch2034:      gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.exp.patch
 Patch2035:      gdb-r_version-check.patch
+Patch2036:      ibm-z-add-another-arch14-instruction.patch
+Patch2037:      ibm-z-remove-lpswey-parameter.patch
 
 # Backports from master, not yet available in next release.
 
@@ -743,6 +746,7 @@ find -name "*.info*"|xargs rm -f
 %patch503 -p1
 %patch504 -p1
 %patch505 -p1
+%patch506 -p1
 
 %patch1000 -p1
 %patch1001 -p1
@@ -799,6 +803,8 @@ find -name "*.info*"|xargs rm -f
 %patch2033 -p1
 %patch2034 -p1
 %patch2035 -p1
+%patch2036 -p1
+%patch2037 -p1
 
 %patch2100 -p1
 %patch2101 -p1

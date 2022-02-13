@@ -1,0 +1,27 @@
+IBM Z: Add another arch14 instruction
+
+opcodes/
+
+	* opcodes/s390-opc.txt: Add qpaci.
+
+gas/
+
+	* testsuite/gas/s390/zarch-arch14.d: Add qpaci.
+	* testsuite/gas/s390/zarch-arch14.s: Add qpaci.
+
+---
+ gas/testsuite/gas/s390/zarch-arch14.d | 1 +
+ gas/testsuite/gas/s390/zarch-arch14.s | 1 +
+ opcodes/s390-opc.txt                  | 2 ++
+ 3 files changed, 4 insertions(+)
+
+diff --git a/opcodes/s390-opc.txt b/opcodes/s390-opc.txt
+index aa00b4f3b69..dfd5617f0ae 100644
+--- a/opcodes/s390-opc.txt
++++ b/opcodes/s390-opc.txt
+@@ -2044,3 +2044,5 @@ b98B rdp RRF_RURR2 " " arch14 zarch optparm
+ eb0000000071 lpswey SIY_URD " " arch14 zarch
+ b200 lbear S_RD " " arch14 zarch
+ b201 stbear S_RD " " arch14 zarch
++
++b28f qpaci S_RD " " arch14 zarch
