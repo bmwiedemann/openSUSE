@@ -3472,7 +3472,6 @@ unsorted:
   - exiv2-lang 
   - exmh 
   - exo-devel 
-  - exodusii-devel 
   - expect-devel 
   - ext3grep 
   - ext4magic 
@@ -10676,8 +10675,6 @@ unsorted:
   - libexiv2-27-32bit: [x86_64] 
   - libexiv2-devel 
   - libexiv2-xmp-static 
-  - libexoIIv2for-5_14_0 
-  - libexodus-5_14_0 
   - libexpat-devel: [i586] # devel package of dvd:libexpat1 
   - libexpat-devel-32bit: [x86_64] 
   - libext2fs-devel 
@@ -14228,11 +14225,12 @@ unsorted:
   - libtrilinos-gnu-openmpi4-hpc: [x86_64] 
   - libtrilinos13: [x86_64] 
   - libtrilinos13-openmpi2: [x86_64] 
-  - libtrilinos_13_0_1-gnu-mpich-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-mvapich2-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-openmpi2-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-openmpi3-hpc: [x86_64] 
-  - libtrilinos_13_0_1-gnu-openmpi4-hpc: [x86_64] 
+  - libtrilinos13-openmpi4: [x86_64] 
+  - libtrilinos_13_2_0-gnu-mpich-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-mvapich2-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-openmpi3-hpc: [x86_64] 
+  - libtrilinos_13_2_0-gnu-openmpi4-hpc: [x86_64] 
   - libtrng4-24 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
@@ -15795,6 +15793,7 @@ unsorted:
   - mathjax-winchrome-fonts 
   - mathjax-winie6-fonts 
   - mathml-dtd 
+  - mathmod 
   - mathomatic 
   - mathomatic-devel 
   - matio-tools 
@@ -22549,6 +22548,7 @@ unsorted:
   - python310-confluent-kafka 
   - python310-confpy 
   - python310-confusable-homoglyphs 
+  - python310-confuse 
   - python310-constantly 
   - python310-construct 
   - python310-contexter 
@@ -23403,6 +23403,7 @@ unsorted:
   - python310-md2workflow-plugins-jira 
   - python310-md2workflow-plugins-redmine 
   - python310-mechanize 
+  - python310-mediafile 
   - python310-meld3 
   - python310-memory_profiler 
   - python310-mergedeep 
@@ -25698,6 +25699,7 @@ unsorted:
   - python38-confluent-kafka 
   - python38-confpy 
   - python38-confusable-homoglyphs 
+  - python38-confuse 
   - python38-construct 
   - python38-contexter 
   - python38-contextlib2 
@@ -26529,6 +26531,7 @@ unsorted:
   - python38-md2workflow-plugins-jira 
   - python38-md2workflow-plugins-redmine 
   - python38-mechanize 
+  - python38-mediafile 
   - python38-meld3 
   - python38-memory_profiler 
   - python38-mergedeep 
@@ -28742,6 +28745,7 @@ unsorted:
   - python39-confluent-kafka 
   - python39-confpy 
   - python39-confusable-homoglyphs 
+  - python39-confuse 
   - python39-constantly 
   - python39-construct 
   - python39-contexter 
@@ -29630,6 +29634,7 @@ unsorted:
   - python39-md2workflow-plugins-jira 
   - python39-md2workflow-plugins-redmine 
   - python39-mechanize 
+  - python39-mediafile 
   - python39-meld3 
   - python39-memory_profiler 
   - python39-mergedeep 
@@ -41571,12 +41576,13 @@ unsorted:
   - trilinos-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-openmpi3-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-gnu-openmpi4-hpc-devel: [x86_64] 
-  - trilinos_13_0_1-hpc-doc: [x86_64] 
+  - trilinos-openmpi4-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-mpich-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-mvapich2-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-openmpi3-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-gnu-openmpi4-hpc-devel: [x86_64] 
+  - trilinos_13_2_0-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
   - trivy 
