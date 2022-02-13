@@ -106,6 +106,7 @@
       <repopackage name="busybox-gawk"/>
       <repopackage name="busybox-grep" arch="x86_64"/>
       <repopackage name="busybox-gzip"/>
+      <repopackage name="busybox-hostname" arch="x86_64"/>
       <repopackage name="busybox-sed" arch="x86_64"/>
       <repopackage name="busybox-xz" arch="x86_64"/>
       <repopackage name="ca-certificates" arch="x86_64"/>

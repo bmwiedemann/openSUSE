@@ -80,6 +80,7 @@
       <repopackage name="busybox-gawk"/>
       <repopackage name="busybox-grep" arch="x86_64"/>
       <repopackage name="busybox-gzip"/>
+      <repopackage name="busybox-hostname" arch="x86_64"/>
       <repopackage name="busybox-k8s-yaml" arch="x86_64"/>
       <repopackage name="busybox-sed" arch="x86_64"/>
       <repopackage name="busybox-xz" arch="x86_64"/>
@@ -269,7 +270,6 @@
       <repopackage name="libassuan0" arch="x86_64"/>
       <repopackage name="libatk-1_0-0" arch="x86_64"/>
       <repopackage name="libatk-bridge-2_0-0" arch="x86_64"/>
-      <repopackage name="libatm1" arch="x86_64"/>
       <repopackage name="libatspi0" arch="x86_64"/>
       <repopackage name="libattr1"/>
       <repopackage name="libaudit1"/>
@@ -280,7 +280,6 @@
       <repopackage name="libbasicobjects0" arch="x86_64"/>
       <repopackage name="libblas3" arch="x86_64"/>
       <repopackage name="libblkid1"/>
-      <repopackage name="libbluetooth3" arch="x86_64"/>
       <repopackage name="libboost_thread1_78_0" arch="x86_64"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
@@ -331,7 +330,6 @@
       <repopackage name="libfido2-1"/>
       <repopackage name="libfmt8" arch="x86_64"/>
       <repopackage name="libfontconfig1" arch="x86_64"/>
-      <repopackage name="libfreebl3" arch="x86_64"/>
       <repopackage name="libfreetype6" arch="x86_64"/>
       <repopackage name="libfribidi0" arch="x86_64"/>
       <repopackage name="libfuse2" arch="x86_64"/>
@@ -372,7 +370,6 @@
       <repopackage name="libip4tc2"/>
       <repopackage name="libip6tc2" arch="x86_64"/>
       <repopackage name="libipset13" arch="x86_64"/>
-      <repopackage name="libjansson4" arch="x86_64"/>
       <repopackage name="libjbig2" arch="x86_64"/>
       <repopackage name="libjpeg8" arch="x86_64"/>
       <repopackage name="libjson-c5"/>
@@ -408,19 +405,16 @@
       <repopackage name="libmspack0" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libndctl6" arch="x86_64"/>
-      <repopackage name="libndp0" arch="x86_64"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
       <repopackage name="libnetfilter_cthelper0" arch="x86_64"/>
       <repopackage name="libnetfilter_cttimeout1" arch="x86_64"/>
       <repopackage name="libnettle8" arch="x86_64"/>
-      <repopackage name="libnewt0_52" arch="x86_64"/>
       <repopackage name="libnfnetlink0" arch="x86_64"/>
       <repopackage name="libnfsidmap1" arch="x86_64"/>
       <repopackage name="libnftnl11" arch="x86_64"/>
       <repopackage name="libnghttp2-14"/>
       <repopackage name="libnl-config" arch="x86_64"/>
       <repopackage name="libnl3-200" arch="x86_64"/>
-      <repopackage name="libnm0" arch="x86_64"/>
       <repopackage name="libnpth0" arch="x86_64"/>
       <repopackage name="libnsl3" arch="x86_64"/>
       <repopackage name="libnss_usrfiles2"/>
@@ -435,7 +429,6 @@
       <repopackage name="libpackagekit-glib2-18" arch="x86_64"/>
       <repopackage name="libpango-1_0-0" arch="x86_64"/>
       <repopackage name="libpath_utils1" arch="x86_64"/>
-      <repopackage name="libpcap1" arch="x86_64"/>
       <repopackage name="libpci3" arch="x86_64"/>
       <repopackage name="libpciaccess0" arch="x86_64"/>
       <repopackage name="libpcre1"/>
@@ -477,14 +470,12 @@
       <repopackage name="libsepol2"/>
       <repopackage name="libsgutils2-1_47-2" arch="x86_64"/>
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
-      <repopackage name="libslang2" arch="x86_64"/>
       <repopackage name="libslirp0" arch="x86_64"/>
       <repopackage name="libslp1" arch="x86_64"/>
       <repopackage name="libsmartcols1"/>
       <repopackage name="libsnapper5" arch="x86_64"/>
       <repopackage name="libsnappy1"/>
       <repopackage name="libsodium23" arch="x86_64"/>
-      <repopackage name="libsoftokn3" arch="x86_64"/>
       <repopackage name="libsolv-tools" arch="x86_64"/>
       <repopackage name="libsoup-2_4-1" arch="x86_64"/>
       <repopackage name="libsqlite3-0" arch="x86_64"/>
@@ -499,7 +490,6 @@
       <repopackage name="libtalloc2" arch="x86_64"/>
       <repopackage name="libtasn1-6" arch="x86_64"/>
       <repopackage name="libtdb1" arch="x86_64"/>
-      <repopackage name="libteamdctl0" arch="x86_64"/>
       <repopackage name="libtevent0" arch="x86_64"/>
       <repopackage name="libtextstyle0" arch="x86_64"/>
       <repopackage name="libthai-data" arch="x86_64"/>
@@ -579,15 +569,10 @@
       <repopackage name="microos-tools" arch="x86_64"/>
       <repopackage name="ModemManager" arch="x86_64"/>
       <repopackage name="mokutil" arch="x86_64"/>
-      <repopackage name="mozilla-nspr" arch="x86_64"/>
-      <repopackage name="mozilla-nss" arch="x86_64"/>
-      <repopackage name="mozilla-nss-certs" arch="x86_64"/>
       <repopackage name="multipath-tools" arch="x86_64"/>
       <repopackage name="ncurses-utils"/>
       <repopackage name="net-tools" arch="x86_64"/>
       <repopackage name="netcfg"/>
-      <repopackage name="NetworkManager" arch="x86_64"/>
-      <repopackage name="NetworkManager-branding-openSUSE" arch="x86_64"/>
       <repopackage name="nfs-client" arch="x86_64"/>
       <repopackage name="nfs-client-provisioner-k8s-yaml" arch="x86_64"/>
       <repopackage name="nvme-cli" arch="x86_64"/>
@@ -652,7 +637,6 @@
       <repopackage name="policycoreutils" arch="x86_64"/>
       <repopackage name="policycoreutils-python-utils" arch="x86_64"/>
       <repopackage name="polkit" arch="x86_64"/>
-      <repopackage name="ppp" arch="x86_64"/>
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>

@@ -1605,7 +1605,7 @@ unsorted:
   - busybox-diffutils 
   - busybox-dos2unix 
   - busybox-ed 
-  - busybox-hostname 
+  - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
   - busybox-k8s-yaml: [i586] 
