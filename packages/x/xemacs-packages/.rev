@@ -311,4 +311,12 @@
     <comment>- Add par and info to requirement at build time</comment>
     <requestid>827491</requestid>
   </revision>
+  <revision rev="43" vrev="11">
+    <srcmd5>76edb87e492cabcebc41999a61d39c66</srcmd5>
+    <version>20130822</version>
+    <time>1644874576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>954307</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs-packages
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-devel
 %endif
 %if %suse_version > 1220
+BuildRequires:  glibc-locale
 BuildRequires:  info
 BuildRequires:  makeinfo
 BuildRequires:  par
@@ -62,7 +63,7 @@ Release:        0
 Requires:       /usr/bin/env
 #
 # HG version >= 1.9.3
-#   hg --version 
+#   hg --version
 #   hg clone https://bitbucket.org/xemacs/xemacs-packages packages
 #   cd packages/
 # Check for last version
@@ -307,7 +308,7 @@ chmod a-x %{buildroot}%{_datadir}/xemacs/xemacs-packages/lisp/ede/*.el
 fdupes -q -o name -r -1 %{buildroot}%{_datadir}/xemacs/ | while read first second; do
     case "${first}" in
     *.el*)  continue ;;
-    *.texi) continue 
+    *.texi) continue
     esac
     target=
     file=
