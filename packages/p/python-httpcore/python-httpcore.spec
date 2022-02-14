@@ -40,10 +40,10 @@ Requires:       python-anyio >= 3.1.0
 Requires:       python-certifi
 Requires:       python-chardet >= 3.0
 Requires:       python-h11 >= 0.11.0
-Requires:       python-h2 >= 3.0
 Requires:       python-idna >= 2.0
 Requires:       python-rfc3986 >= 1.0
 Requires:       python-sniffio >= 1.0
+Recommends:     python-h2 >= 3.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}

@@ -44,4 +44,12 @@
 - Inject multibuild to stop a build loop</comment>
     <requestid>950355</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1c667f0da0d668ef39e108b86110b7b4</srcmd5>
+    <version>0.14.5</version>
+    <time>1644874554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953912</requestid>
+  </revision>
 </revisionlist>
