@@ -545,4 +545,12 @@
     <comment>Fix build with meson 0.61 (forwarded request 952781 from iznogood)</comment>
     <requestid>952881</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>612f8a3ae7326e46cc0c7b520bde8f00</srcmd5>
+    <version>41.4</version>
+    <time>1644874555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953945</requestid>
+  </revision>
 </revisionlist>
