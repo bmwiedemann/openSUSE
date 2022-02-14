@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 11 04:35:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 6.0.2
+  See https://www.kicad.org/blog/2022/02/KiCad-6.0.2-Release/ for details.
+
+-------------------------------------------------------------------
 Sat Feb  5 16:11:00 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix suse_update_desktop_file invocation on Leap (missing new
-  "org.kicad." prefix for desktop file names). 
+  "org.kicad." prefix for desktop file names).
 
 -------------------------------------------------------------------
 Tue Jan 25 05:17:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
