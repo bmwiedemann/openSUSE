@@ -5,10 +5,27 @@ large) they should be a separate package in openSUSE.
 The main package remains small and has no test/ directory, so patch
 the build files not to try to recurse into there.
 
-diff -Nur libabigail-1.8.1/configure.ac new/configure.ac
---- libabigail-1.8.1/configure.ac	2021-01-27 12:49:43.000000000 +0100
-+++ new/configure.ac	2021-05-03 14:13:27.623343957 +0200
-@@ -915,25 +915,9 @@
+---
+ Makefile.am  |    2 +-
+ configure.ac |   16 ----------------
+ 2 files changed, 1 insertion(+), 17 deletions(-)
+
+Index: libabigail-2.0/Makefile.am
+===================================================================
+--- libabigail-2.0.orig/Makefile.am
++++ libabigail-2.0/Makefile.am
+@@ -1,5 +1,5 @@
+ ## SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+-SUBDIRS = include src tools tests doc bash-completion
++SUBDIRS = include src tools doc bash-completion
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ headers = config.h
+ 
+Index: libabigail-2.0/configure.ac
+===================================================================
+--- libabigail-2.0.orig/configure.ac
++++ libabigail-2.0/configure.ac
+@@ -888,25 +888,9 @@ libabigail.pc
      doc/manuals/Makefile
    src/Makefile
    tools/Makefile
@@ -33,13 +50,4 @@ diff -Nur libabigail-1.8.1/configure.ac new/configure.ac
 -		[chmod +x tests/runtestdefaultsupprspy3.sh])
  
  AC_OUTPUT
- 
-diff -Nur libabigail-1.8.1/Makefile.am new/Makefile.am
---- libabigail-1.8.1/Makefile.am	2021-01-27 12:49:43.000000000 +0100
-+++ new/Makefile.am	2021-05-03 14:17:28.249089264 +0200
-@@ -1,4 +1,4 @@
--SUBDIRS = include src tools tests doc bash-completion
-+SUBDIRS = include src tools doc bash-completion
- ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
- headers = config.h
  

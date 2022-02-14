@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 13 23:37:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0
+  * New symbol table reader component.
+  * Correctness of type canonicalization.
+  * Support for DWARF 5.
+  * abidw now emits ABIXML files in a new format, dubbed version
+    2.0.
+  * abipkgdiff should now properly show binary files that were
+    either added to or removed from packages. It also stops
+    erasing the working directory used for binary comparison
+    before it's done using their content.
+  * abidiff: Data members are no longer qualified in diff
+    reports. The --dump-diff-tree option now works in the leaf
+    reporting mode.
+
+-------------------------------------------------------------------
 Mon May  3 11:58:31 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.8.2:
