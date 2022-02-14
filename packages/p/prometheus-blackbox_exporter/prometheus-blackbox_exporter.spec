@@ -14,7 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+%if 0%{?rhel} == 8
+%global debug_package %{nil}
+%endif
 
+%if 0%{?rhel}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+%endif
 
 Name:           prometheus-blackbox_exporter
 Version:        0.19.0
@@ -28,12 +35,14 @@ Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
-BuildRequires:  libcap-progs
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  (libcap-progs or libcap)
+BuildRequires:  (golang(API) >= 1.14 or golang >= 1.14)
 %{?systemd_ordering}
+%if 0%{?suse_version}
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(post): permissions
+%endif
 
 %description
 Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
@@ -51,11 +60,26 @@ install -D -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-blackbox_exporte
 install -D -m0644 %{_builddir}/blackbox_exporter-%{version}/blackbox.yml %{buildroot}%{_sysconfdir}/prometheus/blackbox.yml
 %fdupes %{buildroot}/%{_prefix}
 
+%check
+# Fix OBS debug_package execution.
+rm -f %{buildroot}/usr/lib/debug/%{_bindir}/blackbox_exporter-%{version}-*.debug
+
 %pre
-%service_add_pre prometheus-blackbox_exporter.service
+%if 0%{?suse_version}
+%service_add_pre %{name}.service
+%endif
+%if 0%{?rhel}
+%define serviceuser   prometheus
+getent group %{serviceuser} >/dev/null || %{_sbindir}/groupadd -r %{serviceuser}
+getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceuser} -d %{_localstatedir}/lib/%{serviceuser} -M -s /sbin/nologin %{serviceuser}
+%endif
 
 %post
-%service_add_post prometheus-blackbox_exporter.service
+%if 0%{?rhel}
+%systemd_post %{name}.service
+%else
+%service_add_post %{name}.service
+%endif
 # Because of more relaxed ping_group_range setting in sysctl in SLE/openSUSE 15
 # everyone is allowed to create IPPROTO_ICMP sockets
 # and hence no need to set capability
@@ -69,10 +93,18 @@ install -D -m0644 %{_builddir}/blackbox_exporter-%{version}/blackbox.yml %{build
 %endif
 
 %preun
-%service_del_preun prometheus-blackbox_exporter.service
+%if 0%{?rhel}
+%systemd_preun %{name}.service
+%else
+%service_del_preun %{name}.service
+%endif
 
 %postun
-%service_del_postun prometheus-blackbox_exporter.service
+%if 0%{?rhel}
+%systemd_postun %{name}.service
+%else
+%service_del_postun %{name}.service
+%endif
 
 %files
 %defattr(-,root,root)
