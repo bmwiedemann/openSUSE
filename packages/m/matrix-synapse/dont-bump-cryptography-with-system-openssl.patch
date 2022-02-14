@@ -11,7 +11,16 @@ Index: synapse/synapse/python_dependencies.py
      "unpaddedbase64>=1.1.0",
      "canonicaljson>=1.4.0",
      # we use the type definitions added in signedjson 1.1.
-@@ -86,7 +86,8 @@ REQUIREMENTS = [
+@@ -77,7 +77,7 @@ REQUIREMENTS = [
+     "phonenumbers>=8.2.0",
+     # we use GaugeHistogramMetric, which was added in prom-client 0.4.0.
+     # 0.13.0 has an incorrect type annotation, see #11832.
+-    "prometheus_client>=0.4.0,<0.13.0",
++    "prometheus_client>=0.13.1",
+     # we use `order`, which arrived in attrs 19.2.0.
+     # Note: 21.1.0 broke `/sync`, see #9936
+     "attrs>=19.2.0,!=21.1.0",
+@@ -87,7 +87,8 @@ REQUIREMENTS = [
      "typing-extensions>=3.7.4",
      # We enforce that we have a `cryptography` version that bundles an `openssl`
      # with the latest security patches.

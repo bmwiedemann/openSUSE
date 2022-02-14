@@ -40,7 +40,7 @@
 # * Commit+submit
 
 #if 0%{?suse_version} >= 1550
-#define use_python python3
+#define use_python python38
 #define __python3 #{_bindir}/python3
 #else
 %define use_python python3
@@ -50,7 +50,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.51.0
+Version:        1.52.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -85,7 +85,7 @@ BuildRequires:  unzip
 # NOTE: Keep this is in the same order as synapse/python_dependencies.py.
 BuildRequires:  %{use_python}-Jinja2 >= 2.9
 %requires_peq   %{use_python}-Jinja2
-BuildRequires:  %{use_python}-Pillow >= 4.3.0
+BuildRequires:  %{use_python}-Pillow >= 5.4.0
 %requires_peq   %{use_python}-Pillow
 BuildRequires:  %{use_python}-PyNaCl >= 1.2.1
 %requires_peq   %{use_python}-PyNaCl
@@ -119,7 +119,7 @@ BuildRequires:  %{use_python}-netaddr >= 0.7.18
 %requires_peq   %{use_python}-netaddr
 BuildRequires:  %{use_python}-phonenumbers >= 8.2.0
 %requires_peq   %{use_python}-phonenumbers
-BuildRequires:  %{use_python}-prometheus_client >= 0.4.0
+BuildRequires:  %{use_python}-prometheus_client >= 0.13.1
 %requires_peq   %{use_python}-prometheus_client
 BuildRequires:  %{use_python}-psutil >= 2.0.0
 %requires_peq   %{use_python}-psutil
@@ -161,7 +161,7 @@ BuildRequires:  %{use_python}-pysaml2 >= 4.5.0
 BuildRequires:  %{use_python}-Authlib >= 0.15.1
 %requires_peq   %{use_python}-Authlib
 %endif
-BuildRequires:  %{use_python}-lxml >= 3.5.0
+BuildRequires:  %{use_python}-lxml >= 4.2.0
 %requires_peq   %{use_python}-lxml
 %if %{with synapse_sentry}
 BuildRequires:  %{use_python}-sentry-sdk >= 0.7.2
