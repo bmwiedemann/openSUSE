@@ -1,0 +1,97 @@
+From 43caf2539357a1f9d5b2668a8eff151517377a7e Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Wed, 9 Feb 2022 21:38:23 +0200
+Subject: [PATCH] Fix mouse pointer disappearing after using zoom effect on X11
+
+Currently, the Cursors::currentCursorChanged signal is wired to the
+updateCursor() function which calls xcb_xfixes_hide_cursor() or
+xcb_xfixes_show_cursor() depending if the cursor is hidden. However, the
+currentCursorChanged signal can be emitted if the cursor changed, e.g. a
+new pixmap attached, or its visibility status changes.
+
+The zoom effect hides the pointer, but when user hovers ui elements, it
+will most likely change and result in more than one xcb_xfixes_hide_cursor()
+calls.
+
+It appears like xcb_xfixes_hide_cursor() is implemented as a reference
+counter, i.e. if xcb_xfixes_hide_cursor() is called two times, then you
+must call xcb_xfixes_show_cursor() two times as well.
+
+This change adds a dedicated signal to indicate whether the cursor is
+hidden to avoid calling xcb_xfixes_hide_cursor() multiple times while
+the screen is scaled.
+
+BUG: 448537
+
+
+(cherry picked from commit 0ad239a92de6ae859e892db6debafac2e3daefb5)
+---
+ src/backends/drm/drm_output.cpp              | 1 +
+ src/backends/x11/standalone/x11_platform.cpp | 3 +--
+ src/cursor.cpp                               | 4 ++--
+ src/cursor.h                                 | 1 +
+ 4 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/backends/drm/drm_output.cpp b/src/backends/drm/drm_output.cpp
+index 725ab7a8b7..bbac87297b 100644
+--- a/src/backends/drm/drm_output.cpp
++++ b/src/backends/drm/drm_output.cpp
+@@ -72,6 +72,7 @@ DrmOutput::DrmOutput(DrmPipeline *pipeline)
+     });
+ 
+     connect(Cursors::self(), &Cursors::currentCursorChanged, this, &DrmOutput::updateCursor);
++    connect(Cursors::self(), &Cursors::hiddenChanged, this, &DrmOutput::updateCursor);
+     connect(Cursors::self(), &Cursors::positionChanged, this, &DrmOutput::moveCursor);
+ }
+ 
+diff --git a/src/backends/x11/standalone/x11_platform.cpp b/src/backends/x11/standalone/x11_platform.cpp
+index ec8809a6e5..d4d96533d5 100644
+--- a/src/backends/x11/standalone/x11_platform.cpp
++++ b/src/backends/x11/standalone/x11_platform.cpp
+@@ -142,8 +142,7 @@ bool X11StandalonePlatform::initialize()
+     if (Xcb::Extensions::self()->isRandrAvailable()) {
+         m_randrEventFilter.reset(new XrandrEventFilter(this));
+     }
+-    connect(Cursors::self(), &Cursors::currentCursorChanged, this, &X11StandalonePlatform::updateCursor);
+-    updateCursor();
++    connect(Cursors::self(), &Cursors::hiddenChanged, this, &X11StandalonePlatform::updateCursor);
+     return true;
+ }
+ 
+diff --git a/src/cursor.cpp b/src/cursor.cpp
+index 625e570786..a3a48fd306 100644
+--- a/src/cursor.cpp
++++ b/src/cursor.cpp
+@@ -67,7 +67,7 @@ void Cursors::hideCursor()
+ {
+     m_cursorHideCounter++;
+     if (m_cursorHideCounter == 1) {
+-        Q_EMIT currentCursorChanged(m_currentCursor);
++        Q_EMIT hiddenChanged();
+     }
+ }
+ 
+@@ -75,7 +75,7 @@ void Cursors::showCursor()
+ {
+     m_cursorHideCounter--;
+     if (m_cursorHideCounter == 0) {
+-        Q_EMIT currentCursorChanged(m_currentCursor);
++        Q_EMIT hiddenChanged();
+     }
+ }
+ 
+diff --git a/src/cursor.h b/src/cursor.h
+index 610e7cadc6..926ebe21bf 100644
+--- a/src/cursor.h
++++ b/src/cursor.h
+@@ -280,6 +280,7 @@ public:
+ 
+ Q_SIGNALS:
+     void currentCursorChanged(Cursor* cursor);
++    void hiddenChanged();
+     void positionChanged(Cursor* cursor, const QPoint &position);
+ 
+ private:
+-- 
+GitLab
+

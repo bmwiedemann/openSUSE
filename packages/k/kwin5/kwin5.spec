@@ -39,6 +39,8 @@ Source:         kwin-%{version}.tar.xz
 Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:       https://invent.kde.org/plasma/kwin/-/commit/43caf2539357a1f9d5b2668a8eff151517377a7e.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11

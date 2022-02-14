@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 12 19:50:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 43caf2539357a1f9d5b2668a8eff151517377a7e.patch: Fix mouse
+  pointer disappearing after using zoom effect on X11 (kde#448537,
+  boo#1195865)
+
+-------------------------------------------------------------------
 Mon Feb  7 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Force PIE when building with gcc-10 (boo#1195628)
