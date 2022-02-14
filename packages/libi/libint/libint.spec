@@ -17,7 +17,7 @@
 
 
 Name:           libint
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 %define         sover 2
 Summary:        High-performance library for computing Gaussian integrals in quantum mechanics
@@ -116,8 +116,6 @@ find %{buildroot}%{_datadir}/libint -name \*.g94 -delete
 %{_libdir}/libint2.so.%{sover}*
 
 %files devel
-%dir %{_libdir}/cmake
-%{_libdir}/cmake/libint2/
 %{_includedir}/libint2/
 %{_includedir}/libint2.h
 %{_includedir}/libint2.hpp
