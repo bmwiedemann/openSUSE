@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 11 15:18:32 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.2:
+  * RTMPT dissector infinite loop.
+  * Large loops in multiple dissectors.
+  * PVFS dissector crash.
+  * CSN.1 dissector crash.
+  * CMS dissector crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.2.html
+
+-------------------------------------------------------------------
 Tue Jan 18 09:42:36 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Fix wireshark-plugin-libvirt build after wmem_alloc() moved from

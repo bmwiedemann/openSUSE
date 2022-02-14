@@ -17,7 +17,7 @@
 
 
 Name:           hexchat
-Version:        2.16.0
+Version:        2.16.1
 Release:        0
 Summary:        A graphical IRC (chat) client
 License:        GPL-2.0-or-later
@@ -134,8 +134,8 @@ install -Dm 0755 %{SOURCE1} %{buildroot}%{_libdir}/hexchat/$(basename %{SOURCE1}
 %{_libdir}/%{name}/plugins/fishlim.so
 %{_libdir}/%{name}/plugins/sysinfo.so
 %{_datadir}/applications/io.github.Hexchat.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/*/apps/%{name}.svg
+%{_datadir}/icons/hicolor/*/apps/io.github.Hexchat.png
+%{_datadir}/icons/hicolor/*/apps/io.github.Hexchat.svg
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/io.github.Hexchat.appdata.xml
 %{_datadir}/dbus-1/services/org.%{name}.service.service

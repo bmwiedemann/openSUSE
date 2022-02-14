@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 13 12:31:33 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.43.0-0:
+  * Only new function is uv_ip_name which luv does not provide
+    a binding for
+  * Change the call to acquire_vm_cb() in luv.new_therad() to
+    be made before the thread is created in luv_new_thread()
+
+-------------------------------------------------------------------
 Wed Nov 17 18:16:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use system compat53 again

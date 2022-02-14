@@ -679,7 +679,6 @@ fi
     -DCOMPILER_RT_BUILD_SANITIZERS:BOOL=OFF \
     -DCOMPILER_RT_BUILD_XRAY:BOOL=OFF \
     -DLLDB_DISABLE_PYTHON=ON \
-    -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-keep-memory" \
@@ -703,6 +702,9 @@ export CC=${PWD}/stage1/bin/clang
 export CXX=${PWD}/stage1/bin/clang++
 export LLVM_TABLEGEN=${PWD}/stage1/bin/llvm-tblgen
 export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
+# The build occasionally uses tools linking against previously built
+# libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
+export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
 # -z,now is breaking now, it needs to be fixed
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
@@ -740,7 +742,7 @@ export CLANG_TABLEGEN=${PWD}/stage1/bin/clang-tblgen
 %if %{without lldb_python}
     -DLLDB_DISABLE_PYTHON=ON \
 %endif
-    -DCMAKE_SKIP_RPATH:BOOL=OFF \
+    -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--build-id=sha1" \
@@ -750,6 +752,8 @@ ninja -v %{?_smp_mflags}
 cd ..
 
 %install
+# Installation seems to build some files not contained in "all".
+export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
 %cmake_install
 
 # Docs are prebuilt due to sphinx dependency
@@ -961,7 +965,9 @@ rm -r %{buildroot}%{_docdir}/llvm{,-clang}/html/_sources
 %fdupes %{_includedir}/%{name}/Host/
 
 %check
-
+# We don't want to set RUNPATHs, and running tests against installed libraries
+# should be more representative of the actual behavior of the installed packages.
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 # LLVM test suite is written in python and has troubles with encoding if
 # python 3 is used because it is written with assumption that python will
 # default to UTF-8 encoding. However, it only does if the current locale is

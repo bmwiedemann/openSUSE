@@ -1460,4 +1460,15 @@ Togan
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>950368</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>272741495d0cb75746db1c11e644bdeb</srcmd5>
+    <version>3.8.1</version>
+    <time>1644778257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.1
+  https://www.darktable.org/2022/02/darktable-3.8.1-released/
+- Removed 10678.patch
+</comment>
+    <requestid>954057</requestid>
+  </revision>
 </revisionlist>

@@ -103,7 +103,7 @@
 %endif
 
 Name:           darktable
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 %define pkg_name darktable
 %define pkg_version %{version}
@@ -117,7 +117,6 @@ Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
 Patch0:         darktable-old-glib.patch
-Patch1:         https://github.com/darktable-org/darktable/pull/10678.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
@@ -220,6 +219,7 @@ Summary:        A virtual Lighttable and Darkroom
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Obsoletes:      darktable-docs < %{version}-%{release}
+Provides:       darktable-docs = %{version}-%{release}
 
 %description
 darktable is a virtual lighttable and darkroom for photographers: it manages

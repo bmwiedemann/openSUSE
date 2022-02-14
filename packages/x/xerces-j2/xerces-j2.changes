@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb 11 13:00:17 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 2.12.2 [bsc#1195108, CVE-2022-23437]:
+  * This release is a bug fix release. It fixes few bugs which were 
+    present in Xerces-J 2.12.1 and also includes a few other minor 
+    enhancements.
+    + Implemented a fix, that solves rarely occurring XML parsing 
+      performance issue.
+    + Improved compliance, of XPath 2.0 processor's regex 
+      implementation (that's used within XML Schema 1.1 
+      implementation).
+    + XML Schema validation error message improvements, when XML 
+      attributes are validated.
+    + Improved the JAXP SourceValidator sample, related to XML 
+      Schema 1.1 assertion evaluations on list types.	
+    + Solved an XML Schema implementation issue, where 
+      combination of restrictions 'length' and 'minLength' was
+      leading to error.
+    + Made minor, improvements to few XML Schema 1.1 validation 
+      error messages.
+    + Fixed a rarely occurring issue during XML Schema 1.1 
+      xs:assert evaluation, where adjacent text values within
+      XML instance document, were resulting in more than one
+      adjacent XPath 2.0 text nodes.
+    + Upgraded the minimum, Java requirement to use XercesJ to
+      Java version 1.7.
+    + Upgraded XalanJ serializer dependency to version 2.7.2
+      from 2.7.1, which is required by XercesJ.
+    + Re-built, "XML Commons External" and "XML Commons 
+      Resolver" codebases (which are dependencies for XercesJ) 
+      using Java 1.7.
+
+-------------------------------------------------------------------
 Tue Dec 28 17:26:24 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Removed patch xerces-2_11_0-jdk7.patch:

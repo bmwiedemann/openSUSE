@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 13 10:12:09 CET 2022 - tiwai@suse.de
+
+- Remove /usr/share/pixmaps from filelist of fcitx5-mozc as zypper
+  complains the conflict with filesystems
+
+-------------------------------------------------------------------
+Sat Feb 12 17:15:56 CET 2022 - tiwai@suse.de
+
+- Enable fcitx5 build with _muiltibuild, as fcitx5 is included now
+  in FACTORY
+
+-------------------------------------------------------------------
 Tue Nov 23 12:02:32 CET 2021 - tiwai@suse.de
 
 - Move mozc-fcitx5.spec to a dedicated linked package (for now)

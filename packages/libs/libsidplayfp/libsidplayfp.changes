@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Feb 11 22:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * VIC II: check badline enabled condition on raster Y increment. Fixes CPU/shxy/shx-test
+  * Disable digiboost for residfp when not required (issue #37)
+  * residfp: fixed some PVS-Studio warnings. (issues #20 #21 #23 #28)
+  * residfp: share dac tables between voices, saves a few Kb and some initialization time (issues #34 #26)
+  * CIA: rework interrupt implementation based on Denise emu code, fixes CIA/dd0dtest/dd0dtest (issue #29)
+  * c64: return pseudo random numbers when reading from the I/O Area as the VIC fetches are not emulated.
+	 Fixes C64/openio/gauntlet test
+  * VIC-II: fix lightpen X coordinate calculation. Makes VICII/split-tests/lightpen/lightpen test pass
+  * songlengthdb: fix possible corrupted data (issue #32)
+  * VIC-II: fix NTSC badline timing and improve cycle skipping
+  * CIA: minor refactoring
+  * Fixed a few minor PVS-Studio flagged issues 
+  * reSIDfp: added NEON (by Christopher Snowhill) and SSE2 version of convolution function
+    the configure option has been changed to --with-simd=<sse2/mmx/neon/none>
+  * Exposed last values written to the SID registers. Based on patch by Stian Skjelstad
+  * API additions:
+    - Splitted ROM functions
+    - Added CIA 6526 4485 model setting, mostly for testing
+    - Added function for loading database from unicode path on Windows
+    - Added function for loading tunes using a custom loader callback
+- enable SIMD on aarch64/x86_64
+
+-------------------------------------------------------------------
 Mon Apr 26 12:04:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.1.2:

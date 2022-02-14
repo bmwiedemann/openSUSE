@@ -1,7 +1,7 @@
 #
 # spec file for package onioncat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           onioncat
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        VPN adapter for Tor and I2P
 License:        GPL-3.0-only
 URL:            https://www.onioncat.org/
-Source0:        https://github.com/rahra/onioncat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  libtool
+Source:         https://www.cypherpunk.at/ocat/download/Source/current/%{name}-%{version}.tar.gz
+Source2:        https://www.cypherpunk.at/ocat/download/Source/current/%{name}-%{version}.tar.gz.asc
+# 0x98678E06063007E4A1F0B9C59BD601668E24F29D
+Source3:        %{name}.keyring
 Requires:       tor
 
 %description
@@ -36,7 +38,6 @@ hidden services.
 %autosetup
 
 %build
-autoreconf -fvi
 %configure --docdir=%{_docdir}/%{name}
 %make_build
 
@@ -45,9 +46,9 @@ autoreconf -fvi
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog GitLog README.md
-%doc %{_docdir}/%{name}/
+%doc AUTHORS ChangeLog NEWS
 %{_bindir}/ocat
 %{_mandir}/man1/ocat.1%{?ext_man}
+%{_docdir}/%{name}
 
 %changelog

@@ -1,0 +1,22 @@
+Index: firehol-3.1.7/contrib/fireqos.service
+===================================================================
+--- firehol-3.1.7.orig/contrib/fireqos.service
++++ firehol-3.1.7/contrib/fireqos.service
+@@ -5,6 +5,17 @@ After=network-online.target
+ Wants=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ ExecStart=/usr/sbin/fireqos start
+ ExecStop=/usr/sbin/fireqos stop

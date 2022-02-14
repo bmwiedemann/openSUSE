@@ -351,4 +351,12 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
     <comment></comment>
     <requestid>900873</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>77e5fce2592422695a4e142d91918eee</srcmd5>
+    <version>0.8.3</version>
+    <time>1644778263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954073</requestid>
+  </revision>
 </revisionlist>

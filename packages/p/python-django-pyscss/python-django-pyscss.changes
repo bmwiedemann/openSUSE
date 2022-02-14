@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 13 09:56:19 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix building on Django 4
+- Skip building for Python 3.10 due to test failures
+
+-------------------------------------------------------------------
 Thu Oct 14 08:36:21 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use setup.py test

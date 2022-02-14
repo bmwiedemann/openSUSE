@@ -44,10 +44,22 @@ INTERFACE="$1"
 if test "x$2" != x -a "x$2" != "x-o" ; then
         CONFIG=$INTERFACE
         INTERFACE="$2"
+        shift
 else
         CONFIG=$INTERFACE
 fi
+shift
 
+mode=""
+args=$(getopt -o "o:" -- "$@")
+eval set -- "$args"
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --) shift; break;;
+    -o) mode="$2"; shift;;
+  esac
+  shift
+done
 
 . /etc/sysconfig/network/config
 if test -f /etc/sysconfig/network/scripts/functions ; then
@@ -102,7 +114,9 @@ dhcpv4_server_restart()
         fi
 
         if test "$restart_needed" = yes ; then
-                @LIBEXECDIR@/dhcp/dhcpd -4 try-restart
+          if test "`/usr/bin/systemctl --value -p SubState show dhcpd.service`" = "running"; then
+            /usr/bin/systemctl restart dhcpd.service
+          fi
         fi
 }
 dhcpv6_server_restart()
@@ -140,16 +154,18 @@ dhcpv6_server_restart()
         fi
 
         if test "$restart_needed" = yes ; then
-                @LIBEXECDIR@/dhcp/dhcpd -6 try-restart
+          if test "`/usr/bin/systemctl --value -p SubState show dhcpd6.service`" = "running"; then
+            /usr/bin/systemctl restart dhcpd6.service
+          fi
         fi
 }
 
-case "$0" in
-*if-up.d*)
+case "$mode" in
+*-up*)
 	dhcpv4_server_restart
 	dhcpv6_server_restart
 ;;
-*if-down.d*)
+*-down*)
         # don't do anything
 ;;
 *)

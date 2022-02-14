@@ -1,6 +1,7 @@
 #
 # spec file for package ebumeter
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,7 +52,7 @@ provided as well.
 
 %build
 export CXXFLAGS="%{optflags}"
-%make_build -C source 
+%make_build -C source PREFIX=%{_prefix}
 
 %install
 make -C source DESTDIR=%{buildroot} PREFIX=%{_prefix} install

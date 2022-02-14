@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 14 09:37:49 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_firehol.service.patch
+  * harden_fireqos.service.patch
+
+-------------------------------------------------------------------
 Thu Dec 31 20:01:23 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - firehol (3.1.7) - 2020-12-31

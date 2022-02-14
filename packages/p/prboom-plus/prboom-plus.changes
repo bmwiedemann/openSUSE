@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb 13 11:30:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.2
+  * added a prospective fix for OpenGL rendering: don't bleed
+    walls through sky floors
+  * no more crashes at textscreens (e.g. after MAP06, MAP11 or
+    MAP20) after viewing finale picture upon finishing a level
+    with UMAPINFO 'endpic' property
+  * fixed freezing at TITLEPIC while using mousewheel in menus
+  * fixed looping forever in G_NextWeapon()
+  * UMAPINFO: fix 'entering' and 'enterpic' shown on exit levels
+  * GL: adjust sky offsets for non-standard FOVs
+  * fixed stuttering with uncapped framerate
+  * added support for widescreen low resolutions
+  * added REKKR to launcher string list
+  * Portmidi: fix freeze after song change                                                                                                *  fixed scaled time interpolation when changing game speed
+  * fixed wrong pitch of SFX when MIDI Player is set to SDL
+  * UMAPINFO: fixed par times not showing
+  * fixed demo playback warp consistency
+  * added SKILL cheat to display current skill level
+  * fixed calculation of interpolation frac value
+  * added 'run' as a mouse-settable control (mouseb_speed)
+
+-------------------------------------------------------------------
 Mon Aug 16 09:27:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.1um

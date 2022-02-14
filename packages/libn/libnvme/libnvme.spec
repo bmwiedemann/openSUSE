@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.0~2
+Version:        1.0~3
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-only
@@ -32,7 +32,6 @@ BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  openssl-devel
-BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  swig
 
@@ -69,7 +68,7 @@ Python binding part.
 
 %build
 %meson \
-    -Dman=true
+    -Ddocs=man
 %meson_build
 
 %install

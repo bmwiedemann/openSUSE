@@ -45,6 +45,12 @@ Wed Dec  1 07:44:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 - Use url in sources as far as possible.
 
 -------------------------------------------------------------------
+Wed Sep 22 14:43:56 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * inn.service
+
+-------------------------------------------------------------------
 Mon Jul 12 06:31:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch BuildRequires to python3-devel, to build using Python 3. 

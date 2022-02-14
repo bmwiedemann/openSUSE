@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 13 03:11:48 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Sort input file list for reproducible builds (boo#1041090)
+
+-------------------------------------------------------------------
 Thu Dec 30 16:00:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Make so file executable so librime can load the plugin.

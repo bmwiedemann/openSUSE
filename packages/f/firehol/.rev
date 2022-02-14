@@ -67,4 +67,12 @@ firehol (3.1.6) - 2018-08-13
     - workaround for cases where &quot;-ifb&quot; name gets truncated</comment>
     <requestid>859646</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8bc8f96cd30433d6bb1f88ab1dae2c55</srcmd5>
+    <version>3.1.7</version>
+    <time>1644778264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954074</requestid>
+  </revision>
 </revisionlist>

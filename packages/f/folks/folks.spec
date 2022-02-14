@@ -29,6 +29,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
 Source:         https://download.gnome.org/sources/folks/0.15/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM c44d8e323affd7f1043f300f3325b358cd5b5f0b.patch -- folks-generics: Add missing generic type argument
+Patch:          https://gitlab.gnome.org/GNOME/folks/-/commit/c44d8e323affd7f1043f300f3325b358cd5b5f0b.patch
 
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
@@ -114,7 +116,7 @@ This package provides the GObject Introspection bindings for libfolks.
 %package -n libfolks-eds%{soversion}
 Summary:        Evolution Data Server backend for libfolks
 Group:          System/Libraries
-Supplements:    packageand(libfolks%{soversion}:evolution-data-server)
+Supplements:    (libfolks%{soversion} and evolution-data-server)
 
 %description -n libfolks-eds%{soversion}
 libfolks is a library that aggregates people from multiple sources (e.g.
@@ -132,7 +134,7 @@ Telepathy connection managers) to create metacontacts.
 Summary:        Additional utilities related to libfolks
 # the folks-import tool is useful for old pidgin users
 Group:          Development/Libraries/GNOME
-Supplements:    packageand(libfolks1:pidgin)
+Supplements:    (libfolks1 and pidgin)
 
 %description tools
 libfolks is a library that aggregates people from multiple sources (e.g.
@@ -183,14 +185,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %find_lang folks %{?no_lang_C}
 
-%post -n libfolks%{soversion} -p /sbin/ldconfig
-%postun -n libfolks%{soversion} -p /sbin/ldconfig
-
-%post -n libfolks-eds%{soversion} -p /sbin/ldconfig
-%postun -n libfolks-eds%{soversion} -p /sbin/ldconfig
-
-%post -n libfolks-telepathy%{soversion} -p /sbin/ldconfig
-%postun -n libfolks-telepathy%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfolks%{soversion}
+%ldconfig_scriptlets -n libfolks-eds%{soversion}
+%ldconfig_scriptlets -n libfolks-telepathy%{soversion}
 
 %files -n libfolks%{soversion}
 %license COPYING

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 12 08:06:08 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.2 development release
+  - Large scale cleanup to support 'long' type with MSVCRT.                                                                                   
+  - Mono engine updated to version 7.1.1.                                                                                                     
+  - More theming fixes in common controls.                                                                                                    
+  - Beginnings of a WMA decoder.                                                                                                              
+  - Support for 64-bit time_t.                                                                                                                
+  - Various bug fixes.                                                                                                                        
+- update staging to 7.2 release
+
+-------------------------------------------------------------------
 Sun Jan 30 11:14:11 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.1 development release
