@@ -41,7 +41,6 @@ Requires:       python-certifi
 Requires:       python-chardet >= 3.0
 Requires:       python-charset-normalizer >= 2.0.6
 Requires:       python-h11 >= 0.8.0
-Requires:       python-h2 >= 3.0
 Requires:       python-hstspreload >= 2019.8.27
 Requires:       python-httpcore >= 0.14.0
 Requires:       python-idna >= 2.0
@@ -49,6 +48,7 @@ Requires:       python-rfc3986 >= 1.3
 Requires:       python-sniffio
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     python-h2 >= 3.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}

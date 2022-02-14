@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 19:31:34 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Only recommend and not require the installation of python-h2 because it is
+  seriously broken and prevents any other Python software to run correctly with -bb.
+  (See also: https://github.com/python-hyper/h2/issues/1236)
+  This also matches upstream's setup.py which lists h2 as optional
+  dependency in extra_requires.
+
+-------------------------------------------------------------------
 Tue Feb  1 07:01:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.22.0:

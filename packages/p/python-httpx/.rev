@@ -52,4 +52,12 @@
   * The `response.url` property is now correctly annotated as `URL`, instead of `Optional[URL]`. (#1940)</comment>
     <requestid>950349</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dc9f52305bd2890a1f5a904297e2055b</srcmd5>
+    <version>0.22.0</version>
+    <time>1644874554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953911</requestid>
+  </revision>
 </revisionlist>
