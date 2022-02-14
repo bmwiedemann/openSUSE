@@ -27,9 +27,9 @@ Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-URL:            http://humdi.net/vnstat
-Source:         http://humdi.net/vnstat/vnstat-%{version}.tar.gz
-Source98:       http://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
+URL:            https://humdi.net/vnstat
+Source:         https://humdi.net/vnstat/vnstat-%{version}.tar.gz
+Source98:       https://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
 Source1:        vnstat-if.sh
 Source2:        vnstat-cgi.conf
