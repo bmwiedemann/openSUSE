@@ -35,4 +35,18 @@
     <comment></comment>
     <requestid>889839</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0950245822e7a7d2593294d80b59102a</srcmd5>
+    <version>1.0.4</version>
+    <time>1644880256</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Update internal tables for Unicode 14.0. These updates also affect context
+   rules for Unicode 11.0 through 13.0.
+  * In limited cases under previous versions of precis_i18n, valid strings under
+   Unicode 11.0-13.0 were erroneously DISALLOWED due to context reasons
+   hebrew_punctuation, katakana_middle_dot, and zero_width_nonjoiner. (Issue #19)
+  * Add type hints for package</comment>
+    <requestid>954396</requestid>
+  </revision>
 </revisionlist>

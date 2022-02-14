@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 14 21:48:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Update internal tables for Unicode 14.0. These updates also affect context
+   rules for Unicode 11.0 through 13.0.
+  * In limited cases under previous versions of precis_i18n, valid strings under
+   Unicode 11.0-13.0 were erroneously DISALLOWED due to context reasons
+   hebrew_punctuation, katakana_middle_dot, and zero_width_nonjoiner. (Issue #19)
+  * Add type hints for package
+
+-------------------------------------------------------------------
 Sun May  2 14:26:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.3
