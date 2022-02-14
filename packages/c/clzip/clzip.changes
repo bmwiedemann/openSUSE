@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 13 22:30:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13
+  * Decompression time has been reduced by 5-12% depending on the
+    file.
+  * In case of error in a numerical argument to a command line
+    option, clzip now shows the name of the option and the range
+    of valid values.
+
+-------------------------------------------------------------------
 Fri Mar 12 22:15:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12

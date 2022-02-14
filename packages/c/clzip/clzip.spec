@@ -1,7 +1,7 @@
 #
 # spec file for package clzip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 Name:           clzip
-Version:        1.12
+Version:        1.13
 Release:        0
-%define xversion	1.12
 Summary:        Lossless Data Compressor based on LZMA
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            http://www.nongnu.org/lzip/clzip.html
-Source:         http://download.savannah.gnu.org/releases/lzip/clzip/%name-%xversion.tar.gz
+Source:         http://download.savannah.gnu.org/releases/lzip/clzip/%name-%version.tar.gz
 Source2:        http://download.savannah.gnu.org/releases/lzip/clzip/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Requires(post): info
@@ -42,7 +41,7 @@ Clzip is, in fact, a C language implementation of lzip, intended for
 embedded devices or systems lacking a C++ compiler.
 
 %prep
-%autosetup -n %name-%xversion
+%autosetup
 
 %build
 # not autoconf
@@ -71,7 +70,8 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/clzip.info%ext_info"
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc ChangeLog README
+%license COPYING
 %_bindir/clzip
 %_mandir/man1/clzip.1%ext_man
 %_infodir/clzip.info%ext_info
