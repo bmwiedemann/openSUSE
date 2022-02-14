@@ -170,4 +170,14 @@
 - Drop jasper-cmake-warnings.patch: contained in upstream release</comment>
     <requestid>953963</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35f9892429176b5e3a8f8c942629737e</srcmd5>
+    <version>3.0.2</version>
+    <time>1644874587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Fix a build issue that occurs when a cross-compiler is
+    used (e.g., #319).</comment>
+    <requestid>954338</requestid>
+  </revision>
 </revisionlist>
