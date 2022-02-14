@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 14 10:04:47 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix changelog and permissions
+
+-------------------------------------------------------------------
+Wed Apr 21 11:50:25 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1185074) /var/run in /usr/lib/tmpfiles.d/dovecot.conf is 
+  deprecated, please use /run instead 
+
+-------------------------------------------------------------------
+Fri Apr 16 10:58:13 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+- Refreshed spec-file via spec-cleaner and manual optimization.
+  * Removed file dovecot.init (droped SystemV support).
+  * Added parameter -p to all install command in spec-file.
+  * Added %{name} macro wherever possible.
+
+-------------------------------------------------------------------
 Fri Nov 13 14:11:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Check first if they exist before creating user and group accounts
@@ -132,4 +150,3 @@ Fri Sep  5 10:59:11 UTC 2014 - mrueckert@suse.de
 Thu Sep  4 13:44:06 UTC 2014 - mrueckert@suse.de
 
 - start an unversioned wrapper package again
-
