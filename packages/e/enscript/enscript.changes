@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 10:22:43 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- For iconv glibc-locale should be installed 
+
+-------------------------------------------------------------------
 Tue Jan 23 14:27:55 UTC 2018 - werner@suse.de
 
 - Add missing scan vor LC_PAPER in patch enscript-1.6.6-encoding+paper.patch 

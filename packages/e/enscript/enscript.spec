@@ -1,7 +1,7 @@
 #
 # spec file for package enscript
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           enscript
 Version:        1.6.6
 Release:        0
 Summary:        An ASCII to PostScript(tm) Converter
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/PS
-Url:            http://git.savannah.gnu.org/cgit/enscript.git
+URL:            http://git.savannah.gnu.org/cgit/enscript.git
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        enscript-gs-font.map
@@ -47,6 +47,7 @@ Requires:       %{_bindir}/file
 Requires:       %{_bindir}/iconv
 Requires:       /bin/sed
 Requires:       ghostscript-fonts-std
+Requires:       glibc-locale
 PreReq:         %{install_info_prereq}
 Provides:       genscript
 Provides:       nenscrip
