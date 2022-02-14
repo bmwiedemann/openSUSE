@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 14 21:46:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Add header_message in ConfigurationMixIn.generate_config 
+  * configuration: better error message
+  * rql repo has been moved
+  * add test on python3.8
+
+-------------------------------------------------------------------
 Mon Mar  8 08:40:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:

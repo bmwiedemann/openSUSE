@@ -66,4 +66,16 @@
          available on debian buste</comment>
     <requestid>877590</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d2b9f12b21cdbdfd4c2f275de0781e2</srcmd5>
+    <version>1.8.3</version>
+    <time>1644880255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * Add header_message in ConfigurationMixIn.generate_config 
+  * configuration: better error message
+  * rql repo has been moved
+  * add test on python3.8</comment>
+    <requestid>954394</requestid>
+  </revision>
 </revisionlist>
