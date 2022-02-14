@@ -1,0 +1,6 @@
+<package name="teleport" project="openSUSE:Factory">
+  <title>teleport</title>
+  <description>Certificate authority and access plane for SSH, Kubernetes, web apps, databases and desktops</description>
+  <devel project="devel:kubic" package="teleport"/>
+  <url>https://github.com/gravitational/teleport</url>
+</package>

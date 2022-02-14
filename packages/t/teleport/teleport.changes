@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sat Feb 12 20:48:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- split up into three packages: teleport aka server/daemon, teleport-tctl and teleport-tsh
+
+-------------------------------------------------------------------
+Sat Feb 12 08:10:06 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package teleport: Teleport is an identity-aware, multi-protocol access proxy which understands SSH, HTTPS, RDP, Kubernetes API, MySQL, MongoDB and PostgreSQL wire protocols.
