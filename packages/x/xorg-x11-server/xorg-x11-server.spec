@@ -242,6 +242,8 @@ Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 
 Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
+Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -396,6 +398,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1910 -p1
 %patch1920 -p1
 %patch1930 -p1
+%patch1940 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects

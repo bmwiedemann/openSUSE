@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 12 11:12:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_xephyr-Don-t-check-for-SeatId-anymore.patch
+  * fix mouse/keyboard focus in Xephyr (boo#1194658, 
+    github issue#1289)
+
+-------------------------------------------------------------------
 Thu Feb 10 20:26:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix bashisms in pre_checkins.sh (bsc#1195391) 
