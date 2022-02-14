@@ -1,7 +1,7 @@
 #
 # spec file for package owntone
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Scott Shambarger
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,11 +29,12 @@
 Summary:        DAAP server for iTunes and Chromecast with MPD and RSP support
 License:        GPL-2.0-or-later
 Name:           owntone
-Version:        28.2
+Version:        28.3
 Release:        0
 URL:            https://github.com/owntone/owntone-server
 Source0:        https://github.com/owntone/owntone-server/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        owntone_logrotate
+Patch0:         harden_owntone.service.patch
 
 Provides:       forked-daapd = %version
 Obsoletes:      forked-daapd < 28
@@ -104,6 +105,7 @@ owntone is a complete rewrite of mt-daapd (Firefly Media Server).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CFLAGS="%optflags -fcommon"
