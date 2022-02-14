@@ -14,7 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+%if 0%{?rhel} == 8
+%global debug_package %{nil}
+%endif
 
+%if 0%{?rhel}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+%endif
 
 Name:           wire
 Version:        0.5.0
@@ -45,6 +52,12 @@ written to be used with Wire is useful even for hand-written initialization.
 
 %install
 %goinstall
+
+%if 0%{?rhel} == 8
+%check
+# Fix OBS debug_package execution.
+rm -f %{buildroot}/usr/lib/debug/%{_bindir}/%{name}-%{version}-*.debug
+%endif
 
 %files
 %defattr(-,root,root)

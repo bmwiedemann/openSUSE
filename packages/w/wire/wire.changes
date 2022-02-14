@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 14 14:19:56 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Disabled debug package build for RHEL.
+
+-------------------------------------------------------------------
 Fri Feb 11 07:28:01 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Added alternative golang name to build on RHEL.
