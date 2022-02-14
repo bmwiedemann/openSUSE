@@ -18,9 +18,8 @@
 
 
 %define soname 0
-%bcond_with rnp_tests
 Name:           rnp
-Version:        0.15.2
+Version:        0.16.0
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
@@ -31,15 +30,13 @@ BuildRequires:  gcc-c++
 # https://github.com/rnpgp/rnp/issues/1579
 BuildRequires:  git
 BuildRequires:  gpg2 >= 2.2
+BuildRequires:  gtest
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(json-c) >= 0.11
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
-%if %{with rnp_tests}
-BuildRequires:  gtest
-%endif
 
 %description
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
@@ -68,11 +65,7 @@ This package contains the files needed to build against librnp.
 	-DBUILD_SHARED_LIBS=on \
 	-DDOWNLOAD_GTEST=off \
 	-DDOWNLOAD_RUBYRNP=off \
-%if %{with rnp_tests}
 	-DBUILD_TESTING=on \
-%else
-	-DBUILD_TESTING=off \
-%endif
 
 %cmake_build
 
@@ -80,9 +73,7 @@ This package contains the files needed to build against librnp.
 %cmake_install
 
 %check
-%if %{with rnp_tests}
 %ctest
-%endif
 
 %post -n librnp%{soname} -p /sbin/ldconfig
 %postun -n librnp%{soname} -p /sbin/ldconfig

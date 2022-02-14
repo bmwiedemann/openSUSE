@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 13 18:12:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.16.0:
+  * Ability to disable certain features via compile-time switches
+    (ENABLE_AEAD, ENABLE_SM2, etc.)
+  * Mark signatures with SHA1/MD5 hash, produced after the specific
+    date (2019-01-19 and 2012-01-01) as invalid
+  * Fixed possible incompatibility with GnuPG on x25519 secret key
+    export
+  * Fixed export of non-FFI symbols from rnp.so/rnp.dylib
+  * Fixed key expiration time calculation in some edge cases
+  * Added security profile manipulation functions to the FFI
+  * Improved CLI tools help messages
+  * Improved CLI: stdin/stdout/env input/output specifiers, --notty
+    for batch processing, etc.
+
+-------------------------------------------------------------------
 Sat Jan 15 08:14:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - disable tests
