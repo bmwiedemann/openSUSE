@@ -1,8 +1,7 @@
 #
 # spec file for package c-toxcore
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2013 Markus Kolb, Innsbruck, Austria.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 %define _soversion 2
 Name:           c-toxcore
-Version:        0.2.13
+Version:        0.2.15
 Release:        0
 Summary:        Secure decentralized instant messaging application
 License:        GPL-3.0-only
