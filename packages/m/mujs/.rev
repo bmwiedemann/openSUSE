@@ -33,4 +33,13 @@
   * Fixed error in Array.prototype.toString().</comment>
     <requestid>902621</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23e1340df6358918b08a53db6120dc6e</srcmd5>
+    <version>1.2.0</version>
+    <time>1644874583</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.2.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0</comment>
+    <requestid>954325</requestid>
+  </revision>
 </revisionlist>
