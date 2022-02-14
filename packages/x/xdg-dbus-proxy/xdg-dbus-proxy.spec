@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-dbus-proxy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xdg-dbus-proxy
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Filtering proxy for D-Bus connections
 License:        LGPL-2.1-or-later
