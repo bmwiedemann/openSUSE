@@ -80,6 +80,7 @@ BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 %endif
+Requires:       glibc-locale
 Requires(post): %{_bindir}/cat
 Requires(post): %{_bindir}/mkdir
 Requires(postun):%{_bindir}/rm

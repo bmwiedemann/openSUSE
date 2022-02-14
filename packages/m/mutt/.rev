@@ -1267,4 +1267,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     blank line following the headers.</comment>
     <requestid>945563</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>577cc34e4aeca9eef410e1896e2dd2b3</srcmd5>
+    <version>2.1.5</version>
+    <time>1644874583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>954327</requestid>
+  </revision>
 </revisionlist>
